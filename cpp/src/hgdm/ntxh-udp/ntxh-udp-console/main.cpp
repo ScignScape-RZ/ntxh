@@ -33,11 +33,17 @@ int main(int argc, char* argv[])
 // parse_corpus(root, qs);
  NTXH_UDP_Corpus ntc(root);
 
- int result = 0;
+// int result = 0;
+
+ // ((actually is) (((most popular) The) lodging) ((on (the beaches)) camping))
+//(understand We ((also
+//                 (((to picket) (the ((Lake Worth Florida) project)))
+//                 (are planning)) )
+//                (the (pipe fitters))))
 
 // QStringList infiles{"@/joint/j.conllu"};
- QString infile = "@/joint/j.txh";
- QString outfile = "@/joint/j.txt";
+ QString infile = "@/joint/j.ntxh";
+// QString outfile = "@/joint/j.txt";
 
  ntc.add_file(infile);
  //result = dgc.detokenize(outfile);
