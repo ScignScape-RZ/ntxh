@@ -606,7 +606,7 @@
 25	:	:	PUNCT	Colon	_	2	punct	_	_
 
 
-# en_lines-ud-train.conllu
+#en_lines-ud-train.conllu
 # sent_id = 2245
 # text = A hundred and twenty-two for dinner!
 1	A	a	DET	IND-SG	Definite=Ind|PronType=Art	2	det	_	_
@@ -617,4 +617,130 @@
 6	dinner	dinner	NOUN	SG-NOM	Number=Sing	2	nmod	_	SpaceAfter=No
 7	!	!	PUNCT	ExclMark	_	2	punct	_	_
 
+
+#en_pud.conllu
+# sent_id = n01050009
+# text = The current waiting period is eight weeks.
+1	The	the	DET	DT	Definite=Def|PronType=Art	4	det	4:det	_
+2	current	current	ADJ	JJ	Degree=Pos	4	amod	4:amod	_
+3	waiting	waiting	NOUN	NN	Number=Sing	4	compound	4:compound	_
+4	period	period	NOUN	NN	Number=Sing	7	nsubj	7:nsubj	_
+5	is	be	AUX	VBZ	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	7	cop	7:cop	_
+6	eight	eight	NUM	CD	NumType=Card	7	nummod	7:nummod	_
+7	weeks	week	NOUN	NNS	Number=Plur	0	root	0:root	SpaceAfter=No
+8	.	.	PUNCT	.	_	7	punct	7:punct	_
+
+
+#en_pud.conllu
+# sent_id = n01051007
+# text = It is the most common tumour found in babies, occurring in one of every 35,000 births.
+1	It	it	PRON	PRP	Case=Nom|Gender=Neut|Number=Sing|Person=3|PronType=Prs	6	nsubj	_	_
+2	is	be	AUX	VBZ	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	6	cop	_	_
+3	the	the	DET	DT	Definite=Def|PronType=Art	6	det	_	_
+4	most	most	ADV	RBS	_	5	advmod	_	_
+5	common	common	ADJ	JJ	Degree=Pos	6	amod	_	_
+6	tumour	tumour	NOUN	NN	Number=Sing	0	root	_	_
+7	found	find	VERB	VBN	Tense=Past|VerbForm=Part	6	acl	_	_
+8	in	in	ADP	IN	_	9	case	_	_
+9	babies	baby	NOUN	NNS	Number=Plur	7	obl	_	SpaceAfter=No
+10	,	,	PUNCT	,	_	6	punct	_	_
+11	occurring	occur	VERB	VBG	VerbForm=Ger	6	acl	_	_
+12	in	in	ADP	IN	_	13	case	_	_
+13	one	one	NUM	CD	NumType=Card	11	obl	_	_
+14	of	of	ADP	IN	_	17	case	_	_
+15	every	every	DET	DT	_	17	det	_	_
+16	35,000	35,000	NUM	CD	NumType=Card	17	nummod	_	_
+17	births	birth	NOUN	NNS	Number=Plur	13	nmod	_	SpaceAfter=No
+18	.	.	PUNCT	.	_	6	punct	_	_
+
+
+#en_pud.conllu
+# sent_id = n01086016
+# text = You end up listening more acutely for the next noise and getting more irritated when it comes.
+1	You	you	PRON	PRP	Case=Nom|Person=2|PronType=Prs	2	nsubj	2:nsubj|4:nsubj:xsubj|12:nsubj:xsubj|14:nsubj:xsubj	_
+2	end	end	VERB	VBP	Mood=Ind|Tense=Pres|VerbForm=Fin	0	root	0:root	_
+3	up	up	ADP	RP	_	2	compound:prt	2:compound:prt	_
+4	listening	listen	VERB	VBG	VerbForm=Ger	2	xcomp	2:xcomp	_
+5	more	more	ADV	RBR	_	6	advmod	6:advmod	_
+6	acutely	acutely	ADV	RB	_	4	advmod	4:advmod	_
+7	for	for	ADP	IN	_	10	case	10:case	_
+8	the	the	DET	DT	Definite=Def|PronType=Art	10	det	10:det	_
+9	next	next	ADJ	JJ	Degree=Pos	10	amod	10:amod	_
+10	noise	noise	NOUN	NN	Number=Sing	4	obl	4:obl:for	_
+11	and	and	CCONJ	CC	_	12	cc	12:cc	_
+12	getting	get	VERB	VBG	VerbForm=Ger	4	conj	2:xcomp|4:conj:and	_
+13	more	more	ADV	RBR	_	14	advmod	14:advmod	_
+14	irritated	irritated	ADJ	JJ	Degree=Pos	12	xcomp	12:xcomp	_
+15	when	when	ADV	WRB	PronType=Int	17	advmod	17:advmod	_
+16	it	it	PRON	PRP	Case=Nom|Gender=Neut|Number=Sing|Person=3|PronType=Prs	17	nsubj	17:nsubj	_
+17	comes	come	VERB	VBZ	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	12	advcl	12:advcl	SpaceAfter=No
+18	.	.	PUNCT	.	_	2	punct	2:punct	_
+
+
+#en_pud.conllu
+# sent_id = n01087018
+# text = I think that's why they immersed themselves in pattern and colour.
+1	I	I	PRON	PRP	Case=Nom|Number=Sing|Person=1|PronType=Prs	2	nsubj	2:nsubj	_
+2	think	think	VERB	VBP	Mood=Ind|Tense=Pres|VerbForm=Fin	0	root	0:root	_
+3	that	that	PRON	DT	Number=Sing|PronType=Dem	4	nsubj	4:nsubj	SpaceAfter=No
+4	's	's	VERB	VBZ	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	2	ccomp	2:ccomp	OrigForm='s
+5	why	why	ADV	WRB	PronType=Int	7	advmod	7:advmod	_
+6	they	they	PRON	PRP	Case=Nom|Number=Plur|Person=3|PronType=Prs	7	nsubj	7:nsubj	_
+7	immersed	immerse	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	4	ccomp	4:ccomp	_
+8	themselves	themselves	PRON	PRP	Case=Acc|Number=Plur|Person=3|PronType=Prs|Reflex=Yes	7	obj	7:obj	_
+9	in	in	ADP	IN	_	10	case	10:case	_
+10	pattern	pattern	NOUN	NN	Number=Sing	7	obl	7:obl:in	_
+11	and	and	CCONJ	CC	_	12	cc	12:cc	_
+12	colour	colour	NOUN	NN	Number=Sing	10	conj	7:obl:in|10:conj:and	SpaceAfter=No
+13	.	.	PUNCT	.	_	2	punct	2:punct	_
+
+
+#en_pud.conllu
+# sent_id = n01097098
+# text = My next stop was Bellingham, right up near the Canadian border.
+1	My	my	PRON	PRP$	Number=Sing|Person=1|Poss=Yes|PronType=Prs	3	nmod:poss	3:nmod:poss	_
+2	next	next	ADJ	JJ	Degree=Pos	3	amod	3:amod	_
+3	stop	stop	NOUN	NN	Number=Sing	5	nsubj	5:nsubj	_
+4	was	be	AUX	VBD	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin	5	cop	5:cop	_
+5	Bellingham	Bellingham	PROPN	NNP	Number=Sing	0	root	0:root	SpaceAfter=No
+6	,	,	PUNCT	,	_	5	punct	5:punct	_
+7	right	right	ADV	RB	_	12	advmod	12:advmod	_
+8	up	up	ADV	RB	_	12	advmod	12:advmod	_
+9	near	near	ADP	IN	_	12	case	12:case	_
+10	the	the	DET	DT	Definite=Def|PronType=Art	12	det	12:det	_
+11	Canadian	canadian	ADJ	JJ	Degree=Pos	12	amod	12:amod	Proper=True
+12	border	border	NOUN	NN	Number=Sing	5	nmod	5:nmod:near	SpaceAfter=No
+13	.	.	PUNCT	.	_	5	punct	5:punct	_
+
+
+#en_pud.conllu
+# sent_id = n01098041
+# text = A small town with two minarets glides by.
+1	A	a	DET	DT	Definite=Ind|PronType=Art	3	det	3:det	_
+2	small	small	ADJ	JJ	Degree=Pos	3	amod	3:amod	_
+3	town	town	NOUN	NN	Number=Sing	7	nsubj	7:nsubj	_
+4	with	with	ADP	IN	_	6	case	6:case	_
+5	two	two	NUM	CD	NumType=Card	6	nummod	6:nummod	_
+6	minarets	minaret	NOUN	NNS	Number=Plur	3	nmod	3:nmod:with	_
+7	glides	glide	NOUN	NNS	Number=Plur	0	root	0:root	_
+8	by	by	ADV	RB	_	7	advmod	7:advmod	SpaceAfter=No
+9	.	.	PUNCT	.	_	7	punct	7:punct	_
+
+
+#en_pud.conllu
+# newdoc id = w01084
+# sent_id = w01084085
+# text = This city-state emerged in the same period as Sukhothai.
+1	This	this	DET	DT	Number=Sing|PronType=Dem	4	det	4:det	_
+2	city	city	NOUN	NN	Number=Sing	4	compound	4:compound	SpaceAfter=No
+3	-	-	PUNCT	HYPH	_	4	punct	4:punct	SpaceAfter=No
+4	state	state	NOUN	NN	Number=Sing	5	nsubj	5:nsubj	_
+5	emerged	emerge	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	0	root	0:root	_
+6	in	in	ADP	IN	_	9	case	9:case	_
+7	the	the	DET	DT	Definite=Def|PronType=Art	9	det	9:det	_
+8	same	same	ADJ	JJ	Degree=Pos	9	amod	9:amod	_
+9	period	period	NOUN	NN	Number=Sing	5	obl	5:obl:in	_
+10	as	as	ADP	IN	_	11	case	11:case	_
+11	Sukhothai	Sukhothai	PROPN	NNP	Number=Sing	8	obl	8:obl:as	SpaceAfter=No
+12	.	.	PUNCT	.	_	5	punct	5:punct	_
 
