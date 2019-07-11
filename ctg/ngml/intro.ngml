@@ -137,7 +137,163 @@ in terms of their context-sensitivity and the degree to
 which extralinguistic rationality is implicit in 
 grasping intended meanings.  So neither a theory which 
 ignores extralinguistic cognition, nor one which 
+treats `i.all` linguistic processing as inseperable 
+from the totality of our cognitive processes from moment to moment, 
+are complete; the larger account needs to place 
+sentence on a spectrum where extralinguistic and (I'll say) 
+`q.intra-linguistic` theoretical machinery is 
+available to analyze different sentences as their 
+form and context demands. 
+`p`
 
+`p.
+Extending this point, I believe a comparable spectrum 
+matches the duality of language seen as intrinsically 
+formalizable and computable or as too subtle, social/cultural, 
+embodied, and context-dependent to be tractable to any 
+computer or any idealized logicomathematical abstraction.  
+Some sentence are more logically straightforward; others 
+are more elusive, requiring holistic and context-sensitive 
+interpretation on conversants' parts to be understood.  
+Combined with my claims last paragraph, I argue accordingly 
+that we can (at least as a suggestive picture) view 
+linguistic artifacts (canonically, sentences) 
+along a two-axis spectrum defined both by extralinguistic 
+integration (or lack thereof) and by formal tractability 
+(or lack thereof), like so: (this is intended as an intuitive 
+sketch, not a formal model).  
+
+\begin{matrix}
+  Logicomorphic  & --- & Extra-Linguistic \\
+     \| & &  \| \\
+  Intra-Linguistic  & ---   &  Interpretive
+\end{matrix}
+
+I will elucidate the terms on that picture later.  Summarily, though, 
+I claim that `i.some` sentences evince logically straightforward 
+compositional pattern that can be analyzed `i.either` at the 
+language-specific (syntactic or semantic) level `i.or` within 
+cognitive registers outside of language proper (e.g., situational 
+shemata); conversely, some sentences have nuances that 
+call for interpretive judgments which appear to transcend 
+formal simulacra outside the full range of human 
+intelligence, emotion, and embodiment, `i.either` in 
+terms of parsing complex syntactic or semantic structures 
+`i.or` in grounding linguistic phenomena in ambient contexts.  
+My overall point is then that sentences take a spectrum of 
+models spanned by these axes; no one paradigm is 
+self-contained as a metalinguistic commitment. 
+`p` 
+
+`p.
+In effect, the choice between paradigms wherein language is or 
+is not formally/computationally tractable, and between paradigms 
+wherein language is or is not intellectually autonomous `visavis; 
+our total cognitive faculties, should not be seen as a 
+metaphysical alternative anterior to language as a totality.  
+Instead, these spectra are threaded into language internally, 
+competing polarities which rise or fall from sentence to 
+sentence.  Language is not `i.intrinsically` either formal 
+or non-formal; autonomous or non-autonomous.    
+`p`
+
+`p.
+But at the same time, sentences are clearly phenomena of the 
+same ilk; the distinctions I have made are not so sharp as to 
+disrupt the ontological similitude among sentences, so that 
+two sentences (however much they differ on the spectra of 
+my diagram) are still manifestations of the same ontological 
+place; they are still roughly the same `i.sort` of existents.  
+Accordingly, we should conclude philosophically that there are 
+certain aspects of sentences that lie beneath the formal/interpretive  
+and intralinguistic/extealinguistic dualities.  There are, in short, 
+paleostructures in language that manifest `i.either` with formal 
+specificity or with contextual nuance; `i.either` 
+internal to syntax or semantics or external to intrinsically 
+linguistic cognition; varying from sentence to sentence.  
+This paper will present a theory of one such paleostructure, 
+drawing inspiration both from formal theories (Dependency Grammar, 
+Type-Theoretic Semantics, Generative Lexicon) and from 
+more philosophical approaches (Cognitive Grammar, Semiotics, Phenomenology).    
+`p`
+
+`p.
+The central element in my analysis is the `i.conceptual modification` 
+implied or effected by one word in the presence of another word.  
+More precisely, some words' linguistic roles can be analyzed as 
+adding cognitive detail (conceptual and/or perceptual and/or pragmatic) 
+to the ideas or referents signified via other words.  The underlying scheme, 
+at this level where the model is undeveloped and thus fairly simple, 
+is close to Dependency Grammar: in lieu of a head/dependent relation 
+we can treat one word (or similar lexical unit) as a `i.modifier` and the  
+second as a `q.ground`/.  I believe this two-pronged picture is not 
+complete vacuous, but is general and underspecified enough to 
+spread over both syntax and semantics, and over competing 
+paradigms.  I will call the modifier's effect on its ground 
+a `i.transform`/, and the two words together (taking `q.word` as a 
+convenient designation for lexemes in general) as a 
+`i.transform pair`/.
+`p`
+
+`p.
+I will argue that the underlying transform-pair concept is 
+amenable to both more formal and more philophical/interpretive 
+development.  One the one hand, transform-pairs can sometimes 
+be mapped explicitly to dependency or link-grammar pairs, 
+so the theory can be treated as a philosphical preliminary 
+or motivation for Dependecy or Link Grammar.  Relatedly, 
+transforms themselves can be integrated into type systems 
+(e.g., the kinds of transforms associated with adjectives 
+depend on their ground being typed as a noun), so 
+a theory of transform-pairs can motivate elaboration in a 
+Type-Theoretic context.  On the other hand, we can focus 
+on the interpretive and situational nuanced often evident in 
+cognitive transformations to find evidence for linguistic 
+phenomena which do not fit neatly into Dependecy Grammar 
+or Type-Theoretic (or any other) formalization.  
+These various continuations, which I will present further 
+over the next several sections, try not to foreclose either 
+formal or philosophical/interpretive paradigms.  The goal is 
+to trace both formal models of language and alterntive 
+models %-- for which excessive formalization is reductionistic 
+and depends on ad-hoc avoidance of many real-world 
+significations %-- to a common structural kernel from which 
+both perspectives can be deployed on a case-by-case 
+(e.g., sentence-by-sentence) basis.
+`p`
+
+`p.
+In keeping with the perspective that formal models have `i.some` 
+merit, I have tried to orient the presentation around certain 
+computational-linguistic techniques.  Some of my examples are 
+drawn from popular annotated corpora, and I provide models 
+of other examples as processed by representative `NLP; technologies 
+(e.g., Malt Parser trained against the most recent Universal 
+Dependency training data at the time of writing).   
+I have packaged the examples and supporting code into an 
+open-source data set for purposes of demonstration.  
+I do not dwell on the accuracy of the `NLP; components, 
+in part because I am motivated in this paper to examine 
+how computational methods can be employed as explanatory 
+tools separate and apart from their feasibility in 
+automated pipelines.  That is, the computational 
+resources I present here are designed more as technological 
+supplements to philosophical, interpretive, and 
+speculative examinations of interesting linguistic 
+examples, rather than as algorithms ultimately targeted 
+at fully automated `NLP; frameworks.  I incorporate 
+code and data as a supplement to my argumentation in the 
+hope that this can serve as an example of computational 
+linguistics adopted outside the priorities of `NLP; 
+automation and Artificial Intelligence in its more reductive, 
+science-fictional sense.  I am not aspiring to 
+develop code or theoretical claims that could advance the 
+hypothetical project of implementing artificial agents that 
+can mimic and understand human language and behavior in 
+all its subjectivity and complexity.  However, I `i.do` 
+want to leverage certain computational techniques as  
+offering their own explanatory perspectives on structures 
+in human language.  
 `p`
 
 `p.
