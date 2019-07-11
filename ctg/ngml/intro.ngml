@@ -1,5 +1,142 @@
 
 `p.
+The question of whether computers can be programmed to understand 
+language may be philosophical, but it overlaps with 
+broad methodological bifurcations: after all, linguists 
+`i.are` programming computers to `q.understand` language, at 
+least to some approximation.  Given that computational 
+linguistics is now a well-established practice, we can 
+consider how this program for investigating the nature of 
+language orients into linguistics as a whole: to what degree 
+are the computers really `q.understanding` their linguistic 
+input?  How much does `i.behavior` consistent with language-understanding 
+suggest actual understanding?  Is linguistic competence mostly a 
+behavioral phenomenon, or something more holistic and (inter-) subjective?  
+Are the imperfections of automated Natural Language Processing 
+inevitable, and if so, does that foreclose the possibility of 
+`NLP; engines being considered truly linguistic?  That is, 
+should we treat flawed and oversimplistic (but practically useful) 
+`NLP; software %-- or `q.personas` driven by this software, like 
+`q.digital assistants` %-- as bonafide (if rather primitive) 
+participants in the world of human language?  Or are they merely 
+machines that simulate linguistic behavior without manifesting 
+real linguistic behavior, as a computer simulation of a 
+celestial galaxy is not a real galaxy?  
+`p`
+
+`p.
+These are methodological as well as thematic questions.  There is a 
+wide swath of formal and computational linguistics, for instance, for 
+which the measure of a theory is its chance of being operationalized 
+on `NLP; terms and within `NLP; tools, yielding automated systems whose accuracy and/or 
+computational efficiency competes favorably with other systems.  
+Faithfulness to how `i.humans` process language is at most a secondary 
+concern.  Conversely, there is a broad literature in Cognitive Linguistics 
+and the Philosophy of Language for which uncovering the cognitive and 
+interpretive registers through which `i.we` understand, produce, and 
+are affected by language is the main goal.  For scholars chasing 
+that telos, failure to encode theoretical models in mathematical 
+or software systems is not `i.prima facie` an explanatory limitation 
+%-- conversely, we might take this as evidence that cognitive models 
+are addressing the deep, subtle realities of language that are 
+opaque to computer simulation.   
+`p`
+
+`p.
+Then there is hybrid work, like attempts to formalize 
+Cognitive Grammar (Matt Selway `cite<MattSelway>;, 
+Kenneth Holmqvist `cite<KennethHolmqvist>;), or 
+other branches of Cognitive Linguistics 
+(cf. Terry Regier's influential `cite<TerryRegier>;), 
+or Conceptual Space Theory as initiated by 
+Peter `Gardenfors; (which has seen several attempts at 
+mathematical-computational formalization, such as 
+Frank Zenker, Martin Raubal, and Benjamin Adams's 
+metascientific perspectives, and more recent 
+Category-Theoretic structures linked to mathematicians 
+such as Bob Cocke and David Spivak `cite<BobCocke>;).  
+To this list we could add research that extends beyond 
+language alone to broader cognitive-perceptual and 
+conceptual themes, like formal descriptions rooted in 
+Husserlian analyses by phenomenologists whose methods 
+encompass some computer-scientific techniques, like 
+Barry Smith (as in `cite<BittnerSmithDonnelly>;) and 
+Jean Petitot (see `cite<JeanPetitot>;); we can see 
+these accounts as generalizing cognitive-linguistic 
+theories by noting the phenomenological basis 
+of linguistic phenomena, as articulated by (say) 
+Olav K. Wiegand (`cite<OlavKWiegand>;) 
+and Jordan Zlatev (`cite<JordanZlatev>;).  
+In each of the works just cited (prior anyhow to the 
+last two)  
+we can find formal/computational models whose 
+rationale is, in large part, to 
+shed light on human cognitive processes 
+(albeit not necessarily translating to practical 
+`NLP; components in any straightforward way). 
+`p`
+
+`p.
+This kind of `q.intermediate` research is perhaps 
+under-appreciated, because it neither accepts the dismissive 
+attitude that formal models are a distraction from 
+the analysis of `q.real` language, nor the reductionistic 
+faith that language is `i.intrinsically` computational, 
+so that progress toward ideal `NLP; avatars is just a matter 
+of time.  To be sure, layering formal systems on a 
+cognitive/phenomenological foundation adds a complexity of 
+theoretical structure, which could prompt questions about the 
+efficacy of the theoretical dilation: is extra complexity 
+desirable as an end in itself, if the new formalizations 
+have only limited explanatory or practical pay-offs?  
+If there is a human kernel in language that is intrinsically 
+non-computable and non-formalizable, does analysis of 
+language truly benefit from complex but only partly 
+applicable structural overlays?  On the other hand, if 
+language `i.is` computationally tractable, shouldn't 
+`NLP; implementation be a factor in assessing which 
+formal models are worthy of attention? 
+`p`
+
+`p.
+Perhaps for these kinds of considerations, linguistics seems to 
+bifurcate between a camp that essentially ignores 
+computational methodology and resources and a camp 
+that centers its whole attention on building better automated 
+`NLP; tools.  Left out of this division is research that 
+invokes formal models as explanatory vehicles while not 
+enmeshing them in an ecosystem oriented toward automation %-- 
+the difference between deploying formal repesentations to 
+model (some aspects) of language processing, syntax, and 
+semantics, and trying to program software to `i.automate` the 
+construction, translation, and pipeling between and among 
+formal models.  When situating research relative to 
+computational linguistics, we should bear in mind the 
+metatheoretical point that `i.incorporating` formal 
+schema into linguictis models does not `i.necessarily` 
+mean committing ourselves to a task of programming 
+computers to discover the target representations 
+automatically, given raw linguistic input. 
+`p`
+
+`p.
+But this perspective is not only metatheoretical: I believe  
+that the nature of language is `i.intrinsically` `q.hybrid` 
+in a manner that warrants neither blind faith in 
+automation nor `i.a priori` disengagement with formalizing 
+projects.  This is first of all because language is neither 
+wholly isolated from other cognitive phenomena nor 
+without some structural autonomy: it's reasonable to 
+suppose that there are distinct intellectual faculties 
+internal to our understanding of language, while other 
+reasonings intrinsic to parsing the form and intentions 
+of a linguistic unit are drawn from the wider 
+inventory of situational, conceptual, social, and 
+practical/enactive cognition.  Sentences can vary 
+in terms of their context-sensitivity and the degree to 
+which extralinguistic rationality is implicit in 
+grasping intended meanings.  So neither a theory which 
+ignores extralinguistic cognition, nor one which 
 
 `p`
 
