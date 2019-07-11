@@ -1,0 +1,8 @@
+num=$(printf "%05d" $1)
+echo "${num}"
+wget http://ltdata1.informatik.uni-hamburg.de/depcc/corpus/parsed/part-m-$num.gz
+gunzip ./part-m-$num.gz
+grep "# sent_id = " ./part-m-$num | grep "#1$" > ./ones/t$num.txt
+rm ./part-m-$num
+
+

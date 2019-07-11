@@ -744,3 +744,48 @@
 11	Sukhothai	Sukhothai	PROPN	NNP	Number=Sing	8	obl	8:obl:as	SpaceAfter=No
 12	.	.	PUNCT	.	_	5	punct	5:punct	_
 
+
+#en_pud.conllu
+# sent_id = w01119076
+# text = With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.
+1	With	with	ADP	IN	_	3	case	3:case	_
+2	her	she	PRON	PRP$	Gender=Fem|Number=Sing|Person=3|Poss=Yes|PronType=Prs	3	nmod:poss	3:nmod:poss	_
+3	appearance	appearance	NOUN	NN	Number=Sing	7	obl	7:obl:with	_
+4	finalized	finalize	VERB	VBN	Tense=Past|VerbForm=Part	3	acl	3:acl	SpaceAfter=No
+5	,	,	PUNCT	,	_	7	punct	7:punct	_
+6	Jasmine	Jasmine	PROPN	NNP	Number=Sing	7	nsubj	7:nsubj|12:nsubj:xsubj	_
+7	became	become	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	0	root	0:root	_
+8	Disney	Disney	PROPN	NNP	Number=Sing	12	nmod:poss	12:nmod:poss	SpaceAfter=No
+9	's	's	PART	POS	_	8	case	8:case	_
+10	first	first	ADJ	JJ	Degree=Pos|NumType=Ord	12	amod	12:amod	_
+11	non-white	non-white	ADJ	JJ	Degree=Pos	12	amod	12:amod	_
+12	princess	princess	NOUN	NN	Number=Sing	7	xcomp	7:xcomp	_
+13	as	as	SCONJ	IN	_	19	mark	19:mark	_
+14	opposed	oppose	VERB	VBN	Tense=Past|VerbForm=Part	13	fixed	13:fixed	_
+15	to	to	ADP	IN	_	13	fixed	13:fixed	_
+16	being	be	AUX	VBG	VerbForm=Ger	19	cop	19:cop	_
+17	of	of	ADP	IN	_	19	case	19:case	_
+18	European	european	ADJ	JJ	Degree=Pos	19	amod	19:amod	Proper=True
+19	heritage	heritage	NOUN	NN	Number=Sing	12	advcl	12:advcl:as_opposed_to	SpaceAfter=No
+20	.	.	PUNCT	.	_	7	punct	7:punct	_
+
+
+#en_pud.conllu
+# newdoc id = w03002
+# sent_id = w03002048
+# text = In the early 2000s, there were five doctors per 100,000 inhabitants.
+1	In	in	ADP	IN	_	4	case	4:case	_
+2	the	the	DET	DT	Definite=Def|PronType=Art	4	det	4:det	_
+3	early	early	ADJ	JJ	Degree=Pos	4	amod	4:amod	_
+4	2000s	2000	NUM	NNS	Number=Plur	7	obl	7:obl:in	SpaceAfter=No
+5	,	,	PUNCT	,	_	7	punct	7:punct	_
+6	there	there	DET	EX	_	7	expl	7:expl	_
+7	were	be	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	0	root	0:root	_
+8	five	five	NUM	CD	NumType=Card	9	nummod	9:nummod	_
+9	doctors	doctor	NOUN	NNS	Number=Plur	7	nsubj	7:nsubj	_
+10	per	per	ADP	IN	_	12	case	12:case	_
+11	100,000	100,000	NUM	CD	NumType=Card	12	nummod	12:nummod	_
+12	inhabitants	inhabitant	NOUN	NNS	Number=Plur	9	nmod	9:nmod:per	SpaceAfter=No
+13	.	.	PUNCT	.	_	7	punct	7:punct	_
+
+
