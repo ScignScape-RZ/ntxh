@@ -1,8 +1,149 @@
 
-`section.Truth-Theoretic Semantics and Enaction`
+`section.Cognitive Transform Grammar and Transform-Pairs`
 
 `p.
+The idea that inter-word pairs are a foundational linguistic 
+unit %-- from which larger aggregates can be built up recursively 
+%-- is an central tenet of Dependency Grammar.  Here I will 
+generalize this perspective outside (but not excluding) 
+grammar, to overall semantic, pragmatic, and even 
+extralinguistic relations indicated via interword relations.    
+`p`
 
+`p.
+In some cases word-relations can still be theorized mostly via 
+syntax.  Consider hypothetical, example sentences like 
+
+`sentenceList,
+`sentenceItem; \label{itm:having} His having lied in the past damages his credibilty in the present.
+`sentenceItem; \label{itm:whether} Voters question whether he is truthful this time around. 
+`sentenceList`
+
+In (\ref{itm:having}), `i.having` is necessary to syntactically transform its ground 
+`i.lied` from a verb-form to a noun (something which can be inserted into a 
+possessive clause).  Analogously, in (\label{ref:whether}) `i.whether` modifies 
+`i.is` (since this is the head of a subordinate clause), wrapping a propositional 
+clause into a noun so that it furnishes a direct object to the verb 
+`i.question`/.  The essential transformation in these cases is 
+motivated by grammatic considerations, particularly part-of-speech: 
+a verb and a subordinate, propositionally complete clause (in \label{ref:having} and 
+\label{ref:whether}, respectively) need (for syntactic propriety) to be 
+modified so as to play a role in a site where a noun is expected 
+(in effect, they need to be bundled into a noun-phrase).
+`p`
+
+`p.
+The relevant transforms here %-- signified by `i.having` and `i.whether` %-- have a 
+semantic dimension also, and we can speculate that the syntactic 
+rules (requiring a verb or propositional-clause to be transformed into a 
+noun) are actually driven by semantic considerations.  Conceptually, 
+for example, `i.his having lied` packages a verb into a possessive 
+context because the sentence is not foregrounding a specific lying-event 
+but rather the fact of the existence of such occasions.  We cannot perhaps 
+`q.possess` an event, but we possess (as part of our nature or history) 
+the fact of past occurances, viz., events in the form of things we 
+have done.  In this sense `i.his having lied` marks a conceptual transformation, 
+from events qua occurants to events (as factical givens) qua states or 
+possessions, and the grammatical norm %-- how we cannot just say 
+`q.his lied` %-- is epiphenomenal to the conceptual logic here; 
+the erroneous `q.his lied` sounds flawed because it does not 
+match a coherent conceptual pattern in how events and states fit together.  
+But, still, the syntactic requirement %-- the expectation 
+that a noun or noun-phrase serve as the ground of a possessive 
+adjective, or the direct object of a verb %-- manifests these 
+underlying conceptual patterns in the order of everyday language.  
+Syntactic patterns become entrenched `i.because` they are comfortable 
+translations of conceptual schema, but `i.as` entrenched we hear 
+these patterns as grammatically correct, not just as 
+conceptually well-formed.  Likewise, we hear errata like 
+`q.his lied` as `i.ungrammatical`/, not as conceptually incongruous.
+`p`
+
+`p.
+I contend, therefore, that many conceptually-motivated word-pairing 
+patterns become syntactically entrenched and thus engender a class 
+of transform-pairs where the crucial, surface-level tranformation 
+is syntactic, often in the form of translations between parts of speech, 
+or between morphological classes (singular/plural, object/location, etc.).  
+Consider locative constructions like 
+
+`sentenceList,
+`sentenceItem; \label{itm:grandma} Let's go to Grandma.
+`sentenceItem; \label{itm:lawyers} Let's go to the lawyers.
+`sentenceItem; \label{itm:press} Let's go to the press.
+`sentenceList`
+
+Here nouns like `i.Grandma`/, `i.the lawyers`/, and `the press` are 
+used at sites in the surrounding sentence-forms that call for a designation 
+of place %-- this compels us to read the nouns as describing a place, 
+even while they are not intrinsically spatial or geographical 
+(e.g., Grandma is associated with the place where she lives).  
+`p`
+
+`p.
+In (\ref{itm:press}) and perhaps (\ref{itm:lawyers}), this locative 
+figuring may be metaphorical: going `i.to the press` does not necessarily 
+mean going to the newspaper's offices.  Indeed, each of these 
+usages are to some degree conventionalized: going `i.to Grandma` 
+is subtler than going `i.to Grandmas house`/, because the former 
+construction implies that you are going to a `i.place` 
+(`q.Grandma` is proxy for her house, say), but also Grandma is actually 
+there, and that seeing her is the purpose of your visit.  In other words, 
+the specific `i.go to Grandma` formation carries a supply of 
+situational expectations.  There are analogous implications in 
+(\ref{itm:lawyers}) and (\ref{itm:press}) %-- going `i.to the press` 
+means trying to get some news story or information published.  
+But the underlying manipulation of concepts, which structures the 
+canonical situations implicated in (\ref{itm:grandma})-(\ref{itm:press}), 
+is organized around the locative grammatical form as binding noun-concepts to a 
+locative interpretation.  However metaphorical or imbued with additional 
+situational implications, a person-to-location or institution-to-location 
+mapping is the kernel conceptual operation around which the further 
+expectations are organized.  Accordingly, the locative case qua 
+grammatic phenomenon signals the operation of these situational 
+conventions, and the syntactic norms in turn are manifest via 
+word-pairings, such as `i.to Grandma`/.  
+`p`
+
+`p.
+In short, a transform-pair like `i.to Grandma` can be analyzed in 
+several registers; we can see it as the straightforward 
+syntactic rendering of a locative construction (via inter-word morphology, 
+insofar as English has no locative case-markers) or explore further 
+situational implications.  In these examples, though, there is an 
+obvious grammatic account of pairs' transformations, notwithstanding 
+that there are also more semantic and conceptual accounts.  
+Part-of-speech transforms (like `i.having lied`/) and 
+case transforms (like `i.to Grandma`/) are mandated by 
+syntactic norms and therefore can be absorbed into conventional 
+grammatic models, such as Dependency Grammar: the head/dependent 
+pairings in `i.having lied` and `i.to Grandma` are each 
+covered by specific relations within the theory's inventory 
+of possible inter-word connections.  So a subset of 
+transform-pairs overlaps with (or can be associated with) 
+corresponding Dependency Grammar pairings. 
+`p`
+
+`p.
+Another potential embedding of transform-pairs into 
+formal models can be motivated by Type Theory.  
+This analysis can proceed on several levels, but 
+in general terms we can assume that parts of speech 
+form a functional type system (as elucidated, say, in 
+Combinatory Categorial Grammar).  For instance, we can recognize 
+nouns and propositions (sentences or sentence-parts forming 
+logically complete clauses) as primitive types, and 
+treat other parts of speech as akin to `q.functions` between 
+other types.  For instance, a verb combines with a noun to 
+form a proposition, or complete idea: `i.go` acts on 
+`i.We` to yield the proposition `i.We go`/.  Schematically, 
+then, verbs are akin to functions that map nouns to propositions.  
+Similarly, adjectives map nouns to nouns, and 
+adverbs map verbs to other verbs (here I use `q.noun` or `q.verb` to 
+mean a linguistic unit which is functionally a noun, or verb; 
+in this sense a noun-phrase is a kind of noun %-- i.e., 
+a linguistic unit whose `i.type` is nominal).  
+ 
 `p`
 
 `p.
