@@ -296,7 +296,122 @@ and semantics, so I will pivot to some analyses which attend more
 to the semantic dimension.
 `p`
 
-`subsection.Semantic Transform-Pairs`
+`subsection.Semantic Analyses of Transform-Pairs`
+`p.
+In the simplest cases, a transform-pair represents a modifier 
+adding conceptual detail to a ground, like `i.black dogs` 
+from `i.dogs`/.  But the nature of this added detail 
+%-- and its evident relation to surface language %-- can be very varied.  
+Compare between examples like:
+
+`sentenceList,
+`sentenceItem; \label{itm:black} I saw my neighbor's two black dogs.
+`sentenceItem; \label{itm:rescued} I saw my neighbor's two rescued dogs.
+`sentenceItem; \label{itm:latest} I saw my neighbor's two latest dogs.
+`sentenceList`
+
+Whereas (\ref{itm:black}) presents a fairly straightforward conceptual 
+tranformation, the detailing in (\ref{itm:rescued}) is a lot subtler; 
+mentioning `i.rescued` dogs makes no reference to perceptual qualities, 
+but rather implies intricate situational background.  The term 
+`i.rescued dogs` strongly suggests that the dogs were adopted by their 
+current owner, probably after an animal-welfare organization 
+found them abandoned, or removed them from a prior abusive owner.  
+This kind of backstory is packaged up, as a kind of 
+situational prototype, in the conventionalized phrase 
+`i.rescued dogs`/, implying a level of specificity more 
+precise than the ajective `i.rescued` alone implies.  
+Correspondingly, the verb `i.to rescue` when applied to 
+dogs suggest more information than in more 
+generic contexts.
+`p`
+
+`p.
+The phrase `i.latest dogs` carries implications in its own 
+right; we assume the neighbor had owned other dogs before.  
+Of course `q.latest` implies some temporal order, but the 
+understood time-scale depends on context.  
+If we hear talk about a `i.vet`/s two latest dogs, we would presumably 
+interpret this in terms of patients the vet has seen over the course of 
+a day: 
+
+`sentenceList,
+`sentenceItem; \label{itm:vet} We're going after the vet's two latest dogs.
+`sentenceItem; \label{itm:organization} I'm concerned about the rescue organization's 
+two latest dogs.
+`sentenceList`
+ 
+Understanding the relevant time-frame depends on understading the relation 
+between the dogs and the possessive antcedent.  In (\ref{itm:latest}) 
+the neighbor (in a typical case) actually owns the dogs, so the 
+situational context grounding the modifier `i.latest` would be understood 
+against the normal time-scale for dog ownership (at least several years).  
+In (\ref{itm:vet}), the vet only `q.possesses` the dogs in the sense 
+of endeavoring to examine them, a process of minutes or hours.  
+In (\ref{itm:organization}), the implication of the `i.organization's` 
+possessive `visavis; rescued dogs is that the group endeavors 
+to rehabilate and find permanent homes for the rescuees.  So in each 
+case `i.latest` implies a succession of dogs, leading over time to 
+two most recent ones, but the implied time-frame for our conceptualizing 
+this sequence can be minutes-to-hours, or days-to-months, or years. 
+`p`
+
+`p.
+We should also observe that the implied time-frames and backstories in 
+(\ref{itm:rescued}-\ref{itm:organization}) are not directly signified via 
+morphosyntax or lexical resources alone.  The word `i.rescued` only 
+carries the `i.rescued dog` backstory when used in a context 
+involving the dogs' eventual owners; in some context the more 
+generic meaning of `i.rescue` could supercede:  
+
+`sentenceList,
+`sentenceItem; \label{itm:boatmen} Boatmen rescued dogs from the flooded streets.
+`sentenceItem; \label{itm:firemen} Firemen rescued dogs from the burning building.
+`sentenceList`
+
+Neither (\ref{itm:boatmen}) nor (\ref{itm:firemen}) imply that the dogs were abandoned, or 
+will have new owners, or be sent to a shelter, or that their rescuers are 
+members of an animal-welfare organization %-- in short, no element of 
+the conventionalized backstory usually invoked by `i.rescued dogs` is present.  
+Analogously, there is no lexical subdivision for `i.latest` which regulates 
+the variance in time-frames among (\ref{itm:latest}-\ref{itm:organization}).  
+It is only by inferring a likely situational background that 
+conversants will make time-scale assumptions based on one situation 
+involving dog ownership, another involving veterinary exams, and a 
+third involving animal-welfare rehabilitation.
+`p`
+
+`p.
+That is to say, the time-scale inference I have analyzed is essentially 
+`i.extralinguistic`/: there is no specific `i.linguistic` knowledge 
+(lexical or grammatical, or even pragmatic inferences in the sense of 
+deictic or anaphora resolution) which warrants the situational classification 
+of (\ref{itm:latest}-\ref{itm:organization}) into different time scales.  
+Instead, the inference is driven by (to some degree socially or culturally 
+specific) background-knowlege about phenomena like veterinary clinics 
+or animal rescue groups.  Whether or not the nuances in `i.rescued dogs` 
+are similarly extra-linguistic is an interesting question %-- we can 
+argue that the phrase is now entrenched as a `i.de facto` lexical 
+entrant in its own right, so the role of `i.rescued` is not only to 
+lend adjectival detail but to construct a recurring phrase with a 
+distinct meaning, like `i.red card` (in football) or `i.stolen base` 
+(in baseball).  Lexical entrenchment is, I would argue, an 
+intra-linguistic phenomenon, in the sense that understanding entrenched 
+phrases is akin to familiarity with specific word-senses, which is a 
+properly linguistic kind of knowledge.  But even in that case, entrenchment 
+is only possible because the phrase has a signifying precision more 
+rigorous than its purely linguistic composition would imply.  
+There are, in short, extralinguistic considerations governing `i.when` 
+phrases are candidates for entrenchment, and a language-user's 
+ability to learn the conventionalized meaning (which I believe 
+is an intra-linguistic cognitive development) depends on their 
+having the relevant (extra-linguistic) background knowledge. 
+`p`
+
+`p.
+
+`p`
+
 `p.
 
 `p`
