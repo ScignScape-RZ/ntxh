@@ -143,9 +143,160 @@ adverbs map verbs to other verbs (here I use `q.noun` or `q.verb` to
 mean a linguistic unit which is functionally a noun, or verb; 
 in this sense a noun-phrase is a kind of noun %-- i.e., 
 a linguistic unit whose `i.type` is nominal).  
- 
+This provides a type-theoretic architecture through 
+which transform-pairs can be analyzed.  For instance, 
+an adverb modifies a verb; so an adverb in a transform 
+pair must have a verb as a ground.  Moreover, the `q.product` 
+of that transform is also a verb, in the sence that the 
+abverb-verb pair, parsed as a phrase, can only be 
+situated in grammatic contexts where a verb is expected. 
 `p`
 
+`p.
+In effect, we can apply type-theoretic models to both 
+parts of a transform-pair and to the pair as a whole, 
+producing structural requirements on how words link up 
+into transform-pairs.  We can then see an entire sentence 
+as built up from a chain of such pairs, with the rules 
+of this construction expressed type-theoretically.  
+Given, say, `i.his having lied flagrantly` we can identify a 
+chain of pairs `i.flagrantly`/-`i.lied`/, 
+`i.having`/-`i.flagrantly`/, and `his`/-`i.having`/, where 
+the `q.outcome` of one transform becomes subject to a 
+subsequent transform.  So `i.flagrantly` modifies `i.lied` 
+by expression measure and emphasis, adding conceptual detail; 
+grammatically the outcome is still a verb.  Then `i.having`/, 
+as I argued earlier, applies a tranform that maps this 
+verb-outcome to a noun, which is then tranformed by 
+the possessive `i.his`/.  Each step in the chain is 
+governed by type-related requirements: the output of one 
+transform must be type-compatible with the modifier for 
+the next transform.  This induces a notion of `i.type-checking` 
+transform-chains, which is analogous to how type-checking 
+works in formal settings like computer programming languages, 
+Typed Lambda Calculus, and Dimensional Analysis. 
+`p`
+
+`p.
+Type-Theoretic Semantics holds out the hope that many 
+syntactic and semantic rules can `q.fall out` as 
+a direct consequence of type-checking requirements.  
+A correct sentence is one built up from a chain of 
+transforms where the outcome of one transform is type-compatible 
+with the modifier of the next one, with the eventual or 
+`q.root` transform, which completes the sentence, yielding a 
+proposition.  This expresses, in linguistic terms like 
+`q.outcome` and `q.modifier`/, the same type-checking 
+requirements as in Lambda Calculus, which would use 
+more mathematical vocabulary: the output of one function must 
+be type-compatible with the input parameter of the next 
+function, insofar as this output is to be substituted for a 
+lambda-abstracted symbol in the outer function's formula.  
+`p` 
+
+`p.
+This gloss actually understates the explanatory power of 
+type-theoretic models for linguistics, since I have 
+mentioned only very coarse-grained type classifications 
+(noun, proposition, verb, adjective, adverb); more 
+complex type-theoretic constructions come into play 
+when this framework is refined to consider plural/singular, 
+classes of nouns, and so forth, establishing a basis for 
+more sophisticated structures adapted to language from 
+formal type theory, like type-coersions and 
+dependent types (I will revisit these theories 
+in a later section).  Here, though, I will just point out 
+that Dependecy Grammar and Type-Theoretic Semantics can 
+often overlap in their analysis of word-pairs (inter-word 
+relations is not centralized in type-oriented methodology as much 
+as in Dependecy Grammar, but type concepts can certainly 
+be marshaled toward word-pair analysis).     
+`p`
+
+`p.
+Even though Dependency and Type-Theoretic analyses will often reinforce 
+one another, they can offer distinct perspectives on 
+how pairs aggregate to form complete phrases and sentences.  
+In the transform-pair `i.having lied`/, `i.lied` is clearly the 
+more significant word semantically.  This is reflected in 
+`i.having` being annotated (at least according to the Universal Dependency 
+framework) as auxiliary, and the dependent element of the pair, while 
+`i.lied` is the head.  Then `i.lied` is also connected to 
+`i.his`/, establishing a verb-subject relation.  So `i.lied` becomes 
+the nexus around which other, supporting sentence elements are 
+connected.  This is a typical pattern in Dependecy Grammar parses, where 
+the most semantically significant sentence elements also tend to be 
+the most densely connected (if we treat the parse-diagram as a 
+graph, these nodes tend to have the highest `q.degree`/, a measure of 
+nodes' importance to the degree as this is reflected in how many 
+other nodes connect to it).  Indeed, by counting word connections we 
+can get a rough estimation of semantic importance, distinguishing 
+`q.central` and `q.peripheral` elements.  These are not 
+standard terms, but they suggest a norm in Dependecy Grammar that the 
+structure of parse-graphs generally reflects semantic priority: 
+the central `q.spine` of a graph, so to speak, captures the 
+primary signifying intentions of the original sentence, while the 
+more peripheral areas capture finer details or syntactic auxiliaries 
+whose role is for grammatical propriety more than meaningful content.    
+`p`
+
+`p.
+Conversely, a type-theoretic analysis might incline us to quetion this
+sense of semantic core versus periphery: in the case of 
+`i.his having lied`/, the transform `i.having` supplies the outcome 
+which is content for the possessive `i.has`/.  If we see the sentence 
+as a cognitive unfolding, a series of mental adjustments toward an 
+ever-more-precise reading of speaker intent, then each step in the 
+tranformation contributes consequential details to the final 
+understanding.  Moreover, `i.lied` is only present in the transformation 
+signified by `i.his` insofar as it has in turn been transformed by 
+`i.having`/: each the modifier in a transform-pair has a degree of 
+temporal priority because `i.its` effects are directly preesent 
+in the context of the following transformation.  This motivates a 
+flavor of Dependency Grammar where the head/dependent ordering is 
+inverted: a seemingly auxiliary component (like the function-word 
+to a content-word) can be notated as the head because its 
+output serves as `q.input` to a subsequent transform.  In the analogy 
+to Lambda Calculus, `i.his having lied` would be graphed with 
+`i.having` being the head for `i.lied`/, and `i.his` the head for 
+`i.having`/, reflecting the relation of functions to their arguments.  
+In lisp-like code, this could be written functionally as 
+(his (having lied)), showing `i.having` as one function, and 
+`i.his` as a second one, the former's output being the latter's input.     
+`p`
+
+`p.
+Implicitly, then, Type-Theoretic Semantics and Dependency Grammar 
+can connote different perspectives on semantic inportance and 
+the unfolding of linguistic understanding.  I will explore 
+this distinction further below, with explicit juxtaposition of 
+parse graphs using the two methods.  I contend, however, that the 
+distinction reflects a manifest duality in linguistic meaning: 
+we can treat a linguistic artifact as an unfolding process or 
+as a static signification with more central and more minute 
+parts.  Both of these aspects coexist: on the one hand, we 
+understading sentences via an unfolding cognitive process; 
+on the other hand, this cognition includes forming a mental 
+review of the essential points of the sentence, a collation of 
+key ideas such as (for \ref{itm:having})
+`i.his`/, `i.lied`/, `i.damages`/, and `i.credibiliy`/.  
+Given this two-toned cognitive status %-- part dynamic process, 
+part static outline %-- it is perhaps understandable that 
+different methodologies for deconstructing a sentence into 
+word-pair aggregates would converge on different structural 
+norms for how the pairs are interrelated, internally and to one another.
+`p`
+
+`p.
+This analysis, which I will extend later, has considered transform-pairs 
+from a syntactic angle %-- in the sense that I have highlighted pairs 
+which obviously come to the fore via grammatic principles.  As I indicated, 
+I believe the notion of transform-pairs cuts across both syntax 
+and semantics, so I will pivot to some analyses which attend more 
+to the semantic dimension.
+`p`
+
+`subsection.Semantic Transform-Pairs`
 `p.
 
 `p`
