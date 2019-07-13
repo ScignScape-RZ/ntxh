@@ -255,4 +255,137 @@ $u. # sent_id = GUM_whow_mice-49
 /!
 <+>
 
+
+!/ Sentence
+$i: 10 
+$c: en_partut-ud-train.conllu
+$s:
+$x: 
+$u. # sent_id = en_partut-ud-1498
+# text = Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.
+1	Dengue	Dengue	PROPN	SP	_	2	nmod	_	_
+2	fever	fever	NOUN	S	Number=Sing	6	nsubj	_	_
+3	is	be	AUX	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	6	cop	_	_
+4	a	a	DET	RI	Definite=Ind|Number=Sing|PronType=Art	6	det	_	_
+5	leading	leading	NOUN	S	Number=Sing	6	nmod	_	_
+6	cause	cause	NOUN	S	Number=Sing	0	root	_	_
+7	of	of	ADP	E	_	8	case	_	_
+8	illness	illness	NOUN	S	Number=Sing	6	nmod	_	_
+9	and	and	CCONJ	CC	_	10	cc	_	_
+10	death	death	NOUN	S	Number=Sing	8	conj	_	_
+11	in	in	ADP	E	_	13	case	_	_
+12	the	the	DET	RD	Definite=Def|PronType=Art	13	det	_	_
+13	tropics	tropic	NOUN	S	Number=Plur	6	nmod	_	_
+14	and	and	CCONJ	CC	_	15	cc	_	_
+15	subtropics	subtropics	NOUN	S	Number=Sing	13	conj	_	SpaceAfter=No
+16	,	,	PUNCT	FF	_	6	punct	_	_
+17	with	with	ADP	E	_	23	case	_	_
+18	as	as	ADV	B	_	19	advmod	_	_
+19	many	many	ADJ	A	Degree=Pos	23	amod	_	_
+20	as	as	ADV	B	_	22	advmod	_	_
+21	100	100	NUM	N	NumType=Card	22	compound	_	_
+22	million	million	NUM	N	NumType=Card	19	obl	_	_
+23	people	people	NOUN	S	Number=Plur	6	obl	_	_
+24	infected	infect	VERB	V	Tense=Past|VerbForm=Part	23	acl	_	_
+25	each	each	DET	DI	Number=Sing|PronType=Ind	26	det	_	_
+26	year	year	NOUN	S	Number=Sing	24	obl	_	SpaceAfter=No
+27	.	.	PUNCT	FS	_	6	punct	_	_
+.
+/!
+<+>
+
+
+!/ Sentence
+$i: 11 
+$c: en_gum-ud-train.conllu
+$s:
+$x: 
+$u. # sent_id = GUM_voyage_merida-12
+# text = Many free concerts, performances and other events are held daily.
+# s_type=decl
+1	Many	Many	ADJ	JJ	Degree=Pos	3	amod	_	_
+2	free	free	ADJ	JJ	Degree=Pos	3	amod	_	_
+3	concerts	concert	NOUN	NNS	Number=Plur	10	nsubj:pass	_	SpaceAfter=No
+4	,	,	PUNCT	,	_	5	punct	_	_
+5	performances	performance	NOUN	NNS	Number=Plur	3	conj	_	_
+6	and	and	CCONJ	CC	_	8	cc	_	_
+7	other	other	ADJ	JJ	Degree=Pos	8	amod	_	_
+8	events	event	NOUN	NNS	Number=Plur	3	conj	_	_
+9	are	be	AUX	VBP	Mood=Ind|Tense=Pres|VerbForm=Fin	10	aux:pass	_	_
+10	held	hold	VERB	VBN	Tense=Past|VerbForm=Part	0	root	_	_
+11	daily	daily	ADV	RB	_	10	advmod	_	SpaceAfter=No
+12	.	.	PUNCT	.	_	10	punct	_	_
+.
+/!
+<+>
+
+
+!/ Sentence
+$i: 12
+$c: en_ewt-ud-train.conllu
+$s:
+$x: 
+$u. # sent_id = weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112
+# text = Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.
+1	Most	most	ADJ	JJS	Degree=Sup	9	nsubj	9:nsubj	_
+2	of	of	ADP	IN	_	4	case	4:case	_
+3	the	the	DET	DT	Definite=Def|PronType=Art	4	det	4:det	_
+4	girls	girl	NOUN	NNS	Number=Plur	1	nmod	1:nmod:of	_
+5	I	I	PRON	PRP	Case=Nom|Number=Sing|Person=1|PronType=Prs	7	nsubj	7:nsubj	_
+6	was	be	AUX	VBD	Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin	7	aux	7:aux	_
+7	meeting	meet	VERB	VBG	Tense=Pres|VerbForm=Part	4	acl:relcl	4:acl:relcl	_
+8	had	have	AUX	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	9	aux	9:aux	_
+9	grown	grow	VERB	VBN	Tense=Past|VerbForm=Part	0	root	0:root	_
+10	up	up	ADV	RB	_	9	advmod	9:advmod	_
+11	in	in	ADP	IN	_	13	case	13:case	_
+12	Mujahedeen	Mujahedeen	PROPN	NNP	Number=Sing	13	compound	13:compound	_
+13	schools	school	NOUN	NNS	Number=Plur	9	obl	9:obl:in	_
+14	in	in	ADP	IN	_	15	case	15:case	_
+15	Ashraf	Ashraf	PROPN	NNP	Number=Sing	13	nmod	13:nmod:in	SpaceAfter=No
+16	,	,	PUNCT	,	_	13	punct	13:punct	_
+17	where	where	ADV	WRB	PronType=Rel	19	advmod	19:advmod	_
+18	they	they	PRON	PRP	Case=Nom|Number=Plur|Person=3|PronType=Prs	19	nsubj	19:nsubj	_
+19	lived	live	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	13	acl:relcl	13:acl:relcl	_
+20	separated	separate	VERB	VBN	Tense=Past|VerbForm=Part	19	advcl	19:advcl	_
+21	from	from	ADP	IN	_	23	case	23:case	_
+22	their	they	PRON	PRP$	Number=Plur|Person=3|Poss=Yes|PronType=Prs	23	nmod:poss	23:nmod:poss	_
+23	parents	parent	NOUN	NNS	Number=Plur	20	obl	20:obl:from	SpaceAfter=No
+24	.	.	PUNCT	.	_	9	punct	9:punct	_
+.
+/!
+<+>
+
+
+!/ Sentence
+$i: 13
+$c: en_ewt-ud-train.conllu
+$s:
+$x: 
+$u. # sent_id = newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020
+# text = Most experts believe China intends to develop a small space station of its own over the next several years.
+1	Most	most	ADJ	JJS	Degree=Sup	2	amod	2:amod	_
+2	experts	expert	NOUN	NNS	Number=Plur	3	nsubj	3:nsubj	_
+3	believe	believe	VERB	VBP	Mood=Ind|Tense=Pres|VerbForm=Fin	0	root	0:root	_
+4	China	China	PROPN	NNP	Number=Sing	5	nsubj	5:nsubj|7:nsubj:xsubj	_
+5	intends	intend	VERB	VBZ	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	3	ccomp	3:ccomp	_
+6	to	to	PART	TO	_	7	mark	7:mark	_
+7	develop	develop	VERB	VB	VerbForm=Inf	5	xcomp	5:xcomp	_
+8	a	a	DET	DT	Definite=Ind|PronType=Art	11	det	11:det	_
+9	small	small	ADJ	JJ	Degree=Pos	11	amod	11:amod	_
+10	space	space	NOUN	NN	Number=Sing	11	compound	11:compound	_
+11	station	station	NOUN	NN	Number=Sing	7	obj	7:obj	_
+12	of	of	ADP	IN	_	14	case	14:case	_
+13	its	its	PRON	PRP$	Gender=Neut|Number=Sing|Person=3|Poss=Yes|PronType=Prs	14	nmod:poss	14:nmod:poss	_
+14	own	own	ADJ	JJ	Degree=Pos	11	nmod	11:nmod:of	_
+15	over	over	ADP	IN	_	19	case	19:case	_
+16	the	the	DET	DT	Definite=Def|PronType=Art	19	det	19:det	_
+17	next	next	ADJ	JJ	Degree=Pos	19	amod	19:amod	_
+18	several	several	ADJ	JJ	Degree=Pos	19	amod	19:amod	_
+19	years	year	NOUN	NNS	Number=Plur	7	obl	7:obl:over	SpaceAfter=No
+20	.	.	PUNCT	.	_	3	punct	3:punct	_
+.
+/!
+<+>
+
+
 /&
