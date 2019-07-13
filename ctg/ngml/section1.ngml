@@ -618,7 +618,36 @@ processing).
 `p`
 
 `p.
+There are several cognitive operations requisite for grasping 
+sentence-meanings as a logical gestalt: figuring individuals 
+or multiplicities as conceptual fosi (verb subjects or objects); 
+establishing relationships between individuals and multiplicities 
+or amond multiplicities (member/part of, larger/smaller, 
+overlap/disjoint); predicating properties to individuals 
+or multiplicities; quantification; logical conjunction or disjunction, 
+between predicates (also negation).  In some cases we can find 
+these operations fairly directly encoded in explicit language form 
+%-- sentences which are precise in figuring multiplicities numerically, 
+or through unambiguous use of determiners like `i.all` and `i.every`/; 
+which are structured to avoid scope ambiuities; which use transparent 
+semantic resources to describe verb subjects and objects; and 
+so forth.  In the most recent Universal Dependencies Shared Task corpus 
+we can find examples like 
 
+`sentenceList,
+`sentenceItem; \label{itm:n01051007} It is the most common tumour found in babies, occurring in one of every 35,000 births.\udref{en_pud}{n01051007}
+`sentenceItem; \label{itm:w03002048} In the early 2000s, there were five doctors per 100,000 inhabitants.
+\udref{en_pud}{w03002048}
+`sentenceItem; \label{itm:TalibanKarzai} Many Taliban living in Afghanistan voted for President Karzai.
+\udref{en_ewt-ud-train}{w03002048}
+`sentenceItem; \label{itm:Tanglewood} We have stayed at Tanglewood for many years now.
+\udref{en_ewt-ud-dev}{reviews-210019-0001}
+`sentenceItem; \label{itm:mousers} While many mousers are great pets as well, not all are.
+\udref{en_gum-ud-test}{GUM_whow_mice-49}
+`sentenceList`
+
+
+ 
 `p`
 
 `p.
