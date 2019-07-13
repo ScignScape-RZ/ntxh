@@ -435,6 +435,197 @@ interoperate in many different ways.
 `p`
 
 `p.
+This diversity should call into question the ability of conventional 
+syntactic and semantic analysis to elucidate sentence-meanings with 
+any precision or granularity.  Lexical and morphosyntactic 
+observations may certainly reflect details which `i.contribute` to 
+sentence-meanings, but the overall understading of each sentence in 
+context depends on holistic, interpretive acts by competent 
+language users in light of extra-linguistic, socially mediated 
+background knowledge and situational understanding.  Contextuality 
+applies here not only in the pragmatic sense that pronoun resolution, 
+say, depends on discursive context (who is `i.her` in `i.her dogs`/); 
+more broadly, transcending even pragmatics, context describes 
+presumptive familiarity with conceptual structures like veterinary 
+clinics, animal shelters, and any other real-world domain which 
+provides an overall system wherein particular lexical significations 
+can be standardized.  Without the requisite conceptual background it 
+is hard to analyze how speakers can make sense even of 
+well-established variations in word-sense, like `i.treat` as in 
+a veterinarian treating a dog, a doctor treating a wound, a carpenter 
+treating a piece of wood, or how an actor treats a part.  
+These senses have lexical specificity only in the domain-specific 
+contexts of medicine, carpentry, theater, and so forth.  
+`p`
+
+`p.
+The problem of holistic cognitive interpretation (as requisite for 
+sentence-meanings) can be seen even more baldly in examples where 
+semantic readings bifurcate in ways wholly dependent on 
+extra-linguitic conceptualization. Consider for instance: 
+
+`sentenceList,
+`sentenceItem; \label{itm:boroughs} All New Yorkers live in one of five boroughs.
+`sentenceItem; \label{itm:commute} All New Yorkers complain about how long it 
+takes to commute to New York City.
+`sentenceList`
+
+In (\ref{itm:boroughs}), `i.New Yorkers` refers specifically to everyone who lives 
+in the City of New York, since the five boroughs collectively span the 
+whole of city.  In (\ref{itm:commute}), by contrast, we should understand 
+`i.New Yorkers` as referring to residents of the metropolitan area `i.outside` 
+the city itself (who commute `i.to` the city); and moreover `i.All` should 
+be read less then literally: we do not here the speaker in (\ref{itm:commute}) 
+committing to the proposition that `i.every single` New Yorker complains.  
+So both `i.All` and `i.New Yorkers` have noticeably different meanings in the 
+two sentences.  However, I cannot find any purely linguistic mechanism 
+(lexical, semantic, syntactic, morphological) which would account for 
+these difference as linguistic signifieds `i.per se`/: the actual differences 
+depend on conversants knowing some details about New York geography, and 
+also general cultural background.  It does not make too much sense to 
+commute to a place where you already live, so our conventional picture of 
+the word `i.commute` constrains our interpretation of (\ref{itm:commute}) %-- 
+but this depends on `i.commute` having a specific meaning, of traveling 
+in to a city, usually from a suburban home, on a regular basis; a meaning 
+in turn indebted to the norms of the modern urban lifestyle (it would be 
+hard derive an analogous word-sense in the language spoken by a nomadic 
+tribe, or a pre-industrial agrarian community).  Likewise, 
+reading `i.All` in (\ref{itm:boroughs}) as `i.literally` `q.all` 
+depends on knowing that the five boroughs are in fact the whole of 
+the city's territory.
+`p`
+
+`p.
+Given that in everyday speech quantifiers like `i.all` or `i.every` 
+are often only approximate %-- and that designations like 
+`i.New Yorker` are often used imprecisely, with not-identical 
+alternative meanings intended on a case-by-case basis %-- 
+these kind of examples point to signifying ambiguities that 
+can easily arise as a consequence.  Often extra-linguistic 
+considerations resolve the ambiguity by rejecting one or another 
+(otherwise linguistically plausible) reading as non-sensical.  
+Consider: 
+
+`sentenceList,
+`sentenceItem; \label{itm:beat} The Leafs failed to beat the Habs for the first time this year.
+`sentenceItem; \label{itm:consecutive} The Leafs failed to win two consecutive games for the 
+first time this year.
+`sentenceItem; \label{itm:goal} The Leafs failed to score a goal for the 
+first time this year.
+`sentenceList`
+  
+Sentence (\ref{itm:beat}) has two competing readings: either the Toronto Maple Leafs 
+won `i.all` or `i.none` of their previous games, in the relevant year, against the 
+Montreal Canadiens.  The differense is whether `i.for the first time this year` 
+attaches to `i.beat` or to `i.fail`/.  In (\ref{itm:consecutive}), 
+on the other hand, the only sensible interpretation is that the Leafs had 
+not yet won two games: while it is logically accurate to describe a 
+team on a long winning streak as repeatedly winning two consecutive games, it would 
+be very unexpected for (\ref{itm:consecutive}) to be used in a case where the Leafs 
+lost their first game of the season, after a three-plus-game winning streak.  
+And in (\ref{itm:goal}) any hockey fan would understand that the Leafs, for the first 
+time, failed to score a goal; even though there is no linguistic rule 
+foreclosing the reading such that the Leafs have not scored a goal at all 
+%-- i.e., that for yet another game they failed to score a goal.    
+`p`
+
+`p.
+These variations %-- the degree to which superficial ambiguity is actually 
+perceived by competent language-users as presenting competing plausible 
+meanings %-- depend on background factors; the contingencies of 
+hockey fix how potential ambiguities resolve out because one or another 
+alternative is extralinguistically incoherent.  But these cases point to 
+how linguistic criteria alone, no matter how broadly understood, 
+cannot necessarily predict in what sense linguistic structurations 
+have empirically plausible meanings %-- or whether they have 
+sensible meanings at all.
+`p`
+
+`p.
+Notice however that the examples have alternate versions which are less 
+subtle or ambiguous, which shows that the complications are not 
+localized in the communicated ideas themselves, but in their 
+typical linguistic encoding: 
+
+`sentenceList,
+`sentenceItem; \label{itm:allresidents} All residents of the city of New York live in one of five boroughs.
+`sentenceItem; \label{itm:manyresidents} Many residents of the New York metropolitan area 
+complain about how long it takes to commute to New York City.
+`sentenceItem; \label{itm:leafshabs} For the first time this year, the Leafs failed to beat 
+the Habs.
+`sentenceList`
+
+These versions are more logically transparent, in that their propositional 
+content is more directly modeled by the structure of the sentences. 
+Indeed, hearers unfamiliar with New York or with hockey might find these 
+versions easier to understand; more context-neutral and journalistic.  
+But perhaps for this reason the `q.journalistic` versions actually 
+sound stilted or non-idiomatic for everyday discource.  
+`p`
+
+`p.
+In short, even if sentences have a basically transparent 
+logical content, `i.how` sentences holistically signify this 
+content does not always emerge straightforwardly from semantic 
+or syntactic structures on their own.  I think this weakens the 
+case for semantic paradigms which concentrate on logically-structured 
+content which appears to be signified through sentences 
+%-- even if we grant that this propositional ground of meaning 
+is real, it does not follow that propositional contents are 
+designated by purely linguistic means, rather than by 
+a cohort of cognitive processes many of which are extra-linguistic.  
+This is the basis of my proposing `q.logicomorphic` qualities 
+as one axis for evaluating sentences, which I will now discuss further.
+`p`
+
+`subjection.Logical Structure versus Sentence Structure`
+`p.
+Let us grant in general that particular sentences can be 
+mapped to distinct, relatively transparent propositional 
+contents.  In some cases sentences expresses propositional 
+attitudes to such content (requests, commands, questioning) 
+rather than unadorned locutionary assertions.  To 
+properly respond to speech-acts, however (even ones with 
+illocutionary force) conversants need to derive the 
+content which is logically conjured via the discource, 
+either as the speaker's primary intent or as a condition 
+for that intent.  In effect, a proposition like `i.the window 
+is closed` furnishes logical content to accertions like 
+`i.The window is closed now` but also statements of 
+belief (`i.I think the window is closed`/) or 
+requests or opinions (`i.The window should be closed`/; 
+`i.Pleace close the window`/). 
+`p`
+
+`p.
+Philosophical treatments of language often imply that such 
+propositional contents are the `i.essential` meanings within 
+language; that analyzing semantic forms via logical 
+structure is the core of a rigorous theory of semantics.  
+It is certainly true that many elements of language 
+can be translated, or deemed as conventionalized encodings 
+for, structures in predicate logic %-- invocations of 
+multiplicity and quantification; logical connectives between 
+propositions; negations, modalities, and possibilia.  
+This provides an analytic matrix wherein `i.some` 
+sentences' structures may be analyzed.  I will argue, 
+however, that in typical cases logical forms are 
+invoked only indirectly %-- which calls into quection 
+the applicability of logical analysis as explanatory 
+vehicles for `i.linguistic` analysis in itself 
+(as opposed to more general cognitive/extralinguistic 
+processing). 
+`p`
+
+`p.
+
+`p`
+
+`p.
+
+`p`
+
+`p.
 
 `p`
 
