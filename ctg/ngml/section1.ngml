@@ -632,30 +632,76 @@ or through unambiguous use of determiners like `i.all` and `i.every`/;
 which are structured to avoid scope ambiuities; which use transparent 
 semantic resources to describe verb subjects and objects; and 
 so forth.  In the most recent Universal Dependencies Shared Task corpus 
-we can find examples like 
+we can find examples like:  
 
 `sentenceList,
-`sentenceItem; \label{itm:n01051007} It is the most common tumour found in babies, occurring in one of every 35,000 births.\udref{en_pud}{n01051007}
-`sentenceItem; \label{itm:w03002048} In the early 2000s, there were five doctors per 100,000 inhabitants.
-\udref{en_pud}{w03002048}
-`sentenceItem; \label{itm:Dengue} Dengue fever is a leading cause of illness and death in the tropics and subtropics , with as many as 100 million people infected each year.
+`sentenceItem; \label{itm:tumour} It is the most common tumour found in babies, occurring in one of every 35,000 births.\udref{en_pud}{n01051007}
+`sentenceItem; \label{itm:Dengue} Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.
 \udref{en_partut-ud-train}{en_partut-ud-1498}
 `sentenceItem; \label{itm:TalibanKarzai} Many Taliban living in Afghanistan voted for President Karzai.
 \udref{en_ewt-ud-train}{w03002048}
-`sentenceItem; \label{itm:Tanglewood} We have stayed at Tanglewood for many years now.
-\udref{en_ewt-ud-dev}{reviews-210019-0001}
 `sentenceItem; \label{itm:Ashraf} Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.
 \udref{en_ewt-ud-train}{weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112}
 `sentenceItem; \label{itm:ChinaSpace} Most experts believe China intends to develop a small space station of its own over the next several years. 
 \udref{en_ewt-ud-train}{newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020}
-
+`sentenceItem; \label{itm:tastings} Check out their wine tastings every Friday night! 
+\udref{en_ewt-ud-train}{reviews-322225-0005}
+`sentenceItem; \label{itm:tag} For each start tag , there is a corresponding end tag.
+\udref{en_lines-ud-train}{166}
+`sentenceItem; \label{itm:Warhol} Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.
+\udref{en_gum-ud-train}{GUM_news_warhol-35}
 `sentenceList`
 
-
- 
+These sentences have straightforward logical structure, in terms of 
+how they establish topical foci (`i.one of every 35,000 births`/, 
+`i.as many as 100 million people`/, 
+`i.Many Taliban`, `i.every Friday night`/, `i.For each start tag`/), 
+and how predicates or references are bound together to create more 
+precise significations (`i.the tropics and subtropics`/, 
+`i.in Mujahedeen schools in Ashraf`/, `i.a corresponding end tag`/).
+Properties ascribed to subject foci are neatly drawn, both in 
+conveying the property intended and its bearer, accoriding to 
+the sentence's terms: `i.the most common tumour found in babies`/, 
+`i.a leading cause of illness and death`/, 
+`i.China intends to develop a small space station`/, 
+`i.holds Polaroids of well-known celebrities`/.  With 
+aggregate foci and/or quantification, there is an unambiguous 
+framing of predication and quantifier scope %-- Each collection 
+has its set of Polaroids; the set of Karzai voters, Dengue infections, 
+birth tumours, etc., are crisply figured.
 `p`
 
 `p.
+For many philosophers of language, identiying similar 
+logical structuration is an intrinsic aspect of 
+coming to terms with human language in general.  This paradigm 
+also reinforces the goal of `AI; Natural Language Processing, 
+because computers can certainly engage in the kind of 
+symbolic-logical reasoning outlining signified meanings in cases 
+where language reciprocates propositional morphology very clearly.  
+The problem is that language artifacts very often cloak their 
+logical core, such that examples like (\ref{itm:tumour}-\ref{itm:Warhol}) 
+are not representarive of language as a whole.  Logical patterns 
+may certainly be present, but they are not necessarily 
+structurally reproduced in surface-level formations; rather a 
+sentences' propositional content may depend on a subtle 
+interpretive trajectory.  I will present examples throughout this 
+paper, but a few further corpus items are reasonable 
+case-studies: 
+
+
+`sentenceList,
+`sentenceItem; \label{itm:ants} A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.
+\udref{en_lines-ud-train}{2157}
+`sentenceItem; \label{itm:current-waiting-period} The current waiting period is eight weeks.
+\udref{en_pud}{n01050009}
+`sentenceItem; \label{itm:immersed} I think that's why they immersed themselves in pattern and colour.
+\udref{en_pud}{n01087018}
+`sentenceItem; \label{itm:princess} With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.
+\udref{en_pud}{w01119076}
+
+
+`sentenceList`
 
 `p`
 
