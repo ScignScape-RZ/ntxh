@@ -68,7 +68,202 @@ inputs of one type and produce outcomes of a second type
 reprecent a third type, which can be notated something like 
 `TyOneToTyTwo;.  Assuming all lexemes are assigned a Part of 
 Speech drawn from such a type system, the definition of 
-functional types directly yields a precedence order:   
+functional types directly yields a precedence order: 
+instances of functional types are functionally dependent 
+on their inputs, which are therefore precedent to them.  
+On this basis, any well-typed functional expression has a 
+unique precedence ordering on its terminal elements 
+(i.e., its `q.leaves` when the expression is viewed as a 
+tree, or its nodes when viewed as a graph), which 
+can be uncovered via a straightforward algorithm 
+(one implementation is part of this paper's data set; 
+see the `q.parse\_sxpr` method in file xxx.cpp).
+`p`
+
+`p.
+In practice, many functional parts of speech 
+can be formally modeled with one `q.argument`/; 
+they have a single input and output type.  
+These cases conveniently lend themselves 
+to cognitive transforms defined through word 
+pairs %-- an adjective modifies a noun to another 
+noun, an adverb maps a verb to a verb, an auxiliary 
+like `i.that` or `i.having` can map verbs or propositions 
+to nouns, and so forth.  The only main complication 
+to this picture is that verbs, which typically have subjects 
+as well as objects, can take two or three `q.inputs` 
+instead of just one.  Instead of a transform `i.pair` we 
+can then consider a three- or four-part transform structure 
+(verb, subject, direct object, indirect object).  
+We can still assign a precedence ordering to verb-headed phrases, 
+however, perhaps by stipulating that the subject takes 
+presedence before the direct object, and the direct object 
+before the indirect.  This ordering seems cognitively 
+motivated: our construal of the significance of a 
+direct object appears to intellectually depend on the verb's 
+subject; likewise the indirect object depends on the direct 
+object to the degree that it is rationally consequential.    
+`p`
+
+`p.
+A secondary complication involves copulae like `i.and`/, which 
+can connect more than two words or clauses.  Here, though, a 
+natural ordering seems to derive from linear position in the 
+sentence: given `i.x, y, and z` we can treat `i.x` as 
+precedent to `i.y`/, and `i.y` to `i.z`/, respectively.
+`p`
+
+`p.
+In total, sentences as a whole can thus be seen as structurally 
+akin to nested expressions in lambda calculii 
+(and notated via `q.S-Expressions`/, like code in the 
+Lisp programming language).  S-Expressions are occasionally 
+recommended as representations for some level of 
+linguistic analysis (cf. `cite<SivaReddy>;, `cite<KiyoshiSudo>;, 
+`cite<ChoeCharniak>;), and this form by itself adds little 
+extra data, it does offer a succinct way to capture the 
+functional sequencing attributed to a sentence during analysis.  
+Given, say, 
+
+`sentenceList,
+`sentenceExample; The city's ambiance is colonial and the climate is tropical.
+en_gum-ud-train.conllu GUM_voyage_merida-20
+`sentenceList`
+
+the gloss `i.(and (is ((The ('s city)) ambiance) colonial) (is (the climate) tropical))`
+summarizes analytic commitments with regard to the root structure of the sentence 
+(in my treatment the copula is the overall root word) and to precedence between words 
+(which words are seen as modifiers and which are their ground, for instance).  
+So even without extra annotations (without, say, the kind of tagging data included 
+by treebanks using S-Expression serializations), rewriting sentences as 
+nested expressions captures primitive but significant syntactic details.     
+`p`
+
+`p.
+Nested-expression models also give rise directly to two other representations: 
+a precedence ordering among lexemes automatically follows by taking 
+function inputs as precedent to function (words) themselves`footnote.But 
+note that using `q.function-words` as terminology here generalizes 
+this term beyond its conventional meaning in grammar.`/; 
+moreover, S-Expression formats can be rewritten as sets of 
+word-pairs, borrowing the representational paradigms (if not 
+identical structures) of Dependency Graphs.  This allows Dependency Graphs 
+and S-Expressions to be juxtaposed, which I will discuss in the remainder of this section.  
+`p`
+
+`subsection.Double de Bruijn Indices`
+`p.
+Assume then that all non-trivial sentences are nested expressions, and that 
+all lexemes other than nouns are notionally `i.functions`/, which take typed 
+`q.inputs` and produce typed `q.outcomes`/.  Expression `q.nesting` means 
+that function inputs are often outcomes from other functions (which establishes a 
+precedence order among functions).  Since there is an obvious notion of 
+`q.parent` %-- instances of functional types are parents of the words or 
+phrase-heads which are their inputs %-- nestable expressions are formally 
+trees.  Via tree-to-graph embedding, they can also be treated as graphs, 
+with edges linking parents to children; since parse-graphs are canonical 
+in some grammar theories (like Link and Dependency grammar), it is 
+useful to consider the graph-style representation as 
+the intrinsic structure of linguistic glosses based on S-Expressions.  
+That is, we want to define a Category of labeled graphs 
+each of whose objects is isomorphic to an S-Expression (using this 
+terminology in the sense of mathematical Category Theory); equivalently, a 
+bijective encoding of S-Expressions within labeled graphs given 
+a suitable class of edge-labels.
+`p`
+
+`p.
+Indeed, labels comprised of 
+two numbers suffice, generalizing the lambda-calculus 
+`q.de Bruijn Indices`/.  The de Bruijn notation is an alternative 
+presentation of lambda terms using numeric indices in lieu of 
+lambda-abstracted symbol.  The `i.double` indices 
+accommodate the fact that, in the general case, the 
+functional component of an expression may be itself a nested 
+expression, meaning that `q.evaluation` has to proceed in several 
+stages: a function (potentially with one or more inputs) is 
+evaluated, yielding another function, which is then applied 
+to inputs, perhaps again yielding a function applied to still 
+more inputs, and so forth.  I use the term `q.evaluate` which 
+is proper to the computer-science context, but in linguistics 
+we can take this as a suggestive metaphor.  More correctly, 
+we can say that a funtion/input structure represents a 
+cognitive transform which produces a new function 
+(i.e., a phrace with a function-like part of speech), that is 
+then the modifier to a new transform, and so forth.  
+In general, the result of a transform can either be 
+the `i.ground` of a subsequent transform, which is akin to 
+passing a function-result to another function; or 
+it can be the `i.modifier` of a subsequent transform, which is akin to 
+evaluating a nested expression to produce a new function, then 
+applied to other inputs in turn.
+`p`
+
+`p.
+For a concrete example, consider 
+
+`sentenceList,
+`sentenceExample; The most popular lodging is actually camping on the beaches.
+en_gum-ud-train.conllu GUM_voyage_socotra-16
+`sentenceList`
+
+with gloss `i.((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))`/.  
+Here the adverb `i.actually` is taken as a modifier to `i.is`/, so we imagine that 
+interpreting the sentence involves first refining `i.is` into `i.is actually`/, 
+yielding a new verb (or `q.verb-idea`/) that then participates in verb-subject-object 
+pattern.  Hence, the parse opens with the evaluation `i.(actually is)` in the 
+head-position of the sentences top-level expression.  Similarly, I read `i.on the beaches` as 
+functionally a kind of adverb, like `i.camping outside`/.  
+In the generic pattern, a verb can be paired with a designation of location 
+to construct the idea of the verb happening at such location; the designation-of-location 
+is then a modifier to the verb's ground.  When this designation is a locative 
+construction, the whole expression becomes a modifier, while it also has its own 
+internal structure.  In `i.on the beaches`/, `i.on` serves as a modifier which 
+maps or reinterprets `i.the beaches` to a designation of place.  So here is the 
+unfolding of the phrase: in `i.the beaches` the determinant (`i.the`/) is a modifier 
+to the ground `i.beaches`/, signifying that `i.beaches` are to be circumscribed 
+as an aggregate focus.  Then `i.on` modifies the outcome of that first transform, 
+re-inscribing the focus as a place-designation.  Then `i.that` transform's output 
+becomes a modifier for `i.camping`/, wherein the locative construction becomes 
+a de-facto adverb, adding detail to the verb `i.camping` (camping on the 
+beach as a kind of camping, in effect).`footnote.
+If it seems better to read camping as a `i.noun` %-- the act or phenomenon 
+of camping (qua verb) %-- then we could treat the locative 
+as an `i.adjective`/, with the stipulation that the operation 
+converting verbs to nouns (from `i.X` to the phenomenon, act, or 
+state of `i.X`/-ing) 
+propagates to any modifiers on the verb: modifying constructions that 
+refine `i.X` as verb are implicitly mapped to be adjectives likewise 
+modifying `i.X` in the nominal sense of `q.the phenomenon of `i.X`/-ing.  
+`footnote`    
+`p`
+
+`p.
+Notice in this review that `i.the` as modifier in `i.the beaches` yield 
+a pair whose outcome is the `i.ground` for `i.on`/.  If we take the 
+modifier as representative for a modifer-ground pair, `i.the` is the 
+`i.modifier` in its own transform pair but then the `i.ground` in the 
+subsequent pair; the pattern is modifier-then-ground.  However, 
+`i.on` is the modifer `visavis; `i.the` and then `i.also` modifier 
+`visavis; `i.camping`/; the pattern is modifier-then-modifier.  
+This latter case is the scenario where a lexeme will be a modifier 
+on two or more different `q.levels`/, giving rise to the `q.doubling` 
+of de Bruijn indices.  The first index, that is, represents 
+the `q.level` tieing a modifier to a ground, while the second 
+index is the `i.normal` notation of lambda-position.  
+In `i.camping on the beaches`/, the indices for the pair 
+`i.on`/`i.the` would be `q.1,1` (meaning `i.the` is the first 
+argument to `i.on` on the first transform level); the 
+indices for `i.on`/`i.camping` would be `q.2,1` (`i.camping` 
+is the first argument to `i.on` on the `i.second` transform level).  
+`p`
+
+`p.
+By combining an index for `q.transform levels` %-- capturing cases 
+where a modifier produces an outcome which is a modifier again, not a
+ground %-- with an index for lambda position (e.g. the direct object 
+has index 2 relative to the verb, and the indirect object has 
+index 3), we can transform any expression-tree into a labeled graph. 
 `p`
 
 
