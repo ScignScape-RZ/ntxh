@@ -126,8 +126,8 @@ functional sequencing attributed to a sentence during analysis.
 Given, say, 
 
 `sentenceList,
-`sentenceExample; The city's ambiance is colonial and the climate is tropical.
-en_gum-ud-train.conllu GUM_voyage_merida-20
+`sentenceExample; \label{itm:ambiance} The city's ambiance is colonial and the climate is tropical.
+\udref{en_gum-ud-train}{GUM_voyage_merida-20}
 `sentenceList`
 
 the gloss `i.(and (is ((The ('s city)) ambiance) colonial) (is (the climate) tropical))`
@@ -203,8 +203,8 @@ applied to other inputs in turn.
 For a concrete example, consider 
 
 `sentenceList,
-`sentenceExample; The most popular lodging is actually camping on the beaches.
-en_gum-ud-train.conllu GUM_voyage_socotra-16
+`sentenceExample; \label{actually} The most popular lodging is actually camping on the beaches.
+\udref{en_gum-ud-train}{GUM_voyage_socotra-16}
 `sentenceList`
 
 with gloss `i.((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))`/.  
@@ -258,12 +258,26 @@ indices for `i.on`/`i.camping` would be `q.2,1` (`i.camping`
 is the first argument to `i.on` on the `i.second` transform level).  
 `p`
 
+`input<figactuallydbl>;
 `p.
 By combining an index for `q.transform levels` %-- capturing cases 
 where a modifier produces an outcome which is a modifier again, not a
 ground %-- with an index for lambda position (e.g. the direct object 
 has index 2 relative to the verb, and the indirect object has 
 index 3), we can transform any expression-tree into a labeled graph. 
+Parse graphs can then be annotated with these double-indices 
+via the same presentations employed for Link or Dependency Grammar 
+labels.  Sentence (\ref{actually}) could be visualized as in 
+Figure~\ref{fig:actuallydbl}. 
+Alternatively, the double-indices can be juxtaposed 
+with conventional Dependency labels %-- one option is to 
+graph the indices below the sentence, and relation 
+labels above it.  The examples (\ref{ambience}) and (\ref{actually}) 
+are annotated in the Universal Dependency corpus, so the 
+two annotation styles can be justaposed (figures \ref{fig:ambience} 
+and \ref{fig:actually}).
+`input<figactually>;
+`input<figambience>; 
 `p`
 
 
