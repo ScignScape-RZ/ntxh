@@ -104,7 +104,7 @@ akin to nested expressions in lambda calculii
 Lisp programming language).  S-Expressions are occasionally 
 recommended as representations for some level of 
 linguistic analysis (cf. \cite{SivaReddy}, \cite{KiyoshiSudo}, 
-\cite{ChoeCharniak}), and this form by itself adds little 
+\cite{ChoeCharniak}), and if this form by itself may add little 
 extra data, it does offer a succinct way to capture the 
 functional sequencing attributed to a sentence during analysis.  
 Given, say, 
@@ -177,7 +177,7 @@ applied to other inputs in turn.
 \begin{sentenceList}\sentenceItem{} \label{actually} The most popular lodging is actually camping on the beaches.
 \udref{en_gum-ud-train}{GUM_voyage_socotra-16}
 \end{sentenceList}
-with gloss \i{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
+with gloss \gl{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
 Here the adverb \i{actually} is taken as a modifier to \i{is}, so we imagine that 
 interpreting the sentence involves first refining \i{is} into \i{is actually}, 
 yielding a new verb (or \q{verb-idea}) that then participates in verb-subject-object 
@@ -248,11 +248,36 @@ and \ref{fig:actually}).
 parts of speech can have \q{type signatures}
 notionally similar to the signatures of function types in programming languages: a verb
 needing a direct object, for example, \q{transforms} two nouns (Subject and Object)
-to a proposition, which could be notatated with something like \NNtoS{}.  
+to a proposition, which could be notatated with something like \NNtoProp{}.  
 The notation is consistent so long as each constituent of a verb 
 phrase has a fixed index number: the subject at position one, for instance, 
 direct object at position two, and indirect object at position three.  
-Type \q{signatures} like \NNtoS{} may 
+Transforms (potentially with two or more arguments) then combine lexemes 
+with particular signatures with one or more words or phrases. 
+Type analysis recognizes criteria on these combinations, insofar 
+as the phrases or lexemes at a given index have a type consistent 
+with (potentially a subtype of) the corresponding position in the 
+head-word's signature.  Ideally, this representation can 
+explain \i{ungrammatical} constructions in \i{failure} for 
+these types to align properly.  If the combination \q{type-checks}, 
+then we can assign the phrase as a whole the type indicated 
+in the signature's output type \mdash{} \Prop{} in \NNtoProp{}, say; 
+in this case the signature points out how \Prop{} derives from the 
+phrase with two \N{}s as its components (along with the verb), 
+a derivation we could in turn notate like \NNtoPropYieldsProp{} 
+A resulting phrase can then be included, like a nested expression, 
+in other phrases; for instance a \Prop{} joined to 
+\i{that} so as to create a noun-phrase (recall my 
+analysis of \i{question whether} last section); notationally   
+\PropToNYieldsN{}.\footnote{Numeric indices take the place of left and right adjecency 
+\mdash{} \q{looking forward} or backward \mdash{} in Combinatory Categorial 
+Grammar; the type-theoretic perspective abstracts from word order.  
+The theory of result types \q{falling out} from a 
+type-checked phrase structure, however, carries over to this 
+more abstract analysis.
+}
+}
+\p{Type \q{signatures} like \NNtoProp{} may 
 seem little more than notational variants of conventional linguistic
 wisdom, such as sentences' requiring a noun and a verb (\SeqNPplVP{}).
 Even at this level, however, type-theoretic intuitions
@@ -334,11 +359,49 @@ analyzed without leaving the Link or Dependency Grammar paradigm.
 }
 \spsubsectiontwoline{Three tiers of linguistic type theory}
 %\p{%}
-\p{By three \q{tiers} of linguistic organization, I am thinking of
+\p{When explaining grammaticality as type-checking \mdash{} the 
+concordance between function-like signatures and 
+word or phrase \q{arguments} \mdash{} types are 
+essentially structural artifacts; their 
+significance lies in the compositional patterns 
+guiding phrases to merge into larger phrases in a 
+well-ordered way \mdash{} specifically, that the \q{outermost} 
+expression, canonically the whole sentence, is a 
+type-theoretically a proposition.  I proposed earlier that 
+sentence-understanding be read as an accretion of detail 
+culminating in a complete idea; type-checking then imposes 
+regulatory guidelines on this accretion, with each 
+constituent phrase being an intermediate stage.  Assigning 
+types to phrases presents a formal means of checking that 
+the accretion stays on track to an epistemological 
+telos \mdash{} that the accumulated detail will eventually 
+cohere into a propositional whole, a trajectory formally 
+captured by the progressive folding-inward of phrase types 
+to a propositional root.
+}
+\p{Types themselves are therefore partly structural fiats 
+\mdash{} they are marks on intermediate processing stages 
+embodying the paradigm that type-checking \i{captures} 
+the orderliness of how successive cognitive transforms 
+accrue detail toward a propositionally free-standing end-point.  
+At the same time, types also have semantic interpretations; 
+the \N{}/\Prop{} distinction, for example, is motivated by 
+the cognitive difference between nominals and states of affairs 
+as units of reason.  Type-theoretic semantics allows the 
+structural pardigm of type-checked resolutions, the 
+tree \q{folding inward} onto its root, to be merged with 
+a more semantic or conceptual analysis of types qua 
+categories or classifications of meanings (or of 
+units comprising meanings).  I have described this merger 
+at a coarse level of classification, taking broad 
+parts of speech as individual types, but similar 
+methods apply to more fine-grained analysis.
+By three \q{tiers} of linguistic organization, I am thinking of
 different levels of granularity, distinguished by relative scales of
 resolution, amongst the semantic implications of
 putative type representations for linguistic phenomena.
-From one perspective, grammar is just a
+}
+\p{From one perspective, grammar is just a
 most top-level semantics, the primordial Ontological division of language into designations of
 things or substances (nouns), events or processes (verbs), qualities and attributes (adjectives),
 and so forth.  Further distinctions like count, mass, and plural nouns add

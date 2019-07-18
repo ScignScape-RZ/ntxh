@@ -277,15 +277,21 @@
 \newcommand{\VPpNPeqS}{\ensuremath{VP + NP = S}}
 \newcommand{\NSingToNPl}{\mmbox{\NSing{} \outarrow{} \Npl}}
 
-\newcommand{\NNtoS}{\mmbox{\NN{} \outarrow{} \Prop}}
+\newcommand{\NNtoProp}{\mmbox{\NN{} \outarrow{} \Prop}}
 \newcommand{\NNtoN}{\mmbox{\NN{} \outarrow{} \ensuremath{N}}}
 \newcommand{\N}{\mmbox{\ensuremath{N}}}
 \newcommand{\NtoProp}{\mmbox{\N{} \outarrow{} \Prop}}
-\newcommand{\NNtoProp}{\mmbox{\NN{} \outarrow{} \Prop{}}}
+%
+
+\newcommand{\gl}[1]{\mmbox{\small\texttt{#1}}}
+
 \newcommand{\ProptoN}{\mmbox{\Prop{} \outarrow{} \N}}
 
 
 \newcommand{\PropToNYieldsN}{\PropToN{} \raisebox{1pt}{\ensuremath{\textgreater\hspace{-5pt}\raisebox{.15pt}{\ensuremath{\Rightarrow}}}}{} \N}
+
+\newcommand{\NNtoPropYieldsProp}{\NNtoProp{} \raisebox{1pt}{\ensuremath{\textgreater\hspace{-5pt}\raisebox{.15pt}{\ensuremath{\Rightarrow}}}}{} \Prop}
+
 
 \newcommand{\SeqNPplVP}{\mmbox{{\small\texttt{S = NP + VP}}}}
 
