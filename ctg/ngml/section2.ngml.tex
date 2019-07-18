@@ -177,11 +177,11 @@ applied to other inputs in turn.
 \begin{sentenceList}\sentenceItem{} \label{actually} The most popular lodging is actually camping on the beaches.
 \udref{en_gum-ud-train}{GUM_voyage_socotra-16}
 \end{sentenceList}
-with gloss \gl{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
+with gloss, as I take it, \gl{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
 Here the adverb \i{actually} is taken as a modifier to \i{is}, so we imagine that 
 interpreting the sentence involves first refining \i{is} into \i{is actually}, 
 yielding a new verb (or \q{verb-idea}) that then participates in verb-subject-object 
-pattern.  Hence, the parse opens with the evaluation \i{(actually is)} in the 
+pattern.  Hence, the parse opens with the evaluation \gl{(actually is)} in the 
 head-position of the sentences top-level expression.  Similarly, I read \i{on the beaches} as 
 functionally a kind of adverb, like \i{camping outside}.  
 In the generic pattern, a verb can be paired with a designation of location 
@@ -219,9 +219,9 @@ of de Bruijn indices.  The first index, that is, represents
 the \q{level} tieing a modifier to a ground, while the second 
 index is the \i{normal} notation of lambda-position.  
 In \i{camping on the beaches}, the indices for the pair 
-\i{on}\i{the} would be \q{1,1} (meaning \i{the} is the first 
+\i{on}\i{the} would be \gl{1,1} (meaning \i{the} is the first 
 argument to \i{on} on the first transform level); the 
-indices for \i{on}\i{camping} would be \q{2,1} (\i{camping} 
+indices for \i{on}\i{camping} would be \gl{2,1} (\i{camping} 
 is the first argument to \i{on} on the \i{second} transform level).  
 }
 %\input{figactuallydbl}
@@ -258,7 +258,7 @@ Type analysis recognizes criteria on these combinations, insofar
 as the phrases or lexemes at a given index have a type consistent 
 with (potentially a subtype of) the corresponding position in the 
 head-word's signature.  Ideally, this representation can 
-explain \i{ungrammatical} constructions in \i{failure} for 
+explain \i{ungrammatical} constructions via \i{failure} for 
 these types to align properly.  If the combination \q{type-checks}, 
 then we can assign the phrase as a whole the type indicated 
 in the signature's output type \mdash{} \Prop{} in \NNtoProp{}, say; 
@@ -279,7 +279,7 @@ more abstract analysis.
 }
 \p{Type \q{signatures} like \NNtoProp{} may 
 seem little more than notational variants of conventional linguistic
-wisdom, such as sentences' requiring a noun and a verb (\SeqNPplVP{}).
+wisdom, such as sentences' requiring a noun (-phrase) and a verb (\SeqNPplVP{}).
 Even at this level, however, type-theoretic intuitions
 offer techniques for making sense of more complex, layered sentences,
 where integrating Dependency Graphs and phrase structures can be complex.
@@ -319,12 +319,35 @@ a gender-neutral singular reading) with, say, \i{his parents} (at a
 boy's school), a valid substitution in (\ref{after})-(\ref{parents})
 but not (\ref{students})-(\ref{office}).  
 }
-\p{As these sorts of examples illustrate, 
-phrases cannot just be studied as full-scale replacements for semantic units.  Incorporating
-type theory, we can instead model phrases through the perspective of
+\p{Cases like \i{Student after student} (or consider \i{time after time}, 
+\i{year after year}, and so forth; this is a common idiomatic pattern 
+in English) present a further difficulty for Dependency Grammar, 
+since it is hard to identify which word of the three is the more 
+significant, or the \q{head}.  Arguably Constituency Grammar is 
+more intuitive here because then phrases as a whole can get linked 
+to other phrases, without needing to nominate one word to proxy 
+the enclosing phrase.  As I feel the \q{students} examples illustrated, however, 
+it is too simplistic to treat phrases as full-scale replacements for 
+semantic units, as if any phrase is an ad-hoc single lexeme 
+(of course some phrases \i{do} get entrenched as de facto lexemes, 
+like \i{Member of Parliament}; I my prior claims concerning entrenchment).  
+In the general case though component words retain some syntactic and 
+semantic autonomy (entrenchment diminishes but does not entirely 
+eliminate such autonomy).  There is, then, a potential dilemna: 
+phrases link to other phrases (sometimes via subsumption and 
+sometimes more indirectly, as in anaphora resolution), but phrases 
+are not undifferentiated units; lexemes, which on this sort of 
+analysis \i{are} units, can be designated as proxies for their 
+phrase; but then we can have controversy over which word in a 
+phrase is the most useful stand-in for the whole 
+(`cite<>; has an interesting review of a similar 
+controversy in Dependency Grammar).
+}
+\p{Incorporating 
+type theory, we can skirt these issues by modeling phrases through the perspective of
 type signatures: given Part of Speech annotations for phrasal units and then for
 some of their parts, the signatures of other parts, like verbs or adjectives
-linked to nouns, or adverbs linked to verbs, tend to follow automatically.
+linked to nouns, or adverbs linked to verbs, tend to follow automatically.  
 A successful analysis yields a formal tree, where if (in an act of semantic
 abstraction) words are replaced by their types, the \q{root} type is something like
 \Prop{} and the rest of a tree is formally a reducible structure in
@@ -332,7 +355,8 @@ Typed Lambda Calculus: \NNtoProp{} \q{collapses} to \Prop{}, \ProptoN{} collapse
 to \N{}, and so forth, with the tree \q{folding inward} like a
 fan until only the root remains \mdash{} though a more subtle analysis would
 replace the single \Prop{} type with variants that recognize different
-forms of speech acts, like questions and commands. \input{figure.tex} In Figure ~\ref{fig:Iknow},
+forms of speech acts, like questions and commands.
+ \input{figure.tex} In Figure ~\ref{fig:Iknow},
 this can be seen via the type annotations: from right to left \NtoN{} yields the
 \N{} as second argument for \i{is}, which in turn yields a \Prop{} that is mapped
 (by \i{that}) to \N{}, finally becoming the second argument to \i{know}.  This calculation
@@ -346,6 +370,16 @@ finer type or type-instance qualifications at a separate stage.
 \p{In either case, Parts of Speech are modeled as (somehow analogous to) 
 functions, but the important
 analogy is that they have \i{type signatures} which formally resemble functions'.
+Words with function-like types proxy their corresponding phrase, not because 
+they are necessarily more important or are Dependency \q{heads}, but 
+because they supply the pivot in the type resolutions which, 
+collectively/sequentially, progress to a propositional culmination.  
+This epistemological telos induces a sequencing on the 
+type resolutions \mdash{} there is a fixed way that trees collapse \mdash{} 
+which motivates the selection of function-words to proxy phrases; 
+they are not semantically more consequential, necessarily, but 
+are landmarks in a dynamic figured syntactically as \q{folding inward} 
+and semantically as a progressive signifying refinement.   
 Phrases are modeled via a \q{function-like} Parts of Speech along with one or more
 additional words whose own types match its signature; the type calculations
 \q{collapsing} these phrases can mimic semantic simplifications
@@ -366,7 +400,7 @@ essentially structural artifacts; their
 significance lies in the compositional patterns 
 guiding phrases to merge into larger phrases in a 
 well-ordered way \mdash{} specifically, that the \q{outermost} 
-expression, canonically the whole sentence, is a 
+expression, canonically the whole sentence, is 
 type-theoretically a proposition.  I proposed earlier that 
 sentence-understanding be read as an accretion of detail 
 culminating in a complete idea; type-checking then imposes 
