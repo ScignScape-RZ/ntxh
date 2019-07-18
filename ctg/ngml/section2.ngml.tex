@@ -1,27 +1,23 @@
-
-`section.Functional Type Theory and Dependency Grammar`
-`p.
-My discussion toward the end of the last section focused on 
+\section{Functional Type Theory and Dependency Grammar}
+\p{My discussion toward the end of the last section focused on 
 characterizing sentences' holistic meaning.  On the face of 
 it, such holistic analysis is more semantic than syntactic.  
 However, syntactic paradigms can be grounded in theories 
-of how language elements aggregate `i.toward` holistic meaning.   
-`p`
-
-`p.
-Here I propose the language of `q.cognitive transforms` 
-%-- that holistic meanings emerge from a series of 
+of how language elements aggregate \i{toward} holistic meaning.   
+}
+\p{Here I propose the language of \q{cognitive transforms} 
+\mdash{} that holistic meanings emerge from a series of 
 interpretive and situational modeling modifications 
 which progressively refine our understanding of a 
 speaker's construal of our environing context and her 
 propositional attitudes.  While elucidation of these 
 transforms as cognitive phenomena may be semantics, 
-syntactic structure dictates the `i.sequence` of 
+syntactic structure dictates the \i{sequence} of 
 transforms.  Many transforms are expressed by 
 individual word-pairs.  Taking the temporal or logical 
 order of transforms into consideration, we can derive a 
 syntactic model of sentences by introducing an order among 
-word-pairs %-- a methodology akin to using Dependency Grammar 
+word-pairs \mdash{} a methodology akin to using Dependency Grammar 
 parse-graphs as an intermediate stage, then ordering the 
 graph-edges around an estimation of cognitive aggregation.  
 One transform is a successor to a predecessor if the 
@@ -29,70 +25,62 @@ modifications induced by the predecessor are
 consequential for the cognitive reorientation pertinent to 
 the successor, and/or to the morphosyntactic features which 
 trigger it.  
-`p`
-
-`p.
-In this spirit I talk of Cognitive Transform `i.Grammar`/, because 
+}
+\p{In this spirit I talk of Cognitive Transform \i{Grammar}, because 
 while in the general case transforms are semantic and interpretive 
-%-- not the purview of grammar per se %-- we can theorize 
-grammar as governing the `i.order of precedence` among transforms.  
+\mdash{} not the purview of grammar per se \mdash{} we can theorize 
+grammar as governing the \i{order of precedence} among transforms.  
 More precisely, there is a particular order of precedence germane 
 to sentence meaning; sentences have their precise syntax 
 in order to compel recipients' reception of the linguistic 
 performance according to that same ordering.  
-`p`
-
-`p.
-From this perspective, an essential aspect of grammar theory is that 
-whatever units are understood as syntactic constituents %-- like 
-phrase structure or word-pairs %-- an order of precedence should 
-`q.fall out` of grammatic reconstructions.  We should be able 
+}
+\p{From this perspective, an essential aspect of grammar theory is that 
+whatever units are understood as syntactic constituents \mdash{} like 
+phrase structure or word-pairs \mdash{} an order of precedence should 
+\q{fall out} of grammatic reconstructions.  We should be able 
 to supplement parse-representations with a listing of salient 
-syntactic features in order, retracing the `i.cognitive` steps 
+syntactic features in order, retracing the \i{cognitive} steps 
 by which localized alterations in sense synthesize into holistic 
 meaning.  The details of this precedence-establishment 
 will vary across grammatic paradigms, so one way to assess 
 grammar theories is to consider how the engender corresponding 
 cognitive-transform models. 
-`p`
-
-`p.
-Models based on Functional Type Theory are useful in this context 
+}
+\p{Models based on Functional Type Theory are useful in this context 
 because in their case order of precedence falls out automatically.  
 In linguistics, a functional type theory can be seen as a 
 theory where a small set of primitive Part of Speech types 
-%-- e.g., nouns and propositions %-- generates a collection 
-of further `q.functional` types.  For any two (not necessarily 
+\mdash{} e.g., nouns and propositions \mdash{} generates a collection 
+of further \q{functional} types.  For any two (not necessarily 
 distinct) types, the functional transformations which take 
 inputs of one type and produce outcomes of a second type 
 reprecent a third type, which can be notated something like 
-`TyOneToTyTwo;.  Assuming all lexemes are assigned a Part of 
+\TyOneToTyTwo{}.  Assuming all lexemes are assigned a Part of 
 Speech drawn from such a type system, the definition of 
 functional types directly yields a precedence order: 
 instances of functional types are functionally dependent 
 on their inputs, which are therefore precedent to them.  
 On this basis, any well-typed functional expression has a 
 unique precedence ordering on its terminal elements 
-(i.e., its `q.leaves` when the expression is viewed as a 
+(i.e., its \q{leaves} when the expression is viewed as a 
 tree, or its nodes when viewed as a graph), which 
 can be uncovered via a straightforward algorithm 
 (one implementation is part of this paper's data set; 
-see the `q.parse\_sxpr` method in file xxx.cpp).
-`p`
-
-`p.
-In practice, many functional parts of speech 
-can be formally modeled with one `q.argument`/; 
+see the \q{parse\_sxpr} method in file xxx.cpp).
+}
+\p{In practice, many functional parts of speech 
+can be formally modeled with one \q{argument}; 
 they have a single input and output type.  
 These cases conveniently lend themselves 
 to cognitive transforms defined through word 
-pairs %-- an adjective modifies a noun to another 
+pairs \mdash{} an adjective modifies a noun to another 
 noun, an adverb maps a verb to a verb, an auxiliary 
-like `i.that` or `i.having` can map verbs or propositions 
+like \i{that} or \i{having} can map verbs or propositions 
 to nouns, and so forth.  The only main complication 
 to this picture is that verbs, which typically have subjects 
-as well as objects, can take two or three `q.inputs` 
-instead of just one.  Instead of a transform `i.pair` we 
+as well as objects, can take two or three \q{inputs} 
+instead of just one.  Instead of a transform \i{pair} we 
 can then consider a three- or four-part transform structure 
 (verb, subject, direct object, indirect object).  
 We can still assign a precedence ordering to verb-headed phrases, 
@@ -103,63 +91,52 @@ motivated: our construal of the significance of a
 direct object appears to intellectually depend on the verb's 
 subject; likewise the indirect object depends on the direct 
 object to the degree that it is rationally consequential.    
-`p`
-
-`p.
-A secondary complication involves copulae like `i.and`/, which 
+}
+\p{A secondary complication involves copulae like \i{and}, which 
 can connect more than two words or clauses.  Here, though, a 
 natural ordering seems to derive from linear position in the 
-sentence: given `i.x, y, and z` we can treat `i.x` as 
-precedent to `i.y`/, and `i.y` to `i.z`/, respectively.
-`p`
-
-`p.
-In total, sentences as a whole can thus be seen as structurally 
+sentence: given \i{x, y, and z} we can treat \i{x} as 
+precedent to \i{y}, and \i{y} to \i{z}, respectively.
+}
+\p{In total, sentences as a whole can thus be seen as structurally 
 akin to nested expressions in lambda calculii 
-(and notated via `q.S-Expressions`/, like code in the 
+(and notated via \q{S-Expressions}, like code in the 
 Lisp programming language).  S-Expressions are occasionally 
 recommended as representations for some level of 
-linguistic analysis (cf. `cite<SivaReddy>;, `cite<KiyoshiSudo>;, 
-`cite<ChoeCharniak>;), and this form by itself adds little 
+linguistic analysis (cf. \cite{SivaReddy}, \cite{KiyoshiSudo}, 
+\cite{ChoeCharniak}), and this form by itself adds little 
 extra data, it does offer a succinct way to capture the 
 functional sequencing attributed to a sentence during analysis.  
 Given, say, 
-
-`sentenceList,
-`sentenceItem; \label{itm:ambience} The city's ambience is colonial and the climate is tropical.
+\begin{sentenceList}\sentenceItem{} \label{itm:ambience} The city's ambience is colonial and the climate is tropical.
 \udref{en_gum-ud-train}{GUM_voyage_merida-20}
-`sentenceList`
-
-the gloss `i.(and (is ((The ('s city)) ambience) colonial) (is (the climate) tropical))`
+\end{sentenceList}
+the gloss \i{(and (is ((The ('s city)) ambience) colonial) (is (the climate) tropical))}
 summarizes analytic commitments with regard to the root structure of the sentence 
 (in my treatment the copula is the overall root word) and to precedence between words 
 (which words are seen as modifiers and which are their ground, for instance).  
 So even without extra annotations (without, say, the kind of tagging data included 
 by treebanks using S-Expression serializations), rewriting sentences as 
 nested expressions captures primitive but significant syntactic details.     
-`p`
-
-`p.
-Nested-expression models also give rise directly to two other representations: 
+}
+\p{Nested-expression models also give rise directly to two other representations: 
 a precedence ordering among lexemes automatically follows by taking 
-function inputs as precedent to function (words) themselves`footnote.But 
-note that using `q.function-words` as terminology here generalizes 
-this term beyond its conventional meaning in grammar.`/; 
+function inputs as precedent to function (words) themselves\footnote{But 
+note that using \q{function-words} as terminology here generalizes 
+this term beyond its conventional meaning in grammar.}; 
 moreover, S-Expression formats can be rewritten as sets of 
 word-pairs, borrowing the representational paradigms (if not 
 identical structures) of Dependency Graphs.  This allows Dependency Graphs 
 and S-Expressions to be juxtaposed, which I will discuss in the remainder of this section.  
-`p`
-
-`subsection.Double de Bruijn Indices`
-`p.
-Assume then that all non-trivial sentences are nested expressions, and that 
-all lexemes other than nouns are notionally `i.functions`/, which take typed 
-`q.inputs` and produce typed `q.outcomes`/.  Expression `q.nesting` means 
+}
+\subsection{Double de Bruijn Indices}
+\p{Assume then that all non-trivial sentences are nested expressions, and that 
+all lexemes other than nouns are notionally \i{functions}, which take typed 
+\q{inputs} and produce typed \q{outcomes}.  Expression \q{nesting} means 
 that function inputs are often outcomes from other functions (which establishes a 
 precedence order among functions).  Since there is an obvious notion of 
-`q.parent` %-- instances of functional types are parents of the words or 
-phrase-heads which are their inputs %-- nestable expressions are formally 
+\q{parent} \mdash{} instances of functional types are parents of the words or 
+phrase-heads which are their inputs \mdash{} nestable expressions are formally 
 trees.  Via tree-to-graph embedding, they can also be treated as graphs, 
 with edges linking parents to children; since parse-graphs are canonical 
 in some grammar theories (like Link and Dependency grammar), it is 
@@ -170,21 +147,19 @@ each of whose objects is isomorphic to an S-Expression (using this
 terminology in the sense of mathematical Category Theory); equivalently, a 
 bijective encoding of S-Expressions within labeled graphs given 
 a suitable class of edge-labels.
-`p`
-
-`p.
-Indeed, labels comprised of 
+}
+\p{Indeed, labels comprised of 
 two numbers suffice, generalizing the lambda-calculus 
-`q.de Bruijn Indices`/.  The de Bruijn notation is an alternative 
+\q{de Bruijn Indices}.  The de Bruijn notation is an alternative 
 presentation of lambda terms using numeric indices in lieu of 
-lambda-abstracted symbol.  The `i.double` indices 
+lambda-abstracted symbol.  The \i{double} indices 
 accommodate the fact that, in the general case, the 
 functional component of an expression may be itself a nested 
-expression, meaning that `q.evaluation` has to proceed in several 
+expression, meaning that \q{evaluation} has to proceed in several 
 stages: a function (potentially with one or more inputs) is 
 evaluated, yielding another function, which is then applied 
 to inputs, perhaps again yielding a function applied to still 
-more inputs, and so forth.  I use the term `q.evaluate` which 
+more inputs, and so forth.  I use the term \q{evaluate} which 
 is proper to the computer-science context, but in linguistics 
 we can take this as a suggestive metaphor.  More correctly, 
 we can say that a funtion/input structure represents a 
@@ -192,77 +167,67 @@ cognitive transform which produces a new function
 (i.e., a phrace with a function-like part of speech), that is 
 then the modifier to a new transform, and so forth.  
 In general, the result of a transform can either be 
-the `i.ground` of a subsequent transform, which is akin to 
+the \i{ground} of a subsequent transform, which is akin to 
 passing a function-result to another function; or 
-it can be the `i.modifier` of a subsequent transform, which is akin to 
+it can be the \i{modifier} of a subsequent transform, which is akin to 
 evaluating a nested expression to produce a new function, then 
 applied to other inputs in turn.
-`p`
-
-`p.
-For a concrete example, consider 
-
-`sentenceList,
-`sentenceItem; \label{actually} The most popular lodging is actually camping on the beaches.
+}
+\p{For a concrete example, consider 
+\begin{sentenceList}\sentenceItem{} \label{actually} The most popular lodging is actually camping on the beaches.
 \udref{en_gum-ud-train}{GUM_voyage_socotra-16}
-`sentenceList`
-
-with gloss `i.((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))`/.  
-Here the adverb `i.actually` is taken as a modifier to `i.is`/, so we imagine that 
-interpreting the sentence involves first refining `i.is` into `i.is actually`/, 
-yielding a new verb (or `q.verb-idea`/) that then participates in verb-subject-object 
-pattern.  Hence, the parse opens with the evaluation `i.(actually is)` in the 
-head-position of the sentences top-level expression.  Similarly, I read `i.on the beaches` as 
-functionally a kind of adverb, like `i.camping outside`/.  
+\end{sentenceList}
+with gloss \i{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
+Here the adverb \i{actually} is taken as a modifier to \i{is}, so we imagine that 
+interpreting the sentence involves first refining \i{is} into \i{is actually}, 
+yielding a new verb (or \q{verb-idea}) that then participates in verb-subject-object 
+pattern.  Hence, the parse opens with the evaluation \i{(actually is)} in the 
+head-position of the sentences top-level expression.  Similarly, I read \i{on the beaches} as 
+functionally a kind of adverb, like \i{camping outside}.  
 In the generic pattern, a verb can be paired with a designation of location 
 to construct the idea of the verb happening at such location; the designation-of-location 
 is then a modifier to the verb's ground.  When this designation is a locative 
 construction, the whole expression becomes a modifier, while it also has its own 
-internal structure.  In `i.on the beaches`/, `i.on` serves as a modifier which 
-maps or reinterprets `i.the beaches` to a designation of place.  So here is the 
-unfolding of the phrase: in `i.the beaches` the determinant (`i.the`/) is a modifier 
-to the ground `i.beaches`/, signifying that `i.beaches` are to be circumscribed 
-as an aggregate focus.  Then `i.on` modifies the outcome of that first transform, 
-re-inscribing the focus as a place-designation.  Then `i.that` transform's output 
-becomes a modifier for `i.camping`/, wherein the locative construction becomes 
-a de-facto adverb, adding detail to the verb `i.camping` (camping on the 
-beach as a kind of camping, in effect).`footnote.
-If it seems better to read camping as a `i.noun` %-- the act or phenomenon 
-of camping (qua verb) %-- then we could treat the locative 
-as an `i.adjective`/, with the stipulation that the operation 
-converting verbs to nouns (from `i.X` to the phenomenon, act, or 
-state of `i.X`/-ing) 
+internal structure.  In \i{on the beaches}, \i{on} serves as a modifier which 
+maps or reinterprets \i{the beaches} to a designation of place.  So here is the 
+unfolding of the phrase: in \i{the beaches} the determinant (\i{the}) is a modifier 
+to the ground \i{beaches}, signifying that \i{beaches} are to be circumscribed 
+as an aggregate focus.  Then \i{on} modifies the outcome of that first transform, 
+re-inscribing the focus as a place-designation.  Then \i{that} transform's output 
+becomes a modifier for \i{camping}, wherein the locative construction becomes 
+a de-facto adverb, adding detail to the verb \i{camping} (camping on the 
+beach as a kind of camping, in effect).\footnote{If it seems better to read camping as a \i{noun} \mdash{} the act or phenomenon 
+of camping (qua verb) \mdash{} then we could treat the locative 
+as an \i{adjective}, with the stipulation that the operation 
+converting verbs to nouns (from \i{X} to the phenomenon, act, or 
+state of \i{X}-ing) 
 propagates to any modifiers on the verb: modifying constructions that 
-refine `i.X` as verb are implicitly mapped to be adjectives likewise 
-modifying `i.X` in the nominal sense of `q.the phenomenon of `i.X`/-ing`/.  
-`footnote`    
-`p`
-
-`p.
-Notice in this review that `i.the` as modifier in `i.the beaches` yield 
-a pair whose outcome is the `i.ground` for `i.on`/.  If we take the 
-modifier as representative for a modifer-ground pair, `i.the` is the 
-`i.modifier` in its own transform pair but then the `i.ground` in the 
+refine \i{X} as verb are implicitly mapped to be adjectives likewise 
+modifying \i{X} in the nominal sense of \q{the phenomenon of \i{X}-ing}.  
+}    
+}
+\p{Notice in this review that \i{the} as modifier in \i{the beaches} yield 
+a pair whose outcome is the \i{ground} for \i{on}.  If we take the 
+modifier as representative for a modifer-ground pair, \i{the} is the 
+\i{modifier} in its own transform pair but then the \i{ground} in the 
 subsequent pair; the pattern is modifier-then-ground.  However, 
-`i.on` is the modifer `visavis; `i.the` and then `i.also` modifier 
-`visavis; `i.camping`/; the pattern is modifier-then-modifier.  
+\i{on} is the modifer \visavis{} \i{the} and then \i{also} modifier 
+\visavis{} \i{camping}; the pattern is modifier-then-modifier.  
 This latter case is the scenario where a lexeme will be a modifier 
-on two or more different `q.levels`/, giving rise to the `q.doubling` 
+on two or more different \q{levels}, giving rise to the \q{doubling} 
 of de Bruijn indices.  The first index, that is, represents 
-the `q.level` tieing a modifier to a ground, while the second 
-index is the `i.normal` notation of lambda-position.  
-In `i.camping on the beaches`/, the indices for the pair 
-`i.on`/`i.the` would be `q.1,1` (meaning `i.the` is the first 
-argument to `i.on` on the first transform level); the 
-indices for `i.on`/`i.camping` would be `q.2,1` (`i.camping` 
-is the first argument to `i.on` on the `i.second` transform level).  
-`p`
-
-%`input<figactuallydbl>;
-`p.
-By combining an index for `q.transform levels` %-- capturing cases 
+the \q{level} tieing a modifier to a ground, while the second 
+index is the \i{normal} notation of lambda-position.  
+In \i{camping on the beaches}, the indices for the pair 
+\i{on}\i{the} would be \q{1,1} (meaning \i{the} is the first 
+argument to \i{on} on the first transform level); the 
+indices for \i{on}\i{camping} would be \q{2,1} (\i{camping} 
+is the first argument to \i{on} on the \i{second} transform level).  
+}
+%\input{figactuallydbl}
+\p{By combining an index for \q{transform levels} \mdash{} capturing cases 
 where a modifier produces an outcome which is a modifier again, not a
-ground %-- with an index for lambda position (e.g. the direct object 
+ground \mdash{} with an index for lambda position (e.g. the direct object 
 has index 2 relative to the verb, and the indirect object has 
 index 3), we can transform any expression-tree into a labeled graph. 
 Parse graphs can then be annotated with these double-indices 
@@ -270,126 +235,106 @@ via the same presentations employed for Link or Dependency Grammar
 labels.  Sentence (\ref{actually}) could be visualized as in 
 Figure~\ref{fig:actuallydbl}. 
 Alternatively, the double-indices can be juxtaposed 
-with conventional Dependency labels %-- one option is to 
+with conventional Dependency labels \mdash{} one option is to 
 graph the indices below the sentence, and relation 
 labels above it.  The examples (\ref{ambience}) and (\ref{actually}) 
 are annotated in the Universal Dependency corpus, so the 
 two annotation styles can be juxtaposed (figures \ref{fig:ambience} 
 and \ref{fig:actually}).
-%`input<figactually>;
-%`input<figambience>; 
-`p`
-
-`p.
-As a natural corollary to this notation,  
-parts of speech can have `q.type signatures`
+%\input{figactually}
+%\input{figambience} 
+}
+\p{As a natural corollary to this notation,  
+parts of speech can have \q{type signatures}
 notionally similar to the signatures of function types in programming languages: a verb
-needing a direct object, for example, `q.transforms` two nouns (Subject and Object)
-to a proposition, which could be notatated with something like `NNtoS;.  
+needing a direct object, for example, \q{transforms} two nouns (Subject and Object)
+to a proposition, which could be notatated with something like \NNtoS{}.  
 The notation is consistent so long as each constituent of a verb 
 phrase has a fixed index number: the subject at position one, for instance, 
 direct object at position two, and indirect object at position three.  
-Type `q.signatures` like `NNtoS; may 
+Type \q{signatures} like \NNtoS{} may 
 seem little more than notational variants of conventional linguistic
-wisdom, such as sentences' requiring a noun and a verb (`SeqNPplVP;).
+wisdom, such as sentences' requiring a noun and a verb (\SeqNPplVP{}).
 Even at this level, however, type-theoretic intuitions
 offer techniques for making sense of more complex, layered sentences,
 where integrating Dependency Graphs and phrase structures can be complex.
 One complication is 
 the problem of applying Dependency Grammar where phrases do not seem
-to have an obviously `q.most significant` word for linkage with other phrases.
-`p`
-
-`p.
-A tendency in both dependency and phrase-oriented perspectives is to define
-structures around the most `q.semantically significant` words %-- so that a phrase
-like `i.many students` becomes in some sense collapsible to its semantic
-core, `i.students`/.  In real-world examples, however, lexemes tend 
+to have an obviously \q{most significant} word for linkage with other phrases.
+}
+\p{A tendency in both dependency and phrase-oriented perspectives is to define
+structures around the most \q{semantically significant} words \mdash{} so that a phrase
+like \i{many students} becomes in some sense collapsible to its semantic
+core, \i{students}.  In real-world examples, however, lexemes tend 
 to be neither wholly subsumed by their surrounding phrase nor wholly 
 autonomous: 
-
-`sentenceList,
-`sentenceItem; \label{students} Many students and their parents 
+\begin{sentenceList}\sentenceItem{} \label{students} Many students and their parents 
 came to complain about the tuition hikes.
-`sentenceItem; \label{office} Many students came by my office to complain about their grades.
-`sentenceItem; \label{after} Student after student complained about the tuition hikes.
-`sentenceItem; \label{parents} Student after student came with their parents to complain 
+\sentenceItem{} \label{office} Many students came by my office to complain about their grades.
+\sentenceItem{} \label{after} Student after student complained about the tuition hikes.
+\sentenceItem{} \label{parents} Student after student came with their parents to complain 
 about the tuition hikes.
-`sentenceList`
-
-In (\ref{students}) and (\ref{office}), we read `i.Many students` as topicalizing a multitude, 
+\end{sentenceList}
+In (\ref{students}) and (\ref{office}), we read \i{Many students} as topicalizing a multitude, 
 but we recognize that each student has their own parents, grade, and we assume they came to 
-the office at different times (rather than all at once).  So `i.students` links 
+the office at different times (rather than all at once).  So \i{students} links 
 conceptually with other sentence elements, in a way that pulls it partly outside the 
-`i.Many students` phrase; the phrase itself is a space-builder which leaves open 
+\i{Many students} phrase; the phrase itself is a space-builder which leaves open 
 the possibility of multiple derived spaces.  This kind of space-building duality is 
 reflected in how the singular/plural alternative is underdetermined in a multi-space 
 context; consider Langacker's example: 
-
-`sentenceList,
-`sentenceItem; Three times, students asked an interesting question. 
-`sentenceItem; Three times, a student asked an interesting question.
-`sentenceList`
-
+\begin{sentenceList}\sentenceItem{} Three times, students asked an interesting question. 
+\sentenceItem{} Three times, a student asked an interesting question.
+\end{sentenceList}
 Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
-`i.Student after student` invokes a multiplicity akin to `i.Many students`/, 
+\i{Student after student} invokes a multiplicity akin to \i{Many students}, 
 but the former phrase has disting syntactic properties; in particular 
-we can replace `i.their parents` (which is ambiguous between a plural and 
-a gender-neutral singular reading) with, say, `i.his parents` (at a 
+we can replace \i{their parents} (which is ambiguous between a plural and 
+a gender-neutral singular reading) with, say, \i{his parents} (at a 
 boy's school), a valid substitution in (\ref{after})-(\ref{parents})
 but not (\ref{students})-(\ref{office}).  
-`p`
-
-`p.
-As these sorts of examples illustrate, 
+}
+\p{As these sorts of examples illustrate, 
 phrases cannot just be studied as full-scale replacements for semantic units.  Incorporating
 type theory, we can instead model phrases through the perspective of
 type signatures: given Part of Speech annotations for phrasal units and then for
 some of their parts, the signatures of other parts, like verbs or adjectives
 linked to nouns, or adverbs linked to verbs, tend to follow automatically.
 A successful analysis yields a formal tree, where if (in an act of semantic
-abstraction) words are replaced by their types, the `q.root` type is something like
-`Prop; and the rest of a tree is formally a reducible structure in
-Typed Lambda Calculus: `NNtoProp; `q.collapses` to `Prop;, `ProptoN; collapses
-to `N;, and so forth, with the tree `q.folding inward` like a
-fan until only the root remains %-- though a more subtle analysis would
-replace the single `Prop; type with variants that recognize different
-forms of speech acts, like questions and commands. \input{figure.tex} In Figure ~`ref<fig:Iknow>;,
-this can be seen via the type annotations: from right to left `NtoN; yields the
-`N; as second argument for `i.is`/, which in turn yields a `Prop; that is mapped
-(by `i.that`/) to `N;, finally becoming the second argument to `i.know`/.  This calculation
-only considers the most coarse-grained classification (noun, verb, proposition) %-- as I
+abstraction) words are replaced by their types, the \q{root} type is something like
+\Prop{} and the rest of a tree is formally a reducible structure in
+Typed Lambda Calculus: \NNtoProp{} \q{collapses} to \Prop{}, \ProptoN{} collapses
+to \N{}, and so forth, with the tree \q{folding inward} like a
+fan until only the root remains \mdash{} though a more subtle analysis would
+replace the single \Prop{} type with variants that recognize different
+forms of speech acts, like questions and commands. \input{figure.tex} In Figure ~\ref{fig:Iknow},
+this can be seen via the type annotations: from right to left \NtoN{} yields the
+\N{} as second argument for \i{is}, which in turn yields a \Prop{} that is mapped
+(by \i{that}) to \N{}, finally becoming the second argument to \i{know}.  This calculation
+only considers the most coarse-grained classification (noun, verb, proposition) \mdash{} as I
 have emphasized, a purely formal reduction can introduce finer-grained grammatical or
-lexico-semantic classes (like `i.at` needing an `q.argument` which is somehow an expression
-of place %-- or time, as in `i.at noon`/).  Just as useful, however, may be analyses
+lexico-semantic classes (like \i{at} needing an \q{argument} which is somehow an expression
+of place \mdash{} or time, as in \i{at noon}).  Just as useful, however, may be analyses
 which leave the formal type scaffolding at a very basic level and introduce
 finer type or type-instance qualifications at a separate stage.
-`p`
-
-`p.
-In either case, Parts of Speech are modeled as (somehow analogous to) 
+}
+\p{In either case, Parts of Speech are modeled as (somehow analogous to) 
 functions, but the important
-analogy is that they have `i.type signatures` which formally resemble functions'.
-Phrases are modeled via a `q.function-like` Parts of Speech along with one or more
+analogy is that they have \i{type signatures} which formally resemble functions'.
+Phrases are modeled via a \q{function-like} Parts of Speech along with one or more
 additional words whose own types match its signature; the type calculations
-`q.collapsing` these phrases can mimic semantic simplifications
-like `i.many students` to `i.students`/, but here the theory is explicit
+\q{collapsing} these phrases can mimic semantic simplifications
+like \i{many students} to \i{students}, but here the theory is explicit
 that the simplification is grammatic and not semantic: the collapse
-is acknowledged at the level of `i.types`/, not `i.meanings`/.  In addition,
+is acknowledged at the level of \i{types}, not \i{meanings}.  In addition,
 tree structures can be modeled purely in terms of inter-word relations 
-%-- as I have proposed here with double-indices %-- 
+\mdash{} as I have proposed here with double-indices \mdash{} 
 so a type-summary of a sentence's phrase structure can be notated and
 analyzed without leaving the Link or Dependency Grammar paradigm.
-`p`
-
-
-`spsubsectiontwoline.Three tiers of linguistic type theory`
-
-%`p.
-%`p`
-
-`p.
-By three `q.tiers` of linguistic organization, I am thinking of
+}
+\spsubsectiontwoline{Three tiers of linguistic type theory}
+%\p{%}
+\p{By three \q{tiers} of linguistic organization, I am thinking of
 different levels of granularity, distinguished by relative scales of
 resolution, amongst the semantic implications of
 putative type representations for linguistic phenomena.
@@ -399,187 +344,164 @@ things or substances (nouns), events or processes (verbs), qualities and attribu
 and so forth.  Further distinctions like count, mass, and plural nouns add
 semantic precision but arguably remain in the orbit of grammar (singular/plural
 agreement rules, for example); the question is whether semantic detail gets
-increasingly fine-grained and somewhere therein lies a `q.boundary` between syntax and
+increasingly fine-grained and somewhere therein lies a \q{boundary} between syntax and
 semantics.  The mass/count distinction is perhaps a topic in grammar more so than
 semantics, because its primary manifestation in language is via agreement
-(`i.some` wine in a glass; `i.a` wine that won a prize; `i.many` wines
+(\i{some} wine in a glass; \i{a} wine that won a prize; \i{many} wines
 from Bordeaux).  But are the distinctions between natural and constructed objects,
 or animate and inanimate kinds, or social institutions and natural
 systems, matters more of grammar or of lexicon?  Certainly they engender
 agreements and propriety which appear similar to
-grammatic rules.  `i.The tree wants to run away from the dog` sounds wrong %-- because
-the verb `i.want`/, suggestive of propositional attitudes, seems incompatible with
-the nonsentient `i.tree`/.  Structurally, the problem with this sentence seems analogous
-to the flawed `i.The trees wants to run away`/: the latter has incorrect singular/plural linkage,
+grammatic rules.  \i{The tree wants to run away from the dog} sounds wrong \mdash{} because
+the verb \i{want}, suggestive of propositional attitudes, seems incompatible with
+the nonsentient \i{tree}.  Structurally, the problem with this sentence seems analogous
+to the flawed \i{The trees wants to run away}: the latter has incorrect singular/plural linkage,
 the former has incorrect sentient/nonsentient linkage, so to speak.  But does this
 structural resemblance imply that singular/plural is as much part of semantics as grammar, or
 sentient/nonsentient as much part of grammar as semantics?  It is true that there are no
-morphological markers for `q.sentience` or its absence, at least in English %-- except
-perhaps for `q.it` vs. `q.him/her` %-- but is this an accident of English or revealing
+morphological markers for \q{sentience} or its absence, at least in English \mdash{} except
+perhaps for \q{it} vs. \q{him/her} \mdash{} but is this an accident of English or revealing
 something deeper?
-`p`
-
-`p.
-In effect,
+}
+\p{In effect,
 type-related observations can be grouped (not necessarily
 exclusively or exhaustively) into those I will call
-`i.macrotypes` %-- relating mostly to Parts of Speech and the functional treatment
-of phrases as applicative structures; `i.mesotypes` %-- engaged with
-existential/experiential qualities and `q.Ontological` classifications
+\i{macrotypes} \mdash{} relating mostly to Parts of Speech and the functional treatment
+of phrases as applicative structures; \i{mesotypes} \mdash{} engaged with
+existential/experiential qualities and \q{Ontological} classifications
 like sentient/nonsentient, rigid/nonrigid, and
-others I have discussed; and `i.microtypes` %-- related to lexemes and word-senses.
-This lexical level can include  `q.microclassification`/, or
+others I have discussed; and \i{microtypes} \mdash{} related to lexemes and word-senses.
+This lexical level can include  \q{microclassification}, or
 gathering nouns and verbs by the auxiliary prepositions they allow and
 constructions they participate in (such as, different cases), and
 especially how through this they compel various spatial and
 force-dynamic readings; their morphosyntactic resources for describing states
 of affairs; and, within semantics, when we look toward even more fine-grained classifications
-of particular word-senses, to reason through contrasts in usage.`footnote.
-So, conceiving microclasses similar in spirit to Steven Pinker in
-Chapter 2 of `cite<Pinker>;, though I'm not committing to using the
-term only in the way Pinker uses it.  Cf. also `cite<AnneVilnat>;, which
-combines a microclass theory I find reminiscent of `i.The Stuff of Thought` with
+of particular word-senses, to reason through contrasts in usage.\footnote{So, conceiving microclasses similar in spirit to Steven Pinker in
+Chapter 2 of \cite{Pinker}, though I'm not committing to using the
+term only in the way Pinker uses it.  Cf. also \cite{AnneVilnat}, which
+combines a microclass theory I find reminiscent of \i{The Stuff of Thought} with
 formal strategies like Unification Grammar.
-`footnote`  Microclasses can point out similarities
-in mental `q.pictures` that explain words' similar behaviors, or
+}  Microclasses can point out similarities
+in mental \q{pictures} that explain words' similar behaviors, or
 study why different senses of one word succeed or fail to be acceptable in particular phrases.
-There are `i.stains all over the tablecloth` and `i.paint splattered all over the tablecloth`/,
-but not (or not as readily) `i.dishes all over the tablecloth`/.  While `q.stains` is count-plural and
-`q.paint` is mass-aggregate, they work in similar phrase-structures because both
-imply extended but not rigid spatial presence; whereas `q.dishes` can work for
+There are \i{stains all over the tablecloth} and \i{paint splattered all over the tablecloth},
+but not (or not as readily) \i{dishes all over the tablecloth}.  While \q{stains} is count-plural and
+\q{paint} is mass-aggregate, they work in similar phrase-structures because both
+imply extended but not rigid spatial presence; whereas \q{dishes} can work for
 this schema only by mentally adjusting to that perspective, spatial construal shifting
-from visual/perceptual to practical/operational (we might think of dishes `q.all over` the
+from visual/perceptual to practical/operational (we might think of dishes \q{all over} the
 tablecloth if we have the chore of clearing them).  Such observations support
 microclassification of nouns (and verbs, etc.) via Ontological and
 spatial/dynamic/configuration criteria.
-`p`
-
-`p.
-Type-theoretic semantics can also apply Ontological tropes to unpack the overlapping mesh of word-senses,
-like `i.material object` or `i.place` or `i.institution`/.
+}
+\p{Type-theoretic semantics can also apply Ontological tropes to unpack the overlapping mesh of word-senses,
+like \i{material object} or \i{place} or \i{institution}.
 This mode of analysis is especially well illustrated when competing senses
-collide in the same sentence.  Slightly modifying two examples:`footnote.
-\cite[p. 40]{ChatzikyriakidisLuo} (former) and
+collide in the same sentence.  Slightly modifying two examples:\footnote{\cite[p. 40]{ChatzikyriakidisLuo} (former) and
 \cite[p. 4]{MeryMootRetore} (latter).
-`footnote`
-
-`sentenceList,
-`sentenceItem; The newspaper you are reading is being sued.
-`sentenceItem; Liverpool, an important harbor, built new docks.
-`sentenceList`
-
+}
+\begin{sentenceList}\sentenceItem{} The newspaper you are reading is being sued.
+\sentenceItem{} Liverpool, an important harbor, built new docks.
+\end{sentenceList}
 Both have a mid-sentence shift between senses, which is analyzed
-in terms of `q.type coercions`/.  The interesting detail of this treatment
+in terms of \q{type coercions}.  The interesting detail of this treatment
 is how it correctly predicts that such coercions are not guaranteed to
 be accepted:
-
-`sentenceList,
-`sentenceItem; The newspaper fired the reporter and fell off
+\begin{sentenceList}\sentenceItem{} The newspaper fired the reporter and fell off
 the table (?).
-`sentenceItem; Liverpool beat Tottenham and built new docks (?).
-`sentenceList`
-
+\sentenceItem{} Liverpool beat Tottenham and built new docks (?).
+\end{sentenceList}
 (again, slightly modifying the counter-examples).  Type coercions are
-`i.possible` but not `i.inevitable`/.  Some word-senses `q.block` certain coercions
-%-- that is, certain sense combinations, or juxtapositions, are disallowed.
+\i{possible} but not \i{inevitable}.  Some word-senses \q{block} certain coercions
+\mdash{} that is, certain sense combinations, or juxtapositions, are disallowed.
 These preliminary, motivating analyses carry to more
 complex and higher-scale types, like plurals (the plural of a type-coercion
 works as a type-coercion of the plural, so to speak).
 As it becomes structurally established that type rules at the
 simpler levels have correspondents at more complex levels, the use of
-type notions `i.per se` (rather than just `q.word senses` or other
+type notions \i{per se} (rather than just \q{word senses} or other
 classifications) becomes more well-motivated.
-`p`
-
-`p.
-Clearly, for example,
+}
+\p{Clearly, for example,
 only certain kinds of agents may have beliefs or desires, so
 attributing mental states forces us to conceive of their referents
 in those terms:
-
-`sentenceList,
-`sentenceItem; Liverpool wants to sign a left-footed striker.
-`sentenceItem; That newspaper plans to fire its editorial staff.
-`sentenceList`
-
-This `i.can` be analyzed as `q.type coercions`/; but the type-theoretic machinery should contribute
+\begin{sentenceList}\sentenceItem{} Liverpool wants to sign a left-footed striker.
+\sentenceItem{} That newspaper plans to fire its editorial staff.
+\end{sentenceList}
+This \i{can} be analyzed as \q{type coercions}; but the type-theoretic machinery should contribute
 more than just obliquely stating linguistic wisdom, such as
 maintaining consistent conceptual frames or joining only suitably
-related word senses.  The sense of `i.sign` as in `q.employ to play on
-a sports team` can only be linked to a sense of Liverpool as the
-Football Club; or `i.fire` as in
-`q.relieve from duty` is only compatible with newspapers as
+related word senses.  The sense of \i{sign} as in \q{employ to play on
+a sports team} can only be linked to a sense of Liverpool as the
+Football Club; or \i{fire} as in
+\q{relieve from duty} is only compatible with newspapers as
 institutions.  These dicta can be expressed in multiple ways.
 But the propagation of classifications
-(like `q.inanimate objects` compared to
-`q.mental agents`/) through complex type structures lends credence to the
+(like \q{inanimate objects} compared to
+\q{mental agents}) through complex type structures lends credence to the
 notion that type-theoretic perspectives are more than just an expository tool;
 they provide an analytic framework which integrates grammar and semantics, and
 various scales of linguistic structuration.
 For instance, we are prepared to accept some examples of dual-framing
 or frame-switching, like thinking of a newspaper as a physical object and a city government
-(but we reject other cases, like `i.Liverpool voted in a new city government and signed a
-new striker` %-- purporting to switch from the city to the Football Club).  The rules for
+(but we reject other cases, like \i{Liverpool voted in a new city government and signed a
+new striker} \mdash{} purporting to switch from the city to the Football Club).  The rules for
 such juxtapositions appear to reveal a system of types with some parallels to
 those in formal settings, like computer languages.
-`p`
-
-`p.
-In short, `q.Ontological` types like `i.institution` or `i.place` serve in some
+}
+\p{In short, \q{Ontological} types like \i{institution} or \i{place} serve in some
 examples to partition senses of one multi-faceted word.  Here they reveal
-similar cognitive dynamics to reframing-examples like `i.to the press`/, where
+similar cognitive dynamics to reframing-examples like \i{to the press}, where
 Ontological criteria (like reading something as a place) are triggered by
 phrase-scale structure.  But there are also interesting contrasts:
-the `i.newspaper` and `i.Liverpool` examples
+the \i{newspaper} and \i{Liverpool} examples
 imply that some words have multiple framings which are well-conventionalized;
 newspaper-as-institution feels less idiomatic and metaphorical than
-press-as-place.  So these examples suggest two `q.axes` of variation.
+press-as-place.  So these examples suggest two \q{axes} of variation.
 First, whether the proper Ontological framing follows from other word-choices
-(like `q.fire` in `i.the newspaper fired the reporter`/, which has
+(like \q{fire} in \i{the newspaper fired the reporter}, which has
 its own semantic needs), or from morphosyntax
-(like the locative in `i.to the press`/); and, second, whether triggered framings work
+(like the locative in \i{to the press}); and, second, whether triggered framings work
 by selecting from established word senses or by something more metaphorical.
-Metaphors like `i.to the press` do have an element of standardization;
-but apparently not so much so to be distinct senses: note how `i.the press` as metaphorical place
-does not work in general: `qmarkdubious;`i.at the press`/, `qmarkdubious;`i.near the press`
-(but `i.at the newspaper`/, `i.near the newspaper`
-%-- imagine two journalists meeting outside the paper's offices %-- sound quite reasonable).
-`p`
-
-`p.
-The `q.type coercion` analysis works for mid-sentence frame-shifts; but other
-examples suggest a more gradual conceptual `q.blending`/.  For example, the
-place/institution dynamic is particularly significant for `i.restaurant`
+Metaphors like \i{to the press} do have an element of standardization;
+but apparently not so much so to be distinct senses: note how \i{the press} as metaphorical place
+does not work in general: \qmarkdubious{}\i{at the press}, \qmarkdubious{}\i{near the press}
+(but \i{at the newspaper}, \i{near the newspaper}
+\mdash{} imagine two journalists meeting outside the paper's offices \mdash{} sound quite reasonable).
+}
+\p{The \q{type coercion} analysis works for mid-sentence frame-shifts; but other
+examples suggest a more gradual conceptual \q{blending}.  For example, the
+place/institution dynamic is particularly significant for \i{restaurant}
 (whose spatial location is, more so, an intrinsic part of its
-identity).  Being a `i.place` implies both location and extension; most places are not single
+identity).  Being a \i{place} implies both location and extension; most places are not single
 points but have an inside where particular kinds of things happen.  I am not convinced
 that restaurant as place and as institution are separate word senses; perhaps, instead,
 conversations can emphasize one aspect or another, non-exclusively.  As I have argued,
-we need not incorporate all framing effects via `q.subtypes` (restaurant as either
-subtype of hypothetical `q.types of all` places or institutions, respectively).  But
-`q.placehood`/, the Ontological quality of being a place %-- or analogously being
-a social institution %-- identify associations that factor into cognitive frames; types
+we need not incorporate all framing effects via \q{subtypes} (restaurant as either
+subtype of hypothetical \q{types of all} places or institutions, respectively).  But
+\q{placehood}, the Ontological quality of being a place \mdash{} or analogously being
+a social institution \mdash{} identify associations that factor into cognitive frames; types
 can then be augmented with criteria of tolerating or requiring one association or another.
-So if `q.restaurant` is a type, one of its properties is an institutionality that `i.may`
+So if \q{restaurant} is a type, one of its properties is an institutionality that \i{may}
 be associated with its instances.  In conversation,
 a restaurant may be talked about as a business or community, foregrounding this
 dimension.  Or (like in asking for directions) its spatial dimension may be foregrounded.
 The availability of these foregroundings is a feature of a hypothetical restaurant type,
 whether or not these phenomena are modeled by subtyping or something more sophisticated.
-The `q.newspaper` examples suggest how Ontological considerations
+The \q{newspaper} examples suggest how Ontological considerations
 clearly partition distinct senses marked by properties like objecthood or
-institutionality (respectively).  For `q.newspaper` the dimensions are less available for
-foregrounding from a blended construal, than `q.unblended` by conventional usage; that
-is why reframings evince a type `i.coercion` and not a gentler shift of emphasis.
-The example of `i.restaurant`/, in contrast, shows that competing routes for
+institutionality (respectively).  For \q{newspaper} the dimensions are less available for
+foregrounding from a blended construal, than \q{unblended} by conventional usage; that
+is why reframings evince a type \i{coercion} and not a gentler shift of emphasis.
+The example of \i{restaurant}, in contrast, shows that competing routes for
 cognitive framing need not solidify into competing senses, though they trace
 various paths which dialogs may follow.
 But both kinds of examples put into evidence an underlying
 cognitive-Ontological dynamic which has potential type-oriented models.
-`p`
-
-`p.
-At the most general level %-- what I called `i.macrotype` modeling %-- a type
+}
+\p{At the most general level \mdash{} what I called \i{macrotype} modeling \mdash{} a type
 system recognizes initially only the grammatical backbone of expressions, and
 then further type nuances can be seen as shadings and interpretations which add substance
 to the syntactic form.  So in type-theoretical analysis at this more grammatic level,
@@ -594,8 +516,6 @@ of conceptual and cognitive resources so that the syntactic backbone can be fill
 Perhaps a useful metaphor is grammar as gravitation, or the structure of a gravitational
 field, and semantics is like the accretion of matter through the interplay of multiple
 gravitational centers and orbits.  For this analogy, imagine typed lambda
-reductions like `PropToNYieldsN; taking the place of gravitational equations;
+reductions like \PropToNYieldsN{} taking the place of gravitational equations;
 and sentences' grammatic spine taking the place of curvature pulling mass into a planetary center.
-`p`
-
-
+}
