@@ -99,14 +99,14 @@ enmeshing them in an ecosystem oriented toward automation \mdash{}
 the difference between deploying formal repesentations to 
 model (some aspects) of language processing, syntax, and 
 semantics, and trying to program software to \i{automate} the 
-construction, translation, and pipeling between and among 
+construction, translation, and pipeline between and among
 formal models.  When situating research relative to 
 computational linguistics, we should bear in mind the 
 metatheoretical point that \i{incorporating} formal 
 schema into linguictis models does not \i{necessarily} 
 mean committing ourselves to a task of programming 
 computers to discover the target representations 
-automatically, given raw linguistic input. 
+on their own, given raw linguistic input.
 }
 \p{But this perspective is not only metatheoretical: I believe  
 that the nature of language is \i{intrinsically} \q{hybrid} 
@@ -114,7 +114,7 @@ in a manner that warrants neither blind faith in
 automation nor \i{a priori} disengagement with formalizing 
 projects.  This is first of all because language is neither 
 wholly isolated from other cognitive phenomena nor 
-without some structural autonomy: it's reasonable to 
+without some structural autonomy: it is reasonable to
 suppose that there are distinct intellectual faculties 
 internal to our understanding of language, while other 
 reasonings intrinsic to parsing the form and intentions 
@@ -128,7 +128,7 @@ ignores extralinguistic cognition, nor one which
 treats \i{all} linguistic processing as inseperable 
 from the totality of our cognitive processes from moment to moment, 
 are complete; the larger account needs to place 
-sentence on a spectrum where extralinguistic and (I'll say) 
+sentences on a spectrum, where extralinguistic and (I'll say)
 \q{intra-linguistic} theoretical machinery is 
 available to analyze different sentences as their 
 form and context demands. 
@@ -148,14 +148,18 @@ along a two-axis spectrum defined both by extralinguistic
 integration (or lack thereof) and by formal tractability 
 (or lack thereof), like so: (this is intended as an intuitive 
 sketch, not a formal model).  
-$$\begin{matrix}
-  \text{Logicomorphic}  & --- & \text{Extra-Linguistic} \\
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\matrix (m) [matrix of math nodes,nodes in empty cells,right delimiter={},left delimiter={}]{
+\text{Logicomorphic}  & --- & \text{Extra-Linguistic} \\
      \| & &  \| \\
   \text{Intra-Linguistic}  & ---   &  \text{Interpretive}
-\end{matrix}$$
+ };
+ \draw (m-1-1)-- (m-2-2);
+ \draw (m-2-1)-- (m-1-2);
+\end{tikzpicture}
 I will elucidate the terms on that picture later.  Summarily, though, 
 I claim that \i{some} sentences evince logically straightforward 
-compositional pattern that can be analyzed \i{either} at the 
+compositional patterns that can be analyzed \i{either} at the
 language-specific (syntactic or semantic) level \i{or} within 
 cognitive registers outside of language proper (e.g., situational 
 shemata); conversely, some sentences have nuances that 
@@ -205,7 +209,7 @@ at this level where the model is undeveloped and thus fairly simple,
 is close to Dependency Grammar: in lieu of a head/dependent relation 
 we can treat one word (or similar lexical unit) as a \i{modifier} and the  
 second as a \q{ground}.  I believe this two-pronged picture is not 
-complete vacuous, but is general and underspecified enough to 
+completely vacuous, but is general and underspecified enough to
 spread over both syntax and semantics, and over competing 
 paradigms.  I will call the modifier's effect on its ground 
 a \i{transform}, and the two words together (taking \q{word} as a 

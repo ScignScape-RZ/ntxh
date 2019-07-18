@@ -1,7 +1,7 @@
 
 `section.Functional Type Theory and Dependency Grammar`
 `p.
-My discussion toward the end of the last section focused on 
+My discussion so far has focused on 
 characterizing sentences' holistic meaning.  On the face of 
 it, such holistic analysis is more semantic than syntactic.  
 However, syntactic paradigms can be grounded in theories 
@@ -9,13 +9,13 @@ of how language elements aggregate `i.toward` holistic meaning.
 `p`
 
 `p.
-Here I propose the language of `q.cognitive transforms` 
+Here I propose a notion of `q.cognitive transforms` 
 %-- that holistic meanings emerge from a series of 
 interpretive and situational modeling modifications 
 which progressively refine our understanding of a 
 speaker's construal of our environing context and her 
 propositional attitudes.  While elucidation of these 
-transforms as cognitive phenomena may be semantics, 
+transforms as cognitive phenomena may belong to semantics, 
 syntactic structure dictates the `i.sequence` of 
 transforms.  Many transforms are expressed by 
 individual word-pairs.  Taking the temporal or logical 
@@ -81,7 +81,62 @@ see the `q.parse\_sxpr` method in file xxx.cpp).
 `p`
 
 `p.
-In practice, many functional parts of speech 
+A common paradigm is to consider natural-language types as generated 
+by just two bases %-- a noun type `N; and a proposition type 
+`Prop;, the type of sentences and of sentence-parts which are 
+complete ideas %-- having in themselves a propositional content 
+(see e.g. `cite<BarkerShanTG>; or `cite<KubotaLevine>;).    
+Different models derive new types on this basis in different ways.
+One approach, inspired by mathematical `q.pregroups`/, establishes 
+derivative types in terms of word pairs %-- an adjective followed 
+by a noun yields another noun (a noun-phrase, but `N; is the phrase's 
+`i.type`/) %-- e.g., `i.rescued dogs`/, like `i.dogs`/, is conceptually 
+a noun.  Adjectives themselves then have the type of words which form 
+nouns when paired with a following noun, often written as 
+`NOverN;.  Pregroup grammars distinguish left-hand and right-hand 
+adacency %-- `i.bark loudly`/, say, demonstrates an adverb `i.after` a 
+verb, yielding a verb phrase: so `q.loudly` here has the type of a 
+word producing a verb in combination with a verb to its `i.left` 
+(sometimes written `VUnderV;); by contrast adjectives combine with 
+nouns to their `i.right`/.
+`p`
+
+`p.
+A related formalization, whose formal 
+analogs lie in Typed Lambda Calculus, abstracts from left-or-right 
+word order to models derived types as equivalent (at least 
+for purposes of type attribution) to `q.functions`/.  
+This engenders a fundamental notion of functional `i.application` 
+and operator/operand distinctions: 
+
+`quote,
+`i.Categorial Grammars` make the connection between the 
+first and the second level of the ACG.  These models are 
+typed applicative systems that verify if a linguistic 
+expression is syntactically well-formed, and then construct 
+its functional semantic interpretation.  They use the 
+`i.fundamental operation of application` of an operator to an 
+operand.  The result is a new operand or a new operator. 
+This operation can be repeated as many times as necessary 
+to construct the linguistic expressions' functional semantic 
+representation.
+\cite[p. 1]{AurelieRossi}
+`quote`
+
+So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
+an adjective takes a noun and produces another noun; 
+and a verb takes a noun and produces a proposition 
+(see `i.students complained`/).  By `q.function` we can consider 
+some kind of conceptual tranformation: `i.loudly` transforms the 
+concept `i.bark` into the concept `i.loud bark`/.  Another 
+feature of this `q.function type` interpretation is that 
+words can be treated as functions taking multiple arguments 
+%-- a verb, for example, can have as many as three 
+`q.inputs` (subject, direct object, and indirect object).  
+`p`
+
+`p.
+In practice, mosp functional parts of speech 
 can be formally modeled with one `q.argument`/; 
 they have a single input and output type.  
 These cases conveniently lend themselves 
@@ -704,4 +759,27 @@ reductions like `PropToNYieldsN; taking the place of gravitational equations;
 and sentences' grammatic spine taking the place of curvature pulling mass into a planetary center.
 `p`
 
+`p.
+As I have argued, sentences' progression toward complete ideas can be 
+assessed more semantically %-- accretion of conceptual detail %-- 
+or more syntactically, in terms of regulated type resolutions pulling in 
+from a tree's leaves to its root.  The latter model is a kind of 
+schematic outline of the former, marking signposts in the accretion 
+process rather like a meetings' agenda.  Type theory allows points in 
+conceptual accretion to be selected %-- corresponding to nested phrases 
+%-- where type-checking signals that the accretion is progressing 
+in an orderly fashion.  Or, more precisely, type-checking acts 
+as a window on a cognitive process; phrasal units are like 
+periodic gaps in a construction wall allowing us to reconstruct interpretive 
+processes, and the possibility of certain linguistic elements being 
+assigned types marks the points where such windows are possible.  
+So type theory can impose a formal paradigm on our assessment 
+of sentence structure, but at the cost of sampling only 
+discrete steps of an unfolding completion toward understanding.  
+In practice, this discrete analysis should be supplemented 
+with a more holistic and interpretive paradigm, which explores 
+%-- perhaps speculatively, without demanding thorough 
+formalization %-- the gaps between the formalizable windows.  
+I will transition toward this style of analysis in the next section. 
+`p`
 

@@ -21,13 +21,13 @@ syntax.  Consider hypothetical, example sentences like
 
 In (\ref{itm:having}), `i.having` is necessary to syntactically transform its ground 
 `i.lied` from a verb-form to a noun (something which can be inserted into a 
-possessive clause).  Analogously, in (\label{ref:whether}) `i.whether` modifies 
+possessive clause).  Analogously, in (\ref{itm:whether}) `i.whether` modifies 
 `i.is` (since this is the head of a subordinate clause), wrapping a propositional 
 clause into a noun so that it furnishes a direct object to the verb 
 `i.question`/.  The essential transformation in these cases is 
 motivated by grammatic considerations, particularly part-of-speech: 
-a verb and a subordinate, propositionally complete clause (in \label{ref:having} and 
-\label{ref:whether}, respectively) need (for syntactic propriety) to be 
+a verb and a subordinate, propositionally complete clause (in \ref{itm:having} and 
+\ref{itm:whether}, respectively) need (for syntactic propriety) to be 
 modified so as to play a role in a site where a noun is expected 
 (in effect, they need to be bundled into a noun-phrase).
 `p`
@@ -73,7 +73,7 @@ Consider locative constructions like
 `sentenceItem; \label{itm:press} Let's go to the press.
 `sentenceList`
 
-Here nouns like `i.Grandma`/, `i.the lawyers`/, and `the press` are 
+Here nouns like `i.Grandma`/, `i.the lawyers`/, and `i.the press` are 
 used at sites in the surrounding sentence-forms that call for a designation 
 of place %-- this compels us to read the nouns as describing a place, 
 even while they are not intrinsically spatial or geographical 
@@ -134,7 +134,7 @@ Combinatory Categorial Grammar).  For instance, we can recognize
 nouns and propositions (sentences or sentence-parts forming 
 logically complete clauses) as primitive types, and 
 treat other parts of speech as akin to `q.functions` between 
-other types.  For instance, a verb combines with a noun to 
+other types.  A verb, say, combines with a noun to 
 form a proposition, or complete idea: `i.go` acts on 
 `i.We` to yield the proposition `i.We go`/.  Schematically, 
 then, verbs are akin to functions that map nouns to propositions.  
@@ -144,8 +144,8 @@ mean a linguistic unit which is functionally a noun, or verb;
 in this sense a noun-phrase is a kind of noun %-- i.e., 
 a linguistic unit whose `i.type` is nominal).  
 This provides a type-theoretic architecture through 
-which transform-pairs can be analyzed.  For instance, 
-an adverb modifies a verb; so an adverb in a transform 
+which transform-pairs can be analyzed.  
+An adverb modifies a verb; so an adverb in a transform 
 pair must have a verb as a ground.  Moreover, the `q.product` 
 of that transform is also a verb, in the sence that the 
 abverb-verb pair, parsed as a phrase, can only be 
@@ -250,7 +250,7 @@ ever-more-precise reading of speaker intent, then each step in the
 tranformation contributes consequential details to the final 
 understanding.  Moreover, `i.lied` is only present in the transformation 
 signified by `i.his` insofar as it has in turn been transformed by 
-`i.having`/: each the modifier in a transform-pair has a degree of 
+`i.having`/: each modifier in a transform-pair has a degree of 
 temporal priority because `i.its` effects are directly preesent 
 in the context of the following transformation.  This motivates a 
 flavor of Dependency Grammar where the head/dependent ordering is 
@@ -296,7 +296,7 @@ and semantics, so I will pivot to some analyses which attend more
 to the semantic dimension.
 `p`
 
-`subsection.Semantic Analyses of Transform-Pairs`
+`spsubsectiontwoline.Semantic Analyses of Transform-Pairs`
 `p.
 In the simplest cases, a transform-pair represents a modifier 
 adding conceptual detail to a ground, like `i.black dogs` 
@@ -336,7 +336,7 @@ interpret this in terms of patients the vet has seen over the course of
 a day: 
 
 `sentenceList,
-`sentenceItem; \label{itm:vet} We're going after the vet's two latest dogs.
+`sentenceItem; \label{itm:vet} We have to wait until after the vet's two latest dogs.
 `sentenceItem; \label{itm:organization} I'm concerned about the rescue organization's 
 two latest dogs.
 `sentenceList`
@@ -374,7 +374,7 @@ will have new owners, or be sent to a shelter, or that their rescuers are
 members of an animal-welfare organization %-- in short, no element of 
 the conventionalized backstory usually invoked by `i.rescued dogs` is present.  
 Analogously, there is no lexical subdivision for `i.latest` which regulates 
-the variance in time-frames among (\ref{itm:latest}-\ref{itm:organization}).  
+the variance in time-frames among (\ref{itm:latest})-(\ref{itm:organization}).  
 It is only by inferring a likely situational background that 
 conversants will make time-scale assumptions based on one situation 
 involving dog ownership, another involving veterinary exams, and a 
@@ -386,7 +386,7 @@ That is to say, the time-scale inference I have analyzed is essentially
 `i.extralinguistic`/: there is no specific `i.linguistic` knowledge 
 (lexical or grammatical, or even pragmatic inferences in the sense of 
 deictic or anaphora resolution) which warrants the situational classification 
-of (\ref{itm:latest}-\ref{itm:organization}) into different time scales.  
+of (\ref{itm:latest})-(\ref{itm:organization}) into different time scales.  
 Instead, the inference is driven by (to some degree socially or culturally 
 specific) background-knowlege about phenomena like veterinary clinics 
 or animal rescue groups.  Whether or not the nuances in `i.rescued dogs` 
@@ -475,10 +475,14 @@ in the City of New York, since the five boroughs collectively span the
 whole of city.  In (\ref{itm:commute}), by contrast, we should understand 
 `i.New Yorkers` as referring to residents of the metropolitan area `i.outside` 
 the city itself (who commute `i.to` the city); and moreover `i.All` should 
-be read less then literally: we do not here the speaker in (\ref{itm:commute}) 
+be read less then literally: we do not hear the speaker in (\ref{itm:commute}) 
 committing to the proposition that `i.every single` New Yorker complains.  
 So both `i.All` and `i.New Yorkers` have noticeably different meanings in the 
-two sentences.  However, I cannot find any purely linguistic mechanism 
+two sentences.
+`p`
+
+`p.
+And yet, I cannot find any purely linguistic mechanism 
 (lexical, semantic, syntactic, morphological) which would account for 
 these difference as linguistic signifieds `i.per se`/: the actual differences 
 depend on conversants knowing some details about New York geography, and 
@@ -523,10 +527,9 @@ not yet won two games: while it is logically accurate to describe a
 team on a long winning streak as repeatedly winning two consecutive games, it would 
 be very unexpected for (\ref{itm:consecutive}) to be used in a case where the Leafs 
 lost their first game of the season, after a three-plus-game winning streak.  
-And in (\ref{itm:goal}) any hockey fan would understand that the Leafs, for the first 
-time, failed to score a goal; even though there is no linguistic rule 
-foreclosing the reading such that the Leafs have not scored a goal at all 
-%-- i.e., that for yet another game they failed to score a goal.    
+And in (\ref{itm:goal}) any hockey fan would hear that the Leafs had scored 
+at least one goal in all prior games; even though there is no linguistic rule 
+foreclosing the reading such that the Leafs have not scored a goal in `i.any` game.    
 `p`
 
 `p.
@@ -578,7 +581,7 @@ This is the basis of my proposing `q.logicomorphic` qualities
 as one axis for evaluating sentences, which I will now discuss further.
 `p`
 
-`subsection.Logical Structure versus Sentence Structure`
+`spsubsectiontwoline.Logical Structure versus Sentence Structure`
 `p.
 Let us grant in general that particular sentences can be 
 mapped to distinct, relatively transparent propositional 
@@ -660,7 +663,7 @@ and how predicates or references are bound together to create more
 precise significations (`i.the tropics and subtropics`/, 
 `i.in Mujahedeen schools in Ashraf`/, `i.a corresponding end tag`/).
 Properties ascribed to subject foci are neatly drawn, both in 
-conveying the property intended and its bearer, accoriding to 
+conveying the property intended and its bearer, according to 
 the sentence's terms: `i.the most common tumour found in babies`/, 
 `i.a leading cause of illness and death`/, 
 `i.China intends to develop a small space station`/, 
@@ -672,15 +675,15 @@ birth tumours, etc., are crisply figured.
 `p`
 
 `p.
-For many philosophers of language, identiying similar 
+For many philosophers of language, identifying similar 
 logical structuration is an intrinsic aspect of 
 coming to terms with human language in general.  This paradigm 
-also reinforces the goal of `AI; Natural Language Processing, 
+also reinforces the goal of Artificial Intelligent Natural Language Processing, 
 because computers can certainly engage in the kind of 
 symbolic-logical reasoning outlining signified meanings in cases 
 where language reciprocates propositional morphology very clearly.  
 The problem is that language artifacts very often cloak their 
-logical core, such that examples like (\ref{itm:tumour}-\ref{itm:Warhol}) 
+logical core, such that examples like (\ref{itm:tumour})-(\ref{itm:Warhol}) 
 are not representarive of language as a whole.  Logical patterns 
 may certainly be present, but they are not necessarily 
 structurally reproduced in surface-level formations; rather a 
@@ -712,8 +715,8 @@ creation, distinct from the fictional time of her narrated world.
 `p`
 
 `p.
-I think the intended propositional content in (\ref{itm:ants}-\ref{itm:princess}) 
-is no less evident than in (\ref{itm:tumour}-\ref{itm:Warhol}); however, interpreting 
+I think the intended propositional content in (\ref{itm:ants})-(\ref{itm:princess}) 
+is no less evident than in (\ref{itm:tumour})-(\ref{itm:Warhol}); however, interpreting 
 the topical foci and predicate attributions constituting such 
 propositional content requires a holistic reading whose compositional 
 structure is not recapitulated in the sentence-forms themselves.  
@@ -743,7 +746,7 @@ of the given phrasal morpholgy.
 `p`
 
 `p.
-On the other hand, I call examples like (\ref{itm:ants}-\ref{itm:princess}) 
+On the other hand, I call examples like (\ref{itm:ants})-(\ref{itm:princess}) 
 `q.interpretive` because the sentences' propositional content, with 
 its logical structure, does not explain the compositional 
 rationale for the explicit linguistic form: we cannot read any 
@@ -763,7 +766,7 @@ final propositional via some pragmatic or extralinguistic calculation.
 `p`
 
 `p.
-Accordingly, the `i.logicomorphic`/`i.interpretive` distinction %-- along with the 
+Accordingly, the `i.logicomorphic`//`i.interpretive` distinction %-- along with the 
 overall contrast between linguistic and extralinguistic 
 aspects of meaning %-- are contrasts between sentences that become manifest 
 in the compositional maxims evident at subsentence (phrasal and 
