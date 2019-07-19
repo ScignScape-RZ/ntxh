@@ -1,0 +1,50 @@
+`p.
+Type-Theoretic Semantics holds out the hope that many 
+syntactic and semantic rules can `q.fall out` as 
+a direct consequence of type-checking requirements.  
+A correct sentence is one built up from a chain of 
+transforms where the outcome of one transform is type-compatible 
+with the modifier of the next one, with the eventual or 
+`q.root` transform, which completes the sentence, yielding a 
+proposition.  This expresses, in linguistic terms like 
+`q.outcome` and `q.modifier`/, the same type-checking 
+requirements as in Lambda Calculus, which would use 
+more mathematical vocabulary: the output of one function must 
+be type-compatible with the input parameter of the next 
+function, insofar as this output is to be substituted for a 
+lambda-abstracted symbol in the outer function's formula.  
+`p` 
+
+`p.
+Models based on Functional Type Theory are useful in this context 
+because in their case order of precedence falls out automatically.  
+In linguistics, a functional type theory can be seen as a 
+theory where a small set of primitive Part of Speech types 
+%-- e.g., nouns and propositions %-- generates a collection 
+of further `q.functional` types.  For any two (not necessarily 
+distinct) types, the functional transformations which take 
+inputs of one type and produce outcomes of a second type 
+reprecent a third type, which can be notated something like 
+`TyOneToTyTwo;.  Assuming all lexemes are assigned a Part of 
+Speech drawn from such a type system, the definition of 
+functional types directly yields a precedence order: 
+instances of functional types are functionally dependent 
+on their inputs, which are therefore precedent to them.  
+On this basis, any well-typed functional expression has a 
+unique precedence ordering on its terminal elements 
+(i.e., its `q.leaves` when the expression is viewed as a 
+tree, or its nodes when viewed as a graph), which 
+can be uncovered via a straightforward algorithm 
+(one implementation is part of this paper's data set; 
+see the `q.parse\_sxpr` method in file xxx.cpp).
+`p`
+
+Another 
+feature of this `q.function type` interpretation is that 
+words can be treated as functions taking multiple arguments 
+%-- a verb, for example, can have as many as three 
+`q.inputs` (subject, direct object, and indirect object).  
+`p`
+
+
+

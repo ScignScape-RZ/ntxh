@@ -415,7 +415,7 @@
 
 \newcommand{\XRelY}{\mbox{\ensuremath{x} \Rel{} \ensuremath{y}}}
 
-\newcommand{\tinyurl}[1]{{\raisebox{2pt}{{\scriptsize \url{#1}}}}} 
+\newcommand{\tinyurl}[1]{\raisebox{2pt}{{\scriptsize \url{#1}}}}
 
 \usepackage[colorlinks=true]{hyperref}
 
@@ -430,13 +430,13 @@
 } 
 
 
-\makeatletter
-\Hy@AtBeginDocument{%
-	\def\@pdfborder{0 0 0}% Overrides border definition set with colorlinks=true
-	\def\@pdfborderstyle{/S/U/W .25}% Overrides border style set with colorlinks=true
-	% Hyperlink border style will be underline of width 1pt
-}
-\makeatother
+%\makeatletter
+%\Hy@AtBeginDocument{%
+%	\def\@pdfborder{0 0 0}% Overrides border definition set with colorlinks=true
+%	\def\@pdfborderstyle{/S/U/W .25}% Overrides border style set with colorlinks=true
+%	% Hyperlink border style will be underline of width 1pt
+%}
+%\makeatother
 
 
 %\titlespacing{\section}{.25\textwidth}{*2.8}{*-.4}[5pc]
@@ -675,6 +675,8 @@
 		{\hspace{10pt} #1}
 	\end{noindent}
 }
+
+\newcommand{\tti}[1]{\texttt{\textit{#1}}}
 
 \newcommand{\udref}[2]{}
 
