@@ -1628,4 +1628,82 @@ language is an `i.interface to` interpretive-imaginative
 cognitive capabilities.  
 `p`
 
+`subsection.Cognitive-Transform Interpretation`
 
+`p.
+My argument is then that extra-linguistic cognition %-- e.g., narrative 
+construals, or situational understanding %-- can supply crucial 
+steps in the emergence of sentences' intended propositional content; 
+so relying on logical assessment of propositional content and 
+correlated linguistic patterns is, at best, incomplete.  
+I have presented numerous sentences which, in my opinion, evince 
+patterns whose rational contributions lie outside linguistic 
+cognition proper, but which become attached as interpretations 
+or refinements of given linguistic content; for example 
+the semantic model of `i.critical mass` or `i.tipping point` 
+encapsulating a complex situational presenting. 
+`p`
+
+`p.
+The extra-linguistic source of many signifying contributors can 
+be observed directly in reference to more formalized 
+(say, Dependency-Grammatic) analyses (or indeed what they 
+leave out).  In the (\ref{actually}) case, the modifier 
+`i.actually` implies that the asserted fact is somehow surprising 
+and counterintuitive; it's easy enough to conclude that the 
+speaker senses a certain lexical frisson, particularly in 
+how `i.camping` is described as `i.lodging`/.  So the work 
+of (\ref{actually}) is not just to point out that 
+people camp on the beach, but also that this arrangement is the 
+most popular `q.lodging` even though in its usual sense 
+`i.lodging` applies more to hotels and inns.  This latter 
+pattern circuits especially through the words `i.actually`/,
+`i.lodging`/, and `i.camping`/, none of which are word-relations 
+identified by the Universal Dependency parse (refer back to 
+Figure~\ref{fig:actuallydbl}) but which can be seen as a second-order 
+network superimposed on the sentence's syntactic core.
+`p`
+
+`p.
+For other examples, in (\ref{itm:amibence}) the `i.colonial ambience` and 
+`i.tropical climate` disjunction partly shifts the sense of 
+`i.the city` from its stutus as something constructed and 
+historical (the `i.architecture` is colonial) to a geographic location.  We 
+of course read `i.the climate` as `i.its` (the city's) climate, which 
+establish a link between the two `i.the`/.  This is almost anaphoric 
+%-- if the phrase were `i.its climate` we would resolve `i.it` backwark 
+to `i.the city` %-- but the pattern is varied, by replacing 
+`i.its climate` with `i.the climate`/, which conceptually foregrounds 
+the aspect of climate as an ambient phenomenon (amenable to a 
+definite article) rather than just a possession (viz., a property 
+of geographic places).  So there are several intersecting patterns 
+%-- both referential commonality and interpretive changes (see also 
+the `q.Liverpool` examples for city qua architecture and qua locale) 
+%-- between the two sentence-halves, which are not described in the 
+parse-graph.  And in, say, 
+
+`sentenceList,
+`sentenceItem; \label{itm:pipe} We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well.
+\udref{en_gum-ud-train}{email-enronsent03_01-0143}
+`sentenceList`
+
+there is a two-layer scope implication: given `i.also` we read the hearer as knowing that 
+they are picketing some `i.other` project.  But we also hear `i.the pipe fitters` 
+as referring to some specific group of pipefitters, with which the speaker has 
+some contractual relation; we do not interpret this as a comment about pipe-fitters in 
+general.
+`p`
+
+`p.
+The details of (\ref{itm:pipe}), in short, bound the scope of 
+`i.the pipe fitters` from both above and below.  The importance of 
+`i.also` for this interpretive understanding is elided from the 
+copora parse-graph, which just sees `i.also` as a common auxiliary.  
+In general, the extra `q.layers` of meaning I have identified for 
+(\ref{itm:actually}), (\ref{itm:amibence}), and (\ref{itm:pipe}) 
+require some interpretive (and seemingly extralinguistic) 
+reasoning, so they are not explicitly traced in purely 
+formulaic Intermediate Representations involving core 
+linguistic aspects, such as parse-graphs manifesting explicit 
+syntax.  
+`p`

@@ -307,15 +307,12 @@ has index 2 relative to the verb, and the indirect object has
 index 3), we can transform any expression-tree into a labeled graph. 
 Parse graphs can then be annotated with these double-indices 
 via the same presentations employed for Link or Dependency Grammar 
-labels.  Sentence (\ref{actually}) could be visualized as in 
-Figure~\ref{fig:actuallydbl}. 
-Alternatively, the double-indices can be juxtaposed 
-with conventional Dependency labels %-- one option is to 
-graph the indices below the sentence, and relation 
-labels above it.  The examples (\ref{ambience}) and (\ref{actually}) 
-are annotated in the Universal Dependency corpus, so the 
-two annotation styles can be juxtaposed (figures \ref{fig:ambience} 
-and \ref{fig:actually}).
+labels.  Sentence (\ref{itm:actually}) could be visualized as in 
+Figure~\ref{fig:actuallydbl}, with the double-indices can be juxtaposed 
+with conventional Dependency labels (the indices below the sentence, 
+and relation labels above it); the upper parse is drawn from the 
+Universal Dependency corpus (other annotated examples are included 
+in this paper's downloadable data set).
 %`input<figactually>;
 %`input<figambience>; 
 `p`
