@@ -1,4 +1,97 @@
 
+\newwrite\ntxhFile
+\immediate\openout\ntxhFile=\jobname.ntxh
+
+\newcounter{sentenceCounter}{}
+
+\newcommand{\writeIncSentenceCounter}{\refstepcounter{sentenceCounter}(\arabic{sentenceCounter})}{}
+
+
+\newcommand{\listItemMark}{\rotatebox{30}{\raisebox{2pt}{\color{green!30!yellow!40!black}{\begin{tiny}$\blacktriangleright$\end{tiny}}}}}
+
+\newenvironment{sentenceList}{\writeNtxhSentenceListStart%
+\begin{list}{\listItemMark}{\setlength{\leftmargin}{.5em}\setlength{\itemsep}{-.1em}\setlength{\topsep}{.85em}}\begin{small}}{\writeNtxhSentenceListEnd\end{small}\end{list}}
+
+\newcommand{\sentenceItem}{\item \writeIncSentenceCounter}{}
+
+\newcounter{ntxhCounter}
+\newcounter{ntxhGroupCounter}
+\newcounter{ntxhLocalCounter}[ntxhGroupCounter]
+
+\newcommand{\writeNtxh}[1]{\immediate\write\ntxhFile#1}
+
+\newcommand{\writeNtxhSentenceListStart}{%
+\stepcounter{ntxhGroupCounter}%
+\immediate\write\ntxhFile{%
+!/ SentenceList^^J%
+$i: \thentxhGroupCounter^^J%
+$p: \thepage^^J%
+}}
+
+\newcommand{\writeNtxhSentenceListEnd}{%
+\immediate\write\ntxhFile{%
+/!^^J%
+<+>^^J%
+}}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+\newcommand{\writeNtxhStart}{\immediate\write\ntxhFile{%
+- Generated from LaTeX File \jobname.tex ^^J%
+  \the\day/\the\month/\the\year, \the\currenthour:\the\currentminute ^^J%
+.^^J%
+^^J%
+- i=id l=label p=page r=rank ^^J%
+  x=latex label t=text ^^J%
+.^^J%
+^^J%
+&type SentenceList [8;2;2] ^^J%
+  :i:1 :p:2 ;^^J%
+^^J%
+&type SentenceItem {6} ^^J%
+  :i:1 :p:2 :x:3 :t:4 :s:5 l:6 ;^^J%
+^^J%
+&/^^J%
+^^J%
+}}
+
+\newcommand{\writeNtxhEnd}{\immediate\write\ntxhFile{%
+^^J%
+/&^^J%
+^^J%
+}}
+
+\AtBeginDocument{{\writeNtxhStart}}
+\AtEndDocument{{\writeNtxhEnd}}
+
+
+\newcommand{\writeNtxhSentenceItem}[2]{%
+\stepcounter{ntxhCounter}%
+\immediate\write\ntxhFile{%
+!/ SentenceItem^^J%
+$i: \thentxhCounter^^J%
+$p: \thepage^^J%
+$x: #1^^J%
+$t: #2^^J%
+<>>^^J%
+}}
+
+\newcommand{\writeNtxhUDRef}[2]{%
+\stepcounter{ntxhGroupCounter}%
+\immediate\write\ntxhFile{%
+@supp/^^J%
+$s: #1^^J%
+$l: #2^^J%
+@/supp^^J%
+}}
+
+
+\newcommand{\udref}[2]{\writeNtxhUDRef{#1}{#2}\texttt{(\detokenize{#1})}}
+
+\newcommand{\swl}[2]{\writeNtxhSentenceItem{#1}{#2}%
+\label{#1}{#2}}
+
+
 %\usepackage{sectsty}
 \usepackage{titlesec}
 \usepackage{url}
@@ -117,16 +210,6 @@
 \newcommand{\Sone}{$S_1$}
 
 \newcommand{\facondeparler}{\textit{fa{\c{c}}on de parler}}
-
-\newcounter{sentenceCounter}{}
-
-\newcommand{\writeIncSentenceCounter}{\refstepcounter{sentenceCounter}(\arabic{sentenceCounter})}{}
-
-
-\newcommand{\listItemMark}{\rotatebox{30}{\raisebox{2pt}{\color{green!30!yellow!40!black}{\begin{tiny}$\blacktriangleright$\end{tiny}}}}}
-\newenvironment{sentenceList}{\begin{list}{\listItemMark}{\setlength{\leftmargin}{.5em}\setlength{\itemsep}{-.1em}\setlength{\topsep}{.85em}}\begin{small}}{\end{small}\end{list}}
-
-\newcommand{\sentenceItem}{\item \writeIncSentenceCounter}{}
 % ///
 
 \usepackage{etoolbox}
@@ -681,7 +764,6 @@
 
 \newcommand{\tti}[1]{\texttt{\textit{#1}}}
 
-\newcommand{\udref}[2]{\texttt{(\detokenize{#1})}}
 
 \usepackage{amsmath}
 \usepackage{tikz}

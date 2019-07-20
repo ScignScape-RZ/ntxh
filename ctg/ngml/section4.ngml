@@ -12,10 +12,10 @@ constituents in the service of pragmatic ends.
 Consider:
 
 `sentenceList,
-`sentenceItem; My colleague Ms. O'Shea would like to interview
-Mr. Jones, who's an old friend of mine.  Can he take this call?
-`sentenceItem; \label{itm:Jones} I'm sorry, this is his secretary.  Mr. Jones
-is not available at the moment.
+`sentenceItem; \swl{}{My colleague Ms. O'Shea would like to interview
+Mr. Jones, who's an old friend of mine.  Can he take this call?}
+`sentenceItem; \swl{itm:Jones}{I'm sorry, this is his secretary.  Mr. Jones
+is not available at the moment.}
 `sentenceList`
 
 It sounds like Ms. O'Shea is trying to use personal
@@ -33,12 +33,12 @@ Or:
 
 
 `sentenceList,
-`sentenceItem; Mr. Jones, were you present at a meeting where
+`sentenceItem; \swl{}{Mr. Jones, were you present at a meeting where
 the governer promised your employer
-a contract in exchange for campaign contributions?
-`sentenceItem; After consulting with my lawyers, I decline
+a contract in exchange for campaign contributions?}
+`sentenceItem; \swl{}{After consulting with my lawyers, I decline
 to answer that question on the grounds that it
-may incriminate me.
+may incriminate me.}
 `sentenceList`
 
 Here Mr. Jones neither confirms nor denies his
@@ -53,8 +53,8 @@ a complete breakdown of language:
 
 
 `sentenceList,
-`sentenceItem; \label{itm:isJones} Is Jones there?
-`sentenceItem; \label{itm:not} He is not available.
+`sentenceItem; \swl{itm:isJones}{Is Jones there?}
+`sentenceItem; \swl{itm:not}{He is not available.}
 `sentenceList`
 
 The speaker of (\ref{itm:not}) does not
@@ -266,8 +266,8 @@ of both semantics and grammar proper; maybe it is even prelinguistic.
 Consider
 
 `sentenceList,
-`sentenceItem; \label{itm:pf} People fed the rescued dogs.
-`sentenceItem; \label{itm:ve} Vets examined the rescued dogs.
+`sentenceItem; \swl{itm:pf}{People fed the rescued dogs.}
+`sentenceItem; \swl{itm:ve}{Vets examined the rescued dogs.}
 `sentenceList`
 
 There appears to be no explicit principle either in the semantics
@@ -283,10 +283,10 @@ dogs have to be physically brought to).  For a similar case-study,
 consider the sentences:
 
 `sentenceList,
-`sentenceItem; Every singer performed two songs.
-`sentenceItem; Everyone performed two songs.
-`sentenceItem; Everyone sang along to two songs.
-`sentenceItem; Everyone in the audience sang along to two songs.
+`sentenceItem; \swl{}{Every singer performed two songs.}
+`sentenceItem; \swl{}{Everyone performed two songs.}
+`sentenceItem; \swl{}{Everyone sang along to two songs.}
+`sentenceItem; \swl{}{Everyone in the audience sang along to two songs.}
 `sentenceList`
 
 The last of these examples strongly suggests that of potentially
@@ -317,14 +317,14 @@ alone.  After all, in more exotic but not implausible
 scenarios the readings would be reversed:
 
 `sentenceList,
-`sentenceItem; The rescued dogs had been treated by vets in the past
-(but were subsequently abandoned by their owners).
-`sentenceItem; Every singer performed (the last) two songs
-(for the grand finale).
-`sentenceItem; Everyone in the audience sang along to two songs
+`sentenceItem; \swl{}{The rescued dogs had been treated by vets in the past
+(but were subsequently abandoned by their owners).}
+`sentenceItem; \swl{}{Every singer performed (the last) two songs
+(for the grand finale).}
+`sentenceItem; \swl{}{Everyone in the audience sang along to two songs
 (they were randomnly handed lyrics to different songs when
 they came in, and we asked them to join in when the song being
-performed onstage matched the lyrics they had in hand).
+performed onstage matched the lyrics they had in hand).}
 `sentenceList`
 
 In short, it's not as if dictionary entries would specify that
@@ -505,13 +505,13 @@ available for follow-up conversation:
 
 
 `sentenceList,
-`sentenceItem; The rescued dogs were treated by an experienced vet.
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
 One needed surgery and one got a blood transfusion.  We went there
-yesterday and both looked much better.
-`sentenceItem; The rescued dogs were treated by an experienced vet.
+yesterday and both looked much better.}
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
 One had been struck by a car and needed surgery on his leg.  We
 went there yesterday and saw debris from another car crash
-%-- it's a dangerous stretch of highway.
+%-- it's a dangerous stretch of highway.}
 `sentenceList`
 
 In the first sentence `i.there` designates the veterinary clinic, while in
@@ -521,13 +521,13 @@ involved in the original sentence (as locations and also
 consider these final three examples).
 
 `sentenceList,
-`sentenceItem; The rescued dogs were treated by an experienced vet.
-We saw a lot of other dogs getting medical attention.
-`sentenceItem; The rescued dogs were treated by an experienced vet.
-It looked very modern, like a human hospital.
-`sentenceItem; The rescued dogs were treated by an experienced vet.
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+We saw a lot of other dogs getting medical attention.}
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+It looked very modern, like a human hospital.}
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
 We looked around and realized how dangerous that road is %--
-for humans as well as dogs.
+for humans as well as dogs.}
 `sentenceList`
 
 `p`
@@ -604,11 +604,11 @@ of the underlying lexeme.  In the case of `q.rescue` we have less
 literal and more humorous or idiomatic examples like:
 
 `sentenceList,
-`sentenceItem; The trade rescued a star athlete from a losing team.
-`sentenceItem; New mathematical models rescued her original research from obscurity.
-`sentenceItem; Discovery of nearby earth-like planets rescued that
+`sentenceItem; \swl{}{The trade rescued a star athlete from a losing team.}
+`sentenceItem; \swl{}{New mathematical models rescued her original research from obscurity.}
+`sentenceItem; \swl{}{Discovery of nearby earth-like planets rescued that
 star from its reputation as ordinary and boring and revealed that its solar
-system may actually be extraordinary.
+system may actually be extraordinary.}
 `sentenceList`
 
 Each of these cases subverts the conventional `q.rescue` script by
@@ -786,7 +786,7 @@ Cognitive Grammar literature.
 In Ronald Langacker's `i.Foundations of Cognitive Grammar`/, the sentence
 
 `sentenceList,
-`sentenceItem; \label{itm:threetimes} Three times, students asked an interesting question.
+`sentenceItem; \swl{itm:threetimes}{Three times, students asked an interesting question.}
 `sentenceList`
 
 is used to demonstrate how
@@ -830,7 +830,7 @@ The mapping of (\ref{itm:threetimes}) to a logical
 substratum would be more transparent with a case like: 
 
 `sentenceList,
-`sentenceItem; \label{itm:threes} Three students asked interesting questions.
+`sentenceItem; \swl{itm:threes}{Three students asked interesting questions.}
 `sentenceList`
 
 (\ref{itm:threes}) is a more direct translation of the facts
@@ -860,17 +860,17 @@ This is not an isolated example.  Many sentences can be provided with similar
 phrase-structure complications, particularly with respect to singular/plural agreement.
 
 `sentenceList,
-`sentenceItem; Time after time, tourists (a tourist) walk(s) by this building
-with no idea of its history.
+`sentenceItem; \swl{}{Time after time, tourists (a tourist) walk(s) by this building
+with no idea of its history.}
 
-`sentenceItem; The streets around here are confusing; often people (someone)
-will ask me for directions.
+`sentenceItem; \swl{}{The streets around here are confusing; often people (someone)
+will ask me for directions.}
 
-`sentenceItem; Student after student came with their (his/her)
-paper to compain about my grade(s).
+`sentenceItem; \swl{}{Student after student came with their (his/her)
+paper to compain about my grade(s).}
 
-`sentenceItem; Student after student %-- and their (his/her) parents
-%-- complained about the tuition increase.
+`sentenceItem; \swl{}{Student after student %-- and their (his/her) parents
+%-- complained about the tuition increase.}
 `sentenceList`
 
 On a straightforward phrase-structure reading, `i.student after student` reduces to an
@@ -1032,22 +1032,11 @@ all values covered by the type); alternatively, we can (perhaps better) consider
 `i.spaces` of values.  Types' extensions have internal structure; there
 can be `q.null` or `q.invalid` values, default-constructed values, and
 so forth, which are `q.regions` of the conceptual space spanned or 
-encompassing types.`footnote.
-Conceptual Space theory is outside the scope of this paper, but I'll note that 
-it suggests a promising link between natural linguistics and formal/computational 
-type theory, as suggested by computational or scientific expositions of 
-the original Conceptual Space account developed by Peter `Gardenfors;: 
-cf. `cite<Zenker>;, `cite<RaubalAdams>; `cite<RaubalAdamsCSML>;, 
-`cite<Strle>;.  Meanwhile, projects to develop formal models for 
-Cognitive Grammar have also adopted Conceptual Space theory as an 
-underlying semantics: `cite<KennethHolmqvist>;, `cite<HolmqvistDiss>;, 
-`cite<MattSelway>;, `cite<InteractingConceptualSpaces>;.    
-`footnote`
+encompassing types.  
 There is definitional interdependence
 between types and functions: a function is defined in terms of the types it accepts as parameters and
 returns %-- rather than its entire set of possible inputs and outputs, which can
-vary across computing environments.
-`footnote.
+vary across computing environments.`footnote.
 Moreover, expectations in a particular case
 may be more precise than what is implied by the type itself %-- it is erroneous
 to assume that a proper type system will allow a correct `q.set of values` to
@@ -1155,8 +1144,8 @@ concept as a schema or prototype to thinking of its extension (maybe in some con
 Compare:
 
 `sentenceList,
-`sentenceItem; \label{itm:rhinor} Rhinos in that park are threatened by poachers.
-`sentenceItem; Young rhinos are threatened by poachers.
+`sentenceItem; \swl{itm:rhinor}{Rhinos in that park are threatened by poachers.}
+`sentenceItem; \swl{}{Young rhinos are threatened by poachers.}
 `sentenceList`
 
 Both sentences focus a conceptual lens in greater detail than `i.rhino` in general, but
@@ -1216,7 +1205,7 @@ different examples, invoking a `q.script` for further elaboration, or for buildi
 In, say, 
 
 `sentenceList,
-`sentenceItem; Let's find a restaurant that's family-friendly.
+`sentenceItem; \swl{}{Let's find a restaurant that's family-friendly.}
 `sentenceList`
 
 allowing such one-off narrowing is a feature
@@ -1375,8 +1364,8 @@ interpretation.  A benefactive with an `q.artifact` noun, for example,
 almost forces the thing to be heard as somehow disrepaired:
 
 `sentenceList,
-`sentenceItem; I got glue for your daughter.
-`sentenceItem; I got glue for your coffee mug.
+`sentenceItem; \swl{}{I got glue for your daughter.}
+`sentenceItem; \swl{}{I got glue for your coffee mug.}
 `sentenceList`
 
 We gather (in the second case) that the mug is broken %-- but this is never spelled out
@@ -1385,10 +1374,10 @@ It is easy to design similar examples with other cases:
 a locative construction rarely targets `q.sentient` nouns, so in
 
 `sentenceList,
-`sentenceItem; We're going to Grandma!
-`sentenceItem; Let's go to him right now.
-`sentenceItem; Let's go to the lawyers.
-`sentenceItem; Let's go to the press.
+`sentenceItem; \swl{}{We're going to Grandma!}
+`sentenceItem; \swl{}{Let's go to him right now.}
+`sentenceItem; \swl{}{Let's go to the lawyers.}
+`sentenceItem; \swl{}{Let's go to the press.}
 `sentenceList`
 
 we mentally substitute the person with the place where they live or work.
