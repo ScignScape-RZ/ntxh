@@ -26,7 +26,7 @@ USING_KANS(TextIO)
 
 
 Language_Sample::Language_Sample(Language_Sample_Group* group, QString text)
-  :  text_(text), group_(group)
+  :  text_(text), group_(group), id_(0), page_(0)
 {
 // phg.new_hypernode(this, 6, {"Language_Sample", nullptr});
 

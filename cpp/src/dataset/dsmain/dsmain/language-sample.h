@@ -28,11 +28,13 @@ class Language_Sample_Group;
 
 class Language_Sample //: phaong<pg_t>::Hypernode
 {
+ quint32 id_;
  QString text_;
  QString latex_label_;
 
  Language_Sample_Group* group_;
  QString classification_;
+ quint32 page_;
 
 public:
 
@@ -41,6 +43,9 @@ public:
  ACCESSORS(QString ,text)
  ACCESSORS(QString ,latex_label)
  ACCESSORS(QString ,classification)
+ ACCESSORS(quint32 ,id)
+ ACCESSORS(quint32 ,page)
+
 
  ACCESSORS(Language_Sample_Group* ,group)
 

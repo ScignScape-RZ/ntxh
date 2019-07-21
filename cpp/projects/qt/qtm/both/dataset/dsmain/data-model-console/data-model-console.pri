@@ -19,7 +19,7 @@ DEFINES += RELAE_LABEL_NODES
 
 DEFINES += DATA_FOLDER=\\\"$$DATA_ROOT_DIR\\\"
 
-DEFINES += DEFAULT_RPH_FOLDER=\\\"$$DATA_ROOT_DIR/rph\\\"
+DEFINES += DEFAULT_NTXH_FOLDER=\\\"$$DATA_ROOT_DIR/ntxh\\\"
 
 CONFIG += no_keywords
 
@@ -34,7 +34,9 @@ SOURCES += \
 
 
 LIBS += -L$$TARGETSDIR -ldsmain  \
-   -lrph-builder  -lrelae-phaon    -lds-relae-phaon
+  -lntxh  -lntxh-parser -lntxh-builder
+
+  # -lrph-builder  -lrelae-phaon    -lds-relae-phaon
 
 
 

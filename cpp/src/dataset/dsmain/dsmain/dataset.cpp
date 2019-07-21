@@ -68,56 +68,69 @@ void Dataset::load_from_file(QString path)
  typedef NTXH_Graph::hypernode_type hypernode_type;
 
  NTXH_Graph& g = *doc.graph();
- const QVector<hypernode_type*>& v = g.hypernodes();
+// const QVector<hypernode_type*>& v = g.hypernodes();
 
 
 // RPH_Graph::hypernode_type* hn = doc.graph()->hypernodes()[0];
 
-// QVector<RPH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
+ QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
 
-// groups_.resize(hns.size());
+ groups_.resize(hns.size());
 
-// int count = 0;
+ int count = 0;
 
-// std::transform(hns.begin(), hns.end(), groups_.begin(), [&count,&doc](RPH_Graph::hypernode_type* hn)
-// {
-//  ++count;
-//  Language_Sample_Group* result = new Language_Sample_Group(count);
+ std::transform(hns.begin(), hns.end(), groups_.begin(), [&count,&doc](NTXH_Graph::hypernode_type* hn)
+ {
+  ++count;
+  Language_Sample_Group* result = new Language_Sample_Group(count);
 
-//  doc.graph()->get_sfs(hn, {1,2,3,4}, [result](QVector<QPair<QString, void*>>& prs)
-//  {
-//   QVector<quint16> nums = {0,0,0,0};
-//   std::transform(prs.begin(), prs.end(), nums.begin(), [](QPair<QString, void*>& pr)
-//   {
-//    return pr.first.toInt();
-//   });
-//   result->set_section_num(nums[0]);
+  doc.graph()->get_sfs(hn, {1,2}, [result](QVector<QPair<QString, void*>>& prs)
+  {
+   QVector<quint16> nums = {0,0};
+   std::transform(prs.begin(), prs.end(), nums.begin(), [](QPair<QString, void*>& pr)
+   {
+    return pr.first.toInt();
+   });
+   result->set_id(nums[0]);
 //   result->set_start_num(nums[1]);
 //   result->set_end_num(nums[2]);
-//   result->set_page(nums[3]);
-//  });
+   result->set_page(nums[1]);
+  });
 
-//  doc.graph()->all_afs(hn, [&doc, result](QPair<QString, void*>& pr)
-//  {
-//   RPH_Graph::hypernode_type* ihn = (RPH_Graph::hypernode_type*) pr.second;
-//   if(pr.second)
-//   {
-//    Language_Sample* ls = nullptr;
-//    doc.graph()->get_sf(ihn, 3, [result, &ls](QPair<QString, void*>& ipr)
-//    {
-//     ls = new Language_Sample(result, ipr.first);
-//    });
-//    doc.graph()->get_sf(ihn, 2, [ls](QPair<QString, void*>& ipr)
-//    {
-//     if(check(ipr))
-//       ls->set_latex_label(ipr.first);
-//    });
-//    result->push_back(ls);
-//   }
-//  });
+  doc.graph()->all_afs(hn, [&doc, result](QPair<QString, void*>& pr)
+  {
+   NTXH_Graph::hypernode_type* ihn = (NTXH_Graph::hypernode_type*) pr.second;
+   if(ihn)
+   {
+    Language_Sample* ls = nullptr;
+    doc.graph()->get_sf(ihn, 4, [result, &ls](QPair<QString, void*>& ipr)
+    {
+     ls = new Language_Sample(result, ipr.first);
+    });
+    doc.graph()->get_sf(ihn, 3, [ls](QPair<QString, void*>& ipr)
+    {
+     if(check(ipr))
+       ls->set_latex_label(ipr.first);
+    });
 
-//  return result;
-// });
+    doc.graph()->get_sf(ihn, 1, [ls](QPair<QString, void*>& ipr)
+    {
+     if(check(ipr))
+       ls->set_id(ipr.first.toInt());
+    });
+
+    doc.graph()->get_sf(ihn, 2, [ls](QPair<QString, void*>& ipr)
+    {
+     if(check(ipr))
+       ls->set_page(ipr.first.toInt());
+    });
+
+    result->push_back(ls);
+   }
+  });
+
+  return result;
+ });
 }
 
 
