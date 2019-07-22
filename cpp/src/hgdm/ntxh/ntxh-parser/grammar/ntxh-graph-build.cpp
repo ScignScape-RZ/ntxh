@@ -24,6 +24,7 @@ NTXH_Graph_Build::NTXH_Graph_Build(NTXH_Document* d, NTXH_Parser& p, NTXH_Graph&
    ,current_type_field_index_(0)
    ,current_hypernode_(nullptr)
    ,last_hypernode_(nullptr)
+   ,held_current_hypernode_(nullptr)
 {
 
 }
@@ -97,6 +98,29 @@ void NTXH_Graph_Build::read_acc(QString s)
 {
  acc_ += s;
 }
+
+void NTXH_Graph_Build::read_command(QString prefix, QString cmd, QString suffix)
+{
+ // // only current command ...
+ if(cmd == "s")
+ {
+  held_current_hypernode_ = current_hypernode_;
+  current_hypernode_ = last_hypernode_;
+  check_reset_current_type_name();
+ }
+}
+
+void NTXH_Graph_Build::leave_read_command(QString prefix, QString cmd, QString suffix)
+{
+ // // only current command ...
+ if(cmd == "s")
+ {
+  current_hypernode_ = held_current_hypernode_;
+  held_current_hypernode_ = nullptr;
+  check_reset_current_type_name();
+ }
+}
+
 
 void NTXH_Graph_Build::prepare_field_read(QString prefix, QString field, QString suffix)
 {
@@ -257,6 +281,14 @@ void NTXH_Graph_Build::array_append()
  }
 }
 
+void NTXH_Graph_Build::check_reset_current_type_name()
+{
+ if(current_hypernode_)
+ {
+  current_type_name_ = current_hypernode_->type_descriptor().first;
+ }
+}
+
 void NTXH_Graph_Build::end_sample()
 {
  last_hypernode_ = current_hypernode_;
@@ -266,9 +298,5 @@ void NTXH_Graph_Build::end_sample()
  else
    current_hypernode_ = parent_hypernodes_.pop();
 
- if(current_hypernode_)
- {
-  current_type_name_ = current_hypernode_->type_descriptor().first;
- }
-
+ check_reset_current_type_name();
 }

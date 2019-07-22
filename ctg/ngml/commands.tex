@@ -26,6 +26,7 @@
 !/ SentenceList^^J%
 $i: \thentxhGroupCounter^^J%
 $p: \thepage^^J%
+$s: \thesection^^J%
 }}
 
 \newcommand{\writeNtxhSentenceListEnd}{%
@@ -41,15 +42,15 @@ $p: \thepage^^J%
   \the\day/\the\month/\the\year, \the\currenthour:\the\currentminute ^^J%
 .^^J%
 ^^J%
-- i=id l=label p=page r=rank ^^J%
-  x=latex label t=text ^^J%
+- p=page s=ud source, section number^^J%
+  i=id l=label x=latex label t=text ^^J%
 .^^J%
 ^^J%
-&type SentenceList [8;2;2] ^^J%
-  :i:1 :p:2 ;^^J%
+&type SentenceList [8;3;2] ^^J%
+  :i:1 :p:2 :s:3 ;^^J%
 ^^J%
 &type SentenceItem {6} ^^J%
-  :i:1 :p:2 :x:3 :t:4 :s:5 l:6 ;^^J%
+  :i:1 :p:2 :x:3 :t:4 :s:5 :l:6 ;^^J%
 ^^J%
 &/^^J%
 ^^J%
@@ -73,16 +74,17 @@ $i: \thentxhCounter^^J%
 $p: \thepage^^J%
 $x: #1^^J%
 $t: #2^^J%
+/!^^J%
 <>>^^J%
 }}
 
 \newcommand{\writeNtxhUDRef}[2]{%
 \stepcounter{ntxhGroupCounter}%
 \immediate\write\ntxhFile{%
-@supp/^^J%
+&s/^^J%
 $s: #1^^J%
 $l: #2^^J%
-@/supp^^J%
+&/s^^J%
 }}
 
 

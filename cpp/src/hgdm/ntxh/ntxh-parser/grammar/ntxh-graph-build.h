@@ -75,12 +75,15 @@ private:
 
  hypernode_type* current_hypernode_;
  hypernode_type* last_hypernode_;
+ hypernode_type* held_current_hypernode_;
 
  QStack<hypernode_type*> parent_hypernodes_;
 
  QVector<hypernode_type*> top_level_hypernodes_;
 
  QMap<QString, QString> replacements_;
+
+ void check_reset_current_type_name();
 
 public:
 
@@ -101,6 +104,9 @@ public:
  void prepare_field_read(QString prefix, QString field, QString suffix);
  void read_acc(QString s);
  void end_field();
+
+ void read_command(QString prefix, QString cmd, QString suffix);
+ void leave_read_command(QString prefix, QString cmd, QString suffix);
 
  void add_type(QString name, QString length);
 

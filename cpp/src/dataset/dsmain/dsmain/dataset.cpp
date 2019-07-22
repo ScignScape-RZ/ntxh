@@ -84,9 +84,9 @@ void Dataset::load_from_file(QString path)
   ++count;
   Language_Sample_Group* result = new Language_Sample_Group(count);
 
-  doc.graph()->get_sfs(hn, {1,2}, [result](QVector<QPair<QString, void*>>& prs)
+  doc.graph()->get_sfs(hn, {1,2,3}, [result](QVector<QPair<QString, void*>>& prs)
   {
-   QVector<quint16> nums = {0,0};
+   QVector<quint16> nums = {0,0,0};
    std::transform(prs.begin(), prs.end(), nums.begin(), [](QPair<QString, void*>& pr)
    {
     return pr.first.toInt();
@@ -95,6 +95,8 @@ void Dataset::load_from_file(QString path)
 //   result->set_start_num(nums[1]);
 //   result->set_end_num(nums[2]);
    result->set_page(nums[1]);
+   result->set_section_num(nums[2]);
+
   });
 
   doc.graph()->all_afs(hn, [&doc, result](QPair<QString, void*>& pr)
@@ -103,27 +105,51 @@ void Dataset::load_from_file(QString path)
    if(ihn)
    {
     Language_Sample* ls = nullptr;
-    doc.graph()->get_sf(ihn, 4, [result, &ls](QPair<QString, void*>& ipr)
+    doc.graph()->get_sfs(ihn, {1,2,3,4,5,6}, [result, &ls](QVector<QPair<QString, void*>>& prs)
     {
-     ls = new Language_Sample(result, ipr.first);
-    });
-    doc.graph()->get_sf(ihn, 3, [ls](QPair<QString, void*>& ipr)
-    {
-     if(check(ipr))
-       ls->set_latex_label(ipr.first);
+     {QPair<QString, void*>& ipr = prs[3];
+      if(check(ipr))
+        ls = new Language_Sample(result, ipr.first);}
+     {QPair<QString, void*>& ipr = prs[0];
+      if(check(ipr))
+        ls->set_id(ipr.first.toInt());}
+     {QPair<QString, void*>& ipr = prs[1];
+      if(check(ipr))
+        ls->set_page(ipr.first.toInt());}
+     {QPair<QString, void*>& ipr = prs[2];
+      if(check(ipr))
+        ls->set_latex_label(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[4];
+      if(check(ipr))
+        ls->set_udp_source(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[5];
+      if(check(ipr))
+        ls->set_udp_label(ipr.first);}
+
     });
 
-    doc.graph()->get_sf(ihn, 1, [ls](QPair<QString, void*>& ipr)
-    {
-     if(check(ipr))
-       ls->set_id(ipr.first.toInt());
-    });
+//    doc.graph()->get_sf(ihn, 4, [result, &ls](QPair<QString, void*>& ipr)
+//    {
+//     ls = new Language_Sample(result, ipr.first);
+//    });
 
-    doc.graph()->get_sf(ihn, 2, [ls](QPair<QString, void*>& ipr)
-    {
-     if(check(ipr))
-       ls->set_page(ipr.first.toInt());
-    });
+//    doc.graph()->get_sf(ihn, 3, [ls](QPair<QString, void*>& ipr)
+//    {
+//     if(check(ipr))
+//       ls->set_latex_label(ipr.first);
+//    });
+
+//    doc.graph()->get_sf(ihn, 1, [ls](QPair<QString, void*>& ipr)
+//    {
+//     if(check(ipr))
+//       ls->set_id(ipr.first.toInt());
+//    });
+
+//    doc.graph()->get_sf(ihn, 2, [ls](QPair<QString, void*>& ipr)
+//    {
+//     if(check(ipr))
+//       ls->set_page(ipr.first.toInt());
+//    });
 
     result->push_back(ls);
    }

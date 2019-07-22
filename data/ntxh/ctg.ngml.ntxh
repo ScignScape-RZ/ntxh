@@ -1,16 +1,16 @@
 - Generated from LaTeX File ctg.ngml.tex 
-20/7/2019, 16:3
+21/7/2019, 21:50
 .
 
 - i=id l=label p=page r=rank 
 x=latex label t=text 
 .
 
-&type SentenceList [8;2;2] 
-:i:1 :p:2 ;
+&type SentenceList [8;3;2] 
+:i:1 :p:2 :s:3 ;
 
 &type SentenceItem {6} 
-:i:1 :p:2 :x:3 :t:4 :s:5 l:6 ;
+:i:1 :p:2 :x:3 :t:4 :s:5 :l:6 ;
 
 &/
 
@@ -18,6 +18,7 @@ x=latex label t=text
 !/ SentenceList
 $i: 1
 $p: 4
+$s: 1
 
 !/ SentenceItem
 $i: 1
@@ -27,7 +28,6 @@ $t: His having lied in the past damages his credibilty in the present.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 2
 $p: 4
@@ -36,13 +36,13 @@ $t: Voters question whether he is truthful this time around.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 2
 $p: 5
+$s: 1
 
 !/ SentenceItem
 $i: 3
@@ -52,7 +52,6 @@ $t: Let's go to Grandma.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 4
 $p: 5
@@ -60,7 +59,6 @@ $x: itm:lawyers
 $t: Let's go to the lawyers.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 5
@@ -70,13 +68,13 @@ $t: Let's go to the press.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 3
 $p: 7
+$s: 1
 
 !/ SentenceItem
 $i: 6
@@ -86,7 +84,6 @@ $t: I saw my neighbor's two black dogs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 7
 $p: 7
@@ -94,7 +91,6 @@ $x: itm:rescued
 $t: I saw my neighbor's two rescued dogs.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 8
@@ -104,13 +100,13 @@ $t: I saw my neighbor's two latest dogs.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 4
 $p: 7
+$s: 1
 
 !/ SentenceItem
 $i: 9
@@ -120,7 +116,6 @@ $t: We have to wait until after the vet's two latest dogs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 10
 $p: 7
@@ -129,13 +124,13 @@ $t: I'm concerned for the rescue organization's two latest dogs.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 5
 $p: 7
+$s: 1
 
 !/ SentenceItem
 $i: 11
@@ -145,7 +140,6 @@ $t: Boatmen rescued dogs from the flooded streets.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 12
 $p: 8
@@ -154,13 +148,13 @@ $t: Firemen rescued dogs from the burning building.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 6
 $p: 9
+$s: 1
 
 !/ SentenceItem
 $i: 13
@@ -170,7 +164,6 @@ $t: All New Yorkers live in one of five boroughs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 14
 $p: 9
@@ -179,13 +172,13 @@ $t: All New Yorkers complain about how long it takes to commute to New York City
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 7
 $p: 9
+$s: 1
 
 !/ SentenceItem
 $i: 15
@@ -195,7 +188,6 @@ $t: The Leafs failed to beat the Habs for the first time this year.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 16
 $p: 9
@@ -203,7 +195,6 @@ $x: itm:consecutive
 $t: The Leafs failed to win two consecutive games for the first time this year.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 17
@@ -213,13 +204,13 @@ $t: The Leafs failed to score a goal for the first time this year.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 8
 $p: 9
+$s: 1
 
 !/ SentenceItem
 $i: 18
@@ -229,7 +220,6 @@ $t: All residents of the city of New York live in one of five boroughs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 19
 $p: 9
@@ -237,7 +227,6 @@ $x: itm:manyresidents
 $t: Many residents of the New York metropolitan area complain about how long it takes to commute to New York City.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 20
@@ -247,13 +236,13 @@ $t: For the first time this year, the Leafs failed to beat the Habs.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 9
 $p: 10
+$s: 1
 
 !/ SentenceItem
 $i: 21
@@ -263,8 +252,10 @@ $t: It is the most common tumour found in babies, occurring in one of every 35,0
 /!
 <>>
 
-
-
+&s/
+$s: en_pud
+$l: n01051007
+&/s
 
 !/ SentenceItem
 $i: 22
@@ -274,8 +265,10 @@ $t: Dengue fever is a leading cause of illness and death in the tropics and subt
 /!
 <>>
 
-
-
+&s/
+$s: en_partut-ud-train
+$l: en_partut-ud-1498
+&/s
 
 !/ SentenceItem
 $i: 23
@@ -285,8 +278,10 @@ $t: Many Taliban living in Afghanistan voted for President Karzai.
 /!
 <>>
 
-
-
+&s/
+$s: en_ewt-ud-train
+$l: w03002048
+&/s
 
 !/ SentenceItem
 $i: 24
@@ -296,8 +291,10 @@ $t: Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf
 /!
 <>>
 
-
-
+&s/
+$s: en_ewt-ud-train
+$l: weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112
+&/s
 
 !/ SentenceItem
 $i: 25
@@ -307,8 +304,10 @@ $t: Most experts believe China intends to develop a small space station of its o
 /!
 <>>
 
-
-
+&s/
+$s: en_ewt-ud-train
+$l: newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020
+&/s
 
 !/ SentenceItem
 $i: 26
@@ -318,8 +317,10 @@ $t: Check out their wine tastings every Friday night!
 /!
 <>>
 
-
-
+&s/
+$s: en_ewt-ud-train
+$l: reviews-322225-0005
+&/s
 
 !/ SentenceItem
 $i: 27
@@ -329,8 +330,10 @@ $t: For each start tag , there is a corresponding end tag.
 /!
 <>>
 
-
-
+&s/
+$s: en_lines-ud-train
+$l: 166
+&/s
 
 !/ SentenceItem
 $i: 28
@@ -340,8 +343,10 @@ $t: Each collection donated by the Andy Warhol Photographic Legacy Program holds
 /!
 <>>
 
-
-
+&s/
+$s: en_gum-ud-train
+$l: GUM_news_warhol-35
+&/s
 
 /!
 <+>
@@ -349,6 +354,7 @@ $t: Each collection donated by the Andy Warhol Photographic Legacy Program holds
 !/ SentenceList
 $i: 18
 $p: 11
+$s: 1
 
 !/ SentenceItem
 $i: 29
@@ -358,8 +364,10 @@ $t: A furry black band of ants led up a cupboard door to some scrap that had fli
 /!
 <>>
 
-
-
+&s/
+$s: en_lines-ud-train
+$l: 2157
+&/s
 
 !/ SentenceItem
 $i: 30
@@ -369,8 +377,10 @@ $t: The current waiting period is eight weeks.
 /!
 <>>
 
-
-
+&s/
+$s: en_pud
+$l: n01050009
+&/s
 
 !/ SentenceItem
 $i: 31
@@ -380,8 +390,10 @@ $t: I think that's why they immersed themselves in pattern and colour.
 /!
 <>>
 
-
-
+&s/
+$s: en_pud
+$l: n01087018
+&/s
 
 !/ SentenceItem
 $i: 32
@@ -391,8 +403,10 @@ $t: With her appearance finalized, Jasmine became Disney's first non-white princ
 /!
 <>>
 
-
-
+&s/
+$s: en_pud
+$l: w01119076
+&/s
 
 /!
 <+>
@@ -400,6 +414,7 @@ $t: With her appearance finalized, Jasmine became Disney's first non-white princ
 !/ SentenceList
 $i: 23
 $p: 13
+$s: 2
 
 !/ SentenceItem
 $i: 33
@@ -409,8 +424,10 @@ $t: The city's ambience is colonial and the climate is tropical.
 /!
 <>>
 
-
-
+&s/
+$s: en_gum-ud-train
+$l: GUM_voyage_merida-20
+&/s
 
 /!
 <+>
@@ -418,6 +435,7 @@ $t: The city's ambience is colonial and the climate is tropical.
 !/ SentenceList
 $i: 25
 $p: 14
+$s: 2
 
 !/ SentenceItem
 $i: 34
@@ -427,8 +445,10 @@ $t: The most popular lodging is actually camping on the beaches.
 /!
 <>>
 
-
-
+&s/
+$s: en_gum-ud-train
+$l: GUM_voyage_socotra-16
+&/s
 
 /!
 <+>
@@ -436,6 +456,7 @@ $t: The most popular lodging is actually camping on the beaches.
 !/ SentenceList
 $i: 27
 $p: 15
+$s: 2
 
 !/ SentenceItem
 $i: 35
@@ -445,7 +466,6 @@ $t: Many students and their parents came to complain about the tuition hikes.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 36
 $p: 15
@@ -453,7 +473,6 @@ $x: office
 $t: Many students came by my office to complain about their grades.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 37
@@ -463,7 +482,6 @@ $t: Student after student complained about the tuition hikes.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 38
 $p: 16
@@ -472,13 +490,13 @@ $t: Student after student came with their parents to complain about the tuition 
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 28
 $p: 16
+$s: 2
 
 !/ SentenceItem
 $i: 39
@@ -487,7 +505,6 @@ $x:
 $t: Three times, students asked an interesting question.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 40
@@ -497,13 +514,13 @@ $t: Three times, a student asked an interesting question.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 29
 $p: 18
+$s: 2
 
 !/ SentenceItem
 $i: 41
@@ -513,7 +530,6 @@ $t: The newspaper you are reading is being sued.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 42
 $p: 18
@@ -522,13 +538,13 @@ $t: Liverpool, an important harbor, built new docks.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 30
 $p: 18
+$s: 2
 
 !/ SentenceItem
 $i: 43
@@ -538,7 +554,6 @@ $t: The newspaper fired a reporter and fell off the table (?).
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 44
 $p: 18
@@ -547,13 +562,13 @@ $t: Liverpool beat Tottenham and built new docks (?).
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 31
 $p: 18
+$s: 2
 
 !/ SentenceItem
 $i: 45
@@ -563,7 +578,6 @@ $t: Liverpool wants to sign a left-footed striker.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 46
 $p: 18
@@ -572,13 +586,13 @@ $t: That newspaper plans to fire its editorial staff.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 32
 $p: 20
+$s: 3
 
 !/ SentenceItem
 $i: 47
@@ -588,7 +602,6 @@ $t: Do you have almond milk?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 48
 $p: 20
@@ -596,7 +609,6 @@ $x:
 $t: Can you get MsNBC on your TV?
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 49
@@ -606,13 +618,13 @@ $t: This isn't a screw-cap bottle: I need a corkscrew.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 33
 $p: 20
+$s: 3
 
 !/ SentenceItem
 $i: 50
@@ -622,7 +634,6 @@ $t: I think the window is open, can you close it?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 51
 $p: 20
@@ -630,7 +641,6 @@ $x:
 $t: I see you have almond milk, can I have some?
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 52
@@ -640,7 +650,6 @@ $t: If you get MsNBC, can you turn on Rachel Maddow?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 53
 $p: 20
@@ -649,13 +658,13 @@ $t: If there is a corkscrew in the house, can you get it?
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 34
 $p: 20
+$s: 3
 
 !/ SentenceItem
 $i: 54
@@ -665,7 +674,6 @@ $t: I believe you have a reservation for Jones?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 55
 $p: 21
@@ -673,7 +681,6 @@ $x:
 $t: I believe this is the customer service desk?
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 56
@@ -683,7 +690,6 @@ $t: I believe we ordered a second basket of garlic bread?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 57
 $p: 21
@@ -692,13 +698,13 @@ $t: I believe you can help me find computer acessories in this section?
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 35
 $p: 21
+$s: 3
 
 !/ SentenceItem
 $i: 58
@@ -708,7 +714,6 @@ $t: Do you have any milk?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 59
 $p: 21
@@ -716,7 +721,6 @@ $x:
 $t: Yes, we have almond milk.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 60
@@ -726,13 +730,13 @@ $t: No, we have almond milk.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 36
 $p: 21
+$s: 3
 
 !/ SentenceItem
 $i: 61
@@ -742,7 +746,6 @@ $t: Can you put some almond milk in my coffee?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 62
 $p: 21
@@ -751,13 +754,13 @@ $t: Is there milk in this coffee?
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 37
 $p: 21
+$s: 3
 
 !/ SentenceItem
 $i: 63
@@ -767,7 +770,6 @@ $t: It's not open, but there's still some cold air coming through the cracks.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 64
 $p: 21
@@ -775,7 +777,6 @@ $x:
 $t: It's not open, but I closed the window in the bedroom.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 65
@@ -785,13 +786,13 @@ $t: I can't ---{} it's stuck.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 38
 $p: 22
+$s: 3
 
 !/ SentenceItem
 $i: 66
@@ -801,7 +802,6 @@ $t: I believe the kitchen window is open ---{} please close it!
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 67
 $p: 22
@@ -810,13 +810,13 @@ $t: I believe some window is open ---{} please close it!
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 39
 $p: 22
+$s: 3
 
 !/ SentenceItem
 $i: 68
@@ -826,7 +826,6 @@ $t: Grandma wants us to close the window.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 69
 $p: 22
@@ -835,13 +834,13 @@ $t: He wants a bottle opener.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 40
 $p: 22
+$s: 3
 
 !/ SentenceItem
 $i: 70
@@ -851,7 +850,6 @@ $t: Grandma wants us to eliminate the cold draft.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 71
 $p: 22
@@ -860,13 +858,13 @@ $t: He wants something to open that bottle.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 41
 $p: 22
+$s: 3
 
 !/ SentenceItem
 $i: 72
@@ -876,7 +874,6 @@ $t: Can I have some milk?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 73
 $p: 22
@@ -885,13 +882,13 @@ $t: Can you close the kitchen window?
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 42
 $p: 22
+$s: 3
 
 !/ SentenceItem
 $i: 74
@@ -901,7 +898,6 @@ $t: Remember that wine we tasted on the Niagara Peninsula last summer? Can you f
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 75
 $p: 22
@@ -910,13 +906,13 @@ $t: Remember that wine we tasted on the Niagara Peninsula last summer? What vari
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 43
 $p: 23
+$s: 3
 
 !/ SentenceItem
 $i: 76
@@ -926,7 +922,6 @@ $t: That wine was a Cabernet Franc.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 77
 $p: 23
@@ -935,13 +930,13 @@ $t: Those dogs are my neighbor's. They are very sweet.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 44
 $p: 24
+$s: 3
 
 !/ SentenceItem
 $i: 78
@@ -951,7 +946,6 @@ $t: Those dogs are Staffordshires.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 79
 $p: 24
@@ -959,7 +953,6 @@ $x:
 $t: What's a Staffordshire?
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 80
@@ -969,13 +962,13 @@ $t: It's a breed of dog.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 45
 $p: 25
+$s: 3
 
 !/ SentenceItem
 $i: 81
@@ -985,7 +978,6 @@ $t: If the kitchen window is closed, we can see if other windows are open.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 82
 $p: 25
@@ -993,7 +985,6 @@ $x:
 $t: If no windows are open, we can see if there is a draft through the window-cracks.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 83
@@ -1003,13 +994,13 @@ $t: If there is no draft, we can ask if she wants a sweater.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 46
 $p: 26
+$s: 3
 
 !/ SentenceItem
 $i: 84
@@ -1019,7 +1010,6 @@ $t: This wine is a young Syrah.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 85
 $p: 26
@@ -1028,13 +1018,13 @@ $t: My cousin adopted one of my neighbor's dog's puppies.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 47
 $p: 26
+$s: 3
 
 !/ SentenceItem
 $i: 86
@@ -1044,7 +1034,6 @@ $t: The majority of students polled were opposed to tuition increases.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 87
 $p: 26
@@ -1052,7 +1041,6 @@ $x: itm:most
 $t: Most of the students expressed disappointment about tuition increases.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 88
@@ -1062,13 +1050,13 @@ $t: Many students have protested the tuition increases.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 48
 $p: 27
+$s: 3
 
 !/ SentenceItem
 $i: 89
@@ -1078,7 +1066,6 @@ $t: Most students oppose the tuition increase.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 90
 $p: 27
@@ -1087,13 +1074,13 @@ $t: Most students oppose a tuition increase.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 49
 $p: 27
+$s: 3
 
 !/ SentenceItem
 $i: 91
@@ -1103,7 +1090,6 @@ $t: Today the state university system announced plans to raise tuition by at lea
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 92
 $p: 27
@@ -1112,13 +1098,13 @@ $t: Colleges all over the country, facing rising costs, have had to raise tuitio
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 50
 $p: 28
+$s: 3
 
 !/ SentenceItem
 $i: 93
@@ -1128,7 +1114,6 @@ $t: Student after student came out against the tuition hikes.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 94
 $p: 28
@@ -1136,7 +1121,6 @@ $x: itm:substantial
 $t: A substantial number of students have come out against the tuition hikes.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 95
@@ -1146,7 +1130,6 @@ $t: The number of students protesting the tuition hikes may soon reach a critica
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 96
 $p: 28
@@ -1155,13 +1138,13 @@ $t: Protests against the tuition hikes may have reached a tipping point.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 51
 $p: 31
+$s: 3
 
 !/ SentenceItem
 $i: 97
@@ -1171,8 +1154,10 @@ $t: We understand that the pipe fitters are also planning to picket the Lake Wor
 /!
 <>>
 
-
-
+&s/
+$s: en_gum-ud-train
+$l: email-enronsent03_01-0143
+&/s
 
 /!
 <+>
@@ -1180,6 +1165,7 @@ $t: We understand that the pipe fitters are also planning to picket the Lake Wor
 !/ SentenceList
 $i: 53
 $p: 31
+$s: 4
 
 !/ SentenceItem
 $i: 98
@@ -1189,7 +1175,6 @@ $t: My colleague Ms. O'Shea would like to interview Mr. Jones, who's an old frie
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 99
 $p: 31
@@ -1198,13 +1183,13 @@ $t: I'm sorry, this is his secretary. Mr. Jones is not available at the moment.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 54
 $p: 31
+$s: 4
 
 !/ SentenceItem
 $i: 100
@@ -1214,7 +1199,6 @@ $t: Mr. Jones, were you present at a meeting where the governer promised your em
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 101
 $p: 32
@@ -1223,13 +1207,13 @@ $t: After consulting with my lawyers, I decline to answer that question on the g
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 55
 $p: 32
+$s: 4
 
 !/ SentenceItem
 $i: 102
@@ -1239,7 +1223,6 @@ $t: Is Jones there?
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 103
 $p: 32
@@ -1248,13 +1231,13 @@ $t: He is not available.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 56
 $p: 33
+$s: 4
 
 !/ SentenceItem
 $i: 104
@@ -1264,7 +1247,6 @@ $t: People fed the rescued dogs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 105
 $p: 33
@@ -1273,13 +1255,13 @@ $t: Vets examined the rescued dogs.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 57
 $p: 33
+$s: 4
 
 !/ SentenceItem
 $i: 106
@@ -1289,7 +1271,6 @@ $t: Every singer performed two songs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 107
 $p: 33
@@ -1297,7 +1278,6 @@ $x:
 $t: Everyone performed two songs.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 108
@@ -1307,7 +1287,6 @@ $t: Everyone sang along to two songs.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 109
 $p: 33
@@ -1316,13 +1295,13 @@ $t: Everyone in the audience sang along to two songs.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 58
 $p: 34
+$s: 4
 
 !/ SentenceItem
 $i: 110
@@ -1332,7 +1311,6 @@ $t: The rescued dogs had been treated by vets in the past (but were subsequently
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 111
 $p: 34
@@ -1340,7 +1318,6 @@ $x:
 $t: Every singer performed (the last) two songs (for the grand finale).
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 112
@@ -1350,13 +1327,13 @@ $t: Everyone in the audience sang along to two songs (they were randomnly handed
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 59
 $p: 35
+$s: 4
 
 !/ SentenceItem
 $i: 113
@@ -1366,7 +1343,6 @@ $t: The rescued dogs were treated by an experienced vet. One needed surgery and 
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 114
 $p: 35
@@ -1375,13 +1351,13 @@ $t: The rescued dogs were treated by an experienced vet. One had been struck by 
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 60
 $p: 35
+$s: 4
 
 !/ SentenceItem
 $i: 115
@@ -1391,7 +1367,6 @@ $t: The rescued dogs were treated by an experienced vet. We saw a lot of other d
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 116
 $p: 35
@@ -1399,7 +1374,6 @@ $x:
 $t: The rescued dogs were treated by an experienced vet. It looked very modern, like a human hospital.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 117
@@ -1409,13 +1383,13 @@ $t: The rescued dogs were treated by an experienced vet. We looked around and re
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 61
 $p: 36
+$s: 4
 
 !/ SentenceItem
 $i: 118
@@ -1425,7 +1399,6 @@ $t: The trade rescued a star athlete from a losing team.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 119
 $p: 36
@@ -1433,7 +1406,6 @@ $x:
 $t: New mathematical models rescued her original research from obscurity.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 120
@@ -1443,13 +1415,13 @@ $t: Discovery of nearby earth-like planets rescued that star from its reputation
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 62
 $p: 37
+$s: 4
 
 !/ SentenceItem
 $i: 121
@@ -1459,13 +1431,13 @@ $t: Three times, students asked an interesting question.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 63
 $p: 38
+$s: 4
 
 !/ SentenceItem
 $i: 122
@@ -1475,13 +1447,13 @@ $t: Three students asked interesting questions.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 64
 $p: 38
+$s: 4
 
 !/ SentenceItem
 $i: 123
@@ -1491,7 +1463,6 @@ $t: Time after time, tourists (a tourist) walk(s) by this building with no idea 
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 124
 $p: 38
@@ -1499,7 +1470,6 @@ $x:
 $t: The streets around here are confusing; often people (someone) will ask me for directions.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 125
@@ -1509,7 +1479,6 @@ $t: Student after student came with their (his/her) paper to compain about my gr
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 126
 $p: 38
@@ -1518,13 +1487,13 @@ $t: Student after student ---{} and their (his/her) parents ---{} complained abo
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 65
 $p: 41
+$s: 4
 
 !/ SentenceItem
 $i: 127
@@ -1534,7 +1503,6 @@ $t: Rhinos in that park are threatened by poachers.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 128
 $p: 41
@@ -1543,13 +1511,13 @@ $t: Young rhinos are threatened by poachers.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 66
 $p: 42
+$s: 4
 
 !/ SentenceItem
 $i: 129
@@ -1559,13 +1527,13 @@ $t: Let's find a restaurant that's family-friendly.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 67
 $p: 43
+$s: 4
 
 !/ SentenceItem
 $i: 130
@@ -1575,7 +1543,6 @@ $t: I got glue for your daughter.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 131
 $p: 43
@@ -1584,13 +1551,13 @@ $t: I got glue for your coffee mug.
 /!
 <>>
 
-
 /!
 <+>
 
 !/ SentenceList
 $i: 68
 $p: 43
+$s: 4
 
 !/ SentenceItem
 $i: 132
@@ -1600,7 +1567,6 @@ $t: We're going to Grandma!
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 133
 $p: 43
@@ -1608,7 +1574,6 @@ $x:
 $t: Let's go to him right now.
 /!
 <>>
-
 
 !/ SentenceItem
 $i: 134
@@ -1618,7 +1583,6 @@ $t: Let's go to the lawyers.
 /!
 <>>
 
-
 !/ SentenceItem
 $i: 135
 $p: 43
@@ -1626,7 +1590,6 @@ $x:
 $t: Let's go to the press.
 /!
 <>>
-
 
 /!
 <+>

@@ -210,5 +210,35 @@ void NTXH_Grammar::init(NTXH_Parser& p, NTXH_Graph& g, NTXH_Graph_Build& graph_b
 
   graph_build.prepare_field_read(prefix, f, suffix);
  });
+
+ add_rule( read_context, "read-command",
+   "\\n"
+   " (?<prefix> & )"
+   " (?<word> .script-word.) "
+   " (?<suffix> [:;#=&/*.] ) ",
+   [&]
+ {
+  QString prefix = p.matched("prefix");
+  QString f = p.matched("word");
+  QString suffix = p.matched("suffix");
+
+  graph_build.read_command(prefix, f, suffix);
+ });
+
+ add_rule( read_context, "leave-read-command",
+   "\\n"
+   " (?<prefix> & )"
+   " (?<mid> [:;#=&/*.] ) "
+   " (?<word> .script-word.?) ",
+   [&]
+ {
+  QString prefix = p.matched("prefix");
+  QString f = p.matched("word");
+  QString mid = p.matched("mid");
+
+  graph_build.leave_read_command(prefix, f, mid);
+
+ });
+
 }
 
