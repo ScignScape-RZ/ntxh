@@ -39,6 +39,9 @@ class Language_Sample //: phaong<pg_t>::Hypernode
  QString udp_source_;
  QString udp_label_;
 
+ QString pre_;
+ QString post_;
+
 public:
 
  Language_Sample(Language_Sample_Group* group, QString text);
@@ -51,6 +54,9 @@ public:
 
  ACCESSORS(QString ,udp_label)
  ACCESSORS(QString ,udp_source)
+
+ ACCESSORS(QString ,pre)
+ ACCESSORS(QString ,post)
 
  ACCESSORS(Language_Sample_Group* ,group)
 

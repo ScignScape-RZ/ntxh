@@ -83,11 +83,9 @@ QRING_SRC_GROUP_DIR = $$SRC_ROOT_DIR/QScign/QRing
 RELAE_GRAPH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/hgdm/relae-graph
 PHAON_GRAPH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/hgdm/phaon-graph
 NTXH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/hgdm/ntxh
+DSMAIN_SRC_GROUP_DIR = $$SRC_ROOT_DIR/dataset/dsmain
+SCIGNSTAGE_SRC_GROUP_DIR = $$SRC_ROOT_DIR/QScign/ScignStage
 
-
-
-
-#DSMAIN_SRC_GROUP_DIR = $$SRC_ROOT_DIR/dataset/dsmain
 #APPLICATION_MODEL_SRC_GROUP_DIR = $$SRC_ROOT_DIR/dataset/application-model
 
 #CONFIG_SRC_GROUP_DIR = $$SRC_ROOT_DIR/dataset/config
@@ -95,7 +93,7 @@ NTXH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/hgdm/ntxh
 #XPDF_SRC_GROUP_DIR = $$SRC_ROOT_DIR/external/xpdf
 
 #QHYP_SRC_GROUP_DIR = $$SRC_ROOT_DIR/qscign/qhyp
-#SCIGNSTAGE_SRC_GROUP_DIR = $$SRC_ROOT_DIR/qscign/ScignStage
+#
 #LEXPAIR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/qscign/LexPair
 
 #KAUVIR_PHAON_SRC_GROUP_DIR = $$SRC_ROOT_DIR/tests-kph/kauvir-phaon

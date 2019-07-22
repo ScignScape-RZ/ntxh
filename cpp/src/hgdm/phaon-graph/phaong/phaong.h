@@ -580,6 +580,20 @@ public:
   fn(args);
  }
 
+ void get_sfsr(Hypernode* hn, QVector<QPair<numeric_index_type, numeric_index_type>>&& ind,
+   std::function<void(QVector<hyponode_value_type>&)> fn)
+ {
+  for(QPair<numeric_index_type, numeric_index_type>& pr : ind)
+  {
+   QVector<numeric_index_type> v;
+   v.resize(pr.second - pr.first + 1);
+   for(int i = pr.first; i <= pr.second; ++i)
+     v[i - pr.first] = i;
+   get_sfs(hn, v, fn);
+  }
+ }
+
+
  void get_sfs(Hypernode* hn, QVector<numeric_index_type>&& ind,
    std::function<void(QVector<hyponode_value_type>&)> fn)
  {

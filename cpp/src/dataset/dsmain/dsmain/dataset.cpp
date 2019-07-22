@@ -84,7 +84,9 @@ void Dataset::load_from_file(QString path)
   ++count;
   Language_Sample_Group* result = new Language_Sample_Group(count);
 
-  doc.graph()->get_sfs(hn, {1,2,3}, [result](QVector<QPair<QString, void*>>& prs)
+//  doc.graph()->get_sfs(hn, {1,2,3}, [result](QVector<QPair<QString, void*>>& prs)
+
+  doc.graph()->get_sfsr(hn, {{1,3}}, [result](QVector<QPair<QString, void*>>& prs)
   {
    QVector<quint16> nums = {0,0,0};
    std::transform(prs.begin(), prs.end(), nums.begin(), [](QPair<QString, void*>& pr)
@@ -105,7 +107,7 @@ void Dataset::load_from_file(QString path)
    if(ihn)
    {
     Language_Sample* ls = nullptr;
-    doc.graph()->get_sfs(ihn, {1,2,3,4,5,6}, [result, &ls](QVector<QPair<QString, void*>>& prs)
+    doc.graph()->get_sfsr(ihn, {{1,8}}, [result, &ls](QVector<QPair<QString, void*>>& prs)
     {
      {QPair<QString, void*>& ipr = prs[3];
       if(check(ipr))
@@ -125,7 +127,12 @@ void Dataset::load_from_file(QString path)
      {QPair<QString, void*>& ipr = prs[5];
       if(check(ipr))
         ls->set_udp_label(ipr.first);}
-
+     {QPair<QString, void*>& ipr = prs[6];
+      if(check(ipr))
+        ls->set_pre(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[7];
+      if(check(ipr))
+        ls->set_post(ipr.first);}
     });
 
 //    doc.graph()->get_sf(ihn, 4, [result, &ls](QPair<QString, void*>& ipr)
