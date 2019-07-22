@@ -50,6 +50,9 @@ public:
  static void serialize_samples_to_file(QVector<Language_Sample_Group*>& lsgs, QString file);
 
  QString get_main_text();
+ QString get_main_archival_or_text();
+ QString get_main_pre();
+ QString get_main_post();
 
  QString get_form();
  QString get_issue();

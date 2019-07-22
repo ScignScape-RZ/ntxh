@@ -42,6 +42,14 @@ Language_Sample::Language_Sample(Language_Sample_Group* group, QString text)
 
 }
 
+QString Language_Sample::archival_or_text()
+{
+ if(archival_.isEmpty())
+   return text_;
+ return archival_;
+}
+
+
 QString Language_Sample::get_form()
 {
  if(classification_.isEmpty())

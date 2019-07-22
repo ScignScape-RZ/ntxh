@@ -140,9 +140,9 @@ class ScignStage_Ling_Dialog : public QDialog
  QLabel* full_sentence_post_label_;
  QPlainTextEdit* full_sentence_plain_text_edit_;
 
- QVBoxLayout* show_original_version_layout_;
- QPushButton* show_original_version_button_;
- QGroupBox* show_original_version_group_box_;
+ QVBoxLayout* show_archival_version_layout_;
+ QPushButton* show_archival_version_button_;
+ QGroupBox* show_archival_version_group_box_;
 
 
  QFrame* select_section_frame_;

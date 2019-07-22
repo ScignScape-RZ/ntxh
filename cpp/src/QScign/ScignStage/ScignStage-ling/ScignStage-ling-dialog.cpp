@@ -297,25 +297,29 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
  full_sentence_splitter_->addWidget(full_sentence_plain_text_edit_);
  full_sentence_splitter_->addWidget(full_sentence_post_label_);
 
- show_original_version_button_ = new QPushButton("OFF", this);
- show_original_version_button_->setStyleSheet(
+ show_archival_version_button_ = new QPushButton("OFF", this);
+ show_archival_version_button_->setStyleSheet(
    colorful_toggle_button_style_sheet_() + "QPushButton{max-width: 35px;}");
 
- show_original_version_button_->setToolTip("Set to ON");
+ show_archival_version_button_->setToolTip("Set to ON");
 
- show_original_version_group_box_ = new QGroupBox("Show Original", this);
- show_original_version_layout_ = new QVBoxLayout;
- show_original_version_layout_->addWidget(show_original_version_button_);
- show_original_version_group_box_->setLayout(show_original_version_layout_);
+ show_archival_version_group_box_ = new QGroupBox("Show Archival", this);
+ show_archival_version_layout_ = new QVBoxLayout;
+ show_archival_version_layout_->addWidget(show_archival_version_button_);
+ show_archival_version_group_box_->setLayout(show_archival_version_layout_);
 
- show_original_version_button_->setCheckable(true);
- connect(show_original_version_button_, &QPushButton::toggled,
+ show_archival_version_button_->setCheckable(true);
+ connect(show_archival_version_button_, &QPushButton::toggled,
    [this](bool checked)
  {
   if(checked)
   {
-   show_original_version_button_->setText("ON");
-   show_original_version_button_->setToolTip("Set to OFF");
+   show_archival_version_button_->setText("ON");
+   show_archival_version_button_->setToolTip("Set to OFF");
+   if(current_sample_)
+     full_sentence_plain_text_edit_->setPlainText(current_sample_->archival_or_text());
+   else if(current_open_group_)
+    full_sentence_plain_text_edit_->setPlainText(current_open_group_->get_main_archival_or_text());
 
    //?
 //   if(current_sample_)
@@ -323,19 +327,23 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   }
   else
   {
-   show_original_version_button_->setText("OFF");
-   show_original_version_button_->setToolTip("Set to ON");
+   show_archival_version_button_->setText("OFF");
+   show_archival_version_button_->setToolTip("Set to ON");
 
    if(current_sample_)
-     full_sentence_plain_text_edit_->setPlainText(current_sample_->text().simplified());
+     full_sentence_plain_text_edit_->setPlainText(current_sample_->text());
+
+   else if(current_open_group_)
+    full_sentence_plain_text_edit_->setPlainText(current_open_group_->get_main_text());
+
   }
 
  });
 
- show_original_version_group_box_->setMaximumWidth(90);
+ show_archival_version_group_box_->setMaximumWidth(90);
 
  full_sentence_layout_->addWidget(full_sentence_splitter_);
- full_sentence_layout_->addWidget(show_original_version_group_box_);
+ full_sentence_layout_->addWidget(show_archival_version_group_box_);
 
  full_sentence_pre_label_->setStyleSheet("QLabel{background:yellow}");
 
@@ -852,19 +860,28 @@ void ScignStage_Ling_Dialog::handle_sample_down()
 
 void ScignStage_Ling_Dialog::show_full_sentence(Language_Sample_Group* g)
 {
- full_sentence_pre_label_->setText(QString());
- full_sentence_plain_text_edit_->setPlainText(g->get_main_text().simplified());
- full_sentence_post_label_->setText(QString());
+ full_sentence_pre_label_->setText(g->get_main_pre());
+ if(show_archival_version_button_->isChecked())
+   full_sentence_plain_text_edit_->setPlainText(g->get_main_archival_or_text());
+ else
+   full_sentence_plain_text_edit_->setPlainText(g->get_main_text());
+ full_sentence_post_label_->setText(g->get_main_post());
 }
 
 void ScignStage_Ling_Dialog::show_full_sentence(Language_Sample* samp)
 {
  full_sentence_pre_label_->setText(samp->pre());
- full_sentence_plain_text_edit_->setPlainText(samp->text());
+// full_sentence_plain_text_edit_->setPlainText(samp->text());
+  if(show_archival_version_button_->isChecked())
+    full_sentence_plain_text_edit_->setPlainText(samp->archival_or_text());
+  else
+    full_sentence_plain_text_edit_->setPlainText(samp->text());
+
+
  full_sentence_post_label_->setText(samp->post());
 //?
 // full_sentence_pre_label_->setText(samp->pre_with_mark());
-// if(show_original_version_button_->isChecked())
+// if(show_archival_version_button_->isChecked())
 //   full_sentence_plain_text_edit_->setPlainText(samp->alternate_or_text());
 // else
 //   full_sentence_plain_text_edit_->setPlainText(samp->text());

@@ -42,6 +42,8 @@ class Language_Sample //: phaong<pg_t>::Hypernode
  QString pre_;
  QString post_;
 
+ QString archival_;
+
 public:
 
  Language_Sample(Language_Sample_Group* group, QString text);
@@ -57,6 +59,7 @@ public:
 
  ACCESSORS(QString ,pre)
  ACCESSORS(QString ,post)
+ ACCESSORS(QString ,archival)
 
  ACCESSORS(Language_Sample_Group* ,group)
 
@@ -64,6 +67,8 @@ public:
  QString get_issue();
 
  void serialize(QTextStream& qts);
+
+ QString archival_or_text();
 
 };
 

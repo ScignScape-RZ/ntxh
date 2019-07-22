@@ -318,9 +318,11 @@ scenarios the readings would be reversed:
 
 `sentenceList,
 `sentenceItem; \swl{}{The rescued dogs had been treated by vets in the past
-(but were subsequently abandoned by their owners).}
+(but were subsequently abandoned by their owners).}[]%
+[The rescued dogs had been treated by vets in the past.]
 `sentenceItem; \swl{}{Every singer performed (the last) two songs
-(for the grand finale).}
+(for the grand finale).}[]%
+[Every singer performed the last two songs for the grand finale.]
 `sentenceItem; \swl{}{Everyone in the audience sang along to two songs
 (they were randomnly handed lyrics to different songs when
 they came in, and we asked them to join in when the song being
@@ -861,16 +863,24 @@ phrase-structure complications, particularly with respect to singular/plural agr
 
 `sentenceList,
 `sentenceItem; \swl{}{Time after time, tourists (a tourist) walk(s) by this building
-with no idea of its history.}
+with no idea of its history.}[]%
+[Time after time, tourists walk by this building
+with no idea of its history.]
 
 `sentenceItem; \swl{}{The streets around here are confusing; often people (someone)
-will ask me for directions.}
+will ask me for directions.}[]%
+[The streets around here are confusing; often someone
+will ask me for directions.]
 
 `sentenceItem; \swl{}{Student after student came with their (his/her)
-paper to compain about my grade(s).}
+paper to compain about my grade(s).}[]%
+[Student after student came with their
+paper to compain about my grades.]
 
 `sentenceItem; \swl{}{Student after student %-- and their (his/her) parents
-%-- complained about the tuition increase.}
+%-- complained about the tuition increase.}[]%
+[Student after student %-- and their parents
+%-- complained about the tuition increase.]
 `sentenceList`
 
 On a straightforward phrase-structure reading, `i.student after student` reduces to an

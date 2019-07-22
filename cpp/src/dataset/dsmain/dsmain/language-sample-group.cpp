@@ -88,6 +88,27 @@ void Language_Sample_Group::serialize(QTextStream& qts)
 
 }
 
+QString Language_Sample_Group::get_main_archival_or_text()
+{
+ if(isEmpty())
+   return QString();
+ return first()->archival_or_text();
+}
+
+QString Language_Sample_Group::get_main_pre()
+{
+ if(isEmpty())
+   return QString();
+ return first()->pre();
+}
+
+QString Language_Sample_Group::get_main_post()
+{
+ if(isEmpty())
+   return QString();
+ return first()->post();
+}
+
 QString Language_Sample_Group::get_main_text()
 {
  if(isEmpty())
