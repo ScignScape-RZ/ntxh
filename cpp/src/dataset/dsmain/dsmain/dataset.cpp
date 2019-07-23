@@ -34,10 +34,13 @@ USING_KANS(TextIO)
 
 Dataset::Dataset() 
 {
-// forms_ = QStringList{{"Text", "Dialog", "Intonation", "Paragraph"}};
+//
+ forms_ = QStringList{{"Text", "Dialog", "Intonation", "Fragment", "Paragraph"}};
  issues_ = QStringList{{"Ambiguity", "Context", "Logic",
-            "Scope", "Polarity", "Belief",
-            "Convention", "Idioms"}};
+            "Scope", "Polarity", "Belief", "Syntax", "Semantics", "Pragmatics",
+            "Convention", "Idioms", "Lexical", "Idiomatic", "Reference",
+ "Ontological", //"Rhetoric"
+ }};
 }
 
 bool check(QPair<QString, void*>& pr)
@@ -107,7 +110,7 @@ void Dataset::load_from_file(QString path)
    if(ihn)
    {
     Language_Sample* ls = nullptr;
-    doc.graph()->get_sfsr(ihn, {{1,9}}, [result, &ls](QVector<QPair<QString, void*>>& prs)
+    doc.graph()->get_sfsr(ihn, {{1,10}}, [result, &ls](QVector<QPair<QString, void*>>& prs)
     {
      {QPair<QString, void*>& ipr = prs[3];
       if(check(ipr))
@@ -136,6 +139,9 @@ void Dataset::load_from_file(QString path)
      {QPair<QString, void*>& ipr = prs[8];
       if(check(ipr))
         ls->set_archival(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[9];
+      if(check(ipr))
+        ls->set_classification(ipr.first);}
     });
 
 //    doc.graph()->get_sf(ihn, 4, [result, &ls](QPair<QString, void*>& ipr)

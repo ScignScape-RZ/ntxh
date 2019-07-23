@@ -166,7 +166,7 @@ functional sequencing attributed to a sentence during analysis.
 Given, say, 
 
 `sentenceList,
-`sentenceItem; \swl{itm:ambience}{The city's ambience is colonial and the climate is tropical.}
+`sentenceItem; \swl{itm:ambience}{The city's ambience is colonial and the climate is tropical.}{sem}
 \udref{en_gum-ud-train}{GUM_voyage_merida-20}
 `sentenceList`
 
@@ -243,7 +243,7 @@ applied to other inputs in turn.
 For a concrete example, consider 
 
 `sentenceList,
-`sentenceItem; \swl{actually}{The most popular lodging is actually camping on the beaches.}
+`sentenceItem; \swl{actually}{The most popular lodging is actually camping on the beaches.}{sem}
 \udref{en_gum-ud-train}{GUM_voyage_socotra-16}
 `sentenceList`
 
@@ -376,11 +376,11 @@ autonomous:
 
 `sentenceList,
 `sentenceItem; \swl{students}{Many students and their parents 
-came to complain about the tuition hikes.}
-`sentenceItem; \swl{office}{Many students came by my office to complain about their grades.}
-`sentenceItem; \swl{after}{Student after student complained about the tuition hikes.}
+came to complain about the tuition hikes.}{sco}
+`sentenceItem; \swl{office}{Many students came by my office to complain about their grades.}{sco}
+`sentenceItem; \swl{after}{Student after student complained about the tuition hikes.}{sco}
 `sentenceItem; \swl{parents}{Student after student came with their parents to complain 
-about the tuition hikes.}
+about the tuition hikes.}{sco}
 `sentenceList`
 
 In (\ref{students}) and (\ref{office}), we read `i.Many students` as topicalizing a multitude, 
@@ -393,8 +393,8 @@ reflected in how the singular/plural alternative is underdetermined in a multi-s
 context; consider Langacker's example: 
 
 `sentenceList,
-`sentenceItem; \swl{}{Three times, students asked an interesting question.}
-`sentenceItem; \swl{}{Three times, a student asked an interesting question.}
+`sentenceItem; \swl{}{Three times, students asked an interesting question.}{sco}
+`sentenceItem; \swl{}{Three times, a student asked an interesting question.}{sco}
 `sentenceList`
 
 Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
@@ -609,8 +609,8 @@ collide in the same sentence.  Slightly modifying two examples:`footnote.
 `footnote`
 
 `sentenceList,
-`sentenceItem; \swl{}{The newspaper you are reading is being sued.}
-`sentenceItem; \swl{}{Liverpool, an important harbor, built new docks.}
+`sentenceItem; \swl{}{The newspaper you are reading is being sued.}{lex}
+`sentenceItem; \swl{}{Liverpool, an important harbor, built new docks.}{lex}
 `sentenceList`
 
 Both have a mid-sentence shift between senses, which is analyzed
@@ -620,8 +620,8 @@ be accepted:
 
 `sentenceList,
 `sentenceItem; \swl{}{The newspaper fired a reporter and fell off
-the table.}[(?)]
-`sentenceItem; \swl{}{Liverpool beat Tottenham and built new docks.}[(?)]
+the table.}[(?)]{lex}
+`sentenceItem; \swl{}{Liverpool beat Tottenham and built new docks.}[(?)]{lex}
 `sentenceList`
 
 (again, slightly modifying the counter-examples).  Type coercions are
@@ -643,8 +643,8 @@ attributing mental states forces us to conceive of their referents
 in those terms:
 
 `sentenceList,
-`sentenceItem; \swl{}{Liverpool wants to sign a left-footed striker.}
-`sentenceItem; \swl{}{That newspaper plans to fire its editorial staff.}
+`sentenceItem; \swl{}{Liverpool wants to sign a left-footed striker.}{ont}
+`sentenceItem; \swl{}{That newspaper plans to fire its editorial staff.}{ont}
 `sentenceList`
 
 This `i.can` be analyzed as `q.type coercions`/; but the type-theoretic machinery should contribute

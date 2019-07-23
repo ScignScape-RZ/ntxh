@@ -50,6 +50,9 @@ DEFINES += USE_RZNS
 DEFINES += USE_QSNS
 
 
+#DEFINES += USING_XPDF
+
+
 HEADERS += \
 #  $$SRC_DIR/test-functions.h \
 
@@ -61,7 +64,7 @@ SOURCES += \
 
 
 LIBS += -L$$TARGETSDIR  -ldsmain  -lScignStage-ling \
-  -lntxh  -lntxh-parser -lntxh-builder
+  -lntxh  -lntxh-parser  -lntxh-builder  #  -lxpdf  -lfreetype
 
 #  -lrph-builder -lrelae-phaon    -lds-relae-phaon
 

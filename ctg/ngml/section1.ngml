@@ -15,8 +15,8 @@ In some cases word-relations can still be theorized mostly via
 syntax.  Consider hypothetical, example sentences like 
 
 `sentenceList,
-`sentenceItem; \swl{itm:having}{His having lied in the past damages his credibilty in the present.}
-`sentenceItem; \swl{itm:whether}{Voters question whether he is truthful this time around.}
+`sentenceItem; \swl{itm:having}{His having lied in the past damages his credibilty in the present.}{syn}
+`sentenceItem; \swl{itm:whether}{Voters question whether he is truthful this time around.}{syn}
 `sentenceList`
 
 In (\ref{itm:having}), `i.having` is necessary to syntactically transform its ground 
@@ -68,9 +68,9 @@ or between morphological classes (singular/plural, object/location, etc.).
 Consider locative constructions like 
 
 `sentenceList,
-`sentenceItem; \swl{itm:grandma}{Let's go to Grandma.}
-`sentenceItem; \swl{itm:lawyers}{Let's go to the lawyers.}
-`sentenceItem; \swl{itm:press}{Let's go to the press.}
+`sentenceItem; \swl{itm:grandma}{Let's go to Grandma.}{syn}
+`sentenceItem; \swl{itm:lawyers}{Let's go to the lawyers.}{syn}
+`sentenceItem; \swl{itm:press}{Let's go to the press.}{syn}
 `sentenceList`
 
 Here nouns like `i.Grandma`/, `i.the lawyers`/, and `i.the press` are 
@@ -288,9 +288,9 @@ from `i.dogs`/.  But the nature of this added detail
 Compare between examples like:
 
 `sentenceList,
-`sentenceItem; \swl{itm:black}{I saw my neighbor's two black dogs.}
-`sentenceItem; \swl{itm:rescued}{I saw my neighbor's two rescued dogs.}
-`sentenceItem; \swl{itm:latest}{I saw my neighbor's two latest dogs.}
+`sentenceItem; \swl{itm:black}{I saw my neighbor's two black dogs.}{sem}
+`sentenceItem; \swl{itm:rescued}{I saw my neighbor's two rescued dogs.}{sem}
+`sentenceItem; \swl{itm:latest}{I saw my neighbor's two latest dogs.}{sem}
 `sentenceList`
 
 Whereas (\ref{itm:black}) presents a fairly straightforward conceptual 
@@ -319,9 +319,9 @@ interpret this in terms of patients the vet has seen over the course of
 a day: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:vet}{We have to wait until after the vet's two latest dogs.}
+`sentenceItem; \swl{itm:vet}{We have to wait until after the vet's two latest dogs.}{sem}
 `sentenceItem; \swl{itm:organization}{I'm concerned for the rescue organization's
-two latest dogs.}
+two latest dogs.}{sem}
 `sentenceList`
  
 Understanding the relevant time-frame depends on understading the relation 
@@ -348,8 +348,8 @@ involving the dogs' eventual owners; in some context the more
 generic meaning of `i.rescue` could supercede:  
 
 `sentenceList,
-`sentenceItem; \swl{itm:boatmen}{Boatmen rescued dogs from the flooded streets.}
-`sentenceItem; \swl{itm:firemen}{Firemen rescued dogs from the burning building.}
+`sentenceItem; \swl{itm:boatmen}{Boatmen rescued dogs from the flooded streets.}{sem}
+`sentenceItem; \swl{itm:firemen}{Firemen rescued dogs from the burning building.}{sem}
 `sentenceList`
 
 Neither (\ref{itm:boatmen}) nor (\ref{itm:firemen}) imply that the dogs were abandoned, or 
@@ -448,9 +448,9 @@ semantic readings bifurcate in ways wholly dependent on
 extra-linguitic conceptualization. Consider for instance: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:boroughs}{All New Yorkers live in one of five boroughs.}
+`sentenceItem; \swl{itm:boroughs}{All New Yorkers live in one of five boroughs.}{sem}
 `sentenceItem; \swl{itm:commute}{All New Yorkers complain about how long it 
-takes to commute to New York City.}
+takes to commute to New York City.}{sem}
 `sentenceList`
 
 In (\ref{itm:boroughs}), `i.New Yorkers` refers specifically to everyone who lives 
@@ -494,11 +494,11 @@ considerations resolve the ambiguity by rejecting one or another
 Consider: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:beat}{The Leafs failed to beat the Habs for the first time this year.}
+`sentenceItem; \swl{itm:beat}{The Leafs failed to beat the Habs for the first time this year.}{amb}
 `sentenceItem; \swl{itm:consecutive}{The Leafs failed to win two consecutive games for the 
-first time this year.}
+first time this year.}{amb}
 `sentenceItem; \swl{itm:goal}{The Leafs failed to score a goal for the 
-first time this year.}
+first time this year.}{amb}
 `sentenceList`
   
 Sentence (\ref{itm:beat}) has two competing readings: either the Toronto Maple Leafs 
@@ -534,11 +534,11 @@ localized in the communicated ideas themselves, but in their
 typical linguistic encoding: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:allresidents}{All residents of the city of New York live in one of five boroughs.}
+`sentenceItem; \swl{itm:allresidents}{All residents of the city of New York live in one of five boroughs.}{log}
 `sentenceItem; \swl{itm:manyresidents}{Many residents of the New York metropolitan area 
-complain about how long it takes to commute to New York City.}
+complain about how long it takes to commute to New York City.}{log}
 `sentenceItem; \swl{itm:leafshabs}{For the first time this year, the Leafs failed to beat 
-the Habs.}
+the Habs.}{log}
 `sentenceList`
 
 These versions are more logically transparent, in that their propositional 
@@ -621,21 +621,21 @@ so forth.  In the most recent Universal Dependencies Shared Task corpus
 we can find examples like:  
 
 `sentenceList,
-`sentenceItem; \swl{itm:tumour}{It is the most common tumour found in babies, occurring in one of every 35,000 births.}
+`sentenceItem; \swl{itm:tumour}{It is the most common tumour found in babies, occurring in one of every 35,000 births.}{log}
 \udref{en_pud}{n01051007}
-`sentenceItem; \swl{itm:Dengue}{Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.}
+`sentenceItem; \swl{itm:Dengue}{Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.}{log}
 \udref{en_partut-ud-train}{en_partut-ud-1498}
-`sentenceItem; \swl{itm:TalibanKarzai}{Many Taliban living in Afghanistan voted for President Karzai.}
+`sentenceItem; \swl{itm:TalibanKarzai}{Many Taliban living in Afghanistan voted for President Karzai.}{log}
 \udref{en_ewt-ud-train}{w03002048}
-`sentenceItem; \swl{itm:Ashraf}{Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.}
+`sentenceItem; \swl{itm:Ashraf}{Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.}{log}
 \udref{en_ewt-ud-train}{weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112}
-`sentenceItem; \swl{itm:ChinaSpace}{Most experts believe China intends to develop a small space station of its own over the next several years.}
+`sentenceItem; \swl{itm:ChinaSpace}{Most experts believe China intends to develop a small space station of its own over the next several years.}{log}
 \udref{en_ewt-ud-train}{newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020}
-`sentenceItem; \swl{itm:tastings}{Check out their wine tastings every Friday night!}
+`sentenceItem; \swl{itm:tastings}{Check out their wine tastings every Friday night!}{log}
 \udref{en_ewt-ud-train}{reviews-322225-0005}
-`sentenceItem; \swl{itm:tag}{For each start tag , there is a corresponding end tag.}
+`sentenceItem; \swl{itm:tag}{For each start tag , there is a corresponding end tag.}{log}
 \udref{en_lines-ud-train}{166}
-`sentenceItem; \swl{itm:Warhol}{Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.}
+`sentenceItem; \swl{itm:Warhol}{Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.}{log}
 \udref{en_gum-ud-train}{GUM_news_warhol-35}
 `sentenceList`
 
@@ -678,13 +678,13 @@ case-studies:
 
 
 `sentenceList,
-`sentenceItem; \swl{itm:ants}{A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.}
+`sentenceItem; \swl{itm:ants}{A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.}{sem}
 \udref{en_lines-ud-train}{2157}
-`sentenceItem; \swl{itm:current-waiting-period}{The current waiting period is eight weeks.}
+`sentenceItem; \swl{itm:current-waiting-period}{The current waiting period is eight weeks.}{sem}
 \udref{en_pud}{n01050009}
-`sentenceItem; \swl{itm:immersed}{I think that's why they immersed themselves in pattern and colour.}
+`sentenceItem; \swl{itm:immersed}{I think that's why they immersed themselves in pattern and colour.}{sem}
 \udref{en_pud}{n01087018}
-`sentenceItem; \swl{itm:princess}{With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.}
+`sentenceItem; \swl{itm:princess}{With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.}{sem}
 \udref{en_pud}{w01119076}
 `sentenceList`
 

@@ -49,6 +49,28 @@ QString Language_Sample::archival_or_text()
  return archival_;
 }
 
+QString Language_Sample::parse_classification(QString key)
+{
+ static QMap<QString, QString> static_map{{
+   {{"txt"}, {"Text"}},
+   {{"dlg"}, {"Dialog"}},
+   {{"par"}, {"Paragraph"}},
+   {{"syn"}, {"Syntax"}},
+   {{"sem"}, {"Semantics"}},
+   {{"pra"}, {"Pragmatics"}},
+   {{"amb"}, {"Ambiguity"}},
+   {{"sco"}, {"Scope"}},
+   {{"lex"}, {"Lexical"}},
+   {{"ref"}, {"Reference"}},
+   {{"idi"}, {"Idiomatic"}},
+   {{"log"}, {"Logic"}},
+
+                                          }};
+
+ if(static_map.contains(key))
+   return static_map.value(key);
+}
+
 
 QString Language_Sample::get_form()
 {
@@ -57,7 +79,7 @@ QString Language_Sample::get_form()
  int index = classification_.indexOf(':');
  if(index == -1)
  {
-  return classification_;
+  return "Text";
  }
  return classification_.left(index);
 }
@@ -69,7 +91,7 @@ QString Language_Sample::get_issue()
  int index = classification_.indexOf(':');
  if(index == -1)
  {
-  return "(N_A)";
+  return classification_;
  }
  return classification_.mid(index + 1);
 }

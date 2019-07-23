@@ -135,7 +135,7 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 // filters_grid_layout_->addWidget(issues_label, 1, 0);
 
  int fcolmax = 2;
- int icolmax = 4;
+ int icolmax = 5;
 
  filter_forms_button_group_ = new QButtonGroup(this);
  filter_forms_button_group_->setExclusive(false);
@@ -167,8 +167,8 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    QCheckBox* cb = new QCheckBox(i, this);
    cb->setChecked(true);
 
-   // // temporary while issues are notated in the data set
-   cb->setEnabled(false);
+//   // // temporary while issues are notated in the data set
+//   cb->setEnabled(false);
 
    filter_issues_grid_layout_->addWidget(cb, c / icolmax,
      c % icolmax);
@@ -270,20 +270,20 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
  filters_layout_->addStretch();
 
  quasi_toolbar_layout_ = new QGridLayout;
-
  quasi_toolbar_layout_->setRowStretch(0, 1);
  quasi_toolbar_layout_->addWidget(activate_tcp_button_, 1, 0);
  quasi_toolbar_layout_->addWidget(take_screenshot_button_, 1, 1);
-
  config_layout_ = new QHBoxLayout;
  config_layout_->addStretch();
  config_layout_->addWidget(launch_config_button_);
  config_layout_->addStretch();
  quasi_toolbar_layout_->addLayout(config_layout_, 2, 0, 1, 2);
-
  quasi_toolbar_layout_->setRowStretch(3, 1);
 
+
+
  filters_layout_->addLayout(quasi_toolbar_layout_);
+
 
  main_layout_->addLayout(filters_layout_);
 

@@ -142,7 +142,7 @@ linguistic analysis (cf. \cite{SivaReddy}, \cite{KiyoshiSudo},
 extra data, it does offer a succinct way to capture the 
 functional sequencing attributed to a sentence during analysis.  
 Given, say, 
-\begin{sentenceList}\sentenceItem{} \swl{itm:ambience}{The city's ambience is colonial and the climate is tropical.}
+\begin{sentenceList}\sentenceItem{} \swl{itm:ambience}{The city's ambience is colonial and the climate is tropical.}{sem}
 \udref{en_gum-ud-train}{GUM_voyage_merida-20}
 \end{sentenceList}
 the gloss \gl{(and (is ((The ('s city)) ambience) colonial) (is (the climate) tropical))}
@@ -208,7 +208,7 @@ evaluating a nested expression to produce a new function, then
 applied to other inputs in turn.
 }
 \p{For a concrete example, consider 
-\begin{sentenceList}\sentenceItem{} \swl{actually}{The most popular lodging is actually camping on the beaches.}
+\begin{sentenceList}\sentenceItem{} \swl{actually}{The most popular lodging is actually camping on the beaches.}{sem}
 \udref{en_gum-ud-train}{GUM_voyage_socotra-16}
 \end{sentenceList}
 with gloss, as I take it, \gl{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
@@ -326,11 +326,11 @@ core, \i{students}.  In real-world examples, however, lexemes tend
 to be neither wholly subsumed by their surrounding phrase nor wholly 
 autonomous: 
 \begin{sentenceList}\sentenceItem{} \swl{students}{Many students and their parents 
-came to complain about the tuition hikes.}
-\sentenceItem{} \swl{office}{Many students came by my office to complain about their grades.}
-\sentenceItem{} \swl{after}{Student after student complained about the tuition hikes.}
+came to complain about the tuition hikes.}{sco}
+\sentenceItem{} \swl{office}{Many students came by my office to complain about their grades.}{sco}
+\sentenceItem{} \swl{after}{Student after student complained about the tuition hikes.}{sco}
 \sentenceItem{} \swl{parents}{Student after student came with their parents to complain 
-about the tuition hikes.}
+about the tuition hikes.}{sco}
 \end{sentenceList}
 In (\ref{students}) and (\ref{office}), we read \i{Many students} as topicalizing a multitude, 
 but we recognize that each student has their own parents, grade, and we assume they came to 
@@ -340,8 +340,8 @@ conceptually with other sentence elements, in a way that pulls it partly outside
 the possibility of multiple derived spaces.  This kind of space-building duality is 
 reflected in how the singular/plural alternative is underdetermined in a multi-space 
 context; consider Langacker's example: 
-\begin{sentenceList}\sentenceItem{} \swl{}{Three times, students asked an interesting question.}
-\sentenceItem{} \swl{}{Three times, a student asked an interesting question.}
+\begin{sentenceList}\sentenceItem{} \swl{}{Three times, students asked an interesting question.}{sco}
+\sentenceItem{} \swl{}{Three times, a student asked an interesting question.}{sco}
 \end{sentenceList}
 Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
 \i{Student after student} invokes a multiplicity akin to \i{Many students}, 
@@ -531,16 +531,16 @@ This mode of analysis is especially well illustrated when competing senses
 collide in the same sentence.  Slightly modifying two examples:\footnote{\cite[p. 40]{ChatzikyriakidisLuo} (former) and
 \cite[p. 4]{MeryMootRetore} (latter).
 }
-\begin{sentenceList}\sentenceItem{} \swl{}{The newspaper you are reading is being sued.}
-\sentenceItem{} \swl{}{Liverpool, an important harbor, built new docks.}
+\begin{sentenceList}\sentenceItem{} \swl{}{The newspaper you are reading is being sued.}{lex}
+\sentenceItem{} \swl{}{Liverpool, an important harbor, built new docks.}{lex}
 \end{sentenceList}
 Both have a mid-sentence shift between senses, which is analyzed
 in terms of \q{type coercions}.  The interesting detail of this treatment
 is how it correctly predicts that such coercions are not guaranteed to
 be accepted:
 \begin{sentenceList}\sentenceItem{} \swl{}{The newspaper fired a reporter and fell off
-the table.}[(?)]
-\sentenceItem{} \swl{}{Liverpool beat Tottenham and built new docks.}[(?)]
+the table.}[(?)]{lex}
+\sentenceItem{} \swl{}{Liverpool beat Tottenham and built new docks.}[(?)]{lex}
 \end{sentenceList}
 (again, slightly modifying the counter-examples).  Type coercions are
 \i{possible} but not \i{inevitable}.  Some word-senses \q{block} certain coercions
@@ -557,8 +557,8 @@ classifications) becomes more well-motivated.
 only certain kinds of agents may have beliefs or desires, so
 attributing mental states forces us to conceive of their referents
 in those terms:
-\begin{sentenceList}\sentenceItem{} \swl{}{Liverpool wants to sign a left-footed striker.}
-\sentenceItem{} \swl{}{That newspaper plans to fire its editorial staff.}
+\begin{sentenceList}\sentenceItem{} \swl{}{Liverpool wants to sign a left-footed striker.}{ont}
+\sentenceItem{} \swl{}{That newspaper plans to fire its editorial staff.}{ont}
 \end{sentenceList}
 This \i{can} be analyzed as \q{type coercions}; but the type-theoretic machinery should contribute
 more than just obliquely stating linguistic wisdom, such as

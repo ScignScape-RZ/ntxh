@@ -66,6 +66,8 @@ public:
  QString get_form();
  QString get_issue();
 
+ QString parse_classification(QString key);
+
  void serialize(QTextStream& qts);
 
  QString archival_or_text();

@@ -45,6 +45,9 @@ CONFIG += no_keywords
 DEFINES += USE_KANS
 DEFINES += USE_RZNS
 
+#DEFINES += USING_XPDF
+INCLUDEPATH += $$XPDF_SRC_GROUP_DIR
+
 
 HEADERS += \
   $$SRC_DIR/ScignStage-ling-dialog.h \

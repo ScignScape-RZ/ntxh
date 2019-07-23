@@ -33,7 +33,7 @@ class Dataset
  QVector<Language_Sample_Group*> groups_;
 
  QStringList issues_;
-// QStringList forms_;
+ QStringList forms_;
 
 public:
 

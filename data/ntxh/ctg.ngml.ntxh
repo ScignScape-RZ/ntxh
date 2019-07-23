@@ -1,16 +1,16 @@
 - Generated from LaTeX File ctg.ngml.tex 
-22/7/2019, 11:46
+22/7/2019, 13:30
 .
 
-- p=page s=ud source, section number a=archival 
-i=id l=label x=latex label t=text r=pre o=post 
+- i=id p=page s=ud source, section number c=classification
+l=label x=latex label t=text r=pre o=post a=archival 
 .
 
 &type SentenceList [8;3;2] 
 :i:1 :p:2 :s:3 ;
 
-&type SentenceItem {9} 
-:i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 ;
+&type SentenceItem {10} 
+:i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 ;
 
 &/
 
@@ -25,6 +25,7 @@ $i: 1
 $p: 4
 $x: itm:having
 $t: His having lied in the past damages his credibilty in the present.
+$c: syn
 /!
 <>>
 
@@ -33,6 +34,7 @@ $i: 2
 $p: 4
 $x: itm:whether
 $t: Voters question whether he is truthful this time around.
+$c: syn
 /!
 <>>
 
@@ -49,6 +51,7 @@ $i: 3
 $p: 5
 $x: itm:grandma
 $t: Let's go to Grandma.
+$c: syn
 /!
 <>>
 
@@ -57,6 +60,7 @@ $i: 4
 $p: 5
 $x: itm:lawyers
 $t: Let's go to the lawyers.
+$c: syn
 /!
 <>>
 
@@ -65,6 +69,7 @@ $i: 5
 $p: 5
 $x: itm:press
 $t: Let's go to the press.
+$c: syn
 /!
 <>>
 
@@ -81,6 +86,7 @@ $i: 6
 $p: 7
 $x: itm:black
 $t: I saw my neighbor's two black dogs.
+$c: sem
 /!
 <>>
 
@@ -89,6 +95,7 @@ $i: 7
 $p: 7
 $x: itm:rescued
 $t: I saw my neighbor's two rescued dogs.
+$c: sem
 /!
 <>>
 
@@ -97,6 +104,7 @@ $i: 8
 $p: 7
 $x: itm:latest
 $t: I saw my neighbor's two latest dogs.
+$c: sem
 /!
 <>>
 
@@ -113,6 +121,7 @@ $i: 9
 $p: 7
 $x: itm:vet
 $t: We have to wait until after the vet's two latest dogs.
+$c: sem
 /!
 <>>
 
@@ -121,6 +130,7 @@ $i: 10
 $p: 7
 $x: itm:organization
 $t: I'm concerned for the rescue organization's two latest dogs.
+$c: sem
 /!
 <>>
 
@@ -137,6 +147,7 @@ $i: 11
 $p: 8
 $x: itm:boatmen
 $t: Boatmen rescued dogs from the flooded streets.
+$c: sem
 /!
 <>>
 
@@ -145,6 +156,7 @@ $i: 12
 $p: 8
 $x: itm:firemen
 $t: Firemen rescued dogs from the burning building.
+$c: sem
 /!
 <>>
 
@@ -161,6 +173,7 @@ $i: 13
 $p: 9
 $x: itm:boroughs
 $t: All New Yorkers live in one of five boroughs.
+$c: sem
 /!
 <>>
 
@@ -169,6 +182,7 @@ $i: 14
 $p: 9
 $x: itm:commute
 $t: All New Yorkers complain about how long it takes to commute to New York City.
+$c: sem
 /!
 <>>
 
@@ -185,6 +199,7 @@ $i: 15
 $p: 9
 $x: itm:beat
 $t: The Leafs failed to beat the Habs for the first time this year.
+$c: amb
 /!
 <>>
 
@@ -193,6 +208,7 @@ $i: 16
 $p: 9
 $x: itm:consecutive
 $t: The Leafs failed to win two consecutive games for the first time this year.
+$c: amb
 /!
 <>>
 
@@ -201,6 +217,7 @@ $i: 17
 $p: 9
 $x: itm:goal
 $t: The Leafs failed to score a goal for the first time this year.
+$c: amb
 /!
 <>>
 
@@ -217,6 +234,7 @@ $i: 18
 $p: 9
 $x: itm:allresidents
 $t: All residents of the city of New York live in one of five boroughs.
+$c: log
 /!
 <>>
 
@@ -225,6 +243,7 @@ $i: 19
 $p: 9
 $x: itm:manyresidents
 $t: Many residents of the New York metropolitan area complain about how long it takes to commute to New York City.
+$c: log
 /!
 <>>
 
@@ -233,6 +252,7 @@ $i: 20
 $p: 9
 $x: itm:leafshabs
 $t: For the first time this year, the Leafs failed to beat the Habs.
+$c: log
 /!
 <>>
 
@@ -249,6 +269,7 @@ $i: 21
 $p: 10
 $x: itm:tumour
 $t: It is the most common tumour found in babies, occurring in one of every 35,000 births.
+$c: log
 /!
 <>>
 
@@ -262,6 +283,7 @@ $i: 22
 $p: 10
 $x: itm:Dengue
 $t: Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.
+$c: log
 /!
 <>>
 
@@ -275,6 +297,7 @@ $i: 23
 $p: 10
 $x: itm:TalibanKarzai
 $t: Many Taliban living in Afghanistan voted for President Karzai.
+$c: log
 /!
 <>>
 
@@ -288,6 +311,7 @@ $i: 24
 $p: 10
 $x: itm:Ashraf
 $t: Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.
+$c: log
 /!
 <>>
 
@@ -301,6 +325,7 @@ $i: 25
 $p: 10
 $x: itm:ChinaSpace
 $t: Most experts believe China intends to develop a small space station of its own over the next several years.
+$c: log
 /!
 <>>
 
@@ -314,6 +339,7 @@ $i: 26
 $p: 10
 $x: itm:tastings
 $t: Check out their wine tastings every Friday night!
+$c: log
 /!
 <>>
 
@@ -327,6 +353,7 @@ $i: 27
 $p: 10
 $x: itm:tag
 $t: For each start tag , there is a corresponding end tag.
+$c: log
 /!
 <>>
 
@@ -340,6 +367,7 @@ $i: 28
 $p: 10
 $x: itm:Warhol
 $t: Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.
+$c: log
 /!
 <>>
 
@@ -361,6 +389,7 @@ $i: 29
 $p: 11
 $x: itm:ants
 $t: A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.
+$c: sem
 /!
 <>>
 
@@ -374,6 +403,7 @@ $i: 30
 $p: 11
 $x: itm:current-waiting-period
 $t: The current waiting period is eight weeks.
+$c: sem
 /!
 <>>
 
@@ -387,6 +417,7 @@ $i: 31
 $p: 11
 $x: itm:immersed
 $t: I think that's why they immersed themselves in pattern and colour.
+$c: sem
 /!
 <>>
 
@@ -400,6 +431,7 @@ $i: 32
 $p: 11
 $x: itm:princess
 $t: With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.
+$c: sem
 /!
 <>>
 
@@ -421,6 +453,7 @@ $i: 33
 $p: 13
 $x: itm:ambience
 $t: The city's ambience is colonial and the climate is tropical.
+$c: sem
 /!
 <>>
 
@@ -442,6 +475,7 @@ $i: 34
 $p: 14
 $x: actually
 $t: The most popular lodging is actually camping on the beaches.
+$c: sem
 /!
 <>>
 
@@ -463,6 +497,7 @@ $i: 35
 $p: 15
 $x: students
 $t: Many students and their parents came to complain about the tuition hikes.
+$c: sco
 /!
 <>>
 
@@ -471,6 +506,7 @@ $i: 36
 $p: 15
 $x: office
 $t: Many students came by my office to complain about their grades.
+$c: sco
 /!
 <>>
 
@@ -479,6 +515,7 @@ $i: 37
 $p: 16
 $x: after
 $t: Student after student complained about the tuition hikes.
+$c: sco
 /!
 <>>
 
@@ -487,6 +524,7 @@ $i: 38
 $p: 16
 $x: parents
 $t: Student after student came with their parents to complain about the tuition hikes.
+$c: sco
 /!
 <>>
 
@@ -502,6 +540,7 @@ $s: 2
 $i: 39
 $p: 16
 $t: Three times, students asked an interesting question.
+$c: sco
 /!
 <>>
 
@@ -509,6 +548,7 @@ $t: Three times, students asked an interesting question.
 $i: 40
 $p: 16
 $t: Three times, a student asked an interesting question.
+$c: sco
 /!
 <>>
 
@@ -524,6 +564,7 @@ $s: 2
 $i: 41
 $p: 18
 $t: The newspaper you are reading is being sued.
+$c: lex
 /!
 <>>
 
@@ -531,6 +572,7 @@ $t: The newspaper you are reading is being sued.
 $i: 42
 $p: 18
 $t: Liverpool, an important harbor, built new docks.
+$c: lex
 /!
 <>>
 
@@ -547,6 +589,7 @@ $i: 43
 $p: 18
 $t: The newspaper fired a reporter and fell off the table.
 $o: (?)
+$c: lex
 /!
 <>>
 
@@ -555,6 +598,7 @@ $i: 44
 $p: 18
 $t: Liverpool beat Tottenham and built new docks.
 $o: (?)
+$c: lex
 /!
 <>>
 
@@ -570,6 +614,7 @@ $s: 2
 $i: 45
 $p: 18
 $t: Liverpool wants to sign a left-footed striker.
+$c: ont
 /!
 <>>
 
@@ -577,6 +622,7 @@ $t: Liverpool wants to sign a left-footed striker.
 $i: 46
 $p: 18
 $t: That newspaper plans to fire its editorial staff.
+$c: ont
 /!
 <>>
 
@@ -593,6 +639,7 @@ $i: 47
 $p: 20
 $x: itm:almond
 $t: Do you have almond milk?
+$c: pra
 /!
 <>>
 
@@ -600,6 +647,7 @@ $t: Do you have almond milk?
 $i: 48
 $p: 20
 $t: Can you get MsNBC on your TV?
+$c: pra
 /!
 <>>
 
@@ -608,6 +656,7 @@ $i: 49
 $p: 20
 $x: itm:needcorkscrew
 $t: This isn't a screw-cap bottle: I need a corkscrew.
+$c: pra
 /!
 <>>
 
@@ -623,6 +672,7 @@ $s: 3
 $i: 50
 $p: 20
 $t: I think the window is open, can you close it?
+$c: pra
 /!
 <>>
 
@@ -630,6 +680,7 @@ $t: I think the window is open, can you close it?
 $i: 51
 $p: 20
 $t: I see you have almond milk, can I have some?
+$c: pra
 /!
 <>>
 
@@ -637,6 +688,7 @@ $t: I see you have almond milk, can I have some?
 $i: 52
 $p: 20
 $t: If you get MsNBC, can you turn on Rachel Maddow?
+$c: pra
 /!
 <>>
 
@@ -644,6 +696,7 @@ $t: If you get MsNBC, can you turn on Rachel Maddow?
 $i: 53
 $p: 20
 $t: If there is a corkscrew in the house, can you get it?
+$c: pra
 /!
 <>>
 
@@ -659,6 +712,7 @@ $s: 3
 $i: 54
 $p: 20
 $t: I believe you have a reservation for Jones?
+$c: pra
 /!
 <>>
 
@@ -666,6 +720,7 @@ $t: I believe you have a reservation for Jones?
 $i: 55
 $p: 21
 $t: I believe this is the customer service desk?
+$c: pra
 /!
 <>>
 
@@ -673,6 +728,7 @@ $t: I believe this is the customer service desk?
 $i: 56
 $p: 21
 $t: I believe we ordered a second basket of garlic bread?
+$c: pra
 /!
 <>>
 
@@ -680,6 +736,7 @@ $t: I believe we ordered a second basket of garlic bread?
 $i: 57
 $p: 21
 $t: I believe you can help me find computer acessories in this section?
+$c: pra
 /!
 <>>
 
@@ -695,6 +752,7 @@ $s: 3
 $i: 58
 $p: 21
 $t: Do you have any milk?
+$c: pra
 /!
 <>>
 
@@ -702,6 +760,7 @@ $t: Do you have any milk?
 $i: 59
 $p: 21
 $t: Yes, we have almond milk.
+$c: pra
 /!
 <>>
 
@@ -709,6 +768,7 @@ $t: Yes, we have almond milk.
 $i: 60
 $p: 21
 $t: No, we have almond milk.
+$c: pra
 /!
 <>>
 
@@ -725,6 +785,7 @@ $i: 61
 $p: 21
 $x: itm:put
 $t: Can you put some almond milk in my coffee?
+$c: pra
 /!
 <>>
 
@@ -733,6 +794,7 @@ $i: 62
 $p: 21
 $x: itm:after
 $t: Is there milk in this coffee?
+$c: pra
 /!
 <>>
 
@@ -748,6 +810,7 @@ $s: 3
 $i: 63
 $p: 21
 $t: It's not open, but there's still some cold air coming through the cracks.
+$c: pra
 /!
 <>>
 
@@ -755,6 +818,7 @@ $t: It's not open, but there's still some cold air coming through the cracks.
 $i: 64
 $p: 21
 $t: It's not open, but I closed the window in the bedroom.
+$c: pra
 /!
 <>>
 
@@ -762,6 +826,7 @@ $t: It's not open, but I closed the window in the bedroom.
 $i: 65
 $p: 21
 $t: I can't ---{} it's stuck.
+$c: pra
 /!
 <>>
 
@@ -777,6 +842,7 @@ $s: 3
 $i: 66
 $p: 22
 $t: I believe the kitchen window is open ---{} please close it!
+$c: pra
 /!
 <>>
 
@@ -784,6 +850,7 @@ $t: I believe the kitchen window is open ---{} please close it!
 $i: 67
 $p: 22
 $t: I believe some window is open ---{} please close it!
+$c: pra
 /!
 <>>
 
@@ -799,6 +866,7 @@ $s: 3
 $i: 68
 $p: 22
 $t: Grandma wants us to close the window.
+$c: pra
 /!
 <>>
 
@@ -806,6 +874,7 @@ $t: Grandma wants us to close the window.
 $i: 69
 $p: 22
 $t: He wants a bottle opener.
+$c: pra
 /!
 <>>
 
@@ -821,6 +890,7 @@ $s: 3
 $i: 70
 $p: 22
 $t: Grandma wants us to eliminate the cold draft.
+$c: pra
 /!
 <>>
 
@@ -828,6 +898,7 @@ $t: Grandma wants us to eliminate the cold draft.
 $i: 71
 $p: 22
 $t: He wants something to open that bottle.
+$c: pra
 /!
 <>>
 
@@ -844,6 +915,7 @@ $i: 72
 $p: 22
 $x: itm:can
 $t: Can I have some milk?
+$c: pra
 /!
 <>>
 
@@ -852,6 +924,7 @@ $i: 73
 $p: 22
 $x: itm:close
 $t: Can you close the kitchen window?
+$c: pra
 /!
 <>>
 
@@ -868,6 +941,7 @@ $i: 74
 $p: 22
 $x: itm:store
 $t: Remember that wine we tasted on the Niagara Peninsula last summer? Can you find it in our local liquor store?
+$c: pra
 /!
 <>>
 
@@ -876,6 +950,7 @@ $i: 75
 $p: 22
 $x: itm:varietal
 $t: Remember that wine we tasted on the Niagara Peninsula last summer? What varietal was that again?
+$c: pra
 /!
 <>>
 
@@ -891,6 +966,7 @@ $s: 3
 $i: 76
 $p: 23
 $t: That wine was a Cabernet Franc.
+$c: ref
 /!
 <>>
 
@@ -898,6 +974,7 @@ $t: That wine was a Cabernet Franc.
 $i: 77
 $p: 23
 $t: Those dogs are my neighbor's. They are very sweet.
+$c: ref
 /!
 <>>
 
@@ -913,6 +990,7 @@ $s: 3
 $i: 78
 $p: 24
 $t: Those dogs are Staffordshires.
+$c: pra
 /!
 <>>
 
@@ -920,6 +998,7 @@ $t: Those dogs are Staffordshires.
 $i: 79
 $p: 24
 $t: What's a Staffordshire?
+$c: pra
 /!
 <>>
 
@@ -927,6 +1006,7 @@ $t: What's a Staffordshire?
 $i: 80
 $p: 24
 $t: It's a breed of dog.
+$c: pra
 /!
 <>>
 
@@ -942,6 +1022,7 @@ $s: 3
 $i: 81
 $p: 25
 $t: If the kitchen window is closed, we can see if other windows are open.
+$c: pra
 /!
 <>>
 
@@ -949,6 +1030,7 @@ $t: If the kitchen window is closed, we can see if other windows are open.
 $i: 82
 $p: 25
 $t: If no windows are open, we can see if there is a draft through the window-cracks.
+$c: pra
 /!
 <>>
 
@@ -956,6 +1038,7 @@ $t: If no windows are open, we can see if there is a draft through the window-cr
 $i: 83
 $p: 25
 $t: If there is no draft, we can ask if she wants a sweater.
+$c: pra
 /!
 <>>
 
@@ -971,6 +1054,7 @@ $s: 3
 $i: 84
 $p: 26
 $t: This wine is a young Syrah.
+$c: log
 /!
 <>>
 
@@ -978,6 +1062,7 @@ $t: This wine is a young Syrah.
 $i: 85
 $p: 26
 $t: My cousin adopted one of my neighbor's dog's puppies.
+$c: log
 /!
 <>>
 
@@ -994,6 +1079,7 @@ $i: 86
 $p: 26
 $x: itm:maj
 $t: The majority of students polled were opposed to tuition increases.
+$c: log
 /!
 <>>
 
@@ -1002,6 +1088,7 @@ $i: 87
 $p: 26
 $x: itm:most
 $t: Most of the students expressed disappointment about tuition increases.
+$c: log
 /!
 <>>
 
@@ -1010,6 +1097,7 @@ $i: 88
 $p: 26
 $x: itm:many
 $t: Many students have protested the tuition increases.
+$c: log
 /!
 <>>
 
@@ -1025,6 +1113,7 @@ $s: 3
 $i: 89
 $p: 27
 $t: Most students oppose the tuition increase.
+$c: sem
 /!
 <>>
 
@@ -1033,6 +1122,7 @@ $i: 90
 $p: 27
 $x: itm:indef
 $t: Most students oppose a tuition increase.
+$c: sem
 /!
 <>>
 
@@ -1049,6 +1139,7 @@ $i: 91
 $p: 27
 $x: itm:today
 $t: Today the state university system announced plans to raise tuition by at least 10\%. Most students oppose a tuition increase.
+$c: sem
 /!
 <>>
 
@@ -1057,6 +1148,7 @@ $i: 92
 $p: 27
 $x: itm:colleges
 $t: Colleges all over the country, facing rising costs, have had to raise tuition, but most students oppose a tuition increase.
+$c: sem
 /!
 <>>
 
@@ -1073,6 +1165,7 @@ $i: 93
 $p: 28
 $x: itm:sas
 $t: Student after student came out against the tuition hikes.
+$c: sem
 /!
 <>>
 
@@ -1081,6 +1174,7 @@ $i: 94
 $p: 28
 $x: itm:substantial
 $t: A substantial number of students have come out against the tuition hikes.
+$c: sem
 /!
 <>>
 
@@ -1089,6 +1183,7 @@ $i: 95
 $p: 28
 $x: itm:mass
 $t: The number of students protesting the tuition hikes may soon reach a critical mass.
+$c: sem
 /!
 <>>
 
@@ -1097,6 +1192,7 @@ $i: 96
 $p: 28
 $x: itm:tipping
 $t: Protests against the tuition hikes may have reached a tipping point.
+$c: sem
 /!
 <>>
 
@@ -1113,6 +1209,7 @@ $i: 97
 $p: 31
 $x: itm:pipe
 $t: We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well.
+$c: sco
 /!
 <>>
 
@@ -1133,6 +1230,7 @@ $s: 4
 $i: 98
 $p: 31
 $t: My colleague Ms. O'Shea would like to interview Mr. Jones, who's an old friend of mine. Can he take this call?
+$c: pra
 /!
 <>>
 
@@ -1141,6 +1239,7 @@ $i: 99
 $p: 31
 $x: itm:Jones
 $t: I'm sorry, this is his secretary. Mr. Jones is not available at the moment.
+$c: pra
 /!
 <>>
 
@@ -1156,6 +1255,7 @@ $s: 4
 $i: 100
 $p: 32
 $t: Mr. Jones, were you present at a meeting where the governer promised your employer a contract in exchange for campaign contributions?
+$c: pra
 /!
 <>>
 
@@ -1163,6 +1263,7 @@ $t: Mr. Jones, were you present at a meeting where the governer promised your em
 $i: 101
 $p: 32
 $t: After consulting with my lawyers, I decline to answer that question on the grounds that it may incriminate me.
+$c: pra
 /!
 <>>
 
@@ -1179,6 +1280,7 @@ $i: 102
 $p: 32
 $x: itm:isJones
 $t: Is Jones there?
+$c: pra
 /!
 <>>
 
@@ -1187,6 +1289,7 @@ $i: 103
 $p: 32
 $x: itm:not
 $t: He is not available.
+$c: pra
 /!
 <>>
 
@@ -1203,6 +1306,7 @@ $i: 104
 $p: 33
 $x: itm:pf
 $t: People fed the rescued dogs.
+$c: sem
 /!
 <>>
 
@@ -1211,6 +1315,7 @@ $i: 105
 $p: 33
 $x: itm:ve
 $t: Vets examined the rescued dogs.
+$c: sem
 /!
 <>>
 
@@ -1226,6 +1331,7 @@ $s: 4
 $i: 106
 $p: 33
 $t: Every singer performed two songs.
+$c: sem
 /!
 <>>
 
@@ -1233,6 +1339,7 @@ $t: Every singer performed two songs.
 $i: 107
 $p: 33
 $t: Everyone performed two songs.
+$c: sem
 /!
 <>>
 
@@ -1240,6 +1347,7 @@ $t: Everyone performed two songs.
 $i: 108
 $p: 33
 $t: Everyone sang along to two songs.
+$c: sem
 /!
 <>>
 
@@ -1247,6 +1355,7 @@ $t: Everyone sang along to two songs.
 $i: 109
 $p: 33
 $t: Everyone in the audience sang along to two songs.
+$c: sem
 /!
 <>>
 
@@ -1262,6 +1371,7 @@ $s: 4
 $i: 110
 $p: 34
 $t: The rescued dogs had been treated by vets in the past (but were subsequently abandoned by their owners).
+$c: sem
 $a: The rescued dogs had been treated by vets in the past.
 /!
 <>>
@@ -1270,6 +1380,7 @@ $a: The rescued dogs had been treated by vets in the past.
 $i: 111
 $p: 34
 $t: Every singer performed (the last) two songs (for the grand finale).
+$c: sem
 $a: Every singer performed the last two songs for the grand finale.
 /!
 <>>
@@ -1278,6 +1389,7 @@ $a: Every singer performed the last two songs for the grand finale.
 $i: 112
 $p: 34
 $t: Everyone in the audience sang along to two songs (they were randomnly handed lyrics to different songs when they came in, and we asked them to join in when the song being performed onstage matched the lyrics they had in hand).
+$c: sem
 /!
 <>>
 
@@ -1293,6 +1405,7 @@ $s: 4
 $i: 113
 $p: 35
 $t: The rescued dogs were treated by an experienced vet. One needed surgery and one got a blood transfusion. We went there yesterday and both looked much better.
+$c: sem
 /!
 <>>
 
@@ -1300,6 +1413,7 @@ $t: The rescued dogs were treated by an experienced vet. One needed surgery and 
 $i: 114
 $p: 35
 $t: The rescued dogs were treated by an experienced vet. One had been struck by a car and needed surgery on his leg. We went there yesterday and saw debris from another car crash ---{} it's a dangerous stretch of highway.
+$c: sem
 /!
 <>>
 
@@ -1315,6 +1429,7 @@ $s: 4
 $i: 115
 $p: 35
 $t: The rescued dogs were treated by an experienced vet. We saw a lot of other dogs getting medical attention.
+$c: sem
 /!
 <>>
 
@@ -1322,6 +1437,7 @@ $t: The rescued dogs were treated by an experienced vet. We saw a lot of other d
 $i: 116
 $p: 35
 $t: The rescued dogs were treated by an experienced vet. It looked very modern, like a human hospital.
+$c: sem
 /!
 <>>
 
@@ -1329,6 +1445,7 @@ $t: The rescued dogs were treated by an experienced vet. It looked very modern, 
 $i: 117
 $p: 35
 $t: The rescued dogs were treated by an experienced vet. We looked around and realized how dangerous that road is ---{} for humans as well as dogs.
+$c: sem
 /!
 <>>
 
@@ -1344,6 +1461,7 @@ $s: 4
 $i: 118
 $p: 36
 $t: The trade rescued a star athlete from a losing team.
+$c: idi
 /!
 <>>
 
@@ -1351,6 +1469,7 @@ $t: The trade rescued a star athlete from a losing team.
 $i: 119
 $p: 36
 $t: New mathematical models rescued her original research from obscurity.
+$c: idi
 /!
 <>>
 
@@ -1358,6 +1477,7 @@ $t: New mathematical models rescued her original research from obscurity.
 $i: 120
 $p: 36
 $t: Discovery of nearby earth-like planets rescued that star from its reputation as ordinary and boring and revealed that its solar system may actually be extraordinary.
+$c: idi
 /!
 <>>
 
@@ -1374,6 +1494,7 @@ $i: 121
 $p: 37
 $x: itm:threetimes
 $t: Three times, students asked an interesting question.
+$c: sco
 /!
 <>>
 
@@ -1390,6 +1511,7 @@ $i: 122
 $p: 38
 $x: itm:threes
 $t: Three students asked interesting questions.
+$c: log
 /!
 <>>
 
@@ -1405,6 +1527,7 @@ $s: 4
 $i: 123
 $p: 38
 $t: Time after time, tourists (a tourist) walk(s) by this building with no idea of its history.
+$c: sco
 $a: Time after time, tourists walk by this building with no idea of its history.
 /!
 <>>
@@ -1413,6 +1536,7 @@ $a: Time after time, tourists walk by this building with no idea of its history.
 $i: 124
 $p: 38
 $t: The streets around here are confusing; often people (someone) will ask me for directions.
+$c: sco
 $a: The streets around here are confusing; often someone will ask me for directions.
 /!
 <>>
@@ -1421,6 +1545,7 @@ $a: The streets around here are confusing; often someone will ask me for directi
 $i: 125
 $p: 38
 $t: Student after student came with their (his/her) paper to compain about my grade(s).
+$c: sco
 $a: Student after student came with their paper to compain about my grades.
 /!
 <>>
@@ -1429,6 +1554,7 @@ $a: Student after student came with their paper to compain about my grades.
 $i: 126
 $p: 38
 $t: Student after student ---{} and their (his/her) parents ---{} complained about the tuition increase.
+$c: sco
 $a: Student after student ---{} and their parents ---{} complained about the tuition increase.
 /!
 <>>
@@ -1446,6 +1572,7 @@ $i: 127
 $p: 41
 $x: itm:rhinor
 $t: Rhinos in that park are threatened by poachers.
+$c: sem
 /!
 <>>
 
@@ -1453,6 +1580,7 @@ $t: Rhinos in that park are threatened by poachers.
 $i: 128
 $p: 41
 $t: Young rhinos are threatened by poachers.
+$c: sem
 /!
 <>>
 
@@ -1468,6 +1596,7 @@ $s: 4
 $i: 129
 $p: 42
 $t: Let's find a restaurant that's family-friendly.
+$c: sem
 /!
 <>>
 
@@ -1483,6 +1612,7 @@ $s: 4
 $i: 130
 $p: 43
 $t: I got glue for your daughter.
+$c: sem
 /!
 <>>
 
@@ -1490,6 +1620,7 @@ $t: I got glue for your daughter.
 $i: 131
 $p: 43
 $t: I got glue for your coffee mug.
+$c: sem
 /!
 <>>
 
@@ -1505,6 +1636,7 @@ $s: 4
 $i: 132
 $p: 43
 $t: We're going to Grandma!
+$c: sem
 /!
 <>>
 
@@ -1512,6 +1644,7 @@ $t: We're going to Grandma!
 $i: 133
 $p: 43
 $t: Let's go to him right now.
+$c: sem
 /!
 <>>
 
@@ -1519,6 +1652,7 @@ $t: Let's go to him right now.
 $i: 134
 $p: 43
 $t: Let's go to the lawyers.
+$c: sem
 /!
 <>>
 
@@ -1526,6 +1660,7 @@ $t: Let's go to the lawyers.
 $i: 135
 $p: 43
 $t: Let's go to the press.
+$c: sem
 /!
 <>>
 

@@ -40,7 +40,6 @@ void XPDF_Bridge::take_message(QString msg)
   QString file = arg.left(index);
   int page = arg.mid(index + 1).toInt();
   xpdf_component_->openInNewWindow(file, page);
-
  }
 
 

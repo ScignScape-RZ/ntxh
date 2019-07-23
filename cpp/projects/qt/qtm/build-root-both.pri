@@ -85,6 +85,7 @@ PHAON_GRAPH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/hgdm/phaon-graph
 NTXH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/hgdm/ntxh
 DSMAIN_SRC_GROUP_DIR = $$SRC_ROOT_DIR/dataset/dsmain
 SCIGNSTAGE_SRC_GROUP_DIR = $$SRC_ROOT_DIR/QScign/ScignStage
+XPDF_SRC_GROUP_DIR = $$SRC_ROOT_DIR/external/xpdf
 
 #APPLICATION_MODEL_SRC_GROUP_DIR = $$SRC_ROOT_DIR/dataset/application-model
 
