@@ -4,7 +4,7 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#include "udpipe.h"
+#include "udpipe/udpipe.h"
 
 #include <QDebug>
 #include <QFile>

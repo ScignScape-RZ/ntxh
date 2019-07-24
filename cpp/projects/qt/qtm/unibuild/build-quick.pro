@@ -13,9 +13,16 @@ SUBDIRS += \
 SUBDIRS += \
   QScign/ScignStage/ScignStage-ling \
 
-#SUBDIRS += \
-#  dataset/application-model/application-model \
-#  dataset/config/config-dialog \
+SUBDIRS += \
+  dataset/application-model/application-model \
+  dataset/config/config-dialog \
+
+SUBDIRS += \
+  external/udpipe/udpipe \
+  QScign/QRing/qring \
+  hgdm/ntxh-udp/ntxh-udp \
+  hgdm/ntxh-udp/ntxh-udp-console \
+
 
 SUBDIRS += \
   dataset/dsmain/_run__dsmain-console \

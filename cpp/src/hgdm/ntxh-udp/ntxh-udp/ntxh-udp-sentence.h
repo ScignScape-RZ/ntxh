@@ -8,7 +8,7 @@
 #define NTXH_UDP_SENTENCE__H
 
 
-#include "udpipe.h"
+#include "udpipe/udpipe.h"
 
 //#include "dygred-word-pos.h"
 

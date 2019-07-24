@@ -18,6 +18,9 @@ RESOURCES += \
 
 #?LIBS +=  -lqtfreetyped  -lqtlibpngd -lz
 
+LIBS +=  -lfreetype
+
+
 
 INCLUDEPATH += $$SRC_DIR/
 INCLUDEPATH += $$SRC_DIR/aconf

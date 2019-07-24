@@ -66,6 +66,8 @@ SOURCES += \
 LIBS += -L$$TARGETSDIR  -ldsmain  -lScignStage-ling \
   -lntxh  -lntxh-parser  -lntxh-builder  #  -lxpdf  -lfreetype
 
+
+
 #  -lrph-builder -lrelae-phaon    -lds-relae-phaon
 
 
@@ -75,10 +77,20 @@ LIBS += -L$$TARGETSDIR  -ldsmain  -lScignStage-ling \
 #? LIBS += -L$$TARGETSDIR -llexpair
 
 
+contains(CHOICE_FEATURES, "config") \#/
+{
+ message(DEFINE\'ing USING_CONFIG_DIALOG)
+ DEFINES += USING_CONFIG_DIALOG
+ LIBS += -L$$TARGETSDIR -lapplication-model  -lconfig-dialog
+# LIBS += -L$$TARGETSDIR -lpdf-pull
+}
+
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
- LIBS += -L$$TARGETSDIR -lxpdf
- LIBS += -L$$TARGETSDIR -lpdf-pull
+ message(DEFINE\'ing USE_XPDF)
+ DEFINES += USE_XPDF
+ LIBS += -L$$TARGETSDIR -lxpdf -lfreetype
+# LIBS += -L$$TARGETSDIR -lpdf-pull
 }
 
 contains(CHOICE_FEATURES, "kph") \#/

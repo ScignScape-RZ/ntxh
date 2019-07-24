@@ -6,6 +6,6 @@ CHOICE_CODE = isobuild-choices
 
 WHICH_BUILD_DIR_CODE = isobuild
 
-include(../choices/$${WHICH_BUILD_DIR_CODE}_choices.pri)
+include(../_choices/$${WHICH_BUILD_DIR_CODE}_choices.pri)
 
 include(../build-root-both.pri)

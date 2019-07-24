@@ -28,7 +28,8 @@
 
 #include <QFileDialog>
 
-//?#include "defines.h"
+//?
+#include "defines.h"
 
 #include "ScignStage-ling/ScignStage-ling-dialog.h"
 
@@ -53,11 +54,11 @@
 
 #include "dsmain/dataset.h"
 
-
-//#include "application-model/application-config-model.h"
-//#include "application-model/application-model.h"
-//#include "config-dialog/config-dialog.h"
-
+#ifdef USING_CONFIG_DIALOG
+#include "application-model/application-config-model.h"
+#include "application-model/application-model.h"
+#include "config-dialog/config-dialog.h"
+#endif
 
 
 #include "kans.h"
@@ -76,7 +77,7 @@ USING_KANS(PhaonLib)
 #endif
 USING_QSNS(ScignStage)
 
-#ifdef HIDE
+#ifdef USING_CONFIG_DIALOG
 void launch_config_dialog(Config_Dialog*& dlg, QWidget* parent)
 {
  if(!dlg)
@@ -222,12 +223,14 @@ int main(int argc, char **argv)
  });
 
 //?
-// Config_Dialog* cdlg = nullptr;
-
-// dlg.set_launch_config_function([&cdlg, &dlg]()
-// {
-//  //?launch_config_dialog(cdlg, &dlg);
-// });
+//
+#ifdef USING_CONFIG_DIALOG
+ Config_Dialog* cdlg = nullptr;
+ dlg.set_launch_config_function([&cdlg, &dlg]()
+ {
+  launch_config_dialog(cdlg, &dlg);
+ });
+#endif
 
  dlg.show();
 
