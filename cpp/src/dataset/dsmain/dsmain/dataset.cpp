@@ -60,6 +60,47 @@ void Dataset::save_to_file()
  save_to_file(file_ + ".out.txt");
 }
 
+void Dataset::save_to_file_udp()
+{
+ save_to_file_udp(file_ + ".udp.ntxh", file_ + ".conllu", file_ + ".pre.txt");
+}
+
+void Dataset::save_to_file_udp(QString path, QString upath, QString ppath)
+{
+ QFile outfile(path);
+ if (!outfile.open(QIODevice::WriteOnly | QIODevice::Text))
+   return;
+ QTextStream outstream(&outfile);
+
+ QFile uo(upath);
+ if (!uo.open(QIODevice::WriteOnly | QIODevice::Text))
+   return;
+ QTextStream uos(&uo);
+
+ QFile po(ppath);
+ if (!po.open(QIODevice::WriteOnly | QIODevice::Text))
+   return;
+ QTextStream pos(&po);
+
+ for(Language_Sample_Group* g : groups_)
+ {
+  for(Language_Sample* ls : *g)
+  {
+   QString u;
+   ls->serialize_udp(g->id(), outstream, u);
+   uos << u;
+   uos << "\n\n";
+   QString aot = ls->archival_or_text().simplified();
+   Language_Sample::clean(aot);
+   pos << aot << "\n";
+  }
+ }
+
+ outfile.close();
+ uo.close();
+ po.close();
+}
+
 void Dataset::load_from_file(QString path)
 {
  file_ = path;

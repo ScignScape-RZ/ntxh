@@ -66,9 +66,12 @@ public:
  QString get_form();
  QString get_issue();
 
+ static void clean(QString& qs);
+
  QString parse_classification(QString key);
 
  void serialize(QTextStream& qts);
+ void serialize_udp(int gid, QTextStream& qts, QString& udp);
 
  QString archival_or_text();
 

@@ -27,7 +27,7 @@ int main(int argc, char **argv)
  Dataset ds;// (DEFAULT_RPH_FOLDER  "/samples.txt");
  ds.load_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
 
- ds.save_to_file();
+ ds.save_to_file_udp();
 
  return 0;
 }

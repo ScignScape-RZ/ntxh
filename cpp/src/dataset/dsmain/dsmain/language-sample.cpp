@@ -96,10 +96,50 @@ QString Language_Sample::get_issue()
  return classification_.mid(index + 1);
 }
 
+void Language_Sample::clean(QString& qs)
+{
+ qs.replace("'", " '");
+ qs.replace(".", " .");
+ qs.replace("!", " !");
+ qs.replace("?", " ?");
+ qs.replace("(", " (");
+ qs.replace(")", " )");
+ qs.replace(")", " )");
+ qs.replace("---{}", " - ");
+ qs.replace(";", " ;");
+ qs.replace(":", " :");
+}
+
+void Language_Sample::serialize_udp(int gid, QTextStream& qts, QString& udp)
+{
+ NTXH_Builder ntb(qts);
+ ntb.enter("SI");
+ ntb.sf("i", QString::number(id_));
+ ntb.msf("t", text_);
+
+ udp = QString("# sent_id = %1-%2").arg(gid).arg(id_);
+
+ QString aot = archival_or_text().simplified();
+ clean(aot);
+ QStringList qsl = aot.split(' ');
+
+ int i = 0;
+ for(QString w : qsl)
+ {
+  ++i;
+  udp += QString("\n%1\t%2\t_\t_\t_\t_\t_\t_\t_\t_").arg(i).arg(w);
+ }
+
+ ntb.msf("u", udp);
+
+ ntb.leave();
+ ntb.el();
+}
+
 void Language_Sample::serialize(QTextStream& qts)
 {
  NTXH_Builder ntb(qts);
- ntb.enter("SE");
+ ntb.enter("SI");
 
  if(!latex_label_.isEmpty())
  {
@@ -109,7 +149,7 @@ void Language_Sample::serialize(QTextStream& qts)
 
  ntb.leave();
 
- qts << "!/ SE";
+// qts << "!/ SE";
 
 }
 
