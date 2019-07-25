@@ -110,9 +110,9 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  compile_options_grid_layout_ = new QGridLayout;
  roles_grid_layout_ = new QGridLayout;
 
- ss3d_check_box_ = new QCheckBox("Use 3d graphics", this);
- compile_options_grid_layout_->addWidget(ss3d_check_box_, 0, 0);
- ss3d_check_box_->setEnabled(false);
+ udpipe_check_box_ = new QCheckBox("Use UDPIPE", this);
+ compile_options_grid_layout_->addWidget(udpipe_check_box_, 0, 0);
+ //udpipe_check_box_->setEnabled(false);
 
  kph_check_box_ = new QCheckBox("Use Kauvir/Phaon and TCP (for tests)", this);
  compile_options_grid_layout_->addWidget(kph_check_box_, 0, 1, 1, 2);
@@ -136,7 +136,7 @@ Config_Dialog::Config_Dialog(QWidget* parent)
 
  main_button_group_ = new QButtonGroup(this);
 
- main_button_group_->addButton(ss3d_check_box_);
+ main_button_group_->addButton(udpipe_check_box_);
  main_button_group_->addButton(kph_check_box_);
 
  pdf_pull_check_box_ = new QCheckBox("Build PDF Scraper (pdf-pull-console) Console (Admin)", this);
@@ -328,7 +328,7 @@ Config_Dialog::Config_Dialog(QWidget* parent)
 void Config_Dialog::autofill_1()
 {
  const QSignalBlocker mbl(main_button_group_);
- ss3d_check_box_->setChecked(false);
+ udpipe_check_box_->setChecked(false);
  kph_check_box_->setChecked(false);
  roic_check_box_->setChecked(false);
  xx_check_box_->setChecked(false);
@@ -342,13 +342,13 @@ void Config_Dialog::autofill_1()
    check_proceed_possible();
 }
 
-void Config_Dialog::autofill_2(bool ss3d, bool kph, bool xx, bool roic)
+void Config_Dialog::autofill_2(bool udp, bool kph, bool xx, bool roic)
 {
  const QSignalBlocker mbl(main_button_group_);
  const QSignalBlocker qsbl(qs_button_group_);
 
- if(ss3d_check_box_->isEnabled())
-   ss3d_check_box_->setChecked(ss3d);
+ if(udpipe_check_box_->isEnabled())
+   udpipe_check_box_->setChecked(udp);
 
  kph_check_box_->setChecked(kph);
  xpdf_check_box_->setChecked(true);
@@ -407,8 +407,8 @@ QString Config_Dialog::get_apply_code()
    result += "s";
  if(kph_check_box_->isChecked())
    result += "k";
- if(ss3d_check_box_->isChecked())
-   result += "3";
+ if(udpipe_check_box_->isChecked())
+   result += "u";
 
  if(pdf_pull_check_box_->isEnabled() && pdf_pull_check_box_->isChecked())
    result += "p";

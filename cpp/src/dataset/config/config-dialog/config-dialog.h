@@ -76,7 +76,7 @@ class Config_Dialog : public QDialog
 
  QVBoxLayout* main_layout_;
 
- QCheckBox* ss3d_check_box_;
+ QCheckBox* udpipe_check_box_;
  QCheckBox* kph_check_box_;
  QCheckBox* xpdf_check_box_;
  QCheckBox* xpdf_qt_libs_check_box_;
@@ -108,7 +108,7 @@ class Config_Dialog : public QDialog
  QString get_role_code();
 
  void autofill_1();
- void autofill_2(bool ss3d = true, bool kph = false,
+ void autofill_2(bool udp = true, bool kph = false,
    bool xx = false, bool roic = false);
  void autofill_3();
  void autofill_4();

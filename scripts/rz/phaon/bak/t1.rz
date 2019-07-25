@@ -1,0 +1,15 @@
+
+,fnd ::: PHR_Fn_Doc*;
+fnd \== default;
+
+,penv ::: PHR_Env*;
+penv \= (envv _$);
+
+fnd -> init penv;
+
+,test-fn ::: .(u4)  $-> extern;
+
+fnd -> read  "test-fn";
+
+
+

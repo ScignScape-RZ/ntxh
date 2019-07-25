@@ -40,8 +40,11 @@ Application_Config_Model::Application_Config_Model()
          {},
          {} }}},
 
-    { "ss3d",
-      {{ }}},
+    { "udp",
+      {{{"external/udpipe/udpipe", "hgdm/ntxh-udp/ntxh-udp",
+         "hgdm/ntxh-udp/ntxh-udp-console"},
+      {"USING_UDP"},
+      {} }}},
 
     { "kdmi",
       {{
@@ -135,9 +138,9 @@ void Application_Config_Model::parse_config_code(QString cc)
   insert_text_.remove("ppc");
  }
 
- if(!cc.contains('3'))
+ if(!cc.contains('u'))
  {
-  insert_text_.remove("ss3d");
+  insert_text_.remove("udp");
  }
 
  for(QPair<QString, QString> pr : QList<QPair<QString, QString>>{
@@ -150,7 +153,7 @@ void Application_Config_Model::parse_config_code(QString cc)
 
  {"ppc", "*"},
  {"ro", "*"},
- {"ss3d", "*"},
+ {"udp", "*"},
  {"xpdf", "*"},
 
  {"xx", "*"},

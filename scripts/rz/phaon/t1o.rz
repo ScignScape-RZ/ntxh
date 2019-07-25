@@ -1,0 +1,10 @@
+
+,fnd ::: PHR_Fn_Doc*;
+fnd \== default; 
+
+,penv ::: PHR_Env*;
+penv \= (envv _$);
+
+fnd -> init penv;
+
+fnd -> test-0-S10-s "abcd";
