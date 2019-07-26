@@ -5,8 +5,7 @@
 #           http://www.boost.org/LICENSE_1_0.txt)
 
 
-PROJECT_NAME = rz-graph-phaon-console
-
+PROJECT_NAME = rz-phr-runtime-console
 
 include(../build-group.pri)
 
@@ -22,17 +21,16 @@ DEFINES += RELAE_LABEL_NODES
 DEFINES += RZ_DIR=\\\"$$ROOT_DIR/scripts/rz\\\"
 
 
-INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
-
-#\
-#  $$SRC_GROUP_DIR/rz-graph-core  $$SRC_GROUP_DIR/rz-graph-token  \
+INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR \
+  $$SRC_GROUP_DIR/rz-graph-core  $$SRC_GROUP_DIR/rz-graph-token  \
 
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 
 INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$PHR_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$RZ_KAUVIR_SRC_GROUP_DIR
-INCLUDEPATH += $$PHAON_LIB_SRC_GROUP_DIR
+INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
+INCLUDEPATH += $$PHAONLIB_SRC_GROUP_DIR
 INCLUDEPATH += $$PHR_RUNTIME_SRC_GROUP_DIR
 
 #INCLUDEPATH += $$SEXP_DIR
@@ -43,13 +41,16 @@ CONFIG += no_keywords
 DEFINES += USE_RZNS
 
 
-#INCLUDEPATH += $$SEXP_DIR
-#INCLUDEPATH += $$SEXP_DIR/pingus/
+DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
 
 
+HEADERS += \
+  $$SRC_DIR/basic-functions.h \
 
 SOURCES += \
-  $$SRC_DIR/main.cpp
+  $$SRC_DIR/main.cpp \
+  $$SRC_DIR/local-program.cpp \
+  $$SRC_DIR/basic-functions.cpp \
 
 
 LIBS += -L$$TARGETSDIR  \
@@ -71,6 +72,12 @@ LIBS += -L$$TARGETSDIR  \
 LIBS += -lrz-code-generators
 
 LIBS += -lphr-graph-core
+
+
+LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-direct-eval \
+  -lphr-fn-doc   -lphr-env  \
+    -lphr-command-runtime
+
 
 
 #LIBS += -L$$TARGETSDIR -lsexpr
