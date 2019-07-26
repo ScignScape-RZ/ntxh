@@ -95,17 +95,17 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
- LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  \
-   -lkauvir-phaon -lPhaonLib -lkauvir-code-model \
-   -lkcm-command-runtime -lkcm-command-package -lkauvir-type-system
+#? LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  \
+#?   -lkauvir-phaon -lPhaonLib -lkauvir-code-model \
+#?   -lkcm-command-runtime -lkcm-command-package -lkauvir-type-system
 }
 
 contains(CHOICE_FEATURES, "kcm_ecl") \#/
 {
- LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
- include(../../../../find-ecl-sexp.pri)
- LIBS += -L$$ECL_DIR -lecl
- LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
+#? LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
+#? include(../../../../find-ecl-sexp.pri)
+#? LIBS += -L$$ECL_DIR -lecl
+#? LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
 }
 
 contains(CHOICE_FEATURES, "iso-choice") \#/

@@ -37,8 +37,8 @@ LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-command-runtime
 
 contains(CHOICE_FEATURES, "kcm_ecl") \#/
 {
- include(../../../../find-ecl-sexp.pri)
- LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge
+#?? include(../../../../find-ecl-sexp.pri)
+#?? LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge
 }
 
 contains(CHOICE_FEATURES, "iso-choice") \#/

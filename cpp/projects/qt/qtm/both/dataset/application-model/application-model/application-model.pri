@@ -51,7 +51,7 @@ contains(CHOICE_FEATURES, "kph") \#/
 {
  #?message(DEFINE\'ing USING_KPH)
  #?DEFINES += USING_KPH
- LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
+ #?? LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
 }
 
 

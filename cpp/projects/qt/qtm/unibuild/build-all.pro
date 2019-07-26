@@ -7,82 +7,31 @@
 
 TEMPLATE = subdirs
 
-
 SUBDIRS = \
-  hgdm/phaon-graph/relae-phaon \
-  hgdm/ds-relae-phaon/ds-relae-phaon \
-  hgdm/ds-relae-phaon/ds-rph-console \
-  hgdm/ds-relae-phaon/ds-rph-demo-console \
-  hgdm/relae-phaon/relae-phaon-console \
-
-SUBDIRS = \
+  hgdm/ntxh/ntxh \
+  hgdm/ntxh/ntxh-parser \
+  hgdm/ntxh/ntxh-builder \
   dataset/dsmain/dsmain \
-  dataset/dsmain/data-model-console \
-  dataset/ro-info/ro-info \
-  dataset/ro-info/ro-info-console \
-  dataset/config/config-dialog \
-
-SUBDIRS += \
-  dataset/pdf-pull/pdf-pull \
-  dataset/pdf-pull/pdf-pull-console \
-
 
 SUBDIRS += \
   external/xpdf/xpdf \
-  external/xpdf/xpdf-console \
-  kauvir/kauvir-kcm/kauvir-type-system \
-  kauvir/kcm-runtime-eval/kcm-scopes \
-  kauvir/kauvir-kcm/kauvir-code-model \
-  kauvir/kauvir-runtime/kcm-command-package \
-  phaon/phaon/PhaonLib \
-
-    # this is only for R/Z ...
-SUBDIRS += \
-  rz/rz-dynamo/rz-dynamo-generator \
-  kauvir/kauvir-kcm/kcm-lisp-bridge \
 
 SUBDIRS += \
-  kauvir/kauvir-runtime/kcm-command-runtime \
-
-SUBDIRS += \
-  tests-kph/kauvir-phaon/kph-generator \
-
-SUBDIRS += \
-  kauvir/kcm-runtime-eval/kcm-direct-eval \
-  tests-kph/kauvir-phaon/kauvir-phaon \
-
-
-SUBDIRS += \
-  qscign/ScignStage/ScignStage-ling \
-  qscign/LexPair/lexpair \
-  qscign/LexPair/lexpair-console \
-
+  QScign/ScignStage/ScignStage-ling \
 
 SUBDIRS += \
   dataset/application-model/application-model \
-  dataset/application-model/application-model-test-dialog \
-  dataset/application-model/amtd-console \
-  dataset/config/config-dialog-console \
-
+  dataset/config/config-dialog \
 
 SUBDIRS += \
-  phaon/phaon/phaon-console \
-  tests-kph/kauvir-phaon/kauvir-phaon-console \
-  tests-kph/kauvir-phaon/kph-tcp-console \
+  external/udpipe/udpipe \
+  QScign/QRing/qring \
+  hgdm/ntxh-udp/ntxh-udp \
+  hgdm/ntxh-udp/ntxh-udp-console \
+
 
 SUBDIRS += \
   dataset/dsmain/_run__dsmain-console \
-
-SUBDIRS += \
-  phaon/phaon-xml/phaon-xml \
-  phaon/phaon-xml/phaon-xml-console \
-
-SUBDIRS += \
-  tests-kph/kauvir-phaon/kph-generator-console \
-  tests-kph/kauvir-phaon/kph-multigen-console \
-
-SUBDIRS += \
-  kauvir/kcm-runtime-eval/kcm-env \
 
 SUBDIRS += \
   rz/rz-kauvir/rz-graph-core \
@@ -98,18 +47,34 @@ SUBDIRS += \
   rz/rz-kauvir/rz-code-generators \
   rz/rz-kauvir/rz-graph-sre \
   rz/rz-kauvir/rz-graph-code \
-  external/lisp/sexpr \
-  rz/rz-kauvir/rz-graph-lisp-console \
+
 
 SUBDIRS += \
-  rz/rz-dynamo/rz-dynamo-console \
-  rz/rz-dynamo/rz-graph-dynamo-console \
-  kauvir/kcm-runtime-eval/fn-doc \
-  kauvir/kcm-runtime-eval/basic-functions \
-  rz/rz-dynamo/rz-dynamo-runtime-console \
-  rz/rz-dynamo/rgd-runtime-console \
-  rz/rz-dynamo/rz-multi-console \
-  rz/rz-dynamo/rgd-kph-console \
+  hgdm/phr-graph/phr-graph-core \
+  rz/rz-kauvir/rz-graph-phaon-console \
+
+
+SUBDIRS += \
+  rz/PhaonIR/phaon-ir \
+  rz/PhaonLib/phaon-lib \
+  rz/phr-runtime/phr-env \
+  rz/phr-runtime/phr-fn-doc \
+  rz/PhaonLib/phr-command-runtime \
+  rz/PhaonLib/phr-direct-eval \
+
+
+SUBDIRS += \
+  rz/rz-phr-runtime/rz-phr-runtime-console \
+
+
+#  rz/rz-dynamo/rz-dynamo-console \
+#  rz/rz-dynamo/rz-graph-dynamo-console \
+#  kauvir/kcm-runtime-eval/fn-doc \
+#  kauvir/kcm-runtime-eval/basic-functions \
+#  rz/rz-dynamo/rz-dynamo-runtime-console \
+#  rz/rz-dynamo/rgd-runtime-console \
+#  rz/rz-dynamo/rz-multi-console \
+#  rz/rz-dynamo/rgd-kph-console \
 
 
 

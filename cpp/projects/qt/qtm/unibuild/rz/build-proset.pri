@@ -4,9 +4,7 @@
 #     (See accompanying file LICENSE_1_0.txt or copy at
 #           http://www.boost.org/LICENSE_1_0.txt)
 
-PROJECT_NAME = rz-phr-runtime-console
 
-include(../build-group.pri)
+PROJECT_SET = rz
 
-include(../../../../both/$$PROJECT_SET/$$PROJECT_GROUP/$$PROJECT_NAME/$${PROJECT_NAME}.pri)
-
+include(../build-root.pri)

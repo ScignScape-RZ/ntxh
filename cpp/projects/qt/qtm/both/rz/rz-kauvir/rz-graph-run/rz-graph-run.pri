@@ -64,8 +64,6 @@ HEADERS += \
    $$SRC_DIR/functions/graph-call-c-t.h \
    $$SRC_DIR/functions/graph-call-c-c.h \
    $$SRC_DIR/functions/graph-call-c.h \
-   $$SRC_DIR/rz-lisp-graph-function-info.h \
-   $$SRC_DIR/rz-lisp-graph-function-info.h \
    $$SRC_DIR/token/rz-graph-run-token.h \
    $$SRC_DIR/rz-lisp-graph-runner.run-from-node.h \
    $$SRC_DIR/rz-lisp-graph-runner.h \
@@ -74,6 +72,9 @@ HEADERS += \
    $$SRC_DIR/rz-lisp-graph-core-function-declarations.h \
    $$SRC_DIR/rz-temp-cases.h \
 
+
+#   $$SRC_DIR/rz-lisp-graph-function-info.h \
+#  $$SRC_DIR/rz-lisp-graph-function-info.h \
 
 SOURCES += \
    $$SRC_DIR/rz-lisp-graph-core-runner.cpp \
