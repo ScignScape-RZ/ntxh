@@ -66,8 +66,10 @@ class ScignStage_Clickable_Label;
 
 class XPDF_Bridge;
 
-KANS_CLASS_DECLARE(PhaonLib ,Phaon_Runner)
-USING_KANS(PhaonLib)
+//KANS_CLASS_DECLARE(PhaonLib ,Phaon_Runner)
+//USING_KANS(PhaonLib)
+
+class PHR_Runner;
 
 
 QSNS_(ScignStage)
@@ -183,9 +185,9 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QString held_xpdf_msg_;
 
- Phaon_Runner* phr_;
+ PHR_Runner* phr_;
 
- std::function<void(Phaon_Runner&)> phr_init_function_;
+ std::function<void(PHR_Runner&)> phr_init_function_;
  std::function<void()> screenshot_function_;
  std::function<void()> launch_config_function_;
 
@@ -269,7 +271,7 @@ public:
 
  ~ScignStage_Ling_Dialog();
 
- ACCESSORS__SET(std::function<void(Phaon_Runner&)>, phr_init_function)
+ ACCESSORS__SET(std::function<void(PHR_Runner&)>, phr_init_function)
  ACCESSORS__SET(std::function<void()> ,screenshot_function)
  ACCESSORS__SET(std::function<void(QString)> ,launch_lexpair_dialog_function)
  ACCESSORS__SET(std::function<void()> ,launch_config_function)

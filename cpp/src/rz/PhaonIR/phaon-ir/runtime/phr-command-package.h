@@ -27,9 +27,22 @@ class PHR_Command_Package : public PHR_Channel_Group
  QString output_symbol_name_;
  QString string_result_;
 
+ void parse_from_string_list(QString path, const QStringList& qsl,
+   QMap<int, QString>& channel_names, int& current_expression_code);
+
+ void parse_from_string(QString path, const QString& qs,
+   QMap<int, QString>& channel_names, int& current_expression_code);
+
+ void parse_from_file(QString path,
+   QMap<int, QString>& channel_names, int& current_expression_code);
+
+ void parse_from_file_list(QString path, const QStringList& paths,
+   QMap<int, QString>& channel_names, int& current_expression_code);
+
 public:
 
  PHR_Command_Package(const PHR_Channel_Group& pcg);
+ PHR_Command_Package();
 
  ACCESSORS(PHR_Type_Object* ,bind_pto)
  ACCESSORS(const PHR_Type_Object* ,result_type_object)
@@ -41,6 +54,17 @@ public:
  {
   return &string_result_;
  }
+
+ void absorb_data(const QByteArray& qba);
+ void supply_data(QByteArray& qba) const;
+
+ void parse_from_file(QString path);
+
+
+ void parse_from_string_list(QString path, const QStringList& qsl);
+
+ void parse_from_string(QString path, const QString& qs);
+
 
 };
 

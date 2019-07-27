@@ -88,7 +88,7 @@ void local_program1(PhaonIR& phr)
 //#endif // HIDE
 
 //#ifdef HIDE
-void local_program(PhaonIR& phr)
+void local_program(PhaonIR& phr, QStringList& progs, QString topl)
 {
  phr.init_type_system();
  phr.init_type("fbase", DEFAULT_PTR_BYTE_CODE);
@@ -113,7 +113,7 @@ void local_program(PhaonIR& phr)
 
  pcm.set_direct_eval_fn(&phr_direct_eval);
 
-// pcm.create_and_register_type_object("PHR_Fn_Doc");
+ // pcm.create_and_register_type_object("PHR_Fn_Doc");
  pcm.create_and_register_type_object("PHR_Fn_Doc*");
 
  PHR_Env* penv = new PHR_Env(&pcm);
@@ -123,15 +123,15 @@ void local_program(PhaonIR& phr)
  pcm.create_and_register_type_object("PHR_Env*");
 
  penv->set_report_channel_group_fn([](PHR_Code_Model* pcm, PHR_Channel_Group* pcg)
-  {
-   QString qs;
-   QTextStream qts(&qs);
+ {
+  QString qs;
+  QTextStream qts(&qs);
 
-   pcm->report_channel_group(qts, *pcg, pcm->detailed_report_synax(),
-     PHR_Code_Model::Code_Environments::Statement);
+  pcm->report_channel_group(qts, *pcg, pcm->detailed_report_synax(),
+                            PHR_Code_Model::Code_Environments::Statement);
 
-   qDebug() << qs;
-  });
+  qDebug() << qs;
+ });
 
  PHR_Runtime_Scope prs(nullptr);
 
@@ -139,8 +139,8 @@ void local_program(PhaonIR& phr)
 
  phr.init_table();
 
-// PHR_Runner phrn;
-// phrn.
+ // PHR_Runner phrn;
+ // phrn.
 
  init_test_functions(phr, pcm, *phr.table(), pss);
 
@@ -149,9 +149,11 @@ void local_program(PhaonIR& phr)
  // //  setup
 
  //phr.read_local_program(DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr");
-//DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr"
+ //DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr"
  //
- phr.read_local_program(RZ_DIR "/phaon/cc/t1.rz.gen.pgb.phr");
+
+ for(QString prog : progs)
+   phr.read_local_program(prog);
 
  //  phr.read_local_program(DEFAULT_PHR_FOLDER "/t1.phr");
  //phr.read_local_program(DEFAULT_PHR_FOLDER "/t12.phr");

@@ -121,7 +121,7 @@ void launch_lexpair_dialog(ScignStage_Ling_Dialog* dlg, QString s)
  }
 }
 
-void init_test_functions(void* origin, Kauvir_Code_Model& kcm,
+void init_test_functions(void* origin, PHR_Code_Model& pcm,
   Phaon_Channel_Group_Table& table, Phaon_Symbol_Scope& pss)
 {
  QString* satypename = new QString("ScignStage_Ling_Dialog*");

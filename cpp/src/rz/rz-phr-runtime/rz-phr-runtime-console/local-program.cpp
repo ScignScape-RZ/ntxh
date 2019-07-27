@@ -88,7 +88,7 @@ void local_program1(PhaonIR& phr)
 //#endif // HIDE
 
 //#ifdef HIDE
-void local_program(PhaonIR& phr)
+void local_program(PhaonIR& phr, QString phrf)
 {
  phr.init_type_system();
  phr.init_type("fbase", DEFAULT_PTR_BYTE_CODE);
@@ -151,7 +151,7 @@ void local_program(PhaonIR& phr)
  //phr.read_local_program(DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr");
 //DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr"
  //
- phr.read_local_program(RZ_DIR "/phaon/cc/t1.rz.gen.pgb.phr");
+ phr.read_local_program(phrf); //RZ_DIR "/phaon/cc/t1.rz.gen.pgb.phr");
 
  //  phr.read_local_program(DEFAULT_PHR_FOLDER "/t1.phr");
  //phr.read_local_program(DEFAULT_PHR_FOLDER "/t12.phr");

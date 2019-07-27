@@ -42,7 +42,8 @@
 
     //?#include "kauvir-code-model/kauvir-code-model.h"
 
-//?#include "PhaonLib/phaon-runner.h"
+//?
+#include "phaon-lib/phr-runner.h"
 
     //?#include "kcm-direct-eval/kcm-direct-eval.h"
 
@@ -72,8 +73,8 @@ USING_KANS(TextIO)
 
 //?USING_KANS(KCM)
 #ifdef USING_KPH
-USING_KANS(Phaon)
-USING_KANS(PhaonLib)
+//??USING_KANS(Phaon)
+//??USING_KANS(PhaonLib)
 #endif
 USING_QSNS(ScignStage)
 
@@ -179,14 +180,14 @@ int main(int argc, char **argv)
 #endif
 
 #ifdef USING_KPH
- dlg.set_phr_init_function([&dlg](Phaon_Runner& phr)
+ dlg.set_phr_init_function([&dlg](PHR_Runner& phr)
  {
-  Kauvir_Code_Model& kcm = phr.get_kcm();
-  kcm.set_direct_eval_fn(&kcm_direct_eval);
+//  Kauvir_Code_Model& kcm = phr.get_kcm();
+//  kcm.set_direct_eval_fn(&kcm_direct_eval);
 
-  Phaon_Symbol_Scope* pss = new Phaon_Symbol_Scope;
-  init_test_functions(&dlg, kcm, phr.get_table(), *pss);
-  phr.get_phaon_scope_queue().push_front(pss);
+//  Phaon_Symbol_Scope* pss = new Phaon_Symbol_Scope;
+//  init_test_functions(&dlg, kcm, phr.get_table(), *pss);
+//  phr.get_phaon_scope_queue().push_front(pss);
  });
 #endif
 

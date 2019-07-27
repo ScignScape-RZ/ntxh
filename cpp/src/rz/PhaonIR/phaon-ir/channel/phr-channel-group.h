@@ -53,6 +53,31 @@ public:
 
  void clear_all_but_sigma();
 
+// template<typename T>
+// friend T& operator<<(T& thet, const PHR_Channel_Group* rhs)
+// {
+//  return thet;
+// }
+
+// template<typename T>
+// friend const T& operator>>(const T& thet, PHR_Channel_Group* rhs)
+// {
+//  return thet;
+// }
+
+// template<typename T>
+// friend void operator<<(T& thet, const PHR_Channel_Semantic_Protocol* rhs)
+// {
+
+// }
+
+// template<typename T>
+// friend void operator>>(const T& thet, PHR_Channel_Semantic_Protocol* rhs)
+// {
+
+// }
+
+
 
  friend bool operator<(const PHR_Channel_Group& lhs, const PHR_Channel_Group& rhs)
  {

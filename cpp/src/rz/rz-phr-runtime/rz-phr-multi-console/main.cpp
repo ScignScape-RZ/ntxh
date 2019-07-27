@@ -55,9 +55,13 @@
 #include <functional>
 #include <QDebug>
 
+
+#include "textio.h"
+USING_KANS(TextIO)
+
 USING_RZNS(RECore)
 
-void compile_rz(QString file_name)
+QString compile_rz(QString file_name)
 {
  QString result;
 
@@ -127,6 +131,8 @@ void compile_rz(QString file_name)
  pgo.document()->set_graph(&phg);
  pgo.generate();
 
+ return pgb.out_file() + ".phr";
+
 // QString result_file = doc->local_path() + ".cl";
 // QFile outfile(result_file);
 
@@ -186,7 +192,7 @@ void compile_rz(QString file_name)
 }
 
 
-extern void local_program(PhaonIR& phr);
+extern void local_program(PhaonIR& phr, QStringList& progs, QString topl);
 
 
 PHR_Channel_Group_Evaluator* load_evaluator(PhaonIR& phr, PHR_Channel_Group& pcg)
@@ -206,8 +212,9 @@ PHR_Channel_Group_Evaluator* load_evaluator(PhaonIR& phr, PHR_Channel_Group& pcg
  return nullptr;
 }
 
-void run_phaon()
+void run_phaon(QStringList& progs, QString topl)
 {
+ //RZ_DIR "/phaon/cc/t1.rz.gen.pgb.phr"
  PHR_Channel_System pcs;
 
  PhaonIR phr(&pcs);
@@ -215,17 +222,64 @@ void run_phaon()
  phr.set_load_evaluator_fn(&load_evaluator);
  phr.set_direct_eval_fn(&phr_direct_eval);
 
- local_program(phr);
- qDebug() << "ok";
+ local_program(phr, progs, topl);
+// qDebug() << "ok";
 }
 
 
 
-int main(int argc, char *argv[])
+//int main1(int argc, char *argv[])
+//{
+// compile_rz(RZ_DIR "/phaon/cc/t1.rz");
+
+// run_phaon();
+
+// return 0;
+//}
+
+int main(int argc, char* argv[])
 {
- compile_rz(RZ_DIR "/phaon/cc/t1.rz");
+ QString lines = ::load_file(RZ_DIR "/chm/m1.txt");
 
- run_phaon();
+ QStringList qsl = lines.split('\n');
 
+ QStringList fns;
+
+ for(QString line : qsl)
+ {
+  QString fn = line.simplified();
+  if(fn.isEmpty())
+    continue;
+  if(fn.startsWith(';'))
+    continue;
+  if(fn.startsWith('#'))
+    continue;
+  QRegularExpressionMatch rxm;
+  if(fn.indexOf(QRegularExpression("\\(\\s*(\\d+)\\s*-\\s*(\\d+)\\s*\\)"), 0, &rxm))
+  {
+   int sn = rxm.captured(1).toInt();
+   int en = rxm.captured(2).toInt();
+   int s = rxm.capturedStart();
+   int e = rxm.capturedEnd();
+   for(int i = sn; i <= en; ++i)
+   {
+    QString nfn = fn;
+    nfn.replace(s, e-s, QString::number(i));
+    fns.push_back(nfn.prepend(RZ_DIR "/chm/"));
+   }
+   continue;
+  }
+  fns.push_back(fn.prepend(RZ_DIR "/chm/"));
+ }
+
+ QStringList phrfs;
+ for(QString fn : fns)
+ {
+  QString phrf = compile_rz(fn);
+  phrfs.push_back(phrf);
+ }
+
+ run_phaon(phrfs, RZ_DIR "/chm/m1.txt");
  return 0;
 }
+

@@ -65,6 +65,8 @@ SUBDIRS += \
 
 SUBDIRS += \
   rz/rz-phr-runtime/rz-phr-runtime-console \
+  rz/rz-phr-runtime/rz-phr-multi-console \
+
 
 
 #  rz/rz-dynamo/rz-dynamo-console \

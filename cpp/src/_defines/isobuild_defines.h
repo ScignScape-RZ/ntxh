@@ -4,9 +4,11 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef UNIBUILD_FIRST_DEFINES__H
-#define UNIBUILD_FIRST_DEFINES__H
+#ifndef ISOBUILD_DEFINES__H
+#define ISOBUILD_DEFINES__H
+
+#define USING_KPH
 
 
 
-#endif // UNIBUILD_FIRST_DEFINES__H
+#endif // ISOBUILD_DEFINES__H

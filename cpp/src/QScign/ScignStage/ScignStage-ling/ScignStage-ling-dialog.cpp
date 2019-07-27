@@ -81,6 +81,11 @@
 //#include "kauvir-code-model/kcm-channel-group.h"
 //#include "kauvir-code-model/kauvir-code-model.h"
 
+#include "phaon-lib/phr-runner.h"
+#include "phaon-ir/phr-code-model.h"
+#include "phaon-ir/channel/phr-channel-group.h"
+#include "phaon-ir/runtime/phr-command-package.h"
+
 
 #include "dsmain/dataset.h"
 
@@ -1223,6 +1228,15 @@ void ScignStage_Ling_Dialog::check_phr()
 #ifdef USING_KPH
  if(!phr_)
  {
+  phr_ = new PHR_Runner;
+  if(phr_init_function_)
+    phr_init_function_(*phr_);
+ }
+#endif
+
+#ifdef USING_KPH_
+ if(!phr_)
+ {
   phr_ = new Phaon_Runner;
   if(phr_init_function_)
     phr_init_function_(*phr_);
@@ -1347,15 +1361,22 @@ void ScignStage_Ling_Dialog::run_kph(const QByteArray& qba)
 #ifdef USING_KPH
  check_phr();
 
- KPH_Command_Package khp;
- khp.absorb_data(qba);
+ PHR_Code_Model& pcm = phr_->get_pcm();
 
- Kauvir_Code_Model& kcm = phr_->get_kcm();
+ PHR_Channel_Group pcg;//(pcm.channel_names());
+ PHR_Symbol_Scope* pss;
 
- KCM_Channel_Group kcg(kcm.channel_names());
+ PHR_Command_Package pcp(pcg);
+ pcp.absorb_data(qba);
 
- khp.init_channel_group(kcm, kcg);
- phr_->run(kcg);
+
+// KPH_Command_Package khp;
+// khp.absorb_data(qba);
+// Kauvir_Code_Model& kcm = phr_->get_kcm();
+// KCM_Channel_Group kcg(kcm.channel_names());
+// khp.init_channel_group(kcm, kcg);
+ phr_->run();
+
 #endif
 }
 

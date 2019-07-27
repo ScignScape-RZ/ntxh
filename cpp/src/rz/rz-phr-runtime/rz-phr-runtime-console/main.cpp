@@ -57,7 +57,7 @@
 
 USING_RZNS(RECore)
 
-void compile_rz(QString file_name)
+QString compile_rz(QString file_name)
 {
  QString result;
 
@@ -127,6 +127,8 @@ void compile_rz(QString file_name)
  pgo.document()->set_graph(&phg);
  pgo.generate();
 
+ return pgb.out_file() + ".phr";
+
 // QString result_file = doc->local_path() + ".cl";
 // QFile outfile(result_file);
 
@@ -186,7 +188,7 @@ void compile_rz(QString file_name)
 }
 
 
-extern void local_program(PhaonIR& phr);
+extern void local_program(PhaonIR& phr, QString phrf);
 
 
 PHR_Channel_Group_Evaluator* load_evaluator(PhaonIR& phr, PHR_Channel_Group& pcg)
@@ -206,7 +208,7 @@ PHR_Channel_Group_Evaluator* load_evaluator(PhaonIR& phr, PHR_Channel_Group& pcg
  return nullptr;
 }
 
-void run_phaon()
+void run_phaon(QString phrf)
 {
  PHR_Channel_System pcs;
 
@@ -215,7 +217,7 @@ void run_phaon()
  phr.set_load_evaluator_fn(&load_evaluator);
  phr.set_direct_eval_fn(&phr_direct_eval);
 
- local_program(phr);
+ local_program(phr, phrf);
  qDebug() << "ok";
 }
 
@@ -223,9 +225,9 @@ void run_phaon()
 
 int main(int argc, char *argv[])
 {
- compile_rz(RZ_DIR "/phaon/cc/t1.rz");
+ QString phrf = compile_rz(RZ_DIR "/check/t1.rz");
 
- run_phaon();
+ run_phaon(phrf);
 
  return 0;
 }
