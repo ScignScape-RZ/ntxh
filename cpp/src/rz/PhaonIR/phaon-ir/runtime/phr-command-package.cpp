@@ -8,6 +8,10 @@
 #include "phr-command-package.h"
 
 #include "phaon-ir/channel/phr-carrier.h"
+#include "phaon-ir/channel/phr-channel-system.h"
+#include "phaon-ir/types/phr-type-system.h"
+#include "phaon-ir/types/phr-type.h"
+
 
 #include "textio.h"
 
@@ -18,56 +22,117 @@ USING_KANS(TextIO)
 
 PHR_Command_Package::PHR_Command_Package(const PHR_Channel_Group& pcg)
   :  PHR_Channel_Group(pcg), bind_pto_(nullptr),
-     eval_result_(0), result_type_object_(nullptr)
+     eval_result_(0), result_type_object_(nullptr), channel_system_(nullptr)
 {
 
 }
 
-PHR_Command_Package::PHR_Command_Package()
+PHR_Command_Package::PHR_Command_Package(PHR_Channel_System* pcs, PHR_Type_System* pts)
  :  PHR_Channel_Group(), bind_pto_(nullptr),
-    eval_result_(0), result_type_object_(nullptr)
+    eval_result_(0), result_type_object_(nullptr),
+    channel_system_(pcs), type_system_(pts)
 {
 
 }
+
+// adopted from qdatastream.h
+template <typename Container>
+QPair<QDataStream&, void*>& readAssociativeContainer(QPair<QDataStream&, void*>& s, Container& c)
+{
+    QtPrivate::StreamStateSaver stateSaver(&s.first);
+
+    c.clear();
+    quint32 n;
+    s.first >> n;
+    for (quint32 i = 0; i < n; ++i) {
+        typename Container::key_type k;
+        typename Container::mapped_type t;
+        s >> k >> t;
+        if (s.first.status() != QDataStream::Ok) {
+            c.clear();
+            break;
+        }
+        c.insertMulti(k, t);
+    }
+
+    return s;
+}
+template <typename Container>
+QPair<QDataStream&, void*>& readArrayBasedContainer(QPair<QDataStream&, void*>& s, Container &c)
+{
+    QtPrivate::StreamStateSaver stateSaver(&s.first);
+
+    c.clear();
+    quint32 n;
+    s.first >> n;
+    c.reserve(n);
+    for (quint32 i = 0; i < n; ++i) {
+        typename Container::value_type t;
+        s >> t;
+        if (s.first.status() != QDataStream::Ok) {
+            c.clear();
+            break;
+        }
+        c.append(t);
+    }
+
+    return s;
+}
+
+//template<typename T, typename Container>
+//QPair<T&, void*>& operator<<(QPair<T&, void*>& )
+//template <typename Container>
+//QPair<QDataStream&, void*>& readAssociativeContainer(QPair<QDataStream&, void*>& s, Container& c)
+//{
+
 
 template<typename T>
-T& operator>>(T& thet, PHR_Channel_Semantic_Protocol*& rhs)
+QPair<T&, void*>& operator>>(QPair<T&, void*>& thet, PHR_Channel_Semantic_Protocol*& rhs)
 {
- rhs = new PHR_Channel_Semantic_Protocol;
+ //rhs = new PHR_Channel_Semantic_Protocol;
  QString n;
- thet >> n;
- rhs->set_name(n);
+ thet.first >> n;
+ PHR_Command_Package* pcp = static_cast<PHR_Command_Package*>(thet.second);
+ rhs = pcp->channel_system()->value(n);
+ //rhs->set_name(n);
  return thet;
 }
 
 template<typename T>
-T& operator>>(T& thet, PHR_Channel*& rhs)
+QPair<T&, void*>& operator>>(QPair<T&, void*>& thet, PHR_Channel*& rhs)
 {
  rhs = new PHR_Channel;
- thet >> *rhs;
+ readArrayBasedContainer(thet, *rhs);
+ //thet >> *rhs;
  return thet;
 }
 
 template<typename T>
-T& operator>>(T& thet, PHR_Carrier*& rhs)
+QPair<T&, void*>& operator>>(QPair<T&, void*>& thet, PHR_Carrier& rhs)
 {
- rhs = new PHR_Carrier;
- thet >> *rhs;
- return thet;
-}
-
-template<typename T>
-T& operator>>(T& thet, PHR_Carrier& rhs)
-{
+ QString tn;
  QString sn;
  QString rvs;
 
- thet >> sn;
- thet >> rvs;
+ thet.first >> tn;
+ thet.first >> sn;
+ thet.first >> rvs;
 
+ PHR_Command_Package* pcp = static_cast<PHR_Command_Package*>(thet.second);
+
+ PHR_Type* pty = pcp->type_system()->get_type_by_name(tn);
+ rhs.set_phr_type(pty);
  rhs.set_symbol_name(sn);
  rhs.set_raw_value_string(rvs);
 
+ return thet;
+}
+
+template<typename T>
+QPair<T&, void*>& operator>>(QPair<T&, void*>& thet, PHR_Carrier*& rhs)
+{
+ rhs = new PHR_Carrier;
+ thet >> *rhs;
  return thet;
 }
 
@@ -86,17 +151,22 @@ T& operator<<(T& thet, const PHR_Channel* rhs)
 }
 
 template<typename T>
-T& operator<<(T& thet, const PHR_Carrier* rhs)
+T& operator<<(T& thet, const PHR_Carrier& rhs)
 {
- thet << *rhs;
+ if(rhs.phr_type())
+   thet << rhs.phr_type()->name();
+ else
+   thet << QString();
+
+ thet << rhs.symbol_name();
+ thet << rhs.raw_value_string();
  return thet;
 }
 
 template<typename T>
-T& operator<<(T& thet, const PHR_Carrier& rhs)
+T& operator<<(T& thet, const PHR_Carrier* rhs)
 {
- thet << rhs.symbol_name();
- thet << rhs.raw_value_string();
+ thet << *rhs;
  return thet;
 }
 
@@ -112,10 +182,10 @@ void PHR_Command_Package::supply_data(QByteArray& qba) const
 void PHR_Command_Package::absorb_data(const QByteArray& qba)
 {
  QDataStream qds(qba);
+ QPair<QDataStream&, void*> pr {qds, this};
 
  qds >> output_symbol_name_;
- qds >> *this;
-
+ readAssociativeContainer(pr, *this);
 }
 
 
@@ -129,6 +199,15 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
 void PHR_Command_Package::parse_from_string_list(QString path, const QStringList& qsl,
   QMap<int, QString>& channel_names, int& current_expression_code)
 {
+ if(!channel_system_)
+   return;
+
+ QMap<int, QPair<QString, QString>> type_names;
+ QStringList pins;
+ QMap<QString, QString> docus;
+ QString fn_code;
+ QString fn_name;
+
  for(QString qs : qsl)
  {
   switch(qs[0].toLatin1())
@@ -162,19 +241,19 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
     int index1 = qs.indexOf(':', index + 1);
     QString mode = qs.mid(index, index1 - index - 1);
     int code = qs.mid(index1 + 1).toInt();
-   //? type_names_[code] = {type_name, mode};
+    type_names[code] = {type_name, mode};
    }
    break;
   case '&' : // // fn name
    {
     int index = qs.indexOf(':');
-   //? fn_code_ = qs.mid(1, index - 1).toInt();
-   //? fn_name_ = qs.mid(index + 1);
+    fn_code = qs.mid(1, index - 1).toInt();
+    fn_name = qs.mid(index + 1);
    }
    break;
   case '+' : // // pins
    {
-   //? pins_.push_back(qs.mid(1));
+    pins.push_back(qs.mid(1));
    }
    break;
   case '%' : // // documentation
@@ -182,7 +261,7 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
     int index = qs.indexOf(':');
     if(index != -1)
     {
-    //? docus_[qs.mid(1, index - 1)] = qs.mid(index + 1);
+     docus[qs.mid(1, index - 1)] = qs.mid(index + 1);
     }
    }
    break;
@@ -213,7 +292,28 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
     int index6 = qs.indexOf(':', index5 + 1);
     QString symref = qs.mid(index5 + 1, index6 - index5 - 1);
     QString value = qs.mid(index6 + 1);
+
+    PHR_Channel_Semantic_Protocol* sp = channel_system_->value(channel_names[channel]);
+
+    PHR_Channel* pch = this->value(sp);
+
+    if(!pch)
+    {
+     pch = new PHR_Channel;
+     (*this)[sp] = pch;
+    }
+
     PHR_Carrier* phc = new PHR_Carrier;
+    phc->set_symbol_name(symref);
+    phc->set_raw_value_string(value);
+
+    QString tn = type_names[typec].first;
+
+    PHR_Type* pty = type_system_->get_type_by_name(tn);
+    phc->set_phr_type(pty);
+
+    pch->push_back(phc);
+
 //    phc->set_channel_name(channel_names[channel]);
 //    phc->set_carrier_mode(mode);
 //    phc->set_type_name(type_names_[typec].first);

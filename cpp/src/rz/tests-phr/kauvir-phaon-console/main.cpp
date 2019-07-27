@@ -60,16 +60,8 @@ int main(int argc, char* argv[])
  PHR_Channel_System pcs;
 
  PhaonIR phr(&pcs);
-
- PHR_Runtime_Scope prs(nullptr);
-
- PHR_Symbol_Scope pss(&prs);
-
- phr.init_table();
-
 // PHR_Runner phrn;
 // phrn.
-
 
  phr.init_type_system();
  phr.init_type("fbase", DEFAULT_PTR_BYTE_CODE);
@@ -101,6 +93,12 @@ int main(int argc, char* argv[])
  QString penv_typename = "PHR_Env*";
  //??insert_envv(&penv_typename, penv);
 
+ PHR_Runtime_Scope prs(nullptr);
+
+ PHR_Symbol_Scope pss(&prs);
+
+ phr.init_table();
+
  pcm.create_and_register_type_object("PHR_Env*");
 
 
@@ -117,17 +115,17 @@ int main(int argc, char* argv[])
 
 //? phr.get_phaon_scope_queue().push_front(&pss);
 
- PHR_Command_Package pcp;
+ PHR_Command_Package pcp(&pcs, phr.type_system());
  pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
 
  QByteArray qba;
  pcp.supply_data(qba);
 
- PHR_Command_Package pcp1;
+ PHR_Command_Package pcp1(&pcs, phr.type_system());
  pcp1.absorb_data(qba);
 
 
- PHR_Channel_Group pcg;//(cm.channel_names());
+ PHR_Channel_Group& pcg = pcp1;//(cm.channel_names());
 
 //?
 // pcp1.init_channel_group(pcm, pcg);
