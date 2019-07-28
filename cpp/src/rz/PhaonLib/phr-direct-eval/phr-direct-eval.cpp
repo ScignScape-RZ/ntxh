@@ -12,6 +12,10 @@
 
 #include "phaon-ir/phaon-ir.h"
 
+#ifdef USING_KPH_GEN
+#include "kph-generator/kph-generator.h"
+#endif
+
 //#include "kauvir-code-model/kauvir-code-model.h"
 //#include "kcm-lisp-bridge/kcm-lisp-bridge.h"
 //#include "kcm-command-package/kcm-command-package.h"
@@ -58,10 +62,12 @@ void phr_direct_eval(PHR_Code_Model* pcm,
 {
 
 #ifdef USING_KPH_GEN
- if(kcm->kph_generator())
+ if(pcm->kph_generator())
  {
-  KPH_Generator& gen = *kcm->kph_generator();
-  gen.encode(*cpkg);
+  KPH_Generator& gen = *pcm->kph_generator();
+  QMap<QString, QString> docus;
+  //QString fn;
+  gen.encode(*pcp, docus);
   gen.save_kph_file();
   return;
  }

@@ -1,2 +1,2 @@
 
-CHOICE_FEATURES = xpdf
+CHOICE_FEATURES = xpdf kph

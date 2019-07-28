@@ -27,6 +27,10 @@ class PHR_Carrier;
 class PhaonIR;
 class PHR_Type_Object;
 
+#ifdef USING_KPH_GEN
+class KPH_Generator;
+#endif
+
 class PHR_Code_Model
 {
  PHR_Type_System* type_system_;
@@ -42,6 +46,10 @@ class PHR_Code_Model
  direct_eval_fn_type direct_eval_fn_;
 
  PhaonIR* phaon_ir_;
+
+#ifdef USING_KPH_GEN
+ KPH_Generator* kph_generator_;
+#endif
 
 
 public:
@@ -73,6 +81,11 @@ public:
 //? ACCESSORS(PHR_Symbol_Scope* ,current_symbol_scope)
 
  ACCESSORS(direct_eval_fn_type ,direct_eval_fn)
+
+#ifdef USING_KPH_GEN
+  ACCESSORS(KPH_Generator* ,kph_generator)
+#endif
+
 
  PHR_Type_Object* create_and_register_type_object(QString name);
  PHR_Type_Object* create_and_register_type_object(QString name, int bc);

@@ -196,11 +196,28 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
  parse_from_string_list(path, qsl, channel_names, current_expression_code);
 }
 
+
 void PHR_Command_Package::parse_from_string_list(QString path, const QStringList& qsl,
   QMap<int, QString>& channel_names, int& current_expression_code)
 {
  if(!channel_system_)
    return;
+
+ static auto add_carrier_to_channel = [](PHR_Command_Package* pcp, QString ch) -> PHR_Carrier*
+ {
+  PHR_Channel_Semantic_Protocol* sp = pcp->channel_system_->value(ch);
+  PHR_Channel* pch = pcp->value(sp);
+
+  if(!pch)
+  {
+   pch = new PHR_Channel;
+   (*pcp)[sp] = pch;
+  }
+
+  PHR_Carrier* phc = new PHR_Carrier;
+  pch->push_back(phc);
+  return phc;
+ };
 
  QMap<int, QPair<QString, QString>> type_names;
  QStringList pins;
@@ -249,6 +266,24 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
     int index = qs.indexOf(':');
     fn_code = qs.mid(1, index - 1).toInt();
     fn_name = qs.mid(index + 1);
+
+    PHR_Carrier* phc = add_carrier_to_channel(this, "fground");
+    phc->set_symbol_name(fn_name);
+
+//    PHR_Channel_Semantic_Protocol* sp = channel_system_->value("fground");
+//    PHR_Channel* pch = this->value(sp);
+//    if(!pch)
+//    {
+//     pch = new PHR_Channel;
+//     (*this)[sp] = pch;
+//    }
+//    PHR_Carrier* phc = new PHR_Carrier;
+//    phc->set_symbol_name(fn_name);
+    PHR_Type* pty = type_system_->get_type_by_name("fbase");
+    phc->set_phr_type(pty);
+//    PHR_Type_Object* pto = phc->type_object();
+   // phc->
+//    pch->push_back(phc);
    }
    break;
   case '+' : // // pins
@@ -293,17 +328,16 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
     QString symref = qs.mid(index5 + 1, index6 - index5 - 1);
     QString value = qs.mid(index6 + 1);
 
-    PHR_Channel_Semantic_Protocol* sp = channel_system_->value(channel_names[channel]);
+    PHR_Carrier* phc = add_carrier_to_channel(this, channel_names[channel]);
 
-    PHR_Channel* pch = this->value(sp);
-
-    if(!pch)
-    {
-     pch = new PHR_Channel;
-     (*this)[sp] = pch;
-    }
-
-    PHR_Carrier* phc = new PHR_Carrier;
+//    PHR_Channel_Semantic_Protocol* sp = channel_system_->value(channel_names[channel]);
+//    PHR_Channel* pch = this->value(sp);
+//    if(!pch)
+//    {
+//     pch = new PHR_Channel;
+//     (*this)[sp] = pch;
+//    }
+//    PHR_Carrier* phc = new PHR_Carrier;
     phc->set_symbol_name(symref);
     phc->set_raw_value_string(value);
 
@@ -311,8 +345,9 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
 
     PHR_Type* pty = type_system_->get_type_by_name(tn);
     phc->set_phr_type(pty);
+//    PHR_Type_Object* pto = phc->type_object();
 
-    pch->push_back(phc);
+//    pch->push_back(phc);
 
 //    phc->set_channel_name(channel_names[channel]);
 //    phc->set_carrier_mode(mode);

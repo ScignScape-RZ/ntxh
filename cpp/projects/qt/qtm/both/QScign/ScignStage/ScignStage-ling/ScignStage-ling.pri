@@ -71,6 +71,7 @@ SOURCES += \
 
 LIBS += -L$$TARGETSDIR -ldsmain
 
+ LIBS += -L$$TARGETSDIR -lphaon-lib
 
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
@@ -80,6 +81,7 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
+ LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
  #?message(DEFINE\'ing USING_KPH)
  #?DEFINES += USING_KPH
  #??LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model

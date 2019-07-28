@@ -22,6 +22,9 @@ PHR_Code_Model::PHR_Code_Model()
   :  type_system_(nullptr), scopes_(nullptr),
      //?current_symbol_scope_(nullptr),
      table_(nullptr)
+   #ifdef USING_KPH_GEN
+     ,kph_generator_(nullptr)
+   #endif
 {
  lisp_report_synax_.flags.compress_fground_channel = true;
  lisp_report_synax_.flags.merge_fground_and_lambda = true;

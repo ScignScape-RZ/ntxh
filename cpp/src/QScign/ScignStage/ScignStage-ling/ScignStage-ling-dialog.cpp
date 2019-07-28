@@ -1228,7 +1228,7 @@ void ScignStage_Ling_Dialog::check_phr()
 #ifdef USING_KPH
  if(!phr_)
  {
-  phr_ = new PHR_Runner;
+  phr_ = new PHR_Runner; //(nullptr);
   if(phr_init_function_)
     phr_init_function_(*phr_);
  }
@@ -1375,7 +1375,7 @@ void ScignStage_Ling_Dialog::run_kph(const QByteArray& qba)
 // Kauvir_Code_Model& kcm = phr_->get_kcm();
 // KCM_Channel_Group kcg(kcm.channel_names());
 // khp.init_channel_group(kcm, kcg);
- phr_->run();
+ phr_->run(pcg, pss);
 
 #endif
 }

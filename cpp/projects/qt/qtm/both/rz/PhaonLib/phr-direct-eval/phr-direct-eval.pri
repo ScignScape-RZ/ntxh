@@ -19,6 +19,9 @@ DEFINES += USE_KANS
 INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
 INCLUDEPATH += $$PHAONLIB_SRC_GROUP_DIR
 
+INCLUDEPATH += $$TESTS_PHR_SRC_GROUP_DIR
+
+
 CONFIG += no_keywords
 
 
@@ -37,6 +40,13 @@ LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-command-runtime
 
 contains(CHOICE_FEATURES, "kcm_ecl") \#/
 {
+#?? include(../../../../find-ecl-sexp.pri)
+#?? LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge
+}
+
+contains(CHOICE_FEATURES, "kph") \#/
+{
+ DEFINES += USING_KPH_GEN
 #?? include(../../../../find-ecl-sexp.pri)
 #?? LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge
 }

@@ -99,6 +99,7 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
+ LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
 #? LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  \
 #?   -lkauvir-phaon -lPhaonLib -lkauvir-code-model \
 #?   -lkcm-command-runtime -lkcm-command-package -lkauvir-type-system

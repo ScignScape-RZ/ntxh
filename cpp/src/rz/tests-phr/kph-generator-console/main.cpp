@@ -89,14 +89,16 @@ int main(int argc, char* argv[])
  phr.create_channel_semantic_protocol("lambda");
  phr.create_channel_semantic_protocol("result");
  phr.create_channel_semantic_protocol("sigma");
+ phr.create_channel_semantic_protocol("fground");
 
  pcm.set_direct_eval_fn(&phr_direct_eval);
 
 // pcm.create_and_register_type_object("PHR_Fn_Doc");
  pcm.create_and_register_type_object("PHR_Fn_Doc*");
 
- PHR_Env* penv = new PHR_Env(&pcm);
+//?? PHR_Env* penv = new PHR_Env(&pcm);
  QString penv_typename = "PHR_Env*";
+
  //??insert_envv(&penv_typename, penv);
 
  PHR_Runtime_Scope prs(nullptr);
@@ -107,16 +109,28 @@ int main(int argc, char* argv[])
 
  pcm.create_and_register_type_object("PHR_Env*");
 
-
  init_test_functions(phr, pcm, *phr.table(), pss);
+
+// int64_t* n = new int64_t;
 
  phr.hold_symbol_scope(&pss);
 
  PHR_Command_Package pcp(&pcs, phr.type_system());
- pcp.parse_from_file( DEFAULT_KPH_FOLDER "/dataset/raw/t1.kph" );
+// pcp.parse_from_file( DEFAULT_KPH_FOLDER "/dataset/raw/t1.kph" );
+ pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
 
  PHR_Channel_Group pcg(pcp);
- PHR_Runner phrn;
+
+ //int64_t* n1 = new int64_t;
+
+ PHR_Runner phrn(phr.code_model());
+ //phrn.init(phr.code_model());
+
+// int64_t* n2 = new int64_t;
+
+ KPH_Generator gen (DEFAULT_KPH_FOLDER "/gen/t1.txt");
+ phr.code_model()->set_kph_generator(&gen);
+
  phrn.run(pcg, &pss);
 
  return 0;

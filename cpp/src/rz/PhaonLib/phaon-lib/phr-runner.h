@@ -45,7 +45,9 @@ class PHR_Runner
 
 public:
 
- PHR_Runner();
+ PHR_Runner(PHR_Code_Model* pcm);
+
+ void init(PHR_Code_Model* pcm);
 
  PHR_Code_Model& get_pcm()
  {
@@ -57,7 +59,7 @@ public:
   return *table_;
  }
 
- void init_scope_system();
+//? void init_scope_system();
 
 // QQueue<PHR_Symbol_Scope*>& get_phaon_scope_queue();
  QQueue<PHR_Runtime_Scope*>& get_runtime_scope_queue();
