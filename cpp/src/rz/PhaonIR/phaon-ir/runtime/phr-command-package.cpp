@@ -366,6 +366,35 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
  }
 }
 
+void PHR_Command_Package::channel_names_to_codes(QMap<QString,
+  QPair<int, const PHR_Channel*>>& qmap)
+{
+ int channel_code_count = 1;
+ QMapIterator<PHR_Channel_Semantic_Protocol*, PHR_Channel*> it(*this);
+ while(it.hasNext())
+ {
+  it.next();
+
+//  // // assumes kind will not always be initialized ...
+//  if( (it.value().kind() == KCM_Channel::Kinds::Fuxe)
+//      || (*it.key() == "fuxe") )
+//  {
+//   qmap[*it.key()] = {0, &it.value()};
+//   continue;
+//  }
+
+  QString chn = it.key()->name();
+
+  if(chn == "fground")
+  {
+   qmap[chn] = {0, it.value()};
+   continue;
+  }
+
+  qmap[chn] = {channel_code_count, it.value()};
+  ++channel_code_count;
+ }
+}
 
 void PHR_Command_Package::parse_from_string(QString path, const QString& qs)
 {

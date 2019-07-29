@@ -61,7 +61,7 @@ void KPH_Generator::encode(PHR_Command_Package& pcp, QMap<QString, QString> docu
 {
  QString fuxe_name = fn;
  QMap<QString, QPair<int, const PHR_Channel*>> channel_codes;
-// pcp.channel_names_to_codes(channel_codes);
+ pcp.channel_names_to_codes(channel_codes);
 
  QTextStream qts(&text_);
  qts << "-\nAuto Generated";
@@ -89,7 +89,7 @@ void KPH_Generator::encode(PHR_Command_Package& pcp, QMap<QString, QString> docu
  {
   it.next();
   const PHR_Channel& pch = *it.value().second;
-  if(it.key() == "fuxe")
+  if(it.key() == "fground")
     fuxe_name = pch.first()->symbol_name(); //pch.get_carrier_at_position(0)->symbol();
   else
   {
@@ -122,12 +122,12 @@ void KPH_Generator::encode(PHR_Command_Package& pcp, QMap<QString, QString> docu
      //    symbolic ref (if carrier holds symbol in lieu of value)
      //    value (if carrier holds actual value)
 
-    QString src_val;
-//    QString src_val = subs_? subs_->get_src_value(it.key(), phc, c - 1)
-//      : phc.get_src_value();
+    //QString src_val;
+    QString src_val = subs_? subs_->get_src_value(it.key(), *phc, c - 1)
+      : phc->get_src_value();
 
-    aqts << chc << " :: " << QString::number(c) << " :: "
-      << QString::number(ty) << " :::"
+    aqts << chc << "::" << QString::number(c) << "::"
+      << QString::number(ty) << ":::"
       << src_val;
     ++c;
     close_line(aqts);

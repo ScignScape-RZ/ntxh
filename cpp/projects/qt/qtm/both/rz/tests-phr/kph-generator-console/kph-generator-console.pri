@@ -46,6 +46,8 @@ HEADERS += \
 SOURCES += \
   $$SRC_DIR/main.cpp \
   $$SRC_DIR/test-functions.cpp \
+  $$SRC_ROOT_DIR/default-phr-startup.cpp \
+
 
 LIBS += -L$$TARGETSDIR -lkph-generator -lphaon-ir \
   -lphr-direct-eval  -lphr-env -lphaon-lib -lphr-fn-doc \

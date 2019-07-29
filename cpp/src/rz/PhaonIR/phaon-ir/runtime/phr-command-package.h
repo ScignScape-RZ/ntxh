@@ -73,6 +73,9 @@ public:
 
  void parse_from_string(QString path, const QString& qs);
 
+ void channel_names_to_codes(QMap<QString,
+   QPair<int, const PHR_Channel*>>& qmap);
+
 
 };
 

@@ -39,6 +39,8 @@ public:
  QString* symbol_as_pointer();
  QString* raw_value_string_as_pointer();
 
+ QString get_src_value() const;
+
  //PHR_Type_Object* type_object() const;
 };
 

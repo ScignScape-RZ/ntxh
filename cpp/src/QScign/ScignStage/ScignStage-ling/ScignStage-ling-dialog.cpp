@@ -1228,7 +1228,7 @@ void ScignStage_Ling_Dialog::check_phr()
 #ifdef USING_KPH
  if(!phr_)
  {
-  phr_ = new PHR_Runner; //(nullptr);
+  phr_ = new PHR_Runner(nullptr);
   if(phr_init_function_)
     phr_init_function_(*phr_);
  }

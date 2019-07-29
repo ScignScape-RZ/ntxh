@@ -54,64 +54,33 @@
 #include "phaon-ir/phaon-ir.h"
 #include "phaon-ir/channel/phr-channel-system.h"
 
+extern void default_phr_startup(PhaonIR& phr);
+
 
 int main(int argc, char* argv[])
 {
-// PHR_Runner phr;
-//// Phaon_Namespace phn("TestNS");
-//// Phaon_Class phc("Test_Class", &phn);
-// PHR_Code_Model& pcm = phr.get_pcm();
-// pcm.set_direct_eval_fn(&phr_direct_eval);
-
  PHR_Channel_System pcs;
 
  PhaonIR phr(&pcs);
-// PHR_Runner phrn;
-// phrn.
 
- phr.init_type_system();
- phr.init_type("fbase", DEFAULT_PTR_BYTE_CODE);
- phr.init_type("u4", 4);
- phr.init_type("u8", 8);
- phr.init_type("argvec", 9);
- phr.init_type("pcv", DEFAULT_PTR_BYTE_CODE);
- phr.init_type("str", DEFAULT_PTR_BYTE_CODE);
-
- qRegisterMetaType<PHR_Fn_Doc>();
- qRegisterMetaType<PHR_Fn_Doc*>();
-
- // //  setup
- phr.init_code_model();
+ default_phr_startup(phr);
 
  PHR_Code_Model& pcm = *phr.code_model();
- pcm.set_type_system(phr.type_system());
-
- phr.create_channel_semantic_protocol("lambda");
- phr.create_channel_semantic_protocol("result");
- phr.create_channel_semantic_protocol("sigma");
- phr.create_channel_semantic_protocol("fground");
 
  pcm.set_direct_eval_fn(&phr_direct_eval);
-
-// pcm.create_and_register_type_object("PHR_Fn_Doc");
  pcm.create_and_register_type_object("PHR_Fn_Doc*");
 
 //?? PHR_Env* penv = new PHR_Env(&pcm);
  QString penv_typename = "PHR_Env*";
-
  //??insert_envv(&penv_typename, penv);
 
  PHR_Runtime_Scope prs(nullptr);
 
  PHR_Symbol_Scope pss(&prs);
 
- phr.init_table();
-
  pcm.create_and_register_type_object("PHR_Env*");
 
  init_test_functions(phr, pcm, *phr.table(), pss);
-
-// int64_t* n = new int64_t;
 
  phr.hold_symbol_scope(&pss);
 
@@ -121,12 +90,7 @@ int main(int argc, char* argv[])
 
  PHR_Channel_Group pcg(pcp);
 
- //int64_t* n1 = new int64_t;
-
  PHR_Runner phrn(phr.code_model());
- //phrn.init(phr.code_model());
-
-// int64_t* n2 = new int64_t;
 
  KPH_Generator gen (DEFAULT_KPH_FOLDER "/gen/t1.txt");
  phr.code_model()->set_kph_generator(&gen);

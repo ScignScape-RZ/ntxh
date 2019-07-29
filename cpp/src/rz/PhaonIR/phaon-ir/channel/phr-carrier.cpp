@@ -15,6 +15,17 @@ PHR_Carrier::PHR_Carrier()
 
 }
 
+QString PHR_Carrier::get_src_value() const
+{
+// if(flags.src_val)
+//   return src_value_;
+// if(flags.value_string)
+//   return symbol_;
+
+ //?
+ return raw_value_string_;
+}
+
 PHR_Carrier* PHR_Carrier::clone()
 {
  PHR_Carrier* result = new PHR_Carrier;
