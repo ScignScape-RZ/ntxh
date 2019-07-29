@@ -19,6 +19,8 @@ INCLUDEPATH += $$PHAONLIB_SRC_GROUP_DIR
 
 INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
 
+DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
+
 #INCLUDEPATH += $$QHYP_SRC_GROUP_DIR
 #INCLUDEPATH += $$KAUVIR_PHAON_SRC_GROUP_DIR
 #INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR
@@ -66,7 +68,7 @@ SOURCES += \
   $$SRC_DIR/subwindows/scignstage-clickable-label.cpp \
   $$SRC_DIR/xpdf-bridge.cpp \
   $$SRC_ROOT_DIR/add-minimize-frame.cpp \
-
+  $$SRC_ROOT_DIR/default-phr-startup.cpp \
 
 
 LIBS += -L$$TARGETSDIR -ldsmain
@@ -81,9 +83,9 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
+ DEFINES += USING_KPH
  LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
  #?message(DEFINE\'ing USING_KPH)
- #?DEFINES += USING_KPH
  #??LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
 }
 

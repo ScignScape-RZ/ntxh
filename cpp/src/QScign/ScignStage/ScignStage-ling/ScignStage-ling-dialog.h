@@ -69,7 +69,11 @@ class XPDF_Bridge;
 //KANS_CLASS_DECLARE(PhaonLib ,Phaon_Runner)
 //USING_KANS(PhaonLib)
 
+#ifdef USING_KPH
 class PHR_Runner;
+class PHR_Channel_System;
+class PhaonIR;
+#endif
 
 
 QSNS_(ScignStage)
@@ -154,6 +158,9 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QStack<QMenu*> popped_up_menus_;
 
+ PHR_Channel_System* phr_channel_system_;
+ PhaonIR* phaonir_;
+
  void show_full_sentence(Language_Sample_Group* g);
  void show_full_sentence(Language_Sample* samp);
 
@@ -185,7 +192,9 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QString held_xpdf_msg_;
 
+#ifdef USING_KPH
  PHR_Runner* phr_;
+#endif
 
  std::function<void(PHR_Runner&)> phr_init_function_;
  std::function<void()> screenshot_function_;

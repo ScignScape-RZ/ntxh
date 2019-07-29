@@ -86,6 +86,12 @@
 #include "phaon-ir/channel/phr-channel-group.h"
 #include "phaon-ir/runtime/phr-command-package.h"
 
+#ifdef USING_KPH
+#include "phaon-ir/channel/phr-channel-system.h"
+#include "phaon-ir/phaon-ir.h"
+extern void default_phr_startup(PhaonIR& phr);
+#endif
+
 
 #include "dsmain/dataset.h"
 
@@ -121,6 +127,11 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     no_auto_expand_(nullptr),
     current_peer_index_(0),
     current_section_number_(0)
+     // KPH only ...
+    #ifdef USING_KPH
+    ,phr_channel_system_(nullptr)
+    ,phaonir_(nullptr)
+    #endif
 {
  // // setup RZW
 
@@ -1226,12 +1237,21 @@ void ScignStage_Ling_Dialog::handle_take_screenshot_requested()
 void ScignStage_Ling_Dialog::check_phr()
 {
 #ifdef USING_KPH
+ if(!phr_channel_system_)
+ {
+  phr_channel_system_ = new PHR_Channel_System;
+ }
+ if(!phaonir_)
+ {
+  phaonir_ = new PhaonIR(phr_channel_system_);
+  default_phr_startup(*phaonir_);
+ }
  if(!phr_)
  {
-  phr_ = new PHR_Runner(nullptr);
-  if(phr_init_function_)
-    phr_init_function_(*phr_);
+  phr_ = new PHR_Runner(phaonir_->code_model());
  }
+ if(phr_init_function_)
+    phr_init_function_(*phr_);
 #endif
 
 #ifdef USING_KPH_

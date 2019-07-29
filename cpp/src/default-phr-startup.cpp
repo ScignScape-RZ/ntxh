@@ -20,10 +20,9 @@
 
 #include "relae-graph/relae-caon-ptr.h"
 
-#include "phr-env/phr-env.h"
-#include "phr-fn-doc/phr-fn-doc.h"
-
-#include "test-functions.h"
+//?#include "phr-env/phr-env.h"
+//?#include "phr-fn-doc/phr-fn-doc.h"
+//?#include "test-functions.h"
 
 #include <QObject>
 
@@ -46,8 +45,9 @@ void default_phr_startup(PhaonIR& phr)
  phr.init_type("pcv", DEFAULT_PTR_BYTE_CODE);
  phr.init_type("str", DEFAULT_PTR_BYTE_CODE);
 
- qRegisterMetaType<PHR_Fn_Doc>();
- qRegisterMetaType<PHR_Fn_Doc*>();
+//?
+// qRegisterMetaType<PHR_Fn_Doc>();
+// qRegisterMetaType<PHR_Fn_Doc*>();
 
  // //  setup
  phr.init_code_model();
