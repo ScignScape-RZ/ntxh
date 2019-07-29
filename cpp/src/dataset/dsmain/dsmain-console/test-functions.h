@@ -7,10 +7,6 @@
 #ifndef TEST_FUNCTIONS__H
 #define TEST_FUNCTIONS__H
 
-#include "defines.h"
-
-
-#ifdef USING_KPH
 
 #include "accessors.h"
 
@@ -22,23 +18,15 @@
 #include <QMap>
 
 
-KANS_CLASS_DECLARE(KCM ,Kauvir_Code_Model)
-USING_KANS(KCM)
+class PHR_Channel_Group_Table;
+class PHR_Symbol_Scope;
+class PHR_Code_Model;
 
-KANS_CLASS_DECLARE(PhaonLib ,Phaon_Channel_Group_Table)
-KANS_CLASS_DECLARE(PhaonLib ,Phaon_Symbol_Scope)
-USING_KANS(PhaonLib)
+class PHR_Channel_System;
+class PhaonIR;
 
-
-KANS_(Phaon)
-
-void init_test_functions(void* origin, Kauvir_Code_Model& kcm,
-  Phaon_Channel_Group_Table& table, Phaon_Symbol_Scope& pss);
-
-_KANS(Phaon)
-
-
-#endif // USING_KPH
+void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
+  PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
 
 
 #endif //TEST_FUNCTIONS__H

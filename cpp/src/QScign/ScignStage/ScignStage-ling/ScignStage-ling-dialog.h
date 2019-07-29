@@ -73,6 +73,7 @@ class XPDF_Bridge;
 class PHR_Runner;
 class PHR_Channel_System;
 class PhaonIR;
+class PHR_Symbol_Scope;
 #endif
 
 
@@ -194,9 +195,10 @@ class ScignStage_Ling_Dialog : public QDialog
 
 #ifdef USING_KPH
  PHR_Runner* phr_;
+ PHR_Symbol_Scope* phr_symbol_scope_;
+ std::function<void(PHR_Runner&, PHR_Symbol_Scope*& pss)> phr_init_function_;
 #endif
 
- std::function<void(PHR_Runner&)> phr_init_function_;
  std::function<void()> screenshot_function_;
  std::function<void()> launch_config_function_;
 
@@ -280,7 +282,10 @@ public:
 
  ~ScignStage_Ling_Dialog();
 
- ACCESSORS__SET(std::function<void(PHR_Runner&)>, phr_init_function)
+#ifdef USING_KPH
+ ACCESSORS__SET(std::function<void(PHR_Runner&, PHR_Symbol_Scope*&)>, phr_init_function)
+#endif // USING_KPH
+
  ACCESSORS__SET(std::function<void()> ,screenshot_function)
  ACCESSORS__SET(std::function<void(QString)> ,launch_lexpair_dialog_function)
  ACCESSORS__SET(std::function<void()> ,launch_config_function)

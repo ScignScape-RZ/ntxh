@@ -51,7 +51,7 @@ void KPH_Generator::close_line(QTextStream& qts)
 void KPH_Generator::encode(PHR_Channel_Group& pcg, QMap<QString, QString> docus,
   QString fn)
 {
- PHR_Command_Package pcp(pcg);
+ PHR_Command_Package pcp(pcg, nullptr, nullptr);
  encode(pcp, docus, fn);
 }
 

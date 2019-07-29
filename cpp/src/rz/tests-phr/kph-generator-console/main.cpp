@@ -88,14 +88,14 @@ int main(int argc, char* argv[])
 // pcp.parse_from_file( DEFAULT_KPH_FOLDER "/dataset/raw/t1.kph" );
  pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
 
- PHR_Channel_Group pcg(pcp);
+ //?PHR_Channel_Group pcg(pcp);
 
  PHR_Runner phrn(phr.code_model());
 
  KPH_Generator gen (DEFAULT_KPH_FOLDER "/gen/t1.txt");
  phr.code_model()->set_kph_generator(&gen);
 
- phrn.run(pcg, &pss);
+ phrn.run(pcp, &pss);
 
  return 0;
 }

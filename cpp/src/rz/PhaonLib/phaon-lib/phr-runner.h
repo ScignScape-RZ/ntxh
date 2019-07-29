@@ -30,6 +30,8 @@ class PHR_Function_Vector;
 class PHR_Channel_Group_Table;
 
 class PHR_Channel_Group;
+class PHR_Channel_System;
+class PHR_Command_Package;
 
 class PHR_Scope_System;
 class PHR_Code_Model;
@@ -64,7 +66,9 @@ public:
 // QQueue<PHR_Symbol_Scope*>& get_phaon_scope_queue();
  QQueue<PHR_Runtime_Scope*>& get_runtime_scope_queue();
 
- void run(PHR_Channel_Group& pcg, PHR_Symbol_Scope* pss);
+ void run(PHR_Channel_Group& pcg, PHR_Channel_System* pcs, PHR_Symbol_Scope* pss);
+ void run(PHR_Command_Package& pcp, PHR_Symbol_Scope* pss);
+
 
 };
 

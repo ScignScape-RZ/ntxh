@@ -52,13 +52,17 @@ void PHR_Runner::init(PHR_Code_Model* pcm)
 //}
 
 
-void PHR_Runner::run(PHR_Channel_Group& pcg, PHR_Symbol_Scope* pss)
+void PHR_Runner::run(PHR_Channel_Group& pcg, PHR_Channel_System* pcs, PHR_Symbol_Scope* pss)
 {
- PHR_Command_Package pcp(pcg);
+ PHR_Command_Package pcp(pcg, pcs, pcm_->type_system());
 // KCM_Command_Package kcp(kcg);
  pcm_->direct_eval(&pcp, pss);
 }
 
+void PHR_Runner::run(PHR_Command_Package& pcp, PHR_Symbol_Scope* pss)
+{
+ pcm_->direct_eval(&pcp, pss);
+}
 
 QQueue<PHR_Runtime_Scope*>& PHR_Runner::get_runtime_scope_queue()
 {

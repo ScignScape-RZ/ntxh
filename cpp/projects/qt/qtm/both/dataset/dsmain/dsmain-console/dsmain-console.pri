@@ -13,15 +13,18 @@ TEMPLATE = app
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
 INCLUDEPATH += $$SCIGNSTAGE_SRC_GROUP_DIR
-INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR
-INCLUDEPATH += $$PHAON_SRC_GROUP_DIR
-INCLUDEPATH += $$QHYP_SRC_GROUP_DIR
-INCLUDEPATH += $$KCM_RUNTIME_EVAL_SRC_GROUP_DIR
-INCLUDEPATH += $$KAUVIR_RUNTIME_SRC_GROUP_DIR
-INCLUDEPATH += $$LEXPAIR_SRC_GROUP_DIR
+
+#INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR
+#INCLUDEPATH += $$PHAON_SRC_GROUP_DIR
+#INCLUDEPATH += $$QHYP_SRC_GROUP_DIR
+#INCLUDEPATH += $$KCM_RUNTIME_EVAL_SRC_GROUP_DIR
+#INCLUDEPATH += $$KAUVIR_RUNTIME_SRC_GROUP_DIR
+#INCLUDEPATH += $$LEXPAIR_SRC_GROUP_DIR
+
 INCLUDEPATH += $$APPLICATION_MODEL_SRC_GROUP_DIR
 INCLUDEPATH += $$CONFIG_SRC_GROUP_DIR
 
+INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
 
 INCLUDEPATH += $$PHAON_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
@@ -58,13 +61,12 @@ DEFINES += USE_QSNS
 
 
 HEADERS += \
-#  $$SRC_DIR/test-functions.h \
+  $$SRC_DIR/test-functions.h \
 
 
 SOURCES += \
   $$SRC_DIR/main.cpp \
-
-#  $$SRC_DIR/test-functions.cpp \
+  $$SRC_DIR/test-functions.cpp \
 
 
 LIBS += -L$$TARGETSDIR  -ldsmain  -lScignStage-ling \
@@ -99,11 +101,19 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
- LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
+ LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir -lphr-direct-eval  \
+   -lphr-command-runtime
 #? LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  \
 #?   -lkauvir-phaon -lPhaonLib -lkauvir-code-model \
 #?   -lkcm-command-runtime -lkcm-command-package -lkauvir-type-system
 }
+
+contains(CHOICE_FEATURES, "kph-gen") \#/
+{
+ LIBS += -L$$TARGETSDIR -lkph-generator
+
+}
+
 
 contains(CHOICE_FEATURES, "kcm_ecl") \#/
 {

@@ -51,7 +51,7 @@ SOURCES += \
   $$SRC_DIR/test-functions.cpp \
 
 LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-direct-eval  -lphr-fn-doc  \
-   -lphr-command-runtime -lphr-env #-lphr-command-package
+   -lphr-command-runtime -lphr-env -lkph-generator
 
 #LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-code-model -lkauvir-type-system \
 #  -lkcm-command-package -lkcm-direct-eval -lkcm-scopes \

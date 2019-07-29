@@ -1,2 +1,2 @@
 
-CHOICE_FEATURES = xpdf kph
+CHOICE_FEATURES = xpdf kph kph-gen

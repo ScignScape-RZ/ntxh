@@ -43,8 +43,6 @@
     //?#include "kauvir-code-model/kauvir-code-model.h"
 
 //?
-#include "phaon-lib/phr-runner.h"
-
     //?#include "kcm-direct-eval/kcm-direct-eval.h"
 
 //?#include "PhaonLib/phaon-symbol-scope.h"
@@ -54,6 +52,20 @@
 #include "dsmain/language-sample-group.h"
 
 #include "dsmain/dataset.h"
+
+#ifdef USING_KPH
+#include "phaon-ir/phr-code-model.h"
+#include "phaon-lib/phr-runner.h"
+#include "phr-direct-eval/phr-direct-eval.h"
+#include "phaon-ir/table/phr-symbol-scope.h"
+#include "phaon-lib/phr-channel-group-table.h"
+#include "phaon-ir/scopes/phr-runtime-scope.h"
+#include "phaon-ir/scopes/phr-scope-system.h"
+extern void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
+  PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
+#endif // USING_KPH
+
+
 
 #ifdef USING_CONFIG_DIALOG
 #include "application-model/application-config-model.h"
@@ -180,8 +192,17 @@ int main(int argc, char **argv)
 #endif
 
 #ifdef USING_KPH
- dlg.set_phr_init_function([&dlg](PHR_Runner& phr)
+ dlg.set_phr_init_function([&dlg](PHR_Runner& phr, PHR_Symbol_Scope*& pss)
  {
+//  PhaonIR* phaonir = new PhaonIR;
+  PHR_Code_Model& pcm = phr.get_pcm();
+  pcm.set_direct_eval_fn(&phr_direct_eval);
+  PHR_Runtime_Scope* prs = new PHR_Runtime_Scope(nullptr);
+  pss = new PHR_Symbol_Scope(prs);
+  init_test_functions(*phr.get_pcm().phaon_ir(), pcm, phr.get_table(), *pss);
+  pcm.scopes()->phr_scope_queue().push_front(prs);
+
+
 //  Kauvir_Code_Model& kcm = phr.get_kcm();
 //  kcm.set_direct_eval_fn(&kcm_direct_eval);
 

@@ -116,7 +116,7 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   : QDialog(parent), xpdf_bridge_(xpdf_bridge),
     current_sample_(nullptr),
     last_highlight_(nullptr), xpdf_process_(nullptr), tcp_server_(nullptr),
-    phr_(nullptr), phr_init_function_(nullptr),
+    phr_(nullptr),
     screenshot_function_(nullptr),  launch_config_function_(nullptr),
     launch_lexpair_dialog_function_(nullptr),
     current_tcp_msecs_(0), application_model_(nullptr),
@@ -131,6 +131,8 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     #ifdef USING_KPH
     ,phr_channel_system_(nullptr)
     ,phaonir_(nullptr)
+    ,phr_symbol_scope_(nullptr)
+    ,phr_init_function_(nullptr)
     #endif
 {
  // // setup RZW
@@ -1251,17 +1253,9 @@ void ScignStage_Ling_Dialog::check_phr()
   phr_ = new PHR_Runner(phaonir_->code_model());
  }
  if(phr_init_function_)
-    phr_init_function_(*phr_);
-#endif
+    phr_init_function_(*phr_, phr_symbol_scope_);
+#endif // USING_KPH
 
-#ifdef USING_KPH_
- if(!phr_)
- {
-  phr_ = new Phaon_Runner;
-  if(phr_init_function_)
-    phr_init_function_(*phr_);
- }
-#endif
 }
 
 // // KAI
@@ -1384,10 +1378,14 @@ void ScignStage_Ling_Dialog::run_kph(const QByteArray& qba)
  PHR_Code_Model& pcm = phr_->get_pcm();
 
  PHR_Channel_Group pcg;//(pcm.channel_names());
- PHR_Symbol_Scope* pss;
+ //?
+// PHR_Symbol_Scope* pss = nullptr;
 
- PHR_Command_Package pcp(pcg);
+ PHR_Command_Package pcp(pcg, phaonir_->channel_system(), phaonir_->type_system());
  pcp.absorb_data(qba);
+
+// PHR_Symbol_Scope* pss = phr_->get_run;
+
 
 
 // KPH_Command_Package khp;
@@ -1395,7 +1393,7 @@ void ScignStage_Ling_Dialog::run_kph(const QByteArray& qba)
 // Kauvir_Code_Model& kcm = phr_->get_kcm();
 // KCM_Channel_Group kcg(kcm.channel_names());
 // khp.init_channel_group(kcm, kcg);
- phr_->run(pcg, pss);
+ phr_->run(pcp, phr_symbol_scope_);
 
 #endif
 }

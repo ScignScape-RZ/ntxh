@@ -4,32 +4,33 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#include "defines.h"
-
-
-#ifdef USING_KPH
-
 #include "test-functions.h"
 
-#include "kauvir-code-model/kauvir-code-model.h"
 
-#include "kauvir-code-model/kcm-channel-group.h"
+//#include "kauvir-code-model/kauvir-code-model.h"
+//#include "kauvir-code-model/kcm-channel-group.h"
+//#include "kauvir-type-system/kauvir-type-system.h"
+//#include "kauvir-code-model/kcm-callable-value.h"
+//#include "kcm-command-runtime/kcm-command-runtime-table.h"
+//#include "kcm-command-runtime/kcm-command-runtime-router.h"
+//#include "kcm-lisp-bridge/kcm-lisp-eval.h"
 
-#include "kauvir-type-system/kauvir-type-system.h"
+//#include "PhaonLib/phaon-channel-group-table.h"
+//#include "PhaonLib/phaon-symbol-scope.h"
+//#include "PhaonLib/phaon-function.h"
 
-#include "kauvir-code-model/kcm-callable-value.h"
+#include "phaon-ir/types/phr-type-system.h"
+#include "phaon-ir/phr-code-model.h"
+#include "phaon-ir/channel/phr-channel-group.h"
+#include "phaon-lib/phr-channel-group-table.h"
 
-#include "kcm-command-runtime/kcm-command-runtime-table.h"
+#include "phaon-ir/channel/phr-channel-system.h"
+#include "phaon-ir/channel/phr-carrier.h"
+#include "phaon-ir/phaon-ir.h"
 
-#include "kcm-command-runtime/kcm-command-runtime-router.h"
+#include "phaon-ir/scopes/phr-scope-system.h"
 
-#include "PhaonLib/phaon-channel-group-table.h"
-#include "PhaonLib/phaon-symbol-scope.h"
-#include "PhaonLib/phaon-function.h"
-
-#include "ScignStage-ling/ScignStage-ling-dialog.h"
-
-#include "application-model/application-model.h"
+//?#include "phr-fn-doc/phr-fn-doc.h"
 
 #include <QTextStream>
 
@@ -37,60 +38,32 @@
 
 #include <QEventLoop>
 
-#undef slots
-#include "kcm-lisp-bridge/kcm-lisp-eval.h"
 
-USING_KANS(KCL)
-USING_KANS(PhaonLib)
+//?USING_KANS(KCL)
+//?USING_KANS(PhaonLib)
 
-KANS_(Phaon)
+//?KANS_(Phaon)
 
-
-void* insert_envv(void* kind, void* test)
+void test_prss(QString str1, QString str2)
 {
- static QMap<QString, void*> hold;
- QString* k = reinterpret_cast<QString*>(kind);
- if(test)
- {
-  void** pv = new void*;
-  *pv = test;
-  hold[*k] = pv;
- }
- return hold.value(*k);
+ qDebug() << str1;
+ qDebug() << str2;
 }
 
-void* p_envv(void* kind)
+void prn(qint32 arg)
 {
- if(kind)
- {
-  qDebug() << "Kind: " << *(QString*)kind;
-  return insert_envv(kind, nullptr);
- }
- else
- {
-  qDebug() << "In envv: Return kind could not be determined.";
-  return nullptr;
- }
+ qDebug() << arg;
 }
 
-void* envv(void* kind)
-{
- if(kind)
- {
-  qDebug() << "Kind: " << *(QString*)kind;
-  void* pv = insert_envv(kind, nullptr);
-  return *(void**)(pv);
- }
- else
- {
-  qDebug() << "In envv: Return kind could not be determined.";
-  return nullptr;
- }
-}
 
 void test_0_ss(QString s1, QString s2)
 {
  qDebug() << "s1 = " << s1 << "s2 = " << s2;
+}
+
+void test_0_s(QString s1)
+{
+ qDebug() << "s1 = " << s1;
 }
 
 QString test_s_ss(QString s1, QString s2)
@@ -100,35 +73,76 @@ QString test_s_ss(QString s1, QString s2)
  return "s_ss";
 }
 
-void test_msgbox(ScignStage_Ling_Dialog* dlg, QString msg)
+QString test_s_s(QString s1)
 {
- dlg->test_msgbox(msg);
+ qDebug() << "s1 = " << s1;
+ qDebug() << "returning: s_s";
+ return "s_s";
 }
 
-void expand_sample(ScignStage_Ling_Dialog* dlg, int index)
+int test_i_ss(QString s1, QString s2)
 {
- if(Application_Model* appm = static_cast<Application_Model*>(dlg->application_model()))
+ qDebug() << "s1 = " << s1 << "s2 = " << s2;
+ qDebug() << "returning: 66";
+ return 66;
+}
+
+int test_i_s(QString s1)
+{
+ qDebug() << "s1 = " << s1;
+ qDebug() << "returning: 66";
+ return 66;
+}
+
+
+void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
+  PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss)
+{
+ PHR_Type_System* type_system = pcm.type_system();
+ PHR_Channel_System& pcs = *phr.channel_system();
+
+ PHR_Channel_Semantic_Protocol* lambda = pcs["lambda"];
+ PHR_Channel_Semantic_Protocol* result = pcs["result"];
+ PHR_Channel_Semantic_Protocol* sigma = pcs["sigma"];
+
+ PHR_Channel_Group g1;//(pcm.channel_names());
  {
-  appm->expand_sample(dlg, index);
- }
-}
+  PHR_Type* ty = type_system->get_type_by_name("u4");
+  PHR_Carrier* phc = new PHR_Carrier;
+  phc->set_phr_type(ty);
+  //PHR_Channel_Semantic_Protocol* pcsp = pcs["lambda"];
+  g1.init_channel(lambda, 1);
+  (*g1[lambda])[0] = phc;
 
-void launch_lexpair_dialog(ScignStage_Ling_Dialog* dlg, QString s)
-{
- if(Application_Model* appm = static_cast<Application_Model*>(dlg->application_model()))
+//  g1.add_lambda_carrier(
+//    {pcm.get_pcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
+//     QString()
+//    );
+
+  table.init_phaon_function(g1, pss, "prn", 700, &prn);
+
+  //?
+  g1.clear_all();
+ }
+
  {
-  appm->launch_lexpair_dialog(dlg, s);
+  PHR_Type* ty = type_system->get_type_by_name("str");
+  PHR_Carrier* phc1 = new PHR_Carrier;
+  phc1->set_phr_type(ty);
+  PHR_Carrier* phc2 = new PHR_Carrier;
+  phc2->set_phr_type(ty);
+  g1.init_channel(lambda, 2);
+  (*g1[lambda])[0] = phc1;
+  (*g1[lambda])[1] = phc2;
+
+  table.init_phaon_function(g1, pss, "test-prss", 700, &test_prss);
+
+  g1.clear_all();
  }
-}
 
-void init_test_functions(void* origin, PHR_Code_Model& pcm,
-  Phaon_Channel_Group_Table& table, Phaon_Symbol_Scope& pss)
-{
- QString* satypename = new QString("ScignStage_Ling_Dialog*");
- insert_envv(satypename, origin);
 
- kcm.set_envv_fn(&p_envv);
 
+#ifdef HIDE
  Kauvir_Type_System* type_system = kcm.type_system();
 
  KCM_Channel_Group g1(kcm.channel_names());
@@ -149,8 +163,8 @@ void init_test_functions(void* origin, PHR_Code_Model& pcm,
  }
 
  {
-  g1.add_sigma_carrier(
-    {kcm.get_kcm_type_by_type_name("ScignStage_Ling_Dialog*"), nullptr},
+  g1.add_lambda_carrier(
+    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
      QString()
     );
 
@@ -159,58 +173,10 @@ void init_test_functions(void* origin, PHR_Code_Model& pcm,
      QString()
     );
 
-  table.init_phaon_function(g1, pss, "test_msgbox", 710, &test_msgbox);
+  table.init_phaon_function(g1, pss, "test_0_s", 700, &test_0_s);
 
   g1.clear_all();
  }
-
- {
-  g1.add_sigma_carrier(
-    {kcm.get_kcm_type_by_type_name("ScignStage_Ling_Dialog*"), nullptr},
-     QString()
-    );
-
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__u32() ), nullptr},
-     QString()
-    );
-
-  table.init_phaon_function(g1, pss, "expand_sample", 710, &expand_sample);
-
-  g1.clear_all();
- }
-
- {
-  g1.add_sigma_carrier(
-    {kcm.get_kcm_type_by_type_name("ScignStage_Ling_Dialog*"), nullptr},
-     QString()
-    );
-
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  table.init_phaon_function(g1, pss, "launch_lexpair_dialog", 710, &launch_lexpair_dialog);
-
-  g1.clear_all();
- }
-
-// {
-//  g1.add_sigma_carrier(
-//    {kcm.get_kcm_type_by_type_name("ScignStage_Ling_Dialog*"), nullptr},
-//     QString()
-//    );
-
-//  g1.add_lambda_carrier(
-//    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-//     QString()
-//    );
-
-//  table.init_phaon_function(g1, pss, "play_sample", 710, &play_sample);
-
-//  g1.clear_all();
-// }
 
  {
   g1.add_lambda_carrier(
@@ -232,142 +198,11 @@ void init_test_functions(void* origin, PHR_Code_Model& pcm,
 
   g1.clear_all();
  }
+
+#endif //def HIDE
+
 }
 
-_KANS(Phaon)
+//?_KANS(Phaon)
 
-#else
-
-
-#endif // USING_KPH
-
-
-
-#ifdef HIDE
- {
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s0_declared_function("test-0-s", g1);
-  table.add_s0_declared_function("test-0-s", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&test_0_s));
-  g1.clear_all();
- }
-
- {
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  g1.add_result_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s0_declared_function("test-s-ss", g1);
-  table.add_s0_declared_function("test-s-ss", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&test_s_ss));
-  table.note_s0_string_return("test_s_ss");
-  g1.clear_all();
- }
-
- {
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  g1.add_result_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s0_declared_function("test-s-s", g1);
-  table.add_s0_declared_function("test-s-s", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&test_s_s));
-  table.note_s0_string_return("test_s_s");
-  g1.clear_all();
- }
-
- {
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  g1.add_result_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__u32() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s0_declared_function("test-i-ss", g1);
-  table.add_s0_declared_function("test-i-ss", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&test_i_ss));
-  g1.clear_all();
- }
-
- {
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  g1.add_result_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__u32() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s0_declared_function("test-i-s", g1);
-  table.add_s0_declared_function("test-i-s", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&test_i_s));
-  g1.clear_all();
- }
-
- {
-  g1.add_sigma_carrier(
-    {kcm.get_kcm_type_by_type_name( "Fn_Doc*" ), nullptr},
-     QString()
-    );
-
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s10_declared_function("test-0-S10-s", g1);
-  table.add_s10_declared_function("test-0-S10-s", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&fndoc_test_0_S10_s));
-  g1.clear_all();
- }
-
- {
-  g1.add_sigma_carrier(
-    {kcm.get_kcm_type_by_type_name( "Fn_Doc*" ), nullptr},
-     QString()
-    );
-
-  g1.add_lambda_carrier(
-    {kcm.get_kcm_type_by_kauvir_type_object( &type_system->type_object__str() ), nullptr},
-     QString()
-    );
-
-  KCM_Channel_Group* kcg = table.add_s10_declared_function("test-0-S10", g1);
-  table.add_s10_declared_function("test-0-S10", kcg, reinterpret_cast<s0_fn1_p_type>
-                              (&fndoc_test_0_S10));
-  g1.clear_all();
- }
-#endif //HIDE
 

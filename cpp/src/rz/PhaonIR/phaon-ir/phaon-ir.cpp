@@ -448,7 +448,7 @@ void PhaonIR::hold_symbol_scope(PHR_Symbol_Scope* pss)
 void PhaonIR::evaluate_channel_group_via_direct_eval(PHR_Channel_Group* pcg,
   quint64& rv, QString& string_result, const PHR_Type_Object*& pto, QString anchor)
 {
- PHR_Command_Package pcp(*pcg);
+ PHR_Command_Package pcp(*pcg, channel_system_, type_system_);
  pcp.set_output_symbol_name(anchor);
 
  if(direct_eval_fn_)

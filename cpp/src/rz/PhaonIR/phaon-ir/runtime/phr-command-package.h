@@ -46,7 +46,7 @@ class PHR_Command_Package : public PHR_Channel_Group
 
 public:
 
- PHR_Command_Package(const PHR_Channel_Group& pcg);
+ PHR_Command_Package(const PHR_Channel_Group& pcg, PHR_Channel_System* pcs, PHR_Type_System* pts);
  PHR_Command_Package(PHR_Channel_System* pcs, PHR_Type_System* pts);
 
  ACCESSORS(PHR_Type_Object* ,bind_pto)
