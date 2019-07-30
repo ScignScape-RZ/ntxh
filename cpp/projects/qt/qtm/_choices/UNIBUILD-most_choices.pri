@@ -1,2 +1,3 @@
 
-CHOICE_FEATURES = xpdf ss3d kph
+CHOICE_FEATURES = xpdf kph kph-gen
+

@@ -83,9 +83,10 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
+ message(DEFINE\'ing USING_KPH)
  DEFINES += USING_KPH
  LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
- #?message(DEFINE\'ing USING_KPH)
+
  #??LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
 }
 
@@ -100,7 +101,7 @@ contains(CHOICE_FEATURES, "iso-choice") \#/
 
  exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/tests-kph--kauvir-phaon--kauvir-phaon) \#/
  {
-  message(DEFINE\'ing USING_XPDF)
+  message(DEFINE\'ing USING_KPH)
   DEFINES += USING_KPH
   LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
  }

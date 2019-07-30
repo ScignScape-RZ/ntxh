@@ -101,8 +101,11 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
+ message(DEFINE\'ing USING_KPH)
+ DEFINES += USING_KPH
  LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir -lphr-direct-eval  \
    -lphr-command-runtime
+
 #? LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  \
 #?   -lkauvir-phaon -lPhaonLib -lkauvir-code-model \
 #?   -lkcm-command-runtime -lkcm-command-package -lkauvir-type-system

@@ -115,7 +115,7 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   QWidget* parent)
   : QDialog(parent), xpdf_bridge_(xpdf_bridge),
     current_sample_(nullptr),
-    last_highlight_(nullptr), xpdf_process_(nullptr), tcp_server_(nullptr),
+    last_highlight_(nullptr), xpdf_process_(nullptr),
     phr_(nullptr),
     screenshot_function_(nullptr),  launch_config_function_(nullptr),
     launch_lexpair_dialog_function_(nullptr),
@@ -129,6 +129,7 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     current_section_number_(0)
      // KPH only ...
     #ifdef USING_KPH
+    ,tcp_server_(nullptr)
     ,phr_channel_system_(nullptr)
     ,phaonir_(nullptr)
     ,phr_symbol_scope_(nullptr)

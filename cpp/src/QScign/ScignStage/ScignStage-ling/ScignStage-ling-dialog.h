@@ -159,8 +159,10 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QStack<QMenu*> popped_up_menus_;
 
+#ifdef USING_KPH
  PHR_Channel_System* phr_channel_system_;
  PhaonIR* phaonir_;
+#endif
 
  void show_full_sentence(Language_Sample_Group* g);
  void show_full_sentence(Language_Sample* samp);
@@ -189,11 +191,11 @@ class ScignStage_Ling_Dialog : public QDialog
  void* application_model_;
 
  //int xpdf_port_;
- QTcpServer* tcp_server_;
 
  QString held_xpdf_msg_;
 
 #ifdef USING_KPH
+ QTcpServer* tcp_server_;
  PHR_Runner* phr_;
  PHR_Symbol_Scope* phr_symbol_scope_;
  std::function<void(PHR_Runner&, PHR_Symbol_Scope*& pss)> phr_init_function_;

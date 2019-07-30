@@ -4,8 +4,8 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef UNIBUILD_ALL_DEFINES__H
-#define UNIBUILD_ALL_DEFINES__H
+#ifndef UNIBUILD_MOST_DEFINES__H
+#define UNIBUILD_MOST_DEFINES__H
 
 
-#endif // UNIBUILD_ALL_DEFINES__H
+#endif // UNIBUILD_MOST_DEFINES__H
