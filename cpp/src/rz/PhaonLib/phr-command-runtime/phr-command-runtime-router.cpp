@@ -260,12 +260,12 @@ void PHR_Command_Runtime_Router::parse_command_package(PHR_Command_Package* pcp)
 PHR_Function_Vector* PHR_Command_Runtime_Router::get_phr_function_vector(QString fn)
 {
  //?
-// for(PHR_Symbol_Scope* pss : scopes_->phaon_scope_queue())
-// {
-//  auto it = pss->find(fn);
-//  if(it != pss->end())
-//    return &it.value();
-// }
+ for(PHR_Runtime_Scope* prs : scopes_->phr_scope_queue())
+ {
+  PHR_Function_Vector* result = prs->get_function_vector_value_as<PHR_Function_Vector>(fn);
+  if(result)
+    return result;
+ }
  if(table_)
  {
   PHR_Runtime_Scope* prs = table_->get_runtime_scope(*symbol_scope_);

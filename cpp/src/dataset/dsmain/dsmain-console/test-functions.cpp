@@ -134,12 +134,30 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   g1.init_channel(lambda, 2);
   (*g1[lambda])[0] = phc1;
   (*g1[lambda])[1] = phc2;
+  PHR_Carrier* phcr = new PHR_Carrier;
+  phcr->set_phr_type(ty);
+  g1.init_channel(result, 1);
+  (*g1[result])[0] = phcr;
+
+  table.init_phaon_function(g1, pss, "test_s_ss", 700, &test_s_ss);
+
+  g1.clear_all();
+ }
+
+ {
+  PHR_Type* ty = type_system->get_type_by_name("str");
+  PHR_Carrier* phc1 = new PHR_Carrier;
+  phc1->set_phr_type(ty);
+  PHR_Carrier* phc2 = new PHR_Carrier;
+  phc2->set_phr_type(ty);
+  g1.init_channel(lambda, 2);
+  (*g1[lambda])[0] = phc1;
+  (*g1[lambda])[1] = phc2;
 
   table.init_phaon_function(g1, pss, "test-prss", 700, &test_prss);
 
   g1.clear_all();
  }
-
 
 
 #ifdef HIDE
