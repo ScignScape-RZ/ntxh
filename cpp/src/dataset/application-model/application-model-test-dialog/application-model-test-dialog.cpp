@@ -32,12 +32,12 @@
 
 #include "application-model/application-test-model.h"
 
-#include "kauvir-phaon/kph-command-package.h"
+#include "phaon-ir/runtime/phr-command-package.h"
 
 #include "add-minimize-frame.h"
 
 
-USING_KANS(Phaon)
+//USING_KANS(Phaon)
 
 
 #include "textio.h"
@@ -82,7 +82,7 @@ Application_Model_Test_Dialog::Application_Model_Test_Dialog(
   QString desc = it.key();
   QCheckBox* ckb = new QCheckBox(file, this);
   QString text = load_file(file);
-  KPH_Command_Package::read_docus(text, docus_[ckb]);
+  PHR_Command_Package::read_docus(text, docus_[ckb]);
   qDebug() << "D: " << docus_[ckb]["test"];
   ckb->setTristate();
   main_form_layout_->addRow(desc, ckb);

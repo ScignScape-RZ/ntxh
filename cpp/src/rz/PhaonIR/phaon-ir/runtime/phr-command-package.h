@@ -63,6 +63,31 @@ public:
   return &string_result_;
  }
 
+ // //  this does not use any PHR functionality
+  //    so implementing it in the header makes
+  //    it unnecessary to link against the
+  //    library just for this one function
+ static void read_docus(const QString& text, QMap<QString, QString>& docus)
+ {
+  QStringList qsl = text.split("\n.\n");
+  for(QString qs : qsl)
+  {
+   switch(qs[0].toLatin1())
+   {
+   case '%' : // documentation
+    {
+     int index = qs.indexOf(':');
+     if(index != -1)
+     {
+      docus[qs.mid(1, index - 1)] = qs.mid(index + 1).simplified();
+     }
+    }
+    break;
+   default: break;
+   }
+  }
+ }
+
  void absorb_data(const QByteArray& qba);
  void supply_data(QByteArray& qba) const;
 

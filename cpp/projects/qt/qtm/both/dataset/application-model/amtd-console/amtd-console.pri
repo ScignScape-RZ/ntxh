@@ -6,9 +6,11 @@
 
 include(../build-group.pri)
 
-QT += widgets
 
 TEMPLATE = app
+
+QT += widgets
+
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
  #INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR $$KAUVIR_KCM_SRC_GROUP_DIR/kcm-lisp-bridge
@@ -28,6 +30,8 @@ CONFIG += no_keywords
 DEFINES += USE_KANS
 DEFINES += USE_RZNS
 
+
+
 HEADERS += \
 
 
@@ -35,26 +39,28 @@ SOURCES += \
   $$SRC_DIR/main.cpp \
 
 
-LIBS += -L$$TARGETSDIR -lapplication-model-test-dialog  -lapplication-model \
-   -lScignStage-ling  -ldsmain
+LIBS += -L$$TARGETSDIR -lapplication-model-test-dialog  -lapplication-model  \
+   -lScignStage-ling  -ldsmain  -lntxh  -lntxh-parser  -lntxh-builder  \
+   -lphaon-ir
 
 
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
  LIBS += -L$$TARGETSDIR -lxpdf
- LIBS +=  -L$$TARGETSDIR -lpdf-pull
+# LIBS +=  -L$$TARGETSDIR -lpdf-pull
 }
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
- LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  -lkauvir-phaon \
-   -lPhaonLib -lkauvir-code-model -lkcm-command-runtime -lkcm-command-package \
-   -lkauvir-type-system
+ LIBS += -L$$TARGETSDIR -lphaon-lib
+# LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  -lkauvir-phaon \
+#   -lPhaonLib -lkauvir-code-model -lkcm-command-runtime -lkcm-command-package \
+#   -lkauvir-type-system
 }
 
 contains(CHOICE_FEATURES, "kcm_ecl") \#/
 {
- LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
+ LIBS += -L$$TARGETSDIR -lpcm-lisp-bridge -lrz-dynamo-generator
  include(../../../../find-ecl-sexp.pri)
  LIBS += -L$$ECL_DIR -lecl
  LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
@@ -62,15 +68,15 @@ contains(CHOICE_FEATURES, "kcm_ecl") \#/
 
 contains(CHOICE_FEATURES, "iso-choice") \#/
 {
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/kauvir--kauvir-kcm--kcm-lisp-bridge) \#/
- {
-  LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
-  message(DEFINE\'ing ISO__USING_ECL)
-  DEFINES += ISO__USING_ECL
-  include(../../../../find-ecl-sexp.pri)
-  LIBS += -L$$ECL_DIR -lecl
-  LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
- }
+# exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/kauvir--kauvir-kcm--kcm-lisp-bridge) \#/
+# {
+#  LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
+#  message(DEFINE\'ing ISO__USING_ECL)
+#  DEFINES += ISO__USING_ECL
+#  include(../../../../find-ecl-sexp.pri)
+#  LIBS += -L$$ECL_DIR -lecl
+#  LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
+# }
 
  exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/external--xpdf--xpdf) \#/
  {
