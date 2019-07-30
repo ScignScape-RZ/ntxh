@@ -65,6 +65,7 @@ extern void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
 #endif // USING_KPH
 
+#include "application-model/application-model.h"
 
 
 #ifdef USING_CONFIG_DIALOG
@@ -214,8 +215,8 @@ int main(int argc, char **argv)
 #endif
 
 //?
-// Application_Model apm(&dlg);
-// dlg.set_application_model(&apm);
+ Application_Model apm(&dlg);
+ dlg.set_application_model(&apm);
 
  dlg.set_launch_lexpair_dialog_function([](QString s)
  {

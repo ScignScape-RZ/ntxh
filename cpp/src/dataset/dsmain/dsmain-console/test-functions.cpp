@@ -141,7 +141,7 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
  pcm.create_and_register_type_object("ScignStage_Ling_Dialog*");
 
  QString* satypename = new QString("ScignStage_Ling_Dialog*");
- //insert_envv(satypename, origin);
+ insert_envv(satypename, pcm.origin());
 
  pcm.set_envv_fn(&p_envv);
 

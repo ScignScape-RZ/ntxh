@@ -629,7 +629,7 @@ PHR_Command_Runtime_Router::FN_Codes PHR_Command_Runtime_Router::check_init_raw_
    QString n = pcra->bind_code().mid(2);
    void* v = (*envv_fn_)(&n);
    mem = (quint64) v;
-   result = &mem;
+   result = v;
   }
  }
  else
