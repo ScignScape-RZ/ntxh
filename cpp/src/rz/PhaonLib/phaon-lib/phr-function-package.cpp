@@ -66,6 +66,8 @@ const PHR_Type_Object* PHR_Function_Package::result_type_object()
  if(pcg_)
  {
   PHR_Channel* rch = pcg_->result_ch();
+  if(!rch)
+    return nullptr;
   if(!rch->isEmpty())
   {
    PHR_Carrier* r1 = rch->first();

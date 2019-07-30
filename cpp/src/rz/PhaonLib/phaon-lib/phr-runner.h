@@ -45,9 +45,13 @@ class PHR_Runner
  PHR_Scope_System* scopes_;
  PHR_Channel_Group_Table* table_;
 
+ void* origin_;
+
 public:
 
  PHR_Runner(PHR_Code_Model* pcm);
+
+ ACCESSORS(void* ,origin)
 
  void init(PHR_Code_Model* pcm);
 

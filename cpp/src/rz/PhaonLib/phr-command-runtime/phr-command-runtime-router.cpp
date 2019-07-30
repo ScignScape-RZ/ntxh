@@ -220,7 +220,14 @@ void PHR_Command_Runtime_Router::parse_command_package(PHR_Command_Package* pcp)
 //  }
 //  else
 //  {
-   s1a->set_bind_code(s1->symbol_name());
+
+  if(s1->raw_value_string().startsWith("#*"))
+  {
+   // // what about string type?
+   s1a->set_bind_code(s1->raw_value_string());
+  }
+  else
+    s1a->set_bind_code(s1->symbol_name());
 //  }
   sigma_argument_ = s1a;
  }
@@ -615,6 +622,16 @@ PHR_Command_Runtime_Router::FN_Codes PHR_Command_Runtime_Router::check_init_raw_
   result = &mem;
  }
 #endif
+ else if(pcra->bind_code().startsWith("#*"))
+ {
+  if(envv_fn_)
+  {
+   QString n = pcra->bind_code().mid(2);
+   void* v = (*envv_fn_)(&n);
+   mem = (quint64) v;
+   result = &mem;
+  }
+ }
  else
  {
   const PHR_Type_Object* pto;

@@ -39,10 +39,43 @@
 #include <QEventLoop>
 
 
+#include "ScignStage-ling/ScignStage-ling-dialog.h"
+#include "application-model/application-model.h"
+
+
+
 //?USING_KANS(KCL)
 //?USING_KANS(PhaonLib)
 
 //?KANS_(Phaon)
+
+void* insert_envv(void* kind, void* test)
+{
+ static QMap<QString, void*> hold;
+ QString* k = reinterpret_cast<QString*>(kind);
+ if(test)
+ {
+  void** pv = new void*;
+  *pv = test;
+  hold[*k] = pv;
+ }
+ return hold.value(*k);
+}
+
+void* p_envv(void* kind)
+{
+ if(kind)
+ {
+  qDebug() << "Kind: " << *(QString*)kind;
+  return insert_envv(kind, nullptr);
+ }
+ else
+ {
+  qDebug() << "In envv: Return kind could not be determined.";
+  return nullptr;
+ }
+}
+
 
 void test_prss(QString str1, QString str2)
 {
@@ -94,10 +127,24 @@ int test_i_s(QString s1)
  return 66;
 }
 
+void expand_sample(ScignStage_Ling_Dialog* dlg, int index)
+{
+ if(Application_Model* appm = static_cast<Application_Model*>(dlg->application_model()))
+ {
+  appm->expand_sample(dlg, index);
+ }
+}
 
 void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss)
 {
+ pcm.create_and_register_type_object("ScignStage_Ling_Dialog*");
+
+ QString* satypename = new QString("ScignStage_Ling_Dialog*");
+ //insert_envv(satypename, origin);
+
+ pcm.set_envv_fn(&p_envv);
+
  PHR_Type_System* type_system = pcm.type_system();
  PHR_Channel_System& pcs = *phr.channel_system();
 
@@ -122,6 +169,24 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   table.init_phaon_function(g1, pss, "prn", 700, &prn);
 
   //?
+  g1.clear_all();
+ }
+
+ {
+  PHR_Type* ty1 = type_system->get_type_by_name("ScignStage_Ling_Dialog*");
+  PHR_Carrier* phc1 = new PHR_Carrier;
+  phc1->set_phr_type(ty1);
+  g1.init_channel(sigma, 1);
+  (*g1[sigma])[0] = phc1;
+
+  PHR_Carrier* phc2 = new PHR_Carrier;
+  PHR_Type* ty2 = type_system->get_type_by_name("u4");
+  phc2->set_phr_type(ty2);
+  g1.init_channel(lambda, 1);
+  (*g1[lambda])[0] = phc2;
+
+  table.init_phaon_function(g1, pss, "expand_sample", 710, &expand_sample);
+
   g1.clear_all();
  }
 

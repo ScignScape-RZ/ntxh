@@ -27,7 +27,7 @@
 
 
 PHR_Runner::PHR_Runner(PHR_Code_Model* pcm)
-  :  pcm_(pcm), //new PHR_Code_Model),
+  :  pcm_(pcm), origin_(nullptr), //new PHR_Code_Model),
     table_(nullptr)//, scopes_(nullptr)
 {
  table_ = pcm_->table();

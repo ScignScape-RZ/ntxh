@@ -47,10 +47,15 @@ class PHR_Code_Model
 
  PhaonIR* phaon_ir_;
 
+ void* origin_;
+
+ typedef void*(*envv_fn_type)(void*);
+ envv_fn_type envv_fn_;
+
+
 #ifdef USING_KPH_GEN
  KPH_Generator* kph_generator_;
 #endif
-
 
 public:
 
@@ -77,10 +82,14 @@ public:
  ACCESSORS__RGET(PCM_Report_Syntax ,detailed_report_synax)
 
  ACCESSORS(PhaonIR* ,phaon_ir)
+ ACCESSORS(void* ,origin)
 
 //? ACCESSORS(PHR_Symbol_Scope* ,current_symbol_scope)
 
  ACCESSORS(direct_eval_fn_type ,direct_eval_fn)
+ ACCESSORS(envv_fn_type ,envv_fn)
+
+
 
 #ifdef USING_KPH_GEN
   ACCESSORS(KPH_Generator* ,kph_generator)

@@ -8,6 +8,7 @@
 #include "application-test-model.h"
 
 //?#include "kauvir-phaon/kph-command-package.h"
+#include "phaon-ir/runtime/phr-command-package.h"
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -15,6 +16,13 @@
 #include <QDebug>
 
 #include "defines.h"
+
+#ifdef USING_KPH
+#include "phaon-ir/phaon-ir.h"
+#include "phaon-ir/channel/phr-channel-system.h"
+
+extern void default_phr_startup(PhaonIR& phr);
+#endif
 
 //?USING_KANS(Phaon)
 USING_KANS(DSM)
@@ -29,9 +37,15 @@ Application_Test_Model::Application_Test_Model()
 void Application_Test_Model::init_kph_qba(QByteArray& qba, QString path)
 {
 #ifdef USING_KPH
- KPH_Command_Package kcp;
- kcp.parse_from_file(path);
- kcp.supply_data(qba);
+
+ PHR_Channel_System pcs;
+ PhaonIR phr(&pcs);
+ default_phr_startup(phr);
+
+ PHR_Command_Package pcp(phr.channel_system(), phr.type_system());
+
+ pcp.parse_from_file(path);
+ pcp.supply_data(qba);
  qba.append("<//>");
 
  QByteArray pre = "<<>>kph@";

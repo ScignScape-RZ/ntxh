@@ -1252,6 +1252,7 @@ void ScignStage_Ling_Dialog::check_phr()
  if(!phr_)
  {
   phr_ = new PHR_Runner(phaonir_->code_model());
+  phr_->set_origin(this);
  }
  if(phr_init_function_)
     phr_init_function_(*phr_, phr_symbol_scope_);

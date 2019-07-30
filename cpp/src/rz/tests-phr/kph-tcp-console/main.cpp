@@ -77,8 +77,9 @@ void init_qba(QByteArray& qba)
  default_phr_startup(phr);
 
  PHR_Command_Package pcp(phr.channel_system(), phr.type_system());
- //pcp.parse_from_file( DEFAULT_KPH_FOLDER "/dataset/raw/t1.kph" );
- pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
+ //
+ pcp.parse_from_file( DEFAULT_KPH_FOLDER "/dataset/raw/t1.kph" );
+ //pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
 
  pcp.supply_data(qba);
 

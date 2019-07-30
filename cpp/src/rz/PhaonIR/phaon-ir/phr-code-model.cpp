@@ -21,7 +21,7 @@
 PHR_Code_Model::PHR_Code_Model()
   :  type_system_(nullptr), scopes_(nullptr),
      //?current_symbol_scope_(nullptr),
-     table_(nullptr)
+     table_(nullptr), envv_fn_(nullptr), origin_(nullptr)
    #ifdef USING_KPH_GEN
      ,kph_generator_(nullptr)
    #endif

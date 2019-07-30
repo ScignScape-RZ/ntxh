@@ -132,7 +132,8 @@ void phr_direct_eval(PHR_Code_Model* pcm,
                                  scope_system,
    nullptr, //?pcm->current_proxy_scope(),
    string_result);
- //?pcrr.set_envv_fn(pcm->envv_fn());
+ //?
+ pcrr.set_envv_fn(pcm->envv_fn());
  pcrr.parse_command_package(pcp);
  //
  QString sfn = pcm->phaon_ir()->find_source_fn(pcrr.fground_name());

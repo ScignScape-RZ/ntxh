@@ -69,9 +69,9 @@ SOURCES += \
   $$SRC_DIR/test-functions.cpp \
 
 
-LIBS += -L$$TARGETSDIR  -ldsmain  -lScignStage-ling \
-  -lntxh  -lntxh-parser  -lntxh-builder  #  -lxpdf  -lfreetype
-
+LIBS += -L$$TARGETSDIR  -ldsmain  -lScignStage-ling  \
+  -lntxh  -lntxh-parser  -lntxh-builder  \  #  -lxpdf  -lfreetype
+  -lapplication-model
 
 
 #  -lrph-builder -lrelae-phaon    -lds-relae-phaon

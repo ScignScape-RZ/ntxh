@@ -196,6 +196,7 @@ int main(int argc, char **argv)
  {
 //  PhaonIR* phaonir = new PhaonIR;
   PHR_Code_Model& pcm = phr.get_pcm();
+  pcm.set_origin(phr.origin());
   pcm.set_direct_eval_fn(&phr_direct_eval);
   PHR_Runtime_Scope* prs = new PHR_Runtime_Scope(nullptr);
   pss = new PHR_Symbol_Scope(prs);

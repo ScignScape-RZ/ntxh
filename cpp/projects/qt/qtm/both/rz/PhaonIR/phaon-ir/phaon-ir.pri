@@ -111,7 +111,7 @@ SOURCES += \
   $$SRC_DIR/table/phr-function-package.cpp \
 
 
-contains(CHOICE_FEATURES, "kph") \#/
+contains(CHOICE_FEATURES, "kph-gen") \#/
 {
  DEFINES += USING_KPH_GEN
 }

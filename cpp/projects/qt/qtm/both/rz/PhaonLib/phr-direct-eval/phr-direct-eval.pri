@@ -44,8 +44,9 @@ contains(CHOICE_FEATURES, "kcm_ecl") \#/
 #?? LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge
 }
 
-contains(CHOICE_FEATURES, "kph") \#/
+contains(CHOICE_FEATURES, "kph-gen") \#/
 {
+ message(DEFINE\'ing USING_KPH_GEN)
  DEFINES += USING_KPH_GEN
 #?? include(../../../../find-ecl-sexp.pri)
 #?? LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge
