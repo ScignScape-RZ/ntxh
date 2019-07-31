@@ -35,6 +35,9 @@
 
 #include "ScignStage-ling/xpdf-bridge.h"
 
+#ifdef USING_LEXPAIR
+#include "lexpair/lexpair-dialog.h"
+#endif // USING_LEXPAIR
 
     //?#include "lexpair/lexpair-dialog.h"
 
@@ -218,11 +221,13 @@ int main(int argc, char **argv)
  Application_Model apm(&dlg);
  dlg.set_application_model(&apm);
 
+#ifdef USING_LEXPAIR
  dlg.set_launch_lexpair_dialog_function([](QString s)
  {
-//  Lexpair_Dialog* dlg = new Lexpair_Dialog(Lexpair_Dialog::split(s), nullptr);
-//  dlg->show();
+  Lexpair_Dialog* dlg = new Lexpair_Dialog(Lexpair_Dialog::split(s), nullptr);
+  dlg->show();
  });
+#endif // USING_LEXPAIR
 
  dlg.set_screenshot_function([&dlg, &qapp]()
  {

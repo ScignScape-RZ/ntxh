@@ -281,5 +281,14 @@ SOURCES += \
     $$SRC_DIR/xpdf-qt/xpdf-component.cpp \
 
 
+
+contains(CHOICE_FEATURES, "pdf-pull") \#/
+{
+ message(DEFINE\'ing USING_PDF_PULL)
+ DEFINES += USING_PDF_PULL
+ LIBS +=-L$$TARGETSDIR -lpdf-pull
+}
+
+
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

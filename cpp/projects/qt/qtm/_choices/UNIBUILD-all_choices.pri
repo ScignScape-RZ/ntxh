@@ -1,2 +1,2 @@
 
-CHOICE_FEATURES = xpdf ss3d kph kcm_ecl
+CHOICE_FEATURES = xpdf kph rz kph-gen lex-pair pdf-pull

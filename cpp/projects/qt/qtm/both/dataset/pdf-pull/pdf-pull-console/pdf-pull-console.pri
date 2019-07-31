@@ -6,9 +6,12 @@
 
 include(../build-group.pri)
 
+QT += widgets
+
 TEMPLATE = app
 
-INCLUDEPATH += $$SRC_GROUP_DIR
+
+INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
 
 DEFINES += CAON_DEBUG
@@ -17,21 +20,18 @@ DEFINES += RELAE_LABEL_NODES
 
 CONFIG += no_keywords
 
+DEFINES += USE_KANS
+DEFINES += USE_RZNS
+
+
+HEADERS += \
+
 SOURCES += \
   $$SRC_DIR/main.cpp \
 
+LIBS += -L$$TARGETSDIR -lpdf-pull -ldsmain  \
+  -lntxh  -lntxh-parser -lntxh-builder
 
-
-LIBS += -L$$TARGETSDIR -lxpdf -lfreetype #-lpdf-pull -ldsmain
-
-
-contains(CHOICE_FEATURES, "pdf-pull") \#/
-{
- message(DEFINE\'ing USING_PDF_PULL)
- DEFINES += USING_PDF_PULL
- LIBS +=-L$$TARGETSDIR -lpdf-pull
-}
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
-

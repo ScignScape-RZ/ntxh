@@ -66,6 +66,13 @@ contains(CHOICE_FEATURES, "kcm_ecl") \#/
  LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
 }
 
+contains(CHOICE_FEATURES, "lex-pair") \#/
+{
+ message(DEFINE\'ing USING_LEXPAIR)
+ DEFINES += USING_LEXPAIR
+}
+
+
 contains(CHOICE_FEATURES, "iso-choice") \#/
 {
 # exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/kauvir--kauvir-kcm--kcm-lisp-bridge) \#/

@@ -3113,9 +3113,56 @@ void XpdfViewer::addTab() {
      this->app->run_fig_msg("run-fig", fign);
     });
    }
+
+#ifdef USING_PDF_PULL
+   static QString held;
+   int page;
+   QString qs = pdf->getSelectedText(&page);
+
+   bool _held = !held.isEmpty();
+   bool _qs = !qs.isEmpty();
+
+   if(_qs) qm->addAction("Add to data set ...", [held, qs, pdf, page]
+   {
+    add_to_data_set(held + qs, page);
+    held.clear();
+    //qDebug() << qs;
+   });
+   if(_qs && !_held) qm->addAction("Hold", [qs]
+   {
+    held = qs;
+   });
+   if(_qs && _held) qm->addAction("Hold (add)", [qs]
+   {
+    held += qs;
+   });
+   if(_qs && _held) qm->addAction("Hold (replace)", [qs]
+   {
+    held = qs;
+   });
+   if(_held) qm->addAction("Unhold", []
+   {
+    held.clear();
+   });
+   if(_qs) qm->addAction("Copy Selection to Clipboard", [qs]
+   {
+    QApplication::clipboard()->setText(qs);
+   });
+   if(!_qs && !_held) qm->addAction("Load default file", [pdf]
+   {
+    pdf->loadFile(DEFAULT_PDF_FILE);
+   });
+#else
+   if(!qs.isEmpty()) qm->addAction("Copy Selection to Clipboard", [qs]
+   {
+    QApplication::clipboard()->setText(qs);
+   });
+#endif // USING_PDF_PULL
+
    QPoint g = pdf->mapToGlobal(p);
    qm->popup(g);
   });
+
 
 
   pdf->enableHyperlinks(false);

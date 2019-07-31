@@ -204,7 +204,9 @@ class ScignStage_Ling_Dialog : public QDialog
  std::function<void()> screenshot_function_;
  std::function<void()> launch_config_function_;
 
+#ifdef USING_LEXPAIR
  std::function<void(QString)> launch_lexpair_dialog_function_;
+#endif // USING_LEXPAIR
 
  int current_group_index_;
  Language_Sample_Group* current_open_group_;
@@ -289,7 +291,11 @@ public:
 #endif // USING_KPH
 
  ACCESSORS__SET(std::function<void()> ,screenshot_function)
+
+#ifdef USING_LEXPAIR
  ACCESSORS__SET(std::function<void(QString)> ,launch_lexpair_dialog_function)
+#endif // USING_LEXPAIR
+
  ACCESSORS__SET(std::function<void()> ,launch_config_function)
 
  ACCESSORS(void* ,application_model)
@@ -297,7 +303,10 @@ public:
  // //  Kernel Application Interface
  void test_msgbox(QString msg);
  void expand_sample(int index);
+
+#ifdef USING_LEXPAIR
  void launch_lexpair_dialog(QString s);
+#endif // USING_LEXPAIR
 
  void find_sample_down(Language_Sample_Group* start,
    QSet<QString>* temp_filters);

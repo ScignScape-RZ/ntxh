@@ -55,6 +55,11 @@ contains(CHOICE_FEATURES, "kph") \#/
  #?? LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
 }
 
+contains(CHOICE_FEATURES, "lex-pair") \#/
+{
+ message(DEFINE\'ing USING_LEXPAIR)
+ DEFINES += USING_LEXPAIR
+}
 
 contains(CHOICE_FEATURES, "iso-choice") \#/
 {

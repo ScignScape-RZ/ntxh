@@ -45,13 +45,28 @@ SUBDIRS += \
 
 
 SUBDIRS += \
-  dataset/dsmain/_run__dsmain-console \
-
-
-SUBDIRS += \
   rz/tests-phr/kauvir-phaon-console \
   rz/tests-phr/kph-generator-console \
   rz/tests-phr/kph-tcp-console \
+
+
+SUBDIRS += \
+  dataset/application-model/application-model-test-dialog  \
+  dataset/application-model/amtd-console  \
+
+
+SUBDIRS += \
+  dataset/pdf-pull/pdf-pull  \
+  dataset/pdf-pull/pdf-pull-console  \
+
+
+SUBDIRS += \
+  QScign/LexPair/lexpair  \
+  QScign/LexPair/lexpair-console  \
+
+
+SUBDIRS += \
+  dataset/dsmain/_run__dsmain-console \
 
 
 CONFIG += ordered

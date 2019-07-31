@@ -43,7 +43,14 @@ SOURCES += \
   $$SRC_ROOT_DIR/add-minimize-frame.cpp \
 
 
+contains(CHOICE_FEATURES, "lex-pair") \#/
+{
+ message(DEFINE\'ing USING_LEXPAIR)
+ DEFINES += USING_LEXPAIR
+}
+
 LIBS += -L$$TARGETSDIR -lapplication-model
+
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

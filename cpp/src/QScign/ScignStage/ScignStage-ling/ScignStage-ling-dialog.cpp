@@ -12,8 +12,9 @@
 
 #include "styles.h"
 
-//?#include "lexpair/lexpair-dialog.h"
-
+#ifdef USING_LEXPAIR
+#include "lexpair/lexpair-dialog.h"
+#endif // USING_LEXPAIR
 
 #include <QApplication>
 
@@ -118,7 +119,9 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     last_highlight_(nullptr), xpdf_process_(nullptr),
     phr_(nullptr),
     screenshot_function_(nullptr),  launch_config_function_(nullptr),
+    #ifdef USING_LEXPAIR
     launch_lexpair_dialog_function_(nullptr),
+    #endif // USING_LEXPAIR
     current_tcp_msecs_(0), application_model_(nullptr),
     //xpdf_port_(0),
     current_index_(-1), max_index_(0),
@@ -628,8 +631,12 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     },
     [this](QString s)
     {
+#ifdef USING_LEXPAIR
      if(launch_lexpair_dialog_function_)
        launch_lexpair_dialog_function_(s);
+#else
+     // message ...
+#endif // USING_LEXPAIR
     });
    }
    else
@@ -645,7 +652,11 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     },
     [this](QString s)
     {
+#ifdef USING_LEXPAIR
      launch_lexpair_dialog(s);
+#else
+     // //?
+#endif // USING_LEXPAIR
     },
     [](QStringList qsl)
     {
@@ -733,11 +744,13 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 
 }
 
+#ifdef USING_LEXPAIR
 void ScignStage_Ling_Dialog::launch_lexpair_dialog(QString s)
 {
  if(launch_lexpair_dialog_function_)
    launch_lexpair_dialog_function_(s);
 }
+#endif // USING_LEXPAIR
 
 void ScignStage_Ling_Dialog::highlight(QTreeWidgetItem* twi)
 {
@@ -1377,7 +1390,7 @@ void ScignStage_Ling_Dialog::run_kph(const QByteArray& qba)
 #ifdef USING_KPH
  check_phr();
 
- PHR_Code_Model& pcm = phr_->get_pcm();
+ //?PHR_Code_Model& pcm = phr_->get_pcm();
 
  PHR_Channel_Group pcg;//(pcm.channel_names());
  //?
