@@ -21,6 +21,10 @@
 
 #include "phr-env/phr-env.h"
 
+#include "kph-generator/kph-generator-substitutions.h"
+#include "kph-generator/kph-generator.h"
+
+
 //#include "phaon-lib/phr-runner.h"
 
 extern void* insert_envv(void* kind, void* test);
@@ -98,6 +102,11 @@ void local_program(PhaonIR& phr, QString phrf)
  phr.init_type("argvec", 9);
  phr.init_type("pcv", DEFAULT_PTR_BYTE_CODE);
  phr.init_type("str", DEFAULT_PTR_BYTE_CODE);
+ phr.init_type("QString", DEFAULT_PTR_BYTE_CODE);
+
+ phr.init_type("ScignStage_Ling_Dialog*", DEFAULT_PTR_BYTE_CODE);
+ phr.init_type("Lexpair_Dialog*", DEFAULT_PTR_BYTE_CODE);
+
 
  qRegisterMetaType<PHR_Fn_Doc>();
  qRegisterMetaType<PHR_Fn_Doc*>();
@@ -121,6 +130,8 @@ void local_program(PhaonIR& phr, QString phrf)
  pcm.create_and_register_type_object("PHR_Fn_Doc*");
  pcm.create_and_register_type_object("PHR_Fn_Doc_Multi*");
 
+// ScignStage_Ling_Dialog*
+
  PHR_Env* penv = new PHR_Env(&pcm);
  QString penv_typename = "PHR_Env*";
  insert_envv(&penv_typename, penv);
@@ -137,6 +148,28 @@ void local_program(PhaonIR& phr, QString phrf)
 
    qDebug() << qs;
   });
+
+ // //  this is specific to kph_gen ...
+ penv->set_kph_gen_fn([](PHR_Code_Model* pcm, PHR_Channel_Group* pcg,
+   QString subsstr, QString fn, QString* text, QMap<QString, QString> docus)
+ {
+  KPH_Generator_Substitutions subs(subsstr);
+
+  if(text)
+  {
+   KPH_Generator gen;
+   gen.encode(*pcg, docus, fn);
+   *text = gen.text();
+  }
+  else
+  {
+   KPH_Generator gen (DEFAULT_KPH_FOLDER "/gen/rz-kph/t1.txt", &subs);
+   gen.encode(*pcg, docus, fn);
+   gen.save_kph_file();
+  }
+ });
+
+
 
  PHR_Runtime_Scope prs(nullptr);
 

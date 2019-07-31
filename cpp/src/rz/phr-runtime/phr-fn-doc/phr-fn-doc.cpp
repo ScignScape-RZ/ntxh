@@ -106,6 +106,6 @@ void PHR_Fn_Doc::kph_gen(PHR_Type_Object pto, QString fn, QString& text)
 {
  if(penv_)
  {
-  //penv_->kph_gen(pto->channel_group(), fn, &text, docus_[fn]);
+  penv_->kph_gen(pto.ty()->signature_channel_group(), fn, &text, docus_[fn]);
  }
 }

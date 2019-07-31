@@ -106,7 +106,11 @@ void KPH_Generator::encode(PHR_Command_Package& pcp, QMap<QString, QString> docu
     {
      ty = tyc;
      tycodes[pty] = tyc;
-     tqts << '@' << pty->name() << "::" <<
+     if(pty)
+       tqts << '@' << pty->name() << "::" <<
+       QString::number(tyc);
+     else
+       tqts << "@??::" <<
        QString::number(tyc);
      close_line(tqts);
      ++tyc;
