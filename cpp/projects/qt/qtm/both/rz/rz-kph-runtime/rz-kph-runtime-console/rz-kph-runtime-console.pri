@@ -4,21 +4,21 @@
 #     (See accompanying file LICENSE_1_0.txt or copy at
 #           http://www.boost.org/LICENSE_1_0.txt)
 
-
-PROJECT_NAME = rz-phr-runtime-console
+PROJECT_NAME = rz-kph-runtime-console
 
 include(../build-group.pri)
 
-#include(../../../../find-ecl-sexp.pri)
-
-
 TEMPLATE = app
+
+
 CONFIG += console
 
 DEFINES += CAON_DEBUG
 DEFINES += RELAE_LABEL_NODES
 
 DEFINES += RZ_DIR=\\\"$$ROOT_DIR/scripts/rz\\\"
+
+DEFINES += RZ_KPH_DIR=\\\"$$ROOT_DIR/scripts/rz-kph\\\"
 
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR \
@@ -47,6 +47,7 @@ DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
 
 HEADERS += \
   $$SRC_DIR/basic-functions.h \
+
 
 SOURCES += \
   $$SRC_DIR/main.cpp \

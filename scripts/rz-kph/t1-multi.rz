@@ -1,13 +1,13 @@
 
-,fnm ::: Fn_Doc_Multi*;
+,fnm ::: PHR_Fn_Doc_Multi*;
 fnm \== default;
 
-,kenv ::: KCM_Env*;
-kenv \= (envv _$);
+,penv ::: PHR_Env*;
+penv \= (envv _$);
 
-fnm -> init kenv;
+fnm -> init penv;
 
-,expand_sample ::: .[ScignStage_Ling_Dialog*] .(int)  $-> extern;
+,expand_sample ::: .[ScignStage_Ling_Dialog*] .(u4)  $-> extern;
 ,test_msgbox ::: .[ScignStage_Ling_Dialog*] .(QString)  $-> extern;
 ,launch_lexpair_dialog ::: .[ScignStage_Ling_Dialog*] .(QString)   $-> extern;
 
@@ -19,5 +19,5 @@ fnm -> read "launch_lexpair_dialog";
 
 fnm -> read "read_sxpr";
 
-fnm -> kph-gen-multi  "@/cpp/kph/gen-multi/t1.kph";
+fnm -> kph_gen_multi  "@/cpp/kph/gen-multi/test/t1.kph";
 
