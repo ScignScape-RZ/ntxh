@@ -448,3 +448,111 @@ void PHR_Command_Package::parse_from_file(QString path,
  parse_from_string(path, qs, channel_names, current_expression_code);
 }
 
+
+QVector<PHR_Command_Package*> PHR_Command_Package::parse_multi_from_file(PHR_Channel_System* cs,
+  PHR_Type_System* ts, QString path)
+{
+ QString qs = load_file(path);
+ return parse_multi_from_string(cs, ts, path, qs);
+}
+
+QVector<PHR_Command_Package*> PHR_Command_Package::parse_multi_from_string(PHR_Channel_System* cs,
+  PHR_Type_System* ts, QString path,
+  const QString& qs)
+{
+ int index = qs.indexOf("\n.\n##\n.\n");
+ if(index == -1)
+ {
+  PHR_Command_Package* pcp = new PHR_Command_Package(cs, ts);
+  pcp->parse_from_string(path, qs);
+  return {pcp};
+ }
+ QVector<PHR_Command_Package*> result;
+ parse_multi_from_string(cs, ts, path, qs, 0, index + 6, result);
+ return result;
+}
+
+void PHR_Command_Package::parse_multi_from_string(PHR_Channel_System* cs,
+  PHR_Type_System* ts, QString path,
+  const QString& qs, int i1, int i2, QVector<PHR_Command_Package*>& result)
+{
+ QString mid = qs.mid(i1, i2 - i1);
+ PHR_Command_Package* pcp = new PHR_Command_Package(cs, ts);
+ pcp->parse_from_string(path, mid);
+ result.push_back(pcp);
+ i2 += 2;
+ int i3 = qs.indexOf("\n.\n##\n.\n", i2);
+ if(i3 == -1)
+ {
+  QString mid = qs.mid(i2);
+  PHR_Command_Package* pcp = new PHR_Command_Package(cs, ts);
+  pcp->parse_from_string(path, mid);
+  result.push_back(pcp);
+  return;
+ }
+ parse_multi_from_string(cs, ts, path, qs, i2, i3 + 6, result);
+}
+
+void PHR_Command_Package::multi_to_map(const QVector<PHR_Command_Package*>& pcps,
+  QMap<QString, QVector<PHR_Command_Package*>>& qmap)
+{
+ for(PHR_Command_Package* pcp: pcps)
+ {
+  QString sigma = pcp->sigma_type_name();
+  if(sigma.isEmpty())
+    continue;
+  qmap[sigma].push_back(pcp);
+ }
+}
+
+QString PHR_Command_Package::sigma_type_name()
+{
+ std::map<PHR_Channel_Semantic_Protocol*, PHR_Channel*> sm = this->toStdMap();
+ auto it = std::find_if(sm.begin(), sm.end(),
+   [](const std::pair<const PHR_Channel_Semantic_Protocol*, PHR_Channel*>& pr) -> bool
+ {
+  return pr.first->name() == "sigma";
+ });
+ if(it != sm.end())
+ {
+  PHR_Channel* pch = it->second;
+  if(pch && !pch->isEmpty())
+  {
+   PHR_Type* pty = pch->first()->phr_type();
+   if(pty)
+     return pty->name();
+  }
+ }
+ return QString();
+}
+
+QString PHR_Command_Package::moc_signature()
+{
+ QString fn_name;
+ QString result;
+
+ QMapIterator<PHR_Channel_Semantic_Protocol*, PHR_Channel*> it(*this);
+
+ while(it.hasNext())
+ {
+  it.next();
+  QString n = it.key()->name();
+  if(n == "fground")
+  {
+   fn_name = it.value()->get_first_symbol_name();
+  }
+  else if(n == "lambda")
+  {
+   for(PHR_Carrier* phc : *it.value())
+   {
+    PHR_Type* pty = phc->phr_type();
+    if(pty)
+      result += pty->name() + ", ";
+   }
+  }
+ }
+ if(result.endsWith(", "))
+   result.chop(2);
+ result = QString("%1(%2)").arg(fn_name).arg(result);
+ return result;
+}

@@ -48,6 +48,7 @@ SUBDIRS += \
 SUBDIRS += \
   rz/tests-phr/kauvir-phaon-console \
   rz/tests-phr/kph-generator-console \
+  rz/tests-phr/kph-multigen-console \
   rz/tests-phr/kph-tcp-console \
 
 

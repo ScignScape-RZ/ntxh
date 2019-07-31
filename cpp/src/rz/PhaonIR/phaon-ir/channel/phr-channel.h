@@ -21,6 +21,7 @@ public:
 
  QString get_first_raw_value_string();
  void* get_first_raw_value();
+ QString get_first_symbol_name();
 
  friend bool operator <(const PHR_Channel& lhs, const PHR_Channel& rhs)
  {

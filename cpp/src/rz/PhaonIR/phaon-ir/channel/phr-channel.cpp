@@ -31,6 +31,13 @@ void* PHR_Channel::get_first_raw_value()
  return first()->raw_value();
 }
 
+QString PHR_Channel::get_first_symbol_name()
+{
+ if(isEmpty())
+   return QString();
+ return first()->symbol_name();
+}
+
 QString PHR_Channel::get_first_raw_value_string()
 {
  if(isEmpty())

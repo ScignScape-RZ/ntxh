@@ -102,6 +102,22 @@ public:
    QPair<int, const PHR_Channel*>>& qmap);
 
 
+ static QVector<PHR_Command_Package*> parse_multi_from_file(PHR_Channel_System* cs,
+   PHR_Type_System* ts, QString path);
+ static QVector<PHR_Command_Package*> parse_multi_from_string(PHR_Channel_System* cs,
+   PHR_Type_System* ts, QString path,
+   const QString& qs);
+ static void parse_multi_from_string(PHR_Channel_System* cs,
+   PHR_Type_System* ts, QString path,
+   const QString& qs, int i1, int i2, QVector<PHR_Command_Package*>& result);
+
+ static void multi_to_map(const QVector<PHR_Command_Package*>& kcps,
+   QMap<QString, QVector<PHR_Command_Package*>>& qmap);
+
+ QString sigma_type_name();
+ QString moc_signature();
+
+
 };
 
 #endif //  PHR_COMMAND_PACKAGE__H
