@@ -7,6 +7,7 @@
 
 TEMPLATE = subdirs
 
+
 SUBDIRS = \
   hgdm/ntxh/ntxh \
   hgdm/ntxh/ntxh-parser \
@@ -63,6 +64,18 @@ SUBDIRS += \
 SUBDIRS += \
   QScign/LexPair/lexpair  \
   QScign/LexPair/lexpair-console  \
+
+
+SUBDIRS += \
+  dataset/ro-info/ro-info  \
+  dataset/ro-info/ro-info-console  \
+
+
+SUBDIRS += \
+  dataset/ds-kdmi/ds-kdmi  \
+  dataset/ds-kdmi/ds-kdmi-console  \
+  dataset/ds-kdmi/kdmi-bridge  \
+  dataset/ds-kdmi/kdmi-bridge-console  \
 
 
 SUBDIRS += \

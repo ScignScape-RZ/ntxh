@@ -1,3 +1,3 @@
 
-CHOICE_FEATURES = xpdf kph kph-gen lex-pair pdf-pull
+CHOICE_FEATURES = xpdf kph config kph-gen lex-pair pdf-pull kdmi ro
 

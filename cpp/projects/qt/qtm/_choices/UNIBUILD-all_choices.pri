@@ -1,2 +1,2 @@
 
-CHOICE_FEATURES = xpdf kph rz kph-gen lex-pair pdf-pull
+CHOICE_FEATURES = xpdf kph kph-gen lex-pair pdf-pull kdmi rz ro 
