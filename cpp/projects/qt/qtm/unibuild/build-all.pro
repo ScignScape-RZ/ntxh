@@ -7,14 +7,27 @@
 
 TEMPLATE = subdirs
 
+
 SUBDIRS = \
   hgdm/ntxh/ntxh \
   hgdm/ntxh/ntxh-parser \
   hgdm/ntxh/ntxh-builder \
   dataset/dsmain/dsmain \
 
+
+SUBDIRS += \
+  dataset/pdf-pull/pdf-pull  \
+  dataset/pdf-pull/pdf-pull-console  \
+
+
 SUBDIRS += \
   external/xpdf/xpdf \
+
+
+SUBDIRS += \
+  rz/PhaonIR/phaon-ir \
+  rz/PhaonLib/phaon-lib \
+
 
 SUBDIRS += \
   QScign/ScignStage/ScignStage-ling \
@@ -31,7 +44,41 @@ SUBDIRS += \
 
 
 SUBDIRS += \
-  dataset/dsmain/_run__dsmain-console \
+  rz/phr-runtime/phr-env \
+  rz/phr-runtime/phr-fn-doc \
+  rz/PhaonLib/phr-command-runtime \
+  rz/tests-phr/kph-generator \
+  rz/PhaonLib/phr-direct-eval \
+
+
+SUBDIRS += \
+  rz/tests-phr/kauvir-phaon-console \
+  rz/tests-phr/kph-generator-console \
+  rz/tests-phr/kph-multigen-console \
+  rz/tests-phr/kph-tcp-console \
+
+
+SUBDIRS += \
+  dataset/application-model/application-model-test-dialog  \
+  dataset/application-model/amtd-console  \
+
+
+SUBDIRS += \
+  QScign/LexPair/lexpair  \
+  QScign/LexPair/lexpair-console  \
+
+
+SUBDIRS += \
+  dataset/ro-info/ro-info  \
+  dataset/ro-info/ro-info-console  \
+
+
+SUBDIRS += \
+  dataset/ds-kdmi/ds-kdmi  \
+  dataset/ds-kdmi/ds-kdmi-console  \
+  dataset/ds-kdmi/kdmi-bridge  \
+  dataset/ds-kdmi/kdmi-bridge-console  \
+
 
 SUBDIRS += \
   rz/rz-kauvir/rz-graph-core \
@@ -55,18 +102,13 @@ SUBDIRS += \
 
 
 SUBDIRS += \
-  rz/PhaonIR/phaon-ir \
-  rz/PhaonLib/phaon-lib \
-  rz/phr-runtime/phr-env \
-  rz/phr-runtime/phr-fn-doc \
-  rz/PhaonLib/phr-command-runtime \
-  rz/PhaonLib/phr-direct-eval \
+  rz/rz-phr-runtime/rz-phr-runtime-console \
+  rz/rz-phr-runtime/rz-phr-multi-console \
+  rz/rz-kph-runtime/rz-kph-runtime-console \
 
 
 SUBDIRS += \
-  rz/rz-phr-runtime/rz-phr-runtime-console \
-  rz/rz-phr-runtime/rz-phr-multi-console \
-
+  dataset/dsmain/_run__dsmain-console \
 
 
 #  rz/rz-dynamo/rz-dynamo-console \

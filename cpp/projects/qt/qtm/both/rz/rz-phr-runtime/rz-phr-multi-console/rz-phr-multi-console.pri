@@ -79,3 +79,9 @@ LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-direct-eval \
     -lphr-command-runtime
 
 
+contains(CHOICE_FEATURES, "kph-gen") \#/
+{
+ message(DEFINE\'ing USING_KPH_GEN)
+ DEFINES += USING_KPH_GEN
+ LIBS += -L$$TARGETSDIR -lkph-generator
+}
