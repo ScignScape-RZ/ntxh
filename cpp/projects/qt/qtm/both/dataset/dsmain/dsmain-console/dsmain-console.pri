@@ -90,6 +90,7 @@ contains(CHOICE_FEATURES, "config") \#/
 # LIBS += -L$$TARGETSDIR -lpdf-pull
 }
 
+
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
  message(DEFINE\'ing USE_XPDF)

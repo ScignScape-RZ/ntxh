@@ -81,6 +81,11 @@ SUBDIRS += \
 
 
 SUBDIRS += \
+  hgdm/charm/charm-lib  \
+  hgdm/charm/charm-lib-console  \
+
+
+SUBDIRS += \
   rz/rz-kauvir/rz-graph-core \
   rz/rz-kauvir/rz-graph-token \
   rz/rz-kauvir/rz-graph-build \

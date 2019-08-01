@@ -49,35 +49,71 @@ Application_Config_Model::Application_Config_Model()
     { "kdmi",
       {{
        {
-        "kdmi/ds-kdmi/ds-kdmi",
-        "kdmi/ds-kdmi/ds-kdmi-console",
-        "kdmi/kdmi-bridge/kdmi-bridge",
-        "kdmi/kdmi-bridge/kdmi-bridge-console",
+        "dataset/ds-kdmi/ds-kdmi",
+        "dataset/ds-kdmi/ds-kdmi-console",
+        "dataset/ds-kdmi/kdmi-bridge",
+        "dataset/ds-kdmi/kdmi-bridge-console",
         },
       {},
+       {} }}},
+
+    { "kph-gen",
+      {{
+       {
+        "rz/tests-phr/kph-generator-console",
+        "rz/tests-phr/kph-multigen-console",
+       },
+      {"USING_KPH_GEN"},
        {} }}},
 
     { "kph",
       {{
        {
-        "kauvir/kauvir-kcm/kauvir-type-system",
-        "kauvir/kcm-runtime-eval/kcm-scopes",
-        "kauvir/kauvir-kcm/kauvir-code-model",
-        "kauvir/kauvir-runtime/kcm-command-package",
-        "phaon/phaon/PhaonLib",
-        "kauvir/kauvir-runtime/kcm-command-runtime",
-        "kauvir/kcm-runtime-eval/kcm-direct-eval",
-        "tests-kph/kauvir-phaon/kauvir-phaon",
-        "phaon/phaon/phaon-console",
-        "tests-kph/kauvir-phaon/kauvir-phaon-console",
-        "tests-kph/kauvir-phaon/kph-tcp-console",
-        "phaon/phaon-xml/phaon-xml",
-        "phaon/phaon-xml/phaon-xml-console",
+        "rz/tests-phr/kauvir-phaon-console",
+        "rz/tests-phr/kph-generator-console",
+        "rz/tests-phr/kph-multigen-console",
+        "rz/tests-phr/kph-tcp-console",
        },
 
        {"USING_KPH"},
-       {} }}}
-                }}
+       {} }}},
+
+    { "config",
+      {{
+       {
+        "dataset/config/config-dialog-console",
+       },
+      {"USING_CONFIG"},
+       {} }}},
+
+    { "lexpair",
+      {{
+       {
+        "QScign/LexPair/lexpair",
+        "QScign/LexPair/lexpair-console",
+       },
+      {"USING_LEXPAIR"},
+       {} }}},
+
+    { "charm",
+      {{
+       {
+        "hgdm/charm/charm-lib",
+        "hgdm/charm/charm-lib-console",
+       },
+      {},
+       {} }}},
+
+    { "charm",
+      {{
+       {
+        "rz/rz-kauvir/rz-graph-core",
+        "rz/rz-kauvir/rz-graph-token",
+       },
+       {},
+      {} }}},
+
+ }}
 {
 
 
@@ -122,9 +158,24 @@ void Application_Config_Model::parse_config_code(QString cc)
   insert_text_.remove("kph");
  }
 
+ if(!cc.contains('g'))
+ {
+  insert_text_.remove("kph-gen");
+ }
+
+ if(!cc.contains('z'))
+ {
+  insert_text_.remove("rz");
+ }
+
  if(!cc.contains('d'))
  {
   insert_text_.remove("kdmi");
+ }
+
+ if(!cc.contains('c'))
+ {
+  insert_text_.remove("config");
  }
 
  if(!cc.contains('r'))
@@ -143,6 +194,16 @@ void Application_Config_Model::parse_config_code(QString cc)
   insert_text_.remove("udp");
  }
 
+ if(!cc.contains('l'))
+ {
+  insert_text_.remove("lexpair");
+ }
+
+ if(!cc.contains('m'))
+ {
+  insert_text_.remove("charm");
+ }
+
  for(QPair<QString, QString> pr : QList<QPair<QString, QString>>{
  {"", "dataset/ro-info/ro-info"},
  {"", "dataset/config/config-dialog"},
@@ -156,12 +217,17 @@ void Application_Config_Model::parse_config_code(QString cc)
  {"udp", "*"},
  {"xpdf", "*"},
 
+ {"lexpair", "*"},
+ {"config", "*"},
+ {"charm", "*"},
+
+
  {"xx", "*"},
 
  {"kph", "*"},
+ {"kph-gen", "*"},
 
- {"", "qscign/ScignStage/ScignStage-ling"},
- {"", "qscign/LexPair/lexpair"},
+ {"", "QScign/ScignStage/ScignStage-ling"},
  {"", "dataset/application-model/application-model"},
 
  {"kph", "dataset/application-model/application-model-test-dialog"},

@@ -78,15 +78,21 @@ class Config_Dialog : public QDialog
 
  QCheckBox* udpipe_check_box_;
  QCheckBox* kph_check_box_;
+
+ QCheckBox* kph_gen_check_box_;
+ QCheckBox* rz_check_box_;
+
  QCheckBox* xpdf_check_box_;
  QCheckBox* xpdf_qt_libs_check_box_;
  QCheckBox* xpdf_system_libs_check_box_;
+ QCheckBox* xx_check_box_;
 
  QCheckBox* gen_test_check_box_;
  QCheckBox* pdf_pull_check_box_;
  QCheckBox* kdmi_check_box_;
  QCheckBox* roic_check_box_;
- QCheckBox* xx_check_box_;
+ QCheckBox* charm_check_box_;
+ QCheckBox* lexpair_check_box_;
 
  QButtonGroup* qs_button_group_;
  QButtonGroup* main_button_group_;
@@ -109,7 +115,7 @@ class Config_Dialog : public QDialog
 
  void autofill_1();
  void autofill_2(bool udp = true, bool kph = false,
-   bool xx = false, bool roic = false);
+   bool xx = false, bool roic = false, bool lp = false, bool ch = false);
  void autofill_3();
  void autofill_4();
  void autofill_5();

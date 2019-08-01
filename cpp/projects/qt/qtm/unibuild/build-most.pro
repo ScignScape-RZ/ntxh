@@ -14,6 +14,7 @@ SUBDIRS = \
   hgdm/ntxh/ntxh-builder \
   dataset/dsmain/dsmain \
 
+
 SUBDIRS += \
   external/xpdf/xpdf \
 
@@ -26,9 +27,12 @@ SUBDIRS += \
 SUBDIRS += \
   QScign/ScignStage/ScignStage-ling \
 
+
 SUBDIRS += \
   dataset/application-model/application-model \
   dataset/config/config-dialog \
+  dataset/config/config-dialog-console \
+
 
 SUBDIRS += \
   external/udpipe/udpipe \
@@ -77,6 +81,11 @@ SUBDIRS += \
   dataset/ds-kdmi/ds-kdmi-console  \
   dataset/ds-kdmi/kdmi-bridge  \
   dataset/ds-kdmi/kdmi-bridge-console  \
+
+
+SUBDIRS += \
+  hgdm/charm/charm-lib  \
+  hgdm/charm/charm-lib-console  \
 
 
 SUBDIRS += \

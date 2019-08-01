@@ -117,14 +117,21 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  kph_check_box_ = new QCheckBox("Use Kauvir/Phaon and TCP (for tests)", this);
  compile_options_grid_layout_->addWidget(kph_check_box_, 0, 1, 1, 2);
 
+
+ kph_gen_check_box_ = new QCheckBox("Gen Test", this);
+ compile_options_grid_layout_->addWidget(kph_gen_check_box_, 1, 0);
+
+ rz_check_box_ = new QCheckBox("Build R/Z (for scripting)", this);
+ compile_options_grid_layout_->addWidget(rz_check_box_, 1, 1, 1, 2);
+
  xpdf_check_box_ = new QCheckBox("Use XPDF", this);
- compile_options_grid_layout_->addWidget(xpdf_check_box_, 1, 0, 2, 2, Qt::AlignRight);
+ compile_options_grid_layout_->addWidget(xpdf_check_box_, 2, 0, 2, 2, Qt::AlignRight);
 
  xpdf_qt_libs_check_box_ = new QCheckBox("Qt PNG/FreeType libraries", this);
- compile_options_grid_layout_->addWidget(xpdf_qt_libs_check_box_, 1, 2);
+ compile_options_grid_layout_->addWidget(xpdf_qt_libs_check_box_, 2, 2);
 
  xpdf_system_libs_check_box_ = new QCheckBox("System PNG/FreeType libraries", this);
- compile_options_grid_layout_->addWidget(xpdf_system_libs_check_box_, 2, 2);
+ compile_options_grid_layout_->addWidget(xpdf_system_libs_check_box_, 3, 2);
 
  xpdf_qt_libs_check_box_->setEnabled(false);
  xpdf_system_libs_check_box_->setEnabled(false);
@@ -139,24 +146,31 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  main_button_group_->addButton(udpipe_check_box_);
  main_button_group_->addButton(kph_check_box_);
 
+ xx_check_box_ = new QCheckBox("Build External XPDF Application", this);
+ compile_options_grid_layout_->addWidget(xx_check_box_, 4, 0, 1, 3);
+
  pdf_pull_check_box_ = new QCheckBox("Build PDF Scraper (pdf-pull-console) Console (Admin)", this);
- compile_options_grid_layout_->addWidget(pdf_pull_check_box_, 3, 0, 1, 3);
+ compile_options_grid_layout_->addWidget(pdf_pull_check_box_, 5, 0, 1, 3);
  pdf_pull_check_box_->setEnabled(false);
 
  kdmi_check_box_ = new QCheckBox("Build KDMI Components and Console (for data export)", this);
- compile_options_grid_layout_->addWidget(kdmi_check_box_, 4, 0, 1, 3);
+ compile_options_grid_layout_->addWidget(kdmi_check_box_, 6, 0, 1, 3);
 
  main_button_group_->addButton(kdmi_check_box_);
 
  roic_check_box_ = new QCheckBox("Build Research Object Information Console", this);
- compile_options_grid_layout_->addWidget(roic_check_box_, 5, 0, 1, 3);
+ compile_options_grid_layout_->addWidget(roic_check_box_, 7, 0, 1, 3);
 
- xx_check_box_ = new QCheckBox("Build External XPDF Application", this);
- compile_options_grid_layout_->addWidget(xx_check_box_, 6, 0, 1, 3);
+ charm_check_box_ = new QCheckBox("Charm Lib", this);
+ compile_options_grid_layout_->addWidget(charm_check_box_, 8, 0);
+
+ lexpair_check_box_ = new QCheckBox("LexPair / Triple Link GUI", this);
+ compile_options_grid_layout_->addWidget(lexpair_check_box_, 8, 1, 1, 2);
 
  main_button_group_->addButton(pdf_pull_check_box_);
  main_button_group_->addButton(roic_check_box_);
- main_button_group_->addButton(xx_check_box_);
+ main_button_group_->addButton(charm_check_box_);
+ main_button_group_->addButton(lexpair_check_box_);
 
  main_button_group_->setExclusive(false);
 
@@ -169,7 +183,7 @@ Config_Dialog::Config_Dialog(QWidget* parent)
   check_proceed_possible();
  });
 
- compile_options_grid_layout_->addWidget(gen_test_check_box_, 7, 0, 1, 3, Qt::AlignRight);
+ compile_options_grid_layout_->addWidget(gen_test_check_box_, 9, 0, 1, 3, Qt::AlignRight);
 
  //main_layout_->addWidget(gen_test_check_box_);
 
@@ -225,7 +239,7 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  reset_button_layout_->addWidget(reset_button_);
  reset_button_layout_->addWidget(reset_button_label_);
 
- compile_options_grid_layout_->addLayout(reset_button_layout_, 8, 0, 1, 3);
+ compile_options_grid_layout_->addLayout(reset_button_layout_, 10, 0, 1, 3);
 
  compile_options_group_box_->setLayout(compile_options_grid_layout_);
  main_layout_->addWidget(compile_options_group_box_);
@@ -333,6 +347,12 @@ void Config_Dialog::autofill_1()
  roic_check_box_->setChecked(false);
  xx_check_box_->setChecked(false);
 
+ kph_gen_check_box_->setChecked(false);
+ rz_check_box_->setChecked(false);
+
+ lexpair_check_box_->setChecked(false);
+ charm_check_box_->setChecked(false);
+
  if(xpdf_check_box_->isChecked())
  {
   // //  this should trigger the check_proceed_possible()
@@ -342,7 +362,8 @@ void Config_Dialog::autofill_1()
    check_proceed_possible();
 }
 
-void Config_Dialog::autofill_2(bool udp, bool kph, bool xx, bool roic)
+void Config_Dialog::autofill_2(bool udp, bool kph, bool xx, bool roic,
+  bool lp, bool ch)
 {
  const QSignalBlocker mbl(main_button_group_);
  const QSignalBlocker qsbl(qs_button_group_);
@@ -359,6 +380,13 @@ void Config_Dialog::autofill_2(bool udp, bool kph, bool xx, bool roic)
  xx_check_box_->setChecked(xx);
  roic_check_box_->setChecked(roic);
  kdmi_check_box_->setChecked(false);
+
+ lexpair_check_box_->setChecked(lp);
+ charm_check_box_->setChecked(ch);
+
+ kph_gen_check_box_->setChecked(false);
+ rz_check_box_->setChecked(false);
+
  check_proceed_possible();
 }
 
@@ -375,12 +403,12 @@ void Config_Dialog::autofill_4()
 
 void Config_Dialog::autofill_5()
 {
- autofill_2(true, true, true, true);
+ autofill_2(true, true, true, true, true, true);
 }
 
 void Config_Dialog::autofill_6()
 {
- autofill_2(false, true, false, true);
+ autofill_2(false, true, false, true, true, true);
  if(pdf_pull_check_box_->isEnabled())
    pdf_pull_check_box_->setChecked(true);
  kdmi_check_box_->setChecked(true);
@@ -409,6 +437,15 @@ QString Config_Dialog::get_apply_code()
    result += "k";
  if(udpipe_check_box_->isChecked())
    result += "u";
+ if(lexpair_check_box_->isChecked())
+   result += "l";
+ if(charm_check_box_->isChecked())
+   result += "m";
+
+ if(rz_check_box_->isChecked())
+   result += "z";
+ if(kph_gen_check_box_->isChecked())
+   result += "g";
 
  if(pdf_pull_check_box_->isEnabled() && pdf_pull_check_box_->isChecked())
    result += "p";
