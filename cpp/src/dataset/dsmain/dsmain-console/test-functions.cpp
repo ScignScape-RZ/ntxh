@@ -138,6 +138,7 @@ void expand_sample(ScignStage_Ling_Dialog* dlg, int index)
 void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss)
 {
+#ifdef USING_KPH
  pcm.create_and_register_type_object("ScignStage_Ling_Dialog*");
 
  QString* satypename = new QString("ScignStage_Ling_Dialog*");
@@ -223,7 +224,7 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
 
   g1.clear_all();
  }
-
+#endif // USING_KPH
 
 #ifdef HIDE
  Kauvir_Type_System* type_system = kcm.type_system();

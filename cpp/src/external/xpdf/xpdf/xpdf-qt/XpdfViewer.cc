@@ -3153,6 +3153,8 @@ void XpdfViewer::addTab() {
     pdf->loadFile(DEFAULT_PDF_FILE);
    });
 #else
+   int page;
+   QString qs = pdf->getSelectedText(&page);
    if(!qs.isEmpty()) qm->addAction("Copy Selection to Clipboard", [qs]
    {
     QApplication::clipboard()->setText(qs);

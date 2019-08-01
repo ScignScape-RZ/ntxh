@@ -82,6 +82,12 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 }
 
 
+contains(CHOICE_FEATURES, "config") \#/
+{
+ message(DEFINE\'ing USING_CONFIG)
+ DEFINES += USING_CONFIG
+}
+
 contains(CHOICE_FEATURES, "lex-pair") \#/
 {
  message(DEFINE\'ing USING_LEXPAIR)

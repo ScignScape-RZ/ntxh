@@ -57,25 +57,30 @@ Application_Config_Model::Application_Config_Model()
       {},
        {} }}},
 
-    { "kph-gen",
-      {{
-       {
-        "rz/tests-phr/kph-generator-console",
-        "rz/tests-phr/kph-multigen-console",
-       },
-      {"USING_KPH_GEN"},
-       {} }}},
-
     { "kph",
       {{
        {
         "rz/tests-phr/kauvir-phaon-console",
-        "rz/tests-phr/kph-generator-console",
-        "rz/tests-phr/kph-multigen-console",
         "rz/tests-phr/kph-tcp-console",
        },
 
        {"USING_KPH"},
+       {} }}},
+
+    { "kph-gen",
+      {{
+       {
+        "rz/phr-runtime/phr-env",
+        "rz/phr-runtime/phr-fn-doc",
+        "rz/PhaonLib/phr-command-runtime",
+
+        "rz/tests-phr/kph-generator",
+        "rz/PhaonLib/phr-direct-eval",
+
+        "rz/tests-phr/kph-generator-console",
+        "rz/tests-phr/kph-multigen-console",
+       },
+      {"USING_KPH_GEN"},
        {} }}},
 
     { "config",
@@ -86,7 +91,7 @@ Application_Config_Model::Application_Config_Model()
       {"USING_CONFIG"},
        {} }}},
 
-    { "lexpair",
+    { "lex-pair",
       {{
        {
         "QScign/LexPair/lexpair",
@@ -196,7 +201,7 @@ void Application_Config_Model::parse_config_code(QString cc)
 
  if(!cc.contains('l'))
  {
-  insert_text_.remove("lexpair");
+  insert_text_.remove("lex-pair");
  }
 
  if(!cc.contains('m'))
@@ -205,6 +210,13 @@ void Application_Config_Model::parse_config_code(QString cc)
  }
 
  for(QPair<QString, QString> pr : QList<QPair<QString, QString>>{
+
+ {"", "hgdm/ntxh/ntxh"},
+ {"", "hgdm/ntxh/ntxh-parser"},
+ {"", "hgdm/ntxh/ntxh-builder"},
+
+ {"", "QScign/QRing/qring"},
+
  {"", "dataset/ro-info/ro-info"},
  {"", "dataset/config/config-dialog"},
  {"", "dataset/dsmain/dsmain"},
@@ -217,21 +229,24 @@ void Application_Config_Model::parse_config_code(QString cc)
  {"udp", "*"},
  {"xpdf", "*"},
 
- {"lexpair", "*"},
+ {"", "rz/PhaonIR/phaon-ir"},
+ {"", "rz/PhaonLib/phaon-lib"},
+
+ {"", "QScign/ScignStage/ScignStage-ling"},
+ {"lex-pair", "*"},
  {"config", "*"},
  {"charm", "*"},
 
 
  {"xx", "*"},
 
- {"kph", "*"},
- {"kph-gen", "*"},
-
- {"", "QScign/ScignStage/ScignStage-ling"},
  {"", "dataset/application-model/application-model"},
 
  {"kph", "dataset/application-model/application-model-test-dialog"},
  {"kph", "dataset/application-model/amtd-console"},
+
+//? {"kph", "*"},
+ {"kph-gen", "*"},
 
  {"", "dataset/dsmain/_run__dsmain-console"},
  })

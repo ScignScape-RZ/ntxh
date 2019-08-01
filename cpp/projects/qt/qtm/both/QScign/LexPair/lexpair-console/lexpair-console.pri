@@ -24,12 +24,14 @@ HEADERS += \
 SOURCES += \
   $$SRC_DIR/main.cpp \
 
-LIBS += -L$$TARGETSDIR -llexpair -lScignStage-ling -ldsmain  \
-  -lntxh -lntxh-parser -lntxh-builder
+LIBS += -L$$TARGETSDIR -llexpair
+
+#? -ldsmain  \
+#?  -lntxh -lntxh-parser -lntxh-builder
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
- LIBS += -L$$TARGETSDIR  -lphaon-ir -lphaon-lib
+#? LIBS += -L$$TARGETSDIR  -lphaon-ir -lphaon-lib
 }
 
 contains(CHOICE_FEATURES, "iso-choice") \#/

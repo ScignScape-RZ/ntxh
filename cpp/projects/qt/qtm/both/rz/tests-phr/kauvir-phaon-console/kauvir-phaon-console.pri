@@ -50,6 +50,7 @@ SOURCES += \
   $$SRC_DIR/main.cpp \
   $$SRC_DIR/test-functions.cpp \
 
+
 LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-direct-eval  -lphr-fn-doc  \
    -lphr-command-runtime -lphr-env -lkph-generator
 

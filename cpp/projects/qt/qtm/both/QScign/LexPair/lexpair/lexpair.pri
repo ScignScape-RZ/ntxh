@@ -28,15 +28,16 @@ DEFINES += LINK_GRAMMAR_ABOUT_FOLDER=\\\"$$CPP_ROOT_DIR/about/link-grammar\\\"
 HEADERS += \
   $$SRC_DIR/lexpair-dialog.h \
   $$SRC_DIR/lexpair-sxpr.h \
+  $$SRC_PROSET_DIR/ScignStage/ScignStage-ling/subwindows/scignstage-clickable-label.h  \
 
 
 SOURCES += \
   $$SRC_DIR/lexpair-dialog.cpp \
   $$SRC_DIR/lexpair-sxpr.cpp \
   $$SRC_ROOT_DIR/add-minimize-frame.cpp \
+  $$SRC_PROSET_DIR/ScignStage/ScignStage-ling/subwindows/scignstage-clickable-label.cpp  \
 
-
-LIBS +=-L$$TARGETSDIR -lScignStage-ling
+#?? LIBS +=-L$$TARGETSDIR -lScignStage-ling
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

@@ -85,7 +85,10 @@ class Config_Dialog : public QDialog
  QCheckBox* xpdf_check_box_;
  QCheckBox* xpdf_qt_libs_check_box_;
  QCheckBox* xpdf_system_libs_check_box_;
+
  QCheckBox* xx_check_box_;
+ QCheckBox* config_check_box_;
+
 
  QCheckBox* gen_test_check_box_;
  QCheckBox* pdf_pull_check_box_;
@@ -114,12 +117,17 @@ class Config_Dialog : public QDialog
  QString get_role_code();
 
  void autofill_1();
- void autofill_2(bool udp = true, bool kph = false,
+
+ void _autofill_2(bool pdp = true, bool kph = false,
    bool xx = false, bool roic = false, bool lp = false, bool ch = false);
+
+ void autofill_2();
  void autofill_3();
  void autofill_4();
  void autofill_5();
  void autofill_6();
+
+ void auto_set_xpdf_libs();
 
 public:
 

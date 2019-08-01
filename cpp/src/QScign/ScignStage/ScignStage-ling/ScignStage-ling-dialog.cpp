@@ -117,12 +117,14 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   : QDialog(parent), xpdf_bridge_(xpdf_bridge),
     current_sample_(nullptr),
     last_highlight_(nullptr), xpdf_process_(nullptr),
-    phr_(nullptr),
-    screenshot_function_(nullptr),  launch_config_function_(nullptr),
+    screenshot_function_(nullptr),
+    #ifdef USING_CONFIG
+    launch_config_function_(nullptr),
+    #endif // USING_LEXPAIR
+    application_model_(nullptr),
     #ifdef USING_LEXPAIR
     launch_lexpair_dialog_function_(nullptr),
     #endif // USING_LEXPAIR
-    current_tcp_msecs_(0), application_model_(nullptr),
     //xpdf_port_(0),
     current_index_(-1), max_index_(0),
     current_volume_(50), current_group_index_(-1),
@@ -132,6 +134,8 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     current_section_number_(0)
      // KPH only ...
     #ifdef USING_KPH
+    ,current_tcp_msecs_(0)
+    ,phr_(nullptr)
     ,tcp_server_(nullptr)
     ,phr_channel_system_(nullptr)
     ,phaonir_(nullptr)
@@ -635,7 +639,8 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
      if(launch_lexpair_dialog_function_)
        launch_lexpair_dialog_function_(s);
 #else
-     // message ...
+     QMessageBox::warning(this, "Not Built",
+       "LexPair / Tri Link Dialog Support is not Part of this Build.");
 #endif // USING_LEXPAIR
     });
    }
@@ -1238,8 +1243,16 @@ void ScignStage_Ling_Dialog::handle_sample_first()
 void ScignStage_Ling_Dialog::handle_launch_config_requested()
 {
  Q_EMIT(launch_config_requested());
+
+#ifdef USING_CONFIG
  if(launch_config_function_)
    launch_config_function_();
+#else
+ QMessageBox::warning(this, "Not Built",
+   "Config Dialog Support is not Part of this Build.");
+#endif
+
+
 }
 
 

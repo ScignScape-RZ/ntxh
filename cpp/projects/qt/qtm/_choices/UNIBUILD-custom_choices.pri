@@ -1,7 +1,7 @@
 
 #__CHOICE_FEATURES__#
 
-CHOICE_FEATURES = charm kdmi kph kph-gen lexpair ppc ro udp xpdf xx
+CHOICE_FEATURES = charm kph lex-pair ro xpdf xx
 
 #__END_INSERT__#
 

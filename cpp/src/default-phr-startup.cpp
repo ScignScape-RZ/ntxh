@@ -30,6 +30,7 @@
 
 //?USING_KANS(Phaon)
 
+#ifdef USING_KPH
 
 #include "phaon-ir/phaon-ir.h"
 #include "phaon-ir/channel/phr-channel-system.h"
@@ -70,3 +71,4 @@ void default_phr_startup(PhaonIR& phr)
 // PHR_Symbol_Scope pss(&prs);
 }
 
+#endif // USING_KPH

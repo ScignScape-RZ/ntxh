@@ -186,8 +186,6 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QProcess* xpdf_process_;
 
- quint64 current_tcp_msecs_;
-
  void* application_model_;
 
  //int xpdf_port_;
@@ -195,6 +193,7 @@ class ScignStage_Ling_Dialog : public QDialog
  QString held_xpdf_msg_;
 
 #ifdef USING_KPH
+ quint64 current_tcp_msecs_;
  QTcpServer* tcp_server_;
  PHR_Runner* phr_;
  PHR_Symbol_Scope* phr_symbol_scope_;
@@ -202,7 +201,10 @@ class ScignStage_Ling_Dialog : public QDialog
 #endif
 
  std::function<void()> screenshot_function_;
+
+#ifdef USING_CONFIG
  std::function<void()> launch_config_function_;
+#endif // USING_LEXPAIR
 
 #ifdef USING_LEXPAIR
  std::function<void(QString)> launch_lexpair_dialog_function_;
@@ -296,7 +298,10 @@ public:
  ACCESSORS__SET(std::function<void(QString)> ,launch_lexpair_dialog_function)
 #endif // USING_LEXPAIR
 
+#ifdef USING_CONFIG
  ACCESSORS__SET(std::function<void()> ,launch_config_function)
+#endif // USING_CONFIG
+
 
  ACCESSORS(void* ,application_model)
 

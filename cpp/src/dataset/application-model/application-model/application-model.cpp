@@ -31,7 +31,9 @@ void Application_Model::expand_sample(ScignStage_Ling_Dialog* dlg, int index)
 
 void Application_Model::launch_lexpair_dialog(ScignStage_Ling_Dialog* dlg, QString s)
 {
+#ifdef USING_LEXPAIR
  dlg->launch_lexpair_dialog(s);
+#endif
 }
 
 Application_Model::~Application_Model() {}

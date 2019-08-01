@@ -118,11 +118,13 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  compile_options_grid_layout_->addWidget(kph_check_box_, 0, 1, 1, 2);
 
 
- kph_gen_check_box_ = new QCheckBox("Gen Test", this);
- compile_options_grid_layout_->addWidget(kph_gen_check_box_, 1, 0);
 
- rz_check_box_ = new QCheckBox("Build R/Z (for scripting)", this);
- compile_options_grid_layout_->addWidget(rz_check_box_, 1, 1, 1, 2);
+ rz_check_box_ = new QCheckBox("Build R/Z (scripting)", this);
+ compile_options_grid_layout_->addWidget(rz_check_box_, 1, 0);
+
+ kph_gen_check_box_ = new QCheckBox("Gen Test (needs R/Z for full coverage)", this);
+ compile_options_grid_layout_->addWidget(kph_gen_check_box_, 1, 1, 1, 2);
+
 
  xpdf_check_box_ = new QCheckBox("Use XPDF", this);
  compile_options_grid_layout_->addWidget(xpdf_check_box_, 2, 0, 2, 2, Qt::AlignRight);
@@ -147,7 +149,10 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  main_button_group_->addButton(kph_check_box_);
 
  xx_check_box_ = new QCheckBox("Build External XPDF Application", this);
- compile_options_grid_layout_->addWidget(xx_check_box_, 4, 0, 1, 3);
+ compile_options_grid_layout_->addWidget(xx_check_box_, 4, 0, 1, 2);
+
+ config_check_box_ = new QCheckBox("Include Config", this);
+ compile_options_grid_layout_->addWidget(config_check_box_, 4, 2);
 
  pdf_pull_check_box_ = new QCheckBox("Build PDF Scraper (pdf-pull-console) Console (Admin)", this);
  compile_options_grid_layout_->addWidget(pdf_pull_check_box_, 5, 0, 1, 3);
@@ -339,6 +344,24 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  setLayout(main_layout_);
 }
 
+void Config_Dialog::auto_set_xpdf_libs()
+{
+ if(xpdf_check_box_->isChecked())
+ {
+  if(os_combo_box_->currentText() == "Windows")
+  {
+   xpdf_qt_libs_check_box_->setChecked(true);
+   xpdf_system_libs_check_box_->setChecked(false);
+  }
+  else
+  {
+   xpdf_qt_libs_check_box_->setChecked(false);
+   xpdf_system_libs_check_box_->setChecked(true);
+  }
+ }
+}
+
+
 void Config_Dialog::autofill_1()
 {
  const QSignalBlocker mbl(main_button_group_);
@@ -346,6 +369,8 @@ void Config_Dialog::autofill_1()
  kph_check_box_->setChecked(false);
  roic_check_box_->setChecked(false);
  xx_check_box_->setChecked(false);
+
+ config_check_box_->setChecked(false);
 
  kph_gen_check_box_->setChecked(false);
  rz_check_box_->setChecked(false);
@@ -362,14 +387,16 @@ void Config_Dialog::autofill_1()
    check_proceed_possible();
 }
 
-void Config_Dialog::autofill_2(bool udp, bool kph, bool xx, bool roic,
+void Config_Dialog::_autofill_2(bool pdp, bool kph, bool xx, bool roic,
   bool lp, bool ch)
 {
  const QSignalBlocker mbl(main_button_group_);
  const QSignalBlocker qsbl(qs_button_group_);
 
- if(udpipe_check_box_->isEnabled())
-   udpipe_check_box_->setChecked(udp);
+ if(pdf_pull_check_box_->isEnabled())
+   pdf_pull_check_box_->setChecked(pdp);
+
+ udpipe_check_box_->setChecked(false);
 
  kph_check_box_->setChecked(kph);
  xpdf_check_box_->setChecked(true);
@@ -381,42 +408,65 @@ void Config_Dialog::autofill_2(bool udp, bool kph, bool xx, bool roic,
  roic_check_box_->setChecked(roic);
  kdmi_check_box_->setChecked(false);
 
+ config_check_box_->setChecked(false);
+
+
  lexpair_check_box_->setChecked(lp);
  charm_check_box_->setChecked(ch);
 
  kph_gen_check_box_->setChecked(false);
  rz_check_box_->setChecked(false);
 
+ auto_set_xpdf_libs();
+}
+
+void Config_Dialog::autofill_2()
+{
+ _autofill_2();
  check_proceed_possible();
 }
 
 void Config_Dialog::autofill_3()
 {
- autofill_2(true, false, true);
+ _autofill_2(true, false, true);
+
+ check_proceed_possible();
 }
 
 void Config_Dialog::autofill_4()
 {
- autofill_2(true, false, true, true);
+ _autofill_2(true, false, false, true, true);
  kdmi_check_box_->setChecked(true);
+ udpipe_check_box_->setChecked(true);
+ check_proceed_possible();
 }
 
 void Config_Dialog::autofill_5()
 {
- autofill_2(true, true, true, true, true, true);
+ _autofill_2(true, true, true, true, true, true);
+ check_proceed_possible();
 }
 
 void Config_Dialog::autofill_6()
 {
- autofill_2(false, true, false, true, true, true);
+ _autofill_2(false, true, false, true, true, true);
+
  if(pdf_pull_check_box_->isEnabled())
    pdf_pull_check_box_->setChecked(true);
  kdmi_check_box_->setChecked(true);
+ rz_check_box_->setChecked(true);
+ kph_gen_check_box_->setChecked(true);
+
+ udpipe_check_box_->setChecked(true);
+ config_check_box_->setChecked(true);
+
+ check_proceed_possible();
 }
 
 QString Config_Dialog::get_role_code()
 {
- return QString::number( roles_button_group_->checkedId() );
+ QString result = QString::number( roles_button_group_->checkedId() );
+ return result;
 }
 
 QString Config_Dialog::get_apply_code()
@@ -429,6 +479,10 @@ QString Config_Dialog::get_apply_code()
    result += "xx";
  if(xpdf_check_box_->isChecked())
    result += "x";
+
+ if(config_check_box_->isChecked())
+   result += "c";
+
  if(xpdf_qt_libs_check_box_->isChecked())
    result += "q";
  if(xpdf_system_libs_check_box_->isChecked())
