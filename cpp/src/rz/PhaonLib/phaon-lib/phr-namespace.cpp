@@ -11,9 +11,6 @@
 
 USING_KANS(Phaon)
 
-//USING//_KANS(PhaonLib)
-
-
 PHR_Namespace::PHR_Namespace(QString name)
   :  name_(name)
 {

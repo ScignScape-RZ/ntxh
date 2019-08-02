@@ -8,7 +8,6 @@
 
 USING_KANS(Phaon)
 
-//USING_KANS(CMD)
 
 PHR_Command_Runtime_Argument::PHR_Command_Runtime_Argument()
   :  raw_value_(nullptr), qmo_(nullptr),
@@ -39,7 +38,7 @@ QString PHR_Command_Runtime_Argument::qob_reflection_type_name()
  QString result = type_name_to_qt_type_name(this->type_name());
  if(result.isEmpty())
  {
-  // other things?
+  // // other things?
   result = this->type_name();
  }
  return result;

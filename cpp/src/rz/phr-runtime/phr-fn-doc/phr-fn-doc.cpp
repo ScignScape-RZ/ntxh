@@ -75,18 +75,17 @@ PHR_Type_Object PHR_Fn_Doc::get_type_object_from_symbol_name(QString fn)
 {
  PHR_Type* ty = scopes_->get_type_for_symbol_name(fn);
  return ty;
- //return scopes_->get_type_object_from_symbol_name(fn);
 }
 
 void PHR_Fn_Doc::kph_gen(QString subs)
 {
  qDebug() << "fn: " << held_fn_;
- const PHR_Type_Object* pto = nullptr;//scopes_->get_type_object_from_symbol_name(held_fn_);
+ const PHR_Type_Object* pto = nullptr;
  if(pto)
  {
   if(penv_)
   {
-   //penv_->kph_gen(pto->channel_group(), subs,  held_fn_, nullptr, docus_[held_fn_]);
+   // //?penv_->kph_gen(pto->channel_group(), subs,  held_fn_, nullptr, docus_[held_fn_]);
   }
  }
 }

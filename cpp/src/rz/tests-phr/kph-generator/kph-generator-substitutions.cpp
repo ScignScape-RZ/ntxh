@@ -7,8 +7,6 @@
 
 #include "kph-generator-substitutions.h"
 
-//#include "kauvir-code-model/kcm-carrier.h"
-//#include "kauvir-code-model/kcm-type-object.h"
 
 #include "phaon-ir/channel/phr-carrier.h"
 #include "phaon-ir/types/phr-type-system.h"

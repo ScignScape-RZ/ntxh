@@ -13,24 +13,9 @@
 
 #include "phr-direct-eval/phr-direct-eval.h"
 
-//?#include "phaon-ir/table/phr-symbol-scope.h"
-
 #include "phaon-ir/runtime/phr-command-package.h"
 
 #include "phaon-lib/phr-runner.h"
-
-//#include "phaon-ir/
-
-//#include "kauvir-phaon/kph-command-package.h"
-//#include "kauvir-code-model/kauvir-code-model.h"
-//#include "kauvir-code-model/kcm-channel-group.h"
-//#include "kcm-scopes/kcm-scope-system.h"
-
-
-//#include "PhaonLib/phaon-namespace.h"
-//#include "PhaonLib/phaon-class.h"
-//#include "PhaonLib/phaon-function.h"
-//#include "PhaonLib/phaon-symbol-scope.h"
 
 #include "relae-graph/relae-caon-ptr.h"
 
@@ -39,17 +24,9 @@
 
 #include "test-functions.h"
 
-//#include "PhaonLib/phaon-channel-group-table.h"
-//#include "PhaonLib/phaon-runner.h"
-//#include "kcm-direct-eval/kcm-direct-eval.h"
-
 #include <QObject>
 
 #include "kans.h"
-
-
-//?USING_KANS(Phaon)
-
 
 #include "phaon-ir/phaon-ir.h"
 #include "phaon-ir/channel/phr-channel-system.h"
@@ -63,9 +40,7 @@ extern void default_phr_startup(PhaonIR& phr);
 
 #include "kans.h"
 
-//USING_KANS(KCM)
-//USING_KANS(Phaon)
-//USING_KANS(PhaonLib)
+USING_KANS(Phaon)
 
 
 void init_qba(QByteArray& qba)
@@ -77,12 +52,9 @@ void init_qba(QByteArray& qba)
  default_phr_startup(phr);
 
  PHR_Command_Package pcp(phr.channel_system(), phr.type_system());
- //
  pcp.parse_from_file( DEFAULT_KPH_FOLDER "/dataset/raw/t1.kph" );
- //pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
 
  pcp.supply_data(qba);
-
 
  qba.append("<//>");
 

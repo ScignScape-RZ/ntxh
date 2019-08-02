@@ -4,34 +4,6 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-
-//#include "kauvir-phaon/kph-command-package.h"
-
-//#include "kauvir-code-model/kauvir-code-model.h"
-//#include "kauvir-code-model/kcm-channel-group.h"
-//#include "kcm-scopes/kcm-scope-system.h"
-
-//#include "PhaonLib/phaon-namespace.h"
-//#include "PhaonLib/phaon-class.h"
-//#include "PhaonLib/phaon-function.h"
-//#include "PhaonLib/phaon-symbol-scope.h"
-
-//#include "relae-graph/relae-caon-ptr.h"
-
-//#include "test-functions.h"
-
-//#include "PhaonLib/phaon-channel-group-table.h"
-//#include "PhaonLib/phaon-runner.h"
-
-//#include "kcm-direct-eval/kcm-direct-eval.h"
-
-//#include "kans.h"
-
-//USING_KANS(KCM)
-//USING_KANS(Phaon)
-//USING_KANS(PhaonLib)
-
-
 #include "phaon-lib/phr-runner.h"
 
 #include "phaon-ir/phaon-ir.h"
@@ -74,13 +46,6 @@ void local_program(PhaonIR& phr)
  phr.coalesce_channel_group();
 }
 
-//void phr_direct_eval(PHR_Code_Model* pcm,
-//   PHR_Command_Package* pcp);
-//{
-
-//}
-//kcm_->direct_eval(cpkg, this);
-
 int main(int argc, char* argv[])
 {
  PHR_Channel_System pcs;
@@ -92,9 +57,6 @@ int main(int argc, char* argv[])
 
  phr.create_channel_semantic_protocol("lambda");
  phr.create_channel_semantic_protocol("result");
-
-// Phaon_Namespace phn("TestNS");
-// Phaon_Class phc("Test_Class", &phn);
 
  PHR_Code_Model& pcm = *phr.code_model();
  pcm.set_type_system(phr.type_system());
@@ -111,14 +73,10 @@ int main(int argc, char* argv[])
  init_test_functions(phr, pcm, phrn.get_table(), pss);
  phrn.get_runtime_scope_queue().push_front(&prs);
 
-// KPH_Command_Package khp;
-// khp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
-
  local_program(phr);
 
  PHR_Channel_Group* pcg = phr.get_select_channel_group();
 
- //khp.init_channel_group(kcm, kcg);
  phrn.run(*pcg, phr.channel_system(), &pss);
 
  return 0;

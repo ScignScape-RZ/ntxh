@@ -138,15 +138,15 @@ void RPI_Block::add_form_from_call_entry_node(RZ_Graph_Visitor_Phaon& visitor_ph
 
   if(rce && rce->flags.is_statement_entry)
   {
-   current_form_->flags.is_statement = true;//mark_as_statement();
+   current_form_->flags.is_statement = true;
   }
 
   if(rbe)
   {
    if(parent_block_)
-     current_form_->flags.is_nested_block_entry_statment = true;// mark_as_nested_block_entry_statment();
+     current_form_->flags.is_nested_block_entry_statment = true;
    else
-     current_form_->flags.is_block_entry_statment = true;//  mark_as_block_entry_statment();
+     current_form_->flags.is_block_entry_statment = true;
   }
 
   forms_.push_back(current_form_);
@@ -236,13 +236,11 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
   case RZ_Graph_Visitor_Phaon::Special_Form_Flags::Formula:
    {
     current_form_->init_formula_expression(tok->raw_text());
-    //?
    }
    break;
   case RZ_Graph_Visitor_Phaon::Special_Form_Flags::Assignment:
    {
     current_form_->init_assignment_expression(tok->raw_text());
-    //?
    }
    break;
   case RZ_Graph_Visitor_Phaon::Special_Form_Flags::N_A:
@@ -284,7 +282,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
      if(fn.startsWith('&'))
      {
       current_form_->init_inferred_s0_statement();
-      //?fn = fn.mid(1);
      }
      else if(lexical_scope_->contains_function_symbol(fn))
      {
@@ -303,8 +300,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
      if(current_form_->parent_lambda_position() != -1)
      {
      }
-     // this is now handled later ...
-     //current_form_->add_string_token(":|W|");
     }
    }
    break;
@@ -316,8 +311,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
 
  // maybe temp ...
  bool last_nnp_expr = false;
-
- //?bool need_to_hold_type = false;
 
  QString field_index_key;
 
@@ -344,14 +337,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
     {
      CAON_PTR_DEBUG(RZ_Lisp_Token ,next_tok)
 
-       //?
-//     if(need_to_hold_type)
-//     {
-//      if(next_tok->flags.is_type_symbol_in_declaration)
-//        held_type_name_ = next_tok->raw_text();
-//      need_to_hold_type = false;
-//     }
-
      if(next_tok->flags.is_dep_marker)
      {
       current_node = next_node;
@@ -370,17 +355,11 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
      if(next_tok->flags.is_assign_to_default_ctor)
      {
       skip_increase_lambda_count = true;
-      //lt.clear();
-      //  currently this just ignores the token.
      }
      else if(next_tok->flags.precedes_call_arrow)
      {
       skip_increase_lambda_count = true;
       QString ht = lt;
-
-      // // do we need this?
-      //ht.prepend(":|s,");
-      //ht.append('|');
 
       held_token_ = {MS_Token_Kinds::Sigma_Symbol, ht};
       lt.clear();
@@ -392,10 +371,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
 
       // // do we need this?
       //lt.replace('-', '_');
-
-      // // do we need this?
-      //lt.prepend(":|&,");
-      //lt.append('|');
      }
 
      else if(next_tok->flags.is_symbol_declaration ||
@@ -406,7 +381,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
      }
      else if(next_tok->flags.is_string_literal)
      {
-//?
       lt.prepend("\"");
       lt.append("\"");
      }
@@ -426,29 +400,25 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
       {
        if(next_tok->flags.is_numeric_literal)
        {
-        current_form_->add_insert_element(RPI_Stage_Element_Kinds::Kernel_Type_Symbol, "u32");
+        current_form_->add_insert_element(RPI_Stage_Element_Kinds::Kernel_Type_Symbol, "u4");
         current_form_->add_literal_element(RPI_Stage_Element_Kinds::Literal, lt);
-         //?current_form_->add_literal_token(MS_Token::check_as(mstk, MS_Token_Kinds::Literal, lt));//{MS_Token_Kinds::Literal, lt});
        }
        else if(next_tok->flags.is_string_literal)
        {
         current_form_->add_insert_element(RPI_Stage_Element_Kinds::Kernel_Type_Symbol, "str");
         current_form_->add_literal_element(RPI_Stage_Element_Kinds::String_Literal, lt);
-        //current_form_->add_literal_token(MS_Token::check_as(mstk, MS_Token_Kinds::String_Literal, lt));
        }
        else if(next_tok->flags.has_assignment_initialization_expression)
        {
         current_form_->set_assignment_info(RPI_Assignment_Info(
-          RPI_Assignment_Value_Kinds::Expression, //Scoped_Symbol,
+          RPI_Assignment_Value_Kinds::Expression,
           RPI_Assignment_Initialization_Kinds::Init, lt));
-//?        current_form_->set_assignment_token(MS_Token::check_as(mstk, MS_Token_Kinds::Scoped_Symbol, lt));
        }
        else if(next_tok->flags.has_assignment_initialization_token)
        {
         current_form_->set_assignment_info(RPI_Assignment_Info(
           RPI_Assignment_Value_Kinds::Literal,
           RPI_Assignment_Initialization_Kinds::Init, lt));
-//?        current_form_->set_assignment_token({MS_Token_Kinds::Scoped_Symbol_Literal_Init, lt});
        }
        else if(next_tok->flags.has_assignment_to_type)
        {
@@ -468,16 +438,9 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
        else if(next_tok->flags.is_assignment_initialization_entry)
        {
         current_form_->add_assignment_initialization_element(RPI_Stage_Element_Kinds::Instruction_Symbol, lt);
-           //MS_Token::check_as(mstk, MS_Token_Kinds::Instruction_Symbol, lt));
        }
        else if(next_tok->flags.is_assign_to_default_ctor)
        {
-//?
-//        if(!held_type_name_.isEmpty())
-//        {
-//         lt += ":" + held_type_name_;
-//         held_type_name_.clear();
-//        }
         current_form_->add_argument_element(RPI_Stage_Element_Kinds::Type_Default_Marker, lt);
        }
        else if(next_tok->flags.follows_call_arrow)
@@ -503,9 +466,7 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
        else if(mstk == MS_Token_Kinds::Skip_Token ||
          lt == ":TYPE-DECL")
        {
-        //?need_to_hold_type = true;
         skip_increase_lambda_count = true;
-        //current_form_->mark_as_fn_no_block();
        }
        else
        {
@@ -515,15 +476,12 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
          field_index_key.clear();
         }
         current_form_->add_argument_element(RPI_Stage_Element_Kinds::Raw_Symbol, lt);
-           //MS_Token::check_as(mstk, MS_Token_Kinds::Raw_Symbol, lt));
        }
       }
       else
       {
        QString code = visitor_phaon.wrap_token_with_bridge_code(lt, bridge_code, es_argument_);
        current_form_->add_bridge_element(RPI_Stage_Element_Kinds::Bridge_Symbol, code);
-
-          //MS_Token::check_as(mstk, MS_Token_Kinds::Bridge_Symbol, code));
       }
       if(!skip_increase_lambda_count)
       {
@@ -559,7 +517,7 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
     caon_ptr<RE_Call_Entry> rce = next_node->re_call_entry();
     CAON_PTR_DEBUG(RE_Call_Entry ,rce)
     if( (lambda_count > 0) && !last_nnp_expr )
-      new_form->flags.has_preceder_token = true;//mark_preceder_token();
+      new_form->flags.has_preceder_token = true;
     if(rce->flags.is_deferred)
     {
      new_form->mark_deferred(0);
@@ -585,7 +543,7 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
 
   case RZ_Lisp_Graph_Visitor::Next_Node_Premise::Block_Entry:
    {
-    // "hand-off" the pending_block_info_ from visitor_phaon to this
+    // // "hand-off" the pending_block_info_ from visitor_phaon to this
     caon_ptr<RZ_Lisp_Graph_Block_Info> rbi = visitor_phaon.clear_pending_block_info();
 
     caon_ptr<RPI_Block> new_block = new RPI_Block(pgb_, this);
@@ -655,7 +613,7 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
         CAON_PTR_DEBUG(RZ_Lisp_Graph_Block_Info ,new_rbi)
         if(!new_ben)
         {
-         // should this be handled in find_block_entry_node()? ...
+         // // should this be handled in find_block_entry_node()? ...
          if(new_rbi)
          {
           new_ben = new_rbi->block_entry_node();
@@ -720,7 +678,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
        nb->add_form_from_call_entry_node(visitor_phaon, *cen);
       }
       continue_node = visitor_phaon.leave_nested_block(nn_bi, nn_bi);
-      //
      }
     }
     current_node = nullptr;
@@ -746,24 +703,17 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
      {
       caon_ptr<RE_Node> note_node = fde->note_node();
       QString note = note_node->re_token()->raw_text();
-      //QString signature_code;
 
       if(caon_ptr<RZ_Function_Def_Info> function_def_info =
         visitor_phaon.get_function_def_info_from_entry(fde))
       {
        current_form_->write_fdef_entry();
        function_def_info->write_phr_signature_code(pgb_, current_form_->step_forms());
-
-       //?signature_code  = function_def_info->dynamo_signature_code_string();
-       //?MS_Token note {MS_Token_Kinds::Note_Symbol, ":fdef"};
-       //?current_form_->add_prin1_quoted_form(signature_code, note);
       }
-
-
      }
      else if(fde->kind() == RE_Function_Def_Kinds::Call_Arrow_Async)
      {
-      //?current_form_->add_kauvir_token(":|Wa|");
+      // //?
      }
      else
      {
@@ -772,7 +722,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
       {
        QString signature_code = function_def_info->dynamo_signature_code_string();
        MS_Token note {MS_Token_Kinds::Note_Symbol, ":fdef"};
-       //?current_form_->add_prin1_quoted_form(signature_code, note);
 
        caon_ptr<RE_Node> prior_node = fde->prior_node();
        CAON_PTR_DEBUG(RE_Node ,prior_node)
@@ -785,19 +734,8 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
          function_def_info->write_phr_signature_code(pgb_, current_form_->step_forms());
         }
        }
-
-//?
-//       current_form_->write_fdef_entry();
-//       function_def_info->write_phr_signature_code(pgb_, current_form_->step_forms());
-
-        //?signature_code  = function_def_info->dynamo_signature_code_string();
-        //?MS_Token note {MS_Token_Kinds::Note_Symbol, ":fdef"};
-        //?current_form_->add_prin1_quoted_form(signature_code, note);
       }
      }
-
-//     caon_ptr<RE_Node> prior_node = fde->prior_node();
-//     CAON_PTR_DEBUG(RE_Node ,prior_node)
 
      caon_ptr<RE_Node> fdi_node = fde->node();
      CAON_PTR_DEBUG(RE_Node ,fdi_node)
@@ -888,9 +826,6 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
 void RPI_Block::write_top_level(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTextStream& qts)
 {
  pgb_(tps).make_root_node("!last_block_pre_entry_node");
-
-// _PGB_IR_Build _pgb = pgb_(qsl);
-// _pgb.make_root_node("!last_last_block_pre_entry_node");
  write(tps, qts);
 }
 
@@ -974,8 +909,6 @@ void RPI_Block::write(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTextStream& 
   }
   else if(rbe->flags.elsif_block)
   {
-
   }
  }
-
 }

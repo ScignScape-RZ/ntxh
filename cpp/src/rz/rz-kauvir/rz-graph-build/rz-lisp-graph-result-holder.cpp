@@ -47,13 +47,7 @@ void RZ_Lisp_Graph_Result_Holder::continue_proceed(caon_ptr<tNode> n)
  flags.continue_proceed = true;
  flags.continue_statement = false;
 
-// if(arity_value_node_)
-// {
-//  pass_node_ = arity_node_;// = arity_value_node_;
-//  arity_value_node_ = nullptr;
-// }
-// else
-   pass_node_ = arity_node_;
+ pass_node_ = arity_node_;
  arity_node_ = n;
  if(lead_function_node_)
    return;
@@ -84,8 +78,6 @@ void RZ_Lisp_Graph_Result_Holder::mark_continue_statement(caon_ptr<tNode> n, cao
  flags.continue_statement = true;
  arity_node_ = n;
  arity_value_node_ = vn;
-
- //valuer_.define_proxy(n, vn);
 }
 
 void RZ_Lisp_Graph_Result_Holder::mark_continue_statement(caon_ptr<tNode> n)

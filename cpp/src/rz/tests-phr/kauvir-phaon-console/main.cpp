@@ -12,26 +12,12 @@
 #include "phr-env/phr-env.h"
 #include "phr-fn-doc/phr-fn-doc.h"
 
-//#include "kauvir-code-model/kauvir-code-model.h"
-//#include "kauvir-code-model/kcm-channel-group.h"
-//#include "kcm-scopes/kcm-scope-system.h"
-
-//#include "PhaonLib/phaon-namespace.h"
-//#include "PhaonLib/phaon-class.h"
-//#include "PhaonLib/phaon-function.h"
-//#include "PhaonLib/phaon-symbol-scope.h"
 
 #include "relae-graph/relae-caon-ptr.h"
 
 #include "test-functions.h"
 
-//#include "PhaonLib/phaon-channel-group-table.h"
-//#include "PhaonLib/phaon-runner.h"
-
-//
 #include "phr-direct-eval/phr-direct-eval.h"
-
-//#include "kcm-command-package/kcm-command-package.h"
 
 #include "phaon-lib/phr-runner.h"
 
@@ -41,10 +27,6 @@
 
 #include "kans.h"
 
-//USING_KANS(KCM)
-//USING_KANS(Phaon)
-//USING_KANS(PhaonLib)
-
 #include "phaon-ir/phaon-ir.h"
 #include "phaon-ir/channel/phr-channel-system.h"
 
@@ -53,17 +35,9 @@ USING_KANS(Phaon)
 
 int main(int argc, char* argv[])
 {
-// PHR_Runner phr;
-//// Phaon_Namespace phn("TestNS");
-//// Phaon_Class phc("Test_Class", &phn);
-// PHR_Code_Model& pcm = phr.get_pcm();
-// pcm.set_direct_eval_fn(&phr_direct_eval);
-
  PHR_Channel_System pcs;
 
  PhaonIR phr(&pcs);
-// PHR_Runner phrn;
-// phrn.
 
  phr.init_type_system();
  phr.init_type("fbase", DEFAULT_PTR_BYTE_CODE);
@@ -88,12 +62,9 @@ int main(int argc, char* argv[])
 
  pcm.set_direct_eval_fn(&phr_direct_eval);
 
-// pcm.create_and_register_type_object("PHR_Fn_Doc");
  pcm.create_and_register_type_object("PHR_Fn_Doc*");
 
- PHR_Env* penv = new PHR_Env(&pcm);
  QString penv_typename = "PHR_Env*";
- //??insert_envv(&penv_typename, penv);
 
  PHR_Runtime_Scope prs(nullptr);
 
@@ -107,16 +78,6 @@ int main(int argc, char* argv[])
  init_test_functions(phr, pcm, *phr.table(), pss);
 
  phr.hold_symbol_scope(&pss);
-
-
-// PhaonIR& phr, PHR_Code_Model& pcm,
-//   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss
-
-// PHR_Symbol_Scope pss(nullptr);
-// init_test_functions(phr, pcm, phr.get_table(), pss);
-
-//? phr.get_phaon_scope_queue().push_front(&pss);
-
  PHR_Command_Package pcp(&pcs, phr.type_system());
  pcp.parse_from_file( DEFAULT_KPH_FOLDER "/test/raw/t1.kph" );
 
@@ -127,11 +88,7 @@ int main(int argc, char* argv[])
  pcp1.absorb_data(qba);
 
 
- PHR_Channel_Group& pcg = pcp1;//(cm.channel_names());
-
-//?
-// pcp1.init_channel_group(pcm, pcg);
-// phr.run(pcg);
+ PHR_Channel_Group& pcg = pcp1;
 
  return 0;
 

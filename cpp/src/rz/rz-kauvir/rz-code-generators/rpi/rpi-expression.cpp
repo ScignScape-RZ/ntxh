@@ -50,53 +50,7 @@ void RPI_Expression::write_as_statement(QTextStream& qts, caon_ptr<RPI_Stage_For
   else if(rai.vkind() == RPI_Assignment_Value_Kinds::Expression)
   {
    form_.write_assignment_initialization_via_expression(qts, prior);
-  // form_.inner_elements()
-  //pgb
-   //qts << "\n ;;- tb_\n(kb::write-assignment-initialization-via-token ";
   }
-
-#ifdef HIDE
-  MS_Token& mst = form_.assignment_token();
-
-  MS_Token askt = MS_Token {MS_Token_Kinds::Assignment_Kind, assignment_token_};
-
-  if(mst.kind == MS_Token_Kinds::Scoped_Symbol_Literal_Init)
-  {
-   mst.kind = MS_Token_Kinds::Scoped_Symbol;
-   qts << "\n ;;- tb_\n(kb::write-assignment-initialization-via-token ";
-   qts << askt.encode();
-   qts << ' ';
-   qts << mst.encode();
-   write(qts);
-   qts << "\n) ;;- _tb";
-  }
-  else
-  {
-   QString s1 = form_.get_s1_assignment_check();
-
-   if(s1 == "/->")
-   {
-    qts << "\n ;;- tb_\n(kb::write-s1-assignment-expression ";
-    form_.mark_as_s1_assignment_preempts_s0();
-   }
-   else
-   {
-    qts << "\n ;;- tb_\n(kb::write-s0-expression ";
-   }
-
-   qts << askt.encode();
-   qts << ' ';
-   write(qts);
-     // nested expression?
-
-   form_.check_write_first_nested_is_assignment_leave(qts);
-
-   qts << "\n(kb::write-promote-type-binding-expression " << mst.encode() << ")";
-  }
-
-  qts << "\n(kb::write-cmd-eval)";
-  qts << "\n(kb::write-statement-clear)";
-#endif HIDE
  }
 }
 
@@ -112,7 +66,7 @@ QString RPI_Expression::encode_assignment_token()
  }
  else
  {
-  // others? ...
+  // // others? ...
   return "?";
  }
 }

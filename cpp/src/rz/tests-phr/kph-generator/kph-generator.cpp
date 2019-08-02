@@ -16,17 +16,11 @@
 
 #include "phaon-ir/channel/phr-carrier.h"
 
-
-//#include "kauvir-code-model/kcm-channel-group.h"
-//#include "kauvir-code-model/kcm-type-object.h"
-//#include "kcm-command-package/kcm-command-package.h"
-
 #include "textio.h"
 
 #include <QDebug>
 #include <QDataStream>
 
-//USING_KANS(Phaon)
 USING_KANS(TextIO)
 
 USING_KANS(Phaon)

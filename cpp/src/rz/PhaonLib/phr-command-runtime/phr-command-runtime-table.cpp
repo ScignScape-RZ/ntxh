@@ -12,12 +12,8 @@
 
 #include "phaon-ir/scopes/phr-runtime-scope.h"
 
-//#include "kans.h"
 
 #include <QQueue>
-
-//USING_KANS(Kauvir)
-//USING_KANS(CMD)
 
 USING_KANS(Phaon)
 
@@ -37,8 +33,6 @@ void PHR_Command_Runtime_Table::add_declared_function_package(QString name, PHR_
 {
  strip_hyphens(name);
  add_function(name, phf);
- //runtime_scope_->add_function_vector_value();
- //(*phr)[name].push_back(phf);
 }
 
 

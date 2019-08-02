@@ -39,7 +39,6 @@ USING_RZNS(RECore)
 #include "rzns.h"
 USING_RZNS(RECore)
 
-//?USING_RZNS(Text)
 
 RE_Graph_Build::RE_Graph_Build(RE_Document* d,
   RE_Parser& p, RE_Graph& g)
@@ -654,6 +653,7 @@ void RE_Graph_Build::add_run_token(QString prefix, QString raw_text,
  else if(tf == Token_Formations::Strong_Do_Plus_Block)
  {
   token->flags.precedes_ghost_scope = true;
+
   // // do we need this, for other potential /.../ formations?
    //?token->flags.strong_ghost_scope = true;
  }

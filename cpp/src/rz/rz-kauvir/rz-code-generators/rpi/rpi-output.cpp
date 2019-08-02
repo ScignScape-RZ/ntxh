@@ -29,9 +29,7 @@ void RPI_Output::init_top_level_block(PGB_IR_Build& pgb)
 void RPI_Output::build_phaon_graph(PGB_IR_Build& pgb)
 {
  init_top_level_block(pgb);
- //caon_ptr<PHR_Graph_Node> n =
 
- //?pgb.make_root_node("!current_node");
 
  top_level_block_->scan_top_level(visitor_phaon_);
 

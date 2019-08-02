@@ -128,7 +128,6 @@ caon_ptr<RE_Node> RE_Call_Entry::get_next_entry_node(
 
  if(ref_node_ == parent_entry_node_)
  {
-  //?
   unwind_count = 1;
   next_call_entry = unwind(unwind_count);
   return nullptr;

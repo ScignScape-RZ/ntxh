@@ -6,19 +6,6 @@
 
 #include "test-functions.h"
 
-
-//#include "kauvir-code-model/kauvir-code-model.h"
-//#include "kauvir-code-model/kcm-channel-group.h"
-//#include "kauvir-type-system/kauvir-type-system.h"
-//#include "kauvir-code-model/kcm-callable-value.h"
-//#include "kcm-command-runtime/kcm-command-runtime-table.h"
-//#include "kcm-command-runtime/kcm-command-runtime-router.h"
-//#include "kcm-lisp-bridge/kcm-lisp-eval.h"
-
-//#include "PhaonLib/phaon-channel-group-table.h"
-//#include "PhaonLib/phaon-symbol-scope.h"
-//#include "PhaonLib/phaon-function.h"
-
 #include "phaon-ir/types/phr-type-system.h"
 #include "phaon-ir/phr-code-model.h"
 #include "phaon-ir/channel/phr-channel-group.h"
@@ -30,19 +17,11 @@
 
 #include "phaon-ir/scopes/phr-scope-system.h"
 
-//?#include "phr-fn-doc/phr-fn-doc.h"
-
 #include <QTextStream>
 
 #include <QDebug>
 
 #include <QEventLoop>
-
-
-//?USING_KANS(KCL)
-//?USING_KANS(PhaonLib)
-
-//?KANS_(Phaon)
 
 USING_KANS(Phaon)
 

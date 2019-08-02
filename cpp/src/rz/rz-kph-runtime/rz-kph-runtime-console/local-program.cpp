@@ -24,14 +24,12 @@
 #include "kph-generator/kph-generator-substitutions.h"
 #include "kph-generator/kph-generator.h"
 
-
-//#include "phaon-lib/phr-runner.h"
+#include <QDebug>
 
 extern void* insert_envv(void* kind, void* test);
 
-#include <QDebug>
+USING_KANS(Phaon)
 
-//#ifdef HIDE
 void local_program1(PhaonIR& phr)
 {
  phr.init_type_system();
@@ -59,11 +57,7 @@ void local_program1(PhaonIR& phr)
 
  phr.init_table();
 
-// PHR_Runner phrn;
-// phrn.
-
  init_test_functions(phr, pcm, *phr.table(), pss);
- //phrn.get_runtime_scope_queue().push_front(&prs);
 
  phr.init_program_stack();
 
@@ -73,7 +67,6 @@ void local_program1(PhaonIR& phr)
 
  phr.push_carrier_stack("fground");
  phr.hold_type_by_name("fbase");
- //?phr.push_carrier_raw_value("&prn");
  phr.push_carrier_symbol("&prn");
 
  phr.push_carrier_stack("lambda");
@@ -90,9 +83,7 @@ void local_program1(PhaonIR& phr)
  phr.reset_program_stack();
 
 }
-//#endif // HIDE
 
-//#ifdef HIDE
 void local_program(PhaonIR& phr, QString phrf)
 {
  phr.init_type_system();
@@ -126,11 +117,8 @@ void local_program(PhaonIR& phr, QString phrf)
 
  pcm.set_direct_eval_fn(&phr_direct_eval);
 
-// pcm.create_and_register_type_object("PHR_Fn_Doc");
  pcm.create_and_register_type_object("PHR_Fn_Doc*");
  pcm.create_and_register_type_object("PHR_Fn_Doc_Multi*");
-
-// ScignStage_Ling_Dialog*
 
  PHR_Env* penv = new PHR_Env(&pcm);
  QString penv_typename = "PHR_Env*";
@@ -177,155 +165,11 @@ void local_program(PhaonIR& phr, QString phrf)
 
  phr.init_table();
 
-// PHR_Runner phrn;
-// phrn.
-
  init_test_functions(phr, pcm, *phr.table(), pss);
 
  phr.hold_symbol_scope(&pss);
- //phrn.get_runtime_scope_queue().push_front(&prs);
+
  // //  setup
-
- //phr.read_local_program(DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr");
-//DEFAULT_PHR_FOLDER "/pgb/t1.gen.pgb.phr"
- //
  phr.read_local_program(phrf); //RZ_DIR "/phaon/cc/t1.rz.gen.pgb.phr");
-
- //  phr.read_local_program(DEFAULT_PHR_FOLDER "/t1.phr");
- //phr.read_local_program(DEFAULT_PHR_FOLDER "/t12.phr");
-#ifdef HIDE
-
- phr.init_program_stack();
- phr.enter_lexical_scope();
- phr.reset_program_stack();
-
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- phr.push_carrier_symbol("&prn");
-
- phr.push_unwind_scope(1, "result");
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- phr.push_carrier_raw_value("#+");
-
- phr.push_carrier_stack("lambda");
- phr.hold_type_by_name("u4");
- phr.push_carrier_raw_value("2");
-
- phr.push_unwind_scope(1, "result");
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- phr.push_carrier_raw_value("#+");
-
- phr.push_carrier_stack("lambda");
- phr.hold_type_by_name("u4");
- phr.push_carrier_raw_value("7");
- phr.push_carrier_raw_value("9");
-
- phr.push_carrier_stack("result");
- phr.index_channel_group();
- phr.coalesce_channel_group();
- phr.pop_unwind_scope();
- phr.temp_anchor_channel_group();
-
- phr.hold_type_by_name("u4");
- phr.push_carrier_expression();
- phr.coalesce_channel_group();
- phr.pop_unwind_scope();
- phr.temp_anchor_channel_group();
-
-
- phr.evaluate_channel_group();
-
- phr.delete_temps();
- phr.delete_retired();
- phr.clear_temps();
-
- phr.reset_program_stack();
-
-#endif
-
-
-#ifdef HIDE
-
- phr.init_program_stack();
-
- phr.enter_lexical_scope();
-
- phr.reset_program_stack();
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- phr.push_carrier_raw_value("#+");
-
- phr.push_carrier_stack("lambda");
- phr.hold_type_by_name("u4");
- phr.push_carrier_raw_value("2");
-
- phr.push_unwind_scope(1);
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- phr.push_carrier_raw_value("#+");
-
- phr.push_carrier_stack("lambda");
- phr.hold_type_by_name("u4");
- phr.push_carrier_raw_value("7");
- phr.push_carrier_raw_value("9");
-
- phr.push_carrier_stack("result");
- phr.index_channel_group();
- phr.coalesce_channel_group();
-
- phr.pop_unwind_scope();
- phr.temp_anchor_channel_group();
-
- phr.hold_type_by_name("u4");
- phr.push_carrier_expression();
- phr.coalesce_channel_group();
- phr.copy_anchor_channel_group("x", "result");
-
- phr.evaluate_channel_group();
-
- phr.delete_temps();
- phr.delete_retired();
- phr.clear_temps();
-
- phr.reset_program_stack();
-
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- phr.push_carrier_raw_value("#+");
-
- phr.push_carrier_stack("lambda");
- phr.hold_type_by_name("u4");
- phr.push_carrier_raw_value("22");
- phr.push_carrier_symbol("x");
- phr.coalesce_channel_group();
-
- phr.evaluate_channel_group();
-
- phr.delete_temps();
- phr.delete_retired();
- phr.clear_temps();
-
- phr.reset_program_stack();
-
- phr.push_carrier_stack("fground");
- phr.hold_type_by_name("fbase");
- //?phr.push_carrier_raw_value("&prn");
- phr.push_carrier_symbol("&prn");
-
- phr.push_carrier_stack("lambda");
- phr.hold_type_by_name("u4");
- phr.push_carrier_symbol("x");
-
- phr.coalesce_channel_group();
- phr.evaluate_channel_group();
-#endif
 }
 

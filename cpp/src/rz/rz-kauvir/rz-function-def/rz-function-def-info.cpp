@@ -630,7 +630,7 @@ void RZ_Function_Def_Info::write_phr_signature_code(PGB_IR_Build& pgb,
   QList<PGB_IR_Build::Text_With_Purpose>& step_forms)
 {
  pgb.hold_token("sig-node", MG_Token_Kinds::Arg_Ledger_Target);
- //pgb(step_forms).
+
  write_phr_signature_code_by_channel_type(pgb, step_forms, Channel_Types::Sigma);
  write_phr_signature_code_by_channel_type(pgb, step_forms, Channel_Types::Lambda);
  write_phr_signature_code_by_channel_type(pgb, step_forms, Channel_Types::Return);
@@ -732,11 +732,6 @@ void RZ_Function_Def_Info::write_phr_signature_code_channel_entry(PGB_IR_Build& 
 void RZ_Function_Def_Info::write_phr_signature_code_for_empty_channel(PGB_IR_Build& pgb,
   QList<PGB_IR_Build::Text_With_Purpose>& step_forms, QString carrier_kind)
 {
-//? pgb(step_forms).macro(QStringList{"add_empty_channel", carrier_kind});
-
- // QString line =
-//   QString("(pgb::add_empty_channel| )").arg(carrier_kind);
- //return result;
 }
 
 void RZ_Function_Def_Info::write_phr_signature_code_for_type(PGB_IR_Build& pgb,
@@ -744,10 +739,6 @@ void RZ_Function_Def_Info::write_phr_signature_code_for_type(PGB_IR_Build& pgb,
   QString carrier_kind, QString type_name)
 {
  pgb.hold_token(type_name, MG_Token_Kinds::Sig_Type);
-// QString result =
-//   QString("\n(ka::kc :|kcg_add_%1_carrier_via_type_name| kcg \"%2\")").arg(carrier_kind).arg(type_name);
-// return result;
-//? pgb(step_forms).macro(QStringList{"add_signature_carrier_via_type_name", carrier_kind, type_name, "__"});
 }
 
 void RZ_Function_Def_Info::write_phr_signature_code_for_symbol(PGB_IR_Build& pgb,

@@ -85,11 +85,11 @@ void RE_Graph::report_from_node(QTextStream& qts,
   // //   For debugging...
   QString label = node.label();
 
-  // //  Somehow, this connector is causing trouble
-  if(connector.case_label == RE_Connectors_Case_Labels::Run_Fundef_Map_Key_Sequence)
-  {
-   //?return;
-  }
+//  // //  Somehow, this connector is causing trouble
+//  if(connector.case_label == RE_Connectors_Case_Labels::Run_Fundef_Map_Key_Sequence)
+//  {
+//   //?return;
+//  }
 
   // //  This connector is tangential ...
   if(connector.case_label == RE_Connectors_Case_Labels::Assignment_Annotation)
@@ -124,5 +124,5 @@ void RE_Graph::report_from_node(QTextStream& qts,
   report_from_node(qts, target, indent + 1);
   qts << "\n" << padding << "....";
  });
- //report_from_node(root_node_);
+
 }

@@ -1,3 +1,4 @@
+#ifdef HIDE
 
 //           Copyright Nathaniel Christen 2019.
 //  Distributed under the Boost Software License, Version 1.0.
@@ -89,7 +90,6 @@ void RZ_Phaon_Block::scan(PGB_IR_Build& pgb, RZ_Graph_Visitor_Phaon& visitor_pha
   {
    add_statement_from_call_entry_node(pgb, visitor_phaon,
      *cen, "!current_node", rbe);
-   //?add_form_from_call_entry_node(visitor_phaon, *cen);
   }
 
   caon_ptr<RE_Node> current_node = cen;
@@ -120,15 +120,12 @@ void RZ_Phaon_Block::add_statement_from_call_entry_node(PGB_IR_Build& pgb,
  {
   CAON_PTR_DEBUG(RE_Node ,start_node)
 
-  //caon_ptr<PHR_Graph_Node> pen = nullptr;
   if(caon_ptr<RZ_Lisp_Token> rzlt = start_node->lisp_token())
   {
    if(rzlt->raw_text().startsWith('#'))
      pgb(header_step_forms_).make_token_node(rzlt->raw_text().prepend('$'), "&fsym-node");
-     //phgb.make_token_node({MG_Token_Kinds::Raw_Value, rzlt->raw_text()});
    else
      pgb(header_step_forms_).make_token_node(rzlt->raw_text().prepend('@'), "&fsym-node");
-     //pen = phgb.make_token_node({MG_Token_Kinds::Raw_Symbol, rzlt->raw_text()});
 
    if(rbe)
      pgb(header_step_forms_).add_block_entry_node(pgbs, "&fsym-node", "!last_block_entry_node");
@@ -145,7 +142,7 @@ void RZ_Phaon_Block::add_statement_from_call_entry_node(PGB_IR_Build& pgb,
   while(current_node)
   {
    caon_ptr<RE_Node> next_node = visitor_phaon.get_next_node(current_node, nnp);
-//  CAON_PTR_DEBUG(RE_Node ,current_node)
+
    CAON_PTR_DEBUG(RE_Node ,next_node)
 
    switch(nnp)
@@ -174,22 +171,18 @@ void RZ_Phaon_Block::add_statement_from_call_entry_node(PGB_IR_Build& pgb,
   {
    CAON_PTR_DEBUG(RZ_Expression_Review ,rer)
    CAON_DEBUG_NOOP
-   //current_form_->set_expression_review(rer);
   }
 
   if(caon_ptr<RZ_Code_Statement> st = visitor_phaon.get_code_statement_from_statement_entry_node(start_node))
   {
    CAON_PTR_DEBUG(RZ_Code_Statement ,st)
-//   code_statements_.push_back(st);
-//   current_form_->set_code_statement(st);
    visitor_phaon.check_assignment_annotation(start_node, st);
    CAON_DEBUG_NOOP
   }
   else
   {
-   //code_statements_.push_back(nullptr);
+   // //?
   }
-//?  scan_form_from_start_node(visitor_phaon, *start_node);
  }
 }
 
@@ -200,7 +193,6 @@ void RZ_Phaon_Block::add_form_from_call_entry_node(RZ_Graph_Visitor_Phaon& visit
  if(current_form_)
  {
   // i.e., an expression inside a form
-
  }
  else
  {
@@ -290,13 +282,11 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
   case RZ_Graph_Visitor_Phaon::Special_Form_Flags::Formula:
    {
     current_form_->init_formula_expression(tok->raw_text());
-    //?
    }
    break;
   case RZ_Graph_Visitor_Phaon::Special_Form_Flags::Assignment:
    {
     current_form_->init_assignment_expression(tok->raw_text());
-    //?
    }
    break;
   case RZ_Graph_Visitor_Phaon::Special_Form_Flags::N_A:
@@ -370,7 +360,7 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
 
  while(current_node)
  {
-  // nnp is read-write in visitor_phaon.get_next_node(...)
+  // // nnp is read-write in visitor_phaon.get_next_node(...)
   caon_ptr<RE_Node> next_node = visitor_phaon.get_next_node(current_node, nnp);
 
   CAON_PTR_DEBUG(RE_Node ,current_node)
@@ -414,11 +404,6 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
      {
       skip_increase_lambda_count = true;
       QString ht = lt;
-
-      // // do we need this?
-      //ht.prepend(":|s,");
-      //ht.append('|');
-
       held_token_ = {MS_Token_Kinds::Sigma_Symbol, ht};
       lt.clear();
      }
@@ -428,10 +413,6 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
 
       // // do we need this?
       //lt.replace('-', '_');
-
-      // // do we need this?
-      //lt.prepend(":|&,");
-      //lt.append('|');
      }
 
      else if(next_tok->flags.is_symbol_declaration ||
@@ -461,7 +442,7 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
        if(next_tok->flags.is_numeric_literal)
        {
         current_form_->add_insert_token({MS_Token_Kinds::Kernel_Type_Symbol, "u32"});
-        current_form_->add_literal_token(MS_Token::check_as(mstk, MS_Token_Kinds::Literal, lt));//{MS_Token_Kinds::Literal, lt});
+        current_form_->add_literal_token(MS_Token::check_as(mstk, MS_Token_Kinds::Literal, lt));
        }
        else if(next_tok->flags.is_string_literal)
        {
@@ -563,8 +544,6 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
       }
      }
      new_block->add_form_from_call_entry_node(visitor_phaon, *cen);
-     //?current_form_->add_nested_block(new_block);
-
 
      caon_ptr<RZ_Lisp_Graph_Block_Info> nn_bi;
      caon_ptr<RE_Node> continue_node = visitor_phaon.leave_nested_block(rbi, nn_bi);
@@ -629,11 +608,9 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
          {
           CAON_PTR_DEBUG(RE_Node ,new_cen)
           new_block->add_form_from_call_entry_node(visitor_phaon, *new_cen);
-          //?current_form_->add_nested_block(new_block);
          }
         }
        }
-
       }
 
       else if(nrbe->flags.else_block)
@@ -659,11 +636,8 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
          {
           CAON_PTR_DEBUG(RE_Node ,new_cen)
           new_block->add_form_from_call_entry_node(visitor_phaon, *new_cen);
-          //?current_form_->add_nested_block(new_block);
          }
         }
-
-
         // handle the expression ...
        }
       }
@@ -679,7 +653,6 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
        nb->add_form_from_call_entry_node(visitor_phaon, *cen);
       }
       continue_node = visitor_phaon.leave_nested_block(nn_bi, nn_bi);
-      //
      }
     }
     current_node = nullptr;
@@ -706,12 +679,10 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
        MS_Token note {MS_Token_Kinds::Note_Symbol, ":fdef"};
        current_form_->add_prin1_quoted_form(signature_code, note);
       }
-
-
      }
      else if(fde->kind() == RE_Function_Def_Kinds::Call_Arrow_Async)
      {
-      //?current_form_->add_kauvir_token(":|Wa|");
+      // //?
      }
      else
      {
@@ -769,8 +740,6 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
         CAON_PTR_DEBUG(RE_Node ,next_statement_node)
         new_block->add_form_from_call_entry_node(visitor_phaon, *next_statement_node);
        }
-
-       //?current_form_->add_nested_block(new_block);
       }
      }
     }
@@ -795,7 +764,6 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
     if(caon_ptr<RE_Node> cen = visitor_phaon.call_entry_node_from_block_entry_node(next_node))
     {
      new_block->add_form_from_call_entry_node(visitor_phaon, *cen);
-     //?current_form_->add_nested_block(new_block);
     }
 
     current_node = nullptr;
@@ -813,39 +781,37 @@ void RZ_Phaon_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon&
 
 void RZ_Phaon_Block::build_phaon_graph(PGB_IR_Build& pgb)
 {
- if(parent_block_)
- {
-  if(es_argument_.isEmpty())
-  {
-   //qts << "\n(kb::write-enter-scope)\n";
-  }
-  else
-  {
-   // // same ?
-   //qts << "\n(kb::write-enter-scope)\n";
-  }
- }
- else
- {
-  //qts << "\n(kb::write-file-start)\n";
- }
+// if(parent_block_)
+// {
+//// //?
+////  if(es_argument_.isEmpty())
+////  {
+////   //qts << "\n(kb::write-enter-scope)\n";
+////  }
+////  else
+////  {
+////   // // same ?
+////   //qts << "\n(kb::write-enter-scope)\n";
+////  }
+// }
+// else
+// {
+//  //qts << "\n(kb::write-file-start)\n";
+// }
 
+// for(caon_ptr<RZ_Dynamo_Form> rkf : forms_)
+// {
+//  //rkf->write_as_statement(qts);
+// }
 
- //qts << entry_lisp_code_;
-
- for(caon_ptr<RZ_Dynamo_Form> rkf : forms_)
- {
-  //rkf->write_as_statement(qts);
- }
-
- if(parent_block())
- {
-  //qts << "\n(kb::write-leave-scope)\n";
- }
- else
- {
-  //qts << "\n\n(kb::write-file-end)\n";
- }
+// if(parent_block())
+// {
+//  //qts << "\n(kb::write-leave-scope)\n";
+// }
+// else
+// {
+//  //qts << "\n\n(kb::write-file-end)\n";
+// }
 
  caon_ptr<RE_Block_Entry> rbe = get_block_entry();
 
@@ -867,3 +833,4 @@ void RZ_Phaon_Block::build_phaon_graph(PGB_IR_Build& pgb)
  }
 
 }
+#endif HIDE

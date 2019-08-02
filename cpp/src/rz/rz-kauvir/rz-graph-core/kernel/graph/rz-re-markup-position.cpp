@@ -474,13 +474,11 @@ void RE_Markup_Position::add_call_entry(bool is_statement_entry, QString prefix)
     if(caon_ptr<RE_Node> old_do_node = rq_.Run_Call_Entry(old_closed_do_entry_node))
     {
      CAON_PTR_DEBUG(RE_Node ,old_do_node)
-     //old_do_node << fr_/rq_.Run_Fundef_Arrow_Sequence >> current_node_;
      old_do_node->debug_connections();
      if(caon_ptr<RE_Node> old_arrow_node = rq_.Run_Call_Sequence(old_do_node))
      {
       CAON_PTR_DEBUG(RE_Node ,old_arrow_node)
       old_arrow_node << fr_/rq_.Run_Fundef_Arrow_Sequence >> current_node_;
-      //CAON_DEBUG_NOOP
      }
     }
    }
@@ -726,6 +724,7 @@ void RE_Markup_Position::add_arrow_node(caon_ptr<RE_Node> token_node, RE_Functio
    rbe->flags.function_definition = true;
    rbe->flags.async = true;
    break;
+// //  todo ...
 //  case RE_Function_Def_Kinds::Call_Arrow_Async:
 //   rbe->flags.function_definition = true;
 //   rbe->flags.async = true;
@@ -1396,14 +1395,12 @@ void RE_Markup_Position::add_token_node(caon_ptr<RE_Node> token_node)
     CAON_PTR_DEBUG(RE_Node ,current_closed_do_entry_node_)
     CAON_PTR_DEBUG(RE_Node ,token_node)
 
-    //?current_closed_do_entry_node_ << fr_/rq_.Run_Cross_Sequence >> token_node;
     pConnector = &rq_.Run_Cross_Sequence;
     current_node_ = current_closed_do_entry_node_;
 
     if(caon_ptr<RE_Node> old_do_node = rq_.Run_Call_Entry(current_closed_do_entry_node_))
     {
      CAON_PTR_DEBUG(RE_Node ,old_do_node)
-     //old_do_node << fr_/rq_.Run_Fundef_Arrow_Sequence >> current_node_;
      old_do_node->debug_connections();
      if(caon_ptr<RE_Node> old_arrow_node = rq_.Run_Call_Sequence(old_do_node))
      {
@@ -2076,8 +2073,7 @@ void RE_Markup_Position::leave_lexical_scope(int length, QString suffix)
   {
    read_chiefs();
    check_hold_closed_do_entry();
-   //CAON_PTR_DEBUG(RE_Call_Entry ,current_closed_do_entry_)
-   //close_statement();
+
    CAON_PTR_DEBUG(RE_Node ,current_closed_do_entry_node_)
    {
     CAON_PTR_DEBUG(RE_Node ,current_node_)
