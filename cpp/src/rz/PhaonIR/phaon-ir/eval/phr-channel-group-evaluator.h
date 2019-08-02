@@ -10,6 +10,10 @@
 
 #include <QMap>
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Channel_Group;
 class PhaonIR;
 class PHR_Channel;
@@ -44,5 +48,7 @@ public:
 
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_CHANNEL_GROUP_EVALUATOR__H

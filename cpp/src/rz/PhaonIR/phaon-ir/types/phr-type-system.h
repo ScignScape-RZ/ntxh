@@ -11,6 +11,10 @@
 #include <QMap>
 #include <QString>
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Type;
 
 class PHR_Type_System
@@ -27,5 +31,7 @@ public:
 
 
 };
+
+_KANS(Phaon)
 
 #endif //  PHR_TYPE_SYSTEM__H

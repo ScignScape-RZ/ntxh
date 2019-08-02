@@ -13,6 +13,11 @@
 
 #include "phaon-ir/channel/phr-channel-group.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
+
 class PHR_Type;
 class PHR_Type_Object;
 class PHR_Channel_System;
@@ -119,5 +124,8 @@ public:
 
 
 };
+
+_KANS(Phaon)
+
 
 #endif //  PHR_COMMAND_PACKAGE__H

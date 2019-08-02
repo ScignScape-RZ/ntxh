@@ -18,11 +18,14 @@
 #include <QObject>
 #include <QMetaObject>
 
-//#include "kans.h"
+#include "kans.h"
 
 #include "accessors.h"
 
 //KANS_(CMD)
+
+KANS_(Phaon)
+
 
 class PHR_Command_Runtime_Argument
 {
@@ -72,5 +75,6 @@ public:
 };
 
 //_KANS(CMD)
+_KANS(Phaon)
 
 #endif //PHR_COMMAND_RUNTIME_ARGUMENT__H

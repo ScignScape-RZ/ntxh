@@ -11,6 +11,9 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
 
 class PhaonIR;
 class PHR_Channel_Group;
@@ -28,5 +31,7 @@ public:
  PHR_Channel_Group_Evaluator* run();
 
 };
+
+_KANS(Phaon)
 
 #endif //PHR_EXPRESSION_OBJECT__H

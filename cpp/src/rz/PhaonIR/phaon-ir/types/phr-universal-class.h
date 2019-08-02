@@ -15,6 +15,9 @@
 
 #include <QVector>
 
+KANS_(Phaon)
+
+
 class PHR_Universal_Class
 {
 };
@@ -437,6 +440,7 @@ TEMP_MACRO(s, QString, 0, s)
 
 #undef TEMP_MACRO
 
+_KANS(Phaon)
 
 #endif //PHR_UNIVERSAL_CLASS__H
 

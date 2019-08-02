@@ -7,6 +7,8 @@
 
 #include "phr-channel-system.h"
 
+USING_KANS(Phaon)
+
 
 PHR_Channel_System::PHR_Channel_System()
 {

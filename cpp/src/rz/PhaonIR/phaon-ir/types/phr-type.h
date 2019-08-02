@@ -11,7 +11,12 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
 class QMetaObject;
+
+KANS_(Phaon)
+
 class PHR_Channel_Group;
 
 class PHR_Type
@@ -41,5 +46,7 @@ public:
  ACCESSORS(int ,qmetatype_ptr_code)
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_TYPE__H

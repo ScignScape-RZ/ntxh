@@ -56,13 +56,10 @@ LIBS += -L$$TARGETSDIR -lkph-generator -lphaon-ir \
 #LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-code-model -lkauvir-type-system \
 #   -lkcm-command-package -lkcm-direct-eval -lkcm-scopes -lkauvir-phaon -lkcm-command-runtime
 
-
-contains(CHOICE_FEATURES, "kcm_ecl") \#/
+contains(CHOICE_FEATURES, "kph") \#/
 {
- LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
- include(../../../../find-ecl-sexp.pri)
- LIBS += -L$$ECL_DIR -lecl
- LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
+ message(DEFINE\'ing USING_KPH)
+ DEFINES += USING_KPH
 }
 
 

@@ -16,6 +16,7 @@
 
 //KANS_(PhaonLib)
 
+KANS_(Phaon)
 
 class PHR_Function
 {
@@ -80,6 +81,7 @@ public:
 
 
 //_KANS(PhaonLib)
+_KANS(Phaon)
 
 
 #endif //PHR_FUNCTION__H

@@ -12,6 +12,10 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Carrier;
 
 class PHR_Carrier_Stack : public QStack<PHR_Carrier*>
@@ -29,5 +33,8 @@ public:
 
 
 };
+
+_KANS(Phaon)
+
 
 #endif // PHR_CARRIER_STACK__H

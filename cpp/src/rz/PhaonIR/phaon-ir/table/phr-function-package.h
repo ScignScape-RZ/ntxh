@@ -22,6 +22,9 @@
 
 //KANS_(KCM)
 
+KANS_(Phaon)
+
+
 class PHR_Channel_Group;
 class PHR_Type_Object;
 
@@ -51,6 +54,7 @@ public:
 
 
 //_KANS(KCM)
+_KANS(Phaon)
 
 
 #endif //PHR_FUNCTION_PACKAGE__H

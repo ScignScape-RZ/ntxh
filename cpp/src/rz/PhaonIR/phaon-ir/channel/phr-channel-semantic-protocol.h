@@ -12,6 +12,9 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
 
 
 class PHR_Channel_Semantic_Protocol
@@ -36,5 +39,7 @@ public:
   return lhs.name_ < rhs.name_;
  }
 };
+
+_KANS(Phaon)
 
 #endif // PHR_CHANNEL_SEMANTIC_PROTOCOL__H

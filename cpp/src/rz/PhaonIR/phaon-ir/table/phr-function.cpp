@@ -7,13 +7,14 @@
 
 #include "phr-function.h"
 
-//#include "kans.h"
+#include "kans.h"
 
 #include <QString>
 #include <QDebug>
 
 //USING//_KANS(PhaonLib)
 
+USING_KANS(Phaon)
 
 PHR_Function::PHR_Function(void* raw_ptr)
 {

@@ -46,6 +46,8 @@
 
 //KANS_(PhaonLib)
 
+KANS_(Phaon)
+
 class PHR_Type_System;
 class PHR_Channel_Group;
 class PHR_Function_Package;
@@ -98,5 +100,7 @@ public:
 };
 
 //_KANS(PhaonLib)
+_KANS(Phaon)
+
 
 #endif //PHR_CHANNEL_GROUP_TABLE__H

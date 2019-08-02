@@ -13,6 +13,10 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Type;
 
 class PHR_Cocyclic_Type
@@ -30,5 +34,7 @@ public:
 
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_COCYCLIC_TYPE__H

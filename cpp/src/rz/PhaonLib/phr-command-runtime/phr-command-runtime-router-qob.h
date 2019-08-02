@@ -51,6 +51,7 @@
     CASE_TEMP_MACRO(1, TYPE) \
    } \
 
+KANS_(Phaon)
 
 
 struct Do_Invoke_Method__Cast_Schedule__QOB
@@ -638,6 +639,8 @@ struct Do_Invoke_Method__Cast_Schedule__QOB__Cast_<i> \
 TEMP_MACRO(0)
 TEMP_MACRO(1)
 TEMP_MACRO(2)
+
+_KANS(Phaon)
 
 #endif //PHR_COMMAND_RUNTIME_ROUTER_QOB__H
 

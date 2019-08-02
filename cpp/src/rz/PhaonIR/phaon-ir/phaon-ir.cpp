@@ -42,6 +42,7 @@
 
 USING_KANS(TextIO)
 
+USING_KANS(Phaon)
 
 PhaonIR::PhaonIR(PHR_Channel_System* channel_system) :  type_system_(nullptr),
   channel_system_(channel_system), program_stack_(nullptr),

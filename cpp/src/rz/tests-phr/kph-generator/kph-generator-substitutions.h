@@ -19,6 +19,8 @@
 //KANS_CLASS_DECLARE(KCM ,KCM_Carrier)
 //USING_KANS(KCM)
 
+KANS_(Phaon)
+
 class PHR_Carrier;
 
 
@@ -44,7 +46,7 @@ public:
 };
 
 
-//?_KANS(Phaon)
+_KANS(Phaon)
 
 
 #endif //KPH_GENERATOR_SUBSTITUTIONS__H

@@ -7,6 +7,8 @@
 
 #include "less-than.h"
 
+USING_KANS(Phaon)
+
 
 PHR_KOP_Less_Than::PHR_KOP_Less_Than()
 {

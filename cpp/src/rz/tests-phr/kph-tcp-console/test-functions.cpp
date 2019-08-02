@@ -44,6 +44,9 @@
 
 //?KANS_(Phaon)
 
+USING_KANS(Phaon)
+
+
 void test_prss(QString str1, QString str2)
 {
  qDebug() << str1;

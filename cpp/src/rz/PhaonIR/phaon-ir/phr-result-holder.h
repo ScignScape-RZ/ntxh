@@ -9,6 +9,11 @@
 
 #include <QString>
 
+#include "kans.h"
+
+KANS_(Phaon)
+
+
 struct PHR_Result_Holder
 {
  QString raw_value_string;
@@ -16,5 +21,7 @@ struct PHR_Result_Holder
 
  PHR_Result_Holder();
 };
+
+_KANS(Phaon)
 
 #endif // PHR_RESULT_HOLDER__H

@@ -11,6 +11,9 @@
 
 #include <QDebug>
 
+USING_KANS(Phaon)
+
+
 PHR_Expression_Object::PHR_Expression_Object(PhaonIR* phaon_ir,
   PHR_Channel_Group* channel_group)
   :  phaon_ir_(phaon_ir), channel_group_(channel_group)

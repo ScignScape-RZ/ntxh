@@ -32,6 +32,8 @@
 
 //USING_KANS(CMD)
 
+KANS_(Phaon)
+
 class PHR_Env;
 class PHR_Fn_Doc;
 class PHR_Type_Object;
@@ -59,6 +61,9 @@ public:
 
 };
 
+_KANS(Phaon)
+
+USING_KANS(Phaon)
 
 Q_DECLARE_METATYPE(PHR_Fn_Doc_Multi)
 Q_DECLARE_METATYPE(PHR_Fn_Doc_Multi*)

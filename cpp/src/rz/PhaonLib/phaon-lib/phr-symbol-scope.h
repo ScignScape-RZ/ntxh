@@ -1,4 +1,4 @@
-
+#ifdef HIDE
 //           Copyright Nathaniel Christen 2019.
 //  Distributed under the Boost Software License, Version 1.0.
 //     (See accompanying file LICENSE_1_0.txt or copy at
@@ -44,3 +44,4 @@ public:
 
 
 #endif //PHR_SYMBOL_SCOPE__H
+#endif

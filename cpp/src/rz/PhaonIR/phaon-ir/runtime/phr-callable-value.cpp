@@ -9,6 +9,9 @@
 
 #include "phaon-ir.h"
 
+USING_KANS(Phaon)
+
+
 #include <QDebug>
 
 PHR_Callable_Value::PHR_Callable_Value(PhaonIR* phaon_ir, QString name)

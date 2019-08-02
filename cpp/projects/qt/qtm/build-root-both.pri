@@ -101,28 +101,3 @@ TESTS_PHR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/rz/tests-phr
 
 LEXPAIR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/QScign/LexPair
 
-#XPDF_SRC_GROUP_DIR = $$SRC_ROOT_DIR/external/xpdf
-
-#QHYP_SRC_GROUP_DIR = $$SRC_ROOT_DIR/qscign/qhyp
-#
-#LEXPAIR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/qscign/LexPair
-
-#KAUVIR_PHAON_SRC_GROUP_DIR = $$SRC_ROOT_DIR/tests-kph/kauvir-phaon
-#KAUVIR_KCM_SRC_GROUP_DIR = $$SRC_ROOT_DIR/kauvir/kauvir-kcm
-
-#PHAON_SRC_GROUP_DIR = $$SRC_ROOT_DIR/phaon/phaon
-
-#HGDM_SRC_GROUP_DIR = $$SRC_ROOT_DIR/charm/hgdm/
-##RELAE_GRAPH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/charm/hgdm/relae-graph
-##PHAON_GRAPH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/charm/hgdm/phaon-graph
-##DS_RELAE_PHAON_SRC_GROUP_DIR = $$SRC_ROOT_DIR/charm/hgdm/ds-relae-phaon
-
-#RZ_KAUVIR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/rz/rz-kauvir
-#KAUVIR_RUNTIME_SRC_GROUP_DIR = $$SRC_ROOT_DIR/kauvir/kauvir-runtime
-#KCM_RUNTIME_EVAL_SRC_GROUP_DIR = $$SRC_ROOT_DIR/kauvir/kcm-runtime-eval
-#RZ_DYNAMO_SRC_GROUP_DIR = $$SRC_ROOT_DIR/rz/rz-dynamo
-
-#PHAONIR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/PhaonIR/PhaonIR
-#PHAONLIB_SRC_GROUP_DIR = $$SRC_ROOT_DIR/PhaonIR/PhaonLib
-#PHR_GRAPH_SRC_GROUP_DIR = $$SRC_ROOT_DIR/PhaonIR/phr-graph
-#PHR_RUNTIME_SRC_GROUP_DIR = $$SRC_ROOT_DIR/PhaonIR/phr-runtime

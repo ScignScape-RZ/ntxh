@@ -23,6 +23,8 @@
 
 USING_KANS(TextIO)
 
+USING_KANS(Phaon)
+
 
 PHR_Fn_Doc_Multi::PHR_Fn_Doc_Multi()
   :  fnd_(nullptr)

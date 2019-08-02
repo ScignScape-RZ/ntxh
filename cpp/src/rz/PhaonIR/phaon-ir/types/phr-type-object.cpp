@@ -9,6 +9,7 @@
 
 #include "phr-type.h"
 
+USING_KANS(Phaon)
 
 PHR_Type_Object::PHR_Type_Object(PHR_Type* ty)
   :  ty_(ty)

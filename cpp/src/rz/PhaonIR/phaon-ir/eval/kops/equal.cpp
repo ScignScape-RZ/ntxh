@@ -7,6 +7,8 @@
 
 #include "equal.h"
 
+USING_KANS(Phaon)
+
 
 PHR_KOP_Equal::PHR_KOP_Equal()
 {

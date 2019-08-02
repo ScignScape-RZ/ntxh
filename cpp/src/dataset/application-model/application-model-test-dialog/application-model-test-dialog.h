@@ -31,6 +31,8 @@ KANS_CLASS_DECLARE(DSM ,Application_Test_Model)
 
 USING_KANS(DSM)
 
+KANS_(Phaon)
+
 class Application_Model_Test_Dialog : public QDialog
 {
  Q_OBJECT
@@ -86,5 +88,6 @@ public Q_SLOTS:
 
 };
 
+_KANS(Phaon)
 
 #endif //  APPLICATION_MODEL_TEST_DIALOG__H

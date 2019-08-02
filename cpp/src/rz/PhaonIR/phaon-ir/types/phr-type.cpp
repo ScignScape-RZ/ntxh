@@ -7,6 +7,9 @@
 
 #include "phr-type.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Type::PHR_Type()
   :  byte_code_(0), signature_channel_group_(nullptr)
 {

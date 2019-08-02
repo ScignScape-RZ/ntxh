@@ -19,6 +19,7 @@ USING_KANS(TextIO)
 
 #include <QDataStream>
 
+USING_KANS(Phaon)
 
 PHR_Command_Package::PHR_Command_Package(const PHR_Channel_Group& pcg,
   PHR_Channel_System* pcs, PHR_Type_System* pts)

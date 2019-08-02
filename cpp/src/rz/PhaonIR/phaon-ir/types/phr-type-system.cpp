@@ -9,6 +9,9 @@
 
 #include "phr-type.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Type_System::PHR_Type_System()
 {
 

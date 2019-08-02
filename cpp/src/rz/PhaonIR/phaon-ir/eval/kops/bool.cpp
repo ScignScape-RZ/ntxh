@@ -7,6 +7,7 @@
 
 #include "bool.h"
 
+USING_KANS(Phaon)
 
 PHR_KOP_Bool::PHR_KOP_Bool()
 {

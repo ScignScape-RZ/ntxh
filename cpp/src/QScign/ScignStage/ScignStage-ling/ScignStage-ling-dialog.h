@@ -70,10 +70,17 @@ class XPDF_Bridge;
 //USING_KANS(PhaonLib)
 
 #ifdef USING_KPH
+
+KANS_(Phaon)
+
 class PHR_Runner;
 class PHR_Channel_System;
 class PhaonIR;
 class PHR_Symbol_Scope;
+
+_KANS(Phaon)
+USING_KANS(Phaon)
+
 #endif
 
 
@@ -202,7 +209,7 @@ class ScignStage_Ling_Dialog : public QDialog
 
  std::function<void()> screenshot_function_;
 
-#ifdef USING_CONFIG
+#ifdef USING_CONFIG_DIALOG
  std::function<void()> launch_config_function_;
 #endif // USING_LEXPAIR
 
@@ -298,7 +305,7 @@ public:
  ACCESSORS__SET(std::function<void(QString)> ,launch_lexpair_dialog_function)
 #endif // USING_LEXPAIR
 
-#ifdef USING_CONFIG
+#ifdef USING_CONFIG_DIALOG
  ACCESSORS__SET(std::function<void()> ,launch_config_function)
 #endif // USING_CONFIG
 

@@ -23,6 +23,7 @@
 
 #define PASTE_EXPRESSION(...) __VA_ARGS__
 
+KANS_(Phaon)
 
 class PHR_Channel_Semantic_Protocol;
 class PHR_Type_System;
@@ -349,5 +350,7 @@ public:
  void* get_first_raw_value(QString sp_name, PHR_Channel_Group& pcg);
 
 };
+
+_KANS(Phaon)
 
 #endif // PHAON_IR__H

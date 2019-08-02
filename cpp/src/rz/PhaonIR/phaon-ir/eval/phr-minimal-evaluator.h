@@ -14,6 +14,11 @@
 #include "phr-channel-group-evaluator.h"
 #include "phaon-ir/phr-result-holder.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
+
 class PHR_Channel_Group;
 
 class PHR_Minimal_Evaluator : public PHR_Channel_Group_Evaluator
@@ -47,5 +52,7 @@ public:
  void debug_report() Q_DECL_OVERRIDE;
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_MINIMAL_EVALUATOR__H

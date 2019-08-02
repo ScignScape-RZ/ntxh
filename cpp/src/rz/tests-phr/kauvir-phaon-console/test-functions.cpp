@@ -22,7 +22,7 @@
 #include "phaon-ir/types/phr-type-system.h"
 #include "phaon-ir/phr-code-model.h"
 #include "phaon-ir/channel/phr-channel-group.h"
-#include "phaon-lib/phr-channel-group-table.h"
+#include "phaon-ir/table/phr-channel-group-table.h"
 
 #include "phaon-ir/channel/phr-channel-system.h"
 #include "phaon-ir/channel/phr-carrier.h"
@@ -38,6 +38,7 @@
 
 #include <QEventLoop>
 
+USING_KANS(Phaon)
 
 //?USING_KANS(KCL)
 //?USING_KANS(PhaonLib)

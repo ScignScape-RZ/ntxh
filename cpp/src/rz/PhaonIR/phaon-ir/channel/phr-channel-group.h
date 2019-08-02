@@ -13,6 +13,10 @@
 #include "phr-channel.h"
 #include "phr-channel-semantic-protocol.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Channel_Semantic_Protocol;
 class PHR_Channel;
 
@@ -109,5 +113,7 @@ public:
  }
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_CHANNEL_GROUP__H

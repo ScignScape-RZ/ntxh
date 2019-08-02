@@ -15,6 +15,9 @@
 
 #include "phaon-ir/scopes/phr-runtime-scope.h"
 
+KANS_(Phaon)
+
+
 class PhaonIR;
 class PHR_Type_Object;
 class PHR_Scope_Value;
@@ -37,5 +40,7 @@ public:
  void register_with_name(QString name);
 
 };
+
+_KANS(Phaon)
 
 #endif //  PHR_CALLABLE_VALUE__H

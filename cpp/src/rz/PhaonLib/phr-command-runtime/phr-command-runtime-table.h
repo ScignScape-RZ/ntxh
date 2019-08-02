@@ -26,10 +26,12 @@
 //#include "PhaonLib/phaon-function.h"
 //#include "PhaonLib/phaon-symbol-scope.h"
 
-#include "phaon-lib/phr-symbol-scope.h"
+#include "phaon-ir/table/phr-symbol-scope.h"
 #include "phaon-ir/channel/phr-channel-group.h"
-#include "phaon-lib/phr-function-package.h"
+#include "phaon-ir/table/phr-function-package.h"
 #include "phaon-ir/types/phr-universal-class.h"
+
+KANS_(Phaon)
 
 class PHR_Type_System;
 
@@ -103,5 +105,6 @@ public:
 };
 
 //_KANS(CMD)
+_KANS(Phaon)
 
 #endif //PHR_COMMAND_RUNTIME_TABLE__H

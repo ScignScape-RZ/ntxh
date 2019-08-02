@@ -10,8 +10,11 @@
 
 #include <QVector>
 
-
 #include "eval/kop-base.h"
+
+#include "kans.h"
+
+KANS_(Phaon)
 
 
 struct PHR_KOP_Less_Than : PHR_KOP_Base<qint32>
@@ -26,4 +29,6 @@ public:
 
 };
 
-#endif // SUBTRACT__H
+_KANS(Phaon)
+
+#endif // LESS_THAN__H

@@ -11,6 +11,9 @@
 #include "phr-carrier.h"
 #include "types/phr-type-object.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Channel_Group::PHR_Channel_Group()
 {
 

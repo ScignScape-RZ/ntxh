@@ -7,6 +7,8 @@
 
 #include "phr-result-holder.h"
 
+USING_KANS(Phaon)
+
 PHR_Result_Holder::PHR_Result_Holder()
   :  raw_value(nullptr)
 {

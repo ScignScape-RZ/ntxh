@@ -7,6 +7,8 @@
 
 #include "add.h"
 
+USING_KANS(Phaon)
+
 PHR_KOP_Add::PHR_KOP_Add()
 {
 

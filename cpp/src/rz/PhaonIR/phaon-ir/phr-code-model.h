@@ -13,6 +13,10 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Type_System;
 class PHR_Scope_System;
 class PHR_Command_Package;
@@ -113,5 +117,7 @@ public:
    PHR_Type_Object* pto, PCM_Report_Syntax& pcrs);
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_CODE_MODEL__H

@@ -8,7 +8,7 @@
 #define PHR_DIRECT_EVAL__H
 
 
-//#include "kans.h"
+#include "kans.h"
 
 //#include <QString>
 //#include <QObject>
@@ -31,6 +31,8 @@
 
 //USING_KANS(CMD)
 
+KANS_(Phaon)
+
 class PHR_Code_Model;
 class PHR_Command_Package;
 class PHR_Symbol_Scope;
@@ -43,5 +45,7 @@ void phr_direct_eval(PHR_Code_Model* pcm,
 //KCM_Command_Package* make_kcm_command_package(QPair<QSet<QString*>*, QMap<KCM_Channel::Kinds, QString*>*>& channel_names, const KCM_Type_Object* kto, QString val, QObject* qob);
 
 //KCM_Channel_Bridge* make_kcm_channel_bridge(KCM_Command_Runtime_Router& kcrr);
+
+_KANS(Phaon)
 
 #endif //PHR_DIRECT_EVAL__H

@@ -20,6 +20,9 @@
 
 //KANS_(PhaonLib)
 
+KANS_(Phaon)
+
+
 class PHR_Namespace;
 class PHR_Runtime_Scope;
 class PHR_Function;
@@ -39,6 +42,8 @@ public:
 
 
 };
+
+_KANS(Phaon)
 
 
 //_KANS(PhaonLib)

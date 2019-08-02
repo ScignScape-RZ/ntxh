@@ -7,6 +7,7 @@
 
 #include "subtract.h"
 
+USING_KANS(Phaon)
 
 PHR_KOP_Subtract::PHR_KOP_Subtract()
 {

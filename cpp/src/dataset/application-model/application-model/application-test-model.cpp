@@ -21,6 +21,8 @@
 #include "phaon-ir/phaon-ir.h"
 #include "phaon-ir/channel/phr-channel-system.h"
 
+USING_KANS(Phaon)
+
 extern void default_phr_startup(PhaonIR& phr);
 #endif
 

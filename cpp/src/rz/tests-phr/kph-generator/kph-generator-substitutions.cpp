@@ -15,7 +15,7 @@
 #include "phaon-ir/types/phr-type.h"
 
 
-//USING_KANS(Phaon)
+USING_KANS(Phaon)
 
 
 KPH_Generator_Substitutions::KPH_Generator_Substitutions

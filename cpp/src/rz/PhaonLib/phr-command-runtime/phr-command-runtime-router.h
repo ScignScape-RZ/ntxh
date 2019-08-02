@@ -37,6 +37,8 @@
 //USING_KANS(KCM)
 
 //KANS_(CMD)
+KANS_(Phaon)
+
 
 class PHR_Command_Runtime_Argument;
 class PHR_Command_Package;
@@ -374,5 +376,7 @@ public:
 };
 
 //_KANS(CMD)
+_KANS(Phaon)
+
 
 #endif // PHR_COMMAND_RUNTIME_ROUTER__H

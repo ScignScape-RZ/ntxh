@@ -6,6 +6,8 @@
 
 #include "pcm-report-syntax.h"
 
+USING_KANS(Phaon)
+
 
 PCM_Report_Syntax::PCM_Report_Syntax()
   :  Flags(0)

@@ -17,6 +17,9 @@
 #include <QObject>
 #include <QMap>
 
+KANS_(Phaon)
+
+
 class PHR_Scope_System;
 class PHR_Env;
 class PHR_Type_Object;
@@ -58,6 +61,9 @@ public:
 
 };
 
+_KANS(Phaon)
+
+USING_KANS(Phaon)
 
 Q_DECLARE_METATYPE(PHR_Fn_Doc)
 Q_DECLARE_METATYPE(PHR_Fn_Doc*)

@@ -88,7 +88,7 @@ Application_Config_Model::Application_Config_Model()
        {
         "dataset/config/config-dialog-console",
        },
-      {"USING_CONFIG"},
+      {"USING_CONFIG_DIALOG"},
        {} }}},
 
     { "lex-pair",

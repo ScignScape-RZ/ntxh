@@ -7,6 +7,7 @@
 
 #include "phr-runtime-scope.h"
 
+USING_KANS(Phaon)
 
 PHR_Runtime_Scope::PHR_Runtime_Scope(PHR_Runtime_Scope* parent_scope, PHR_Logical_Scope_Info* info)
   :  parent_scope_(parent_scope), info_(info)

@@ -8,6 +8,7 @@
 #include "phr-channel.h"
 #include "phr-carrier.h"
 
+USING_KANS(Phaon)
 
 PHR_Channel::PHR_Channel()
 {

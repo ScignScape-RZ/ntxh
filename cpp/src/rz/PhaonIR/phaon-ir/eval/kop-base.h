@@ -10,6 +10,9 @@
 #include <QPair>
 #include <QtGlobal>
 
+#include "kans.h"
+
+KANS_(Phaon)
 
 template<typename T>
 struct PHR_KOP_Base
@@ -26,5 +29,7 @@ public:
  virtual void run_eval(QVector<T>& args, T& result) = 0;
 
 };
+
+_KANS(Phaon)
 
 #endif // KOP_BASE__H

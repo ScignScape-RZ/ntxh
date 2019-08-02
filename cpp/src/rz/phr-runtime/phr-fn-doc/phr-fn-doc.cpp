@@ -22,6 +22,9 @@
 
 #include <QDebug>
 
+USING_KANS(Phaon)
+
+
 PHR_Fn_Doc::PHR_Fn_Doc()
   :  scopes_(nullptr), penv_(nullptr)
 {

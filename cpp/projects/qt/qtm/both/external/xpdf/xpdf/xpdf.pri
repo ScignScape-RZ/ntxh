@@ -281,7 +281,6 @@ SOURCES += \
     $$SRC_DIR/xpdf-qt/xpdf-component.cpp \
 
 
-
 contains(CHOICE_FEATURES, "pdf-pull") \#/
 {
  message(DEFINE\'ing USING_PDF_PULL)

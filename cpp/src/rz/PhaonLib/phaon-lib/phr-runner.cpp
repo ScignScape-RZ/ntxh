@@ -25,6 +25,8 @@
 
 //USING//_KANS(PhaonLib)
 
+USING_KANS(Phaon)
+
 
 PHR_Runner::PHR_Runner(PHR_Code_Model* pcm)
   :  pcm_(pcm), origin_(nullptr), //new PHR_Code_Model),

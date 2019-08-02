@@ -9,6 +9,8 @@
 
 #include "phaon-ir.h"
 
+USING_KANS(Phaon)
+
 
 PHR_Channel_Group_Evaluator::PHR_Channel_Group_Evaluator(PhaonIR& phr,
   PHR_Channel_Group& channel_group)

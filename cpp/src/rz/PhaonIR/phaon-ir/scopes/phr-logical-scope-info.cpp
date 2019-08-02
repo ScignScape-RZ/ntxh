@@ -7,6 +7,7 @@
 
 #include "phr-logical-scope-info.h"
 
+USING_KANS(Phaon)
 
 PHR_Logical_Scope_Info::PHR_Logical_Scope_Info(QString name)
   :  name_(name)

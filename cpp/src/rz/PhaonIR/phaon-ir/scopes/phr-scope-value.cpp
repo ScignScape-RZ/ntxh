@@ -7,6 +7,9 @@
 
 #include "phr-scope-value.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Scope_Value::PHR_Scope_Value(PHR_Type* _ty, quint64 _raw_value)
   : ty(_ty), raw_value(_raw_value)
 {

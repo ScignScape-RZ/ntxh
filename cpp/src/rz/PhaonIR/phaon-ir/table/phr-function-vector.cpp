@@ -17,6 +17,9 @@
 
 //USING_KANS(KCM)
 
+USING_KANS(Phaon)
+
+
 //USING//_KANS(PhaonLib)
 
 #include "phr-function-package.h"

@@ -11,6 +11,11 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
+
 class PHR_Logical_Scope_Info
 {
  QString name_;
@@ -22,5 +27,7 @@ public:
  ACCESSORS(QString ,name)
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_LOGICAL_SCOPE_INFO__H

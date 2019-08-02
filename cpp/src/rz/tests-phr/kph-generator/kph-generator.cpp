@@ -29,6 +29,7 @@
 //USING_KANS(Phaon)
 USING_KANS(TextIO)
 
+USING_KANS(Phaon)
 
 KPH_Generator::KPH_Generator(QString file_path,
   KPH_Generator_Substitutions* subs)

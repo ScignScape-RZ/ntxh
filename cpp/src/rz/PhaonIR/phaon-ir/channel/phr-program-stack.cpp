@@ -7,6 +7,9 @@
 
 #include "phr-program-stack.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Program_Stack::PHR_Program_Stack()
 {
 

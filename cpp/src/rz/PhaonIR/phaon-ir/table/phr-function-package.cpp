@@ -15,6 +15,9 @@
 //USING_KANS(KCM)
 //USING_KANS(Kauvir)
 
+USING_KANS(Phaon)
+
+
 PHR_Function_Package::PHR_Function_Package(PHR_Channel_Group* pcg)
   :  pcg_(pcg), byte_code_(0)
 {

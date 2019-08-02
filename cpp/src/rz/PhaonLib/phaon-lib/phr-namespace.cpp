@@ -9,6 +9,7 @@
 
 #include "kans.h"
 
+USING_KANS(Phaon)
 
 //USING//_KANS(PhaonLib)
 

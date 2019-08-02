@@ -7,6 +7,9 @@
 
 #include "phr-cocyclic-type.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Cocyclic_Type::PHR_Cocyclic_Type(QString name)
   :  name_(name)
 {

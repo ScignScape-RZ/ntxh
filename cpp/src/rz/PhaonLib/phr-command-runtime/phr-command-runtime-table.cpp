@@ -19,7 +19,7 @@
 //USING_KANS(Kauvir)
 //USING_KANS(CMD)
 
-
+USING_KANS(Phaon)
 
 
 PHR_Command_Runtime_Table::PHR_Command_Runtime_Table(PHR_Type_System& type_system)

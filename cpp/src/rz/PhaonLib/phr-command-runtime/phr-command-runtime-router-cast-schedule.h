@@ -23,6 +23,8 @@
 
 //?KANS_(CMD)
 
+KANS_(Phaon)
+
 class Kauvir_Request_Runtime;
 class Kauvir_Runtime_Router_Invokable;
 
@@ -235,6 +237,7 @@ struct Type_List__All_Cast_Needed<4>
 };
 
 
+_KANS(Phaon)
 
 //?_KANS(CMD)
 

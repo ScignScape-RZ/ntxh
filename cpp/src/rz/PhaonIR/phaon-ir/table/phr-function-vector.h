@@ -25,6 +25,8 @@
 
 //KANS_(PhaonLib)
 
+KANS_(Phaon)
+
 class PHR_Type_Object;
 
 class PHR_Function_Vector : public QVector<PHR_Function>
@@ -48,6 +50,7 @@ public:
 
 
 //_KANS(PhaonLib)
+_KANS(Phaon)
 
 
 #endif //PHR_FUNCTION_VECTOR__H

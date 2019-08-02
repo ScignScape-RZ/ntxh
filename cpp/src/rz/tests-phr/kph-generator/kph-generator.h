@@ -25,6 +25,7 @@ class QTextStream;
 
 //KANS_(Phaon)
 
+KANS_(Phaon)
 
 class KPH_Generator_Substitutions;
 class PHR_Channel_Group;
@@ -64,6 +65,7 @@ public:
 
 
 //_KANS(Phaon)
+_KANS(Phaon)
 
 
 #endif //KPH_GENERATOR__H

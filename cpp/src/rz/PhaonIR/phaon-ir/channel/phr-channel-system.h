@@ -12,7 +12,11 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
 #include <QMap>
+
+KANS_(Phaon)
 
 class PHR_Channel_Semantic_Protocol;
 
@@ -24,5 +28,7 @@ public:
  PHR_Channel_System();
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_CHANNEL_SYSTEM__H

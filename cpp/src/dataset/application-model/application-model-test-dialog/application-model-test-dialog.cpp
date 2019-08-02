@@ -37,7 +37,7 @@
 #include "add-minimize-frame.h"
 
 
-//USING_KANS(Phaon)
+USING_KANS(Phaon)
 
 
 #include "textio.h"

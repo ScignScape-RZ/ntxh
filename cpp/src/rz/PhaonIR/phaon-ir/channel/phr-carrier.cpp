@@ -9,6 +9,9 @@
 
 #include "types/phr-type-object.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Carrier::PHR_Carrier()
   :  type_object_(nullptr), raw_value_(nullptr)
 {

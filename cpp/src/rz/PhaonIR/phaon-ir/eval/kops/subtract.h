@@ -13,6 +13,11 @@
 
 #include "eval/kop-base.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
+
 
 struct PHR_KOP_Subtract : PHR_KOP_Base<qint32>
 {
@@ -25,5 +30,7 @@ public:
  void run_eval(QVector<qint32>& args, qint32& result);
 
 };
+
+_KANS(Phaon)
 
 #endif // SUBTRACT__H

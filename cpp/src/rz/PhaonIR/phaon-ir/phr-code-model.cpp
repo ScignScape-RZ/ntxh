@@ -17,6 +17,7 @@
 
 #include <QMetaType>
 
+USING_KANS(Phaon)
 
 PHR_Code_Model::PHR_Code_Model()
   :  type_system_(nullptr), scopes_(nullptr),

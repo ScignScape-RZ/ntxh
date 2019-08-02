@@ -16,8 +16,11 @@ SUBDIRS = \
 SUBDIRS += \
   external/xpdf/xpdf \
 
+
 SUBDIRS += \
+  QScign/LexPair/lexpair \
   QScign/ScignStage/ScignStage-ling \
+
 
 SUBDIRS += \
   dataset/application-model/application-model \

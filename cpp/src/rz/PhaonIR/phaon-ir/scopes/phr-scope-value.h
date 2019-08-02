@@ -9,6 +9,10 @@
 
 #include <QString>
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Type;
 
 struct PHR_Scope_Value
@@ -27,5 +31,7 @@ struct PHR_Scope_Value
  }
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_SCOPE__H

@@ -6,6 +6,8 @@
 
 #include "phr-command-runtime-argument.h"
 
+USING_KANS(Phaon)
+
 //USING_KANS(CMD)
 
 PHR_Command_Runtime_Argument::PHR_Command_Runtime_Argument()

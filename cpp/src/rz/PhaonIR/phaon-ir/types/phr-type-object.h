@@ -11,6 +11,10 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Type;
 
 class PHR_Type_Object
@@ -29,5 +33,7 @@ public:
 
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_TYPE_OBJECT__H

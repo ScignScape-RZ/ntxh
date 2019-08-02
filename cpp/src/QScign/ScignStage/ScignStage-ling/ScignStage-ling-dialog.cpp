@@ -118,9 +118,9 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
     current_sample_(nullptr),
     last_highlight_(nullptr), xpdf_process_(nullptr),
     screenshot_function_(nullptr),
-    #ifdef USING_CONFIG
+    #ifdef USING_CONFIG_DIALOG
     launch_config_function_(nullptr),
-    #endif // USING_LEXPAIR
+    #endif // USING_CONFIG_DIALOG
     application_model_(nullptr),
     #ifdef USING_LEXPAIR
     launch_lexpair_dialog_function_(nullptr),
@@ -1244,7 +1244,7 @@ void ScignStage_Ling_Dialog::handle_launch_config_requested()
 {
  Q_EMIT(launch_config_requested());
 
-#ifdef USING_CONFIG
+#ifdef USING_CONFIG_DIALOG
  if(launch_config_function_)
    launch_config_function_();
 #else

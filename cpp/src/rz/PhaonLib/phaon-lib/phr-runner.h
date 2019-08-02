@@ -25,6 +25,8 @@
 
 //KANS_(PhaonLib)
 
+KANS_(Phaon)
+
 class PHR_Runtime_Scope;
 class PHR_Function_Vector;
 class PHR_Channel_Group_Table;
@@ -79,5 +81,6 @@ public:
 
 //_KANS(PhaonLib)
 
+_KANS(Phaon)
 
 #endif //PHR_RUNNER__H

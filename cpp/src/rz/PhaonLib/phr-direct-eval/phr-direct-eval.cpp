@@ -56,6 +56,9 @@
 
 #include "phaon-ir/phr-code-model.h"
 
+USING_KANS(Phaon)
+
+KANS_(Phaon)
 
 void phr_direct_eval(PHR_Code_Model* pcm,
   PHR_Command_Package* pcp, PHR_Symbol_Scope* pss)
@@ -213,6 +216,10 @@ void phr_direct_eval(PHR_Code_Model* pcm,
  }
 #endif
 }
+
+_KANS(Phaon)
+
+
 #ifdef HIDE
  KCM_Command_Runtime_Router kcrr(kcm->table(), scope_system, kcm->current_proxy_scope(), string_result);
  kcrr.set_envv_fn(kcm->envv_fn());

@@ -34,6 +34,8 @@
 
 #include "phr-runtime-scope.h"
 
+KANS_(Phaon)
+
 class PHR_Runtime_Scope;
 
 class PHR_Scope_System
@@ -57,7 +59,7 @@ public:
 };
 
 //_KANS(CMD)
-
+_KANS(Phaon)
 
 #endif //PHR_SCOPE_SYSTEM__H
 

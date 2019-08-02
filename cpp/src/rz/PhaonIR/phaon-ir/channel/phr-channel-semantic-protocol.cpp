@@ -7,6 +7,8 @@
 
 #include "phr-channel-semantic-protocol.h"
 
+USING_KANS(Phaon)
+
 
 PHR_Channel_Semantic_Protocol::PHR_Channel_Semantic_Protocol()
 {

@@ -13,6 +13,8 @@
 
 #include "phr-scope-value.h"
 
+KANS_(Phaon)
+
 class PHR_Logical_Scope_Info;
 class PHR_Type;
 
@@ -75,5 +77,7 @@ public:
  }
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_RUNTIME_SCOPE__H

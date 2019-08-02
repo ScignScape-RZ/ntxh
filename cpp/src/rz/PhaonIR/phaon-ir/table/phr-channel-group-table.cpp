@@ -22,6 +22,7 @@
 //USING_KANS(CMD)
 
 //USING//_KANS(PhaonLib)
+USING_KANS(Phaon)
 
 
 PHR_Channel_Group_Table::PHR_Channel_Group_Table(PHR_Type_System& type_system)

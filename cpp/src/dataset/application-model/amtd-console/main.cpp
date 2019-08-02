@@ -19,6 +19,8 @@
 
 USING_KANS(DSM)
 
+USING_KANS(Phaon)
+
 
 int main(int argc, char **argv)
 {

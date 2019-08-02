@@ -10,6 +10,10 @@
 
 #include <QStack>
 
+#include "kans.h"
+
+KANS_(Phaon)
+
 class PHR_Carrier;
 
 class PHR_Channel : public QVector<PHR_Carrier*>
@@ -31,5 +35,7 @@ public:
  PHR_Channel* clone();
 
 };
+
+_KANS(Phaon)
 
 #endif // PHR_CHANNEL__H

@@ -73,7 +73,7 @@ SOURCES += \
 
 LIBS += -L$$TARGETSDIR -ldsmain
 
- LIBS += -L$$TARGETSDIR -lphaon-lib
+#? LIBS += -L$$TARGETSDIR -lphaon-lib
 
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
@@ -81,11 +81,10 @@ contains(CHOICE_FEATURES, "xpdf") \#/
  LIBS += -L$$TARGETSDIR -lxpdf
 }
 
-
 contains(CHOICE_FEATURES, "config") \#/
 {
- message(DEFINE\'ing USING_CONFIG)
- DEFINES += USING_CONFIG
+ message(DEFINE\'ing USING_CONFIG_DIALOG)
+ DEFINES += USING_CONFIG_DIALOG
 }
 
 contains(CHOICE_FEATURES, "lex-pair") \#/
@@ -99,9 +98,9 @@ contains(CHOICE_FEATURES, "kph") \#/
  message(DEFINE\'ing USING_KPH)
  DEFINES += USING_KPH
  LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
-
- #??LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
 }
+
+
 
 contains(CHOICE_FEATURES, "iso-choice") \#/
 {

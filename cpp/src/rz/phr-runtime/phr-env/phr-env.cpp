@@ -12,6 +12,9 @@
 
 #include <QDebug>
 
+USING_KANS(Phaon)
+
+
 PHR_Env::PHR_Env(PHR_Code_Model* pcm)
   :  scopes_(nullptr), pcm_(pcm), report_channel_group_fn_(nullptr),
      kph_gen_fn_(nullptr)

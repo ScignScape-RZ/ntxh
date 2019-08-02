@@ -62,6 +62,7 @@
 
 //USING_KANS(CMD)
 
+KANS_(Phaon)
 
 PHR_Command_Runtime_Router::PHR_Command_Runtime_Router(PHR_Channel_Group_Table* table,
   PhaonIR* phaon_ir, PHR_Symbol_Scope* symbol_scope,
@@ -1632,3 +1633,5 @@ void PHR_Command_Runtime_Router::Do_Invoke_Method<Arg_Count>
    break;
   }
 }
+
+_KANS(Phaon)

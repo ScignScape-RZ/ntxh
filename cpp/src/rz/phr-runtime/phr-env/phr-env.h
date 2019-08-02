@@ -31,6 +31,8 @@
 
 //USING_KANS(CMD)
 
+KANS_(Phaon)
+
 class PHR_Scope_System;
 class PHR_Code_Model;
 class PHR_Channel_Group;
@@ -66,5 +68,6 @@ public:
    QMap<QString, QString> docus);
 };
 
+_KANS(Phaon)
 
 #endif //PHR_ENV__H

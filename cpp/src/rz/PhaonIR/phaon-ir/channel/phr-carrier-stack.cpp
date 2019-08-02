@@ -7,6 +7,9 @@
 
 #include "phr-carrier-stack.h"
 
+USING_KANS(Phaon)
+
+
 PHR_Carrier_Stack::PHR_Carrier_Stack()
 {
 

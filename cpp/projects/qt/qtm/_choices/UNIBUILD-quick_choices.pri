@@ -1,2 +1,2 @@
 
-CHOICE_FEATURES = xpdf config lex-pair pdf-pull kdmi ro
+CHOICE_FEATURES = xpdf config lex-pair kdmi ro

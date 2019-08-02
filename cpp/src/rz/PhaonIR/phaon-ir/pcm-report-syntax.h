@@ -21,6 +21,7 @@
 //#include "pcm-channel.h"
 
 
+KANS_(Phaon)
 
 class PCM_Report_Syntax
 {
@@ -66,6 +67,7 @@ public:
 };
 
 
+_KANS(Phaon)
 
 
 #endif //PCM_REPORT_SYNTAX__H

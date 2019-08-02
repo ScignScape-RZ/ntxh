@@ -24,6 +24,9 @@
 
 #include <QDebug>
 
+USING_KANS(Phaon)
+
+
 PHR_Minimal_Evaluator::PHR_Minimal_Evaluator(PhaonIR& phr,
   PHR_Channel_Group& channel_group)
   :  PHR_Channel_Group_Evaluator(phr, channel_group)
