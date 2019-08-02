@@ -9,16 +9,3 @@
 
 USING_KANS(HGDMCore)
 
-//RTXH_Node::RTXH_Node()
-//  :  vertex_(nullptr)
-//{
-
-//}
-
-//RTXH_Node::RTXH_Node(quint64* val)
-//  :  vertex_(val)
-//{
-
-//}
-
-

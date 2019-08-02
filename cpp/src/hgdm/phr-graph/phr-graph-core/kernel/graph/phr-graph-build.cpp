@@ -17,10 +17,6 @@
 
 #include "token/phr-graph-cocyclic-type.h"
 
-
-//#include "tuple/rz-re-tuple-info.h"
-//#include "code/rz-re-call-entry.h"
-//#include "code/rz-re-block-entry.h"
 #include "kernel/graph/phr-graph-connection.h"
 
 #include "phr-graph-core/kernel/phr-graph-root.h"
@@ -84,7 +80,6 @@ caon_ptr<PHR_Graph_Node> PHR_Graph_Build::make_root_node()
 
  return result;
 
- //?current_node_ = rn;
 }
 
 caon_ptr<PHR_Graph_Node> PHR_Graph_Build::add_type_declaration(
@@ -145,7 +140,6 @@ caon_ptr<PHR_Graph_Node> PHR_Graph_Build::add_indexed_type_declaration(
  caon_ptr<PHR_Graph_Node> result = new PHR_Graph_Node(td);
  result->set_label(QString("<type-decl:%1%2>").arg(sym).arg(ty));
 
- //held_type_declaration_node_ = result;
  if(decl_mode == "Pr")
    current_cocyclic_type_->add_precycle_field(index.toInt(), result);
  else if(decl_mode == "Co")

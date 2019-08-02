@@ -16,8 +16,3 @@ PHR_Type::PHR_Type()
 
 }
 
-
-//void PHR_Carrier::init_channel_group_stack()
-//{
-
-//}

@@ -39,12 +39,16 @@
 
 #include "phaon-ir/phr-code-model.h"
 
-#include "phaon-lib/phr-symbol-scope.h"
-
+#include "phaon-ir/table/phr-symbol-scope.h"
 
 #include "phaon-ir/scopes/phr-runtime-scope.h"
 
+#include "phr-direct-eval/phr-direct-eval.h"
+
 #include "test-functions.h"
+
+USING_KANS(Phaon)
+
 
 void local_program(PhaonIR& phr)
 {
@@ -79,8 +83,6 @@ void local_program(PhaonIR& phr)
 
 int main(int argc, char* argv[])
 {
- PHR_Runner phrn;
-
  PHR_Channel_System pcs;
  PhaonIR phr(&pcs);
 
@@ -91,12 +93,14 @@ int main(int argc, char* argv[])
  phr.create_channel_semantic_protocol("lambda");
  phr.create_channel_semantic_protocol("result");
 
-
 // Phaon_Namespace phn("TestNS");
 // Phaon_Class phc("Test_Class", &phn);
 
- PHR_Code_Model& pcm = phrn.get_pcm();
+ PHR_Code_Model& pcm = *phr.code_model();
  pcm.set_type_system(phr.type_system());
+
+ PHR_Runner phrn(&pcm);
+
 
  pcm.set_direct_eval_fn(&phr_direct_eval);
 
@@ -115,7 +119,7 @@ int main(int argc, char* argv[])
  PHR_Channel_Group* pcg = phr.get_select_channel_group();
 
  //khp.init_channel_group(kcm, kcg);
- phrn.run(*pcg);
+ phrn.run(*pcg, phr.channel_system(), &pss);
 
  return 0;
 }

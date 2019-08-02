@@ -10,7 +10,7 @@
 
 #include "kans.h"
 
-#include "phr-function.h"
+#include "phaon-ir/table/phr-function.h"
 
 #include <QString>
 #include <QQueue>

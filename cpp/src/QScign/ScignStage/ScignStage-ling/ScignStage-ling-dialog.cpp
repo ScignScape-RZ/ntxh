@@ -77,11 +77,6 @@
 #include "xpdf-bridge.h"
 
 
-//#include "PhaonLib/phaon-runner.h"
-//#include "kauvir-phaon/kph-command-package.h"
-//#include "kauvir-code-model/kcm-channel-group.h"
-//#include "kauvir-code-model/kauvir-code-model.h"
-
 #include "phaon-lib/phr-runner.h"
 #include "phaon-ir/phr-code-model.h"
 #include "phaon-ir/channel/phr-channel-group.h"
@@ -100,9 +95,6 @@ extern void default_phr_startup(PhaonIR& phr);
 
 USING_KANS(TextIO)
 
-//?USING_KANS(Phaon)
-
-//USING_QSNS(ScignStage)
 
 Q_DECLARE_METATYPE(Language_Sample*)
 Q_DECLARE_METATYPE(Language_Sample_Group*)
@@ -152,14 +144,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
  filter_issues_grid_layout_ = new QGridLayout;
 
  issues_ = ds.issues();
-//? forms_ = ds.forms();
-
-// QLabel* forms_label = new QLabel("Filter Forms: ", this);
-// filters_grid_layout_->addWidget(forms_label, 0, 0);
-
-// QLabel* issues_label = new QLabel("Filter Issues: ", this);
-// filters_grid_layout_->addWidget(issues_label, 1, 0);
-
  int fcolmax = 2;
  int icolmax = 5;
 
@@ -180,8 +164,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
  }
  for(int i = 0; i < fcolmax; ++i)
    filter_forms_grid_layout_->setColumnStretch(i, 0);
- //filter_forms_grid_layout_->setColumnStretch(fcolmax, 1);
-
 
  filter_issues_button_group_ = new QButtonGroup(this);
  filter_issues_button_group_->setExclusive(false);
@@ -205,7 +187,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 
  for(int i = 0; i < icolmax; ++i)
    filter_issues_grid_layout_->setColumnStretch(i, 0);
- //filter_issues_grid_layout_->setColumnStretch(icolmax, 1);
 
  connect(filter_issues_button_group_,
    SIGNAL(buttonToggled(QAbstractButton*,bool)), this,
@@ -251,9 +232,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 
  main_layout_ = new QVBoxLayout;
 
-
- //top_buttons_layout_ = new QHBoxLayout;
-
  launch_config_button_ = new QPushButton("Customize Build", this);
  take_screenshot_button_ = new QPushButton("Screenshot", this);
  activate_tcp_button_ = new QPushButton("Activate TCP", this);
@@ -270,14 +248,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 
  connect(launch_config_button_, SIGNAL(clicked()),
    this, SLOT(handle_launch_config_requested()));
-
-// top_buttons_layout_->addStretch();
-
-// top_buttons_layout_->addWidget(activate_tcp_button_);
-
-// top_buttons_layout_->addWidget(take_screenshot_button_);
-
-// main_layout_->addLayout(top_buttons_layout_);
 
  filters_layout_ = new QHBoxLayout;
 
@@ -306,10 +276,7 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
  quasi_toolbar_layout_->addLayout(config_layout_, 2, 0, 1, 2);
  quasi_toolbar_layout_->setRowStretch(3, 1);
 
-
-
  filters_layout_->addLayout(quasi_toolbar_layout_);
-
 
  main_layout_->addLayout(filters_layout_);
 
@@ -346,10 +313,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
      full_sentence_plain_text_edit_->setPlainText(current_sample_->archival_or_text());
    else if(current_open_group_)
     full_sentence_plain_text_edit_->setPlainText(current_open_group_->get_main_archival_or_text());
-
-   //?
-//   if(current_sample_)
-//     full_sentence_plain_text_edit_->setPlainText(current_sample_->alternate_or_text());
   }
   else
   {
@@ -375,7 +338,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 
  full_sentence_plain_text_edit_->setStyleSheet("QLabel{background:white}");
  full_sentence_plain_text_edit_->setMaximumHeight(50);
- //full_sentence_plain_text_edit_->setMaximumWidth(200);
  full_sentence_post_label_->setStyleSheet("QLabel{background:pink}");
 
  full_sentence_splitter_->setSizes({1, 10, 1});
@@ -387,8 +349,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
  // //   Foreground
 
  main_tree_widget_ = new QTreeWidget(this);
-
- int r = 0;
 
  QStringList headers {
   "Text",
@@ -481,18 +441,11 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   if(mt.isEmpty())
     continue;
 
-  QStringList qsl; // = group->all_sample_text();
+  QStringList qsl;
 
   qsl.push_back(mt);
 
-//?
   qsl.push_back(group->first()->get_form());
-//  qsl.push_back(QString::number(group->first()->index()));
-//  qsl.push_back(group->get_issue());
-//  qsl.push_back(QString::number(group->first()->page()));
-//  int chn = group->first()->section();
-//  qsl.push_back(QString::number(chn));
-
   int id = group->id();
   qsl.push_back(QString::number(id));
   qsl.push_back(group->get_issue());
@@ -500,14 +453,10 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   int sn = group->section_num();
   qsl.push_back(QString::number(sn));
 
-
-//  QPair<int, int>& pr = section_groups_first_last_[chn];
-
   QPair<int, int>& pr = section_groups_first_last_[0];
   if(!pr.first)
     pr.first = c;
   pr.second = c;
-
 
   QTreeWidgetItem* twi = new QTreeWidgetItem((QTreeWidget*) nullptr,
     qsl);
@@ -519,9 +468,9 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
 
   for(Language_Sample* samp: *group)
   {
-   QStringList qsl; // = group->all_sample_text();
+   QStringList qsl;
 
-   QString sp;// = samp->speaker();
+   QString sp;
 
    if(sp == "I1")
       sp = "1";
@@ -540,9 +489,8 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    else
      qsl.push_back(QString());
 
-//   qsl.push_back(QString());
    QString si;
-   QString sbi;// = samp->sub_index();
+   QString sbi; //? = samp->sub_index();
 
    if(sbi.endsWith('\''))
    {
@@ -552,8 +500,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    {
     sbi.replace('/', '\'');
     sbi.replace('_', "");
-//    si = QString("%1%2").arg(samp->index())
-//      .arg(sbi);
    }
 
    qsl.push_back(si);
@@ -568,7 +514,7 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    stwi->setData(0, Qt::UserRole, QVariant::fromValue(samp));
    if(!sp.isEmpty())
    {
-    QStringList qsl; // = group->all_sample_text();
+    QStringList qsl; //? = group->all_sample_text();
     qsl.push_back(samp->text().simplified());
     QTreeWidgetItem* sstwi = new QTreeWidgetItem((QTreeWidget*) nullptr,
       qsl);
@@ -577,7 +523,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
   }
 
   main_tree_widget_->addTopLevelItem(twi);
-  //items.append(twi);
  }
 
  connect(main_tree_widget_, &QTreeWidget::itemSelectionChanged,
@@ -610,7 +555,6 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
       twi = twi->parent();
     Language_Sample* ls
       = twi->data(0, Qt::UserRole).value<Language_Sample*>();
-//    page = ls->page();
     page = 1;//ls->page();
     text = ls->text().simplified();
    }
@@ -772,9 +716,7 @@ void ScignStage_Ling_Dialog::highlight(QTreeWidgetItem* twi)
  }
  current_open_group_ = twi->data(0, Qt::UserRole).value<Language_Sample_Group*>();
  show_full_sentence(current_open_group_);
-//?
  current_section_number_ = current_open_group_->section_num();
- //set_group_foreground(twi_by_group_[current_open_group_]);
  set_group_foreground(twi);
 }
 
@@ -801,10 +743,9 @@ void ScignStage_Ling_Dialog::highlight(QTreeWidgetItem* twi,
  current_open_group_ = g;
  show_full_sentence(g);
 
-//?
  current_section_number_ = g->section_num();
 
- // ensure last subitem is visible
+ // // ensure last subitem is visible
  QTreeWidgetItem* stwi = twi->child(twi->childCount() - 1);
  main_tree_widget_->scrollToItem(stwi);
  main_tree_widget_->scrollToItem(twi);
@@ -908,21 +849,13 @@ void ScignStage_Ling_Dialog::show_full_sentence(Language_Sample_Group* g)
 void ScignStage_Ling_Dialog::show_full_sentence(Language_Sample* samp)
 {
  full_sentence_pre_label_->setText(samp->pre());
-// full_sentence_plain_text_edit_->setPlainText(samp->text());
-  if(show_archival_version_button_->isChecked())
-    full_sentence_plain_text_edit_->setPlainText(samp->archival_or_text());
-  else
-    full_sentence_plain_text_edit_->setPlainText(samp->text());
 
+ if(show_archival_version_button_->isChecked())
+   full_sentence_plain_text_edit_->setPlainText(samp->archival_or_text());
+ else
+   full_sentence_plain_text_edit_->setPlainText(samp->text());
 
  full_sentence_post_label_->setText(samp->post());
-//?
-// full_sentence_pre_label_->setText(samp->pre_with_mark());
-// if(show_archival_version_button_->isChecked())
-//   full_sentence_plain_text_edit_->setPlainText(samp->alternate_or_text());
-// else
-//   full_sentence_plain_text_edit_->setPlainText(samp->text());
-// full_sentence_post_label_->setText(samp->postcomment());
 }
 
 void ScignStage_Ling_Dialog::expand_sample(int index)
@@ -964,42 +897,9 @@ void ScignStage_Ling_Dialog::find_sample_down(Language_Sample_Group* start,
        "There are no more samples given the current filters.");
      return;
     }
-//?
-//    if(!g->match_classification(*temp_filters))
-//    {
-//     continue;
-//    }
    }
    highlight(twi, g);
    break;
-
-//   if(current_open_group_)
-//   {
-//    QTreeWidgetItem* twi = twi_by_group_[current_open_group_];
-//    twi->setExpanded(false);
-//    clear_group_foreground(twi);
-//    if(current_peer_index_)
-//    {
-//     clear_child_group_foreground(twi);
-//     current_peer_index_ = 0;
-//    }
-//   }
-
-//   current_open_group_ = g;
-//   show_full_sentence(g);
-
-//   current_section_number_ = g->section();
-
-//   // ensure last subitem is visible
-//   QTreeWidgetItem* stwi = twi->child(twi->childCount() - 1);
-//   main_tree_widget_->scrollToItem(stwi);
-//   main_tree_widget_->scrollToItem(twi);
-//   check_expand(twi);
-
-//   set_group_foreground(twi_by_group_[current_open_group_]);
-//    //twi->setForeground(0, QBrush("darkRed"));
-//   //twi->setStyleSheet("QTreeWidget#treeWidget::item{background:yellow;}");
-//   break;
   }
  }
 }
@@ -1083,38 +983,10 @@ void ScignStage_Ling_Dialog::find_sample_up(Language_Sample_Group* start,
                               "NM");
      return;
     }
-//?
-//    if(!g->match_classification(*temp_filters))
-//    {
-//     continue;
-//    }
    }
 
    highlight(twi, g);
    break;
-
-//   if(current_open_group_)
-//   {
-//    QTreeWidgetItem* twi = twi_by_group_[current_open_group_];
-//    twi->setExpanded(false);
-//    clear_group_foreground(twi);
-//    if(current_peer_index_)
-//    {
-//     clear_child_group_foreground(twi);
-//     current_peer_index_ = 0;
-//    }
-//   }
-
-//   current_open_group_ = g;
-//   show_full_sentence(g);
-
-//   // ensure last subitem is visible
-//   QTreeWidgetItem* stwi = twi->child(twi->childCount() - 1);
-//   main_tree_widget_->scrollToItem(stwi);
-//   main_tree_widget_->scrollToItem(twi);
-//   check_expand(twi);
-//   set_group_foreground(twi_by_group_[current_open_group_]);
-//   break;
   }
  }
 }
@@ -1176,7 +1048,6 @@ void ScignStage_Ling_Dialog::handle_section_down()
   else
   {
    Language_Sample_Group* g  = groups_->constLast();
-//?
    if(current_section_number_ == g->section_num())
      current_section_number_ = 1;
    else
@@ -1189,20 +1060,12 @@ void ScignStage_Ling_Dialog::handle_section_down()
   }
  }
 
-
-//   handle_sample_first();
-// else
-// {
-//  current_group_index_ = section_groups_first_last_[current_section_number_].second - 1;
-//  handle_sample_down();
-// }
 }
 
 void ScignStage_Ling_Dialog::handle_section_up()
 {
  while(true)
  {
-//?
   if(current_section_number_ == 0 || current_section_number_ == 1)
   {
    Language_Sample_Group* g  = groups_->constLast();
@@ -1216,21 +1079,7 @@ void ScignStage_Ling_Dialog::handle_section_up()
    break;
   }
  }
-
-// if(current_section_number_ == 1 || current_section_number_ == 0)
-// {
-//  Language_Sample_Group* g  = groups_->constLast();
-//  current_group_index_ = section_groups_first_last_[g->section()].second - 1;
-//  handle_sample_down();
-// }
-// else
-// {
-//  current_group_index_ = section_groups_first_last_[current_section_number_].first - 1;
-//  handle_sample_up();
-// }
 }
-
-
 
 
 void ScignStage_Ling_Dialog::handle_sample_first()
@@ -1344,6 +1193,7 @@ void ScignStage_Ling_Dialog::run_sample_context_menu(const QPoint& p, int page, 
 
 void ScignStage_Ling_Dialog::run_message_by_grid_position(const QPoint& p, int r, int c)
 {
+//?
 // static QMap<QPair<int, int>, void(ScignStage_Ling_Dialog::*)(const QPoint&, int col)>
 //   static_map {{
 //   {{0, 1}, &run_section_message},
@@ -1403,24 +1253,10 @@ void ScignStage_Ling_Dialog::run_kph(const QByteArray& qba)
 #ifdef USING_KPH
  check_phr();
 
- //?PHR_Code_Model& pcm = phr_->get_pcm();
-
- PHR_Channel_Group pcg;//(pcm.channel_names());
- //?
-// PHR_Symbol_Scope* pss = nullptr;
+ PHR_Channel_Group pcg;
 
  PHR_Command_Package pcp(pcg, phaonir_->channel_system(), phaonir_->type_system());
  pcp.absorb_data(qba);
-
-// PHR_Symbol_Scope* pss = phr_->get_run;
-
-
-
-// KPH_Command_Package khp;
-// khp.absorb_data(qba);
-// Kauvir_Code_Model& kcm = phr_->get_kcm();
-// KCM_Channel_Group kcg(kcm.channel_names());
-// khp.init_channel_group(kcm, kcg);
  phr_->run(pcp, phr_symbol_scope_);
 
 #endif
@@ -1577,72 +1413,3 @@ void ScignStage_Ling_Dialog::accept()
  Q_EMIT(accepted(this));
 }
 
-
-//main_frame_ = new QFrame(this);
-
-//main_frame_->setMinimumHeight(250);
-
-//main_frame_->setMinimumWidth(300);
-
-//main_frame_->setContextMenuPolicy(Qt::CustomContextMenu);
-
-//main_grid_layout_ = new QGridLayout;
-//main_tree_layout_ = new QVBoxLayout;
-// int cc = 1;
-// for(QString h : headers)
-// {
-//  QLabel* lbl = new QLabel(h, this);
-//  main_grid_layout_->addWidget(lbl, 0, cc);
-//  ++cc;
-// }
-
-// for(Language_Sample* samp : *samples_)
-// {
-//  QLabel* lbl = new QLabel(samp->text(), this);
-//  sample_to_label_map_[samp] = {lbl, r};
-
-//  main_grid_layout_->addWidget(lbl, r + 1, 0);
-
-//  main_grid_layout_->addWidget(new QLabel(
-//    QString::number(samp->index()) + samp->sub_index()),
-//    r + 1, 1);
-
-//  main_grid_layout_->addWidget(new QLabel(
-//    QString::number(samp->section())),
-//    r + 1, 2);
-
-//  main_grid_layout_->addWidget(new QLabel(
-//    QString::number(samp->page())),
-//    r + 1, 3);
-
-//  ++r;
-// }
-
-// QList<QTreeWidgetItem *> items;
-// int i = 0;
-
-// for(int i = 0; i < 6; ++i)
-// {
-//  QStringList qsl;
-//  for(int j = 0; j < 3; ++j)
-//  {
-//   QString qs = QString("item: %1 %2").arg(i).arg(j);
-//   qsl.push_back(qs);
-//  }
-//  QTreeWidgetItem* twi = new QTreeWidgetItem((QTreeWidget*) nullptr,
-//   qsl);
-//  main_tree_widget_->addTopLevelItem(twi);
-// }
-// main_tree_widget_->insertTopLevelItems(0, items);
-// main_tree_widget_->insertTopLevelItems(1, items);
-
- //main_tree_layout_->addLayout(main_grid_layout_);
-
-// main_tree_layout_->addWidget(main_tree_widget_);
-
-// main_frame_->setLayout(main_tree_layout_);
-
-// tree_scroll_area_ = new QScrollArea(this);
-// tree_scroll_area_->setWidget(main_frame_);
-
-// tree_scroll_area_->setMaximumHeight(200);

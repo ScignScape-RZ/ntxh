@@ -82,22 +82,13 @@ QPair<QDataStream&, void*>& readArrayBasedContainer(QPair<QDataStream&, void*>& 
     return s;
 }
 
-//template<typename T, typename Container>
-//QPair<T&, void*>& operator<<(QPair<T&, void*>& )
-//template <typename Container>
-//QPair<QDataStream&, void*>& readAssociativeContainer(QPair<QDataStream&, void*>& s, Container& c)
-//{
-
-
 template<typename T>
 QPair<T&, void*>& operator>>(QPair<T&, void*>& thet, PHR_Channel_Semantic_Protocol*& rhs)
 {
- //rhs = new PHR_Channel_Semantic_Protocol;
  QString n;
  thet.first >> n;
  PHR_Command_Package* pcp = static_cast<PHR_Command_Package*>(thet.second);
  rhs = pcp->channel_system()->value(n);
- //rhs->set_name(n);
  return thet;
 }
 
@@ -106,7 +97,6 @@ QPair<T&, void*>& operator>>(QPair<T&, void*>& thet, PHR_Channel*& rhs)
 {
  rhs = new PHR_Channel;
  readArrayBasedContainer(thet, *rhs);
- //thet >> *rhs;
  return thet;
 }
 
@@ -273,20 +263,8 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
     PHR_Carrier* phc = add_carrier_to_channel(this, "fground");
     phc->set_symbol_name(fn_name);
 
-//    PHR_Channel_Semantic_Protocol* sp = channel_system_->value("fground");
-//    PHR_Channel* pch = this->value(sp);
-//    if(!pch)
-//    {
-//     pch = new PHR_Channel;
-//     (*this)[sp] = pch;
-//    }
-//    PHR_Carrier* phc = new PHR_Carrier;
-//    phc->set_symbol_name(fn_name);
     PHR_Type* pty = type_system_->get_type_by_name("fbase");
     phc->set_phr_type(pty);
-//    PHR_Type_Object* pto = phc->type_object();
-   // phc->
-//    pch->push_back(phc);
    }
    break;
   case '+' : // // pins
@@ -333,14 +311,6 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
 
     PHR_Carrier* phc = add_carrier_to_channel(this, channel_names[channel]);
 
-//    PHR_Channel_Semantic_Protocol* sp = channel_system_->value(channel_names[channel]);
-//    PHR_Channel* pch = this->value(sp);
-//    if(!pch)
-//    {
-//     pch = new PHR_Channel;
-//     (*this)[sp] = pch;
-//    }
-//    PHR_Carrier* phc = new PHR_Carrier;
     phc->set_symbol_name(symref);
     phc->set_raw_value_string(value);
 
@@ -348,21 +318,6 @@ void PHR_Command_Package::parse_from_string_list(QString path, const QStringList
 
     PHR_Type* pty = type_system_->get_type_by_name(tn);
     phc->set_phr_type(pty);
-//    PHR_Type_Object* pto = phc->type_object();
-
-//    pch->push_back(phc);
-
-//    phc->set_channel_name(channel_names[channel]);
-//    phc->set_carrier_mode(mode);
-//    phc->set_type_name(type_names_[typec].first);
-//    phc->set_type_mode(type_names_[typec].second);
-//    phc->set_pos(pos);
-//    phc->set_key(kw);
-//    phc->set_expref(expref);
-//    phc->set_symref(symref);
-//    phc->set_value(value);
-//    check_channel_count_maximum(kpc->channel_name(), pos);
-//    carriers_.push_back(kpc);
    }
    break;
   }
@@ -377,15 +332,6 @@ void PHR_Command_Package::channel_names_to_codes(QMap<QString,
  while(it.hasNext())
  {
   it.next();
-
-//  // // assumes kind will not always be initialized ...
-//  if( (it.value().kind() == KCM_Channel::Kinds::Fuxe)
-//      || (*it.key() == "fuxe") )
-//  {
-//   qmap[*it.key()] = {0, &it.value()};
-//   continue;
-//  }
-
   QString chn = it.key()->name();
 
   if(chn == "fground")

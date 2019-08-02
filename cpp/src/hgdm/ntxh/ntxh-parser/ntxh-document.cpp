@@ -59,7 +59,7 @@ void NTXH_Document::resolve_report_path(QString& path)
   }
   else
   {
-//   QFileInfo qfi(local_path_);
+//?   QFileInfo qfi(local_path_);
   }
  }
 }
@@ -71,11 +71,8 @@ void NTXH_Document::report_graph(QString path)
  if(file.open(QFile::WriteOnly | QIODevice::Text))
  {
   QTextStream qts(&file);
-//  if(graph_)
-//   graph_->report(qts);
  }
 }
-
 
 void NTXH_Document::set_grammar(NTXH_Grammar* grammar)
 {
@@ -85,22 +82,11 @@ void NTXH_Document::set_grammar(NTXH_Grammar* grammar)
   grammar_ = new NTXH_Grammar();
 }
 
-
-
 void NTXH_Document::parse(int start_position, int end_position)
 {
-//? preprocess_raw_text();
-
-
-
-// caon_ptr<NTXH_Root> root = new NTXH_Root(this);
-// caon_ptr<NTXH_Node> node = new NTXH_Node(root);
-// RELAE_SET_NODE_LABEL(node, "<root>");
  graph_ = new NTXH_Graph();
-// graph_->set_document(this);
  parser_ = new NTXH_Parser(graph_);
  parser_->set_raw_text(raw_text_);
-// graph_build.reset_graph();
 
  graph_build_ = new NTXH_Graph_Build(this, *parser_, *graph_);
  graph_build_->init();
@@ -108,8 +94,6 @@ void NTXH_Document::parse(int start_position, int end_position)
  grammar_ = new NTXH_Grammar;
 
  grammar_->init(*parser_, *graph_, *graph_build_);
-
-// grammar_->activate_context(print);
 
  grammar_->compile(*parser_, *graph_, raw_text_, start_position);
 }

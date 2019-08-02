@@ -39,18 +39,7 @@
 #include "lexpair/lexpair-dialog.h"
 #endif // USING_LEXPAIR
 
-    //?#include "lexpair/lexpair-dialog.h"
-
 #include "dsmain/language-sample.h"
-
-    //?#include "kauvir-code-model/kauvir-code-model.h"
-
-//?
-    //?#include "kcm-direct-eval/kcm-direct-eval.h"
-
-//?#include "PhaonLib/phaon-symbol-scope.h"
-
-//?#include "test-functions.h"
 
 #include "dsmain/language-sample-group.h"
 
@@ -80,17 +69,12 @@ extern void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
 
 #include "kans.h"
 
-//?#include <QThread>
-
 #include "textio.h"
 
 USING_KANS(TextIO)
 
-
-//?USING_KANS(KCM)
 #ifdef USING_KPH
-//??USING_KANS(Phaon)
-//??USING_KANS(PhaonLib)
+USING_KANS(Phaon)
 #endif
 USING_QSNS(ScignStage)
 
@@ -120,7 +104,6 @@ void launch_config_dialog(Config_Dialog*& dlg, QWidget* parent)
   qDebug() << qs;
 
   Application_Config_Model acm;
-  //qs.prepend("gen_test__");
   acm.parse_config_code(qs);
   {
    QString result;
@@ -171,21 +154,8 @@ int main(int argc, char **argv)
  QApplication qapp(argc, argv);
  qapp.setWindowIcon(QIcon(DEFAULT_ICON_FOLDER "/app-icon.png"));
 
-// Dataset ds (DATA_FOLDER "/chapters/all.txt");
-// QVector<Language_Sample*>& samps = ds.samples();
-
-// phaong<pg_t> pg;
-
-// QVector<Language_Sample_Group*>& groups = ds.groups();
-// Language_Sample_Group::read_groups_from_file
-//   (DATA_FOLDER "/chapters/all.g.txt", groups);
-
-// Language_Sample::read_samples_from_file
-//   (pg, DATA_FOLDER "/chapters/all.txt", samps, groups);
-
- Dataset ds;// (DEFAULT_RPH_FOLDER  "/samples.txt");
+ Dataset ds;
  ds.load_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
-
 
 
 #ifdef USING_XPDF
@@ -198,7 +168,6 @@ int main(int argc, char **argv)
 #ifdef USING_KPH
  dlg.set_phr_init_function([&dlg](PHR_Runner& phr, PHR_Symbol_Scope*& pss)
  {
-//  PhaonIR* phaonir = new PhaonIR;
   PHR_Code_Model& pcm = phr.get_pcm();
   pcm.set_origin(phr.origin());
   pcm.set_direct_eval_fn(&phr_direct_eval);
@@ -206,18 +175,9 @@ int main(int argc, char **argv)
   pss = new PHR_Symbol_Scope(prs);
   init_test_functions(*phr.get_pcm().phaon_ir(), pcm, phr.get_table(), *pss);
   pcm.scopes()->phr_scope_queue().push_front(prs);
-
-
-//  Kauvir_Code_Model& kcm = phr.get_kcm();
-//  kcm.set_direct_eval_fn(&kcm_direct_eval);
-
-//  Phaon_Symbol_Scope* pss = new Phaon_Symbol_Scope;
-//  init_test_functions(&dlg, kcm, phr.get_table(), *pss);
-//  phr.get_phaon_scope_queue().push_front(pss);
  });
 #endif
 
-//?
  Application_Model apm(&dlg);
  dlg.set_application_model(&apm);
 
@@ -251,8 +211,6 @@ int main(int argc, char **argv)
   });
  });
 
-//?
-//
 #ifdef USING_CONFIG_DIALOG
  Config_Dialog* cdlg = nullptr;
  dlg.set_launch_config_function([&cdlg, &dlg]()

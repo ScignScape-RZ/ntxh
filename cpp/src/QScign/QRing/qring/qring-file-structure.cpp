@@ -12,11 +12,8 @@
 #include <QFileInfo>
 #include <QDir>
 
-//USING_KANS(QRing)
-
 
 QRing_File_Structure::QRing_File_Structure(QString root_folder)
- // :  root_folder_(root_folder)
 {
  if(root_folder.startsWith('&'))
  {

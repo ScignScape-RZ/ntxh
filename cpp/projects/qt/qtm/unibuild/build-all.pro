@@ -27,10 +27,12 @@ SUBDIRS += \
 SUBDIRS += \
   rz/PhaonIR/phaon-ir \
   rz/PhaonLib/phaon-lib \
+  rz/PhaonLib/phaon-lib-console \
 
 
 SUBDIRS += \
   QScign/ScignStage/ScignStage-ling \
+
 
 SUBDIRS += \
   dataset/application-model/application-model \

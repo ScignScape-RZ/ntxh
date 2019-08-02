@@ -101,17 +101,13 @@ void Expression_Generator::generate_from_node(QTextStream& qts,
      CAON_PTR_DEBUG(PHR_Graph_Token ,tokn)
      channel_name = cion->channel_name();
      generate_from_fn_node(qts, *tokn, channel_name, *n, unw, fen.raw_pointer());
-
-     //generate_fground_entry(qts, *fen, *n1, unw + 1);
-//     qts << "hold_type_by_name $ " << fen->result_type_name() << " ;.\n";
-//     generate_line(qts, "!push_carrier_expression");
     }
    }
   }
  }
  else
  {
-  // assume void call ...
+  // // assume void call ...
   if(caon_ptr<PHR_Graph_Token> tokn = node.phr_graph_token())
   {
    CAON_PTR_DEBUG(PHR_Graph_Token ,tokn)
@@ -150,24 +146,11 @@ void Expression_Generator::generate_fground_entry(QTextStream& qts,
    qts << "\npush_unwind_scope $ 1 "
    << cn << " ;.\n";
 
-// qts << "\npush_unwind_scope $ "
-// << unw << ' ' << cn << " ;.\n";
-
-// else
-// {
-//  qts << "push_carrier_stack $ " << fen.channel_name() << " ;.\n";
-//  if(!fen.result_type_name().isEmpty())
-//    qts << "hold_type_by_name $ " << fen.result_type_name() << " ;.\n";
-//  generate_line(qts, "index_channel_group");
-// }
  generate_from_node(qts, node, unw);
 
  if(unw > 0)
  {
   qts << "push_carrier_stack $ " << cn << " ;.\n";
-//?
-//  if(!fen.result_type_name().isEmpty())
-//    qts << "hold_type_by_name $ " << fen.result_type_name() << " ;.\n";
   generate_line(qts, "index_channel_group");
   generate_line(qts, "coalesce_channel_group");
   generate_comment_line(qts, "pop");
@@ -179,16 +162,6 @@ void Expression_Generator::generate_fground_entry(QTextStream& qts,
  }
  generate_comment_line(qts, "end fground entry");
 }
-
-//void Expression_Generator::generate_close(QTextStream& qts)
-//{
-// qts << "coalesce_channel_group ;.\n"
-//  "evaluate_channel_group ;.\n"
-//  "delete_temps ;.\n"
-//  "delete_retired ;.\n"
-//  "clear_temps ;.\n"
-//  "reset_program_stack";
-//}
 
 void Expression_Generator::generate_line(QTextStream& qts, QString ln)
 {
@@ -236,14 +209,13 @@ void Expression_Generator::generate_from_fn_node(QTextStream& qts,
 
 void Expression_Generator::generate_arg_carriers(QTextStream& qts,
   QString channel_name, const PHR_Graph_Node& arg_node,
-  int unw, PHR_Graph_FGround_Entry* fen)//, SB_Info sbi)
+  int unw, PHR_Graph_FGround_Entry* fen)
 {
  qts << "push_carrier_stack $ " << channel_name << " ;.\n";
  // assume depth 1 for now ...
  generate_fground_entry(qts, *fen, arg_node, unw + 1);
       qts << "hold_type_by_name $ " << fen->result_type_name() << " ;.\n";
       generate_line(qts, "push_carrier_expression");
-// caon_ptr<PHR_Graph_Node> n = &arg_node;
  caon_ptr<PHR_Graph_Node> n = &arg_node;
  generate_arg_carriers_follow(qts, n, unw);
 }
@@ -261,7 +233,6 @@ void Expression_Generator::generate_block(QTextStream& qts, PHR_Graph_Block_Info
  if(bin.fn_name().isEmpty())
    generate_line(qts, "push_carrier_anon_fn @ last_source_fn_name");
  else
-   //?
    qts << "push_carrier_named_fn @ =" << bin.fn_name() << " ;.\n";
 
  generate_empty_line(qts);
@@ -355,7 +326,6 @@ void Expression_Generator::generate_block_signature(QTextStream& qts,
   PHR_Graph_Signature& sig)
 {
  qts << "\n .; block signature ... ;.\n";
- //qts << "hold_program_stack ;.\n";
  generate_alt_entry(qts);
 
  generate_minimal_signature(qts, sig);
@@ -372,7 +342,7 @@ void Expression_Generator::generate_arg_carriers(QTextStream& qts,
 
  if(sbi.bin)
  {
-  // first arg is nested block ...
+  // // first arg is nested block ...
   qts << "anticipate_nested_block $ " << channel_name << " ;.\n";
 
   generate_block(qts, *sbi.bin, arg_node, sbi.sin);
@@ -385,7 +355,7 @@ void Expression_Generator::generate_arg_carriers(QTextStream& qts,
  }
  else
  {
-  // no nested entry ...
+  // // no nested entry ...
   if(caon_ptr<PHR_Graph_Token> tokn = arg_node.phr_graph_token())
   {
    CAON_PTR_DEBUG(PHR_Graph_Token ,tokn)
@@ -437,7 +407,6 @@ void Expression_Generator::generate_arg_carriers_follow(QTextStream& qts,
   else if(n1 = qy_.Channel_FGround_Coentry[cion1](n))
   {
    CAON_PTR_DEBUG(PHR_Graph_Node ,n1)
-//     // // already handled ...?
    n = qy_.Channel_Continue(n1);
    continue;
   }
@@ -503,7 +472,7 @@ void Expression_Generator::generate_arg_carriers_follow(QTextStream& qts,
     }
    }
   }
-  // no coentry right? ...
+  // // no coentry right? ...
   n = n1;
  }
 }
@@ -544,111 +513,8 @@ void Expression_Generator::generate_carrier_with_raw_value(QTextStream& qts,
    qts << "hold_type_by_name $ " << ty << " ;.\n";
 
  if(tok.flags.is_string_literal)
- //?  qts << "push_carrier_raw_value $ \"" << tok.raw_text() << "\" ;.\n";
    qts << "push_carrier_raw_value $ " << tok.raw_text() << " ;.\n";
  else
    qts << "push_carrier_raw_value $ " << tok.raw_text() << " ;.\n";
 }
 
-
-
-
-
-
-//caon_ptr<PHR_Graph_Node> n1 = nullptr;
-//while(n)
-//{
-// CAON_PTR_DEBUG(PHR_Graph_Node ,n)
-// caon_ptr<PHR_Graph_Connection> cion1;
-// if(n1 = qy_.Channel_Continue(n))
-// {
-//  if(caon_ptr<PHR_Graph_Token> tok = n1->phr_graph_token())
-//  {
-//   CAON_PTR_DEBUG(PHR_Graph_Token ,tok)
-//   generate_carrier(qts, *tok);
-//  }
-// }
-// else if(n1 = qy_.Channel_FGround_Entry[cion1](n))
-// {
-//  // // already handled ...?
-////?
-//#ifdef PROB_CUT
-////   if(n == &arg_node)
-////   {
-////    n = qy_.Channel_Continue(n1);
-////    continue;
-////   }
-//#endif // PROB_CUT
-//  CAON_PTR_DEBUG(PHR_Graph_Node ,n1)
-//  if(caon_ptr<PHR_Graph_FGround_Entry> fen = cion1->phr_node()->fground_entry())
-//  {
-//   generate_fground_entry(qts, *fen, *n1, unw + 1);
-//   qts << "hold_type_by_name $ " << fen->result_type_name() << " ;.\n";
-//   generate_line(qts, "push_carrier_expression");
-//  }
-// }
-// else if(n1 = qy_.Channel_FGround_Coentry[cion1](n))
-// {
-//  CAON_PTR_DEBUG(PHR_Graph_Node ,n1)
-////     // // already handled ...?
-////     if(n == &arg_node)
-////     {
-//     n = qy_.Channel_Continue(n1);
-//     continue;
-//#ifdef PROB_CUT
-////     }
-////   if(caon_ptr<PHR_Graph_FGround_Entry> fen = cion1->phr_node()->fground_entry())
-////   {
-////    generate_fground_entry(qts, *fen, *n1, unw + 1);
-////    qts << "hold_type_by_name $ " << fen->result_type_name() << " ;.\n";
-////    generate_line(qts, "push_carrier_expression");
-////   }
-//#endif // PROB_CUT
-// }
-// else if(n1 = qy_.Channel_FGround_Cross[cion1](n))
-// {
-//  CAON_PTR_DEBUG(PHR_Graph_Node ,n1)
-//  if(caon_ptr<PHR_Graph_FGround_Entry> fen = cion1->phr_node()->fground_entry())
-//  {
-//   generate_fground_entry(qts, *fen, *n1, unw + 1);
-//   qts << "hold_type_by_name $ " << fen->result_type_name() << " ;.\n";
-//   generate_line(qts, "push_carrier_expression");
-//  }
-// }
-// else if(n1 = qy_.Channel_Continue_Block[cion1](n))
-// {
-//  if(caon_ptr<PHR_Graph_Block_Info> bin = cion1->phr_node()->block_info())
-//  {
-//   if(cion1->phr_node(1))
-//   {
-//    if(caon_ptr<PHR_Graph_Statement_Info> sin = cion1->phr_node(1)->statement_info())
-//    {
-//     generate_block(qts, *bin, *n1, sin.raw_pointer());
-//    }
-//   }
-//   else
-//   {
-//    generate_block(qts, *bin, *n1);
-//   }
-//  }
-// }
-// else if(n1 = qy_.Channel_Cross_Block[cion1](n))
-// {
-//  if(caon_ptr<PHR_Graph_Block_Info> bin = cion1->phr_node()->block_info())
-//  {
-//   if(cion1->phr_node(1))
-//   {
-//    if(caon_ptr<PHR_Graph_Statement_Info> sin = cion1->phr_node(1)->statement_info())
-//    {
-//     generate_block(qts, *bin, *n1, sin.raw_pointer());
-//    }
-//   }
-//   else
-//   {
-//    generate_block(qts, *bin, *n1);
-//   }
-//  }
-// }
-
-// n = n1;
-//}

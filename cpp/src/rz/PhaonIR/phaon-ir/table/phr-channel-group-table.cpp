@@ -12,16 +12,8 @@
 
 #include "phaon-ir/scopes/phr-runtime-scope.h"
 
-//#include "kauvir-code-model/kcm-channel-group.h"
-
-//#include "kans.h"
-
 #include <QQueue>
 
-//USING_KANS(Kauvir)
-//USING_KANS(CMD)
-
-//USING//_KANS(PhaonLib)
 USING_KANS(Phaon)
 
 
@@ -58,8 +50,7 @@ s1_fng_type PHR_Channel_Group_Table::find_s1_declared_function_0(QString name,
 
 PHR_Runtime_Scope* PHR_Channel_Group_Table::get_runtime_scope(PHR_Symbol_Scope& pss)
 {
- //if(symbol_scope_)
-   return pss.runtime_scope();
+ return pss.runtime_scope();
 }
 
 

@@ -173,8 +173,6 @@ Application_Model_Test_Dialog::Application_Model_Test_Dialog(
  });
 
  main_layout_->addLayout(minimize_layout_);
- //
- //main_layout_->addWidget(button_box_);
 
  setLayout(main_layout_);
 }
@@ -209,7 +207,7 @@ void Application_Model_Test_Dialog::desktop_open_folder(QString qs)
 void Application_Model_Test_Dialog::do_run_test(QCheckBox* ckb, QString file, QString desc)
 {
  ckb->setCheckState(Qt::PartiallyChecked);
- //qDebug() << file;
+
  apptm_->run_kph_test(file, [this, ckb, desc, file]
  {
   check_test_result(desc, ckb, file);

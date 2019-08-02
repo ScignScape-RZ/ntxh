@@ -24,7 +24,7 @@ DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
 
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
-
+INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 
 CONFIG += no_keywords
 
@@ -41,7 +41,16 @@ SOURCES += \
   $$SRC_DIR/test-functions.cpp \
 
 
-LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir -lphr-direct-eval
+LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir  \
+  -lphr-direct-eval -lphr-command-runtime
+
+
+contains(CHOICE_FEATURES, "kph-gen") \#/
+{
+ message(DEFINE\'ing USING_KPH_GEN)
+ DEFINES += USING_KPH_GEN
+ LIBS += -L$$TARGETSDIR -lkph-generator
+}
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

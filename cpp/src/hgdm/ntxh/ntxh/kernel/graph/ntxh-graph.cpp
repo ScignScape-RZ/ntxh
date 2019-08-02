@@ -69,18 +69,6 @@ void NTXH_Graph::add_read_token(hypernode_type* hn, QString type_name,
 void NTXH_Graph::array_append(hypernode_type* hn, hypernode_type* nhn)
 {
  append_af(hn, {"", nhn}, {"proxy", nullptr});
-
-// //qint16 ind = hn->get_sf();
-// get_sf(hn, 0, [this, nhn, hn](QPair<QString, void*>& pr)
-// {
-//  qint16 index = (qint16) (quint64) pr.second;
-//  set_af(hn, index, {"", nhn}, {"proxy", nullptr});
-//  ++index;
-//  set_sf(hn, 0, {"", (void*)index}, {"index", nullptr});
-// // set_af(hn, index);
-//  //qDebug() << pr.first;
-// });
-
 }
 
 

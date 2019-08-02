@@ -47,8 +47,6 @@ USING_KANS(TextIO)
 #include <QPushButton>
 #include <QLabel>
 
-//#include <QExtraSelection>
-
 #include <QMessageBox>
 #include <QDebug>
 
@@ -144,9 +142,6 @@ void _lg_info_cb(QObject* obj, QMouseEvent* event,
  });
 
  qm->popup(event->globalPos());
-
-//
-// dlg->lg_label_cb(text);
 }
 
 void _dg_info_cb(QObject* obj, QMouseEvent* event,
@@ -274,9 +269,6 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
    QOverload<int, bool>::of(&QButtonGroup::buttonToggled),
    [this](int id, bool checked)
  {
-//  qDebug() << id;
-//  qDebug() << checked;
-
   if(sxpr_mode_button_->isChecked())
   {
    QAbstractButton* btn = sentence_button_group_->button(id);
@@ -570,8 +562,7 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
 
  connect(sxpr_text_edit_, &QPlainTextEdit::cursorPositionChanged, [this]()
  {
-  //int pos =
-  QTextCursor qtc = sxpr_text_edit_->textCursor();//.position();
+  QTextCursor qtc = sxpr_text_edit_->textCursor();
   QChar qch;
   if(! qtc.atBlockEnd() )
     qch = sxpr_text_edit_->toPlainText().at(qtc.position());
@@ -597,7 +588,7 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
   reinsert_pair_line(li, ovi, nvi);
  });
 
- pairs_table_widget_->verticalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);     //set contextmenu
+ pairs_table_widget_->verticalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
  connect(pairs_table_widget_->verticalHeader(), &QHeaderView::customContextMenuRequested,
    [this](const QPoint& qp)
  {
@@ -650,9 +641,6 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
 
  mw_ = new QMainWindow;
 
-// mw->addDockWidget(Qt::LeftDockWidgetArea, qdw);
-
-
  grammar_dock_widget_ = new QDockWidget;
  grammar_frame_ = new QFrame;
  grammar_combo_ = new QComboBox(this);
@@ -693,8 +681,8 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
  for(QString qs : lg_links)
  {
   // //  Uncomment to regenerate files ...
-//  QString path = QString("%1/%2.txt").arg(LINK_GRAMMAR_ABOUT_FOLDER).arg(qs);
-//  save_file(path, "\n@\n");
+   //  QString path = QString("%1/%2.txt").arg(LINK_GRAMMAR_ABOUT_FOLDER).arg(qs);
+   //  save_file(path, "\n@\n");
 
   ScignStage_Clickable_Label* scl = new ScignStage_Clickable_Label(this);
   scl->setText(qs);
@@ -707,7 +695,6 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
 
   link_grammar_layout_->addWidget(scl, i/10, i%10);
   ++i;
-  //grammar_dock_layout_->addWidget(new QPushButton(qs));
  }
  link_grammar_layout_->setRowStretch(((i-1)/10)+1, 1);
 
@@ -764,8 +751,8 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
  for(QString qs : dg_links)
  {
   // //  Uncomment to regenerate files ...
-//  QString path = QString("%1/%2.txt").arg(DEPENDENCY_GRAMMAR_ABOUT_FOLDER).arg(qs);
-//  save_file(path, "\n@\n");
+   //    QString path = QString("%1/%2.txt").arg(DEPENDENCY_GRAMMAR_ABOUT_FOLDER).arg(qs);
+   //    save_file(path, "\n@\n");
 
   ScignStage_Clickable_Label* scl = new ScignStage_Clickable_Label(this);
   scl->setText(qs);
@@ -844,17 +831,9 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
   grammar_stacked_widget_->setCurrentIndex(index);
  });
 
- //grammar_dock_layout_->addStretch();
-
  grammar_frame_->setStyleSheet(
     "ScignStage_Clickable_Label:hover{"
       "background-color:white;border:1px ridge rgb(130, 40, 0);}"
-//    "ScignStage_Clickable_Label:*[styled_info=\"true\"] {"
-//      "background-color:yellow;}" //border:1px ridge rgb(130, 40, 200);}"rgb(130, 240, 200)
-//    "ScignStage_Clickable_Label*[styled_info=\"false\"] {"
-//      "background-color:red;}" //border:1px ridge rgb(130, 40, 200);}"rgb(130, 240, */200)
-//    "ScignStage_Clickable_Label {"
-//      "background-color:blue;}" //border:1px ridge rgb(130, 40, 200);}"rgb(130, 240, 200)
     );
 
  grammar_frame_->setLayout(grammar_layout_);
@@ -882,20 +861,6 @@ Lexpair_Dialog::Lexpair_Dialog(QStringList sent, QWidget* parent)
  mw_layout_->addLayout(minimize_layout_);
 
  setLayout(mw_layout_);
- // //  mw->show();
-
-// //main_layout_->addWidget(mw);
-
-// //main_frame_layout_ = new QVBoxLayout;
-
-// main_frame_ = new QFrame(this);
-// main_frame_->setLayout(main_layout_);
-// mw_->setCentralWidget(main_frame_);
-
-// mw_layout_->addWidget(mw_);
-// setLayout(mw_layout_);
-
- //setLayout(main_layout_);
 }
 
 void Lexpair_Dialog::force_recheck(int id)
@@ -914,7 +879,6 @@ void Lexpair_Dialog::check_sxpr_balance(QChar qch, int pos)
    [this](int i1, int i2)
    {
     sxpr_highlight_balanced(i1, i2);
-    //qDebug() << ": " << i1 << ", " << i2;
    });
 }
 
@@ -928,7 +892,6 @@ void Lexpair_Dialog::splice_multi()
  QString text;
  int c = 0;
 
- //int sz = multi_selected_buttons_.size();
  QPushButton* hold = nullptr;
 
  for(QPushButton* btn: multi_selected_buttons_)
@@ -960,13 +923,6 @@ void Lexpair_Dialog::back_splice_multi()
 {
  QString text;
 
-// //int sz = multi_selected_buttons_.size();
-// QPushButton* hold = nullptr;
-
-// int sz = multi_selected_buttons_.size();
-// if(sz == 0)
-//   return;
-
  int c = 0;
  for(QPushButton* btn: multi_selected_buttons_)
  {
@@ -988,7 +944,7 @@ void Lexpair_Dialog::back_splice_multi()
  clear_splice(true);
 }
 
-int Lexpair_Dialog::remove_pairs_row(int row)
+void Lexpair_Dialog::remove_pairs_row(int row)
 {
  QHeaderView* qhv = pairs_table_widget_->verticalHeader();
  QSignalBlocker qsb(qhv);
@@ -1023,13 +979,6 @@ int Lexpair_Dialog::remove_pairs_row(int row)
   twi_vi->setText(QString("%1 {%2}")
     .arg(pairs_table_widget_->verticalHeader()->visualIndex(r)).arg(r));
  }
-
-// for(int r = 0; r < pairs_table_widget_->rowCount(); ++r)
-// {
-//  QTableWidgetItem* twi_vi = pairs_table_widget_->verticalHeaderItem(r);
-//  qDebug() << vertical_header_map_[twi_vi].words;
-// }
-
 }
 
 
@@ -1063,11 +1012,7 @@ void Lexpair_Dialog::reinsert_pair_line(int li, int ovi, int nvi, int dir)
 {
  QHeaderView* qhv = pairs_table_widget_->verticalHeader();
  QSignalBlocker qsb(qhv);
-
-  //qDebug() << QString("\nli: %1 ovi: %2 nvi: %3").arg(li).arg(ovi).arg(nvi);
-
  QTableWidgetItem* twi_v = pairs_table_widget_->verticalHeaderItem(li);
- //qDebug() << vertical_header_map_[twi_v].words << "\n";
 
  QList<QTableWidgetItem*> prior_list;
  {
@@ -1086,7 +1031,6 @@ void Lexpair_Dialog::reinsert_pair_line(int li, int ovi, int nvi, int dir)
   }
  }
 
- //int offset = prior_list.size();
  int vrow = nvi;
  for(QTableWidgetItem* ptwi : prior_list)
  {
@@ -1106,7 +1050,6 @@ void Lexpair_Dialog::reinsert_pair_line(int li, int ovi, int nvi, int dir)
   int nli = vertical_header_map_[ntwi].logical_index;
   int nvi = qhv->visualIndex(nli);
   qhv->moveSection(nvi, vrow);
-  //++vrow;
  }
 
 
@@ -1114,50 +1057,9 @@ void Lexpair_Dialog::reinsert_pair_line(int li, int ovi, int nvi, int dir)
  for(int r = 0; r < pairs_table_widget_->rowCount(); ++r)
  {
   QTableWidgetItem* twi_vi = pairs_table_widget_->verticalHeaderItem(r);
-
-  //qDebug() << vertical_header_map_[twi_vi].words;
-
   twi_vi->setText(QString("%1 {%2}")
     .arg(pairs_table_widget_->verticalHeader()->visualIndex(r)).arg(r));
  }
-
-// if(dir != 1)
-// {
-//  if(QTableWidgetItem* twi_vp = vertical_header_map_[twi_v].pin_prior)
-//  {
-//     //if(twi_vp == vertical_header_map_[twi_v].pin_prior)
-//   int li = vertical_header_map_[twi_vp].logical_index;
-//   qDebug() << "prior: " << li;
-//   // qDebug() << vertical_header_map_[twi_vp].words << "\n";
-//   QHeaderView* qhv = pairs_table_widget_->verticalHeader();
-//   int vi = qhv->visualIndex(li);
-//   qhv->moveSection(vi, nvi);
-//   reinsert_pair_line(li, vi, nvi + 1, -1);
-//  }
-// }
-
-// if(dir != -1)
-// {
-//  if(QTableWidgetItem* twi_vp = vertical_header_map_[twi_v].pin_next)
-//  {
-//   int li = vertical_header_map_[twi_vp].logical_index;
-//   qDebug() << "next: " << li << " n+ " << nvi + 1;
-//   //  qDebug() << vertical_header_map_[twi_vp].words << "\n";
-//   QHeaderView* qhv = pairs_table_widget_->verticalHeader();
-//   int vi = qhv->visualIndex(li);
-//   if(vi != nvi + 1)
-//     qhv->moveSection(vi, nvi + 1);
-//   reinsert_pair_line(li, vi, nvi + 1, 1);
-//  }
-
-// }
-// int start = qMin(ovi, nvi);
-// int end = qMax(ovi, nvi);
-// for(int i = start; i <= end; ++i)
-// {
-//  QTableWidgetItem* twi_vi = pairs_table_widget_->verticalHeaderItem(i);
-//  twi_vi->setText(QString::number(pairs_table_widget_->verticalHeader()->visualIndex(i)));
-// }
 }
 
 void Lexpair_Dialog::check_multi_select_button(QPushButton* btn)
@@ -1259,8 +1161,6 @@ bool Lexpair_Dialog::eventFilter(QObject* obj, QEvent* event)
   }
   else if(event->type() == QEvent::Leave)
   {
-//   const QMouseEvent* const qme = static_cast<const QMouseEvent*>( event );
-
    if(_focus_button_)
      _focus_button_->setFocus();
    if(btn->isChecked())
@@ -1424,7 +1324,6 @@ void Lexpair_Dialog::add_pair_line(QPair<QString, QString>& words,
  QTableWidgetItem* twi = new QTableWidgetItem(QString(
    "%1 %2").arg(words.first).arg(words.second));
 
- //pairs_[{source_id_, target_id_, id}]  = {twi, sl, sr};
  pairs_table_widget_->setRowCount(pairs_count_ + 1);
  pairs_table_widget_->setItem(pairs_count_, 0, twi);
 
@@ -1517,7 +1416,6 @@ void Lexpair_Dialog::enable_sxpr_buttons(bool en)
  {
   b->setEnabled(en);
  }
- // sxpr_splice_button_->setEnabled(false);
 }
 
 void Lexpair_Dialog::clear_buttons()

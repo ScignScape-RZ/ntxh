@@ -27,8 +27,11 @@ void NTXH_Grammar::init(NTXH_Parser& p, NTXH_Graph& g, NTXH_Graph_Build& graph_b
  pre_rule( "script-word", "(?:[^{}()\\[\\]\\s`;,:]|(?:\\w::?\\w))+" );
  pre_rule( "ns-word", "(?: [^{}()\\[\\]\\s`;,:]+ )" );
 
-//? pre_rule( "space-to-end-of-line", "[__\\t]* (?: ;- [^\\n]+ )? (?= \\n )" );
-//? pre_rule( "end-of-line", "[__\\t\\S]* \\n" );
+// //  not used here ...
+  //      pre_rule( "space-to-end-of-line", "[__\\t]* (?: ;- [^\\n]+ )? (?= \\n )" );
+// //  not used here ...
+  //      pre_rule( "end-of-line", "[__\\t\\S]* \\n" );
+
  pre_rule( "single-space", "[__\\t]" );
 
 
@@ -188,14 +191,6 @@ void NTXH_Grammar::init(NTXH_Parser& p, NTXH_Graph& g, NTXH_Graph_Build& graph_b
   if(!parse_context.flags.multiline_field)
     graph_build.end_field();
  });
-
-// add_rule(read_context,
-//   "end-field",
-//   " (?= \\n ) ",
-//   [&]
-// {
-//  graph_build.end_field();
-// });
 
  add_rule( read_context, "prepare-field",
    "\\n"

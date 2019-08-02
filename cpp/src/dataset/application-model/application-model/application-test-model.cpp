@@ -7,7 +7,6 @@
 
 #include "application-test-model.h"
 
-//?#include "kauvir-phaon/kph-command-package.h"
 #include "phaon-ir/runtime/phr-command-package.h"
 
 #include <QNetworkAccessManager>

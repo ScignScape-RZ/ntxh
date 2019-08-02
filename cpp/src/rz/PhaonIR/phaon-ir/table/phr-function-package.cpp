@@ -10,10 +10,6 @@
 #include "phaon-ir/channel/phr-channel-group.h"
 #include "phaon-ir/channel/phr-carrier.h"
 
-//#include "kans.h"
-
-//USING_KANS(KCM)
-//USING_KANS(Kauvir)
 
 USING_KANS(Phaon)
 
@@ -74,7 +70,6 @@ const PHR_Type_Object* PHR_Function_Package::result_type_object()
    if(!rch->isEmpty())
    {
     PHR_Carrier* r1 = rch->first();
-   //PHR_Carrier r1; rch->get_carrier_at_position(0, r1);
     return r1->type_object();
    }
   }

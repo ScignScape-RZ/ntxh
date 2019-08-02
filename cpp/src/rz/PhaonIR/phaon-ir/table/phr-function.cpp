@@ -12,7 +12,6 @@
 #include <QString>
 #include <QDebug>
 
-//USING//_KANS(PhaonLib)
 
 USING_KANS(Phaon)
 

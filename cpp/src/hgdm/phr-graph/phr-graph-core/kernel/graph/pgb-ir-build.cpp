@@ -42,7 +42,6 @@ MG_Token _PGB_IR_Build::mgtoken(QString rt, MG_Token_Kind_Groups kg, MG_Token_Su
   if(sg == MG_Token_Subgroups::Value)
   {
    if(rt.startsWith('"'))
-     //?return {MG_Token_Kinds::Arg_String_Literal_Value, rt};
      return {MG_Token_Kinds::String_Literal, rt};
    return {MG_Token_Kinds::Arg_Raw_Value, rt};
   }
@@ -173,9 +172,6 @@ Purpose_Codes& _PGB_IR_Build::make_statement_info_node(QString anchor_name,
  MG_Token cmgt = mgtoken(channel_name, MG_Token_Kind_Groups::Generic, csg);
  MG_Token kmgt = mgtoken(anchor_kind, MG_Token_Kind_Groups::Generic, aksg);
  MG_Token tmgt = mgtoken(target, MG_Token_Kind_Groups::Target, tsg);
-
-
- //?qts_ << const_cast<const MG_Token&>(it.next()).encode();
  qts_ << " (pgb::make_statement_info_node  ";
  end_line({amgt, cmgt, kmgt, tmgt});
  return purpose_;
@@ -504,7 +500,6 @@ Purpose_Codes& _PGB_IR_Build::comment(QString str)
 Purpose_Codes& _PGB_IR_Build::macro(QStringList _args)
 {
  QList<MG_Token> args = {{MG_Token_Kinds::Macro_Name, _args.takeFirst()}};
- //args.resize(_args.size());
  std::transform(_args.begin(), _args.end(),
    std::back_inserter(args), [](const QString& str) -> MG_Token
  {
@@ -515,7 +510,6 @@ Purpose_Codes& _PGB_IR_Build::macro(QStringList _args)
 
 Purpose_Codes& _PGB_IR_Build::macro(QList<MG_Token>& args)
 {
- //MG_Token amgt = {carrier_kind, MG_Token_Kinds::Generic};
  qts_ << "(pgb::macro "; end_line(std::move(args));
  return purpose_;
 }
@@ -527,7 +521,7 @@ Purpose_Codes& _PGB_IR_Build::write_with_tokens(QString fn, QList<MG_Token>& mgt
 }
 
 PGB_IR_Build::PGB_IR_Build(QString out_file)
-  :  out_file_(out_file)//, qts_(&text)
+  :  out_file_(out_file)
 {
 
 }
@@ -544,9 +538,6 @@ _PGB_IR_Build PGB_IR_Build::operator()(QList<Text_With_Purpose>& tps)
  tps.push_back({QString(), Purpose_Codes::N_A});
  Text_With_Purpose& tp = tps.back();
  return operator()(tp);
-// qts_.setString(&qs);
-// _PGB_IR_Build result(qts_);
-// return result;
 }
 
 _PGB_IR_Build PGB_IR_Build::operator[](QList<Text_With_Purpose>& tps)
@@ -554,9 +545,6 @@ _PGB_IR_Build PGB_IR_Build::operator[](QList<Text_With_Purpose>& tps)
  tps.push_front({QString(), Purpose_Codes::N_A});
  Text_With_Purpose& tp = tps.front();
  return operator()(tp);
-// qts_.setString(&qs);
-// _PGB_IR_Build result(qts_);
-// return result;
 }
 
 _PGB_IR_Build PGB_IR_Build::insert_after_purpose(QList<Text_With_Purpose>& tps,
@@ -665,8 +653,9 @@ QString PGB_IR_Build::parse_line(QString line, QMultiMap<MG_Token_Kinds, QPair<M
      qsl.push_back(QString("\"%1\"").arg(s));
   }
   else
-  { // If 's' is outside quotes ...
-   qsl.append(s.split(' ', QString::SkipEmptyParts)); // ... get the splitted string
+  {
+   // // If 's' is outside quotes ...
+   qsl.append(s.split(' ', QString::SkipEmptyParts)); // // ... get the splitted string
   }
   quoted = !quoted;
  }
@@ -697,12 +686,7 @@ QList<MG_Token> PGB_IR_Build::mgts_by_kind_group(const QMultiMap<MG_Token_Kinds,
  QList<MG_Token> result;
  std::transform(qlp.begin(), qlp.end(),
                 std::back_inserter(result),
-   std::bind(&QPair<MG_Token, int>::first, std::placeholders::_1)
-//   [](const QPair<MG_Token, int>& pr)
-//  {return pr.first;}
-                //std::mem_fun(&QPair<MG_Token, int>::second)
-                );
- //for(const QPair<MG_Token, int>& pr: qlp)
+   std::bind(&QPair<MG_Token, int>::first, std::placeholders::_1));
  return result;
 }
 

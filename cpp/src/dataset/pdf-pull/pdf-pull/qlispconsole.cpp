@@ -89,7 +89,6 @@ QLispConsole::lisp_check_for_unexpected_eof()
     return false;
 }
 
-//Desctructor
 QLispConsole::~QLispConsole()
 {
 }

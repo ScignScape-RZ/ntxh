@@ -7,15 +7,9 @@
 
 #include "phr-function-vector.h"
 
-//#include "kauvir-code-model/kcm-function-package.h"
-//#include "kauvir-code-model/kcm-type-object.h"
-//#include "kans.h"
-
 
 #include <QString>
 #include <QDebug>
-
-//USING_KANS(KCM)
 
 USING_KANS(Phaon)
 

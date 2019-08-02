@@ -14,14 +14,6 @@
 #include "phaong/phaong.h"
 #include "phaong/phaong-types.h"
 
-
-//#include "relae-phaon/kernel/graph/relae-phaon-node.h"
-//#include "relae-phaon/kernel/frame/relae-phaon-frame.h"
-//#include "relae-phaon/kernel/query/relae-phaon-query.h"
-//#include "relae-phaon/kernel/graph/relae-phaon-graph.h"
-//#include "ds-relae-phaon/rph-document.h"
-
-
 #include "ntxh-parser/ntxh-document.h"
 
 #include "textio.h"
@@ -34,12 +26,11 @@ USING_KANS(TextIO)
 
 Dataset::Dataset() 
 {
-//
  forms_ = QStringList{{"Text", "Dialog", "Intonation", "Fragment", "Paragraph"}};
  issues_ = QStringList{{"Ambiguity", "Context", "Logic",
             "Scope", "Polarity", "Belief", "Syntax", "Semantics", "Pragmatics",
             "Convention", "Idioms", "Lexical", "Idiomatic", "Reference",
- "Ontological", //"Rhetoric"
+ "Ontological", //?"Rhetoric"
  }};
 }
 
@@ -111,11 +102,7 @@ void Dataset::load_from_file(QString path)
 
  typedef NTXH_Graph::hypernode_type hypernode_type;
 
- NTXH_Graph& g = *doc.graph();
-// const QVector<hypernode_type*>& v = g.hypernodes();
-
-
-// RPH_Graph::hypernode_type* hn = doc.graph()->hypernodes()[0];
+//? NTXH_Graph& g = *doc.graph();
 
  QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
 
@@ -128,8 +115,6 @@ void Dataset::load_from_file(QString path)
   ++count;
   Language_Sample_Group* result = new Language_Sample_Group(count);
 
-//  doc.graph()->get_sfs(hn, {1,2,3}, [result](QVector<QPair<QString, void*>>& prs)
-
   doc.graph()->get_sfsr(hn, {{1,3}}, [result](QVector<QPair<QString, void*>>& prs)
   {
    QVector<quint16> nums = {0,0,0};
@@ -138,11 +123,8 @@ void Dataset::load_from_file(QString path)
     return pr.first.toInt();
    });
    result->set_id(nums[0]);
-//   result->set_start_num(nums[1]);
-//   result->set_end_num(nums[2]);
    result->set_page(nums[1]);
    result->set_section_num(nums[2]);
-
   });
 
   doc.graph()->all_afs(hn, [&doc, result](QPair<QString, void*>& pr)
@@ -185,29 +167,6 @@ void Dataset::load_from_file(QString path)
         ls->set_classification(ipr.first);}
     });
 
-//    doc.graph()->get_sf(ihn, 4, [result, &ls](QPair<QString, void*>& ipr)
-//    {
-//     ls = new Language_Sample(result, ipr.first);
-//    });
-
-//    doc.graph()->get_sf(ihn, 3, [ls](QPair<QString, void*>& ipr)
-//    {
-//     if(check(ipr))
-//       ls->set_latex_label(ipr.first);
-//    });
-
-//    doc.graph()->get_sf(ihn, 1, [ls](QPair<QString, void*>& ipr)
-//    {
-//     if(check(ipr))
-//       ls->set_id(ipr.first.toInt());
-//    });
-
-//    doc.graph()->get_sf(ihn, 2, [ls](QPair<QString, void*>& ipr)
-//    {
-//     if(check(ipr))
-//       ls->set_page(ipr.first.toInt());
-//    });
-
     result->push_back(ls);
    }
   });
@@ -238,40 +197,7 @@ void Dataset::get_serialization(QString& text, QString& gtext)
   //?gtext += g->get_serialization(rgc);
  }
 
-
-// QMap<int, Language_Sample_Group*> gm;
-// int sz = groups_.size();
-// QMapIterator<QString, Language_Sample_Group*> it(groups_);
-// while(it.hasNext())
-// {
-//  it.next();
-//  Language_Sample_Group* g = it.value();
-//  int id = g->id();
-//  gm[id] = g;
-// }
-
-// for(int i = 0; i < sz; ++i)
-// {
-//  Language_Sample_Group* g = gm[i + 1];
-//  gtext += g->get_serialization();
-// }
-
-
 }
-
-//void Dataset::save_to_file()
-//{
-// QString text;
-// QString gtext;
-// get_serialization(text, gtext);
-// QString dt = QDateTime::currentDateTime().toString("dd-MM-yy--hh-mm");
-// QString path = QString("%1.%2.txt").arg(file_).arg(dt);
-// save_file(path, text);
-
-// QString gpath = QString("%1.%2.g.txt").arg(file_).arg(dt);
-// save_file(gpath, gtext);
-
-//}
 
 void Dataset::parse_to_samples(QString text, int page,
   int num, phaong<pg_t>& phg)

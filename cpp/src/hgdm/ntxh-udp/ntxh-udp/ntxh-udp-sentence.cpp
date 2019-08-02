@@ -24,8 +24,8 @@ void NTXH_UDP_Sentence::report_text(QTextStream& qts)
  QString rep;
  for(word w : udp_sentence_->words)
  {
-//  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
-//  rep += wp.text() + ' ';
+//?  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
+//?  rep += wp.text() + ' ';
  }
  qts << rep << "\n";
 }
@@ -33,36 +33,12 @@ void NTXH_UDP_Sentence::report_text(QTextStream& qts)
 void NTXH_UDP_Sentence::write_sxp_edges(QTextStream& qts,
   QString templat, QString rtemplat, int root_num)
 {
-// int i = 0;
-// for(QPair<QString, int>& pr : sxp_texts_)
-// {
-//  ++i;
-//  if(i == root_num)
-//  {
-//   qts << rtemplat.arg(i).arg("root");
-//  }
-//  auto it = qmap.find(pr);
-//  if(it != qmap.end())
-//  {
-//   for(const NTXH_UDP_SXP_Rel_Pair* rp : *it)
-//   {
-//    QString rel = QString("%1%2").arg(rp->rel.unw).arg(rp->rel.unw);
-//    qts << templat.arg(rp->rel.sxp_index).arg(i).arg(rel);
-//   }
-//  }
-// }
-
  qts << rtemplat.arg(root_num).arg("root");
 
  for(NTXH_UDP_SXP_Rel_Pair& pr : sxp_vector_)
  {
   QString rel = QString("%1%2").arg(pr.rel.unw).arg(pr.rel.pos);
   qts << templat.arg(pr.rel.sxp_index).arg(pr.sxp_index).arg(rel);
-
-//  int i1 = get_id_by_word(pr.text, pr.which);
-//  int i2 = get_id_by_word(pr.rel.chief, pr.rel.which);
-//  pr.index = i1;
-//  pr.rel.index = i2;
  }
 }
 
@@ -82,19 +58,6 @@ void NTXH_UDP_Sentence::write_edges(QTextStream& qts, QString templat, QString r
     qts << rtemplat.arg(w.id).arg(QString::fromStdString(w.deprel));
  }
 }
-
-//void NTXH_UDP_Sentence::scan_sxp(const QVector<NTXH_UDP_SXP_Rel_Pair>& qvec)//,
-////  QMap<QPair<QString, int>, QVector<const NTXH_UDP_SXP_Rel_Pair*>>& qmap)
-//{
-//// for(const NTXH_UDP_SXP_Rel_Pair& pr : qvec)
-//// {
-////  //const NTXH_UDP_SXP_Rel* rel = &pr.rel;
-////  QString text = pr.rel.chief;
-////  if(pr.rel.which > 0)
-////    text += QString("->%1").arg(pr.rel.which);
-////  qmap[{text, pr.rel.index}].push_back(&pr);
-//// }
-//}
 
 void NTXH_UDP_Sentence::join_sxp_text(QTextStream& qts,
   QString sep, QString end, Join_Field_Codes j)
@@ -133,14 +96,11 @@ void NTXH_UDP_Sentence::join_sxp_text(QTextStream& qts,
 
 void NTXH_UDP_Sentence::join_text(QTextStream& qts, QString sep, QString end, Join_Field_Codes j)
 {
- //QString result;
  int max = udp_sentence_->words.size() - 1;
  for(word w : udp_sentence_->words)
  {
   if(w.id == 0)
     continue;
-//?  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
-
   QString text;
 
   switch (j)
@@ -172,8 +132,8 @@ void NTXH_UDP_Sentence::report_text()
  QString rep;
  for(word w : udp_sentence_->words)
  {
-//  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
-//  rep += wp.text() + ' ';
+//?  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
+//?  rep += wp.text() + ' ';
  }
  qDebug() << rep;
 }
@@ -224,16 +184,11 @@ void NTXH_UDP_Sentence::write_latex(QTextStream& qts)
 
  write_edges(qts, "\\depedge{%1}{%2}{%3}\n", "\\deproot{%1}{%2}\n");
 
-//  \depedge{1}{2}{det}
-
  qts << "\n\n\\end{dependency}\n";
 
  QString sx = sxp_text_;
  if(!sx.isEmpty())
  {
-//   QMap<QPair<QString, int>, QVector<const NTXH_UDP_SXP_Rel_Pair*>> qmap;
-//   NTXH_UDP_Sentence::scan_sxp(dgs.sxp_vector() );
-
   sx.replace("$", "\\$");
   sx.replace("->", "{\\arrwhich}");
 
@@ -247,7 +202,7 @@ void NTXH_UDP_Sentence::write_latex(QTextStream& qts)
   join_sxp_text(qts, " \\& ", " \\\\", NTXH_UDP_Sentence::Join_Field_Codes::UPOS);
   qts << "\n";
   join_sxp_text(qts, " \\& ", " \\\\", NTXH_UDP_Sentence::Join_Field_Codes::XPOS);
-//  qts << "\n";
+
   qts << "\n\\end{deptext}\n\n";
 
   write_sxp_edges(qts, "\\depedge[edge below]{%1}{%2}{%3}\n",
@@ -274,15 +229,6 @@ void NTXH_UDP_Sentence::check_comments()
  }
 }
 
-//struct sxprel
-//{
-// QString hint;
-// int ch_id;
-// int unw;
-// int max_unw;
-// int pos;
-//};
-
 void NTXH_UDP_Sentence::parse_sxp(QString sxp, QVector<NTXH_UDP_SXP_Rel_Pair>& qvec,
   QVector<QPair<QString, int>>& sxp_texts)
 {
@@ -295,7 +241,6 @@ void NTXH_UDP_Sentence::parse_sxp(QString sxp, QVector<NTXH_UDP_SXP_Rel_Pair>& q
  QMap<QString, int> counts;
 
  QStack<int> pos_stack;
-// int current_pos = 0;
 
  NTXH_UDP_SXP_Rel current_ch = {QString(), 0, 0, 0, 0, 0, 0};
  QStack<NTXH_UDP_SXP_Rel> ch_stack;
@@ -336,16 +281,14 @@ void NTXH_UDP_Sentence::parse_sxp(QString sxp, QVector<NTXH_UDP_SXP_Rel_Pair>& q
 
    sxp_texts.push_back({qs, which});
 
-   //QString cc = current_ch.chief;
    if(cpc > 0)
    {
     int unw = current_ch.unw;
-    int max = current_ch.max_unw;
+//?    int max = current_ch.max_unw;
     for(int i = 0; i < cpc; ++i)
     {
      current_ch = ch_stack.pop();
     }
-    //current_pos = current_ch.pos;
     unw = current_ch.unw;
     ++current_ch.pos;
     if(opc == 0)
@@ -375,7 +318,6 @@ void NTXH_UDP_Sentence::parse_sxp(QString sxp, QVector<NTXH_UDP_SXP_Rel_Pair>& q
     current_ch = {qs, which, 0, 1, opc, 1, sxp_texts.size()};
     opc = 0;
     cpc = 0;
-//    current_pos = 0;
    }
    else if(cpc > 0)
    {
@@ -387,7 +329,7 @@ void NTXH_UDP_Sentence::parse_sxp(QString sxp, QVector<NTXH_UDP_SXP_Rel_Pair>& q
     qDebug() << QString("\n%1 : %2 (%3-%4)").
        arg(current_ch.chief).arg(qs).arg(current_ch.unw).arg(current_ch.pos);
     qvec.push_back({qs, which, 0, sxp_texts.size(), current_ch});
-    ++current_ch.pos;// = current_pos;
+    ++current_ch.pos;
    }
   }
  }

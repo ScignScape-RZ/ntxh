@@ -35,7 +35,5 @@ void KDMI_Model::init_from_file(QString s)
  samples_ = &dataset_->samples();
  groups_ = &dataset_->groups();
 
-//  Dataset ds;// (DEFAULT_RPH_FOLDER  "/samples.txt");
-//  ds.load_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
 }
 

@@ -77,7 +77,7 @@ void add_to_data_set(QString qs, int page)
  static Dataset* ds = nullptr;
  if(!ds)
  {
-  ds = new Dataset();//DEFAULT_TEMP_DATASET_FILE);
+  ds = new Dataset();//?DEFAULT_TEMP_DATASET_FILE);
  }
 
  QString text = QString("@%1 # %2").arg(page).arg(qs);

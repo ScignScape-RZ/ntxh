@@ -21,7 +21,6 @@ USING_KANS(Phaon)
 
 PHR_Code_Model::PHR_Code_Model()
   :  type_system_(nullptr), scopes_(nullptr),
-     //?current_symbol_scope_(nullptr),
      table_(nullptr), envv_fn_(nullptr), origin_(nullptr)
    #ifdef USING_KPH_GEN
      ,kph_generator_(nullptr)
@@ -53,7 +52,6 @@ PHR_Type_Object* PHR_Code_Model::create_and_register_type_object(QString name, i
 {
  PHR_Type* pt = type_system_->check_add_type_by_name(name, bc);
  PHR_Type_Object* pto = new PHR_Type_Object(pt);
-// KCM_Type_Object* result = new KCM_Type_Object(kto);
 
  if(name.endsWith('*'))
  {
@@ -98,7 +96,6 @@ PHR_Type_Object* PHR_Code_Model::create_and_register_type_object(QString name, i
    {
     pt->set_pqmo(pqmo);
     pt->set_qmetatype_ptr_code(pid);
-    // // kto->check_register_variant_and_metatype_info(QVariant::UserType, pid);
    }
   }
  }
@@ -109,14 +106,13 @@ void PHR_Code_Model::direct_eval(PHR_Command_Package* pcp, PHR_Symbol_Scope* cur
 {
  if(direct_eval_fn_)
  {
-  //?current_symbol_scope_ = current_symbol_scope;
   direct_eval_fn_(this, pcp, current_symbol_scope);
  }
 }
 
 void PHR_Code_Model::init_scope_system()
 {
- //scope_system_->join_lexical_scope(current_lexical_scope_);
+ // //?scope_system_->join_lexical_scope(current_lexical_scope_);
 }
 
 
@@ -135,8 +131,6 @@ void PHR_Code_Model::report_channel_group(QTextStream& qts, PHR_Channel_Group& p
   QString chn = it.key()->name();
   report_channel(qts, parse_channel_kind(chn), chn, it.value(), pcrs, cenv);
  }
-// report({KCM_Channel::Kinds::FGround, KCM_Channel::Kinds::Lambda,
-//   KCM_Channel::Kinds::Sigma, KCM_Channel::Kinds::Result}, qts, kcm, kcrs, cenv);
 }
 
 PHR_Code_Model::Recognized_Channel_Kinds PHR_Code_Model::parse_channel_kind(QString name)
@@ -169,27 +163,6 @@ void PHR_Code_Model::report_type_object(QTextStream& qts,
  {
   pto_type_rep = pto->ty()->name(); //?pcm.string_rep(pto->ty());
  }
-//?
-// if(kcrs.flags.use_thorin_array_types)
-// {
-//  if(array_length_ == -1)
-//  {
-//   kto_type_rep.prepend('[');
-//   kto_type_rep.append(']');
-//  }
-//  else if(array_length_ > 0)
-//  {
-//   kto_type_rep = QString("[%1 * %2]").arg(kto_type_rep).arg(array_length_);
-//  }
-// }
-// switch()
-// {
-// case Modifiers::Pointer:
-//  kto_type_rep.prepend('&');
-//  break;
-// default:
-//  break;
-// }
  if(pcrs.flags.surround_type_expressions)
  {
   qts << pto_type_rep;
@@ -204,15 +177,7 @@ void PHR_Code_Model::report_carrier(QTextStream& qts, PHR_Carrier* phc, PCM_Repo
 {
  if(phc->symbol_name().startsWith("\\."))
  {
-//?
-//  kcm.report_expression_from_code(qts, phc->symbol_name(), kcrs);
-//  if(kcrs.flags.cast_after_expression)
-//  {
-//   if(cast_type_object_)
-//   {
-//    qts << " as " << kcm.get_ouput_type_name(kcrs, cast_type_object_);
-//   }
-//  }
+  // // ?
  }
  else
  {
@@ -233,11 +198,7 @@ void PHR_Code_Model::report_carrier(QTextStream& qts, PHR_Carrier* phc, PCM_Repo
   }
   if(pcrs.flags.cast_after_expression)
   {
-//?
-//   if(cast_type_object_)
-//   {
-//    qts << " as " << kcm.get_ouput_type_name(kcrs, cast_type_object_);
-//   }
+   // //?
   }
  }
 }
@@ -256,7 +217,7 @@ void PHR_Code_Model::report_channel(QTextStream& qts, Recognized_Channel_Kinds r
   QString post;
   if(pcrs.flags.identify_channel_names)
   {
-   pre = QString("[%1").arg(chn); //kind_to_string(kcrs));
+   pre = QString("[%1").arg(chn);
    post = " ]";
   }
 
@@ -346,7 +307,4 @@ void PHR_Code_Model::report_channel(QTextStream& qts, Recognized_Channel_Kinds r
  {
   qts << ')';
  }
-
 }
-
-

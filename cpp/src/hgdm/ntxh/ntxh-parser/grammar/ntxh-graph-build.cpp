@@ -56,7 +56,6 @@ void NTXH_Graph_Build::end_field()
     acc_ = replacements_.value(acc_.simplified().mid(1));
  }
 
- //?if(flags.split_numeric_acc)
  if(flags.numeric_acc)
  {
   flags.numeric_acc = false;
@@ -168,8 +167,6 @@ void NTXH_Graph_Build::prepare_field_read(QString prefix, QString field, QString
  {
   flags.define_replacement = true;
   current_field_name_ = field;
-//  flags.array_field = false;
-//  return;
  }
  flags.array_field = prefix.startsWith('@');
 }
@@ -261,9 +258,6 @@ void NTXH_Graph_Build::start_sample(QString ty)
  current_hypernode_ = graph_.new_hypernode_by_type_name(ty);
 
  current_type_name_ = ty;
-
-// phaong<pg_t>::Hypernode* hn = pg.new_hypernode(5);
-// pg.set_sf(hn, 0, {"xx", nullptr}, {"QString", nullptr});
 
 }
 

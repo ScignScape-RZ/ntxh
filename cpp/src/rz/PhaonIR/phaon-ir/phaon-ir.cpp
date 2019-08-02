@@ -48,8 +48,6 @@ PhaonIR::PhaonIR(PHR_Channel_System* channel_system) :  type_system_(nullptr),
   channel_system_(channel_system), program_stack_(nullptr),
   held_type_(nullptr), current_carrier_stack_(nullptr),
   held_channel_group_(nullptr), load_evaluator_fn_(nullptr),
-   //?current_chief_unwind_scope_index_({0,0,0,0}),
-  //current_lexical_scope()(nullptr),
   held_symbol_scope_(nullptr), direct_eval_fn_(nullptr),
   source_fn_anon_count_(0), current_cocyclic_type_(nullptr),
   current_channel_lexical_scope_(nullptr),
@@ -57,7 +55,6 @@ PhaonIR::PhaonIR(PHR_Channel_System* channel_system) :  type_system_(nullptr),
     PHR_Channel_Semantic_Protocol*>, PHR_Carrier_Stack*>)
 {
  current_source_fn_name_ = starting_source_fn_name_ = ";_main";
- //current_source_function_scope_ = new Source_Function_Scope{current_source_fn_name_};
  init_current_source_function_scope(current_source_fn_name_);
 }
 
@@ -106,12 +103,6 @@ void PhaonIR::finalize_block_signature(QString sfn)
  block_signature_channel_groups_[sfn] = held_channel_group_->clone();
  delete held_channel_group_;
  held_channel_group_ = nullptr;
-
-// PHR_Type* ty = new PHR_Type;
-// //ty->set_name(fn);
-// ty->set_signature_channel_group(held_channel_group_->clone());
-// //scopes_.current_scope()->add_direct_value(fn, ty, 0);
-
 }
 
 void PhaonIR::anticipate_nested_block(QString chn)
@@ -144,7 +135,6 @@ qint32 PhaonIR::get_s4_symbol_value(QString sym)
  {
   PHR_Expression_Object* pxo = nullptr;
   void* pv = nullptr;
-  //PHR_Channel_Group* pcg
   PHR_Channel_Group_Evaluator* ev = evaluate_channel_group_by_usi_symbol(sym,
     pxo, pv);
   if(ev)
@@ -158,9 +148,6 @@ qint32 PhaonIR::get_s4_symbol_value(QString sym)
  {
   quint64 val;
   PHR_Runtime_Scope::Storage_Options so;
-  PHR_Type* ty = current_lexical_scope()->find_value(sym, val, so);
-//  void* pv = (void*) val;
-//  return *(qint32*)pv;
   return (qint32) val;
  }
 }
@@ -170,7 +157,6 @@ PHR_Type* PhaonIR::init_value_from_symbol(QString sym,
 {
  if(sym.startsWith('#'))
  {
-  //PHR_Channel_Group* pcg
   PHR_Expression_Object* pxo = nullptr;
   void* pv = nullptr;
   PHR_Channel_Group_Evaluator* ev = evaluate_channel_group_by_usi_symbol(
@@ -201,21 +187,12 @@ PHR_Type* PhaonIR::init_value_from_symbol(QString sym,
   val = psv->raw_value;
   return psv->ty;
  }
-
- //quint64 val;
- //PHR_Runtime_Scope::Storage_Options so;
- //PHR_Type* ty = current_lexical_scope()->find_value(sym, val, so);
  return current_lexical_scope()->find_value(sym, val, so);
 }
 
 void PhaonIR::delete_temps()
 {
  retired_temps_.append(temps_by_channel_group_.values());
-// QMapIterator<PHR_Channel_Group*> it(temps_by_channel_group_);
-// while(it.hasNext())
-// {
-//  it.next();
-// }
 }
 
 void PhaonIR::clear_temps()
@@ -281,7 +258,6 @@ void PhaonIR::push_unwind_scope(QString level_delta)
 
 void PhaonIR::enter_cocyclic_type(QString name)
 {
- //PHR_Cocyclic_Type* coy =
  current_cocyclic_type_ = new PHR_Cocyclic_Type(name);
 }
 
@@ -310,7 +286,7 @@ void PhaonIR::type_decl(QString sym, QString type_name)
 {
  PHR_Type* ty = type_system_->get_type_by_name(type_name);
 
- // currently only supports...
+ // // currently only supports...
  PHR_Runtime_Scope::Storage_Options so;
  if(type_name.endsWith('*'))
    so = PHR_Runtime_Scope::Storage_Options::Pointer;
@@ -336,7 +312,7 @@ void PhaonIR::type_field_decl(QString m_sym_ty)
 
 void PhaonIR::push_unwind_scope(int level_delta, QString chn)
 {
- Unwind_Scope_Index& usi = current_chief_unwind_scope_index();//.project();
+ Unwind_Scope_Index& usi = current_chief_unwind_scope_index();
  Unwind_Scope_Index lusi = usi;
  inc_channel_pos();
  usi.chief_channel_pos = lusi.level_channel_pos;
@@ -345,7 +321,7 @@ void PhaonIR::push_unwind_scope(int level_delta, QString chn)
  usi.unwind_maximum_ = level_delta;
  usi.level_channel_pos = 0;
  usi.channel_name = chn;
- unwind_scope_index_parents()[usi] = lusi;//.project();
+ unwind_scope_index_parents()[usi] = lusi;
  held_program_stacks()[lusi] = {program_stack_, current_carrier_stack_};
  check_init_program_stack();
 }
@@ -368,12 +344,6 @@ void PhaonIR::pop_unwind_scope()
 PHR_Channel_Group_Evaluator* PhaonIR::evaluate_channel_group_by_usi_symbol(QString usi_sym,
   PHR_Expression_Object*& pxo, void*& pv)
 {
-// char by_need = 0;
-// if(usi_sym[1] == '?')
-// {
-//  usi_sym.remove(1, 1);
-//  by_need = '?';
-// }
  auto it = temp_anchored_channel_groups_.find(usi_sym);
  if( it != temp_anchored_channel_groups_.end())
  {
@@ -400,7 +370,7 @@ PHR_Channel_Group_Evaluator* PhaonIR::evaluate_channel_group_by_usi_symbol(QStri
   evaluate_channel_group_via_direct_eval(pcg, rv,
     string_result, pto, usi_sym);
 
-  // what about non-string returns?
+  // // what about non-string returns?
   if(rv == (quint64) &string_result)
   {
    rv = (quint64) new QString(string_result);
@@ -416,7 +386,6 @@ PHR_Channel_Group_Evaluator* PhaonIR::run_expression_object(PHR_Channel_Group* p
 {
  PHR_Channel_Group_Evaluator* result = load_evaluator_fn_(*this, *pcg);
  result->run_eval();
- //?temps_by_channel_group_.insertMulti(pcg, result->get_result_value());
  return result;
 }
 
@@ -487,13 +456,7 @@ void PhaonIR::evaluate_channel_group()
   QString rsym = anchored_channel_groups_.value(held_channel_group_).sym;
   evaluate_channel_group_via_direct_eval(held_channel_group_,
     rv, string_result, pto, rsym);
-  //return;
-  //? phr_direct_eval(code_model_, &pcp, held_symbol_scope_);
  }
-
-
- //pcp.
- //quint64 rv = pcp.
 
  for(auto it: anchored_channel_groups_.values(held_channel_group_))
  {
@@ -550,7 +513,6 @@ void PhaonIR::anchor_without_channel_group(QString sym, QString ch)
  PHR_Carrier* phc = pcs->top();
  QString rvs = phc->raw_value_string();
 
- //void* rv = phc->raw_value();
  if(ch == "parse-literal")
  {
   PHR_Type* ty = phc->phr_type();
@@ -559,9 +521,6 @@ void PhaonIR::anchor_without_channel_group(QString sym, QString ch)
  else if(ch == "type-default")
  {
   PHR_Type* ty = scopes_.get_type_for_symbol_name(sym);
-
-  //quint64 vv = scopes_.find_value_from_current_scope(sym, &pty);
-
   if(!ty)
   {
    return;
@@ -614,7 +573,6 @@ void PhaonIR::temp_anchor_channel_group()
 void PhaonIR::finalize_signature(QString fn)
 {
  PHR_Type* ty = new PHR_Type;
- //ty->set_name(fn);
  ty->set_signature_channel_group(held_channel_group_->clone());
  scopes_.current_scope()->add_direct_value(fn, ty, 0);
 }
@@ -652,7 +610,6 @@ void PhaonIR::push_carrier_raw_value(QString rv)
 void PhaonIR::push_carrier_anon_fn(QString fn)
 {
  PHR_Callable_Value* pcv = new PHR_Callable_Value(this, fn);
- //push_carrier_symbol(fn.prepend('&'));
  PHR_Carrier* phc = new PHR_Carrier;
  phc->set_raw_value(pcv);
  phc->set_phr_type(held_type_);
@@ -664,7 +621,6 @@ void PhaonIR::push_carrier_type_holder(QString ty_name)
  inc_channel_pos();
  PHR_Carrier* phc = new PHR_Carrier;
  PHR_Type* ty = type_system_->get_type_by_name(ty_name);
-// phc->set_symbol_name(sn);
  phc->set_phr_type(ty);
  current_carrier_stack_->push(phc);
 }
@@ -785,7 +741,6 @@ void PhaonIR::run_callable_value(QString source_fn, PHR_Callable_Value::fn_type 
    PHR_Channel_Semantic_Protocol*>, PHR_Carrier_Stack*>;
  run_lines(source_fn);
 
- //if(current_carrier_stack_) delete?
  delete current_source_function_scope_;
  delete program_stack_;
  delete sp_map_;
@@ -879,11 +834,7 @@ void PhaonIR::check_init_block_signature_lexical(QString source_fn, PHR_Callable
     current_channel_lexical_scope_->insert(sym, {psv, so});
    }
   }
-
  }
-
-
-// block_signature_channel_group_ = nullptr;
 }
 
 void PhaonIR::parse_fn_line(QString line)
@@ -893,7 +844,6 @@ void PhaonIR::parse_fn_line(QString line)
   ++source_fn_anon_count_;
   source_fn_names_.push(current_source_fn_name_);
   current_source_fn_name_ = QString::number(source_fn_anon_count_).prepend(';');
-  //check_init_block_signature_lexical();
  }
  else if(line[3] == 'e')
  {

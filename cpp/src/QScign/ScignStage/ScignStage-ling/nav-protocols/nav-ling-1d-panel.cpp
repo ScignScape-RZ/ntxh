@@ -209,20 +209,14 @@ NAV_Ling1D_Panel::NAV_Ling1D_Panel(int vmn, int vmx, int v, QWidget* parent)
 
  navigation_layout_->addWidget(section_up_down_group_box_);
 
-
-
- //first_auto_expand_note_layout_ = new QVBoxLayout;
  first_auto_expand_layout_ = new QVBoxLayout;
 
  first_layout_ = new QHBoxLayout;
  first_label_ = new QLabel("First", this);
- //first_layout_->addStretch();
- //sample_first_button_->setText("First");
  first_layout_->addWidget(first_label_);
  first_layout_->addWidget(sample_first_button_);
  first_layout_->addStretch();
 
- //first_auto_expand_layout_->addStretch();
  first_auto_expand_layout_->addLayout(first_layout_);
  first_auto_expand_layout_->addStretch();
 
@@ -236,20 +230,11 @@ NAV_Ling1D_Panel::NAV_Ling1D_Panel(int vmn, int vmx, int v, QWidget* parent)
  first_auto_expand_layout_->addLayout(auto_expand_layout_);
  first_auto_expand_layout_->addStretch();
 
- //first_auto_expand_note_layout_->addLayout(first_auto_expand_layout_);
-
-// first_auto_expand_label_ = new QLabel("Note: Scroll via \"Peer\" to highlight "
-//   "variations in each group.", this);
-// first_auto_expand_note_layout_->addWidget(first_auto_expand_label_);
-
  navigation_layout_->addStretch();
  navigation_layout_->addLayout(first_auto_expand_layout_);
  navigation_layout_->addStretch();
 
- //navigation_layout_->addLayout(zoom_sample_distractor_layout_);
-
  navigation_layout_->addStretch();
-
 
  main_layout_->addLayout(navigation_layout_);
 
@@ -263,5 +248,5 @@ NAV_Ling1D_Panel::~NAV_Ling1D_Panel()
 
 void NAV_Ling1D_Panel::set_sample_text(int r)
 {
- //sample_line_edit_->setText(QString::number(r));
+ //? sample_line_edit_->setText(QString::number(r));
 }

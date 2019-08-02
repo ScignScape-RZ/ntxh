@@ -49,8 +49,6 @@ void PGB_IR_Run::run_lines(QString& lines)
   if(sp == -1)
     break;
   int np = lines.indexOf(')', sp + 6);
-//  if(np == -1)
-//    np = lines.indexOf("\n.\n", pos);
   if(np == -1)
     break;
   QString l = lines.mid(sp + 6, np - sp - 6).simplified();
@@ -113,12 +111,6 @@ caon_ptr<PHR_Graph_Node>* PGB_IR_Run::get_target(const QMultiMap<MG_Token_Kinds,
  MG_Token& mgt = mgts[0];
  if(mgt.kind == MG_Token_Kinds::Ledger_Target)
    return &ledger_[mgt.raw_text];
-// QString tr = mgt
-// if(mgtm.values(MG_Token_Kinds::Known_Target).isEmpty())
-// {
-//  return &ledger_[mgtm.value(MG_Token_Kinds::Ledger_Target)];
-// }
-// QString tr = mgtm.value(MG_Token_Kinds::Known_Target);
  return get_known_target(mgt.raw_text);
 }
 
@@ -147,9 +139,6 @@ caon_ptr<PHR_Graph_Node> PGB_IR_Run::get_arg(const QMultiMap<MG_Token_Kinds, QPa
  MG_Token& mgt = mgts[0];
  if(mgt.kind == MG_Token_Kinds::Arg_Ledger_Target)
    return ledger_[mgt.raw_text];
-// if(mgtm.values(MG_Token_Kinds::Arg_Known_Target).isEmpty())
-//   return ledger_[mgtm.value(MG_Token_Kinds::Arg_Target)];
-// QString tr = mgtm.value(MG_Token_Kinds::Arg_Known_Target);
  return unpoint(get_known_target(mgt.raw_text));
 }
 
@@ -179,23 +168,6 @@ QPair<caon_ptr<PHR_Graph_Node>, caon_ptr<PHR_Graph_Node>>
     *extra = unpoint(get_known_target(mgt2.raw_text));
  }
 
-// if(mgtm.values(MG_Token_Kinds::Arg_Known_Target).isEmpty())
-// {
-//  auto vs = mgtm.values(MG_Token_Kinds::Arg_Target);
-//  r1 = ledger_[vs.value(0)];
-//  r2 = ledger_[vs.value(1)];
-// }
-// else if(mgtm.values(MG_Token_Kinds::Arg_Known_Target).size() == 1)
-// {
-//  r1 = unpoint(get_known_target(mgtm.value(MG_Token_Kinds::Arg_Known_Target)));
-//  r2 = ledger_[mgtm.value(MG_Token_Kinds::Arg_Target)];
-// }
-// else
-// {
-//  auto vs = mgtm.values(MG_Token_Kinds::Arg_Known_Target);
-//  r1 = unpoint(get_known_target(vs.value(0)));
-//  r2 = unpoint(get_known_target(vs.value(1)));
-// }
  return {r1, r2};
 }
 
@@ -217,12 +189,6 @@ MG_Token PGB_IR_Run::get_arg_token(const QMultiMap<MG_Token_Kinds, QPair<MG_Toke
  if(mgts.isEmpty())
    mgts = PGB_IR_Build::mgts_by_kind_group(mgtm, MG_Token_Kind_Groups::String_Literal);
  return mgts[0];
-// QList<MG_Token> mgts = PGB_IR_Build::mgts_by_kind_group(mgtm, MG_Token_Kind_Groups::Arg_Target);
-// return mgts[0];
-
-// if(mgtm.values(MG_Token_Kinds::Arg_Raw_Symbol).isEmpty())
-//   return {MG_Token_Kinds::Arg_Raw_Value, mgtm.value(MG_Token_Kinds::Arg_Raw_Value)};
-// return {MG_Token_Kinds::Arg_Raw_Symbol, mgtm.value(MG_Token_Kinds::Arg_Raw_Symbol)};
 }
 
 QString PGB_IR_Run::get_string_arg(const QMultiMap<MG_Token_Kinds, QPair<MG_Token, int>>& mgtm)
@@ -249,15 +215,6 @@ void PGB_IR_Run::run_line(QString fn, QMultiMap<MG_Token_Kinds, QPair<MG_Token, 
    QList<MG_Token> mgts = PGB_IR_Build::mgts_by_kind_group(mgtm, MG_Token_Kind_Groups::Arg);
    if(mgts.size() < 2)
      break;
-   //?caon_ptr<PHR_Graph_Node>* tr = get_target(mgtm);
-
-//   QList<MG_Token> gts = get_generic_tokens(mgtm);
-//   if(gts.size() < 2)
-//     break;
-
-//   if(tr)
-//     *tr = graph_build_.add_type_declaration(gts[0], gts[1]);
-//   else
    graph_build_.add_type_declaration(mgts[0], mgts[1]);
   };
   break;
@@ -280,12 +237,6 @@ void PGB_IR_Run::run_line(QString fn, QMultiMap<MG_Token_Kinds, QPair<MG_Token, 
   };
   break;
 
-// case PGB_Methods::add_empty_channel:
-//  {
-//   //?
-//  }
-//  break;
-
  case PGB_Methods::enter_anon_signature:
   {
    caon_ptr<PHR_Graph_Node>* tr = get_target(mgtm);
@@ -306,7 +257,6 @@ void PGB_IR_Run::run_line(QString fn, QMultiMap<MG_Token_Kinds, QPair<MG_Token, 
 
    last_signature_block_node_ = nullptr;
    current_signature_block_node_ = nullptr;
-   //graph_build_.
   }
   break;
 
@@ -318,13 +268,8 @@ void PGB_IR_Run::run_line(QString fn, QMultiMap<MG_Token_Kinds, QPair<MG_Token, 
     QList<MG_Token> mgts = get_signature_tokens(mgtm);
     s->add_tokens(mgts);
    }
-//   if(tr)
-//     *tr = graph_build_.make_signature_node(n);
-//   else
- //?  graph_build_.make_signature_node(n);
   }
   break;
-
 
  case PGB_Methods::make_signature_node:
   {

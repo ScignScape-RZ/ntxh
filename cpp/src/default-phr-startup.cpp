@@ -20,15 +20,10 @@
 
 #include "relae-graph/relae-caon-ptr.h"
 
-//?#include "phr-env/phr-env.h"
-//?#include "phr-fn-doc/phr-fn-doc.h"
-//?#include "test-functions.h"
-
 #include <QObject>
 
 #include "kans.h"
 
-//?USING_KANS(Phaon)
 
 #ifdef USING_KPH
 
@@ -48,10 +43,6 @@ void default_phr_startup(PhaonIR& phr)
  phr.init_type("pcv", DEFAULT_PTR_BYTE_CODE);
  phr.init_type("str", DEFAULT_PTR_BYTE_CODE);
 
-//?
-// qRegisterMetaType<PHR_Fn_Doc>();
-// qRegisterMetaType<PHR_Fn_Doc*>();
-
  // //  setup
  phr.init_code_model();
 
@@ -64,13 +55,6 @@ void default_phr_startup(PhaonIR& phr)
  phr.create_channel_semantic_protocol("fground");
  phr.init_table();
 
-// pcm.set_direct_eval_fn(&phr_direct_eval);
-// pcm.create_and_register_type_object("PHR_Fn_Doc*");
-////?? PHR_Env* penv = new PHR_Env(&pcm);
-// QString penv_typename = "PHR_Env*";
-// //??insert_envv(&penv_typename, penv);
-// PHR_Runtime_Scope prs(nullptr);
-// PHR_Symbol_Scope pss(&prs);
 }
 
 #endif // USING_KPH

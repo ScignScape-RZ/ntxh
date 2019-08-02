@@ -74,8 +74,7 @@ int PHR_Channel_Group::get_sigma_lambda_byte_code()
  }
  else
  {
-//  result *= 10;
-//  result += 9;
+  // //  nothing?
  }
 
  if(lambda_ch())

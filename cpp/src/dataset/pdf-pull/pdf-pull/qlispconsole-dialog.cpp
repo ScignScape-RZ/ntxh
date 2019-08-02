@@ -63,7 +63,6 @@ QLispConsole_Dialog::QLispConsole_Dialog(QString text,
 
  button_proceed_->setDefault(false);
  button_proceed_->setAutoDefault(false);
- //?button_cancel_->setDefault(true);
 
  button_ok_->setEnabled(false);
 
@@ -71,25 +70,9 @@ QLispConsole_Dialog::QLispConsole_Dialog(QString text,
  button_box_->addButton(button_proceed_, QDialogButtonBox::ApplyRole);
  button_box_->addButton(button_cancel_, QDialogButtonBox::RejectRole);
 
-
-// QString colorful_button_style_sheet = colorful_button_style_sheet_();
-// QString colorful_toggle_button_style_sheet = colorful_button_quiet_style_sheet_(); //colorful_toggle_button_style_sheet_();
-// QString colorful_button_style_sheet_down = colorful_button_style_sheet_down_();
-// QString colorful_button_quiet_style_sheet = colorful_button_quiet_style_sheet_();
-// QString tab_style_sheet = tab_style_sheet_();
-// QString basic_button_style_sheet = basic_button_style_sheet_();
-
-
-
-
  button_ok_->setStyleSheet(basic_button_style_sheet_());
  button_proceed_->setStyleSheet(basic_button_style_sheet_());
  button_cancel_->setStyleSheet(basic_button_style_sheet_());
-
-// button_ok_->setStyleSheet(button_close_light_style_sheet_());
-// button_proceed_->setStyleSheet(button_close_light_style_sheet_());
-// button_cancel_->setStyleSheet(button_close_light_style_sheet_());
-
 
  connect(button_proceed_, SIGNAL(clicked()), this, SLOT(proceed()));
  connect(button_box_, SIGNAL(accepted()), this, SLOT(accept()));
@@ -100,7 +83,6 @@ QLispConsole_Dialog::QLispConsole_Dialog(QString text,
 
  main_text_edit_ = new QTextEdit(text, this);
 
-// main_splitter_->setOrientation(Qt::Vertical);
  main_splitter_ = new QSplitter(Qt::Vertical, this);
 
  main_layout_->addWidget(main_splitter_);
@@ -150,9 +132,6 @@ void QLispConsole_Dialog::cancel()
 {
  Q_EMIT(rejected());
  Q_EMIT(canceled(this));
- Q_EMIT(rejected());
-// close();
-//
  close();
 }
 
@@ -165,5 +144,4 @@ void QLispConsole_Dialog::proceed()
 void QLispConsole_Dialog::accept()
 {
  Q_EMIT(accepted(this));
-// close();
 }

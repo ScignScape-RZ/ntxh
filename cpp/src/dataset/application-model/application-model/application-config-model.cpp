@@ -245,7 +245,6 @@ void Application_Config_Model::parse_config_code(QString cc)
  {"kph", "dataset/application-model/application-model-test-dialog"},
  {"kph", "dataset/application-model/amtd-console"},
 
-//? {"kph", "*"},
  {"kph-gen", "*"},
 
  {"", "dataset/dsmain/_run__dsmain-console"},

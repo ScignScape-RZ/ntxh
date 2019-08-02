@@ -22,12 +22,6 @@ Lexpair_Sxpr::Lexpair_Sxpr()
 }
 
 
-
-//void add_word()
-//{
-
-//}
-
 void Lexpair_Sxpr::add_dock(Chief_Node* cn, QString word)
 {
  int &lc = cn->lamba_counts.last();
@@ -77,15 +71,11 @@ void Lexpair_Sxpr::read(QString qs)
 
  QString current_chief;
 
- //auto add_tail
-
-
  for(int i = 0; i < qs.length(); ++i)
  {
   QChar qc = qs[i];
   if(qc == '(')
   {
-   //lambdas.push(lambda);
    lambda = 0;
    ++lparen;
    ++local_lparen;
@@ -94,7 +84,7 @@ void Lexpair_Sxpr::read(QString qs)
   {
    if(!acc.isEmpty())
    {
-    add_dock(current_chief, acc); //, lambda, rewind + 1}});
+    add_dock(current_chief, acc);
     acc.clear();
     check_rewind(current_chief);
    }
@@ -125,7 +115,7 @@ void Lexpair_Sxpr::read(QString qs)
     }
     else
     {
-     add_dock(current_chief, acc); //, lambda, rewind + 1}});
+     add_dock(current_chief, acc);
      check_rewind(current_chief);
     }
     acc.clear();

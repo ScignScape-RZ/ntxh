@@ -28,15 +28,6 @@ USING_KANS(DSM)
 
 int main(int argc, char **argv)
 {
-// Lexpair_Sxpr ls;
-// //
-// ls.read("(((very quickly) won) (The (home team)))");
-
-// //ls.read("((quickly won)(The team))");
-
-// return 0;
-
-
  QApplication qapp(argc, argv);
 
  qapp.setWindowIcon(QIcon(DEFAULT_ICON_FOLDER "/app-icon.png"));
@@ -46,5 +37,4 @@ int main(int argc, char **argv)
 
  dlg.show();
  return qapp.exec();
-
 }

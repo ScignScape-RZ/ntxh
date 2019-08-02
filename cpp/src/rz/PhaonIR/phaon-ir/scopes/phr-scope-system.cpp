@@ -9,7 +9,7 @@
 
 #include "kans.h"
 
-//USING_KANS(CMD)
+
 USING_KANS(Phaon)
 
 

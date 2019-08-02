@@ -112,7 +112,6 @@ Config_Dialog::Config_Dialog(QWidget* parent)
 
  udpipe_check_box_ = new QCheckBox("Use UDPIPE", this);
  compile_options_grid_layout_->addWidget(udpipe_check_box_, 0, 0);
- //udpipe_check_box_->setEnabled(false);
 
  kph_check_box_ = new QCheckBox("Use Kauvir/Phaon and TCP (for tests)", this);
  compile_options_grid_layout_->addWidget(kph_check_box_, 0, 1, 1, 2);
@@ -189,8 +188,6 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  });
 
  compile_options_grid_layout_->addWidget(gen_test_check_box_, 9, 0, 1, 3, Qt::AlignRight);
-
- //main_layout_->addWidget(gen_test_check_box_);
 
  connect(main_button_group_,
    QOverload<QAbstractButton *, bool>::of(&QButtonGroup::buttonToggled),
@@ -338,9 +335,6 @@ Config_Dialog::Config_Dialog(QWidget* parent)
  });
 
  main_layout_->addLayout(minimize_layout_);
- //
- //main_layout_->addWidget(button_box_);
-
  setLayout(main_layout_);
 }
 

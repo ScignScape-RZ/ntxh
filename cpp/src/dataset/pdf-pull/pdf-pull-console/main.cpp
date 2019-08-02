@@ -22,7 +22,3 @@ int main(int argc, char *argv[])
  qapp.exec();
  return 0;
 }
-
-// QLispConsole* main_console = QLispConsole::getInstance();
-// QLispConsole_Dialog* qld = new QLispConsole_Dialog("", main_console);
-// qld->show();

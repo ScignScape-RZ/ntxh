@@ -9,12 +9,6 @@
 
 #include "ScignStage-ling/ScignStage-ling-dialog.h"
 
-//?#include "kauvir-phaon/kph-command-package.h"
-
-
-//?USING_KANS(Phaon)
-
-
 #include <QDebug>
 
 

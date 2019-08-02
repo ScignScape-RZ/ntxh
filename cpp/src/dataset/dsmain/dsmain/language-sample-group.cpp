@@ -83,9 +83,6 @@ void Language_Sample_Group::serialize(QTextStream& qts)
  ntb.top_append();
 
  ntb.el();
-
-// // qts << "!/ SE";
-
 }
 
 QString Language_Sample_Group::get_main_archival_or_text()
@@ -120,53 +117,7 @@ QString Language_Sample_Group::get_main_text()
 void Language_Sample_Group::serialize_samples_to_file(
   QVector<Language_Sample_Group*>& lsgs, QString file)
 {
- QString text;
-
- QTextStream qts(&text);
-
-// NTXH_Builder ntb(qts);
-
-// ntb.add_prelude_comment(
-//    R"|(g=group id  t=text  s=start id
-//    e=end id  i=id  p=page  x=tex label
-//    h=theme
-
-//    SG=sentence group
-//    SE=sentence example)|");
-
-// ntb.enter_array_type("SG", 8,4,2);
-// ntb.add_type_fields({{"g"},{"s"},{"e"},{"p"}});
-// ntb.leave_type();
-// ntb.el();
-
-// ntb.enter_structure_type("SE", 5);
-// ntb.add_type_fields({{"g"},{"i"},{"x"},{"t","text"},{"h"}});
-// ntb.leave_type();
-// ntb.el();
-
-// ntb.leave_prelude();
-// ntb.el();
-
-// int current_section  = 0;
-
-// for(Language_Sample_Group* lsg: lsgs)
-// {
-//  if(lsg->section_num() > current_section)
-//  {
-//   current_section = lsg->section_num();
-//   ntb.el();
-//   ntb.add_replacement("section", QString::number(current_section));
-//   ntb.el();
-//  }
-//  lsg->serialize(qts);
-// }
-
-// ntb.el();
-
-// ntb.enter_coda();
-// ntb.el();
-
-// save_file(file, text);
-
+// QString text;
+// QTextStream qts(&text);
 }
 

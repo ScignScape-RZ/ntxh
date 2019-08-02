@@ -54,7 +54,6 @@ void PHR_Graph_Node::debug_connections() const
  {
   ait.next();
   CAON_EVALUATE_DEBUG(PHR_Graph_Connectors ,key ,ait.key())
-  //QPair<Connection_Caon_type, Node_Caon_type> pr
   CAON_EVALUATE_DEBUG(PHR_Graph_Node ,value ,ait.value().second)
   CAON_DEBUG_NOOP
  }

@@ -27,7 +27,4 @@ bool PHR_Type_Object::is_string_like() const
  return false;
 }
 
-//void PHR_Carrier::init_channel_group_stack()
-//{
 
-//}

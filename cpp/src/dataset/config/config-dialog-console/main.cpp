@@ -24,15 +24,6 @@ USING_KANS(TextIO)
 USING_KANS(DSM)
 
 
-
-//int main(int argc, char **argv)
-//{
-// Application_Config_Model acm;
-// acm.parse_config_code("cc");
-// return 0;
-//}
-
-
 int main(int argc, char **argv)
 {
  QApplication qapp(argc, argv);
@@ -59,7 +50,6 @@ int main(int argc, char **argv)
   qDebug() << qs;
 
   Application_Config_Model acm;
-  //qs.prepend("gen_test__");
   acm.parse_config_code(qs);
 
   {

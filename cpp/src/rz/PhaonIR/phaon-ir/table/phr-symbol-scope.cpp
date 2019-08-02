@@ -15,9 +15,6 @@
 
 USING_KANS(Phaon)
 
-//USING//_KANS(PhaonLib)
-
-
 PHR_Symbol_Scope::PHR_Symbol_Scope(PHR_Runtime_Scope* runtime_scope)
   :  runtime_scope_(runtime_scope)
 {

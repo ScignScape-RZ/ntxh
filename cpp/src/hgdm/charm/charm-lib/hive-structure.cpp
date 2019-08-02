@@ -30,21 +30,13 @@ Hive_Block* Hive_Structure::check_init_blocks(quint32 max)
   {
    result = *current_block;
    current_block = &(*current_block)->next_block;
-   //last_block = *current_block;
    continue;
   }
   void* mem = malloc(block_size_ * value_size_);
 
-//  if(!mem)
-//  {
-//   qDebug() << "malloc failed ...";
-//  }
   (*current_block) = new Hive_Block{mem, nullptr};
   result = *current_block;
   current_block = &(result->next_block);
-//  if(last_block)
-//    last_block->next_block = *current_block;
-//  last_block = current_block;
  }
  return result;
 }
@@ -70,8 +62,6 @@ void* Hive_Structure::get_indexed_location_unchecked(quint32 index)
 void* Hive_Structure::get_indexed_location(quint32 blkn, quint16 blki)
 {
  Hive_Block* hb = check_init_blocks(blkn);
-// char loc [value_size_][block_size_] = (char*) hb->values;
-// return loc[blki];
 
  return (unsigned char*)(hb->values)
    + (blki * value_size_);

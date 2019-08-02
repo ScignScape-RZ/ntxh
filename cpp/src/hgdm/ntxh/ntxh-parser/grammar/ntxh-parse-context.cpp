@@ -12,7 +12,6 @@ USING_KANS(HGDMCore)
 
 
 NTXH_Parse_Context::NTXH_Parse_Context(): Flags(0)
-//,  current_open_print_node_(nullptr)
 {
 
 }

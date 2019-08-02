@@ -18,7 +18,7 @@ PHR_Graph_Connection::PHR_Graph_Connection(caon_ptr<PHR_Graph_Node> phr_node)
 
 PHR_Graph_Connection::PHR_Graph_Connection(QString channel_name,
   caon_ptr<PHR_Graph_Node> phr_node)
- : channel_name_(channel_name)//, phr_nodes_({phr_node})
+ : channel_name_(channel_name)
 {
  if(phr_node)
    phr_nodes_ = {phr_node};

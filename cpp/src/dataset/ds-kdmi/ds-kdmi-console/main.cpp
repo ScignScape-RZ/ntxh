@@ -21,9 +21,9 @@ typedef phaong_galaxy<QString> pgs_t;
 int main(int argc, char **argv)
 {
  KDMI_Model kdm;
- // // To demonstrate, initialize the kdmi via a QObject wrapper
-  //   kdm.init_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
 
+   //   kdm.init_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
+ // //  To demonstrate, initialize the kdmi via a QObject wrapper
  KDMI_Model_QObject kdq(&kdm);
  kdq.init_model_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
 
