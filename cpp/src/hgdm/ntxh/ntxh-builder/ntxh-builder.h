@@ -9,10 +9,6 @@
 #define NTXH_BUILDER__H
 
 
-//#include "phaong/phaong.h"
-//#include "phaong/phaong-types.h"
-
-
 #include "kans.h"
 #include "accessors.h"
 
@@ -26,9 +22,7 @@ class QTextStream;
 
 KANS_(HGDMCore)
 
-//class Language_Sample_Group;
-
-class NTXH_Builder //: phaong<pg_t>::Hypernode
+class NTXH_Builder
 {
  QTextStream& qts_;
 

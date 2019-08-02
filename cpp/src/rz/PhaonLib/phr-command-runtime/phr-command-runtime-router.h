@@ -23,20 +23,6 @@
 #include "phr-command-runtime-router-cast-schedule.h"
 
 
-//KANS_CLASS_DECLARE(KCM ,KCM_Carrier)
-//KANS_CLASS_DECLARE(KCM ,KCM_Channel_Group)
-//KANS_CLASS_DECLARE(KCM ,KCM_Type_Object)
-//KANS_CLASS_DECLARE(KCM ,KCM_Expression)
-//KANS_CLASS_DECLARE(KCM ,KCM_Proxy_Scope)
-//KANS_CLASS_DECLARE(KCM ,KCM_Callable_Value)
-
-//KANS_CLASS_DECLARE(PhaonLib ,PHR_Function_Vector)
-//USING_KANS(PhaonLib)
-
-
-//USING_KANS(KCM)
-
-//KANS_(CMD)
 KANS_(Phaon)
 
 
@@ -133,7 +119,7 @@ public:
   QString type_name_with_modifier(QString modifier, QString internal_type_string) const
   {
    QString tn;
-   // hard code for now -- kludge...
+   // // hard code for now -- kludge...
    if(internal_type_string == "clv" && type_name == "void*")
    {
     tn = "Kauvir_Lisp_Callback*";
@@ -364,8 +350,6 @@ public:
  FN_Codes add_string_cast_to_fn_code(FN_Codes fnc);
  FN_Codes add_ptr_cast_to_fn_code(FN_Codes fnc);
 
-//? void run_callable_value(PHR_Callable_Value* kcv);
-
  void hold_string_result(QString str)
  {
   string_result_ = str;
@@ -375,7 +359,6 @@ public:
 
 };
 
-//_KANS(CMD)
 _KANS(Phaon)
 
 

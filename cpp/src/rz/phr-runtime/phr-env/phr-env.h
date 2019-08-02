@@ -17,20 +17,6 @@
 #include <functional>
 
 
-//KANS_CLASS_DECLARE(PHR ,Kauvir_Code_Model)
-//KANS_CLASS_DECLARE(PHR ,PHR_Channel_Group)
-//KANS_CLASS_DECLARE(PHR ,PHR_Type_Object)
-
-//USING_KANS(PHR)
-
-//class PHR_Lisp_Bridge;
-
-//KANS_CLASS_DECLARE(CMD ,PHR_Command_Package)
-//KANS_CLASS_DECLARE(CMD ,PHR_Command_Runtime_Router)
-//KANS_CLASS_DECLARE(CMD ,PHR_Scope_System)
-
-//USING_KANS(CMD)
-
 KANS_(Phaon)
 
 class PHR_Scope_System;

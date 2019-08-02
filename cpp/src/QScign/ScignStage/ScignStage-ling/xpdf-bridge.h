@@ -13,11 +13,6 @@
  //    affected by USING_XPDF is involved in the MOC generated code ...
 #include "defines.h"
 
-
-//QSNS_(ScignStage)
-//?namespace QScign { namespace ScignStage {
-
-
 #include <QObject>
 
 #include "qsns.h"
@@ -56,8 +51,6 @@ Q_SIGNALS:
 
 
 };
-
-//_QSNS(ScignStage)
 
 
 #endif  //XPDF_BRIDGE__H

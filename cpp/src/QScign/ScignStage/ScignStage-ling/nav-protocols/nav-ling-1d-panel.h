@@ -44,10 +44,6 @@ class QScrollArea;
 class QGridLayout;
 
 
-//?QSNS_(ScignStage)
-//namespace QScign { namespace ScignStage {
-
-
 class ScignStage_Clickable_Label;
 class ScignStage_Image_Tile;
 
@@ -76,9 +72,7 @@ class NAV_Ling1D_Panel : public QFrame
  QPushButton* section_start_button_;
  QPushButton* section_end_button_;
 
-// QVBoxLayout* first_auto_expand_note_layout_;
  QVBoxLayout* first_auto_expand_layout_;
- //QLabel* first_auto_expand_label_;
 
  QLabel* first_label_;
  QPushButton* sample_first_button_;
@@ -110,21 +104,6 @@ class NAV_Ling1D_Panel : public QFrame
  QVBoxLayout* section_se_layout_;
  QGroupBox* section_se_group_box_;
  QButtonGroup* section_se_button_group_;
-
-
-// QVBoxLayout* zoom_sample_distractor_layout_;
-// QHBoxLayout* sample_distractor_layout_;
-
-// QLabel* sample_label_;
-// QLineEdit* sample_line_edit_;
-
-
-// QSlider* volume_slider_;
-
-// qreal old_zoom_slider_value_;
-
-// int volume_min_;
-// int volume_max_;
 
 public:
 
@@ -163,15 +142,9 @@ Q_SIGNALS:
 
  void auto_expand_changed(bool);
 
-
-public Q_SLOTS:
-
-// void zoom_slider_value_changed(int);
-// void volume_slider_value_changed(int);
+//?public Q_SLOTS:
 
 };
-
-//_QSNS(ScignStage)
 
 
 #endif  // NAV_Ling_1D_PANEL__H

@@ -46,12 +46,6 @@ struct NTXH_Dominion
  typedef NTXH_Graph Graph_type;
  typedef NTXH_Root Root_type;
 
-// struct Connectors : node_connectors<NTXH_Dominion> {
-
-//    Connectors(QString label) : node_connectors<NTXH_Dominion>(label){}
-
-// };
-
  enum class Type_Codes { N_A,
   #define DOMINION_TYPE DOMINION_TYPE_ENUM
   #include "dominion/types.h"
@@ -63,8 +57,6 @@ struct NTXH_Dominion
  {
   return (Type_Codes) 0;
  }
- //typedef Test_Connector Connector_Type;
- // typedef Test_Type_Codes Connector_Type;
 
 };
 
@@ -73,8 +65,6 @@ struct NTXH_Dominion
 struct NTXH_Galaxy : Node_Ptr_Default_Galaxy<NTXH_Dominion>
 {
  typedef NTXH_Token NTXH_Token_type;
-// typedef NTXH_State NTXH_State_type;
-// typedef NTXH_Clasp_Source_Element Source_Element_type;
 
 };
 
@@ -114,17 +104,6 @@ struct NTXH_Annotated_Connectors :
 
 };
 
-
-
-//class NTXH_Node : public node_ptr<NTXH_Dominion>
-//{
-//public:
-// #define DOMINION_TYPE DOMINION_NODE_CONSTRUCTOR
-// #include "dominion/types.h"
-// #undef DOMINION_TYPE
-//};
-
 _KANS(HGDMCore)
-
 
 #endif

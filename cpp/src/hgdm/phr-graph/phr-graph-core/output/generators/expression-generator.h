@@ -45,7 +45,6 @@ class Expression_Generator
     : sin(s.raw_pointer()), bin(b.raw_pointer()){}
  };
 
- //const PHR_Graph_Frame& fr_;
  const PHR_Graph_Query& qy_;
 
  Statement_Generator* statement_generator_;
@@ -56,7 +55,6 @@ public:
 
  ACCESSORS(Statement_Generator* ,statement_generator)
 
-// void generate_close(QTextStream& qts);
  void generate_line(QTextStream& qts, QString ln);
  void generate_line(QTextStream& qts, QString ln, QString arg);
  void generate_comment_line(QTextStream& qts, QString ln, int n = 0);

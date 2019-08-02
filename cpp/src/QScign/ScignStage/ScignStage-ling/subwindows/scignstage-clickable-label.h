@@ -16,10 +16,6 @@
 
 #include <functional>
 
-//QSNS_(ScignStage)
-//?namespace QScign { namespace ScignStage {
-
-
 class ScignStage_Clickable_Label : public QLabel
 {
  Q_OBJECT
@@ -55,7 +51,5 @@ protected:
   void mousePressEvent(QMouseEvent* event);
 
 };
-
-//_QSNS(ScignStage)
 
 #endif  // SCIGNSTAGE_CLICKABLE_LABEL__H

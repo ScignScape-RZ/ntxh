@@ -28,7 +28,6 @@ class NTXH_Grammar;
 class NTXH_Graph_Build;
 class NTXH_Word_Entry_List;
 class NTXH_Graph;
-//class NTXH_Graph;
 
 
 class NTXH_Document
@@ -74,25 +73,10 @@ public:
  void set_grammar(NTXH_Grammar* grammar = nullptr);
 
  void parse(int start_position = 0, int end_position = -1);
-
-// template<typename T>
-// void write_report(QString path, T& report)
-// {
-//  resolve_report_path(path);
-//  QFile file(path);
-//  if(file.open(QFile::WriteOnly | QIODevice::Text))
-//  {
-//   QTextStream qts(&file);
-//   report.write_report(qts);
-//  }
-// }
-
-
-
 };
 
 _KANS(HGDMCore)
 
 
-#endif
+#endif // NTXH_DOCUMENT__H
 

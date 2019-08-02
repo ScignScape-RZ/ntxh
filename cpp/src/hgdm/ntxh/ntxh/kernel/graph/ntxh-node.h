@@ -32,18 +32,6 @@ public:
  #include "kernel/dominion/types.h"
  #undef DOMINION_TYPE
 
-
-// void debug_connections();
-
-// void each_connection(std::function<void(const NTXH_Connectors& connector,
-//  const NTXH_Node&, const NTXH_Connection* connection)> fn)  const;
-
-// void swap_relation(const NTXH_Connectors& connector,
-//  caon_ptr<NTXH_Node> n1, caon_ptr<NTXH_Node> n2);
-
-// void delete_relation(const NTXH_Connectors& connector,
-//  caon_ptr<NTXH_Node> n1);
-
 };
 
 _KANS(HGDMCore)

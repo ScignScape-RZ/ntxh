@@ -17,9 +17,6 @@
 
 #include "phr-function-vector.h"
 
-
-//KANS_(PhaonLib)
-
 KANS_(Phaon)
 
 
@@ -27,7 +24,7 @@ class PHR_Namespace;
 class PHR_Runtime_Scope;
 class PHR_Function;
 
-class PHR_Symbol_Scope //?: public QMap<QString, PHR_Function_Vector>
+class PHR_Symbol_Scope
 {
 protected:
  PHR_Runtime_Scope* runtime_scope_;
@@ -44,9 +41,6 @@ public:
 };
 
 _KANS(Phaon)
-
-
-//_KANS(PhaonLib)
 
 
 #endif //PHR_SYMBOL_SCOPE__H

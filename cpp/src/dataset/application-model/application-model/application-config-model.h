@@ -33,7 +33,6 @@ class Application_Config_Model
     :  subdirs(s), defines(d), pri_libs(p) {}
 
  };
- //QStringList subdirs_text_;
 
  User_Levels usrl_;
 

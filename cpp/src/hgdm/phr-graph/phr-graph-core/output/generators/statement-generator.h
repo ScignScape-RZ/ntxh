@@ -31,8 +31,6 @@ class PHR_Graph_Signature;
 
 class Statement_Generator
 {
-
- //const PHR_Graph_Frame& fr_;
  const PHR_Graph_Query& qy_;
 
  Expression_Generator& expression_generator_;

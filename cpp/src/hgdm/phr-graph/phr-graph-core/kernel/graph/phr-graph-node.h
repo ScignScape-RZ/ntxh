@@ -22,13 +22,6 @@
 #include "rzns.h"
 
 
-//RZNS_(GBuild)
-
-// class RZ_Lisp_Token;
-
-//_RZNS(GBuild)
-
-
 RZNS_(PhrGraphCore)
 
 class PHR_Graph_Token;
@@ -70,9 +63,6 @@ public:
   caon_ptr<PHR_Graph_Node> n1);
 
  void add_hyponode(caon_ptr<PHR_Graph_Node> n);
-
-// QVector<caon_ptr<PHR_Graph_Connection>, caon_ptr<PHR_Graph_Node>>
-
 
 };
 

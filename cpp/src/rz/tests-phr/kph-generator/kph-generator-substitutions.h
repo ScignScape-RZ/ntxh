@@ -15,16 +15,9 @@
 
 #include "accessors.h"
 
-
-//KANS_CLASS_DECLARE(KCM ,KCM_Carrier)
-//USING_KANS(KCM)
-
 KANS_(Phaon)
 
 class PHR_Carrier;
-
-
-//?KANS_(Phaon)
 
 class KPH_Generator_Substitutions
 {

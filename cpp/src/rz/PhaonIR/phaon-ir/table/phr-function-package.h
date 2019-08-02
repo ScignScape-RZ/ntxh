@@ -17,11 +17,6 @@
 #include <QTextStream>
 
 
-//KANS_CLASS_DECLARE(Kauvir ,Kauvir_Type_Object)
-//USING_KANS(Kauvir)
-
-//KANS_(KCM)
-
 KANS_(Phaon)
 
 
@@ -52,8 +47,6 @@ public:
 
 };
 
-
-//_KANS(KCM)
 _KANS(Phaon)
 
 

@@ -66,7 +66,6 @@ public:
   bool has_held_value:1;
   bool skip_redirect:1;
 
-  //?
   bool skip_init_do_block:1;
  _flags
 

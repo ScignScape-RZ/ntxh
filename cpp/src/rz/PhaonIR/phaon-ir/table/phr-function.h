@@ -14,8 +14,6 @@
 
 #include "relae-graph/relae-caon-ptr.h"
 
-//KANS_(PhaonLib)
-
 KANS_(Phaon)
 
 class PHR_Function
@@ -79,8 +77,6 @@ public:
 
 };
 
-
-//_KANS(PhaonLib)
 _KANS(Phaon)
 
 

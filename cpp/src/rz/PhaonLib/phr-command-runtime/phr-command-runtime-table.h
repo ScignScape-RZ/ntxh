@@ -20,12 +20,6 @@
 #include "kans.h"
 #include "accessors.h"
 
-//#include "kauvir-type-system/kauvir-universal-class.h"
-//#include "kauvir-type-system/kauvir-type-system.h"
-
-//#include "PhaonLib/phaon-function.h"
-//#include "PhaonLib/phaon-symbol-scope.h"
-
 #include "phaon-ir/table/phr-symbol-scope.h"
 #include "phaon-ir/channel/phr-channel-group.h"
 #include "phaon-ir/table/phr-function-package.h"
@@ -34,19 +28,6 @@
 KANS_(Phaon)
 
 class PHR_Type_System;
-
-//#include "kauvir-code-model/kcm-function-package.h"
-
-//KANS_CLASS_DECLARE(KCM ,KCM_Channel_Group)
-//KANS_CLASS_DECLARE(KCM ,KCM_Type_Object)
-
-//USING_KANS(KCM)
-//USING_KANS(Kauvir)
-
-//USING_KANS(PhaonLib)
-
-
-//KANS_(CMD)
 
 class PHR_Command_Runtime_Table : public PHR_Symbol_Scope
 {
@@ -101,10 +82,8 @@ public:
 
   add_declared_function_package(name, phf);
  }
-
 };
 
-//_KANS(CMD)
 _KANS(Phaon)
 
 #endif //PHR_COMMAND_RUNTIME_TABLE__H

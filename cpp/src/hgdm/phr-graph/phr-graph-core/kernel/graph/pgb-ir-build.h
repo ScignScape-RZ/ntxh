@@ -69,10 +69,6 @@ public:
  Purpose_Codes& comment(QString str);
 
  Purpose_Codes& macro(QList<MG_Token>& args);
-// Purpose_Codes& macro(QList<MG_Token>&& args)
-// {
-//  return macro(args);
-// }
  Purpose_Codes& macro(QStringList _args);
 
 
@@ -147,15 +143,6 @@ public:
     arg2.mid(1), get_subgroup(arg2[0]),
     target.mid(1), get_subgroup(target[0]));
  }
-
-
-// Purpose_Codes& add_block_entry_node(QString t1, MG_Token_Subgroups sg1,
-//   QString t2, MG_Token_Subgroups sg2);
-// Purpose_Codes& add_block_entry_node(QString t1, QString t2)
-// {
-//  add_block_entry_node(t1.mid(1), get_subgroup(t1[0]),
-//    t2.mid(1), get_subgroup(t2[0]));
-// }
 
  Purpose_Codes& add_fsym_ground_node(QString t1, MG_Token_Subgroups sg1,
    QString t2, MG_Token_Subgroups sg2,
@@ -407,11 +394,9 @@ public:
 class PGB_IR_Build
 {
  QString out_file_;
- //QString text_;
  QTextStream qts_;
 
  QList<MG_Token> held_tokens_;
-
 
 public:
 
@@ -458,18 +443,6 @@ public:
  {
   generate_file(out_file_ + "-prem", tps);
  }
-
-// static QListIterator<Text_With_Purpose> get_iterator(QList<Text_With_Purpose>& tps,
-//   Purpose_Code purpose)
-// {
-//  return tps.find()
-// }
-
-// ACCESSORS__RGET(QTextStream ,qts)
-// ACCESSORS__RGET(QString ,text)
-
- //PGB_IR_Build::PGB_IR_Build(QString out_file)
- // :  out_file_(out_file), qts_(&text_)
 
 };
 

@@ -16,23 +16,11 @@
 
 KANS_(HGDMCore)
 
-//class SY_Connector
-//{
-// //public:
-// QString label_;
-
-// public:
-//  SY_Connector(QString label) : label_(label){}
-
-//};
-
-//template<type
-
 class NTXH_Query : public node_query<NTXH_Dominion>
 {
  NTXH_Query();
- // SY_Dominion::Connectors N_A;
- public:
+
+public:
   #define DOMINION_CONNECTOR(name, label) \
    NTXH_Connectors name;
   #include "kernel/dominion/connectors.h"

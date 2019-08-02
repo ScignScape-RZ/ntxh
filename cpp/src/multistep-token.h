@@ -22,7 +22,6 @@ enum class MS_Token_Kinds
  Paren_Entry, Paren_Leave,
  Note_Symbol, Proxy_Value_Symbol,
  Skipped_Flag_Symbol,  Assignment_Kind,
- //Scoped_Symbol_Interp, 
  Preempted_Instruction_Symbol,
 };
 

@@ -53,25 +53,6 @@ _MAKE_FULL_HOLDER(each ,&)
 _MAKE_FULL_HOLDER(reach ,&)
 _MAKE_HOLDER(set_default ,**)
 
-//template<typename _THIS_Type, typename VAL_type>
-//struct _each_holder
-//{
-// _THIS_Type& _this;
-// void operator <=(std::function<void(VAL_type& v)> fn)
-// {
-//  _this._each(fn);
-// }
-//};
-
-//template<typename _THIS_Type, typename VAL_type>
-//struct _reach_holder
-//{
-// _THIS_Type& _this;
-// void operator <=(std::function<void(VAL_type& v)> fn)
-// {
-//  _this._reach(fn);
-// }
-//};
 
 template<typename VEC_Type, typename VAL_Type,
   typename INDEX_type, typename PR_Type>

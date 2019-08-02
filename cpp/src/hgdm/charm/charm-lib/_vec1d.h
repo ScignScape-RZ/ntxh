@@ -352,10 +352,4 @@ public:
 };
 
 
-
 #endif // _VEC1D__H
-
-//   qDebug() << QString("hit: %1,%2,%3")
-//               .arg(hit.block_index)
-//               .arg(hit.inner_index)
-//               .arg(hit.total_index);

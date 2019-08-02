@@ -18,10 +18,6 @@
 #include <QMap>
 
 
-//KANS_CLASS_DECLARE(KCM ,Kauvir_Code_Model)
-
-//USING_KANS(KCM)
-
 KANS_(Phaon)
 
 class PHR_Channel_Group_Table;

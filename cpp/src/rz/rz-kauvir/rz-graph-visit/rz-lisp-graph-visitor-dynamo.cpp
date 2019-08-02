@@ -1,4 +1,6 @@
 
+#ifdef HIDE
+
 //           Copyright Nathaniel Christen 2019.
 //  Distributed under the Boost Software License, Version 1.0.
 //     (See accompanying file LICENSE_1_0.txt or copy at
@@ -322,7 +324,6 @@ caon_ptr<RZ_Function_Def_Info> RZ_Lisp_Graph_Visitor_Dynamo::get_function_def_in
   if(caon_ptr<RZ_Lisp_Token> tok = fdi_node->lisp_token())
   {
    return tok->pRestore<RZ_Function_Def_Info>();
-   //return fdi_node->rz_function_def_info();
   }
  }
  return nullptr;
@@ -342,3 +343,4 @@ caon_ptr<RE_Node> RZ_Lisp_Graph_Visitor_Dynamo::find_statement_cross_sequence_no
  return result;
 }
 
+#endif // HIDE

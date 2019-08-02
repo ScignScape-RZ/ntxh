@@ -33,11 +33,12 @@ public:
  RZ_Lisp_Map();
 
 
- template<typename T>
- friend T& operator<<(T& t, const RZ_Lisp_Map& rhs)
- {
-//?  return t << rhs.to_string();
- }
+//?
+// template<typename T>
+// friend T& operator<<(T& t, const RZ_Lisp_Map& rhs)
+// {
+//  return t << rhs.to_string();
+// }
 
 
  friend void operator<<(QDebug lhs, const RZ_Lisp_Map& rhs)

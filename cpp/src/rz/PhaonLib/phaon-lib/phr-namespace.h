@@ -15,7 +15,6 @@
 #include <QString>
 
 
-//KANS_(PhaonLib)
 KANS_(Phaon)
 
 
@@ -32,9 +31,6 @@ public:
 
 };
 
-
-
-//_KANS(PhaonLib)
 _KANS(Phaon)
 
 #endif //PHR_NAMESPACE__H

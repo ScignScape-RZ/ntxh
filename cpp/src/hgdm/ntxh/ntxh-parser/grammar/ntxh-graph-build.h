@@ -22,19 +22,12 @@
 #include "kans.h"
 KANS_(HGDMCore)
 
-//USING_RZNS(RECore)
-
 class NTXH_Graph;
 class NTXH_Node;
 class NTXH_Document;
 class NTXH_Parser;
 class NTXH_Graph;
 class NTXH_Frame;
-
-
-//flag_(1, inside_tag_body);
-//flag_(2, inside_tag_command_main_argument);
-//flag_(3, pre_markup);
 
 class NTXH_Graph_Build
 {

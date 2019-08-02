@@ -88,8 +88,6 @@ public:
  ACCESSORS(PhaonIR* ,phaon_ir)
  ACCESSORS(void* ,origin)
 
-//? ACCESSORS(PHR_Symbol_Scope* ,current_symbol_scope)
-
  ACCESSORS(direct_eval_fn_type ,direct_eval_fn)
  ACCESSORS(envv_fn_type ,envv_fn)
 

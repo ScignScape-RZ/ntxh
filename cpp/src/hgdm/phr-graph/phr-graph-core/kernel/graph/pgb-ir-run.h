@@ -63,8 +63,6 @@ class PGB_IR_Run
  caon_ptr<PHR_Graph_Node> last_signature_block_node_;
 
  MG_Token get_arg_token(const QMultiMap<MG_Token_Kinds, QPair<MG_Token, int>>& mgtm);
- //?MG_Token get_arg_or_string_token(const QMultiMap<MG_Token_Kinds, QPair<MG_Token, int>>& mgtm);
-
 
  QString get_string_arg(const QMultiMap<MG_Token_Kinds, QPair<MG_Token, int>>& mgtm);
 
@@ -93,8 +91,6 @@ public:
    QPair<MG_Token, int>>& mgtm);
 
  void run_from_file(QString file);
-
- //void run_lines(QString& lines);
 
  void run_lines(QString& lines);
 

@@ -50,7 +50,7 @@
 
 #include "rz-graph-sre/rz-sre-token.h"
 
-#include "rz-code-generators/rz-dynamo-output.h"
+//?#include "rz-code-generators/rz-dynamo-output.h"
 
 #include "rz-graph-core/kernel/graph/rz-re-connection.h"
 
@@ -1125,6 +1125,7 @@ caon_ptr<RZ_Lisp_Graph_Visitor::tNode>
 
    caon_ptr<RZ_Lisp_Graph_Core_Function> cf;
 
+// //  todo ...
 //   if(tok->raw_text().startsWith(">-"))
 //   {
 //    tok->flags.is_function_expression_entry = true;
@@ -1705,7 +1706,6 @@ void RZ_Lisp_Graph_Visitor::write_core_pairs(int generation, QString& text)
 
   RZ_Lisp_Graph_Valuer_Core_Pair& pr = *ppr;
   tNode& fn = *pr.fnode;
-  //tNode& ln = *pr.lhs_node;
 
   if(caon_ptr<RE_Token> tfn = fn.re_token())
   {
@@ -1739,35 +1739,21 @@ void RZ_Lisp_Graph_Visitor::write_core_pairs(int generation, QString& text)
 void RZ_Lisp_Graph_Visitor::run_core_pair(RZ_Lisp_Graph_Valuer_Core_Pair& pr)
 {
  RZ_Lisp_Graph_Result_Holder rh(*valuer_);
- //caon_ptr<tNode> function_node = &start_node;
 
- //?
  rh.clear_continue_proceed();
-
- //?return;
 
  switch(pr.cf->arity())
  {
  case 0:
   lisp_graph_runner_->proceed_run_from_node<0>(rh, pr);
-//     pr.generation, rh, *pr.cf,
-//    *pr.fnode, pr.lhs_node, pr.left_new_node,
-//    pr.rhs_node, pr.right_new_node);
   break;
 
  case 1:
   lisp_graph_runner_->proceed_run_from_node<1>(rh, pr);
-     /*pr.generation, rh, *pr.cf,
-    *pr.fnode, pr.lhs_node, pr.left_new_node,
-    pr.rhs_node, pr.right_new_node);*/
   break;
 
  case 2:
   lisp_graph_runner_->proceed_run_from_node<2>(rh, pr);
-
-//     pr.generation, rh, *pr.cf,
-//    *pr.fnode, pr.lhs_node, pr.left_new_node,
-//    pr.rhs_node, pr.right_new_node);
   break;
 
  default:
@@ -1778,8 +1764,6 @@ void RZ_Lisp_Graph_Visitor::run_core_pair(RZ_Lisp_Graph_Valuer_Core_Pair& pr)
  {
   // //  only one layer
   check_anticipate(pr.generation + 1, rh, *pr.fnode);
-//  if(rh.arity_node())
-//  {   caon_ptr<tNode> function_node = rh.arity_node() }
  }
 
  caon_ptr<RZ_Lisp_Graph_Valuer_Core_Pair> vpr = valuer_->check_release_core_pair();

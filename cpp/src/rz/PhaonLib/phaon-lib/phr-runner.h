@@ -14,17 +14,6 @@
 
 #include <QString>
 #include <QQueue>
-
-//KANS_CLASS_DECLARE(KCM ,KCM_Channel_Group)
-//KANS_CLASS_DECLARE(KCM ,Kauvir_Code_Model)
-//USING_KANS(KCM)
-
-//KANS_CLASS_DECLARE(CMD ,KCM_Scope_System)
-//USING_KANS(CMD)
-
-
-//KANS_(PhaonLib)
-
 KANS_(Phaon)
 
 class PHR_Runtime_Scope;
@@ -42,7 +31,6 @@ class PHR_Symbol_Scope;
 
 class PHR_Runner
 {
-// Kauvir_Code_Model* kcm_;
  PHR_Code_Model* pcm_;
  PHR_Scope_System* scopes_;
  PHR_Channel_Group_Table* table_;
@@ -67,9 +55,6 @@ public:
   return *table_;
  }
 
-//? void init_scope_system();
-
-// QQueue<PHR_Symbol_Scope*>& get_phaon_scope_queue();
  QQueue<PHR_Runtime_Scope*>& get_runtime_scope_queue();
 
  void run(PHR_Channel_Group& pcg, PHR_Channel_System* pcs, PHR_Symbol_Scope* pss);
@@ -77,9 +62,6 @@ public:
 
 
 };
-
-
-//_KANS(PhaonLib)
 
 _KANS(Phaon)
 

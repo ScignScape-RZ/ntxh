@@ -13,7 +13,6 @@
 #include <QMainWindow>
 
 #include <QTextEdit>
-//?#include <QWebView>
 
 #include <QLabel>
 #include <QPushButton>
@@ -36,8 +35,6 @@
 #include <QTabWidget>
 
 #include <QFrame>
-
-//#include "incident-form-dialog.h"
 
 class QPushButton;
 class QTextEdit;
@@ -92,8 +89,6 @@ public:
  QString get_current_text();
 
  ~QLispConsole_Dialog();
-
- //void close_button_clicked();
 
 Q_SIGNALS:
  void canceled(QDialog*);

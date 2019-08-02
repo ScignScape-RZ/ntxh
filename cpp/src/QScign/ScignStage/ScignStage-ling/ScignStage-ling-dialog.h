@@ -66,9 +66,6 @@ class ScignStage_Clickable_Label;
 
 class XPDF_Bridge;
 
-//KANS_CLASS_DECLARE(PhaonLib ,Phaon_Runner)
-//USING_KANS(PhaonLib)
-
 #ifdef USING_KPH
 
 KANS_(Phaon)
@@ -84,11 +81,8 @@ USING_KANS(Phaon)
 #endif
 
 
-QSNS_(ScignStage)
-_QSNS(ScignStage)
-//?namespace QScign { namespace ScignStage {
-
-
+//QSNS_(ScignStage)
+//_QSNS(ScignStage)
 
 class ScignStage_Ling_Dialog : public QDialog
 {
@@ -104,10 +98,6 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QHBoxLayout* middle_layout_;
  QVBoxLayout* main_layout_;
-
-
- // //  "Pseudo" Toolbar ...
- //QHBoxLayout* top_buttons_layout_;
 
  QPushButton* launch_config_button_;
  QPushButton* activate_tcp_button_;
@@ -129,13 +119,7 @@ class ScignStage_Ling_Dialog : public QDialog
  QStringList issues_;
  QStringList forms_;
 
-// QScrollArea* tree_scroll_area_;
-// QFrame* main_frame_;
-
  QTreeWidget* main_tree_widget_;
-// QVBoxLayout* main_tree_layout_;
-
- //QGridLayout* main_grid_layout_;
 
  NAV_Ling1D_Panel* nav_panel_;
 
@@ -143,8 +127,6 @@ class ScignStage_Ling_Dialog : public QDialog
 
  QVector<Language_Sample*>* samples_;
  QVector<Language_Sample_Group*>* groups_;
-
- //QSet<QString>* temp_filters_;
 
  QSet<QString> current_filters_;
 
@@ -194,8 +176,6 @@ class ScignStage_Ling_Dialog : public QDialog
  QProcess* xpdf_process_;
 
  void* application_model_;
-
- //int xpdf_port_;
 
  QString held_xpdf_msg_;
 
@@ -365,9 +345,6 @@ public Q_SLOTS:
 
 };
 
-//_QSNS(ScignStage)
-
-
-#endif  // SCIGNSTAGE_AUDIO_DIALOG__H
+#endif  // SCIGNSTAGE_LING_DIALOG__H
 
 

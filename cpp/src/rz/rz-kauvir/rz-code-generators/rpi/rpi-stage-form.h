@@ -162,7 +162,6 @@ public:
  bool is_effective_block_entry_statment();
  bool is_non_block_expression();
  bool is_deferred();
-// bool has_preceder_token();
 
  void check_write_block_signature(QList<PGB_IR_Build::Text_With_Purpose>& step_forms);
 
@@ -198,8 +197,6 @@ public:
  void init_assignment_expression(QString tok);
  void init_formula_expression(QString tok);
 
-// void mark_as_statement();
-
  void write_statement_entry_qts(QTextStream& qts);
  void write_statement_leave_qts(QTextStream& qts);
 
@@ -214,16 +211,10 @@ public:
 
  void mark_deferred(int hdcode);
  void mark_as_assignment_expression();
-// void mark_as_block_entry_statment();
-// void mark_as_nested_block_entry_statment();
  void mark_as_fn_no_block();
  void mark_as_s1_assignment_preempts_s0();
  void mark_as_parent_s1_assignment_preempts_s0();
  void mark_as_fn();
-
-
-// void mark_as_inferred_block_entry_statment();
-// void mark_preceder_token();
 
  QString get_assignment_target();
 
@@ -239,8 +230,6 @@ public:
  void add_expression(caon_ptr<RPI_Stage_Form> form);
 
  void add_nested_block(caon_ptr<RPI_Block> block);
-
- //void add_prin1_quoted_form(QString text, RPI_Stage_Element_Kinds kind, QString text);
 
  void write_checked_unmediated(QTextStream& qts, caon_ptr<RPI_Stage_Form> prior);
 

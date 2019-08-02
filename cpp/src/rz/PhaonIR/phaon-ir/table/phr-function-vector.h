@@ -20,11 +20,6 @@
 
 #include "phr-function.h"
 
-//KANS_CLASS_DECLARE(KCM ,KCM_Type_Object)
-//USING_KANS(KCM)
-
-//KANS_(PhaonLib)
-
 KANS_(Phaon)
 
 class PHR_Type_Object;
@@ -48,8 +43,6 @@ public:
 
 };
 
-
-//_KANS(PhaonLib)
 _KANS(Phaon)
 
 

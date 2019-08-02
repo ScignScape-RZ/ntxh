@@ -11,16 +11,14 @@
 
 #include "accessors.h"
 
-//?#include "kauvir-type-system/kauvir-universal-class.h"
-
 
 #include <QVector>
 #include <QObject>
 
-KANS_(QRing)
-_KANS(QRing)
+//KANS_(QRing)
+//_KANS(QRing)
 
-class QRing :  public QObject //?, public Kauvir_Universal_Class
+class QRing :  public QObject
 {
  Q_OBJECT
 

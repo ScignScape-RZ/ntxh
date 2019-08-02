@@ -18,15 +18,9 @@
 #include "accessors.h"
 
 
-//#include "kauvir-type-system/kauvir-universal-class.h"
 #include "phaon-ir/types/phr-universal-class.h"
 
-//?KANS_(CMD)
-
 KANS_(Phaon)
-
-class Kauvir_Request_Runtime;
-class Kauvir_Runtime_Router_Invokable;
 
 
 typedef void(PHR_Universal_Class::*ft)(void*, void*);
@@ -239,7 +233,6 @@ struct Type_List__All_Cast_Needed<4>
 
 _KANS(Phaon)
 
-//?_KANS(CMD)
 
 #endif //PHR_COMMAND_RUNTIME_ROUTER_CAST_SCHEDULE__H
 

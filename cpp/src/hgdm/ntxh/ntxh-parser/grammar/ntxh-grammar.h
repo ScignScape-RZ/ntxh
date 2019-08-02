@@ -8,13 +8,7 @@
 #ifndef NTXH_GRAMMAR__H
 #define NTXH_GRAMMAR__H
 
-//#include "rz-parser/rz-regex.h"
-//#include "rz-parser/rz-parser.h"
-//#include "accessors.h"
-
 #include "relae-graph/relae-grammar.h"
-
-//?#include "relae-phaon/kernel/relae-phaon-dominion.h"
 
 #include "kans.h"
 
@@ -42,20 +36,5 @@ public:
 
 _KANS(HGDMCore)
 
-//#include "rz-parser/rz-regex.h"
-//#include "rz-parser/rz-parser.h"
 
-//#include "rz-text-typedefs.h"
-
-//class RZ_Text_Parser : public RZ_Parser<RZ_Text_Galaxy>
-//{
-//public:
-// RZ_Text_Parser(RZ_Text_Graph* g);
-// void set_raw_text(QString s);
-
-
-//};
-
-//typedef RZ_Parser<RZ_Text_Galaxy> RZ_Text_Parser;
-
-#endif
+#endif // NTXH_GRAMMAR__H

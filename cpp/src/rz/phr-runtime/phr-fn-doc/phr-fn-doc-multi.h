@@ -17,21 +17,6 @@
 #include <QList>
 #include <QPair>
 
-
-//KANS_CLASS_DECLARE(KCM ,Kauvir_Code_Model)
-//KANS_CLASS_DECLARE(KCM ,KCM_Channel_Group)
-//KANS_CLASS_DECLARE(KCM ,KCM_Type_Object)
-
-//USING_KANS(KCM)
-
-//class KCM_Lisp_Bridge;
-
-//KANS_CLASS_DECLARE(CMD ,KCM_Command_Package)
-//KANS_CLASS_DECLARE(CMD ,KCM_Command_Runtime_Router)
-//KANS_CLASS_DECLARE(CMD ,KCM_Scope_System)
-
-//USING_KANS(CMD)
-
 KANS_(Phaon)
 
 class PHR_Env;

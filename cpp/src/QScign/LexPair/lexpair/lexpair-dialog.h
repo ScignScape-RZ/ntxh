@@ -74,7 +74,6 @@ class Lexpair_Dialog : public QDialog
  QButtonGroup* sentence_button_group_;
  QList<QPushButton*> multi_selected_buttons_;
 
- //QPushButton* multi_button_;
  QPushButton* add_button_;
  QLabel* add_label_;
  QString original_add_label_text_;
@@ -116,8 +115,6 @@ class Lexpair_Dialog : public QDialog
   int logical_index;
   QTableWidgetItem* pin_prior;
   QTableWidgetItem* pin_next;
-//  QTableWidgetItem* _prior;
-//  QTableWidgetItem* _next;
  };
 
  QMap<QTableWidgetItem*, Vertical_Header_Map_Value> vertical_header_map_;
@@ -144,7 +141,6 @@ class Lexpair_Dialog : public QDialog
  QFrame* transform_elements_frame_;
 
  QFrame* mw_frame_;
- //QVBoxLayout* main_frame_layout_;
 
  void check_multi_select_button(QPushButton* btn);
 
@@ -169,9 +165,6 @@ class Lexpair_Dialog : public QDialog
 
  void reset_add();
  void force_recheck(int id);
-
- // //
- // ls.read("((quickly won)(The (home team)))");
 
  void clear_buttons();
  void enable_sxpr_buttons(bool en);
@@ -235,18 +228,11 @@ public:
  {
   QStringList result = qs.simplified().split(' ');
 
-//  QStringList qsl = result;
-//  if(qsl.removeDuplicates() == 0)
-//    return result;
-
   QMap<QString, QPair<quint8, quint8>> counts;
 
   for(QString qs: result)
   {
    ++counts[qs].first;
-//   int c = result.count(qs);
-//   if(c > 1)
-//     counts[qs] = {c, 0};
   }
 
   for(QString& qs: result)
@@ -258,33 +244,15 @@ public:
     qs += QString("\\%1").arg(pr.second);
     qDebug() << qs;
    }
-//   auto it = counts.find(qs);
-//   if(it != counts.end())
-//   {
-//    QPair<quint8, quint8>& pr = *it;
-//    ++pr.second;
-//    qs += "\\" + pr.second;
-//   }
   }
 
   return result;
-  //return qs.simplified().split(' ');
  }
 
  friend bool operator< (const Pair_Triple& lhs, const Pair_Triple& rhs)
  {
   return lhs.to_pr_pr() < rhs.to_pr_pr();
  }
-
-// friend uint qHash(const Dock_Link &dl)
-// {
-//  return qHash(dl.to_pr_pr());
-// }
-
-// friend operator ==(const Dock_Link &lhs, const Dock_Link &rhs)
-// {
-//  return lhs.to_pr_pr() == rhs.to_pr_pr();
-// }
 
 Q_SIGNALS:
 
@@ -296,7 +264,6 @@ public Q_SLOTS:
 
  void accept();
  void cancel();
-// void proceed();
 
 };
 

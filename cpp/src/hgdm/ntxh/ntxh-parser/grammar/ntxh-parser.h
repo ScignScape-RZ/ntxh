@@ -15,8 +15,6 @@
 #include "kans.h"
 KANS_(HGDMCore)
 
-//USING_RZNS(RECore)
-
 class NTXH_Graph;
 
 class NTXH_Parser : public Relae_Parser<NTXH_Galaxy>
@@ -25,34 +23,13 @@ class NTXH_Parser : public Relae_Parser<NTXH_Galaxy>
 
 public:
 
-// // ACCESSORS(NTXH_Graph* ,graph)
  ACCESSORS(QString ,raw_text)
 
- //ACCESSORS(NTXH_Graph* ,graph)
-
  NTXH_Parser(caon_ptr<NTXH_Graph> g);
-
-// QString get_remainder();
-
 
 };
 
 _KANS(HGDMCore)
 
-//#include "rz-parser/rz-regex.h"
-//#include "rz-parser/rz-parser.h"
-
-//#include "rz-text-typedefs.h"
-
-//class RZ_Text_Parser : public RZ_Parser<RZ_Text_Galaxy>
-//{
-//public:
-// RZ_Text_Parser(RZ_Text_Graph* g);
-// void set_raw_text(QString s);
-
-
-//};
-
-//typedef RZ_Parser<RZ_Text_Galaxy> RZ_Text_Parser;
 
 #endif

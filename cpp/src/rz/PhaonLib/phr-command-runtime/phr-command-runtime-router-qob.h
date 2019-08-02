@@ -13,11 +13,9 @@
 
 #include "phr-env/phr-env.h"
 
-//?
 #include "phr-fn-doc/phr-fn-doc.h"
 
-//?USING_KANS(CMD)
-
+USING_KANS(Phaon)
 
 #define ARGS_TEMP_MACRO(INDEX) \
  typename Type_List_Type::Type##INDEX& arg##INDEX \

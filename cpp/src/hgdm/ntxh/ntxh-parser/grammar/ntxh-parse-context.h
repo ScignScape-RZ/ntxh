@@ -15,14 +15,9 @@
 #include "kans.h"
 KANS_(HGDMCore)
 
-//USING_RZNS(RECore)
 
 class NTXH_Graph;
 class NTXH_Node;
-
-//flag_(1, inside_tag_body);
-//flag_(2, inside_tag_command_main_argument);
-//flag_(3, pre_markup);
 
 class NTXH_Parse_Context
 {
@@ -34,11 +29,6 @@ public:
   flag_(2, multiline_field)
   flag_(3, active_type_decl)
  _flags_
-
-private:
-//? caon_ptr<NTXH_Node> current_open_print_node_;
-
-public:
 
  NTXH_Parse_Context();
 

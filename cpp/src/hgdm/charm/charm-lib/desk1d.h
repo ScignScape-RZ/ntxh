@@ -24,9 +24,8 @@
 
 template<typename VAL_Type, typename INDEX_Type = quint16, typename PR_Type = _pr_break>
 class Desk1d :
-  public each_holders<Desk1d<VAL_Type>, VAL_Type, INDEX_Type, PR_Type> //: protected QPair<Vec1d<VAL_Type>, Vec1d<VAL_Type>>
+  public each_holders<Desk1d<VAL_Type>, VAL_Type, INDEX_Type, PR_Type>
 {
- //Hive_Structure* front_hive_;
 protected:
 
  _Vec1d<VAL_Type> front_vec_;

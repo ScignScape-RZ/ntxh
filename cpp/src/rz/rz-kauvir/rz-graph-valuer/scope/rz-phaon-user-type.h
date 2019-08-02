@@ -1,4 +1,9 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
 #ifndef RZ_PHAON_USER_TYPE__H
 #define RZ_PHAON_USER_TYPE__H
 
@@ -19,7 +24,9 @@
 
 #include "rz-phaon-precycle.h"
 
-class PHR_Type_Object;
+KANS_CLASS_DECLARE(Phaon ,PHR_Type_Object)
+
+USING_KANS(Phaon)
 
 RZNS_CLASS_DECLARE(RECore, RE_Node)
 
@@ -68,21 +75,6 @@ public:
  QString get_declaration_mode_string();
 
  void increment_field_count();
-
-// QList<caon_ptr<PHR_Type_Object>>
-
-//?
-// template<typename T>
-// friend void operator<<(T& t, const RZ_Lisp_Graph_User_Class&)
-// {
-// }
-
-// friend void operator<<(QDebug qd, RZ_Lisp_Graph_User_Class&)
-// {
-////  qd << "<fundef>";
-// }
-
-
 };
 
 _RZNS(GVal)

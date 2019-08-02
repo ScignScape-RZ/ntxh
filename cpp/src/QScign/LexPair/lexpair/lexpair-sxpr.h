@@ -38,7 +38,6 @@ class Lexpair_Sxpr
   QString word;
   QString parent_chief;
   int local_depth;
-  //int current_rewind;
 
   QVector<int> lamba_counts;
  };

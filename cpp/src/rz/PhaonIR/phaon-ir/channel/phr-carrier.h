@@ -45,7 +45,6 @@ public:
 
  QString get_src_value() const;
 
- //PHR_Type_Object* type_object() const;
 };
 
 _KANS(Phaon)

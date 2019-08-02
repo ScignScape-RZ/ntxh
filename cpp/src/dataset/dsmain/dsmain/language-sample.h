@@ -26,7 +26,7 @@ KANS_(DSM)
 
 class Language_Sample_Group;
 
-class Language_Sample //: phaong<pg_t>::Hypernode
+class Language_Sample
 {
  quint32 id_;
  QString text_;

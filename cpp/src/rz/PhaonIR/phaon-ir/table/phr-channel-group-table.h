@@ -17,18 +17,11 @@
 
 #include <QSet>
 
-//#include "kans.h"
 #include "accessors.h"
-
-//#include "kauvir-type-system/kauvir-universal-class.h"
-//#include "kauvir-type-system/kauvir-type-system.h"
 
 #include "relae-graph/relae-caon-ptr.h"
 
 #include "phr-function.h"
-
-//#include "kauvir-code-model/kcm-function-package.h"
-
 #include "phr-symbol-scope.h"
 
 #include "phr-function-package.h"
@@ -38,13 +31,6 @@
 
 #include <QMap>
 
-//KANS_CLASS_DECLARE(KCM ,KCM_Channel_Group)
-//KANS_CLASS_DECLARE(KCM ,KCM_Type_Object)
-
-//USING_KANS(KCM)
-//USING_KANS(Kauvir)
-
-//KANS_(PhaonLib)
 
 KANS_(Phaon)
 
@@ -60,7 +46,6 @@ class PHR_Channel_Group_Table
 
  PHR_Type_System& type_system_;
 
- // //?
  QMultiMap<QString, QPair<PHR_Channel_Group*, s1_fng_type>> s1_declared_functions_generic_;
 
 
@@ -88,18 +73,12 @@ public:
   phf.augment(pfp);
 
   pss.add_function(name, phf);
-
-  //pss[name].push_back(phf);
-
  }
 
  s1_fng_type find_s1_declared_function_0(QString name,
    PHR_Channel_Group* kcg, const PHR_Type_Object** pkto);
-
-
 };
 
-//_KANS(PhaonLib)
 _KANS(Phaon)
 
 

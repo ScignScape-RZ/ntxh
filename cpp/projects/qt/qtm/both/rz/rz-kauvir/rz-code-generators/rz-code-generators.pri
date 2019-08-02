@@ -32,14 +32,6 @@ TEMPLATE = lib
 
 HEADERS += \
   $$SRC_ROOT_DIR/multistep-token.h \
-  $$SRC_DIR/rz-dynamo-output.h \
-  $$SRC_DIR/rz-dynamo-block.h \
-  $$SRC_DIR/rz-dynamo-form.h \
-  $$SRC_DIR/rz-dynamo-form-annotation.h \
-  $$SRC_DIR/rz-dynamo-expression.h \
-  $$SRC_DIR/rz-dynamo-type-declaration.h \
-  $$SRC_DIR/phaon/rz-phaon-block.h \
-  $$SRC_DIR/phaon/rz-phaon-output.h \
   $$SRC_DIR/rpi/rpi-output.h \
   $$SRC_DIR/rpi/rpi-block.h \
   $$SRC_DIR/rpi/rpi-stage-form.h \
@@ -50,14 +42,6 @@ HEADERS += \
   $$SRC_DIR/rpi/rpi-type-declaration.h \
 
 SOURCES += \
-  $$SRC_DIR/rz-dynamo-output.cpp \
-  $$SRC_DIR/rz-dynamo-block.cpp \
-  $$SRC_DIR/rz-dynamo-form.cpp \
-  $$SRC_DIR/rz-dynamo-form-annotation.cpp \
-  $$SRC_DIR/rz-dynamo-expression.cpp \
-  $$SRC_DIR/rz-dynamo-type-declaration.cpp \
-  $$SRC_DIR/phaon/rz-phaon-block.cpp \
-  $$SRC_DIR/phaon/rz-phaon-output.cpp \
   $$SRC_DIR/rpi/rpi-output.cpp \
   $$SRC_DIR/rpi/rpi-block.cpp \
   $$SRC_DIR/rpi/rpi-stage-form.cpp \
@@ -66,6 +50,24 @@ SOURCES += \
   $$SRC_DIR/rpi/rpi-assignment-info.cpp \
   $$SRC_DIR/rpi/rpi-expression.cpp \
   $$SRC_DIR/rpi/rpi-type-declaration.cpp \
+
+#  $$SRC_DIR/rz-dynamo-output.cpp \
+#  $$SRC_DIR/rz-dynamo-block.cpp \
+#  $$SRC_DIR/rz-dynamo-form.cpp \
+#  $$SRC_DIR/rz-dynamo-form-annotation.cpp \
+#  $$SRC_DIR/rz-dynamo-expression.cpp \
+#  $$SRC_DIR/rz-dynamo-type-declaration.cpp \
+#  $$SRC_DIR/phaon/rz-phaon-block.cpp \
+#  $$SRC_DIR/phaon/rz-phaon-output.cpp \
+
+#  $$SRC_DIR/rz-dynamo-output.h \
+#  $$SRC_DIR/rz-dynamo-block.h \
+#  $$SRC_DIR/rz-dynamo-form.h \
+#  $$SRC_DIR/rz-dynamo-form-annotation.h \
+#  $$SRC_DIR/rz-dynamo-expression.h \
+#  $$SRC_DIR/rz-dynamo-type-declaration.h \
+#  $$SRC_DIR/phaon/rz-phaon-block.h \
+#  $$SRC_DIR/phaon/rz-phaon-output.h \
 
 LIBS += -L$$TARGETSDIR -lrz-graph-core -lrz-graph-token -lrz-graph-visit \
   -lrz-graph-valuer -lrz-function-def -lrz-code-elements

@@ -8,7 +8,7 @@
 
 #include "kans.h"
 
-USING_KANS(QRing)
+//?USING_KANS(QRing)
 
 
 QRing::QRing()

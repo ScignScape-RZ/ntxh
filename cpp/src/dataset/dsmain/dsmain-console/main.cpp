@@ -50,7 +50,7 @@
 #include "phaon-lib/phr-runner.h"
 #include "phr-direct-eval/phr-direct-eval.h"
 #include "phaon-ir/table/phr-symbol-scope.h"
-#include "phaon-lib/phr-channel-group-table.h"
+#include "phaon-ir/table/phr-channel-group-table.h"
 #include "phaon-ir/scopes/phr-runtime-scope.h"
 #include "phaon-ir/scopes/phr-scope-system.h"
 extern void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
@@ -76,7 +76,8 @@ USING_KANS(TextIO)
 #ifdef USING_KPH
 USING_KANS(Phaon)
 #endif
-USING_QSNS(ScignStage)
+
+//?USING_QSNS(ScignStage)
 
 #ifdef USING_CONFIG_DIALOG
 void launch_config_dialog(Config_Dialog*& dlg, QWidget* parent)

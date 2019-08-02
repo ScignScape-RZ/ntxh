@@ -18,7 +18,6 @@
 #include <QTextStream>
 #include <QMap>
 
-//#include "pcm-channel.h"
 
 
 KANS_(Phaon)
@@ -48,21 +47,8 @@ public:
   bool surround_type_expressions:1;
  _flags
 
-private:
-
-// QMap<KCM_Channel::Kinds, QString> channel_kind_codes_;
-
-// typedef QMap<KCM_Channel::Kinds, QString> channel_kind_codes_type;
-
-
-public:
 
  PCM_Report_Syntax();
-
-
-// ACCESSORS__RGET(channel_kind_codes_type ,channel_kind_codes)
-
-// QString get_channel_kind_code(KCM_Channel::Kinds kind);
 
 };
 

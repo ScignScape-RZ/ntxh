@@ -113,8 +113,6 @@ class PhaonIR
 
  typedef union {void(PhaonIR::*fn0)(); void(PhaonIR::*fn1)(QString);} fn_u ;
 
-// typedef union {int fn1; void* fn2;} fn_u;
-
  QMap<QString, QList<QPair<QString*, fn_u>>> line_ops_;
 
  QString starting_source_fn_name_;
@@ -149,16 +147,12 @@ class PhaonIR
  QMap<QString, PHR_Channel_Group*> temp_anchored_channel_groups_;
 
  QMultiMap<PHR_Channel_Group*, void*> temps_by_channel_group_;
- //?QStringList temp_strings_;
-
 
  QList<void*> retired_temps_;
 
  PHR_Code_Model* code_model_;
 
  PHR_Symbol_Scope* held_symbol_scope_;
-
- //PHR_Type* current_bloc
 
  int source_fn_anon_count_;
 

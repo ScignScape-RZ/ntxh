@@ -17,14 +17,6 @@ class QTextStream;
 
 #include "accessors.h"
 
-//KANS_CLASS_DECLARE(KCM ,KCM_Channel_Group)
-//USING_KANS(KCM)
-
-//KANS_CLASS_DECLARE(CMD ,KCM_Command_Package)
-//USING_KANS(CMD)
-
-//KANS_(Phaon)
-
 KANS_(Phaon)
 
 class KPH_Generator_Substitutions;
@@ -63,8 +55,6 @@ public:
 
 };
 
-
-//_KANS(Phaon)
 _KANS(Phaon)
 
 

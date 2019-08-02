@@ -15,7 +15,6 @@
 #include "accessors.h"
 
 
-//KANS_(PhaonLib)
 KANS_(Phaon)
 
 class PHR_Namespace;
@@ -36,7 +35,6 @@ public:
 };
 
 
-//_KANS(PhaonLib)
 _KANS(Phaon)
 
 

@@ -69,8 +69,6 @@ public:
 
  void array_append(hypernode_type* hn, hypernode_type* nhn);
 
-// void add_numeric_read_token(hypernode_type* hn, QString type_name,
-//   int field_index, numeric_index_type val);
 
  hypernode_type* new_hypernode_by_type_name(QString ty);
 

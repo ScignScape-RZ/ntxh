@@ -22,8 +22,6 @@
 
 #include "accessors.h"
 
-//KANS_(CMD)
-
 KANS_(Phaon)
 
 
@@ -74,7 +72,6 @@ public:
 
 };
 
-//_KANS(CMD)
 _KANS(Phaon)
 
 #endif //PHR_COMMAND_RUNTIME_ARGUMENT__H
