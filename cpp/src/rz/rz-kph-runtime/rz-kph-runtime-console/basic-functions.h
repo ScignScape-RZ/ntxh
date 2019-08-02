@@ -24,12 +24,19 @@
 
 //KANS_(PhaonLib)
 
+KANS_(Phaon)
+
 class PHR_Channel_Group_Table;
 class PHR_Symbol_Scope;
 class PHR_Code_Model;
 
 class PHR_Channel_System;
 class PhaonIR;
+
+_KANS(Phaon)
+
+USING_KANS(Phaon)
+
 
 void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);

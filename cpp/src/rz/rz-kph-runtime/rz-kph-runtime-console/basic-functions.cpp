@@ -32,12 +32,17 @@
 #include "phaon-ir/types/phr-type-object.h"
 #include "phaon-ir/types/phr-type.h"
 
+#include "phaon-ir/table/phr-channel-group-table.h"
+
 
 #include <QTextStream>
 
 #include <QDebug>
 
 #include <QEventLoop>
+
+USING_KANS(Phaon)
+
 
 
 //USING_KANS(KCL)

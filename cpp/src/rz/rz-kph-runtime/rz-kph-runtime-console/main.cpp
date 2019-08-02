@@ -57,6 +57,9 @@
 
 USING_RZNS(RECore)
 
+USING_KANS(Phaon)
+
+
 QString compile_rz(QString file_name)
 {
  QString result;

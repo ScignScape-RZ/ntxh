@@ -22,6 +22,9 @@
 
 //#include "phaon-lib/phr-runner.h"
 
+USING_KANS(Phaon)
+
+
 extern void* insert_envv(void* kind, void* test);
 
 #include <QDebug>

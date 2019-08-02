@@ -85,13 +85,15 @@
 #include "phaon-ir/types/phr-type-system.h"
 #include "phaon-ir/phr-code-model.h"
 #include "phaon-ir/channel/phr-channel-group.h"
-#include "phaon-lib/phr-channel-group-table.h"
+#include "phaon-ir/table/phr-channel-group-table.h"
 
 #include "phaon-ir/channel/phr-channel-system.h"
 #include "phaon-ir/channel/phr-carrier.h"
 #include "phaon-ir/phaon-ir.h"
 
 #include "phr-fn-doc/phr-fn-doc.h"
+
+USING_KANS(Phaon)
 
 void fndoc_read(PHR_Fn_Doc* fnd, QString fn)
 {

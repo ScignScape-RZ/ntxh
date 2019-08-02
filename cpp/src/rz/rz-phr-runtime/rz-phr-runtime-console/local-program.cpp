@@ -27,6 +27,8 @@ extern void* insert_envv(void* kind, void* test);
 
 #include <QDebug>
 
+USING_KANS(Phaon)
+
 //#ifdef HIDE
 void local_program1(PhaonIR& phr)
 {
