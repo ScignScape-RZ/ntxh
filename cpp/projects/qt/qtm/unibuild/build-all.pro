@@ -27,7 +27,6 @@ SUBDIRS += \
 SUBDIRS += \
   rz/PhaonIR/phaon-ir \
   rz/PhaonLib/phaon-lib \
-  rz/PhaonLib/phaon-lib-console \
 
 
 SUBDIRS += \
@@ -51,6 +50,10 @@ SUBDIRS += \
   rz/PhaonLib/phr-command-runtime \
   rz/tests-phr/kph-generator \
   rz/PhaonLib/phr-direct-eval \
+
+
+SUBDIRS += \
+  rz/PhaonLib/phaon-lib-console \
 
 
 SUBDIRS += \

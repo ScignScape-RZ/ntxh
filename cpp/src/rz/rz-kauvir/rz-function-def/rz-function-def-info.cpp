@@ -686,6 +686,7 @@ void RZ_Function_Def_Info::write_phr_signature_code_by_channel_type(PGB_IR_Build
    if(rzlt->flags.is_empty_tuple_indicator)
    {
     write_phr_signature_code_for_empty_channel(pgb, step_forms, channel_name_code);
+    return;
    }
    else if(position_count == 0)
    {
