@@ -1,6 +1,15 @@
 
-&test-call do .() ->
- &prn 83;
- ;;
+,x ::: int;
+x \= test-find "abcdef" "de";
+ 
+&if \(x =? 3) \do
+ &prs "Found";
+ &prs "OK";
+;, \else
+ &prs "Not Found";
+;;
 
+&prs "review, x = ";
+&prn x;
+&prs "done.";
 

@@ -343,6 +343,8 @@ public:
  PHR_Channel* get_channel_by_sp_name(QString sp_name, PHR_Channel_Group& pcg);
  void* get_first_raw_value(QString sp_name, PHR_Channel_Group& pcg);
 
+ void reset(PHR_Symbol_Scope* pss = nullptr);
+
 };
 
 _KANS(Phaon)

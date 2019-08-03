@@ -1,12 +1,13 @@
 
-,fnd ::: Fn_Doc*;
+,fnd ::: PHR_Fn_Doc*;
 fnd \== default; 
 
-,kenv ::: KCM_Env*;
-kenv \= (envv "KCM_Env*");
+,penv ::: PHR_Env*;
+penv \= (envv "PHR_Env*");
 
-fnd -> init kenv;
+fnd -> init penv;
 
 ,test-fn ::: .()  $-> extern;
 
 fnd -> read  "test-fn";
+

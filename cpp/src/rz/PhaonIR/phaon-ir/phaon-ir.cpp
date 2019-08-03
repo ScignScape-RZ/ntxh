@@ -58,6 +58,51 @@ PhaonIR::PhaonIR(PHR_Channel_System* channel_system) :  type_system_(nullptr),
  init_current_source_function_scope(current_source_fn_name_);
 }
 
+void PhaonIR::reset(PHR_Symbol_Scope* pss)
+{
+ // //?
+
+ if(current_source_function_scope_)
+   delete current_source_function_scope_;
+ current_source_fn_name_ = starting_source_fn_name_ = ";_main";
+ init_current_source_function_scope(current_source_fn_name_);
+
+ if(program_stack_)
+ {
+  delete program_stack_;
+  program_stack_ = nullptr;
+ }
+ if(alt_program_stack_)
+ {
+  delete alt_program_stack_;
+  alt_program_stack_ = nullptr;
+ }
+ if(temp_held_program_stack_)
+ {
+  delete temp_held_program_stack_;
+  temp_held_program_stack_ = nullptr;
+ }
+ if(held_channel_group_)
+ {
+  delete held_channel_group_;
+  held_channel_group_ = nullptr;
+ }
+ if(pss)
+ {
+  held_symbol_scope_ = pss;
+ }
+ if(current_channel_lexical_scope_)
+ {
+  delete current_channel_lexical_scope_;
+  current_channel_lexical_scope_ = nullptr;
+ }
+ source_fn_anon_count_ = 0;
+ current_cocyclic_type_ = nullptr;
+ sp_map_->clear();
+ //init_program_stack();
+}
+
+
 
 void PhaonIR::check_init_program_stack()
 {
@@ -148,6 +193,7 @@ qint32 PhaonIR::get_s4_symbol_value(QString sym)
  {
   quint64 val;
   PHR_Runtime_Scope::Storage_Options so;
+  PHR_Type* ty = current_lexical_scope()->find_value(sym, val, so);
   return (qint32) val;
  }
 }
@@ -179,13 +225,16 @@ PHR_Type* PhaonIR::init_value_from_symbol(QString sym,
   return nullptr;
  }
 
- auto it = current_channel_lexical_scope_->find(sym);
- if(it != current_channel_lexical_scope_->end())
+ if(current_channel_lexical_scope_)
  {
-  PHR_Scope_Value* psv = it->first;
-  so = it->second;
-  val = psv->raw_value;
-  return psv->ty;
+  auto it = current_channel_lexical_scope_->find(sym);
+  if(it != current_channel_lexical_scope_->end())
+  {
+   PHR_Scope_Value* psv = it->first;
+   so = it->second;
+   val = psv->raw_value;
+   return psv->ty;
+  }
  }
  return current_lexical_scope()->find_value(sym, val, so);
 }

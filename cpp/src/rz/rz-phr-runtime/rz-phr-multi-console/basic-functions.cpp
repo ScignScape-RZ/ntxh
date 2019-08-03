@@ -481,7 +481,7 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
 
   PHR_Type* rty = type_system->get_type_by_name("u4");
   PHR_Carrier* rphc = new PHR_Carrier;
-  phc1->set_phr_type(rty);
+  rphc->set_phr_type(rty);
   g1.init_channel(result, 1);
   (*g1[result])[0] = rphc;
 

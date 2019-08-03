@@ -3,11 +3,13 @@
 x \= test-find "abcdef" "de";
  
 &if \(x =? 3) \do
- @format t "Found: ~a~%" x;
+ &prs "Found";
  &prs "OK";
 ;, \else
  &prs "Not Found";
 ;;
 
-@format t "review, x = ~a~%" x;
+&prs "review, x = ";
+&prn x;
 &prs "done.";
+
