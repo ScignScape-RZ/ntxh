@@ -120,8 +120,8 @@ QString compile_rz(QString file_name)
 }
 
 
-//extern void local_program(PhaonIR& phr, QStringList& progs, QString topl);
-void local_program(PhaonIR& phr, QString phrf);
+extern void local_program(PhaonIR& phr, QStringList& progs, QString topl);
+extern void local_program(PhaonIR& phr, QString phrf);
 
 PHR_Channel_Group_Evaluator* load_evaluator(PhaonIR& phr, PHR_Channel_Group& pcg)
 {
@@ -144,18 +144,24 @@ void run_phaon(QStringList& progs, QString topl)
 {
  PHR_Channel_System pcs;
 
- for(QString prog : progs)
- {
-  PhaonIR phr(&pcs);
+// for(QString prog : progs)
+// {
+//  PhaonIR phr(&pcs);
 
-  phr.set_load_evaluator_fn(&load_evaluator);
-  phr.set_direct_eval_fn(&phr_direct_eval);
+//  phr.set_load_evaluator_fn(&load_evaluator);
+//  phr.set_direct_eval_fn(&phr_direct_eval);
 
-  qDebug() << "\nLocal " << prog;
-  local_program(phr, prog);
-  //local_program(phr, progs, topl);
+//  qDebug() << "\nLocal " << prog;
+//  local_program(phr, prog);
+//  //local_program(phr, progs, topl);
 
- }
+// }
+
+ PhaonIR phr(&pcs);
+
+ phr.set_load_evaluator_fn(&load_evaluator);
+ phr.set_direct_eval_fn(&phr_direct_eval);
+ local_program(phr, progs, topl);
 }
 
 

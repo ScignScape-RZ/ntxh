@@ -61,6 +61,16 @@ PhaonIR::PhaonIR(PHR_Channel_System* channel_system) :  type_system_(nullptr),
 void PhaonIR::reset(PHR_Symbol_Scope* pss)
 {
  // //?
+ anchored_channel_groups_.clear();
+ temp_anchored_channel_groups_.clear();
+
+ source_function_scopes_.clear();
+ source_fn_names_.clear();
+ last_source_fn_name_ = QString();
+ held_usi_symbol_ = QString();
+ retired_temps_.clear();
+ run_state_stack_.clear();
+ line_ops_.clear();
 
  if(current_source_function_scope_)
    delete current_source_function_scope_;
@@ -96,6 +106,7 @@ void PhaonIR::reset(PHR_Symbol_Scope* pss)
   delete current_channel_lexical_scope_;
   current_channel_lexical_scope_ = nullptr;
  }
+
  source_fn_anon_count_ = 0;
  current_cocyclic_type_ = nullptr;
  sp_map_->clear();
