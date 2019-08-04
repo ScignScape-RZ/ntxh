@@ -86,7 +86,7 @@ contains(CHOICE_FEATURES, "config") \#/
 {
  message(DEFINE\'ing USING_CONFIG_DIALOG)
  DEFINES += USING_CONFIG_DIALOG
- LIBS += -L$$TARGETSDIR -lapplication-model  -lconfig-dialog
+ LIBS += -L$$TARGETSDIR  -lconfig-dialog
 }
 
 contains(CHOICE_FEATURES, "xpdf") \#/

@@ -17,6 +17,9 @@
 
 #include "phr-direct-eval/phr-direct-eval.h"
 
+#include "kans.h"
+
+USING_KANS(Phaon)
 
 extern void local_program(PhaonIR& phr);
 

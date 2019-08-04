@@ -16,6 +16,7 @@ SUBDIRS = \
 
 
 SUBDIRS += \
+  dataset/pdf-pull/pdf-pull  \
   external/xpdf/xpdf \
 
 
@@ -45,8 +46,8 @@ SUBDIRS += \
   rz/phr-runtime/phr-env \
   rz/phr-runtime/phr-fn-doc \
   rz/PhaonLib/phr-command-runtime \
-  rz/PhaonLib/phr-direct-eval \
   rz/tests-phr/kph-generator \
+  rz/PhaonLib/phr-direct-eval \
 
 
 SUBDIRS += \
@@ -62,7 +63,6 @@ SUBDIRS += \
 
 
 SUBDIRS += \
-  dataset/pdf-pull/pdf-pull  \
   dataset/pdf-pull/pdf-pull-console  \
 
 
