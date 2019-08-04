@@ -832,24 +832,6 @@ void RPI_Block::write_top_level(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTe
 
 void RPI_Block::write(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTextStream* qts)
 {
-// if(parent_block_)
-// {
-//  if(es_argument_.isEmpty())
-//  {
-//   qts << "\n(kb::write-enter-scope)\n";
-//  }
-//  else
-//  {
-//   // // same ?
-//   // ... qts << "\n(kb::write-enter-scope)\n";
-//  }
-// }
-// else
-// {
-//  // ... qts << "\n(kb::write-file-start)\n";
-// }
-// qts << entry_lisp_code_;
-
  caon_ptr<RPI_Stage_Form> prior = nullptr;
  for(caon_ptr<RPI_Stage_Form> rsf : forms_)
  {
@@ -882,30 +864,22 @@ void RPI_Block::write(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTextStream* 
   tps.append(rsf->step_forms());
   prior = rsf;
  }
-
-// if(parent_block())
-// {
-//  qts << "\n(kb::write-leave-scope)\n";
-// }
-// else
-// {
-//  qts << "\n\n(kb::write-file-end)\n";
-// }
-
  caon_ptr<RE_Block_Entry> rbe = get_block_entry();
 
-// //  todo ...
-// if(continue_block_)
-// {
-// }
-// else if(rbe)
-// {
-//  CAON_PTR_DEBUG(RE_Block_Entry ,rbe)
-//  if(rbe->flags.if_block)
-//  {
-//  }
-//  else if(rbe->flags.elsif_block)
-//  {
-//  }
-// }
+#ifdef HIDE
+ if(continue_block_)
+ {
+
+ }
+ else if(rbe)
+ {
+  CAON_PTR_DEBUG(RE_Block_Entry ,rbe)
+  if(rbe->flags.if_block)
+  {
+  }
+  else if(rbe->flags.elsif_block)
+  {
+  }
+ }
+#endif // HIDE
 }

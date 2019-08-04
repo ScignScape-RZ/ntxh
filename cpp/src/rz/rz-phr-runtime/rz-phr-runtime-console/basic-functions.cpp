@@ -106,11 +106,11 @@ void test_dfr(quint64 arg1, quint64 arg2)
 {
  PHR_Expression_Object* px1 = (PHR_Expression_Object*) arg1;
  PHR_Channel_Group_Evaluator* ev1 = px1->run();
- quint64 r1 = ev1->get_result_value_as<quint64>();
+ quint32 r1 = ev1->get_result_value_as<quint32>();
 
  PHR_Expression_Object* px2 = (PHR_Expression_Object*) arg2;
  PHR_Channel_Group_Evaluator* ev2 = px2->run();
- quint64 r2 = ev2->get_result_value_as<quint64>();
+ quint32 r2 = ev2->get_result_value_as<quint32>();
 
  qDebug() << r1;
  qDebug() << r2;

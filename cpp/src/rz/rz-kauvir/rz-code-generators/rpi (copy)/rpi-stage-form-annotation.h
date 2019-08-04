@@ -35,8 +35,8 @@ public:
 //  bool is_elsif_with_elsif:1;
 //  bool is_general_if:1;
 //  bool end_form_before_nested:1;
-  bool surround_nested:1;
-  bool surround_nested_secondary:1;
+//  bool surround_nested:1;
+//  bool surround_nested_secondary:1;
 //  bool write_pull_nested_form_group:1;
 //  bool write_push_nested_form_group:1;
 //  bool skip_write_command_package:1;
