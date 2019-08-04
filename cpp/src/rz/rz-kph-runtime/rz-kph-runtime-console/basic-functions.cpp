@@ -6,6 +6,10 @@
 
 #include "basic-functions.h"
 
+// //  defer to default
+
+#ifdef HIDE
+
 #include "phaon-ir/runtime/phr-callable-value.h"
 #include "phaon-ir/runtime/phr-expression-object.h"
 
@@ -13,17 +17,12 @@
 #include "phaon-ir/types/phr-type-object.h"
 #include "phaon-ir/types/phr-type.h"
 
-#include "phaon-ir/table/phr-channel-group-table.h"
-
 
 #include <QTextStream>
 
 #include <QDebug>
 
 #include <QEventLoop>
-
-USING_KANS(Phaon)
-
 
 #include "phaon-ir/types/phr-type-system.h"
 #include "phaon-ir/phr-code-model.h"
@@ -35,6 +34,8 @@ USING_KANS(Phaon)
 #include "phaon-ir/phaon-ir.h"
 
 #include "phr-fn-doc/phr-fn-doc.h"
+
+USING_KANS(Phaon)
 
 void fndoc_read(PHR_Fn_Doc* fnd, QString fn)
 {
@@ -305,7 +306,7 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
  PHR_Channel_Semantic_Protocol* result = pcs["result"];
  PHR_Channel_Semantic_Protocol* sigma = pcs["sigma"];
 
- PHR_Channel_Group g1;
+ PHR_Channel_Group g1;//(pcm.channel_names());
  {
   PHR_Type* ty = type_system->get_type_by_name("u4");
   PHR_Carrier* phc = new PHR_Carrier;
@@ -589,6 +590,7 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   g1.clear_all();
  }
 
+
  {
   PHR_Type* ty = type_system->get_type_by_name("argvec");
   PHR_Carrier* phc = new PHR_Carrier;
@@ -783,7 +785,6 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
 
   g1.clear_all();
  }
-
 }
 
-
+#endif // HIDE

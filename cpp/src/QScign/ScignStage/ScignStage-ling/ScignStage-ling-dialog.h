@@ -81,9 +81,6 @@ USING_KANS(Phaon)
 #endif
 
 
-//QSNS_(ScignStage)
-//_QSNS(ScignStage)
-
 class ScignStage_Ling_Dialog : public QDialog
 {
  Q_OBJECT

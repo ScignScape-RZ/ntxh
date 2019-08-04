@@ -6,14 +6,16 @@
 
 #include "basic-functions.h"
 
+// //  defer to default
+
+#ifdef HIDE
+
 #include "phaon-ir/runtime/phr-callable-value.h"
 #include "phaon-ir/runtime/phr-expression-object.h"
 
 #include "phaon-ir/eval/phr-channel-group-evaluator.h"
 #include "phaon-ir/types/phr-type-object.h"
 #include "phaon-ir/types/phr-type.h"
-
-#include "phaon-ir/table/phr-channel-group-table.h"
 
 
 #include <QTextStream>
@@ -141,6 +143,7 @@ void test_if_then_else(quint64 args_ptr)
 
    PHR_Channel_Group_Evaluator* ev = (*pxo)->run();
    qint32 i1 = ev->get_result_value_as<qint32>();
+
    test = (bool) i1;
   }
   ++i;
@@ -303,7 +306,7 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
  PHR_Channel_Semantic_Protocol* result = pcs["result"];
  PHR_Channel_Semantic_Protocol* sigma = pcs["sigma"];
 
- PHR_Channel_Group g1;
+ PHR_Channel_Group g1;//(pcm.channel_names());
  {
   PHR_Type* ty = type_system->get_type_by_name("u4");
   PHR_Carrier* phc = new PHR_Carrier;
@@ -784,3 +787,4 @@ void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
  }
 }
 
+#endif // HIDE

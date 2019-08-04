@@ -137,11 +137,12 @@ void PHR_Command_Runtime_Router::parse_command_package(PHR_Command_Package* pcp)
  }
 
  PHR_Channel* fground = pcp->fground_ch();
- if(fground->isEmpty())
+ if((!fground) || (fground->isEmpty()))
  {
   // // no function name!
   return;
  }
+
  PHR_Channel* result = pcp->result_ch();
  if(result)
  {

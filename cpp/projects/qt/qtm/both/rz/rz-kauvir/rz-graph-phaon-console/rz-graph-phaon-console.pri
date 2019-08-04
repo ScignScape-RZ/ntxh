@@ -68,12 +68,7 @@ LIBS += -L$$TARGETSDIR  \
    -lrz-code-elements \
 
 
-LIBS += -lrz-code-generators
-
-LIBS += -lphr-graph-core
-
-
-#LIBS += -L$$TARGETSDIR -lsexpr
+LIBS += -L$$TARGETSDIR -lphr-graph-core
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

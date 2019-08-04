@@ -1,0 +1,116 @@
+For R/Z:
+
+@/rz/rz-kauvir               rz-graph-core   
+@/rz/rz-kauvir               rz-graph-token
+@/rz/rz-kauvir               rz-graph-build
+@/rz/rz-kauvir               rz-graph-embed
+@/rz/rz-kauvir               rz-function-def
+@/rz/rz-kauvir               rz-code-elements
+@/rz/rz-kauvir               rz-graph-valuer
+@/rz/rz-kauvir               rz-graph-embed-run
+@/rz/rz-kauvir               rz-graph-run
+@/rz/rz-kauvir               rz-graph-visit
+@/rz/rz-kauvir               rz-code-generators
+@/rz/rz-kauvir               rz-graph-sre
+@/rz/rz-kauvir               rz-graph-code
+
+@/hgdm/phr-graph             phr-graph-code
+@/rz/rz-kauvir               rz-graph-phaon-console
+
+@/rz/PhaonIR                 phaon-ir
+
+@/rz/phr-runtime             phr-env
+@/rz/phr-runtime             phr-fn-doc
+
+@/rz/PhaonLib                phaon-lib
+@/rz/PhaonLib                phr-command-runtime 
+
+@/rz/tests-phr               kph-generator 
+
+@/rz/PhaonLib                phr-direct-eval
+
+demo...
+@/rz/tests-phr               kph-generator-console 
+@/rz/tests-phr               kph-multigen-console 
+@/rz/PhaonLib                phaon-lib-console
+@/rz/PhaonIR                 phaon-ir-console
+...
+
+@/rz/rz-phr-runtime          rz-phr-runtime-console
+@/rz/rz-phr-multi-console    rz-phr-multi-console
+
+
+R/Z via TCP:
+
+@/rz/tests-kph               kauvir-phaon-console
+@/rz/tests-kph               kph-tcp-console
+
+
+HGDM:
+
+@/hgdm/charm                 charm-lib
+@/hgdm/charm                 charm-lib-console
+
+
+NTXH:
+
+@/hgdm/ntxh                  ntxh
+@/hgdm/ntxh                  ntxh-parser
+@/hgdm/ntxh                  ntxh-builder
+
+
+QRing:
+@/QScign/QRing               qring
+
+
+NTXH UDP:
+@/external/udpipe            udpipe
+@/hgdm/ntxh-udp              ntxh-udp
+@/hgdm/ntxh-udp-console      ntxh-udp-console
+
+
+QScign Components:
+@/QScign/LexPair             lexpair
+@/QScign/LexPair             lexpair-console
+
+
+Dataset Preliminary:
+
+@/dataset/dsmain             dsmain
+@/dataset/dsmain             data-model-console
+
+
+XPDF:
+
+@/dataset/pdf-pull           pdf-pull
+@/dataset/pdf-pull           pdf-pull-console
+@/external/xpdf              xpdf
+@/external/xpdf              xpdf-console
+
+
+Dataset:
+
+@/QScign/ScignStage          ScignStage-ling
+
+@/dataset/application-model  application-model
+@/dataset/config             config-dialog
+@/dataset/config             config-dialog-console
+
+@/dataset/dsmain             dsmain-console
+
+
+R/Z, NTXH, Dataset Integration:
+
+@/dataset/ds-kdmi            ds-kdmi
+@/dataset/ds-kdmi            ds-kdmi-console
+
+@/dataset/ds-kdmi            kdmi-bridge
+@/dataset/ds-kdmi            kdmi-bridge-console
+
+@/dataset/ro-info            ro-info
+@/dataset/ro-info            ro-info-console
+
+@/dataset/application-model  application-model-test-dialog
+@/dataset/application-model  amtd-console
+
+

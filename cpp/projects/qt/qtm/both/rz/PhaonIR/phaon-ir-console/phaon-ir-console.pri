@@ -17,13 +17,6 @@ DEFINES += RZ_DIR=\\\"$$ROOT_DIR/scripts/rz\\\"
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
-
-#INCLUDEPATH += $$KAUVIR_PHAON_SRC_GROUP_DIR
-#INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR
-#INCLUDEPATH += $$QHYP_SRC_GROUP_DIR
-#INCLUDEPATH += $$KCM_RUNTIME_EVAL_SRC_GROUP_DIR
-#INCLUDEPATH += $$KAUVIR_RUNTIME_SRC_GROUP_DIR
-
 INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
@@ -40,11 +33,13 @@ DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
 
 HEADERS += \
   $$SRC_DIR/basic-functions.h \
+  $$SRC_ROOT_DIR/default-basic-functions.h \
 
 SOURCES += \
   $$SRC_DIR/main.cpp \
   $$SRC_DIR/local-program.cpp \
   $$SRC_DIR/basic-functions.cpp \
+  $$SRC_ROOT_DIR/default-basic-functions.cpp \
 
 
 LIBS += -L$$TARGETSDIR -lphaon-ir -lphr-direct-eval \

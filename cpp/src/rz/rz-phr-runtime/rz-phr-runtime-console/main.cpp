@@ -150,7 +150,7 @@ void run_phaon(QString phrf)
 
 int main(int argc, char *argv[])
 {
- QString phrf = compile_rz(RZ_DIR "/multi/t16.rz");
+ QString phrf = compile_rz(RZ_DIR "/demo/t1.rz");
 
  run_phaon(phrf);
 

@@ -168,7 +168,7 @@ void run_phaon(QStringList& progs, QString topl)
 
 int main(int argc, char* argv[])
 {
- QString lines = load_file(RZ_DIR "/multi/m1.txt");
+ QString lines = load_file(RZ_DIR "/demo/multi/m1.txt");
 
  QStringList qsl = lines.split('\n');
 
@@ -194,11 +194,11 @@ int main(int argc, char* argv[])
    {
     QString nfn = fn;
     nfn.replace(s, e-s, QString::number(i));
-    fns.push_back(nfn.prepend(RZ_DIR "/multi/"));
+    fns.push_back(nfn.prepend(RZ_DIR "/demo/multi/"));
    }
    continue;
   }
-  fns.push_back(fn.prepend(RZ_DIR "/multi/"));
+  fns.push_back(fn.prepend(RZ_DIR "/demo/multi/"));
  }
 
  QStringList phrfs;
@@ -208,7 +208,7 @@ int main(int argc, char* argv[])
   phrfs.push_back(phrf);
  }
 
- run_phaon(phrfs, RZ_DIR "/multi/m1.txt");
+ run_phaon(phrfs, RZ_DIR "/demo/multi/m1.txt");
  return 0;
 }
 

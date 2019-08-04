@@ -7,6 +7,9 @@
 #ifndef BASIC_FUNCTIONS__H
 #define BASIC_FUNCTIONS__H
 
+// //  defer to default
+
+#ifdef HIDE
 
 #include "accessors.h"
 
@@ -28,11 +31,13 @@ class PHR_Channel_System;
 class PhaonIR;
 
 _KANS(Phaon)
-
 USING_KANS(Phaon)
 
 
 void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
+
+
+#endif // HIDE
 
 #endif //BASIC_FUNCTIONS__H

@@ -21,66 +21,16 @@
 
 #include "phr-env/phr-env.h"
 
+#include <QDebug>
+
+
 USING_KANS(Phaon)
 
 
 extern void* insert_envv(void* kind, void* test);
 
-#include <QDebug>
-
-//void local_program1(PhaonIR& phr)
-//{
-// phr.init_type_system();
-// phr.init_type("fbase", DEFAULT_PTR_BYTE_CODE);
-// phr.init_type("u4", 4);
-// phr.init_type("u8", 8);
-// phr.init_type("str", DEFAULT_PTR_BYTE_CODE);
-
-// phr.init_code_model();
-
-// PHR_Code_Model& pcm = *phr.code_model();
-// pcm.set_type_system(phr.type_system());
-
-// phr.create_channel_semantic_protocol("lambda");
-// phr.create_channel_semantic_protocol("sigma");
-// phr.create_channel_semantic_protocol("result");
-
-// pcm.set_direct_eval_fn(&phr_direct_eval);
-
-// PHR_Runtime_Scope prs(nullptr);
-
-// PHR_Symbol_Scope pss(&prs);
-
-// phr.hold_symbol_scope(&pss);
-
-// phr.init_table();
-
-// init_test_functions(phr, pcm, *phr.table(), pss);
-
-// phr.init_program_stack();
-
-// phr.enter_lexical_scope();
-
-// phr.reset_program_stack();
-
-// phr.push_carrier_stack("fground");
-// phr.hold_type_by_name("fbase");
-// phr.push_carrier_symbol("&prn");
-
-// phr.push_carrier_stack("lambda");
-// phr.hold_type_by_name("u4");
-// phr.push_carrier_raw_value("2");
-
-// phr.coalesce_channel_group();
-// phr.evaluate_channel_group();
-
-// phr.delete_temps();
-// phr.delete_retired();
-// phr.clear_temps();
-
-// phr.reset_program_stack();
-
-//}
+extern void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
+  PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
 
 void local_program(PhaonIR& phr, QString phrf)
 {

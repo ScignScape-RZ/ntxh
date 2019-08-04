@@ -28,7 +28,6 @@
 
 #include <QFileDialog>
 
-//?
 #include "defines.h"
 
 #include "ScignStage-ling/ScignStage-ling-dialog.h"

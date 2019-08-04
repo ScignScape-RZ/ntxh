@@ -21,13 +21,12 @@ NTXH_UDP_Sentence::NTXH_UDP_Sentence(sentence* udp_sentence)
 
 void NTXH_UDP_Sentence::report_text(QTextStream& qts)
 {
- QString rep;
- for(word w : udp_sentence_->words)
- {
-//?  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
-//?  rep += wp.text() + ' ';
- }
- qts << rep << "\n";
+// // // todo ...
+// QString rep;
+// for(word w : udp_sentence_->words)
+// {
+// }
+// qts << rep << "\n";
 }
 
 void NTXH_UDP_Sentence::write_sxp_edges(QTextStream& qts,
@@ -129,13 +128,12 @@ void NTXH_UDP_Sentence::join_text(QTextStream& qts, QString sep, QString end, Jo
 
 void NTXH_UDP_Sentence::report_text()
 {
- QString rep;
- for(word w : udp_sentence_->words)
- {
-//?  NTXH_UDP_Word_Pos& wp = word_poss_[w.id];
-//?  rep += wp.text() + ' ';
- }
- qDebug() << rep;
+// // // todo ...
+// QString rep;
+// for(word w : udp_sentence_->words)
+// {
+// }
+// qDebug() << rep;
 }
 
 int NTXH_UDP_Sentence::get_id_by_word(QString qw, int which)

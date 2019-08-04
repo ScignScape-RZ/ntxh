@@ -14,7 +14,7 @@
 #include "phaon-ir/table/phr-symbol-scope.h"
 #include "phaon-ir/table/phr-channel-group-table.h"
 
-#include "basic-functions.h"
+#include "default-basic-functions.h"
 
 #include "phr-fn-doc/phr-fn-doc.h"
 #include "phr-fn-doc/phr-fn-doc-multi.h"

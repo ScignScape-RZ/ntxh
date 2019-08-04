@@ -59,17 +59,11 @@ void compile_rz(QString file_name)
  RE_Prerun_Tokens tokens(doc);
  tokens.output("..prenorm2.txt");
 
-
  RE_Prerun_Normalize normalize(*doc->graph());
-
 
  caon_ptr<RZ_Lisp_Graph_Visitor> visitor = normalize.scan();
 
  visitor->set_document_directory(doc->local_directory());
-
-// RZ_Lisp_Graph_Visitor_Dynamo visitor_dynamo(*visitor);
-// RZ_Dynamo_Output rdo(visitor_dynamo);
-// visitor->set_dynamo_output(&rdo);
 
  RZ_Graph_Visitor_Phaon visitor_phaon(*visitor);
  RPI_Output rpo(visitor_phaon);
@@ -85,25 +79,10 @@ void compile_rz(QString file_name)
 
  anticipate.run_core_pairs_generations();
 
-// PHR_Graph phg;
-// PHR_Graph_Build phgb(phg);
-// PHR_Graph_PHR_Output pgo(file_name + ".phr");
-// pgo.document()->set_graph(&phg);
-
  PGB_IR_Build pgb(file_name + ".gen.pgb");
-
-
-// rpo.init_top_level_block();
-
-// anticipate.write_core_pairs(doc->local_path() + ".cprs.txt");
-// anticipate.run_core_pairs();
-
-// QString output;
-// QTextStream qts(&output);
 
  rpo.build_phaon_graph(pgb);
 
- //QStringList qsl;
  pgb.generate_premacro_file(rpo.step_forms());
  pgb.expand_macros(rpo.step_forms());
  pgb.generate_file(rpo.step_forms());
@@ -115,68 +94,11 @@ void compile_rz(QString file_name)
  PHR_Graph_PHR_Output pgo(pgb.out_file() + ".phr");
  pgo.document()->set_graph(&phg);
  pgo.generate();
-
-// QString result_file = doc->local_path() + ".cl";
-// QFile outfile(result_file);
-
-// if(outfile.open(QIODevice::WriteOnly | QIODevice::Text))
-// {
-//  QTextStream out(&outfile);
-//  out << output;
-//  outfile.close();
-// }
-
-#ifdef HIDE
-
- QString output;
- QTextStream qts(&output);
-
-//? rdo.write(qts);
-
- QString result_file = doc->local_path() + ".cl";
- QFile outfile(result_file);
-
-
- if(outfile.open(QIODevice::WriteOnly | QIODevice::Text))
- {
-  QTextStream out(&outfile);
-  out << output;
-  outfile.close();
- }
- result = output;
-
- result.prepend("\n(:|RZ_GENERATED| ");
- result.append(')');
-
- sexp::Value value = sexp::Parser::from_string(result.toStdString());
-
- QString clean_result_file = doc->local_path() + ".lisp";
- QFile clean_outfile(clean_result_file);
-
- if(clean_outfile.open(QIODevice::WriteOnly | QIODevice::Text))
- {
-  QTextStream out(&clean_outfile);
-
-  QString vstr = QString::fromStdString(value.str_with_indent(0));
-  QString start = "\n(:|RZ_GENERATED| ";
-  if(vstr.startsWith(start))
-  {
-   vstr = vstr.mid(start.length());
-  }
-  if(vstr.endsWith(')'))
-  {
-   vstr.chop(1);
-  }
-
-  out << vstr;
-  clean_outfile.close();
- }
-#endif // HIDE
 }
 
 int main(int argc, char *argv[])
 {
- compile_rz(RZ_DIR "/phaon/cc/t1.rz");
+ compile_rz(RZ_DIR "/demo/phaon/t1.rz");
 
  return 0;
 }
