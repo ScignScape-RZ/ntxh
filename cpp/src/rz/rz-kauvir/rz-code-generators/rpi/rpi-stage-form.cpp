@@ -14,7 +14,6 @@
 #include "rpi-type-declaration.h"
 #include "rpi-expression.h"
 
-#include "rpi-stage-form-annotation.h"
 #include "rpi-stage-element.h"
 
 #include "rz-function-def/rz-function-def-info.h"
@@ -152,23 +151,6 @@ void RPI_Stage_Form::write_assignment_initialization_via_token(
 
 void RPI_Stage_Form::write_as_statement(QTextStream* qts, caon_ptr<RPI_Stage_Form> prior)
 {
-// if(code_statement_)
-// {
-//  qts << "\n\n ;; Identified as code statement kind: "
-//      << code_statement_->kind_to_string();
-
-//  if(!code_statement_->annotation().isEmpty())
-//  {
-//   qts << " " << code_statement_->annotation();
-//  }
-//  qts << "\n";
-// }
-// if(expression_review_)
-// {
-//  qts << "\n\n ;; Expression Review: "
-//      << expression_review_->text() << "\n";
-// }
-
  if(type_declaration_)
  {
   CAON_PTR_DEBUG(RPI_Type_Declaration ,type_declaration_)
@@ -220,7 +202,7 @@ void RPI_Stage_Form::init_formula_expression(QString tok)
 
 void RPI_Stage_Form::write(QTextStream* qts, caon_ptr<RPI_Stage_Form> prior)
 {
- check_init_annotation_flags();
+//? check_init_annotation_flags();
  CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
  if(type_declaration_)
  {
@@ -230,21 +212,7 @@ void RPI_Stage_Form::write(QTextStream* qts, caon_ptr<RPI_Stage_Form> prior)
  else if(expression_)
  {
   expression_->write(qts, prior);
-//  if(ANNOTATION_FLAG(is_deferred))
-//  {
-//   qts << "kb::hold-deferred " << hdcode_ << " '(progn (;; annotation_flag_ deferred ...\n";
-//   expression_->write(qts, prior);
-//   qts << "\n)) ;; ... annotation_flag_ deferred\n";
-//  }
-//  else
-//  {
-//   expression_->write(qts, prior);
-//  }
  }
-// else if(!raw_text_.isEmpty())
-// {
-//  qts << raw_text_;
-// }
  else
  {
   write_unmediated(qts, prior);
@@ -350,28 +318,18 @@ void RPI_Stage_Form::add_nested_block(caon_ptr<RPI_Block> block)
 
 void RPI_Stage_Form::mark_as_fn_no_block()
 {
- check_init_annotation();
- annotation_->flags.is_fn_no_block = true;
- CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
+// check_init_annotation();
+// annotation_->flags.is_fn_no_block = true;
+// CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
+ flags.is_fn_no_block = true;
 }
 
 void RPI_Stage_Form::mark_as_fn()
 {
- check_init_annotation();
- annotation_->flags.is_fn = true;
- CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
-}
-
-void RPI_Stage_Form::mark_as_s1_assignment_preempts_s0()
-{
- check_init_annotation();
- annotation_->flags.s1_assignment_preempts_s0 = true;
-}
-
-void RPI_Stage_Form::mark_as_parent_s1_assignment_preempts_s0()
-{
- check_init_annotation();
- annotation_->flags.parent_s1_assignment_preempts_s0 = true;
+ flags.is_fn = true;
+// check_init_annotation();
+// annotation_->flags.is_fn = true;
+// CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
 }
 
 
@@ -394,84 +352,49 @@ bool RPI_Stage_Form::is_effective_block_entry_statment()
 
 void RPI_Stage_Form::mark_as_assignment_expression()
 {
- check_init_annotation();
- annotation_->flags.is_nested_as_assignment = true;
- CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
+ flags.is_assignment_expression = true;
+// check_init_annotation();
+// annotation_->flags.is_nested_as_assignment = true;
+// CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
 }
 
-void RPI_Stage_Form::check_init_annotation()
-{
- if(!annotation_)
- {
-  annotation_ = new RPI_Stage_Form_Annotation();
- }
-}
+//bool RPI_Stage_Form::s1_assignment_preempts_s0()
+//{
+// return false; // ANNOTATION_FLAG(s1_assignment_preempts_s0);
+//}
 
-bool RPI_Stage_Form::s1_assignment_preempts_s0()
-{
- return ANNOTATION_FLAG(s1_assignment_preempts_s0);
-}
-
-
-void RPI_Stage_Form::check_init_annotation(QString fn)
-{
- typedef std::function<void(RPI_Stage_Form*)> fn_type;
- static QMap<QString, fn_type> static_map {{
-  {"kb::if-without-elsif", [](RPI_Stage_Form* _this)
-   {
-    _this->check_init_annotation();
+// //  todo ...
+//void RPI_Stage_Form::check_init_annotation(QString fn)
+//{
+// typedef std::function<void(RPI_Stage_Form*)> fn_type;
+// static QMap<QString, fn_type> static_map {{
+//  {"kb::if-without-elsif", [](RPI_Stage_Form* _this)
+//   {
+//    _this->check_init_annotation();
 //    _this->annotation_->flags.is_general_if = true;
 //    _this->annotation_->flags.is_if = true;
-   }
-  },
-  {"kb::if-with-else", [](RPI_Stage_Form* _this)
-   {
-    _this->check_init_annotation();
+//   }
+//  },
+//  {"kb::if-with-else", [](RPI_Stage_Form* _this)
+//   {
+//    _this->check_init_annotation();
 //    _this->annotation_->flags.is_general_if = true;
 //    _this->annotation_->flags.is_if_with_else = true;
-   }
-  },
-  {"kb::if-with-elsif", [](RPI_Stage_Form* _this)
-   {
-    _this->check_init_annotation();
+//   }
+//  },
+//  {"kb::if-with-elsif", [](RPI_Stage_Form* _this)
+//   {
+//    _this->check_init_annotation();
 //    _this->annotation_->flags.is_general_if = true;
 //    _this->annotation_->flags.is_if_with_elsif = true;
-   }
-  },
- }};
- if(static_map.contains(fn))
- {
-  static_map[fn](this);
- }
-}
-
-bool RPI_Stage_Form::implict_end_form_before_nested_written()
-{
-// if(annotation_)
-// {
-//  return annotation_->flags.implict_end_form_before_nested_written;
-// }
- return false;
-}
-
-void RPI_Stage_Form::check_init_annotation_flags()
-{
- if(annotation_)
- {
-  if(!annotation_->flags.checked)
-  {
-   annotation_->flags.checked = true;
-//   if(annotation_->flags.is_general_if)
-//   {
-//    annotation_->flags.end_form_before_nested = true;
-//    annotation_->flags.surround_nested_secondary = true;
-//    annotation_->flags.write_pull_nested_form_group = true;
-//    annotation_->flags.write_push_nested_form_group = true;
-//    annotation_->flags.skip_write_command_package = true;
 //   }
-  }
- }
-}
+//  },
+// }};
+// if(static_map.contains(fn))
+// {
+//  static_map[fn](this);
+// }
+//}
 
 void RPI_Stage_Form::write_statement_entry(
   QString node_name, QString prior_node_name, QString copy)
@@ -497,26 +420,10 @@ void RPI_Stage_Form::write_statement_entry_qts()
 
 void RPI_Stage_Form::write_statement_entry_qts(QTextStream* qts)
 {
-// qts << "\n;statement_\n";
-// qts << "\n( ; from write_statement_entry\n";
 }
 
 void RPI_Stage_Form::write_statement_leave_qts(QTextStream* qts)
 {
-// if(ANNOTATION_FLAG(skip_write_command_package))
-// {
-
-// }
-// else
-// {
-//  if(!ANNOTATION_FLAG(statement_form_closed_before_nested))
-//  {
-//   qts << "\n);_statement\n";
-//  }
-//  qts << "\n(kb::write-promote-expression)";
-//  qts << "\n(kb::write-cmd-eval)";
-//  qts << "\n(kb::write-statement-clear)";
-// }
 }
 
 QString RPI_Stage_Form::get_s1_assignment_check()
@@ -528,35 +435,12 @@ QString RPI_Stage_Form::get_s1_assignment_check()
 void RPI_Stage_Form::check_write_first_nested_is_assignment_leave(QTextStream* qts)
 {
  CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
-// if(ANNOTATION_FLAG(first_nested_is_assignment))
-// {
-//  if(!annotation_->flags.child_implict_end_form_before_nested_written)
-//  {
-//   qts << "\n ) ; end nested assignment expression ... \n ";
-//  }
-// }
 }
 
 
 void RPI_Stage_Form::write_checked_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form> prior)
 {
-// qts << "( ; write_unmediated_ \n";
  write_unmediated(qts, prior);
-// if(ANNOTATION_FLAG(has_prin1_quoted_form))
-// {
-//  if(annotation_->flags.is_fn_no_block)
-//  {
-//   qts << ") ; _write_unmediated (with prin1; no block) \n";
-//  }
-//  else
-//  {
-//   qts << " ; _write_unmediated (with prin1) \n";
-//  }
-// }
-// else
-// {
-//  qts << ") ; _write_unmediated \n";
-// }
 }
 
 bool RPI_Stage_Form::is_non_block_expression()
@@ -623,11 +507,6 @@ void RPI_Stage_Form::write_type_declaration(QTextStream* qts)
 void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form> prior)
 {
  CAON_PTR_DEBUG(RPI_Stage_Form ,prior)
- check_init_annotation_flags();
-
-// QString icd = QString(implicit_added_depth_, '(');
-// qts << icd;
-
  if(type_declaration_)
  {
   if(!flags.write_type_declaration)
@@ -635,12 +514,12 @@ void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form>
    //  *qts << "skipping type declaration ...";
    return;
   }
-  if(ANNOTATION_FLAG(is_fn_no_block))
+  if(flags.is_fn)
   {
    if(inner_elements_.size() >= 2)
      write_signature_type_declaration(qts);
   }
-  else if(ANNOTATION_FLAG(is_fn_no_block))
+  else if(flags.is_fn_no_block)
   {
    if(inner_elements_.size() >= 2)
      write_signature_type_declaration(qts);
@@ -708,7 +587,7 @@ void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form>
    }
    // // non block entry handled in the block ...
 
-   if(flags.is_statement || ANNOTATION_FLAG(is_nested_as_assignment))
+   if(flags.is_statement || flags.is_assignment_expression) //? ANNOTATION_FLAG(is_nested_as_assignment))
      pgb_(step_forms_).copy_value("&fsym-node", "!last_statement_entry_node")
      = Purpose_Codes::Copy_To_Last_Statement_Entry_Node;
 
@@ -861,66 +740,22 @@ void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form>
   last_kind = rse.kind();
  }
 
-// if(!ANNOTATION_FLAG(has_instruction_token))
-// {
-//  if(ANNOTATION_FLAG(infer_write_s0_statement))
+ if(plene_block_)
+ {
+//  if(caon_ptr<RE_Block_Entry> rbe = plene_block_->get_block_entry())
 //  {
-//   qts << "kb::write-s0-expression ";
-
-//   MS_Token askt = MS_Token {MS_Token_Kinds::Assignment_Kind, "none"};
-//   qts << askt.encode();
-//   qts << ' ';
-
-//  }
-//  else if(ANNOTATION_FLAG(unsurrounded_nested))
-//  {
-//   MS_Token mst {MS_Token_Kinds::Paren_Entry, QString::number(nesting_level_)};
-//   QString mste = mst.encode();
-//   qts << "\n " << mste << ' ';
-//  }
-//  else if(ANNOTATION_FLAG(first_nested_is_assignment))
-//  {
-//   qts << " ; for assignment ... \n ";
-//  }
-//  else if(ANNOTATION_FLAG(is_nested_as_assignment))
-//  {
-//   qts << " ; nested for assignment ... \n ";
-//  }
-//  else if(plene_block_)
-//  {
-//   qts << "kb::write-plene-block ";
+//   if(rbe->flags.if_block)
+//   {
+//   }
 //  }
 //  else
 //  {
-//   MS_Token lisp_call_mode_token {MS_Token_Kinds::Note_Symbol, ":lc-f"};
-//   qts << "kb::prepare-expression " << lisp_call_mode_token.encode();
 //  }
-// }
-
- if(plene_block_)
- {
-//  qts << "\n;block_\n";
-
-  if(caon_ptr<RE_Block_Entry> rbe = plene_block_->get_block_entry())
-  {
-   if(rbe->flags.if_block)
-   {
-   }
-  }
-  else
-  {
-//   // // so get info plene_block_ mode ...
-//   qts << "\n;; fn body"
-//     "\n(kb::write-enter-plebod)";
-  }
-
-//  qts << "\n(kb::write-enter-plene-block)\n";
   plene_block_->write(step_forms_, qts);
-//  qts << "\n(kb::write-leave-plene-block)\n";
  }
- else
- {
- }
+// else
+// {
+// }
 
  QList<caon_ptr<RPI_Stage_Form>> nested_forms;
  int nf_count = 0;
@@ -946,12 +781,6 @@ void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form>
 
    if( (count == 0) && (assignment_info_.has_text() ) )
    {
-    if(ANNOTATION_FLAG(first_nested_is_assignment))
-    {
-     // // should I set this here or elsewhere?
-     element.form()->mark_as_assignment_expression();
-    }
-
     element.form()->write(qts, prior);
    }
    else if(note.isEmpty())
@@ -959,86 +788,17 @@ void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form>
     // //  these are deferred to after ...
     nested_forms.push_back(ef);
     ++nf_count;
-
-//    MS_Token mst {MS_Token_Kinds::Nested_Forward,
-//      QString("%1-%2").arg(nesting_level_).arg(nf_count)};
-//    qts << ' ' << mst.encode() << ' ';
    }
    else
    {
     element.form()->write(qts, prior);
-//?    qts << ' ';
    }
   }
   else
   {
-   CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
-   if(count == 0)
-   {
-    if(parent_ && parent_->s1_assignment_preempts_s0())
-    {
-     skip = 1;
-    }
-    else if(ANNOTATION_FLAG(first_inner_element_is_s1_assignment_preempts_s0))
-    {
-     pseudo_first = 1;
-     ++count;
-     continue;
-    }
-   }
   }
   ++count;
  }
-
-// if(chief_.startsWith('.'))
-// {
-//  qts << "\n;;instruction\n)\n";
-// }
-
-// if(plene_block_)
-// {
-//  qts << "\n;_plene_block";
-// }
-// else
-// {
-// }
-
- // ?? always end ...?
- if(!nested_forms.isEmpty())
- {
-  check_init_annotation();
-  //?annotation_->flags.surround_nested = true;
- }
-
-// if(ANNOTATION_FLAG(end_form_before_nested))
-// {
-////  qts << "\n) ;end form before nested...\n";
-// }
-// else if(nested_forms.isEmpty())
-// {
-////  qts << "\n ; nothing nested...\n";
-// }
-// else if(!ANNOTATION_FLAG(skip_implicit_end_form_before_nested))
-// {
-//  annotation_->flags.statement_form_closed_before_nested = true;
-//  annotation_->flags.implict_end_form_before_nested_written = true;
-
-//  CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
-
-////  qts << "\n) ;implicit end form before nested...\n";
-
-// }
-
-// if(ANNOTATION_FLAG(write_push_nested_form_group))
-// {
-////  qts << "\n(kb::push-nested-form-group)\n";
-// }
-
-// if(ANNOTATION_FLAG(unsurrounded_nested))
-// {
-////  MS_Token mst {MS_Token_Kinds::Paren_Leave, QString::number(nesting_level_)};
-////  qts << "\n " << mst.encode() << ' ';
-// }
 
  int nfb_count = 0;
 
@@ -1047,148 +807,40 @@ void RPI_Stage_Form::write_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form>
   CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
   ++nfb_count;
 
-//  if(ANNOTATION_FLAG(implict_end_form_before_nested_written))
-//  {
-//   nf->mark_parent_implict_end_form_before_nested_written();
-//   if(parent_)
-//   {
-//    parent_->mark_child_implict_end_form_before_nested_written();
-//   }
-//  }
-
-  if(ANNOTATION_FLAG(surround_nested_secondary))
-  {
-//   MS_Token mst {MS_Token_Kinds::Nested_Back,
-//     QString("%1-%2").arg(nesting_level_).arg(nfb_count)};
-//   qts << "\n(kb::enter-secondary-nested-form " << mst.encode() << ")\n";
-
-//   qts << "( ; secondary-nested-form-body_ \n";
-  }
-  else if(ANNOTATION_FLAG(surround_nested))
-  {
-   MS_Token mst {MS_Token_Kinds::Nested_Back,
-     QString("%1-%2").arg(nesting_level_).arg(nfb_count)};
-
-   auto fnd = wrapped_inner_elements_.find(nf);
-   if(fnd == wrapped_inner_elements_.end())
-   {
-//    qts << "\n(kb::enter-nested-form " << mst.encode() << ")\n";
-//    qts << "( ; nested-form-body_ \n";
-   }
-   else
-   {
-    QString note = fnd.value().first;
-    int hdcode = fnd.value().second;
-    MS_Token cmst {MS_Token_Kinds::Literal, QString::number(hdcode)};
-    if(note.endsWith('\''))
-    {
-     note.chop(1);
-     MS_Token nmst{MS_Token_Kinds::Note_Symbol, note};
-//     qts << "\n(kb::enter-nested-form " << nmst.encode() << " "
-//          << cmst.encode() << " "<< mst.encode() << ")\n";
-//     qts << "( ; nested-form-body_ \n";
-     nf->mark_deferred(hdcode);
-    }
-    else
-    {
-     MS_Token nmst{MS_Token_Kinds::Note_Symbol, note};
-//     qts << "\n(kb::enter-nested-form " << nmst.encode() << " "
-//          << cmst.encode() << " "<< mst.encode() << ")\n";
-//     qts << "( ; nested-form-body_ \n";
-    }
-   }
-  }
-  else
-  {
-   nf->mark_unsurrounded_nested();
-  }
   nf->set_nesting_level(nesting_level_ + 1);
-//  qts << ' ';
   nf->write(qts, prior);
-//  qts << ' ';
-  if(ANNOTATION_FLAG(surround_nested_secondary))
-  {
-//   qts << "\n) ; _nested-form-body \n";
-//   qts << "\n(kb::leave-secondary-nested-form)\n";
-  }
-  else if(ANNOTATION_FLAG(surround_nested))
-  {
-
-   CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
-
-//   if(annotation_->flags.parent_implict_end_form_before_nested_written)
-//   {
-//    if(annotation_->flags.skip_close_paren_on_parent_written)
-//    {
-////     qts << "\n ; _nested-form-body (lisp form already closed; parent) \n";
-//    }
-//    else if(nf->implict_end_form_before_nested_written())
-//    {
-////     qts << "\n ; _nested-form-body (nested form already closed; parent closed) \n";
-//    }
-//    else
-//    {
-////     qts << "\n) ; _nested-form-body (despite parent closed) \n";
-//    }
-//   }
-//   else
-//   {
-//    // // make sure this is always kosher
-//    if(nf->implict_end_form_before_nested_written())
-//    {
-////     qts << "\n ; _nested-form-body (lisp form already closed) \n";
-//    }
-//    else
-//    {
-////     qts << "\n) ; _nested-form-body \n";
-//    }
-//   }
-//   qts << "\n(kb::leave-nested-form)\n";
-  }
  }
 
-// if(ANNOTATION_FLAG(write_pull_nested_form_group))
-// {
-////  qts << "\n(kb::pull-nested-form-group)\n";
-// }
-
 }
 
-void RPI_Stage_Form::mark_unsurrounded_nested()
-{
- check_init_annotation();
-//? annotation_->flags.unsurrounded_nested = true;
-}
+//void RPI_Stage_Form::mark_unsurrounded_nested()
+//{
+//}
 
 bool RPI_Stage_Form::is_deferred()
 {
- return ANNOTATION_FLAG(is_deferred);
+ return flags.is_deferred;
 }
 
 void RPI_Stage_Form::mark_deferred(int hdcode)
 {
- check_init_annotation();
- annotation_->flags.is_deferred = true;
+ flags.is_deferred = true;
  hdcode_ = hdcode;
 }
 
-void RPI_Stage_Form::mark_parent_implict_end_form_before_nested_written()
-{
- check_init_annotation();
-//? annotation_->flags.parent_implict_end_form_before_nested_written = true;
-}
+//void RPI_Stage_Form::mark_parent_implict_end_form_before_nested_written()
+//{
+//}
 
-void RPI_Stage_Form::mark_child_implict_end_form_before_nested_written()
-{
- check_init_annotation();
-//? annotation_->flags.child_implict_end_form_before_nested_written = true;
-}
+//void RPI_Stage_Form::mark_child_implict_end_form_before_nested_written()
+//{
+//}
 
 void RPI_Stage_Form::set_assignment_info(RPI_Assignment_Info& assignment_info)
 {
- // // always?
- check_init_annotation();
- annotation_->flags.first_nested_is_assignment = true;
+// // // always?
+// check_init_annotation();
+// annotation_->flags.first_nested_is_assignment = true;
 
  CAON_PTR_DEBUG(RPI_Stage_Form_Annotation ,annotation_)
 
@@ -1197,8 +849,8 @@ void RPI_Stage_Form::set_assignment_info(RPI_Assignment_Info& assignment_info)
 
 void RPI_Stage_Form::add_s1_fn_element(QString fn, QString obj)
 {
- check_init_annotation();
- annotation_->flags.has_instruction_token = true;
+ //?check_init_annotation();
+ flags.has_instruction_token = true;
 
  inner_elements_.push_back(RPI_Stage_Element(
    RPI_Stage_Element_Kinds::S1_FGround_Symbol, fn));
@@ -1235,8 +887,8 @@ void RPI_Stage_Form::add_kauvir_element(RPI_Stage_Element_Kinds kind, QString te
 
 void RPI_Stage_Form::init_inferred_s0_statement()
 {
- check_init_annotation();
- annotation_->flags.infer_write_s0_statement = true;
+ //?check_init_annotation();
+ flags.infer_write_s0_statement = true;
 }
 
 void RPI_Stage_Form::add_fn_element(RPI_Stage_Element_Kinds kind, QString text)
@@ -1251,14 +903,14 @@ void RPI_Stage_Form::add_bridge_element(RPI_Stage_Element_Kinds kind, QString te
 
 void RPI_Stage_Form::add_instruction_element(RPI_Stage_Element_Kinds kind, QString text)
 {
- check_init_annotation();
- annotation_->flags.has_instruction_token = true;
+ //?check_init_annotation();
+ flags.has_instruction_token = true;
 
- if(annotation_->flags.parent_s1_assignment_preempts_s0)
- {
-  QString ch = parent_->s1_assignment_check();
-  annotation_->flags.first_inner_element_is_s1_assignment_preempts_s0 = true;
- }
+// if(annotation_->flags.parent_s1_assignment_preempts_s0)
+// {
+//  QString ch = parent_->s1_assignment_check();
+//  annotation_->flags.first_inner_element_is_s1_assignment_preempts_s0 = true;
+// }
 
  inner_elements_.push_back(RPI_Stage_Element(kind, text));
 }

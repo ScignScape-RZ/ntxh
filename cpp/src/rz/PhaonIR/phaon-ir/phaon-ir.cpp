@@ -447,8 +447,6 @@ PHR_Channel_Group_Evaluator* PhaonIR::run_expression_object(PHR_Channel_Group* p
  PHR_Channel_Group_Evaluator* result = load_evaluator_fn_(*this, *pcg);
  result->run_eval();
 
- qint32 r = *(qint32*)(result->get_result_value());
-
  return result;
 }
 

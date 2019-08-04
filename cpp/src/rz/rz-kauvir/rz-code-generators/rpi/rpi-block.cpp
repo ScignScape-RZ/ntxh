@@ -264,11 +264,11 @@ void RPI_Block::scan_form_from_statement_entry_node(RZ_Graph_Visitor_Phaon& visi
       if(caon_ptr<RPI_Stage_Form> parent = current_form_->parent())
       {
        parent->set_s1_assignment_check("/->");
-       current_form_->mark_as_parent_s1_assignment_preempts_s0();
+       //?current_form_->mark_as_parent_s1_assignment_preempts_s0();
       }
      }
     }
-    current_form_->check_init_annotation(fn);
+    // // todo ... current_form_->check_init_annotation(fn);
     if(fn.startsWith("kb::"))
     {
      current_form_->add_instruction_element(RPI_Stage_Element_Kinds::Instruction_Symbol, fn);
@@ -832,24 +832,6 @@ void RPI_Block::write_top_level(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTe
 
 void RPI_Block::write(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTextStream* qts)
 {
-// if(parent_block_)
-// {
-//  if(es_argument_.isEmpty())
-//  {
-//   qts << "\n(kb::write-enter-scope)\n";
-//  }
-//  else
-//  {
-//   // // same ?
-//   // ... qts << "\n(kb::write-enter-scope)\n";
-//  }
-// }
-// else
-// {
-//  // ... qts << "\n(kb::write-file-start)\n";
-// }
-// qts << entry_lisp_code_;
-
  caon_ptr<RPI_Stage_Form> prior = nullptr;
  for(caon_ptr<RPI_Stage_Form> rsf : forms_)
  {
@@ -882,15 +864,6 @@ void RPI_Block::write(QList<PGB_IR_Build::Text_With_Purpose>& tps, QTextStream* 
   tps.append(rsf->step_forms());
   prior = rsf;
  }
-
-// if(parent_block())
-// {
-//  qts << "\n(kb::write-leave-scope)\n";
-// }
-// else
-// {
-//  qts << "\n\n(kb::write-file-end)\n";
-// }
 
  caon_ptr<RE_Block_Entry> rbe = get_block_entry();
 

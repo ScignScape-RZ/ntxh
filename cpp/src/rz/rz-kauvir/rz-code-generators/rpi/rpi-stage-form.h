@@ -48,7 +48,7 @@ class RPI_Stage_Form
 {
 public:
 
- flags_(2)
+ flags_(3)
   bool is_block_entry_statment:1;
   bool is_nested_block_entry_statment:1;
   bool write_type_declaration:1;
@@ -63,6 +63,15 @@ public:
   bool prior_sibling_is_block:1;
 
   bool write_push_expression:1;
+  bool is_assignment_expression:1;
+
+  bool is_fn_no_block:1;
+  bool is_fn:1;
+  bool is_deferred:1;
+  bool has_instruction_token:1;
+  bool infer_write_s0_statement:1;
+ // bool has_instruction_token:1;
+
  _flags
 
 private:
@@ -113,7 +122,7 @@ private:
 
  QString prior_description_;
 
- void mark_unsurrounded_nested();
+// void mark_unsurrounded_nested();
  void add_string_token(QString tok);
 
  RPI_Assignment_Info* get_parent_assignmnt_info();
@@ -150,7 +159,7 @@ public:
 
  ACCESSORS__RGET(QList<PGB_IR_Build::Text_With_Purpose> ,step_forms)
 
- bool s1_assignment_preempts_s0();
+// bool s1_assignment_preempts_s0();
 
  QString instruction();
 
@@ -212,8 +221,9 @@ public:
  void mark_deferred(int hdcode);
  void mark_as_assignment_expression();
  void mark_as_fn_no_block();
- void mark_as_s1_assignment_preempts_s0();
- void mark_as_parent_s1_assignment_preempts_s0();
+// void mark_as_s1_assignment_preempts_s0();
+// void mark_as_parent_s1_assignment_preempts_s0();
+
  void mark_as_fn();
 
  QString get_assignment_target();
@@ -221,9 +231,9 @@ public:
  void add_s1_fn_element(QString fn, QString obj);
 
 
- void check_init_annotation();
- void check_init_annotation(QString fn);
- void check_init_annotation_flags();
+// void check_init_annotation();
+// void check_init_annotation(QString fn);
+// void check_init_annotation_flags();
 
  void init_inferred_s0_statement();
 
@@ -233,10 +243,10 @@ public:
 
  void write_checked_unmediated(QTextStream* qts, caon_ptr<RPI_Stage_Form> prior);
 
- void mark_parent_implict_end_form_before_nested_written();
- void mark_child_implict_end_form_before_nested_written();
+// void mark_parent_implict_end_form_before_nested_written();
+// void mark_child_implict_end_form_before_nested_written();
 
- bool implict_end_form_before_nested_written();
+//? bool implict_end_form_before_nested_written();
 
  void set_assignment_info(RPI_Assignment_Info& assignment_info);
  void set_assignment_info(RPI_Assignment_Info&& assignment_info)
