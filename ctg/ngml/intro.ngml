@@ -52,7 +52,8 @@ or Conceptual Space Theory as initiated by
 Peter `Gardenfors; (which has seen several attempts at 
 mathematical-computational formalization, such as 
 Frank Zenker, Martin Raubal, and Benjamin Adams's 
-metascientific perspectives, and more recent 
+metascientific perspectives `cite<RaubalAdams>;, 
+`cite<RaubalAdamsCSML>;, `cite<Zenker>;, and more recent 
 Category-Theoretic structures linked to mathematicians 
 such as Bob Coecke and David Spivak `cite<InteractingConceptualSpaces>;).  
 To this list we could add research that extends beyond 
@@ -68,7 +69,7 @@ of linguistic phenomena, as articulated by (say) Olav
 K. Wiegand (`cite<OlavKWiegand>;, `cite<WiegandGestalts>;) 
 and Jordan Zlatev (`cite<JordanZlatev>;).  
 In each of the works just cited (prior anyhow to the 
-last two)  
+last three)  
 we can find formal/computational models whose 
 rationale is, in large part, to 
 shed light on human cognitive processes 
@@ -81,8 +82,8 @@ This kind of `q.intermediate` research is perhaps
 under-appreciated, because it neither accepts the dismissive 
 attitude that formal models are a distraction from 
 the analysis of `q.real` language, nor the reductionistic 
-faith that language is `i.intrinsically` computational, 
-so that progress toward ideal `NLP; avatars is just a matter 
+faith that language is `i.intrinsically` computational %-- 
+that progress toward ideal `NLP; avatars is just a matter 
 of time.  To be sure, layering formal systems on a 
 cognitive/phenomenological foundation adds a complexity of 
 theoretical structure, which could prompt questions about the 
@@ -126,7 +127,7 @@ in a manner that warrants neither blind faith in
 automation nor `i.a priori` disengagement with formalizing 
 projects.  This is first of all because language is neither 
 wholly isolated from other cognitive phenomena nor 
-without some structural autonomy: it is reasonable to
+without some structural autonomy.  It is reasonable to
 suppose that there are distinct intellectual faculties 
 internal to our understanding of language, while other 
 reasonings intrinsic to parsing the form and intentions 
@@ -139,7 +140,7 @@ grasping intended meanings.  So neither a theory which
 ignores extralinguistic cognition, nor one which 
 treats `i.all` linguistic processing as inseperable 
 from the totality of our cognitive processes from moment to moment, 
-are complete; the larger account needs to place 
+are complete.  A fully-forged theory needs to place 
 sentences on a spectrum, where extralinguistic and (I'll say)
 `q.intra-linguistic` theoretical machinery is 
 available to analyze different sentences as their 
@@ -234,7 +235,7 @@ to the ideas or referents signified via other words.  The underlying scheme,
 at this level where the model is undeveloped and thus fairly simple, 
 is close to Dependency Grammar: in lieu of a head/dependent relation 
 we can treat one word (or similar lexical unit) as a `i.modifier` and the  
-second as a `q.ground`/.  I believe this two-pronged picture is not 
+second as a `i.ground`/.  I believe this two-pronged picture is not 
 completely vacuous, but is general and underspecified enough to
 spread over both syntax and semantics, and over competing 
 paradigms.  I will call the modifier's effect on its ground 
@@ -248,14 +249,31 @@ I will argue that the underlying transform-pair concept is
 amenable to both more formal and more philophical/interpretive 
 development.  One the one hand, transform-pairs can sometimes 
 be mapped explicitly to dependency or link-grammar pairs, 
-so the theory can be treated as a philosphical preliminary 
-or motivation for Dependecy or Link Grammar.  Relatedly, 
+so the theory can be treated as a philosophical preliminary 
+or motivation for Dependecy or Link Grammar.`footnote.
+Dependecy and Link Grammar both build syntactic structures 
+from inter-word pairs (rather than larger phrasal units), 
+so the latter is at least in part a species of the former.  
+In lieu of head/dependent relations, however, Link Grammar 
+identifies each linguistically meaningful connection between 
+words (and lexical or constituent sentence units in general) 
+as motivated by a specific connection rule, which depends on 
+compatible connecting potentiality present on both words in a 
+connection, which are part of their lexical profile.  Formally then 
+Link Grammar removes one theoretical structuring posit 
+(the `q.ranking` of pair-elements as head or dependent) 
+but adds a different posit related to the two `q.potentialities` 
+which get fused into a single link; linkage capacities become rooted 
+in the lexicon arguably more so than in (conventional) Dependency Grammar 
+`cite<Schneider>;, `cite<SleatorTamperley>;, 
+`cite<GoertzelPLN>;, `cite<ErwanMoreau>;.   
+`footnote`  Relatedly,  
 transforms themselves can be integrated into type systems 
 (e.g., the kinds of transforms associated with adjectives 
 depend on their ground being typed as a noun), so 
 a theory of transform-pairs can motivate elaboration in a 
 Type-Theoretic context.  On the other hand, we can focus 
-on the interpretive and situational nuanced often evident in 
+on the interpretive and situational nuance often evident in 
 cognitive transformations to find evidence for linguistic 
 phenomena which do not fit neatly into Dependecy Grammar 
 or Type-Theoretic (or any other) formalization.  
@@ -277,7 +295,10 @@ computational-linguistic techniques.  Some of my examples are
 drawn from popular annotated corpora, and I provide models 
 of other examples as processed by representative `NLP; technologies 
 (e.g., Malt Parser trained against the most recent Universal 
-Dependency training data at the time of writing).   
+Dependency training data at the time of writing).  
+I also select multiple examples from the Blackwell `i.Handbook of Pragmatics` 
+`cite<BlackwellPragmatics>;; the data set includes code I used 
+to compile all examples from that volume into a collection.  
 I have packaged the examples and supporting code into an 
 open-source data set for purposes of demonstration.  
 I do not dwell on the accuracy of the `NLP; components, 

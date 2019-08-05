@@ -70,7 +70,7 @@ mean going to the newspaper's offices.  Indeed, each of these
 usages are to some degree conventionalized: going \i{to Grandma} 
 is subtler than going \i{to Grandmas house}, because the former 
 construction implies that you are going to a \i{place} 
-(\q{Grandma} is proxy for her house, say), but also Grandma is actually 
+(\q{Grandma} is proxy for her house, say), but also that Grandma is actually 
 there, and that seeing her is the purpose of your visit.  In other words, 
 the specific \i{go to Grandma} formation carries a supply of 
 situational expectations.  There are analogous implications in 
@@ -106,10 +106,11 @@ corresponding Dependency Grammar pairings.
 }
 \p{Another potential embedding of transform-pairs into 
 formal models can be motivated by Type Theory.  
-This analysis can proceed on several levels, but 
+Such analysis may proceed on several levels, but 
 in general terms we can assume that parts of speech 
 form a functional type system (as elucidated, say, in 
-Combinatory Categorial Grammar).  For instance, we can recognize 
+Combinatory Categorial Grammar; e.g., \cite{BiskriDescles}).  
+For instance, we can recognize 
 nouns and propositions (sentences or sentence-parts forming 
 logically complete clauses) as primitive types, and 
 treat other parts of speech as akin to \q{functions} between 
@@ -119,7 +120,8 @@ form a proposition, or complete idea: \i{go} acts on
 then, verbs are akin to functions that map nouns to propositions.  
 Similarly, adjectives map nouns to nouns, and 
 adverbs map verbs to other verbs (here I use \q{noun} or \q{verb} to 
-mean a linguistic unit which is functionally a noun, or verb; 
+mean a linguistic unit which functions 
+(conceptually and/or \visavis{} syntactic propriety) as a noun, or verb; 
 in this sense a noun-phrase is a kind of noun \mdash{} i.e., 
 a linguistic unit whose \i{type} is nominal).  
 This provides a type-theoretic architecture through 
@@ -177,14 +179,14 @@ In the transform-pair \i{having lied}, \i{lied} is clearly the
 more significant word semantically.  This is reflected in 
 \i{having} being annotated (at least according to the Universal Dependency 
 framework) as auxiliary, and the dependent element of the pair, while 
-\i{lied} is the head.  Then \i{lied} is also connected to 
+\i{lied} is the \q{head}.  Then \i{lied} is also connected to 
 \i{his}, establishing a verb-subject relation.  So \i{lied} becomes 
 the nexus around which other, supporting sentence elements are 
 connected.  This is a typical pattern in Dependecy Grammar parses, where 
 the most semantically significant sentence elements also tend to be 
 the most densely connected (if we treat the parse-diagram as a 
 graph, these nodes tend to have the highest \q{degree}, a measure of 
-nodes' importance to the degree as this is reflected in how many 
+nodes' importance at least as this is reflected in how many 
 other nodes connect to it).  Indeed, by counting word connections we 
 can get a rough estimation of semantic importance, distinguishing 
 \q{central} and \q{peripheral} elements.  These are not 
@@ -216,7 +218,9 @@ to Lambda Calculus, \i{his having lied} would be graphed with
 \i{having}, reflecting the relation of functions to their arguments.  
 In lisp-like code, this could be written functionally as 
 (his (having lied)), showing \i{having} as one function, and 
-\i{his} as a second one, the former's output being the latter's input.     
+\i{his} as a second one, the former's output being the latter's input.  
+(Later I will include diagrams contrasting these different 
+styles of parse-representation.) 
 }
 \p{Implicitly, then, Type-Theoretic Semantics and Dependency Grammar 
 can connote different perspectives on semantic inportance and 
@@ -225,7 +229,7 @@ this distinction further below, with explicit juxtaposition of
 parse graphs using the two methods.  I contend, however, that the 
 distinction reflects a manifest duality in linguistic meaning: 
 we can treat a linguistic artifact as an unfolding process or 
-as a static signification with more central and more minute 
+as a static signification with more central and more peripheral 
 parts.  Both of these aspects coexist: on the one hand, we 
 understading sentences via an unfolding cognitive process; 
 on the other hand, this cognition includes forming a mental 
@@ -249,7 +253,8 @@ to the semantic dimension.
 \p{In the simplest cases, a transform-pair represents a modifier 
 adding conceptual detail to a ground, like \i{black dogs} 
 from \i{dogs}.  But the nature of this added detail 
-\mdash{} and its evident relation to surface language \mdash{} can be very varied.  
+\mdash{} and its evident relation to surface language \mdash{} can be highly 
+varied, even among similar sentences at the surface level.  
 Compare between examples like:
 \begin{sentenceList}\sentenceItem{} \swl{itm:black}{I saw my neighbor's two black dogs.}{sem}
 \sentenceItem{} \swl{itm:rescued}{I saw my neighbor's two rescued dogs.}{sem}
@@ -274,7 +279,7 @@ generic contexts.
 right; we assume the neighbor had owned other dogs before.  
 Of course \q{latest} implies some temporal order, but the 
 understood time-scale depends on context.  
-If we hear talk about a \i{vet}s two latest dogs, we would presumably 
+If we hear talk about a \i{vet}'s two latest dogs, we would presumably 
 interpret this in terms of patients the vet has seen over the course of 
 a day: 
 \begin{sentenceList}\sentenceItem{} \swl{itm:vet}{We have to wait until after the vet's two latest dogs.}{sem}
@@ -348,7 +353,8 @@ constructions, in that each pair has an adjective modifying a
 straightforward plural noun (\i{dogs} designates a similar 
 concept in each case; this is not a case of surface grammar 
 hiding semantic diversity, like \i{strong wine} vs. 
-\i{strong opinion} or \i{long afternoon} vs. \i{long snake}) 
+\i{strong opinion} vs. \i{strong leash} or 
+\i{long afternoon} vs. \i{long history} vs. \i{long leash}) 
 \mdash{} package transforms whose cognitive resolution spans a 
 range of linguistic and extralinguistic considerations.  
 Straightforward adjectival modification in \i{black dogs} gives 
@@ -394,8 +400,44 @@ extra-linguitic conceptualization. Consider for instance:
 \begin{sentenceList}\sentenceItem{} \swl{itm:boroughs}{All New Yorkers live in one of five boroughs.}{sem}
 \sentenceItem{} \swl{itm:commute}{All New Yorkers complain about how long it 
 takes to commute to New York City.}{sem}
+\sentenceItem{} \swl{itm:Cambridge}{The south side of Cambridge voted Conservative.}{sem}
+\sentenceItem{} \swl{itm:lower}{Lower Manhattan voted Republican.}{sem}
+\sentenceItem{} \swl{itm:si}{Staten Island voted Republican.}{sem}
 \end{sentenceList}
-In (\ref{itm:boroughs}), \i{New Yorkers} refers specifically to everyone who lives 
+Sentence (\ref{itm:Cambridge}) is taken from the \i{Handbook of Pragmantics} 
+(example 40, page 379, chapter 15) which borrows in turn from Ann Copestake and 
+Ted Briscoe.  In the \i{Handbook} analysis (chapter by Geoffrey Nunberg), 
+(\ref{itm:Cambridge}) is seen as ambiguous between 
+reading \q{The south side of Cambridge} as an oblique description of 
+the \i{voters} in that territory or as topicalizing the territory 
+itself as a civic entity: 
+\begin{quote}On the face of things, we might analyze (40) in either of two ways: either the
+description within the subject NP has a transferred meaning that describes a
+group of people, or the VP has a transferred meaning in which it conveys the
+property that jurisdictions acquire in virtue of the voting behavior of their
+residents.
+\end{quote}
+The duality is significant because the designation in \q{south side of Cambridge} 
+would be more informal in the prior reading, both geographically 
+and in the how the implied collective of people is figured.  The prior 
+reading accommodates a hearing wherein the speaker construes 
+\q{south side} not as a precise electoral district (or districts) but as a 
+vaguely defined part of the city.  That imprecision also allows the claim 
+\q{voted Conservative} to be only loosely committal, implying that 
+some majority of voters appeared to vote Conservative but not that 
+this tendency is directly manifest in election results.  In short, 
+we can interpret (\ref{itm:Cambridge}) as making epistemically more 
+rigorous or more noncommittal claims depending on how we read 
+the geographical reference \q{south side of Cambridge} (as crisp 
+or fuzzy), the group of people selected via that reference 
+(mapping the region to its inhabitants, a kind of \q{type coercion} 
+since places do not vote), and the assertive force of the 
+speech-act: how precisely the speaker intends her claim to be 
+understood.  Each of these \q{axes} contribute to the sentence's 
+meaning insofar as they constrain what would be dialogically 
+appropriate responses.
+}
+\p{Meanwhile, in (\ref{itm:boroughs}), \i{New Yorkers} refers specifically to everyone who lives 
 in the City of New York, since the five boroughs collectively span the 
 whole of city.  In (\ref{itm:commute}), by contrast, we should understand 
 \i{New Yorkers} as referring to residents of the metropolitan area \i{outside} 
@@ -408,7 +450,8 @@ two sentences.
 \p{And yet, I cannot find any purely linguistic mechanism 
 (lexical, semantic, syntactic, morphological) which would account for 
 these difference as linguistic signifieds \i{per se}: the actual differences 
-depend on conversants knowing some details about New York geography, and 
+depend on conversants knowing some details about New York 
+(or, respectively, Cambridge) geography, and 
 also general cultural background.  It does not make too much sense to 
 commute to a place where you already live, so our conventional picture of 
 the word \i{commute} constrains our interpretation of (\ref{itm:commute}) \mdash{} 
@@ -419,7 +462,15 @@ hard derive an analogous word-sense in the language spoken by a nomadic
 tribe, or a pre-industrial agrarian community).  Likewise, 
 reading \i{All} in (\ref{itm:boroughs}) as \i{literally} \q{all} 
 depends on knowing that the five boroughs are in fact the whole of 
-the city's territory.
+the city's territory.  I am from New York, not Cambridge; 
+perhaps residents of the latter city would clearly read 
+\q{south side} as referencing a fixed civic/electoral area 
+(like \i{Staten Island}) or as only vaguely defined (like 
+\i{Lower Manhattan}).  For New Yorkers, 
+(\ref{itm:lower}) would be read as fuzzy and 
+(\ref{itm:si}) as fixed: the latter sentence has a clearly 
+prescribed fact-check (since Staten Island is a distinct 
+electoral district) which the former lacks.
 }
 \p{Given that in everyday speech quantifiers like \i{all} or \i{every} 
 are often only approximate \mdash{} and that designations like 
@@ -445,7 +496,7 @@ on the other hand, the only sensible interpretation is that the Leafs had
 not yet won two games: while it is logically accurate to describe a 
 team on a long winning streak as repeatedly winning two consecutive games, it would 
 be very unexpected for (\ref{itm:consecutive}) to be used in a case where the Leafs 
-lost their first game of the season, after a three-plus-game winning streak.  
+lost for the first time, after a three-plus-game winning streak.  
 And in (\ref{itm:goal}) any hockey fan would hear that the Leafs had scored 
 at least one goal in all prior games; even though there is no linguistic rule 
 foreclosing the reading such that the Leafs have not scored a goal in \i{any} game.    
@@ -467,12 +518,14 @@ typical linguistic encoding:
 \begin{sentenceList}\sentenceItem{} \swl{itm:allresidents}{All residents of the city of New York live in one of five boroughs.}{log}
 \sentenceItem{} \swl{itm:manyresidents}{Many residents of the New York metropolitan area 
 complain about how long it takes to commute to New York City.}{log}
+\sentenceItem{} \swl{itm:SouthCambridge}{All districts on the south side of Cambridge voted Conservative.}{log}
 \sentenceItem{} \swl{itm:leafshabs}{For the first time this year, the Leafs failed to beat 
 the Habs.}{log}
 \end{sentenceList}
 These versions are more logically transparent, in that their propositional 
 content is more directly modeled by the structure of the sentences. 
-Indeed, hearers unfamiliar with New York or with hockey might find these 
+Indeed, hearers unfamiliar with New York (respectively Cambridge) 
+or with hockey might find these 
 versions easier to understand; more context-neutral and journalistic.  
 But perhaps for this reason the \q{journalistic} versions actually 
 sound stilted or non-idiomatic for everyday discource.  
@@ -481,7 +534,7 @@ sound stilted or non-idiomatic for everyday discource.
 logical content, \i{how} sentences holistically signify this 
 content does not always emerge straightforwardly from semantic 
 or syntactic structures on their own.  I think this weakens the 
-case for semantic paradigms which concentrate on logically-structured 
+case for semantic paradigms that concentrate on logically-structured 
 content which appears to be signified through sentences 
 \mdash{} even if we grant that this propositional ground of meaning 
 is real, it does not follow that propositional contents are 
@@ -501,7 +554,7 @@ illocutionary force) conversants need to derive the
 content which is logically conjured via the discource, 
 either as the speaker's primary intent or as a condition 
 for that intent.  In effect, a proposition like \i{the window 
-is closed} furnishes logical content to accertions like 
+is closed} furnishes logical content to assertions like 
 \i{The window is closed now} but also statements of 
 belief (\i{I think the window is closed}) or 
 requests or opinions (\i{The window should be closed}; 
@@ -519,7 +572,7 @@ propositions; negations, modalities, and possibilia.
 This provides an analytic matrix wherein \i{some} 
 sentences' structures may be analyzed.  I will argue, 
 however, that in typical cases logical forms are 
-invoked only indirectly \mdash{} which calls into quection 
+invoked only indirectly \mdash{} which calls into question 
 the applicability of logical analysis as explanatory 
 vehicles for \i{linguistic} analysis in itself 
 (as opposed to more general cognitive/extralinguistic 
@@ -527,7 +580,7 @@ processing).
 }
 \p{There are several cognitive operations requisite for grasping 
 sentence-meanings as a logical gestalt: figuring individuals 
-or multiplicities as conceptual fosi (verb subjects or objects); 
+or multiplicities as conceptual foci (verb subjects or objects); 
 establishing relationships between individuals and multiplicities 
 or amond multiplicities (member/part of, larger/smaller, 
 overlap/disjoint); predicating properties to individuals 
@@ -558,17 +611,17 @@ we can find examples like:
 \udref{en_gum-ud-train}{GUM_news_warhol-35}
 \end{sentenceList}
 These sentences have straightforward logical structure, in terms of 
-how they establish topical foci (\i{one of every 35,000 births}, 
-\i{as many as 100 million people}, 
-\i{Many Taliban}, \i{every Friday night}, \i{For each start tag}), 
+how they establish topical foci (\i{one of every 35,000 births}; 
+\i{as many as 100 million people}; 
+\i{Many Taliban}; \i{every Friday night}; \i{For each start tag}), 
 and how predicates or references are bound together to create more 
-precise significations (\i{the tropics and subtropics}, 
-\i{in Mujahedeen schools in Ashraf}, \i{a corresponding end tag}).
+precise significations (\i{the tropics and subtropics}; 
+\i{in Mujahedeen schools in Ashraf}; \i{a corresponding end tag}).
 Properties ascribed to subject foci are neatly drawn, both in 
 conveying the property intended and its bearer, according to 
-the sentence's terms: \i{the most common tumour found in babies}, 
-\i{a leading cause of illness and death}, 
-\i{China intends to develop a small space station}, 
+the sentence's terms: \i{the most common tumour found in babies}; 
+\i{a leading cause of illness and death}; 
+\i{China intends to develop a small space station}; 
 \i{holds Polaroids of well-known celebrities}.  With 
 aggregate foci and/or quantification, there is an unambiguous 
 framing of predication and quantifier scope \mdash{} Each collection 

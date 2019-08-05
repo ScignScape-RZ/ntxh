@@ -41,11 +41,23 @@ phrase structure or word-pairs \mdash{} an order of precedence should
 \q{fall out} of grammatic reconstructions.  We should be able 
 to supplement parse-representations with a listing of salient 
 syntactic features in order, retracing the \i{cognitive} steps 
-by which localized alterations in sense synthesize into holistic 
+by which localized sense-alterations synthesize into holistic 
 meaning.  The details of this precedence-establishment 
 will vary across grammatic paradigms, so one way to assess 
 grammar theories is to consider how the engender corresponding 
 cognitive-transform models. 
+}
+\p{Type theory can be adopted in this context because 
+most versions of type theory include a notion of 
+\q{function-like} types: types whose instances modify 
+instances of some other type (or types).  This 
+establishes an order of precedence: anything modified 
+by a function is in some sense logically prior to 
+that function.  In formal (e.g., programming) languages, 
+the procedure whose output becomes input to a different 
+procedure must be evaluated before the latter procedure 
+begins (or at least before the output-to-input value is 
+used by that latter procedure).   
 }
 \p{A common paradigm is to consider natural-language types as generated 
 by just two bases \mdash{} a noun type \N{} and a proposition type 
@@ -100,7 +112,7 @@ unique precedence ordering on its terminal elements
 tree, or its nodes when viewed as a graph), which 
 can be uncovered via a straightforward algorithm 
 (one implementation is part of this paper's data set; 
-see the \q{parse\_sxpr} method in file xxx.cpp).
+see the \q{parse\_sxp} method in file ntxh-udp-sentence.cpp).
 }
 \p{Functional parts of speech 
 that can be formally modeled with one \q{argument} 
@@ -208,22 +220,24 @@ evaluating a nested expression to produce a new function, then
 applied to other inputs in turn.
 }
 \p{For a concrete example, consider 
-\begin{sentenceList}\sentenceItem{} \swl{actually}{The most popular lodging is actually camping on the beaches.}{sem}
+\begin{sentenceList}\sentenceItem{} \swl{itm:actually}{The most popular lodging is actually camping on the beaches.}{sem}
 \udref{en_gum-ud-train}{GUM_voyage_socotra-16}
 \end{sentenceList}
 with gloss, as I take it, \gl{((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))}.  
 Here the adverb \i{actually} is taken as a modifier to \i{is}, so we imagine that 
 interpreting the sentence involves first refining \i{is} into \i{is actually}, 
-yielding a new verb (or \q{verb-idea}) that then participates in verb-subject-object 
+yielding a new verb (or \q{verb-idea}) that then participates in a verb-subject-object 
 pattern.  Hence, the parse opens with the evaluation \gl{(actually is)} in the 
-head-position of the sentences top-level expression.  Similarly, I read \i{on the beaches} as 
-functionally a kind of adverb, like \i{camping outside}.  
+head-position of the sentence's top-level expression.  Similarly, I read \i{on the beaches} as 
+functionally a kind of adverb, like \q{outside} in \i{camping outside}.  
 In the generic pattern, a verb can be paired with a designation of location 
 to construct the idea of the verb happening at such location; the designation-of-location 
 is then a modifier to the verb's ground.  When this designation is a locative 
 construction, the whole expression becomes a modifier, while it also has its own 
 internal structure.  In \i{on the beaches}, \i{on} serves as a modifier which 
-maps or reinterprets \i{the beaches} to a designation of place.  So here is the 
+maps or reinterprets \i{the beaches} to a designation of place.
+}
+\p{So here is the 
 unfolding of the phrase: in \i{the beaches} the determinant (\i{the}) is a modifier 
 to the ground \i{beaches}, signifying that \i{beaches} are to be circumscribed 
 as an aggregate focus.  Then \i{on} modifies the outcome of that first transform, 
@@ -253,7 +267,7 @@ of de Bruijn indices.  The first index, that is, represents
 the \q{level} tieing a modifier to a ground, while the second 
 index is the \i{normal} notation of lambda-position.  
 In \i{camping on the beaches}, the indices for the pair 
-\i{on}\i{the} would be \gl{1,1} (meaning \i{the} is the first 
+\i{on}/\i{the} would be \gl{1,1} (meaning \i{the} is the first 
 argument to \i{on} on the first transform level); the 
 indices for \i{on}\i{camping} would be \gl{2,1} (\i{camping} 
 is the first argument to \i{on} on the \i{second} transform level).  
@@ -267,8 +281,8 @@ index 3), we can transform any expression-tree into a labeled graph.
 Parse graphs can then be annotated with these double-indices 
 via the same presentations employed for Link or Dependency Grammar 
 labels.  Sentence (\ref{itm:actually}) could be visualized as in 
-Figure~\ref{fig:actuallydbl}, with the double-indices can be juxtaposed 
-with conventional Dependency labels (the indices below the sentence, 
+Figure~\ref{fig:actuallydbl}, with the double-indices juxtaposed 
+alongside conventional Dependency labels (the indices below the sentence, 
 and relation labels above it); the upper parse is drawn from the 
 Universal Dependency corpus (other annotated examples are included 
 in this paper's downloadable data set).
@@ -279,7 +293,17 @@ in this paper's downloadable data set).
 parts of speech can have \q{type signatures}
 notionally similar to the signatures of function types in programming languages: a verb
 needing a direct object, for example, \q{transforms} two nouns (Subject and Object)
-to a proposition, which could be notatated with something like \NNtoProp{}.  
+to a proposition, which could be notatated with something like \NNtoProp{}.\footnote{A note on notation: I adopt the Haskell convention (referring to the Haskell
+programming language and other functional languages) of using arrows both between
+parameters and before output notation, but for visual cue I add one dot above the
+arrow in the former case, and two dots in the latter: \argsToReturn{}.
+I will use \N{} and \Prop{} for the broadest designation of nouns and 
+propositions/sentences (the broadest
+noun type, respectively type of sentences, 
+assuming we are using type-theoretic principles).  I will 
+use some extra markings (in diagrams below) for more specific versions of 
+nouns.
+}
 The notation is consistent so long as each constituent of a verb 
 phrase has a fixed index number.\footnote{The subject at position one, for instance; 
 direct object at position two; and indirect object at position three.
