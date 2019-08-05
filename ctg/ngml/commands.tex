@@ -606,6 +606,28 @@ $l: #2^^J%
 }
 
 
+%\addcontentsline{index}{subsection}{xxx}
+
+\newcounter{subs}[section]
+
+\newcommand{\subss}[2]{%
+\addcontentsline{toc}{subsection}{#1}
+\stepcounter{subs}
+\vspace*{3em}\\{\LARGE\em\thesection.{\Large\thesubs}} {
+\hspace{-2.75em}
+			%\begin{minipage}{}
+			\protect\raisebox{-5pt}{%
+			\colorbox{logoCyan!50}{\hspace{2.1em}}}%
+			\hspace{-5pt}{\protect\transparent{0.3}{\colorbox{logoBlue!80}{\protect\transparent{1}{%
+						   \protect\raisebox{1pt}{\textit{{\large #2}}} }}}}
+			%\end{minipage}
+
+} 
+}
+
+\renewcommand{\subsection}[1]{\subss{#1}{#1}}
+
+
 \newsavebox{\twolinebox}
 
 \newcommand{\stwoline}[1]{%
@@ -614,16 +636,16 @@ $l: #2^^J%
 
 \newcommand{\twoline}{\usebox{\twolinebox}}
 
-\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subsection{\twoline}}
+\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subss{#1}{\twoline}}
 
 \newcommand{\spsubsection}[1]{%
 \vspace{-.25em}
-\subsection{#1}
-\vspace{.3em}
+\subss{#1}{#1}
+\vspace{1em}
 }
 \newcommand{\spsubsectiontwoline}[1]{%
 \subsectiontwoline{#1}
-\vspace{.3em}
+\vspace{1em}
 }
 
 
