@@ -37,8 +37,6 @@ SOURCES += \
   $$SRC_ROOT_DIR/add-minimize-frame.cpp \
   $$SRC_PROSET_DIR/ScignStage/ScignStage-ling/subwindows/scignstage-clickable-label.cpp  \
 
-#?? LIBS +=-L$$TARGETSDIR -lScignStage-ling
-
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

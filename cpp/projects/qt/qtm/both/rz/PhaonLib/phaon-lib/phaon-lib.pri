@@ -30,22 +30,11 @@ HEADERS += \
   $$SRC_DIR/phr-class.h \
   $$SRC_DIR/phr-runner.h \
 
-#  $$SRC_DIR/phr-channel-group-table.h \
-#  $$SRC_DIR/phr-symbol-scope.h \
-#  $$SRC_DIR/phr-function-vector.h \
-#  $$SRC_DIR/phr-function-package.h \
-
-
 
 SOURCES += \
   $$SRC_DIR/phr-namespace.cpp \
   $$SRC_DIR/phr-class.cpp \
   $$SRC_DIR/phr-runner.cpp \
-
-#  $$SRC_DIR/phr-channel-group-table.cpp \
-#  $$SRC_DIR/phr-symbol-scope.cpp \
-#  $$SRC_DIR/phr-function-vector.cpp \
-#  $$SRC_DIR/phr-function-package.cpp \
 
 
 LIBS += -L$$TARGETSDIR -lphaon-ir

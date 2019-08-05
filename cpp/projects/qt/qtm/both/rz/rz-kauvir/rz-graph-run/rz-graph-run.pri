@@ -73,9 +73,6 @@ HEADERS += \
    $$SRC_DIR/rz-temp-cases.h \
 
 
-#   $$SRC_DIR/rz-lisp-graph-function-info.h \
-#  $$SRC_DIR/rz-lisp-graph-function-info.h \
-
 SOURCES += \
    $$SRC_DIR/rz-lisp-graph-core-runner.cpp \
    $$SRC_DIR/token/rz-graph-run-token.cpp \

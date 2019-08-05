@@ -10,8 +10,6 @@ include(../build-group.pri)
 
 TEMPLATE = app
 
-#DEFINES += DEFAULT_KPH_FOLDER=\\\"$$CPP_ROOT_DIR/kph\\\"
-
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
 

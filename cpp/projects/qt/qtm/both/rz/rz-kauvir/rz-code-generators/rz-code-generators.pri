@@ -49,29 +49,9 @@ SOURCES += \
   $$SRC_DIR/rpi/rpi-expression.cpp \
   $$SRC_DIR/rpi/rpi-type-declaration.cpp \
 
-#  $$SRC_DIR/rz-dynamo-output.cpp \
-#  $$SRC_DIR/rz-dynamo-block.cpp \
-#  $$SRC_DIR/rz-dynamo-form.cpp \
-#  $$SRC_DIR/rz-dynamo-form-annotation.cpp \
-#  $$SRC_DIR/rz-dynamo-expression.cpp \
-#  $$SRC_DIR/rz-dynamo-type-declaration.cpp \
-#  $$SRC_DIR/phaon/rz-phaon-block.cpp \
-#  $$SRC_DIR/phaon/rz-phaon-output.cpp \
-
-#  $$SRC_DIR/rz-dynamo-output.h \
-#  $$SRC_DIR/rz-dynamo-block.h \
-#  $$SRC_DIR/rz-dynamo-form.h \
-#  $$SRC_DIR/rz-dynamo-form-annotation.h \
-#  $$SRC_DIR/rz-dynamo-expression.h \
-#  $$SRC_DIR/rz-dynamo-type-declaration.h \
-#  $$SRC_DIR/phaon/rz-phaon-block.h \
-#  $$SRC_DIR/phaon/rz-phaon-output.h \
-
 LIBS += -L$$TARGETSDIR -lrz-graph-core -lrz-graph-token -lrz-graph-visit \
   -lrz-graph-valuer -lrz-function-def -lrz-code-elements
 
-
-#?LIBS += -L$$TARGETSDIR -lphr-graph-core
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

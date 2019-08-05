@@ -10,21 +10,11 @@ QT += widgets network
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
-#INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR $$KAUVIR_KCM_SRC_GROUP_DIR/kcm-lisp-bridge
-
 INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
 INCLUDEPATH += $$SCIGNSTAGE_SRC_GROUP_DIR
 
-
-#INCLUDEPATH += $$POSIT_SRC_GROUP_DIR
-
 DEFINES += CAON_DEBUG
 DEFINES += RELAE_LABEL_NODES
-
-
-#INCLUDEPATH += $$RZ_KAUVIR_SRC_GROUP_DIR \
-#  $$RZ_KAUVIR_SRC_GROUP_DIR/rz-graph-core  $$RZ_KAUVIR_SRC_GROUP_DIR/rz-graph-token  \
-#  $$RELAE_SRC_GROUP_DIR  $$KAUVIR_KCM_SRC_GROUP_DIR
 
 
 CONFIG += no_keywords
@@ -50,9 +40,8 @@ LIBS += -L$$TARGETSDIR -lScignStage-ling
 
 contains(CHOICE_FEATURES, "kph") \#/
 {
- DEFINES += USING_KPH
  message(DEFINE\'ing USING_KPH)
- #?? LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
+ DEFINES += USING_KPH
 }
 
 contains(CHOICE_FEATURES, "lex-pair") \#/
@@ -60,17 +49,6 @@ contains(CHOICE_FEATURES, "lex-pair") \#/
  message(DEFINE\'ing USING_LEXPAIR)
  DEFINES += USING_LEXPAIR
 }
-
-contains(CHOICE_FEATURES, "iso-choice") \#/
-{
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/tests-kph--kauvir-phaon--kauvir-phaon) \#/
- {
-  message(DEFINE\'ing ISO__USING_XPDF)
-  DEFINES += ISO__USING_KPH
-  LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
- }
-}
-
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

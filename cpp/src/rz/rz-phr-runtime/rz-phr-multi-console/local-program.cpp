@@ -29,7 +29,7 @@ USING_KANS(Phaon)
 
 extern void* insert_envv(void* kind, void* test);
 
-extern void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
+extern void init_basic_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
 
 void local_program(PhaonIR& phr, QString phrf)
@@ -86,7 +86,7 @@ void local_program(PhaonIR& phr, QString phrf)
 
  phr.init_table();
 
- init_test_functions(phr, pcm, *phr.table(), pss);
+ init_basic_functions(phr, pcm, *phr.table(), pss);
 
  phr.hold_symbol_scope(&pss);
  phr.read_local_program(phrf);
@@ -143,7 +143,7 @@ void local_program(PhaonIR& phr, QStringList& progs, QString topl)
 
  phr.init_table();
 
- init_test_functions(phr, pcm, *phr.table(), pss);
+ init_basic_functions(phr, pcm, *phr.table(), pss);
 
  phr.hold_symbol_scope(&pss);
 

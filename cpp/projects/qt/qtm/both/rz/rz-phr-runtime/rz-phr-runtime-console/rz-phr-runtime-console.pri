@@ -40,6 +40,7 @@ DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
 HEADERS += \
   $$SRC_DIR/basic-functions.h \
   $$SRC_ROOT_DIR/default-basic-functions.h \
+  $$SRC_ROOT_DIR/default-test-functions.h \
 
 
 SOURCES += \
@@ -47,6 +48,7 @@ SOURCES += \
   $$SRC_DIR/local-program.cpp \
   $$SRC_DIR/basic-functions.cpp \
   $$SRC_ROOT_DIR/default-basic-functions.cpp \
+  $$SRC_ROOT_DIR/default-test-functions.cpp \
 
 
 LIBS += -L$$TARGETSDIR  \

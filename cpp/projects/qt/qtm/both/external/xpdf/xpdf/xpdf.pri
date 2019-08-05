@@ -14,12 +14,7 @@ QT += network
 RESOURCES += \
     $$SRC_DIR/xpdf-qt/icons.qrc
 
-#?LIBS +=  -L$$TARGETSDIR -lpdf-pull
-
-#?LIBS +=  -lqtfreetyped  -lqtlibpngd -lz
-
 LIBS +=  -lfreetype
-
 
 
 INCLUDEPATH += $$SRC_DIR/

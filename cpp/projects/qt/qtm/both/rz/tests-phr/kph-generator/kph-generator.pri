@@ -13,9 +13,6 @@ include(../build-group.pri)
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
-#INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR
-#INCLUDEPATH += $$KAUVIR_RUNTIME_SRC_GROUP_DIR
-
 
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 INCLUDEPATH += $$PHAONLIB_SRC_GROUP_DIR
@@ -35,10 +32,6 @@ HEADERS += \
 SOURCES += \
   $$SRC_DIR/kph-generator.cpp \
   $$SRC_DIR/kph-generator-substitutions.cpp \
-
-
-#LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-code-model -lkauvir-type-system \
-#   -lkcm-command-package -lkcm-scopes
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

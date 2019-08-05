@@ -7,11 +7,7 @@
 
 PROJECT_NAME = rz-graph-phaon-console
 
-
 include(../build-group.pri)
-
-#include(../../../../find-ecl-sexp.pri)
-
 
 TEMPLATE = app
 CONFIG += console
@@ -24,8 +20,6 @@ DEFINES += RZ_DIR=\\\"$$ROOT_DIR/scripts/rz\\\"
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 
-#\
-#  $$SRC_GROUP_DIR/rz-graph-core  $$SRC_GROUP_DIR/rz-graph-token  \
 
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 
@@ -35,17 +29,9 @@ INCLUDEPATH += $$RZ_KAUVIR_SRC_GROUP_DIR
 INCLUDEPATH += $$PHAON_LIB_SRC_GROUP_DIR
 INCLUDEPATH += $$PHR_RUNTIME_SRC_GROUP_DIR
 
-#INCLUDEPATH += $$SEXP_DIR
-
-
 CONFIG += no_keywords
 
 DEFINES += USE_RZNS
-
-
-#INCLUDEPATH += $$SEXP_DIR
-#INCLUDEPATH += $$SEXP_DIR/pingus/
-
 
 
 SOURCES += \

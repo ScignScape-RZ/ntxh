@@ -77,7 +77,7 @@ void local_program(PhaonIR& phr)
 
  phr.init_table();
 
- init_test_functions(phr, pcm, *phr.table(), pss);
+ init_basic_functions(phr, pcm, *phr.table(), pss);
 
  phr.hold_symbol_scope(&pss);
  phr.read_local_program(RZ_DIR "/demo/phaon/t1.rz.gen.pgb.phr");

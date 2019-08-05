@@ -22,10 +22,6 @@ DEFINES += ARCHIVE_ROOT_FOLDER=\\\"$$ROOT_DIR\\\"
 
 INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
 
-#INCLUDEPATH += $$RZ_KAUVIR_SRC_GROUP_DIR \
-#  $$RZ_KAUVIR_SRC_GROUP_DIR/rz-graph-core  $$RZ_KAUVIR_SRC_GROUP_DIR/rz-graph-token  \
-#  $$RELAE_SRC_GROUP_DIR  $$KAUVIR_KCM_SRC_GROUP_DIR
-
 
 CONFIG += no_keywords
 
@@ -43,13 +39,13 @@ SOURCES += \
   $$SRC_ROOT_DIR/add-minimize-frame.cpp \
 
 
+LIBS += -L$$TARGETSDIR -lapplication-model
+
 contains(CHOICE_FEATURES, "lex-pair") \#/
 {
  message(DEFINE\'ing USING_LEXPAIR)
  DEFINES += USING_LEXPAIR
 }
-
-LIBS += -L$$TARGETSDIR -lapplication-model
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

@@ -13,8 +13,8 @@ SUBDIRS = \
   hgdm/ntxh/ntxh-parser \
   hgdm/ntxh/ntxh-builder \
   dataset/dsmain/dsmain \
-  dataset/application-model/application-model \
   QScign/ScignStage/ScignStage-ling \
+  dataset/application-model/application-model \
   dataset/dsmain/_run__dsmain-console \
 
 

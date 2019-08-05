@@ -4,8 +4,8 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef DEFAULT_BASIC_FUNCTIONS__H
-#define DEFAULT_BASIC_FUNCTIONS__H
+#ifndef DEFAULT_TEST_FUNCTIONS__H
+#define DEFAULT_TEST_FUNCTIONS__H
 
 
 #include "accessors.h"
@@ -32,7 +32,7 @@ _KANS(Phaon)
 USING_KANS(Phaon)
 
 
-void init_basic_functions(PhaonIR& phr, PHR_Code_Model& pcm,
+void init_test_functions(PhaonIR& phr, PHR_Code_Model& pcm,
   PHR_Channel_Group_Table& table, PHR_Symbol_Scope& pss);
 
-#endif // DEFAULT_BASIC_FUNCTIONS__H
+#endif // DEFAULT_TEST_FUNCTIONS__H

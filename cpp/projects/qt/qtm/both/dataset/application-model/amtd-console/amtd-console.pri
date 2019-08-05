@@ -13,11 +13,6 @@ QT += widgets
 
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
- #INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR $$KAUVIR_KCM_SRC_GROUP_DIR/kcm-lisp-bridge
-INCLUDEPATH += $$KAUVIR_PHAON_SRC_GROUP_DIR
-
-
-INCLUDEPATH += $$POSIT_SRC_GROUP_DIR
 
 DEFINES += CAON_DEBUG
 DEFINES += RELAE_LABEL_NODES
@@ -53,53 +48,12 @@ contains(CHOICE_FEATURES, "xpdf") \#/
 contains(CHOICE_FEATURES, "kph") \#/
 {
  LIBS += -L$$TARGETSDIR -lphaon-lib
-# LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  -lkauvir-phaon \
-#   -lPhaonLib -lkauvir-code-model -lkcm-command-runtime -lkcm-command-package \
-#   -lkauvir-type-system
-}
-
-contains(CHOICE_FEATURES, "kcm_ecl") \#/
-{
- LIBS += -L$$TARGETSDIR -lpcm-lisp-bridge -lrz-dynamo-generator
- include(../../../../find-ecl-sexp.pri)
- LIBS += -L$$ECL_DIR -lecl
- LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
 }
 
 contains(CHOICE_FEATURES, "lex-pair") \#/
 {
  message(DEFINE\'ing USING_LEXPAIR)
  DEFINES += USING_LEXPAIR
-}
-
-
-contains(CHOICE_FEATURES, "iso-choice") \#/
-{
-# exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/kauvir--kauvir-kcm--kcm-lisp-bridge) \#/
-# {
-#  LIBS += -L$$TARGETSDIR -lkcm-lisp-bridge -lrz-dynamo-generator
-#  message(DEFINE\'ing ISO__USING_ECL)
-#  DEFINES += ISO__USING_ECL
-#  include(../../../../find-ecl-sexp.pri)
-#  LIBS += -L$$ECL_DIR -lecl
-#  LIBS += -L$$CL_CXX_DIR/install/lib64 -lcl_cxx
-# }
-
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/external--xpdf--xpdf) \#/
- {
-  message(DEFINE\'ing ISO__USING_XPDF)
-  DEFINES += ISO__USING_XPDF
-  LIBS += -L$$TARGETSDIR -lxpdf
- }
-
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/tests-kph--kauvir-phaon--kauvir-phaon) \#/
- {
-  message(DEFINE\'ing ISO__USING_KPH)
-  DEFINES += ISO__USING_KPH
-  LIBS += -L$$TARGETSDIR -lkcm-direct-eval -lkcm-scopes  -lkauvir-phaon \
-    -lPhaonLib -lkauvir-code-model -lkcm-command-runtime -lkcm-command-package \
-    -lkauvir-type-system
- }
 }
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

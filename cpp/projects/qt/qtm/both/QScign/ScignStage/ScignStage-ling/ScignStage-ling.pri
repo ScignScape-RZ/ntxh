@@ -21,16 +21,10 @@ INCLUDEPATH += $$PHAONIR_SRC_GROUP_DIR
 
 DEFINES += DEFAULT_PTR_BYTE_CODE=QT_POINTER_SIZE
 
-#INCLUDEPATH += $$QHYP_SRC_GROUP_DIR
-#INCLUDEPATH += $$KAUVIR_PHAON_SRC_GROUP_DIR
-#INCLUDEPATH += $$KAUVIR_KCM_SRC_GROUP_DIR
-
 INCLUDEPATH += $$PHAON_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 
 INCLUDEPATH += $$LEXPAIR_SRC_GROUP_DIR
-
-#INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 
 INCLUDEPATH += $$XPDF_SRC_GROUP_DIR/xpdf/aconf
 INCLUDEPATH += $$XPDF_SRC_GROUP_DIR/xpdf/goo
@@ -51,7 +45,6 @@ CONFIG += no_keywords
 DEFINES += USE_KANS
 DEFINES += USE_RZNS
 
-#DEFINES += USING_XPDF
 INCLUDEPATH += $$XPDF_SRC_GROUP_DIR
 
 
@@ -73,7 +66,6 @@ SOURCES += \
 
 LIBS += -L$$TARGETSDIR -ldsmain
 
-#? LIBS += -L$$TARGETSDIR -lphaon-lib
 
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
@@ -99,29 +91,6 @@ contains(CHOICE_FEATURES, "kph") \#/
  DEFINES += USING_KPH
  LIBS += -L$$TARGETSDIR -lphaon-lib -lphaon-ir
 }
-
-
-
-contains(CHOICE_FEATURES, "iso-choice") \#/
-{
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/external--xpdf--xpdf) \#/
- {
-  message(DEFINE\'ing USING_XPDF)
-  DEFINES += USING_XPDF
-  LIBS += -L$$TARGETSDIR -lxpdf
- }
-
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/tests-kph--kauvir-phaon--kauvir-phaon) \#/
- {
-  message(DEFINE\'ing USING_KPH)
-  DEFINES += USING_KPH
-  LIBS += -L$$TARGETSDIR -lPhaonLib -lkauvir-phaon -lkauvir-code-model
- }
-}
-
-
-
-#LIBS += -L$$TARGETSDIR -llexpair
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

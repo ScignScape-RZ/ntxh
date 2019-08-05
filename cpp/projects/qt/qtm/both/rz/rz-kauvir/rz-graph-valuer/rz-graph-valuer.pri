@@ -11,9 +11,6 @@ include(../build-group.pri)
 DEFINES += USE_RZNS
 
 
-#?TARGET = $$PROJECT_NAME
-
-
 DEFINES += CAON_DEBUG
 DEFINES += RELAE_LABEL_NODES
 

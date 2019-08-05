@@ -25,4 +25,3 @@ SOURCES +=  \
 CONFIG += no_keywords
 
 
-LIBS += -L$$TARGETSDIR #-lkcm-scopes
