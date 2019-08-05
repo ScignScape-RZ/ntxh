@@ -1,5 +1,5 @@
 - Generated from LaTeX File ctg.ngml.tex 
-5/8/2019, 18:2
+5/8/2019, 19:58
 .
 
 - i=id p=page s=ud source, section number c=classification
@@ -191,7 +191,7 @@ $i: 15
 $p: 9
 $x: itm:Cambridge
 $t: The south side of Cambridge voted Conservative.
-$c: sem
+$c: ref
 /!
 <>>
 
@@ -200,7 +200,7 @@ $i: 16
 $p: 9
 $x: itm:lower
 $t: Lower Manhattan voted Republican.
-$c: sem
+$c: ref
 /!
 <>>
 
@@ -209,7 +209,7 @@ $i: 17
 $p: 9
 $x: itm:si
 $t: Staten Island voted Republican.
-$c: sem
+$c: ref
 /!
 <>>
 
@@ -668,31 +668,41 @@ $c: ont
 !/ SentenceList
 $i: 32
 $p: 21
-$s: 3
+$s: 2
 
 !/ SentenceItem
 $i: 51
 $p: 21
-$x: itm:almond
-$t: Do you have almond milk?
-$c: pra
+$x: itm:footprints
+$t: There are footprints on the beach.
+$c: ref
 /!
 <>>
 
 !/ SentenceItem
 $i: 52
 $p: 21
-$t: Can you get MsNBC on your TV?
-$c: pra
+$x: itm:hole
+$t: There's a hole in the bucket.
+$c: ref
 /!
 <>>
 
 !/ SentenceItem
 $i: 53
 $p: 21
-$x: itm:needcorkscrew
-$t: This isn't a screw-cap bottle: I need a corkscrew.
-$c: pra
+$x: itm:footprintsleading
+$t: There are footprints leading up the hill.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 54
+$p: 21
+$x: itm:traintracks
+$t: There are train tracks leading up the hill.
+$c: ref
 /!
 <>>
 
@@ -702,37 +712,32 @@ $c: pra
 !/ SentenceList
 $i: 33
 $p: 21
-$s: 3
-
-!/ SentenceItem
-$i: 54
-$p: 21
-$t: I think the window is open, can you close it?
-$c: pra
-/!
-<>>
+$s: 2
 
 !/ SentenceItem
 $i: 55
 $p: 21
-$t: I see you have almond milk, can I have some?
-$c: pra
+$x: itm:Salesmen
+$t: Salesmen are intelligent.
+$c: ont
 /!
 <>>
 
 !/ SentenceItem
 $i: 56
 $p: 21
-$t: If you get MsNBC, can you turn on Rachel Maddow?
-$c: pra
+$x: itm:knocking
+$t: Salesmen are knocking on the door.
+$c: ont
 /!
 <>>
 
 !/ SentenceItem
 $i: 57
 $p: 21
-$t: If there is a corkscrew in the house, can you get it?
-$c: pra
+$x: itm:Should
+$t: Should I let them in?
+$c: ont
 /!
 <>>
 
@@ -741,38 +746,42 @@ $c: pra
 
 !/ SentenceList
 $i: 34
-$p: 22
-$s: 3
+$p: 21
+$s: 2
 
 !/ SentenceItem
 $i: 58
-$p: 22
-$t: I believe you have a reservation for Jones?
-$c: pra
+$p: 21
+$x: parked
+$t: I am parked out back.
+$c: ont
 /!
 <>>
 
 !/ SentenceItem
 $i: 59
-$p: 22
-$t: I believe this is the customer service desk?
-$c: pra
+$p: 21
+$x: waiting
+$t: I am parked out back and have been waiting for 15 minutes.
+$c: ont
 /!
 <>>
 
 !/ SentenceItem
 $i: 60
-$p: 22
-$t: I believe we ordered a second basket of garlic bread?
-$c: pra
+$p: 21
+$x: start
+$t: I am parked out back and may not start.
+$c: ont
 /!
 <>>
 
 !/ SentenceItem
 $i: 61
-$p: 22
-$t: I believe you can help me find computer acessories in this section?
-$c: pra
+$p: 21
+$x: Whitney
+$t: I'm in the Whitney Museum.
+$c: ont
 /!
 <>>
 
@@ -787,7 +796,8 @@ $s: 3
 !/ SentenceItem
 $i: 62
 $p: 22
-$t: Do you have any milk?
+$x: itm:almond
+$t: Do you have almond milk?
 $c: pra
 /!
 <>>
@@ -795,7 +805,7 @@ $c: pra
 !/ SentenceItem
 $i: 63
 $p: 22
-$t: Yes, we have almond milk.
+$t: Can you get MsNBC on your TV?
 $c: pra
 /!
 <>>
@@ -803,7 +813,8 @@ $c: pra
 !/ SentenceItem
 $i: 64
 $p: 22
-$t: No, we have almond milk.
+$x: itm:needcorkscrew
+$t: This isn't a screw-cap bottle: I need a corkscrew.
 $c: pra
 /!
 <>>
@@ -819,8 +830,7 @@ $s: 3
 !/ SentenceItem
 $i: 65
 $p: 22
-$x: itm:put
-$t: Can you put some almond milk in my coffee?
+$t: I think the window is open, can you close it?
 $c: pra
 /!
 <>>
@@ -828,8 +838,23 @@ $c: pra
 !/ SentenceItem
 $i: 66
 $p: 22
-$x: itm:after
-$t: Is there milk in this coffee?
+$t: I see you have almond milk, can I have some?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 67
+$p: 22
+$t: If you get MsNBC, can you turn on Rachel Maddow?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 68
+$p: 22
+$t: If there is a corkscrew in the house, can you get it?
 $c: pra
 /!
 <>>
@@ -843,25 +868,33 @@ $p: 22
 $s: 3
 
 !/ SentenceItem
-$i: 67
-$p: 22
-$t: It's not open, but there's still some cold air coming through the cracks.
-$c: pra
-/!
-<>>
-
-!/ SentenceItem
-$i: 68
-$p: 22
-$t: It's not open, but I closed the window in the bedroom.
-$c: pra
-/!
-<>>
-
-!/ SentenceItem
 $i: 69
-$p: 22
-$t: I can't ---{} it's stuck.
+$p: 23
+$t: I believe you have a reservation for Jones?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 70
+$p: 23
+$t: I believe this is the customer service desk?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 71
+$p: 23
+$t: I believe we ordered a second basket of garlic bread?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 72
+$p: 23
+$t: I believe you can help me find computer acessories in this section?
 $c: pra
 /!
 <>>
@@ -871,23 +904,29 @@ $c: pra
 
 !/ SentenceList
 $i: 38
-$p: 22
+$p: 23
 $s: 3
 
 !/ SentenceItem
-$i: 70
-$p: 22
-$x: itm:TheWindow
-$t: The window, it's still open.
+$i: 73
+$p: 23
+$t: Do you have any milk?
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 71
-$p: 22
-$x: itm:AWindow
-$t: A window, it's still open.
+$i: 74
+$p: 23
+$t: Yes, we have almond milk.
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 75
+$p: 23
+$t: No, we have almond milk.
 $c: pra
 /!
 <>>
@@ -897,15 +936,24 @@ $c: pra
 
 !/ SentenceList
 $i: 39
-$p: 22
+$p: 23
 $s: 3
 
 !/ SentenceItem
-$i: 72
-$p: 22
-$x: itm:scribbled
-$t: He scribbled on a living-room wall.
-$c: sem
+$i: 76
+$p: 23
+$x: itm:put
+$t: Can you put some almond milk in my coffee?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 77
+$p: 23
+$x: itm:after
+$t: Is there milk in this coffee?
+$c: pra
 /!
 <>>
 
@@ -918,17 +966,25 @@ $p: 23
 $s: 3
 
 !/ SentenceItem
-$i: 73
+$i: 78
 $p: 23
-$t: I believe the kitchen window is open ---{} please close it!
+$t: It's not open, but there's still some cold air coming through the cracks.
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 74
+$i: 79
 $p: 23
-$t: I believe some window is open ---{} please close it!
+$t: It's not open, but I closed the window in the bedroom.
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 80
+$p: 23
+$t: I can't ---{} it's stuck.
 $c: pra
 /!
 <>>
@@ -942,17 +998,19 @@ $p: 23
 $s: 3
 
 !/ SentenceItem
-$i: 75
+$i: 81
 $p: 23
-$t: Grandma wants us to close the window.
+$x: itm:TheWindow
+$t: The window, it's still open.
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 76
+$i: 82
 $p: 23
-$t: He wants a bottle opener.
+$x: itm:AWindow
+$t: A window, it's still open.
 $c: pra
 /!
 <>>
@@ -966,18 +1024,11 @@ $p: 23
 $s: 3
 
 !/ SentenceItem
-$i: 77
+$i: 83
 $p: 23
-$t: Grandma wants us to eliminate the cold draft.
-$c: pra
-/!
-<>>
-
-!/ SentenceItem
-$i: 78
-$p: 23
-$t: He wants something to open that bottle.
-$c: pra
+$x: itm:scribbled
+$t: He scribbled on a living-room wall.
+$c: sem
 /!
 <>>
 
@@ -986,23 +1037,21 @@ $c: pra
 
 !/ SentenceList
 $i: 43
-$p: 23
+$p: 24
 $s: 3
 
 !/ SentenceItem
-$i: 79
-$p: 23
-$x: itm:can
-$t: Can I have some milk?
+$i: 84
+$p: 24
+$t: I believe the kitchen window is open ---{} please close it!
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 80
-$p: 23
-$x: itm:close
-$t: Can you close the kitchen window?
+$i: 85
+$p: 24
+$t: I believe some window is open ---{} please close it!
 $c: pra
 /!
 <>>
@@ -1016,8 +1065,82 @@ $p: 24
 $s: 3
 
 !/ SentenceItem
-$i: 81
+$i: 86
 $p: 24
+$t: Grandma wants us to close the window.
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 87
+$p: 24
+$t: He wants a bottle opener.
+$c: pra
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 45
+$p: 24
+$s: 3
+
+!/ SentenceItem
+$i: 88
+$p: 24
+$t: Grandma wants us to eliminate the cold draft.
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 89
+$p: 24
+$t: He wants something to open that bottle.
+$c: pra
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 46
+$p: 24
+$s: 3
+
+!/ SentenceItem
+$i: 90
+$p: 24
+$x: itm:can
+$t: Can I have some milk?
+$c: pra
+/!
+<>>
+
+!/ SentenceItem
+$i: 91
+$p: 24
+$x: itm:close
+$t: Can you close the kitchen window?
+$c: pra
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 47
+$p: 25
+$s: 3
+
+!/ SentenceItem
+$i: 92
+$p: 25
 $x: itm:store
 $t: Remember that wine we tasted on the Niagara Peninsula last summer? Can you find it in our local liquor store?
 $c: pra
@@ -1025,8 +1148,8 @@ $c: pra
 <>>
 
 !/ SentenceItem
-$i: 82
-$p: 24
+$i: 93
+$p: 25
 $x: itm:varietal
 $t: Remember that wine we tasted on the Niagara Peninsula last summer? What varietal was that again?
 $c: pra
@@ -1037,21 +1160,21 @@ $c: pra
 <+>
 
 !/ SentenceList
-$i: 45
+$i: 48
 $p: 25
 $s: 3
 
 !/ SentenceItem
-$i: 83
-$p: 25
+$i: 94
+$p: 26
 $t: That wine was a Cabernet Franc.
 $c: ref
 /!
 <>>
 
 !/ SentenceItem
-$i: 84
-$p: 25
+$i: 95
+$p: 26
 $t: Those dogs are my neighbor's. They are very sweet.
 $c: ref
 /!
@@ -1061,12 +1184,12 @@ $c: ref
 <+>
 
 !/ SentenceList
-$i: 46
-$p: 25
+$i: 49
+$p: 26
 $s: 3
 
 !/ SentenceItem
-$i: 85
+$i: 96
 $p: 26
 $t: Those dogs are Staffordshires.
 $c: pra
@@ -1074,7 +1197,7 @@ $c: pra
 <>>
 
 !/ SentenceItem
-$i: 86
+$i: 97
 $p: 26
 $t: What's a Staffordshire?
 $c: pra
@@ -1082,7 +1205,7 @@ $c: pra
 <>>
 
 !/ SentenceItem
-$i: 87
+$i: 98
 $p: 26
 $t: It's a breed of dog.
 $c: pra
@@ -1093,29 +1216,29 @@ $c: pra
 <+>
 
 !/ SentenceList
-$i: 47
+$i: 50
 $p: 27
 $s: 3
 
 !/ SentenceItem
-$i: 88
-$p: 27
+$i: 99
+$p: 28
 $t: If the kitchen window is closed, we can see if other windows are open.
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 89
-$p: 27
+$i: 100
+$p: 28
 $t: If no windows are open, we can see if there is a draft through the window-cracks.
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 90
-$p: 27
+$i: 101
+$p: 28
 $t: If there is no draft, we can ask if she wants a sweater.
 $c: pra
 /!
@@ -1125,12 +1248,12 @@ $c: pra
 <+>
 
 !/ SentenceList
-$i: 48
-$p: 27
+$i: 51
+$p: 28
 $s: 3
 
 !/ SentenceItem
-$i: 91
+$i: 102
 $p: 28
 $t: This wine is a young Syrah.
 $c: log
@@ -1138,8 +1261,8 @@ $c: log
 <>>
 
 !/ SentenceItem
-$i: 92
-$p: 28
+$i: 103
+$p: 29
 $t: My cousin adopted one of my neighbor's dog's puppies.
 $c: log
 /!
@@ -1149,13 +1272,13 @@ $c: log
 <+>
 
 !/ SentenceList
-$i: 49
-$p: 28
+$i: 52
+$p: 29
 $s: 3
 
 !/ SentenceItem
-$i: 93
-$p: 28
+$i: 104
+$p: 29
 $x: itm:maj
 $t: The majority of students polled were opposed to tuition increases.
 $c: log
@@ -1163,8 +1286,8 @@ $c: log
 <>>
 
 !/ SentenceItem
-$i: 94
-$p: 28
+$i: 105
+$p: 29
 $x: itm:most
 $t: Most of the students expressed disappointment about tuition increases.
 $c: log
@@ -1172,8 +1295,8 @@ $c: log
 <>>
 
 !/ SentenceItem
-$i: 95
-$p: 28
+$i: 106
+$p: 29
 $x: itm:many
 $t: Many students have protested the tuition increases.
 $c: log
@@ -1184,21 +1307,21 @@ $c: log
 <+>
 
 !/ SentenceList
-$i: 50
-$p: 29
+$i: 53
+$p: 30
 $s: 3
 
 !/ SentenceItem
-$i: 96
-$p: 29
+$i: 107
+$p: 30
 $t: Most students oppose the tuition increase.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 97
-$p: 29
+$i: 108
+$p: 30
 $x: itm:indef
 $t: Most students oppose a tuition increase.
 $c: sem
@@ -1209,13 +1332,13 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 51
-$p: 29
+$i: 54
+$p: 30
 $s: 3
 
 !/ SentenceItem
-$i: 98
-$p: 29
+$i: 109
+$p: 30
 $x: itm:today
 $t: Today the state university system announced plans to raise tuition by at least 10\%. Most students oppose a tuition increase.
 $c: sem
@@ -1223,8 +1346,8 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 99
-$p: 29
+$i: 110
+$p: 30
 $x: itm:colleges
 $t: Colleges all over the country, facing rising costs, have had to raise tuition, but most students oppose a tuition increase.
 $c: sem
@@ -1235,13 +1358,13 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 52
-$p: 30
+$i: 55
+$p: 31
 $s: 3
 
 !/ SentenceItem
-$i: 100
-$p: 30
+$i: 111
+$p: 31
 $x: itm:sas
 $t: Student after student came out against the tuition hikes.
 $c: sem
@@ -1249,8 +1372,8 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 101
-$p: 30
+$i: 112
+$p: 31
 $x: itm:substantial
 $t: A substantial number of students have come out against the tuition hikes.
 $c: sem
@@ -1258,8 +1381,8 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 102
-$p: 30
+$i: 113
+$p: 31
 $x: itm:mass
 $t: The number of students protesting the tuition hikes may soon reach a critical mass.
 $c: sem
@@ -1267,8 +1390,8 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 103
-$p: 30
+$i: 114
+$p: 31
 $x: itm:tipping
 $t: Protests against the tuition hikes may have reached a tipping point.
 $c: sem
@@ -1279,13 +1402,13 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 53
-$p: 32
+$i: 56
+$p: 33
 $s: 3
 
 !/ SentenceItem
-$i: 104
-$p: 32
+$i: 115
+$p: 33
 $x: itm:pipe
 $t: We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well.
 $c: sco
@@ -1301,21 +1424,21 @@ $l: email-enronsent03_01-0143
 <+>
 
 !/ SentenceList
-$i: 55
-$p: 33
+$i: 58
+$p: 34
 $s: 4
 
 !/ SentenceItem
-$i: 105
-$p: 33
+$i: 116
+$p: 34
 $t: My colleague Ms. O'Shea would like to interview Mr. Jones, who's an old friend of mine. Can he take this call?
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 106
-$p: 33
+$i: 117
+$p: 34
 $x: itm:Jones
 $t: I'm sorry, this is his secretary. Mr. Jones is not available at the moment.
 $c: pra
@@ -1326,21 +1449,21 @@ $c: pra
 <+>
 
 !/ SentenceList
-$i: 56
-$p: 33
+$i: 59
+$p: 34
 $s: 4
 
 !/ SentenceItem
-$i: 107
-$p: 33
+$i: 118
+$p: 34
 $t: Mr. Jones, were you present at a meeting where the governer promised your employer a contract in exchange for campaign contributions?
 $c: pra
 /!
 <>>
 
 !/ SentenceItem
-$i: 108
-$p: 33
+$i: 119
+$p: 34
 $t: After consulting with my lawyers, I decline to answer that question on the grounds that it may incriminate me.
 $c: pra
 /!
@@ -1350,13 +1473,13 @@ $c: pra
 <+>
 
 !/ SentenceList
-$i: 57
-$p: 33
+$i: 60
+$p: 34
 $s: 4
 
 !/ SentenceItem
-$i: 109
-$p: 33
+$i: 120
+$p: 34
 $x: itm:isJones
 $t: Is Jones there?
 $c: pra
@@ -1364,8 +1487,8 @@ $c: pra
 <>>
 
 !/ SentenceItem
-$i: 110
-$p: 33
+$i: 121
+$p: 34
 $x: itm:not
 $t: He is not available.
 $c: pra
@@ -1376,13 +1499,13 @@ $c: pra
 <+>
 
 !/ SentenceList
-$i: 58
+$i: 61
 $p: 35
 $s: 4
 
 !/ SentenceItem
-$i: 111
-$p: 35
+$i: 122
+$p: 36
 $x: itm:pf
 $t: People fed the rescued dogs.
 $c: sem
@@ -1390,8 +1513,8 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 112
-$p: 35
+$i: 123
+$p: 36
 $x: itm:ve
 $t: Vets examined the rescued dogs.
 $c: sem
@@ -1402,37 +1525,37 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 59
-$p: 35
+$i: 62
+$p: 36
 $s: 4
 
 !/ SentenceItem
-$i: 113
-$p: 35
+$i: 124
+$p: 36
 $t: Every singer performed two songs.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 114
-$p: 35
+$i: 125
+$p: 36
 $t: Everyone performed two songs.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 115
-$p: 35
+$i: 126
+$p: 36
 $t: Everyone sang along to two songs.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 116
-$p: 35
+$i: 127
+$p: 36
 $t: Everyone in the audience sang along to two songs.
 $c: sem
 /!
@@ -1442,13 +1565,13 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 60
-$p: 35
+$i: 63
+$p: 36
 $s: 4
 
 !/ SentenceItem
-$i: 117
-$p: 35
+$i: 128
+$p: 36
 $t: The rescued dogs had been treated by vets in the past (but were subsequently abandoned by their owners).
 $c: sem
 $a: The rescued dogs had been treated by vets in the past.
@@ -1456,8 +1579,8 @@ $a: The rescued dogs had been treated by vets in the past.
 <>>
 
 !/ SentenceItem
-$i: 118
-$p: 35
+$i: 129
+$p: 36
 $t: Every singer performed (the last) two songs (for the grand finale).
 $c: sem
 $a: Every singer performed the last two songs for the grand finale.
@@ -1465,8 +1588,8 @@ $a: Every singer performed the last two songs for the grand finale.
 <>>
 
 !/ SentenceItem
-$i: 119
-$p: 35
+$i: 130
+$p: 36
 $t: Everyone in the audience sang along to two songs (they were randomnly handed lyrics to different songs when they came in, and we asked them to join in when the song being performed onstage matched the lyrics they had in hand).
 $c: sem
 /!
@@ -1476,21 +1599,21 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 61
-$p: 36
+$i: 64
+$p: 37
 $s: 4
 
 !/ SentenceItem
-$i: 120
-$p: 36
+$i: 131
+$p: 37
 $t: The rescued dogs were treated by an experienced vet. One needed surgery and one got a blood transfusion. We went there yesterday and both looked much better.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 121
-$p: 36
+$i: 132
+$p: 37
 $t: The rescued dogs were treated by an experienced vet. One had been struck by a car and needed surgery on his leg. We went there yesterday and saw debris from another car crash ---{} it's a dangerous stretch of highway.
 $c: sem
 /!
@@ -1500,12 +1623,12 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 62
+$i: 65
 $p: 37
 $s: 4
 
 !/ SentenceItem
-$i: 122
+$i: 133
 $p: 37
 $t: The rescued dogs were treated by an experienced vet. We saw a lot of other dogs getting medical attention.
 $c: sem
@@ -1513,16 +1636,16 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 123
-$p: 37
+$i: 134
+$p: 38
 $t: The rescued dogs were treated by an experienced vet. It looked very modern, like a human hospital.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 124
-$p: 37
+$i: 135
+$p: 38
 $t: The rescued dogs were treated by an experienced vet. We looked around and realized how dangerous that road is ---{} for humans as well as dogs.
 $c: sem
 /!
@@ -1532,29 +1655,29 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 63
-$p: 37
+$i: 66
+$p: 38
 $s: 4
 
 !/ SentenceItem
-$i: 125
-$p: 37
+$i: 136
+$p: 38
 $t: The trade rescued a star athlete from a losing team.
 $c: idi
 /!
 <>>
 
 !/ SentenceItem
-$i: 126
-$p: 37
+$i: 137
+$p: 38
 $t: New mathematical models rescued her original research from obscurity.
 $c: idi
 /!
 <>>
 
 !/ SentenceItem
-$i: 127
-$p: 37
+$i: 138
+$p: 38
 $t: Discovery of nearby earth-like planets rescued that star from its reputation as ordinary and boring and revealed that its solar system may actually be extraordinary.
 $c: idi
 /!
@@ -1564,13 +1687,13 @@ $c: idi
 <+>
 
 !/ SentenceList
-$i: 64
-$p: 39
+$i: 67
+$p: 40
 $s: 4
 
 !/ SentenceItem
-$i: 128
-$p: 39
+$i: 139
+$p: 40
 $x: itm:threetimes
 $t: Three times, students asked an interesting question.
 $c: sco
@@ -1581,13 +1704,13 @@ $c: sco
 <+>
 
 !/ SentenceList
-$i: 65
-$p: 39
+$i: 68
+$p: 40
 $s: 4
 
 !/ SentenceItem
-$i: 129
-$p: 39
+$i: 140
+$p: 40
 $x: itm:threes
 $t: Three students asked interesting questions.
 $c: log
@@ -1598,13 +1721,13 @@ $c: log
 <+>
 
 !/ SentenceList
-$i: 66
-$p: 39
+$i: 69
+$p: 40
 $s: 4
 
 !/ SentenceItem
-$i: 130
-$p: 39
+$i: 141
+$p: 40
 $t: Time after time, tourists (a tourist) walk(s) by this building with no idea of its history.
 $c: sco
 $a: Time after time, tourists walk by this building with no idea of its history.
@@ -1612,8 +1735,8 @@ $a: Time after time, tourists walk by this building with no idea of its history.
 <>>
 
 !/ SentenceItem
-$i: 131
-$p: 39
+$i: 142
+$p: 40
 $t: The streets around here are confusing; often people (someone) will ask me for directions.
 $c: sco
 $a: The streets around here are confusing; often someone will ask me for directions.
@@ -1621,8 +1744,8 @@ $a: The streets around here are confusing; often someone will ask me for directi
 <>>
 
 !/ SentenceItem
-$i: 132
-$p: 39
+$i: 143
+$p: 40
 $t: Student after student came with their (his/her) paper to compain about my grade(s).
 $c: sco
 $a: Student after student came with their paper to compain about my grades.
@@ -1630,7 +1753,7 @@ $a: Student after student came with their paper to compain about my grades.
 <>>
 
 !/ SentenceItem
-$i: 133
+$i: 144
 $p: 40
 $t: Student after student ---{} and their (his/her) parents ---{} complained about the tuition increase.
 $c: sco
@@ -1642,12 +1765,12 @@ $a: Student after student ---{} and their parents ---{} complained about the tui
 <+>
 
 !/ SentenceList
-$i: 67
-$p: 42
+$i: 70
+$p: 43
 $s: 4
 
 !/ SentenceItem
-$i: 134
+$i: 145
 $p: 43
 $x: itm:rhinor
 $t: Rhinos in that park are threatened by poachers.
@@ -1656,7 +1779,7 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 135
+$i: 146
 $p: 43
 $t: Young rhinos are threatened by poachers.
 $c: sem
@@ -1667,13 +1790,13 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 68
-$p: 43
+$i: 71
+$p: 44
 $s: 4
 
 !/ SentenceItem
-$i: 136
-$p: 43
+$i: 147
+$p: 44
 $t: Let's find a restaurant that's family-friendly.
 $c: sem
 /!
@@ -1683,21 +1806,21 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 69
-$p: 44
+$i: 72
+$p: 45
 $s: 4
 
 !/ SentenceItem
-$i: 137
-$p: 44
+$i: 148
+$p: 45
 $t: I got glue for your daughter.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 138
-$p: 44
+$i: 149
+$p: 45
 $t: I got glue for your coffee mug.
 $c: sem
 /!
@@ -1707,37 +1830,37 @@ $c: sem
 <+>
 
 !/ SentenceList
-$i: 70
-$p: 44
+$i: 73
+$p: 45
 $s: 4
 
 !/ SentenceItem
-$i: 139
-$p: 44
+$i: 150
+$p: 45
 $t: We're going to Grandma!
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 140
-$p: 44
+$i: 151
+$p: 45
 $t: Let's go to him right now.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 141
-$p: 44
+$i: 152
+$p: 45
 $t: Let's go to the lawyers.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 142
-$p: 44
+$i: 153
+$p: 45
 $t: Let's go to the press.
 $c: sem
 /!
