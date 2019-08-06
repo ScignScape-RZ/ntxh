@@ -572,4 +572,33 @@ $u. # sent_id = w01119076
 /!
 <+>
 
+
+!/ Sentence
+$i: 21
+$c: en_gum-ud-train.conllu
+$s:
+$x: 
+$u. # sent_id = GUM_voyage_phoenix-30
+# text = In some neighborhoods, cicada insects make loud sounds from sunset to sunrise.
+# s_type=decl
+1	In	in	ADP	IN	_	3	case	_	_
+2	some	some	DET	DT	_	3	det	_	_
+3	neighborhoods	neighborhood	NOUN	NNS	Number=Plur	7	obl	_	SpaceAfter=No
+4	,	,	PUNCT	,	_	3	punct	_	_
+5	cicada	cicada	NOUN	NN	Number=Sing	6	compound	_	_
+6	insects	insect	NOUN	NNS	Number=Plur	7	nsubj	_	_
+7	make	make	VERB	VBP	Mood=Ind|Tense=Pres|VerbForm=Fin	0	root	_	_
+8	loud	loud	ADJ	JJ	Degree=Pos	9	amod	_	_
+9	sounds	sound	NOUN	NNS	Number=Plur	7	obj	_	_
+10	from	from	ADP	IN	_	11	case	_	_
+11	sunset	sunset	NOUN	NN	Number=Sing	7	obl	_	_
+12	to	to	ADP	TO	_	13	case	_	_
+13	sunrise	sunrise	NOUN	NN	Number=Sing	7	obl	_	SpaceAfter=No
+14	.	.	PUNCT	.	_	7	punct	_	_
+.
+/!
+<+>
+
+
+
 /&
