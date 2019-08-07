@@ -1,0 +1,289 @@
+
+`spsubsectiontwoline.Phenomenology as Experiment`
+`p.
+Phenomenology has not usually attended to formal analysis of
+cognitive models, or models of mental phenomena overall.
+This is entirely understandable, since exploration of formal
+systems surely does not belong to phenomenological
+analysis itself, at least outside the exotic sense of studying
+what it is like to learn or think about mathematics, say,
+from a first-person perspective.  Nevertheless, even a
+writer committed to phenomenology does not solely do
+phenomenological analysis, any more than a Structuralist
+poeticist devotes all paragraphs to close-readings.
+Equally intrinsic to the philosophical process is
+how intra-methodological analyses (`q.readings`
+of consciousness or literary works, say, respectively) are
+placed in a larger context, which can have multiple
+dimensions: relations to other scools of philosophy, but
+also other academic disciples and other regimes of knowledge
+and practice.  Pursuit of formal models can help ground and
+orient phenomenological investigations, and vice-versa.
+`p`
+
+`p.
+As a case in point, consider how phenomeneology was among the
+inspirations for what computer scientists call the Semantic
+Web and Formal Ontologies %-- protocols for sharing information
+and aggregating `q.knowledge` across computer networks,
+paricularly the World Wide Web.  Although the distinction 
+is not sufficiently discussed, I believe, the Semantic Web idea really
+has two dimesnions: we can call them `i.static` and `i.dynamic`/.  
+The `i.dynamic` aspect of the Semantic Web (and any data-sharing 
+platform) reflects how the technology needs to enable, 
+and verify, correct and useful behaviors.  In particular,
+the Semantic Web needs to treat `i.information` as an 
+asset that appreciates in value as it is shared and duplicated.  
+Semantic Web technology needs to identify situations where 
+it would be valuable for some aggregate of data 
+present at locality $L1$ to be shared with locality 
+$L2$; and should provide the technological 
+capabilities to ensure that $L1$ and $L2$ can interoperate
+properly to effectuate this sharing.  
+`p`
+
+`p.
+These goals and requirements are `i.dynamic`/: they model and 
+implement scenarios where some piece of software concludes that 
+some remote information would be valuable, and 
+initiates a process of acquiring that data, by interoperating 
+with other software which takes steps to respond 
+cooperatively (within the limits 
+of proper data sharing protocols).  I will discuss this `i.dynamic` 
+aspect of the Semantic Web below.
+`p`
+
+`p.
+By contrast, the `i.static` dimension of the Semantic Web 
+reflects the goals of data representation itself: the 
+essential information and structure manifest in data 
+needs to be preserved arocss locations as data is routed and 
+shared.  Accordingly, one goal of Semantic Web technology is 
+to design data representations that retain a static 
+meaning across contexts and locations.  These representations have 
+to be sufficiently precise and unambiguous that 
+heterogeneous software platforms can interoperate, by 
+sharing the data represented, without 
+distorting or misinterpreted the information 
+encoded in the relevant shared data.
+`p`
+
+`p.
+Such information is not only
+abstract mathematical or technical data: our world is founded
+on communicating structured knowledge from many human and scintific
+domains, like medicine and government.  We cannot in this
+context construe data as just bytes and numbers, but rather
+encodings of human concepts and judgments.  Trying to
+map essentially informal human concepts, like `i.illness`/,
+to a precise scientific formulation, is of course a
+foundational concern in philosophy; but computer networks and
+technology-enhanced knowledge sharing reveal practical applications
+of these perhaps once purely abstract problems.  Scientists
+use Formal Ontologies to codify conceptual systems
+underlying human knowledge and beliefs.  This, moreover,
+spans both fairly narrow and concrete propositions (e.g.,
+that the pericardium surrounds the heart) and deeper, more
+abstract, more cognitively primeval concepts
+(like what it means for one thing to surround another thing).
+`p`
+
+`p.
+In short, part of the requiements of building knowledge
+`q.engineering` or `q.sharing` systems was to give a technical
+specification for apparently innate concepts or gestalts
+like `i.part of`/, `i.inside of`/, `i.surrounding`/, and
+so on.  At least one method for approaching
+this problem was via phenomenology, meaning that
+phenomenology serves as one tributary among others that can
+be followed into the technical context of data modeling and
+data sharing protocols.  At the same time, the Semantic Web
+community has converged on several preferred models and
+formats %-- bearing acronyms like OWL and RDF %-- which
+in turn have proved controversial.  Some
+researchers, notably `Gardenfors;,
+have critiqued the Semantic Web for a conceptual simplification
+that does not really capture the semantics of technical domains
+(like science and medicine), still less of Natural Language.
+Others from a more implementation-minded perspetive
+can highlight technical limitations of Semantic Web models,
+such as how data sharing `i.between` computing environments can
+best integrate with data managment `i.within` particular
+databases and applications.  The Semantic Web %-- whose
+underlying representations are based on labeled, directed graphs
+%-- has been critiqued by advocates for modestly different
+graph-like structurres, like Conceptual Graph Semantics and
+Directed Hypergraphs.  These alternative models are arguably
+more conceptually accurate and/or more practically efficacious,
+from an engineering perspective, than the paradigms for
+representing Formal Ontologies and Informations Spaces
+or `q.linked data` which emerged as predominant in the
+community of Semantic Web developers and researchers.
+`p`
+
+`p.
+These unfolding perspectives are relevant to phenomenology
+partly because competing representational paradigms
+can seem more or less phenomenologically faithful;
+can intersect with phenomenological accounts in different
+ways.  For example, suppose we judge that an
+alternative representational model, like the Hypergraph
+framework associated with the OpenCog project %-- itself
+oriented to Artificial General Intelligence %-- is a
+more realistic model of conceptual sructures insofar as
+these intrinsically emerge from and regulate
+cognitive/perceptual processes as articulated
+in phenomenology.  That is just a claim, of course, but
+assuming for sake of argument it is plausible, then we
+have a case of two competing formal models %-- both
+reflecting some measure of at least informal influence
+frpm phenomenological ideas, as far as seeking
+philosophically well-grounded accounts of ontology and
+intelligence.  These models can be contrasted on
+philosophical grounds, but also technologically.
+Neither OpenCog nor the overall Semantic Web are academic
+theories per se, but technology projects with their
+own software ecosystems and engineering norms,
+alongside academic literature and philosophical
+attitudes or intuitions that can be evaluated
+theoretically.
+`p`
+
+`p.
+Even though phenomenology is `i.philosophy`/, I believe,
+that doesn't mean considerations from other disciplines
+as they bear on %-- to take this one specific case %--
+OpenCog vs. the canonical Semantic Web are not potentially
+relevant and interesting to the phenomenological project.
+The relevant contrast here presents two competing
+computational frameworks, and the ecosystems
+can be scrutinized side-by-side with an eye to
+the merits of their technology, to how they
+are used, extended, and integrated into practical software
+and respond to technical requirements.  These engineering
+comparisons can co-exist with more philosophical ones:
+if one paradigm seems superior `i.both` practicallly
+and philosophically, this deserves consideration %-- do
+the two horns reinforce each other?  Conversely,
+if the more phenomenologically faithful theory
+proves less implementationally useful, does this
+shed light on philosophically interesting issues
+%-- the weakness of `q.mind as compuer` analogies,
+for instance?  We may not be able to specify `i.a priori`
+what kind of significance to attach to comparisons between
+formal models on phenomenological vs. engineering
+grounds.  But we should recognize
+that technical comparsions are at the least nontrivial data
+points that should at the least be acknowledged in the background
+while investigating formalizations that incoporate,
+and insofar as they incorporate, phenomenological
+intuitions.
+`p`
+
+`p.
+If this is plausible, then the disciplinary frontier of
+phenomenology significantly expands.  Phenomenologists
+can in any cases engage with the `i.academic` face
+of, say, OpenCog and Semantic Web projects
+%-- texts by Ben Goertzle or `Gardenfors;,
+for instance %-- read as at least tangentially philosophical
+ouevres.  But any discipline which finds relevance in
+these `i.writings` should also find relevance in
+the technology they are writing `i.about`/,
+in their concrete form as technical artifacts and
+(products of) engineering processes.  We can therefore
+approach technologies like AtomSpace (a database associate
+with OpenCog) and Fact++ (a Semantic Web engine)
+from an engineering as well as theoretical perspective
+%-- how they are implemented, compiled, and interoperate with
+other applications.  Or, as this one example illustrates,
+we can incorporate within the phenomenological discipline an
+interest in technical comparison between formal systems
+which also manifest phenomenological intuitions, so the
+phenomenological and engineering dimensions of their
+juxtaposition can be juxtaposed in turn.  This represents
+a new avenue for engagement with formalizations following
+the example of, let's say, Husserl's `i.Formal and
+Transcendental Logic`/, which approached from a
+phenomenological perspective then-contemporary issues in
+logic and mathematics.  But a key difference is that the
+formalizations Husserl entertained were fully abstract, while
+the formal systems that can be approached phenomenologically
+in our century are more concrete and enmeshed in
+social-scientific practice (health care, environmental
+policy, etc.).  Engaging with these `q.concretized`
+formal systems is not a matter of proving theorems,
+or understanding proofs of prior theorems; it
+more involves compiling computer code,
+or writing new code, and understanding the technical
+structure of programming languages and data representations.
+`p`
+
+`p.
+In effect, computer code %-- software and formal
+languages (including markup and database query as well as
+general-purpose programming languages) %-- has in many
+contexts supplanted abstract logic as formal foundations
+of well-structured thought.  This even applies
+to mathematics, where type-theoretic and proof-assistant
+methods take the place of set theory and predicate logic
+as foundations.  This new reality should be confronted
+by philosophers as well %-- what is the philosophical
+analog of the Univalent Foundations project in mathematics?
+How should Analytic Philosophers %-- or indeed
+phenomenologists %-- re-evaluate the last century
+with computers replacing logic as the instuitional
+mechanization of thought?  How should Philosophy
+be reconsidered if some founding books were reimagined
+as, let's say, the `i.Formal and Transcendental
+Computer Science` or the
+`i.Tractatus Computational-Philosophical`/?  To speak more
+precisely, what are the consequences propagating across
+Philosophy if quantification is foundationally
+conceived as over type-instances rather than sets?  What
+changes when the domain of a quantification has to have a
+conceptual unity at least to the level of what can be modeled via
+a formal type theory rather than being open-ended sets?
+What changes when our reigning paradigm of perfect
+reasoning is not proofs as a mental exercise, but the
+engineering of computer systems and then the engineering
+of (formal representations of) theories and then of apparent
+theorems so as feed theories and theorems  into the aforementioned
+computer systems for verification?  What changes when even mathematics
+becomes a rather empirical domain that can be experimented
+with on a computer?  What kind of Philosophy can
+be done by experimenting on a computer?
+`p`
+
+
+`p.
+I will pick up this thread of discussion in a later section,
+but beforehand will make explicit the potential
+theoretical integration between linguistics and
+`i.procedural networks`/, which I have assumed but
+not directly analyzed to this point.
+`p`
+
+
+
+`p.
+
+`p`
+
+`p.
+
+`p`
+
+
+
+
+
+
+
+
+
+
+
+
+
+

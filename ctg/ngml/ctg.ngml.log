@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  7 AUG 2019 14:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  7 AUG 2019 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1655,35 +1655,28 @@ LaTeX Warning: Command \textgreater invalid in math mode on input line 703.
 LaTeX Warning: Command \textgreater invalid in math mode on input line 703.
 
 
-LaTeX Warning: Citation `Gardenfors' on page 21 undefined on input line 757.
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
+rian/vectorian84.pgf) [21]
 
-[21]
-
-LaTeX Warning: Citation `KitFine' on page 22 undefined on input line 801.
+LaTeX Warning: Citation `KitFine' on page 22 undefined on input line 823.
 
 [22] [23]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [24]) (./section3.ngml.tex [25]
+rian/vectorian84.pgf) [24] [25]) (./section3.ngml.tex
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 32.
 
-[26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
+[26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
 
-LaTeX Warning: Reference `actually' on page 37 undefined on input line 1508.
-
-
-LaTeX Warning: Reference `actually' on page 37 undefined on input line 1508.
-
-
-LaTeX Warning: Reference `itm:amibence' on page 37 undefined on input line 1533
+LaTeX Warning: Reference `itm:students' on page 36 undefined on input line 1372
 .
 
 
-LaTeX Warning: Reference `itm:amibence' on page 37 undefined on input line 1545
-.
+LaTeX Warning: Reference `itm:parents' on page 36 undefined on input line 1372.
 
-[37]) (./section4.ngml.tex
+
+[36] [37]) (./section4.ngml.tex
 Underfull \hbox (badness 2088) in paragraph at lines 1--1
 |[]\OT1/cmr/bx/n/14.4 Pragmatics and Log-i-cal In-com-
  []
@@ -1728,7 +1721,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `gar' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 39.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 20.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1754,9 +1747,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
  (./ctg.ngml.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
-Package rerunfilecheck Info: File `ctg.ngml.out' has not changed.
-(rerunfilecheck)             Checksum: 0821F9D3FB67DB0899D755D6612F7B9C;1409.
 
+
+Package rerunfilecheck Warning: File `ctg.ngml.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ctg.ngml.out':
+(rerunfilecheck)             Before: 2C9FA941FCA15E6B0D490FF0F9CCA57D;1423
+(rerunfilecheck)             After:  E118DC586B21F95E04E1875E638A1266;1334.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1768,11 +1767,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30216 strings out of 492649
- 624922 string characters out of 6122986
- 848892 words of memory out of 5000000
- 32830 multiletter control sequences out of 15000+600000
- 42797 words of font info for 281 fonts, out of 8000000 for 9000
+ 30224 strings out of 492649
+ 625227 string characters out of 6122986
+ 850362 words of memory out of 5000000
+ 32834 multiletter control sequences out of 15000+600000
+ 43032 words of font info for 281 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  66i,21n,104p,1009b,1138s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
@@ -1812,10 +1811,10 @@ msam10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msam7.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb></home/nlevisrael/texl/texlive-install/
 texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on ctg.ngml.pdf (54 pages, 737360 bytes).
+Output written on ctg.ngml.pdf (54 pages, 744281 bytes).
 PDF statistics:
- 1034 PDF objects out of 1200 (max. 8388607)
- 937 compressed objects within 10 object streams
- 302 named destinations out of 1000 (max. 500000)
- 45225 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 1054 PDF objects out of 1200 (max. 8388607)
+ 957 compressed objects within 10 object streams
+ 306 named destinations out of 1000 (max. 500000)
+ 45737 words of extra memory for PDF output out of 51595 (max. 10000000)
 
