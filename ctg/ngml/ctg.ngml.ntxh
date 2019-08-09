@@ -1,5 +1,5 @@
 - Generated from LaTeX File ctg.ngml.tex 
-9/8/2019, 11:42
+9/8/2019, 16:2
 .
 
 - i=id p=page s=ud source, section number c=classification
@@ -747,7 +747,7 @@ $s: 2
 
 !/ SentenceItem
 $i: 57
-$p: 20
+$p: 21
 $x: students
 $t: Many students and their parents came to complain about the tuition hikes.
 $c: sco
@@ -824,6 +824,7 @@ $c: lex
 !/ SentenceItem
 $i: 64
 $p: 24
+$x: itm:Liverpool
 $t: Liverpool, an important harbor, built new docks.
 $c: lex
 /!
@@ -2097,6 +2098,94 @@ $i: 81
 $p: 54
 $s: 4
 
+!/ SentenceItem
+$i: 172
+$p: 54
+$t: My favorite band gave a free concert last night. They played some new songs.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 173
+$p: 54
+$t: There was some pizza earlier, but it's all gone.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 174
+$p: 54
+$t: There were some slices of pizza earlier, but it's all gone.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 175
+$p: 54
+$t: There were some slices of toast earlier, but there's none left.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 176
+$p: 54
+$t: There was some toast earlier, but they're all gone.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 177
+$p: 54
+$t: That franchise had a core of talented young players, but it got eroded by trades and free agency.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 178
+$p: 54
+$t: That franchise had a cohort of talented players, but they drifted away due to trades and free agency.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 179
+$p: 54
+$t: Many star players were drafted by that franchise, but it has not won a title in decades.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 180
+$p: 54
+$t: Many star players were drafted by that franchise, but they failed to surround them with enough depth.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 181
+$p: 54
+$t: Many star players were drafted by that franchise, but they were not surrounded with enough depth.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 182
+$p: 54
+$t: Many star players were drafted by that franchise, but they did not have enough depth (around them).
+$c: ref
+/!
+<>>
+
 /!
 <+>
 
@@ -2104,6 +2193,33 @@ $s: 4
 $i: 82
 $p: 55
 $s: 4
+
+!/ SentenceItem
+$i: 183
+$p: 55
+$x: tour
+$t: The band planned a tour, where they debuted new songs.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 184
+$p: 55
+$x: itm:teamflew
+$t: The team flew to New York and they played the Yankees.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 185
+$p: 55
+$x: itm:theflies
+$t: The city's largest theater company will perform ``The Flies".
+$c: ref
+/!
+<>>
 
 /!
 <+>
@@ -2118,11 +2234,11 @@ $s: 4
 
 !/ SentenceList
 $i: 84
-$p: 56
+$p: 57
 $s: 4
 
 !/ SentenceItem
-$i: 172
+$i: 186
 $p: 57
 $x: itm:rhinor
 $t: Rhinos in that park are threatened by poachers.
@@ -2131,7 +2247,7 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 173
+$i: 187
 $p: 57
 $t: Young rhinos are threatened by poachers.
 $c: sem
@@ -2143,12 +2259,12 @@ $c: sem
 
 !/ SentenceList
 $i: 85
-$p: 57
+$p: 58
 $s: 4
 
 !/ SentenceItem
-$i: 174
-$p: 57
+$i: 188
+$p: 58
 $t: Let's find a restaurant that's family-friendly.
 $c: sem
 /!
@@ -2159,20 +2275,20 @@ $c: sem
 
 !/ SentenceList
 $i: 86
-$p: 58
+$p: 59
 $s: 4
 
 !/ SentenceItem
-$i: 175
-$p: 58
+$i: 189
+$p: 59
 $t: I got glue for your daughter.
 $c: sem
 /!
 <>>
 
 !/ SentenceItem
-$i: 176
-$p: 58
+$i: 190
+$p: 59
 $t: I got glue for your coffee mug.
 $c: sem
 /!
@@ -2183,11 +2299,11 @@ $c: sem
 
 !/ SentenceList
 $i: 87
-$p: 58
+$p: 59
 $s: 4
 
 !/ SentenceItem
-$i: 177
+$i: 191
 $p: 59
 $t: We're going to Grandma!
 $c: sem
@@ -2195,7 +2311,7 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 178
+$i: 192
 $p: 59
 $t: Let's go to him right now.
 $c: sem
@@ -2203,7 +2319,7 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 179
+$i: 193
 $p: 59
 $t: Let's go to the lawyers.
 $c: sem
@@ -2211,7 +2327,7 @@ $c: sem
 <>>
 
 !/ SentenceItem
-$i: 180
+$i: 194
 $p: 59
 $t: Let's go to the press.
 $c: sem

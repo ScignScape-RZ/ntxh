@@ -110,7 +110,7 @@ operand.  The result is a new operand or a new operator.
 This operation can be repeated as many times as necessary 
 to construct the linguistic expressions' functional semantic 
 representation.
-\cite[p. 1]{AurelieRossi}
+\cite[p. 1]{Rossi}
 `quote`
 
 So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
@@ -230,7 +230,9 @@ Indeed, labels comprised of
 two numbers suffice, generalizing the lambda-calculus 
 `q.de Bruijn Indices`/.  The de Bruijn notation is an alternative 
 presentation of lambda terms using numeric indices in lieu of 
-lambda-abstracted symbol.  The `i.double` indices 
+lambda-abstracted symbol (cf., for a linguistic
+or discourse-representation context, `cite<JanVanEijck>;
+and `cite<RikVanNoord>;).  The `i.double` indices
 accommodate the fact that, in the general case, the 
 functional component of an expression may be itself a nested 
 expression, meaning that `q.evaluation` has to proceed in several 
@@ -728,7 +730,9 @@ collide in the same sentence.  Slightly modifying two examples:`footnote.
 `sentenceList`
 
 Both have a mid-sentence shift between senses, which is analyzed
-in terms of `q.type coercions`/.  The interesting detail of this treatment
+in terms of `q.type coercions` (see also `cite<ZhaohuiLuo>;
+and `cite<ZhaohuiLuoSignatures>;).
+The interesting detail of this treatment
 is how it correctly predicts that such coercions are not guaranteed to
 be accepted:
 
@@ -1186,7 +1190,7 @@ phenomenological rather than narrowly semantic grounds.
 I would dispute some of Nunberg's analyses I mentioned 
 in the last section, for example, on the 
 dubiousness of (\ref{itm:start}) or the exceptionality 
-of (\ref{itm:Sauternes}).  I do not find 
+of (\ref{itm:Sauturnes}).  I do not find
 (\ref{itm:start}) exceptionally jarring, considering the 
 situational construal common to (\ref{itm:start}) along 
 with (\ref{itm:parked}) and (\ref{itm:waiting}): 
@@ -1221,7 +1225,7 @@ this is relevant to how the overall situation is
 cognized, and therefore the transition from the speaker-centered 
 `i.I am parked ...` to the discordant `i.and may not start` 
 is understandable.  I would similarly argue that the 
-apparent difference between (\ref{itm:Sauternes}) and 
+apparent difference between (\ref{itm:Sauturnes}) and
 (\ref{itm:beers})-(\ref{itm:Michelobs}) depends on how 
 referential foci are established.  The phrase 
 `i.a beer` can designate a specific glass or bottle of 
@@ -1275,8 +1279,8 @@ distinction of a liquid (more generally a substance)
 against a consumer product or social good 
 (more generally a socio-cultural artifact).  We 
 can refer to beers in both senses, and I have 
-mentioned theories of type `q.coercions` or 
-juxtapositions (cf. Pustejovsky's `q.dot product` 
+mentioned theories of type `q.coercions` or
+juxtapositions (cf. Pustejovsky's `q.dot product`
 theories in `cite<JamesPustejovsky>; or 
 `cite<AsherPustejovsky>;) that explore when 
 the different `q.Ontological` construals or sentences can be 
