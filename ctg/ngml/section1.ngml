@@ -41,9 +41,9 @@ for example, `i.his having lied` packages a verb into a possessive
 context because the sentence is not foregrounding a specific lying-event 
 but rather the fact of the existence of such occasions.  We cannot perhaps 
 `q.possess` an event, but we possess (as part of our nature or history) 
-the fact of past occurances, viz., events in the form of things we 
+the fact of past occurrences, viz., events in the form of things we
 have done.  In this sense `i.his having lied` marks a conceptual transformation, 
-from events qua occurants to events (as factical givens) qua states or 
+from events qua occurrents to events (as factical givens) qua states or
 possessions, and the grammatical norm %-- how we cannot just say 
 `q.his lied` %-- is epiphenomenal to the conceptual logic here; 
 the erroneous `q.his lied` sounds flawed because it does not 
@@ -62,7 +62,7 @@ conceptually well-formed.  Likewise, we hear errata like
 `p.
 I contend, therefore, that many conceptually-motivated word-pairing 
 patterns become syntactically entrenched and thus engender a class 
-of transform-pairs where the crucial, surface-level tranformation 
+of transform-pairs where the crucial, surface-level transformation
 is syntactic, often in the form of translations between parts of speech, 
 or between morphological classes (singular/plural, object/location, etc.).  
 Consider locative constructions like 
@@ -150,8 +150,8 @@ This provides a type-theoretic architecture through
 which transform-pairs can be analyzed.  
 An adverb modifies a verb; so an adverb in a transform 
 pair must have a verb as a ground.  Moreover, the `q.product` 
-of that transform is also a verb, in the sence that the 
-abverb-verb pair, parsed as a phrase, can only be 
+of that transform is also a verb, in the sense that the
+adverb-verb pair, parsed as a phrase, can only be
 situated in grammatic contexts where a verb is expected. 
 `p`
 
@@ -169,8 +169,8 @@ the `q.outcome` of one transform becomes subject to a
 subsequent transform.  So `i.flagrantly` modifies `i.lied` 
 by expressing measure and emphasis, adding conceptual detail; 
 grammatically the outcome is still a verb.  Then `i.having`/, 
-as I argued earlier, applies a tranform that maps this 
-verb-outcome to a noun, which is then tranformed by 
+as I argued earlier, applies a transform that maps this
+verb-outcome to a noun, which is then transformed by
 the possessive `i.his`/.  Each step in the chain is 
 governed by type-related requirements: the output of one 
 transform must be type-compatible with the modifier for 
@@ -189,13 +189,13 @@ complex type-theoretic constructions come into play
 when this framework is refined to consider plural/singular, 
 classes of nouns, and so forth, establishing a basis for 
 more sophisticated structures adapted to language from 
-formal type theory, like type-coersions and 
+formal type theory, like type-coercions and
 dependent types (I will revisit these theories 
 in a later section).  Here, though, I will just point out 
-that Dependecy Grammar and Type-Theoretic Semantics can 
+that Dependency Grammar and Type-Theoretic Semantics can
 often overlap in their analysis of word-pairs (inter-word 
 relations is not centralized in type-oriented methodology as much 
-as in Dependecy Grammar, but type concepts can certainly 
+as in Dependency Grammar, but type concepts can certainly
 be marshaled toward word-pair analysis).     
 `p`
 
@@ -210,7 +210,7 @@ framework) as auxiliary, and the dependent element of the pair, while
 `i.lied` is the `q.head`/.  Then `i.lied` is also connected to 
 `i.his`/, establishing a verb-subject relation.  So `i.lied` becomes 
 the nexus around which other, supporting sentence elements are 
-connected.  This is a typical pattern in Dependecy Grammar parses, where 
+connected.  This is a typical pattern in Dependency Grammar parses, where
 the most semantically significant sentence elements also tend to be 
 the most densely connected (if we treat the parse-diagram as a 
 graph, these nodes tend to have the highest `q.degree`/, a measure of 
@@ -218,7 +218,7 @@ nodes' importance at least as this is reflected in how many
 other nodes connect to it).  Indeed, by counting word connections we 
 can get a rough estimation of semantic importance, distinguishing 
 `q.central` and `q.peripheral` elements.  These are not 
-standard terms, but they suggest a norm in Dependecy Grammar that the 
+standard terms, but they suggest a norm in Dependency Grammar that the
 structure of parse-graphs generally reflects semantic priority: 
 the central `q.spine` of a graph, so to speak, captures the 
 primary signifying intentions of the original sentence, while the 
@@ -227,17 +227,17 @@ whose role is for grammatical propriety more than meaningful content.
 `p`
 
 `p.
-Conversely, a type-theoretic analysis might incline us to quetion this
+Conversely, a type-theoretic analysis might incline us to question this
 sense of semantic core versus periphery: in the case of 
 `i.his having lied`/, the transform `i.having` supplies the outcome 
 which is content for the possessive `i.has`/.  If we see the sentence 
 as a cognitive unfolding, a series of mental adjustments toward an 
 ever-more-precise reading of speaker intent, then each step in the 
-tranformation contributes consequential details to the final 
+transformation contributes consequential details to the final
 understanding.  Moreover, `i.lied` is only present in the transformation 
 signified by `i.his` insofar as it has in turn been transformed by 
 `i.having`/: each modifier in a transform-pair has a degree of 
-temporal priority because `i.its` effects are directly preesent 
+temporal priority because `i.its` effects are directly present
 in the context of the following transformation.  This motivates a 
 flavor of Dependency Grammar where the head/dependent ordering is 
 inverted: a seemingly auxiliary component (like the function-word 
@@ -255,7 +255,7 @@ styles of parse-representation.)
 
 `p.
 Implicitly, then, Type-Theoretic Semantics and Dependency Grammar 
-can connote different perspectives on semantic inportance and 
+can connote different perspectives on semantic importance and
 the unfolding of linguistic understanding.  I will explore 
 this distinction further below, with explicit juxtaposition of 
 parse graphs using the two methods.  I contend, however, that the 
@@ -263,11 +263,11 @@ distinction reflects a manifest duality in linguistic meaning:
 we can treat a linguistic artifact as an unfolding process or 
 as a static signification with more central and more peripheral 
 parts.  Both of these aspects coexist: on the one hand, we 
-understading sentences via an unfolding cognitive process; 
+understanding sentences via an unfolding cognitive process;
 on the other hand, this cognition includes forming a mental 
 review of the essential points of the sentence, a collation of 
 key ideas such as (for \ref{itm:having})
-`i.his`/, `i.lied`/, `i.damages`/, and `i.credibiliy`/.  
+`i.his`/, `i.lied`/, `i.damages`/, and `i.credibility`/.
 Given this two-toned cognitive status %-- part dynamic process, 
 part static outline %-- it is perhaps understandable that 
 different methodologies for deconstructing a sentence into 
@@ -300,7 +300,7 @@ Compare between examples like:
 `sentenceList`
 
 Whereas (\ref{itm:black}) presents a fairly straightforward conceptual 
-tranformation, the detailing in (\ref{itm:rescued}) is a lot subtler; 
+transformation, the detailing in (\ref{itm:rescued}) is a lot subtler;
 mentioning `i.rescued` dogs makes no reference to perceptual qualities, 
 but rather implies intricate situational background.  The term 
 `i.rescued dogs` strongly suggests that the dogs were adopted by their 
@@ -330,8 +330,8 @@ a day:
 two latest dogs.}{sem}
 `sentenceList`
  
-Understanding the relevant time-frame depends on understading the relation 
-between the dogs and the possessive antcedent.  In (\ref{itm:latest}) 
+Understanding the relevant time-frame depends on understanding the relation
+between the dogs and the possessive antecedent.  In (\ref{itm:latest})
 the neighbor (in a typical case) actually owns the dogs, so the 
 situational context grounding the modifier `i.latest` would be understood 
 against the normal time-scale for dog ownership (at least several years).  
@@ -339,7 +339,7 @@ In (\ref{itm:vet}), the vet only `q.possesses` the dogs in the sense
 of endeavoring to examine them, a process of minutes or hours.  
 In (\ref{itm:organization}), the implication of the `i.organization's` 
 possessive `visavis; rescued dogs is that the group endeavors 
-to rehabilate and find permanent homes for the rescuees.  So in each 
+to rehabilitate and find permanent homes for the rescuees.  So in each
 case `i.latest` implies a succession of dogs, leading over time to 
 two most recent ones, but the implied time-frame for our conceptualizing 
 this sequence can be minutes-to-hours, or days-to-months, or years. 
@@ -351,7 +351,7 @@ We should also observe that the implied time-frames and backstories in
 morphosyntax or lexical resources alone.  The word `i.rescued` only 
 carries the `i.rescued dog` backstory when used in a context 
 involving the dogs' eventual owners; in some context the more 
-generic meaning of `i.rescue` could supercede:  
+generic meaning of `i.rescue` could supersede:
 
 `sentenceList,
 `sentenceItem; \swl{itm:boatmen}{Boatmen rescued dogs from the flooded streets.}{sem}
@@ -377,7 +377,7 @@ That is to say, the time-scale inference I have analyzed is essentially
 deictic or anaphora resolution) which warrants the situational classification 
 of (\ref{itm:latest})-(\ref{itm:organization}) into different time scales.  
 Instead, the inference is driven by (to some degree socially or culturally 
-specific) background-knowlege about phenomena like veterinary clinics 
+specific) background-knowledge about phenomena like veterinary clinics
 or animal rescue groups.  Whether or not the nuances in `i.rescued dogs` 
 are similarly extra-linguistic is an interesting question %-- we can 
 argue that the phrase is now entrenched as a `i.de facto` lexical 
@@ -415,7 +415,7 @@ I argued, carries significant extra-linguistic background knowledge
 even though possession of this knowledge is packaged into basic 
 linguistic familiarity with `i.rescued dogs` as a signifying unit; 
 and in the case of `i.latest dogs` the morphosyntactic evocation of 
-temporal presedence and two different multiplicities (the latest 
+temporal precedence and two different multiplicities (the latest
 dogs and earlier ones) is fleshed out by 
 extra-linguistic estimations of time scale.  
 The same surface-level linguistic structures, in short, can 
@@ -429,7 +429,7 @@ This diversity should call into question the ability of conventional
 syntactic and semantic analysis to elucidate sentence-meanings with 
 any precision or granularity.  Lexical and morphosyntactic 
 observations may certainly reflect details which `i.contribute` to 
-sentence-meanings, but the overall understading of each sentence in 
+sentence-meanings, but the overall understanding of each sentence in
 context depends on holistic, interpretive acts by competent 
 language users in light of extra-linguistic, socially mediated 
 background knowledge and situational understanding.  Contextuality 
@@ -560,7 +560,7 @@ first time this year.}{amb}
   
 Sentence (\ref{itm:beat}) has two competing readings: either the Toronto Maple Leafs 
 won `i.all` or `i.none` of their previous games, in the relevant year, against the 
-Montreal Canadiens.  The differense is whether `i.for the first time this year` 
+Montreal Canadiens.  The difference is whether `i.for the first time this year`
 attaches to `i.beat` or to `i.fail`/.  In (\ref{itm:consecutive}), 
 on the other hand, the only sensible interpretation is that the Leafs had 
 not yet won two games: while it is logically accurate to describe a 
@@ -605,7 +605,7 @@ Indeed, hearers unfamiliar with New York (respectively Cambridge)
 or with hockey might find these 
 versions easier to understand; more context-neutral and journalistic.  
 But perhaps for this reason the `q.journalistic` versions actually 
-sound stilted or non-idiomatic for everyday discource.  
+sound stilted or non-idiomatic for everyday discourse.
 `p`
 
 `p.
@@ -621,7 +621,7 @@ factors determining proxies and substitutions in referential contexts:
 `sentenceItem; \swl{itm:Whitney}{I'm in the Whitney Museum.}[(page 375)]{ref}
 `sentenceItem; \swl{itm:beers}{I drank two beers.}[(page 375)]{ref}
 `sentenceItem; \swl{itm:Michelobs}{I drank two Michelobs.}[(page 375)]{ref}
-`sentenceItem; \swl{itm:Sauturnes}{I drank two Sauturnes last night.}[(page 375)]{ref}
+`sentenceItem; \swl{itm:Sauternes}{I drank two Sauternes last night.}[(page 375)]{ref}
 `sentenceList`  
 
 Someone says `q.I am parked` as proxy for their car, or `q.in the Whitney` as 
@@ -631,12 +631,12 @@ people as an oblique reference to their cars, it sounds awkward to switch
 to content that can `i.only` apply to the car, like `i.may not start`/.  
 He also argues that we interpret (\ref{itm:beers}) and (\ref{itm:Michelobs}) 
 as references, quite possibly, two glasses or bottles of `i.the same` 
-beverage, while (\ref{itm:Sauturnes}) implies two samples of 
+beverage, while (\ref{itm:Sauternes}) implies two samples of
 `i.different` wines.  The analysis turns on conventions for 
 creating referring expressions; in particular, he argues, 
 extralinguistic factors (albeit not using this term) 
 regulate when referential substitutions as exemplified in 
-(\ref{itm:parked})-(\ref{itm:Sauturnes}) are comfortable.  
+(\ref{itm:parked})-(\ref{itm:Sauternes}) are comfortable.
 We accept an artist proxying her work in a museum, but 
 (\ref{itm:Whitney}) arguably does not generalize to a case like 
 (\ref{itm:library}), and (\ref{itm:waiting}) does not generalize to 
@@ -648,7 +648,7 @@ We accept an artist proxying her work in a museum, but
 last 15 days.}{ref}
 `sentenceList`  
 
-Nunberg attributes these discrepancie to cultural conventions, like the 
+Nunberg attributes these discrepancies to cultural conventions, like the
 difference in prestige between having a painting in a museum compared to 
 having one copy of one's book in a library; or chugging a cheap been 
 versus savoring a celebrated wine.  Here too there are 
@@ -657,7 +657,7 @@ logically transparent alternatives:
 `sentenceList,
 `sentenceItem; \swl{}{My car is parked out back and have been waiting for 15 minutes.}{log}
 `sentenceItem; \swl{}{I drank two pints of beer last night.}{log}
-`sentenceItem; \swl{}{I tried two different Sauturnes last night.}{log}
+`sentenceItem; \swl{}{I tried two different Sauternes last night.}{log}
 `sentenceList`
 
 Again, though, the seemingly simpler versions %-- whose forms 
@@ -875,9 +875,9 @@ will ask me for directions.}[]{sco}%
 will ask me for directions.]
 
 `sentenceItem; \swl{itm:students}{Student after student came with their (his/her)
-paper to compain about my grade(s).}[]{sco}%
+paper to complain about my grade(s).}[]{sco}%
 [Student after student came with their
-paper to compain about my grades.]
+paper to complain about my grades.]
 
 `sentenceItem; \swl{itm:parents}{Student after student %-- and their (his/her) parents
 %-- complained about the tuition increase.}[]{sco}%
@@ -1036,7 +1036,7 @@ Logical semantic models build up propositional representations from the
 word level to phrase and sentence levels.  Even when we find that a logical 
 `i.telos` is in effect, however, at each of these levels we can 
 find interpretive and situational details which may complicate, flesh out, 
-or cognitively supercede a more transparent logical meaning.  
+or cognitively supersede a more transparent logical meaning.
 So at the word-pair level, there is more going on in 
 a transform like `i.rescued dog` than simply applying the 
 predicate `q.rescue` to the ground `q.dog`/.  The construction 
@@ -1063,7 +1063,7 @@ attitudes to such content (requests, commands, questioning)
 rather than unadorned locutionary assertions.  To 
 properly respond to speech-acts, however (even ones with 
 illocutionary force) conversants need to derive the 
-content which is logically conjured via the discource, 
+content which is logically conjured via the discourse,
 either as the speaker's primary intent or as a condition 
 for that intent.  In effect, a proposition like `i.the window 
 is closed` furnishes logical content to assertions like 
@@ -1105,7 +1105,7 @@ between predicates (also negation).  In some cases we can find
 these operations fairly directly encoded in explicit language form 
 %-- sentences which are precise in figuring multiplicities numerically, 
 or through unambiguous use of determiners like `i.all` and `i.every`/; 
-which are structured to avoid scope ambiuities; which use transparent 
+which are structured to avoid scope ambiguities; which use transparent
 semantic resources to describe verb subjects and objects; and 
 so forth.  In the most recent Universal Dependencies Shared Task corpus 
 we can find examples like:  
@@ -1158,7 +1158,7 @@ symbolic-logical reasoning outlining signified meanings in cases
 where language reciprocates propositional morphology very clearly.  
 The problem is that language artifacts very often cloak their 
 logical core, such that examples like (\ref{itm:tumour})-(\ref{itm:Warhol}) 
-are not representarive of language as a whole.  Logical patterns 
+are not representative of language as a whole.  Logical patterns
 may certainly be present, but they are not necessarily 
 structurally reproduced in surface-level formations; rather a 
 sentences' propositional content may depend on a subtle 
