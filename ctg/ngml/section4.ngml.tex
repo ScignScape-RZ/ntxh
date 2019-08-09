@@ -24,7 +24,7 @@ cognitive processes.
 }
 \p{My formal elaboration of this model will be inspired at an
 elementary level by process \i{algebra} in the computational
-setting, but more technically by applied \i{type theory}.
+setting, as well as applied \i{type theory}.
 Inter-process relations are the core topic of Process
 Algebra, including sequentiality (one process followed by
 another) and concurrency (one process executing alongside
@@ -43,7 +43,7 @@ processes, suggesting a language model (even if rather idealized)
 where cognitive processes unfold in a temporal order.
 }
 \p{On both the cognitive and computational side, temporality is relative
-rather than quantified: the significant detail is not
+rather than quantitative: the significant detail is not
 \q{before} and \q{after} in the sense of measuring time but rather how
 one process logically precedes another in effects and prerequisites.
 No theoretical importance is attached to \i{how long} it takes
@@ -97,57 +97,37 @@ types respectively \mdash{} one outputs \typeT{} and the other
 inputs \typeT{} \mdash{} then the two can be put in sequence, where
 the output from the antecedent becomes the input to the subsequent.
 In this manner inter-process sequential relations become
-subsumed into \q{type systems} can can be studied using
+subsumed into \q{type systems} and can be studied using
 type-theoretic machinery rather than Process Algebras or
 Process Calculii as such.
 }
-\p{There also exists a robust type-theoretic tradition
+\p{The above comments apply to type theory applied in 
+constructed environments like computer programming 
+languages; but as I have discussed here 
+there exists a robust type-theoretic tradition
 in (Natural Language) semantics, which is disjoint from
 but not entirely irrelevant to the type systems of
 formal and programming languages.  Semantic types are
-recognized at several different levels of classification,
-but some of the most interesting type-theoretic effects
+recognized at several different levels of classification 
+\mdash{} I proposed the terms \i{macrotype}, \i{mesotype}, 
+and \i{microtype}.  Some of the most 
+interesting type-theoretic effects
 involve medium-grained semantic criteria that are
 more general than lexical entries but more specific than
-Parts of Speech.  For example, the template \i{I believed
-X} generally requires that \i{X} be a noun
-(\qmarkdubious{}\i{I believed run}), but more narrowly a
-certain \i{type} of noun, something that can be interpreted
-as an idea or proposition of some kind (\qmarkdubious{}\i{I believed flower}).
-Asher and Pustejovsky point out the anomaly in a sentenc
-like \q{Bob's idea weighs five pounds}
-\cite[example 2, p. 5]{AsherPustejovsky}, which
-possesses a flavor of unacceptability that feels akin to
-Part of Speech errors but are not in fact syntactic
-errors.  The object of \i{weigh} is \q{five pounds} and
-its subject is \q{Bob's idea}, which is admissible
-\i{syntactically} but fails to honor our semantic convention
-that the verb \q{to weigh} should be applied to things
-with physical mass (at least if the direct object denotes a quantity;
-contrast with \i{Let's all weigh Bob's idea}, where the
-\i{idea} is object rather than subject).  These conventions are
-analogous to Part of Speech rules but more fine-grained:
-there is a meaning of \i{weigh} which has (like any transitive
-verb) to be paired with a subject and object noun, but beyond
-just being nouns the subject must be a physical body
-(in effect a sub-type of nouns) and the object a quantitative
-expression (another sub-type of nouns).  Potentially, type
-restrictions on a coarse scale (e.g. that the subject of a verb
-must be a noun) and those on a finer scale (as in this
-sense of \i{to weigh}) can be unified into an overarching theory,
-which spans both grammar and semantics \mdash{} for instance,
-both Part of Speech rules and usage conventions of the
-kind often subtly or cleverly subverted in metaphor and
-idioms (see \i{flowers want sunshine}, \i{my computer died},
-\i{neutrinos are sneaky}, as rather elegantly compactified
-by assigning sentient states to inert things).  This is one way of
-reading the type-theoretic semantic project.
+Parts of Speech; this is the level where linguists have 
+seemed to find the most fertile applications of 
+sophisticated aspects to formal type theory, like 
+dependent types and type-coercion.  This perhaps 
+reflects the situation of \q{mesotypes} as 
+intermediary between and therefore interconnecting 
+types in a mostly grammatic (Part of Speech) and 
+a mostly semantic (lexical) sense; and therefore 
+a topic or tool for both syntax and semantics. 
 }
-\p{Along with Process Algebra, my take on linguistic
-understanding is informed by type theory
-(in both computational and linguistic contexts),
-but particularly by the merged notion of \i{typed}
-processes.  So if we say that something has the \i{type}
+\p{Here my argumentation is informed 
+particularly by the merged notion of \i{typed}
+processes.  If we say that something (sticking with the 
+mesotype level) has the \i{type}
 of a physical-body noun \mdash{} that \q{Physical Body} is
 a type in the overall semantics of language \mdash{} then
 I propose a corresponding type of cognitive

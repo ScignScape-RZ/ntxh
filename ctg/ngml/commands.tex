@@ -632,6 +632,7 @@ $l: #2^^J%
 \newcounter{subs}[section]
 
 \newcommand{\subss}[2]{%
+\phantomsection \label{#1}
 \addcontentsline{toc}{subsection}{#1}
 \stepcounter{subs}
 \vspace*{3em}\\{\LARGE\em\thesection.{\Large\thesubs}} {

@@ -28,7 +28,7 @@ cognitive processes.
 `p.
 My formal elaboration of this model will be inspired at an
 elementary level by process `i.algebra` in the computational
-setting, but more technically by applied `i.type theory`/.
+setting, as well as applied `i.type theory`/.
 Inter-process relations are the core topic of Process
 Algebra, including sequentiality (one process followed by
 another) and concurrency (one process executing alongside
@@ -49,7 +49,7 @@ where cognitive processes unfold in a temporal order.
 
 `p.
 On both the cognitive and computational side, temporality is relative
-rather than quantified: the significant detail is not
+rather than quantitative: the significant detail is not
 `q.before` and `q.after` in the sense of measuring time but rather how
 one process logically precedes another in effects and prerequisites.
 No theoretical importance is attached to `i.how long` it takes
@@ -107,61 +107,41 @@ types respectively %-- one outputs `typeT; and the other
 inputs `typeT; %-- then the two can be put in sequence, where
 the output from the antecedent becomes the input to the subsequent.
 In this manner inter-process sequential relations become
-subsumed into `q.type systems` can can be studied using
+subsumed into `q.type systems` and can be studied using
 type-theoretic machinery rather than Process Algebras or
 Process Calculii as such.
 `p`
 
 `p.
-There also exists a robust type-theoretic tradition
+The above comments apply to type theory applied in 
+constructed environments like computer programming 
+languages; but as I have discussed here 
+there exists a robust type-theoretic tradition
 in (Natural Language) semantics, which is disjoint from
 but not entirely irrelevant to the type systems of
 formal and programming languages.  Semantic types are
-recognized at several different levels of classification,
-but some of the most interesting type-theoretic effects
+recognized at several different levels of classification 
+%-- I proposed the terms `i.macrotype`/, `i.mesotype`/, 
+and `i.microtype`/.  Some of the most 
+interesting type-theoretic effects
 involve medium-grained semantic criteria that are
 more general than lexical entries but more specific than
-Parts of Speech.  For example, the template `i.I believed
-X` generally requires that `i.X` be a noun
-(`qmarkdubious;`i.I believed run`/), but more narrowly a
-certain `i.type` of noun, something that can be interpreted
-as an idea or proposition of some kind (`qmarkdubious;`i.I believed flower`/).
-Asher and Pustejovsky point out the anomaly in a sentenc
-like `q.Bob's idea weighs five pounds`
-\cite[example 2, p. 5]{AsherPustejovsky}, which
-possesses a flavor of unacceptability that feels akin to
-Part of Speech errors but are not in fact syntactic
-errors.  The object of `i.weigh` is `q.five pounds` and
-its subject is `q.Bob's idea`/, which is admissible
-`i.syntactically` but fails to honor our semantic convention
-that the verb `q.to weigh` should be applied to things
-with physical mass (at least if the direct object denotes a quantity;
-contrast with `i.Let's all weigh Bob's idea`/, where the
-`i.idea` is object rather than subject).  These conventions are
-analogous to Part of Speech rules but more fine-grained:
-there is a meaning of `i.weigh` which has (like any transitive
-verb) to be paired with a subject and object noun, but beyond
-just being nouns the subject must be a physical body
-(in effect a sub-type of nouns) and the object a quantitative
-expression (another sub-type of nouns).  Potentially, type
-restrictions on a coarse scale (e.g. that the subject of a verb
-must be a noun) and those on a finer scale (as in this
-sense of `i.to weigh`/) can be unified into an overarching theory,
-which spans both grammar and semantics %-- for instance,
-both Part of Speech rules and usage conventions of the
-kind often subtly or cleverly subverted in metaphor and
-idioms (see `i.flowers want sunshine`/, `i.my computer died`/,
-`i.neutrinos are sneaky`/, as rather elegantly compactified
-by assigning sentient states to inert things).  This is one way of
-reading the type-theoretic semantic project.
+Parts of Speech; this is the level where linguists have 
+seemed to find the most fertile applications of 
+sophisticated aspects to formal type theory, like 
+dependent types and type-coercion.  This perhaps 
+reflects the situation of `q.mesotypes` as 
+intermediary between and therefore interconnecting 
+types in a mostly grammatic (Part of Speech) and 
+a mostly semantic (lexical) sense; and therefore 
+a topic or tool for both syntax and semantics. 
 `p`
 
 `p.
-Along with Process Algebra, my take on linguistic
-understanding is informed by type theory
-(in both computational and linguistic contexts),
-but particularly by the merged notion of `i.typed`
-processes.  So if we say that something has the `i.type`
+Here my argumentation is informed 
+particularly by the merged notion of `i.typed`
+processes.  If we say that something (sticking with the 
+mesotype level) has the `i.type`
 of a physical-body noun %-- that `q.Physical Body` is
 a type in the overall semantics of language %-- then
 I propose a corresponding type of cognitive
@@ -181,15 +161,16 @@ substratum for the semantic type `q.Physical Object`/.
 Moreover, I contend a similar cognitive substratum
 can be found for other mid-scale semantic types that underlie analyses
 of semantic acceptability and metaphoricality, like
-`q.Living Thing`/, `q.Sentient Living Thing` (`q.flowers want
+`q.Living Thing`/, `q.Sentient Living Thing` (`i.flowers want
 sunshine` is metaphorical because it ascribes propositional
 attitudes to something whose type does not literally support them),
-and `q.Social Institutions` (`q.The newspaper you're reading
+and `q.Social Institutions` (`i.The newspaper you're reading
 fired its editor` exhibits a `q.type coercion` where `i.newspaper` is read
 first as an object and then as a company).  One feature of semantic
 types is the lexical superposition of different types to produce what
 (in a slightly different context) Fauconnier calls a `q.blend`/:
-in `q.Liverpool, which is near the ocean, built new docks`/, the
+in `i.Liverpool, which is near the ocean, built new docks` 
+(see \ref{itm:Liverpool}), the
 city is treated as both a geographic region and a body politic.
 `p`
 
@@ -207,7 +188,7 @@ and so forth, so we are able to isolate the dimension of
 `q.judging` and `q.measuring` which is explicit in literal
 `q.weighing`/, and abstracting from the physical details use
 `q.weigh` to mean `q.measure` or `q.assess` in general.
-The phrase `q.weigh an idea` therefore connotes its own cognitive
+The phrase `i.weigh an idea` therefore connotes its own cognitive
 process %-- imagining someone thinking about the idea in an
 evaluative way %-- but this figurative `q.script` is closed off by
 `q.5 pounds` which forces us to conceive the weighing literally
@@ -291,9 +272,8 @@ Counter to that analysis, someone might judge that
 phrases like `q.buttered toast` and `q.iced coffee` are
 conventional enough that we don't interpret them through
 two meaningfully disjoint processes.  This is entirely possible,
-given how erstwhile aggregate expressions bcome established units
-%-- what Langacker calls `i.entrenchment`/.  Different
-phrases ehibit different levels of entrenchment:
+given how erstwhile aggregate expressions become established units.  
+Different phrases ehibit different levels of entrenchment:
 
 `sentenceList,
 `sentenceItem; I snacked on toast and instant coffee.
@@ -389,7 +369,7 @@ simple `q.instant coffee`/: the shift from coffee-as-substance
 to coffee-as-drink; the `q.instant` exaggeration.  In this
 case, the adjectival modification has `i.so many` moving
 parts that, I'm inclined to argue, it is hard to cover the
-whole scenario with a dscriptive phrase; which in turn
+whole scenario with a descriptive phrase; which in turn
 creates selective pressures for some pseudo-lexical unit
 to emerge (which turned out to be `i.instant coffee`/)
 as a mnemonic for the whole conceptual multiplex.  Indeed
@@ -408,7 +388,7 @@ with linguistically aggregate constructions insofar as there
 is a transparent logical destructuring in the perceptual
 unity: in the case of substance-attribute pairs (like
 `i.hot coffee`/) %-- deferring in the phenomenological
-context to Husserl's account of dependent moments %-- there
+context to Husserl's account of `q.dependent moments` %-- there
 is a basically unsubtle distinction between an underlying
 concept (like coffee) and the qualities which are its
 mode of appearance as well as conceptual predicates (like
@@ -429,7 +409,7 @@ encounters to propositional content along these lines.
 `p`
 
 `p.
-As such, I contend such an (in some sense) innate
+As such, I contend that such an (in some sense) innate
 perception-to-predication instinct grounds the procedural
 slicing of linguistic processes: `i.hot coffee` retraces in a 
 linguistic construction the logical order of a coffee perception
