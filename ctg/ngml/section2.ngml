@@ -242,9 +242,9 @@ to inputs, perhaps again yielding a function applied to still
 more inputs, and so forth.  I use the term `q.evaluate` which 
 is proper to the computer-science context, but in linguistics 
 we can take this as a suggestive metaphor.  More correctly, 
-we can say that a funtion/input structure represents a 
+we can say that a function/input structure represents a
 cognitive transform which produces a new function 
-(i.e., a phrace with a function-like part of speech), that is 
+(i.e., a phrase with a function-like part of speech), that is
 then the modifier to a new transform, and so forth.  
 In general, the result of a transform can either be 
 the `i.ground` of a subsequent transform, which is akin to 
@@ -341,7 +341,7 @@ As a natural corollary to this notation,
 parts of speech can have `q.type signatures`
 notionally similar to the signatures of function types in programming languages: a verb
 needing a direct object, for example, `q.transforms` two nouns (Subject and Object)
-to a proposition, which could be notatated with something like `NNtoProp;.`footnote.
+to a proposition, which could be notated with something like `NNtoProp;.`footnote.
 A note on notation: I adopt the Haskell convention (referring to the Haskell
 programming language and other functional languages) of using arrows both between
 parameters and before output notation, but for visual cue I add one dot above the
@@ -375,7 +375,7 @@ in other phrases; for instance a `Prop; joined to
 `i.that` so as to create a noun-phrase (recall my 
 analysis of `i.question whether` last section); notationally   
 `PropToNYieldsN;.`footnote.
-Numeric indices take the place of left and right adjecency 
+Numeric indices take the place of left and right adjacency
 %-- `q.looking forward` or backward %-- in Combinatory Categorial 
 Grammar; the type-theoretic perspective abstracts from word order.  
 The theory of result types `q.falling out` from a 
@@ -421,15 +421,19 @@ conceptually with other sentence elements, in a way that pulls it partly outside
 the possibility of multiple derived spaces.  This kind of space-building duality is 
 reflected in how the singular/plural alternative is underdetermined in a multi-space 
 context; consider Langacker's example: 
-
+\newsavebox{\Langackerboxi}
+\begin{lrbox}{\Langackerboxi}
+(repeating \ref{itm:threetimes})
+\end{lrbox}
 `sentenceList,
-`sentenceItem; \swl{}{Three times, students asked an interesting question.}{sco}
+`sentenceItem; \swl{}{Three times, students asked an interesting question.}
+[\usebox{\Langackerboxi}]{sco}
 `sentenceItem; \swl{}{Three times, a student asked an interesting question.}{sco}
 `sentenceList`
 
 Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
 `i.Student after student` invokes a multiplicity akin to `i.Many students`/, 
-but the former phrase has disting syntactic properties; in particular 
+but the former phrase has distinct syntactic properties; in particular
 we can replace `i.their parents` (which is ambiguous between a plural and 
 a gender-neutral singular reading) with, say, `i.his parents` (at a 
 boy's school), a valid substitution in (\ref{after})-(\ref{parents})
@@ -452,7 +456,7 @@ like `i.Member of Parliament`/, or my earlier examples
 `i.red card` and `i.stolen base`/).  
 In the general case though component words retain some syntactic and 
 semantic autonomy (entrenchment diminishes but does not entirely 
-eliminate such autonomy).  There is, then, a potential dilemna: 
+eliminate such autonomy).  There is, then, a potential dilemma:
 phrases link to other phrases (sometimes via subsumption and 
 sometimes more indirectly, as in anaphora resolution), but phrases 
 are not undifferentiated units; lexemes, which on this sort of 
@@ -531,7 +535,7 @@ converges onto something with the conceptual profile of a
 proposition, and that we can leverage this formality by 
 identifying certain words as functional pivots in the 
 synthesis-toward-proposition: these words are not necessarily 
-pivotal in term of meaning, but they are the core skelaton of 
+pivotal in term of meaning, but they are the core skeleton of
 the schematic type-based model which we attach to a 
 sentence while modeling the constraints on its synthesizing 
 process.  (There is a further dimension in the `i.student after student` 
@@ -621,7 +625,7 @@ X` generally requires that `i.X` be a noun
 (`qmarkdubious;`i.I believed run`/), but more narrowly a
 certain `i.type` of noun, something that can be interpreted
 as an idea or proposition of some kind (`qmarkdubious;`i.I believed flower`/).
-Asher and Pustejovsky point out the anomaly in a sentenc
+Asher and Pustejovsky point out the anomaly in a sentence
 like `q.Bob's idea weighs five pounds`
 \cite[example 2, p. 5]{AsherPustejovsky}, which
 possesses a flavor of unacceptability that feels akin to
@@ -675,7 +679,7 @@ we can consider larger-scale Ontological criteria: is the subject
 of this sentence figured as material or immaterial, 
 sentient or nonsentient, natural or sociocultural, spatially and/or 
 temporally extended or pointwise; and so forth?  And finally, 
-what Part of Speech is consisent for various words given syntactic 
+what Part of Speech is consistent for various words given syntactic
 principles and morphological cues %-- distinguishing noun/verb/adjective, 
 and etc., along with singular/plural, mass/count, verb tense and case, 
 and other criteria of morphosyntactic fit?  
@@ -929,13 +933,13 @@ to a similar effect. \cite[p. 38]{Ramstead}
 `quote`
 `footnote` 
 `q.Cognitive` in these contexts 
-tends to imply desire to groud analyses on holistic 
+tends to imply desire to ground analyses on holistic
 human experience, in its experiential, embodied, pragmatically-oriented, 
 first-personal, and intersubjective dimensions.`footnote.
 Note that in this sense 
 `q.Cognitive` connotes a very different perspective than this same 
 term in `AI; research, for example; on the one side we have a 
-philosophical commitment to the irredicubility of 
+philosophical commitment to the irreducibility of
 human reason to computable `q.symbol processing`/, whereas 
 on the other there is a paradigm where, in effect 
 (perhaps simply because mental activity is presumably 
@@ -968,14 +972,14 @@ Of course, the overall dialog wherein philosophers debate
 and compare their own introspective reports allows 
 this speculative method to have some rigor, because descriptions 
 of cognitive processes %-- in their first-personal 
-facticity %-- which seem both subjectively faitful and 
+facticity %-- which seem both subjectively faithful and
 structurally revealing will emerge as analyses of 
 general pattern so long as multiple philosophical treatments 
 agree on their fidelity to experience.  So 
 analyses get theoretically favored if they meet three 
 different criteria of structural productivity %-- in the 
 sense that produce new insight onto cognitive processes, 
-rather than just descibing cognition as an experienced 
+rather than just describing cognition as an experienced
 givenness %-- plus both faithfulness to each person's 
 conscious experience and also generality to many 
 people's experience.`footnote.
@@ -998,8 +1002,8 @@ At their best, then, both phenomenology and cognitive linguistics
 combine introspective analysis and public disputation to 
 develop theories of cognitive-experiential structures %-- of 
 how the immediate structuraion of perceptual experience as 
-primordial consious content unfolds into the 
-schematic and rational models of our surrouding environment 
+primordial conscious content unfolds into the
+schematic and rational models of our surrounding environment
 and situations, for purpose of goal-directed activity and 
 inter-personal, collective reasonableness.  The underlying assumption 
 is that raw structures, below the threshold of conscious 
@@ -1071,7 +1075,7 @@ In (\ref{itm:footprintsleading}), moreover, we conceive the totality in conjunct
 with a sense of direction, and protention.  The implication is that we 
 do not see `i.all` of the footprints, but we can discern from their 
 pattern a direction which, we anticipate, will reveal more footprints.  
-Meanwhile the footprints are presumably disjount, unlike train tracks.  
+Meanwhile the footprints are presumably disjoint, unlike train tracks.
 So the perceptual foreground in (\ref{itm:footprintsleading}) is phenomenologically 
 complex, including a totality we perceive that implies a greater 
 totality, part of which is experienced anticipatorily rather than 
@@ -1154,7 +1158,7 @@ sounds of cicadas on one specific occasion.
 `p`
 
 `p.
-The matrix of continutity/discontinuity, and individual coherence balanced 
+The matrix of continuity/discontinuity, and individual coherence balanced
 (within intentional `q.noemata`/) 
 against internal structuration and diversity, 
 are `i.conceptually` intrinsic to notions like `i.ink stains` (or `i.footprints`/), 
@@ -1230,7 +1234,7 @@ apparent difference between (\ref{itm:Sauternes}) and
 referential foci are established.  The phrase 
 `i.a beer` can designate a specific glass or bottle of 
 beer %-- something perceptually and enactively/kinaesthetically 
-individuated %-- or also a specific preperation of beer, 
+individuated %-- or also a specific preparation of beer,
 individuated by the unique flavor of the beverage rather than 
 the material identity of the liquid.  These 
 differences have phenomenological overtones: if I say 
@@ -1243,10 +1247,10 @@ givens with their rules of phenomenological
 individuation.  The `q.two pints` reading implies 
 one kind of phenomenological architecture governing 
 `q.word-to-world fit`/, where elements in language 
-link to discrete, perceptually/opertionally integral 
+link to discrete, perceptually/operationally integral
 objects like glasses (though of course a glass of 
 beer is also an integral complex where the beer and 
-the glass are semi-autnomous parts).  The `q.two kinds` 
+the glass are semi-autonomous parts).  The `q.two kinds`
 reading is more subtle, resting conceptual focus on the 
 belief that a distinct kind of beer has a distinct 
 flavor that is both unique `visavis; other beers and 
@@ -1377,7 +1381,7 @@ So a pattern like (\ref{itm:hall}) packages up that backstory
 `i.in the guise` of a referring expression; it is not so much the 
 athlete's bust as a target of referential proxying, but more of the 
 act of referring to that bust (i.e., to the referentiable 
-object manifecting the speakers being elected) entering 
+object manifesting the speakers being elected) entering
 the Hall of Fame backstory into the discursive ledger.  This 
 carries over to the Whitney case: calling oneself 
 `q.in` a museum does not just proxy the self for one's art, 
@@ -1448,7 +1452,7 @@ referential proxying, is presumably that the artist is
 concerned about accessing and protecting those objects.  
 The situational elements are different, but in both these 
 cases %-- whether paintings are in the crate or in the 
-Whiteney %-- there is some structural resonance in how 
+Whitney %-- there is some structural resonance in how
 situational, backstory, and hypothetical-perceptual 
 gestalts are all integrated into patterns of grounding 
 referential interpretation in ambient conceptual contexts.  

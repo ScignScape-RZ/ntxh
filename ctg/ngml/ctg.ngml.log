@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  9 AUG 2019 16:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  10 AUG 2019 01:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1415,6 +1415,18 @@ LaTeX Warning: Label `' multiply defined.
 
 LaTeX Warning: Label `' multiply defined.
 
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
 )
 \openout1 = `ctg.ngml.aux'.
 
@@ -1688,25 +1700,27 @@ LaTeX Warning: Command \textgreater invalid in math mode on input line 337.
 
 LaTeX Warning: Command \textgreater invalid in math mode on input line 337.
 
-[20] (./figure.tex)
+[20]
+\Langackerboxi=\box83
+ (./figure.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [21] [22] [23] [24]
 
-LaTeX Warning: Command \textgreater invalid in math mode on input line 755.
+LaTeX Warning: Command \textgreater invalid in math mode on input line 760.
 
 
-LaTeX Warning: Command \textgreater invalid in math mode on input line 755.
+LaTeX Warning: Command \textgreater invalid in math mode on input line 760.
 
 [25]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [26] [27] [28]
+rian/vectorian84.pgf) [26] [27]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [29]) (./section3.ngml.tex [30] [31] [32] [33] [34]
-[35] [36] [37] [38] [39] [40] [41] [42] [43]
+rian/vectorian84.pgf) [28] [29]) (./section3.ngml.tex [30] [31] [32] [33]
+[34] [35] [36] [37] [38] [39] [40] [41] [42]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf)) (./section4.ngml.tex
+rian/vectorian84.pgf) [43]) (./section4.ngml.tex
 Underfull \hbox (badness 1199) in paragraph at lines 24--44
 \OT1/cmr/m/n/10 (+20) Any at-tempt to bridge Com-pu-ta-tional Lin-guis-tics and
 
@@ -1724,7 +1738,7 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 ) [45] [46] [47] [48] [49] [50] [51] [52] [53]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [54] [55] [56] [57] [58] [59] (./figure2.tex))
+rian/vectorian84.pgf) [54] [55] [56] [57] [58] (./figure2.tex) [59])
 (./conclusion.ngml.tex [60] [61]) (./biblio.tex
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 5.
 
@@ -1735,7 +1749,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 21.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 43.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lm/ts1lmtt.fd
@@ -1773,11 +1787,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 30343 strings out of 492649
- 627637 string characters out of 6122986
- 853475 words of memory out of 5000000
- 32875 multiletter control sequences out of 15000+600000
- 43766 words of font info for 287 fonts, out of 8000000 for 9000
+ 30342 strings out of 492649
+ 627634 string characters out of 6122986
+ 852890 words of memory out of 5000000
+ 32876 multiletter control sequences out of 15000+600000
+ 43658 words of font info for 286 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  66i,21n,104p,1009b,1138s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
@@ -1817,10 +1831,10 @@ msam10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msam7.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb></home/nlevisrael/texl/texlive-install/
 texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on ctg.ngml.pdf (64 pages, 828298 bytes).
+Output written on ctg.ngml.pdf (64 pages, 828517 bytes).
 PDF statistics:
- 1207 PDF objects out of 1440 (max. 8388607)
- 1099 compressed objects within 11 object streams
+ 1208 PDF objects out of 1440 (max. 8388607)
+ 1100 compressed objects within 11 object streams
  368 named destinations out of 1000 (max. 500000)
  45753 words of extra memory for PDF output out of 51595 (max. 10000000)
 
