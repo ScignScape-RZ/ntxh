@@ -100,6 +100,14 @@ class ScignStage_Ling_Dialog : public QDialog
  QPushButton* activate_tcp_button_;
  QPushButton* take_screenshot_button_;
 
+ QHBoxLayout* paths_layout_;
+ QLabel* ds_path_label_;
+ QLineEdit* ds_path_line_edit_;
+ QPushButton* ds_path_open_button_;
+ QLabel* pdf_path_label_;
+ QLineEdit* pdf_path_line_edit_;
+
+
  QHBoxLayout* filters_layout_;
  QGridLayout* filter_forms_grid_layout_;
  QGridLayout* filter_issues_grid_layout_;
@@ -205,6 +213,8 @@ class ScignStage_Ling_Dialog : public QDialog
  int current_section_number_;
  QMap<int, QPair<int, int>> section_groups_first_last_;
 
+ std::function<Dataset*(QString)> replace_dataset_function_;
+
  bool xpdf_is_ready();
  void check_phr();
 
@@ -263,12 +273,17 @@ class ScignStage_Ling_Dialog : public QDialog
 
  void run_message_by_grid_position(const QPoint& p, int r, int c);
 
+ void absorb_dataset(Dataset& ds);
+
+ void set_paths_from_dataset(Dataset& ds);
+
+
 public:
 
 
 
  ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
-   Dataset& ds, QWidget* parent = nullptr);
+   Dataset* ds, QWidget* parent = nullptr);
 
  ~ScignStage_Ling_Dialog();
 
@@ -277,6 +292,8 @@ public:
 #endif // USING_KPH
 
  ACCESSORS__SET(std::function<void()> ,screenshot_function)
+
+ ACCESSORS__SET(std::function<Dataset*(QString)> ,replace_dataset_function)
 
 #ifdef USING_LEXPAIR
  ACCESSORS__SET(std::function<void(QString)> ,launch_lexpair_dialog_function)
@@ -313,6 +330,8 @@ Q_SIGNALS:
 public Q_SLOTS:
 
  void checked_label_change(QAbstractButton* qab, bool checked);
+
+ void get_replacement_dataset_path();
 
  void handle_xpdf_is_ready();
  void handle_take_screenshot_requested();

@@ -157,13 +157,24 @@ int main(int argc, char **argv)
  Dataset ds;
  ds.load_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
 
+ ds.set_pdf_path(DEFAULT_NTXH_FOLDER  "/main.pdf");
+
 
 #ifdef USING_XPDF
  XPDF_Bridge xpdf_bridge(argc, argv);
- ScignStage_Ling_Dialog dlg (&xpdf_bridge, ds);
+ ScignStage_Ling_Dialog dlg (&xpdf_bridge, &ds);
 #else
- ScignStage_Ling_Dialog dlg (nullptr, ds);
+ ScignStage_Ling_Dialog dlg (nullptr, &ds);
 #endif
+
+ dlg.set_replace_dataset_function([](QString path) -> Dataset*
+ {
+  Dataset* result = new Dataset;
+  result->load_from_file(path);
+  if(result->groups().isEmpty())
+    return nullptr;
+  return result;
+ });
 
 #ifdef USING_KPH
  dlg.set_phr_init_function([&dlg](PHR_Runner& phr, PHR_Symbol_Scope*& pss)

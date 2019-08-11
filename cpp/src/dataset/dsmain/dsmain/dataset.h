@@ -27,6 +27,8 @@ class Language_Sample_Group;
 class Dataset
 {
  QString file_;
+ QString pdf_path_;
+
  QVector<Language_Sample*> samples_;
 
 // QVector<int> chapter_pages_;
@@ -44,6 +46,9 @@ public:
 
  ACCESSORS__RGET(QStringList ,issues)
 // ACCESSORS__RGET(QStringList ,forms)
+
+ ACCESSORS(QString ,file)
+ ACCESSORS(QString ,pdf_path)
 
  void save_raw_file(QString text, int page, int num);
  void parse_to_samples(QString text, int page, int num, phaong<pg_t>& phg);

@@ -44,6 +44,11 @@ class Language_Sample
 
  QString archival_;
 
+ QString subindex_;
+ QString speaker_;
+ QString annotation_mark_;
+ QString alternate_;
+
 public:
 
  Language_Sample(Language_Sample_Group* group, QString text);
@@ -60,6 +65,12 @@ public:
  ACCESSORS(QString ,pre)
  ACCESSORS(QString ,post)
  ACCESSORS(QString ,archival)
+
+
+ ACCESSORS(QString ,subindex)
+ ACCESSORS(QString ,speaker)
+ ACCESSORS(QString ,annotation_mark)
+ ACCESSORS(QString ,alternate)
 
  ACCESSORS(Language_Sample_Group* ,group)
 

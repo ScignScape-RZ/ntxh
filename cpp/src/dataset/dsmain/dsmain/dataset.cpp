@@ -139,7 +139,7 @@ void Dataset::load_from_file(QString path)
    if(ihn)
    {
     Language_Sample* ls = nullptr;
-    doc.graph()->get_sfsr(ihn, {{1,10}}, [result, &ls](QVector<QPair<QString, void*>>& prs)
+    doc.graph()->get_sfsr(ihn, {{1,14}}, [result, &ls](QVector<QPair<QString, void*>>& prs)
     {
      {QPair<QString, void*>& ipr = prs[3];
       if(check(ipr))
@@ -171,6 +171,18 @@ void Dataset::load_from_file(QString path)
      {QPair<QString, void*>& ipr = prs[9];
       if(check(ipr))
         ls->set_classification(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[10];
+      if(check(ipr))
+        ls->set_subindex(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[11];
+      if(check(ipr))
+        ls->set_speaker(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[12];
+      if(check(ipr))
+        ls->set_annotation_mark(ipr.first);}
+     {QPair<QString, void*>& ipr = prs[13];
+      if(check(ipr))
+        ls->set_alternate(ipr.first);}
     });
 
     result->push_back(ls);

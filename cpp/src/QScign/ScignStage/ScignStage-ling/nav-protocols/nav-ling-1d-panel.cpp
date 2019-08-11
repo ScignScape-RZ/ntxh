@@ -94,9 +94,6 @@ NAV_Ling1D_Panel::NAV_Ling1D_Panel(int vmn, int vmx, int v, QWidget* parent)
  connect(section_end_button_, SIGNAL(clicked()),
    this, SIGNAL(section_end_requested()));
 
-
-
-
  section_up_button_ = new QPushButton(this);
  section_down_button_ = new QPushButton(this);
 
