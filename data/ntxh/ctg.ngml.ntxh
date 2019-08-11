@@ -3,16 +3,59 @@
 .
 
 - i=id p=page s=ud source, section number c=classification
-l=label x=latex label t=text r=pre o=post a=archival 
+  l=label x=latex label t=text r=pre o=post a=archival 
+
+  au=author  ae=author(s) or editor(s)  sdc=subdocument count
+  sk=subdocument kind
 .
 
 &type SentenceList [8;3;2] 
-:i:1 :p:2 :s:3 ;
+  :i:1 :p:2 :s:3 ;
 
 &type SentenceItem {10} 
-:i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 ;
+  :i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 ;
+
+&type Subdocument {3} 
+  :au:1 :start:2 :end:3 ;
+
+&type DatasetInfo {4} 
+  :ae:1 :sdc:2 :pdf:3 ;
 
 &/
+
+!/ DatasetInfo
+$ae: Nathaniel Christen
+$sdc: 4
+$sk: Section
+$pdf: @/data/ntxh/main.pdf
+
+/!
+<+>
+
+
+!/ Subdocument
+$start: 4
+$end: 17
+/!
+<+>
+
+!/ Subdocument
+$start: 17
+$end: 30
+/!
+<+>
+
+!/ Subdocument
+$start: 30
+$end: 44
+/!
+<+>
+
+!/ Subdocument
+$start: 44
+$end: 60
+/!
+<+>
 
 
 !/ SentenceList

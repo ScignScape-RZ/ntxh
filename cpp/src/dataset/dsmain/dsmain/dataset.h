@@ -28,6 +28,7 @@ class Dataset
 {
  QString file_;
  QString pdf_path_;
+ QString subdocument_kind_;
 
  QVector<Language_Sample*> samples_;
 
@@ -36,6 +37,8 @@ class Dataset
 
  QStringList issues_;
  QStringList forms_;
+
+ QVector<QPair<QString, QPair<int, int>>> subdocuments_;
 
 public:
 
@@ -49,6 +52,8 @@ public:
 
  ACCESSORS(QString ,file)
  ACCESSORS(QString ,pdf_path)
+ ACCESSORS(QString ,subdocument_kind)
+
 
  void save_raw_file(QString text, int page, int num);
  void parse_to_samples(QString text, int page, int num, phaong<pg_t>& phg);

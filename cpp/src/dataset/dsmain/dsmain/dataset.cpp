@@ -106,11 +106,40 @@ void Dataset::load_from_file(QString path)
 
  QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
 
- groups_.resize(hns.size());
+ auto it = hns.begin();
+
+ NTXH_Graph::hypernode_type* hn = *it;
+
+ int sdcount = 0;
+ doc.graph()->get_sfsr(hn, {{1,4}}, [&sdcount, this](QVector<QPair<QString, void*>>& prs)
+ {
+  QString au = prs[0].first;
+  sdcount = prs[1].first.toInt();
+  this->subdocument_kind_ = prs[2].first;
+  this->pdf_path_ = prs[3].first;
+ });
+
+ subdocuments_.resize(sdcount);
+
+ for(int i = 0; i < sdcount; ++i)
+ {
+  ++it;
+  NTXH_Graph::hypernode_type* hn = *it;
+
+  doc.graph()->get_sfsr(hn, {{1,3}}, [this, i](QVector<QPair<QString, void*>>& prs)
+  {
+   subdocuments_[i] = {prs[0].first,
+     {prs[1].first.toInt(), prs[2].first.toInt()}};
+  });
+ }
+
+ groups_.resize(hns.size() - sdcount - 1);
 
  int count = 0;
 
- std::transform(hns.begin(), hns.end(), groups_.begin(), [&count,&doc](NTXH_Graph::hypernode_type* hn)
+ ++it;
+
+ std::transform(it, hns.end(), groups_.begin(), [&count,&doc](NTXH_Graph::hypernode_type* hn)
  {
   ++count;
   Language_Sample_Group* result = new Language_Sample_Group(count);

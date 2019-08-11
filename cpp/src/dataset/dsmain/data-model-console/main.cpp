@@ -26,11 +26,12 @@ int main(int argc, char **argv)
 {
  Dataset ds;// (DEFAULT_RPH_FOLDER  "/samples.txt");
 
-// ds.load_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
+ ds.load_from_file(DEFAULT_NTXH_FOLDER  "/ctg.ngml.ntxh");
 
 // ds.save_to_file_udp();
 
- ds.load_from_file(DEFAULT_NTXH_FOLDER  "/handbook/h.ntxh");
+//
+// ds.load_from_file(DEFAULT_NTXH_FOLDER  "/handbook/h.ntxh");
 
 
  return 0;
