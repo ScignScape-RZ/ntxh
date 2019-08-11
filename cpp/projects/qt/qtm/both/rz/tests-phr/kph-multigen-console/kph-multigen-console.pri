@@ -40,15 +40,5 @@ SOURCES += \
 LIBS += -L$$TARGETSDIR -lkph-generator -lphaon-ir
 
 
-
-
-contains(CHOICE_FEATURES, "iso-choice") \#/
-{
- exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/kauvir--kauvir-kcm--kcm-lisp-bridge) \#/
- {
- }
-}
-
-
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
 mkpath($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

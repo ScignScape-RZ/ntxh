@@ -33,7 +33,6 @@ SUBDIRS = \
   QScign/ScignStage/ScignStage-ling \
   QScign/LexPair/lexpair \
   QScign/LexPair/lexpair-console \
-  dataset/config/config-dialog-console \
   rz/rz-kauvir/rz-graph-core \
   rz/rz-kauvir/rz-graph-token \
   dataset/application-model/application-model \
@@ -43,6 +42,7 @@ SUBDIRS = \
   rz/phr-runtime/phr-fn-doc \
   rz/PhaonLib/phr-command-runtime \
   rz/PhaonLib/phr-direct-eval \
+  dataset/config/config-dialog-console \
   rz/tests-phr/kph-generator \
   rz/tests-phr/kph-generator-console \
   rz/tests-phr/kph-multigen-console \

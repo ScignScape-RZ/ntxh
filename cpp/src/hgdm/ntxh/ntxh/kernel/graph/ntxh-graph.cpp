@@ -36,7 +36,7 @@ void NTXH_Graph::add_array_type(QString name, unsigned int l,
  types_[name] = {-l, {offset, csize}};
 }
 
-// // here offset dfaults to 0 ...
+// // here offset defaults to 0 ...
 void NTXH_Graph::add_fixed_array_type(QString name, unsigned int l,
   signed int offset)
 {

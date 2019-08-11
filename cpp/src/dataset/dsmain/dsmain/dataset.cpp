@@ -127,6 +127,12 @@ void Dataset::load_from_file(QString path)
    result->set_section_num(nums[2]);
   });
 
+  doc.graph()->get_sfs(hn, {4,5}, [result](QVector<QPair<QString, void*>>& prs)
+  {
+   result->set_text_id(prs[0].first);
+   result->set_classification(prs[1].first);
+  });
+
   doc.graph()->all_afs(hn, [&doc, result](QPair<QString, void*>& pr)
   {
    NTXH_Graph::hypernode_type* ihn = (NTXH_Graph::hypernode_type*) pr.second;

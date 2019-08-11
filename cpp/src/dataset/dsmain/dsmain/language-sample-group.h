@@ -31,6 +31,9 @@ class Language_Sample_Group : public QVector<Language_Sample*>
 
  QString classification_;
 
+ QString text_id_;
+
+
 public:
 
  Language_Sample_Group(int id);
@@ -44,6 +47,7 @@ public:
  ACCESSORS(int ,start_num)
  ACCESSORS(int ,end_num)
  ACCESSORS(QString ,classification)
+ ACCESSORS(QString ,text_id)
 
  void serialize(QTextStream& qts);
 
