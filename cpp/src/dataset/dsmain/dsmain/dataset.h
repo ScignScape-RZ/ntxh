@@ -11,6 +11,8 @@
 #include "phaong/phaong.h"
 #include "phaong/phaong-types.h"
 
+#include "qring/qring-file-structure.h"
+
 
 #include "kans.h"
 #include "accessors.h"
@@ -24,7 +26,7 @@ KANS_(DSM)
 class Language_Sample;
 class Language_Sample_Group;
 
-class Dataset
+class Dataset :  public QRing_File_Structure
 {
  QString file_;
  QString pdf_path_;
@@ -42,7 +44,7 @@ class Dataset
 
 public:
 
- Dataset();//QString file);
+ Dataset(QString root_folder = QString());//QString file);
 
  ACCESSORS__RGET(QVector<Language_Sample*> ,samples)
  ACCESSORS__RGET(QVector<Language_Sample_Group*> ,groups)

@@ -24,7 +24,8 @@
 USING_KANS(DSM)
 USING_KANS(TextIO)
 
-Dataset::Dataset() 
+Dataset::Dataset(QString root_folder) : QRing_File_Structure(
+  root_folder.isEmpty()? AR_ROOT_DIR : root_folder)
 {
  forms_ = QStringList{{"Text", "Dialog", "Intonation", "Fragment", "Paragraph"}};
  issues_ = QStringList{{"Ambiguity", "Context", "Logic",
@@ -116,7 +117,7 @@ void Dataset::load_from_file(QString path)
   QString au = prs[0].first;
   sdcount = prs[1].first.toInt();
   this->subdocument_kind_ = prs[2].first;
-  this->pdf_path_ = prs[3].first;
+  this->pdf_path_ = this->expand_external_file(prs[3].first);
  });
 
  subdocuments_.resize(sdcount);

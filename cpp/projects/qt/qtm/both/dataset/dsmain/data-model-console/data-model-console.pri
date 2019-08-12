@@ -14,6 +14,8 @@ INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR
 INCLUDEPATH += $$PHAON_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 
+INCLUDEPATH += $$QRING_SRC_GROUP_DIR
+
 DEFINES += CAON_DEBUG
 DEFINES += RELAE_LABEL_NODES
 
@@ -34,7 +36,7 @@ SOURCES += \
 
 
 LIBS += -L$$TARGETSDIR -ldsmain  \
-  -lntxh  -lntxh-parser -lntxh-builder
+  -lntxh  -lntxh-parser -lntxh-builder  -lqring
 
   # -lrph-builder  -lrelae-phaon    -lds-relae-phaon
 

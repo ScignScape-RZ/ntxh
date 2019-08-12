@@ -37,6 +37,11 @@ $s: \thesection^^J%
 
 \usepackage[yyyymmdd,hhmmss]{datetime}
 
+% but these can be helpful ...
+%\usepackage{crossreftools}
+
+\newcommand{\auntxh}{Nathaniel Christen}
+
 \newcommand{\writeNtxhStart}{\immediate\write\ntxhFile{%
 - Generated from LaTeX File \jobname.tex ^^J%
   \the\day/\the\month/\the\year, \the\currenthour:\the\currentminute ^^J%
@@ -49,10 +54,58 @@ $s: \thesection^^J%
 &type SentenceList [8;3;2] ^^J%
   :i:1 :p:2 :s:3 ;^^J%
 ^^J%
-&type SentenceItem {10} ^^J%
-  :i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 ;^^J%
+&type SentenceItem {14} ^^J%
+  :i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 ^^J%
+  :si:11 :sp:12 :am:13 :alt:14 ;  ^^J%
+^^J%
+&type Subdocument {3} ^^J%
+  :au:1 :start:2 :end:3 ; ^^J%
+^^J%
+&type DatasetInfo {4} ^^J%
+  :ae:1 :sdc:2 :sk:3 :pdf:4 ; ^^J%
+^^J%
 ^^J%
 &/^^J%
+^^J%
+^^J%
+!/ DatasetInfo^^J%
+$ae: \auntxh^^J%
+$sdc: 4^^J%
+$sk: Section^^J%
+$pdf: @/data/ntxh/main.pdf^^J%
+^^J%
+/!^^J%
+<+>^^J%
+^^J%
+^^J%
+!/ Subdocument ^^J%
+$au: \auntxh ^^J%
+$start: \getpagerefnumber{s1} ^^J%
+$end: \getpagerefnumber{s2} ^^J%
+/! ^^J%
+<+> ^^J%
+^^J%
+!/ Subdocument ^^J%
+$au: \auntxh ^^J%
+$start: \getpagerefnumber{s2} ^^J%
+$end: \getpagerefnumber{s3} ^^J%
+/! ^^J%
+<+> ^^J%
+^^J%
+!/ Subdocument ^^J%
+$au: \auntxh ^^J%
+$start: \getpagerefnumber{s3} ^^J%
+$end: \getpagerefnumber{s4} ^^J%
+/! ^^J%
+<+> ^^J%
+^^J%
+!/ Subdocument ^^J%
+$au: \auntxh ^^J%
+$start: \getpagerefnumber{s4} ^^J%
+$end: \getpagerefnumber{References} ^^J%
+/!^^J%
+<+>^^J%
+^^J%
 ^^J%
 }}
 

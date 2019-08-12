@@ -23,9 +23,6 @@ INCLUDEPATH += $$NTXH_SRC_GROUP_DIR
 DEFINES += CAON_DEBUG
 DEFINES += RELAE_LABEL_NODES
 
-#INCLUDEPATH += $$RZ_KAUVIR_SRC_GROUP_DIR \
-#  $$RZ_KAUVIR_SRC_GROUP_DIR/rz-graph-core  $$RZ_KAUVIR_SRC_GROUP_DIR/rz-graph-token  \
-#  $$RELAE_SRC_GROUP_DIR  $$KAUVIR_KCM_SRC_GROUP_DIR
 
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR
 
@@ -33,6 +30,9 @@ INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$HGDM_SRC_GROUP_DIR/relae-phaon
 INCLUDEPATH += $$PHAON_GRAPH_SRC_GROUP_DIR
 
+INCLUDEPATH += $$QRING_SRC_GROUP_DIR
+
+DEFINES += AR_ROOT_DIR=\\\"$$ROOT_DIR\\\"
 
 CONFIG += no_keywords
 
@@ -52,7 +52,8 @@ SOURCES += \
   $$SRC_DIR/language-sample-group.cpp \
   $$SRC_DIR/dataset.cpp \
 
- LIBS += -L$$TARGETSDIR   -lntxh  -lntxh-parser -lntxh-builder
+ LIBS += -L$$TARGETSDIR   -lntxh   \
+  -lntxh-parser -lntxh-builder -lqring
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
