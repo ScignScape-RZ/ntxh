@@ -41,7 +41,7 @@ SOURCES += \
 
 
 LIBS += -L$$TARGETSDIR  -ldsmain  -lds-kdmi  -lkdmi-bridge  \
-  -lntxh -lntxh-parser -lntxh-builder
+  -lntxh -lntxh-parser -lntxh-builder -lqring
 
 
 

@@ -32,7 +32,7 @@ INCLUDEPATH += $$SRC_DIR/ft2build
 
 
 # # dsC
-DEFINES += DEFAULT_PDF_FILE=\\\"$$ROOT_DIR/The-Handbook-of-Pragmatics.pdf\\\"
+DEFINES += DEFAULT_PDF_FILE=\\\"$$ROOT_DIR/main.pdf\\\"
 
 DISTFILES += \
     $$SRC_DIR/xpdf-qt/back.svg \

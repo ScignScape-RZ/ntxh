@@ -30,7 +30,7 @@ SOURCES += \
   $$SRC_DIR/main.cpp \
 
 LIBS += -L$$TARGETSDIR -lpdf-pull -ldsmain  \
-  -lntxh  -lntxh-parser -lntxh-builder
+  -lntxh  -lntxh-parser -lntxh-builder  -lqring
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

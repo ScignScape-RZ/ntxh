@@ -72,6 +72,11 @@ contains(CHOICE_FEATURES, "xpdf") \#/
  # or  -lqtfreetyped  -lqtlibpngd
 }
 
+contains(CHOICE_FEATURES, "pdf-pull") \#/
+{
+ LIBS +=  -L$$TARGETSDIR -lpdf-pull
+}
+
 contains(CHOICE_FEATURES, "kph") \#/
 {
  message(DEFINE\'ing USING_KPH)

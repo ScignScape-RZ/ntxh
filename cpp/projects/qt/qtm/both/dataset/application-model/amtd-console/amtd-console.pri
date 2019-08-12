@@ -36,13 +36,17 @@ SOURCES += \
 
 LIBS += -L$$TARGETSDIR -lapplication-model-test-dialog  -lapplication-model  \
    -lScignStage-ling  -ldsmain  -lntxh  -lntxh-parser  -lntxh-builder  \
-   -lphaon-ir
+   -lphaon-ir -lqring
 
 
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
  LIBS += -L$$TARGETSDIR -lxpdf
-# LIBS +=  -L$$TARGETSDIR -lpdf-pull
+}
+
+contains(CHOICE_FEATURES, "pdf-pull") \#/
+{
+ LIBS +=  -L$$TARGETSDIR -lpdf-pull
 }
 
 contains(CHOICE_FEATURES, "kph") \#/
