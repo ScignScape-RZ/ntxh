@@ -129,7 +129,7 @@ void Dataset::load_from_file(QString path)
 
   doc.graph()->get_sfsr(hn, {{1,3}}, [this, i](QVector<QPair<QString, void*>>& prs)
   {
-   subdocuments_[i] = {prs[0].first,
+   subdocuments_[i] = {{prs[0].first, i + 1},
      {prs[1].first.toInt(), prs[2].first.toInt()}};
   });
  }

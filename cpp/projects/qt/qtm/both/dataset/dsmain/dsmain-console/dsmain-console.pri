@@ -66,8 +66,8 @@ contains(CHOICE_FEATURES, "config") \#/
 
 contains(CHOICE_FEATURES, "xpdf") \#/
 {
- message(DEFINE\'ing USE_XPDF)
- DEFINES += USE_XPDF
+ message(DEFINE\'ing USING_XPDF)
+ DEFINES += USING_XPDF
  LIBS += -L$$TARGETSDIR -lxpdf -lfreetype
  # or  -lqtfreetyped  -lqtlibpngd
 }

@@ -1,27 +1,27 @@
 - Generated from LaTeX File ctg.ngml.tex 
-10/8/2019, 1:15
+12/8/2019, 1:5
 .
 
 - i=id p=page s=ud source, section number c=classification
-  l=label x=latex label t=text r=pre o=post a=archival 
-
-  au=author  ae=author(s) or editor(s)  sdc=subdocument count
-  sk=subdocument kind
+l=label x=latex label t=text r=pre o=post a=archival 
 .
 
 &type SentenceList [8;3;2] 
-  :i:1 :p:2 :s:3 ;
+:i:1 :p:2 :s:3 ;
 
-&type SentenceItem {10} 
-  :i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 ;
+&type SentenceItem {14} 
+:i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 
+:si:11 :sp:12 :am:13 :alt:14 ; 
 
 &type Subdocument {3} 
-  :au:1 :start:2 :end:3 ;
+:au:1 :start:2 :end:3 ; 
 
 &type DatasetInfo {4} 
-  :ae:1 :sdc:2 :sk:3 :pdf:4 ;
+:ae:1 :sdc:2 :sk:3 :pdf:4 ; 
+
 
 &/
+
 
 !/ DatasetInfo
 $ae: Nathaniel Christen
@@ -33,29 +33,34 @@ $pdf: @/data/ntxh/main.pdf
 <+>
 
 
-!/ Subdocument
-$start: 4
-$end: 17
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 4 
+$end: 17 
+/! 
+<+> 
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 17 
+$end: 30 
+/! 
+<+> 
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 30 
+$end: 45 
+/! 
+<+> 
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 45 
+$end: 62 
 /!
 <+>
 
-!/ Subdocument
-$start: 17
-$end: 30
-/!
-<+>
-
-!/ Subdocument
-$start: 30
-$end: 44
-/!
-<+>
-
-!/ Subdocument
-$start: 44
-$end: 60
-/!
-<+>
 
 
 !/ SentenceList
@@ -385,7 +390,7 @@ $c: ref
 
 !/ SentenceItem
 $i: 29
-$p: 10
+$p: 11
 $x: itm:beers
 $t: I drank two beers.
 $o: (page 375)
@@ -395,7 +400,7 @@ $c: ref
 
 !/ SentenceItem
 $i: 30
-$p: 10
+$p: 11
 $x: itm:Michelobs
 $t: I drank two Michelobs.
 $o: (page 375)
@@ -405,7 +410,7 @@ $c: ref
 
 !/ SentenceItem
 $i: 31
-$p: 10
+$p: 11
 $x: itm:Sauternes
 $t: I drank two Sauternes last night.
 $o: (page 375)
@@ -418,7 +423,7 @@ $c: ref
 
 !/ SentenceList
 $i: 10
-$p: 10
+$p: 11
 $s: 1
 
 !/ SentenceItem
@@ -562,7 +567,7 @@ $s: 1
 
 !/ SentenceItem
 $i: 43
-$p: 15
+$p: 16
 $x: itm:tumour
 $t: It is the most common tumour found in babies, occurring in one of every 35,000 births.
 $c: log
@@ -790,7 +795,7 @@ $s: 2
 
 !/ SentenceItem
 $i: 57
-$p: 20
+$p: 21
 $x: students
 $t: Many students and their parents came to complain about the tuition hikes.
 $c: sco
@@ -799,7 +804,7 @@ $c: sco
 
 !/ SentenceItem
 $i: 58
-$p: 20
+$p: 21
 $x: office
 $t: Many students came by my office to complain about their grades.
 $c: sco
@@ -1105,7 +1110,7 @@ $s: 3
 
 !/ SentenceItem
 $i: 83
-$p: 30
+$p: 31
 $x: itm:almond
 $t: Do you have almond milk?
 $c: pra
@@ -1114,7 +1119,7 @@ $c: pra
 
 !/ SentenceItem
 $i: 84
-$p: 30
+$p: 31
 $t: Can you get MsNBC on your TV?
 $c: pra
 /!
@@ -1122,7 +1127,7 @@ $c: pra
 
 !/ SentenceItem
 $i: 85
-$p: 30
+$p: 31
 $x: itm:needcorkscrew
 $t: This isn't a screw-cap bottle: I need a corkscrew.
 $c: pra
@@ -1134,7 +1139,7 @@ $c: pra
 
 !/ SentenceList
 $i: 45
-$p: 30
+$p: 31
 $s: 3
 
 !/ SentenceItem
@@ -1347,12 +1352,12 @@ $c: sem
 
 !/ SentenceList
 $i: 52
-$p: 32
+$p: 33
 $s: 3
 
 !/ SentenceItem
 $i: 105
-$p: 32
+$p: 33
 $t: I believe the kitchen window is open ---{} please close it!
 $c: pra
 /!
@@ -1360,7 +1365,7 @@ $c: pra
 
 !/ SentenceItem
 $i: 106
-$p: 32
+$p: 33
 $t: I believe some window is open ---{} please close it!
 $c: pra
 /!
@@ -1607,7 +1612,7 @@ $s: 3
 
 !/ SentenceItem
 $i: 126
-$p: 37
+$p: 38
 $t: If the kitchen window is closed, we can see if other windows are open.
 $c: pra
 /!
@@ -1615,7 +1620,7 @@ $c: pra
 
 !/ SentenceItem
 $i: 127
-$p: 37
+$p: 38
 $t: If no windows are open, we can see if there is a draft through the window-cracks.
 $c: pra
 /!
@@ -1623,7 +1628,7 @@ $c: pra
 
 !/ SentenceItem
 $i: 128
-$p: 37
+$p: 38
 $t: If there is no draft, we can ask if she wants a sweater.
 $c: pra
 /!
@@ -1658,7 +1663,7 @@ $c: log
 
 !/ SentenceList
 $i: 64
-$p: 38
+$p: 39
 $s: 3
 
 !/ SentenceItem
@@ -1693,12 +1698,12 @@ $c: log
 
 !/ SentenceList
 $i: 65
-$p: 39
+$p: 40
 $s: 3
 
 !/ SentenceItem
 $i: 134
-$p: 39
+$p: 40
 $t: Most students oppose the tuition increase.
 $c: sem
 /!
@@ -1749,7 +1754,7 @@ $s: 3
 
 !/ SentenceItem
 $i: 138
-$p: 40
+$p: 41
 $x: itm:sas
 $t: Student after student came out against the tuition hikes.
 $c: sem
@@ -1758,7 +1763,7 @@ $c: sem
 
 !/ SentenceItem
 $i: 139
-$p: 40
+$p: 41
 $x: itm:substantial
 $t: A substantial number of students have come out against the tuition hikes.
 $c: sem
@@ -1767,7 +1772,7 @@ $c: sem
 
 !/ SentenceItem
 $i: 140
-$p: 40
+$p: 41
 $x: itm:mass
 $t: The number of students protesting the tuition hikes may soon reach a critical mass.
 $c: sem
@@ -1776,7 +1781,7 @@ $c: sem
 
 !/ SentenceItem
 $i: 141
-$p: 40
+$p: 41
 $x: itm:tipping
 $t: Protests against the tuition hikes may have reached a tipping point.
 $c: sem
@@ -2022,7 +2027,7 @@ $c: sem
 
 !/ SentenceItem
 $i: 162
-$p: 50
+$p: 51
 $t: Everyone performed two songs.
 $c: sem
 /!
@@ -2030,7 +2035,7 @@ $c: sem
 
 !/ SentenceItem
 $i: 163
-$p: 50
+$p: 51
 $t: Everyone sang along to two songs.
 $c: sem
 /!
@@ -2038,7 +2043,7 @@ $c: sem
 
 !/ SentenceItem
 $i: 164
-$p: 50
+$p: 51
 $t: Everyone in the audience sang along to two songs.
 $c: sem
 /!
@@ -2335,7 +2340,7 @@ $c: sem
 
 !/ SentenceList
 $i: 85
-$p: 57
+$p: 58
 $s: 4
 
 !/ SentenceItem

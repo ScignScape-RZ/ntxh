@@ -212,8 +212,14 @@ class ScignStage_Ling_Dialog : public QDialog
 
  int current_section_number_;
  QMap<int, QPair<int, int>> section_groups_first_last_;
+ QMap<int, QPair<int, int>> section_pages_first_last_;
+
 
  std::function<Dataset*(QString)> replace_dataset_function_;
+
+ QString subdocument_kind_;
+
+ QString pdf_file_;
 
  bool xpdf_is_ready();
  void check_phr();
@@ -222,7 +228,8 @@ class ScignStage_Ling_Dialog : public QDialog
  void run_kph(const QByteArray& qba);
 
 
- void open_pdf_file(QString name, int page);
+ void open_pdf_file(QString name, int page, int flag);
+ int resolve_pdf_page(int page, int flag);
 
  void check_launch_xpdf(std::function<void()> fn,
    std::function<void()> waitfn);
@@ -260,14 +267,14 @@ class ScignStage_Ling_Dialog : public QDialog
 
  void run_group_context_menu(const QPoint& p, int page, QString text,
    QStringList texts,
-   std::function<void(int)> pdf_fn,
+   std::function<void(int, int)> pdf_fn,
    std::function<void(QString)> copy_fn,
    std::function<void(QString)> launch_fn,
    std::function<void(QStringList)> copies_fn,
    std::function<void()> highlight_fn);
 
  void run_sample_context_menu(const QPoint& p, int page, QString text,
-   std::function<void(int)> pdf_fn,
+   std::function<void(int, int)> pdf_fn,
    std::function<void(QString)> copy_fn,
    std::function<void(QString)> launch_fn);
 
@@ -279,8 +286,6 @@ class ScignStage_Ling_Dialog : public QDialog
 
 
 public:
-
-
 
  ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    Dataset* ds, QWidget* parent = nullptr);

@@ -21,6 +21,9 @@
 #include <QString>
 #include <QMap>
 
+#define PASTE_EXPRESSION(...) __VA_ARGS__
+
+
 KANS_(DSM)
 
 class Language_Sample;
@@ -40,7 +43,7 @@ class Dataset :  public QRing_File_Structure
  QStringList issues_;
  QStringList forms_;
 
- QVector<QPair<QString, QPair<int, int>>> subdocuments_;
+ QVector<QPair<QPair<QString, int>, QPair<int, int>>> subdocuments_;
 
 public:
 
@@ -55,6 +58,9 @@ public:
  ACCESSORS(QString ,file)
  ACCESSORS(QString ,pdf_path)
  ACCESSORS(QString ,subdocument_kind)
+
+ ACCESSORS__RGET(PASTE_EXPRESSION(QVector<QPair<QPair<QString, int>,
+    QPair<int, int>>>) ,subdocuments)
 
 
  void save_raw_file(QString text, int page, int num);

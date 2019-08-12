@@ -501,9 +501,9 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    }
    if(qsl.isEmpty())
    {
-    run_sample_context_menu(qp, page, text, [this](int page)
+    run_sample_context_menu(qp, page, text, [this](int page, int flag)
     {
-     open_pdf_file(ABOUT_FILE_FOLDER "/main.pdf", page);
+     open_pdf_file(pdf_file_, page, flag);
     },
     [](QString s)
     {
@@ -523,9 +523,9 @@ ScignStage_Ling_Dialog::ScignStage_Ling_Dialog(XPDF_Bridge* xpdf_bridge,
    }
    else
    {
-    run_group_context_menu(qp, page, text, qsl, [this](int page)
+    run_group_context_menu(qp, page, text, qsl, [this](int page, int flag)
     {
-     open_pdf_file(ABOUT_FILE_FOLDER "/main.pdf", page);
+     open_pdf_file(pdf_file_, page, flag);
     },
     [](QString s)
     {
@@ -655,6 +655,15 @@ void ScignStage_Ling_Dialog::set_paths_from_dataset(Dataset& ds)
 
 void ScignStage_Ling_Dialog::absorb_dataset(Dataset& ds)
 {
+ QVector<QPair<QPair<QString, int>, QPair<int, int>>>& sd = ds.subdocuments();
+ section_pages_first_last_.clear();
+ for(auto& it : sd)
+   section_pages_first_last_[it.first.second] = it.second;
+
+ pdf_file_ = ds.pdf_path();
+
+ subdocument_kind_ = ds.subdocument_kind();
+
  samples_ = &ds.samples();
  groups_ = &ds.groups();
 
@@ -678,7 +687,12 @@ void ScignStage_Ling_Dialog::absorb_dataset(Dataset& ds)
   int sn = group->section_num();
   qsl.push_back(QString::number(sn));
 
-  QPair<int, int>& pr = section_groups_first_last_[0];
+  auto it = section_groups_first_last_.find(sn);
+  if(it == section_groups_first_last_.end())
+  {
+   it = section_groups_first_last_.insert(sn, {0, 0});
+  }
+  QPair<int, int>& pr = *it;
   if(!pr.first)
     pr.first = c;
   pr.second = c;
@@ -1214,7 +1228,8 @@ void ScignStage_Ling_Dialog::save_to_user_select_file(QString text)
 }
 
 void ScignStage_Ling_Dialog::run_group_context_menu(const QPoint& p, int page, QString text,
-  QStringList texts, std::function<void(int)> pdf_fn,
+  QStringList texts,
+  std::function<void(int, int)> pdf_fn,
   std::function<void(QString)> copy_fn,
   std::function<void(QString)> launch_fn,
   std::function<void(QStringList)> copies_fn,
@@ -1222,7 +1237,13 @@ void ScignStage_Ling_Dialog::run_group_context_menu(const QPoint& p, int page, Q
 {
  QMenu* qm = new QMenu(this);
  qm->addAction("Show in Document (requires XPDF)",
-   [page, pdf_fn](){pdf_fn(page);});
+   [page, pdf_fn](){pdf_fn(page, 0);});
+ qm->addAction(
+   QString("Show in Document -- %1 Start").arg(subdocument_kind_),
+   [page, pdf_fn](){pdf_fn(page, 1);});
+ qm->addAction(
+   QString("Show in Document -- %1 End").arg(subdocument_kind_),
+   [page, pdf_fn](){pdf_fn(page, 2);});
  qm->addAction("Copy Text to Clipboard",
    [text, copy_fn](){copy_fn(text);});
  qm->addAction("Launch Triple-Link Dialog with Text",
@@ -1236,12 +1257,18 @@ void ScignStage_Ling_Dialog::run_group_context_menu(const QPoint& p, int page, Q
 }
 
 void ScignStage_Ling_Dialog::run_sample_context_menu(const QPoint& p, int page, QString text,
-  std::function<void(int)> pdf_fn,
+  std::function<void(int, int)> pdf_fn,
   std::function<void(QString)> copy_fn, std::function<void(QString)> launch_fn)
 {
  QMenu* qm = new QMenu(this);
  qm->addAction("Show in Document (requires XPDF)",
-   [page, pdf_fn](){pdf_fn(page);});
+   [page, pdf_fn](){pdf_fn(page, 0);});
+ qm->addAction(
+   QString("Show in Document -- %1 Start").arg(subdocument_kind_),
+   [page, pdf_fn](){pdf_fn(page, 1);});
+ qm->addAction(
+   QString("Show in Document -- %1 End").arg(subdocument_kind_),
+   [page, pdf_fn](){pdf_fn(page, 2);});
  qm->addAction("Copy Text to Clipboard",
    [text, copy_fn](){copy_fn(text);});
  qm->addAction("Launch Triple-Link Dialog with Text",
@@ -1289,9 +1316,41 @@ void ScignStage_Ling_Dialog::send_xpdf_msg(QString msg)
    xpdf_bridge_->take_message(msg);
 }
 
-void ScignStage_Ling_Dialog::open_pdf_file(QString name, int page)
+int ScignStage_Ling_Dialog::resolve_pdf_page(int page, int flag)
+{
+ bool end;
+ switch (flag)
+ {
+ default:
+ case 0: return page;
+ case 1: end = false;
+  break;
+ case 2: end = true;
+  break;
+ }
+ QMapIterator<int, QPair<int, int>> it(section_pages_first_last_);
+ int s = 0;
+ while(it.hasNext())
+ {
+  it.next();
+  if((page >= it.value().first) && (page <= it.value().second))
+  {
+   s = it.key();
+   break;
+  }
+ }
+ if(s == 0)
+   return page;
+ if(end)
+   return section_pages_first_last_[s].second;
+ return section_pages_first_last_[s].first;
+}
+
+
+void ScignStage_Ling_Dialog::open_pdf_file(QString name, int page, int flag)
 {
 #ifdef USING_XPDF
+ page = resolve_pdf_page(page, flag);
  check_launch_xpdf([this, name, page]()
  {
   send_xpdf_msg(QString("open:%1;%2").arg(name).arg(page));
@@ -1303,7 +1362,8 @@ void ScignStage_Ling_Dialog::open_pdf_file(QString name, int page)
  QMessageBox::information(this, "XPDF Needed",
    "You need to build the customized XPDF library "
    "to view PDF files from this application.  See "
-   "build-order.txt for more information."
+   "build_quick.pro or build_most.pro "
+   "for more information."
  );
 #endif
 }
