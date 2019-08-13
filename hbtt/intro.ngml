@@ -236,7 +236,13 @@ flaws are equally dangerous.  Incorrect data readings,
 for example, led to recent Boeing 737 MAX jet accidents 
 causing over 200 fatalities (plus the worldwide grouding 
 of that airplane model and billions of dollars in losses 
-for the company).  A less tragic but noteworthy 
+for the company).  Software failures either 
+in runtime maintenance or anticipatory risk-assessment 
+have been identified as contributing factors to 
+high-profile accidents like Chernobyl `cite<Joon-EonYang>; 
+and the Fukushima nuclear reactor 
+meltdown `cite<Joon-EonYang>;.
+A less tragic but noteworthy 
 case was the 1999 crash of NASA's US $125 million 
 Mars Climate Orbiter.  The crash was caused by 
 software malfunctions which in turn were caused 
@@ -244,11 +250,87 @@ by two different software components producing
 incompatible data %-- in particular, using 
 incompatible scales of measurement 
 (resulting in an unanticipated mixture of 
-English and metric units).   
+English and metric units).  In general, it 
+is reasonable to assume that coding errors 
+are among the deadliest and costliest sources 
+of man-made injury and property damage. 
 `p`
 
 `p.
+Given the risks of undetected data corruption, seemingly 
+mundane questions about how CyberPhysical verify 
+data %-- and respond to apparent anomalies %-- 
+become essential aspects of planning and development.  
+Consider even a simple data aggregate like 
+blood pressure (combining systolic and 
+diastolic measurements).  The systolic pressure is 
+always greater than the diastolic.  Software systems 
+need to agree on a protocol for encoding the number to 
+ensure that they are in the correct order, and 
+represent biologically plausible measurements.  
+How should a particular software component test that 
+received blood pressure data is accurate?  Should it 
+always test that the systolic quantity is indeed 
+greater than the diastolic, and that both numbers 
+fall in medically possible ranges?  How should the 
+component report data which fails this test?  If 
+such data checking is not performed %-- on the 
+premise that the data will be proofed elsewhere 
+%-- then how can the assumption that data will 
+always be screened outside one component be 
+verified?  How can engineers identify, in a 
+large and complex software system, all the points 
+where data is subject to validation tests; and 
+then by modeling the overall system in term 
+of these check-points ensure that all needed 
+verifications are performed at least one time?  
+To take the blood-pressure example, 
+how would a software procedure that `i.does` 
+check the integrity of the systolic/diastolic 
+pair indicate for the overall system model 
+that it performs that particular verification?  
+Conversely, how would a procedure which does 
+`i.not` perform that verification indicate 
+that this verification must be performed 
+elsewhere in the system to guarantee that 
+the procedure's assumptions are satisfied?    
+`p` 
 
+`p.
+These questions are important not only for objective, 
+measurable assessments of software quality, but 
+also for people's more subjective trust in the reliability 
+of software systems.  In the modern world we 
+allow sofware to be a determining factor in places 
+where malfunction can be fatal %-- airplanes, hospitals, 
+electricity grids, trains carrying toxic chemicals.  
+Consider the model of `q.Ubiquitous Computing` pertinent to the
+book series to which this volume (and hence
+this chapter) belongs.  As explained in the
+series introduction: 
+
+`quote.
+U-healthcare systems ... will allow physicians to remotely diagnose, access, and monitor critical patient's symptoms and will enable real time communication with patients.  [This] 
+series will contain systems based on the four future ubiquitous sensing for healthcare (USH) principles, namely i) proactiveness, where healthcare data transmission to healthcare providers has to be done proactively to enable necessary interventions, ii) transparency, where the healthcare monitoring system design should transparent, iii) awareness, where monitors and devices should be tuned to the context of the wearer, and iv) trustworthiness, where the personal health data transmission over a wireless medium requires security, control and authorize access.`footnote.
+`url<https://sites.google.com/view/series-title-ausah/home?authuser=0>;
+`footnote`  
+`quote`
+Observe that in this scenario, patients will have to 
+place a level of trust in Ubiquitous Health technology comparable 
+to the trust that they place in human doctors and other 
+health professionals.   
+`p`
+
+`p.
+All of this should cause software engineers and developers to 
+take notice.  Modern society places trust in doctors 
+for well-rehearsed and legally scrutinized reasons: 
+physicians need to rigorously prove their competence 
+before being allowed to practice medicine, and 
+this right can be revoked due to malpractice.  Treatment 
+and diagnostic clinics need to be liceced, 
+and pharmaceuticals (as well as medical equipment) subject 
+to   
 `p`
 
 `p.
