@@ -328,12 +328,80 @@ for well-rehearsed and legally scrutinized reasons:
 physicians need to rigorously prove their competence 
 before being allowed to practice medicine, and 
 this right can be revoked due to malpractice.  Treatment 
-and diagnostic clinics need to be liceced, 
-and pharmaceuticals (as well as medical equipment) subject 
-to   
+and diagnostic clinics need to be licenced, 
+and pharmaceuticals (as well as medical equipment) are subject 
+to rigorous testing and scientific investigation before being 
+marketable.  Notwithstanding `q.free market` ideologies, 
+governments are aggressively involved in regulating 
+medical practices; commercial practices (like marketing) are 
+constrained, and operational transparency 
+(like reporting adverse outcomes) is mandated, more so 
+than in most other sectors of the economy.  This level of 
+oversight `i.causes` the public to trust that clinicians' 
+recommendations are usually correct, or that medicines are 
+usually beneficial more than harmful.  
 `p`
 
 `p.
+The problem, as software becomes an increasingly central feature 
+of the biomedical ecosystem, is that no commensurate oversight 
+framework exists for pre- and post-deployment application engineering.  
+Regulations and verifications for different biomedical software 
+projects tend to be ad-hoc and narrowly domain-focused: for 
+example, sofware in the United States which manages HL-7 
+data (the current federal Electronic Medical Record format) must 
+meet certain requirements, but there is no comparable framework 
+for software targeting other kinds of health-care information.  
+This is not only %-- or not primarily %-- an issue of 
+lax government oversight.  The deeper problem is that 
+we do not have a clear picture, in the framework of 
+computer programming and software development, of 
+what a robust regulatory framework would look like: what 
+kind of questions it would ask; what steps a company could 
+follow to demonstrate regulatory adherence; what indicators 
+the public should consult to check that the software 
+that could affect their medical outcomes is properly vetted.  
+And, outside the medical arena, similar comments could be 
+made regarding software in CyberPhysical settings like 
+transportation, energy (power generation and electrical 
+grids), physical infrastructure, environmental protections, 
+government and civic data, and so forth.  
+`p`
+
+`p.
+In the case of personal medical data, for example, there is 
+general aggreement that data should be accessed when it is 
+medically necessary %-- say, in an emergency room 
+%-- but that each patient should mostly control how and whether 
+their data is used.  When data is pooled for epidemiological 
+or metaanalytic studies, we generally believe that data should 
+be anomalized so that socioeconomic or `q.cohort` data can 
+be statistically represented, whereas unique `q.personal` data 
+remains hidden.  These seem like common-sense requirements.  
+However, they rely on concepts which we may intuitively 
+understand, but whose precise definitions are elusive 
+or controversial.  What exactly does it mean to distinguish 
+uniquely `i.personal` data, that is indelibly fixed 
+to one person therefore particularly sensitive as a matter 
+of due privacy, from `q.demographic` data which is also personal 
+but which, tieing patients to a cohort of their peers, is 
+of potential public interest insofar as race, gender, and 
+other social qualities can sometimes be statistically significant?  
+How do privacy rights intersect with the legitimate desire to 
+identify all scientific factors that can affect epidemiological trends 
+or treatment outcomes?  More deeply, though, how should we 
+actually demarcate `i.demographic` from `i.personal` data?  What 
+details indicate that some part of some data structure is one or 
+the other?
+`p`
+
+`p.
+More fundamentally, what exactly is data sharing?  What are the 
+technical situations such that certain software operations are 
+to be `i.sharing` data in a fashion that triggers concerns 
+about privacy and patient oversight?  Although again we may 
+intuitively picture what `q.data sharing` entails, producing a 
+rigorous definition is surprisingly difficult.
 
 `p`
 
