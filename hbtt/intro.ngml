@@ -1,0 +1,257 @@
+
+`p.
+Most CyberPhysical Systems are connected to a software hub 
+which takes responsibility for monitoring, validating, and 
+documenting the state of the system's networked devices.  
+Developin robust, user-friedly central software is an 
+essential project in any CyberPhysical Systems deployment.  
+In this chapter, I will refer to systems' central software 
+as their `q.software hub`/.  Implementing software hubs 
+introduces technical challenges which are distinct from 
+manufacturing CyberPhysical devices themselves %-- in particular, 
+devices are usually narrowly focused on a particular 
+kind of data and measurement, while software hubs are 
+multi-purpose applications that need to understand and 
+integrate data from a variety of different kinds of 
+devices.  CyberPhysical software hubs also 
+present technical challenges that are different from 
+other kinds of software applications, even if 
+these hubs are one specialized domain in the larger 
+class of user-focused software applications.
+`p`
+
+`p.  
+Any software application provides human users with tools to 
+interactively and visually access data and computer 
+files, either locally (data encoded on the same computer running 
+the software) or remotely (data accessed over a network).  
+Computer programs can be generally classified as 
+`i.applications` (which are designed with a priority 
+to User Experience) and `i.background processes` 
+(which often start and maintain their state automatically 
+and have little input or visibility to human users, 
+except for special troubleshooting circumstances).  
+Applications, in turn, can be generally classified as 
+`q.web applications` (where users usually see one 
+resource at a time, such as a web page displaying some 
+collection of data, and where data is usually stored 
+on remote servers) and `q.native applications` 
+(which typically provide multiple windows and 
+Graphical User Interface components, and 
+which often work with data and files saved 
+locally %-- i.e., saved on the filesystem 
+of the `q.host` computer running the application).  
+Contemporary sofware design also recognizes 
+`q.hybrid` applications which combine features 
+of web and of native (desktop) software.   
+`p`
+
+`p.
+Within this taxonomy, the typical CyberPhysical 
+software hub should be classified as a native, 
+desktop-style application, representing the 
+state of networked devices through 
+special-purpose Graphical User Interface 
+(`GUI;) components.  Networked CyberPhysical 
+devices are not necessarily connected to the 
+Internet, or communicate via Internet 
+protocols.  In many cases, software hubs will 
+access device data through securitized, closed-circuit 
+mechanisms which (barring malicious intrusion) ensure 
+that only the hub application can read or alter 
+devices' state.  Accordingly, an application reading 
+device data is fundamentally different than a 
+web application obtaining information from an Internet 
+server.`footnote.
+It may be appropriate for some device data %-- either 
+in real time or retroactively %-- to be shared 
+with the public via Internet connections, but 
+this is an additional feature complementing 
+the monitoring software's primary oversight roles.
+`footnote`  CyberPhysical networks are designed to 
+prioritize real-time connections between device and 
+software points, and minimize network latency.  
+Ideally, human monitors should be able 
+(via the centralized software) to alter device state 
+almost instantaneously.  Moreover, in contrast to 
+Internet communications with the `TCP; protocol, 
+data is canonically shared between devices and 
+software hubs in complete units %-- rather than 
+in packets which the software needs to reassemble.  
+These properties of CyberPhysical networks imply 
+that software design practices for monitoring 
+CyberPhysical Systems are technically different 
+than requirements for web-based components, like 
+`HTTP; servers.    
+`p`
+
+
+`p.
+At the same time, because they deal with raw 
+device data (and not, for example, primarily 
+with local filesystem files), software hubs also 
+have different requirements than conventional 
+desktop applications.  As CyberPhysical Systems 
+become an increasingly significant part of 
+our Information Technology ecosystem, it will 
+be necessary for engineers to developed 
+rigorous models and design workflows modeled 
+expressly around the unique challenges and 
+niche specific to CyberPhysical software hubs.
+`p`
+
+
+`p.
+Hubs have at least three key responsibilities: 
+
+`enumerate, 
+`item; To present device and system data for human 
+users, in graphical, interactive formats suitable 
+for humans to oversee the system and intervene 
+as needed.
+
+`item; To validate device and system data ensuring 
+that the system is behaving correctly and predictably.
+
+`item; To log data (in whole or in part) for subsequent 
+analysis and maintenance.
+`enumerate`
+
+Prior to each of those capabilities is of course receiving 
+data from devices and pooling disparate data profiles into 
+a central runtime-picture of device and system state.   
+It may be, however, that direct device connection is 
+proper not to the software hub itself but to 
+drivers and background processes that are computationally 
+distinct from the main application.   Therefore, a 
+theoretical model of hub software design should assume 
+that there is an intermediate layer of background 
+processes separating the central application from 
+the actual physical devices.  Engineers can 
+assume that these background processes communicate 
+information about device state either by exposing 
+certain functions which the central application 
+can call (analogous to system kernel functions) 
+or by sending signals to the central application 
+when devices' state changes.  I will discuss these 
+architectural stipulations more rigorously later in 
+this chapter. 
+`p`
+
+
+`p.
+Once software receives device data, it needs to 
+marshal this information between different formats, 
+exposing the data in the different contexts of 
+`GUI; components, database storage, and 
+analytic review.  Consider the example of a 
+temperature reading, with `GPS; device location and 
+timestamp data (therefore a four-part structure 
+giving temperature at one place and time).  
+The software needs, in a typical scenario, to do 
+several things with this information: it has 
+to check the data to ensure it fits within 
+expected ranges (because malformed data can indicate 
+physical malfunction in the devices or the network).  
+It may need to show the temperature reading to a 
+human user via some visual or textual indicator.  
+And it may need to store the reading in a database 
+for future study or troubleshooting.  In these 
+tasks, the original four-part data structure is 
+transformed into new structures which are 
+suitable for verification-analytics, `GUI; programming, 
+and database persistence, respectively.     
+`p`
+
+`p.
+The more rigorously that engineers understand and document 
+the morphology of information across these different kinds 
+of software responsibility, the more clearly we can 
+define protocols for software design and user expectations.  
+Careful design requires answering many technical questions: 
+how should the application respond if it encounters 
+unexpected data?  How, in the presence of erroneous data, 
+can we distinguish device malfunction from coding error?  
+How should application users and/or support staff 
+be notified of errors?  What is the optimal Interface Design 
+for users to identify anomalies, or identify situations 
+needing human intervention, and then be able to 
+perform the necessary actions via the software?  
+What kind of database should hold system data retroactively, 
+and what kind of queries or analyses should engineers 
+be able to perform so as to study the system's 
+past states and performance? 
+`p`
+
+
+`p.
+I believe that the software development community has neglected 
+to consider general models of CyberPhysical sofware 
+which could answer these kinds of questions in a rigorous, 
+theoretically informed manner.  There is of course a robust 
+field of cybersecurity and code-safety, which establishes 
+Best Practices for different kinds of computing projects.  
+Certainly this established knowledge can and does influence 
+the implementation of software connected to CyberPhysical 
+systems no less than any other kind of software.  But 
+models of programming Best Practices are often associated 
+with specific coding paradigms, and therefore reflect 
+implementations' programming environment more than they 
+reflect the empirical domain targeted by a particular 
+software project.
+`p`
+
+`p.
+For example, Object-Oriented Programming, 
+Functional Programming, and Web-Based Programming present 
+different capabilities and vulerabilities and therefore 
+each have their own `q.Best Practices`/.  As a result, 
+our understanding of how to deploy robust, well-documented 
+and well-tested sofware tends to be decentralized 
+among distinct programming styles and development 
+environments.  External analysis of a code base %-- e.g., searching 
+for security vulnerabilities (attack routes for malicious code) 
+%-- are then separate disciplines with their own methods 
+and paradigms.  Such dissipated wisdom is unfortunate if 
+we aspire to develop integrated, broadly-applicable models 
+of CyberPhysical safety and optimal application 
+design, models which transcend paradigmatic 
+differences between coding styles and roles 
+(treating implementation, testing, and code 
+review as distinct technical roles, for instance).
+`p`
+
+`p.
+It is also helpful to distinguish cyber 
+`i.security` from `i.safety`/.  When these concepts are 
+separted, `i.security` generally refers to 
+preventing `i.deliberate`/, `i.malicious` intrusion into 
+CyberPhysical networks.  Cyber `i.safety` refers to preventing 
+unintended or dangerous system behavior due to innocent human 
+error, physical malfunction, or incorrect programming.  
+Malicious attacks %-- in particular the risks of 
+`q.cyber warfare` %-- are prominent in the 
+public imagination, but innocent coding errors or design 
+flaws are equally dangerous.  Incorrect data readings, 
+for example, led to recent Boeing 737 MAX jet accidents 
+causing over 200 fatalities (plus the worldwide grouding 
+of that airplane model and billions of dollars in losses 
+for the company).  A less tragic but noteworthy 
+case was the 1999 crash of NASA's US $125 million 
+Mars Climate Orbiter.  The crash was caused by 
+software malfunctions which in turn were caused 
+by two different software components producing 
+incompatible data %-- in particular, using 
+incompatible scales of measurement 
+(resulting in an unanticipated mixture of 
+English and metric units).   
+`p`
+
+`p.
+
+`p`
+
+`p.
+
+`p`
+

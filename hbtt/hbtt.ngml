@@ -1,0 +1,43 @@
+
+\documentclass[11pt,twocolumn]{article}
+
+`include<commands>;
+
+
+`document,
+
+`title.Hypergraph-Based Type Theory for Specifications-Conformant Code and
+Generalized Lambda Calculus: A case study in security protocols 
+for biomedical devices`
+`author.Nathaniel Christen`
+
+
+\twocolumn[\begin{@twocolumnfalse}
+`maketitle;
+`abstract,
+`abstract`
+
+%`flushright,
+%\usebox{\qboxi}
+%\usebox{\qboxii}
+%`flushright`
+
+`decoline;
+`vspace<3em>;
+\end{@twocolumnfalse}]
+
+\addcontentsline{toc}{section}{Hypergraph-Based Type Theory ...}
+
+
+`input<intro.ngml>;
+
+%`input<section1.ngml>;
+%`input<section2.ngml>;
+%`input<section3.ngml>;
+%`input<section4.ngml>;
+
+%`input<conclusion.ngml>;
+
+%`input<biblio>;
+
+`document`
