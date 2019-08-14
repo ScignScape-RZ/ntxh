@@ -56,7 +56,11 @@ Range-Bounded Types, Value Constructors, and Addressability}}}}}}
 
 \setlength{\parindent}{30pt}
 
-\usepackage[letterpaper, left=.65in,right=.65in,top=1in,bottom=1in]{geometry}
+\usepackage[letterpaper, left=.45in,right=.45in,top=1in,bottom=1in]{geometry}
+
+%\colorlet{codegr}{black!80!blue}
+
+\setlength{\columnsep}{7mm}
 
 \usepackage{etoolbox}
 
@@ -152,9 +156,14 @@ Range-Bounded Types, Value Constructors, and Addressability}}}}}}
 \let\Footnote\footnote
 \renewcommand\footnote[1]{\begingroup\footnotetrue\Footnote{#1}\endgroup}
 
+
+
 \newcommand{\AcronymText}[1]{{\iffootnote\begin{scriptsize}{\textsc{#1}}\end{scriptsize}%
 \else\begin{OldFootnoteSize}{\textsc{#1}}\end{OldFootnoteSize}\fi}}
 
+\newcommand{\TCP}{\AcronymText{TCP}}
+\newcommand{\GPS}{\AcronymText{GPS}}
+\newcommand{\CppTwenty}{\AcronymText{C++20}}
 
 \newcommand{\AcronymTextInitialCap}[1]{{\iffootnote\begin{scriptsize}{\textsc{#1}}\end{scriptsize}%
 		\else\begin{normalsize}{\textsc{#1}}\end{normalsize}\fi}}
