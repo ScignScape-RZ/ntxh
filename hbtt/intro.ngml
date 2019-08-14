@@ -402,6 +402,208 @@ to be `i.sharing` data in a fashion that triggers concerns
 about privacy and patient oversight?  Although again we may 
 intuitively picture what `q.data sharing` entails, producing a 
 rigorous definition is surprisingly difficult.
+`p`
+
+`p.
+In short, the public has a relatively inchoate 
+idea of issues related to cyber safety, security, and 
+privacy: there seems to be informal belief that current 
+technology is failing to meet the public's desired 
+standards, but there is no clear picture of what 
+`IT; engineers can or should do to improve the technology 
+going forward.  Needless to say, software should prevent 
+industrial catastrophes, and private financial data 
+should not be stolen by crime syndicates.  Beyond these 
+obvious points, however, it is not clearly defined how 
+the public's expectations for safer and more secure 
+technology translates to low-level programming practices.  
+How should developers earn public trust, and 
+when is that trust deserved?  Maxims like `q.try to avoid 
+catastrophic failure` are too self-evident to be useful.  
+We need more technical structures to identify 
+which coding practices are explicitly recommended 
+in the context of a dynamic where engineers need 
+to earn the public trust, but also need to define 
+the parameter for where this trust is warranted.    
+Without software safety models rooted in low-level 
+computer code, software safety can only be ex-post-facto 
+engineered, imposing requirements relatively late in the 
+development cycle and checking code externally, via 
+code review and analysis methods that are sepated from 
+the core development process.  While such secondary 
+checking is important, it cannot replace software built 
+with an eye to safety from the ground up. 
+`p`
+
+`p.
+This chapter, then, is written from the viewpoint that 
+cyber safety practices have not been clearly articulated 
+at the level of software implementation itself, 
+separate and apart from institutional or governmental oversight.  
+Regulatory oversight is only effective in proportion to 
+scientific clarity `visavis; desired outcomes and how 
+technology promotes them.  Drugs and treatment protocols, 
+for instance, can be evaluated through `q.gold standard` 
+double-blind clinical trials %-- alongside statistical 
+models, like `q.five-sigma` criteria, which measure 
+scientists' confidence that trial results are truly 
+predictive, rather than results of random chance.  This package 
+of scientific methodology provides a framework which can 
+then be adopted in legal or legislative contexts.  
+Continuing the example, policy makers can stipulate that 
+pharmaceuticals need to be tested in double-blind trials, 
+with statistically verifiable positive results, before 
+being approved for general-purpose clinical use.  Such a  
+well-defined policy approach is only possible because 
+there are biomedical paradigms which define how treatments 
+can be tested to maximize the chance that positive test 
+results predict similar results for the 
+general patient population.
+`p`
+
+`p.
+Analogously, a general theory of cyber safety has 
+to be a software-design issue before it becomes a 
+policy or contractual issue.  It is at the level of 
+low-level software design %-- of actual source code 
+in its local implementation and holistic integration 
+%-- that engineers can develop technical `q.best practices` 
+which then provide substance to regulative oversight.  
+Stakeholders or governments can recommend (or require) that 
+certain practices adopted, but only if engineers 
+have identified practices which are believed, 
+on firm theoretical ground, to effectuate safer, 
+more robust software.  
+`p`
+
+`p.
+This chapter, then, considers code-safety from the 
+perspective of computer code outward; it is grounded 
+on code-writing practice and in the theoretical 
+systems which have historically been linked to 
+programming (like type theory and lambda 
+calculus), yielding its scientific basis.  
+I assume that formal safety models 
+formulated in this low-level context can propagate 
+to institutional and governmental stake-holders, 
+but discussion of the legal or contractual 
+norms that can guide software practice are 
+outside the chapter's central scope. 
+`p`
+
+`p.
+In the CyberPhysical context, I assume here 
+that the most relevant software projects 
+are hub applications; and that the preeminent 
+issues in cyber safety are validating 
+data and responding safely and predictably 
+to incorrect or malformed data.  
+Here we run into gaps between proper safety 
+protocols and common programming practice 
+and programming language design.  For example, 
+most mainstream languages have limited 
+`i.language-level` support for foundational 
+safety practices such as dimensional checking 
+(ensuring that algorithms do not work with 
+incommensurate measurement axes) or range checking 
+(ensuring that inaccurate CyberPhysical data is 
+properly identified as such %-- in the hopes 
+of avoiding cases like the Boeing 737 crashes, 
+where onboard software failed to recognize 
+inaccurate data from angle-of-attack sensors).  
+More robust safety models are often implicit in 
+software libraries, outside the core language; however, 
+to the degree that such libraries are considered 
+experimental, or tangential to core language features, 
+they are not likely `q.propagate` outside the 
+narrow domain of software development proper.  
+To put it differently, no safety model appears to have 
+been developed in the context of any mainstream 
+programming language far enough that the 
+very existence of such a model provides a concrete 
+foundation for stakeholders to define requirements 
+that developers themselves should follow.
+`p`
+
+
+`p.
+This chapter's discussion will be oriented toward 
+the `Cpp; programming language, which is arguably the most
+central point from which to consider the integration 
+of concerns %-- `GUI;, device networking, analytics 
+%-- characteristic of CyberPhysical hub software.  
+In practice, low-level code that interfaces with 
+devices (or their drivers) might be written in 
+`C; rather than `Cpp;; likewise, there is often a role 
+for functional programming languages %-- and 
+even theorem-proving systems %-- in mission-critical 
+data checking and system design validation.  But 
+`Cpp; is unique in having extensive resources 
+traversing various programming domains, like 
+native `GUI; components alongside low-level networking 
+and logically rigorous data verification.  For 
+this reason `Cpp; is a reasonable default language 
+for examining how these various concerns interoperate.   
+`p`
+
+`p.
+In that spirit, then, the `Cpp; core language is a 
+good case-study in language-level 
+cyber-safety support (and the lack thereof).  
+There are numerous `Cpp; libraries, mostly from 
+scientific computing, which provide features that would 
+be essential to a robust cyber safety model (such as, 
+bounded number types and unit-of-measurement types).  
+If some version of these libraries were adopted 
+into a future `Cpp; standard (analogous to the 
+`q.concepts` library, a kind of metaprogramming validator, 
+which has been included in `CppTwenty; after many 
+years of preparation), then `Cpp; coders 
+would have a canonical framework for safety-oriented 
+programming %-- a specific set of data types and 
+core libraries that should be an essential part of 
+critical CyberPhysical components.  That specific 
+circle of libraries, along with their scientific and 
+computational principles, would then become a 
+`q.cyber safety model` that could be adopted 
+by CyberPhysical applications.  Moreover, the existence of 
+such a model can then serve as a concrete 
+foundation for defining coding and project requirements.  
+Stakeholders could stipulate that developers use those 
+specific libraries intrinsic to the cyber safety model,  
+or if this is infeasible, alternate libraries offering 
+similar features.
+`p`
+
+`p.
+Of course, the last paragraph was counterfactual %-- `i.without` 
+such a canonical `q.cyber safety model`/, there is no 
+firm foundation for identifying stakeholder priorities.  
+We may have generic guidelines %-- try to protect 
+against physical error; try to restrict access to private data 
+%-- but we do not have a canonical model against which code 
+can be designed.  I believe this is a reasonable claim 
+to make in the context of `Cpp;, and most or all other 
+mainstream programming languages as well.  
+`p`
+
+`p.
+But this situation also implies that language designers and 
+library developers can play a lead role in establishing a 
+safety-oriented CyberPhysical foundation.  Insofar as 
+this foundation lies in programming languages and 
+software engineering %-- in data types, procedural 
+implementations, and code analytics %-- then the responsibility 
+for developing a safety-oriented theory and practice 
+lies with the software community, not with CyberPhysical device 
+makers or with civic or institutional stakeholders.  
+The core principles of a next-generation CyberPhysical  
+architecture would then be worked out in the context 
+of software language design and software-based data 
+modeling.  My goal in this chapter is accordingly 
+to define what I believe are fundamental and canonical 
+structures for theorizing data structures and the 
+computer code which operates on them.
 
 `p`
 
