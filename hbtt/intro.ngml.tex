@@ -504,6 +504,7 @@ very existence of such a model provides a concrete
 foundation for stakeholders to define requirements 
 that developers can then follow.
 }
+\thindecoline{}
 \p{This chapter's discussion will be oriented toward 
 the \Cpp{} programming language, which is arguably the most
 central point from which to consider the integration 
@@ -558,7 +559,20 @@ against physical error; try to restrict access to private data
 integrated with a core language, against which compliant code 
 can be designed.  I believe this is a reasonable claim 
 to make in the context of \Cpp{}, and most or all other 
-mainstream programming languages as well.  
+mainstream programming languages as well.
+}
+\p{Having said that, we should not \q{blame} software language engineers 
+for gaps in mainstream languages.  It turns out that 
+such features as dimensional-unit types and bounded numerics 
+are surprisingly difficult to implement, particularly at 
+the core language level where such types must seamlessly 
+interoperate with all other language features 
+(examine the code \mdash{} or even documentation \mdash{} for 
+the \boostUnits{} library for a sense of the technical 
+intricasies these implementations involve).  
+Consequently, progress toward core-language cyber safety 
+features will be advanced with methodological progress in 
+software language design and engineering itself.   
 }
 \p{But this situation also implies that language designers and 
 library developers can play a lead role in establishing a 

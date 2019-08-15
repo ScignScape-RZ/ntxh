@@ -322,6 +322,24 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \sectionline{white}
 }
 
+\newcommand{\thinsectionline}[1]{%
+	\noindent
+	\begin{center}
+		{\color{#1}
+			\resizebox{.2\linewidth}{1.5ex}
+			{{%
+					{\begin{tikzpicture}
+						\node  (C) at (0,0) {};
+						\node (D) at (9,0) {};
+						\path (C) to [ornament=84] (D);
+						\end{tikzpicture}}}}}%
+	\end{center}
+}
+
+\newcommand{\thindecoline}{\vspace*{-.65em}\thinsectionline{blGreen!10!orange}\vspace*{-.85em}}
+\newcommand{\thindecolineadj}[2]{\vspace*{#1}\thinsectionline{blGreen!10!orange}\vspace*{#2}}
+
+
 \newlength{\mplength}
 \setlength{\mplength}{1.05\linewidth}
 
@@ -501,6 +519,9 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \newcommand{\MIT}{\AcronymText{MIT}}
 
 \newcommand{\nulltt}{\AcronymText{\texttt{null}}}
+
+\newcommand{\boostUnits}{\codeText{\texttt{boost::units}}}
+
 \newcommand{\Maybe}{\codeText{Maybe}}
 \newcommand{\bind}{\codeText{bind}}
 \newcommand{\return}{\codeText{return}}
@@ -1395,5 +1416,13 @@ $\Longrightarrow$ $\mathcal{T}_1$ $\rightarrow$ $\mathcal{T}_2$}}
   }
   \item\relax}
  {\endlist}
+
+
+\newcommand{\caltypeT}{\ensuremath{\mathcal{T}}}
+\newcommand{\calS}{\ensuremath{\mathcal{S}}}
+
+\newcommand{\typeTp}{\ensuremath{\mathcal{T}'}}
+\newcommand{\typeTpp}{\ensuremath{\mathcal{T}''}}
+
 
 
