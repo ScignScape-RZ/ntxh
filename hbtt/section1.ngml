@@ -6,7 +6,7 @@ There are several design principles which can help ensure
 safety in large-scale, native/desktop-style `GUI;-based 
 applications.  These include:
 
-`enumerate,
+`enumerate,[leftmargin=5mm]
 `item;  Identify operational relationships between types.  
 Suppose `calS; is a data structure modeled via type `caltypeT;.  
 This type can then be associated with a type (say, 
@@ -45,7 +45,7 @@ In the CyberPhysical context, an example might be code which
 is activated when motion-detector sensors signal something moving 
 in their vicinity.  These are the `q.surface` points where data 
 `q.enters the system`/.
-
+`pseudoIndent;
 Conversely, other code points locate 
 the software's capabilities to initiate external effects.  For 
 instance, one consequence of users clicking a mouse button might 
@@ -55,7 +55,7 @@ is hooked up to external devices which have tangible capabilities,
 such as activating a light-source or modifying the on-screen cursor.  
 The specific code points which leverage such capabilities 
 represent data `q.leaving the system`/.  
-
+`pseudoIndent;
 In general, it is important to identify points where data 
 `q.enters` and `q.leaves` the system, and to distinguish 
 these points from sites where data is transferred 
@@ -70,7 +70,7 @@ information spaces: notably, Functional-Reactive Programming
 `cite<PaykinKrishnaswami>;, 
 `cite<WolfgangJeltsch>;) and the theory of 
 Hypergraph Categories 
-(`cite<BobCoecke>;, `cite<BrendanFong>;, 
+(`cite<InteractingConceptualSpaces>;, `cite<BrendanFong>;, 
 `cite<BrendanFongThesis>;, `cite<AleksKissinger>;). 
 `enumerate`
 
@@ -92,7 +92,7 @@ never be called on a value that is `i.not` an integer
 with something `i.other than` an integer in that field.  
 Such minimal guarantees, however, are too coarse for 
 safety-conscious programming.  Even the smallest 
-(8-bit) unsigned integer type would permits someone's age to 
+(8-bit) unsigned integer type would permit someone's age to 
 be 255 years, which is surely an error.  So any 
 safety-conscious code dealing with ages needs to check that 
 the numbers fall in a range narrower than built-in 
@@ -115,14 +115,14 @@ such as:
 
 `itemize,
 `item; Should data validation be included in the same 
-procures which operate on (validated) data, or 
+procedures which operate on (validated) data, or 
 should validation be factored into separate procedures?
 
 `item; Should data validation be implemented at the type 
 level or the procedural level?  That is, should specialized 
 data types be implemented that are guaranteed only to 
 hold valid data?  Or should procedures work with more 
-generic data types and perform validations on a case-by-case 
+generic data types, and perform validations on a case-by-case 
 basis?
 
 `item; How should incorrect data be handled?  In CyberPhysical software, 
@@ -133,6 +133,14 @@ an option; silently canceling the desired operation or trying to substitute
 presenting technical error messages to human users may be confusing.  
 `itemize`
 
+These questions do not have simple answers.  As such, we 
+should develop a rigorous theoretical framework so as to 
+codify the various options involved %-- what architectural 
+decisions can be made, and what are the strengths and weaknesses 
+of different solutions.
+`p`
+
+`p. 
 This section will sketch an overview of the data-validation 
 issues from the broader vantage of planning and stakeholder 
 expectations, before addressing narrower programming concern 
@@ -147,8 +155,8 @@ programming assumptions more fine-grained than strong typing
 alone allows %-- for example, that someone's age is not reported 
 as 255 years, or that systolic pressure is not recorded as 
 less than diastolic.  I will use the term `i.fragile code` for
-code which `i.makes` programming assumptions and does not itself 
-verify that these assumptions are obeyed.  Fragile code is 
+code which `i.makes` programming assumptions `i.without itself` 
+verifying that such assumptions are obeyed.  Fragile code is 
 especially consequential when incorrect data would cause the 
 code to fail significantly %-- to crash the application, 
 enter an infinite loop, or any other nonrecoverable scenario.
@@ -174,7 +182,7 @@ In that general outline, however, there is room for a variety
 of coding styles and paradigms.  Perhaps these can be broadly 
 classified into three groups: 
 
-`enumerate,
+`enumerate,[leftmargin=5mm]
 
 `item; Combine gatekeeper and fragile code in one procedure.
 `item; Separate gatekeeper and fragile code into different procedures.
@@ -189,10 +197,10 @@ integer.  If this code were called with malformed data where
 systolic and diastolic were inverted, the difference would 
 be a negative number, which (under binary conversion to an 
 unsigned integer) would come out as a potentially 
-exteremely large positive number (as if the patient had 
+extremely large positive number (as if the patient had 
 blood pressure in, say, the tens-of-thousands).  This nonsensical 
 outcome indicates that the basic calculation is fragile.  
-With then have three options: test that systolic-greater-than 
+We then have three options: test that systolic-greater-than 
 diastolic `i.within the procedure`/; require that this test 
 be performed prior to the procedure being called; 
 or use a special data structure so that 
@@ -210,7 +218,8 @@ situations there may be more complex data-validation
 requirements, and separating code which `i.checks` 
 data from code which `i.uses` data, into different 
 procedures, may simplify subsequent code maintanence.  
-If the `i.validation` code needs to be modified, 
+If the `i.validation` code needs to be modified 
+%-- and if it is factored into its its own procedure %--  
 this can be done without modifying the 
 code which actually works on the data (reducing the 
 risk of new coding errors).  In short, factoring 
@@ -316,7 +325,7 @@ specifications that have to be established when implementing and then
 deploying software systems in a domain like Ubiquitous Computing.
 It is unreasonable to expect that all relevant standards will be
 settled `i.a priori` by sufficiently monolithic and comprehensive
-data models (like Ontologies, or database schema).  Instead,
+data models.  Instead,
 developers and end-users need to acquire trust in a development process
 which is ordered to make standardization questions become apparent
 and capable of being followed-up in system-wide ways.
@@ -329,28 +338,28 @@ triaxial accelerometers and about at-rest vs. exercise
 heart-rate ranges %-- would not
 necessarily be evident to software engineers or project architects when the
 system is first conceived.  These are the kind of modeling questions that tend
-to emerge from the ground up as individual functions and datatypes are
+to emerge as individual functions and datatypes are
 implemented.  For this reason, code development serves a role beyond just
-providing the software which a system, once placed in operation, will use.
+concretizing a system's deployment software.
 The code at fine-grained scales also reveals questions that need to be
 asked at larger scales, and then the larger answers reflected back in the
 fine-grained coding assumptions, plus annotations
 and documentation.  The overall
 project community needs to recognize software implementation as a crucial
 source for insights into the specifications that have to be established
-to make the operationalized system correct and resilient.
+to make the deployed system correct and resilient.
 `p`
 
 `p.
 For these reasons, code-writing %-- especially at the smallest scales %--
 should proceed via paradigms disposed to maximize
-the `q.discovery of questions` effect that I just
-highlighted.  Deployed systems will be
+the `q.discovery of questions` effect.  Systems in operation will be
 more trustworthy when and insofar as their software bears witness to a project
 evolution that has been well-poised to unearth questions
 that could otherwise diminish the system's trustworthiness.
 Lest this seem like common sense and unworthy of being emphasized
-so lengthily, I'd comment that literature on `USH;, for
+so lengthily, I'd comment that literature on Ubiquitous Sensing for 
+Healthcare (`USH;), for
 example, appears to place much greater emphasis on Ontologies or Modeling
 Languages whose goal is to predetermine software design at such
 detail that the actual code merely enacts a preformulated schema,
@@ -383,7 +392,7 @@ digital substratum.
 `p.
 `q.Transparency` in this environment means that `USH; code needs
 to explicitly declare its operational assumptions, on the
-zoomed-in function-by-function scale, and also exhibit its
+zoomed-in procedure-by-procedure scale, and also exhibit its
 Quality Assurance strategies, on the zoomed-out system-wide scale.  It
 needs to demonstrate, for example, that the code base has sufficiently
 strong typing and thorough testing that devices are always matched to
@@ -415,7 +424,7 @@ projects.  The library's engineer might, quite reasonably, deliberately
 choose not to check that the algorithm is invoked on same-sized lists
 %-- checks that would complicate the code, and sometimes slow the
 algorithm unnecessarily.  It is then the responsibility of code that
-`i.calls` whatever function implements the algorithm to ensure that it
+`i.calls` whatever procedure implements the algorithm to ensure that it
 is being employed correctly %-- specifically, that this
 `q.client` code does `i.not` try
 to use the algorithm with `i.different-sized` lists.  Here `q.fragility` is
@@ -438,7 +447,7 @@ could be made robust by `i.checking`
 But if it has other requirements %-- that the lists are non-empty,
 and so forth %-- the implementation can get padded with a chain of
 preliminary `q.gatekeeper` code.  In such cases the gatekeeper
-code may be better factored into a different function, or expressed
+code may be better factored into a different procedure, or expressed
 as a specification which engineers must study before attempting to
 use the implementation itself.
 `p`
@@ -474,7 +483,7 @@ between formal and semi-formal specifications %-- which many programmers
 hope to avoid via strong type systems.
 `p`
 
-`p.
+`p.  
 Most programming language will provide some basic (typically relatively
 coarse-grained) specification semantics, usually
 through type systems and straightforward code observations
@@ -483,7 +492,7 @@ For sake of discussion, assume that all languages have distinct
 compile-time and run-time stages (though these may be opaque to
 the codewriter).  We can therefore distinguish compile-time
 tests/errors from run-time tests and errors/exceptions.
-Via Software Language Engineering (`SLE;), we can study
+Via Software Language Engineering, we can study
 questions like: how
 should code requirements be expressed?  How and to
 what extent should requirements be tested by the language
@@ -495,16 +504,13 @@ syntax of a language?
 `p`
 
 `p.
-Most type systems provide only relatively coarse classification
-of a universe of typed values %-- even though many functions require their
-arguments to fit more precise specifications than practical
-type systems allow.  This is unfortunate given the premise of
-`q.separation of concerns` and the maxim that
-functions should have single and narrow roles: `i.validating` input
-is actually a different role than `i.doing` calculations.  Maximwise, then,
-functions with fine requirements can be split into two: a
-gatekeeper that validates input before a fragile function is called,
-and separate from that the function's own implementation itself.
+Given the maxim that
+procedures should have single and narrow roles %-- `q.separation 
+of concerns` %-- note that `i.validating` input
+is actually a different role than `i.doing` calculations.  This is 
+why procedures with fine requirements might be split into two: a
+gatekeeper that validates input before a fragile procedure is called,
+separate and apart from that procedures own implementation.
 A related idea is overloading fragile functions: for example,
 a function which takes one value can be overloaded in terms
 of whether the value fits in some prespecified range.  These two
@@ -514,7 +520,7 @@ satisfied by the input.
 `p`
 
 `p.
-But despite their potential elegance, most practical programming languages
+But despite their potential elegance, mainstream programming languages
 do not supply much language-level support for expressing
 groups of fine-grained functions along these lines.  Advanced 
 type-theoretic constructs %-- including Dependent Types,
@@ -525,11 +531,11 @@ to be integrated with general-purpose type checking, without the need for
 static analyzers or other `q.third party` tools (that is, projects maintained
 orthogonally to the actual language engineering; i.e., to
 compiler and runtime implementations).  Unfortunately, 
-these advanced type systems are more complex to implement.  
+these advanced type systems are also more complex to implement.  
 If software language engineers aspire to make Dependent Types and 
 similar advanced constructs part of their core language, 
 creating compilers and runtime engines for these languages 
-becomes more difficult.
+becomes proportionately more difficult.
 `p` 
 
 `p.
@@ -550,8 +556,7 @@ of tools %-- parsers, compilers, and/or runtime libraries
 according to the language specifications.  
 Language design is therefore constrained by 
 what is technically feasible for these supporting tools.  
-Practical language design, then %-- often called 
-Software Language Engineering %-- is an interdisciplinary 
+Practical language design, then, is an interdisciplinary 
 process which needs to consider both the dimension of 
 programming languages as communicative media and 
 as digital artifacts with their own engineering challenges 
@@ -572,19 +577,19 @@ programming languages.  However, it is not always feasible
 or desirable to implement important software with 
 experimental, non-mainstream languages.  By their nature, 
 such projects tend to produce code that must be understood by 
-many different developers and which remains usable years into 
+many different developers and must remain usable years into 
 the future.  These requirements point toward 
 well-established, mainstream languages %-- and 
-development techniques overall %-- as opposed to 
+mainstream development techniques overall %-- as opposed to 
 unfamiliar and experimental methodologies, even if those 
 methodologies have potential for safer, more productive 
 coding in the future.   
 `p`
 
 `p.
-As a result, methodologies for safety-conscious coding can be 
-split between those which depend on core-language feature, 
-and those which depend on external, retroactive analysis 
+In short, methodologies for safety-conscious coding can be 
+split between those which depend on core-language features, 
+and those which rely on external, retroactive analysis 
 of sensitive code.  On the one hand, some languages and projects
 prioritize specifications that are intrinsic to the language and integrate
 seamlessly and operationally into the language's foundational
@@ -613,10 +618,10 @@ Glasgow Haskell Compiler].  Thus, well-typed Ivory programs
 are guaranteed to produce memory safe executables, `i.all without
 writing a stand-alone type-checker` [my emphasis].  In contrast, 
 the Ivory syntax is `i.deeply` embedded within Haskell.
-This novel combination of shallowly-embedded types and deeply-
-embedded syntax permits ease of development without sacrificing
+This novel combination of shallowly-embedded types and 
+deeply-embedded syntax permits ease of development without sacrificing
 the ability to develop various back-ends and verification tools [such as]  
-a theorem-prover back-end. All these back-ends share the
+a theorem-prover back-end.  All these back-ends share the
 same AST [Abstract Syntax Tree]: Ivory verifies what it compiles.
 \cite[p. 1]{ivory}.
 `displayquote`   In other words, the creators of Ivory are promoting the
@@ -686,8 +691,9 @@ Development Environment ecosystem.
 `p`
 
 `p.
-These philosophical differences are normative as well as descriptive:
-they influence programming language design, and how languages influence
+These philosophical differences (what I dub `q.internalist` vs. `q.externalist`/) 
+are normative as well as descriptive:
+they influence programming language design, and how languages in turn influence
 coding practices.  One goal of language design is to produce languages 
 which offer rigorous guarantees %-- fine-tuning the languages' 
 type system and compilation model to maximize the level of detail 
@@ -695,7 +701,7 @@ guaranteed for any code which type-checks and compiles.
 Another goal of language design is to define syntax and 
 semantics permitting valid source code to be analyzed 
 as a data structure in its own right.  Ideally, 
-languages can aspire to both goals; in practice, however, 
+languages can aspire to both goals.  In practice, however, 
 achieving both equally can be technically difficult.  
 The internal representations conducive to strong type and 
 compiler guarantees are not necessarily amenable to 
@@ -715,7 +721,7 @@ and cognitively separate from hand-to-screen codewriting
 because they can theoretically produce coding errors, even when
 the anomalies involved are trivial enough to be tractable for
 even barely adequate code review).  One challenge for language engineers is
-accordingly to serve both communities.  We can aspire to
+accordingly to serve both communities.  We can, for example, aspire to
 implement type systems which are sufficiently
 expressive to model many specification, validation, and
 gatekeeping scenarios, while also anticipating that language code
@@ -746,8 +752,8 @@ as procedural
 %-- combining what are essentially two otherwise unrelated
 mathematical formations, Directed Hypergraphs and
 (typed) Lambda Calculus %-- is laid out in
-Sections `sectsym;\hyperref[sectTwo]{I}
-and `sectsym;\hyperref[sectThree]{II}.
+Sections `sectsym;\hyperref[sectTwo]{II}
+and `sectsym;\hyperref[sectThree]{III}.
 `p`
 
 `p.
@@ -766,7 +772,7 @@ I use the framework of Channel Complexes to identify
 design patterns that achieve many goals of
 `q.expressive` type systems while being implementationally
 feasible given the constraints of mainstream programming
-languages and compilers, such as `Cpp;.
+languages and compilers (with an emphasis on `Cpp;).
 `p`
 
 `p.
@@ -782,7 +788,7 @@ enlarging the `q.surface area` for vulnerability, and often worn by people
 or used in a domestic setting, so they tend carry personal (e.g., location)
 information, making network security protocols especially important
 (`cite<RonaldAshri>;, `cite<LalanaKagal>;,
-`cite<LavanyaRamapantulu>;, `cite<TakeshiTakahashi>;,
+`cite<TakeshiTakahashi>;,
 `cite<MozhganTavakolifard>;).  The dangers
 of coding errors and software vulnerabilities, in CyberPhysical
 Systems like the Internet of Things (`IoT;), are even more pronounced
@@ -821,19 +827,4 @@ in safety-critical computer code, in cost-effective, practically
 effective ways.
 `p`
 
-`p.
-In particular, to take an example especially relevant for this volume,
-the code which directly interacts with `USH; devices needs particularly
-thorough documentation, review, and (perhaps, as a way to
-achieve these) annotations.  Code designed and annotated via
-techniques reviewed in this chapter will not be guaranteed to
-protect privacy, block malware, or detect all device-related errors.
-But such code `i.will` be amenable to analytic processes which
-should increase different parties' (doctors, patients,
-application developers) assessment of its transparency and
-trustworthiness.  In the end, components earn trust not through
-one monolithic show of robustness but via designs judged
-to reflect quality according to multiple standards and
-paradigms, with each approach to code evaluation adding its
-own measure to stakeholders' overall trust in the system.
-`p`
+

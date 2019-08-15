@@ -1,3 +1,24 @@
+
+`p.
+In particular, to take an example especially relevant for this volume,
+the code which directly interacts with `USH; devices needs particularly
+thorough documentation, review, and (perhaps, as a way to
+achieve these) annotations.  Code designed and annotated via
+techniques reviewed in this chapter will not be guaranteed to
+protect privacy, block malware, or detect all device-related errors.
+But such code `i.will` be amenable to analytic processes which
+should increase different parties' (doctors, patients,
+application developers) assessment of its transparency and
+trustworthiness.  In the end, components earn trust not through
+one monolithic show of robustness but via designs judged
+to reflect quality according to multiple standards and
+paradigms, with each approach to code evaluation adding its
+own measure to stakeholders' overall trust in the system.
+`p`
+
+However, in the general case, strong typing alone does not provide strong 
+enough guarantees for fragile code.  
+
 `p.
 A fundamental aspect of programming is asserting specifications on when
 bodies of code should be executed %-- criteria which can be coarse-grained
