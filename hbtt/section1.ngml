@@ -400,7 +400,7 @@ gatekeeping code that both validates their input/output and controls
 access to potentially sensitive patient data.
 `p`
 
-`decoline;
+`thindecoline;
 
 `p.
 Fragile code is not necessarily a sign of poor design.  Sometimes
@@ -449,8 +449,7 @@ inspire developers using the code to proceed attentively,
 which can be safer in the long run than trying to avoid fragile code
 through engineering alone.  The takeaway is that while `q.robust` is
 contrasted with `q.fragile` at the smallest scales (such as
- a single function),
-the overall goal is systems and components that are robust at the
+a single function), the overall goal is systems and components that are robust at the
 largest scale %-- which often means accepting `i.locally` fragile
 code.  Architecturally, the ideal design may combine
 individual, `i.locally fragile` units with rigorous documentation and gatekeeping.
@@ -515,106 +514,78 @@ satisfied by the input.
 `p`
 
 `p.
-Despite their potential elegance, most practical programming languages
+But despite their potential elegance, most practical programming languages
 do not supply much language-level support for expressing
-groups of fine-grained functions along these lines.  Dependent Types,
-typestate, and effect-systems are each models or paradigms which
-can document function implementation requirements with more precision
+groups of fine-grained functions along these lines.  Advanced 
+type-theoretic constructs %-- including Dependent Types,
+typestate, and effect-systems %-- model requirements with more precision
 than can be achieved via conventional type systems alone.  Integrating these
-paradigms into type systems %-- which is done, at least incompletely,
-at least in some versions of some programming languages %-- allows requirements
-to be confirmed by general type checking, without the need for
+paradigms into core-language type systems permits data validation 
+to be integrated with general-purpose type checking, without the need for
 static analyzers or other `q.third party` tools (that is, projects maintained
 orthogonally to the actual language engineering; i.e., to
-compiler and runtime implementations).  So there are no intractable `i.formal` obstacles to
-augmenting the expressiveness of practical languages' type systems.  Nevertheless,
-such enhancements appear to be either sufficiently difficult to `q.language
-engineer`/, and/or to adversely affect language performance, enough that
-the benefits of type-expressiveness do not on net improve the language.
-Or at least, it is reasonable to assume that those responsible for
-maintaining languages and language tools (specifications, compilers, standard libraries)
-believe as much, so that Dependent Types (for example) are only
-internally supported by a few (mostly academic) languages.
-`p`
-
-`p.
-This impasse is frustrating not only for practical reasons %-- common
-programming languages lack features which would make developers more
-productive %-- but, also, more philosophically.  I would
-argue that the most `i.philosophically` well-grounded and
-justifiable style of
-language %-- a collection of `SLE; norms whose paradigms carry the most weight when
-considerations from multiple disciplines and theories are
-factored in, like linguistics, mathematics, and cognitive science
-%-- would feature default `q.lazy` evaluation as in Haskell
-(expressions are not evaluated until their results are needed),
-Dependent Types as in Idris, and `q.effect typing`/, of a genre
-hesitant to single out effect-free functions as preferable
-but which `i.does` recognize effect-capabilities as a discriminating
-factor in a mature type system.  However, that particular trio of
-features or approaches has not been embraced by any
-realistic language, certainly not any in widespread use.  We can debate
-whether this reflects technical language-implementation difficulties
-%-- and whether this trio of paradigms is superior to alternatives
-%-- but the overarching point is that Software Language Implementation should
-be flexible enough to support multiple paradigms %-- precisely because
-we'd like to embrace `SLE; paradigms for reasons not
-exclusively driven by engineering feasibility.
-`p`
-
-`p.
-Programming languages
-and the code written in them are a kind of structural creole, partly
-engineered artifacts and machinery existing in virtual/digital spaces,
-and partly human texts and conventions.  The structure and
-elemental form (grammar, data layout) of these artifacts similarly
-joins human and engineering concerns.  Language design should therefore
-be informed
-by human as well as mathematical and computing sciences %-- after all, a
-programming language is a `i.language`/, a vehicle of human
-expression and communication.  Code `q.expresses` routines for computer
-processing rather than address to other humans, but as programmers we also
-write code to be understood by others, communicating indirectly via
-our shared understanding of how computer languages work.  So programming
-languages are indeed communicative media of a certain sort.
-As human artifacts rigid enough for a digital environment, they
-are an exceptional forum for exploring human cognition and
-signification in a structured, formally tractable milieu.
-Software Language design should be based on human cognitive and
-communicative structures, as well as on structural mathematics,
-and philosophy centered on human thought and experience should be able
-to guide (and learn from) Software Language Engineering
-(William Rapaport `cite<WilliamRapaport>; has an interesting discussion
-along these lines, which is intriguing to read alongside
-overviews of the OpenCog project I will cite later).
-`p`
-
-`p.
-This makes `SLE; implementational limitations especially troubling:
-language design should be guided by philosophy and mathematics, not by
-estimations of which language features are practical given the state
-of current programming languages.
-`p`
+compiler and runtime implementations).  Unfortunately, 
+these advanced type systems are more complex to implement.  
+If software language engineers aspire to make Dependent Types and 
+similar advanced constructs part of their core language, 
+creating compilers and runtime engines for these languages 
+becomes more difficult.
+`p` 
 
 `p.
 If these observations are correct, I maintain that it is a worthwhile
-endeavor to return to the theoretical drawing board and explore how type theory
-itself can shed light on the implementational obstacles that we observe in practice.
-I will argue that topics which influence the feasibility of concrete
-language-level implementations are insufficiently modeled by conventional type
-theory; so grounding analyses on Software Language Engineering practice
-can potentially extend the theory.  Certain language-specific
-phenomena do not have evident conceptualizations in the kind of formal
-type theory whose `q.language` is more of an abstraction, like a
-Lambda (written `mOldLambda;-) Calculus,
-than a physically realized complex system.
+endeavor to return to the theoretical drawing board, with the goal 
+of improving programming language technology itself.  
+Programming languages are, at one level, artificial 
+`i.languages` %-- they allow humans to communicate 
+algorithms and procedures to computer processors, and 
+to one another.  But programming languages are also 
+themselves engineering artificats.  It is a complex 
+project to transform textual source-code %-- which is 
+human-readable and looks a little bit like natural 
+language %-- into binary instructions that computers 
+can execute.  For each language, there is a stack 
+of tools %-- parsers, compilers, and/or runtime libraries 
+%-- which enable source code to be executed 
+according to the language specifications.  
+Language design is therefore constrained by 
+what is technically feasible for these supporting tools.  
+Practical language design, then %-- often called 
+Software Language Engineering %-- is an interdisciplinary 
+process which needs to consider both the dimension of 
+programming languages as communicative media and 
+as digital artifacts with their own engineering challenges 
+and limitations.
 `p`
 
-`decoline;
+`subsection.Core Language vs. External Tools`
 
 `p.
-Of the many approaches to specifications and verification, we might recognize two
-distinct tendencies.  On the one hand, some languages and projects
+Because of programming languages' engineering limitations, 
+such as I just outlined, software projects should not 
+necessarily rely on core-language features for 
+responsible, safety-consious programming.  
+Academic and experimental languages tend to have 
+more advanced features, and to embody more 
+cutting-edge language engineering, compared to mainstream 
+programming languages.  However, it is not always feasible 
+or desirable to implement important software with 
+experimental, non-mainstream languages.  By their nature, 
+such projects tend to produce code that must be understood by 
+many different developers and which remains usable years into 
+the future.  These requirements point toward 
+well-established, mainstream languages %-- and 
+development techniques overall %-- as opposed to 
+unfamiliar and experimental methodologies, even if those 
+methodologies have potential for safer, more productive 
+coding in the future.   
+`p`
+
+`p.
+As a result, methodologies for safety-conscious coding can be 
+split between those which depend on core-language feature, 
+and those which depend on external, retroactive analysis 
+of sensitive code.  On the one hand, some languages and projects
 prioritize specifications that are intrinsic to the language and integrate
 seamlessly and operationally into the language's foundational
 compile-and-run sequence.  Improper code (relative to specifications)
@@ -622,20 +593,36 @@ should not compile, or, as a last resort, should fail gracefully at run-time.
 Moreover, in terms of programmers' thought processes, the
 description of specifications should be intellectually continuous
 with other cognitive processes involved in composing code, such
-as designing types or implementing algorithms.
+as designing types or implementing algorithms.  For sake of 
+discussion, I will call this paradigm `q.internalism`/.  
 `p`
 
 `p.
-The attitude I just summarized %-- which perhaps can be called
-`q.internalist` %-- is evident in passages like this (describing
+The `q.internalist` mindset seeks to integrate data 
+validation seamlessly with other language features.  
+Malformed data should be flagged via similar mechanisms 
+as code which fails to type-check; and errors should 
+be detected as early in the development process as possible.   
+Such a mindset is evident in passages like this (describing
 the Ivory programming language):
-`q.Ivory's type system is shallowly embedded within Haskell's
+
+`displayquote,
+Ivory's type system is shallowly embedded within Haskell's
 type system, taking advantage of the extensions provided by [the
 Glasgow Haskell Compiler].  Thus, well-typed Ivory programs
 are guaranteed to produce memory safe executables, `i.all without
-writing a stand-alone type-checker`/` \cite[p. 1]{ivory} (my
-emphasis).  In other words, the creators of Ivory are promoting the
-fact that their language buttresses via its type system
+writing a stand-alone type-checker` [my emphasis].  In contrast, 
+the Ivory syntax is `i.deeply` embedded within Haskell.
+This novel combination of shallowly-embedded types and deeply-
+embedded syntax permits ease of development without sacrificing
+the ability to develop various back-ends and verification tools [such as]  
+a theorem-prover back-end. All these back-ends share the
+same AST [Abstract Syntax Tree]: Ivory verifies what it compiles.
+\cite[p. 1]{ivory}.
+`displayquote`   In other words, the creators of Ivory are promoting the
+fact that their language buttresses via its type system 
+%-- and via a mathematical precision suitable for 
+proof engines %-- 
 code guarantees that for most languages require external
 analysis tools.
 `p`
@@ -643,11 +630,14 @@ analysis tools.
 `p.
 Contrary to this `q.internalist` philosophy, other approaches
 (perhaps I can call them `q.externalist`/) favor a neater separation
-of specification, declaration and testing from the `q.core` programming language
-and coding activity.  In particular, most of the more important or complex
+of specification, declaration and testing from the core language,
+and from basic-level coding activity.  In particular %-- according to 
+the `q.externalist` mind-set %-- most of the more important or complex
 safety-checking does not natively integrate with the
 underlying language, but instead requires
-some external source code analyzer, or runtime libraries.  Moreover, it is unrealistic
+either an external source code analyzer, or 
+regulatory runtime libraries, or some combination of the two.  
+Moreover, it is unrealistic
 to expect all programming errors to be avoided with enough proactive planning,
 strong typing, and safety-focused paradigms: any complex
 code base requires some retroactive design, some combination
@@ -660,7 +650,8 @@ plus post-deployment monitoring.
 
 `p.
 As a counterpoint to the features cited as benefits to the
-Ivory language, consider Santanu Paul's Source Code Algebra (`SCA;)
+Ivory language, which I identified as representing the 
+`q.internalist` paradigm, consider Santanu Paul's Source Code Algebra (`SCA;)
 system described in `cite<SantanuPaul>; and
 `cite<GiladMishne>;, `cite<TillyEtAl>;:
 `displayquote,
@@ -696,82 +687,23 @@ Development Environment ecosystem.
 
 `p.
 These philosophical differences are normative as well as descriptive:
-they influence language design and how languages influence
-coding practices.  For Functional Programmers %-- taking them
-as representative of an influential but not dominant
-mindset %-- sufficiently expressive type systems and a preference for
-side-effect-free function types yields code which has fewer locations
-where erroneous run-time behavior can occur, and so is easier to
-evaluate and maintain.  Nonetheless, advocates for Object-Oriented
-architectures might reply, paradigms like `OO; provide more
-conceptually accurate and intuitive models, in terms of the cross-fit
-between digital representations and real-world phenomena.
-If it requires greater structural alteration to translate conceptual
-models into functional-programming designs, this undermines the
-apparent benefits of Functional Programming in the areas of
-code evaluation and maintenance.
+they influence programming language design, and how languages influence
+coding practices.  One goal of language design is to produce languages 
+which offer rigorous guarantees %-- fine-tuning the languages' 
+type system and compilation model to maximize the level of detail 
+guaranteed for any code which type-checks and compiles.  
+Another goal of language design is to define syntax and 
+semantics permitting valid source code to be analyzed 
+as a data structure in its own right.  Ideally, 
+languages can aspire to both goals; in practice, however, 
+achieving both equally can be technically difficult.  
+The internal representations conducive to strong type and 
+compiler guarantees are not necessarily amenable to 
+convenient source-level analysis, and vice-versa.    
 `p`
 
 `p.
-A conceptual/modeling rejoinder along these lines %--
-that is, as a counter to functional-programming advocacy
-if it becomes too dogmatic %--
-might be weakened if the kinds of performative
-guarantees that can be made in Functional contexts had no equivalents
-`visavis; other paradigms.  But even in an `OO; context, say, there
-`i.are` analyses focused on detecting code which (via constructs
-that Functional Programming avoids) threatens problematic
-behavior.  What is different in the `OO; context compared to
-Functional Programming is that the safety-critical analyses
-(to find `q.dangling pointers`/, race conditions, and so forth) are
-not so much tools within the language but
-external projects which take source code as a data structure to be
-traversed and queried (and/or running program instances as empirical
-phenomena to be observed).  Insofar as code anomalies
-can be found through rigorous methods, source code and live
-software have formally tractable layers of organization that
-are not exhausted by the mathematical concepts internal to
-programming languages and language engines (compilers and runtimes)
-themselves.  Errors in imperative or Object-Oriented
-code may be detectable through a sufficiently powerful analytic
-framework (or at least a sufficiently thorough test suite) even
-if they are not `i.formal` errors `visavis; the type system
-or `visavis; a `q.programs are proofs` `SLE; implementation strategy.
-`p`
-
-`p.
-To be sure, functional programmers might argue that strong type
-systems and functional idioms (algebraic datatypes, pattern
-matching as a control flow device, by-need/`q.lazy` evaluation,
-immutable but cheaply copyable data structures) produce
-more elegant and practical formalizations than `q.externalist`
-analyses, which are more likely to be ad-hoc and trial-end-error
-%-- and, perhaps significantly, require maintaining or updating
-dependencies on an entirely separate code base for
-testing/evaluation tools, with origins distinct from both
-the language and the projects that use it.  Just because
-external analysis of an `OO; code base is `i.possible`/, they
-might argue, it does
-not follow that `OO; design is a better choice, compared to a
-Functional design whose `i.external` analytic needs may be
-simpler and more cost-effective.  These are plausible
-but rather subjective assessments.  In cases where `OO; designs
-lead to computational models of human or scientific realms which
-are `i.conceptually` more accurate, but also require more
-investment in external analysis tools for safety and review, is the
-added difficulty of retroactive code analysis an acceptable
-trade-off?  That question can depend on many factors: a
-responsible Software Language Engineer may have to accept
-that different programming paradigms (plus multi-paradigm
-combinations) are best suited for different projects and
-circumstances, and that the broadest tools and languages need
-multi-paradigm orientations.
-`p`
-
-
-`p.
-Language engineers, then %-- particularly for general-purpose,
-multi-paradigm programming languages %-- have to work with
+Language engineers, then, have to work with
 two rather different constituencies.  One community of
 programmers tends to prefer that specification and validation be
 integral to/integrated with the language's type system and
@@ -782,10 +714,8 @@ and cognitively separate from hand-to-screen codewriting
 (and may chafe at languages restricting certain code constructs
 because they can theoretically produce coding errors, even when
 the anomalies involved are trivial enough to be tractable for
-even barely adequate code review).  If this gloss
-(which I admit rests on some speculation and mind-reading) has
-any merit, it implies that one challenge for language engineers is
-to serve both communities.  For example, we can aspire to
+even barely adequate code review).  One challenge for language engineers is
+accordingly to serve both communities.  We can aspire to
 implement type systems which are sufficiently
 expressive to model many specification, validation, and
 gatekeeping scenarios, while also anticipating that language code
@@ -816,8 +746,8 @@ as procedural
 %-- combining what are essentially two otherwise unrelated
 mathematical formations, Directed Hypergraphs and
 (typed) Lambda Calculus %-- is laid out in
-Sections `sectsym;\hyperref[sectOne]{I}
-and `sectsym;\hyperref[sectTwo]{II}.
+Sections `sectsym;\hyperref[sectTwo]{I}
+and `sectsym;\hyperref[sectThree]{II}.
 `p`
 
 `p.
