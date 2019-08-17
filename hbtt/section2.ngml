@@ -1131,7 +1131,7 @@ a different object for the called method is supplied expressly.
 `item; In the object-oriented technique known as `q.method chaining`/, 
 one procedures' `return; channel is transferred to a 
 subsequent procedures' `sCh; channel.  The pairing of 
-Return and Sigma chanels therefore gives rise to one 
+Return and Sigma channels therefore gives rise to one 
 function-composition operator.  With suitable restrictions 
 (on channel size), Return and Lambda channels engender a 
 different function-composition operator.  So channels can be 
@@ -1141,7 +1141,7 @@ types).  In some cases, function-like values defined via
 inter-function operators can be used in lieu of function-like values 
 instantiated from implemented procedures (although the 
 specifics of this substitutability %-- an example of 
-so-called `q.eta (`eta;) equivalence` %-- varies by language). 
+so-called `q.eta ($`eta;$) equivalence` %-- varies by language). 
 `itemize`
 `p`
 
@@ -1161,85 +1161,34 @@ One particular channel formation therefore models
 the basic `mOldLambda;-Calculus and, simultaneously, 
 the minimal theory of function-like types 
 (for Cartesian Closed type Categories).  
+More complex channel combinations and protocols 
+can then model more complex (or at least more 
+modern) variations on `mOldLambda;-Calculii and 
+programming language type systems. 
 `p`
 
-`p.
-`p`
-
+`subsubsection.Channelized Type Systems`
 
 `p.
-Separate and apart from notating channels `visavis; one graph, we
-also need a way to represent the semantics of different kinds of
-channels; labels like `q.lambda` and `q.return` do not carry much
-significance outside the primitive distinction of `q.input` and
-`q.output`/.  Here I will mention only simple examples of `q.formulae`
-related to channels.  Let `rCh; be the name of a channel kind,
-such as the output of functions returning normally.  Let `chChSize;
-denote the size of `Ch;; the formula `rChSizeleOne; thereby asserts that
-functions can return at most one value.  Let `xCh; be the name of a
-channel kind intending to represent thrown exceptions.  Since a
-function cannot `i.both` return a value and throw an exception,
-these two kinds of channels are interrelated.  In particular,
-when modeling the semantics of a specific programming language, we
-may observe that in any runtime manifestation the return and
-exception channels cannot both be non-empty.
-A programming environment may also stipulate that every
-function must either return a value or throw an exception,
-meaning that after a function returns
-the `rCh; and `xCh; runtime channels cannot both be
-empty, either.  So exactly one of the channels must be non-empty,
-which can be notated like `rOneOrx;.
-`p`
-
-`p.
-Formulae can also express how channels combine to
-describe possible function signatures: if every function `i.must`
-have `lambda; and `return; channels and `i.may` have an exception
-channel, this could be notated like `lrxSimple;.  Note that such
-notation relates to function `i.signatures`/, not runtimes: a
-function signature may declare that it `i.can` throw exceptions, but
-usually `i.not` do so, so the exception channel is usually empty.  Having
-a runtime-empty kind of channel is different from not having
-that kind of channel at all.  Function signature options
-may be combined with formulae about channel sizes, yielding notation
-like `lrxDetailed;, asserting that an allowable function signature
-`i.must` include `lambda; and `return;, `i.may` include exceptions,
-where lambda channels can be of zero or greater size and
-the other channels sized at most one.
-`p`
-
-;;~ \\l,x,r: l!* r!% x?% :: r \#/ x;
-`p.
-\phantomsection\label{retexc}Finally, adding an axiom about the restricted interrelationship between
-`return;s and `exception;s yields a formula like `lrxTotal;; the
-initial `q.`lrx;` asserting in effect `q.there exist` channels
-satisfying these categories.  Collectively I will say that formulae
-like these describing channel kinds, their restrictions, and
-their interrelationships describe a `i.Channel Algebra`/.  The
+Collectively, to summarize my disuccion to this point, 
+I will say that formulations 
+describing channel kinds, their restrictions, and
+their interrelationships describe a `i.Channel Algebra`/, 
+which express how channels combine to
+describe possible function signatures %-- and 
+accordingly to describe functional `i.types`/.  The
 purpose of a Channel Algebra is, among other things, to describe
 how formal languages (like programming languages) formulate functions and
 the rules they put in place for inputs and outputs.  If `Chi; is a
-Channel Algebra, a language adequately described by its formulae
-(with respect to functions and function-types) can be called a
+Channel Algebra, a language adequately described by its formulations 
+(channel kinds, restrictions, and interrelationships) can be called a
 `Chi;-language.  The basic Lambda Calculus can be described as a
-`Chi;-language for the algebra `lr;.
-;;~ \\l,r: l!* r!%;
-`p`
-
-`p.
-This wording can also be extended to types.  A Channel Algebra describes
-the channels that may (or must) be declared for a complete type signature.
-Let `Chi; be a Channel Algebra governed
-by the `mbox.characterization` `lsrx;
-%-- representing an Object-Oriented language where
-`sCh; is a `q.Sigma` channel as in `q.Sigma Calculus`
-(written as `sigmaCalculus;: see e.g. `cite<MartinAbadi>;,
-`cite<EdwardZalta>;, `cite<KathleenFisher>;).
-These channels are associated with function `q.signatures`/, and
-a function's signature determines its type.  So we can say that the
-Type System `TyS; manifest in the underlying Object-Oriented language is
-a `q.`Chi;-type-system` and is `q.closed` with respect to `Chi;
-in that valid signatures described using channel kinds in
+`Chi;-language for the algebra defined by a minimal 
+`lambda; plus `return; combination (with `return; channels 
+restricted to at most one element).
+Analogously, a type system `TyS; is 
+a `q.`Chi;-type-system`/, and is `q.closed` with respect to `Chi;, 
+if valid signatures described using channel kinds in
 `Chi; correspond to types found in `TyS;.  Types may be less granular than
 signatures: as a case in point,
 functions differing in signature only by whether they
@@ -1333,46 +1282,6 @@ Section `sectsym;\hyperref[sThree]{3} will discuss the elements that `q.populate
 `p`
 
 `p.
-Identifying `CH; code-graphs with function-typed values %-- values that
-are instances of function-like types %-- provides an elegant theoretical
-foundation for exploring functional types and, potentially,
-Functional Programming in general (among other things providing a
-useful definition of `q.function types` in the first place, insofar
-as these are types which need to be described via a `CXL;, not
-just the underlying `TXL;).  One of the central tenets %-- arguably
-`i.the` central tenet %-- of Functional Programming is that `q.functions
-are values`/; their `q.life cycle` as values constructed, used by and
-potentially passed to other functions, and potentially then destructed,
-should be seen as effectively the same as any other value.  It is interesting
-that this understanding of function-typed values sometimes gets overlooked
-in the context of discussions about `q.pure` functions.  Contra the
-attention afforded to pure functions, there is no
-reason to single out effect-free functions as particularly valuable
-or paradigmatic function-typed values, at least none which seems
-compelling on type-theoretic grounds.
-`p`
-
-`p.
-Function-typed values are not `q.mathematical` functions in the sense of
-one-to-one or many-to-one mappings: functions `fOne; and `fTwo; may be
-different (as function-typed values) even if `fOneTwoxeq; for all
-`xVar;.  The definitive criteria for functions are their implementations,
-which can be modeled as `CH;-graphs; particularly since many `q.impure` functions
-depend on external data outside their explicit inputs, so `fx; may
-yield different values at different times for the same `xSym;.  As `q.normal`
-values, functions implicitly have `q.constructors` like any other type; and
-most of these constructors work by starting from a formal representation
-of implementation source-code.  This picture, which I will analyze further
-in the next section %-- of function-typed values as values constructed from
-code graphs, so constructing function-typed values reveals a mapping
-(or even functor) from (suitably abstracted) implementation code graphs to
-suitably channelized types %-- provides a formal
-theory of function types that avoids direct reference to
-functions' input values and the specific
-relations they construct between inputs and outputs.
-`p`
-
-`p.
 In the following sections I will sketch a
 `q.Channel Algebra` that codifies the graph-based representation
 of functions as procedures whose inputs and
@@ -1385,8 +1294,10 @@ within a type system, and also how type interpretations
 can give a rigorous interpretation to modeling
 constructs such as code specifications and
 `q.gatekeeping` code.  I will start this
-discussion, however, by expanding on the idea of
-functions as `i.values constructed` from code-graphs.
+discussion, however, by expanding on the idea of 
+the use of code-graphs %-- hypergraphs annotated according 
+to a Source Code Ontology %-- to represent 
+procedure implementations, and therefore to model 
+procedures as instances of function-like types.
 `p`
-`vspace<4em>;
 

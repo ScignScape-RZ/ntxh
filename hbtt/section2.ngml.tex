@@ -871,65 +871,20 @@ an \q{operator} which maps elements in a category
 to other (or sometimes the same) elements.  In a \tCat{} an endofunctor
 selects (or constructs) a type \tyTwo{} from a type \tyOne{} \mdash{} note how this is
 different from a morphism which maps \i{values of} \tyOne{} to \tyTwo{}.
-Some basic morphisms and endofunctors include the following:
-\begin{enumerate}\eli{} \q{Selectors} for the first and second elements in a type-product \tOneTimesTTwo{}:
-note how this is a way of saying that product-types exist, since they are the types for which
-the \q{select second} endofunctor exists.
-%\eli{} Given types \tyOne{} and \tyTwo{}, where \tyOne{} is a \q{tuple}, an endofunctor
-%which appends \tyTwo{} to the end of \tyOne{}, yielding a new tuple type; thus arbitrary
-%tuples can be built from a \tOneTimesTTwo{} pair.
-\eli{} Given type \tyOne{}, an endofunctor yielding \tOneTimesTOne{} for
-which both the \q{select first} and \q{select second} endofunctors
-yield back \tyOne{}.  We can then define arbitrary-sized tuples
-of \tyOne{} wherein a \q{select first} endofunctor yields \tyOne{}
-and a \q{select rest} endofunctor yields another \tyOne{}-tuple.
-\eli{} Given types \tyOne{} and \tyTwo{}, there is a type comprising
-functions whose domain is \tyOne{} and codomain is \tyTwo{}
-(\tCat{} is \q{Cartesian Closed}), so an endofunctor
-\tOneTimesTTwoToTOneOntoTTwo{}.  This kind of type
-can be generically called a \i{function-type}, though
-I more often prefer looser terms such as \q{function-like} types
-because the word \q{function} has multiple (interrelated but
-importantly different) meanings.
-\eli{} As a special case, let \unitTy{} be a type
-holding one sole \unitVal{} value.  Then morphisms
-\unitTyToty{} are equivalent to selecting a single
-value that can instantiate \ty{}, motivating the
-concept of a \q{set of values} spanned by \ty{}.
-\eli{} Given types \tyOne{} and \tyTwo{}, where \tyTwo{} represents
-a (finite) set of nonnegative integers, then a morphism \tyOneToTyTwo{}
-\q{enumerates} the elements of \tyOne{}; so we can construct arbitrary
-types with a finite set of symbols (having no particular meaning, at
-least internal to the type system), as domains of an Enumeration.
-\eli{} Given any type \ty{}, we can associate an enumeration \tyE{}
-(so an endofunctor \tyTotyE{}) which represents
-\q{states} that meaningfully partition the set of \tyValues{} into groups
-with similar behaviors or properties; then morphism \tyToTyE{} maps
-\q{elements} of \ty{} to their associated states.
-\eli{} Given types \tyOne{} and \tyTwo{}, we can consider variations on \q{sum types}
-(as endofunctors mapping from \tyOneTimesTyTwo{}), including the type whose
-\i{values} can be either in \tyOne{} or \tyTwo{}, and a type whose
-\q{typestate enumeration} unifies \tyE{} of \tyOne{} and \tyTwo{}.  In Haskell, for
-example, the \Maybe{} endofunctor uses a special one-valued \q{Nothing} type
-and augments any other type by adding this value, to represent
-missing or \q{null} data; similar constructions yield zero-able pointers in
-other languages.
-\end{enumerate}
-}
-\vspace{-1em}
-\p{Overall type systems are built up from a smaller set of \q{core} types via
+Type systems are then built up from a smaller set of \q{core} types via
 operations like products, sums, enumerations, and \q{function-like} types.
-We may think of the
+}
+\p{We may think of the
 \q{core} types for practical programming as number-based
 (booleans, bytes, and larger integer types), with everything else built up by aggregation
-or encodings (like \ascii{} and \unicode{}, allowing types to include text and alphabets).
-In other contexts, however, non-mathematical core types may be appropriate: for example,
+or encodings (like \ascii{} and \unicode{}, allowing types to include text and 
+alphabets).\footnote{In other contexts, however, non-mathematical core types may be appropriate: for example,
 the grammar of natural languages can be modeled in terms of a type system whose core are
 the two types \tyNoun{} and \tyProposition{} and which also includes
 function types (maps) between pairs or tuples of types (verbs,
 say, map \tyNoun{}s \mdash{} maybe multiple nouns, e.g. direct objects
 \mdash{} to \tyProposition{}s).
-Ultimately, a type system \tCat{} is characterized
+}  Ultimately, a type system \tCat{} is characterized
 (1) by which are its core types and
 (2) by how aggregate types can be built from simpler ones
 (which essentially involves endofunctors and/or products).
@@ -972,7 +927,7 @@ So, given the correlations I have just described between
 between type systems and \i{kinds of abstraction defined on
 Channelized Hypergraphs}.  I will now discuss this further.
 }
-\spsubsection{Kinds of Abstraction}
+\subsubsection{Kinds of Abstraction}
 \p{The \q{abstracted} nodes in a \CH{} can be loosely classified as
 \q{input} and \q{output}, but in practice there are various paradigms
 for passing values into and out of functions, each with their own semantics.
@@ -990,75 +945,103 @@ channels are defined initially on \i{symbols}, which are associated with hyperno
 in any \q{body} (i.e., an \q{implementation graph}) hypernodes can be grouped
 together by sharing the same symbol, and correlatively sharing the
 same value during a \q{runtime manifestation} of the \CH{}.  Therefore,
-the \q{channels of abstraction} at work in a body can be identified
+the \q{channels of abstraction} at work in a procedure can be identified
 by providing a name representing the \i{kind} of channel and a list of
 symbols affected by that kind of abstraction.  In the notation I adopt here,
 conventional lambda-abstraction like \lXY{} would be written as \CHlXY{}.
 }
-\p{Separate and apart from notating channels \visavis{} one graph, we
-also need a way to represent the semantics of different kinds of
-channels; labels like \q{lambda} and \q{return} do not carry much
-significance outside the primitive distinction of \q{input} and
-\q{output}.  Here I will mention only simple examples of \q{formulae}
-related to channels.  Let \rCh{} be the name of a channel kind,
-such as the output of functions returning normally.  Let \chChSize{}
-denote the size of \Ch{}; the formula \rChSizeleOne{} thereby asserts that
-functions can return at most one value.  Let \xCh{} be the name of a
-channel kind intending to represent thrown exceptions.  Since a
-function cannot \i{both} return a value and throw an exception,
-these two kinds of channels are interrelated.  In particular,
-when modeling the semantics of a specific programming language, we
-may observe that in any runtime manifestation the return and
-exception channels cannot both be non-empty.
-A programming environment may also stipulate that every
-function must either return a value or throw an exception,
-meaning that after a function returns
-the \rCh{} and \xCh{} runtime channels cannot both be
-empty, either.  So exactly one of the channels must be non-empty,
-which can be notated like \rOneOrx{}.
+\p{I propose \q{Channel Algebra} as a tactic for capturing the 
+semantics of channels, so as to model programming languages' 
+conventions and protocols with respect to calls between 
+procedures.  Once we get beyond the basic contrast between 
+\q{input} and \q{output} parameters, it becomes necessary to 
+define conditions on channels' size, and on how 
+channels are associated with different procedures may 
+share values.  Here are several examples: 
+\begin{itemize}\item{} In most Object-Oriented languages, any procedure can 
+have at most one \this{} (\q{message receiver}) object.  
+Let \sCh{} model a \q{Sigma} channel, as in \q{Sigma Calculus}
+(written as \sigmaCalculus{}: see e.g. \cite{MartinAbadi},
+\cite{EdwardZalta}, \cite{KathleenFisher}).  
+We then have the requirement than any procedure's 
+\sCh{} channel can carry at most one value.
+\item{} In all common languages which have exceptions, 
+procedures can \i{either} throw an exception \i{or} 
+return a value.  If \return{} and \exception{} 
+model the channels carrying standard returns and 
+thrown exceptions, respectively, this convention 
+translates to a requirement that the two channels 
+can both be non-empty.
+\item{} A thrown exception cannot be handled as an ordinary 
+value.  The whole point of throwing exceptions is to 
+disrupt ordinary program flow, which means the exception 
+value is only accessible in special constructs, like a 
+\catch{} block.  One way to model this restriction is 
+to forbid \exception{} channels from sharing values with 
+most other channels (tied to any other procedure).  Instead, 
+exception values are bound (in \catch{} blocks) to 
+lexically-scoped symbols (I will discuss channel-to-symbol 
+transfers below).
+\item{} Suppose a procedure is an Object-Oriented method 
+(it has a non-empty \q{\sCh{}} channel).  Any other methods 
+called from that procedure will \mdash{} at least in the 
+conventional Object-Oriented protocol \mdash{} automatically 
+receive the enclosing method's Sigma channel unless 
+a different object for the called method is supplied expressly. 
+\item{} In the object-oriented technique known as \q{method chaining}, 
+one procedures' \return{} channel is transferred to a 
+subsequent procedures' \sCh{} channel.  The pairing of 
+Return and Sigma channels therefore gives rise to one 
+function-composition operator.  With suitable restrictions 
+(on channel size), Return and Lambda channels engender a 
+different function-composition operator.  So channels can be 
+used to define operators between procedures which yield new 
+function-like values (i.e., instances of function-like 
+types).  In some cases, function-like values defined via 
+inter-function operators can be used in lieu of function-like values 
+instantiated from implemented procedures (although the 
+specifics of this substitutability \mdash{} an example of 
+so-called \q{eta ($\eta{}$) equivalence} \mdash{} varies by language). 
+\end{itemize}
 }
-\p{Formulae can also express how channels combine to
-describe possible function signatures: if every function \i{must}
-have \lambda{} and \return{} channels and \i{may} have an exception
-channel, this could be notated like \lrxSimple{}.  Note that such
-notation relates to function \i{signatures}, not runtimes: a
-function signature may declare that it \i{can} throw exceptions, but
-usually \i{not} do so, so the exception channel is usually empty.  Having
-a runtime-empty kind of channel is different from not having
-that kind of channel at all.  Function signature options
-may be combined with formulae about channel sizes, yielding notation
-like \lrxDetailed{}, asserting that an allowable function signature
-\i{must} include \lambda{} and \return{}, \i{may} include exceptions,
-where lambda channels can be of zero or greater size and
-the other channels sized at most one.
+\p{The above examples represent possible combinations or 
+interconnections (sharing values) between channels, 
+together with semantic restrictions on when 
+such connections are possible.  In this chapter, I 
+assume that notations describing these connections and 
+restrictions can be systematized into a \q{Channel Algebra}, 
+and then used to model programming language-conventions and 
+computer code.  A basic example of inter-channel 
+aggregation would be how a Lambda channel, combined 
+with a Return channel, associated with one procedure, 
+yields a conventional input/output pairing.  
+One particular channel formation therefore models 
+the basic \mOldLambda{}-Calculus and, simultaneously, 
+the minimal theory of function-like types 
+(for Cartesian Closed type Categories).  
+More complex channel combinations and protocols 
+can then model more complex (or at least more 
+modern) variations on \mOldLambda{}-Calculii and 
+programming language type systems. 
 }
-\p{\phantomsection\label{retexc}Finally, adding an axiom about the restricted interrelationship between
-\return{}s and \exception{}s yields a formula like \lrxTotal{}; the
-initial \q{\lrx{}} asserting in effect \q{there exist} channels
-satisfying these categories.  Collectively I will say that formulae
-like these describing channel kinds, their restrictions, and
-their interrelationships describe a \i{Channel Algebra}.  The
+\p{Collectively, in short, I will say that formulations 
+describing channel kinds, their restrictions, and
+their interrelationships describe a \i{Channel Algebra}, 
+which express how channels combine to
+describe possible function signatures \mdash{} and 
+accordingly to describe functional \i{types}.  The
 purpose of a Channel Algebra is, among other things, to describe
 how formal languages (like programming languages) formulate functions and
 the rules they put in place for inputs and outputs.  If \Chi{} is a
-Channel Algebra, a language adequately described by its formulae
-(with respect to functions and function-types) can be called a
+Channel Algebra, a language adequately described by its formulations 
+(channel kinds, restrictions, and interrelationships) can be called a
 \Chi{}-language.  The basic Lambda Calculus can be described as a
-\Chi{}-language for the algebra \lr{}.
-}
-\p{This wording can also be extended to types.  A Channel Algebra describes
-the channels that may (or must) be declared for a complete type signature.
-Let \Chi{} be a Channel Algebra governed
-by the \mbox{characterization} \lsrx{}
-\mdash{} representing an Object-Oriented language where
-\sCh{} is a \q{Sigma} channel as in \q{Sigma Calculus}
-(written as \sigmaCalculus{}: see e.g. \cite{MartinAbadi},
-\cite{EdwardZalta}, \cite{KathleenFisher}).
-These channels are associated with function \q{signatures}, and
-a function's signature determines its type.  So we can say that the
-Type System \TyS{} manifest in the underlying Object-Oriented language is
-a \q{\Chi{}-type-system} and is \q{closed} with respect to \Chi{}
-in that valid signatures described using channel kinds in
+\Chi{}-language for the algebra defined by a minimal 
+\lambda{} plus \return{} combination (with \return{} channels 
+restricted to at most one element).
+Analogously, a type system \TyS{} is 
+a \q{\Chi{}-type-system}, and is \q{closed} with respect to \Chi{}, 
+if valid signatures described using channel kinds in
 \Chi{} correspond to types found in \TyS{}.  Types may be less granular than
 signatures: as a case in point,
 functions differing in signature only by whether they
@@ -1140,42 +1123,6 @@ that populate channels \mdash{} have non-functional types.
 Section \sectsym{}\hyperref[sThree]{3} will discuss the elements that \q{populate}
 \mbox{channels (which I will call \q{carriers}) in more detail}.
 }
-\p{Identifying \CH{} code-graphs with function-typed values \mdash{} values that
-are instances of function-like types \mdash{} provides an elegant theoretical
-foundation for exploring functional types and, potentially,
-Functional Programming in general (among other things providing a
-useful definition of \q{function types} in the first place, insofar
-as these are types which need to be described via a \CXL{}, not
-just the underlying \TXL{}).  One of the central tenets \mdash{} arguably
-\i{the} central tenet \mdash{} of Functional Programming is that \q{functions
-are values}; their \q{life cycle} as values constructed, used by and
-potentially passed to other functions, and potentially then destructed,
-should be seen as effectively the same as any other value.  It is interesting
-that this understanding of function-typed values sometimes gets overlooked
-in the context of discussions about \q{pure} functions.  Contra the
-attention afforded to pure functions, there is no
-reason to single out effect-free functions as particularly valuable
-or paradigmatic function-typed values, at least none which seems
-compelling on type-theoretic grounds.
-}
-\p{Function-typed values are not \q{mathematical} functions in the sense of
-one-to-one or many-to-one mappings: functions \fOne{} and \fTwo{} may be
-different (as function-typed values) even if \fOneTwoxeq{} for all
-\xVar{}.  The definitive criteria for functions are their implementations,
-which can be modeled as \CH{}-graphs; particularly since many \q{impure} functions
-depend on external data outside their explicit inputs, so \fx{} may
-yield different values at different times for the same \xSym{}.  As \q{normal}
-values, functions implicitly have \q{constructors} like any other type; and
-most of these constructors work by starting from a formal representation
-of implementation source-code.  This picture, which I will analyze further
-in the next section \mdash{} of function-typed values as values constructed from
-code graphs, so constructing function-typed values reveals a mapping
-(or even functor) from (suitably abstracted) implementation code graphs to
-suitably channelized types \mdash{} provides a formal
-theory of function types that avoids direct reference to
-functions' input values and the specific
-relations they construct between inputs and outputs.
-}
 \p{In the following sections I will sketch a
 \q{Channel Algebra} that codifies the graph-based representation
 of functions as procedures whose inputs and
@@ -1188,7 +1135,9 @@ within a type system, and also how type interpretations
 can give a rigorous interpretation to modeling
 constructs such as code specifications and
 \q{gatekeeping} code.  I will start this
-discussion, however, by expanding on the idea of
-functions as \i{values constructed} from code-graphs.
+discussion, however, by expanding on the idea of 
+the use of code-graphs \mdash{} hypergraphs annotated according 
+to a Source Code Ontology \mdash{} to represent 
+procedure implementations, and therefore to model 
+procedures as instances of function-like types.
 }
-\vspace{4em}
