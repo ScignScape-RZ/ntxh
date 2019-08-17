@@ -1,0 +1,366 @@
+
+`section.Modeling Procedures via Channelized Hypergraphs`
+
+`p.
+Assuming we have a suitable Source Code Ontology, software 
+procedures can be seen from two perspectives.  On the 
+one hand, they are examples of well-formed code graphs: 
+annotated graph structures convey the lexical symbols, 
+input/output parameters (via different `q.abstractions`/, 
+in the sense of `mOldLambda;-abstraction, subject to 
+relevant channel protocols), and calls to other procedures, 
+through which any given procedure's functionality is 
+achieved.  On the other hand, we can see procedures as 
+instances of function-like types, where the types carried 
+in each channel determine the type of the procedure itself, 
+as a functional value.  Although these two perspectives are 
+usually mutually consistent, the notion of functional 
+values is more general than procedures which are expressly 
+implemented in computer code.  In particular, as I briefly 
+mentioned earlier, sometime functional values are denoted 
+via inter-function operators (like the composition 
+`fOfG;) rather than by giving an explicit implementation.  
+Programmers would say that functions defined via operators 
+(such as `Ofop;) lack a `q.function body`/.  
+`p`
+
+`p.
+Going forward, I will generally use the term `i.procedure` 
+with reference to function-like type instances that are 
+defined `i.with` function bodies: that is, they are 
+associated with sections of code that supply the procedure's 
+implementation, and can be represented via code-graphs.  
+I will use the term `i.function` more generally for 
+instances of function-like types, irregardless of their 
+provenance.  In particular, functions are `i.values` 
+%-- instances of types in a relevant type-system 
+`TyS; %-- whereas I will not usually discuss procedures 
+as `q.values`/.    
+`p`
+
+`p.
+Most functions which may be called by a software component 
+are defined as procedures with their own function bodies.  
+Indeed, the essential software-development process involves 
+implementing procedures in code, and then implementing 
+other procedures %-- which call those already-created procedures  
+(in various combinations) %-- to realize their own functionality.  
+That is, source code itself produces instances of 
+functional values, via procedures described by the code.  
+Accordingly, code-graphs for individual procedures capture 
+the implementations through which function-like types 
+are (mostly) populated with concrete values.   
+`p`
+
+`p.
+These various concepts %-- procedures, functions, implementations, 
+and function-bodies or code-graphs %-- are important for 
+broad architectural topics like Requirements Engineering, because 
+they concern the building-blocks from which larger software 
+components are assembled.  When discussing procedures' coding assumptions 
+(more fine-grained than type constraints alone can model), for example, 
+we need a rigorous presentation of what a procedure itself is, 
+to identify the relevant entity whose assumptions can be documented 
+and tested.  To model the general maxim that any coding assumptions 
+made (but not verified) by one procedure %-- say, `ProcOne; %-- 
+should be tested by other procedures which call `ProcOne;, we need 
+a systematic outline capturing the notion of procedures calling 
+other procedures, in the course of their own implementation.  
+Here I propose to model these details via channels and 
+interrelationships between channels.   
+`p`
+
+`p.
+In my formulation of these representations, channels are conceptually 
+integrated with hypergraph code models.  That is, code-graphs are 
+a formal device within the theory I present here.  In many other 
+context code-graphs would instead be, at most, convenient expository 
+devices; for instance, functional programming languages generally do 
+not attach much significance to the contrast of procedures 
+(with function-bodies) and function-values constructed by 
+other means.  As a result, one consequence of my graph-oriented 
+approach is that the technical distinctions between 
+procedures and function-values (in general) have to be 
+duly observed.  There are some relevant complications appertaining to 
+the general picture of source-code segments instantiating 
+function-like types.  I will briefly review these issues now, 
+before pivoting to more macro-scale themes like Requirements Engineering.
+`p`
+
+`spsubsection.Initializing Function-Typed Values`
+`p.
+Although in general function-typed values are `i.initialized`
+from code-graphs that blueprint their implementation,
+this glosses over several different mechanisms by which
+function-typed values may be defined:
+
+`enumerate,
+
+`eli;  \phantomsection\label{funconstr}In the simplest case, there is
+a one-to-one relationship
+between a code graph and an implemented function (`fFun;, say).
+If `fFun; is polymorphic, in this case, it must be an example
+of subtype (or `q.runtime`/) polymorphism where the declared types of `fFun;'s
+parameters are actually instantiated, at runtime, by values
+of their subtypes.
+
+`eli;  A different situation (`q.compile-time` polymorphism) applies
+to generic code as in `Cpp;
+templates.  Here, a single code-graph generates multiple function
+bodies, which differ only by virtue of their expected types.
+For example, a templated `sortfn; function will generate
+multiple function bodies %-- one for integers, say, one for strings,
+etc.  These functions may be structurally similar, but they have
+different signatures by virtue of working with different types.  This
+means that symbols used in the function-bodies may refer to
+different functions even though the symbols themselves do not vary
+between function-bodies (since, after all, they come from the
+same node in a single code-graph).  That is, the code-graphs
+rely on symbol-overloading for function names
+to achieve a kind of polymorphism, where one code-graph
+yields multiple bodies.  In this compile-time polymorphism,
+symbols are resolved to the proper overload-implementation
+at compile-time, whereas in runtime polymorphism this
+decision is deferred until the runtime-polymorphic function
+is actually being executed.  The key difference is that
+runtime-polymorphic functions are `i.one` function-typed value,
+which can work for diverse types only via subtyping %--
+or via more exotic forms of indirection, like
+using function-pointers in place of function symbols; whereas
+compile-time-polymorphic (i.e., templated) functions are
+`i.multiple` values, which share the same code-graph
+representation but are otherwise unrelated.
+
+`eli;  \label{ops}A third possibility for producing function values is to define
+operators on function types themselves, which transform
+function-typed values to other function-typed values, by analogy
+to how arithmetic operations transform numbers to other
+numbers.  As will be discussed below, this may or may not be
+different from initializing function-typed values via code-graphs,
+depending on how the relevant programming language is implemented.
+For instance, given the composition operator `Ofop;,
+`fDotOfg; may or may not be treated as only a convenient
+shorthand for a code graph spelling out something like `fgx;.
+
+`eli;  Finally, as a special case of operators on function-typed values,
+one function may be obtained from another by `q.Currying`/, that is,
+fixing the value of one or more of the original function's
+arguments.  For example, the `inc; (`q.increment`/) function which adds
+`litOne; to a value is a special case of addition, where the added value
+is always `litOne;.  Here again, Currying may or may not be
+treated as a function-value-initialization process different from ones
+starting from code-graphs.
+`enumerate`
+`p`
+
+`vspace<-1em>;
+`p.
+The differences between how languages may process the `i.initialization`
+of function-type values, which I alluded to in (3) and (4), reflect
+differences in how function-type values are internally represented.
+One option is to store these values solely in blocks of
+memory, which would correspond to treating all initializations of these
+values as via code-graphs.  For example, suppose we have an `addFun; function
+and want to define an `inc; function, as in `incimpl;.  Even if a language has
+a special Currying notation, that notation could translate behind-the-scenes to
+an explicit function body, like the code at the end of the last sentence.
+However, a language engine may also note that `inc; is derived from `addFun;
+and can be wholly described by a handle denoting `addFun;
+(a pointer, say) along with a designation of the fixed value: in
+other words, `addOne;.  Instead of initializing `inc; from a code-graph,
+the language can represent it via a two-part data structure like
+`addOne; %-- but only if the language `i.can` represent
+function-typed values as compound data structures.
+`p`
+
+`p.
+Let's assume a language can always represent `i.some` function-typed values,
+ones that are obtained from code-graphs, via pointers to
+(or some other unique identifier for) an internal
+memory area where at least `i.some` compiled function bodies are stored.
+The interesting question is whether `i.all`  function-typed values
+are represented in this manner and, in either case, the
+consequences for the semantics of functional types %-- semantic
+issues such as `fOfg; composition operators and Currying
+`makebox.(and also, as I will argue, Dependent Types)`/.
+`p`
+
+`spsubsection.Addressability and Implementation`
+`p.
+As `i.Intermediate` Representations, formal code models (including
+those based on `DH;s) are not strictly
+identical to actual computer code as seen in source-code files.
+In particular, what appears to
+be a single function body may actually form multiple
+implementations via code templates (or even
+preprocessor macros).  Talk about polymorphism in a language like
+`Cpp; covers several distinct language features: achieving
+code reuse by templating on type symbols is internally very different
+from using virtual methods calls.  The key difference %-- highlighted
+by the contrast between runtime- and compile-time polymorphism %-- is
+that there are some function implementations which actually
+compile to `i.single` functions, meaning in
+particular that their compiled code has a single place in memory and
+that they may be invoked through function pointers.  Conversely,
+what appears in written code as one function body may actually be
+duplicated, somewhere in the compiler workflow, generating multiple
+function values.  The most common cases of such duplication
+are templated code as discussed above (though there are
+more exotic options, e.g. via `Cpp; macros and/or
+repeated file `codeinclude;s).  Implementations of the first sort I will
+call `q.addressable`/, whereas those of the second I will
+dub `q.multi-addressable`/.  These concepts prove to be consequential
+in the abstract theory of types, although for non-obvious reasons.
+`p`
+
+
+`p.
+To see why, consider first that type systems are intrinsically
+pluralistic: there are numerous details whereby the type system
+underlying one computing environment can differ from those employed
+by other environments.  These include differences in how types are
+composed from other types.  There is therefore no abstract vocabulary
+(including the language of mathematical type theory) that provides a
+neutral and complete way of describing types across systems.  Instead,
+each system has its own structure of multi-type aggregation, and
+so requires its own style of type description (mathematically, there is
+no one `q.Category` of types, but rather multiple candidate Categories
+with their own logic).  So there is no single, universal
+`q.Type Expression Language`/: each type system has its
+own `TXL; with subtly different features than others.
+`p`
+
+
+`p.
+By intent, I use `TXL; to mean languages for describing types
+which `i.may` be implemented.  For example, if in `Cpp; I
+assert `q.`templateTMyList;`/, it would then be consistent with
+a `Cpp;-specific `TXL;
+to describe a type as `MyListInt; (which would presumably be
+some sort of list of integers, though of course naming hints about the
+intended use of a type
+have no bearing on how compilers and runtimes process it).  However,
+the type `MyListInt; is not, without further code, actually implemented.
+It is a `i.possible` type because its description conforms to a relevant
+`TXL;, but not an `i.actual` type.  If a programmer supplies
+a templated implementation for `TMyList; (intended for multiple
+types `TType;) then the compiler can derive a `q.specialization` of the
+template for a specific `TType; %-- or the programmer can specialize
+`MyList; on a chosen type manually.  But in either case the actualization of
+`TMyList; will depend on an implementation (either a templated implementation
+that works for multiple types or a specialization for a
+single type); this is separate and apart from `TMyList; being
+a valid `i.expression` denoting a `i.possible` type.
+`p`
+
+`p.
+Once `TMyList; is instantiated, for a particular `TType;, there may be a
+constructor or initialization
+function that is `i.addressable`/, either as one duplicate
+of a multi-addressable implementation or as the compilation of
+one non-templated function body.  Call a type `i.addressable` if it
+has at least one constructor
+(i.e., `q.value` or `q.data` constructor, a
+function which creates a value of a type from a literal
+or a value of a different type); and `i.multi-addressable` if it has
+at least one multi-addressable constructor or initializer: these
+terms can carry over from functions to types for which
+functions classified in these terms are constructors.
+Figure \ref{lst:multi} shows a comparison
+(in this discussion I mostly skip over the technical detail that
+in `Cpp;, at least, one cannot actually take the address of a
+constructor function; but this is related to `Cpp;
+`q.constructors` having dual roles of allocating memory
+and initialization: we `i.can` take the address of an
+initialization function that would be analogous to a
+`q.pure` value constructor, like `codeconstruct;
+in the following code).
+`p`
+\itcl{multi}
+
+`p.
+Addressability refers at one level, as the word suggests, to
+`q.taking the address` of functions (and accordingly to
+function-pointers); but here I also refer to a broader question of
+how functions can be designated from vantage points outside their
+immediate implementation %-- code searches, scripting engines,
+`IDE;-based code exploration, and other reflection-oriented
+use cases.  Language engines should try to minimize their
+reliance on `q.temporary function values` which are
+opaque to these reflection-oriented features.  And yet
+this can complicate the implementation of type-system features.
+To reiterate: the goal of
+`q.expressive` type systems is to define types,
+on many occasions, fairly narrowly.  Doing so allows specifications
+on the preconditions for calling a function implementation to be
+encoded directly in the type system, making it possible to restrict the
+diversity of values which a function may receive and thereby allow
+the implementation to make assumptions which would be unwarranted
+otherwise.  For example, safety certification can proceed
+by documenting the assumptions that each safety-critical function
+implementation makes and then that those assumptions are reasonable
+given how each function are called.
+Such an `q.assume-and-justify` two-step
+is easier when assumptions are modeled `mbox.via structures intrinsic to the
+type system`/.
+`p`
+
+`p.
+The problem is that gatekeeper code induced by type-level
+expressiveness %-- particularly code which is automatically
+generated %-- can be opaque to extra-linguistic environments
+like `IDE;s and scripting engines.
+For example, suppose certification
+requires that the function which displays the gas level on a car's dashboard
+never attempts to display a value above `litOH; (intended to mean `q.One Hundred percent`/,
+or completely full).  One way to ensure this specification is to declare
+the function as taking a `i.type` which, by design, will only ever include
+whole numbers in the range `ZeroToOneHundred;.  Thus, a type system may support
+such a type by including in its `TXL; notation for `q.range-delimited` types,
+types derived from other types by declaring a fixed range of allowed values.
+A notation might be, say, `IntZToOH;, for integers in the `ZeroToOneHundred;
+range %-- or, more generally expressions like `TVOneToVTwo;, meaning a `i.type` derived
+from `TType; but restricted to the range spanned by `VOne; and `VTwo; (assumed to be
+values of `TType; %-- notice that a `TXL; supporting this notation must
+consequently support some notation of specific values, like numeric literals).
+This is a reasonable and, for programmers, potentially convenient type description.
+`p`
+
+`p.
+For a language designer, however, it raises questions.  What should happen if
+someone tries to construct an `IntZToOH; value with the number, say,
+`litOHO;?  How should the range-test code be exposed for
+reflection (is it a separate function; is it a regular
+function-typed value or some alternative data structure, and
+how does that affect its external designating)?  What if the
+number comes from a location that
+opaque to the language engine, like a web `API;: should the compiler assume
+that the `API; is curated to the same specifications as the present code or
+should it report that there is no way to verify that the declared `IntZToOH; type
+is being used correctly?  Moreover, would such choices lead to
+behind-the-scenes, perhaps auto-generated code which is hard to
+wrangle for reflection and development tools?
+Are the benefits of automated gatekeeping worth the risk of
+codewriters' mental disconnect with language internals?
+Given these questions, it is reasonable for a language
+designer to `i.allow` certain sorts of types to be described, but programmers
+must explicitly implement them for the types to be actualized and available
+for use in programs.  Therefore there is a difference between a
+`i.described` type and an `i.actual` type, and the key criterion of actual
+types is an addressable value constructor.  So the crucial
+step for type-theoretic design promoting desired software qualities, like
+safety and reliability, is to successfully pair the `i.description` of types
+which have desirable levels of specification and granularity, with the
+`i.implementation` of types that realize the design patterns promised by
+their description.  In some cases the description must become
+more complex and nuanced to make implementation feasible.
+`p`
+
+`p.
+Range-bounded types are a good example of types which can be succinctly
+`i.described` but face complications when being concretely
+implemented.  They are therefore a good example of
+the potential contrast between `i.possible` and `i.actual` types.
+I will examine this distinction in more detail and
+then return to range-bounded types as a demonstrative example.
+`p`
