@@ -8,43 +8,31 @@ function-call semantics more complex than `q.pure` functions
 which have only one sort of input parameter (as in lambda
 abstraction) %-- note that this is unrelated to
 parameters' `i.types` %-- and one sort of (single-value) return.
-%As just discussed,
 Examples of a more complex paradigm
 come from Object-Oriented code, where there are two varieties of
-input parameters (`q.lambda` and `q.sigma`/).
-Consider method calls in Object-Oriented languages: these
-typically have a special syntax with one
-distinguished carrier.  This
-carrier is in a sense privileged: the type of
-the `q.`thisc;` carrier establishes the class to which
-function belongs, influencing when the function may be
-called and how polymorphism is resolved.  Moreover,
-`q.chaining` method calls means that the result of
-one method becomes an object that may then receive 
+input parameters (`q.lambda` and `q.sigma`/); the 
+`q.sigma` (`thisc;) carrier is privileged, because its type 
+establishes the class to which
+function belongs %-- influencing when the function may be
+called and how polymorphism is resolved.`footnote.
+Also, as I discussed earlier, `q.chaining` method calls means 
+that the result of one method becomes an object that may then receive 
 another method (the following one in the chain).  Such 
-chaining allows for an unambiguous function-composition operator:
-since functions in general take multiple arguments, there is
-no single operator to pass the result of one function to
-another; but since most methods have one return value and
-one `thisc; object, it is straightforward to
-define a method-chain operator.
+chaining allows for an unambiguous function-composition operator.
+`footnote`
 `p`
 
 `p.
 Another case-study
-is offered by exceptions.  The option to `q.throw` an exception
-can be considered an alternative kind of output channel.
+is offered by exceptions.  
 A function throws an exception instead of returning a value.
 As a result, `returnc; and `errorc; channels typically
 evince a semantic requirement (which earlier %-- see
-the notations on page \hyperref[retexc]{\pageref{retexc}} %-- I sketched
+page \hyperref[retexc]{\pageref{retexc}} %-- I sketched
 as an algebra stipulation): when functions
 have both kinds of channels, only one
 may have an initialized carrier after the function
 returns.
-;;~ These kinds of channels
-;;~ also differ in how they can initialize values
-;;~ via an operator like `fntoch;.
 Usually, thrown-exception values can only be bound to carriers
 in `catchddd; formations %-- once held in a carrier
 they can be used normally, but carriers in `exceptionch;
@@ -63,8 +51,6 @@ within function bodies.
 `p`
 
 `p.
-%This terminology serves as a basis for exploring the
-%variation in how functions receive and share values.
 In general, extensions to `lambdaCalculus; are
 meaningful because they model semantics other than
 ordinary lambda abstraction.  For example, method-calls
@@ -75,18 +61,7 @@ that sigma-abstracted symbols and types have different
 consequences for overload resolution and function
 composition than `lambdach;-abstractions.  Similarly,
 exceptions interact with calling code differently
-than return values.  These differences do not belong precisely
-to `lambdaCalculus;, because they are consequential more
-in the calling context than in the called implementation ---
-though not entirely, since (for example) throwing exceptions
-aborts lexical finalization.  Nor do they belong
-precisely to process calculi, because they are most complex
-in the context of sequential procedures
-(for example, a function cannot catch exceptions thrown from
-functions it has spawned in new threads).  As intended here,
-`q.Channel Algebra` suggests an intermediate formalization
-combining features of both (generalized) lambda and
-process calculi (or algebras).  Instead of scattered
+than return values.  Instead of scattered
 `mOldLambda;-extensions, Channel Algebra unifies multiple
 expansions by endowing functions (their signatures,
 in the abstract, and function-calls, in the concrete)
@@ -144,7 +119,6 @@ values and symbols.
 `p`
 
 `subsubsection.Statements, Blocks, and Control Flow`  `
-
 `p.
 The previous paragraphs discussed expanded channel structures %-- with,  
 for example,  
@@ -233,20 +207,20 @@ specifically, `q.assignment` and `q.standalone` statements, respectively.
 
 `p.
 This vocabulary can be useful for interpreting program flow.
-Assignment statements with no other side effects can be delayed
-until their grounding carrier is convoluted with some other carrier.
+Assignment statements with no other side effects can 
+%-- in principle %-- be delayed
+until their grounding carrier is `q.convoluted` with some other carrier.`footnote.
 Of course, the default choice of `q.eager` or `q.lazy` evaluation is
 programming-language-specific, but for abstract discussion
 of source code graphs, we have no `i.a priori` idea of temporality;
 of a program executing in time.  This is not a matter of
 concurrency %-- we have no `i.a priori` idea of procedures running
-at the `i.same` time any more than of them running sequentially
-(cf. `q.detached`
-evaluation as on page \hyperref[detachedeval]{\pageref{detachedeval}}).
-`mbox<Any temporal>; direction through a graph is an interpretation
+at the `i.same` time any more than of them running sequentially.
+Any temporal direction through a graph is an interpretation
 `i.of` the graph, and as such it is useful to assume that
 graphs in and of themselves assert no temporal
-ordering among their nodes or edges.  When modeling
+ordering among their nodes or edges.
+`footnote`  When modeling
 eager-evaluation languages, particular edge-types
 can be designated as forcing a temporal order or else
 edges can be annotated with additional temporalizing

@@ -371,8 +371,10 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \newlength{\hslength}
 \setlength{\hslength}{-1.45cm}
 
+\newcommand{\spinc}[1]{\input{#1}}
+
 \newcommand{\tcl}[1]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}
-%\input{#1}
+\input{#1}
 \end{minipage}\end{lrbox}
 %\tc{}{\hspace*{\hslength}\usebox\lstbox}
 }

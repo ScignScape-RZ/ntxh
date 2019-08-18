@@ -326,15 +326,16 @@ from the `q.ordinary` (`lambdach;) inputs, reinforcing Object semantics.
 To consolidate the terms I am using: we can interpret both function
 `i.signatures` and `i.calls` in terms of channels.  Both involve
 `q.carrier transfers` in which values are transferred `i.to` or `i.from`
-the channels described by a function signature.  The distinction between
+the channels described by a function signature.  I will say that 
+channels are `i.convoluted` if there is a potential carrier-transfer 
+between them.  The distinction between
 functions' `q.inputs` and `q.outputs` can be more rigorously stated,
 with this further background, as the distinction between channels
 in function signatures which receive values `i.from` carriers at
-a call site (inputs), and those `i.from which` `mbox.values are obtained
-as a procedure has completed (outputs)`/.
+a call site (inputs), and those `i.from which` values are obtained
+as a procedure has completed (outputs).
 `p`
 
-%`vspace<-1em>;
 `p.
 A Channel Expression Language (`CXL;) can describe channels both in
 signatures and at call-sites.  The aggregation of channels generically

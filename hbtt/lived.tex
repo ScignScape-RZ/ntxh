@@ -1,6 +1,11 @@
 
+%%%  I like the placement of this diagram without 
+%%   floating, but we can put floats back in 
+%%   for different pagination ...
+%\begin{figure}
 
-\resizebox {\columnwidth} {!} {
+
+{\noindent\resizebox {\columnwidth} {!} {
 \begin{tikzpicture}
 
 %\node at (21.49,2){1};
@@ -81,5 +86,10 @@
 %\node at (6,1.4){2};
 
 \end{tikzpicture} 
+
+%\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
 %\label{fig:lived}
-}
+}\captionof{figure}{CH vs. RDF Collections.}}
+
+%%%  see top of file ...
+%% \end{figure}

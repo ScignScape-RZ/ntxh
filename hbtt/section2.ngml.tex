@@ -134,8 +134,8 @@ devices, which led to the evolution of
 cryptographic machines used during the Second World War.  
 So there was indeed a practical interest in 
 \q{computing machines}, which eventually led to 
-the John von Neumann formal prototypes for digital 
-computer.  
+John von Neumann's formal prototypes for digital 
+computers.  
 }
 \p{Early on, though, \mOldLambda{}-Calculus was less about blueprints
 for calculating machines and more about \i{abstract} formulation of
@@ -168,8 +168,7 @@ calculations for the purpose of mathematical analysis
 continuing these perspectives include, e.g., \cite{MartinEscardo},
 \cite{MasahitoHasegawa}, \cite{TuckerZucker}).
 }
-`p`
-It was only after the emergence of modern digital computers 
+\p{It was only after the emergence of modern digital computers 
 that \mOldLambda{}-Calculus become reinterpreted as a 
 model of \i{concrete} computing machines.  In its 
 guise as a Computer Science (and not just Mathematical 
@@ -203,7 +202,7 @@ history can say that \mOldLambda{}-Calculus mutated from being an
 abstract model for studying Computability as a mathematical concept,
 to being a paradigm for prototype-specifications of concretely
 realized computing environments.
-`p`
+}
 \p{Modern programming languages have many different ways of handing-off
 values between procedures.  The \q{inputs} to a function can be \q{message receivers}
 as in Object-Oriented programming, or lexically scoped
@@ -429,9 +428,9 @@ transformations may be useful in some analytic/representational contexts,
 and \CH{}s are flexible in part by morphing naturally into these various
 forms.\phantomsection\label{unplug}
 }
-\tcl{unplug}
-\begingroup\captionof{figure}{\q{Unplugging} a Node}\endgroup
-\vspace{1.5em}
+\spinc{unplug}
+%\begingroup\captionof{figure}{\q{Unplugging} a Node}\endgroup
+%\vspace{1.5em}
 \p{Notice that information present \i{within} a hypernode can also be expressed as
 relations \i{between} hypernodes.  For example, consider the information that
 I (Nathaniel), age 45, live in Brooklyn as a registered Democrat.  This may be
@@ -481,8 +480,7 @@ in part on drawing comparisons between \CH{} and \RDF{}.
 \spsubsection{Channelized Hypergraphs and \largeRDF{}}
 \p{The Resource Description Framework (\RDF{}) models information
 via directed graphs (\cite{AnglesGuttierez},
-\cite{MadalinaCroitoru}, \cite{ErnestoDamiani}, and
-\cite{YurickWilks} are good discussions of
+\cite{MadalinaCroitoru}, and \cite{ErnestoDamiani} are good discussions of
 Semantic Web technologies from a graph-theoretic perspective),
 whose edges are labeled with concepts that,
 in well-structured contexts, are drawn from published Ontologies
@@ -495,10 +493,12 @@ however, higher-level \RDF{} notation such as \TTL{} (\Turtle{} or
 deal with aggregate groups of data, such as \RDF{} containers and
 collections.\phantomsection\label{lived}
 }
-\vspace{-.5em}
-\tcl{lived}
-\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
-\vspace{.5em}
+%\vspace{-.5em}
+%\tcl{lived}
+%\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
+%\vspace{.5em}
+\spinc{lived}
+%\input{lived}
 \p{For example, imagine a representation of the
 fact \q{(A/The person named) Nathaniel, 45, has lived in Brooklyn,
 Buffalo, and Montreal} (shown in Diagram \hyperref[lived]{2} as both
@@ -710,10 +710,10 @@ optimal to deserialize data by running \SPARQL{} queries.
 }
 \p{Finally, as a last point in the comparison between
 \RDF{} and \CH{} semantics,
-it is worth considering the distinction (introduced, notably,
-in the \q{OpenCog} system)
-between \q{declarative knowledge} and \q{procedural knowledge}
-\cite[especially pages 182-197]{BenGoetzel}.  According
+it is worth considering the distinction 
+between \q{declarative knowledge} and \q{procedural knowledge} 
+(see e.g. 
+\cite[pages 182-197]{BenGoetzel}).  According
 to this distinction, canonical \RDF{} data exemplifies \i{declarative} knowledge
 because it asserts apparent facts without explicitly trying to interpret or
 process them.  Declarative knowledge circulates among software in canonical,
@@ -721,8 +721,8 @@ reusable data formats, allowing individual components to use or make inferences 
 data according to their own purposes.
 }
 \p{Counter to this paradigm, return to
-hypothetical \USH{} examples as I discussed at the top of this chapter.  For
-example, consider the conversion of Voltage data to acceleration data, which is a
+hypothetical \USH{} examples, such as 
+the conversion of Voltage data to acceleration data, which is a
 prerequisite to accelerometers' readings being useful in most contexts.  Software
 possessing capabilities to process accelerometers therefore reveals
 what can be called \i{procedural} knowledge, because software
