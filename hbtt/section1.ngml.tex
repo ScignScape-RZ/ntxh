@@ -2,8 +2,7 @@
 \p{There are several design principles which can help ensure 
 safety in large-scale, native/desktop-style \GUI{}-based 
 applications.  These include:
-\begin{enumerate}[leftmargin=5mm]
-\item{}  Identify operational relationships between types.  
+\begin{enumerate}\item{}  Identify operational relationships between types.  
 Suppose \calS{} is a data structure modeled via type \caltypeT{}.  
 This type can then be associated with a type (say, 
 \typeTp{}) of \GUI{} component which visually displays 
@@ -127,7 +126,7 @@ issues from the broader vantage of planning and stakeholder
 expectations, before addressing narrower programming concern 
 in subsequent sections.
 } 
-\subsection{Gatekeeper Code and Fragile Code}
+\spsubsection{Gatekeeper Code and Fragile Code}
 \p{I will use the term \i{gatekeeper code} for any code which checks 
 programming assumptions more fine-grained than strong typing 
 alone allows \mdash{} for example, that someone's age is not reported 
@@ -235,7 +234,7 @@ explicitly notating the corresponding gatekeeping code,
 should therefore be an essential pre-implementation planning 
 step for CyberPhysical software hubs.  
 }
-\subsection{Proactive Design}
+\spsubsection{Proactive Design}
 \p{I have thus far argued that applications
 which process CyberPhysical data need to rigorously organize their functionality
 around specific devices' data profiles.  The functions that directly interact
@@ -494,7 +493,7 @@ programming languages as communicative media and
 as digital artifacts with their own engineering challenges 
 and limitations.
 }
-\subsection{Core Language vs. External Tools}
+\spsubsection{Core Language vs. External Tools}
 \p{Because of programming languages' engineering limitations, 
 such as I just outlined, software projects should not 
 necessarily rely on core-language features for 

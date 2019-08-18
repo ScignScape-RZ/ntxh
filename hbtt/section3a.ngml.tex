@@ -1,63 +1,23 @@
 \spsubsection{Described Types and Actual Types}
-\p{I consider it a maxim of the kind of type system I
-propose here that each system is grounded in a universe of typed values;
-that for each system there is a Category \tCat{} of types which in principle
-satisfies Category Theoretic axioms; that \q{to be a value with a type}
-means to be the image of a morphism from a type with one sole
-inhabitant (modeling the phenomenon of \q{initializing} a symbol, or
-variable, or temporary rvalue, or holder, or as I'll generically call it a
-\q{carrier} holding a value); that each inhabitable type has at least one
-\q{data}- or (the term I'll prefer) \q{value}-constructor, which is a
-function returning a value of that type, and that at least one of these value
-constructors does not in turn require a value of the type (more generally that
-the system of value-constructors is \q{acyclic} in a sense I'll define later);
-and that functions (in the sense of procedures that
-are implemented in code and can be called from other functions) are themselves
-typed values.  These last two assumptions contain the seed of a debate
-with \q{ordinary} type theories: most Category-flavored work on types seems
-to take as a general principle that morphisms (which must have a nontrivial
-structure if \tCat{} is a nontrivial Category) are analogous to functions (i.e.,
-\i{implemented} functions, as opposed to mathematical constructs at one remove from
-an actual programming language), to the degree that such a distinction is recognized.
-}
-\p{The notion of \q{type systems} I adopt here sees them not
+\p{The notion of \q{type systems} I adopt here sees types not
 logical abstractions but as engineered artifacts (as are
-languages themselves).  Types are not \i{sets} (or some Constructive or
-intuitionistic Category that can stand in for sets, adding
-mathematical structure or logical discipline to
-sets' notorious philosophical haziness \cite{Jubien}).  In the
-general case there is no \i{a priori} association between a type and
-the sets of values it can house (on any particular computing
-environment).  \phantomsection\label{pointerlist}As a matter of logic, we can say,
-for example, that allocating memory and appending the resulting
-pointer to a pointer-list yields a new pointer-list \mdash{}
-but there is no guarantee that this operation will succeed
-(there may, among other issues, be no memory available).
-An expression, as in this case, which appears to logically describe a plausible
-value of a type (an \q{inhabitant}) may not actually be constructable
-or representable at some computing environment and some time
-(or even any time).  Similar issues are sometimes addressed by a
+languages themselves).  A logical description of a plausible type
+\mdash{} say, the type of all functions that take equal-sized lists
+of integers \mdash{} may not correspond to a type that can be
+concretely implemented in a given programming languages and
+environment.  There may be \i{contingently}
+uninhabited types, types which cannot be inhabited
+\i{in some particular computing environment} because there are no
+constructors implemented; or because the environment has
+no compile-time or run-time mechanism for enforcing the
+requirements stipulated by the type \mdash{} insofar as they are used
+either to describe values or as an element in typing judgments.\footnote{Similar issues are sometimes addressed by a
 \i{modal} type theory (cf., e.g., \cite{MurdochGabbay})
 where (in one interpretation) a \i{logical}
 assertion about a type may be \i{possible} but not necessary
 (the modality ranging over \q{computing environments}, which
 act like \q{possible worlds}).
 }
-\p{Along similar lines, a logical description of a plausible type
-\mdash{} say, the type of all functions that take equal-sized lists
-of integers \mdash{} may not correspond to a type that can be
-concretely implemented in a given programming languages and
-environment.  There is no ambient mathematics which makes a
-type available for practical use as soon as it is unambiguously
-described \mdash{} alongside inferences driven by the Curry-Howard
-isomorphism that there are some \i{necessarily uninhabited} types,
-we can say in the present setting that there may be \i{contingently}
-uninhabited types, types which cannot be inhabited
-\i{in some particular computing environment} because there are no
-constructors implemented; or because the environment has
-no compile-time or run-time mechanism for enforcing the
-requirements stipulated by the type \mdash{} insofar as they are used
-either to describe values or as an element in typing judgments.
 }
 \p{In this context, then, a \i{type} is conceptually a set of
 guarantees on function-call resolution (for overloaded function
@@ -66,8 +26,8 @@ unwarranted assumptions), and a type can only be inhabited if those
 guarantees can be met.  In particular, the \q{witness} to a type's
 being inhabited is always one (or more) functions \mdash{} either a constructor
 (a \q{value constructor}) which creates a value of the type from
-other values or from character-string literals; or, for function types,
-a function body implementing a function with the appropriate signature.
+other values or from character-string literals; or, for function-like types,
+an implemented procedure.
 }
 \p{A consequence of this framing is that defining what exactly constitutes
 a type \mdash{} via an expression notating a type description and
@@ -77,8 +37,7 @@ an \i{implementation} or \i{function body}.  Moreover, since
 functions are implemented in terms of other functions,
 another primordial concept is a function \i{call}.  Reasoning
 abstractly about functions needs to be differentiated from
-reasoning about available, implemented functions.  For example,
-a common functional-programming idiom is to treat the composition
+reasoning about available, implemented functions.\footnote{As a case in point, a common functional-programming idiom is to treat the composition
 of two unary functions as itself a function-typed value to pass
 to contexts expecting other function-typed values.  In my perspective
 here, \fofg{} may be a \i{plausible} value, but it is
@@ -86,22 +45,19 @@ not an \i{actual} value without being implemented,
 whether via a code graph (spelling out the equivalent of \lambdaxfgx{})
 or some indirect/behavioral description (analogous to \inc{}
 represented as \addOne{}).
+}  
 Consider function pointers: what is the address of \fofg{}
 if that expression is interpreted in and of itself
 as evaluating to a functional value?  This suggests
 that a composition operator does not work in function-like
 types quite like arithmetic operators in numeric types
 (which is not unexpected insofar as functional values,
-internally, are more like pointers than numbers-with-arithmetic).
-Of course, languages are free to implement
+internally, are more like pointers than numbers-with-arithmetic).\footnote{Of course, languages are free to implement
 functions behind the scenes to expand (say) \fofg{}, but
 then \fofg{} is just syntactic sugar (even if its purpose
 is not just to neaten source code, but also to inspire programmers
 toward thinking of function-composition in quasi-arithmetic ways).
-%They are also free to behaviorally emulate \fofg{} via a data
-%structure standing in for the function-value in lieu of a code
-%graph.
-To put it differently, an \addressOf{} operator
+}  To put it differently, an \addressOf{} operator
 \i{may} be available for \fofg{} if it is available for \fFun{} and
 \gFun{}, but this depends on language design; it is not an
 abstract property of type systems.
@@ -114,37 +70,8 @@ since the Curried function is not necessarily implemented,
 there is a \i{modal} difference between \tOnetoTwotoThree{}
 and  \tOnetoTwoTOThree{}.  Languages \i{may} be engineered
 to silently Curry any function on demand, but purported
-\tOnetoTwotoThree{} and \tOnetoTwoTOThree{} (\q{Curry})
+\tOnetoTwotoThree{} and \tOnetoTwoTOThree{} 
 equivalence is not a \i{necessary} feature of type systems.
-}
-\p{Aside from showing a concrete case of type-theoretic assertions which
-may be refined via modal operators (giving us means
-to assert possible but not necessary \q{Curry equivalence}), this
-example also points to how formal criteria of what, in fact,
-constitutes a function, influences our notion of
-what in fact constitutes a type.  Exploring this relation, I contend,
-is one way to consider the relations and variation between
-formulations like \mOldLambda{} and \pimath{} (process) calculi.
-}
-\p{In a mathematical type-theoretic context \mdash{} such as Typed
-\mOldLambda{}-Calculus \mdash{} there is a prior notion of
-\q{function application} or \q{term} \mdash{} so terms (which may be
-arbitrarily nested) denote function calls, while lambda-abstracting
-symbols within terms forms the basis of notating function bodies.
-For serious programming languages, however, there are (as I have
-stressed) many \mOldLambda{}-calculi \mdash{} adding forms of
-abstraction for objects,
-exceptions, permissions, mutable state, and any other mechanism
-through which functions may pass values to and from other
-contexts.  This variation intersects with type theory
-insofar as, for example, type operators (abstracting to bind
-symbols to types rather than values) combine with
-other variations on the lambda theme.  There are many
-\q{lambda cubes} because the Barendregt construction
-can be duplicated for many variations of the underlying
-lambda calculus \mdash{} of the calculus for value-abstraction
-irrespective of what type-abstractions are allowed; e.g.,
-abstracting objects apart from function arguments.
 }
 \p{To the extent that both mathematical and programming concepts have a place here, we
 find a certain divergence in how the word \q{function} is used.  If I say that
@@ -155,39 +82,15 @@ by appeal to some sort of logic; the other is that a \tOneTotTwo{} function actu
 exists in code.  This is not just a \q{metalanguage} difference projected
 from how the discourse of mathematical type theory is used to different ends than discourses
 about engineered programming languages, which are social as well as digital-technical
-artifacts.  Instead, we can make the difference exact: when a function is
-implemented, it becomes a \i{value} of a type, something created by a
-value constructor: the image of a morphism, not itself a morphism.
+artifacts.  Instead, we can make the difference exact: when a function-value 
+is keyed to a procedure, it is bound to a segment of code subject to 
+analysis and to alternative representations (such as code graphs).  
 }
-\p{To be precise, consider how \q{carriers} of values \mdash{} the holders, bound to
-symbols in source code, which designate internal runtime representations of
-values and so make them accessible for computations \mdash{} become initialized.
-Consider first symbols being initialized from source-code literals,
-like \intxeqninety{}.  The value-constructor in this case must take a value
-representing a \q{literal}, some sort of character string obtained
-directly from source code.  In other cases, initialization can unfold
-over several
-steps.  Consider \xninetyyonehgrade{}: the \q{\gSym{}} is initialized from a function
-return, so the actual value constructor whose result initializes \gSym{}
-is inside \gradeFn{}, and a chain of intermediary carriers brings the result to
-its target.  But we can assume that by following the chain of carriers and
-value constructors we can eventually reach a value constructor which works on a
-raw source code literal.  Call a type \q{acyclic} (in the context of
-constructors) if it has either a default constructor (a value constructor which
-takes no arguments), or a value constructor which takes one
-argument of a single global type that includes (representations of) raw source
-code literals, or a value constructor which only takes other acyclic types,
-such that a call diagram whose nodes are types and whose
-edges are value constructors meeting these criteria forms a Directed Acyclic Graph.
-Call a type system acyclic if every inhabitable type in the system is acyclic
-in this sense.  Intuitively, this means that every type can be built up from source code literals by
-a chain of value constructors.
-}
-\p{Notice, however, that \i{function} values seem, at least
-in the canonical cases \mdash{} see item \hyperref[funconstr]{1}
-on page \pageref{funconstr} \mdash{} to be defined
-from \q{bodies} which are not single literals, but
-rather aggregate code-spans
+\p{Initializing function-values from code-segments is, roughly, 
+analogous to initializing simpler types from source-code literals.  
+Typically \mdash{} see item \hyperref[funconstr]{1}
+on page \pageref{funconstr} \mdash{} procedures are defined
+from aggregate code-spans
 with semantically and syntactically regulated internal structure.  I assume that
 code is written in a specific language and that, in the context of that language,
 any sufficiently complete code-span can be compiled to an Abstract Semantic Graph
@@ -233,13 +136,8 @@ together with its function-body implementation-graph, whose potential
 \q{template parameters} are fixed according to the produced type.  So, each
 function \i{implementation} is fully determined by a type-and-code-graph
 pair.  This formally expresses how \i{implemented functions} are different
-phenomena than what we might call \q{functions} 
-mathematical context \mdash{} referring back to the 
-\i{morphism} versus \i{function-value} distinction I made 
-on the last page.  
-%in a mathematically inclined
-%discussion of the relevant type system, including morphisms.  
-If there is a
+phenomena than what we might call \q{functions} in   
+mathematics.  If there is a
 meaningful type Category than we must have nontrivial morphisms, which I
 would argue should be those that abstractly capture type-level semantics,
 such as predefined conversion operators or the
@@ -255,9 +153,7 @@ implementational complications that can befall described types;
 I will now return to that discussion and pursue the \q{ranged-type}
 case further.
 }
-%\vspace{-.5em}
 \spsubsectiontwoline{Range-Bounded Types, Value Constructors, and Addressability}
-%\vspace{-.5em}
 \p{Consider a function \fFun{} which takes
 values that must be in a specified range \rRan{} (say, an integer between
 \zeroToOH{}).  By extension, suppose we want to overload \fFun{} based on
@@ -268,22 +164,13 @@ of types with magnitude/comparison operators, and \rRanOfT{} be a type
 formed from \Tvar{} and two  \Tvar{}-values, implementing the semantics
 of closed intervals over \Tvar{}: so \rrRanOfTVV{} is a \q{type-expression}
 mapped to a type constructor yielding a single type
-(not a type family, typeclass, or higher-order type).  According to my \q{maxims},
-a type is concretely inhabitable if it has an acyclic value constructor,
-which in turn is a value of a function type.  So, each acyclic type is
-associated with one or more \i{values} that are in a vague Curry-Howard sense
-\q{proofs} of its inhabitability.  Note that \q{inhabitable} does
-not in this context mean the abstract complement of
-\q{uninhabitable} types whose \q{corresponding} propositions would
-be paradoxical if the type had a value.  Rather, \q{inhabitable} means that
-value constructors are available to be called and type-instances can be
-used computationally, e.g., passed to other functions.
+(not a type family, typeclass, or higher-order type).
 }
 \p{For any type-with-intervals \Tvar{} and \Tvar{}-range \rRan{}, a compiler
 (for instance by specializing a template) can produce a value constructor that takes
 \Tvar{}-values and tests (or coerces) them such that the constructor only returns
 a value in \rRan{}.  This can then be the input type for a function which
-requires \rRan{}-bounded input (see Figure \ref{lst:range}).  What to do when a values \i{fails} the
+requires \rRan{}-bounded input.  What to do when a values \i{fails} the
 range-test is another question which I set aside for now.  We can similarly define
 a \q{non-range} type which only accepts values \i{not} in \rRan{}; and, since these
 two types (the in-range and the out-of-range) are different, we can overload

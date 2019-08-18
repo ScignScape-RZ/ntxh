@@ -80,3 +80,102 @@ and manufacturing of particular devices.
  %-- perhaps OpenCog and its `q.Atom Space` system, and
 certainly the `CH; model highlighted in this chapter %-- 
 
+
+  For example, safety certification can proceed
+by documenting the assumptions that each safety-critical function
+implementation makes and then that those assumptions are reasonable
+given how each function are called.
+Such an `q.assume-and-justify` two-step
+is easier when assumptions are modeled via structures intrinsic to the
+type system.  
+`footnote.
+Doing so allows preconditions to be
+encoded directly in the type system, making it possible to restrict the
+diversity of values which a function may receive and thereby allow
+the implementation to make assumptions which would be unwarranted
+otherwise.  
+
+
+
+
+`p.
+In material fact, computers work with `q.numbers` that
+are electrical signals; but in practice, we reason about
+software via computer code which abstracts and is
+materially removed from actual running programs.  In these
+terms, we can note that `q.computers` (in this
+somewhat abstract sense) do not deal `i.directly` with
+numbers (or indeed other kinds of values), but rather
+deal with `q.symbols` that express, or serve as placeholders
+for, or `q.carry` values.  Even `q.literal` values are composed
+of symbols: the number (say) `oneTwoThree;, which has a particular
+physical incarnation in electrons, is represented in source
+code by a Unicode or `ascii; character string (which materially
+bears little resemblance to a `q.digital` `oneTwoThree;).
+`p`
+
+
+`p.
+Because `q.unitialized` carriers and `q.dangling pointers`
+are coding errors, within `q.correct` code, carriers
+and values are bound tightly enough that the whole carrier/value
+distinction might be considered an artifact of programming practice,
+out of place in a rigorous discussion of programming languages
+(as logicomathematical systems, in some sense).  But even
+if the `q.career` of symbols is unremarkable, we cannot avoid
+in some contexts %-- within a debugger and/or an `IDE;
+(Integrated Development Environment, software for writing programs),
+for example %-- needing to formally distinguish the carrier
+from the value which it holds, or recognize that carriers
+can potentially be in a `q.state` where, at some point in which
+they are relevant for code analysis or evaluation, they
+do not yet (or do not any longer) hold meaningful values.
+The `q.trajectory` of carrier `q.lifetime` %-- from being declared,
+to being initialized, to falling `q.out of scope` or otherwise `q.retired`
+%-- should be integrated into our formal inventory of programming
+constructs, not relegated to an informal `q.metalanguage` suitable
+for discussing computer code as practical documents but not as formal systems.
+I'd make the analogy to how lambda calculus models `q.symbol rewriting`
+as a formal part of its theory, rather than a notational intuition
+which reflects mathematical conventions but is seen as part
+of mathematical `q.metalanguage` rather than mathematical `q.language`/.
+The history of mathematical foundations reveals how convention, notation,
+and metalanguage tends to become codified into theory, models, and
+(mathematical) language proper.  Likewise, we can develop a formal
+theory of carriers which models that carriers have different states
+%-- including ones where they do not hold meaningful values
+%-- separate and apart from whether the underlying type
+system allows for mutable value-holders, or pointers, references
+to lexically scoped symbols, and other code formations that
+can lead to `q.undefined behavior`/.
+`p`
+
+`p.
+Consider a carrier which has been declared, so it is assigned a type and belongs to
+some given scope in its source code, but has not yet been initialized.
+The carrier does not therefore, in the theory, hold any value at all.  This
+is different from holding a default value, or a null value, or
+any other value that a type system might introduce to represent
+`q.missing` information.  In practice, of course, insofar as a `q.carrier` refers
+to a segment of memory, the carrier will be seen by the computer as having
+`q.some` (effectively random) value; some bit pattern left behind by some
+other calculation, which obviously has no `q.meaning`/.  Programming languages
+usually talk about the (mis)use of uninitialized variables (i.e., in this
+context, carriers) as leading to `q.undefined behavior` and therefore beyond any
+structured reasoning about code, and leave it at that.  We can be more rigorous
+however and define being uninitialized as a `i.state` of a carrier, as is
+holding a meaningful value (once it `i.is` initialized) and then, some time
+later, no longer holding a meaningful value, because its associated memory
+has been deemed recyclable (typically, once a symbol falls out of scope).  Any
+carrier therefore has at least three kinds of state, which we can
+call `i.pre-initialized`/, `i.initialized`/, and `i.retired`/.`footnote.
+Again, though,
+we should not think of (say) `q.Preinitialized` as a `i.value` with a `i.type`/.
+A carrier declared as type `intthrtwo;, say (32-bit integer) can only hold
+values of this type, when it holds any value at all, which precludes
+interpreting `q.Preinitialized` as some kind of `q.null` value which is somehow
+arranged to be an instance of `intthrtwo;.
+`footnote`
+`p`
+
+

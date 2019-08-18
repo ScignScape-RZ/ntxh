@@ -265,18 +265,16 @@ function which creates a value of a type from a literal
 or a value of a different type); and `i.multi-addressable` if it has
 at least one multi-addressable constructor or initializer: these
 terms can carry over from functions to types for which
-functions classified in these terms are constructors.
-Figure \ref{lst:multi} shows a comparison
-(in this discussion I mostly skip over the technical detail that
+functions classified in these terms are constructors.`footnote.
+In this discussion I mostly skip over the technical detail that
 in `Cpp;, at least, one cannot actually take the address of a
 constructor function; but this is related to `Cpp;
 `q.constructors` having dual roles of allocating memory
 and initialization: we `i.can` take the address of an
 initialization function that would be analogous to a
-`q.pure` value constructor, like `codeconstruct;
-in the following code).
+`q.pure` value constructor.
+`footnote`
 `p`
-\itcl{multi}
 
 `p.
 Addressability refers at one level, as the word suggests, to
@@ -291,25 +289,15 @@ opaque to these reflection-oriented features.  And yet
 this can complicate the implementation of type-system features.
 To reiterate: the goal of
 `q.expressive` type systems is to define types,
-on many occasions, fairly narrowly.  Doing so allows specifications
-on the preconditions for calling a function implementation to be
-encoded directly in the type system, making it possible to restrict the
-diversity of values which a function may receive and thereby allow
-the implementation to make assumptions which would be unwarranted
-otherwise.  For example, safety certification can proceed
-by documenting the assumptions that each safety-critical function
-implementation makes and then that those assumptions are reasonable
-given how each function are called.
-Such an `q.assume-and-justify` two-step
-is easier when assumptions are modeled `mbox.via structures intrinsic to the
-type system`/.
-`p`
-
-`p.
+as necessary, narrowly enough to type-check granular procedure 
+requirements.
 The problem is that gatekeeper code induced by type-level
 expressiveness %-- particularly code which is automatically
 generated %-- can be opaque to extra-linguistic environments
 like `IDE;s and scripting engines.
+`p`
+
+`p.
 For example, suppose certification
 requires that the function which displays the gas level on a car's dashboard
 never attempts to display a value above `litOH; (intended to mean `q.One Hundred percent`/,
