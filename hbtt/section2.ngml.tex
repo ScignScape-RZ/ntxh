@@ -19,7 +19,7 @@ implements its functionality by calling \i{other} procedures
 in some strategic order.  Of course, often 
 inter-procedure calls are \i{conditional} \mdash{} a calling 
 procedure will call one (or some sequence of) procedures 
-when some condition holds, but call diffdrent procedures 
+when some condition holds, but call alternative procedures
 when some other conditions hold.  In any case, computer 
 code can be analyzed as a graph, where connections exist 
 between procedures insofar as one procedure calls, 
@@ -40,7 +40,7 @@ own right, employing a Source Code Algebra or
 Source Code Ontology to assert properties of source code 
 and enable queries against source code, qua information 
 space.  A second option derives from type theory: to 
-consider procedures as instances of funtional types, 
+consider procedures as instances of functional types,
 characterized by sets of inputs and output types.  
 A procedure is then a transform which, in the presence 
 of (zero or more) inputs having the proper types, produces 
@@ -104,14 +104,14 @@ bound to other formulae, yielding new equations.
 expressions \mdash{} mathematicians began to ask foundation 
 questions about mathematical formulae: what are all formulae 
 that can be built up from a set of core equations via 
-repetedly substituting nested expressions for 
+repeatedly substituting nested expressions for
 free symbols?  This questions turns out to be related to 
 the issue of finite calculations: in lieu of 
 building complex formulae out of simpler parts, we can 
 proceed in the opposite direction, replacing nested 
 expressions with values.  Formulae are constructed 
 in terms of unknown values; when we have concrete measurements 
-to plug in to those formulae, the set of unkowns decreases.  
+to plug in to those formulae, the set of unknowns decreases.
 If \i{all} values are known, then a well-constructed formula 
 will converge to a (possibly empty) set of outcomes.  
 This is roughly analogous to a computation which 
@@ -142,7 +142,7 @@ for calculating machines and more about \i{abstract} formulation of
 calculational processes.  Historically, the original 
 purpose of \mOldLambda{}-Calculus was largely a mathematical \i{simulation} of
 computations, which is not the same as a mathematical \i{prototype}
-for computating machines.  Mathematicians in the decades before WWII
+for computing machines.  Mathematicians in the decades before WWII
 investigated logical properties of computations, with particular
 emphasis on what sort of problems could always be solved in
 finite time, or what kind of procedures can be guaranteed to
@@ -179,13 +179,13 @@ evolution of programming languages.  Many programming
 languages have important differences which are not 
 describable on a purely mathematical basis: two 
 languages which are both \q{Turing complete} are 
-abstractly interchangable, but it is important to 
-reprecent the contrast between, say, 
+abstractly interchangeable, but it is important to
+represent the contrast between, say,
 Object-Oriented and Functional programming.  
 In lieu of a straightforward, mathematical model 
 of formulae as procedures which map inputs to 
 outputs, modern programming languages add 
-may new constructs which determine differet 
+may new constructs which determine different
 mechanisms whereby procedures can read and 
 modify values: objects, exceptions, closures, 
 mutable references, side-effects, signal/slot 
@@ -498,15 +498,10 @@ collections.\phantomsection\label{lived}
 %\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
 %\vspace{.5em}
 \spinc{lived}
-%\input{lived}
 \p{For example, imagine a representation of the
 fact \q{(A/The person named) Nathaniel, 45, has lived in Brooklyn,
 Buffalo, and Montreal} (shown in Diagram \hyperref[lived]{2} as both
-a \CH{} and in \RDF{}).  An \NThree{} graph of the sentence
-might look like this: \NathLivedTTL{}  The final (\NThree{} proper)
-expression, in particular,
-actually seems structurally closer to the \CH{} model than
-to the \RDF{}.  If we consider \Turtle{} or \NThree{} as \i{languages} and
+a \CH{} and in \RDF{}).  If we consider \Turtle{} or \NThree{} as \i{languages} and
 not just \i{notations}, it would appear as if their semantics is built
 around hyperedges rather than triples.  It would seem that these
 languages encode many-to-many or one-to-many assertions, graphed as
@@ -808,8 +803,8 @@ the abstract hypernodes with concrete values, which in turn allows
 expressions described by the \CH{} to be evaluated.
 }
 \p{These points suggest a strategy for unifying 
-Lambda Calculii with Source Code Ontologies.  
-The essential construct in Lambda Calculii is 
+Lambda Calculi with Source Code Ontologies.
+The essential construct in Lambda Calculi is
 that mathematical formulae include 
 \q{free symbols} which are \i{abstracted}: sites 
 where a formula can give rise to a concrete 
@@ -1021,11 +1016,11 @@ the minimal theory of function-like types
 (for Cartesian Closed type Categories).  
 More complex channel combinations and protocols 
 can then model more complex (or at least more 
-modern) variations on \mOldLambda{}-Calculii and 
+modern) variations on \mOldLambda{}-Calculi and
 programming language type systems. 
 }
 \subsubsection{Channelized Type Systems}
-\p{Collectively, to summarize my disuccion to this point, 
+\p{Collectively, to summarize my discussion to this point,
 I will say that formulations 
 describing channel kinds, their restrictions, and
 their interrelationships describe a \i{Channel Algebra}, 

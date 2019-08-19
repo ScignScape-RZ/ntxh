@@ -1,7 +1,7 @@
 \p{Most CyberPhysical Systems are connected to a software hub 
 which takes responsibility for monitoring, validating, and 
 documenting the state of the system's networked devices.  
-Developing robust, user-friedly central software is an 
+Developing robust, user-friendly central software is an
 essential project in any CyberPhysical Systems deployment.  
 In this chapter, I will refer to systems' central software 
 as their \q{software hub}.  Implementing software hubs 
@@ -37,7 +37,7 @@ Graphical User Interface components, and
 which often work with data and files saved 
 locally \mdash{} i.e., saved on the filesystem 
 of the host computer).  
-Contemporary sofware design also recognizes 
+Contemporary software design also recognizes
 \q{hybrid} applications which combine features 
 of web and of native (desktop) software.   
 }
@@ -91,13 +91,13 @@ urban infrastructure \mdash{} analysis of traffic patterns, for
 instance, can help civic planners optimize public transit routes 
 (which benefit both the public and the environment).
 }
-\p{Meanwhile, parralel to the rise of accessible health or civic data, 
+\p{Meanwhile, parallel to the rise of accessible health or civic data,
 companies are bringing to market an increasing 
 array of software products and \q{apps} which access and 
 leverage this data.  These applications do not necessarily 
 fit the profile of \q{hub software}.  Nevertheless, 
 it is still useful to focus attention on the design and 
-securitazation of hub software, because hub-software 
+securitization of hub software, because hub-software
 methodology can provide a foundation for the design of 
 other styles of application that access CyberPhysical data.  
 Over time, we may realize that relatively \q{light-weight} 
@@ -194,7 +194,7 @@ be able to perform so as to study system data, to access the
 system's past states and performance? 
 }
 \p{I believe that the software development community has neglected 
-to consider general models of CyberPhysical sofware 
+to consider general models of CyberPhysical software
 which could answer these kinds of questions in a rigorous, 
 theoretically informed manner.  There is of course a robust 
 field of cybersecurity and code-safety, which establishes 
@@ -210,10 +210,10 @@ software project.
 }
 \p{For example, Object-Oriented Programming, 
 Functional Programming, and Web-Based Programming present 
-different capabilities and vulerabilities and therefore 
+different capabilities and vulnerabilities and therefore
 each have their own \q{Best Practices}.  As a result, 
 our understanding of how to deploy robust, well-documented 
-and well-tested sofware tends to be decentralized 
+and well-tested software tends to be decentralized
 among distinct programming styles and development 
 environments.  External analysis of a code base \mdash{} e.g., searching 
 for security vulnerabilities (attack routes for malicious code) 
@@ -228,7 +228,7 @@ review as distinct technical roles, for instance).
 }
 \p{It is also helpful to distinguish cyber 
 \i{security} from \i{safety}.  When these concepts are 
-separted, \i{security} generally refers to 
+separated, \i{security} generally refers to
 preventing \i{deliberate}, \i{malicious} intrusion into 
 CyberPhysical networks.  Cyber \i{safety} refers to preventing 
 unintended or dangerous system behavior due to innocent human 
@@ -238,7 +238,7 @@ Malicious attacks \mdash{} in particular the risks of
 public imagination, but innocent coding errors or design 
 flaws are equally dangerous.  Incorrect data readings, 
 for example, led to recent Boeing 737 MAX jet accidents 
-causing over 200 fatalities (plus the worldwide grouding 
+causing over 200 fatalities (plus the worldwide grounding
 of that airplane model and billions of dollars in losses 
 for the company).  Software failures either 
 in runtime maintenance or anticipatory risk-assessment 
@@ -300,7 +300,7 @@ the procedure's assumptions are satisfied?
 measurable assessments of software quality, but 
 also for people's more subjective trust in the reliability 
 of software systems.  In the modern world we 
-allow sofware to be a determining factor, in places 
+allow software to be a determining factor, in places
 where malfunction can be fatal \mdash{} airplanes, hospitals, 
 electricity grids, trains carrying toxic chemicals, 
 highways and city streets, etc.  
@@ -338,7 +338,7 @@ usually beneficial more than harmful.
 }
 \p{The problem, as software becomes an increasingly central feature 
 of the biomedical ecosystem, is that no commensurate oversight 
-framework exists in the sofware world.  
+framework exists in the software world.
 Biomedical \IT{} regulations tend to be ad-hoc and narrowly domain-focused. 
 For example, code bases in the United States which manage HL-7 
 data (the current federal Electronic Medical Record format) must 
@@ -358,11 +358,11 @@ made regarding software in CyberPhysical settings like
 transportation, energy (power generation and electrical 
 grids), physical infrastructure, environmental protections, 
 government and civic data, and so forth 
-\mdash{} settings where sofware errors threaten personal 
+\mdash{} settings where software errors threaten personal
 and/or property damages.
 }
 \p{In the case of personal medical data, as one example, there is 
-general aggreement that data should be accessed when it is 
+general agreement that data should be accessed when it is
 medically necessary \mdash{} say, in an emergency room 
 \mdash{} but that each patient should mostly control how and whether 
 their data is used.  When data is pooled for epidemiological 
@@ -417,7 +417,7 @@ Without software safety models rooted in low-level
 computer code, software safety can only be ex-post-facto 
 engineered, imposing requirements relatively late in the 
 development cycle and checking code externally, via 
-code review and analysis methods that are sepated from 
+code review and analysis methods that are beyond
 the core development process.  While such secondary 
 checking is important, it cannot replace software built 
 with an eye to safety from the ground up. 
@@ -569,7 +569,7 @@ the core language level where such types must seamlessly
 interoperate with all other language features 
 (examine the code \mdash{} or even documentation \mdash{} for 
 the \boostUnits{} library for a sense of the technical 
-intricasies these implementations involve).  
+intricacies these implementations involve).
 Consequently, progress toward core-language cyber safety 
 features will be advanced with methodological progress in 
 software language design and engineering itself.   
@@ -594,7 +594,7 @@ eye toward cyber safety and Software Quality Assurance.
 }
 \p{In general, software requirements can be studied 
 either from the perspective of computer code, 
-or from the persepctive of data models.  
+or from the perspective of data models.
 Consider again the requirement that systolic blood pressure 
 must always be a greater quantity than diastolic: 
 we can define this as a precondition for any code 
@@ -619,7 +619,7 @@ screened to ensure that all of its data is well-formed
 an application which works with medical data should 
 double-check data when relevant procedures are 
 called (e.g., those working with blood pressure), 
-particularly if the data is from uncertain provance. 
+particularly if the data is from uncertain provenance.
 Data could certainly come from multiple databases, 
 or perhaps directly from CyberPhysical devices, 
 and developers cannot be sure that all sources check 
@@ -630,7 +630,7 @@ itself may be impossible).
 \p{Conceptually, however, validation through data models and 
 code requirements represent distinct methodologies with 
 distinct theoretical backgrounds.  This chapter will therefore 
-consider both perspectives, as practically alligned but 
+consider both perspectives, as practically aligned but
 conceptually \i{sui generis}.  I will also, however, 
 argue that certain theoretical foundations \mdash{} particularly 
 hypergraph-based data representation, and type systems 

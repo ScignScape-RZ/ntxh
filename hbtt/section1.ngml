@@ -169,10 +169,10 @@ when provided values with the requisite properties.  It is necessary
 to ensure that such algorithms are `i.only` called with 
 correct data.  But insofar as testing of the data lies outside 
 the algorithms themselves, the proper validation has to occur 
-`i.before` the algorithms commense.  In short, `i.fragile` and 
+`i.before` the algorithms commence.  In short, `i.fragile` and
 `i.gatekeeper` code often has to be paired off: for each 
 segment of fragile code which `i.makes` assumptions, there has 
-to be a correspondng segment of gatekeeper code which 
+to be a corresponding segment of gatekeeper code which
 `i.checks` those assumptions.  
 `p`
 
@@ -191,7 +191,7 @@ called when types are first instantiated.
 `enumerate`
 
 Consider a function which calculates the difference between 
-sytolic and diastolic blood pressure, returning an unsigned 
+systolic and diastolic blood pressure, returning an unsigned
 integer.  If this code were called with malformed data where 
 systolic and diastolic were inverted, the difference would 
 be a negative number, which (under binary conversion to an 
@@ -216,7 +216,7 @@ blood-pressure case is a simple example, but in real
 situations there may be more complex data-validation 
 requirements, and separating code which `i.checks` 
 data from code which `i.uses` data, into different 
-procedures, may simplify subsequent code maintanence.  
+procedures, may simplify subsequent code maintenance.
 If the `i.validation` code needs to be modified 
 %-- and if it is factored into its its own procedure %--  
 this can be done without modifying the 
@@ -228,7 +228,7 @@ procedures exemplifies the programming principle of
 such separation creates a new problem of ensuring that 
 the gatekeeping procedure is always called.  
 Meanwhile, using special-purpose, narrowed data types 
-adds comlexity to the overall software if these data types 
+adds complexity to the overall software if these data types
 are unique to that one code base, and therefore 
 incommensurate with data provided by external sources.  
 In these situations the software must transform data between 
@@ -545,7 +545,7 @@ Programming languages are, at one level, artificial
 `i.languages` %-- they allow humans to communicate 
 algorithms and procedures to computer processors, and 
 to one another.  But programming languages are also 
-themselves engineering artificats.  It is a complex 
+themselves engineering artifacts.  It is a complex
 project to transform textual source-code %-- which is 
 human-readable and looks a little bit like natural 
 language %-- into binary instructions that computers 
@@ -567,7 +567,7 @@ and limitations.
 Because of programming languages' engineering limitations, 
 such as I just outlined, software projects should not 
 necessarily rely on core-language features for 
-responsible, safety-consious programming.  
+responsible, safety-conscious programming.
 Academic and experimental languages tend to have 
 more advanced features, and to embody more 
 cutting-edge language engineering, compared to mainstream 
