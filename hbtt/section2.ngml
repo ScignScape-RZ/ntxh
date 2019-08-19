@@ -616,7 +616,7 @@ So, `NathFF; can be seen as a (single, integral)
 `i.value` whose `i.type` is a `nameAge; pair.  Such a value has an
 `q.internal structure` which subsumes multiple data-points.  The
 `RDF; version is organized, instead, around a `i.blank node` which
-ties together disparate data points, such as my name and age.
+ties together disparate data points, such as my name and my age.
 This blank node is also connected to another blank node which
 ties together place and party.  The blank nodes
 play an organizational role, since nodes are grouped together
@@ -633,12 +633,12 @@ What concept does this fusion model?
 There is a presumptive rationale for the name/age blank
 (i.e., the fusing name/age by joining them to a blank
 node rather than allowing them to take edges independently):
-conceivably there are multiple 45-year-olds named Nathaniel,
+conceivably there are multiple 46-year-olds named Nathaniel,
 so `i.that` blank node plays a key semantic role
 (analogous to the quantifier in `q.`i.There is` a Nathaniel,
-age 45...`/); it provides an unambiguous nexus so that
+age 46...`/); it provides an unambiguous nexus so that
 further predicates can be attached to `i.one specific`
-45-year-old Nathaniel rather than any old `NathFF;.  But there is no
+46-year-old Nathaniel rather than any old `NathFF;.  But there is no
 similarly suggested semantic role for the `q.place/party` grouping.  The name
 cannot logically be teased apart from the name/age blank (because there
 are multiple Nathaniels); but there seems to be no `i.logical`
@@ -766,7 +766,7 @@ by position.
 At its core, then, `RDF; semantics are built on the proposition that many
 nodes can be declared globally unique by fiat.  This does not need to be
 true of all nodes %-- `RDF; types like integers and floats are more
-ethereal; the number 45 in one graph is indistinguishable from 45 in
+ethereal; the number 46 in one graph is indistinguishable from 46 in
 another graph.  This can be formalized by saying that some nodes can be
 `i.objects` but never `i.subjects`/.  If such restrictions were not enforced,
 then `RDF; graphs could become in some sense overdetermined, implying
@@ -774,7 +774,7 @@ relationships by virtue of quantitative magnitudes devoid of semantic
 content.  This would open the door to bizarre judgments like
 `q.my age is non-prime` or `q.I am older than Mohamed Salah's goal totals`/.
 The way to block these inferences is to prevent nodes like
-`q.the number 45` from being subjects as well as objects.
+`q.the number 46` from being subjects as well as objects.
 But nodes which are not primitive values %-- ones, say, designating
 Mohamed Salah himself rather than his goal totals %-- are justifiably
 globally unique, since we have compelling reasons to adopt a model
@@ -885,8 +885,7 @@ without adequate libraries and code to construct and interpret
 type-specific values.
 `p`
 
-`whdecoline;
-
+`thindecoline;
 `p.
 Still, having just identified several notable differences between
 `RDF; and the Semantic Web, on the one hand, and Hypergraph-based frameworks,
