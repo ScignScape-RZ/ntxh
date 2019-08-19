@@ -19,7 +19,8 @@
 \phantomsection \label{#1}
 \addcontentsline{toc}{subsection}{#1}
 \stepcounter{subs}
-\setcounter{subsection}{\thesubs}
+%\setcounterref{subsection}{\thesubs}
+\refstepcounter{subsection}
 \vspace*{3em}
 
 \noindent{\LARGE\em\thesection.{\Large\thesubs}} {
@@ -46,6 +47,9 @@
 \newcommand{\twoline}{\usebox{\twolinebox}}
 
 \newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subss{#1}{\twoline}}
+
+\newcommand{\spsubsectiontwolinerepl}[2]{\stwoline{#1}\subss{#2}{\twoline}}
+
 
 \newcommand{\spsubsection}[1]{%
 \vspace{-.25em}
@@ -1472,6 +1476,11 @@ $\Longrightarrow$ $\mathcal{T}_1$ $\rightarrow$ $\mathcal{T}_2$}}
 
 \raggedbottom
 
+\setcounter{secnumdepth}{3}
+
+%\usepackage[capitalise,noabbrev,nameinlink]{cleveref}
+%\Crefname{subsection}{Subsection}{Subsections}
+%\crefname{subsection}{Subsection}{Subsections}
 %\usepackage[none]{hyphenat}
 
 

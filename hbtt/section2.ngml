@@ -310,7 +310,8 @@ in turn provide evidence that they are logically sound
 at least to the level of properly-behaving application code.
 `p`
 
-`spsubsectiontwoline.Directed Hypergraphs and `q.Channel Abstractions`/`
+\spsubsectiontwolinerepl{Directed Hypergraphs and `q.Channel Abstractions`/}%
+{Directed Hypergraphs and 'Channel Abstractions'}
 `p.
 A `i.hypergraph` is a graph whose edges (a.k.a. `q.hyperedges`/) can span
 more than two nodes (\cite[e.g. p. 24]{BenGoetzel},
@@ -551,6 +552,7 @@ in part on drawing comparisons between `CH; and `RDF;.
 `p`
 
 `spsubsection.Channelized Hypergraphs and `largeRDF;`
+\phantomsection\label{RDF}
 `p.
 The Resource Description Framework (`RDF;) models information
 via directed graphs (`cite<AnglesGuttierez>;,

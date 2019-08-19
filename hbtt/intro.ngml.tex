@@ -3,7 +3,7 @@ which takes responsibility for monitoring, validating, and
 documenting the state of the system's networked devices.  
 Developing robust, user-friendly central software is an
 essential project in any CyberPhysical Systems deployment.  
-In this chapter, I will refer to systems' central software 
+I will refer to systems' central software 
 as their \q{software hub}.  Implementing software hubs 
 introduces technical challenges which are distinct from 
 manufacturing CyberPhysical devices themselves \mdash{} in particular, 
@@ -15,7 +15,7 @@ devices.  CyberPhysical software hubs also
 present technical challenges that are different from 
 other kinds of software applications, even if 
 these hubs are one specialized domain in the larger 
-class of user-focused software applications.
+class of user-focused software.
 }
 \p{Any software application provides human users with tools to 
 interactively and visually access data and computer 
@@ -48,7 +48,7 @@ state of networked devices through
 special-purpose Graphical User Interface 
 (\GUI{}) components.  Networked CyberPhysical 
 devices are not necessarily connected to the 
-Internet, or communicate via Internet 
+Internet, nor communicate via Internet 
 protocols.  In many cases, software hubs will 
 access device data through securitized, closed-circuit 
 mechanisms which (barring malicious intrusion) ensure 
@@ -80,8 +80,8 @@ than requirements for web-based components, such as
 \p{At the same time, we can assume that an increasing quantity of 
 CyberPhysical data \i{will} be shared via the World Wide Web.  
 This reflects a confluence of societal and technological 
-forces: public demand is increasing for access both to 
-conventional medical information and to real-time health-related 
+forces: in the bioinformatic domain, public demand is rising for access 
+both to conventional medical information and to real-time health-related 
 data (often via \q{wearable} sensors and other technologies that, 
 when properly deployed, can promote health-conscious lifestyles).  
 Similarly, the public demands greater transparency for 
@@ -133,7 +133,7 @@ that the system is behaving correctly and predictably.
 \item{} To log data (in whole or in part) for subsequent 
 analysis and maintenance.
 \end{enumerate}
-Prior to each of those capabilities is of course receiving 
+Preliminary to each of those capabilities is of course receiving 
 data from devices and pooling disparate data profiles into 
 a central runtime-picture of device and system state.   
 It may be, however, that direct device connection is 
@@ -154,7 +154,7 @@ architectural stipulations more rigorously later in
 this chapter. 
 }
 \p{Once software receives device data, it needs to 
-marshal this information between different formats, 
+marshal the information between different formats, 
 exposing the data in the different contexts of 
 \GUI{} components, database storage, and 
 analytic review.  Consider the example of a 
@@ -163,7 +163,7 @@ timestamp data (therefore a four-part structure
 giving temperature at one place and time).  
 The software needs, in a typical scenario, to do 
 several things with this information: it has 
-to check the data to ensure it fits within 
+to check the data to confirm it fits within 
 expected ranges (because malformed data can indicate 
 physical malfunction in the devices or the network).  
 It may need to show the temperature reading to a 
@@ -223,8 +223,8 @@ we aspire to develop integrated, broadly-applicable models
 of CyberPhysical safety and optimal application 
 design, models which transcend paradigmatic 
 differences between coding styles and roles 
-(treating implementation, testing, and code 
-review as distinct technical roles, for instance).
+(in the sense that implementation, testing, and code 
+review, for instance, are distinct technical roles).
 }
 \p{It is also helpful to distinguish cyber 
 \i{security} from \i{safety}.  When these concepts are 
@@ -238,7 +238,7 @@ Malicious attacks \mdash{} in particular the risks of
 public imagination, but innocent coding errors or design 
 flaws are equally dangerous.  Incorrect data readings, 
 for example, led to recent Boeing 737 MAX jet accidents 
-causing over 200 fatalities (plus the worldwide grounding
+causing over 300 fatalities (plus the worldwide grounding
 of that airplane model and billions of dollars in losses 
 for the company).  Software failures either 
 in runtime maintenance or anticipatory risk-assessment 
@@ -267,8 +267,8 @@ Consider even a simple data aggregate like
 blood pressure (combining systolic and 
 diastolic measurements).  Empirically, systolic pressure is 
 always greater than diastolic.  Software systems 
-need to agree on a protocol for encoding the number to 
-ensure that they are in the correct order, and that they 
+need commensurately to agree on a protocol for encoding the 
+numbers to ensure that they are in the correct order, and that they 
 represent biologically plausible measurements.  
 How should a particular software component test that 
 received blood pressure data is accurate?  Should it 
@@ -279,13 +279,15 @@ component report data which fails this test?  If
 such data checking is not performed \mdash{} on the 
 premise that the data will be proofed elsewhere 
 \mdash{} then how can this assumption be 
-justified?  How can engineers identify, in a 
+justified?
+}
+\p{In general, how can engineers identify, in a 
 large and complex software system, all the points 
 where data is subject to validation tests; and 
 then by modeling the overall system in term 
 of these check-points ensure that all needed 
 verifications are performed at least one time?  
-To take the blood-pressure example, 
+Continuing the blood-pressure example, 
 how would a software procedure that \i{does} 
 check the integrity of the systolic/diastolic 
 pair indicate for the overall system model 
@@ -293,14 +295,15 @@ that it performs that particular verification?
 Conversely, how would a procedure which does 
 \i{not} perform that verification indicate 
 that this verification must be performed 
-elsewhere in the system to guarantee that 
+elsewhere in the system, to guarantee that 
 the procedure's assumptions are satisfied?    
 } 
 \p{These questions are important not only for objective, 
 measurable assessments of software quality, but 
 also for people's more subjective trust in the reliability 
 of software systems.  In the modern world we 
-allow software to be a determining factor, in places
+allow software to be a determining factor in 
+systems' behavior, in places
 where malfunction can be fatal \mdash{} airplanes, hospitals, 
 electricity grids, trains carrying toxic chemicals, 
 highways and city streets, etc.  
@@ -436,8 +439,8 @@ scientists' confidence that trial results are truly
 predictive, rather than results of random chance.  This package 
 of scientific methodology provides a framework which can 
 then be adopted in legal or legislative contexts.  
-Continuing the example, policy makers can stipulate that 
-pharmaceuticals need to be tested in double-blind trials, 
+With respect to medications, policy makers can stipulate that 
+pharmaceuticals should be tested in double-blind trials, 
 with statistically verifiable positive results, before 
 being approved for general-purpose clinical use.  Such a  
 well-defined policy approach \i{is only possible} because 
@@ -446,9 +449,12 @@ can be tested to maximize the chance that positive test
 results predict similar results for the 
 general patient population.
 }
-\p{Analogously, a general theory of cyber safety has 
-to be a software-design issue before it becomes a 
-policy or contractual issue.  It is at the level of 
+\p{Analogously, a general theory of cyber safety should 
+be a software-design issue before it becomes a 
+policy or contractual issue.  Software engineering and 
+programming language design needs its own evaluative 
+guidelines; its own analogs to double-blind trials 
+and five-sigma confidence.  It is at the level of 
 low-level software design \mdash{} of actual source code 
 in its local implementation and holistic integration 
 \mdash{} that engineers can develop technical \q{best practices} 
@@ -463,8 +469,8 @@ more robust software.
 perspective of computer code outward; it is grounded 
 on code-writing practice and in the theoretical 
 systems which have historically been linked to 
-programming (like type theory and lambda 
-calculus), yielding its scientific basis.  
+programming (like type theory and Lambda 
+Calculus), yielding its scientific basis.  
 I assume that formal safety models 
 formulated in this low-level context can propagate 
 to institutional and governmental stake-holders, 
@@ -484,7 +490,7 @@ and programming language design.  In particular,
 most mainstream languages have limited 
 \i{language-level} support for foundational 
 safety practices such as dimensional checking 
-(ensuring that algorithms do not work with 
+(ensuring that algorithms do not address 
 incommensurate measurement axes) or range checking 
 (ensuring that inaccurate CyberPhysical data is 
 properly identified as such \mdash{} in the hopes 
@@ -563,8 +569,8 @@ mainstream programming languages as well.
 }
 \p{Having said that, we should not \q{blame} software language engineers 
 for gaps in mainstream languages.  It turns out that 
-such features as dimensional-unit types and bounded numerics 
-are surprisingly difficult to implement, particularly at 
+such features as unit-of-measurement-decorated types and bounded 
+numerics are surprisingly difficult to implement, particularly at 
 the core language level where such types must seamlessly 
 interoperate with all other language features 
 (examine the code \mdash{} or even documentation \mdash{} for 
@@ -578,7 +584,7 @@ software language design and engineering itself.
 library developers can play a lead role in establishing a 
 safety-oriented CyberPhysical foundation.  Insofar as 
 this foundation lies in programming languages and 
-software engineering \mdash{} in data types, procedural 
+software engineering \mdash{} in data types, procedure 
 implementations, and code analytics \mdash{} then the responsibility 
 for developing a safety-oriented theory and practice 
 lies with the software community, not with CyberPhysical device 
@@ -639,4 +645,52 @@ I will therefore trace a construction of
 \i{hypergraph-based} type theory across both data- and 
 code-modeling methodologies.
 }
-\p{}
+\p{Here I adopt a hypergraph paradigm which is somewhat inspired 
+by the Semantic Web but has some explicit contracts with 
+Semantic Web technologies (detailed in \hyperref[RDF]{\ref{RDF}}).  
+From this hypergraph model, I investigate source-code 
+representations, especially code-graphs modeling  
+implementations at the level of individual procedures.  
+Categorizing nodes in such graphs according to the 
+source of their runtime values \mdash{} in particular, nodes 
+representing procedure's input and output parameters 
+\mdash{} yields a graph-based access into notions of 
+functional domains and codomains, and thus to the 
+basic elements of type theory and Lambda Calculi.  
+Code-graph semantics then provides a representation of 
+distinct varieties of lambda-abstraction and 
+different constructions individuating function-like 
+types.  Hypergraph-based code representation, in 
+short, engenders a framework for characterizing 
+function-like types, and so by extension 
+modeling programming languages' type systems in general.
+} 
+\p{With this background, set out mostly in 
+Sections \sectsym{}\hyperref[sectTwo]{\ref{sectTwo}} and 
+\sectsym{}\hyperref[sectThree]{3}, 
+I will pivot later in the chapter to Requirements Engineering 
+in the type-theoretic context 
+(particularly in \hyperref[RDF]{\ref{Channelized}}).  
+The tie-in between types and specifications is that, at 
+least in principle, procedure requirements may be incorporated 
+into their type attribution, such that procedures with 
+distinct specifications become classified as distinct types.  
+In practice, I will discuss limits on type-level 
+granularity and on techniques for requirements verification 
+that are not implicated in type-checking per se.  
+Even in these cases, however, characterizations of 
+procedure's types is an important basis for tracing 
+how procedures interoperate to ensure specification 
+conformance. 
+} 
+\p{The overall structure of this chapter, then, can be seen 
+as to build an exceptionally expressive procedure-oriented 
+type system and then, secondarily, present some ideas 
+for how such a system can be leveraged toward in CyberPhysical 
+Requirements Engineering.  Section \sectsym{}\hyperref[sectOne]{1} 
+here is more general and reviews the pertinent issues in practice, 
+while Sections \sectsym{}\hyperref[sectTwo]{2} and 
+\sectsym{}\hyperref[sectThree]{3} are more abstract and fundamental.  
+I then return to some more applied themes within 
+Section \sectsym{}\hyperref[sectFour]{4} and after.
+}

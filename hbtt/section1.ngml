@@ -1,6 +1,6 @@
 
 `section.Gatekeeper Code`
-
+\phantomsection\label{sOne}
 `p.
 There are several design principles which can help ensure 
 safety in large-scale, native/desktop-style `GUI;-based 
@@ -750,8 +750,8 @@ as procedural
 %-- combining what are essentially two otherwise unrelated
 mathematical formations, Directed Hypergraphs and
 (typed) Lambda Calculus %-- is laid out in
-Sections `sectsym;\hyperref[sectTwo]{II}
-and `sectsym;\hyperref[sectThree]{III}.
+Sections `sectsym;\hyperref[sectTwo]{2}
+and `sectsym;\hyperref[sectThree]{3}.
 `p`
 
 `p.
@@ -807,7 +807,7 @@ for deployment.  The `q.Channelized Hypergraph` framework I develop here
 can be practically expressed in terms of code annotations that benefit
 code-validation pipelines.  This use case is shown in demo code
 published as a data set alongside this chapter (available for
-download at \url{https://github.com/scignscape/PGVM}).
+download at \url{https://github.com/scignscape/ntxh}).
 These techniques are not designed to substitute for Test Suites or
 Test-Driven Development,
 though they can help to clarify the breadth of coverage of
