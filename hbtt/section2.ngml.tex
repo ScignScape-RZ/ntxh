@@ -588,7 +588,9 @@ operate on a triplestore basis.  So the \q{reductive} semantic
 interpretation is arguably justified via the warrant that the
 definitive criteria for Semantic Web representations are not their
 conceptual elegance \visavis{} human judgments but their utility in
-cross-Ontology and cross-context inferences.  As a counter-argument,
+cross-Ontology and cross-context inferences.
+}
+\p{As a counter-argument,
 however, note that many inference engines in Constraint Solving,
 Computer Vision, and so forth, rely on specialized algorithms
 and cannot be reduced to a canonical query format.  Libraries such
@@ -657,7 +659,7 @@ etc.  These uniqueness requirements, however, are not intrinsically
 part of \CH{}, and need to be expressed with additional axioms.  In
 general, a \CH{} hypernode is a tuple of relatively simple values
 and any additional semantics are determined by type
-definitions (recall the idea that \CH{} hypernodes are roughly analogous to
+definitions (it may be useful to see \CH{} hypernodes as roughly analogous to
 \CStruct{}s \mdash{} which have no \i{a priori} uniqueness mechanism).
 }
 \p{Also, \RDF{} types are less intrinsic to \RDF{} semantics than in \CH{}
@@ -671,7 +673,7 @@ second position, etc.).  So there is no way to ascertain the semantic/conceptual
 intent of hypernodes without considering both hyponode and hypernode types.  Conversely,
 \RDF{} does not have actual tuples (though these can be represented as collections,
 if desired); and nodes are always joined to other nodes via labeled connectors
-\mdash{} there is no direct equivalent to the basis-level \CH{}
+\mdash{} there is no direct equivalent to the \CH{}
 modeling unit of a hyponode being included in a hypernode
 by position.
 }
@@ -785,17 +787,24 @@ without adequate libraries and code to construct and interpret
 type-specific values.
 }
 \thindecoline{}
-\p{Still, having just identified several notable differences between
-\RDF{} and the Semantic Web, on the one hand, and Hypergraph-based frameworks,
-on the other, I hope
-not to overstate these differences; both belong to the overall
-space of graph database and graph-oriented semantic models.
-\RDF{} graphs are both a plausible serialization
-of \CH{} graphs and a reasonable interpretation of \CH{} at least
-in some contexts.  In particular, there are several Ontologies that
-formally model computer source code.  This implies that code can been be
-modeled by suitably typed \DH{}s as well.  So, for any given
-procedure, assume that there is a corresponding \DH{} representation
+\p{Despite their differences, the Semantic Web, on the one hand, 
+and Hypergraph-based frameworks,
+on the other, both belong to the overall
+space of graph-oriented semantic models.
+Hypergraphs can be emulated in \RDF{}, 
+and \RDF{} graphs can be organically mapped to 
+a Hypegraph representation (insofar as 
+Directed Hypegraphs with annotations are a 
+proper superspace of Directed Labeled Graphs). 
+Semantic Web Ontologies for computer source code can 
+thus be modeled by suitably typed \DH{}s as well, 
+even while we can also formulate Hypergraph-based 
+Source Code Ontologies as well.  So, we are justified 
+in assuming that a sufficient Ontology exists 
+for most or all programming languages. 
+This means that, for any given
+procedure, we can assume that there is a 
+corresponding \DH{} representation
 which embodies that procedure's implementation.
 }
 \p{\phantomsection\label{detachedeval}
@@ -813,7 +822,7 @@ expressions described by the \CH{} to be evaluated.
 }
 \p{These points suggest a strategy for unifying 
 Lambda Calculi with Source Code Ontologies.
-The essential construct in Lambda Calculi is
+The essential construct in \mOldLambda{}-calculi is
 that mathematical formulae include 
 \q{free symbols} which are \i{abstracted}: sites 
 where a formula can give rise to a concrete 
@@ -825,20 +834,21 @@ if they model input parameters, which are
 given concrete values when the procedure runs.  
 Connecting the output of one procedure to the 
 input of another \mdash{} which can be modeled as a 
-graph operation, liking two nodes \mdash{} is then 
+graph operation, linking two nodes \mdash{} is then 
 a graph-based analog to embedding a complex expression 
 into a formula (via a free symbol in latter).    
 }
 \p{Carrying this analogy further, I earlier mentioned different 
 \mOldLambda{}-Calculus extensions inspired by programming-language 
-features such as Object-Orientation, exceptions, and so forth.  
+features such as Object-Orientation, exceptions, and 
+by-reference or by-value captures.  
 These, too, can be incorporated into a Source Code Ontology: 
 e.g., the connection between a node holding a value passed to an 
 input parameter node, in a procedure signature, is semantically 
 distinct from the nodes holding \q{Objects} which are 
 senders and receivers for \q{messages}, in Object-Oriented 
 Parlance.  Variant input/output protocols, including 
-Objects and exceptions, are certainly semantic 
+Objects, captures, and exceptions, are certainly semantic 
 constructs (in the computer-code domain) which 
 Source Code Ontologies should recognize.  So we can see 
 a convergence in the modeling of multifarious input/output protocols 
@@ -902,9 +912,10 @@ to the requirement that \TyS{}, seen as a Category, is Cartesian-Closed.
 The historical basis for this concept (suggested by the terminology)
 is that the construction to form function-types is an \q{operator}, something that
 creates new types out of old.  A type system
-\TyS{} first needs to be \q{closed} under products:
+\TyS{} may to be \q{closed} under products:
 if \tOne{} and \tTwo{} are in \TyS{} then \tOneTimesTTwo{} must be as well.
-If \TyS{} is \i{also} closed under \q{functionalization} then the
+Analogously, \TyS{} supports function-like types if it 
+is closed under a kind of \q{functionalization} operator: if the
 \tOneTimesTTwo{} product can be mapped onto a function-like type
 \tyOneTotyTwo{}.
 }
@@ -916,7 +927,7 @@ type systems which are closed under these operators: if \tyOne{} and
 operator being introduced.  Expanded \mOldLambda{}-calculi \mdash{} which
 define new ways of creating functions \mdash{} are correlated with new
 type systems, insofar as \q{new ways of creating functions}
-also means \q{new ways of combining types into function-types}.
+also means \q{new ways of combining types into function-like types}.
 }
 \p{Furthermore, \q{expanded} \mOldLambda{}-calculi generally involve
 \q{new kinds of abstraction}: new ways that the building-blocks
@@ -940,7 +951,7 @@ hypernode with special treatment in terms of overload resolution and access
 controls.  Similarly, exiting a function via \return{} presents
 different semantics than exiting via \throw{}.  As mentioned earlier,
 some of this variation in semantics has been formally modeled
-by different extensions to Lambda Calculus.
+by different extensions to \mOldLambda{}-Calculus.
 }
 \p{So, different hypernodes in a \CH{} are subject to different kinds of abstraction.
 Speaking rather informally, hypernodes can be grouped into \i{channels} based on
@@ -960,7 +971,7 @@ conventions and protocols with respect to calls between
 procedures.  Once we get beyond the basic contrast between 
 \q{input} and \q{output} parameters, it becomes necessary to 
 define conditions on channels' size, and on how 
-channels are associated with different procedures may 
+channels are associated with different procedures that may 
 share values.  Here are several examples: 
 \begin{itemize}\item{} In most Object-Oriented languages, any procedure can 
 have at most one \this{} (\q{message receiver}) object.  
@@ -975,7 +986,7 @@ return a value.  If \return{} and \exception{}
 model the channels carrying standard returns and 
 thrown exceptions, respectively, this convention 
 translates to a requirement that the two channels 
-can both be non-empty.
+cannot both be non-empty.
 \item{} A thrown exception cannot be handled as an ordinary 
 value.  The whole point of throwing exceptions is to 
 disrupt ordinary program flow, which means the exception 
@@ -997,7 +1008,7 @@ one procedures' \return{} channel is transferred to a
 subsequent procedures' \sCh{} channel.  The pairing of 
 Return and Sigma channels therefore gives rise to one 
 function-composition operator.  With suitable restrictions 
-(on channel size), Return and Lambda channels engender a 
+(on channel size), \return{} and \lambda{} channels engender a 
 different function-composition operator.  So channels can be 
 used to define operators between procedures which yield new 
 function-like values (i.e., instances of function-like 
@@ -1014,18 +1025,19 @@ together with semantic restrictions on when
 such connections are possible.  In this chapter, I 
 assume that notations describing these connections and 
 restrictions can be systematized into a \q{Channel Algebra}, 
-and then used to model programming language-conventions and 
+and then used to model programming language conventions and 
 computer code.  A basic example of inter-channel 
-aggregation would be how a Lambda channel, combined 
-with a Return channel, associated with one procedure, 
+aggregation would be how a \lambda{} channel, combined 
+with a \return{} channel, associated with one procedure, 
 yields a conventional input/output pairing.  
-One particular channel formation therefore models 
+One particular channel formation \mdash{} \lambdaPLUSreturn{}, 
+say \mdash{} therefore models 
 the basic \mOldLambda{}-Calculus and, simultaneously, 
 the minimal theory of function-like types 
 (for Cartesian Closed type Categories).  
 More complex channel combinations and protocols 
-can then model more complex (or at least more 
-modern) variations on \mOldLambda{}-Calculi and
+can then model more complex 
+variations on \mOldLambda{}-Calculi and
 programming language type systems. 
 }
 \subsubsection{Channelized Type Systems}
@@ -1037,13 +1049,14 @@ which express how channels combine to
 describe possible function signatures \mdash{} and 
 accordingly to describe functional \i{types}.  The
 purpose of a Channel Algebra is, among other things, to describe
-how formal languages (like programming languages) formulate functions and
+how formal languages (like programming languages) formulate functions 
+and procedures, and
 the rules they put in place for inputs and outputs.  If \Chi{} is a
 Channel Algebra, a language adequately described by its formulations 
 (channel kinds, restrictions, and interrelationships) can be called a
-\Chi{}-language.  The basic Lambda Calculus can be described as a
+\Chi{}-language.  The basic \mOldLambda{}-Calculus can be described as a
 \Chi{}-language for the algebra defined by a minimal 
-\lambda{} plus \return{} combination (with \return{} channels 
+\lambdaPLUSreturn{} combination (with \return{} channels 
 restricted to at most one element).
 Analogously, a type system \TyS{} is 
 a \q{\Chi{}-type-system}, and is \q{closed} with respect to \Chi{}, 
@@ -1058,10 +1071,9 @@ construction on types in \TyS{} must also yield a type in \TyS{}.
 closed with respect to some Channel Algebra.
 Channelized Hypergraphs are then \DH{}s whose type system is Channelized.
 We can think of channel constructions as operators which combine
-groups of types into new types (this operative dimensions helps
-motivate describing channel logics and their formulae as \q{algebras}).
+groups of types into new types.
 Once we assert that a \CH{} is Channelized, we know that there is a mechanism
-for describing some Hypergraphs as \q{function
+for describing some Hypergraphs or subgraphs as \q{procedure 
 implementations} some of whose hypernodes are subject to
 kinds of abstraction present in the relevant Channel Algebra.  The
 terse notation for Channel formulae and signatures describes
@@ -1093,11 +1105,10 @@ notated as \TXLTyS{}.  If \TyS{} is channelized then its
 }
 \p{Similarly, we can then develop for Channel Algebras a \i{Channel
 Expression Language}, or \CXL{}, which can indeed be integrated with
-appropriate \TXL{}s.  The notation
-I adopted earlier for stating Channel Algebra axioms is one example
-of a \CXL{}, though variant notations may be desired for actual
-computer code (as in the code samples accompanying this chapter).
-However, whereas the \CXL{} expressions I have written so far
+appropriate \TXL{}s.  Formal declarations of channel axioms 
+\mdash{} e.g., restrictions on channel sizes, alone or in combination \mdash{} 
+are examples of terms that should be representable in a \CXL{}.   
+However, whereas the \CXL{} expressions I have described so far
 describe the overall shape of channels
 \mdash{} which channels exist in a given context and their sizes
 \mdash{} \CXL{} expressions can also add details concerning the \i{types} of

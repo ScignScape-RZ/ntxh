@@ -119,7 +119,7 @@ responsibility %-- can be much more complicated.
 Developers need to consider several overarching questions, 
 such as: 
 
-`itemize,[leftmargin=-1mm]
+`itemize,
 `item; Should data validation be included in the same 
 procedures which operate on (validated) data, or 
 should validation be factored into separate procedures?
