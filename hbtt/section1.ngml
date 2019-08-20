@@ -11,7 +11,13 @@ applications.  These include:
 Suppose `calS; is a data structure modeled via type `caltypeT;.  
 This type can then be associated with a type (say, 
 `typeTp;) of `GUI; components which visually display 
-values of type `caltypeT;.  There may also be a type 
+values of type `caltypeT;.  A simple data structure 
+may have `GUI; representation via small `q.widgets` 
+embedded in other components (consider a thermometer icon 
+to display temperature).  Conversely, if `calS; has many component 
+parts, its corresponding `GUI; type may need to span its 
+own application window, with a collection of nested textual 
+or graphical elements.  There may also be a type 
 (say, `typeTpp;) representing `caltypeT;-values in a format 
 suitable for database persistence.  Application code should 
 explicitly indicate these sorts of inter-type relationships.
@@ -46,7 +52,7 @@ is activated when motion-detector sensors signal something moving
 in their vicinity.  These are the `q.surface` points where data 
 `q.enters the system`/.
 `pseudoIndent;
-Conversely, other code points locate 
+Conversely, other code points localize 
 the software's capabilities to initiate external effects.  For 
 instance, one consequence of users clicking a mouse button might 
 be that the on-screen cursor changes shape.  Or, motion detection 
@@ -113,7 +119,7 @@ responsibility %-- can be much more complicated.
 Developers need to consider several overarching questions, 
 such as: 
 
-`itemize,
+`itemize,[leftmargin=-1mm]
 `item; Should data validation be included in the same 
 procedures which operate on (validated) data, or 
 should validation be factored into separate procedures?
@@ -164,15 +170,15 @@ enter an infinite loop, or any other nonrecoverable scenario.
 `p.
 Note that `q.fragile` is not a term of criticism %-- some algorithms 
 simply work on a restricted space of values, and it is inevitable 
-that code implementing such algorithms will only work properly 
+that code implementing such algorithms will only behave properly 
 when provided values with the requisite properties.  It is necessary 
 to ensure that such algorithms are `i.only` called with 
 correct data.  But insofar as testing of the data lies outside 
 the algorithms themselves, the proper validation has to occur 
 `i.before` the algorithms commence.  In short, `i.fragile` and
 `i.gatekeeper` code often has to be paired off: for each 
-segment of fragile code which `i.makes` assumptions, there has 
-to be a corresponding segment of gatekeeper code which
+segment of fragile code which `i.makes` assumptions, there should 
+be a corresponding segment of gatekeeper code which
 `i.checks` those assumptions.  
 `p`
 
@@ -181,7 +187,7 @@ In that general outline, however, there is room for a variety
 of coding styles and paradigms.  Perhaps these can be broadly 
 classified into three groups: 
 
-`enumerate,[leftmargin=5mm]
+`enumerate,
 
 `item; Combine gatekeeper and fragile code in one procedure.
 `item; Separate gatekeeper and fragile code into different procedures.
@@ -192,17 +198,17 @@ called when types are first instantiated.
 
 Consider a function which calculates the difference between 
 systolic and diastolic blood pressure, returning an unsigned
-integer.  If this code were called with malformed data where 
-systolic and diastolic were inverted, the difference would 
+integer.  If this code were called with malformed data wherein 
+systolic and diastolic are inverted, the difference would 
 be a negative number, which (under binary conversion to an 
 unsigned integer) would come out as a potentially 
 extremely large positive number (as if the patient had 
 blood pressure in, say, the tens-of-thousands).  This nonsensical 
 outcome indicates that the basic calculation is fragile.  
-We then have three options: test that systolic-greater-than 
-diastolic `i.within the procedure`/; require that this test 
+We then have three options: test `q.systolic-greater-than 
+diastolic` `i.within the procedure`/; require that this test 
 be performed prior to the procedure being called; 
-or use a special data structure so that 
+or use a special data structure configured such that 
 systolic-over-diastolic can be confirmed as soon as 
 any blood-pressure value is constructed in the system.
 `p`
@@ -275,12 +281,12 @@ step for CyberPhysical software hubs.
 `p.
 I have thus far argued that applications
 which process CyberPhysical data need to rigorously organize their functionality
-around specific devices' data profiles.  The functions that directly interact
+around specific devices' data profiles.  The procedures that directly interact
 with devices %-- receiving data from and perhaps sending instructions
 to each one %-- will in many instances be `q.fragile` in the sense
-I invoke in this chapter.  Each of these functions may make assumptions
+I invoke in this chapter.  Each of these procedures may make assumptions
 legislated by the relevant device's
-specifications, to the extent that using any function too broadly
+specifications, to the extent that using any one procedure too broadly
 constitutes a system error.  Furthermore, CyberPhysical devices that are
 not full-fledged computers may
 exhibit errors due to mechanical malfunction, hostile attacks,
@@ -337,7 +343,7 @@ triaxial accelerometers and about at-rest vs. exercise
 heart-rate ranges %-- would not
 necessarily be evident to software engineers or project architects when the
 system is first conceived.  These are the kind of modeling questions that tend
-to emerge as individual functions and datatypes are
+to emerge as individual procedures and datatypes are
 implemented.  For this reason, code development serves a role beyond just
 concretizing a system's deployment software.
 The code at fine-grained scales also reveals questions that need to be
@@ -457,7 +463,7 @@ inspire developers using the code to proceed attentively,
 which can be safer in the long run than trying to avoid fragile code
 through engineering alone.  The takeaway is that while `q.robust` is
 contrasted with `q.fragile` at the smallest scales (such as
-a single function), the overall goal is systems and components that are robust at the
+a single procedure), the overall goal is systems and components that are robust at the
 largest scale %-- which often means accepting `i.locally` fragile
 code.  Architecturally, the ideal design may combine
 individual, `i.locally fragile` units with rigorous documentation and gatekeeping.
@@ -509,8 +515,8 @@ of concerns` %-- note that `i.validating` input
 is actually a different role than `i.doing` calculations.  This is 
 why procedures with fine requirements might be split into two: a
 gatekeeper that validates input before a fragile procedure is called,
-separate and apart from that procedures own implementation.
-A related idea is overloading fragile functions: for example,
+separate and apart from that procedure's own implementation.
+A related idea is overloading fragile procedures: for example,
 a function which takes one value can be overloaded in terms
 of whether the value fits in some prespecified range.  These two
 can be combined: gatekeepers can test inputs and call one of several
@@ -642,7 +648,7 @@ either an external source code analyzer, or
 regulatory runtime libraries, or some combination of the two.  
 Moreover, it is unrealistic
 to expect all programming errors to be avoided with enough proactive planning,
-strong typing, and safety-focused paradigms: any complex
+expressive typing, and safety-focused paradigms: any complex
 code base requires some retroactive design, some combination
 of unit-testing and mechanisms (including those
 third-party to both the language and the projects whose code is
@@ -658,7 +664,7 @@ Ivory language, which I identified as representing the
 system described in `cite<SantanuPaul>; and
 `cite<GiladMishne>;, `cite<TillyEtAl>;:
 `displayquote,
-Source code Files are processed using
+Source code files are processed using
 tools such as parsers, static analyzers, etc. and the necessary information
 (according to the SCA data model) is stored in a repository.  A user interacts
 with the system, in principle, through a variety of high-level languages, or
@@ -733,25 +739,25 @@ Algebras and Source Code Ontologies).
 The techniques I discuss here work toward these goals on two levels.  First, I
 propose a general-purpose representation of computer code in terms
 of Directed Hypergraphs, sufficiently rigorous to codify a
-theory of `q.functional types` as types whose values are initialized from
+theory of functional types as types whose values are (potentially) initialized from
 formal representations of source code %-- which is to say, in the present
 context, code graphs.  Next, I
 analyze different kinds of `q.lambda abstraction` %-- the idea of
 converting closed expressions to open-ended formulae by asserting that
 some symbols are `q.input parameters` rather than fixed values, as in
-`mOldLambda;-Calculus %-- from the perspective of
+Lambda Calculus %-- from the perspective of
 axioms regulating
 how inputs and outputs may be passed to and obtained from
 computational procedures.  I bridge these topics %-- Hypergraphs
-and Generalized `mOldLambda;-Calculi %-- by taking abstraction as a
+and Generalized Lambda Calculi %-- by taking abstraction as a
 feature of code graphs wherein some hypernodes are singled out
 as procedural
 `q.inputs` or `q.outputs`/.  The basic form of this model
 %-- combining what are essentially two otherwise unrelated
 mathematical formations, Directed Hypergraphs and
 (typed) Lambda Calculus %-- is laid out in
-Sections `sectsym;\hyperref[sectTwo]{2}
-and `sectsym;\hyperref[sectThree]{3}.
+Sections `sectsym;\hyperref[sTwo]{\ref{sTwo}}
+and `sectsym;\hyperref[sThree]{\ref{sThree}}.
 `p`
 
 `p.

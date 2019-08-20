@@ -1,7 +1,7 @@
 
 
 \begin{figure}
-\resizebox {\columnwidth} {!} {
+{\resizebox {\columnwidth} {!} {
 \begin{tikzpicture}
 
 %\node at (21.49,2){1};
@@ -10,7 +10,7 @@
 
 
 \node (lnath) at (1,2.5) [draw,minimum width=11mm,minimum height=5mm] {Nath};
-\node (lff) [right=2mm of lnath.east,draw,minimum width=11mm,minimum height=5mm] {45};
+\node (lff) [right=2mm of lnath.east,draw,minimum width=11mm,minimum height=5mm] {46};
 \node (lnf) [draw,densely dashed,fit=(lnath) (lff)] {};
 
 \node (lbr) at (1,0) [draw,minimum width=11mm,minimum height=5mm] {Bkln};
@@ -21,7 +21,7 @@
 (lnf) -- (lbd) node [midway] {\colorbox{blGreen!20}{lives-in}};
 
 \node (rnath) at (4.5,1.75) [draw,minimum width=11mm,minimum height=5mm] {Nath};
-\node (rff) [above right=6mm and 5mm of rnath.east,draw,minimum width=11mm,minimum height=5mm] {45};
+\node (rff) [above right=6mm and 5mm of rnath.east,draw,minimum width=11mm,minimum height=5mm] {46};
 \node (rnh) [draw,densely dashed,fit=(rnath)] {};
 \node (rfh) [draw,densely dashed,fit=(rff)] {};
 
@@ -45,6 +45,7 @@ thick, ->]
 
 \end{tikzpicture}
 %\captionof{figure}{Unplugging a Node.}
-}\captionof{figure}{Unplugging a Node.}
+}}\captionof{figure}{Unplugging a Node.}
+\label{fig:unplug}
 \end{figure}
 

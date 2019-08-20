@@ -18,8 +18,8 @@ so as to facilitate robust, safety-conscious coding practices.
 Note that almost all non-trivial software is in some 
 sense `q.procedural`/; the total package of 
 functionality provided by each software component 
-is distributed among many individual procedures, which 
-are interconnected.  Each procedure, in general, 
+is distributed among many individual, interconnected 
+procedures.  Each procedure, in general, 
 implements its functionality by calling `i.other` procedures 
 in some strategic order.  Of course, often 
 inter-procedure calls are `i.conditional` %-- a calling 
@@ -51,22 +51,22 @@ Source Code Ontology to assert properties of source code
 and enable queries against source code, qua information 
 space.  A second option derives from type theory: to 
 consider procedures as instances of functional types,
-characterized by sets of inputs and output types.  
+specified by tuples of input and output types.  
 A procedure is then a transform which, in the presence 
 of (zero or more) inputs having the proper types, produces 
-(one or more) outputs with their own types.  In practice, 
+(one or more) outputs with their respective types.  In practice, 
 some procedures do not return values, but they `i.do` have 
 some kind of side-effect, which can be analyzed as a 
 variety of `q.output`/.  Finally, procedures can be studied 
 via mathematical frameworks such as the Lambda Calculus, 
 which allows notions of functions on typed parameters, and 
-of functional application %-- apply functions to concrete 
+of functional application %-- applying functions to concrete 
 values, which is analogous to calling procedures with 
 concrete input arguments %-- to be made formally rigorous.
 `p`
 
 `p.
-I will briefly consider all three of perspectives %-- Source Code 
+I will briefly consider all three of these perspectives %-- Source Code 
 Ontology, type-theoretic models, and Lambda Calculus %-- in 
 this section.  I will also propose a new 
 model, based on the idea of `q.channels`/, which combines 
@@ -80,11 +80,11 @@ Lambda (or `mOldLambda;-) Calculus emerged in the early
 functions and function-application.  There are 
 many mathematical constructions which can be 
 subsumed under the notion of `q.function-application`/, 
-but these have myriad notations and conventions.  
-Consider the visual differences between mathematical 
+but these have myriad notations and conventions 
+(compare the visual differences between mathematical 
 notations %-- integrals, square roots, super- and 
 sub-scripted indices, and so forth %-- to the much 
-simpler alphabets of mainstream programming languages.  
+simpler alphabets of mainstream programming languages).  
 But the early 20th century was a time of 
 great interest in `q.mathematical foundations`/, seeking 
 to provide philosophical underpinnings for mathematical 
@@ -110,11 +110,11 @@ yields `volSphCube;: a formula for the sphere's volume in terms
 of the volume of the largest cube that can fit inside it     
 (`cite<KennethAnderson>; has similar interesting examples in the 
 context of code optimization).  This kind of tinkering with equations is 
-of course the bread-and-butter of mathematical discovery.  In terms 
+of course a bread-and-butter of mathematical discovery.  In terms 
 of foundations research, though, observe that the derivation depended on 
 two givens: that the `rRad; symbol is `q.free` in the first formula 
 %-- it is a place-holder rather than the designation of a concrete 
-value, like $`pi;$ %-- and that free symbols (like `rRad;) can be 
+value, like `piSym; %-- and that free symbols (like `rRad;) can be 
 bound to other formulae, yielding new equations. 
 `p`
 
@@ -124,7 +124,7 @@ expressions %-- mathematicians began to ask foundation
 questions about mathematical formulae: what are all formulae 
 that can be built up from a set of core equations via 
 repeatedly substituting nested expressions for
-free symbols?  This questions turns out to be related to 
+free symbols?  This question turns out to be related to 
 the issue of finite calculations: in lieu of 
 building complex formulae out of simpler parts, we can 
 proceed in the opposite direction, replacing nested 
@@ -239,7 +239,7 @@ values from the lexical scope (loosely, the area of source code)
 where its body is composed.  Procedures can also `q.receive` data indirectly
 from pipes, streams, sockets, network connections, database connections, or files.
 All of these are potential `q.input channels` whereby a function implementation
-may access a value that it needs.  In addition, functions can `q.return` values
+may access a value that it needs.  In addition, procedures can `q.return` values
 not just by providing a final result but by throwing exceptions, writing
 to files or pipes, and so forth.  To represent these myriad
 `q.channels of communication` computer scientists have invented a menagerie
@@ -260,7 +260,7 @@ formal axioms and provable theorems, but I believe
 it can be useful for the more practical goal 
 of modeling computer code and software 
 components, to establish recommended design patterns 
-and document coding assumptions.  
+and to document coding assumptions.  
 `p`
 
 `p.
@@ -276,8 +276,9 @@ for different genres of input/output, which we can model via
 different channels.  For a particular channel, we can recognize
 language-specific limitations on how values passed in to or
 received from those channels are used, and how the symbols carrying those
-values interact with other symbols both in function call-sites and bodies.
-For example, functions can output values by throwing exceptions, but
+values interact with other symbols both in function call-sites and in the 
+body of procedure implementations.  
+For example, procedures can output values by throwing exceptions, but
 exceptions are unusual values which have to be handled
 in specific ways %-- languages use exceptions to signal possible
 programming errors, and they are engineered to interrupt
@@ -308,6 +309,13 @@ suggested in the text, but hopefully the code will illustrate
 how the ideas can be manifest in concrete implementations, which
 in turn provide evidence that they are logically sound
 at least to the level of properly-behaving application code.
+`p`
+
+`p.
+My strategy for unifying multiple `mOldLambda;-calculi depends 
+in turn on hypergraph code representations, which is a theme 
+in the umbrella of graph-based data modeling, 
+to which I now turn. 
 `p`
 
 \spsubsectiontwolinerepl{Directed Hypergraphs and `q.Channel Abstractions`/}%
@@ -501,14 +509,14 @@ forms.\phantomsection\label{unplug}
 `p.
 Notice that information present `i.within` a hypernode can also be expressed as
 relations `i.between` hypernodes.  For example, consider the information that
-I (Nathaniel), age 45, live in Brooklyn as a registered Democrat.  This may be
+I (Nathaniel), age 46, live in Brooklyn as a registered Democrat.  This may be
 represented as a hypernode with hyponodes `NathFF;, connected to a hypernode
 with hyponodes `BrookDem;, via a hyperedge whose classifier encodes the
 concept `q.lives in` or `q.is a resident of`/.  However, it may also be
 encoded by `q.unplugging` the `q.age` attribute so the first hypernode becomes
 just `Nath; and it acquires a new edge, whose tail has a single
 hyponode `ageFF; and a classifier (encoding the concept) `q.age`
-(see the comparison in Diagram \hyperref[unplug]{1}).
+(see the comparison in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}}).
 This construction can work in reverse:
 information present in a hyperedge can be refactored so that it `q.plugs in`
 to a single hypernode.
@@ -525,14 +533,15 @@ people's names may `i.always` be joined to their age, and
 likewise their district of
 residence `i.always` joined to their political affiliation.  The left-hand side
 representation of the info (seen as an undirected hyperedge) `NathFFBD;
-in Diagram \hyperref[unplug]{1} captures this semantics better because it describes
+in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}} 
+captures this semantics better because it describes
 the name/age and `mbox.place/party` pairings as
 `i.types` which require analogous
 node-tuples when expressed by other hypernodes.  For example, any two
 hypernodes with the same type as `NathFF; will necessarily have
 an `q.age` hypovertex
 and so can predictably be compared along this one axis.  By contrast, the
-right-hand (`q.unplugged`/) version in Diagram \hyperref[unplug]{1}
+right-hand (`q.unplugged`/) version in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}}
 implies no guarantees that the `q.age`
 data point is present as part of a recurring pattern.
 `p`
@@ -578,8 +587,8 @@ collections.\phantomsection\label{lived}
 `spinc<lived>;
 `p.
 For example, imagine a representation of the
-fact `q.(A/The person named) Nathaniel, 45, has lived in Brooklyn,
-Buffalo, and Montreal` (shown in Diagram \hyperref[lived]{2} as both
+fact `q.(A/The person named) Nathaniel, 46, has lived in Brooklyn,
+Buffalo, and Montreal` (shown in Diagram \hyperref[fig:lived]{\ref{fig:lived}} as both
 a `CH; and in `RDF;).  If we consider `Turtle; or `NThree; as `i.languages` and
 not just `i.notations`/, it would appear as if their semantics is built
 around hyperedges rather than triples.  It would seem that these
@@ -666,7 +675,11 @@ operate on a triplestore basis.  So the `q.reductive` semantic
 interpretation is arguably justified via the warrant that the
 definitive criteria for Semantic Web representations are not their
 conceptual elegance `visavis; human judgments but their utility in
-cross-Ontology and cross-context inferences.  As a counter-argument,
+cross-Ontology and cross-context inferences.
+`p`
+
+`p.
+As a counter-argument,
 however, note that many inference engines in Constraint Solving,
 Computer Vision, and so forth, rely on specialized algorithms
 and cannot be reduced to a canonical query format.  Libraries such
@@ -741,7 +754,7 @@ etc.  These uniqueness requirements, however, are not intrinsically
 part of `CH;, and need to be expressed with additional axioms.  In
 general, a `CH; hypernode is a tuple of relatively simple values
 and any additional semantics are determined by type
-definitions (recall the idea that `CH; hypernodes are roughly analogous to
+definitions (it may be useful to see `CH; hypernodes as roughly analogous to
 `CStruct;s %-- which have no `i.a priori` uniqueness mechanism).
 `p`
 
@@ -757,7 +770,7 @@ second position, etc.).  So there is no way to ascertain the semantic/conceptual
 intent of hypernodes without considering both hyponode and hypernode types.  Conversely,
 `RDF; does not have actual tuples (though these can be represented as collections,
 if desired); and nodes are always joined to other nodes via labeled connectors
-%-- there is no direct equivalent to the basis-level `CH;
+%-- there is no direct equivalent to the `CH;
 modeling unit of a hyponode being included in a hypernode
 by position.
 `p`
