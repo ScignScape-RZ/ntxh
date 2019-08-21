@@ -1122,7 +1122,7 @@ Let `sCh; model a `q.Sigma` channel, as in `q.Sigma Calculus`
 We then have the requirement than any procedure's 
 `sCh; channel can carry at most one value.
 
-`item; In all common languages which have exceptions, 
+`item; \label{retexc} In all common languages which have exceptions, 
 procedures can `i.either` throw an exception `i.or` 
 return a value.  If `return; and `exception; 
 model the channels carrying standard returns and 
@@ -1148,7 +1148,7 @@ conventional Object-Oriented protocol %-- automatically
 receive the enclosing method's Sigma channel unless 
 a different object for the called method is supplied expressly. 
 
-`item; In the object-oriented technique known as `q.method chaining`/, 
+`item; \label{chaining} In the object-oriented technique known as `q.method chaining`/,
 one procedures' `return; channel is transferred to a 
 subsequent procedures' `sCh; channel.  The pairing of 
 Return and Sigma channels therefore gives rise to one 

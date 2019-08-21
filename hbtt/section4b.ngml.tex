@@ -11,7 +11,8 @@ input parameters (\q{lambda} and \q{sigma}); the
 \q{sigma} (\thisc{}) carrier is privileged, because its type 
 establishes the class to which
 function belongs \mdash{} influencing when the function may be
-called and how polymorphism is resolved.\footnote{Also, as I discussed earlier, \q{chaining} method calls means 
+called and how polymorphism is resolved.\footnote{Also, as I discussed earlier (page \hyperref[chaining]{\pageref{chaining}}), 
+\q{chaining} method calls means 
 that the result of one method becomes an object that may then receive 
 another method (the following one in the chain).  Such 
 chaining allows for an unambiguous function-composition operator.
@@ -94,7 +95,7 @@ languages and environments.
 \p{As the preceding paragraphs have presupposed, different
 functions may have different kinds of channels, which may
 or may not be reflected in functions'
-types (recall the question, can
+types (consider the question, can
 two functions have the same type, if
 only one may throw an exception)?  This may vary between type
 systems; but in any case the contrast between channel \q{structures}
@@ -147,14 +148,14 @@ recipient \gammaTwo{} carriers are situated in a graph structure which
 translates to a channel description.  So the morphology of
 \gammaOne{} has to be consistent with the channel structure of \gammaTwo{}.
 For regular (\q{value}) expressions, we can introduce a new kind
-of channel (which I'll call \q{lookup}) acknowledging that the function
+of channel (which in the demo I call \q{fground}) acknowledging that the function
 called by an expression may itself be evaluated by its own expression, rather
 than named as a single symbol (as in a pointer-to-function call
 like \pfx{} in \CLng{}).  A segment of source code represents a
 value-expression insofar as an equivalent graph representation
 comprises a \Gamma{} semantically and morphologically
 consistent with the provision of values to channels required
-by a function call \mdash{} including the lookup channel on the
+by a function call \mdash{} including the \fgroundch{} channel on the
 basis of which the proper implementation (for overloaded functions)
 is selected.  How the graph-structure maps to the appropriate
 channels varies by channel kind: for instance the \returnc{} channel
@@ -169,16 +170,16 @@ describing how a Channel Bundle is concretely provisioned with values
 \p{I will use the term \i{call-clause} to designate the
 portion of a code graph, and the associated collection of
 source code elements, describing a Channel Package.
-Term a call-clause \i{grounded} if its
+Term a call-clause \i{anchored} if its
 resulting value is held in a carrier (as
 in \yeqfx{}), and \i{transient} if this value
 is instead passed on (immediately) to another function
 (as in \hfx{}); moreover a call-clause
 can be \i{standalone} if it has no result value or this
-value is not used; and \i{multiply-grounded} if it has
-several grounded result values \mdash{} i.e., a multi-carrier
+value is not used; and \i{multiply-anchored} if it has
+several anchored result values \mdash{} i.e., a multi-carrier
 \returnc{} channel, assuming the type system allows as much.
-Grounded and standalone call-clauses can, in turn, model \i{statements};
+Anchored and standalone call-clauses can, in turn, model \i{statements};
 specifically, \q{assignment} and \q{standalone} statements, respectively.
 }
 \p{This vocabulary can be useful for interpreting program flow.
@@ -204,14 +205,14 @@ evaluated based on other criteria.
 }
 \p{In the case of statements, an assignment without side effects
 has temporalizing relations only with other statements
-using its grounding carrier.  In particular, the order
+using its anchoring carrier.  In particular, the order
 of statements' runtime need not replicate the order in which
 they are written in source code.  For sake of argument, consider
 this the default case: Channel Algebras, in principle, model
 \q{lazy} evaluation languages, in the absence of any
 temporalizing factors.  The actual runtime order among
 sibling statements \mdash{} those in the same block \mdash{} then depends,
-in the absence of further information, on how their grounding carriers are
+in the absence of further information, on how their anchoring carriers are
 used; this in turn works backward from a function's return channel
 (in the absence of exceptions or effectual calls).  That is,
 runtime order works backward from statements that initialize
@@ -225,7 +226,7 @@ the asymmetric order of values passed into lambda abstractions to
 enforce requirements that effectual expressions evaluate before other
 expressions (Haskell does not have \q{statements} per se).  Haskell's
 \doH{} \q{blocks} can be modeled (in the techniques used here) as
-a series of assignment statements where the grounding carrier of each
+a series of assignment statements where the anchoring carrier of each
 statement becomes (i.e., transfers its value to) the sole occupant of a
 \lambdach{} channel marking a new function body, which includes all the
 following statements (and so on recursively).  There are two concepts
@@ -262,11 +263,11 @@ if their \capturech{} channels are convoluted, in that order.
 \p{This is approaching toward a \q{monad-subblock} formation using \i{\capturech{}}
 in place of \lambdach{}.  To be sure,
 Haskell monad-subblock does have the added gatekeeping
-dimension that the symbol occurring after its appearance as grounding
+dimension that the symbol occurring after its appearance as anchoring
 an assignment statement is no longer the symbol with a monad
 type, but a different (albeit visually identical) symbol
 taken from the monad.  Between two statements, if the
-prior is grounded by a monad, the implementation of
+prior is anchored by a monad, the implementation of
 its \bind{} function is silently called, with the subsequent
 (and all further) statements grouped into a block passed in
 to \bindFn{}, which in turn (by design) both extracts its

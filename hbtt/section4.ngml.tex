@@ -249,7 +249,7 @@ channel \q{bundle} \mdash{} which, in the current example, has
 a \lambdach{} channel of size one (with one carrier of
 type \int{}) and a \returnch{} channel of size one (\fTwo{}
 returns one \int{}).  Considered in the context of carrier-transfers
-between code graphs, a channel bundle can be seen as a description
+between code graphs, a channel bundle may be regarded as a description
 of how two distinct code-graphs may be connected via carrier
 transfers.  When a function is called, there is a channel
 complex which I'll call a \i{package} that supplies values to
@@ -323,7 +323,8 @@ what are to some degree common-sense frameworks through which programmers
 reason about computer code.  This descriptive
 framework (I would argue) more effectively integrates the
 \i{semantic} and \i{syntactic} dimensions of source code and program
-execution.   Computer programs can be understood \i{semantically} in
+execution.  Specifically, on the \i{semantic} side, 
+computer programs can be understood in
 terms of \mOldLambda{}-Calculi combined with
 models of computation (call-by-value or
 by-reference, eager and lazy evaluation, and so forth).  These
@@ -334,7 +335,7 @@ of the program it describes: what are the semantic patterns and
 specifications that can be predicted of running programs on the
 basis of source code in itself?
 }
-\p{At the same time, source code
+\p{Conversely, source code
 can also be approached \i{syntactically}, as well-formed
 expressions of a technical language.  From this perspective,
 correct source code can be matched against language grammars and,
@@ -366,7 +367,7 @@ mainstream programming language \mdash{} for example, even if they
 are restricted to a \sigmach{}-\lambdach{}-\returnch{}-\exceptionch{}
 Channel Algebra modeled around, say, \Cpp{} semantics
 prior to \CppEleven{} (more recent \Cpp{} standards also call for
-a \q{\capturech{}} channel for inline \q{lambda} functions).
+a \q{\capturech{}} channel for inline anonymous functions).
 }
 \p{At the same time, one of my claims in this chapter is that
 more complex Channel Algebras can lead to new tactics for
