@@ -364,18 +364,33 @@ can be saved according to its channel-package data structure,
 which can be passed to functions as an encapsulation of 
 the (not-yet-evaluated) expression itself.  Code sample 
 \ref{lst:ifte} shows an implementation from the demo, 
-on the runtime side.  The hook into this `Cpp; runtime code 
+on the runtime side.  At {\OneOverlay}, a pointer to 
+the relevant unevaluated expression is extracted, 
+and a `codeText.run` method is called which completes 
+the hiterhto-delayed evaluation.  The demo 
+`codeText.test\_if\_then\_else` procedure takes an 
+`q.`codeText.argvec`/` parameter ({\TwoOverlay}), which allows a 
+variant number of blocks and expressions to be 
+passed as inputs (analogous to `Cpp; `codeText.var\_arg` 
+lists).  The code around {\ThreeOverlay} shows a channel 
+complex being constructed which is then used to register 
+the signature for the `ifthenelse; kernel function 
+in a lookup table.
+`p`
+
+`p.
+Meanwhile, the hook into this `Cpp; runtime code 
 is demonstrated in Sample \ref{lst:ifte-phr}, in the `q.channelized` 
 Intermediate Representation used for the demo.  One pertinent 
-point in this code is the instruction at {\TwoOverlay}, 
+point in this code is the instruction at {\FiveOverlay}, 
 where the name `codeText.temp\_anchor\_channel\_group\_by\_need` 
 suggests how the compiled channel package is being stored 
 on a `q.by need` basis (internally, it gets a flag suppressing 
 evaluation before being used in runtime procedures).  
-At {\ThreeOverlay}, a block itself is assigned to a 
+At {\SixOverlay}, a block itself is assigned to a 
 `q.callable value` type (cf. the `q.cv` initials).  The 
-arguments identified for the kernel procedure then ({\OneOverlay}), 
-then, alternate between encapsulations of by-need expressions 
+arguments identified for the kernel procedure ({\FourOverlay}), then,  
+alternate between encapsulations of by-need expressions 
 and compiled blocks deemed internally as opaque `q.callable values`/. 
 `p`
 \itcl{ifte-phr}
