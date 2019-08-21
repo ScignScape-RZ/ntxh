@@ -143,7 +143,7 @@ expressions to represent a transfer of values between graph structures: let
 from source at a call site and at the callee's implementation,
 respectively.  The function call transfers values from carriers
 marked by \gammaOne{} nodes to \gammaTwo{} carriers; with the further
-detail of \q{Channel Bundles} we can additionally say that the
+detail of \q{Channel Complexes} we can additionally say that the
 recipient \gammaTwo{} carriers are situated in a graph structure which
 translates to a channel description.  So the morphology of
 \gammaOne{} has to be consistent with the channel structure of \gammaTwo{}.
@@ -164,7 +164,7 @@ right-hand-side of an assignment (an \i{rvalue}) \mdash{} or else passed to
 a different function (thus an example of channel-to-channel connection
 without an intervening carrier).  A well-formed \Gamma{} represents
 part of a function implementation's code graph, specifically that
-describing how a Channel Bundle is concretely provisioned with values
+describing how a Channel Complex is concretely provisioned with values
 (i.e., a package).
 }
 \p{I will use the term \i{call-clause} to designate the
@@ -278,7 +278,7 @@ larger topic of treating blocks as function-values
 passed to other functions, to which I now turn.
 }
 \subsubsection{Code Blocks as Typed Values}
-\p{Insofar as blocks can be typed as functions (in a sense),
+\p{Insofar as blocks can be typed as procedures,
 they may readily be passed around: so loops, \ifthenelse{},
 and other control flow structures can plausibly be modeled
 as ordinary function calls.  This requires some extra semantic
@@ -288,9 +288,9 @@ has to become an associative array of expressions and functions
 with \q{block} type (e.g., with only \capturech{} and \errorch{}
 channels).  We need, however, a mechanism to suppress
 expression evaluation.  Recall that expressions are
-concretized channel-structures which include a
-\lookupch{} channel providing the actual implementation to call.
-Assume that \lookupch{} can be assigned a flag which suppresses
+concretized channel-structures which include an
+\fgroundch{} channel providing the actual implementation to call.
+Assume that \fgroundch{} can be assigned a flag which suppresses
 evaluation.  Assume also that carriers can be declared which
 hold (or somehow point to) \i{expressions} that evaluate
 to typed values,
@@ -319,6 +319,28 @@ some carriers are of this \q{delayed} kind.
 Functions like \ifthenelse{} can then be declared in
 terms of these carriers.
 }
+\itcl{ifte}
+\p{Given a runtime engine based on Channel Algebra, deferred 
+evaluation is relatively straightforward: any delayed expression 
+can be saved according to its channel-package data structure, 
+which can be passed to functions as an encapsulation of 
+the (not-yet-evaluated) expression itself.  Code sample 
+\ref{lst:ifte} shows an implementation from the demo, 
+on the runtime side.  The hook into this \Cpp{} runtime code 
+is demonstrated in Sample \ref{lst:ifte-phr}, in the \q{channelized} 
+Intermediate Representation used for the demo.  One pertinent 
+point in this code is the instruction at {\TwoOverlay}, 
+where the name \codeText{temp\_anchor\_channel\_group\_by\_need} 
+suggests how the compiled channel package is being stored 
+on a \q{by need} basis (internally, it gets a flag suppressing 
+evaluation before being used in runtime procedures).  
+At {\ThreeOverlay}, a block itself is assigned to a 
+\q{callable value} type (cf. the \q{cv} initials).  The 
+arguments identified for the kernel procedure then ({\OneOverlay}), 
+then, alternate between encapsulations of by-need expressions 
+and compiled blocks deemed internally as opaque \q{callable values}. 
+}
+\itcl{ifte-phr}
 \p{To properly capture \ifthenelse{} semantics, it is also
 appropriate to notate conditions on how blocks
 passed as function values are used.  In the
@@ -353,13 +375,13 @@ presence of such a \breakch{} can type-theoretically
 distinguish loop blocks from blocks in (say)
 \ifthenelse{} contexts.
 }
-\p{Further discussion of code models via Channel Complexes and
+\p{Further discussion of code models via Channel Groups and
 Channel Algebras is outside the scope of this chapter, but
 is demonstrated in greater detail in the accompanying code-set.
 Hopefully, the best way to present Channel Semantics outside
 the basic \lambdach{}/\sigmach{}/\returnch{}/\exceptionch{}
 quartet is via demonstrations in live code.
-In that spirit, the demo code-set focuses more
+In that spirit, the demo code-set focuses
 on practical engineering and problem-solving where Channel models
 can be useful, and I'll briefly review its structure and its
 organizing rationales in the Conclusion.

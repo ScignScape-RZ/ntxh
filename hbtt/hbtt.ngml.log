@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  21 AUG 2019 00:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  21 AUG 2019 11:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1407,15 +1407,67 @@ LaTeX Font Info:    Font shape `OT1/lmss/b/it' in size <10.95> not available
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 283
 .
- [41]) (./section4a.ngml.tex [42] [43]) (./section4b.ngml.tex [44] [45] [46]) (
-./conclusion.ngml.tex
-[47]
+ [41]) (./section4a.ngml.tex [42] [43]) (./section4b.ngml.tex [44] [45] (./ifte
+.tex
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstlang1.s
+ty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstlang1.s
+ty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstmisc.st
+y
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) [46]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 5.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 5.
+
+Overfull \hbox (10.73833pt too wide) in paragraph at lines 39--40
+[][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.83844pt too wide) in paragraph at lines 46--47
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (26.03867pt too wide) in paragraph at lines 51--52
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (46.43912pt too wide) in paragraph at lines 57--58
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][] 
+ []
+
+
+Overfull \hbox (26.03867pt too wide) in paragraph at lines 58--59
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][] 
+ []
+
+)
+
+LaTeX Warning: Reference `lst:ifte-phr' on page 47 undefined on input line 342.
+
+
+[47
+\pgfsyspdfmark {pgfid11}{22747936}{35209230}
+]) (./conclusion.ngml.tex
 Overfull \hbox (0.80737pt too wide) in paragraph at lines 53--66
 \OT1/ptm/m/n/10.95 (-20) paradigms --- in a data set management context, for ex
 ample ---
  []
 
-) (./biblio.tex
+[48]) (./biblio.tex
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 6.
 LaTeX Font Info:    No file OT1gar.fd. on input line 6.
 
@@ -1433,9 +1485,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `gar' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [48] [49])
+ [49] [50])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
- [50
+ [51
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
@@ -1443,48 +1495,54 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
 Package rerunfilecheck Info: File `hbtt.ngml.out' has not changed.
-(rerunfilecheck)             Checksum: 87838788EFFAE48604DA4247B259FB67;2077.
+(rerunfilecheck)             Checksum: 28B1B5DDE6CEA1C78C816F582BC046B2;2074.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 29689 strings out of 492649
- 592679 string characters out of 6122986
- 764503 words of memory out of 5000000
- 32236 multiletter control sequences out of 15000+600000
+ 30270 strings out of 492649
+ 599315 string characters out of 6122986
+ 803744 words of memory out of 5000000
+ 32744 multiletter control sequences out of 15000+600000
  124354 words of font info for 537 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,11n,85p,817b,1081s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/lm/lm-rm.en
-c}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/base/8r.enc
-}</home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmex10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></home/nlevisrael/texl/texlive-install/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></home/nlevisrael/texl/texliv
-e-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/nlevisrae
-l/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmtcsc10.pfb><
+ 58i,11n,85p,817b,1666s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{lst--ifte--1.pgvm-pdf} has been referenced but do
+es not exist, replaced by a fixed one
+
+{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
+{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/base/8r.enc}<
 /home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt8.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts
-/type1/public/amsfonts/euler/eufm10.pfb></home/nlevisrael/texl/texlive-install/
-texmf-dist/fonts/type1/public/lm/lmssbo10.pfb></home/nlevisrael/texl/texlive-in
-stall/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></home/nlevisrael/texl/texl
-ive-install/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/nl
-evisrael/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
-bm10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/symb
-ol/usyr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/s
-ymbol/usyr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/ur
-w/times/utmb8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type
-1/urw/times/utmbi8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts
-/type1/urw/times/utmr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on hbtt.ngml.pdf (50 pages, 528011 bytes).
+/cmex10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></home/nlevisrael/texl/texlive-install/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></home/nlevisrael/texl/texlive-
+install/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/nlevisrael/
+texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmtcsc10.pfb></h
+ome/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mtt10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmtt8.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/t
+ype1/public/amsfonts/euler/eufm10.pfb></home/nlevisrael/texl/texlive-install/te
+xmf-dist/fonts/type1/public/lm/lmssbo10.pfb></home/nlevisrael/texl/texlive-inst
+all/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></home/nlevisrael/texl/texliv
+e-install/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/nlev
+israel/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
+10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/symbol
+/usyr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/sym
+bol/usyr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/
+times/utmb8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/
+urw/times/utmbi8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/t
+ype1/urw/times/utmr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on hbtt.ngml.pdf (51 pages, 537316 bytes).
 PDF statistics:
- 796 PDF objects out of 1000 (max. 8388607)
- 701 compressed objects within 8 object streams
- 203 named destinations out of 1000 (max. 500000)
+ 882 PDF objects out of 1000 (max. 8388607)
+ 785 compressed objects within 8 object streams
+ 265 named destinations out of 1000 (max. 500000)
  76093 words of extra memory for PDF output out of 89155 (max. 10000000)
 

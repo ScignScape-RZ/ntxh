@@ -766,13 +766,13 @@ code-graph hypernodes as `q.carriers` of runtime values, some of
 which collectively form `q.channels` concerning values which
 vary at runtime between different executions of a function body.
 Carriers and channels piece together to form
-`q.Channel Complexes` that describe structures with meaning both
+`q.Channel Groups` that describe structures with meaning both
 within source code as an organized system (at `q.compile time`
-and during static code analysis) and at runtime.  Channel Complexes
+and during static code analysis) and at runtime.  Channel Groups
 have four different semantic interpretations, varying via the
 distinctions between runtime and compile-time and between
 `i.expressions` and (function) `i.signatures`/.
-I use the framework of Channel Complexes to identify
+I use the framework of Channel Groups to identify
 design patterns that achieve many goals of
 `q.expressive` type systems while being implementationally
 feasible given the constraints of mainstream programming
