@@ -113,23 +113,49 @@ can be indirectly systematized in terms of
 the procedures which act upon them.  
 `p`
 
-
 `p.
-In the best-case scenario, `GUI; code is a natural extension 
-of programming languages' and individual languages' 
-type systems %-- with rigorous mapping between value types and 
-visual-object types that graphically display associated 
-values.  So long as Functional Programming languages remain 
-operationally separated from `GUI; drivers %-- needing a 
-`q.smoke binding` or foreign-function 
-interface to marshal data between a 
-`CLang;-oriented User Interface and the non-visual data 
-(and database) management components of a project %-- the strongly-typed 
-rigor of Functional Programming environments will be 
-incomplete.  
+With this background, the demo proposes a notion of 
+`q.Procedural Hypergraph Ontology` which 
+extends (or diverges from) conventional 
+Semantic Web Ontology partly by orienting toward 
+Hypergraphs, but more substantially by centering 
+on this procedutal dimension: the role of an 
+Ontology being to desribe components' procedural 
+interface as well as their targeted data structures.  
 `p`
 
 `p.
+In particular, the demo presents both a hypergraph serialization 
+format and methodology for generating interface descriptions, 
+based on channel complexes.  The demo code shows a compilation process 
+which works with channel groups, branching off into a runtime 
+engine which actually evaluates channel packages and, separately, 
+algorithms to compile information about procedure signatures and 
+function calls.  This last capability can be a point for embedding 
+more detailed Interface Definition metadata, including via the non-standard 
+channel protocols I have discussed in this chapter.  
+Both static data structures and compiled channel groups 
+translate to a Hypergraph format, which thereby serves as 
+a common denominator between code and data.  
+`p`
+
+`p.
+Rigorous procedural documentation, or Interface Definition, can 
+then serve several different roles in application development, 
+including testing, Requirements Engineering, and `GUI; design.  
+In particular, a formal review of important procedures exposed 
+by a software component allows front-end development to identify 
+which operational features need to covered by interactive 
+User Interface components; for example, what units of 
+functionality should be linked to buttons, context menus, 
+and other responsive design elements.  
+`p`
+
+`p.
+Extending Interface Definition outward to front-end `GUI; 
+layers then presents the challenge of integrating 
+rigorous data-modeling paradigms with quality 
+front-end software affordances.  
 Whether or not by technical necessity or just entrenched culture, 
 `GUI; frameworks are still predominantly built in procedural 
 or `OO; languages like `CLang;, `Java;, and `Cpp;.  It seems likely 
@@ -199,3 +225,19 @@ just as a `GUI; strategy for Functional languages but as a
 hybrid methodology where Functional and Object-Oriented 
 methodologies can be fused, and integrated.
 `p`
+
+`p.
+Contemporary software engineering still seems caught in a paradigm 
+split, with Functional and Object-Oriented styles seen as 
+competitors rather than candidates for admixture, and with a 
+profound divergence between code libraries targeting native, 
+desktop applications and those designed for the web ecosystem.  
+I believe that further research in programming language design 
+and software engineering methodology will however reveals 
+these divisions to be preliminary, and a new generation of 
+web/desktop and Object/Functional hybrid paradigms can emerge.  
+Given the unique requirements of the CyberPhysical domain, 
+perhaps CyberPhysical and Ubiquitous Sensing technology will 
+be a momentum boost for this kind of behind-the-scenes research.     
+`p`
+
