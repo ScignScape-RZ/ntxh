@@ -63,6 +63,20 @@ a file will succeed).
 `p`
 
 `p.
+In short, typestate forces us to modify some basic assumptions about 
+the relationship between types and values: either values can 
+change types mid-stream, or a lexical scope can subsume a sequence 
+of carrier which share the same symbol-name (and maybe the same type) 
+but differ in state (some holding values unrelated to actual program 
+state).  This situation can be juxtaposed with the `q.metaconstructor problem`/, 
+i.e., how Dependent Types force a rethink on basic value-constructor 
+theory.  As with constructors, here I will advocate for techniques 
+that emulate typestate without unduly expanding the scope of 
+a Channelized type theory.
+`p`
+
+
+`p.
 A good real-world example of the overlap between Dependent Types and
 typestate (also grounded on file input/output) comes
 from the `q.Dependent Effects` tutorial from the Idris
@@ -163,8 +177,8 @@ enough \cite[page 1]{BradyMatus}.
 To summarize, Idris works by `q.erasing` some, but not all, of the
 extra contextual detail needed to ensure that dependent-typed
 functions are used (i.e., called) correctly (see also `cite<Christiansen>;,
-and \cite[page 210]{RichardEisenberg}).  This means that a lot
-of contextual detail is `i.not` erased; Idris provides machinery to
+and \cite[page 210]{RichardEisenberg}).  This means that much 
+contextual detail is `i.not` erased; Idris provides machinery to
 join executable code and user specifications onto
 `i.types` so that they take effect whenever affected types' values are
 constructed or passed to functions.
@@ -197,17 +211,17 @@ Object-Oriented environment, like `Cpp; as a host language.
 `p.
 This discussion emanated from Idris examples based on file-management
 typestate, but it generalizes to other cases, such as range-delimited
-types or states.
-Practically, working with scenarios like range-bounded values %-- which
+types (or analogous requirements manifest as type-states).  
+In practice, working with scenarios such as range-bounded values %-- which
 in principle exemplifies programming tasks where Dependent Types can be a
-useful idiom %-- in practice arguably ends up more like typestate
+useful idiom %-- arguably ends up more like typestate
 management as exemplified by gatekeeping `visavis;, say, files (only
 call `i.this` function if `i.that` file is open).  A range-interval 
 is typestate-like in that the practical intent is to affix certain gatekeeper
 functions to an accompanying value so that it will never be incorrectly used
 %-- for instance, that it will never be modified to lie outside
-its assigned range.  Conforming to a range
-restriction is more like a typestate than a type: indeed, a range-plus-value pair
+its assigned range.  Conforming to range
+restrictions is more like a typestate than a type: indeed, a range-plus-value pair
 has an obvious covering via two typestates
 (the value is either in or out of its closed interval).`footnote.
 Although a more detailed range typestate might have a few
@@ -216,8 +230,8 @@ distinguishing `q.too large` from `q.too small`/.
 `footnote`  So the semantics of Dependent Types can practically be
 captured via a typestate framework %-- and perhaps vice-versa, since
 typestates can be seen as type families indexed over (possibly enumerative)
-types; file typestates as a family indexed over `enumleft;`closed;,
-`open;, `nonexistent;`enumright;, for example.
+types; e.g., file typestates as a family indexed over `enumleft;`closed;,
+`open;, `nonexistent;`enumright;.
 `p`
 
 `p.
@@ -251,7 +265,7 @@ scenes` channels that create values from functions'
 channels, but whose values are passed to functions
 implicitly; they are not visible at function-call sites.
 I will return to the discussion of Preconstructors and
-Co-channels after developing a theory of Channel Complexes
+co-channels after developing a theory of Channel Complexes
 more substantially.
 `p`
 

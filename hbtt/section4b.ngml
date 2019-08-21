@@ -162,7 +162,7 @@ expressions to represent a transfer of values between graph structures: let
 from source at a call site and at the callee's implementation,
 respectively.  The function call transfers values from carriers
 marked by `gammaOne; nodes to `gammaTwo; carriers; with the further
-detail of `q.Channel Packages` we can additionally say that the
+detail of `q.Channel Bundles` we can additionally say that the
 recipient `gammaTwo; carriers are situated in a graph structure which
 translates to a channel description.  So the morphology of
 `gammaOne; has to be consistent with the channel structure of `gammaTwo;.
@@ -183,14 +183,14 @@ right-hand-side of an assignment (an `i.rvalue`/) %-- or else passed to
 a different function (thus an example of channel-to-channel connection
 without an intervening carrier).  A well-formed `Gamma; represents
 part of a function implementation's code graph, specifically that
-describing how a Channel Package is concretely provisioned with values
-(i.e., a payload).
+describing how a Channel Bundle is concretely provisioned with values
+(i.e., a package).
 `p`
 
 `p.
 I will use the term `i.call-clause` to designate the
 portion of a code graph, and the associated collection of
-source code elements, describing a Channel Payload.
+source code elements, describing a Channel Package.
 Term a call-clause `i.grounded` if its
 resulting value is held in a carrier (as
 in `yeqfx;), and `i.transient` if this value

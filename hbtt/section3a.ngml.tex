@@ -19,6 +19,21 @@ assertion about a type may be \i{possible} but not necessary
 act like \q{possible worlds}).
 }
 }
+\p{Types are, then, conceptually distinct from sets of values, and 
+type theory should be developed with no appeal to sets or 
+to set theory.  We therefore need a mechanism to specify and 
+individuate types \mdash{} e.g., under what circumstance do 
+two different symbols or two different \TXL{} terms 
+designate \q{the same} type?  Here I will resolve questions about 
+type-identity via functional resolutions: functions are overloaded 
+insofar as one symbol can designate multiple functional values, 
+which in turn are distinguished by type differences somewhere 
+in their signature.  Consequently, types themselves are 
+differentiated insofar as they engender distinct signatures.  
+If and only if two expressions designate the same type, 
+they can be interchanged in a signature without altering 
+the function-like type which the signature demarcates. 
+}
 \p{In this context, then, a \i{type} is conceptually a set of
 guarantees on function-call resolution (for overloaded function
 symbols) and gatekeeping (for preventing code from executing with
@@ -93,24 +108,28 @@ on page \pageref{funconstr} \mdash{} procedures are defined
 from aggregate code-spans
 with semantically and syntactically regulated internal structure.  I assume that
 code is written in a specific language and that, in the context of that language,
-any sufficiently complete code-span can be compiled to an Abstract Semantic Graph
-(or similar graph-like Intermediate Representation).  The logic of this
+any sufficiently complete code-span can be compiled to a code-graph 
+\mdash{} say, an Abstract Semantic Graph
+(or similar graph-like Intermediate Representation), generalizing from 
+an Abstract Syntax Tree.  The logic of this
 representation may vary among languages and/or type systems \mdash{} optimal
 graph representation of source code is an active area of research, not only for
 compiler technologies but also for code analyzers and \q{queries} and for
 code deployment on the Semantic Web.  In this chapter, I assume that
 an adequate graph representation will be isomorphic to a Directed Hypergraph.
-So, assume that there is a \q{code-\DH{}} type such that every code-span
-suitable for compilation into a function-implementation is a value of that type.
-Assume also that every source code literal is a \codeDH{} graph with one hypernode
-and no edges.  In that case, initializing carriers from literals is one example
-of initializing carriers from code-graph instances more generally,
-including initializing \q{function} values.
+So, assume that every code-span
+suitable for compilation into a function-implementation can be isolated 
+as a separate graph or subgraph, logically adjoined to one or more 
+functional values (viz., those functions instanced in procedures 
+described by the graph).  Assume also that every source code 
+literal is equivalent to a \codeDH{} graph with one hypernode
+and no edges.  In that case, initializing values from literals is one example
+of initializing values from code-graph instances more generally.
 }
 \p{This approach \mdash{} using \DH{} or \CH{} graphs as the formal
 ground of type-theoretic statements \mdash{} influences how we
-can analyze types.  For every \q{function-like} type, instances
-of the type are given through implementations suitable to
+can analyze types.  For every \q{function-like} type, 
+most instances of the type are given through implementations suitable to
 graph representation.  Many nodes in these graphs represent
 values which the function receives from and/or passes to
 other functions.  Therefore, assertions about functions' behavior
@@ -126,7 +145,8 @@ notations where descriptions of functions'
 \i{behavior} can be interpreted or converted
 to descriptions of types themselves.
 }
-\p{Notice that one single literal may initialize carriers of multiple types;
+\p{Notice that one single literal may initialize values (or, in my 
+terminology, carriers) of multiple types;
 the number \q{\zeroNum{}} could become a signed or unsigned integer, a float, etc.
 Similarly, a code-span can be compiled multiples times, as in \Cpp{} templates.
 So, there is not necessarily a one-to-one correspondence
@@ -138,12 +158,17 @@ function \i{implementation} is fully determined by a type-and-code-graph
 pair.  This formally expresses how \i{implemented functions} are different
 phenomena than what we might call \q{functions} in   
 mathematics.  If there is a
-meaningful type Category than we must have nontrivial morphisms, which I
+meaningful type Category then we must have nontrivial morphisms, which I
 would argue should be those that abstractly capture type-level semantics,
 such as predefined conversion operators or the
 \q{initialization} morphism.  But morphisms are not affixed to
 the code-graph and value-constructor machinery, though of course some morphisms
-may coincide with implemented functions.
+may coincide with implemented functions.\footnote{Here I depart from the usual account of Hypergraph Categories, because 
+I assume that functions between types are not, in the general case, 
+recognized as morphisms in types qua objects in a type Category.  
+This is partly because Category-theory morphisms have no analogs 
+to \q{channels} other than \lambda{} and \return{}.  
+}
 }
 \p{Given this distinction, we can start to explore why some advanced constructs in
 Dependent Type Theory, or other features of very expressive type systems,
@@ -197,11 +222,18 @@ created at runtime, for each \rRan{} encountered \mdash{}
 has to insert some runtime} mechanism which creates and calls a value constructor
 for \xSym{} before \fFun{}'s body is entered \mdash{}  or else that a
 single value constructor is used for all \xSym{}s, regardless of \rRan{}.
-As I argued, each (concretely) inhabitable type has at least
-one associated acyclic value constructor which is unique to that
-type: a type-plus-code-graph pair.  This allows one code graph to be
-mapped to multiple value constructors.  But it does not allow
-one value constructor to service many types, although we
+Ordinarily, we think of value constructors as procedures which 
+yield values of their intended types.  Given the bijection 
+(once types are fixed) between procedure implementations and code-graphs, 
+each (concretely) inhabitable type would then have at least
+one value constructor which is unique to that
+type: a type-plus-code-graph pair.  Conversely, one code-graph 
+can engender multiple procedures by varying carrier types.  
+This allows one code graph to be
+mapped to multiple value constructors.  But, this 
+generalization does not (without supplemental logic) 
+support a parallel generalization where 
+one value constructor would service many types, although we
 can implement functions that would be semantically analogous to
 such a value constructor.
 }
@@ -236,7 +268,7 @@ reflection tactic is to maintain a map of identifiers to function addresses).
 Either option complicates the relation between types'
 realizability and their value constructor: instead of each inhabitable type
 having at least one value constructor which is itself a value, and as such itself results
-from a value constructor taking a code graph, we have to associate types either with
+from a value constructor derived from a code graph, we have to associate types either with
 dynamically created temporary value-constructor values or we have to map value
 constructors not to singular values but to a compound structure.  For example, if the
 purported value constructor for a range type \TrRan{} is to be the
@@ -251,10 +283,20 @@ problem: what are allowable \i{value constructors for the value constructors} of
 allowable types?
 }
 \p{If we ignore templates, a reasonable baseline assumption is that
-\q{metaconstructors} must only accept one sort of argument: code graphs.
-That is, for each metaconstructor \mdash{} again, a value constructor
+\q{metaconstructors} must only be obtained from one sort of origin: code graphs.
+That is, for each metaconstructor \mdash{} again, a de-facto value constructor
 whose result is a value constructor whose result is a value of some type \tTy{}
-\mdash{} there must be exactly one code-span notating the value constructor's implementation.
+\mdash{} there must be exactly one code-span notating the 
+value constructor's implementation.\footnote{I am not specifically assuming some sort of on-the-fly compilation 
+where new functions could be created from source code at runtime.  
+That is, referring to \q{meta-constructors} as value-constructors may 
+be suggestive more than literal, technical terminology. 
+On the other hand, if a language \i{can} dynamically read 
+code-graphs, this usage should be understood more literally: 
+we might assume that there is a specific type representing 
+code-graphs, and values of that type are then inputs to 
+value-constructors yielding procedure types. 
+}
 As I just outlined, dependent typing can complicate the picture because
 metaconstructors then have to have possible alternative signatures: e.g.
 the value constructor for \q{integers between zero and one hundred (inclusive)} has
@@ -308,11 +350,11 @@ would be mathematically equivalent to providing a unique address for each
 64-bit integer.
 }
 \p{A reasonable language, conversely,
-may have \q{non-addressable} function values: for example, suppose a
-lambda passed to a function is defined just via an operator, like an
+may have \q{non-addressable} function values: for example, suppose an
+anonymous function passed to a procedure is defined via an operator, like an
 \fOfG{}.  Say, sorting two lists of strings on a comparison which calls a
 \q{to lowercase} function before invoking a less-than operator.  This could
-be notated with a lambda block, but some languages may allow a more
+be notated with an anonymous-function block, but some languages may allow a more
 \q{algebraic} expression, something meaning \q{lower-case then less-than}, with
 the idea that function values can be composed by rough analogy to
 numbers being added (see item \hyperref[ops]{3} on page \pageref{ops}).
@@ -347,6 +389,15 @@ information at every point where a dependent-typed value has to be constructed
 \mdash{} unless, perhaps, a description of the context can be packaged and
 carried around with the value, sharing the value's lifetime.
 }
+\p{In a nutshell: without restricting their expressiveness, Dependent Types can 
+only be achieved by modifying foundational assumptions about the relationships 
+between types and the procedures which construct their instances.  
+We then have a choice between simply accepting an expanded model of 
+value-construction or devising strategies for emulating Dependent Types 
+within the confines of a code model that preserves, in particular, 
+value-constructor addressability.  The techniques I discuss in this 
+chapter are adjusted to the latter decision.    
+}
 \p{A value can, indeed, actually be an aggregate data structure including
 functions to call when
 the value is created or modified \mdash{} behaving as if it were dependently typed
@@ -371,7 +422,7 @@ size).  So while it may be a well-formed type-expression to
 say that \nVal{} has \i{type} \intrlstsize{}, the net result is that
 \nVal{}'s type is then not known until runtime.  Since its type is
 not known, nor is the proper value constructor to call when
-\nVal{} has to be provided to a \lambdach{} channel, at least
+\nVal{} has to be provided to a \lambda{} channel, at least
 not \i{a priori}.  Instead, the value constructor has to be
 determined on-the-fly.  As such, the \q{constructed} value constructor
 acts like a kind of supplemental function called prior to the main function

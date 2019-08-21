@@ -102,7 +102,9 @@ between function-bodies (since, after all, they come from the
 same node in a single code-graph).  That is, the code-graphs
 rely on symbol-overloading for function names
 to achieve a kind of polymorphism, where one code-graph
-yields multiple bodies.  In this compile-time polymorphism,
+yields multiple bodies.
+\pseudoIndent{}
+In this compile-time polymorphism,
 symbols are resolved to the proper overload-implementation
 at compile-time, whereas in runtime polymorphism this
 decision is deferred until the runtime-polymorphic function

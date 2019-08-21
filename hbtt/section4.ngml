@@ -1,5 +1,5 @@
 
-`section.Channels and Carriers`  `
+`section.Channels and Carriers`
 \phantomsection\label{sFour}
 `p.
 Suppose one procedure calls a second.  From a high level perspective,
@@ -95,7 +95,7 @@ theory of carriers by considering how carriers group into channels.
 `spsubsection.Carrier Transfers`
 `p.
 In this theory, carriers are the basic means by which values are represented
-within computer code, including representing the `q.communication` of
+within computer code, including representing the `q.communicating` of
 values between different parts of code source, such as calling a function.
 The `q.information flow` modeled by a function-call includes values
 held by carriers at the function-call-site being transferred to
@@ -104,7 +104,7 @@ the idea of a `q.transfer` of values between carriers, a kind of primitive
 operation on carriers, linking disparate pieces of code.  It also
 illustrates that the symbols used to name function parameters, as
 part of function signatures, should be considered `q.carriers` analogous
-to lexically-scoped and declared symbols.
+to lexically-scoped symbols.
 `p`
 
 `p.
@@ -112,7 +112,7 @@ Taking this further, we can define a `i.channel` as a list of carriers which, by
 inter-carrier transfers, signify (or orchestrate) the passage of data into and out
 of function bodies (note that this usage varies somewhat from process calculi,
 where a channel would correspond roughly to what is here called a single carrier;
-here channels in the general case are composed of multiple carriers).
+I assume channels in the general case are composed of multiple carriers).
 I'll use the notation `opTransfer; to represent inter-carrier transfer: let
 `carrOne; and `carrTwo; be carriers, then `carrOneOpTransferTwo; is a
 transfer `q.operator` (note that `opTransfer; is non-commutative; the
@@ -133,7 +133,9 @@ For example, consider the basic function-composition `fofg;:
 would be, say, `gOpTransferOneOneF;:
 here the first carrier in the `returnch; channel
 of `funG; transfers to the first carrier in the `lambdach; channel of `funF;
-(the subscripts indicate the respective positions).
+(the subscripts indicate the respective positions).`footnote.
+In this chapter I color channel names to distinguish them from code excerpts.
+`footnote`
 `p`
 
 `p.
@@ -244,7 +246,7 @@ for modeling computer programs as sets of function-implementations
 which call one another.  Instead of abstractly talking about
 `q.procedures` as conceptual primitives, we can see procedures as
 embodied in code-graphs (and function-values as
-constructed from them, which I emphasized last section).
+constructed from them).
 `q.Passing values between` procedures is
 then explicitly a family of relationships between nodes
 (or hypernodes) in disparate code-graphs, and the various semantic
@@ -281,22 +283,22 @@ of `xSym; gets transferred to the carrier `iSym; in `fTwo;'s context.
 `p`
 
 `p.
-In the terms I used earlier, `fTwo;'s signature represents a
-channel `q.package` %-- which, in the current example, has
+I will say that `fTwo;'s signature represents a
+channel `q.bundle` %-- which, in the current example, has
 a `lambdach; channel of size one (with one carrier of
 type `int;) and a `returnch; channel of size one (`fTwo;
 returns one `int;).  Considered in the context of carrier-transfers
-between code graphs, a Channel Package can be seen as a description
+between code graphs, a channel bundle may be regarded as a description
 of how two distinct code-graphs may be connected via carrier
 transfers.  When a function is called, there is a channel
-complex which I'll call a `i.payload` that supplies values to
-the channel `i.package`/.  In the concrete example, the
+complex which I'll call a `i.package` that supplies values to
+the channel `i.bundle`/.  In the concrete example, the
 statement `yeqfx; is a `i.call site` describing a channel
-`i.payload`/, which becomes connected to a function
+`i.package`/, which becomes connected to a function
 implementation whose signature represents a channel
-`i.package`/: a collection of transfers `carrOneOpTransferTwo;
+`i.bundle`/: a collection of transfers `carrOneOpTransferTwo;
 together describe an overall transfer between a
-`i.payload` and a `i.package`/.
+`i.package` and a `i.bundle`/.
 `p`
 
 `p.
@@ -305,7 +307,7 @@ target is part of `fTwo;'s `lambdach; channel, which we can notate
 `carrOneOpTransferTwolambda;.  Furthermore, the full statement `yeqfx;
 shows a transfer in the opposite direction: the value in
 `fTwo;'s `i.`returnch;` channel is transferred to the carrier `ySym; in
-the `i.payload`/.  This relation, involving a return
+the `i.package`/.  This relation, involving a return
 channel, can be expressed with notation like `carrTwoOpTransferOnereturn;.
 The syntax of a programming language governs how code at a call site
 supplies values for carrier transfers to and from a function body: in
@@ -340,23 +342,23 @@ A Channel Expression Language (`CXL;) can describe channels both in
 signatures and at call-sites.  The aggregation of channels generically
 described by `CXL; expressions I am calling a `i.Channel Complex`/.
 A Channel Complex representing a function `i.signature` I am calling
-a `i.Channel Package`/, whereas complexes representing a function
-`i.call` I am calling a `i.Channel Payload`/.  Input channels
-are then those whose carrier transfers occur in the payload-to-package
+a `i.Channel Bundle`/, whereas complexes representing a function
+`i.call` I am calling a `i.Channel Package`/.  Input channels
+are then those whose carrier transfers occur in the package-to-bundle
 direction, whereas output channels are the converse.
 `p`
 
 `p.
-In addition to the payload/package distinction, we can also
+In addition to the package/bundle distinction, we can also
 understand Channel Complexes at two further levels.  On the one hand,
 we can treat Channel Complexes as found `i.in source code`/,
-where they describe the general pattern of payload/package
+where they describe the general pattern of package/bundle
 transfers.  On the other hand, we can represent Channel Complexes
 `i.at runtime` in terms of the actual values and types held by
 carriers as transfers are effectuated prior to, and then
 after, execution of the called function.  Accordingly,
 each Channel Complex may be classified as a `i.compile-time`
-payload or package, or a `i.runtime` payload or package, respectively.
+package or bundle, or a `i.runtime` package or bundle, respectively.
 The code accompanying this chapter includes a `q.Channel Complex library`
 %-- for creating and analyzing Channel Complexes via a special
 Intermediate Representation %--
@@ -365,12 +367,13 @@ both for static analysis and for enhanced runtimes and scripting.
 `p`
 
 `p.
-This formal channel/complex/package/payload/carrier vocabulary codifies
+This formal channel/complex/bundle/package/carrier vocabulary codifies
 what are to some degree common-sense frameworks through which programmers
 reason about computer code.  This descriptive
 framework (I would argue) more effectively integrates the
 `i.semantic` and `i.syntactic` dimensions of source code and program
-execution.   Computer programs can be understood `i.semantically` in
+execution.  Specifically, on the `i.semantic` side, 
+computer programs can be understood in
 terms of `mOldLambda;-Calculi combined with
 models of computation (call-by-value or
 by-reference, eager and lazy evaluation, and so forth).  These
@@ -383,7 +386,7 @@ basis of source code in itself?
 `p`
 
 `p.
-At the same time, source code
+Conversely, source code
 can also be approached `i.syntactically`/, as well-formed
 expressions of a technical language.  From this perspective,
 correct source code can be matched against language grammars and,
@@ -419,7 +422,7 @@ mainstream programming language %-- for example, even if they
 are restricted to a `sigmach;-`lambdach;-`returnch;-`exceptionch;
 Channel Algebra modeled around, say, `Cpp; semantics
 prior to `CppEleven; (more recent `Cpp; standards also call for
-a `q.`capturech;` channel for inline `q.lambda` functions).
+a `q.`capturech;` channel for inline anonymous functions).
 `p`
 
 `p.
