@@ -38,11 +38,11 @@
 	\begin{tcolorbox}[
 		colback=gray!4,
 		colframe=mRed!20!gray,
-		width=.98\linewidth,
+		width=.99\linewidth,
 		boxrule=1pt,leftrule=3pt,
 		rightrule=1pt,toprule=.5pt,arc=0pt,auto outer arc
 		]
-\begin{minipage}{21.5em}}{%
+\hspace{-7pt}\begin{minipage}{22em}}{%
 \end{minipage}\end{tcolorbox}
 	\end{flushright}
 }
@@ -57,10 +57,10 @@
 \stepcounter{subs}
 %\setcounterref{subsection}{\thesubs}
 \refstepcounter{subsection}
-\vspace*{3em}
+\vspace*{3.1em}
 
 \noindent{\LARGE\em\thesection.{\Large\thesubs}} {
-\hspace{-2.75em}
+\hspace{-2.5em}
 			%\begin{minipage}{}
 			\protect\raisebox{-5pt}{%
 			\colorbox{logoCyan!50}{\hspace{2.1em}}}%
@@ -68,7 +68,8 @@
 						   \protect\raisebox{1pt}{\textit{{\large #2}}} }}}}
 			%\end{minipage}
 
-} 
+}
+\vspace*{.5em} 
 }
 
 %\renewcommand{\subsection}[1]{\subss{#1}{#1}}
@@ -121,11 +122,11 @@
 
 \setlength{\parindent}{30pt}
 
-\usepackage[letterpaper, left=.45in,right=.45in,top=1in,bottom=1in]{geometry}
+\usepackage[letterpaper, left=.47in,right=.47in,top=.96in,bottom=.96in]{geometry}
 
 %\colorlet{codegr}{black!80!blue}
 
-\setlength{\columnsep}{7mm}
+\setlength{\columnsep}{8mm}
 
 \usepackage{etoolbox}
 
@@ -423,6 +424,32 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \label{#3}
 \end{figure}
 }
+
+\usetikzlibrary{backgrounds} 
+\usetikzlibrary{arrows}
+\tikzset{>=triangle 90}
+
+\newcommand{\gFunB}{\ensuremath{\mathfrak{g}}}
+\newcommand{\fFunB}{\ensuremath{\mathfrak{f}}}
+
+%\newcommand{\lstinlinebstyle}[1]{\Colorbox{blue!10}{%
+%		{\fontfamily{Cabin-TLF}\fontseries{b}\fontsize{9pt}{16pt}\selectfont{{\textls[200]{#1}}}}}}
+
+\newcommand{\lstinlinebstyle}[1]{\textls[200]{#1}}
+
+
+\newenvironment{tikzgrid}{%
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,
+framed,background rectangle/.style={double,ultra thick,draw=darkRed, bottom color=cyan!20, 
+	top color=black!20, rounded corners}]%
+}{\end{tikzpicture}}
+ 
+\usepackage[font=small,labelfont=bf]{caption}
+
+\definecolor{BaseColor}{HTML}{8533FF}
+
+\colorlet{ftcfore}{BaseColor!60!cyan}
+\colorlet{ftcback}{BaseColor!40!cyan}
 
 
 \newcommand{\tcl}[1]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}

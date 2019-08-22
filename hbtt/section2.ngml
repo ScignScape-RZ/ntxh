@@ -324,7 +324,7 @@ to which I now turn.
 A `i.hypergraph` is a graph whose edges (a.k.a. `q.hyperedges`/) can span
 more than two nodes (\cite[e.g. p. 24]{BenGoetzel},
 `cite<HaishanLiu>;, `cite<MarkMinas>;;
-`cite<AlexandraPoulovassilis>;, `cite<JohnStell>;).
+`cite<AlexandraPoulovassilis>;, `cite<JohnStell>;, `cite<BalintMolnar>;).
 A `i.directed` hypergraph (`q.`DH;`/) is a hypergraph
 where each edge has a `i.head set` and
 `i.tail set` (both possibly empty).  Both of these are sets of nodes
@@ -560,7 +560,7 @@ data (or some combination).  Graph deserialization can then be
 a matter of mapping hyponodes to fields in the `q.internal` data 
 allocations, before then mapping inter-hypernode relations to 
 the proper hypervertex-relations.  Code sample 
-\ref{lst:initializing-hypernode} demonstrates the pattern 
+\ref{lst:initializing-hypernodes} demonstrates the pattern 
 of hypervertex construction as `Cpp; objects that get wrapped 
 in new nodes ({\OneOverlay}-{\TwoOverlay}), 
 along with obtaining nodes already registered in a runtime graph 
