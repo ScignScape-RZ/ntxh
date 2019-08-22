@@ -377,6 +377,18 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 
 \newcommand{\spinc}[1]{\input{#1}}
 
+\newsavebox{\tcsb}
+
+
+\newcommand{\spinctc}[3]{\begin{lrbox}{\tcsb}\protect\input{#1}\end{lrbox} %\input{#1}
+\begin{figure}
+\tc{}{\protect\usebox\tcsb} 
+\captionof{figure}{#2}
+\label{#3}
+\end{figure}
+}
+
+
 \newcommand{\tcl}[1]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}
 \input{#1}
 \end{minipage}\end{lrbox}
@@ -394,9 +406,9 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 }
 
 \newcommand{\vsftcl}[2]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}
-%\vsinput{#2}
+\vsinput{#2}
 \end{minipage}\end{lrbox}
-%\tc{float=#1,}{\hspace*{\hslength}\usebox\lstbox}
+\tc{float=#1,}{\hspace*{\hslength}\usebox\lstbox}
 }
 
 \newcommand{\vstcl}[1]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}

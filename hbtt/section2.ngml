@@ -503,9 +503,10 @@ and `CH;s are flexible in part by morphing naturally into these various
 forms.\phantomsection\label{unplug}
 `p`
 
-`spinc<unplug>;
+%`spinc<unplug>;
 %\begingroup\captionof{figure}{\q{Unplugging} a Node}\endgroup
 %`vspace<1.5em>;
+\spinctc{unplug}{Unplugging a Node.}{fig:unplug}
 `p.
 Notice that information present `i.within` a hypernode can also be expressed as
 relations `i.between` hypernodes.  For example, consider the information that
@@ -585,7 +586,8 @@ collections.\phantomsection\label{lived}
 %`vspace<.5em>;
 
 %`spinc<lived>;
-`ftcl<lived>;
+%`ftcl<lived>;
+\spinctc{lived}{CH vs. RDF Collections.}{fig:lived}
 `p.
 For example, imagine a representation of the
 fact `q.(A/The person named) Nathaniel, 46, has lived in Brooklyn,
