@@ -380,7 +380,7 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \newcommand{\tcl}[1]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}
 \input{#1}
 \end{minipage}\end{lrbox}
-%\tc{}{\hspace*{\hslength}\usebox\lstbox}
+\tc{}{\hspace*{\hslength}\usebox\lstbox}
 }
 
 \newcommand{\itcl}[1]{
@@ -388,9 +388,9 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 }
 
 \newcommand{\ftcl}[2]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}
-%\input{#2}
+\input{#2}
 \end{minipage}\end{lrbox}
-%\tc{float=#1,}{\hspace*{\hslength}\usebox\lstbox}
+\tc{float=#1,}{\hspace*{\hslength}\usebox\lstbox}
 }
 
 \newcommand{\vsftcl}[2]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}

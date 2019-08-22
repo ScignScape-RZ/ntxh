@@ -36,7 +36,16 @@ losing models' underlying formal rigor and tractability.
 In terms of data models, this can be reflected in the 
 evolution from fixed-field structures (like spreadsheets and relational 
 databases) to labeled-graph Ontologies to Hypergraphs and 
-other multi-scale graph paradigms.  In type theory, a similar 
+other multi-scale graph paradigms.  Parallel to the emergence 
+of Semantic Web technology there is also a body of research in 
+Scientific Computing, where expressiveness translates to 
+modeling strategy which encapsulate scientific theories and 
+workflows %-- cf. Object-Oriented simulations 
+(`cite<Telea>;, `cite<TeleaWijk>; being a good case-study) and 
+such formats as Conceptual Space Markup Language 
+(`cite<RaubalAdams>;, `cite<RaubalAdamsCSML>;, 
+`cite<Strle>;, `cite<Zenker>;).
+Meanwhile, in type theory, a similar 
 impetus leads from the simple type systems of Typed Lambda 
 Calaculus through to Dependent Types, typestate, effect systems, 
 Object-Orientation, and other features of modern programming 
@@ -53,10 +62,17 @@ formats of shared and/or persisted information must
 be transformed into interactive, usually `GUI;-based  
 presentations for applications to qualify as 
 productive viewers onto the relevant information space.  
+This is how we should understand 
+the criterion of expressiveness: expressiveness at the 
+modeling level is a means to an end; the ultimate 
+goal is `q.expressive` software, i.e., software whose 
+layout, visual presentations, and interactive features/responsiveness 
+render applications effective vehicles for interfacing 
+with complex, nuanced digital content.
 Ultimately, then, data models are effective to the 
 extent that they promote effective software engineering 
 for the applications that transform modeled data into 
-user-facing digital content.
+user-facing digital content.  
 `p`
 
 `p.
