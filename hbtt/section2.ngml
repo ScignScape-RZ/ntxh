@@ -547,6 +547,27 @@ implies no guarantees that the `q.age`
 data point is present as part of a recurring pattern.
 `p`
 
+\itclfig{initializing-hypernodes}{fig:initializinghypernodes}
+`p.
+The two-tiered `DH; structure is also a factor when integrating 
+serialized or shared data structures with runtime data values.  
+In the demo `DH; library, for example, it is assumed that 
+each node can be associated with a runtime, binary data allocation 
+(practically speaking, a pointer to user data).  Hypernodes' internal 
+structure can therefore be represented `i.either` via hyponodes explicit 
+in the graph content `i.or` by internal structure in the user 
+data (or some combination).  Graph deserialization can then be 
+a matter of mapping hyponodes to fields in the `q.internal` data 
+allocations, before then mapping inter-hypernode relations to 
+the proper hypervertex-relations.  Code sample 
+\ref{lst:initializing-hypernode} demonstrates the pattern 
+of hypervertex construction as `Cpp; objects that get wrapped 
+in new nodes ({\OneOverlay}-{\TwoOverlay}), 
+along with obtaining nodes already registered in a runtime graph 
+({\ThreeOverlay}) and then inserting the new nodes (with stated 
+relationships) alongside prior ones into the runtime graph 
+({\ThreeOverlay}).       
+`p`
 
 `p.
 In general, graph representations like `CH; and `RDF; serve two goals: first,

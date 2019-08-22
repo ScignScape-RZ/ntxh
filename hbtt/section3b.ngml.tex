@@ -71,7 +71,7 @@ typestate (also grounded on file input/output) comes
 from the \q{Dependent Effects} tutorial from the Idris
 (programming language) documentation \cite{IdrisEffects}:
 %http://docs.idris-lang.org/en/latest/effects/depeff.html
-\begin{displayquote}A practical use for dependent effects is in specifying resource usage
+\begin{dquote}A practical use for dependent effects is in specifying resource usage
 protocols and verifying that they are executed correctly.  For example,
 file management follows a resource usage protocol with ... requirements
 [that] can be expressed formally in [Idris] by creating a
@@ -88,7 +88,7 @@ If we fail to follow the protocol correctly (perhaps by forgetting to
 close the file, failing to check that open succeeded, or opening the
 file for writing [when given a read-only file handle]) then we will
 get a compile-time error.
-\end{displayquote}
+\end{dquote}
 So how does Idris mitigate the type-vs.-typestate conundrum?  Apparently
 the key notion is that there is one single \tyFile{} \i{type}, but
 a more fine-grained type-\i{state}; and, moreover, an
@@ -129,16 +129,16 @@ to implement a full Dependent Type system.
 \p{In the case of Idris, Dependent Types are feasible because the final
 \q{reduction} of expressions to evaluable representations occurs at
 runtime.  In the language of the Idris tutorial:
-\begin{displayquote}In Idris, types are first class, meaning that they can be computed and
+\begin{dquote}In Idris, types are first class, meaning that they can be computed and
 manipulated (and passed to functions) just like any other language construct.
 For example, we could write a function which computes a type [and]
 use this function to calculate a type anywhere that a type can be used.
 For example, it can be used to calculate a return type [or]
 to have varying input types.
-\end{displayquote}
+\end{dquote}
 More technically, Edwin Brady (and, here, Mat\'u\v{s} Teji\v{s}\v{c}\'ak)
 elaborate that
-\begin{displayquote}\i{Full-spectrum} dependent types ... treat types as first-class language
+\begin{dquote}\i{Full-spectrum} dependent types ... treat types as first-class language
 constructs.  This means that types can be built by computation just like
 any other value, leading to powerful techniques for generic programming.
 Furthermore, it means that types can be parameterised on values,
@@ -151,7 +151,7 @@ Traditionally, this is simple: types are compile-time only, values are
 run-time, and erasure consists simply of erasing types. In a dependently
 typed language, however, erasing types alone is not
 enough \cite[page 1]{BradyMatus}.
-\end{displayquote}
+\end{dquote}
 To summarize, Idris works by \q{erasing} some, but not all, of the
 extra contextual detail needed to ensure that dependent-typed
 functions are used (i.e., called) correctly (see also \cite{Christiansen},

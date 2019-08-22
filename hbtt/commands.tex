@@ -12,6 +12,42 @@
 %Range-Bounded Types, Value Constructors, and Addressability}}}}}}
 %\newcommand{\sstwoline}{\usebox{\sstwolinebox}}
 
+%\definecolor{midRed}{rgb}{.5,.0,.25}
+%\definecolor{logoRed}{rgb}{.3,0,0}
+
+
+
+\newenvironment{displayquotexxx}{%
+	%\begin{fcolorbox}{yellow!20!gray}{red!5}
+	\begin{flushright}
+	\begin{tcolorbox}[
+		colback=gray!4,
+		colframe=red!20!gray,
+		width=.98\linewidth,
+		boxrule=1pt,leftrule=3pt,
+		rightrule=1pt,toprule=.5pt,arc=0pt,auto outer arc
+		]
+\begin{minipage}{21.5em}}{%
+\end{minipage}\end{tcolorbox}
+	\end{flushright}
+}
+
+\newenvironment{dquote}{%
+	%\begin{fcolorbox}{yellow!20!gray}{red!5}
+	\begin{flushright}
+	\begin{tcolorbox}[
+		colback=gray!4,
+		colframe=mRed!20!gray,
+		width=.98\linewidth,
+		boxrule=1pt,leftrule=3pt,
+		rightrule=1pt,toprule=.5pt,arc=0pt,auto outer arc
+		]
+\begin{minipage}{21.5em}}{%
+\end{minipage}\end{tcolorbox}
+	\end{flushright}
+}
+
+
 
 \newcounter{subs}[section]
 
@@ -399,6 +435,12 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \input{#1}
 }
 
+\newcommand{\itclfig}[2]{
+\begin{figure}\input{#1}
+\label{#2}
+\end{figure}
+}
+
 \newcommand{\ftcl}[2]{\begin{lrbox}{\lstbox}\begin{minipage}{\mplength}
 \input{#2}
 \end{minipage}\end{lrbox}
@@ -440,6 +482,9 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \definecolor{logoCyan}{RGB}{66, 206, 244}
 \definecolor{logoRed}{rgb}{.3,0,0}
 
+\definecolor{mRed}{rgb}{.5,.0,.25}
+
+
 
 \definecolor{Bkg}{RGB}{250,245,252}
 \newcommand{\leader}[2]{\hspace{#1}\colorbox{Bkg}{#2}}
@@ -467,6 +512,16 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \usepackage{eso-pic}
 
 \colorlet{urlclr}{red!40!magenta!50!orange}
+
+\hypersetup{
+ urlcolor = urlclr,
+ urlbordercolor = cyan!60!black,
+ linkcolor = red!30!black,
+ citecolor = orange!30!black,
+ citebordercolor = yellow!30!black,
+} 
+
+
 
 \newcommand{\p}[1]{
 	
