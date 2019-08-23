@@ -13,7 +13,7 @@ for biomedical devices)`
 
 
 \twocolumn[\begin{@twocolumnfalse}
-`maketitle;
+`maketitle;\vspace{-2em}
 
 `abstract,
 This chapter will explore the integration of several methodologies 
@@ -58,7 +58,7 @@ techniques outlined here.}
 %`flushright`
 
 `decoline;
-`vspace<3em>;
+`vspace<2em>;
 \end{@twocolumnfalse}]
 
 \addcontentsline{toc}{section}{Hypergraph-Based Type Theory ...}

@@ -122,7 +122,14 @@
 
 \setlength{\parindent}{30pt}
 
-\usepackage[letterpaper, left=.47in,right=.47in,top=1in,bottom=1in]{geometry}
+\usepackage[letterpaper, left=.47in,right=.47in,top=.93in,bottom=.93in]{geometry}
+
+%\usepackage{natbib}
+%\setlength{\bibsep}{4pt}
+
+\let\xbibitem\bibitem
+\renewcommand{\bibitem}[2]{\vspace{4.5pt}\xbibitem{#1}{#2}}
+
 
 %\colorlet{codegr}{black!80!blue}
 
