@@ -149,11 +149,11 @@ of different solutions.
 `p. 
 This section will sketch an overview of the data-validation 
 issues from the broader vantage of planning and stakeholder 
-expectations, before addressing narrower programming concern 
+expectations, before addressing narrower programming concerns
 in subsequent sections.
 `p` 
 
-`spsubsection.Gatekeeper Code and Fragile Code`
+`subsection.Gatekeeper Code and Fragile Code`
 `p.
 I will use the term `i.gatekeeper code` for any code which checks 
 programming assumptions more fine-grained than strong typing 
@@ -277,7 +277,8 @@ should therefore be an essential pre-implementation planning
 step for CyberPhysical software hubs.  
 `p`
 
-`spsubsection.Proactive Design`
+%`spsubsection.Proactive Design`
+`subsection.Proactive Design`
 `p.
 I have thus far argued that applications
 which process CyberPhysical data need to rigorously organize their functionality
@@ -569,7 +570,8 @@ as digital artifacts with their own engineering challenges
 and limitations.
 `p`
 
-`spsubsection.Core Language vs. External Tools`
+%`spsubsection.Core Language vs. External Tools`
+`subsection.Core Language vs. External Tools`
 `p.
 Because of programming languages' engineering limitations, 
 such as I just outlined, software projects should not 

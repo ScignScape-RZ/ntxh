@@ -87,9 +87,18 @@
 
 \newcommand{\twoline}{\usebox{\twolinebox}}
 
-\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subss{#1}{\twoline}}
+\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subss{#1}{\twoline}
+
+\vspace{1em}}
 
 \newcommand{\spsubsectiontwolinerepl}[2]{\stwoline{#1}\subss{#2}{\twoline}}
+\newcommand{\subsectiontwolinerepl}[2]{\stwoline{#1}\subss{#2}{\twoline}
+
+\vspace{1em}}
+
+\titlespacing{\subsection}{0pt}{20pt}{20pt}
+\titlespacing{\section}{0pt}{35pt}{15pt}
+\titlespacing{\subsubsection}{0pt}{20pt}{5pt}
 
 
 \newcommand{\spsubsection}[1]{%
@@ -194,14 +203,6 @@
 
 \let\OldFootnoteSize\footnotesize
 \renewcommand{\footnotesize}{\scriptsize}
-	
-\newcommand{\Tnoindex}{\raisebox{-2pt}{\ensuremath{\mathcal{T}}}}
-
-\newcommand{\typeAbove}{%
-\raisebox{-1pt}{\rotatebox{90}{\begin{tiny}$\diagdown$\makebox[1pt][c]{$\diagup$}\end{tiny}}}}
-
-\newcommand{\typeT}{\ensuremath{type\raisebox{.5pt}{\makebox[3pt][c]{-}}\mathcal{T}}}
-\newcommand{\TValues}{\ensuremath{\mathcal{T}}-values} 
 
 \newcommand{\emigres}{\'emigr\'es}
 
@@ -249,10 +250,19 @@
 \let\Footnote\footnote
 \renewcommand\footnote[1]{\begingroup\footnotetrue\Footnote{#1}\endgroup}
 
+\colorlet{orr}{orange!60!red}
 
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{#1}}}}}}
 
-\newcommand{\AcronymText}[1]{{\iffootnote\begin{scriptsize}{\textsc{#1}}\end{scriptsize}%
-\else\begin{OldFootnoteSize}{\textsc{#1}}\end{OldFootnoteSize}\fi}}
+\newcommand{\textscnc}[1]{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{#1}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\iffootnote\begin{footnotesize}{\textscnc{#1}}\end{footnotesize}%
+\else\begin{small}{\textscnc{#1}}\end{small}\fi}}
+
+\newcommand{\AcronymText}[1]{{\iffootnote\begin{scriptsize}{\textscc{#1}}\end{scriptsize}%
+\else\begin{OldFootnoteSize}{\textscc{#1}}\end{OldFootnoteSize}\fi}}
 
 \newcommand{\TCP}{\AcronymText{TCP}}
 \newcommand{\GPS}{\AcronymText{GPS}}
@@ -330,6 +340,75 @@
 \newcommand{\Scheme}{\AcronymText{Scheme}}
 
 \newcommand{\ThreeD}{\AcronymText{3D}}
+
+\definecolor{DarkRed}{rgb}{.2,.0,.1}
+
+\colorlet{orrr}{orange!40!red}
+\colorlet{orrbl}{orrr!85!blue}
+\colorlet{orrb}{orrbl!80!DarkRed}
+
+\newcommand{\lclc}[1]{{\color{orrb}{#1}}}
+
+\newcommand{\lcl}[2]{{\resizebox{!}{#1}{\color{orrb}{#2}}}}
+\newcommand{\ty}{{\lcl{8pt}{\ensuremath{\mathfrak{t}}}}}
+
+
+\newcommand{\gOpTransferOneOneF}{\codeText{g:}\codeTextr{return$_1$}{\opTransfer}%
+\codeText{f:}\codeTextr{lambda$_1$}}
+ 
+\newcommand{\fDotOfg}{\codeText{f$\circ$g}}
+\newcommand{\fDotOfGX}{\codeText{(f.g)(x)}}
+\newcommand{\fOfGx}{\codeText{f(g(x))}}
+
+\newcommand{\fgx}{\codeText{f(g(x))}}
+
+\newcommand{\funG}{\codeText{g}}
+\newcommand{\funF}{\codeText{f}} 
+
+\newcommand{\tyOne}{\codeText{${\ty}_1$}}
+\newcommand{\tyTwo}{\codeText{${\ty}_2$}}
+
+\newcommand{\tyOneTotyTwo}{\tyOne \codeText{$\rightarrow$} \tyTwo}
+
+\newcommand{\chK}{\codeText{$\mathcal{K}$}}
+
+\newcommand{\tOneTimesTTwo}{\codeText{${\ty}_1$ $\times$ ${\ty}_2$}}
+\newcommand{\tOneTimesTOne}{\codeText{${\ty}_1$ $\times$ ${\ty}_1$}}
+\newcommand{\tyOneTimesTyTwo}{\codeText{${\ty}_1$ $\times$ ${\ty}_2$}}
+
+\newcommand{\tOneTimesTTwoToTOneOntoTTwo}{\codeText{${\ty}_1$ $\times$ ${\ty}_2$ %
+$\Longrightarrow$ ${\ty}_1$ $\rightarrow$ ${\ty}_2$}}
+
+\newcommand{\unitTy}{\codeText{Unit}} 
+\newcommand{\unitVal}{\codeText{unit}} 
+
+\newcommand{\unitTyToty}{\unitTy{}{ }%
+\codeText{$\rightarrow$ {\ty}}}
+
+\newcommand{\tyOneToTyTwo}{\codeText{${\ty}_1$ $\rightarrow$ ${\ty}_2$}}
+
+\newcommand{\tyE}{\lclc{$E$}}
+\newcommand{\tyTotyE}{\codeText{{\ty} $\rightarrow$ $E$}}
+\newcommand{\tyToTyE}{\codeText{{\ty} $\rightarrow$ $E$}}
+ 
+\newcommand{\tyValues}{{\ty}-values}
+
+
+	
+\newcommand{\Tnoindex}{\raisebox{-2pt}{\ensuremath\ty}}
+
+\newcommand{\typeAbove}{%
+\raisebox{-1pt}{\rotatebox{90}{\begin{tiny}$\diagdown$\makebox[1pt][c]{$\diagup$}\end{tiny}}}}
+
+\newcommand{\typeT}{\ensuremath{type\raisebox{.5pt}{\makebox[3pt][c]{-}}\ty}}
+\newcommand{\TValues}{{\ensuremath\ty}-values} 
+
+\newcommand{\tOnetoTwotoThree}{\codeText{${\ty}_1$\smsp%
+$\rightarrow$\smsp${\ty}_2$\smsp$\rightarrow$\smsp${\ty}_3$}}
+ 
+\newcommand{\tOnetoTwoTOThree}{\codeText{${\ty}_1$\smsp%
+$\rightarrow$\smsp\smsp(${\ty}_2$\smsp$\rightarrow$\smsp${\ty}_3$)}} 
+
 
 \definecolor{BaseColor}{HTML}{8533FF}
 
@@ -513,7 +592,6 @@ framed,background rectangle/.style={double,ultra thick,draw=darkRed, bottom colo
 %\tc{}{\hspace*{\hslength}\usebox\lstbox}
 }
 
-\definecolor{DarkRed}{rgb}{.2,.0,.1}
 
 \definecolor{blGreen}{rgb}{.2,.7,.3}
 \definecolor{darkRed}{rgb}{.2,.0,.1}
@@ -1081,7 +1159,7 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\FactPP}{\AcronymText{Fact++}}
 
-\newcommand{\chname}[1]{\AcronymText{\textbf{#1}}}
+\newcommand{\chname}[1]{\AcronymTextNC{\textbf{#1}}}
 
 \newcommand{\chsym}{\raisebox{3pt}{\rotatebox{-45}{$\Arrowvert$}}\hspace{-5pt}%
 \raisebox{1pt}{\rotatebox{-45}{\tiny{$\gg$}}}\hspace{-1pt}}  %\searrow
@@ -1165,8 +1243,8 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\fx}{\codeText{f(x)}}
 
-\newcommand{\tOne}{\codeText{$\mathcal{T}_1$}}
-\newcommand{\tTwo}{\codeText{$\mathcal{T}_2$}}
+\newcommand{\tOne}{\codeText{${\ty}_1$}}
+\newcommand{\tTwo}{\codeText{${\ty}_2$}}
 
 \newcommand{\gSym}{\codeText{g}}
 \newcommand{\gradeFn}{\codeText{grade}}
@@ -1174,7 +1252,7 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\xninetyyonehgrade}{\codeText{x $=$ 90; y $=$ 100; g $=$ grade(x, y)}}
 
-\newcommand{\tOneTotTwo}{\codeText{$\mathcal{T}_1 \Rightarrow \mathcal{T}_2$}}
+\newcommand{\tOneTotTwo}{\codeText{${\ty}_1 \Rightarrow {\ty}_2$}}
 
 \newcommand{\zeroToOH}{\codeText{\ranged{0,100}}}
 
@@ -1198,12 +1276,6 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 \newcommand{\fofg}{\codeText{$f{\circ}g$}}
 
 \newcommand{\smsp}{\hspace{2pt}}
-
-\newcommand{\tOnetoTwotoThree}{\codeText{$\mathcal{T}_1$\smsp%
-$\rightarrow$\smsp$\mathcal{T}_2$\smsp$\rightarrow$\smsp$\mathcal{T}_3$}}
- 
-\newcommand{\tOnetoTwoTOThree}{\codeText{$\mathcal{T}_1$\smsp%
-$\rightarrow$\smsp\smsp($\mathcal{T}_2$\smsp$\rightarrow$\smsp$\mathcal{T}_3$)}} 
  
 \newcommand{\pimath}{\ensuremath{\pi}}
 
@@ -1220,9 +1292,31 @@ $\rightarrow$\smsp\smsp($\mathcal{T}_2$\smsp$\rightarrow$\smsp$\mathcal{T}_3$)}}
 \newcommand{\sqqq}{{\fontfamily{lmtt}\selectfont{"}}}
 \newcommand{\operatorqq}{\codeText{operator\sqqq\sqqq}}
 
-\newcommand{\carOne}{\codeTextr{$\mathfrak{C}_1$}}
+\newcommand{\cCar}{{\lcl{7pt}{\ensuremath{\mathfrak{c}}}}}
+\newcommand{\cCarOne}{{\lcl{7pt}{\ensuremath{\mathfrak{c_1}}}}}
+\newcommand{\cCarTwo}{{\lcl{7pt}{\ensuremath{\mathfrak{c_2}}}}}
 
-\newcommand{\carTwo}{\codeTextr{$\mathfrak{C}_2$}} 
+\newcommand{\opTransfer}{\codeTextr{$\looparrowright$}}
+\newcommand{\carrOne}{\cCarOne}
+\newcommand{\carrTwo}{\cCarTwo}
+
+\newcommand{\catchexce}{\codeText{catch(Exception e)}}
+
+\newcommand{\carrOneOpTransferTwo}{\carrOne{}{\opTransfer}\carrTwo}
+\newcommand{\carrOneOpTransferTwolambda}{\carrOne{}{\opTransfer}%
+{\textsuperscript{\hspace{-.8em}{\lambdach}}}\carrTwo}
+
+
+\newcommand{\carrOneOpTransferTworeturn}{\carrOne{}{\opTransfer}%
+{\textsuperscript{\hspace{-.8em}{\returnch}}}\carrTwo}
+
+\newcommand{\carrTwoOpTransferOnereturn}{\carrTwo{}{\opTransfer}%
+{\textsuperscript{\hspace{-.8em}{\returnch}}}\carrOne}
+
+
+\newcommand{\carOne}{\cCarOne}
+
+\newcommand{\carTwo}{\cCarTwo} 
 
 \newcommand{\carOnetoTwos}{\carOne \codeTextr{$\twoheadrightarrow$} \carTwo}
 \newcommand{\carOnetoTwof}{\carOne \codeTextr{$\rightarrowtail$} \carTwo}
@@ -1407,22 +1501,6 @@ $\rightarrow$\smsp\smsp($\mathcal{T}_2$\smsp$\rightarrow$\smsp$\mathcal{T}_3$)}}
 \newcommand{\ascii}{\AcronymText{ASCII}}
  
  
-\newcommand{\opTransfer}{\codeTextr{$\looparrowright$}}
-\newcommand{\carrOne}{\codeTextr{$\mathfrak{C}_1$}}
-\newcommand{\carrTwo}{\codeTextr{$\mathfrak{C}_2$}}
-
-\newcommand{\catchexce}{\codeText{catch(Exception e)}}
-
-\newcommand{\carrOneOpTransferTwo}{\carrOne{}{\opTransfer}\carrTwo}
-\newcommand{\carrOneOpTransferTwolambda}{\carrOne{}{\opTransfer}%
-{\textsuperscript{\hspace{-.8em}{\lambdach}}}\carrTwo}
-
-
-\newcommand{\carrOneOpTransferTworeturn}{\carrOne{}{\opTransfer}%
-{\textsuperscript{\hspace{-.8em}{\returnch}}}\carrTwo}
-
-\newcommand{\carrTwoOpTransferOnereturn}{\carrTwo{}{\opTransfer}%
-{\textsuperscript{\hspace{-.8em}{\returnch}}}\carrOne}
 
 \newcommand{\exceptionch}{\codeTextr{exception}}
 
@@ -1437,49 +1515,6 @@ $\rightarrow$\smsp\smsp($\mathcal{T}_2$\smsp$\rightarrow$\smsp$\mathcal{T}_3$)}}
 %\newcommand{\chanyOne}{\codeTextr{$\chi_1$}} 
 %\newcommand{\changTwo}{\codeTextr{$\chi_2$}} 
 %\newcommand{\chanyOneOpTransferTwo}{\chanOne{}{\opTransfer}\chanTwo}
-
-
-
-\newcommand{\gOpTransferOneOneF}{\codeText{g:}\codeTextr{return$_1$}{\opTransfer}%
-\codeText{f:}\codeTextr{lambda$_1$}}
- 
-\newcommand{\fDotOfg}{\codeText{f$\circ$g}}
-\newcommand{\fDotOfGX}{\codeText{(f.g)(x)}}
-\newcommand{\fOfGx}{\codeText{f(g(x))}}
-
-\newcommand{\fgx}{\codeText{f(g(x))}}
-
-\newcommand{\funG}{\codeText{g}}
-\newcommand{\funF}{\codeText{f}} 
-
-\newcommand{\tyOne}{\codeText{$\mathcal{T}_1$}}
-\newcommand{\tyTwo}{\codeText{$\mathcal{T}_2$}}
-
-\newcommand{\tyOneTotyTwo}{\tyOne \codeText{$\rightarrow$} \tyTwo}
-
-\newcommand{\chK}{\codeText{$\mathcal{K}$}}
-
-\newcommand{\tOneTimesTTwo}{\codeText{$\mathcal{T}_1$ $\times$ $\mathcal{T}_2$}}
-\newcommand{\tOneTimesTOne}{\codeText{$\mathcal{T}_1$ $\times$ $\mathcal{T}_1$}}
-\newcommand{\tyOneTimesTyTwo}{\codeText{$\mathcal{T}_1$ $\times$ $\mathcal{T}_2$}}
-
-\newcommand{\tOneTimesTTwoToTOneOntoTTwo}{\codeText{$\mathcal{T}_1$ $\times$ $\mathcal{T}_2$ %
-$\Longrightarrow$ $\mathcal{T}_1$ $\rightarrow$ $\mathcal{T}_2$}}
-
-\newcommand{\unitTy}{\codeText{Unit}} 
-\newcommand{\unitVal}{\codeText{unit}} 
-
-\newcommand{\unitTyToty}{\unitTy{}{ }%
-\codeText{$\rightarrow$ $\mathcal{T}$}}
-\newcommand{\ty}{\codeText{$\mathcal{T}$}}
-
-\newcommand{\tyOneToTyTwo}{\codeText{$\mathcal{T}_1$ $\rightarrow$ $\mathcal{T}_2$}}
-
-\newcommand{\tyE}{\codeText{$E$}}
-\newcommand{\tyTotyE}{\codeText{$\mathcal{T}$ $\rightarrow$ $E$}}
-\newcommand{\tyToTyE}{\codeText{$\mathcal{T}$ $\rightarrow$ $E$}}
- 
-\newcommand{\tyValues}{\codeText{$\mathcal{T}$-}values}
 
 
 \newcommand{\li}{\codeText{li}}
