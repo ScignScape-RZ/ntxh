@@ -485,7 +485,7 @@ being called.  But there are several ways of arranging for such
 gatekeeping functions to be called, apart from via explicitly
 declaring types whose value constructors implement the desired
 functionality.  In the current example, there are ways to
-ensure that a gateekeping function is called whose runtime checks
+ensure that a gatekeeping function is called whose runtime checks
 mimic the `intrlstsize; value constructor without actually
 stipulating that `nVal;'s `i.type` is `intrlstsize;.  Some
 of these involve typestate, which I will now review briefly.

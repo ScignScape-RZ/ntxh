@@ -13,7 +13,7 @@ for biomedical devices)`
 
 
 \twocolumn[\begin{@twocolumnfalse}
-`maketitle;\vspace{-2em}
+`maketitle;
 
 `abstract,
 This chapter will explore the integration of several methodologies 
@@ -42,23 +42,51 @@ there are several choices for handling requirements in
 a software context, each with their own trade-offs.  
 Requirements Engineering protocols should therefore 
 be developed within the foundational planning and 
-prototyping stages of a project, particularly 
+prototyping stages of a project, particularly
 in CyberPhysical contexts which tend to exhibit both 
 empirically-driven data types (with granular 
 modeling parameters) and strong robustness/safety mandates.
-For concrete examles, an accompanying open-source \mbox{data set (at 
+For concrete examples, an accompanying open-source \mbox{data set (at
 \url{https://github.com/scignscape/ntxh}) 
 demonstrates code libraries concretizing 
-techniques outlined here.} 
+techniques outlined here.}
 `abstract` 
 
-%`flushright,
+%\newsavebox{\qboxi}
+\newsavebox{\qboxii}
+
+%\begin{lrbox}{\qboxi}
+%`frquote,
+%\\ \longdash{} Jean Petitot, \cite[p. 1]{PetitotSyntaxe}
+%`frquote`
+%\end{lrbox}	
+
+\begin{lrbox}{\qboxii}
+`frquote,
+Some seek to encourage reductions in consumption of energy
+and  material  goods,  or  to  support  changes  in  purchasing
+behavior.  Others  seek  to  use  software  capabilities  to  build
+smarter (lower impact) infrastructure. However, there is a lack
+of  common  understanding  of  the  fundamental  concepts  of
+sustainability and how they apply, and a need for a common
+ground and consistent terminology. As such, persistent misper-
+ceptions occur, as researchers and practitioners disagree over
+whether we're even asking the right questions ...
+We  lack  a  coherent  framework  with  sound  theoretical  basis
+that can provide a well-understood trans-disciplinary basis for
+sustainability design. --- \textit{The Karlskrona Manifesto} {\cite[p. 5]{Karlskrona}}
+`frquote`
+\end{lrbox}	
+
+\vspace{1em}
+`flushright,
 %\usebox{\qboxi}
-%\usebox{\qboxii}
-%`flushright`
+\usebox{\qboxii}
+`flushright`
+\vspace{1em}
 
 `decoline;
-`vspace<2em>;
+`vspace<3em>;
 \end{@twocolumnfalse}]
 
 \addcontentsline{toc}{section}{Hypergraph-Based Type Theory ...}

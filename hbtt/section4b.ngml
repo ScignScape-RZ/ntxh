@@ -367,7 +367,7 @@ the (not-yet-evaluated) expression itself.  Code sample
 on the runtime side.  At {\OneOverlay}, a pointer to 
 the relevant unevaluated expression is extracted, 
 and a `codeText.run` method is called which completes 
-the hiterhto-delayed evaluation.  The demo 
+the hitherto-delayed evaluation.  The demo
 `codeText.test\_if\_then\_else` procedure takes an 
 `q.`codeText.argvec`/` parameter ({\TwoOverlay}), which allows a 
 variant number of blocks and expressions to be 

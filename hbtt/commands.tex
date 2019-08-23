@@ -35,15 +35,17 @@
 \newenvironment{dquote}{%
 	%\begin{fcolorbox}{yellow!20!gray}{red!5}
 	\begin{flushright}
-	\begin{tcolorbox}[
-		colback=gray!4,
+	\vspace{1em}\begin{tcolorbox}[
+		breakable, parbox=false, colback=gray!4,
 		colframe=mRed!20!gray,
 		width=.99\linewidth,
 		boxrule=1pt,leftrule=3pt,
 		rightrule=1pt,toprule=.5pt,arc=0pt,auto outer arc
 		]
-\hspace{-7pt}\begin{minipage}{22em}}{%
-\end{minipage}\end{tcolorbox}
+\hspace{-7pt}%\begin{minipage}{22em}
+}{%
+%\end{minipage}
+\end{tcolorbox}\vspace{1em}
 	\end{flushright}
 }
 
@@ -89,7 +91,6 @@
 
 
 \newcommand{\spsubsection}[1]{%
-\vspace{-.25em}
 \subss{#1}{#1}
 \vspace{1em}
 }
@@ -122,14 +123,31 @@
 
 \setlength{\parindent}{30pt}
 
-\usepackage[letterpaper, left=.47in,right=.47in,top=.93in,bottom=.93in]{geometry}
-
-%\usepackage{natbib}
-%\setlength{\bibsep}{4pt}
+\usepackage[letterpaper, left=.47in,right=.47in,top=.99in,bottom=.99in]{geometry}
 
 \let\xbibitem\bibitem
-\renewcommand{\bibitem}[2]{\vspace{4.5pt}\xbibitem{#1}{#2}}
+\renewcommand{\bibitem}[2]{\vspace{4pt}\xbibitem{#1}{#2}}
 
+\newenvironment{frquote}{%
+%\begin{fcolorbox}{yellow!20!gray}{red!5}
+%\begin{flushright}
+\begin{tcolorbox}[
+	colback=orange!6,
+	colframe=yellow!20!gray,
+	width=.97\linewidth,
+	arc=3mm, auto outer arc
+	]
+\begin{scriptsize}
+\begin{minipage}{61em}
+\begin{flushright}
+\begin{minipage}{63em}}{%
+\end{minipage}
+\end{flushright}
+\end{minipage}
+\end{scriptsize}
+\end{tcolorbox}
+%\end{flushright}
+}
 
 %\colorlet{codegr}{black!80!blue}
 
@@ -219,7 +237,7 @@
 
 \usepackage{graphicx}
 
-\usepackage{tcolorbox}
+\usepackage[breakable]{tcolorbox}
 
 \newsavebox\lstbox
 
