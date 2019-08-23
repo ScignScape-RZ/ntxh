@@ -32,19 +32,21 @@
 	\end{flushright}
 }
 
+\usepackage{changepage}
+
 \newenvironment{dquote}{%
 	%\begin{fcolorbox}{yellow!20!gray}{red!5}
 	\begin{flushright}
 	\vspace{1em}\begin{tcolorbox}[
 		breakable, parbox=false, colback=gray!4,
 		colframe=mRed!20!gray,
-		width=.99\linewidth,
+		width=.995\linewidth,
 		boxrule=1pt,leftrule=3pt,
 		rightrule=1pt,toprule=.5pt,arc=0pt,auto outer arc
 		]
-\hspace{-7pt}%\begin{minipage}{22em}
+\begin{adjustwidth}{1pt}{-3pt}
 }{%
-%\end{minipage}
+\end{adjustwidth}
 \end{tcolorbox}\vspace{1em}
 	\end{flushright}
 }

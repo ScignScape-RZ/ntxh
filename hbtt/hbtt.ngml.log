@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  23 AUG 2019 00:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  23 AUG 2019 00:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -55,7 +55,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 7.
-\c@subs=\count88
+
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/changepage/changepa
+ge.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count88
+\cp@tempcnt=\count89
+)
+\c@subs=\count90
 \twolinebox=\box28
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/csquotes/csquotes.s
@@ -65,18 +72,18 @@ Package: csquotes 2018/02/11 v5.2c context-sensitive quotations (JAW)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/etoolbox/etoolbox.s
 ty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count89
+\etb@tempcnta=\count91
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
-\csq@reset=\count90
-\csq@gtype=\count91
-\csq@glevel=\count92
-\csq@qlevel=\count93
-\csq@maxlvl=\count94
-\csq@tshold=\count95
+\csq@reset=\count92
+\csq@gtype=\count93
+\csq@glevel=\count94
+\csq@qlevel=\count95
+\csq@maxlvl=\count96
+\csq@tshold=\count97
 \csq@ltx@everypar=\toks16
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/csquotes/csquotes.d
@@ -103,12 +110,12 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \cmidrulesep=\dimen115
 \cmidrulekern=\dimen116
 \defaultaddspace=\dimen117
-\@cmidla=\count96
-\@cmidlb=\count97
+\@cmidla=\count98
+\@cmidlb=\count99
 \@aboverulesep=\dimen118
 \@belowrulesep=\dimen119
-\@thisruleclass=\count98
-\@lastruleclass=\count99
+\@thisruleclass=\count100
+\@lastruleclass=\count101
 \@thisrulewidth=\dimen120
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/amsfonts/amssymb.st
@@ -170,7 +177,7 @@ ty
 Package: footmisc 2011/06/06 v5.5b a miscellany of footnote facilities
 \FN@temptoken=\toks18
 \footnotemargin=\dimen123
-\c@pp@next@reset=\count100
+\c@pp@next@reset=\count102
 Package footmisc Info: Declaring symbol style bringhurst on input line 855.
 Package footmisc Info: Declaring symbol style chicago on input line 863.
 Package footmisc Info: Declaring symbol style wiley on input line 872.
@@ -193,9 +200,9 @@ Package ifvtex Info: VTeX not detected.
 ty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count101
-\Gm@cntv=\count102
-\c@Gm@tempcnt=\count103
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
 \Gm@bindingoffset=\dimen124
 \Gm@wd@mp=\dimen125
 \Gm@odd@mp=\dimen126
@@ -407,11 +414,11 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 .sty
 Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
 \MT@toks=\toks20
-\MT@count=\count104
+\MT@count=\count106
 LaTeX Info: Redefining \textls on input line 793.
 \MT@outer@kern=\dimen132
 LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
-\MT@listname@count=\count105
+\MT@listname@count=\count107
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/microtype/microtype
 -pdftex.def
@@ -427,7 +434,7 @@ Package microtype Info: Loading configuration file microtype.cfg.
 .cfg
 File: microtype.cfg 2018/01/14 v2.7a microtype main configuration file (RS)
 ))
-LaTeX Font Info:    Redeclaring math alphabet \mathcal on input line 170.
+LaTeX Font Info:    Redeclaring math alphabet \mathcal on input line 172.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcolorbox
 .sty
@@ -485,10 +492,10 @@ keysfiltered.code.tex
 \pgf@yc=\dimen142
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count106
-\c@pgf@countb=\count107
-\c@pgf@countc=\count108
-\c@pgf@countd=\count109
+\c@pgf@counta=\count108
+\c@pgf@countb=\count109
+\c@pgf@countc=\count110
+\c@pgf@countd=\count111
 \t@pgf@toka=\toks25
 \t@pgf@tokb=\toks26
 \t@pgf@tokc=\toks27
@@ -510,8 +517,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/systemlayer/p
 gfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count110
-\pgfsyssoftpath@bigbuffer@items=\count111
+\pgfsyssoftpath@smallbuffer@items=\count112
+\pgfsyssoftpath@bigbuffer@items=\count113
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/systemlayer/p
 gfsysprotocol.code.tex
@@ -548,7 +555,7 @@ til.code.tex)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/math/pgfmathp
 arser.code.tex
 \pgfmath@dimen=\dimen143
-\pgfmath@count=\count112
+\pgfmath@count=\count114
 \pgfmath@box=\box30
 \pgfmath@toks=\toks28
 \pgfmath@stack@operand=\toks29
@@ -574,7 +581,7 @@ unctions.misc.code.tex)
 unctions.integerarithmetics.code.tex)))
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/math/pgfmathf
 loat.code.tex
-\c@pgfmathroundto@lastzeros=\count113
+\c@pgfmathroundto@lastzeros=\count115
 ))
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcorepoints.code.tex
@@ -612,7 +619,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box31
 \pgf@hbox=\box32
 \pgf@layerbox@main=\box33
-\pgf@picture@serial@count=\count114
+\pgf@picture@serial@count=\count116
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcoregraphicstate.code.tex
@@ -647,7 +654,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 fcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen167
-\pgf@sys@shading@range@num=\count115
+\pgf@sys@shading@range@num=\count117
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcoreimage.code.tex
@@ -708,9 +715,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box37
 \tcb@lowerbox=\box38
 \tcb@phantombox=\box39
-\c@tcbbreakpart=\count116
-\c@tcblayer=\count117
-\tcolorbox@number=\count118
+\c@tcbbreakpart=\count118
+\c@tcblayer=\count119
+\tcolorbox@number=\count120
 \tcb@temp=\box40
 \tcb@temp=\box41
 \tcb@temp=\box42
@@ -761,7 +768,7 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/libraries/pgf
 libraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count119
+\pgf@plot@mark@count=\count121
 \pgfplotmarksize=\dimen172
 )
 \tikz@lastx=\dimen173
@@ -774,19 +781,19 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@figbox@bg=\box49
 \tikz@tempbox=\box50
 \tikz@tempbox@bg=\box51
-\tikztreelevel=\count120
-\tikznumberofchildren=\count121
-\tikznumberofcurrentchild=\count122
-\tikz@fig@count=\count123
+\tikztreelevel=\count122
+\tikznumberofchildren=\count123
+\tikznumberofcurrentchild=\count124
+\tikz@fig@count=\count125
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/modules/pgfmo
 dulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count124
-\pgfmatrixcurrentcolumn=\count125
-\pgf@matrix@numberofcolumns=\count126
+\pgfmatrixcurrentrow=\count126
+\pgfmatrixcurrentcolumn=\count127
+\pgf@matrix@numberofcolumns=\count128
 )
-\tikz@expandcount=\count127
+\tikz@expandcount=\count129
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/frontendlayer
 /tikz/libraries/tikzlibrarytopaths.code.tex
@@ -838,7 +845,7 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen184
 \caption@hangindent=\dimen185
 )
-\c@ContinuedFloat=\count128
+\c@ContinuedFloat=\count130
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pgfornament/pgforna
 ment.sty
@@ -964,7 +971,7 @@ duledecorations.code.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen189
 \pgfdecoratedinputsegmentremainingdistance=\dimen190
 \pgf@decorate@distancetomove=\dimen191
-\pgf@decorate@repeatstate=\count129
+\pgf@decorate@repeatstate=\count131
 \pgfdecorationsegmentamplitude=\dimen192
 \pgfdecorationsegmentlength=\dimen193
 )
@@ -1033,15 +1040,15 @@ sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen194
-\Hy@linkcounter=\count130
-\Hy@pagecounter=\count131
+\Hy@linkcounter=\count132
+\Hy@pagecounter=\count133
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count132
+\Hy@SavedSpaceFactor=\count134
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/latexconfig/hyperre
 f.cfg
@@ -1055,10 +1062,10 @@ Package hyperref Info: Plain pages OFF on input line 4524.
 Package hyperref Info: Backreferencing OFF on input line 4529.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count133
+\c@Hy@tempcnt=\count135
 LaTeX Info: Redefining \url on input line 5115.
 \XeTeXLinkMargin=\dimen195
-\Fld@menulength=\count134
+\Fld@menulength=\count136
 \Field@Width=\dimen196
 \Fld@charsize=\dimen197
 Package hyperref Info: Hyper figures OFF on input line 6369.
@@ -1070,17 +1077,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count135
-\c@Item=\count136
-\c@Hfootnote=\count137
+\Hy@abspage=\count137
+\c@Item=\count138
+\c@Hfootnote=\count139
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/hpdftex.de
 f
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count138
-\c@bookmark@seq@number=\count139
+\Fld@listcount=\count140
+\c@bookmark@seq@number=\count141
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/rerunfilec
 heck.sty
@@ -1100,28 +1107,28 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@outerparindent=\dimen198
 \enit@toks=\toks38
 \enit@inbox=\box79
-\enitdp@description=\count140
+\enitdp@description=\count142
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/listings.s
 ty
-\lst@mode=\count141
+\lst@mode=\count143
 \lst@gtempboxa=\box80
 \lst@token=\toks39
-\lst@length=\count142
+\lst@length=\count144
 \lst@currlwidth=\dimen199
-\lst@column=\count143
-\lst@pos=\count144
+\lst@column=\count145
+\lst@pos=\count146
 \lst@lostspace=\dimen256
 \lst@width=\dimen257
-\lst@newlines=\count145
-\lst@lineno=\count146
+\lst@newlines=\count147
+\lst@lineno=\count148
 \lst@maxwidth=\dimen258
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstmisc.st
 y
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count147
-\lst@skipnumbers=\count148
+\c@lstnumber=\count149
+\lst@skipnumbers=\count150
 \lst@framebox=\box81
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/listings.c
@@ -1172,16 +1179,16 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
+\scratchcounter=\count151
 \scratchdimen=\dimen259
 \scratchbox=\box82
-\nofMPsegments=\count150
-\nofMParguments=\count151
+\nofMPsegments=\count152
+\nofMParguments=\count153
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count152
+\MPscratchCnt=\count154
 \MPscratchDim=\dimen260
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
 \everyMPtoPDFconversion=\toks43
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/epstopdf-b
@@ -1268,7 +1275,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 string.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count155
+\c@section@level=\count157
 )
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
@@ -1277,7 +1284,7 @@ LaTeX Info: Redefining \nameref on input line 3.
 \@outlinefile=\write6
 \openout6 = `hbtt.ngml.out'.
 
-\c@lstlisting=\count156
+\c@lstlisting=\count158
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 72
 .
 
@@ -1368,9 +1375,8 @@ itle-[]ausah / home ?
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 321--321
-\OT1/ptm/m/n/10.95 (+20) re-quires se-cu-rity, con-trol and au-tho-rize ac-cess
-.
+Underfull \hbox (badness 10000) in paragraph at lines 321--321
+[]
  []
 
 [4] [5]
@@ -1399,7 +1405,17 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
  [8] [9] [10]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [11] [12] [13] [14]) (./section2.ngml.tex [15] [16]
+rian/vectorian84.pgf) [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 561--561
+[]
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 613--613
+[]
+ []
+
+[14]) (./section2.ngml.tex [15] [16]
 Underfull \hbox (badness 3343) in paragraph at lines 170--205
 []\OT1/ptm/m/n/10.95 (+20) Early on, though, $\OML/ztmcm/m/it/10.95 ^^U$\OT1/pt
 m/m/n/10.95 (+20) -Calculus was less about
@@ -1484,15 +1500,30 @@ LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <6> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 280.
 
  [31]) (./section3a.ngml.tex [32] [33] [34] [35]) (./section3b.ngml.tex
-[36] [37] [38]) (./section4.ngml.tex [39] [40] (./figGFcomplexc.tex) [41]
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+[]
+ []
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
+[]
+ []
+
+[38]) (./section4.ngml.tex [39] [40] (./figGFcomplexc.tex) [41]
 LaTeX Font Info:    Font shape `OT1/lmss/b/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/it' tried instead on input line 288
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 288
 .
-
-[42]) (./section4a.ngml.tex [43] [44]) (./section4b.ngml.tex
+ [42])
+(./section4a.ngml.tex [43] [44]) (./section4b.ngml.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 |[]\OT1/ptm/b/n/10.95 Channelized-Type In-ter-pre-ta-tions of Larger-
  []
@@ -1550,10 +1581,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 31914 strings out of 492649
- 636417 string characters out of 6122986
- 884111 words of memory out of 5000000
- 34181 multiletter control sequences out of 15000+600000
+ 31956 strings out of 492649
+ 637143 string characters out of 6122986
+ 884895 words of memory out of 5000000
+ 34219 multiletter control sequences out of 15000+600000
  127377 words of font info for 556 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,11n,85p,817b,1478s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1596,7 +1627,7 @@ ive-install/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/nlevisrael/texl/
 texlive-install/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/nlevisrael/
 texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/nlevisr
 ael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on hbtt.ngml.pdf (54 pages, 591069 bytes).
+Output written on hbtt.ngml.pdf (54 pages, 590933 bytes).
 PDF statistics:
  1145 PDF objects out of 1200 (max. 8388607)
  1036 compressed objects within 11 object streams
