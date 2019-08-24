@@ -458,8 +458,221 @@ include (1) testing and quality assurance and (2) data
 integration.  In the case of testing, many of the scenarios 
 outlined above (and throughough this volume) require complex 
 computational transformations to convert raw physical data into 
-usable software artifacts.  
+usable software artifacts.  In `cite<FadelAdib>;, for example, 
+the authors present technology to measure heart rate from a 
+distance, based on subtle analysis of physical motions 
+associated with blood circulation and breathing.  The analytic 
+protocols leverage feature extraction from wireless signal 
+patterns.  As with feature extraction in audio and 
+image-analysis (e.g. face recognition) settings, algorithms need 
+to be rigorously tested to guard against false inferences 
+or erroneous generated data.  This implies that analytic 
+code needs to be developed in a software ecosystem which is 
+rigorously structured in documenting algorithmic inputs, outputs, 
+and parameters.  In `cite<FadelAdib>; the ultimate goal is to 
+introduce heart and breathing monitors within a Smart Home environment,  
+with computations performed on embedded Operating Systems.  
+However, testing and prototyping of the technology should be 
+conducted in a desktop `OS; environment so as to 
+generate or leverage test data, document algorithmic revisions, 
+and in general prove the system's trustworthiness in a 
+controlled setting (including a software environment which 
+transparently windows onto computational processes) before 
+this kind of network is physically deployed.
+`p`
 
+`p.
+With respect to data integration, notice how projects mentioned 
+here often anticipate pooled or overlapping information.  For 
+instance, Smart Homes are envisioned to embed sensors analyzing 
+speech, biomedical data-points like heart rate, atmosopheric 
+measurements like current temperature, and appliance or architectural 
+states like windows, doors, or refrigerator doors being open, 
+ovens or stove burner being turned on, or heaters/coolers being active.  
+In some cases this data would be cross-referenced, so that 
+e.g. a voice command could close a window or turn off a stove.  
+Overall, future CyberPhysical systems may be integrated 
+not only with respect to their empirical domain but in term 
+of the environs where they are deployed %-- smart homes, 
+smart cities, factories or industrial plants, hospitals and 
+medical offices, schools and children's activities centers, 
+refugee or displaced-persons camps/campuses, and so forth.  
+I'll take smart homes as a case in point: 
+we can imagine future homes/apartments provisioned with a panoply 
+of devices evincing a broad spectrum of scientific backgrounds, 
+from biology and medicine to ecology and industrial manufacturing.      
+`p`
+
+`p.
+In this eventuality, individual devices are no longer isolated in 
+proprietary circuits linking device signals to databases and 
+phone apps, for example, where one company builds each component as 
+part of a commercialized network.  Devices are not only being 
+connected to their in-house product suite, but technology inside 
+the home is charged with pooling data from many kinds of devices 
+into a comprehensive smart home platform, where users can see a 
+broad overview, access disparate device data from a central location, 
+and where cross-device data can be merged into aggregate models: 
+e.g., cross-referencing speech and biometric inputs.  
+In this scenario, devices must be designed to broadcast 
+data to third-party software platforms.  Smart home `q.hub` 
+applications will likely be often upgraded; likewise, home 
+owners/renters will likely buy or replace devices fairly 
+often, so the precise configuration data senders and 
+receivers will dynamically evolve.  These givens call for 
+a modular, flexible architecture where a central software 
+hub is poised to receive data from different devices as 
+they come `q.online`/, i.e., exposed on the smart home 
+internal network.  Hub applications should seamlessly 
+adjust to devices joining as well as exiting the network.       
+`p`
+
+`p.
+All of this calls for carefully designed protocols, where 
+devices do not only expose data but do so in a manner 
+conducive to centralized aggregation.  The role of a 
+software hub is not only to receive data, but to 
+transform multi-domain signals into a common 
+graphical presentation, and also to wrangle received data into 
+a common format permitting integration algorithms %-- 
+e.g. syncing speech and biometrics %-- to operate.  
+Received device data must therefore be systematically 
+mapped to appropriate transform procedures and 
+`GUI; components.  This is an important point, because 
+we are no longer considering data models from the viewpoint 
+of devices' own capabilities %-- their specific physical 
+measurements and parameters.  Our data models, in short, 
+are no longer device-centric.  Instead, data models are 
+now assessed in a software-centric milieu: how do we 
+route device data to proper interpretive functions?  
+How do we consolidate device data into `GUI; presentations?     
+`p`
+
+`p.
+Given a `Cpp; hub application, we might assign a distinct 
+`Cpp; class to each distinct kind of device, so that methods 
+on that class are responsible for wrangling device inputs into 
+application-specific common representations.  These device-specific 
+classes could then be mapped to device-specific `GUI; components 
+displaying device state for human users.  Meanwhile, overarching 
+`GUI; components could be designed to bundle visual components 
+from multiple device classes, perhaps using a common base 
+class representing `q.graphical device presentations` in the abstract.  
+Device data is then routed to distinct `Cpp; classes and 
+then `GUI; classes.  These Object-Oriented are foregrounded in 
+the hub software, but the point is that such software architecture 
+retroactively should influence device constructions themselves.  
+For devices to be used with an integrated smart home platform, 
+the information they broadcast will have to be amenable 
+to being processed within a software ecosystem structured 
+around Object-Oriented paradigms. 
+`p`
+
+`p.
+Current literature on CyberPhysical data sharing has focused 
+primarily on establishing common formats and Ontologies for 
+CyberPhysical information: our energies have been 
+invested in stadardized representational paradigms.  But 
+common representational formats is only a minimal foundation 
+for robust software ecosystems.  I would argue that 
+engineers have overemphasized the virtues of standardized 
+representations in general, driven perhaps by the press 
+surrounding mechanisms like `XML; or `RDF;.  There is 
+nothing wrong with widely-adopted formats, but how 
+data is `i.encoded` is tangential to the primary goal 
+of networked software, which is to route shared data 
+to the proper procedures and `HCI; protocols.  In 
+a smart home case, once we commit to aggregating devices 
+via a software hub, the key organizing principle is 
+a mesh of procedures implemented in the hub application 
+that can pool all relevant devices into one information 
+space.  What needs to be standardized then are not 
+so much data `i.formats`/, but data-handling 
+`i.procedures`/.  
+`p`
+
+`p.
+To put it differently, device manufacturers would now be dealing 
+with an ecosystem in which hub applications receive and 
+aggregate their data, providing users access points to and 
+overviews of device data and state.  Hub applications may be 
+provided by different companies and iterations, 
+their inner workings opaque to devices themselves.  What 
+can be standardized, however, are the procedures 
+implemented within hub software to receive and properly 
+act upon device data.  Software might guarantee, for example, 
+that so long as devices are supplying signals in 
+their documented formats, the software has capabilities 
+to receive the signals, unpack the data, and interally 
+represent the data in a manner suitable for device particulars.  
+Devices can then specify what kind of internal representations 
+are appropriate for their specific data, essentially 
+specifying conditions on software procedures and data types.  
+`p`
+
+`p.
+In short, the key units of mutual trust and verification among 
+and between CyberPhysical devices and CyberPhysical software 
+is not, in theory, data structures themselves, but instead 
+`i.procedures` for processing relevant data structures.  
+Robust CyberPhysical ecosystems can be developed by 
+reinforcing procedural alignment wherever possible, 
+including by curating substantial collections of 
+reusable software libraries, either for direct 
+application or as prototypes and testing tools.  
+Suppose many CyberPhysical sensors were paired 
+with open-source code libraries which illustrate how 
+to process the data each device broadcasts.  
+Commercial products could use those libraries directly, or, 
+if they want to substitute closed-source alternatives, 
+could be required to document that their data management 
+emulates the open-source prototypes.  Test suites and 
+testing technology can then be implemented against the 
+open-source libraries and reused for stress-testing 
+analogous proprietary components.  This appears to be 
+the most likely path to ensuring interoperable, 
+high-quality CyberPhysical technology that 
+serves the ultimate goal of integrated Smart Home 
+(and Smart City, etc.) solutions. 
+`p`
+
+`p.
+Nevertheless, engineers have not apparently adopted 
+such a procedure-focused and software-centric paradigm 
+to this point.  There are a lot more academic papers on 
+CyberPhysical Ontologies or common signal/message formats, 
+like `CoAP; and `MQTT;, than there are open-source libraries 
+which prototype device data, its validation, parameters, 
+and proper transformations.  In lieu of `q.data-centric` 
+Ontologies, whose mission is to standardize data 
+`i.representation`/, here I will consider `q.Procedural` 
+Ontologies which specify procedural capabilities and 
+requirements that indicate whether software components 
+are properly managing CyberPhysical data.  The 
+idea is that proving procedural conformance should be a 
+central step, and an organizing groundwork, for 
+showing that software due for production deployment 
+is trustworthy and complies to technical and legal specifications.
+`p`
+
+`p.
+To make this discussion more concrete, I will examine in 
+more detail the specific case of speech and language 
+data structures.
+`p`
+
+`subsubsection.Linguistic Case-Study`
+`p.
+Teixera's chapter (this volume) considers voice-activated 
+CyberPhysical interfaces, where Natural Language 
+segments become the core elements in translating 
+user queries to actionable software responses.  The proposed 
+systems analyze speech patterns to build textual 
+reconstructions of speakers' communications, then 
+parses the text as Natural Language content, before 
+eventually (if all goes well) interpreting the 
+parsed and analyzed text as an instruction the 
+software can follow.   
 `p`
 
 %`spsubsection.Proactive Design`
