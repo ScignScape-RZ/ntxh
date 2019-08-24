@@ -702,18 +702,19 @@ the centralized application.
 `p.
 Different kinds of linguistic details require different 
 data models.  Dependency parses, for instance, 
-are often notated via some version of the CoNNL 
-() format, which textually serialized parse and 
+are often notated via some version of the `CoNLL; 
+(Conference on Computational Natural Language Learning) 
+format, which textually serializes parse and 
 lexical data, usually one word per line.  
 The most recent standard (dubbed CoNNL-U) recognizes 
 ten fiels for each word, identifying, in particular, 
 Part of Speech and syntactic connections with other 
 words.  As a cutom format, CoNNL-U requires its 
-own parser, such as the `UDP; library for 
+own parser, such as the `UDPipe; library for 
 `Cpp; (a slightly modified version of this library 
 is published with this chapter's data set).  
 For hub applications, then, a reasonable assumption 
-is that they can compile in the `UDP; library 
+is that they can compile in the `UDPipe; library 
 or an alternative with similar capabilities, 
 in order for them to handle parsed `NLP; data.
 `p`
@@ -738,7 +739,7 @@ Let us assume that this architecture is in effect.
 A hub application will, then, periodically receive a 
 data package comprising an audio sample along with 
 text transcriptions and `NLP;-generated, e.g., 
-CoNLL-U data.  To make sense of linguistic content, 
+`CoNLLU; data.  To make sense of linguistic content, 
 the software would presumably pair the `NLP;-specific 
 information with extra details, such as, 
 the identity of the speaker (if a Smart Home system 
@@ -746,7 +747,7 @@ knows of specific users), where and when each sentence
 or request was formulated, and perhaps the original 
 audio input (perhaps allowing users to pay back 
 instructions they utterred in the past).  A relevant 
-data model might thereby comprise: (1) CoNLL-U data 
+data model might thereby comprise: (1) `CoNLLU; data 
 itself; (2) location info, such as spatial position and 
 which room a speaker is found in; (3) timestamps; 
 (4) speaker info, if available; (5) audio files; 
@@ -759,8 +760,8 @@ processing of speech samples.
 
 `p.
 This data model would presumably translate to muliple 
-data types, such as (1) a class for `UDP; sentences 
-obtained from CoNLL-U; (2) a class for audio samples; 
+data types, such as (1) a class for `UDPipe; sentences 
+obtained from `CoNLLU; (2) a class for audio samples; 
 (3) speaker and time/location information; plus 
 versions of these classes appropriate for 
 `GUI;s and database persistence.
@@ -770,7 +771,7 @@ versions of these classes appropriate for
 Likewise, we 
 can anticipate the procedures which these 
 data types need to implement: correctly decoding 
-CoNLL-U files; mapping time/location data points to a 
+`CoNLLU; files; mapping time/location data points to a 
 spatial model of the Smart Home (which room is 
 targeted by the location and also if that point is 
 close to a door, window, appliance, and so forth; 
@@ -805,7 +806,7 @@ more important than standardized data formats.
 `p.
 We can also consider representative criteria for 
 testing procedures; for instance, preconditions which 
-procedures need to recognize.  In CoNLL-U, 
+procedures need to recognize.  In `CoNLLU;, 
 individual words can be extracted from a parse-model, 
 but the numeric index for the word must fall within a 
 fixed range (based on the word count for the 

@@ -76,8 +76,7 @@
 \vspace*{.35em} 
 }
 
-%\renewcommand{\subsection}[1]{\subss{#1}{#1}}
-
+\renewcommand{\subsection}[1]{\subss{#1}{#1}}
 
 \newsavebox{\twolinebox}
 
@@ -696,20 +695,20 @@ framed,background rectangle/.style={double,ultra thick,draw=darkRed, bottom colo
 
 \titleformat*{\subsection}{\Large\bfseries}
 
-\let\OldSubsection\subsection
-\renewcommand\subsection[1]{
+%\let\OldSubsection\subsection
+%\renewcommand\subsection[1]{
 
-	\vspace{12pt}
+%	\vspace{12pt}
 	
-		\OldSubsection{% 	
-			\hspace{-2.75em}
-			\protect\raisebox{-5pt}{%
-			\colorbox{logoCyan!50}{\hspace{2.1em}}}%
-			\hspace{-5pt}{\protect\transparent{0.3}{\colorbox{logoBlue!80}{\protect\transparent{1}{%
-						   \protect\raisebox{1pt}{\textit{{\large #1}}} }}}}
-		}
-	\vspace{-6pt}
-}
+%		\OldSubsection{% 	
+%			\hspace{-2.75em}
+%			\protect\raisebox{-5pt}{%
+%			\colorbox{logoCyan!50}{\hspace{2.1em}}}%
+%			\hspace{-5pt}{\protect\transparent{0.3}{\colorbox{logoBlue!80}{\protect\transparent{1}{%
+%						   \protect\raisebox{1pt}{\textit{{\large #1}}} }}}}
+%		}
+%	\vspace{-6pt}
+%}
 
 
 \let\OLDthebibliography\thebibliography
@@ -761,6 +760,13 @@ framed,background rectangle/.style={double,ultra thick,draw=darkRed, bottom colo
 
 \newcommand{\IDL}{\AcronymText{IDL}}
 
+\newcommand{\CoAP}{\AcronymText{CoAP}}
+\newcommand{\MQTT}{\AcronymText{MQTT}}
+
+\newcommand{\UDPipe}{\AcronymText{UDPipe}}
+%\newcommand{\NLP}{\AcronymText{NLP}}
+
+\newcommand{\OS}{\AcronymText{OS}}
 
 \newcommand{\DTD}{\AcronymText{DTD}}
 
@@ -784,6 +790,9 @@ framed,background rectangle/.style={double,ultra thick,draw=darkRed, bottom colo
 
 \newcommand{\CSharp}{\AcronymText{C\#}}
 \newcommand{\IoT}{\AcronymText{IoT}}
+
+\newcommand{\CoNLL}{\AcronymText{CoNLL}}
+\newcommand{\CoNLLU}{\AcronymText{CoNLL-U}}
 
 \usetikzlibrary{decorations.pathmorphing}
 
