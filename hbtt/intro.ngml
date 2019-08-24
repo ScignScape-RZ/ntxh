@@ -121,7 +121,134 @@ mainframe hub applications.
 `p`
 
 `p.
-As I argued, software hubs have different design 
+To cite a concrete example, Ant\'onio Teixeira (\textit{et. al.}, this 
+volume) consider `q.smart appliance` refrigerators which are aware of 
+the door being left open, and even may track the expiration date of 
+items inside.  Teixeira mentions the possibility that this data be 
+viewed on a smart phone.  On the other hand, consider an industrial 
+refrigerator used in a food-processing plant or warehouse.  We would 
+expect that such an appliance would likewise provide data about 
+current temperature, air flow, electricity usage, when the doors 
+are opened, and so forth; on the other hand, the software for 
+accessing this data would probably run in a nearby control room, 
+and so would be implemented on a desktop 
+(rather than smart phone) operating system.  
+We might also expect that quality controls in the industrial 
+setting would be more rigorous than for home appliances.  
+But this also means that data models formulated in the 
+industrial setting can be adapted for the home context, 
+which would sampling simpler data structures from 
+more complex ones.  That is to say, standardized data 
+models can arise from industrial needs and eventually 
+be incorporated into personal or smart-home appliances, 
+which may be a more likely progression than standardization 
+driven by the `q.personal` market alone.
+`p`
+
+`p.
+The refrigerator example also introduces User Interface 
+design issues.  A simple indicator showing whether doors 
+are open is straightforward, but an interface listing 
+food items in a refrigerator is much more complicated.  
+Assuming (for the sake of this rather futuristic 
+discussion) that a refrigerator can detect signals 
+emanating from food items (or, more precisely, 
+their containers), we can envision a list of 
+items (maybe with their expiration dates) can be 
+presented as a `GUI; component, perhaps occupying a 
+separate application window organized as a list 
+`q.widget`/, with one food item per line 
+(lines perhaps showing a picture, text description, 
+dates, etc.).  This would require cross-referencing 
+numeric codes, which might be broadcast by the 
+items `i.inside` the refrigerator, against a 
+database that would load images, descriptions, and 
+so forth, given a numeric item identifier.  One question 
+then is where this database would be hosted 
+%-- on a computer in the refrigerator owner's apartment, 
+or a remote server, etc. %-- and how it would be 
+updated (insofar as food companies develop new products 
+fairly often; any static database could quickly get 
+outdated).  Food companies (or some middleware agent) 
+would have to agree on a common format so that the 
+refrigerator's access software can integrate data from 
+many brands.  Since a refrigerator can hold many items, 
+the `GUI; would also need enough screen space 
+(and maybe a multi-level design) for users to comfortably 
+browse many artifacts; perhaps a line-by-line window 
+supplemented with separate dialog windows for each item.  
+It would be difficult to provide this advanced a `GUI; 
+via a phone app or an in-kitchen touch-screen.
+`p`
+
+`p.
+This points to another trend: insofar as users are seen as 
+seeking app-based (rather than desktop) access to 
+CyberPhysical data, engineers appear to feel pressure to 
+condense User Interface component to small-screen scales.  
+In the current example, an app would perhaps refrain from 
+listing all items in the fridge, and instead just show the 
+user a notification when an item is near expiry.  When 
+adapting to phone-like usage patterns (limited screen, 
+brief but frequent user engagement), designers 
+manifestly try to offer brief but curated 
+snippets of information, rather than comprehensive access into a 
+data space.  That is, software can try to anticipate 
+which pieces of data carry the most user interest %-- expiry 
+dates are most likely important to users when items are 
+near perishing %-- so that interface design is organized 
+around these select nuggets, rather than all the information 
+which a user could theoretically access.  This also means 
+that data mining, Artificial Intelligence, and other 
+techniques for anticipating users' needs becomes 
+proportionately more consequential: if the whole 
+`GUI; design is premised on `AI;, then `AI; ceases 
+to become a useful supplement but becomes a 
+make-or-break capability for the application to be 
+successful from a User Experience point of view. 
+`p`
+
+`p.
+Time will tell how well `AI; will enhance 
+the CyberPhysical domain, but I think there is 
+genuine risk that industry attention could become 
+so focused on `AI; and `q.big data` 
+mining and acquisition that other software 
+engineering and Human-Computer Interaction 
+challenges will be given short shrift.  
+This could potentially hinder rather than 
+help the evolution of CyberPhysical technology overall.  
+But notice how this reliance on `AI; is driven 
+not only by a desire for `q.smart` analytics or 
+increased productivity (as in `AI;'s industrial 
+role in robotics, image processing, and so on); 
+instead, `AI; (plus speech-recognition for 
+voice-oriented `HCI;) comes to the fore in 
+order to compensate for the limitations of 
+User Interfaces in small-screen, touch-screen, 
+or even no-screen (e.g., voice) contexts.      
+`p`
+
+`p.
+In short, transitioning from desktop-oriented 
+architectural models to more light-weight 
+smart-phone front ends (and `AI;-powered 
+back ends) does not necessarily 
+bring us forward from a safety, software 
+quality, or User Experience point of view.  
+On these considerations I propose here that 
+`q.hub` software models should still be seen 
+as establishing the core data representations 
+and operational protocols through which 
+CyberPhysical technologies and requirements 
+can be standardized, from which alternative 
+client designs (like phone apps) can build 
+off.  I will return to this theme in 
+case-studies treated in Section 1.  
+`p`
+
+`p.
+As I argued, in any case, software hubs have different design 
 principles than web or phone apps.  
 Because they deal with raw 
 device data (and not, for example, primarily 
