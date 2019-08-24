@@ -391,11 +391,76 @@ for a missing or kidnapped child, or keeping tabs on an
 elderly patient?  When does surveilance cross the line 
 from benevolent (protecting personal or public safety) 
 to privacy-invasive and authoritarian?
-
 `description`
-
 `p`
 
+`p.
+Of course, there are many other examples of CyberPhysical 
+devices and capabilities that could be enumerated.  But 
+these cases illustrate certain noteworthy 
+themes.  One obsevervations is that a gap often exists between how 
+devices physically operate and how they are conceptualized: 
+accelerometers, for instance, mechanically measure voltage, not 
+acceleration or incline; but their data exposed to 
+client software is constructed to be used as vectors indicating 
+persons' or objects' movement.  Moreover, multiple processing 
+steps may be needed between raw physical inputs and usable  
+software-facing data structures.  Such processing may generate 
+a large amount of intermediate data; for instance, feature extraction 
+from audio or image samples can yield numeric aggregates with 
+tens or hundreds of different fields.  Further processing usually 
+reduces these structures to narrower summaries: an audio sample 
+might be consolidated to a spatial location and temporal timestamp, 
+along with a mapping to an individual person speaking 
+(perhaps along with a text transcription), or 
+human language spoken, or animal species.  Engineers then 
+have to decide what level of detail to expose across a 
+software network.  Another issue is integrating data from 
+multiple sources: most of the more futuristic scenarios 
+envision multi-modal Ubiquitous Computing spaces 
+where, e.g., speech and biometric inputs are cross-referenced.
+`p`
+
+`p.
+Different levels of data resolution also 
+intersect with privacy concerns: simpler data structures 
+are more likely to employ private or sensitive 
+information as an organizing device, heighting security 
+and surveilance concerns.  For example, a simple 
+facial-recognition system would match faces against known 
+residents of or visitors to the relevant municipalities.  
+This is less technologically challenging than anonymized 
+systems which would persist more mid-processing data in order 
+to complete the algorithmic cycle %-- matching faces to 
+concrete individuals %-- only under exceptional circumstances.
+`p`
+
+`p.  
+Analogously, syncing speech technology with personal health 
+data would be simplified by directly matching speaker identifications 
+to biosensor devices wearers.  Again, though, using 
+personal identities as an anchor for disparate data points makes 
+the overall system more vulnerable to intrusive or inappropriate use.  
+In total, security concerns might call for more complex data structures 
+wherein shared data excludes the more condensed summaries 
+wherever they may expose private details, and rely more 
+on multipart, mid-level processing structures.  Rather than 
+organize face-recognition around a database of persons, for example, 
+the basic units might be numeric profiles paired with probabilistic 
+links notating that a face detected at one time and place matches 
+a face analyzed elsewhere, but without that similarity being 
+anchored in a personal identifier.           
+`p`
+
+`p.
+Other broad issues raised by these CybePhysical case-studies 
+include (1) testing and quality assurance and (2) data 
+integration.  In the case of testing, many of the scenarios 
+outlined above (and throughough this volume) require complex 
+computational transformations to convert raw physical data into 
+usable software artifacts.  
+
+`p`
 
 %`spsubsection.Proactive Design`
 `subsection.Proactive Design`
