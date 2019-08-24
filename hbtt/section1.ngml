@@ -672,7 +672,160 @@ reconstructions of speakers' communications, then
 parses the text as Natural Language content, before 
 eventually (if all goes well) interpreting the 
 parsed and analyzed text as an instruction the 
-software can follow.   
+software can follow.  Text data can then be 
+supplemented with metrics measuring vocal 
+patterns, syntactic and semantic information, speaker's 
+spatial location, and other information that can 
+help interpret speakers' wishes insofar as software 
+can respond to them.  
+`p`
+
+`p.
+The authors discuss, for instance, the possibility 
+of annotating language samples (after speech-to-text 
+translation) with Dependency Grammar parses 
+(see page).  Textual content can also be annotated with 
+models of intonation, stress patterns, and other 
+acoustic features (because the original inputs are 
+audio-based) that can help an `NLP; engine to 
+properly parse sentences (for instance by 
+noting which words or syllables are stressed).  
+So, in the context of integrated Smart Home 
+hub software (continuing the above discussion), 
+this is the kind of data which would be transmitted to 
+a hub application.  We can assume that audio processing 
+as well as `NLP; technology would supply intermediary 
+processing somewhere between acoustic devices and 
+the centralized application. 
+`p`
+
+`p.
+Different kinds of linguistic details require different 
+data models.  Dependency parses, for instance, 
+are often notated via some version of the CoNNL 
+() format, which textually serialized parse and 
+lexical data, usually one word per line.  
+The most recent standard (dubbed CoNNL-U) recognizes 
+ten fiels for each word, identifying, in particular, 
+Part of Speech and syntactic connections with other 
+words.  As a cutom format, CoNNL-U requires its 
+own parser, such as the `UDP; library for 
+`Cpp; (a slightly modified version of this library 
+is published with this chapter's data set).  
+For hub applications, then, a reasonable assumption 
+is that they can compile in the `UDP; library 
+or an alternative with similar capabilities, 
+in order for them to handle parsed `NLP; data.
+`p`
+
+`p.
+Suppose, then, that a Smart Home speech-technology 
+product suite bundled audio-capture devices with 
+software that can perform dependency parsing, perhaps 
+after training against users' speech and 
+language patterns.  The `NLP; components can be 
+bundled with the acoustic devices, so that complex 
+`NLP; code is isolated in its own software environment.  
+Smart Home applications would not then compile 
+`NLP; capabilities directly; instead, `NLP; would be 
+a distinct program receiving audio input and generating 
+text and parse transcriptions which would be sent 
+to hub applications, in lieu of raw device data.  
+Let us assume that this architecture is in effect.
+`p`
+
+`p.
+A hub application will, then, periodically receive a 
+data package comprising an audio sample along with 
+text transcriptions and `NLP;-generated, e.g., 
+CoNLL-U data.  To make sense of linguistic content, 
+the software would presumably pair the `NLP;-specific 
+information with extra details, such as, 
+the identity of the speaker (if a Smart Home system 
+knows of specific users), where and when each sentence 
+or request was formulated, and perhaps the original 
+audio input (perhaps allowing users to pay back 
+instructions they utterred in the past).  A relevant 
+data model might thereby comprise: (1) CoNLL-U data 
+itself; (2) location info, such as spatial position and 
+which room a speaker is found in; (3) timestamps; 
+(4) speaker info, if available; (5) audio files; 
+and maybe (6) extra acoustical or intonation data. 
+This extra data might be annotations such as how 
+conversation analysts notate speech patterns, or 
+might be acoustic features derived from initial 
+processing of speech samples.   
+`p`
+
+`p.
+This data model would presumably translate to muliple 
+data types, such as (1) a class for `UDP; sentences 
+obtained from CoNLL-U; (2) a class for audio samples; 
+(3) speaker and time/location information; plus 
+versions of these classes appropriate for 
+`GUI;s and database persistence.
+`p`
+
+`p.
+Likewise, we 
+can anticipate the procedures which these 
+data types need to implement: correctly decoding 
+CoNLL-U files; mapping time/location data points to a 
+spatial model of the Smart Home (which room is 
+targeted by the location and also if that point is 
+close to a door, window, appliance, and so forth; 
+and perhaps matching the location to a 3D graphics 
+model for user visualization); audio-playback procedures, 
+along with interactive protocols for this process such 
+as users pausing and restarting playback; procedures 
+to map identified speakers to user profiles known to 
+the Smart Home system.  The audio devise makers and 
+`NLP; providers %-- assuming those products are 
+delivered as one suite separate and apart from the 
+Smart Home hub %-- can mandate that hub applications 
+demonstrate procedural implementations that satisfy 
+these requirements as a precondition for accessing 
+their broadcast data.  Conversely, hub applications can 
+stipulate the procedural mandates they are prepared 
+to honor as a guide to how devices and their drivers 
+and middleware components should be configured for 
+an integrated Smart Home ecosystem. 
+`p`
+
+`p.
+The essential point here is that procedural requirements 
+and validation becomes the essential glue 
+that unifies the diverse Smart Home components, and 
+allows products designed by different companies, 
+with different goals, to become interoperable.  
+Once again, procedural alignment and predictability is 
+more important than standardized data formats.   
+`p`
+
+`p.
+We can also consider representative criteria for 
+testing procedures; for instance, preconditions which 
+procedures need to recognize.  In CoNLL-U, 
+individual words can be extracted from a parse-model, 
+but the numeric index for the word must fall within a 
+fixed range (based on the word count for the 
+relevant sentence).  In audio playback, time intervals 
+are meaningful in the context of the length of 
+the audio sample in (e.g.) seconds or milliseconds.  
+Therefore, procedures engaged with these data 
+structures should be checked to ensure that they 
+honor these ranges and properly respond to 
+faulty data outside them.  This is an example 
+of the kind of localized procedural testing which, 
+cumulatively, establishes software as trustworthy.
+`p`
+
+`p.
+I will discuss similar procedural-validity issues 
+for the remainder of this section before 
+developing more abstract or theoretical models 
+of procedures, as formal constructions, subsequently 
+in the chapter. 
 `p`
 
 %`spsubsection.Proactive Design`
