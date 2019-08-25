@@ -287,7 +287,9 @@ behavior or shared data to illustrate typical
 modeling patterns and their corresponding safety or 
 validation requirements.  As a preliminary overview, here 
 are some examples of data profiles that might be 
-wedded to deployed CyberPhysical devices: 
+wedded to deployed CyberPhysical devices 
+(my comments here are also summarized in 
+Table~\ref{table:profiles} on page \pageref{table:profiles}): 
 
 `description,
 \item[Heart-Rate Monitor]  A heart-rate sensor generates continuously-sampled integer values
@@ -692,7 +694,35 @@ to this point.  There are a lot more academic papers on
 CyberPhysical Ontologies or common signal/message formats, 
 like `CoAP; and `MQTT;, than there are open-source libraries 
 which prototype device data, its validation, parameters, 
-and proper transformations.  In lieu of `q.data-centric` 
+and proper transformations.`footnote.
+The rationale for emphasizing standard data formats is 
+probably these formats constrain any procedure 
+which operates on the data, so standardization in 
+data representation indirectly leads to standardization 
+in data-management procedures, or what I am calling 
+`q.procedural alignment`/.  This accommodates the fact 
+that shared data may be used in many different 
+software environments %-- components implemented in 
+different programming languages and coding styles.   
+However, more detailed 
+guarantees can be engineered by grounding standardization 
+on procedures rather than data representations themselves.  
+To accommodate multiple programming languages and paradigms, 
+data models can be supplemented with a 
+`q.reference implementation` which prototypes 
+proper behavior `visavis; conformant data; components 
+in different languages can then emulate the prototype, 
+serving both as an implementation guide and a 
+criterion for other developers to accept a new 
+implementation as trustworthy.  There are several examples 
+of a reference implementation used as a standardizing 
+tool, analogous to an Ontology, such as the `librets; 
+(Real Estate Transaction Standard) library, 
+servers and clients for `FHIR; (Fast Healthcare Interoperability 
+Resources), and clients for `DICOM; (Digital Imaging and 
+Communications in Medicine), e.g. for Whole Slide Imaging 
+(see \url{https://www.orthanc-server.com/static.php?page=wsi}).
+`footnote`  In lieu of `q.data-centric` 
 Ontologies, whose mission is to standardize data 
 `i.representation`/, here I will consider `q.Procedural` 
 Ontologies which specify procedural capabilities and 
@@ -732,8 +762,21 @@ can respond to them.
 `p.
 The authors discuss, for instance, the possibility 
 of annotating language samples (after speech-to-text 
-translation) with Dependency Grammar parses 
-(see page).  Textual content can also be annotated with 
+translation) with Dependency Grammar parses.`footnote.
+Adequately describing Dependency Grammar
+is outside the scope of this chapter, but, in a nutshell, 
+Dependency Grammar models syntax in terms of 
+word-to-word relations rather than via phrase 
+hierarchies; as such, Dependency parses yields 
+directed, labeled graphs (node labels are words and 
+edge labels are drawn from an inventory of 
+syntactic inter-word connections),  
+which are structurally similar to Semantic Web 
+graphs.  See also `cite<DebusmannThesis>;, 
+`cite<KongRushSmith>;, `cite<Nivre>;,
+`cite<OsborneMaxwell>;, `cite<SivaReddy>;, 
+`cite<Schneider>;, `cite<Schneider>;, `cite<XiaPalmer>;, etc. 
+`footnote`  Textual content can also be annotated with 
 models of intonation, stress patterns, and other 
 acoustic features (because the original inputs are 
 audio-based) that can help an `NLP; engine to 
@@ -813,12 +856,28 @@ data types, such as (1) a class for `UDPipe; sentences
 obtained from `CoNLLU; (2) a class for audio samples; 
 (3) speaker and time/location information; plus 
 versions of these classes appropriate for 
-`GUI;s and database persistence.
+`GUI;s and database persistence.  And, in addition, 
+the data requirements for speech and text samples only 
+considers obtaining a valid parse for the text; 
+to react to speech input, an application would need 
+to map lexical data to terms and actions the software 
+itself can recognize.  For instance, `i.close the window` 
+would map to an identifier of which window is intended 
+(inferred prehaps from speaker location) and a 
+`i.close` operation, which could be available via 
+actuators embedded in the window area.  All of the 
+objects which users might semantically reference 
+in voice commands therefore need their own data 
+models, which are interoperable with linguistic 
+parses.  So along with data types specific to 
+linguistic elements we can consider `q.bridge` types 
+which connect linguistic data (e.g., lexemes) 
+data types modeling physical objects themselves.  
 `p`
 
 `p.
 Likewise, we 
-can anticipate the procedures which these 
+can anticipate the procedures which speech and/or language 
 data types need to implement: correctly decoding 
 `CoNLLU; files; mapping time/location data points to a 
 spatial model of the Smart Home (which room is 
@@ -882,6 +941,7 @@ developing more abstract or theoretical models
 of procedures, as formal constructions, subsequently 
 in the chapter. 
 `p`
+`input<profiles>;
 
 %`spsubsection.Proactive Design`
 `subsection.Proactive Design`
@@ -906,7 +966,28 @@ and even which problems are software errors to begin with.
 `p`
 
 `p.
-`input<profiles>;
+Summarizing the case studies from earlier in this section, 
+Table~\ref{table:profiles} identifies several details 
+about dimensions, parameters of operation, data fields, 
+and other pieces of information relevant to 
+implementing procedures and data types capturing 
+CyberPhysical data.  These types may derive from 
+CyberPhysical input directly or may model artifacts 
+constructed from CyberPhysical input midstream, such 
+as audio or image files, or text transcriptions 
+representing speech input.  The summaries are not 
+rigorous data models, but are just suggestive cues 
+about what sort of details engineers should consider 
+when formalizing data models.  In general, detailed 
+models should be defined for any input source 
+(including those transformed by middleware 
+components, such as `NLP; engines), thereby 
+profiling both CyberPhysical devices and also 
+`q.midstream` artifacts such as audio or image files 
+%-- i.e., aggregates, derived from CyberPhysical 
+input, that can be shared between software components 
+(within hub applications and/or between hubs and 
+middleware).
 `p`
 
 
