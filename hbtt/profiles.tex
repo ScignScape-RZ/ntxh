@@ -1,0 +1,38 @@
+\begin{table}
+\label{table:profiles}
+\begin{flushleft}
+{\footnotesize
+\begin{tabularx}{9.5cm}{>{\raggedright}p{21mm}|p{31mm}|p{30mm}}
+\toprule
+\textbf{Blood Pressure} & Beats per Minute &  Systolic $>$ Diastolic \\
+\midrule
+\textbf{Accelerator} & Incline; Movement in 2 or 3 Dimensions &  Biaxial or Triaxial \\
+\midrule
+\textbf{Audio Sample} & Binary data/file and/or feature set &  Length (in time) (1D) \\
+\midrule
+\textbf{Audio Feature} & Time-interval inside sample &  Subinterval of sample (1D) \\
+\midrule
+\textbf{Image} & Matrix of values in a colior model: {\smRGB}, {\smRGBa}, 
+ {\smHSV}, etc. &  Matrix Dimensions (2D) \\
+\midrule
+\textbf{Image Segment} & Rectangular Coordinates; geometric 
+characterization (e.g. ellipse dimensions); scale of resolution & Subregion of image (2D) \\
+\midrule
+\textbf{Bioacoustic Sample} & Audio Sample plus species identifier; geospatial 
+and timestamp coordinates  & Well-formed spacetime coordinates \\
+\midrule
+\textbf{Speech Sample} & Audio Sample plus text transcription; spacetime coodinates; 
+  Identify language/dialic and/or speaker & Valid dialect and/or speaker identifier \\
+\midrule
+\textbf{Dependency-Parsed Text} & Text transcription plus parse serialization; 
+  audio metadata & Valid and accessible metadata \\
+\midrule
+\textbf{Lexical Text Component} & Index into parse serialization; Part of Speech 
+tag; lexical/semantic classification & Valid index \\
+\bottomrule
+\end{tabularx}
+}
+\end{flushleft}
+\caption{Example Data Profiles}
+\end{table}
+

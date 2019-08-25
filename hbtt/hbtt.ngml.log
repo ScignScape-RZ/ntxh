@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  25 AUG 2019 01:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  25 AUG 2019 11:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1109,27 +1109,48 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box79
 \enitdp@description=\count142
 )
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+\col@sep=\dimen199
+\ar@mcellbox=\box80
+\extrarowheight=\dimen256
+\NC@list=\toks39
+\extratabsurround=\skip50
+\backup@length=\skip51
+\ar@cellbox=\box81
+)
+\TX@col@width=\dimen257
+\TX@old@table=\dimen258
+\TX@old@col=\dimen259
+\TX@target=\dimen260
+\TX@delta=\dimen261
+\TX@cols=\count143
+\TX@ftn=\toks40
+)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/listings.s
 ty
-\lst@mode=\count143
-\lst@gtempboxa=\box80
-\lst@token=\toks39
-\lst@length=\count144
-\lst@currlwidth=\dimen199
-\lst@column=\count145
-\lst@pos=\count146
-\lst@lostspace=\dimen256
-\lst@width=\dimen257
-\lst@newlines=\count147
-\lst@lineno=\count148
-\lst@maxwidth=\dimen258
+\lst@mode=\count144
+\lst@gtempboxa=\box82
+\lst@token=\toks41
+\lst@length=\count145
+\lst@currlwidth=\dimen262
+\lst@column=\count146
+\lst@pos=\count147
+\lst@lostspace=\dimen263
+\lst@width=\dimen264
+\lst@newlines=\count148
+\lst@lineno=\count149
+\lst@maxwidth=\dimen265
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstmisc.st
 y
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count149
-\lst@skipnumbers=\count150
-\lst@framebox=\box81
+\c@lstnumber=\count150
+\lst@skipnumbers=\count151
+\lst@framebox=\box83
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/listings.c
 fg
@@ -1139,8 +1160,8 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/04/06 v1.3b Input encoding file
-\inpenc@prehook=\toks40
-\inpenc@posthook=\toks41
+\inpenc@prehook=\toks42
+\inpenc@posthook=\toks43
 ))
 
 Package csquotes Warning: Load 'inputenc' before 'csquotes' on input line 3.
@@ -1179,17 +1200,17 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count151
-\scratchdimen=\dimen259
-\scratchbox=\box82
-\nofMPsegments=\count152
-\nofMParguments=\count153
-\everyMPshowfont=\toks42
-\MPscratchCnt=\count154
-\MPscratchDim=\dimen260
-\MPnumerator=\count155
-\makeMPintoPDFobject=\count156
-\everyMPtoPDFconversion=\toks43
+\scratchcounter=\count152
+\scratchdimen=\dimen266
+\scratchbox=\box84
+\nofMPsegments=\count153
+\nofMParguments=\count154
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count155
+\MPscratchDim=\dimen267
+\MPnumerator=\count156
+\makeMPintoPDFobject=\count157
+\everyMPtoPDFconversion=\toks45
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/epstopdf-b
 ase.sty
@@ -1244,7 +1265,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\big@size=\dimen261
+\big@size=\dimen268
 LaTeX Info: Redefining \microtypecontext on input line 3.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
@@ -1264,7 +1285,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box83
+\AtBeginShipoutBox=\box85
 Package hyperref Info: Link coloring ON on input line 3.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
@@ -1275,7 +1296,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 string.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count157
+\c@section@level=\count158
 )
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
@@ -1284,7 +1305,7 @@ LaTeX Info: Redefining \nameref on input line 3.
 \@outlinefile=\write6
 \openout6 = `hbtt.ngml.out'.
 
-\c@lstlisting=\count158
+\c@lstlisting=\count159
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 71
 .
 
@@ -1338,7 +1359,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
-\qboxii=\box84
+\qboxii=\box86
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
@@ -1429,19 +1450,84 @@ Underfull \hbox (badness 1371) in paragraph at lines 656--673
 
  []
 
-[15] [16] [17]
+[15] [16] (./profiles.tex
+Underfull \hbox (badness 2875) in paragraph at lines 33--33
+[]|\OT1/ptm/m/n/8 Time-interval in-side sam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\OT1/ptm/m/n/8 Subinterval of sam-ple
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\OT1/ptm/m/n/8 Rectangular Co-or-di-nates;
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 33--33
+\OT1/ptm/m/n/8 ge-o-met-ric char-ac-ter-i-za-tion
+ []
+
+
+Underfull \hbox (badness 2781) in paragraph at lines 33--33
+\OT1/ptm/m/n/8 iden-ti-fier; geospa-tial and
+ []
+
+
+Underfull \hbox (badness 4686) in paragraph at lines 33--33
+[]|\OT1/ptm/m/n/8 Audio Sam-ple plus text
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+\OT1/ptm/m/n/8 tran-scrip-tion; space-time
+ []
+
+
+Underfull \hbox (badness 5374) in paragraph at lines 33--33
+\OT1/ptm/m/n/8 cood-i-nates; Iden-tify lan-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\OT1/ptm/m/n/8 Valid di-alect and/or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
+[]|\OT1/ptm/m/n/8 Text tran-scrip-tion plus
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 33--33
+\OT1/ptm/m/n/8 parse se-ri-al-iza-tion; au-dio
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 33--33
+[][][] 
+ []
+
+
+Overfull \hbox (8.50175pt too wide) in paragraph at lines 33--35
+[]  
+ []
+
+) [17]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [18]
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1097
+rian/vectorian84.pgf) [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 1098--1098
 []
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 1149--1149
+
+Underfull \hbox (badness 10000) in paragraph at lines 1150--1150
 []
  []
 
-[20]) (./section2.ngml.tex [21] [22]
+[20] [21]) (./section2.ngml.tex [22]
 Underfull \hbox (badness 3343) in paragraph at lines 171--206
 []\OT1/ptm/m/n/10.95 (+20) Early on, though, $\OML/ztmcm/m/it/10.95 ^^U$\OT1/pt
 m/m/n/10.95 (+20) -Calculus was less about
@@ -1452,16 +1538,12 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 285.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 285.
- [24]
-Package microtype Info: Character `013' is missing
-(microtype)             in font `OT1/Cabin-TLF/b/sc/8'.
-(microtype)             Ignoring protrusion settings for this character.
- [25] (./unplug.tex)
+ [24] [25] (./unplug.tex)
 Overfull \hbox (3.81317pt too wide) in paragraph at lines 444--444
 [] $[]$[] 
  []
 
-(./initializing-hypernodes.tex
+[26] (./initializing-hypernodes.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstlang1.s
 ty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -1499,9 +1581,9 @@ Overfull \hbox (0.7899pt too wide) in paragraph at lines 59--60
 
 LaTeX Warning: Float too large for page by 2.79694pt on input line 481.
 
-[26] (./lived.tex) [27
+[27
 \pgfsyspdfmark {pgfid13}{20875090}{4268821}
-] [28] [29] [30]
+] (./lived.tex) [28] [29] [30]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf) [31]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/microtype/mt-euf.cf
@@ -1520,7 +1602,7 @@ LaTeX Font Info:    Font shape `OT1/Cabin-TLF/bx/sc' in size <10> not available
 
 (Font)              Font shape `OT1/Cabin-TLF/b/sc' tried instead on input line
  1007.
- [33]) (./section3.ngml.tex [34] [35]
+ [33] [34]) (./section3.ngml.tex [35]
 LaTeX Font Info:    Try loading font information for OMS+lmss on input line 157
 .
 LaTeX Font Info:    No file OMSlmss.fd. on input line 157.
@@ -1530,17 +1612,17 @@ LaTeX Font Warning: Font shape `OMS/lmss/b/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 157.
 
-[36]
+[36] [37]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <6> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 282.
 
- [37]) (./section3a.ngml.tex [38] [39] [40] [41]) (./section3b.ngml.tex
-[42]
+) (./section3a.ngml.tex [38] [39] [40] [41] [42])
+(./section3b.ngml.tex [43]
 Underfull \hbox (badness 10000) in paragraph at lines 106--106
 []
  []
 
-[43]
+
 Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []
  []
@@ -1555,20 +1637,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 164--164
 LaTeX Font Warning: Font shape `OT1/cmtt/b/sc' undefined
 (Font)              using `OT1/cmtt/b/n' instead on input line 77.
 
-[46] (./figGFcomplexc.tex) [47]
+[46] [47] (./figGFcomplexc.tex)
 LaTeX Font Info:    Font shape `OT1/lmss/b/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/it' tried instead on input line 290
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 290
 .
- [48]) (./section4a.ngml.tex [49] [50])
+ [48] [49]) (./section4a.ngml.tex [50])
 (./section4b.ngml.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 |[]\OT1/ptm/b/n/10.95 Channelized-Type In-ter-pre-ta-tions of Larger-
  []
 
-[51] [52] [53] (./ifte.tex) (./ifte-phr.tex
+[51] [52] [53] (./ifte.tex) [54] (./ifte-phr.tex
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 8.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -1583,10 +1665,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [54] [55
-\pgfsyspdfmark {pgfid27}{2226060}{4983062}
-\pgfsyspdfmark {pgfid34}{20875090}{6457619}
-]) (./conclusion.ngml.tex [56] [57]) (./biblio.tex
+)) (./conclusion.ngml.tex [55
+\pgfsyspdfmark {pgfid26}{2226060}{4983062}
+] [56
+\pgfsyspdfmark {pgfid33}{2226060}{6457619}
+] [57]) (./biblio.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf)
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 26.
@@ -1612,28 +1695,25 @@ Overfull \hbox (110.04886pt too wide) in paragraph at lines 210--211
 imitations-[]and-[]emerging-[]p-[]peer-[]reviewed-[]article-[]PLMI$[][][]  
  []
 
-[59] [60])
+[59] [60]) [61]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
- [61
-
-]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
  (./hbtt.ngml.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 85.
 Package rerunfilecheck Info: File `hbtt.ngml.out' has not changed.
-(rerunfilecheck)             Checksum: EC95DDE6C12505F9C702F31E599BBF38;2257.
+(rerunfilecheck)             Checksum: 5CB8C3E3F012096CF7E2BA1F9B84A0C0;2257.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 31964 strings out of 492649
- 638618 string characters out of 6122986
- 888489 words of memory out of 5000000
- 34332 multiletter control sequences out of 15000+600000
- 129482 words of font info for 456 fonts, out of 8000000 for 9000
+ 32068 strings out of 492649
+ 639926 string characters out of 6122986
+ 856923 words of memory out of 5000000
+ 34427 multiletter control sequences out of 15000+600000
+ 130589 words of font info for 457 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,11n,85p,817b,1478s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{lst--ifte--3.pgvm-pdf} has been referenced but do
@@ -1678,10 +1758,10 @@ me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 ></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on hbtt.ngml.pdf (61 pages, 650098 bytes).
+Output written on hbtt.ngml.pdf (61 pages, 652147 bytes).
 PDF statistics:
- 1256 PDF objects out of 1440 (max. 8388607)
- 1138 compressed objects within 12 object streams
- 448 named destinations out of 1000 (max. 500000)
+ 1257 PDF objects out of 1440 (max. 8388607)
+ 1139 compressed objects within 12 object streams
+ 449 named destinations out of 1000 (max. 500000)
  79707 words of extra memory for PDF output out of 89155 (max. 10000000)
 

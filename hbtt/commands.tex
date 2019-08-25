@@ -263,6 +263,9 @@
 \newcommand{\AcronymText}[1]{{\iffootnote\begin{scriptsize}{\textscc{#1}}\end{scriptsize}%
 \else\begin{OldFootnoteSize}{\textscc{#1}}\end{OldFootnoteSize}\fi}}
 
+\newcommand{\smAcronymText}[1]{\begin{footnotesize}\textscc{#1}\end{footnotesize}}
+
+
 \newcommand{\TCP}{\AcronymText{TCP}}
 \newcommand{\GPS}{\AcronymText{GPS}}
 \newcommand{\CppTwenty}{\AcronymText{C++20}}
@@ -763,8 +766,14 @@ framed,background rectangle/.style={double,ultra thick,draw=darkRed, bottom colo
 \newcommand{\CoAP}{\AcronymText{CoAP}}
 \newcommand{\MQTT}{\AcronymText{MQTT}}
 
+\usepackage{tabularx}
+
 \newcommand{\UDPipe}{\AcronymText{UDPipe}}
 \newcommand{\mWSI}{\AcronymText{mWSI}}
+
+\newcommand{\smRGBa}{\smAcronymText{RGBa}}
+\newcommand{\smHSV}{\smAcronymText{HSV}}
+\newcommand{\smRGB}{\smAcronymText{RGB}}
 
 \newcommand{\OS}{\AcronymText{OS}}
 
