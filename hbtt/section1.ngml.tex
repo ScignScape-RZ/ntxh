@@ -247,12 +247,12 @@ which are used or proposed in various CyberPhysical contexts.
 I hope this discussion will lay out parameters on device 
 behavior or shared data to illustrate typical 
 modeling patterns and their corresponding safety or 
-validation requirements.  As a preliminary overview, here 
-are some examples of data profiles that might be 
-wedded to deployed CyberPhysical devices 
+validation requirements.  As an initial overview, the 
+following are some examples of data profiles that might 
+be wedded to deployed CyberPhysical devices 
 (my comments here are also summarized in 
 Table~\ref{table:profiles} on page \pageref{table:profiles}): 
-\begin{description}\item[Heart-Rate Monitor]  A heart-rate sensor generates continuously-sampled integer values
+\begin{description}\item[Heart-Rate Monitor]  A heart-rate sensor generates continuously- sampled integer values
 whose understood Dimension of Measurement is in \q{beats per minute}
 and whose maximum sensible range (inclusive of both
 rest and exercise) corresponds roughly
@@ -263,11 +263,18 @@ with field indicating (or measuring) exertion, either a
 two-valued discrimination between \q{rest} and \q{exercise} 
 or a more granular sampling of a person's movement cotemporous 
 with the heart-rate calculations.
-\item[Accelerometers]  These devices measure people's rate of 
-movement, and therefore can be paired with heart-rate sensors 
+\item[Accelerometers]  These devices measure object's 
+or people's rate of 
+movement (see \cite{VincasBenevicius}), 
+and therefore can be paired with heart-rate sensors 
 to quantify how heart rate is affected by exercise 
 (likewise for other biometric sensors, such as those 
-calculating breathing rate).  An accelerometer
+calculating breathing rate).  Outside the biomedical context, 
+accelerometers are important for 
+Smart Cities (or factories, and so forth) for modeling 
+the inegrity of buildings, bridges, and industrial 
+areas or structures (see e.g. \cite{LiZhu}, 
+\cite{Wetherington}).  An accelerometer
 presents data as voltage changes in two or three directional
 axes, data which may only produce signals when a change occurs
 (and therefore is not continuously varying), and which is
@@ -813,10 +820,10 @@ data models.  Dependency parses, for instance,
 are often notated via some version of a specialized 
 \CoNLL{} format, which textually serializes parse and 
 lexical data, usually one word per line.  
-The most recent standard (dubbed \CoNNLU{}) recognizes 
+The most recent standard (dubbed \CoNLLU{}) recognizes 
 ten fields for each word, identifying, in particular, 
 Parts of Speech and syntactic connections with other 
-words.  As a custom format, \CoNNLU{} requires its 
+words.  As a custom format, \CoNLLU{} requires its 
 own parser, such as the \UDPipe{} library for 
 \Cpp{} (a slightly modified version of this library 
 is published with this chapter's data set).  
