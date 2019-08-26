@@ -92,14 +92,14 @@ specifications (more precise than strong typing alone).
 Strongly-typed programming language offer some guarantees on 
 types and procedures: a function which takes an integer will 
 never be called on a value that is `i.not` an integer 
-(e.g., the character-string `q.46` instead of the `i.number` 
-46).  Likewise, a type where one field is an integer 
+(e.g., the character-string `q.`lclc.46`/` instead of the `i.number` 
+`lclc.46`/).  Likewise, a type where one field is an integer 
 (representing someone's age, say), will never be instantiated 
 with something `i.other than` an integer in that field.  
 Such minimal guarantees, however, are too coarse for 
 safety-conscious programming.  Even the smallest 
 (8-bit) unsigned integer type would permit someone's age to 
-be 255 years, which is surely an error.  So any 
+be `lclc.255` years, which is surely an error.  So any 
 safety-conscious code dealing with ages needs to check that 
 the numbers fall in a range narrower than built-in 
 types allow on their own, or to ensure that such checks are 
@@ -158,7 +158,7 @@ in subsequent sections.
 I will use the term `i.gatekeeper code` for any code which checks 
 programming assumptions more fine-grained than strong typing 
 alone allows %-- for example, that someone's age is not reported 
-as 255 years, or that systolic pressure is not recorded as 
+as `lclc.255` years, or that systolic pressure is not recorded as 
 less than diastolic.  I will use the term `i.fragile code` for
 code which `i.makes` programming assumptions `i.without itself` 
 verifying that such assumptions are obeyed.  Fragile code is 
@@ -356,7 +356,7 @@ language-use in a given urban area.
 \item[Bioacoustic Sampling]  Similar to speech sampling, 
 audio samples can be used to track and identify 
 species (Todor Ganchev, this volume, and Boulmaiz, `textit.et. al.`/, 
-this chapter).  Here again feature 
+this volume).  Here again feature 
 extraction foregrounds certain noise patterns, but the 
 main analytic objective is to map audio samples to 
 the species of the animal that produced them.  
