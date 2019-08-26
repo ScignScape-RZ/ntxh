@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  26 AUG 2019 14:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  26 AUG 2019 15:10
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1240,14 +1240,14 @@ e
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(33.96698pt, 546.36104pt, 33.96698pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* v-part:(T,H,B)=(69.37968pt, 656.21062pt, 69.37968pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
 * \textwidth=546.36104pt
-* \textheight=650.43001pt
+* \textheight=656.21062pt
 * \oddsidemargin=-38.30301pt
 * \evensidemargin=-38.30301pt
-* \topmargin=-37.0pt
+* \topmargin=-39.8903pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -1445,7 +1445,7 @@ g
 File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 ) [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 406--406
 []\OT1/ptm/m/n/10.95 (+20) A heart-rate sen-sor gen-er-ates
  []
 
@@ -1476,12 +1476,12 @@ Overfull \hbox (2.8112pt too wide) in paragraph at lines 40--42
 ) [18]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf) [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 1265--1265
+Underfull \hbox (badness 10000) in paragraph at lines 1273--1273
 []
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 1317--1317
+Underfull \hbox (badness 10000) in paragraph at lines 1325--1325
 []
  []
 
@@ -1537,10 +1537,10 @@ Overfull \hbox (0.7899pt too wide) in paragraph at lines 59--60
 
 )
 
-LaTeX Warning: Float too large for page by 11.46896pt on input line 481.
+LaTeX Warning: Float too large for page by 5.68835pt on input line 481.
 
 [28] (./lived.tex) [29
-\pgfsyspdfmark {pgfid13}{2226060}{3984656}
+\pgfsyspdfmark {pgfid13}{2226060}{4174075}
 ] [30] [31] [32]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf) [33]
@@ -1602,7 +1602,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 |[]\OT1/ptm/b/n/10.95 Channelized-Type In-ter-pre-ta-tions of Larger-
  []
 
-[53] [54] [55] (./ifte.tex) [56] (./ifte-phr.tex
+[53] [54] [55] (./ifte.tex) [56
+\pgfsyspdfmark {pgfid26}{20875090}{4983062}
+] (./ifte-phr.tex
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 8.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -1617,11 +1619,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-)) (./conclusion.ngml.tex [57
-\pgfsyspdfmark {pgfid27}{2226060}{4983062}
-] [58
-\pgfsyspdfmark {pgfid34}{2226060}{6457619}
-] [59]) (./biblio.tex
+) [57
+\pgfsyspdfmark {pgfid33}{20875090}{6457619}
+]) (./conclusion.ngml.tex [58] [59]) (./biblio.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf)
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 26.
@@ -1641,17 +1641,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `gar' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [60] [61]
-Overfull \hbox (110.04886pt too wide) in paragraph at lines 217--218
+ [60]
+Overfull \hbox (110.04886pt too wide) in paragraph at lines 222--223
 \OT1/cmtt/m/n/8/-70ls whole-[]slide-[]imaging-[]in-[]pathology-[]advantages-[]l
 imitations-[]and-[]emerging-[]p-[]peer-[]reviewed-[]article-[]PLMI$[][][]  
  []
 
-[62] [63])
+[61] [62]) [63]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
- [64
-
-]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
  (./hbtt.ngml.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
@@ -1664,10 +1661,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32107 strings out of 492649
- 640337 string characters out of 6122986
- 870624 words of memory out of 5000000
- 34439 multiletter control sequences out of 15000+600000
+ 32109 strings out of 492649
+ 640386 string characters out of 6122986
+ 867808 words of memory out of 5000000
+ 34440 multiletter control sequences out of 15000+600000
  132396 words of font info for 466 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,12n,85p,817b,1478s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1713,10 +1710,10 @@ me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 ></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on hbtt.ngml.pdf (64 pages, 663107 bytes).
+Output written on hbtt.ngml.pdf (63 pages, 663995 bytes).
 PDF statistics:
- 1303 PDF objects out of 1440 (max. 8388607)
- 1182 compressed objects within 12 object streams
- 462 named destinations out of 1000 (max. 500000)
+ 1307 PDF objects out of 1440 (max. 8388607)
+ 1187 compressed objects within 12 object streams
+ 463 named destinations out of 1000 (max. 500000)
  81755 words of extra memory for PDF output out of 89155 (max. 10000000)
 
