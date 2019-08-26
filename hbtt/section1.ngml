@@ -417,7 +417,8 @@ resolution are more likely to be empirically
 significant rather than visual `q.noise`/; calculating 
 cross-scale `q.persistence` is an applied 
 methodology within Statistical Topology %-- 
-see e.g. `cite<HaneyMaxwell>;, `cite<EdelsbrunnerHarer>;).  
+see e.g. `cite<HaneyMaxwell>;, 
+`cite<EdelsbrunnerHarer>;, `cite<HarryStrange>;).  
 Merged with `mWSI; configuration info and patient data, the 
 whole data package integrates geometric, CyberPhysical, 
 and health-record dimensions. 
@@ -528,7 +529,7 @@ and parameters.  In `cite<FadelAdib>; the ultimate goal is to
 introduce heart and breathing monitors within a Smart Home environment,  
 with computations performed on embedded Operating Systems.  
 However, testing and prototyping of the technology should be 
-conducted in a desktop `OS; environment so as to 
+conducted in a desktop Operating System environment so as to 
 generate or leverage test data, document algorithmic revisions, 
 and in general prove the system's trustworthiness in a 
 controlled setting (including a software environment which 
@@ -543,7 +544,8 @@ instance, Smart Homes are envisioned to embed sensors analyzing
 speech, biomedical data-points like heart rate, atmosopheric 
 measurements like current temperature, and appliance or architectural 
 states like windows, doors, or refrigerator doors being open, 
-ovens or stove burner being turned on, or heaters/coolers being active.  
+ovens or stove burners being turned on, heaters/coolers being active, 
+and so forth.  
 In some cases this data would be cross-referenced, so that 
 e.g. a voice command could close a window or turn off a stove. 
 Analogously, `cite<MohamedSoltane>; (one of whose co-authors, 
@@ -575,25 +577,26 @@ from biology and medicine to ecology and industrial manufacturing.
 `p.
 In this eventuality, individual devices are no longer isolated in 
 proprietary circuits linking device signals to databases and 
-phone apps, for example, where one company builds each component as 
-part of a commercialized network.  Devices are not only being 
-connected to their in-house product suite %-- technology inside 
+phone apps, for example, where customers purchase 
+each app, and its associated device(s), in isolation.  
+Devices are not only being 
+connected to their own product suite.  Instead, technology inside 
 the home is charged with pooling data from many kinds of devices 
-into a comprehensive smart home platform, where users can see a 
+into a comprehensive Smart Home platform, where users can see a 
 broad overview, access disparate device data from a central location, 
 and where cross-device data can be merged into aggregate models: 
 e.g., cross-referencing speech and biometric inputs.  
 In this scenario, devices must be designed to broadcast 
-data to third-party software platforms.  Smart home `q.hub` 
+data to third-party software platforms.  Smart Home `q.hub` 
 applications will likely be often upgraded; likewise, home 
 owners/renters will likely buy or replace devices fairly 
-often, so the precise configuration data senders and 
+often, so the precise configuration of data senders and 
 receivers will dynamically evolve.  These givens call for 
 a modular, flexible architecture where a central software 
 hub is poised to receive data from different devices as 
-they come `q.online`/, i.e., exposed on the smart home 
+they come `q.online`/, i.e., exposed on the Smart Home 
 internal network.  Hub applications should seamlessly 
-adjust to devices joining as well as exiting the network.       
+adjust to devices joining and also exiting the network.       
 `p`
 
 `p.
@@ -602,7 +605,7 @@ devices do not only expose data but do so in a manner
 conducive to centralized aggregation.  The role of a 
 software hub is not only to receive data, but to 
 transform multi-domain signals into a common 
-graphical presentation, and also to wrangle received data into 
+graphical presentation, as well as wrangle received data into 
 a common format permitting integration algorithms %-- 
 e.g. syncing speech and biometrics %-- to operate.  
 Received device data must therefore be systematically 
@@ -613,14 +616,14 @@ of devices' own capabilities %-- their specific physical
 measurements and parameters.  Our data models, in short, 
 are no longer device-centric.  Instead, data models are 
 now assessed in a software-centric milieu: how do we 
-route device data to proper interpretive functions?  
+route device data to proper interpretive precedures?  
 How do we consolidate device data into `GUI; presentations?     
 `p`
 
 `p.
 Given a `Cpp; hub application, we might assign a distinct 
 `Cpp; class to each distinct kind of device, so that methods 
-on that class are responsible for wrangling device inputs into 
+on that class are responsible for decoding device inputs into 
 application-specific common representations.  These device-specific 
 classes could then be mapped to device-specific `GUI; components 
 displaying device state for human users.  Meanwhile, overarching 
@@ -628,7 +631,7 @@ displaying device state for human users.  Meanwhile, overarching
 from multiple device classes, perhaps using a common base 
 class representing `q.graphical device presentations` in the abstract.  
 Device data is then routed to distinct `Cpp; classes and 
-then `GUI; classes.  These Object-Oriented are foregrounded in 
+then `GUI; classes.  These Object-Oriented protocols are foregrounded in 
 the hub software, but the point is that such software architecture 
 retroactively should influence device constructions themselves.  
 For devices to be used with an integrated smart home platform, 
@@ -651,7 +654,7 @@ nothing wrong with widely-adopted formats, but how
 data is `i.encoded` is tangential to the primary goal 
 of networked software, which is to route shared data 
 to the proper procedures and `HCI; protocols.  In 
-a smart home case, once we commit to aggregating devices 
+a Smart Home case, once we commit to aggregating devices 
 via a software hub, the key organizing principle is 
 a mesh of procedures implemented in the hub application 
 that can pool all relevant devices into one information 
@@ -672,7 +675,7 @@ implemented within hub software to receive and properly
 act upon device data.  Software might guarantee, for example, 
 that so long as devices are supplying signals in 
 their documented formats, the software has capabilities 
-to receive the signals, unpack the data, and interally 
+to receive the signals, unpack the data, and internally 
 represent the data in a manner suitable for device particulars.  
 Devices can then specify what kind of internal representations 
 are appropriate for their specific data, essentially 
@@ -682,7 +685,7 @@ specifying conditions on software procedures and data types.
 `p.
 In short, the key units of mutual trust and verification among 
 and between CyberPhysical devices and CyberPhysical software 
-is not, in theory, data structures themselves, but instead 
+are not, in theory, data structures themselves, but instead 
 `i.procedures` for processing relevant data structures.  
 Robust CyberPhysical ecosystems can be developed by 
 reinforcing procedural alignment wherever possible, 
@@ -759,7 +762,6 @@ data structures.
 `p`
 
 `subsubsection.Linguistic Case-Study`
-
 `p.
 Establishing data models for deployed technology 
 is certainly part of the Research and Development 
@@ -767,9 +769,9 @@ cycle, which means that data profiles tend
 to emerge within the scientific process of 
 formulating and refining technical and algorithmic 
 designs.  This is particularly true for complex, 
-computational nuanced processes like image segmentation 
+computationally nuanced challenges like image segmentation 
 or (to cite one above example) measuring heartbeats 
-and breathing patterns via subtle waveform analyses.  
+and breathing patterns via subtle waveform analysis.  
 We can assume that each `RnD; phase will itself leave 
 behind an ecosystem of testing data and code which 
 can be decisive for consolidating data models, directly 
@@ -788,7 +790,7 @@ example, invites participants to develop
 Natural Language Processing techniques targeted at 
 a common `q.challenge` dataset, updated each year.  These 
 data sets, along with the data formats and code libraries 
-which allow software to use the data, thereby serve 
+which allow software to use that data, thereby serve 
 as a reference-point for Computational Linguistics 
 researchers in general.  Similarly, this volume's 
 chapter on Language Identification describes research 
@@ -820,7 +822,7 @@ As a result, portions of the software targeting
 `RnD; data sets %-- specifically, the procedures 
 for acquiring, transforming, validating, and 
 interactively displaying individual samples %-- 
-remain useful as component or prototypes for 
+remain useful as components or prototypes for 
 deployed product.  Code libraries used in 
 `RnD; cycles should typically be the basis 
 for data models guiding the implementation of 
@@ -833,7 +835,7 @@ the example of `CoNLL; data sets.  This chapter's
 demo includes samples from the most recent 
 collection of `CoNLL; files and 
 conference challenge tasks (at the time of writing) 
-as well as demo code which operates on this 
+as well as demo code which operates on such 
 data via techniques described in this chapter.  
 The `CoNLL; format is representative of the 
 kinds of linguistic parsing requisite for 
@@ -899,10 +901,10 @@ data models.  Dependency parses, for instance,
 are often notated via some version of a specialized 
 `CoNLL; format, which textually serializes parse and 
 lexical data, usually one word per line.  
-The most recent standard (dubbed CoNNL-U) recognizes 
-ten fiels for each word, identifying, in particular, 
+The most recent standard (dubbed `CoNNLU;) recognizes 
+ten fields for each word, identifying, in particular, 
 Parts of Speech and syntactic connections with other 
-words.  As a cutom format, CoNNL-U requires its 
+words.  As a custom format, `CoNNLU; requires its 
 own parser, such as the `UDPipe; library for 
 `Cpp; (a slightly modified version of this library 
 is published with this chapter's data set).  
@@ -952,7 +954,7 @@ which room a speaker is found in; (3) timestamps;
 and maybe (6) extra acoustical or intonation data. 
 Extra data could include annotations based on how 
 conversation analysts notate speech patterns, or 
-might be acoustic features derived from initial 
+might be waveform features derived from initial 
 processing of speech samples.   
 `p`
 
@@ -974,10 +976,10 @@ would map to an identifier of which window is intended
 actuators embedded in the window area.  All of the 
 objects which users might semantically reference 
 in voice commands therefore need their own data 
-models, which are interoperable with linguistic 
+models, which must be interoperable with linguistic 
 parses.  So along with data types specific to 
 linguistic elements we can consider `q.bridge` types 
-which connect linguistic data (e.g., lexemes) to 
+connecting linguistic data (e.g., lexemes) to 
 data types modeling physical objects themselves.  
 `p`
 
@@ -989,8 +991,9 @@ data types need to implement: correctly decoding
 spatial model of the Smart Home (which room is 
 targeted by the location and also if that point is 
 close to a door, window, appliance, and so forth; 
-and perhaps matching the location to a 3D graphics 
-model for user visualization); audio-playback procedures, 
+and perhaps matching the location to a `ThreeD; 
+or panoramic-photography graphics 
+model for visualization); audio-playback procedures, 
 along with interactive protocols for this process such 
 as users pausing and restarting playback; procedures 
 to map identified speakers to user profiles known to 
