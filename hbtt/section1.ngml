@@ -315,8 +315,8 @@ calculating respiration rate).  Outside the biomedical context,
 accelerometers are important for 
 Smart Cities (or factories, and so forth) for modeling 
 the inegrity of buildings, bridges, and industrial 
-areas or structures (see e.g. `cite<LiZhu>;, 
-`cite<Wetherington>;).  An accelerometer
+areas or structures (see e.g. `cite<Wetherington>;, 
+`cite<LiZhu>;).  An accelerometer
 presents data as voltage changes in two or three directional
 axes, data which may only produce signals when a change occurs
 (and therefore is not continuously varying), and which is
@@ -324,7 +324,7 @@ mathematically converted to yield information about physical
 objects' (including a person's) movement and incline.  
 Physically, that is, accelerometers actually 
 measure `i.voltage`/, from which quantitative measures 
-of movement and incline can be derived.Accelerometers are 
+of movement and incline can be derived.  Accelerometers are 
 classified as `i.biaxial` or `i.triaxial` depending on 
 whether they sample forces in two or three spatial 
 dimensions.  
@@ -369,7 +369,7 @@ classification (viz., matching voices to the language
 or dialect spoken) as part of a `q.smart city` network, 
 calls for different features.    
 The priority here is not necessarily identifying individual 
-speakers, but, potentially geotagging samples to obtain a geospatial model of 
+speakers, but potentially geotagging samples to obtain a geospatial model of 
 language-use in a given urban area. 
 
 \item[Bioacoustic Sampling]  Similar to speech sampling, 
@@ -406,8 +406,8 @@ resolution, allows many views to be made on one slide.
 Positional data (the configuration of the phone and microscope) 
 then merges with image segmentation 
 computations characteristic of 
-conventional whole slide imaging (see, e.g. `cite<Farahani>;), 
-and diagnostic pathology 
+conventional whole slide imaging (see, e.g., 
+`cite<Farahani>;), and diagnostic pathology 
 in general, which 
 is concerned with isolating medically significant image 
 features and identifying diagnostically significant 
@@ -452,7 +452,7 @@ obtainable, and under what legal or commercial circumstances?
 Should stores be allowed to use these methods to 
 prevent shoplifting, for example?  What about searching 
 for a missing or kidnapped child, or keeping tabs on an 
-elderly patient?  When does surveilance cross the line 
+elderly patient?  When does surveillance cross the line 
 from benevolent (protecting personal or public safety) 
 to privacy-invasive and authoritarian?
 `description`
@@ -462,7 +462,7 @@ to privacy-invasive and authoritarian?
 Of course, there are many other examples of CyberPhysical 
 devices and capabilities that could be enumerated.  But 
 these cases illustrate certain noteworthy 
-themes.  One obsevervations is that a gap often exists between how 
+themes.  One observation is that a gap often exists between how 
 devices physically operate and how they are conceptualized: 
 accelerometers, for instance, mechanically measure voltage, not 
 acceleration or incline; but their data exposed to 
@@ -489,14 +489,15 @@ where, e.g., speech and biometric inputs are cross-referenced.
 Different levels of data resolution also 
 intersect with privacy concerns: simpler data structures 
 are more likely to employ private or sensitive 
-information as an organizing device, heighting security 
-and surveilance concerns.  For example, a simple 
+information as an organizing device, heightening security 
+and surveillance concerns.  For example, a simple 
 facial-recognition system would match faces against known 
 residents of or visitors to the relevant municipalities.  
 This is less technologically challenging than anonymized 
 systems which would persist more mid-processing data in order 
 to complete the algorithmic cycle %-- matching faces to 
-concrete individuals %-- only under exceptional circumstances.
+concrete individuals %-- only under exceptional circumstances; 
+of course, though, it is also a greater invasion of privacy.
 `p`
 
 `p.  
@@ -520,7 +521,7 @@ anchored in a personal identifier.
 Other broad issues raised by these CybePhysical case-studies 
 include (1) testing and quality assurance and (2) data 
 interoperability.  In the case of testing, many of the scenarios 
-outlined above (and throughough this volume) require complex 
+outlined above (and throughout this volume) require complex 
 computational transformations to convert raw physical data into 
 usable software artifacts.  In `cite<FadelAdib>;, for example, 
 the authors present technology to measure heart rate from a 
@@ -549,7 +550,7 @@ this kind of network is physically deployed.
 With respect to data integration, notice how projects mentioned 
 here often anticipate pooled or overlapping information.  For 
 instance, Smart Homes are envisioned to embed sensors analyzing 
-speech, biomedical data-points like heart rate, atmosopheric 
+speech, biomedical data-points like heart rate, atmospheric 
 measurements like current temperature, and appliance or architectural 
 states like windows, doors, or refrigerator doors being open, 
 ovens or stove burners being turned on, heaters/coolers being active, 
@@ -624,7 +625,7 @@ of devices' own capabilities %-- their specific physical
 measurements and parameters.  Our data models, in short, 
 are no longer device-centric.  Instead, data models are 
 now assessed in a software-centric milieu: how do we 
-route device data to proper interpretive precedures?  
+route device data to proper interpretive procedures?  
 How do we consolidate device data into `GUI; presentations?     
 `p`
 
@@ -652,7 +653,7 @@ around Object-Oriented paradigms.
 Current literature on CyberPhysical data sharing has focused 
 primarily on establishing common formats and Ontologies for 
 CyberPhysical information: our energies have been 
-invested in stadardized representational paradigms.  But 
+invested in standardized representational paradigms.  But 
 common representational formats is only a minimal foundation 
 for robust software ecosystems.  I would argue that 
 engineers have overemphasized the virtues of standardized 
@@ -721,7 +722,10 @@ Nevertheless, engineers have not apparently adopted
 such a procedure-focused and software-centric paradigm 
 to this point.  There are a lot more academic papers on 
 CyberPhysical Ontologies or common signal/message formats, 
-like `CoAP; and `MQTT;, than there are open-source libraries 
+like `CoAP; and `MQTT; (`cite<FirasAlbalas>;, 
+`cite<BadisDjamaa>;, `cite<RiccardoGiambona>;, 
+`cite<CenkGundogan>;, `cite<JussiHaikara>;, `cite<AlejandroRodriguez>;, 
+etc.) than there are open-source libraries 
 which prototype device data, its validation, parameters, 
 and proper transformations.`footnote.
 The rationale for emphasizing standard data formats is 
@@ -751,9 +755,27 @@ servers and clients for `FHIR; (Fast Healthcare Interoperability
 Resources), and clients for `DICOM; (Digital Imaging and 
 Communications in Medicine), e.g. for Whole Slide Imaging 
 (see \url{https://www.orthanc-server.com/static.php?page=wsi}).
-`footnote`  In lieu of `q.data-centric` 
+`footnote`  A good case-in-point can be found in 
+\cite[pages 4 ff.]{PatroBanerjee} using `CLang; 
+structures to model `CoAP; meta-data: while it is 
+reasonable, even expected, for low-level driver code 
+to be implemented in `CLang;, this code should also 
+be the basis of data models implemented in a language 
+like `Cpp; where dimensions and ranges can be made explicit 
+in the data types.  Nevertheless, many engineers will 
+instead focus on describing the more nuanced 
+data modeling dimensions through Ontologies and 
+other semantic specifications wholly separate from 
+programming type systems, which has the effect of 
+scattering the data models into different artifacts: 
+low-level implementations with relatively little 
+semantic expressiveness, and expressive 
+Ontologies which, due to a lack of type-level 
+correspondence between modeling and programming 
+paradigms, are siloed from implementations themselves.   
+Here, In lieu of `q.data-centric` 
 Ontologies, whose mission is to standardize data 
-`i.representation`/, here I will consider `q.Procedural` 
+`i.representation`/, I will consider `q.Procedural` 
 Ontologies which specify procedural capabilities and 
 requirements that indicate whether software components 
 are properly managing CyberPhysical data.  The 
@@ -814,7 +836,7 @@ Technically, curated and publicly accessible data
 sets are a different genre of information space than 
 real-time data generated by CyberPhysical technology 
 (e.g. voices picked up by microphones in a Smart Home).  
-That is to say, sofware developed to access speech 
+That is to say, software developed to access speech 
 and language data sets like the `CoNLL;'s or the 
 Oriental Language Challenge has different requirements 
 than software responding to voice requests in real time 
@@ -963,7 +985,7 @@ the identity of the speaker (if a Smart Home system
 knows of specific users), where and when each sentence 
 or request was formulated, and perhaps the original 
 audio input (allowing functionality such as users playing 
-back instructions they utterred in the past).  A relevant 
+back instructions they uttered in the past).  A relevant 
 data model might thereby comprise: (1) `CoNLLU; data 
 itself; (2) location info, such as spatial position and 
 which room a speaker is found in; (3) timestamps; 
@@ -976,7 +998,7 @@ processing of speech samples.
 `p`
 
 `p.
-This data model would presumably translate to muliple 
+This data model would presumably translate to multiple 
 data types: we can envision (1) a class for `UDPipe; 
 sentences obtained from `CoNLLU; (2) a class for audio 
 samples; (3) speaker and time/location information; plus 
@@ -988,7 +1010,7 @@ to actually react to speech input, an application would
 need to map lexical data to terms and actions the software 
 itself can recognize.  For instance, `i.close the window` 
 would map to an identifier of which window is intended 
-(inferred prehaps from speaker location) and a 
+(inferred perhaps from speaker location) and a 
 `i.close` operation, which could be available via 
 actuators embedded in the window area.  All of the 
 objects which users might semantically reference 

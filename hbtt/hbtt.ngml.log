@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  26 AUG 2019 22:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  27 AUG 2019 10:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1473,15 +1473,15 @@ Overfull \hbox (2.8112pt too wide) in paragraph at lines 40--42
 []  
  []
 
-) [18]
+) [18] [19]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
-rian/vectorian84.pgf) [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 1294--1294
+rian/vectorian84.pgf) [20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 1316--1316
 []
  []
 
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 1346--1346
+
+Underfull \hbox (badness 10000) in paragraph at lines 1368--1368
 []
  []
 
@@ -1501,7 +1501,7 @@ Overfull \hbox (3.81317pt too wide) in paragraph at lines 444--444
 [] $[]$[] 
  []
 
-(./initializing-hypernodes.tex
+[28] (./initializing-hypernodes.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstlang1.s
 ty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -1539,14 +1539,15 @@ Overfull \hbox (0.7899pt too wide) in paragraph at lines 59--60
 
 LaTeX Warning: Float too large for page by 5.68835pt on input line 481.
 
-[28] (./lived.tex) [29
-\pgfsyspdfmark {pgfid13}{2226060}{4174075}
-] [30] [31] [32]
+[29
+\pgfsyspdfmark {pgfid13}{20875090}{4174075}
+] (./lived.tex) [30] [31] [32]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf) [33]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <8> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 945.
 
+ [34]
 Package microtype Info: Character `013' is missing
 (microtype)             in font `OT1/Cabin-TLF/b/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1554,7 +1555,7 @@ LaTeX Font Info:    Font shape `OT1/Cabin-TLF/bx/sc' in size <10> not available
 
 (Font)              Font shape `OT1/Cabin-TLF/b/sc' tried instead on input line
  1007.
- [34] [35]) (./section3.ngml.tex [36] [37]
+ [35] [36]) (./section3.ngml.tex [37]
 LaTeX Font Info:    Try loading font information for OMS+lmss on input line 157
 .
 LaTeX Font Info:    No file OMSlmss.fd. on input line 157.
@@ -1564,17 +1565,17 @@ LaTeX Font Warning: Font shape `OMS/lmss/b/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 157.
 
-[38]
+[38] [39]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <6> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 282.
 
- [39]) (./section3a.ngml.tex [40] [41] [42] [43]) (./section3b.ngml.tex
-[44]
+) (./section3a.ngml.tex [40] [41] [42] [43] [44])
+(./section3b.ngml.tex [45]
 Underfull \hbox (badness 10000) in paragraph at lines 106--106
 []
  []
 
-[45]
+
 Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []
  []
@@ -1589,20 +1590,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 164--164
 LaTeX Font Warning: Font shape `OT1/cmtt/b/sc' undefined
 (Font)              using `OT1/cmtt/b/n' instead on input line 77.
 
-[48] (./figGFcomplexc.tex) [49]
+[48] [49] (./figGFcomplexc.tex)
 LaTeX Font Info:    Font shape `OT1/lmss/b/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/it' tried instead on input line 286
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 286
 .
- [50]) (./section4a.ngml.tex [51] [52])
+ [50] [51]) (./section4a.ngml.tex [52])
 (./section4b.ngml.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 |[]\OT1/ptm/b/n/10.95 Channelized-Type In-ter-pre-ta-tions of Larger-
  []
 
-[53] [54] [55] (./ifte.tex) (./ifte-phr.tex
+[53] [54] [55] (./ifte.tex) [56] (./ifte-phr.tex
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 8.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -1617,10 +1618,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [56] [57
-\pgfsyspdfmark {pgfid27}{2226060}{4983062}
-\pgfsyspdfmark {pgfid34}{20875090}{6457619}
-]) (./conclusion.ngml.tex [58] [59]) (./biblio.tex
+) [57
+\pgfsyspdfmark {pgfid26}{2226060}{4983062}
+]) (./conclusion.ngml.tex [58
+\pgfsyspdfmark {pgfid33}{2226060}{6457619}
+] [59]) (./biblio.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
 rian/vectorian84.pgf)
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 25.
@@ -1640,15 +1642,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `gar' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [60]
-Overfull \hbox (110.51076pt too wide) in paragraph at lines 197--204
-[]\OT1/ptm/m/n/9 (-20) .  
- []
-
-[61] [62]
+ [60] [61] [62]
 
 LaTeX Font Warning: Font shape `OT1/gar/m/it' undefined
-(Font)              using `OT1/gar/m/n' instead on input line 396.
+(Font)              using `OT1/gar/m/n' instead on input line 428.
 
 [63]) [64]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
@@ -1664,11 +1661,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32006 strings out of 492649
- 637833 string characters out of 6122986
- 889117 words of memory out of 5000000
- 34328 multiletter control sequences out of 15000+600000
- 123163 words of font info for 449 fonts, out of 8000000 for 9000
+ 32011 strings out of 492649
+ 637966 string characters out of 6122986
+ 855517 words of memory out of 5000000
+ 34334 multiletter control sequences out of 15000+600000
+ 121594 words of font info for 444 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,12n,85p,817b,1480s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{lst--ifte--3.pgvm-pdf} has been referenced but do
@@ -1713,10 +1710,10 @@ me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb
 ></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmr8a
 .pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on hbtt.ngml.pdf (64 pages, 676874 bytes).
+Output written on hbtt.ngml.pdf (64 pages, 680209 bytes).
 PDF statistics:
- 1398 PDF objects out of 1440 (max. 8388607)
- 1276 compressed objects within 13 object streams
- 481 named destinations out of 1000 (max. 500000)
- 66395 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 1426 PDF objects out of 1440 (max. 8388607)
+ 1303 compressed objects within 14 object streams
+ 488 named destinations out of 1000 (max. 500000)
+ 64347 words of extra memory for PDF output out of 74296 (max. 10000000)
 
