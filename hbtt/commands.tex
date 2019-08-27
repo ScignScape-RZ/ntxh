@@ -1,6 +1,6 @@
 
 \usepackage{titlesec}
-\usepackage{url}
+\usepackage[hyphens]{url}
 
 \newsavebox{\tempbox}
 \sbox{\tempbox}{\raisebox{-4.5pt}%
@@ -139,7 +139,7 @@
 \usepackage[letterpaper, left=.47in,right=.47in,top=.96in,bottom=.96in]{geometry}
 
 \let\xbibitem\bibitem
-\renewcommand{\bibitem}[2]{\vspace{12pt}\xbibitem{#1}{#2}}
+\renewcommand{\bibitem}[2]{\vspace{9pt}\xbibitem{#1}{#2}}
 
 \newenvironment{frquote}{%
 %\begin{fcolorbox}{yellow!20!gray}{red!5}
@@ -199,7 +199,10 @@
 \newcommand{\T}[1]{\raisebox{-2pt}{\ensuremath{\mathcal{T}}}\textit{\tiny #1}}
 
 \newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
-{\scriptsize \textls*[-70]{\url{#1}}}}}}
+{\scriptsize {\url{#1}}}}}}
+
+%\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]%%{.2,.6,0}%
+%{\scriptsize \textls*[-70]{\burl{#1}}}}}}
 
 \newcommand{\TSupT}{\ensuremath{{\T2}\makebox[4pt][r]{\raisebox{5pt}{{\scalebox{.6}{\T1}}}}}}
 
