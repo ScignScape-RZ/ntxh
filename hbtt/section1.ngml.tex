@@ -252,7 +252,8 @@ following are some examples of data profiles that might
 be wedded to deployed CyberPhysical devices 
 (my comments here are also summarized in 
 Table~\ref{table:profiles} on page \pageref{table:profiles}): 
-\begin{description}\item[Heart-Rate Monitor]  A heart-rate sensor generates continuously- sampled integer values
+\begin{description}\item[Heart-Rate Monitor]  A heart-rate sensor generates 
+continuously-sampled integer values
 whose understood Dimension of Measurement is in \q{beats per minute}
 and whose maximum sensible range (inclusive of both
 rest and exercise) corresponds roughly
@@ -322,8 +323,8 @@ anomalies (such as cell shapes
 suggesting cancer). 
 \pseudoIndent{}
 Segmentation, in turn, 
-generates multiple forms of geometric data; in 
-\cite{KaleAksoy}; for instance, segments are 
+generates multiple forms of geometric data: in 
+\cite{KaleAksoy}, for instance, segments are 
 identified as approximations to ellipse shapes, 
 and features are tracked across scales of resolution, 
 so geometric data merges ellipse dimensions with 
@@ -338,7 +339,7 @@ see e.g. \cite{EdelsbrunnerHarer},
 \cite{HaneyMaxwell}, \cite{HarryStrange}).  
 Merged with \mWSI{} configuration info and patient data, the 
 whole data package integrates geometric, CyberPhysical, 
-and health-record dimensions. 
+and health-record aspects. 
 \item[Speech Sampling]  Audio sensors can be used to 
 isolate different people's speech episodes (see Raju Alluri 
 and Anil Kumar Vuppala, this volume, and 
@@ -346,7 +347,7 @@ Ravi Kumar Vuddagiri \textit{et. al.}, this volume).  Feature
 extraction cancels background noise and partitions the foreground 
 audio into different segments, individuated (potentially) by 
 differences between speakers as well as each 
-individual speaker's conversational turns.  Such data can 
+speaker's conversation turns.  Such data can 
 then be employed in several ways.  Ant\'onio Teixera's chapter 
 (\textit{et. al.}, this volume) discusses 
 speech-activated User Interfaces for 
@@ -373,12 +374,13 @@ User Interface might similarly model speakers' identity
 and location, but perform Natural Language Processing 
 to translate speech patterns into models of user 
 requests.  Conversely, the use-case in Vuddagiri 
-\textit{et. al.}, where speech data is parsed for language 
-classification (viz., matching voices to the language 
-or dialect spoken) as part of a \q{smart city} network, 
+\textit{et. al.} in this volume, where speech data is 
+parsed for language classification (viz., matching voices to the 
+language or dialect spoken) as part of a \q{smart city} network, 
 calls for different features.    
 The priority here is not necessarily identifying individual 
-speakers, but potentially geotagging samples to obtain a geospatial model of language-use in a given urban area. 
+speakers, but potentially tagging samples to obtain a 
+geospatial model of language-use in a given area. 
 \item[Bioacoustic Sampling]  Similar to speech sampling 
 (at least up to the point where acoustical analysis 
 gives way to syntax and semantics), 
@@ -419,16 +421,17 @@ example of the contrast in granularity
 \mdash{} between raw CyberPhysical input (the audio files), midstream 
 processing (the spectral representations), and 
 summarial overviews (species counts and labels;   
-other avian data sets might recognize 
-geospatial coordinates obtained via noting sensor placement).
+other avian data sets might also recognize 
+geospatial coordinates obtained via noting sensor placement, 
+as a further metadata dimension).
  
 \item[Facial Recognition]  Given a frontal (or, potentially, 
 partial) view, software can 
 rather reliably match faces to a preexisting database or 
-track faces across different locales \cite{WeiLunChao},
+track faces across different locales (\cite{WeiLunChao},
 \cite{YueqiDuan}, \cite{GaryHuang}, 
-\cite{KalaiselviNithya}, \cite{FengLu}, etc.  
-The methodology depends 
+\cite{KalaiselviNithya}, \cite{FengLu}, etc.).  
+The most common methodology depends 
 on normalizing each foreground image segment (corresponding to 
 one face) into a rectangle, whose axes then establish vector 
 components for any features inside the segment.  Feature extraction 
