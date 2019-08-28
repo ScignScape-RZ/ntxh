@@ -1223,6 +1223,17 @@ say %-- therefore models
 the basic `mOldLambda;-Calculus and, simultaneously, 
 the minimal theory of function-like types 
 (for Cartesian Closed type Categories).  
+In essence: a procedure's signature, or
+type-expression, can be seen as a `q.sum
+of channels`/, or an inter-channel operation.
+Notionally, a procedure is, in the simplest
+conceptualization, the unification of an
+input channel and an output channel.
+So a `q.channel sum` creates the basic
+foundation for a procedure, analogous to
+how input and output graph elements
+yield the foundations for morphisms
+in Hypergraph Categories.
 More complex channel combinations and protocols 
 can then model more complex 
 variations on `mOldLambda;-Calculi and
@@ -1230,7 +1241,6 @@ programming language type systems.
 `p`
 
 `subsubsection.Channelized Type Systems`
-
 `p.
 Collectively, to summarize my discussion to this point,
 I will say that formulations 
