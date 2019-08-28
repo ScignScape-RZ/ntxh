@@ -298,8 +298,8 @@ and whose maximum sensible range (inclusive of both
 rest and exercise) corresponds roughly
 to the `ftytwoh; interval.  Interpreting heart-rate data depends on 
 whether the person is resting or exercising.  Therefore, a 
-usable data structure will join a beats-per-minute dimension 
-with field indicating (or measuring) exertion, either a 
+usable data structure might join a beats-per-minute dimension 
+with a field indicating (or measuring) exertion, either a 
 two-valued discrimination between `q.rest` and `q.exercise` 
 or a more granular sampling of a person's movement cotemporous 
 with the heart-rate calculations.
@@ -314,9 +314,11 @@ to quantify how heart rate is affected by exercise
 calculating respiration rate).  Outside the biomedical context, 
 accelerometers are important for 
 Smart Cities (or factories, and so forth) for modeling 
-the inegrity of buildings, bridges, and industrial 
+the integrity of buildings, bridges, and industrial 
 areas or structures (see e.g. `cite<Wetherington>;, 
-`cite<LiZhu>;).  An accelerometer
+`cite<LiZhu>;).  
+`pseudoIndent;
+An accelerometer
 presents data as voltage changes in two or three directional
 axes, data which may only produce signals when a change occurs
 (and therefore is not continuously varying), and which is
@@ -328,6 +330,7 @@ of movement and incline can be derived.  Accelerometers are
 classified as `i.biaxial` or `i.triaxial` depending on 
 whether they sample forces in two or three spatial 
 dimensions.  
+`pseudoIndent;
 The pairwise combination of heart-rate and acceleration data
 (common in wearable devices) is then a mixture of these
 two measurement profiles %-- partly continuous and
@@ -342,8 +345,9 @@ camps, temporary ad-hoc medical units (established
 to contain potential epidemics, for instance), and 
 so forth.  These settings have limited diagnostic 
 capabilities, so data is often transmitted to distant 
-locations in lieu of on-site laboratories.  A 
-good case-study derives from `q.medical whole slide imaging` 
+locations in lieu of on-site laboratories.  
+`pseudoIndent;
+A good case-study derives from `q.medical whole slide imaging` 
 (`mWSI;) `cite<Auguste>;, where a mobile 
 phone attached to an ordinary microscope, 
 by subtle modifications of camera position and microscope 
@@ -357,9 +361,11 @@ in general, which
 is concerned with isolating medically significant image 
 features and identifying diagnostically significant 
 anomalies (such as cell shapes 
-suggesting cancer).  Segmentation, in turn, 
+suggesting cancer). 
+`pseudoIndent;
+Segmentation, in turn, 
 generates multiple forms of geometric data; in 
-`cite<KaleAksoy>;, for instance, segments are 
+`cite<KaleAksoy>;; for instance, segments are 
 identified as approximations to ellipse shapes, 
 and features are tracked across scales of resolution, 
 so geometric data merges ellipse dimensions with 
@@ -390,7 +396,9 @@ speech-activated User Interfaces for
 software, while the prior two chapters present methodology for 
 estimating speakers' emotional states and 
 identifying samples' spoken language or dialect, 
-respectively.  The data profile germane to 
+respectively.
+`pseudoIndent;
+The data profile germane to 
 an audio processor will be determined by the system's 
 overarching goals.  For example, `cite<JongyoonChoi>; describes 
 techniques for measuring emotional stress via heart-rate signals.  
@@ -401,13 +409,14 @@ use-cases, programming would emphasize
 signs of emotional changes (reinforced by both metrics), 
 and secondarily isolating times and locations, 
 which factor into proper sofware responses to 
-users' moods.  On the other hand, a voice-based 
+users' moods.  
+`pseudoIndent;
+On the other hand, a voice-based 
 User Interface might similarly model speakers' identity 
 and location, but perform Natural Language Processing 
 to translate speech patterns into models of user 
-requests (and the optimal software responses).       
-Conversely, the use-case in Vuddagiri `textit.et. al.`/, 
-where speech data is parsed for language 
+requests.  Conversely, the use-case in Vuddagiri 
+`textit.et. al.`/, where speech data is parsed for language 
 classification (viz., matching voices to the language 
 or dialect spoken) as part of a `q.smart city` network, 
 calls for different features.    
@@ -432,6 +441,7 @@ species populations and behavioral patterns, and can
 also add data to urban-planning or ecological models.  
 For example, precipitous decline of a species in some 
 location can signal environmental degradation in that vicinity.   
+`pseudoIndent;
 Data sets such as those accompanying `cite<JustinSalamon>; 
 (the smallest, labeled CLO-43SD, is profiled within 
 this chapter's data set)   
@@ -448,10 +458,12 @@ as part of the `WAV; and `NPY; file names, so the
 file names themselves serve a classifying role, 
 semantically linking the sample to its species.  
 These three levels of information are a good 
-example of raw CyberPhysical input (the audio files), midstream 
+example of the contrast in granularity 
+%-- and the mechanisms of information acquisition 
+%-- between raw CyberPhysical input (the audio files), midstream 
 processing (the spectral representations), and 
 summarial overviews (species counts and labels;   
-Other avian data sets might recognize 
+other avian data sets might recognize 
 geospatial coordinates obtained via noting sensor placement).
  
 \item[Facial Recognition]  Given a frontal (or, potentially, 
@@ -468,11 +480,12 @@ then isolates anatomical features like eyes, nose, mouth, and
 chin, quantifying their position and distances, yielding a 
 collection of numeric values which can statistically 
 identify a person with relatively small error rates.  
+`pseudoIndent;
 Given privacy concerns, enterprise or government use 
 of this data is controversial: should analyses be performed 
 on every person, or only on exceptional circumstances 
 (crime investigation, say)?  Can facial-recognition outcomes 
-be anonymized so that faces can be tracked across locations 
+be anonymized so that faces would be tracked across locations 
 but not tied to specific persons without extra (normally 
 inaccessible) data?  When and by whom should face data be 
 obtainable, and under what legal or commercial circumstances?  
@@ -516,7 +529,7 @@ where, e.g., speech and biometric inputs are cross-referenced.
 Different levels of data resolution also 
 intersect with privacy concerns: simpler data structures 
 are more likely to employ private or sensitive 
-information as an organizing device, heightening security 
+information as an organizing instrument, heightening security 
 and surveillance concerns.  For example, a simple 
 facial-recognition system would match faces against known 
 residents of or visitors to the relevant municipalities.  
@@ -577,13 +590,14 @@ this kind of network is physically deployed.
 With respect to data integration, notice how projects mentioned 
 here often anticipate pooled or overlapping information.  For 
 instance, Smart Homes are envisioned to embed sensors analyzing 
-speech, biomedical data-points like heart rate, atmospheric 
-measurements like current temperature, and appliance or architectural 
-states like windows, doors, or refrigerator doors being open, 
+speech, biomedical data-points like heart rate 
+(like I cited last paragraph), atmospheric 
+measurements (temperature, say) and appliance or architectural 
+states (windows, doors, or refrigerator doors being open, 
 ovens or stove burners being turned on, heaters/coolers being active, 
-and so forth.  
+and so forth).  
 In some cases this data would be cross-referenced, so that 
-e.g. a voice command could close a window or turn off a stove. 
+e.g. a voice command would close a window or turn off a stove. 
 Analogously, `cite<MohamedSoltane>; (one of whose co-authors, 
 Nouredine Doghmane, is also a coauthor of this volume's 
 chapter on bird species) describes a combination of 
@@ -594,38 +608,51 @@ will need to transmit data to a hub where the two inputs
 can be pooled.  Or, as I pointed out in the case of 
 Mobile Whole Slide Imaging, image-segmentation, 
 CyberPhysical, and personal-health information fields 
-may all be integrated into a diagnostic platform.
+may all be integrated into a holistic diagnostic platform.
 `p`
 
 `p.     
 Overall, future CyberPhysical systems may be integrated 
 not only with respect to their empirical domain but in term 
-of the environs where they are deployed %-- smart homes, 
-smart cities, factories or industrial plants, hospitals and 
+of the environs where they are deployed %-- Smart Homes, 
+Smart Cities (or factories or industrial plants), hospitals and 
 medical offices, schools and children's activities centers, 
 refugee or displaced-persons camps/campuses, and so forth.  
-I'll take smart homes as a case in point: 
-we can imagine future `mbox<homes/apartments>; provisioned with a panoply 
+I'll take Smart Homes as a case in point. 
+We can imagine future `mbox<homes/apartments>; provisioned with a panoply 
 of devices evincing a broad spectrum of scientific backgrounds, 
 from biology and medicine to ecology and industrial manufacturing.      
 `p`
 
+\subsubsection[How Internet of Things Interoperability
+Affects Data Modeling Priorities]{How `q.Internet of Things` Interoperability Affects Data Modeling Priorities}
 `p.
-In this eventuality, individual devices are no longer isolated in 
-proprietary circuits linking device signals to databases and 
-phone apps, for example, where customers purchase 
-each app, and its associated device(s), in isolation.  
+So, imagine the following scenario: homeowners have a choice 
+of applications that they may install on their in-home computers, 
+supplied by multiple vendors or institutions, which access 
+the myriad of Smart Home devices they've installed around the 
+property.  CyberPhysical products are engineered to 
+interoperate with such hub applications %-- and therefore 
+with third-party components %-- as well as with their own 
+`q.in house`/-implemented offerings, such as phone apps.
+`p`
+
+`p. 
+In this eventuality, individual devices are no longer situated in 
+proprietary circuits linking device signals to apps and 
+databases, for example, where customers purchase 
+each app, and its associated input instrument(s), in isolation.  
 Devices are not only being 
 connected to their own product suite.  Instead, technology inside 
 the home is charged with pooling data from many kinds of devices 
 into a comprehensive Smart Home platform, where users can see a 
 broad overview, access disparate device data from a central location, 
-and where cross-device data can be merged into aggregate models: 
+and where cross-device data will be merged into aggregate models: 
 e.g., cross-referencing speech and biometric inputs.  
 In this scenario, devices must be designed to broadcast 
 data to third-party software platforms.  Smart Home `q.hub` 
-applications will likely be often upgraded; likewise, home 
-owners/renters will likely buy or replace devices fairly 
+applications are likely to be often upgraded; likewise, home 
+owners/renters would likely buy or replace devices fairly 
 often, so the precise configuration of data senders and 
 receivers will dynamically evolve.  These givens call for 
 a modular, flexible architecture where a central software 
@@ -633,6 +660,47 @@ hub is poised to receive data from different devices as
 they come `q.online`/, i.e., exposed on the Smart Home 
 internal network.  Hub applications should seamlessly 
 adjust to devices joining and also exiting the network.       
+`p`
+
+`p.
+A plausible response to this scenario is that usage patterns 
+might predict different architectures, since homeowners 
+are more likely to consult device data on a phone or a 
+touch-screen rather than sitting at a computer.  Indeed, 
+we can envision that many `IoT; instruments will have their 
+own `HCI; `q.circuit`/, sending data to phones or 
+in-house touch screens `i.as well as` to hub applications.  
+Nevertheless, it is reasonable to hypothesize that users 
+will `i.sometimes` access `IoT; information from 
+hub applications, because sometimes they want a comprehensive 
+overview: they want to map device locations against 
+floor plans, compare how much energy devices are using, 
+find when devices need upgrades, and so forth.  Homeowners 
+will sometimes want to engage holistically with all their 
+Smart Home appliances, in contrast to interacting with 
+one applicance at a time via its own app.   
+`p`
+
+`p.
+Moreover, a centralized application serves as a reference point 
+for prototyping, testing, and securitization.  The best way 
+to ensure that an overall Smart Home ecosystem is safe 
+and reliable is to stress-test a central hub where all 
+devices are integrated, from which each individual device 
+can be examined in particular.  Such an integrated 
+approach would be more foolproof than performing disconnected 
+analyses of each proprietary device network on its own 
+terms.  For examples, engineers might test devices in a 
+model home, using hub applications to facilitate and 
+document the testing process.  Hub software thereby serves 
+a skeletal role in product design and quality control, 
+above and beyond its utility to homeowners themselves 
+as access-points to Smart Home data.  As I said at the 
+top of the chapter, hubs promote quality CyberPhysical 
+technology by prototyping system architecture 
+and requirements; smaller-scale access points, like phone apps 
+or touch screens, should be conceptualized as 
+offshoots `i.of` a hub application, not as a substitute for one. 
 `p`
 
 `p.
@@ -649,7 +717,13 @@ mapped to appropriate transform procedures and
 `GUI; components.  This is an important point, because 
 we are no longer considering data models from the viewpoint 
 of devices' own capabilities %-- their specific physical 
-measurements and parameters.  Our data models, in short, 
+measurements and parameters.  More technically, the 
+key libraries associated with drivers are no longer 
+just low-level drivers or `IoT; signal processors; 
+the technology stack needs a software-prioritizing 
+semantic layer intermediate between `q.smart objects` 
+and corresponding hub applications.
+The data models at this semantic midlayer, in short, 
 are no longer device-centric.  Instead, data models are 
 now assessed in a software-centric milieu: how do we 
 route device data to proper interpretive procedures?  
@@ -706,7 +780,7 @@ aggregate their data, providing users access points to and
 overviews of device data and state.  Hub applications may be 
 provided by different companies and iterations, 
 their inner workings opaque to devices themselves.  What 
-can be standardized, however, are the procedures 
+can be standardized, however, are the `i.procedures` 
 implemented within hub software to receive and properly 
 act upon device data.  Software might guarantee, for example, 
 that so long as devices are supplying signals in 
@@ -793,17 +867,21 @@ in the data types.  Nevertheless, many engineers will
 instead focus on describing the more nuanced 
 data modeling dimensions through Ontologies and 
 other semantic specifications wholly separate from 
-programming type systems, which has the effect of 
+programming type systems.  This has the effect of 
 scattering the data models into different artifacts: 
 low-level implementations with relatively little 
 semantic expressiveness, and expressive 
 Ontologies which, due to a lack of type-level 
 correspondence between modeling and programming 
-paradigms, are siloed from implementations themselves.   
-Here, In lieu of `q.data-centric` 
-Ontologies, whose mission is to standardize data 
-`i.representation`/, I will consider `q.Procedural` 
-Ontologies which specify procedural capabilities and 
+paradigms, are siloed from implementations themselves.
+`p`
+
+`p.  
+In this chapter, conversely, in lieu of `q.data-centric` 
+Ontologies whose mission is to standardize how information 
+is mapped to a `i.representation`/, I will consider 
+`q.Procedural` 
+Ontologies: ones which focus on procedural capabilities and 
 requirements that indicate whether software components 
 are properly managing CyberPhysical data.  The 
 idea is that proving procedural conformance should be a 
@@ -813,13 +891,13 @@ is trustworthy and complies to technical and legal specifications.
 `p`
 
 `p.
-The above discussion, for example, mentioned the CLO-43SD  
+In practical terms, the above discussion mentioned the CLO-43SD  
 (avian) data set and Vuddagiri `i.et. al.`/'s 
 chapter, which (as noted below) builds off 
 the CLO-43SD `q.challenge` corpus.  I will also 
 refer to recent `CoNLL; corpora, so 
 these are three representative examples of 
-data sets specific to CyberPhysical and/or 
+data sets tangibly applicable to CyberPhysical and/or 
 `NLP; Research and Development: one audio-based 
 (for species identification), one audio/speech, 
 and one linguistic.  Based on the idea that 
@@ -830,14 +908,19 @@ of their information spaces and analytic methods
 (e.g., spectral waveform analysis, or Dependency Grammar 
 parsing).  Such modeling is not always a priority 
 of data set publishers, which suggests that new 
-data publishing methodology is one concrete 
+data publishing methodology is one non-theoretical  
 step that engineers could take toward 
 a more robust CyberPhysical software-development ecosystem.  
-Accompanying materials for this volume, for instance, 
+Accompanying materials for this chapter 
 provide profiles of the three aforementioned data sets 
 which consolidate their various files and formats into 
 a streamlined %-- and procedure-oriented, 
-`q.software-centic` %-- representational paradigm.
+`q.software-centic` %-- representational paradigm.  
+I hope to show by reworking the data sets how 
+`RnD; models can propagate to procedure-oriented 
+and software-centric `q.semantic middleware` layers, 
+which ultimately streamline the end-goal of achieving 
+safe, reliable CyberPhysical applications.
 `p`
 
 `p. 
@@ -855,7 +938,7 @@ cycle, which means that data profiles tend
 to emerge within the scientific process of 
 formulating and refining technical and algorithmic 
 designs.  This is particularly true for complex, 
-computationally nuanced challenges like image segmentation 
+computationally nuanced challenges such as image segmentation 
 or (to cite one above example) measuring heartbeats 
 and breathing patterns via subtle waveform analysis.  
 We can assume that each `RnD; phase will itself leave 
@@ -1145,7 +1228,6 @@ developing more abstract or theoretical models
 of procedures, as formal constructions, subsequently 
 in the chapter. 
 `p`
-`input<profiles>;
 
 %`spsubsection.Proactive Design`
 `subsection.Proactive Design`
@@ -1168,6 +1250,7 @@ consequence, `i.error classification` is especially
 important %-- distinguishing kinds of software errors
 and even which problems are software errors to begin with.
 `p`
+`input<profiles>;
 
 `p.
 Summarizing the case studies from earlier in this section, 
