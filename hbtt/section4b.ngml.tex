@@ -277,6 +277,7 @@ non-\lambdach{} channels \mdash{} a transform that would belong to the
 larger topic of treating blocks as function-values
 passed to other functions, to which I now turn.
 }
+\itcl{ifte}
 \subsubsection{Code Blocks as Typed Values}
 \p{Insofar as blocks can be typed as procedures,
 they may readily be passed around: so loops, \ifthenelse{},
@@ -319,12 +320,11 @@ some carriers are of this \q{delayed} kind.
 Functions like \ifthenelse{} can then be declared in
 terms of these carriers.
 }
-\itcl{ifte}
 \p{Given a runtime engine based on Channel Algebra, deferred 
 evaluation is relatively straightforward: any delayed expression 
 can be saved according to its channel-package data structure, 
 which can be passed to functions as an encapsulation of 
-the (not-yet-evaluated) expression itself.  Code sample 
+the (not-yet-evaluated) expression itself.  Code Sample
 \ref{lst:ifte} shows an implementation from the demo, 
 on the runtime side.  At {\OneOverlay}, a pointer to 
 the relevant unevaluated expression is extracted, 
