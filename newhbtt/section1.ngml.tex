@@ -876,7 +876,7 @@ is trustworthy and complies to technical and legal specifications.
 \p{In practical terms, the above discussion mentioned the CLO-43SD  
 (avian) data set and Vuddagiri \i{et. al.}'s 
 chapter, which (as noted below) builds off 
-the CLO-43SD \q{challenge} corpus.  I will also 
+the AP17-OLR \q{challenge} corpus.  I will also 
 refer to recent \CoNLL{} corpora, so 
 these are three representative examples of 
 data sets tangibly applicable to CyberPhysical and/or 
@@ -888,16 +888,52 @@ we should look to data sets like these
 to provide semantic and type-theoretic encapsulations 
 of their information spaces and analytic methods 
 (e.g., spectral waveform analysis, or Dependency Grammar 
-parsing).  Such modeling is not always a priority 
-of data set publishers, which suggests that new 
-data publishing methodology is one non-theoretical  
-step that engineers could take toward 
-a more robust CyberPhysical software-development ecosystem.  
-Accompanying materials for this chapter 
-provide profiles of the three aforementioned data sets 
+parsing).  Accompanying materials for this chapter 
+provide profiles of the three aforementioned data sets, 
 which consolidate their various files and formats into 
 a streamlined \mdash{} and procedure-oriented, 
 \q{software-centic} \mdash{} representational paradigm.  
+The demo code presents examples 
+of procedures and data types targeting these 
+data sets, as well as an architecture for 
+deploying data sets in a procedure-oriented and 
+software-centric manner, in terms of how files 
+and the information they contain are organized, 
+and also employment of data-publishing standards 
+such as the \q{Research Object} model 
+(\cite{KhalidBelhajjame}, \cite{KhalidBelhajjameWorkflow},
+\cite{PhilipEBourne}, \cite{MarkDWilkinson}). 
+}
+\p{Alongside these demo sets, an addition demonstrative 
+example is provided addressing biomedical device profiles 
+and patient data (including privacy and security concerns).  
+The focus of these examples is more architectural: 
+\Cpp{} classes are organized to partition patient-specific 
+data points into multiple layers (such as private data,
+demographic data, and \q{cohort models} in the sense 
+of \cite{EranBellin} which permit detailed course-of-treatment 
+and treatment outcomes to be represented without sacrificing 
+privacy), along with encryption techniques for the most 
+sensitive infomation layers.  The implementation 
+demonstrates methods for sharing medically significant 
+data with some degree of detail while also constraining 
+access to secure layers within that data as necessary, 
+illustrating how \GUI{}-based applications can both 
+adapt to the lack of securitized data as well as 
+proper protocols for accessing those layers.  The demo 
+also prototypes integration of patient-centric layers 
+with biomedical device profiles, so that the abovementioned 
+patient information models can be leveraged in the 
+context of software managing CyberPhysical health data 
+(including \q{Ubiquitous Sensing for Healthcare}-style 
+input streams). 
+}
+\p{Software-centric modeling such as prototyped in 
+these demo implementations is not always a priority 
+of data set publishers \mdash{} which suggests that new 
+data publishing methodology is one non-theoretical  
+step that engineers could take toward 
+a more robust CyberPhysical software-development ecosystem.  
 I hope to show by reworking the data sets how 
 \RnD{} models can propagate to procedure-oriented 
 and software-centric \q{semantic middleware} layers, 

@@ -11,6 +11,11 @@
 #include<QString>
 #include<QDebug>
 
+#include <QProcess>
+#include <QDir>
+#include <QFileInfo>
+
+
 const int Nx = 128;
 const int Ny = 64;
 const int Nz = 32;
@@ -27,11 +32,64 @@ const int Nz = 32;
 //std::vector<double> data;
 //npy::LoadArrayFromNumpy(filename, shape, data);
 
+#include "textio.h"
+
+USING_KANS(TextIO)
+
+QString convert(QString dir, QString ndir, QString file, QString py_file)
+{
+ QString py = QString(R"(
+import numpy
+a = numpy.load("%1/%2.npy", allow_pickle=True, encoding='latin1')
+numpy.save("%3/%2.2.npy", a, fix_imports=True))").arg(dir).arg(file).arg(ndir);
+
+ save_file(py_file, py);
+
+ QProcess proc;
+ QString cmd = QString("python3 %1").arg(py_file);
+ proc.execute(cmd);
+
+ return QString("%1/%2.2.npy").arg(ndir).arg(file);
+}
+
+
 
 int main()
 {
+ QString dir = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc";
+ QString ndir = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc2";
+ QString script = "/home/nlevisrael/hypergr/bird/CLO-43SD/conv-mfcc.py";
+
+ QDir qdir(dir);
+
+ QStringList npys = qdir.entryList(QStringList() << "*.npy", QDir::Files);
+
+ QMap<QString, int> species;
+
+
+ for(QString npy: npys)
  {
-  std::string filename = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc/AMRE2330536360101.mfcc.2.npy";
+  QFileInfo qfi(npy);
+
+  QString sp = qfi.baseName();
+
+  sp = sp.left(4);
+
+  ++species[sp];
+
+  QString bn = qfi.completeBaseName();
+  qDebug() << bn;
+
+  QString c = convert(dir, ndir, bn, script);
+
+ }
+
+
+
+
+#ifdef HIDE
+ {
+  std::string filename = c.toStdString();
 
   cnpy::NpyArray arr = cnpy::npy_load(filename);
 
@@ -93,8 +151,7 @@ int main()
 // check that the loaded myVar1 matches myVar1
 // cnpy::NpyArray arr_mv1 = my_npz["myVar1"];
 // double* mv1 = arr_mv1.data<double>();
-
-
+#endif // HIDE
 }
 
 int main3()
@@ -139,5 +196,5 @@ int main3()
     cnpy::NpyArray arr_mv1 = my_npz["myVar1"];
     double* mv1 = arr_mv1.data<double>();
     assert(arr_mv1.shape.size() == 1 && arr_mv1.shape[0] == 1);
-    assert(mv1[0] == myVar1);
+    assert(mv1[0] == myVar1);    
 }

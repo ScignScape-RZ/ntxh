@@ -3,6 +3,11 @@
 #include(../build-group.pri)
 
 
+
+INCLUDEPATH += /home/nlevisrael/hypergr/ntxh/ar/cpp/src
+
+USING_KANS
+
 QT += widgets
 
 HEADERS += \
