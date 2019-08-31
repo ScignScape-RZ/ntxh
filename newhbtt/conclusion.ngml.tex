@@ -11,15 +11,11 @@ work in a software ecosystem, where data structures have
 sufficient predictability and classification that they 
 are amenable to algorithms and mutations to accommodate 
 different software roles, such as database and 
-\GUI{} presentations.  Software users should not feel as 
-if they have to wrangle real-world data into awkward 
-formats, in order to introduce information they deem
-worthy of being shared and studied into a digital 
-ecosystem.  On the other hand, digital resources 
-should have enough structure and planning to be 
-accessible to high-quality software, with optimized 
-User Interface design and responsiveness, as well 
-as trustworthy safety and privacy features.    
+\GUI{} presentations.  Data models should be 
+\i{systematic} so that they engender safe, 
+reliable code.  On the other hand, digital resources 
+should be expressive enough to represent 
+complex concepts without oversimplification.    
 }
 \p{Achieving all of these goals involves a certain balancing 
 act, where data repositories are modeled via expressive, 
@@ -122,9 +118,13 @@ of data models generally.  Data structures
 can be indirectly systematized in terms of 
 the procedures which act upon them.  
 }
-\p{With this background, the demo proposes a notion of 
-\q{Procedural Hypergraph Ontology} which 
-extends (or diverges from) conventional 
+\p{With this background, the code archive supplementing 
+this chapter operationalizes the notion of  
+\q{Procedural Hypergraph Ontologies}, combining 
+features of Procedural Ontologies and of 
+Directed Hypergraphs that I have presented in 
+this chapter.  Procedural Hypergraph Ontologies 
+extend (or diverge from) conventional 
 Semantic Web Ontology partly by orienting toward 
 Hypergraphs, but more substantially by centering 
 on this procedural dimension: the role of an
@@ -144,90 +144,28 @@ Both static data structures and compiled channel groups
 translate to a Hypergraph format, which thereby serves as 
 a common denominator between code and data.  
 }
-\p{Rigorous procedural documentation, or Interface Definition, can 
-then serve several different roles in application development, 
-including testing, Requirements Engineering, and \GUI{} design.  
-In particular, a formal review of important procedures exposed 
-by a software component allows front-end development to identify 
-which operational features need to covered by interactive 
-User Interface components; for example, what units of 
-functionality should be linked to buttons, context menus, 
-and other responsive design elements.  
-}
-\p{Extending Interface Definition outward to front-end \GUI{} 
-layers then presents the challenge of integrating 
-rigorous data-modeling paradigms with quality 
-front-end software affordances.  
-Whether or not by technical necessity or just entrenched culture, 
-\GUI{} frameworks are still predominantly built in Procedural
-or Object-Oriented languages like \CLang{}, \Java{}, and \Cpp{}.  It seems likely
-that a truly integrated type system, covering User Interface as 
-well as data management logic, will need a hybrid functional/procedural 
-paradigm at some stratum \mdash{} either the underlying \GUI{} framework or 
-at application-level code.  So long as \GUI{} frameworks remain 
-committedly procedural, the most likely site for such hybrid 
-paradigms to emerge is at the application level, and in the 
-context of application-development \SLE{} tools.
-}
-\p{Implementing \GUI{} layers in a Functional environment is usually 
-approached from the perspective of \i{functional reactive} 
-programming, which emphasizes how the interface between visual 
-components and controller logic can be structured in terms 
-of \i{event-driven} programming.  In this paradigm, there is 
-no \i{immediate} linkage between \GUI{} events and the 
-functions called in response \mdash{} for example, no 
-single function that automatically gets called when the user 
-clicks a mouse button.  Instead, events are entered into a pool 
-wherein each event may have a varying number of handlers 
-(including being ignored entirely).  This style of 
-programming accords well with paradigms that try to minimize 
-the number of functions with side effects.  Event-handlers are free 
-to post new signals (these are interpreted as events) which 
-may in turn be handled by other functions \mdash{} so that 
-signals may be routed between multiple functions entirely 
-without side-effects.  That said, most events \i{should} cause 
-side effects eventually \mdash{} for instance, after all, 
-a user does not typically 
-initiate an action (triggering an event) without intending 
-to change something in the application data or display.  But 
-events can be routed between pure functions until an eventful 
-handler is called, so side-effects can be localized in a 
-proportionately small group of functions.
-}
-\p{Moreover, certain qualities of \GUI{} design can be expressed as 
-logical constraints rather than as application-level state enforced 
-by procedural code.  For example, optimal design may stipulate that some 
-graphical component must automatically be resized and repositioned to remain 
-centered in its parent window, sustaining that geometry even when 
-the window itself is resized.  
-Functional-Reactive frameworks allow many of these constraints to be 
-declared as logical axioms on the overall visual layout and properties 
-of an application, constructing the procedures to maintain this 
-state behind-the-scenes \mdash{} which minimizes the extent of 
-procedural code needing to be explicitly maintained by application developers.
-}
-\p{But while Functional Reactive Programming is a strategy for 
-providing \GUI{} layers on a Functional code base, it can equally 
-be treated as an Event-Driven enhancement to Object-Oriented 
-programming.  In an \OO{} context, events and signals constitute an 
-alternative form of non-deterministic method-call, where signal-emitting 
-objects send messages to receiver functions \mdash{} except indirectly, 
-passing through event-pools.  Indeed, as documented 
-by the demo code, events and signals 
-have a natural expression in terms of Channel Algebra, where both signal 
-emitters and receivers are represented via special \q{Sigma} channels.  
-On this evidence, Functional Reactive Programming should be assessed not 
-just as a \GUI{} strategy for Functional languages but as a 
-hybrid methodology where Functional and Object-Oriented 
-methodologies can be fused, and integrated.
-}
-\p{Contemporary software engineering still seems caught in a paradigm 
-split, with Functional and Object-Oriented styles seen as 
+\p{I believe that procedure-oriented, software-centric 
+codewriting paradigms \mdash{} and technical constructions 
+such as Channel Algebra and Channelized Hypergraphs 
+\mdash{} are useful because they can adapt to different 
+programming environments, and integrate the best 
+aspects of Object-Oriented, Functional, and Logical 
+programming.  Contemporary software engineering still seems caught in 
+a paradigm split, with Functional and Object-Oriented styles seen as 
 competitors rather than candidates for admixture, and with a 
 profound divergence between code libraries targeting native, 
 desktop applications and those designed for the web ecosystem.  
-I believe that further research in programming language design 
-and software engineering methodology will however reveals 
+But safe and reliable software needs to use both Object-Oriented 
+and Functional techniques when each are called for, 
+and, ideally, needs to deliveral applications combining 
+native and web components.   
+}
+\p{In short, the methodological divisons which have characterized 
+software engineering in the last quarter-century have hindered,
+rather than helped, the ultimate goal of creating 
+quality applications \mdash{} software that users can trust 
+and enjoy.  I believe that further research in programming language design 
+and software engineering methodology will reveal  
 these divisions to be preliminary, and a new generation of 
 web/desktop and Object/Functional hybrid paradigms can emerge.  
 Given the unique requirements of the CyberPhysical domain, 

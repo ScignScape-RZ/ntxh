@@ -1,6 +1,6 @@
 \section{Directed Hypergraphs and Generalized Lambda Calculus}
 \phantomsection\label{sTwo}
-\p{Thus far, I have written in general terms about 
+\p{Thus far in this chapter, I have written in general terms about 
 architectural features related to CyberPhysical software; 
 in particular, verifying coding assumptions concerning 
 individual data types and/or procedures.  My comments 
@@ -11,7 +11,7 @@ how to model software components at different scales
 so as to facilitate robust, safety-conscious coding practices.   
 }
 \p{Note that almost all non-trivial software is in some 
-sense \q{procedural}; the total package of 
+sense \q{procedural}: the total package of 
 functionality provided by each software component 
 is distributed among many individual, interconnected 
 procedures.  Each procedure, in general, 
@@ -33,8 +33,8 @@ to develop a comprehensive model of computer code which
 accommodates a representative spectrum of coding styles 
 and paradigms. 
 }
-\p{There are perhaps three different perspectives which can be 
-taken toward such a comprehensive theory.  One route is 
+\p{There are perhaps three different perspectives for 
+such a comprehensive theory.  One perspective is 
 to consider source code as a data structure in its 
 own right, employing a Source Code Algebra or 
 Source Code Ontology to assert properties of source code 
@@ -44,11 +44,11 @@ consider procedures as instances of functional types,
 specified by tuples of input and output types.  
 A procedure is then a transform which, in the presence 
 of (zero or more) inputs having the proper types, produces 
-(one or more) outputs with their respective types.  In practice, 
-some procedures do not return values, but they \i{do} have 
-some kind of side-effect, which can be analyzed as a 
-variety of \q{output}.  Finally, procedures can be studied 
-via mathematical frameworks such as the Lambda Calculus, 
+(one or more) outputs with their respective types 
+(In practice, some procedures do not return values, but they 
+\i{do} have some kind of side-effect, which can be analyzed as a 
+variety of \q{output}.)  Finally, third, procedures can be 
+studied via mathematical frameworks such as the Lambda Calculus, 
 which allows notions of functions on typed parameters, and 
 of functional application \mdash{} applying functions to concrete 
 values, which is analogous to calling procedures with 
@@ -64,7 +64,7 @@ elements of all three.
 %\spsubsection{Generalized Lambda Calculus}
 \subsection{Generalized Lambda Calculus}
 \p{Lambda (or \mOldLambda{}-) Calculus emerged in the early 
-20th century as a formal model of mathematical 
+20th Century as a formal model of mathematical 
 functions and function-application.  There are 
 many mathematical constructions which can be 
 subsumed under the notion of \q{function-application}, 
@@ -102,8 +102,8 @@ two givens: that the \rRad{} symbol is \q{free} in the first formula
 value, like \piSym{} \mdash{} and that free symbols (like \rRad{}) can be 
 bound to other formulae, yielding new equations. 
 }
-\p{From cases like these \mdash{} relative simple geometric 
-expressions \mdash{} mathematicians began to ask foundation 
+\p{From cases like these \mdash{} relatively simple geometric 
+expressions \mdash{} mathematicians began to ask foundational 
 questions about mathematical formulae: what are all formulae 
 that can be built up from a set of core equations via 
 repeatedly substituting nested expressions for
@@ -899,6 +899,7 @@ I will now discuss a corresponding expansion in the
 realm of applied Type Theory, with the goal of 
 ultimately folding type theory into this convergence as well.   
 }
+\vspace{-.1em}
 %\spsubsectiontwoline{Procedural Input/Output Protocols via Type Theory}
 \subsectiontwoline{Procedural Input/Output Protocols via Type Theory}
 \p{\label{types}Parallel to the historical evolution where \mOldLambda{}-Calculus
