@@ -1,450 +1,272 @@
-
-`subsubsection.Channelized-Type Interpretations of
-Larger-Scale Source Code Elements`
+%`spsubsection.Dependent Types and Typestate`
+`subsection.Dependent Types and Typestate`
 `p.
-By intent, Channel Algebras provide a machinery for modeling
-function-call semantics more complex than `q.pure` functions
-which have only one sort of input parameter (as in lambda
-abstraction) %-- note that this is unrelated to
-parameters' `i.types` %-- and one sort of (single-value) return.
-Examples of a more complex paradigm
-come from Object-Oriented code, where there are two varieties of
-input parameters (`q.lambda` and `q.sigma`/); the 
-`q.sigma` (`thisc;) carrier is privileged, because its type 
-establishes the class to which
-function belongs %-- influencing when the function may be
-called and how polymorphism is resolved.`footnote.
-Also, as I discussed earlier (page \hyperref[chaining]{\pageref{chaining}}), 
-`q.chaining` method calls means 
-that the result of one method becomes an object that may then receive 
-another method (the following one in the chain).  Such 
-chaining allows for an unambiguous function-composition operator.
-`footnote`
+Typestates are finer-grained classifications than types.  However, just
+as it is `q.reasonable` to consider each range as its own type %-- in
+the sense that a coherent `TXL; should allow range-value types, even
+if in practice a language may limit how such types are actualized %--
+it is also `q.reasonable` to factor typestates into types as well.
+A canonical example of typestate is restricting how functions are
+called which operate on files.  A single `q.file` type actually covers several
+cases, including files that are open or closed, and even files that
+are nonexistent %-- they may be described by a path on a filesystem
+which does not actually point to a file (perhaps in preparation for
+creating such a file).  Instead of `i.one` type covering
+each of these cases, we can envision `i.different` types for nonexistent,
+closed, or open files.  With these more detailed types, constraints
+like `q.don't try to create an already-existing file`
+or `q.don't try to modify a closed or nonexistent file` are enforced by
+type-checking.
 `p`
 
 `p.
-Another case-study
-is offered by exceptions.  
-A function throws an exception instead of returning a value.
-As a result, `returnc; and `errorc; channels typically
-evince a semantic requirement (which earlier %-- see
-page \hyperref[retexc]{\pageref{retexc}} %-- I sketched
-as an algebra stipulation): when functions
-have both kinds of channels, only one
-may have an initialized carrier after the function
-returns.
-Usually, thrown-exception values can only be bound to carriers
-in `catchddd; formations %-- once held in a carrier
-they can be used normally, but carriers in `exceptionch;
-channels themselves can only transfer values to
-other carriers in narrow circumstances
-(this in turn depends on things like code
-blocks, which in turn will be reviewed below).
-So `errorc; channels are not a sugared
-form of ordinary returns, any more than objects are sugar for
-functions' first parameter; there are axiomatic criteria
-defining possible formations of `errorrc; and `returnrc;
-channels and carriers, criteria which are more transparently
-rendered by recognizing `errorrc; and `returnrc; as
-distinct channels of communication available
-within function bodies.
+While this kind of gatekeeping is valuable in theory, it raises
+questions in practice.  Reifying `q.cases` %-- i.e., `i.typestates`
+like open, closed, or nonexistent %-- to distinct `i.types`
+implies that a `q.file` value can go through different
+types between construction and destruction.  If this is literally true, it
+violates the convention that types are an intrinsic and fixed aspect of
+typed values.  It is true that, as part of a type cast, values can be
+reinterpreted (like treating an `int; as a `float;), but this
+typically assumes a mathematical
+overlap where one type can be considered as subsumed by a different type
+for some calculation, `i.without this changing anything`/:
+any integer is equally a ratio with unit denominator, say.
+`q.Casting` a closed file to an open one is the opposite effect,
+using disjunctures between types to capture the fact that state
+`i.has`/ changed; to capture a trajectory of states for one
+value %-- which must then have different types at
+different times, since this is the whole point of modeling successive
+states via alternations in type-attribution.
 `p`
 
 `p.
-In general, extensions to `lambdaCalculus; are
-meaningful because they model semantics other than
-ordinary lambda abstraction.  For example, method-calls
-(usually) have different syntax than non-method-calls,
-but `sigmaCalculi; aren't trivial extensions or
-syntactic sugar for `lambdach;s; the more significant difference is
-that sigma-abstracted symbols and types have different
-consequences for overload resolution and function
-composition than `lambdach;-abstractions.  Similarly,
-exceptions interact with calling code differently
-than return values.  Instead of scattered
-`mOldLambda;-extensions, Channel Algebra unifies multiple
-expansions by endowing functions (their signatures,
-in the abstract, and function-calls, in the concrete)
-with multiple channels, each of which can be
-independently modeled by some `mOldLambda;-extension
-(objects, exceptions, captures, and so forth).
+An alternative interpretation is that the `q.trajectory` is not a
+single mutated value but a chain of interrelated
+values, wherein each successive value is obtained via a state-change
+from its predecessor.  But a weakness of this chain-of-values
+model is that it assumes only one value in the chain is currently
+correct: a file can't be both open and closed, so if one value
+with type `q.closed file` is succeeded by a different value with
+type  `q.opened file`/, the latter value will be correct only
+if the file was in fact opened, and the former otherwise %-- but
+a compiler can't know which is which, `i.a priori`/.  Or,
+instead of a `q.chain` of differently-typed values we can employ a
+single general `q.file` type and then `q.cast` the value to
+an `q.open file` type when a function needs specifically
+an `i.open` file, and so forth.   The effect in that case is to
+insert the cast operator as a `q.gatekeeper` function preventing
+the function receiving the casted value from receiving nonconformant
+input.  Again, though, the compiler cannot make any assumptions about
+whether the `q.casts` will work (e.g., whether the attempt to open
+a file will succeed).
 `p`
 
 `p.
-Specific examples of unorthodox `lambdas; (objects, exceptions, captures)
-suggest a general case: relations or operators between
-functions can be modeled as relations between their respective
-channels, subject to certain semantic restrictions.  A `i.method` can
-be described as a function with several different channels:
-say, a `q.`lambdach;` channel with ordinary arguments (as in
-`mOldLambda;-calculus); a `q.`sigmach;` channel with a distinguished
-`thisc; carrier (formally studied via `q.`sigmaCalculus;`/); and
-a `returnc; channel representing the return value.  Because the contrast between
-these channels is first and foremost `i.semantic` %-- they have different
-meanings in the semantics of the programs where they appear %--
-channels may therefore have restrictions governed by
-programs' semantics.  For example, as I mentioned
-in the context of `q.method chaining`/, it may be stipulated that both
-`sigmac; and `returnc; channels can have at most one carrier;
-as a result, a special channel-to-channel operator can be defined which
-is specific to passing values between the carriers of
-`returnc; and `sigmac; channels.  This operator is available because
-of the intended semantics of the channel system.
-`p`
-
-`p.
-In general, a Channel Algebra identifies
-several `i.kinds` of channels which
-each have their own semantic interpretation, and accompanying axioms
-or restrictions.  On the basis of these semantic details,
-channel-to-channel operators can be defined, derived from
-underlying carrier-to-carrier operators.  A Channel Algebra in this sense
-is not a single fixed system, but an outline for modeling
-function-call semantics in the context of different programming
-languages and environments.
-`p`
-
-`p.
-As the preceding paragraphs have presupposed, different
-functions may have different kinds of channels, which may
-or may not be reflected in functions'
-types (consider the question, can
-two functions have the same type, if
-only one may throw an exception)?  This may vary between type
-systems; but in any case the contrast between channel `q.structures`
-is `i.available` as a criteria for modeling type descriptions.
-On this basis, as I will now argue, we can provide type-system
-interpretations to source code structures beyond just
-values and symbols.
-`p`
-
-`subsubsection.Statements, Blocks, and Control Flow`  `
-`p.
-The previous paragraphs discussed expanded channel structures %-- with,  
-for example,  
-objects and exceptions %-- that model call semantics more complex
-than the basic lambda-and-return (of classical `mOldLambda;-Calculus).  
-A variation on this theme, in the
-opposite direction, is to `i.simplify` call structures: functions
-which lack a return channel have to communicate solely through
-side-effects, whose rigorous analysis demands a
-`q.type-and-effect` system.  Even further, consider functions
-with neither `lambdac; nor `returnc; (nor `sigmac;
-nor, maybe, `errorc;).
-As an alternate channel of communication, suppose function bodies
-are nested in overarching bodies, and can
-`q.capture` carriers scoped to the enclosing function.  `q.Capture semantics`
-specifications in `Cpp; are a useful example, because
-`Cpp; (unlike most languages that support anonymous or `q.intra-expression`
-function-definitions) mandates that symbols are explicitly captured
-(in a `q.capture clause`/), rather than allowing functions to access
-surrounding lexically-scoped with no further notation:
-;;~ %-- arguably `q.anonymous` is a misnomer because ...
-this helps visualize the idea that captured symbols are a kind of
-`q.input channel` analogous to `lambdac; and `sigmac;.
-`p`
-
-`p.
-I contend this works just as well for code blocks.  Any language which has
-blocks can treat them as unnamed function bodies, with
-a `q.`capturech;` channel (but not `lambdach; or `returnch;).
-When (by language design) blocks `i.can` throw exceptions, it is reasonable to
-give them `q.`exceptionch;` channels (further work, that I put off for
-now, is needed for loop-blocks, with `codebreak; and `codecontinue;).
-Blocks can then be typed as function-like values, under
-the convention that function-types can be expressed through
-descriptions of their channels (or lack thereof).
-`p`
-
-`p.
-Consider ordinary source-code
-expressions to represent a transfer of values between graph structures: let
-`gammaOne; and `gamaTwo; be code-graphs compiled
-from source at a call site and at the callee's implementation,
-respectively.  The function call transfers values from carriers
-marked by `gammaOne; nodes to `gammaTwo; carriers; with the further
-detail of `q.Channel Complexes` we can additionally say that the
-recipient `gammaTwo; carriers are situated in a graph structure which
-translates to a channel description.  So the morphology of
-`gammaOne; has to be consistent with the channel structure of `gammaTwo;.
-For regular (`q.value`/) expressions, we can introduce a new kind
-of channel (which in the demo I call `q.fground`/) acknowledging that the function
-called by an expression may itself be evaluated by its own expression, rather
-than named as a single symbol (as in a pointer-to-function call
-like `pfx; in `CLng;).  A segment of source code represents a
-value-expression insofar as an equivalent graph representation
-comprises a `Gamma; semantically and morphologically
-consistent with the provision of values to channels required
-by a function call %-- including the `fgroundch; channel on the
-basis of which the proper implementation (for overloaded functions)
-is selected.  How the graph-structure maps to the appropriate
-channels varies by channel kind: for instance the `returnc; channel
-is not passed `i.to` the callee, but rather bound to a carrier as the
-right-hand-side of an assignment (an `i.rvalue`/) %-- or else passed to
-a different function (thus an example of channel-to-channel connection
-without an intervening carrier).  A well-formed `Gamma; represents
-part of a function implementation's code graph, specifically that
-describing how a Channel Complex is concretely provisioned with values
-(i.e., a package).
-`p`
-
-`p.
-I will use the term `i.call-clause` to designate the
-portion of a code graph, and the associated collection of
-source code elements, describing a Channel Package.
-Term a call-clause `i.anchored` if its
-resulting value is held in a carrier (as
-in `yeqfx;), and `i.transient` if this value
-is instead passed on (immediately) to another function
-(as in `hfx;); moreover a call-clause
-can be `i.standalone` if it has no result value or this
-value is not used; and `i.multiply-anchored` if it has
-several anchored result values %-- i.e., a multi-carrier
-`returnc; channel, assuming the type system allows as much.
-Anchored and standalone call-clauses can, in turn, model `i.statements`/;
-specifically, `q.assignment` and `q.standalone` statements, respectively.
-`p`
-
-`p.
-This vocabulary can be useful for interpreting program flow.
-Assignment statements with no other side effects can 
-%-- in principle %-- be delayed
-until their grounding carrier is `q.convoluted` with some other carrier.`footnote.
-Of course, the default choice of `q.eager` or `q.lazy` evaluation is
-programming-language-specific, but for abstract discussion
-of source code graphs, we have no `i.a priori` idea of temporality;
-of a program executing in time.  This is not a matter of
-concurrency %-- we have no `i.a priori` idea of procedures running
-at the `i.same` time any more than of them running sequentially.
-Any temporal direction through a graph is an interpretation
-`i.of` the graph, and as such it is useful to assume that
-graphs in and of themselves assert no temporal
-ordering among their nodes or edges.
-`footnote`  When modeling
-eager-evaluation languages, particular edge-types
-can be designated as forcing a temporal order or else
-edges can be annotated with additional temporalizing
-details.  Without this extra documentation, however,
-execution order among graph elements can be
-evaluated based on other criteria.
-`p`
-
-`p.
-In the case of statements, an assignment without side effects
-has temporalizing relations only with other statements
-using its anchoring carrier.  In particular, the order
-of statements' runtime need not replicate the order in which
-they are written in source code.  For sake of argument, consider
-this the default case: Channel Algebras, in principle, model
-`q.lazy` evaluation languages, in the absence of any
-temporalizing factors.  The actual runtime order among
-sibling statements %-- those in the same block %-- then depends,
-in the absence of further information, on how their anchoring carriers are
-used; this in turn works backward from a function's return channel
-(in the absence of exceptions or effectual calls).  That is,
-runtime order works backward from statements that initialize
-carriers in the return channel, then carriers used in those
-statements, etc.
-`p`
-
-`p.
-This order needs to broken, of course, for statements with side-effects.
-A case in point is the expansion of `q.`doNotation;` in Haskell: without
-an `i.a priori` temporality, Haskell source code relies on
-the asymmetric order of values passed into lambda abstractions to
-enforce requirements that effectual expressions evaluate before other
-expressions (Haskell does not have `q.statements` per se).  Haskell's
-`doH; `q.blocks` can be modeled (in the techniques used here) as
-a series of assignment statements where the anchoring carrier of each
-statement becomes (i.e., transfers its value to) the sole occupant of a
-`lambdach; channel marking a new function body, which includes all the
-following statements (and so on recursively).  There are two concepts
-in play here: interpreting any sequence of statements (plus one
-terminating expression, which becomes a statement
-initializing a `returnch; carrier) as a function body (not just those covering
-the extent of a `q.block`/); and interpreting assignment statements
-as passing values into `q.hidden` lambda channels.  Of course,
-Haskell backs this syntactic convention with monad semantics %--
-the value passed is not the actual value of the monad-typed
-carrier but its `q.contained` value.
-For sake of discussion, let's call this a `i.monad-subblock` formation.
-`p`
-
-`p.
-The temporalizing elements in this formation are the `q.hidden lambdas`/.
-In a multi-channel paradigm, we can therefore consider
-`q.monad-subblocks` with respect to other channels.  Consider how
-individual statements can be typed: like blocks, statements can
-select from symbols in scope and can potentially
-result in thrown expressions, so their channel structure is something
-like `capturech; plus `errorch;.  Even without hidden lambdas, observe
-that the runtime order of statements can be fixed in situations
-where an earlier statement can affect the value (via non-constant capture)
-of a carrier whose value is then used by a later statement.  So
-for languages with a more liberal treatment of side-effects than Haskell,
-we can interpret chains of statements `i.in fixed order` as successively
-capturing (and maybe modifying) symbols which occur in multiple
-statements.  Having discussed convoluted `i.carriers`/,
-extend this to channels: in particular, say two `capturech; channels are
-convoluted if there is a modifiable carrier in the first
-which is convoluted with a carrier in the second (this is an ordered relation).
-One statement must run before a second
-if their `capturech; channels are convoluted, in that order.
-`p`
-
-`p.
-This is approaching toward a `q.monad-subblock` formation using `i.`capturech;`
-in place of `lambdach;.  To be sure,
-Haskell monad-subblock does have the added gatekeeping
-dimension that the symbol occurring after its appearance as anchoring
-an assignment statement is no longer the symbol with a monad
-type, but a different (albeit visually identical) symbol
-taken from the monad.  Between two statements, if the
-prior is anchored by a monad, the implementation of
-its `bind; function is silently called, with the subsequent
-(and all further) statements grouped into a block passed in
-to `bindFn;, which in turn (by design) both extracts its
-wrapped value and (if appropriate) calls the passed function.
-But this architecture can certainly be emulated on
-non-`lambdach; channels %-- a transform that would belong to the
-larger topic of treating blocks as function-values
-passed to other functions, to which I now turn.
-`p`
-\itcl{ifte}
-
-`subsubsection.Code Blocks as Typed Values`
-`p.
-Insofar as blocks can be typed as procedures,
-they may readily be passed around: so loops, `ifthenelse;,
-and other control flow structures can plausibly be modeled
-as ordinary function calls.  This requires some extra semantic
-devices: consider the case of `ifthenelse; (I'll use this
-also to designate code sequences with potential `q.`elseif;`/s), which
-has to become an associative array of expressions and functions
-with `q.block` type (e.g., with only `capturech; and `errorch;
-channels).  We need, however, a mechanism to suppress
-expression evaluation.  Recall that expressions are
-concretized channel-structures which include an
-`fgroundch; channel providing the actual implementation to call.
-Assume that `fgroundch; can be assigned a flag which suppresses
-evaluation.  Assume also that carriers can be declared which
-hold (or somehow point to) `i.expressions` that evaluate
-to typed values,
-in lieu of holding these values directly
-(note that this is by intent orthogonal
-to a type system: the point is not that carriers can hold values
-whose type is designed to encapsulate potential
-computations yielding another type, like `stdFuture; in `Cpp;).
-Consider again the nested-expression variant of
-`carrOneOpTransferTwo;: when the result
-of one function call becomes a parameter to another
-function, the value in the former's
-`returnch; carrier (assume there is just one) gets
-transferred to a carrier in the latter's `lambdach; channel
-(or `sigmach;, say).  This handoff can be described before being
-effectuated: a language runtime is free to vary the
-order of expression-evaluation no less than of statements.
-The semantics of a carrier-transfer between `Twof;'s return
-and `Onef;'s lambda does not stipulate
-that `Twof; has to `i.run` before `Onef;; language
-engines can provide semantics for `carrOneOpTransferTwo; ;;~ `carOnetoTwofOP;
-allowing `carOne; to hold a delayed capability to
-evaluate the `Twof; expression.  Insofar as this is an
-option, functions can be given a signature %-- this
-would be included in the relevant `TXL; %-- where
-some carriers are of this `q.delayed` kind.
-Functions like `ifthenelse; can then be declared in
-terms of these carriers.
-`p`
-
-`p.
-Given a runtime engine based on Channel Algebra, deferred 
-evaluation is relatively straightforward: any delayed expression 
-can be saved according to its channel-package data structure, 
-which can be passed to functions as an encapsulation of 
-the (not-yet-evaluated) expression itself.  Code Sample
-\ref{lst:ifte} shows an implementation from the demo, 
-on the runtime side.  At {\OneOverlay}, a pointer to 
-the relevant unevaluated expression is extracted, 
-and a `codeText.run` method is called which completes 
-the hitherto-delayed evaluation.  The demo
-`codeText.test\_if\_then\_else` procedure takes an 
-`q.`codeText.argvec`/` parameter ({\TwoOverlay}), which allows a 
-variant number of blocks and expressions to be 
-passed as inputs (analogous to `Cpp; `codeText.var\_arg` 
-lists).  The code around {\ThreeOverlay} shows a channel 
-complex being constructed which is then used to register 
-the signature for the `ifthenelse; kernel function 
-in a lookup table.
-`p`
-
-`p.
-Meanwhile, the hook into this `Cpp; runtime code 
-is demonstrated in Sample \ref{lst:ifte-phr}, in the `q.channelized` 
-Intermediate Representation used for the demo.  One pertinent 
-point in this code is the instruction at {\FiveOverlay}, 
-where the name `codeText.temp\_anchor\_channel\_group\_by\_need` 
-suggests how the compiled channel package is being stored 
-on a `q.by need` basis (internally, it gets a flag suppressing 
-evaluation before being used in runtime procedures).  
-At {\SixOverlay}, a block itself is assigned to a 
-`q.callable value` type (cf. the `q.cv` initials).  The 
-arguments identified for the kernel procedure ({\FourOverlay}), then,  
-alternate between encapsulations of by-need expressions 
-and compiled blocks deemed internally as opaque `q.callable values`/. 
-`p`
-\itcl{ifte-phr}
-
-`p.
-To properly capture `ifthenelse; semantics, it is also
-appropriate to notate conditions on how blocks
-passed as function values are used.  In the
-case of `ifthenelse;, the implementation
-will receive multiple function values with the caller
-expecting `i.exactly one` function to be called.
-This constitutes a requirement on how carriers are
-used, analogous to mandating that a `returnch;
-(or either `returnch; or `errorch;) carrier be initialized,
-or that mutable references passed
-to a function for initialization (as an alternative
-to returning multiple values) are initialized.
-While such requirements can potentially be
-described as annotations on carriers/channels,
-this is a general issue outside the scope of
-blocks-as-function-values.
-`p`
-
-`p.
-A thorough treatment of blocks-as-functions also needs to
-consider standard procedural affordances like `codebreak;
-and `codecontinue; statements.  Since blocks
-can be nested, some languages allow inner blocks to express the
-codewriter's intention to `q.break out of` an outer block from
-an inner block.  One way to model this via Channel Algebra is
-to introduce a special kind of return channel for blocks
-(called a `q.`breakch;`/, perhaps) which, when it has
-an initialized carrier, uses this channel to hold a value that the
-enclosing block interprets in turn: by examining the
-inner `breakch; the immediately outer block can decide whether it
-itself needs to `q.break` and, if so, whether its own
-`breakch; channel needs to have an initialized carrier.  The
-presence of such a `breakch; can type-theoretically
-distinguish loop blocks from blocks in (say)
-`ifthenelse; contexts.
+In short, typestate forces us to modify some basic assumptions about 
+the relationship between types and values: either values can 
+change types mid-stream, or a lexical scope can subsume a sequence 
+of carrier which share the same symbol-name (and maybe the same type) 
+but differ in state (some holding values unrelated to actual program 
+state).  This situation can be juxtaposed with the `q.metaconstructor problem`/, 
+i.e., how Dependent Types force a rethink on basic value-constructor 
+theory.  As with constructors, here I will advocate for techniques 
+that emulate typestate without unduly expanding the scope of 
+a Channelized type theory.
 `p`
 
 
 `p.
-Further discussion of code models via Channel Groups and
-Channel Algebras is outside the scope of this chapter, but
-is demonstrated in greater detail in the accompanying code-set.
-Hopefully, the best way to present Channel Semantics outside
-the basic `lambdach;/`sigmach;/`returnch;/`exceptionch;
-quartet is via demonstrations in live code.
-In that spirit, the demo code-set focuses
-on practical engineering and problem-solving where Channel models
-can be useful, and I'll briefly review its structure and its
-organizing rationales in the Conclusion.
+A good real-world example of the overlap between Dependent Types and
+typestate (also grounded on file input/output) comes
+from the `q.Dependent Effects` tutorial from the Idris
+(programming language) documentation `cite<IdrisEffects>;:
+%http://docs.idris-lang.org/en/latest/effects/depeff.html
+`dquote,
+A practical use for dependent effects is in specifying resource usage
+protocols and verifying that they are executed correctly.  For example,
+file management follows a resource usage protocol with ... requirements
+[that] can be expressed formally in [Idris] by creating a
+`idrisText.FILE\_IO` effect parameterised over a file handle state,
+which is either empty, open for reading, or open for writing.
+In particular, consider the type of [a function
+to open files]: This returns a `idrisText.Bool` which indicates
+whether opening the file was successful.  The resulting state
+depends on whether the
+operation was successful; if so, we have a file handle open for the
+stated purpose, and if not, we have no file handle.  By case analysis
+on the result, we continue the protocol accordingly. ...
+If we fail to follow the protocol correctly (perhaps by forgetting to
+close the file, failing to check that open succeeded, or opening the
+file for writing [when given a read-only file handle]) then we will
+get a compile-time error.
+`dquote`
+So how does Idris mitigate the type-vs.-typestate conundrum?  Apparently
+the key notion is that there is one single `tyFile; `i.type`/, but
+a more fine-grained type-`i.state`/; and, moreover, an
+`i.effect system `q.parametrized over` these typestates`/.
+In other words, the `i.effect` of `tyFile; operations is to
+modify `i.typestates` (not types) of a `tyFile; value.
+Moreover, Dependent Typing ensures that functions cannot be called
+sequentially in ways which `q.violate the protocol`/, because
+functions are prohibited from having effects that are incompatible
+with the potentially affected values' current states.
+This elegant syntheses of Dependent Types, typestate, and
+Effectual Typing brings together three of the key
+features of `q.fine-grained` or `q.very expressive` type systems.
+`p`
+
+`p.
+But the synthesis achieved by Idris relies on Dependent Typing:
+typestate can be enforced because Idris functions can support
+restrictions which `i.depend` on values' current typestate to
+satisfy effect-requirements in a type-checking way.  In effect,
+Idris requires that all possible variations in values' unfolding
+typestate are handled by calling code, because otherwise the
+handlers will not type-check.  An analogous tactic in a language like
+`Cpp; would be to provide an `q.open file` function only with a
+signature that takes two callbacks, one for when the `openFn;
+succeeds and a second for when it fails (to mimic the Idris tutorial's
+`q.case analysis`/).  But that `Cpp; version still requires convention
+to enforce that the two callbacks behave differently: via Dependent Types
+Idris can confirm that the `q.open file` callback, for example, is only
+actually supplied as a callback for files that have actually been
+opened.  A better `Cpp; approximation to this design would be
+to cast files to separate types %-- not only
+typestates %-- after all, but only when passing these values to the callback
+functions; this is similar to the approach I endorse
+here to approximate Dependent Typing via (sometimes hidden)
+channels rather than constructs (like typed-checked
+typestate-parametrized effects) which require a language
+to implement a full Dependent Type system.
+`p`
+
+`p.
+In the case of Idris, Dependent Types are feasible because the final
+`q.reduction` of expressions to evaluable representations occurs at
+runtime.  In the language of the Idris tutorial:
+
+`dquote,
+In Idris, types are first class, meaning that they can be computed and
+manipulated (and passed to functions) just like any other language construct.
+For example, we could write a function which computes a type [and]
+use this function to calculate a type anywhere that a type can be used.
+For example, it can be used to calculate a return type [or]
+to have varying input types.
+`dquote`
+
+More technically, Edwin Brady (and, here, Mat\'u\v{s} Teji\v{s}\v{c}\'ak)
+elaborate that
+
+`dquote,
+`i.Full-spectrum` dependent types ... treat types as first-class language
+constructs.  This means that types can be built by computation just like
+any other value, leading to powerful techniques for generic programming.
+Furthermore, it means that types can be parameterised on values,
+meaning that strong, explicit, checkable relationships can be stated
+between values and used to verify properties of programs at compile-time.
+This expressive power brings new challenges, however, when
+compiling programs. ... The challenge, in short, is to identify a
+phase distinction between compile-time and run-time objects.
+Traditionally, this is simple: types are compile-time only, values are
+run-time, and erasure consists simply of erasing types. In a dependently
+typed language, however, erasing types alone is not
+enough \cite[page 1]{BradyMatus}.
+`dquote`
+
+To summarize, Idris works by `q.erasing` some, but not all, of the
+extra contextual detail needed to ensure that dependent-typed
+functions are used (i.e., called) correctly (see also `cite<Christiansen>;,
+and \cite[page 210]{RichardEisenberg}).  This means that much 
+contextual detail is `i.not` erased; Idris provides machinery to
+join executable code and user specifications onto
+`i.types` so that they take effect whenever affected types' values are
+constructed or passed to functions.
+`p`
+
+`p.
+Despite a divergent technical 
+background, the net result is arguably not vastly
+different from an Aspect-Oriented approach wherein constructors
+and function calls are `q.pointcuts` setting anchors upon 
+source locations or logical run-points, where extra code can be
+added to program flow (see e.g. `cite<DineshGopalani>;,
+`cite<KatharinaMehner>;, `cite<CharlesZhang>;).  Recall my contrast of
+`q.internalist` and `q.externalist` paradigms, sketched at the
+top of this chapter: Aspect-Oriented Programming involves
+extra code added by external tools (that `q.modify` code by
+`q.weaving` extra code providing extra features or gatekeeping).
+Implementations like Idris pursue what often are in effect similar
+ends from a more `q.internalist` angle, using the type system
+to host added code and specifications without resorting to some
+external tool that introduces this code in a manner orthogonal
+to the language proper.  But Idris relies on Haskell 
+to provide its operational environment; it is not clear
+how Idris's strategies (or those of other Haskell and `ML;-style
+Dependent Type languages) for attaching runtime expressions to
+type constructs would work in an imperative or
+Object-Oriented environment, like `Cpp; as a host language.
+`p`
+
+`p.
+This discussion emanated from Idris examples based on file-management
+typestate, but it generalizes to other cases, such as range-delimited
+types (or analogous requirements manifest as type-states).  
+In practice, working with scenarios such as range-bounded values %-- which
+in principle exemplifies programming tasks where Dependent Types can be a
+useful idiom %-- arguably ends up more like typestate
+management as exemplified by gatekeeping `visavis;, say, files (only
+call `i.this` function if `i.that` file is open).  A range-interval 
+is typestate-like in that the practical intent is to affix certain gatekeeper
+functions to an accompanying value so that it will never be incorrectly used
+%-- for instance, that it will never be modified to lie outside
+its assigned range.  Conforming to range
+restrictions is more like a typestate than a type: indeed, a range-plus-value pair
+has an obvious covering via two typestates
+(the value is either in or out of its closed interval).`footnote.
+Although a more detailed range typestate might have a few
+more enumeration values: representing `q.on the border` or
+distinguishing `q.too large` from `q.too small`/.
+`footnote`  So the semantics of Dependent Types can practically be
+captured via a typestate framework %-- and perhaps vice-versa, since
+typestates can be seen as type families indexed over (possibly enumerative)
+types; e.g., file typestates as a family indexed over `enumleft;`closed;,
+`open;, `nonexistent;`enumright;.
+`p`
+
+`p.
+Adding validation code at runtime %-- to dynamically
+enforce typestate constraints %-- fits the profile of Aspect-Oriented
+Programming more than type-system expressiveness, however.  I propose
+therefore to outline a framework which in its engineering works effectively
+by code-insertion but expresses a more type-theoretic orientation.
+To begin, recall that the implementational problem with Dependent Types
+is maintaining entire families of value constructors; but we can
+perform computations to assess whether a value meeting stated criteria
+`i.could` be constructed without actually constructing the value.  In
+this spirit, assume that value constructors can potentially be
+associated with `i.preconstructors` which run before the constructor proper
+and assess whether the proposed construction is reasonable.  These
+preconstructors may be binary-valued but may also have a larger result
+type, such as a typestate enumeration.  Given a range-bounded type, for example,
+the preconstructor can classify a value as `i.in range`/, `i.too small`/, or
+`i.too large`/, returning an enumerated value which the actual constructor
+then uses to refine its behavior.  The key point about preconstructors
+is that they can be used even without a value constructor present to
+receive its value: instead, the preconstructor can test that a value
+of a narrowly defined type `i.could` be constructed, even if the
+actual value used belongs to a broader type.
+`p`
+
+`p.
+Similar to preconstructors, I will also introduce a
+concept of `i.co-channels`/, which are `q.behind the
+scenes` channels that create values from functions'
+channels, but whose values are passed to functions
+implicitly; they are not visible at function-call sites.
+I will return to the discussion of Preconstructors and
+co-channels after developing a theory of Channel Groups
+more substantially.
 `p`
 
 

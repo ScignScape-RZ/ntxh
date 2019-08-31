@@ -1,1376 +1,1968 @@
 
-`section<Directed Hypergraphs and Generalized Lambda Calculus>;
-\phantomsection\label{sTwo}
-
+`section.Gatekeeper Code`
+\phantomsection\label{sOne}
 `p.
-Thus far, I have written in general terms about 
-architectural features related to CyberPhysical software; 
-in particular, verifying coding assumptions concerning 
-individual data types and/or procedures.  My comments 
-were intended to summarize the relevant territory, 
-so that I can add some theoretical details or suggestions 
-from this point forward.  In particular, I will explore 
-how to model software components at different scales 
-so as to facilitate robust, safety-conscious coding practices.   
-`p`
+There are several design principles which can help ensure 
+safety in large-scale, native/desktop-style `GUI;-based 
+applications.  These include:
 
-`p.
-Note that almost all non-trivial software is in some 
-sense `q.procedural`/; the total package of 
-functionality provided by each software component 
-is distributed among many individual, interconnected 
-procedures.  Each procedure, in general, 
-implements its functionality by calling `i.other` procedures 
-in some strategic order.  Of course, often 
-inter-procedure calls are `i.conditional` %-- a calling 
-procedure will call one (or some sequence of) procedures 
-when some condition holds, but call alternative procedures
-when some other conditions hold.  In any case, computer 
-code can be analyzed as a graph, where connections exist 
-between procedures insofar as one procedure calls, 
-or sometimes calls, the other.
-`p`
+`enumerate,
+`item;  Identify operational relationships between types.  
+Suppose `calS; is a data structure modeled via type `caltypeT;.  
+This type can then be associated with a type (say, 
+`typeTp;) of `GUI; components which visually display 
+values of type `caltypeT;.  A simple data structure 
+may have `GUI; representation via small `q.widgets` 
+embedded in other components (consider a thermometer icon 
+to display temperature).  Conversely, if `calS; has many component 
+parts, its corresponding `GUI; type may need to span its 
+own application window, with a collection of nested textual 
+or graphical elements.  There may also be a type 
+(say, `typeTpp;) representing `caltypeT;-values in a format 
+suitable for database persistence.  Application code should 
+explicitly indicate these sorts of inter-type relationships.
 
-`p.
-This general picture is only of only limited applicability 
-to actual applications, however, because the basic concept 
-of `q.procedure` varies somewhat between different 
-programming languages.  As a result, it takes some effort 
-to develop a comprehensive model of computer code which 
-accommodates a representative spectrum of coding styles 
-and paradigms. 
-`p`
+`item;  Identify coding assumptions which determine the validity 
+of typed values and of function calls.  For each 
+application-specific data type, consider whether every 
+computationally possible instance of that type is actually 
+meaningful for the real-world domain which the type represents.  
+For instance, a type representing blood pressure has a subset 
+of values which are biologically meaningful %-- where systolic 
+pressure is greater than diastolic and where both numbers are 
+in a sensible range.  Likewise, for every procedure defined 
+on application-specific data types, consider whether the procedure 
+might receive arguments that are computationally feasible but 
+empirically nonsensical.  Then, establish a protocol for 
+acting upon erroneous data values or procedure parameters.  
+How should the error be handled, without disrupting the 
+overall application?
 
+`item;  Identify points in the code base which represent new data 
+being introduced into the application, or code which can materially 
+affect the `q.outside world`/.  Most of the code behind `GUI; 
+software will manage data being transferred between different 
+parts of the system, internally.  However, there will be 
+specific code sites %-- e.g., specific procedures %-- which 
+receive new data from external sources, or respond to 
+external signals.  A simple example is, for desktop applications, 
+the preliminary code which runs when users click a mouse button.  
+In the CyberPhysical context, an example might be code which 
+is activated when motion-detector sensors signal something moving 
+in their vicinity.  These are the `q.surface` points where data 
+`q.enters the system`/.
+`pseudoIndent;
+Conversely, other code points localize 
+the software's capabilities to initiate external effects.  For 
+instance, one consequence of users clicking a mouse button might 
+be that the on-screen cursor changes shape.  Or, motion detection 
+might trigger lights to be turned on.  In these cases the software 
+is hooked up to external devices which have tangible capabilities, 
+such as activating a light-source or modifying the on-screen cursor.  
+The specific code points which leverage such capabilities 
+represent data `q.leaving the system`/.  
+`pseudoIndent;
+In general, it is important to identify points where data 
+`q.enters` and `q.leaves` the system, and to distinguish 
+these points from sites where data is transferred 
+`q.inside` the application.  This helps ensure that 
+incoming data and external effects are properly vetted.  
+Several mathematical frameworks have been developed 
+which codify the intuition of software components as 
+`q.systems` with external data sources and effects, 
+extending the model of software as self-contained 
+information spaces: notably, Functional-Reactive Programming 
+(see e.g. `cite<WolfgangJeltsch>;, `cite<JenniferPaykin>;,
+`cite<PaykinKrishnaswami>;) and the theory of
+Hypergraph Categories 
+(`cite<InteractingConceptualSpaces>;, `cite<BrendanFong>;, 
+`cite<BrendanFongThesis>;, `cite<AleksKissinger>;). 
+`enumerate`
 
-`p.
-There are perhaps three different perspectives which can be 
-taken toward such a comprehensive theory.  One route is 
-to consider source code as a data structure in its 
-own right, employing a Source Code Algebra or 
-Source Code Ontology to assert properties of source code 
-and enable queries against source code, qua information 
-space.  A second option derives from type theory: to 
-consider procedures as instances of functional types,
-specified by tuples of input and output types.  
-A procedure is then a transform which, in the presence 
-of (zero or more) inputs having the proper types, produces 
-(one or more) outputs with their respective types.  In practice, 
-some procedures do not return values, but they `i.do` have 
-some kind of side-effect, which can be analyzed as a 
-variety of `q.output`/.  Finally, procedures can be studied 
-via mathematical frameworks such as the Lambda Calculus, 
-which allows notions of functions on typed parameters, and 
-of functional application %-- applying functions to concrete 
-values, which is analogous to calling procedures with 
-concrete input arguments %-- to be made formally rigorous.
-`p`
-
-`p.
-I will briefly consider all three of these perspectives %-- Source Code 
-Ontology, type-theoretic models, and Lambda Calculus %-- in 
-this section.  I will also propose a new 
-model, based on the idea of `q.channels`/, which combines 
-elements of all three. 
-`p`
-`vspace<-.1em>;
-%`spsubsection.Generalized Lambda Calculus`
-`subsection.Generalized Lambda Calculus`
-`p.
-Lambda (or `mOldLambda;-) Calculus emerged in the early 
-20th century as a formal model of mathematical 
-functions and function-application.  There are 
-many mathematical constructions which can be 
-subsumed under the notion of `q.function-application`/, 
-but these have myriad notations and conventions 
-(compare the visual differences between mathematical 
-notations %-- integrals, square roots, super- and 
-sub-scripted indices, and so forth %-- to the much 
-simpler alphabets of mainstream programming languages).  
-But the early 20th century was a time of 
-great interest in `q.mathematical foundations`/, seeking 
-to provide philosophical underpinnings for mathematical 
-reasoning in general, unifying disparate mathematical 
-methods and subdisciplines.  One consequence of 
-this foundational program was an attempt to capture 
-the formal essence of the concept of `q.function` and 
-of functions being applied to concrete values.       
+Methods I propose in this chapter are applicable to each 
+of these concerns, but for purposes of exposition I 
+will focus on the second issue: testing 
+type instances and procedure parameters for fine-grained 
+specifications (more precise than strong typing alone). 
 `p`
 
 
 `p.
-A related foundational concern is how mathematical 
-formulae can be nested, yielding new formulae.  
-For example, the volume of a sphere 
-(expressed in terms of its radius `rRad;) is `VolSphere;.  
-The symbol `rRad; is just a mnemonic which could be replaced with a different symbol, 
-without the formula being different.  But it can also be replaced by a more complex 
-expression, to yield a new formula.  In this case, 
-substituting the formula for a cube's half-diagonal %-- `crVOverRTwo;
-where `vVol; is its volume %-- for `rRad;, in the first formula, 
-yields `volSphCube;: a formula for the sphere's volume in terms 
-of the volume of the largest cube that can fit inside it     
-(`cite<KennethAnderson>; has similar interesting examples in the 
-context of code optimization).  This kind of tinkering with equations is 
-of course a bread-and-butter of mathematical discovery.  In terms 
-of foundations research, though, observe that the derivation depended on 
-two givens: that the `rRad; symbol is `q.free` in the first formula 
-%-- it is a place-holder rather than the designation of a concrete 
-value, like `piSym; %-- and that free symbols (like `rRad;) can be 
-bound to other formulae, yielding new equations. 
+Strongly-typed programming language offer some guarantees on 
+types and procedures: a function which takes an integer will 
+never be called on a value that is `i.not` an integer 
+(e.g., the character-string `q.`lclc.46`/` instead of the `i.number` 
+`lclc.46`/).  Likewise, a type where one field is an integer 
+(representing someone's age, say), will never be instantiated 
+with something `i.other than` an integer in that field.  
+Such minimal guarantees, however, are too coarse for 
+safety-conscious programming.  Even the smallest 
+(8-bit) unsigned integer type would permit someone's age to 
+be `lclc.255` years, which is surely an error.  So any 
+safety-conscious code dealing with ages needs to check that 
+the numbers fall in a range narrower than built-in 
+types allow on their own, or to ensure that such checks are 
+performed ahead of time.   
 `p`
 
 `p.
-From cases like these %-- relative simple geometric 
-expressions %-- mathematicians began to ask foundation 
-questions about mathematical formulae: what are all formulae 
-that can be built up from a set of core equations via 
-repeatedly substituting nested expressions for
-free symbols?  This question turns out to be related to 
-the issue of finite calculations: in lieu of 
-building complex formulae out of simpler parts, we can 
-proceed in the opposite direction, replacing nested 
-expressions with values.  Formulae are constructed 
-in terms of unknown values; when we have concrete measurements 
-to plug in to those formulae, the set of unknowns decreases.
-If `i.all` values are known, then a well-constructed formula 
-will converge to a (possibly empty) set of outcomes.  
-This is roughly analogous to a computation which 
-terminates in real time.  On the other hand, 
-a `i.recursive` formula %-- an expression nested inside 
-itself, such as a continued fraction %-- is analogous to 
-a computation which loops indefinitely.`footnote.
-Although there are sometimes techniques for converting formulae 
-like Continued Fractions into `q.closed form` equations 
-which do `q.terminate`/. 
-`footnote`
+The central technical challenge of safety-conscious coding 
+is therefore to `i.extend` or `i.complement` each programming 
+languages' built-in type system so as to represent 
+more fine-grained assumptions and specifications.  
+While individual tests may seem straightforward on a 
+local level, a consistent 
+data-verification architecture %-- how this coding dimension 
+integrates with the totality of software features and 
+responsibility %-- can be much more complicated.  
+Developers need to consider several overarching questions, 
+such as: 
+
+`itemize,
+`item; Should data validation be included in the same 
+procedures which operate on (validated) data, or 
+should validation be factored into separate procedures?
+
+`item; Should data validation be implemented at the type 
+level or the procedural level?  That is, should specialized 
+data types be implemented that are guaranteed only to 
+hold valid data?  Or should procedures work with more 
+generic data types, and perform validations on a case-by-case 
+basis?
+
+`item; How should incorrect data be handled?  In CyberPhysical software, 
+there may be no obvious way to abort an operation in the 
+presence of corrupt data.  Terminating the application may not be 
+an option; silently canceling the desired operation or trying to substitute 
+`q.correct` or `q.default` data may be unwise; and 
+presenting technical error messages to human users may be confusing.  
+`itemize`
+
+These questions do not have simple answers.  As such, we 
+should develop a rigorous theoretical framework so as to 
+codify the various options involved %-- what architectural 
+decisions can be made, and what are the strengths and weaknesses 
+of different solutions.
+`p`
+
+`p. 
+This section will sketch an overview of the data-validation 
+issues from the broader vantage of planning and stakeholder 
+expectations, before addressing narrower programming concerns
+in subsequent sections.
+`p` 
+
+`subsection.Gatekeeper Code and Fragile Code`
+`p.
+I will use the term `i.gatekeeper code` for any code which checks 
+programming assumptions more fine-grained than strong typing 
+alone allows %-- for example, that someone's age is not reported 
+as `lclc.255` years, or that systolic pressure is not recorded as 
+less than diastolic.  I will use the term `i.fragile code` for
+code which `i.makes` programming assumptions `i.without itself` 
+verifying that such assumptions are obeyed.  Fragile code is 
+especially consequential when incorrect data would cause the 
+code to fail significantly %-- to crash the application, 
+enter an infinite loop, or any other nonrecoverable scenario.
 `p`
 
 `p.
-In the early days of computer programming, it was natural to 
-turn to `mOldLambda;-Calculus as a formal model of 
-computer procedures, which are in some ways analogous to 
-mathematical formulae.  As a mathematical subject, 
-`mOldLambda;-Calculus predates digital computers as 
-we know them.  While there were no digital computers at the time,
-there `i.was` a growing interest in mechanical computing 
-devices, which led to the evolution of 
-cryptographic machines used during the Second World War.  
-So there was indeed a practical interest in 
-`q.computing machines`/, which eventually led to 
-John von Neumann's formal prototypes for digital 
-computers.  
+Note that `q.fragile` is not a term of criticism %-- some algorithms 
+simply work on a restricted space of values, and it is inevitable 
+that code implementing such algorithms will only behave properly 
+when provided values with the requisite properties.  It is necessary 
+to ensure that such algorithms are `i.only` called with 
+correct data.  But insofar as testing of the data lies outside 
+the algorithms themselves, the proper validation has to occur 
+`i.before` the algorithms commence.  In short, `i.fragile` and
+`i.gatekeeper` code often has to be paired off: for each 
+segment of fragile code which `i.makes` assumptions, there should 
+be a corresponding segment of gatekeeper code which
+`i.checks` those assumptions.  
 `p`
 
 `p.
-Early on, though, `mOldLambda;-Calculus was less about blueprints
-for calculating machines and more about `i.abstract` formulation of
-calculational processes.  Historically, the original 
-purpose of `mOldLambda;-Calculus was largely a mathematical `i.simulation` of
-computations, which is not the same as a mathematical `i.prototype`
-for computing machines.  Mathematicians in the decades before WWII
-investigated logical properties of computations, with particular
-emphasis on what sort of problems could always be solved in
-finite time, or what kind of procedures can be guaranteed to
-terminate %-- a `q.Computable Number`/, for example, is a number
-which can be approximated to any degree of precision by a terminating
-function.  Similarly, a Computable Function is a function from
-input values to output values that can be associated with an
-always-terminating procedure which necessarily calculates the desired
-outputs from a set of inputs.  The space of Computable Functions
-and Computable Numbers are mathematical objects whose properties
-can be studied through mathematical techniques %-- for instance,
-Computable Numbers are known to be a
-countable field within the real numbers.
-These mathematical properties are proven using a formal
-description of `q.any computer whatsoever`/, which has no
-concern for the size and physical design of the `q.computers`
-or the time required for its `q.programs`/, so long
-as they are finite.  Computational procedures in
-this context are not actual implementations but rather
-mathematical distillations that can stand in for
-calculations for the purpose of mathematical analysis
-(interesting and representative contemporary articles
-continuing these perspectives include, e.g., `cite<MartinEscardo>;,
-`cite<MasahitoHasegawa>;, `cite<TuckerZucker>;).
-`p`
-
-`p.
-It was only after the emergence of modern digital computers 
-that `mOldLambda;-Calculus become reinterpreted as a 
-model of `i.concrete` computing machines.  In its 
-guise as a Computer Science (and not just Mathematical 
-Foundations) discipline, `mOldLambda;-Calculus has been 
-most influential not in its original form but in 
-a plethora of more complex models which track the 
-evolution of programming languages.  Many programming 
-languages have important differences which are not 
-describable on a purely mathematical basis: two 
-languages which are both `q.Turing complete` are 
-abstractly interchangeable, but it is important to
-represent the contrast between, say,
-Object-Oriented and Functional programming.  
-In lieu of a straightforward, mathematical model 
-of formulae as procedures which map inputs to 
-outputs, modern programming languages add 
-may new constructs which determine different
-mechanisms whereby procedures can read and 
-modify values: objects, exceptions, closures, 
-mutable references, side-effects, signal/slot 
-connections, and so forth.  Accordingly, 
-new programming constructions have inspired 
-new variants of `mOldLambda;-Calculus, analyzing
-different features of modern programming languages %-- Object
-Orientation, Exceptions, call-by-name, call-by-reference,
-side effects, polymorphic type systems, lazy evaluation 
-%-- in the hopes of deriving formal proofs of 
-program behavior insofar as computer code uses the 
-relevant constructions.  In short, a reasonable
-history can say that `mOldLambda;-Calculus mutated from being an
-abstract model for studying Computability as a mathematical concept,
-to being a paradigm for prototype-specifications of concretely
-realized computing environments.
-`p`
-
-`p.
-Modern programming languages have many different ways of handing-off
-values between procedures.  The `q.inputs` to a function can be `q.message receivers`
-as in Object-Oriented programming, or lexically scoped
-values `q.captured` in an anonymous function that inherits
-values from the lexical scope (loosely, the area of source code)
-where its body is composed.  Procedures can also `q.receive` data indirectly
-from pipes, streams, sockets, network connections, database connections, or files.
-All of these are potential `q.input channels` whereby a function implementation
-may access a value that it needs.  In addition, procedures can `q.return` values
-not just by providing a final result but by throwing exceptions, writing
-to files or pipes, and so forth.  To represent these myriad
-`q.channels of communication` computer scientists have invented a menagerie
-of extensions to `mOldLambda;-Calculus %-- a noteworthy 
-example is the `q.Sigma` calculus to model Object-Oriented
-Programming; but parallel extensions represent call-by-need evaluation, 
-exceptions, by-value and by-reference capture, etc.
-`p`
-
-`p.
-Rather than study each system in isolation, in this 
-chapter I propose an integrated strategy for 
-unifying disparate `mOldLambda;-Calculus extensions 
-into an overarching framework.  The 
-`q.channel-based` tactic I endorse here may not be 
-optimal for a `i.mathematical` calculus which has 
-formal axioms and provable theorems, but I believe 
-it can be useful for the more practical goal 
-of modeling computer code and software 
-components, to establish recommended design patterns 
-and to document coding assumptions.  
-`p`
-
-`p.
-In this perspective, different extensions
-or variations to `mOldLambda;-Calculus model different 
-`i.channels`/, or data-sources through which procedures 
-receive and/or modify values.  Different channels 
-have their own protocols and semantics
-for passing values to functions.
-We can generically discuss `q.input` and
-`q.output` channels, but programming languages have different specifications
-for different genres of input/output, which we can model via
-different channels.  For a particular channel, we can recognize
-language-specific limitations on how values passed in to or
-received from those channels are used, and how the symbols carrying those
-values interact with other symbols both in function call-sites and in the 
-body of procedure implementations.  
-For example, procedures can output values by throwing exceptions, but
-exceptions are unusual values which have to be handled
-in specific ways %-- languages use exceptions to signal possible
-programming errors, and they are engineered to interrupt
-normal program flow until or unless exceptions are `q.caught`/.
-`p`
-
-`p.
-Computer scientists have explored these more complex programming paradigms
-in part by inventing new variations on `mOldLambda;-calculi.  
-Here I will develop one theory representing
-code in terms of Directed Hypergraphs, which are subject to multiple kinds
-of lambda abstraction %-- in principle, replacing many disparate
-`mOldLambda;-Calculus extensions with one overarching framework.
-This section will lay out the details of this form of Directed Hypergraph
-and how `mOldLambda;-calculi
-can be defined on its foundation.  The following section will
-discuss an expanded type theory which follows organically
-from this approach, and the third section will situate
-lambda calculi in terms  of `q.Channel Algebras`/.
-`p`
-
-`p.
-Many concepts outlined here are reflected in the accompanying code set,
-which includes a `Cpp; Directed Hypergraph library and also
-parsers and runtimes for an Interface Definition Language.
-The design choices behind these components will be
-suggested in the text, but hopefully the code will illustrate
-how the ideas can be manifest in concrete implementations, which
-in turn provide evidence that they are logically sound
-at least to the level of properly-behaving application code.
-`p`
-
-`p.
-My strategy for unifying multiple `mOldLambda;-calculi depends 
-in turn on hypergraph code representations, which is a theme 
-in the umbrella of graph-based data modeling, 
-to which I now turn. 
-`p`
-
-\vspace{-.1em}
-%\spsubsectiontwolinerepl{Directed Hypergraphs and `q.Channel Abstractions`/}%
-\subsectiontwolinerepl{Directed Hypergraphs and `q.Channel Abstractions`/}%
-{Directed Hypergraphs and 'Channel Abstractions'}
-`p.
-A `i.hypergraph` is a graph whose edges (a.k.a. `q.hyperedges`/) can span
-more than two nodes (\cite[e.g. p. 24]{BenGoetzel},
-`cite<HaishanLiu>;, `cite<MarkMinas>;; `cite<BalintMolnar>;,
-`cite<AlexandraPoulovassilis>;, `cite<JohnStell>;,
-`cite<JohnStellFCA>;).
-A `i.directed` hypergraph (`q.`DH;`/) is a hypergraph
-where each edge has a `i.head set` and
-`i.tail set` (both possibly empty).  Both of these are sets of nodes
-which (when non-empty) are called `i.hypernodes`/.  A hypernode can
-also be thought of as a hyperedge whose tail-set
-(or head-set) is empty.  Note that a typical hyperedge
-connects two hypernodes (its head- and tail-sets), so if
-we consider just hypernodes, a hypergraph potentially
-reduces to a directed ordinary graph.  While
-`q.edge` and `q.hyperedge` are formally equivalent,
-I will use the former term when attending more to the
-edge's representational role as linking two hypernodes,
-and use the latter term when focusing more on its tuple
-of spanned nodes irrespective of their partition into
-`i.head` and `i.tail`/. % (see Figure 1).
-`p`
-
-`p.
-I assume that hyperedges always span an `i.ordered` node-tuple
-which induces an ordering in the head- and tail-sets: so a
-hypernode is an `i.ordered list` of nodes, not just a
-`i.set` of nodes.  I will say that
-two hypernodes `i.overlap` if they
-share at least one node; they are `i.identical`
-if they share exactly the same nodes in the same order; and
-`i.disjoint` if they do not overlap at all.  I call a
-Directed Hypergraph
-`q.reducible` if all hypernodes are either disjoint or
-identical.  The information in reducible `DH;s can be factored
-into two `q.scales`/, one a directed graph whose nodes are the
-original hypernodes, and then a table of all nodes
-contained in each hypernode.  Reducible `DH;s allow
-ordinary graph traversal algorithms when hypernodes
-are treated as ordinary nodes on the coarser scale
-(so that their internal information %-- their list
-of contained nodes %-- is ignored).`footnote.
-A weaker restriction on `DH; nodes is that two
-non-identical hypernodes `i.can` overlap, but
-must preserve node-order: i.e., if the first
-hypernode includes nodes `nodeNOne;, and `nodeNTwo;
-immediately after, and the second hypernode
-also includes `nodeNOne;, then the second
-hypernode must also include `nodeNTwo; immediately
-thereafter.  Overlapping hypernodes
-can not `q.permute` nodes
-%-- cannot include them in different orders or in a way
-that `q.skips` nodes.
-Trivially, all reducible `DH;s meet this condition.  
-Any graphs discussed here are assumed to meet 
-this condition.    
-`footnote`
-`p`
-
-`p.
-To avoid confusion, I will hereafter use the word `q.hyponode` in place
-of `q.node`/, to emphasize the container/contained relation between
-hypernodes and hyponodes.  I will use `q.node` as an informal word
-for comments applicable to both hyper- and hypo-nodes.  Some
-Hypergraph theories and/or implementations
-allow hypernodes to be nested: i.e., a hypernode can contain
-another hypernode.  In these theories, in the general case any node
-is potentially both a hypernode and a hyponode.  For this chapter,
-I assume the converse: any `q.node` (as I am hereafter using the term) is
-`i.either` hypo- or hyper-.  However, multi-scale Hypergraphs can be approximated
-by using hyponodes whose values are proxies to hypernodes.
-`p`
-
-`p.
-Here I will focus on a class of `DH;s which (for reasons to emerge)
-I will call `q.Channelizable`/. Channelizable Hypergraphs
-(`CH;s) have these properties:
+In that general outline, however, there is room for a variety 
+of coding styles and paradigms.  Perhaps these can be broadly 
+classified into three groups: 
 
 `enumerate,
 
-`item;  They have a Type System `TyS; and all hyponodes and hypernodes are assigned
-exactly one canonical type (they may also be considered instances of super- or subtypes
-of that type).
+`item; Combine gatekeeper and fragile code in one procedure.
+`item; Separate gatekeeper and fragile code into different procedures.
+`item; Implement narrower types so that gatekeeper code is 
+called when types are first instantiated.
 
-`item;  All hyponodes can have (or `q.express`/) at most one value, an instance of its
-canonical type, which I will call a `i.hypovertex`/.  Hypernodes, similarly,
-can have at most one `i.hypervertex`/.  Like `q.node` being an informal
-designation for hypo- and hyper-nodes, `q.vertex` will be a general term
-for both hypo- and hyper-vertices.  Nodes which do have a vertex
-are called `i.initialized`/.  The hypovertices `q.of` a hypernode are those
-of its hyponodes.
-
-`item;  Two hyponodes are `q.equatable` if they express the same value of the same
-type.  Two (possibly non-identical) hypernodes are `q.equatable` if all of their
-hyponodes, compared one-by-one in order, are equatable.  I will also say that values
-are `q.equatable` (rather than just saying `q.equal`/) to emphasize that
-they are the respective values of equatable nodes.
-
-`item;  There may be a stronger relation, defined on equatable non-equivalent hypernodes,
-whereby two hypernodes are `i.inferentially equivalent` if any inference justified via
-edges incident to the first hypernode can be freely combined with inferences
-justified via edges incident to the second hypernode.  Equatable nodes are not
-necessarily inferentially equivalent.
-
-`item;  Hypernodes can be assumed to be unique in each graph, but it is
-unwarranted to assume (without type-level semantics) that two equatable
-hypernodes in different graphs are or are not inferentially equivalent.
-Conversely, even if graphs are uniquely labeled %-- which would
-appear to enable a formal distinction between hypernodes in one
-graph from those in another, `CH;
-semantics does not permit the assumption that this separation alone
-justifies inferences presupposing that their hypernodes
-`i.are not` inferentially equivalent.
-
-`item;  All hypo- and hypernodes have a `q.proxy`/, meaning there is a type in
-`TyS; including, for each node, a unique identifier designating
-that node, that can be expressed in other hyponodes.
-
-`item;  There are some types (including these proxies) which may only be expressed
-in hyponodes.  There may be other types which may only be expressed
-in hypernodes.  Types can then be classified as `q.hypotypes` and `q.hypertypes`/.
-The `TyS; may stipulate that all types are `i.either` hypo or hyper.  In
-this case, it is reasonable to assume that each hypotype maps to a unique
-hypertype, similar to `q.boxing` in a language which recognizes `q.primitive`
-types (in Object-Oriented languages, boxing allows non-class-type
-values to be used as if they were objects).
-
-`item;  Types may be subject to the restriction that any hypernode which has that
-type can only be a tail-set, not a head-set; call these `i.tail-only` types.
-
-`item;  Hyponodes may not appear in the graph outside of hypernodes.  However, a
-hypernode is permitted to contain only one hyponode.
-
-`item;  Each edge, separate and apart from the `CH;'s actual graph structure,
-is associated with a distinct hypernode, called its `i.annotation`/.  This
-annotation cannot (except via a proxy) be associated with any other hypernode
-(it cannot be a head- or tail-set in any hypernode).
-The first hyponode in its annotation I will 
-dub a hyperedge's `i.classifier`/.  The outgoing edge-set of a hypernode can
-always be represented as an associative array indexed by the classifier's vertex.
-
-`item;  A hypernode's type may be subject to restrictions such that there is a
-single number of hyponodes shared by all instances.  However, other types may be
-expressed in hypernodes whose size may vary.  In this case the
-hyponode types cannot be random; there must be some pattern linking
-the distribution of hyponode types evident in hypernodes (with the same
-hypernode types) of different sizes.  For example, the hypernodes
-may be dividable into a fixed-size, possibly empty sequence of hyponodes,
-followed by a chain of hyponode-sequences repeating the same type pattern.
-The simplest manifestation of this structure is a hypernode all of whose
-hyponodes are the same type.
-
-;;~ %More complex `q.patterns` involve heavier
-;;~ %type-theoretic concepts and will be slightly touched upon below.
-
-`item;  Call a `i.product-type transform` of a hypernode to be a different
-hypernode whose hypovertices are tuples of values equatable to those from the first hypernode,
-typed in terms of product types (i.e., tuples).  For example, consider two
-different representations of semi-transparent colors: as a 4-vector
-`vecrgbt;, or as an `vecrgb; three-vector paired with a transparency magnitude.
-The second representation is a product-type transform of the first, because the first
-three values are grouped into a three-valued tuple.  We can
-assert the requirement in most contexts that `CH;s whose hypernodes are
-product-type transforms of each other contain `q.the same information`
-and as sources of information are interchangeable.
-
-`item;  The Type System `TyS; is `i.channelized`/, i.e., closed under a
-Channel Algebra, as will be discussed below.
 `enumerate`
+
+Consider a function which calculates the difference between 
+systolic and diastolic blood pressure, returning an unsigned
+integer.  If this code were called with malformed data wherein 
+systolic and diastolic are inverted, the difference would 
+be a negative number, which (under binary conversion to an 
+unsigned integer) would come out as a potentially 
+extremely large positive number (as if the patient had 
+blood pressure in, say, the tens-of-thousands).  This nonsensical 
+outcome indicates that the basic calculation is fragile.  
+We then have three options: test `q.systolic-greater-than 
+diastolic` `i.within the procedure`/; require that this test 
+be performed prior to the procedure being called; 
+or use a special data structure configured such that 
+systolic-over-diastolic can be confirmed as soon as 
+any blood-pressure value is constructed in the system.
 `p`
 
 `p.
-These definitions allude to two strategies for computationally representing
-`CH;s.  One, already mentioned, is to reduce them to directed graphs
-by treating hypernodes as integral units (ignoring their internal structure).
-A second is to model hypernodes as a `q.table of associations` whose
-keys are the values of the classifier hyponodes on each of their edges.
-A `CH; can also be transformed into an `i.undirected` hypergraph by
-collapsing head- and tail- sets into an overarching tuple.  All of these
-transformations may be useful in some analytic/representational contexts,
-and `CH;s are flexible in part by morphing naturally into these various
-forms.\phantomsection\label{unplug}
-`p`
-
-%`spinc<unplug>;
-%\begingroup\captionof{figure}{\q{Unplugging} a Node}\endgroup
-%`vspace<1.5em>;
-\spinctc{unplug}{Unplugging a Node.}{fig:unplug}
-`p.
-Notice that information present `i.within` a hypernode can also be expressed as
-relations `i.between` hypernodes.  For example, consider the information that
-I (Nathaniel), age 46, live in Brooklyn as a registered Democrat.  This may be
-represented as a hypernode with hyponodes `NathFF;, connected to a hypernode
-with hyponodes `BrookDem;, via a hyperedge whose classifier encodes the
-concept `q.lives in` or `q.is a resident of`/.  However, it may also be
-encoded by `q.unplugging` the `q.age` attribute so the first hypernode becomes
-just `Nath; and it acquires a new edge, whose tail has a single
-hyponode `ageFF; and a classifier (encoding the concept) `q.age`
-(see the comparison in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}}).
-This construction can work in reverse:
-information present in a hyperedge can be refactored so that it `q.plugs in`
-to a single hypernode.
-`p`
+There are strengths and weaknesses of each option.  
+Checking parameters at the start of a procedure makes 
+code more complex and harder to maintain, and also 
+makes updating the code more difficult.  The 
+blood-pressure case is a simple example, but in real 
+situations there may be more complex data-validation 
+requirements, and separating code which `i.checks` 
+data from code which `i.uses` data, into different 
+procedures, may simplify subsequent code maintenance.
+If the `i.validation` code needs to be modified 
+%-- and if it is factored into its its own procedure %--  
+this can be done without modifying the 
+code which actually works on the data (reducing the 
+risk of new coding errors).  In short, factoring 
+`i.gatekeeper` and `i.fragile` code into separate 
+procedures exemplifies the programming principle of 
+`q.separation of concerns`/.  On the other hand, 
+such separation creates a new problem of ensuring that 
+the gatekeeping procedure is always called.  
+Meanwhile, using special-purpose, narrowed data types 
+adds complexity to the overall software if these data types
+are unique to that one code base, and therefore 
+incommensurate with data provided by external sources.  
+In these situations the software must transform data between 
+more generic and more specific representations before 
+sharing it (as sender or receiver), which makes 
+the code more complicated.  
+`p` 
 
 `p.
-These alternatives are not redundant.  Generally, representing information
-via hyperedges connecting two hypernodes implies that this information is
-somehow conceptually apart from the hypernodes themselves, whereas representing
-information via hyponodes `i.inside` hypernodes implies that this information
-is central and recurring (enforced by types), and that the data
-thereby aggregated forms a recurring logical unit.  In a political survey,
-people's names may `i.always` be joined to their age, and
-likewise their district of
-residence `i.always` joined to their political affiliation.  The left-hand side
-representation of the info (seen as an undirected hyperedge) `NathFFBD;
-in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}} 
-captures this semantics better because it describes
-the name/age and `mbox.place/party` pairings as
-`i.types` which require analogous
-node-tuples when expressed by other hypernodes.  For example, any two
-hypernodes with the same type as `NathFF; will necessarily have
-an `q.age` hypovertex
-and so can predictably be compared along this one axis.  By contrast, the
-right-hand (`q.unplugged`/) version in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}}
-implies no guarantees that the `q.age`
-data point is present as part of a recurring pattern.
-`p`
-
-\itclfig{initializing-hypernodes}{fig:initializinghypernodes}
-`p.
-The two-tiered `DH; structure is also a factor when integrating 
-serialized or shared data structures with runtime data values.  
-In the demo `DH; library, for example, it is assumed that 
-each node can be associated with a runtime, binary data allocation 
-(practically speaking, a pointer to user data).  Hypernodes' internal 
-structure can therefore be represented `i.either` via hyponodes explicit 
-in the graph content `i.or` by internal structure in the user 
-data (or some combination).  Graph deserialization can then be 
-a matter of mapping hyponodes to fields in the `q.internal` data 
-allocations, before then mapping inter-hypernode relations to 
-the proper hypervertex-relations.  Code sample 
-\ref{lst:initializing-hypernodes} demonstrates the pattern 
-of hypervertex construction as `Cpp; objects that get wrapped 
-in new nodes ({\OneOverlay}-{\TwoOverlay}), 
-along with obtaining nodes already registered in a runtime graph 
-({\ThreeOverlay}) and then inserting the new nodes (with stated 
-relationships) alongside prior ones into the runtime graph 
-({\ThreeOverlay}).       
+In this preliminary discussion I refrain from any concrete 
+analysis of the coding or type-theoretic models that 
+can shed light on these options; I merely want to 
+identify the kinds of questions which need to be 
+addressed in preparation for a software project, 
+particularly in the CyberPhysical domain.  
+Ideally, protocols for pairing up fragile and 
+gatekeeper code should be consistent through the code base. 
 `p`
 
 `p.
-In general, graph representations like `CH; and `RDF; serve two goals: first,
-they are used to `i.serialize` data structures (so that
-they may be shared between
-different locations; such as, via the internet);
-and, second, they provide
-formal, machine-readable descriptions of information content, allowing for
-analyses and transformations, to infer new information or produce new data
-structures.  The design and rationale of representational paradigms is
-influenced differently by these two goals, as I will review now with an eye
-in part on drawing comparisons between `CH; and `RDF;.
+In the specific CyberPhysical context, gatekeeping is especially 
+important when working with device data.  Such data is 
+almost always constrained by the physical construction of 
+devices and the kinds of physical quantities they measure 
+(if they are sensors) or their physical capabilities 
+(if they are `q.actuators`/, devices that cause changes in their 
+environments).  For sensors, it is an empirical question what 
+range of values can be expected from properly functioning 
+devices (and therefore what validations can check that the 
+device is working as intended).  For actuators, it should 
+be similarly understood what range of values guarantee 
+safe, correct behavior.  For any device then we can 
+construct a `i.profile` %-- an abstract, mathematical 
+picture of the space of `q.normal` values associated with 
+proper device performance.  Gatekeeping code can 
+then ensure that data received from or sent to devices 
+fits within the profile.  Defining device profiles, and 
+explicitly notating the corresponding gatekeeping code, 
+should therefore be an essential pre-implementation planning 
+step for CyberPhysical software hubs.  
 `p`
 
-%`spsubsection.Channelized Hypergraphs and `largeRDF;`
-`subsection.Channelized Hypergraphs and `largeRDF;`
-\phantomsection\label{RDF}
+`subsection.Case Studies`
 `p.
-The Resource Description Framework (`RDF;) models information
-via directed graphs (`cite<AnglesGuttierez>;,
-`cite<MadalinaCroitoru>;, and `cite<ErnestoDamiani>; are good discussions of
-Semantic Web technologies from a graph-theoretic perspective),
-whose edges are labeled with concepts that,
-in well-structured contexts, are drawn from published Ontologies
-(these labels play a similar role to `q.classifiers` in `CH;s).
-In principle, all data expressed via `RDF; graphs is defined
-by unordered sets of labeled edges, also called `q.triples`
-(`q.`SPO;`/, where the `q.Predicate` is the label).  In practice,
-however, higher-level `RDF; notation such as `TTL; (`Turtle; or
-`q.Terse `RDF; Triple Language`/) and Notation3 (`NThree;)
-deal with aggregate groups of data, such as `RDF; containers and
-collections.\phantomsection\label{lived}
-`p`
+To motivate the themes I will emphasize going forward, 
+this section will examine some concrete data models 
+which are used or proposed in various CyberPhysical contexts. 
+I hope this discussion will lay out parameters on device 
+behavior or shared data to illustrate typical 
+modeling patterns and their corresponding safety or 
+validation requirements.  As an initial overview, the 
+following are some examples of data profiles that might 
+be wedded to deployed CyberPhysical devices 
+(my comments here are also summarized in 
+Table~\ref{table:profiles} on page \pageref{table:profiles}): 
 
-%`vspace<-.5em>;
-%`tcl<lived>;
-%\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
-%`vspace<.5em>;
+`description,
+\item[Heart-Rate Monitor]  A heart-rate sensor generates 
+continuously-sampled integer values
+whose understood Dimension of Measurement is in `q.beats per minute`
+and whose maximum sensible range (inclusive of both
+rest and exercise) corresponds roughly
+to the `ftytwoh; interval.  Interpreting heart-rate data depends on 
+whether the person is resting or exercising.  Therefore, a 
+usable data structure might join a beats-per-minute dimension 
+with a field indicating (or measuring) exertion, either a 
+two-valued discrimination between `q.rest` and `q.exercise` 
+or a more granular sampling of a person's movement cotemporous 
+with the heart-rate calculations.
 
-%`spinc<lived>;
-%`ftcl<lived>;
-\spinctc{lived}{CH vs. RDF Collections.}{fig:lived}
-`p.
-For example, imagine a representation of the
-fact `q.(A/The person named) Nathaniel, 46, has lived in Brooklyn,
-Buffalo, and Montreal` (shown in Diagram \hyperref[fig:lived]{\ref{fig:lived}} as both
-a `CH; and in `RDF;).  If we consider `Turtle; or `NThree; as `i.languages` and
-not just `i.notations`/, it would appear as if their semantics is built
-around hyperedges rather than triples.  It would seem that these
-languages encode many-to-many or one-to-many assertions, graphed as
-edges having more than one subject and/or predicate.  Indeed,
-Tim Berners-Lee himself suggests that
-`q.Implementations may treat list as a data type rather than just
-a ladder of rdf:first and rdf:rest properties` \cite[p. 6]{TimBernersLee}.
-That is, the specification for
-`RDF; list-type data structures invites us to consider that
-they `i.may` be regarded integral units rather than
-just aggregates that get pulled apart in semantic interpretation.
-`p`
+\item[Accelerometers]  These devices measure object's 
+or people's rate of 
+movement (see `cite<MarcoAltini>;, `cite<VincasBenevicius>;,
+`cite<HyunwooLee>;, `cite<JamesKnight>;, etc.),
+and therefore can be paired with heart-rate sensors 
+to quantify how heart rate is affected by exercise 
+(likewise for other biometric instruments, such as those 
+calculating respiration rate).  Outside the biomedical context, 
+accelerometers are important for 
+Smart Cities (or factories, and so forth) for modeling 
+the integrity of buildings, bridges, and industrial 
+areas or structures (see e.g. `cite<Wetherington>;, 
+`cite<LiZhu>;).  
+`pseudoIndent;
+An accelerometer
+presents data as voltage changes in two or three directional
+axes, data which may only produce signals when a change occurs
+(and therefore is not continuously varying), and which is
+mathematically converted to yield information about physical
+objects' (including a person's) movement and incline.  
+Mechanically, that is, accelerometers actually 
+measure `i.voltage`/, from which quantitative reports 
+of movement and incline can be derived.  Accelerometers are 
+classified as `i.biaxial` or `i.triaxial` depending on 
+whether they sample forces in two or three spatial 
+dimensions.  
+`pseudoIndent;
+The pairwise combination of heart-rate and acceleration data
+(common in wearable devices) is then a mixture of these
+two measurement profiles %-- partly continuous and
+partly discrete sampling, with variegated axes and
+inter-dimensional relationships.  
 
-`p.
-Technically, perhaps, this is an illusion.  Despite their higher-level
-expressiveness, `RDF; expression languages are, perhaps,
-supposed to be deemed `q.syntactic sugar`
-for a more primitive listing of triples: the `i.semantics` of
-`Turtle; and `NThree; are conceived to be defined by translating
-expressions down to the triple-sets that they logically imply
-(see also `cite<YurickWilks>;).
-This intention accepts the paradigm that providing semantics
-for a formal language is closely related to defining which
-propositions are logically entailed by its statements.
-`p`
+\item[Remote Medical Diagnosis]  An emerging application of 
+CyberPhysical technology involves medical equipment 
+deployed outside conventional clinical settings 
+%-- in remote areas with little electricity, refugee 
+camps, temporary ad-hoc medical units (established 
+to contain potential epidemics, for instance), and 
+so forth.  These settings have limited diagnostic 
+capabilities, so data is often transmitted to distant 
+locations in lieu of on-site laboratories.  
+`pseudoIndent;
+A good case-study derives from `q.medical whole slide imaging` 
+(`mWSI;) `cite<Auguste>;, where a mobile 
+phone attached to an ordinary microscope, 
+by subtle modifications of camera position and microscope 
+resolution, allows many views to be made on one slide.  
+Positional data (the configuration of the phone and microscope) 
+then merges with image segmentation 
+computations characteristic of 
+conventional whole slide imaging (see, e.g., 
+`cite<Farahani>;), and diagnostic pathology 
+in general, which 
+is concerned with isolating medically significant image 
+features and identifying diagnostically significant 
+anomalies (such as cell shapes 
+suggesting cancer). 
+`pseudoIndent;
+Segmentation, in turn, 
+generates multiple forms of geometric data: in 
+`cite<KaleAksoy>;, for instance, segments are 
+identified as approximations to ellipse shapes, 
+and features are tracked across scales of resolution, 
+so geometric data merges ellipse dimensions with 
+positional data (in the image) and a metric 
+of feature persistence across scales.  
+(Features which are detectable at many scales of 
+resolution are more likely to be empirically 
+significant rather than visual `q.noise`/; calculating 
+cross-scale `q.persistence` is an applied 
+methodology within Statistical Topology %-- 
+see e.g. `cite<EdelsbrunnerHarer>;, 
+`cite<HaneyMaxwell>;, `cite<HarryStrange>;).  
+Merged with `mWSI; configuration info and patient data, the 
+whole data package integrates geometric, CyberPhysical, 
+and health-record aspects. 
 
-`p.
-There is, however, a divergent tradition in formal semantics that is oriented to
-type theory more than logic.  It is consistent with this alternative
-approach to see a different semantics for a language like `Turtle;,
-where larger-scale aggregates become `q.first class` values.
-So, `NathFF; can be seen as a (single, integral)
-`i.value` whose `i.type` is a `nameAge; pair.  Such a value has an
-`q.internal structure` which subsumes multiple data-points.  The
-`RDF; version is organized, instead, around a `i.blank node` which
-ties together disparate data points, such as my name and my age.
-This blank node is also connected to another blank node which
-ties together place and party.  The blank nodes
-play an organizational role, since nodes are grouped together
-insofar as they connect to the same blank node.  But the
-implied organization is less strictly entailed; one might
-assume that the `BrookDem; nodes could just as readily
-be attached individually to the `q.name/age` blank
-(i.e., I live in Brooklyn, `i.and` I vote Democratic).
-`p`
+\item[Speech Sampling]  Audio sensors can be used to 
+isolate different people's speech episodes (see Raju Alluri 
+and Anil Kumar Vuppala, this volume, and 
+Ravi Kumar Vuddagiri `textit.et. al.`/, this volume).  Feature 
+extraction cancels background noise and partitions the foreground 
+audio into different segments, individuated (potentially) by 
+differences between speakers as well as each 
+speaker's conversation turns.  Such data can 
+then be employed in several ways.  Ant\'onio Teixera's chapter 
+(`textit.et. al.`/, this volume) discusses 
+speech-activated User Interfaces for 
+software, while the prior two chapters present methodology for 
+estimating speakers' emotional states and 
+identifying samples' spoken language or dialect, 
+respectively.
+`pseudoIndent;
+The data profile germane to 
+an audio processor will be determined by the system's 
+overarching goals.  For example, `cite<JongyoonChoi>; describes 
+techniques for measuring emotional stress via heart-rate signals.  
+Combined with speech-derived data, a system might accordingly 
+be designed around emotional profiles, merging linguistic and 
+biometric evidence.  For those 
+use-cases, programming would emphasize 
+signs of emotional changes (reinforced by both metrics), 
+and secondarily isolating times and locations, 
+which factor into proper sofware responses to 
+users' moods.  
+`pseudoIndent;
+On the other hand, a voice-based 
+User Interface might similarly model speakers' identity 
+and location, but perform Natural Language Processing 
+to translate speech patterns into models of user 
+requests.  Conversely, the use-case in Vuddagiri 
+`textit.et. al.` in this volume, where speech data is 
+parsed for language classification (viz., matching voices to the 
+language or dialect spoken) as part of a `q.smart city` network, 
+calls for different features.    
+The priority here is not necessarily identifying individual 
+speakers, but potentially tagging samples to obtain a 
+geospatial model of language-use in a given area. 
 
-`p.
-Why, that is, are Brooklyn and Democratic grouped together?
-What concept does this fusion model?
-There is a presumptive rationale for the name/age blank
-(i.e., the fusing name/age by joining them to a blank
-node rather than allowing them to take edges independently):
-conceivably there are multiple 46-year-olds named Nathaniel,
-so `i.that` blank node plays a key semantic role
-(analogous to the quantifier in `q.`i.There is` a Nathaniel,
-age 46...`/); it provides an unambiguous nexus so that
-further predicates can be attached to `i.one specific`
-46-year-old Nathaniel rather than any old `NathFF;.  But there is no
-similarly suggested semantic role for the `q.place/party` grouping.  The name
-cannot logically be teased apart from the name/age blank (because there
-are multiple Nathaniels); but there seems to be no `i.logical`
-significance to the `mbox.place/party` grouping.  Yet pairing
-these values `i.can` be motivated by a modeling convention
-%-- reflecting that geographic and party affiliation data
-are grouped together in a data set or data model.  The logical
-semantics of `RDF; make it harder to express these kinds of modeling
-assumptions that are driven by convention more than logic
-%-- an abstracting from data's modeling environment that can be desirable
-in some contexts but not in others.
-`p`
-
-`p.
-So, why does the Semantic Web community effectively insist on
-a semantic interpretation of `Turtle; and `NThree; as `i.just` a
-notational convenience for `NTrips; rather than as higher-level
-languages with a different higher-level semantics %-- and despite
-statements like the above Tim Berners-Lee quote insinuating that
-an alternative interpretation has been contemplated even by
-those at the heart of Semantic Web specifications?  
-Moreover, defining hierarchies of material composition or 
-structural organization %-- and so by extension, 
-potentially, distinct scales of modeling resolution %-- 
-has been identified as an intrinsic part of domain-specific 
-Ontology design (see `cite<Aranda>;, `cite<BittnerSmithDonnelly>;,
-`cite<BittnerSmith>;, `cite<MaureenDonnelly>;,
-`cite<Fabrikant>;, `cite<PetitotSmith>;, `cite<SegevGal>;,
-`cite<BarrySmithBlood>;,
-or `cite<PietroRamellini>;).
-Semantic Web advocates have not however promoted multitier 
-structure as a feature `i.of` Semantic models fundamentally, 
-as opposed to criteriology `i.within` specific Ontologies.        
-To the degree that this has an explanation, it probably has something to
-do with reasoning engines: the tools that evaluate `SPARQL; queries
-operate on a triplestore basis.  So the `q.reductive` semantic
-interpretation is arguably justified via the warrant that the
-definitive criteria for Semantic Web representations are not their
-conceptual elegance `visavis; human judgments but their utility in
-cross-Ontology and cross-context inferences.
-`p`
-
-`p.
-As a counter-argument,
-however, note that many inference engines in Constraint Solving,
-Computer Vision, and so forth, rely on specialized algorithms
-and cannot be reduced to a canonical query format.  Libraries such
-as `GeCODE; and `ITK; are important because problem-solving
-in many domains demands fine-tuned application-level engineering.
-We can think of these libraries as supporting `i.special` or
-domain-specific reasoning engines, often built for specific
-projects, whereas `OWL;-based reasoners like `FactPP; are
-`i.general` engines that work on general-purpose `RDF; data
-without further qualification.  In order to
-apply `q.special` reasoners to `RDF;, a contingent of nodes must
-be selected which are consistent with reasoners' runtime requirements.
-`p`
-
-`p.
-Of course, special reasoners cannot be expected to run on the domain of
-the entire Semantic Web, or even on `q.very large` data sets in general.
-A typical analysis will subdivide its problem into smaller parts
-that are each tractable to custom reasoners %-- in radiology, say,
-a diagnosis may proceed by first selecting a medical
-image series and then performing
-image-by-image segmentation.  Applied to `RDF;, this
-two-step process can be considered a combination of general and special
-reasoners: a general language like `SPARQL; filters many nodes down to a smaller
-subset, which are then mapped/deserialized to domain-specific representations
-(including runtime memory).  For example, `RDF; can link a patient to a
-diagnostic test, ordered on a particular date by a particular doctor, whose
-results can be obtained as a suite of images %-- thereby selecting the
-particular series relevant for a diagnostic task.  General reasoners
-can `i.find` the images of interest and then pass them to
-special reasoners (such as segmentation algorithms)
-to analyze.  Insofar as this architecture is in effect, Semantic Web
-data is a site for many kinds of reasoning engines.  Some of these engines
-need to operate by transforming `RDF; data and resources to an optimized,
-internal representation.  Moreover, the semantics of these representations
-will typically be closer to a high-level `NThree; semantics taken as
-`suigeneris;, rather than as interpreted reductively as a notational
-convenience for lower-level formats like `NTrip;.  This appears
-to undermine the justification for reductive semantics in terms of
-`OWL; reasoners.
-`p`
-
-`p.
-Perhaps the most accurate paradigm is that Semantic Web data has two
-different interpretations, differing in being consistent with
-special and general semantics, respectively.  It makes sense to
-label these the `q.special semantic interpretation` or
-`q.semantic interpretation for special-purpose reasoners`
-(`SSI;, maybe) and the `q.general semantic interpretation`
-(`GSI;), respectively.  Both these interpretations should be deemed
-to have a role in the `q.semantics` of the Semantic Web.
-`p`
-
-`p.
-Another order of considerations involve the
-semantics of `RDF; nodes and `CH; hypernodes
-particularly with respect to uniqueness.  Nodes in `RDF; fall into three classes:
-blank nodes; nodes with values from a small set of basic types like strings and
-integers; and nodes with `URL;s which are understood to be unique across the
-entire World Wide Web.  There are no blank nodes in `CH;; and intrinsically
-no `URL;s either, although one can certainly define a `URL; `i.type`/.
-There is nothing in the semantics of `URL;s
-which guarantees that each `URL; designates a distinct internet resource;
-this is just a convention which essentially, `i.de facto`/,
-fulfills itself because
-it structures a web of commercial and legal practices, not just digital
-ones; e.g. ownership is uniquely granted for each internet domain name.
-In `CH;, a data type may be structured to reflect institutional
-practices which guarantee the uniqueness of values in some context:
-books have unique `ISBN; codes; places have distinct `GIS; locations,
-etc.  These uniqueness requirements, however, are not intrinsically
-part of `CH;, and need to be expressed with additional axioms.  In
-general, a `CH; hypernode is a tuple of relatively simple values
-and any additional semantics are determined by type
-definitions (it may be useful to see `CH; hypernodes as roughly analogous to
-`CStruct;s %-- which have no `i.a priori` uniqueness mechanism).
-`p`
-
-`p.
-Also, `RDF; types are less intrinsic to `RDF; semantics than in `CH;
-(see `cite<HeikoPaulheim>;).  The
-foundational elements of `CH; are value-tuples (via nodes expressing values,
-whose tuples in turn are hypernodes).  Tuples are indexed by position, not by
-labels: the tuple `NathFF; does not in itself draw in the labels `q.name` or
-`q.age`/, which instead are defined at the type-level (insofar as type-definitions
-may stipulate that the label `q.age` is an alias for the node in its
-second position, etc.).  So there is no way to ascertain the semantic/conceptual
-intent of hypernodes without considering both hyponode and hypernode types.  Conversely,
-`RDF; does not have actual tuples (though these can be represented as collections,
-if desired); and nodes are always joined to other nodes via labeled connectors
-%-- there is no direct equivalent to the `CH;
-modeling unit of a hyponode being included in a hypernode
-by position.
-`p`
-
-`p.
-At its core, then, `RDF; semantics are built on the proposition that many
-nodes can be declared globally unique by fiat.  This does not need to be
-true of all nodes %-- `RDF; types like integers and floats are more
-ethereal; the number 46 in one graph is indistinguishable from 46 in
-another graph.  This can be formalized by saying that some nodes can be
-`i.objects` but never `i.subjects`/.  If such restrictions were not enforced,
-then `RDF; graphs could become in some sense overdetermined, implying
-relationships by virtue of quantitative magnitudes devoid of semantic
-content.  This would open the door to bizarre judgments like
-`q.my age is non-prime` or `q.I am older than Mohamed Salah's
-2018 goal totals`/.
-One way to block these inferences is to prevent nodes like
-`q.the number 46` from being subjects as well as objects.
-But nodes which are not primitive values %-- ones, say, designating
-Mohamed Salah himself rather than his goal totals %-- are justifiably
-globally unique, since we have compelling reasons to adopt a model
-where there is exactly one thing which is `i.that` Mohamed Salah.
-So `RDF; semantics basically marries some primitive types which are
-objects but never subjects with a web of globally unique but internally
-unstructured values which can be either subject or object.
+\item[Bioacoustic Sampling]  Similar to speech sampling 
+(at least up to the point where acoustical analysis 
+gives way to syntax and semantics), 
+audio samples can be used to track and identify 
+species (Todor Ganchev, this volume, and Boulmaiz, `textit.et. al.`/, 
+this volume).  Here again feature 
+extraction foregrounds certain noise patterns, but the 
+main analytic objective is to map audio samples to 
+the species of the animal that produced them.  
+Sensor networks can then build a geospatial/temporal 
+model of species' distribution in the area covered by 
+the network: which species are identified, their prevalence, 
+their concentration in different smaller areas, and so forth.  
+These measurements can be employed in the study of 
+species populations and behavioral patterns, and can 
+also add data to urban-planning or ecological models.  
+For example, precipitous decline of a species in some 
+location can signal environmental degradation in that vicinity.   
+`pseudoIndent;
+Data sets such as those accompanying `cite<JustinSalamon>; 
+(the smallest, labeled CLO-43SD, is profiled within 
+this chapter's data set)   
+provide a good overview of data generated during 
+species identification: in addition to audio 
+samples themselves (in `WAV; format), the data set 
+includes `NPY; (Numerical Python) files representing 
+different spectral analysis methods applied 
+to the bird songs, as well as a metadata file 
+summarizing species-level data (such as the count 
+of samples identified for each species).  
+Every species also acquires a 4-letter identifier then used
+as part of the `WAV; and `NPY; file names, so the 
+file names themselves serve a classifying role, 
+semantically linking the sample to its species.  
+These three levels of information are a good 
+example of the contrast in granularity 
+%-- and the mechanisms of information acquisition 
+%-- between raw CyberPhysical input (the audio files), midstream 
+processing (the spectral representations), and 
+summarial overviews (species counts and labels;   
+other avian data sets might also recognize 
+geospatial coordinates obtained via noting sensor placement, 
+as a further metadata dimension).
+ 
+\item[Facial Recognition]  Given a frontal (or, potentially, 
+partial) view, software can 
+rather reliably match faces to a preexisting database or 
+track faces across different locales (`cite<WeiLunChao>;,
+`cite<YueqiDuan>;, `cite<GaryHuang>;, 
+`cite<KalaiselviNithya>;, `cite<FengLu>;, etc.).  
+The most common methodology depends 
+on normalizing each foreground image segment (corresponding to 
+one face) into a rectangle, whose axes then establish vector 
+components for any features inside the segment.  Feature extraction 
+then isolates anatomical features like eyes, nose, mouth, and 
+chin, quantifying their position and distances, yielding a 
+collection of numeric values which can statistically 
+identify a person with relatively small error rates.  
+`pseudoIndent;
+Given privacy concerns, enterprise or government use 
+of this data is controversial: should analyses be performed 
+on every person, or only on exceptional circumstances 
+(crime investigation, say)?  Can facial-recognition outcomes 
+be anonymized so that faces would be tracked across locations 
+but not tied to specific persons without extra (normally 
+inaccessible) data?  When and by whom should face data be 
+obtainable, and under what legal or commercial circumstances?  
+Should stores be allowed to use these methods to 
+prevent shoplifting, for example?  What about searching 
+for a missing or kidnapped child, or keeping tabs on an 
+elderly patient?  When does surveillance cross the line 
+from benevolent (protecting personal or public safety) 
+to privacy-invasive and authoritarian?
+`description`
 `p`
 
 `p.
-In `CH; the `q.primitive` types are effectively hypotypes; hyponodes
-are (at least indirectly)
-analogous to object-only `RDF; nodes insofar as
-they can only be represented via inclusion inside
-hypernodes.  But `CH; hypernodes are neither (in themselves) globally
-unique nor lacking in internal structure.  In essence, an `RDF;
-semantics based on guaranteed uniqueness for atom-like
-primitives is replaced by a semantics based on structured building-blocks
-without guaranteed uniqueness.  This alternative may be considered in the
-context of general versus special reasoners: since general reasoners
-potentially take the entire Semantic Web as their domain, global
-uniqueness is a more desired property than internal structure.
-However, since special reasoners only run on specially selected data,
-global uniqueness is less important than efficient mapping
-to domain-specific representations.  It is not computationally
-optimal to deserialize data by running `SPARQL; queries.
+Of course, there are many other examples of CyberPhysical 
+devices and capabilities that could be enumerated.  But 
+these cases illustrate certain noteworthy 
+themes.  One observation is that a gap often exists between how 
+devices physically operate and how they are conceptualized: 
+accelerometers, for instance, mechanically measure voltage, not 
+acceleration or incline; but their data exposed to 
+client software is constructed to be used as vectors indicating 
+persons' or objects' movement.  Moreover, multiple processing 
+steps may be needed between raw physical inputs and usable  
+software-facing data structures.  Such processing may generate 
+a large amount of intermediate data; for instance, feature extraction 
+from audio or image samples can yield numeric aggregates with 
+tens or hundreds of different fields.  Further processing usually 
+reduces these structures to narrower summaries: an audio sample 
+might be consolidated to a spatial location and temporal timestamp, 
+along with a mapping to an individual person speaking 
+(perhaps along with a text transcription), or 
+human language spoken, or animal species.  Engineers then 
+have to decide what level of detail to expose across a 
+software network.  Another issue is integrating data from 
+multiple sources: most of the more futuristic scenarios 
+envision multi-modal Ubiquitous Computing spaces 
+where, e.g., speech and biometric inputs are cross-referenced.
 `p`
 
 `p.
-Finally, as a last point in the comparison between
-`RDF; and `CH; semantics,
-it is worth considering the distinction 
-between `q.declarative knowledge` and `q.procedural knowledge` 
-(see e.g. 
-\cite[pages 182-197]{BenGoetzel}).  According
-to this distinction, canonical `RDF; data exemplifies `i.declarative` knowledge
-because it asserts apparent facts without explicitly trying to interpret or
-process them.  Declarative knowledge circulates among software in canonical,
-reusable data formats, allowing individual components to use or make inferences from
-data according to their own purposes.
+Different levels of data resolution also 
+intersect with privacy concerns: simpler data structures 
+are more likely to employ private or sensitive 
+information as an organizing instrument, heightening security 
+and surveillance concerns.  For example, a simple 
+facial-recognition system would match faces against known 
+residents of or visitors to the relevant municipalities.  
+This is less technologically challenging than anonymized 
+systems which would persist more mid-processing data in order 
+to complete the algorithmic cycle %-- matching faces to 
+concrete individuals %-- only under exceptional circumstances; 
+of course, though, it is also a greater invasion of privacy.
+`p`
+
+`p.  
+Analogously, syncing speech technology with personal health 
+data would be simplified by directly matching speaker identifications 
+to biosensor devices wearers.  Again, though, using 
+personal identities as an anchor for disparate data points makes 
+the overall system more vulnerable to intrusive or inappropriate use.  
+In total, security concerns might call for more complex data structures 
+wherein shared data excludes the more condensed summaries 
+wherever they may expose private details, and rely more 
+on multipart, mid-level processing structures.  Rather than 
+organize face-recognition around a database of persons, for example, 
+the basic units might be numeric profiles paired with probabilistic 
+links notating that a face detected at one time and place matches 
+a face analyzed elsewhere, but without that similarity being 
+anchored in a personal identifier.           
 `p`
 
 `p.
-Counter to this paradigm, return to
-hypothetical `USH; examples, such as 
-the conversion of Voltage data to acceleration data, which is a
-prerequisite to accelerometers' readings being useful in most contexts.  Software
-possessing capabilities to process accelerometers therefore reveals
-what can be called `i.procedural` knowledge, because software
-so characterized not only receives data
-but also processes such data in standardized ways.
+Other broad issues raised by these CybePhysical case-studies 
+include (1) testing and quality assurance and (2) data 
+interoperability.  In the case of testing, many of the scenarios 
+outlined above (and throughout this volume) require complex 
+computational transformations to convert raw physical data into 
+usable software artifacts.  In `cite<FadelAdib>;, for example, 
+the authors present technology to measure heart rate from a 
+distance, based on subtle analysis of physical motions 
+associated with blood circulation and breathing.  The analytic 
+protocols leverage feature extraction from wireless signal 
+patterns.  As with feature extraction in audio and 
+image-analysis (e.g. face recognition) settings, algorithms need 
+to be rigorously tested to guard against false inferences 
+or erroneous generated data.  This implies that analytic 
+code needs to be developed in a software ecosystem which is 
+rigorously structured in documenting algorithmic inputs, outputs, 
+and parameters.  In `cite<FadelAdib>; the ultimate goal is to 
+introduce heart and breathing monitors within a Smart Home environment,  
+with computations performed on embedded Operating Systems.  
+However, testing and prototyping of the technology should be 
+conducted in a desktop Operating System environment so as to 
+generate or leverage test data, document algorithmic revisions, 
+and in general prove the system's trustworthiness in a 
+controlled setting (including a software environment which 
+transparently windows onto computational processes) before 
+this kind of network is physically deployed.
 `p`
 
 `p.
-The declarative/procedural distinction perhaps fails to capture how
-procedural transformations may be understood as intrinsic to some semantic
-domains %-- so that even the information we perceive as
-`q.declarative` has a procedural element.  For example, the
-very fact that `q.accelerometers` are not
-called `q.Voltmeters` (which are something else) suggests how the
-Ubiquitous Computing community perceives voltage-to-acceleration
-calculations as intrinsic to accelerometers' data.  But strictly speaking
-the components which participate in `USH; networks are not just
-engaged in data sharing; they are functioning parts of the network because
-they can perform several widely-recognized
-computations which are understood to be central to the relevant
-domain %-- in other words, they have (and share with their
-peers) a certain `q.procedural knowledge`/.
+With respect to data integration, notice how projects mentioned 
+here often anticipate pooled or overlapping information.  For 
+instance, Smart Homes are envisioned to embed sensors analyzing 
+speech, biomedical data-points like heart rate 
+(like I cited last paragraph), atmospheric 
+measurements (temperature, say) and appliance or architectural 
+states (windows, doors, or refrigerator doors being open, 
+ovens or stove burners being turned on, heaters/coolers being active, 
+and so forth).  
+In some cases this data would be cross-referenced, so that 
+e.g. a voice command would close a window or turn off a stove. 
+Analogously, `cite<MohamedSoltane>; (one of whose co-authors, 
+Nouredine Doghmane, is also a coauthor of this volume's 
+chapter on bird species) describes a combination of 
+face-recognition and speech analysis for `q.multi-modal biometric 
+authentication`/; here again a component supplying 
+image-processing data and one supplying speech metrics 
+will need to transmit data to a hub where the two inputs 
+can be pooled.  Or, as I pointed out in the case of 
+Mobile Whole Slide Imaging, image-segmentation, 
+CyberPhysical, and personal-health information fields 
+may all be integrated into a holistic diagnostic platform.
+`p`
+
+`p.     
+Overall, future CyberPhysical systems may be integrated 
+not only with respect to their empirical domain but in term 
+of the environs where they are deployed %-- Smart Homes, 
+Smart Cities (or factories or industrial plants), hospitals and 
+medical offices, schools and children's activities centers, 
+refugee or displaced-persons camps/campuses, and so forth.  
+I'll take Smart Homes as a case in point. 
+We can imagine future `mbox<homes/apartments>; provisioned with a panoply 
+of devices evincing a broad spectrum of scientific backgrounds, 
+from biology and medicine to ecology and industrial manufacturing.      
+`p`
+
+\subsubsection[How Internet of Things Interoperability
+Affects Data Modeling Priorities]{How `q.Internet of Things` Interoperability Affects Data Modeling Priorities}
+`p.
+So, imagine the following scenario: homeowners have a choice 
+of applications that they may install on their in-home computers, 
+supplied by multiple vendors or institutions, which access 
+the myriad of Smart Home devices they've installed around the 
+property.  CyberPhysical products are engineered to 
+interoperate with such hub applications %-- and therefore 
+with third-party components %-- as well as with their own 
+`q.in house`/-implemented offerings, such as phone apps.
+`p`
+
+`p. 
+In this eventuality, individual devices are no longer situated in 
+proprietary circuits linking device signals to apps and 
+databases, for example, where customers purchase 
+each app, and its associated input instrument(s), in isolation.  
+Devices are not only being 
+connected to their own product suite.  Instead, technology inside 
+the home is charged with pooling data from many kinds of devices 
+into a comprehensive Smart Home platform, where users can see a 
+broad overview, access disparate device data from a central location, 
+and where cross-device data will be merged into aggregate models: 
+e.g., cross-referencing speech and biometric inputs.  
+In this scenario, devices must be designed to broadcast 
+data to third-party software platforms.  Smart Home `q.hub` 
+applications are likely to be often upgraded; likewise, home 
+owners/renters would likely buy or replace devices fairly 
+often, so the precise configuration of data senders and 
+receivers will dynamically evolve.  These givens call for 
+a modular, flexible architecture where a central software 
+hub is poised to receive data from different devices as 
+they come `q.online`/, i.e., exposed on the Smart Home 
+internal network.  Hub applications should seamlessly 
+adjust to devices joining and also exiting the network.       
 `p`
 
 `p.
-`RDF; is structured as if static data sharing were the sole arbiter of
-semantically informed interactions between different components,
-which may have a variety of designs and rationales %-- which
-is to say, a
-Semantic Web.  But a thorough account of formal communication semantics
-has to reckon with how semantic models are informed by the implicit, sometimes
-unconscious assumption that producers and/or consumers of data will
-have certain operational capacities: the dynamic processes anticipated as
-part of sharing data are hard to conceptually separate from the static
-data which is literally transferred.  To continue the accelerometer
-example, designers can
-think of such instruments as `q.measuring acceleration` even though
-`i.physically` this is not strictly true; their
-output must be mathematically transformed for it to be interpreted in
-these terms.  Whether represented via `RDF; graphs or Directed Hypergraphs,
-the semantics of shared data is incomplete unless the operations
-which may accompany sending and receiving data are recognized as
-preconditions for legitimate semantic alignment.
+A plausible response to this scenario is that usage patterns 
+might predict different architectures, since homeowners 
+are more likely to consult device data on a phone or a 
+touch-screen rather than sitting at a computer.  Indeed, 
+we can envision that many `IoT; instruments will have their 
+own `HCI; `q.circuit`/, sending data to phones or 
+in-house touch screens `i.as well as` to hub applications.  
+Nevertheless, it is reasonable to hypothesize that users 
+will `i.sometimes` access `IoT; information from 
+hub applications, because sometimes they want a comprehensive 
+overview: they want to map device locations against 
+floor plans, compare how much energy devices are using, 
+find when devices need upgrades, and so forth.  Homeowners 
+will sometimes want to engage holistically with all their 
+Smart Home appliances, in contrast to interacting with 
+one applicance at a time via its own app.   
 `p`
 
 `p.
-While Ontologies are valuable for coordinating and integrating
-disparate semantic models, the Semantic Web has perhaps influenced
-engineers to conceive of semantically informed data sharing
-as mostly a matter of presenting static data conformant to published
-Ontologies (i.e., alignment of `q.declarative knowledge`/).  In reality,
-robust data sharing also needs an `q.alignment of `i.procedural`
-knowledge`/: in an ideal Semantic Network, procedural capabilities
-are circled among components, promoting an emergent `q.collective
-procedural knowledge` driven by transparency about code and libraries as
-well as about data and formats.  The `CH; model arguably supports this
-possibility because it makes type assertions fundamental to semantics.
-Rigorous typing both lays a foundation for procedural alignment
-and mandates that procedural capabilities be factored in to assessments
-of network components, because a type attribution has no meaning
-without adequate libraries and code to construct and interpret
-type-specific values.
+Moreover, a centralized application serves as a reference point 
+for prototyping, testing, and securitization.  The best way 
+to ensure that an overall Smart Home ecosystem is safe 
+and reliable is to stress-test a central hub where all 
+devices are integrated, from which each individual device 
+can be examined in particular.  Such an integrated 
+approach would be more foolproof than performing disconnected 
+analyses of each proprietary device network on its own 
+terms.  For example, engineers might test devices in a
+model home, using hub applications to facilitate and 
+document the testing process.  Hub software thereby serves 
+a skeletal role in product design and quality control, 
+above and beyond its utility to homeowners themselves 
+as access-points to Smart Home data.  As I said at the 
+top of the chapter, hubs promote quality CyberPhysical 
+technology by prototyping system architecture 
+and requirements; smaller-scale access points, like phone apps 
+or touch screens, should be conceptualized as 
+offshoots `i.of` a hub application, not as a substitute for one. 
+`p`
+
+`p.
+I also believe that engineers have failed to 
+appreciate the (shall we say) `q.intellectual logistics` 
+dimension of software: this is why I think I 
+am proposing something like a paradigm shift rather 
+than just restating coders' conventional wisdom.  
+Software applications are usually conceptualized 
+as commercial products, often enmeshed in a commercial 
+circle that spans multiple technologies and modalities.  
+Companies may provide desktop software supplementing 
+web and phone apps, say, but each component 
+is just a functional unit in a self-contained product 
+suite.  While some applications are of course 
+productized in this manner, conceptualizing 
+software in general in these terms discounts 
+applications' potential role as public 
+artifacts transcending the bounds of any 
+one commercial platform.  By consolidating 
+and prototyping the multiple dimensions of 
+deployed technology in general %-- safety, 
+data integration, `HCI; %-- software applications 
+should act as a common reference-point between 
+consumers, companies, and academic or regulatory 
+communities.  Applications can transparently 
+demonstrate the capabilities and vulnerabilities 
+of technology in each iteration, encapsulating scientific 
+or technical models into condensates which are 
+accessible precisely because they are operationalized 
+into digital microcosms that people can explore 
+and interact with.  Software applications, then, 
+are poised to provide the kind of cross-context semantic 
+nexus which engineers seek to exhibit via Ontologies, 
+but in a more pragmatic, experential manner.
+In the explicit case of Smart Homes,  
+discussions about `IoT; capabilities and concerns 
+%-- from the vantage-points of multiple stakeholders, 
+e.g. consumers, vendors, scientists doing `RnD;, and 
+govenment regulators %-- can be grounded in 
+publicly available software prototypes or 
+`q.Reference Implementations` for integrated 
+Smart Home consoles.  Hub applications, in short, can 
+provide an experiential commons where different 
+stakeholders' perspectives can be negotiated.   
+`p`
+
+`p.
+To the degree that software applications 
+%-- either commercial 
+products or non-commercial, open-source 
+projects expressly designed for public 
+prototyping %-- do 
+play that `q.social` role, we should see a commensurate 
+paradigm-shift in library and device design, 
+since software-level integration will become 
+a proportionately more important feature of 
+technology packages.  Experts' and the general 
+publics' assessment of new tech products, 
+that is, will be informed in part by 
+experiencing those products in the context 
+of centralized software, like a Smart Home 
+hub.  This incentivizes product vendors to 
+provision their offerings so as to 
+work well in a software-centric milieu. 
+`p`
+
+`p.
+All of this calls for carefully designed protocols, where 
+devices not only expose data but do so in a manner
+conducive to centralized aggregation.  The role of a 
+software hub is not only to receive data, but to 
+transform multi-domain signals into a common 
+graphical presentation, as well as wrangle received data into 
+a common format permitting integration algorithms %-- 
+e.g. syncing speech and biometrics %-- to operate.  
+Received device data must therefore be systematically 
+mapped to appropriate transform procedures and 
+`GUI; components.  This is an important point, because 
+we are no longer considering data models from the viewpoint 
+of devices' own capabilities %-- their specific physical 
+measurements and parameters.  More technically, the 
+key libraries associated with drivers are no longer 
+just low-level drivers or `IoT; signal processors; 
+the technology stack needs a software-prioritizing 
+semantic layer intermediate between `q.smart objects` 
+and corresponding hub applications.
+The data models at this semantic midlayer, in short, 
+are no longer device-centric.  Instead, data models are 
+now assessed in a software-centric milieu: how do we 
+route device data to proper interpretive procedures?  
+How do we consolidate device data into `GUI; presentations?     
+`p`
+
+`p.
+Given a `Cpp; hub application, we might assign a distinct 
+`Cpp; class to each distinct kind of device, so that methods 
+on that class are responsible for decoding device inputs into 
+application-specific common representations.  These device-specific 
+classes could then be mapped to device-specific `GUI; components 
+displaying device state for human users.  Meanwhile, overarching 
+`GUI; components could be designed to bundle visual components 
+from multiple device classes, perhaps using a common base 
+class representing `q.graphical device presentations` in the abstract.  
+Device data is then routed to distinct `Cpp; classes, and 
+subsequently `GUI; classes.  These Object-Oriented protocols are foregrounded in 
+the hub software, but the point is that such software architecture 
+retroactively should influence device constructions themselves.  
+For devices to be used with an integrated smart home platform, 
+the information they broadcast will have to be amenable 
+to being processed within a software ecosystem structured 
+around Object-Oriented paradigms. 
+`p`
+
+`p.
+Current literature on CyberPhysical data sharing has focused 
+primarily on establishing common formats and Ontologies for 
+CyberPhysical information: our energies have been 
+invested in standardized representational paradigms.  But 
+common representational formats is only a minimal foundation 
+for robust software ecosystems.  I would argue that 
+engineers have overemphasized the virtues of standardized 
+representations in general, driven perhaps by the press 
+surrounding mechanisms like `XML; or `RDF;.  There is 
+nothing wrong with widely-adopted formats, but how 
+data is `i.encoded` is tangential to the primary goal 
+of networked software, which is to route shared data 
+to the proper procedures and `HCI; protocols.  In 
+a Smart Home case, once we commit to aggregating devices 
+via a software hub, the key organizing principle is 
+a mesh of procedures implemented in the hub application 
+that can pool all relevant devices into one information 
+space.  What needs to be standardized then are not 
+so much data `i.formats`/, but data-handling 
+`i.procedures`/.  
+`p`
+
+`p.
+To put it differently, device manufacturers would now be dealing 
+with an ecosystem in which hub applications receive and 
+aggregate their data, providing users access points to and 
+overviews of device data and state.  Hub applications may be 
+provided by different companies and iterations, 
+their inner workings opaque to devices themselves.  What 
+can be standardized, however, are the `i.procedures` 
+implemented within hub software to receive and properly 
+act upon device data.  Software might guarantee, for example, 
+that so long as devices are supplying signals in 
+their documented formats, the software has capabilities 
+to receive the signals, unpack the data, and internally 
+represent the data in a manner suitable for device particulars.  
+Devices can then specify what kind of internal representations 
+are appropriate for their specific data, essentially 
+specifying conditions on software procedures and data types.  
+`p`
+
+`p.
+In short, the key units of mutual trust and verification among 
+and between CyberPhysical devices and CyberPhysical software 
+are not, in theory, data structures themselves, but instead 
+`i.procedures` for processing relevant data structures.  
+Robust CyberPhysical ecosystems can be developed by 
+reinforcing procedural alignment wherever possible, 
+including by curating substantial collections of 
+reusable software libraries, either for direct 
+application or as prototypes and testing tools.  
+Suppose many CyberPhysical sensors were paired 
+with open-source code libraries which illustrate how 
+to process the data each device broadcasts.  
+Commercial products could use those libraries directly, or, 
+if they want to substitute closed-source alternatives, 
+might be required to document that their data management 
+emulates the open-source prototypes.  Test suites and 
+testing technology can then be implemented against the 
+open-source libraries and reused for stress-testing 
+analogous proprietary components.  This appears to be 
+the most likely path to ensuring interoperable, 
+high-quality CyberPhysical technology that 
+serves the ultimate goal of integrated Smart Home 
+(and Smart City, etc.) solutions. 
+`p`
+
+`p.
+That hypothesis notwithstanding,
+there are a lot more academic papers on
+CyberPhysical Ontologies or common signal/message formats, 
+like `CoAP; and `MQTT; (`cite<FirasAlbalas>;, 
+`cite<BadisDjamaa>;, `cite<RiccardoGiambona>;, 
+`cite<CenkGundogan>;, `cite<JussiHaikara>;, `cite<AlejandroRodriguez>;, 
+etc.) than there are open-source libraries 
+which prototype device data, its validation, parameters, 
+and proper transformations.`footnote.
+The rationale for emphasizing standard data formats is 
+probably that these formats constrain any procedure 
+which operates on the data, so standardization in 
+data representation indirectly leads to standardization 
+in data-management procedures, or what I am calling 
+`q.procedural alignment`/.  This accommodates the fact 
+that shared data may be used in many different 
+software environments %-- components implemented in 
+different programming languages and coding styles.   
+However, more detailed 
+guarantees can be engineered by grounding standardization 
+on procedures rather than data representations themselves.  
+To accommodate multiple programming languages and paradigms, 
+data models can be supplemented with a 
+`q.reference implementation` which prototypes 
+proper behavior `visavis; conformant data; components 
+in different languages can then emulate the prototype, 
+serving both as an implementation guide and a 
+criterion for other developers to accept a new 
+implementation as trustworthy.  There are several examples 
+of a reference implementation used as a standardizing 
+tool, analogous to an Ontology, such as the `librets; 
+(Real Estate Transaction Standard) library, 
+servers and clients for `FHIR; (Fast Healthcare Interoperability 
+Resources), and clients for `DICOM; (Digital Imaging and 
+Communications in Medicine), e.g. for Whole Slide Imaging 
+(see \url{https://www.orthanc-server.com/static.php?page=wsi}).
+`footnote`  A good case-in-point can be found in 
+\cite[pages 4 ff.]{PatroBanerjee} using `CLang; 
+structures to model `CoAP; meta-data: while it is 
+reasonable, even expected, for low-level driver code 
+to be implemented in `CLang;, this code should also 
+be the basis of data models implemented in a language 
+like `Cpp; where dimensions and ranges can be made explicit 
+in the data types.  Nevertheless, many engineers will 
+instead focus on describing the more nuanced 
+data modeling dimensions through Ontologies and 
+other semantic specifications wholly separate from 
+programming type systems.  This has the effect of 
+scattering the data models into different artifacts: 
+low-level implementations with relatively little 
+semantic expressiveness, and expressive 
+Ontologies which, due to a lack of type-level 
+correspondence between modeling and programming 
+paradigms, are siloed from implementations themselves.
+`p`
+
+`p.  
+In this chapter, conversely, in lieu of `q.data-centric` 
+Ontologies whose mission is to standardize how information 
+is mapped to a `i.representation`/, I will consider 
+`q.Procedural` 
+Ontologies: ones which focus on procedural capabilities and 
+requirements that indicate whether software components 
+are properly managing (e.g., CyberPhysical) data.  The 
+idea is that proving procedural conformance should be a 
+central step, and an organizing groundwork, for 
+showing that software due for production deployment 
+is trustworthy and complies to technical and legal specifications.
+`p`
+
+`p.
+In practical terms, the above discussion mentioned the CLO-43SD  
+(avian) data set and Vuddagiri `i.et. al.`/'s 
+chapter, which (as noted below) builds off 
+the AP17-OLR `q.challenge` corpus.  I will also 
+refer to recent `CoNLL; corpora, so 
+these are three representative examples of 
+data sets tangibly applicable to CyberPhysical and/or 
+`NLP; Research and Development: one audio-based 
+(for species identification), one audio/speech, 
+and one linguistic.  Based on the idea that 
+`RnD; data sets should germinate deployment data models, 
+we should look to data sets like these 
+to provide semantic and type-theoretic encapsulations 
+of their information spaces and analytic methods 
+(e.g., spectral waveform analysis, or Dependency Grammar 
+parsing).  Accompanying materials for this chapter 
+provide profiles of the three aforementioned data sets, 
+which consolidate their various files and formats into 
+a streamlined %-- and procedure-oriented, 
+`q.software-centic` %-- representational paradigm.  
+The demo code presents examples 
+of procedures and data types targeting these 
+data sets, as well as an architecture for 
+deploying data sets in a procedure-oriented and 
+software-centric manner, in terms of how files 
+and the information they contain are organized, 
+and also employment of data-publishing standards 
+such as the `q.Research Object` model 
+(`cite<KhalidBelhajjame>;, `cite<KhalidBelhajjameWorkflow>;,
+`cite<PhilipEBourne>;, 
+`cite<KatrinaFenlon>;,
+`cite<MarkDWilkinson>;). 
+`p`
+
+`p.
+Alongside these demo sets, an additional demonstrative
+example is provided addressing biomedical device profiles 
+and patient data (including privacy and security concerns).  
+The focus of these latter examples is more architectural: 
+`Cpp; classes are organized to partition patient-specific 
+data points into multiple layers (such as private data,
+demographic data, and `q.cohort models` in the sense 
+of `cite<EranBellin>; which permit detailed course-of-treatment 
+and treatment outcomes to be represented without sacrificing 
+privacy), along with encryption techniques for the most 
+sensitive infomation layers.  The implementation 
+demonstrates methods for sharing medically significant 
+data with some degree of detail while also constraining 
+access to secure layers within that data as necessary, 
+illustrating how `GUI;-based applications can both 
+adapt to the lack of securitized data as well as 
+proper protocols for accessing securitized layers.  The demo 
+also prototypes integration of patient-centric layers 
+with biomedical device profiles, so that the abovementioned 
+patient information models can be leveraged in the 
+context of software managing CyberPhysical health data 
+(including `q.Ubiquitous Sensing for Healthcare`/-style 
+input streams). 
+`p`
+
+`p.
+Philosophically, a `q.Procedural` Ontology supplements
+the `q.static` semantic model of data structures, which
+expresses `i.internal` guarantees on information content
+and representation.  Structural and representational guarantees
+usually come into play in the event of data being shared
+between two distinct computing environments; as such,
+the full interaction space partners data structures themselves
+with `i.senders` and `i.receivers`/.  Procedural Ontology,
+then, expresses requirements on senders and receivers analogous
+to conventional Ontologies' semantics on data structures
+internally.
+`p`
+
+`p.
+The `i.internal` or `i.static`/, and
+`i.external` or `i.procedural`/, dimensions of a
+Procedural Ontogy, respectively, may be conceptually 
+unified via a common type-theoretic foundation.
+Notionally, `i.types` and `i.procedures` are
+interdependent: there are no types without
+procedures to construct, modify, or utilize their
+values; likewise there are no procedures without
+types to circumscribe their parameters.
+Theoretically, then, `i.static` and `i.procedural`
+Ontologies are similarly interdependent:
+internal semantic models are only operationally
+meaningful in the context of data re-use, which
+implies information being replicated, and so
+an origin and destination point.
+Interface definition for software clients and
+servers is of course a familiar aspect of
+software engineering; the new concepts I am
+proposing here involve nonstandard,
+hypergraph-based representations of
+procedure types and requirements, which translates
+to Hypergraph Ontologies structurally
+different (and, I would argue, more expressive)
+than conventional Ontologies or Interface
+Definition Languages.
+`p`
+
+`p.
+As a practical matter, the demo set illustrates techniques
+for creating and leveraging a Procedural Ontology
+in the context of hypothetical biomedical patient and
+device data.  The `q.Ontologies` (technically
+expressed in a hypergraph structure rather than
+Semantic Web format) define conditions on
+senders and receivers,
+which are requisite for software components
+to participate in data sharing %-- and therefore
+also guarantees on components' behavior, at least
+up to the level of detail offered by the Ontology.
+The larger point is that static Ontologies are only
+one part of the distributed but
+regulated communications ecosystem
+envisioned by projects like the
+Semantic Web: full realization of
+this technology's potential depends
+on procedure- and software-level
+Requirements Engineering %-- which suggests that new
+data publishing methodology is one non-theoretical
+step that engineers could take toward
+a more robust CyberPhysical software-development ecosystem.
+I hope to show by reworking the demo's data sets how
+`RnD; models can propagate to procedure-oriented 
+and software-centric `q.semantic middleware` layers, 
+which ultimately streamline the end-goal of achieving 
+safe, reliable CyberPhysical applications.
+`p`
+
+`p. 
+At present, to make these issues more concrete
+with further case-studies,
+in this introductory discussion I will examine in
+more detail the specific case of speech and language 
+data structures.
+`p`
+
+`subsubsection.Linguistic Case-Study`
+`p.
+Establishing data models for deployed technology 
+is certainly part of the Research and Development 
+cycle, which means that data profiles tend 
+to emerge within the scientific process of 
+formulating and refining technical and algorithmic 
+designs.  This is particularly true for complex, 
+computationally nuanced challenges such as image segmentation 
+or (to cite one above example) measuring heartbeats 
+and breathing patterns via subtle waveform analysis.  
+We can assume that every `RnD; phase will itself leave
+behind an ecosystem of testing data and code which 
+can be decisive for consolidating data models, directly 
+or indirectly influencing production code for systems 
+(even if their deployment and commercialization is 
+well after the `RnD; period).       
+`p`
+
+`p.
+In the case of speech and language technology, 
+a research-oriented data infrastructure has been 
+systematically curated, in several subdisciplines, 
+by academic or industry collaborations.  The 
+Conference on Natural Language Learning (`CoNLL;), for 
+example, invites participants to develop 
+Natural Language Processing techniques targeted at 
+a common `q.challenge` dataset, updated each year.  These 
+data sets, along with the data formats and code libraries 
+which allow software to use that data, thereby serve 
+as a reference-point for Computational Linguistics 
+researchers in general.  Similarly, this volume's 
+chapter on Language Identification describes research 
+targeting a multilingual data set (labeled AP17-OLR) curated for an 
+annual `q.Oriental Language Challenge` conference 
+dedicated to language/dialect classification for 
+languages spoken around East Asia (from  
+East Asian language families and also Russian).  
+`p`
+
+`p.
+Technically, curated and publicly accessible data 
+sets are a different genre of information space than 
+real-time data generated by CyberPhysical technology 
+(e.g. voices picked up by microphones in a Smart Home).  
+That is to say, software developed to access speech 
+and language data sets like the `CoNLL;'s or the 
+Oriental Language Challenge has different requirements 
+than software responding to voice requests in real time 
+%-- or other deployment use-cases, such as medical 
+transcription, or identifying dialects spoken in an 
+urban community.  However, data models derived from 
+publicly shared test corpora `i.do` translate over 
+to realtime data: we can assume that `RnD; 
+data sets are collections of signals or information 
+granules which are structurally similar to those 
+produced by operating CyberPhysical devices.  
+As a result, portions of the software targeting 
+`RnD; data sets %-- specifically, the procedures 
+for acquiring, transforming, validating, and 
+interactively displaying individual samples %-- 
+remain useful as components or prototypes for 
+deployed product.  Code libraries employed in 
+`RnD; cycles should typically be the basis 
+for data models guiding the implementation of 
+production software. 
+`p`
+
+`p.
+To make this discussion more concrete, I will use 
+the example of `CoNLL; data sets.  This chapter's 
+demo includes samples from the most recent 
+collection of `CoNLL; files and 
+conference challenge tasks (at the time of writing) 
+as well as demo code which operates on such 
+data via techniques described in this chapter.  
+The `CoNLL; format is representative of the 
+kinds of linguistic parsing requisite for 
+using Natural Language content (such as 
+speech input) in CyberPhysical settings.
+`p`
+
+`p.
+The chapter by Ant\'onio Teixera  and others on 
+`q.Natural (Language) Interaction` with 
+Smart Homes (this volume) considers voice-activated 
+CyberPhysical interfaces, where Natural Language 
+segments become the core elements in translating 
+user queries to actionable software responses.  The proposed 
+systems analyze speech patterns to build textual 
+reconstructions of speakers' communications, then 
+parses the text as Natural Language content, before 
+eventually (if all goes well) interpreting the 
+parsed and analyzed text as an instruction the 
+software can follow.  Text data can then be 
+supplemented with metrics measuring vocal 
+patterns, syntactic and semantic information, speaker's 
+spatial location, and other information that can 
+help interpret speakers' wishes insofar as software 
+can respond to them.  
+`p`
+
+`p.
+The authors discuss, for instance, the possibility 
+of annotating language samples (after speech-to-text 
+translation) with Dependency Grammar parses.`footnote.
+Adequately describing Dependency Grammar
+is outside the scope of this chapter, but, in a nutshell, 
+Dependency Grammar models syntax in terms of 
+word-to-word relations rather than via phrase 
+hierarchies; as such, Dependency parses yields 
+directed, labeled graphs (node labels are words and 
+edge labels are drawn from an inventory of 
+syntactic inter-word connections),  
+which are structurally similar to Semantic Web 
+graphs.  See also `cite<AbromeitChiarcos>;, 
+`cite<KongRushSmith>;, `cite<Nivre>;,
+`cite<OsborneMaxwell>;, `cite<SivaReddy>;, 
+`cite<Schneider>;, 
+`cite<XiaPalmer>;, etc.; variants include 
+Link Grammar `cite<GoertzelPLN>;, `cite<ErwanMoreau>;  
+and Extensible Dependency 
+Grammar `cite<DebusmannThesis>;, 
+`cite<DebusmannDuchierRossberg>;,
+`cite<MichaelGasser>;.
+`footnote`  Textual content can also be annotated with 
+models of intonation, stress patterns, and other 
+acoustic features (because the original inputs are 
+audio-based) that can help an `NLP; engine to 
+properly parse sentences (for instance by 
+noting which words or syllables are vocally emphasized).  
+So, in the context of integrated Smart Home 
+hub software (continuing the above discussion), 
+this is the kind of data which would be transmitted to 
+a hub application.  We can assume that audio processing 
+as well as `NLP; technology would supply intermediary 
+processing somewhere between acoustic devices and 
+the centralized application. 
+`p`
+
+`p.
+Different kinds of linguistic details require different 
+data models.  Dependency parses, for instance, 
+are often notated via some version of a specialized 
+`CoNLL; format, which textually serializes parse and 
+lexical data, usually one word per line.  
+The most recent standard (dubbed `CoNLLU;) recognizes 
+ten fields for each word, identifying, in particular, 
+Parts of Speech and syntactic connections with other 
+words (see e.g. `cite<ChiarcosSchenk>;, 
+`cite<JohannesGraen>;, `cite<DanielHershcovich>;,  
+`cite<AmirMore>;, `cite<MilanStraka>;).  
+As a custom format, `CoNLLU; requires its 
+own parser, such as the `UDPipe; library for 
+`Cpp; (a slightly modified version of this library 
+is published with this chapter's data set).  
+So, for hub applications, a reasonable assumption 
+is that these programs compile in the `UDPipe; library 
+or an alternative with similar capabilities, 
+in order for them to handle parsed `NLP; data.
+`p`
+
+`p.
+Suppose, then, that a Smart Home speech-technology 
+product suite bundles audio-capture devices with 
+software that can perform dependency parsing, perhaps 
+after training against users' speech and 
+language patterns.`footnote.
+Users in this context meaning homeowners or 
+other people expected often to be in the 
+home: renters, children, health aides, 
+and so on.
+`footnote`  The `NLP; components %-- those 
+which actually generate parses, as opposed 
+to merely reading them %-- can be 
+bundled with the acoustic devices, so that complex 
+`NLP; code is isolated in its own software environment.  
+Smart Home applications would not then compile 
+`NLP; capabilities directly; instead, `NLP; features would 
+be provisioned by a distinct program receiving audio input and 
+generating text and parse transcriptions, which would 
+subsequently be sent 
+to hub applications, in lieu of raw device data.  
+Let us assume that this architecture is in effect.
+`p`
+
+`p.
+A hub application will, then, periodically receive a 
+data package comprising an audio sample along with 
+text transcriptions and `NLP;-generated, e.g., 
+`CoNLLU; data.  To make sense of linguistic content, 
+the software would presumably pair the `NLP;-specific 
+information with extra details, such as, 
+the identity of the speaker (if a Smart Home system 
+knows of specific users), where and when each sentence 
+or request was formulated, and perhaps the original 
+audio input (allowing functionality such as users playing 
+back instructions they uttered in the past).  A relevant 
+data model might thereby comprise: (1) `CoNLLU; data 
+itself; (2) location info, such as spatial position and 
+which room a speaker is found in; (3) timestamps; 
+(4) speaker info, if available; (5) audio files; 
+and maybe (6) extra acoustical or intonation data. 
+Extra data could include annotations based on how 
+conversation analysts notate speech patterns, or 
+might be waveform features derived from initial 
+processing of speech samples.   
+`p`
+
+`p.
+This data model would presumably translate to multiple 
+data types: we can envision (1) a class for `UDPipe; 
+sentences obtained from `CoNLLU;; (2) a class for audio 
+samples; (3) speaker and time/location information; plus 
+versions of these classes appropriate for 
+`GUI;s and database persistence.  And, in addition, 
+these data requirements for speech and text samples only 
+considers obtaining a valid parse for the text; 
+to actually react to speech input, an application would 
+need to map lexical data to terms and actions the software 
+itself, 
+in the context of its own capabilities,  
+can recognize.  For instance, `i.close the window` 
+would map to an identifier for which window is intended 
+(inferred perhaps from speaker location) and a 
+`i.close` operation, which could be available via 
+actuators embedded in the window area.  All of the 
+objects that users might semantically reference 
+in voice commands therefore need their own data 
+models, which must be interoperable with linguistic 
+parses.  So along with data types specific to 
+linguistic elements we can consider `q.bridge` types 
+connecting linguistic data (e.g., lexemes) to 
+data types modeling physical objects themselves.  
+`p`
+
+`p.
+Likewise, we 
+can anticipate the procedures which speech and/or language 
+data types need to implement: correctly decoding 
+`CoNLLU; files; mapping time/location data points to a 
+spatial model of the Smart Home (which room is 
+targeted by the location and also if that point is 
+close to a door, window, appliance, and so forth; 
+and perhaps matching the location to a `ThreeD; 
+or panoramic-photography graphics 
+model for visualization); audio-playback procedures, 
+along with interactive protocols for this process such 
+as users pausing and restarting playback; procedures 
+to map identified speakers to user profiles known to 
+the Smart Home system.  The audio devise makers and 
+`NLP; providers %-- assuming those products are 
+delivered as one suite separate and apart from the 
+Smart Home hub %-- can mandate that hub applications 
+demonstrate procedural implementations that satisfy 
+these requirements as a precondition for accessing 
+their broadcast data.  Conversely, hub applications can 
+stipulate the procedural mandates they are prepared 
+to honor as a guide to how devices and their drivers 
+and middleware components should be configured for 
+an integrated Smart Home ecosystem. 
+`p`
+
+`p.
+The essential point here is that procedural requirements 
+and validation becomes the essential glue 
+that unifies the diverse Smart Home components, and 
+allows products designed by different companies, 
+with different goals, to become interoperable.  
+Once again, procedural alignment and predictability is 
+more important than standardized data formats.   
+`p`
+
+`p.
+We can also consider representative criteria for 
+testing procedures; for instance, preconditions that 
+procedures need to recognize.  In `CoNLLU;, 
+individual words can be extracted from a parse-model, 
+but the numeric index for the word must fall within a 
+fixed range (based on word count for the 
+relevant sentence).  In audio playback, time intervals 
+are only meaningful in the context of the length of 
+the audio sample in (e.g.) seconds or milliseconds.  
+Similarly, features extracted from an audio 
+sample (of human speech or, say, a bird song) are localized 
+by time points which have to fit within a sample window; 
+and image features are localized in rectangular coordinates 
+that need to fit within the surrounding image.  
+Therefore, procedures engaged with these data 
+structures should be checked to ensure that they 
+honor these ranges and properly respond to 
+faulty data outside them.  This is an example 
+of the kind of localized procedural testing which, 
+cumulatively, establishes software as trustworthy.
+`p`
+
+`p.
+I will discuss similar procedural-validity issues 
+for the remainder of this section before 
+developing more abstract or theoretical models 
+of procedures, as formal constructions, subsequently 
+in the chapter. 
+`p`
+
+`vspace<-.1em>;
+%`spsubsection.Proactive Design`
+`subsection.Proactive Design`
+`p.
+I have thus far argued that applications
+which process CyberPhysical data need to rigorously organize their functionality
+around specific devices' data profiles.  The procedures that directly interact
+with devices %-- receiving data from and perhaps sending instructions
+to each one %-- will in many instances be `q.fragile` in the sense
+I invoke in this chapter.  Each of these procedures may make assumptions
+legislated by the relevant device's
+specifications, to the extent that using any one procedure too broadly
+constitutes a system error.  Furthermore, CyberPhysical devices may
+exhibit errors due to mechanical malfunction, hostile attacks,
+or one-off errors in electrical-computing operations, causing
+performance anomalies which look like software mistakes even if the code is
+entirely correct (see `cite<MichaelEngel>; and
+`cite<LavanyaRamapantulu>;, for example).  As a
+consequence, `i.error classification` is especially
+important %-- distinguishing kinds of software errors
+and even which problems are software errors to begin with.
+`p`
+
+`p.
+Summarizing the case studies from earlier in this section, 
+Table~\ref{table:profiles} identifies several details 
+about dimensions, parameters of operation, data fields, 
+and other pieces of information relevant to 
+implementing procedures and data types capturing 
+CyberPhysical data.  These types may derive from 
+CyberPhysical input directly or may model artifacts 
+constructed from CyberPhysical input midstream, such 
+as audio or image files, or text transcriptions 
+representing speech input.  The summaries are not 
+rigorous data models, but are just suggestive cues 
+about what sort of details engineers should consider 
+when formalizing data models.  In general, detailed 
+models should be defined for any input source 
+(including those transformed by middleware 
+components, such as `NLP; engines), thereby 
+profiling both CyberPhysical devices and also 
+`q.midstream` artifacts such as audio or image files 
+%-- i.e., aggregates, derived from CyberPhysical 
+input, that can be shared between software components 
+(within hub applications and/or between hubs and 
+middleware).
+`p`
+
+`p.
+These data profiles need to be integrated with CyberPhysical code from a
+perspective that cuts across multiple dimensions of project scale and
+lifetime.  Do we design for biaxial or triaxial accelerometers, or both,
+and may this change?  Is heart rate to be sampled in a context where
+the range considered normal is based on `q.resting` rate or is it
+expanded to factor in subjects who are exercising?  These kinds
+of questions point to the multitude of subtle and project-specific
+specifications that have to be established when implementing and then
+deploying software systems in a domain like Ubiquitous Computing.
+It is unreasonable to expect that all relevant standards will be
+settled `i.a priori` by sufficiently monolithic and comprehensive
+data models.  Instead,
+developers and end-users need to acquire trust in a development process
+which is ordered to make standardization questions become apparent
+and capable of being followed-up in system-wide ways.
+`p`
+`input<profiles>;
+
+`p.
+For instance, the hypothetical questions I pondered in
+the last paragraph %-- about biaxial vs.
+triaxial accelerometers and about at-rest vs. exercise
+heart-rate ranges %-- would not
+necessarily be evident to software engineers or project architects when the
+system is first conceived.  These are the kind of modeling questions that tend
+to emerge as individual procedures and datatypes are
+implemented.  For this reason, code development serves a role beyond just
+concretizing a system's deployment software.
+The code at fine-grained scales also reveals questions that need to be
+asked at larger scales, and then the larger answers reflected back in the
+fine-grained coding assumptions, plus annotations
+and documentation.  The overall
+project community needs to recognize software implementation as a crucial
+source for insights into the specifications that have to be established
+to make the deployed system correct and resilient.
+`p`
+
+`p.
+For these reasons, code-writing %-- especially at the smallest scales %--
+should proceed via paradigms disposed to maximize
+the `q.discovery of questions` effect
+(see also, as a case study, \cite[pages 6-10]{Arantes}).  Systems in operation will be
+more trustworthy when and insofar as their software bears witness to a project
+evolution that has been well-poised to unearth questions
+that could otherwise diminish the system's trustworthiness.
+Lest this seem like common sense and unworthy of being emphasized
+so lengthily, I'd comment that literature on Ubiquitous Sensing for 
+Healthcare (`USH;), for
+example, appears to place much greater emphasis on Ontologies or Modeling
+Languages whose goal is to predetermine software design at such
+detail that the actual code merely enacts a preformulated schema,
+rather than incorporate subjects (like type Theory and
+Software Language Engineering) whose insights can
+help ensure that code development plays a more proactive role.
+`p`
+
+`p.
+`q.Proactiveness`/, like transparency and trustworthiness, has been
+identified as a core `USH; principle, referring (again in
+the series intro, as above)
+to `q.data transmission to healthcare providers
+... `i.to enable necessary interventions`/` (my emphasis).  In
+other words %-- or so this language implies, as an
+unstated axiom %--
+patients need to be confident in deployed `USH; products
+to such degree that they are comfortable with clinical/logistical
+procedures %-- the functional design of medical spaces; decisions about
+course of treatment %-- being grounded in part on data generated from
+a `USH; ecosystem.  This level of trust, or so I would argue,
+is only warranted if patients feel
+that the preconceived notions of a `USH; project have been vetted against
+operational reality %-- which can happen through the interplay between
+the domain experts who germinally envision a project and the programmers
+(software and software-language engineers) who, in the end, produce its
+digital substratum.
+`p`
+
+`p.
+`q.Transparency` in this environment means that `USH; code needs
+to explicitly declare its operational assumptions, on the
+zoomed-in procedure-by-procedure scale, and also exhibit its
+Quality Assurance strategies, on the zoomed-out system-wide scale.  It
+needs to demonstrate, for example, that the code base has sufficiently
+strong typing and thorough testing that devices are always matched to
+the proper processing and/or management functions: e.g., that there are no
+coding errors or version-control mismatches which might cause situations
+where functions are assigned to the wrong devices, or the wrong
+versions of correct devices.  Furthermore, insofar as most `USH; data
+qualifies as patient-centered information that may be personal and
+sensitive, there needs to be well-structured transparency concerning
+how sensitive data is allowed to `q.leak` across the system.  Because
+functions handling `USH; devices are inherently fragile,
+the overall system needs extensive and openly documented
+gatekeeping code that both validates their input/output and controls
+access to potentially sensitive patient data.
 `p`
 
 `thindecoline;
-`p.
-Despite their differences, the Semantic Web, on the one hand, 
-and Hypergraph-based frameworks,
-on the other, both belong to the overall
-space of graph-oriented semantic models.
-Hypergraphs can be emulated in `RDF;, 
-and `RDF; graphs can be organically mapped to 
-a Hypegraph representation (insofar as 
-Directed Hypegraphs with annotations are a 
-proper superspace of Directed Labeled Graphs). 
-Semantic Web Ontologies for computer source code can 
-thus be modeled by suitably typed `DH;s as well, 
-even while we can also formulate Hypergraph-based 
-Source Code Ontologies as well.  So, we are justified 
-in assuming that a sufficient Ontology exists 
-for most or all programming languages. 
-This means that, for any given
-procedure, we can assume that there is a 
-corresponding `DH; representation
-which embodies that procedure's implementation.
-`p`
 
 `p.
-\phantomsection\label{detachedeval}
-Procedures, of course, depend on `i.inputs` which are fixed for 
-each call, and produce `q.outputs` once they terminate.  
-In the context of a graph-representation, this implies that some
-hypernodes represent and/or express values that are `i.inputs`/, while 
-others represent and/or express its `i.outputs`/.  These
-hypernodes are `i.abstract` in the sense (as in Lambda Calculus) that they
-do not have a specific assigned value within the body, `i.qua` formal
-structure.  Instead, a `i.runtime manifestation` of a `DH;
-(or equivalently a `CH;, once channelized types are introduced) populates
-the abstract hypernodes with concrete values, which in turn allows
-expressions described by the `CH; to be evaluated.
-`p`
-
-`p.
-These points suggest a strategy for unifying 
-Lambda Calculi with Source Code Ontologies.
-The essential construct in `mOldLambda;-calculi is
-that mathematical formulae include 
-`q.free symbols` which are `i.abstracted`/: sites 
-where a formula can give rise to a concrete 
-value, by supplying values to unknowns; or 
-give rise to new formulae, via nested expressions.  
-Analogously, nodes in a graph-based source-code 
-representation are effectively `mOldLambda;-abstracted 
-if they model input parameters, which are 
-given concrete values when the procedure runs.  
-Connecting the output of one procedure to the 
-input of another %-- which can be modeled as a 
-graph operation, linking two nodes %-- is then 
-a graph-based analog to embedding a complex expression 
-into a formula (via a free symbol in latter).    
-`p`
-
-`p.
-Carrying this analogy further, I earlier mentioned different 
-`mOldLambda;-Calculus extensions inspired by programming-language 
-features such as Object-Orientation, exceptions, and 
-by-reference or by-value captures.  
-These, too, can be incorporated into a Source Code Ontology: 
-e.g., the connection between a node holding a value passed to an 
-input parameter node, in a procedure signature, is semantically 
-distinct from the nodes holding `q.Objects` which are 
-senders and receivers for `q.messages`/, in Object-Oriented 
-Parlance.  Variant input/output protocols, including 
-Objects, captures, and exceptions, are certainly semantic 
-constructs (in the computer-code domain) which 
-Source Code Ontologies should recognize.  So we can see 
-a convergence in the modeling of multifarious input/output protocols 
-via `mOldLambda;-Calculus and via Source Code Ontologies.  
-I will now discuss a corresponding expansion in the 
-realm of applied Type Theory, with the goal of 
-ultimately folding type theory into this convergence as well.   
-`p`
-
-%`spsubsectiontwoline.Procedural Input/Output Protocols via Type Theory`
-`subsectiontwoline.Procedural Input/Output Protocols via Type Theory`
-`p.
-\label{types}Parallel to the historical evolution where `mOldLambda;-Calculus
-progressively diversified and re-oriented toward concrete
-programming languages, there has been an analogous (and
-to some extent overlapping) history in Type Theory.
-When there are multiple ways of passing input to a
-function, there are at potentially multiple kinds
-of function types.  For instance, Object-Orientation inspired
-expanded `mOldLambda;-calculi that distinguish function
-inputs which are `q.method receivers` or `q.`this; objects` from
-ordinary (`q.lambda`/) inputs.  Simultaneously, Object-Orientation also
-distinguishes `q.class` from `q.value` types
-and between function-types which are `q.methods` versus ordinary
-functions.  So, to take one example, a function telling
-us the size of a list can exhibit two different types, depending
-on whether the list itself is passed in as a method-call target
-(`listsize; vs. `sizelist;).
-`p`
-
-`p.
-One way to systematize the diversity of type systems
-is to assume that, for any particular type system, there
-is a category `tCat; of types conformant to that system.  This requires
-modeling important type-related concepts as `q.morphisms` or maps
-between types.  Another useful concept is an `q.endofunctor`/:
-an `q.operator` which maps elements in a category
-to other (or sometimes the same) elements.  In a `tCat; an endofunctor
-selects (or constructs) a type `tyTwo; from a type `tyOne; %-- note how this is
-different from a morphism which maps `i.values of` `tyOne; to `tyTwo;.
-Type systems are then built up from a smaller set of `q.core` types via
-operations like products, sums, enumerations, and `q.function-like` types.
-`p`
-
-`p.
-We may think of the
-`q.core` types for practical programming as number-based
-(booleans, bytes, and larger integer types), with everything else built up by aggregation
-or encodings (like `ascii; and `unicode;, allowing types to include text and 
-alphabets).`footnote.
-In other contexts, however, non-mathematical core types may be appropriate: for example,
-the grammar of natural languages can be modeled in terms of a type system whose core are
-the two types `tyNoun; and `tyProposition; and which also includes
-function types (maps) between pairs or tuples of types (verbs,
-say, map `tyNoun;s %-- maybe multiple nouns, e.g. direct objects
-%-- to `tyProposition;s).
-`footnote`  Ultimately, a type system `tCat; is characterized
-(1) by which are its core types and
-(2) by how aggregate types can be built from simpler ones
-(which essentially involves endofunctors and/or products).
-`p`
-
-`p.
-In Category Theory, a Category `cCat; is called `q.Cartesian Closed` if
-for every pair of elements `eOne; and `eTwo; in `cCat; there is an
-element `eOneToeTwo; representing (for some relevant notion of
-`q.function`/) all functions from `eOne; to `eTwo; `cite<RBrown>;.  The stipulation that
-a type system `TyS; include function-like types is roughly equivalent, then,
-to the requirement that `TyS;, seen as a Category, is Cartesian-Closed.
-The historical basis for this concept (suggested by the terminology)
-is that the construction to form function-types is an `q.operator`/, something that
-creates new types out of old.  A type system
-`TyS; may to be `q.closed` under products:
-if `tOne; and `tTwo; are in `TyS; then `tOneTimesTTwo; must be as well.
-Analogously, `TyS; supports function-like types if it 
-is closed under a kind of `q.functionalization` operator: if the
-`tOneTimesTTwo; product can be mapped onto a function-like type
-`tyOneTotyTwo;.
-`p`
-
-`p.
-In general, then, more sophisticated type systems `TyS; are described by
-identifying new kinds of inter-type operators and studying those
-type systems which are closed under these operators: if `tyOne; and
-`tyTwo; are in `TyS; then so is the combination of `tyOne; and
-`tyTwo;, where the meaning of `q.combination` depends on the
-operator being introduced.  Expanded `mOldLambda;-calculi %-- which
-define new ways of creating functions %-- are correlated with new
-type systems, insofar as `q.new ways of creating functions`
-also means `q.new ways of combining types into function-like types`/.
-`p`
-
-`p.
-Furthermore, `q.expanded` `mOldLambda;-calculi generally involve
-`q.new kinds of abstraction`/: new ways that the building-blocks
-of functional expressions, whether these be mathematical formulae
-or bodies of computer code, can be `q.abstracted`/, treated as
-inputs or outputs rather than as fixed values.  In this chapter, I attempt to
-make the notion of `q.abstraction` rigorous by analyzing it against
-the background of `DH;s that formally model computer code.
-So, given the correlations I have just described between
-`mOldLambda;-calculi and type systems %-- specifically, on
-`TyS;-closure stipulations %-- there are parallel correlations
-between type systems and `i.kinds of abstraction defined on
-Channelized Hypergraphs`/.  I will now discuss this further.
-`p`
-
-`subsubsection.Kinds of Abstraction`
-`p.
-The `q.abstracted` nodes in a `CH; can be loosely classified as
-`q.input` and `q.output`/, but in practice there are various paradigms
-for passing values into and out of functions, each with their own semantics.
-For example, a `q.`this;` symbol in `Cpp; is an abstracted, `q.input`
-hypernode with special treatment in terms of overload resolution and access
-controls.  Similarly, exiting a function via `return; presents
-different semantics than exiting via `throw;.  As mentioned earlier,
-some of this variation in semantics has been formally modeled
-by different extensions to `mOldLambda;-Calculus.
+Fragile code is not necessarily a sign of poor design.  Sometimes
+implementations can be optimized for special circumstances, and
+optimizations are valuable and should be used wherever possible.  Consider an
+optimized algorithm that works with two lists that must be the same size.
+Such an algorithm should be preferred over a less efficient
+one whenever possible %-- which is to say, whenever dealing with two
+lists which are indeed the same size.  Suppose this algorithm is
+included in an open-source library intended to be shared among many different
+projects.  The library's engineer might, quite reasonably, deliberately
+choose not to check that the algorithm is invoked on same-sized lists
+%-- checks that would complicate the code, and sometimes slow the
+algorithm unnecessarily.  It is then the responsibility of code that
+`i.calls` whatever procedure implements the algorithm to ensure that it
+is being employed correctly %-- specifically, that this
+`q.client` code does `i.not` try
+to use the algorithm with `i.different-sized` lists.  Here `q.fragility` is
+probably well-motivated: accepting that algorithms are sometimes
+implemented in fragile code can make the code cleaner, its intentions
+clearer, and permits their being optimized for speed.
 `p`
 
 
 `p.
-So, different hypernodes in a `CH; are subject to different kinds of abstraction.
-Speaking rather informally, hypernodes can be grouped into `i.channels` based on
-the semantics of their kind of abstraction.  More precisely,
-channels are defined initially on `i.symbols`/, which are associated with hypernodes:
-in any `q.body` (i.e., an `q.implementation graph`/) hypernodes can be grouped
-together by sharing the same symbol, and correlatively sharing the
-same value during a `q.runtime manifestation` of the `CH;.  Therefore,
-the `q.channels of abstraction` at work in a procedure can be identified
-by providing a name representing the `i.kind` of channel and a list of
-symbols affected by that kind of abstraction.  In the notation I adopt here,
-conventional lambda-abstraction like `lXY; would be written as `CHlXY;.
+The opposite of fragile code is sometimes called `q.robust` code.
+While robustness is desirable in principle, code which simplistically
+avoids fragility may be harder to maintain than deliberately fragile but
+carefully documented code.  Robust code often has to check for many
+conditions to ensure that it is being used properly, which can make
+the code harder to maintain and understand.  The hypothetical
+algorithm that I contemplated last paragraph
+could be made robust by `i.checking`
+(rather than just `i.assuming`/) that it is invoked with same-sized lists.
+But if it has other requirements %-- that the lists are non-empty,
+and so forth %-- the implementation can get padded with a chain of
+preliminary `q.gatekeeper` code.  In such cases the gatekeeper
+code may be better factored into a different procedure, or expressed
+as a specification which engineers must study before attempting to
+use the implementation itself.
 `p`
 
 `p.
-I propose `q.Channel Algebra` as a tactic for capturing the 
-semantics of channels, so as to model programming languages' 
-conventions and protocols with respect to calls between 
-procedures.  Once we get beyond the basic contrast between 
-`q.input` and `q.output` parameters, it becomes necessary to 
-define conditions on channels' size, and on how 
-channels are associated with different procedures that may 
-share values.  Here are several examples: 
-
-`itemize,
-`item; In most Object-Oriented languages, any procedure can 
-have at most one `this; (`q.message receiver`/) object.  
-Let `sCh; model a `q.Sigma` channel, as in `q.Sigma Calculus`
-(written as `sigmaCalculus;: see e.g. `cite<MartinAbadi>;,
-`cite<CamposVasconcelos>;,
-`cite<KathleenFisher>;, `cite<EdwardZalta>;, etc.).
-We then have the requirement than any procedure's 
-`sCh; channel can carry at most one value.
-
-`item; \label{retexc} In all common languages which have exceptions, 
-procedures can `i.either` throw an exception `i.or` 
-return a value.  If `return; and `exception; 
-model the channels carrying standard returns and 
-thrown exceptions, respectively, this convention 
-translates to a requirement that the two channels 
-cannot both be non-empty.
-
-`item; A thrown exception cannot be handled as an ordinary 
-value.  The whole point of throwing exceptions is to 
-disrupt ordinary program flow, which means the exception 
-value is only accessible in special constructs, like a 
-`catch; block.  One way to model this restriction is 
-to forbid `exception; channels from sharing values with 
-most other channels (tied to any other procedure).  Instead, 
-exception values are bound (in `catch; blocks) to 
-lexically-scoped symbols (I will discuss channel-to-symbol 
-transfers below).
-
-`item; Suppose a procedure is an Object-Oriented method 
-(it has a non-empty `q.`sCh;` channel).  Any other methods 
-called from that procedure will %-- at least in the 
-conventional Object-Oriented protocol %-- automatically 
-receive the enclosing method's Sigma channel unless 
-a different object for the called method is supplied expressly. 
-
-`item; \label{chaining} In the object-oriented technique known as `q.method chaining`/,
-one procedures' `return; channel is transferred to a 
-subsequent procedures' `sCh; channel.  The pairing of 
-Return and Sigma channels therefore gives rise to one 
-function-composition operator.  With suitable restrictions 
-(on channel size), `return; and `lambda; channels engender a 
-different function-composition operator.  So channels can be 
-used to define operators between procedures which yield new 
-function-like values (i.e., instances of function-like 
-types).  In some cases, function-like values defined via 
-inter-function operators can be used in lieu of function-like values 
-instantiated from implemented procedures (although the 
-specifics of this substitutability %-- an example of 
-so-called `q.eta ($`eta;$) equivalence` %-- varies by language). 
-`itemize`
+Such transparent declaration of coding assumptions and specifications can
+inspire developers using the code to proceed attentively,
+which can be safer in the long run than trying to avoid fragile code
+through engineering alone.  The takeaway is that while `q.robust` is
+contrasted with `q.fragile` at the smallest scales (such as
+a single procedure), the overall goal is systems and components that are robust at the
+largest scale %-- which often means accepting `i.locally` fragile
+code.  Architecturally, the ideal design may combine
+individual, `i.locally fragile` units with rigorous documentation and gatekeeping.
+So defining and declaring specifications is
+an intrinsic part of implementing code bases which are both robust
+and maintainable.
 `p`
 
 `p.
-The above examples represent possible combinations or 
-interconnections (sharing values) between channels, 
-together with semantic restrictions on when 
-such connections are possible.  In this chapter, I 
-assume that notations describing these connections and 
-restrictions can be systematized into a `q.Channel Algebra`/, 
-and then used to model programming language conventions and 
-computer code.  A basic example of inter-channel 
-aggregation would be how a `lambda; channel, combined 
-with a `return; channel, associated with one procedure, 
-yields a conventional input/output pairing.  
-One particular channel formation %-- `lambdaPLUSreturn;, 
-say %-- therefore models 
-the basic `mOldLambda;-Calculus and, simultaneously, 
-the minimal theory of function-like types 
-(for Cartesian Closed type Categories).  
-In essence: a procedure's signature, or
-type-expression, can be seen as a `q.sum
-of channels`/, or an inter-channel operation.
-Notionally, a procedure is, in the simplest
-conceptualization, the unification of an
-input channel and an output channel.
-So a `q.channel sum` creates the basic
-foundation for a procedure, analogous to
-how input and output graph elements
-yield the foundations for morphisms
-in Hypergraph Categories.
-More complex channel combinations and protocols 
-can then model more complex 
-variations on `mOldLambda;-Calculi and
-programming language type systems. 
+Unfortunately, specifications are often created
+only as human-readable documents, which might have a semi-formal
+structure but are not actually machine-readable.
+There is then a disconnect between features `i.in the code itself` that
+promote robustness, and specifications intended for `i.human` readers
+%-- developers and engineers.  The code-level and
+human-level features promoting robustness will tend to overlap partially
+but not completely, demanding a complex evaluation of where gatekeeping
+code is needed and how to double-check via
+unit tests and other post-implementation examinations.  This is the
+kind of situation %-- an impasse, or partial but incomplete overlap,
+between formal and semi-formal specifications %-- which many programmers
+hope to avoid via strong type systems.
 `p`
 
-`subsubsection.Channelized Type Systems`
-`p.
-Collectively, to summarize my discussion to this point,
-I will say that formulations 
-describing channel kinds, their restrictions, and
-their interrelationships describe a `i.Channel Algebra`/, 
-which express how channels combine to
-describe possible function signatures %-- and 
-accordingly to describe functional `i.types`/.  The
-purpose of a Channel Algebra is, among other things, to describe
-how formal languages (like programming languages) formulate functions 
-and procedures, and
-the rules they put in place for inputs and outputs.  If `Chi; is a
-Channel Algebra, a language adequately described by its formulations 
-(channel kinds, restrictions, and interrelationships) can be called a
-`Chi;-language.  The basic `mOldLambda;-Calculus can be described as a
-`Chi;-language for the algebra defined by a minimal 
-`lambdaPLUSreturn; combination (with `return; channels 
-restricted to at most one element).
-Analogously, a type system `TyS; is 
-a `q.`Chi;-type-system`/, and is `q.closed` with respect to `Chi;, 
-if valid signatures described using channel kinds in
-`Chi; correspond to types found in `TyS;.  Types may be less granular than
-signatures: as a case in point,
-functions differing in signature only by whether they
-throw exceptions may or may not be deemed the same type.  But a channel
-construction on types in `TyS; must also yield a type in `TyS;.
-;;~ \\l,s,r,x: l!* s?% r!% x?%;
+`p.  
+Most programming language will provide some basic (typically relatively
+coarse-grained) specification semantics, usually
+through type systems and straightforward code observations
+(like compiler warnings about unused or uninitialized variables).
+For sake of discussion, assume that all languages have distinct
+compile-time and run-time stages (though these may be opaque to
+the codewriter).  We can therefore distinguish compile-time
+tests/errors from run-time tests and errors/exceptions.
+Via Software Language Engineering, we can study
+questions like: how
+should code requirements be expressed?  How and to
+what extent should requirements be tested by the language
+engine itself %-- and beyond that how can the language help coders implement
+more sophisticated gatekeepers than the language natively offers?
+What checks can and should be compile-time or run-time?  How
+does `q.gatekeeping` integrate with the overall semantics and
+syntax of a language?
 `p`
 
 `p.
-I say that a type system is `i.channelized` if it is
-closed with respect to some Channel Algebra.
-Channelized Hypergraphs are then `DH;s whose type system is Channelized.
-We can think of channel constructions as operators which combine
-groups of types into new types.
-Once we assert that a `CH; is Channelized, we know that there is a mechanism
-for describing some Hypergraphs or subgraphs as `q.procedure 
-implementations` some of whose hypernodes are subject to
-kinds of abstraction present in the relevant Channel Algebra.  The
-terse notation for Channel formulae and signatures describes
-logical norms which can also be expressed with more conventional
-Ontologies.  So Channel Algebra can be seen as a generalization of
-(`RDF;-environment) Source Code Ontology
-(of the kinds studied for example by
-`cite<ImanKeivanloo>;, `cite<WernerKlieber>;,
-`cite<JohnathanLee>;, `cite<TurnerEden>;,
-`cite<ReneWitte>;, `cite<PornpitWongthongtham>;).  Given the relations between
-`RDF; and Directed Hypergraphs (despite differences I have discussed here),
-Channel Algebras can also be seen as adding to Ontologies governing
-Directed Hypergraphs.  Such is the perspective I will take
-for the remainder of this chapter.
-`p`
-
-%`decoline;
-
-`p.
-For a Channel Algebra `Chi; and a `Chi;-closed type system
-(written, say) `TySChi;, `Chi; extends `TyS; because function-signatures
-conforming to `Chi; become types in `TyS;.  At the same time,
-`TyS; also extends `Chi;, because the elements that
-populate channels in `Chi; have types within `TyS;.  Assume that for
-any type system, there is a
-partner `q.Type Expression Language` (`TXL;) which governs how type
-descriptions (especially for aggregate types that do not have a
-single symbol name) can be composed consistent with the logic of
-the system.  The `TXL; for a type-system `TyS; can be
-notated as `TXLTyS;.  If `TyS; is channelized then its
-`TXL; is also channelized %-- say, `TXLTySChi; for some `Chi;.
+Given the maxim that
+procedures should have single and narrow roles %-- `q.separation 
+of concerns` %-- note that `i.validating` input
+is actually a different role than `i.doing` calculations.  This is 
+why procedures with fine requirements might be split into two: a
+gatekeeper that validates input before a fragile procedure is called,
+separate and apart from that procedure's own implementation.
+A related idea is overloading fragile procedures: for example,
+a function which takes one value can be overloaded in terms
+of whether the value fits in some prespecified range.  These two
+can be combined: gatekeepers can test inputs and call one of several
+overloaded functions, based on which overload's specifications are
+satisfied by the input.
 `p`
 
 `p.
-Similarly, we can then develop for Channel Algebras a `i.Channel
-Expression Language`/, or `CXL;, which can indeed be integrated with
-appropriate `TXL;s.  Formal declarations of channel axioms 
-%-- e.g., restrictions on channel sizes, alone or in combination %-- 
-are examples of terms that should be representable in a `CXL;.   
-However, whereas the `CXL; expressions I have described so far
-describe the overall shape of channels
-%-- which channels exist in a given context and their sizes
-%-- `CXL; expressions can also add details concerning the `i.types` of
-values that can or do populate channels.
-`CXL; expressions with these extra specifications then become
-function signatures, and therefore can be type-expressions in the
-relevant `TXL;.  A channelized `TXL; is then a
-superset of a `CXL;, because it adds %-- to `CXL; expressions
-for function-signatures %-- the stipulation that a particular
-signature does describe a `i.type`/; so `CXL; expressions
-become `TXL; expressions when supplemented with a proviso
-that the stated `CXL; construction describes a
-function-type signature.  With such a proviso, descriptions of
-channels used by a function qualifies as a type attribution,
-connecting function symbol-names
-to expressions recognized in the `TXL; as describing a type.
+But despite their potential elegance, mainstream programming languages
+do not supply much language-level support for expressing
+groups of fine-grained functions along these lines.  Advanced 
+type-theoretic constructs %-- including Dependent Types,
+typestate, and effect-systems %-- model requirements with more precision
+than can be achieved via conventional type systems alone.  Integrating these
+paradigms into core-language type systems permits data validation 
+to be integrated with general-purpose type checking, without the need for
+static analyzers or other `q.third party` tools (that is, projects maintained
+orthogonally to the actual language engineering; i.e., to
+compiler and runtime implementations).  Unfortunately, 
+these advanced type systems are also more complex to implement.  
+If software language engineers aspire to make Dependent Types and 
+similar advanced constructs part of their core language, 
+creating compilers and runtime engines for these languages 
+becomes proportionately more difficult.
+`p` 
+
+`p.
+If these observations are correct, I maintain that it is a worthwhile
+endeavor to return to the theoretical drawing board, with the goal 
+of improving programming language technology itself.  
+Programming languages are, at one level, artificial 
+`i.languages` %-- they allow humans to communicate 
+algorithms and procedures to computer processors, and 
+to one another.  But programming languages are also 
+themselves engineering artifacts.  It is a complex
+project to transform textual source-code %-- which is 
+human-readable and looks a little bit like natural 
+language %-- into binary instructions that computers 
+can execute.  For each language, there is a stack 
+of tools %-- parsers, compilers, and/or runtime libraries 
+%-- which enable source code to be executed 
+according to the language specifications.  
+Language design is therefore constrained by 
+what is technically feasible for these supporting tools.  
+Practical language design, then, is an interdisciplinary 
+process which needs to consider both the dimension of 
+programming languages as communicative media and 
+as digital artifacts with their own engineering challenges 
+and limitations.
+`p`
+
+%`spsubsection.Core Language vs. External Tools`
+`subsection.Core Language vs. External Tools`
+`p.
+Because of programming languages' engineering limitations, 
+such as I just outlined, software projects should not 
+necessarily rely on core-language features for 
+responsible, safety-conscious programming.
+Academic and experimental languages tend to have 
+more advanced features, and to embody more 
+cutting-edge language engineering, compared to mainstream 
+programming languages.  However, it is not always feasible 
+or desirable to implement important software with 
+experimental, non-mainstream languages.  By their nature, 
+such projects tend to produce code that must be understood by 
+many different developers and must remain usable years into 
+the future.  These requirements point toward 
+well-established, mainstream languages %-- and 
+mainstream development techniques overall %-- as opposed to 
+unfamiliar and experimental methodologies, even if those 
+methodologies have potential for safer, more productive 
+coding in the future.   
 `p`
 
 `p.
-Some `TXL; expressions
-designate function-types, but not all, since there are many types
-(like integers, etc.) which do not have channels at all.
-While a `TXL; lies `q.above` a `CXL; by adding provisos that
-yield type-definition semantics from `CXL; expressions,
-the `TXL; simultaneously in a sense lies `q.beneath` the
-`CXL; in that it provides expressions for the non-functional
-types which in the general case are the basis for `CXL;
-expressions of functional types,
-since most function parameters %-- the input/output values
-that populate channels %-- have non-functional types.
-Section `sectsym;\hyperref[sThree]{3} will discuss the elements that `q.populate`
-`mbox.channels (which I will call `q.carriers`/) in more detail`/.
+In short, methodologies for safety-conscious coding can be 
+split between those which depend on core-language features, 
+and those which rely on external, retroactive analysis 
+of sensitive code.  On the one hand, some languages and projects
+prioritize specifications that are intrinsic to the language and integrate
+seamlessly and operationally into the language's foundational
+compile-and-run sequence.  Improper code (relative to specifications)
+should not compile, or, as a last resort, should fail gracefully at run-time.
+Moreover, in terms of programmers' thought processes, the
+description of specifications should be intellectually continuous
+with other cognitive processes involved in composing code, such
+as designing types or implementing algorithms.  For sake of 
+discussion, I will call this paradigm `q.internalism`/.  
 `p`
 
 `p.
-In the following sections I will sketch a
-`q.Channel Algebra` that codifies the graph-based representation
-of functions as procedures whose inputs and
-outputs are related to other functions by variegated semantics
-(semantics that can be catalogued in a Source Code
-Ontology).  With this foundation, I will argue that Channel-Algebraic
-type representations can usefully model higher-scale
-code segments (like statements and code blocks)
-within a type system, and also how type interpretations
-can give a rigorous interpretation to modeling
-constructs such as code specifications and
-`q.gatekeeping` code.  I will start this
-discussion, however, by expanding on the idea of 
-employing code-graphs %-- hypergraphs annotated according 
-to a Source Code Ontology %-- to represent 
-procedure implementations, and therefore to model 
-procedures as instances of function-like types.
+The `q.internalist` mindset seeks to integrate data 
+validation seamlessly with other language features.  
+Malformed data should be flagged via similar mechanisms 
+as code which fails to type-check; and errors should 
+be detected as early in the development process as possible.   
+Such a mindset is evident in passages like this (describing
+the Ivory programming language):
+
+`dquote,
+Ivory's type system is shallowly embedded within Haskell's
+type system, taking advantage of the extensions provided by [the
+Glasgow Haskell Compiler].  Thus, well-typed Ivory programs
+are guaranteed to produce memory safe executables, `i.all without
+writing a stand-alone type-checker` [my emphasis].  In contrast, 
+the Ivory syntax is `i.deeply` embedded within Haskell.
+This novel combination of shallowly-embedded types and 
+deeply-embedded syntax permits ease of development without sacrificing
+the ability to develop various back-ends and verification tools [such as]  
+a theorem-prover back-end.  All these back-ends share the
+same AST [Abstract Syntax Tree]: Ivory verifies what it compiles.
+\cite[p. 1]{ivory}.
+`dquote`   In other words, the creators of Ivory are promoting the
+fact that their language buttresses via its type system 
+%-- and via a mathematical precision suitable for 
+proof engines %-- 
+code guarantees that for most languages require external
+analysis tools.
 `p`
+
+`p.
+Contrary to this `q.internalist` philosophy, other approaches
+(perhaps I can call them `q.externalist`/) favor a neater separation
+of specification, declaration and testing from the core language,
+and from basic-level coding activity.  In particular %-- according to 
+the `q.externalist` mind-set %-- most of the more important or complex
+safety-checking does not natively integrate with the
+underlying language, but instead requires
+either an external source code analyzer, or 
+regulatory runtime libraries, or some combination of the two.  
+Moreover, it is unrealistic
+to expect all programming errors to be avoided with enough proactive planning,
+expressive typing, and safety-focused paradigms: any complex
+code base requires some retroactive design, some combination
+of unit-testing and mechanisms (including those
+third-party to both the language and the projects whose code is
+implemented in the language) for externally
+analyzing, observing, and higher-scale testing for the code,
+plus post-deployment monitoring.
+`p`
+
+`p.
+As a counterpoint to the features cited as benefits to the
+Ivory language, which I identified as representing the 
+`q.internalist` paradigm, consider Santanu Paul's Source Code Algebra (`SCA;)
+system described in `cite<SantanuPaul>; and
+`cite<GiladMishne>;, `cite<TillyEtAl>;:
+`dquote,
+Source code files are processed using
+tools such as parsers, static analyzers, etc. and the necessary information
+(according to the SCA data model) is stored in a repository.  A user interacts
+with the system, in principle, through a variety of high-level languages, or
+by specifying SCA expressions directly.  Queries are mapped to SCA expressions,
+the SCA optimizer tries to simplify the expressions, and finally, the SCA
+evaluator evaluates the expression and returns the results to the user.`nl;
+We expect that many source code queries will be expressed using high-level
+query languages or invoked through graphical user interfaces.  High-level queries
+in the appropriate form (e.g., graphical, command-line, relational, or
+pattern-based) will be translated into equivalent SCA expressions.  An SCA
+expression can then be evaluated using a standard SCA evaluator, which
+will serve as a common query processing engine.  The analogy from
+relational database systems is the translation of SQL to expressions based on
+relational algebra. \cite[p. 15]{SantanuPaul}
+`dquote`
+
+So the `i.algebraic` representation of source code is favored
+here because it makes computer code available
+as a data structure that can be processed via `i.external`
+technologies, like `q.high-level languages`/, query languages, and
+graphical tools.  The vision of an optimal development environment
+guiding this kind of project is opposite, or at least
+complementary, to a project like Ivory: the whole point
+of Source Code Algebra is to pull code verification %-- the
+analysis of code to build trust in its safety and robustness
+%-- `i.outside` the language itself and into the surrounding
+Development Environment ecosystem.
+`p`
+
+`p.
+These philosophical differences (what I dub `q.internalist` vs. `q.externalist`/) 
+are normative as well as descriptive:
+they influence programming language design, and how languages in turn influence
+coding practices.  One goal of language design is to produce languages 
+which offer rigorous guarantees %-- fine-tuning the languages' 
+type system and compilation model to maximize the level of detail 
+guaranteed for any code which type-checks and compiles.  
+Another goal of language design is to define syntax and 
+semantics permitting valid source code to be analyzed 
+as a data structure in its own right.  Ideally, 
+languages can aspire to both goals.  In practice, however, 
+achieving both equally can be technically difficult.  
+The internal representations conducive to strong type and 
+compiler guarantees are not necessarily amenable to 
+convenient source-level analysis, and vice-versa.    
+`p`
+
+`p.
+Language engineers, then, have to work with
+two rather different constituencies.  One community of
+programmers tends to prefer that specification and validation be
+integral to/integrated with the language's type system and
+compile-run cycle (and standard runtime environment); whereas
+a different community prefers to treat code evaluation
+as a distinct part of the development process, something logically, operationally,
+and cognitively separate from hand-to-screen codewriting
+(and may chafe at languages restricting certain code constructs
+because they can theoretically produce coding errors, even when
+the anomalies involved are trivial enough to be tractable for
+even barely adequate code review).  One challenge for language engineers is
+accordingly to serve both communities.  We can, for example, aspire to
+implement type systems which are sufficiently
+expressive to model many specification, validation, and
+gatekeeping scenarios, while also anticipating that language code
+should be syntactically and semantic designed to be
+useful in the context of external tools (like
+static analyzers) and models (like Source Code
+Algebras and Source Code Ontologies).
+`p`
+
+`p.
+The techniques I discuss here work toward these goals on two levels.  First, I
+propose a general-purpose representation of computer code in terms
+of Directed Hypergraphs, sufficiently rigorous to codify a
+theory of functional types as types whose values are (potentially) initialized from
+formal representations of source code %-- which is to say, in the present
+context, code graphs.  Next, I
+analyze different kinds of `q.lambda abstraction` %-- the idea of
+converting closed expressions to open-ended formulae by asserting that
+some symbols are `q.input parameters` rather than fixed values, as in
+Lambda Calculus %-- from the perspective of
+axioms regulating
+how inputs and outputs may be passed to and obtained from
+computational procedures.  I bridge these topics %-- Hypergraphs
+and Generalized Lambda Calculi %-- by taking abstraction as a
+feature of code graphs wherein some hypernodes are singled out
+as procedural
+`q.inputs` or `q.outputs`/.  The basic form of this model
+%-- combining what are essentially two otherwise unrelated
+mathematical formations, Directed Hypergraphs and
+(typed) Lambda Calculus %-- is laid out in
+Sections `sectsym;\hyperref[sTwo]{\ref{sTwo}}
+and `sectsym;\hyperref[sThree]{\ref{sThree}}.
+`p`
+
+`p.
+Following that sketch-out, I engage a more rigorous study of
+code-graph hypernodes as `q.carriers` of runtime values, some of
+which collectively form `q.channels` concerning values which
+vary at runtime between different executions of a function body.
+Carriers and channels piece together to form
+`q.Channel Groups` that describe structures with meaning both
+within source code as an organized system (at `q.compile time`
+and during static code analysis) and at runtime.  Channel Groups
+have four different semantic interpretations, varying via the
+distinctions between runtime and compile-time and between
+`i.expressions` and (function) `i.signatures`/.
+I use the framework of Channel Groups to identify
+design patterns that achieve many goals of
+`q.expressive` type systems while being implementationally
+feasible given the constraints of mainstream programming
+languages and compilers (with an emphasis on `Cpp;).
+`p`
+
+`p.
+After this mostly theoretical prelude, I conclude this
+chapter with a discussion of code annotation, particularly
+in the context of CyberPhysical Systems.  Because CyberPhysical applications
+directly manage physical devices, it is especially important that they be
+vetted to ensure that they do not convey erroneous instructions
+to devices, do not fail in ways that leave devices uncontrolled, and
+do not incorrectly process the data obtained from devices.
+Moreover, CyberPhysical devices are intrinsically `i.networked`/,
+enlarging the `q.surface area` for vulnerability, and often worn by people
+or used in a domestic setting, so they tend carry personal (e.g., location)
+information, making network security protocols especially important
+(`cite<RonaldAshri>;, `cite<AbhishekDwivedi>;, `cite<LalanaKagal>;,
+`cite<TakeshiTakahashi>;, `cite<MozhganTavakolifard>;,
+`cite<BhavaniThuraisingham>;).  The dangers
+of coding errors and software vulnerabilities, in CyberPhysical
+Systems like the Internet of Things (`IoT;), are even more pronounced
+than in other application domains.  While it is
+unfortunate if a software crash causes someone to lose data,
+for example, it is even more serious if a CyberPhysical `q.dashboard`
+application were to malfunction and leave physical, networked
+devices in a dangerous state.
+`p`
+
+`p.
+To put it differently, computer code which directly interacts with
+CyberPhysical Systems will typically have many fragile pieces, which
+means that applications providing user portals to maintain and control
+CyberPhysical Systems need a lot of gatekeeping code.  Consequently,
+code verification is an important part of preparing CyberPhysical Systems
+for deployment.  The `q.Channelized Hypergraph` framework I develop here
+can be practically expressed in terms of code annotations that benefit
+code-validation pipelines.  This use case is shown in demo code
+published as a data set alongside this chapter (available for
+download at \url{https://github.com/scignscape/ntxh}).
+These techniques are not designed to substitute for Test Suites or
+Test-Driven Development,
+though they can help to clarify the breadth of coverage of
+a test suite %-- in other
+words, to justify claims about tests being thorough enough that
+the code base passing all tests actually does argue for the code
+being safe and reliable.  Nor are code annotations intended to
+automatically verify that code is safe or
+standards-compliant, or to substitute for
+more purely mathematical code analysis using proof-assistants.
+But the constructions presented here,
+I claim, can be used as part of a
+code-review process that will enhance stakeholders' trust
+in safety-critical computer code, in cost-effective, practically
+effective ways.
+`p`
+
 

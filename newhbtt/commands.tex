@@ -101,6 +101,9 @@
 
 \renewcommand{\subsection}[1]{\subss{#1}{#1}}
 
+\newcommand{\subsectionalt}[2]{\subss{#1}{#2}}
+
+
 \newsavebox{\twolinebox}
 
 \newcommand{\stwoline}[1]{%
@@ -117,6 +120,11 @@
 \newcommand{\subsectiontwolinerepl}[2]{\stwoline{#1}\subsstl{#2}{\twoline}
 
 \vspace{1em}}
+
+\newcommand{\subsectiontwolinealt}[2]{\stwoline{#1}\subsstl{#2}{\twoline}
+
+\vspace{1em}}
+
 
 \titlespacing{\subsection}{0pt}{20pt}{20pt}
 \titlespacing{\section}{0pt}{35pt}{15pt}

@@ -1,318 +1,1214 @@
-\section{Modeling Procedures via Channelized Hypergraphs}
-\phantomsection\label{sThree}
-\p{Assuming we have a suitable Source Code Ontology, software 
-procedures can be seen from two perspectives.  On the 
-one hand, they are examples of well-formed code graphs: 
-annotated graph structures convey the lexical symbols, 
-input/output parameters (via different \q{abstractions}, 
-in the sense of \mOldLambda{}-abstraction, subject to 
-relevant channel protocols), and calls to other procedures, 
-through which any given procedure's functionality is 
-achieved.  On the other hand, we can see procedures as 
-instances of function-like types, where the types carried 
-in each channel determine the type of the procedure itself, 
-as a functional value.  Although these two perspectives are 
-usually mutually consistent, the notion of functional 
-values is more general than procedures which are expressly 
-implemented in computer code.  In particular, as I briefly 
-mentioned earlier, sometime functional values are denoted 
-via inter-function operators (like the composition 
-\fOfG{}) rather than by giving an explicit implementation.  
-Programmers would say that functions defined via operators 
-(such as \Ofop{}) lack a \q{function body}.  
+\section{Directed Hypergraphs and Generalized Lambda Calculus}
+\phantomsection\label{sTwo}
+\p{Thus far, I have written in general terms about 
+architectural features related to CyberPhysical software; 
+in particular, verifying coding assumptions concerning 
+individual data types and/or procedures.  My comments 
+were intended to summarize the relevant territory, 
+so that I can add some theoretical details or suggestions 
+from this point forward.  In particular, I will explore 
+how to model software components at different scales 
+so as to facilitate robust, safety-conscious coding practices.   
 }
-\p{Going forward, I will generally use the term \i{procedure} 
-with reference to function-like type instances that are 
-defined \i{with} function bodies: that is, they are 
-associated with sections of code that supply the procedure's 
-implementation, and can be represented via code-graphs.  
-I will use the term \i{function} more generally for 
-instances of function-like types, irregardless of their 
-provenance.  In particular, functions are \i{values} 
-\mdash{} instances of types in a relevant type-system 
-\TyS{} \mdash{} whereas I will not usually discuss procedures 
-as \q{values}.    
+\p{Note that almost all non-trivial software is in some 
+sense \q{procedural}; the total package of 
+functionality provided by each software component 
+is distributed among many individual, interconnected 
+procedures.  Each procedure, in general, 
+implements its functionality by calling \i{other} procedures 
+in some strategic order.  Of course, often 
+inter-procedure calls are \i{conditional} \mdash{} a calling 
+procedure will call one (or some sequence of) procedures 
+when some condition holds, but call alternative procedures
+when some other conditions hold.  In any case, computer 
+code can be analyzed as a graph, where connections exist 
+between procedures insofar as one procedure calls, 
+or sometimes calls, the other.
 }
-\p{Most functions which may be called by a software component 
-are defined as procedures with their own function bodies.  
-Indeed, the essential software-development process involves 
-implementing procedures in code, and then implementing 
-other procedures \mdash{} which call those already-created procedures  
-(in various combinations) \mdash{} to realize their own functionality.  
-That is, source code itself produces instances of 
-functional values, via procedures described by the code.  
-Accordingly, code-graphs for individual procedures capture 
-the implementations through which function-like types 
-are (mostly) populated with concrete values.   
+\p{This general picture is only of only limited applicability 
+to actual applications, however, because the basic concept 
+of \q{procedure} varies somewhat between different 
+programming languages.  As a result, it takes some effort 
+to develop a comprehensive model of computer code which 
+accommodates a representative spectrum of coding styles 
+and paradigms. 
 }
-\p{These various concepts \mdash{} procedures, functions, implementations, 
-and function-bodies or code-graphs \mdash{} are important for 
-broad architectural topics like Requirements Engineering, because 
-they concern the building-blocks from which larger software 
-components are assembled.  When discussing procedures' coding assumptions 
-(more fine-grained than type constraints alone can model), for example, 
-we need a rigorous presentation of what a procedure itself is, 
-to identify the relevant entity whose assumptions can be documented 
-and tested.  To model the general maxim that any coding assumptions 
-made (but not verified) by one procedure \mdash{} say, \ProcOne{} \mdash{} 
-should be tested by other procedures which call \ProcOne{}, we need 
-a systematic outline capturing the notion of procedures calling 
-other procedures, in the course of their own implementation.  
-Here I propose to model these details via channels and 
-interrelationships between channels.   
+\p{There are perhaps three different perspectives which can be 
+taken toward such a comprehensive theory.  One route is 
+to consider source code as a data structure in its 
+own right, employing a Source Code Algebra or 
+Source Code Ontology to assert properties of source code 
+and enable queries against source code, qua information 
+space.  A second option derives from type theory: to 
+consider procedures as instances of functional types,
+specified by tuples of input and output types.  
+A procedure is then a transform which, in the presence 
+of (zero or more) inputs having the proper types, produces 
+(one or more) outputs with their respective types.  In practice, 
+some procedures do not return values, but they \i{do} have 
+some kind of side-effect, which can be analyzed as a 
+variety of \q{output}.  Finally, procedures can be studied 
+via mathematical frameworks such as the Lambda Calculus, 
+which allows notions of functions on typed parameters, and 
+of functional application \mdash{} applying functions to concrete 
+values, which is analogous to calling procedures with 
+concrete input arguments \mdash{} to be made formally rigorous.
 }
-\p{In my formulation of these representations, channels are conceptually 
-integrated with hypergraph code models.  That is, code-graphs are 
-a formal device within the theory I present here.  In many other 
-context code-graphs would instead be, at most, convenient expository 
-devices; for instance, functional programming languages generally do 
-not attach much significance to the contrast of procedures 
-(with function-bodies) and function-values constructed by 
-other means.  As a result, one consequence of my graph-oriented 
-approach is that the technical distinctions between 
-procedures and function-values (in general) have to be 
-duly observed.  There are some relevant complications appertaining to 
-the general picture of source-code segments instantiating 
-function-like types.  I will briefly review these issues now, 
-before pivoting to more macro-scale themes like Requirements Engineering.
+\p{I will briefly consider all three of these perspectives \mdash{} Source Code 
+Ontology, type-theoretic models, and Lambda Calculus \mdash{} in 
+this section.  I will also propose a new 
+model, based on the idea of \q{channels}, which combines 
+elements of all three. 
 }
 \vspace{-.1em}
-%\spsubsection{Initializing Function-Typed Values}
-\subsection{Initializing Function-Typed Values}
-\p{Although in general function-typed values are \i{initialized}
-from code-graphs that blueprint their implementation,
-this glosses over several different mechanisms by which
-function-typed values may be defined:
-\begin{enumerate}\eli{}  \phantomsection\label{funconstr}In the simplest case, there is
-a one-to-one relationship
-between a code graph and an implemented function (\fFun{}, say).
-If \fFun{} is polymorphic, in this case, it must be an example
-of subtype (or \q{runtime}) polymorphism where the declared types of \fFun{}'s
-parameters are actually instantiated, at runtime, by values
-of their subtypes.
-\eli{}  A different situation (\q{compile-time} polymorphism) applies
-to generic code as in \Cpp{}
-templates.  Here, a single code-graph generates multiple function
-bodies, which differ only by virtue of their expected types.
-For example, a templated \sortfn{} function will generate
-multiple function bodies \mdash{} one for integers, say, one for strings,
-etc.  These functions may be structurally similar, but they have
-different signatures by virtue of working with different types.  This
-means that symbols used in the function-bodies may refer to
-different functions even though the symbols themselves do not vary
-between function-bodies (since, after all, they come from the
-same node in a single code-graph).  That is, the code-graphs
-rely on symbol-overloading for function names
-to achieve a kind of polymorphism, where one code-graph
-yields multiple bodies.
-\pseudoIndent{}
-In this compile-time polymorphism,
-symbols are resolved to the proper overload-implementation
-at compile-time, whereas in runtime polymorphism this
-decision is deferred until the runtime-polymorphic function
-is actually being executed.  The key difference is that
-runtime-polymorphic functions are \i{one} function-typed value,
-which can work for diverse types only via subtyping \mdash{}
-or via more exotic forms of indirection, like
-using function-pointers in place of function symbols; whereas
-compile-time-polymorphic (i.e., templated) functions are
-\i{multiple} values, which share the same code-graph
-representation but are otherwise unrelated.
-\eli{}  \label{ops}A third possibility for producing function values is to define
-operators on function types themselves, which transform
-function-typed values to other function-typed values, by analogy
-to how arithmetic operations transform numbers to other
-numbers.  As will be discussed below, this may or may not be
-different from initializing function-typed values via code-graphs,
-depending on how the relevant programming language is implemented.
-For instance, given the composition operator \Ofop{},
-\fDotOfg{} may or may not be treated as only a convenient
-shorthand for a code graph spelling out something like \fgx{}.
-\eli{}  Finally, as a special case of operators on function-typed values,
-one function may be obtained from another by \q{Currying}, that is,
-fixing the value of one or more of the original function's
-arguments.  For example, the \inc{} (\q{increment}) function which adds
-\litOne{} to a value is a special case of addition, where the added value
-is always \litOne{}.  Here again, Currying may or may not be
-treated as a function-value-initialization process different from ones
-starting from code-graphs.
+%\spsubsection{Generalized Lambda Calculus}
+\subsection{Generalized Lambda Calculus}
+\p{Lambda (or \mOldLambda{}-) Calculus emerged in the early 
+20th century as a formal model of mathematical 
+functions and function-application.  There are 
+many mathematical constructions which can be 
+subsumed under the notion of \q{function-application}, 
+but these have myriad notations and conventions 
+(compare the visual differences between mathematical 
+notations \mdash{} integrals, square roots, super- and 
+sub-scripted indices, and so forth \mdash{} to the much 
+simpler alphabets of mainstream programming languages).  
+But the early 20th century was a time of 
+great interest in \q{mathematical foundations}, seeking 
+to provide philosophical underpinnings for mathematical 
+reasoning in general, unifying disparate mathematical 
+methods and subdisciplines.  One consequence of 
+this foundational program was an attempt to capture 
+the formal essence of the concept of \q{function} and 
+of functions being applied to concrete values.       
+}
+\p{A related foundational concern is how mathematical 
+formulae can be nested, yielding new formulae.  
+For example, the volume of a sphere 
+(expressed in terms of its radius \rRad{}) is \VolSphere{}.  
+The symbol \rRad{} is just a mnemonic which could be replaced with a different symbol, 
+without the formula being different.  But it can also be replaced by a more complex 
+expression, to yield a new formula.  In this case, 
+substituting the formula for a cube's half-diagonal \mdash{} \crVOverRTwo{}
+where \vVol{} is its volume \mdash{} for \rRad{}, in the first formula, 
+yields \volSphCube{}: a formula for the sphere's volume in terms 
+of the volume of the largest cube that can fit inside it     
+(\cite{KennethAnderson} has similar interesting examples in the 
+context of code optimization).  This kind of tinkering with equations is 
+of course a bread-and-butter of mathematical discovery.  In terms 
+of foundations research, though, observe that the derivation depended on 
+two givens: that the \rRad{} symbol is \q{free} in the first formula 
+\mdash{} it is a place-holder rather than the designation of a concrete 
+value, like \piSym{} \mdash{} and that free symbols (like \rRad{}) can be 
+bound to other formulae, yielding new equations. 
+}
+\p{From cases like these \mdash{} relative simple geometric 
+expressions \mdash{} mathematicians began to ask foundation 
+questions about mathematical formulae: what are all formulae 
+that can be built up from a set of core equations via 
+repeatedly substituting nested expressions for
+free symbols?  This question turns out to be related to 
+the issue of finite calculations: in lieu of 
+building complex formulae out of simpler parts, we can 
+proceed in the opposite direction, replacing nested 
+expressions with values.  Formulae are constructed 
+in terms of unknown values; when we have concrete measurements 
+to plug in to those formulae, the set of unknowns decreases.
+If \i{all} values are known, then a well-constructed formula 
+will converge to a (possibly empty) set of outcomes.  
+This is roughly analogous to a computation which 
+terminates in real time.  On the other hand, 
+a \i{recursive} formula \mdash{} an expression nested inside 
+itself, such as a continued fraction \mdash{} is analogous to 
+a computation which loops indefinitely.\footnote{Although there are sometimes techniques for converting formulae 
+like Continued Fractions into \q{closed form} equations 
+which do \q{terminate}. 
+}
+}
+\p{In the early days of computer programming, it was natural to 
+turn to \mOldLambda{}-Calculus as a formal model of 
+computer procedures, which are in some ways analogous to 
+mathematical formulae.  As a mathematical subject, 
+\mOldLambda{}-Calculus predates digital computers as 
+we know them.  While there were no digital computers at the time,
+there \i{was} a growing interest in mechanical computing 
+devices, which led to the evolution of 
+cryptographic machines used during the Second World War.  
+So there was indeed a practical interest in 
+\q{computing machines}, which eventually led to 
+John von Neumann's formal prototypes for digital 
+computers.  
+}
+\p{Early on, though, \mOldLambda{}-Calculus was less about blueprints
+for calculating machines and more about \i{abstract} formulation of
+calculational processes.  Historically, the original 
+purpose of \mOldLambda{}-Calculus was largely a mathematical \i{simulation} of
+computations, which is not the same as a mathematical \i{prototype}
+for computing machines.  Mathematicians in the decades before WWII
+investigated logical properties of computations, with particular
+emphasis on what sort of problems could always be solved in
+finite time, or what kind of procedures can be guaranteed to
+terminate \mdash{} a \q{Computable Number}, for example, is a number
+which can be approximated to any degree of precision by a terminating
+function.  Similarly, a Computable Function is a function from
+input values to output values that can be associated with an
+always-terminating procedure which necessarily calculates the desired
+outputs from a set of inputs.  The space of Computable Functions
+and Computable Numbers are mathematical objects whose properties
+can be studied through mathematical techniques \mdash{} for instance,
+Computable Numbers are known to be a
+countable field within the real numbers.
+These mathematical properties are proven using a formal
+description of \q{any computer whatsoever}, which has no
+concern for the size and physical design of the \q{computers}
+or the time required for its \q{programs}, so long
+as they are finite.  Computational procedures in
+this context are not actual implementations but rather
+mathematical distillations that can stand in for
+calculations for the purpose of mathematical analysis
+(interesting and representative contemporary articles
+continuing these perspectives include, e.g., \cite{MartinEscardo},
+\cite{MasahitoHasegawa}, \cite{TuckerZucker}).
+}
+\p{It was only after the emergence of modern digital computers 
+that \mOldLambda{}-Calculus become reinterpreted as a 
+model of \i{concrete} computing machines.  In its 
+guise as a Computer Science (and not just Mathematical 
+Foundations) discipline, \mOldLambda{}-Calculus has been 
+most influential not in its original form but in 
+a plethora of more complex models which track the 
+evolution of programming languages.  Many programming 
+languages have important differences which are not 
+describable on a purely mathematical basis: two 
+languages which are both \q{Turing complete} are 
+abstractly interchangeable, but it is important to
+represent the contrast between, say,
+Object-Oriented and Functional programming.  
+In lieu of a straightforward, mathematical model 
+of formulae as procedures which map inputs to 
+outputs, modern programming languages add 
+may new constructs which determine different
+mechanisms whereby procedures can read and 
+modify values: objects, exceptions, closures, 
+mutable references, side-effects, signal/slot 
+connections, and so forth.  Accordingly, 
+new programming constructions have inspired 
+new variants of \mOldLambda{}-Calculus, analyzing
+different features of modern programming languages \mdash{} Object
+Orientation, Exceptions, call-by-name, call-by-reference,
+side effects, polymorphic type systems, lazy evaluation 
+\mdash{} in the hopes of deriving formal proofs of 
+program behavior insofar as computer code uses the 
+relevant constructions.  In short, a reasonable
+history can say that \mOldLambda{}-Calculus mutated from being an
+abstract model for studying Computability as a mathematical concept,
+to being a paradigm for prototype-specifications of concretely
+realized computing environments.
+}
+\p{Modern programming languages have many different ways of handing-off
+values between procedures.  The \q{inputs} to a function can be \q{message receivers}
+as in Object-Oriented programming, or lexically scoped
+values \q{captured} in an anonymous function that inherits
+values from the lexical scope (loosely, the area of source code)
+where its body is composed.  Procedures can also \q{receive} data indirectly
+from pipes, streams, sockets, network connections, database connections, or files.
+All of these are potential \q{input channels} whereby a function implementation
+may access a value that it needs.  In addition, procedures can \q{return} values
+not just by providing a final result but by throwing exceptions, writing
+to files or pipes, and so forth.  To represent these myriad
+\q{channels of communication} computer scientists have invented a menagerie
+of extensions to \mOldLambda{}-Calculus \mdash{} a noteworthy 
+example is the \q{Sigma} calculus to model Object-Oriented
+Programming; but parallel extensions represent call-by-need evaluation, 
+exceptions, by-value and by-reference capture, etc.
+}
+\p{Rather than study each system in isolation, in this 
+chapter I propose an integrated strategy for 
+unifying disparate \mOldLambda{}-Calculus extensions 
+into an overarching framework.  The 
+\q{channel-based} tactic I endorse here may not be 
+optimal for a \i{mathematical} calculus which has 
+formal axioms and provable theorems, but I believe 
+it can be useful for the more practical goal 
+of modeling computer code and software 
+components, to establish recommended design patterns 
+and to document coding assumptions.  
+}
+\p{In this perspective, different extensions
+or variations to \mOldLambda{}-Calculus model different 
+\i{channels}, or data-sources through which procedures 
+receive and/or modify values.  Different channels 
+have their own protocols and semantics
+for passing values to functions.
+We can generically discuss \q{input} and
+\q{output} channels, but programming languages have different specifications
+for different genres of input/output, which we can model via
+different channels.  For a particular channel, we can recognize
+language-specific limitations on how values passed in to or
+received from those channels are used, and how the symbols carrying those
+values interact with other symbols both in function call-sites and in the 
+body of procedure implementations.  
+For example, procedures can output values by throwing exceptions, but
+exceptions are unusual values which have to be handled
+in specific ways \mdash{} languages use exceptions to signal possible
+programming errors, and they are engineered to interrupt
+normal program flow until or unless exceptions are \q{caught}.
+}
+\p{Computer scientists have explored these more complex programming paradigms
+in part by inventing new variations on \mOldLambda{}-calculi.  
+Here I will develop one theory representing
+code in terms of Directed Hypergraphs, which are subject to multiple kinds
+of lambda abstraction \mdash{} in principle, replacing many disparate
+\mOldLambda{}-Calculus extensions with one overarching framework.
+This section will lay out the details of this form of Directed Hypergraph
+and how \mOldLambda{}-calculi
+can be defined on its foundation.  The following section will
+discuss an expanded type theory which follows organically
+from this approach, and the third section will situate
+lambda calculi in terms  of \q{Channel Algebras}.
+}
+\p{Many concepts outlined here are reflected in the accompanying code set,
+which includes a \Cpp{} Directed Hypergraph library and also
+parsers and runtimes for an Interface Definition Language.
+The design choices behind these components will be
+suggested in the text, but hopefully the code will illustrate
+how the ideas can be manifest in concrete implementations, which
+in turn provide evidence that they are logically sound
+at least to the level of properly-behaving application code.
+}
+\p{My strategy for unifying multiple \mOldLambda{}-calculi depends 
+in turn on hypergraph code representations, which is a theme 
+in the umbrella of graph-based data modeling, 
+to which I now turn. 
+}
+\vspace{-.1em}
+%\spsubsectiontwolinerepl{Directed Hypergraphs and \q{Channel Abstractions}}%
+\subsectiontwolinerepl{Directed Hypergraphs and \q{Channel Abstractions}}%
+{Directed Hypergraphs and 'Channel Abstractions'}
+\p{A \i{hypergraph} is a graph whose edges (a.k.a. \q{hyperedges}) can span
+more than two nodes (\cite[e.g. p. 24]{BenGoetzel},
+\cite{HaishanLiu}, \cite{MarkMinas}; \cite{BalintMolnar},
+\cite{AlexandraPoulovassilis}, \cite{JohnStell},
+\cite{JohnStellFCA}).
+A \i{directed} hypergraph (\q{\DH{}}) is a hypergraph
+where each edge has a \i{head set} and
+\i{tail set} (both possibly empty).  Both of these are sets of nodes
+which (when non-empty) are called \i{hypernodes}.  A hypernode can
+also be thought of as a hyperedge whose tail-set
+(or head-set) is empty.  Note that a typical hyperedge
+connects two hypernodes (its head- and tail-sets), so if
+we consider just hypernodes, a hypergraph potentially
+reduces to a directed ordinary graph.  While
+\q{edge} and \q{hyperedge} are formally equivalent,
+I will use the former term when attending more to the
+edge's representational role as linking two hypernodes,
+and use the latter term when focusing more on its tuple
+of spanned nodes irrespective of their partition into
+\i{head} and \i{tail}. % (see Figure 1).
+}
+\p{I assume that hyperedges always span an \i{ordered} node-tuple
+which induces an ordering in the head- and tail-sets: so a
+hypernode is an \i{ordered list} of nodes, not just a
+\i{set} of nodes.  I will say that
+two hypernodes \i{overlap} if they
+share at least one node; they are \i{identical}
+if they share exactly the same nodes in the same order; and
+\i{disjoint} if they do not overlap at all.  I call a
+Directed Hypergraph
+\q{reducible} if all hypernodes are either disjoint or
+identical.  The information in reducible \DH{}s can be factored
+into two \q{scales}, one a directed graph whose nodes are the
+original hypernodes, and then a table of all nodes
+contained in each hypernode.  Reducible \DH{}s allow
+ordinary graph traversal algorithms when hypernodes
+are treated as ordinary nodes on the coarser scale
+(so that their internal information \mdash{} their list
+of contained nodes \mdash{} is ignored).\footnote{A weaker restriction on \DH{} nodes is that two
+non-identical hypernodes \i{can} overlap, but
+must preserve node-order: i.e., if the first
+hypernode includes nodes \nodeNOne{}, and \nodeNTwo{}
+immediately after, and the second hypernode
+also includes \nodeNOne{}, then the second
+hypernode must also include \nodeNTwo{} immediately
+thereafter.  Overlapping hypernodes
+can not \q{permute} nodes
+\mdash{} cannot include them in different orders or in a way
+that \q{skips} nodes.
+Trivially, all reducible \DH{}s meet this condition.  
+Any graphs discussed here are assumed to meet 
+this condition.    
+}
+}
+\p{To avoid confusion, I will hereafter use the word \q{hyponode} in place
+of \q{node}, to emphasize the container/contained relation between
+hypernodes and hyponodes.  I will use \q{node} as an informal word
+for comments applicable to both hyper- and hypo-nodes.  Some
+Hypergraph theories and/or implementations
+allow hypernodes to be nested: i.e., a hypernode can contain
+another hypernode.  In these theories, in the general case any node
+is potentially both a hypernode and a hyponode.  For this chapter,
+I assume the converse: any \q{node} (as I am hereafter using the term) is
+\i{either} hypo- or hyper-.  However, multi-scale Hypergraphs can be approximated
+by using hyponodes whose values are proxies to hypernodes.
+}
+\p{Here I will focus on a class of \DH{}s which (for reasons to emerge)
+I will call \q{Channelizable}. Channelizable Hypergraphs
+(\CH{}s) have these properties:
+\begin{enumerate}\item{}  They have a Type System \TyS{} and all hyponodes and hypernodes are assigned
+exactly one canonical type (they may also be considered instances of super- or subtypes
+of that type).
+\item{}  All hyponodes can have (or \q{express}) at most one value, an instance of its
+canonical type, which I will call a \i{hypovertex}.  Hypernodes, similarly,
+can have at most one \i{hypervertex}.  Like \q{node} being an informal
+designation for hypo- and hyper-nodes, \q{vertex} will be a general term
+for both hypo- and hyper-vertices.  Nodes which do have a vertex
+are called \i{initialized}.  The hypovertices \q{of} a hypernode are those
+of its hyponodes.
+\item{}  Two hyponodes are \q{equatable} if they express the same value of the same
+type.  Two (possibly non-identical) hypernodes are \q{equatable} if all of their
+hyponodes, compared one-by-one in order, are equatable.  I will also say that values
+are \q{equatable} (rather than just saying \q{equal}) to emphasize that
+they are the respective values of equatable nodes.
+\item{}  There may be a stronger relation, defined on equatable non-equivalent hypernodes,
+whereby two hypernodes are \i{inferentially equivalent} if any inference justified via
+edges incident to the first hypernode can be freely combined with inferences
+justified via edges incident to the second hypernode.  Equatable nodes are not
+necessarily inferentially equivalent.
+\item{}  Hypernodes can be assumed to be unique in each graph, but it is
+unwarranted to assume (without type-level semantics) that two equatable
+hypernodes in different graphs are or are not inferentially equivalent.
+Conversely, even if graphs are uniquely labeled \mdash{} which would
+appear to enable a formal distinction between hypernodes in one
+graph from those in another, \CH{}
+semantics does not permit the assumption that this separation alone
+justifies inferences presupposing that their hypernodes
+\i{are not} inferentially equivalent.
+\item{}  All hypo- and hypernodes have a \q{proxy}, meaning there is a type in
+\TyS{} including, for each node, a unique identifier designating
+that node, that can be expressed in other hyponodes.
+\item{}  There are some types (including these proxies) which may only be expressed
+in hyponodes.  There may be other types which may only be expressed
+in hypernodes.  Types can then be classified as \q{hypotypes} and \q{hypertypes}.
+The \TyS{} may stipulate that all types are \i{either} hypo or hyper.  In
+this case, it is reasonable to assume that each hypotype maps to a unique
+hypertype, similar to \q{boxing} in a language which recognizes \q{primitive}
+types (in Object-Oriented languages, boxing allows non-class-type
+values to be used as if they were objects).
+\item{}  Types may be subject to the restriction that any hypernode which has that
+type can only be a tail-set, not a head-set; call these \i{tail-only} types.
+\item{}  Hyponodes may not appear in the graph outside of hypernodes.  However, a
+hypernode is permitted to contain only one hyponode.
+\item{}  Each edge, separate and apart from the \CH{}'s actual graph structure,
+is associated with a distinct hypernode, called its \i{annotation}.  This
+annotation cannot (except via a proxy) be associated with any other hypernode
+(it cannot be a head- or tail-set in any hypernode).
+The first hyponode in its annotation I will 
+dub a hyperedge's \i{classifier}.  The outgoing edge-set of a hypernode can
+always be represented as an associative array indexed by the classifier's vertex.
+\item{}  A hypernode's type may be subject to restrictions such that there is a
+single number of hyponodes shared by all instances.  However, other types may be
+expressed in hypernodes whose size may vary.  In this case the
+hyponode types cannot be random; there must be some pattern linking
+the distribution of hyponode types evident in hypernodes (with the same
+hypernode types) of different sizes.  For example, the hypernodes
+may be dividable into a fixed-size, possibly empty sequence of hyponodes,
+followed by a chain of hyponode-sequences repeating the same type pattern.
+The simplest manifestation of this structure is a hypernode all of whose
+hyponodes are the same type.
+\item{}  Call a \i{product-type transform} of a hypernode to be a different
+hypernode whose hypovertices are tuples of values equatable to those from the first hypernode,
+typed in terms of product types (i.e., tuples).  For example, consider two
+different representations of semi-transparent colors: as a 4-vector
+\vecrgbt{}, or as an \vecrgb{} three-vector paired with a transparency magnitude.
+The second representation is a product-type transform of the first, because the first
+three values are grouped into a three-valued tuple.  We can
+assert the requirement in most contexts that \CH{}s whose hypernodes are
+product-type transforms of each other contain \q{the same information}
+and as sources of information are interchangeable.
+\item{}  The Type System \TyS{} is \i{channelized}, i.e., closed under a
+Channel Algebra, as will be discussed below.
 \end{enumerate}
 }
-\vspace{-1em}
-\p{The differences between how languages may process the \i{initialization}
-of function-type values, which I alluded to in (3) and (4), reflect
-differences in how function-type values are internally represented.
-One option is to store these values solely in blocks of
-memory, which would correspond to treating all initializations of these
-values as via code-graphs.  For example, suppose we have an \addFun{} function
-and want to define an \inc{} function, as in \incimpl{}.  Even if a language has
-a special Currying notation, that notation could translate behind-the-scenes to
-an explicit function body, like the code at the end of the last sentence.
-However, a language engine may also note that \inc{} is derived from \addFun{}
-and can be wholly described by a handle denoting \addFun{}
-(a pointer, say) along with a designation of the fixed value: in
-other words, \addOne{}.  Instead of initializing \inc{} from a code-graph,
-the language can represent it via a two-part data structure like
-\addOne{} \mdash{} but only if the language \i{can} represent
-function-typed values as compound data structures.
+\p{These definitions allude to two strategies for computationally representing
+\CH{}s.  One, already mentioned, is to reduce them to directed graphs
+by treating hypernodes as integral units (ignoring their internal structure).
+A second is to model hypernodes as a \q{table of associations} whose
+keys are the values of the classifier hyponodes on each of their edges.
+A \CH{} can also be transformed into an \i{undirected} hypergraph by
+collapsing head- and tail- sets into an overarching tuple.  All of these
+transformations may be useful in some analytic/representational contexts,
+and \CH{}s are flexible in part by morphing naturally into these various
+forms.\phantomsection\label{unplug}
 }
-\p{Let's assume a language can always represent \i{some} function-typed values,
-ones that are obtained from code-graphs, via pointers to
-(or some other unique identifier for) an internal
-memory area where at least \i{some} compiled function bodies are stored.
-The interesting question is whether \i{all}  function-typed values
-are represented in this manner and, in either case, the
-consequences for the semantics of functional types \mdash{} semantic
-issues such as \fOfg{} composition operators and Currying
-\makebox{(and also, as I will argue, Dependent Types)}.
+%\spinc{unplug}
+%\begingroup\captionof{figure}{\q{Unplugging} a Node}\endgroup
+%\vspace{1.5em}
+\spinctc{unplug}{Unplugging a Node.}{fig:unplug}
+\p{Notice that information present \i{within} a hypernode can also be expressed as
+relations \i{between} hypernodes.  For example, consider the information that
+I (Nathaniel), age 46, live in Brooklyn as a registered Democrat.  This may be
+represented as a hypernode with hyponodes \NathFF{}, connected to a hypernode
+with hyponodes \BrookDem{}, via a hyperedge whose classifier encodes the
+concept \q{lives in} or \q{is a resident of}.  However, it may also be
+encoded by \q{unplugging} the \q{age} attribute so the first hypernode becomes
+just \Nath{} and it acquires a new edge, whose tail has a single
+hyponode \ageFF{} and a classifier (encoding the concept) \q{age}
+(see the comparison in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}}).
+This construction can work in reverse:
+information present in a hyperedge can be refactored so that it \q{plugs in}
+to a single hypernode.
 }
-%\spsubsection{Addressability and Implementation}
-\subsection{Addressability and Implementation}
-\p{As \i{Intermediate} Representations, formal code models (including
-those based on \DH{}s) are not strictly
-identical to actual computer code as seen in source-code files.
-In particular, what appears to
-be a single function body may actually form multiple
-implementations via code templates (or even
-preprocessor macros).  Talk about polymorphism in a language like
-\Cpp{} covers several distinct language features: achieving
-code reuse by templating on type symbols is internally very different
-from using virtual methods calls.  The key difference \mdash{} highlighted
-by the contrast between runtime- and compile-time polymorphism \mdash{} is
-that there are some function implementations which actually
-compile to \i{single} functions, meaning in
-particular that their compiled code has a single place in memory and
-that they may be invoked through function pointers.  Conversely,
-what appears in written code as one function body may actually be
-duplicated, somewhere in the compiler workflow, generating multiple
-function values.  The most common cases of such duplication
-are templated code as discussed above (though there are
-more exotic options, e.g. via \Cpp{} macros and/or
-repeated file \codeinclude{}s).  Implementations of the first sort I will
-call \q{addressable}, whereas those of the second I will
-dub \q{multi-addressable}.  These concepts prove to be consequential
-in the abstract theory of types, although for non-obvious reasons.
+\p{These alternatives are not redundant.  Generally, representing information
+via hyperedges connecting two hypernodes implies that this information is
+somehow conceptually apart from the hypernodes themselves, whereas representing
+information via hyponodes \i{inside} hypernodes implies that this information
+is central and recurring (enforced by types), and that the data
+thereby aggregated forms a recurring logical unit.  In a political survey,
+people's names may \i{always} be joined to their age, and
+likewise their district of
+residence \i{always} joined to their political affiliation.  The left-hand side
+representation of the info (seen as an undirected hyperedge) \NathFFBD{}
+in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}} 
+captures this semantics better because it describes
+the name/age and \mbox{place/party} pairings as
+\i{types} which require analogous
+node-tuples when expressed by other hypernodes.  For example, any two
+hypernodes with the same type as \NathFF{} will necessarily have
+an \q{age} hypovertex
+and so can predictably be compared along this one axis.  By contrast, the
+right-hand (\q{unplugged}) version in Diagram \hyperref[fig:unplug]{\ref{fig:unplug}}
+implies no guarantees that the \q{age}
+data point is present as part of a recurring pattern.
 }
-\p{To see why, consider first that type systems are intrinsically
-pluralistic: there are numerous details whereby the type system
-underlying one computing environment can differ from those employed
-by other environments.  These include differences in how types are
-composed from other types.  There is therefore no abstract vocabulary
-(including the language of mathematical type theory) that provides a
-neutral and complete way of describing types across systems.  Instead,
-each system has its own structure of multi-type aggregation, and
-so requires its own style of type description (mathematically, there is
-no one \q{Category} of types, but rather multiple candidate Categories
-with their own logic).  So there is no single, universal
-\q{Type Expression Language}: each type system has its
-own \TXL{} with subtly different features than others.
+\itclfig{initializing-hypernodes}{fig:initializinghypernodes}
+\p{The two-tiered \DH{} structure is also a factor when integrating 
+serialized or shared data structures with runtime data values.  
+In the demo \DH{} library, for example, it is assumed that 
+each node can be associated with a runtime, binary data allocation 
+(practically speaking, a pointer to user data).  Hypernodes' internal 
+structure can therefore be represented \i{either} via hyponodes explicit 
+in the graph content \i{or} by internal structure in the user 
+data (or some combination).  Graph deserialization can then be 
+a matter of mapping hyponodes to fields in the \q{internal} data 
+allocations, before then mapping inter-hypernode relations to 
+the proper hypervertex-relations.  Code sample 
+\ref{lst:initializing-hypernodes} demonstrates the pattern 
+of hypervertex construction as \Cpp{} objects that get wrapped 
+in new nodes ({\OneOverlay}-{\TwoOverlay}), 
+along with obtaining nodes already registered in a runtime graph 
+({\ThreeOverlay}) and then inserting the new nodes (with stated 
+relationships) alongside prior ones into the runtime graph 
+({\ThreeOverlay}).       
 }
-\p{By intent, I use \TXL{} to mean languages for describing types
-which \i{may} be implemented.  For example, if in \Cpp{} I
-assert \q{\templateTMyList{}}, it would then be consistent with
-a \Cpp{}-specific \TXL{}
-to describe a type as \MyListInt{} (which would presumably be
-some sort of list of integers, though of course naming hints about the
-intended use of a type
-have no bearing on how compilers and runtimes process it).  However,
-the type \MyListInt{} is not, without further code, actually implemented.
-It is a \i{possible} type because its description conforms to a relevant
-\TXL{}, but not an \i{actual} type.  If a programmer supplies
-a templated implementation for \TMyList{} (intended for multiple
-types \TType{}) then the compiler can derive a \q{specialization} of the
-template for a specific \TType{} \mdash{} or the programmer can specialize
-\MyList{} on a chosen type manually.  But in either case the actualization of
-\TMyList{} will depend on an implementation (either a templated implementation
-that works for multiple types or a specialization for a
-single type); this is separate and apart from \TMyList{} being
-a valid \i{expression} denoting a \i{possible} type.
+\p{In general, graph representations like \CH{} and \RDF{} serve two goals: first,
+they are used to \i{serialize} data structures (so that
+they may be shared between
+different locations; such as, via the internet);
+and, second, they provide
+formal, machine-readable descriptions of information content, allowing for
+analyses and transformations, to infer new information or produce new data
+structures.  The design and rationale of representational paradigms is
+influenced differently by these two goals, as I will review now with an eye
+in part on drawing comparisons between \CH{} and \RDF{}.
 }
-\p{Once \TMyList{} is instantiated, for a particular \TType{}, there may be a
-constructor or initialization
-function that is \i{addressable}, either as one duplicate
-of a multi-addressable implementation or as the compilation of
-one non-templated function body.  Call a type \i{addressable} if it
-has at least one constructor
-(i.e., \q{value} or \q{data} constructor, a
-function which creates a value of a type from a literal
-or a value of a different type); and \i{multi-addressable} if it has
-at least one multi-addressable constructor or initializer: these
-terms can carry over from functions to types for which
-functions classified in these terms are constructors.\footnote{In this discussion I mostly skip over the technical detail that
-in \Cpp{}, at least, one cannot actually take the address of a
-constructor function; but this is related to \Cpp{}
-\q{constructors} having dual roles of allocating memory
-and initialization: we \i{can} take the address of an
-initialization function that would be analogous to a
-\q{pure} value constructor.
+%\spsubsection{Channelized Hypergraphs and \largeRDF{}}
+\subsection{Channelized Hypergraphs and \largeRDF{}}
+\phantomsection\label{RDF}
+\p{The Resource Description Framework (\RDF{}) models information
+via directed graphs (\cite{AnglesGuttierez},
+\cite{MadalinaCroitoru}, and \cite{ErnestoDamiani} are good discussions of
+Semantic Web technologies from a graph-theoretic perspective),
+whose edges are labeled with concepts that,
+in well-structured contexts, are drawn from published Ontologies
+(these labels play a similar role to \q{classifiers} in \CH{}s).
+In principle, all data expressed via \RDF{} graphs is defined
+by unordered sets of labeled edges, also called \q{triples}
+(\q{\SPO{}}, where the \q{Predicate} is the label).  In practice,
+however, higher-level \RDF{} notation such as \TTL{} (\Turtle{} or
+\q{Terse \RDF{} Triple Language}) and Notation3 (\NThree{})
+deal with aggregate groups of data, such as \RDF{} containers and
+collections.\phantomsection\label{lived}
 }
+%\vspace{-.5em}
+%\tcl{lived}
+%\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
+%\vspace{.5em}
+%\spinc{lived}
+%\ftcl{lived}
+\spinctc{lived}{CH vs. RDF Collections.}{fig:lived}
+\p{For example, imagine a representation of the
+fact \q{(A/The person named) Nathaniel, 46, has lived in Brooklyn,
+Buffalo, and Montreal} (shown in Diagram \hyperref[fig:lived]{\ref{fig:lived}} as both
+a \CH{} and in \RDF{}).  If we consider \Turtle{} or \NThree{} as \i{languages} and
+not just \i{notations}, it would appear as if their semantics is built
+around hyperedges rather than triples.  It would seem that these
+languages encode many-to-many or one-to-many assertions, graphed as
+edges having more than one subject and/or predicate.  Indeed,
+Tim Berners-Lee himself suggests that
+\q{Implementations may treat list as a data type rather than just
+a ladder of rdf:first and rdf:rest properties} \cite[p. 6]{TimBernersLee}.
+That is, the specification for
+\RDF{} list-type data structures invites us to consider that
+they \i{may} be regarded integral units rather than
+just aggregates that get pulled apart in semantic interpretation.
 }
-\p{Addressability refers at one level, as the word suggests, to
-\q{taking the address} of functions (and accordingly to
-function-pointers); but here I also refer to a broader question of
-how functions can be designated from vantage points outside their
-immediate implementation \mdash{} code searches, scripting engines,
-\IDE{}-based code exploration, and other reflection-oriented
-use cases.  Language engines should try to minimize their
-reliance on \q{temporary function values} which are
-opaque to these reflection-oriented features.  And yet
-this can complicate the implementation of type-system features.
-To reiterate: the goal of
-\q{expressive} type systems is to define types,
-as necessary, narrowly enough to type-check granular procedure 
-requirements.
-The problem is that gatekeeper code induced by type-level
-expressiveness \mdash{} particularly code which is automatically
-generated \mdash{} can be opaque to extra-linguistic environments
-like \IDE{}s and scripting engines.
+\p{Technically, perhaps, this is an illusion.  Despite their higher-level
+expressiveness, \RDF{} expression languages are, perhaps,
+supposed to be deemed \q{syntactic sugar}
+for a more primitive listing of triples: the \i{semantics} of
+\Turtle{} and \NThree{} are conceived to be defined by translating
+expressions down to the triple-sets that they logically imply
+(see also \cite{YurickWilks}).
+This intention accepts the paradigm that providing semantics
+for a formal language is closely related to defining which
+propositions are logically entailed by its statements.
 }
-\p{For example, suppose certification
-requires that the function which displays the gas level on a car's dashboard
-never attempts to display a value above \litOH{} (intended to mean \q{One Hundred percent},
-or completely full).  One way to ensure this specification is to declare
-the function as taking a \i{type} which, by design, will only ever include
-whole numbers in the range \ZeroToOneHundred{}.  Thus, a type system may support
-such a type by including in its \TXL{} notation for \q{range-delimited} types,
-types derived from other types by declaring a fixed range of allowed values.
-A notation might be, say, \IntZToOH{}, for integers in the \ZeroToOneHundred{}
-range \mdash{} or, more generally expressions like \TVOneToVTwo{}, meaning a \i{type} derived
-from \TType{} but restricted to the range spanned by \VOne{} and \VTwo{} (assumed to be
-values of \TType{} \mdash{} notice that a \TXL{} supporting this notation must
-consequently support some notation of specific values, like numeric literals).
-This is a reasonable and, for programmers, potentially convenient type description.
+\p{There is, however, a divergent tradition in formal semantics that is oriented to
+type theory more than logic.  It is consistent with this alternative
+approach to see a different semantics for a language like \Turtle{},
+where larger-scale aggregates become \q{first class} values.
+So, \NathFF{} can be seen as a (single, integral)
+\i{value} whose \i{type} is a \nameAge{} pair.  Such a value has an
+\q{internal structure} which subsumes multiple data-points.  The
+\RDF{} version is organized, instead, around a \i{blank node} which
+ties together disparate data points, such as my name and my age.
+This blank node is also connected to another blank node which
+ties together place and party.  The blank nodes
+play an organizational role, since nodes are grouped together
+insofar as they connect to the same blank node.  But the
+implied organization is less strictly entailed; one might
+assume that the \BrookDem{} nodes could just as readily
+be attached individually to the \q{name/age} blank
+(i.e., I live in Brooklyn, \i{and} I vote Democratic).
 }
-\p{For a language designer, however, it raises questions.  What should happen if
-someone tries to construct an \IntZToOH{} value with the number, say,
-\litOHO{}?  How should the range-test code be exposed for
-reflection (is it a separate function; is it a regular
-function-typed value or some alternative data structure, and
-how does that affect its external designating)?  What if the
-number comes from a location that
-opaque to the language engine, like a web \API{}: should the compiler assume
-that the \API{} is curated to the same specifications as the present code or
-should it report that there is no way to verify that the declared \IntZToOH{} type
-is being used correctly?  Moreover, would such choices lead to
-behind-the-scenes, perhaps auto-generated code which is hard to
-wrangle for reflection and development tools?
-Are the benefits of automated gatekeeping worth the risk of
-codewriters' mental disconnect with language internals?
-Given these questions, it is reasonable for a language
-designer to \i{allow} certain sorts of types to be described, but programmers
-must explicitly implement them for the types to be actualized and available
-for use in programs.  Therefore there is a difference between a
-\i{described} type and an \i{actual} type, and the key criterion of actual
-types is an addressable value constructor.  So the crucial
-step for type-theoretic design promoting desired software qualities, like
-safety and reliability, is to successfully pair the \i{description} of types
-which have desirable levels of specification and granularity, with the
-\i{implementation} of types that realize the design patterns promised by
-their description.  In some cases the description must become
-more complex and nuanced to make implementation feasible.
+\p{Why, that is, are Brooklyn and Democratic grouped together?
+What concept does this fusion model?
+There is a presumptive rationale for the name/age blank
+(i.e., the fusing name/age by joining them to a blank
+node rather than allowing them to take edges independently):
+conceivably there are multiple 46-year-olds named Nathaniel,
+so \i{that} blank node plays a key semantic role
+(analogous to the quantifier in \q{\i{There is} a Nathaniel,
+age 46...}); it provides an unambiguous nexus so that
+further predicates can be attached to \i{one specific}
+46-year-old Nathaniel rather than any old \NathFF{}.  But there is no
+similarly suggested semantic role for the \q{place/party} grouping.  The name
+cannot logically be teased apart from the name/age blank (because there
+are multiple Nathaniels); but there seems to be no \i{logical}
+significance to the \mbox{place/party} grouping.  Yet pairing
+these values \i{can} be motivated by a modeling convention
+\mdash{} reflecting that geographic and party affiliation data
+are grouped together in a data set or data model.  The logical
+semantics of \RDF{} make it harder to express these kinds of modeling
+assumptions that are driven by convention more than logic
+\mdash{} an abstracting from data's modeling environment that can be desirable
+in some contexts but not in others.
 }
-\p{Range-bounded types are a good example of types which can be succinctly
-\i{described} but face complications when being concretely
-implemented.  They are therefore a good example of
-the potential contrast between \i{possible} and \i{actual} types.
-I will examine this distinction in more detail and
-then return to range-bounded types as a demonstrative example.
+\p{So, why does the Semantic Web community effectively insist on
+a semantic interpretation of \Turtle{} and \NThree{} as \i{just} a
+notational convenience for \NTrips{} rather than as higher-level
+languages with a different higher-level semantics \mdash{} and despite
+statements like the above Tim Berners-Lee quote insinuating that
+an alternative interpretation has been contemplated even by
+those at the heart of Semantic Web specifications?  
+Moreover, defining hierarchies of material composition or 
+structural organization \mdash{} and so by extension, 
+potentially, distinct scales of modeling resolution \mdash{} 
+has been identified as an intrinsic part of domain-specific 
+Ontology design (see \cite{Aranda}, \cite{BittnerSmithDonnelly},
+\cite{BittnerSmith}, \cite{MaureenDonnelly},
+\cite{Fabrikant}, \cite{PetitotSmith}, \cite{SegevGal},
+\cite{BarrySmithBlood},
+or \cite{PietroRamellini}).
+Semantic Web advocates have not however promoted multitier 
+structure as a feature \i{of} Semantic models fundamentally, 
+as opposed to criteriology \i{within} specific Ontologies.        
+To the degree that this has an explanation, it probably has something to
+do with reasoning engines: the tools that evaluate \SPARQL{} queries
+operate on a triplestore basis.  So the \q{reductive} semantic
+interpretation is arguably justified via the warrant that the
+definitive criteria for Semantic Web representations are not their
+conceptual elegance \visavis{} human judgments but their utility in
+cross-Ontology and cross-context inferences.
+}
+\p{As a counter-argument,
+however, note that many inference engines in Constraint Solving,
+Computer Vision, and so forth, rely on specialized algorithms
+and cannot be reduced to a canonical query format.  Libraries such
+as \GeCODE{} and \ITK{} are important because problem-solving
+in many domains demands fine-tuned application-level engineering.
+We can think of these libraries as supporting \i{special} or
+domain-specific reasoning engines, often built for specific
+projects, whereas \OWL{}-based reasoners like \FactPP{} are
+\i{general} engines that work on general-purpose \RDF{} data
+without further qualification.  In order to
+apply \q{special} reasoners to \RDF{}, a contingent of nodes must
+be selected which are consistent with reasoners' runtime requirements.
+}
+\p{Of course, special reasoners cannot be expected to run on the domain of
+the entire Semantic Web, or even on \q{very large} data sets in general.
+A typical analysis will subdivide its problem into smaller parts
+that are each tractable to custom reasoners \mdash{} in radiology, say,
+a diagnosis may proceed by first selecting a medical
+image series and then performing
+image-by-image segmentation.  Applied to \RDF{}, this
+two-step process can be considered a combination of general and special
+reasoners: a general language like \SPARQL{} filters many nodes down to a smaller
+subset, which are then mapped/deserialized to domain-specific representations
+(including runtime memory).  For example, \RDF{} can link a patient to a
+diagnostic test, ordered on a particular date by a particular doctor, whose
+results can be obtained as a suite of images \mdash{} thereby selecting the
+particular series relevant for a diagnostic task.  General reasoners
+can \i{find} the images of interest and then pass them to
+special reasoners (such as segmentation algorithms)
+to analyze.  Insofar as this architecture is in effect, Semantic Web
+data is a site for many kinds of reasoning engines.  Some of these engines
+need to operate by transforming \RDF{} data and resources to an optimized,
+internal representation.  Moreover, the semantics of these representations
+will typically be closer to a high-level \NThree{} semantics taken as
+\suigeneris{}, rather than as interpreted reductively as a notational
+convenience for lower-level formats like \NTrip{}.  This appears
+to undermine the justification for reductive semantics in terms of
+\OWL{} reasoners.
+}
+\p{Perhaps the most accurate paradigm is that Semantic Web data has two
+different interpretations, differing in being consistent with
+special and general semantics, respectively.  It makes sense to
+label these the \q{special semantic interpretation} or
+\q{semantic interpretation for special-purpose reasoners}
+(\SSI{}, maybe) and the \q{general semantic interpretation}
+(\GSI{}), respectively.  Both these interpretations should be deemed
+to have a role in the \q{semantics} of the Semantic Web.
+}
+\p{Another order of considerations involve the
+semantics of \RDF{} nodes and \CH{} hypernodes
+particularly with respect to uniqueness.  Nodes in \RDF{} fall into three classes:
+blank nodes; nodes with values from a small set of basic types like strings and
+integers; and nodes with \URL{}s which are understood to be unique across the
+entire World Wide Web.  There are no blank nodes in \CH{}; and intrinsically
+no \URL{}s either, although one can certainly define a \URL{} \i{type}.
+There is nothing in the semantics of \URL{}s
+which guarantees that each \URL{} designates a distinct internet resource;
+this is just a convention which essentially, \i{de facto},
+fulfills itself because
+it structures a web of commercial and legal practices, not just digital
+ones; e.g. ownership is uniquely granted for each internet domain name.
+In \CH{}, a data type may be structured to reflect institutional
+practices which guarantee the uniqueness of values in some context:
+books have unique \ISBN{} codes; places have distinct \GIS{} locations,
+etc.  These uniqueness requirements, however, are not intrinsically
+part of \CH{}, and need to be expressed with additional axioms.  In
+general, a \CH{} hypernode is a tuple of relatively simple values
+and any additional semantics are determined by type
+definitions (it may be useful to see \CH{} hypernodes as roughly analogous to
+\CStruct{}s \mdash{} which have no \i{a priori} uniqueness mechanism).
+}
+\p{Also, \RDF{} types are less intrinsic to \RDF{} semantics than in \CH{}
+(see \cite{HeikoPaulheim}).  The
+foundational elements of \CH{} are value-tuples (via nodes expressing values,
+whose tuples in turn are hypernodes).  Tuples are indexed by position, not by
+labels: the tuple \NathFF{} does not in itself draw in the labels \q{name} or
+\q{age}, which instead are defined at the type-level (insofar as type-definitions
+may stipulate that the label \q{age} is an alias for the node in its
+second position, etc.).  So there is no way to ascertain the semantic/conceptual
+intent of hypernodes without considering both hyponode and hypernode types.  Conversely,
+\RDF{} does not have actual tuples (though these can be represented as collections,
+if desired); and nodes are always joined to other nodes via labeled connectors
+\mdash{} there is no direct equivalent to the \CH{}
+modeling unit of a hyponode being included in a hypernode
+by position.
+}
+\p{At its core, then, \RDF{} semantics are built on the proposition that many
+nodes can be declared globally unique by fiat.  This does not need to be
+true of all nodes \mdash{} \RDF{} types like integers and floats are more
+ethereal; the number 46 in one graph is indistinguishable from 46 in
+another graph.  This can be formalized by saying that some nodes can be
+\i{objects} but never \i{subjects}.  If such restrictions were not enforced,
+then \RDF{} graphs could become in some sense overdetermined, implying
+relationships by virtue of quantitative magnitudes devoid of semantic
+content.  This would open the door to bizarre judgments like
+\q{my age is non-prime} or \q{I am older than Mohamed Salah's
+2018 goal totals}.
+One way to block these inferences is to prevent nodes like
+\q{the number 46} from being subjects as well as objects.
+But nodes which are not primitive values \mdash{} ones, say, designating
+Mohamed Salah himself rather than his goal totals \mdash{} are justifiably
+globally unique, since we have compelling reasons to adopt a model
+where there is exactly one thing which is \i{that} Mohamed Salah.
+So \RDF{} semantics basically marries some primitive types which are
+objects but never subjects with a web of globally unique but internally
+unstructured values which can be either subject or object.
+}
+\p{In \CH{} the \q{primitive} types are effectively hypotypes; hyponodes
+are (at least indirectly)
+analogous to object-only \RDF{} nodes insofar as
+they can only be represented via inclusion inside
+hypernodes.  But \CH{} hypernodes are neither (in themselves) globally
+unique nor lacking in internal structure.  In essence, an \RDF{}
+semantics based on guaranteed uniqueness for atom-like
+primitives is replaced by a semantics based on structured building-blocks
+without guaranteed uniqueness.  This alternative may be considered in the
+context of general versus special reasoners: since general reasoners
+potentially take the entire Semantic Web as their domain, global
+uniqueness is a more desired property than internal structure.
+However, since special reasoners only run on specially selected data,
+global uniqueness is less important than efficient mapping
+to domain-specific representations.  It is not computationally
+optimal to deserialize data by running \SPARQL{} queries.
+}
+\p{Finally, as a last point in the comparison between
+\RDF{} and \CH{} semantics,
+it is worth considering the distinction 
+between \q{declarative knowledge} and \q{procedural knowledge} 
+(see e.g. 
+\cite[pages 182-197]{BenGoetzel}).  According
+to this distinction, canonical \RDF{} data exemplifies \i{declarative} knowledge
+because it asserts apparent facts without explicitly trying to interpret or
+process them.  Declarative knowledge circulates among software in canonical,
+reusable data formats, allowing individual components to use or make inferences from
+data according to their own purposes.
+}
+\p{Counter to this paradigm, return to
+hypothetical \USH{} examples, such as 
+the conversion of Voltage data to acceleration data, which is a
+prerequisite to accelerometers' readings being useful in most contexts.  Software
+possessing capabilities to process accelerometers therefore reveals
+what can be called \i{procedural} knowledge, because software
+so characterized not only receives data
+but also processes such data in standardized ways.
+}
+\p{The declarative/procedural distinction perhaps fails to capture how
+procedural transformations may be understood as intrinsic to some semantic
+domains \mdash{} so that even the information we perceive as
+\q{declarative} has a procedural element.  For example, the
+very fact that \q{accelerometers} are not
+called \q{Voltmeters} (which are something else) suggests how the
+Ubiquitous Computing community perceives voltage-to-acceleration
+calculations as intrinsic to accelerometers' data.  But strictly speaking
+the components which participate in \USH{} networks are not just
+engaged in data sharing; they are functioning parts of the network because
+they can perform several widely-recognized
+computations which are understood to be central to the relevant
+domain \mdash{} in other words, they have (and share with their
+peers) a certain \q{procedural knowledge}.
+}
+\p{\RDF{} is structured as if static data sharing were the sole arbiter of
+semantically informed interactions between different components,
+which may have a variety of designs and rationales \mdash{} which
+is to say, a
+Semantic Web.  But a thorough account of formal communication semantics
+has to reckon with how semantic models are informed by the implicit, sometimes
+unconscious assumption that producers and/or consumers of data will
+have certain operational capacities: the dynamic processes anticipated as
+part of sharing data are hard to conceptually separate from the static
+data which is literally transferred.  To continue the accelerometer
+example, designers can
+think of such instruments as \q{measuring acceleration} even though
+\i{physically} this is not strictly true; their
+output must be mathematically transformed for it to be interpreted in
+these terms.  Whether represented via \RDF{} graphs or Directed Hypergraphs,
+the semantics of shared data is incomplete unless the operations
+which may accompany sending and receiving data are recognized as
+preconditions for legitimate semantic alignment.
+}
+\p{While Ontologies are valuable for coordinating and integrating
+disparate semantic models, the Semantic Web has perhaps influenced
+engineers to conceive of semantically informed data sharing
+as mostly a matter of presenting static data conformant to published
+Ontologies (i.e., alignment of \q{declarative knowledge}).  In reality,
+robust data sharing also needs an \q{alignment of \i{procedural}
+knowledge}: in an ideal Semantic Network, procedural capabilities
+are circled among components, promoting an emergent \q{collective
+procedural knowledge} driven by transparency about code and libraries as
+well as about data and formats.  The \CH{} model arguably supports this
+possibility because it makes type assertions fundamental to semantics.
+Rigorous typing both lays a foundation for procedural alignment
+and mandates that procedural capabilities be factored in to assessments
+of network components, because a type attribution has no meaning
+without adequate libraries and code to construct and interpret
+type-specific values.
+}
+\thindecoline{}
+\p{Despite their differences, the Semantic Web, on the one hand, 
+and Hypergraph-based frameworks,
+on the other, both belong to the overall
+space of graph-oriented semantic models.
+Hypergraphs can be emulated in \RDF{}, 
+and \RDF{} graphs can be organically mapped to 
+a Hypegraph representation (insofar as 
+Directed Hypegraphs with annotations are a 
+proper superspace of Directed Labeled Graphs). 
+Semantic Web Ontologies for computer source code can 
+thus be modeled by suitably typed \DH{}s as well, 
+even while we can also formulate Hypergraph-based 
+Source Code Ontologies as well.  So, we are justified 
+in assuming that a sufficient Ontology exists 
+for most or all programming languages. 
+This means that, for any given
+procedure, we can assume that there is a 
+corresponding \DH{} representation
+which embodies that procedure's implementation.
+}
+\p{\phantomsection\label{detachedeval}
+Procedures, of course, depend on \i{inputs} which are fixed for 
+each call, and produce \q{outputs} once they terminate.  
+In the context of a graph-representation, this implies that some
+hypernodes represent and/or express values that are \i{inputs}, while 
+others represent and/or express its \i{outputs}.  These
+hypernodes are \i{abstract} in the sense (as in Lambda Calculus) that they
+do not have a specific assigned value within the body, \i{qua} formal
+structure.  Instead, a \i{runtime manifestation} of a \DH{}
+(or equivalently a \CH{}, once channelized types are introduced) populates
+the abstract hypernodes with concrete values, which in turn allows
+expressions described by the \CH{} to be evaluated.
+}
+\p{These points suggest a strategy for unifying 
+Lambda Calculi with Source Code Ontologies.
+The essential construct in \mOldLambda{}-calculi is
+that mathematical formulae include 
+\q{free symbols} which are \i{abstracted}: sites 
+where a formula can give rise to a concrete 
+value, by supplying values to unknowns; or 
+give rise to new formulae, via nested expressions.  
+Analogously, nodes in a graph-based source-code 
+representation are effectively \mOldLambda{}-abstracted 
+if they model input parameters, which are 
+given concrete values when the procedure runs.  
+Connecting the output of one procedure to the 
+input of another \mdash{} which can be modeled as a 
+graph operation, linking two nodes \mdash{} is then 
+a graph-based analog to embedding a complex expression 
+into a formula (via a free symbol in latter).    
+}
+\p{Carrying this analogy further, I earlier mentioned different 
+\mOldLambda{}-Calculus extensions inspired by programming-language 
+features such as Object-Orientation, exceptions, and 
+by-reference or by-value captures.  
+These, too, can be incorporated into a Source Code Ontology: 
+e.g., the connection between a node holding a value passed to an 
+input parameter node, in a procedure signature, is semantically 
+distinct from the nodes holding \q{Objects} which are 
+senders and receivers for \q{messages}, in Object-Oriented 
+Parlance.  Variant input/output protocols, including 
+Objects, captures, and exceptions, are certainly semantic 
+constructs (in the computer-code domain) which 
+Source Code Ontologies should recognize.  So we can see 
+a convergence in the modeling of multifarious input/output protocols 
+via \mOldLambda{}-Calculus and via Source Code Ontologies.  
+I will now discuss a corresponding expansion in the 
+realm of applied Type Theory, with the goal of 
+ultimately folding type theory into this convergence as well.   
+}
+%\spsubsectiontwoline{Procedural Input/Output Protocols via Type Theory}
+\subsectiontwoline{Procedural Input/Output Protocols via Type Theory}
+\p{\label{types}Parallel to the historical evolution where \mOldLambda{}-Calculus
+progressively diversified and re-oriented toward concrete
+programming languages, there has been an analogous (and
+to some extent overlapping) history in Type Theory.
+When there are multiple ways of passing input to a
+function, there are at potentially multiple kinds
+of function types.  For instance, Object-Orientation inspired
+expanded \mOldLambda{}-calculi that distinguish function
+inputs which are \q{method receivers} or \q{\this{} objects} from
+ordinary (\q{lambda}) inputs.  Simultaneously, Object-Orientation also
+distinguishes \q{class} from \q{value} types
+and between function-types which are \q{methods} versus ordinary
+functions.  So, to take one example, a function telling
+us the size of a list can exhibit two different types, depending
+on whether the list itself is passed in as a method-call target
+(\listsize{} vs. \sizelist{}).
+}
+\p{One way to systematize the diversity of type systems
+is to assume that, for any particular type system, there
+is a category \tCat{} of types conformant to that system.  This requires
+modeling important type-related concepts as \q{morphisms} or maps
+between types.  Another useful concept is an \q{endofunctor}:
+an \q{operator} which maps elements in a category
+to other (or sometimes the same) elements.  In a \tCat{} an endofunctor
+selects (or constructs) a type \tyTwo{} from a type \tyOne{} \mdash{} note how this is
+different from a morphism which maps \i{values of} \tyOne{} to \tyTwo{}.
+Type systems are then built up from a smaller set of \q{core} types via
+operations like products, sums, enumerations, and \q{function-like} types.
+}
+\p{We may think of the
+\q{core} types for practical programming as number-based
+(booleans, bytes, and larger integer types), with everything else built up by aggregation
+or encodings (like \ascii{} and \unicode{}, allowing types to include text and 
+alphabets).\footnote{In other contexts, however, non-mathematical core types may be appropriate: for example,
+the grammar of natural languages can be modeled in terms of a type system whose core are
+the two types \tyNoun{} and \tyProposition{} and which also includes
+function types (maps) between pairs or tuples of types (verbs,
+say, map \tyNoun{}s \mdash{} maybe multiple nouns, e.g. direct objects
+\mdash{} to \tyProposition{}s).
+}  Ultimately, a type system \tCat{} is characterized
+(1) by which are its core types and
+(2) by how aggregate types can be built from simpler ones
+(which essentially involves endofunctors and/or products).
+}
+\p{In Category Theory, a Category \cCat{} is called \q{Cartesian Closed} if
+for every pair of elements \eOne{} and \eTwo{} in \cCat{} there is an
+element \eOneToeTwo{} representing (for some relevant notion of
+\q{function}) all functions from \eOne{} to \eTwo{} \cite{RBrown}.  The stipulation that
+a type system \TyS{} include function-like types is roughly equivalent, then,
+to the requirement that \TyS{}, seen as a Category, is Cartesian-Closed.
+The historical basis for this concept (suggested by the terminology)
+is that the construction to form function-types is an \q{operator}, something that
+creates new types out of old.  A type system
+\TyS{} may to be \q{closed} under products:
+if \tOne{} and \tTwo{} are in \TyS{} then \tOneTimesTTwo{} must be as well.
+Analogously, \TyS{} supports function-like types if it 
+is closed under a kind of \q{functionalization} operator: if the
+\tOneTimesTTwo{} product can be mapped onto a function-like type
+\tyOneTotyTwo{}.
+}
+\p{In general, then, more sophisticated type systems \TyS{} are described by
+identifying new kinds of inter-type operators and studying those
+type systems which are closed under these operators: if \tyOne{} and
+\tyTwo{} are in \TyS{} then so is the combination of \tyOne{} and
+\tyTwo{}, where the meaning of \q{combination} depends on the
+operator being introduced.  Expanded \mOldLambda{}-calculi \mdash{} which
+define new ways of creating functions \mdash{} are correlated with new
+type systems, insofar as \q{new ways of creating functions}
+also means \q{new ways of combining types into function-like types}.
+}
+\p{Furthermore, \q{expanded} \mOldLambda{}-calculi generally involve
+\q{new kinds of abstraction}: new ways that the building-blocks
+of functional expressions, whether these be mathematical formulae
+or bodies of computer code, can be \q{abstracted}, treated as
+inputs or outputs rather than as fixed values.  In this chapter, I attempt to
+make the notion of \q{abstraction} rigorous by analyzing it against
+the background of \DH{}s that formally model computer code.
+So, given the correlations I have just described between
+\mOldLambda{}-calculi and type systems \mdash{} specifically, on
+\TyS{}-closure stipulations \mdash{} there are parallel correlations
+between type systems and \i{kinds of abstraction defined on
+Channelized Hypergraphs}.  I will now discuss this further.
+}
+\subsubsection{Kinds of Abstraction}
+\p{The \q{abstracted} nodes in a \CH{} can be loosely classified as
+\q{input} and \q{output}, but in practice there are various paradigms
+for passing values into and out of functions, each with their own semantics.
+For example, a \q{\this{}} symbol in \Cpp{} is an abstracted, \q{input}
+hypernode with special treatment in terms of overload resolution and access
+controls.  Similarly, exiting a function via \return{} presents
+different semantics than exiting via \throw{}.  As mentioned earlier,
+some of this variation in semantics has been formally modeled
+by different extensions to \mOldLambda{}-Calculus.
+}
+\p{So, different hypernodes in a \CH{} are subject to different kinds of abstraction.
+Speaking rather informally, hypernodes can be grouped into \i{channels} based on
+the semantics of their kind of abstraction.  More precisely,
+channels are defined initially on \i{symbols}, which are associated with hypernodes:
+in any \q{body} (i.e., an \q{implementation graph}) hypernodes can be grouped
+together by sharing the same symbol, and correlatively sharing the
+same value during a \q{runtime manifestation} of the \CH{}.  Therefore,
+the \q{channels of abstraction} at work in a procedure can be identified
+by providing a name representing the \i{kind} of channel and a list of
+symbols affected by that kind of abstraction.  In the notation I adopt here,
+conventional lambda-abstraction like \lXY{} would be written as \CHlXY{}.
+}
+\p{I propose \q{Channel Algebra} as a tactic for capturing the 
+semantics of channels, so as to model programming languages' 
+conventions and protocols with respect to calls between 
+procedures.  Once we get beyond the basic contrast between 
+\q{input} and \q{output} parameters, it becomes necessary to 
+define conditions on channels' size, and on how 
+channels are associated with different procedures that may 
+share values.  Here are several examples: 
+\begin{itemize}\item{} In most Object-Oriented languages, any procedure can 
+have at most one \this{} (\q{message receiver}) object.  
+Let \sCh{} model a \q{Sigma} channel, as in \q{Sigma Calculus}
+(written as \sigmaCalculus{}: see e.g. \cite{MartinAbadi},
+\cite{CamposVasconcelos},
+\cite{KathleenFisher}, \cite{EdwardZalta}, etc.).
+We then have the requirement than any procedure's 
+\sCh{} channel can carry at most one value.
+\item{} \label{retexc} In all common languages which have exceptions, 
+procedures can \i{either} throw an exception \i{or} 
+return a value.  If \return{} and \exception{} 
+model the channels carrying standard returns and 
+thrown exceptions, respectively, this convention 
+translates to a requirement that the two channels 
+cannot both be non-empty.
+\item{} A thrown exception cannot be handled as an ordinary 
+value.  The whole point of throwing exceptions is to 
+disrupt ordinary program flow, which means the exception 
+value is only accessible in special constructs, like a 
+\catch{} block.  One way to model this restriction is 
+to forbid \exception{} channels from sharing values with 
+most other channels (tied to any other procedure).  Instead, 
+exception values are bound (in \catch{} blocks) to 
+lexically-scoped symbols (I will discuss channel-to-symbol 
+transfers below).
+\item{} Suppose a procedure is an Object-Oriented method 
+(it has a non-empty \q{\sCh{}} channel).  Any other methods 
+called from that procedure will \mdash{} at least in the 
+conventional Object-Oriented protocol \mdash{} automatically 
+receive the enclosing method's Sigma channel unless 
+a different object for the called method is supplied expressly. 
+\item{} \label{chaining} In the object-oriented technique known as \q{method chaining},
+one procedures' \return{} channel is transferred to a 
+subsequent procedures' \sCh{} channel.  The pairing of 
+Return and Sigma channels therefore gives rise to one 
+function-composition operator.  With suitable restrictions 
+(on channel size), \return{} and \lambda{} channels engender a 
+different function-composition operator.  So channels can be 
+used to define operators between procedures which yield new 
+function-like values (i.e., instances of function-like 
+types).  In some cases, function-like values defined via 
+inter-function operators can be used in lieu of function-like values 
+instantiated from implemented procedures (although the 
+specifics of this substitutability \mdash{} an example of 
+so-called \q{eta ($\eta{}$) equivalence} \mdash{} varies by language). 
+\end{itemize}
+}
+\p{The above examples represent possible combinations or 
+interconnections (sharing values) between channels, 
+together with semantic restrictions on when 
+such connections are possible.  In this chapter, I 
+assume that notations describing these connections and 
+restrictions can be systematized into a \q{Channel Algebra}, 
+and then used to model programming language conventions and 
+computer code.  A basic example of inter-channel 
+aggregation would be how a \lambda{} channel, combined 
+with a \return{} channel, associated with one procedure, 
+yields a conventional input/output pairing.  
+One particular channel formation \mdash{} \lambdaPLUSreturn{}, 
+say \mdash{} therefore models 
+the basic \mOldLambda{}-Calculus and, simultaneously, 
+the minimal theory of function-like types 
+(for Cartesian Closed type Categories).  
+In essence: a procedure's signature, or
+type-expression, can be seen as a \q{sum
+of channels}, or an inter-channel operation.
+Notionally, a procedure is, in the simplest
+conceptualization, the unification of an
+input channel and an output channel.
+So a \q{channel sum} creates the basic
+foundation for a procedure, analogous to
+how input and output graph elements
+yield the foundations for morphisms
+in Hypergraph Categories.
+More complex channel combinations and protocols 
+can then model more complex 
+variations on \mOldLambda{}-Calculi and
+programming language type systems. 
+}
+\subsubsection{Channelized Type Systems}
+\p{Collectively, to summarize my discussion to this point,
+I will say that formulations 
+describing channel kinds, their restrictions, and
+their interrelationships describe a \i{Channel Algebra}, 
+which express how channels combine to
+describe possible function signatures \mdash{} and 
+accordingly to describe functional \i{types}.  The
+purpose of a Channel Algebra is, among other things, to describe
+how formal languages (like programming languages) formulate functions 
+and procedures, and
+the rules they put in place for inputs and outputs.  If \Chi{} is a
+Channel Algebra, a language adequately described by its formulations 
+(channel kinds, restrictions, and interrelationships) can be called a
+\Chi{}-language.  The basic \mOldLambda{}-Calculus can be described as a
+\Chi{}-language for the algebra defined by a minimal 
+\lambdaPLUSreturn{} combination (with \return{} channels 
+restricted to at most one element).
+Analogously, a type system \TyS{} is 
+a \q{\Chi{}-type-system}, and is \q{closed} with respect to \Chi{}, 
+if valid signatures described using channel kinds in
+\Chi{} correspond to types found in \TyS{}.  Types may be less granular than
+signatures: as a case in point,
+functions differing in signature only by whether they
+throw exceptions may or may not be deemed the same type.  But a channel
+construction on types in \TyS{} must also yield a type in \TyS{}.
+}
+\p{I say that a type system is \i{channelized} if it is
+closed with respect to some Channel Algebra.
+Channelized Hypergraphs are then \DH{}s whose type system is Channelized.
+We can think of channel constructions as operators which combine
+groups of types into new types.
+Once we assert that a \CH{} is Channelized, we know that there is a mechanism
+for describing some Hypergraphs or subgraphs as \q{procedure 
+implementations} some of whose hypernodes are subject to
+kinds of abstraction present in the relevant Channel Algebra.  The
+terse notation for Channel formulae and signatures describes
+logical norms which can also be expressed with more conventional
+Ontologies.  So Channel Algebra can be seen as a generalization of
+(\RDF{}-environment) Source Code Ontology
+(of the kinds studied for example by
+\cite{ImanKeivanloo}, \cite{WernerKlieber},
+\cite{JohnathanLee}, \cite{TurnerEden},
+\cite{ReneWitte}, \cite{PornpitWongthongtham}).  Given the relations between
+\RDF{} and Directed Hypergraphs (despite differences I have discussed here),
+Channel Algebras can also be seen as adding to Ontologies governing
+Directed Hypergraphs.  Such is the perspective I will take
+for the remainder of this chapter.
+}
+%\decoline{}
+\p{For a Channel Algebra \Chi{} and a \Chi{}-closed type system
+(written, say) \TySChi{}, \Chi{} extends \TyS{} because function-signatures
+conforming to \Chi{} become types in \TyS{}.  At the same time,
+\TyS{} also extends \Chi{}, because the elements that
+populate channels in \Chi{} have types within \TyS{}.  Assume that for
+any type system, there is a
+partner \q{Type Expression Language} (\TXL{}) which governs how type
+descriptions (especially for aggregate types that do not have a
+single symbol name) can be composed consistent with the logic of
+the system.  The \TXL{} for a type-system \TyS{} can be
+notated as \TXLTyS{}.  If \TyS{} is channelized then its
+\TXL{} is also channelized \mdash{} say, \TXLTySChi{} for some \Chi{}.
+}
+\p{Similarly, we can then develop for Channel Algebras a \i{Channel
+Expression Language}, or \CXL{}, which can indeed be integrated with
+appropriate \TXL{}s.  Formal declarations of channel axioms 
+\mdash{} e.g., restrictions on channel sizes, alone or in combination \mdash{} 
+are examples of terms that should be representable in a \CXL{}.   
+However, whereas the \CXL{} expressions I have described so far
+describe the overall shape of channels
+\mdash{} which channels exist in a given context and their sizes
+\mdash{} \CXL{} expressions can also add details concerning the \i{types} of
+values that can or do populate channels.
+\CXL{} expressions with these extra specifications then become
+function signatures, and therefore can be type-expressions in the
+relevant \TXL{}.  A channelized \TXL{} is then a
+superset of a \CXL{}, because it adds \mdash{} to \CXL{} expressions
+for function-signatures \mdash{} the stipulation that a particular
+signature does describe a \i{type}; so \CXL{} expressions
+become \TXL{} expressions when supplemented with a proviso
+that the stated \CXL{} construction describes a
+function-type signature.  With such a proviso, descriptions of
+channels used by a function qualifies as a type attribution,
+connecting function symbol-names
+to expressions recognized in the \TXL{} as describing a type.
+}
+\p{Some \TXL{} expressions
+designate function-types, but not all, since there are many types
+(like integers, etc.) which do not have channels at all.
+While a \TXL{} lies \q{above} a \CXL{} by adding provisos that
+yield type-definition semantics from \CXL{} expressions,
+the \TXL{} simultaneously in a sense lies \q{beneath} the
+\CXL{} in that it provides expressions for the non-functional
+types which in the general case are the basis for \CXL{}
+expressions of functional types,
+since most function parameters \mdash{} the input/output values
+that populate channels \mdash{} have non-functional types.
+Section \sectsym{}\hyperref[sThree]{3} will discuss the elements that \q{populate}
+\mbox{channels (which I will call \q{carriers}) in more detail}.
+}
+\p{In the following sections I will sketch a
+\q{Channel Algebra} that codifies the graph-based representation
+of functions as procedures whose inputs and
+outputs are related to other functions by variegated semantics
+(semantics that can be catalogued in a Source Code
+Ontology).  With this foundation, I will argue that Channel-Algebraic
+type representations can usefully model higher-scale
+code segments (like statements and code blocks)
+within a type system, and also how type interpretations
+can give a rigorous interpretation to modeling
+constructs such as code specifications and
+\q{gatekeeping} code.  I will start this
+discussion, however, by expanding on the idea of 
+employing code-graphs \mdash{} hypergraphs annotated according 
+to a Source Code Ontology \mdash{} to represent 
+procedure implementations, and therefore to model 
+procedures as instances of function-like types.
 }

@@ -1,383 +1,318 @@
-\section{Channels and Carriers}
-\phantomsection\label{sFour}
-\p{Suppose one procedure calls a second.  From a high level perspective,
-this has several consequences that can be semantic-graph represented
-\mdash{} among others, that the calling procedure depends on an
-implementation of the callee being available \mdash{} but at the
-source code level the key consequence is that a node representing
-source tokens which designate functional values enters into
-different semantic relations (modeled by different kinds
-of edge-annotations) than nodes marking other types
-of values and literals.  Suppose we have an edge-annotation
-that \nodex{} is a value passed to \nodef{}; this graph is only
-semantically well-formed if \nodef{}'s representatum has
-functional type (by analogy to the well-formedness 
-criteria of \lambdaxfx{}).
+\section{Modeling Procedures via Channelized Hypergraphs}
+\phantomsection\label{sThree}
+\p{Assuming we have a suitable Source Code Ontology, software 
+procedures can be seen from two perspectives.  On the 
+one hand, they are examples of well-formed code graphs: 
+annotated graph structures convey the lexical symbols, 
+input/output parameters (via different \q{abstractions}, 
+in the sense of \mOldLambda{}-abstraction, subject to 
+relevant channel protocols), and calls to other procedures, 
+through which any given procedure's functionality is 
+achieved.  On the other hand, we can see procedures as 
+instances of function-like types, where the types carried 
+in each channel determine the type of the procedure itself, 
+as a functional value.  Although these two perspectives are 
+usually mutually consistent, the notion of functional 
+values is more general than procedures which are expressly 
+implemented in computer code.  In particular, as I briefly 
+mentioned earlier, sometime functional values are denoted 
+via inter-function operators (like the composition 
+\fOfG{}) rather than by giving an explicit implementation.  
+Programmers would say that functions defined via operators 
+(such as \Ofop{}) lack a \q{function body}.  
 }
-\p{This motivates the following: suppose we have a Directed
-Hypergraph, where the
-nodes for each hyper-edge represent source-code tokens (specifically,
-symbols and literals).  Via the relevant Source Code Ontology, we can
-assert that certain
-edge-annotations are only possible if a token (in subject or object position)
-designates a value passed to a function.  From the various edge-annotation
-kinds which meet this criteria, we can define a set of \q{channel kinds}.
+\p{Going forward, I will generally use the term \i{procedure} 
+with reference to function-like type instances that are 
+defined \i{with} function bodies: that is, they are 
+associated with sections of code that supply the procedure's 
+implementation, and can be represented via code-graphs.  
+I will use the term \i{function} more generally for 
+instances of function-like types, irregardless of their 
+provenance.  In particular, functions are \i{values} 
+\mdash{} instances of types in a relevant type-system 
+\TyS{} \mdash{} whereas I will not usually discuss procedures 
+as \q{values}.    
 }
-\p{This implicitly
-assumes that symbols \q{hold} values; to make the
-notion explicit, I will say that symbols are
-\i{carriers} for values.  Carriers do not necessarily hold a
-value at every point in the execution of a program; they
-may be \q{preinitialized}, and also \q{retired} (the
-latter meaning they no longer hold a meaningful value;
-consider deleted pointers or references to out-of-scope
-symbols).  A carrier may pass through a
-\q{career} from preinitialized to initialized, maybe then
-changing to hold \q{different} values, and maybe then
-retired.\footnote{Because \q{uninitialized} carriers and \q{dangling pointers}
-are coding errors, within \q{correct} code, carriers
-and values are bound tightly enough that the whole carrier/value
-distinction might be considered an artifact of programming practice,
-out of place in a rigorous discussion of programming languages
-(as logicomathematical systems, in some sense).  But even
-if the \q{career} of symbols is unremarkable, we cannot avoid
-in some contexts \mdash{} within a debugger and/or an \IDE{}
-(Integrated Development Environment, software for writing programs),
-for example \mdash{} needing to formally distinguish the carrier
-from the value which it holds, or recognize that carriers
-can potentially be in a \q{state} where, at some point in which
-they are relevant for code analysis or evaluation, they
-do not yet (or do not any longer) hold meaningful values.
-Consequently, the \q{trajectory} of 
-carrier \q{lifetime} \mdash{} from being declared,
-to being initialized, to falling \q{out of scope} or otherwise \q{retired}
-\mdash{} should be integrated into our formal inventory of programming
-constructs, not relegated to an informal \q{metalanguage} suitable
-for discussing computer code as practical documents but not as formal systems.
-}  I assume each carrier is associated with a single type
-throughout its career, and can only hold values appropriate for its
-type.\footnote{The variety of possible
-careers for carriers is not directly tied to its type: a
-carrier which cannot change values (be reinitialized)
-is not necessarily holding a \const{}-typed value.
+\p{Most functions which may be called by a software component 
+are defined as procedures with their own function bodies.  
+Indeed, the essential software-development process involves 
+implementing procedures in code, and then implementing 
+other procedures \mdash{} which call those already-created procedures  
+(in various combinations) \mdash{} to realize their own functionality.  
+That is, source code itself produces instances of 
+functional values, via procedures described by the code.  
+Accordingly, code-graphs for individual procedures capture 
+the implementations through which function-like types 
+are (mostly) populated with concrete values.   
 }
+\p{These various concepts \mdash{} procedures, functions, implementations, 
+and function-bodies or code-graphs \mdash{} are important for 
+broad architectural topics like Requirements Engineering, because 
+they concern the building-blocks from which larger software 
+components are assembled.  When discussing procedures' coding assumptions 
+(more fine-grained than type constraints alone can model), for example, 
+we need a rigorous presentation of what a procedure itself is, 
+to identify the relevant entity whose assumptions can be documented 
+and tested.  To model the general maxim that any coding assumptions 
+made (but not verified) by one procedure \mdash{} say, \ProcOne{} \mdash{} 
+should be tested by other procedures which call \ProcOne{}, we need 
+a systematic outline capturing the notion of procedures calling 
+other procedures, in the course of their own implementation.  
+Here I propose to model these details via channels and 
+interrelationships between channels.   
 }
-\p{In short, \i{carriers} embody the contrast between abstract or
-mathematical type theory and practical languages' type systems.  
-Instead of the notion of a \i{typed value} \mdash{} an instance of a 
-type \mdash{} we can focus on carriers which are tangible elements of 
-source code and also (during runtimes) binary resources.  
-Carriers evince different states; in those states where they 
-hold a concrete value, carriers play a conceptual role analogous 
-to type-instances in formal type theory.  On the other hand, 
-carriers can have other states which are orthogonal to 
-type systems: carriers holding \i{no} value, for example, 
-are different than carriers holding values of a 
-\q{\nulltt{}} type.    
-}
-\p{Having introduced the basic idea of \q{carriers} I will now consider
-carrier operations in more detail, before then expanding on the
-theory of carriers by considering how carriers group into channels.
+\p{In my formulation of these representations, channels are conceptually 
+integrated with hypergraph code models.  That is, code-graphs are 
+a formal device within the theory I present here.  In many other 
+context code-graphs would instead be, at most, convenient expository 
+devices; for instance, functional programming languages generally do 
+not attach much significance to the contrast of procedures 
+(with function-bodies) and function-values constructed by 
+other means.  As a result, one consequence of my graph-oriented 
+approach is that the technical distinctions between 
+procedures and function-values (in general) have to be 
+duly observed.  There are some relevant complications appertaining to 
+the general picture of source-code segments instantiating 
+function-like types.  I will briefly review these issues now, 
+before pivoting to more macro-scale themes like Requirements Engineering.
 }
 \vspace{-.1em}
-%\spsubsection{Carrier Transfers}
-\subsection{Carrier Transfers}
-\p{In this theory, carriers are the basic means by which values are represented
-within computer code, including representing the \q{communicating} of
-values between different parts of code source, such as calling a function.
-The \q{information flow} modeled by a function-call includes values
-held by carriers at the function-call-site being transferred to
-carriers at the function-implementation site.  This motivates
-the idea of a \q{transfer} of values between carriers, a kind of primitive
-operation on carriers, linking disparate pieces of code.  It also
-illustrates that the symbols used to name function parameters, as
-part of function signatures, should be considered \q{carriers} analogous
-to lexically-scoped symbols.
-}
-\p{Taking this further, we can define a \i{channel} as a list of carriers which, by
-inter-carrier transfers, signify (or orchestrate) the passage of data into and out
-of function bodies (note that this usage varies somewhat from process calculi,
-where a channel would correspond roughly to what is here called a single carrier;
-I assume channels in the general case are composed of multiple carriers).
-I'll use the notation \opTransfer{} to represent inter-carrier transfer: let
-\carrOne{} and \carrTwo{} be carriers, then \carrOneOpTransferTwo{} is a
-transfer \q{operator} (note that \opTransfer{} is non-commutative; the
-\q{transfer} happens in a fixed direction), marking the
-logical moment when a value is moved from code-point to code-point.
-The \opTransfer{} is intended
-to model several scenarios, including \q{forced coercions} where the associated
-value is modified. Meanwhile, without further details a \q{transfer} can be
-generalized to \i{channels} in multiple ways.
-If \carrOne{} and \carrTwo{} are carriers which belong to two channels
-(\chanOne{}, \chanTwo{}), then \carrOneOpTransferTwo{} elevates to
-a transfer between the channels
-\mdash{} but this needs two indices to be concrete: the notation has to
-specify which carrier in \chanOne{} transfers to which carrier in \chanTwo{}.
-For example, consider the basic function-composition \fofg{}:
-\fDotOfGX{} = \fOfGx{}.  The analogous \q{transfer} notation
-would be, say, \gOpTransferOneOneF{}:
-here the first carrier in the \returnch{} channel
-of \funG{} transfers to the first carrier in the \lambdach{} channel of \funF{}
-(the subscripts indicate the respective positions).\footnote{In this chapter I color channel names to distinguish them from code excerpts.
-}
-}
-\p{Most symbols in a function body (and corresponding nodes in a
-semantic graph) accordingly represent carriers, which
-are either passed in to a function or lexically declared
-in a function body.  Assume each function body corresponds
-with one lexical scope which can have subscopes
-(the nature of these scopes and how they fit in
-graph representation will be addressed later in this section).
-The \i{declared} carriers are initialized with
-values returned from other functions (perhaps the
-current function called recursively), which can
-include constructors that work on literals (so, the
-carrier-binding in source code can look like
-a simple assignment to a literal, as in \intieqzero{}).
-In sum, whether they are passed \i{to} a  function or
-declared \i{in} a function, carriers are only initialized
-\mdash{} and only participate in the overall semantics
-of a program \mdash{} insofar as they are passed to other functions
-or bound to their return values.
-}
-\p{Furthermore, both of these cases introduce associations between
-different carriers in different areas of source code.  When a carrier
-is passed \i{to} a function, there is a corresponding carrier
-(declared in the callee's signature) that receives the
-former's value: \q{calling a function} means
-transferring values between carriers present at the site of
-the function call to those present in the function's
-implementation.  Sometimes this works in reverse: a function's
-return may cause the value of one of its carriers to be
-transferred to a carrier in the caller (whatever
-carrier is bound to the caller's return value).
-}
-\p{Let \carOne{} and \carTwo{} be two carriers.  The \opTransfer{} operator
-(representing a value passed from \carOne{} to \carTwo{}) encompasses
-several specific cases.  These include:
-\begin{enumerate}\eli{}  Value transfer directly between two carriers in one scope, like \aeqb{} or \aceqb{}.
-\eli{}  A value transferred between one carrier in one function body when the return
-value of that function is assigned to a carrier at the call site, as in \yeqfx{}
-when \fSym{} returns with \retFive{}, so the value \five{} is transferred to \ySym{}.
-\eli{}  \label{transf}A value transferred between a
-carrier at a call-site and a carrier in the
-called function's body.  Given \yeqfx{} and \fFun{} declared as, say,
-\fIntI{}, then the value in carrier \xSym{} at the call-site is transferred to
-the carrier \iSym{} in the function body.  In particular, every node
-in the called function's code-graph whose vertex represents a source-code
-token representing symbol \iSym{} then becomes a carrier whose value is
-that transferred from \xSym{}.
-\eli{}  A value transferred between a \returnch{} channel and either a
-\lambdach{} or \sigmach{} channel, as part of a nested expression or a
-\q{chain of method calls}.  So in \hfx{}, the value held by the carrier
-in \fFuns{}'s \returnch{} channel is transferred to the first carrier in
-\hFun{}'s \lambdach{}.  An analogous \returnch{}\opTransfer{}\sigmach{}
-transfer is seen in code like \fxdoth{}: the value
-in \fFuns{}'s \returnch{} channel becomes the value in \hFun{}'s \sigmach{},
-i.e., its \q{\this{}} (we can use \opTransfer{}
-as a notation between \i{channels} in this case because we understand
-the Channel Algebra in force to restrict the size of both
-\returnch{} and \sigmach{} to be at most one carrier).
+%\spsubsection{Initializing Function-Typed Values}
+\subsection{Initializing Function-Typed Values}
+\p{Although in general function-typed values are \i{initialized}
+from code-graphs that blueprint their implementation,
+this glosses over several different mechanisms by which
+function-typed values may be defined:
+\begin{enumerate}\eli{}  \phantomsection\label{funconstr}In the simplest case, there is
+a one-to-one relationship
+between a code graph and an implemented function (\fFun{}, say).
+If \fFun{} is polymorphic, in this case, it must be an example
+of subtype (or \q{runtime}) polymorphism where the declared types of \fFun{}'s
+parameters are actually instantiated, at runtime, by values
+of their subtypes.
+\eli{}  A different situation (\q{compile-time} polymorphism) applies
+to generic code as in \Cpp{}
+templates.  Here, a single code-graph generates multiple function
+bodies, which differ only by virtue of their expected types.
+For example, a templated \sortfn{} function will generate
+multiple function bodies \mdash{} one for integers, say, one for strings,
+etc.  These functions may be structurally similar, but they have
+different signatures by virtue of working with different types.  This
+means that symbols used in the function-bodies may refer to
+different functions even though the symbols themselves do not vary
+between function-bodies (since, after all, they come from the
+same node in a single code-graph).  That is, the code-graphs
+rely on symbol-overloading for function names
+to achieve a kind of polymorphism, where one code-graph
+yields multiple bodies.
+\pseudoIndent{}
+In this compile-time polymorphism,
+symbols are resolved to the proper overload-implementation
+at compile-time, whereas in runtime polymorphism this
+decision is deferred until the runtime-polymorphic function
+is actually being executed.  The key difference is that
+runtime-polymorphic functions are \i{one} function-typed value,
+which can work for diverse types only via subtyping \mdash{}
+or via more exotic forms of indirection, like
+using function-pointers in place of function symbols; whereas
+compile-time-polymorphic (i.e., templated) functions are
+\i{multiple} values, which share the same code-graph
+representation but are otherwise unrelated.
+\eli{}  \label{ops}A third possibility for producing function values is to define
+operators on function types themselves, which transform
+function-typed values to other function-typed values, by analogy
+to how arithmetic operations transform numbers to other
+numbers.  As will be discussed below, this may or may not be
+different from initializing function-typed values via code-graphs,
+depending on how the relevant programming language is implemented.
+For instance, given the composition operator \Ofop{},
+\fDotOfg{} may or may not be treated as only a convenient
+shorthand for a code graph spelling out something like \fgx{}.
+\eli{}  Finally, as a special case of operators on function-typed values,
+one function may be obtained from another by \q{Currying}, that is,
+fixing the value of one or more of the original function's
+arguments.  For example, the \inc{} (\q{increment}) function which adds
+\litOne{} to a value is a special case of addition, where the added value
+is always \litOne{}.  Here again, Currying may or may not be
+treated as a function-value-initialization process different from ones
+starting from code-graphs.
 \end{enumerate}
 }
-\p{Let \carOnetoTwof{} be the special case of \opTransfer{}
-corresponding to item \hyperref[transf]{(3)}: a transfer
-effectuated by a function call, where
-\carOne{} is at the call site and \carTwo{} is part of a
-function's signature.  If \fOne{} calls \fTwo{} then
-\carOne{} is in \fOne{}'s context, \carTwo{} is in \fTwo{}'s
-context, and \carTwo{} is initialized with a copy of
-\carOne{}'s value prior to \fTwo{} executing.
-A \i{channel} then becomes a
-collection of carriers which are found in the
-scope of one function and can be on the
-right hand side of an \carOnetoTwof{} operator.
+\vspace{-1em}
+\p{The differences between how languages may process the \i{initialization}
+of function-type values, which I alluded to in (3) and (4), reflect
+differences in how function-type values are internally represented.
+One option is to store these values solely in blocks of
+memory, which would correspond to treating all initializations of these
+values as via code-graphs.  For example, suppose we have an \addFun{} function
+and want to define an \inc{} function, as in \incimpl{}.  Even if a language has
+a special Currying notation, that notation could translate behind-the-scenes to
+an explicit function body, like the code at the end of the last sentence.
+However, a language engine may also note that \inc{} is derived from \addFun{}
+and can be wholly described by a handle denoting \addFun{}
+(a pointer, say) along with a designation of the fixed value: in
+other words, \addOne{}.  Instead of initializing \inc{} from a code-graph,
+the language can represent it via a two-part data structure like
+\addOne{} \mdash{} but only if the language \i{can} represent
+function-typed values as compound data structures.
 }
-\p{To flesh out Channels' \q{transfer semantics} further, I will refer back
-to the model of function-implementations as represented in code
-graphs.  If we assume that all code in a computer program is found
-in some function-body, then we can assume that any function-call
-operates in the context of some other function-body.  In particular,
-any carrier-transfer caused by a function call involves a link between
-nodes in two different code graphs (I set aside the case of recursive
-functions \mdash{} those which call themselves \mdash{} for this discussion).
+\p{Let's assume a language can always represent \i{some} function-typed values,
+ones that are obtained from code-graphs, via pointers to
+(or some other unique identifier for) an internal
+memory area where at least \i{some} compiled function bodies are stored.
+The interesting question is whether \i{all}  function-typed values
+are represented in this manner and, in either case, the
+consequences for the semantics of functional types \mdash{} semantic
+issues such as \fOfg{} composition operators and Currying
+\makebox{(and also, as I will argue, Dependent Types)}.
 }
-\p{Analysis of value-transfers is particularly significant
-in the context of Source Code Ontologies and \RDF{} or
-Directed Hypergraph representations
-of computer code.  This is because code-graphs give us a rigorous foundation
-for modeling computer programs as sets of function-implementations
-which call one another.  Instead of abstractly talking about
-\q{procedures} as conceptual primitives, we can see procedures as
-embodied in code-graphs (and function-values as
-constructed from them).  
-Figure~\ref{fig:figGFcomplexc}\input{figGFcomplexc}, for example, 
-shows how graph constructions can track the flow of 
-carriers and values between procedures: this graph-modeling 
-use-case (with additional illustrations) is discussed in greater 
-detail in an essay \cite{MePhaonIR} included in the data set.
-\q{Passing values between} procedures is
-then explicitly a family of relationships between nodes
-(or hypernodes) in disparate code-graphs, and the various semantic
-nuances associated with some such transfers (type casts, for example)
-can be directly modeled by edge-annotations.  Given these
-possibilities, I will now explore further how the framework of
-\i{carriers} and \i{channels} fits into a code-graph context.
+%\spsubsection{Addressability and Implementation}
+\subsection{Addressability and Implementation}
+\p{As \i{Intermediate} Representations, formal code models (including
+those based on \DH{}s) are not strictly
+identical to actual computer code as seen in source-code files.
+In particular, what appears to
+be a single function body may actually form multiple
+implementations via code templates (or even
+preprocessor macros).  Talk about polymorphism in a language like
+\Cpp{} covers several distinct language features: achieving
+code reuse by templating on type symbols is internally very different
+from using virtual methods calls.  The key difference \mdash{} highlighted
+by the contrast between runtime- and compile-time polymorphism \mdash{} is
+that there are some function implementations which actually
+compile to \i{single} functions, meaning in
+particular that their compiled code has a single place in memory and
+that they may be invoked through function pointers.  Conversely,
+what appears in written code as one function body may actually be
+duplicated, somewhere in the compiler workflow, generating multiple
+function values.  The most common cases of such duplication
+are templated code as discussed above (though there are
+more exotic options, e.g. via \Cpp{} macros and/or
+repeated file \codeinclude{}s).  Implementations of the first sort I will
+call \q{addressable}, whereas those of the second I will
+dub \q{multi-addressable}.  These concepts prove to be consequential
+in the abstract theory of types, although for non-obvious reasons.
 }
-\vspace{-.1em}
-%\spsubsection{Channel Groups and Code Graphs}
-\subsection{Channel Groups and Code Graphs}
-\p{For this discussion, assume that \fOne{} and \fTwo{} are implemented functions with
-code graphs \gammaOne{} and \gammaTwo{}, respectively.  Assume
-furthermore that some statement
-or expression in \fOne{} involves a call to \fTwo{}.  There are several specific
-cases that can obtain: the expression calling \fTwo{} may be nested in a
-larger expression; \fTwo{} may be called for its side effects alone,
-with no concern to its return value (if any); or the result of \fTwo{}
-may be bound to a symbol in \fOne{}'s scope, as in \yeqfx{}.  I'll take
-this third case as canonical; my discussion here extends to the other
-cases in a relatively straightforward manner.
+\p{To see why, consider first that type systems are intrinsically
+pluralistic: there are numerous details whereby the type system
+underlying one computing environment can differ from those employed
+by other environments.  These include differences in how types are
+composed from other types.  There is therefore no abstract vocabulary
+(including the language of mathematical type theory) that provides a
+neutral and complete way of describing types across systems.  Instead,
+each system has its own structure of multi-type aggregation, and
+so requires its own style of type description (mathematically, there is
+no one \q{Category} of types, but rather multiple candidate Categories
+with their own logic).  So there is no single, universal
+\q{Type Expression Language}: each type system has its
+own \TXL{} with subtly different features than others.
 }
-\p{A statement like \yeqfx{} has two parts: the expression \fx{} and the symbol
-\ySym{} to which the results of \fFun{} are assigned.  Assume that this
-statement occurs in the body of function \fOne{}; \xSym{} and
-\ySym{} are then symbols in \fOne{}'s scope and the symbol \fFun{} designates
-(or resolves to) a function which corresponds to what I refer to here as
-\fTwo{}.  Assume \fTwo{} has a signature like \fIntI{}  As such, the
-expression \fx{}, where \xSym{} is a carrier in the context of
-\fOne{}, describes a \i{carrier transfer} according to which the value
-of \xSym{} gets transferred to the carrier \iSym{} in \fTwo{}'s context.
+\p{By intent, I use \TXL{} to mean languages for describing types
+which \i{may} be implemented.  For example, if in \Cpp{} I
+assert \q{\templateTMyList{}}, it would then be consistent with
+a \Cpp{}-specific \TXL{}
+to describe a type as \MyListInt{} (which would presumably be
+some sort of list of integers, though of course naming hints about the
+intended use of a type
+have no bearing on how compilers and runtimes process it).  However,
+the type \MyListInt{} is not, without further code, actually implemented.
+It is a \i{possible} type because its description conforms to a relevant
+\TXL{}, but not an \i{actual} type.  If a programmer supplies
+a templated implementation for \TMyList{} (intended for multiple
+types \TType{}) then the compiler can derive a \q{specialization} of the
+template for a specific \TType{} \mdash{} or the programmer can specialize
+\MyList{} on a chosen type manually.  But in either case the actualization of
+\TMyList{} will depend on an implementation (either a templated implementation
+that works for multiple types or a specialization for a
+single type); this is separate and apart from \TMyList{} being
+a valid \i{expression} denoting a \i{possible} type.
 }
-\p{I will say that \fTwo{}'s signature represents a
-channel \q{complex} \mdash{} which, in the current example, has
-a \lambdach{} channel of size one (with one carrier of
-type \int{}) and a \returnch{} channel of size one (\fTwo{}
-returns one \int{}).  Considered in the context of carrier-transfers
-between code graphs, a channel complex may be regarded as a description
-of how two distinct code-graphs may be connected via carrier
-transfers.  When a function is called, there is a channel
-group which I'll call a \i{package} that supplies values to
-the channel \i{complex}.  In the concrete example, the
-statement \yeqfx{} is a \i{call site} describing a channel
-\i{package}, which becomes connected to a function
-implementation whose signature represents a channel
-\i{complex}: a collection of transfers \carrOneOpTransferTwo{}
-together describe an overall transfer between a
-\i{package} and a \i{complex}.
+\p{Once \TMyList{} is instantiated, for a particular \TType{}, there may be a
+constructor or initialization
+function that is \i{addressable}, either as one duplicate
+of a multi-addressable implementation or as the compilation of
+one non-templated function body.  Call a type \i{addressable} if it
+has at least one constructor
+(i.e., \q{value} or \q{data} constructor, a
+function which creates a value of a type from a literal
+or a value of a different type); and \i{multi-addressable} if it has
+at least one multi-addressable constructor or initializer: these
+terms can carry over from functions to types for which
+functions classified in these terms are constructors.\footnote{In this discussion I mostly skip over the technical detail that
+in \Cpp{}, at least, one cannot actually take the address of a
+constructor function; but this is related to \Cpp{}
+\q{constructors} having dual roles of allocating memory
+and initialization: we \i{can} take the address of an
+initialization function that would be analogous to a
+\q{pure} value constructor.
 }
-\p{More precisely, the \fx{} example represents a carrier transfer whose
-target is part of \fTwo{}'s \lambdach{} channel, which we can notate
-\carrOneOpTransferTwolambda{}.  Furthermore, the full statement \yeqfx{}
-shows a transfer in the opposite direction: the value in
-\fTwo{}'s \i{\returnch{}} channel is transferred to the carrier \ySym{} in
-the \i{package}.  This relation, involving a return
-channel, can be expressed with notation like \carrTwoOpTransferOnereturn{}.
-The syntax of a programming language governs how code at a call site
-supplies values for carrier transfers to and from a function body: in
-the current example, binding a call-result to a symbol always
-involves a transfer from a \i{\returnch{}} channel, whereas handling an
-exception via code like \catchexce{} transfers a value from a called
-function's \i{\exceptionch{}} channel.  The syntactic difference between
-code which takes values from \returnch{} and \exceptionch{} channels,
-respectively, helps reinforce the \i{semantic} difference between
-exceptions and \q{ordinary} returns.  Similarly, method-call syntax
-like \objfx{} visually separates the values that get transferred to a
-\q{\sigmach{}} channel (\obj{} in this case)
-from the \q{ordinary} (\lambdach{}) inputs, reinforcing Object semantics.
 }
-\p{To consolidate the terms I am using: we can interpret both function
-\i{signatures} and \i{calls} in terms of channels.  Both involve
-\q{carrier transfers} in which values are transferred \i{to} or \i{from}
-the channels described by a function signature.  I will say that 
-channels are \i{convoluted} if there is a potential carrier-transfer 
-between them.  The distinction between
-functions' \q{inputs} and \q{outputs} can be more rigorously stated,
-with this further background, as the distinction between channels
-in function signatures which receive values \i{from} carriers at
-a call site (inputs), and those \i{from which} values are obtained
-as a procedure has completed (outputs).
+\p{Addressability refers at one level, as the word suggests, to
+\q{taking the address} of functions (and accordingly to
+function-pointers); but here I also refer to a broader question of
+how functions can be designated from vantage points outside their
+immediate implementation \mdash{} code searches, scripting engines,
+\IDE{}-based code exploration, and other reflection-oriented
+use cases.  Language engines should try to minimize their
+reliance on \q{temporary function values} which are
+opaque to these reflection-oriented features.  And yet
+this can complicate the implementation of type-system features.
+To reiterate: the goal of
+\q{expressive} type systems is to define types,
+as necessary, narrowly enough to type-check granular procedure 
+requirements.
+The problem is that gatekeeper code induced by type-level
+expressiveness \mdash{} particularly code which is automatically
+generated \mdash{} can be opaque to extra-linguistic environments
+like \IDE{}s and scripting engines.
 }
-\p{A Channel Expression Language (\CXL{}) can describe channels both in
-signatures and at call-sites.  The aggregation of channels generically
-described by \CXL{} expressions I am calling a \i{Channel Group}.
-A Channel Group representing a function \i{signature} I am calling
-a \i{Channel Complex}, whereas groups representing a function
-\i{call} I am calling a \i{Channel Package}.  Input channels
-are then those whose carrier transfers occur in the package-to-complex
-direction, whereas output channels are the converse.
+\p{For example, suppose certification
+requires that the function which displays the gas level on a car's dashboard
+never attempts to display a value above \litOH{} (intended to mean \q{One Hundred percent},
+or completely full).  One way to ensure this specification is to declare
+the function as taking a \i{type} which, by design, will only ever include
+whole numbers in the range \ZeroToOneHundred{}.  Thus, a type system may support
+such a type by including in its \TXL{} notation for \q{range-delimited} types,
+types derived from other types by declaring a fixed range of allowed values.
+A notation might be, say, \IntZToOH{}, for integers in the \ZeroToOneHundred{}
+range \mdash{} or, more generally expressions like \TVOneToVTwo{}, meaning a \i{type} derived
+from \TType{} but restricted to the range spanned by \VOne{} and \VTwo{} (assumed to be
+values of \TType{} \mdash{} notice that a \TXL{} supporting this notation must
+consequently support some notation of specific values, like numeric literals).
+This is a reasonable and, for programmers, potentially convenient type description.
 }
-\p{In addition to the package/complex distinction, we can also
-understand Channel Groups at two further levels.  On the one hand,
-we can treat Channel Groups as found \i{in source code},
-where they describe the general pattern of package/complex
-transfers.  On the other hand, we can represent Channel Groups
-\i{at runtime} in terms of the actual values and types held by
-carriers as transfers are effectuated prior to, and then
-after, execution of the called function.  Accordingly,
-each Channel Group may be classified as a \i{compile-time}
-package or complex, or a \i{runtime} package or complex, respectively.
-The code accompanying this chapter includes a \q{Channel Group library}
-\mdash{} for creating and analyzing Channel Groups via a special
-Intermediate Representation \mdash{}
-that represents groups of each variety, so it can be used
-both for static analysis and for enhanced runtimes and scripting.
+\p{For a language designer, however, it raises questions.  What should happen if
+someone tries to construct an \IntZToOH{} value with the number, say,
+\litOHO{}?  How should the range-test code be exposed for
+reflection (is it a separate function; is it a regular
+function-typed value or some alternative data structure, and
+how does that affect its external designating)?  What if the
+number comes from a location that
+opaque to the language engine, like a web \API{}: should the compiler assume
+that the \API{} is curated to the same specifications as the present code or
+should it report that there is no way to verify that the declared \IntZToOH{} type
+is being used correctly?  Moreover, would such choices lead to
+behind-the-scenes, perhaps auto-generated code which is hard to
+wrangle for reflection and development tools?
+Are the benefits of automated gatekeeping worth the risk of
+codewriters' mental disconnect with language internals?
+Given these questions, it is reasonable for a language
+designer to \i{allow} certain sorts of types to be described, but programmers
+must explicitly implement them for the types to be actualized and available
+for use in programs.  Therefore there is a difference between a
+\i{described} type and an \i{actual} type, and the key criterion of actual
+types is an addressable value constructor.  So the crucial
+step for type-theoretic design promoting desired software qualities, like
+safety and reliability, is to successfully pair the \i{description} of types
+which have desirable levels of specification and granularity, with the
+\i{implementation} of types that realize the design patterns promised by
+their description.  In some cases the description must become
+more complex and nuanced to make implementation feasible.
 }
-\p{This formal channel/group/complex/package/carrier vocabulary codifies
-what are to some degree common-sense frameworks through which programmers
-reason about computer code.  This descriptive
-framework (I would argue) more effectively integrates the
-\i{semantic} and \i{syntactic} dimensions of source code and program
-execution.  Specifically, on the \i{semantic} side, 
-computer programs can be understood in
-terms of \mOldLambda{}-Calculi combined with
-models of computation (call-by-value or
-by-reference, eager and lazy evaluation, and so forth).  These
-semantic analyses focus on how values change and are passed between
-functions during the course of a running program.  From this
-perspective, source code is analyzed in terms of the semantics
-of the program it describes: what are the semantic patterns and
-specifications that can be predicted of running programs on the
-basis of source code in itself?
-}
-\p{Conversely, source code
-can also be approached \i{syntactically}, as well-formed
-expressions of a technical language.  From this perspective,
-correct source code can be matched against language grammars and,
-against this background, individual code elements
-(like tokens, code blocks, expressions, and statements) \mdash{} and
-their inter-relationships \mdash{} may be identified.
-}
-\p{The theory of Channel Groups straddles both the semantic and syntactic
-dimensions of computer code.  Semantically, carrier-transfers capture the
-fundamental building blocks of program semantics: the overall
-evolving runtime state of a program can be modeled as a succession
-of carrier-transfers, each involving specific typed values plus
-code-graph node-pairs, marking
-code-points bridged via a transfer.  Meanwhile,
-syntactically, how carriers belong to channels \mdash{}
-the carrier-to-channel map fixing carriers' semantics \mdash{} structures and
-motivates languages' grammars and rules.  In particular,
-carrier-transfers induce relationships between code-graph nodes.
-As a result, language
-grammars can be studied through code-graphs' profiles
-insofar as they satisfy \RDF{}
-and/or \DH{} Ontologies.
-}
-\p{In sum, a \DH{} and/or Semantic Web representation of computer code
-can be a foundation for both semantic and syntactic analyses, and this
-may be considered a benefit of Channel Group representations
-even if they only restate what are established semantic patterns
-mainstream programming language \mdash{} for example, even if they
-are restricted to a \sigmach{}-\lambdach{}-\returnch{}-\exceptionch{}
-Channel Algebra modeled around, say, \Cpp{} semantics
-prior to \CppEleven{} (more recent \Cpp{} standards also call for
-a \q{\capturech{}} channel for inline anonymous functions).
-}
-\p{At the same time, one of my claims in this chapter is that
-more complex Channel Algebras can lead to new tactics for
-introducing more expressive type-theoretic semantics in
-mainstream programming environments.  As such, most of the
-rest of this section will explore additional Channel Kinds
-and associated Channel Groups which extend, in addition
-to merely codifying, mainstream languages' syntax and semantics.
+\p{Range-bounded types are a good example of types which can be succinctly
+\i{described} but face complications when being concretely
+implemented.  They are therefore a good example of
+the potential contrast between \i{possible} and \i{actual} types.
+I will examine this distinction in more detail and
+then return to range-bounded types as a demonstrative example.
 }
