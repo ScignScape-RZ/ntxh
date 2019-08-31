@@ -1,245 +1,5 @@
-\section{Gatekeeper Code}
+\section{Case Studies}
 \phantomsection\label{sOne}
-\p{There are several design principles which can help ensure 
-safety in large-scale, native/desktop-style \GUI{}-based 
-applications.  These include:
-\begin{enumerate}\item{}  Identify operational relationships between types.  
-Suppose \calS{} is a data structure modeled via type \caltypeT{}.  
-This type can then be associated with a type (say, 
-\typeTp{}) of \GUI{} components which visually display 
-values of type \caltypeT{}.  A simple data structure 
-may have \GUI{} representation via small \q{widgets} 
-embedded in other components (consider a thermometer icon 
-to display temperature).  Conversely, if \calS{} has many component 
-parts, its corresponding \GUI{} type may need to span its 
-own application window, with a collection of nested textual 
-or graphical elements.  There may also be a type 
-(say, \typeTpp{}) representing \caltypeT{}-values in a format 
-suitable for database persistence.  Application code should 
-explicitly indicate these sorts of inter-type relationships.
-\item{}  Identify coding assumptions which determine the validity 
-of typed values and of function calls.  For each 
-application-specific data type, consider whether every 
-computationally possible instance of that type is actually 
-meaningful for the real-world domain which the type represents.  
-For instance, a type representing blood pressure has a subset 
-of values which are biologically meaningful \mdash{} where systolic 
-pressure is greater than diastolic and where both numbers are 
-in a sensible range.  Likewise, for every procedure defined 
-on application-specific data types, consider whether the procedure 
-might receive arguments that are computationally feasible but 
-empirically nonsensical.  Then, establish a protocol for 
-acting upon erroneous data values or procedure parameters.  
-How should the error be handled, without disrupting the 
-overall application?
-\item{}  Identify points in the code base which represent new data 
-being introduced into the application, or code which can materially 
-affect the \q{outside world}.  Most of the code behind \GUI{} 
-software will manage data being transferred between different 
-parts of the system, internally.  However, there will be 
-specific code sites \mdash{} e.g., specific procedures \mdash{} which 
-receive new data from external sources, or respond to 
-external signals.  A simple example is, for desktop applications, 
-the preliminary code which runs when users click a mouse button.  
-In the CyberPhysical context, an example might be code which 
-is activated when motion-detector sensors signal something moving 
-in their vicinity.  These are the \q{surface} points where data 
-\q{enters the system}.
-\pseudoIndent{}
-Conversely, other code points localize 
-the software's capabilities to initiate external effects.  For 
-instance, one consequence of users clicking a mouse button might 
-be that the on-screen cursor changes shape.  Or, motion detection 
-might trigger lights to be turned on.  In these cases the software 
-is hooked up to external devices which have tangible capabilities, 
-such as activating a light-source or modifying the on-screen cursor.  
-The specific code points which leverage such capabilities 
-represent data \q{leaving the system}.  
-\pseudoIndent{}
-In general, it is important to identify points where data 
-\q{enters} and \q{leaves} the system, and to distinguish 
-these points from sites where data is transferred 
-\q{inside} the application.  This helps ensure that 
-incoming data and external effects are properly vetted.  
-Several mathematical frameworks have been developed 
-which codify the intuition of software components as 
-\q{systems} with external data sources and effects, 
-extending the model of software as self-contained 
-information spaces: notably, Functional-Reactive Programming 
-(see e.g. \cite{WolfgangJeltsch}, \cite{JenniferPaykin},
-\cite{PaykinKrishnaswami}) and the theory of
-Hypergraph Categories 
-(\cite{InteractingConceptualSpaces}, \cite{BrendanFong}, 
-\cite{BrendanFongThesis}, \cite{AleksKissinger}). 
-\end{enumerate}
-Methods I propose in this chapter are applicable to each 
-of these concerns, but for purposes of exposition I 
-will focus on the second issue: testing 
-type instances and procedure parameters for fine-grained 
-specifications (more precise than strong typing alone). 
-}
-\p{Strongly-typed programming language offer some guarantees on 
-types and procedures: a function which takes an integer will 
-never be called on a value that is \i{not} an integer 
-(e.g., the character-string \q{\lclc{46}} instead of the \i{number} 
-\lclc{46}).  Likewise, a type where one field is an integer 
-(representing someone's age, say), will never be instantiated 
-with something \i{other than} an integer in that field.  
-Such minimal guarantees, however, are too coarse for 
-safety-conscious programming.  Even the smallest 
-(8-bit) unsigned integer type would permit someone's age to 
-be \lclc{255} years, which is surely an error.  So any 
-safety-conscious code dealing with ages needs to check that 
-the numbers fall in a range narrower than built-in 
-types allow on their own, or to ensure that such checks are 
-performed ahead of time.   
-}
-\p{The central technical challenge of safety-conscious coding 
-is therefore to \i{extend} or \i{complement} each programming 
-languages' built-in type system so as to represent 
-more fine-grained assumptions and specifications.  
-While individual tests may seem straightforward on a 
-local level, a consistent 
-data-verification architecture \mdash{} how this coding dimension 
-integrates with the totality of software features and 
-responsibility \mdash{} can be much more complicated.  
-Developers need to consider several overarching questions, 
-such as: 
-\begin{itemize}\item{} Should data validation be included in the same 
-procedures which operate on (validated) data, or 
-should validation be factored into separate procedures?
-\item{} Should data validation be implemented at the type 
-level or the procedural level?  That is, should specialized 
-data types be implemented that are guaranteed only to 
-hold valid data?  Or should procedures work with more 
-generic data types, and perform validations on a case-by-case 
-basis?
-\item{} How should incorrect data be handled?  In CyberPhysical software, 
-there may be no obvious way to abort an operation in the 
-presence of corrupt data.  Terminating the application may not be 
-an option; silently canceling the desired operation or trying to substitute 
-\q{correct} or \q{default} data may be unwise; and 
-presenting technical error messages to human users may be confusing.  
-\end{itemize}
-These questions do not have simple answers.  As such, we 
-should develop a rigorous theoretical framework so as to 
-codify the various options involved \mdash{} what architectural 
-decisions can be made, and what are the strengths and weaknesses 
-of different solutions.
-}
-\p{This section will sketch an overview of the data-validation 
-issues from the broader vantage of planning and stakeholder 
-expectations, before addressing narrower programming concerns
-in subsequent sections.
-} 
-\subsection{Gatekeeper Code and Fragile Code}
-\p{I will use the term \i{gatekeeper code} for any code which checks 
-programming assumptions more fine-grained than strong typing 
-alone allows \mdash{} for example, that someone's age is not reported 
-as \lclc{255} years, or that systolic pressure is not recorded as 
-less than diastolic.  I will use the term \i{fragile code} for
-code which \i{makes} programming assumptions \i{without itself} 
-verifying that such assumptions are obeyed.  Fragile code is 
-especially consequential when incorrect data would cause the 
-code to fail significantly \mdash{} to crash the application, 
-enter an infinite loop, or any other nonrecoverable scenario.
-}
-\p{Note that \q{fragile} is not a term of criticism \mdash{} some algorithms 
-simply work on a restricted space of values, and it is inevitable 
-that code implementing such algorithms will only behave properly 
-when provided values with the requisite properties.  It is necessary 
-to ensure that such algorithms are \i{only} called with 
-correct data.  But insofar as testing of the data lies outside 
-the algorithms themselves, the proper validation has to occur 
-\i{before} the algorithms commence.  In short, \i{fragile} and
-\i{gatekeeper} code often has to be paired off: for each 
-segment of fragile code which \i{makes} assumptions, there should 
-be a corresponding segment of gatekeeper code which
-\i{checks} those assumptions.  
-}
-\p{In that general outline, however, there is room for a variety 
-of coding styles and paradigms.  Perhaps these can be broadly 
-classified into three groups: 
-\begin{enumerate}\item{} Combine gatekeeper and fragile code in one procedure.
-\item{} Separate gatekeeper and fragile code into different procedures.
-\item{} Implement narrower types so that gatekeeper code is 
-called when types are first instantiated.
-\end{enumerate}
-Consider a function which calculates the difference between 
-systolic and diastolic blood pressure, returning an unsigned
-integer.  If this code were called with malformed data wherein 
-systolic and diastolic are inverted, the difference would 
-be a negative number, which (under binary conversion to an 
-unsigned integer) would come out as a potentially 
-extremely large positive number (as if the patient had 
-blood pressure in, say, the tens-of-thousands).  This nonsensical 
-outcome indicates that the basic calculation is fragile.  
-We then have three options: test \q{systolic-greater-than 
-diastolic} \i{within the procedure}; require that this test 
-be performed prior to the procedure being called; 
-or use a special data structure configured such that 
-systolic-over-diastolic can be confirmed as soon as 
-any blood-pressure value is constructed in the system.
-}
-\p{There are strengths and weaknesses of each option.  
-Checking parameters at the start of a procedure makes 
-code more complex and harder to maintain, and also 
-makes updating the code more difficult.  The 
-blood-pressure case is a simple example, but in real 
-situations there may be more complex data-validation 
-requirements, and separating code which \i{checks} 
-data from code which \i{uses} data, into different 
-procedures, may simplify subsequent code maintenance.
-If the \i{validation} code needs to be modified 
-\mdash{} and if it is factored into its its own procedure \mdash{}  
-this can be done without modifying the 
-code which actually works on the data (reducing the 
-risk of new coding errors).  In short, factoring 
-\i{gatekeeper} and \i{fragile} code into separate 
-procedures exemplifies the programming principle of 
-\q{separation of concerns}.  On the other hand, 
-such separation creates a new problem of ensuring that 
-the gatekeeping procedure is always called.  
-Meanwhile, using special-purpose, narrowed data types 
-adds complexity to the overall software if these data types
-are unique to that one code base, and therefore 
-incommensurate with data provided by external sources.  
-In these situations the software must transform data between 
-more generic and more specific representations before 
-sharing it (as sender or receiver), which makes 
-the code more complicated.  
-} 
-\p{In this preliminary discussion I refrain from any concrete 
-analysis of the coding or type-theoretic models that 
-can shed light on these options; I merely want to 
-identify the kinds of questions which need to be 
-addressed in preparation for a software project, 
-particularly in the CyberPhysical domain.  
-Ideally, protocols for pairing up fragile and 
-gatekeeper code should be consistent through the code base. 
-}
-\p{In the specific CyberPhysical context, gatekeeping is especially 
-important when working with device data.  Such data is 
-almost always constrained by the physical construction of 
-devices and the kinds of physical quantities they measure 
-(if they are sensors) or their physical capabilities 
-(if they are \q{actuators}, devices that cause changes in their 
-environments).  For sensors, it is an empirical question what 
-range of values can be expected from properly functioning 
-devices (and therefore what validations can check that the 
-device is working as intended).  For actuators, it should 
-be similarly understood what range of values guarantee 
-safe, correct behavior.  For any device then we can 
-construct a \i{profile} \mdash{} an abstract, mathematical 
-picture of the space of \q{normal} values associated with 
-proper device performance.  Gatekeeping code can 
-then ensure that data received from or sent to devices 
-fits within the profile.  Defining device profiles, and 
-explicitly notating the corresponding gatekeeping code, 
-should therefore be an essential pre-implementation planning 
-step for CyberPhysical software hubs.  
-}
-\subsection{Case Studies}
 \p{To motivate the themes I will emphasize going forward, 
 this section will examine some concrete data models 
 which are used or proposed in various CyberPhysical contexts. 
@@ -341,7 +101,7 @@ whole data package integrates geometric, CyberPhysical,
 and health-record aspects. 
 \item[Speech Sampling]  Audio sensors can be used to 
 isolate different people's speech episodes (see Raju Alluri 
-and Anil Kumar Vuppala, this volume, and 
+and Anil Kumar Vuppala, this volume; and
 Ravi Kumar Vuddagiri \textit{et. al.}, this volume).  Feature 
 extraction cancels background noise and partitions the foreground 
 audio into different segments, individuated (potentially) by 
@@ -350,7 +110,8 @@ speaker's conversation turns.  Such data can
 then be employed in several ways.  Ant\'onio Teixera's chapter 
 (\textit{et. al.}, this volume) discusses 
 speech-activated User Interfaces for 
-software, while the prior two chapters present methodology for 
+software, while the previous two chapters mentioned above
+present methodology for
 estimating speakers' emotional states and 
 identifying samples' spoken language or dialect, 
 respectively.
@@ -384,7 +145,7 @@ geospatial model of language-use in a given area.
 (at least up to the point where acoustical analysis 
 gives way to syntax and semantics), 
 audio samples can be used to track and identify 
-species (Todor Ganchev, this volume, and Boulmaiz, \textit{et. al.}, 
+species (Todor Ganchev, this volume; and Boulmaiz, \textit{et. al.},
 this volume).  Here again feature 
 extraction foregrounds certain noise patterns, but the 
 main analytic objective is to map audio samples to 
@@ -569,9 +330,9 @@ We can imagine future \mbox{homes/apartments} provisioned with a panoply
 of devices evincing a broad spectrum of scientific backgrounds, 
 from biology and medicine to ecology and industrial manufacturing.      
 }
-\subsubsection[How Internet of Things Interoperability
+\subsection[How Internet of Things Interoperability
 Affects Data Modeling Priorities]{How \q{Internet of Things} Interoperability Affects Data Modeling Priorities}
-\p{So, imagine the following scenario: homeowners have a choice 
+\p{So, let's imagine the following scenario: homeowners have a choice
 of applications that they may install on their in-home computers, 
 supplied by multiple vendors or institutions, which access 
 the myriad of Smart Home devices they've installed around the 
@@ -662,7 +423,9 @@ deployed technology in general \mdash{} safety,
 data integration, \HCI{} \mdash{} software applications 
 should act as a common reference-point between 
 consumers, companies, and academic or regulatory 
-communities.  Applications can transparently 
+communities.
+}
+\p{Applications can transparently
 demonstrate the capabilities and vulnerabilities 
 of technology in each iteration, encapsulating scientific 
 or technical models into condensates which are 
@@ -704,25 +467,27 @@ work well in a software-centric milieu.
 \p{All of this calls for carefully designed protocols, where 
 devices not only expose data but do so in a manner
 conducive to centralized aggregation.  The role of a 
-software hub is not only to receive data, but to 
+software hub should be not only to receive data, but to
 transform multi-domain signals into a common 
-graphical presentation, as well as wrangle received data into 
-a common format permitting integration algorithms \mdash{} 
-e.g. syncing speech and biometrics \mdash{} to operate.  
+graphical presentation.  It should also wrangle received data
+into a common format permitting integration algorithms \mdash{}
+e.g. syncing speech and biometrics \mdash{} to operate properly.
 Received device data must therefore be systematically 
 mapped to appropriate transform procedures and 
-\GUI{} components.  This is an important point, because 
+\GUI{} components.  This is important because
 we are no longer considering data models from the viewpoint 
-of devices' own capabilities \mdash{} their specific physical 
-measurements and parameters.  More technically, the 
-key libraries associated with drivers are no longer 
-just low-level drivers or \IoT{} signal processors; 
-the technology stack needs a software-prioritizing 
-semantic layer intermediate between \q{smart objects} 
+of devices' own capabilities (viz., their specific physical
+measurements and parameters).
+%In the context of hub applications,
+More technically, the
+key libraries associated with devices are no longer
+merely low-level drivers or \IoT{} signal processors.
+Instead, the technology stack would include a software-prioritizing
+intermediate semantic layer acting between \q{smart objects}
 and corresponding hub applications.
 The data models at this semantic midlayer, in short, 
-are no longer device-centric.  Instead, data models are 
-now assessed in a software-centric milieu: how do we 
+would no longer be device-centric.  Instead, data models would
+now be assessed in a software-centric milieu: how do we
 route device data to proper interpretive procedures?  
 How do we consolidate device data into \GUI{} presentations?     
 }
@@ -736,7 +501,8 @@ displaying device state for human users.  Meanwhile, overarching
 from multiple device classes, perhaps using a common base 
 class representing \q{graphical device presentations} in the abstract.  
 Device data is then routed to distinct \Cpp{} classes, and 
-subsequently \GUI{} classes.  These Object-Oriented protocols are foregrounded in 
+subsequently \GUI{} classes.  Even
+though these Object-Oriented protocols are foregrounded in
 the hub software, but the point is that such software architecture 
 retroactively should influence device constructions themselves.  
 For devices to be used with an integrated smart home platform, 
@@ -752,22 +518,22 @@ common representational formats is only a minimal foundation
 for robust software ecosystems.  I would argue that 
 engineers have overemphasized the virtues of standardized 
 representations in general, driven perhaps by the press 
-surrounding mechanisms like \XML{} or \RDF{}.  There is 
-nothing wrong with widely-adopted formats, but how 
-data is \i{encoded} is tangential to the primary goal 
-of networked software, which is to route shared data 
+surrounding mechanisms like \XML{} or \RDF{}.  While there is
+nothing wrong with widely-adopted formats, how
+data is \i{encoded} is, in essence, tangential to the primary goal
+of networked software \mdash{} which is to route shared data
 to the proper procedures and \HCI{} protocols.  In 
-a Smart Home case, once we commit to aggregating devices 
+the case of a Smart Home, once we commit to aggregating devices
 via a software hub, the key organizing principle is 
 a mesh of procedures implemented in the hub application 
 that can pool all relevant devices into one information 
 space.  What needs to be standardized then are not 
-so much data \i{formats}, but data-handling 
+so much data \i{formats}, but in fact data-handling
 \i{procedures}.  
 }
 \p{To put it differently, device manufacturers would now be dealing 
 with an ecosystem in which hub applications receive and 
-aggregate their data, providing users access points to and 
+aggregate their data, affording users access points to and
 overviews of device data and state.  Hub applications may be 
 provided by different companies and iterations, 
 their inner workings opaque to devices themselves.  What 
@@ -806,9 +572,8 @@ high-quality CyberPhysical technology that
 serves the ultimate goal of integrated Smart Home 
 (and Smart City, etc.) solutions. 
 }
-\p{Nevertheless, engineers have not apparently adopted 
-such a procedure-focused and software-centric paradigm 
-to this point.  There are a lot more academic papers on 
+\p{That hypothesis notwithstanding,
+there are a lot more academic papers on
 CyberPhysical Ontologies or common signal/message formats, 
 like \CoAP{} and \MQTT{} (\cite{FirasAlbalas}, 
 \cite{BadisDjamaa}, \cite{RiccardoGiambona}, 
@@ -861,27 +626,27 @@ Ontologies which, due to a lack of type-level
 correspondence between modeling and programming 
 paradigms, are siloed from implementations themselves.
 }
-\p{In this chapter, conversely, in lieu of \q{data-centric} 
+\p{Conversely, in lieu of \q{data-centric}
 Ontologies whose mission is to standardize how information 
-is mapped to a \i{representation}, I will consider 
-\q{Procedural} 
+is mapped to a \i{representation}, in this chapter
+I will consider \q{Procedural}
 Ontologies: ones which focus on procedural capabilities and 
 requirements that indicate whether software components 
 are properly managing (e.g., CyberPhysical) data.  The 
 idea is that proving procedural conformance should be a 
 central step, and an organizing groundwork, for 
-showing that software due for production deployment 
+showing that software intended for production deployment
 is trustworthy and complies to technical and legal specifications.
 }
 \p{In practical terms, the above discussion mentioned the CLO-43SD  
 (avian) data set and Vuddagiri \i{et. al.}'s 
 chapter, which (as noted below) builds off 
 the AP17-OLR \q{challenge} corpus.  I will also 
-refer to recent \CoNLL{} corpora, so 
-these are three representative examples of 
+be referring to recent \CoNLL{} corpora.  So, together,
+these constitute three representative examples of
 data sets tangibly applicable to CyberPhysical and/or 
 \NLP{} Research and Development: one audio-based 
-(for species identification), one audio/speech, 
+(for species identification); one audio/speech;
 and one linguistic.  Based on the idea that 
 \RnD{} data sets should germinate deployment data models, 
 we should look to data sets like these 
@@ -897,55 +662,22 @@ The demo code presents examples
 of procedures and data types targeting these 
 data sets, as well as an architecture for 
 deploying data sets in a procedure-oriented and 
-software-centric manner, in terms of how files 
-and the information they contain are organized, 
-and also employment of data-publishing standards 
+software-centric manner, in terms of how files
+and the information they contain are organized,
+and in terms of employment of data-publishing standards
 such as the \q{Research Object} model 
 (\cite{KhalidBelhajjame}, \cite{KhalidBelhajjameWorkflow},
-\cite{PhilipEBourne}, \cite{MarkDWilkinson}). 
+\cite{PhilipEBourne}, 
+\cite{KatrinaFenlon},
+\cite{MarkDWilkinson}). 
 }
-\p{Alongside these demo sets, an addition demonstrative 
-example is provided addressing biomedical device profiles 
-and patient data (including privacy and security concerns).  
-The focus of these examples is more architectural: 
-\Cpp{} classes are organized to partition patient-specific 
-data points into multiple layers (such as private data,
-demographic data, and \q{cohort models} in the sense 
-of \cite{EranBellin} which permit detailed course-of-treatment 
-and treatment outcomes to be represented without sacrificing 
-privacy), along with encryption techniques for the most 
-sensitive infomation layers.  The implementation 
-demonstrates methods for sharing medically significant 
-data with some degree of detail while also constraining 
-access to secure layers within that data as necessary, 
-illustrating how \GUI{}-based applications can both 
-adapt to the lack of securitized data as well as 
-proper protocols for accessing those layers.  The demo 
-also prototypes integration of patient-centric layers 
-with biomedical device profiles, so that the abovementioned 
-patient information models can be leveraged in the 
-context of software managing CyberPhysical health data 
-(including \q{Ubiquitous Sensing for Healthcare}-style 
-input streams). 
-}
-\p{Software-centric modeling such as prototyped in 
-these demo implementations is not always a priority 
-of data set publishers \mdash{} which suggests that new 
-data publishing methodology is one non-theoretical  
-step that engineers could take toward 
-a more robust CyberPhysical software-development ecosystem.  
-I hope to show by reworking the data sets how 
-\RnD{} models can propagate to procedure-oriented 
-and software-centric \q{semantic middleware} layers, 
-which ultimately streamline the end-goal of achieving 
-safe, reliable CyberPhysical applications.
-}
-\p{In particular, to make this discussion more concrete, 
-I will examine in 
+\p{At present, to make these issues more concrete
+with further case-studies,
+in this introductory discussion I will examine in
 more detail the specific case of speech and language 
 data structures.
 }
-\subsubsection{Linguistic Case-Study}
+\subsection{Linguistic Case-Study}
 \p{Establishing data models for deployed technology 
 is certainly part of the Research and Development 
 cycle, which means that data profiles tend 
@@ -1219,6 +951,8 @@ developing more abstract or theoretical models
 of procedures, as formal constructions, subsequently 
 in the chapter. 
 }
+\input{profiles}
+\vspace{-.1em}
 %\spsubsection{Proactive Design}
 \subsection{Proactive Design}
 \p{I have thus far argued that applications
@@ -1262,7 +996,6 @@ input, that can be shared between software components
 (within hub applications and/or between hubs and 
 middleware).
 }
-\input{profiles}
 \p{These data profiles need to be integrated with CyberPhysical code from a
 perspective that cuts across multiple dimensions of project scale and
 lifetime.  Do we design for biaxial or triaxial accelerometers, or both,
@@ -1349,378 +1082,4 @@ functions handling \USH{} devices are inherently fragile,
 the overall system needs extensive and openly documented
 gatekeeping code that both validates their input/output and controls
 access to potentially sensitive patient data.
-}
-\thindecoline{}
-\p{Fragile code is not necessarily a sign of poor design.  Sometimes
-implementations can be optimized for special circumstances, and
-optimizations are valuable and should be used wherever possible.  Consider an
-optimized algorithm that works with two lists that must be the same size.
-Such an algorithm should be preferred over a less efficient
-one whenever possible \mdash{} which is to say, whenever dealing with two
-lists which are indeed the same size.  Suppose this algorithm is
-included in an open-source library intended to be shared among many different
-projects.  The library's engineer might, quite reasonably, deliberately
-choose not to check that the algorithm is invoked on same-sized lists
-\mdash{} checks that would complicate the code, and sometimes slow the
-algorithm unnecessarily.  It is then the responsibility of code that
-\i{calls} whatever procedure implements the algorithm to ensure that it
-is being employed correctly \mdash{} specifically, that this
-\q{client} code does \i{not} try
-to use the algorithm with \i{different-sized} lists.  Here \q{fragility} is
-probably well-motivated: accepting that algorithms are sometimes
-implemented in fragile code can make the code cleaner, its intentions
-clearer, and permits their being optimized for speed.
-}
-\p{The opposite of fragile code is sometimes called \q{robust} code.
-While robustness is desirable in principle, code which simplistically
-avoids fragility may be harder to maintain than deliberately fragile but
-carefully documented code.  Robust code often has to check for many
-conditions to ensure that it is being used properly, which can make
-the code harder to maintain and understand.  The hypothetical
-algorithm that I contemplated last paragraph
-could be made robust by \i{checking}
-(rather than just \i{assuming}) that it is invoked with same-sized lists.
-But if it has other requirements \mdash{} that the lists are non-empty,
-and so forth \mdash{} the implementation can get padded with a chain of
-preliminary \q{gatekeeper} code.  In such cases the gatekeeper
-code may be better factored into a different procedure, or expressed
-as a specification which engineers must study before attempting to
-use the implementation itself.
-}
-\p{Such transparent declaration of coding assumptions and specifications can
-inspire developers using the code to proceed attentively,
-which can be safer in the long run than trying to avoid fragile code
-through engineering alone.  The takeaway is that while \q{robust} is
-contrasted with \q{fragile} at the smallest scales (such as
-a single procedure), the overall goal is systems and components that are robust at the
-largest scale \mdash{} which often means accepting \i{locally} fragile
-code.  Architecturally, the ideal design may combine
-individual, \i{locally fragile} units with rigorous documentation and gatekeeping.
-So defining and declaring specifications is
-an intrinsic part of implementing code bases which are both robust
-and maintainable.
-}
-\p{Unfortunately, specifications are often created
-only as human-readable documents, which might have a semi-formal
-structure but are not actually machine-readable.
-There is then a disconnect between features \i{in the code itself} that
-promote robustness, and specifications intended for \i{human} readers
-\mdash{} developers and engineers.  The code-level and
-human-level features promoting robustness will tend to overlap partially
-but not completely, demanding a complex evaluation of where gatekeeping
-code is needed and how to double-check via
-unit tests and other post-implementation examinations.  This is the
-kind of situation \mdash{} an impasse, or partial but incomplete overlap,
-between formal and semi-formal specifications \mdash{} which many programmers
-hope to avoid via strong type systems.
-}
-\p{Most programming language will provide some basic (typically relatively
-coarse-grained) specification semantics, usually
-through type systems and straightforward code observations
-(like compiler warnings about unused or uninitialized variables).
-For sake of discussion, assume that all languages have distinct
-compile-time and run-time stages (though these may be opaque to
-the codewriter).  We can therefore distinguish compile-time
-tests/errors from run-time tests and errors/exceptions.
-Via Software Language Engineering, we can study
-questions like: how
-should code requirements be expressed?  How and to
-what extent should requirements be tested by the language
-engine itself \mdash{} and beyond that how can the language help coders implement
-more sophisticated gatekeepers than the language natively offers?
-What checks can and should be compile-time or run-time?  How
-does \q{gatekeeping} integrate with the overall semantics and
-syntax of a language?
-}
-\p{Given the maxim that
-procedures should have single and narrow roles \mdash{} \q{separation 
-of concerns} \mdash{} note that \i{validating} input
-is actually a different role than \i{doing} calculations.  This is 
-why procedures with fine requirements might be split into two: a
-gatekeeper that validates input before a fragile procedure is called,
-separate and apart from that procedure's own implementation.
-A related idea is overloading fragile procedures: for example,
-a function which takes one value can be overloaded in terms
-of whether the value fits in some prespecified range.  These two
-can be combined: gatekeepers can test inputs and call one of several
-overloaded functions, based on which overload's specifications are
-satisfied by the input.
-}
-\p{But despite their potential elegance, mainstream programming languages
-do not supply much language-level support for expressing
-groups of fine-grained functions along these lines.  Advanced 
-type-theoretic constructs \mdash{} including Dependent Types,
-typestate, and effect-systems \mdash{} model requirements with more precision
-than can be achieved via conventional type systems alone.  Integrating these
-paradigms into core-language type systems permits data validation 
-to be integrated with general-purpose type checking, without the need for
-static analyzers or other \q{third party} tools (that is, projects maintained
-orthogonally to the actual language engineering; i.e., to
-compiler and runtime implementations).  Unfortunately, 
-these advanced type systems are also more complex to implement.  
-If software language engineers aspire to make Dependent Types and 
-similar advanced constructs part of their core language, 
-creating compilers and runtime engines for these languages 
-becomes proportionately more difficult.
-} 
-\p{If these observations are correct, I maintain that it is a worthwhile
-endeavor to return to the theoretical drawing board, with the goal 
-of improving programming language technology itself.  
-Programming languages are, at one level, artificial 
-\i{languages} \mdash{} they allow humans to communicate 
-algorithms and procedures to computer processors, and 
-to one another.  But programming languages are also 
-themselves engineering artifacts.  It is a complex
-project to transform textual source-code \mdash{} which is 
-human-readable and looks a little bit like natural 
-language \mdash{} into binary instructions that computers 
-can execute.  For each language, there is a stack 
-of tools \mdash{} parsers, compilers, and/or runtime libraries 
-\mdash{} which enable source code to be executed 
-according to the language specifications.  
-Language design is therefore constrained by 
-what is technically feasible for these supporting tools.  
-Practical language design, then, is an interdisciplinary 
-process which needs to consider both the dimension of 
-programming languages as communicative media and 
-as digital artifacts with their own engineering challenges 
-and limitations.
-}
-%\spsubsection{Core Language vs. External Tools}
-\subsection{Core Language vs. External Tools}
-\p{Because of programming languages' engineering limitations, 
-such as I just outlined, software projects should not 
-necessarily rely on core-language features for 
-responsible, safety-conscious programming.
-Academic and experimental languages tend to have 
-more advanced features, and to embody more 
-cutting-edge language engineering, compared to mainstream 
-programming languages.  However, it is not always feasible 
-or desirable to implement important software with 
-experimental, non-mainstream languages.  By their nature, 
-such projects tend to produce code that must be understood by 
-many different developers and must remain usable years into 
-the future.  These requirements point toward 
-well-established, mainstream languages \mdash{} and 
-mainstream development techniques overall \mdash{} as opposed to 
-unfamiliar and experimental methodologies, even if those 
-methodologies have potential for safer, more productive 
-coding in the future.   
-}
-\p{In short, methodologies for safety-conscious coding can be 
-split between those which depend on core-language features, 
-and those which rely on external, retroactive analysis 
-of sensitive code.  On the one hand, some languages and projects
-prioritize specifications that are intrinsic to the language and integrate
-seamlessly and operationally into the language's foundational
-compile-and-run sequence.  Improper code (relative to specifications)
-should not compile, or, as a last resort, should fail gracefully at run-time.
-Moreover, in terms of programmers' thought processes, the
-description of specifications should be intellectually continuous
-with other cognitive processes involved in composing code, such
-as designing types or implementing algorithms.  For sake of 
-discussion, I will call this paradigm \q{internalism}.  
-}
-\p{The \q{internalist} mindset seeks to integrate data 
-validation seamlessly with other language features.  
-Malformed data should be flagged via similar mechanisms 
-as code which fails to type-check; and errors should 
-be detected as early in the development process as possible.   
-Such a mindset is evident in passages like this (describing
-the Ivory programming language):
-\begin{dquote}Ivory's type system is shallowly embedded within Haskell's
-type system, taking advantage of the extensions provided by [the
-Glasgow Haskell Compiler].  Thus, well-typed Ivory programs
-are guaranteed to produce memory safe executables, \i{all without
-writing a stand-alone type-checker} [my emphasis].  In contrast, 
-the Ivory syntax is \i{deeply} embedded within Haskell.
-This novel combination of shallowly-embedded types and 
-deeply-embedded syntax permits ease of development without sacrificing
-the ability to develop various back-ends and verification tools [such as]  
-a theorem-prover back-end.  All these back-ends share the
-same AST [Abstract Syntax Tree]: Ivory verifies what it compiles.
-\cite[p. 1]{ivory}.
-\end{dquote}   In other words, the creators of Ivory are promoting the
-fact that their language buttresses via its type system 
-\mdash{} and via a mathematical precision suitable for 
-proof engines \mdash{} 
-code guarantees that for most languages require external
-analysis tools.
-}
-\p{Contrary to this \q{internalist} philosophy, other approaches
-(perhaps I can call them \q{externalist}) favor a neater separation
-of specification, declaration and testing from the core language,
-and from basic-level coding activity.  In particular \mdash{} according to 
-the \q{externalist} mind-set \mdash{} most of the more important or complex
-safety-checking does not natively integrate with the
-underlying language, but instead requires
-either an external source code analyzer, or 
-regulatory runtime libraries, or some combination of the two.  
-Moreover, it is unrealistic
-to expect all programming errors to be avoided with enough proactive planning,
-expressive typing, and safety-focused paradigms: any complex
-code base requires some retroactive design, some combination
-of unit-testing and mechanisms (including those
-third-party to both the language and the projects whose code is
-implemented in the language) for externally
-analyzing, observing, and higher-scale testing for the code,
-plus post-deployment monitoring.
-}
-\p{As a counterpoint to the features cited as benefits to the
-Ivory language, which I identified as representing the 
-\q{internalist} paradigm, consider Santanu Paul's Source Code Algebra (\SCA{})
-system described in \cite{SantanuPaul} and
-\cite{GiladMishne}, \cite{TillyEtAl}:
-\begin{dquote}Source code files are processed using
-tools such as parsers, static analyzers, etc. and the necessary information
-(according to the SCA data model) is stored in a repository.  A user interacts
-with the system, in principle, through a variety of high-level languages, or
-by specifying SCA expressions directly.  Queries are mapped to SCA expressions,
-the SCA optimizer tries to simplify the expressions, and finally, the SCA
-evaluator evaluates the expression and returns the results to the user.\nl{}
-We expect that many source code queries will be expressed using high-level
-query languages or invoked through graphical user interfaces.  High-level queries
-in the appropriate form (e.g., graphical, command-line, relational, or
-pattern-based) will be translated into equivalent SCA expressions.  An SCA
-expression can then be evaluated using a standard SCA evaluator, which
-will serve as a common query processing engine.  The analogy from
-relational database systems is the translation of SQL to expressions based on
-relational algebra. \cite[p. 15]{SantanuPaul}
-\end{dquote}
-So the \i{algebraic} representation of source code is favored
-here because it makes computer code available
-as a data structure that can be processed via \i{external}
-technologies, like \q{high-level languages}, query languages, and
-graphical tools.  The vision of an optimal development environment
-guiding this kind of project is opposite, or at least
-complementary, to a project like Ivory: the whole point
-of Source Code Algebra is to pull code verification \mdash{} the
-analysis of code to build trust in its safety and robustness
-\mdash{} \i{outside} the language itself and into the surrounding
-Development Environment ecosystem.
-}
-\p{These philosophical differences (what I dub \q{internalist} vs. \q{externalist}) 
-are normative as well as descriptive:
-they influence programming language design, and how languages in turn influence
-coding practices.  One goal of language design is to produce languages 
-which offer rigorous guarantees \mdash{} fine-tuning the languages' 
-type system and compilation model to maximize the level of detail 
-guaranteed for any code which type-checks and compiles.  
-Another goal of language design is to define syntax and 
-semantics permitting valid source code to be analyzed 
-as a data structure in its own right.  Ideally, 
-languages can aspire to both goals.  In practice, however, 
-achieving both equally can be technically difficult.  
-The internal representations conducive to strong type and 
-compiler guarantees are not necessarily amenable to 
-convenient source-level analysis, and vice-versa.    
-}
-\p{Language engineers, then, have to work with
-two rather different constituencies.  One community of
-programmers tends to prefer that specification and validation be
-integral to/integrated with the language's type system and
-compile-run cycle (and standard runtime environment); whereas
-a different community prefers to treat code evaluation
-as a distinct part of the development process, something logically, operationally,
-and cognitively separate from hand-to-screen codewriting
-(and may chafe at languages restricting certain code constructs
-because they can theoretically produce coding errors, even when
-the anomalies involved are trivial enough to be tractable for
-even barely adequate code review).  One challenge for language engineers is
-accordingly to serve both communities.  We can, for example, aspire to
-implement type systems which are sufficiently
-expressive to model many specification, validation, and
-gatekeeping scenarios, while also anticipating that language code
-should be syntactically and semantic designed to be
-useful in the context of external tools (like
-static analyzers) and models (like Source Code
-Algebras and Source Code Ontologies).
-}
-\p{The techniques I discuss here work toward these goals on two levels.  First, I
-propose a general-purpose representation of computer code in terms
-of Directed Hypergraphs, sufficiently rigorous to codify a
-theory of functional types as types whose values are (potentially) initialized from
-formal representations of source code \mdash{} which is to say, in the present
-context, code graphs.  Next, I
-analyze different kinds of \q{lambda abstraction} \mdash{} the idea of
-converting closed expressions to open-ended formulae by asserting that
-some symbols are \q{input parameters} rather than fixed values, as in
-Lambda Calculus \mdash{} from the perspective of
-axioms regulating
-how inputs and outputs may be passed to and obtained from
-computational procedures.  I bridge these topics \mdash{} Hypergraphs
-and Generalized Lambda Calculi \mdash{} by taking abstraction as a
-feature of code graphs wherein some hypernodes are singled out
-as procedural
-\q{inputs} or \q{outputs}.  The basic form of this model
-\mdash{} combining what are essentially two otherwise unrelated
-mathematical formations, Directed Hypergraphs and
-(typed) Lambda Calculus \mdash{} is laid out in
-Sections \sectsym{}\hyperref[sTwo]{\ref{sTwo}}
-and \sectsym{}\hyperref[sThree]{\ref{sThree}}.
-}
-\p{Following that sketch-out, I engage a more rigorous study of
-code-graph hypernodes as \q{carriers} of runtime values, some of
-which collectively form \q{channels} concerning values which
-vary at runtime between different executions of a function body.
-Carriers and channels piece together to form
-\q{Channel Groups} that describe structures with meaning both
-within source code as an organized system (at \q{compile time}
-and during static code analysis) and at runtime.  Channel Groups
-have four different semantic interpretations, varying via the
-distinctions between runtime and compile-time and between
-\i{expressions} and (function) \i{signatures}.
-I use the framework of Channel Groups to identify
-design patterns that achieve many goals of
-\q{expressive} type systems while being implementationally
-feasible given the constraints of mainstream programming
-languages and compilers (with an emphasis on \Cpp{}).
-}
-\p{After this mostly theoretical prelude, I conclude this
-chapter with a discussion of code annotation, particularly
-in the context of CyberPhysical Systems.  Because CyberPhysical applications
-directly manage physical devices, it is especially important that they be
-vetted to ensure that they do not convey erroneous instructions
-to devices, do not fail in ways that leave devices uncontrolled, and
-do not incorrectly process the data obtained from devices.
-Moreover, CyberPhysical devices are intrinsically \i{networked},
-enlarging the \q{surface area} for vulnerability, and often worn by people
-or used in a domestic setting, so they tend carry personal (e.g., location)
-information, making network security protocols especially important
-(\cite{RonaldAshri}, \cite{AbhishekDwivedi}, \cite{LalanaKagal},
-\cite{TakeshiTakahashi}, \cite{MozhganTavakolifard},
-\cite{BhavaniThuraisingham}).  The dangers
-of coding errors and software vulnerabilities, in CyberPhysical
-Systems like the Internet of Things (\IoT{}), are even more pronounced
-than in other application domains.  While it is
-unfortunate if a software crash causes someone to lose data,
-for example, it is even more serious if a CyberPhysical \q{dashboard}
-application were to malfunction and leave physical, networked
-devices in a dangerous state.
-}
-\p{To put it differently, computer code which directly interacts with
-CyberPhysical Systems will typically have many fragile pieces, which
-means that applications providing user portals to maintain and control
-CyberPhysical Systems need a lot of gatekeeping code.  Consequently,
-code verification is an important part of preparing CyberPhysical Systems
-for deployment.  The \q{Channelized Hypergraph} framework I develop here
-can be practically expressed in terms of code annotations that benefit
-code-validation pipelines.  This use case is shown in demo code
-published as a data set alongside this chapter (available for
-download at \url{https://github.com/scignscape/ntxh}).
-These techniques are not designed to substitute for Test Suites or
-Test-Driven Development,
-though they can help to clarify the breadth of coverage of
-a test suite \mdash{} in other
-words, to justify claims about tests being thorough enough that
-the code base passing all tests actually does argue for the code
-being safe and reliable.  Nor are code annotations intended to
-automatically verify that code is safe or
-standards-compliant, or to substitute for
-more purely mathematical code analysis using proof-assistants.
-But the constructions presented here,
-I claim, can be used as part of a
-code-review process that will enhance stakeholders' trust
-in safety-critical computer code, in cost-effective, practically
-effective ways.
 }

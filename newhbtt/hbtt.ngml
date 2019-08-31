@@ -4,9 +4,10 @@
 `include<commands>;
 
 
+
 `document,
-`title.Hypergraph-Based Type Theory for Requirements Engineering and
-Generalized Lambda Calculus (with case studies in code safety protocols)`
+`title.Hypergraph Type Theory and Requirements Engineering 
+for Software Development in a CyberPhysical Context`
 `author.Nathaniel Christen`
 
 
@@ -44,12 +45,9 @@ prototyping stages of a project, particularly
 in CyberPhysical contexts which tend to exhibit both 
 empirically-driven data types (with granular 
 modeling parameters) and strong robustness/safety mandates.
-For more in-depth 
-examples, an accompanying open-source data set (at
+For concrete examples, an accompanying open-source data set (at
 \url{https://github.com/scignscape/ntxh}) 
-demonstrates code libraries, 
-as well as data set architectures and 
-security protocols, concretizing 
+demonstrates code libraries concretizing 
 techniques outlined here.
 `abstract` 
 
@@ -70,8 +68,8 @@ behavior.  Others  seek  to  use  software  capabilities  to  build
 smarter (lower impact) infrastructure. However, there is a lack
 of  common  understanding  of  the  fundamental  concepts  of
 sustainability and how they apply, and a need for a common
-ground and consistent terminology. As such, persistent misper-
-ceptions occur, as researchers and practitioners disagree over
+ground and consistent terminology. As such, persistent 
+misperceptions occur, as researchers and practitioners disagree over
 whether we're even asking the right questions ...
 We  lack  a  coherent  framework  with  sound  theoretical  basis
 that can provide a well-understood trans-disciplinary basis for

@@ -52,7 +52,67 @@ numpy.save("%3/%2.2.npy", a, fix_imports=True))").arg(dir).arg(file).arg(ndir);
  return QString("%1/%2.2.npy").arg(ndir).arg(file);
 }
 
+void phconvert(QString dir, QString qs, QString sp, QString phdir, QString bn)
+{
+ QString f = QString("%1/%2").arg(dir).arg(qs);
+ std::string filename = f.toStdString();
 
+ if(bn.endsWith(".2"))
+   bn.chop(2);
+
+ QString ph_file = QString("%1/ph-%2.ntxh").arg(phdir).arg(bn);
+
+ cnpy::NpyArray arr = cnpy::npy_load(filename);
+
+ std::vector<double> ds = arr.as_vec<double>();
+
+ int nfs = arr.shape[0];
+ int dim = arr.shape[1];
+
+ int c = 0;
+
+// qDebug() << ds.size();
+// qDebug() << nfs;
+// qDebug() << dim;
+// qDebug() << dim * nfs;
+
+ QString contents;
+
+ QTextStream qts(&contents);
+
+// &type Sentence {5}
+//   :i:1 :c:2 :s:3 :x:4 :u:5 ;
+// &/
+
+ qts << QString(R"(
+!/ Audio_Sample
+
+$sp: %1
+$n: %2
+$d: %3
+$m.
+)").arg(sp).arg(nfs).arg(dim);
+
+// qts << "$sp:" << sp << "\n";
+// qts << "$n:" << nfs << "\n";
+// qts << "$d:" << dim << "\n\n";
+// qts << "$m.\n";
+
+ for(int i = 0; i < nfs; ++i)
+ {
+  for(int j = 0; j < dim; ++j)
+  {
+   double d = ds[c];
+   ++c;
+   qts << d << "\n";
+  }
+  qts << "\n";
+ }
+ qts << "\n.\n";
+
+ qts << "\n\n/!\n";
+ save_file(ph_file, contents);
+}
 
 int main()
 {
@@ -60,8 +120,182 @@ int main()
  QString ndir = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc2";
  QString script = "/home/nlevisrael/hypergr/bird/CLO-43SD/conv-mfcc.py";
 
- QDir qdir(dir);
+ QString phdir = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc-ph";
 
+ QString phgdir = "/home/nlevisrael/hypergr/bird/CLO-43SD";
+
+ QDir qdir(ndir);
+ QStringList npys = qdir.entryList(QStringList() << "*.npy", QDir::Files);
+
+ QMap<QString, QPair<int, QString>> species;
+
+ for(QString npy: npys)
+ {
+  QFileInfo qfi(npy);
+
+  QString sp = qfi.baseName();
+  QString bn = qfi.completeBaseName();
+
+  sp = sp.left(4);
+
+  ++species[sp].first;
+
+//?  phconvert(ndir, npy, sp, phdir, bn);
+
+ }
+
+ QString cs = QString(R"(
+&type Species {3}
+  :i:1 :n:2 :s:3 ;
+
+&type Audio_Sample {4}
+  :sp:1 :n:2 :d:3 :m:4 ;
+
+&/
+
+)");
+
+ QStringList spnames = QString(R"(
+                       Magnolia Warbler
+                       Black-throated Green Warbler
+                       Nashville Warbler
+                       American Redstart
+                       Ovenbird
+                       Tennessee Warbler
+                       Black-throated Blue Warbler
+                       Grace's Warbler
+                       Yellow-rumped Warbler
+                       Hooded Warbler
+                       Chestnut-sided Warbler
+                       Cape May Warbler
+                       Palm Warbler
+                       Blackburnian Warbler
+                       Orange-crowned Warbler
+                       Bay-breasted Warbler
+                       Northern Parula
+                       Yellow Warbler
+                       Virginia's Warbler
+                       Connecticut Warbler
+                       Pine Warbler
+                       Lucy's Warbler
+                       Blackpoll Warbler
+                       Northern Waterthrush
+                       Common Yellowthroat
+                       Prairie Warbler
+                       Worm-eating Warbler
+                       Blue-winged Warbler
+                       Golden-winged Warbler
+                       Golden-cheeked Warbler
+                       Hermit Warbler
+                       Prothonotary Warbler
+                       Black-and-white Warbler
+                       Black-throated Gray Warbler
+                       Cerulean Warbler
+                       Townsend's Warbler
+                       Yellow-throated Warbler
+                       Red-faced Warbler
+                       Canada Warbler
+                       Louisiana Waterthrush
+                       Wilson's Warbler
+                       Colima Warbler
+                       Kentucky Warbler
+                       )").split('\n', QString::SplitBehavior::SkipEmptyParts);
+
+ QStringList ids = QString(R"(
+                           MAWA
+                           BTNW
+                           NAWA
+                           AMRE
+                           OVEN
+                           TEWA
+                           BTBW
+                           GRWA
+                           YRWA
+                           HOWA
+                           CSWA
+                           CMWA
+                           PAWA
+                           BLBW
+                           OCWA
+                           BBWA
+                           NOPA
+                           YEWA
+                           VIWA
+                           CONW
+                           PIWA
+                           LUWA
+                           BLPW
+                           NOWA
+                           COYE
+                           PRAW
+                           WEWA
+                           BWWA
+                           GWWA
+                           GCWA
+                           HEWA
+                           PROW
+                           BAWW
+                           BTYW
+                           CERW
+                           TOWA
+                           YTWA
+                           RFWA
+                           CAWA
+                           LOWA
+                           WIWA
+                           COLW
+                           KEWA
+                       )").simplified().split(' ');
+
+
+ int j = 0;
+ for(QString name : spnames)
+ {
+  QString n = name.simplified();
+  if(n.isEmpty())
+    continue;
+  species[ids[j]].second = name.simplified();
+  ++j;
+ }
+
+ QMapIterator<QString, QPair<int, QString>> it(species);
+
+
+ while(it.hasNext())
+ {
+  it.next();
+
+  QPair<int, QString> pr = it.value();
+
+  cs += QString(R"(
+
+!/ Species
+
+$i: %1
+$n: %2
+$s: %3
+/!
+<+>
+)").arg(it.key()).arg(it.value().first).arg(it.value().second);
+ }
+
+ cs += "\n\n/&\n";
+
+ QString phs = phgdir + "/species.ntxh";
+
+ save_file(phs, cs);
+}
+
+
+
+
+int main1()
+{
+ QString dir = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc";
+ QString ndir = "/home/nlevisrael/hypergr/bird/CLO-43SD/mfcc2";
+ QString script = "/home/nlevisrael/hypergr/bird/CLO-43SD/conv-mfcc.py";
+
+ QDir qdir(dir);
  QStringList npys = qdir.entryList(QStringList() << "*.npy", QDir::Files);
 
  QMap<QString, int> species;
@@ -81,7 +315,6 @@ int main()
   qDebug() << bn;
 
   QString c = convert(dir, ndir, bn, script);
-
  }
 
 
