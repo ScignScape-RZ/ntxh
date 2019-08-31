@@ -31,99 +31,29 @@ Applications, in turn, can be generally classified as
 resource at a time, such as a web page displaying some 
 collection of data, and where data is usually stored 
 on remote servers) and \q{native applications} 
-(which typically provide multiple windows and 
+(characterized by more complex 
 Graphical User Interface components, and 
-which often work with data and files saved 
-locally \mdash{} i.e., saved on the filesystem 
-of the host computer).  
-Contemporary software design also recognizes
-\q{hybrid} applications which combine features 
-of web and of native (desktop) software.   
+by the ability to work with \q{local} data 
+\mdash{} data stored on users' computers or accessible 
+on a local network \mdash{} instead of or in addition to 
+data acquired from a web service).  
 }
-\p{Within this taxonomy, the typical CyberPhysical 
-software hub should be classified as a native, 
-desktop-style application, representing the 
-state of networked devices through 
-special-purpose Graphical User Interface 
-(\GUI{}) components.  Networked CyberPhysical 
-devices are not necessarily connected to the 
-Internet, nor communicate via Internet 
-protocols.  In many cases, software hubs will 
-access device data through securitized, closed-circuit 
-mechanisms which (barring malicious intrusion) ensure 
-that only the hub application can read or alter 
-devices' state.  Accordingly, an application reading 
-device data is fundamentally different than a 
-web application obtaining information from an Internet 
-server.\footnote{It may be appropriate for some device data \mdash{} either 
-in real time or retroactively \mdash{} to be shared 
-with the public via Internet connections, but 
-this is an additional feature complementing 
-the monitoring software's primary oversight roles.
-}  CyberPhysical networks are designed to 
-prioritize real-time connections between device and 
-software points, and minimize network latency.  
-Ideally, human monitors should be able 
-(via the centralized software) to alter device state 
-almost instantaneously.  Moreover, in contrast to 
-Internet communications with the \TCP{} protocol, 
-data is canonically shared between devices and 
-software hubs in complete units \mdash{} rather than 
-in packets which the software needs to reassemble.  
-These properties of CyberPhysical networks imply 
-that software design practices for monitoring 
-CyberPhysical Systems are technically different 
-than requirements for web-based components, such as 
-\HTTP{} servers.    
-}
-\p{At the same time, we can assume that an increasing quantity of 
-CyberPhysical data \i{will} be shared via the World Wide Web.  
-This reflects a confluence of societal and technological 
-forces: in the bioinformatics domain, public demand is rising for access
-both to conventional medical information and to real-time health-related 
-data (often via \q{wearable} sensors and other technologies that, 
-when properly deployed, can promote health-conscious lifestyles).  
-Similarly, the public demands greater transparency for 
-civic and environmental data, and science is learning how to 
-use CyberPhysical technology to track ecological conditions and 
-urban infrastructure \mdash{} analysis of traffic patterns, for 
-instance, can help civic planners optimize public transit routes 
-(which benefit both the public and the environment).
-}
-\p{Meanwhile, parallel to the rise of accessible health or civic data,
-companies are bringing to market an increasing 
-array of software products and \q{apps} which access and 
-leverage this data.  These applications do not necessarily 
-fit the profile of \q{hub software}, but they 
-can still benefit from the rigorous data models 
-exemplified via hub libraries.  
+\p{From a software engineering point of view, I 
+believe we should conceptualize hub sofware as 
+native, desktop-style applications which 
+leverage native \GUI{} features.  
+Hub applications therefore embody a 
+fundamentally different User Experience 
+than other kinds of CyberPhysical access 
+points, like touch screens or phone apps.
 }
 \p{To cite a concrete example, Teixeira \i{et. al.} 
 consider \q{smart appliance} refrigerators which are aware of 
 the door being left open, and even may track the expiration date of 
-items inside, with user notifications on a smart phone.  
-On the other hand, consider an industrial 
-refrigerator used in a food-processing plant or warehouse.  We would 
-expect that such an appliance would likewise provide data about 
-current temperature, air flow, electricity usage, when the doors 
-are opened, and so forth; on the other hand, the software for 
-accessing this data would probably run in a nearby control room, 
-and so would be implemented on a desktop 
-(rather than smart phone) operating system.  
-We might also expect that quality controls in the industrial 
-setting would be more rigorous than for home appliances.  
-But this also means that data models formulated in the 
-industrial setting can be adapted for the home context, 
-which would sampling simpler data structures from 
-more complex ones.  That is to say, standardized data 
-models can arise from industrial needs and eventually 
-be incorporated into personal or smart-home appliances, 
-which may be a more likely progression than standardization 
-driven by the \q{personal} market alone.
-}
-\p{The refrigerator example also introduces User Interface 
-design issues.  A simple indicator showing whether doors 
-are open is straightforward, but an interface listing 
+items inside.  Consider then how we would design a 
+User Interface networking with a \q{smart} regrigerator.  
+A simple indicator showing whether 
+doors are open is straightforward, but an interface listing 
 food items in a refrigerator is much more complicated.  
 Assuming (for the sake of this rather futuristic 
 discussion) that a refrigerator can detect signals 
@@ -153,32 +83,30 @@ supplemented with separate dialog windows for each item.
 It would be difficult to provide this advanced a \GUI{} 
 via a phone app or an in-kitchen touch-screen.
 }
-\p{This points to another important difference between 
-hub applications and isolated access points (such 
-as phone apps specific to single devices).  
-With app-based access to 
-CyberPhysical data, engineers are pressured to 
-condense User Interface component to small-screen scales.  
-In the current example, an app would perhaps refrain from 
-listing all items in the fridge, and instead just show the 
-user a notification when an item is near expiry.  When 
+\p{On the other hand, a phone app interfacing with that 
+same data would be constrained by its limited 
+screen space and interactive modalities. 
+For example, with no room on-screen to show a 
+complete list of food items \mdash{} and no obvious user 
+gesture to navigate between individual and multi-item 
+views \mdash{} such an app might choose to list only those 
+items nearing their expiry date.  In general, when 
 adapting to phone-like usage patterns (limited screen, 
 brief but frequent user engagement), designers 
-manifestly try to offer brief but curated 
-snippets of information, rather than comprehensive access into a 
+have to offer compact but curated 
+snippets of information, in lieu of comprehensive access into a 
 data space.  That is, software can try to anticipate 
 which pieces of data carry the most user interest \mdash{} expiry 
 dates are most likely important to users when items are 
-near perishing \mdash{} so that interface design is organized 
-around these select nuggets, rather than all the information 
-which a user could theoretically access.  This also means 
+near perishing.  This means 
 that data mining, Artificial Intelligence, and other 
 techniques for anticipating users' needs becomes 
 proportionately more consequential: if the whole 
-\GUI{} design is premised on \AI{}, then \AI{} ceases 
-to become a useful supplement but becomes a 
-make-or-break capability for the application to be 
-successful from a User Experience point of view.  
+\GUI{} design is premised on \AI{}, then \AI{} 
+ceases to be just a useful tool, augmenting 
+software's analytic reach \mdash{} it 
+becomes instead a make-or-break 
+User Experience necessity.  
 If an app cannot practically share \i{all} data, 
 it has to guess what data users most want to see.
 }
@@ -253,39 +181,6 @@ and what kind of queries or analyses should engineers
 be able to perform so as to study system data, to access the 
 system's past states and performance? 
 }
-\p{I believe that the software development community has neglected 
-to consider general models of CyberPhysical software
-which could answer these kinds of questions in a rigorous, 
-theoretically informed manner.  There is of course a robust 
-field of cybersecurity and code-safety, which establishes 
-Best Practices for different kinds of computing projects.  
-Certainly this established knowledge can and does influence 
-the implementation of software connected to CyberPhysical 
-systems no less than any other kind of software.  But 
-models of programming Best Practices are often associated 
-with specific coding paradigms, and therefore reflect 
-implementations' programming environment more than they 
-reflect the empirical domain targeted by a particular 
-software project.
-}
-\p{For example, Object-Oriented Programming, 
-Functional Programming, and Web-Based Programming present 
-different capabilities and vulnerabilities and therefore
-each have their own \q{Best Practices}.  As a result, 
-our understanding of how to deploy robust, well-documented 
-and well-tested software tends to be decentralized
-among distinct programming styles and development 
-environments.  External analysis of a code base \mdash{} e.g., searching 
-for security vulnerabilities (attack routes for malicious code) 
-\mdash{} are then separate disciplines with their own methods 
-and paradigms.  Such dissipated wisdom is unfortunate if 
-we aspire to develop integrated, broadly-applicable models 
-of CyberPhysical safety and optimal application 
-design, models which transcend paradigmatic 
-differences between coding styles and roles 
-(in the sense that implementation, testing, and code 
-review, for instance, are distinct technical roles).
-}
 \p{Because CyberPhysical devices are intrinsically \i{networked} 
 \mdash{} whether over special wireless networks or the World Wide Web \mdash{} 
 there is an enlarged \q{surface area} for vulnerability.  Moreover, 
@@ -303,7 +198,7 @@ for example, it is even more serious if a CyberPhysical \q{dashboard}
 application were to malfunction and leave physical, networked
 devices in a dangerous state.
 }
-\p{It is also helpful at this point to distinguish cyber 
+\p{It is helpful at this point to distinguish cyber 
 \i{security} from \i{safety}.  When these concepts are 
 separated, \i{security} generally refers to
 preventing \i{deliberate}, \i{malicious} intrusion into 
@@ -447,33 +342,7 @@ privacy: we (collectively) have an informal impression that
 current technology is failing to meet the public's desired 
 standards, but there is no clear picture of what 
 \IT{} engineers can or should do to improve the technology 
-going forward.  Needless to say, software should prevent 
-industrial catastrophes, and private financial data 
-should not be stolen by crime syndicates.  But, beyond these 
-obvious points, it is not clearly defined how 
-the public's expectations for safer and more secure 
-technology translates to low-level programming practices.  
-How should developers earn public trust, and 
-when is that trust deserved?  Maxims like \q{try to avoid 
-catastrophic failure} are too self-evident to be useful.  
-We need more technical structures to identify 
-which coding practices are explicitly recommended, 
-in the context of a dynamic where engineers need 
-to earn the public trust, but also need to define 
-the parameters for where this trust is warranted.    
-Without software safety models rooted in low-level 
-computer code, software safety can only be ex-post-facto 
-engineered, imposing requirements relatively late in the 
-development cycle and checking code externally, via 
-code review and analysis methods that are beyond
-the core development process.  While such secondary 
-checking is important, it cannot replace software built 
-with an eye to safety from the ground up. 
-}
-\p{This chapter, then, is written from the viewpoint that 
-cyber safety practices have not been clearly articulated 
-at the level of software implementation itself, 
-separate and apart from institutional or governmental oversight.  
+going forward.    
 Regulatory oversight is only effective in proportion to 
 scientific clarity \visavis{} desired outcomes and how 
 technology promotes them.  Drugs and treatment protocols, 

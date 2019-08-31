@@ -2,7 +2,7 @@
 %`spsubsection.Described Types and Actual Types`
 `subsection.Described Types and Actual Types`
 `p.
-The notion of `q.type systems` I adopt here sees types not
+The notion of `q.type systems` I adopt here sees types not as
 logical abstractions but as engineered artifacts (as are
 languages themselves).  A logical description of a plausible type
 %-- say, the type of all functions that take equal-sized lists
@@ -337,7 +337,7 @@ code-graphs, and values of that type are then inputs to
 value-constructors yielding procedure types. 
 `footnote`
 As I just outlined, dependent typing can complicate the picture because
-metaconstructors then have to have possible alternative signatures: e.g.
+metaconstructors then need possible alternative signatures: e.g.
 the value constructor for `q.integers between zero and one hundred (inclusive)` has
 to combine a `q.common functionality` function body with another
 part that specifies the desired

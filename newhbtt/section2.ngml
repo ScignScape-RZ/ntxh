@@ -998,15 +998,6 @@ the `q.discovery of questions` effect
 more trustworthy when and insofar as their software bears witness to a project
 evolution that has been well-poised to unearth questions
 that could otherwise diminish the system's trustworthiness.
-Lest this seem like common sense and unworthy of being emphasized
-so lengthily, I'd comment that literature on Ubiquitous Sensing for 
-Healthcare (`USH;), for
-example, appears to place much greater emphasis on Ontologies or Modeling
-Languages whose goal is to predetermine software design at such
-detail that the actual code merely enacts a preformulated schema,
-rather than incorporate subjects (like type Theory and
-Software Language Engineering) whose insights can
-help ensure that code development plays a more proactive role.
 `p`
 
 `p.
@@ -1031,30 +1022,9 @@ digital substratum.
 `p`
 
 `p.
-`q.Transparency` in this environment means that `USH; code needs
-to explicitly declare its operational assumptions, on the
-zoomed-in procedure-by-procedure scale, and also exhibit its
-Quality Assurance strategies, on the zoomed-out system-wide scale.  It
-needs to demonstrate, for example, that the code base has sufficiently
-strong typing and thorough testing that devices are always matched to
-the proper processing and/or management functions: e.g., that there are no
-coding errors or version-control mismatches which might cause situations
-where functions are assigned to the wrong devices, or the wrong
-versions of correct devices.  Furthermore, insofar as most `USH; data
-qualifies as patient-centered information that may be personal and
-sensitive, there needs to be well-structured transparency concerning
-how sensitive data is allowed to `q.leak` across the system.  Because
-functions handling `USH; devices are inherently fragile,
-the overall system needs extensive and openly documented
-gatekeeping code that both validates their input/output and controls
-access to potentially sensitive patient data.
-`p`
-
-`p.
-I have also isolated the important components where these 
-diverse requirements may be exercised %-- specifically, 
-hub `i.libraries` that are intermediaries between CyberPhysical 
-devices and hub applications.  Hub libraries therefore need 
+I have argues that hub `i.libraries` %-- intermediaries between CyberPhysical 
+devices and hub applications %-- are the key components where  
+diverse requirements may be exercised.  Hub libraries therefore need 
 capabilities for documenting coding assumptions and requirements,  
 such that their corresponding applications garner users' trust 
 and acceptance.  Hub applications, in short, would be deemed 
