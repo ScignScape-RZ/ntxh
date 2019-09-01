@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  31 AUG 2019 21:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  31 AUG 2019 22:36
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1162,6 +1162,15 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 Package: inputenc 2018/04/06 v1.3b Input encoding file
 \inpenc@prehook=\toks42
 \inpenc@posthook=\toks43
+)
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/preprint/authblk.st
+y
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip52
+\@affilsep=\skip53
+\c@Maxaffil=\count152
+\c@authors=\count153
+\c@affil=\count154
 ))
 
 Package csquotes Warning: Load 'inputenc' before 'csquotes' on input line 3.
@@ -1210,16 +1219,16 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count152
+\scratchcounter=\count155
 \scratchdimen=\dimen266
 \scratchbox=\box84
-\nofMPsegments=\count153
-\nofMParguments=\count154
+\nofMPsegments=\count156
+\nofMParguments=\count157
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count155
+\MPscratchCnt=\count158
 \MPscratchDim=\dimen267
-\MPnumerator=\count156
-\makeMPintoPDFobject=\count157
+\MPnumerator=\count159
+\makeMPintoPDFobject=\count160
 \everyMPtoPDFconversion=\toks45
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/epstopdf-b
@@ -1250,14 +1259,14 @@ e
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(33.96698pt, 546.36104pt, 33.96698pt)
-* v-part:(T,H,B)=(59.26192pt, 676.44615pt, 59.26192pt)
+* v-part:(T,H,B)=(56.3705pt, 682.22899pt, 56.3705pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
 * \textwidth=546.36104pt
-* \textheight=676.44615pt
+* \textheight=682.22899pt
 * \oddsidemargin=-38.30301pt
 * \evensidemargin=-38.30301pt
-* \topmargin=-50.00807pt
+* \topmargin=-52.89949pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -1306,7 +1315,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 string.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count158
+\c@section@level=\count161
 )
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
@@ -1315,8 +1324,8 @@ LaTeX Info: Redefining \nameref on input line 3.
 \@outlinefile=\write6
 \openout6 = `hbtt.ngml.out'.
 
-\c@lstlisting=\count159
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 64
+\c@lstlisting=\count162
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 65
 .
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
@@ -1326,17 +1335,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `ztmcm' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 64
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 65
 .
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 64
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 65
 .
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 64
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 65
 .
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
@@ -1350,32 +1359,32 @@ g
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
-LaTeX Font Info:    Try loading font information for U+wasy on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 65.
  (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 \qboxii=\box86
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 65.
 
-Overfull \hbox (16.0pt too wide) in paragraph at lines 64--64
+Overfull \hbox (16.0pt too wide) in paragraph at lines 65--65
  []$
  []
 
@@ -1453,12 +1462,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 795--795
 []
  []
 
-[10]
+
 Underfull \hbox (badness 10000) in paragraph at lines 847--847
 []
  []
 
-[11]) (./section2.ngml.tex
+[10] [11]) (./section2.ngml.tex
 LaTeX Font Info:    Try loading font information for OT1+lmss on input line 218
 .
 
@@ -1501,18 +1510,18 @@ Overfull \hbox (2.8112pt too wide) in paragraph at lines 41--43
 []  
  []
 
-) [19]) (./section3.ngml.tex [20] [21]
+) [19]) (./section3.ngml.tex [20]
 Underfull \hbox (badness 3343) in paragraph at lines 172--207
 []\OT1/ptm/m/n/10.95 (+20) Early on, though, $\OML/ztmcm/m/it/10.95 ^^U$\OT1/pt
 m/m/n/10.95 (+20) -Calculus was less about
  []
 
-[22] [23] [24] (./unplug.tex)
+[21] [22] [23] (./unplug.tex)
 Overfull \hbox (3.81317pt too wide) in paragraph at lines 446--446
 [] $[]$[] 
  []
 
-(./initializing-hypernodes.tex
+[24] (./initializing-hypernodes.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstlang1.s
 ty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -1562,11 +1571,11 @@ LaTeX Font Info:    Font shape `OT1/Cabin-TLF/bx/sc' in size <10> not available
 
 (Font)              Font shape `OT1/Cabin-TLF/b/sc' tried instead on input line
  1010.
- [31] [32]) (./section3a.ngml.tex [33] [34]
+ [31] [32]) (./section3a.ngml.tex [33]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <6> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 196.
 
-
+ [34]
 [35] [36]) (./section3b.ngml.tex [37]
 Underfull \hbox (badness 10000) in paragraph at lines 106--106
 []
@@ -1582,7 +1591,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []
  []
 
-[39]) (./section4.ngml.tex [40] [41]
+[39]) (./section4.ngml.tex [40]
 LaTeX Font Info:    Try loading font information for OMS+lmss on input line 158
 .
 LaTeX Font Info:    No file OMSlmss.fd. on input line 158.
@@ -1592,13 +1601,13 @@ LaTeX Font Warning: Font shape `OMS/lmss/b/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 158.
 
-[42]) (./section4a.ngml.tex [43] [44] [45] [46] [47]) (./section4b.ngml.tex
-[48]
+[41] [42]) (./section4a.ngml.tex [43] [44] [45] [46]) (./section4b.ngml.tex
+[47]
 Underfull \hbox (badness 10000) in paragraph at lines 106--106
 []
  []
 
-[49]
+[48]
 Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []
  []
@@ -1608,7 +1617,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 164--164
 []
  []
 
-[50]) (./conclusion.ngml.tex [51]) (./biblio.tex
+[49]) (./conclusion.ngml.tex [50] [51]) (./biblio.tex
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 25.
 LaTeX Font Info:    No file OT1gar.fd. on input line 25.
 
@@ -1626,17 +1635,14 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `gar' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [52] [53] [54] [55] [56])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
- [57
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
+ [52] [53] [54] [55]) [56]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./hbtt.ngml.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `hbtt.ngml.out' has not changed.
-(rerunfilecheck)             Checksum: BD0B4B75487C13A175DED8E1F39BF82B;2015.
+(rerunfilecheck)             Checksum: 7A83F093C5029A7CC802B36C59C4C6DA;2013.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1646,11 +1652,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 31319 strings out of 492649
- 626087 string characters out of 6122986
- 876188 words of memory out of 5000000
- 33832 multiletter control sequences out of 15000+600000
- 110401 words of font info for 412 fonts, out of 8000000 for 9000
+ 31374 strings out of 492649
+ 626772 string characters out of 6122986
+ 873128 words of memory out of 5000000
+ 33898 multiletter control sequences out of 15000+600000
+ 109843 words of font info for 404 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,12n,85p,1026b,1407s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{lst--initializing-hypernodes--1.pgvm-pdf} has bee
@@ -1678,10 +1684,10 @@ yr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/
 utmb8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on hbtt.ngml.pdf (57 pages, 550163 bytes).
+Output written on hbtt.ngml.pdf (56 pages, 548397 bytes).
 PDF statistics:
- 1223 PDF objects out of 1440 (max. 8388607)
- 1119 compressed objects within 12 object streams
- 358 named destinations out of 1000 (max. 500000)
+ 1212 PDF objects out of 1440 (max. 8388607)
+ 1109 compressed objects within 12 object streams
+ 355 named destinations out of 1000 (max. 500000)
  54077 words of extra memory for PDF output out of 61914 (max. 10000000)
 

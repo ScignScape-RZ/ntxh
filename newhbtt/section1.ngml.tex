@@ -1,5 +1,5 @@
 \section{Hub Applications and Gatekeeper Code} 
-%\phantomsection\label{sOne}
+\phantomsection\label{sOne}
 \p{To begin, I will speak in general terms about hub applications and 
 about the unique coding challenges which derive from CyberPhysical 
 technologies' unique networking and safety requirements.
@@ -824,7 +824,7 @@ with the system, in principle, through a variety of high-level languages, or
 by specifying SCA expressions directly.  Queries are mapped to SCA expressions,
 the SCA optimizer tries to simplify the expressions, and finally, the SCA
 evaluator evaluates the expression and returns the results to the user.\nl{}
-We expect that many source code queries will be expressed using high-level
+\hspace{2em} We expect that many source code queries will be expressed using high-level
 query languages or invoked through graphical user interfaces.  High-level queries
 in the appropriate form (e.g., graphical, command-line, relational, or
 pattern-based) will be translated into equivalent SCA expressions.  An SCA
@@ -902,10 +902,9 @@ as procedural
 \mdash{} combining what are essentially two otherwise unrelated
 mathematical formations, Directed Hypergraphs and
 (typed) Lambda Calculus \mdash{} is laid out in
-Sections \sectsym{}\hyperref[sTwo]{\ref{sTwo}}
-and \sectsym{}\hyperref[sThree]{\ref{sThree}}.
-}
-\p{Following that sketch-out, I engage a more rigorous study of
+Sections \sectsym{}\hyperref[sThree]{\ref{sThree}}
+and \sectsym{}\hyperref[sFour]{\ref{sFour}}.
+I then engage a more rigorous study of
 code-graph hypernodes as \q{carriers} of runtime values, some of
 which collectively form \q{channels} concerning values which
 vary at runtime between different executions of a function body.
@@ -921,4 +920,13 @@ design patterns that achieve many goals of
 \q{expressive} type systems while being implementationally
 feasible given the constraints of mainstream programming
 languages and compilers.
+}
+\p{Prior to launching into that mostly theoretical discussion, however, 
+I will examine real-world CyberPhysical data with a little more specificity.  
+My goal in the following pages is to describe the sorts of 
+details that need to be expressed in CyberPhysical data models 
+and therefore verified in CyberPhysical code.  Whereas my subsequent 
+analyses of code representation will adress \i{how} code can demonstrate 
+its underlying data model, my preliminary discussion will 
+motivate \i{why} code needs to do so in the first place.  
 }

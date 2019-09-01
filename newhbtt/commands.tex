@@ -116,12 +116,12 @@
 
 \vspace{1em}}
 
-\newcommand{\spsubsectiontwolinerepl}[2]{\stwoline{#1}\subsstl{#2}{\twoline}}
+\newcommand{\spsubsectiontwolinerepl}[2]{\stwoline{#2}\subsstl{#1}{\twoline}}
 \newcommand{\subsectiontwolinerepl}[2]{\stwoline{#1}\subsstl{#2}{\twoline}
 
 \vspace{1em}}
 
-\newcommand{\subsectiontwolinealt}[2]{\stwoline{#1}\subsstl{#2}{\twoline}
+\newcommand{\subsectiontwolinealt}[2]{\stwoline{#2}\subsstl{#1}{\twoline}
 
 \vspace{1em}}
 
@@ -164,10 +164,10 @@
 
 \setlength{\parindent}{30pt}
 
-\usepackage[letterpaper, left=.47in,right=.47in,top=.82in,bottom=.82in]{geometry}
+\usepackage[letterpaper, left=.47in,right=.47in,top=.78in,bottom=.78in]{geometry}
 
 \let\xbibitem\bibitem
-\renewcommand{\bibitem}[2]{\vspace{6pt}\xbibitem{#1}{#2}}
+\renewcommand{\bibitem}[2]{\vspace{8pt}\xbibitem{#1}{#2}}
 
 \newenvironment{frquote}{%
 %\begin{fcolorbox}{yellow!20!gray}{red!5}
@@ -1689,7 +1689,7 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\mOldLambda}{\ensuremath{\OldLambda}}
 
-
+\usepackage{authblk}
 
 \renewenvironment{abstract}
  {\small
@@ -1697,7 +1697,7 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
   \bfseries \abstractname\vspace{-.5em}\vspace{0pt}
   \end{center}
   \list{}{%
-    \setlength{\leftmargin}{28mm}
+    \setlength{\leftmargin}{18mm}
     \setlength{\rightmargin}{\leftmargin}
   }
   \item\relax}
