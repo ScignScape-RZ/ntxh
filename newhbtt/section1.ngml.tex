@@ -28,11 +28,10 @@ and have little input or visibility to human users,
 except for special troubleshooting circumstances).  
 Applications, in turn, can be generally classified as 
 \q{web applications} (where users usually see one 
-resource at a time, such as a web page displaying some 
-collection of data, and where data is usually stored 
+resource at a time, such as a web page, 
+and where data is usually stored 
 on remote servers) and \q{native applications} 
-(characterized by more complex 
-Graphical User Interface components, and 
+(characterized by more complex \GUI{} components, and 
 by the ability to work with \q{local} data 
 \mdash{} data stored on users' computers or accessible 
 on a local network \mdash{} instead of or in addition to 
@@ -62,12 +61,12 @@ their containers), we can envision a list of
 items (maybe with their expiration dates) 
 presented as a \GUI{} component, maybe 
 with one food item per line 
-(lines perhaps showing a picture, text description, 
-dates, etc.).  This would require cross-referencing 
+(lines, say, showing a picture, price, text description, 
+and expiration date).  This would require cross-referencing 
 numeric codes, which might be broadcast by the 
 items \i{inside} the refrigerator, against a 
-database that would load images, descriptions, and 
-any other \GUI{} content relevant to that item.  One question 
+database that would load the images, descriptions, dates, 
+and prices.  One question 
 is then where this database would be hosted, 
 and how it would be 
 updated (insofar as food companies develop new products 
@@ -84,14 +83,14 @@ It would be difficult to provide this advanced a \GUI{}
 via a phone app or an in-kitchen touch-screen.
 }
 \p{On the other hand, a phone app interfacing with that 
-same data would be constrained by its limited 
-screen space and interactive modalities. 
+same data would be constrained by its lesser 
+screen real estate and limited interactive modalities. 
 For example, with no room on-screen to show a 
 complete list of food items \mdash{} and no obvious user 
 gesture to navigate between individual and multi-item 
 views \mdash{} such an app might choose to list only those 
 items nearing their expiry date.  In general, when 
-adapting to phone-like usage patterns (limited screen, 
+adapting to phone-like usage patterns (smaller screen, 
 brief but frequent user engagement), designers 
 have to offer compact but curated 
 snippets of information, in lieu of comprehensive access into a 
@@ -107,28 +106,30 @@ ceases to be just a useful tool, augmenting
 software's analytic reach \mdash{} it 
 becomes instead a make-or-break 
 User Experience necessity.  
-If an app cannot practically share \i{all} data, 
-it has to guess what data users most want to see.
 }
 \p{Conversely, if we assume that hub applications would prototypically 
 adopt the \q{look and feel} of native desktop applications, 
 then they can present a responsive, comprehensive overview 
 of data structures to their users.  Applications can 
-take advantage of more screen space, with secondary 
+take advantage of larger screens, with secondary 
 application windows and other interactive features that 
-we associate with native \GUI{} components.  This arguably 
-can render \AI{} less important, because it is easier for 
-users to interact with the software on their own terms.  
+we associate with native \GUI{} components.  It is a 
+resonable hypothesis that this would render \AI{} less important: 
+the more data that can be shown, the less need for 
+software to filter information on users' behalf.     
 As Teixera \i{et. al.} put it, \q{some authors argue that 
 the number of interactions between users and the smart home 
 must be kept to a minimum}, but 
 \q{to remove obstacles in the adoption 
 of smart home systems ... preserving the autonomy of the 
 user may seem like the most sensible course of action}.  
-The more data that can be shown, the less need for 
-software to filter information on users' behalf.     
+In that spirit, investments in \AI{} solutions could be 
+redirected to \HCI{}, securitization, data transparency, 
+and other software virtues which customers may value 
+more than \q{smart} software that actually strips them of 
+control.
 }
-\p{Hub applications are therefore examples of what 
+\p{Hub applications could therefore be examples of what 
 Teixera \i{et. al.} call \q{user-centric} design.  
 In this guise, hubs 
 have at least three key responsibilities: 
@@ -143,7 +144,7 @@ analysis and maintenance.
 \end{enumerate}
 Once software receives device data, it needs to 
 marshal the information between different formats, 
-exposing the data in the different contexts of 
+exposing data in the different contexts of 
 \GUI{} components, database storage, and 
 analytic review.  Consider the example of a 
 temperature reading, with \GPS{} device location and 
@@ -153,7 +154,8 @@ The software needs, in a typical scenario, to do
 several things with this information: it has 
 to check the data to confirm it fits within 
 expected ranges (because malformed data can indicate 
-physical malfunction in the devices or the network).  
+physical malfunction in the devices or the network, 
+or coding errors which render the whole system suspect).  
 It may need to show the temperature reading to a 
 human user via some visual or textual indicator.  
 And it may need to store the reading in a database 
@@ -302,9 +304,9 @@ and diagnostic clinics need to be licenced,
 and pharmaceuticals (as well as medical equipment) are subject 
 to rigorous testing and scientific investigation before being 
 marketable.  Notwithstanding \q{free market} ideologies, 
-governments are aggressively involved in regulating 
-medical practices; commercial practices (like marketing) are 
-constrained, and operational transparency 
+governments are aggressively involved in scrutinizing 
+medical practices; commercial activities (like marketing) are 
+regulated, and operational transparency 
 (like reporting adverse outcomes) is mandated, more so 
 than in most other sectors of the economy.  This level of 
 oversight \i{causes} the public to trust that clinicians' 
@@ -344,8 +346,8 @@ standards, but there is no clear picture of what
 \IT{} engineers can or should do to improve the technology 
 going forward.    
 Regulatory oversight is only effective in proportion to 
-scientific clarity \visavis{} desired outcomes and how 
-technology promotes them.  Drugs and treatment protocols, 
+scientific clarity \visavis{} desired outcomes.  
+Drugs and treatment protocols, 
 for instance, can be evaluated through \q{gold standard} 
 double-blind clinical trials \mdash{} alongside statistical 
 models, like \q{five-sigma} criteria, which measure 
@@ -375,8 +377,8 @@ in its local implementation and holistic integration
 which then provide substance to regulative oversight.  
 Stakeholders or governments can recommend (or require) that 
 certain practices adopted, but only if engineers 
-have identified practices which are believed, 
-on firm theoretical ground, to effectuate safer, 
+identify coding standards which are believed, 
+on firm theoretical grounds, to effectuate safer, 
 more robust software.  
 }
 \subsection{Gatekeeper Code}
@@ -708,18 +710,15 @@ than can be achieved via conventional type systems alone.  Integrating these
 paradigms into core-language type systems permits data validation 
 to be integrated with general-purpose type checking, without the need for
 static analyzers or other \q{third party} tools (that is, projects maintained
-orthogonally to the actual language engineering; i.e., to
-compiler and runtime implementations).  Unfortunately, 
+orthogonally to the actual language \mdash{} i.e., to
+compilers and runtimes).  Unfortunately, 
 these advanced type systems are also more complex to implement.  
 If software language engineers aspire to make Dependent Types and 
 similar advanced constructs part of their core language, 
 creating compilers and runtime engines for these languages 
 becomes proportionately more difficult.
 } 
-\p{If these observations are correct, I maintain that it is a worthwhile
-endeavor to return to the theoretical drawing board, with the goal 
-of improving programming language technology itself.  
-Programming languages are, at one level, artificial 
+\p{Programming languages are, at one level, artificial 
 \i{languages} \mdash{} they allow humans to communicate 
 algorithms and procedures to computer processors, and 
 to one another.  But programming languages are also 
@@ -739,28 +738,22 @@ programming languages as communicative media and
 as digital artifacts with their own engineering challenges 
 and limitations.
 }
+\p{These limitations then produce a split between 
+tools \i{in the language itself} and those 
+maintained as separate projects \i{analyzing} code 
+in a given language.  They raise the question, 
+which has no simple answer, of what 
+should be guaranteed \i{by the language} 
+and what should be tested externally.  I will now 
+examine this question in greater detail.
+}
 %\spsubsection{Core Language vs. External Tools}
 \subsection{Core Language vs. External Tools}
 \p{Because of programming languages' engineering limitations, 
 such as I just outlined, software projects should not 
 necessarily rely on core-language features for 
 responsible, safety-conscious programming.
-Academic and experimental languages tend to have 
-more advanced features, and to embody more 
-cutting-edge language engineering, compared to mainstream 
-programming languages.  However, it is not always feasible 
-or desirable to implement important software with 
-experimental, non-mainstream languages.  By their nature, 
-such projects tend to produce code that must be understood by 
-many different developers and must remain usable years into 
-the future.  These requirements point toward 
-well-established, mainstream languages \mdash{} and 
-mainstream development techniques overall \mdash{} as opposed to 
-unfamiliar and experimental methodologies, even if those 
-methodologies have potential for safer, more productive 
-coding in the future.   
-}
-\p{In short, methodologies for safety-conscious coding can be 
+In short, methodologies for safety-conscious coding can be 
 split between those which depend on core-language features, 
 and those which rely on external, retroactive analysis 
 of sensitive code.  On the one hand, some languages and projects
@@ -802,8 +795,8 @@ analysis tools.
 }
 \p{Contrary to this \q{internalist} philosophy, other approaches
 (perhaps I can call them \q{externalist}) favor a neater separation
-of specification, declaration and testing from the core language,
-and from basic-level coding activity.  In particular \mdash{} according to 
+of specification, declaration and testing from the core language.  
+In particular \mdash{} according to 
 the \q{externalist} mind-set \mdash{} most of the more important or complex
 safety-checking does not natively integrate with the
 underlying language, but instead requires
