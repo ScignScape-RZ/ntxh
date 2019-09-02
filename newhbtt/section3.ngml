@@ -54,12 +54,12 @@ consider procedures as instances of functional types,
 specified by tuples of input and output types.  
 A procedure is then a transform which, in the presence 
 of (zero or more) inputs having the proper types, produces 
-(one or more) outputs with their respective types 
+(one or more) outputs with their respective types.   
 (In practice, some procedures do not return values, but they 
 `i.do` have some kind of side-effect, which can be analyzed as a 
 variety of `q.output`/.)  Finally, third, procedures can be 
-studied via mathematical frameworks such as the Lambda Calculus, 
-which allows notions of functions on typed parameters, and 
+studied via mathematical frameworks such as Lambda Calculus, 
+allowing notions of functions on typed parameters, and 
 of functional application %-- applying functions to concrete 
 values, which is analogous to calling procedures with 
 concrete input arguments %-- to be made formally rigorous.
@@ -1052,7 +1052,7 @@ to other (or sometimes the same) elements.  In a `tCat; an endofunctor
 selects (or constructs) a type `tyTwo; from a type `tyOne; %-- note how this is
 different from a morphism which maps `i.values of` `tyOne; to `tyTwo;.
 Type systems are then built up from a smaller set of `q.core` types via
-operations like products, sums, enumerations, and `q.function-like` types.
+operations like products, sums, enumerations, and forming `q.function-like` types.
 `p`
 
 `p.
@@ -1086,7 +1086,7 @@ creates new types out of old.  A type system
 `TyS; may to be `q.closed` under products:
 if `tOne; and `tTwo; are in `TyS; then `tOneTimesTTwo; must be as well.
 Analogously, `TyS; supports function-like types if it 
-is closed under a kind of `q.functionalization` operator: if the
+is closed under a kind of `q.functionalization` operator %-- if the
 `tOneTimesTTwo; product can be mapped onto a function-like type
 `tyOneTotyTwo;.
 `p`
@@ -1195,14 +1195,14 @@ a different object for the called method is supplied expressly.
 `item; \label{chaining} In the object-oriented technique known as `q.method chaining`/,
 one procedures' `return; channel is transferred to a 
 subsequent procedures' `sCh; channel.  The pairing of 
-Return and Sigma channels therefore gives rise to one 
+`return; and `sCh; therefore gives rise to one 
 function-composition operator.  With suitable restrictions 
 (on channel size), `return; and `lambda; channels engender a 
 different function-composition operator.  So channels can be 
 used to define operators between procedures which yield new 
 function-like values (i.e., instances of function-like 
 types).  In some cases, function-like values defined via 
-inter-function operators can be used in lieu of function-like values 
+inter-function operators can be used in lieu of those 
 instantiated from implemented procedures (although the 
 specifics of this substitutability %-- an example of 
 so-called `q.eta ($`eta;$) equivalence` %-- varies by language). 
@@ -1225,7 +1225,7 @@ One particular channel formation %-- `lambdaPLUSreturn;,
 say %-- therefore models 
 the basic `mOldLambda;-Calculus and, simultaneously, 
 the minimal theory of function-like types 
-(for Cartesian Closed type Categories).  
+(for type Categories that are Cartesian Closed).  
 In essence: a procedure's signature, or
 type-expression, can be seen as a `q.sum
 of channels`/, or an inter-channel operation.
@@ -1282,9 +1282,9 @@ groups of types into new types.
 Once we assert that a `CH; is Channelized, we know that there is a mechanism
 for describing some Hypergraphs or subgraphs as `q.procedure 
 implementations` some of whose hypernodes are subject to
-kinds of abstraction present in the relevant Channel Algebra.  The
-terse notation for Channel formulae and signatures describes
-logical norms which can also be expressed with more conventional
+kinds of abstraction present in the relevant Channel Algebra.  
+Channel formulae and signatures describe norms 
+source-code norms which could also be expressed via more conventional
 Ontologies.  So Channel Algebra can be seen as a generalization of
 (`RDF;-environment) Source Code Ontology
 (of the kinds studied for example by
@@ -1351,13 +1351,13 @@ types which in the general case are the basis for `CXL;
 expressions of functional types,
 since most function parameters %-- the input/output values
 that populate channels %-- have non-functional types.
-Section `sectsym;\hyperref[sThree]{3} will discuss the elements that `q.populate`
-`mbox.channels (which I will call `q.carriers`/) in more detail`/.
+Section `sectsym;\hyperref[sFive]{\ref{sFive}} will discuss the elements that `q.populate`
+channels (which I will call `q.carriers`/) in more detail.
 `p`
 
 `p.
-In the following sections I will sketch a
-`q.Channel Algebra` that codifies the graph-based representation
+In the following sections I will sketch a 
+Channel Algebra that codifies the graph-based representation
 of functions as procedures whose inputs and
 outputs are related to other functions by variegated semantics
 (semantics that can be catalogued in a Source Code

@@ -33,25 +33,16 @@ provenance.  In particular, functions are \i{values}
 \TyS{} \mdash{} whereas I will not usually discuss procedures 
 as \q{values}.    
 }
-\p{Most functions which may be called by a software component 
+\p{This distinction notwithstanding, 
+most functions which may be called by a software component 
 are defined as procedures with their own function bodies.  
-Indeed, the essential software-development process involves 
-implementing procedures in code, and then implementing 
-other procedures \mdash{} which call those already-created procedures  
-(in various combinations) \mdash{} to realize their own functionality.  
-That is, source code itself produces instances of 
-functional values, via procedures described by the code.  
 Accordingly, code-graphs for individual procedures capture 
 the implementations through which function-like types 
 are (mostly) populated with concrete values.   
 }
-\p{These various concepts \mdash{} procedures, functions, implementations, 
-and function-bodies or code-graphs \mdash{} are important for 
-broad architectural topics like Requirements Engineering, because 
-they concern the building-blocks from which larger software 
-components are assembled.  When discussing procedures' coding assumptions 
-(more fine-grained than type constraints alone can model), for example, 
-we need a rigorous presentation of what a procedure itself is, 
+\p{When discussing procedures' coding assumptions 
+(those more fine-grained than type constraints alone can model),  
+we need a rigorous definition of the concept \i{procedure} itself, 
 to identify the relevant entity whose assumptions can be documented 
 and tested.  To model the general maxim that any coding assumptions 
 made (but not verified) by one procedure \mdash{} say, \ProcOne{} \mdash{} 
@@ -64,7 +55,7 @@ interrelationships between channels.
 \p{In my formulation of these representations, channels are conceptually 
 integrated with hypergraph code models.  That is, code-graphs are 
 a formal device within the theory I present here.  In many other 
-context code-graphs would instead be, at most, convenient expository 
+contexts code-graphs would instead be, at most, convenient expository 
 devices; for instance, functional programming languages generally do 
 not attach much significance to the contrast of procedures 
 (with function-bodies) and function-values constructed by 
@@ -167,10 +158,10 @@ issues such as \fOfg{} composition operators and Currying
 \makebox{(and also, as I will argue, Dependent Types)}.
 }
 %\spsubsection{Addressability and Implementation}
-\subsection{Addressability and Implementation}
+\subsubsection{Addressability and Implementation}
 \p{As \i{Intermediate} Representations, formal code models (including
 those based on \DH{}s) are not strictly
-identical to actual computer code as seen in source-code files.
+identical to the code in source files.
 In particular, what appears to
 be a single function body may actually form multiple
 implementations via code templates (or even

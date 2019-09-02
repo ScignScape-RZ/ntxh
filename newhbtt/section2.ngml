@@ -108,21 +108,19 @@ whole data package integrates geometric, CyberPhysical,
 and health-record aspects. 
 
 \item[Speech Sampling]  Audio sensors can be used to 
-isolate different people's speech episodes (see Raju Alluri 
-and Anil Kumar Vuppala, this volume; and
-Ravi Kumar Vuddagiri `textit.et. al.`/, this volume).  Feature 
+isolate different people's speech episodes (see Alluri
+and Vuppala, this volume; and Vuddagiri `textit.et. al.`/, this volume).  Feature
 extraction cancels background noise and partitions the foreground 
 audio into different segments, individuated (potentially) by 
 differences between speakers as well as each 
 speaker's conversation turns.  Such data can 
-then be employed in several ways.  Ant\'onio Teixera's chapter 
-(`textit.et. al.`/, this volume) discusses 
-speech-activated User Interfaces for 
-software, while the previous two chapters mentioned above
-present methodology for
-estimating speakers' emotional states and 
-identifying samples' spoken language or dialect, 
-respectively.
+then be employed in several ways.
+The two chapters just mentioned present methodology for
+estimating speakers' emotional states and
+identifying samples' spoken language or dialect,
+respectively; while the chapter by Teixera `textit.et. al.`
+(which I quoted earlier) discusses
+speech-activated User Interfaces.
 `pseudoIndent;
 The data profile germane to 
 an audio processor will be determined by the system's 
@@ -134,7 +132,7 @@ biometric evidence.  For those
 use-cases, programming would emphasize 
 signs of emotional changes (reinforced by both metrics), 
 and secondarily isolating times and locations, 
-which factor into proper sofware responses to 
+which factor into proper software responses to
 users' moods.  
 `pseudoIndent;
 On the other hand, a voice-based 
@@ -154,7 +152,7 @@ geospatial model of language-use in a given area.
 (at least up to the point where acoustical analysis 
 gives way to syntax and semantics), 
 audio samples can be used to track and identify 
-species (Todor Ganchev, this volume; and Boulmaiz, `textit.et. al.`/,
+species (Ganchev, this volume; and Boulmaiz, `textit.et. al.`/,
 this volume).  Here again feature 
 extraction foregrounds certain noise patterns, but the 
 main analytic objective is to map audio samples to 
@@ -181,9 +179,9 @@ to the bird songs, as well as a metadata file
 summarizing species-level data (such as the count 
 of samples identified for each species).  
 Every species also acquires a 4-letter identifier then used
-as part of the `WAV; and `NPY; file names, so the 
-file names themselves serve a classifying role, 
-semantically linking the sample to its species.  
+as part of the `WAV; and `NPY; file names, which thereby 
+themselves serve a classifying role, 
+semantically linking each sample to its species.  
 These three levels of information are a good 
 example of the contrast in granularity 
 %-- and the mechanisms of information acquisition 
@@ -289,7 +287,7 @@ anchored in a personal identifier.
 Other broad issues raised by these CybePhysical case-studies 
 include (1) testing and quality assurance and (2) data 
 interoperability.  In the case of testing, many of the scenarios 
-outlined above (and throughout this volume) require complex 
+outlined above require complex 
 computational transformations to convert raw physical data into 
 usable software artifacts.  In `cite<FadelAdib>;, for example, 
 the authors present technology to measure heart rate from a 
@@ -299,10 +297,7 @@ protocols leverage feature extraction from wireless signal
 patterns.  As with feature extraction in audio and 
 image-analysis (e.g. face recognition) settings, algorithms need 
 to be rigorously tested to guard against false inferences 
-or erroneous generated data.  This implies that analytic 
-code needs to be developed in a software ecosystem which is 
-rigorously structured in documenting algorithmic inputs, outputs, 
-and parameters.  In `cite<FadelAdib>; the ultimate goal is to 
+or erroneous generated data.  In `cite<FadelAdib>; the ultimate goal is to 
 introduce heart and breathing monitors within a Smart Home environment,  
 with computations performed on embedded Operating Systems.  
 However, testing and prototyping of the technology should be 
@@ -318,16 +313,15 @@ this kind of network is physically deployed.
 With respect to data integration, notice how projects mentioned 
 here often anticipate pooled or overlapping information.  For 
 instance, Smart Homes are envisioned to embed sensors analyzing 
-speech, biomedical data-points like heart rate 
-(like I cited last paragraph), atmospheric 
+speech, biomedical data-points like heart rate, atmospheric 
 measurements (temperature, say) and appliance or architectural 
 states (windows, doors, or refrigerator doors being open, 
 ovens or stove burners being turned on, heaters/coolers being active, 
 and so forth).  
 In some cases this data would be cross-referenced, so that 
 e.g. a voice command would close a window or turn off a stove. 
-Analogously, `cite<MohamedSoltane>; (one of whose co-authors, 
-Nouredine Doghmane, is also a coauthor of this volume's 
+Analogously, `cite<MohamedSoltane>; (one of whose co-authors 
+is also a coauthor of this volume's 
 chapter on bird species) describes a combination of 
 face-recognition and speech analysis for `q.multi-modal biometric 
 authentication`/; here again a component supplying 
@@ -352,52 +346,31 @@ of devices evincing a broad spectrum of scientific backgrounds,
 from biology and medicine to ecology and industrial manufacturing.      
 `p`
 
+\vspace{-.1em}
 \subsectiontwolinealt{How Internet of Things Interoperability
 Affects Data Modeling Priorities}{How 
 `q.Internet of Things` Interoperability Affects Data Modeling Priorities}
 `p.
 So, let's imagine the following scenario: homeowners have a choice
-of applications that they may install on their in-home computers, 
+of applications that they may install on their computers, 
 supplied by multiple vendors or institutions, which access 
 the myriad of Smart Home devices they've installed around the 
 property.  CyberPhysical products are engineered to 
 interoperate with such hub applications %-- and therefore 
-with third-party components %-- as well as with their own 
-`q.in house`/-implemented offerings, such as phone apps.
+with third-party components %-- rather than just 
+networking with their own proprietary access points, like phone apps.
 `p`
 
 `p. 
-In this eventuality, individual devices are no longer situated in 
-proprietary circuits linking device signals to apps and 
-databases, for example, where customers purchase 
-each app, and its associated input instrument(s), in isolation.  
-Devices are not only being 
-connected to their own product suite.  Instead, technology inside 
+In this eventuality, technology inside 
 the home is charged with pooling data from many kinds of devices 
 into a comprehensive Smart Home platform, where users can see a 
 broad overview, access disparate device data from a central location, 
 and where cross-device data will be merged into aggregate models: 
 e.g., cross-referencing speech and biometric inputs.  
-In this scenario, devices must be designed to broadcast 
-data to third-party software platforms.  Smart Home `q.hub` 
-applications are likely to be often upgraded; likewise, home 
-owners/renters would likely buy or replace devices fairly 
-often, so the precise configuration of data senders and 
-receivers will dynamically evolve.  These givens call for 
-a modular, flexible architecture where a central software 
-hub is poised to receive data from different devices as 
-they come `q.online`/, i.e., exposed on the Smart Home 
-internal network.  Hub applications should seamlessly 
-adjust to devices joining and also exiting the network.       
-`p`
-
-`p.
-All of this calls for carefully designed protocols, where 
-devices not only expose data but do so in a manner
-conducive to centralized aggregation.  The role of a 
-software hub should be not only to receive data, but to
-transform multi-domain signals into a common 
-graphical presentation.  It should also wrangle received data
+Devices must be designed to broadcast 
+data to third-party software platforms, and software 
+hubs must wrangle received data
 into a common format permitting integration algorithms %--
 e.g. syncing speech and biometrics %-- to operate properly.
 Received device data must therefore be systematically 
@@ -409,31 +382,26 @@ measurements and parameters).
 More technically, the
 key libraries associated with devices are no longer
 merely low-level drivers or `IoT; signal processors.
-Instead, the technology stack would include a software-prioritizing
+Instead, the technology stack would include an 
 intermediate semantic layer acting between `q.smart objects`
 and corresponding hub applications.
-The data models at this semantic midlayer, in short, 
-would no longer be device-centric.  Instead, data models would
-now be assessed in a software-centric milieu: how do we
-route device data to proper interpretive procedures?  
-How do we consolidate device data into `GUI; presentations?     
 `p`
 
 `p.
-Current literature on CyberPhysical data sharing has focused 
-primarily on establishing common formats and Ontologies for 
-CyberPhysical information: our energies have been 
-invested in standardized representational paradigms.  But 
-common representational formats is only a minimal foundation 
-for robust software ecosystems.  I would argue that 
-engineers have overemphasized the virtues of standardized 
-representations in general, driven perhaps by the press 
-surrounding mechanisms like `XML; or `RDF;.  While there is
-nothing wrong with widely-adopted formats, how
-data is `i.encoded` is, in essence, tangential to the primary goal
-of networked software %-- which is to route shared data
-to the proper procedures and `HCI; protocols.  In 
-the case of a Smart Home, once we commit to aggregating devices
+The data models at this semantic midlayer, moreover,
+would no longer be device-centric.  Instead, they would
+be assessed in a software-centric milieu: how do we
+route device data to proper interpretive procedures?  
+How do we consolidate device data into `GUI; presentations?  
+This means that common representational formats for 
+wireless data, or standardized `IoT; Ontologies 
+%-- however much these may technically embody 
+semantic middleware %-- are insufficient as `i.high-level`/, 
+`i.software-centric` semantic layers.
+`p`
+
+`p.
+In the case of a Smart Home, once we commit to aggregating devices
 via a software hub, the key organizing principle is 
 a mesh of procedures implemented in the hub application 
 that can pool all relevant devices into one information 
@@ -555,13 +523,13 @@ are properly managing (e.g., CyberPhysical) data.  The
 idea is that proving procedural conformance should be a 
 central step, and an organizing groundwork, for 
 showing that software intended for production deployment
-is trustworthy and complies to technical and legal specifications.
+is trustworthy and complies with technical and legal specifications.
 `p`
 
 `p.
 In practical terms, the above discussion mentioned the CLO-43SD  
-(avian) data set and Vuddagiri `i.et. al.`/'s 
-chapter, which (as noted below) builds off 
+(avian) data set and then the chapter by Vuddagiri `i.et. al.`/,
+which (as noted below) builds off
 the AP17-OLR `q.challenge` corpus.  I will also 
 be referring to recent `CoNLL; corpora.  So, together,
 these constitute three representative examples of
@@ -578,7 +546,7 @@ parsing).  Accompanying materials for this chapter
 provide profiles of the three aforementioned data sets, 
 which consolidate their various files and formats into 
 a streamlined %-- and procedure-oriented, 
-`q.software-centic` %-- representational paradigm.  
+`q.software-centric` %-- representational paradigm.
 The demo code presents examples 
 of procedures and data types targeting these 
 data sets, as well as an architecture for 
@@ -663,7 +631,7 @@ As a result, portions of the software targeting
 for acquiring, transforming, validating, and 
 interactively displaying individual samples %-- 
 remain useful as components or prototypes for 
-deployed product.  Code libraries employed in 
+deployed products.  Code libraries employed in 
 `RnD; cycles should typically be the basis 
 for data models guiding the implementation of 
 production software. 
@@ -684,9 +652,9 @@ speech input) in CyberPhysical settings.
 `p`
 
 `p.
-The chapter by Teixera `i.et. al.`/, which I cited earlier,  
+This volume's chapter by Teixera `i.et. al.`   
 considers voice-activated 
-CyberPhysical interfaces; in this context Natural Language 
+CyberPhysical interfaces; here Natural Language 
 segments become the core elements in translating 
 user queries to actionable software responses.  The proposed 
 systems analyze speech patterns to build textual 
@@ -731,10 +699,7 @@ acoustic features (because the original inputs are
 audio-based) that can help an `NLP; engine to 
 properly parse sentences (for instance by 
 noting which words or syllables are vocally emphasized).  
-So, in the context of integrated Smart Home 
-hub software (continuing the above discussion), 
-this is the kind of data which would be transmitted to 
-a hub application.  We can assume that audio processing 
+We can assume that audio processing 
 as well as `NLP; technology would supply intermediary 
 processing somewhere between acoustic devices and 
 the centralized application. 
@@ -803,10 +768,10 @@ itself; (2) location info, such as spatial position and
 which room a speaker is found in; (3) timestamps; 
 (4) speaker info, if available; (5) audio files; 
 and maybe (6) extra acoustical or intonation data. 
-Extra data could include annotations based on how 
+(Those extra details could include annotations based on how 
 conversation analysts notate speech patterns, or 
 might be waveform features derived from initial 
-processing of speech samples.   
+processing of speech samples.)   
 `p`
 
 `p.
@@ -833,7 +798,7 @@ models, which must be interoperable with linguistic
 parses.  So along with data types specific to 
 linguistic elements we can consider `q.bridge` types 
 connecting linguistic data (e.g., lexemes) to 
-data types modeling physical objects themselves.  
+data types modeling physical objects.  
 `p`
 
 `p.
@@ -875,7 +840,7 @@ more important than standardized data formats.
 
 `p.
 We can also consider representative criteria for 
-testing procedures; for instance, preconditions that 
+testing procedures; in particular, preconditions that 
 procedures need to recognize.  In `CoNLLU;, 
 individual words can be extracted from a parse-model, 
 but the numeric index for the word must fall within a 
@@ -903,6 +868,7 @@ developing more abstract or theoretical models
 of procedures, as formal constructions, subsequently 
 in the chapter. 
 `p`
+`input<profiles>;
 
 `vspace<-.1em>;
 %`spsubsection.Proactive Design`
@@ -938,7 +904,7 @@ CyberPhysical input directly or may model artifacts
 constructed from CyberPhysical input midstream, such 
 as audio or image files, or text transcriptions 
 representing speech input.  The summaries are not 
-rigorous data models, but are just suggestive cues 
+rigorous profiles, just suggestive cues 
 about what sort of details engineers should consider 
 when formalizing data models.  In general, detailed 
 models should be defined for any input source 
@@ -951,7 +917,6 @@ input, that can be shared between software components
 (within hub applications and/or between hubs and 
 middleware).
 `p`
-`input<profiles>;
 
 `p.
 These data profiles need to be integrated with CyberPhysical code from a
@@ -1022,7 +987,7 @@ digital substratum.
 `p`
 
 `p.
-I have argues that hub `i.libraries` %-- intermediaries between CyberPhysical 
+I have argued that hub `i.libraries` %-- intermediaries between CyberPhysical 
 devices and hub applications %-- are the key components where  
 diverse requirements may be exercised.  Hub libraries therefore need 
 capabilities for documenting coding assumptions and requirements,  

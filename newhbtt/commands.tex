@@ -108,7 +108,7 @@
 
 \newcommand{\stwoline}[1]{%
 \sbox{\twolinebox}{\raisebox{-3pt}%
-{\parbox{7.4cm}{\linespread{1.25}\selectfont\raggedleft{\textbf{{\large #1}}}}}}}
+{\parbox{79mm}{\linespread{1.25}\selectfont\raggedleft{\textbf{{\large #1}}}}}}}
 
 \newcommand{\twoline}{\usebox{\twolinebox}}
 
@@ -164,10 +164,10 @@
 
 \setlength{\parindent}{30pt}
 
-\usepackage[letterpaper, left=.47in,right=.47in,top=.78in,bottom=.78in]{geometry}
+\usepackage[letterpaper, left=.47in,right=.47in,top=.7in,bottom=.7in]{geometry}
 
 \let\xbibitem\bibitem
-\renewcommand{\bibitem}[2]{\vspace{8pt}\xbibitem{#1}{#2}}
+\renewcommand{\bibitem}[2]{\vspace{6pt}\xbibitem{#1}{#2}}
 
 \newenvironment{frquote}{%
 %\begin{fcolorbox}{yellow!20!gray}{red!5}
@@ -402,8 +402,9 @@
 \newcommand{\typeTpp}{\lclc{\ensuremath{\ty''}}}
 
 
-\newcommand{\gOpTransferOneOneF}{\codeText{g:}\codeTextr{return$_1$}{\opTransfer}%
-\codeText{f:}\codeTextr{lambda$_1$}}
+
+\newcommand{\gOpTransferOneOneF}{\codeText{g:}\codeTextch{return$_1$}{\codeTextr{\opTransfer}}%
+\codeText{f:}\codeTextch{lambda$_1$}}
  
 \newcommand{\fDotOfg}{\codeText{f$\circ$g}}
 \newcommand{\fDotOfGX}{\codeText{(f.g)(x)}}
@@ -1039,7 +1040,7 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 \newcommand{\CStrucst}{C\codeText{struct}}
 
 \newcommand{\throw}{\codeText{throw}}
-\newcommand{\exception}{\codeText{exception}}
+\newcommand{\exception}{\codeTextch{exception}}
 
 \newcommand{\float}{\codeText{float}}
 
@@ -1091,7 +1092,8 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\lsrx}{\makebox{\makebox{\lsrxCh}%
 { }{\colonblg} \chnt{lam!*},\chnt{sig?\%},\chnt{ret!\%},\chnt{exc?\%}}}
-\newcommand{\sCh}{\chsnt{sig}}
+
+\newcommand{\sCh}{\codeTextch{sigma}}
 
 
 \newcommand{\lrx}{\makebox{%
@@ -1099,8 +1101,9 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \let\OldLambda\lambda
 
-\renewcommand{\lambda}{\codeText{lambda}}
-\renewcommand{\return}{\codeText{return}}
+
+\renewcommand{\lambda}{\codeTextch{lambda}}
+\renewcommand{\return}{\codeTextch{return}}
 
 \newcommand{\lambdaPLUSreturn}{{\lambda}{\codeTextr{+}}{\return}}
 
@@ -1129,7 +1132,9 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\QDataStream}{\codeText{QDataStream}}
 
-\newcommand{\CATSet}{$\mathbb{S}$}
+%\newcommand{\CATSet}{$\mathbb{S}$}
+\newcommand{\CATSet}{\codeTextr{$\mathbb{S}$}}
+
 
 \newcommand{\DSL}{\AcronymText{DSL}}
 \newcommand{\TXL}{\AcronymText{TXL}}
@@ -1184,10 +1189,13 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 \newcommand{\tCat}{\TyS}
 \newcommand{\DBH}{\AcronymText{DBH}}
 
-\newcommand{\cCat}{$\mathbb{C}$}
-\newcommand{\eOneToeTwo}{$e_1 \rightarrow e_2$}
-\newcommand{\eOne}{$e_1$}
-\newcommand{\eTwo}{$e_2$}
+%\newcommand{\cCat}{$\mathbb{C}$}
+\newcommand{\cCat}{\codeTextr{$\mathbb{C}$}}
+
+
+\newcommand{\eOne}{\codeTextr{$e_1$}}
+\newcommand{\eTwo}{\codeTextr{$e_2$}}
+\newcommand{\eOneToeTwo}{ {\eOne} \codeText{$\rightarrow$} {\eTwo}}
 
 \newcommand{\VolSphere}{\codeTextr{$\frac{{4\pi R^3 }}{3}$}}
 
@@ -1219,6 +1227,21 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 \newcommand{\GIS}{\AcronymText{GIS}}
 
 
+\definecolor{bblGreen}{rgb}{.2,.5,.5}
+
+\colorlet{chc}{bblGreen!30!black}
+
+\newcommand{\chsnt}[1]{{\color{chc}{\chsymt\chname{#1}}}}
+\newcommand{\chnt}[1]{{\color{chc}{\chname{#1}}}}
+
+\newcommand{\colonblg}{{\color{chc}{:}}}
+
+\newcommand{\chcolor}[1]{{\color{chc}{#1}}}
+
+\newcommand{\chsntsz}[1]{{\color{chc}{\makebox{\#\chsymt\chname{#1}}}}}
+
+
+
 \newcommand{\CodeMinted}[1]{{\color{codegr}{{%
 \fontfamily{lmss}\fontseries{b}\selectfont{#1}}}}}
 
@@ -1228,9 +1251,15 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 \newcommand{\CodeMintedr}[1]{{\color{red!40!black}{{%
 \fontfamily{lmss}\fontseries{b}\selectfont{#1}}}}}
 
+\newcommand{\CodeMintedch}[1]{{\color{chc}{{%
+\fontfamily{lmss}\fontseries{b}\selectfont{#1}}}}}
+
 \newcommand{\codeText}[1]{\CodeMinted{#1}}
 \newcommand{\codeTexto}[1]{\CodeMintedo{#1}}
 \newcommand{\codeTextr}[1]{\CodeMintedr{#1}}
+
+\newcommand{\codeTextch}[1]{\CodeMintedch{#1}}
+
 
 \newcommand{\FactPP}{\AcronymText{Fact++}}
 
@@ -1242,22 +1271,13 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 \newcommand{\chsymt}{\raisebox{3pt}{\rotatebox{-45}{$\Arrowvert$}}\hspace{-5pt}%
 \raisebox{1pt}{\rotatebox{-45}{\tiny{$\gg$}}}\hspace{-1pt}}  %\searrow \Rightarrow
 
-\newcommand{\chsnt}[1]{{\color{blGreen!40!black}{\chsymt\chname{#1}}}}
-\newcommand{\chnt}[1]{{\color{blGreen!40!black}{\chname{#1}}}}
-
-\newcommand{\colonblg}{{\color{blGreen!40!black}{:}}}
-
-\newcommand{\chcolor}[1]{{\color{blGreen!40!black}{#1}}}
-
-\newcommand{\chsntsz}[1]{{\color{blGreen!40!black}{\makebox{\#\chsymt\chname{#1}}}}}
-
 
 \newcommand{\chsn}[1]{\chsym\chname{#1.}}
 
 \newcommand{\lXY}{\codeTexto{${\OldLambda}x.{\OldLambda}y$}}
 
 
-\newcommand{\CHlXY}{\chcolor{\chsn{lam}$xy$}}
+\newcommand{\CHlXY}{\chcolor{\chsn{lambda}$xy$}}
 
 
 
@@ -1417,36 +1437,36 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\fntoch}{\codeTextr{$f_n$ $\rightarrow$ $\chi$}}
 
-\newcommand{\sigmac}{\codeTextr{sigma}}
-\newcommand{\sigmach}{\codeTextr{sigma}} 
+\newcommand{\sigmac}{\codeTextch{sigma}}
+\newcommand{\sigmach}{\codeTextch{sigma}} 
 
 \newcommand{\sigmaCalculi}{$\varsigma$-calculi}
 \newcommand{\sigmaCalculii}{$\varsigma$-calculi}
 \newcommand{\sigmaCalculus}{$\varsigma$-calculus}
 
-\newcommand{\returnc}{\codeTextr{return}}
+\newcommand{\returnc}{\codeTextch{return}}
 
-\newcommand{\lambdach}{\codeTextr{lambda}}
+\newcommand{\lambdach}{\codeTextch{lambda}}
 
 \newcommand{\catchddd}{\codeTextr{catch(...)}}
 
 \newcommand{\sectsym}{\S}
 
-\newcommand{\error}{\codeTextr{exception}}
-\newcommand{\errorc}{\codeTextr{exception}}
-\newcommand{\errorrc}{\codeTextr{exception}}
-\newcommand{\returnrc}{\codeTextr{return}}
+\newcommand{\error}{\codeTextch{exception}}
+\newcommand{\errorc}{\codeTextch{exception}}
+\newcommand{\errorrc}{\codeTextch{exception}}
+\newcommand{\returnrc}{\codeTextch{return}}
 
-\newcommand{\returnch}{\codeTextr{return}}
-\newcommand{\fgroundch}{\codeTextr{fground}}
+\newcommand{\returnch}{\codeTextch{return}}
+\newcommand{\fgroundch}{\codeTextch{fground}}
 
 
-\newcommand{\lambdac}{\codeTextr{lambda}}
-\newcommand{\capturec}{\codeTextr{capture}}
-\newcommand{\capturech}{\codeTextr{capture}}
+\newcommand{\lambdac}{\codeTextch{lambda}}
+\newcommand{\capturec}{\codeTextch{capture}}
+\newcommand{\capturech}{\codeTextch{capture}}
 
-\newcommand{\errorch}{\codeTextr{exception}}
-\newcommand{\breakch}{\codeTextr{break}}
+\newcommand{\errorch}{\codeTextch{exception}}
+\newcommand{\breakch}{\codeTextch{break}}
  
 \renewcommand{\break}{\codeText{break}}
 \newcommand{\breakct}{\codeText{break}}
@@ -1459,7 +1479,7 @@ tabsize=2, frame=lines, captionpos=b, caption={Turtle Formats}}
 
 \newcommand{\bindFn}{\codeText{bindFn}} 
 
-\newcommand{\lookupch}{\codeTextr{lookup}} 
+\newcommand{\lookupch}{\codeTextch{lookup}} 
 
 
 \newcommand{\stdFuture}{\codeText{std::future}} 
