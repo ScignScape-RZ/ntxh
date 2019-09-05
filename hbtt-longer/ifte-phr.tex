@@ -1,0 +1,74 @@
+\begin{figure} 
+\begin{lstlisting}[caption={%
+\emblink{\#lst--ifte--\thelstlisting.pgvm-pdf}{Channelized Intermediate Representation,    
+  with deferred evaluation}},
+  numbers = none, escapechar = !,label={lst:ifte-phr},
+    basicstyle = \ttfamily\bfseries\footnotesize, linewidth = \linewidth]
+ .; generate_from_fn_node ;.
+push_carrier_stack $ fground ;.
+hold_type_by_name $ fbase ;.
+push_carrier_symbol $ &test-if-then-else ;.
+ .; args ;.
+push_carrier_stack $ lambda ;.
+
+push_unwind_scope $ 1 result ;.
+
+ .; unwind_scope: 1 ;.
+
+ .; generate_from_fn_node ;.
+push_carrier_stack $ fground ;.
+hold_type_by_name $ fbase ;.
+push_carrier_raw_value $ #=? ;.
+ .; args ;.
+push_carrier_stack $ lambda ;.
+hold_type_by_name $ u4 ;.
+push_carrier_raw_value $ 4 ;.
+hold_type_by_name $ u4 ;.
+push_carrier_raw_value $ 5 ;.
+push_carrier_stack $ result ;.
+index_channel_group ;.
+coalesce_channel_group ;.
+ .; pop ;.
+pop_unwind_scope ;.
+temp_anchor_channel_group_by_need ;.
+ .; end fground entry ;.
+hold_type_by_name $ u4 ;.
+push_carrier_expression ;.
+
+
+ .; block ... ;.
+@fnp ;.
+
+
+ .; generate_from_fn_node ;.
+push_carrier_stack $ fground ;.
+hold_type_by_name $ fbase ;.
+push_carrier_symbol $ &prn ;.
+ .; args ;.
+push_carrier_stack $ lambda ;.
+hold_type_by_name $ u4 ;.
+push_carrier_raw_value $ 78 ;.
+coalesce_channel_group ;.
+evaluate_channel_group ;.
+delete_temps ;.
+delete_retired ;.
+clear_temps ;.
+reset_program_stack ;.
+ .; end of statement ;.
+@fne ;.
+
+ .; end block ... ;.
+
+hold_type_by_name $ pcv ;.
+push_carrier_anon_fn @ last_source_fn_name ;.
+
+\end{lstlisting}
+
+\begin{tikzpicture}[remember picture, overlay]
+\dovn{6.9}{19}{4};
+\dovn{5.8}{11.3}{5};
+\dovn{4.15}{1.6}{6};
+\end{tikzpicture} 
+\end{figure}
+%\vspace{-2em}
+

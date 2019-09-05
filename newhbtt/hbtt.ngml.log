@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  2 SEP 2019 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  3 SEP 2019 12:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1495,7 +1495,7 @@ Overfull \hbox (2.8112pt too wide) in paragraph at lines 41--43
 []  
  []
 
-) [18]) (./section3.ngml.tex [19] [20]
+[18])) (./section3.ngml.tex [19] [20]
 Underfull \hbox (badness 3343) in paragraph at lines 172--207
 []\OT1/ptm/m/n/10.95 (+20) Early on, though, $\OML/ztmcm/m/it/10.95 ^^U$\OT1/pt
 m/m/n/10.95 (+20) -Calculus was less about
@@ -1599,20 +1599,17 @@ LaTeX Font Warning: Font shape `OT1/cmtt/b/sc' undefined
 
 [43] (./figGFcomplexc.tex) [44]
 LaTeX Font Info:    Font shape `OT1/lmss/b/it' in size <10.95> not available
-(Font)              Font shape `OT1/lmss/bx/it' tried instead on input line 287
+(Font)              Font shape `OT1/lmss/bx/it' tried instead on input line 286
 .
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 287
+(Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 286
 .
- [45]) (./section5a.ngml.tex [46])
-(./section5b.ngml.tex
+ [45]) (./section5b.ngml.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 |[]\OT1/ptm/b/n/10.95 Channelized-Type In-ter-pre-ta-tions of Larger-
  []
 
-[47] [48] [49] (./ifte.tex) [50
-\pgfsyspdfmark {pgfid25}{20875090}{4983062}
-] (./ifte-phr.tex
+[46] [47] (./ifte.tex) [48] (./ifte-phr.tex
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 8.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -1627,9 +1624,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-)) (./conclusion.ngml.tex [51] [52
-\pgfsyspdfmark {pgfid32}{2226060}{6457619}
-]) (./biblio.tex [53]
+[49
+\pgfsyspdfmark {pgfid25}{2226060}{4983062}
+])) (./conclusion.ngml.tex [50
+\pgfsyspdfmark {pgfid32}{20875090}{6457619}
+] [51]) (./biblio.tex
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 25.
 LaTeX Font Info:    No file OT1gar.fd. on input line 25.
 
@@ -1647,27 +1646,24 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `gar' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [54] [55] [56] [57])
+ [52] [53] [54] [55]) [56]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 80.
- [58
-
-]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 80.
  (./hbtt.ngml.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 80.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 80.
 Package rerunfilecheck Info: File `hbtt.ngml.out' has not changed.
-(rerunfilecheck)             Checksum: FD9738AAB926A0C3653A2F11943CBF4F;2439.
+(rerunfilecheck)             Checksum: 0D9D894BAC7D011DA20D7102A5295891;2331.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 32054 strings out of 492649
- 637760 string characters out of 6122986
- 869220 words of memory out of 5000000
- 34404 multiletter control sequences out of 15000+600000
+ 32042 strings out of 492649
+ 637568 string characters out of 6122986
+ 870118 words of memory out of 5000000
+ 34402 multiletter control sequences out of 15000+600000
  114107 words of font info for 415 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,12n,85p,1026b,1482s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1712,10 +1708,10 @@ levisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></ho
 me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 </home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on hbtt.ngml.pdf (58 pages, 620950 bytes).
+Output written on hbtt.ngml.pdf (56 pages, 609973 bytes).
 PDF statistics:
- 1432 PDF objects out of 1440 (max. 8388607)
- 1316 compressed objects within 14 object streams
- 497 named destinations out of 1000 (max. 500000)
- 57707 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1415 PDF objects out of 1440 (max. 8388607)
+ 1301 compressed objects within 14 object streams
+ 491 named destinations out of 1000 (max. 500000)
+ 57699 words of extra memory for PDF output out of 61914 (max. 10000000)
 

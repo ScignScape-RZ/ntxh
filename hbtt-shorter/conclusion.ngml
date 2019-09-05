@@ -1,0 +1,242 @@
+`section.Conclusion`
+
+`p.
+To regard data modeling as just a practical, behind-the-scenes 
+endeavor is to underestimate the scientific richness and 
+importance of data modeling paradigms as theoretical 
+constructs.  In science, data models delineate the 
+structure of information generated during scientific 
+investigations (e.g., experiments and field work), and 
+so their structure concretizes scientific theories and/or 
+experimental protocols.  Meanwhile, data modeling 
+has to balance the complexity of human concepts with 
+a predictability conducive to software and computational 
+treatments; data modeling therefore helps 
+expose the boundary, in human cognition, between 
+what is mechanical and what is not %-- between 
+the `q.mind as computer` metaphor and competing 
+paradigms which treat cognition as situational and embodied.    
+`p`
+
+`p.
+Because of these larger themes, data modeling can be 
+seen not just as an operational prerequisite for scientific 
+or technology research %-- and then the  
+conversion of new discoveries into new technologies with 
+practical benefits %-- but also as an interdisciplinary 
+nexus informed by and relevant to Computer Science, 
+mathematics, Philosophy of Science, Sociology of Knowledge, 
+formal semantics, and so forth.
+`p`
+
+`p.
+One key interdisciplinary question is: how can 
+data models be expressive enough to represent 
+cultural and scientific ideas and artifacts 
+%-- without any sense of conceptual 
+mismatch or simplification %-- but at the same time 
+work in a software ecosystem?  To be employed, that is, 
+in a context where data structures have 
+sufficient stability and classifiability that they 
+are amenable to algorithms and mutations to accommodate 
+different software roles, such as database and 
+`GUI; presentations?  Data models should be 
+`i.systematic` so that they engender safe, 
+reliable code.  On the other hand, digital resources 
+should be expressive enough to represent 
+complex concepts without `q.dehumanizing` 
+their structure %-- failing to recognize connections 
+or distinctions which are part of human conceptualization, 
+even if they are technically challenging to model computationally.    
+`p`
+
+`p.
+Achieving all of these goals involves a certain balancing 
+act, where data repositories are modeled via expressive, 
+fine-grained prototypes without becoming too unstructured, 
+or too heterogeneous, for rigorous software implementations.  
+The technical terrain of Ontology-based or type-theoretic 
+modeling can therefore be seen as a drive to 
+expand models' expressiveness as far as possible, but without 
+losing models' underlying formal rigor and tractability.  
+In terms of data models, this can be reflected in the 
+evolution from fixed-field structures (like spreadsheets and relational 
+databases) to labeled-graph Ontologies to Hypergraphs and 
+other multi-scale graph paradigms.  Parallel to the emergence 
+of Semantic Web technology there is also a body of research in 
+Scientific Computing, where expressiveness translates to 
+modeling strategy which encapsulate scientific theories and 
+workflows %-- cf. Object-Oriented simulations 
+(`cite<Telea>;, `cite<TeleaWijk>; being a good case-study) and 
+such formats or approaches as Conceptual Space theory 
+(in science and linguistics) and Conceptual Space Markup Language 
+(`cite<RaubalAdams>;, `cite<RaubalAdamsCSML>;,  
+`cite<RaubalAdamsMore>;, `cite<IgorDouven>;, `cite<Zenker>;,
+`cite<HolmqvistDimensions>;,
+`cite<MartinRaubal>;, `cite<Strle>;).
+Meanwhile, in type theory, a similar 
+impetus leads from the simple type systems of Typed Lambda 
+Calculus through to Dependent Types, typestate, effect systems,
+Object-Orientation, and other features of modern programming 
+environments.
+`p`
+
+`p.
+Whatever their features, data models are ultimately 
+only as usable as the software that receives them.  
+Applications may be receiving CyberPhysical measurements 
+`q.in real time` or affording access to archived 
+research data sets, but in each case the structured 
+formats of shared and/or persisted information must 
+be transformed into interactive, usually `GUI;-based  
+presentations for applications to qualify as 
+productive viewers onto the relevant information space.  
+This is how we should understand 
+the criterion of expressiveness: expressiveness at the 
+modeling level is a means to an end; the ultimate 
+goal is `q.expressive` software, i.e., software whose 
+layout, visual presentations, and interactive features/responsiveness 
+render applications effective vehicles for interfacing 
+with complex, nuanced digital content.
+Ultimately, then, data models are effective to the 
+extent that they promote effective software engineering 
+for the applications that transform modeled data into 
+user-facing digital content.  
+`p`
+
+`p.
+On the other hand, this leaves room for differences in 
+what is prioritized: data models can be targeted at 
+a narrow, specialized set of software end-points, or 
+can be designed flexibly to work with a diversity of 
+software products, in the present and going forward.  
+Broader application-scope is desirable in theory, 
+but practically speaking a data model which is open-ended 
+enough to work with a range of software components 
+is potentially too provisional, or insufficiently 
+detailed, to promote the highest-quality software. 
+`p`
+
+
+`p.
+Information Technology in the last one or two decades 
+seem to have favored general-purpose data models 
+%-- or at least serialization techniques %-- which 
+exist in isolation from applications that work 
+with them.  Canonical examples would be `JSON;, `XML;, 
+and `RDF;.  Conceptually, however, data models' 
+most important manifestation are in the software 
+components where they are shared %-- sent (perhaps 
+indirectly via a generated archive) and received. 
+To the degree that multi-purpose formats like 
+`XML; are beneficial, there merits are in part that 
+developers can anticipate the code that generated 
+and/or will receive the data: while programmers do not 
+necessarily just write code off of an `XML; sample 
+(or corresponding Document Type Declaration), any 
+`XML; document or `DTD; gives us a rough idea of 
+what its client code would look like. 
+`p`
+
+`p.
+Nevertheless, for robust software engineering we should 
+aspire to something more rigorous than that.  In effect, 
+we should consider documentation of components which 
+send and/or receive data structures to be an intrinsic 
+aspect of rigorous data modeling itself: description of 
+the procedures which construct, serialize/deserialize, 
+validate, and transform data structures, particularly 
+those procedures supplying functionality determinative 
+of their components' ability to be part of a 
+conformant data-sharing network.  In this
+sense data and code modeling coincide.  In 
+particular, characterization of individual 
+procedures %-- their types, assumptions, and 
+requirements %-- is an essential building-block 
+of data models generally.  Data structures 
+can be indirectly systematized in terms of 
+the procedures which act upon them.  
+`p`
+
+`p.
+With this background, the code archive supplementing 
+this chapter operationalizes the notion of  
+`q.Procedural Hypergraph Ontologies`/, combining 
+features of Procedural Ontologies and of 
+Directed Hypergraphs that I have presented in 
+this chapter.  Procedural Hypergraph Ontologies 
+extend (or diverge from) conventional 
+Semantic Web Ontology partly by orienting toward 
+Hypergraphs, but more substantially by centering 
+on this procedural dimension: the role of an
+Ontology being to describe components' procedural
+interface as well as their targeted data structures.  
+`p`
+
+`p.
+In particular, the demo presents both a hypergraph serialization 
+format and methodology for generating interface descriptions, 
+based on channel complexes.  The demo code shows a compilation process 
+which works with channel groups, branching off into a runtime 
+engine which actually evaluates channel packages and, separately, 
+algorithms to compile information about procedure signatures and 
+function calls.  This last capability can be a point for embedding 
+more detailed Interface Definition metadata, including via the non-standard 
+channel protocols I have discussed in this chapter.  
+Both static data structures and compiled channel groups 
+translate to a Hypergraph format, which thereby serves as 
+a common denominator between code and data.  
+`p`
+
+`p.
+Architecturally, then, the demo includes several data sets 
+repackaged in a hypergraph-serialization format, and, 
+simultaneously, application-level code which bridges 
+the data sets to `GUI; components.  The code base parses 
+serialized hypergraphs to in-memory hypergraphs and then 
+traverses them, using a kind of visitor pattern, to 
+build in-memory `Cpp; objects, which in turn are mapped 
+to `GUI; objects.  So this chain of processing steps 
+models hypergraph-based data representations and 
+the logistics of incoporating them at the application level.  
+At the same time, `Cpp; objects reconstituted from 
+hypergraphs %-- as well as the `GUI; components 
+which receive them %-- are documented with an 
+Interface Description Language that employs channels 
+for articulating procedural signatures, an `IDL; 
+which in turn compiles to hypergraph structures 
+leveraged for various code-analysis tasks 
+(for example, generating a testing mechanism integrated 
+with the application code).    
+`p`
+
+`p.
+The techniques thereby demonstrated can be practically adopted 
+in several ways.  On the one hand, concepts like channels 
+and preconstructors can be applied to mainstream programming 
+languages like `Cpp;, becoming 
+new design patterns or new coding practices that, over 
+a large code base, can help produce components which are 
+statically analyzable and (by systematic documentation and 
+validation of coding assumption) priotize safety at runtime.  
+On the other hand (as profiled via special languages and 
+Intermediate Representations in the demo), the techniques 
+I have outlined can be used for new data and code models 
+which guide, test, and/or retroactively analyze software 
+components (e.g., using Channel Algebra in a fine-grained 
+Interface Definition Language).       
+`p`
+
+`p.
+Aside from these practical applications, moreover, 
+I contend that channels and Channelized Hypergraphs 
+can be of interest in topics like linguistics and 
+the Philosophy of Science as well %-- insofar 
+as data models and representations of 
+information flow ensapsulate the 
+structure of scientific theories, and the 
+conceptual networks that lie behind 
+Natural Language as well as formal semantics. 
+`p`
+
+

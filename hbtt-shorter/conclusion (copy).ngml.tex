@@ -1,0 +1,170 @@
+\section{Conclusion}
+\p{Both type theory and Semantic Web style Ontologies pose 
+fundamental questions about data modeling \mdash{} about 
+how digitized data structures can capture the nuances 
+and detail of human and scientific concepts.  Ideally, 
+data models are expressive enough to represent 
+concepts and artifacts, drawn from our cultural and 
+scientific domains, without any sense of conceptual 
+mismatch or simplification; but at the same time 
+work in a software ecosystem, where data structures have 
+sufficient predictability and classification that they 
+are amenable to algorithms and mutations to accommodate 
+different software roles, such as database and 
+\GUI{} presentations.  Data models should be 
+\i{systematic} so that they engender safe, 
+reliable code.  On the other hand, digital resources 
+should be expressive enough to represent 
+complex concepts without oversimplification.    
+}
+\p{Achieving all of these goals involves a certain balancing 
+act, where data repositories are modeled via expressive, 
+fine-grained prototypes without becoming too unstructured, 
+or too heterogeneous, for rigorous software implementations.  
+The technical terrain of Ontology-based or type-theoretic 
+modeling can therefore be seen as a drive to 
+expand models' expressiveness as far as possible, but without 
+losing models' underlying formal rigor and tractability.  
+In terms of data models, this can be reflected in the 
+evolution from fixed-field structures (like spreadsheets and relational 
+databases) to labeled-graph Ontologies to Hypergraphs and 
+other multi-scale graph paradigms.  Parallel to the emergence 
+of Semantic Web technology there is also a body of research in 
+Scientific Computing, where expressiveness translates to 
+modeling strategy which encapsulate scientific theories and 
+workflows \mdash{} cf. Object-Oriented simulations 
+(\cite{Telea}, \cite{TeleaWijk} being a good case-study) and 
+such formats or approaches as Conceptual Space theory 
+(in science and linguistics) and Conceptual Space Markup Language 
+(\cite{RaubalAdams}, \cite{RaubalAdamsCSML},  
+\cite{RaubalAdamsMore}, \cite{IgorDouven}, \cite{Zenker},
+\cite{HolmqvistDimensions},
+\cite{MartinRaubal}, \cite{Strle}).
+Meanwhile, in type theory, a similar 
+impetus leads from the simple type systems of Typed Lambda 
+Calculus through to Dependent Types, typestate, effect systems,
+Object-Orientation, and other features of modern programming 
+environments.
+}
+\p{Whatever their features, data models are ultimately 
+only as usable as the software that receives them.  
+Applications may be receiving CyberPhysical measurements 
+\q{in real time} or affording access to archived 
+research data sets, but in each case the structured 
+formats of shared and/or persisted information must 
+be transformed into interactive, usually \GUI{}-based  
+presentations for applications to qualify as 
+productive viewers onto the relevant information space.  
+This is how we should understand 
+the criterion of expressiveness: expressiveness at the 
+modeling level is a means to an end; the ultimate 
+goal is \q{expressive} software, i.e., software whose 
+layout, visual presentations, and interactive features/responsiveness 
+render applications effective vehicles for interfacing 
+with complex, nuanced digital content.
+Ultimately, then, data models are effective to the 
+extent that they promote effective software engineering 
+for the applications that transform modeled data into 
+user-facing digital content.  
+}
+\p{On the other hand, this leaves room for differences in 
+what is prioritized: data models can be targeted at 
+a narrow, specialized set of software end-points, or 
+can be designed flexibly to work with a diversity of 
+software products, in the present and going forward.  
+Broader application-scope is desirable in theory, 
+but practically speaking a data model which is open-ended 
+enough to work with a range of software components 
+is potentially too provisional, or insufficiently 
+detailed, to promote the highest-quality software. 
+}
+\p{Information Technology in the last one or two decades 
+seem to have favored general-purpose data models 
+\mdash{} or at least serialization techniques \mdash{} which 
+exist in isolation from applications that work 
+with them.  Canonical examples would be \JSON{}, \XML{}, 
+and \RDF{}.  Conceptually, however, data models' 
+most important manifestation are in the software 
+components where they are shared \mdash{} sent (perhaps 
+indirectly via a generated archive) and received. 
+To the degree that multi-purpose formats like 
+\XML{} are beneficial, there merits are in part that 
+developers can anticipate the code that generated 
+and/or will receive the data: while programmers do not 
+necessarily just write code off of an \XML{} sample 
+(or corresponding Document Type Declaration), any 
+\XML{} document or \DTD{} gives us a rough idea of 
+what its client code would look like. 
+}
+\p{Nevertheless, for robust software engineering we should 
+aspire to something more rigorous than that.  In effect, 
+we should consider documentation of components which 
+send and/or receive data structures to be an intrinsic 
+aspect of rigorous data modeling itself: description of 
+the procedures which construct, serialize/deserialize, 
+validate, and transform data structures, particularly 
+those procedures supplying functionality determinative 
+of their components' ability to be part of a 
+conformant data-sharing network.  In this
+sense data and code modeling coincide.  In 
+particular, characterization of individual 
+procedures \mdash{} their types, assumptions, and 
+requirements \mdash{} is an essential building-block 
+of data models generally.  Data structures 
+can be indirectly systematized in terms of 
+the procedures which act upon them.  
+}
+\p{With this background, the code archive supplementing 
+this chapter operationalizes the notion of  
+\q{Procedural Hypergraph Ontologies}, combining 
+features of Procedural Ontologies and of 
+Directed Hypergraphs that I have presented in 
+this chapter.  Procedural Hypergraph Ontologies 
+extend (or diverge from) conventional 
+Semantic Web Ontology partly by orienting toward 
+Hypergraphs, but more substantially by centering 
+on this procedural dimension: the role of an
+Ontology being to describe components' procedural
+interface as well as their targeted data structures.  
+}
+\p{In particular, the demo presents both a hypergraph serialization 
+format and methodology for generating interface descriptions, 
+based on channel complexes.  The demo code shows a compilation process 
+which works with channel groups, branching off into a runtime 
+engine which actually evaluates channel packages and, separately, 
+algorithms to compile information about procedure signatures and 
+function calls.  This last capability can be a point for embedding 
+more detailed Interface Definition metadata, including via the non-standard 
+channel protocols I have discussed in this chapter.  
+Both static data structures and compiled channel groups 
+translate to a Hypergraph format, which thereby serves as 
+a common denominator between code and data.  
+}
+\p{I believe that procedure-oriented, software-centric 
+codewriting paradigms \mdash{} and technical constructions 
+such as Channel Algebra and Channelized Hypergraphs 
+\mdash{} are useful because they can adapt to different 
+programming environments, and integrate the best 
+aspects of Object-Oriented, Functional, and Logical 
+programming.  Contemporary software engineering still seems caught in 
+a paradigm split, with Functional and Object-Oriented styles seen as 
+competitors rather than candidates for admixture, and with a 
+profound divergence between code libraries targeting native, 
+desktop applications and those designed for the web ecosystem.  
+But safe and reliable software needs to use both Object-Oriented 
+and Functional techniques when each are called for, 
+and, ideally, needs to deliver applications combining
+native and web components.   
+}
+\p{In short, the methodological divisions which have characterized
+software engineering in the last quarter-century have hindered,
+rather than helped, the ultimate goal of creating 
+quality applications \mdash{} software that users can trust 
+and enjoy.  I believe that further research in programming language design 
+and software engineering methodology will reveal  
+these divisions to be preliminary, and a new generation of 
+web/desktop and Object/Functional hybrid paradigms can emerge.  
+Given the unique requirements of the CyberPhysical domain, 
+perhaps CyberPhysical and Ubiquitous Sensing technology will 
+be a momentum boost for this kind of behind-the-scenes research.     
+}

@@ -1,0 +1,378 @@
+\section{Channels and Carriers}
+\phantomsection\label{sFive}
+\p{Suppose one procedure calls a second.  From a high level perspective,
+this has several consequences that can be semantic-graph represented
+\mdash{} among others, that the calling procedure depends on an
+implementation of the callee being available \mdash{} but at the
+source code level the key consequence is that a node representing
+source tokens which designate functional values enters into
+different semantic relations (modeled by different kinds
+of edge-annotations) than nodes marking other types
+of values and literals.  Suppose we have an edge-annotation
+that \nodex{} is a value passed to \nodef{}; this graph is only
+semantically well-formed if \nodef{}'s representatum has
+functional type (by analogy to the well-formedness 
+criteria of \lambdaxfx{}).
+}
+\p{This motivates the following: suppose we have a Directed
+Hypergraph, where the
+nodes for each hyper-edge represent source-code tokens (specifically,
+symbols and literals).  Via the relevant Source Code Ontology, we can
+assert that certain
+edge-annotations are only possible if a token (in subject or object position)
+designates a value passed to a function.  From the various edge-annotation
+kinds which meet this criteria, we can define a set of \q{channel kinds}.
+}
+\p{This implicitly
+assumes that symbols \q{hold} values; to make the
+notion explicit, I will say that symbols are
+\i{carriers} for values.  Carriers do not necessarily hold a
+value at every point in the execution of a program; they
+may be \q{preinitialized}, and also \q{retired} (the
+latter meaning they no longer hold a meaningful value;
+consider deleted pointers or references to out-of-scope
+symbols).  A carrier may pass through a
+\q{career} from preinitialized to initialized, maybe then
+changing to hold \q{different} values, and maybe then
+retired.\footnote{Because \q{uninitialized} carriers and \q{dangling pointers}
+are coding errors, within \q{correct} code, carriers
+and values are bound tightly enough that the whole carrier/value
+distinction might be considered an artifact of programming practice,
+out of place in a rigorous discussion of programming languages
+(as logicomathematical systems, in some sense).  But even
+if the \q{career} of symbols is unremarkable, we cannot avoid
+in some contexts \mdash{} within a debugger and/or an \IDE{}
+(Integrated Development Environment, software for writing programs),
+for example \mdash{} needing to formally distinguish the carrier
+from the value which it holds, or recognize that carriers
+can potentially be in a \q{state} where, at some point in which
+they are relevant for code analysis or evaluation, they
+do not yet (or do not any longer) hold meaningful values.
+Consequently, the \q{trajectory} of 
+carrier \q{lifetime} \mdash{} from being declared,
+to being initialized, to falling \q{out of scope} or otherwise \q{retired}
+\mdash{} should be integrated into our formal inventory of programming
+constructs, not relegated to an informal \q{metalanguage} suitable
+for discussing computer code as practical documents but not as formal systems.
+}  I assume each carrier is associated with a single type
+throughout its career, and can only hold values appropriate for its
+type.\footnote{The variety of possible
+careers for carriers is not directly tied to its type: a
+carrier which cannot change values (be reinitialized)
+is not necessarily holding a \const{}-typed value.
+}
+}
+\p{In short, \i{carriers} embody the contrast between abstract or
+mathematical type theory and practical languages' type systems.  
+Instead of the notion of a \i{typed value} \mdash{} an instance of a 
+type \mdash{} we can focus on carriers which are tangible elements of 
+source code and also (during runtimes) binary resources.  
+Carriers evince different states; in those states where they 
+hold a concrete value, carriers play a conceptual role analogous 
+to type-instances in formal type theory.  On the other hand, 
+carriers can have other states which are orthogonal to 
+type systems: carriers holding \i{no} value, for example, 
+are different than carriers holding values of a 
+\q{\nulltt{}} type.    
+}
+\p{With this the basic idea, I will now consider
+carrier operations in more detail, before then expanding on the
+theory of carriers by considering how carriers group into channels.
+}
+\vspace{-.1em}
+%\spsubsection{Carrier Transfers}
+\subsection{Carrier Transfers}
+\p{In this theory, carriers are the basic means by which values are represented
+within computer code, including during communications between different parts of 
+code source (such as calling a procedure).
+The \q{information flow} modeled by a function-call includes values
+held by carriers at the function-call site being transferred to
+carriers at the function-implementation site.  This motivates
+the idea of a \q{transfer} of values between carriers, a kind of primitive
+operation on carriers, linking disparate pieces of code.  It also
+illustrates that the symbols used to name function parameters, as
+part of function signatures, should be considered \q{carriers} analogous
+to lexically-scoped symbols.
+}
+\p{Taking this further, we can define a \i{channel} as a list of carriers which, by
+inter-carrier transfers, signify (or orchestrate) the passage of data into and out
+of function bodies.\footnote{Note that this usage varies somewhat from process calculi,
+where a channel would correspond roughly to what is here called a single carrier;
+I assume channels in the general case are composed of multiple carriers.
+}  I'll use the notation \opTransfer{} to represent inter-carrier transfer: let
+\carrOne{} and \carrTwo{} be carriers, then \carrOneOpTransferTwo{} is a
+transfer \q{operator} (note that \opTransfer{} is non-commutative; the
+\q{transfer} happens in a fixed direction), marking the
+logical moment when a value is moved from code-point to code-point.
+The \opTransfer{} is intended
+to model several scenarios, including \q{forced coercions} where the associated
+value is modified. 
+Meanwhile, without further details a \q{transfer} can be
+generalized to \i{channels} in multiple ways.
+If \carrOne{} and \carrTwo{} are carriers which belong to two channels
+(\chanOne{}, \chanTwo{}), then \carrOneOpTransferTwo{} elevates to
+a transfer between the channels
+\mdash{} but this needs two indices to be concrete: the notation has to
+specify which carrier in \chanOne{} transfers to which carrier in \chanTwo{}.
+For example, consider the basic function-composition \fofg{}:
+\fDotOfGX{} = \fOfGx{}.  The analogous \q{transfer} notation
+would be, say, \gOpTransferOneOneF{}:
+here the first carrier in the \returnch{} channel
+of \funG{} transfers to the first carrier in the \lambdach{} channel of \funF{}
+(the subscripts indicate the respective positions).
+}
+\p{Most symbols in procedure code (so corresponding nodes in a
+code graph) accordingly represent carriers, which
+are either passed in to a function or lexically declared
+in a function body.  Assume each function body corresponds
+with one lexical scope which can have subscopes
+(the nature of these scopes and how they fit in
+graph representation will be addressed later in this section).
+The \i{declared} carriers are initialized with
+values returned from other functions (perhaps the
+current function called recursively), which can
+include constructors that work on literals (so, the
+carrier-binding in source code can look like
+a simple assignment to a literal, as in \intieqzero{}).
+In sum, whether they are passed \i{to} a  function or
+declared \i{in} a function, carriers are only initialized
+\mdash{} and only participate in the overall semantics
+of a program \mdash{} insofar as they are passed to other functions
+or bound to their return values.
+}
+\p{Furthermore, both of these cases introduce associations between
+different carriers in different areas of source code.  When a carrier
+is passed \i{to} a function, there is a corresponding carrier
+(declared in the callee's signature) that receives the
+former's value: \q{calling a function} means
+transferring values between carriers present at the site of
+the function call to those present in the function's
+implementation.  Sometimes this works in reverse: a function's
+return may cause the value of one of its carriers to be
+transferred to a carrier in the caller (whatever
+carrier is bound to the caller's return value).
+}
+\p{Let \carOne{} and \carTwo{} be two carriers.  The \opTransfer{} operator
+(representing a value passed from \carOne{} to \carTwo{}) encompasses
+several cases.  These include:
+\begin{enumerate}\eli{}  Values transfer directly between two carriers in one scope, like \aeqb{} or \aceqb{}.
+\eli{}  A value transferred between one carrier in one function body when the return
+value of that function is assigned to a carrier at the call site, as in \yeqfx{}
+when \fSym{} exits with \retFive{}, so the value \five{} is transferred to \ySym{}.
+\eli{}  \label{transf}A value transferred between a
+carrier at a call-site and a carrier in the
+called function's body.  Given \yeqfx{} and \fFun{} declared as, say,
+\fIntI{}, then the value in carrier \xSym{} at the call-site is transferred to
+the carrier \iSym{} in the function body.  In particular, every node
+in the called function's code-graph whose vertex represents a source-code
+token representing symbol \iSym{} then becomes a carrier whose value is
+that transferred from \xSym{}.
+\eli{}  A value transferred between a \returnch{} channel and either a
+\lambdach{} or \sigmach{} channel, as part of a nested expression or a
+\q{chain of method calls}.  So in \hfx{}, the value held by the carrier
+in \fFuns{}'s \returnch{} channel is transferred to the first carrier in
+\hFun{}'s \lambdach{}.  An analogous \returnch{}\opTransfer{}\sigmach{}
+transfer is seen in code like \fxdoth{}: the value
+in \fFuns{}'s \returnch{} channel becomes the value in \hFun{}'s \sigmach{},
+i.e., its \q{\this{}} (we can use \opTransfer{}
+as a notation between \i{channels} in this case because we understand
+the Channel Algebra in force to restrict the size of both
+\returnch{} and \sigmach{} to be at most one carrier).
+\end{enumerate}
+}
+\p{Let \carOnetoTwof{} be the special case of \opTransfer{}
+corresponding to item \hyperref[transf]{(3)}: a transfer
+effectuated by a function call, where
+\carOne{} is at the call site and \carTwo{} is part of a
+function's signature.  If \fOne{} calls \fTwo{} then
+\carOne{} is in \fOne{}'s context, \carTwo{} is in \fTwo{}'s
+context, and \carTwo{} is initialized with a copy of
+\carOne{}'s value prior to \fTwo{} executing.
+A \i{channel} then becomes a
+collection of carriers which are found in the
+scope of one function and can be on the
+right hand side of an \carOnetoTwof{} operator.
+}
+\p{To flesh out Channels' \q{transfer semantics} further, I will refer back
+to the model of function-implementations as represented in code
+graphs.  If we assume that all code in a computer program is found
+in some function-body, then we can assume that any function-call
+operates in the context of some other function-body.  In particular,
+any carrier-transfer caused by a function call involves a link between
+nodes in two different code graphs (I set aside the case of recursive
+functions \mdash{} those which call themselves \mdash{} for this discussion).
+}
+\p{Analysis of value-transfers is particularly significant
+in the context of Source Code Ontologies and \RDF{} or
+Directed Hypergraph representations
+of computer code.  This is because code-graphs give us a rigorous foundation
+for modeling computer programs as sets of function-implementations
+which call one another.  Instead of abstractly talking about
+\q{procedures} as conceptual primitives, we can see procedures as
+embodied in code-graphs (and function-values as
+constructed from them).  
+\input{figGFcomplexc}Figure~\ref{fig:figGFcomplexc}, for example, 
+shows how graph constructions can track the flow of 
+carriers and values between procedures: this graph-modeling 
+use-case (with additional illustrations) is discussed in greater 
+detail within the demo's documentation.
+\q{Passing values between} procedures is
+then explicitly a family of relationships between nodes
+(or hypernodes) in disparate code-graphs, and the various semantic
+nuances associated with some such transfers (type casts, for example)
+can be directly modeled by edge-annotations.  Given these
+possibilities, I will now explore further how the framework of
+\i{carriers} and \i{channels} fits into a code-graph context.
+}
+\vspace{-.1em}
+%\spsubsection{Channel Groups and Code Graphs}
+\subsubsection{Channel Groups and Code Graphs}
+\p{For this discussion, assume that \fOne{} and \fTwo{} are implemented functions with
+code graphs \gammaOne{} and \gammaTwo{}, respectively.  Assume
+furthermore that some statement
+or expression in \fOne{} involves a call to \fTwo{}.  There are several specific
+cases that can obtain: the expression calling \fTwo{} may be nested in a
+larger expression; \fTwo{} may be called for its side effects alone,
+with no concern to its return value (if any); or the result of \fTwo{}
+may be bound to a symbol in \fOne{}'s scope, as in \yeqfx{}.  I'll take
+this third case as canonical; my discussion here extends to the other
+cases in a relatively straightforward manner.
+}
+\p{A statement like \yeqfx{} has two parts: the expression \fx{} and the symbol
+\ySym{} to which the results of \fFun{} are assigned.  Assume that this
+statement occurs in the body of function \fOne{}; \xSym{} and
+\ySym{} are then symbols in \fOne{}'s scope and the symbol \fFun{} designates
+(or resolves to) a function which corresponds to what I refer to here as
+\fTwo{}.  Assume \fTwo{} has a signature like \fIntI{}  As such, the
+expression \fx{}, where \xSym{} is a carrier in the context of
+\fOne{}, describes a \i{carrier transfer} according to which the value
+of \xSym{} gets transferred to the carrier \iSym{} in \fTwo{}'s context.
+}
+\p{I will say that \fTwo{}'s signature represents a
+channel \q{complex} \mdash{} which, in the current example, has
+a \lambdach{} channel of size one (with one carrier of
+type \int{}) and a \returnch{} channel of size one (\fTwo{}
+returns one \int{}).  Considered in the context of carrier-transfers
+between code graphs, a channel complex may be regarded as a description
+of how two distinct code-graphs are to be connected via carrier
+transfers.  When a function is called, there is a channel
+group which I'll call a \i{package} that supplies values to
+the channel \i{complex}.  In the concrete example, the
+statement \yeqfx{} is a \i{call site} describing a channel
+\i{package}, which becomes connected to a function
+implementation whose signature represents a channel
+\i{complex}: a collection of transfers \carrOneOpTransferTwo{}
+together describe an overall transfer between a
+\i{package} and a \i{complex}.
+}
+\p{More precisely, the \fx{} example represents a carrier transfer whose
+target is part of \fTwo{}'s \lambdach{} channel, which we can notate
+\carrOneOpTransferTwolambda{}.  Furthermore, the full statement \yeqfx{}
+shows a transfer in the opposite direction: the value in
+\fTwo{}'s \i{\returnch{}} channel is transferred to the carrier \ySym{} in
+the \i{package}.  This relation, involving a return
+channel, can be expressed with notation like \carrTwoOpTransferOnereturn{}.
+The syntax of a programming language governs how code at a call site
+supplies values for carrier transfers to and from a function body: in
+the current example, binding a call-result to a symbol always
+involves a transfer from a \i{\returnch{}} channel, whereas handling an
+exception via code like \catchexce{} transfers a value from a called
+function's \i{\exceptionch{}} channel.  The syntactic difference between
+code which takes values from \returnch{} and \exceptionch{} channels,
+respectively, helps reinforce the \i{semantic} difference between
+exceptions and \q{ordinary} returns.  Similarly, method-call syntax
+like \objfx{} visually separates the values that get transferred to a
+\q{\sigmach{}} channel (\obj{} in this case)
+from the \q{ordinary} (\lambdach{}) inputs, reinforcing Object semantics.
+}
+\p{To consolidate the terms I am using: we can interpret both function
+\i{signatures} and \i{calls} in terms of channels.  Both involve
+\q{carrier transfers} in which values are transferred \i{to} or \i{from}
+the channels described by a function signature.  I will say that 
+channels are \i{convoluted} if there is a potential carrier-transfer 
+between them.  The distinction between
+procedures' \q{inputs} and \q{outputs} can be more rigorously stated,
+with this further background, as the distinction between channels
+in function signatures which receive values \i{from} carriers at
+a call site (inputs), and those \i{from which} values are obtained
+as a procedure has completed (outputs).
+}
+\p{A Channel Expression Language (\CXL{}) can describe channels both in
+signatures and at call-sites.  The aggregation of channels generically
+described by \CXL{} expressions I am calling a \i{Channel Group}.
+A Channel Group representing a function \i{signature} I am calling
+a \i{channel complex}, whereas groups representing a function
+\i{call} I am calling a \i{channel package}.  Input channels
+are then those whose carrier transfers occur in the package-to-complex
+direction, whereas output channels are the converse.
+}
+\p{Alongside the package/complex distinction, we can also
+understand Channel Groups at two further levels.  On the one hand,
+we can treat Channel Groups as found \i{in source code},
+where they describe the general pattern of package/complex
+transfers.  On the other hand, we can represent Channel Groups
+\i{at runtime} in terms of the actual values and types held by
+carriers as transfers are effectuated prior to, and then
+after, execution of the called function.  Accordingly,
+each Channel Group may be classified as a \i{compile-time}
+package or complex, or a \i{runtime} package or complex, respectively.
+The code accompanying this chapter includes a \q{Channel Group library}
+\mdash{} for creating and analyzing Channel Groups via a special
+Intermediate Representation \mdash{}
+that represents groups of each variety, so it can be used
+both for static analysis and for enhanced runtimes and scripting.
+}
+\p{The channel/group/complex/package/carrier vocabulary,  
+I believe, codifies a descriptive framework integrating the
+\i{semantic} and \i{syntactic} dimensions of source code and program
+execution.  Specifically, on the \i{semantic} side, 
+computer programs can be understood in
+terms of \mOldLambda{}-Calculi combined with
+models of computation (call-by-value or
+by-reference, eager and lazy evaluation, and so forth).  These
+semantic analyses focus on how values change and are passed between
+functions during the course of a running program.  From this
+perspective, source code is analyzed in terms of the semantics
+of the program it describes: where and when are values moved around?
+}
+\p{Conversely, source code
+can also be approached \i{syntactically}, as well-formed
+expressions of a computer language.  From this perspective,
+correct source code is matched against language grammars, and 
+individual code elements
+(like tokens, code blocks, expressions, and statements) \mdash{} plus
+their inter-relationships \mdash{} are established against this background.
+}
+\p{The theory of Channel Groups straddles both the semantic and syntactic
+dimensions of computer code.  Semantically, carrier-transfers capture the
+fundamental building blocks of program semantics: the overall
+evolving runtime state of a program can be modeled as a succession
+of carrier-transfers, marking
+code-points bridged via a transfer.  Meanwhile,
+syntactically, how carriers belong to channels \mdash{}
+the carrier-to-channel map fixing carriers' semantics \mdash{} structures and
+motivates languages' grammars and rules.  In particular,
+carrier-transfers induce relationships between code-graph nodes.
+As a result, language
+grammars can be studied through code-graphs' profiles
+insofar as they satisfy \RDF{}
+and/or \DH{} Ontologies.
+}
+\p{In sum, a \DH{} and/or Semantic Web representation of computer code
+can be a foundation for both semantic and syntactic analyses, and this
+may be considered a benefit of Channel Group representations
+even if they only restate what are established semantic patterns in 
+mainstream programming language \mdash{} for example, even if they
+are restricted to a \sigmach{}-\lambdach{}-\returnch{}-\exceptionch{}
+Channel Algebra modeled around, say, \Cpp{} semantics
+prior to \CppEleven{} (more recent \Cpp{} standards also call for
+a \q{\capturech{}} channel for inline anonymous functions).
+}
+\p{At the same time, one of my claims in this chapter is that
+more complex Channel Algebras can lead to new tactics for
+introducing more expressive type-theoretic semantics in
+mainstream programming environments.  As such, most of the
+rest of this section will explore additional Channel Kinds
+and associated Channel Groups which extend, in addition
+to merely codifying, mainstream languages' syntax and semantics.
+}
