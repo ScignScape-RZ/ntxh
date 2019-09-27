@@ -1,0 +1,290 @@
+
+
+\setlist{leftmargin=1mm}
+
+
+%% environment for displaying longish quotes, with a color frame ...
+\newenvironment{dquote}{%
+	\begin{flushright}
+	\vspace{1em}\begin{tcolorbox}[
+		breakable, parbox=false, colback=gray!4,
+		colframe=mRed!20!gray,
+		width=.995\linewidth,
+		boxrule=1pt,leftrule=3pt,
+		rightrule=1pt,toprule=.5pt,arc=0pt,auto outer arc
+		]
+\begin{adjustwidth}{1pt}{-3pt}
+}{%
+\end{adjustwidth}
+\end{tcolorbox}\vspace{1em}
+	\end{flushright}
+}
+
+%% custom sectioning mechanicm.  
+%% Using LaTeX's own sectioning mechanism with some sectioning styles can 
+%% cause PDF viewers to garble (sub)section titles -- not in the document 
+%% itself but in side navigation windows.  Ergo I sidestep LaTeX's 
+%% sectioning (except for grounding references).  
+%% But these alternative commands can revert back to ordinary 
+%% LaTeX sections to conform to some documentclass which has 
+%% its own sectioning presentations.
+\newcounter{subs}[section]
+
+\newcommand{\subss}[2]{	
+\phantomsection \label{#1}
+\addcontentsline{toc}{subsection}{#1}
+\stepcounter{subs}
+\refstepcounter{subsection}
+\vspace*{3.25em}
+
+\noindent{ {\Large\textbf\thesection.}{\large\textbf\thesubs}} {
+ {{\Large\textbf{#2}}}
+}
+\vspace*{.35em} 
+}
+
+\newcommand{\subsstl}[2]{	
+\phantomsection \label{#1}
+\addcontentsline{toc}{subsection}{#1}
+\stepcounter{subs}
+\refstepcounter{subsection}
+\vspace*{3.25em}
+
+\noindent{ \raisebox{-1pt}{\Large\textbf\thesection.}{\large\textbf\thesubs}} {
+\raisebox{-1pt}{{\Large\textbf{#2}}}
+}
+\vspace*{.35em} 
+}
+
+\let\Osubsection\subsection
+
+\renewcommand{\subsection}[1]{\subss{#1}{#1}}
+
+\newsavebox{\twolinebox}
+
+\newcommand{\stwoline}[1]{%
+\sbox{\twolinebox}{\raisebox{-3pt}%
+{\parbox{79mm}{\linespread{1.25}\selectfont\raggedleft{\textbf{{\large #1}}}}}}}
+
+\newcommand{\twoline}{\usebox{\twolinebox}}
+
+\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subsstl{#1}{\twoline}
+
+\vspace{1em}}
+
+\newcommand{\subsectiontwolinerepl}[2]{\stwoline{#1}\subsstl{#2}{\twoline}
+
+\vspace{1em}}
+
+\newcommand{\subsectiontwolinealt}[2]{\stwoline{#2}\subsstl{#1}{\twoline}
+
+\vspace{1em}}
+
+
+\titlespacing{\subsection}{0pt}{20pt}{20pt}
+\titlespacing{\section}{0pt}{35pt}{15pt}
+\titlespacing{\subsubsection}{0pt}{20pt}{5pt}
+
+
+\titleformat*{\subsection}{\small\bfseries}
+
+
+\setlength{\parindent}{30pt}
+
+\newlength{\bsep}
+\setlength{\bsep}{3.5pt}
+
+\newcommand{\urlfootnote}[1]{{\interfootnotelinepenalty=10000\protect\footnote{\url{#1}}}}
+\newcommand{\nobrfootnote}[1]{{\interfootnotelinepenalty=10000\protect\footnote{#1}}}
+
+\let\xbibitem\bibitem
+\renewcommand{\bibitem}[2]{\vspace{\bsep}\xbibitem{#1}{#2}}
+
+%% This is for quotes at the top of the chapter ...
+\newenvironment{frquote}{%
+\begin{tcolorbox}[
+	colback=white,
+	colframe=white,
+	width=.97\linewidth,
+	arc=0mm, auto outer arc
+	]
+\begin{scriptsize}
+\begin{minipage}{61em}
+\begin{flushright}
+\begin{minipage}{63em}}{%
+\end{minipage}
+\end{flushright}
+\end{minipage}
+\end{scriptsize}
+\end{tcolorbox}
+}
+
+
+\setlength{\columnsep}{8mm}
+
+\AtBeginEnvironment{thebibliography}{\linespread{1}\selectfont}
+
+\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
+{\scriptsize {\url{#1}}}}}}
+
+\let\OldFootnoteSize\footnotesize
+\renewcommand{\footnotesize}{\scriptsize}
+
+\newif\iffootnote
+\let\Footnote\footnote
+\renewcommand\footnote[1]{\begingroup\footnotetrue\Footnote{#1}\endgroup}
+
+\definecolor{BaseColor}{HTML}{8533FF}
+
+\colorlet{ftcfore}{BaseColor!60!cyan}
+\colorlet{ftcback}{BaseColor!40!cyan}
+
+
+\newcommand{\tc}[2]{
+\vspace*{6mm}
+\begin{tcolorbox}
+[#1 colframe=darkRed!70!BaseColor,boxrule=0.5pt,arc=22pt,enhanced,
+toprule=0pt,bottomrule=1pt,
+drop fuzzy shadow northeast={darkRed!70!purple},
+      boxsep=3pt]\hspace{3em}\parbox{0.8\textwidth}\protect{#2}
+\end{tcolorbox}      
+\vspace*{-4mm}
+}
+
+\renewcommand{\figurename}{Diagram}
+
+\newcommand{\emblink}[2]{\href{#1}{#2}}
+
+\newcommand{\tmphs}{\hypersetup{linkbordercolor=orange!50!red,linkcolor=black}}
+\newcommand{\tmphscol}{\hypersetup{linkbordercolor=gray!40,linkcolor=black}}
+
+
+%%  This deco was removed during editing ...
+\newcommand{\decoline}{\vspace{-4em}}
+
+
+\newcommand{\sectionline}[1]{%
+  \noindent
+  \begin{center}
+  {\color{#1}
+    \resizebox{0.5\linewidth}{1ex}
+    {{%
+    {\begin{tikzpicture}
+    \node  (C) at (0,0) {};
+    \node (D) at (9,0) {};
+    \path (C) to [ornament=84] (D);
+    \end{tikzpicture}}}}}%
+    \end{center}
+  }
+  
+\newcommand{\thinsectionline}[1]{%
+	\noindent
+	\begin{center}
+		{\color{#1}
+			\resizebox{.2\linewidth}{1.5ex}
+			{{%
+					{\begin{tikzpicture}
+						\node  (C) at (0,0) {};
+						\node (D) at (9,0) {};
+						\path (C) to [ornament=84] (D);
+						\end{tikzpicture}}}}}%
+	\end{center}
+}
+
+\newcommand{\thindecoline}{\vspace*{-.15em}\thinsectionline{black!70}\vspace*{-.45em}}
+
+%% This is for including figures, with framed styling ...
+\newsavebox{\tcsb}
+\newcommand{\spinctc}[3]{\begin{lrbox}{\tcsb}\protect\input{#1}\end{lrbox}
+\begin{figure}
+\tc{}{\protect\usebox\tcsb} 
+\captionof{figure}{#2}
+\label{#3}
+\end{figure}
+}
+
+%% this reverts to just input ...
+\newcommand{\itcl}[1]{
+\input{#1}
+}
+
+\newcommand{\itclfig}[2]{
+\begin{figure}\input{#1}
+\label{#2}
+\end{figure}
+}
+
+\let\OldSection\section
+\renewcommand\section[1]{\OldSection{#1}}
+
+\titleformat*{\subsection}{\Large\bfseries}
+
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+\let\section\OldSection
+\setlength{\leftmargin}{-4pt}
+\vspace{.1em}
+\OLDthebibliography{#1}
+\vspace{.7em}
+\OldFootnoteSize 
+\setlength{\parskip}{0pt}
+\setlength{\itemsep}{1pt plus 0ex}
+\raggedright
+}
+
+\makeatletter
+\def\@biblabel#1{\hspace{-6pt}#1}
+\makeatother
+
+\newcommand{\bibtitle}[1]{{\small \textit{#1}}}
+\newcommand{\intitle}[1]{{\hspace{3pt}\textls*[-80]{\texttt{\textit{#1}}}}\hspace{-1pt}}
+
+%% For marking up code listings ...
+\newcommand{\ovn}[1]{\color{yellow}{{\textbf{#1}}}}
+\newcommand{\sovn}[1]{\color{yellow}{{\textbf{#1}}}}
+\newcommand{\dovn}[3]{\draw[draw=blue,fill=DarkRed] (#1,#2) circle[radius=3mm];
+\node at (#1,#2){\ovn{#3}}
+}
+\newcommand{\sdovn}[3]{\draw[draw=blue,fill=DarkRed] (#1,#2) circle[radius=1.4mm];
+\node (char) at (#1,#2) {\sovn{#3}}
+}
+\newcommand*\circledx[1]{\tikz[baseline=(char.base), inner sep=0]{
+            \sdovn{0}{0}{#1};}}
+\newcommand{\circled}[1]{\raisebox{-.5pt}{\circledx{#1}}}
+\newcommand{\circledup}[1]{\circledx{#1}}
+\newcommand{\circledd}[1]{\raisebox{-2pt}{\circledx{#1}}}
+\newcommand{\OneOverlay}{\circled{1}}
+\newcommand{\TwoOverlay}{\circled{2}}
+\newcommand{\ThreeOverlay}{\circled{3}}
+\newcommand{\FourOverlay}{\circled{4}}
+\newcommand{\FiveOverlay}{\circled{5}}
+\newcommand{\SixOverlay}{\circled{6}}
+\newcommand{\OneOverlayu}{\circledup{1}}
+\newcommand{\TwoOverlayu}{\circledup{2}}
+\newcommand{\ThreeOverlayu}{\circledup{3}}
+\newcommand{\FourOverlayu}{\circledup{4}}
+\newcommand{\FiveOverlayu}{\circledup{5}}
+\newcommand{\SixOverlayu}{\circledup{6}}
+
+\renewenvironment{abstract}
+ {\small
+  \begin{center}
+  \bfseries \abstractname\vspace{-.5em}\vspace{0pt}
+  \end{center}
+  \list{}{%
+    \setlength{\leftmargin}{18mm}
+    \setlength{\rightmargin}{\leftmargin}
+  }
+  \item\relax}
+ {\endlist}
+
+
+\newcommand{\pseudoIndent}{
+
+\vspace{-2pt}\hspace{8pt}}
+\newcommand{\pseudoInd}{\hspace{30pt}}
+
+\setlist[itemize]{leftmargin=2mm}
+\setlist[enumerate]{leftmargin=5mm}
+
+
