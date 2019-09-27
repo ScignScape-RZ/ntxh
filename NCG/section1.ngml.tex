@@ -1,0 +1,908 @@
+\section{Hub Applications and Gatekeeper Code} 
+\phantomsection\label{sOne}
+\p{To begin, I will speak in general terms about hub applications and 
+about the unique coding challenges which derive from Cyber-Physical
+technologies' unique networking and safety requirements.
+Implementing software hubs 
+introduces technical difficulties which are distinct from 
+manufacturing Cyber-Physical instruments themselves \mdash{} in particular,
+devices are usually narrowly focused on a particular 
+kind of data and measurement, while software hubs are 
+multi-purpose applications that need to understand and 
+integrate data from many different kinds of 
+devices.  Hub applications also 
+present technical challenges that are different from 
+other kinds of software, even if 
+these hubs are one specialized domain in the larger 
+class of user-focused software.
+}
+\p{Any software application provides human users with tools to 
+interactively and visually access data and computer 
+files, either locally (data encoded on the \q{host} computer running 
+the software) or remotely (data accessed over a network).  
+Computer programs can be generally classified as 
+\i{applications} (which are designed with a priority 
+to User Experience) and \i{background processes} 
+(which often start and maintain their state automatically 
+and have little input or visibility to human users, 
+except for special troubleshooting circumstances).  
+Applications, in turn, can be generally classified as 
+\q{web applications} (where users typically see one 
+resource at a time, such as a web page, 
+and where data is usually stored 
+on remote servers) and \q{native applications} 
+(characterized by more complex \GUI{} components, and 
+by the ability to work with \q{local} data 
+\mdash{} data stored on users' computers or accessible 
+on a local network \mdash{} instead of or in addition to 
+data acquired from a web service).  
+}
+\p{From a software engineering point of view, I 
+believe we should conceptualize hub software as
+native, desktop-style applications which 
+leverage native \GUI{} features.  
+Hub applications therefore embody a 
+fundamentally different User Experience 
+than other kinds of Cyber-Physical access
+points, like touch screens or phone apps.
+}
+\p{To cite a concrete example, Teixeira \i{et. al.} 
+describe a refrigerator \q{that notifies the user 
+if the door stays accidentally open} and moreover 
+\q{knows what is inside the refrigerator and [its] 
+expiration dates}.  Consider then how we would design a 
+User Interface networking with \q{smart} refrigerators.  
+A simple indicator showing whether 
+doors are open is straightforward, but an interface listing 
+the items inside is much more complicated.  
+Once a refrigerator can detect signals 
+emanating from food items/containers, we can envision a list of 
+items presented as a \GUI{} component, perhaps 
+one food item per line 
+(each line, say, showing a picture, price, text description, 
+and expiration date).  This would require cross-referencing 
+numeric codes, which might be broadcast by the 
+items \i{inside} the refrigerator, against a 
+database that would load the images, descriptions, dates, 
+and prices.
+}
+\p{One question 
+is then where this database would be hosted, 
+and how it would be 
+updated (insofar as food companies develop new products 
+fairly often; any static database could quickly get 
+outdated).  Food companies (or some middleware agent) 
+would have to agree on a common format so that the 
+refrigerator's access software can integrate data from 
+many brands.  Since a refrigerator can hold many items, 
+the \GUI{} would also need enough screen space 
+(and maybe a multi-level design) for users to comfortably 
+browse many artifacts; perhaps a line-by-line window 
+supplemented with separate dialog windows for each item.  
+}
+\p{On the other hand, a phone app interfacing with that 
+same data would be constrained by its lesser 
+screen real estate and limited interactive modalities. 
+With no room on-screen to show a 
+complete list of items \mdash{} and no obvious 
+gesture to navigate between individual and multi-item 
+views \mdash{} such an app might choose to list only those 
+items nearing their expiry date.  In general, when 
+adapting to phone-like usage patterns (smaller screen, 
+brief but frequent user engagement), designers 
+have to offer compact but curated 
+snippets of information.  That is, software is forced to anticipate 
+what info carries the most user interest \mdash{} expiry 
+dates are probably most important to users when items are 
+near perishing.  This means 
+that data mining, Artificial Intelligence, and other 
+techniques for anticipating users' needs becomes 
+proportionately more consequential: if the whole 
+\GUI{} design is premised on \AI{}, then \AI{} 
+ceases to be just a useful tool, augmenting 
+software's analytic reach \mdash{} it 
+becomes instead a make-or-break User Experience necessity.  
+}
+\p{Conversely, if we assume that hub applications will 
+adopt the \q{look and feel} of native desktop applications, 
+then they can present more holistic information \mdash{}  
+taking advantage of larger screens, with secondary 
+application windows and other interactive features that 
+we associate with native \GUI{} components.  It is a 
+reasonable hypothesis that this renders \AI{} less important: 
+the more data that can be shown, the less need for 
+software to filter information on users' behalf.     
+As Teixera \i{et. al.} put it, \q{some authors argue that 
+the number of interactions between users and the smart home 
+must be kept to a minimum}, but 
+\q{to remove obstacles in the adoption 
+of smart home systems ... preserving the autonomy of the 
+user may seem like the most sensible course of action}.  
+In that spirit, investments in \AI{} solutions might be 
+redirected to \HCI{}, securitization, data transparency, 
+and other software virtues which customers may value 
+more than \q{smart} software that actually strips them of 
+control.
+}
+\p{Hub applications could therefore exemplify what 
+Teixera \i{et. al.} call \q{user-centric} design.  
+In this guise, hubs 
+have at least three key responsibilities: 
+\begin{enumerate}\item{} To present device and system data for human 
+users, in graphical, interactive formats suitable 
+for people to oversee the system and intervene 
+as needed.
+\item{} To validate device and system data, ensuring 
+that the system is behaving correctly and predictably.
+\item{} To log data (in whole or in part) for subsequent 
+analysis and maintenance.
+\end{enumerate}
+Once software receives device data, it needs to 
+marshal the information between different formats, 
+exposing data in the different contexts of 
+\GUI{} components, database storage, and 
+analytic review, to confirm proper operation of  
+devices and their handler code.
+}
+\p{The more rigorously that engineers understand and document 
+the morphology of information across these different  
+software roles, the more clearly we can 
+define protocols for software design and user expectations.  
+Careful design requires answering many technical questions: 
+how should the application respond if it encounters 
+unexpected data?  How, in the presence of erroneous data, 
+can we distinguish device malfunction from coding error?  
+How should users and/or support staff 
+be notified of errors?  What is the optimal Interface Design 
+for users to identify anomalies, or identify situations 
+needing human intervention, and then be able to 
+perform the necessary actions via software?  
+What kind of database should hold system data retroactively, 
+and what kind of queries or analyses should engineers 
+be able to perform so as to study system data, to access the 
+system's past states and performance? 
+}
+\p{Because Cyber-Physical devices are intrinsically \i{networked}
+\mdash{} whether over special wireless networks or the World Wide Web \mdash{} 
+there is an enlarged \q{surface area} for vulnerability.  Moreover, 
+because they are often worn by people
+or used in a domestic setting, they tend carry personal (e.g., location)
+information, making network security protocols especially important
+(\cite{RonaldAshri}, \cite{AbhishekDwivedi}, \cite{LalanaKagal},
+\cite{TakeshiTakahashi}, \cite{MozhganTavakolifard},
+\cite{BhavaniThuraisingham}).  In brief, the dangers
+of coding errors and software vulnerabilities, in Cyber-Physical
+Systems like the Internet of Things (\IoT{}), are even more pronounced
+than in other application domains.  While it is
+unfortunate if a software crash causes someone to lose data,
+it is even more serious if a Cyber-Physical \q{dashboard}
+application were to malfunction and leave physical, networked
+devices in a dangerous state.
+}
+\p{It is helpful at this point to distinguish cyber 
+\i{security} from \i{safety}.  When these concepts are 
+separated, \i{security} generally refers to
+preventing \i{deliberate}, \i{malicious} intrusion into 
+Cyber-Physical networks.  Cyber \i{safety} refers to preventing
+unintended or dangerous system behavior due to innocent human 
+error, physical malfunction, or incorrect programming.  
+Malicious attacks \mdash{} in particular the risks of 
+\q{cyber warfare} \mdash{} are prominent in the 
+public imagination, but innocent coding errors or design 
+flaws are equally dangerous.  Incorrect data readings, 
+for example, led to recent Boeing 737 MAX jet accidents 
+causing over 300 fatalities (plus the worldwide grounding
+of that airplane model and billions of dollars in losses 
+for the company).  Software failures either 
+in runtime maintenance or anticipatory risk-assessment 
+have been identified as contributing factors to 
+high-profile accidents like Chernobyl \cite{MikhailMalko} 
+and the Fukushima nuclear reactor 
+meltdown \cite{JoonEonYang}.
+A less tragic but noteworthy 
+case was the 1999 crash of NASA's US \$125 million 
+Mars Climate Orbiter.  This crash was caused by 
+software malfunctions which in turn were due 
+to intercommunicating software components producing 
+incompatible data \mdash{} in particular, employing 
+incompatible scales of measurement 
+(resulting in an unanticipated mixture of 
+imperial and metric units).  In general, it 
+is reasonable to assume that coding errors 
+are among the deadliest and costliest sources 
+of man-made injury and property damage. 
+}
+\p{Given the risks of undetected data corruption, seemingly 
+mundane questions about how Cyber-Physical applications verify
+data \mdash{} and respond to apparent anomalies \mdash{} 
+become essential aspects of planning and development.  
+Consider even a simple data aggregate like 
+blood pressure (combining systolic and 
+diastolic measurements).  Empirically, systolic pressure is 
+always greater than diastolic.  Software systems 
+need commensurately to agree on a protocol for encoding the 
+numbers to ensure that they are in the correct order, and that they 
+represent biologically plausible measurements.  
+How should a particular software component test that 
+received blood pressure data is accurate?  Should it 
+always test that the systolic quantity is indeed 
+greater than the diastolic, and that both numbers 
+fall in medically possible ranges?  How should the 
+component report data which fails this test?  If 
+such data checking is not performed \mdash{} on the 
+premise that the data will be proofed elsewhere 
+\mdash{} then how can this assumption be 
+justified?
+}
+\p{In general, how can engineers identify, in a 
+large and complex software system, all the points 
+where data is subject to validation tests; and 
+then by modeling the overall system in terms  
+of these check-points ensure that all needed 
+verifications are performed at least one time?  
+Continuing the blood-pressure example, 
+how would a software procedure that \i{does} 
+check the integrity of the systolic/diastolic 
+pair indicate for the overall system model 
+that it performs that particular verification?  
+Conversely, how would a procedure which does 
+\i{not} perform that verification indicate 
+that this verification must be performed 
+elsewhere in the system, to guarantee that 
+the procedure's assumptions are satisfied?    
+} 
+\p{These questions are important not only for objective, 
+measurable assessments of software quality, but 
+also for people's more subjective trust in the reliability 
+of software systems.  In the modern world we 
+allow software to be a determining factor in 
+systems' behavior, in places
+where malfunction can be fatal \mdash{} airplanes, hospitals, 
+electricity grids, trains carrying toxic chemicals, 
+highways and city streets, etc.  
+Consider the model of \q{Ubiquitous Computing} pertinent to the
+book series to which this volume (and hence
+this chapter) belongs.  As explained in the
+series introduction:\urlfootnote{https://sites.google.com/view/series-title-ausah/home?authuser=0} 
+\begin{dquote}U-healthcare systems ... will allow physicians to remotely diagnose, access, and monitor critical patient's symptoms and will enable real time communication with patients.  [This] 
+series will contain systems based on the four future ubiquitous sensing for healthcare (USH) principles, namely i) proactiveness, where healthcare data transmission to healthcare providers has to be done proactively to enable necessary interventions, ii) transparency, where the healthcare monitoring system design should transparent, iii) awareness, where monitors and devices should be tuned to the context of the wearer, and iv) trustworthiness, where the personal health data transmission over a wireless medium requires security, control and authorize access.
+\end{dquote}
+Observe that in this scenario, patients will have to 
+place a level of trust in Ubiquitous Health technology comparable 
+to the trust that they place in human doctors and other 
+health professionals.   
+}
+\p{All of this should cause software engineers and developers to 
+take notice.  Modern society places trust in doctors 
+for well-rehearsed and legally scrutinized reasons: 
+physicians have to prove their competence 
+before being allowed to practice medicine, and 
+this right can be revoked due to malpractice.  Treatment 
+and diagnostic clinics need to be licensed,
+and pharmaceuticals (as well as medical equipment) are subject 
+to rigorous testing and scientific investigation before being 
+marketable.  Notwithstanding \q{free market} ideologies, 
+governments are aggressively involved in caretaking
+their healthcare systems; commercial activities (like marketing) are
+regulated, and operational transparency 
+(like reporting adverse outcomes) is mandated, more so 
+than in most other sectors of the economy.  This level of 
+oversight \i{causes} the public to trust that clinicians' 
+recommendations are usually correct, or that medicines are 
+usually beneficial more than harmful.  
+}
+\p{The problem, as software becomes an increasingly central feature 
+of the biomedical ecosystem, is that no commensurate oversight 
+framework exists in the software world.
+Biomedical \IT{} regulations tend to be ad-hoc and narrowly domain-focused. 
+For example, code bases in the United States which manage \HLSeven{}
+data (the current federal Electronic Medical Record format) must 
+meet certain requirements, but there is no comparable framework 
+for software targeting other kinds of health-care information.  
+This is not only \mdash{} or not primarily \mdash{} an issue of 
+lax government oversight.  The deeper problem is that 
+we do not have a clear picture, in the framework of 
+computer programming and software development, of 
+what a robust regulatory framework would look like: what 
+kinds of questions it would ask; what steps a company could 
+follow to demonstrate regulatory compliance; what indicators 
+the public should consult to check that any software 
+that could affect their medical outcomes is properly vetted.  
+And, outside the medical arena, similar comments could be 
+made regarding software in Cyber-Physical settings like
+transportation, energy (power generation and electrical 
+grids), physical infrastructure, environmental protections, 
+government and civic data, and so forth 
+\mdash{} settings where software errors threaten personal
+and/or property damages.
+}
+\p{In short, the public has a relatively inchoate 
+idea of issues related to cyber safety, security, and 
+privacy: we (collectively) have an informal impression that 
+current technology is failing to meet the public's desired 
+standards, but there is no clear picture of what 
+\IT{} engineers can or should do to improve the technology 
+going forward.    
+Regulatory oversight is only effective in proportion to 
+scientific clarity \visavis{} desired outcomes.  
+Drugs and treatment protocols, 
+for instance, can be evaluated through \q{gold standard} 
+double-blind clinical trials \mdash{} alongside statistical 
+models, like \q{five-sigma} criteria, which measure 
+scientists' confidence that trial results are truly 
+predictive, rather than results of random chance.  This package 
+of scientific methodology provides a framework which can 
+then be adopted in legal or legislative contexts.  
+With respect to medications, policy makers can stipulate that 
+pharmaceuticals should be tested in double-blind trials, 
+with statistically verifiable positive results, before 
+being approved for general-purpose clinical use.  Such a  
+well-defined policy approach \i{is only possible} because 
+there are biomedical paradigms which define how treatments 
+can be tested to maximize the chance that positive test 
+results predict similar results for the 
+general patient population.
+}
+\p{Analogously, a general theory of cyber safety should 
+be a software-design issue before it becomes a 
+policy or contractual issue.  Software engineering and 
+programming language design needs its own evaluative 
+guidelines; its own analogs to double-blind trials 
+and five-sigma confidence.  It is at the region of
+low-level software design \mdash{} of actual source code 
+in its local implementation and holistic integration 
+\mdash{} that engineers can develop technical \q{best practices} 
+which then provide substance to regulative oversight.  
+Stakeholders or governments can recommend (or require) that 
+certain practices adopted, but only if engineers 
+identify coding standards which are believed, 
+on firm theoretical grounds, to effectuate safer, 
+more robust software.  
+}
+\vspace{-.1em}
+\subsection{Gatekeeper Code}
+\p{There are several design principles which can help ensure 
+safety in large-scale, native/desktop-style \GUI{}-based 
+applications.  These include:
+\begin{enumerate}\item{}  Identify operational relationships between types.  
+Suppose \calS{} is a data structure modeled via type \caltypeT{}.  
+This type can then be associated with a type (say, 
+\typeTp{}) of \GUI{} components which visually display 
+values of type \caltypeT{}.  A simple data structure 
+may have \GUI{} representation via small \q{widgets} 
+embedded in other components (consider a thermometer icon 
+to display temperature).  Conversely, if \calS{} has many component 
+parts, its corresponding \GUI{} type may need to span its 
+own application window, with a collection of nested textual 
+or graphical elements.  There may also be a type 
+(say, \typeTpp{}) representing \caltypeT{}-values in a format 
+suitable for database persistence.  Application code should 
+explicitly indicate these sorts of inter-type relationships.
+\item{}  Identify coding assumptions which determine the validity 
+of typed values and/or function calls.  For each 
+application-specific data type, consider whether every 
+computationally possible instance of that type is actually 
+meaningful for the real-world domain which the type represents.  
+For instance, a type representing blood pressure has a subset 
+of values which are biologically meaningful \mdash{} where systolic 
+pressure is greater than diastolic and where both numbers are 
+in a sensible range.  Likewise, for every procedure defined 
+on application-specific data types, consider whether the procedure 
+might receive arguments that are computationally feasible but 
+empirically nonsensical.  Then, establish a protocol for 
+acting upon erroneous data values or procedure parameters.  
+How should the error be handled, without disrupting the 
+overall application?
+\item{}  Identify points in the code base which represent new data 
+being introduced into the application; and code which can materially
+affect the \q{outside world}.  Most of the code behind \GUI{} 
+software will manage data being transferred between different 
+parts of the system, internally.  However, there will be 
+specific implementations for 
+receiving new data from external sources or signals.  
+These are places where data 
+\q{enters the system}.\footnote{A simple example is, for desktop applications, 
+the preliminary code which runs when users click a mouse button.  
+In the Cyber-Physical context, an example might be code which
+is activated when motion-detector sensors signal something moving 
+in their vicinity.
+}  Conversely, other code points localize 
+the software's capabilities to initiate external effects.\footnote{For 
+instance, one consequence of users clicking a mouse button might 
+be that the on-screen cursor changes shape.  Or, motion detection 
+might trigger lights to be turned on.  In these cases the software 
+is hooked up to external devices which have tangible capabilities, 
+such as activating a light-source or modifying the on-screen cursor.
+}  The functions which leverage such capabilities 
+reveal data \q{leaving the system}.  
+Distinguishing where data 
+\q{enters} and \q{leaves} the system from where data is transferred 
+\i{inside} the application helps ensure that 
+incoming data and external effects are properly vetted.\footnote{Several mathematical frameworks have been developed 
+to codify the intuition of software components as 
+\q{systems} with external data sources and effects, 
+extending the model of software as self-contained 
+information spaces: notably, Functional-Reactive Programming 
+(see e.g. \cite{WolfgangJeltsch}, \cite{JenniferPaykin},
+\cite{PaykinKrishnaswami}) and (a little more indirectly)
+the theory of Hypergraph Categories
+(\cite{InteractingConceptualSpaces}, \cite{BrendanFong}, 
+\cite{BrendanFongThesis}, \cite{AleksKissinger}). 
+}
+\end{enumerate}
+Methods I propose in this chapter are applicable to each 
+of these concerns, but for purposes of exposition I 
+will focus on the second issue: testing 
+type instances and procedure parameters for fine-grained 
+specifications (more precise than strong typing alone). 
+}
+\p{Strongly-typed programming language offer some guarantees on 
+types and procedures: a function which takes an \int{} will
+never be called on a value that is \i{not} an integer 
+(e.g., the character-string \q{\codeText{46}} instead of the \i{number} 
+\lclc{46}).  Likewise, a type where one field is an \int{}
+(representing someone's age, say), will never be instantiated 
+with something \i{other than} an \int{} in that field.
+Such minimal guarantees, however, are too coarse for 
+safety-conscious programming.  Even the smallest 
+\unsignedint{} type (8-bit) would permit someone's age to
+be \lclc{255} years, which is surely an error.  So any 
+safety-conscious code dealing with ages needs to check that 
+the numbers fall in a range narrower than built-in 
+types allow on their own, or to ensure that such checks are 
+performed ahead of time.   
+}
+\p{The central technical challenge of safety-conscious coding 
+is therefore to \i{extend} or \i{complement} each programming 
+languages' built-in type system so as to represent 
+more fine-grained assumptions and specifications.  
+While individual tests may seem straightforward on a 
+local level, a consistent 
+data-verification architecture \mdash{} how this coding dimension 
+integrates with the totality of software features and 
+responsibility \mdash{} can be much more complicated.  
+Developers need to consider several overarching questions, 
+such as: 
+\begin{itemize}\item{} Should data validation be included in the same 
+procedures which operate on (validated) data, or 
+should validation be factored into separate procedures?
+\item{} Should data validation be implemented at the type 
+level or the procedural level?  That is, should specialized 
+data types be implemented that are guaranteed only to 
+hold valid data?  Or should procedures work with more 
+generic data types, and perform validations on a case-by-case 
+basis?
+\item{} How should incorrect data be handled?  In Cyber-Physical software,
+there may be no obvious way to abort an operation in the 
+presence of corrupt data.  Terminating the application may not be 
+an option; silently canceling the desired operation or trying to substitute 
+\q{correct} or \q{default} data may be unwise; and 
+presenting technical error messages to human users may be confusing.  
+\end{itemize}
+These questions do not have simple answers.  As such, we 
+should develop a rigorous theoretical framework so as to 
+codify the various options involved \mdash{} what architectural 
+decisions can be made, and what are the strengths and weaknesses 
+of different solutions.
+}
+\p{I will use the term \i{gatekeeper code} for any code which checks 
+programming assumptions more fine-grained than strong typing 
+alone allows \mdash{} for example, that someone's age is not reported 
+as \lclc{255} years, or that systolic pressure is not recorded as 
+less than diastolic.  I will use the term \i{fragile code} for
+code which \i{makes} programming assumptions \i{without itself} 
+verifying that such assumptions are obeyed.  Fragile code is 
+especially consequential when incorrect data would cause the 
+code to fail significantly \mdash{} to crash the application, 
+enter an infinite loop, or any other nonrecoverable scenario.
+}
+\p{Note that \q{fragile} is not a term of criticism \mdash{} some algorithms 
+simply work on a restricted space of values, and it is inevitable 
+that code implementing such algorithms will only behave properly 
+when provided values with the requisite properties.  It is necessary 
+to ensure that such algorithms are \i{only} called with 
+correct data.  But insofar as testing of the data lies outside 
+the algorithms themselves, the proper validation has to occur 
+\i{before} the algorithms commence.  In short, \i{fragile} and
+\i{gatekeeper} code often has to be paired off: for each 
+segment of fragile code which \i{makes} assumptions, there should 
+be a corresponding segment of gatekeeper code which
+\i{checks} those assumptions.  
+}
+\p{In that general outline, however, there is room for a variety 
+of coding styles and paradigms.  Perhaps these can be broadly 
+classified into three groups: 
+\begin{enumerate}\item{} Combine gatekeeper and fragile code in one procedure.
+\item{} Separate gatekeeper and fragile code into different procedures.
+\item{} Implement narrower types so that gatekeeper code is 
+called when types are first instantiated.
+\end{enumerate}
+Consider a function which calculates the difference between 
+systolic and diastolic blood pressure, returning an unsigned
+integer.  If this code were called with malformed data wherein 
+systolic and diastolic were inverted, the difference would 
+be a negative number, which (under binary conversion to an 
+unsigned integer) would come out as a potentially 
+extremely large positive number (as if the patient had 
+blood pressure in, say, the tens-of-thousands).  This nonsensical 
+outcome indicates that the basic calculation is fragile.  
+We then have three options: test \q{systolic-greater-than 
+diastolic} \i{within the procedure}; require that this test 
+be performed prior to the procedure being called; 
+or use a special data structure configured such that 
+systolic-over-diastolic can be confirmed as soon as 
+any blood-pressure value is constructed in the system.
+}
+\p{There are strengths and weaknesses of each option.  
+Checking parameters at the start of a procedure makes 
+code more complex and harder to maintain, and also 
+makes updating the code more difficult.  The 
+blood-pressure case is a simple example, but in real 
+situations there may be more complex data-validation 
+requirements, and separating code which \i{checks} 
+data from code which \i{uses} data, into different 
+procedures, may simplify subsequent code maintenance.
+If the \i{validation} code needs to be modified 
+\mdash{} and if it is factored into its its own procedure \mdash{}  
+this can be done without modifying the 
+code which actually works on the data (reducing the 
+risk of new coding errors).  
+}
+\p{Also, engineers may appreciate the flexibility to upgrade how 
+improper data is handled \i{throughout the application}.  
+Suppose it is decided to log, and periodically 
+review, all instances of malformed 
+parameters \q{rejected} by gatekeeper code.  
+Every \ifthenelse{} block could potentially then 
+need to be paired with logging code, and it would be 
+time-consuming and error-prone to verify that such protocol 
+is obeyed everywhere, throughout a large, complex code base.  
+Isolating gatekeeper procedures, and labeling them as such, 
+would make it 
+both easier to find all gatekeeping logic and 
+to modify the protocol for 
+handling failed validations.
+}
+\p{In essence, factoring 
+\i{gatekeeper} and \i{fragile} code into separate 
+procedures exemplifies the programming maxim of 
+\q{separation of concerns}: it makes the overall 
+system more flexible and easier to maintain.  
+However, such separation creates a new problem \mdash{} ensuring that
+the gatekeeping procedure is always called.  
+Meanwhile, using special-purpose, narrowed data types 
+adds complexity to the overall project if these data types
+are unique to that one code base, and therefore 
+incommensurate with data provided by external sources.  
+In these situations the software must transform data between 
+more generic and more specific representations before 
+sharing it (as sender or receiver), which makes 
+the code more complicated.  
+} 
+\p{Because there is no one best \q{gatekeeping protocol}, these 
+issues should be studied holistically, defining a range of 
+options that can be weighed at the planning and prototyping 
+stages \mdash{} well before 
+most of the serious production code is implemented. 
+} 
+\p{In the specific Cyber-Physical context, gatekeeping is especially
+important when working with device data.  Such data is 
+almost always constrained by the physical construction of 
+devices and the kinds of physical quantities they measure 
+(if they are sensors) or their physical capabilities 
+(if they are \q{actuators}, devices that cause changes in their 
+environments).  For sensors, it is an empirical question what 
+range of values can be expected assuming proper functioning 
+(and therefore what validations can check that the 
+instrument is working as intended).  For actuators, it should 
+be similarly understood what range of values guarantee 
+safe, correct behavior.  For any device then we can 
+construct a \i{profile} \mdash{} an abstract, mathematical 
+picture of the space of \q{normal} values associated with 
+proper device performance.  Gatekeeping code can 
+thereby ensure that data received from or sent to devices
+fits within the profile.  Defining device profiles, and 
+explicitly notating the corresponding gatekeeping code, 
+should accordingly be an essential pre-implementation planning
+step for Cyber-Physical software hubs.
+}
+\subsection{Fragile Code}
+\p{Fragile code is code that makes assumptions stronger than the 
+programming language on its own can guarantee.  Where 
+safety and quality is a priority, fragile code needs gatekeeping 
+code to ensure that these assumptions are warranted.
+}
+\p{Fragile code is not necessarily a harbinger of poor design.  Sometimes
+implementations can be optimized for special circumstances, and
+optimizations are valuable and should be used wherever possible.  Consider an
+optimized algorithm that works with two lists that must be the same size.
+Such an algorithm should be preferred over a less efficient
+one whenever possible \mdash{} which is to say, whenever dealing with two
+lists which are indeed the same size.  Suppose this algorithm is
+included in an open-source library intended to be shared among many different
+projects.  The library's engineer might, quite reasonably, deliberately
+choose not to check that the algorithm is invoked on same-sized lists
+\mdash{} checks that would complicate the code, and sometimes slow the
+algorithm unnecessarily.  It is then the responsibility of code that
+\i{calls} whatever procedure implements the algorithm to ensure that it
+is being employed correctly \mdash{} specifically, that this
+\q{client} code does \i{not} try
+to use the algorithm with \i{different-sized} lists.  Here \q{fragility} is
+probably well-motivated: accepting that algorithms are sometimes
+implemented in fragile code can make the code cleaner, its intentions
+clearer, and permits their being optimized for speed.
+}
+\p{The opposite of fragile code is sometimes called \q{robust} code.
+While robustness is desirable in principle, code which simplistically
+avoids fragility may be harder to maintain than deliberately fragile but
+carefully documented code.  Robust code often has to check for many
+conditions to ensure that it is being used properly, which can make
+the code harder to maintain and understand.  The hypothetical
+algorithm that I contemplated last paragraph
+could be made robust by \i{checking}
+(rather than just \i{assuming}) that it is invoked with same-sized lists.
+But if it has other requirements \mdash{} that the lists are non-empty,
+and so forth \mdash{} the implementation can get padded with a chain of
+preliminary gatekeeper code.  In such cases the gatekeeper
+code may be better factored into a different procedure, or expressed
+as a specification which engineers must study before attempting to
+use the implementation itself.
+}
+\p{Such transparent declaration of coding assumptions and specifications can
+inspire developers using the code to proceed attentively,
+which can be safer in the long run than trying to avoid fragile code
+through engineering alone.  The takeaway is that while \q{robust} is
+contrasted with \q{fragile} at the smallest scales (such as
+a single procedure), the overall goal is systems and components that are robust at the
+largest scale \mdash{} which often means accepting \i{locally} fragile
+code.  Architecturally, the ideal design may combine
+individual, \i{locally fragile} units with rigorous documentation and 
+gatekeeping so that the \i{totality} is robust.  
+Defining and declaring specifications is then 
+an intrinsic part of implementing code bases which are both robust
+and maintainable.
+}
+\p{Unfortunately, specifications are often created
+only as human-readable documents, which might have a semi-formal
+structure but are not actually machine-readable.
+There is then a disconnect between features \i{in the code itself} that
+promote robustness, and specifications intended for \i{human} readers
+\mdash{} developers and engineers.  The code-level and
+human-level features promoting robustness will tend to overlap partially
+but not completely, demanding a complex evaluation of where gatekeeping
+code is needed and how to double-check via
+unit tests and other post-implementation examinations.  This is the
+kind of situation \mdash{} an impasse, or partial but incomplete overlap,
+between formal and semi-formal specifications \mdash{} which many programmers
+hope to avoid via strong/expressive type systems.
+}
+\p{Advanced type-theoretic constructs \mdash{} including Dependent Types,
+typestate, and effect-systems \mdash{} model requirements with more precision
+than can be achieved via conventional type systems alone.  Integrating these
+paradigms into core-language type systems permits data validation 
+to be integrated with general-purpose type checking, without the need for
+static analyzers or other \q{third party} tools (that is, projects maintained
+orthogonally to the actual language \mdash{} i.e., to
+compilers and runtimes).  This means that Requirements Specifications 
+that would otherwise be \i{human} documents \mdash{} \communiques{} between 
+developers, but only at best partially enforced by programming languages 
+internally \mdash{} get formalized to the point where compilers (for example) 
+evaluate requirements without human intervention.  Unfortunately, 
+these advanced type systems are also more complex to implement.  
+If Software Language Engineers aspire to make Dependent Types and
+similar advanced constructs part of their core language, 
+creating compilers and runtime engines for these languages 
+becomes proportionately more difficult.
+} 
+\p{Programming languages are, at one level, artificial 
+\i{languages} \mdash{} they allow humans to communicate 
+algorithms and procedures to computer processors, and 
+to one another.  But programming languages are also 
+themselves engineering artifacts.  It is a complex
+project to transform textual source-code \mdash{} which is 
+human-readable and looks a little bit like natural 
+language \mdash{} into binary instructions that computers 
+can execute.  For each language, there is a stack 
+of tools \mdash{} parsers, compilers, and/or runtime libraries 
+\mdash{} which enable source code to be executed 
+according to the language specifications.  
+Language design is therefore constrained by 
+what is technically feasible for these supporting tools.  
+Practical language design, then, is an interdisciplinary 
+process which needs to consider both the dimension of 
+programming languages as communicative media and 
+as digital artifacts with their own engineering challenges 
+and limitations.
+}
+\p{These limitations then produce a split between 
+tools \i{in the language itself} and those 
+maintained as separate projects \i{analyzing} code 
+in a given language.  They raise the question, 
+which has no simple answer, of what 
+should be guaranteed \i{by the language} 
+and what should be tested externally.  I will now 
+examine this question in greater detail.
+}
+%\spsubsection{Core Language vs. External Tools}
+\subsection{Core Language vs. External Tools}
+\p{Because of programming languages' engineering limitations, 
+such as I just outlined, software projects should not 
+necessarily rely on core-language features for 
+responsible, safety-conscious programming.
+In short, methodologies for safety-conscious coding can be 
+split between those which depend on core-language features, 
+and those which rely on external, retroactive analysis 
+of sensitive code.  On the one hand, some languages and projects
+prioritize specifications that are intrinsic to the language and integrate
+seamlessly and operationally into the language's foundational
+compile-and-run sequence.  Improper code (relative to specifications)
+should not compile, or, as a last resort, should fail gracefully at run-time.
+Moreover, in terms of programmers' thought processes, the
+description of specifications should be intellectually continuous
+with other cognitive processes involved in composing code, such
+as designing types or implementing algorithms.  For sake of 
+discussion, I will call this paradigm \q{internalism}.  
+}
+\p{The \q{internalist} mindset seeks to integrate data 
+validation seamlessly with other language features.  
+Malformed data should be flagged via similar mechanisms 
+as code which fails to type-check; and errors should 
+be detected as early in the development process as possible.   
+Such a mindset is evident in passages like this (describing
+the Ivory programming language):
+\begin{dquote}Ivory's type system is shallowly embedded within Haskell's
+type system, taking advantage of the extensions provided by [the
+Glasgow Haskell Compiler].  Thus, well-typed Ivory programs
+are guaranteed to produce memory safe executables, \i{all without
+writing a stand-alone type-checker} [my emphasis].  In contrast, 
+the Ivory syntax is \i{deeply} embedded within Haskell.
+This novel combination of shallowly-embedded types and 
+deeply-embedded syntax permits ease of development without sacrificing
+the ability to develop various back-ends and verification tools [such as]  
+a theorem-prover back-end.  All these back-ends share the
+same AST [Abstract Syntax Tree]: Ivory verifies what it compiles.
+\cite[p. 1]{ivory}.
+\end{dquote}   In other words, the creators of Ivory are promoting the
+fact that their language buttresses via its type system 
+\mdash{} and via a mathematical precision suitable for 
+proof engines \mdash{} 
+code guarantees that for most languages require external
+analysis tools.
+}
+\p{Contrary to this \q{internalist} philosophy, other approaches
+(perhaps I can call them \q{externalist}) favor a neater separation
+of specification, declaration and testing from the core language.  
+In particular \mdash{} according to 
+the \q{externalist} mind-set \mdash{} most of the more important or complex
+safety-checking does not natively integrate with the
+underlying language, but instead requires
+either an external source code analyzer, or 
+regulatory runtime libraries, or some combination of the two.  
+Moreover, it is unrealistic
+to expect all programming errors to be avoided with enough proactive planning,
+expressive typing, and safety-focused paradigms: any complex
+code base requires some retroactive design, some combination
+of unit-testing and mechanisms (including those
+third-party to both the language and the projects whose code is
+implemented in the language) for externally
+analyzing, observing, and higher-scale testing for the code,
+plus post-deployment monitoring.
+}
+\p{As a counterpoint to the features cited as benefits to the
+Ivory language, which I identified as representing the 
+\q{internalist} paradigm, consider Santanu Paul's Source Code Algebra (\SCA{})
+system described in \cite{SantanuPaul} and
+\cite{GiladMishne}, \cite{TillyEtAl}:
+\begin{dquote}Source code files are processed using
+tools such as parsers, static analyzers, etc. and the necessary information
+(according to the SCA data model) is stored in a repository.  A user interacts
+with the system, in principle, through a variety of high-level languages, or
+by specifying SCA expressions directly.  Queries are mapped to SCA expressions,
+the SCA optimizer tries to simplify the expressions, and finally, the SCA
+evaluator evaluates the expression and returns the results to the user.\nl{}
+\hspace{2em} We expect that many source code queries will be expressed using high-level
+query languages or invoked through graphical user interfaces.  High-level queries
+in the appropriate form (e.g., graphical, command-line, relational, or
+pattern-based) will be translated into equivalent SCA expressions.  An SCA
+expression can then be evaluated using a standard SCA evaluator, which
+will serve as a common query processing engine.  The analogy from
+relational database systems is the translation of SQL to expressions based on
+relational algebra. \cite[p. 15]{SantanuPaul}
+\end{dquote}
+So the \i{algebraic} representation of source code is favored
+here because it makes computer code available
+as a data structure that can be processed via \i{external}
+technologies, like \q{high-level languages}, query languages, and
+graphical tools.  The vision of an optimal development environment
+guiding this kind of project is opposite, or at least
+complementary, to a project like Ivory: the whole point
+of Source Code Algebra is to pull code verification \mdash{} the
+analysis of code to build trust in its safety and robustness
+\mdash{} \i{outside} the language itself and into the surrounding
+Development Environment ecosystem.
+}
+\p{These philosophical differences (what I dub \q{internalist} vs. \q{externalist}) 
+are normative as well as descriptive:
+they influence programming language design, and how languages in turn influence
+coding practices.  One goal of language design is to produce languages 
+which offer rigorous guarantees \mdash{} fine-tuning their 
+type system and compilation model to maximize the level of detail 
+guaranteed for any code which type-checks and compiles.  
+Another goal of language design is to define syntax and 
+semantics permitting valid source code to be analyzed 
+as a data structure in its own right.  Ideally, 
+languages can aspire to both goals.  In practice, however, 
+achieving both equally can be technically difficult.  
+The internal representations conducive to strong type and 
+compiler guarantees are not necessarily amenable to 
+convenient source-level analysis, and vice-versa.    
+}
+\p{Language engineers, then, have to work with
+two rather different constituencies.  One community of
+programmers tends to prefer that specification and validation be
+integral to/integrated with the language's type system and
+compile-run cycle (and standard runtime environment); whereas
+a different community prefers to treat code evaluation
+as a distinct part of the development process, something logically, operationally,
+and cognitively separate from hand-to-screen codewriting
+(and may chafe at languages restricting certain code constructs
+because they can theoretically produce coding errors, even when
+the anomalies involved are trivial enough to be tractable for
+even barely adequate code review).  One challenge for language engineers is
+accordingly to serve both communities.  We can, for example, aspire to
+implement type systems which are sufficiently
+expressive to model many specification, validation, and
+gatekeeping scenarios, while also anticipating that language code
+should be syntactically and semantic designed to be
+useful in the context of external tools (like
+static analyzers) and models (like Source Code
+Algebras and Source Code Ontologies).
+}
+\p{The techniques I discuss here work toward these goals on two levels.  First, I
+propose a general-purpose representation of computer code in terms
+of Directed Hypergraphs, sufficiently rigorous to codify a
+theory of functional types as types whose values are (potentially) initialized from
+formal representations of source code \mdash{} which is to say, in the present
+context, code graphs.  Next, I
+analyze different kinds of \q{lambda abstraction} \mdash{} the idea of
+converting closed expressions to open-ended formulae by asserting that
+some symbols are \q{input parameters} rather than fixed values, as in
+Lambda Calculus \mdash{} from the perspective of
+axioms regulating
+how inputs and outputs may be passed to and obtained from
+computational procedures.  I bridge these topics \mdash{} Hypergraphs
+and Generalized Lambda Calculi \mdash{} by taking abstraction as a
+feature of code graphs wherein some hypernodes are singled out
+as procedural
+\q{inputs} or \q{outputs}.  The basic form of this model
+\mdash{} combining what are essentially two otherwise unrelated
+mathematical formations, Directed Hypergraphs and
+(typed) Lambda Calculus \mdash{} is laid out in
+Sections \sectsym{}\hyperref[sThree]{\ref{sThree}}
+and \sectsym{}\hyperref[sFour]{\ref{sFour}}.
+I then engage a more rigorous study of
+code-graph hypernodes as \q{carriers} of runtime values, some of
+which collectively form \q{channels} concerning values which
+vary at runtime between different executions of a function body.
+Carriers and channels piece together to form
+\q{Channel Groups} that describe structures with meaning both
+within source code as an organized system (at \q{compile time}
+and during static code analysis) and at runtime.  Channel Groups
+have four different semantic interpretations, varying via the
+distinctions between runtime and compile-time and between
+\i{expressions} and (function) \i{signatures}.
+I use the framework of Channel Groups to identify
+design patterns that achieve many goals of
+\q{expressive} type systems while being implementationally
+feasible given the constraints of mainstream programming
+languages and compilers.
+}
+\p{Prior to launching into that mostly theoretical discussion, however, 
+I will examine real-world Cyber-Physical data with a little more specificity.
+My goal in the following pages is to describe the sorts of 
+details that need to be expressed in Cyber-Physical data models
+and therefore verified in Cyber-Physical code.  Whereas my subsequent
+analyses of code representation will address \i{how} code can demonstrate
+its underlying data model, my preliminary discussion will 
+motivate \i{why} code needs to do so in the first place.  
+}

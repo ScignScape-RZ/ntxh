@@ -1,0 +1,1102 @@
+
+`section.Types' Internal Structure and `lrgNCFour; Type Theory`
+`p.
+When data modeling is conducted in a `q.software-centric` 
+milieu, notions of `i.type systems` and `i.typed values` 
+become especially important.  In the context of 
+text-based serialization languages, like `XML;, 
+data structures can be assembled without mandating conformance 
+to predetermined schema.  Assuming there is some core 
+set of `q.basic` types %-- such as integers, floating-point 
+numbers, and Unicode character strings (to represent 
+names and phrases in natural languages) %-- data aggregates 
+can be assembled in a `q.semi-structured` manner, with 
+different types and groupings juxtaposed in no particular 
+order.  This indeterminacy is possible because 
+each part of a data structure is embodied via a textual 
+encoding, and text-streams can be packaged in a relatively 
+free-form manner, with no `i.a priori` length or structure. 
+`p`
+
+`p.
+Computer software, by contrast, works with binary 
+resources %-- i.e., with `i.binary` (rather than textual) 
+encodings of data structures; in the general case 
+we can see binary encodings as strings of 8-bit 
+integers (i.e., strings of bytes, with values in 
+the range `lclc.0-255`/).  Binary resources have to 
+registered in fixed-size, pre-allocated segments of 
+computer memory.  It is possible to emulate more free-form 
+text-encoded structures via software memory, but this requires 
+more complex implementations; it is not the underlying 
+representational pattern which is canonical to binary 
+data.  As a result, software-centric data models should 
+be grounded on structures consistent with the constraints 
+imposed by binary representation at the base level, 
+and then generalize to less restrictive aggregates via 
+higher-level, multidimensional representations.  
+`p`
+
+`p.
+Whereas the building blocks of data structures in a context 
+like `XML; are therefore semi-structured data complexes, 
+the analogous foundation for software-centric data models 
+are `i.typed values`/, or binary resources associated with 
+a type `ty;, which in turn belongs to a `i.type system` 
+`TyS;.  Data models in this sense are closely tied 
+to the details of the relevant type systems: 
+in a given `TyS;, what constitutes a type in the first 
+place, how types are combined into aggregates, and so forth.   
+`p`
+
+`p.
+This section will outline a model of type systems which I 
+believe is conducive to an overall project of unifying 
+Hypergraph Category based grammar with Conceptual Space 
+semantics.  I will build off of work I have published 
+elsewhere, so some details will be skipped over (see 
+`cite<MeHBTT>; for more extensive treatment of the 
+underyling theory).   
+`p`
+
+`subsectiontwoline.Cocyclic Types, Precyclic and Endocyclic Tuples`
+`p.
+In a hypergraph-based modeling environment, `i.hyperedges` 
+may span three or more nodes (ordinary graph edge connect
+exactly two nodes).  For `i.directed` hypergraphs (`DH;s), 
+hyperedges have a `i.head set` and a `i.tail set`/, each 
+collections of one or more nodes.  The term `i.hypernode` 
+can be used to designate node-sets which are either the 
+head or tail of a directed hyperedge; to avoid confusion 
+the nodes inside a hypernode can then be called `i.hyponodes`/.  
+Directed hypgraphs which are `i.labeled` (generalizing 
+ordinary labeled graphs, which are the basis 
+of Semantic Web data, such as `RDF;) allow information to be associated 
+with connections between hypernodes.  Each labeled hyperedge 
+then asserts that a certain kind of relationship exists between 
+the entitites or sets of entities grouped on either side 
+of the hyperedge (head or tail).`footnote.
+The relation is assumed to be intransitive, in the head-to-tail 
+direction, thereby generalizing `q.Subject/Predicate/Object` triples 
+in `RDF;
+`footnote` 
+`p`
+
+`p.
+Labeled `DH;s thereby have two different formations 
+for aggregating information: first, how hyponodes are grouped 
+into hypernodes; and, second, how hypernodes are interrelated 
+via labele connections (hyperedges).  This duality allows 
+hypegraphs to combine the paradigms associated with 
+ordinary labeled graphs and with data tuples or `q.records` 
+(e.g., Relational Databases).  So `DH;s evince a step toward 
+a universal, expressive framework for data representation 
+which is structurally rigorous but not tied down to 
+simplified modeling paradigms.    
+`p`
+
+`p.
+Analysis of hypergraph models can bifurcate into two branches, then, 
+depending on whether we attend to the formation of hypernodes 
+from hypernodes or to the assertion of inter-hypernode connections, 
+via hyperedges.  I will focus on the first alternative.
+`p`
+
+`subsubsection.Cocyclic Types for Hypernodes`
+`p.
+I assume we operate in a context where a type system 
+`TyS; is employed in conjunction with hypegraphs, so 
+both hypo- and hyper-nodes receive type attributions.  
+We can then consider what sorts of types should be 
+representable in `TyS; to adequately model the 
+spectrum of hypernodes which may appear in a hypergraph.  
+Without undue loss of generality, we can assume that 
+nonidentical hypernodes do not overlap (i.e., 
+no hyponode is covered by more than one hypernode).`footnote.
+This restriction %-- which I call `q.disjointness` %-- 
+can actually be weakened somewhat; see 
+\cite[p. ?]{MeHBTT} for details.
+`footnote`  Any given graph, then, seen as a static 
+data structure, will have some fixed list of 
+hyponodes for each hypernode (since directed hyperedges 
+are ordered, we can assume that there is an ordering on 
+their head and tail sets, and therefore that hyponodes 
+have a fixed order in their covering hypernodes).`footnote.
+Assume that hypernode identity is affected by hyponode order; 
+so the same set of hyponodes cannot appear as a head-set or 
+tail-set in two different edgers where their order 
+would be permutated, since that would violate disjointness. 
+`footnote`  
+`p`
+
+`p.
+In the models I propose, however, I want to focus on `q.Procedural` Hypergraphs, 
+which are not necessarily static structues.  Instead, each hypergraph 
+has certain evolutionary possibilities, i.e., certain regulated 
+operations by which it can be modified, such as (potentially) 
+adding a hyponode to a hypernode (if that is compatible with 
+the hypernode's type).  We want, then, a more flexible type mechanism 
+whereby hypernodes can cover a varying number of hyponodes.  
+On the other hand, we also want these hyponodes to have types 
+according to some fixed pattern, to preserve a usable 
+type-attribution mechanism for hypernodes.  In other words, 
+if we allow hypernodes to cover an unconstrained list of 
+hyponodes with any type, there ceases to be any means of 
+sorting hypernodes into different types.  The problem 
+is then to free up type `q.tupling` as far as possible while 
+preserving a strong type system at the hypernode level.
+`p`
+
+`p.
+The concept of `q.cocyclic` types, then, is intended to convey a 
+pattern among hyponode types which is flexible but still 
+constrained by strong typing.  Let `tColl; be any ordered 
+sequence of types in a `TyS;.  I will say that `tColl; is 
+`i.cyclic` if the sequence repeats: every `nth; type 
+is the same, for some `nNum;.  I will call a `tColl; 
+`i.cocyclic` if it comprises a cyclic sequence preceded 
+by a fixed-width tuple of types.  A cocyclic `i.type` is 
+then a product-type in `TyS; whose instances are 
+hypernodes wherein their contained hyponodes have types which, 
+listed as a sequence of `TyS; types, comprise a 
+cocyclic sequence.  The fixed-width tuple at the start of 
+the hyponode-list I will call the `i.precyclic` part of 
+the hypernode, while the type-tuple that repeats over the 
+rest of the sequence I will call the `i.endocyclic` part.   
+`p`
+
+`p.
+This definition of cocyclic types can be extended outside the 
+context of hypergraph type-attributions by considering 
+`q.data fields` or other components of product-types in lieu of 
+hyponodes.  In practice, the Cocyclic model is implemented 
+via the `q.PhaonGraph` library included with the dataset accompanying 
+this paper.  Note that any fixed-length product type 
+(whose instances are fixed-length tuples of values, or, 
+in the hypergraph context, hyponodes) is a cocyclic type 
+with no encyclic part.  Likewise, a `q.list` or `q.collections` 
+type built on a single `TyS; type %-- a list, stack, queue, 
+or deque of `ty;s (meaning a list of `ty;s which grows 
+and/or shrinks from one or 
+another end, or both) %-- is a cocyclic type with no precyclic 
+part (although an implementation might model these instead with 
+precyclic field tracking data such as the current length of the list).  
+An `q.associative array` (a.k.a. `q.dictionary`/) using one type to index a second 
+%-- where the `i.keys` to the dictionary come from a `tyOne; and 
+the values from a `tyTwo; %-- is similarly (representable as) an 
+endocycle alternating between `tyOne; and `tyTwo;.  
+`p`
+
+`p.
+The purpose of 
+this framework is generality %-- similar data structures can be 
+emulated in a type system where tuples have to have fixed 
+lengths, or where varying-length tuples have to contain 
+only one single types: in these cases (what I call) `q.proxies` 
+(hyponodes uniquely designating hypernodes they are not part of) 
+can approximate the layout of cocyclic types, by analogy to 
+programming languages using pointers or nested tuples to 
+represent dynamically-sized collections types.  However, 
+the cocyclic type paradigm yields less indirection 
+%-- less gap between the conceptual pattern represented 
+by a data model and its software implementation %-- 
+without diminishing the model's computational realizability.  
+The `q.PhaonGraph` library represents one implementational 
+strategy for modeling hypernodes via cocyclic 
+types as an underlying data representation.`footnote.
+In a nutshell, PhaonGraph, written in `Cpp;, allocates 
+memory in fixed-sized chunks corresponding to some 
+fixed array of hyponodes, and then maintains a separate 
+list of pointers to the chunks thus far allocated in order.
+A related `q.PhaonLib` library uses similar techniques to 
+provide collections values such as stacks, deques, and 
+queues, built around a uniform list-interface providing 
+common iterator and visitor functionality. 
+`footnote`  Of course, any individual `TyS; type 
+(in the case of a hypernode with one single hyponode) can 
+be seen as a cocyclic type with a length-one precycle.   
+`p`
+
+`p.
+Against this background, then, I assume that for any 
+`TyS; with fixed-length types we can generalize to a 
+related system wherein all types are cocylic.  
+From here on then I assume that any `TyS; under 
+discussion is `q.cocyclic`/, meaning each 
+`ty; in `TyS; is cocyclic. 
+`p`
+
+`subsection.Channelized Types and Channel Algebra`
+`p.
+In any reasonably advanced type system, some types in 
+`TyS; are `q.function-like`/: they represent computations 
+which, in some sense, take `i.inputs` of some type or 
+types in `TyS; and produce `i.outputs`/.  Programmers 
+sometimes talk of `q.pure functions` as computations 
+that map inputs to outputs with no side effects.  
+In most programming languages, however, the description of 
+function-like types has to be more complex.  In particular, 
+languages can have variant sorts of input %-- in 
+Object Oriented programming, for example, 
+some (or in some languages all) functions 
+(called `q.methods`/) have a special Object or `q.`this;` 
+input which, in various technical ways, is treated differently 
+than the method's other input parameters.  Likewise, 
+procedures have modes of `q.output` other than 
+returning values %-- they can throw exceptions,  
+modify input values, or have other side-effects in 
+addition to (or in place of) returning values.  
+Procedures implemented in most programming 
+languages, in short, have multiple mechanisms 
+for `q.communicating with the outside world` 
+%-- for getting data with which to 
+complete their given task, and for sharing 
+the results of their operations, or otherwise 
+effectuating some change beyond just computing a 
+result.  These alternatives generally get some 
+representation in languages' type systems.  
+For example, in `Cpp;, a method (which 
+takes an object as a special `this; value) 
+has a different type than a function where 
+that same object would be passed as a normal argument.     
+`p`
+
+`p.
+We therefore should assume that `TyS; allows us, in principle, 
+to differentiate function-like types on the basis of 
+multiple `i.kinds` of input and output, and/or side-effects.  
+It is not sufficient to represent `TyS; as permitting, say, 
+given a single input `tyOne; (or list of input types) and 
+output `tyTwo; (or again a list of output types), 
+the identificatio of a type `tyOneTotyTwo; representing 
+functions from `tyOne; to `tyTwo;.  Instead, `TyS; has 
+to model multiple input and output modes.  This variation 
+does not necessarily yield distinct types 
+%-- for instance, in `Cpp;, whether or not functions 
+throw exceptions is not normally considered part of 
+their type (you can assign the address of a functon which 
+`throw;s to a function-pointer whose declared type makes 
+no mention of exceptions).  However, differences in 
+input/output options `i.could` potentially herald 
+differences in type attributions (e.g., a type system 
+`i.could` stipulate that procedures which do not 
+throw exceptions may never be deemed an instance of 
+the same type as a procedure which `i.does` `throw;).  
+`p`
+
+`p.
+In `cite<MeHBTT>; I introduced the idea of `q.Channel Algebra` to 
+model different forms of input and output (an alternative outline 
+of this framework can be found in `cite<MePGVM>;, which is 
+distributed alongside this paper).  In essence, each channel is a 
+separate mode of input and output, and procedures are assigned 
+types based on grouping together one or more channels.  
+I say that a type system is `i.Channelized` if function-like types 
+in `TyS; can be described by describing the `q.channel complex`/, 
+or sums of channels group together, specifying the 
+kinds of inputs and outputs a given procedure recognizes 
+(along with the types of values passed in to or returned 
+from each procedure).  I use the term `i.carrier` to designate 
+the resource (e.g. a source-code token, or a hypernode in a graph 
+used to model computer code) holding a value in the 
+context of a procedure.  Channels are then sequences of one or more 
+(or potentially zero or more) carriers.  Carriers are distinct from values 
+(and from types) because they have states separate and 
+apart from the values they hold: when a procedure throws an 
+exception rather than return a value, for instance, the 
+carrier(s) in that procedures `q.`returnch;` channel 
+will hold no value, which on this theory is a valid carrier-state.     
+`p`
+
+`p.
+In `cite<MePGVM>; I also discuss channels and carriers, but from a 
+more graph-oriented perspective.  There I propose channels as 
+extra structures defined on hypergraphs, grouping together 
+multiple hyperedges as aggregate units.  The two models 
+fit together insofar as the definition of Channelized 
+Type Systems is one application of the construction of 
+channels on hypergraps, where procedures' types are 
+established via `q.code-graphs` exemplifying the procedure's 
+signature (channel complexes) and calls `i.to` the 
+procedure (which I call channel `i.packages`/).  
+Hypergraphs conveying the form of channel complexes and 
+packages thereby apply the general notion of hypergraph 
+channels to the specific project of modeling 
+procedure output and input kinds via code-graphs. 
+`p`
+
+`p.
+The rationale for introducing channels into hypergraphs, 
+`visavis; models of procedures expressed in computer 
+code, is evident similar to the hypegraph formations defined 
+in recent work on Hypergraph Categories (providing the 
+mathematical background to the syntactic side of 
+the `q.`HCS;` synthesis).  Making connections between 
+formalisms developed in a mathematical (in this case, 
+Category-Theoretic) context, and those based more 
+on applied computer programming, is not fully rigorous 
+%-- to some degree I would be interpreting or 
+hypothesizing about the practical intent, or 
+possible applications, behind the specific 
+Hypergraph formulations chosen by the researchers 
+behind the `HCS; idea.  With that caveat, though, 
+it certainly `i.seems` as if those mathematicians 
+generalize from graphs to hypergraphs to capture 
+some of the same procedural generalizations as 
+motivated my `q.Channel Algebra` proposal.   
+`p`
+
+`p.
+More exactly, the Hypergraph model specifically laid out 
+for `HCS; embodies (what we can call) procedures 
+%-- the Category-Theoretic setting prefers to talk 
+of `q.morphisms` instead`footnote.For technical reasons 
+why I prefer different terminology %-- and to 
+reserve `i.morphism` for a limited space of 
+intertype functions %-- see \cite[p. ?]{MeHBTT}` %-- 
+in hypernodes, and their inputs and outputs in 
+edges incident to those nodes.  An unadorned 
+input-versus-output distinction does not actually 
+mandate `i.hypergraph` treatment: ordinary directed 
+graphs have the structure to distinguish edges 
+coming `i.in` to a node from those going `i.out` of 
+a node.  In my `q.channel` theory, I work 
+within a hypergraph framework because we need a more 
+fine-grained edge-classification than just input and 
+output; as I outlined above, there are multiple 
+`i.kinds` of input and output channels.  Channels 
+therefore group edges together in a fashion that 
+introduces extra structural components outside the 
+definition of ordinary labeled graphs.     
+`p`
+
+
+`p.
+In the case of `HCS; Hypergraph categories, the motivation 
+for adopting hypergraphs is oriented more toward the 
+idea that inter-procedural connections represent 
+`q.information flows`/.  In this framework, computer 
+software can be thought of as an interconnected system 
+whose architecture can be summarized by graphs: with 
+procedures as nodes, an edge exists between procedures 
+when the output of one procedure becomes an input for a 
+second.  Moreover, the theory uses nodes `i.also` to 
+represent information `q.entering` the system %-- in 
+effect, data being presented to a procedure which does 
+not arise as the result of some other procedure, but 
+rather as information obtained via some measurement 
+or observation of external states.
+`p`
+
+`p.
+Moreover, nodes also represent side-effects which can be 
+effectuated by a software system.`footnote.
+Hypergraph Categories are not specifically about software, 
+but reasoning about software behavior is cited as a possible 
+application and used as a hypothetical case-study.
+`footnote`  Suppose a procedure concludes by formulating 
+an instruction that a rectangle of a given size and color 
+is to be drawn on a computer screen.  The values describing 
+that desired effect are understood to be `q.outputs` of 
+the procedure, but instead of their being passed to a further 
+procedure they are somehow translated to tangible effects in 
+the software's external environment (in practice, this would 
+presumably happen by calling some system kernel function, but 
+in the abstract sense we can treat this as an output 
+which is `q.absorbed` by the computer rather than passed on 
+as an input).    
+`p`
+
+`p.
+Taking these two ideas together %-- `i.inputs` which are 
+measurements of external states and `i.outputs` which are 
+effects `i.on` external states %-- in the corresponding 
+graph representations we then have directed edges 
+which have target nodes but no source nodes (for state-inputs) 
+or which have source nodes but no target nodes 
+(for effect-outputs).  Authors like Cocke `i.et. al.` 
+then use hypergraphs to model these pattern by 
+leveraging a generalization wherein Directed Hypergraphs' 
+cardinality, for either head or tail, can be any quantity 
+(including zero).  That is, Hypegraphs in this 
+Category-Theoretic contexts allow for hyperedges with no 
+source or no target, as well as hyperedges with multiple 
+sources and/or targets.  
+`p`
+
+`p.
+The state/effect systems thereby 
+represented (by head- or tail-empty hyperedges) have a 
+correspinding construction, in practical software, via 
+techniques generally described as `q.reactive`/, as in  
+`q.Functional Reactive Programming`/.  In this paper I will 
+point particularly to the so-called `i.signal/slot` 
+mechanism used in `Cpp; within the `Qt; libraries.  
+A head-empty `q.state` edge, on this analogy, 
+corresponds to a `i.signal` which triggers a 
+`q.slot` procedure; and a tail-empty 
+`q.effect` edge corresponds to an operation of 
+`q.emitting` a signal.  I will discuss this analogy 
+in more detail below.
+`p`
+
+`p.
+There are various routes toward generalizing graphs to hypergraphs; 
+Hypergraph Categories are only one example.  Also, technical 
+presentations of hypergraphs are not exclusively mathematical: 
+certain software libraries and graph databases also embody 
+formal hypergraph models, with varying features 
+(for instance, some allow hyponodes to also be 
+hypernodes; some support undirected hyperedges; 
+some allow circular hyperedges wherein the head set is 
+also the tail set).  The `q.Channelized Hypegraph` 
+(`CH;) setup I outlined in `cite<MeHBTT>; is different 
+in some details than Hypergraph Categories %-- including 
+by introducing channels as an extra construction on 
+graphs %-- but I believe the frameworks are sufficiently 
+close that the Channelized Hypergraph constructions 
+(and therefore Channelized Types) are a plausible 
+extension of Hypergraph Categories from the viewpoint of 
+integration with Conceptual Space Theory.  
+`p`
+
+`subsection.Constructors and Carrier States`
+`p.
+The `HCS; version of Hypergraph Category Theory makes the 
+trenchant point that graphs modeling values only as they pass 
+between procedures %-- outputs becoming inputs %-- are 
+necessarily incomplete, because values have to original 
+from `i.somewhere`/.  In practice, some data handled by a 
+software component comes from external sources %-- files, 
+packets sent over a network, CyberPhysical devices, and 
+so forth.  Otherwise, often values come from computer code directly: 
+all programming languages have some notion of `i.source code literals` 
+which permit values (at least, those of the most basic types) to 
+be initialized from character strings in source code.  
+For example, the literal token `q.`codeTextr<99>;` becomes 
+the `i.number` `codeTextr<99>;.  One question to be 
+addressed for an applied type theory %-- i.e., to 
+specify the nature of an applied type system `TyS; %-- 
+is how and which types can be constructed from source 
+code literals in this manner.  
+`p`
+
+`p.
+Representing values passed between procedures can be seen as 
+a `q.syntactic` gloss on computer code, because programming language 
+grammars are built around how expressions in each language describe 
+the seqeuence of function-calls specified to enact some algorithm 
+or calculation.  But understanding how different typed values 
+interact with function-calls is also a `i.semantic` matter, 
+characterizing the semantics of individual types.  Given a 
+specific instance `vVar; of type `ty;, we may analyze %-- what 
+sort of procedures can produce `vVar;?  Is `vVar; obtained from 
+some other `ty;-value, or can it be initialized via a source-code literal?  
+Is `vVar; a `q.default` value for `ty; which can be created `i.ab initio`/, 
+with no further input?  If `vVar; is derived by modiying some alternative 
+`ty;-value, can we identify this prior value, thereby `q.deconstructing` 
+the construction which yielded `ty;?   
+`p`
+
+`p.
+Suppose, for instance, that `ty; is a list of signed 32-bit integers.  The 
+`q.default value` for such a type is almost always defined as an empty 
+list.  New `ty;-values are created by appending a number to the end 
+of the list.  Given a non-empty list `vVar;, we can always `q.deconstruct` 
+`vVar; by noting that `vVar; is derived by adding some number 
+`nNum; to a shorter-by-one list `vVarPrime;.  Algorithms which 
+depend on examing the whole list %-- finding its largest element, or 
+counting how many times a given number appears, or how many elements 
+are larger than some target %-- can be conveniently expressed 
+by examining the list recursively, each time stripping the 
+last number and repeating the test on the shorter-by-one outcome.  
+To count how many numers are positive, say, check each `nNum; at 
+the end of the list, increase the result by one if `nNumGtZero;, 
+and repeat that process with the smaller-by-one list obtained 
+by `q.deconstructing` the current `vVar; into `vVarPrime; and 
+`nNum;.  The style of recursive algorithm is endemic to Functional 
+Programming, where it yields procedures that do not need to 
+employ `i.iterators` which loop over the elements of a data 
+collection.  Recursive procedures can eliminate the loop initializations 
+and tests that can make non-recursive, iterator-based code more cluttered 
+and obscure.   
+`p`
+
+`p.
+However, this recursive style of programming is only possible if 
+specific metadata is embedded with `ty; values which allows 
+`q.deconstructing` `ty; instances into construction `i.patterns` 
+and allows `ty;s to be reused in a recursive fashion (e.g., 
+repeatedly calling a procedure on shorter-by-one lists).  
+This functionality is not available for simpler in-memory 
+representations of data structures, like `q.linked lists` 
+(a sequence of pointers to each value paired with pointers to the next 
+value) or `CLang;-style zero-terminated arrays.  In order for `ty; 
+to support recursive algorithms in lieu of iterators, it needs to be 
+expressly implemented in anticipation of this pattern.  
+Conversely, types also need extra functionality 
+(e.g. `mbegin; and `mend; methods in `Cpp;) to support iterators, 
+and extra functionality (like `operatorB; in `Cpp;) to support 
+array-based access.   
+`p`
+
+`p.
+In effect, the semantics of types is much more detailed than 
+simply describing the kind of values `ty; may instantiate.  
+A `q.list of numbers` may have one abstract profile, but there 
+are a broad range of practical implementations which 
+build, traverse, and read numbers from the list in different ways.  
+Two types which have mathematically the same `q.space` of 
+values may be distinct types with very different programming interfaces.  
+While it is abstractly true that any non-empty list can 
+be `q.deconstructed` into a single element and a shorter-by-one 
+predecessor with that element removed, a given list implementation 
+may not support procedures to compute that deconstruction in an 
+efficient manner.  As a result, mathematical properties of 
+types' sets of possible values have only limited applicability 
+to types' operational semantics. 
+`p`
+
+`p.
+This point also reinforces the insight that types, in applied 
+type systems such programming languages', are not really mathematical 
+entities %-- they are digital artifacts designed by an implementer 
+to be programmatically employed in specific ways.  When analyzing 
+types we therefore have to explicate the usage patterns 
+that are facilitated by their implementations.  Type systems can 
+expedite this process by allowing types to be described 
+in ways that clarify their intended and expected use-cases.
+`p`
+
+`p.
+The first step in descriging types' usage, moreover, is to 
+account for their `i.constructors`/, i.e., for the 
+procedures which create new `ty; values.  Constructors 
+are different from other procedures which output `ty; values 
+because constructors are internal to how the type is 
+designed; they are in a sense `q.part of` the type.  
+In most cases, any programmer can write procedures which 
+return instances of `ty;s in `TyS;, but most type 
+systems have restrictions on where `ty; `i.constructors` 
+are implemented.  Constructors are intrinsic to types in 
+that redesigning constructros for `ty; is understood to 
+modify `ty;'s interface, whereas simply writing a 
+procedure which returns a `ty; is not normally seen as 
+`q.changing` `ty;.  Moreover, any `q.external` procedure 
+which returns `ty; is understood to call a `i.constructor` 
+for `ty; to obtain the value to be the external procedures 
+outcome, or at least to call some other procedure which 
+calls a `ty;-constructor, etc. %-- whenever a `ty; is 
+the `i.outcome` of a procedure, at some point, during some 
+(maybe nested) procedure, there is a call to a `ty;-constructors.  
+Constructors then become landmarks for identifying the properties 
+of `ty;, because all `ty;-values originate from 
+`ty;-constructors at some point. 
+`p`
+
+`p.
+In `cite<MeHBTT>; I also introduce the idea of `q.co-constructors`/, which 
+are conceptually similar to constructors but which wrap the `q.real` constructors 
+in separate procedures which can present a streamlined type interface.  
+The technical details of co-constructors vs. normal constructors are 
+not pertinent to this paper, but suffice it to say that a type system 
+may choose to make `i.co-constructors` the basic building-blocks of 
+a type interface.  On this strategy, code which is not part of 
+the `q.core` implementation of `ty; would not call `ty;'s constructors 
+directly, but instead would call `ty; co-constructors.`footnote.
+The same applies for `TyS; understood not as the system embraced 
+by a `i.language`/, but rather the norms adopted by a library or 
+application: in `Cpp;, say, developers could enforce a framework 
+of co-constructors by strategically excluding (what `Cpp; would
+call) actual constructors from classes' public interface.
+`footnote`
+`p`
+
+`p.
+Co-constructors are similar to what some programmers 
+call `q.factory methods` or `q.object factories`/, and 
+are similar in intent.  Actual constructors have 
+some language-limitations or peculiarities: in 
+`Cpp;, for example, you cannot take a pointer to a 
+constructor.  On the other hand, insofar as co-constructors 
+are ordinary (non-member) procedures one can take their 
+address, e.g. for a lookup table mapping strings to 
+co-constructor pointers; i.e., co-constructors are more 
+amenable to `q.reflection` whereby programmers can dynamically 
+invoke a procedure by supplying its name (which in turn is useful 
+for allowing applications to be fine-tuned via scripts, or 
+constructing objects at runtime from a database).  Constructors 
+are also sometimes `q.default-implemented` by compilers behind 
+the scenes.  Co-constructors or `q.factories`/, then, are 
+in some contexts more precise representations of 
+types' intended usage patterns than the actual constructors 
+as recognized by compilers.    
+`p`
+
+`p.
+In particular, implementers of a type `ty; may use co-constructors to 
+document and differentiate patterns in how `ty; values are created.  
+Constructors for a `ty; can be classified into several patterns, such as: 
+
+`itemize,
+`item; Default constructors which require no further inputs.  Default-constructed 
+values may be deemed conceptually valid instances of their type (e.g. `Zero; is a 
+valid integer) or may also be `q.special` values indicating missing 
+data (like `null; pointers or `q.`NaN;`/).   
+
+`item; Literal constructors which initialize `ty; values from literal strings.
+
+`item; Binary constructors which initialize `ty; values from binary resources 
+holding preexisting instances; in the simplest case simply copying the 
+bytes in a `vVar; to initialize a `vVarPrime;.
+
+`item; Pattern-based constructors which initialize `ty; values from an 
+aggregate data structure which may (but need not) include other `ty; values.  
+This would include building a list `vVarPrime; from a shorter-by-one 
+list `vVar; by appending an element to the list, if that procedure is 
+exposed as a (co-)constructor.
+
+`item; Resursive constructors allow values obtained 
+by pattern-based constructions to be `q.deconstructed` and 
+used for recursive algorithms, as outlined earlier in the case of lists.
+
+`itemize`
+
+I could add further details to this breakdown %-- (co-) constructors which 
+validate their input, for instance %-- but the basic idea is that 
+types are often designed with implicit assumptions about how they are 
+to be used, and these assumptions become manifest in what sorts of 
+constructors are provided.  These design patterns can be 
+made more rigorous or explicit by consciously notating and classifying 
+what sort of use-case is envisioned; one way to achieve this is by 
+making object factories or co-constructors the basic public interface 
+for a type, and then supplementing co-constructors with metadata 
+that describes the type interface in a systematic manner.   
+`p`
+
+`p.
+Assuming this methodology, we then have an additional set of 
+tools for reasoning about `ty; values.  Upon enumerating 
+various `i.kinds` of (co-)constructors, as above, we 
+can specify whether a `ty;-value `vVar; could be the 
+product of a co-constructor of a given kind %-- whether 
+`vVar; could be default-constructed, say, or 
+constructed from a source-code literal.  Intuitively 
+we then have an idea of `q.partitioning` the space of a 
+type into regions based on the kind of construction that results 
+in the curresponding `ty;-values.  This picture is hard 
+to make fully rigorous because is not automatically given 
+how we should think of type-instances as a `q.space`/.  
+For some types, we can neatly list all their possible 
+values (say, signed bytes are every number from \codeTextrr{7pt}{-127} 
+to \codeTextrr{7pt}{127}), but in many varying-size types the actual 
+set of values that could be represented at any moment, in any 
+particular computing environment, will dynamically depend on 
+factors like available memory.  It is impossible to say, 
+for instance, just how long a list can become before it 
+requires too much memory, which in turn would result in the 
+proposed list failing to be constructed.   
+`p`
+
+`p.
+In short, we need analytic methodology which does not treat 
+types as if they were `q.sets of values`/.  In the framework 
+of channels and carriers, I try to achieve this by reasoning 
+about types through the carriers which hold type-instances, 
+and by defining carrier `i.states` (including states orthogonal 
+to any type system, e.g. a carrier which `i.doesn't` hold a 
+value).  With this foundation we can talk about the 
+`q.space` of type-instances in terms of `i.states` on carriers.  
+Suppose a carrier `cCar; holds a `ty; value produced by a co-constructor 
+of a given kind (`kVar;, say).  We can then introduce `kVar; as a 
+state on `cCar;: `cCar; is in the state of holding a value 
+emerging from a `kVar;-co-constructor.  This provides 
+potentially useful information.  If `kVar; corresponds 
+to a default-initialized `q.sentinel` value 
+%-- i.e., a fallback like `null; for unavailable data 
+%-- then such a state corresponds to holding a 
+conceptually `q.invalid` `ty;-instance.  Or, if 
+`kVar; corresponds to a pattern-based construction 
+suitable for recursion, `vVar; could be used 
+in recursive algorithm. 
+`p`
+
+`p.
+Note also that many types have a notion of a `q.fallback` or 
+`q.default` value, which may or may not be `i.valid`/.  
+For numeric types, that value is usually zero, but 
+the meaning of `Zero; can depend on context.  Consider a 
+procedure which checks a database to learn someone's age: 
+the default `Zero; may be intended to mean that this 
+information was not found or not provided.  However, 
+in (say) a medical context, `Zero; may also be the 
+(real) age of an infant.  Analogously, an empty string 
+might mean that someone's middle name is not known; 
+or that someone does not `i.have` a middle name.    
+`p`
+
+`p.
+To avoid confusion, types often are built around two 
+`q.special` values, or are engineered so that a default 
+`q.sentinel` `null; value cannot be confused with 
+a conceptually meaningful value.  In computer graphics, consider the case 
+of color: a reasonable default value (for drawing a line, say) 
+would be the color black %-- which also, in `RGB; encoding, 
+corresponds to vector of three `Zero;s, so it is consistent 
+with default-to-zero conventions.  On the other hand, a system 
+may need to identify situations where a color is unknown or 
+not specified (analogous to an unknown age vs. a baby's `Zero; 
+years), so a type representing colors may have some extra 
+value meaning `q.no color` %-- which would not be confused 
+with or deemed equal to black.
+`p`
+
+`p.
+Analogously, most 
+programming allow the (technically negative) number `negOne; 
+to be used in an `i.unsigned` context, as a special 
+`q.unknown` value.  If someone's age is given as `negOne;, then, 
+it would be clear that the intent is to report that the age is 
+not known, with no confusion `visavis; a child before their 
+first birthday.  Numerically, `negOne; would actually have a 
+binary encoding (most likely) as \codeTextrr{7pt}{255}, which would never 
+be confused with someone's real age.  Similarly, types 
+representing textual strings sometimes distinguish 
+`i.empty` strings (like when someone is known not to have a middle name) 
+from `i.null` strings (representing missing or unknown data). 
+`p`
+
+`p.
+In practice, accounting for cases of default or missing data 
+is an essential part of designing types, qua digital artifacts.  
+If a `ty; value is not known or not provided, should a 
+(valid) default value be used instead?  Black, say, is 
+a reaonable default for colors (though what about color-systems 
+with transparency: should the default be fully opaque colors, 
+with no transparency effects, or fully transparent and therefore 
+invisible colors)?  Conversely, `Zero; (when it also means 
+zero years, not yet one yeal old) is probably not reaonable 
+default for someone's age.  When data is missing, should 
+default values be used; if not, how should the problem 
+be represented?  These decisions influence our conceptual 
+understanding of types' spectrum of values and their 
+expected uses.  A default and conceptually valid 
+value (like black in the realm of colors) is 
+conceptually different than a default value which 
+is `i.not` conceptually a `q.real-life` instance of the 
+type (like `negOne; for someone's age) %-- 
+let's call these `i.meaningful` and `i.meaningless` defaults, 
+respectivel %-- and that 
+in turn is different from an invalid value which should 
+generally not be passed between procedures (which I'll 
+likewise call an `i.invalid` default).   
+For an example of this last distinction, a sentinel `q.`NaN;`  
+should rarely actually be passed to procedures expecting a number 
+%-- on the premise that any calculation on `NaN; should yield 
+`NaN;, so the call would be superfluous %-- while 
+it is quite common to pass `null; pointers in `Cpp; even though 
+their conceptual meaning is that they do `i.not` point 
+to any memory address (so, conceptually, they are not `q.real` pointers). 
+In short, `i.black` is a meaningful default, `null; is a 
+meaningless but not invalid default for pointers, and 
+`NaN; is typically an invalid default for numbers %-- or at 
+least this summarizes typical usage patterns.
+`p`
+
+`p.
+Such conceptual patterns in how we think about types are, at least in 
+part, formal analogs to the conceptual semantics of Natural Language.  
+Here I will in fact argue that unpacking the conceptual variations between 
+different type-instances %-- meaningful, meaningless and 
+invalid defaults, for instance, or literal-intitializable values 
+%-- gives rise to a sense of types' `q.conceptual spaces` 
+which is to some degree analogous to Conceptual Space Theory.  
+Before launching into that discussion, however, I will 
+review some more details in the `q.theory of constructors` 
+with an eye toward defining very general (while still 
+formally rigorous) `TyS; systems.  
+`p`
+
+`subsection.Nonconstructive Type Theory`
+`p.
+Thus far I have suggected that types' conceptual 
+and operational profiles can be defined in part by 
+describing the system of constructors (or co-constructors) 
+through which their values may be created.  The process 
+by which a particular `ty;-value `vVar; has been 
+created can be a factor in how `vVar; may be used.  
+For example, most functional programming languages 
+allow procedures to be implemented via `q.pattern matching`/, 
+which means splitting the procedure into different 
+versions or different routines based on the nature of 
+an input value, which can be determined by how it 
+was constructed.  A canonical example is procedures 
+defined on lists: suppose `vVar; can be 
+`q.deconstructed` into a smaller-by-one sublist 
+`vVarPrime; and a single element `eVar; %-- 
+`vVar; is `vVarPrime; appended by `eVar;.  
+The right-hand side (`vVarPrime; with `eVar;) can 
+be called a `i.construction pattern` which 
+yields, or defines the provenance of, `vVar;.  
+On that basis, a procedure which operates 
+on `vVar; could equally well, at least logically 
+or conceptually, be seem as operating on 
+the `vVarPrime; and `eVar; pair.  On the 
+other hand, if `vVar; is an empty list, 
+then algorithms need to proceed differently 
+than for `vVar; non-empty.  In combination, this 
+yields an outline for procedures as follows: 
+differentiate empty from non-empty `vVar;; 
+for the latter, allow the procedure to 
+operate on a `vVarPrime; and `eVar; pattern, 
+rather than on `vVar; directly.     
+`p`
+
+`p.
+Programming languages which want to support these 
+`q.pattern matching` features need two capabilities: 
+they need to be able to implement procedures which 
+bifurcate based on which pattern matches; and 
+they need to take a multi-part structure as 
+a procedural input, like `vVarPrime; `i.and` `eVar;, 
+in the place of a single carrier like `vVar;.  
+One straightfoward way to achieve this is to 
+differentiate procedures based on the construction-patterns 
+evinced by their arguments.  For example, we can 
+consider a procedure which `i.only` operates 
+on `i.empty` lists, paired with a procedure 
+which `i.only` operates on `i.non-empty` lists.
+`p`
+
+`p.
+We then have to investigate how these distinctions 
+intersect with the relevant type system. 
+Should `TyS; stipulate that procedures for 
+empty lists have a different `i.type` than procedures 
+for non-empty lists?  Note that in general the 
+empty/non-empty distinction does not yield 
+different type-attributions: a non-empty list is 
+not a different `i.type` than an empty list (assuming 
+compatibility in the type of elements declared to 
+go in the list).  There are nonetheless frameworks 
+which would allow a `i.function` taking empty 
+`ty;s (for list-type `ty;) being considered a 
+different type than ones taking non-empty `ty;s.  
+For procedures taking non-empty lists, moroever, 
+their argument can (potentially) be converted into a 
+construction-pattern (like `vVarPrime; and `eVar;), 
+so that the single input to (this verson of the) 
+procedure actually becomes two different inputs.  
+Enabling procedures to be split and designed 
+in this manner %-- split and paired off by pattern-matching 
+and taking compound inputs %-- requires `TyS; types to 
+be implemented with the requisite capabilities 
+(e.g., calculating the proper construction-pattern for a 
+given `ty;-value).  Because this sense of 
+`q.pattern matching` is a common idiom in functional 
+programming languague, it certainly needs to be accommodate 
+in a broad-based type theory attuned to the type 
+systems of different kinds of formal languages.`footnote.
+Note that there are other, unrelated uses of the phrase 
+`q.pattern matching` in programming and computer science 
+%-- e.g., in the context of regular expressions, which is 
+essentially entirely different from the current context.
+`footnote`  
+`p`
+
+`p.
+Conversely, though, it is just as common for types 
+to `i.lack` the infrastructure for pattern-matching in 
+this sense, so we need to these features as 
+`i.possible` but not `i.necessary` aspects of types.  
+For sake of discussion, I will call types amenable 
+to pattern-matching `i.constructive`/; and otherwise 
+`i.non-constructive`/.  There is no need here to 
+formalize a technical definition of the comparison, 
+but semi-formally I'll say that a `i.constructive` type 
+has (or can be provisioned with) a procedure which, 
+given any instance `vVar;, can return a construction-pattern 
+which reciprocates the construction of `vVar; from other 
+values.  In this context I treat the functionality to 
+calculate patterns as an ordinary procedural interface on 
+a type: for constructive `ty; there will be an associated 
+`q.construction pattern` type (usually a type `i.different` from 
+`ty;) and procedures to map `ty;s to their corresponding patterns.  
+Pattern-matching can then be achieved, or at least emulated, 
+by defining procedures on the construction-pattern types 
+for `ty; rather than `ty; itself.  
+`p`
+
+`p.
+Implementing constructive types introduces some complications 
+in conjunction with an overall type interface, which might not 
+be immediately apparent.  For instance, consider types 
+which have (what I earlier called) `q.binary constructors` 
+%-- e.g., a `ty; which can initialize values by copying 
+the bit-pattern of some other `ty;-instance.  For many 
+`TyS; this option results in the theoretical possibility 
+that `ty;s could be created with any bit-pattern whatsoever.  
+In `Cpp;, for example, a pointer could potentially point to 
+some random area of memory (after an error in neglecting 
+to initialize the pointer, say), from which a dereferenced yields 
+a `ty; value manifest in a random sequence of bits.  Such 
+randomness is almost always an error, but this does not 
+preclude code having to accept the possibility that 
+`ty;-values might be `q.randomly` constructed.  In this 
+case, the data which could be used derive construction-patterns 
+may well become corrupted.  
+`p`
+
+`p.
+Suppose a type offers an interface to return construction-patterns 
+for all of its values, but makes assumptions about these values' 
+binary layout when deriving those patterns.  For instance, a 
+list type might be based on a list-pointer together with fields 
+indexing the start and end of the list.  With this arrangement, 
+one single list pointer %-- i.e. one list in memory %-- can 
+be the basis for multiple `ty;-values, by varying their 
+start and/or endpoints.  A construction pattern for a list 
+`vVar; could then be efficiently obtained by noting the 
+element `eVar; at the start or end of `vVar;, and producing a 
+`vVarPrime;-`eVar; pair by constructing `vVarPrime; as a 
+variant on `vVar; with its start or end index advanced (respectively 
+decreased) by one.  This is a plausible `q.deconstructing` scheme 
+because all the intermediate list values obtained in construction-patterns, 
+and then potentially used in recursive procedures, share the same 
+underlying memory; there is no copying or modifying of in-memory 
+data.  A list is then considered `i.empty` if its start and 
+end indices are the same.  A recursive algorithm 
+would work with a sequence of construction-patterns, with 
+the two indices getting closer together, until the recursion 
+would be broken by final list being empty. 
+`p`
+
+`p.
+The problem here is that this design only works if the start 
+and end indices for the original `vVar; are in the correct order 
+(the start must be less than or equal to the end).  
+If that requirement cannot be guaranteed, then the 
+above derivation of construction-patterns cannot be guaranteed 
+to work properly; in particular, a recursive algorithm might 
+loop infinitely.  As this example shows, a constructive type 
+may need to double-check all values at their point of construction 
+to ensure that the type's various fields and internal data 
+are configured properly to support features like pattern-matching.  
+A constructive `ty;, in short, may need to ensure that 
+no `ty;-values are constructed without certain validation checks being 
+performed (this would be one use-case for a co-constructor).  
+For instance, simply copying bit-patterns from one place to another 
+may have to be disabled as a tactic for copy-constructing 
+values, unless the newly constructed data structure is validated.   
+`p`
+
+`p.
+Given these considerations, it is certainly possible that some 
+types will be non-constructive %-- i.e., they decline 
+to provide procedures that return construction-patterns, 
+and to provision the support needed to use construction-patterns %-- 
+even if the logical characteristics of the types' values would seem 
+to support a pattern-based interface.  In practice, 
+programming languages that enable pointer-based 
+access to values, and pointer-dereferencing, tend not to 
+natively recognize construction-patterns, and vice-versa.  
+`p`
+
+`p.
+The idea of proxying `ty;-values via construction-patterns 
+has mathematical foundations, emanating from `q.constructive` 
+mathematics.  In particular, consider `q.recursive` construction 
+patterns, where a `vVar; is `q.deconstructable` into 
+a `vVarPrime;/`eVar; pattern, and then `vVarPrime; is further 
+substitutable by a further pattern based on a `vVarDblPrime;, 
+and so on.  In many cases, for any `ty;-instance `vVar; there is 
+then a determinate sequence of constructions which 
+eventually produces `vVar;, and likewise an `q.inverse` 
+seqeunce of construction patterns which `q.undoes` those 
+constructions.  For instance, any list of numbers can 
+be seen as the product of numerous constructions which 
+begins with an empty list, and produces successively 
+larger lists by appending one number at a time, 
+eventually arriving at an end-result `vVar;.  
+In a language like Haskell, the notions of 
+`i.list of elements` and `i.sequence of constructions 
+(appending elements to a prior list)` are understood to be 
+conceptually indistinguishable.  That is to say, 
+`ty; values are understood to be internally inseparable 
+from the progression of steps which provide 
+a recipe for constructing those `ty;s.  
+`p`
+
+`p.
+Mathematically, an analogous assumption is that 
+the space of `ty;-values is isomorphic to the 
+space of construction-sequences which yield 
+`ty;s.  We can also say that the space of these 
+sequences is a `i.model` for `ty;.  A type mathematically 
+representing `i.lists of integers`/, say 
+%-- meaning in this context a logical specification 
+of some mathematical space %-- can be said to be 
+modeled by the space of programs which 
+produce these lists by starting from an empty list and 
+progressively appending numbers.  This `q.space of programs` 
+is a `i.model` for the type insofar as it satisfies the 
+types' logical requirements.  This is one example of 
+a project for analyzing mathematical spaces in terms 
+of `i.finite constructions` which yield elements of those 
+spaces.  In constructive mathematics, proofs of 
+propositions on such `q.finite constructions` is considered to 
+be easier, or more logically sounder, than proofs 
+which engage with infinite spaces and rely on 
+logical indirections, like the `q.law of the excluded middle`/.    
+`p`
+
+
+`p.
+Constructive types, then, inherit this mathematical 
+backstory insofar as such types allow us to 
+deem types' space of values as, in essence, logically 
+indistinguishable from the space of construction-sequence 
+that yield those values.  A `i.constructive` type theory 
+would be one which treats all types as constructive, perhaps  
+on the basis of logical or philosophical reasoning: 
+we can say in the abstract, for instance, that any list 
+is `i.logically` isomorphic to a sequence of sublists 
+building up to it.  In practice, though, I consider a 
+type constructive only if it `i.explicitly` 
+provides the infrastructure needed (or if that happens 
+automatically given the relevant implementation language) 
+so that `q.constructive mathematics` intuitions can be 
+concretely leveraged.  I will say that a type system 
+is `i.non-constructive` if it does not `i.assume` that its 
+types are constructive; a non-constructive `TyS; may still 
+have `i.some` constructive types. 
+`p`
+
+`p.
+In short, a non-constructive `TyS; actually `i.generalizes` 
+constructive frameworks: by allowing both constructive and 
+non-constructive types it presents a superset subsuming 
+`TyS;s failing to properly model non-constructive 
+types, as well as `TyS;s failing to properly model `i.constructive` 
+types.  I claim therefore that non-constructive `TyS;s 
+are the requisite framework to represent the spectrum of 
+applied type systems in greatest generality. 
+`p`
+
+`p.
+So, in this section I have presented several features of 
+type systems which, I believe, allow us to achieve the greatest 
+breadth in covering the diversity of possible `TyS;s 
+while staying within the bounds of software-centric, 
+implementational rigor: type systems which are 
+`i.non-constructive`/, `i.channelized`/, and 
+`i.co-cyclic`/, from which I derive the `q.`NCFour;` moniker.  
+In this paper, then, I want to use `NCFour; type systems 
+as a foundation for studying the semantics of 
+formal languages, in the hopes of deriving an `HCS; theory 
+%-- a theory of unifying Hypergraphs with Conceptual Spaces 
+%-- for these languages which can be usefully paired with analogous 
+unifications for `i.natural` language.     
+
+`p`
+

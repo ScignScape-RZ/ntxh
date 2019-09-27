@@ -1,0 +1,908 @@
+\section{Case Studies}
+\phantomsection\label{sTwo}
+\p{To motivate the themes I will emphasize going forward, 
+this section will examine some concrete data models 
+which are used or proposed in various CyberPhysical contexts. 
+I hope this discussion will lay out parameters on device 
+behavior or shared data to illustrate typical 
+modeling patterns and their corresponding safety or 
+validation requirements.  As an initial overview, the 
+following are some examples of data profiles that might 
+be wedded to deployed CyberPhysical devices 
+(my comments here are also summarized in 
+Table~\ref{table:profiles} on page \pageref{table:profiles}): 
+\begin{description}\item[Heart-Rate Monitor]  A heart-rate sensor generates 
+continuously-sampled integer values
+whose understood Dimension of Measurement is in \q{beats per minute}
+and whose maximum sensible range (inclusive of both
+rest and exercise) corresponds roughly
+to the \ftytwoh{} interval.  Interpreting heart-rate data depends on 
+whether the person is resting or exercising.  Therefore, a 
+usable data structure might join a beats-per-minute dimension 
+with a field indicating (or measuring) exertion, either a 
+two-valued discrimination between \q{rest} and \q{exercise} 
+or a more granular sampling of a person's movement cotemporous 
+with the heart-rate calculations.
+\item[Accelerometers]  These devices measure object's 
+or people's rate of 
+movement (see \cite{MarcoAltini}, \cite{VincasBenevicius},
+\cite{JamesKnight}, \cite{HyunwooLee}, etc.),
+and therefore can be paired with heart-rate sensors 
+to quantify how heart rate is affected by exercise 
+(likewise for other biometric instruments, such as those 
+calculating respiration rate).  Outside the biomedical context, 
+accelerometers are important for 
+Smart Cities (or factories, and so forth) for modeling 
+the integrity of buildings, bridges, and industrial 
+areas or structures (see e.g. \cite{Wetherington}, 
+\cite{LiZhu}).  
+\pseudoIndent{}
+An accelerometer
+presents data as voltage changes in two or three directional
+axes, data which may only produce signals when a change occurs
+(and therefore is not continuously varying), and which is
+mathematically converted to yield information about physical
+objects' (including a person's) movement and incline.  
+Mechanically, that is, accelerometers actually 
+measure \i{voltage}, from which quantitative reports 
+of movement and incline can be derived.  Accelerometers are 
+classified as \i{biaxial} or \i{triaxial} depending on 
+whether they sample forces in two or three spatial 
+dimensions.  
+\pseudoIndent{}
+The pairwise combination of heart-rate and acceleration data
+(common in wearable devices) is then a mixture of these
+two measurement profiles \mdash{} partly continuous and
+partly discrete sampling, with variegated axes and
+inter-dimensional relationships.  
+\item[Remote Medical Diagnosis]  An emerging application of 
+CyberPhysical technology involves medical equipment 
+deployed outside conventional clinical settings 
+\mdash{} in remote areas with little electricity, refugee 
+camps, temporary ad-hoc medical units (established 
+to contain potential epidemics, for instance), and 
+so forth.  These settings have limited diagnostic 
+capabilities, so data is often transmitted to distant 
+locations in lieu of on-site laboratories.  
+\pseudoIndent{}
+A good case-study derives from \q{medical whole slide imaging} 
+(\mWSI{}) \cite{Auguste}, where a mobile 
+phone attached to an ordinary microscope, 
+by subtle modifications of camera position and microscope 
+resolution, allows many views to be made on one slide.  
+Positional data (the configuration of the phone and microscope) 
+then merges with image segmentation 
+computations characteristic of 
+conventional whole slide imaging (see, e.g., 
+\cite{Farahani}); and by extension diagnostic pathology 
+in general, which 
+is concerned with isolating medically significant image 
+features and identifying diagnostically indicative 
+anomalies (such as cell shapes 
+suggesting cancer). 
+\pseudoIndent{}
+Segmentation, in turn, 
+generates multiple forms of geometric data: in 
+\cite{KaleAksoy}, for instance, segments are 
+identified as approximations to ellipse shapes, 
+and features are tracked across scales of resolution, 
+so geometric data merges ellipse dimensions with 
+positional data (in the image) and a metric 
+of feature persistence across scales.  
+(Features which are detectable at many scales of 
+resolution are more likely to be empirically 
+significant rather than visual \q{noise}; calculating 
+cross-scale \q{persistence} is an applied 
+methodology within Statistical Topology \mdash{} 
+see e.g. \cite{EdelsbrunnerHarer}, 
+\cite{HaneyMaxwell}, \cite{HarryStrange}).  
+Merged with \mWSI{} configuration info and patient data, the 
+whole data package integrates geometric, CyberPhysical, 
+and health-record aspects. 
+\item[Speech Sampling]  Audio sensors can be used to 
+isolate different people's speech episodes (see Alluri
+and Vuppala, this volume; and Vuddagiri \textit{et. al.}, this volume).  Feature
+extraction cancels background noise and partitions the foreground 
+audio into different segments, individuated (potentially) by 
+differences between speakers as well as each 
+speaker's separated conversation turns.  Such data can 
+then be employed in several ways.
+The two chapters just mentioned present methodology for
+estimating speakers' emotional states and
+identifying samples' spoken language or dialect,
+respectively; while the chapter by Teixera \textit{et. al.}
+(which I quoted earlier) discusses
+speech-activated User Interfaces.
+\pseudoIndent{}
+The data profile germane to 
+an audio processor will be determined by the system's 
+overarching goals.  For example, \cite{JongyoonChoi} describes 
+techniques for measuring emotional stress via heart-rate signals.  
+Combined with speech-derived data, a system might accordingly 
+be designed around emotional profiles, merging linguistic and 
+biometric evidence.  For those 
+use-cases, programming would emphasize 
+signs of emotional changes (reinforced by both metrics), 
+and secondarily isolating times and locations, 
+which factor into proper software responses to
+users' moods.  
+\pseudoIndent{}
+On the other hand, a voice-based 
+User Interface might similarly model speakers' identity 
+and location, but perform Natural Language Processing 
+to translate speech patterns into models of user 
+requests.  Or, the use-case in Vuddagiri 
+\textit{et. al.} in this volume profiles speech data 
+for language classification (viz., matching voices to the 
+language or dialect spoken) as part of a \q{smart city} network.  
+The priority here is not necessarily identifying individual 
+speakers, or mapping vocalizations to semantic or syntactic 
+parses (although dialect-identification is obviously a first
+step for those capabilities); even without further Natural Language Processing, 
+tagged samples can yield a 
+geospatial model of language-use in a given area. 
+\item[Bioacoustic Sampling]  Similar to speech sampling 
+(at least up to the point where acoustical analysis 
+gives way to syntax and semantics), 
+audio samples can be used to track and identify 
+species (Ganchev, this volume; and Boulmaiz, \textit{et. al.},
+this volume).  Here again feature 
+extraction foregrounds certain noise patterns, but the 
+main analytic objective is to map audio samples to 
+the species of the animal that produced them.  
+Sensor networks can then build a geospatial/temporal 
+model of species' distribution in the area covered by 
+the network: which species are identified, their prevalence, 
+their concentration in different smaller areas, and so forth.  
+These measurements can be employed in the study of 
+species populations and behavioral patterns, and can 
+also add data to urban-planning or ecological models.  
+For example, precipitous decline of a species in some 
+location can signal environmental degradation in that vicinity.   
+\pseudoIndent{}
+Data sets such as those accompanying \cite{JustinSalamon} 
+(the smallest, labeled \CLOds{}, is profiled within
+this chapter's data set)   
+provide a good overview of data generated during 
+species identification: in addition to audio 
+samples themselves (in \WAV{} format), the data set 
+includes \NPY{} (Numerical Python) files representing 
+different spectral analysis methods applied 
+to the bird songs, as well as a metadata file 
+summarizing species-level data (such as the count 
+of samples identified for each species).  
+Every species also acquires a 4-letter identifier then used
+as part of the \WAV{} and \NPY{} file names, which thereby 
+themselves serve a classifying role, 
+semantically linking each sample to its species.  
+These three levels of information are a good 
+example of the contrast in granularity 
+\mdash{} and the mechanisms of information acquisition 
+\mdash{} between raw CyberPhysical input (the audio files), midstream 
+processing (the spectral representations), and 
+summarial overviews (species counts and labels;   
+other avian data sets might also recognize 
+geospatial coordinates obtained via noting sensor placement, 
+as a further metadata dimension).
+ 
+\item[Facial Recognition]  Given a frontal (or, potentially, 
+partial) view, software can 
+rather reliably match faces to a preexisting database or 
+track faces across different locales (\cite{WeiLunChao},
+\cite{YueqiDuan}, \cite{GaryHuang}, 
+\cite{KalaiselviNithya}, \cite{FengLu}, etc.).  
+The most common methodology depends 
+on normalizing each foreground image segment (corresponding to 
+one face) into a rectangle, whose axes then establish vector 
+components for any features inside the segment.  Feature extraction 
+then isolates anatomical features like eyes, nose, mouth, and 
+chin, quantifying their position and distances, yielding a 
+collection of numeric values which can statistically 
+identify a person with relatively small error rates.  
+\pseudoIndent{}
+Given privacy concerns, enterprise or government use 
+of this data is controversial: should analyses be performed 
+on every person, or only on exceptional circumstances 
+(crime investigation, say)?  Can facial-recognition outcomes 
+be anonymized so that faces would be tracked across locations 
+but not tied to specific persons without extra (normally 
+inaccessible) data?  When and by whom should face data be 
+obtainable, and under what legal or commercial circumstances?  
+Should stores be allowed to use these methods to 
+prevent shoplifting, for example?  What about searching 
+for a missing or kidnapped child, or keeping tabs on an 
+elderly patient?  When does surveillance cross the line 
+from benevolent (protecting personal or public safety) 
+to privacy-invasive and authoritarian?
+\end{description}
+}
+\p{Of course, there are many other examples of CyberPhysical 
+devices and capabilities that could be enumerated.  But 
+these cases illustrate certain noteworthy 
+themes.  One observation is that a gap often exists between how 
+devices physically operate and how they are conceptualized \mdash{} 
+accelerometers, for instance, mechanically measure voltage, not 
+acceleration or incline; but their data exposed to 
+client software is constructed to be applied as vectors indicating 
+persons' or objects' movement.  Moreover, multiple processing 
+steps may be needed between raw physical inputs and usable  
+software-facing data structures.  Such processing may generate 
+a large amount of intermediate data; feature extraction 
+from audio or image samples, say, can yield numeric aggregates with 
+tens or hundreds of different fields.  Further processing usually 
+reduces these structures to narrower summaries: an audio sample 
+might be consolidated to a spatial location and temporal timestamp, 
+along with a mapping to an individual person speaking 
+(perhaps along with a text transcription), or 
+human language spoken, or animal species.  Engineers then 
+have to decide what level of detail to expose across a 
+software network.  Another issue is integrating data from 
+multiple sources: most of the more futuristic scenarios 
+envision multi-modal Ubiquitous Computing spaces 
+where, e.g., speech and biometric inputs are cross-referenced.
+}
+\p{Different levels of data resolution also 
+intersect with privacy concerns: simpler data structures 
+are more likely to employ private or sensitive 
+information as an organizing instrument, heightening security 
+and surveillance concerns.  For example, a simple 
+facial-recognition system would match faces against known 
+residents of or visitors to the relevant municipalities.  
+This is less technologically challenging than anonymized 
+systems which would persist more mid-processing data in order 
+to complete the algorithmic cycle \mdash{} matching faces to 
+concrete individuals \mdash{} only under exceptional circumstances; 
+of course, though, it is also a greater invasion of privacy.
+}
+\p{Analogously, syncing speech technology with personal health 
+data would be simplified by directly matching speaker identifications 
+to biosensor devices wearers.  Again, though, using 
+personal identities as an anchor for disparate data points makes 
+the overall system more vulnerable to intrusive or inappropriate use.  
+In total, security concerns might call for more complex data structures 
+wherein shared data excludes the more condensed summaries 
+wherever they may expose private details, and relies more 
+on multipart, mid-level processing structures.  Rather than 
+organize face-recognition around a database of persons, for example, 
+the basic units might be numeric profiles paired with probabilistic 
+links notating that a face detected at one time and place matches 
+a face analyzed elsewhere, but without that similarity being 
+anchored in a personal identifier.           
+}
+\p{Other broad issues raised by these CybePhysical case-studies 
+include (1) testing and quality assurance and (2) data 
+interoperability.  In the case of testing, many of the scenarios 
+outlined above require complex 
+computational transformations to convert raw physical data into 
+usable software artifacts.  In \cite{FadelAdib}, for example, 
+the authors present technology to measure heart rate from a 
+distance, based on subtle analysis of physical motions 
+associated with blood circulation and breathing.  The analytic 
+protocols leverage feature extraction from wireless signal 
+patterns.  As with feature extraction in audio and 
+image-analysis (e.g. face recognition) settings, algorithms need 
+to be rigorously tested to guard against false inferences 
+or erroneous generated data.  In \cite{FadelAdib} the ultimate goal is to 
+introduce heart and breathing monitors within a Smart Home environment,  
+with computations performed on embedded Operating Systems.  
+However, testing and prototyping of the technology should be 
+conducted in a desktop Operating System environment so as to 
+generate or leverage test data, document algorithmic revisions, 
+and in general prove the system's trustworthiness in a 
+controlled setting (including a software environment which 
+transparently windows onto computational processes) before 
+this kind of network is physically deployed.
+}
+\p{With respect to data integration, notice how projects mentioned 
+here often anticipate pooled or overlapping information.  For 
+instance, Smart Homes are envisioned to embed sensors analyzing 
+speech, biomedical data-points like heart rate, atmospheric 
+measurements (temperature, say) and appliance or architectural 
+states (windows, doors, or refrigerator doors being open, 
+ovens or stove burners being turned on, heaters/coolers being active, 
+and so forth).  
+In some cases this data would be cross-referenced, so that 
+e.g. a voice command would close a window or turn off a stove. 
+Analogously, \cite{MohamedSoltane} (one of whose co-authors 
+is also a coauthor of this volume's 
+chapter on bird species) describes a combination of 
+face-recognition and speech analysis for \q{multi-modal biometric 
+authentication}; here again a component supplying 
+image-processing data and one supplying speech metrics 
+will need to transmit data to a hub where the two inputs 
+can be pooled.  Or, as I pointed out in the case of 
+Mobile Whole Slide Imaging, image-segmentation, 
+CyberPhysical, and personal-health information fields 
+may all be integrated into a holistic diagnostic platform.
+}
+\p{Overall, future CyberPhysical systems may be integrated 
+not only with respect to their empirical domain but in term 
+of the environs where they are deployed \mdash{} Smart Homes, 
+Smart Cities (or factories or industrial plants), hospitals and 
+medical offices, schools and children's activities centers, 
+refugee or displaced-persons camps/campuses, and so forth.  
+I'll take Smart Homes as a case in point. 
+We can imagine future \mbox{homes/apartments} provisioned with a panoply 
+of devices evincing a broad spectrum of scientific backgrounds, 
+from biology and medicine to ecology and industrial manufacturing.      
+}
+\vspace{-.1em}
+\subsectiontwolinealt{How Internet of Things Interoperability
+Affects Data Modeling Priorities}{How 
+\q{Internet of Things} Interoperability Affects Data Modeling Priorities}
+\p{So, let's imagine the following scenario: homeowners have a choice
+of applications that they may install on their computers, 
+supplied by multiple vendors or institutions, which access 
+the myriad of Smart Home devices they've installed around the 
+property.  CyberPhysical products are engineered to 
+interoperate with such hub applications \mdash{} and therefore 
+with third-party components \mdash{} rather than just 
+networking with their own proprietary access points, like phone apps.
+}
+\p{In this eventuality, technology inside 
+the home is charged with pooling data from many kinds of devices 
+into a comprehensive Smart Home platform, where users can see a 
+broad overview, access disparate device data from a central location, 
+and where cross-device data will be merged into aggregate models: 
+e.g., cross-referencing speech and biometric inputs.  
+Devices must be designed to broadcast 
+data to third-party software platforms, and software 
+hubs must wrangle received data
+into a common format permitting integration algorithms \mdash{}
+e.g. syncing speech and biometrics \mdash{} to operate properly.
+Received device data must therefore be systematically 
+mapped to appropriate transform procedures and 
+\GUI{} components.  This is important because
+we are no longer considering data models from the viewpoint 
+of devices' own capabilities (viz., their specific physical
+measurements and parameters).
+More technically, the
+key libraries associated with devices are no longer
+merely low-level drivers or \IoT{} signal processors.
+Instead, the technology stack would include an 
+intermediate semantic layer acting between \q{smart objects}
+and corresponding hub applications.
+}
+\p{The data models at this semantic midlayer, moreover,
+would no longer be device-centric.  Instead, they would
+be assessed in a software-centric milieu: how do we
+route device data to proper interpretive procedures?  
+How do we consolidate device data into \GUI{} presentations?  
+This means that common representational formats for 
+wireless data, or standardized \IoT{} Ontologies 
+\mdash{} however much these may technically embody 
+semantic middleware \mdash{} are insufficient as \i{high-level}, 
+\i{software-centric} semantic layers.
+}
+\p{In the case of a Smart Home, once we commit to aggregating devices
+via a software hub, the key organizing principle is 
+a mesh of procedures implemented in the hub application 
+that can pool all relevant devices into one information 
+space.  What needs to be standardized then are not 
+so much data \i{formats}, but in fact data-handling
+\i{procedures}.  
+}
+\p{To put it differently, device manufacturers would now be dealing 
+with an ecosystem in which hub applications receive and 
+aggregate their data, affording users access points to and
+overviews of device data and state.  Hub applications may be 
+provided by different companies and iterations, 
+their inner workings opaque to devices themselves.  What 
+can be standardized, however, are the \i{procedures} 
+implemented within hub software to receive and properly 
+act upon device data.  Software might guarantee, for example, 
+that so long as devices are supplying signals in 
+their documented formats, the software has capabilities 
+to receive the signals, unpack the data, and internally 
+represent the data in a manner suitable for device particulars.  
+Devices can then specify what kind of internal representations 
+are appropriate for their specific data, essentially 
+specifying conditions on software procedures and data types.  
+}
+\p{In short, the key units of mutual trust and verification among 
+and between CyberPhysical devices and CyberPhysical software 
+are not, in theory, data structures themselves, but instead 
+\i{procedures} for processing relevant data structures.  
+Robust CyberPhysical ecosystems can be developed by 
+reinforcing \i{procedural alignment} wherever possible, 
+including by curating substantial collections of 
+reusable software libraries, either for direct 
+application or as prototypes and testing tools.  
+Procedural \i{alignment} means that disparate components 
+become integrated by virtue of each components' 
+anticipating the procedures which the others have 
+available for sending, receiving, and manipulating 
+data \mdash{} an integration strategy I'll dub 
+\q{\POSC{}}\phantomsection\label{POSC} 
+(Procedure-Oriented and Software-Centric) 
+by contract to \i{data format} or even \i{Ontological} alignment.
+}
+\p{Suppose many CyberPhysical sensors were paired 
+with open-source code libraries which illustrate how 
+to process the data each device broadcasts.  
+Commercial products could use those libraries directly, or, 
+if they want to substitute closed-source alternatives, 
+might be required to document that their data management 
+emulates the open-source prototypes.  Test suites and 
+testing technology can then be implemented against the 
+open-source libraries and reused for stress-testing 
+analogous proprietary components.  This appears to be 
+the most likely path to ensuring interoperable, 
+high-quality CyberPhysical technology that 
+serves the ultimate goal of integrated Smart Home 
+(and Smart City, etc.) solutions. 
+}
+\p{That hypothesis notwithstanding,
+there are a lot more academic papers on
+CyberPhysical Ontologies or common signal/message formats, 
+like \CoAP{} and \MQTT{} (\cite{FirasAlbalas}, 
+\cite{BadisDjamaa}, \cite{RiccardoGiambona}, 
+\cite{CenkGundogan}, \cite{JussiHaikara}, \cite{AlejandroRodriguez}, 
+etc.) than there are open-source libraries 
+which prototype device data, its validation, parameters, 
+and proper transformations.\footnote{The rationale for emphasizing standard data formats is 
+probably that these formats constrain any procedure 
+which operates on the data, so standardization in 
+data representation indirectly leads to standardization 
+in data-management procedures, or what I am calling 
+\q{procedural alignment}.  This accommodates the fact 
+that shared data may be used in many different 
+software environments \mdash{} components implemented in 
+different programming languages and coding styles.   
+However, more detailed 
+guarantees can be engineered by grounding standardization 
+on procedures rather than data representations themselves.  
+To accommodate multiple programming languages and paradigms, 
+data models can be supplemented with a 
+\q{reference implementation} which prototypes 
+proper behavior \visavis{} conformant data; components 
+in different languages can then emulate the prototype, 
+serving both as an implementation guide and a 
+criterion for other developers to accept a new 
+implementation as trustworthy.  There are several examples 
+of a reference implementation used as a standardizing 
+tool, analogous to an Ontology, such as the \librets{} 
+(Real Estate Transaction Standard) library, 
+servers and clients for \FHIR{} (Fast Healthcare Interoperability 
+Resources), and clients for \DICOM{} (Digital Imaging and 
+Communications in Medicine), e.g. for Whole Slide Imaging 
+(see \url{https://www.orthanc-server.com/static.php?page=wsi}).
+}  A good case-in-point can be found in 
+\cite[pages 4 ff.]{PatroBanerjee} using \CLang{} 
+structures to model \CoAP{} meta-data: while it is 
+reasonable, even expected, for low-level driver code 
+to be implemented in \CLang{}, this code should also 
+be the basis of data models implemented in a language 
+like \Cpp{} where dimensions and ranges can be made explicit 
+in the data types.  Nevertheless, many engineers will 
+instead focus on describing the more nuanced 
+data modeling dimensions through Ontologies and 
+other semantic specifications wholly separate from 
+programming type systems.  This has the effect of 
+scattering the data models into different artifacts: 
+low-level implementations with relatively little 
+semantic expressiveness, and expressive 
+Ontologies which, due to a lack of type-level 
+correspondence between modeling and programming 
+paradigms, are siloed from implementations themselves.
+}
+\p{Conversely, in lieu of \q{data-centric}
+Ontologies whose mission is to standardize how information 
+is mapped to a \i{representation}, in this chapter
+I will consider \q{Procedural}
+Ontologies: ones which focus on procedural capabilities and 
+requirements that indicate whether software components 
+are properly managing (e.g., CyberPhysical) data.  The 
+idea is that proving procedural conformance should be a 
+central step, and an organizing groundwork, for 
+showing that software intended for production deployment
+is trustworthy and complies with technical and legal specifications.
+}
+\p{In practical terms, the above discussion mentioned the \CLOds{}
+(avian) data set and then the chapter by Vuddagiri \i{et. al.},
+which (as noted below) builds off
+the \APds{} \q{challenge} corpus.  I will also
+be referring to recent \CoNLL{} corpora.  So, together,
+these constitute three representative examples of
+data sets tangibly applicable to CyberPhysical and/or 
+\NLP{} Research and Development: one audio-based 
+(for species identification); one audio/speech;
+and one linguistic.  Based on the idea that 
+\RnD{} data sets should germinate deployment data models, 
+we should look to data sets like these 
+to provide semantic and type-theoretic encapsulations 
+of their information spaces and analytic methods 
+(e.g., spectral waveform analysis, or Dependency Grammar 
+parsing).  Accompanying materials for this chapter 
+provide profiles of the three aforementioned data sets, 
+which consolidate their various files and formats into 
+a streamlined \q{\POSC{}} representational paradigm.
+The demo code presents examples 
+of procedures and data types targeting these 
+data sets, as well as an architecture for 
+deploying data sets in a procedure-oriented and 
+software-centric manner, in terms of how files
+and the information they contain are organized,
+and in terms of employment of data-publishing standards
+such as the \q{Research Object} model 
+(\cite{KhalidBelhajjame}, \cite{KhalidBelhajjameWorkflow},
+\cite{PhilipEBourne}, 
+\cite{KatrinaFenlon},
+\cite{MarkDWilkinson}). 
+}
+\p{At present, to make these issues more concrete
+with further case-studies,
+in this introductory discussion I will examine in
+more detail the specific case of speech and language 
+data structures.
+}
+\subsection{Linguistic Case-Study}
+\p{Establishing data models for deployed technology 
+is certainly part of the Research and Development 
+cycle, which means that data profiles tend 
+to emerge within the scientific process of 
+formulating and refining technical and algorithmic 
+designs.  This is particularly true for complex, 
+computationally nuanced challenges such as image segmentation 
+or (to cite one above example) measuring heartbeats 
+and breathing patterns via subtle waveform analysis.  
+We can assume that every \RnD{} phase will itself leave
+behind an ecosystem of testing data and code which 
+can be decisive for consolidating data models, directly 
+or indirectly influencing production code for systems 
+(even if their deployment and commercialization is 
+well after the \RnD{} period).       
+}
+\p{In the case of speech and language technology, 
+a research-oriented data infrastructure has been 
+systematically curated, in several subdisciplines, 
+by academic or industry collaborations.  The 
+Conference on Natural Language Learning (\CoNLL{}), for 
+example, invites participants to develop 
+Natural Language Processing techniques targeted at 
+a common \q{challenge} dataset, updated each year.  These 
+data sets, along with the data formats and code libraries 
+which allow software to use that data, thereby serve 
+as a reference-point for Computational Linguistics 
+researchers in general.  Similarly, this volume's 
+chapter on Language Identification describes research 
+targeting a multilingual data set (labeled \APds{}) curated for an
+annual \q{Oriental Language Challenge} conference 
+dedicated to language/dialect classification for 
+languages spoken around East Asia (from  
+East Asian language families and also Russian).  
+}
+\p{Technically, curated and publicly accessible data 
+sets are a different genre of information space than 
+real-time data generated by CyberPhysical technology 
+(e.g. voices picked up by microphones in a Smart Home).  
+That is to say, software developed to access speech 
+and language data sets like the \CoNLL{}'s or the 
+Oriental Language Challenge has different requirements 
+than software responding to voice requests in real time 
+\mdash{} or other deployment use-cases, such as medical 
+transcription, or identifying dialects spoken in an 
+urban community.  However, data models derived from 
+publicly shared test corpora \i{do} translate over 
+to realtime data: we can assume that \RnD{} 
+data sets are collections of signals or information 
+granules which are structurally similar to those 
+produced by operating CyberPhysical devices.  
+As a result, portions of the software targeting 
+\RnD{} data sets \mdash{} specifically, the procedures 
+for acquiring, transforming, validating, and 
+interactively displaying individual samples \mdash{} 
+remain useful as components or prototypes for 
+deployed products.  Code libraries employed in 
+\RnD{} cycles should typically be the basis 
+for data models guiding the implementation of 
+production software. 
+}
+\p{To make this discussion more concrete, I will use 
+the example of \CoNLL{} data sets.  This chapter's 
+demo includes samples from the most recent 
+collection of \CoNLL{} files and 
+conference challenge tasks (at the time of writing) 
+as well as demo code which operates on such 
+data via techniques described in this chapter.  
+The \CoNLL{} format is representative of the 
+kinds of linguistic parsing requisite for 
+using Natural Language content (such as 
+speech input) in CyberPhysical settings.
+}
+\p{This volume's chapter by Teixera \i{et. al.}   
+considers voice-activated 
+CyberPhysical interfaces; here Natural Language 
+segments become the core elements in translating 
+user queries to actionable software responses.  The proposed 
+systems analyze speech patterns to build textual 
+reconstructions of speakers' communications, then 
+parses the text as Natural Language content, before 
+eventually (if all goes well) interpreting the 
+parsed and analyzed text as an instruction the 
+software can follow.  Text data can then be 
+supplemented with metrics measuring vocal 
+patterns, syntactic and semantic information, speaker's 
+spatial location, and other information that can 
+help interpret speakers' wishes insofar as software 
+can respond to them.  
+}
+\p{The authors discuss, for instance, the possibility 
+of annotating language samples (after speech-to-text 
+translation) with Dependency Grammar parses.\footnote{Adequately describing Dependency Grammar
+is outside the scope of this chapter, but, in a nutshell, 
+Dependency Grammar models syntax in terms of 
+word-to-word relations rather than via phrase 
+hierarchies; as such, Dependency parses yields 
+directed, labeled graphs (node labels are words and 
+edge labels are drawn from an inventory of 
+syntactic inter-word connections),  
+which are structurally similar to Semantic Web 
+graphs.  See also \cite{AbromeitChiarcos}, 
+\cite{KongRushSmith}, \cite{Nivre},
+\cite{OsborneMaxwell}, \cite{SivaReddy}, 
+\cite{Schneider}, 
+\cite{XiaPalmer}, etc.; variants include 
+Link Grammar \cite{GoertzelPLN}, \cite{ErwanMoreau}  
+and Extensible Dependency 
+Grammar \cite{DebusmannThesis}, 
+\cite{DebusmannDuchierRossberg},
+\cite{MichaelGasser}.
+}  Textual content can also be annotated with 
+models of intonation, stress patterns, and other 
+acoustic features (because the original inputs are 
+audio-based) that can help an \NLP{} engine to 
+properly parse sentences (for instance by 
+noting which words or syllables are vocally emphasized).  
+We can assume that audio processing 
+as well as \NLP{} technology would supply intermediary 
+processing somewhere between acoustic devices and 
+the centralized application. 
+}
+\p{Different kinds of linguistic details require different 
+data models.  Dependency parses, for instance, 
+are often notated via some version of a specialized 
+\CoNLL{} format, which textually serializes parse and 
+lexical data, usually one word per line.  
+The most recent standard (dubbed \CoNLLU{}) recognizes 
+ten fields for each word, identifying, in particular, 
+Parts of Speech and syntactic connections with other 
+words (see e.g. \cite{ChiarcosSchenk}, 
+\cite{JohannesGraen}, \cite{DanielHershcovich},  
+\cite{AmirMore}, \cite{MilanStraka}).  
+As a custom format, \CoNLLU{} requires its 
+own parser, such as the \UDPipe{} library for 
+\Cpp{} (a slightly modified version of this library 
+is published with this chapter's data set).  
+So, for hub applications, a reasonable assumption 
+is that these programs compile in the \UDPipe{} library 
+or an alternative with similar capabilities, 
+in order for them to handle parsed \NLP{} data.
+}
+\p{Suppose, then, that a hub application will periodically receive a 
+data package comprising an audio sample along with 
+text transcriptions and \NLP{}-generated, e.g., 
+\CoNLLU{} data.  To make sense of linguistic content, 
+the software would presumably pair the \NLP{}-specific 
+information with extra details, such as, 
+the identity of the speaker (if a Smart Home system 
+knows of specific users), where and when each sentence 
+or request was formulated, and perhaps the original 
+audio input (allowing functionality such as users playing 
+back instructions they uttered in the past).  A relevant 
+data model might thereby comprise: (1) \CoNLLU{} data 
+itself; (2) location info, such as spatial position and 
+which room a speaker is found in; (3) timestamps; 
+(4) speaker info, if available; (5) audio files; 
+and maybe (6) extra acoustical or intonation data. 
+(Those extra details could include annotations based on how 
+conversation analysts notate speech patterns, or 
+might be waveform features derived from initial 
+processing of speech samples.)   
+}
+\p{This data model would presumably translate to multiple 
+data types: we can envision (1) a class for \UDPipe{} 
+sentences obtained from \CoNLLU{}; (2) a class for audio 
+samples; (3) speaker and time/location information; plus 
+versions of these classes appropriate for 
+\GUI{}s and database persistence.  And, in addition, 
+these data requirements for speech and text samples only 
+considers obtaining a valid parse for the text; 
+to actually react to speech input, an application would 
+need to map lexical data to terms and actions the software 
+itself, 
+in the context of its own capabilities,  
+can recognize.  For instance, \i{close the window} 
+would map to an identifier for which window is intended 
+(inferred perhaps from speaker location) and a 
+\i{close} operation, which could be available via 
+actuators embedded in the window area.  All of the 
+objects that users might semantically reference 
+in voice commands therefore need their own data 
+models, which must be interoperable with linguistic 
+parses.  So along with data types specific to 
+linguistic elements we can consider \q{bridge} types 
+connecting linguistic data (e.g., lexemes) to 
+data types modeling physical objects.  
+}
+\p{Likewise, we 
+can anticipate the procedures which speech and/or language 
+data types need to implement: correctly decoding 
+\CoNLLU{} files; mapping time/location data points to a 
+spatial model of the Smart Home (which room is 
+targeted by the location and also if that point is 
+close to a door, window, appliance, and so forth; 
+and perhaps matching the location to a \ThreeD{} 
+or panoramic-photography graphics 
+model for visualization); audio-playback procedures, 
+along with interactive protocols for this process such 
+as users pausing and restarting playback; procedures 
+to map identified speakers to user profiles known to 
+the Smart Home system.  The audio devise makers and 
+\NLP{} providers \mdash{} assuming those products are 
+delivered as one or several suites separate and apart from the 
+Smart Home hub\footnote{For this discussion I assume that hub applications do 
+not perform \NLP{} internally, but rather receive 
+post-\NLP{} input from \NLP{} technologies designed 
+with particular attention to vocal commands for \q{smart} objects. 
+} \mdash{} can mandate that hub applications 
+demonstrate procedural implementations that satisfy 
+these requirements as a precondition for accessing 
+their broadcast data.  Conversely, hub applications can 
+stipulate the procedural mandates they are prepared 
+to honor as a guide to how devices and their drivers 
+and middleware components should be configured for 
+an integrated Smart Home ecosystem. 
+}
+\p{The essential point here is that procedural requirements 
+and validation becomes the essential glue 
+that unifies the diverse Smart Home components, and 
+allows products designed by different companies, 
+with different goals, to become interoperable.  
+Once again, procedural alignment and predictability is 
+more important than standardized data formats.   
+}
+\p{We can also consider representative criteria for 
+testing procedures; in particular, preconditions that 
+procedures need to recognize.  In \CoNLLU{}, 
+individual words can be extracted from a parse-model, 
+but the numeric index for the word must fall within a 
+fixed range (based on word count for the 
+relevant sentence).  In audio playback, time intervals 
+are only meaningful in the context of the length of 
+the audio sample in (e.g.) seconds or milliseconds.  
+Similarly, features extracted from an audio 
+sample (of human speech or, say, a bird song) are localized 
+by time points which have to reside within a sample window; 
+and image features are localized in rectangular coordinates 
+that need to fit inside the surrounding image.  
+Therefore, procedures engaged with these data 
+structures should be checked to ensure that they 
+honor these ranges and properly respond to 
+faulty data outside them.  This is an example 
+of the kind of localized procedural testing which, 
+cumulatively, establishes software as trustworthy.
+}
+\p{I will discuss similar procedural-validity issues 
+for the remainder of this section before 
+developing more abstract or theoretical models 
+of procedures, as formal constructions, subsequently 
+in the chapter. 
+}
+\vspace{-.1em}
+%\spsubsection{Proactive Design}
+\subsection{Proactive Design}
+\p{I have thus far argued that applications
+which process CyberPhysical data should rigorously organize their functionality
+around specific devices' data profiles.  The procedures that directly interact
+with devices \mdash{} receiving data from and perhaps sending instructions
+to each one \mdash{} will in many instances be \q{fragile} in the sense
+I invoke in this chapter.  Each of these procedures may make assumptions
+legislated by the relevant device's
+specifications, to the extent that using any one procedure too broadly
+constitutes a system error.  Furthermore, CyberPhysical devices may
+exhibit errors due to mechanical malfunction, hostile attacks,
+or one-off errors in electrical-computing operations, causing
+performance anomalies which look like software mistakes even if the code is
+entirely correct (see \cite{MichaelEngel} and
+\cite{LavanyaRamapantulu}, for example).  As a
+consequence, \i{error classification} is especially
+important \mdash{} distinguishing kinds of software errors
+and even which problems are software errors to begin with.
+}
+\p{Summarizing the case studies from earlier in this section, 
+Table~\ref{table:profiles} identifies several details 
+about dimensions, parameters of operation, data fields, 
+and other pieces of information relevant to 
+implementing procedures and data types capturing 
+CyberPhysical data.  These types may derive from 
+CyberPhysical input directly or may model artifacts 
+constructed from CyberPhysical input midstream, such 
+as audio or image files, or text transcriptions 
+representing speech input.  The summaries are not 
+rigorous profiles, just suggestive cues 
+about what sort of details engineers should consider 
+when formalizing data models.  In general, detailed 
+models should be defined for any input source 
+(including those transformed by middleware 
+components, such as \NLP{} engines), thereby 
+profiling both CyberPhysical devices and also 
+\q{midstream} artifacts such as audio or image files 
+\mdash{} i.e., aggregates, derived from CyberPhysical 
+input, that can be shared between software components 
+(within hub applications and/or between hubs and 
+middleware).
+}
+\input{profiles}
+\p{These data profiles need to be integrated with CyberPhysical code from a
+perspective that cuts across multiple dimensions of project scale and
+lifetime.  Do we design for biaxial or triaxial accelerometers, or both,
+and may this change?  Is heart rate to be sampled in a context where
+the range considered normal is based on \q{resting} rate or is it
+expanded to factor in subjects who are exercising?  These kinds
+of questions point to the multitude of subtle and project-specific
+specifications that have to be established when implementing and then
+deploying software systems in a domain like Ubiquitous Computing.
+It is unreasonable to expect that all relevant standards will be
+settled \i{a priori} by sufficiently monolithic and comprehensive
+data models.  Instead,
+developers and end-users need to acquire trust in a development process
+which is configured to make standardization questions become apparent
+and capable of being followed-up in system-wide ways.
+}
+\p{For instance, the hypothetical questions I pondered in
+the last paragraph \mdash{} about biaxial vs.
+triaxial accelerometers and about at-rest vs. exercise
+heart-rate ranges \mdash{} would not
+necessarily be evident to software engineers or project architects when the
+system is first conceived.  These are the kind of modeling questions that tend
+to emerge as individual procedures and datatypes are
+implemented.  For this reason, code development serves a role beyond just
+concretizing a system's deployment software.
+The code at fine-grained scales also reveals questions that need to be
+asked at larger scales, and then the larger answers reflected back in the
+fine-grained coding assumptions, plus annotations
+and documentation.  The overall
+project community needs to recognize software implementation as a crucial
+source for insights into the specifications that have to be established
+to make the deployed system correct and resilient.
+}
+\p{For these reasons, code-writing \mdash{} especially at the smallest scales \mdash{}
+should proceed via paradigms disposed to maximize
+the \q{discovery of questions} effect
+(see also, as a case study, \cite[pages 6-10]{Arantes}).  Systems in operation will be
+more trustworthy when and insofar as their software bears witness to a project
+evolution that has been well-poised to unearth questions
+that could otherwise diminish the system's trustworthiness.
+}
+\p{\q{Proactiveness}, like transparency and trustworthiness, has been
+identified as a core \USH{} principle, referring (again in
+the series intro, as above)
+to \q{data transmission to healthcare providers
+... \i{to enable necessary interventions}} (my emphasis).  In
+other words \mdash{} or so this language implies, as an
+unstated axiom \mdash{}
+patients need to be confident in deployed \USH{} products
+to such degree that they are comfortable with clinical/logistical
+actions \mdash{} the functional design of medical spaces; decisions about
+course of treatment \mdash{} being grounded in part on data generated from
+a \USH{} ecosystem.  This level of trust, or so I would argue,
+is only warranted if patients feel
+that the preconceived notions of a \USH{} project have been vetted against
+operational reality \mdash{} which can happen through the interplay between
+the domain experts who germinally envision a project and the programmers
+(software and software-language engineers) who, in the end, produce its
+digital substratum.
+}
+\p{I have argued that hub \i{libraries} \mdash{} intermediaries between CyberPhysical 
+devices and hub applications \mdash{} are the key components where  
+diverse requirements may be exercised.  Hub libraries therefore need 
+capabilities for documenting coding assumptions and requirements,  
+such that their corresponding applications garner users' trust 
+and acceptance.  Hub applications, in short, would be deemed 
+trustworthy insofar as their hub libraries are 
+properly engineered.  These, then, are the practical concerns 
+driving the code-documentation proposals I will develop 
+in the next two sections.  Hub libraries are an environment where 
+these techniques may be especially applicable.   
+}
