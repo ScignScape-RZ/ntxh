@@ -1,7 +1,5 @@
 
-
 \setlist{leftmargin=1mm}
-
 
 %% environment for displaying longish quotes, with a color frame ...
 \newenvironment{dquote}{%
@@ -85,8 +83,10 @@
 \titlespacing{\section}{0pt}{35pt}{15pt}
 \titlespacing{\subsubsection}{0pt}{20pt}{5pt}
 
+\let\OldSection\section
+\renewcommand\section[1]{\OldSection{#1}}
 
-\titleformat*{\subsection}{\small\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
 
 
 \setlength{\parindent}{30pt}
@@ -122,8 +122,6 @@
 
 \setlength{\columnsep}{8mm}
 
-\AtBeginEnvironment{thebibliography}{\linespread{1}\selectfont}
-
 \newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
 {\scriptsize {\url{#1}}}}}}
 
@@ -135,10 +133,8 @@
 \renewcommand\footnote[1]{\begingroup\footnotetrue\Footnote{#1}\endgroup}
 
 \definecolor{BaseColor}{HTML}{8533FF}
-
 \colorlet{ftcfore}{BaseColor!60!cyan}
 \colorlet{ftcback}{BaseColor!40!cyan}
-
 
 \newcommand{\tc}[2]{
 \vspace*{6mm}
@@ -158,10 +154,8 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \newcommand{\tmphs}{\hypersetup{linkbordercolor=orange!50!red,linkcolor=black}}
 \newcommand{\tmphscol}{\hypersetup{linkbordercolor=gray!40,linkcolor=black}}
 
-
 %%  This deco was removed during editing ...
 \newcommand{\decoline}{\vspace{-4em}}
-
 
 \newcommand{\sectionline}[1]{%
   \noindent
@@ -213,11 +207,6 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \label{#2}
 \end{figure}
 }
-
-\let\OldSection\section
-\renewcommand\section[1]{\OldSection{#1}}
-
-\titleformat*{\subsection}{\Large\bfseries}
 
 \let\OLDthebibliography\thebibliography
 \renewcommand\thebibliography[1]{
@@ -282,7 +271,6 @@ drop fuzzy shadow northeast={darkRed!70!purple},
 \newcommand{\pseudoIndent}{
 
 \vspace{-2pt}\hspace{8pt}}
-\newcommand{\pseudoInd}{\hspace{30pt}}
 
 \setlist[itemize]{leftmargin=2mm}
 \setlist[enumerate]{leftmargin=5mm}
