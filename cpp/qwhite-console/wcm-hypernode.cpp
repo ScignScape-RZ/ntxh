@@ -1,6 +1,8 @@
 
 #include "wcm-hypernode.h"
 
+#include "wcm-hyponode.h"
+
 #include <QDataStream>
 #include <QIODevice>
 
@@ -19,7 +21,7 @@ void WCM_Hypernode::add_hyponode(WCM_Hyponode* who)
 
 void WCM_Hypernode::add_hyponodes(QList<WCM_Hyponode*> whos)
 {
- hyponodes_.push_back(whos); 
+ hyponodes_.append(whos);
 }
 
 QString WCM_Hypernode::check_column(quint32 index)
@@ -32,9 +34,9 @@ void WCM_Hypernode::supply_data(QByteArray& qba, QWhite_Column_Set& columns)
 {
  QDataStream qds(&qba, QIODevice::WriteOnly);
 
- if(indexed_column_map)
+ if(indexed_column_map_)
  {
-  each_hyponode([&qds](WCM_Hypernode& _this, WCM_Hyponode& who, quint32 index)
+  each_hyponode([&qds, &columns](WCM_Hypernode& _this, WCM_Hyponode& who, quint32 index)
   {
    QString col = _this.check_column(index);
    if(col.isEmpty())
@@ -69,7 +71,7 @@ void WCM_Hypernode::absorb_data(const QByteArray& qba, QWhite_Column_Set& column
 }
 
 
-void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&, quint32) fn)
+void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&, quint32)> fn)
 {
  quint32 i = 0;
  for(WCM_Hyponode* who : hyponodes_)
@@ -79,7 +81,7 @@ void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponod
  }
 }
 
-void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&, quint32) fn)
+void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&, quint32)> fn)
 {
  quint32 i = 0;
  for(WCM_Hyponode* who : hyponodes_)
@@ -89,7 +91,7 @@ void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&, quint32) fn)
  }
 }
 
-void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&) fn)
+void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&)> fn)
 {
  for(WCM_Hyponode* who : hyponodes_)
  {
@@ -97,7 +99,7 @@ void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponod
  }
 }
 
-void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&) fn)
+void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&)> fn)
 {
  for(WCM_Hyponode* who : hyponodes_)
  {

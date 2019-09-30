@@ -53,7 +53,7 @@ int main1(int argc, char *argv[])
 
  QVariant v1(QString("Test Name")); 
  QVariant v2(QDate::fromString("June 4, 2005")); 
- wg_int v3 = wg_encode_int(1000); 
+ wg_int v3 = qwdb.wdb().encode_u4(1000);
  
  whn.add_hyponodes({who1, who2, who3});
 

@@ -8,6 +8,8 @@
 #include <QList>
 #include <QDate>
 
+#include "_whitedb.h"
+
 class QWhite_Column_Set;
 class WCM_Hyponode;
 class WCM_Type;
