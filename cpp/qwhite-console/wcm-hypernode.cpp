@@ -8,6 +8,8 @@
 
 #include "qwhite/qwhite-column-set.h"
 
+typedef long wg_int;
+
 WCM_Hypernode::WCM_Hypernode()
   :  indexed_column_map_(nullptr)
 {
@@ -45,8 +47,7 @@ void WCM_Hypernode::supply_data(QByteArray& qba, QWhite_Column_Set& columns)
    }
    else
    {
-    qds << columns[col](who);
-    qds << columns[col](who);
+    qds << columns[col](who.wgdb_encoding());
    }  
   });
  }

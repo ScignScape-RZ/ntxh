@@ -22,7 +22,7 @@
 
 
 
-int main(int argc, char *argv[])
+int main1(int argc, char *argv[])
 {
  QWhite_Database qwdb("100", "/home/nlevisrael/mb/whitedb/QWhite/databases/test/test-100.wdb");
 
@@ -39,9 +39,10 @@ int main(int argc, char *argv[])
  return 0;
 }
 
-int main1(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  QWhite_Database qwdb("100", "/home/nlevisrael/mb/whitedb/QWhite/databases/test/test-100.wdb");
+ qRegisterMetaType<QVarDBValue>();
 
  qwdb.load();
  
@@ -51,11 +52,17 @@ int main1(int argc, char *argv[])
  WCM_Hyponode* who2 = new WCM_Hyponode;
  WCM_Hyponode* who3 = new WCM_Hyponode;
 
- QVariant v1(QString("Test Name")); 
- QVariant v2(QDate::fromString("June 4, 2005")); 
+ QVariant v1(QString("Test Name"));
+ QVariant v2(QDate::fromString("June 4, 2005"));
  wg_int v3 = qwdb.wdb().encode_u4(1000);
  
+ who1->set_qt_encoding(v1);
+ who2->set_qt_encoding(v2);
+ who3->set_wgdb_encoding({v3});
+
  whn.add_hyponodes({who1, who2, who3});
+
+
 
  QWhite_Column_Set qwcs(qwdb);
 
