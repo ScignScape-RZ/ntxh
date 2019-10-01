@@ -23,12 +23,55 @@ extern "C" {
 
 #include "qwhite-column.h"
 
+#include <QVariant>
+
 class QWhite_Column;
 
 struct wg_enc
 {
  wg_int data;
 };
+
+struct WCM_Encoding_Package
+{
+ quint64 code;
+
+ static WCM_Encoding_Package from_raw_size(quint32 blob_size)
+ {
+  return { (blob_size << 2) + 2 };
+ }
+
+ static WCM_Encoding_Package from_raw_data(quint64 d)
+ {
+  return { d | 2 };
+ }
+
+ struct Tuple
+ {
+  quint32 blob_size;
+  quint8 kind;
+  quint64 raw;
+ };
+
+ static Tuple null_tuple()
+ {
+  return {0, 0, 0};
+ }
+
+ Tuple as_tuple() const
+ {
+  quint64 mask = code & 3;
+  switch(mask)
+  {
+  case 0: return {0, 0, 0};
+  case 1: return {0, 1, 0};
+  case 2: return { (quint32) (code >> 2), 2, 0};
+  case 3: return { 0, 3, code - 3};
+  }
+ }
+};
+
+Q_DECLARE_METATYPE(WCM_Encoding_Package)
 
 struct WCM_WhiteDB
 {
