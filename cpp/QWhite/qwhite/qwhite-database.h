@@ -82,6 +82,11 @@ struct WCM_WhiteDB
   return wg_encode_int(white_db, x);
  }
 
+ quint32 decode_u4(wg_int x)
+ {
+  return wg_decode_int(white_db, x);
+ }
+
 };
 
 class QWhite_Database

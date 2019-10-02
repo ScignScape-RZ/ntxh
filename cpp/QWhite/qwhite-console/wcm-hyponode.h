@@ -42,17 +42,55 @@ public:
   WCM_Encoding_Package::Tuple tpl = rhs.get_encoding_tuple();
   switch(tpl.kind)
   {
-  case 0: lhs << rhs.qt_encoding_; break;
-  case 1: lhs << (quint64) rhs.wgdb_encoding_.data; break;
-  case 2: lhs << tpl.blob_size; lhs << rhs.raw_data_; break;
+  case 0: lhs << tpl.kind << rhs.qt_encoding_; break;
+  case 1: lhs << tpl.kind << (quint64) rhs.wgdb_encoding_.data; break;
+  case 2: lhs << tpl.kind << tpl.blob_size;
+    lhs.writeRawData((const char*) rhs.raw_data_, tpl.blob_size); break;
 
   // //  This is by default but it's expected that someone
    //    using tpl.raw option will re-implement this case.
-  case 3: lhs << tpl.raw; lhs << (quint64) rhs.wgdb_encoding_.data;
-    lhs << rhs.raw_data_; break;
-
+  case 3: lhs << tpl.kind << tpl.raw <<
+    (quint64) rhs.wgdb_encoding_.data << rhs.raw_data_; break;
   }
  }
+
+ template<typename STREAM_Type>
+ friend STREAM_Type& operator >>(STREAM_Type& lhs, WCM_Hyponode& rhs)
+ {
+  quint8 tpl_kind_code;
+  lhs >> tpl_kind_code;
+  switch(tpl_kind_code)
+  {
+  case 0: lhs >> rhs.qt_encoding_; break;
+  case 1:
+   {
+    quint64 val;
+    lhs >> val;
+    rhs.wgdb_encoding_.data = (wg_int) val;
+   }
+   break;
+  case 2:
+   {
+    quint32 sz;
+    lhs >> sz;
+    void* pv = malloc(sz);
+    lhs.readRawData((char*) pv, sz);
+    rhs.set_raw_data( (quint64) pv, sz);
+   }
+   break;
+
+  // //  This is by default but it's expected that someone
+   //    using tpl.raw option will re-implement this case.
+  case 3:
+   {
+    quint64 rd;
+    lhs >> rd;
+    rhs.set_raw_data(rd, 0);
+   }
+   break;
+  }
+ }
+
 
  WCM_Hyponode();
 };

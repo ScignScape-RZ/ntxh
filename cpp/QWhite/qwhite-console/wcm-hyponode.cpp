@@ -23,6 +23,12 @@ WCM_Encoding_Package::Tuple WCM_Hyponode::get_encoding_tuple() const
  return WCM_Encoding_Package::null_tuple();
 }
 
+template<>
+void QWhite_Database::untranslate_data(wg_int data, WCM_Hyponode& who)
+{
+ who.set_wgdb_encoding({data});
+}
+
 //quint64 WCM_Hyponode::defers_to_wg() const
 //{
 // static int mt = QMetaType::type("WCM_Encoding_Package");

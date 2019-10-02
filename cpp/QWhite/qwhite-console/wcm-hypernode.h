@@ -14,12 +14,18 @@ class QWhite_Column_Set;
 class WCM_Hyponode;
 class WCM_Type;
 
-
-
-
 class WCM_Hypernode
 {
- QList<WCM_Hyponode*> hyponodes_;
+ struct With_Hyponode_Package
+ {
+  WCM_Hyponode* who;
+  void operator<< (std::function<void (WCM_Hyponode&)> fn)
+  {
+   fn(*who);
+  }
+ };
+
+ QVector<WCM_Hyponode*> hyponodes_;
 
  WCM_Type* wcm_type_;
 
@@ -27,7 +33,7 @@ class WCM_Hypernode
 
 public:
 
- ACCESSORS__RGET(QList<WCM_Hyponode*> ,hyponodes)
+ ACCESSORS__RGET(QVector<WCM_Hyponode*> ,hyponodes)
  ACCESSORS(WCM_Type* ,wcm_type)
 // ACCESSORS__GET(PASTE_EXPRESSION(QMap<quint32, QString*>)* ,indexed_column_map)
 // ACCESSORS__SET(PASTE_EXPRESSION(QMap<quint32, QString*>)* ,indexed_column_map)
@@ -35,6 +41,8 @@ public:
  ACCESSORS(MACRO_PASTE(QMap<quint32, QString>)* ,indexed_column_map)
 
  WCM_Hypernode();
+
+ With_Hyponode_Package with_hyponode(quint32 index);
 
  void supply_data(QByteArray& qba, QWhite_Column_Set& columns);
  void absorb_data(const QByteArray& qba, QWhite_Column_Set& columns);

@@ -42,6 +42,55 @@ int main1(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
  QWhite_Database qwdb("100", "/home/nlevisrael/mb/whitedb/QWhite/databases/test/test-100.wdb");
+
+ qwdb.load();
+
+ WCM_Hypernode whn;
+
+ QByteArray qba;
+
+ qwdb.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
+
+ QWhite_Column_Set qwcs(qwdb);
+
+ QMap<quint32, QString> icm;
+ icm[2] = "Patient::Id";
+
+ whn.set_indexed_column_map(&icm);
+ whn.absorb_data(qba, qwcs);
+
+ whn.with_hyponode(0) << [](WCM_Hyponode& who)
+ {
+  QVariant qv = who.qt_encoding();
+  QString qs = qv.toString();
+  qDebug() << qs;
+ };
+
+ whn.with_hyponode(1) << [](WCM_Hyponode& who)
+ {
+  QVariant qv = who.qt_encoding();
+  QDate qd = qv.toDate();
+  qDebug() << qd.toString();
+ };
+
+ whn.with_hyponode(2) << [&qwdb](WCM_Hyponode& who)
+ {
+  wg_int wgi = who.wgdb_encoding().data;
+  quint32 pi = qwdb.wdb().decode_u4(wgi);
+  qDebug() << pi;
+ };
+
+// quint32 record_index;
+
+// qwdb.add_record("@Patient", "Default@Patient", qba, record_index);
+
+ return 0;
+
+}
+
+int main2(int argc, char *argv[])
+{
+ QWhite_Database qwdb("100", "/home/nlevisrael/mb/whitedb/QWhite/databases/test/test-100.wdb");
  qRegisterMetaType<WCM_Encoding_Package>();
 
  qwdb.load();
@@ -53,7 +102,7 @@ int main(int argc, char *argv[])
  WCM_Hyponode* who3 = new WCM_Hyponode;
 
  QVariant v1(QString("Test Name"));
- QVariant v2(QDate::fromString("June 4, 2005"));
+ QVariant v2(QDate::fromString("June 4, 2005", "MMMM d, yyyy"));
  wg_int v3 = qwdb.wdb().encode_u4(1000);
  
  who1->set_qt_encoding(v1);
@@ -62,7 +111,10 @@ int main(int argc, char *argv[])
 
  whn.add_hyponodes({who1, who2, who3});
 
+ QMap<quint32, QString> icm;
+ icm[2] = "Patient::Id";
 
+ whn.set_indexed_column_map(&icm);
 
  QWhite_Column_Set qwcs(qwdb);
 
@@ -106,6 +158,7 @@ int main5(int argc, char *argv[])
 }
 
 
+
 int main3(int argc, char *argv[])
 {
  QWhite_Database qwdb("100", "/home/nlevisrael/mb/whitedb/QWhite/databases/test/test-100.wdb");
@@ -116,7 +169,7 @@ int main3(int argc, char *argv[])
 }
 
 
-int main2(int argc, char *argv[])
+int main4(int argc, char *argv[])
 {
  QWhite_Database qwdb("100", "/home/nlevisrael/mb/whitedb/QWhite/databases/test/test-100.wdb");
 
