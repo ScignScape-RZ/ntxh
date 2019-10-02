@@ -19,7 +19,7 @@ class WCM_Type;
 
 class WCM_Hypernode
 {
- QList<WCM_Hyponode*> hyponodes_;
+ QVector<WCM_Hyponode*> hyponodes_;
 
  WCM_Type* wcm_type_;
 
@@ -27,7 +27,7 @@ class WCM_Hypernode
 
 public:
 
- ACCESSORS__RGET(QList<WCM_Hyponode*> ,hyponodes)
+ ACCESSORS__RGET(QVector<WCM_Hyponode*> ,hyponodes)
  ACCESSORS(WCM_Type* ,wcm_type)
 // ACCESSORS__GET(PASTE_EXPRESSION(QMap<quint32, QString*>)* ,indexed_column_map)
 // ACCESSORS__SET(PASTE_EXPRESSION(QMap<quint32, QString*>)* ,indexed_column_map)
