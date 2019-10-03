@@ -9,6 +9,9 @@
 
 #include <functional>
 
+#define MACRO_PASTE(...) __VA_ARGS__
+
+
 #ifndef ACCESSORS__GET
 #define ACCESSORS__GET(type, name) \
  type name() const { return name##_; }
@@ -117,9 +120,10 @@
 
 #ifndef ACCESSORS
 #define ACCESSORS(type, name) \
- ACCESSORS__GET(type, name) \
- ACCESSORS__SET(type, name)
+ ACCESSORS__GET(MACRO_PASTE(type), name) \
+ ACCESSORS__SET(MACRO_PASTE(type), name)
 #endif
+
 
 
 #ifndef Q_INVOKABLE__ACCESSORS
