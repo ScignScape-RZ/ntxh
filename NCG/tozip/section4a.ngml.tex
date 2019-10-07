@@ -1,0 +1,102 @@
+\vspace{-.1em}
+\subsection{Dependent Types and Co-Constructors}
+\p{To see why the metaconstructor problem 
+determines how extensively Dependent Types are 
+supported in a type system, consider a variation 
+on the range \ZeroToOneHundred{} type.  
+In lieu of a fixed range, consider a procedure 
+taking a (variable) \Tvar{}-range \rRan{} and a number \xSym{}
+\i{which must be in that range}.  Here \xSym{}
+\q{depends} on \rRan{} \mdash{} its \i{type} is \rRan{}
+seen as its own \TVOneToVTwo{} type \mdash{} so 
+\xSym{} can vary among many 
+range-types, only being fixed at runtime.  Defining a 
+\i{type} for procedures meeting those 
+\i{specifications} is a classic problem of 
+Dependent Type theory.
+}
+\p{Using the \rRan{}-type as before, the type of \fFun{}'s second parameter
+would then be \Tvar{} restricted to the \rRan{} interval, but here
+\rRan{} is not fixed in \fFun{}'s declaration but rather passed in to
+\fFun{} as a parameter.  Unless we know \i{a priori} that only
+a specific set of \rRan{}s in the first parameter will ever be encountered,
+the compiler has to be prepared for \xSym{} being assigned any one 
+of many different range types, depending on the \fFun{}'s first argument.  
+In particular, the compiler cannot know ahead of time which 
+constructor to call for \xSym{}.  More precisely, it is impossible 
+for the compiler to have \i{separate} constructors for millions 
+of possible range types.  Instead, the compiler must either 
+\q{create} a constructor \q{on the fly} or else have 
+some generic constructor which services many range-types, 
+but then requires extra information to establish 
+\i{which} range is desired. 
+}
+\p{Assuming we use co-constructors to wrap constructors, 
+these two options for compiler writers correspond to 
+the choice of \i{either} creating ad-hoc co-constructors 
+\i{or} designing co-constructors as a 
+compound data structure.  We could certainly write a function that takes a range and a value and
+ensures that the value fits the range \mdash{} perhaps by throwing an
+exception if not, or mapping the value to the range's closest point.
+Such a function would provide common functionality for a family of
+constructors each associated with a given range.  But a function (\cfFun{}, say)
+providing \q{common functionality} for value constructors is not necessarily
+itself a value constructor.\footnote{Here I say \q{value constructor} to clarify that I am not 
+commenting on \i{type constructors}, which derive specialized 
+types from generic ones.
+}
+To treat such a function as a
+\i{real} value constructor we would have to add contextual modifiers:
+\cfFun{} is a value constructor for range-type \rRan{} in the 
+presence of a \Tvar{}-pair to specify \rRan{} at runtime.
+The co-constructor for a range type \TrRan{} is accordingly the
+\q{common functionality} base function \i{plus} \Tvar{}'s 
+passed to it \mdash{} some sort of \Cfr{} compound data structure,
+again by analogy to \inc{} and
+\addOne{} (see footnote \ref{fofgplausible}, above).  Here again, though, 
+the co-constructor is a temporary data structure, 
+created on-the-fly to model the desired value constructor 
+for an \xSym{} whose type (and therefore whose constructor) 
+is not known until runtime.  I contend, on examples like 
+these, that Dependant Typing for a type system \TyS{} is thus logically 
+equivalent to the possibility of \TyS{} co-constructors 
+being temporary values.   
+}
+\p{But value constructors (and by extension co-constructors) 
+are not just any function-value: they have a privileged
+status \visavis{} types, and may be invoked whenever an appropriately-typed
+value is used.  Many constructors are called behind-the-scenes: 
+in \Cpp{}, the standard function-call mechanism is
+\q{pass by value}, wherein values are \i{copied} when passed 
+between procedures; but any copy can potentially 
+invoke a so-called \q{copy constructor}.  Indeed, programmers 
+use certain constructors as \q{hooks} to silently 
+insert logic into normal program flow (usually this is 
+to make complex types behave like built-in-types from 
+client code's point of view).  Allowing large type families (like one type
+for each \int{} or each two-number range \rRan{} \mdash{} similar to \q{inductive typing} as
+discussed by Edwin Brady in the context of the Idris language
+\cite[p. 14]{EdwinBradyImpl}) \mdash{} could easily conflict with 
+user-defined constructor overrides: users (meaning, in this context, 
+library developers) would need not only to write their own 
+(e.g., copy) constructors, but to hook into a complex 
+run-time mechanism for creating constructors ad-hoc as temporary values.
+Conversely, forcing co-constructors to be
+addressable prohibits \q{large} type families \mdash{} like types indexed
+over other (non-enumerative) types
+(see e.g. \cite[p. 4]{BernardyEtAl}) \mdash{} at least as \i{actual} types.
+This apparently precludes full-fledged Dependent Types, since
+dependent-typed values invariably require in general some extra
+contextual data \mdash{} not just a function-pointer \mdash{} to designate the
+desired value constructor at the point where a value,
+attributed to the relevant dependent type,
+is needed.  It may be infeasible to add the requisite contextual
+information at every point where a dependent-typed value has to be constructed
+\mdash{} unless, perhaps, a description of the context can be packaged and
+carried around with the value, sharing the value's lifetime.
+}
+\p{As I will now review, this analysis in the realm of 
+Dependent Types carries over into \i{typestate}, 
+which is another mechanism intended to model 
+coding requirements via type-checkable specifications.
+}

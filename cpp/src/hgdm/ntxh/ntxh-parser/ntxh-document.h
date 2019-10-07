@@ -23,10 +23,11 @@
 
 KANS_(HGDMCore)
 
+
 class NTXH_Parser;
 class NTXH_Grammar;
 class NTXH_Graph_Build;
-class NTXH_Word_Entry_List;
+//?class NTXH_Word_Entry_List;
 class NTXH_Graph;
 
 

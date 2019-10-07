@@ -1,0 +1,91 @@
+\tmphs\begin{lstlisting}[caption={%
+\emblink{\#lst--initializing-hypernodes--\thelstlisting.pgvm-pdf}{Initializing Hypernodes}},
+  language = C++, numbers = none, escapechar = !, 
+  label={lst:initializing-hypernodes},
+    basicstyle = \ttfamily\bfseries\footnotesize, 
+	linewidth = 1.01\linewidth]
+
+caon_ptr<RE_Node> RE_Graph_Build::make_new_node(
+  caon_ptr<RE_Function_Def_Entry> fdef)
+{
+ caon_ptr<RE_Node> result = new RE_Node(fdef);
+ RELAE_SET_NODE_LABEL(result, "<fdef>");
+ return result;
+}
+...
+caon_ptr<RE_Node> RE_Graph_Build::
+  new_function_def_entry_node(RE_Node& prior_node,
+  RE_Function_Def_Kinds kind, 
+  caon_ptr<RE_Node> label_node)
+{
+ caon_ptr<RE_Function_Def_Entry> fdef = new 
+   RE_Function_Def_Entry(&prior_node, 
+   kind, label_node);
+ caon_ptr<RE_Node> result = make_new_node(fdef);
+ fdef->set_node(result);
+ return result;
+}
+...
+caon_ptr<RE_Node> RE_Graph_Build::create_tuple(
+  RE_Tuple_Info::Tuple_Formations tf,
+  RE_Tuple_Info::Tuple_Indicators ti, 
+  RE_Tuple_Info::Tuple_Formations sf, 
+  bool increment_id)
+{
+ int tuple_id = increment_id?++tuple_entry_count_:0;
+ caon_ptr<RE_Tuple_Info> tinfo = new RE_Tuple_Info(
+   tf, ti, tuple_id);
+ caon_ptr<RE_Node> result = new RE_Node(tinfo);
+ return result;
+}
+...
+caon_ptr<RE_Node> RE_Markup_Position::
+  check_implied_lambda_tuple(
+  RE_Function_Def_Kinds kind)
+{
+...
+ if(caon_ptr<RE_Call_Entry> rce = 
+   current_node_->re_call_entry())
+ {
+...
+  caon_ptr<RE_Node> fdef_node = graph_build_->
+    new_function_def_entry_node(
+     *last_pre_entry_node_, kind);
+  last_pre_entry_node_->delete_relation(
+    rq_.Run_Call_Entry, current_node_);
+  current_function_def_entry_node_ = fdef_node;
+  caon_ptr<RE_Node> tuple_info_node = graph_build_->
+    create_tuple_node(
+    RE_Tuple_Info::Tuple_Formations::Indicates_Input
+    , RE_Tuple_Info::Tuple_Indicators::Enter_Array, 
+    , RE_Tuple_Info::Tuple_Formations::N_A );	
+  caon_ptr<RE_Node> entry_node = 
+    rq_.Run_Call_Entry(current_node_);
+ ...
+  fdef_node << fr_/rq_.Run_Call_Entry >> 
+    current_node_;  
+  current_node_ << fr_/rq_.Run_Data_Entry >> 
+    tuple_info_node;
+  tuple_info_node << fr_/rq_.Run_Data_Entry >> 
+    entry_node;
+...}}}
+\end{lstlisting}
+
+
+\begin{tikzpicture}[remember picture, overlay]
+\dovn{8.24}{20.33}{1};
+\dovn{8}{17.35}{1};
+\dovn{8.8}{11.95}{1};
+
+%\dovn{6.17}{5.33}{3};
+
+\dovn{8.8}{7.53}{2};
+\dovn{0.4}{5}{2};
+
+\dovn{7.14}{3.7}{3};
+
+\dovn{7.54}{3}{4};
+\dovn{8.2}{2.3}{4};
+\dovn{8.6}{1.6}{4};
+
+\end{tikzpicture} 
