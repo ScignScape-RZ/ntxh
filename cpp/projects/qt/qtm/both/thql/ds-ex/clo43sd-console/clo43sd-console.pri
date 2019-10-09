@@ -22,11 +22,17 @@ DEFINES += DEFAULT_WCM_FOLDER=\\\"$$CPP_ROOT_DIR/wcm\\\"
 
 CONFIG += no_keywords
 
+
 DEFINES += USE_KANS
+
+
+HEADERS += \
+  $$SRC_DIR/clo-species.h \
 
 
 SOURCES += \
   $$SRC_DIR/main.cpp \
+  $$SRC_DIR/clo-species.cpp \
 
 
 #?

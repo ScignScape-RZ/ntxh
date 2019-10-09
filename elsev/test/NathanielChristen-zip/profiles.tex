@@ -1,0 +1,47 @@
+\begin{table}
+\begin{flushleft}
+{\footnotesize
+\begin{tabularx}{93mm}{>{\raggedright}p{24mm}|p{35mm}|p{22mm}}
+
+\multicolumn{1}{c}{Data Type} & \multicolumn{1}{c}{Dimensions/Fields} & \multicolumn{1}{c}{Requirements} \\
+\toprule
+
+\textbf{Blood Pressure} & Beats per Minute; resting/active 
+(boolean) or exercise level (scalar) &  Systolic more than Diastolic; 
+plausible resting/active range \\
+\midrule
+\textbf{Accelerator} & \raggedright Incline; Movement in 2 or 3 Dimensions &  Biaxial or Triaxial \\
+\midrule
+\textbf{Audio Sample} & \raggedright Binary data/file and/or 
+(waveform analysis) feature set 
+ &  Length (in time) (1D) \\
+\midrule
+\textbf{Audio Feature} & \raggedright Time-interval inside sample 
+and/or spectral numerics &  Subinterval of sample (1D) \\
+\midrule
+\textbf{Image} & \raggedright Matrix of values in a color model: {\smRGB}, {\smRGBa},
+ {\smHSV}, etc. &  Matrix Dimensions (2D) \\
+\midrule
+\textbf{Image Segment} & \raggedright Rectangular Coordinates; geometric 
+characterization (e.g. ellipse dimensions); scales of resolution 
+where detectable & Subregion of image (2D) \\
+\midrule
+\textbf{Bioacoustic Sample} & \raggedright Audio Sample plus species identifier; geospatial 
+and timestamp coordinates  & Well-formed spacetime coordinates \\
+\midrule
+\textbf{Speech Sample} & \raggedright Audio Sample plus text transcription; spacetime coodinates; 
+  \mbox{identify language/} dialic and/or speaker & Valid dialect and/or speaker identifier \\
+\midrule
+\textbf{Dependency-Parsed Text} & \raggedright Text transcription plus parse serialization; 
+  audio metadata & Valid and accessible metadata \\
+\midrule
+\textbf{Lexical Text Component} & \raggedright Index into parse serialization; Part of Speech 
+tag; lexical/semantic classification & Valid index \\
+\bottomrule
+\end{tabularx}
+}
+\end{flushleft}
+\caption{Example Data Profiles}
+\label{table:profiles}
+\end{table}
+

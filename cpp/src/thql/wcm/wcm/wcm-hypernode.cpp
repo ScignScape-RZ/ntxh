@@ -31,6 +31,19 @@ QString WCM_Hypernode::check_column(quint32 index)
  return indexed_column_map_? indexed_column_map_->value(index): QString();
 }
 
+void WCM_Hypernode::add_hyponodes(WCM_Hyponode** whos, quint32 size)
+{
+ int sz = hyponodes_.size();
+ hyponodes_.resize(sz + size);
+ int i = 0;
+ std::for_each(hyponodes_.begin() + sz,
+   hyponodes_.end(), [whos, &i](WCM_Hyponode*& who)
+ {
+  who = whos[i];
+  ++i;
+ });
+}
+
 
 void WCM_Hypernode::supply_data(QByteArray& qba, WCM_Column_Set& columns)
 {

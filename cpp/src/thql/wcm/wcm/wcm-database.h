@@ -23,9 +23,11 @@ extern "C" {
 
 #include "wcm-column.h"
 
+
 #include <QVariant>
 
 class WCM_Column;
+class WCM_Hyponode;
 
 struct wg_enc
 {
@@ -87,6 +89,12 @@ struct WCM_WhiteDB
   return wg_decode_int(white_db, x);
  }
 
+ wg_int encode_string(QString str)
+ {
+  return wg_encode_str(white_db, (char*) str.toStdString().c_str(), NULL);
+ }
+
+
 };
 
 class WCM_Database
@@ -106,6 +114,14 @@ class WCM_Database
 
  wg_int _add_column_entry_(WCM_Column* qc, wg_int data,
    quint32& column_specific_record_index, quint32& field_number);
+
+ struct New_Hyponode_Array_Package
+ {
+  WCM_Database* _this;
+  quint32 size;
+  WCM_Hyponode** operator <<
+    (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, quint32)> fn);
+ };
 
 public:
 
@@ -178,6 +194,12 @@ public:
  void check_delete();
  void init_columns();
  //void init_columns(QByteArray& qba);
+
+ New_Hyponode_Array_Package new_hyponode_array(quint32 size)
+ {
+  return {this, size};
+ }
+
 
  WCM_Column* create_new_column(QString name);
 

@@ -18,6 +18,8 @@
 
 #include "kans.h"
 
+#include "clo-species.h"
+
 int main2(int argc, char *argv[])
 {
  WCM_Database qwdb("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
@@ -43,7 +45,54 @@ int main(int argc, char *argv[])
 
  doc.parse();
 
+ typedef NTXH_Graph::hypernode_type hypernode_type;
+
+//? NTXH_Graph& g = *doc.graph();
+
+ QVector<CLO_Species*> species;
+
+ QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
+
+ for(NTXH_Graph::hypernode_type* hn : hns)
+ {
+  doc.graph()->get_sfsr(hn, {{1,3}}, [&species](QVector<QPair<QString, void*>>& prs)
+  {
+   CLO_Species* s = new CLO_Species;
+   s->set_abbreviation(prs[0].first);
+   s->set_instances(prs[1].first);
+   s->set_name(prs[2].first);
+   species.push_back(s);
+  });
+ }
+
+ WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+
+ for(CLO_Species* s : species)
+ {
+  WCM_Hypernode whn;
+  WCM_Hyponode** whos = qwdb.new_hyponode_array(3) << [s]
+    (WCM_WhiteDB& wdb, WCM_Hyponode* who, quint32 index)
+  {
+   switch (index)
+   {
+   case 0:
+    who->set_wgdb_encoding({wdb.encode_string(s->abbreviation())});
+    break;
+   case 1:
+    who->set_qt_encoding(s->instances().toUInt());
+    break;
+   case 2:
+    who->set_qt_encoding(s->name());
+    break;
+   }
+  };
+  whn.add_hyponodes(whos)(3);
+ }
+
+
+
 // qwdb.load();
+ return  0;
 
 }
 

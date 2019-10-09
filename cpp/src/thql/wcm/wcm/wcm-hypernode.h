@@ -25,6 +25,21 @@ class WCM_Hypernode
   }
  };
 
+ struct Add_Hyponodes_Package
+ {
+  WCM_Hypernode* _this;
+  WCM_Hyponode** whos;
+  void operator[] (quint32 size)
+  {
+   _this->add_hyponodes(whos, size);
+  }
+  void operator() (quint32 size)
+  {
+   _this->add_hyponodes(whos, size);
+   delete [] whos;
+  }
+ };
+
  QVector<WCM_Hyponode*> hyponodes_;
 
  WCM_Type* wcm_type_;
@@ -49,6 +64,12 @@ public:
 
  void add_hyponode(WCM_Hyponode* who);
  void add_hyponodes(QList<WCM_Hyponode*> whos);
+ Add_Hyponodes_Package add_hyponodes(WCM_Hyponode** whos)
+ {
+  return {this, whos};
+ }
+
+ void add_hyponodes(WCM_Hyponode** whos, quint32 size);
 
  void each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&, quint32)>);
  void each_hyponode(std::function<void(WCM_Hyponode&, quint32)>);
