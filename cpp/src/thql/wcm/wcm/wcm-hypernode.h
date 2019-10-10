@@ -13,6 +13,7 @@
 class WCM_Column_Set;
 class WCM_Hyponode;
 class WCM_Type;
+class WCM_Database;
 
 class WCM_Hypernode
 {
@@ -61,6 +62,8 @@ public:
 
  void supply_data(QByteArray& qba, WCM_Column_Set& columns);
  void absorb_data(const QByteArray& qba, WCM_Column_Set& columns);
+
+ quint32 add_to_database(WCM_Database& qwdb, QString type_col, QString col);
 
  void add_hyponode(WCM_Hyponode* who);
  void add_hyponodes(QList<WCM_Hyponode*> whos);

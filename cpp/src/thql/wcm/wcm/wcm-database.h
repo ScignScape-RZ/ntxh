@@ -94,6 +94,12 @@ struct WCM_WhiteDB
   return wg_encode_str(white_db, (char*) str.toStdString().c_str(), NULL);
  }
 
+ QString decode_string(wg_int x)
+ {
+  std::string ss = wg_decode_str(white_db, x);
+  return QString::fromStdString(ss);
+ }
+
 
 };
 
@@ -119,6 +125,7 @@ class WCM_Database
  {
   WCM_Database* _this;
   quint32 size;
+  operator WCM_Hyponode**();
   WCM_Hyponode** operator <<
     (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, quint32)> fn);
  };

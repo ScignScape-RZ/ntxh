@@ -22,15 +22,25 @@ WCM_Database::WCM_Database(QString name, QString full_path)
 {
 }
 
+WCM_Database::New_Hyponode_Array_Package::operator WCM_Hyponode**()
+{
+ WCM_Hyponode** result = new WCM_Hyponode* [size];
+ for(quint32 i = 0; i < size; ++i)
+ {
+  result[i] = new WCM_Hyponode;
+ }
+ return result;
+}
+
 WCM_Hyponode** WCM_Database::New_Hyponode_Array_Package::operator <<
   (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, quint32)> fn)
 {
  WCM_Hyponode** result = new WCM_Hyponode* [size];
  for(quint32 i = 0; i < size; ++i)
  {
-  result[0] = new WCM_Hyponode;
+  result[i] = new WCM_Hyponode;
   WCM_WhiteDB wdb = _this->wdb();
-  fn(wdb, result[0], i);
+  fn(wdb, result[i], i);
  }
  return result;
 }
