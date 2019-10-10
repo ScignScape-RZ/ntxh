@@ -20,7 +20,7 @@
 
 #include "clo-species.h"
 
-int main2(int argc, char *argv[])
+int main3(int argc, char *argv[])
 {
  WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
 
@@ -44,7 +44,7 @@ int main2(int argc, char *argv[])
  return 0;
 }
 
-int main(int argc, char *argv[])
+int main2(int argc, char *argv[])
 {
 // WCM_Database qwdb("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
 
@@ -60,6 +60,9 @@ int main(int argc, char *argv[])
 
  QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
 
+ QMap<quint32, QString> icm;
+ icm[0] = "Species::Abbreviation";
+
  for(NTXH_Graph::hypernode_type* hn : hns)
  {
   doc.graph()->get_sfsr(hn, {{1,3}}, [&species]
@@ -74,6 +77,8 @@ int main(int argc, char *argv[])
  }
 
  WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ qRegisterMetaType<WCM_Encoding_Package>();
+ qwdb.load();
 
  for(CLO_Species* s : species)
  {
@@ -102,6 +107,7 @@ int main(int argc, char *argv[])
 
   whn.add_hyponodes(whos)(3);
 
+  whn.set_indexed_column_map(&icm);
   whn.add_to_database(qwdb, "@Species", "Default@Species");
 
   qwdb.save();
@@ -116,7 +122,7 @@ int main(int argc, char *argv[])
 
 }
 
-int main3(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  qwdb.load();
