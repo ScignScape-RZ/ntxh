@@ -128,7 +128,22 @@ class WCM_Database
   operator WCM_Hyponode**();
   WCM_Hyponode** operator <<
     (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, quint32)> fn);
+//  WCM_Hyponode** operator <<
+//    (std::function<void(WCM_Hyponode*, quint32)> fn);
  };
+
+ struct With_New_Hyponode_Array_Package
+ {
+  WCM_Database* _this;
+  quint32 size;
+  void operator <<
+    (std::function<void(WCM_WhiteDB&, WCM_Hyponode**)> fn);
+  void operator <<
+    (std::function<void(WCM_Hyponode**)> fn);
+  void operator <<
+    (std::function<void(WCM_Database&, WCM_Hyponode**)> fn);
+ };
+
 
 public:
 
@@ -209,6 +224,10 @@ public:
   return {this, size};
  }
 
+ With_New_Hyponode_Array_Package with_new_hyponode_array(quint32 size)
+ {
+  return {this, size};
+ }
 
  WCM_Column* create_new_column(QString name, void(*fn)(WCM_Column&) = nullptr);
 
