@@ -20,7 +20,7 @@
 
 #include "clo-species.h"
 
-int main3(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
 
@@ -29,6 +29,10 @@ int main3(int argc, char *argv[])
  qwdb.create_new_column("@Species");
  qwdb.create_new_column("Default@Species");
  qwdb.create_new_column("Species::Abbreviation");
+
+ qwdb.create_new_column("@Info");
+ qwdb.create_new_singleton_column("Default@Info");
+// qwdb.create_new_column("Species::Abbreviation");
 
  // WCM_Column* name_column = qwdb.create_new_column("Patient::Name");
 
@@ -44,7 +48,7 @@ int main3(int argc, char *argv[])
  return 0;
 }
 
-int main2(int argc, char *argv[])
+int main3(int argc, char *argv[])
 {
 // WCM_Database qwdb("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
 
@@ -80,6 +84,16 @@ int main2(int argc, char *argv[])
  qRegisterMetaType<WCM_Encoding_Package>();
  qwdb.load();
 
+ // // init info hypernode
+ {
+  WCM_Hypernode whn;
+  WCM_Hyponode** whos = qwdb.new_hyponode_array(2);
+  whos[0]->set_qt_encoding(hns.size());
+  whos[1]->set_qt_encoding("/home/nlevisrael/hypergr/bird/CLO-43SD"_q_());
+  whn.add_hyponodes(whos)(2);
+  whn.add_to_database(qwdb, "@Info", "Default@Info");
+ }
+
  for(CLO_Species* s : species)
  {
   WCM_Hypernode whn;
@@ -101,6 +115,7 @@ int main2(int argc, char *argv[])
 //  };
 //  whn.add_hyponodes(whos)(3);
   WCM_Hyponode** whos = qwdb.new_hyponode_array(3);
+
   whos[0]->set_wgdb_encoding({qwdb.wdb().encode_string(s->abbreviation())});
   whos[1]->set_qt_encoding(s->instances().toUInt());
   whos[2]->set_qt_encoding(s->name());
@@ -122,19 +137,39 @@ int main2(int argc, char *argv[])
 
 }
 
-int main(int argc, char *argv[])
+
+int main2(int argc, char *argv[])
 {
  WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  qwdb.load();
+
+ WCM_Column_Set qwcs(qwdb);
+
+ quint32 species_count;
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  qwdb.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, qwcs);
+  whn.with_hyponode(0) << [&species_count](WCM_Hyponode& who)
+  {
+   species_count = who.qt_encoding().toInt();
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+ }
 
  WCM_Hypernode whn;
 
  QByteArray qba;
 
  qwdb.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
-   QString("BTBW"));
-
- WCM_Column_Set qwcs(qwdb);
+   "BTBW"_q_());
 
  QMap<quint32, QString> icm;
  icm[0] = "Species::Abbreviation";

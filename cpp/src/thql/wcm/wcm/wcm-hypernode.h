@@ -63,6 +63,10 @@ public:
  void supply_data(QByteArray& qba, WCM_Column_Set& columns);
  void absorb_data(const QByteArray& qba, WCM_Column_Set& columns);
 
+//?
+// void supply_data(QByteArray& qba);
+// void absorb_data(const QByteArray& qba);
+
  quint32 add_to_database(WCM_Database& qwdb, QString type_col, QString col);
 
  void add_hyponode(WCM_Hyponode* who);

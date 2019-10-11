@@ -54,6 +54,8 @@ QDataStream& operator <<(QDataStream& lhs, const WCM_Column* const rhs)
  lhs << rhs->name();
  lhs << rhs->database_column_code();
  lhs << rhs->record_count();
+ lhs << rhs->effective_field_number();
+ lhs << rhs->record_index_field_number();
  return lhs;
 }
 
@@ -71,6 +73,14 @@ QDataStream& operator >>(QDataStream& lhs, WCM_Column* const rhs)
  quint32 record_count;
  lhs >> record_count;
  rhs->set_record_count(record_count);
+
+ qint8 efn;
+ lhs >> efn;
+ rhs->set_effective_field_number(efn);
+
+ qint8 rifn;
+ lhs >> rifn;
+ rhs->set_record_index_field_number(rifn);
  return lhs;
 }
 
@@ -313,7 +323,34 @@ void* WCM_Database::retrieve_column_entry_value(WCM_Column* qc, quint32 record_i
   result_value = wg_get_field(white_db_, result, fn);
  }
  return result;
+}
 
+void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name)
+{
+ wg_query_arg result_arglist; // holds the arguments to the query
+
+ WCM_Column* aqc = get_column_by_name(archive_name);
+
+ if(aqc)
+ {
+  int acolumn_code = aqc->database_column_code();
+  result_arglist.column = 0;
+  result_arglist.cond = WG_COND_EQUAL;
+  result_arglist.value = wg_encode_query_param_int(white_db_, acolumn_code);
+  wg_query* aqry = wg_make_query(white_db_, NULL, 0, &result_arglist, 1);
+  void* result = wg_fetch(white_db_, aqry);
+  if(result)
+  {
+   int afn = aqc->get_effective_field_number();
+   wg_int awgi = wg_get_field(white_db_, result, afn);
+
+   char* blob = wg_decode_blob(white_db_, awgi);
+   wg_int wlen = wg_decode_blob_len(white_db_, awgi);
+   qba = QByteArray(blob, wlen);
+   return result;
+  }
+ }
+ return nullptr;
 }
 
 
@@ -519,12 +556,24 @@ void WCM_Database::check_update_column_data()
  }
 }
 
-WCM_Column* WCM_Database::create_new_column(QString name)
+WCM_Column* WCM_Database::create_new_singleton_column(QString name)
+{
+ return create_new_column(name, [](WCM_Column& col)
+ {
+  col.set_effective_field_number(1);
+ });
+}
+
+WCM_Column* WCM_Database::create_new_column(QString name, void(*fn)(WCM_Column&))
 {
  quint32 id = new_column_code();
  WCM_Column* result = new WCM_Column(name, id);
  if(result)
  {
+  if(fn)
+  {
+   fn(*result);
+  }
   columns_.push_back(result);
   columns_map_[name] = result;
   QByteArray qba;

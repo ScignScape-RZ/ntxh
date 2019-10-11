@@ -159,6 +159,8 @@ public:
  void* retrieve_record(QByteArray& qba, QString archive_name,
    QString index_column_name, wg_int data);
 
+ void* retrieve_record(QByteArray& qba, QString archive_name);
+
  template<typename T>
  void* retrieve_record(QByteArray& qba, QString archive_name,
    QString index_column_name, T data)
@@ -208,7 +210,10 @@ public:
  }
 
 
- WCM_Column* create_new_column(QString name);
+ WCM_Column* create_new_column(QString name, void(*fn)(WCM_Column&) = nullptr);
+
+ WCM_Column* create_new_singleton_column(QString name);
+
 
  void* create_column_entry_record(WCM_Column* qc,
    wg_int& record_specific_index, int field_count = 3); //, wg_int column_id)
@@ -254,6 +259,40 @@ public:
  }
 
 };
+
+//QString operator "" _q(const char* arr, size_t size)
+//{
+// std::string ss(arr, size);
+// return QString::fromStdString(ss);
+//}
+
+struct WCM_String_Literal_Package
+{
+ const char* cs;
+ size_t size;
+
+ QString operator()()
+ {
+  std::string ss(cs, size);
+  return QString::fromStdString(ss);
+ }
+
+ wg_int operator[](WCM_Database& w)
+ {
+  return w.wdb().encode_string(this->operator()());
+ }
+
+ wg_int operator[](WCM_WhiteDB& w)
+ {
+  return w.encode_string(this->operator()());
+ }
+};
+
+inline WCM_String_Literal_Package operator ""_q_(const char* arr, size_t size)
+{
+ return {arr, size};
+}
+
 
 //template<typename DATA_Type>
 //wg_int WCM_Database::add_column_entry(WCM_Column* qc, DATA_Type data,
