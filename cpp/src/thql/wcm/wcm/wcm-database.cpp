@@ -183,7 +183,7 @@ quint32 WCM_Database::new_column_code()
 void WCM_Database::confirm_new_column_code(quint32 id)
 {
  max_column_code_ = id;
- wg_set_field(white_db_, max_column_code_record_, 0, wg_encode_int(white_db_, max_column_code_));
+ wg_set_field(white_db_, max_column_code_record_, 0, wg_encode_int(white_db_, max_column_code_ + 1));
 }
 
 //void WCM_Database::init_columns(QByteArray& qba)
@@ -198,7 +198,7 @@ void WCM_Database::init_columns()
 {
  max_column_code_record_ = wg_get_first_record(white_db_);
  wg_int wgi = wg_get_field(white_db_, max_column_code_record_, 0);
- max_column_code_ = wg_decode_int(white_db_, wgi);
+ max_column_code_ = wg_decode_int(white_db_, wgi) - 1;
  wg_int wgi1 = wg_get_field(white_db_, max_column_code_record_, 1);
 
  char* blob = wg_decode_blob(white_db_, wgi1);
@@ -425,9 +425,17 @@ void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name,
  return result;
 }
 
+void* WCM_Database::create_singleton_column_entry_record(WCM_Column* qc,
+  int field_count) //, wg_int column_id)
+{
+ void* result = wg_create_record(white_db_, field_count);
+ wg_set_field(white_db_, result, 0, wg_encode_int(white_db_, qc->database_column_code()));
+ return result;
+}
+
 
 void* WCM_Database::create_column_entry_record(WCM_Column* qc,
-  wg_int& record_specific_index, int field_count) //, wg_int column_id)
+  quint32& record_specific_index, int field_count) //, wg_int column_id)
 {
  void* result = wg_create_record(white_db_, field_count);
  wg_set_field(white_db_, result, 0, wg_encode_int(white_db_, qc->database_column_code()));
@@ -453,13 +461,20 @@ void* WCM_Database::add_record(QString type_column, QString archive_column,
 
  char* c = const_cast<char*>(qba.data());
  int s = qba.size();
- wg_int ri;
- void* result = create_column_entry_record(qc, ri, 3);
+ quint32 ri = 0;
+ void* result;
+ if(qc->flags.singleton)
+  result = create_singleton_column_entry_record(qc, 2);
+ else
+  result = create_column_entry_record(qc, ri, 3);
  record_index = ri;
 
- int index_col = qc->get_record_index_field_number();
- wg_set_field(white_db_, result, index_col,
-   wg_encode_int(white_db_, ri));
+ if(!qc->flags.singleton)
+ {
+  int index_col = qc->get_record_index_field_number();
+  wg_set_field(white_db_, result, index_col,
+    wg_encode_int(white_db_, ri));
+ }
 
  int fn = qc->get_effective_field_number();
 
@@ -561,6 +576,7 @@ WCM_Column* WCM_Database::create_new_singleton_column(QString name)
  return create_new_column(name, [](WCM_Column& col)
  {
   col.set_effective_field_number(1);
+  col.flags.singleton = true;
  });
 }
 
@@ -705,7 +721,7 @@ wg_int WCM_Database::translate_data(QString data)
 wg_int WCM_Database::_add_column_entry_(WCM_Column* qc, wg_int data,
   quint32& column_specific_record_index, quint32& field_number)
 {
- wg_int record_specific_index;
+ quint32 record_specific_index;
  void* cer = create_column_entry_record(qc, record_specific_index);
  if(record_specific_index > 0) //qc->requires_record_specific_index())
  {

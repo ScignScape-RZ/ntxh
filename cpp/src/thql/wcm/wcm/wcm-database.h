@@ -154,7 +154,7 @@ public:
  void* add_record(QString type_column, QString archive_column,
   const QByteArray& qba, quint32& record_index);
 
- // qwdb.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
+ // wcmd.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
 
  void* retrieve_record(QByteArray& qba, QString archive_name,
    QString index_column_name, wg_int data);
@@ -216,7 +216,10 @@ public:
 
 
  void* create_column_entry_record(WCM_Column* qc,
-   wg_int& record_specific_index, int field_count = 3); //, wg_int column_id)
+   quint32& record_specific_index, int field_count = 3); //, wg_int column_id)
+
+ void* create_singleton_column_entry_record(WCM_Column* qc,
+   int field_count);
 
  template<typename DATA_Type>
  wg_int translate_data(DATA_Type dt);

@@ -27,7 +27,7 @@ public:
  flags_(1)
   bool no_column_to_record_link:1;
   bool record_to_column_link:1;
-  bool sorted_ascending:1;
+  bool singleton:1;
   bool record_type_external:1;
   bool use_varying_effective_field_number:1;
   bool use_varying_record_index_field_number:1;

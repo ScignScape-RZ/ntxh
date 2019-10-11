@@ -44,14 +44,14 @@ void WCM_Hypernode::add_hyponodes(WCM_Hyponode** whos, quint32 size)
  });
 }
 
-quint32 WCM_Hypernode::add_to_database(WCM_Database& qwdb,
+quint32 WCM_Hypernode::add_to_database(WCM_Database& wcmd,
   QString type_col, QString col)
 {
- WCM_Column_Set qwcs(qwdb);
+ WCM_Column_Set qwcs(wcmd);
  QByteArray qba;
  supply_data(qba, qwcs);
  quint32 record_index;
- qwdb.add_record(type_col, col, qba, record_index);
+ wcmd.add_record(type_col, col, qba, record_index);
  return record_index;
 }
 

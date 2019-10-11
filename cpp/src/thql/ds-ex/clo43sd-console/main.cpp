@@ -20,37 +20,37 @@
 
 #include "clo-species.h"
 
-int main(int argc, char *argv[])
+int main2(int argc, char *argv[])
 {
- WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
 
- qwdb.re_create();
+ wcmd.re_create();
 
- qwdb.create_new_column("@Species");
- qwdb.create_new_column("Default@Species");
- qwdb.create_new_column("Species::Abbreviation");
+ wcmd.create_new_column("@Species");
+ wcmd.create_new_column("Default@Species");
+ wcmd.create_new_column("Species::Abbreviation");
 
- qwdb.create_new_column("@Info");
- qwdb.create_new_singleton_column("Default@Info");
-// qwdb.create_new_column("Species::Abbreviation");
+ wcmd.create_new_column("@Info");
+ wcmd.create_new_singleton_column("Default@Info");
+// wcmd.create_new_column("Species::Abbreviation");
 
- // WCM_Column* name_column = qwdb.create_new_column("Patient::Name");
+ // WCM_Column* name_column = wcmd.create_new_column("Patient::Name");
 
 
-// WCM_Column* patient_type_column = qwdb.create_new_column("@Patient");
-// WCM_Column* patient_default_column = qwdb.create_new_column("Default@Patient");
+// WCM_Column* patient_type_column = wcmd.create_new_column("@Patient");
+// WCM_Column* patient_default_column = wcmd.create_new_column("Default@Patient");
 
-// WCM_Column* name_column = qwdb.create_new_column("Patient::Name");
-// WCM_Column* patient_id_column = qwdb.create_new_column("Patient::Id");
+// WCM_Column* name_column = wcmd.create_new_column("Patient::Name");
+// WCM_Column* patient_id_column = wcmd.create_new_column("Patient::Id");
 
- qwdb.save();
+ wcmd.save();
 
  return 0;
 }
 
 int main3(int argc, char *argv[])
 {
-// WCM_Database qwdb("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+// WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
 
  NTXH_Document doc(DEFAULT_WCM_FOLDER "/species.ntxh");
 
@@ -80,24 +80,24 @@ int main3(int argc, char *argv[])
   });
  }
 
- WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  qRegisterMetaType<WCM_Encoding_Package>();
- qwdb.load();
+ wcmd.load();
 
  // // init info hypernode
  {
   WCM_Hypernode whn;
-  WCM_Hyponode** whos = qwdb.new_hyponode_array(2);
+  WCM_Hyponode** whos = wcmd.new_hyponode_array(2);
   whos[0]->set_qt_encoding(hns.size());
   whos[1]->set_qt_encoding("/home/nlevisrael/hypergr/bird/CLO-43SD"_q_());
   whn.add_hyponodes(whos)(2);
-  whn.add_to_database(qwdb, "@Info", "Default@Info");
+  whn.add_to_database(wcmd, "@Info", "Default@Info");
  }
 
  for(CLO_Species* s : species)
  {
   WCM_Hypernode whn;
-//  WCM_Hyponode** whos = qwdb.new_hyponode_array(3) << [s]
+//  WCM_Hyponode** whos = wcmd.new_hyponode_array(3) << [s]
 //    (WCM_WhiteDB& wdb, WCM_Hyponode* who, quint32 index)
 //  {
 //   switch (index)
@@ -114,36 +114,36 @@ int main3(int argc, char *argv[])
 //   }
 //  };
 //  whn.add_hyponodes(whos)(3);
-  WCM_Hyponode** whos = qwdb.new_hyponode_array(3);
+  WCM_Hyponode** whos = wcmd.new_hyponode_array(3);
 
-  whos[0]->set_wgdb_encoding({qwdb.wdb().encode_string(s->abbreviation())});
+  whos[0]->set_wgdb_encoding({wcmd.wdb().encode_string(s->abbreviation())});
   whos[1]->set_qt_encoding(s->instances().toUInt());
   whos[2]->set_qt_encoding(s->name());
 
   whn.add_hyponodes(whos)(3);
 
   whn.set_indexed_column_map(&icm);
-  whn.add_to_database(qwdb, "@Species", "Default@Species");
+  whn.add_to_database(wcmd, "@Species", "Default@Species");
 
-  qwdb.save();
+  wcmd.save();
 
  }
 
 
 
 
-// qwdb.load();
+// wcmd.load();
  return  0;
 
 }
 
 
-int main2(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
- WCM_Database qwdb("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
- qwdb.load();
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ wcmd.load();
 
- WCM_Column_Set qwcs(qwdb);
+ WCM_Column_Set qwcs(wcmd);
 
  quint32 species_count;
  QString ds_root;
@@ -152,7 +152,7 @@ int main2(int argc, char *argv[])
  {
   WCM_Hypernode whn;
   QByteArray qba;
-  qwdb.retrieve_record(qba, "Default@Info");
+  wcmd.retrieve_record(qba, "Default@Info");
   whn.absorb_data(qba, qwcs);
   whn.with_hyponode(0) << [&species_count](WCM_Hyponode& who)
   {
@@ -162,13 +162,17 @@ int main2(int argc, char *argv[])
   {
    ds_root = who.qt_encoding().toString();
   };
+
+  qDebug() << species_count;
+  qDebug() << ds_root;
+
  }
 
  WCM_Hypernode whn;
 
  QByteArray qba;
 
- qwdb.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+ wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
    "BTBW"_q_());
 
  QMap<quint32, QString> icm;
@@ -177,10 +181,10 @@ int main2(int argc, char *argv[])
  whn.set_indexed_column_map(&icm);
  whn.absorb_data(qba, qwcs);
 
- whn.with_hyponode(0) << [&qwdb](WCM_Hyponode& who)
+ whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
  {
   wg_int wgi = who.wgdb_encoding().data;
-  QString abbr = qwdb.wdb().decode_string(wgi);
+  QString abbr = wcmd.wdb().decode_string(wgi);
   qDebug() << abbr;
  };
 
@@ -205,21 +209,21 @@ int main2(int argc, char *argv[])
 
 int main4(int argc, char *argv[])
 {
- WCM_Database qwdb("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+ WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
 
  NTXH_Document doc(DEFAULT_WCM_FOLDER "/species.ntxh");
 
  doc.parse();
 
- qwdb.load();
+ wcmd.load();
 
  WCM_Hypernode whn;
 
  QByteArray qba;
 
- qwdb.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
+ wcmd.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
 
- WCM_Column_Set qwcs(qwdb);
+ WCM_Column_Set qwcs(wcmd);
 
  QMap<quint32, QString> icm;
  icm[2] = "Patient::Id";
@@ -241,26 +245,26 @@ int main4(int argc, char *argv[])
   qDebug() << qd.toString();
  };
 
- whn.with_hyponode(2) << [&qwdb](WCM_Hyponode& who)
+ whn.with_hyponode(2) << [&wcmd](WCM_Hyponode& who)
  {
   wg_int wgi = who.wgdb_encoding().data;
-  quint32 pi = qwdb.wdb().decode_u4(wgi);
+  quint32 pi = wcmd.wdb().decode_u4(wgi);
   qDebug() << pi;
  };
 
 // quint32 record_index;
 
-// qwdb.add_record("@Patient", "Default@Patient", qba, record_index);
+// wcmd.add_record("@Patient", "Default@Patient", qba, record_index);
 
  return 0;
 }
 
 int main1(int argc, char *argv[])
 {
- WCM_Database qwdb("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+ WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
  qRegisterMetaType<WCM_Encoding_Package>();
 
- qwdb.load();
+ wcmd.load();
  
  WCM_Hypernode whn;
 
@@ -270,7 +274,7 @@ int main1(int argc, char *argv[])
 
  QVariant v1(QString("Test Name"));
  QVariant v2(QDate::fromString("June 4, 2005", "MMMM d, yyyy"));
- wg_int v3 = qwdb.wdb().encode_u4(1000);
+ wg_int v3 = wcmd.wdb().encode_u4(1000);
  
  who1->set_qt_encoding(v1);
  who2->set_qt_encoding(v2);
@@ -283,7 +287,7 @@ int main1(int argc, char *argv[])
 
  whn.set_indexed_column_map(&icm);
 
- WCM_Column_Set qwcs(qwdb);
+ WCM_Column_Set qwcs(wcmd);
 
  QByteArray qba;
 
@@ -291,7 +295,7 @@ int main1(int argc, char *argv[])
 
  quint32 record_index;
 
- qwdb.add_record("@Patient", "Default@Patient", qba, record_index);
- qwdb.save();
+ wcmd.add_record("@Patient", "Default@Patient", qba, record_index);
+ wcmd.save();
  return 0;
 }
