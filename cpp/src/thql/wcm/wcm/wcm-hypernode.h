@@ -14,16 +14,22 @@ class WCM_Column_Set;
 class WCM_Hyponode;
 class WCM_Type;
 class WCM_Database;
+//class WCM_WhiteDB;
 
 class WCM_Hypernode
 {
  struct With_Hyponode_Package
  {
   WCM_Hyponode* who;
+  WCM_Database* wcdb;
   void operator<< (std::function<void (WCM_Hyponode&)> fn)
   {
    fn(*who);
   }
+//  void operator<< (std::function<void (WCM_Hyponode&, WCM_WhiteDB& wdb)> fn)
+//  {
+//   fn(*who, wdb);
+//  }
  };
 
  struct Add_Hyponodes_Package

@@ -74,7 +74,7 @@ int main2(int argc, char *argv[])
   {
    CLO_Species* s = new CLO_Species;
    s->set_abbreviation(prs[0].first);
-   s->set_instances(prs[1].first);
+   s->set_instances(prs[1].first.toUInt());
    s->set_name(prs[2].first);
    species.push_back(s);
   });
@@ -103,7 +103,7 @@ int main2(int argc, char *argv[])
   wcmd.with_new_hyponode_array(3) << [&wcmd, &whn, &icm, s](WCM_Hyponode** whos)
   {
    whos[0]->set_wgdb_encoding({wcmd.wdb().encode_string(s->abbreviation())});
-   whos[1]->set_qt_encoding(s->instances().toUInt());
+   whos[1]->set_qt_encoding(s->instances());
    whos[2]->set_qt_encoding(s->name());
    whn.add_hyponodes(whos)[3];
    whn.set_indexed_column_map(&icm);
@@ -154,68 +154,115 @@ int main(int argc, char *argv[])
  QMap<quint32, QString> icm;
  icm[0] = "Species::Abbreviation";
 
+ QVector<CLO_Species*> species_vec;
+
+ u4 sc = wcmd.get_record_count("Default@Species");
+ species_vec.resize(sc);
+
  // // retrieve species ...
- for(quint32 i = 1; i <= species_count; ++i)
+ wcmd.with_all_column_records("Default@Species") << [&icm, &qwcs, &wcmd, &species_vec]
+   (QByteArray& qba, u4 i)
  {
   WCM_Hypernode whn;
-  QByteArray qba;
-  wcmd.retrieve_indexed_record(qba, "Default@Species", i);
   whn.set_indexed_column_map(&icm);
   whn.absorb_data(qba, qwcs);
 
-  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  CLO_Species* sp = new CLO_Species;
+  species_vec[i] = sp;
+
+  whn.with_hyponode(0) << [&wcmd, sp](WCM_Hyponode& who)
   {
    wg_int wgi = who.wgdb_encoding().data;
    QString abbr = wcmd.wdb().decode_string(wgi);
-   qDebug() << abbr;
+//   qDebug() << abbr;
+   sp->set_abbreviation(abbr);
   };
 
-  whn.with_hyponode(1) << [](WCM_Hyponode& who)
+  whn.with_hyponode(1) << [sp](WCM_Hyponode& who)
   {
    QVariant qv = who.qt_encoding();
-   quint32 num = qv.toInt();
-   qDebug() << num;
+   u4 num = qv.toUInt();
+ //  qDebug() << num;
+   sp->set_instances(num);
   };
 
-  whn.with_hyponode(2) << [](WCM_Hyponode& who)
+  whn.with_hyponode(2) << [sp](WCM_Hyponode& who)
   {
    QVariant qv = who.qt_encoding();
    QString qs = qv.toString();
-   qDebug() << qs;
+   sp->set_name(qs);
+//   qDebug() << qs;
   };
+ };
+
+ for(CLO_Species* sp : species_vec)
+ {
 
  }
 
- WCM_Hypernode whn;
 
- QByteArray qba;
 
- wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
-   "BTBW"_q_());
+// for(quint32 i = 1; i <= species_count; ++i)
+// {
+//  WCM_Hypernode whn;
+//  QByteArray qba;
+//  wcmd.retrieve_indexed_record(qba, "Default@Species", i);
+//  whn.set_indexed_column_map(&icm);
+//  whn.absorb_data(qba, qwcs);
 
- whn.set_indexed_column_map(&icm);
- whn.absorb_data(qba, qwcs);
+//  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+//  {
+//   wg_int wgi = who.wgdb_encoding().data;
+//   QString abbr = wcmd.wdb().decode_string(wgi);
+//   qDebug() << abbr;
+//  };
 
- whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
- {
-  wg_int wgi = who.wgdb_encoding().data;
-  QString abbr = wcmd.wdb().decode_string(wgi);
-  qDebug() << abbr;
- };
+//  whn.with_hyponode(1) << [](WCM_Hyponode& who)
+//  {
+//   QVariant qv = who.qt_encoding();
+//   quint32 num = qv.toInt();
+//   qDebug() << num;
+//  };
 
- whn.with_hyponode(1) << [](WCM_Hyponode& who)
- {
-  QVariant qv = who.qt_encoding();
-  quint32 num = qv.toInt();
-  qDebug() << num;
- };
+//  whn.with_hyponode(2) << [](WCM_Hyponode& who)
+//  {
+//   QVariant qv = who.qt_encoding();
+//   QString qs = qv.toString();
+//   qDebug() << qs;
+//  };
 
- whn.with_hyponode(2) << [](WCM_Hyponode& who)
- {
-  QVariant qv = who.qt_encoding();
-  QString qs = qv.toString();
-  qDebug() << qs;
- };
+// }
+
+// WCM_Hypernode whn;
+
+// QByteArray qba;
+
+// wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+//   "BTBW"_q_());
+
+// whn.set_indexed_column_map(&icm);
+// whn.absorb_data(qba, qwcs);
+
+// whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+// {
+//  wg_int wgi = who.wgdb_encoding().data;
+//  QString abbr = wcmd.wdb().decode_string(wgi);
+//  qDebug() << abbr;
+// };
+
+// whn.with_hyponode(1) << [](WCM_Hyponode& who)
+// {
+//  QVariant qv = who.qt_encoding();
+//  quint32 num = qv.toInt();
+//  qDebug() << num;
+// };
+
+// whn.with_hyponode(2) << [](WCM_Hyponode& who)
+// {
+//  QVariant qv = who.qt_encoding();
+//  QString qs = qv.toString();
+//  qDebug() << qs;
+// };
 
  return 0;
 }

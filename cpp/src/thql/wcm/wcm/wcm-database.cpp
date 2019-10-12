@@ -4,6 +4,8 @@
 
 #include "wcm-hyponode.h"
 
+#include "global-types.h"
+
 #include <QByteArray>
 
 #include <QDataStream>
@@ -25,7 +27,7 @@ WCM_Database::WCM_Database(QString name, QString full_path)
 WCM_Database::New_Hyponode_Array_Package::operator WCM_Hyponode**()
 {
  WCM_Hyponode** result = new WCM_Hyponode* [size];
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   result[i] = new WCM_Hyponode;
  }
@@ -36,13 +38,13 @@ void WCM_Database::With_New_Hyponode_Array_Package::operator <<
   (std::function<void(WCM_WhiteDB&, WCM_Hyponode**)> fn)
 {
  WCM_Hyponode** result = new WCM_Hyponode* [size];
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   result[i] = new WCM_Hyponode;
  }
  WCM_WhiteDB wdb = _this->wdb();
  fn(wdb, result);
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   delete result[i];
  }
@@ -53,12 +55,12 @@ void WCM_Database::With_New_Hyponode_Array_Package::operator <<
   (std::function<void(WCM_Database&, WCM_Hyponode**)> fn)
 {
  WCM_Hyponode** result = new WCM_Hyponode* [size];
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   result[i] = new WCM_Hyponode;
  }
  fn(*_this, result);
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   delete result[i];
  }
@@ -69,12 +71,12 @@ void WCM_Database::With_New_Hyponode_Array_Package::operator <<
   (std::function<void(WCM_Hyponode**)> fn)
 {
  WCM_Hyponode** result = new WCM_Hyponode* [size];
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   result[i] = new WCM_Hyponode;
  }
  fn(result);
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   delete result[i];
  }
@@ -82,10 +84,10 @@ void WCM_Database::With_New_Hyponode_Array_Package::operator <<
 }
 
 WCM_Hyponode** WCM_Database::New_Hyponode_Array_Package::operator <<
-  (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, quint32)> fn)
+  (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, u4)> fn)
 {
  WCM_Hyponode** result = new WCM_Hyponode* [size];
- for(quint32 i = 0; i < size; ++i)
+ for(u4 i = 0; i < size; ++i)
  {
   result[i] = new WCM_Hyponode;
   WCM_WhiteDB wdb = _this->wdb();
@@ -116,10 +118,10 @@ QDataStream& operator >>(QDataStream& lhs, WCM_Column* const rhs)
  QString n;
  lhs >> n;
  rhs->set_name(n);
- quint32 code;
+ u4 code;
  lhs >> code;
  rhs->set_database_column_code(code);
- quint32 record_count;
+ u4 record_count;
  lhs >> record_count;
  rhs->set_record_count(record_count);
 
@@ -135,7 +137,7 @@ QDataStream& operator >>(QDataStream& lhs, WCM_Column* const rhs)
 
 QDataStream& operator >>(QDataStream& lhs, QVector<WCM_Column*>& rhs)
 {
- quint32 len;
+ u4 len;
  lhs >> len;
  rhs.fill(nullptr, len);
  for(WCM_Column*& qc : rhs)
@@ -149,7 +151,7 @@ QDataStream& operator >>(QDataStream& lhs, QVector<WCM_Column*>& rhs)
 //template<>
 //QDataStream& operator<<(QDataStream& s, const QVector<T>& v)
 //{
-//    s << quint32(v.size());
+//    s << u4(v.size());
 //    for (typename QVector<T>::const_iterator it = v.begin(); it != v.end(); ++it)
 //        s << *it;
 //    return s;
@@ -224,12 +226,12 @@ QString WCM_Database::report_columns(QString separator)
 }
 
 
-quint32 WCM_Database::new_column_code()
+u4 WCM_Database::new_column_code()
 {
  return max_column_code_ + 1;
 }
 
-void WCM_Database::confirm_new_column_code(quint32 id)
+void WCM_Database::confirm_new_column_code(u4 id)
 {
  max_column_code_ = id;
  wg_set_field(white_db_, max_column_code_record_, 0, wg_encode_int(white_db_, max_column_code_ + 1));
@@ -238,7 +240,7 @@ void WCM_Database::confirm_new_column_code(quint32 id)
 //void WCM_Database::init_columns(QByteArray& qba)
 //{
 // QDataStream qds(&qba, QIODevice::ReadOnly);
-// quint32 len;
+// u4 len;
 // qds >> len;
 // qds >> columns_;
 //}
@@ -348,7 +350,7 @@ void WCM_Database::write_column_data(QByteArray& qba)
  //qds << columns_;
 }
 
-void* WCM_Database::retrieve_column_entry_value(WCM_Column* qc, quint32 record_id, wg_int& result_value)
+void* WCM_Database::retrieve_column_entry_value(WCM_Column* qc, u4 record_id, wg_int& result_value)
 {
  wg_query_arg arglist [2]; // holds the arguments to the query
 
@@ -402,8 +404,48 @@ void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name)
  return nullptr;
 }
 
+void WCM_Database::With_All_Column_Records_Package::operator<<
+  (std::function<void(QByteArray&)> fn)
+{
+// wcmd.retrieve_indexed_record(qba, "Default@Species", i);
+ WCM_Column* aqc = _this->get_column_by_name(col);
+ if(!aqc)
+   return;
+ u4 rc = aqc->record_count();
+ for(u4 i = 1; i <= rc; ++i)
+ {
+  QByteArray qba;
+  _this->retrieve_indexed_record(qba, col, i);
+  fn(qba);
+ }
+}
+
+void WCM_Database::With_All_Column_Records_Package::operator<<
+  (std::function<void(QByteArray&, u4)> fn)
+{
+// wcmd.retrieve_indexed_record(qba, "Default@Species", i);
+ WCM_Column* aqc = _this->get_column_by_name(col);
+ if(!aqc)
+   return;
+ u4 rc = aqc->record_count();
+ for(u4 i = 0; i < rc; ++i)
+ {
+  QByteArray qba;
+  _this->retrieve_indexed_record(qba, col, i + 1);
+  fn(qba, i);
+ }
+}
+
+u4 WCM_Database::get_record_count(QString col)
+{
+ WCM_Column* aqc = get_column_by_name(col);
+ if(!aqc)
+   return 0;
+ return aqc->record_count();
+}
+
 void* WCM_Database::retrieve_indexed_record(QByteArray& qba, QString archive_name,
-  quint32 index)
+  u4 index)
 {
  wg_query_arg arglist [2]; // holds the arguments to the query
  WCM_Column* aqc = get_column_by_name(archive_name);
@@ -531,7 +573,7 @@ void* WCM_Database::create_singleton_column_entry_record(WCM_Column* qc,
 
 
 void* WCM_Database::create_column_entry_record(WCM_Column* qc,
-  quint32& record_specific_index, int field_count) //, wg_int column_id)
+  u4& record_specific_index, int field_count) //, wg_int column_id)
 {
  void* result = wg_create_record(white_db_, field_count);
  wg_set_field(white_db_, result, 0, wg_encode_int(white_db_, qc->database_column_code()));
@@ -540,7 +582,7 @@ void* WCM_Database::create_column_entry_record(WCM_Column* qc,
 }
 
 void* WCM_Database::add_record(QString type_column, QString archive_column,
-  const QByteArray& qba, quint32& record_index)
+  const QByteArray& qba, u4& record_index)
 {
  WCM_Column* aqc = get_column_by_name(archive_column);
 // QByteArray qba1(qba.size(), 0);
@@ -557,7 +599,7 @@ void* WCM_Database::add_record(QString type_column, QString archive_column,
 
  char* c = const_cast<char*>(qba.data());
  int s = qba.size();
- quint32 ri = 0;
+ u4 ri = 0;
  void* result;
  if(aqc->flags.singleton)
    result = create_singleton_column_entry_record(aqc, 2);
@@ -678,7 +720,7 @@ WCM_Column* WCM_Database::create_new_singleton_column(QString name)
 
 WCM_Column* WCM_Database::create_new_column(QString name, void(*fn)(WCM_Column&))
 {
- quint32 id = new_column_code();
+ u4 id = new_column_code();
  WCM_Column* result = new WCM_Column(name, id);
  if(result)
  {
@@ -815,9 +857,9 @@ wg_int WCM_Database::translate_data(QString data)
 }
 
 wg_int WCM_Database::_add_column_entry_(WCM_Column* qc, wg_int data,
-  quint32& column_specific_record_index, quint32& field_number)
+  u4& column_specific_record_index, u4& field_number)
 {
- quint32 record_specific_index;
+ u4 record_specific_index;
  void* cer = create_column_entry_record(qc, record_specific_index);
  if(record_specific_index > 0) //qc->requires_record_specific_index())
  {
@@ -836,7 +878,7 @@ wg_int WCM_Database::_add_column_entry_(WCM_Column* qc, wg_int data,
 }
 
 wg_int WCM_Database::_add_column_entry(WCM_Column* qc, wg_int data,
-  quint32& column_specific_record_index, quint32& field_number)
+  u4& column_specific_record_index, u4& field_number)
 {
  return _add_column_entry_(qc, data, column_specific_record_index, field_number);
 }
@@ -844,7 +886,7 @@ wg_int WCM_Database::_add_column_entry(WCM_Column* qc, wg_int data,
 
 
 //wg_int WCM_Database::_add_column_entry(WCM_Column* qc, wg_int data,
-//  quint32& column_specific_record_index, quint32& field_number)
+//  u4& column_specific_record_index, u4& field_number)
 //{
 // wg_int record_specific_index;
 // void* cer = create_column_entry_record(qc, record_specific_index);
@@ -915,7 +957,7 @@ wg_int WCM_Database::translate_data_to_query_param(int data)
 template<>
 wg_int WCM_Database::translate_data_to_query_param(quint64 data)
 {
- return wg_encode_query_param_int(white_db_, (quint32) data);
+ return wg_encode_query_param_int(white_db_, (u4) data);
 }
 template<>
 wg_int WCM_Database::translate_data_to_query_param(char data)
@@ -947,7 +989,7 @@ wg_int WCM_Database::translate_data_to_query_param(QString data)
 
 //template<typename DATA_Type>
 //wg_int WCM_Database::add_column_entry(WCM_Column* qc, DATA_Type data,
-//  quint32& column_specific_record_index, quint32& field_number)
+//  u4& column_specific_record_index, u4& field_number)
 //{
 // wg_int record_specific_index;
 // void* cer = create_column_entry_record(qc, record_specific_index);

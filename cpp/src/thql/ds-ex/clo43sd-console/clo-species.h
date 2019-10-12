@@ -12,6 +12,7 @@
 #include "phaong/phaong.h"
 #include "phaong/phaong-types.h"
 
+#include "global-types.h"
 
 #include "kans.h"
 #include "accessors.h"
@@ -27,7 +28,7 @@ class QTextStream;
 class CLO_Species
 {
  QString abbreviation_;
- QString instances_;
+ u4 instances_;
  QString name_;
 
 public:
@@ -35,7 +36,7 @@ public:
  CLO_Species();
 
  ACCESSORS(QString ,abbreviation)
- ACCESSORS(QString ,instances)
+ ACCESSORS(u4 ,instances)
  ACCESSORS(QString ,name)
 
 };

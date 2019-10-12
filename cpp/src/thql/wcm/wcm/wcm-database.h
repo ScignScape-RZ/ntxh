@@ -23,6 +23,8 @@ extern "C" {
 
 #include "wcm-column.h"
 
+#include "global-types.h"
+
 
 #include <QVariant>
 
@@ -38,7 +40,7 @@ struct WCM_Encoding_Package
 {
  quint64 code;
 
- static WCM_Encoding_Package from_raw_size(quint32 blob_size)
+ static WCM_Encoding_Package from_raw_size(u4 blob_size)
  {
   return { (blob_size << 2) + 2 };
  }
@@ -50,7 +52,7 @@ struct WCM_Encoding_Package
 
  struct Tuple
  {
-  quint32 blob_size;
+  u4 blob_size;
   quint8 kind;
   quint64 raw;
  };
@@ -67,7 +69,7 @@ struct WCM_Encoding_Package
   {
   case 0: return {0, 0, 0};
   case 1: return {0, 1, 0};
-  case 2: return { (quint32) (code >> 2), 2, 0};
+  case 2: return { (u4) (code >> 2), 2, 0};
   case 3: return { 0, 3, code - 3};
   }
  }
@@ -79,12 +81,12 @@ struct WCM_WhiteDB
 {
  void* white_db;
 
- wg_int encode_u4(quint32 x)
+ wg_int encode_u4(u4 x)
  {
   return wg_encode_int(white_db, x);
  }
 
- quint32 decode_u4(wg_int x)
+ u4 decode_u4(wg_int x)
  {
   return wg_decode_int(white_db, x);
  }
@@ -108,7 +110,7 @@ class WCM_Database
  QString name_;
  QString full_path_;
 
- quint32 max_column_code_;
+ u4 max_column_code_;
 
  void* white_db_;
  void* max_column_code_record_;
@@ -119,23 +121,23 @@ class WCM_Database
  int column_change_count_;
 
  wg_int _add_column_entry_(WCM_Column* qc, wg_int data,
-   quint32& column_specific_record_index, quint32& field_number);
+   u4& column_specific_record_index, u4& field_number);
 
  struct New_Hyponode_Array_Package
  {
   WCM_Database* _this;
-  quint32 size;
+  u4 size;
   operator WCM_Hyponode**();
   WCM_Hyponode** operator <<
-    (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, quint32)> fn);
+    (std::function<void(WCM_WhiteDB&, WCM_Hyponode*, u4)> fn);
 //  WCM_Hyponode** operator <<
-//    (std::function<void(WCM_Hyponode*, quint32)> fn);
+//    (std::function<void(WCM_Hyponode*, u4)> fn);
  };
 
  struct With_New_Hyponode_Array_Package
  {
   WCM_Database* _this;
-  quint32 size;
+  u4 size;
   void operator <<
     (std::function<void(WCM_WhiteDB&, WCM_Hyponode**)> fn);
   void operator <<
@@ -144,6 +146,15 @@ class WCM_Database
     (std::function<void(WCM_Database&, WCM_Hyponode**)> fn);
  };
 
+ struct With_All_Column_Records_Package
+ {
+  WCM_Database* _this;
+  QString col;
+  void operator <<
+    (std::function<void(QByteArray&)> fn);
+  void operator <<
+    (std::function<void(QByteArray&, u4)> fn);
+ };
 
 public:
 
@@ -152,10 +163,17 @@ public:
 
  WCM_Database(QString name, QString full_path);
 
+ With_All_Column_Records_Package with_all_column_records(QString col)
+ {
+  return {this, col};
+ }
+
  WCM_Column* get_column_by_name(QString name);
 
- quint32 new_column_code();
- void confirm_new_column_code(quint32 id);
+ u4 get_record_count(QString col);
+
+ u4 new_column_code();
+ void confirm_new_column_code(u4 id);
 
  void write_column_data(QByteArray& qba);
  void check_update_column_data();
@@ -167,7 +185,7 @@ public:
  QString report_columns_html();
 
  void* add_record(QString type_column, QString archive_column,
-  const QByteArray& qba, quint32& record_index);
+  const QByteArray& qba, u4& record_index);
 
  // wcmd.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
 
@@ -176,7 +194,7 @@ public:
 
  void* retrieve_record(QByteArray& qba, QString archive_name);
  void* retrieve_indexed_record(QByteArray& qba, QString archive_name,
-   quint32 index);
+   u4 index);
 
 
  template<typename T>
@@ -187,13 +205,13 @@ public:
   return retrieve_record(qba, archive_name, index_column_name, query_param);
  }
 
- void* retrieve_column_entry_value(WCM_Column* qc, quint32 record_id, wg_int& result_value);
+ void* retrieve_column_entry_value(WCM_Column* qc, u4 record_id, wg_int& result_value);
 
  template<typename DATA_Type>
  void untranslate_data(wg_int data, DATA_Type& dt);
 
  template<typename DATA_Type>
- void retrieve_value(WCM_Column* qc, quint32 record_id, DATA_Type& dt)
+ void retrieve_value(WCM_Column* qc, u4 record_id, DATA_Type& dt)
  {
   wg_int value;
   retrieve_column_entry_value(qc, record_id, value);
@@ -222,12 +240,12 @@ public:
  void init_columns();
  //void init_columns(QByteArray& qba);
 
- New_Hyponode_Array_Package new_hyponode_array(quint32 size)
+ New_Hyponode_Array_Package new_hyponode_array(u4 size)
  {
   return {this, size};
  }
 
- With_New_Hyponode_Array_Package with_new_hyponode_array(quint32 size)
+ With_New_Hyponode_Array_Package with_new_hyponode_array(u4 size)
  {
   return {this, size};
  }
@@ -238,7 +256,7 @@ public:
 
 
  void* create_column_entry_record(WCM_Column* qc,
-   quint32& record_specific_index, int field_count = 3); //, wg_int column_id)
+   u4& record_specific_index, int field_count = 3); //, wg_int column_id)
 
  void* create_singleton_column_entry_record(WCM_Column* qc,
    int field_count);
@@ -251,12 +269,12 @@ public:
  wg_int translate_data_to_query_param(DATA_Type dt);
 
  wg_int _add_column_entry(WCM_Column* qc, wg_int data,
-   quint32& column_specific_record_index, quint32& field_number);
+   u4& column_specific_record_index, u4& field_number);
 
 
  template<typename DATA_Type>
  wg_int add_column_entry(WCM_Column* qc, DATA_Type data,
-   quint32& column_specific_record_index, quint32& field_number)
+   u4& column_specific_record_index, u4& field_number)
  {
   wg_int data_as_wg_int = translate_data(data);
   return _add_column_entry_(qc, data_as_wg_int, column_specific_record_index, field_number);
@@ -313,7 +331,7 @@ struct WCM_String_Literal_Package
  }
 };
 
-inline WCM_String_Literal_Package operator ""_q_(const char* arr, size_t size)
+static inline WCM_String_Literal_Package operator ""_q_(const char* arr, size_t size)
 {
  return {arr, size};
 }
@@ -321,7 +339,7 @@ inline WCM_String_Literal_Package operator ""_q_(const char* arr, size_t size)
 
 //template<typename DATA_Type>
 //wg_int WCM_Database::add_column_entry(WCM_Column* qc, DATA_Type data,
-//  quint32& column_specific_record_index, quint32& field_number)
+//  u4& column_specific_record_index, u4& field_number)
 //{
 // wg_int record_specific_index;
 // void* cer = create_column_entry_record(qc, record_specific_index);
