@@ -151,15 +151,47 @@ int main(int argc, char *argv[])
 
  }
 
+ QMap<quint32, QString> icm;
+ icm[0] = "Species::Abbreviation";
+
+ // // retrieve species ...
+ for(quint32 i = 1; i <= species_count; ++i)
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_indexed_record(qba, "Default@Species", i);
+  whn.set_indexed_column_map(&icm);
+  whn.absorb_data(qba, qwcs);
+
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   wg_int wgi = who.wgdb_encoding().data;
+   QString abbr = wcmd.wdb().decode_string(wgi);
+   qDebug() << abbr;
+  };
+
+  whn.with_hyponode(1) << [](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   quint32 num = qv.toInt();
+   qDebug() << num;
+  };
+
+  whn.with_hyponode(2) << [](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   QString qs = qv.toString();
+   qDebug() << qs;
+  };
+
+ }
+
  WCM_Hypernode whn;
 
  QByteArray qba;
 
  wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
    "BTBW"_q_());
-
- QMap<quint32, QString> icm;
- icm[0] = "Species::Abbreviation";
 
  whn.set_indexed_column_map(&icm);
  whn.absorb_data(qba, qwcs);

@@ -402,6 +402,53 @@ void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name)
  return nullptr;
 }
 
+void* WCM_Database::retrieve_indexed_record(QByteArray& qba, QString archive_name,
+  quint32 index)
+{
+ wg_query_arg arglist [2]; // holds the arguments to the query
+ WCM_Column* aqc = get_column_by_name(archive_name);
+
+ if(aqc)
+ {
+  int acolumn_code = aqc->database_column_code();
+  arglist[0].column = 0;
+  arglist[0].cond = WG_COND_EQUAL;
+  arglist[0].value = wg_encode_query_param_int(white_db_, acolumn_code);
+
+  int col = aqc->get_record_index_field_number();
+  arglist[1].column = col;
+  arglist[1].cond = WG_COND_EQUAL;
+  arglist[1].value = wg_encode_query_param_int(white_db_, index);
+
+  wg_query* aqry = wg_make_query(white_db_, NULL, 0, arglist, 2);
+  void* result = wg_fetch(white_db_, aqry);
+  if(result)
+  {
+   int afn = aqc->get_effective_field_number();
+   wg_int awgi = wg_get_field(white_db_, result, afn);
+
+   char* blob = wg_decode_blob(white_db_, awgi);
+   wg_int wlen = wg_decode_blob_len(white_db_, awgi);
+   qba = QByteArray(blob, wlen);
+   return result;
+  }
+ }
+ return nullptr;
+}
+
+
+// WCM_Column* aqc = get_column_by_name(archive_name);
+// int acolumn_code = aqc->database_column_code();
+
+
+// result_arglist[0].column = 0;
+// result_arglist[0].cond = WG_COND_EQUAL;
+// result_arglist[0].value = wg_encode_query_param_int(white_db_, acolumn_code);
+
+// int acol = qc->get_record_index_field_number();
+// result_arglist[1].column = acol;
+// result_arglist[1].cond = WG_COND_EQUAL;
+// result_arglist[1].value = wg_encode_query_param_int(white_db_, index);
 
 void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name,
   QString index_column_name, wg_int query_param)
@@ -495,7 +542,7 @@ void* WCM_Database::create_column_entry_record(WCM_Column* qc,
 void* WCM_Database::add_record(QString type_column, QString archive_column,
   const QByteArray& qba, quint32& record_index)
 {
- WCM_Column* qc = get_column_by_name(archive_column);
+ WCM_Column* aqc = get_column_by_name(archive_column);
 // QByteArray qba1(qba.size(), 0);
 
 // int i = 0;
@@ -512,20 +559,20 @@ void* WCM_Database::add_record(QString type_column, QString archive_column,
  int s = qba.size();
  quint32 ri = 0;
  void* result;
- if(qc->flags.singleton)
-  result = create_singleton_column_entry_record(qc, 2);
+ if(aqc->flags.singleton)
+   result = create_singleton_column_entry_record(aqc, 2);
  else
-  result = create_column_entry_record(qc, ri, 3);
+   result = create_column_entry_record(aqc, ri, 3);
  record_index = ri;
 
- if(!qc->flags.singleton)
+ if(!aqc->flags.singleton)
  {
-  int index_col = qc->get_record_index_field_number();
+  int index_col = aqc->get_record_index_field_number();
   wg_set_field(white_db_, result, index_col,
     wg_encode_int(white_db_, ri));
  }
 
- int fn = qc->get_effective_field_number();
+ int fn = aqc->get_effective_field_number();
 
  wg_set_field(white_db_, result, fn,
    wg_encode_blob(white_db_, c, NULL, s ));

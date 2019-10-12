@@ -175,6 +175,9 @@ public:
    QString index_column_name, wg_int data);
 
  void* retrieve_record(QByteArray& qba, QString archive_name);
+ void* retrieve_indexed_record(QByteArray& qba, QString archive_name,
+   quint32 index);
+
 
  template<typename T>
  void* retrieve_record(QByteArray& qba, QString archive_name,
