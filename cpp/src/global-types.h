@@ -9,6 +9,9 @@
 
 #include <QtGlobal>
 #include <QString>
+#include <QMap>
+
+#include <functional>
 
 typedef quint32 u4;
 typedef quint64 u8;
@@ -19,6 +22,5 @@ static inline QString operator ""_q(const char* cs, size_t size)
  std::string ss(cs, size);
  return QString::fromStdString(ss);
 }
-
 
 #endif // GLOBAL_TYPES__H

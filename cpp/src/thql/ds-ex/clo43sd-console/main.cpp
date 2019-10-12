@@ -13,6 +13,7 @@
 
 #include "wcm/wcm-hypernode.h"
 #include "wcm/wcm-hyponode.h"
+#include "withs.h"
 
 #include "ntxh-parser/ntxh-document.h"
 
@@ -120,7 +121,6 @@ int main2(int argc, char *argv[])
 
 }
 
-
 int main(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
@@ -128,7 +128,11 @@ int main(int argc, char *argv[])
 
  WCM_Column_Set qwcs(wcmd);
 
- quint32 species_count;
+// wcmd.create_new_column("@CLO_File");
+// wcmd.create_new_column("Default@CLO_File");
+// wcmd.create_new_column("Species::Abbreviation@CLO_File");
+// wcmd.save();
+ u4 species_count;
  QString ds_root;
 
  // //  retrieve info
@@ -148,19 +152,58 @@ int main(int argc, char *argv[])
 
   qDebug() << species_count;
   qDebug() << ds_root;
+ }
 
+ QDir qd("/home/nlevisrael/hypergr/bird/CLO-43SD");
+// QFileInfoList qsl = qd.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
+
+ with_files(QDir(ds_root)).filter({"*.py"}) << [](QFileInfo& qfi)
+ {
+  qDebug() << qfi.absoluteFilePath();
+ };
+}
+
+int main5(int argc, char *argv[])
+{
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ wcmd.load();
+
+ WCM_Column_Set qwcs(wcmd);
+
+ u4 species_count;
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, qwcs);
+  whn.with_hyponode(0) << [&species_count](WCM_Hyponode& who)
+  {
+   species_count = who.qt_encoding().toInt();
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+
+  qDebug() << species_count;
+  qDebug() << ds_root;
  }
 
  QMap<quint32, QString> icm;
  icm[0] = "Species::Abbreviation";
 
  QVector<CLO_Species*> species_vec;
+ QMap<QString, CLO_Species*> species_map;
 
  u4 sc = wcmd.get_record_count("Default@Species");
  species_vec.resize(sc);
 
  // // retrieve species ...
- wcmd.with_all_column_records("Default@Species") << [&icm, &qwcs, &wcmd, &species_vec]
+ wcmd.with_all_column_records("Default@Species") <<
+   [&icm, &qwcs, &wcmd, &species_vec, &species_map]
    (QByteArray& qba, u4 i)
  {
   WCM_Hypernode whn;
@@ -170,12 +213,13 @@ int main(int argc, char *argv[])
   CLO_Species* sp = new CLO_Species;
   species_vec[i] = sp;
 
-  whn.with_hyponode(0) << [&wcmd, sp](WCM_Hyponode& who)
+  whn.with_hyponode(0) << [&wcmd, sp, &species_map](WCM_Hyponode& who)
   {
    wg_int wgi = who.wgdb_encoding().data;
    QString abbr = wcmd.wdb().decode_string(wgi);
 //   qDebug() << abbr;
    sp->set_abbreviation(abbr);
+   species_map[abbr] = sp;
   };
 
   whn.with_hyponode(1) << [sp](WCM_Hyponode& who)
@@ -195,11 +239,16 @@ int main(int argc, char *argv[])
   };
  };
 
- for(CLO_Species* sp : species_vec)
+// for(CLO_Species* sp : species_vec)
+// {
+//  QString logmelspec = ds_root + "/logmelspec";
+// }
+
+ with_map(species_map) << [](QString abbreviation, CLO_Species* clo)
  {
+  qDebug() << abbreviation;
 
- }
-
+ };
 
 
 // for(quint32 i = 1; i <= species_count; ++i)
