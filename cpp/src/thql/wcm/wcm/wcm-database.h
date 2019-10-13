@@ -189,8 +189,24 @@ public:
 
  // wcmd.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
 
- void* retrieve_record(QByteArray& qba, QString archive_name,
+ void* retrieve_record_from_encoding(QByteArray& qba, QString archive_name,
    QString index_column_name, wg_int data);
+
+ void retrieve_all_records_from_encoding(QString archive_name,
+   QString index_column_name, wg_int data, QVector<QPair<QByteArray*, void*>>& results);
+
+ void retrieve_record(QByteArray& qba, WCM_Column* qc,
+   QString archive_name, wg_query_arg* arglist, u2 asize, void*& result);
+
+ void retrieve_all_records(WCM_Column* qc,
+   QString archive_name, wg_query_arg* arglist, u2 asize, QVector<QPair<QByteArray*, void*>>& results);
+
+ void retrieve_from_index_record(QByteArray& qba,
+   WCM_Column* qc, QString archive_name, void* index_record, void*& result);
+
+
+ void retrieve_all_records(QByteArray& qba, QString archive_name,
+   QString index_column_name, wg_int data, QVector<void*>& results); //, void* prior
 
  void* retrieve_record(QByteArray& qba, QString archive_name);
  void* retrieve_indexed_record(QByteArray& qba, QString archive_name,
@@ -202,7 +218,15 @@ public:
    QString index_column_name, T data)
  {
   wg_int query_param = translate_data_to_query_param(data);
-  return retrieve_record(qba, archive_name, index_column_name, query_param);
+  return retrieve_record_from_encoding(qba, archive_name, index_column_name, query_param);
+ }
+
+ template<typename T>
+ void retrieve_all_records(QString archive_name,
+   QString index_column_name, T data, QVector<QPair<QByteArray*, void*>>& results)
+ {
+  wg_int query_param = translate_data_to_query_param(data);
+  retrieve_all_records_from_encoding(archive_name, index_column_name, query_param, results);
  }
 
  void* retrieve_column_entry_value(WCM_Column* qc, u4 record_id, wg_int& result_value);

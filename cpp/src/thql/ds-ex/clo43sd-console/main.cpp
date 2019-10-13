@@ -67,7 +67,7 @@ int main2(int argc, char *argv[])
 
  QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
 
- QMap<quint32, QString> icm;
+ QMap<u4, QString> icm;
  icm[0] = "Species::Abbreviation";
 
  for(NTXH_Graph::hypernode_type* hn : hns)
@@ -166,8 +166,87 @@ int main5(int argc, char *argv[])
  return 0;
 }
 
-
 int main(int argc, char *argv[])
+{
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ wcmd.load();
+
+ WCM_Column_Set qwcs(wcmd);
+
+ WCM_Hypernode whn;
+
+ QByteArray qba;
+
+ wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+  "BTBW"_q);
+
+ QMap<u4, QString> icm;
+ icm[0] = "Species::Abbreviation";
+
+ whn.set_indexed_column_map(&icm);
+ whn.absorb_data(qba, qwcs);
+
+ whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+ {
+  wg_int wgi = who.wgdb_encoding().data;
+  QString abbr = wcmd.wdb().decode_string(wgi);
+  qDebug() << abbr;
+ };
+
+ whn.with_hyponode(1) << [](WCM_Hyponode& who)
+ {
+  QVariant qv = who.qt_encoding();
+  u4 num = qv.toInt();
+  qDebug() << num;
+ };
+
+ whn.with_hyponode(2) << [](WCM_Hyponode& who)
+ {
+  QVariant qv = who.qt_encoding();
+  QString qs = qv.toString();
+  qDebug() << qs;
+ };
+
+ QVector<QPair<QByteArray*, void*>> matches;
+
+ wcmd.retrieve_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
+   "BTBW"_q, matches);
+
+ for(QPair<QByteArray*, void*> pr : matches)
+ {
+  QMap<u4, QString> icm;
+  icm[1] = "Species::Abbreviation@CLO_File";
+
+  whn.set_indexed_column_map(&icm);
+  whn.absorb_data(*pr.first, qwcs);
+
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   u1 num = qv.toInt();
+   qDebug() << num;
+  };
+
+  whn.with_hyponode(1) << [&wcmd](WCM_Hyponode& who)
+  {
+   wg_int wgi = who.wgdb_encoding().data;
+   QString abbr = wcmd.wdb().decode_string(wgi);
+   qDebug() << abbr;
+  };
+
+  whn.with_hyponode(2) << [](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   QString qs = qv.toString();
+   qDebug() << qs;
+  };
+ }
+
+ return 0;
+
+}
+
+int main7(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  wcmd.load();
@@ -196,7 +275,7 @@ int main(int argc, char *argv[])
   qDebug() << ds_root;
  }
 
- QMap<quint32, QString> icm;
+ QMap<u4, QString> icm;
  icm[1] = "Species::Abbreviation@CLO_File";
 
  QByteArray qba;
@@ -261,7 +340,7 @@ int main6(int argc, char *argv[])
   qDebug() << ds_root;
  }
 
- QMap<quint32, QString> icm;
+ QMap<u4, QString> icm;
  icm[0] = "Species::Abbreviation";
 
  QVector<CLO_Species*> species_vec;
@@ -365,7 +444,7 @@ int main6(int argc, char *argv[])
 // };
 
 
-// for(quint32 i = 1; i <= species_count; ++i)
+// for(u4 i = 1; i <= species_count; ++i)
 // {
 //  WCM_Hypernode whn;
 //  QByteArray qba;
@@ -383,7 +462,7 @@ int main6(int argc, char *argv[])
 //  whn.with_hyponode(1) << [](WCM_Hyponode& who)
 //  {
 //   QVariant qv = who.qt_encoding();
-//   quint32 num = qv.toInt();
+//   u4 num = qv.toInt();
 //   qDebug() << num;
 //  };
 
@@ -416,7 +495,7 @@ int main6(int argc, char *argv[])
 // whn.with_hyponode(1) << [](WCM_Hyponode& who)
 // {
 //  QVariant qv = who.qt_encoding();
-//  quint32 num = qv.toInt();
+//  u4 num = qv.toInt();
 //  qDebug() << num;
 // };
 
@@ -447,7 +526,7 @@ int main6(int argc, char *argv[])
 // //  whn.add_to_database(wcmd, "@Info", "Default@Info");
 
 // //  WCM_Hyponode** whos = wcmd.new_hyponode_array(3) << [s]
-// //    (WCM_WhiteDB& wdb, WCM_Hyponode* who, quint32 index)
+// //    (WCM_WhiteDB& wdb, WCM_Hyponode* who, u4 index)
 // //  {
 // //   switch (index)
 // //   {

@@ -478,27 +478,115 @@ void* WCM_Database::retrieve_indexed_record(QByteArray& qba, QString archive_nam
  return nullptr;
 }
 
+void WCM_Database::retrieve_all_records(QByteArray& qba, QString archive_name,
+  QString index_column_name, wg_int query_param, QVector<void*>& results)
+{
+}
 
-// WCM_Column* aqc = get_column_by_name(archive_name);
-// int acolumn_code = aqc->database_column_code();
+void WCM_Database::retrieve_from_index_record(QByteArray& qba,
+  WCM_Column* qc, QString archive_name, void* index_record, void*& result)
+{
+ //int col = qc->get_effective_field_number();
+ int fn = qc->get_record_index_field_number();
+   //int fn = qc->get_effective_field_number();
+ wg_int wgi = wg_get_field(white_db_, index_record, fn);
+
+ wg_int index = wg_decode_int(white_db_, wgi);
+ wg_query_arg result_arglist [2]; // holds the arguments to the query
+
+ WCM_Column* aqc = get_column_by_name(archive_name);
+
+ int acolumn_code = aqc->database_column_code();
+ result_arglist[0].column = 0;
+ result_arglist[0].cond = WG_COND_EQUAL;
+ result_arglist[0].value = wg_encode_query_param_int(white_db_, acolumn_code);
+
+ int acol = qc->get_record_index_field_number();
+ result_arglist[1].column = acol;
+ result_arglist[1].cond = WG_COND_EQUAL;
+ result_arglist[1].value = wg_encode_query_param_int(white_db_, index);
+
+ wg_query* aqry = wg_make_query(white_db_, NULL, 0, result_arglist, 2);
+
+ result = wg_fetch(white_db_, aqry);
+
+ if(result)
+ {
+  int afn = aqc->get_effective_field_number();
+  wg_int awgi = wg_get_field(white_db_, result, afn);
+
+  char* blob = wg_decode_blob(white_db_, awgi);
+  wg_int wlen = wg_decode_blob_len(white_db_, awgi);
+
+  qba = QByteArray(blob, wlen);
+ }
+
+ wg_free_query_param(white_db_, result_arglist[0].value);
+ wg_free_query_param(white_db_, result_arglist[1].value);
+ wg_free_query(white_db_, aqry);
+
+}
+
+void WCM_Database::retrieve_all_records(WCM_Column* qc,
+  QString archive_name, wg_query_arg* arglist, u2 asize,
+  QVector<QPair<QByteArray*, void*>>& results)
+{
+ wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, asize);
+ for(;;)
+ {
+  void* index_record = wg_fetch(white_db_, qry);
+  if(!index_record)
+    break;
+  void* result;
+  QByteArray* qba = new QByteArray;
+  retrieve_from_index_record(*qba, qc, archive_name, index_record, result);
+  results.push_back({qba, result});
+ }
+ wg_free_query(white_db_, qry);
+}
 
 
-// result_arglist[0].column = 0;
-// result_arglist[0].cond = WG_COND_EQUAL;
-// result_arglist[0].value = wg_encode_query_param_int(white_db_, acolumn_code);
+void WCM_Database::retrieve_record(QByteArray& qba,
+  WCM_Column* qc, QString archive_name, wg_query_arg* arglist, u2 asize, void*& result)
+{
+ wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, asize);
+ void* index_record = wg_fetch(white_db_, qry);
+ if(index_record)
+ {
+  retrieve_from_index_record(qba, qc, archive_name, index_record, result);
+ }
+ wg_free_query(white_db_, qry);
+}
 
-// int acol = qc->get_record_index_field_number();
-// result_arglist[1].column = acol;
-// result_arglist[1].cond = WG_COND_EQUAL;
-// result_arglist[1].value = wg_encode_query_param_int(white_db_, index);
+void WCM_Database::retrieve_all_records_from_encoding(QString archive_name,
+  QString index_column_name, wg_int query_param, QVector<QPair<QByteArray*, void*>>& results)
+{
+ WCM_Column* qc = get_column_by_name(index_column_name);
+ if(qc)
+ {
+  wg_query_arg arglist [2]; // holds the arguments to the query
 
-void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name,
+  int column_code = qc->database_column_code();
+  arglist[0].column = 0;
+  arglist[0].cond = WG_COND_EQUAL;
+  arglist[0].value = wg_encode_query_param_int(white_db_, column_code);
+
+  int col = qc->get_effective_field_number();
+  arglist[1].column = col;
+  arglist[1].cond = WG_COND_EQUAL;
+  arglist[1].value = query_param;
+
+  retrieve_all_records(qc, archive_name, arglist, 2, results);
+  wg_free_query_param(white_db_, arglist[0].value);
+  wg_free_query_param(white_db_, arglist[1].value);
+ }
+}
+
+
+
+void* WCM_Database::retrieve_record_from_encoding(QByteArray& qba, QString archive_name,
   QString index_column_name, wg_int query_param)
 {
- //? wg_find_record_int(db, 7, WG_COND_EQUAL, 443, NULL);
-
- // wg_query_arg arglist [2]; /* holds the arguments to the query */
-
  WCM_Column* qc = get_column_by_name(index_column_name);
  void* result;
  if(qc)
@@ -515,46 +603,9 @@ void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name,
   arglist[1].cond = WG_COND_EQUAL;
   arglist[1].value = query_param;
 
-  wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, 2);
-
-  void* index_record = wg_fetch(white_db_, qry);
-  if(index_record)
-  {
-   //int col = qc->get_effective_field_number();
-   int fn = qc->get_record_index_field_number();
-   //int fn = qc->get_effective_field_number();
-   wg_int wgi = wg_get_field(white_db_, index_record, fn);
-
-   wg_int index = wg_decode_int(white_db_, wgi);
-   wg_query_arg result_arglist [2]; // holds the arguments to the query
-
-   WCM_Column* aqc = get_column_by_name(archive_name);
-
-   int acolumn_code = aqc->database_column_code();
-   result_arglist[0].column = 0;
-   result_arglist[0].cond = WG_COND_EQUAL;
-   result_arglist[0].value = wg_encode_query_param_int(white_db_, acolumn_code);
-
-   int acol = qc->get_record_index_field_number();
-   result_arglist[1].column = acol;
-   result_arglist[1].cond = WG_COND_EQUAL;
-   result_arglist[1].value = wg_encode_query_param_int(white_db_, index);
-
-   wg_query* aqry = wg_make_query(white_db_, NULL, 0, result_arglist, 2);
-
-   result = wg_fetch(white_db_, aqry);
-
-   if(result)
-   {
-    int afn = aqc->get_effective_field_number();
-    wg_int awgi = wg_get_field(white_db_, result, afn);
-
-    char* blob = wg_decode_blob(white_db_, awgi);
-    wg_int wlen = wg_decode_blob_len(white_db_, awgi);
-
-    qba = QByteArray(blob, wlen);
-   }
-  }
+  retrieve_record(qba, qc, archive_name, arglist, 2, result);
+  wg_free_query_param(white_db_, arglist[0].value);
+  wg_free_query_param(white_db_, arglist[1].value);
  }
  else
  {
@@ -562,6 +613,48 @@ void* WCM_Database::retrieve_record(QByteArray& qba, QString archive_name,
  }
  return result;
 }
+
+//  wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, 2);
+
+//  void* index_record = wg_fetch(white_db_, qry);
+//  if(index_record)
+//  {
+//   //int col = qc->get_effective_field_number();
+//   int fn = qc->get_record_index_field_number();
+//   //int fn = qc->get_effective_field_number();
+//   wg_int wgi = wg_get_field(white_db_, index_record, fn);
+
+//   wg_int index = wg_decode_int(white_db_, wgi);
+//   wg_query_arg result_arglist [2]; // holds the arguments to the query
+
+//   WCM_Column* aqc = get_column_by_name(archive_name);
+
+//   int acolumn_code = aqc->database_column_code();
+//   result_arglist[0].column = 0;
+//   result_arglist[0].cond = WG_COND_EQUAL;
+//   result_arglist[0].value = wg_encode_query_param_int(white_db_, acolumn_code);
+
+//   int acol = qc->get_record_index_field_number();
+//   result_arglist[1].column = acol;
+//   result_arglist[1].cond = WG_COND_EQUAL;
+//   result_arglist[1].value = wg_encode_query_param_int(white_db_, index);
+
+//   wg_query* aqry = wg_make_query(white_db_, NULL, 0, result_arglist, 2);
+
+//   result = wg_fetch(white_db_, aqry);
+
+//   if(result)
+//   {
+//    int afn = aqc->get_effective_field_number();
+//    wg_int awgi = wg_get_field(white_db_, result, afn);
+
+//    char* blob = wg_decode_blob(white_db_, awgi);
+//    wg_int wlen = wg_decode_blob_len(white_db_, awgi);
+
+//    qba = QByteArray(blob, wlen);
+//   }
+//  }
+//  wg_free_query(white_db_, qry);
 
 void* WCM_Database::create_singleton_column_entry_record(WCM_Column* qc,
   int field_count) //, wg_int column_id)
