@@ -166,7 +166,73 @@ int main5(int argc, char *argv[])
  return 0;
 }
 
+
 int main(int argc, char *argv[])
+{
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ wcmd.load();
+
+ WCM_Column_Set qwcs(wcmd);
+
+ u4 species_count;
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, qwcs);
+  whn.with_hyponode(0) << [&species_count](WCM_Hyponode& who)
+  {
+   species_count = who.qt_encoding().toInt();
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+
+  qDebug() << species_count;
+  qDebug() << ds_root;
+ }
+
+ QMap<quint32, QString> icm;
+ icm[1] = "Species::Abbreviation@CLO_File";
+
+ QByteArray qba;
+ wcmd.retrieve_record(qba, "Default@CLO_File", "Species::Abbreviation@CLO_File",
+    "BTBW"_q);
+
+ WCM_Hypernode whn;
+
+ whn.set_indexed_column_map(&icm);
+ whn.absorb_data(qba, qwcs);
+
+ whn.with_hyponode(0) << [](WCM_Hyponode& who)
+ {
+  QVariant qv = who.qt_encoding();
+  u1 num = (u1) qv.toInt();
+  qDebug() << num;
+ };
+
+ whn.with_hyponode(1) << [&wcmd](WCM_Hyponode& who)
+ {
+  wg_int wgi = who.wgdb_encoding().data;
+  QString abbr = wcmd.wdb().decode_string(wgi);
+  qDebug() << abbr;
+ };
+
+ whn.with_hyponode(2) << [](WCM_Hyponode& who)
+ {
+  QVariant qv = who.qt_encoding();
+  QString qs = qv.toString();
+  qDebug() << qs;
+ };
+
+ return 0;
+}
+
+int main6(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  wcmd.load();
@@ -252,27 +318,46 @@ int main(int argc, char *argv[])
 // CLO_File* current_species_file = nullptr;
 // QString current_abbreviation;
 
- with_files(QDir(ds_root + "/logmelspec")).filter({"*.npy"}) <<
-   [&wcmd](QFileInfo& qfi)
+ QMap<u4, QString> ficm;
+ ficm[1] = "Species::Abbreviation@CLO_File";
+
+ auto process_files = [&wcmd, &ficm](QFileInfo& qfi, CLO_File::Kinds k)
  {
   QString bn = qfi.baseName();
-//  QString abbreviation = fn.left(4);
-  CLO_File species_file(CLO_File::Kinds::Logmelspec);
+  CLO_File species_file(k);
   species_file.set_abbreviation(bn.left(4));
   bn.remove(0, 4);
   species_file.set_tail(bn);
-
-  //qDebug() << species_file.tail();
-  wcmd.with_new_hyponode_array(3) << [&species_file](WCM_WhiteDB& wdb, WCM_Hyponode** whos)
+  wcmd.with_new_hyponode_array(3) << [&species_file, &wcmd, &ficm]
+    (WCM_WhiteDB& wdb, WCM_Hyponode** whos)
   {
    WCM_Hypernode whn;
    whos[0]->set_qt_encoding((u1)species_file.kind());
    whos[1]->set_wgdb_encoding({wdb.encode_string(species_file.abbreviation())});
    whos[2]->set_qt_encoding(species_file.tail());
+   whn.add_hyponodes(whos)[3];
+   whn.set_indexed_column_map(&ficm);
+   whn.add_to_database(wcmd, "@CLO_File", "Default@CLO_File");
   };
-
  };
 
+ with_files(QDir(ds_root + "/logmelspec")).filter({"*.npy"}) <<
+   [process_files](QFileInfo& qfi)
+ {
+  process_files(qfi, CLO_File::Kinds::Logmelspec);
+ };
+
+ with_files(QDir(ds_root + "/mfcc")).filter({"*.npy"}) <<
+   [process_files](QFileInfo& qfi)
+ {
+  process_files(qfi, CLO_File::Kinds::Logmelspec);
+ };
+
+// with_files(QDir(ds_root + "/mfcc2")).filter({"*.npy"}) <<
+//   [process_files](QFileInfo& qfi)
+// {
+//  process_files(qfi, CLO_File::Kinds::Logmelspec);
+// };
 
 // with_map(species_map) << [](QString abbreviation, CLO_Species* clo)
 // {

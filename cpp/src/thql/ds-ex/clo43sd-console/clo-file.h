@@ -31,7 +31,7 @@ public:
 
  enum class Kinds
  {
-  N_A, Logmelspec, MFCC, MFCC2, Audop
+  N_A, Logmelspec, MFCC, Audio
  };
 
 private:
