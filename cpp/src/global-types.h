@@ -13,9 +13,15 @@
 
 #include <functional>
 
+typedef quint8 u1;
+typedef quint16 u2;
 typedef quint32 u4;
 typedef quint64 u8;
-typedef quint8 u2;
+
+typedef qint8 s1;
+typedef qint16 s2;
+typedef qint32 s4;
+typedef qint64 s8;
 
 static inline QString operator ""_q(const char* cs, size_t size)
 {

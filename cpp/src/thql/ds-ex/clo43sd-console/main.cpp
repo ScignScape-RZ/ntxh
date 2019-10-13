@@ -15,6 +15,8 @@
 #include "wcm/wcm-hyponode.h"
 #include "withs.h"
 
+#include "clo-file.h"
+
 #include "ntxh-parser/ntxh-document.h"
 
 #include "kans.h"
@@ -121,7 +123,7 @@ int main2(int argc, char *argv[])
 
 }
 
-int main(int argc, char *argv[])
+int main5(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  wcmd.load();
@@ -157,13 +159,14 @@ int main(int argc, char *argv[])
  QDir qd("/home/nlevisrael/hypergr/bird/CLO-43SD");
 // QFileInfoList qsl = qd.entryInfoList(QDir::Files | QDir::NoDotAndDotDot);
 
- with_files(QDir(ds_root)).filter({"*.py"}) << [](QFileInfo& qfi)
+ with_files(QDir(ds_root + "/mfcc")).filter({"*.npy"}) << [](QFileInfo& qfi)
  {
   qDebug() << qfi.absoluteFilePath();
  };
+ return 0;
 }
 
-int main5(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
  wcmd.load();
@@ -197,6 +200,7 @@ int main5(int argc, char *argv[])
 
  QVector<CLO_Species*> species_vec;
  QMap<QString, CLO_Species*> species_map;
+ QMap<CLO_Species*, CLO_File*> species_files;
 
  u4 sc = wcmd.get_record_count("Default@Species");
  species_vec.resize(sc);
@@ -244,11 +248,36 @@ int main5(int argc, char *argv[])
 //  QString logmelspec = ds_root + "/logmelspec";
 // }
 
- with_map(species_map) << [](QString abbreviation, CLO_Species* clo)
+// CLO_Species* current_species = nullptr;
+// CLO_File* current_species_file = nullptr;
+// QString current_abbreviation;
+
+ with_files(QDir(ds_root + "/logmelspec")).filter({"*.npy"}) <<
+   [&wcmd](QFileInfo& qfi)
  {
-  qDebug() << abbreviation;
+  QString bn = qfi.baseName();
+//  QString abbreviation = fn.left(4);
+  CLO_File species_file(CLO_File::Kinds::Logmelspec);
+  species_file.set_abbreviation(bn.left(4));
+  bn.remove(0, 4);
+  species_file.set_tail(bn);
+
+  //qDebug() << species_file.tail();
+  wcmd.with_new_hyponode_array(3) << [&species_file](WCM_WhiteDB& wdb, WCM_Hyponode** whos)
+  {
+   WCM_Hypernode whn;
+   whos[0]->set_qt_encoding((u1)species_file.kind());
+   whos[1]->set_wgdb_encoding({wdb.encode_string(species_file.abbreviation())});
+   whos[2]->set_qt_encoding(species_file.tail());
+  };
 
  };
+
+
+// with_map(species_map) << [](QString abbreviation, CLO_Species* clo)
+// {
+//  qDebug() << abbreviation;
+// };
 
 
 // for(quint32 i = 1; i <= species_count; ++i)
@@ -313,101 +342,6 @@ int main5(int argc, char *argv[])
 //  qDebug() << qs;
 // };
 
- return 0;
-}
-
-
-
-int main4(int argc, char *argv[])
-{
- WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
-
- NTXH_Document doc(DEFAULT_WCM_FOLDER "/species.ntxh");
-
- doc.parse();
-
- wcmd.load();
-
- WCM_Hypernode whn;
-
- QByteArray qba;
-
- wcmd.retrieve_record(qba, "Default@Patient", "Patient::Id", 1000);
-
- WCM_Column_Set qwcs(wcmd);
-
- QMap<quint32, QString> icm;
- icm[2] = "Patient::Id";
-
- whn.set_indexed_column_map(&icm);
- whn.absorb_data(qba, qwcs);
-
- whn.with_hyponode(0) << [](WCM_Hyponode& who)
- {
-  QVariant qv = who.qt_encoding();
-  QString qs = qv.toString();
-  qDebug() << qs;
- };
-
- whn.with_hyponode(1) << [](WCM_Hyponode& who)
- {
-  QVariant qv = who.qt_encoding();
-  QDate qd = qv.toDate();
-  qDebug() << qd.toString();
- };
-
- whn.with_hyponode(2) << [&wcmd](WCM_Hyponode& who)
- {
-  wg_int wgi = who.wgdb_encoding().data;
-  quint32 pi = wcmd.wdb().decode_u4(wgi);
-  qDebug() << pi;
- };
-
-// quint32 record_index;
-
-// wcmd.add_record("@Patient", "Default@Patient", qba, record_index);
-
- return 0;
-}
-
-int main1(int argc, char *argv[])
-{
- WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
- qRegisterMetaType<WCM_Encoding_Package>();
-
- wcmd.load();
- 
- WCM_Hypernode whn;
-
- WCM_Hyponode* who1 = new WCM_Hyponode;
- WCM_Hyponode* who2 = new WCM_Hyponode;
- WCM_Hyponode* who3 = new WCM_Hyponode;
-
- QVariant v1(QString("Test Name"));
- QVariant v2(QDate::fromString("June 4, 2005", "MMMM d, yyyy"));
- wg_int v3 = wcmd.wdb().encode_u4(1000);
- 
- who1->set_qt_encoding(v1);
- who2->set_qt_encoding(v2);
- who3->set_wgdb_encoding({v3});
-
- whn.add_hyponodes({who1, who2, who3});
-
- QMap<quint32, QString> icm;
- icm[2] = "Patient::Id";
-
- whn.set_indexed_column_map(&icm);
-
- WCM_Column_Set qwcs(wcmd);
-
- QByteArray qba;
-
- whn.supply_data(qba, qwcs);
-
- quint32 record_index;
-
- wcmd.add_record("@Patient", "Default@Patient", qba, record_index);
- wcmd.save();
  return 0;
 }
 
