@@ -587,6 +587,7 @@ more detail the specific case of speech and language
 data structures.
 `p`
 
+\vspace{-.1em}
 `subsection.Linguistic Case-Study`
 `p.
 Establishing data models for deployed technology 
@@ -891,6 +892,7 @@ important %-- distinguishing kinds of software errors
 and even which problems are software errors to begin with.
 `p`
 
+`input<profiles>;
 `p.
 Summarizing the case studies from earlier in this section, 
 Table~\ref{table:profiles} identifies several details 
@@ -915,7 +917,6 @@ input, that can be shared between software components
 (within hub applications and/or between hubs and 
 middleware).
 `p`
-`input<profiles>;
 
 `p.
 These data profiles need to be integrated with Cyber-Physical code from a

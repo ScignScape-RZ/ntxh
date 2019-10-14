@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  14 OCT 2019 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  14 OCT 2019 17:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1196,14 +1196,14 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(33.96698pt, 546.36104pt, 33.96698pt)
-* v-part:(T,H,B)=(48.42076pt, 698.12846pt, 48.42076pt)
+* v-part:(T,H,B)=(49.86647pt, 695.23705pt, 49.86647pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
 * \textwidth=546.36104pt
-* \textheight=698.12846pt
+* \textheight=695.23705pt
 * \oddsidemargin=-38.30301pt
 * \evensidemargin=-38.30301pt
-* \topmargin=-60.84923pt
+* \topmargin=-59.40352pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -1444,12 +1444,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 900--900
+Underfull \hbox (badness 10000) in paragraph at lines 902--902
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 952--952
+Underfull \hbox (badness 10000) in paragraph at lines 954--954
 []
  []
 
@@ -1484,12 +1484,12 @@ Underfull \hbox (badness 3343) in paragraph at lines 173--208
 m/m/n/10.95 (+20) -Calculus was less about
  []
 
-[22] [23] [24] (./unplug.tex)
+[22] [23] (./unplug.tex)
 Overfull \hbox (3.81317pt too wide) in paragraph at lines 440--440
 [] $[]$[] 
  []
 
-(./initializing-hypernodes.tex
+[24] (./initializing-hypernodes.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/listings/lstlang1.s
 ty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -1523,7 +1523,7 @@ Overfull \hbox (0.7899pt too wide) in paragraph at lines 59--60
 [][][][][][][][][] 
  []
 
-) [25] (./lived.tex) [26
+) (./lived.tex) [25] [26
 \pgfsyspdfmark {pgfid9}{2226060}{4360471}
 ] [27] [28]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgfornament/vecto
@@ -1539,7 +1539,6 @@ LaTeX Font Info:    Font shape `OT1/Cabin-TLF/bx/sc' in size <10> not available
 
 (Font)              Font shape `OT1/Cabin-TLF/b/sc' tried instead on input line
  1010.
- [31]
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 1098
 .
 
@@ -1553,7 +1552,7 @@ LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <10> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 1098
 .
 
-[32]) (./section4.ngml.tex [33]
+[31] [32]) (./section4.ngml.tex [33]
 LaTeX Font Info:    Try loading font information for OMS+lmss on input line 135
 .
 LaTeX Font Info:    No file OMSlmss.fd. on input line 135.
@@ -1563,11 +1562,11 @@ LaTeX Font Warning: Font shape `OMS/lmss/b/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbraceleft' on input line 135.
 
-[34] [35]
+[34]
 LaTeX Font Info:    Font shape `OT1/lmss/b/n' in size <6> not available
 (Font)              Font shape `OT1/lmss/bx/n' tried instead on input line 279.
 
-) (./section4a.ngml.tex [36]
+ [35]) (./section4a.ngml.tex [36]
 Underfull \hbox (badness 4328) in paragraph at lines 97--102
 []\OT1/ptm/m/n/10.95 (+20) But value con-struc-tors (and by ex-ten-sion co-
  []
@@ -1599,9 +1598,9 @@ LaTeX Font Info:    Font shape `OT1/lmss/b/it' in size <10.95> not available
 LaTeX Font Info:    Font shape `OT1/lmss/bx/it' in size <10.95> not available
 (Font)              Font shape `OT1/lmss/bx/sl' tried instead on input line 303
 .
- [44]) (./section5a.ngml.tex [45] [46] [47]
-(./ifte.tex) [48
-\pgfsyspdfmark {pgfid23}{20875090}{4983062}
+ [44]) (./section5a.ngml.tex [45] [46]
+(./ifte.tex) [47] [48
+\pgfsyspdfmark {pgfid22}{20875090}{4983062}
 ] (./ifte-phr.tex
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 8.
 
@@ -1617,9 +1616,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [49
-\pgfsyspdfmark {pgfid30}{20875090}{6457619}
-]) (./conclusion.ngml.tex [50]) (./biblio.tex
+)) (./conclusion.ngml.tex [49
+\pgfsyspdfmark {pgfid29}{20875090}{6457619}
+] [50]) (./biblio.tex
 LaTeX Font Info:    Try loading font information for OT1+gar on input line 28.
 LaTeX Font Info:    No file OT1gar.fd. on input line 28.
 
@@ -1652,10 +1651,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 31919 strings out of 492649
- 637640 string characters out of 6122986
- 867287 words of memory out of 5000000
- 34231 multiletter control sequences out of 15000+600000
+ 31918 strings out of 492649
+ 637624 string characters out of 6122986
+ 872306 words of memory out of 5000000
+ 34230 multiletter control sequences out of 15000+600000
  115868 words of font info for 416 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,12n,85p,1050b,1482s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1699,7 +1698,7 @@ xl/texlive-install/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></home/nlevisrael
 ael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/nle
 visrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home
 /nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on NathanielChristen-Hypergraph.ngml.pdf (56 pages, 613514 bytes
+Output written on NathanielChristen-Hypergraph.ngml.pdf (56 pages, 613655 bytes
 ).
 PDF statistics:
  1494 PDF objects out of 1728 (max. 8388607)

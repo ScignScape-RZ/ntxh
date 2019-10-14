@@ -69,7 +69,12 @@ A good case-study derives from \q{medical whole slide imaging}
 (\mWSI{}) \cite{Auguste}, where a mobile 
 phone attached to an ordinary microscope, 
 by subtle modifications of camera position and microscope 
-resolution, allows many views to be made on one slide.  
+resolution, allows many views to be made on one slide.\footnote{The modified microscopes themselves \mdash{} rigged so that 
+mounted cameras can capture views on microscope slides and 
+transmit them via wifi or cell phones \mdash{} are an invention 
+of AlexaPath, an NYU-incubated company that subsequently 
+developed products in \AI{} and other aspects of remote pathology. 
+}
 Positional data (the configuration of the phone and microscope) 
 then merges with image segmentation 
 computations characteristic of 
@@ -536,6 +541,7 @@ in this introductory discussion I will examine in
 more detail the specific case of speech and language 
 data structures.
 }
+\vspace{-.1em}
 \subsection{Linguistic Case-Study}
 \p{Establishing data models for deployed technology 
 is certainly part of the Research and Development 
@@ -790,6 +796,7 @@ of procedures, as formal constructions, subsequently
 in the chapter. 
 }
 \vspace{-.1em}
+%\spsubsection{Proactive Design}
 \subsection{Proactive Design}
 \p{I have thus far argued that applications
 which process Cyber-Physical data should rigorously organize their functionality
@@ -809,6 +816,7 @@ consequence, \i{error classification} is especially
 important \mdash{} distinguishing kinds of software errors
 and even which problems are software errors to begin with.
 }
+\input{profiles}
 \p{Summarizing the case studies from earlier in this section, 
 Table~\ref{table:profiles} identifies several details 
 about dimensions, parameters of operation, data fields, 
@@ -832,7 +840,6 @@ input, that can be shared between software components
 (within hub applications and/or between hubs and 
 middleware).
 }
-\input{profiles}
 \p{These data profiles need to be integrated with Cyber-Physical code from a
 perspective that cuts across multiple dimensions of project scale and
 lifetime.  Do we design for biaxial or triaxial accelerometers, or both,
