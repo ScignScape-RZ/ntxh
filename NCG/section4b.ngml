@@ -170,7 +170,7 @@ enough \cite[page 1]{BradyMatus}.
 To summarize, Idris works by `q.erasing` some, but not all, of the
 extra contextual detail needed to ensure that dependent-typed
 functions are used (i.e., called) correctly (see also `cite<Christiansen>;,
-and \cite[page 210]{RichardEisenberg}).  This means that much 
+and \cite[page 195]{RichardEisenberg}).  This means that much 
 contextual detail is `i.not` erased; Idris provides machinery to
 join executable code and user specifications onto
 `i.types` so that they take effect whenever affected types' values are

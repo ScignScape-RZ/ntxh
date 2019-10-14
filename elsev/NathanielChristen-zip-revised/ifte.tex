@@ -1,0 +1,78 @@
+\begin{figure} 
+\begin{lstlisting}[caption={%
+\emblink{\#lst--ifte--\thelstlisting.pgvm-pdf}{Implementing If/Then/Else Blocks}},
+  language = C++, numbers = none, escapechar = !,label={lst:ifte},
+    basicstyle = \ttfamily\bfseries\footnotesize, linewidth = \linewidth]
+void test_if_then_else(quint64 args_ptr)
+{
+ QVector<quint64>& args = *(QVector<quint64>*)
+   (args_ptr);
+
+ int i = 0;
+ bool test = false;
+ for(quint64 qui: args)
+ {
+  if(i % 2)
+  {
+   if(test)
+   {
+    PHR_Callable_Value** pcv = 
+      (PHR_Callable_Value**) qui;
+    (*pcv)->run();
+    return;
+   }
+  }
+  else
+  {
+   PHR_Expression_Object** pxo = 
+     (PHR_Expression_Object**) qui;
+
+   PHR_Channel_Group_Evaluator* ev = (*pxo)->run();
+   qint32 i1 = ev->get_result_value_as<qint32>();
+   test = (bool) i1;
+  }
+  ++i;
+ }
+}
+...
+void init_basic_functions(PhaonIR& phr, 
+  PHR_Code_Model& pcm, 
+  PHR_Channel_Group_Table& table, 
+  PHR_Symbol_Scope& pss)
+{
+ init_test_functions(phr, pcm, table, pss);
+
+ PHR_Type_System* type_system = pcm.type_system();
+ PHR_Channel_System& pcs = *phr.channel_system();
+ PHR_Channel_Semantic_Protocol* lambda = 
+   pcs["lambda"];
+...
+ PHR_Channel_Group g1;
+...
+ {
+  PHR_Type* ty = type_system->get_type_by_name(
+    "argvec");
+  PHR_Carrier* phc = new PHR_Carrier;
+  phc->set_phr_type(ty);
+  g1.init_channel(lambda, 1);
+  (*g1[lambda])[0] = phc;
+
+  table.init_phaon_function(g1, pss, "if-t-e", 700, 
+    &if_t_e);
+  table.init_phaon_function(g1, pss, 
+    "test-if-then-else", 700, &test_if_then_else);
+
+  g1.clear_all();
+ }
+...
+}
+
+\end{lstlisting}
+
+\begin{tikzpicture}[remember picture, overlay]
+\dovn{3.8}{15.1}{1};
+\dovn{5.3}{6.3}{2};
+\dovn{7.3}{4.9}{3};
+\end{tikzpicture}
+\end{figure} 
+%\vspace{-2em}

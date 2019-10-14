@@ -355,15 +355,15 @@ In the United States, `HLSeven; (which encompasses multiple
 clinical, continuity-of-care, and decision-support 
 formats) is a good example of how technology can be backed 
 with robust certification and Quality Assurance layers 
-(the `q.`lclc.7`/` refers to the `q.seventh layer`/, or 
-application-specific layer, of a technology stack which 
+(the `q.`lclc.7`/` refers to the seventh, or 
+application-specific, layer of a technology stack which 
 collectively enables network-based digital sharing of 
 health records and other bioinformatic content). 
 Government-supported programs such as  
 ONC (Office of the National Coordinator for Health Information Technology) 
-Health IT Certification, which supports a network of software-evalution 
+Health IT Certification, which maintains a network of software-evalution 
 labs and testing infrastructure to vet Health IT products 
-(called `q.modules`/), confirming in particular that software 
+(called `q.modules`/), confirm in particular that software 
 claiming `HLSeven; compliance can properly `i.consume` and 
 `i.query` information presented to the system via document formats 
 or data structures included in the `HLSeven; family of standards.  
@@ -385,12 +385,12 @@ computational methodology, or any other research
 %-- will remain outside the certification pipeline unless 
 the new kind of generated data can be translated into 
 one of the `HLSeven; formats.  Some new research may be 
-amenable to conventional `EMR; standards %-- clinical 
+amenable to conventional `EMR; standards: clinical 
 trials of a new medication, for example, may fit 
 comfortably in existing reporting formats because 
-the desired outcomes (lowering blood pressure, lowering 
-viral load, shrinking tumors, and so forth) 
-can be measured and expressed via standard formats. 
+the desired outcomes %-- lowering blood pressure, lowering 
+viral load, shrinking tumors, and so forth %--  
+can be measured and expressed via standard records. 
 However, in many cases the whole premise of 
 clinical innovations are to rethink 
 analytic methodologies; or clinical technology 
@@ -409,9 +409,10 @@ Inspired by `q.patient-centered` care trends, `CLG; seeks to
 organize clinical data around `q.patient-centric time frames` 
 and the structural representation of patients' trajectory through 
 a medical system.  Diagnoses, for example, are then 
-recorded as diagnostic `i.events` (e.g. %-- to use an 
-example from `CLG;'s documentation %-- a lab test 
-reporting HemoglobinA1C above `lclc.9.5`/), and 
+recorded as diagnostic `i.events` (to use an 
+example from \CLG{}'s documentation, diabetes may be recorded 
+as the event of a lab test 
+reporting HemoglobinA1C above \lclc{9.5}), and 
 subsequent time-points and time-spans are defined as offsets 
 from such `q.index events`/.  The clinical rationale for 
 `CLG; data models is to facilitate `q.patient-centered` 
@@ -426,8 +427,11 @@ to query normal clinical databases in a patient-centered manner
 \cite[p. 5-6]{BellinExplore}.  The `CLG; software counters 
 that trend by developing a `q.patient-centered` 
 query methodology (and a `GUI; for doctors to graphically 
-formulate queries, often so as to define patient cohorts).  
-Internally, this query system depens upon an `q.object model` 
+formulate queries), along with a higher-scale 
+`q.cohort model` where patients are aggregrated 
+(while the patient-centered data models 
+are preserved at the cohort level).  
+Internally, this query system depends upon an `q.object model` 
 whose diagnostic, temporal, and demographic architecture 
 differs from conventional Health IT representations.  
 Moreover, the `CLG; application can pool databases 
@@ -438,11 +442,11 @@ integration is an intrinsic `CLG; feature.
 `p.
 Currently `CLG; is embodied in a single proprietary 
 application, but if the `CLG; query framework 
-is appreciated by doctors as noticably more effective, 
+is appreciated by doctors as noticeably more effective, 
 it is easy to imagine that the `CLG; object model 
 will be generalized from its specific application context 
 and repositioned as a object-system which diverse 
-software components could adopt.  In this case, 
+software components could adopt.  In this scenario, 
 given that `CLG; is expressly formulated as an alternative 
 to traditional `EMR;s, it is reasonable to assume that the 
 `CLG; object model would engeder its own `q.consume and query` 
@@ -459,18 +463,18 @@ appropriate for the `CLG; object model.
 
 `p.
 The case of `CLG; is just one example of clinical innovation; 
-given the (thankfully) fertile ground of new treatment and 
+given the (thankfully) fertile ground of research for new treatment and 
 technologies, we can see our health care system as 
 targets for many analogous innovations from the 
 biochemical, bioinformatics, and Cyber-Physical domains.  
 The sheer volume of new data models makes it likely 
-that (what we can call) `q.data-centric` certification 
+that `q.data-centric` certification 
 as in `HLSeven; %-- standardizing a predefined set of 
 data models %-- will constantly become outdated.  
 For this reason Requirements Engineering should 
 look more toward a `q.software-centric` paradigm, 
 where developers consiously adopt design patterns 
-which abstract from particular data models.`footnote.
+abstracted from particular data models.`footnote.
 As a case-study, the dataset for this chapter 
 includes an object model with some similarities to 
 `CLG;; the documentation and protocols associated 
@@ -485,7 +489,7 @@ implementational maxims.
 `p`
 
 `p.
-Outside the medical arena, similar analysis %-- of 
+Outside the medical arena, similar analyses %-- of 
 the need for robust but dynamic evolving 
 vetting of new technologies %-- could be 
 made regarding software in Cyber-Physical settings like

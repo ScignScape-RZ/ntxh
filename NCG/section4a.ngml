@@ -85,7 +85,7 @@ to make complex types behave like built-in-types from
 client code's point of view).  Allowing large type families (like one type
 for each `int; or each two-number range `rRan; %-- similar to `q.inductive typing` as
 discussed by Edwin Brady in the context of the Idris language
-\cite[p. 14]{EdwinBradyImpl}) %-- could easily conflict with 
+\cite[p. 12]{EdwinBradyImpl}) %-- could easily conflict with 
 user-defined constructor overrides: users (meaning, in this context, 
 library developers) would need not only to write their own 
 (e.g., copy) constructors, but to hook into a complex 

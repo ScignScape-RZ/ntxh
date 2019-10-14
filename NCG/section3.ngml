@@ -316,8 +316,9 @@ to which I now turn.
 {Directed Hypergraphs and 'Channel Abstractions'}
 `p.
 A `i.hypergraph` is a graph whose edges (a.k.a. `q.hyperedges`/) can span
-more than two nodes (\cite[e.g. p. 24]{BenGoetzel},
-`cite<HaishanLiu>;, `cite<MarkMinas>;, `cite<BalintMolnar>;,
+more than two nodes (\cite[e.g. volume 2, p. 24]{BenGoetzel},
+`cite<HaishanLiu>;, `cite<MarkMinas>; and `cite<MinasSchneider>;, 
+`cite<BalintMolnar>;,
 `cite<AlexandraPoulovassilis>;, `cite<JohnStell>;,
 `cite<JohnStellFCA>;).
 A `i.directed` hypergraph (`q.`DH;`/) is a hypergraph
@@ -561,7 +562,13 @@ in new nodes ({\OneOverlay}-{\TwoOverlay}),
 along with obtaining nodes already registered in a runtime graph 
 ({\ThreeOverlay}) and then inserting the new nodes (with stated 
 relationships) alongside prior ones into the runtime graph 
-({\ThreeOverlay}).       
+({\ThreeOverlay}).`footnote.
+The code samples in this text are drawn from a working demo 
+at the time of writing; the actual code belonging to a downloadable 
+data set at the time of publication may be slightly revised.  
+The data set will include components to help readers cross-reference 
+between the chapter's samples and working demo code.  
+`footnote`       
 `p`
 
 `p.
@@ -855,7 +862,7 @@ Finally, as a last point in the comparison between
 it is worth considering the distinction 
 between `q.declarative knowledge` and `q.procedural knowledge` 
 (see e.g. 
-\cite[pages 182-197]{BenGoetzel}).  According
+\cite[volume 2, pages 182-197]{BenGoetzel}).  According
 to this distinction, canonical `RDF; data exemplifies `i.declarative` knowledge
 because it asserts apparent facts without explicitly trying to interpret or
 process them.  Declarative knowledge circulates among software in canonical,
