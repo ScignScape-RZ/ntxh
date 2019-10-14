@@ -529,7 +529,8 @@ void WCM_Database::retrieve_from_index_record(QByteArray& qba,
 
 void WCM_Database::retrieve_all_records(WCM_Column* qc,
   QString archive_name, wg_query_arg* arglist, u2 asize,
-  QVector<QPair<QByteArray*, void*>>& results)
+  QVector<QPair<QByteArray*, void*>>* results,
+  For_All_Records_Package::FN_Types* fns)
 {
  wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, asize);
  for(;;)
@@ -540,7 +541,21 @@ void WCM_Database::retrieve_all_records(WCM_Column* qc,
   void* result;
   QByteArray* qba = new QByteArray;
   retrieve_from_index_record(*qba, qc, archive_name, index_record, result);
-  results.push_back({qba, result});
+  if(results)
+    results->push_back({qba, result});
+  if(fns)
+  {
+   switch (fns->which)
+   {
+   case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ptr:
+    fns->the_fns.fn_QBA_Ptr(qba, result);
+    break;
+   case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ref:
+    fns->the_fns.fn_QBA_Ref(*qba, result);
+    delete qba;
+    break;
+   }
+  }
  }
  wg_free_query(white_db_, qry);
 }
@@ -556,6 +571,45 @@ void WCM_Database::retrieve_record(QByteArray& qba,
   retrieve_from_index_record(qba, qc, archive_name, index_record, result);
  }
  wg_free_query(white_db_, qry);
+}
+
+void WCM_Database::For_All_Records_Package::proceed_fns(FN_Types* fns)
+{
+ WCM_Column* qc = _this->get_column_by_name(index_column_name);
+ if(qc)
+ {
+  wg_query_arg arglist [2]; // holds the arguments to the query
+
+  int column_code = qc->database_column_code();
+  arglist[0].column = 0;
+  arglist[0].cond = WG_COND_EQUAL;
+  arglist[0].value = wg_encode_query_param_int(_this->white_db_, column_code);
+
+  int col = qc->get_effective_field_number();
+  arglist[1].column = col;
+  arglist[1].cond = WG_COND_EQUAL;
+  arglist[1].value = query_param;
+
+  _this->retrieve_all_records(qc, archive_name, arglist, 2, nullptr, fns);
+  wg_free_query_param(_this->white_db_, arglist[0].value);
+  wg_free_query_param(_this->white_db_, arglist[1].value);
+ }
+}
+
+void WCM_Database::For_All_Records_Package::operator<<
+  (std::function<void (QByteArray*, void*)> fn)
+{
+ WCM_Database::For_All_Records_Package::FN_Types fnt
+  {FN_Types::Enum::QBA_Ptr, {.fn_QBA_Ptr = {fn} }};
+ proceed_fns(&fnt);
+}
+
+void WCM_Database::For_All_Records_Package::operator<<
+  (std::function<void (QByteArray&, void*)> fn)
+{
+ WCM_Database::For_All_Records_Package::FN_Types fnt
+  {FN_Types::Enum::QBA_Ref, {.fn_QBA_Ref = {fn} }};
+ proceed_fns(&fnt);
 }
 
 void WCM_Database::retrieve_all_records_from_encoding(QString archive_name,
@@ -576,7 +630,7 @@ void WCM_Database::retrieve_all_records_from_encoding(QString archive_name,
   arglist[1].cond = WG_COND_EQUAL;
   arglist[1].value = query_param;
 
-  retrieve_all_records(qc, archive_name, arglist, 2, results);
+  retrieve_all_records(qc, archive_name, arglist, 2, &results, nullptr);
   wg_free_query_param(white_db_, arglist[0].value);
   wg_free_query_param(white_db_, arglist[1].value);
  }

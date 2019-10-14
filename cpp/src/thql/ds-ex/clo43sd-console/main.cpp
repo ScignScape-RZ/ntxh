@@ -173,38 +173,71 @@ int main(int argc, char *argv[])
 
  WCM_Column_Set qwcs(wcmd);
 
- WCM_Hypernode whn;
+// WCM_Hypernode whn;
 
  QByteArray qba;
 
- wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
-  "BTBW"_q);
+// wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+//  "BTBW"_q);
 
  QMap<u4, QString> icm;
  icm[0] = "Species::Abbreviation";
 
- whn.set_indexed_column_map(&icm);
- whn.absorb_data(qba, qwcs);
+// whn.set_indexed_column_map(&icm);
+// whn.absorb_data(qba, qwcs);
 
- whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
- {
-  wg_int wgi = who.wgdb_encoding().data;
-  QString abbr = wcmd.wdb().decode_string(wgi);
-  qDebug() << abbr;
- };
+// whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+// {
+//  wg_int wgi = who.wgdb_encoding().data;
+//  QString abbr = wcmd.wdb().decode_string(wgi);
+//  qDebug() << abbr;
+// };
 
- whn.with_hyponode(1) << [](WCM_Hyponode& who)
- {
-  QVariant qv = who.qt_encoding();
-  u4 num = qv.toInt();
-  qDebug() << num;
- };
+// whn.with_hyponode(1) << [](WCM_Hyponode& who)
+// {
+//  QVariant qv = who.qt_encoding();
+//  u4 num = qv.toInt();
+//  qDebug() << num;
+// };
 
- whn.with_hyponode(2) << [](WCM_Hyponode& who)
+// whn.with_hyponode(2) << [](WCM_Hyponode& who)
+// {
+//  QVariant qv = who.qt_encoding();
+//  QString qs = qv.toString();
+//  qDebug() << qs;
+// };
+
+
+ wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
+   "BTBW"_q) << [&qwcs, &wcmd](QByteArray& qba, void*)
  {
-  QVariant qv = who.qt_encoding();
-  QString qs = qv.toString();
-  qDebug() << qs;
+  QMap<u4, QString> icm;
+  icm[1] = "Species::Abbreviation@CLO_File";
+  WCM_Hypernode whn;
+
+  whn.set_indexed_column_map(&icm);
+  whn.absorb_data(qba, qwcs);
+
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   u1 num = qv.toInt();
+   qDebug() << num;
+  };
+
+  whn.with_hyponode(1) << [&wcmd](WCM_Hyponode& who)
+  {
+   wg_int wgi = who.wgdb_encoding().data;
+   QString abbr = wcmd.wdb().decode_string(wgi);
+   qDebug() << abbr;
+  };
+
+  whn.with_hyponode(2) << [](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   QString qs = qv.toString();
+   qDebug() << qs;
+  };
  };
 
  QVector<QPair<QByteArray*, void*>> matches;
@@ -216,6 +249,7 @@ int main(int argc, char *argv[])
  {
   QMap<u4, QString> icm;
   icm[1] = "Species::Abbreviation@CLO_File";
+  WCM_Hypernode whn;
 
   whn.set_indexed_column_map(&icm);
   whn.absorb_data(*pr.first, qwcs);

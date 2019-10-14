@@ -123,6 +123,35 @@ class WCM_Database
  wg_int _add_column_entry_(WCM_Column* qc, wg_int data,
    u4& column_specific_record_index, u4& field_number);
 
+ struct For_All_Records_Package
+ {
+  WCM_Database* _this;
+  QString archive_name;
+  QString index_column_name;
+  wg_int query_param;
+  struct FN_Types
+  {
+   enum class Enum { QBA_Ptr, QBA_Ref };
+   Enum which;
+   union fns_union {
+    std::function<void(QByteArray*, void*)> fn_QBA_Ptr;
+    std::function<void(QByteArray&, void*)> fn_QBA_Ref;
+    ~fns_union()
+    {
+    }
+   };
+   fns_union the_fns;
+  };
+
+  void operator <<
+    (std::function<void(QByteArray*, void*)> fn);
+
+  void operator <<
+    (std::function<void(QByteArray&, void*)> fn);
+
+  void proceed_fns(FN_Types* fns);
+ };
+
  struct New_Hyponode_Array_Package
  {
   WCM_Database* _this;
@@ -199,7 +228,9 @@ public:
    QString archive_name, wg_query_arg* arglist, u2 asize, void*& result);
 
  void retrieve_all_records(WCM_Column* qc,
-   QString archive_name, wg_query_arg* arglist, u2 asize, QVector<QPair<QByteArray*, void*>>& results);
+   QString archive_name, wg_query_arg* arglist, u2 asize,
+   QVector<QPair<QByteArray*, void*>>* results,
+   For_All_Records_Package::FN_Types* fns);
 
  void retrieve_from_index_record(QByteArray& qba,
    WCM_Column* qc, QString archive_name, void* index_record, void*& result);
@@ -227,6 +258,14 @@ public:
  {
   wg_int query_param = translate_data_to_query_param(data);
   retrieve_all_records_from_encoding(archive_name, index_column_name, query_param, results);
+ }
+
+ template<typename T>
+ For_All_Records_Package for_all_records(QString archive_name, QString index_column_name,
+   T data)
+ {
+  wg_int query_param = translate_data_to_query_param(data);
+  return {this, archive_name, index_column_name, query_param};
  }
 
  void* retrieve_column_entry_value(WCM_Column* qc, u4 record_id, wg_int& result_value);
