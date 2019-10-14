@@ -141,6 +141,18 @@ class WCM_Database
     }
    };
    fns_union the_fns;
+   ~FN_Types()
+   {
+    switch (which)
+    {
+    case Enum::QBA_Ptr:
+      the_fns.fn_QBA_Ptr.~function();
+      break;
+    case Enum::QBA_Ref:
+     the_fns.fn_QBA_Ptr.~function();
+      break;
+    }
+   }
   };
 
   void operator <<
