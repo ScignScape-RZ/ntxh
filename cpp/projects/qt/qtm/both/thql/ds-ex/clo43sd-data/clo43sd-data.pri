@@ -4,11 +4,9 @@
 #     (See accompanying file LICENSE_1_0.txt or copy at
 #           http://www.boost.org/LICENSE_1_0.txt)
 
-PROJECT_NAME = clo43sd-console
+PROJECT_NAME = clo43sd-data
 
 include(../build-group.pri)
-
-TEMPLATE = app
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR $$SRC_ROOT_DIR
 
@@ -27,11 +25,13 @@ DEFINES += USE_KANS
 
 
 HEADERS += \
+  $$SRC_DIR/clo-species.h \
+  $$SRC_DIR/clo-file.h \
 
 
 SOURCES += \
-  $$SRC_DIR/main.cpp \
-
+  $$SRC_DIR/clo-species.cpp \
+  $$SRC_DIR/clo-file.cpp \
 
 
 #?

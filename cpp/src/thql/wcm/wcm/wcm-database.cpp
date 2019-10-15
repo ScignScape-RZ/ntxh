@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "wcm-database.h"
 #include "wcm-column.h"
 
@@ -297,6 +303,20 @@ void WCM_Database::reload_from_file()
  init_columns();
 }
 
+void WCM_Database::With_Check_Create_Package::operator<<(std::function<void()> fn)
+{
+ _this->check_create();
+ if(_this->datetimes().contains(DateTime_Codes::Recent_Create))
+   fn();
+};
+
+void WCM_Database::With_Check_Create_Package::operator<<(std::function<void(WCM_Database&)> fn)
+{
+ _this->check_create();
+ if(_this->datetimes().contains(DateTime_Codes::Recent_Create))
+   fn(*_this);
+};
+
 void WCM_Database::check_create()
 {
  char* np = const_cast<char*>(name_.toStdString().c_str());
@@ -305,6 +325,7 @@ void WCM_Database::check_create()
  if(white_db_)
  {
   init_columns();
+  datetimes_[Recent_Attach] = QDateTime::currentDateTime();
  }
  else
  {
@@ -315,11 +336,13 @@ void WCM_Database::check_create()
     //    take everything else from the file
    white_db_ = wg_attach_database(np, 0);
    reload_from_file();
+   datetimes_[Recent_Load_From_File] = QDateTime::currentDateTime();
   }
   else
   {
    // //  Start from scratch as a last resort.
    create();
+   datetimes_[Recent_Create] = QDateTime::currentDateTime();
   }
  }
 }

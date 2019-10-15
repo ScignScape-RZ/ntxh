@@ -26,7 +26,7 @@ void WCM_Hypernode::add_hyponodes(QList<WCM_Hyponode*> whos)
  hyponodes_.append(whos.toVector());
 }
 
-QString WCM_Hypernode::check_column(quint32 index)
+QString WCM_Hypernode::check_column(u4 index)
 {
  return indexed_column_map_? indexed_column_map_->value(index): QString();
 }
@@ -36,12 +36,12 @@ void WCM_Hypernode::supply_data(QByteArray& qba, QWhite_Column_Set& columns)
 {
  QDataStream qds(&qba, QIODevice::WriteOnly);
 
- quint32 sz = hyponodes_.size();
+ u4 sz = hyponodes_.size();
  qds << sz;
 
  if(indexed_column_map_)
  {
-  each_hyponode([&qds, &columns](WCM_Hypernode& _this, WCM_Hyponode& who, quint32 index)
+  each_hyponode([&qds, &columns](WCM_Hypernode& _this, WCM_Hyponode& who, u4 index)
   {
    QString col = _this.check_column(index);
    if(col.isEmpty())
@@ -70,7 +70,7 @@ void WCM_Hypernode::absorb_data(const QByteArray& qba, QWhite_Column_Set& column
 {
  QDataStream qds(qba);
 
- quint32 sz;
+ u4 sz;
  qds >> sz;
 
  hyponodes_.resize(sz);
@@ -105,9 +105,9 @@ void WCM_Hypernode::absorb_data(const QByteArray& qba, QWhite_Column_Set& column
 }
 
 
-void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&, quint32)> fn)
+void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponode&, u4)> fn)
 {
- quint32 i = 0;
+ u4 i = 0;
  for(WCM_Hyponode* who : hyponodes_)
  {
   fn(*this, *who, i);
@@ -115,9 +115,9 @@ void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hypernode&, WCM_Hyponod
  }
 }
 
-void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&, quint32)> fn)
+void WCM_Hypernode::each_hyponode(std::function<void(WCM_Hyponode&, u4)> fn)
 {
- quint32 i = 0;
+ u4 i = 0;
  for(WCM_Hyponode* who : hyponodes_)
  {
   fn(*who, i);

@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef WCM_DATABASE__H
 #define WCM_DATABASE__H
 
@@ -120,6 +126,13 @@ class WCM_Database
 
  int column_change_count_;
 
+ enum DateTime_Codes {
+   Recent_Create = 1, Recent_Load_From_File = 2,
+   Created = 3, Last_Load_From_File = 4, Recent_Attach = 5
+ };
+
+ QMap<u1, QDateTime> datetimes_;
+
  wg_int _add_column_entry_(WCM_Column* qc, wg_int data,
    u4& column_specific_record_index, u4& field_number);
 
@@ -197,16 +210,35 @@ class WCM_Database
     (std::function<void(QByteArray&, u4)> fn);
  };
 
+ struct With_Check_Create_Package
+ {
+  WCM_Database* _this;
+  void operator <<
+    (std::function<void()> fn);
+
+  void operator <<
+    (std::function<void(WCM_Database&)> fn);
+
+ };
+
+
 public:
 
  ACCESSORS(QString ,name)
  ACCESSORS(QString ,full_path)
+ ACCESSORS(MACRO_PASTE(QMap<u1, QDateTime>) ,datetimes)
+
 
  WCM_Database(QString name, QString full_path);
 
  With_All_Column_Records_Package with_all_column_records(QString col)
  {
   return {this, col};
+ }
+
+ With_Check_Create_Package with_check_create()
+ {
+  return {this};
  }
 
  WCM_Column* get_column_by_name(QString name);

@@ -5,16 +5,13 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "wcm-type.h"
+#include "clo-file.h"
 
-#include <QDataStream>
-#include <QIODevice>
+//#include "wcm/wcm-hyponode.h"
 
-#include "wcm/wcm-column-set.h"
-
-WCM_Type::WCM_Type()
+CLO_File::CLO_File(Kinds k)
+  : kind_(k)
 {
 
 }
-
 

@@ -4,7 +4,7 @@
 #     (See accompanying file LICENSE_1_0.txt or copy at
 #           http://www.boost.org/LICENSE_1_0.txt)
 
-PROJECT_NAME = clo43sd-console
+PROJECT_NAME = clo43sd-import
 
 include(../build-group.pri)
 
@@ -31,7 +31,6 @@ HEADERS += \
 
 SOURCES += \
   $$SRC_DIR/main.cpp \
-
 
 
 #?
