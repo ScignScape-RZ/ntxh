@@ -61,7 +61,6 @@ model, based on the idea of \q{channels}, which combines
 elements of all three. 
 }
 \vspace{-.1em}
-%\spsubsection{Generalized Lambda Calculus}
 \subsection{Generalized Lambda Calculus}
 \p{Lambda (or \mOldLambda{}-) Calculus emerged in the early 
 20th Century as a formal model of mathematical 
@@ -275,11 +274,10 @@ in the umbrella of graph-based data modeling,
 to which I now turn. 
 }
 \vspace{-.1em}
-%\spsubsectiontwolinerepl{Directed Hypergraphs and \q{Channel Abstractions}}%
 \subsectiontwolinerepl{Directed Hypergraphs and \q{Channel Abstractions}}%
 {Directed Hypergraphs and 'Channel Abstractions'}
 \p{A \i{hypergraph} is a graph whose edges (a.k.a. \q{hyperedges}) can span
-more than two nodes (\cite[e.g. volume 2, p. 24]{BenGoetzel},
+more than two nodes (\cite[e.g. volume 2, page 24]{BenGoetzel},
 \cite{HaishanLiu}, \cite{MarkMinas} and \cite{MinasSchneider}, 
 \cite{BalintMolnar},
 \cite{AlexandraPoulovassilis}, \cite{JohnStell},
@@ -296,10 +294,10 @@ reduces to a directed ordinary graph.\footnote{Here when distinguishing \q{head}
 invert the orientation which most mathematical treatments 
 of hypergraphs use: that is, I define hyperedges such 
 that the edge \i{starts at} the head and \i{ends at} the 
-tail.  My rationale is that the hyperedges induces an 
+tail.  My rationale is that hyperedges induce an 
 orientation not only on the head/tail pair, but 
-\i{within} the head and tail, which become an ordered 
-tuple rather than a set.  Hyperedges can therefore be 
+\i{within} the head and tail, which become ordered 
+tuples rather than sets.  Hyperedges can therefore be 
 seen as paths that \q{visit} a chain of hyponodes, first 
 those in the head, then those in the tail.  My terminology 
 is consistent with software libraries wherein the 
@@ -310,7 +308,7 @@ I will use the former term when attending more to the
 edge's representational role as linking two hypernodes,
 and use the latter term when focusing more on its tuple
 of spanned nodes irrespective of their partition into
-\i{head} and \i{tail}. % (see Figure 1).
+\i{head} and \i{tail}.
 }
 \p{I assume that hyperedges always span an \i{ordered} node-tuple
 which induces an ordering in the head- and tail-sets: so a
@@ -446,9 +444,6 @@ transformations may be useful in some analytic/representational contexts,
 and \CH{}s are flexible in part by morphing naturally into these various
 forms.\phantomsection\label{unplug}
 }
-%\spinc{unplug}
-%\begingroup\captionof{figure}{\q{Unplugging} a Node}\endgroup
-%\vspace{1.5em}
 \spinctc{unplug}{Unplugging a Node.}{fig:unplug}
 \p{Notice that information present \i{within} a hypernode can also be expressed as
 relations \i{between} hypernodes.  For example, consider the information that
@@ -522,7 +517,7 @@ structures.  The design and rationale of representational paradigms is
 influenced differently by these two goals, as I will review now with an eye
 in part on drawing comparisons between \CH{} and \RDF{}.
 }
-%\spsubsection{Channelized Hypergraphs and \largeRDF{}}
+\vspace{-.1em}
 \subsection{Channelized Hypergraphs and \largeRDF{}}
 \phantomsection\label{RDF}
 \p{The Resource Description Framework (\RDF{}) models information
@@ -540,12 +535,6 @@ however, higher-level \RDF{} notation such as \TTL{} (\Turtle{} or
 deal with aggregate groups of data, such as \RDF{} containers and
 collections.\phantomsection\label{lived}
 }
-%\vspace{-.5em}
-%\tcl{lived}
-%\begingroup\captionof{figure}{CH vs. RDF Collections.}\endgroup
-%\vspace{.5em}
-%\spinc{lived}
-%\ftcl{lived}
 \spinctc{lived}{CH vs. RDF Collections.}{fig:lived}
 \p{For example, imagine a representation of the
 fact \q{(A/The person named) Nathaniel, \FourtySix{}, has lived in Brooklyn,
@@ -557,7 +546,7 @@ languages encode many-to-many or one-to-many assertions, graphed as
 edges having more than one subject and/or predicate.  Indeed,
 Tim Berners-Lee himself suggests that
 \q{Implementations may treat list as a data type rather than just
-a ladder of rdf:first and rdf:rest properties} \cite[p. 6]{TimBernersLee}.
+a ladder of rdf:first and rdf:rest properties} \cite[page 6]{TimBernersLee}.
 That is, the specification for
 \RDF{} list-type data structures invites us to consider that
 they \i{may} be regarded integral units rather than
@@ -911,7 +900,6 @@ realm of applied Type Theory, with the goal of
 ultimately folding type theory into this convergence as well.   
 }
 \vspace{-.1em}
-%\spsubsectiontwoline{Procedural Input/Output Protocols via Type Theory}
 \subsectiontwoline{Procedural Input/Output Protocols via Type Theory}
 \p{\label{types}Parallel to the historical evolution where \mOldLambda{}-Calculus
 progressively diversified and re-oriented toward concrete
@@ -1157,7 +1145,6 @@ Channel Algebras can also be seen as adding to Ontologies governing
 Directed Hypergraphs.  Such is the perspective I will take
 for the remainder of this chapter.
 }
-%\decoline{}
 \p{For a Channel Algebra \Chi{} and a \Chi{}-closed type system
 (written, say) \TySChi{}, \Chi{} extends \TyS{} because function-signatures
 conforming to \Chi{} become types in \TyS{}.  At the same time,

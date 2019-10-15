@@ -279,7 +279,7 @@ to which I now turn.
 \subsectiontwolinerepl{Directed Hypergraphs and \q{Channel Abstractions}}%
 {Directed Hypergraphs and 'Channel Abstractions'}
 \p{A \i{hypergraph} is a graph whose edges (a.k.a. \q{hyperedges}) can span
-more than two nodes (\cite[e.g. volume 2, p. 24]{BenGoetzel},
+more than two nodes (\cite[e.g. volume 2, page 24]{BenGoetzel},
 \cite{HaishanLiu}, \cite{MarkMinas} and \cite{MinasSchneider}, 
 \cite{BalintMolnar},
 \cite{AlexandraPoulovassilis}, \cite{JohnStell},
@@ -296,10 +296,10 @@ reduces to a directed ordinary graph.\footnote{Here when distinguishing \q{head}
 invert the orientation which most mathematical treatments 
 of hypergraphs use: that is, I define hyperedges such 
 that the edge \i{starts at} the head and \i{ends at} the 
-tail.  My rationale is that the hyperedges induces an 
+tail.  My rationale is that hyperedges induce an 
 orientation not only on the head/tail pair, but 
-\i{within} the head and tail, which become an ordered 
-tuple rather than a set.  Hyperedges can therefore be 
+\i{within} the head and tail, which become ordered 
+tuples rather than sets.  Hyperedges can therefore be 
 seen as paths that \q{visit} a chain of hyponodes, first 
 those in the head, then those in the tail.  My terminology 
 is consistent with software libraries wherein the 
@@ -523,6 +523,7 @@ influenced differently by these two goals, as I will review now with an eye
 in part on drawing comparisons between \CH{} and \RDF{}.
 }
 %\spsubsection{Channelized Hypergraphs and \largeRDF{}}
+\vspace{-.1em}
 \subsection{Channelized Hypergraphs and \largeRDF{}}
 \phantomsection\label{RDF}
 \p{The Resource Description Framework (\RDF{}) models information
@@ -557,7 +558,7 @@ languages encode many-to-many or one-to-many assertions, graphed as
 edges having more than one subject and/or predicate.  Indeed,
 Tim Berners-Lee himself suggests that
 \q{Implementations may treat list as a data type rather than just
-a ladder of rdf:first and rdf:rest properties} \cite[p. 6]{TimBernersLee}.
+a ladder of rdf:first and rdf:rest properties} \cite[page 6]{TimBernersLee}.
 That is, the specification for
 \RDF{} list-type data structures invites us to consider that
 they \i{may} be regarded integral units rather than

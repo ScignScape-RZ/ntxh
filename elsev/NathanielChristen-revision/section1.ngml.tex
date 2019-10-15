@@ -296,7 +296,7 @@ of the biomedical ecosystem, is that no commensurate oversight
 framework exists in the software world.
 Biomedical \IT{} regulations tend to be ad-hoc and narrowly domain-focused. 
 For example, code bases in the United States which manage \HLSeven{}
-data (a stadardized Electronic Medical Record format) must 
+data (a standardized \EMR{} \mdash{} Electronic Medical Record \mdash{} format) must 
 meet certain requirements, but there is no comparable framework 
 for software targeting other kinds of health-care information.  
 This is not only \mdash{} or not primarily \mdash{} an issue of 
@@ -306,8 +306,8 @@ computer programming and software development, of
 what a robust regulatory framework would look like: what 
 kinds of questions it would ask; what steps a company could 
 follow to demonstrate regulatory compliance; what indicators 
-the public should consult to check that any software 
-that could affect their medical outcomes is properly vetted.
+the public should consult to verify that any software 
+that could affect their medical outcome has been properly vetted.
 }
 \p{In the United States, \HLSeven{} (which encompasses multiple 
 clinical, continuity-of-care, and decision-support 
@@ -318,8 +318,9 @@ application-specific, layer of a technology stack which
 collectively enables network-based digital sharing of 
 health records and other bioinformatic content). 
 Government-supported programs such as  
-ONC (Office of the National Coordinator for Health Information Technology) 
-Health IT Certification, which maintains a network of software-evalution 
+ONC Health IT Certification (ONC stands for \q{Office of the National 
+Coordinator for Health Information Technology}), which maintains 
+a network of software-evaluation 
 labs and testing infrastructure to vet Health IT products 
 (called \q{modules}), confirm in particular that software 
 claiming \HLSeven{} compliance can properly \i{consume} and 
@@ -327,7 +328,7 @@ claiming \HLSeven{} compliance can properly \i{consume} and
 or data structures included in the \HLSeven{} family of standards.  
 This gives developers clear guidelines of what behaviors their 
 applications must emulate in order to legitimately 
-participate in biomedical data sharing, and also 
+participate in biomedical data sharing; and also 
 allows doctors and patients to garner more information about 
 Health IT vendors' solutions. 
 }
@@ -351,13 +352,13 @@ However, in many cases the whole premise of
 clinical innovations is to rethink 
 analytic methodologies; or clinical technology 
 is introduced which generates new kind of 
-data \mdash{} reflecting the novel physical design 
-of diagnostic equipment, for example \mdash{} 
+data (reflecting the novel physical design 
+of diagnostic equipment, for example) 
 that needs to be included in medical records 
 according to its own, internal data model.
 }
 \p{As a concrete example, consider Eran Bellin's \q{Clinical Looking Glass} 
-(\CLG{}) model, developed at Montefiore Medical Center in New York 
+(\CLG{}) model, developed at Montefiore Medical Center in New York City 
 \cite{EranBellin}.  
 Inspired by \q{patient-centered} care trends, \CLG{} seeks to 
 organize clinical data around \q{patient-centric time frames} 
@@ -372,17 +373,17 @@ from such \q{index events}.  The clinical rationale for
 \CLG{} data models is to facilitate \q{patient-centered} 
 studies of medical data \mdash{} analyzing for instance the 
 length of time between patients' starting a treatment course 
-and when a desired target outcome is achieved; Bellin argues 
+and the point at which a desired target outcome is achieved; Bellin argues 
 that conventional clinical software is designed around 
 \q{business-volume-centric} queries which originate from 
 hospitals' administrative requirements rather than 
 patient-centered concerns, which makes it more difficult 
 to query normal clinical databases in a patient-centered manner 
-\cite[pp. 5-6]{BellinExplore}.  The \CLG{} software counters 
+\cite[pages 5-6]{BellinExplore}.  The \CLG{} software counters
 that trend by developing a \q{patient-centered} 
 query methodology (and a \GUI{} for doctors to graphically 
 formulate queries), along with a higher-scale 
-\q{cohort model} where patients are aggregrated 
+\q{cohort model} where patients are aggregated 
 (while the patient-centered data models 
 are preserved at the cohort level).  
 Internally, this query system depends upon an \q{object model} 
@@ -401,29 +402,29 @@ and repositioned as a object-system which diverse
 software components could adopt.  In this scenario, 
 given that \CLG{} is expressly formulated as an alternative 
 to traditional \EMR{}s, it is reasonable to assume that the 
-\CLG{} object model would engeder its own \q{consume and query} 
+\CLG{} object model would engender its own \q{consume and query} 
 protocols \mdash{} for data sharing, validation, and analysis \mdash{} 
-which would be sufficiently divergent from \HLSeven{} formats 
-that the \HLSeven{} certification process would not be 
-applicable.  Comparable rigor would therefore 
+which, consequently, would be too divergent from \HLSeven{} formats 
+for the \HLSeven{} certification process to be 
+applicable.  In that instance, comparable rigor would thus 
 demand either a separate certification initiative 
-specific to \CLG{}, or an informal (and therefore 
+specific to \CLG{} or an informal (and therefore 
 unregulated) commitment on the 
 part of developers to comply with behavioral standards 
 appropriate for the \CLG{} object model.  
 }
 \p{The case of \CLG{} is just one example of clinical innovation; 
-given the (thankfully) fertile ground of research for new treatments and 
-technologies, we can see our health care system as 
+given the (thankfully) fertile ground for research on new treatments and 
+technologies, we can see our healthcare system as 
 targets for many analogous innovations from the 
 biochemical, bioinformatics, and Cyber-Physical domains.  
 The sheer volume of new data models makes it likely 
 that \q{data-centric} certification 
 as in \HLSeven{} \mdash{} standardizing a predefined set of 
-data models \mdash{} will constantly become outdated.  
+data models \mdash{} will continually become outdated.  
 For this reason Requirements Engineering should 
 look more toward a \q{software-centric} paradigm, 
-where developers consiously adopt design patterns 
+where developers consciously adopt design patterns 
 abstracted from particular data models.\footnote{As a case-study, the dataset for this chapter 
 includes an object model with some similarities to 
 \CLG{}; the documentation and protocols associated 
@@ -853,7 +854,6 @@ and what should be tested externally.  I will now
 examine this question in greater detail.
 }
 \vspace{-.1em}
-%\spsubsection{Core Language vs. External Tools}
 \subsection{Core Language vs. External Tools}
 \p{Because of programming languages' engineering limitations, 
 such as I just outlined, software projects should not 
@@ -891,7 +891,7 @@ deeply-embedded syntax permits ease of development without sacrificing
 the ability to develop various back-ends and verification tools [such as]  
 a theorem-prover back-end.  All these back-ends share the
 same AST [Abstract Syntax Tree]: Ivory verifies what it compiles.
-\cite[p. 1]{ivory}.
+\cite[page 1]{ivory}.
 \end{dquote}   In other words, the creators of Ivory are promoting the
 fact that their language buttresses via its type system 
 \mdash{} and via a mathematical precision suitable for 
@@ -937,7 +937,7 @@ pattern-based) will be translated into equivalent SCA expressions.  An SCA
 expression can then be evaluated using a standard SCA evaluator, which
 will serve as a common query processing engine.  The analogy from
 relational database systems is the translation of SQL to expressions based on
-relational algebra. \cite[p. 15]{SantanuPaul}
+relational algebra. \cite[page 15]{SantanuPaul}
 \end{dquote}
 So the \i{algebraic} representation of source code is favored
 here because it makes computer code available
