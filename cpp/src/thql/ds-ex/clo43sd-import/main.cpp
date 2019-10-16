@@ -44,9 +44,12 @@ void create(WCM_Database& wcmd)
  wcmd.save();
 }
 
+
 int main(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+
+// wcmd.with_check_create() << &create;
 
  wcmd.with_check_create() << [&wcmd]()
  {
@@ -63,6 +66,61 @@ int main(int argc, char *argv[])
 
   wcmd.save();
  };
+
+ NTXH_Document doc(DEFAULT_NTXH_FOLDER "/clo43sd/species.ntxh");
+
+ doc.parse();
+
+ QVector<CLO_Species*> species;
+
+ QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
+
+ QMap<u4, QString> icm;
+ icm[0] = "Species::Abbreviation";
+
+ for(NTXH_Graph::hypernode_type* hn : hns)
+ {
+  doc.graph()->get_sfsr(hn, {{1,3}}, [&species]
+    (QVector<QPair<QString, void*>>& prs)
+  {
+   CLO_Species* s = new CLO_Species;
+   s->set_abbreviation(prs[0].first);
+   s->set_instances(prs[1].first.toUInt());
+   s->set_name(prs[2].first);
+   species.push_back(s);
+  });
+ }
+
+ wcmd.set_creation_datetime();
+
+ // // init info hypernode
+ {
+  WCM_Hypernode whn;
+
+  wcmd.with_new_hyponode_array(2) << [&wcmd, &whn, &hns](WCM_Hyponode** whos)
+  {
+   whos[0]->set_qt_encoding(wcmd.datetimes());
+   whos[1]->set_qt_encoding("/home/nlevisrael/hypergr/bird/CLO-43SD"_q_());
+   whn.add_hyponodes(whos)[2];
+   whn.add_to_database(wcmd, "@Info", "Default@Info");
+  };
+ }
+
+ for(CLO_Species* s : species)
+ {
+  WCM_Hypernode whn;
+  wcmd.with_new_hyponode_array(3) << [&wcmd, &whn, &icm, s](WCM_Hyponode** whos)
+  {
+   whos[0]->set_wgdb_encoding({wcmd.wdb().encode_string(s->abbreviation())});
+   whos[1]->set_qt_encoding(s->instances());
+   whos[2]->set_qt_encoding(s->name());
+   whn.add_hyponodes(whos)[3];
+   whn.set_indexed_column_map(&icm);
+   whn.add_to_database(wcmd, "@Species", "Default@Species");
+  };
+  wcmd.save();
+ }
+
  return 0;
 }
 

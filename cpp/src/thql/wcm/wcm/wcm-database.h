@@ -226,7 +226,11 @@ public:
 
  ACCESSORS(QString ,name)
  ACCESSORS(QString ,full_path)
- ACCESSORS(MACRO_PASTE(QMap<u1, QDateTime>) ,datetimes)
+ ACCESSORS__RGET(MACRO_PASTE(QMap<u1, QDateTime>) ,datetimes)
+ ACCESSORS__SDECLARE(QDateTime ,creation_datetime)
+
+ QVariantMap datetimes_qvariantmap();
+ void init_datetimes(QVariantMap& qvm);
 
 
  WCM_Database(QString name, QString full_path);
@@ -243,6 +247,7 @@ public:
 
  WCM_Column* get_column_by_name(QString name);
 
+ void set_creation_datetime();
  u4 get_record_count(QString col);
 
  u4 new_column_code();

@@ -303,6 +303,44 @@ void WCM_Database::reload_from_file()
  init_columns();
 }
 
+void WCM_Database::init_datetimes(QVariantMap& qvm)
+{
+ QVariantMap result;
+ std::map<QString, QVariant> sm = qvm.toStdMap();
+ std::map<u1, QDateTime> rsm;
+ std::transform(sm.begin(), sm.end(),
+   std::inserter(rsm, rsm.end()),
+   []( std::pair<QString, QVariant> kv) -> std::pair<u1, QDateTime>
+ {
+  return {kv.first.toInt(), kv.second.toDateTime()};
+ });
+ datetimes_ = QMap<u1, QDateTime>(rsm);
+}
+
+QVariantMap WCM_Database::datetimes_qvariantmap()
+{
+ QVariantMap result;
+ std::map<u1, QDateTime> sm = datetimes_.toStdMap();
+ std::map<QString, QVariant> rsm;
+ std::transform(sm.begin(), sm.end(),
+   std::inserter(rsm, rsm.end()),
+   []( std::pair<u1, QDateTime> kv) -> std::pair<QString, QVariant>
+ {
+  return {QString::number(kv.first), kv.second};
+ });
+ return QVariantMap(rsm);
+}
+
+void WCM_Database::set_creation_datetime()
+{
+ datetimes_.insert(Created, QDateTime::currentDateTime());
+}
+
+void WCM_Database::set_creation_datetime(QDateTime dtm)
+{
+ datetimes_.insert(Created, dtm);
+}
+
 void WCM_Database::With_Check_Create_Package::operator<<(std::function<void()> fn)
 {
  _this->check_create();
