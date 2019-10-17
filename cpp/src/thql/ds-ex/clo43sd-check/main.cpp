@@ -28,6 +28,8 @@
 
 #include "clo43sd-data/clo-species.h"
 
+#include "global-types.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -98,15 +100,19 @@ int main(int argc, char *argv[])
    QMap<u4, QString> icm;
    icm[1] = "Species::Abbreviation@CLO_File";
 
+//   u4 count = 0;
+
    wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
-     "BTBW"_q) << [&qwcs, &wcmd, &icm](QByteArray& qba, void*)
+     "BTBW"_q) << [&qwcs, &icm](QByteArray& qba, void*, u4 count,
+     with_brake)
    {
+    ++count;
     WCM_Hypernode whn;
 
     whn.set_indexed_column_map(&icm);
     whn.absorb_data(qba, qwcs);
 
-    whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+    whn.with_hyponode(0) << [](WCM_Hyponode& who)
     {
      qDebug() << "File Kind: " << CLO_File::kind_string(who.qt_encoding().toInt());
     };
@@ -116,6 +122,9 @@ int main(int argc, char *argv[])
      QVariant qv = who.qt_encoding();
      qDebug() << "File Tail: " << who.qt_encoding().toString();
     };
+
+    if(count == 4)
+      brake();
    };
   }
  }

@@ -34,6 +34,9 @@ extern "C" {
 
 #include <QVariant>
 
+#define with_brake std::function<void(z8)> _brake
+#define brake(__VARAGS__) _brake({__VARAGS__})
+
 class WCM_Column;
 class WCM_Hyponode;
 
@@ -139,11 +142,17 @@ class WCM_Database
   wg_int query_param;
   struct FN_Types
   {
-   enum class Enum { QBA_Ptr, QBA_Ref };
+   enum class Enum { QBA_Ptr, QBA_Ptr_Brake,
+     QBA_Ref, QBA_Ref_Brake,
+     QBA_Ref_Count, QBA_Ref_Count_Brake};
    Enum which;
    union fns_union {
     std::function<void(QByteArray*, void*)> fn_QBA_Ptr;
+    std::function<void(QByteArray*, void*, with_brake)> fn_QBA_Ptr_Brake;
     std::function<void(QByteArray&, void*)> fn_QBA_Ref;
+    std::function<void(QByteArray&, void*, with_brake)> fn_QBA_Ref_Brake;
+    std::function<void(QByteArray&, void*, u4)> fn_QBA_Ref_Count;
+    std::function<void(QByteArray&, void*, u4, with_brake)> fn_QBA_Ref_Count_Brake;
     ~fns_union()
     {
     }
@@ -153,12 +162,19 @@ class WCM_Database
    {
     switch (which)
     {
-    case Enum::QBA_Ptr:
-      the_fns.fn_QBA_Ptr.~function();
-      break;
-    case Enum::QBA_Ref:
-     the_fns.fn_QBA_Ptr.~function();
-      break;
+#define TEMP_MACRO(arg) \
+    case Enum::arg: \
+      the_fns.fn_##arg.~function(); \
+      break;  \
+
+    TEMP_MACRO(QBA_Ptr)
+    TEMP_MACRO(QBA_Ptr_Brake)
+    TEMP_MACRO(QBA_Ref)
+    TEMP_MACRO(QBA_Ref_Brake)
+    TEMP_MACRO(QBA_Ref_Count)
+    TEMP_MACRO(QBA_Ref_Count_Brake)
+
+#undef TEMP_MACRO
     }
    }
   };
@@ -167,7 +183,19 @@ class WCM_Database
     (std::function<void(QByteArray*, void*)> fn);
 
   void operator <<
+    (std::function<void(QByteArray*, void*, with_brake)> fn);
+
+  void operator <<
     (std::function<void(QByteArray&, void*)> fn);
+
+  void operator <<
+    (std::function<void(QByteArray&, void*, with_brake)> fn);
+
+  void operator <<
+    (std::function<void(QByteArray&, void*, u4)> fn);
+
+  void operator <<
+    (std::function<void(QByteArray&, void*, u4, with_brake)> fn);
 
   void proceed_fns(FN_Types* fns);
  };

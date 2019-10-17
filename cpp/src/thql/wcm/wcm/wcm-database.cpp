@@ -610,6 +610,7 @@ void WCM_Database::retrieve_all_records(WCM_Column* qc,
   For_All_Records_Package::FN_Types* fns)
 {
  wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, asize);
+ u4 count = 0;
  for(;;)
  {
   void* index_record = wg_fetch(white_db_, qry);
@@ -631,9 +632,36 @@ void WCM_Database::retrieve_all_records(WCM_Column* qc,
     fns->the_fns.fn_QBA_Ref(*qba, result);
     delete qba;
     break;
+   case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ref_Brake:
+    {
+     z8 brk = z8::get_max();
+     auto brfn = [&brk](z8 bb){ brk = bb; };
+     fns->the_fns.fn_QBA_Ref_Brake(*qba, result, brfn);
+     delete qba;
+     if(!brk.is_max())
+       goto End_Loop;
+    }
+    break;
+   case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ref_Count:
+    fns->the_fns.fn_QBA_Ref_Count(*qba, result, count);
+    delete qba;
+    ++count;
+    break;
+   case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ref_Count_Brake:
+    {
+     z8 brk = z8::get_max();
+     auto brfn = [&brk](z8 bb){ brk = bb; };
+     fns->the_fns.fn_QBA_Ref_Count_Brake(*qba, result, count, brfn);
+     delete qba;
+     if(!brk.is_max())
+       goto End_Loop;
+     ++count;
+    }
+    break;
    }
   }
  }
+End_Loop:
  wg_free_query(white_db_, qry);
 }
 
@@ -682,10 +710,42 @@ void WCM_Database::For_All_Records_Package::operator<<
 }
 
 void WCM_Database::For_All_Records_Package::operator<<
+  (std::function<void (QByteArray*, void*, with_brake)> fn)
+{
+ WCM_Database::For_All_Records_Package::FN_Types fnt
+  {FN_Types::Enum::QBA_Ptr_Brake, {.fn_QBA_Ptr_Brake = {fn} }};
+ proceed_fns(&fnt);
+}
+
+void WCM_Database::For_All_Records_Package::operator<<
   (std::function<void (QByteArray&, void*)> fn)
 {
  WCM_Database::For_All_Records_Package::FN_Types fnt
   {FN_Types::Enum::QBA_Ref, {.fn_QBA_Ref = {fn} }};
+ proceed_fns(&fnt);
+}
+
+void WCM_Database::For_All_Records_Package::operator<<
+  (std::function<void(QByteArray&, void*, with_brake)> fn)
+{
+ WCM_Database::For_All_Records_Package::FN_Types fnt
+  {FN_Types::Enum::QBA_Ref_Brake, {.fn_QBA_Ref_Brake = {fn} }};
+ proceed_fns(&fnt);
+}
+
+void WCM_Database::For_All_Records_Package::operator<<
+  (std::function<void (QByteArray&, void*, u4)> fn)
+{
+ WCM_Database::For_All_Records_Package::FN_Types fnt
+  {FN_Types::Enum::QBA_Ref_Count, {.fn_QBA_Ref_Count = {fn} }};
+ proceed_fns(&fnt);
+}
+
+void WCM_Database::For_All_Records_Package::operator<<
+  (std::function<void(QByteArray&, void*, u4, with_brake)> fn)
+{
+ WCM_Database::For_All_Records_Package::FN_Types fnt
+  {FN_Types::Enum::QBA_Ref_Count_Brake, {.fn_QBA_Ref_Count_Brake = {fn} }};
  proceed_fns(&fnt);
 }
 

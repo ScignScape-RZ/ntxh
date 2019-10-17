@@ -29,4 +29,37 @@ static inline QString operator ""_q(const char* cs, size_t size)
  return QString::fromStdString(ss);
 }
 
+template<typename T>
+struct Defaulting_To_Zero
+{
+ T the_t;
+ Defaulting_To_Zero(T tt) : the_t(tt){}
+ Defaulting_To_Zero() : the_t(0){}
+ operator T() { return the_t; }
+
+ static Defaulting_To_Zero<T> get_max()
+ {
+  return Defaulting_To_Zero(std::numeric_limits<T>::max());
+ }
+
+ bool is_max()
+ {
+  return the_t == std::numeric_limits<T>::max();
+ }
+
+// operator bool()
+// {
+//  return the_t != -1;
+// }
+};
+
+typedef Defaulting_To_Zero<u1> z1;
+typedef Defaulting_To_Zero<u2> z2;
+typedef Defaulting_To_Zero<u4> z4;
+typedef Defaulting_To_Zero<u8> z8;
+
+
+//#define until(x) return ({x}).inv;
+
+
 #endif // GLOBAL_TYPES__H
