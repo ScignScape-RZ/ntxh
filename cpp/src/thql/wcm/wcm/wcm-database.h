@@ -126,11 +126,6 @@ class WCM_Database
 
  int column_change_count_;
 
- enum DateTime_Codes {
-   Recent_Create = 1, Recent_Load_From_File = 2,
-   Created = 3, Last_Load_From_File = 4, Recent_Attach = 5
- };
-
  QMap<u1, QDateTime> datetimes_;
 
  wg_int _add_column_entry_(WCM_Column* qc, wg_int data,
@@ -229,8 +224,15 @@ public:
  ACCESSORS__RGET(MACRO_PASTE(QMap<u1, QDateTime>) ,datetimes)
  ACCESSORS__SDECLARE(QDateTime ,creation_datetime)
 
+ enum DateTime_Codes {
+   Recent_Create = 1, Recent_Load_From_File = 2,
+   Created = 3, Last_Load_From_File = 4, Recent_Attach = 5
+  };
+
  QVariantMap datetimes_qvariantmap();
  void init_datetimes(QVariantMap& qvm);
+ void reinit_datetimes(QVariantMap& qvm);
+ void reinit_datetimes(QVariant qvar);
 
 
  WCM_Database(QString name, QString full_path);

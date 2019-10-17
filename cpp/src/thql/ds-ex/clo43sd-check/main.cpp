@@ -34,6 +34,28 @@ int main(int argc, char *argv[])
  WCM_Database wcmd(CLO43SD_DB_CODE,
    DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
  wcmd.load();
+ WCM_Column_Set qwcs(wcmd);
+
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, qwcs);
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   wcmd.reinit_datetimes(who.qt_encoding());
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+
+  qDebug() << "Database Created: " << wcmd.datetimes()[WCM_Database::Created];
+  qDebug() << "External Dataset Root: " << ds_root;
+ }
 
  return 0;
 }

@@ -303,6 +303,22 @@ void WCM_Database::reload_from_file()
  init_columns();
 }
 
+void WCM_Database::reinit_datetimes(QVariant qvar)
+{
+ QVariantMap qvm = qvar.toMap();
+ reinit_datetimes(qvm);
+}
+
+void WCM_Database::reinit_datetimes(QVariantMap& qvm)
+{
+ init_datetimes(qvm);
+ if(datetimes_.contains(Recent_Create))
+   datetimes_[Created] = datetimes_.take(Recent_Create);
+ if(datetimes_.contains(Recent_Load_From_File))
+   datetimes_[Last_Load_From_File] = datetimes_.take(Recent_Load_From_File);
+ }
+
+
 void WCM_Database::init_datetimes(QVariantMap& qvm)
 {
  QVariantMap result;
