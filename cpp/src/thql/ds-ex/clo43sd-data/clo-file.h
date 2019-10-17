@@ -35,6 +35,26 @@ public:
   NPY_MFCC, NTXH_MFCC, Audio
  };
 
+ static QString kind_string(u1 k)
+ {
+  return kind_string((Kinds) k);
+ }
+
+ static QString kind_string(Kinds k)
+ {
+  switch(k)
+  {
+  case Kinds::N_A: return QString();
+#define TEMP_MACRO(arg) case Kinds::arg: return #arg;
+  TEMP_MACRO(NPY_Logmelspec)
+  TEMP_MACRO(NPY_MFCC)
+  TEMP_MACRO(NTXH_MFCC)
+  TEMP_MACRO(Audio)
+#undef TEMP_MACRO
+   default: return QString();
+  }
+ }
+
 private:
 
  Kinds kind_;

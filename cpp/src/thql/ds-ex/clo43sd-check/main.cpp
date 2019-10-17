@@ -57,6 +57,68 @@ int main(int argc, char *argv[])
   qDebug() << "External Dataset Root: " << ds_root;
  }
 
+ // // test some specific species
+ {
+  // //  first get species info ...
+  {
+   QMap<u4, QString> icm;
+   icm[0] = "Species::Abbreviation";
+
+   QByteArray qba;
+   wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+      "BTBW"_q);
+
+   WCM_Hypernode whn;
+
+   whn.set_indexed_column_map(&icm);
+   whn.absorb_data(qba, qwcs);
+
+   whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+   {
+    wg_int wgi = who.wgdb_encoding().data;
+    QString abbr = wcmd.wdb().decode_string(wgi);
+    qDebug() << "Species Abbreviation: " << abbr;
+   };
+
+   whn.with_hyponode(1) << [](WCM_Hyponode& who)
+   {
+    QVariant qv = who.qt_encoding();
+//    u1 num = (u1) qv.toInt();
+    qDebug() << "Number of Instances: " << (u1) qv.toInt();
+   };
+
+   whn.with_hyponode(2) << [](WCM_Hyponode& who)
+   {
+    QVariant qv = who.qt_encoding();
+//    QString qs = qv.toString();
+    qDebug() << "Species Name: " << qv.toString();
+   };
+  }
+  {
+   QMap<u4, QString> icm;
+   icm[1] = "Species::Abbreviation@CLO_File";
+
+   wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
+     "BTBW"_q) << [&qwcs, &wcmd, &icm](QByteArray& qba, void*)
+   {
+    WCM_Hypernode whn;
+
+    whn.set_indexed_column_map(&icm);
+    whn.absorb_data(qba, qwcs);
+
+    whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+    {
+     qDebug() << "File Kind: " << CLO_File::kind_string(who.qt_encoding().toInt());
+    };
+
+    whn.with_hyponode(2) << [](WCM_Hyponode& who)
+    {
+     QVariant qv = who.qt_encoding();
+     qDebug() << "File Tail: " << who.qt_encoding().toString();
+    };
+   };
+  }
+ }
  return 0;
 }
 
