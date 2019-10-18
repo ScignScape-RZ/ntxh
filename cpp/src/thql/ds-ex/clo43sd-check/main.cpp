@@ -32,8 +32,47 @@
 
 #include "withs.h"
 
+#include <QMap>
+#include <QStringList>
+
+#include <QProcess>
+
+#include "base32.h"
+
 
 int main(int argc, char *argv[])
+{
+ QMap<QString, QStringList> args;
+ args.insert("abbr", {"BTBW"});
+ args.insert("root", {DEFAULT_WCM_FOLDER ""_q});
+
+ QByteArray qba;
+ QDataStream qds(&qba, QIODevice::WriteOnly);
+ qds << args;
+
+ QString enc;
+ base32_encode_qba(qba, enc);
+
+// QMap<QString, QStringList> args1;
+// {
+//  QByteArray qba1;
+//  base32_decode_qstring(enc, qba1);
+//  QDataStream qds(qba1);
+//  qds >> args1;
+// }
+
+ QProcess proc;
+ QString cmd = QString(ROOT_FOLDER "/../qt-repro/clo43sd-converter/clo43sd-converter");
+ qDebug() << "cmd: " << cmd;
+ proc.start(cmd, {enc});
+ proc.waitForFinished();
+ QString output(proc.readAllStandardError());
+ qDebug() << "OUT: " << output;
+ return 0;
+}
+
+
+int main1(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
    DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");

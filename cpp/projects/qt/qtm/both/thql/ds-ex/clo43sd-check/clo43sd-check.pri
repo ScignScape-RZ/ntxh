@@ -24,6 +24,8 @@ DEFINES += DEFAULT_NTXH_FOLDER=\\\"$$DATA_ROOT_DIR/ntxh\\\"
 
 DEFINES += CLO43SD_ROOT_FOLDER=\\\"$$ROOT_DIR/../external/data/clo43sd/CLO-43SD\\\"
 
+DEFINES += ROOT_FOLDER=\\\"$$ROOT_DIR\\\"
+
 DEFINES += CLO43SD_DB_CODE=\\\"222\\\"
 
 
