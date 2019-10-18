@@ -73,4 +73,75 @@ with_files_Package with_files(QDir qd)
  return {qd, {}, QDir::Files | QDir::NoDotAndDotDot};
 }
 
+
+// template<typename T>
+
+struct wr_brake
+{
+ std::function<void(wr_brake)> fn;
+ quint8 code;
+ static std::function<void(wr_brake)> get_null()
+ {
+  static std::function<void(wr_brake)> the_null = [](wr_brake){};
+  return the_null;
+ }
+ wr_brake() : fn(wr_brake::get_null()), code(0)
+ {
+ }
+ wr_brake(std::function<void(wr_brake)> f) : fn(f), code(1)
+ {
+ }
+
+};
+
+struct with_range_2_Package
+{
+ quint32 min;
+ quint32 max;
+
+ void operator<<(std::function<void(quint32)> fn)
+ {
+  for(quint32 i = min; i < max; ++i)
+    fn(i);
+ }
+
+ void operator<<(std::function<void(quint32, wr_brake wrb)> fn)
+ {
+  auto null_wrb = wr_brake::get_null();
+  auto wrb = [&null_wrb](wr_brake w)
+  {
+   if(w.code == 1)
+     w.fn({});
+   null_wrb = nullptr;
+  };
+  for(quint32 i = min; i < max; ++i)
+  {
+   fn(i, {wrb});
+   if(!null_wrb)
+     break;
+  }
+ }
+
+};
+
+struct with_range_Package
+{
+ quint32 min;
+ with_range_2_Package operator()(quint32 max)
+ {
+  return {min, max};
+ }
+ with_range_2_Package operator[](quint32 max)
+ {
+  return {min, max + 1};
+ }
+};
+
+with_range_Package with_range(quint32 min)
+{
+ return {min};
+}
+
+
+
 #endif // WITHS__H

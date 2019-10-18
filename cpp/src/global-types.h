@@ -37,6 +37,11 @@ struct Defaulting_To_Zero
  Defaulting_To_Zero() : the_t(0){}
  operator T() { return the_t; }
 
+ bool operator*()
+ {
+  return !is_max();
+ }
+
  static Defaulting_To_Zero<T> get_max()
  {
   return Defaulting_To_Zero(std::numeric_limits<T>::max());

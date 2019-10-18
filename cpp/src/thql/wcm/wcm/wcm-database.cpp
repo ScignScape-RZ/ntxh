@@ -638,7 +638,7 @@ void WCM_Database::retrieve_all_records(WCM_Column* qc,
      auto brfn = [&brk](z8 bb){ brk = bb; };
      fns->the_fns.fn_QBA_Ref_Brake(*qba, result, brfn);
      delete qba;
-     if(!brk.is_max())
+     if(!*brk)
        goto End_Loop;
     }
     break;
