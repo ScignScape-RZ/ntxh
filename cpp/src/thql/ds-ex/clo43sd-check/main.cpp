@@ -32,20 +32,8 @@
 
 #include "withs.h"
 
-int main(int argc, char *argv[])
-{
- with_range(1)(4) << [](u4 i, wr_brake wrb1)
- {
-  with_range(3)(6) << [i, &wrb1](u4 j, wr_brake wrb)
-  {
-   qDebug() << i << ", " << j;
-   wrb.fn({});
-  };
- };
- return 0;
-}
 
-int main1(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
    DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
@@ -118,7 +106,7 @@ int main1(int argc, char *argv[])
 
    wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
      "BTBW"_q) << [&qwcs, &icm](QByteArray& qba, void*, u4 count,
-     with_brake)
+     brake brk)
    {
     ++count;
     WCM_Hypernode whn;
@@ -138,7 +126,7 @@ int main1(int argc, char *argv[])
     };
 
     if(count == 4)
-      brake();
+      brk();
    };
   }
  }

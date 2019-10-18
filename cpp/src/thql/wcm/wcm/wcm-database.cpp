@@ -634,11 +634,11 @@ void WCM_Database::retrieve_all_records(WCM_Column* qc,
     break;
    case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ref_Brake:
     {
-     z8 brk = z8::get_max();
-     auto brfn = [&brk](z8 bb){ brk = bb; };
-     fns->the_fns.fn_QBA_Ref_Brake(*qba, result, brfn);
+     brake test_brk = brake(nullptr);
+     auto brk = brake::make_break_function(test_brk);
+     fns->the_fns.fn_QBA_Ref_Brake(*qba, result, {brk});
      delete qba;
-     if(!*brk)
+     if(test_brk.fn)
        goto End_Loop;
     }
     break;
@@ -649,11 +649,11 @@ void WCM_Database::retrieve_all_records(WCM_Column* qc,
     break;
    case WCM_Database::For_All_Records_Package::FN_Types::Enum::QBA_Ref_Count_Brake:
     {
-     z8 brk = z8::get_max();
-     auto brfn = [&brk](z8 bb){ brk = bb; };
-     fns->the_fns.fn_QBA_Ref_Count_Brake(*qba, result, count, brfn);
+     brake test_brk = brake(nullptr);
+     auto brk = brake::make_break_function(test_brk);
+     fns->the_fns.fn_QBA_Ref_Count_Brake(*qba, result, count, {brk});
      delete qba;
-     if(!brk.is_max())
+     if(test_brk.fn)
        goto End_Loop;
      ++count;
     }
@@ -710,7 +710,7 @@ void WCM_Database::For_All_Records_Package::operator<<
 }
 
 void WCM_Database::For_All_Records_Package::operator<<
-  (std::function<void (QByteArray*, void*, with_brake)> fn)
+  (std::function<void (QByteArray*, void*, brake)> fn)
 {
  WCM_Database::For_All_Records_Package::FN_Types fnt
   {FN_Types::Enum::QBA_Ptr_Brake, {.fn_QBA_Ptr_Brake = {fn} }};
@@ -726,7 +726,7 @@ void WCM_Database::For_All_Records_Package::operator<<
 }
 
 void WCM_Database::For_All_Records_Package::operator<<
-  (std::function<void(QByteArray&, void*, with_brake)> fn)
+  (std::function<void(QByteArray&, void*, brake)> fn)
 {
  WCM_Database::For_All_Records_Package::FN_Types fnt
   {FN_Types::Enum::QBA_Ref_Brake, {.fn_QBA_Ref_Brake = {fn} }};
@@ -742,7 +742,7 @@ void WCM_Database::For_All_Records_Package::operator<<
 }
 
 void WCM_Database::For_All_Records_Package::operator<<
-  (std::function<void(QByteArray&, void*, u4, with_brake)> fn)
+  (std::function<void(QByteArray&, void*, u4, brake)> fn)
 {
  WCM_Database::For_All_Records_Package::FN_Types fnt
   {FN_Types::Enum::QBA_Ref_Count_Brake, {.fn_QBA_Ref_Count_Brake = {fn} }};

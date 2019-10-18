@@ -68,28 +68,49 @@ struct with_files_Package
  }
 };
 
-with_files_Package with_files(QDir qd)
+static inline with_files_Package with_files(QDir qd)
 {
  return {qd, {}, QDir::Files | QDir::NoDotAndDotDot};
 }
 
 
-// template<typename T>
-
-struct wr_brake
+struct brake
 {
- std::function<void(wr_brake)> fn;
- quint8 code;
- static std::function<void(wr_brake)> get_null()
+ std::function<void(brake)> fn;
+ static std::function<void(brake)> get_null()
  {
-  static std::function<void(wr_brake)> the_null = [](wr_brake){};
+  static std::function<void(brake)> the_null = [](brake){};
   return the_null;
  }
- wr_brake() : fn(wr_brake::get_null()), code(0)
+ brake& operator&(brake& rhs)
+ {
+  rhs(); return *this;
+ }
+ brake() : fn(brake::get_null())
  {
  }
- wr_brake(std::function<void(wr_brake)> f) : fn(f), code(1)
+ brake(std::function<void(brake)> f) : fn(f)
  {
+ }
+ static std::function<void(brake)> make_break_function(brake& test_brk)
+ {
+  return [&test_brk](brake b)
+  {
+   if(b.fn)
+   {
+    test_brk.fn = b.fn;
+    b.fn({});
+   }
+  };
+ }
+ void operator()()
+ {
+  fn({});
+ }
+
+ void operator()(brake brk)
+ {
+  fn(brk);
  }
 
 };
@@ -105,23 +126,17 @@ struct with_range_2_Package
     fn(i);
  }
 
- void operator<<(std::function<void(quint32, wr_brake wrb)> fn)
+ void operator<<(std::function<void(quint32, brake brk)> fn)
  {
-  auto null_wrb = wr_brake::get_null();
-  auto wrb = [&null_wrb](wr_brake w)
-  {
-   if(w.code == 1)
-     w.fn({});
-   null_wrb = nullptr;
-  };
+  brake test_brk = brake(nullptr);
+  auto brk = brake::make_break_function(test_brk);
   for(quint32 i = min; i < max; ++i)
   {
-   fn(i, {wrb});
-   if(!null_wrb)
+   fn(i, {brk});
+   if(test_brk.fn)
      break;
   }
  }
-
 };
 
 struct with_range_Package
@@ -137,7 +152,7 @@ struct with_range_Package
  }
 };
 
-with_range_Package with_range(quint32 min)
+static with_range_Package with_range(quint32 min)
 {
  return {min};
 }

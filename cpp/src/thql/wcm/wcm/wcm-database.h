@@ -31,11 +31,15 @@ extern "C" {
 
 #include "global-types.h"
 
+#include "withs.h"
+
 
 #include <QVariant>
 
-#define with_brake std::function<void(z8)> _brake
-#define brake(__VARAGS__) _brake({__VARAGS__})
+
+//#define with_brake std::function<void(z8)> _brake
+
+//#define brake(__VARAGS__) _brake({__VARAGS__})
 
 class WCM_Column;
 class WCM_Hyponode;
@@ -148,11 +152,11 @@ class WCM_Database
    Enum which;
    union fns_union {
     std::function<void(QByteArray*, void*)> fn_QBA_Ptr;
-    std::function<void(QByteArray*, void*, with_brake)> fn_QBA_Ptr_Brake;
+    std::function<void(QByteArray*, void*, brake)> fn_QBA_Ptr_Brake;
     std::function<void(QByteArray&, void*)> fn_QBA_Ref;
-    std::function<void(QByteArray&, void*, with_brake)> fn_QBA_Ref_Brake;
+    std::function<void(QByteArray&, void*, brake)> fn_QBA_Ref_Brake;
     std::function<void(QByteArray&, void*, u4)> fn_QBA_Ref_Count;
-    std::function<void(QByteArray&, void*, u4, with_brake)> fn_QBA_Ref_Count_Brake;
+    std::function<void(QByteArray&, void*, u4, brake)> fn_QBA_Ref_Count_Brake;
     ~fns_union()
     {
     }
@@ -183,19 +187,19 @@ class WCM_Database
     (std::function<void(QByteArray*, void*)> fn);
 
   void operator <<
-    (std::function<void(QByteArray*, void*, with_brake)> fn);
+    (std::function<void(QByteArray*, void*, brake)> fn);
 
   void operator <<
     (std::function<void(QByteArray&, void*)> fn);
 
   void operator <<
-    (std::function<void(QByteArray&, void*, with_brake)> fn);
+    (std::function<void(QByteArray&, void*, brake)> fn);
 
   void operator <<
     (std::function<void(QByteArray&, void*, u4)> fn);
 
   void operator <<
-    (std::function<void(QByteArray&, void*, u4, with_brake)> fn);
+    (std::function<void(QByteArray&, void*, u4, brake)> fn);
 
   void proceed_fns(FN_Types* fns);
  };
