@@ -27,8 +27,6 @@
 static inline void base32_encode_qba(const QByteArray& qba, QString& result)
 {
  int s = qba.size();
- //?QString result;
- // 170 2 1 240 4
 
  int remainder = s % 5;
  if(remainder != 0)
@@ -40,26 +38,7 @@ static inline void base32_encode_qba(const QByteArray& qba, QString& result)
  {
   u8 val = 0;
   memcpy(&val, qba.data() + i, 5);
-  QString v1 = QString::number(val, 32);
-  QString vb1 = QString::number(val, 2);
-//  val = qToBigEndian(val);
-//  val >>= 24;
-//  val = qFromBigEndian(val);
-  QString v2 = QString::number(val, 32);
-  QString vb2 = QString::number(val, 2);
-
-
-  QByteArray check (5, 0);
-  memcpy(check.data(), &val, 5);
-
-  QByteArray check1 (5, 0);
-  memcpy(check1.data(), (void*)((size_t)&val + 3), 5);
-
-
-//?  result += QString::number(val, 32);
   result += QString("%1").arg(val, 8, 32, QChar('0')); //?QString::number(val, 32);
-
-
  }
  switch(remainder)
  {
@@ -78,22 +57,18 @@ static inline void base32_decode_qstring(QString text, QByteArray& result)
  {
   return;
  }
- QString str = text.left(index);
+ QStringRef str = text.midRef(0, index);
  QChar remainder_code = text.at(index);
  int s = str.size();
  for(int i = 0; i < s; i += 8)
  {
-  QString c = str.mid(i, 8).toUpper();
+  QStringRef c = str.mid(i, 8);
   bool conversion_ok = false;
-  QByteArray conv = c.toLatin1();
-  u8 val = conv.toULongLong(&conversion_ok, 32);
-  //val = qToBigEndian(val);
+  u8 val = c.toULongLong(&conversion_ok, 32);
   QByteArray qba(5, 0);
-  memcpy(qba.data(), &val, 5); //(void*)(((size_t)&val) + 3), 5);
+  memcpy(qba.data(), &val, 5);
   result.append(qba);
  }
- // 170 2 1 240 4
-
  int remainder;
  switch(remainder_code.toLatin1())
  {
@@ -109,6 +84,41 @@ static inline void base32_decode_qstring(QString text, QByteArray& result)
 
 }
 
+static inline void base32_decode_qstringref(QStringRef text, QByteArray& result)
+{
+ QRegularExpression rx("[_wxyz]");
+ QRegularExpressionMatch rxm = rx.match(text); //text.indexOf(QRegularExpression("[_wxyz]"));
+ if(!rxm.hasMatch())
+ {
+  return;
+ }
+ QStringRef str = text.mid(0, rxm.capturedStart());
+ QChar remainder_code = text.at(rxm.capturedStart());
+ int s = str.size();
+ for(int i = 0; i < s; i += 8)
+ {
+  QStringRef c = str.mid(i, 8);
+  bool conversion_ok = false;
+  QByteArray conv = c.toLatin1();
+  u8 val = conv.toULongLong(&conversion_ok, 32);
+  QByteArray qba(5, 0);
+  memcpy(qba.data(), &val, 5);
+  result.append(qba);
+ }
+ int remainder;
+ switch(remainder_code.toLatin1())
+ {
+ case 'w': remainder = 0; break;
+ case 'x': remainder = 1; break;
+ case 'y': remainder = 2; break;
+ case 'z': remainder = 3; break;
+ case '_': remainder = 4; break;
+ default: remainder = 0; // error?
+ }
+
+ result.chop(remainder);
+
+}
 
 
 #endif

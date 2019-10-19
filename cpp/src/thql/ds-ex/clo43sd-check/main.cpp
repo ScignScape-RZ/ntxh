@@ -53,13 +53,15 @@ int main(int argc, char *argv[])
  QString enc;
  base32_encode_qba(qba, enc);
 
-// QMap<QString, QStringList> args1;
-// {
-//  QByteArray qba1;
-//  base32_decode_qstring(enc, qba1);
-//  QDataStream qds(qba1);
-//  qds >> args1;
-// }
+ QMap<QString, QStringList> args1;
+ {
+  QByteArray qba1;
+  base32_decode_qstring(enc, qba1);
+  QDataStream qds(qba1);
+  qds >> args1;
+ }
+
+ enc.prepend("qargs=");
 
  QProcess proc;
  QString cmd = QString(ROOT_FOLDER "/../qt-repro/clo43sd-converter/clo43sd-converter");
