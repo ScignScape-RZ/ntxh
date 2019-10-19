@@ -1,4 +1,8 @@
 stash/
+cpp/src/qt-reprozip/bin/*
+cpp/src/qt-reprozip/export/*
+!cpp/src/qt-reprozip/bin/readme
+!cpp/src/qt-reprozip/export/readme
 build-*
 !build-proset.pri
 !build-group.pri

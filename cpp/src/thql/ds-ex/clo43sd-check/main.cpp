@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
  enc.prepend("qargs=");
 
  QProcess proc;
- QString cmd = QString(ROOT_FOLDER "/../qt-repro/clo43sd-converter/clo43sd-converter");
+ QString cmd = QString(QT_REPROZIP_BIN_FOLDER "/clo43sd-converter");
  qDebug() << "cmd: " << cmd;
  proc.start(cmd, {enc});
  proc.waitForFinished();
