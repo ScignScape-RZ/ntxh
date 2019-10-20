@@ -19,7 +19,13 @@ CONFIG += no_keywords
 
 
 HEADERS += \
+  $$SRC_DIR/npy/cnpy.h \
+  $$SRC_DIR/npy/npy.hpp \
 
 
 SOURCES += \
   $$SRC_DIR/main.cpp \
+  $$SRC_DIR/npy/cnpy.cpp \
+
+
+LIBS += -lz
