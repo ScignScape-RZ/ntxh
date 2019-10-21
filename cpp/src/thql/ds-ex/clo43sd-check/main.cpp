@@ -40,12 +40,23 @@
 
 #include "base32.h"
 
-
-int main(int argc, char *argv[])
+void run_convert(QString abbr, QString bn, QString root,
+  QString ext, QString ph_folder)
 {
  QMap<QString, QStringList> args;
- args.insert("abbr", {"BTBW"});
- args.insert("root", {DEFAULT_WCM_FOLDER ""_q});
+
+// args.insert("abbr", {"BTBW"});
+// args.insert("root", {DEFAULT_WCM_FOLDER ""_q});
+
+
+ args = {
+  {"abbr", {abbr} },
+  {"root", {root} },
+  {"name", {bn} },
+  {"phf", {ph_folder} },
+  {"ext", {ext} },
+  //{"lphf", {lph_folder} },
+ };
 
  QByteArray qba;
  QDataStream qds(&qba, QIODevice::WriteOnly);
@@ -62,7 +73,7 @@ int main(int argc, char *argv[])
   qds >> args1;
  }
 
- enc.prepend("qargs=");
+ enc.prepend("qmap=");
 
  QProcess proc;
  QString cmd = QString(QT_REPROZIP_BIN_FOLDER "/clo43sd-converter");
@@ -71,11 +82,100 @@ int main(int argc, char *argv[])
  proc.waitForFinished();
  QString output(proc.readAllStandardError());
  qDebug() << "OUT: " << output;
+
+}
+
+int main1(int argc, char *argv[])
+{
+ //run_convert("AMRE", "AMRE2330536360101");
+
+ return 0;
+
+
+}
+
+
+void run_species_convert(WCM_Database& wcmd, WCM_Column_Set& qwcs,
+  QString abbr, QString ds_root)
+{
+ static QMap<u4, QString> icm { {1, "Species::Abbreviation@CLO_File"} };
+ wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
+   abbr) << [&qwcs, &ds_root, &abbr](QByteArray& qba, void*, u4 count)
+ {
+  ++count;
+  WCM_Hypernode whn;
+
+  whn.set_indexed_column_map(&icm);
+  whn.absorb_data(qba, qwcs);
+
+  QString tail;
+  QString ph_folder;
+  QString ext;
+
+  whn.with_hyponode(0) << [&ph_folder, &ds_root, &ext](WCM_Hyponode& who)
+  {
+   CLO_File::Kinds k = (CLO_File::Kinds) who.qt_encoding().toInt();
+   //qDebug() << "File Kind: " << CLO_File::kind_string(who.qt_encoding().toInt());
+   switch (k)
+   {
+   case CLO_File::Kinds::NPY_Logmelspec:
+    ph_folder = ds_root + "/lph";
+    ext = "logmelspec";
+    break;
+   case CLO_File::Kinds::NPY_MFCC:
+    ext = "mfcc";
+    ph_folder = ds_root + "/mph";
+    break;
+   default:
+    break;
+   }
+  };
+
+  whn.with_hyponode(2) << [&tail](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   tail = who.qt_encoding().toString();
+  };
+
+  if(!ph_folder.isEmpty())
+    run_convert(abbr, abbr+tail, ds_root, ext, ph_folder);
+ };
+}
+
+int main(int argc, char *argv[])
+{
+ WCM_Database wcmd(CLO43SD_DB_CODE,
+   DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
+ wcmd.load();
+ WCM_Column_Set wcs(wcmd);
+
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, wcs);
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   wcmd.reinit_datetimes(who.qt_encoding());
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+
+  qDebug() << "Database Created: " << wcmd.datetimes()[WCM_Database::Created];
+  qDebug() << "External Dataset Root: " << ds_root;
+ }
+
+ run_species_convert(wcmd, wcs, "AMRE"_q, ds_root);
  return 0;
 }
 
 
-int main1(int argc, char *argv[])
+int main2(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
    DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
@@ -147,7 +247,7 @@ int main1(int argc, char *argv[])
 //   u4 count = 0;
 
    wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
-     "BTBW"_q) << [&qwcs, &icm](QByteArray& qba, void*, u4 count,
+     "BTBW"_q) << [&qwcs, &icm, &ds_root](QByteArray& qba, void*, u4 count,
      brake brk)
    {
     ++count;
@@ -156,16 +256,22 @@ int main1(int argc, char *argv[])
     whn.set_indexed_column_map(&icm);
     whn.absorb_data(qba, qwcs);
 
+    QString abbr = "BTBW"_q;
+    QString tail;
+
     whn.with_hyponode(0) << [](WCM_Hyponode& who)
     {
      qDebug() << "File Kind: " << CLO_File::kind_string(who.qt_encoding().toInt());
     };
 
-    whn.with_hyponode(2) << [](WCM_Hyponode& who)
+    whn.with_hyponode(2) << [&tail, &ds_root](WCM_Hyponode& who)
     {
      QVariant qv = who.qt_encoding();
-     qDebug() << "File Tail: " << who.qt_encoding().toString();
+     tail = who.qt_encoding().toString();
+     qDebug() << "File Tail: " << tail;
     };
+
+//    run_convert(abbr, abbr+tail, ds_root);
 
     if(count == 4)
       brk();

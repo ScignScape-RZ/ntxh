@@ -16,7 +16,6 @@
 #include <QList>
 #include <QDate>
 
-class QWhite_Column_Set;
 class WCM_Hyponode;
 class WCM_Type;
 
