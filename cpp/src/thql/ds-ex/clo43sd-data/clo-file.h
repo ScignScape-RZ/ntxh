@@ -60,6 +60,8 @@ private:
  Kinds kind_;
  QString abbreviation_;
  QString tail_;
+ CLO_File* conversion_file_;
+ QString absolute_path_;
 
 public:
 
@@ -68,6 +70,8 @@ public:
  ACCESSORS(Kinds ,kind)
  ACCESSORS(QString ,abbreviation)
  ACCESSORS(QString ,tail)
+ ACCESSORS(CLO_File* ,conversion_file)
+ ACCESSORS(QString ,absolute_path)
 
 
 };

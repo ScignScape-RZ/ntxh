@@ -23,6 +23,7 @@
 
 
 class CLO_Species;
+class CLO_File;
 
 //class WCM_Hyponode;
 //class WCM_Database;
@@ -44,6 +45,9 @@ public:
  ACCESSORS(QString ,external_root_folder)
 
  void check_species_folders();
+
+ CLO_File* get_conversion_file(CLO_File& cf);
+
 
 };
 

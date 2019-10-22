@@ -10,7 +10,7 @@
 //#include "wcm/wcm-hyponode.h"
 
 CLO_File::CLO_File(Kinds k)
-  : kind_(k)
+  : kind_(k), conversion_file_(nullptr)
 {
 
 }
