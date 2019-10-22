@@ -1,0 +1,6 @@
+This is a folder to hold restore versions of WCM databases.
+Files in this folder are automatically created to recreate 
+WCM databases if they get freed.  Note: if you deliberately 
+free and wish to recreate a database from scratch, you need 
+to delete the corresponding file in this folder.
+

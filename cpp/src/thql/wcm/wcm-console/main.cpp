@@ -18,7 +18,7 @@
 
 int main2(int argc, char *argv[])
 {
- WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+ WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/dbs/test-100.wdb");
 
  wcmd.re_create();
 
@@ -35,7 +35,7 @@ int main2(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
- WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+ WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/dbs/test-100.wdb");
 
  wcmd.load();
 
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 
 int main1(int argc, char *argv[])
 {
- WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+ WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/dbs/test-100.wdb");
  qRegisterMetaType<WCM_Encoding_Package>();
 
  wcmd.load();

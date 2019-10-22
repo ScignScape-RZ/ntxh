@@ -21,12 +21,12 @@
 #include "withs.h"
 
 #include "clo43sd-data/clo-file.h"
+#include "clo43sd-data/clo-species.h"
+#include "clo43sd-data/clo-database.h"
 
 #include "ntxh-parser/ntxh-document.h"
 
 #include "kans.h"
-
-#include "clo43sd-data/clo-species.h"
 
 void create(WCM_Database& wcmd)
 {
@@ -48,7 +48,7 @@ void create(WCM_Database& wcmd)
 int main(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
-   DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
+   DEFAULT_WCM_FOLDER "/dbs/test-" CLO43SD_DB_CODE ".wdb");
 
 // wcmd.with_check_create() << &create;
 
@@ -87,7 +87,9 @@ int main(int argc, char *argv[])
  {
   NTXH_Document doc(DEFAULT_NTXH_FOLDER "/clo43sd/species.ntxh");
   doc.parse();
-  QVector<CLO_Species*> species;
+  CLO_Database cld;
+  cld.set_external_root_folder(CLO43SD_ROOT_FOLDER);
+  QVector<CLO_Species*>& species = cld.species_vec();
   QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
   QMap<u4, QString> icm;
   icm[0] = "Species::Abbreviation";
@@ -103,6 +105,7 @@ int main(int argc, char *argv[])
     species.push_back(s);
    });
   }
+  cld.check_species_folders();
   for(CLO_Species* s : species)
   {
    WCM_Hypernode whn;

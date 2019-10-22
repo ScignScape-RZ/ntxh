@@ -25,7 +25,7 @@
 
 int main3(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
 
  wcmd.re_create();
 
@@ -53,7 +53,7 @@ int main3(int argc, char *argv[])
 
 int main2(int argc, char *argv[])
 {
-// WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+// WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/dbs/test-100.wdb");
 
  NTXH_Document doc(DEFAULT_WCM_FOLDER "/species.ntxh");
 
@@ -83,7 +83,7 @@ int main2(int argc, char *argv[])
   });
  }
 
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  qRegisterMetaType<WCM_Encoding_Package>();
  wcmd.load();
 
@@ -125,7 +125,7 @@ int main2(int argc, char *argv[])
 
 int main5(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);
@@ -168,7 +168,7 @@ int main5(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);
@@ -282,7 +282,7 @@ int main(int argc, char *argv[])
 
 int main7(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);
@@ -347,7 +347,7 @@ int main7(int argc, char *argv[])
 
 int main6(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);

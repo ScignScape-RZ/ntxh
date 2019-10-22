@@ -16,7 +16,9 @@ INCLUDEPATH += $$NTXH_SRC_GROUP_DIR/ntxh
 INCLUDEPATH += $$PHAON_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 
-DEFINES += DEFAULT_WCM_FOLDER=\\\"$$CPP_ROOT_DIR/wcm\\\"
+DEFINES += DEFAULT_WCM_FOLDER=\\\"$$DATA_ROOT_DIR/wcm\\\"
+
+DEFINES += CLO43SD_ROOT_FOLDER=\\\"$$ROOT_DIR/../xd/clo43sd/CLO-43SD\\\"
 
 CONFIG += no_keywords
 
@@ -27,11 +29,13 @@ DEFINES += USE_KANS
 HEADERS += \
   $$SRC_DIR/clo-species.h \
   $$SRC_DIR/clo-file.h \
+  $$SRC_DIR/clo-database.h \
 
 
 SOURCES += \
   $$SRC_DIR/clo-species.cpp \
   $$SRC_DIR/clo-file.cpp \
+  $$SRC_DIR/clo-database.cpp \
 
 
 #?

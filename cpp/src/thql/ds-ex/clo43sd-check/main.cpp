@@ -28,6 +28,7 @@
 #include "kans.h"
 
 #include "clo43sd-data/clo-species.h"
+#include "clo43sd-data/clo-database.h"
 
 #include "global-types.h"
 
@@ -85,16 +86,6 @@ void run_convert(QString abbr, QString bn, QString root,
 
 }
 
-int main1(int argc, char *argv[])
-{
- //run_convert("AMRE", "AMRE2330536360101");
-
- return 0;
-
-
-}
-
-
 void run_species_convert(WCM_Database& wcmd, WCM_Column_Set& qwcs,
   QString abbr, QString ds_root)
 {
@@ -119,12 +110,12 @@ void run_species_convert(WCM_Database& wcmd, WCM_Column_Set& qwcs,
    switch (k)
    {
    case CLO_File::Kinds::NPY_Logmelspec:
-    ph_folder = ds_root + "/lph";
+    ph_folder = ds_root + "/../lph";
     ext = "logmelspec";
     break;
    case CLO_File::Kinds::NPY_MFCC:
     ext = "mfcc";
-    ph_folder = ds_root + "/mph";
+    ph_folder = ds_root + "/../mph";
     break;
    default:
     break;
@@ -138,14 +129,67 @@ void run_species_convert(WCM_Database& wcmd, WCM_Column_Set& qwcs,
   };
 
   if(!ph_folder.isEmpty())
-    run_convert(abbr, abbr+tail, ds_root, ext, ph_folder);
+    run_convert(abbr, abbr+tail, ds_root, ext, ph_folder + "/" + abbr);
+ };
+}
+
+void load_species(WCM_Database& wcmd,
+  WCM_Column_Set& wcs, CLO_Database& cdb)
+{
+ QVector<CLO_Species*>& species_vec = cdb.species_vec();
+ QMap<QString, CLO_Species*>& species_map = cdb.species_map();
+
+ QMap<u4, QString> icm;
+ icm[0] = "Species::Abbreviation";
+
+ QMap<CLO_Species*, CLO_File*> species_files;
+
+ u4 sc = wcmd.get_record_count("Default@Species");
+ species_vec.resize(sc);
+
+ // // retrieve species ...
+ wcmd.with_all_column_records("Default@Species") <<
+   [&icm, &wcs, &wcmd, &species_vec, &species_map]
+   (QByteArray& qba, u4 i)
+ {
+  WCM_Hypernode whn;
+  whn.set_indexed_column_map(&icm);
+  whn.absorb_data(qba, wcs);
+
+  CLO_Species* sp = new CLO_Species;
+  species_vec[i] = sp;
+
+  whn.with_hyponode(0) << [&wcmd, sp, &species_map](WCM_Hyponode& who)
+  {
+   wg_int wgi = who.wgdb_encoding().data;
+   QString abbr = wcmd.wdb().decode_string(wgi);
+//   qDebug() << abbr;
+   sp->set_abbreviation(abbr);
+   species_map[abbr] = sp;
+  };
+
+  whn.with_hyponode(1) << [sp](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   u4 num = qv.toUInt();
+ //  qDebug() << num;
+   sp->set_instances(num);
+  };
+
+  whn.with_hyponode(2) << [sp](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   QString qs = qv.toString();
+   sp->set_name(qs);
+//   qDebug() << qs;
+  };
  };
 }
 
 int main(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
-   DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
+   DEFAULT_WCM_FOLDER "/dbs/test-" CLO43SD_DB_CODE ".wdb");
  wcmd.load();
  WCM_Column_Set wcs(wcmd);
 
@@ -170,17 +214,28 @@ int main(int argc, char *argv[])
   qDebug() << "External Dataset Root: " << ds_root;
  }
 
- run_species_convert(wcmd, wcs, "AMRE"_q, ds_root);
+ CLO_Database cdb;
+
+ // // check species list
+ {
+  load_species(wcmd, wcs, cdb);
+ }
+
+ for(CLO_Species* sp : cdb.species_vec())
+ {
+  qDebug() << sp->abbreviation() << ": " << sp->name();
+  run_species_convert(wcmd, wcs, sp->abbreviation(), ds_root);
+ }
+
  return 0;
 }
-
 
 int main2(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
-   DEFAULT_WCM_FOLDER "/test/test-" CLO43SD_DB_CODE ".wdb");
+   DEFAULT_WCM_FOLDER "/dbs/test-" CLO43SD_DB_CODE ".wdb");
  wcmd.load();
- WCM_Column_Set qwcs(wcmd);
+ WCM_Column_Set wcs(wcmd);
 
  QString ds_root;
 
@@ -189,7 +244,7 @@ int main2(int argc, char *argv[])
   WCM_Hypernode whn;
   QByteArray qba;
   wcmd.retrieve_record(qba, "Default@Info");
-  whn.absorb_data(qba, qwcs);
+  whn.absorb_data(qba, wcs);
   whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
   {
    wcmd.reinit_datetimes(who.qt_encoding());
@@ -201,6 +256,18 @@ int main2(int argc, char *argv[])
 
   qDebug() << "Database Created: " << wcmd.datetimes()[WCM_Database::Created];
   qDebug() << "External Dataset Root: " << ds_root;
+ }
+
+ CLO_Database cdb;
+
+ // // check species list
+ {
+  load_species(wcmd, wcs, cdb);
+ }
+
+ for(CLO_Species* sp : cdb.species_vec())
+ {
+  qDebug() << sp->abbreviation() << ": " << sp->abbreviation();
  }
 
  // // test some specific species
@@ -217,7 +284,7 @@ int main2(int argc, char *argv[])
    WCM_Hypernode whn;
 
    whn.set_indexed_column_map(&icm);
-   whn.absorb_data(qba, qwcs);
+   whn.absorb_data(qba, wcs);
 
    whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
    {
@@ -247,14 +314,14 @@ int main2(int argc, char *argv[])
 //   u4 count = 0;
 
    wcmd.for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
-     "BTBW"_q) << [&qwcs, &icm, &ds_root](QByteArray& qba, void*, u4 count,
+     "BTBW"_q) << [&wcs, &icm, &ds_root](QByteArray& qba, void*, u4 count,
      brake brk)
    {
     ++count;
     WCM_Hypernode whn;
 
     whn.set_indexed_column_map(&icm);
-    whn.absorb_data(qba, qwcs);
+    whn.absorb_data(qba, wcs);
 
     QString abbr = "BTBW"_q;
     QString tail;
@@ -284,9 +351,43 @@ int main2(int argc, char *argv[])
 
 #ifdef HIDE
 
+
+int main(int argc, char *argv[])
+{
+ WCM_Database wcmd(CLO43SD_DB_CODE,
+   DEFAULT_WCM_FOLDER "/dbs/test-" CLO43SD_DB_CODE ".wdb");
+ wcmd.load();
+ WCM_Column_Set wcs(wcmd);
+
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, wcs);
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   wcmd.reinit_datetimes(who.qt_encoding());
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+
+  qDebug() << "Database Created: " << wcmd.datetimes()[WCM_Database::Created];
+  qDebug() << "External Dataset Root: " << ds_root;
+ }
+
+ run_species_convert(wcmd, wcs, "BTBW"_q, ds_root);
+ return 0;
+}
+
+
 int main3(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
 
  wcmd.re_create();
 
@@ -314,7 +415,7 @@ int main3(int argc, char *argv[])
 
 int main2(int argc, char *argv[])
 {
-// WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/test/test-100.wdb");
+// WCM_Database wcmd("100", DEFAULT_WCM_FOLDER "/dbs/test-100.wdb");
 
  NTXH_Document doc(DEFAULT_WCM_FOLDER "/species.ntxh");
 
@@ -344,7 +445,7 @@ int main2(int argc, char *argv[])
   });
  }
 
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  qRegisterMetaType<WCM_Encoding_Package>();
  wcmd.load();
 
@@ -386,7 +487,7 @@ int main2(int argc, char *argv[])
 
 int main5(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);
@@ -429,7 +530,7 @@ int main5(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);
@@ -543,7 +644,7 @@ int main(int argc, char *argv[])
 
 int main7(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);
@@ -608,7 +709,7 @@ int main7(int argc, char *argv[])
 
 int main6(int argc, char *argv[])
 {
- WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/test/test-200.wdb");
+ WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();
 
  WCM_Column_Set qwcs(wcmd);

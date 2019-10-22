@@ -202,7 +202,6 @@ int main(int argc, char *argv[])
   dir = root + "/logmelspec";
   ndir = root + "/log-py2";
   bn = filename + ".logmelspec";
-
  }
 
 // QString clname = args["cln"].first();
