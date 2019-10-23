@@ -230,6 +230,35 @@ void load_species(WCM_Database& wcmd,
 // return 0;
 //}
 
+//int main(int argc, char *argv[])
+//{
+// u4 num = 3;
+// u4 dim = 4;
+
+//// with_range(5)[9] << [](u4 vec)
+//// {
+////  qDebug() << QString("%1=").arg(vec);
+//// };
+
+// with_multi_range(3)[2][2][2] << [](QVector<u4> vec)
+// {
+//  qDebug() << QString("%1,%2,%3").arg(vec[0]).arg(vec[1]).arg(vec[2]);
+// };
+
+// return 0;
+//}
+
+// for(u4 n = 0; n < num; ++n)
+// {
+//  for(u4 d = 0; d < dim; ++d)
+//  {
+////   double coeff = coeffs[d + n*dim];
+//   qDebug() << QString("%1,%2").arg(n).arg(d);
+//  }
+// }
+//
+
+
 int main(int argc, char *argv[])
 {
  WCM_Database wcmd(CLO43SD_DB_CODE,
@@ -374,20 +403,72 @@ int main(int argc, char *argv[])
      NTXH_Graph::hypernode_type* hn = *it;
 
 //     int sdcount = 0;
-     doc.graph()->get_sf(hn, 4, [](QPair<QString, void*>& prs)
-     {
-      QString coeffs = prs.first;
-      qDebug() << coeffs;
-     });
-    }
 
+     u4 num;
+     u4 dim;
+
+
+     doc.graph()->get_sfs(hn, {2, 3}, [&num, &dim](QVector<QPair<QString, void*>>& prs)
+     {
+      num = prs[0].first.toUInt();
+      dim = prs[1].first.toUInt();
+     });
+
+     double* coeffs = new double[dim*num];
+
+     doc.graph()->get_sf(hn, 4, [dim, coeffs, num](QPair<QString, void*>& pr)
+     {
+      u4 n = 0;
+      u4 d = 0;
+
+      with_lines(pr.first) << [coeffs, dim, &n, &d](QString qs)
+      {
+       qs = qs.simplified();
+       if(qs.isEmpty())
+         return;
+       coeffs[d + n*dim] = qs.toDouble();
+       ++d;
+       if(d == dim)
+       {
+        d = 0;
+        ++n;
+       }
+      };
+     });
+     with_multi_range(2)[num][dim] << [coeffs,dim](QVector<u4> vec)
+     {
+      double coeff = coeffs[vec[0] + vec[1]*dim];
+      qDebug() << QString("%1,%2 %3").arg(vec[0]).arg(vec[1]).arg(coeff);
+     };
+    }
     if(count == 4)
       brk();
    };
-  }
+  };
  }
  return 0;
 }
+
+
+//      QString qs;
+////      QString coeffs = pr.first;
+//      QTextStream ts(&pr.first);
+//      while(ts.readLineInto(&qs))
+//      {
+//       qs = qs.simplified();
+//       if(qs.isEmpty())
+//         continue;
+//       coeffs[d + n*dim] = qs.toDouble();
+//       ++d;
+//       if(d == dim)
+//       {
+//        d = 0;
+//        ++n;
+//       }
+//      }
+////      qDebug() << coeffs;
+//     });
+
 
 
 #ifdef HIDE

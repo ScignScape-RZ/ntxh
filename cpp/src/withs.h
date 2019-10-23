@@ -11,9 +11,71 @@
 #include <QString>
 #include <QMap>
 #include <QDir>
+#include <QVector>
+#include <QTextStream>
 
 #include <functional>
 
+struct brake
+{
+ std::function<void(brake)> fn;
+ static std::function<void(brake)> get_null()
+ {
+  static std::function<void(brake)> the_null = [](brake){};
+  return the_null;
+ }
+ brake& operator&(brake& rhs)
+ {
+  rhs(); return *this;
+ }
+ brake() : fn(brake::get_null())
+ {
+ }
+ brake(std::function<void(brake)> f) : fn(f)
+ {
+ }
+ static std::function<void(brake)> make_break_function(brake& test_brk)
+ {
+  return [&test_brk](brake b)
+  {
+   if(b.fn)
+   {
+    test_brk.fn = b.fn;
+    b.fn({});
+   }
+  };
+ }
+ void operator()()
+ {
+  fn({});
+ }
+
+ void operator()(brake brk)
+ {
+  fn(brk);
+ }
+};
+
+struct with_lines_Package
+{
+ const QString* const input;
+ void operator<<(std::function<void(QString)> fn)
+ {
+  if(!input)
+    return;
+  QString qs;
+  QTextStream ts(const_cast<QString*>(input), QIODevice::ReadOnly);
+  while(ts.readLineInto(&qs))
+  {
+   fn(qs);
+  }
+ }
+};
+
+with_lines_Package with_lines(const QString& qs)
+{
+ return {&qs};
+}
 
 template<typename KEY_Type, typename VAL_Type>
 struct with_map_Package
@@ -74,47 +136,6 @@ static inline with_files_Package with_files(QDir qd)
 }
 
 
-struct brake
-{
- std::function<void(brake)> fn;
- static std::function<void(brake)> get_null()
- {
-  static std::function<void(brake)> the_null = [](brake){};
-  return the_null;
- }
- brake& operator&(brake& rhs)
- {
-  rhs(); return *this;
- }
- brake() : fn(brake::get_null())
- {
- }
- brake(std::function<void(brake)> f) : fn(f)
- {
- }
- static std::function<void(brake)> make_break_function(brake& test_brk)
- {
-  return [&test_brk](brake b)
-  {
-   if(b.fn)
-   {
-    test_brk.fn = b.fn;
-    b.fn({});
-   }
-  };
- }
- void operator()()
- {
-  fn({});
- }
-
- void operator()(brake brk)
- {
-  fn(brk);
- }
-
-};
-
 struct with_range_2_Package
 {
  quint32 min;
@@ -144,11 +165,11 @@ struct with_range_Package
  quint32 min;
  with_range_2_Package operator()(quint32 max)
  {
-  return {min, max};
+  return {min, max + 1};
  }
  with_range_2_Package operator[](quint32 max)
  {
-  return {min, max + 1};
+  return {min, max};
  }
 };
 
@@ -157,6 +178,55 @@ static with_range_Package with_range(quint32 min)
  return {min};
 }
 
+struct with_multi_range_Package
+{
+ quint8 dimension;
+ QVector<quint32> args;
+ QVector<quint32> carried;
+
+ with_multi_range_Package& operator()(quint32 arg)
+ {
+  args.push_back(arg + 1);
+  return *this;
+ }
+ with_multi_range_Package& operator[](quint32 arg)
+ {
+  args.push_back(arg);
+  return *this;
+ }
+ void operator<<(std::function<void(QVector<quint32>)> fn)
+ {
+  quint32 index = 0;
+  while(args.size() < (dimension * 2))
+  {
+   args.insert(index, 0);
+   index += 2;
+  }
+  for(quint32 i = args[0]; i < args[1]; ++i)
+  {
+   QVector<quint32> c = carried;
+   c.push_front(i);
+   if(dimension == 1)
+   {
+    fn(c);
+   }
+   else
+   {
+    with_multi_range_Package p1{dimension - 1, args.mid(2), c};
+    p1 << fn;
+   }
+
+//   for(quint32 j = args[2]; j < args[3]; ++j)
+//     fn({i, j});
+  }
+ }
+
+};
+
+static with_multi_range_Package with_multi_range(quint8 dim)
+{
+ return {dim, {}, {}};
+}
 
 
 #endif // WITHS__H
