@@ -74,6 +74,8 @@ public:
  void set_grammar(NTXH_Grammar* grammar = nullptr);
 
  void parse(int start_position = 0, int end_position = -1);
+
+ void surround(QString divider, QString text);
 };
 
 _KANS(HGDMCore)

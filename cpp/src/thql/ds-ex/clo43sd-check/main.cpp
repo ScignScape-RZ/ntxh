@@ -352,6 +352,33 @@ int main(int argc, char *argv[])
     if(ccf)
     {
      qDebug() << "CCF: " << ccf->absolute_path();
+     NTXH_Document doc(ccf->absolute_path());
+
+     doc.surround("<cut>", R"(
+&type LOG_Coefficients {4}
+ :sp:1 :n:2 :d:3 :s:4 ;
+
+&/
+<cut>
+<+>
+/&
+
+)");
+
+     doc.parse();
+
+     QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();
+
+     auto it = hns.begin();
+
+     NTXH_Graph::hypernode_type* hn = *it;
+
+//     int sdcount = 0;
+     doc.graph()->get_sf(hn, 4, [](QPair<QString, void*>& prs)
+     {
+      QString coeffs = prs.first;
+      qDebug() << coeffs;
+     });
     }
 
     if(count == 4)

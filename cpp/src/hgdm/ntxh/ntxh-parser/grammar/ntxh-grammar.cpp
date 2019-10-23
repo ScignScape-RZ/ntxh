@@ -123,10 +123,11 @@ void NTXH_Grammar::init(NTXH_Parser& p, NTXH_Graph& g, NTXH_Graph_Build& graph_b
 
  add_rule(flags_all_(parse_context ,multiline_field), read_context,
    "multiline-end-field",
-   " \\n[.] (?= \\n) ",
+   " (?<s> \\n)* \\n[.] (?= \\n) ",
    [&]
  {
-  //QString s = p.match_text();
+  QString s = p.matched("s");
+  graph_build.read_acc(s);
   graph_build.end_field();
  });
 

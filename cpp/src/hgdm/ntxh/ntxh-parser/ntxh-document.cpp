@@ -27,6 +27,19 @@ NTXH_Document::NTXH_Document(QString path)
   load_file(path);
 }
 
+void NTXH_Document::surround(QString divider, QString text)
+{
+ int index = text.indexOf(divider);
+ if(index == -1)
+   raw_text_.append(text);
+ else
+ {
+  raw_text_.prepend(text.midRef(0, index));
+  raw_text_.append(text.midRef(index + divider.size()));
+ }
+}
+
+
 QVector<NTXH_Graph::hypernode_type*>& NTXH_Document::top_level_hypernodes()
 {
  static QVector<NTXH_Graph::hypernode_type*> static_default;
