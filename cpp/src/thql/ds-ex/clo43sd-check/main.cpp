@@ -30,6 +30,8 @@
 #include "clo43sd-data/clo-species.h"
 #include "clo43sd-data/clo-database.h"
 
+#include "external/posit/posit-lib/posit.h"
+
 #include "global-types.h"
 
 #include "withs.h"
@@ -414,7 +416,7 @@ int main(int argc, char *argv[])
       dim = prs[1].first.toUInt();
      });
 
-     double* coeffs = new double[dim*num];
+     Posit* coeffs = new Posit[dim*num];
 
      doc.graph()->get_sf(hn, 4, [dim, coeffs, num](QPair<QString, void*>& pr)
      {
@@ -437,8 +439,10 @@ int main(int argc, char *argv[])
      });
      with_multi_range(2)[num][dim] << [coeffs,dim](QVector<u4> vec)
      {
-      double coeff = coeffs[vec[0] + vec[1]*dim];
-      qDebug() << QString("%1,%2 %3").arg(vec[0]).arg(vec[1]).arg(coeff);
+      Posit coeff = coeffs[vec[0] + vec[1]*dim];
+      qDebug() << QString("%1,%2 %3").arg(vec[0]).arg(vec[1]).arg(coeff.getDouble());
+      coeff.print();
+      qDebug() << "---";
      };
     }
     if(count == 4)
