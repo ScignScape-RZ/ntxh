@@ -5,6 +5,11 @@
 #include "wcm/wcm-column.h"
 #include "wcm/wcm-column-set.h"
 
+#include <QMediaPlayer>
+#include <QApplication>
+
+#include <QSound>
+
 //#include "patient.h"
 
 //#include "whitedb.h"
@@ -16,12 +21,180 @@
 #include "withs.h"
 
 #include "clo-file.h"
+#include "clo43sd-data/clo-database.h"
 
 #include "ntxh-parser/ntxh-document.h"
+
+#include "QScign/ScignStage/ScignStage-audio/scignstage-audio-dialog.h"
 
 #include "kans.h"
 
 #include "clo-species.h"
+
+
+void load_species(WCM_Database& wcmd,
+  WCM_Column_Set& wcs, CLO_Database& cdb)
+{
+ QVector<CLO_Species*>& species_vec = cdb.species_vec();
+ QMap<QString, CLO_Species*>& species_map = cdb.species_map();
+
+ QMap<u4, QString> icm;
+ icm[0] = "Species::Abbreviation";
+
+ QMap<CLO_Species*, CLO_File*> species_files;
+
+ u4 sc = wcmd.get_record_count("Default@Species");
+ species_vec.resize(sc);
+
+ // // retrieve species ...
+ wcmd.with_all_column_records("Default@Species") <<
+   [&icm, &wcs, &wcmd, &species_vec, &species_map]
+   (QByteArray& qba, u4 i)
+ {
+  WCM_Hypernode whn;
+  whn.set_indexed_column_map(&icm);
+  whn.absorb_data(qba, wcs);
+
+  CLO_Species* sp = new CLO_Species;
+  species_vec[i] = sp;
+
+  whn.with_hyponode(0) << [&wcmd, sp, &species_map](WCM_Hyponode& who)
+  {
+   wg_int wgi = who.wgdb_encoding().data;
+   QString abbr = wcmd.wdb().decode_string(wgi);
+//   qDebug() << abbr;
+   sp->set_abbreviation(abbr);
+   species_map[abbr] = sp;
+  };
+
+  whn.with_hyponode(1) << [sp](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   u4 num = qv.toUInt();
+ //  qDebug() << num;
+   sp->set_instances(num);
+  };
+
+  whn.with_hyponode(2) << [sp](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   QString qs = qv.toString();
+   sp->set_name(qs);
+//   qDebug() << qs;
+  };
+ };
+}
+
+
+int main(int argc, char *argv[])
+{
+ WCM_Database wcmd(CLO43SD_DB_CODE,
+   DEFAULT_WCM_FOLDER "/dbs/test-" CLO43SD_DB_CODE ".wdb");
+ wcmd.load();
+ WCM_Column_Set wcs(wcmd);
+
+ QString ds_root;
+
+ // //  retrieve info
+ {
+  WCM_Hypernode whn;
+  QByteArray qba;
+  wcmd.retrieve_record(qba, "Default@Info");
+  whn.absorb_data(qba, wcs);
+  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+  {
+   wcmd.reinit_datetimes(who.qt_encoding());
+  };
+  whn.with_hyponode(1) << [&ds_root](WCM_Hyponode& who)
+  {
+   ds_root = who.qt_encoding().toString();
+  };
+
+  qDebug() << "Database Created: " << wcmd.datetimes()[WCM_Database::Created];
+  qDebug() << "External Dataset Root: " << ds_root;
+ }
+
+ CLO_Database cdb;
+ cdb.set_external_root_folder(ds_root);
+
+ // // check species list
+ {
+  load_species(wcmd, wcs, cdb);
+ }
+
+ for(CLO_Species* sp : cdb.species_vec())
+ {
+  qDebug() << sp->abbreviation() << ": " << sp->name();
+
+  // //  uncomment to generate the coefficient ntxh files
+   //    run_species_convert(wcmd, wcs, sp->abbreviation(), ds_root);
+ }
+
+ // // test some specific species
+ {
+  // //  first get species info ...
+  {
+   QMap<u4, QString> icm;
+   icm[0] = "Species::Abbreviation";
+
+   QByteArray qba;
+   wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+      "BTBW"_q);
+
+   WCM_Hypernode whn;
+
+   whn.set_indexed_column_map(&icm);
+   whn.absorb_data(qba, wcs);
+
+   whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+   {
+    wg_int wgi = who.wgdb_encoding().data;
+    QString abbr = wcmd.wdb().decode_string(wgi);
+    qDebug() << "Species Abbreviation: " << abbr;
+   };
+
+   whn.with_hyponode(1) << [](WCM_Hyponode& who)
+   {
+    QVariant qv = who.qt_encoding();
+//    u1 num = (u1) qv.toInt();
+    qDebug() << "Number of Instances: " << (u1) qv.toInt();
+   };
+
+   whn.with_hyponode(2) << [](WCM_Hyponode& who)
+   {
+    QVariant qv = who.qt_encoding();
+//    QString qs = qv.toString();
+    qDebug() << "Species Name: " << qv.toString();
+   };
+  }
+ }
+ QApplication qapp(argc, argv);
+
+ ScignStage_Audio_Dialog dlg(nullptr);
+// QSound audio(
+//   "/home/nlevisrael/hypergr/ntxh/xd/clo43sd/CLO-43SD-AUDIO/audio/AMRE2330536360101.wav");
+// audio.play();
+
+// QString path = "/home/nlevisrael/hypergr/ntxh/xd/clo43sd/CLO-43SD-AUDIO/audio/AMRE2330536360101.wav";
+// QMediaPlayer* player = new QMediaPlayer;
+// player->setMedia(QUrl::fromLocalFile(path));
+// player->setVolume(250);
+// player->play();
+
+ QObject::connect(&dlg, &ScignStage_Audio_Dialog::canceled,
+   [&qapp]()
+ {
+   qDebug() << "Closing ...";
+   qapp.exit();
+ });
+
+ dlg.show();
+ qapp.exec();
+
+// while(!audio.isFinished())
+//  ;
+ return 0;
+}
 
 int main3(int argc, char *argv[])
 {
@@ -166,7 +339,7 @@ int main5(int argc, char *argv[])
  return 0;
 }
 
-int main(int argc, char *argv[])
+int main11(int argc, char *argv[])
 {
  WCM_Database wcmd("200", DEFAULT_WCM_FOLDER "/dbs/test-200.wdb");
  wcmd.load();

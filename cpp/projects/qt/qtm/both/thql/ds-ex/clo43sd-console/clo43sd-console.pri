@@ -10,6 +10,8 @@ include(../build-group.pri)
 
 TEMPLATE = app
 
+QT += multimedia widgets
+
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR $$SRC_ROOT_DIR
 
 INCLUDEPATH += $$WCM_SRC_GROUP_DIR
@@ -19,6 +21,8 @@ INCLUDEPATH += $$PHAON_GRAPH_SRC_GROUP_DIR
 INCLUDEPATH += $$RELAE_GRAPH_SRC_GROUP_DIR
 
 DEFINES += DEFAULT_WCM_FOLDER=\\\"$$DATA_ROOT_DIR/wcm\\\"
+
+DEFINES += CLO43SD_DB_CODE=\\\"222\\\"
 
 CONFIG += no_keywords
 
@@ -35,7 +39,8 @@ SOURCES += \
 
 
 #?
-LIBS += -L$$TARGETSDIR -lwcm -lntxh -lntxh-parser
+LIBS += -L$$TARGETSDIR -lwcm -lntxh -lntxh-parser \
+ -lclo43sd-data  -lScignStage-audio
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
