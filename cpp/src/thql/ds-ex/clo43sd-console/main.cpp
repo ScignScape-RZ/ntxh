@@ -22,6 +22,7 @@
 
 #include "clo-file.h"
 #include "clo43sd-data/clo-database.h"
+#include "clo43sd-data/clo-species.h"
 
 #include "ntxh-parser/ntxh-document.h"
 
@@ -135,19 +136,24 @@ int main(int argc, char *argv[])
 
  QApplication qapp(argc, argv);
 
- ScignStage_Audio_TableModel tm(2, cdb.species_vec().size());
+ ScignStage_Audio_TableModel tm(4, cdb.species_vec().size());
 
- tm.set_headers({"Abbr", "Name"});
+ tm.set_headers({"Abbreviation", "Name",
+   "Number of Instances", "Current View Range"});
 
  tm.set_get_data_callback([&cdb](u4 args [3], QVariant& result)
  {
   if(args[2] != Qt::DisplayRole)
      return;
   CLO_Species* sp = cdb.species_vec()[args[0]];
-  if(args[1] == 0)
-    result.setValue(sp->abbreviation());
-  else
-    result.setValue(sp->name());
+  switch (args[1])
+  {
+  case 0: result.setValue(sp->abbreviation()); break;
+  case 1: result.setValue(sp->name()); break;
+  case 2: result.setValue(sp->instances()); break;
+  case 3: result.setValue(sp->get_view_min_max_string()); break;
+  default: break;
+  }
  });
 
 
