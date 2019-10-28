@@ -135,18 +135,21 @@ int main(int argc, char *argv[])
 
  QApplication qapp(argc, argv);
 
- ScignStage_Audio_TableModel tm;
+ ScignStage_Audio_TableModel tm(2, cdb.species_vec().size());
  tm.set_get_data_callback([&cdb](u4* args, QVariant& result)
  {
   CLO_Species* sp = cdb.species_vec()[args[0]];
   if(args[1] == 0)
-    result.setValue(sp->name());
-  else
     result.setValue(sp->abbreviation());
+  else
+    result.setValue(sp->name());
  });
 
 
  ScignStage_Audio_Dialog dlg(nullptr);
+
+ dlg.set_table_model(&tm);
+
 // QSound audio(
 //   "/home/nlevisrael/hypergr/ntxh/xd/clo43sd/CLO-43SD-AUDIO/audio/AMRE2330536360101.wav");
 // audio.play();

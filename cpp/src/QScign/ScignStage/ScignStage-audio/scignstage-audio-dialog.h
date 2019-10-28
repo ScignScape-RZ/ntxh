@@ -57,6 +57,8 @@ class QProcess;
 class QTcpServer;
 
 class ScignStage_Clickable_Label;
+class ScignStage_Audio_TableModel;
+class ScignStage_Audio_TableView;
 
 class XPDF_Bridge;
 
@@ -131,6 +133,8 @@ class ScignStage_Audio_Dialog : public QDialog
  std::function<void(Phaon_Runner&)> phr_init_function_;
  std::function<void()> screenshot_function_;
 
+ ScignStage_Audio_TableView* main_table_view_;
+
  bool xpdf_is_ready();
  void check_phr();
 
@@ -176,6 +180,8 @@ public:
 
  ACCESSORS__SET(std::function<void(Phaon_Runner&)>, phr_init_function)
  ACCESSORS__SET(std::function<void()> ,screenshot_function)
+
+ void set_table_model(ScignStage_Audio_TableModel* tm);
 
  // //  Kernel Application Interface
  void test_msgbox(QString msg);

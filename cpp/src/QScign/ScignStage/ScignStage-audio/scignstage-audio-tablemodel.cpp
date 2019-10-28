@@ -88,7 +88,8 @@ USING_KANS(TextIO)
 //USING_QSNS(ScignStage)
 
 
-ScignStage_Audio_TableModel::ScignStage_Audio_TableModel()
+ScignStage_Audio_TableModel::ScignStage_Audio_TableModel(u1 nc, u1 nr)
+  :  number_of_columns_(nc), number_of_rows_(nr)
 {
 }
 
