@@ -93,6 +93,18 @@ ScignStage_Audio_TableModel::ScignStage_Audio_TableModel(u1 nc, u1 nr)
 {
 }
 
+QVariant ScignStage_Audio_TableModel::headerData(int section,
+  Qt::Orientation orientation, int role) const
+{
+ if(role != Qt::DisplayRole)
+   return {};
+ if(orientation == Qt::Vertical)
+   return section + 1;
+ QString def = QString("?%1").arg(section);
+ return headers_.value(section, def);
+}
+
+
 ScignStage_Audio_TableModel::~ScignStage_Audio_TableModel()
 {
 }

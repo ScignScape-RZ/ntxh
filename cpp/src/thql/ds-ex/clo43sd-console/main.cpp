@@ -136,8 +136,13 @@ int main(int argc, char *argv[])
  QApplication qapp(argc, argv);
 
  ScignStage_Audio_TableModel tm(2, cdb.species_vec().size());
- tm.set_get_data_callback([&cdb](u4* args, QVariant& result)
+
+ tm.set_headers({"Abbr", "Name"});
+
+ tm.set_get_data_callback([&cdb](u4 args [3], QVariant& result)
  {
+  if(args[2] != Qt::DisplayRole)
+     return;
   CLO_Species* sp = cdb.species_vec()[args[0]];
   if(args[1] == 0)
     result.setValue(sp->abbreviation());

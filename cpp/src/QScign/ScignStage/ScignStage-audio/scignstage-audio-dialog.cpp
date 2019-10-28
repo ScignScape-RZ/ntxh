@@ -291,6 +291,8 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 void ScignStage_Audio_Dialog::set_table_model(ScignStage_Audio_TableModel* tm)
 {
  main_table_view_->setModel(tm);
+ main_table_view_->resizeColumnsToContents();
+ main_table_view_->resizeRowsToContents();
 }
 
 void ScignStage_Audio_Dialog::handle_take_screenshot_requested()

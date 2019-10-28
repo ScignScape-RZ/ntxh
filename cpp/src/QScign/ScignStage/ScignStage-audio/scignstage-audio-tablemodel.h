@@ -41,17 +41,21 @@ class ScignStage_Audio_TableModel : public QAbstractTableModel
 {
  Q_OBJECT
 
- std::function<void(u4*,QVariant&)> get_data_callback_;
+ std::function<void(u4[3],QVariant&)> get_data_callback_;
 
  u1 number_of_columns_;
  u1 number_of_rows_;
+
+ QStringList headers_;
 
 
 public:
 
  ScignStage_Audio_TableModel(u1 nc, u1 nr);
 
- ~ScignStage_Audio_TableModel();
+ ~ScignStage_Audio_TableModel() Q_DECL_OVERRIDE;
+
+ ACCESSORS(QStringList ,headers)
 
 
  QVariant data(const QModelIndex& index,
@@ -59,7 +63,7 @@ public:
 // , columnCount(), and data().
 
 
- ACCESSORS(MACRO_PASTE(std::function<void(u4*,QVariant&)>) ,get_data_callback)
+ ACCESSORS(MACRO_PASTE(std::function<void(u4[3],QVariant&)>) ,get_data_callback)
 
  int rowCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE
  {
@@ -76,11 +80,7 @@ public:
  }
 
  QVariant headerData(int section, Qt::Orientation orientation,
-   int role = Qt::DisplayRole) const Q_DECL_OVERRIDE
- {
-  return QString("X%1").arg(section);
- }
-
+   int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
 
