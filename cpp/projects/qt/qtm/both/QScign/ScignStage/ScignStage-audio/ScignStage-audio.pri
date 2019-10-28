@@ -56,6 +56,8 @@ exists($$CPP_ROOT_DIR/targets/$$CHOICE_CODE/tests-kph--kauvir-phaon--kauvir-phao
 
 HEADERS += \
   $$SRC_DIR/scignstage-audio-dialog.h \
+  $$SRC_DIR/scignstage-audio-tableview.h \
+  $$SRC_DIR/scignstage-audio-tablemodel.h \
   $$SRC_DIR/nav-protocols/nav-audio-1d-panel.h \
   $$SRC_DIR/subwindows/scignstage-clickable-label.h \
   $$SRC_DIR/xpdf-bridge.h \
@@ -63,6 +65,8 @@ HEADERS += \
 
 SOURCES += \
   $$SRC_DIR/scignstage-audio-dialog.cpp \
+  $$SRC_DIR/scignstage-audio-tableview.cpp \
+  $$SRC_DIR/scignstage-audio-tablemodel.cpp \
   $$SRC_DIR/nav-protocols/nav-audio-1d-panel.cpp \
   $$SRC_DIR/subwindows/scignstage-clickable-label.cpp \
   $$SRC_DIR/xpdf-bridge.cpp \

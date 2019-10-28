@@ -26,6 +26,8 @@
 #include "ntxh-parser/ntxh-document.h"
 
 #include "QScign/ScignStage/ScignStage-audio/scignstage-audio-dialog.h"
+#include "QScign/ScignStage/ScignStage-audio/scignstage-audio-tablemodel.h"
+
 
 #include "kans.h"
 
@@ -130,45 +132,19 @@ int main(int argc, char *argv[])
    //    run_species_convert(wcmd, wcs, sp->abbreviation(), ds_root);
  }
 
- // // test some specific species
- {
-  // //  first get species info ...
-  {
-   QMap<u4, QString> icm;
-   icm[0] = "Species::Abbreviation";
 
-   QByteArray qba;
-   wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
-      "BTBW"_q);
-
-   WCM_Hypernode whn;
-
-   whn.set_indexed_column_map(&icm);
-   whn.absorb_data(qba, wcs);
-
-   whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
-   {
-    wg_int wgi = who.wgdb_encoding().data;
-    QString abbr = wcmd.wdb().decode_string(wgi);
-    qDebug() << "Species Abbreviation: " << abbr;
-   };
-
-   whn.with_hyponode(1) << [](WCM_Hyponode& who)
-   {
-    QVariant qv = who.qt_encoding();
-//    u1 num = (u1) qv.toInt();
-    qDebug() << "Number of Instances: " << (u1) qv.toInt();
-   };
-
-   whn.with_hyponode(2) << [](WCM_Hyponode& who)
-   {
-    QVariant qv = who.qt_encoding();
-//    QString qs = qv.toString();
-    qDebug() << "Species Name: " << qv.toString();
-   };
-  }
- }
  QApplication qapp(argc, argv);
+
+ ScignStage_Audio_TableModel tm;
+ tm.set_get_data_callback([&cdb](u4* args, QVariant& result)
+ {
+  CLO_Species* sp = cdb.species_vec()[args[0]];
+  if(args[1] == 0)
+    result.setValue(sp->name());
+  else
+    result.setValue(sp->abbreviation());
+ });
+
 
  ScignStage_Audio_Dialog dlg(nullptr);
 // QSound audio(
@@ -195,6 +171,12 @@ int main(int argc, char *argv[])
 //  ;
  return 0;
 }
+
+
+
+
+
+
 
 int main3(int argc, char *argv[])
 {
@@ -756,3 +738,42 @@ int main6(int argc, char *argv[])
 //  whos[2]->set_qt_encoding(s->name());
 
 //  whn.add_hyponodes(whos)(3);
+
+//// // test some specific species
+//{
+// // //  first get species info ...
+// {
+//  QMap<u4, QString> icm;
+//  icm[0] = "Species::Abbreviation";
+
+//  QByteArray qba;
+//  wcmd.retrieve_record(qba, "Default@Species", "Species::Abbreviation",
+//     "BTBW"_q);
+
+//  WCM_Hypernode whn;
+
+//  whn.set_indexed_column_map(&icm);
+//  whn.absorb_data(qba, wcs);
+
+//  whn.with_hyponode(0) << [&wcmd](WCM_Hyponode& who)
+//  {
+//   wg_int wgi = who.wgdb_encoding().data;
+//   QString abbr = wcmd.wdb().decode_string(wgi);
+//   qDebug() << "Species Abbreviation: " << abbr;
+//  };
+
+//  whn.with_hyponode(1) << [](WCM_Hyponode& who)
+//  {
+//   QVariant qv = who.qt_encoding();
+////    u1 num = (u1) qv.toInt();
+//   qDebug() << "Number of Instances: " << (u1) qv.toInt();
+//  };
+
+//  whn.with_hyponode(2) << [](WCM_Hyponode& who)
+//  {
+//   QVariant qv = who.qt_encoding();
+////    QString qs = qv.toString();
+//   qDebug() << "Species Name: " << qv.toString();
+//  };
+// }
+//}
