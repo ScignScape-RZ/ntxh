@@ -161,6 +161,12 @@ int main(int argc, char *argv[])
 
  dlg.set_table_model(&tm);
 
+ QObject::connect(&dlg,
+   &ScignStage_Audio_Dialog::main_table_view_row_selected, [](int r)
+ {
+  qDebug() << "R: " << r;
+ });
+
 // QSound audio(
 //   "/home/nlevisrael/hypergr/ntxh/xd/clo43sd/CLO-43SD-AUDIO/audio/AMRE2330536360101.wav");
 // audio.play();

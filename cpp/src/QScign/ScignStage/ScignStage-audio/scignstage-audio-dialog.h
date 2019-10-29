@@ -55,6 +55,8 @@ class QGridLayout;
 class QMediaPlayer;
 class QProcess;
 class QTcpServer;
+class QListWidget;
+class QSplitter;
 
 class ScignStage_Clickable_Label;
 class ScignStage_Audio_TableModel;
@@ -82,8 +84,13 @@ class ScignStage_Audio_Dialog : public QDialog
  QPushButton* button_proceed_;
 
 
- QHBoxLayout* middle_layout_;
+ QHBoxLayout* main_splitter_layout_;
+ QSplitter* main_splitter_;
+
+ QHBoxLayout* middle_layout1_;
  QVBoxLayout* main_layout_;
+
+ QListWidget* main_list_;
 
  QLabel* sentence_label_;
 
@@ -199,6 +206,8 @@ Q_SIGNALS:
  void canceled(QDialog*);
  void accepted(QDialog*);
  void take_screenshot_requested();
+
+ void main_table_view_row_selected(int r);
 
 public Q_SLOTS:
 

@@ -159,12 +159,36 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 
  main_layout_->addLayout(top_buttons_layout_);
 
+ main_splitter_layout_ = new QHBoxLayout;
+
  main_table_view_ = new ScignStage_Audio_TableView;
- main_layout_->addWidget(main_table_view_);
+ main_splitter_layout_->addWidget(main_table_view_);
+
+ connect(main_table_view_->verticalHeader(),
+         SIGNAL(sectionClicked(int)), this,
+   SIGNAL(main_table_view_row_selected(int)));
+
+ main_list_ = new QListWidget;
+ for(int i = 0; i < 10; ++i)
+ {
+  main_list_->addItem("N/A");
+ }
+ main_splitter_layout_->addWidget(main_list_);
+
+ main_splitter_ = new QSplitter(this);
+ main_splitter_->setLayout(main_splitter_layout_);
+
+// connect(main_table_view_->horizontalHeader(),
+//   &QHeaderView::sectionClicked, [](int r)
+// {
+//  qDebug() << "RR: " << r;
+// });
+
+ main_layout_->addWidget(main_splitter_);
+
+ middle_layout1_ = new QHBoxLayout;
 
 
-
- middle_layout_ = new QHBoxLayout;
 
  // //   Foreground
  main_frame_ = new QFrame(this);
@@ -214,7 +238,7 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 
  grid_scroll_area_->setMaximumHeight(200);
 
- middle_layout_->addWidget(grid_scroll_area_);
+ middle_layout1_->addWidget(grid_scroll_area_);
 
  connect(main_frame_, &QTableWidget::customContextMenuRequested, [this](const QPoint& qp)
  {
@@ -239,7 +263,7 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 
  });
 
- main_layout_->addLayout(middle_layout_);
+ main_layout_->addLayout(middle_layout1_);
 
  sentence_label_ = new QLabel("(sentence text)", this);
 
