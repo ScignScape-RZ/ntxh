@@ -10,12 +10,66 @@
 #include "clo-species.h"
 #include "clo-file.h"
 
+#include "clo-species-display-info.h"
+
+#include "wcm/wcm-database.h"
+#include "wcm/wcm-hypernode.h"
+#include "wcm/wcm-column-set.h"
+#include "wcm/wcm-hyponode.h"
+
 #include <QDir>
 
-CLO_Database::CLO_Database()
+CLO_Database::CLO_Database(WCM_Database* wcm_database)
+  :  wcm_database_(wcm_database)
 {
 
 }
+
+void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
+{
+ CLO_Species_Display_Info* cdi = get_display_info(sp);
+ cdi->check_view_minimum();
+
+// for(int i = 0; i < 10; ++i)
+//   qsl.push_back(QString("X%1").arg(i));
+// u4 count = 0;
+ wcm_database_->for_all_records("Default@CLO_File", "Species::Abbreviation@CLO_File",
+   sp->abbreviation()) << [this, num, &qsl](QByteArray& qba, void*, u4 count,
+      brake brk)
+ {
+  WCM_Hypernode whn;
+  QMap<u4, QString> icm;
+  icm[1] = "Species::Abbreviation@CLO_File";
+  whn.set_indexed_column_map(&icm);
+  WCM_Column_Set wcs(*wcm_database_);
+  whn.absorb_data(qba, wcs);
+
+  QString tail;
+//  QString abbr = "BTBW"_q;
+//  QString tail;
+
+//  CLO_File* cf = new CLO_File;
+////  cf->set_abbreviation(abbr);
+
+//  whn.with_hyponode(0) << [cf](WCM_Hyponode& who)
+//  {
+//   qDebug() << "File Kind: " << CLO_File::kind_string(who.qt_encoding().toInt());
+//   cf->set_kind((CLO_File::Kinds) who.qt_encoding().toInt());
+//  };
+
+  whn.with_hyponode(2) << [&tail](WCM_Hyponode& who)
+  {
+   QVariant qv = who.qt_encoding();
+   tail = who.qt_encoding().toString();
+//   qDebug() << "File Tail: " << tail;
+//   cf->set_tail(tail);
+  };
+
+  qsl.push_back(tail);
+
+ };
+}
+
 
 CLO_File* CLO_Database::get_conversion_file(CLO_File& cf)
 {
@@ -51,6 +105,20 @@ CLO_File* CLO_Database::get_conversion_file(CLO_File& cf)
    cf.set_conversion_file(result);
   }
  }
+ return result;
+}
+
+CLO_Species_Display_Info* CLO_Database::get_display_info(CLO_Species* sp)
+{
+ CLO_Species_Display_Info* result;
+ auto it = display_info_map_.find(sp);
+ if(it == display_info_map_.end())
+ {
+  result = new CLO_Species_Display_Info;
+  display_info_map_[sp] = result; 
+ }
+ else
+   result = *it;
  return result;
 }
 

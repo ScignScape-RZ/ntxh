@@ -32,7 +32,7 @@
 
 #include "kans.h"
 
-#include "clo-species.h"
+#include "clo43sd-data/clo-species-display-info.h"
 
 
 void load_species(WCM_Database& wcmd,
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
   qDebug() << "External Dataset Root: " << ds_root;
  }
 
- CLO_Database cdb;
+ CLO_Database cdb(&wcmd);
  cdb.set_external_root_folder(ds_root);
 
  // // check species list
@@ -151,7 +151,12 @@ int main(int argc, char *argv[])
   case 0: result.setValue(sp->abbreviation()); break;
   case 1: result.setValue(sp->name()); break;
   case 2: result.setValue(sp->instances()); break;
-  case 3: result.setValue(sp->get_view_min_max_string()); break;
+  case 3:
+   {
+    CLO_Species_Display_Info* cdi = cdb.get_display_info(sp);
+    result.setValue(cdi->get_view_min_max_string());
+   }
+   break;
   default: break;
   }
  });
@@ -162,9 +167,18 @@ int main(int argc, char *argv[])
  dlg.set_table_model(&tm);
 
  QObject::connect(&dlg,
-   &ScignStage_Audio_Dialog::main_table_view_row_selected, [](int r)
+   &ScignStage_Audio_Dialog::main_table_view_row_selected,
+   [&cdb, &dlg](int r)
  {
-  qDebug() << "R: " << r;
+  CLO_Species* sp = cdb.species_vec().value(r);
+  if(!sp)
+    return;
+  qDebug() << "R: " << sp->name();
+
+  QStringList qsl;
+  cdb.get_files(sp, 10, qsl);
+
+  dlg.redraw_file_list(qsl);
  });
 
 // QSound audio(

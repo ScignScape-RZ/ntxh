@@ -312,6 +312,15 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 
 }
 
+void ScignStage_Audio_Dialog::redraw_file_list(QStringList qsl)
+{
+ for(int i = 0; i < 10; ++i)
+ {
+  main_list_->item(i)->setText(qsl.value(i));
+ }
+}
+
+
 void ScignStage_Audio_Dialog::set_table_model(ScignStage_Audio_TableModel* tm)
 {
  main_table_view_->setModel(tm);

@@ -28,12 +28,14 @@ DEFINES += USE_KANS
 
 HEADERS += \
   $$SRC_DIR/clo-species.h \
+  $$SRC_DIR/clo-species-display-info.h \
   $$SRC_DIR/clo-file.h \
   $$SRC_DIR/clo-database.h \
 
 
 SOURCES += \
   $$SRC_DIR/clo-species.cpp \
+  $$SRC_DIR/clo-species-display-info.cpp \
   $$SRC_DIR/clo-file.cpp \
   $$SRC_DIR/clo-database.cpp \
 

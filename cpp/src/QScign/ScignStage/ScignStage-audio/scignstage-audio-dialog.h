@@ -178,12 +178,12 @@ class ScignStage_Audio_Dialog : public QDialog
 
 public:
 
-
-
  ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
    QWidget* parent = nullptr);
 
  ~ScignStage_Audio_Dialog();
+
+ void redraw_file_list(QStringList qsl);
 
  ACCESSORS__SET(std::function<void(Phaon_Runner&)>, phr_init_function)
  ACCESSORS__SET(std::function<void()> ,screenshot_function)

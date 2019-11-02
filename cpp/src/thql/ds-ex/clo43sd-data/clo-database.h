@@ -25,8 +25,11 @@
 class CLO_Species;
 class CLO_File;
 
+class CLO_Species_Display_Info;
+
 //class WCM_Hyponode;
-//class WCM_Database;
+//
+class WCM_Database;
 
 class CLO_Database
 {
@@ -35,19 +38,28 @@ class CLO_Database
 
  QString external_root_folder_;
 
+ WCM_Database* wcm_database_;
+
+ QMap<CLO_Species*, CLO_Species_Display_Info*> display_info_map_; 
+
 public:
 
- CLO_Database();
+ CLO_Database(WCM_Database* wcm_database);
 
  ACCESSORS__RGET(QVector<CLO_Species*> ,species_vec)
  ACCESSORS__RGET(MACRO_PASTE(QMap<QString, CLO_Species*>) ,species_map)
 
  ACCESSORS(QString ,external_root_folder)
+ ACCESSORS(WCM_Database* ,wcm_database)
+
 
  void check_species_folders();
 
  CLO_File* get_conversion_file(CLO_File& cf);
+  
+ CLO_Species_Display_Info* get_display_info(CLO_Species*);
 
+ void get_files(CLO_Species* sp, u1 num, QStringList& qsl);
 
 };
 
