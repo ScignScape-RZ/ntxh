@@ -10,7 +10,7 @@
 //#include "wcm/wcm-hyponode.h"
 
 CLO_Species_Display_Info::CLO_Species_Display_Info()
-  :  current_view_minimum_(0), current_view_maximum_(0), cursor_(0)
+  :  current_view_minimum_(0), current_view_maximum_(0), cursor_({0,0})
 {
 
 }

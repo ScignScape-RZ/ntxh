@@ -30,12 +30,45 @@ void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
  CLO_Species_Display_Info* cdi = get_display_info(sp);
  cdi->check_view_minimum();
 
- quint64 qq = wcm_database_->construct_query_cursor("Default@CLO_File", "Species::Abbreviation@CLO_File",
-   sp->abbreviation());
+ WCM_Column* wcmc;
 
- if(qq)
+ CLO_Species_Display_Info* csdi = get_display_info(sp);
+
+ if(!csdi->cursor().first)
  {
+  QPair<u8, u8> qq = wcm_database_->construct_query_cursor(// "Default@CLO_File",
+    "Species::Abbreviation@CLO_File",
+    sp->abbreviation());
+  if(!qq.first)
+    return;
+  csdi->set_cursor(qq);
+ }
+ for(int i = 0; i < 10; ++i)
+ {
+  QByteArray qba;// = new QByteArray;
+  void* nr;
+  wcm_database_->retrieve_next_record("Default@CLO_File",
+    //"Species::Abbreviation@CLO_File",
+    (WCM_Column*) csdi->cursor().first,
+    (wg_query*) csdi->cursor().second, {&qba, nr});
+  if(qba.isEmpty())
+    return;
+  {
+   WCM_Hypernode whn;
+   QMap<u4, QString> icm;
+   icm[1] = "Species::Abbreviation@CLO_File";
+   whn.set_indexed_column_map(&icm);
+   WCM_Column_Set wcs(*wcm_database_);
+   whn.absorb_data(qba, wcs);
 
+   QString tail;
+   whn.with_hyponode(2) << [&tail](WCM_Hyponode& who)
+   {
+    QVariant qv = who.qt_encoding();
+    tail = who.qt_encoding().toString();
+   };
+   qsl.push_back(tail);
+  };
  }
 
 #ifdef HIDE

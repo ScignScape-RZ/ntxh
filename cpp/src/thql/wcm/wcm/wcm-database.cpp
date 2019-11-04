@@ -604,20 +604,22 @@ void WCM_Database::retrieve_from_index_record(QByteArray& qba,
 
 }
 
-void WCM_Database::construct_query_cursor(QString archive_name, QString index_column_name,
+void WCM_Database::construct_query_cursor(WCM_Column*& wcmc,
+  QString index_column_name,
   wg_int query_param, quint64& result)
 {
- WCM_Column* qc = get_column_by_name(index_column_name);
- if(qc)
+ wcmc = get_column_by_name(index_column_name);
+ if(wcmc)
  {
+//  wcmc = qc;
   wg_query_arg arglist [2]; // holds the arguments to the query
 
-  int column_code = qc->database_column_code();
+  int column_code = wcmc->database_column_code();
   arglist[0].column = 0;
   arglist[0].cond = WG_COND_EQUAL;
   arglist[0].value = wg_encode_query_param_int(white_db_, column_code);
 
-  int col = qc->get_effective_field_number();
+  int col = wcmc->get_effective_field_number();
   arglist[1].column = col;
   arglist[1].cond = WG_COND_EQUAL;
   arglist[1].value = query_param;
@@ -629,6 +631,17 @@ void WCM_Database::construct_query_cursor(QString archive_name, QString index_co
 
   result = (quint64) qry;
  }
+}
+
+void WCM_Database::retrieve_next_record(
+  QString archive_name, WCM_Column* wcmc, wg_query* qry,
+  QPair<QByteArray*, void*&> result)
+{
+ void* index_record = wg_fetch(white_db_, qry);
+ if(!index_record)
+   return;
+// WCM_Column* qc = get_column_by_name(index_column_name);
+ retrieve_from_index_record(*result.first, wcmc, archive_name, index_record, result.second);
 }
 
 

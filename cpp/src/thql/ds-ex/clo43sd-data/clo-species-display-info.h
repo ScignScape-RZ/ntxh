@@ -30,7 +30,7 @@ class CLO_Species_Display_Info
  u4 current_view_minimum_;
  u4 current_view_maximum_;
 
- u8 cursor_;
+ QPair<u8, u8> cursor_;
 
  static u2 view_offset;
 
@@ -38,7 +38,7 @@ public:
 
  CLO_Species_Display_Info();
 
- ACCESSORS(u8 ,cursor)
+ ACCESSORS(MACRO_PASTE(QPair<u8, u8>) ,cursor)
 
  QString get_view_min_max_string();
 

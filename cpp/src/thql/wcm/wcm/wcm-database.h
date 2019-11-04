@@ -343,17 +343,18 @@ public:
   retrieve_all_records_from_encoding(archive_name, index_column_name, query_param, results);
  }
 
- void construct_query_cursor(QString archive_name, QString index_column_name,
+ void construct_query_cursor(WCM_Column*& wcmc, QString index_column_name,
    wg_int query_param, quint64& result);
 
  template<typename T>
- quint64 construct_query_cursor(QString archive_name, QString index_column_name,
+ QPair<quint64, quint64>  construct_query_cursor(QString index_column_name,
    T data)
  {
   wg_int query_param = translate_data_to_query_param(data);
-  quint64 result = 0;
-  construct_query_cursor(archive_name, index_column_name, query_param, result);
-  return result;
+  quint64 result;
+  WCM_Column* wcmc;
+  construct_query_cursor(wcmc, index_column_name, query_param, result);
+  return {(quint64) wcmc, result};
  }
 
  template<typename T>
@@ -363,6 +364,10 @@ public:
   wg_int query_param = translate_data_to_query_param(data);
   return {this, archive_name, index_column_name, query_param};
  }
+
+ void retrieve_next_record(
+   QString archive_name, WCM_Column* wcmc, wg_query* qry,
+   QPair<QByteArray*, void*&> result);
 
  void* retrieve_column_entry_value(WCM_Column* qc, u4 record_id, wg_int& result_value);
 
