@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
  {
   NTXH_Document doc(DEFAULT_NTXH_FOLDER "/clo43sd/species.ntxh");
   doc.parse();
-  CLO_Database cld;
+  CLO_Database cld(nullptr);
   cld.set_external_root_folder(CLO43SD_ROOT_FOLDER);
   QVector<CLO_Species*>& species = cld.species_vec();
   QVector<NTXH_Graph::hypernode_type*>& hns = doc.top_level_hypernodes();

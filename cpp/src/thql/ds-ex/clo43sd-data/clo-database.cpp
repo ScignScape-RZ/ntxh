@@ -30,6 +30,15 @@ void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
  CLO_Species_Display_Info* cdi = get_display_info(sp);
  cdi->check_view_minimum();
 
+ quint64 qq = wcm_database_->construct_query_cursor("Default@CLO_File", "Species::Abbreviation@CLO_File",
+   sp->abbreviation());
+
+ if(qq)
+ {
+
+ }
+
+#ifdef HIDE
 // for(int i = 0; i < 10; ++i)
 //   qsl.push_back(QString("X%1").arg(i));
 // u4 count = 0;
@@ -45,6 +54,9 @@ void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
   whn.absorb_data(qba, wcs);
 
   QString tail;
+
+
+
 //  QString abbr = "BTBW"_q;
 //  QString tail;
 
@@ -68,6 +80,7 @@ void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
   qsl.push_back(tail);
 
  };
+#endif //def HIDE
 }
 
 

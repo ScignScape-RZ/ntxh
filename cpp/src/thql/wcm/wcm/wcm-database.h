@@ -343,6 +343,19 @@ public:
   retrieve_all_records_from_encoding(archive_name, index_column_name, query_param, results);
  }
 
+ void construct_query_cursor(QString archive_name, QString index_column_name,
+   wg_int query_param, quint64& result);
+
+ template<typename T>
+ quint64 construct_query_cursor(QString archive_name, QString index_column_name,
+   T data)
+ {
+  wg_int query_param = translate_data_to_query_param(data);
+  quint64 result = 0;
+  construct_query_cursor(archive_name, index_column_name, query_param, result);
+  return result;
+ }
+
  template<typename T>
  For_All_Records_Package for_all_records(QString archive_name, QString index_column_name,
    T data)

@@ -604,6 +604,34 @@ void WCM_Database::retrieve_from_index_record(QByteArray& qba,
 
 }
 
+void WCM_Database::construct_query_cursor(QString archive_name, QString index_column_name,
+  wg_int query_param, quint64& result)
+{
+ WCM_Column* qc = get_column_by_name(index_column_name);
+ if(qc)
+ {
+  wg_query_arg arglist [2]; // holds the arguments to the query
+
+  int column_code = qc->database_column_code();
+  arglist[0].column = 0;
+  arglist[0].cond = WG_COND_EQUAL;
+  arglist[0].value = wg_encode_query_param_int(white_db_, column_code);
+
+  int col = qc->get_effective_field_number();
+  arglist[1].column = col;
+  arglist[1].cond = WG_COND_EQUAL;
+  arglist[1].value = query_param;
+
+//   wg_free_query_param(_this->white_db_, arglist[0].value);
+//   wg_free_query_param(_this->white_db_, arglist[1].value);
+//  }
+  wg_query* qry = wg_make_query(white_db_, NULL, 0, arglist, 2);
+
+  result = (quint64) qry;
+ }
+}
+
+
 void WCM_Database::retrieve_all_records(WCM_Column* qc,
   QString archive_name, wg_query_arg* arglist, u2 asize,
   QVector<QPair<QByteArray*, void*>>* results,
@@ -830,7 +858,7 @@ void* WCM_Database::retrieve_record_from_encoding(QByteArray& qba, QString archi
 //   result_arglist[1].cond = WG_COND_EQUAL;
 //   result_arglist[1].value = wg_encode_query_param_int(white_db_, index);
 
-//   wg_query* aqry = wg_make_query(white_db_, NULL, 0, result_arglist, 2);
+//   wg_query* aqry = (white_db_, NULL, 0, result_arglist, 2);
 
 //   result = wg_fetch(white_db_, aqry);
 
@@ -1078,7 +1106,7 @@ void WCM_Database::retrieve()
  //void* rec = wg_find_record_int(db, 0, WG_COND_EQUAL, 1, NULL);
 
    //
- //?wg_query* qry = wg_make_query(db, NULL, 0, arglist, 2);
+ //?wg_query* qry = (db, NULL, 0, arglist, 2);
  //?void* rec = wg_fetch(db, qry);
 
 

@@ -72,7 +72,7 @@ struct with_lines_Package
  }
 };
 
-with_lines_Package with_lines(const QString& qs)
+static inline with_lines_Package with_lines(const QString& qs)
 {
  return {&qs};
 }
