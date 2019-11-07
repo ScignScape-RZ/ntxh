@@ -25,23 +25,29 @@ CLO_Database::CLO_Database(WCM_Database* wcm_database)
 
 }
 
+QString CLO_Database::map_audio_file_to_full_path(CLO_Species* sp, QString file)
+{
+ static QString pattern{"%1/%2%3.wav"};
+ return pattern.arg(external_audio_folder_)
+   .arg(sp->abbreviation()).arg(file);
+}
+
+
 void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
 {
  CLO_Species_Display_Info* cdi = get_display_info(sp);
  cdi->check_view_minimum();
 
- WCM_Column* wcmc;
+// WCM_Column* wcmc;
 
- CLO_Species_Display_Info* csdi = get_display_info(sp);
-
- if(!csdi->cursor().first)
+ if(!cdi->cursor().first)
  {
   QPair<u8, u8> qq = wcm_database_->construct_query_cursor(// "Default@CLO_File",
     "Species::Abbreviation@CLO_File",
     sp->abbreviation());
   if(!qq.first)
     return;
-  csdi->set_cursor(qq);
+  cdi->set_cursor(qq);
  }
  for(int i = 0; i < 10; ++i)
  {
@@ -49,8 +55,8 @@ void CLO_Database::get_files(CLO_Species* sp, u1 num, QStringList& qsl)
   void* nr;
   wcm_database_->retrieve_next_record("Default@CLO_File",
     //"Species::Abbreviation@CLO_File",
-    (WCM_Column*) csdi->cursor().first,
-    (wg_query*) csdi->cursor().second, {&qba, nr});
+    (WCM_Column*) cdi->cursor().first,
+    (wg_query*) cdi->cursor().second, {&qba, nr});
   if(qba.isEmpty())
     return;
   {

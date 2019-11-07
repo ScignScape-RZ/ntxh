@@ -37,6 +37,7 @@ class CLO_Database
  QMap<QString, CLO_Species*> species_map_;
 
  QString external_root_folder_;
+ QString external_audio_folder_;
 
  WCM_Database* wcm_database_;
 
@@ -50,6 +51,8 @@ public:
  ACCESSORS__RGET(MACRO_PASTE(QMap<QString, CLO_Species*>) ,species_map)
 
  ACCESSORS(QString ,external_root_folder)
+ ACCESSORS(QString ,external_audio_folder)
+
  ACCESSORS(WCM_Database* ,wcm_database)
 
 
@@ -60,6 +63,8 @@ public:
  CLO_Species_Display_Info* get_display_info(CLO_Species*);
 
  void get_files(CLO_Species* sp, u1 num, QStringList& qsl);
+
+ QString map_audio_file_to_full_path(CLO_Species* sp, QString file);
 
 };
 

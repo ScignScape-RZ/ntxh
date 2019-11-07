@@ -34,6 +34,7 @@ KANS_CLASS_DECLARE(DSM ,Test_Series)
 KANS_CLASS_DECLARE(DSM ,Test_Sample)
 KANS_CLASS_DECLARE(DSM ,Test_Sentence)
 
+class CLO_Species;
 
 USING_KANS(DSM)
 
@@ -142,6 +143,8 @@ class ScignStage_Audio_Dialog : public QDialog
 
  ScignStage_Audio_TableView* main_table_view_;
 
+//? CLO_Species* current_species_;
+
  bool xpdf_is_ready();
  void check_phr();
 
@@ -185,8 +188,13 @@ public:
 
  void redraw_file_list(QStringList qsl);
 
+ int get_current_volume();
+
  ACCESSORS__SET(std::function<void(Phaon_Runner&)>, phr_init_function)
  ACCESSORS__SET(std::function<void()> ,screenshot_function)
+
+//? ACCESSORS(CLO_Species* ,current_species)
+
 
  void set_table_model(ScignStage_Audio_TableModel* tm);
 
@@ -208,6 +216,8 @@ Q_SIGNALS:
  void take_screenshot_requested();
 
  void main_table_view_row_selected(int r);
+
+ void file_list_row_selected(int, QString, QClipboard*);
 
 public Q_SLOTS:
 

@@ -96,7 +96,8 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
     last_highlight_(nullptr), xpdf_process_(nullptr), tcp_server_(nullptr),
     phr_(nullptr), phr_init_function_(nullptr), screenshot_function_(nullptr),
     current_tcp_msecs_(0),
-    xpdf_port_(0), current_index_(-1), max_index_(0), current_volume_(50)
+    xpdf_port_(0), current_index_(-1),
+    max_index_(0), current_volume_(50) //, current_species_(nullptr)
 {
  // // setup RZW
 
@@ -177,6 +178,33 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 
  main_splitter_ = new QSplitter(this);
  main_splitter_->setLayout(main_splitter_layout_);
+
+ main_list_->setContextMenuPolicy(Qt::CustomContextMenu);
+ connect(main_list_, &QListWidget::customContextMenuRequested,
+   [this](const QPoint& pos)
+ {
+  QListWidgetItem* qwi = main_list_->itemAt(pos);
+  if(!qwi)
+    return;
+  if(qwi->text() == "N/A")
+    return;
+  int row = main_list_->row(qwi);
+//?  Q_EMIT(file_list_row_selected(row, qwi->text()));
+
+  QPoint gpos = main_list_->mapToGlobal(pos);
+//  QPoint fpos = main_frame_->mapFromGlobal(gpos);
+   // ->mapToGlobal(pos);
+
+  run_sample_context_menu(gpos, [this, row, qwi]()
+  {
+   Q_EMIT(file_list_row_selected(row, qwi->text(), nullptr));
+  }, [this, row, qwi]()
+  {
+   QClipboard* clipboard = QApplication::clipboard();
+   Q_EMIT(file_list_row_selected(row, qwi->text(), clipboard));
+  });
+
+ });
 
 // connect(main_table_view_->horizontalHeader(),
 //   &QHeaderView::sectionClicked, [](int r)
@@ -320,6 +348,10 @@ void ScignStage_Audio_Dialog::redraw_file_list(QStringList qsl)
  }
 }
 
+int ScignStage_Audio_Dialog::get_current_volume()
+{
+ return 250;
+}
 
 void ScignStage_Audio_Dialog::set_table_model(ScignStage_Audio_TableModel* tm)
 {
@@ -441,8 +473,8 @@ void ScignStage_Audio_Dialog::run_sample_context_menu(const QPoint& p,
  QMenu* qm = new QMenu(this);
  qm->addAction("Play ...", play_fn);
  qm->addAction("Copy Path to Clipboard", copy_fn);
- QPoint g = main_frame_->mapToGlobal(p);
- qm->popup(g);
+ //QPoint g = main_frame_->mapToGlobal(p);
+ qm->popup(p);
 }
 
 void ScignStage_Audio_Dialog::run_test_no_load_message(const QPoint& p, int col)

@@ -7,6 +7,7 @@
 
 #include <QMediaPlayer>
 #include <QApplication>
+#include <QClipboard>
 
 #include <QSound>
 
@@ -88,6 +89,11 @@ void load_species(WCM_Database& wcmd,
  };
 }
 
+QMediaPlayer* get_media_player()
+{
+ static QMediaPlayer* the_player = new QMediaPlayer;
+ return the_player;
+}
 
 int main(int argc, char *argv[])
 {
@@ -119,6 +125,10 @@ int main(int argc, char *argv[])
 
  CLO_Database cdb(&wcmd);
  cdb.set_external_root_folder(ds_root);
+
+ QDir audio_folder(DEFAULT_AUDIO_FOLDER);
+ audio_folder.makeAbsolute();
+ cdb.set_external_audio_folder(audio_folder.path());
 
  // // check species list
  {
@@ -166,14 +176,39 @@ int main(int argc, char *argv[])
 
  dlg.set_table_model(&tm);
 
+ CLO_Species* current_species = nullptr;
+
+ QObject::connect(&dlg,
+     &ScignStage_Audio_Dialog::file_list_row_selected,
+     [&cdb, &dlg, &current_species](int r, QString qs, QClipboard* clipboard)
+ {
+  if(!current_species)
+    return;
+
+  QString fp = cdb.map_audio_file_to_full_path(current_species, qs);
+  if(clipboard)
+    clipboard->setText(fp);
+  else
+  {
+   qDebug() << "Playing: " << fp;
+   QMediaPlayer* player = get_media_player();
+   player->setMedia(QUrl::fromLocalFile(fp));
+   player->setVolume(dlg.get_current_volume());
+   player->play();
+  }
+ });
+
  QObject::connect(&dlg,
    &ScignStage_Audio_Dialog::main_table_view_row_selected,
-   [&cdb, &dlg](int r)
+   [&cdb, &dlg, &current_species](int r)
  {
   CLO_Species* sp = cdb.species_vec().value(r);
   if(!sp)
     return;
-  qDebug() << "R: " << sp->name();
+  current_species = sp;
+
+//?  dlg.set_current_species(sp);
+//  qDebug() << "R: " << sp->name();
 
   QStringList qsl;
   cdb.get_files(sp, 10, qsl);
@@ -194,8 +229,8 @@ int main(int argc, char *argv[])
  QObject::connect(&dlg, &ScignStage_Audio_Dialog::canceled,
    [&qapp]()
  {
-   qDebug() << "Closing ...";
-   qapp.exit();
+  qDebug() << "Closing ...";
+  qapp.exit();
  });
 
  dlg.show();
