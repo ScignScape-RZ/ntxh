@@ -42,6 +42,7 @@ class QButtonGroup;
 class QGroupBox;
 class QScrollArea;
 class QGridLayout;
+class QComboBox;
 
 
 //?QSNS_(ScignStage)
@@ -94,13 +95,11 @@ class NAV_Audio1D_Panel : public QFrame
 
 
 
- QVBoxLayout* zoom_sample_distractor_layout_;
- QHBoxLayout* sample_distractor_layout_;
+ QVBoxLayout* zoom_repeat_layout_;
+ QHBoxLayout* repeat_layout_;
 
- QLabel* sample_label_;
- QLineEdit* sample_line_edit_;
- QLabel* distractor_label_;
- QLineEdit* distractor_line_edit_;
+ QLabel* repeat_label_;
+ QComboBox* repeat_combo_box_;
 
  QSlider* volume_slider_;
 
@@ -115,8 +114,7 @@ public:
 
  ~NAV_Audio1D_Panel();
 
- void set_sample_text(int r);
- void set_distractor_text(QString qs);
+ int get_repeat_value();
 
 Q_SIGNALS:
 

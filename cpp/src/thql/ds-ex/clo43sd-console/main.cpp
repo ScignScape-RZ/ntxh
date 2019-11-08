@@ -194,6 +194,26 @@ int main(int argc, char *argv[])
    QMediaPlayer* player = get_media_player();
    player->setMedia(QUrl::fromLocalFile(fp));
    player->setVolume(dlg.get_current_volume());
+//   for(int i = 0; i < 40; ++i)
+//   {
+//    qDebug() << "I: " << i;
+//    player->play();
+//   }
+   quint8 rr = dlg.get_repeat_rate();
+   quint8* r = new quint8(0);
+   QObject::connect(player, &QMediaPlayer::stateChanged,
+           [player, rr, r]()
+   {
+    QMediaPlayer::State s = player->state();
+    if(s == QMediaPlayer::StoppedState)
+    {
+     ++*r;
+     if(*r == rr)
+       delete r;
+     else
+       player->play();
+    }
+   });
    player->play();
   }
  });

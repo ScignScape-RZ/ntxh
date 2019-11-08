@@ -18,6 +18,7 @@
 #include <QSlider>
 #include <QButtonGroup>
 #include <QGroupBox>
+#include <QComboBox>
 
 USING_QSNS(ScignStage)
 
@@ -28,30 +29,30 @@ NAV_Audio1D_Panel::NAV_Audio1D_Panel(int vmn, int vmx, int v, QWidget* parent)
  main_layout_ = new QVBoxLayout;
  navigation_layout_ = new QHBoxLayout;
 
- zoom_sample_distractor_layout_ = new QVBoxLayout;
- sample_distractor_layout_ = new QHBoxLayout;
+ zoom_repeat_layout_ = new QVBoxLayout;
+ repeat_layout_ = new QHBoxLayout;
 
- sample_label_ = new QLabel("sample:", this);
- sample_line_edit_ = new QLineEdit(this);
- sample_line_edit_->setPlaceholderText("?");
- sample_line_edit_->setMaximumWidth(30);
+ repeat_label_ = new QLabel("Repeat:", this);
+ repeat_combo_box_ = new QComboBox(this);
+// sample_line_edit_->setPlaceholderText("?");
+ repeat_combo_box_->setMaximumWidth(100);
 
- distractor_label_ = new QLabel("distractor:", this);
- distractor_line_edit_ = new QLineEdit(this);
- distractor_line_edit_->setPlaceholderText("?");
- distractor_line_edit_->setMaximumWidth(100);
+ repeat_combo_box_->addItem("1");
+ for(int i = 5; i <= 50; i += 5)
+ {
+  repeat_combo_box_->addItem(QString::number(i));
+ }
 
- sample_distractor_layout_->addWidget(sample_label_);
- sample_distractor_layout_->addWidget(sample_line_edit_);
+ repeat_combo_box_->setCurrentText("40");
 
- sample_distractor_layout_->addWidget(distractor_label_);
- sample_distractor_layout_->addWidget(distractor_line_edit_);
+ repeat_layout_->addWidget(repeat_label_);
+ repeat_layout_->addWidget(repeat_combo_box_);
 
- zoom_sample_distractor_layout_ = new QVBoxLayout;
+ zoom_repeat_layout_ = new QVBoxLayout;
 
  volume_layout_ = new QHBoxLayout;
 
- zoom_sample_distractor_layout_->addLayout(sample_distractor_layout_);
+ zoom_repeat_layout_->addLayout(repeat_layout_);
 
  sample_up_button_ = new QPushButton(this);
  sample_down_button_ = new QPushButton(this);
@@ -178,10 +179,10 @@ NAV_Audio1D_Panel::NAV_Audio1D_Panel(int vmn, int vmx, int v, QWidget* parent)
 
  volume_layout_->addStretch();
 
- zoom_sample_distractor_layout_->addLayout(volume_layout_);
+ zoom_repeat_layout_->addLayout(volume_layout_);
 
 
- navigation_layout_->addLayout(zoom_sample_distractor_layout_);
+ navigation_layout_->addLayout(zoom_repeat_layout_);
 
  navigation_layout_->addStretch();
 
@@ -191,20 +192,17 @@ NAV_Audio1D_Panel::NAV_Audio1D_Panel(int vmn, int vmx, int v, QWidget* parent)
  setLayout(main_layout_);
 }
 
+
+int NAV_Audio1D_Panel::get_repeat_value()
+{
+ return repeat_combo_box_->currentText().toInt();
+}
+
 NAV_Audio1D_Panel::~NAV_Audio1D_Panel()
 {
 
 }
 
-void NAV_Audio1D_Panel::set_sample_text(int r)
-{
- sample_line_edit_->setText(QString::number(r));
-}
-
-void NAV_Audio1D_Panel::set_distractor_text(QString qs)
-{
- distractor_line_edit_->setText(qs);
-}
 
 void NAV_Audio1D_Panel::volume_slider_value_changed(int val)
 {

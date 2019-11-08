@@ -104,9 +104,9 @@ class ScignStage_Audio_Dialog : public QDialog
  QPushButton* take_screenshot_button_;
 
 
- QScrollArea* grid_scroll_area_;
- QFrame* main_frame_;
- QGridLayout* main_grid_layout_;
+// QScrollArea* grid_scroll_area_;
+// QFrame* main_frame_;
+// QGridLayout* main_grid_layout_;
 
  NAV_Audio1D_Panel* nav_panel_;
 
@@ -115,8 +115,6 @@ class ScignStage_Audio_Dialog : public QDialog
  QMap<Test_Sample*, QPair<QLabel*, int> > sample_to_label_map_;
 
  Test_Sample* last_sample_;
-
- QMediaPlayer* player_;
 
  int current_index_;
 
@@ -189,6 +187,7 @@ public:
  void redraw_file_list(QStringList qsl);
 
  int get_current_volume();
+ quint8 get_repeat_rate();
 
  ACCESSORS__SET(std::function<void(Phaon_Runner&)>, phr_init_function)
  ACCESSORS__SET(std::function<void()> ,screenshot_function)

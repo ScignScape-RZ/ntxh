@@ -92,7 +92,7 @@ USING_KANS(TextIO)
 ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
   //Test_Series* ts,
   QWidget* parent)
-  : QDialog(parent), xpdf_bridge_(xpdf_bridge), player_(nullptr), last_sample_(nullptr),
+  : QDialog(parent), xpdf_bridge_(xpdf_bridge), last_sample_(nullptr),
     last_highlight_(nullptr), xpdf_process_(nullptr), tcp_server_(nullptr),
     phr_(nullptr), phr_init_function_(nullptr), screenshot_function_(nullptr),
     current_tcp_msecs_(0),
@@ -219,79 +219,6 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 
 
  // //   Foreground
- main_frame_ = new QFrame(this);
-
- main_frame_->setMinimumHeight(250);
-
- main_frame_->setMinimumWidth(300);
-
- main_frame_->setContextMenuPolicy(Qt::CustomContextMenu);
-
- main_grid_layout_ = new QGridLayout;
-
- int r = 0;
-// max_index_ = files_.size() - 1;
-
- QStringList theaders {
-  "Test 1",
-  "Test 2"
- };
-
- QStringList headers {
-  "File Name", "S-MOS",
-  "N-MOS", "G-MOS",
-  "S-MOS", "N-MOS", "G-MOS"
- };
-
- int cc = 1;
- for(QString h : theaders)
- {
-  QLabel* lbl = new QLabel(h, this);
-  main_grid_layout_->addWidget(lbl, 0, cc, 1, 3);
-  cc += 3;
- }
-
- cc = 0;
- for(QString h : headers)
- {
-  QLabel* lbl = new QLabel(h, this);
-  main_grid_layout_->addWidget(lbl, 1, cc);
-  ++cc;
- }
-
- main_frame_->setLayout(main_grid_layout_);
-
- grid_scroll_area_ = new QScrollArea(this);
- grid_scroll_area_->setWidget(main_frame_);
-
- grid_scroll_area_->setMaximumHeight(200);
-
- middle_layout1_->addWidget(grid_scroll_area_);
-
- connect(main_frame_, &QTableWidget::customContextMenuRequested, [this](const QPoint& qp)
- {
-  qDebug() << qp;
-
-  QWidget* qw = QApplication::widgetAt(main_frame_->mapToGlobal(qp));
-
-  if(qw)
-  {
-   if(qw->parent() == main_frame_)
-   {
-    int i = main_grid_layout_->indexOf(qw);
-    if(i != -1)
-    {
-     int r, c, rs, cs;
-     main_grid_layout_->getItemPosition(i, &r, &c, &rs, &cs);
-     run_message_by_grid_position(qp, r, c);
-
-    }
-   }
-  }
-
- });
-
- main_layout_->addLayout(middle_layout1_);
 
  sentence_label_ = new QLabel("(sentence text)", this);
 
@@ -339,6 +266,12 @@ ScignStage_Audio_Dialog::ScignStage_Audio_Dialog(XPDF_Bridge* xpdf_bridge,
 #endif // USING_XPDF
 
 }
+
+quint8 ScignStage_Audio_Dialog::get_repeat_rate()
+{
+ return nav_panel_->get_repeat_value();
+}
+
 
 void ScignStage_Audio_Dialog::redraw_file_list(QStringList qsl)
 {
@@ -708,7 +641,7 @@ void ScignStage_Audio_Dialog::play_file_at_current_index()
  // //  2 headers rows
  int current_row = current_index_ + 2;
 
- nav_panel_->set_sample_text(current_index_ + 1);
+// nav_panel_->set_sample_text(current_index_ + 1);
 
  QString f;// = files_[current_index_];
 
@@ -733,26 +666,12 @@ void ScignStage_Audio_Dialog::play_file_at_current_index()
 
 // QVector<Test_Sample*>* apl = last_sample_->sentence()->applicable_samples_ptr();
 
- last_highlight_ = main_grid_layout_->itemAtPosition(current_row, 0)->widget();
- last_highlight_->setStyleSheet("QLabel{background:yellow;}");
-
- grid_scroll_area_->ensureWidgetVisible(last_highlight_);
-
- if(!player_)
-   player_ = new QMediaPlayer;
-
- QString path = SAMPLES_FOLDER "/" + f;
-
- player_->setMedia(QUrl::fromLocalFile(path));
- player_->setVolume(current_volume_);
- player_->play();
 
 }
 
 void ScignStage_Audio_Dialog::handle_volume_change_requested(int v)
 {
  current_volume_ = v;
- player_->setVolume(current_volume_);
 }
 
 void ScignStage_Audio_Dialog::handle_sample_down()
