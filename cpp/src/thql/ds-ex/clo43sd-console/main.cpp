@@ -89,10 +89,11 @@ void load_species(WCM_Database& wcmd,
  };
 }
 
-QMediaPlayer* get_media_player()
+QPair<QMediaPlayer*, QPair<quint8, quint8>*> get_media_player()
 {
  static QMediaPlayer* the_player = new QMediaPlayer;
- return the_player;
+ static QPair<quint8, quint8>* the_rate = new QPair<quint8, quint8>{40, 0};
+ return {the_player, the_rate};
 }
 
 int main(int argc, char *argv[])
@@ -191,26 +192,21 @@ int main(int argc, char *argv[])
   else
   {
    qDebug() << "Playing: " << fp;
-   QMediaPlayer* player = get_media_player();
+   QPair<QMediaPlayer*, QPair<quint8, quint8>*> pr = get_media_player();
+   QMediaPlayer* player = pr.first;
    player->setMedia(QUrl::fromLocalFile(fp));
    player->setVolume(dlg.get_current_volume());
-//   for(int i = 0; i < 40; ++i)
-//   {
-//    qDebug() << "I: " << i;
-//    player->play();
-//   }
-   quint8 rr = dlg.get_repeat_rate();
-   quint8* r = new quint8(0);
+   *pr.second = {dlg.get_repeat_rate(), 0};
+   qDebug() << "Will be Repeated: " << pr.second->first;
    QObject::connect(player, &QMediaPlayer::stateChanged,
-           [player, rr, r]()
+           [player, pr]()
    {
     QMediaPlayer::State s = player->state();
     if(s == QMediaPlayer::StoppedState)
     {
-     ++*r;
-     if(*r == rr)
-       delete r;
-     else
+     quint8& r = pr.second->second;
+     ++r;
+     if(r < pr.second->first)
        player->play();
     }
    });
