@@ -508,6 +508,229 @@ here.
 
 `subsection.`
 `p.
+I will refer to the framework proposed here as 
+`q.Cogitive Transform Grammar`/.  On this theory, 
+the full grammatic interpretation of a sentence 
+can be given, at least in germinal form, through 
+relationships between two words.  The 
+grammatic pattern, in turn, emerges from cognitive 
+relations enacted between paired words.  
+In particular, one word is a `i.modifier` and a 
+second is a `i.ground` or `i.target`/.  The modifier's 
+effect is to reconceive or complete the concept 
+(or conceptual nexus) already established for the target.  
+`p`
+
+`p.
+I adopt certain representational conventions which are, 
+as much as possible, motivated by cognitive tendencies 
+rather than being formally arbitrary.  Nevertheless, as a 
+formal systems, representations in general will sometimes 
+have rules driven by a desire to reduce data structures' 
+parameters, rather than by deep theoretical reasoning.  
+For example, I will generally avoid including phrases 
+or any other `q.above-word-scale` elements in parse graphs.  
+It would certainly be possible to iconify both words and 
+phrases via graph nodes, with one form of inter-node 
+relation being the inclusion of a word in a phrase.  
+I choose however the leave phrase-hierarches implicit, 
+partly for the theoretical reason that phrases are 
+(I believe) `i.conceptually` derived from the accumulation 
+of conceptual refinements via `q.cognitive transforms`/, 
+so I'd like to preserve this intuition in the notation.
+`p`
+
+`p.
+In a case like `i.toward the store`/, which 
+(as suggested earlier) I read as `q.transforming` a noun 
+to an adjective, the ground of this transform evidently 
+a phrase, `i.the store`/.  I will use `q.ground` 
+informally for a concept altered by a modifier, whether 
+expressed in a word or phrase.  However, formally speaking 
+I represent `q.transforms` as graphs only between words.  
+Note that `i.the store` itself represents a transformation: 
+the determinant `q.the` serves to clothe the generic 
+concept `i.store` into a more context-specific referent.  
+The concept then modified by `i.toward` is 
+`i.store` only `i.after` it is `q.acted upon` by the 
+effect of the `q.the`/-modification.  
+Rather than picturing this as a relation between a modifier 
+and a phrasal ground, we can also see this situation as a 
+`q.chain` of modifications, one presupposing another.      
+`p`
+
+`p.
+With the analogy of `q.functional` types in mathematics 
+or computers, we can see intermediate modifications 
+as having an `i.input` and an `i.output`/.  Here, 
+`i.the` `q.inputs` a noun (`i.store`/) and `q.outputs` 
+an altered version of that concept; in particular, one 
+now cognized under the aegis of a singular determinant.  
+The output of `i.the` is then an input for 
+`i.toward`/, which adds its own alteration to the 
+evolving `q.store` concept.  We can accordingly trace 
+this chain as a series of steps between individual words, 
+each step representing how one word modifies a concept 
+priorly modified by its predecessor in the chain.  
+This kind of picture helps motivate the idea of modeling 
+`q.cognitive transforms` wholly via inter-word relations.  
+The graph structure in the case of `i.toward the store` 
+is simple, in that the transform evince a linear chain 
+backward through the sentence: `StoreTheChain;.  
+The arrows in this `q.graph` (subgraph, technically) 
+point from the target to the modifier: `i.the` is 
+a modifier for `i.store`/, but a target for 
+`i.toward`/.  This indicates that `i.the` stands in for a 
+transform whose `i.output` becomes `i.toward`/'s `i.input`/.  
+`p`
+
+`p.
+Carrying these ideas over to a formal model, phrases are 
+excluded from direct representation because it may be tacitly 
+understood with any intermediate target-modifier pairing 
+%-- `q.intermediate` in the sense that the target is 
+also a modifier for a different target %-- that the 
+`q.arrow` direction represents not just the single target 
+word as a `i.ground` for modification, but the collection 
+of prior transforms forming a chain leading `i.to` that 
+target.  For example, `i.the` is target for `i.toward`/, 
+but conceptually this means that the accumulated concept 
+resulting from `i.the`/'s own modification of its own 
+ground is assumed to be carried along in the 
+`i.the`/`i.toward` interaction (notationally, the 
+`i.the`/`i.toward` arrow, or directed graph-edge).     
+`p`
+
+`p.
+The `i.processual data structures` I propose for modeling 
+Cognitive Transform Grammar are a variety of hypergraph 
+built around edges representing cognitive transforms, 
+via modifier/target pairs.  The model stipulates that 
+each word can be the target for at most one modifier.  
+This means that one can form a chain following from one target 
+to another, uniquely, and I stipulate that for any single 
+sentence such chains will always lead to a single 
+`q.root` word.  At this level of description the parse 
+graphs are therefore `i.trees`/.  I will however introduce 
+certain additional structures through which parcse-graphs 
+actually become a form of hypegraph, albeit with acyclic 
+directed edges, that is, with a kernel tree-like structure. 
+`p`
+
+`p.
+I also stipulate that all the edges in a parse-graph 
+%-- all the cognitive transforms, representationally 
+%-- can be given a specific ordering.  
+At least locally, ordering has a theoretical 
+basis as can be seen from the `i.toward the store` 
+case: the `i.toward` transform presupposes the one 
+for `i.the` in the sense that the latter precedes 
+it in the output-to-input chain.  The rationale 
+for an `i.overall` ordering, across an entire 
+sentence, is more complex, but will hopefully 
+emerge in my following discussion. 
+`p`
+
+`p.
+While each word may have at most one modifier, a modifier 
+may transform multiple targets.  Consider 
+`i.The dogs were barking very loudly`/.  I will 
+present an analysis by considering word-pairs 
+(in this sentence, but not necessarily in general, adjacent 
+`visavis; sentence order).  Here `i.were barking` 
+establishes a past progressive tense: I read this as a 
+transform which yields a verb (i.e., a conceptual 
+outcome which profiles an event or process according to 
+the overall ideational desiderata for verbs, for example 
+in Lang Intro. p. 108).  More precisely, `i.barking` is 
+(I claim) conceptually adjectival, but by blending this concept 
+with a temporal reference frame, we employ a conventionalized 
+modification which refocuses the original concept toward 
+a profiling of something bearing the concept as an 
+act on that thing's part %-- cf. `i.I am hungry for` as a 
+less ornate vernacular replacing `i.I hunger for`/.  
+When the adjective is a gerund %-- therefore morphologically 
+based on a verb %-- the transform `i.to` the verb 
+category uncovers the original verb, but with added 
+temporal specification.  There is more to say about 
+this treatment of progressives, but I will forestall 
+the analysis for now.    
+`p`
+
+`p.
+Moving on within `barking very loudly`/, the 
+transform relationship between 
+`i.very` and `i.loudly` seems straightforwardly 
+adverbial: the modification alters an adverb, 
+here adding a measure of incremental emphasis 
+(a contrary `q.decremental` transform would be 
+hedges like `i.rather` or `i.a little`/).  
+Also `i.the` modifies `i.dogs` via singular determinant, 
+reiterating my sketch for `i.the store`/.  These, then, 
+are basic word-pairs in `i.The dogs were barking very loudly`/.  
+Next, `i.very loudly `q.outputs` an adverb 
+(it also `q.inputs`/) one, which means the outcome of 
+that transformation needs to link with a verb, to become 
+its ground %-- specifically, here, the verb concept 
+resulting from `i.were barking`/.  So the outcome of 
+one transform becomes a modifier for the outcome of 
+a second.   
+`p`
+
+`p.
+Following the principle that targets link in chains 
+%-- an edge between one modifier-word and a second 
+meaning that the `q.output` of the former's transform 
+becomes `q.input` to the latter %-- we here have 
+the structure that `i.were`/, which is the modifier 
+in `i.were barking`/, is then the target for 
+`i.very`/, which is the modifier in `i.very loud`/.  
+(This may feel counterintuitive in that 
+`q.were` seems like an auxiliary word, so really 
+what is being modified here is `i.barking`/: 
+semiotically, the key communication is presumably 
+`i.barking loundy`/; as I will discuss below, the 
+transform structure linking sentences, on this 
+model, does not necessarily foreground lexemes 
+which are the most semantically important).  
+I delay considerations of sentences' overall meaning, 
+according to which some ideas may emerge as more 
+central than others; here I want to sketch the 
+series of transforms through which the overall meaning 
+arises.  In this spirit `i.very` links to `i.were`/, 
+as modifier-to-target, because of how the transforms 
+are ordered: the kind of transform signified by an 
+adjective logically depends on a verb, so that 
+`i.were`/, whose ouput supplies that verb, 
+precedes `i.very` in the formal transform-order.    
+`p`
+
+`p.
+Also, `i.very` now has two targets.  We have 
+`i.very loud`/, which yields a refined 
+(here an `q.augmented`/) adverb, and `i.very` 
+(encapsulating `i.very loud`/) adverbially modifying 
+`i.were barking`/.  I will differentiate multiple 
+targets for one modifier in terms of `q.stages`/.  
+Here, `i.very` encompasses two different `i.stages` 
+of transformation: first, it modifies an adverb 
+to form a new adverb; then, in a second stage, 
+the outcome modifies a verb ground.  I adopt the 
+notational convention that directed edges in a 
+parse graph are labeled with a number designating 
+their stage: so in a minimal example the links 
+between `i.very`/, `i.loudly`/, and `i.were` could 
+be expressed as `WereVeryLoudlyGraph;: the subscripts on the 
+edges disinguish the first transform-stage for `i.very` 
+from the second.   
+`p`
+
+`p.
+
+`p`
+
+
+`p.
 
 `p`
 
