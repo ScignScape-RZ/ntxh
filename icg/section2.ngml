@@ -259,9 +259,254 @@ not normally treated as part of syntax or semantics.
 
 `p.
 Different theories will recognize a different inventory 
-of relevant parameters;   
+of relevant parameters (although a notation may refer 
+in ad-hoc ways to details which other theories would represent 
+more formally; e.g., words may be boldfaced or capitalized 
+to indicate vocal emphasis, even if the relevant theory 
+does not usually consider speech patterns).  We can 
+therefore adopt a rather abstract, metatheoretical 
+perspective by considering which theoretical 
+parameters are internally utilized by which theories.  
+For their central analysis, for example, theories 
+may include only phrase-structures, only interword relations, 
+or both; they may include only words as the 
+canonical lexical elements or admit certain smaller-scale 
+units, like `q.'s` for possessives; they may or may not 
+pair stuctural re-presentations of sentences with 
+structurally annotated lexicons, where for example an 
+identifier code associated with a word in (what I am 
+calling) a processual data structure matches the 
+word to a lexical entry.  Representational paradigms 
+can also differ in how they handle (if at all) 
+various communicative units which are not usually 
+lexified, such as proper-name acronyms, punctuation, 
+interwoven dialog (where a pause or interruption 
+at a certain point may be deemed semiotically 
+relevant), or speech effects in general.     
 `p`
 
+`p.
+As I have already suggested, my goal here is to 
+propose a formal model which is appropriate 
+for cognitive grammar %-- mostly preserving 
+the philosophical commitments of key figures 
+such as Langacker and Talmy (at least as a goal) 
+and yielding representations which help 
+to document cognitive activity sited in linguistic 
+formations.  Ideally, insofar as cognitive grammar 
+would give a particular treatment for a sentence 
+%-- focusing on a landmark/trajector configuration, 
+let's say %-- the `q.processual data structure` 
+used to encapsulate such analysis would 
+comprise parameters which thematically notate 
+components in the cognitive-grammatic treatment 
+and diagram how they relate to particular 
+words (or word-pairs or phrases).  
+`p`
+
+`p.
+Minimally, my proposed repesentations are 
+derived from Dependency Grammar in that 
+interword relations are taken as the crucial 
+theoretical construct (more so than phrases).  
+As a result, the `q.processual data structure` 
+associated with any sentence can be seen 
+as a directed, labeled graph, or 
+`q.parse graph`/, with words represented as 
+graph nodes.  (I will generally 
+argue against isolating non-word lexical 
+elements, so e.g. a possessive like 
+`i.Warren's` is treated as one node, not two).  
+Nodes are then labeled with grammatical 
+categories, and edges between nodes labeled 
+with notations suggesting the kind 
+of relationship obtaining between the incident nodes. 
+`p`
+
+`p.
+My system of node and edge labels is also influenced 
+by categorial grammar; in particular, I adopt the conventional 
+that certain grammatic categories are derived from 
+other categories.  Insofar as words from one category 
+are used in conjunction with a word from another 
+category, resulting in a phrase or transoformation 
+assignable to a third category (potentially the 
+same as the second), the first category is 
+derivative on the latter two.  The adjective 
+category is derivative on `i.noun` because 
+adjectives are modifiers which trigger some 
+reconceptualizing of a noun-idea, resulting in 
+a new, or at least altered, noun (technically 
+perhaps a noun phrase but conceptually a noun).  
+Or, consider a preposition like `i.toward`/, 
+which combines with a noun to produce a 
+form of adverb (a locative designation which 
+modifies a verb, as in `i.walk toward the store`/).  
+Here the categorial ascription for 
+`i.toward` is derived from the `i.noun` and `i.adverb` 
+(in a fixed order: `i.toward` conceptually 
+transforms a noun `i.to` an adverb).  
+`p`
+
+`p.
+In general, for a pair of grammatic categories 
+(not necessarily distinct) there is a potential 
+additional category profiling conceptual 
+transitions which produce an instance of 
+the second category in the presence of the 
+first.  To use more mathematical language, 
+the derived category profiles transformations 
+which `i.input` the first category and 
+`i.output` the second.  This construction is 
+similar to the maxim in mathematical type theory 
+that functions between two types constitute a 
+third type, or in computational type theory 
+that procedures with respective tuples of 
+input and output types dervice a further type. 
+`p`
+
+`p.
+A common framework holds that the essential 
+linguistic types %-- or grammatic categories 
+%-- are `i.nouns` and `i.propositions`/; 
+I use the latter term for sentences as well 
+as clauses, contained within sentences, that 
+embody a complete propositional idea.  All further 
+categories can then be derived as `q.transformations` 
+that take inputs and produce outputs from these 
+core categories, or prior derived categories 
+recursively.  In particular, verbs profile 
+transformations that produce propositions from nouns.  
+In Categorial Combinary Grammar, a verb can 
+be characterized via notation like `NSlashP;, 
+meaning that a verb (phrase) combines with a noun (phrase)  
+`i.preceding` the verb to yield a proposition, e.g., 
+a complete sentence: `i.the dogs barked`/.  
+This representation would also distinguish combinations 
+by word order (the modifier preceding or following 
+the modified, or `q.target`/; the two forms of 
+sequence marked by using either back or forward 
+slashes).  Here I abstract from word-order and use 
+an arrow, borrowing from type theory, to represent 
+either back or forward slash: so the idea that a 
+verb expects a noun to form a proposition would be 
+written `VNounToProp; (this notation will be further 
+clarified below).    
+`p`
+
+`p.
+Here I will sketch a framework that combines the 
+basic intuitions of categorial and dependency 
+grammars: a word whose categorization belongs 
+to a derived category serves to transform or 
+modify some `q.target` word; this in turn can 
+be modeled as a relation `i.between` the modifier and 
+the target, and the `q.graph` of these relations 
+forms the core of a parse graph.  At the 
+same time, I will suggest conceptual interpretation 
+of relationships; I do not picture formal models 
+as merely observing grammatic `q.behaviors` 
+(cf. Langacker Intro p. 93).  The idea that 
+adjectives transform nouns into `q.other nouns` 
+can be given a strictly behavioral gloss by 
+reading it as a structural condition: when occurring 
+in well-formed sentences, an adjective links to a noun 
+(or noun-phrase) to produce a noun-phrase that substitutes for 
+a nominal lexeme in larger phrases.  So for any adjective 
+we can `i.find` the noun it modifies and find how the 
+resulting phrase is used as a noun in some larger phrase 
+%-- the fact that this `q.search` resolves successfully 
+is mandated by sentence validity, and failure to 
+find the requiste context for the adjective 
+is a signal that the enclosing sentence is not, 
+in fact, well-formed.   
+`p`
+
+`p.
+In contrast to a purely behavioral description, however, 
+we can interpret these same phenomena conceptually.  
+Once we encounter a lexeme which appears adjectival, 
+we `i.conceptually` expect to find a noun which it 
+modifies.  We cannot conceive `i.black`/, say, 
+apart from some object whose surface or appearance 
+is black.  Assuming that a sentence originates from a 
+speaker's rational and honestly-portrayed interaction 
+within a situation, the speaker would have no reason 
+to enunciate `i.black` without cognizing the color, 
+and therefore cognizing a predicated object.  
+Likewise for any other adjective; in this 
+sense adjectives create conceptual expectations that 
+window onto speakers' rational construals of situations.  
+Sentences fulfill expectations by presenting words 
+or phrases that complete ideas that seem to have been 
+left open by the previously spoken (or written) sentence-fragment.  
+`p`
+
+`p.
+Sometimes expectations refer backward, as often in 
+personal pronouns (`i.I invited John, but he's on vacation`/) 
+%-- we expect `i.he` or `i.she` to proxy a referent priorly 
+established in the discourse, maybe the sentence.  
+In the more general case though they refer forward, 
+so we can say that the presence of lexemes from 
+`q.derivative` grammatic categories creates an 
+expection of a conceptual completion that is then 
+satisfied by a subsequently occurring word or phrase.  
+Sentences are grammatically correct, then, insofar 
+as they `i.do` resolve their midstream expectations.  
+Grammatical behavior %-- e.g. that adjectives must be 
+followed by nouns %-- is therefore not forced 
+to be a theoretical primitive, but instead can be 
+analyzed as the conventionalization of conceptual 
+expectations and resolutions.  Language, on this 
+perspective, reveals certain recurring patterns on 
+how expectations are created and then fulfilled; 
+when sufficiently entrenched as well-formedness 
+criteria, these patterns `i.become` grammatical behavior.  
+`p`
+
+`p.
+When expectations are left unresolved, we may not 
+necessarily experience the results as conceptually 
+lacking: hearing someone say only `i.there is a black` 
+(with no `q.modifiand`/) probably does not result in out 
+feeling a sense of `i.conceptual` incompleteness.  
+Rather, we assume that the sentence has been 
+interrupted, or that on the face it is grammatically 
+wrong (for whatever reason: maybe the speaker is  
+incompetent, or was interrupted, or is still deciding 
+what to say next).  The fact that we experience 
+mismatched expectations as violations of syntactic 
+rules, rather than conceptually anomalies, may cloak 
+the fact that these expectations are intrinsically 
+conceptual.  However, this comports with my theory of 
+the origin of grammatic intuitions: we are used 
+to the flow of expectations to accord with the 
+unfolding of grammar.  We `i.become` used to this 
+alignment the more that we immerse ourselves 
+in language; as a result, we come to subconsciously 
+register the posing and resolving of expectations, 
+being more explicitly aware of the linguistic 
+materialization of these patterns than their 
+conceptual substrate.  Once the agreement between 
+the smooth creation and dissolving of expectations' 
+incompleteness is disrupted, we `i.experience` this 
+defect as an anomaly in linguistic form.  
+`p`
+
+`p.
+Via such a theory, I hypothesize then that grammatic 
+rules are emergent phenomena whose origins lie in 
+conceptual expectations, and specifically in patterns 
+such that expectations are raised and then satisfied.  
+Once these patterns become entrenched 
+%-- in particular, via grammatic categories %-- they 
+can nevertheless be given a formal treatment.  
+I will now examine the specific formal model introduced 
+here.   
+`p`
+
+`subsection.`
 `p.
 
 `p`
