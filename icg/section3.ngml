@@ -75,9 +75,369 @@ elucidate these dynamics through several lines of argument.
 
 `subsection.Propositions and Transform Dynamics`
 `p.
-
+In general, sentences yield complete ideas; 
+in this sense, all the transforms which collectively 
+lead to the sentence root are oriented to 
+eventually yield a proposition.  Here again I 
+treat proposition as a grammatic category, albeit 
+one rarely occupied by individual lexemes 
+(although see `i.He said so` or 
+`i.I didn't know that`/).  The decisive transform, then, 
+is one which yields a %-- which usually means 
+a verb is the decisive modifier (the sentence's 
+`q.root verb`/), although one might argue that the 
+transform `q.signatures` like conversion `i.between` 
+propositions is also possible (e.g.,  
+`i.Really, Sanders would have been a better candidate in 2016`/).  
+The subject of the root verb can then be called 
+the `i.root subject` of the sentence; all tranforms 
+evinced by the sentence are, accordingly, 
+structurally situated in a dynamic whose core axis 
+leads from the root subject to the final proposition.  
 `p`
 
+`p.
+As outlined earlier, Cognitive Transform Grammar is amenable 
+to a type theory based on the fundamental notion that 
+procedures, processes, or functions `q.mapping` between 
+types yields additional types (in mathematics this 
+multiplying aspect of type systems is identified as 
+type Categories being `q.Cartesian Closed`/).  
+I have used the terminology that a type system is 
+`i.Channelized` when a specific form of 
+`q.summation` among channels (as abstractly specified, 
+e.g. in a procedural signature) yields a distinct type.  
+Analogously, under the premise that in broad 
+surveys of syntactic norms grammatical `i.categories` 
+are analogs of procedural `i.types` (in the 
+computer-programming sense), we can identify 
+grammatical categories as formed from other 
+categories via transform-pairs, perhaps aggregates 
+of transform-pairs combined as columns within one channel.  
+A ditransitive verb, let's say, is a `q.type` 
+defined by the requirement that (construed as a modifier) 
+the verb has three distinct grounds to be modified 
+%-- subject, direct, and indirect object 
+%-- each of which is (categorially) a noun.     
+`p`
+
+`p.
+Last section I defended the model wherein verbs are 
+analyzed as (conceptually) modifying their direct 
+objects.  Similar arguments apply to `i.indirect` objects: 
+the effect of a noun-concept being registeres in an 
+indirect object `q.slot` is to conceptualize that 
+concept in a distinct register, often in a quasi-spatial 
+or processual fashion:
+
+`exs,
+`ex; I brought you some wine.  
+`ex; We bought him some school supplies.  
+`ex; I carved Grandma some duck.  
+`ex; The coach hit the infielders some ground balls.  
+`exs`
+
+Each of these constructions posits the indirect object 
+as the endpoint of a spatial trajectory, although the 
+path is profiled more in terms of the subject's motivations 
+than the specific spatial coordinates.  Literaly, (1) and (2) 
+(even (3), on reflection) profile a spatial movement 
+between the subject and indirect object (the `i.direct` object 
+being the mover), but the conceptual emphasis is on someone 
+being the `i.recipient` of that object.  (Likewise 
+in (4), the implication is to emphasize not that the baseballs are 
+hit `i.toward` the fielders, but that their path is deliberately 
+induced so for them to practice fielding).  In a typical 
+ditransitive construction, that is, there is a conceptual 
+overlay of spatial and `q.benefactive` dimensions: the 
+indirect object is both a path end-point and one part of 
+a giver/receiver coordination.  Insofar as use-cases 
+for these verbs tend to align along familiar conceptual 
+patterns, e.g. this locative/benefactive overly, 
+the appearance of a noun-concept `i.as` indirect object 
+tends to foreground the sense in which it can fit 
+into such a conceptual matrix (e.g., to be a `q.receiver` 
+of something as well as a spatial endpoint).  A person 
+can be a `i.receiver` and `i.destination` insofar as 
+taking physical possession of something (literally or 
+symbolically it becomes `i.on your person`/, in your 
+spatial proximity) stands for becoming its `q.owner` or 
+`q.possessor`/; meanwhile, we also have social customs 
+of giving, receiving, buying, selling, and in general 
+recognizing each others' right to our possessions 
+(plus ritualized transfers of such right).  These 
+spatial and social senses conceptually overlap, 
+creating a hybrid locative/benefactive prototype, 
+and a verb's taking a noun as indirect object 
+reconceptualizes the latter according to this kind of 
+framing (or some other recurring ditransitive patterns).   
+`p`
+
+`p.
+So a ditransitive verb effectuates new cognitive 
+construals `visavis; its three modified grounds, 
+and only in the context of these three 
+transforms does the verb produce something 
+that should be interpreted as a complete idea.  
+We can formally notate this template by arguing 
+that the ditransitive verb's `q.signature` 
+combines three nouns and a proposition 
+%-- e.g., `NNNP; %-- where I use arrows 
+between the distinct columns `i.and` the 
+eventual proposition to indicate that the 
+intermediate transforms can be logically 
+ordered.  I do introduce a visual cue 
+%-- one or two dots above the arrow 
+%-- to distinguish sequencing 
+`i.between columns` vs. `i.between channels`/: 
+the three nouns are all columns within 
+`i.one` channel; whereas the final proposition 
+is a different channel, representing the 
+`q.outcome` of the verb's transformations 
+taken in combination. 
+`p`
+
+`p.
+I will discuss the `q.sequencing` among columns below; 
+but here I want to conceptually examine these 
+type-theoretic `q.signatures`/, or how the type-construction 
+modeling the grammatic categories which modifiers 
+expect as their grounds (and also what kind of 
+aggregate is required, such as three distinct 
+nouns in the ditransitive case) convey modifiers' 
+cognitive attributes.  
+`p`
+
+`p.
+Applications of type theory in linguistics can 
+address different concerns, across syntax 
+and semantics.  To avoid confusion, I propose 
+the term `i.macrotypes` to mean large-scale 
+classifications such as grammatic categories, 
+as opposed to finer-grained units like 
+the senses of one lexeme (which I would call 
+`i.microtypes`/).  Here `i.macrotype` can be 
+seen as essentially a renaming of `i.grammatic category`/, 
+which avoids using the term `i.category` that in 
+turn has numerous unrelated meanings across 
+fields which, ideally, a multi-disciplinary 
+linguistic methodology will integrate.  
+In short, then, verbs, nouns, propositions, 
+adjectives, advers, and so forth, are 
+`i.macrotypes`/, or more precisely name 
+collations of related macrotypes 
+(e.g., intransitive, transitive, and ditransitive verbs).  
+We can assume that all macrotypes other 
+than nouns and propositions are `i.derived`/, 
+and so they have a `i.signature` describing 
+the patterns whereby they produce `q.concepts` 
+classifiable as some macrotype upon moifying 
+`i.grounds` with their own macrotypes.  
+I use `i.macrotype` to characterize both 
+specific words and also phrases and concepts; 
+to say that a `i.concept` is a noun, for 
+example, is to say that it would be 
+linguistically rendered via a word or 
+phrase categorially classified as a noun.  
+In general, though, I try to minimize 
+talk about `i.phrases`/, in favor of 
+`i.conceptual outcomes` associated with 
+the modifier at the `q.head` of a phrase.  
+That is, to classify a phrase as a noun, 
+for example, is to say that the 
+final transform producing the phrase's 
+associated concept is one linguistically 
+represented by a modifier which `i.yields` 
+a noun, so that the `i.concept` is governed 
+by the `i.noun` macrotype.
+`p`
+
+`p.
+In principle, any collection of types can 
+yield a new type (since any tuple of types 
+can be functional `i.inputs` and `i.outputs`/).   
+Only a few possible type-signatures, however, 
+actually correspond to linguistic macrotypes.  
+Here again we find that natural language is 
+restricted compared, say, to programming languages, 
+in this context with respect to the range of 
+derivative macrotypes which are systematically 
+recognized as grammatic categories.  Again too, 
+this may reflect the dynamics of sentences building 
+up to a propositional conclusion, with all sentence-components 
+attached to a central root-subject/root-verb connection. 
+`p`
+
+`p.
+To elaborate, I will make some observations about 
+which macrotypes seem to have categorial status 
+in natural language (i.e., to be incorporated 
+into grammatic norms, as grammatic categories). 
+Note that, within the linguistic type system, 
+the `i.proposition` macrotype is singled 
+out as the root of all complete sentences 
+(`q.proposition` here referring to the grammatic 
+category; I use `i.propositional content` to 
+designate the `i.idea` carried by a proposition-typed 
+phrase).  This also means that macrotypes are 
+more or less `q.close` to propositions in terms 
+of how many transforms, among recognized macrotypes, 
+are needed as intermediaries before a complete 
+proposition: adjectives, for example, yield nouns, 
+which then need a further transform.  I will 
+say that adjectives (and for similar reasons adverbs) 
+are more `q.peripheral`/, as a macrotype, compared to 
+nouns and verbs.      
+`p`
+
+`p.
+Observe also that derived macrotypes tend to 
+operate between macrotypes which are equally 
+`q.peripheral` in this sense (often `i.the same` 
+type), or `i.less` peripheral, but rarely `i.more` 
+so.  Macrotypes' transforms tend to take us 
+`i.toward` propositions, not `q.away` from them 
+(in the `q.space` of macrotypes).  For adjectives 
+and some adverbs, the `i.input` and `i.output` 
+types are the same, at least if we construe 
+macrotypes most broadly.  With a more 
+complex type system %-- e.g., distinguishing 
+nouns with determinate content (`i.Elizabeth 
+Warren`/, `i.this book`/, `i.the dogs`/) 
+from abstract concepts (`i.book`/, `i.dog`/) %-- 
+transforms seem to trend toward more 
+logical specificity even within one 
+macrotype (e.g. we have demonstratives to 
+transition from abstract concepts to determinate 
+content, but few lexemes to go in the opposite 
+direction.  I will consider these more 
+refined categorizations `i.within` macrotypes later.
+`p`
+
+`p.
+Sticking just with macrotypes most broadly laid 
+out, though, note that there are very few cases 
+of a modifier transforming from one to a different 
+`i.more peripheral` macrotype.  In place of 
+phrasal units that would effectuate such 
+`q.peripheralizing` transforms, we tend 
+to have lexemes doing double duty: 
+in particular, verbs or nouns reassigned 
+roles as adjectives (`i.hockey stick` and 
+`i.bowling alley` rather than `i.stick for hockey` 
+or `i.alley for bowling`/).  So when some 
+grammatical mutation is desired that would 
+reinterpret a lexeme normally used as a macrotype 
+like noun or verb, so that it become a more 
+`q.peripheral` macrotype like an adjective, 
+conventions are to just preserve the lexeme as a single 
+word (which the hearer presumably grants its new 
+role from context) rather than to embed the 
+word in a phrasal transform (like how `i.that` nominalizing 
+a proposition, which is in turn `q.peripheralizing`/, 
+a counter-example to the tendency for transforms 
+to move `i.away` from more peripheral types, or as I'll 
+put it `i.counter-peripheral`/).  
+`p`
+
+`p.
+In short, peripheralizing transforms tend to occur through 
+mental substitutions at the lexical level rather than 
+peripheralizing modifiers which head a phrasal construction.  
+Moreover, patterns like noun-to-adjective or verb-to-adjective 
+are more common when there is a simple (particularly one-word) 
+target for the newly minted adjective (`i.score sheet`/, 
+not `i.score piece of paper`/).  Noun-to-verb 
+reassignments are exotic-sounding, perhaps deliberately 
+received as bending the rules of English.  I have 
+in mind cases like: 
+
+`exs,
+`ex; Don't think you can Champagne me into forgiving you.
+`ex; If they healthy scratch him enough he might accept a trade. 
+`exs`
+
+Perhaps such verb-producing shifts are rarer than adjective-producing 
+equivalents because to `q.resolve` the peripheralizing 
+transform then requires multiple further transforms (considering 
+the transitive or ditransitive case), as opposed to 
+one compact counter-peripheral step.  The less idiosyncratic 
+approach to sentences like (1) and (2) would be to just 
+factor the complex expressions into separate clauses: 
+
+`exs,
+`ex; Don't think you can just buy me Champagne and I'll forgive you.
+`ex; If they make him a `q.healthy scratch` enough times 
+(i.e., leave a player off a sport team's active roster even 
+if he is not injured), he might accept a trade. 
+`exs`
+
+On this evidence, peripheralizing changes in categorial 
+roles are rare, and especially in cases where the 
+`q.counterperipheral` ground that would `q.resolve` the 
+resulting expectation is phrasal or multi-part 
+(e.g., multi-column).  Still more rare are 
+peripheralizing `i.transforms` wherein some function 
+word forces a categorial reassignment to a 
+more peripheral macrotype.  Earlier (without using 
+this specific terminology) I analyzed `i.for` 
+as a counter-peripheral transform acting on a verb 
+and noun to yield an adjective, e.g. `i.for holding 
+the groceries`/.  In this case the verb/noun combination 
+is a kind of incomplete proposition, missing a subject; 
+the noun then modified by the adjectival outcome 
+(of `i.for`/'s transform) can then `q.slot in` and 
+complete the proposition (`i.This bag holds the 
+groceries`/).  So we can speculate that 
+peripheralizing transforms are more acceptable 
+when they yield a construction which is 
+`q.almost` proposition-yielding. 
+`p`
+
+`p.
+In general, though, we can observe certain patterns 
+in the system of recognized macrotypes: 
+most transforms are counter-peripheral, 
+either transforming between two conceptualizations 
+within one macrotype or in a step closer to 
+a propositional outcome; contrary re-conceptualizations 
+(such as a noun-to-verb) are more likely expressed 
+via subordinate, often propositionally complete 
+clauses; and peripheralizing modifications 
+are more likely to occur at the lexical than 
+the phrasal (or word-pair) level.     
+`p`
+
+`p.
+Ultimately, I believe these oberservations are reasonable 
+if we consider the epistemic dynamics informing sentence 
+structure, which I will now consider further. 
+`p`
+
+`subsection.The Epistemic Dynamics of Columns and Stages`
+`p.
+As I pointed out earlier, verbs can be expounded upon 
+with many added details, but only a few of these 
+can be `i.columns` for which the verb itself is a 
+modifier (rather than its being the target of an 
+adverbial modifier).  The question of 
+`i.which` content is treated as direct or indirect 
+object, rather than a secondary detail, seems 
+to be a matter of context.  Material which is an 
+object in one sentence can be an added detail in another: 
+
+`exs,
+`ex; This bus drops passengers off downtown.
+`ex; This bus drops passengers off along Queen street.
+`ex; This bus drops passengers off downtown along Queen street.
+`ex; This bus will take you downtown via Queen street.
+`exs`
+  
+`p`
+
+`p.
+
+`p`
 
 `p.
 
