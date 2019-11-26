@@ -1284,6 +1284,273 @@ such as (in (1)-(3)) `i.my favorite newspaper`/.
 `p`
 
 `p.
+I propose the term `q.mesotype` to represent a 
+level of classification between individual words 
+and macrotypes, including `q.top-level` macrotypes 
+like noun, proposition, verb, adjective, adverb, and 
+preverb.  More specifically, I propose a type 
+hierarchy where those aforementioned macrotypes 
+(with no further qualifications) are the least 
+granular, followed by subdivisions which 
+tend to be morpholically marked: mass, count singular, 
+and count plural nouns; intransitive, transitive, and 
+ditransitive verbs; propositions in different performative 
+registers (assertions, commands, requests); 
+and the adjective and adverb modifiers typed correspondingly 
+(e.g. how `i.many` both inputs and outputs count plural nouns).
+At a finer type level, `i.mesotypes` introduce 
+semantic and `q.Ontological` criteria not syntactically 
+marked: nouns of abstract, inanimate, artifactual, 
+sentient, human, sociocultural entities, for example, or 
+perfective vs. imperfective verbs 
+(cf. LangIntro p. 148).  Finally, `i.microtypes` 
+are at the most granular semantic pole, representing 
+individual lexical entries or closely related 
+lexical groups, like `i.apple` or `i.fruit`/. 
+`p`
+
+`p.
+I do not intend the `q.layers` of this hierarchy to 
+be completely defined `i.a priori`/; arguably 
+there are fuzzy cases amenable to competing 
+interpretations on the meso-to-macrotype 
+axis or the meso-to-microtype.  For instance, 
+a locative construction implies that the object 
+is a noun designating location, and it has grammatical 
+marking at least in some sence %-- locative interpretations 
+are endemic to indirect objects, and prepositions such 
+as `i.toward` and `i.over`/, introducing adverbial phrases, 
+require location-like targets.  One might on this basis 
+claim that locations, as a special grammatical category, 
+are built in to the English syntactic system, rather 
+then being overlaid semantic specifications.  Moreover, 
+locations do not seem to fit the conventional 
+mass/count distinction: they typically function as 
+both a `i.mass` of smaller locations and as 
+`i.singular` integral regions, depending on context: 
+
+`exs,
+`ex; We are driving across Pennsylvania.
+`ex; We are driving within Pennsylvania.
+`ex; We are driving toward Pennsylvania.
+`ex; We are driving to Pennsylvania.
+`exs`
+
+Note that (4) implies a path originating `i.outside` 
+the state and terminating `i.inside`/, which thereby 
+has two different portions separated by the location's 
+boundary.
+`p`
+
+`p.
+On such evidence it is plausible to treat locations as a 
+separate macrotype of nouns, on roughly the same 
+`q.conceptual granularity` scale as mass, count singular, 
+and count plural.  A counter-argument, however, might 
+note that many nouns become interpreted as locations 
+in the proper context: 
+
+`exs,
+`ex; I passed a glass of Champagne to John.
+`ex; I send good wishes to the children.
+`ex; I hung a leaflet on the whiteboard.
+`ex; Their best player was traded to the Lakers.
+`ex; Turning now to hockey, the Leafs just fired their coach.
+`ex; He will get another job: it's not like they sent him into retirement.
+`exs`
+ 
+This flexibility implies that locative marking is a cue to 
+influence how we semantically construe the `q.location`/, 
+rather than a specific lexical category.  The nominal 
+concepts interpreted as locations cover a spectrum of 
+number %-- plurals (`i.the childern`/), mass 
+(`i.hockey` and `i.retirement` in these contexts; 
+e.g. `i.hockey` qua the space of topics relevant to 
+reporting on that sport), singular (`i.John`/) %-- 
+and also of Ontological status (John is a person; 
+the Lakers a `q.social institution`/; hockey 
+an `q.idea` or topic; retirement a stretch of 
+time; a whiteboard is an inanimate object).  
+These patterns of semantic construals complicate 
+the idea that `q.locations` can be reified as 
+some specific subtype of nouns %-- although 
+plausibly one could isolate a specific class of 
+nouns which designate locations in the most 
+direct sense (spatial, temporal, or geographic 
+regions), distinguishing cases where a locative 
+framing is internal to a noun's meaning as opposed 
+to requiring some context-specific reinterpretation.  
+In either case, there seems to be no fixed 
+analysis that would rank the theoretical 
+value of placing location-nouns more in the 
+`q.macrotype` or `q.mesotype` region in the 
+`q.space` of linguistic types' granularity.
+`p`
+
+`p.
+Moving in the opposite meso-to-micro direction in 
+this `q.space`/, consider specifications such that 
+`i.cook` or `i.dine on` (save for a few specific 
+idioms) only make sense in relation to food.  
+This restriction seems somewhat analogous 
+to patterns which would be identified 
+on the mesotype scale: for instance, only 
+social institutions can `i.hire` or `i.fire` someone 
+(and only people can be hired and fired).  
+Conversely, we could argue that any word's 
+lexical sense constrains the contexts where 
+it should be used, not for any linguistic 
+reasons but simply because some proper 
+linguistic constructions do not make 
+empirical sense: we say `i.orange juice` but 
+not `i.coffee juice`/.  The meaning of 
+`i.juice` is roughly a liquid derived from a 
+foodstuff (usually fruit or vegetable) by squeezing or 
+pressing.  This inevitably places restrictions on 
+how the word is used, but it is not clear 
+that we can connect such restriction to any 
+larger `q.Ontological` pattern (compare to the 
+similarities in analysis of where `i.hire` and 
+`i.fire` may be used).  The restrictions on 
+`i.juice`/, then, I would associate with the 
+`q.microtype` scale.  But `i.food` %-- as 
+involved in being cooked, tasted, eaten, foraged, 
+etc. %-- seems more general than `i.juice` 
+but less general than `i.sentient thing` or 
+`i.social institution`/.  
+`p`
+
+`p.
+One motivation for distinguishing different 
+`q.layers of granularity` for a linguistic 
+type system is to identify principles of 
+acceptability %-- including by 
+defining triggers for `i.rejecting` 
+acceptability.  We clearly deem `i.many beer` 
+as full-out wrong (rather than just an enigmatic 
+usage that may have some context-specific interpretation).  
+I would say that this is a `i.syntactic` anomaly; 
+it would be evidently programmatic even within a  
+parse-graph representation, anterior to semantic 
+or interpretive considerations.  I would 
+say that %-- say %-- `i.idea powder` is a 
+`i.semantic` anomaly: we construe `i.powder` as 
+a substance made from grinding some object, 
+so we have an Ontological basis for rejecting 
+the adjectival `i.idea` as a `q.kind` of powder 
+(but the phrase is not `i.primia facie` malformed 
+`i.grammatically`/).`footnote.There is a website of 
+puzzling Chinese-English culinary translations which 
+presents the name of one dish as `i.Napoleon fried 
+the idea powder`/.`  And I would say that 
+`i.coffee juice` is `i.lexically` anomalous 
+for reasons just articulated. 
+`p`
+
+`p.
+Corresponding, then, to the contrast between 
+`i.syntactic`/, `i.semantic`/, and `i.lexical` 
+anomalies, the overall partition of linguistic 
+types into `i.macrotypes`/, `i.mesotypes`/, 
+and `i.microtypes` allows us to classify 
+the nature of the anomalies.  Since speakers 
+are motivated to `i.avoid` anomalies, this 
+helps expose selective pressures which 
+guide use to choose particular words and 
+phrases.  We can roughly classify these 
+pressures into, most generally, a desire 
+to be grammatically correct; then, a desire 
+to integrate concepts in ways that are 
+conceptually coherent, such as recognizing 
+what facts can only be predicated of a 
+person or a group of people; finally, 
+a desire to use words according to lexical 
+conventions that match conversants' expectations 
+enough to not impede conversation.  
+The macro-, meso-, and micro-type distinction, 
+then, provides a kind of holistic classification 
+of the spectrum of considerations which factor into 
+speakers' model of selection principles 
+setting boundaries on acceptable usage.
+`p`
+
+`p.
+According to this analysis, then, we tend to approach  
+each word at three distinct levels.  Concerning 
+`i.dogs`/, say, we are simultaneously aware of the 
+macrotype status as a plural noun; of the mesotype 
+status as sentient animals; and of the microtype 
+status as canines that are (or could be) pets.  
+We try to ensure that any usage of `i.dogs` 
+`q.checks each of those boxes` %-- that it 
+would agree with addressees' sense of propriety 
+on all three levels.  In light of my earlier 
+discussion of `q.propagation`/, moreover, 
+these considerations propagate outward 
+to phrases (and also to pronouns, say).  
+All of the usage rules we instinctively 
+apply to `i.dogs` we would by default transfer 
+to `i.black dogs`/, `i.neighbor's dogs`/, 
+`i.barking dogs`/, and so forth.  
+`p`
+
+`p.
+This last point indicates that we need to track 
+the provenance of type-expressed specifications 
+across a parse graph.  I have in mind cases like: 
+
+`exs,
+`ex; My neighbor fired her dog-walker.
+`ex; My neighbor's dogs fired their dog-walker.
+`exs`
+
+The second reveals a `q.mesotype-level` anomaly 
+(since dogs do not fire people in any not serioously 
+metaphorical sense).  In a Dependency Grammar 
+wherein `i.dogs` (that specific lexeme) is the 
+subject for `i.fired`/, this specification 
+%-- `i.fire`/'s subject must be a person or people 
+(a multi-person institution) %-- would 
+be directly manifest in the verb/subject relation.  
+The verb, as the head, establish syntactic 
+and semantic requirements which the dependent 
+must obey, on pain of anomaly.  In my proposed 
+representation, however, the actual word-relations 
+formally modeled depend on transform order: 
+so in (1) the noun-phrase `i.neighbor's dogs` 
+results from the transform `i.neighbor's`/, 
+so that becomes the node connected to `i.fired`/.  
+The dog's-can't-fire anomaly therefore is not 
+expressly visible in the diagrammed word-pair, 
+but must instead be inferred from how specifications on 
+`i.dogs` propagate to `i.neighbor's` insofar as 
+the latter modifies the former.   
+`p`
+
+`p.
+I think this analytic indirection is actually 
+more theoretically warranted than the alternative: 
+type-expressed (i.e., macro-, meso-, or microtype-level) 
+specifications are more properly seen as concepual 
+patterns which traverse parse-graphs (to the degree 
+that they model, with some analytic restructuring, the 
+conceptual processes of sentence-understanding) 
+rather than as localized rules tested in isolation 
+(e.g., with respect to one word-pair).  This point 
+leans toward broad themes of how 
+parse-graphs model the holistic integration of 
+conceptual features of different varieties 
+%-- usage requirements but also extralinguistic context, 
+illocutionary intent, anaphora resolution, etc. 
+%-- and how our dispositions and 
+beliefs about the current discourse state 
+propagate across linguistic structures 
+(as modeled by parse graphs).  I will 
+turn attention toward these more holistic issues 
+in the next section.
+`p`
+
+`p.
 
 `p`
 
