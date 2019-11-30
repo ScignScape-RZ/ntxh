@@ -250,7 +250,7 @@ values interact with other symbols both in function call-sites and in the
 body of procedure implementations.  
 For example, procedures can output values by throwing exceptions, but
 exceptions are unusual values which have to be handled
-in specific ways \mdash{} languages use exceptions to signal possible
+in specific ways \mdash{} languages employ exceptions to signal possible
 programming errors, and they are engineered to interrupt
 normal program flow until or unless exceptions are \q{caught}.
 }
@@ -769,7 +769,8 @@ reusable data formats, allowing individual components to use or make inferences 
 data according to their own purposes.
 }
 \p{Counter to this paradigm, return to
-hypothetical \USH{} examples, such as 
+hypothetical {\sgapped}\USH{}{\egapped}
+{\sadded}Cyber-Physical{\eadded} examples, such as 
 the conversion of Voltage data to acceleration data, which is a
 prerequisite to accelerometers' readings being useful in most contexts.  Software
 possessing capabilities to process accelerometers therefore reveals
@@ -878,7 +879,7 @@ Connecting the output of one procedure to the
 input of another \mdash{} which can be modeled as a 
 graph operation, linking two nodes \mdash{} is then 
 a graph-based analog to embedding a complex expression 
-into a formula (via a free symbol in latter).    
+into a formula (via a free symbol in {\sadded}the{\eadded} latter).    
 }
 \p{Carrying this analogy further, I earlier mentioned different 
 \mOldLambda{}-Calculus extensions inspired by programming-language 
@@ -906,7 +907,7 @@ progressively diversified and re-oriented toward concrete
 programming languages, there has been an analogous (and
 to some extent overlapping) history in Type Theory.
 When there are multiple ways of passing input to a
-function, there are at potentially multiple kinds
+function, there are {\sgapped}at{\egapped} potentially multiple kinds
 of function types.  For instance, Object-Orientation inspired
 expanded \mOldLambda{}-calculi that distinguish function
 inputs which are \q{method receivers} or \q{\this{} objects} from
@@ -1005,8 +1006,10 @@ together by sharing the same symbol, and correlatively sharing the
 same value during a \q{runtime manifestation} of the \CH{}.  Therefore,
 the \q{channels of abstraction} at work in a procedure can be identified
 by providing a name representing the \i{kind} of channel and a list of
-symbols affected by that kind of abstraction.  In the notation I adopt here,
+symbols affected by that kind of abstraction.
+{\sgapped}In the notation I adopt here,
 conventional lambda-abstraction like \lXY{} would be written as \CHlXY{}.
+{\egapped}
 }
 \p{I propose \q{Channel Algebra} as a tactic for capturing the 
 semantics of channels, so as to model programming languages' 
@@ -1100,7 +1103,8 @@ programming language type systems.
 \p{Collectively, to summarize my discussion to this point,
 I will say that formulations 
 describing channel kinds, their restrictions, and
-their interrelationships describe a \i{Channel Algebra}, 
+their interrelationships {\sgapped}describe{\sgapped}
+{\sadded}outline{\sadded} a \i{Channel Algebra}, 
 which express how channels combine to
 describe possible function signatures \mdash{} and 
 accordingly to describe functional \i{types}.  The
@@ -1116,7 +1120,8 @@ Channel Algebra, a language adequately described by its formulations
 restricted to at most one element).
 Analogously, a type system \TyS{} is 
 a \q{\Chi{}-type-system}, and is \q{closed} with respect to \Chi{}, 
-if valid signatures described using channel kinds in
+if valid signatures {\sadded}characterized{\eadded}
+{\sgapped}described{\egapped} using channel kinds in
 \Chi{} correspond to types found in \TyS{}.  Types may be less granular than
 signatures: as a case in point,
 functions differing in signature only by whether they
@@ -1164,8 +1169,8 @@ appropriate \TXL{}s.  Formal declarations of channel axioms
 \mdash{} e.g., restrictions on channel sizes, alone or in combination \mdash{} 
 are examples of terms that should be representable in a \CXL{}.   
 However, whereas the \CXL{} expressions I have described so far
-describe the overall shape of channels
-\mdash{} which channels exist in a given context and their sizes
+{\sgapped}describe{\egapped}{\sadded}elucidate{\eadded} the overall shape of 
+channels \mdash{} which channels exist in a given context and their sizes
 \mdash{} \CXL{} expressions can also add details concerning the \i{types} of
 values that can or do populate channels.
 \CXL{} expressions with these extra specifications then become

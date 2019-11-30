@@ -1,0 +1,392 @@
+\vspace{-.1em}
+\subsubsection{Dependent Types and Typestate}
+\p{Typestates are finer-grained classifications than types.  
+A canonical example of typestate is restricting how functions are
+called which operate on files.  A single \q{file} type actually covers several
+cases, including files that are open or closed, and even files that
+are nonexistent \mdash{} they may be described by a path on a filesystem
+which does not actually point to a file (perhaps in preparation for
+creating such a file).  Instead of \i{one} type covering
+each of these cases, we can envision \i{different} types for nonexistent,
+closed, or open files.  With these more detailed types, constraints
+like \q{don't try to create an already-existing file}
+or \q{don't try to modify a closed or nonexistent file} are enforced by
+type-checking.
+}
+\p{While this kind of gatekeeping is valuable in theory, it raises
+questions in practice.  Reifying \q{cases} \mdash{} i.e., \i{typestates}
+like open, closed, or nonexistent \mdash{} to distinct \i{types}
+implies that a \q{file} value can go through different
+types between construction and destruction.  If this is literally true, it
+violates the convention that types are an intrinsic and fixed aspect of
+typed values.  It is true that, as part of a type cast, values can be
+reinterpreted (like treating an \int{} as a \float{}), but this
+typically assumes a mathematical
+overlap where one type can be considered as subsumed by a different type
+for some calculation, \i{without this changing anything}:
+any integer is equally a ratio with unit denominator, say.
+\q{Casting} a closed file to an open one is the opposite effect,
+using disjunctures between types to capture the fact that state
+\i{has} changed; to capture a trajectory of states for one
+value \mdash{} which must then have different types at
+different times, since this is the whole point of modeling successive
+states via alternations in type-attribution.
+}
+\p{An alternative interpretation is that the \q{trajectory} is not a
+single mutated value but a chain of interrelated
+values, wherein each successive value is obtained via a state-change
+from its predecessor.  But a weakness of this chain-of-values
+model is that it assumes only one value in the chain is currently
+correct: a file can't be both open and closed, so if one value
+with type \q{closed file} is succeeded by a different value with
+type  \q{opened file}, the latter value will be correct only
+if the file was in fact opened, and the former otherwise \mdash{} but
+a compiler can't know which is which, \i{a priori}.  Or,
+instead of a \q{chain} of differently-typed values we can employ a
+single general \q{file} type and then \q{cast} the value to
+an \q{open file} type when a function needs specifically
+an \i{open} file, and so forth.   The effect in that case is to
+insert the cast operator as a \q{gatekeeper} function preventing
+the function receiving the casted value from getting nonconformant
+input.  Again, though, the compiler cannot make any assumptions about
+whether the \q{casts} will work (e.g., whether the attempt to open
+a file will succeed).
+}
+\p{In short, typestate forces us to modify some basic assumptions about 
+the relationship between types and values: either values can 
+change types mid-stream, or a lexical scope can subsume a sequence 
+of value \q{holders} which share the same symbol-name (and maybe the same type) 
+but differ in state (some holding values unrelated to actual program 
+state).  Both options upend normal programming expectations. 
+This situation can be juxtaposed with the \q{metaconstructor problem}, 
+i.e., how Dependent Types force a rethink on basic value-constructor 
+theory.
+}
+\p{A good real-world example of the overlap between Dependent Types and
+typestate (also grounded on file input/output) comes
+from the \q{Dependent Effects} tutorial from the Idris
+(programming language) documentation \cite{IdrisEffects}:
+\begin{dquote}A practical use for dependent effects is in specifying resource usage
+protocols and verifying that they are executed correctly.  For example,
+file management follows a resource usage protocol with ... requirements
+[that] can be expressed formally in [Idris] by creating a
+\idrisText{FILE\_IO} effect parameterised over a file handle state,
+which is either empty, open for reading, or open for writing.
+In particular, consider the type of [a function
+to open files]: This returns a \idrisText{Bool} which indicates
+whether opening the file was successful.  The resulting state
+depends on whether the
+operation was successful; if so, we have a file handle open for the
+stated purpose, and if not, we have no file handle.  By case analysis
+on the result, we continue the protocol accordingly. ...
+If we fail to follow the protocol correctly (perhaps by forgetting to
+close the file, failing to check that open succeeded, or opening the
+file for writing [when given a read-only file handle]) then we will
+get a compile-time error.
+\end{dquote}
+So how does Idris mitigate the type-vs.-typestate conundrum?  Apparently
+the key notion is that there is one single \tyFile{} \i{type}, but
+a more fine-grained type-\i{state}; and, moreover, an
+\i{effect system \q{parametrized over} these typestates}.
+In other words, the \i{effect} of \tyFile{} operations is to
+modify \i{typestates} (not types) of a \tyFile{} value.
+Moreover, Dependent Typing ensures that functions cannot be called
+sequentially in ways which \q{violate the protocol}, because
+functions are prohibited from having effects that are incompatible
+with the potentially affected values' current states.
+This elegant syntheses of Dependent Types, typestate, and
+Effectual Typing brings together three of the key
+features of \q{fine-grained} or \q{very expressive} type systems.
+}
+\p{But the synthesis achieved by Idris relies on Dependent Typing:
+typestate can be enforced because Idris functions can support
+restrictions which \i{depend} on values' current typestate to
+satisfy effect-requirements in a type-checking way.  In effect,
+Idris requires that all possible variations in values' unfolding
+typestate are handled by calling code, because otherwise the
+handlers will not type-check.  An analogous tactic in 
+\Cpp{} would be to provide an \q{open file} function only with a
+signature that takes two callbacks, one for when the \openFn{}
+succeeds and a second for when it fails (to mimic the Idris tutorial's
+\q{case analysis}).  But that \Cpp{} version still requires convention
+to enforce that the two callbacks behave differently: via Dependent Types
+Idris can confirm that the \q{open file} callback, for example, is only
+actually supplied as a callback for files that have indeed been
+opened.  A better \Cpp{} approximation to this design would be
+to cast files to separate types \mdash{} not only
+typestates \mdash{} after all, but only when passing these values to the callback
+functions (or, as I will discuss later, using a \q{passkey} 
+to vouch that a callback's file argument \i{can} be thus cast). 
+}
+\p{In the case of Idris, Dependent Types are feasible because the final
+\q{reduction} of expressions to evaluable representations occurs at
+runtime.  In the language of the Idris tutorial:
+\begin{dquote}In Idris, types are first class, meaning that they can be computed and
+manipulated (and passed to functions) just like any other language construct.
+For example, we could write a function which computes a type [and]
+use this function to calculate a type anywhere that a type can be used.
+For example, it can be used to calculate a return type [or]
+to have varying input types.
+\end{dquote}
+More technically, Edwin Brady (and, here, Mat\'u\v{s} Teji\v{s}\v{c}\'ak)
+elaborate that
+\begin{dquote}\i{Full-spectrum} dependent types ... treat types as first-class language
+constructs.  This means that types can be built by computation just like
+any other value, leading to powerful techniques for generic programming.
+Furthermore, it means that types can be parameterised on values,
+meaning that strong, explicit, checkable relationships can be stated
+between values and used to verify properties of programs at compile-time.
+This expressive power brings new challenges, however, when
+compiling programs. ... The challenge, in short, is to identify a
+phase distinction between compile-time and run-time objects.
+Traditionally, this is simple: types are compile-time only, values are
+run-time, and erasure consists simply of erasing types. In a dependently
+typed language, however, erasing types alone is not
+enough \cite[page 1]{BradyMatus}.
+\end{dquote}
+To summarize, Idris works by \q{erasing} some, but not all, of the
+extra contextual detail needed to ensure that dependent-typed
+functions are used (i.e., called) correctly (see also \cite{Christiansen},
+and \cite[page 195]{RichardEisenberg}).  This means that a lot of 
+contextual detail is \i{not} erased; Idris provides machinery to
+join executable code and user specifications onto
+\i{types} so that they take effect whenever affected types' values are
+constructed or passed to functions.
+}
+\p{Despite a divergent technical 
+background, the net result is arguably not vastly
+different from an Aspect-Oriented approach wherein constructors
+and function calls are \q{pointcuts} setting anchors upon 
+source locations or logical run-points, where extra code can be
+added to program flow (see e.g. \cite{DineshGopalani},
+\cite{KatharinaMehner}, \cite{CharlesZhang}).  Recall my contrast of
+\q{internalist} and \q{externalist} paradigms, sketched at the
+top of this chapter: Aspect-Oriented Programming involves
+extra code added by external tools (that \q{modify} code by
+\q{weaving} extra code providing extra features or gatekeeping).
+Implementations like Idris pursue what often are in effect similar
+ends from a more \q{internalist} angle, using the type system
+to host added code and specifications without resorting to some
+external tool that introduces this code in a manner orthogonal
+to the language proper.  But Idris relies on Haskell 
+to provide its operational environment; it is not clear
+how Idris's strategies (or those of other Haskell and \ML{}-style
+Dependent Type languages) for attaching runtime expressions to
+type constructs would work in an imperative or
+Object-Oriented environment, like \Cpp{} as a host language.
+}
+\subsubsection{Simulating Dependent Types with Preconstructors}
+\p{Because Dependent Types and typestate recognize fine-grained 
+requirements on which values may be passed to which functions, 
+it might seem as if they are a logical continuation of the 
+telos toward granular data modeling.  If our goal is to 
+provide the most expressive data models possible within 
+the bounds of computational tractability (I will return to 
+this in the conclusion), we should certainly allow for 
+Dependent Types and any other constructions which 
+logically imply them (essentially, any formulation 
+wherein types or their constructors are ad-hoc temporary 
+values).    
+}
+\p{However, Dependent Types have the technical consequence of 
+leaving pre-runtime values (or whatever construct we 
+recognize as \q{holding} or \q{carrying} values) 
+either \i{without} types, or with \i{different} types 
+than they have at runtime.
+In this case it becomes difficult to query
+code \i{outside} runtime, which arguably \i{subtracts} 
+expressiveness from the framework.  In short, we 
+are free to explore some foundation for emulating 
+Dependent Types \i{without} giving up on 
+static reflection; the resulting system would 
+not necessarily be expressively lesser than 
+a \TyS{} with full-fledged Dependent Type support. 
+}
+\p{An elegant compromise might seem to be allowing each value to
+have two potential type attributions \mdash{} one \q{static}
+and one at runtime, potentially changing with each
+call to the surrouding function-body.  After all, it is often
+consequential that a value of type \tOne{} may be
+coerced to, or reinterpreted as an instance of, \tTwo{}.  This
+means that a \tOne{}'s specific value is consistent with also
+being a \tTwo{}: it falls into the \q{space} where \tOne{} and
+\tTwo{} overlap; or there is an available conversion that
+creates a \tTwo{} from the \tOne{}.  However, this convertibility
+is usually a factor when (using this chapter's terms)
+the \tOne{} is transferred to a channel in a place for a
+\tTwo{}.  Bear in mind that types are not \q{sets};
+it's not as if we can regard two types as indistinguishable
+within the collection of values where they can be interconverted.
+In my treatment, types are manifest first and foremost as
+recipes for values to be \q{handed off} between channels.
+}
+\p{So, a \q{second} or \q{dynamic} type for some value would only
+be operational if it corresponds to the \q{static} type in
+some receiving channel (this is how subtyping works).  But
+then we are no closer to dealing with \q{temporary} types,
+because the \q{metaconstructor} problem simply reappears
+within the new channel.  This is not to rule out
+the \i{receiving} context having its own duality
+of static and dynamic types, where the hand-off
+has to match requirements on both static-to-static
+and dynamic-to-dynamic type-pairs.  In that case,
+however, the dynamic types are not really
+\q{second} types to which the initial values are
+cast; they are more like logical preconditions which
+must be satisfied at both ends of a channel-transfer.
+}
+\p{Indeed, type-attributions do two different things:
+first they establish that some value is suitable
+for transfer between procedures, but, second, they
+affirm certain predicates \visavis{} that value.
+With dynamically-recognized, temporarily \q{constructed}
+types we are actually dealing with the second
+salience: proof that values \i{can} be attributed
+to some (maybe temporary and context-specific) type
+establishes facts about that value.  But in this
+case we are not interested in using that
+second type as the infrastructure for a carrier-transfer;
+we are instead trying to employ the type-attribution
+\i{logically} as a transfer precondition.  Perhaps
+a credible analogy is the post office only accepting boxes
+within a certain size and weight (manifesting logistical
+constraints in how the boxes can be handled) vs.
+only accepting boxes which their sender certifies
+not to contain dangerous contents (establishing contractual
+rules that transcend the raw logistics of transporting packages).
+Channel packages-to-complexes is an analogous \q{binary}
+transporting which can be factored into an underlying
+digital logistics and a more nuanced accounting of
+package/complex compatibility, wherein we desire to
+reject certain package/complex pairs which ordinary
+type systems would allow (e.g. an index parameter on
+the package side incompatible with the size of
+a list parameter).  The problem is how to
+achieve semantics modeling Dependent Types within
+a framework that situates type theory itself
+in a channel-transfer (and graph-oriented)
+context: types only \q{exist} insofar as they
+regulate inter-channel handoffs.  A given type
+therefore only exists if there are capabilities
+in the system to test package/complex
+matches against the proposed type's logical posits.
+}
+\p{The solution I suggest to effectuate this compromise
+involves using preconstructors as witnesses that a given 
+value construction \i{could} be performed 
+\mdash{} so that a given value (or values) is/are \i{logically consistent} 
+with being construed as instance of some (perhaps ad-hoc) type, 
+but are not \i{literally} assigned to that type.  The preconstructor 
+can then be passed in to functions as an extra parameter, 
+which when valid (e.g., when not a null function pointer) vouches 
+for the co-construction it references being permissible.
+That is, the preconstructor become a \q{passkey} parameter 
+returned from a gatekeeper procedure and then passed 
+on as evidence of the gatekeeping validation.  
+}
+\p{As a concrete example, suppose a procedure requires two numbers 
+where the second is greater than the first (the inverse of 
+the systolic-over-diastolic mandate): 
+\fxy{} where \xlty{}.  How can we express the \xlty{} condition
+within \fFun{}'s signature, assuming the signature can only
+express semantics pertinent to \fFun{}'s type attribution?
+On the face of it, we know that the desired \q{increasing}
+condition is equivalent to \yVal{} having a type like
+\RangeGTValx{} \mdash{} a range bounded (only) from below \mdash{} 
+where this \q{\xVal{}} is the \xVal{} preceding
+\yVal{} in \fFun{}'s signature.  But using such 
+directly as \yVal{}'s type-attribution means that
+from the perspective of \fFun{}'s own type-attribution,
+\yVal{} does not have a single, fixed type; its type
+varies according to the value of \xVal{}.  Here again
+we encounter a \q{metaconstructor} problem: in order
+for the \xlty{} condition to be modeled \i{directly} by
+\yVal{}'s type-attribution we would need the
+constructor for \yVal{}'s value-constructor to
+be some operation that produces a temporary function-value
+\mdash{} not simply the compilation of a code-graph to an 
+addressable, non-temporary implementation.
+}
+\p{These issues go away if, instead of working with a function
+taking \i{two} integers, we instead consider a function taking \i{one}
+value which is a monotone-increasing pair (something like
+\fmipair{}).  A type like
+\MIpair{}, based on ordered pairs \xCommaY{} of \int{}s, solves the
+metaconstructor problem for \yVal{} because \xVal{} and \yVal{}
+are no longer distinct \fFun{} parameters with distinct value-constructors;
+they are subsumed into one pair, whose own value-constructor
+can check the \xlty{} condition.  The \i{requirements} for the
+original (two-valued) \fFun{} may then be \i{described} as
+\xVal{} and \yVal{} being convertible into a pair \prVal{}
+which is an instance of \MIpair{} (so that \xlty{}).  This
+\i{description} is not a \i{type}, but elevating the
+description to type level can be at least approximated with
+a wrapper like \fxypreqMIpairxy{}, so \fFun{} when used as
+\fxy{} will silently call the \MIpair{} constructor.  This is only
+approximate because it allows anomalies like \fxypreqMIpairZeroOne{},
+ \mdash{} taking \MIpair{}s on anything \i{but} \xVal{} and \yVal{}
+defeats the purpose \mdash{} but at least we can
+approximate a Dependent Type signature with a passkey protocol 
+that is not difficult to enforce via calling conventions
+(client code should never call the three-argument form directly,
+which could be sequestered to a file-scoped or private member function).
+}
+\p{Now, notice that we do not actually need the third argument; we 
+just want to know that the \MIpair{} constructor \i{would} accept 
+the \xCommaY{} pair.  So we can replace the \i{actual} \MIpair{} constructor 
+with a \i{preconstructor} that \i{could} be used as a factory 
+for \MIpair{} instances if needed, but can \i{also} serve to 
+certify that a certain set of arguments (here a pair of numbers) 
+meets the logical preconditions which an actual constructor 
+would check off.
+}
+\p{For this to work, the 
+\MIpair{} type would need to be implemented with a static 
+procedure that returns a valid preconstructor for valid inputs
+\mdash{} plus, assuming the preconstructor/co-constructor pattern I
+am advocating, a co-constructor whose address would be 
+the basis of the preconstructor value.  These are obviously 
+not features of \Cpp{} (or any other language I know of) 
+but could readily be an implementational norm for 
+data types used in a safety-conscious project.
+In effect, consistent use of preconstructors for 
+fine-grained types is one strategy for siting 
+gatekeeping code broadly throughout a code base.
+}
+\p{Further discussion of preconstructors is outside the scope 
+of this paper, but concrete examples of range-checking via 
+preconstructor passkeys can be found in the demo.  
+Here I'll make the further point that \mdash{} if we accept a 
+Channel Algebra which expands beyond present programming 
+languages \mdash{} we can move preconstructor passkeys to a 
+separate channel, thereby approximating Dependent Types 
+more eloquently.  Co-constructors may be identified via
+a dedicated co-constructing channel \mdash{} \coconch{} 
+\mdash{} which signals that a return value is not 
+\i{any} procedure returning the associated type, but 
+a constructing procedure which is part of the 
+type's interface and helps to demarcate its space 
+of values.  A \coconch{} channel paired with a 
+special \preconch{} channel, for preconstructor passkeys, 
+provides a metamodel wherein Dependent Types, typestate, 
+and many effect-systems can be reasonably encoded. 
+}
+\p{This last case also points to how a theory of channels 
+adds semantic expressiveness to code models: 
+we can achieve via descriptions of inter-procedure 
+information flows \mdash{} including distinguishing distinct 
+roles such as passkeys vs. ordinary parameters, 
+and constructing returns vs. ordinary procedures 
+happening to return a given type \mdash{} a semantic exactitude 
+that is implementationally harder (from a language engineering
+perspective) to achieve directly within a type system.  
+Channel Algebras are not limited to channels 
+actually recognized by existing languages \mdash{} they could 
+be the basis for new languages, and/or new analytic tools 
+isolating patterns in existing code.  With this flexibly 
+channels can be lifted into a construct recognized within 
+data and code modeling paradigms \mdash{} as well as an 
+added structural layer within hypergraphs \mdash{} in general.  
+These possibilities may become clearer as I present a 
+theory of channels in more detail next section.    
+}
