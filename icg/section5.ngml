@@ -1,6 +1,373 @@
 `section.Grounding and Formalization`
 `p.
+A significant part of linguistic theorizing is 
+classificatory %-- itemizing lexical categories, 
+say, or inte-word `q.link kinds` (in Link Grammar) or 
+relations (in general Dependency Grammar), or 
+declension cases (extended to classifications of 
+participants' roles in situations).  
+Such theoretical list-building, however, raises questions of 
+the explanatory merits of the actual lists which 
+a theory is based on, and/or proposes.  
+The `q.Universal Dependencies` project, for example, 
+recognizes 37 `q.universal syntactic relations` 
+across all languages; sentences from any language can be 
+annotated via expository parse-graphs, documenting their 
+apparent syntactic composition, whose edges are labeled 
+with one of the 37 relations.  What philosophical 
+status should we ascribe to `i.those particular` 37 relations, 
+however?  Do they reveal some deep structure of cognition, or 
+of semiotic processes in general, or some combination?  
+Are they explanatory windows onto language at some profound 
+level or more like analyitic tools refined over time by the 
+requirements of cross-linguistic annotation?  
+`p`
 
+`p.
+One can find rationales for the specific group of 
+Universal Dependencies currently recognized 
+(see https://nlp.stanford.edu/pubs/USD_LREC14_paper_camera_ready.pdf).  
+In particular, these relations are themselves interrelated; 
+there is a certain theoretical structure to the 
+inventory of 37 which motivates that particular group of 
+relations being accorded canonical status.  On the other 
+hand, literature about Universal Dependencies also 
+takes leaves the impression of engineering a practical 
+toolkit, not just pursuing theoretical analysis wherever it 
+leads.  Explication of how a particular `q.Universal` relation 
+appears in a given language (English, say) often describes 
+diverse cases (implying that there are actually different 
+word-pairing phenomena subsumed under one relation).
+The `q.oblique nominal` (`i.obl`/), for example, 
+is identified as connecting 
+`i.give` and `i.children` in `i.give the toys to the children`/; 
+`i.swam` to both `i.night` and `i.pool` in 
+`i.Last night, I swam in the pool`/; and 
+`i.chased` to `i.dog` in `i.the cat was chased by the dog`/.  
+Or, describing the `q.nominal subject` relation: 
+
+`quote,
+A nominal subject ... is [normally] the syntactic subject and the proto-agent of a clause.  
+The `textbf.nsubj` relation is also used for the nominal subject of a passive verb or verb group, even though the subject is then not typically the proto-agent argument due to valency changing operations. For languages that have a grammaticalized passive transformation, it is strongly recommended to use the subtype `textbf.nsubj:pass` in such cases.
+`quote`
+
+The `i.nsubj` is not just a verb-to-subject relation, because it 
+also connects `i.red` to `i.car` in `i.The car is red`/; 
+`i.barn` to `i.We` in `i.We are in the barn`/; and 
+`i.is` to `i.ghost` in `i.There is a ghost in the room`/.   
+`p`
+
+`p.
+In short, Universal Dependencies employ one relation-kind 
+to annotate multiple construction contexts; the framework 
+also prioritizes relations that are applicable to many 
+different languages.  There may certainly be theoretical 
+motivations for which dependencies are recognized as 
+`q.universal` and also for the different contexts 
+where each is used; however the evolution of the 
+framework also reflects practical feedback from 
+annotating multi-language corpora.  Numerous comments 
+on the web pages about individual relations 
+(like `i.nsubj` or `i.obl`/), maintained by the 
+Universal Dependencies project, describe changes between 
+different `q.versions`/, resulting either in one relation 
+subsuming new cases or conversely a new relation 
+being introduced for special contexts.  The 
+impetus behind these changes appears to be 
+observations of the framework's effectiveness 
+as an annotational tool, rather than more abstract 
+linguistic research or theorizing.
+`p`
+
+`p.
+Multi-lingual annotated corpora are valuable resources, 
+of course, so these forces shaping the `q.theory` behind 
+Universal Dependencies are well-motivated.  But we still 
+should ponder the theoretical import of the system that 
+emerges from this process, in particular the 37 
+relations and their `q.subtypes`/.  Insofar as these 
+specific relations have proven useful across many languages, 
+does this confer on them a different, perhaps deeper status, 
+compared to hypothetical dependency relations itemized 
+solely for one language?  More generally, are these 
+relations canonized by virtue of modeling most accurately 
+linguistic phenomena themselves; or is another 
+consideration their utility from the viewpoint of 
+manual annotators, which may not be the same thing?  
+To cite one more example, `q.advcl` (adverbial clause 
+modifier) is used to connect both 
+`i.happened`/`i.falling` in 
+`i.The accident happened as night was falling`/, 
+and `i.upset`/`i.talked` in 
+`i.He was upset when I talked to him`/.  
+Does this reflect a significant underlying similarity 
+between the two cases, or rather a surface-level 
+resemblance which makes it easier for us to 
+transfer the annotation pattern from one case to 
+another, even if this correspondance in annotation 
+does not reflect a comparable parallel in the 
+underlying linguistic principles?
+`p`
+
+`p.
+I raise these issues specifically to motivate the 
+question of whether `i.inventories` of relation-kinds, 
+lexical categories, and so forth, are the be considered 
+the bedrock of theories against which given linguistic 
+phenomena should be measured, or rather as suggestive 
+products of theories that can themselves be stretched 
+in their role of explanantia to explananda.  
+If, say, we have cross-linguistic, cognitive, or 
+even neurological evidence that the 37 Universal Dependencies 
+have some special status, then analyzing a specific 
+English sentence in terms of those 37 would carry a 
+corresponding scientific weight.  On the other hand, 
+if the crux of Dependency Grammar is more on the rationale 
+for recognizing certain relations as canonical, 
+rather than commitment to a particular fixed glossary of 
+relations, then analyses would not be losing scientific 
+rigor by proposing new relations, particularly if 
+they appear to apply, in linguistically parallel 
+ways, to a variety of word-pairs. 
+`p`
+
+`p.
+Any attempt to be truly linguistically `i.scientific` is 
+bound to stumble against the inherently anarchic 
+nature of linguistic acceptability: while speakers 
+collectively shape language by assenting to novel 
+constructions or not, there is no central authority 
+designing the rules.  Novel uses may be accepted 
+if they break the rules, at least in a manner which 
+is still recognizably structured and communicatively 
+productive.  To take one example, the compound 
+transitive verb `i.wine and dine` is derived from a 
+noun and an intransitive verb, neither of which work 
+in the same construction: we do not say `i.The team 
+wined the free agent and dined him`/.  The pattern of 
+treating a noun as a verb does give rise to novel usages, 
+like both `i.gifted` and `i.primaried` in 
+`i.He gifted money to candidates being primaried by radicals`/.  
+We also even have prepositions recycled as verbs 
+(`i.They outed her on national television`/), or pronouns 
+(as in French `i.tutoyer`/).  
+`p`
+
+`p.
+As I opined earlier, simply using nouns in a verb 
+role (like `i.health scratch him into accepting a trade`/) 
+is rare and exotic-sounding in English, at least outside 
+`q.domain-specific` contexts where there is a natural lexical 
+correspondance between a verb and a noun, like `i.to bat` and 
+`i.baseball bat`/.  A recurring pattern is to identify the 
+instrument or, alternatively, the result of an action as a 
+`i.noun` lexically mimicking the verb: 
+`i.a/to club/kick/shout/gallop`/, etc.  This framework appears 
+absent in `i.to primary`/, where the connection between the 
+noun `i.primary` and the verb is more complex and indirect.  
+It is not the case the `i.primarying` someone `i.results in` 
+a primary occuring (contrast `i.kick`/), or that you `i.use` 
+a `i.primary` (noun) for the act of primarying (contrast 
+`i.club`/).  Even `i.gifted` is not as clear-cut 
+in the noun-to-verb rationale as `i.club` or `i.kick`/. 
+`p`
+
+`p.
+The exceptionality of `i.primaried`/, to be sure, 
+is probably `i.why` the word became popular: its 
+abnormality stretches an accepted pattern, 
+but not unrecognizabley; meanwhile that abnormality 
+also gives it a jargony, context-specific sense of precision.  
+Since noun-to-verb re-interpretations are not automatically 
+accepted, the stability of a usage like 
+`i.primaried` reflects a self-conscious commitment of 
+a particular subgroup of English speakers (those who 
+often discuss American politics) to include that 
+word-sense in their terms of art.  Analogous comments 
+might apply to `i.wine and dine`/, in that the first 
+part reflects the same noun-to-verb pattern; but here 
+the alliteration gives the compound word an 
+informal mien which befefits it in `i.its` 
+sphere of usage.  Probably `i.wine and dine` would 
+not have caught on if not for its rhyming 
+beats, which make it feel proper in the kind of casual but 
+flowery speech register we might find on talk radio, 
+or at parties, and so forth, e.g. where people are 
+themselves wining and dining. 
+`p`
+
+`p.
+Arguably novel uses become entrenched as idioms or 
+special-purpose word-senses precisely `i.when` they 
+`q.break the rules`/, because it is that deviation from 
+expected norms that make them stand out as a unit, 
+subject to copycat effects, rather than just dissolve 
+into the expanse of normal language.  A phrase like 
+`i.faced a primary challenge` %-- together with some 
+elucidation that the incumbant is more moderate than 
+the challenger %-- is probably as commonplace 
+as `i.primaried`/; but it is also so normal-sounding 
+that it fails to become a distinct usage 
+which people adopt self-consciously.  After enough time, 
+of course, an entrenched usage may simply be taken as 
+an alternate word-sense (like `i.bat` for `i.baseball bat`/), 
+and the jargony or flowery elan which a 
+not-quite-rule-abiding construction carries, early on, 
+erodes into a more pedantic polysemy.  But such 
+conventionalization only happens when people 
+use an expression often, and `i.that` often happens 
+`i.because` prople like its whiff of disrepute.       
+`p`
+
+`p.
+In effect, if we want to understand the dynamics driving 
+which word-meanings and syntactic patterns become accepted 
+in the language, we have to analyze when and why 
+speakers are willing to suspend the language's rules, 
+not just the rules themselves.  The noun-to-verb 
+recycling in `i.primaried` %-- or say the preposition-to-verb 
+in `i.outed` %-- are not automatically acceptable 
+patterns, but they do allude to patterns like 
+noun-to-adjective in `i.baseball bat` or 
+`i.dance music`/; or adjective-to-noun 
+(note `i.primary` derives from `i.primary election`/).  
+Thus noun-to-verb is enough on people's radar 
+that they can recognize the pattern when it is 
+applied; but this pattern is also recognized as an 
+exception, not a rule of English grammar, so it is not 
+up to the speaker's discretion to apply it 
+unilaterally.  Of course, a community of 
+speakers may also aggree to accept a previously 
+dubious pattern `i.en masse`/: consider the 
+French `q.passe composee` subsuming (in many contexts) 
+the simple past, or English present progressive subsuming 
+the simple present; or the emergence of `i.her` and 
+`i.they` as gender-neutral pronouns, in some Anglophone circles.  
+Or, Langacker cites the example of 
+`i.shall`/`i.should` and `i.can/could` losing their status as a present/past 
+pair, so that modern English speakers rarely say 
+`i.shall` and often say `i.could` even in the present tense.  
+`p`
+
+`p.
+Because the progressive revision of rules and norms 
+is as much a part of language as the rules themselves, 
+the analysis of a particular sentence cannot just assume that 
+it is meaningful `i.because` it instances linguistic 
+rules.  It may also violate those norms to some degree, 
+and be successful if the discrepancy is well-motivated 
+and structurally identifiable enough for listeners 
+to both understand and appreciate.  Moreover, even 
+if a sentence `i.is` law-abiding, it may not be 
+completely transparent `i.which` laws are being 
+followed: recall my questioning whether `i.head out` 
+should be read as a compound verb or a separate 
+verb and preposition which just happen to be adjacent 
+in word-order. 
+`p`
+
+`p.
+Given a sentence, in short, we can do a 
+`i.retroactive` analysis, of why it (seems) to 
+be meaningful; or, if ambiguous, why so; 
+if clear but unconventional, why listeners 
+accept it.  We can retroactively analyze 
+why `i.to primary` or `i.to wine and dine` have 
+entered the vocabulary of modern American 
+English.  We can retroactively 
+articulate `q.how` we think a sentence works; 
+we can speculate on whether a hypothetical 
+hearer of `i.I heading out to lunch` hears 
+`i.heading out` as a compound unit or `i.out` as a 
+path-constructor.  Such `q.retroactive` analysis 
+then takes sentences to be, in effect, a kind 
+of social interaction, where after the fact 
+we may look back on the participants 
+motivations and thought processes.  But this 
+retroactiveness also implies that analyses 
+are not definitive; that the parameters of 
+linguistic acceptance are in some degree 
+subjective and may vary from one instance of a 
+usage to another; and that sentences are 
+not mechanically produced from an 
+impersonal formal template.   
+`p`
+
+`p.
+Insofar as the primary mode of linguistic 
+analysis is in this sense `i.retroactive`/, 
+the status of theoretical frameworks 
+(like Universal Dependencies, say) 
+is essentially provisional.  Canonized 
+lexical or word-pair categories are 
+esssentially theoretical props which 
+can be applied in the analysis of a 
+given sentence %-- they help us identify 
+the patterns which govern why `i.this sentence` 
+works as it does.  But this is still the theoretical status 
+of technical concepts made available to a researchers 
+retroactively interpreting some sentence 
+(possibly a hypothetical one) in its specific 
+context.  This is a different kind of 
+theoretical status than the mathematical 
+models of physics or economics, say; more 
+akin to the interpretive affordances of 
+sociology or `q.humanities theory`/. 
+We can retroactively analyze why Trump 
+won or why redistributionist social policies 
+are often deemed elitist, or why concern for 
+the environment is considered quintessentially 
+secular.  Sholars can deploy an arsenal of 
+theoretical constructs to explain such phenomena, 
+from race, class, and 
+gender to theories of cultural representation 
+and the politicization of group identity.  
+But any theory is showing just one window onto 
+complex phenomena; and we sense an active role 
+on the scholars' part in choosing which 
+theoretical tradition to highlight and how 
+to exposit the theory in the context of her 
+specific analysis.  
+`p`
+
+`p.
+In this analytic spirit, the purpose of a theory is 
+to bequeath a set of theoretical constructs to 
+a theoretician to apply to given case-studies as 
+she sees fit.  The theoretical apparatus is 
+part of the scholarly background, but it 
+requires the interpretive instincts and acuity of a 
+an individual person to apply the theory to 
+the phenomena which it might explain.  This epistemic 
+setup presupposes a definitive, active, 
+interpretive role for the researcher who applies 
+a theory.  I would argue that this `q.meta-methodology` 
+is different from that of normal physical science, 
+for instance, where %-- even if new mathematical 
+models or scientific paradigms call for creative, 
+innovative reasoning %-- an established theory is 
+understood to apply to its explananda with 
+an impetus that derives from the phenomena themselves, 
+without an active, interpretive analytic role.  
+In other words, scientific models are not just 
+tools which analysts deploy for interpretive 
+maneuvers; the scientist is more passively observing 
+the fit of data to model, seeing explanatory progress 
+as a structural feature of the theory rather than 
+a leveraging of her own creativity in applying 
+and restaging a theory against a concrete set of facts.  
+`p`
+
+`p.
+Given these two modes of theorizing, then, where does linguistics 
+fit?  Are theoretical posits like the 37 Universal Dependencies 
+fixed paradigms that we should try to dispassionately apply 
+to linguistic phenomena?  Or are they more like 
+investigatory devices that sketch out a mode of 
+scientifically-aspirational analysis, but which we 
+should take as basically a rough draft, an outline 
+of theoreticity that may be expanded and reshaped 
+in the pursuit of each theorist's particular interpretation? 
 `p`
 
 `p.
