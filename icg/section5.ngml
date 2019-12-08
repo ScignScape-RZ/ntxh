@@ -250,6 +250,97 @@ pair, so that modern English speakers rarely say
 `p`
 
 `p.
+The process of entrenchment does not only play out on 
+the lexical level; it can be both broader or narrower, 
+covering an entire category of patterns or 
+individual words in specific circumstances.  
+New words (like `i.grok`/, say, which 
+tends to mean `q.understand` when applied  
+to reasoning through technical, especially 
+computer-related ideas, but may be 
+evolving into a broader ornamental 
+alternative to `i.understand` and `i.grasp`/) 
+come into the lexicon via new technologies 
+or specific event (consider the origin of 
+`i.gerrymander`/), but the cycle 
+of novelty and entrenchment is not always 
+focused on single words, particularly 
+if we consider that many pronouns and 
+auxiliaries are systematic anchors for 
+larger constructions, so idiomatic 
+usages of `q.low-level` words in that 
+sense are really alternate patterns 
+for complex constructions.   
+In American English we have idiomatic but 
+essentially standardized parlance even at a core 
+linguistic level, such as pronouns: 
+
+`exs,
+`ex; How are we doing today?
+`ex; Your new car is waiting!
+`ex; You guys coming with?
+`ex; You all gonna love this!
+`exs`   
+
+We recognize `i.you all` (or `i.y'all`/) as a de facto 
+second-person plural, but only informally %-- and 
+particularly in contexts where one speaker addresses 
+a large number of listeners, such as onstage to an audience.  
+We hear `i.you all` also in more intimate settings, but in a 
+small group its territory is oftened covered instead by 
+`i.you guys` (even when the guys are gals); () also 
+(I'll mention parenthetically) has the trendy intransitive form  
+`i.come with`/.`footnote.
+For completeness, I sketch an analysis of why `i.that` 
+usage is popular: the significance of 
+`i.come with` is essentially akin to `i.come with us`/, 
+but posing the verb as intransitive implies that 
+it profiles a kind of indefinately extending 
+process or a state, like the `i.party` in 
+`i.party on`/.  Compared to `i.come with us`/, 
+dropping the direct object connotes less of a 
+an action whose conclusion the speaker foresees, 
+which, by extension, implies the speaker is 
+attending less to its practical premise.  
+We might say `i.come with us` in the context 
+of a mundane trip to the store, say, 
+conceived in functional terms.  Saying 
+`i.come with` instead implies that the 
+proposed action (that is, the group's going 
+to wherever) has something beyond just 
+utilitarian ends, which ends up coming across 
+as invitational, establishing group 
+solidarity: if you `i.come with` our group 
+will be larger and the 
+shared good time amplified.
+`footnote`  Meanwhile, (1) shows a rather formal but (in some people's 
+mind) potentially condescending figure where 
+`i.we` hovers between first-person singular and second-person: 
+the question is understood as addressed to `i.you`/, but 
+the speaker also implies (in a kind of pro forma show 
+of empathy) that the addressee's well-being affects 
+her too.  In the case of (2), the second-person possessive 
+is not used lawfully (in the contexts I have in mind, 
+e.g. ads) because `q.you` are not understood to 
+`i.have` a new car.  Instead, the formulation 
+triggers your imagining that you `i.do` have a 
+new car, enticing you to want one.  Semantically, 
+though, the new car only exists in a hypothetical 
+and discource-novel register appropriate for 
+an indefinite article; as such, `i.your` is 
+a possessive functioning as a variant on 
+`i.a` or `i.some`/, which clearly violates 
+a foundational architecture of English.  
+As with second-person `i.we`/, though, 
+English speakers normalize these idiocyncratic 
+uses because they are conservative enough 
+to make sense, and because we grok 
+(even if with a wiff of feeling manipulated) 
+their rhetorical inspiration.
+`p`
+
+
+`p.
 Because the progressive revision of rules and norms 
 is as much a part of language as the rules themselves, 
 the analysis of a particular sentence cannot just assume that 
@@ -814,16 +905,369 @@ tries to narrow microtypes on the `q.inputs`
 or `q.outputs` to and from transformations: 
 that some modifier only accepts pluaral 
 nouns, say, or only ungrounded nouns.  
-We arguably need some mechanism 
+We arguably are better some mechanism 
 other than type-signatures to represent 
 these requirements.
 `p`
 
+`p.
+The problem of stating and enforcing requirements 
+on function-like types is not specific to 
+natural language; in fact, it is also significant 
+in programming language implementations, and 
+the sort of applied type theory which applies 
+to computer languages.  Requirements on computational 
+procedures are generally orthogonal to a type 
+system, but has some similarities to type attribution 
+as a mechanism for stating conditions on when and 
+whether a given procedure is executed.  Consider 
+an algorithm which compares two lists, and 
+is optimized for the case where the two lists are 
+the same size.  This requirement %-- the lists 
+being equal in length %-- is a precondition on 
+the algorithm being used properly.  A list-comparison 
+procedure might actually be split into three 
+different routines, one for same-size lists, and one 
+each for where the first or second is longer.  
+Each procedure then has a different set of requirements, 
+and it is clear which procedure should be selected 
+in each situation.  The process by which 
+requirements dictate which version of a procedure 
+to execute resembles how procedures are 
+distinguished on the basis of `i.types`/: 
+a procedure's signature indicates which set of 
+input types are required for it to be called.  
+However, expressing conditions such as 
+`i.two lists must be the same size` is not 
+usually a restriction which can be 
+modeled by a programming language's type system.   
+`p` 
 
 `p.
+In general, type systems are not sufficiently 
+`i.expressive` enough to indicate all pre- and post-conditions 
+which are specified and/or guaranteed by a procedure.  
+Programming language theory has developed various 
+techniques for managing this limitation (including 
+human-readable but not machine-enforced 
+documentation, relying on programmers to use 
+procedures according to their indications but 
+not automatically confirming proper compliance).  
+More rigorous `i.requirements engineering` concepts 
+include `i.dependent types`/, `i.typestate`/, 
+and `i.effect systems`/, which each augment 
+conventional type systems so that more fine-grained 
+requirements, particularly on function-like types 
+(those assigned to distinct procedures) can be 
+directly modeled through type attribution.  
+While discussion of these various formalisms 
+is outside the scope of this paper, I will 
+propose some minimal terms and concepts which 
+are applicable to formal/programming languages 
+as well as, potentially, for `q.natural` linguistics.       
 `p`
 
+`p.
+First of all, I will call a `i.tenet` some 
+predicate that may be asserted on instances of a 
+given type; in computational terms, a tenet 
+on a type is a boolean-valued function whose inputs 
+include at least one instance of that type.  
+Tenets on input types are then potential 
+preconditions for function-like types: 
+it may be required that a procedure only be 
+executed if a tenet on one of its inputs evaluates 
+to `i.true`/.  In the context of mathematical 
+calculations, certain operations (like division) 
+cannot be performed on the number `i.zero`/: 
+a precondition on a division function, then, 
+for instance, can be expressed via the 
+`i.tenet` that the second argument to such 
+a function is non-zero.  Likewise, tenets on `i.output` 
+types are potential postconditions or guarantees: 
+a function may always produce an output which 
+satisfies some condition.  For instance, a 
+`i.square` function on most numeric types 
+(excluding complex numbers) is guaranteed 
+to produce a non-negative outcome.  This 
+postcondition can be expressed via a 
+tenet, applicable to all normal numeric 
+types (including signed integers or signed 
+floating-point numbers) that the number is non-negative. 
+`p`
 
 `p.
+Although tenets are different from types, the 
+two ideas overlap somewhat.  On the one hand, 
+the instances of a type for which a tenet 
+applies, taken as a collective, is 
+potentially a subtype: for a given tenet `ttenet; on a 
+type `Ty;, we have a potential `Tyttenet; which 
+is the portion of `Ty;'s extension where 
+`ttenet; holds (this is a potential but not 
+necessarily an actual type %-- in a programming 
+language context potential types are only 
+`q.actualized` when certain intrinsic 
+procedures associated with that type are implemented).  
+Conversely, the fact of a type instance being 
+reinterpretable as another type can become a 
+tenet on the former type.  To return to the 
+example of non-negative numbers, from 
+the type of `i.signed integers`/, say, 
+non-negative numbers can be `q.cast` to 
+the type `i.unsigned integer` without modification; 
+thus being castable to the unsigned type is 
+a tenet on the signed type.
+`p`
+
+`p.
+I will call the `q.potential` type induced 
+by a tenet `ttenet; on a type `Ty; a 
+`i.pseudotype`/, one `q.based on` 
+(or just `i.on`/) `Ty;.  
+A pseudotype on `Ty; is a `i.potential` 
+subtype, which (extensionally) comprises 
+`Ty; resitricted to instances where 
+some tenet (or combination of tenets) 
+holds.  By extension, a `q.pseudosignature` 
+of a function-like type can then be a 
+variant of the signature which 
+replaces input or output types with pseudotypes on 
+them, in cases where the function's pre- and/or 
+postconditions are modeled by the corresponding 
+tenets.  A `i.square` function on double-precision 
+floats, say, can be `q.pseudosigned` such 
+that its output pseudotype is `i.unsigned double` 
+with the `q.non-negative` tenet.   
+`p`
+
+`p.
+These ideas are acceptable in the context 
+of natural language types also.  In particular, 
+the stipulation that a grounding element 
+`i.inputs` non-grounded nouns, and `i.outputs` 
+gounded ones, corresponds to a 
+pseudosignature where the input is `Nu; and 
+the output is `Ng;; this is the same 
+`NutoNg; formulation I considered earlier, 
+except that `Nu; and `Ng; are now considered 
+pseudotypes rather than macrotypes.  The 
+concept of pseudosignatures, however, is 
+more flexible insofar as a given 
+function-like value (or a given lexeme, in 
+the linguistic context) can have multiple 
+pseudosignatures, whereas its actual type can 
+have only one signature.  For instance, 
+apart from grounding effects `i.these` and 
+`i.those` both input and output 
+count-plural nouns, so they also have a 
+pseudosignature stipulating that this 
+input and output is `i.count-plural noun` 
+taking that as a noun-based pseudotype. 
+`p`
+
+`p.
+Pseudosignatures also have applications outside of 
+the macrotype `q.level`/.  Consider nominals 
+which are formed from propositions, 
+e.g. via `i.that`/.  Semantically, 
+these nouns profile facts or potential 
+truths construed as objects of conception, 
+and therefore as (abstract) `q.things`/.  
+Syntactically, they are often formed 
+by modifying a finite clause to turn it 
+back into a noun (`i.I believe that Toronto 
+will beat Detroit`/; 
+`i.I understand how Toronto beat Detroit`/).  
+In these cases, the modifier (`i.that`/, say, 
+or `i.how`/) has a P:N signature, meaning that the 
+outcome noun has the specific feature of 
+`i.being` the result of a P:N transform; 
+that is, of `i.being` the modification of 
+a proposition.  We can take this 
+construction-history as a possible tenet on 
+nouns: some nouns, in short, are outcomes 
+of a P:N transform.  A `q.pseudosignature` 
+for `i.believe` would then indicate 
+that the direct object to believe has to 
+be an instance of that noun-pseudotype.  
+`p`
+
+`p.
+More accurately, this formation applies 
+to one sense of `i.believe` 
+(a different model appears in 
+`i.I believe you` or `i.I believe everything 
+you are saying`/); these various senses 
+may have their own pseudosignatures, 
+and the lexical `i.believe` treated as the 
+synthesis of the narrower senses.  In each 
+case the `i.subject` of believe has to be 
+sentient, which (in my proposal) is 
+mesotype-level; but this too can be constructed 
+as a noun pseudotype for purposes of 
+pseudosignatures.  In 
+`i.believe/understand/know that` 
+(or `i.understand/know how/why` or `i.know when/where/whether`/) 
+the common requirement is sentience on the subject 
+`q.column` and something proposition-like on the direct object
+(the more general case would allow 
+this propositional sense to be indirect, as in `i.what you just said`/, 
+but I'll focus on explicit P:N examples).  For 
+`i.believe that`/, say, subject must have `q.mesotype` 
+`i.sentient` (just for the moment label 
+this `Ns; for `q.sentient noun), and the direct object 
+the `i.pseudotype` of a noun created via P:N 
+(for the moment label this `Npton;).  
+We can then express `i.believe`/'s preconditions 
+via the pseudosignature `NsdotNptontoP; or 
+(without compact notation) `NsdotNptontoPnoncompact;.  
+The pseudosignature combined pseudotypes 
+originating at a mesotype level (`Ns;) and a
+macrotype level (`Npton;), so it demonstrates 
+how these levels can be convoluted in 
+preconditions or postconditions.  Given 
+cases like these, I propose using 
+pseudotypes as refinements orthogonal to 
+the striation between `i.macrotype`/, 
+`i.mesotype`/, and `i.microtype`/, so as 
+to sustain the idea that the latter three 
+levels are cognitively distinct 
+while also permitting them to be co-determinative  
+when more than one such level is consequential 
+for defining the propriety of a given 
+word-usage or constructional pattern. 
+`p`
+
+`p.
+With this framework, macrotypes, mesotypes, 
+microtypes, and pseudotypes are different 
+scales of ideational breadth (or potentially 
+cross-cutting scales for pseudotypes) 
+where linguistic requirements may be asserted.  
+I am not convinced that it is nessessary 
+to define `i.a prior` what sorts of conditions 
+should be recognized at what scale.  When 
+analyzing any one sentence we can retroactively 
+decide to notate its patterns of conformance 
+to standards %-- or more pertinantly its 
+strategic abnormalities %-- at one or another 
+(or a combination of) scales, depending 
+on what seems most explanatorily revealing 
+about `i.that particular` sentence.
+`p`
+
+`p.
+Having argued for this methodology at the 
+macrotype (and then finer-grained) levels, 
+I will now consider the extension of these 
+ideas to `q.bilexical` categories or 
+inter-word relations.
+`p`
+
+`subsection.A Generative Theory of Bilexical Categories`
+`p.
+I use the term `q.bilexical category` as a replacement 
+for `i.relation kinds` or `i.link types` in Dependency or 
+Link Grammar.  My rationale for this nonstandard 
+jargon is to highlight the parallels between 
+bilexical categories and macrotypes (which in turn 
+are akin to `i.lexical` categories).  In particular, 
+rather than a fixed inventory of lexical categories 
+I advocate a system of macrotypes where some 
+macrotypes are derived from others, in terms 
+of the type associated with `i.modifiers` whose 
+inputs and outcomes are other types.  The 
+space of macrotypes is therefore in some sense 
+`q.generative` (although the proliferation of 
+macrotypes should be seen as bounded by 
+the relatively small size of linguistic
+constructions, once we treat clauses and 
+nominals as singular components from a higher-level 
+vantage point).  Potentially we can 
+usefully see the system of bilexical categories 
+as comparably generative, but within reason. 
+`p`
+
+`p.
+Note that we can posit a closely association 
+between macrotypes and (at least some) bilexical 
+categories.  Many macrotypes %-- to begin 
+with, modifiers which transform one target %-- 
+can also usefully be seen as a bilexical 
+category pairing the modifier and that 
+which it modifies.  The `i.adjective` macrotype, 
+say, is closely associated with the Universal 
+Dependencies `q.amod` relation: the adjective 
+modifies a noun, which can be modeled as the 
+adjective `i.transforming` a noun-concept, like 
+a `q.function` in some conceptual space, and 
+simultaneously as one inter-word connection in a 
+parse-graph.  The same general principle applies 
+for verbs, though here we have to distinguish 
+verbs' relations to subjects, direct objects, 
+and indirect objects.
+`p`
+
+`p.
+We can, in any case, begin to develop a system of 
+bilexical categories directly from any system 
+of macrotypes.  For macrotypes which are 
+simple (one-`q.input`/) modifiers, there is 
+(we may stipulate) one corresponding bilexical category.  
+Most non-simple modifiers involve verbs and 
+clauses (the main exception here being conjunctions 
+like `i.and`/).  Clauses take on diverse forms, 
+which affects both macrotypes and bilexical categories. 
+`p`
+
+`p.
+The first differentiation among clauses is whether 
+they produce actual propositions (finite clauses) 
+or else nouns or adjectives.  Compare: 
+
+`exs,
+`ex; She failed to hold the groceries.
+`ex; She asked me to hold the groceries.
+`ex; She asked that I hold the groceries.
+`ex; Where is a bag to hold the groceries?
+`exs`
+
+Here I read `i.(to/that I) hold the groceries` as a noun 
+which is a direct object in (1) and indirect 
+in (2); a proposition in (3); and an adjective in (4).  
+If we define the `i.verb` macrotype as intrinsically 
+a transform yielding a proposition, then we 
+should categorize the verb component (`i.(to) hold`/) 
+in the non-finite cases as not exactly a verb 
+%-- instead a transform `i.like` a verb 
+but yielding a noun or adjective.  For sake of 
+discussion, I'll notate such a `q.substitution` 
+by parenthesizing the non-proposition outcome 
+after the `q.V`/: `VparaN; for a `q.noun-clause` 
+verb, and `VparaJ; for an `q.adjective-clause` 
+verb.  Separately, another feature of 
+the above examples (apart from (3)) is that 
+the `i.subject` is missing from the clause 
+itself (so that it gets picked up from the 
+surrounding linguistic material, e.g. the 
+`i.direct` object in (2)).  For each 
+verb-alternative, then, we can identify 
+which element is `q.missing`/: say, 
+`VparaNOne; for a noun-clause verb `q.gapped` 
+in the subject position (notated `q.1` for 
+the `q.first column` in the verb's signature), 
+and similarly `VparaJOne;.  
+It is possible for gaps to occur against 
+objects also: consider `i.the person that 
+I consulted` (`VparaJTwo;: direct object gap, 
+adjectival clause) or `i.Tell me who to send 
+the letter to` (`VparaNThree;: indirect object gap).    
+   
+
+`p`
+
+`p.
+
 `p`
 
