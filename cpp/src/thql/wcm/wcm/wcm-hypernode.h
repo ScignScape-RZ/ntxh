@@ -100,4 +100,6 @@ public:
 
 };
 
-#endif
+#endif //  WCM_HYPERNODE__H
+
+
