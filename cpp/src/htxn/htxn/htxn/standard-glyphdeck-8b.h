@@ -45,6 +45,8 @@ public:
  QChar get_xml(u1 gp, QString& extra);
  u1 get_diacritic_code(u1 gp);
 
+ void* external_deck(u1 gp);
+ void* external_diacritic(u1 gp);
 
 };
 

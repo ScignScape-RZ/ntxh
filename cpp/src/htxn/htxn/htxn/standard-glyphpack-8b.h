@@ -33,8 +33,8 @@ public:
 
  explicit Standard_GlyphPack_8b(u1 code); 
 
- u1 get_latex_cue();
- u1 get_xml_cue();
+ std::pair<u1, u1> get_latex_cue();
+ std::pair<u1, u1> get_xml_cue();
  u1 get_diacritic_code_cue();
 
 };

@@ -15,18 +15,22 @@ Standard_GlyphPack_8b::Standard_GlyphPack_8b(u1 code)
 
 }
 
-u1 Standard_GlyphPack_8b::get_latex_cue()
+std::pair<u1, u1> Standard_GlyphPack_8b::get_latex_cue()
 {
  if( (code_ & 128) > 0 )
  {
-  return 255;
+  return {2, code_ & 127 };
  }
  if( (code_ & 64) > 0 )
  {
-  return 255;
+  u1 c = code_ & 63;
+  if(c == 0)
+    return {3, 0};
+  if(c == 1)
+    return {4, 0};
+  return {1, c};
  }
- //if(code == 63)
- return code_;
+ return {0, code_};
 }
 
 u1 Standard_GlyphPack_8b::get_xml_cue()

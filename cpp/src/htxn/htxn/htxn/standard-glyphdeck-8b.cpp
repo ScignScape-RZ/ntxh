@@ -18,6 +18,21 @@ Standard_GlyphDeck_8b::Standard_GlyphDeck_8b()
 
 }
 
+void* Standard_GlyphDeck_8b::external_deck(u1 gp)
+{
+ if(gp & 128)
+   return this;
+ return nullptr;
+}
+
+void* Standard_GlyphDeck_8b::external_diacritic(u1 gp)
+{
+ if(gp & 64)
+   return this;
+ return nullptr;
+}
+
+
 QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
 {
  switch(cue)
@@ -96,38 +111,57 @@ QString Standard_GlyphDeck_8b::get_nondiacritic_xdefault_latex(u1 cue)
  {
  case 0: return QString();
  case 1: return QString();
- case 2: return QString("{\DLi}");
- case 3: return QString("{\DLj});
- case 4: return QString("a");
- case 5: return QString("b");
- case 6: return QString("c");
- case 7: return QString("d");
- case 8: return QString("e");
- case 9: return QString("f");
- case 10: return QString("g");
- case 11: return QString("h");
- case 12: return QString("i");
- case 13: return QString("j");
- case 14: return QString("k");
- case 15: return QString("l");
- case 16: return QString("m");
- case 17: return QString("n");
- case 18: return QString("o");
- case 19: return QString("p");
- case 20: return QString("q");
- case 21: return QString("r");
- case 22: return QString("s");
- case 23: return QString("t");
- case 24: return QString("u");
- case 25: return QString("v");
- case 26: return QString("w");
- case 27: return QString("x");
- case 28: return QString("y");
- case 29: return QString("z");
- case 30: return QString("/");
- case 31: return QString("?");
+ case 2: return QString("{\\DLi}");
+ case 3: return QString("{\\DLj});
+ case 4: return QString("{\\dqDCe}");
+ case 5: return QString("{\\dqDCl}");
+ case 6: return QString("{\\sqDCe}");
+ case 7: return QString("{\\sqDCl}");
+ case 8: return QString("{\\emDCe}");
+ case 9: return QString("{\\emDCl}");
+ case 10: return QString("{\\bfDCe}");
+ case 11: return QString("{\\bfDCl}");
+ case 12: return QString("{\\ulDCe}");
+ case 13: return QString("{\\ulDCl}");
+ case 14: return QString("{\\dcIne}");
+ case 15: return QString("{\\dcInl}");
+ case 16: return QString("{\\dcAve}");
+ case 17: return QString("{\\dcAvl}");
+ case 18: return QString("{\\dcIAe}");
+ case 19: return QString("{\\dcIAl}");
+ case 20: return QString("{\\dcHve}");
+ case 21: return QString("{\\dcHvl}");
+ case 22: return QString("{\\sDiv}");
+ case 23: return QString("{\\mDiv}");
+ case 24: return QString("{\\lDiv}");
+ case 25: return QString("{\\emD}");
+ case 26: return QString("{\\enD}");
+ case 27: return QString("{\\num}");
+ case 28: return QString("{\\dol}");
+ case 29: return QString("{\\prc}");
+ case 30: return QString("{\\amp}");
+ case 31: return QString("{\\sct}");
  default: return QChar(); 
 }
+
+#ifdef HIDE
+ case 4: return QString("{\\dqIne}");
+ case 5: return QString("{\\dqInl}");
+ case 6: return QString("{\\dqAve}");
+ case 7: return QString("{\\dqAvl}");
+ case 8: return QString("{\\dqHve}");
+ case 9: return QString("{\\dqHvl}");
+ case 10: return QString("{\\dqIAe}");
+ case 11: return QString("{\\dqIAl}");
+ case 12: return QString("{\\sqIne}");
+ case 13: return QString("{\\sqInl}");
+ case 14: return QString("{\\sqAve}");
+ case 15: return QString("{\\dqAvl}");
+ case 16: return QString("{\\sqHve}");
+ case 17: return QString("{\\sqHvl}");
+ case 18: return QString("{\\sqIAe}");
+ case 19: return QString("{\\sqIAl}");
+#endif // HIDE
 
 QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 {
@@ -171,11 +205,18 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 
 
 
-QChar Standard_GlyphDeck_8b::get_latex(u1 gp, QString& extra)
+QChar Standard_GlyphDeck_8b::get_latex(u1 gp, u1& dia)
 {
  Standard_GlyphPack_8b code{gp}; 
- u1 cue = code.get_latex_cue();
- return get_text_default(cue);
+ u1 kind, cue;
+ std::tie(kind, cue) = code.get_latex_cue();
+
+ switch(kind)
+ {
+ case 0: return get_text_default(cue);
+ case 1: case 3: case 4: dia = cue; return QChar();
+ case 2: 
+ }
 }
 
 QChar Standard_GlyphDeck_8b::get_xml(u1 gp, QString& extra)
