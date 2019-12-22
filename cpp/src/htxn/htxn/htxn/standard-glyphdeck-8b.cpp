@@ -18,18 +18,20 @@ Standard_GlyphDeck_8b::Standard_GlyphDeck_8b()
 
 }
 
-void* Standard_GlyphDeck_8b::external_deck(u1 gp)
+void Standard_GlyphPack_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
- if(gp & 128)
-   return this;
- return nullptr;
-}
-
-void* Standard_GlyphDeck_8b::external_diacritic(u1 gp)
-{
- if(gp & 64)
-   return this;
- return nullptr;
+ if( (gp & 128) > 0 )
+ {
+  gap.flags.maybe_external_deck = true;
+  gap.glyph_code = (u8) gp & 127;   
+  return;
+ }
+ if( (gp & 64) > 0 )
+ {
+  gap.flags.maybe_external_diacritic = true;
+  gap.glyph_code = (u8) gp & 63;   
+  return;
+ } 
 }
 
 

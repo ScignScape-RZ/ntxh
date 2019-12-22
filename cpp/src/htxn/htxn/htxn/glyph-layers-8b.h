@@ -5,8 +5,8 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef STANDARD_GLYPHPACK_8B__H
-#define STANDARD_GLYPHPACK_8B__H
+#ifndef GLYPH_LAYERS_8B__H
+#define GLYPH_LAYERS_8B__H
 
 #include "accessors.h"
 
@@ -14,7 +14,7 @@
 
 #include <QString>
 #include <QList>
-#include <QDate>
+#include <QVector>
 
 #include <functional>
 
@@ -23,24 +23,22 @@
 KANS_(HTXN)
 
 typedef quint8 u1;
+typedef quint32 u4;
+typedef quint64 u8;
 
+class GlyphDeck_Base_8b;
+class Glyph_Vector_8b;
 
-class Standard_GlyphPack_8b
+class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
 {
- u1 code_;
-
 public:
 
- explicit Standard_GlyphPack_8b(u1 code); 
+ void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);
 
- std::pair<u1, u1> get_latex_cue();
- std::pair<u1, u1> get_xml_cue();
- u1 get_diacritic_code_cue();
-
-
+ //virtual void check_external(u1 gp, Glyph_Argument_Package& gap); 
 
 };
 
 _KANS(HTXN)
 
-#endif // STANDARD_GLYPHDECK
+#endif // GLYPH_VECTOR_8B__H

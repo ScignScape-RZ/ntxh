@@ -41,12 +41,14 @@ public:
 
  ACCESSORS(u2 ,deck_id)
 
- QChar get_latex(u1 gp, QString& extra);
- QChar get_xml(u1 gp, QString& extra);
- u1 get_diacritic_code(u1 gp);
+ void get_latex(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ void get_latex_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ void get_xml(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ void get_xml_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
- void* external_deck(u1 gp);
- void* external_diacritic(u1 gp);
+ //u1 get_diacritic_code(u1 gp);
+
+ void check_external(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
 };
 
