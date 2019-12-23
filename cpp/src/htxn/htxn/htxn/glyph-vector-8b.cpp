@@ -42,8 +42,24 @@ void Glyph_Vector_8b::check_external(u4 index,
    gap.external_deck_code = it.value();    
    //gap.glyph_code = (u8) 
   }
-
- } 
+  return;
+ }
+ if(gap.flags.maybe_external_diacritic)
+ {
+  auto it = diacritic_map_.find(index);
+  if(it == diacritic_map_.end())
+  {
+   gap.flags.maybe_external_diacritic = false;
+   gap.flags.confirmed_non_diacritic = true;
+  }
+  else
+  {
+   QPair<u2, u2> pr = it.value();
+   gap.flags.confirmed_external_diacritic = true;
+   gap.external_deck_code = pr.first;
+   gap.external_diacritic_code = pr.second;
+  }
+ }
 }
 
 

@@ -38,6 +38,7 @@ struct Glyph_Argument_Package
   bool confirmed_external_extended:1;
   bool maybe_external_range:1;
   bool request_deck_resolve:1;
+  bool confirmed_non_diacritic:1;
  _flags
 
  QChar chr;

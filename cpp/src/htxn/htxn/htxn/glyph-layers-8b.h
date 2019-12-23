@@ -31,6 +31,8 @@ class Glyph_Vector_8b;
 
 class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
 {
+ QVector<GlyphDeck_Base_8b*> decks_by_id_;
+
 public:
 
  void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);

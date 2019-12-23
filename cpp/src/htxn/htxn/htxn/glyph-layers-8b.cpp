@@ -27,7 +27,11 @@ void Glyph_Layers_8b::get_latex(u4 layer, u4 index,
  if(!vec)
    return;
  vec->check_external(index, gap);
- if(gap.)
+ if(gap.flags.request_deck_resolve)
+ {
+  decks_by_id_
+ }
+
 
 }
 

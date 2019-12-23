@@ -18,7 +18,7 @@ Standard_GlyphDeck_8b::Standard_GlyphDeck_8b()
 
 }
 
-void Standard_GlyphPack_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
+void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
  if( (gp & 128) > 0 )
  {

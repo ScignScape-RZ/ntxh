@@ -17,24 +17,6 @@ Standard_GlyphPack_8b::Standard_GlyphPack_8b(u1 code)
 
 }
 
-void Standard_GlyphPack_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
-{
- if( (code_ & 128) > 0 )
- {
-  gap.
-  return {2, code_ & 127 };
- }
- 
-}
-void Standard_GlyphPack_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
-{
- if( (code_ & 128) > 0 )
- {
-  gap.
-  return {2, code_ & 127 };
- }
- 
-}
 
 std::pair<u1, u1> Standard_GlyphPack_8b::get_latex_cue()
 {
