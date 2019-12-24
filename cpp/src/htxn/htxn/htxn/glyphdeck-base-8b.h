@@ -43,10 +43,12 @@ public:
 // u1 get_diacritic_code(u1 gp);
 
  virtual void check_external(u1 gp, Glyph_Argument_Package& gap);
- virtual void get_latex(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
- virtual void get_latex_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
- virtual void get_xml(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
- virtual void get_xml_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ virtual void get_latex(u1 gp, Glyph_Argument_Package& gap);
+ virtual void get_latex_dia(u1 gp, Glyph_Argument_Package& gap);
+ virtual void get_xml(u1 gp, Glyph_Argument_Package& gap);
+ virtual void get_xml_dia(u1 gp, Glyph_Argument_Package& gap);
+
+ virtual void get_qstring_out(u1 gp, Glyph_Argument_Package& gap);
 };
 
 _KANS(HTXN)

@@ -20,13 +20,15 @@
 
 #include <functional>
 
-//class WCM_WhiteDB;
 
 KANS_(HTXN)
 
 typedef quint8 u1;
 typedef quint16 u2;
 typedef quint64 u8;
+
+class GlyphDeck_Base_8b;
+
 
 struct Glyph_Argument_Package
 {
@@ -47,10 +49,15 @@ struct Glyph_Argument_Package
  u2 external_deck_code;
  u2 external_diacritic_code;
  u8 glyph_code;
+ GlyphDeck_Base_8b* internal_deck;
 
  Glyph_Argument_Package();
 
  void reset();
+ bool no_flags()
+ {
+  return Flags == 0;
+ } 
 
 };
 

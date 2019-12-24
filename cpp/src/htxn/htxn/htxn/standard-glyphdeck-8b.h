@@ -49,6 +49,7 @@ public:
  //u1 get_diacritic_code(u1 gp);
 
  void check_external(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ void get_qstring_out(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
 };
 

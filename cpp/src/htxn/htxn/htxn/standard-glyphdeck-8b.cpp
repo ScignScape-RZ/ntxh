@@ -34,6 +34,10 @@ void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
  } 
 }
 
+void Standard_GlyphDeck_8b::get_qstring_out(u1 gp, Glyph_Argument_Package& gap)
+{
+ gap.chr = get_text_default(gp);
+}
 
 QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
 {
