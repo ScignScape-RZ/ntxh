@@ -5,7 +5,7 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "standard-glyphpack.h"
+#include "standard-glyphpack-8b.h"
 
 #include "glyph-argument-package.h"
 
@@ -36,7 +36,7 @@ std::pair<u1, u1> Standard_GlyphPack_8b::get_latex_cue()
  return {0, code_};
 }
 
-u1 Standard_GlyphPack_8b::get_xml_cue()
+std::pair<u1, u1> Standard_GlyphPack_8b::get_xml_cue()
 {
 
 }

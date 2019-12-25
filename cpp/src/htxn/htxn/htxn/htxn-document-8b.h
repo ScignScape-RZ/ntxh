@@ -12,7 +12,7 @@
 
 #include "kans.h"
 
-#include "htxn-layers-8b.h"
+#include "glyph-layers-8b.h"
 
 #include <QString>
 #include <QList>
@@ -52,11 +52,11 @@ public:
  void get_qstring_out(u4 layer, QString& result);
 
  void read_glyph_point(Glyph_Argument_Package& gap, 
-   u4 index, Glyph_Vector_8b& gv)
+   u4 index, Glyph_Vector_8b& gv);
 
 
 };
 
 _KANS(HTXN)
 
-#endif // GLYPH_VECTOR_8B__H
+#endif // HTXN_DOCUMENT_8B__H

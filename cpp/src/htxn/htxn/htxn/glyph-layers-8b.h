@@ -28,9 +28,11 @@ typedef quint64 u8;
 
 class GlyphDeck_Base_8b;
 class Glyph_Vector_8b;
+struct Glyph_Argument_Package;
 
 class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
 {
+protected:
  QVector<GlyphDeck_Base_8b*> decks_by_id_;
 
 public:

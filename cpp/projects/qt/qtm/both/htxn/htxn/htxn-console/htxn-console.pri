@@ -4,10 +4,11 @@
 #     (See accompanying file LICENSE_1_0.txt or copy at
 #           http://www.boost.org/LICENSE_1_0.txt)
 
-PROJECT_NAME = htxn
+PROJECT_NAME = htxn-console
 
 include(../build-group.pri)
 
+TEMPLATE = app
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR $$SRC_ROOT_DIR
 
@@ -37,24 +38,14 @@ DEFINES += USE_KANS
 
 
 HEADERS += \
-  $$SRC_DIR/standard-glyphdeck-8b.h \
-  $$SRC_DIR/standard-glyphpack-8b.h \
-  $$SRC_DIR/glyph-argument-package.h \
-  $$SRC_DIR/glyphdeck-base-8b.h \
-  $$SRC_DIR/glyph-layers-8b.h \
-  $$SRC_DIR/glyph-vector-8b.h \
-  $$SRC_DIR/htxn-document-8b.h \
+
 
 
 SOURCES += \
-  $$SRC_DIR/standard-glyphdeck-8b.cpp \
-  $$SRC_DIR/standard-glyphpack-8b.cpp \
-  $$SRC_DIR/glyph-argument-package.cpp \
-  $$SRC_DIR/glyphdeck-base-8b.cpp \
-  $$SRC_DIR/glyph-layers-8b.cpp \
-  $$SRC_DIR/glyph-vector-8b.cpp \
-  $$SRC_DIR/htxn-document-8b.cpp \
+  $$SRC_DIR/main.cpp \
 
+
+LIBS += -L$$TARGETSDIR -lhtxn
 
 #?
 #LIBS += -L$$TARGETSDIR -lwcm -lntxh  \

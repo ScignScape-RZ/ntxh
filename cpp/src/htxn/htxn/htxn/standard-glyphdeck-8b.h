@@ -12,6 +12,8 @@
 
 #include "kans.h"
 
+#include "glyphdeck-base-8b.h"
+
 #include <QString>
 #include <QList>
 #include <QDate>
@@ -25,7 +27,9 @@ KANS_(HTXN)
 typedef quint8 u1;
 typedef quint16 u2;
 
-class Standard_GlyphDeck_8b
+struct Glyph_Argument_Package;
+
+class Standard_GlyphDeck_8b : public GlyphDeck_Base_8b
 {
  u2 deck_id_;
 
@@ -41,16 +45,21 @@ public:
 
  ACCESSORS(u2 ,deck_id)
 
+ void check_external(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
  void get_latex(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
  void get_latex_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
  void get_xml(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
  void get_xml_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
- //u1 get_diacritic_code(u1 gp);
-
- void check_external(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
  void get_qstring_out(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
+// virtual void check_external(u1 gp, Glyph_Argument_Package& gap);
+// virtual void get_latex(u1 gp, Glyph_Argument_Package& gap);
+// virtual void get_latex_dia(u1 gp, Glyph_Argument_Package& gap);
+// virtual void get_xml(u1 gp, Glyph_Argument_Package& gap);
+// virtual void get_xml_dia(u1 gp, Glyph_Argument_Package& gap);
+
+// virtual void get_qstring_out(u1 gp, Glyph_Argument_Package& gap);
 };
 
 _KANS(HTXN)

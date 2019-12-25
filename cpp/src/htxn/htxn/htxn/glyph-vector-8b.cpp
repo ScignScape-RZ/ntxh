@@ -9,6 +9,8 @@
 
 #include "glyphdeck-base-8b.h"
 
+#include "glyph-argument-package.h"
+
 USING_KANS(HTXN)
 
 
@@ -46,8 +48,8 @@ void Glyph_Vector_8b::check_external(u4 index,
  }
  if(gap.flags.maybe_external_diacritic)
  {
-  auto it = diacritic_map_.find(index);
-  if(it == diacritic_map_.end())
+  auto it = dia_map_.find(index);
+  if(it == dia_map_.end())
   {
    gap.flags.maybe_external_diacritic = false;
    gap.flags.confirmed_non_diacritic = true;
@@ -59,7 +61,9 @@ void Glyph_Vector_8b::check_external(u4 index,
    gap.external_deck_code = pr.first;
    gap.external_diacritic_code = pr.second;
   }
+  return;
  }
+ gap.glyph_code = gp;
 }
 
 

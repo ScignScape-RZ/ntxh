@@ -9,6 +9,8 @@
 
 #include "standard-glyphpack-8b.h"
 
+#include "glyph-argument-package.h"
+
 
 USING_KANS(HTXN)
 
@@ -111,6 +113,7 @@ QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
  }
 }
 
+#ifdef HIDE
 QString Standard_GlyphDeck_8b::get_nondiacritic_xdefault_latex(u1 cue)
 {
  switch(cue)
@@ -118,7 +121,7 @@ QString Standard_GlyphDeck_8b::get_nondiacritic_xdefault_latex(u1 cue)
  case 0: return QString();
  case 1: return QString();
  case 2: return QString("{\\DLi}");
- case 3: return QString("{\\DLj});
+ case 3: return QString("{\\DLj}");
  case 4: return QString("{\\dqDCe}");
  case 5: return QString("{\\dqDCl}");
  case 6: return QString("{\\sqDCe}");
@@ -149,6 +152,7 @@ QString Standard_GlyphDeck_8b::get_nondiacritic_xdefault_latex(u1 cue)
  case 31: return QString("{\\sct}");
  default: return QChar(); 
 }
+#endif //def HIDE
 
 #ifdef HIDE
  case 4: return QString("{\\dqIne}");
@@ -211,7 +215,7 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 
 
 
-QChar Standard_GlyphDeck_8b::get_latex(u1 gp, u1& dia)
+void Standard_GlyphDeck_8b::get_latex(u1 gp, Glyph_Argument_Package& gap)
 {
  Standard_GlyphPack_8b code{gp}; 
  u1 kind, cue;
@@ -219,18 +223,24 @@ QChar Standard_GlyphDeck_8b::get_latex(u1 gp, u1& dia)
 
  switch(kind)
  {
- case 0: return get_text_default(cue);
- case 1: case 3: case 4: dia = cue; return QChar();
- case 2: 
+// case 0: return get_text_default(cue);
+// case 1: case 3: case 4: dia = cue; return QChar();
+// case 2:
  }
 }
 
-QChar Standard_GlyphDeck_8b::get_xml(u1 gp, QString& extra)
+
+void Standard_GlyphDeck_8b::get_latex_dia(u1 gp, Glyph_Argument_Package &gap)
 {
 
 }
 
-u1 Standard_GlyphDeck_8b::diacritic_code(u1 gp)
+void Standard_GlyphDeck_8b::get_xml(u1 gp, Glyph_Argument_Package& gap)
+{
+
+}
+
+void Standard_GlyphDeck_8b::get_xml_dia(u1 gp, Glyph_Argument_Package& gap)
 {
 
 }

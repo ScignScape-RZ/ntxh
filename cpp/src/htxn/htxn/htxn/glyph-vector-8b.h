@@ -23,10 +23,12 @@
 KANS_(HTXN)
 
 typedef quint8 u1;
+typedef quint16 u2;
 typedef quint32 u4;
 typedef quint64 u8;
 
 class GlyphDeck_Base_8b;
+struct Glyph_Argument_Package;
 
 class Glyph_Vector_8b : public QVector<u8>
 {
@@ -36,7 +38,7 @@ class Glyph_Vector_8b : public QVector<u8>
 
 public:
 
- virtual void check_external(u4 index, 
+ void check_external(u4 index,
    GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap); 
 
  
