@@ -32,7 +32,6 @@ struct Glyph_Argument_Package;
 
 class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
 {
- u8 numeral_diacritic_code_;
 
 protected:
  QVector<GlyphDeck_Base_8b*> decks_by_id_;
@@ -40,8 +39,6 @@ protected:
 public:
 
  Glyph_Layers_8b();
-
- ACCESSORS__SET(u8 ,numeral_diacritic_code)
 
  void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);
 

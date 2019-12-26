@@ -20,17 +20,31 @@ Standard_GlyphDeck_8b::Standard_GlyphDeck_8b()
 
 }
 
-void Standard_GlyphDeck_8b::check_external_excluding_numeral_diacritic
-  (u1 gp, Glyph_Argument_Package& gap)
-{
- if( (gp > 63) && (gp < 74) )
-   gap.glyph_code = (u8) gp;
- else
-   check_external(gp, gap);
-}
+//void Standard_GlyphDeck_8b::check_external_excluding_numeral_diacritic
+//  (u1 gp, Glyph_Argument_Package& gap)
+//{
+// if( (gp > 63) && (gp < 74) )
+//   gap.glyph_code = (u8) gp;
+// else if(gp == 100)
+//   gap.glyph_code = (u8) gp;
+// else
+//   check_external(gp, gap);
+//}
 
 void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
+ if( (gp > 63) && (gp < 74) && (!gap.flags.use_numeral_diacritic) )
+ {
+  gap.glyph_code = (u8) gp;
+  return;
+ }
+ if( (gp == 100) && (!gap.flags.use_underscore_diacritic) )
+ {
+  gap.glyph_code = (u8) gp;
+  return;
+ }
+ if( (gp > 100) && (gp < 123) && gap.flags.use_refinements )
+   gap.flags.maybe_refinement = true;
  if( (gp & 128) > 0 )
  {
   gap.flags.maybe_external_deck = true;
@@ -119,7 +133,8 @@ QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
  case 62: return QChar('Z');
  case 63: return QChar(' ');
 
- case 65: return QChar('.');
+ case 64: return QChar('.');
+
  default: return QChar(); 
  }
 }
@@ -188,42 +203,141 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 {
  switch(cue)
  {
- case 0: return QChar(' ');
- case 1: return QChar('\n');
- case 2: return QChar('\r');
- case 3: return QChar('\t');
- case 4: return QChar('`');
- case 5: return QChar('~');
- case 6: return QChar('!');
- case 7: return QChar('@');
- case 8: return QChar('#');
- case 9: return QChar('$');
- case 10: return QChar('%');
- case 11: return QChar('^');
- case 12: return QChar('&');
- case 13: return QChar('*');
- case 14: return QChar('(');
- case 15: return QChar(')');
- case 16: return QChar('=');
- case 17: return QChar('+');
- case 18: return QChar('{');
- case 19: return QChar('}');
- case 20: return QChar('\\');
- case 21: return QChar('|');
- case 22: return QChar(';');
- case 23: return QChar(':');
- case 24: return QChar('\'');
- case 25: return QChar('"');
- case 26: return QChar(',');
- case 27: return QChar('<');
- case 28: return QChar('.');
- case 29: return QChar('>');
- case 30: return QChar('/');
- case 31: return QChar('?');
+ case 0: return QChar('.'); // // 64
+ case 1: return QChar('!'); // // 65
+ case 2: return QChar('('); // // 66
+ case 3: return QChar(')'); // // 67
+ case 4: return QChar('-'); // // 68  // hyphen
+ case 5: return QChar(','); // // 69
+ case 6: return QChar('\''); // // 70
+ case 7: return QChar(':'); // // 71
+ case 8: return QChar(';'); // // 72
+ case 9: return QChar('?'); // // 73
+
+ case 10: return QChar('-'); // // 74  // NpMinus
+ case 11: return QChar('+'); // // 75
+
+ case 12: return QChar('@'); // // 76
+ case 13: return QChar('#'); // // 77
+ case 14: return QChar('$'); // // 78
+ case 15: return QChar('%'); // // 79
+ case 16: return QChar('^'); // // 80
+ case 17: return QChar('&'); // // 81
+ case 18: return QChar('*'); // // 82
+ case 19: return QChar('='); // // 83
+
+ case 20: return QChar('{'); // // 84
+ case 21: return QChar('}'); // // 85
+ case 22: return QChar('['); // // 86
+ case 23: return QChar(']'); // // 87
+ case 24: return QChar('<'); // // 88
+ case 25: return QChar('>'); // // 89
+ case 26: return QChar('\\'); // // 90
+ case 27: return QChar('/'); // // 91
+ case 28: return QChar('|'); // // 92
+ case 29: return QChar('"'); // // 93
+
+ case 30: return QChar('~'); // // 94
+ case 31: return QChar('`'); // // 95
+
+ case 32: return QChar('.'); // // 96  // NpDot
+ case 33: return QChar('.'); // // 118  // NsPer
+ case 34: return QChar('?'); // // 116  // NsQm
+ case 35: return QChar('!'); // // 117  // NsExc
+ case 36: return QChar(' '); // // 100  // SnSp
+
+// case 33: return QChar('!'); // // 97  // NpExcX
+// case 34: return QChar('('); // // 98  // NpOPar
+// case 35: return QChar(')'); // // 99  // NpCPar
+
+
+ case 37: return QChar(','); // // 101  // NpCmaX
+ case 38: return QChar('\''); // // 102  // SqSqX
+ case 39: return QChar(':'); // // 103  // NpColX
+ case 40: return QChar(';'); // // 104  // NpSemX
+ case 41: return QChar('?'); // // 105  // NpQmX
+
+ case 42: return QChar('\''); // // 106  // // SqSqFt
+
+// case 43: return QChar('-'); // // 107  // DashSML
+// case 44: return QChar('-'); // // 108  // DashBr
+
+ case 43: return QChar('['); // // 107  // OSqBrX
+ case 44: return QChar(']'); // // 108  // CSqBrX
+
+ case 45: return QChar('#'); // // 109  // TxtNumX
+ case 46: return QChar('$'); // // 110  // TxtDolX
+ case 47: return QChar('%'); // // 111  // TxtPerX
+ case 48: return QChar('\t'); // // 112  // TabX
+ case 49: return QChar('&'); // // 113  // TxtAmpX
+
+ case 50: return QChar('{'); // // 114  // OCyBrX
+ case 51: return QChar('}'); // // 114  // CCyBrX
+
+// case 50: return QChar('{'); // // 114  // NpOCyBr
+// case 51: return QChar('}'); // // 114  // NpCCyBr
+
+ //case 51: return QChar('\t'); // // 115
+
+ case 52: return QChar('!'); // // 97  // NpExcX
+ case 53: return QChar('('); // // 98  // NpOParX
+ case 54: return QChar(')'); // // 99  // NpCParX
+
+ case 55: return QChar('.'); // // 119  // NmDotX
+ case 56: return QChar('<'); // // 120  // NpLtX
+ case 57: return QChar('>'); // // 121  // NpGtX
+ case 58: return QChar(','); // // 122  // NmComX
+ case 59: return QChar('"'); // // 124  // SqDqX
+
+ case 60: return QChar('?'); // // 123  // IndQm
+ case 61: return QChar('"'); // // 125  // DashSML
+ case 62: return QChar(' '); // // 126  // DiaVoid
+ case 63: return QChar('\n'); // // 127
+
  default: return QChar(); 
  }
 }
 
+void Standard_GlyphDeck_8b::get_nondiacritic_supplement(u1 cue, QString& result)
+{
+ static QVector<QString> static_vec {
+  "", //0: return QChar('.'); // // 65
+  "", //1: return QChar('!'); // // 65
+  "", //2: return QChar('('); // // 66
+  "", //3: return QChar(')'); // // 67
+  "", //4: return QChar(','); // // 68
+  "", //5: return QChar('~'); // // 69
+  "", //6: return QChar('\''); // // 70
+  "", //7: return QChar(':'); // // 71
+  "", //8: return QChar(';'); // // 72
+  "", //9: return QChar('?'); // // 73
+  "", //10: return QChar('-'); // // 74
+
+  "", //11: return QChar('+'); // // 75
+  "", //12: return QChar('@'); // // 76
+  "", //13: return QChar('#'); // // 77
+  "", //14: return QChar('$'); // // 78
+  "", //15: return QChar('%'); // // 79
+  "", //16: return QChar('^'); // // 80
+  "", //17: return QChar('&'); // // 81
+  "", //18: return QChar('*'); // // 82
+  "", //19: return QChar('='); // // 83
+
+  "", //20: return QChar('{'); // // 84
+  "", //21: return QChar('}'); // // 85
+  "", //22: return QChar('['); // // 86
+  "", //23: return QChar(']'); // // 87
+  "", //24: return QChar('<'); // // 88
+  "", //25: return QChar('>'); // // 89
+  "", //26: return QChar('\\'); // // 90
+  "", //27: return QChar('/'); // // 91
+  "", //28: return QChar('|'); // // 92
+  "", //29: return QChar('"'); // // 93
+  "", //30: return QChar('~'); // // 94
+  "", //31: return QChar('`'); // // 95
+ };
+ 
+}
 
 
 void Standard_GlyphDeck_8b::get_latex(u1 gp, Glyph_Argument_Package& gap)

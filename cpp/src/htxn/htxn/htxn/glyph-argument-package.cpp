@@ -17,6 +17,18 @@ Glyph_Argument_Package::Glyph_Argument_Package()
 
 }
 
+void Glyph_Argument_Package::reset_most()
+{
+ Flags ^= 0b111111111;
+
+ chr = QChar();
+ str.clear();
+ external_extended = nullptr;
+ external_deck_code = 0;
+ external_diacritic_code = 0;
+ glyph_code = 0;
+}
+
 void Glyph_Argument_Package::reset()
 {
  Flags = 0;

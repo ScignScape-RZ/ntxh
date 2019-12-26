@@ -44,8 +44,8 @@ public:
  void check_external(u4 index,
    GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap); 
 
- void check_external_excluding_numeral_diacritic(u4 index,
-   GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap);
+// void check_external_excluding_numeral_diacritic(u4 index,
+//   GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap);
  
 
 };

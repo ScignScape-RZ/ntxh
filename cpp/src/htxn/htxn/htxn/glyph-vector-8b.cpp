@@ -14,13 +14,13 @@
 USING_KANS(HTXN)
 
 
-void Glyph_Vector_8b::check_external_excluding_numeral_diacritic(u4 index,
-  GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap)
-{
- u1 gp = value(index);
- current_deck.check_external_excluding_numeral_diacritic(gp, gap);
- check_external(index, gp, gap);
-}
+//void Glyph_Vector_8b::check_external_excluding_numeral_diacritic(u4 index,
+//  GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap)
+//{
+// u1 gp = value(index);
+// current_deck.check_external_excluding_numeral_diacritic(gp, gap);
+// check_external(index, gp, gap);
+//}
 
 void Glyph_Vector_8b::check_external(u4 index, 
   GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap)

@@ -70,8 +70,53 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   Glyph_Vector_8b& target)
 {
  static QMap<char, quint8> static_47 {
-  {'.', 65 },
+  { '.', 64 },
+  { '!', 65 },
+  { '(', 66 },
+  { ')', 67 },
+  { ',', 69 },
+  { '\'', 70 },
+  { '-', 68 },
+
+  { '#', 76 },
+  { '$', 77 },
+  { '%', 78 },
+  { '&', 79 },
+
+  { '"', 93 },
+  { '*', 82 },
+  { '+', 75 },
  };
+
+
+ static QMap<char, quint8> static_64 {
+  { ':', 71 },
+  { ';', 72 },
+  { '?', 73 },
+
+  { '<', 88 },
+  { '>', 89 },
+  { '=', 83 },
+  { '@', 76 },
+ };
+
+ static QMap<char, quint8> static_96 {
+  { '[', 86 },
+  { ']', 87 },
+  { '\\', 90 },
+  { '^', 80 },
+  { '_', 37 },
+  { '`', 95 },
+ };
+
+ static QMap<char, quint8> static_127 {
+  { '{', 84 },
+  { '|', 85 },
+  { '}', 86 },
+  { '~', 94 },
+ };
+
+
  target.resize(src.size());
  u4 index = 0;
  for(char chr : src)

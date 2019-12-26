@@ -32,7 +32,7 @@ class GlyphDeck_Base_8b;
 
 struct Glyph_Argument_Package
 {
- flags_(1)
+ flags_(2)
   bool maybe_external_deck:1;
   bool confirmed_external_deck:1;
   bool maybe_external_diacritic:1;
@@ -41,6 +41,12 @@ struct Glyph_Argument_Package
   bool maybe_external_range:1;
   bool request_deck_resolve:1;
   bool confirmed_non_diacritic:1;
+
+  bool maybe_refinement:1;
+  bool use_refinements:1;
+  bool use_numeral_diacritic:1;
+  bool use_underscore_diacritic:1;
+
  _flags
 
  QChar chr;
@@ -54,9 +60,11 @@ struct Glyph_Argument_Package
  Glyph_Argument_Package();
 
  void reset();
+ void reset_most();
+
  bool no_flags()
  {
-  return Flags == 0;
+  return (Flags & 0b111111111) == 0;
  } 
 
 };
