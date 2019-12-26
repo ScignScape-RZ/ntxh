@@ -46,6 +46,7 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
     result.append(gap.str);
   else
     result.append(gap.chr);
+  gap.reset();
  } 
 }
 
@@ -68,15 +69,25 @@ void HTXN_Document_8b::read_layer(QString text)
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
   Glyph_Vector_8b& target)
 {
+ static QMap<char, quint8> static_47 {
+  {'.', 65 },
+ };
  target.resize(src.size());
  u4 index = 0;
  for(char chr : src)
  {
   quint8 code = 0;
-  if(chr < 48)
+  if(chr == 32)
   {
+   code = 63;
+  }
+  else if(chr < 48)
+  {
+   code = static_47.value(chr);
+   if(code == 0)
+     continue;
    // //
-   continue;
+    // continue;
   }
   else if(chr < 58)
   {
@@ -90,7 +101,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   else if(chr < 91)
   {
    // //   (A .. Z)
-   code = chr - 29;
+   code = chr - 28;
   }
   else if(chr < 97)
   {

@@ -43,6 +43,7 @@ public:
 // u1 get_diacritic_code(u1 gp);
 
  virtual void check_external(u1 gp, Glyph_Argument_Package& gap) = 0;
+ virtual void check_external_excluding_numeral_diacritic(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual void get_latex(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual void get_latex_dia(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual void get_xml(u1 gp, Glyph_Argument_Package& gap) = 0;

@@ -26,7 +26,7 @@ void Glyph_Argument_Package::reset()
  external_deck_code = 0;
  external_diacritic_code = 0;
  glyph_code = 0;
- internal_deck = nullptr; 
+// internal_deck = nullptr;
 // external_deck = 0;
 // external_diacritic = 0;
 }

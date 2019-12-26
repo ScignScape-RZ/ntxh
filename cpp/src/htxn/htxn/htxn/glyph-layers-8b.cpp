@@ -24,11 +24,21 @@
 
 USING_KANS(HTXN)
 
+Glyph_Layers_8b::Glyph_Layers_8b()
+  :  numeral_diacritic_code_(0)
+{
+
+}
+
+
 void Glyph_Layers_8b::get_qstring_out(Glyph_Vector_8b& gv, 
   u4 index, Glyph_Argument_Package& gap)
 {
  GlyphDeck_Base_8b& deck = *gap.internal_deck;
- gv.check_external(index, deck, gap);
+ if(numeral_diacritic_code_)
+   gv.check_external(index, deck, gap);
+ else
+   gv.check_external_excluding_numeral_diacritic(index, deck, gap);
  if(gap.no_flags())
  {
   deck.get_qstring_out((u1)gap.glyph_code, gap);

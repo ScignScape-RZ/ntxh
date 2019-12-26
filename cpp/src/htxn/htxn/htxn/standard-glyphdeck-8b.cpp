@@ -20,6 +20,15 @@ Standard_GlyphDeck_8b::Standard_GlyphDeck_8b()
 
 }
 
+void Standard_GlyphDeck_8b::check_external_excluding_numeral_diacritic
+  (u1 gp, Glyph_Argument_Package& gap)
+{
+ if( (gp > 63) && (gp < 74) )
+   gap.glyph_code = (u8) gp;
+ else
+   check_external(gp, gap);
+}
+
 void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
  if( (gp & 128) > 0 )
@@ -81,34 +90,36 @@ QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
  case 33: return QChar('x');
  case 34: return QChar('y');
  case 35: return QChar('z');
- case 36: return QChar('A');
- case 37: return QChar('B');
- case 38: return QChar('C');
- case 39: return QChar('D');
- case 40: return QChar('E');
- case 41: return QChar('F');
- case 42: return QChar('G');
- case 43: return QChar('H');
- case 44: return QChar('I');
- case 45: return QChar('J');
- case 46: return QChar('K');
- case 47: return QChar('L');
- case 48: return QChar('M');
- case 49: return QChar('N');
- case 50: return QChar('O');
- case 51: return QChar('P');
- case 52: return QChar('Q');
- case 53: return QChar('R');
- case 54: return QChar('S');
- case 55: return QChar('T');
- case 56: return QChar('U');
- case 57: return QChar('V');
- case 58: return QChar('W');
- case 59: return QChar('X');
- case 60: return QChar('Y');
- case 61: return QChar('Z');
- case 62: return QChar('_');
- case 63: return QChar('-');
+ case 36: return QChar('_');
+ case 37: return QChar('A');
+ case 38: return QChar('B');
+ case 39: return QChar('C');
+ case 40: return QChar('D');
+ case 41: return QChar('E');
+ case 42: return QChar('F');
+ case 43: return QChar('G');
+ case 44: return QChar('H');
+ case 45: return QChar('I');
+ case 46: return QChar('J');
+ case 47: return QChar('K');
+ case 48: return QChar('L');
+ case 49: return QChar('M');
+ case 50: return QChar('N');
+ case 51: return QChar('O');
+ case 52: return QChar('P');
+ case 53: return QChar('Q');
+ case 54: return QChar('R');
+ case 55: return QChar('S');
+ case 56: return QChar('T');
+ case 57: return QChar('U');
+ case 58: return QChar('V');
+ case 59: return QChar('W');
+ case 60: return QChar('X');
+ case 61: return QChar('Y');
+ case 62: return QChar('Z');
+ case 63: return QChar(' ');
+
+ case 65: return QChar('.');
  default: return QChar(); 
  }
 }

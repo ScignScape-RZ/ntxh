@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
  doc.add_standard_deck();
 
- doc.read_layer("This is a text layer");
+ doc.read_layer("Th.is is a text layer");
 
  QString out;
  doc.get_qstring_out(0, out);
