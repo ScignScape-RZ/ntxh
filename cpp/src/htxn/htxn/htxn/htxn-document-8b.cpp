@@ -69,66 +69,165 @@ void HTXN_Document_8b::read_layer(QString text)
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
   Glyph_Vector_8b& target)
 {
- static QMap<char, quint8> static_47 {
-  { '.', 64 },
-  { '!', 65 },
-  { '(', 66 },
-  { ')', 67 },
-  { ',', 69 },
-  { '\'', 70 },
-  { '-', 68 },
+ static QMap<QPair<char, u1>, quint8> static_47 {
+  {  { '.', 0 }, 64 },
+  {  { '.', 1 }, Standard_GlyphDeck_8b::NpDot },
+  {  { '.', 1 }, Standard_GlyphDeck_8b::NsPer },
 
-  { '#', 76 },
-  { '$', 77 },
-  { '%', 78 },
-  { '&', 79 },
+  {  { '!', 0 }, 65 },
+  {  { '!', 1 }, Standard_GlyphDeck_8b::NpExcX },
 
-  { '"', 93 },
-  { '*', 82 },
-  { '+', 75 },
+  {  { '(', 0 }, 66 },
+  {  { '(', 1 }, Standard_GlyphDeck_8b::NpOParX },
+
+  {  { ')', 0 }, 67 },
+  {  { '(', 1 }, Standard_GlyphDeck_8b::NpCParX },
+
+  {  { '-', 0 }, 68 },
+  {  { '-', 1 }, Standard_GlyphDeck_8b::DashSML },
+  {  { '-', 2 }, Standard_GlyphDeck_8b::NpMinus },
+  {  { '-', 3 }, Standard_GlyphDeck_8b::SnDash },
+
+  {  { ',', 0 }, 69 },
+  {  { ',', 1 }, Standard_GlyphDeck_8b::NpComX },
+
+  {  { '\'', 0 }, 70 },
+  {  { '\'', 1 }, Standard_GlyphDeck_8b::SqSqX },
+
+  {  { '#', 0 }, 76 },
+  {  { '#', 0 }, Standard_GlyphDeck_8b::TxtNumX },
+
+  {  { '$', 0 }, 77 },
+  {  { '$', 0 }, Standard_GlyphDeck_8b::TxtDolX },
+
+  {  { '%', 0 }, 78 },
+  {  { '%', 0 }, Standard_GlyphDeck_8b::TxtPerX },
+
+  {  { '&', 0 }, 79 },
+  {  { '&', 0 }, Standard_GlyphDeck_8b::TxtAmpX },
+
+  {  { '"', 0 }, 93 },
+  {  { '"', 1 }, Standard_GlyphDeck_8b::SqDqX },
+
+  {  { '*', 0 }, 82 },
+  {  { '*', 1 }, Standard_GlyphDeck_8b::TxtStarX },
+
+  {  { '+', 0 }, 75 },
+  {  { '+', 1 }, Standard_GlyphDeck_8b::TxtPlusX },
+
+  {  { '/', 0 }, 90 },
+  {  { '/', 1 }, Standard_GlyphDeck_8b::FslX },
+
+
+
  };
 
 
- static QMap<char, quint8> static_64 {
-  { ':', 71 },
-  { ';', 72 },
-  { '?', 73 },
+ static QMap<QPair<char, u1>, quint8> static_64 {
+  {  { ':', 0 }, 71 },
+  {  { ':', 1 }, Standard_GlyphDeck_8b::NpColX },
 
-  { '<', 88 },
-  { '>', 89 },
-  { '=', 83 },
-  { '@', 76 },
+  {  { ';', 0 }, 72 },
+  {  { ';', 1 }, Standard_GlyphDeck_8b::NpSemX },
+
+  {  { '?', 0 }, 73 },
+  {  { '?', 1 }, Standard_GlyphDeck_8b::NpQmX },
+  {  { '?', 1 }, Standard_GlyphDeck_8b::IndQm },
+
+  {  { '<', 0 }, 88 },
+  {  { '<', 1 }, Standard_GlyphDeck_8b::NpLtX },
+
+  {  { '>', 0 }, 89 },
+  {  { '>', 1 }, Standard_GlyphDeck_8b::NpGtX },
+
+  {  { '=', 0 }, Standard_GlyphDeck_8b::TxtEqX },
+  {  { '=', 1 }, Standard_GlyphDeck_8b::TxtEqX },
+
+  {  { '@', 0 }, Standard_GlyphDeck_8b::TxtAtX },
+  {  { '@', 1 }, Standard_GlyphDeck_8b::TxtAtX },
+
  };
 
- static QMap<char, quint8> static_96 {
-  { '[', 86 },
-  { ']', 87 },
-  { '\\', 90 },
-  { '^', 80 },
-  { '_', 37 },
-  { '`', 95 },
+ static QMap<QPair<char, u1>, quint8> static_96 {
+  {  { '[', 0 }, 86 },
+  {  { '[', 1 }, Standard_GlyphDeck_8b::OSqBrX },
+
+  {  { ']', 0 }, 87 },
+  {  { ']', 1 }, Standard_GlyphDeck_8b::CSqBrX },
+
+  {  { '\\', 0 }, 90 },
+  {  { '\\', 1 }, Standard_GlyphDeck_8b::BslX },
+
+  {  { '^', 0 }, Standard_GlyphDeck_8b::TxtHatX },
+  {  { '^', 1 }, Standard_GlyphDeck_8b::TxtHatX },
+
+  {  { '_', 0 }, 37 },
+  {  { '_', 0 }, Standard_GlyphDeck_8b::NullX },
+
+  {  { '`', 0 }, Standard_GlyphDeck_8b::BqX },
+  {  { '`', 1 }, Standard_GlyphDeck_8b::BqX },
  };
 
- static QMap<char, quint8> static_127 {
-  { '{', 84 },
-  { '|', 85 },
-  { '}', 86 },
-  { '~', 94 },
+ static QMap<QPair<char, u1>, quint8> static_127 {
+  {  { '{', 0 }, Standard_GlyphDeck_8b::OCyBrX },
+  {  { '{', 1 }, Standard_GlyphDeck_8b::OCyBrX },
+
+  {  { '|', 0 }, Standard_GlyphDeck_8b::PipeX },
+  {  { '|', 1 }, Standard_GlyphDeck_8b::PipeX },
+
+  {  { '}', 0 }, Standard_GlyphDeck_8b::CCyBrX },
+  {  { '}', 1 }, Standard_GlyphDeck_8b::CCyBrX },
+
+  {  { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
+  {  { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
  };
 
 
  target.resize(src.size());
  u4 index = 0;
+
+ u1 held_state = 0;
+ // //  held state codes: 
+  //    0 -- nothing
+  //    1-4 -- alt interpretation 1-4
+  //    10 -- read alt interpretation
+  //    11 -- done alt interpretation; maybe flags
+  //    12 -- read flags
+
  for(char chr : src)
  {
   quint8 code = 0;
+
   if(chr == 32)
   {
    code = 63;
+   continue;
   }
-  else if(chr < 48)
+  if(held_state == 11)
   {
-   code = static_47.value(chr);
+   if(chr == '~')
+   {
+    held_state = 12;
+    continue;
+   }
+   held_state = 0;
+  }
+  
+  if(chr < 48)
+  {
+   if( (held_state == 10) && (chr == '(') )
+   {
+    held_state = 1;
+    continue;
+   }
+   if(held_state == 1)
+   {
+    if(chr == ')')
+      held_state = 11;
+    continue;
+   }
+
+   code = static_47.value( {chr, held_state} );
    if(code == 0)
      continue;
    // //
@@ -141,7 +240,20 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   }
   else if(chr < 65)
   {
-   // //  continue;
+   if( (held_state == 10) && (chr == '<') )
+   {
+    held_state = 4;
+    continue;
+   }
+   if(held_state == 4)
+   {
+    if(chr == '>')
+      held_state = 11;
+    continue;
+   }
+   code = static_64.value( {chr, held_state} );
+   if(code == 0)
+     continue;
   }
   else if(chr < 91)
   {
@@ -150,7 +262,24 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   }
   else if(chr < 97)
   {
-   // //  continue;
+   if(chr == '`')
+   {
+    held_state = 10;
+    continue;
+   }
+   if(chr == '[')
+   {
+    held_state = 3;
+    continue;
+   }
+   if( (held_state == 3) && (chr == ']') )
+   {
+    held_state = 11;
+    continue;
+   }
+   code = static_96.value( {chr, held_state} );
+   if(code == 0)
+     continue;
   }
   else if(chr < 123)
   {
@@ -158,10 +287,29 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    code = chr - 87;
    // //  continue;
   }
-  else
+  else if(chr == '{')
   {
-   // //  continue;
+   if(held_state == 10)
+   {
+    held_state = 2;
+    continue;
+   }
+   code = static_127.value( {chr, held_state} );
+   if(code == 0)
+     continue;
   }
+  else if(chr == '}')
+  {
+   if(held_state == 2)
+   {
+    held_state = 11;
+    continue;
+   }
+   code = static_127.value( {chr, held_state} );
+   if(code == 0)
+     continue;
+  }
+
   // // got code ...
   //current_deck_->encode()
   target[index] = code;

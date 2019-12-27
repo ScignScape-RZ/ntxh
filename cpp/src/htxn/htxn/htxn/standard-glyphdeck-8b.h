@@ -41,6 +41,53 @@ class Standard_GlyphDeck_8b : public GlyphDeck_Base_8b
  
 public:
 
+ enum Alt_Interpretation_Codes {
+   NpDot = 76, NsPer = 97, 
+   NpExcX = 116,
+   NpOParX = 117,
+   NpCParX = 118,
+   DashSML = 89,
+   NpMinus = 10,
+   NmComX = 122,
+   SqSqX = 102,
+   TxtNumX = 109,
+   TxtDolX = 110,
+   TxtPerX = 111,
+   TxtPlusX = 112,
+   TxtAmpX = 113,
+   SqDqX = 123,
+
+   TxtStarX = 114,
+   TxtPlusX = 112,
+
+   NpColX = 103,
+   NpSemX = 104,
+   NsQm = 98,
+   NpQmX = 105,
+   IndQm = 96,
+
+   NpLtX = 120,
+   NpGtX = 121,
+   TxtEqX = 115,
+
+   TxtAtX = 124,
+   BslX = 106,
+   TxtHatX = 100,
+
+   NullX = 95,
+   BqX = 125,
+
+   OSqBrX = 91,
+   CSqBrX = 92,
+   OCyBrX = 93,
+   CCyBrX = 94,
+
+   PipeX = 107,
+   TildeX = 126, 
+
+   FslX = 90,
+ };
+
  Standard_GlyphDeck_8b();
 
  ACCESSORS(u2 ,deck_id)

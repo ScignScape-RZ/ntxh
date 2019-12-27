@@ -5,10 +5,12 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef GLYPH_VECTOR_8B__H
-#define GLYPH_VECTOR_8B__H
+#ifndef GLYPH_REFINEMENT__H
+#define GLYPH_REFINEMENT__H
 
 #include "accessors.h"
+
+#include "flags.h"
 
 #include "kans.h"
 
@@ -29,24 +31,21 @@ typedef quint16 u2;
 typedef quint32 u4;
 typedef quint64 u8;
 
-class GlyphDeck_Base_8b;
-struct Glyph_Argument_Package;
 
-
-
-class Glyph_Vector_8b : public QVector<u8>
+class Glyph_Refinement
 {
- QMap<u4, QPair<u2, u2> > dia_map_;
- QMap<u4, u2 > deck_map_;
- QMap<u4, void* > xx_map_;
- QMap<u4, Glyph_Refinement > refinement_map_;
+ flags_(8)
+  bool hyphen_break:1;
 
- void check_external(u4 index, u1 gp, Glyph_Argument_Package& gap);
+ _flags
+
+ QString text;
 
 public:
 
- void check_external(u4 index,
-   GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap); 
+ Glyph_Refinement(); 
+
+ ACCESSORS(QString ,text)
 
 // void check_external_excluding_numeral_diacritic(u4 index,
 //   GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap);
@@ -56,4 +55,4 @@ public:
 
 _KANS(HTXN)
 
-#endif // GLYPH_VECTOR_8B__H
+#endif // GLYPH_REFINEMENT__H
