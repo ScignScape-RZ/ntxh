@@ -187,12 +187,20 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
  u4 index = 0;
 
  u1 held_state = 0;
+
+ u2 length_with_held_state = 0;
+
+ QString flags_acc;
+
+ QMap<u4, QString> flags_strings;
+
  // //  held state codes: 
   //    0 -- nothing
   //    1-4 -- alt interpretation 1-4
   //    10 -- read alt interpretation
   //    11 -- done alt interpretation; maybe flags
   //    12 -- read flags
+  //    13 -- flags acc
 
  for(char chr : src)
  {
@@ -207,10 +215,42 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   {
    if(chr == '~')
    {
+    // //  we'll keep length_with_held_state 
+     //    for future reference
     held_state = 12;
     continue;
    }
+   length_with_held_state = 0;
    held_state = 0;
+  }
+  else if(held_state == 12)
+  {
+   if(chr == '(')
+   {
+    // //  Again, we'll keep length_with_held_state 
+     //    for future reference
+    held_state = 13;
+    continue;
+   }
+   length_with_held_state = 0
+   held_state = 0;
+  }
+  else if(held_state == 13)
+  {
+   if(chr == ')')
+   {
+    // // store the acc;
+    for(u2 i = 0; i < length_with_held_state; ++i)
+    {
+     flags_strings[index - i] = flags_acc;
+    }
+    flags_acc.clear();
+    length_with_held_state = 0; 
+    held_state = 0;
+   }
+   else
+     flags_acc.append(QChar::fromLatin1(chr));
+   continue;
   }
   
   if(chr < 48)
@@ -222,7 +262,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    }
    if(held_state == 1)
    {
-    if(chr == ')')
+    if( (chr == ')') && (length_with_held_state > 0) )
       held_state = 11;
     continue;
    }
@@ -230,8 +270,6 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    code = static_47.value( {chr, held_state} );
    if(code == 0)
      continue;
-   // //
-    // continue;
   }
   else if(chr < 58)
   {
@@ -245,9 +283,8 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
     held_state = 4;
     continue;
    }
-   if(held_state == 4)
-   {
-    if(chr == '>')
+   if( (held_state == 4) && 
+       (chr == '>') && (length_with_held_state > 0) )
       held_state = 11;
     continue;
    }
@@ -272,7 +309,8 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
     held_state = 3;
     continue;
    }
-   if( (held_state == 3) && (chr == ']') )
+   if( (held_state == 3) && (chr == ']')
+     && (length_with_held_state > 0) )
    {
     held_state = 11;
     continue;
@@ -285,7 +323,6 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   {
    // //   (a .. z)
    code = chr - 87;
-   // //  continue;
   }
   else if(chr == '{')
   {
@@ -300,7 +337,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   }
   else if(chr == '}')
   {
-   if(held_state == 2)
+   if( (held_state == 2) && (length_with_held_state > 0) )
    {
     held_state = 11;
     continue;
@@ -311,6 +348,10 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   }
 
   // // got code ...
+
+  if(held_code != 0) 
+    ++length_with_held_state;
+
   //current_deck_->encode()
   target[index] = code;
   ++index;  
