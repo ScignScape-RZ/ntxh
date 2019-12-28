@@ -22,6 +22,7 @@ USING_KANS(HTXN)
 // check_external(index, gp, gap);
 //}
 
+
 void Glyph_Vector_8b::check_external(u4 index, 
   GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap)
 {

@@ -31,6 +31,80 @@ Standard_GlyphDeck_8b::Standard_GlyphDeck_8b()
 //   check_external(gp, gap);
 //}
 
+void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
+{
+ if(gp < 64)
+ {
+  gap.chr = get_text_default(gp);
+  return;
+ }
+ gap.chr = get_nondiacritic_default(gp);
+ 
+ // //  get alt number 
+ static QMap<u1, u1> static_map {
+  { Standard_GlyphDeck_8b::NpDot, 1 },
+  { Standard_GlyphDeck_8b::NsPer, 2 },
+  { Standard_GlyphDeck_8b::NpExcX, 1 },
+  { Standard_GlyphDeck_8b::NpOParX, 1 },
+  { Standard_GlyphDeck_8b::NpCParX, 1 },
+  { Standard_GlyphDeck_8b::DashSML, 1 },
+  { Standard_GlyphDeck_8b::NpMinus, 2 },
+  { Standard_GlyphDeck_8b::SnDash, 3 },
+
+  { Standard_GlyphDeck_8b::NMComX, 1 },
+  { Standard_GlyphDeck_8b::SqSqX, 1 },
+  { Standard_GlyphDeck_8b::TxtNumX, 1 },
+  { Standard_GlyphDeck_8b::TxtDolX, 1 },
+  { Standard_GlyphDeck_8b::TxtPerX, 1 },
+  { Standard_GlyphDeck_8b::TxtAmpX, 1 },
+  { Standard_GlyphDeck_8b::SqDqX, 1 },
+  { Standard_GlyphDeck_8b::TxtStarX, 1 },
+  { Standard_GlyphDeck_8b::TxtPlusX, 1 },
+  { Standard_GlyphDeck_8b::FslX, 1 },
+
+  { Standard_GlyphDeck_8b::NpColX, 1 },
+  { Standard_GlyphDeck_8b::NpSemX, 1 },
+  { Standard_GlyphDeck_8b::NpQmX, 1 },
+  { Standard_GlyphDeck_8b::IndQm, 1 },
+  { Standard_GlyphDeck_8b::NpLtX, 1 },
+  { Standard_GlyphDeck_8b::NpGtX, 1 },
+  { Standard_GlyphDeck_8b::OSqBrX, 1 },
+  { Standard_GlyphDeck_8b::CSqBrX, 1 },
+  { Standard_GlyphDeck_8b::OCyBrX, 1 },
+  { Standard_GlyphDeck_8b::CCyBrX, 1 },
+  { Standard_GlyphDeck_8b::BslX, 1 },
+  { Standard_GlyphDeck_8b::NullX, 1 },
+ };
+
+ u1 alt_code = static_map.value(gap.chr);
+ switch(alt_code)
+ {
+ default: // // should always be 0 - 4 ...
+ case 0:
+  {
+   
+  }
+  break;
+ case 1:
+  {
+   gap.flags.alt_1 = true;
+  }
+ case 2:
+  {
+   gap.flags.alt_2 = true;
+  }
+ case 3:
+  {
+   gap.flags.alt_3 = true;
+  }
+ case 4:
+  {
+   gap.flags.alt_4 = true;
+  }
+ }
+
+} 
+
 void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
  if( (gp > 63) && (gp < 74) && (!gap.flags.use_numeral_diacritic) )
@@ -132,9 +206,6 @@ QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
  case 61: return QChar('Y');
  case 62: return QChar('Z');
  case 63: return QChar(' ');
-
- case 64: return QChar('.');
-
  default: return QChar(); 
  }
 }

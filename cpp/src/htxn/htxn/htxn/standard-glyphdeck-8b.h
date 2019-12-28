@@ -102,6 +102,7 @@ public:
  void get_nondiacritic_supplement(u1 cue, QString& result) Q_DECL_OVERRIDE;
 
  void get_qstring_out(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ void get_htxne_out(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
 // virtual void check_external(u1 gp, Glyph_Argument_Package& gap);
 // virtual void get_latex(u1 gp, Glyph_Argument_Package& gap);

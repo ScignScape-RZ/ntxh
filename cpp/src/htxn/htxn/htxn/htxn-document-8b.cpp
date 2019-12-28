@@ -50,6 +50,124 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
  } 
 }
 
+void HTXN_Document_8b::get_htxne_out(QByteArray& result)
+{
+ Glyph_Vector_8b* gv = value(layer);
+ if(!gv)
+   return;
+ result.reserve(gv->size());
+ Glyph_Argument_Package gap;
+ gap.internal_deck = current_deck_;
+
+ u1 run_code = 0;
+ u1 run_length = 0;
+ u1 tilde_check = 0;
+
+ static auto handle_alt = [&result, &run_code, 
+   &run_length, &tilde_check]
+   (u1 alt, char enter, char leave)
+ {
+  tilde_check = 0;
+  if(run_length == 0) 
+  {
+   result.append('`');
+   result.append(enter);
+   result.append(gap.chr);
+   run_length = 1;
+   run_code = alt;
+   return;
+  }
+  // //  now we know there's a run on
+  if(run_code == alt)
+  {
+   result.append(gap.chr);
+   if(gap.chr == leave)
+   {
+    // // always break the run here
+    result.append(leave);
+    run_length = 0;
+    run_code = 0;
+   }
+   else
+     ++run_length;
+   return;
+  }
+  // // now we know the prior run has to break;
+  switch(run_code)
+  {
+  case 1: result.append(")`"); break;
+  case 2: result.append("]`"); break;
+  case 3: result.append("}`"); break;
+  case 4: result.append(">`"); break;
+  default: break;
+  }
+  result.append(enter);
+  result.append(gap.chr);
+  run_length = 1;
+  run_code = alt;
+ };
+
+ for(u4 i = 0; i < gv->size(); ++i)
+ {
+  Glyph_Layers_8b::get_htxne_out(*gv, i, gap);
+
+  if(gap.flags.alt_1)
+  {
+   handle_alt(1, '(', ')');
+  }
+  else if(gap.flags.alt_2)
+  {
+   handle_alt(1, '{', '}');
+  }
+  else if(gap.flags.alt_3)
+  {
+   handle_alt(3, '[', ']');
+  }
+  else if(gap.flags.alt_4)
+  {
+   handle_alt(4, '<', '>');
+  }
+  else if(run_length > 0)
+  {
+   // // have to break a run ...
+   switch(run_code)
+   {
+   case 1: result.append(')'); break;
+   case 2: result.append(']'); break;
+   case 3: result.append('}'); break;
+   case 4: result.append('>'); break;
+   default: break;
+   }
+   tilde_check = 1;
+  }
+  else 
+  {
+   if(tilde_check > 0)
+   {
+    if(tilde_check == 1)
+    {
+     if(gap.chr == '~')
+       tilde_check = 2;
+     else 
+       tilde_check = 0;
+    }
+    else if(tilde_check == 2)
+    {
+     if(gap.chr == '(')
+       result.append('~');
+     tilde_check = 0;
+    }  
+   }
+   if(gap.chr.isNull())
+     result.append(gap.str);
+   else
+     result.append(gap.chr);
+  }
+  gap.reset_most();
+ } 
+
+}
+
 void HTXN_Document_8b::read_glyph_point(Glyph_Argument_Package& gap, 
   u4 index, Glyph_Vector_8b& gv)
 {
@@ -70,116 +188,114 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   Glyph_Vector_8b& target)
 {
  static QMap<QPair<char, u1>, quint8> static_47 {
-  {  { '.', 0 }, 64 },
-  {  { '.', 1 }, Standard_GlyphDeck_8b::NpDot },
-  {  { '.', 1 }, Standard_GlyphDeck_8b::NsPer },
+   { { '.', 0 }, 64 },
+   { { '.', 1 }, Standard_GlyphDeck_8b::NpDot },
+   { { '.', 2 }, Standard_GlyphDeck_8b::NsPer },
 
-  {  { '!', 0 }, 65 },
-  {  { '!', 1 }, Standard_GlyphDeck_8b::NpExcX },
+   { { '!', 0 }, 65 },
+   { { '!', 1 }, Standard_GlyphDeck_8b::NpExcX },
 
-  {  { '(', 0 }, 66 },
-  {  { '(', 1 }, Standard_GlyphDeck_8b::NpOParX },
+   { { '(', 0 }, 66 },
+   { { '(', 1 }, Standard_GlyphDeck_8b::NpOParX },
 
-  {  { ')', 0 }, 67 },
-  {  { '(', 1 }, Standard_GlyphDeck_8b::NpCParX },
+   { { ')', 0 }, 67 },
+   { { '(', 1 }, Standard_GlyphDeck_8b::NpCParX },
 
-  {  { '-', 0 }, 68 },
-  {  { '-', 1 }, Standard_GlyphDeck_8b::DashSML },
-  {  { '-', 2 }, Standard_GlyphDeck_8b::NpMinus },
-  {  { '-', 3 }, Standard_GlyphDeck_8b::SnDash },
+   { { '-', 0 }, 68 },
+   { { '-', 1 }, Standard_GlyphDeck_8b::DashSML },
+   { { '-', 2 }, Standard_GlyphDeck_8b::NpMinus },
+   { { '-', 3 }, Standard_GlyphDeck_8b::SnDash },
 
-  {  { ',', 0 }, 69 },
-  {  { ',', 1 }, Standard_GlyphDeck_8b::NpComX },
+   { { ',', 0 }, 69 },
+   { { ',', 1 }, Standard_GlyphDeck_8b::NpComX },
 
-  {  { '\'', 0 }, 70 },
-  {  { '\'', 1 }, Standard_GlyphDeck_8b::SqSqX },
+   { { '\'', 0 }, 70 },
+   { { '\'', 1 }, Standard_GlyphDeck_8b::SqSqX },
 
-  {  { '#', 0 }, 76 },
-  {  { '#', 0 }, Standard_GlyphDeck_8b::TxtNumX },
+   { { '#', 0 }, 76 },
+   { { '#', 1 }, Standard_GlyphDeck_8b::TxtNumX },
 
-  {  { '$', 0 }, 77 },
-  {  { '$', 0 }, Standard_GlyphDeck_8b::TxtDolX },
+   { { '$', 0 }, 77 },
+   { { '$', 1 }, Standard_GlyphDeck_8b::TxtDolX },
 
-  {  { '%', 0 }, 78 },
-  {  { '%', 0 }, Standard_GlyphDeck_8b::TxtPerX },
+   { { '%', 0 }, 78 },
+   { { '%', 1 }, Standard_GlyphDeck_8b::TxtPerX },
 
-  {  { '&', 0 }, 79 },
-  {  { '&', 0 }, Standard_GlyphDeck_8b::TxtAmpX },
+   { { '&', 0 }, 79 },
+   { { '&', 1 }, Standard_GlyphDeck_8b::TxtAmpX },
 
-  {  { '"', 0 }, 93 },
-  {  { '"', 1 }, Standard_GlyphDeck_8b::SqDqX },
+   { { '"', 0 }, 93 },
+   { { '"', 1 }, Standard_GlyphDeck_8b::SqDqX },
 
-  {  { '*', 0 }, 82 },
-  {  { '*', 1 }, Standard_GlyphDeck_8b::TxtStarX },
+   { { '*', 0 }, 82 },
+   { { '*', 1 }, Standard_GlyphDeck_8b::TxtStarX },
 
-  {  { '+', 0 }, 75 },
-  {  { '+', 1 }, Standard_GlyphDeck_8b::TxtPlusX },
+   { { '+', 0 }, 75 },
+   { { '+', 1 }, Standard_GlyphDeck_8b::TxtPlusX },
 
-  {  { '/', 0 }, 90 },
-  {  { '/', 1 }, Standard_GlyphDeck_8b::FslX },
-
-
+   { { '/', 0 }, 90 },
+   { { '/', 1 }, Standard_GlyphDeck_8b::FslX },
 
  };
 
 
  static QMap<QPair<char, u1>, quint8> static_64 {
-  {  { ':', 0 }, 71 },
-  {  { ':', 1 }, Standard_GlyphDeck_8b::NpColX },
+   { { ':', 0 }, 71 },
+   { { ':', 1 }, Standard_GlyphDeck_8b::NpColX },
 
-  {  { ';', 0 }, 72 },
-  {  { ';', 1 }, Standard_GlyphDeck_8b::NpSemX },
+   { { ';', 0 }, 72 },
+   { { ';', 1 }, Standard_GlyphDeck_8b::NpSemX },
 
-  {  { '?', 0 }, 73 },
-  {  { '?', 1 }, Standard_GlyphDeck_8b::NpQmX },
-  {  { '?', 1 }, Standard_GlyphDeck_8b::IndQm },
+   { { '?', 0 }, 73 },
+   { { '?', 1 }, Standard_GlyphDeck_8b::NpQmX },
+   { { '?', 1 }, Standard_GlyphDeck_8b::IndQm },
 
-  {  { '<', 0 }, 88 },
-  {  { '<', 1 }, Standard_GlyphDeck_8b::NpLtX },
+   { { '<', 0 }, 88 },
+   { { '<', 1 }, Standard_GlyphDeck_8b::NpLtX },
 
-  {  { '>', 0 }, 89 },
-  {  { '>', 1 }, Standard_GlyphDeck_8b::NpGtX },
+   { { '>', 0 }, 89 },
+   { { '>', 1 }, Standard_GlyphDeck_8b::NpGtX },
 
-  {  { '=', 0 }, Standard_GlyphDeck_8b::TxtEqX },
-  {  { '=', 1 }, Standard_GlyphDeck_8b::TxtEqX },
+   { { '=', 0 }, Standard_GlyphDeck_8b::TxtEqX },
+   { { '=', 1 }, Standard_GlyphDeck_8b::TxtEqX },
 
-  {  { '@', 0 }, Standard_GlyphDeck_8b::TxtAtX },
-  {  { '@', 1 }, Standard_GlyphDeck_8b::TxtAtX },
+   { { '@', 0 }, Standard_GlyphDeck_8b::TxtAtX },
+   { { '@', 1 }, Standard_GlyphDeck_8b::TxtAtX },
 
  };
 
  static QMap<QPair<char, u1>, quint8> static_96 {
-  {  { '[', 0 }, 86 },
-  {  { '[', 1 }, Standard_GlyphDeck_8b::OSqBrX },
+   { { '[', 0 }, 86 },
+   { { '[', 1 }, Standard_GlyphDeck_8b::OSqBrX },
 
-  {  { ']', 0 }, 87 },
-  {  { ']', 1 }, Standard_GlyphDeck_8b::CSqBrX },
+   { { ']', 0 }, 87 },
+   { { ']', 1 }, Standard_GlyphDeck_8b::CSqBrX },
 
-  {  { '\\', 0 }, 90 },
-  {  { '\\', 1 }, Standard_GlyphDeck_8b::BslX },
+   { { '\\', 0 }, 90 },
+   { { '\\', 1 }, Standard_GlyphDeck_8b::BslX },
 
-  {  { '^', 0 }, Standard_GlyphDeck_8b::TxtHatX },
-  {  { '^', 1 }, Standard_GlyphDeck_8b::TxtHatX },
+   { { '^', 0 }, Standard_GlyphDeck_8b::TxtHatX },
+   { { '^', 1 }, Standard_GlyphDeck_8b::TxtHatX },
 
-  {  { '_', 0 }, 37 },
-  {  { '_', 0 }, Standard_GlyphDeck_8b::NullX },
+   { { '_', 0 }, 37 },
+   { { '_', 1 }, Standard_GlyphDeck_8b::NullX },
 
-  {  { '`', 0 }, Standard_GlyphDeck_8b::BqX },
-  {  { '`', 1 }, Standard_GlyphDeck_8b::BqX },
+   { { '`', 0 }, Standard_GlyphDeck_8b::BqX },
+   { { '`', 1 }, Standard_GlyphDeck_8b::BqX },
  };
 
  static QMap<QPair<char, u1>, quint8> static_127 {
-  {  { '{', 0 }, Standard_GlyphDeck_8b::OCyBrX },
-  {  { '{', 1 }, Standard_GlyphDeck_8b::OCyBrX },
+   { { '{', 0 }, Standard_GlyphDeck_8b::OCyBrX },
+   { { '{', 1 }, Standard_GlyphDeck_8b::OCyBrX },
 
-  {  { '|', 0 }, Standard_GlyphDeck_8b::PipeX },
-  {  { '|', 1 }, Standard_GlyphDeck_8b::PipeX },
+   { { '|', 0 }, Standard_GlyphDeck_8b::PipeX },
+   { { '|', 1 }, Standard_GlyphDeck_8b::PipeX },
 
-  {  { '}', 0 }, Standard_GlyphDeck_8b::CCyBrX },
-  {  { '}', 1 }, Standard_GlyphDeck_8b::CCyBrX },
+   { { '}', 0 }, Standard_GlyphDeck_8b::CCyBrX },
+   { { '}', 1 }, Standard_GlyphDeck_8b::CCyBrX },
 
-  {  { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
-  {  { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
+   { { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
+   { { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
  };
 
 

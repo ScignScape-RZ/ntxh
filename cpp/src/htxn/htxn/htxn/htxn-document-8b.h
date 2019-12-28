@@ -50,6 +50,7 @@ public:
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target);
 
  void get_qstring_out(u4 layer, QString& result);
+ void get_htxne_out(QByteArray& result);
 
  void read_glyph_point(Glyph_Argument_Package& gap, 
    u4 index, Glyph_Vector_8b& gv);

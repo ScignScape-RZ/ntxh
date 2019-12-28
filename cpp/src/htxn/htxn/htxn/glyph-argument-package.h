@@ -32,7 +32,7 @@ class GlyphDeck_Base_8b;
 
 struct Glyph_Argument_Package
 {
- flags_(2)
+ flags_(3)
   bool maybe_external_deck:1;
   bool confirmed_external_deck:1;
   bool maybe_external_diacritic:1;
@@ -46,6 +46,11 @@ struct Glyph_Argument_Package
   bool use_refinements:1;
   bool use_numeral_diacritic:1;
   bool use_underscore_diacritic:1;
+
+  bool alt_1:1;
+  bool alt_2:1;
+  bool alt_3:1;
+  bool alt_4:1;
 
  _flags
 
