@@ -49,9 +49,12 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::NpCParX, 1 },
   { Standard_GlyphDeck_8b::DashSML, 1 },
   { Standard_GlyphDeck_8b::NpMinus, 2 },
-  { Standard_GlyphDeck_8b::SnDash, 3 },
+  { Standard_GlyphDeck_8b::DashX, 3 },
+  { Standard_GlyphDeck_8b::SnDash, 4 },
+  { Standard_GlyphDeck_8b::NpMinus, 2 },
+  { Standard_GlyphDeck_8b::SnDash, 4 },
 
-  { Standard_GlyphDeck_8b::NMComX, 1 },
+  { Standard_GlyphDeck_8b::NmComX, 1 },
   { Standard_GlyphDeck_8b::SqSqX, 1 },
   { Standard_GlyphDeck_8b::TxtNumX, 1 },
   { Standard_GlyphDeck_8b::TxtDolX, 1 },
@@ -76,7 +79,7 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::NullX, 1 },
  };
 
- u1 alt_code = static_map.value(gap.chr);
+ u1 alt_code = static_map.value(gap.chr.toLatin1());
  switch(alt_code)
  {
  default: // // should always be 0 - 4 ...
@@ -292,32 +295,32 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
  case 13: return QChar('#'); // // 77
  case 14: return QChar('$'); // // 78
  case 15: return QChar('%'); // // 79
- case 16: return QChar('-'); // // 80 // SnDash
- case 17: return QChar('&'); // // 81
- case 18: return QChar('*'); // // 82
+ case 16: return QChar('&'); // // 80
+ case 17: return QChar('-'); // // 81 // SnDash
+ case 18: return QChar('-'); // // 82 // DashSML
  case 19: return QChar('='); // // 83
 
 // case 20: return QChar('{'); // // 84
 // case 21: return QChar('}'); // // 85
 
- case 20: return QChar('['); // // 86
- case 21: return QChar(']'); // // 87
- case 22: return QChar('<'); // // 88
- case 23: return QChar('>'); // // 89
- case 24: return QChar('/'); // // 90
+ case 20: return QChar('['); // // 84
+ case 21: return QChar(']'); // // 85
+ case 22: return QChar('<'); // // 86
+ case 23: return QChar('>'); // // 87
+ case 24: return QChar('/'); // // 88
 
 // case 27: return QChar('\\'); // // 91  // BslX
 // case 28: return QChar('|'); // // 92  // PipeX
 
- case 25: return QChar('-'); // // 89  // DashSML
+ case 25: return QChar('-'); // // 89 // DashX
  case 26: return QChar('/'); // // 90  // FslX
 
  case 27: return QChar('['); // // 91  // OSqBrX
  case 28: return QChar(']'); // // 92  // CSqBrX
 
 
- case 29: return QChar('{'); // // 93  // OCyBrX  
- case 30: return QChar('}'); // // 94  // CCyBrX  
+ case 29: return QChar('{'); // // 93  // OCyBrX
+ case 30: return QChar('}'); // // 94  // CCyBrX
 
  case 31: return QChar('_'); // // 95  // NullX
 

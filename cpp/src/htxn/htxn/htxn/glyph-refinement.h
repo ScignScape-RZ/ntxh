@@ -39,7 +39,7 @@ class Glyph_Refinement
 
  _flags
 
- QString text;
+ QString text_;
 
 public:
 

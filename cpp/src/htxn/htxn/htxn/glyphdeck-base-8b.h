@@ -50,7 +50,7 @@ public:
  virtual void get_xml_dia(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual void get_nondiacritic_supplement(u1 cue, QString& result) = 0;
 
-
+ virtual void get_htxne_out(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual void get_qstring_out(u1 gp, Glyph_Argument_Package& gap) = 0;
 };
 

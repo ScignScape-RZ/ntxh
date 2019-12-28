@@ -50,7 +50,7 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
  } 
 }
 
-void HTXN_Document_8b::get_htxne_out(QByteArray& result)
+void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
 {
  Glyph_Vector_8b* gv = value(layer);
  if(!gv)
@@ -64,7 +64,7 @@ void HTXN_Document_8b::get_htxne_out(QByteArray& result)
  u1 tilde_check = 0;
 
  static auto handle_alt = [&result, &run_code, 
-   &run_length, &tilde_check]
+   &run_length, &tilde_check, &gap]
    (u1 alt, char enter, char leave)
  {
   tilde_check = 0;
@@ -207,7 +207,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    { { '-', 3 }, Standard_GlyphDeck_8b::SnDash },
 
    { { ',', 0 }, 69 },
-   { { ',', 1 }, Standard_GlyphDeck_8b::NpComX },
+   { { ',', 1 }, Standard_GlyphDeck_8b::NmComX },
 
    { { '\'', 0 }, 70 },
    { { '\'', 1 }, Standard_GlyphDeck_8b::SqSqX },
@@ -348,7 +348,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
     held_state = 13;
     continue;
    }
-   length_with_held_state = 0
+   length_with_held_state = 0;
    held_state = 0;
   }
   else if(held_state == 13)
@@ -401,7 +401,8 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    }
    if( (held_state == 4) && 
        (chr == '>') && (length_with_held_state > 0) )
-      held_state = 11;
+   {
+    held_state = 11;
     continue;
    }
    code = static_64.value( {chr, held_state} );
@@ -465,7 +466,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
 
   // // got code ...
 
-  if(held_code != 0) 
+  if(held_state != 0)
     ++length_with_held_state;
 
   //current_deck_->encode()

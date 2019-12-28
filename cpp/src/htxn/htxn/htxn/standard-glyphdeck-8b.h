@@ -46,8 +46,11 @@ public:
    NpExcX = 116,
    NpOParX = 117,
    NpCParX = 118,
-   DashSML = 89,
-   NpMinus = 10,
+   NpMinus = 74,
+   SnDash = 81,
+   DashSML = 82,
+   DashX = 89,
+
    NmComX = 122,
    SqSqX = 102,
    TxtNumX = 109,
@@ -58,7 +61,6 @@ public:
    SqDqX = 123,
 
    TxtStarX = 114,
-   TxtPlusX = 112,
 
    NpColX = 103,
    NpSemX = 104,
