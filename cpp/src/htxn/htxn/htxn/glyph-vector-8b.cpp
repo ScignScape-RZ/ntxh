@@ -67,6 +67,7 @@ void Glyph_Vector_8b::check_external(u4 index, u1 gp, Glyph_Argument_Package& ga
   {
    gap.flags.maybe_external_diacritic = false;
    gap.flags.confirmed_non_diacritic = true;
+   gap.glyph_code = gp;
   }
   else
   {

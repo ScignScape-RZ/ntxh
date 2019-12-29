@@ -20,9 +20,15 @@ int main(int argc, char *argv[])
  doc.read_layer("This `(-)is a text layer.");
 
  QString out;
+
  doc.get_qstring_out(0, out);
+ qDebug() << out;
+ out.clear();
+
+ doc.get_htxne_out(0, out);
 
  qDebug() << out;
+
 
  return 0;
 }

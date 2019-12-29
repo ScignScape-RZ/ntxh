@@ -38,7 +38,7 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   gap.chr = get_text_default(gp);
   return;
  }
- gap.chr = get_nondiacritic_default(gp);
+ gap.chr = get_nondiacritic_default(gp & 63);
  
  // //  get alt number 
  static QMap<u1, u1> static_map {
@@ -79,30 +79,31 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::NullX, 1 },
  };
 
- u1 alt_code = static_map.value(gap.chr.toLatin1());
+ u1 alt_code = static_map.value(gap.glyph_code);
  switch(alt_code)
  {
  default: // // should always be 0 - 4 ...
  case 0:
-  {
-   
-  }
   break;
  case 1:
   {
-   gap.flags.alt_1 = true;
+   gap.flags.has_alt = true;
+   gap.flags.alt_1 = true; break;
   }
  case 2:
   {
-   gap.flags.alt_2 = true;
+   gap.flags.has_alt = true;
+   gap.flags.alt_2 = true; break;
   }
  case 3:
   {
-   gap.flags.alt_3 = true;
+   gap.flags.has_alt = true;
+   gap.flags.alt_3 = true; break;
   }
  case 4:
   {
-   gap.flags.alt_4 = true;
+   gap.flags.has_alt = true;
+   gap.flags.alt_4 = true; break;
   }
  }
 
@@ -110,35 +111,43 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
 
 void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
- if( (gp > 63) && (gp < 74) && (!gap.flags.use_numeral_diacritic) )
+ if( (gp > 63) && (gp < 74) && (!gap.interpret.flags.use_numeral_diacritic) )
  {
-  gap.glyph_code = (u8) gp;
+  gap.flags.normal = true;
   return;
  }
- if( (gp == 100) && (!gap.flags.use_underscore_diacritic) )
+ if( (gp == 100) && (!gap.interpret.flags.use_underscore_diacritic) )
  {
-  gap.glyph_code = (u8) gp;
+  gap.flags.normal = true;
   return;
  }
- if( (gp > 100) && (gp < 123) && gap.flags.use_refinements )
-   gap.flags.maybe_refinement = true;
+ if( (gp > 100) && (gp < 123) && gap.interpret.flags.use_refinements )
+ {
+  gap.flags.maybe_refinement = true;
+ }
  if( (gp & 128) > 0 )
  {
   gap.flags.maybe_external_deck = true;
+  // // provisional; may revert to gp ...
   gap.glyph_code = (u8) gp & 127;   
   return;
  }
  if( (gp & 64) > 0 )
  {
   gap.flags.maybe_external_diacritic = true;
-  gap.glyph_code = (u8) gp & 63;   
+  // // provisional; may revert to gp ...
+  gap.glyph_code = (u8) gp & 63;
   return;
- } 
+ }
+ gap.flags.normal = true;
 }
 
 void Standard_GlyphDeck_8b::get_qstring_out(u1 gp, Glyph_Argument_Package& gap)
 {
- gap.chr = get_text_default(gp);
+ if(gp < 64)
+   gap.chr = get_text_default(gp);
+ else
+   gap.chr = get_nondiacritic_default(gp - 64);
 }
 
 QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)

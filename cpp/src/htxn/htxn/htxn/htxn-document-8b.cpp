@@ -50,6 +50,13 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
  } 
 }
 
+void HTXN_Document_8b::get_htxne_out(u4 layer, QString& result)
+{
+ QByteArray qba;
+ get_htxne_out(layer, qba);
+ result = QString::fromLatin1(qba);
+}
+
 void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
 {
  Glyph_Vector_8b* gv = value(layer);
@@ -111,21 +118,24 @@ void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
  {
   Glyph_Layers_8b::get_htxne_out(*gv, i, gap);
 
-  if(gap.flags.alt_1)
+  if(gap.flags.has_alt)
   {
-   handle_alt(1, '(', ')');
-  }
-  else if(gap.flags.alt_2)
-  {
-   handle_alt(1, '{', '}');
-  }
-  else if(gap.flags.alt_3)
-  {
-   handle_alt(3, '[', ']');
-  }
-  else if(gap.flags.alt_4)
-  {
-   handle_alt(4, '<', '>');
+   if(gap.flags.alt_1)
+   {
+    handle_alt(1, '(', ')');
+   }
+   else if(gap.flags.alt_2)
+   {
+    handle_alt(1, '{', '}');
+   }
+   else if(gap.flags.alt_3)
+   {
+    handle_alt(3, '[', ']');
+   }
+   else if(gap.flags.alt_4)
+   {
+    handle_alt(4, '<', '>');
+   }
   }
   else if(run_length > 0)
   {
@@ -138,7 +148,13 @@ void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
    case 4: result.append('>'); break;
    default: break;
    }
+   run_code = 0;
+   run_length = 0;
    tilde_check = 1;
+   if(gap.chr.isNull())
+     result.append(gap.str);
+   else
+     result.append(gap.chr);
   }
   else 
   {
@@ -163,7 +179,7 @@ void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
    else
      result.append(gap.chr);
   }
-  gap.reset_most();
+  gap.reset();
  } 
 
 }
@@ -188,6 +204,8 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   Glyph_Vector_8b& target)
 {
  static QMap<QPair<char, u1>, quint8> static_47 {
+   { { ' ', 0 }, 63 },
+
    { { '.', 0 }, 64 },
    { { '.', 1 }, Standard_GlyphDeck_8b::NpDot },
    { { '.', 2 }, Standard_GlyphDeck_8b::NsPer },
@@ -204,7 +222,8 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    { { '-', 0 }, 68 },
    { { '-', 1 }, Standard_GlyphDeck_8b::DashSML },
    { { '-', 2 }, Standard_GlyphDeck_8b::NpMinus },
-   { { '-', 3 }, Standard_GlyphDeck_8b::SnDash },
+   { { '-', 3 }, Standard_GlyphDeck_8b::DashX },
+   { { '-', 4 }, Standard_GlyphDeck_8b::SnDash },
 
    { { ',', 0 }, 69 },
    { { ',', 1 }, Standard_GlyphDeck_8b::NmComX },
@@ -322,11 +341,6 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
  {
   quint8 code = 0;
 
-  if(chr == 32)
-  {
-   code = 63;
-   continue;
-  }
   if(held_state == 11)
   {
    if(chr == '~')
@@ -379,8 +393,10 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    if(held_state == 1)
    {
     if( (chr == ')') && (length_with_held_state > 0) )
-      held_state = 11;
-    continue;
+    {
+     held_state = 11;
+     continue;
+    }
    }
 
    code = static_47.value( {chr, held_state} );

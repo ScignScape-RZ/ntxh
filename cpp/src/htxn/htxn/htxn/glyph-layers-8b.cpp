@@ -40,9 +40,12 @@ void Glyph_Layers_8b::get_htxne_out(Glyph_Vector_8b& gv,
 //  deck.get_htxne_out((u1)gap.glyph_code, gap);
 // }
 
- 
-
- deck.get_htxne_out((u1)gap.glyph_code, gap);
+ if(gap.flags.normal)
+   deck.get_htxne_out((u1)gap.glyph_code, gap);
+ else if(gap.flags.confirmed_non_diacritic)
+ {
+   deck.get_htxne_out((u1)gap.glyph_code, gap);
+ }
 
 
 
@@ -58,7 +61,11 @@ void Glyph_Layers_8b::get_qstring_out(Glyph_Vector_8b& gv,
 // else
 //   ;//gv.check_external_excluding_numeral_diacritic(index, deck, gap);
  gv.check_external(index, deck, gap);
- if(gap.no_flags())
+ if(gap.flags.normal)
+ {
+  deck.get_qstring_out((u1)gap.glyph_code, gap);
+ }
+ else if(gap.flags.confirmed_non_diacritic)
  {
   deck.get_qstring_out((u1)gap.glyph_code, gap);
  }

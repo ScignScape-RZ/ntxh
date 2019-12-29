@@ -9,7 +9,7 @@
 USING_KANS(HTXN)
 
 Glyph_Argument_Package::Glyph_Argument_Package()
- :  Flags(0), external_extended(nullptr), 
+ :  Flags(0), interpret{0}, external_extended(nullptr),
     external_deck_code(0), 
     external_diacritic_code(0), 
     glyph_code(0), internal_deck(nullptr)
@@ -17,16 +17,10 @@ Glyph_Argument_Package::Glyph_Argument_Package()
 
 }
 
-void Glyph_Argument_Package::reset_most()
+void Glyph_Argument_Package::reset_all()
 {
- Flags ^= 0b0000111100000000;
-
- chr = QChar();
- str.clear();
- external_extended = nullptr;
- external_deck_code = 0;
- external_diacritic_code = 0;
- glyph_code = 0;
+ reset();
+ interpret.Flags = 0;
 }
 
 void Glyph_Argument_Package::reset()

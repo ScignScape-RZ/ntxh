@@ -32,27 +32,43 @@ class GlyphDeck_Base_8b;
 
 struct Glyph_Argument_Package
 {
- flags_(3)
+ flags_(2)
+  bool normal:1;
+
   bool maybe_external_deck:1;
   bool confirmed_external_deck:1;
   bool maybe_external_diacritic:1;
   bool confirmed_external_diacritic:1;
+
   bool confirmed_external_extended:1;
   bool maybe_external_range:1;
   bool request_deck_resolve:1;
   bool confirmed_non_diacritic:1;
 
   bool maybe_refinement:1;
-  bool use_refinements:1;
-  bool use_numeral_diacritic:1;
-  bool use_underscore_diacritic:1;
+
+  bool has_alt:1;
 
   bool alt_1:1;
   bool alt_2:1;
   bool alt_3:1;
   bool alt_4:1;
 
+//  bool use_refinements:1;
+//  bool use_numeral_diacritic:1;
+//  bool use_underscore_diacritic:1;
  _flags
+
+ struct Interpret
+ {
+  flags_(1)
+    bool use_refinements:1;
+    bool use_numeral_diacritic:1;
+    bool use_underscore_diacritic:1;
+  _flags
+ };
+
+ Interpret interpret;
 
  QChar chr;
  QString str; 
@@ -64,13 +80,13 @@ struct Glyph_Argument_Package
 
  Glyph_Argument_Package();
 
+ void reset_all();
  void reset();
- void reset_most();
 
- bool no_flags()
- {
-  return (Flags & 0b111111111) == 0;
- } 
+// bool no_flags()
+// {
+//  return (Flags & 0b0001 1111 1111 1111) == 0;
+// }
 
 };
 
