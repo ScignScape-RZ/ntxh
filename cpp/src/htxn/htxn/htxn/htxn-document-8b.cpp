@@ -192,7 +192,7 @@ void HTXN_Document_8b::read_glyph_point(Glyph_Argument_Package& gap,
 
 }
 
-void HTXN_Document_8b::read_layer(QString text)
+void HTXN_Document_8b::read_layer(QString text, u2 gap)
 {
  Glyph_Vector_8b* gv = new Glyph_Vector_8b;
  push_back(gv);
@@ -201,9 +201,12 @@ void HTXN_Document_8b::read_layer(QString text)
 }
 
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
-  Glyph_Vector_8b& target)
+  Glyph_Vector_8b& target, u4 index, u4& last_index)
 {
  static QMap<QPair<char, u1>, quint8> static_47 {
+
+   { { '\n', 0 }, 127 },
+
    { { ' ', 0 }, 63 },
 
    { { '.', 0 }, 64 },
@@ -252,9 +255,11 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    { { '+', 0 }, 75 },
    { { '+', 1 }, Standard_GlyphDeck_8b::TxtPlusX },
 
-   { { '/', 0 }, 90 },
+   { { '/', 0 }, 86 },
    { { '/', 1 }, Standard_GlyphDeck_8b::FslX },
-
+   { { '/', 2 }, Standard_GlyphDeck_8b::Boundary },
+   { { '/', 3 }, Standard_GlyphDeck_8b::SpaceX },
+   { { '/', 4 }, Standard_GlyphDeck_8b::Null },
  };
 
 
@@ -317,9 +322,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    { { '~', 0 }, Standard_GlyphDeck_8b::TildeX },
  };
 
-
- target.resize(src.size());
- u4 index = 0;
+ 
 
  u1 held_state = 0;
 
@@ -490,5 +493,27 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   ++index;  
  }
  target.resize(index);
+
+}
+
+void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
+  Glyph_Vector_8b& target, u2 gap)
+{
+ target.resize(src.size() + gap + 2);
+
+ target[0] = Standard_GlyphDeck_8b::Boundary;
+
+ u4 index = 1;
+ while(index < gap + 1)
+ {
+  target[index] = Standard_GlyphDeck_8b::Space;
+  ++index;
+ } 
+ target[index] = Standard_GlyphDeck_8b::Boundary;
+ 
+ u4 last_index = index;
+
+ encode_latin1(src, target, index, last_index;
+ target[last_index + 1] = Standard_GlyphDeck_8b::Boundary;
 }
 

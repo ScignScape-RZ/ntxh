@@ -42,7 +42,8 @@ class Standard_GlyphDeck_8b : public GlyphDeck_Base_8b
 public:
 
  enum Alt_Interpretation_Codes {
-   NpDot = 76, NsPer = 97, 
+   Space = 63,
+   NpDot = 76, NsPer = 88, 
    NpExcX = 116,
    NpOParX = 117,
    NpCParX = 118,
@@ -64,9 +65,12 @@ public:
 
    NpColX = 103,
    NpSemX = 104,
-   NsQm = 98,
+   NsQm = 89,
    NpQmX = 105,
-   IndQm = 96,
+   IndQm = 87,
+   NsExc = 90,
+   SnSp = 91,
+   Boundary = 92,
 
    NpLtX = 120,
    NpGtX = 121,
