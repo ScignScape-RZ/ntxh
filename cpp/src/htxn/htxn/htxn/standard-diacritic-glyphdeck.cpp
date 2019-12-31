@@ -68,7 +68,38 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
    { 13227, "{\\textregistered}" }, // @.r
 
    { 13412, "{\\textcopyleft}" }, // %.c
- 
+
+   { 13936, "{\\\"}"}" }, // D._
+
+   { 13227, "{\\textregistered}" }, // @.r
+   { 13412, "{\\textcopyleft}" }, // %.c
+
+   { 14629, "{\\texttrademark}" }, // :.t
+   { 24629, "{\\ttrademark" }, // :.t
+
+   { 14631, "{\\textservicemark}" }, // :.v
+   { 24631, "{\\tservicemark" }, // :.v
+
+   { 14628, "{\\diaST}" }, // :.s  i.e. 1st ...
+   { 24628, "{\\ddiaST}" }, // :.s
+   { 14655, "{\\altdiaST}" }, // :.S  
+   { 24655, "{\\altddiaST" }, // :.S
+
+   { 14623, "{\\diaND}" }, // :.n  i.e. 2nd ...
+   { 24623, "{\\ddiaND}" }, // :.n
+   { 14650, "{\\altdiaND}" }, // :.N  
+   { 24650, "{\\altddiaND" }, // :.N
+
+   { 14627, "{\\diaND}" }, // :.r  i.e. 3rd ...
+   { 24627, "{\\ddiaND}" }, // :.r
+   { 14654, "{\\altdiaND}" }, // :.R  
+   { 24654, "{\\altddiaND" }, // :.R
+
+   { 14617, "{\\diaND}" }, // :.h  i.e. 4th ...
+   { 24617, "{\\ddiaND}" }, // :.h
+   { 14644, "{\\altdiaND}" }, // :.H  
+   { 24644, "{\\altddiaND" }, // :.H
+
   } 
  };
  auto it = static_map.find(code);
@@ -155,11 +186,55 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
       result = QString("\\diacircled{%1}").arg(rep);
     else
       result = QString("\\diacircled{%1").arg(rep);
+    break;
    case 34: // circled flip
     if(scope == 1)
       result = QString("\\diacircledflip{%1}").arg(rep);
     else
       result = QString("\\diacircledflip{%1").arg(rep);
+    break;
+   case 35: // circle ring
+    result = QString("\\diacirclering{%1}").arg(rep);
+    break;
+   case 36: // circle Ring
+    result = QString("\\diacircleRing{%1}").arg(rep);
+    break;
+   case 37: // $
+    result = QString("\\diavstrike{%1}").arg(rep);
+    break;
+   case 38: // -
+    result = QString("\\diahstrike{%1}").arg(rep);
+    break;
+   case 39: // D
+    result = QString("\\\"{%1}").arg(rep);
+    break;
+
+   case 46: // :
+    if(scope == 1)
+      result = QString("\\diaele{%1}").arg(rep);
+    else
+      result = QString("\\diaele{%1").arg(rep);
+    break;
+
+   case 47: // inherited
+    result = QString("%1}").arg(rep);
+    break;
+
+   case 48: // middle inherited
+    result = rep;
+    break;
+
+   case 49: // double inherited
+    result = QString("%1}").arg(rep);
+    break;
+
+   case 62: // V
+    result = QString("\\diainv{%1}").arg(rep);
+    break;
+
+   case 63: // ?
+    result = QString("\\diaNotRecognized{%1}").arg(rep);
+    break;
 
    default:     
     result = QString("\\%1{%2}").arg(rep).arg(cue); break; 

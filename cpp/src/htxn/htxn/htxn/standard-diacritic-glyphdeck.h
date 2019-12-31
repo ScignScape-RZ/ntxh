@@ -113,7 +113,6 @@ _KANS(HTXN)
  //     |>fl (fl ligature as two character)
  //     |&Fl (ffl ligature as three characters) 
 
-
 47: < // inherited
 48: + // middle inherited
 49: > // double inherited
