@@ -322,29 +322,29 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 
  case 28: return QChar('\n'); // // 92 // Boundary
 
- case 29: return QChar('\t'); // // SpaceX
+ case 29: return QChar('\t'); // // 93 // SpaceX
 
- case 30: return QChar('-'); // // 89 // DashX
- case 31: return QChar('/'); // // 90  // FslX
+ case 30: return QChar('-'); // // 94  // DashX
+ case 31: return QChar('/'); // // 95  // FslX
 
- case 32: return QChar('['); // // 91  // OSqBrX
- case 33: return QChar(']'); // // 92  // CSqBrX
+ case 32: return QChar('['); // // 96  // OSqBrX
+ case 33: return QChar(']'); // // 97  // CSqBrX
 
 
- case 34: return QChar('{'); // // 93  // OCyBrX
- case 35: return QChar('}'); // // 94  // CCyBrX
+ case 34: return QChar('{'); // // 98  // OCyBrX
+ case 35: return QChar('}'); // // 99  // CCyBrX
 
- case 36: return QChar('\n'); // // 95  // Null
+ case 36: return QChar('\n'); // // 100  // Null
 
- case 37: return QChar('^'); // // 100  // TxtHatX
- case 38: return QChar(','); // // 101  // NpCmaX
- case 39: return QChar('\''); // // 102  // SqSqX
- case 40: return QChar(':'); // // 103  // NpColX
- case 41: return QChar(';'); // // 104  // NpSemX
- case 42: return QChar('?'); // // 105  // NpQmX
+ case 37: return QChar('^'); // // 101  // TxtHatX
+ case 38: return QChar(','); // // 102  // NpCmaX
+ case 39: return QChar('\''); // // 103  // SqSqX
+ case 40: return QChar(':'); // // 104  // NpColX
+ case 41: return QChar(';'); // // 105  // NpSemX
+ case 42: return QChar('?'); // // 106  // NpQmX
 
- case 43: return QChar('\\'); // // 106  // BslX
- case 44: return QChar('|'); // // 107  // PipeX 
+ case 43: return QChar('\\'); // // 107  // BslX
+ case 44: return QChar('|'); // // 108  // PipeX 
 
  case 45: return QChar('#'); // // 109  // TxtNumX
  case 46: return QChar('$'); // // 110  // TxtDolX

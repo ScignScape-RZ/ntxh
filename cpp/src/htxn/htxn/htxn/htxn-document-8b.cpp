@@ -180,7 +180,20 @@ void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
      result.append(gap.chr);
   }
   gap.reset();
- } 
+ }
+
+ if(run_length > 0)
+ {
+  // // have to break a run ...
+  switch(run_code)
+  {
+  case 1: result.append(')'); break;
+  case 2: result.append(']'); break;
+  case 3: result.append('}'); break;
+  case 4: result.append('>'); break;
+  default: break;
+  }
+ }
 
 }
 
@@ -197,7 +210,7 @@ void HTXN_Document_8b::read_layer(QString text, u2 gap)
  Glyph_Vector_8b* gv = new Glyph_Vector_8b;
  push_back(gv);
  current_glyph_vector_ = gv;
- encode_latin1(text.toLatin1(), *gv);
+ encode_latin1(text.toLatin1(), *gv, gap);
 }
 
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
@@ -492,14 +505,13 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   target[index] = code;
   ++index;  
  }
- target.resize(index);
-
+ last_index = index;
 }
 
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
   Glyph_Vector_8b& target, u2 gap)
 {
- target.resize(src.size() + gap + 2);
+ target.resize(src.size() + gap + 3);
 
  target[0] = Standard_GlyphDeck_8b::Boundary;
 
@@ -510,10 +522,12 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   ++index;
  } 
  target[index] = Standard_GlyphDeck_8b::Boundary;
- 
+ ++index;
+
  u4 last_index = index;
 
- encode_latin1(src, target, index, last_index;
- target[last_index + 1] = Standard_GlyphDeck_8b::Boundary;
+ encode_latin1(src, target, index, last_index);
+ target[last_index] = Standard_GlyphDeck_8b::Boundary;
+ target.resize(last_index + 1);
 }
 

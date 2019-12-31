@@ -25,6 +25,7 @@
 KANS_(HTXN)
 
 typedef quint8 u1;
+typedef quint16 u2;
 typedef quint32 u4;
 typedef quint64 u8;
 
@@ -46,8 +47,11 @@ public:
 
  void add_standard_deck();
 
- void read_layer(QString text);
- void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target);
+ void read_layer(QString text, u2 gap = 0);
+ void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 gap);
+ void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target,
+   u4 index, u4& last_index);
+
 
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);

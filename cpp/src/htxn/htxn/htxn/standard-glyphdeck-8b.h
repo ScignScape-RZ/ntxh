@@ -92,6 +92,10 @@ public:
    TildeX = 126, 
 
    FslX = 90,
+
+   SpaceX = 93,
+   Null = 100,
+
  };
 
  Standard_GlyphDeck_8b();
