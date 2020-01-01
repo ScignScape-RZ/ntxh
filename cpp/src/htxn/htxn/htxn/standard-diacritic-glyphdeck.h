@@ -37,6 +37,11 @@ public:
 
  QString get_latex_out(u1 gp, char cue);
  void get_latex_out(u2 code, u1 gp, u1 scope, char cue, QString& result); 
+
+ QString get_htxne_out(u1 gp, char cue);
+
+ QString get_xml_stem(u1 gp);
+
 };
 
 _KANS(HTXN)
@@ -133,7 +138,7 @@ _KANS(HTXN)
 60: # // special 
 61: * // special 
 
-62: V (invert)
+62: V // (invert)
 
 63: ? // unrec
 

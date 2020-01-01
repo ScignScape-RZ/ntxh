@@ -7,12 +7,154 @@
 
 #include "standard-diacritic-glyphdeck.h"
 
+QString Standard_Diacritic_GlyphDeck::get_xml_stem(u1 gp)
+{
+ switch(gp)
+ {
+ case 2: return "acute"; // ` // acute
+ case 3: return "grave"; //  ' // grave
+ case 4: return "circ"; //  ^ // circ
+ case 5: return "uml"; //  " // uml
+ case 6: return "tilde"; //  ~ // tilde
+ case 7: return "macr"; //  = // macr
+ case 8: return "dot"; //  . // dot
+ case 9: return "breve"; //  u // breve
+ case 10: return "caron"; //  v // caron
+ case 11: return "dblac"; //  H // dbl acute
+//? case 12: return "acute"; //  b // bar-under 
+ case 13: return "cedil"; //  c // cedil
+ case 14: return "ogon"; //  k // ogon
+ case 15: return "ring"; //  r // ring over ...
+ case 16: return "ring"; //  R // ring over (alt)
+ case 17: return "strok"; //  K // stroke
+ case 19: return "slash"; //  / // slash
+ case 20: return "midot"; //  m // midot
+ default: return QString();
+ }
+}
+
+
+QString get_xml_out()
+{
+ Standard_Diacritic_GlyphDeck::
+
+#ifdef HIDE
+\`A&\'A&\^A&\~A&\quot;A&\AA&\AE&\c C&\`E&\'E&\^E&\"E&\`I&\'I&\^I&\"I\\
+\DH&\~N&\`O&\'O&\^O&\~O&\"O&\texttimes&\O&\`U&\'U&\^U&\"U&\'Y&\TH&\ss\\
+\`a&\'a&\^a&\~a&\"a&\aa&\ae&\c c&\`e&\'e&\^e&\"e&\`i&\'i&\^i&\"i\\
+\dh&\~n&\`o&\'o&\^o&\~o&\"o&\textdiv&\o&\`u&\'u&\^u&\"u&\'y&\th&\"y\\
+#endif // def HIDE
+
+ static QMap<u1, QString> static_map {
+   {1, "&Agrave;" }, // { "&#192;" }, Capital a with grave accent
+   {1, "&Aacute;" }, // { "&#193;" }, Capital a with acute accent
+   {1, "&Acirc;" }, // { "&#194;" }, Capital a with circumflex accent
+   {1, "&Atilde;" }, // { "&#195;" }, Capital a with tilde
+   {1, "&Auml;" }, // { "&#196;" }, Capital a with umlaut
+   {1, "&Aring;" }, // { "&#197;" }, Capital a with ring
+   {1, "&AElig;" }, // { "&#198;" }, Capital ae
+   {1, "&Ccedil;" }, // { "&#199;" }, Capital c with cedilla
+   {1, "&Egrave;" }, // { "&#200;" }, Capital e with grave accent
+   {1, "&Eacute;" }, // { "&#201;" }, Capital e with acute accent
+   {1, "&Ecirc;" }, // { "&#202;" }, Capital e with circumflex accent
+   {1, "&Euml;" }, // { "&#203;" }, Capital e with umlaut
+   {1, "&Igrave;" }, // { "&#204;" }, Capital i with grave accent
+   {1, "&Iacute;" }, // { "&#205;" }, Capital i with accute accent
+   {1, "&Icirc;" }, // { "&#206;" }, Capital i with circumflex accent
+   {1, "&Iuml;" }, // { "&#207;" }, Capital i with umlaut
+   {1, "&ETH;" },      //  {1, "&#208;" }, Capital eth (Icelandic)
+   {1, "&Ntilde;" }, // { "&#209;" }, Capital n with tilde
+   {1, "&Ograve;" }, // { "&#210;" }, Capital o with grave accent
+   {1, "&Oacute;" }, // { "&#211;" }, Capital o with accute accent
+   {1, "&Ocirc;" }, // { "&#212;" }, Capital o with circumflex accent
+   {1, "&Otilde;" }, // { "&#213;" }, Capital o with tilde
+   {1, "&Ouml;" }, // { "&#214;" }, Capital o with umlaut
+   {1, "&Oslash;" }, // { "&#216;" }, Capital o with slash
+   {1, "&Ugrave;" }, // { "&#217;" }, Capital u with grave accent
+   {1, "&Uacute;" }, // { "&#218;" }, Capital u with acute accent
+   {1, "&Ucirc;" }, // { "&#219;" }, Capital u with circumflex accent
+   {1, "&Uuml;" }, // { "&#220;" }, Capital u with umlaut
+   {1, "&Yacute;" }, // { "&#221;" }, Capital y with acute accent
+   {1, "&THORN;" }, // { "&#222;" }, Capital thorn (Icelandic)
+   {1, "&szlig;" }, // { "&#223;" }, Lowercase sharp s (German)
+   {1, "&agrave;" }, // { "&#224;" }, Lowercase a with grave accent
+   {1, "&aacute;" }, // { "&#225;" }, Lowercase a with acute accent
+   {1, "&acirc;" }, // { "&#226;" }, Lowercase a with circumflex accent
+   {1, "&atilde;" }, // { "&#227;" }, Lowercase a with tilde
+   {1, "&auml;" }, // { "&#228;" }, Lowercase a with umlaut
+   {1, "&aring;" }, // { "&#229;" }, Lowercase a with ring
+   {1, "&aelig;" }, // { "&#230;" }, Lowercase ae
+   {1, "&ccedil;" }, // { "&#231;" }, Lowercase c with cedilla
+   {1, "&egrave;" }, // { "&#232;" }, Lowercase e with grave accent
+   {1, "&eacute;" }, // { "&#233;" }, Lowercase e with acute accent
+   {1, "&ecirc;" }, // { "&#234;" }, Lowercase e with circumflex accent
+   {1, "&euml;" }, // { "&#235;" }, Lowercase e with umlaut
+   {1, "&igrave;" }, // { "&#236;" }, Lowercase i with grave accent
+   {1, "&iacute;" }, // { "&#237;" }, Lowercase i with acute accent
+   {1, "&icirc;" }, // { "&#238;" }, Lowercase i with circumflex accent
+   {1, "&iuml;" }, // { "&#239;" }, Lowercase i with umlaut
+   {1, "&eth;" },   //  { "&#240;" }, Lowercase eth (Icelandic)
+   {1, "&ntilde;" }, // { "&#241;" }, Lowercase n with tilde
+   {1, "&ograve;" }, // { "&#242;" }, Lowercase o with grave accent
+   {1, "&oacute;" }, // { "&#243;" }, Lowercase o with acute accent
+   {1, "&ocirc;" }, // { "&#244;" }, Lowercase o with circumflex accent
+   {1, "&otilde;" }, // { "&#245;" }, Lowercase o with tilde
+   {1, "&ouml;" }, // { "&#246;" }, Lowercase o with umlaut
+   {1, "&oslash;" }, // { "&#248;" }, Lowercase o with slash
+   {1, "&ugrave;" }, // { "&#249;" }, Lowercase u with grave accent
+   {1, "&uacute;" }, // { "&#250;" }, Lowercase u with acute accent
+   {1, "&ucirc;" }, // { "&#251;" }, Lowercase u with circumflex accent
+   {1, "&uuml;" }, // { "&#252;" }, Lowercase u with umlaut
+   {1, "&yacute;" }, // { "&#253;" }, Lowercase y with acute accent
+   {1, "&thorn;" }, // { "&#254;" }, Lowercase thorn (Icelandic)
+   {1, "&yuml;" },     // &#255; Lowercase y with umlaut
+ };
+
+ gp &= 3;
+ auto it = static_map.value(gp);
+ if(it == static_map.end())
+ {
+  QString stem = get_xml_stem(gp);
+  if(stem.isEmpty())
+    return "?";
+  return QString("&%1%2;").arg(QString::fromLatin1(cue)).arg(stem);
+ }
+ else
+   return it.value();
+}
+
+
+QString Standard_Diacritic_GlyphDeck::get_htxne_out(u1 gp, char cue)
+{
+ QString result;
+ u1 scope = (gp >> 6) + 1;
+ gp &= 63;
+
+ QChar rep;
+ get_representation(gp, rep);
+
+ switch(scope)
+ {
+ default: 
+ case 1:
+  result = QString("|%1%2"); break;
+ case 2:
+  result = QString("|>%1%2"); break;
+ case 3:
+  result = QString("|&%1%2"); break;
+ case 3:
+  result = QString("|\\%1%2"); break;
+ }
+ 
+ return result.arg(rep).arg(QChar::fromLatin1(cue));
+}
+
 void Standard_Diacritic_GlyphDeck::get_qstring_out
   (u2 code, u1 gp, char cue, QString& result)
 {
  static QMap<u2, QString> static_map {
  };
- result = static_map.value(code, cue);
+ result = static_map.value(code, QString::fromLatin1(cue));
 }
 
 void Standard_Diacritic_GlyphDeck::get_latex_out
@@ -25,8 +167,18 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
  }
  static QMap<u2, QString> static_map {
   { 
-//   { 10136, "{\\/}" }, // _._
+   { 10323, "{\\dianapos}" }, // '.n
+   { 10350, "{\\diaNapos}" }, // '.N
+
+   { 20323, "{\\ddianapos" }, // '.n
+   { 20350, "{\\ddiaNapos" }, // '.N
  
+   { 12119, "{\\diaij}" },  //  g.j
+   { 12146, "{\\diaIJ}" },  //  g.J
+
+   { 22118, "{\\ddiaij" },  //  g.i
+   { 22145, "{\\ddiaIJ" },  //  g.I
+
    { 12123, "{\\ng}" },  //  g.n
    { 12150, "{\\NG}" },  //  g.N
 
@@ -241,6 +393,8 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
    }
   }
  }
+ else
+   return it.value();
 }
 
 QString Standard_Diacritic_GlyphDeck::get_latex_out(u1 gp, char cue)
@@ -259,7 +413,7 @@ QString Standard_Diacritic_GlyphDeck::get_latex_out(u1 gp, char cue)
 QString Standard_Diacritic_GlyphDeck::get_qstring_out(u1 gp, char cue)
 {
  QString result;
- u1 scope = (gp >> 6) + 4;
+ u1 scope = (gp >> 6) + 1;
  u1 code = gp;
  code &= 63;
  code *= 100;
