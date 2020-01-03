@@ -8,6 +8,7 @@
 #include "htxn-document-8b.h"
 
 #include "standard-glyphdeck-8b.h"
+#include "standard-diacritic-glyphdeck.h"
 
 #include "glyph-vector-8b.h"
 
@@ -18,7 +19,8 @@ USING_KANS(HTXN)
 
 
 HTXN_Document_8b::HTXN_Document_8b()
-  :  current_deck_(0), 
+  :  current_deck_(nullptr), 
+     current_diacritic_deck_(nullptr), 
      current_deck_code_(0),
      current_glyph_vector_(nullptr)
 {
@@ -29,7 +31,16 @@ void HTXN_Document_8b::add_standard_deck()
 {
  current_deck_ = new Standard_GlyphDeck_8b;
  decks_by_id_.push_back(current_deck_);
+ id_by_deck_[decks_by_id_.size()] = current_deck_;
 }
+
+void HTXN_Document_8b::add_diacritic_deck()
+{
+ current_diacritic_deck_ = new Standard_Diacritic_GlyphDeck;
+ decks_by_id_.push_back(current_diacritic_deck_);
+ id_by_deck_[decks_by_id_.size()] = current_deck_;
+}
+
 
 void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
 {
@@ -213,6 +224,38 @@ void HTXN_Document_8b::read_layer(QString text, u2 gap)
  encode_latin1(text.toLatin1(), *gv, gap);
 }
 
+u2 HTXN_Document_8b::get_diacritic_cue_code(char cue)
+{
+ return (u2) current_diacritic_deck_->get_cue_code(cue);
+}
+
+
+u2 HTXN_Document_8b::get_diacritic_code(char cue, u1 scope)
+{
+ return (u2) current_diacritic_deck_->get_code(cue, scope);
+}
+
+u2 HTXN_Document_8b::get_diacritic_code_inh(u1 pos, u1 length)
+{
+ return (u2) 
+   current_diacritic_deck_->get_diacritic_code_inh(u1 pos, u1 length);
+}
+
+u1 HTXN_Document_8b::get_diacritic_length_or_code(char cue, u2& code);
+{
+ // // non-zero return means the cue character is a length 
+  //   indicator.  If the result is also non-zero 
+  //   the character signals both length and cue.
+ QPair<u1, u1> pr = current_diacritic_deck_->get_length(cue);
+ if(result.first > 0)
+ {
+  code = result.second;
+  return result.first;
+ }
+ result = current_diacritic_deck_->get_code(cue);
+ return 0;
+}
+
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
   Glyph_Vector_8b& target, u4 index, u4& last_index)
 {
@@ -340,6 +383,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
  u1 held_state = 0;
 
  u2 length_with_held_state = 0;
+ u2 diacritic_code = 0;
 
  QString flags_acc;
 
@@ -352,6 +396,15 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   //    11 -- done alt interpretation; maybe flags
   //    12 -- read flags
   //    13 -- flags acc
+  //    20 -- diacritic start
+  //    21 -- diacritic scope +
+  //    22-4 -- diacritic scope 2-4
+  //    201 -- 0 of 1
+  //    202 -- 0 of 2
+  //    203 -- 0 of 3
+  //    212 -- 1 of 2
+  //    213 -- 1 of 3
+  //    223 -- 2 of 3
 
  for(char chr : src)
  {
@@ -398,8 +451,74 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
      flags_acc.append(QChar::fromLatin1(chr));
    continue;
   }
+  else if(chr == '|')
+  {
+   if(held_state == 20)
+     held_state = 0; // // || escape; no diacritic  
+   else if(held_state == 0)
+   { 
+    held_state = 20; 
+    continue;
+   }    
+  }
   
-  if(chr < 48)
+  if(held_state >= 20)
+  {
+   // //  part of a diacritic ...
+
+   //    20 -- diacritic start
+   //    22-4 -- diacritic scope 2-4
+   //    201 -- 0 of 1
+   //    202 -- 0 of 2
+   //    203 -- 0 of 3
+   //    212 -- 1 of 2
+   //    213 -- 1 of 3
+   //    223 -- 2 of 3
+
+   switch(held_state)
+   {
+   case 20: 
+    {
+     u2 dcode;
+     u1 length = get_diacritic_length(chr, dcode);
+     if(length > 0)
+     {
+      if(code > 0)
+      {
+       diacritic_code = dcode;
+       held_state = 210 + length; 
+      }
+      else
+      {
+       held_state = 20 + length;
+      }
+     }
+     else
+     {
+      diacritic_code = dcode;
+      held_state = 201;
+     }
+    }
+    continue; // overall loop
+   case 22:
+    diacritic_code = get_diacritic_code(chr, 2);
+    held_state = 202;
+    continue; // overall loop
+   case 23:
+    diacritic_code = get_diacritic_code(chr, 3);
+    held_state = 203;
+    continue; // overall loop
+   case 24:
+    // //  to be determined ...
+    exit(0);
+    break;
+
+   default:
+    code = get_diacritic_cue_code(chr);
+    break;   
+   }
+  }
+  else if(chr < 48)
   {
    if( (held_state == 10) && (chr == '(') )
    {
@@ -498,7 +617,47 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
 
   // // got code ...
 
-  if(held_state != 0)
+  if(held_state >= 20)
+  {
+   // // we need to mark the diacritic
+    //   also set the diacritic_code 
+    //   anticipating next char in 2 or 3 length
+   switch(held_state)
+   {
+   case 201:
+    mark_diacritic_code(index, diacritic_code);
+    diacritic_code = 0;
+    held_state = 0;
+    break;
+   case 202:
+    mark_diacritic_code(index, diacritic_code);
+    diacritic_code = get_diacritic_code_inh(2, 2);
+    held_state = 212;
+    break;
+   case 212:
+    mark_diacritic_code(index, diacritic_code);
+    diacritic_code = 0;
+    held_state = 0;
+    break;
+   case 203:
+    mark_diacritic_code(index, diacritic_code);
+    diacritic_code = get_diacritic_code_inh(2, 3);
+    held_state = 213;
+    break;
+   case 213:
+    mark_diacritic_code(index, diacritic_code);
+    diacritic_code = get_diacritic_code_inh(3, 3);
+    held_state = 223;
+    break;
+   case 223:
+    mark_diacritic_code(index, diacritic_code);
+    diacritic_code = 0;
+    held_state = 0;
+    break;
+   default: break;
+   }
+  }
+  else if(held_state != 0)
     ++length_with_held_state;
 
   //current_deck_->encode()
@@ -507,6 +666,13 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
  }
  last_index = index;
 }
+
+void HTXN_Document_8b::mark_diacritic_code(u4 index, u2 diacritic_code)
+{
+ u2 deck_code = id_by_deck_[current_diacritic_deck_];
+ current_vector_->add_diacritic(index, deck_code, diacritic_code);
+}
+
 
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
   Glyph_Vector_8b& target, u2 gap)

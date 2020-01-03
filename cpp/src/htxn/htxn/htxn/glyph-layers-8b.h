@@ -36,6 +36,8 @@ class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
 protected:
  QVector<GlyphDeck_Base_8b*> decks_by_id_;
 
+ QMap<GlyphDeck_Base_8b*, u4> id_by_deck_;
+
 public:
 
  Glyph_Layers_8b();

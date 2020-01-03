@@ -7,6 +7,8 @@
 
 #include "standard-diacritic-glyphdeck.h"
 
+USING_KANS(HTXN)
+
 QString Standard_Diacritic_GlyphDeck::get_xml_stem(u1 gp)
 {
  switch(gp)
@@ -34,18 +36,104 @@ QString Standard_Diacritic_GlyphDeck::get_xml_stem(u1 gp)
 }
 
 
-QString get_xml_out()
+QString Standard_Diacritic_GlyphDeck::get_xml_out(u1 gp, char cue)
 {
- Standard_Diacritic_GlyphDeck::
+ //Standard_Diacritic_GlyphDeck::
 
 #ifdef HIDE
 \`A&\'A&\^A&\~A&\quot;A&\AA&\AE&\c C&\`E&\'E&\^E&\"E&\`I&\'I&\^I&\"I\\
 \DH&\~N&\`O&\'O&\^O&\~O&\"O&\texttimes&\O&\`U&\'U&\^U&\"U&\'Y&\TH&\ss\\
 \`a&\'a&\^a&\~a&\"a&\aa&\ae&\c c&\`e&\'e&\^e&\"e&\`i&\'i&\^i&\"i\\
 \dh&\~n&\`o&\'o&\^o&\~o&\"o&\textdiv&\o&\`u&\'u&\^u&\"u&\'y&\th&\"y\\
+
 #endif // def HIDE
 
  static QMap<u1, QString> static_map {
+
+   { 10118, "&inodot;" },  //  _.i
+   { 10119, "&inodot;" },  //  _.j
+
+   { 12123, "&eng;" },  //  g.n
+   { 12150, "&ENG;" },  //  g.N
+
+   { 12110, "&amp;" },  //  g.a //? &#128629;
+   { 12120, "&kgreen;" },  //  g.k
+   { 12137, "&amp;" },  //  g.A //? &#128629;
+   { 12147, "&kgreen;" },  //  g.K  
+  
+   { 12223, "&eng;" },  //  G.n  
+   { 12250, "&ENG;" },  //  G.N 
+ 
+   { 12210, "&amp;" },  //  G.a ? &#128629;
+   { 12220, "&kgreen;" },  //  G.k
+   { 12237, "&amp;" },  //  G.A ? &#128629;
+   { 12247, "&kgreen;" },  //  G.K  
+
+   { 11610, "&Aring;" },  //  R.a  
+   { 11637, "&aring;" },  //  R.A  
+
+   { 14610, "&ordf;" }, // :.a
+   { 24610, "&ordf;" }, // :.a
+   { 14637, "&ordf;" }, // :.A
+   { 24637, "&ordf;" }, // :.A
+
+   { 14624, "&ordm;" }, // :.o
+   { 24624, "&ordm;" }, // :.o
+   { 14651, "&ordm;" }, // :.O
+   { 24651, "&ordm;" }, // :.O
+
+   { 14629, "&trade;" }, // :.t
+   { 24629, "&trade;" }, // :.t
+
+   { 14631, "&#8480;" }, // :.v
+   { 24631, "&#8480;" }, // :.v
+
+   { 14628, "st" }, // :.s  i.e. 1st ...
+   { 24628, "st" }, // :.s
+   { 14655, "st" }, // :.S  
+   { 24655, "st" }, // :.S
+
+   { 14623, "nd" }, // :.n  i.e. 2nd ...
+   { 24623, "n" }, // :.n
+   { 14650, "nd" }, // :.N  
+   { 24650, "n" }, // :.N
+
+   { 14627, "rd" }, // :.r  i.e. 3rd ...
+   { 24627, "rd" }, // :.r
+   { 14654, "rd" }, // :.R  
+   { 24654, "rd" }, // :.R
+
+   { 14617, "th" }, // :.h  i.e. 4th ...
+   { 24617, "th" }, // :.h
+   { 14644, "th" }, // :.H  
+   { 24644, "th" }, // :.H
+
+   { 12310, "&eth;" },  //  h.d  
+   { 12337, "&ETH;" },  //  h.D  
+   { 12329, "&thorn;" },  //  h.t  
+   { 12356, "&THORN;" },  //  h.T  
+
+   { 12428, "&szlig;" },  //  z.s  
+   { 12455, "&szlig;" },  //  z.S  
+
+   { 12510, "&aelig;" },  //  e.a  
+   { 12524, "&oelig;" },  //  e.o  
+   { 12537, "&AElig;" },  //  e.A
+   { 12551, "&OElig;" },  //  e.O
+  
+   { 12610, "&aelig;" },  //  E.a  
+   { 12624, "&oelig;" },  //  E.o  
+   { 12637, "&AElig;" },  //  E.A  
+   { 12651, "&OElig;" },  //  E.O 
+
+   { 13212, "&copy;" }, // @.c
+   { 13227, "&reg;" }, // @.r
+
+   { 13412, "[&copy;]" }, // %.c
+
+   { 13936, "&diaresis;"}, // D._
+
+#ifdef HIDE
    {1, "&Agrave;" }, // { "&#192;" }, Capital a with grave accent
    {1, "&Aacute;" }, // { "&#193;" }, Capital a with acute accent
    {1, "&Acirc;" }, // { "&#194;" }, Capital a with circumflex accent
@@ -108,16 +196,20 @@ QString get_xml_out()
    {1, "&yacute;" }, // { "&#253;" }, Lowercase y with acute accent
    {1, "&thorn;" }, // { "&#254;" }, Lowercase thorn (Icelandic)
    {1, "&yuml;" },     // &#255; Lowercase y with umlaut
+
+#endif //def HIDE
  };
 
- gp &= 3;
- auto it = static_map.value(gp);
+ gp &= 63;
+ auto it = static_map.find(gp);
  if(it == static_map.end())
  {
   QString stem = get_xml_stem(gp);
   if(stem.isEmpty())
     return "?";
-  return QString("&%1%2;").arg(QString::fromLatin1(cue)).arg(stem);
+  if(cue == '_')
+    return QString("&%1;").arg(stem);  
+  return QString("&%1%2;").arg(QChar::fromLatin1(cue)).arg(stem);
  }
  else
    return it.value();
@@ -142,7 +234,7 @@ QString Standard_Diacritic_GlyphDeck::get_htxne_out(u1 gp, char cue)
   result = QString("|>%1%2"); break;
  case 3:
   result = QString("|&%1%2"); break;
- case 3:
+ case 4:
   result = QString("|\\%1%2"); break;
  }
  
@@ -154,7 +246,7 @@ void Standard_Diacritic_GlyphDeck::get_qstring_out
 {
  static QMap<u2, QString> static_map {
  };
- result = static_map.value(code, QString::fromLatin1(cue));
+ result = static_map.value(code, QChar::fromLatin1(cue));
 }
 
 void Standard_Diacritic_GlyphDeck::get_latex_out
@@ -166,7 +258,6 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
   return;
  }
  static QMap<u2, QString> static_map {
-  { 
    { 10323, "{\\dianapos}" }, // '.n
    { 10350, "{\\diaNapos}" }, // '.N
 
@@ -184,14 +275,16 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
 
    { 12110, "{\\&}" },  //  g.a
    { 12120, "\\textsc{k}" },  //  g.k
+   { 12137, "{\\upamp}" },  //  g.A
    { 12147, "{\\Kgreenalt}" },  //  g.K  
   
    { 12223, "{\\ngalt}" },  //  G.n  
    { 12250, "{\\NGalt}" },  //  G.N 
  
    { 12210, "{\\itampalt}" },  //  G.a  
-   { 12120, "{\\kGreenalt}" },  //  G.k
-   { 12147, "{\\Kgreenalt}" },  //  G.K  
+   { 12220, "{\\kGreenalt}" },  //  G.k
+   { 12237, "{\\upampalt}" },  //  G.A
+   { 12247, "{\\Kgreenalt}" },  //  G.K  
 
    { 11610, "{\\aa}" },  //  R.a  
    { 11637, "{\\AA}" },  //  R.a  
@@ -221,10 +314,17 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
 
    { 13412, "{\\textcopyleft}" }, // %.c
 
-   { 13936, "{\\\"}"}" }, // D._
+   { 13936, "{\\\"}"}, // D._
 
-   { 13227, "{\\textregistered}" }, // @.r
-   { 13412, "{\\textcopyleft}" }, // %.c
+   { 14610, "{\\diaordfem}" }, // :.a
+   { 24610, "{\\ddiaordfem}" }, // :.a
+   { 14637, "{\\diaordfemalt}" }, // :.A
+   { 24637, "{\\ddiaordfemalt}" }, // :.A
+
+   { 14624, "{\\diaordmasc}" }, // :.o
+   { 24624, "{\\ddiaordmasc}" }, // :.o
+   { 14651, "{\\diaordmascalt}" }, // :.O
+   { 24651, "{\\ddiaordmascalt}" }, // :.O
 
    { 14629, "{\\texttrademark}" }, // :.t
    { 24629, "{\\ttrademark" }, // :.t
@@ -242,17 +342,16 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
    { 14650, "{\\altdiaND}" }, // :.N  
    { 24650, "{\\altddiaND" }, // :.N
 
-   { 14627, "{\\diaND}" }, // :.r  i.e. 3rd ...
-   { 24627, "{\\ddiaND}" }, // :.r
-   { 14654, "{\\altdiaND}" }, // :.R  
-   { 24654, "{\\altddiaND" }, // :.R
+   { 14627, "{\\diaRD}" }, // :.r  i.e. 3rd ...
+   { 24627, "{\\ddiaRD}" }, // :.r
+   { 14654, "{\\altdiaRD}" }, // :.R  
+   { 24654, "{\\altddiaRD" }, // :.R
 
-   { 14617, "{\\diaND}" }, // :.h  i.e. 4th ...
-   { 24617, "{\\ddiaND}" }, // :.h
-   { 14644, "{\\altdiaND}" }, // :.H  
-   { 24644, "{\\altddiaND" }, // :.H
+   { 14617, "{\\diaTH}" }, // :.h  i.e. 4th ...
+   { 24617, "{\\ddiaTH}" }, // :.h
+   { 14644, "{\\altdiaTH}" }, // :.H  
+   { 24644, "{\\altddiaTH" }, // :.H
 
-  } 
  };
  auto it = static_map.find(code);
  if(it == static_map.end())
@@ -277,22 +376,20 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
    {
    case 17: // K
     result = QString("{\\%2strok}").arg(rep); break;      
-   case 20: // m
-    result = QString("{\\%2midot}").arg(rep); break;      
    case 18: // t
-    result = QString("{\\%2midot}").arg(rep); break;      
-   case 19: // t
     if(scope == 1)
       result = QString("\\t{%1}").arg(rep); 
     else
       result = QString("\\t{%1").arg(rep);   
     break; 
-   case 20: // t
-    if( (cue == 'o') || (cue == 'O' )
+   case 19: // /
+    if( (cue == 'o') || (cue == 'O' ) )
       result = QString("{\\%1").arg(QChar::fromLatin1(cue)); 
     else
       result = QString("\\%1slash").arg(rep);   
     break;          
+   case 20: // m
+     result = QString("{\\%2midot}").arg(rep); break;
    case 27: // f
     if(scope == 1)
       result = QString("\\fLig{%1}").arg(rep); 
@@ -394,7 +491,7 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
   }
  }
  else
-   return it.value();
+   result = it.value();
 }
 
 QString Standard_Diacritic_GlyphDeck::get_latex_out(u1 gp, char cue)
@@ -422,6 +519,22 @@ QString Standard_Diacritic_GlyphDeck::get_qstring_out(u1 gp, char cue)
  get_qstring_out(code, gp, cue, result);
  return result;
 }
+
+u1 Standard_Diacritic_GlyphDeck::get_diacritic_code_inh(u1 pos, u1 length)
+{
+ // //  47: < // inherited
+ // //  48: + // middle inherited
+ // //  49: > // double inherited
+
+ switch( (pos * 10) + length )
+ {
+ case 22: return 47;
+ case 23: return 48;
+ case 33: return 49;
+ default: return 0;
+ }
+}
+
 
 u1 Standard_Diacritic_GlyphDeck::get_cue_code(char cue)
 {
@@ -498,8 +611,16 @@ u1 Standard_Diacritic_GlyphDeck::get_cue_code(char cue)
 
 }
 
-void get_qstring_out(u2 code); 
-
+QPair<u1, u1> Standard_Diacritic_GlyphDeck::get_length(char cue)
+{
+ switch(cue)
+ {
+ case '+': return {2, get_code(':', 2)};
+ case '>': return {2, 0};
+ case '&': return {3, 0};
+ default: return {0, 0};
+ } 
+}
 
 u1 Standard_Diacritic_GlyphDeck::get_code(char cue, u1 scope)
 {

@@ -22,6 +22,8 @@
 KANS_(HTXN)
 
 typedef quint8 u1;
+typedef quint16 u2;
+
 
 class Standard_Diacritic_GlyphDeck
 {
@@ -31,6 +33,10 @@ public:
  u1 get_code(char cue, u1 scope); 
 
  u1 get_cue_code(char cue); 
+ u1 get_diacritic_code_inh(u1 pos, u1 length);
+
+
+ QPair<u1, u1> get_length(char cue); 
 
  QString get_qstring_out(u1 gp, char cue);
  void get_qstring_out(u2 code, u1 gp, char cue, QString& result); 
@@ -39,6 +45,7 @@ public:
  void get_latex_out(u2 code, u1 gp, u1 scope, char cue, QString& result); 
 
  QString get_htxne_out(u1 gp, char cue);
+ QString get_xml_out(u1 gp, char cue);
 
  QString get_xml_stem(u1 gp);
 
@@ -141,5 +148,6 @@ _KANS(HTXN)
 62: V // (invert)
 
 63: ? // unrec
+#endif
 
-#endif // STANDARD_DIACRITIC_GLYPHDECK
+#endif // STANDARD_DIACRITIC_GLYPHDECK__H

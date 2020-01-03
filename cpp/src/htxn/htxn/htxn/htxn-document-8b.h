@@ -36,6 +36,7 @@ class HTXN_Document_8b : public Glyph_Layers_8b
 {
  u4 current_deck_code_;
  GlyphDeck_Base_8b* current_deck_;
+ Standard_Diacritic_GlyphDeck* current_diacritic_deck_;
 
  Glyph_Vector_8b* current_glyph_vector_;
 
@@ -60,6 +61,12 @@ public:
  void read_glyph_point(Glyph_Argument_Package& gap, 
    u4 index, Glyph_Vector_8b& gv);
 
+ u1 get_diacritic_length_or_code(char cue, u2& code);
+ u2 get_diacritic_code(char cue, u1 scope);
+ u2 get_diacritic_cue_code(char cue);
+ u2 get_diacritic_code_inh(u1 pos, u1 length);
+
+ void mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2 diacritic_code);
 
 };
 

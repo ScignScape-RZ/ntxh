@@ -13,6 +13,11 @@
 
 USING_KANS(HTXN)
 
+void Glyph_Vector_8b::add_diacritic(u4 index, u2 deck_code, u2 dia_code)
+{
+ dia_map_.insert(index, {deck_code, dia_code});
+}
+
 
 //void Glyph_Vector_8b::check_external_excluding_numeral_diacritic(u4 index,
 //  GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap)

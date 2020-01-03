@@ -48,7 +48,7 @@ public:
  void check_external(u4 index,
    GlyphDeck_Base_8b& current_deck, Glyph_Argument_Package& gap); 
 
-
+ void add_diacritic(u4 index, u2 deck_code, u2 dia_code);
 
 
 // void check_external_excluding_numeral_diacritic(u4 index,
