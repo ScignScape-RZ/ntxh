@@ -31,6 +31,7 @@ typedef quint64 u8;
 
 class GlyphDeck_Base_8b;
 class Glyph_Vector_8b;
+class Standard_Diacritic_GlyphDeck;
 
 class HTXN_Document_8b : public Glyph_Layers_8b
 {
@@ -47,6 +48,7 @@ public:
 // ACCESSORS_SET(GlyphDeck_Base_8b* ,current_deck)
 
  void add_standard_deck();
+ void add_standard_diacritic_deck();
 
  void read_layer(QString text, u2 gap = 0);
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 gap);

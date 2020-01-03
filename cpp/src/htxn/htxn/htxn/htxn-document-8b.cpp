@@ -30,15 +30,17 @@ HTXN_Document_8b::HTXN_Document_8b()
 void HTXN_Document_8b::add_standard_deck()
 {
  current_deck_ = new Standard_GlyphDeck_8b;
- decks_by_id_.push_back(current_deck_);
- id_by_deck_[decks_by_id_.size()] = current_deck_;
+ decks_by_id_.push_back({current_deck_});
+ id_by_deck_[current_deck_] = decks_by_id_.size();
 }
 
-void HTXN_Document_8b::add_diacritic_deck()
+void HTXN_Document_8b::add_standard_diacritic_deck()
 {
  current_diacritic_deck_ = new Standard_Diacritic_GlyphDeck;
- decks_by_id_.push_back(current_diacritic_deck_);
- id_by_deck_[decks_by_id_.size()] = current_deck_;
+ generic_glyph_base ggb {.dia =
+   (Diacritic_GlyphDeck_Base*) current_diacritic_deck_};
+ decks_by_id_.push_back(ggb);
+ dia_id_by_deck_[current_diacritic_deck_] = decks_by_id_.size();
 }
 
 
@@ -238,21 +240,21 @@ u2 HTXN_Document_8b::get_diacritic_code(char cue, u1 scope)
 u2 HTXN_Document_8b::get_diacritic_code_inh(u1 pos, u1 length)
 {
  return (u2) 
-   current_diacritic_deck_->get_diacritic_code_inh(u1 pos, u1 length);
+   current_diacritic_deck_->get_diacritic_code_inh(pos, length);
 }
 
-u1 HTXN_Document_8b::get_diacritic_length_or_code(char cue, u2& code);
+u1 HTXN_Document_8b::get_diacritic_length_or_code(char cue, u2& code)
 {
  // // non-zero return means the cue character is a length 
   //   indicator.  If the result is also non-zero 
   //   the character signals both length and cue.
  QPair<u1, u1> pr = current_diacritic_deck_->get_length(cue);
- if(result.first > 0)
+ if(pr.first > 0)
  {
-  code = result.second;
-  return result.first;
+  code = pr.second;
+  return pr.first;
  }
- result = current_diacritic_deck_->get_code(cue);
+ code = current_diacritic_deck_->get_code(cue, 1);
  return 0;
 }
 
@@ -480,7 +482,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    case 20: 
     {
      u2 dcode;
-     u1 length = get_diacritic_length(chr, dcode);
+     u1 length = get_diacritic_length_or_code(chr, dcode);
      if(length > 0)
      {
       if(code > 0)
@@ -625,32 +627,32 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    switch(held_state)
    {
    case 201:
-    mark_diacritic_code(index, diacritic_code);
+    mark_diacritic_code(target, index, diacritic_code);
     diacritic_code = 0;
     held_state = 0;
     break;
    case 202:
-    mark_diacritic_code(index, diacritic_code);
+    mark_diacritic_code(target, index, diacritic_code);
     diacritic_code = get_diacritic_code_inh(2, 2);
     held_state = 212;
     break;
    case 212:
-    mark_diacritic_code(index, diacritic_code);
+    mark_diacritic_code(target, index, diacritic_code);
     diacritic_code = 0;
     held_state = 0;
     break;
    case 203:
-    mark_diacritic_code(index, diacritic_code);
+    mark_diacritic_code(target, index, diacritic_code);
     diacritic_code = get_diacritic_code_inh(2, 3);
     held_state = 213;
     break;
    case 213:
-    mark_diacritic_code(index, diacritic_code);
+    mark_diacritic_code(target, index, diacritic_code);
     diacritic_code = get_diacritic_code_inh(3, 3);
     held_state = 223;
     break;
    case 223:
-    mark_diacritic_code(index, diacritic_code);
+    mark_diacritic_code(target, index, diacritic_code);
     diacritic_code = 0;
     held_state = 0;
     break;
@@ -667,10 +669,10 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
  last_index = index;
 }
 
-void HTXN_Document_8b::mark_diacritic_code(u4 index, u2 diacritic_code)
+void HTXN_Document_8b::mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2 diacritic_code)
 {
- u2 deck_code = id_by_deck_[current_diacritic_deck_];
- current_vector_->add_diacritic(index, deck_code, diacritic_code);
+ u2 deck_code = dia_id_by_deck_[current_diacritic_deck_];
+ target.add_diacritic(index, deck_code, diacritic_code);
 }
 
 

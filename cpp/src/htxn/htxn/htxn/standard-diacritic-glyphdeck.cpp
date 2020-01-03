@@ -9,6 +9,11 @@
 
 USING_KANS(HTXN)
 
+u1 Standard_Diacritic_GlyphDeck::get_representation(u1 gp, QChar& rep)
+{
+
+}
+
 QString Standard_Diacritic_GlyphDeck::get_xml_stem(u1 gp)
 {
  switch(gp)

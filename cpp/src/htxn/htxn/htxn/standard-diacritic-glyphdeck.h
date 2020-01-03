@@ -24,11 +24,17 @@ KANS_(HTXN)
 typedef quint8 u1;
 typedef quint16 u2;
 
-
-class Standard_Diacritic_GlyphDeck
+class Diacritic_GlyphDeck_Base
 {
 
+
+};
+
+
+class Standard_Diacritic_GlyphDeck : public Diacritic_GlyphDeck_Base
+{
 public:
+
  u1 get_representation(u1 gp, QChar& rep); 
  u1 get_code(char cue, u1 scope); 
 

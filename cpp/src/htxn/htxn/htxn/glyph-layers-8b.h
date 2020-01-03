@@ -30,13 +30,23 @@ class GlyphDeck_Base_8b;
 class Glyph_Vector_8b;
 struct Glyph_Argument_Package;
 
+class Diacritic_GlyphDeck_Base;
+
+
 class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
 {
-
 protected:
- QVector<GlyphDeck_Base_8b*> decks_by_id_;
+
+ union generic_glyph_base
+ {
+  GlyphDeck_Base_8b* deck; Diacritic_GlyphDeck_Base* dia;
+ };
+
+
+ QVector<generic_glyph_base> decks_by_id_;
 
  QMap<GlyphDeck_Base_8b*, u4> id_by_deck_;
+ QMap<Diacritic_GlyphDeck_Base*, u4> dia_id_by_deck_;
 
 public:
 

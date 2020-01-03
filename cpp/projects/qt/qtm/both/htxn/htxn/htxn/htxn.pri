@@ -38,6 +38,7 @@ DEFINES += USE_KANS
 
 HEADERS += \
   $$SRC_DIR/standard-glyphdeck-8b.h \
+  $$SRC_DIR/standard-diacritic-glyphdeck.h \
   $$SRC_DIR/standard-glyphpack-8b.h \
   $$SRC_DIR/glyph-argument-package.h \
   $$SRC_DIR/glyphdeck-base-8b.h \
@@ -48,6 +49,7 @@ HEADERS += \
 
 SOURCES += \
   $$SRC_DIR/standard-glyphdeck-8b.cpp \
+  $$SRC_DIR/standard-diacritic-glyphdeck.cpp \
   $$SRC_DIR/standard-glyphpack-8b.cpp \
   $$SRC_DIR/glyph-argument-package.cpp \
   $$SRC_DIR/glyphdeck-base-8b.cpp \
