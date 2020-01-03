@@ -11,7 +11,115 @@ USING_KANS(HTXN)
 
 u1 Standard_Diacritic_GlyphDeck::get_representation(u1 gp, QChar& rep)
 {
+ u1 scope = (gp >> 6) + 1;
+ gp &= 63;
+ get_htxne_representation(gp, rep);
+ return scope;
+}
 
+void Standard_Diacritic_GlyphDeck::get_htxne_representation(u1 gp, QChar& rep)
+{
+ rep = QChar::fromLatin1(get_htxne_representation(gp));
+}
+
+
+char Standard_Diacritic_GlyphDeck::get_htxne_representation(u1 gp)
+{
+ switch(gp)
+ {
+  case 0: return '\0'; // null
+  case 1: return '_'; // empty
+  case 2: return '`'; // // acute
+  case 3: return '\'' // grave
+  case 4: return '^'; // // circ
+  case 5: return '"'; // // uml
+  case 6: return '~'; // // tilde
+  case 7: return '='; // // macr
+  case 8: return '.'; // // dot
+  case 9: return 'u'; // // breve
+  case 10: return 'v'; // // caron
+  case 11: return 'H'; // // dbl acute
+  case 12: return 'b'; // // bar-under 
+  case 13: return 'c'; // // cedil
+  case 14: return 'k'; // // ogon
+  case 15: return 'r'; // // ring over ...
+  case 16: return 'R'; // // ring over (alt), e.g. aa instead of ra ...
+  case 17: return 'K'; // // stroke
+  case 18: return 't'; // // tie-after
+  case 19: return '/'; // // slash
+  case 20: return 'm'; // // midot
+  case 21: return 'g'; // // eng, kgreen, ital &  ...
+  case 22: return 'G'; // // eng, ital & with more space
+
+  case 23: return 'h'; // // eth, thorn, Thorn 
+  case 24: return 'z'; // // eszat i.e. ss ...
+
+  case 25: return 'e'; // // ae, oe
+  case 26: return 'E'; // // AE, OE
+
+  case 27: return 'f'; // // fi, fj, fl, ff, FI, FJ, FL, FF 
+
+  case 28: return 'F'; // // fi, ffj, ffl, FFI, FFJ, FFL
+
+  case 29: return 'n'; // // no ligature
+  case 30: return 'N'; // // no ligature
+  case 31: return 'C'; // // italic correction
+
+  case 32: return '@'; // // special circled
+  case 33: return ')'; // // circled
+  case 34: return '%'; // // circle left
+  case 35: return 'o'; // // circle ring
+  case 36: return 'O'; // // circle ring (larger)
+
+  case 37: return '$'; // // strike
+  case 38: return '-'; // // strike
+
+  case 39: return 'D'; // // dieresis
+
+  case 40: return '['; // //
+  case 41: return ']'; // //
+  case 42: return '{'; // //
+  case 43: return '}'; // //
+  case 44: return ','; // //
+  case 45: return ';'; // //
+
+  case 46: return ':'; // // elevated
+
+    // // multi-character codes: 
+     //    + double elevated
+     //    > double 
+     //    & triple
+     //    \ external 
+     //   e.g.
+     //     |:t (TM as one character)   
+     //     |+t (TM as two characters) 
+     //     |fl (fl ligature as one character)
+     //     |Fl (ffl ligature as one character)
+     //     |>fl. (fl ligature as two character)
+     //     |&Fl.. (ffl ligature as three characters) 
+
+  case 47: return '<'; // // inherited
+  case 48: return '+'; // // middle inherited
+  case 49: return '>'; // // double inherited
+
+  case 50: return '0'; // //
+  case 51: return '1'; // //
+  case 52: return '2'; // //
+  case 53: return '3'; // //
+  case 54: return '4'; // //
+  case 55: return '5'; // //
+  case 56: return '6'; // //
+  case 57: return '7'; // //
+  case 58: return '8'; // //
+  case 59: return '9'; // //
+
+  case 60: return '#'; // // special 
+  case 61: return '*'; // // special 
+
+  case 62: return 'V'; // // (invert)
+
+  case 63: return '?'; // // unrec
+ }
 }
 
 QString Standard_Diacritic_GlyphDeck::get_xml_stem(u1 gp)
@@ -228,7 +336,7 @@ QString Standard_Diacritic_GlyphDeck::get_htxne_out(u1 gp, char cue)
  gp &= 63;
 
  QChar rep;
- get_representation(gp, rep);
+ get_htxne_representation(gp, rep);
 
  switch(scope)
  {
@@ -380,114 +488,123 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
    switch(gp)
    {
    case 17: // K
-    result = QString("{\\%2strok}").arg(rep); break;      
+    result = QString("{\\%1strok}").arg(cue); break;      
    case 18: // t
     if(scope == 1)
-      result = QString("\\t{%1}").arg(rep); 
+      result = QString("\\t{%1}").arg(cue); 
     else
-      result = QString("\\t{%1").arg(rep);   
+      result = QString("\\t{%1").arg(cue);   
     break; 
    case 19: // /
     if( (cue == 'o') || (cue == 'O' ) )
       result = QString("{\\%1").arg(QChar::fromLatin1(cue)); 
     else
-      result = QString("\\%1slash").arg(rep);   
+      result = QString("\\%1slash").arg(cue);   
     break;          
    case 20: // m
-     result = QString("{\\%2midot}").arg(rep); break;
+     result = QString("{\\%2midot}").arg(cue); break;
    case 27: // f
     if(scope == 1)
-      result = QString("\\fLig{%1}").arg(rep); 
+      result = QString("\\fLig{%1}").arg(cue); 
     else if(scope == 2)
-      result = QString("\\fLigg{%1").arg(rep); 
+      result = QString("\\fLigg{%1").arg(cue); 
     else if(scope == 3)
-      result = QString("\\fLiggg{%1").arg(rep); 
+      result = QString("\\fLiggg{%1").arg(cue); 
     break; 
    case 28: // F
     if(scope == 1)
-      result = QString("\\ffLig{%1}").arg(rep); 
+      result = QString("\\ffLig{%1}").arg(cue); 
     else if(scope == 2)
-      result = QString("\\ffLigg{%1").arg(rep); 
+      result = QString("\\ffLigg{%1").arg(cue); 
     else if(scope == 3)
-      result = QString("\\ffLiggg{%1").arg(rep); 
+      result = QString("\\ffLiggg{%1").arg(cue); 
     break;
    case 29: // n
     if(scope == 1)
-      result = QString("\\noLig{%1}").arg(rep); 
+      result = QString("\\noLig{%1}").arg(cue); 
     else if(scope == 2)
-      result = QString("\\noLigg{%1").arg(rep); 
+      result = QString("\\noLigg{%1").arg(cue); 
     else if(scope == 3)
-      result = QString("\\noLiggg{%1").arg(rep); 
+      result = QString("\\noLiggg{%1").arg(cue); 
     break;
    case 30: // N
     if(scope == 1)
-      result = QString("\\NoLig{%1}").arg(rep); 
+      result = QString("\\NoLig{%1}").arg(cue); 
     else if(scope == 2)
-      result = QString("\\NoLigg{%1").arg(rep); 
+      result = QString("\\NoLigg{%1").arg(cue); 
     else if(scope == 3)
-      result = QString("\\NoLiggg{%1").arg(rep); 
+      result = QString("\\NoLiggg{%1").arg(cue); 
     break;
    case 31: // C
     if(scope == 1)
-      result = QString("\\AltNoLig{%1}").arg(rep); 
+      result = QString("\\AltNoLig{%1}").arg(cue); 
     else if(scope == 2)
-      result = QString("\\AltNoLigg{%1").arg(rep); 
+      result = QString("\\AltNoLigg{%1").arg(cue); 
     else if(scope == 3)
-      result = QString("\\AltNoLiggg{%1").arg(rep); 
+      result = QString("\\AltNoLiggg{%1").arg(cue); 
     break;
    case 33: // circled
     if(scope == 1)
-      result = QString("\\diacircled{%1}").arg(rep);
+      result = QString("\\diacircled{%1}").arg(cue);
     else
-      result = QString("\\diacircled{%1").arg(rep);
+      result = QString("\\diacircled{%1").arg(cue);
     break;
    case 34: // circled flip
     if(scope == 1)
-      result = QString("\\diacircledflip{%1}").arg(rep);
+      result = QString("\\diacircledflip{%1}").arg(cue);
     else
-      result = QString("\\diacircledflip{%1").arg(rep);
+      result = QString("\\diacircledflip{%1").arg(cue);
     break;
    case 35: // circle ring
-    result = QString("\\diacirclering{%1}").arg(rep);
+    result = QString("\\diacirclering{%1}").arg(cue);
     break;
    case 36: // circle Ring
-    result = QString("\\diacircleRing{%1}").arg(rep);
+    result = QString("\\diacircleRing{%1}").arg(cue);
     break;
    case 37: // $
-    result = QString("\\diavstrike{%1}").arg(rep);
+    result = QString("\\diavstrike{%1}").arg(cue);
     break;
    case 38: // -
-    result = QString("\\diahstrike{%1}").arg(rep);
+    result = QString("\\diahstrike{%1}").arg(cue);
     break;
    case 39: // D
-    result = QString("\\\"{%1}").arg(rep);
+    result = QString("\\\"{%1}").arg(cue);
     break;
 
    case 46: // :
     if(scope == 1)
-      result = QString("\\diaele{%1}").arg(rep);
+      result = QString("\\diaele{%1}").arg(cue);
     else
-      result = QString("\\diaele{%1").arg(rep);
+      result = QString("\\diaele{%1").arg(cue);
     break;
 
    case 47: // inherited
-    result = QString("%1}").arg(rep);
+    if(cue == '.')
+      result = QString("}");
+    else
+      result = QString("%1}").arg(cue);
     break;
 
    case 48: // middle inherited
-    result = rep;
+    if(cue == '.')
+      result = QString();
+    else
+      result = rep;
     break;
 
    case 49: // double inherited
-    result = QString("%1}").arg(rep);
+    if(cue == '.')
+      result = QString("}");
+    else
+      result = QString("%1}").arg(cue);
     break;
 
    case 62: // V
-    result = QString("\\diainv{%1}").arg(rep);
+    result = QString("\\diainv{%1}").arg(cue);
     break;
 
    case 63: // ?
-    result = QString("\\diaNotRecognized{%1}").arg(rep);
+    result = QString("\\diaNotRecognized{%1}").arg(cue);
     break;
 
    default:     

@@ -35,6 +35,11 @@ class Standard_Diacritic_GlyphDeck : public Diacritic_GlyphDeck_Base
 {
 public:
 
+//get_htxne_out
+
+ char get_htxne_representation(u1 gp); 
+ void get_htxne_representation(u1 gp, QChar& rep); 
+
  u1 get_representation(u1 gp, QChar& rep); 
  u1 get_code(char cue, u1 scope); 
 
