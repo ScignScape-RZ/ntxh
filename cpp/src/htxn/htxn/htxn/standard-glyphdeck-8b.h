@@ -114,6 +114,9 @@ public:
  void get_qstring_out(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
  void get_htxne_out(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+
+ char get_char_code(u1 gp) Q_DECL_OVERRIDE;
+
 // void get_htxne_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
 // virtual void check_external(u1 gp, Glyph_Argument_Package& gap);

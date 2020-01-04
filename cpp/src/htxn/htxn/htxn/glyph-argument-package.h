@@ -28,6 +28,7 @@ typedef quint16 u2;
 typedef quint64 u8;
 
 class GlyphDeck_Base_8b;
+class Diacritic_GlyphDeck_Base;
 
 
 struct Glyph_Argument_Package
@@ -77,6 +78,7 @@ struct Glyph_Argument_Package
  u2 external_diacritic_code;
  u8 glyph_code;
  GlyphDeck_Base_8b* internal_deck;
+//? Diacritic_GlyphDeck_Base* internal_diacritic_deck;
 
  Glyph_Argument_Package();
 

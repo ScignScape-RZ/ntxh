@@ -52,6 +52,7 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
  //parse_layer(gv)
  Glyph_Argument_Package gap;
  gap.internal_deck = current_deck_;
+ gap.internal_diacritic_deck = current_diacritic_deck_;
  for(u4 i = 0; i < gv->size(); ++i)
  {
   Glyph_Layers_8b::get_qstring_out(*gv, i, gap);
@@ -517,6 +518,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
 
    default:
     code = get_diacritic_cue_code(chr);
+    code |= 64; // set dia bit ...
     break;   
    }
   }

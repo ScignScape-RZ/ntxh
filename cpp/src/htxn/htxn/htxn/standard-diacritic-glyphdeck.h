@@ -18,17 +18,12 @@
 
 #include <functional>
 
+#include "diacritic-glyphdeck-base.h"
 
 KANS_(HTXN)
 
 typedef quint8 u1;
 typedef quint16 u2;
-
-class Diacritic_GlyphDeck_Base
-{
-
-
-};
 
 
 class Standard_Diacritic_GlyphDeck : public Diacritic_GlyphDeck_Base
@@ -38,7 +33,11 @@ public:
 //get_htxne_out
 
  char get_htxne_representation(u1 gp); 
- void get_htxne_representation(u1 gp, QChar& rep); 
+ void get_htxne_representation(u1 gp, QChar& rep);
+
+ void get_full_htxne_representation(u2 gp, 
+   QChar cue, QString& full_rep) Q_DECLARE_OVERRIDE;
+ 
 
  u1 get_representation(u1 gp, QChar& rep); 
  u1 get_code(char cue, u1 scope); 

@@ -34,7 +34,10 @@ void Glyph_Layers_8b::get_htxne_out(Glyph_Vector_8b& gv,
   u4 index, Glyph_Argument_Package& gap)
 {
  GlyphDeck_Base_8b& deck = *gap.internal_deck;
+ Diacritic_GlyphDeck_Base& dia = *gap.internal_diacritic_deck;
+
  gv.check_external(index, deck, gap);
+
 // if(gap.no_flags())
 // {
 //  deck.get_htxne_out((u1)gap.glyph_code, gap);
@@ -44,7 +47,22 @@ void Glyph_Layers_8b::get_htxne_out(Glyph_Vector_8b& gv,
    deck.get_htxne_out((u1)gap.glyph_code, gap);
  else if(gap.flags.confirmed_non_diacritic)
  {
-   deck.get_htxne_out((u1)gap.glyph_code, gap);
+  deck.get_htxne_out((u1)gap.glyph_code, gap);
+ }
+ else if(gap.flags.confirmed_external_diacritic)
+ {
+  u2 edc = gap.external_deck_code;
+  u2 code = gap.external_diacritic_code;
+  Diacritic_GlyphDeck_Base* dia = 
+    decks_by_id_[edc].dia;
+   
+  char cc = deck.get_char_code((u1)gap.glyph_code);
+  
+  dia->get_full_htxne_representation(u1 gp, 
+    QChar::fromLatin1(cc), gap.chr, gap.str);
+
+ // QString get_htxne_out(u1 gp, char cue);
+ // dia.get_htxne_out(gap.glyph_code, 
  }
 
 

@@ -22,6 +22,41 @@ void Standard_Diacritic_GlyphDeck::get_htxne_representation(u1 gp, QChar& rep)
  rep = QChar::fromLatin1(get_htxne_representation(gp));
 }
 
+void Standard_Diacritic_GlyphDeck::get_full_htxne_representation
+  (u2 gp, QChar cue, QChar& rep, QString& full_rep)
+{
+ if( (gp < 49) || (gp > 51) )
+ {
+  QChar qc;
+  get_htxne_representation(gp, qc);
+  u1 scope = (gp >> 6) + 1;
+  gp &= 63;
+  switch(scope)
+  {
+   default:
+   case 1: 
+    full_rep = QString("|%1%2").arg(qc).arg(cue);
+    break;
+   case 2:
+    if(qc == ':')
+      full_rep = QString("|+%1").arg(cue);
+    else
+      full_rep = QString("|>%1%2").arg(qc).arg(cue);
+    break;
+   case 3: 
+    full_rep = QString("|&%1%2").arg(qc).arg(cue);
+    break;
+   case 4: 
+    full_rep = QString("|\\%1%2").arg(qc).arg(cue);
+    break;
+  }
+ }
+ else
+ {
+  rep = cue;
+ }
+}
+
 
 char Standard_Diacritic_GlyphDeck::get_htxne_representation(u1 gp)
 {
@@ -30,7 +65,7 @@ char Standard_Diacritic_GlyphDeck::get_htxne_representation(u1 gp)
   case 0: return '\0'; // null
   case 1: return '_'; // empty
   case 2: return '`'; // // acute
-  case 3: return '\'' // grave
+  case 3: return '\''; // grave
   case 4: return '^'; // // circ
   case 5: return '"'; // // uml
   case 6: return '~'; // // tilde
