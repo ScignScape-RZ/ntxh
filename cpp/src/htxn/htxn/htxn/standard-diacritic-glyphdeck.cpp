@@ -9,6 +9,12 @@
 
 USING_KANS(HTXN)
 
+void Standard_Diacritic_GlyphDeck::get_full_latex_representation
+  (u2 gp, QChar cue, QString& rep)
+{
+ 
+}
+
 u1 Standard_Diacritic_GlyphDeck::get_representation(u1 gp, QChar& rep)
 {
  u1 scope = (gp >> 6) + 1;
@@ -651,7 +657,7 @@ void Standard_Diacritic_GlyphDeck::get_latex_out
    result = it.value();
 }
 
-QString Standard_Diacritic_GlyphDeck::get_latex_out(u1 gp, char cue)
+QString Standard_Diacritic_GlyphDeck::get_latex_out(u2 gp, char cue)
 {
  QString result;
  u1 scope = (gp >> 6) + 1;

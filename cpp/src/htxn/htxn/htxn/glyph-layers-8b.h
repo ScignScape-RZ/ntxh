@@ -54,10 +54,10 @@ public:
 
  void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);
 
- static void get_qstring_out(Glyph_Vector_8b& gv, 
+ void get_qstring_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 
- static void get_htxne_out(Glyph_Vector_8b& gv, 
+ void get_htxne_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 
  //virtual void check_external(u1 gp, Glyph_Argument_Package& gap); 

@@ -36,8 +36,9 @@ public:
  void get_htxne_representation(u1 gp, QChar& rep);
 
  void get_full_htxne_representation(u2 gp, 
-   QChar cue, QString& full_rep) Q_DECLARE_OVERRIDE;
+   QChar cue, QChar& rep, QString& full_rep) Q_DECL_OVERRIDE;
  
+ QString get_latex_out(u2 gp, char cue) Q_DECL_OVERRIDE;
 
  u1 get_representation(u1 gp, QChar& rep); 
  u1 get_code(char cue, u1 scope); 
@@ -51,7 +52,6 @@ public:
  QString get_qstring_out(u1 gp, char cue);
  void get_qstring_out(u2 code, u1 gp, char cue, QString& result); 
 
- QString get_latex_out(u1 gp, char cue);
  void get_latex_out(u2 code, u1 gp, u1 scope, char cue, QString& result); 
 
  QString get_htxne_out(u1 gp, char cue);

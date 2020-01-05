@@ -26,9 +26,13 @@ typedef quint16 u2;
 
 class Diacritic_GlyphDeck_Base
 {
+public:
  virtual void get_full_htxne_representation
   (u2 gp, QChar cue, QChar& rep, QString& full_rep) = 0;
+
+ virtual QString get_latex_out(u2 gp, char cue) = 0;
 };
 
+_KANS(HTXN)
 
 #endif // DIACRITIC_GLYPHDECK_BASE__H

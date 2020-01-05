@@ -13,8 +13,8 @@ Glyph_Argument_Package::Glyph_Argument_Package()
     external_deck_code(0), 
     external_diacritic_code(0), 
     glyph_code(0), 
-    internal_deck(nullptr), 
-    internal_diacritic_deck(nullptr)
+    internal_deck(nullptr)
+    //internal_diacritic_deck(nullptr)
 {
 
 }
