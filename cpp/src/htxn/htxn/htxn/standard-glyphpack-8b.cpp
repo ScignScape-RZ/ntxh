@@ -20,6 +20,7 @@ Standard_GlyphPack_8b::Standard_GlyphPack_8b(u1 code)
 
 std::pair<u1, u1> Standard_GlyphPack_8b::get_latex_cue()
 {
+ // // ?
  if( (code_ & 128) > 0 )
  {
   return {2, code_ & 127 };
@@ -27,10 +28,10 @@ std::pair<u1, u1> Standard_GlyphPack_8b::get_latex_cue()
  if( (code_ & 64) > 0 )
  {
   u1 c = code_ & 63;
-  if(c == 0)
-    return {3, 0};
-  if(c == 1)
-    return {4, 0};
+//  if(c == 0)
+//    return {3, 0};
+//  if(c == 1)
+//    return {4, 0};
   return {1, c};
  }
  return {0, code_};

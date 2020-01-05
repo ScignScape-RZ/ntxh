@@ -113,7 +113,9 @@ void Standard_GlyphDeck_8b::check_external(u1 gp, Glyph_Argument_Package& gap)
 {
  if( (gp > 63) && (gp < 74) && (!gap.interpret.flags.use_numeral_diacritic) )
  {
-  gap.flags.normal = true;
+  gap.flags.confirmed_non_diacritic = true;
+  //gap.flags.normal = true;
+  gap.glyph_code = gp & 63;
   return;
  }
  if( (gp == 100) && (!gap.interpret.flags.use_underscore_diacritic) )
@@ -294,6 +296,18 @@ QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
  case 63: return QChar(' ');
  default: return QChar(); 
  }
+}
+
+void Standard_GlyphDeck_8b::get_xml_nondia(u1 gp, Glyph_Argument_Package& gap)
+{
+ // gap.chr = get_nondiacritic_default(gp & 63);
+}
+
+
+
+void Standard_GlyphDeck_8b::get_latex_nondia(u1 gp, Glyph_Argument_Package& gap)
+{
+ gap.chr = get_nondiacritic_default(gp & 63);
 }
 
 #ifdef HIDE
@@ -498,26 +512,24 @@ void Standard_GlyphDeck_8b::get_latex(u1 gp, Glyph_Argument_Package& gap)
 
  switch(kind)
  {
-// case 0: return get_text_default(cue);
+ case 0: gap.chr = get_text_default(cue); break;
 // case 1: case 3: case 4: dia = cue; return QChar();
 // case 2:
  }
 }
 
 
-void Standard_GlyphDeck_8b::get_latex_dia(u1 gp, Glyph_Argument_Package &gap)
-{
-
-}
+//void Standard_GlyphDeck_8b::get_latex_dia(u1 gp, Glyph_Argument_Package &gap)
+//{
+//}
 
 void Standard_GlyphDeck_8b::get_xml(u1 gp, Glyph_Argument_Package& gap)
 {
 
 }
 
-void Standard_GlyphDeck_8b::get_xml_dia(u1 gp, Glyph_Argument_Package& gap)
-{
-
-}
+//void Standard_GlyphDeck_8b::get_xml_dia(u1 gp, Glyph_Argument_Package& gap)
+//{
+//}
 
 

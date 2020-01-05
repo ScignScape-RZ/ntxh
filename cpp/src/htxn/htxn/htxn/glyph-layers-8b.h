@@ -52,9 +52,12 @@ public:
 
  Glyph_Layers_8b();
 
- void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);
+// void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);
 
  void get_qstring_out(Glyph_Vector_8b& gv,
+   u4 index, Glyph_Argument_Package& gap);
+
+ void get_latex_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 
  void get_htxne_out(Glyph_Vector_8b& gv,

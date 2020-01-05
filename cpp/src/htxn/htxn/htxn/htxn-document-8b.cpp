@@ -43,6 +43,26 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
  dia_id_by_deck_[current_diacritic_deck_] = decks_by_id_.size();
 }
 
+void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
+{
+ Glyph_Vector_8b* gv = value(layer);
+ if(!gv)
+   return;
+ //parse_layer(gv)
+ Glyph_Argument_Package gap;
+ gap.internal_deck = current_deck_;
+ //?gap.internal_diacritic_deck = current_diacritic_deck_;
+ for(u4 i = 0; i < gv->size(); ++i)
+ {
+  this->Glyph_Layers_8b::get_latex_out(*gv, i, gap);
+  if(gap.chr.isNull())
+    result.append(gap.str);
+  else
+    result.append(gap.chr);
+  gap.reset();
+ }
+}
+
 
 void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
 {

@@ -113,15 +113,18 @@ void Glyph_Layers_8b::get_qstring_out(Glyph_Vector_8b& gv,
 
 }
 
-void Glyph_Layers_8b::get_latex(u4 layer, u4 index, 
-  Glyph_Argument_Package& gap)
+//void Glyph_Layers_8b::get_latex(u4 layer, u4 index,
+//  Glyph_Argument_Package& gap)
+
+void Glyph_Layers_8b::get_latex_out(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
 {
- Glyph_Vector_8b* vec = value(layer);
- if(!vec)
- {
-  gap.str = "?";
-   return;
- }
+// Glyph_Vector_8b* vec = value(layer);
+// if(!vec)
+// {
+//  gap.str = "?";
+//   return;
+// }
 
  GlyphDeck_Base_8b& deck = *gap.internal_deck;
  //?Diacritic_GlyphDeck_Base& dia = *gap.internal_diacritic_deck;
@@ -134,10 +137,10 @@ void Glyph_Layers_8b::get_latex(u4 layer, u4 index,
 // }
 
  if(gap.flags.normal)
-   deck.get_latex_out((u1)gap.glyph_code, gap);
+   deck.get_latex((u1)gap.glyph_code, gap);
  else if(gap.flags.confirmed_non_diacritic)
  {
-  deck.get_latex_out((u1)gap.glyph_code, gap);
+  deck.get_latex_nondia((u1)gap.glyph_code, gap);
  }
  else if(gap.flags.confirmed_external_diacritic)
  {
@@ -148,8 +151,7 @@ void Glyph_Layers_8b::get_latex(u4 layer, u4 index,
    
   char cc = deck.get_char_code((u1)gap.glyph_code);
   
-  gap.str = dia->get_latex_out(code,
-    QChar::fromLatin1(cc));
+  gap.str = dia->get_latex_out(code, cc);
 
  // QString get_htxne_out(u1 gp, char cue);
  // dia.get_htxne_out(gap.glyph_code, 

@@ -9,11 +9,11 @@
 
 USING_KANS(HTXN)
 
-void Standard_Diacritic_GlyphDeck::get_full_latex_representation
-  (u2 gp, QChar cue, QString& rep)
-{
+//void Standard_Diacritic_GlyphDeck::get_full_latex_representation
+//  (u2 gp, QChar cue, QString& rep)
+//{
  
-}
+//}
 
 u1 Standard_Diacritic_GlyphDeck::get_representation(u1 gp, QChar& rep)
 {

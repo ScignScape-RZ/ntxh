@@ -59,6 +59,8 @@ public:
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);
  void get_htxne_out(u4 layer, QString& result);
+ void get_latex_out(u4 layer, QString& result);
+
 
  void read_glyph_point(Glyph_Argument_Package& gap, 
    u4 index, Glyph_Vector_8b& gv);
