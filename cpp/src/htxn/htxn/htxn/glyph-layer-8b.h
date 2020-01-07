@@ -23,6 +23,8 @@ typedef quint16 u2;
 typedef quint32 u4;
 typedef quint64 u8;
 
+class HTXN_Node_Detail;
+
 
 class Glyph_Layer_8b : public Glyph_Vector_8b
 {
@@ -38,6 +40,8 @@ private:
 
  QMap<u4, QVector<QPair<u4, u4>>> ranges_; 
  
+ QMap<u4, QVector<const HTXN_Node_Detail*>> processing_leaves_;
+
  u4 id_;
 
 public:
@@ -48,7 +52,10 @@ public:
 
  void add_range(u4 enter, u4 leave, u4 node_code);
 
- u4 get_range_by_enter(u4 enter, u4& leave);
+ u4 get_range_by_enter(u4 enter, u4& leave, u2 count);
+
+ QVector<const HTXN_Node_Detail*> check_leave(u4 leave);
+ void add_leave(u4 leave, const HTXN_Node_Detail* nd);
 
 
 };

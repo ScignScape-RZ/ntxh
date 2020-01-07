@@ -47,21 +47,36 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 
 // void HTXN_Document_8b::sss;
 
-void HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl, 
+QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   u4 index, Glyph_Argument_Package& cmdgap, QString& result)
 {
+ // //  check enters ...
  u4 leave = 0;
- u4 node_code = gl.get_range_by_enter(index, leave);
- if(node_code == 0)
-   return;
- const HTXN_Node_Detail& nd = node_details_[node_code - 1];
- // // temporarily ...
- Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
- QString cmd;
- get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
- result.append(QString("\\%1{").arg(cmd));
- cmdgap.reset();
- // leave? ...  
+ u2 count = 0;
+ for (;;)
+ {
+  u4 node_code = gl.get_range_by_enter(index, leave, count);
+  if(node_code == 0)
+    break;
+  ++count;
+  const HTXN_Node_Detail& nd = node_details_[node_code - 1];
+  // // temporarily ...
+  Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
+  QString cmd;
+  get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
+  result.append(QString("\\%1{").arg(cmd));
+  cmdgap.reset();
+  gl.add_leave(leave, &nd);
+ }
+
+ QString end_result;
+ // // and leaves ...
+ QVector<const HTXN_Node_Detail*> nds = gl.check_leave(index);
+ for(const HTXN_Node_Detail* nd : nds)
+ {
+  end_result.append("}");
+ }
+ return end_result;
 }
 
 void HTXN_Document_8b::get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
@@ -90,14 +105,20 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  gap.internal_deck = current_deck_;
  cmdgap.internal_deck = current_deck_;
  //?gap.internal_diacritic_deck = current_diacritic_deck_;
+ QString end_result;
  for(u4 i = 0; i < gl->size(); ++i)
  {
-  check_latex_insert(*gl, i, cmdgap, result);
+  end_result = check_latex_insert(*gl, i, cmdgap, result);
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);
   else
     result.append(gap.chr);
+  if(!end_result.isEmpty())
+  {
+   result.append(end_result);
+   end_result.clear();
+  }
   gap.reset();
  }
 }

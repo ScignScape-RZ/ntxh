@@ -15,13 +15,25 @@ Glyph_Layer_8b::Glyph_Layer_8b(u4 id)
 
 }
 
-u4 Glyph_Layer_8b::get_range_by_enter(u4 enter, u4& leave)
+void Glyph_Layer_8b::add_leave(u4 leave, const HTXN_Node_Detail* nd)
+{
+ processing_leaves_[leave].push_back(nd);
+}
+
+QVector<const HTXN_Node_Detail*> Glyph_Layer_8b::check_leave(u4 leave)
+{
+ return processing_leaves_.value(leave);
+}
+
+u4 Glyph_Layer_8b::get_range_by_enter(u4 enter, u4& leave, u2 count)
 {
  auto it = ranges_.find(enter);
  if(it == ranges_.end())
    return 0;
- leave = it.value().first().first;
- return it.value().first().second; 
+ if(count >= it.value().size())
+   return 0;
+ leave = it.value()[count].first;
+ return it.value()[count].second;
 }
 
 void Glyph_Layer_8b::add_range(u4 enter, u4 leave, u4 node_code)

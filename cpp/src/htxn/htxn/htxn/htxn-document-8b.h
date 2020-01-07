@@ -82,7 +82,7 @@ public:
 
  void mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2 diacritic_code);
 
- void check_latex_insert(Glyph_Layer_8b& gl, 
+ QString check_latex_insert(Glyph_Layer_8b& gl,
    u4 index, Glyph_Argument_Package& cmdgap, QString& result);
 
 };
