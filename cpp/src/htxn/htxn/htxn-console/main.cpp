@@ -16,6 +16,8 @@ USING_KANS(HTXN)
 
 int main(int argc, char *argv[])
 {
+ qDebug() << "ok";
+
  HTXN_Document_8b doc;
 
  doc.add_standard_deck();

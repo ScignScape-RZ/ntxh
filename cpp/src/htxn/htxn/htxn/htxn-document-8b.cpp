@@ -15,6 +15,7 @@
 
 #include "glyph-argument-package.h"
 
+#include <QDebug>
 
 USING_KANS(HTXN)
 
@@ -25,6 +26,7 @@ HTXN_Document_8b::HTXN_Document_8b()
      current_deck_code_(0),
      current_glyph_vector_(nullptr)
 {
+ qDebug() << "NEW";
 }
 
 void HTXN_Document_8b::add_standard_deck()
