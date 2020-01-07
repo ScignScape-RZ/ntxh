@@ -35,10 +35,10 @@ int main(int argc, char *argv[])
  gl2->set_description("Latex");
  gl2->flags.main = true;
  
- u4 range_code = doc.add_detail_range(gl2, 20, 28);
- u4 rc1 = doc.add_detail_range(gl2, 28, 28);
+ u4 range_code = doc.add_detail_range(gl2, 22, 29);
+ u4 rc1 = doc.add_detail_range(gl2, 30, 30);
 
- gl1->add_range(6, 8, rc1);
+ gl1->add_range(7, 8, rc1);
 
  //doc.read_layer("Th|`is.");
 

@@ -7,7 +7,6 @@
 
 PROJECT_NAME = htxn
 
-message(X: $$QMAKE_CONSOLE_ROOTX)
 
 include(../build-group.pri)
 

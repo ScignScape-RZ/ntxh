@@ -15,11 +15,24 @@ TEMPLATE = lib
 ##    To see the settings obtained from these substitutions,
 ##    uncomment the "message" lines below.
 
-ROOT_DIR = $$OUT_PWD
+#?ROOT_DIR = $$OUT_PWD
+#?ROOT_DIR ~= s!/cpp/projects.qt/.*!!
 
-message(SRC: $$SRC_DIR)
+ROOT_DIR = $$_PRO_FILE_PWD_
+ROOT_DIR ~= s!/cpp/projects/qt/.*!!
 
-ROOT_DIR ~= s!/cpp/projects.qt/.*!!
+CPP_ROOT_DIR = $$ROOT_DIR/cpp
+
+message(RD: $$ROOT_DIR)
+
+defined(QMAKE_CONSOLE_TARGET_DIR, var){
+  TARGETS_ROOT_DIR = $$QMAKE_CONSOLE_TARGET_DIR
+  TARGETS_ROOT_DIR ~= s!@!$$ROOT_DIR!
+} else {
+  TARGETS_ROOT_DIR = $$CPP_ROOT_DIR/targets/qt/qt-multiple
+Release)!\3
+}
+
 
 DEFINES += WHICH_DEFINES=\\\"./_defines/$${WHICH_BUILD_DIR_CODE}_defines.h\\\"
 
@@ -40,12 +53,6 @@ TARGET_CODE = $$TARGET_QT_VERSION-$$BUILD_DIR_CODE
 
 TARGET_NUM = targets-$${TARGET_CODE}
 
-CPP_ROOT_DIR = $$ROOT_DIR/cpp
-
-DATA_ROOT_DIR = $$ROOT_DIR/data
-
-PROJECTS_ROOT_DIR = $$CPP_ROOT_DIR/projects
-
 QT_PROJECTS_ROOT_DIR = $$PROJECTS_ROOT_DIR/qt
 
 PROJECTS_DIR = $$QT_PROJECTS_ROOT_DIR/qt$$TARGET_CODE
@@ -61,8 +68,6 @@ SRC_GROUP_DIR = $$SRC_PROSET_DIR/$$PROJECT_GROUP
 SRC_DIR = $$SRC_GROUP_DIR/$$PROJECT_NAME
 
 TARGET = $$PROJECT_NAME
-
-TARGETS_ROOT_DIR = $$CPP_ROOT_DIR/targets/qt/qt-multiple
 
 TARGETSDIR = $$TARGETS_ROOT_DIR/$$TARGET_NUM
 

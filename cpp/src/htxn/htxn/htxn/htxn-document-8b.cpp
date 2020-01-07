@@ -54,7 +54,7 @@ void HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
  u4 node_code = gl.get_range_by_enter(index, leave);
  if(node_code == 0)
    return;
- const HTXN_Node_Detail& nd = node_details_[node_code];
+ const HTXN_Node_Detail& nd = node_details_[node_code - 1];
  // // temporarily ...
  Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
  QString cmd;
@@ -88,6 +88,7 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  Glyph_Argument_Package gap;
  Glyph_Argument_Package cmdgap;
  gap.internal_deck = current_deck_;
+ cmdgap.internal_deck = current_deck_;
  //?gap.internal_diacritic_deck = current_diacritic_deck_;
  for(u4 i = 0; i < gl->size(); ++i)
  {
