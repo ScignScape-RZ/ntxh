@@ -8,6 +8,8 @@ PROJECT_NAME = htxn
 
 include(../build-group.pri)
 
+message(SRCD: $$SRC_DIR)
+
 
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR $$SRC_ROOT_DIR
 
@@ -39,12 +41,16 @@ DEFINES += USE_KANS
 HEADERS += \
   $$SRC_DIR/standard-glyphdeck-8b.h \
   $$SRC_DIR/standard-diacritic-glyphdeck.h \
+  $$SRC_DIR/diacritic-glyphdeck-base.h \
   $$SRC_DIR/standard-glyphpack-8b.h \
   $$SRC_DIR/glyph-argument-package.h \
   $$SRC_DIR/glyphdeck-base-8b.h \
   $$SRC_DIR/glyph-layers-8b.h \
+  $$SRC_DIR/glyph-layer-8b.h \
   $$SRC_DIR/glyph-vector-8b.h \
   $$SRC_DIR/htxn-document-8b.h \
+  $$SRC_DIR/graph/htxn-node-detail.h \
+  $$SRC_DIR/graph/htxn-node-details.h \
 
 
 SOURCES += \
@@ -54,8 +60,11 @@ SOURCES += \
   $$SRC_DIR/glyph-argument-package.cpp \
   $$SRC_DIR/glyphdeck-base-8b.cpp \
   $$SRC_DIR/glyph-layers-8b.cpp \
+  $$SRC_DIR/glyph-layer-8b.cpp \
   $$SRC_DIR/glyph-vector-8b.cpp \
   $$SRC_DIR/htxn-document-8b.cpp \
+  $$SRC_DIR/graph/htxn-node-detail.cpp \
+  $$SRC_DIR/graph/htxn-node-details.cpp \
 
 
 #?

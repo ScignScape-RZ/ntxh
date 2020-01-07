@@ -12,6 +12,8 @@
 
 #include "kans.h"
 
+#include "htxn-node-detail.h"
+
 #include <QString>
 #include <QList>
 #include <QDate>
@@ -30,7 +32,8 @@ class Glyph_Layer_8b;
 
 
 class HTXN_Node_Details
-{ 
+{
+protected:
  QVector<HTXN_Node_Detail> node_details_;
 
 public:

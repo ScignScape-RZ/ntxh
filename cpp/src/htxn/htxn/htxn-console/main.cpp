@@ -8,8 +8,11 @@
 #include <QDebug>
 
 #include "htxn/htxn-document-8b.h"
+#include "htxn/glyph-layer-8b.h"
 
 USING_KANS(HTXN)
+
+
 
 int main(int argc, char *argv[])
 {
@@ -18,19 +21,37 @@ int main(int argc, char *argv[])
  doc.add_standard_deck();
  doc.add_standard_diacritic_deck();
 
- //doc.read_layer("This `(-)is a text layer.");
- doc.read_layer("This.");
+ //
+ Glyph_Layer_8b* gl1 = doc.read_layer("This is a test layer.  The end.");
+
+ gl1->set_description("Main");
+ gl1->flags.main = true;
+
+ Glyph_Layer_8b* gl2 = doc.read_layer
+   ("documentclassarticledocumenti");
+
+ gl2->set_description("Latex");
+ gl2->flags.main = true;
+ 
+ u4 range_code = doc.add_detail_range(gl2, 20, 28);
+ u4 rc1 = doc.add_detail_range(gl2, 28, 28);
+
+ gl1->add_range(6, 8, rc1);
+
+ //doc.read_layer("Th|`is.");
 
  QString out;
 
- doc.get_qstring_out(0, out);
+//? doc.get_qstring_out(0, out);
+//? qDebug() << out;
+//? out.clear();
+
+//? doc.get_htxne_out(0, out);
+//? qDebug() << out;
+//? out.clear();
+
+ doc.get_latex_out(0, out);
  qDebug() << out;
- out.clear();
-
- doc.get_htxne_out(0, out);
-
- qDebug() << out;
-
 
  return 0;
 }

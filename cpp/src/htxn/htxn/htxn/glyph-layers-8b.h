@@ -29,6 +29,7 @@ typedef quint64 u8;
 class GlyphDeck_Base_8b;
 class Glyph_Layer_8b;
 struct Glyph_Argument_Package;
+class Glyph_Vector_8b;
 
 class Diacritic_GlyphDeck_Base;
 

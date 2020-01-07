@@ -11,6 +11,7 @@
 #include "standard-diacritic-glyphdeck.h"
 
 #include "glyph-vector-8b.h"
+#include "glyph-layer-8b.h"
 
 #include "glyph-argument-package.h"
 
@@ -24,7 +25,6 @@ HTXN_Document_8b::HTXN_Document_8b()
      current_deck_code_(0),
      current_glyph_vector_(nullptr)
 {
-
 }
 
 void HTXN_Document_8b::add_standard_deck()
@@ -43,19 +43,22 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
  dia_id_by_deck_[current_diacritic_deck_] = decks_by_id_.size();
 }
 
+// void HTXN_Document_8b::sss;
+
 void HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl, 
-  u4 index, Glyph_Argument_Package& gap, QString& result)
+  u4 index, Glyph_Argument_Package& cmdgap, QString& result)
 {
  u4 leave = 0;
- u4 node_code = gl.get_range_by_enter(index);
+ u4 node_code = gl.get_range_by_enter(index, leave);
  if(node_code == 0)
    return;
  const HTXN_Node_Detail& nd = node_details_[node_code];
  // // temporarily ...
  Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
  QString cmd;
- get_latex_command(*ngl, nd.enter, nd.leave, cmd);
+ get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
  result.append(QString("\\%1{").arg(cmd));
+ cmdgap.reset();
  // leave? ...  
 }
 
@@ -64,7 +67,7 @@ void HTXN_Document_8b::get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
 {
  for(u4 i = enter; i <= leave; ++i)
  {
-  this->Glyph_Layers_8b::get_latex_command(gl, i, gap);
+  this->Glyph_Layers_8b::get_latex_command_out(gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);
   else
@@ -86,7 +89,7 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  //?gap.internal_diacritic_deck = current_diacritic_deck_;
  for(u4 i = 0; i < gl->size(); ++i)
  {
-  check_latex_insert(*gl, i, cmdgap);
+  check_latex_insert(*gl, i, cmdgap, result);
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);
@@ -275,7 +278,7 @@ void HTXN_Document_8b::read_glyph_point(Glyph_Argument_Package& gap,
 u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
 {
  u4 result = 0;
- HTXN_Node_Detail* nd = add_detail_range(layer, enter, leave, result);
+ HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
  nd->node_ref = layer;
  return result; 
 }

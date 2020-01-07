@@ -10,7 +10,7 @@
 
 #include "glyph-vector-8b.h"
 
-#include "graph/htxn-node.h"
+#include "graph/htxn-node-detail.h"
 
 #include "flags.h"
 #include "accessors.h"
@@ -36,7 +36,7 @@ public:
 private:
  QString description_;
 
- QMap<u4, QPair<u4, u4>> ranges_; 
+ QMap<u4, QVector<QPair<u4, u4>>> ranges_; 
  
  u4 id_;
 
@@ -53,6 +53,7 @@ public:
 
 };
 
+_KANS(HTXN)
 
 #endif // GLYPH_LAYER_8B__H
 

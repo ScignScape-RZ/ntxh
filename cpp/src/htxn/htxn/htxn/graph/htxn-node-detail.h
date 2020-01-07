@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "flags.h"
+
 #include "kans.h"
 
 #include <QString>
@@ -35,7 +37,7 @@ flags_(2)
  bool key_with_ref:1;
  bool key_no_ref:1; 
  bool has_continue:1;
-_flags(2)
+_flags
 
  void* node_ref;
 
@@ -47,6 +49,7 @@ _flags(2)
 
  HTXN_Node_Detail(u4 e, u4 l);
 
+ HTXN_Node_Detail();
 };
 
 _KANS(HTXN)

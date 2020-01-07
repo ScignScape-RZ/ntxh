@@ -17,6 +17,8 @@ TEMPLATE = lib
 
 ROOT_DIR = $$OUT_PWD
 
+message(SRC: $$SRC_DIR)
+
 ROOT_DIR ~= s!/cpp/projects.qt/.*!!
 
 DEFINES += WHICH_DEFINES=\\\"./_defines/$${WHICH_BUILD_DIR_CODE}_defines.h\\\"

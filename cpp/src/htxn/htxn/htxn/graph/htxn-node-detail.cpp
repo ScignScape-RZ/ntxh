@@ -14,16 +14,23 @@ HTXN_Node_Detail::HTXN_Node_Detail(u4 e, u4 l)
 
 }
 
-u8 HTXN_Node_Detail::get_encoding()
+HTXN_Node_Detail::HTXN_Node_Detail()
+ :  Flags(0), enter(0), leave(0), node_ref(nullptr)
 {
+
+}
+
+
+// u8 HTXN_Node_Detail::get_encoding()
+// {
 // u8 result = (enter << 32) | leave ;
 // if(this.region)
 //   result 
-}
+// }
 
-u8 HTXN_Node_Detail::get_raw_encoding()
-{
+// u8 HTXN_Node_Detail::get_raw_encoding()
+// {
 // u8 result = (u8) *this;
 // return result;
-}
+// }
 
