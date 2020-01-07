@@ -27,13 +27,13 @@ typedef quint32 u4;
 typedef quint64 u8;
 
 class GlyphDeck_Base_8b;
-class Glyph_Vector_8b;
+class Glyph_Layer_8b;
 struct Glyph_Argument_Package;
 
 class Diacritic_GlyphDeck_Base;
 
 
-class Glyph_Layers_8b : public QVector<Glyph_Vector_8b*>
+class Glyph_Layers_8b : public QVector<Glyph_Layer_8b*>
 {
 protected:
 
@@ -58,6 +58,9 @@ public:
    u4 index, Glyph_Argument_Package& gap);
 
  void get_latex_out(Glyph_Vector_8b& gv,
+   u4 index, Glyph_Argument_Package& gap);
+
+ void get_latex_command_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 
  void get_htxne_out(Glyph_Vector_8b& gv,

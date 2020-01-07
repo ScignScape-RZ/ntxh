@@ -43,18 +43,51 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
  dia_id_by_deck_[current_diacritic_deck_] = decks_by_id_.size();
 }
 
+void HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl, 
+  u4 index, Glyph_Argument_Package& gap, QString& result)
+{
+ u4 leave = 0;
+ u4 node_code = gl.get_range_by_enter(index);
+ if(node_code == 0)
+   return;
+ const HTXN_Node_Detail& nd = node_details_[node_code];
+ // // temporarily ...
+ Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
+ QString cmd;
+ get_latex_command(*ngl, nd.enter, nd.leave, cmd);
+ result.append(QString("\\%1{").arg(cmd));
+ // leave? ...  
+}
+
+void HTXN_Document_8b::get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
+  Glyph_Argument_Package& gap, QString& result)
+{
+ for(u4 i = enter; i <= leave; ++i)
+ {
+  this->Glyph_Layers_8b::get_latex_command(gl, i, gap);
+  if(gap.chr.isNull())
+    result.append(gap.str);
+  else
+    result.append(gap.chr);
+  gap.reset();
+ }
+}
+
+
 void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
 {
- Glyph_Vector_8b* gv = value(layer);
- if(!gv)
+ Glyph_Layer_8b* gl = value(layer);
+ if(!gl)
    return;
  //parse_layer(gv)
  Glyph_Argument_Package gap;
+ Glyph_Argument_Package cmdgap;
  gap.internal_deck = current_deck_;
  //?gap.internal_diacritic_deck = current_diacritic_deck_;
- for(u4 i = 0; i < gv->size(); ++i)
+ for(u4 i = 0; i < gl->size(); ++i)
  {
-  this->Glyph_Layers_8b::get_latex_out(*gv, i, gap);
+  check_latex_insert(*gl, i, cmdgap);
+  this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);
   else
@@ -239,12 +272,22 @@ void HTXN_Document_8b::read_glyph_point(Glyph_Argument_Package& gap,
 
 }
 
-void HTXN_Document_8b::read_layer(QString text, u2 gap)
+u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
 {
- Glyph_Vector_8b* gv = new Glyph_Vector_8b;
- push_back(gv);
- current_glyph_vector_ = gv;
- encode_latin1(text.toLatin1(), *gv, gap);
+ u4 result = 0;
+ HTXN_Node_Detail* nd = add_detail_range(layer, enter, leave, result);
+ nd->node_ref = layer;
+ return result; 
+}
+
+
+Glyph_Layer_8b* HTXN_Document_8b::read_layer(QString text, u2 gap)
+{
+ Glyph_Layer_8b* result = new Glyph_Layer_8b(size());
+ push_back(result);
+ current_glyph_vector_ = result;
+ encode_latin1(text.toLatin1(), *result, gap);
+ return result;
 }
 
 u2 HTXN_Document_8b::get_diacritic_cue_code(char cue)

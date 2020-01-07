@@ -116,6 +116,12 @@ void Glyph_Layers_8b::get_qstring_out(Glyph_Vector_8b& gv,
 //void Glyph_Layers_8b::get_latex(u4 layer, u4 index,
 //  Glyph_Argument_Package& gap)
 
+void Glyph_Layers_8b::get_latex_command_out(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
+{
+ get_latex_out(gv, index, gap);
+} 
+
 void Glyph_Layers_8b::get_latex_out(Glyph_Vector_8b& gv,
   u4 index, Glyph_Argument_Package& gap)
 {

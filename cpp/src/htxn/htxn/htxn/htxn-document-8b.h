@@ -20,6 +20,8 @@
 
 #include <functional>
 
+#include "graph/htxn-node-details.h"
+
 //class WCM_WhiteDB;
 
 KANS_(HTXN)
@@ -33,7 +35,8 @@ class GlyphDeck_Base_8b;
 class Glyph_Vector_8b;
 class Standard_Diacritic_GlyphDeck;
 
-class HTXN_Document_8b : public Glyph_Layers_8b
+class HTXN_Document_8b : public Glyph_Layers_8b, 
+  public HTXN_Node_Details
 {
  u4 current_deck_code_;
  GlyphDeck_Base_8b* current_deck_;
@@ -47,20 +50,27 @@ public:
 
 // ACCESSORS_SET(GlyphDeck_Base_8b* ,current_deck)
 
+// void add_range(Glyph_Layer_8b* gl, u4 enter, u4 leave);
+
  void add_standard_deck();
  void add_standard_diacritic_deck();
 
- void read_layer(QString text, u2 gap = 0);
+ Glyph_Layer_8b* read_layer(QString text, u2 gap = 0);
+
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 gap);
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target,
    u4 index, u4& last_index);
 
+ u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave);
 
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);
  void get_htxne_out(u4 layer, QString& result);
+
  void get_latex_out(u4 layer, QString& result);
 
+ void get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
+   Glyph_Argument_Package& gap, QString& result); 
 
  void read_glyph_point(Glyph_Argument_Package& gap, 
    u4 index, Glyph_Vector_8b& gv);
@@ -72,8 +82,12 @@ public:
 
  void mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2 diacritic_code);
 
+ void check_latex_insert(Glyph_Layer_8b& gl, 
+   u4 index, Glyph_Argument_Package& gap, QString& result);
+
 };
 
 _KANS(HTXN)
 
 #endif // HTXN_DOCUMENT_8B__H
+
