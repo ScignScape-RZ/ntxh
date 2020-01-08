@@ -62,6 +62,7 @@ public:
    u4 index, u4& last_index);
 
  u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave);
+ u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave);
 
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);

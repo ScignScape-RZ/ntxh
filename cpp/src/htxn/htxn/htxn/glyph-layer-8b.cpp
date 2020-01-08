@@ -15,12 +15,12 @@ Glyph_Layer_8b::Glyph_Layer_8b(u4 id)
 
 }
 
-void Glyph_Layer_8b::add_leave(u4 leave, const HTXN_Node_Detail* nd)
+void Glyph_Layer_8b::add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd)
 {
- processing_leaves_[leave].push_back(nd);
+ processing_leaves_[leave].push_back({cmd, nd});
 }
 
-QVector<const HTXN_Node_Detail*> Glyph_Layer_8b::check_leave(u4 leave)
+QVector<QPair<QString, const HTXN_Node_Detail*>> Glyph_Layer_8b::check_leave(u4 leave)
 {
  return processing_leaves_.value(leave);
 }

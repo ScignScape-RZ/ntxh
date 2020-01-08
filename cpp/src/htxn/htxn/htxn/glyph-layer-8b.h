@@ -40,7 +40,7 @@ private:
 
  QMap<u4, QVector<QPair<u4, u4>>> ranges_; 
  
- QMap<u4, QVector<const HTXN_Node_Detail*>> processing_leaves_;
+ QMap<u4, QVector<QPair<QString, const HTXN_Node_Detail*>>> processing_leaves_;
 
  u4 id_;
 
@@ -54,8 +54,8 @@ public:
 
  u4 get_range_by_enter(u4 enter, u4& leave, u2 count);
 
- QVector<const HTXN_Node_Detail*> check_leave(u4 leave);
- void add_leave(u4 leave, const HTXN_Node_Detail* nd);
+ QVector<QPair<QString, const HTXN_Node_Detail*>> check_leave(u4 leave);
+ void add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd);
 
 
 };

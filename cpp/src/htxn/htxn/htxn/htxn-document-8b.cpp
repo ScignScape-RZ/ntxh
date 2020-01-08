@@ -64,17 +64,28 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
   QString cmd;
   get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
-  result.append(QString("\\%1{").arg(cmd));
+  if(nd.flags.optional)
+    result.append(QString("\\%1[").arg(cmd));
+  else if(nd.flags.region)
+    result.append(QString("\\begin{%1}").arg(cmd));
+  else
+    result.append(QString("\\%1{").arg(cmd));
   cmdgap.reset();
-  gl.add_leave(leave, &nd);
+  gl.add_leave(leave, cmd, &nd);
  }
 
  QString end_result;
  // // and leaves ...
- QVector<const HTXN_Node_Detail*> nds = gl.check_leave(index);
- for(const HTXN_Node_Detail* nd : nds)
+ QVector<QPair<QString, const HTXN_Node_Detail*>> prs = gl.check_leave(index);
+ for(auto pr: prs)
  {
-  end_result.append("}");
+  const HTXN_Node_Detail* nd = pr.second;
+  if(nd->flags.optional)
+    end_result.append("]");
+  else if(nd->flags.region)
+    end_result.append(QString("\\end{%1}").arg(pr.first));
+  else
+    end_result.append(QString("}"));
  }
  return end_result;
 }
@@ -296,6 +307,16 @@ void HTXN_Document_8b::read_glyph_point(Glyph_Argument_Package& gap,
 {
 // gv.check_exterenal(index, *current_deck_, gap);
 // if(gap.flags.
+
+}
+
+u4 HTXN_Document_8b::add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave)
+{
+ u4 result = 0;
+ HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
+ nd->node_ref = layer;
+ nd->flags.region = true;
+ return result; 
 
 }
 
