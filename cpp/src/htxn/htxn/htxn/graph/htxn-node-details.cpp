@@ -13,11 +13,11 @@ HTXN_Node_Details::HTXN_Node_Details()
 
 }
 
-void HTXN_Node_Details::tie_detail_range(u4 nc1, u4 nc2)
+HTXN_Node_Detail* HTXN_Node_Details::tie_detail_range(u4 nc1, u4 nc2)
 {
  HTXN_Node_Detail& nd1 = node_details_[nc1 - 1];
- HTXN_Node_Detail& nd2 = node_details_[nc2 - 1];
- 
+ nd1.add_node_ref(nc2);
+ return &nd1; 
 }
 
 

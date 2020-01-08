@@ -64,11 +64,20 @@ public:
  u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave);
  u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave);
 
+ void tie_detail_range_preempt(u4 rc1, u4 rc2);
+
+ void check_precedent_ranges(const HTXN_Node_Detail& nd, QStringList& result);
+
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);
  void get_htxne_out(u4 layer, QString& result);
 
  void get_latex_out(u4 layer, QString& result);
+ void get_latex_out(Glyph_Layer_8b* gl, 
+   u4 enter, u4 leave, QString& result);
+
+ void get_latex_insert(HTXN_Node_Detail& nd,
+  QString& result);
 
  void get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
    Glyph_Argument_Package& gap, QString& result); 
@@ -84,7 +93,8 @@ public:
  void mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2 diacritic_code);
 
  QString check_latex_insert(Glyph_Layer_8b& gl,
-   u4 index, Glyph_Argument_Package& cmdgap, QString& result);
+   u4 index, Glyph_Argument_Package& cmdgap, 
+   QStringList& precs, QStringList& succs, QString& result);
 
 };
 

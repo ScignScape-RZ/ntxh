@@ -45,7 +45,7 @@ public:
  HTXN_Node_Detail* add_detail_range( // Glyph_Layer_8b* layer, 
    u4 enter, u4 leave, u4& nc);
 
- void tie_detail_range(u4 nc1, u4 nc2);
+ HTXN_Node_Detail* tie_detail_range(u4 nc1, u4 nc2);
 
 
 };

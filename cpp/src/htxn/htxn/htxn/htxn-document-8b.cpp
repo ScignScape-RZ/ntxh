@@ -47,8 +47,33 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 
 // void HTXN_Document_8b::sss;
 
+void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd, QStringList& result)
+{
+ if(QVector<u4>* vec = nd.get_refs())
+ {
+  u4 sz = vec->size();
+  for(u4 ii = 0; ii < sz; ++ii)
+    result << QString();  
+  u4 i = 0;
+  for(QString& qs : result )
+  {
+   get_latex_insert(node_details_[vec->at(i) - 1], qs);
+   ++i;
+  }
+ }
+}
+
+void HTXN_Document_8b::get_latex_insert(HTXN_Node_Detail& nd,
+  QString& result)
+{
+ Glyph_Layer_8b* gl = nd.get_layer();
+ get_latex_out(gl, nd.enter, nd.leave, result);
+} 
+
+
 QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
-  u4 index, Glyph_Argument_Package& cmdgap, QString& result)
+  u4 index, Glyph_Argument_Package& cmdgap, 
+  QStringList& precs, QStringList& succs, QString& result)
 {
  // //  check enters ...
  u4 leave = 0;
@@ -64,7 +89,9 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
     //(Glyph_Layer_8b*) nd.node_ref;
   QString cmd;
   get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
-  if(nd.flags.optional)
+  if(nd.flags.ref_preempts_wrap)
+    result.append(QString("\\%1").arg(cmd));
+  else if(nd.flags.optional)
     result.append(QString("\\%1[").arg(cmd));
   else if(nd.flags.region)
     result.append(QString("\\begin{%1}").arg(cmd));
@@ -73,12 +100,20 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   cmdgap.reset();
   if(leave == 0)
   {
-   if(nd.flags.optional)
+   if(nd.flags.ref_preempts_wrap)
+     ; // nothing
+   else if(nd.flags.optional)
      result.append("]");
    else if(nd.flags.region)
      result.append(QString("\\end{%1}").arg(cmd));
    else
      result.append("}");
+
+   check_precedent_ranges(nd, precs);
+   for(QString qs : precs)
+   {
+    result.append(QString("{%1}").arg(qs));
+   }
   }  
   else
     gl.add_leave(leave, cmd, &nd);
@@ -120,6 +155,19 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  Glyph_Layer_8b* gl = value(layer);
  if(!gl)
    return;
+ get_latex_out(gl, 0, gl->size(), result);
+}
+
+void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
+{
+ HTXN_Node_Detail* nd = tie_detail_range(rc1, rc2);
+ nd->flags.ref_preempts_wrap = true;
+}
+
+
+void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, 
+  u4 enter, u4 leave, QString& result)
+{
  //parse_layer(gv)
  Glyph_Argument_Package gap;
  Glyph_Argument_Package cmdgap;
@@ -127,9 +175,13 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  cmdgap.internal_deck = current_deck_;
  //?gap.internal_diacritic_deck = current_diacritic_deck_;
  QString end_result;
- for(u4 i = 0; i < gl->size(); ++i)
+ QStringList precs;
+ QStringList succs;
+ for(u4 i = enter; i < leave; ++i)
  {
-  end_result = check_latex_insert(*gl, i, cmdgap, result);
+  end_result = check_latex_insert(*gl, i, cmdgap, 
+    precs, succs, result);
+  precs.clear();
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);

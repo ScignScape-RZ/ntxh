@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
 // gl1->add_range(2, 32, rc1);
 
  u4 rc1 = doc.add_detail_range(gl2, 2, 14);
- u4 rc11 = doc.add_detail_range(gl2, 15, 21);
- doc.tie_detail_range(rc1, rc11);
+ u4 rc11 = doc.add_detail_range(gl2, 15, 22);
+ doc.tie_detail_range_preempt(rc1, rc11);
 
  gl1->add_range(2, 0, rc1);
 

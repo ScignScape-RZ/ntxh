@@ -27,6 +27,11 @@ QVector<u4>* HTXN_Node_Detail::get_refs_from_split() const
  return &pr->second;
 }
 
+QVector<u4>* HTXN_Node_Detail::get_refs() const
+{
+ return (flags.split_node_ref)? get_refs_from_split() : nullptr;
+}
+
 void HTXN_Node_Detail::add_node_ref(u4 nc)
 {
  if(node_ref)
