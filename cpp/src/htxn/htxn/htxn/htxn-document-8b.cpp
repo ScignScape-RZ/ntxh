@@ -60,8 +60,8 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
     break;
   ++count;
   const HTXN_Node_Detail& nd = node_details_[node_code - 1];
-  // // temporarily ...
-  Glyph_Layer_8b* ngl = (Glyph_Layer_8b*) nd.node_ref;
+  Glyph_Layer_8b* ngl = nd.get_layer();
+    //(Glyph_Layer_8b*) nd.node_ref;
   QString cmd;
   get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
   if(nd.flags.optional)
@@ -71,7 +71,17 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   else
     result.append(QString("\\%1{").arg(cmd));
   cmdgap.reset();
-  gl.add_leave(leave, cmd, &nd);
+  if(leave == 0)
+  {
+   if(nd.flags.optional)
+     result.append("]");
+   else if(nd.flags.region)
+     result.append(QString("\\end{%1}").arg(cmd));
+   else
+     result.append("}");
+  }  
+  else
+    gl.add_leave(leave, cmd, &nd);
  }
 
  QString end_result;
@@ -314,7 +324,7 @@ u4 HTXN_Document_8b::add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4
 {
  u4 result = 0;
  HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
- nd->node_ref = layer;
+ nd->set_layer(layer);
  nd->flags.region = true;
  return result; 
 
@@ -324,7 +334,7 @@ u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
 {
  u4 result = 0;
  HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
- nd->node_ref = layer;
+ nd->set_layer(layer);
  return result; 
 }
 

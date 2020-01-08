@@ -20,6 +20,60 @@ HTXN_Node_Detail::HTXN_Node_Detail()
 
 }
 
+QVector<u4>* HTXN_Node_Detail::get_refs_from_split() const
+{
+ QPair<Glyph_Layer_8b*, QVector<u4>>* pr = 
+   static_cast<QPair<Glyph_Layer_8b*, QVector<u4>>*>(node_ref);
+ return &pr->second;
+}
+
+void HTXN_Node_Detail::add_node_ref(u4 nc)
+{
+ if(node_ref)
+ {
+  if(flags.split_node_ref)
+  {
+   QVector<u4>* refs = get_refs_from_split();
+   refs->push_back(nc);
+  }
+  else
+  {
+   QPair<Glyph_Layer_8b*, QVector<u4>>* pr = new 
+     QPair<Glyph_Layer_8b*, QVector<u4>>(
+     {static_cast<Glyph_Layer_8b*>(node_ref), {nc}});
+   node_ref = pr;
+   flags.split_node_ref = true;
+  }
+ }
+ else
+ {
+  node_ref = new 
+    QPair<Glyph_Layer_8b*, QVector<u4>>({nullptr, {nc}});
+  flags.split_node_ref = true;
+ }
+}
+
+Glyph_Layer_8b* HTXN_Node_Detail::get_layer_from_split() const
+{
+ return 
+   static_cast<QPair<Glyph_Layer_8b*, QVector<u4>>*>(node_ref)->first;
+}
+
+Glyph_Layer_8b* HTXN_Node_Detail::get_layer() const
+{
+ if(flags.split_node_ref)
+   return get_layer_from_split();
+ return static_cast<Glyph_Layer_8b*>(node_ref);
+}
+
+void HTXN_Node_Detail::set_layer(Glyph_Layer_8b* gl)
+{
+ if(flags.split_node_ref)
+   static_cast<QPair<Glyph_Layer_8b*, QVector<u4>>*>(node_ref)
+   ->first = gl;
+ else
+   node_ref = gl;
+}
 
 // u8 HTXN_Node_Detail::get_encoding()
 // {

@@ -33,10 +33,16 @@ int main(int argc, char *argv[])
    ("documentclassarticledocumenti");
 
  gl2->set_description("Latex");
- gl2->flags.main = true;
  
- u4 rc1 = doc.add_detail_range_region(gl2, 22, 29);
- gl1->add_range(2, 32, rc1);
+// u4 rc1 = doc.add_detail_range_region(gl2, 22, 29);
+// gl1->add_range(2, 32, rc1);
+
+ u4 rc1 = doc.add_detail_range(gl2, 2, 14);
+ u4 rc11 = doc.add_detail_range(gl2, 15, 21);
+ doc.tie_detail_range(rc1, rc11);
+
+ gl1->add_range(2, 0, rc1);
+
 
  u4 rc2 = doc.add_detail_range(gl2, 30, 30);
  gl1->add_range(7, 8, rc2);

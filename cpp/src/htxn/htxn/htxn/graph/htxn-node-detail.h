@@ -23,6 +23,8 @@
 
 KANS_(HTXN)
 
+class Glyph_Layer_8b;
+
 typedef quint8 u1;
 typedef quint16 u2;
 typedef quint32 u4;
@@ -37,6 +39,8 @@ flags_(2)
  bool key_with_ref:1;
  bool key_no_ref:1; 
  bool has_continue:1;
+ bool split_node_ref:1;
+
 _flags
 
  void* node_ref;
@@ -50,6 +54,13 @@ _flags
  HTXN_Node_Detail(u4 e, u4 l);
 
  HTXN_Node_Detail();
+
+ void add_node_ref(u4 nc);
+ QVector<u4>* get_refs_from_split() const;
+ Glyph_Layer_8b* get_layer_from_split() const;
+
+ Glyph_Layer_8b* get_layer() const;
+ void set_layer(Glyph_Layer_8b* gl);
 };
 
 _KANS(HTXN)

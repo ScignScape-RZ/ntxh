@@ -13,6 +13,14 @@ HTXN_Node_Details::HTXN_Node_Details()
 
 }
 
+void HTXN_Node_Details::tie_detail_range(u4 nc1, u4 nc2)
+{
+ HTXN_Node_Detail& nd1 = node_details_[nc1 - 1];
+ HTXN_Node_Detail& nd2 = node_details_[nc2 - 1];
+ 
+}
+
+
 HTXN_Node_Detail* HTXN_Node_Details::add_detail_range( // Glyph_Layer_8b* layer, 
   u4 enter, u4 leave, u4& nc)
 {
