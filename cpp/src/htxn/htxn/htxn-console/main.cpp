@@ -13,7 +13,7 @@
 USING_KANS(HTXN)
 
 
-int main(int argc, char *argv[])
+int main1(int argc, char *argv[])
 {
  HTXN_Document_8b doc;
 
@@ -26,9 +26,21 @@ int main(int argc, char *argv[])
   doc.read_htxne_in(file); 
  }
 
+ QString out;
+ doc.get_qstring_out(0, out);
+ qDebug() << out;
+ out.clear();
+
+ QFile file1("/home/nlevisrael/hypergr/ntxh/ar/cpp/qmake-console/projects/htxn-console/t11.txt");
+ if(file1.open(QIODevice::WriteOnly | QIODevice::Text))
+ {
+  doc.write_htxne_out(file1); 
+ }
+
+
 }
 
-int main1(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  HTXN_Document_8b doc;
 
@@ -36,7 +48,7 @@ int main1(int argc, char *argv[])
  doc.add_standard_diacritic_deck();
 
  //
- Glyph_Layer_8b* gl1 = doc.read_layer("Th.s is a test layer.  The end.");
+ Glyph_Layer_8b* gl1 = doc.read_layer("This is a test layer.  The end.");
 
  gl1->set_description("Main");
  gl1->flags.main = true;

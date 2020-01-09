@@ -63,10 +63,14 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::SqDqX, 1 },
   { Standard_GlyphDeck_8b::TxtStarX, 1 },
   { Standard_GlyphDeck_8b::TxtPlusX, 1 },
+
   { Standard_GlyphDeck_8b::FslX, 1 },
+  { Standard_GlyphDeck_8b::SpaceX, 2},
+  { Standard_GlyphDeck_8b::Boundary, 3 },
+  { Standard_GlyphDeck_8b::Null, 4 },
 
   { Standard_GlyphDeck_8b::NpColX, 1 },
-  { Standard_GlyphDeck_8b::NpSemX, 1 },
+  { Standard_GlyphDeck_8b::NpSemiX, 1 },
   { Standard_GlyphDeck_8b::NpQmX, 1 },
   { Standard_GlyphDeck_8b::IndQm, 1 },
   { Standard_GlyphDeck_8b::NpLtX, 1 },
@@ -76,7 +80,7 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::OCyBrX, 1 },
   { Standard_GlyphDeck_8b::CCyBrX, 1 },
   { Standard_GlyphDeck_8b::BslX, 1 },
-  { Standard_GlyphDeck_8b::NullX, 1 },
+  //?{ Standard_GlyphDeck_8b::NullX, 1 },
  };
 
  u1 alt_code = static_map.value(gap.glyph_code);
@@ -408,7 +412,7 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
  case 26: return QChar('!'); // // 90  // NsExc
  case 27: return QChar(' '); // // 91  // SnSp
 
- case 28: return QChar('\n'); // // 92 // Boundary
+ case 28: return QChar('/'); // // 92 // Boundary
 
  case 29: return QChar('\t'); // // 93 // SpaceX
 

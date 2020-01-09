@@ -42,58 +42,61 @@ public:
 
  enum Alt_Interpretation_Codes {
    Space = 63,
-   NpDot = 76, NsPer = 88, 
-   NpExcX = 116,
-   NpOParX = 117,
-   NpCParX = 118,
    NpMinus = 74,
+   NpDot = 76,
    SnDash = 81,
    DashSML = 82,
-   DashX = 89,
+   IndQm = 87,
+   NsPer = 88,
+   NsQm = 89,
+   NsExc = 90,
+   SnSp = 91,
+   Boundary = 92,
 
-   NmComX = 122,
-   SqSqX = 102,
+   SpaceX = 93,
+   DashX = 94,
+   FslX = 95,
+   OSqBrX = 96,
+   CSqBrX = 97,
+   OCyBrX = 98,
+   CCyBrX = 99,
+
+   Null = 100,
+  // NullX = 95,
+
+   TxtHatX = 101,
+   NpCmaX = 102,
+   SqSqX = 103,
+   NpColX = 104,
+   NpSemiX = 105,
+   NpQmX = 106,
+
+   BslX = 107,
+   PipeX = 108,
+
    TxtNumX = 109,
    TxtDolX = 110,
    TxtPerX = 111,
    TxtPlusX = 112,
    TxtAmpX = 113,
-   SqDqX = 123,
-
    TxtStarX = 114,
+   TxtEqX = 115,
 
-   NpColX = 103,
-   NpSemX = 104,
-   NsQm = 89,
-   NpQmX = 105,
-   IndQm = 87,
-   NsExc = 90,
-   SnSp = 91,
-   Boundary = 92,
+   NpExcX = 116,
+   NpOParX = 117,
+   NpCParX = 118,
+
+   NpDotX = 119,
 
    NpLtX = 120,
    NpGtX = 121,
-   TxtEqX = 115,
+
+   NmComX = 122,
+   SqDqX = 123,
 
    TxtAtX = 124,
-   BslX = 106,
-   TxtHatX = 100,
-
-   NullX = 95,
    BqX = 125,
-
-   OSqBrX = 91,
-   CSqBrX = 92,
-   OCyBrX = 93,
-   CCyBrX = 94,
-
-   PipeX = 107,
-   TildeX = 126, 
-
-   FslX = 90,
-
-   SpaceX = 93,
-   Null = 100,
+   TildeX = 126,
 
  };
 

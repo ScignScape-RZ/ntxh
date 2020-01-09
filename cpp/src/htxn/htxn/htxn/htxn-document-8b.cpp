@@ -26,7 +26,6 @@ HTXN_Document_8b::HTXN_Document_8b()
      current_deck_code_(0),
      current_glyph_vector_(nullptr)
 {
- qDebug() << "NEW";
 }
 
 void HTXN_Document_8b::add_standard_deck()
@@ -224,6 +223,7 @@ void HTXN_Document_8b::write_htxne_out(QIODevice& qiod)
  {
   get_htxne_out(gl, qba);
   qiod.write(qba, qba.size());
+  qiod.write("\n\n"); 
   qba.clear();
  }
  //result.append(QString::fromLatin1(qba)); 
@@ -285,6 +285,7 @@ void HTXN_Document_8b::get_htxne_out(Glyph_Vector_8b* gv, QByteArray& result)
   // // now we know the prior run has to break;
   switch(run_code)
   {
+   // // the trailing ` is for the next run ...
   case 1: result.append(")`"); break;
   case 2: result.append("]`"); break;
   case 3: result.append("}`"); break;
@@ -309,7 +310,7 @@ void HTXN_Document_8b::get_htxne_out(Glyph_Vector_8b* gv, QByteArray& result)
    }
    else if(gap.flags.alt_2)
    {
-    handle_alt(1, '{', '}');
+    handle_alt(2, '{', '}');
    }
    else if(gap.flags.alt_3)
    {
@@ -326,8 +327,8 @@ void HTXN_Document_8b::get_htxne_out(Glyph_Vector_8b* gv, QByteArray& result)
    switch(run_code)
    {
    case 1: result.append(')'); break;
-   case 2: result.append(']'); break;
-   case 3: result.append('}'); break;
+   case 2: result.append('}'); break;
+   case 3: result.append(']'); break;
    case 4: result.append('>'); break;
    default: break;
    }
@@ -371,8 +372,8 @@ void HTXN_Document_8b::get_htxne_out(Glyph_Vector_8b* gv, QByteArray& result)
   switch(run_code)
   {
   case 1: result.append(')'); break;
-  case 2: result.append(']'); break;
-  case 3: result.append('}'); break;
+  case 2: result.append('}'); break;
+  case 3: result.append(']'); break;
   case 4: result.append('>'); break;
   default: break;
   }
@@ -465,7 +466,7 @@ void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
 
 void HTXN_Document_8b::encode_latin1(QByteArray& src, 
   Glyph_Vector_8b& target, u4 index, u4& last_index, 
-  QByteArray* offset_acc,  
+  Glyph_Vector_8b* offset_acc,  
   QIODevice* qiod, u4 buffer_length, u4 layer_size_estimate)
 {
  u4 boundary_count = (offset_acc)? 3 : 1; 
@@ -547,8 +548,8 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
 
    { { '/', 0 }, 86 },
    { { '/', 1 }, Standard_GlyphDeck_8b::FslX },
-   { { '/', 2 }, Standard_GlyphDeck_8b::Boundary },
-   { { '/', 3 }, Standard_GlyphDeck_8b::SpaceX },
+   { { '/', 2 }, Standard_GlyphDeck_8b::SpaceX },
+   { { '/', 3 }, Standard_GlyphDeck_8b::Boundary },
    { { '/', 4 }, Standard_GlyphDeck_8b::Null },
  };
 
@@ -558,7 +559,7 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
    { { ':', 1 }, Standard_GlyphDeck_8b::NpColX },
 
    { { ';', 0 }, 72 },
-   { { ';', 1 }, Standard_GlyphDeck_8b::NpSemX },
+   { { ';', 1 }, Standard_GlyphDeck_8b::NpSemiX },
 
    { { '?', 0 }, 73 },
    { { '?', 1 }, Standard_GlyphDeck_8b::NpQmX },
@@ -592,7 +593,7 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
    { { '^', 1 }, Standard_GlyphDeck_8b::TxtHatX },
 
    { { '_', 0 }, 37 },
-   { { '_', 1 }, Standard_GlyphDeck_8b::NullX },
+   //?{ { '_', 1 }, Standard_GlyphDeck_8b::NullX },
 
    { { '`', 0 }, Standard_GlyphDeck_8b::BqX },
    { { '`', 1 }, Standard_GlyphDeck_8b::BqX },
@@ -644,85 +645,85 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
  {
   if(reread_index)
   {
-   // // need to make sure target has enough space  
+   // // need to make sure target has enough space
    if(target.size() < index + reread_index)
-     target.resize(index + reread_index);
+    target.resize(index + reread_index);
   }
- for(char chr : src)
- {
-  ++total_read;
+  for(char chr : src)
+  {
+   ++total_read;
 
-  quint8 code = 0;
+   quint8 code = 0;
 
-  if(held_state == 11)
-  {
-   if(chr == '~')
+   if(held_state == 11)
    {
-    // //  we'll keep length_with_held_state 
-     //    for future reference
-    held_state = 12;
-    continue;
-   }
-   length_with_held_state = 0;
-   held_state = 0;
-  }
-  else if(held_state == 12)
-  {
-   if(chr == '(')
-   {
-    // //  Again, we'll keep length_with_held_state 
-     //    for future reference
-    held_state = 13;
-    continue;
-   }
-   length_with_held_state = 0;
-   held_state = 0;
-  }
-  else if(held_state == 13)
-  {
-   if(chr == ')')
-   {
-    // // store the acc;
-    for(u2 i = 0; i < length_with_held_state; ++i)
+    if(chr == '~')
     {
-     flags_strings[index - i] = flags_acc;
+     // //  we'll keep length_with_held_state
+     //    for future reference
+     held_state = 12;
+     continue;
     }
-    flags_acc.clear();
-    length_with_held_state = 0; 
+    length_with_held_state = 0;
     held_state = 0;
    }
-   else
-     flags_acc.append(QChar::fromLatin1(chr));
-   continue;
-  }
-  else if(chr == '|')
-  {
-   if(held_state == 20)
-     held_state = 0; // // || escape; no diacritic
-   // //  inside the offset_acc | is just a normal character  
-   else if( (held_state == 0) && !(boundary_count > 1) )
-   { 
-    held_state = 20; 
-    continue;
-   }    
-  }
-  
-  if(held_state >= 20)
-  {
-   // //  part of a diacritic ...
-
-   //    20 -- diacritic start
-   //    22-4 -- diacritic scope 2-4
-   //    201 -- 0 of 1
-   //    202 -- 0 of 2
-   //    203 -- 0 of 3
-   //    212 -- 1 of 2
-   //    213 -- 1 of 3
-   //    223 -- 2 of 3
-
-   switch(held_state)
+   else if(held_state == 12)
    {
-   case 20: 
+    if(chr == '(')
+    {
+     // //  Again, we'll keep length_with_held_state
+     //    for future reference
+     held_state = 13;
+     continue;
+    }
+    length_with_held_state = 0;
+    held_state = 0;
+   }
+   else if(held_state == 13)
+   {
+    if(chr == ')')
+    {
+     // // store the acc;
+     for(u2 i = 0; i < length_with_held_state; ++i)
+     {
+      flags_strings[index - i] = flags_acc;
+     }
+     flags_acc.clear();
+     length_with_held_state = 0;
+     held_state = 0;
+    }
+    else
+     flags_acc.append(QChar::fromLatin1(chr));
+    continue;
+   }
+   else if(chr == '|')
+   {
+    if(held_state == 20)
+     held_state = 0; // // || escape; no diacritic
+    // //  inside the offset_acc | is just a normal character
+    else if( (held_state == 0) && !(boundary_count > 1) )
+    {
+     held_state = 20;
+     continue;
+    }
+   }
+
+   if(held_state >= 20)
+   {
+    // //  part of a diacritic ...
+
+    //    20 -- diacritic start
+    //    22-4 -- diacritic scope 2-4
+    //    201 -- 0 of 1
+    //    202 -- 0 of 2
+    //    203 -- 0 of 3
+    //    212 -- 1 of 2
+    //    213 -- 1 of 3
+    //    223 -- 2 of 3
+
+    switch(held_state)
+    {
+    case 20:
     {
      u2 dcode;
      u1 length = get_diacritic_length_or_code(chr, dcode);
@@ -731,7 +732,7 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
       if(code > 0)
       {
        diacritic_code = dcode;
-       held_state = 210 + length; 
+       held_state = 210 + length;
       }
       else
       {
@@ -744,199 +745,199 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
       held_state = 201;
      }
     }
-    continue; // overall loop
-   case 22:
-    diacritic_code = get_diacritic_code(chr, 2);
-    held_state = 202;
-    continue; // overall loop
-   case 23:
-    diacritic_code = get_diacritic_code(chr, 3);
-    held_state = 203;
-    continue; // overall loop
-   case 24:
-    // //  to be determined ...
-    exit(0);
-    break;
+     continue; // overall loop
+    case 22:
+     diacritic_code = get_diacritic_code(chr, 2);
+     held_state = 202;
+     continue; // overall loop
+    case 23:
+     diacritic_code = get_diacritic_code(chr, 3);
+     held_state = 203;
+     continue; // overall loop
+    case 24:
+     // //  to be determined ...
+     exit(0);
+     break;
 
-   default:
-    code = get_diacritic_cue_code(chr);
-    code |= 64; // set dia bit ...
-    break;   
-   }
-  }
-  else if(chr < 48)
-  {
-   if( (held_state == 10) && (chr == '(') )
-   {
-    held_state = 1;
-    continue;
-   }
-   if(held_state == 1)
-   {
-    if( (chr == ')') && (length_with_held_state > 0) )
-    {
-     if(l_index > 0)
-     {
-      // // this means that we've seen a boundary ...
-      last_index = l_index;
-      u8 pos = seek_landmark + total_read + 2;
-      qiod->seek(pos);
-      return;      
-     }
-     else
-     {
-      held_state = 11;
-      continue;
-     }
+    default:
+     code = get_diacritic_cue_code(chr);
+     code |= 64; // set dia bit ...
+     break;
     }
    }
+   else if(chr < 48)
+   {
+    if( (held_state == 10) && (chr == '(') )
+    {
+     held_state = 1;
+     continue;
+    }
+    if(held_state == 1)
+    {
+     if( (chr == ')') && (length_with_held_state > 0) )
+     {
+      if(l_index > 0)
+      {
+       // // this means that we've seen a boundary ...
+       last_index = l_index;
+       u8 pos = seek_landmark + total_read + 2;
+       qiod->seek(pos);
+       return;
+      }
+      else
+      {
+       held_state = 11;
+       continue;
+      }
+     }
+    }
 
-   code = static_47.value( {chr, held_state} );
-   if(code == 0)
+    code = static_47.value( {chr, held_state} );
+    if(code == 0)
      continue;
-  }
-  else if(chr < 58)
-  {
-   // // (48 .. 58):  a digit
-   code = chr - 48;
-  }
-  else if(chr < 65)
-  {
-   if( (held_state == 10) && (chr == '<') )
-   {
-    held_state = 4;
-    continue;
    }
-   if( (held_state == 4) && 
-       (chr == '>') && (length_with_held_state > 0) )
+   else if(chr < 58)
    {
-    held_state = 11;
-    continue;
+    // // (48 .. 58):  a digit
+    code = chr - 48;
    }
-   code = static_64.value( {chr, held_state} );
-   if(code == 0)
+   else if(chr < 65)
+   {
+    if( (held_state == 10) && (chr == '<') )
+    {
+     held_state = 4;
      continue;
-  }
-  else if(chr < 91)
-  {
-   // //   (A .. Z)
-   code = chr - 28;
-  }
-  else if(chr < 97)
-  {
-   if(chr == '`')
-   {
-    held_state = 10;
-    continue;
-   }
-   if(chr == '[')
-   {
-    held_state = 3;
-    continue;
-   }
-   if( (held_state == 3) && (chr == ']')
-     && (length_with_held_state > 0) )
-   {
-    held_state = 11;
-    continue;
-   }
-   code = static_96.value( {chr, held_state} );
-   if(code == 0)
+    }
+    if( (held_state == 4) &&
+        (chr == '>') && (length_with_held_state > 0) )
+    {
+     held_state = 11;
      continue;
-  }
-  else if(chr < 123)
-  {
-   // //   (a .. z)
-   code = chr - 87;
-  }
-  else if(chr == '{')
-  {
-   if(held_state == 10)
-   {
-    held_state = 2;
-    continue;
-   }
-   code = static_127.value( {chr, held_state} );
-   if(code == 0)
+    }
+    code = static_64.value( {chr, held_state} );
+    if(code == 0)
      continue;
-  }
-  else if(chr == '}')
-  {
-   if( (held_state == 2) && (length_with_held_state > 0) )
-   {
-    held_state = 11;
-    continue;
    }
-   code = static_127.value( {chr, held_state} );
-   if(code == 0)
+   else if(chr < 91)
+   {
+    // //   (A .. Z)
+    code = chr - 28;
+   }
+   else if(chr < 97)
+   {
+    if(chr == '`')
+    {
+     held_state = 10;
      continue;
-  }
+    }
+    if(chr == '[')
+    {
+     held_state = 3;
+     continue;
+    }
+    if( (held_state == 3) && (chr == ']')
+        && (length_with_held_state > 0) )
+    {
+     held_state = 11;
+     continue;
+    }
+    code = static_96.value( {chr, held_state} );
+    if(code == 0)
+     continue;
+   }
+   else if(chr < 123)
+   {
+    // //   (a .. z)
+    code = chr - 87;
+   }
+   else if(chr == '{')
+   {
+    if(held_state == 10)
+    {
+     held_state = 2;
+     continue;
+    }
+    code = static_127.value( {chr, held_state} );
+    if(code == 0)
+     continue;
+   }
+   else if(chr == '}')
+   {
+    if( (held_state == 2) && (length_with_held_state > 0) )
+    {
+     held_state = 11;
+     continue;
+    }
+    code = static_127.value( {chr, held_state} );
+    if(code == 0)
+     continue;
+   }
 
-  // // got code ...
+   // // got code ...
 
-  if(held_state >= 20)
-  {
-   // // we need to mark the diacritic
-    //   also set the diacritic_code 
+   if(held_state >= 20)
+   {
+    // // we need to mark the diacritic
+    //   also set the diacritic_code
     //   anticipating next char in 2 or 3 length
-   switch(held_state)
-   {
-   case 201:
-    mark_diacritic_code(target, index, diacritic_code);
-    diacritic_code = 0;
-    held_state = 0;
-    break;
-   case 202:
-    mark_diacritic_code(target, index, diacritic_code);
-    diacritic_code = get_diacritic_code_inh(2, 2);
-    held_state = 212;
-    break;
-   case 212:
-    mark_diacritic_code(target, index, diacritic_code);
-    diacritic_code = 0;
-    held_state = 0;
-    break;
-   case 203:
-    mark_diacritic_code(target, index, diacritic_code);
-    diacritic_code = get_diacritic_code_inh(2, 3);
-    held_state = 213;
-    break;
-   case 213:
-    mark_diacritic_code(target, index, diacritic_code);
-    diacritic_code = get_diacritic_code_inh(3, 3);
-    held_state = 223;
-    break;
-   case 223:
-    mark_diacritic_code(target, index, diacritic_code);
-    diacritic_code = 0;
-    held_state = 0;
-    break;
-   default: break;
+    switch(held_state)
+    {
+    case 201:
+     mark_diacritic_code(target, index, diacritic_code);
+     diacritic_code = 0;
+     held_state = 0;
+     break;
+    case 202:
+     mark_diacritic_code(target, index, diacritic_code);
+     diacritic_code = get_diacritic_code_inh(2, 2);
+     held_state = 212;
+     break;
+    case 212:
+     mark_diacritic_code(target, index, diacritic_code);
+     diacritic_code = 0;
+     held_state = 0;
+     break;
+    case 203:
+     mark_diacritic_code(target, index, diacritic_code);
+     diacritic_code = get_diacritic_code_inh(2, 3);
+     held_state = 213;
+     break;
+    case 213:
+     mark_diacritic_code(target, index, diacritic_code);
+     diacritic_code = get_diacritic_code_inh(3, 3);
+     held_state = 223;
+     break;
+    case 223:
+     mark_diacritic_code(target, index, diacritic_code);
+     diacritic_code = 0;
+     held_state = 0;
+     break;
+    default: break;
+    }
    }
-  }
-  else if(held_state != 0)
+   else if(held_state != 0)
     ++length_with_held_state;
 
-  //current_deck_->encode()
-  if(code == Standard_GlyphDeck_8b::Boundary)
-  {
-   --boundary_count;
-   if(boundary_count == 0)
+   //current_deck_->encode()
+   if(code == Standard_GlyphDeck_8b::Boundary)
    {
-    // // return after closing ')' ...
-    l_index = index;
+    --boundary_count;
+    if(boundary_count == 0)
+    {
+     // // return after closing ')' ...
+     l_index = index;
+     continue;
+    }
+   }
+   else if(boundary_count > 1)
+   {
+    offset_acc->push_back(code);
     continue;
    }
-  }
-  else if(boundary_count > 1)
-  {
-   offset_acc->push_back(code);
-   continue;
-  }
    
-  target[index] = code;
-  ++index;
- }
+   target[index] = code;
+   ++index;
+  }
 
   if(qiod)
   {
@@ -982,7 +983,9 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
 
  u4 last_index = index;
 
- encode_latin1(src, target, index, last_index, index - 1);
+ // // when called from here src will not be changed ...
+ encode_latin1(const_cast<QByteArray&>(src), target, 
+   index, last_index);
  target[last_index] = Standard_GlyphDeck_8b::Boundary;
  target.resize(last_index + 1);
 }
