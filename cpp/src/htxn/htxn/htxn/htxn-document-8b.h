@@ -30,6 +30,7 @@ typedef quint8 u1;
 typedef quint16 u2;
 typedef quint32 u4;
 typedef quint64 u8;
+typedef qint64 s8;
 
 class GlyphDeck_Base_8b;
 class Glyph_Vector_8b;
@@ -62,7 +63,7 @@ public:
  void encode_latin1(QByteArray& src, Glyph_Vector_8b& target,
    u4 index, u4& last_index, 
    Glyph_Vector_8b* offset_acc = nullptr, QIODevice* qiod = nullptr, 
-   u4 buffer_length = 0, u4 layer_size_estimate = 0);
+   u4 buffer_length = 0);
 
  u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave);
  u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave);

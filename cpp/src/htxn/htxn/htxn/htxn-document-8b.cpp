@@ -460,6 +460,8 @@ void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
   Glyph_Vector_8b offset_acc;
   encode_latin1(src, *result, 0, last_index, 
     &offset_acc, &qiod);
+  (*current_glyph_vector_)[last_index] = Standard_GlyphDeck_8b::Boundary;
+  current_glyph_vector_->resize(last_index + 1);
  }
 }
 
@@ -467,15 +469,17 @@ void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
 void HTXN_Document_8b::encode_latin1(QByteArray& src, 
   Glyph_Vector_8b& target, u4 index, u4& last_index, 
   Glyph_Vector_8b* offset_acc,  
-  QIODevice* qiod, u4 buffer_length, u4 layer_size_estimate)
+  QIODevice* qiod, u4 buffer_length) //, u4 layer_size_estimate)
 {
  u4 boundary_count = (offset_acc)? 3 : 1; 
 
  u4 reread_index, oneread_index, index_landmark;
+ s8 seek_landmark;
  if(qiod)
  {
+  seek_landmark = qiod->pos();
   if(buffer_length == 0)
-    buffer_length = 4092;
+    buffer_length = DEFAULT_HTXN_READ_BUFFER_LENGTH;
   src = qiod->read(buffer_length);
   reread_index = src.length();
   oneread_index = 0;
@@ -486,11 +490,11 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
   reread_index = 0;
   oneread_index = src.length();
   index_landmark = 0;
+  seek_landmark = 0;
  }
- if(layer_size_estimate == 0)
-    layer_size_estimate = src.length();
+// if(layer_size_estimate == 0)
+//    layer_size_estimate = src.length();
 
- u8 seek_landmark = 0;
  u4 l_index = 0;
  u4 total_read = 0;
 
@@ -772,24 +776,11 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
      held_state = 1;
      continue;
     }
-    if(held_state == 1)
+    if( (held_state == 1) && (chr == ')')
+      && (length_with_held_state > 0) )
     {
-     if( (chr == ')') && (length_with_held_state > 0) )
-     {
-      if(l_index > 0)
-      {
-       // // this means that we've seen a boundary ...
-       last_index = l_index;
-       u8 pos = seek_landmark + total_read + 2;
-       qiod->seek(pos);
-       return;
-      }
-      else
-      {
-       held_state = 11;
-       continue;
-      }
-     }
+     held_state = 11;
+     continue;
     }
 
     code = static_47.value( {chr, held_state} );
@@ -830,7 +821,7 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
      held_state = 10;
      continue;
     }
-    if(chr == '[')
+    if( (held_state == 10) && (chr == '[') )
     {
      held_state = 3;
      continue;
@@ -838,8 +829,19 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
     if( (held_state == 3) && (chr == ']')
         && (length_with_held_state > 0) )
     {
-     held_state = 11;
-     continue;
+     if(l_index > 0)
+     {
+      // // this means that we've seen a boundary ...
+      last_index = l_index;
+      s8 pos = seek_landmark + total_read + 2;
+      qiod->seek(pos);
+      return;
+     }
+     else
+     {
+      held_state = 11;
+      continue;
+     }
     }
     code = static_96.value( {chr, held_state} );
     if(code == 0)

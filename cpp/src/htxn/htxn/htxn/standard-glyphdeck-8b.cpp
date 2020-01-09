@@ -152,6 +152,8 @@ void Standard_GlyphDeck_8b::get_qstring_out(u1 gp, Glyph_Argument_Package& gap)
 {
  if(gp < 64)
    gap.chr = get_text_default(gp);
+ else if(gp == Boundary)
+   gap.chr = '\n';
  else
    gap.chr = get_nondiacritic_default(gp - 64);
 }

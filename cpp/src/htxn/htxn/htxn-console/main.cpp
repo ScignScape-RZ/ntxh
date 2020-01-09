@@ -13,14 +13,14 @@
 USING_KANS(HTXN)
 
 
-int main1(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
  HTXN_Document_8b doc;
 
  doc.add_standard_deck();
  doc.add_standard_diacritic_deck();
 
- QFile file("/home/nlevisrael/hypergr/ntxh/ar/cpp/qmake-console/projects/htxn-console/t1.txt");
+ QFile file(DEFAULT_HTXN_READ_FOLDER "/test/t1.txt");
  if(file.open(QIODevice::ReadOnly | QIODevice::Text))
  {
   doc.read_htxne_in(file); 
@@ -31,7 +31,7 @@ int main1(int argc, char *argv[])
  qDebug() << out;
  out.clear();
 
- QFile file1("/home/nlevisrael/hypergr/ntxh/ar/cpp/qmake-console/projects/htxn-console/t11.txt");
+ QFile file1(DEFAULT_HTXN_READ_FOLDER "/test/t1a.txt");
  if(file1.open(QIODevice::WriteOnly | QIODevice::Text))
  {
   doc.write_htxne_out(file1); 
@@ -40,7 +40,7 @@ int main1(int argc, char *argv[])
 
 }
 
-int main(int argc, char *argv[])
+int main2(int argc, char *argv[])
 {
  HTXN_Document_8b doc;
 
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 
 // QString out;
 
- QFile file("/home/nlevisrael/hypergr/ntxh/ar/cpp/qmake-console/projects/htxn-console/t1.txt");
+ QFile file(DEFAULT_HTXN_READ_FOLDER "/test/t1.txt");
  if(file.open(QIODevice::WriteOnly | QIODevice::Text))
  {
   doc.write_htxne_out(file); 

@@ -26,6 +26,7 @@ KANS_(HTXN)
 typedef quint8 u1;
 typedef quint16 u2;
 typedef quint64 u8;
+typedef qint64 s8;
 
 class GlyphDeck_Base_8b;
 class Diacritic_GlyphDeck_Base;
