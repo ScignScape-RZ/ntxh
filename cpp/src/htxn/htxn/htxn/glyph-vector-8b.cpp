@@ -39,7 +39,10 @@ void Glyph_Vector_8b::check_external(u4 index,
 void Glyph_Vector_8b::check_external(u4 index, u1 gp, Glyph_Argument_Package& gap)
 {
  if(gap.flags.confirmed_non_diacritic)
-   return;
+ {
+  gap.glyph_code = gp;
+  return;
+ }
  if(gap.flags.maybe_external_deck)
  {
   auto it = deck_map_.find(index);

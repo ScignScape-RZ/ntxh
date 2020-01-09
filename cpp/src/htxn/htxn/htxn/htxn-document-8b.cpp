@@ -217,11 +217,23 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
  } 
 }
 
+void HTXN_Document_8b::write_htxne_out(QIODevice& qiod)
+{
+ QByteArray qba;
+ for(Glyph_Layer_8b* gl : *this)
+ {
+  get_htxne_out(gl, qba);
+  qiod.write(qba, qba.size());
+  qba.clear();
+ }
+ //result.append(QString::fromLatin1(qba)); 
+}
+
 void HTXN_Document_8b::get_htxne_out(u4 layer, QString& result)
 {
  QByteArray qba;
  get_htxne_out(layer, qba);
- result = QString::fromLatin1(qba);
+ result.append(QString::fromLatin1(qba));
 }
 
 void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
@@ -229,10 +241,14 @@ void HTXN_Document_8b::get_htxne_out(u4 layer, QByteArray& result)
  Glyph_Vector_8b* gv = value(layer);
  if(!gv)
    return;
+ get_htxne_out(gv, result);
+}
+
+void HTXN_Document_8b::get_htxne_out(Glyph_Vector_8b* gv, QByteArray& result)
+{
  result.reserve(gv->size());
  Glyph_Argument_Package gap;
  gap.internal_deck = current_deck_;
-
  u1 run_code = 0;
  u1 run_length = 0;
  u1 tilde_check = 0;
@@ -390,13 +406,12 @@ u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
  return result; 
 }
 
-
-Glyph_Layer_8b* HTXN_Document_8b::read_layer(QString text, u2 gap)
+Glyph_Layer_8b* HTXN_Document_8b::read_layer(QString text, u2 offset)
 {
  Glyph_Layer_8b* result = new Glyph_Layer_8b(size());
  push_back(result);
  current_glyph_vector_ = result;
- encode_latin1(text.toLatin1(), *result, gap);
+ encode_latin1(text.toLatin1(), *result, offset);
  return result;
 }
 
@@ -432,9 +447,52 @@ u1 HTXN_Document_8b::get_diacritic_length_or_code(char cue, u2& code)
  return 0;
 }
 
-void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
-  Glyph_Vector_8b& target, u4 index, u4& last_index)
+void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
 {
+ while(!qiod.atEnd())
+ {
+  Glyph_Layer_8b* result = new Glyph_Layer_8b(size());
+  push_back(result);
+  current_glyph_vector_ = result;
+  u4 last_index = 0;
+  QByteArray src;
+  Glyph_Vector_8b offset_acc;
+  encode_latin1(src, *result, 0, last_index, 
+    &offset_acc, &qiod);
+ }
+}
+
+
+void HTXN_Document_8b::encode_latin1(QByteArray& src, 
+  Glyph_Vector_8b& target, u4 index, u4& last_index, 
+  QByteArray* offset_acc,  
+  QIODevice* qiod, u4 buffer_length, u4 layer_size_estimate)
+{
+ u4 boundary_count = (offset_acc)? 3 : 1; 
+
+ u4 reread_index, oneread_index, index_landmark;
+ if(qiod)
+ {
+  if(buffer_length == 0)
+    buffer_length = 4092;
+  src = qiod->read(buffer_length);
+  reread_index = src.length();
+  oneread_index = 0;
+  index_landmark = index;
+ }
+ else
+ {
+  reread_index = 0;
+  oneread_index = src.length();
+  index_landmark = 0;
+ }
+ if(layer_size_estimate == 0)
+    layer_size_estimate = src.length();
+
+ u8 seek_landmark = 0;
+ u4 l_index = 0;
+ u4 total_read = 0;
+
  static QMap<QPair<char, u1>, quint8> static_47 {
 
    { { '\n', 0 }, 127 },
@@ -582,8 +640,18 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   //    213 -- 1 of 3
   //    223 -- 2 of 3
 
+ while(reread_index || oneread_index)
+ {
+  if(reread_index)
+  {
+   // // need to make sure target has enough space  
+   if(target.size() < index + reread_index)
+     target.resize(index + reread_index);
+  }
  for(char chr : src)
  {
+  ++total_read;
+
   quint8 code = 0;
 
   if(held_state == 11)
@@ -630,8 +698,9 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
   else if(chr == '|')
   {
    if(held_state == 20)
-     held_state = 0; // // || escape; no diacritic  
-   else if(held_state == 0)
+     held_state = 0; // // || escape; no diacritic
+   // //  inside the offset_acc | is just a normal character  
+   else if( (held_state == 0) && !(boundary_count > 1) )
    { 
     held_state = 20; 
     continue;
@@ -706,8 +775,19 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
    {
     if( (chr == ')') && (length_with_held_state > 0) )
     {
-     held_state = 11;
-     continue;
+     if(l_index > 0)
+     {
+      // // this means that we've seen a boundary ...
+      last_index = l_index;
+      u8 pos = seek_landmark + total_read + 2;
+      qiod->seek(pos);
+      return;      
+     }
+     else
+     {
+      held_state = 11;
+      continue;
+     }
     }
    }
 
@@ -838,8 +918,41 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
     ++length_with_held_state;
 
   //current_deck_->encode()
+  if(code == Standard_GlyphDeck_8b::Boundary)
+  {
+   --boundary_count;
+   if(boundary_count == 0)
+   {
+    // // return after closing ')' ...
+    l_index = index;
+    continue;
+   }
+  }
+  else if(boundary_count > 1)
+  {
+   offset_acc->push_back(code);
+   continue;
+  }
+   
   target[index] = code;
-  ++index;  
+  ++index;
+ }
+
+  if(qiod)
+  {
+   // // keep track of this index for rewind ...
+   index_landmark = index;
+   seek_landmark = qiod->pos();
+   total_read = 0;
+
+   src = qiod->read(buffer_length);
+   reread_index = src.length();
+  }
+  else
+  {
+   oneread_index = 0;
+  }
+  // end while
  }
  last_index = index;
 }
@@ -852,14 +965,14 @@ void HTXN_Document_8b::mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2
 
 
 void HTXN_Document_8b::encode_latin1(const QByteArray& src, 
-  Glyph_Vector_8b& target, u2 gap)
+  Glyph_Vector_8b& target, u2 offset)
 {
- target.resize(src.size() + gap + 3);
+ target.resize(src.size() + offset + 3);
 
  target[0] = Standard_GlyphDeck_8b::Boundary;
 
  u4 index = 1;
- while(index < gap + 1)
+ while(index < offset + 1)
  {
   target[index] = Standard_GlyphDeck_8b::Space;
   ++index;
@@ -869,7 +982,7 @@ void HTXN_Document_8b::encode_latin1(const QByteArray& src,
 
  u4 last_index = index;
 
- encode_latin1(src, target, index, last_index);
+ encode_latin1(src, target, index, last_index, index - 1);
  target[last_index] = Standard_GlyphDeck_8b::Boundary;
  target.resize(last_index + 1);
 }

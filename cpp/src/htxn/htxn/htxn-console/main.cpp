@@ -13,43 +13,67 @@
 USING_KANS(HTXN)
 
 
-
 int main(int argc, char *argv[])
 {
- qDebug() << "ok";
+ HTXN_Document_8b doc;
 
+ doc.add_standard_deck();
+ doc.add_standard_diacritic_deck();
+
+ QFile file("/home/nlevisrael/hypergr/ntxh/ar/cpp/qmake-console/projects/htxn-console/t1.txt");
+ if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+ {
+  doc.read_htxne_in(file); 
+ }
+
+}
+
+int main1(int argc, char *argv[])
+{
  HTXN_Document_8b doc;
 
  doc.add_standard_deck();
  doc.add_standard_diacritic_deck();
 
  //
- Glyph_Layer_8b* gl1 = doc.read_layer("This is a test layer.  The end.");
+ Glyph_Layer_8b* gl1 = doc.read_layer("Th.s is a test layer.  The end.");
 
  gl1->set_description("Main");
  gl1->flags.main = true;
 
  Glyph_Layer_8b* gl2 = doc.read_layer
-   ("documentclassarticledocumenti");
-
+   ("documentclassdocumenti");
  gl2->set_description("Latex");
+
+ Glyph_Layer_8b* gl3 = doc.read_layer
+   ("article");
+ gl3->set_description("Latex");
  
 // u4 rc1 = doc.add_detail_range_region(gl2, 22, 29);
 // gl1->add_range(2, 32, rc1);
 
  u4 rc1 = doc.add_detail_range(gl2, 2, 14);
- u4 rc11 = doc.add_detail_range(gl2, 15, 22);
+ u4 rc11 = doc.add_detail_range(gl3, 2, 9);
  doc.tie_detail_range_preempt(rc1, rc11);
 
  gl1->add_range(2, 0, rc1);
 
+ u4 rc2 = doc.add_detail_range_region(gl2, 15, 22);
+ gl1->add_range(2, 32, rc2);
 
- u4 rc2 = doc.add_detail_range(gl2, 30, 30);
- gl1->add_range(7, 8, rc2);
+
+ u4 rc3 = doc.add_detail_range(gl2, 23, 23);
+ gl1->add_range(7, 8, rc3);
 
  //doc.read_layer("Th|`is.");
 
- QString out;
+// QString out;
+
+ QFile file("/home/nlevisrael/hypergr/ntxh/ar/cpp/qmake-console/projects/htxn-console/t1.txt");
+ if(file.open(QIODevice::WriteOnly | QIODevice::Text))
+ {
+  doc.write_htxne_out(file); 
+ }
 
 //? doc.get_qstring_out(0, out);
 //? qDebug() << out;
@@ -57,10 +81,18 @@ int main(int argc, char *argv[])
 
 //? doc.get_htxne_out(0, out);
 //? qDebug() << out;
-//? out.clear();
+//? 
+//out.clear();
 
- doc.get_latex_out(0, out);
- qDebug() << out;
+//doc.get_htxne_out(1, out);
+//qDebug() << out;
+//out.clear();
+//doc.get_htxne_out(2, out);
+//qDebug() << out;
+//out.clear();
+
+// doc.get_latex_out(0, out);
+// qDebug() << out;
 
  return 0;
 }

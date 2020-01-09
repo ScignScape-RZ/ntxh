@@ -55,11 +55,14 @@ public:
  void add_standard_deck();
  void add_standard_diacritic_deck();
 
- Glyph_Layer_8b* read_layer(QString text, u2 gap = 0);
+ Glyph_Layer_8b* read_layer(QString text, u2 offset = 0);
 
- void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 gap);
- void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target,
-   u4 index, u4& last_index);
+ void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 offset);
+
+ void encode_latin1(QByteArray& src, Glyph_Vector_8b& target,
+   u4 index, u4& last_index, 
+   Glyph_Vector_8b* offset_acc = nullptr, QIODevice* qiod = nullptr, 
+   u4 buffer_length = 0, u4 layer_size_estimate = 0);
 
  u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave);
  u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave);
@@ -71,6 +74,10 @@ public:
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);
  void get_htxne_out(u4 layer, QString& result);
+ void get_htxne_out(Glyph_Vector_8b* gv, QByteArray& result);
+
+ void write_htxne_out(QIODevice& qiod);
+ void read_htxne_in(QIODevice& qiod);
 
  void get_latex_out(u4 layer, QString& result);
  void get_latex_out(Glyph_Layer_8b* gl, 
