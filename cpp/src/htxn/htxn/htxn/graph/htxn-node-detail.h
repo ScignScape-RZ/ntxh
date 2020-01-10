@@ -20,6 +20,7 @@
 
 #include <functional>
 
+class QTextStream;
 
 KANS_(HTXN)
 
@@ -63,6 +64,8 @@ _flags
  Glyph_Layer_8b* get_layer() const;
  void set_layer(Glyph_Layer_8b* gl);
 };
+
+//QTextStream& operator<<(QTextStream& qts, const HTXN_Node_Detail rhs);
 
 _KANS(HTXN)
 

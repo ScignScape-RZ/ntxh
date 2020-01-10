@@ -216,8 +216,52 @@ void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
  } 
 }
 
+QTextStream& operator<<(QTextStream& qts, 
+  const HTXN_Node_Detail& rhs)
+{
+ qts << rhs.Flags << rhs.enter << rhs.leave;
+ return qts;
+}
+
+QTextStream& operator<<(QTextStream& qts, 
+  const QVector<HTXN_Node_Detail>& rhs)
+{
+ qts << rhs.length() << "\n";
+ for(const HTXN_Node_Detail& nd : rhs)
+   qts << nd << "\n"; 
+ return qts;
+}
+
+QTextStream& operator>>(QTextStream& qts, 
+  HTXN_Node_Detail& rhs)
+{
+ qts >> rhs.Flags >> rhs.enter >> rhs.leave;
+ return qts;
+}
+
+QTextStream& operator>>(QTextStream& qts, 
+  QVector<HTXN_Node_Detail>& rhs)
+{
+ int sz; 
+ qts >> sz;
+ rhs.resize(sz);
+ qDebug() << "SZ: " << sz;
+ // // read the newline
+ qts.read(1);
+ for(HTXN_Node_Detail& nd : rhs)
+ {
+  qts >> nd;
+  // // read the newline
+  qts.read(1);
+ } 
+ return qts;
+}
+
+
+
 void HTXN_Document_8b::write_htxne_out(QIODevice& qiod)
 {
+ qiod.write("## htxne\n#\n");
  QByteArray qba;
  for(Glyph_Layer_8b* gl : *this)
  {
@@ -226,6 +270,10 @@ void HTXN_Document_8b::write_htxne_out(QIODevice& qiod)
   qiod.write("\n\n"); 
   qba.clear();
  }
+ qiod.write("@@ ranges\n");
+ QTextStream qts(&qiod);
+ qts << node_details_;
+
  //result.append(QString::fromLatin1(qba)); 
 }
 
@@ -450,8 +498,23 @@ u1 HTXN_Document_8b::get_diacritic_length_or_code(char cue, u2& code)
 
 void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
 {
+ QByteArray scratch_qba; 
  while(!qiod.atEnd())
  {
+  scratch_qba = qiod.peek(1);
+  if(scratch_qba[0] == '#')
+  {
+   qiod.readLine();
+   scratch_qba.clear();
+   continue;
+  }
+  else if(scratch_qba[0] == '@')
+  {
+   qiod.readLine();
+   scratch_qba.clear();
+   break;
+  }
+
   Glyph_Layer_8b* result = new Glyph_Layer_8b(size());
   push_back(result);
   current_glyph_vector_ = result;
@@ -463,6 +526,15 @@ void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
   (*current_glyph_vector_)[last_index] = Standard_GlyphDeck_8b::Boundary;
   current_glyph_vector_->resize(last_index + 1);
  }
+ 
+ while(!qiod.atEnd())
+ {
+  scratch_qba.append(qiod.readLine());
+ }
+  qDebug() << "SQ: " << scratch_qba; 
+
+ QTextStream qts(scratch_qba);
+ qts >> node_details_;
 }
 
 
