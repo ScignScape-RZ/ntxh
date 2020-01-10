@@ -47,8 +47,20 @@ public:
 
  HTXN_Node_Detail* tie_detail_range(u4 nc1, u4 nc2);
 
-
 };
+
+
+QTextStream& operator<<(QTextStream& qts, 
+  const HTXN_Node_Detail& rhs);
+
+QTextStream& operator<<(QTextStream& qts, 
+  const QVector<HTXN_Node_Detail>& rhs);
+
+QTextStream& operator>>(QTextStream& qts, 
+  HTXN_Node_Detail& rhs);
+
+QTextStream& operator>>(QTextStream& qts, 
+  QVector<HTXN_Node_Detail>& rhs);
 
 _KANS(HTXN)
 

@@ -15,6 +15,17 @@ Glyph_Layer_8b::Glyph_Layer_8b(u4 id)
 
 }
 
+void Glyph_Layer_8b::write_ranges(QTextStream& qts) const
+{
+
+}
+
+void Glyph_Layer_8b::read_ranges(QTextStream& qts)
+{
+
+}
+
+
 void Glyph_Layer_8b::add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd)
 {
  processing_leaves_[leave].push_back({cmd, nd});

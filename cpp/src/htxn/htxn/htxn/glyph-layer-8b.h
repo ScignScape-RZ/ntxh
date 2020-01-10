@@ -57,8 +57,10 @@ public:
  QVector<QPair<QString, const HTXN_Node_Detail*>> check_leave(u4 leave);
  void add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd);
 
-
+ void write_ranges(QTextStream& qts) const;
+ void read_ranges(QTextStream& qts);
 };
+
 
 _KANS(HTXN)
 

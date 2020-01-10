@@ -10,6 +10,8 @@
 
 #include "glyph-argument-package.h"
 
+#include "glyph-layer-8b.h"
+
 #include "glyphdeck-base-8b.h"
 
 #include "diacritic-glyphdeck-base.h"
@@ -19,6 +21,8 @@
 #include <QString>
 #include <QList>
 #include <QVector>
+
+#include <QTextStream>
 
 #include <functional>
 
@@ -182,5 +186,41 @@ void Glyph_Layers_8b::get_latex_out(Glyph_Vector_8b& gv,
 // }
 }
 
+KANS_(HTXN)
+
+QTextStream& operator<<(QTextStream& qts, 
+  const QVector<Glyph_Layer_8b*>& rhs)
+{
+ qts << rhs.size() << "\n";
+ for(Glyph_Layer_8b* gl : rhs)
+ {
+  qts << gl->id() << "\n";
+  gl->write_ranges(qts);
+  qts << "\n";
+ }
+}
+
+QTextStream& operator>>(QTextStream& qts, 
+  QVector<Glyph_Layer_8b*>& rhs)
+{
+ int sz;
+ qts >> sz;
+  // // read newline
+ qts.read(1);
+ rhs.resize(sz);
+ for(Glyph_Layer_8b*& gl : rhs)
+ {
+  u4 id;
+  qts >> id;
+  gl = new Glyph_Layer_8b(id);
+  // // read newline
+  qts.read(1);
+  gl->read_ranges(qts);
+  // // read newline
+  qts.read(1);
+ }
+}
+
+_KANS(HTXN)
 
 

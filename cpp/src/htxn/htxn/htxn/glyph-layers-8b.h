@@ -18,7 +18,7 @@
 
 #include <functional>
 
-//class WCM_WhiteDB;
+class QTextStream;
 
 KANS_(HTXN)
 
@@ -70,6 +70,14 @@ public:
  //virtual void check_external(u1 gp, Glyph_Argument_Package& gap); 
 
 };
+
+
+QTextStream& operator<<(QTextStream& qts, 
+  const QVector<Glyph_Layer_8b*>& rhs);
+
+QTextStream& operator>>(QTextStream& qts, 
+  QVector<Glyph_Layer_8b*>& rhs);
+
 
 _KANS(HTXN)
 
