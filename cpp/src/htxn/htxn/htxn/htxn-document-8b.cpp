@@ -228,11 +228,14 @@ void HTXN_Document_8b::write_htxne_out(QIODevice& qiod)
   qba.clear();
  }
 
- QTextStream qts(&qiod);
- qiod.write("@@ ranges\n");
-// qts << node_details_;
+// qiod.write("@@ ranges\n");
 
- qiod.write("@@ details\n");
+ QTextStream qts(&qiod);
+ qts << "@@ ranges\n";
+ qts << (QVector<Glyph_Layer_8b*>&)*this;
+
+ qts << "@@ details\n";
+ //qiod.write("@@ details\n");
  qts << node_details_;
 
  //result.append(QString::fromLatin1(qba)); 
@@ -487,15 +490,26 @@ void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
   (*current_glyph_vector_)[last_index] = Standard_GlyphDeck_8b::Boundary;
   current_glyph_vector_->resize(last_index + 1);
  }
- 
+
+ QByteArray ranges_qba;
+ QByteArray details_qba;
+ QByteArray* current = &ranges_qba;
  while(!qiod.atEnd())
  {
-  scratch_qba.append(qiod.readLine());
+  scratch_qba = qiod.readLine();
+  if(scratch_qba.startsWith('#'))
+    continue; 
+  if(scratch_qba.startsWith('@'))
+    current = &details_qba;
+  else
+    current->append(scratch_qba);
  }
-  qDebug() << "SQ: " << scratch_qba; 
+ QTextStream rqts(ranges_qba);
+ rqts >> (QVector<Glyph_Layer_8b*>&)*this;
 
- QTextStream qts(scratch_qba);
- qts >> node_details_;
+ QTextStream dqts(details_qba);
+ dqts >> node_details_;
+//#endif // def HIDE 
 }
 
 

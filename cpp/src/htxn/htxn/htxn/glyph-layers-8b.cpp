@@ -191,13 +191,14 @@ KANS_(HTXN)
 QTextStream& operator<<(QTextStream& qts, 
   const QVector<Glyph_Layer_8b*>& rhs)
 {
- qts << rhs.size() << "\n";
+ qts << rhs.size() << '\n';
  for(Glyph_Layer_8b* gl : rhs)
  {
-  qts << gl->id() << "\n";
+  qts << '=' << gl->id() << '\n';
   gl->write_ranges(qts);
-  qts << "\n";
+  qts << "!\n";
  }
+ return qts;
 }
 
 QTextStream& operator>>(QTextStream& qts, 
@@ -207,18 +208,21 @@ QTextStream& operator>>(QTextStream& qts,
  qts >> sz;
   // // read newline
  qts.read(1);
- rhs.resize(sz);
- for(Glyph_Layer_8b*& gl : rhs)
+  //? rhs.resize(sz);
+ for(Glyph_Layer_8b* gl : rhs)
  {
+   // // read '='
+  qts.read(1);
   u4 id;
   qts >> id;
-  gl = new Glyph_Layer_8b(id);
-  // // read newline
+     //? gl = new Glyph_Layer_8b(id);
+   // // read newline
   qts.read(1);
   gl->read_ranges(qts);
-  // // read newline
+   // // read newline
   qts.read(1);
  }
+ return qts;
 }
 
 _KANS(HTXN)

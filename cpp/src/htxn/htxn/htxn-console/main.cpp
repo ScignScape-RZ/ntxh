@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 }
 
-int main2(int argc, char *argv[])
+int main1(int argc, char *argv[])
 {
  HTXN_Document_8b doc;
 

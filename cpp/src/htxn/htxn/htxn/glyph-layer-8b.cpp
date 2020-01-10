@@ -7,6 +7,9 @@
 
 #include "glyph-layer-8b.h"
 
+#include <QTextStream>
+
+
 USING_KANS(HTXN)
 
 Glyph_Layer_8b::Glyph_Layer_8b(u4 id)
@@ -17,12 +20,55 @@ Glyph_Layer_8b::Glyph_Layer_8b(u4 id)
 
 void Glyph_Layer_8b::write_ranges(QTextStream& qts) const
 {
-
+ QMapIterator<u4, QVector<QPair<u4, u4>>> it(ranges_);
+ while(it.hasNext())
+ {
+  it.next();
+  qts << it.key() << '<';
+  const QVector<QPair<u4, u4>>& vec = it.value();
+  qts << vec.size() << '>';
+  for(const QPair<u4, u4>& pr : vec)
+    qts << pr.first << ';' << pr.second << ',';
+  qts << '\n';
+ }
+ //qts << '/';
 }
 
 void Glyph_Layer_8b::read_ranges(QTextStream& qts)
 {
-
+ QByteArray peek;
+ while(!qts.atEnd())
+ {
+  u4 key;
+  qts >> key;
+  if(key == 0)
+  {
+   char c;
+   qts >> c;
+   if(c == '!')
+    // // newline, etc.
+    break;
+  }
+  QVector<QPair<u4, u4>>& vec = ranges_[key];
+   // // read '<'
+  qts.read(1);
+  int sz;
+  qts >> sz;
+   // // read '>'
+  qts.read(1); 
+  vec.resize(sz);
+  for(QPair<u4, u4>& pr : vec)
+  {
+   qts >> pr.first;
+    // // read ';'
+   qts.read(1); 
+   qts >> pr.second;
+    // // read ','
+   qts.read(1); 
+  }
+   // read newline ...
+  qts.read(1);   
+ }
 }
 
 
