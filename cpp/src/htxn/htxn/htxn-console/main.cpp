@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
   doc.write_htxne_out(file1); 
  }
 
-
+ return 0;
 }
 
 int main1(int argc, char *argv[])

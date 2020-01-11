@@ -47,6 +47,10 @@ public:
 
  HTXN_Node_Detail* tie_detail_range(u4 nc1, u4 nc2);
 
+ void write_ties(QTextStream& qts);
+ void read_ties(QTextStream& qts, 
+   const QVector<Glyph_Layer_8b*>& layers);
+
 };
 
 

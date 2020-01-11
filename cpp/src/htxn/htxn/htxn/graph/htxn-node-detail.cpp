@@ -80,6 +80,15 @@ void HTXN_Node_Detail::set_layer(Glyph_Layer_8b* gl)
    node_ref = gl;
 }
 
+void HTXN_Node_Detail::prepare_read()
+{
+ if(flags.split_node_ref)
+ {
+  node_ref = new QPair<Glyph_Layer_8b*, QVector<u4>>;
+ }
+}
+
+
 // u8 HTXN_Node_Detail::get_encoding()
 // {
 // u8 result = (enter << 32) | leave ;

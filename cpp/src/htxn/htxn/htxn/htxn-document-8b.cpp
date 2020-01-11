@@ -227,17 +227,18 @@ void HTXN_Document_8b::write_htxne_out(QIODevice& qiod)
   qiod.write("\n\n"); 
   qba.clear();
  }
-
 // qiod.write("@@ ranges\n");
 
  QTextStream qts(&qiod);
  qts << "@@ ranges\n";
  qts << (QVector<Glyph_Layer_8b*>&)*this;
 
- qts << "@@ details\n";
+ qts << " *\n@@ details\n";
  //qiod.write("@@ details\n");
  qts << node_details_;
 
+ qts << " *\n%% ties\n";
+ write_ties(qts);
  //result.append(QString::fromLatin1(qba)); 
 }
 
@@ -491,25 +492,48 @@ void HTXN_Document_8b::read_htxne_in(QIODevice& qiod)
   current_glyph_vector_->resize(last_index + 1);
  }
 
- QByteArray ranges_qba;
- QByteArray details_qba;
- QByteArray* current = &ranges_qba;
+ QByteArray* ranges_qba = new QByteArray;
+ QByteArray* details_qba = nullptr;
+ QByteArray* ties_qba = nullptr;
+
+ QByteArray* current = ranges_qba;
  while(!qiod.atEnd())
  {
   scratch_qba = qiod.readLine();
   if(scratch_qba.startsWith('#'))
-    continue; 
+    continue;
+  if(scratch_qba.startsWith(" *"))
+    continue;
+
   if(scratch_qba.startsWith('@'))
-    current = &details_qba;
+  {
+   QTextStream rqts(*ranges_qba);
+   rqts >> (QVector<Glyph_Layer_8b*>&)*this;
+   delete ranges_qba;
+   ranges_qba = nullptr;
+   details_qba = new QByteArray;
+   current = details_qba;
+  }
+  else if(scratch_qba.startsWith('%'))
+  {
+   QTextStream dqts(*details_qba);
+   dqts >> node_details_;
+   delete details_qba;
+   details_qba = nullptr; 
+   ties_qba = new QByteArray;
+   current = ties_qba;
+  }
   else
     current->append(scratch_qba);
  }
- QTextStream rqts(ranges_qba);
- rqts >> (QVector<Glyph_Layer_8b*>&)*this;
 
- QTextStream dqts(details_qba);
- dqts >> node_details_;
-//#endif // def HIDE 
+ QTextStream tqts(*ties_qba); 
+ read_ties(tqts, (const QVector<Glyph_Layer_8b*>&)*this);
+ delete ties_qba;
+ ties_qba = nullptr;
+
+// QTextStream tqts(ties_qba);
+// tqts >> 
 }
 
 
