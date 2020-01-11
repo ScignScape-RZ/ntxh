@@ -4,7 +4,7 @@
 #     (See accompanying file LICENSE_1_0.txt or copy at
 #           http://www.boost.org/LICENSE_1_0.txt)
 
-PROJECT_NAME = ngml-htxn
+PROJECT_NAME = rz-ngml-console
 
 include(../build-group.pri)
 
@@ -28,6 +28,8 @@ DEFINES += QT_REPROZIP_BIN_FOLDER=\\\"$$QT_REPROZIP_BIN_DIR\\\"
 
 DEFINES += ROOT_FOLDER=\\\"$$ROOT_DIR\\\"
 
+DEFINES += CLO43SD_DB_CODE=\\\"222\\\"
+
 
 CONFIG += no_keywords
 
@@ -38,8 +40,8 @@ DEFINES += USE_KANS
 HEADERS += \
 
 
-#SOURCES += \
-#  $$SRC_DIR/main.cpp \
+SOURCES += \
+  $$SRC_DIR/main.cpp \
 
 
 #?
