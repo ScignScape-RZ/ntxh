@@ -3,7 +3,7 @@
 
 #include "rz-ngml-document.h"
 
-#include "output/rz-ngml-output-khif.h"
+#include "output/rz-ngml-output-htxn.h"
 #include "output/rz-ngml-output-latex.h"
 
 
@@ -17,6 +17,7 @@
 #include <QDebug>
 
 #include "rzns.h"
+
 USING_RZNS(NGML)
 
 
@@ -81,6 +82,7 @@ void NGML_Folder::convert_to_latex()
  NGML_Document::write_annotations(local_path_ + "/annotation-summary.html", annotations_);
 }
 
+#ifdef HIDE
 void NGML_Folder::convert_all_khif_files(QString khif_dir, QString html_dir)
 {
  QDir dir(local_path_);
@@ -152,6 +154,7 @@ void NGML_Folder::convert_all_khif_files(QString khif_dir, QString html_dir)
   }
  }
 }
+#endif //def HIDE
 
 void NGML_Folder::output_file_list(QString& result, const QMap<QString, QString>& files)
 {
@@ -248,11 +251,14 @@ void NGML_Folder::convert_all_files(QString output_path, QString khif_path)
   NGML_Output_Latex nol(ngd);
   nol.export_latex(output_path + '/' + qfi.completeBaseName() + ".tex");
 
-  if(!khif_path.isEmpty())
-  {
-   NGML_Output_Khif khif(ngd);
-   khif.export_khif(khif_path + '/' + qfi.completeBaseName() + ".khif");
-  }
+  NGML_Output_HTXN noh(ngd);
+  noh.export_htxne(output_path + '/' + qfi.completeBaseName() + ".htxne");
+
+//?  if(!khif_path.isEmpty())
+//?  {
+//?   NGML_Output_Khif khif(ngd);
+//?   khif.export_khif(khif_path + '/' + qfi.completeBaseName() + ".khif");
+//?  }
 
  }
 }

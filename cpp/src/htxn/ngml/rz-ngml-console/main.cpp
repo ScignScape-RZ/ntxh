@@ -3,7 +3,7 @@
 
 #include "rz-ngml/output/rz-ngml-output-html.h"
 #include "rz-ngml/output/rz-ngml-output-latex.h"
-#include "rz-ngml/output/rz-ngml-output-khif.h"
+#include "rz-ngml/output/rz-ngml-output-htxn.h"
 
 #include "rz-ngml/output/rz-ngml-output-xml.h"
 
@@ -21,25 +21,33 @@
 
 USING_RZNS(NGML)
 
-#define DEFAULT_DIRECTORY "../.."
+#define DEFAULT_DIRECTORY "/home/nlevisrael/hypergr/ntxh/ar/htxn/ngml"
 
-#include <QApplication>
-#include <QFileDialog>
+//#include <QApplication>
+//#include <QFileDialog>
 #include <QDebug>
 
 
 int main(int argc, char* argv[])
 {
- QApplication qapp(argc, argv);
+// QApplication qapp(argc, argv);
 
- QString folder = QFileDialog::getExistingDirectory(nullptr,
-   "Select Folder"
-   " (needs /ngml subfolder)",
-   DEFAULT_DIRECTORY);
+// QString folder = QFileDialog::getExistingDirectory(nullptr,
+//   "Select Folder"
+//   " (needs /ngml subfolder)",
+//   DEFAULT_DIRECTORY);
 
- NGML_Folder ngf(folder + "/ngml");
- ngf.convert_all_files(folder, folder + "/khif");
+ NGML_Document ndoc; //(DEFAULT_DIRECTORY "/t1.ngml");
+ ndoc.load_and_parse(DEFAULT_DIRECTORY "/t1.ngml");
 
+ NGML_Output_HTXN noh(ndoc);
+ noh.export_htxne();
+
+
+// NGML_Folder ngf(folder + "/ngml");
+// ngf.convert_all_files(folder, folder + "/khif");
+
+ return 0;
 }
 
 

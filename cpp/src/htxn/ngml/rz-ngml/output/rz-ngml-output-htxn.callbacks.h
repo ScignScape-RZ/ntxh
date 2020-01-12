@@ -52,7 +52,7 @@ _NGML_CALLBACK
  NGML_CALLBACK_(khi-file-info)
   WHEN_(around)
   {
-   process_khi_file_info(qts, node);
+//   process_khi_file_info(qts, node);
    //?cb->flags.pre_fallthrough = true;
   }
   //_WHEN_(post)
@@ -107,7 +107,7 @@ _NGML_CALLBACK
 NGML_CALLBACK_(kf-link)
  WHEN_(around)
  {
-  insert_khif_link(qts);
+//  insert_khif_link(qts);
 //  qts << "<a href='/kf' class='kf-link'>.kf</a>";
  }
  _WHEN

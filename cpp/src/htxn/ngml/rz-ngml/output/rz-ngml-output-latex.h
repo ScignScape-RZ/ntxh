@@ -14,6 +14,10 @@ class NGML_Graph;
 class NGML_Document;
 
 
+class NGML_Attribute_Tile;
+class NGML_Tile;
+
+
 class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Handler
 {
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
@@ -35,6 +39,7 @@ public:
  void generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
  void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile) Q_DECL_OVERRIDE;
+
  void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Attribute_Tile> tile) Q_DECL_OVERRIDE;
 
  void handle_annotation(caon_ptr<NGML_Tile> tile, caon_ptr<NGML_Annotation_Tile> atile) Q_DECL_OVERRIDE;

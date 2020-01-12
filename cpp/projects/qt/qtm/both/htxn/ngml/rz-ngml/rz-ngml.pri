@@ -73,7 +73,8 @@ HEADERS += \
  $$SRC_DIR/output/rz-ngml-output-latex.callbacks.h \
  $$SRC_DIR/output/rz-ngml-output-html.h \
  $$SRC_DIR/output/rz-ngml-output-xml.h \
- $$SRC_DIR/output/rz-ngml-output-khif.h \
+ $$SRC_DIR/output/rz-ngml-output-htxn.h \
+ $$SRC_DIR/output/rz-ngml-output-htxn.callbacks.h \
  $$SRC_DIR/whitespace/rz-ngml-whitespace.h \
  $$SRC_DIR/whitespace/rz-ngml-whitespace-holder.h \
 
@@ -111,7 +112,7 @@ SOURCES += \
  $$SRC_DIR/output/rz-ngml-output-html.cpp \
  $$SRC_DIR/output/rz-ngml-output-xml.cpp \
  $$SRC_DIR/output/rz-ngml-output-latex.cpp \
- $$SRC_DIR/output/rz-ngml-output-khif.cpp \
+ $$SRC_DIR/output/rz-ngml-output-htxn.cpp \
  $$SRC_DIR/whitespace/rz-ngml-whitespace.cpp \
  $$SRC_DIR/whitespace/rz-ngml-whitespace-holder.cpp \
 

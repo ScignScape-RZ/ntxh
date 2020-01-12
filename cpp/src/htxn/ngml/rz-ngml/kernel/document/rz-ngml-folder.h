@@ -52,7 +52,7 @@ public:
 
  void convert_to_latex();
 
- void convert_all_khif_files(QString khif_dir, QString html_dir);
+// void convert_all_khif_files(QString khif_dir, QString html_dir);
 
  void output_file_list(QString& result, const QMap<QString, QString>& file_kind);
 
