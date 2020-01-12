@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "global-types.h"
+
 #include "kans.h"
 
 #include "glyph-layers-8b.h"
@@ -25,12 +27,6 @@
 //class WCM_WhiteDB;
 
 KANS_(HTXN)
-
-typedef quint8 u1;
-typedef quint16 u2;
-typedef quint32 u4;
-typedef quint64 u8;
-typedef qint64 s8;
 
 class GlyphDeck_Base_8b;
 class Glyph_Vector_8b;
@@ -57,6 +53,9 @@ public:
  void add_standard_diacritic_deck();
 
  Glyph_Layer_8b* read_layer(QString text, u2 offset = 0);
+ void read_layer(Glyph_Layer_8b* gl, QString text, u2 offset = 0);
+
+
  Glyph_Layer_8b* add_layer();
 
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 offset);

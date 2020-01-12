@@ -63,6 +63,9 @@ public:
 
  void generate_root(const NGML_Output_Bundle& b, caon_ptr<NGML_Root> nr) Q_DECL_OVERRIDE;
 
+ void check_update_index(const NGML_Output_Bundle& b,
+   NGML_Tile& tile) Q_DECL_OVERRIDE;
+
 // void generate_space_following_token(const NGML_Output_Bundle& b) Q_DECL_OVERRIDE;
 // void generate_token(const NGML_Output_Bundle& b, caon_ptr<NGML_Token> token) Q_DECL_OVERRIDE;
 // void generate_token_connection_descriptor(const NGML_Output_Bundle& b) Q_DECL_OVERRIDE;

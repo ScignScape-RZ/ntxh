@@ -5,10 +5,13 @@
 #include "kernel/document/rz-ngml-document.h"
 #include "kernel/output/rz-ngml-output-bundle.h"
 #include "tile/rz-ngml-token.h"
+#include "tile/rz-ngml-tile.h"
 #include "kernel/graph/rz-ngml-node.h"
 #include "tag-command/rz-ngml-tag-command.h"
 #include "kernel/rz-ngml-root.h"
 #include "tag-command/rz-ngml-command-callback.h"
+
+#include "htxn/glyph-layer-8b.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -96,12 +99,26 @@ void NGML_Output_HTXN::export_htxne(QString path)
  QString htxne_output;
  write_htxne_output(htxne_output);
 
+ htxn_document_.read_layer(main_gl_, htxne_output);
+ htxn_document_.read_layer(tag_command_gl_, tag_command_layer_);
+ htxn_document_.read_layer(tag_command_arg_gl_, tag_command_arg_layer_);
+
  QFile outfile(path);
  if(outfile.open(QFile::WriteOnly | QIODevice::Text))
  {
-  outfile.write(htxne_output.toLatin1());
+  htxn_document_.write_htxne_out(outfile);
+//  outfile.write(htxne_output.toLatin1());
   outfile.close();
  }
+
+
+// QFile outfile(path);
+// if(outfile.open(QFile::WriteOnly | QIODevice::Text))
+// {
+//  outfile.write(htxne_output.toLatin1());
+//  outfile.close();
+// }
+
 }
 
 caon_ptr<NGML_Command_Callback> NGML_Output_HTXN::check_command_callback(caon_ptr<NGML_Tag_Command> ntc)
@@ -125,12 +142,20 @@ void NGML_Output_HTXN::generate_tag_command_auto_leave(const NGML_Output_Bundle&
  // b.qts << "/>";
 }
 
+void NGML_Output_HTXN::check_update_index(const NGML_Output_Bundle& b,
+  NGML_Tile& tile)
+{
+ b.index += tile.raw_text().length();
+}
 
 
 void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
  CAON_PTR_B_DEBUG(NGML_Node ,node)
  chiefs_.push(b.node);
+
+ CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+
  switch(b.connection_descriptor)
  {
  case NGML_Connection_Descriptor::Tag_Command_Cross:
@@ -166,25 +191,8 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   if(cb && cb->flags.has_rename_style_class)
    style_class_name = cb->rename_style_class();
 
-  u4 span_start, span_end;
-
-  auto it = tag_command_spans_.find(command_print_name);
-  if(it == tag_command_spans_.end())
-  {
-   span_start = tag_command_layer_.size();
-   span_end = span_start + command_print_name.size();
-
-   tag_command_spans_.insert(command_print_name, 
-     {span_start, span_end});
-   tag_command_layer_ += command_print_name;
-  }
-  else
-  {
-   span_start = (*it).first;
-   span_end = (*it).second;
-  }
-
-  range_starts_[write_position_] = {span_start, span_end};
+  //u4 pos = (u4) b.qts.pos();
+  ntc->set_ref_position(b.index);
 
 //  b.qts << '\n' << '[' << command_print_name;
 
@@ -208,11 +216,36 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
    return;
  }
 
+ CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+
  QString command_print_name;
  if(b.cb && b.cb->flags.has_rename)
   command_print_name = b.cb->rename_tag();
  else
   command_print_name = ntc->name();
+
+ u4 span_start, span_end;
+
+ auto it = tag_command_spans_.find(command_print_name);
+ if(it == tag_command_spans_.end())
+ {
+  span_start = tag_command_layer_.size();
+  span_end = span_start + command_print_name.size();
+
+  tag_command_spans_.insert(command_print_name,
+    {span_start, span_end});
+  tag_command_layer_ += command_print_name;
+ }
+ else
+ {
+  span_start = (*it).first;
+  span_end = (*it).second;
+ }
+
+ u4 nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
+ main_gl_->add_range(ntc->ref_position(), b.index, nc1);
+
+  //? range_starts_[write_position_] = {span_start, span_end};
 
 //? b.qts << "</" << ntc->name() << '>';
 }

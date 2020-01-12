@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "global-types.h"
+
 #include "kans.h"
 
 #include "htxn-node-detail.h"
@@ -22,11 +24,6 @@
 
 
 KANS_(HTXN)
-
-typedef quint8 u1;
-typedef quint16 u2;
-typedef quint32 u4;
-typedef quint64 u8;
 
 class Glyph_Layer_8b;
 

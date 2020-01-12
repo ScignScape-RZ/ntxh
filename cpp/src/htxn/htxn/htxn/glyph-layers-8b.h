@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "global-types.h"
+
 #include "kans.h"
 
 #include <QString>
@@ -21,10 +23,6 @@
 class QTextStream;
 
 KANS_(HTXN)
-
-typedef quint8 u1;
-typedef quint32 u4;
-typedef quint64 u8;
 
 class GlyphDeck_Base_8b;
 class Glyph_Layer_8b;

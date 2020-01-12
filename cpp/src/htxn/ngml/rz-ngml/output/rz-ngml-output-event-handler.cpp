@@ -139,13 +139,22 @@ void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b)
  }
 }
 
-void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Tile> tile)
+void NGML_Output_Event_Handler::check_update_index(const NGML_Output_Bundle& b,
+  NGML_Tile& tile)
+{
+ b.index += tile.raw_text().length();
+}
+
+void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b,
+  caon_ptr<NGML_Tile> tile)
 {
  CAON_PTR_DEBUG(NGML_Tile ,tile)
  QString rt = tile->raw_text();
+
  if(!rt.startsWith("*:"))
  {
   b.qts << tile->raw_text();
+  check_update_index(b, *tile);
  }
  check_generate_whitespace(b, tile);
 }

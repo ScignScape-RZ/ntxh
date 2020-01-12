@@ -9,6 +9,8 @@
 
 #include "whitespace/rz-ngml-whitespace-holder.h"
 
+#include "global-types.h"
+
 #include "rzns.h"
 
 RZNS_(NGML)
@@ -35,10 +37,14 @@ public:
  QString name_;
  QString parent_tag_type_;
 
+ u4 ref_position_;
+
 public:
 
  ACCESSORS(QString ,name)
  ACCESSORS(QString ,parent_tag_type)
+
+ ACCESSORS(u4 ,ref_position)
 
  NGML_Tag_Command(QString name, QString parent_tag_type = QString());
 

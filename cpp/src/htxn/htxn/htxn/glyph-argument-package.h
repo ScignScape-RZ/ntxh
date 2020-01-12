@@ -13,6 +13,8 @@
 #include "accessors.h"
 #include "flags.h"
 
+#include "global-types.h"
+
 
 #include <QString>
 #include <QList>
@@ -22,11 +24,6 @@
 
 
 KANS_(HTXN)
-
-typedef quint8 u1;
-typedef quint16 u2;
-typedef quint64 u8;
-typedef qint64 s8;
 
 class GlyphDeck_Base_8b;
 class Diacritic_GlyphDeck_Base;

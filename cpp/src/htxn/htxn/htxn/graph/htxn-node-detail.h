@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "global-types.h"
+
 #include "flags.h"
 
 #include "kans.h"
@@ -28,11 +30,6 @@ class QTextStream;
 KANS_(HTXN)
 
 class Glyph_Layer_8b;
-
-typedef quint8 u1;
-typedef quint16 u2;
-typedef quint32 u4;
-typedef quint64 u8;
 
 struct HTXN_Node_Detail
 {

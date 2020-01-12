@@ -6,7 +6,8 @@ USING_RZNS(NGML)
 
 
 NGML_Tag_Command::NGML_Tag_Command(QString name, QString parent_tag_type)
- : Flags(0), name_(name), parent_tag_type_(parent_tag_type)
+ : Flags(0), name_(name),
+   parent_tag_type_(parent_tag_type), ref_position_(0)
 {
 
 }

@@ -5,6 +5,8 @@
 #include "relae-graph/relae-caon-ptr.h"
 #include "rz-ngml-connection-descriptor.h"
 
+#include "global-types.h"
+
 #include "rzns.h"
 
 class QTextStream;
@@ -21,6 +23,7 @@ struct NGML_Output_Bundle
  typedef NGML_Node tNode;
 
  QTextStream& qts;
+ u4& index;
 
  caon_ptr<tNode> node;
  NGML_Connection_Descriptor connection_descriptor;
@@ -38,11 +41,12 @@ struct NGML_Output_Partial_Bundle
  typedef NGML_Node tNode;
 
  QTextStream& qts;
+ u4& index;
  caon_ptr<tNode> node;
 
  operator NGML_Output_Bundle()
  {
-  return {qts, node, NGML_Connection_Descriptor(), caon_ptr<NGML_Command_Callback> ( nullptr )};
+  return {qts, index, node, NGML_Connection_Descriptor(), caon_ptr<NGML_Command_Callback> ( nullptr )};
  }
 };
 

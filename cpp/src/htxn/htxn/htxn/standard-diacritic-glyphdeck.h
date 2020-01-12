@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "global-types.h"
+
 #include "kans.h"
 
 #include <QString>
@@ -21,10 +23,6 @@
 #include "diacritic-glyphdeck-base.h"
 
 KANS_(HTXN)
-
-typedef quint8 u1;
-typedef quint16 u2;
-
 
 class Standard_Diacritic_GlyphDeck : public Diacritic_GlyphDeck_Base
 {

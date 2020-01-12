@@ -10,6 +10,8 @@
 
 #include "accessors.h"
 
+#include "global-types.h"
+
 #include "kans.h"
 
 #include <QString>
@@ -21,9 +23,6 @@
 //class WCM_WhiteDB;
 
 KANS_(HTXN)
-
-typedef quint8 u1;
-typedef quint16 u2;
 
 struct Glyph_Argument_Package; 
 

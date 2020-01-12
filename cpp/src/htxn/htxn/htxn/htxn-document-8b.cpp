@@ -430,9 +430,14 @@ Glyph_Layer_8b* HTXN_Document_8b::add_layer()
 Glyph_Layer_8b* HTXN_Document_8b::read_layer(QString text, u2 offset)
 {
  Glyph_Layer_8b* result = add_layer();
- current_glyph_vector_ = result;
- encode_latin1(text.toLatin1(), *result, offset);
+ read_layer(result, text, offset);
  return result;
+}
+
+void HTXN_Document_8b::read_layer(Glyph_Layer_8b* gl, QString text, u2 offset)
+{
+ current_glyph_vector_ = gl;
+ encode_latin1(text.toLatin1(), *gl, offset);
 }
 
 u2 HTXN_Document_8b::get_diacritic_cue_code(char cue)

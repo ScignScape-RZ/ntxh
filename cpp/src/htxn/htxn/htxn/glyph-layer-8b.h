@@ -15,13 +15,9 @@
 #include "flags.h"
 #include "accessors.h"
 
+#include "global-types.h"
+
 KANS_(HTXN)
-
-
-typedef quint8 u1;
-typedef quint16 u2;
-typedef quint32 u4;
-typedef quint64 u8;
 
 class HTXN_Node_Detail;
 
