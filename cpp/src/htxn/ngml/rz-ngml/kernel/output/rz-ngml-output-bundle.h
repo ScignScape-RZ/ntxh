@@ -21,6 +21,7 @@ struct NGML_Output_Bundle
  typedef NGML_Node tNode;
 
  QTextStream& qts;
+
  caon_ptr<tNode> node;
  NGML_Connection_Descriptor connection_descriptor;
  caon_ptr<NGML_Command_Callback> cb;

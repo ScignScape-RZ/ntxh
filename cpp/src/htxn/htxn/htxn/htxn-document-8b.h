@@ -57,6 +57,7 @@ public:
  void add_standard_diacritic_deck();
 
  Glyph_Layer_8b* read_layer(QString text, u2 offset = 0);
+ Glyph_Layer_8b* add_layer();
 
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 offset);
 

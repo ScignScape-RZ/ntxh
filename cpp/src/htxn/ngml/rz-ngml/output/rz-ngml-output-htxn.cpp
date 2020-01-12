@@ -22,6 +22,15 @@ NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document)
  : NGML_Output_Base(document), NGML_Output_Event_Handler()
 {
  init_callbacks();
+
+ htxn_document_.add_standard_deck();
+ htxn_document_.add_standard_diacritic_deck();
+// Glyph_Layer_8b* 
+
+ main_gl_ = htxn_document_.add_layer();
+ tag_command_gl_ = htxn_document_.add_layer();
+ tag_command_arg_gl_ = htxn_document_.add_layer();
+
 }
 
 void NGML_Output_HTXN::init_callbacks()
@@ -102,22 +111,6 @@ caon_ptr<NGML_Command_Callback> NGML_Output_HTXN::check_command_callback(caon_pt
 }
 
 
-//caon_ptr<NGML_Command_Callback> NGML_Output_HTXN::check_callback
-// (QTextStream& qts, caon_ptr<NGML_Tag_Command> ntc, caon_ptr<tNode> node)
-//{
-// caon_ptr<NGML_Command_Callback> result = nullptr;
-// QString name = ntc->name();
-// if(callbacks_.contains(name))
-// {
-//  result = callbacks_[name];
-//  if(result->flags.has_pre_callback)
-//  {
-//   result->pre_callback(qts, node, result);
-//  }
-// }
-// return result;
-//}
-
 void NGML_Output_HTXN::check_post_callback
  (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node)
 {
@@ -129,7 +122,7 @@ void NGML_Output_HTXN::check_post_callback
 
 void NGML_Output_HTXN::generate_tag_command_auto_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
- b.qts << "/>";
+ // b.qts << "/>";
 }
 
 
@@ -173,9 +166,31 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   if(cb && cb->flags.has_rename_style_class)
    style_class_name = cb->rename_style_class();
 
-  b.qts << '\n' << '<' << command_print_name;
-  if(!style_class_name.isEmpty())
-   b.qts << " class='" << style_class_name << '\'';
+  u4 span_start, span_end;
+
+  auto it = tag_command_spans_.find(command_print_name);
+  if(it == tag_command_spans_.end())
+  {
+   span_start = tag_command_layer_.size();
+   span_end = span_start + command_print_name.size();
+
+   tag_command_spans_.insert(command_print_name, 
+     {span_start, span_end});
+   tag_command_layer_ += command_print_name;
+  }
+  else
+  {
+   span_start = (*it).first;
+   span_end = (*it).second;
+  }
+
+  range_starts_[write_position_] = {span_start, span_end};
+
+//  b.qts << '\n' << '[' << command_print_name;
+
+//?  if(!style_class_name.isEmpty())
+//?   b.qts << " class='" << style_class_name << '\'';
+
   break;
  }
 }
@@ -198,51 +213,14 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
   command_print_name = b.cb->rename_tag();
  else
   command_print_name = ntc->name();
- b.qts << "</" << ntc->name() << '>';
+
+//? b.qts << "</" << ntc->name() << '>';
 }
 
 void NGML_Output_HTXN::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
- b.qts << '>';
- ntc->write_whitespace(b.qts);
+//? b.qts << '>';
+//? ntc->write_whitespace(b.qts);
 }
 
 
-//void NGML_Output_HTXN::generate_token(const NGML_Output_Bundle& b, caon_ptr<NGML_Token> token)
-//{
-// CAON_PTR_DEBUG(NGML_Token ,token)
-// b.qts << token->to_string() << '>';
-//}
-
-//void NGML_Output_HTXN::generate_space_following_token(const NGML_Output_Bundle& b)
-//{
-// b.qts << "\n ";
-//}
-
-
-//void NGML_Output_HTXN::generate_call_leave(const NGML_Output_Bundle& b)
-//{
-// caon_ptr<NGML_Node> chief = chiefs_.top();
-// chiefs_.pop();
-// CAON_PTR_DEBUG(NGML_Node ,chief)
-// b.qts << "<cs/";
-// if(caon_ptr<NGML_Token> token = chief->ngml_token())
-// {
-//  b.qts << token->to_string();
-// }
-// b.qts << ">\n";
-//}
-
-//void NGML_Output_HTXN::generate_token_connection_descriptor(const NGML_Output_Bundle& b)
-//{
-// switch(b.connection_descriptor)
-// {
-// case NGML_Connection_Descriptor::Call_Sequence:
-//  b.qts << " <& |cs| ";
-//  break;
-// case NGML_Connection_Descriptor::Call_Continue:
-//  b.qts << " <& |cc| ";
-//  break;
-
-// }
-//}

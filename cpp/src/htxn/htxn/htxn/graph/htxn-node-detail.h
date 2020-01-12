@@ -20,6 +20,9 @@
 
 #include <functional>
 
+#include "global-types.h"
+
+
 class QTextStream;
 
 KANS_(HTXN)

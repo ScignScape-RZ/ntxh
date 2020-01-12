@@ -420,10 +420,16 @@ u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
  return result; 
 }
 
-Glyph_Layer_8b* HTXN_Document_8b::read_layer(QString text, u2 offset)
+Glyph_Layer_8b* HTXN_Document_8b::add_layer()
 {
  Glyph_Layer_8b* result = new Glyph_Layer_8b(size());
  push_back(result);
+ return result;
+}
+
+Glyph_Layer_8b* HTXN_Document_8b::read_layer(QString text, u2 offset)
+{
+ Glyph_Layer_8b* result = add_layer();
  current_glyph_vector_ = result;
  encode_latin1(text.toLatin1(), *result, offset);
  return result;
