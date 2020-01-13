@@ -3,11 +3,13 @@
 
 #include "rzns.h"
 
+#include <QDebug>
+
 USING_RZNS(NGML)
 
 
 NGML_Paralex_Tile::NGML_Paralex_Tile(QString raw_text, Kind k, u1 w)
- :  kind_(k), width_or_alt_(w)
+ :  kind_(k), width_or_alt_(w), raw_text_(raw_text)
 {
 }
 
@@ -42,19 +44,63 @@ NGML_Paralex_Tile::Kind NGML_Paralex_Tile::check_kind(QString key)
 }
 #endif //def HIDE
 
-QString NGML_Paralex_Tile::thumbnail(int max_characters)
+
+RZNS_(NGML)
+template<>
+void NGML_Paralex_Tile::to_string<
+  NGML_Paralex_Tile::Alt_Interpretation>(QString& result)
 {
- return to_string();
+ qDebug() << "WA: " << width_or_alt_;
+
+ switch(width_or_alt_)
+ {
+ case 1:
+  result = QString("`(%1)").arg(raw_text_);
+  break;
+ case 2:
+   result = QString("`{%1}").arg(raw_text_);
+   break;
+ case 3:
+   result = QString("`[%1]").arg(raw_text_);
+   break;
+ case 4:
+   result = QString("`<%1>").arg(raw_text_);
+   break;
+ default:
+   break;
+ }
+}
+_RZNS(NGML)
+
+u1 NGML_Paralex_Tile::get_width()
+{
+ if(kind_ == Alt_Interpretation)
+   return 1;
+ return width_or_alt_;
 }
 
 QString NGML_Paralex_Tile::to_string()
 {
-// switch(kind_)
-// {
-// case M_Dash:
-//  return "\\{mdash}";
-// }
- return QString();
+ qDebug() << "K: " << kind_;
+
+ QString result;
+ if(!command_.isEmpty())
+ {
+  //?
+  return QString();
+ }
+ 
+ switch(kind_)
+ {
+ case Alt_Interpretation:
+   to_string<Alt_Interpretation>(result);
+   break;
+ case Pipe_Escape:
+   to_string<Pipe_Escape>(result);
+   break;
+ }
+
+ return result;
 }
 
 

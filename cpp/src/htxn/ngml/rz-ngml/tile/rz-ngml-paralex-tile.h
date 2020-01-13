@@ -27,18 +27,24 @@ public:
 private:
 
  Kind kind_;
- QString argument_;
+
  QString command_;
+ QString raw_text_;
  
- u1 width_or_alt_;  
+ u1 width_or_alt_;
+
+ template<Kind>
+ void to_string(QString& result);
 
 public:
 
  NGML_Paralex_Tile(QString raw_text, Kind k, u1 w);
 
  QString to_string();
+ 
+ u1 get_width();
 
- QString thumbnail(int max_characters = 6);
+ // QString thumbnail(int max_characters = 6);
   // QString get_accent_as_html();
 
  template<typename T>

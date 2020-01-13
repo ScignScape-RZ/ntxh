@@ -1,3 +1,10 @@
 
-Batch scripts have the pattern: /home/.../qt/.../qmake "QMAKE_CONSOLE_ARCHIVE_ROOT=/home/.../ar" /home/nlevisrael/.../ar/cpp/projects/qt/qtm/isobuild/.../PROJECT-NAME.pro
+Batch scripts have the pattern: 
+
+qm.sh: ...(path to qmake).../qmake "QMAKE_CONSOLE_ARCHIVE_ROOT=.../ar" .../ar/cpp/projects/qt/qtm/isobuild/.../{fill in project name}.pro
+
+run.sh: cd ../.. && ./run.sh {fill in project name} ; cd -
+
+mk.sh: make 1> co.txt 2> ce.txt
+
 

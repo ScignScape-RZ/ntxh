@@ -11,10 +11,13 @@
 #include "kernel/rz-ngml-root.h"
 #include "tag-command/rz-ngml-command-callback.h"
 
+#include "tile/rz-ngml-paralex-tile.h"
+
 #include "htxn/glyph-layer-8b.h"
 
 #include <QFile>
 #include <QFileInfo>
+#include <QDebug>
 
 #include "rzns.h"
 
@@ -248,6 +251,16 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
   //? range_starts_[write_position_] = {span_start, span_end};
 
 //? b.qts << "</" << ntc->name() << '>';
+}
+
+void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
+{
+ b.qts << tile->to_string();
+ 
+ b.index += tile->get_width();
+// tile->write_html(b.qts);
+// check_generate_whitespace(b, tile);
+
 }
 
 void NGML_Output_HTXN::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)

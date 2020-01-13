@@ -677,6 +677,7 @@ void NGML_Graph_Build::special_character_sequence(QString match_text,
  case 4: 
   text = esc;
   w = mode;
+  k = NGML_Paralex_Tile::Alt_Interpretation;
   break;  
  case 5:
   if(match_text == "||")
@@ -685,6 +686,7 @@ void NGML_Graph_Build::special_character_sequence(QString match_text,
    return;
   }
   text = esc; 
+  k = NGML_Paralex_Tile::Pipe_Escape;
   if( (text[0] == '>') || (text[0] == '+') )
     w = 2;
   else if(text[0] == '&') 
