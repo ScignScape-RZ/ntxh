@@ -52,12 +52,16 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  HTXN_Document_8b htxn_document_;
 
+ QString htxne_path_;
+
 public:
 
  NGML_Output_HTXN(NGML_Document& document);
 
  void export_htxne(QString path = "..htxne");
  void write_htxne_output(QString& html_output);
+
+ void write_latex_out(QString path);
 
  void generate(QTextStream& qts);
 

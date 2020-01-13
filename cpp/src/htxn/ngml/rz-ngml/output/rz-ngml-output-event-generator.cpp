@@ -27,7 +27,7 @@ void NGML_Output_Event_Generator::generate(QTextStream& qts)
  caon_ptr<tNode> root_node = graph_.root_node();
  CAON_PTR_DEBUG(tNode ,root_node)
  root_node->debug_connectors();
- u4 index = 0;
+ u4 index = 2; // // assume `[//] ...
  const NGML_Output_Bundle& b {qts, index, root_node};
  if(caon_ptr<NGML_Root> nr = root_node->ngml_root())
  {

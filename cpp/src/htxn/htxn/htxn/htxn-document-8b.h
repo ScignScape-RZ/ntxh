@@ -80,6 +80,8 @@ public:
  void write_htxne_out(QIODevice& qiod);
  void read_htxne_in(QIODevice& qiod);
 
+ void write_latex_out(QTextStream& qts);
+
  void get_latex_out(u4 layer, QString& result);
  void get_latex_out(Glyph_Layer_8b* gl, 
    u4 enter, u4 leave, QString& result);

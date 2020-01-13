@@ -148,6 +148,12 @@ void HTXN_Document_8b::get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
  }
 }
 
+void HTXN_Document_8b::write_latex_out(QTextStream& qts)
+{
+ QString text;
+ get_latex_out(0, text);
+ qts << text;
+} 
 
 void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
 {
@@ -601,9 +607,9 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
 
    { { '-', 0 }, 68 },
    { { '-', 1 }, Standard_GlyphDeck_8b::DashSML },
-   { { '-', 2 }, Standard_GlyphDeck_8b::NpMinus },
-   { { '-', 3 }, Standard_GlyphDeck_8b::DashX },
-   { { '-', 4 }, Standard_GlyphDeck_8b::SnDash },
+   { { '-', 2 }, Standard_GlyphDeck_8b::SnDash },
+   { { '-', 3 }, Standard_GlyphDeck_8b::NpMinus },
+   { { '-', 4 }, Standard_GlyphDeck_8b::DashX },
 
    { { ',', 0 }, 69 },
    { { ',', 1 }, Standard_GlyphDeck_8b::NmComX },

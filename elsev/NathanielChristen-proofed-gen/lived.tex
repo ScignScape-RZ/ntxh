@@ -1,0 +1,56 @@
+
+\begin{tikzpicture}
+
+
+\node (llcorner) at (0,0) {};
+\node (urcorner) at (6,5) {};
+
+\node  at (4,4.5) [draw,color=logoRed!90!logoPurple,inner sep=1] 
+{\colorbox{logoPurple!90!logoRed}{CH Structure}};
+
+\node  at (4,2) [draw,color=logoRed!90!logoPurple,inner sep=1] 
+{\colorbox{logoPurple!90!logoRed}{RDF Structure}};
+
+\node (lnath) at (0,4.5) [draw,minimum width=11mm,minimum height=5mm] {Nath};
+\node (lnf) [draw,densely dashed,fit=(lnath)] {};
+
+\node (lbr) at (3,3.5) [draw,minimum width=11mm,minimum height=5mm] {Bkln};
+\node (lbu) [right=2mm of lbr.east,draw,minimum width=11mm,minimum height=5mm] {Buff};
+\node (lmn) [right=2mm of lbu.east,draw,minimum width=11mm,minimum height=5mm] {Mtl};
+\node (lbbm) [draw,densely dashed,fit=(lbr) (lbu) (lmn)] {};
+
+
+
+\draw [shorten >=.5mm,shorten <=1mm,thick, ->] 
+(lnf) -- (lbbm.west) node [midway] {\livedinup};
+
+\node (rnath) at (1,2) [draw,minimum width=11mm,minimum height=5mm] {Nath};
+
+\node (bla) [circle, draw, below=9mm of rnath.south] {};
+\node (rbr) [right=18mm of bla.east,draw,minimum width=11mm,minimum height=5mm] {Bkln};
+
+\draw [shorten >=1mm,shorten <=1mm,thick, ->] 
+(rnath) -- (bla) node [midway] {\livedinup};
+\draw [shorten >=1mm,shorten <=1mm,thick, ->] 
+(bla) -- (rbr) node [midway] {\colorbox{blGreen!20}{rdf:first}};
+
+
+\node (blb) [below=9mm of bla.south,circle, draw] {};
+\node (rbu) [right=18mm of blb.east,draw,minimum width=11mm,minimum height=5mm] {Buff};
+
+\draw [shorten >=1mm,shorten <=1mm,thick, ->] 
+(bla) -- (blb) node [midway] {\rdfrestup};
+\draw [shorten >=1mm,shorten <=1mm,thick, ->] 
+(blb) -- (rbu) node [midway] {\colorbox{blGreen!20}{rdf:first}};
+
+\node (blc) [below=9mm of blb.south,circle, draw] {};
+\node (rmn) [right=18mm of blc.east,draw,minimum width=11mm,minimum height=5mm] {Mtl};
+
+\draw [shorten >=1mm,shorten <=1mm,thick, ->] 
+(blb) -- (blc) node [midway] {\rdfrestup};
+\draw [shorten >=1mm,shorten <=1mm,thick, ->] 
+(blc) -- (rmn) node [midway] {\colorbox{blGreen!20}{rdf:first}};
+
+
+\end{tikzpicture} 
+

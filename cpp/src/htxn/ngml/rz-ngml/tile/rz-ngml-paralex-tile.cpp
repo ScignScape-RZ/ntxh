@@ -46,6 +46,14 @@ NGML_Paralex_Tile::Kind NGML_Paralex_Tile::check_kind(QString key)
 
 
 RZNS_(NGML)
+
+template<>
+void NGML_Paralex_Tile::to_string<
+  NGML_Paralex_Tile::Pipe_Escape>(QString& result)
+{
+
+}
+
 template<>
 void NGML_Paralex_Tile::to_string<
   NGML_Paralex_Tile::Alt_Interpretation>(QString& result)

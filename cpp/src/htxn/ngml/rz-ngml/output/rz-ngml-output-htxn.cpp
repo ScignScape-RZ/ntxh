@@ -86,6 +86,27 @@ void NGML_Output_HTXN::generate_root(const NGML_Output_Bundle& b, caon_ptr<NGML_
  nr->write_whitespace(b.qts);
 }
 
+void NGML_Output_HTXN::write_latex_out(QString path)
+{
+ if(path.startsWith(".."))
+ {
+  path.remove(0, 1);
+  path.prepend(document_.local_path());
+ }
+ else if(path.startsWith('.'))
+ {
+  QFileInfo qfi(document_.local_path());
+  path.prepend(qfi.absolutePath() + '/' + qfi.completeBaseName());
+ }
+ 
+ QFile file(path);
+ if(file.open(QIODevice::WriteOnly | QIODevice::Text))
+ {
+  QTextStream qts(&file); 
+  htxn_document_.write_latex_out(qts); 
+ }
+}
+
 
 void NGML_Output_HTXN::export_htxne(QString path)
 {
@@ -109,6 +130,7 @@ void NGML_Output_HTXN::export_htxne(QString path)
  QFile outfile(path);
  if(outfile.open(QFile::WriteOnly | QIODevice::Text))
  {
+  htxne_path_ = path;
   htxn_document_.write_htxne_out(outfile);
 //  outfile.write(htxne_output.toLatin1());
   outfile.close();
@@ -232,7 +254,7 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  auto it = tag_command_spans_.find(command_print_name);
  if(it == tag_command_spans_.end())
  {
-  span_start = tag_command_layer_.size();
+  span_start = tag_command_layer_.size() + 2;
   span_end = span_start + command_print_name.size();
 
   tag_command_spans_.insert(command_print_name,

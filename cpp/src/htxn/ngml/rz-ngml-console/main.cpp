@@ -43,6 +43,14 @@ int main(int argc, char* argv[])
  NGML_Output_HTXN noh(ndoc);
  noh.export_htxne();
 
+ noh.write_latex_out(DEFAULT_DIRECTORY "/t1.ngml.htxne.tex");
+
+//? QFile file(DEFAULT_DIRECTORY "/t1.ngml.htxne");
+//? if(file.open(QIODevice::WriteOnly | QIODevice::Text))
+//? {
+//?  doc.write_latex_out(file); 
+//? }
+
 
 // NGML_Folder ngf(folder + "/ngml");
 // ngf.convert_all_files(folder, folder + "/khif");

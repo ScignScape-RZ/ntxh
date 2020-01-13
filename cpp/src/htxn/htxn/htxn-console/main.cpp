@@ -37,6 +37,13 @@ int main(int argc, char *argv[])
   doc.write_htxne_out(file1); 
  }
 
+ QFile file2(DEFAULT_HTXN_READ_FOLDER "/test/t1.htxne.tex");
+ if(file2.open(QIODevice::WriteOnly | QIODevice::Text))
+ {
+  QTextStream qts(&file2);
+  doc.write_latex_out(qts);
+ }
+
  return 0;
 }
 

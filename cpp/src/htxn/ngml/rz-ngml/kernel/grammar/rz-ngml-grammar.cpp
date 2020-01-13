@@ -18,7 +18,7 @@ NGML_Grammar::NGML_Grammar()
 void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_build)
 {
  pre_rule( "script-word", "(?:[^{}()\\[\\]\\s`;,:]|(?:\\w::?\\w))+" );
- pre_rule( "valid-tag-command-name", "(?:[^{}()\\[\\]<>/\\s`;,.:]|(?:\\w::?\\w))+" );
+ pre_rule( "valid-tag-command-name", "(?:[^{}()\\[\\]<>/\\s`;,.:-]|(?:\\w::?\\w))+" );
  pre_rule( "space-to-end-of-line", "[__\\t]* \\n" );
  pre_rule( "end-of-line", "[__\\t\\S]* \\n" );
  pre_rule( "single-space", "[__\\t]" );

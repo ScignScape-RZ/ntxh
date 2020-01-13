@@ -47,12 +47,11 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::NpExcX, 1 },
   { Standard_GlyphDeck_8b::NpOParX, 1 },
   { Standard_GlyphDeck_8b::NpCParX, 1 },
+
   { Standard_GlyphDeck_8b::DashSML, 1 },
-  { Standard_GlyphDeck_8b::NpMinus, 2 },
-  { Standard_GlyphDeck_8b::DashX, 3 },
-  { Standard_GlyphDeck_8b::SnDash, 4 },
-  { Standard_GlyphDeck_8b::NpMinus, 2 },
-  { Standard_GlyphDeck_8b::SnDash, 4 },
+  { Standard_GlyphDeck_8b::SnDash, 2 },
+  { Standard_GlyphDeck_8b::NpMinus, 3 },
+  { Standard_GlyphDeck_8b::DashX, 4 },
 
   { Standard_GlyphDeck_8b::NmComX, 1 },
   { Standard_GlyphDeck_8b::SqSqX, 1 },
@@ -313,7 +312,15 @@ void Standard_GlyphDeck_8b::get_xml_nondia(u1 gp, Glyph_Argument_Package& gap)
 
 void Standard_GlyphDeck_8b::get_latex_nondia(u1 gp, Glyph_Argument_Package& gap)
 {
- gap.chr = get_nondiacritic_default(gp & 63);
+ static QMap<u1, QString> static_map {
+   {Alt_Interpretation_Codes::Boundary, {}},
+   {Alt_Interpretation_Codes::SnDash, "{\\mdash}"},
+ };
+ auto it = static_map.find(gp);
+ if(it == static_map.end())
+   gap.chr = get_nondiacritic_default(gp & 63);
+ else
+   gap.str = *it;
 }
 
 #ifdef HIDE
