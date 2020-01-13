@@ -6,18 +6,18 @@
 USING_RZNS(NGML)
 
 
-NGML_Paralex_Tile::NGML_Paralex_Tile(QString raw_text)
+NGML_Paralex_Tile::NGML_Paralex_Tile(QString raw_text, Kind k, u1 w)
+ :  kind_(k), width_or_alt_(w)
 {
- kind_ = check_kind(raw_text);
 }
 
 
-QString NGML_Paralex_Tile::get_accent_as_html()
-{
- return parse_accent_code_xml(command_ + " " + argument_);
-}
+// QString NGML_Paralex_Tile::get_accent_as_html()
+// {
+// return parse_accent_code_xml(command_ + " " + argument_);
+// }
 
-
+#ifdef HIDE
 NGML_Paralex_Tile::Kind NGML_Paralex_Tile::check_kind(QString key)
 {
  if(key.startsWith('&'))
@@ -40,7 +40,7 @@ NGML_Paralex_Tile::Kind NGML_Paralex_Tile::check_kind(QString key)
  }
  return parse_kind(key);
 }
-
+#endif //def HIDE
 
 QString NGML_Paralex_Tile::thumbnail(int max_characters)
 {
@@ -49,11 +49,11 @@ QString NGML_Paralex_Tile::thumbnail(int max_characters)
 
 QString NGML_Paralex_Tile::to_string()
 {
- switch(kind_)
- {
- case M_Dash:
-  return "\\{mdash}";
- }
+// switch(kind_)
+// {
+// case M_Dash:
+//  return "\\{mdash}";
+// }
  return QString();
 }
 

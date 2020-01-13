@@ -264,6 +264,7 @@ void NGML_Graph_Build::attach_whitespace(QString whitespace)
 #endif //NO_CAON
 }
 
+#ifdef HIDE
 void NGML_Graph_Build::end_khif_tile(QString connector_prefix, QString connectors)
 {
  end_khif_tile();
@@ -275,7 +276,6 @@ void NGML_Graph_Build::end_khif_tile(QString connector_prefix, QString connector
  parse_context_.flags.inside_khif_tile = true;
 
 }
-
 
 void NGML_Graph_Build::attach_khif_tile()
 {
@@ -314,6 +314,7 @@ void NGML_Graph_Build::end_khif_tile()
  attach_khif_tile();
  markup_position_.khif_tag_command_leave();
 }
+#endif //def HIDE
 
 
 void NGML_Graph_Build::enter_tag_command_with_predicate_vector(QString tag_command,
@@ -334,14 +335,14 @@ void NGML_Graph_Build::enter_tag_command_with_predicate_vector(QString tag_comma
 }
 
 
-void NGML_Graph_Build::khif_tile_acc(QString m)
-{
- khif_tile_ += m;
-}
+//void NGML_Graph_Build::khif_tile_acc(QString m)
+//{
+// khif_tile_ += m;
+//}
 
 void NGML_Graph_Build::attach_predicate_vector(QString connector_prefix, QString connectors)
 {
- attach_khif_tile();
+// attach_khif_tile();
  bool string_follow = (connector_prefix.startsWith('+'));
  bool subject_claim = (connector_prefix.endsWith('['));
  markup_position_.load_khif_connectors(connectors);
@@ -631,18 +632,20 @@ caon_ptr<NGML_Attribute_Tile> NGML_Graph_Build::make_new_attribute_tile(QString 
 caon_ptr<NGML_Attribute_Tile> NGML_Graph_Build::make_new_attribute_tile(QString key, QString value)
 {
  return caon_ptr<NGML_Attribute_Tile>(
-  new NGML_Attribute_Tile(key, value) );
+ new NGML_Attribute_Tile(key, value) );
 }
 
 caon_ptr<NGML_Tile> NGML_Graph_Build::make_new_tile(QString tile)
 {
-  return caon_ptr<NGML_Tile>( new NGML_Tile(tile) );
+ return caon_ptr<NGML_Tile>( new NGML_Tile(tile) );
 }
 
 
-caon_ptr<NGML_Paralex_Tile> NGML_Graph_Build::make_new_paralex_tile(QString tile)
+caon_ptr<NGML_Paralex_Tile> NGML_Graph_Build::make_new_paralex_tile(QString tile,
+  u1 kind, u1 w_or_a)
 {
- return caon_ptr<NGML_Paralex_Tile>( new NGML_Paralex_Tile(tile) );
+ return caon_ptr<NGML_Paralex_Tile>( new NGML_Paralex_Tile(tile, 
+   (NGML_Paralex_Tile::Kind) kind, w_or_a) );
 }
 
 
@@ -657,10 +660,42 @@ caon_ptr<NGML_Graph_Build::tNode> NGML_Graph_Build::make_new_node(caon_ptr<NGML_
 }
 
 
-void NGML_Graph_Build::special_character_sequence(QString match_text)
+void NGML_Graph_Build::special_character_sequence(QString match_text, 
+  QString esc, u1 mode)
 {
+ QString text;
+ NGML_Paralex_Tile::Kind k = NGML_Paralex_Tile::N_A;
+ u1 w = 0;
+
+ switch (mode)
+ {
+ case 0: text = match_text; 
+  break;
+ case 1: 
+ case 2: 
+ case 3: 
+ case 4: 
+  text = esc;
+  w = mode;
+  break;  
+ case 5:
+  if(match_text == "||")
+  {
+   tile_acc("|");
+   return;
+  }
+  text = esc; 
+  if( (text[0] == '>') || (text[0] == '+') )
+    w = 2;
+  else if(text[0] == '&') 
+    w = 3;
+  else
+    w = 1;
+  break;
+ }
  check_tile_acc();
- caon_ptr<NGML_Paralex_Tile> xtile = make_new_paralex_tile(match_text);
+ 
+ caon_ptr<NGML_Paralex_Tile> xtile = make_new_paralex_tile(text, k, w);
  caon_ptr<tNode> node = make_new_node(xtile);
  markup_position_.add_tile_node(node);
 }

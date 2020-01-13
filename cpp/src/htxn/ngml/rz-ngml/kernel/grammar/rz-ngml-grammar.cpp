@@ -29,11 +29,10 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  Context ngml_or_html_context = add_context("ngml-or-html",
   {ngml_context, html_context});
 
-
- Context khif_context = add_context("khif-context");
+ Context cxml_context = add_context("cxml-context");
 
  track_context({&ngml_context, &html_context,
-   &ngml_or_html_context, &khif_context });
+   &ngml_or_html_context, &cxml_context });
 
  switch(graph_build.current_parsing_mode())
  {
@@ -41,8 +40,8 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   activate(ngml_or_html_context);
   break;
 
- case NGML_Parsing_Modes::KHIF:
-  activate(khif_context);
+ case NGML_Parsing_Modes::CXML:
+  activate(cxml_context);
   break;
 
  case NGML_Parsing_Modes::NGML:
@@ -54,6 +53,8 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  NGML_Parse_Context& parse_context = graph_build.parse_context();
 
  size_t test;
+
+#ifdef HIDE
 
  add_rule( khif_context, "tag-command-with-predicate-vector",
   " \\(  (?<tag-command> .valid-tag-command-name. ) "
@@ -195,7 +196,6 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
 
   });
 
-
    add_rule( flags_all_(parse_context ,inside_html_tag_body), "html-tag-command-attribute-entry",
     " (?<pre-space> \\s* ) (?<attribute> \\S+ ) \\s* = \\s* (?<s-or-d> ['\"] ) "
      ,[&]
@@ -205,6 +205,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
     QString s_or_d = p.matched("s-or-d");
     graph_build.html_tag_command_attribute_entry(pre_space, attribute, s_or_d);
    });
+#endif //def HIDE
 
 
  add_rule( flags_none_(parse_context ,inside_multiline_comment),
@@ -271,7 +272,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.tag_command_entry(prefix, tag_command, parent_tag_type);
  });
 
-
+#ifdef HIDE
  add_rule( flags_all_(parse_context ,inside_html_tag_body), "html-tag-body-close",
   " (?<pre-space> \\s* ) (?<prefix> /? ) > "
    ,[&]
@@ -327,7 +328,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  {
   graph_build.complete_html_tag_command_attribute();
  });
-
+#endif
 
  add_rule( ngml_context, "tag-command-entry-inline",
   " `(?<tag-command> .valid-tag-command-name. ) "
@@ -335,6 +336,12 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
            ,[&]
  {
   QString tag_command = p.matched("tag-command");
+
+
+  qDebug() << "TC: " << tag_command;
+ 
+
+
   QString tag_body_follow = p.matched("tag-body-follow");
   QString argument = p.matched("argument");
   graph_build.tag_command_entry_inline(tag_command, tag_body_follow, argument);
@@ -361,7 +368,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.mark_attribute_tile();
  });
 
-
+#ifdef HIDE
  add_rule( html_context, "html-tag-command-leave",
   " </ (?<tag-command> .valid-tag-command-name. ) "
   " > "
@@ -370,7 +377,6 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   QString tag_command = p.matched("tag-command");
   graph_build.check_html_tag_command_leave(tag_command, p.match_text());
  });
-
 
  add_rule( ngml_context, "tag-command-leave",
   " < (?<load-connector> .valid-tag-command-name. )? "
@@ -386,13 +392,14 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   else
    graph_build.tag_command_leave(load_connector, tag_command);
  });
+#endif //def HIDE
 
  add_rule( ngml_context, "tag-block-command-leave",
   "  ` (?<tag-command> .valid-tag-command-name. ) ` "
   ,[&]
  {
   QString tag_command = p.matched("tag-command");
-   graph_build.check_tag_command_leave(tag_command, p.match_text());
+  graph_build.check_tag_command_leave(tag_command, p.match_text());
  });
 
  add_rule( ngml_context, "inline-tag-command-leave",
@@ -402,12 +409,15 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.inline_tag_command_leave();
  });
 
+
+#ifdef HIDE
  add_rule( ngml_context, "generic-tag-command-leave",
   " </>  "
            ,[&]
  {
   graph_build.tag_command_leave();
  });
+#endif //def HIDE
 
 //?
 // add_rule( ngml_context, "special-character-sequence",
@@ -421,11 +431,45 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
 
   add_rule( ngml_context, "special-character-sequence",
    " (?: %-- ) "
-           //? "| (?: %[<>$'] ) | (&-\\S>\\w) | (&#\\w+;) | (&:\\w+;) "
+   "  | (?: ` \\( (?<bq-esc1> [^]]+ ) \\) ) "
+   "  | (?: ` { (?<bq-esc2> [^}]+ ) } ) "
+   "  | (?: ` \\[ (?<bq-esc3> [^)]+ ) \\] ) "
+   "  | (?: ` < (?<bq-esc4> [^>]+ ) \\> ) "
+   "  | (?: \\| (?<pipe-esc> [^|]+) \\| )"
+ 
+          //? "| (?: %[<>$'] ) | (&-\\S>\\w) | (&#\\w+;) | (&:\\w+;) "
             ,[&]
   {
+   int which = 1;
+   QString esc = p.matched("bq-esc1");
+   if(esc.isEmpty())
+   {
+    esc = p.matched("bq-esc2");
+    ++which;
+   }
+   if(esc.isEmpty())
+   {
+    esc = p.matched("bq-esc3");
+    ++which;
+   }
+   if(esc.isEmpty())
+   {
+    esc = p.matched("bq-esc4");
+    ++which;
+   }
+   if(esc.isEmpty())
+   {
+    esc = p.matched("pipe-esc");
+    ++which;
+   }
+   if(esc.isEmpty())
+   {
+    which = 0;
+   }
+
    QString m = p.match_text();
-   graph_build.special_character_sequence(m);
+
+   graph_build.special_character_sequence(m, esc, which);
   });
 
 

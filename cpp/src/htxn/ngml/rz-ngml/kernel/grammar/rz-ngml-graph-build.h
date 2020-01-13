@@ -9,6 +9,8 @@
 
 #include "kernel/grammar/rz-ngml-parsing-mode.h"
 
+#include "global-types.h"
+
 #include "accessors.h"
 
 #include "rzns.h"
@@ -77,7 +79,7 @@ class NGML_Graph_Build
 
  QString current_html_attribute_;
 
- QString khif_tile_;
+//? QString khif_tile_;
 
  NGML_Document_Info& document_info_;
 
@@ -115,7 +117,7 @@ public:
 
  void html_tag_body_leave(QString prefix);
 
- void khif_tile_acc(QString m);
+//? void khif_tile_acc(QString m);
 
  caon_ptr<NGML_Tag_Command> html_tag_command_entry(QString prefix, QString tag_command);
 
@@ -123,9 +125,9 @@ public:
  void attach_left_whitespace();
  void attach_right_whitespace();
 
- void end_khif_tile(QString connector_prefix, QString connectors);
- void end_khif_tile();
- void attach_khif_tile();
+//? void end_khif_tile(QString connector_prefix, QString connectors);
+//? void end_khif_tile();
+//? void attach_khif_tile();
 
  void attach_predicate_vector(QString connector_prefix, QString connectors);
 
@@ -156,15 +158,17 @@ public:
 
 
  void tag_command_entry_inline(QString tag_command,
-  QString tag_body_follow, QString argument = QString());
+   QString tag_body_follow, QString argument = QString());
 
  void mark_attribute_tile();
- void special_character_sequence(QString match_text);
+ void special_character_sequence(QString match_text, QString esc, u1 mode);
+   //QString bq_trig, QString bq_esc, QString pipe);
 
  caon_ptr<NGML_Attribute_Tile> make_new_attribute_tile(QString tile);
  caon_ptr<NGML_Tile> make_new_tile(QString tile);
  caon_ptr<NGML_Tag_Command> make_new_tag_command(QString name, QString parent_tag_type = QString());
- caon_ptr<NGML_Paralex_Tile> make_new_paralex_tile(QString tile);
+ caon_ptr<NGML_Paralex_Tile> make_new_paralex_tile(QString tile, 
+   u1 kind, u1 w_or_a);
 
  caon_ptr<tNode> make_new_node(caon_ptr<NGML_Attribute_Tile> tile);
  caon_ptr<tNode> make_new_node(caon_ptr<NGML_Tile> tile);

@@ -7,7 +7,7 @@
 RZNS_(NGML)
 
 enum class NGML_Parsing_Modes {
-  NGML, HTML, KHIF
+  NGML, HTML, CXML
  };
 
 _RZNS(NGML)
