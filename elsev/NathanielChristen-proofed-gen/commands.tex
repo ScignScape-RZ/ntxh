@@ -10,7 +10,7 @@
 
 \newif\iflong
 \longfalse
-\newcommand{\sgapped}{\hspace{-3pt}\iflong}
+\newcommand{\sgapped}[1][0pt]{\hspace{#1}\iflong}
 %\newcommand{\egapped}{\fi}
 %\let\sgapped\iflong
 \let\egapped\fi

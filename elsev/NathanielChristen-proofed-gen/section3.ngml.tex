@@ -769,8 +769,7 @@ reusable data formats, allowing individual components to use or make inferences 
 data according to their own purposes.
 }
 \p{Counter to this paradigm, return to
-hypothetical {\sgapped}\USH{}{\egapped}
-{\sadded}Cyber-Physical{\eadded} examples, such as 
+hypothetical {\sgapped}\USH{}{\egapped}{\sadded}Cyber-Physical{\eadded} examples, such as 
 the conversion of Voltage data to acceleration data, which is a
 prerequisite to accelerometers' readings being useful in most contexts.  Software
 possessing capabilities to process accelerometers therefore reveals
@@ -1006,8 +1005,7 @@ together by sharing the same symbol, and correlatively sharing the
 same value during a \q{runtime manifestation} of the \CH{}.  Therefore,
 the \q{channels of abstraction} at work in a procedure can be identified
 by providing a name representing the \i{kind} of channel and a list of
-symbols affected by that kind of abstraction.
-{\sgapped}In the notation I adopt here,
+symbols affected by that kind of abstraction.{\sgapped}In the notation I adopt here,
 conventional lambda-abstraction like \lXY{} would be written as \CHlXY{}.
 {\egapped}
 }
@@ -1103,8 +1101,8 @@ programming language type systems.
 \p{Collectively, to summarize my discussion to this point,
 I will say that formulations 
 describing channel kinds, their restrictions, and
-their interrelationships {\sgapped}describe{\sgapped}
-{\sadded}outline{\sadded} a \i{Channel Algebra}, 
+their interrelationships
+{\sgapped}describe{\egapped}{\sadded}outline{\eadded} a \i{Channel Algebra},
 which express how channels combine to
 describe possible function signatures \mdash{} and 
 accordingly to describe functional \i{types}.  The
@@ -1120,8 +1118,9 @@ Channel Algebra, a language adequately described by its formulations
 restricted to at most one element).
 Analogously, a type system \TyS{} is 
 a \q{\Chi{}-type-system}, and is \q{closed} with respect to \Chi{}, 
-if valid signatures {\sadded}characterized{\eadded}
-{\sgapped}described{\egapped} using channel kinds in
+if valid signatures
+{\sadded}characterized{\eadded}{\sgapped}described{\egapped} using
+channel kinds in
 \Chi{} correspond to types found in \TyS{}.  Types may be less granular than
 signatures: as a case in point,
 functions differing in signature only by whether they
