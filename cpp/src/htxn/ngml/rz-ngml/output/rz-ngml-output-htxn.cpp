@@ -245,7 +245,25 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
    span_end = (*it).second;
   }
 
-  u4 nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
+
+  u4 nc1;
+
+  if(ntc->flags.is_region)
+    nc1 = htxn_document_.add_detail_range_region(tag_command_gl_, span_start, span_end);
+  else
+    nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
+
+  u4 sz = ntc->argument().size();
+  if(!ntc->argument().isEmpty())
+  {
+   u4 enter = tag_command_arg_layer_.size() + 2;
+   u4 leave = enter + sz;
+   tag_command_arg_layer_ += ntc->argument();
+   u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave);
+   htxn_document_.tie_detail_range_preempt(nc1, nc2);
+   //tag_command_gl_->
+  }
+
   //ntc->set_detail_code(nc1);
   u4 order = main_gl_->add_range(b.index, 0, nc1);
   ntc->set_ref_position(b.index);
@@ -280,8 +298,10 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  else
   command_print_name = ntc->name();
 
- main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index);
-  //? range_starts_[write_position_] = {span_start, span_end};
+ if(!ntc->flags.is_self_closed)
+   main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index);
+
+ //? range_starts_[write_position_] = {span_start, span_end};
 
 //? b.qts << "</" << ntc->name() << '>';
 }

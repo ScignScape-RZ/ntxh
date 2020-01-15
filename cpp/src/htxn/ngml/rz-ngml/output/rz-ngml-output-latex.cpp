@@ -138,7 +138,7 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
    if(!cb->flags.pre_fallthrough)
     break;
   }
-  if(ntc->flags.is_environment)
+  if(ntc->flags.is_region)
   {
    b.qts << "\\begin{" << ntc->latex_name();// << '}';
   }
@@ -169,7 +169,7 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
    return;
  }
 
- if(ntc->flags.is_environment)
+ if(ntc->flags.is_region)
  {
   b.qts << "\\end{" << ntc->latex_name() << '}';
  }
@@ -179,7 +179,7 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
 
 void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
- if(ntc->flags.is_environment)
+ if(ntc->flags.is_region)
  {
   b.qts << '}';
  }

@@ -49,13 +49,13 @@ class NGML_Graph_Build
  Acc_Mode acc_mode_;
 
  enum Tag_Body_Follow_Mode {
-  Tag_Body_Follow_Mode_Not_Recognized, Normal, Environment, Empty
+  Tag_Body_Follow_Mode_Not_Recognized, Normal, Region, Empty
  };
 
  static Tag_Body_Follow_Mode parse_tag_body_follow(QString str)
  {
   static QMap<QString, Tag_Body_Follow_Mode> static_map {{
-   {".",  Normal}, {",",  Environment}, {";", Empty}
+   {".",  Normal}, {",",  Region}, {";", Empty}
   }};
   return static_map.value(str, Tag_Body_Follow_Mode_Not_Recognized);
  }

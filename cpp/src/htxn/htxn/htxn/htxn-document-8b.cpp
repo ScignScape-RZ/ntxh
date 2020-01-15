@@ -115,7 +115,7 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
    }
   }  
   else
-    gl.add_leave(leave, cmd, &nd);
+    gl.add_leave(leave, cmd, &nd, node_code);
  }
 
  QString end_result;

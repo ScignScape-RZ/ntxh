@@ -411,8 +411,9 @@ caon_ptr<NGML_Tag_Command> NGML_Graph_Build::tag_command_entry(QString prefix, Q
  caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, 
    argument, parent_tag_type);
 
- if(prefix == "/")
-  ntc->flags.is_environment = true;
+//?
+// if(prefix == "/")
+//   ntc->flags.is_environment = true;
 
  caon_ptr<tNode> node = make_new_node(ntc);
  markup_position_.tag_command_entry(node);
@@ -488,13 +489,12 @@ void NGML_Graph_Build::tag_command_entry_inline(QString tag_command,
  case Normal:
   tag_body_leave();
   break;
- case Environment:
-  {
-   ntc->flags.is_environment = true;
-   tag_body_leave();
-   break;
- }
+ case Region:
+  ntc->flags.is_region = true;
+  tag_body_leave();
+  break;
  case Empty:
+  ntc->flags.is_self_closed = true;
   tag_body_leave();
   tag_command_leave(); break;
  }

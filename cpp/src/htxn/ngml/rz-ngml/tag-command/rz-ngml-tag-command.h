@@ -26,10 +26,10 @@ class NGML_Tag_Command : public NGML_Whitespace_Holder
 public:
 
  flags_(2)
-  bool is_environment:1;
+  bool is_region:1;
   bool is_closed:1;
   bool is_html:1;
-  bool is_auto_closed:1;
+  bool is_self_closed:1;
   bool is_tag_assertion:1;
   bool is_tag_query:1;
   bool is_understood_auto_closed:1;

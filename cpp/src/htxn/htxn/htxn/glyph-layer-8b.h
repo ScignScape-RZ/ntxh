@@ -38,6 +38,8 @@ private:
  
  QMap<u4, QVector<QPair<QString, const HTXN_Node_Detail*>>> processing_leaves_;
 
+ QMap<QPair<u4, u4>, u4>* assymetric_leaves_;
+
  u4 id_;
 
 public:
@@ -46,13 +48,16 @@ public:
  ACCESSORS(QString ,description);
  ACCESSORS(u4 ,id)
 
+ void activate_assymetric_leaves();
+ void add_assymetric_leave(u4 leave, u4 node_code, u4 order);
+
  u4 add_range(u4 enter, u4 leave, u4 node_code);
  void set_range_leave(u4 enter, u4 order, u4 leave);
 
  u4 get_range_by_enter(u4 enter, u4& leave, u2 count);
 
  QVector<QPair<QString, const HTXN_Node_Detail*>> check_leave(u4 leave);
- void add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd);
+ void add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd, u4 nc);
 
  void write_ranges(QTextStream& qts) const;
  void read_ranges(QTextStream& qts);
