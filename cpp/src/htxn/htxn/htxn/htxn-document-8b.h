@@ -71,7 +71,8 @@ public:
 
  void tie_detail_range_preempt(u4 rc1, u4 rc2);
 
- void check_precedent_ranges(const HTXN_Node_Detail& nd, QStringList& result);
+ void check_precedent_ranges(const HTXN_Node_Detail& nd,
+   QVector<QPair<HTXN_Node_Detail*, QString>>& result);
 
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);
@@ -105,7 +106,7 @@ public:
 
  QString check_latex_insert(Glyph_Layer_8b& gl,
    u4 index, Glyph_Argument_Package& cmdgap, 
-   QStringList& precs, QStringList& succs, QString& result);
+   QVector<QPair<HTXN_Node_Detail*, QString>>& precs, QStringList& succs, QString& result);
 
 };
 

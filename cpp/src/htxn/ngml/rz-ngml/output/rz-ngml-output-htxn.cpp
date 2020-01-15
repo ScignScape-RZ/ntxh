@@ -305,7 +305,7 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
     if(c == '?')
       nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
     else if(c == '!')
-      nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+      nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave);
     htxn_document_.tie_detail_range_preempt(nc1, nc2);
    }
    //tag_command_gl_->

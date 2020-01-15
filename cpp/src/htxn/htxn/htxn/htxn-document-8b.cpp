@@ -46,19 +46,37 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 
 // void HTXN_Document_8b::sss;
 
-void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd, QStringList& result)
+void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
+  QVector<QPair<HTXN_Node_Detail*, QString>>& result)
 {
  if(QVector<u4>* vec = nd.get_refs())
  {
-  u4 sz = vec->size();
-  for(u4 ii = 0; ii < sz; ++ii)
-    result << QString();  
-  u4 i = 0;
-  for(QString& qs : result )
+  result.reserve(vec->size());
+
+//  u4 sz = vec->size();
+//  for(u4 ii = 0; ii < sz; ++ii)
+//    result << QString();
+
+//  u4 i = 0;
+//   // // std::transform ? ...
+//  for(QPair<HTXN_Node_Detail*, QString>& pr : result )
+//  {
+//   HTXN_Node_Detail* nd = &node_details_[vec->at(i) - 1];
+//   pr.first = nd;
+//   get_latex_insert(*nd, pr.second);
+//   ++i;
+//  }
+
+//  u4 i = 0;
+  std::transform(vec->begin(), vec->end(), std::back_inserter(result),
+    [this](u4 i) -> QPair<HTXN_Node_Detail*, QString>
   {
-   get_latex_insert(node_details_[vec->at(i) - 1], qs);
-   ++i;
-  }
+   HTXN_Node_Detail* nd = &node_details_[i - 1];
+   QString ins;
+   get_latex_insert(*nd, ins);
+   return {nd, ins};
+  });
+
  }
 }
 
@@ -72,7 +90,8 @@ void HTXN_Document_8b::get_latex_insert(HTXN_Node_Detail& nd,
 
 QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   u4 index, Glyph_Argument_Package& cmdgap, 
-  QStringList& precs, QStringList& succs, QString& result)
+  QVector<QPair<HTXN_Node_Detail*, QString>>& precs,
+  QStringList& succs, QString& result)
 {
  // //  check enters ...
  u4 leave = 0;
@@ -109,9 +128,12 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
      result.append("}");
 
    check_precedent_ranges(nd, precs);
-   for(QString qs : precs)
+   for(QPair<HTXN_Node_Detail*, QString>& pr : precs)
    {
-    result.append(QString("{%1}").arg(qs));
+    if(pr.first->flags.optional)
+      result.append(QString("[%1]").arg(pr.second));
+    else
+      result.append(QString("{%1}").arg(pr.second));
    }
   }  
   else
@@ -180,7 +202,7 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  cmdgap.internal_deck = current_deck_;
  //?gap.internal_diacritic_deck = current_diacritic_deck_;
  QString end_result;
- QStringList precs;
+ QVector<QPair<HTXN_Node_Detail*, QString>> precs;
  QStringList succs;
  for(u4 i = enter; i < leave; ++i)
  {
