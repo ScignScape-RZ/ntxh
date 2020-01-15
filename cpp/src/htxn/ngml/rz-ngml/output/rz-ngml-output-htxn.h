@@ -62,6 +62,8 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  QString htxne_top_;
 
+ u4 split_arg_layer_arguments(QString arg, QStringList& args);
+
 public:
 
  NGML_Output_HTXN(NGML_Document& document);
@@ -74,6 +76,8 @@ public:
  void generate(QTextStream& qts);
 
  void generate_root(const NGML_Output_Bundle& b, caon_ptr<NGML_Root> nr) Q_DECL_OVERRIDE;
+
+ void check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
 
 // void generate_space_following_token(const NGML_Output_Bundle& b) Q_DECL_OVERRIDE;

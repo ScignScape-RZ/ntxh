@@ -1,19 +1,16 @@
 ## htxne
 #
-`[//]
-Hypergraph-Based Type Theory 
-for Software Development in a Cyber-Physical Context
-
-`[/]
+`[//]Hypergraph-Based Type Theory 
+for Software Development in a Cyber-Physical Context`[/]
 
 `[//]dcdocumenttitle`[/]
 
-`[//]article`[/]
+`[//]10ptarticle`[/]
 
 @@ ranges
 3
 =0
-2<3>0;1,84;3,84;4,
+2<3>0;1,84;4,84;5,
 !
 =1
 !
@@ -21,15 +18,18 @@ for Software Development in a Cyber-Physical Context
 !
  *
 @@ details
-4
+5
 192;2:3
-0;2:9
+4;2:6
+4;6:13
 1;4:11
 0;12:16
  *
 %% ties
 &&1
-2~
+2 3~
+!
+&!2
 !
 &!2
 !

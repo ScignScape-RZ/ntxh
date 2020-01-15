@@ -198,7 +198,7 @@ void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b, caon_
 void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
  ntc->write_whitespace(b.qts);
- // check_update_index_after_whitespace(b, ntc);
+ //? check_update_index_after_whitespace(b, ntc);
 }
 
 void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)

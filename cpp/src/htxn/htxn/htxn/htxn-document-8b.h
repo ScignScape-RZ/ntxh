@@ -67,6 +67,7 @@ public:
 
  u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave);
  u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave);
+ u4 add_detail_range_optional(Glyph_Layer_8b* layer, u4 enter, u4 leave);
 
  void tie_detail_range_preempt(u4 rc1, u4 rc2);
 

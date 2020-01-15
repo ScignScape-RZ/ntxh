@@ -415,7 +415,6 @@ u4 HTXN_Document_8b::add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4
  nd->set_layer(layer);
  nd->flags.region = true;
  return result; 
-
 }
 
 u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
@@ -423,6 +422,15 @@ u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave)
  u4 result = 0;
  HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
  nd->set_layer(layer);
+ return result; 
+}
+
+u4 HTXN_Document_8b::add_detail_range_optional(Glyph_Layer_8b* layer, u4 enter, u4 leave)
+{
+ u4 result = 0;
+ HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
+ nd->set_layer(layer);
+ nd->flags.optional = true;
  return result; 
 }
 

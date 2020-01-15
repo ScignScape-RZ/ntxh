@@ -168,6 +168,11 @@ caon_ptr<NGML_Command_Callback> NGML_Output_HTXN::check_command_callback(caon_pt
  return callbacks_.value(name, caon_ptr<NGML_Command_Callback>( nullptr ));
 }
 
+void NGML_Output_HTXN::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
+{
+ //? ntc->write_whitespace(b.qts);
+ //? check_update_index_after_whitespace(b, ntc);
+}
 
 void NGML_Output_HTXN::check_post_callback
  (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node)
@@ -182,6 +187,30 @@ void NGML_Output_HTXN::generate_tag_command_auto_leave(const NGML_Output_Bundle&
 {
  // b.qts << "/>";
 }
+
+u4 NGML_Output_HTXN::split_arg_layer_arguments(QString arg,
+  QStringList& args)
+{
+ if(arg.isEmpty())
+   return 0;
+ QString trim = arg.trimmed();
+ if(trim.isEmpty())
+ {
+  args = QStringList {" "};
+  return 1;
+ }
+ QChar c = trim[0];
+ if( (c != '?') && (c != '!') )
+ {
+  args = QStringList {arg};
+  return 1;
+ }
+ trim.replace(" ? ", " >? ");
+ trim.replace(" ! ", " >! ");
+ args = trim.split('>');
+ return args.size();
+}
+
 
 void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
@@ -253,14 +282,32 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   else
     nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
 
-  u4 sz = ntc->argument().size();
-  if(!ntc->argument().isEmpty())
+  QStringList args;
+  u4 sz = split_arg_layer_arguments(ntc->argument(), args);
+  if(sz > 0)
   {
-   u4 enter = tag_command_arg_layer_.size() + 2;
-   u4 leave = enter + sz;
-   tag_command_arg_layer_ += ntc->argument();
-   u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave);
-   htxn_document_.tie_detail_range_preempt(nc1, nc2);
+   if(sz == 1)
+   {
+    u4 enter = tag_command_arg_layer_.size() + 2;
+    u4 leave = enter + args[0].size();
+    tag_command_arg_layer_ += args[0];
+    u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave);
+    htxn_document_.tie_detail_range_preempt(nc1, nc2);
+   }
+   else for(QString arg : args)
+   {
+    QChar c = arg[0];
+    QString a = arg.mid(1).trimmed();
+    u4 enter = tag_command_arg_layer_.size() + 2;
+    u4 leave = enter + a.size();
+    tag_command_arg_layer_ += a;
+    u4 nc2;
+    if(c == '?')
+      nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+    else if(c == '!')
+      nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+    htxn_document_.tie_detail_range_preempt(nc1, nc2);
+   }
    //tag_command_gl_->
   }
 
