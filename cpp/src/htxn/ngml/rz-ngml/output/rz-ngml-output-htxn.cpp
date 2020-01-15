@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-output-htxn.h"
 
 #include "rz-ngml-output-event-generator.h"
@@ -83,7 +89,16 @@ void NGML_Output_HTXN::generate(QTextStream& qts)
 
 void NGML_Output_HTXN::generate_root(const NGML_Output_Bundle& b, caon_ptr<NGML_Root> nr)
 {
- nr->write_whitespace(b.qts);
+ htxne_top_ += "## htxne generated...\n";
+ QStringList lines = nr->ws().to_string().split('\n');
+ QStringListIterator it(lines);
+ while(it.hasNext())
+ {
+  QString l = it.next();
+  if( (!it.hasNext()) && l.isEmpty())
+    break;
+  htxne_top_ += QString("# %1 \n").arg(l);
+ }
 }
 
 void NGML_Output_HTXN::write_latex_out(QString path)
@@ -102,7 +117,8 @@ void NGML_Output_HTXN::write_latex_out(QString path)
  QFile file(path);
  if(file.open(QIODevice::WriteOnly | QIODevice::Text))
  {
-  QTextStream qts(&file); 
+  QTextStream qts(&file);
+  qts << htxne_top_;
   htxn_document_.write_latex_out(qts); 
  }
 }
@@ -167,13 +183,6 @@ void NGML_Output_HTXN::generate_tag_command_auto_leave(const NGML_Output_Bundle&
  // b.qts << "/>";
 }
 
-void NGML_Output_HTXN::check_update_index(const NGML_Output_Bundle& b,
-  NGML_Tile& tile)
-{
- b.index += tile.raw_text().length();
-}
-
-
 void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
  CAON_PTR_B_DEBUG(NGML_Node ,node)
@@ -217,8 +226,30 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
    style_class_name = cb->rename_style_class();
 
   //u4 pos = (u4) b.qts.pos();
-  ntc->set_ref_position(b.index);
 
+  u4 span_start, span_end;
+
+  auto it = tag_command_spans_.find(command_print_name);
+  if(it == tag_command_spans_.end())
+  {
+   span_start = tag_command_layer_.size() + 2;
+   span_end = span_start + command_print_name.size() - 1;
+
+   tag_command_spans_.insert(command_print_name,
+     {span_start, span_end});
+   tag_command_layer_ += command_print_name;
+  }
+  else
+  {
+   span_start = (*it).first;
+   span_end = (*it).second;
+  }
+
+  u4 nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
+  //ntc->set_detail_code(nc1);
+  u4 order = main_gl_->add_range(b.index, 0, nc1);
+  ntc->set_ref_position(b.index);
+  ntc->set_ref_order(order);
 //  b.qts << '\n' << '[' << command_print_name;
 
 //?  if(!style_class_name.isEmpty())
@@ -249,27 +280,7 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  else
   command_print_name = ntc->name();
 
- u4 span_start, span_end;
-
- auto it = tag_command_spans_.find(command_print_name);
- if(it == tag_command_spans_.end())
- {
-  span_start = tag_command_layer_.size() + 2;
-  span_end = span_start + command_print_name.size();
-
-  tag_command_spans_.insert(command_print_name,
-    {span_start, span_end});
-  tag_command_layer_ += command_print_name;
- }
- else
- {
-  span_start = (*it).first;
-  span_end = (*it).second;
- }
-
- u4 nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
- main_gl_->add_range(ntc->ref_position(), b.index, nc1);
-
+ main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index);
   //? range_starts_[write_position_] = {span_start, span_end};
 
 //? b.qts << "</" << ntc->name() << '>';

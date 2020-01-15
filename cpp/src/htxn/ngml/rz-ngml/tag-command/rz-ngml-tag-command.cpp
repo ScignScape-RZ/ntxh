@@ -1,13 +1,21 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-tag-command.h"
 
 #include "rzns.h"
 USING_RZNS(NGML)
 
 
-NGML_Tag_Command::NGML_Tag_Command(QString name, QString parent_tag_type)
- : Flags(0), name_(name),
-   parent_tag_type_(parent_tag_type), ref_position_(0)
+NGML_Tag_Command::NGML_Tag_Command(QString name, 
+  QString argument, QString parent_tag_type)
+ : Flags(0), name_(name), argument_(argument),
+   parent_tag_type_(parent_tag_type),
+   ref_position_(0), ref_order_(0)
 {
 
 }

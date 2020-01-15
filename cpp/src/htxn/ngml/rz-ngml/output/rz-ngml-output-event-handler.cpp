@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-output-event-handler.h"
 
 #include "kernel/document/rz-ngml-document.h"
@@ -192,6 +198,7 @@ void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b, caon_
 void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
  ntc->write_whitespace(b.qts);
+ // check_update_index_after_whitespace(b, ntc);
 }
 
 void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
@@ -202,4 +209,12 @@ void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bund
 void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tile> tile)
 {
  tile->write_whitespace(b.qts);
+ check_update_index_after_whitespace(b, *tile);
 }
+
+void NGML_Output_Event_Handler::check_update_index_after_whitespace(const NGML_Output_Bundle& b,
+  NGML_Tile& tile)
+{
+ b.index += tile.ws().get_length();
+}
+

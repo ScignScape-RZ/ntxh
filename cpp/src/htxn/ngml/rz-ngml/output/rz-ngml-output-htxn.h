@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_OUTPUT_HTXN__H
 #define RZ_NGML_OUTPUT_HTXN__H
 
@@ -54,6 +60,8 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  QString htxne_path_;
 
+ QString htxne_top_;
+
 public:
 
  NGML_Output_HTXN(NGML_Document& document);
@@ -67,8 +75,6 @@ public:
 
  void generate_root(const NGML_Output_Bundle& b, caon_ptr<NGML_Root> nr) Q_DECL_OVERRIDE;
 
- void check_update_index(const NGML_Output_Bundle& b,
-   NGML_Tile& tile) Q_DECL_OVERRIDE;
 
 // void generate_space_following_token(const NGML_Output_Bundle& b) Q_DECL_OVERRIDE;
 // void generate_token(const NGML_Output_Bundle& b, caon_ptr<NGML_Token> token) Q_DECL_OVERRIDE;

@@ -46,7 +46,8 @@ public:
  ACCESSORS(QString ,description);
  ACCESSORS(u4 ,id)
 
- void add_range(u4 enter, u4 leave, u4 node_code);
+ u4 add_range(u4 enter, u4 leave, u4 node_code);
+ void set_range_leave(u4 enter, u4 order, u4 leave);
 
  u4 get_range_by_enter(u4 enter, u4& leave, u2 count);
 

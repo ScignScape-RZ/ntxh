@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-grammar.h"
 
 #include "kernel/grammar/rz-ngml-parse-context.h"
@@ -337,13 +343,13 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  {
   QString tag_command = p.matched("tag-command");
 
-
   qDebug() << "TC: " << tag_command;
  
-
-
   QString tag_body_follow = p.matched("tag-body-follow");
   QString argument = p.matched("argument");
+
+  qDebug() << "A: " << argument;
+
   graph_build.tag_command_entry_inline(tag_command, tag_body_follow, argument);
   //graph_build.tag_body_leave();
  });

@@ -6,6 +6,8 @@
 #include "flags.h"
 #include "relae-graph/relae-caon-ptr.h"
 
+#include "global-types.h"
+
 
 #include <QString>
 
@@ -23,6 +25,8 @@ public:
  NGML_Whitespace();
 
  explicit NGML_Whitespace(QString raw_text);
+
+ u1 get_length();
 
  QString to_string();
  void parse(QString raw_text);

@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_TAG_COMMAND__H
 #define RZ_NGML_TAG_COMMAND__H
 
@@ -35,18 +41,24 @@ public:
 public:
 
  QString name_;
+ QString argument_; 
+
  QString parent_tag_type_;
 
  u4 ref_position_;
+ u4 ref_order_;
 
 public:
 
  ACCESSORS(QString ,name)
  ACCESSORS(QString ,parent_tag_type)
+ ACCESSORS(QString ,argument)
 
  ACCESSORS(u4 ,ref_position)
+ ACCESSORS(u4 ,ref_order)
 
- NGML_Tag_Command(QString name, QString parent_tag_type = QString());
+ NGML_Tag_Command(QString name, QString argument,
+   QString parent_tag_type = QString());
 
  QString latex_name();
 

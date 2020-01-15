@@ -42,6 +42,13 @@ flags_(2)
  bool has_continue:1;
  bool split_node_ref:1;
  bool ref_preempts_wrap:1;
+
+ bool sole_line:1;
+ bool pre_line_gap:1;
+ bool post_line_gap:1;
+ bool pre_space_gap:1;
+ bool post_space_gap:1;
+
 _flags
 
  void* node_ref;

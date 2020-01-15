@@ -40,6 +40,9 @@ public:
  virtual void generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc);
 
  virtual void check_update_index(const NGML_Output_Bundle& b, NGML_Tile& tile);
+ virtual void check_update_index_after_whitespace(const NGML_Output_Bundle& b,
+   NGML_Tile& tile);
+
 
  virtual void generate_tag_command_leave(const NGML_Output_Bundle& b);
  virtual void generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc);

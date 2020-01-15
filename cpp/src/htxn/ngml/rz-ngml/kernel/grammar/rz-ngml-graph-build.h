@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_GRAPH_BUILD__H
 #define RZ_NGML_GRAPH_BUILD__H
 
@@ -108,7 +114,7 @@ public:
 
  void tag_command_leave();
  void inline_tag_command_leave();
- caon_ptr<NGML_Tag_Command> tag_command_entry(QString prefix, QString tag_command, QString parent_tag_type = QString());
+ caon_ptr<NGML_Tag_Command> tag_command_entry(QString prefix, QString tag_command, QString argument, QString parent_tag_type = QString());
  void tag_command_instruction_leave(caon_ptr<tNode> node);
  void tag_body_leave(QString match = QString());
  void call_leave();
@@ -166,7 +172,8 @@ public:
 
  caon_ptr<NGML_Attribute_Tile> make_new_attribute_tile(QString tile);
  caon_ptr<NGML_Tile> make_new_tile(QString tile);
- caon_ptr<NGML_Tag_Command> make_new_tag_command(QString name, QString parent_tag_type = QString());
+ caon_ptr<NGML_Tag_Command> make_new_tag_command(QString name, 
+QString argument, QString parent_tag_type = QString());
  caon_ptr<NGML_Paralex_Tile> make_new_paralex_tile(QString tile, 
    u1 kind, u1 w_or_a);
 

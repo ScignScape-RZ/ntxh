@@ -93,9 +93,16 @@ u4 Glyph_Layer_8b::get_range_by_enter(u4 enter, u4& leave, u2 count)
  return it.value()[count].second;
 }
 
-void Glyph_Layer_8b::add_range(u4 enter, u4 leave, u4 node_code)
+void Glyph_Layer_8b::set_range_leave(u4 enter, u4 order, u4 leave)
 {
+ ranges_[enter][order].first = leave;
+}
+
+u4 Glyph_Layer_8b::add_range(u4 enter, u4 leave, u4 node_code)
+{
+ u4 result = ranges_[enter].size();
  ranges_[enter].push_back({leave, node_code});
+ return result;
 }
 
 

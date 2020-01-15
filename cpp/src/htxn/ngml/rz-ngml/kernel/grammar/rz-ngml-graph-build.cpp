@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-graph-build.h"
 
 #include "tile/rz-ngml-tile.h"
@@ -323,7 +329,7 @@ void NGML_Graph_Build::enter_tag_command_with_predicate_vector(QString tag_comma
  bool string_follow = (connector_prefix.startsWith('+'));
  bool subject_claim = (connector_prefix.endsWith('['));
 
- caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command);
+ caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, {});
  caon_ptr<tNode> node = make_new_node(ntc);
 
  markup_position_.tag_command_entry(node);
@@ -354,7 +360,7 @@ caon_ptr<NGML_Tag_Command> NGML_Graph_Build::html_tag_instruction(QString prefix
 {
  check_tile_acc();
 
- caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command);
+ caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, {});
  if(prefix == "!")
   ntc->flags.is_tag_assertion = true;
  else if(prefix == "?")
@@ -388,7 +394,7 @@ caon_ptr<NGML_Tag_Command> NGML_Graph_Build::html_tag_command_entry(QString pref
   return nullptr;
  }
 
- caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command);
+ caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, {});
  caon_ptr<tNode> node = make_new_node(ntc);
 
  markup_position_.tag_command_entry(node);
@@ -399,10 +405,11 @@ caon_ptr<NGML_Tag_Command> NGML_Graph_Build::html_tag_command_entry(QString pref
 
 }
 
-caon_ptr<NGML_Tag_Command> NGML_Graph_Build::tag_command_entry(QString prefix, QString tag_command, QString parent_tag_type)
+caon_ptr<NGML_Tag_Command> NGML_Graph_Build::tag_command_entry(QString prefix, QString tag_command, QString argument, QString parent_tag_type)
 {
  check_tile_acc();
- caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, parent_tag_type);
+ caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, 
+   argument, parent_tag_type);
 
  if(prefix == "/")
   ntc->flags.is_environment = true;
@@ -473,34 +480,30 @@ void NGML_Graph_Build::tag_command_entry_inline(QString tag_command,
 {
  Tag_Body_Follow_Mode m = parse_tag_body_follow(tag_body_follow);
  QString prefix;
+ caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(prefix, 
+   tag_command, argument);
+
  switch(m)
  {
  case Normal:
-  tag_command_entry(prefix, tag_command);
   tag_body_leave();
-  tile_acc(argument);
   break;
  case Environment:
   {
-   caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(prefix, tag_command);
    ntc->flags.is_environment = true;
    tag_body_leave();
-   tile_acc(argument);
    break;
  }
  case Empty:
-  tag_command_entry(prefix, tag_command);
   tag_body_leave();
-  tile_acc(argument);
   tag_command_leave(); break;
-
  }
 }
 
 
-caon_ptr<NGML_Tag_Command> NGML_Graph_Build::make_new_tag_command(QString name, QString parent_tag_type)
+caon_ptr<NGML_Tag_Command> NGML_Graph_Build::make_new_tag_command(QString name, QString argument, QString parent_tag_type)
 {
- return caon_ptr<NGML_Tag_Command>( new NGML_Tag_Command(name, parent_tag_type) );
+ return caon_ptr<NGML_Tag_Command>( new NGML_Tag_Command(name, argument, parent_tag_type) );
 }
 
 

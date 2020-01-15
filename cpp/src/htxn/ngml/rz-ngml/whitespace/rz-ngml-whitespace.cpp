@@ -21,6 +21,35 @@ NGML_Whitespace::NGML_Whitespace(QString raw_text)
  parse(raw_text);
 }
 
+u1 NGML_Whitespace::get_length()
+{
+ int result = 0;
+ if(raw_text_)
+ {
+  #ifdef NO_CAON
+  result = raw_text_->size();
+  #else //NO_CAON
+  if(raw_text_.is_fixnum())
+  {
+   size_t v = raw_text_.get_fixnum();
+   while(v > 0)
+   {
+    u1 encode = v & 3;
+    if(encode > 0)
+      ++result;
+    v >>= 2;
+   }
+   return (u1) result;
+  }
+  else
+   result = raw_text_->size();
+  #endif //NO_CAON
+  return (u1) qMin<int>(result, 255);
+ }
+ return 0;
+}
+
+
 QString NGML_Whitespace::to_string()
 {
  if(raw_text_)
