@@ -427,10 +427,10 @@ void NGML_Graph_Build::html_tag_command_attribute_entry(QString pre_space,
  QString attribute, QString s_or_d)
 {
  current_html_attribute_ = attribute;
- if(s_or_d == "'")
-  parse_context_.flags.inside_html_tag_attribute_single_quote = true;
- else if(s_or_d == "\"")
-  parse_context_.flags.inside_html_tag_attribute_double_quote = true;
+//? if(s_or_d == "'")
+//?  parse_context_.flags.inside_html_tag_attribute_single_quote = true;
+//? else if(s_or_d == "\"")
+//?  parse_context_.flags.inside_html_tag_attribute_double_quote = true;
 }
 
 void NGML_Graph_Build::html_tag_command_attribute_acc(QString str)
@@ -463,8 +463,8 @@ caon_ptr<NGML_Attribute_Tile> NGML_Graph_Build::complete_html_tag_command_attrib
  current_html_attribute_ = QString();
  tile_acc_ = QString();
 
- parse_context_.flags.inside_html_tag_attribute_double_quote = false;
- parse_context_.flags.inside_html_tag_attribute_single_quote = false;
+//? parse_context_.flags.inside_html_tag_attribute_double_quote = false;
+//? parse_context_.flags.inside_html_tag_attribute_single_quote = false;
  parse_context_.flags.inside_html_tag_body = true;
 
  return tile;
@@ -475,6 +475,67 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
 {
  return document_info_.light_xml();
 }
+
+void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QString first_arg_marker, QString argument, QString name)
+{
+ QString nn = name;
+ if(nn.isEmpty())
+   // //  this "name" will never appear but it's a placeholder 
+    //    for debugging ...
+   nn = QString("%1 %2").arg(tag_command).arg(first_arg_marker);
+
+ caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(nn, argument);
+ if(name.isEmpty())
+   ntc->flags.autogen_multi_name = true;
+
+ caon_ptr<tNode> node = make_new_node(ntc);
+
+ if(first_arg_marker == "->>")
+ {
+  ntc->flags.is_multi_optional = true;
+  ntc->flags.multi_arg_layer = true;
+  markup_position_.await_optional(node);
+ }
+ else if(first_arg_marker == "-->")
+ {
+  ntc->flags.is_multi_mandatory = true;
+  ntc->flags.multi_main_layer = true;
+  markup_position_.await_mandatory(node);
+ }
+ else if(first_arg_marker == "->")
+ {
+  ntc->flags.is_multi_mandatory = true;
+  ntc->flags.multi_arg_layer = true;
+  markup_position_.await_mandatory(node);
+ }
+ else if(first_arg_marker == "-->>")
+ {
+  ntc->flags.is_multi_optional = true;
+  ntc->flags.multi_main_layer = true;
+  markup_position_.await_optional(node);
+ }
+
+
+}
+
+void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
+  QString tag_body_follow, QString first_arg_marker)
+{
+ Tag_Body_Follow_Mode m = parse_tag_body_follow(tag_body_follow);
+
+ caon_ptr<NGML_Tag_Command> ntc = tag_command_entry({}, 
+   tag_command, {});
+ if(m == Region)
+   ntc->flags.is_region = true;
+
+ ntc->flags.is_multi_parent = true;
+
+ tag_body_leave();
+
+ tag_command_entry_inside_multi(tag_command, first_arg_marker);
+ parse_context_.flags.inside_multi_parent = true;
+}
+
 
 void NGML_Graph_Build::tag_command_entry_inline(QString tag_command,
  QString tag_body_follow, QString argument)

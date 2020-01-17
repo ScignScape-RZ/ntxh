@@ -32,7 +32,10 @@ class NGML_Markup_Position
  {
   Root, Held_Empty, Tag_Command_Entry, Tile_Sequence,
    Tag_Body_Leave, Tag_Command_Leave,
-   Active_Khif_Connector, Khif_Tag_Command_Leave, Annotation_Close
+   Active_Khif_Connector, Khif_Tag_Command_Leave, 
+   Annotation_Close,
+
+   Awaiting_Optional, Awaiting_Mandatory
  };
 
  enum Khif_Connectors
@@ -80,6 +83,10 @@ public:
  ACCESSORS(caon_ptr<tNode> ,current_node)
 
  NGML_Markup_Position(caon_ptr<tNode> current_node);
+
+ void await_mandatory_or_optional(caon_ptr<tNode> node);
+ void await_optional(caon_ptr<tNode> node);
+ void await_mandatory(caon_ptr<tNode> node);
 
  void enter_multiline_comment(int semis, int tildes);
  bool check_leave_multiline_comment(int semis, int tildes);

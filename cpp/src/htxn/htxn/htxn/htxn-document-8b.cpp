@@ -51,31 +51,23 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
 {
  if(QVector<u4>* vec = nd.get_refs())
  {
-  result.reserve(vec->size());
+  result.resize(vec->size());
 
-//  u4 sz = vec->size();
-//  for(u4 ii = 0; ii < sz; ++ii)
-//    result << QString();
-
-//  u4 i = 0;
-//   // // std::transform ? ...
-//  for(QPair<HTXN_Node_Detail*, QString>& pr : result )
-//  {
-//   HTXN_Node_Detail* nd = &node_details_[vec->at(i) - 1];
-//   pr.first = nd;
-//   get_latex_insert(*nd, pr.second);
-//   ++i;
-//  }
-
-//  u4 i = 0;
-  std::transform(vec->begin(), vec->end(), std::back_inserter(result),
-    [this](u4 i) -> QPair<HTXN_Node_Detail*, QString>
+   // // use an extra list to view the results 
+    //   while debugging; the important 
+    //   operations are those modifying the 
+    //   pairs in place ...  
+  QStringList check;
+  std::transform(vec->begin(), vec->end(), 
+    result.begin(), std::back_inserter(check),
+    [this](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
   {
    HTXN_Node_Detail* nd = &node_details_[i - 1];
-   QString ins;
-   get_latex_insert(*nd, ins);
-   return {nd, ins};
+   get_latex_insert(*nd, pr.second);
+   pr.first = nd;
+   return pr.second;
   });
+
 
  }
 }

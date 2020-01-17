@@ -162,6 +162,10 @@ public:
 
  caon_ptr<NGML_Attribute_Tile> make_new_attribute_tile(QString key, QString value);
 
+ void tag_command_entry_multi(QString tag_command,
+   QString tag_body_follow, QString first_arg_marker);
+
+ void tag_command_entry_inside_multi(QString tag_command, QString first_arg_marker, QString argument = QString(), QString name = QString());
 
  void tag_command_entry_inline(QString tag_command,
    QString tag_body_follow, QString argument = QString());

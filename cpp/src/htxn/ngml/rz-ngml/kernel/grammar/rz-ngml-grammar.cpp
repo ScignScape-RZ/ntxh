@@ -336,20 +336,29 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  });
 #endif
 
+
+ add_rule( ngml_context, "tag-command-entry-multi",
+  " `(?<tag-command> .valid-tag-command-name. ) "
+  " (?<tag-body-follow> [,.] ) \\s+ (?<first-arg> "
+     " -{1,2} >{1,2} ) "
+           ,[&]
+ {
+  QString tag_command = p.matched("tag-command");
+  QString tag_body_follow = p.matched("tag-body-follow");
+  QString first_arg = p.matched("first-arg");
+  graph_build.tag_command_entry_multi(tag_command, tag_body_follow, first_arg);
+  //graph_build.tag_body_leave();
+ });
+
+
  add_rule( ngml_context, "tag-command-entry-inline",
   " `(?<tag-command> .valid-tag-command-name. ) "
   " (?: < (?<argument> [^>]+ ) >)?  (?<tag-body-follow> [,;.] ) "
            ,[&]
  {
   QString tag_command = p.matched("tag-command");
-
-  qDebug() << "TC: " << tag_command;
- 
   QString tag_body_follow = p.matched("tag-body-follow");
   QString argument = p.matched("argument");
-
-  qDebug() << "A: " << argument;
-
   graph_build.tag_command_entry_inline(tag_command, tag_body_follow, argument);
   //graph_build.tag_body_leave();
  });

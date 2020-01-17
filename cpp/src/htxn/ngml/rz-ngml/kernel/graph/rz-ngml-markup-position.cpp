@@ -96,6 +96,30 @@ bool NGML_Markup_Position::check_leave_multiline_comment(int semis, int tildes)
  return false;
 }
 
+void NGML_Markup_Position::await_mandatory_or_optional(caon_ptr<tNode> node)
+{
+ if(caon_ptr<NGML_Tag_Command> ntc = current_node_->ngml_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  ntc->flags.has_entry = true;
+ }
+ current_node_ << fr_/qry_.Tag_Command_Entry >> node;
+ current_node_ = node;
+ tag_commands_.push(node);
+}
+
+void NGML_Markup_Position::await_optional(caon_ptr<tNode> node)
+{
+// position_state_ = Await_Optional;
+ await_mandatory_or_optional(node);
+}
+
+void NGML_Markup_Position::await_mandatory(caon_ptr<tNode> node)
+{
+// position_state_ = Await_Mandatory;
+ await_mandatory_or_optional(node);
+}
+
 void NGML_Markup_Position::tag_command_entry(caon_ptr<NGML_Node> node)
 {
  CAON_PTR_DEBUG(tNode ,current_node_)
@@ -358,8 +382,6 @@ void NGML_Markup_Position::restore_current_node(caon_ptr<tNode> node)
  held_position_state_ = Held_Empty;
  current_node_ = node;
 }
-
-
 
 void NGML_Markup_Position::add_attribute_tile_node(caon_ptr<NGML_Node> node)
 {

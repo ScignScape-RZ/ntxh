@@ -24,8 +24,8 @@ public:
   flag_(2, inside_multiline_comment);
   flag_(3, inside_tag_body);
   flag_(4, inside_html_tag_body);
-  flag_(5, inside_html_tag_attribute_single_quote);
-  flag_(6, inside_html_tag_attribute_double_quote);
+  flag_(5, inside_multi_parent);
+  flag_(6, inside_inline_multi_parent);
   flag_(7, inside_html_script_tag);
   flag_(8, inside_html_style_tag);
  _flags_

@@ -25,7 +25,7 @@ class NGML_Tag_Command : public NGML_Whitespace_Holder
 {
 public:
 
- flags_(2)
+ flags_(3)
   bool is_region:1;
   bool is_closed:1;
   bool is_html:1;
@@ -36,6 +36,12 @@ public:
   bool has_main_tile:1;
   bool has_entry:1;
   bool has_attribute_tile:1;
+  bool is_multi_parent:1;
+  bool is_multi_optional:1;
+  bool is_multi_mandatory:1;
+  bool multi_arg_layer:1;
+  bool multi_main_layer:1;
+  bool autogen_multi_name:1;
  _flags
 
 public:
