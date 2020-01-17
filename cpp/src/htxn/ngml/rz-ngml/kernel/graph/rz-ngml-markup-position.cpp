@@ -311,8 +311,8 @@ void NGML_Markup_Position::tag_body_leave()
 caon_ptr<NGML_Markup_Position::tNode> NGML_Markup_Position::check_tag_command_leave(QString tag_command)
 {
  if(tag_commands_.isEmpty())
-  return caon_ptr<tNode>( nullptr );;
- current_attribute_node_ = caon_ptr<tNode>( nullptr );;
+   return caon_ptr<tNode>( nullptr );
+ current_attribute_node_ = caon_ptr<tNode>( nullptr );
  caon_ptr<tNode> result = tag_commands_.top();
  CAON_PTR_DEBUG(NGML_Node ,result)
  if(caon_ptr<NGML_Tag_Command> ntc = result->ngml_tag_command())
@@ -322,13 +322,13 @@ caon_ptr<NGML_Markup_Position::tNode> NGML_Markup_Position::check_tag_command_le
    return result;
   }
  }
- return caon_ptr<tNode>( nullptr );;
+ return caon_ptr<tNode>( nullptr );
 }
 
 void NGML_Markup_Position::rewind_tag_command_leave(QString tag_command)
 {
  if(tag_commands_.isEmpty())
-  return;
+   return;
  current_attribute_node_ = caon_ptr<tNode>( nullptr );
  caon_ptr<tNode> result = tag_commands_.pop();
  CAON_PTR_DEBUG(NGML_Node ,result)
@@ -351,7 +351,7 @@ void NGML_Markup_Position::rewind_tag_command_leave(QString tag_command)
 caon_ptr<NGML_Markup_Position::tNode> NGML_Markup_Position::tag_command_leave()
 {
  if(tag_commands_.isEmpty())
-  return caon_ptr<tNode>( nullptr );
+   return caon_ptr<tNode>( nullptr );
  current_attribute_node_ = caon_ptr<tNode>( nullptr );
  caon_ptr<tNode> result = tag_commands_.top();
  CAON_PTR_DEBUG(NGML_Node ,result)
@@ -370,10 +370,36 @@ void NGML_Markup_Position::confirm_tag_command_leave(caon_ptr<tNode> node)
  tag_commands_.pop();
  position_state_ = Tag_Command_Leave;
  current_node_ = node;
+  // //  check if current parent command is multi
+
+#ifdef HIDE
  if(caon_ptr<NGML_Tag_Command> ntc = node->ngml_tag_command())
  {
   ntc->flags.is_closed = true;
+  parse_context_.flags.inside_multi_parent = 
+    (ntc->flags.is_multi_mandatory || ntc->flags.is_multi_optional);
  }
+#endif HIDE
+#ifdef HIDE
+ if(tag_commands_.isEmpty())
+   parse_context_.flags.inside_multi_parent = false;
+ else
+ {
+  caon_ptr<tNode> tnode = tag_commands_.top();
+  if(caon_ptr<NGML_Tag_Command> tntc = tnode->ngml_tag_command())
+  {
+   parse_context_.flags.inside_multi_parent = tntc->flags.is_multi_parent;
+  }
+ }
+#endif HIDE
+}
+
+caon_ptr<NGML_Tag_Command> NGML_Markup_Position::get_current_tag_command()
+{
+ if(tag_commands_.isEmpty())
+   return nullptr;
+
+ return tag_commands_.top()->ngml_tag_command();
 }
 
 void NGML_Markup_Position::restore_current_node(caon_ptr<tNode> node)

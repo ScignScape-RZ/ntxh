@@ -476,13 +476,20 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
  return document_info_.light_xml();
 }
 
-void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QString first_arg_marker, QString argument, QString name)
+void NGML_Graph_Build::multi_arg_transition(QString arg_marker)
+{
+ tag_command_leave();
+ QString tag_command = markup_position_.current_tag_command_name();
+ tag_command_entry_inside_multi(tag_command, arg_marker);
+}
+
+void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QString arg_marker, QString argument, QString name)
 {
  QString nn = name;
  if(nn.isEmpty())
    // //  this "name" will never appear but it's a placeholder 
     //    for debugging ...
-   nn = QString("%1 %2").arg(tag_command).arg(first_arg_marker);
+   nn = QString("%1 %2").arg(tag_command).arg(arg_marker);
 
  caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(nn, argument);
  if(name.isEmpty())
@@ -490,25 +497,25 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QStri
 
  caon_ptr<tNode> node = make_new_node(ntc);
 
- if(first_arg_marker == "->>")
+ if(arg_marker == "->>")
  {
   ntc->flags.is_multi_optional = true;
   ntc->flags.multi_arg_layer = true;
   markup_position_.await_optional(node);
  }
- else if(first_arg_marker == "-->")
+ else if(arg_marker == "-->")
  {
   ntc->flags.is_multi_mandatory = true;
   ntc->flags.multi_main_layer = true;
   markup_position_.await_mandatory(node);
  }
- else if(first_arg_marker == "->")
+ else if(arg_marker == "->")
  {
   ntc->flags.is_multi_mandatory = true;
   ntc->flags.multi_arg_layer = true;
   markup_position_.await_mandatory(node);
  }
- else if(first_arg_marker == "-->>")
+ else if(arg_marker == "-->>")
  {
   ntc->flags.is_multi_optional = true;
   ntc->flags.multi_main_layer = true;
@@ -617,6 +624,7 @@ void NGML_Graph_Build::inline_tag_command_leave()
   CAON_PTR_DEBUG(tNode ,node)
   check_tile_acc();
   markup_position_.confirm_tag_command_leave(node);
+  check_multi_parent_reset();
  }
 }
 
@@ -627,6 +635,7 @@ void NGML_Graph_Build::tag_command_leave()
   CAON_PTR_DEBUG(tNode ,node)
   check_tile_acc();
   markup_position_.confirm_tag_command_leave(node);
+  check_multi_parent_reset();
  }
 }
 
@@ -649,6 +658,14 @@ void NGML_Graph_Build::check_html_tag_command_leave(QString tag_command, QString
  markup_position_.rewind_tag_command_leave(tag_command);
 }
 
+void NGML_Graph_Build::check_multi_parent_reset()
+{
+ if(caon_ptr<NGML_Tag_Command> ntc = markup_position_.get_current_tag_command())
+   parse_context_.flags.inside_multi_parent = ntc->flags.is_multi_parent;
+ else
+   parse_context_.flags.inside_multi_parent = false;
+}
+
 void NGML_Graph_Build::check_tag_command_leave(QString tag_command, QString match_text)
 {
  // //  If the tag command does not match the current node, treat the whole match
@@ -658,6 +675,7 @@ void NGML_Graph_Build::check_tag_command_leave(QString tag_command, QString matc
   CAON_PTR_DEBUG(tNode ,node)
   check_tile_acc();
   markup_position_.confirm_tag_command_leave(node);
+  check_multi_parent_reset();
  }
  else
  {

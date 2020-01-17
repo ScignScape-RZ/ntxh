@@ -158,12 +158,16 @@ public:
 
  void annotation_entry(QString flag, QString text, QString rel, QString tile, QString follow);
 
+ void check_multi_parent_reset();
+
+ void multi_arg_transition(QString arg_marker);
+
  caon_ptr<NGML_Attribute_Tile> complete_html_tag_command_attribute();
 
  caon_ptr<NGML_Attribute_Tile> make_new_attribute_tile(QString key, QString value);
 
  void tag_command_entry_multi(QString tag_command,
-   QString tag_body_follow, QString first_arg_marker);
+   QString tag_body_follow, QString arg_marker);
 
  void tag_command_entry_inside_multi(QString tag_command, QString first_arg_marker, QString argument = QString(), QString name = QString());
 

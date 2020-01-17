@@ -337,6 +337,16 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
 #endif
 
 
+ add_rule( flags_all_(parse_context ,inside_multi_parent),
+  ngml_context, 
+  "multi-arg-transition",
+  " -{1,2}>{1,2} "
+   ,[&]
+ {
+  QString m = p.match_text();
+  graph_build.multi_arg_transition(m);
+ });
+
  add_rule( ngml_context, "tag-command-entry-multi",
   " `(?<tag-command> .valid-tag-command-name. ) "
   " (?<tag-body-follow> [,.] ) \\s+ (?<first-arg> "

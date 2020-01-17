@@ -102,6 +102,7 @@ public:
  void tag_command_annotation(caon_ptr<tNode> node);
 
  QString current_tag_command_name();
+ caon_ptr<NGML_Tag_Command> get_current_tag_command();
 
  void annotation_entry(caon_ptr<tNode> node, caon_ptr<tNode> anode);
  void close_annotation();
