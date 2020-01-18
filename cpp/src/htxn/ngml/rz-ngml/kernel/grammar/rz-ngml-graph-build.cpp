@@ -548,6 +548,7 @@ void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
    ntc->flags.is_region = true;
 
  ntc->flags.is_multi_parent = true;
+ ntc->flags.has_entry = true;
 
  tag_body_leave();
 

@@ -101,11 +101,25 @@ void NGML_Markup_Position::await_mandatory_or_optional(caon_ptr<tNode> node)
  if(caon_ptr<NGML_Tag_Command> ntc = current_node_->ngml_tag_command())
  {
   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
-  ntc->flags.has_entry = true;
+  CAON_DEBUG_NOOP
  }
- current_node_ << fr_/qry_.Tag_Command_Entry >> node;
+ switch(position_state_)
+ {
+//? case Tag_Command_Entry:
+ case Tag_Body_Leave:
+  current_node_ << fr_/qry_.Tag_Command_Entry >> node;
+  break;
+ case Tag_Command_Leave:
+  current_node_ << fr_/qry_.Tag_Command_Cross >> node;
+  break;
+ default:
+   // // any others?
+   break;
+ }
  current_node_ = node;
  tag_commands_.push(node);
+
+ position_state_ = Tag_Body_Leave;
 }
 
 void NGML_Markup_Position::await_optional(caon_ptr<tNode> node)

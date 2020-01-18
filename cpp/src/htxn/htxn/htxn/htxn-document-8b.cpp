@@ -68,6 +68,7 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
    return pr.second;
   });
 
+  qDebug() << "Check: " << check;
 
  }
 }
@@ -118,18 +119,20 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
      result.append(QString("\\end{%1}").arg(cmd));
    else
      result.append("}");
-
-   check_precedent_ranges(nd, precs);
-   for(QPair<HTXN_Node_Detail*, QString>& pr : precs)
-   {
-    if(pr.first->flags.optional)
-      result.append(QString("[%1]").arg(pr.second));
-    else
-      result.append(QString("{%1}").arg(pr.second));
-   }
   }  
   else
     gl.add_leave(leave, cmd, &nd, node_code);
+
+   // // here ?
+  check_precedent_ranges(nd, precs);
+  for(QPair<HTXN_Node_Detail*, QString>& pr : precs)
+  {
+   if(pr.first->flags.optional)
+     result.append(QString("[%1]").arg(pr.second));
+   else
+     result.append(QString("{%1}").arg(pr.second));
+  }
+  precs.clear();
  }
 
  QString end_result;
@@ -200,7 +203,6 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  {
   end_result = check_latex_insert(*gl, i, cmdgap, 
     precs, succs, result);
-  precs.clear();
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);

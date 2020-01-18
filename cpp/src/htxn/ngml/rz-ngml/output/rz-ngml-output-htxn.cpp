@@ -300,6 +300,11 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   {
    current_multi_arg_ = ntc;
    multi_parent_range_stack_.top().second.push_back(ntc);
+   if(ntc->flags.multi_arg_layer)
+     ntc->set_ref_position(tag_command_arg_index_);
+   else if(ntc->flags.multi_main_layer)
+     ntc->set_ref_position(b.index);
+
 #ifdef HIDE
    u4 nc1 = multi_parent_range_stack_.top().first;
    if(ntc->flags.multi_arg_layer)
@@ -429,9 +434,9 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  if(ntc->flags.is_multi_optional)
  {
   if(ntc->flags.multi_arg_layer)
-    tie_multi_mandatory_arg_layer(b, *ntc);
+    tie_multi_optional_arg_layer(b, *ntc);
   else if(ntc->flags.multi_main_layer)
-    tie_multi_mandatory_main_layer(b, *ntc);
+    tie_multi_optional_main_layer(b, *ntc);
  }
  else if(ntc->flags.is_multi_mandatory)
  {
@@ -442,30 +447,47 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  }
  else if(!ntc->flags.is_self_closed)
    main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index - 1);
-
-
- //? range_starts_[write_position_] = {span_start, span_end};
-
-//? b.qts << "</" << ntc->name() << '>';
 }
 
-void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
+void NGML_Output_HTXN::generic_generate_tile(QString text, u4 width,
+  QTextStream& qts, u4& index)
+{
+ qts << text;
+ index += width;
+}
+
+void NGML_Output_HTXN::generic_generate_tile(const NGML_Output_Bundle& b,
+  QString text, u4 width)
 {
  if(current_multi_arg_)
  {
   if(current_multi_arg_->flags.multi_arg_layer)
   {
-  //    || (current_multi_arg_->flags.is_multi_mandatory) )
-   tag_command_arg_qts_ << tile->to_string();
-   tag_command_arg_index_ += tile->get_width();
+   generic_generate_tile(text, width, tag_command_arg_qts_, tag_command_arg_index_);
    return;
   }
  }
+ generic_generate_tile(text, width, b.qts, b.index);
+}
 
- b.qts << tile->to_string();
- b.index += tile->get_width();
-// tile->write_html(b.qts);
-// check_generate_whitespace(b, tile);
+
+void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b,
+  caon_ptr<NGML_Tile> tile)
+{
+ CAON_PTR_DEBUG(NGML_Tile ,tile)
+//
+ QString rt = tile->raw_text();
+// b.qts << tile->raw_text();
+ generic_generate_tile(b, rt, rt.size());
+
+ //check_update_index(b, *tile);
+
+ //check_generate_whitespace(b, tile);
+}
+
+void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
+{   //    || (current_multi_arg_->flags.is_multi_mandatory) )
+ generic_generate_tile(b, tile->to_string(), tile->get_width());
 }
 
 void NGML_Output_HTXN::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)

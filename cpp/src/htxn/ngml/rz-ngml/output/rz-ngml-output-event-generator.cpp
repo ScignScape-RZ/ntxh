@@ -41,6 +41,7 @@ caon_ptr<NGML_Output_Event_Generator::tNode>
  NGML_Output_Event_Generator::check_tag_command_entry_connectors(const NGML_Output_Bundle& b,
   bool write_connector)
 {
+ CAON_PTR_B_DEBUG(tNode ,node)
  if(caon_ptr<tNode> target_node = qry_.Tag_Command_Entry(b.node))
  {
   CAON_PTR_DEBUG(tNode ,target_node)
@@ -320,6 +321,7 @@ void NGML_Output_Event_Generator::generate_tag_command_entry(const NGML_Output_B
  if(target_node)
  {
   CAON_PTR_DEBUG(tNode ,target_node)
+  CAON_DEBUG_NOOP
  }
  else
  {
