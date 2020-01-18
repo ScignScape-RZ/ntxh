@@ -46,6 +46,9 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
  QString tag_command_layer_;
  QString tag_command_arg_layer_;
 
+ QTextStream tag_command_arg_qts_;
+ u4 tag_command_arg_index_;
+
  Glyph_Layer_8b* tag_command_gl_;
  Glyph_Layer_8b* tag_command_arg_gl_;
  Glyph_Layer_8b* main_gl_;
@@ -53,6 +56,10 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
  QMap<QString, QPair<u4, u4>> tag_command_spans_;
 
  QMap<u4, QPair<u4, u4>> range_starts_;
+
+ QStack<QPair<u4, QList<caon_ptr<NGML_Tag_Command>>>> multi_parent_range_stack_;
+
+ caon_ptr<NGML_Tag_Command> current_multi_arg_;
 
  u4 write_position_;
 
@@ -63,6 +70,12 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
  QString htxne_top_;
 
  u4 split_arg_layer_arguments(QString arg, QStringList& args);
+
+ void tie_multi_optional_arg_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
+ void tie_multi_mandatory_arg_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
+
+ void tie_multi_optional_main_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
+ void tie_multi_mandatory_main_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
 
 public:
 

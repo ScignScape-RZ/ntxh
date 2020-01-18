@@ -31,7 +31,8 @@ USING_RZNS(NGML)
 
 
 NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document)
- : NGML_Output_Base(document), NGML_Output_Event_Handler()
+ : NGML_Output_Base(document), NGML_Output_Event_Handler(),
+   current_multi_arg_(nullptr), tag_command_arg_index_(2)
 {
  init_callbacks();
 
@@ -43,6 +44,7 @@ NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document)
  tag_command_gl_ = htxn_document_.add_layer();
  tag_command_arg_gl_ = htxn_document_.add_layer();
 
+ tag_command_arg_qts_.setString(&tag_command_arg_layer_);
 }
 
 void NGML_Output_HTXN::init_callbacks()
@@ -211,6 +213,45 @@ u4 NGML_Output_HTXN::split_arg_layer_arguments(QString arg,
  return args.size();
 }
 
+void NGML_Output_HTXN::tie_multi_optional_main_layer(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ u4 nc1 = multi_parent_range_stack_.top().first;
+ u4 enter = 0;
+ u4 leave = 0;
+ u4 nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+ htxn_document_.tie_detail_range_preempt(nc1, nc2);
+}
+
+void NGML_Output_HTXN::tie_multi_mandatory_main_layer(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ u4 nc1 = multi_parent_range_stack_.top().first;
+ u4 enter = 0;
+ u4 leave = 0;
+ u4 nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+ htxn_document_.tie_detail_range_preempt(nc1, nc2);
+}
+
+void NGML_Output_HTXN::tie_multi_optional_arg_layer(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ u4 nc1 = multi_parent_range_stack_.top().first;
+ u4 enter = 0;
+ u4 leave = 0;
+ u4 nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+ htxn_document_.tie_detail_range_preempt(nc1, nc2);
+}
+
+void NGML_Output_HTXN::tie_multi_mandatory_arg_layer(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ u4 nc1 = multi_parent_range_stack_.top().first;
+ u4 enter = 0;
+ u4 leave = 0;
+ u4 nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
+ htxn_document_.tie_detail_range_preempt(nc1, nc2);
+}
 
 void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
@@ -241,14 +282,25 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
     cb->pre_callback(b.qts, b.node, b.cb);
    if(!cb->flags.pre_fallthrough)
     break;
+  }
 
+  if( (ntc->flags.is_multi_optional) || (ntc->flags.is_multi_mandatory) )
+  {
+   current_multi_arg_ = ntc;
+   multi_parent_range_stack_.top().second.push_back(ntc);
+//   u4 nc1 = multi_parent_range_stack_.top();
+//   if(ntc->flags.multi_arg_layer)
+//     tie_multi_optional_arg_layer(b, nc1, *ntc);
+//   else if(ntc->flags.multi_main_layer)
+//     tie_multi_optional_main_layer(b, nc1, *ntc);
+   return;
   }
 
   QString command_print_name;
   if(cb && cb->flags.has_rename)
-   command_print_name = cb->rename_tag();
+    command_print_name = cb->rename_tag();
   else
-   command_print_name = ntc->name();
+    command_print_name = ntc->name();
 
   QString style_class_name;
   if(cb && cb->flags.has_rename_style_class)
@@ -274,7 +326,6 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
    span_end = (*it).second;
   }
 
-
   u4 nc1;
 
   if(ntc->flags.is_region)
@@ -282,15 +333,19 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   else
     nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
 
+  if(ntc->flags.is_multi_parent)
+    multi_parent_range_stack_.push({nc1, {}});
+
   QStringList args;
   u4 sz = split_arg_layer_arguments(ntc->argument(), args);
   if(sz > 0)
   {
    if(sz == 1)
    {
-    u4 enter = tag_command_arg_layer_.size() + 2;
-    u4 leave = enter + args[0].size();
-    tag_command_arg_layer_ += args[0];
+    u4 enter = tag_command_arg_index_;// tag_command_arg_layer_.size() + 2;
+    tag_command_arg_qts_ << args[0]; //tag_command_arg_layer_ += args[0];
+    tag_command_arg_index_ += args[0].size(); //qts_
+    u4 leave = tag_command_arg_index_;
     u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave);
     htxn_document_.tie_detail_range_preempt(nc1, nc2);
    }
@@ -298,9 +353,10 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
    {
     QChar c = arg[0];
     QString a = arg.mid(1).trimmed();
-    u4 enter = tag_command_arg_layer_.size() + 2;
-    u4 leave = enter + a.size();
-    tag_command_arg_layer_ += a;
+    u4 enter = tag_command_arg_index_; //tag_command_arg_layer_.size() + 2;
+    tag_command_arg_qts_ << a;
+    tag_command_arg_index_ += a.size();
+    u4 leave = tag_command_arg_index_;
     u4 nc2;
     if(c == '?')
       nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave);
@@ -345,8 +401,26 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  else
   command_print_name = ntc->name();
 
- if(!ntc->flags.is_self_closed)
+ if(ntc->flags.is_multi_parent)
+   multi_parent_range_stack_.pop();
+
+ if(ntc->flags.is_multi_optional)
+ {
+  if(ntc->flags.multi_arg_layer)
+    tie_multi_mandatory_arg_layer(b, *ntc);
+  else if(ntc->flags.multi_main_layer)
+    tie_multi_mandatory_main_layer(b, *ntc);
+ }
+ else if(ntc->flags.is_multi_mandatory)
+ {
+  if(ntc->flags.multi_arg_layer)
+    tie_multi_mandatory_arg_layer(b, *ntc);
+  else if(ntc->flags.multi_main_layer)
+    tie_multi_mandatory_main_layer(b, *ntc);
+ }
+ else if(!ntc->flags.is_self_closed)
    main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index);
+
 
  //? range_starts_[write_position_] = {span_start, span_end};
 
@@ -355,12 +429,21 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
 
 void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
 {
+ if(current_multi_arg_)
+ {
+  if(current_multi_arg_->flags.multi_arg_layer)
+  {
+  //    || (current_multi_arg_->flags.is_multi_mandatory) )
+   tag_command_arg_qts_ << tile->to_string();
+   tag_command_arg_index_ += tile->get_width();
+   return;
+  }
+ }
+
  b.qts << tile->to_string();
- 
  b.index += tile->get_width();
 // tile->write_html(b.qts);
 // check_generate_whitespace(b, tile);
-
 }
 
 void NGML_Output_HTXN::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
