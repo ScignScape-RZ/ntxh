@@ -177,6 +177,9 @@
 
 \newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
 
+\newcommand{\OS}{\resizebox{!}{8.5pt}{\AcronymText{OS}}}
+
+
 \newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
 
 \newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
@@ -184,6 +187,16 @@
 \newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
 
 \newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
+
+\newcommand{\UI}{\resizebox{!}{8pt}{\AcronymText{UI}}}
+%\newcommand{\NDPCloud}{\resizebox{!}{8pt}{%
+%\AcronymText{NDP-Cloud}}}
+
+%\newcommand{\lNDPCloud}{\resizebox{!}{8.5pt}{%
+%\AcronymText{NDP-Cloud}}}
+
+\newcommand{\lNDPCloud}{\lfNDPCloud}
+
 
 \newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
 \newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
@@ -217,6 +230,9 @@
 \newcommand{\NCN}{\resizebox{!}{8pt}{\AcronymText{NCN}}}
 \newcommand{\AThreeR}{\resizebox{!}{8pt}{\AcronymText{A3R}}}
 
+\newcommand{\lAThreeR}{\resizebox{!}{9pt}{\AcronymText{A3R}}}
+
+\newcommand{\lNAThree}{\resizebox{!}{9pt}{\AcronymText{NA3}}}
 
 \newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
 
@@ -355,8 +371,10 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}		
 {\setlength{\fboxsep}{18pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{NCN/A3R Native Application Framework 
- (Native-CloudNative/Application as a Resource)}}}}
+{NCN/A3R Native Application Framework
+
+\\
+ (Native-Cloud/Native, Application as a Resource)}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
@@ -367,224 +385,220 @@ drop shadow=logoPurple!50!darkRed,
 %\noindent\lun{Overview}
 \fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
 {\sectsp}
-\p{\NCN{}/\A3R{} (hereafter \NAThree{}) is a \Qt{}-based 
+\p{\NCN{}/\AThreeR{} (hereafter \NAThree{}) is a \Qt{}-based 
 application-development framework which prioritizes 
 hybrid solutions combining cloud and desktop/native 
 components.  The \NCN{} (Native-CloudNative) 
 model refers to desktop client applications that 
-are integrated with Cloud Native back-ends; 
+are integrated with Cloud/Native back-ends; 
 by sharing code libraries and data formats across 
 both end-points, \NCN{} solutions are more streamlined 
 than native front-ends with generic back-ends, or 
-Cloud Native back-ends with web-application clients.  
-The \A3R{} (Application-as-a-Resource) model promotes 
+Cloud/Native back-ends with web-application clients.  
+The \AThreeR{} (Application-as-a-Resource) model promotes 
 self-contained, downloadable applications that can 
 be distributed in source-code fashion and compiled 
 with few (if any) non-\Qt{} dependencies.  The 
-combined \NAThree{} framework      
-
-
-## htxne
-#
-`[//]Hypergraph-Based Type Theory 
-for Software Development in a Cyber-Physical Context`[/]
-
-`[//]documentclassdocumenttitle`[/]
-
-`[//]10ptarticle`[/]
-
-@@ ranges
-3
-=0
-2<3>0;1,83;4,83;5,
-!
-=1
-!
-=2
-!
- *
-@@ details
-5
-192;2:14
-4;2:6
-0;6:13
-1;15:22
-0;23:27
- *
-%% ties
-&&1
-2 3~
-!
-&!2
-!
-&!2
-!
-&!1
-!
-&!1
-!
-
+combined \NAThree{} framework yields a 
+comprehensive application-development toolkit 
+with numerous components to streamline the 
+implementation of \Qt{} applications 
+(\NAThree{} can also be used as a template 
+for implementations based on frameworks other 
+than \Qt{}, such as wxWidgets or 
+Operating-System-specific options).           
+}
 
 \vspace{2.25em}
-\noindent\lun{Benefits}
-\vspace{-1em}
-\begin{description}[leftmargin=13pt,labelsep=15pt,itemsep=12pt]
-\item[Mix-and-Match Formats] \lHTXN{} employs 
-\q{stand-off} annotation, which allows multiple markup 
-protocols to be defined simultaneously on the same 
-document.  In addition, \lHTXN{} uses a flexible 
-character-encoding protocol that ensures 
-compatibility with diverse text representations
-(such as {\XML}, {\LaTeX}, Unicode, and {\Qt}/QString).  
-Via secondary documents or \q{views} (generated from the primary 
-\HTXN{} document), \HTXN{} can be used wherever 
-{\XML} or {\LaTeX} (or other formats) are desired.   
-   
-\item[Fine-Grained Character Encoding] The \HTXN{} 
-protocol includes more detailed document structure 
-information compared to conventional 
-markup.  For example, \HTXN{} identifies 
-sentence boundaries and punctuation features, 
-disambiguating logically distinct 
-but often visually identical 
-characters (such as \makebox{dots/periods or dashes/hyphens, 
-which may have different structural meanings in different contexts}).   
-
-\item[Multi-Media and Data Set Integration] 
-\lHTXN{} is optimized for sophisticated 
-publishing environments which combine 
-conventional natural-language texts with 
-interactive data sets and software.  
-Contemporary publishing increasingly sees 
-academic texts as part 
-of a multi-faceted ecosystem, where  
-publications, research data, and interactive 
-software can be packaged into multi-media 
-presentations.  \lHTXN{} ensures that 
-documents can be properly experienced within these 
-augmented publishing platforms.
-\end{description}
+\noindent\lun{The Current Status of \Qt{} Cloud Integration}
+\p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  
+We use the term \q{Native Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
+
+\p{Cloud/Native support in existing native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \p{Qt Cloud Services}, which provided a convenient, Qt-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \p{Qt Cloud Beta has solved an immense need for Qt developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the Qt ecosystem with an all-in-one Qt solution for cloud computing}).  However --- to the consternation of the Qt community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
+}
+
+\p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields (where due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
+ 
+\p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of Native Cloud/Native is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application sector.}
+
+\noindent\lun{Native Cloud/Native in the context of \lNAThree{}}
+\p{In light of the limitations just identified, 
+LTS intends to contribute tools or hosting arrangements that would bring some of the capabilities of \Qt{} Cloud Services back to the market.  The simplest commercial model for such a product is to licence a containerized \Qt{}-based \HTTP{} server that can run as a local application during testing and development, before being deployed to a container hosting service.  
+We have implemented a prototype server along these lines 
+that we call \NDPCloud{} (for \q{Native-Driven Platform}).  
+\lNDPCloud{} is fully self-contained in a \Qt{} context 
+(it bundles portions of the Node.js code base and 
+utilizes the \Qt{} network module, so it requires no 
+external \HTTP{} or sockets libraries).  One significant 
+benefit of \NDPCloud{} is that it is fully transparent: 
+all of the code for parsing and routing \HTTP{} 
+requests can be loaded into \IDE{}s (such as \Qt{} creator)
+and examined by the debugger.  Another benefit is that 
+project-specific libraries can be compiled into both 
+\NDPCloud{} instances and client front-ends; therefore, 
+clients and servers can share procedures for serializing 
+and deserializing domain-specific data structures.  
+For development and prototyping, \NDPCloud{} 
+can be launched as an ordinary (non-virtual) 
+\OS{}; further testing can then be performed 
+running \NDPCloud{} as a local Docker container, 
+before eventually deploying the application to 
+a remote Docker hosting environment. 
+}
+
+\p{Via \NDPCloud{}, \NCN{} applications can be 
+deployed on any Docker cloud service, 
+such as OpenShift.  In this guise LTS has 
+no direct involvement with the hosting service 
+(although \NDPCloud{} includes some tools 
+to streamline cloud deployment).  Ideally, 
+however, LTS would like to secure its own 
+hosting capabilities, perhaps by using an 
+LTS-specific container depoyed on OpenShift 
+or a similar platform.  LTS would allocate 
+cloud assets to \NDPCloud{} licensees 
+(e.g. a limited free-tier hosting plan) 
+for testing and development.  A further 
+possibility is to provide free 
+hosting, subject to data-space constraints, 
+to scientific institutions.  The dwindling 
+availability of free-tier Cloud/Native options 
+is a hinderance to projects' adoption of 
+Cloud/Native solutions for sharing and 
+disseminating scientific data; this can 
+result in researchers hosting data sets on 
+platforms such as Mendeley or DataVerse, 
+which have limited functionality or 
+customizability compared to Cloud/Native 
+containers.  Use-cases for \NAThree{} in 
+the context of scientific data sets are explained in 
+the discussion of \AThreeR{} below.}
 
 \vspace{-.5em}
-\noindent\lun{Complex Anchors and Interoperability}
-\p{\lHTXN{} introduces a variation on micro-citations 
-and conventional {\HTML} or {\LaTeX} anchors/labels, 
-which we call \q{complex anchors}, to facilitate 
-interoperability with research data sets 
-and external software.  Complex anchors permit concepts, 
-terms, and data structures to be tracked and cross-referenced 
-between publications and their associated data sets or 
-supplemental software.  Consider a table-structured 
-data set whose columns represent scientific 
-concepts or statistical parameters that are discussed in an associated publication (e.g. article or book chapter), 
-or where data from a specific table is 
-presented graphically as a figure within the publication.  Via 
-complex anchors, these kinds of thematic relationships between 
-data-set elements and corresponding points in 
-the research text may be made explicit, 
-so that data-set applications (including software 
-expressly implemented for a newly published data set) 
-can recognize references 
-\q{pointing in} to the publication.  In the context of tabular data, 
-data-set software could provide 
-context-menu actions associated with 
-each column (or, in the case of figure illustrations, the overall table), linking to an anchor in the text 
-where the relevant concepts, terminology, 
-or visualizations are explained.    
+\noindent\lun{Application Development via \lAThreeR{}}
+\p{The \AThreeR{} model facilitates implementation of 
+standalone native applications, whose data models and 
+\UI{} logistics are described via integrated metadata.
+As much as possible, \AThreeR{} applications 
+are entirely self-contained, so that all application 
+code and data can be packaged into single 
+downloadable resource.  In a \Qt{} environment, 
+\Qt{} modules are available for concerns such 
+as networking, database management, \Cpp{} reflection, 
+\XML{} or \JSON{} parsing, or embedded web viewers, so that 
+\AThreeR{} can leverage these capabilities without 
+requiring separate library installs.  For many use-cases, 
+then, an entire desktop application can be deployed 
+in source-code form, to be compiled and launched 
+via a single click within \Qt{} creator.  
+Self-contained in this manner, \AThreeR{} 
+applications can be treated as single 
+resource units --- to some degree analogous 
+to Docker containers, but achieving their 
+autonomy by leveraging the \Qt{} ecosystem 
+rather than by virtualization.  
 }
 
-\p{This level of 
-interoperation can be achieved by implementing 
-document viewers (such as a \PDF{} viewer) embedded in 
-scientific software or software expressly designed for 
-a data set.  With embedded viewers, 
-the operation of opening associated publications to 
-specific anchor-points (such as figure illustrations) 
-can be integrated as an interactive extension to 
-their host applications, triggered by menu items 
-or other {\GUI} components.  To support this 
-interoperability, {\HTXN} provides anchors whose 
-identifiers and embedded data can be customized 
-to work with domain-specific host applications. 
+\p{\lAThreeR{} applications are also autonomous resources 
+by virtue of detailed metadata bundled with application code.  
+This metadata provides a summary of application-specific 
+data models, capabilities, \UI{} features, and 
+user documentation.  The metadata may be accessed 
+by human users or by automated tools to help 
+users become familiar with a 
+newly-acquired \AThreeR{} resource.}
+
+\p{The \AThreeR{} architecture is especially 
+warranted when applications are designed to 
+work with one or several non-standardized, 
+domain-specific data formats (including those 
+unique to an individual data set).  In these 
+scenarios, \AThreeR{} applications provide 
+both libraries for parsing and manipulating 
+the domain-specific formats and a \q{reference 
+implementation} documenting the proper 
+visualization and User Experience optimal 
+for the unique data structures involved.  
+This structural profiling is advanced not 
+only by domain-specific \GUI{} components 
+implemented within \AThreeR{} applications, 
+but also by \AThreeR{} metadata which 
+describes application-specific data types 
+and interface requirements germane to 
+any software components which work with 
+such data types.}
+
+\vspace{-.5em}
+\noindent\lun{\lNCN{} and \lAThreeR{} in consort}
+\p{While \NCN{} applications need not use \AThreeR{}, 
+or vice-versa, the two models are organically 
+paired together.  This can take the form of 
+\NCN{} servers hosting \AThreeR{} applications 
+as resources, and/or \AThreeR{} software 
+connecting to \NCN{} instances as a domain-specific 
+cloud back-end.  The \AThreeR{} metadata 
+paradigm, based on \q{Hyperegraph Ontologies}, 
+provides tools to streamline the encoding and 
+distribution of application-specific data types.  
+This model thereby accelerates the process of 
+implementing cloud services procedurally 
+aligned with \AThreeR{} components, because 
+complementary \AThreeR{} and \NCN{} endpoints 
+can share the same data-type libraries.  
+Moreover, \AThreeR{} interface definitions 
+can serve as references for implementing 
+compatible \NCN{} server-side code; 
+the interface specification documents which 
+client-side procedures will handle any 
+server-originating data structures, so the 
+server-side data providers can be constructed 
+accordingly.
 }
 
-\vspace{2em}
-\noindent\lun{Complex Exolinks and Interoperability}
-\p{\HTXN{} \q{exolinks} refer to data or multi-media content \textit{outside} the text (so they 
-are effectively the converse of 
-complex anchors, which support 
-references pointing \textit{inside} the text from 
-external software components).  Complex 
-exolinks designate 
-data or multi-media content --- such as video, audio, or \ThreeD{} (scenes or panoramic-photography) graphics --- which are outside the text,  
-but potentially part of a larger publication package 
-wherein an article is accompanied by data sets and/or 
-multimedia content.  
-Traditional external/{\HTTP} references in {\HTML} or {\PDF} 
-are designed to reference resources on the 
-World Wide Web, but not content downloaded in a 
-package along with publications themselves.
-Therefore, special reference formats are required 
-for document viewers to properly handle links in the 
-text that point to non-web content (which is a technical 
-limitation present in conventional document encoding 
-formats).  {\lHTXN} will ensure that, when accessing multi-media content, properly encoded signals will be sent between the 
-document-viewer components 
-and applications which support the relevant 
-multimedia file types (potentially host applications 
-where the document viewers themselves may be embedded).}
-
-\p{As a concrete example, consider 
-a chemistry paper which  
-is paired with {\ThreeD} descriptions of a 
-particular molecule.  In order for readers to view this content, 
-a signal needs to be sent to compatible molecular-visualization 
-software (such as {\IQmol} --- to cite a 
-\Qt{}-based, open-source 
-case-study).  Analogously, when reading a paper concerning {\ThreeD} radiology, signals may be sent to --- or be read on components 
-embedded within --- {\ThreeD} viewers such as  
-{\MeshLab} (again \Qt{}/open-source).
-To support interoperability requirements as shown 
-by these examples, the \HTXN{} specification includes an 
-\HTXN{}-specific \q{Native Application Network} (\HNaN{}) protocol to connect document viewers with 
-external and/or host applications; 
-\lHTXN{} exolinks encode data which ensures that 
-the concordant \HNaN{} signals are properly generated.
+\p{To ensure rigorous alignment between client and server endpoints, \NAThree{} employs a data modeling paradigm based on hypergraphs; the mathematical framework for the relevant new hypergraph model (which adds some additional structure to the theory of Hypergraph Categories) is provisionally outlined in a chapter of a book which I edited that will soon be published (we can share this material, or alternatively a more thorough unpublished explication, as desired).  In practical terms, the advantage of this model is that \Qt{}-specific data structures can be conveniently serialized and shared with or through cloud services; meanwhile the relevant data structures --- and their interface and procedural requirements --- are rigorously characterized, to support application testing, code-verification, documentation, and systematic User Interface development.  
+\lNAThree{} concretely operationalizes theories 
+which have been advanced in the scientific-computing 
+and knowledge-engineering community toward a 
+more conceptually refined and \q{multi-scale} 
+Semantic Web.  \lAThreeR{} extends \q{Semantic Web 
+alternatives} such as Conceptual Space Markup 
+Language (\CSML{}) and Categorial Informatics, 
+while also providing a self-contained \Cpp{} 
+Hypergraph library comparable in some respects 
+to AtomSpace (part of the 
+OpenCOG platform) or to HypegraphDB (Hypergraphs 
+and Conceptual Spaces have been proposed in 
+combination as a comprehensive foundation 
+for computational semantics, notably in 
+the article \textit{Interacting Conceptual Spaces} 
+which arose from an Oxford University reading 
+group on Category Theory and formal grammar).
 }
 
-\p{\lHTXN{} has numerous features for 
-interoperation with software applications where document 
-viewers may be embedded, or  
-which support \HNaN{} via plugins.  In particular, 
-\HTXN{} parsers and generators are provided via 
-a \QtCpp{} library that can be dropped in to the 
-source code of native \CLang{}/\Cpp{} applications, 
-so it is straightforward to add \HNaN{} to existing 
-software.  Based on \Qt{} (a \Cpp{} \GUI{} and 
-application-development framework), 
-\HTXN{} can leverage the full range of 
-\Qt{} networking or front-end features (for instance, access to publishers' \API{}s can be 
-introduced as a processing stage during 
-document preparation).  In addition, \HTXN{}'s graph-based 
-parsing framework and hypergraph-based annotation 
-model can be customized and paired with project-specific 
-\GUI{} components for viewing and accessing data 
-sets.  Via such customizations, \HTXN{} can be 
-adapted to provide a domain-specific publication 
-platform for specific research projects or 
-environments (individual journals, 
-book series, research labs and academic departments, etc.).  
-\lHTXN{}'s \q{reference implementation} includes a 
-specially-designed \q{Next-Generation} markup language 
-(\NGML{}), as one way to build \HTXN{} files.  The 
-\NGML{} library is transparent and distributed 
-in source-code form, so it can be modified 
-to create domain-specific markup styles.  A 
-customized version of \NGML{} can thereby be used 
-to construct \HTXN{} documents according to each individual 
-lab's or journal's specifications.
+\p{A good example of an \AThreeR{} use-case is 
+that of hosting scientific data sets.  According 
+to the emerging \q{Research Object} paradigm, 
+scientific data should be published alongside 
+code which ensures that subsequent readers and 
+researchers have the tools they need to 
+access, analyze, and visualize the data set, 
+including double-checking statistical analyses 
+and/or replicating experiments.  With 
+\AThreeR{}, data sets can be self-contained 
+Research Object \q{bundles} while still 
+being provisioned with full-featured 
+desktop applications tailored to their 
+specific information profile.  
+LTS is actively developing a framework (called DataSet Creator, or \dsC{}) for building data sets that paired with academic publications and with native software implemented in custom fashion for each data set (we can provide links to several data sets published as demonstration examples of this technology).  The hosting and implementation of data sets along these lines offers concrete examples of \NAThree{} solutions and an opportunity to promote \NAThree{}-style development in the scientific and publishing communities. 
 }
+ 
+\p{As this use-case illustrates, 
+our novel \NCN{} model is based on rigorous serialization and interface-definition paradigms; in comparison, \Qt{} Cloud Services tended to reuse structures more appropriate for non-native contexts (e.g. \JSON{}), which arguably limited client-to-server interoperability.  LTS's \NAThree{} model, by contrast, is combined with data modeling and serialization features that bring their own benefits to application projects over all; as such, this model does not only provide cloud-integration capabilities, but can be used as an overarching application-development framework.}
+
+%\vspace{2em}
+%\noindent\lun{Complex Exolinks and Interoperability}
+
 
 \end{document}
 

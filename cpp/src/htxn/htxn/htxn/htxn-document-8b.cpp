@@ -64,10 +64,14 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
     [this, calling_layer](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
   {
    HTXN_Node_Detail* nd = &node_details_[i - 1];
+
    if(nd->get_layer() == calling_layer)
-     calling_layer->add_insert_loop_guard(nd->enter); // now what?
-   //else
+     calling_layer->add_insert_loop_guard(nd->enter);
    get_latex_insert(*nd, pr.second);
+
+   if(nd->get_layer() == calling_layer)
+     calling_layer->update_insert_loop_guard(nd->enter, nd->leave);
+
    pr.first = nd;
    return pr.second;
   });
@@ -205,11 +209,28 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  QStringList succs;
  for(u4 i = enter; i < leave; ++i)
  {
-  if(gl->check_insert_loop_guard(i))
-   ; // anything?
-  else
+  u4 lg = gl->check_insert_loop_guard(i);
+  if(lg > 1)
+  {
+    // //  in this case everything
+     //    is already generated 
+   i = lg + 1;
+   continue;
+  }
+  if(lg == 0)
     end_result = check_latex_insert(*gl, i, cmdgap,
     precs, succs, result);
+
+   // //  the insert might have changed the guard...
+  lg = gl->check_insert_loop_guard(i);
+  if(lg > 1)
+  {
+    // //  in this case everything
+     //    is already generated 
+   i = lg + 1;
+   continue;
+  }
+ 
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);

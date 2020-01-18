@@ -46,7 +46,7 @@ private:
 
  u4 id_;
 
- QSet<u4> insert_loop_guards_;
+ QMap<u4, u4> insert_loop_guards_;
 
 public:
  Glyph_Layer_8b(u4 id);
@@ -63,7 +63,9 @@ public:
  u4 get_range_by_enter(u4 enter, u4& leave, u2 count);
 
  void add_insert_loop_guard(u4 enter);
- const u4* check_insert_loop_guard(u4 enter);
+ void update_insert_loop_guard(u4 enter, u4 leave);
+
+ u4 check_insert_loop_guard(u4 enter);
 
  QVector<QPair<QString, const HTXN_Node_Detail*>> check_leave(u4 leave);
  void add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd, u4 nc);

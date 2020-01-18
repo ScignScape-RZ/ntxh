@@ -115,15 +115,17 @@ QVector<QPair<QString, const HTXN_Node_Detail*>> Glyph_Layer_8b::check_leave(u4 
 
 void Glyph_Layer_8b::add_insert_loop_guard(u4 enter)
 {
- insert_loop_guards_.insert(enter);
+ insert_loop_guards_[enter] = 1;
 }
 
-const u4* Glyph_Layer_8b::check_insert_loop_guard(u4 enter)
+void Glyph_Layer_8b::update_insert_loop_guard(u4 enter, u4 leave)
 {
- auto it = insert_loop_guards_.find(enter);
- if(it == insert_loop_guards_.end())
-   return nullptr;
- return &*it;
+ insert_loop_guards_[enter] = leave;
+}
+
+u4 Glyph_Layer_8b::check_insert_loop_guard(u4 enter)
+{
+ return insert_loop_guards_.value(enter);
 }
 
 u4 Glyph_Layer_8b::get_range_by_enter(u4 enter, u4& leave, u2 count)
