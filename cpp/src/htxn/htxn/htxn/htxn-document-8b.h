@@ -72,7 +72,8 @@ public:
  void tie_detail_range_preempt(u4 rc1, u4 rc2);
 
  void check_precedent_ranges(const HTXN_Node_Detail& nd,
-   QVector<QPair<HTXN_Node_Detail*, QString>>& result);
+   QVector<QPair<HTXN_Node_Detail*, QString>>& result,
+   Glyph_Layer_8b* calling_layer);
 
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);

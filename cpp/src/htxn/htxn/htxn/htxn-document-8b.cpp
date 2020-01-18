@@ -47,7 +47,8 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 // void HTXN_Document_8b::sss;
 
 void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
-  QVector<QPair<HTXN_Node_Detail*, QString>>& result)
+  QVector<QPair<HTXN_Node_Detail*, QString>>& result,
+  Glyph_Layer_8b* calling_layer)
 {
  if(QVector<u4>* vec = nd.get_refs())
  {
@@ -60,9 +61,12 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
   QStringList check;
   std::transform(vec->begin(), vec->end(), 
     result.begin(), std::back_inserter(check),
-    [this](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
+    [this, calling_layer](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
   {
    HTXN_Node_Detail* nd = &node_details_[i - 1];
+   if(nd->get_layer() == calling_layer)
+     calling_layer->add_insert_loop_guard(nd->enter); // now what?
+   //else
    get_latex_insert(*nd, pr.second);
    pr.first = nd;
    return pr.second;
@@ -124,7 +128,7 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
     gl.add_leave(leave, cmd, &nd, node_code);
 
    // // here ?
-  check_precedent_ranges(nd, precs);
+  check_precedent_ranges(nd, precs, &gl);
   for(QPair<HTXN_Node_Detail*, QString>& pr : precs)
   {
    if(pr.first->flags.optional)
@@ -201,7 +205,10 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  QStringList succs;
  for(u4 i = enter; i < leave; ++i)
  {
-  end_result = check_latex_insert(*gl, i, cmdgap, 
+  if(gl->check_insert_loop_guard(i))
+   ; // anything?
+  else
+    end_result = check_latex_insert(*gl, i, cmdgap,
     precs, succs, result);
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())

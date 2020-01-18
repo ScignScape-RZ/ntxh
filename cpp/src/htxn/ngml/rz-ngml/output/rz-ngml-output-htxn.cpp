@@ -44,6 +44,14 @@ NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document)
  tag_command_gl_ = htxn_document_.add_layer();
  tag_command_arg_gl_ = htxn_document_.add_layer();
 
+ Glyph_Layer_8b__SET_DESCRIPTION(main_gl_)
+ Glyph_Layer_8b__SET_DESCRIPTION(tag_command_gl_)
+ Glyph_Layer_8b__SET_DESCRIPTION(tag_command_arg_gl_)
+
+// main_gl_->set_description("main_gl_");
+// tag_command_gl_->set_description("tag_command_gl_");
+// tag_command_arg_gl_->set_description("tag_command_arg_gl_");
+
  tag_command_arg_qts_.setString(&tag_command_arg_layer_);
 }
 
@@ -235,7 +243,7 @@ void NGML_Output_HTXN::tie_multi_mandatory_main_layer(const NGML_Output_Bundle& 
 {
  u4 nc1 = multi_parent_range_stack_.top().first;
  u4 enter = ntc.ref_position();
- u4 leave = tag_command_arg_index_;
+ u4 leave = b.index;
  u4 nc2 = htxn_document_.add_detail_range(main_gl_, enter, leave);
  htxn_document_.tie_detail_range_preempt(nc1, nc2);
  current_multi_arg_ = nullptr;
@@ -259,7 +267,7 @@ void NGML_Output_HTXN::tie_multi_mandatory_arg_layer(const NGML_Output_Bundle& b
 {
  u4 nc1 = multi_parent_range_stack_.top().first;
  u4 enter = ntc.ref_position();
- u4 leave = tag_command_arg_index_;
+ u4 leave = b.index;
  u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave);
  htxn_document_.tie_detail_range_preempt(nc1, nc2);
  current_multi_arg_ = nullptr;

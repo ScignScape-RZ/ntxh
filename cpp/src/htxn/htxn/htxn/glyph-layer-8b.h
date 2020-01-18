@@ -17,6 +17,10 @@
 
 #include "global-types.h"
 
+#define Glyph_Layer_8b__SET_DESCRIPTION(_this) \
+   _this->set_description(#_this);
+
+
 KANS_(HTXN)
 
 class HTXN_Node_Detail;
@@ -42,6 +46,8 @@ private:
 
  u4 id_;
 
+ QSet<u4> insert_loop_guards_;
+
 public:
  Glyph_Layer_8b(u4 id);
 
@@ -55,6 +61,9 @@ public:
  void set_range_leave(u4 enter, u4 order, u4 leave);
 
  u4 get_range_by_enter(u4 enter, u4& leave, u2 count);
+
+ void add_insert_loop_guard(u4 enter);
+ const u4* check_insert_loop_guard(u4 enter);
 
  QVector<QPair<QString, const HTXN_Node_Detail*>> check_leave(u4 leave);
  void add_leave(u4 leave, QString cmd, const HTXN_Node_Detail* nd, u4 nc);
