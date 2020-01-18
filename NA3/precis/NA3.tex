@@ -161,10 +161,15 @@
 \newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
 \newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
 
+
+\newcommand{\CSML}{\resizebox{!}{8.5pt}{\AcronymText{CSML}}}
+
 \newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
 
 \newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
 \newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\JSON}{\resizebox{!}{8pt}{\AcronymText{JSON}}}
 
 \newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
 
@@ -230,9 +235,12 @@
 \newcommand{\NCN}{\resizebox{!}{8pt}{\AcronymText{NCN}}}
 \newcommand{\AThreeR}{\resizebox{!}{8pt}{\AcronymText{A3R}}}
 
-\newcommand{\lAThreeR}{\resizebox{!}{9pt}{\AcronymText{A3R}}}
+\newcommand{\lQt}{\resizebox{!}{9.5pt}{\AcronymText{Qt}}}
 
-\newcommand{\lNAThree}{\resizebox{!}{9pt}{\AcronymText{NA3}}}
+\newcommand{\lNCN}{\resizebox{!}{9.5pt}{\AcronymText{NCN}}}
+\newcommand{\lAThreeR}{\resizebox{!}{9.5pt}{\AcronymText{A3R}}}
+
+\newcommand{\lNAThree}{\resizebox{!}{9.5pt}{\AcronymText{NA3}}}
 
 \newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
 
@@ -264,7 +272,7 @@
 \newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
 \newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
 \newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
-\newcommand{\QtSQL}{\resizebox{!}{8pt}{\AcronymText{QtSQL}}}
+\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
 
 \newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
 \newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
@@ -372,9 +380,10 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{18pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {NCN/A3R Native Application Framework
+\\\vspace{.5em}
 
-\\
- (Native-Cloud/Native, Application as a Resource)}}}}
+ \normalsize{(\q{Native-Cloud/Native} 
+ 	services and \q{Application-as-a-Resource})}}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
@@ -388,7 +397,7 @@ drop shadow=logoPurple!50!darkRed,
 \p{\NCN{}/\AThreeR{} (hereafter \NAThree{}) is a \Qt{}-based 
 application-development framework which prioritizes 
 hybrid solutions combining cloud and desktop/native 
-components.  The \NCN{} (Native-CloudNative) 
+components.  The \NCN{} (Native-Cloud/Native) 
 model refers to desktop client applications that 
 are integrated with Cloud/Native back-ends; 
 by sharing code libraries and data formats across 
@@ -409,8 +418,8 @@ than \Qt{}, such as wxWidgets or
 Operating-System-specific options).           
 }
 
-\vspace{2.25em}
-\noindent\lun{The Current Status of \Qt{} Cloud Integration}
+\vspace{1.5em}
+\noindent\lun{The Current Status of \lQt{} Cloud Integration}
 \p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  
 We use the term \q{Native Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
@@ -422,6 +431,7 @@ We use the term \q{Native Cloud/Native} to describe hybrid applications whose se
  
 \p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of Native Cloud/Native is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application sector.}
 
+\vspace{1.5em}
 \noindent\lun{Native Cloud/Native in the context of \lNAThree{}}
 \p{In light of the limitations just identified, 
 LTS intends to contribute tools or hosting arrangements that would bring some of the capabilities of \Qt{} Cloud Services back to the market.  The simplest commercial model for such a product is to licence a containerized \Qt{}-based \HTTP{} server that can run as a local application during testing and development, before being deployed to a container hosting service.  
@@ -475,7 +485,7 @@ containers.  Use-cases for \NAThree{} in
 the context of scientific data sets are explained in 
 the discussion of \AThreeR{} below.}
 
-\vspace{-.5em}
+\vspace{1.5em}
 \noindent\lun{Application Development via \lAThreeR{}}
 \p{The \AThreeR{} model facilitates implementation of 
 standalone native applications, whose data models and 
@@ -529,7 +539,39 @@ and interface requirements germane to
 any software components which work with 
 such data types.}
 
-\vspace{-.5em}
+\p{The \lAThreeR{} toolkit includes numerous 
+components which may be useful to programmers 
+implementing cross-platform, desktop-style 
+applications, including a Hypergraph library 
+for in-memory hytergrpah-structured data, 
+a built-in database engine for persistent, 
+a parsing and grammar library, and a foundation 
+for building customized scripting languages.  
+These components have no external requirements 
+and are distributed as raw \Cpp{} files, 
+that can be dropped in to any \Qt{}/\Cpp{} 
+project.  As with \NDPCloud{} on the 
+server-side, these components are therefore 
+\q{transparent}: their code is directly 
+bundled with application sources, and may 
+be clearly examined in a debugging session.  
+This is in contrast to typical libraries 
+providing application-development features 
+(such as database engines or source-code parsers), 
+which typically require separate installation 
+(often with separate build tools) and are 
+opaque to the debugger.  Another benefit 
+of using internal \AThreeR{} components is 
+that they can be simultaneously compiled 
+into \NCN{} instances developed alongside.  
+With that said, developers could certainly 
+use non-\AThreeR{} components in modular 
+fashion (e.g., \Qt{}'s \SQL{} 
+data persistence) to replace their \AThreeR{} 
+equivalents (either initially or after an 
+\AThreeR{}-standalone protyping phase).}
+
+\vspace{1.5em}
 \noindent\lun{\lNCN{} and \lAThreeR{} in consort}
 \p{While \NCN{} applications need not use \AThreeR{}, 
 or vice-versa, the two models are organically 
