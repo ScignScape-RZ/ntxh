@@ -148,6 +148,14 @@ void NGML_Graph_Build::check_tile_acc(Acc_Mode new_mode)
   tile_acc_.clear();
   break;
 
+ case Arg_Tile:
+  attach_left_whitespace();
+  add_tile(tile_acc_.trimmed());
+  attach_right_whitespace();
+  qts_tile_acc_.reset();
+  tile_acc_.clear();
+  break;
+
  case Attribute:
   add_attribute_tile(tile_acc_);
   qts_tile_acc_.reset();
@@ -416,6 +424,8 @@ caon_ptr<NGML_Tag_Command> NGML_Graph_Build::tag_command_entry(QString prefix, Q
 //   ntc->flags.is_environment = true;
 
  caon_ptr<tNode> node = make_new_node(ntc);
+
+ RELAE_SET_NODE_LABEL(node, tag_command);
  markup_position_.tag_command_entry(node);
  parse_context_.flags.inside_tag_body = true;
 
@@ -502,27 +512,29 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QStri
   ntc->flags.is_multi_optional = true;
   ntc->flags.multi_arg_layer = true;
   markup_position_.await_optional(node);
+  acc_mode_ = Arg_Tile;
  }
  else if(arg_marker == "-->")
  {
   ntc->flags.is_multi_mandatory = true;
   ntc->flags.multi_main_layer = true;
   markup_position_.await_mandatory(node);
+  acc_mode_ = Main_Tile;
  }
  else if(arg_marker == "->")
  {
   ntc->flags.is_multi_mandatory = true;
   ntc->flags.multi_arg_layer = true;
   markup_position_.await_mandatory(node);
+  acc_mode_ = Arg_Tile;
  }
  else if(arg_marker == "-->>")
  {
   ntc->flags.is_multi_optional = true;
   ntc->flags.multi_main_layer = true;
   markup_position_.await_optional(node);
+  acc_mode_ = Main_Tile;
  }
-
-
 }
 
 void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
@@ -625,6 +637,22 @@ void NGML_Graph_Build::inline_tag_command_leave()
   check_tile_acc();
   markup_position_.confirm_tag_command_leave(node);
   check_multi_parent_reset();
+ }
+}
+
+void NGML_Graph_Build::tag_command_leave_multi(QString tag_command)
+{
+ if(caon_ptr<tNode> node = markup_position_.tag_command_leave())
+ {
+  CAON_PTR_DEBUG(tNode ,node)
+  check_tile_acc();
+  markup_position_.confirm_tag_command_leave(node);
+   // //  two leaves here because the first is an arg ...
+  if(caon_ptr<tNode> node1 = markup_position_.tag_command_leave())
+  {
+   markup_position_.confirm_tag_command_leave(node1);
+   check_multi_parent_reset();
+  }
  }
 }
 

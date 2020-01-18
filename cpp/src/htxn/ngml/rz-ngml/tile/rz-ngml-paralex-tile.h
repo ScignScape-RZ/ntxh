@@ -50,7 +50,7 @@ public:
  
  u1 get_width();
 
- // QString thumbnail(int max_characters = 6);
+ QString thumbnail(int max_characters = 7);
   // QString get_accent_as_html();
 
  template<typename T>

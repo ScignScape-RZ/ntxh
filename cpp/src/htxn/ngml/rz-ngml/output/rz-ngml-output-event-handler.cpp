@@ -58,7 +58,9 @@ caon_ptr<NGML_Tag_Command> NGML_Output_Event_Handler::generate_tag_command_entry
  {
   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
   generate_tag_command_entry(b.with_callback(cb), ntc);
-  if(!ntc->flags.is_closed)
+
+   // // ? wha ?
+  if(ntc->flags.is_closed)
   {
    return ntc;
   }

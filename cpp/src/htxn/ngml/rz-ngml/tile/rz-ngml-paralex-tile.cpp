@@ -93,6 +93,17 @@ u1 NGML_Paralex_Tile::get_width()
  return width_or_alt_;
 }
 
+QString NGML_Paralex_Tile::thumbnail(int max_characters)
+{
+ QString result = to_string();
+ if(result.size() > max_characters)
+ {
+  result = result.mid(0, max_characters - 3);
+  result += "...";
+ }
+ return result;
+}
+
 QString NGML_Paralex_Tile::to_string()
 {
  qDebug() << "K: " << kind_;

@@ -43,7 +43,7 @@ class NGML_Graph_Build
  _flags
 
  enum Acc_Mode {
-  Main_Tile, Attribute, Math
+  Main_Tile, Attribute, Math, Arg_Tile
  };
 
  Acc_Mode acc_mode_;
@@ -113,6 +113,8 @@ public:
  void check_leave_multiline_comment(QString semis, QString tildes);
 
  void tag_command_leave();
+ void tag_command_leave_multi(QString tag_command);
+
  void inline_tag_command_leave();
  caon_ptr<NGML_Tag_Command> tag_command_entry(QString prefix, QString tag_command, QString argument, QString parent_tag_type = QString());
  void tag_command_instruction_leave(caon_ptr<tNode> node);
