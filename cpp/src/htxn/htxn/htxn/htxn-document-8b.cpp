@@ -67,7 +67,7 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
 
    if(nd->get_layer() == calling_layer)
      calling_layer->add_insert_loop_guard(nd->enter);
-   get_latex_insert(*nd, pr.second);
+   get_latex_insert(nd, pr.second);
 
    if(nd->get_layer() == calling_layer)
      calling_layer->update_insert_loop_guard(nd->enter, nd->leave);
@@ -81,11 +81,11 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
  }
 }
 
-void HTXN_Document_8b::get_latex_insert(HTXN_Node_Detail& nd,
+void HTXN_Document_8b::get_latex_insert(HTXN_Node_Detail* nd,
   QString& result)
 {
- Glyph_Layer_8b* gl = nd.get_layer();
- get_latex_out(gl, nd.enter, nd.leave, result);
+ Glyph_Layer_8b* gl = nd->get_layer();
+ get_latex_out(gl, nd->enter, nd->leave, result, nd);
 } 
 
 
@@ -196,7 +196,7 @@ void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
 
 
 void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, 
-  u4 enter, u4 leave, QString& result)
+  u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd)
 {
  //parse_layer(gv)
  Glyph_Argument_Package gap;
@@ -209,28 +209,36 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  QStringList succs;
  for(u4 i = enter; i <= leave; ++i)
  {
-  u4 lg = gl->check_insert_loop_guard(i);
-  if(lg > 1)
+  if(nd)
   {
-    // //  in this case everything
-     //    is already generated 
- //?  i = lg + 1;
- //?  continue;
+   // // nd is only non-null if this is a partial
+    //   generation going in to an argument ... 
+   // // anything? ...
   }
-  if(lg == 0)
-    end_result = check_latex_insert(*gl, i, cmdgap,
-    precs, succs, result);
+  else
+  {
+   u4 lg = gl->check_insert_loop_guard(i);
+   if(lg > 1)
+   {
+     // //  in this case everything
+      //    is already generated 
+    i = lg;
+    continue;
+   }
+   if(lg == 0)
+     end_result = check_latex_insert(*gl, i, cmdgap,
+     precs, succs, result); 
 
-   // //  the insert might have changed the guard...
-  lg = gl->check_insert_loop_guard(i);
-  if(lg > 1)
-  {
-    // //  in this case everything
-     //    is already generated 
- //?  i = lg + 1;
- //?  continue;
+    // //  the insert might have changed the guard...
+   lg = gl->check_insert_loop_guard(i);
+   if(lg > 1)
+   {
+     // //  in this case everything
+      //    is already generated 
+    i = lg;
+    continue;
+   }
   }
- 
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())
     result.append(gap.str);

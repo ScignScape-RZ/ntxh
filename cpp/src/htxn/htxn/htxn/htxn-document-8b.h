@@ -87,9 +87,9 @@ public:
 
  void get_latex_out(u4 layer, QString& result);
  void get_latex_out(Glyph_Layer_8b* gl, 
-   u4 enter, u4 leave, QString& result);
+   u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd = nullptr);
 
- void get_latex_insert(HTXN_Node_Detail& nd,
+ void get_latex_insert(HTXN_Node_Detail* nd,
   QString& result);
 
  void get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
