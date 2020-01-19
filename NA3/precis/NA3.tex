@@ -53,8 +53,8 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=14.5in,paperwidth=9.1in]{geometry}
-\geometry{left=.9in,top=1.1in,right=.6in,bottom=1.4in} %margins
+\usepackage[paperheight=14.5in,paperwidth=9in]{geometry}
+\geometry{left=1in,top=.8in,right=.75in,bottom=1.5in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
 
@@ -213,6 +213,8 @@
 
 \newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
 
+\newcommand{\lunvs}{\vspace{2.25em}}
+
 
 \colorlet{orr}{orange!60!red}
 
@@ -235,12 +237,15 @@
 \newcommand{\NCN}{\resizebox{!}{8pt}{\AcronymText{NCN}}}
 \newcommand{\AThreeR}{\resizebox{!}{8pt}{\AcronymText{A3R}}}
 
-\newcommand{\lQt}{\resizebox{!}{9.5pt}{\AcronymText{Qt}}}
+\newcommand{\lQt}{\resizebox{!}{10.5pt}{\AcronymText{Qt}}}
 
-\newcommand{\lNCN}{\resizebox{!}{9.5pt}{\AcronymText{NCN}}}
-\newcommand{\lAThreeR}{\resizebox{!}{9.5pt}{\AcronymText{A3R}}}
+\newcommand{\lNCN}{\resizebox{!}{9pt}{\AcronymText{NCN}}}
+\newcommand{\lAThreeR}{\resizebox{!}{9pt}{\AcronymText{A3R}}}
+\newcommand{\lNAThree}{\resizebox{!}{9pt}{\AcronymText{NA3}}}
 
-\newcommand{\lNAThree}{\resizebox{!}{9.5pt}{\AcronymText{NA3}}}
+\newcommand{\lsNCN}{\resizebox{!}{10.5pt}{\AcronymText{NCN}}}
+\newcommand{\lsAThreeR}{\resizebox{!}{10.5pt}{\AcronymText{A3R}}}
+\newcommand{\lsNAThree}{\resizebox{!}{10.5pt}{\AcronymText{NA3}}}
 
 \newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
 
@@ -344,7 +349,7 @@
 	
 {\linespread{1.1}\selectfont
 
-\vspace*{-7em}
+\vspace*{-5em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -382,7 +387,7 @@ drop shadow=logoPurple!50!darkRed,
 {NCN/A3R Native Application Framework
 \\\vspace{.5em}
 
- \normalsize{(\q{Native-Cloud/Native} 
+ \large{(\q{Native-Cloud/Native} 
  	services and \q{Application-as-a-Resource})}}}}}
 \end{center}
 \end{minipage}
@@ -418,25 +423,25 @@ than \Qt{}, such as wxWidgets or
 Operating-System-specific options).           
 }
 
-\vspace{1.5em}
+{\lunvs}
 \noindent\lun{The Current Status of \lQt{} Cloud Integration}
 \p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  
-We use the term \q{Native Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
+We use the term \q{Native-Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
 
-\p{Cloud/Native support in existing native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \p{Qt Cloud Services}, which provided a convenient, Qt-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \p{Qt Cloud Beta has solved an immense need for Qt developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the Qt ecosystem with an all-in-one Qt solution for cloud computing}).  However --- to the consternation of the Qt community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
+\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{Qt Cloud Beta has solved an immense need for Qt developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the Qt ecosystem with an all-in-one Qt solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
 }
 
-\p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields (where due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
+\p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields where (due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
  
-\p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of Native Cloud/Native is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application sector.}
+\p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of a \q{Native-Cloud/Native} approach is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application ecosystem.}
 
-\vspace{1.5em}
-\noindent\lun{Native Cloud/Native in the context of \lNAThree{}}
-\p{In light of the limitations just identified, 
-LTS intends to contribute tools or hosting arrangements that would bring some of the capabilities of \Qt{} Cloud Services back to the market.  The simplest commercial model for such a product is to licence a containerized \Qt{}-based \HTTP{} server that can run as a local application during testing and development, before being deployed to a container hosting service.  
+{\lunvs}
+\noindent\lun{Native-Cloud/Native in the Context of \lsNAThree{}}
+\p{In light of the Cloud/Native limitations just identified, 
+LTS intends to contribute tools or hosting arrangements that would bring some of the capabilities of \Qt{} Cloud Services back to the market.  The simplest commercial model for such a product is to license a containerized \Qt{}-based \HTTP{} server that can run as a local application during testing and development, before being deployed to a container hosting service.  
 We have implemented a prototype server along these lines 
-that we call \NDPCloud{} (for \q{Native-Driven Platform}).  
+that we call \NDPCloud{} (for \q{Native-Driven Platform on the Cloud}).  
 \lNDPCloud{} is fully self-contained in a \Qt{} context 
 (it bundles portions of the Node.js code base and 
 utilizes the \Qt{} network module, so it requires no 
@@ -451,7 +456,11 @@ clients and servers can share procedures for serializing
 and deserializing domain-specific data structures.  
 For development and prototyping, \NDPCloud{} 
 can be launched as an ordinary (non-virtual) 
-\OS{}; further testing can then be performed 
+Operating System process, which can receive 
+requests via \HTTP{} but also via sockets, or 
+the command line (allowing request-management 
+logic to be tested in abstraction from the 
+\HTTP{} layer).  Further testing can then be performed 
 running \NDPCloud{} as a local Docker container, 
 before eventually deploying the application to 
 a remote Docker hosting environment. 
@@ -465,7 +474,7 @@ no direct involvement with the hosting service
 to streamline cloud deployment).  Ideally, 
 however, LTS would like to secure its own 
 hosting capabilities, perhaps by using an 
-LTS-specific container depoyed on OpenShift 
+LTS-specific container deployed on OpenShift 
 or a similar platform.  LTS would allocate 
 cloud assets to \NDPCloud{} licensees 
 (e.g. a limited free-tier hosting plan) 
@@ -474,7 +483,7 @@ possibility is to provide free
 hosting, subject to data-space constraints, 
 to scientific institutions.  The dwindling 
 availability of free-tier Cloud/Native options 
-is a hinderance to projects' adoption of 
+is a hindrance to projects' adoption of 
 Cloud/Native solutions for sharing and 
 disseminating scientific data; this can 
 result in researchers hosting data sets on 
@@ -485,8 +494,8 @@ containers.  Use-cases for \NAThree{} in
 the context of scientific data sets are explained in 
 the discussion of \AThreeR{} below.}
 
-\vspace{1.5em}
-\noindent\lun{Application Development via \lAThreeR{}}
+{\lunvs}
+\noindent\lun{Application Development via \lsAThreeR{}}
 \p{The \AThreeR{} model facilitates implementation of 
 standalone native applications, whose data models and 
 \UI{} logistics are described via integrated metadata.
@@ -496,7 +505,8 @@ code and data can be packaged into single
 downloadable resource.  In a \Qt{} environment, 
 \Qt{} modules are available for concerns such 
 as networking, database management, \Cpp{} reflection, 
-\XML{} or \JSON{} parsing, or embedded web viewers, so that 
+\XML{} or \JSON{} parsing/querying, 
+and embedded web viewers, so that 
 \AThreeR{} can leverage these capabilities without 
 requiring separate library installs.  For many use-cases, 
 then, an entire desktop application can be deployed 
@@ -504,8 +514,8 @@ in source-code form, to be compiled and launched
 via a single click within \Qt{} creator.  
 Self-contained in this manner, \AThreeR{} 
 applications can be treated as single 
-resource units --- to some degree analogous 
-to Docker containers, but achieving their 
+resource units --- somewhat analogous 
+to container images, but achieving their 
 autonomy by leveraging the \Qt{} ecosystem 
 rather than by virtualization.  
 }
@@ -534,74 +544,74 @@ This structural profiling is advanced not
 only by domain-specific \GUI{} components 
 implemented within \AThreeR{} applications, 
 but also by \AThreeR{} metadata which 
-describes application-specific data types 
-and interface requirements germane to 
-any software components which work with 
+describes application-specific data types, 
+and declares interface requirements for
+any software components targeting 
 such data types.}
 
 \p{The \lAThreeR{} toolkit includes numerous 
 components which may be useful to programmers 
 implementing cross-platform, desktop-style 
-applications, including a Hypergraph library 
-for in-memory hytergrpah-structured data, 
-a built-in database engine for persistent, 
+applications, including a library 
+for in-memory hypergraph-structured data, 
+a built-in database engine for persistent data, 
 a parsing and grammar library, and a foundation 
 for building customized scripting languages.  
 These components have no external requirements 
-and are distributed as raw \Cpp{} files, 
-that can be dropped in to any \Qt{}/\Cpp{} 
+and are distributed as raw \Cpp{} files 
+that could be dropped in to any \Qt{}/\Cpp{} 
 project.  As with \NDPCloud{} on the 
-server-side, these components are therefore 
+server side, these components are therefore 
 \q{transparent}: their code is directly 
 bundled with application sources, and may 
 be clearly examined in a debugging session.  
 This is in contrast to typical libraries 
 providing application-development features 
-(such as database engines or source-code parsers), 
+such as database engines or code parsers, 
 which typically require separate installation 
 (often with separate build tools) and are 
 opaque to the debugger.  Another benefit 
 of using internal \AThreeR{} components is 
 that they can be simultaneously compiled 
-into \NCN{} instances developed alongside.  
+into \NCN{} instances developed alongside them.  
 With that said, developers could certainly 
 use non-\AThreeR{} components in modular 
-fashion (e.g., \Qt{}'s \SQL{} 
-data persistence) to replace their \AThreeR{} 
+fashion (e.g., \Qt{}'s \SQL{}-based 
+data persistence features) to replace their \AThreeR{} 
 equivalents (either initially or after an 
 \AThreeR{}-standalone protyping phase).}
 
-\vspace{1.5em}
-\noindent\lun{\lNCN{} and \lAThreeR{} in consort}
+{\lunvs}
+\noindent\lun{\lsNCN{} and \lsAThreeR{} in Consort}
 \p{While \NCN{} applications need not use \AThreeR{}, 
 or vice-versa, the two models are organically 
-paired together.  This can take the form of 
+paired together.  Their integration can take the form of 
 \NCN{} servers hosting \AThreeR{} applications 
 as resources, and/or \AThreeR{} software 
 connecting to \NCN{} instances as a domain-specific 
 cloud back-end.  The \AThreeR{} metadata 
-paradigm, based on \q{Hyperegraph Ontologies}, 
+paradigm, based on \q{Hypergraph Ontologies}, 
 provides tools to streamline the encoding and 
-distribution of application-specific data types.  
+distribution of application-specific data structures.  
 This model thereby accelerates the process of 
 implementing cloud services procedurally 
 aligned with \AThreeR{} components, because 
 complementary \AThreeR{} and \NCN{} endpoints 
-can share the same data-type libraries.  
+can share the same information representations.  
 Moreover, \AThreeR{} interface definitions 
 can serve as references for implementing 
 compatible \NCN{} server-side code; 
-the interface specification documents which 
+the interface specification illustrates which 
 client-side procedures will handle any 
 server-originating data structures, so the 
 server-side data providers can be constructed 
 accordingly.
 }
 
-\p{To ensure rigorous alignment between client and server endpoints, \NAThree{} employs a data modeling paradigm based on hypergraphs; the mathematical framework for the relevant new hypergraph model (which adds some additional structure to the theory of Hypergraph Categories) is provisionally outlined in a chapter of a book which I edited that will soon be published (we can share this material, or alternatively a more thorough unpublished explication, as desired).  In practical terms, the advantage of this model is that \Qt{}-specific data structures can be conveniently serialized and shared with or through cloud services; meanwhile the relevant data structures --- and their interface and procedural requirements --- are rigorously characterized, to support application testing, code-verification, documentation, and systematic User Interface development.  
+\p{To ensure rigorous alignment between client and server endpoints, \NAThree{} employs a data modeling paradigm based on hypergraphs; the mathematical framework for the relevant new hypergraph model (which adds some additional structure to the theory of Hypergraph Categories) is provisionally outlined in a chapter of a book edited by LTS's founder (the chapter authored by a member of the LTS team), soon be published (we can share this material, or alternatively a more thorough unpublished explication, as desired).  In practical terms, the advantage of this model is that \Qt{}-specific data structures can be conveniently serialized and shared with or through cloud services; meanwhile the relevant data structures --- and their interface and procedural requirements --- are rigorously characterized, to support application testing, code-verification, documentation, and systematic User Interface development.  
 \lNAThree{} concretely operationalizes theories 
 which have been advanced in the scientific-computing 
-and knowledge-engineering community toward a 
+and knowledge-engineering communities toward a 
 more conceptually refined and \q{multi-scale} 
 Semantic Web.  \lAThreeR{} extends \q{Semantic Web 
 alternatives} such as Conceptual Space Markup 
@@ -609,7 +619,7 @@ Language (\CSML{}) and Categorial Informatics,
 while also providing a self-contained \Cpp{} 
 Hypergraph library comparable in some respects 
 to AtomSpace (part of the 
-OpenCOG platform) or to HypegraphDB (Hypergraphs 
+OpenCOG platform) or to HypergraphDB (Hypergraphs 
 and Conceptual Spaces have been proposed in 
 combination as a comprehensive foundation 
 for computational semantics, notably in 
@@ -632,7 +642,7 @@ Research Object \q{bundles} while still
 being provisioned with full-featured 
 desktop applications tailored to their 
 specific information profile.  
-LTS is actively developing a framework (called DataSet Creator, or \dsC{}) for building data sets that paired with academic publications and with native software implemented in custom fashion for each data set (we can provide links to several data sets published as demonstration examples of this technology).  The hosting and implementation of data sets along these lines offers concrete examples of \NAThree{} solutions and an opportunity to promote \NAThree{}-style development in the scientific and publishing communities. 
+LTS is actively developing a framework (called DataSet Creator, or \dsC{}) for building data sets that are paired with academic publications and with native software implemented in custom fashion for each data set (we can provide links to several data sets published as demonstration examples of this technology).  The hosting and implementation of data sets along these lines offers concrete examples of \NAThree{} solutions and an opportunity to promote \NAThree{}-style development in the scientific and publishing communities. 
 }
  
 \p{As this use-case illustrates, 

@@ -185,7 +185,7 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  Glyph_Layer_8b* gl = value(layer);
  if(!gl)
    return;
- get_latex_out(gl, 0, gl->size(), result);
+ get_latex_out(gl, 0, gl->size() - 1, result);
 }
 
 void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
@@ -207,15 +207,15 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  QString end_result;
  QVector<QPair<HTXN_Node_Detail*, QString>> precs;
  QStringList succs;
- for(u4 i = enter; i < leave; ++i)
+ for(u4 i = enter; i <= leave; ++i)
  {
   u4 lg = gl->check_insert_loop_guard(i);
   if(lg > 1)
   {
     // //  in this case everything
      //    is already generated 
-   i = lg + 1;
-   continue;
+ //?  i = lg + 1;
+ //?  continue;
   }
   if(lg == 0)
     end_result = check_latex_insert(*gl, i, cmdgap,
@@ -227,8 +227,8 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
   {
     // //  in this case everything
      //    is already generated 
-   i = lg + 1;
-   continue;
+ //?  i = lg + 1;
+ //?  continue;
   }
  
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
