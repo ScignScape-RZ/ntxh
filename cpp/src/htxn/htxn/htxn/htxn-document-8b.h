@@ -58,6 +58,8 @@ public:
 
  Glyph_Layer_8b* add_layer();
 
+ void check_pre_space_append(QString& text, const HTXN_Node_Detail& nd);
+
  void encode_latin1(const QByteArray& src, Glyph_Vector_8b& target, u2 offset);
 
  void encode_latin1(QByteArray& src, Glyph_Vector_8b& target,

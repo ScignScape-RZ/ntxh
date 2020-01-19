@@ -57,6 +57,8 @@ QVector<u4>* HTXN_Node_Detail::get_refs() const
 
 void HTXN_Node_Detail::note_whitespace_code(u2 wsc)
 {
+ if(wsc == 0)
+   return;
  QPair<Space_Codes, Space_Codes> pr = parse_whitespace_code(wsc);
  note_space_code(pr.first);
  note_space_code(pr.second);
@@ -67,15 +69,37 @@ QPair<HTXN_Node_Detail::Space_Codes, HTXN_Node_Detail::Space_Codes>
 {
  static QMap<u2, QPair<Space_Codes, Space_Codes>> static_map {{
    {2020, {Pre_Line_Double_Gap, Post_Line_Double_Gap}},
+   {2021, {Pre_Line_Double_Gap, Post_Line_Double_Gap}},
+   {2120, {Pre_Line_Double_Gap, Post_Line_Double_Gap}},
+   {2121, {Pre_Line_Double_Gap, Post_Line_Double_Gap}},
+
    {2010, {Pre_Line_Double_Gap, Post_Line_Gap}},
+   {2011, {Pre_Line_Double_Gap, Post_Line_Gap}},
+   {2110, {Pre_Line_Double_Gap, Post_Line_Gap}},
+   {2111, {Pre_Line_Double_Gap, Post_Line_Gap}},
+
    {2001, {Pre_Line_Double_Gap, Post_Space_Gap}},
+   {2101, {Pre_Line_Double_Gap, Post_Space_Gap}},
 
    {1020, {Pre_Line_Gap, Post_Line_Double_Gap}},
+   {1021, {Pre_Line_Gap, Post_Line_Double_Gap}},
+   {1120, {Pre_Line_Gap, Post_Line_Double_Gap}},
+   {1121, {Pre_Line_Gap, Post_Line_Double_Gap}},
+
    {1010, {Pre_Line_Gap, Post_Line_Gap}},
+   {1011, {Pre_Line_Gap, Post_Line_Gap}},
+   {1110, {Pre_Line_Gap, Post_Line_Gap}},
+   {1111, {Pre_Line_Gap, Post_Line_Gap}},
+
    {1001, {Pre_Line_Gap, Post_Space_Gap}},
+   {1101, {Pre_Line_Gap, Post_Space_Gap}},
 
    {120, {Pre_Space_Gap, Post_Line_Double_Gap}},
+   {121, {Pre_Space_Gap, Post_Line_Double_Gap}},
+
    {110, {Pre_Space_Gap, Post_Line_Gap}},
+   {111, {Pre_Space_Gap, Post_Line_Gap}},
+
    {101, {Pre_Space_Gap, Post_Space_Gap}},
   }};
 

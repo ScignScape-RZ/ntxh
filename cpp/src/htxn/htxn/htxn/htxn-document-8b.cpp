@@ -88,6 +88,36 @@ void HTXN_Document_8b::get_latex_insert(HTXN_Node_Detail* nd,
  get_latex_out(gl, nd->enter, nd->leave, result, nd);
 } 
 
+void HTXN_Document_8b::check_pre_space_append(QString& text, const HTXN_Node_Detail& nd)
+{
+ if(nd.flags.pre_line_double_gap)
+ {
+  if(text.endsWith("\n\n"))
+    return;
+  if(text.endsWith("\n"))
+  {
+   text.append("\n");
+   return;
+  }
+  text.append("\n\n");
+  return;
+ }
+ if(nd.flags.pre_line_gap)
+ {
+  if(text.endsWith("\n"))
+    return;
+  text.append("\n");
+  return;
+ }
+ if(nd.flags.pre_space_gap)
+ {
+  if(text.endsWith(" "))
+    return;
+  text.append(" ");
+  return;
+ }
+}
+
 
 QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   u4 index, Glyph_Argument_Package& cmdgap, 
@@ -109,10 +139,11 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   QString cmd;
   get_latex_command(*ngl, nd.enter, nd.leave, cmdgap, cmd);
 
-  QString pre_space = nd.get_pre_space();
-  QString post_space = nd.get_post_space();
+  check_pre_space_append(result, nd);
 
-  result.append(pre_space);
+//?
+//  QString pre_space = nd.get_pre_space();
+//  result.append(pre_space);
 
   if(nd.flags.ref_preempts_wrap)
     result.append(QString("\\%1").arg(cmd));
@@ -133,6 +164,7 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
      result.append(QString("\\end{%1}").arg(cmd));
    else
      result.append("}");
+   //?result.append(post_space);
   }  
   else
     gl.add_leave(leave, cmd, &nd, node_code);
@@ -146,7 +178,12 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
    else
      result.append(QString("{%1}").arg(pr.second));
   }
-  result.append(post_space);
+  if(nd.flags.ref_preempts_wrap)
+  {
+   //check_post_space_append(result, nd);
+   QString post_space = nd.get_post_space();
+   result.append(post_space);
+  }
   precs.clear();
  }
 
@@ -162,6 +199,8 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
     end_result.append(QString("\\end{%1}").arg(pr.first));
   else
     end_result.append(QString("}"));
+  QString post_space = nd->get_post_space();
+  end_result.append(post_space);
  }
  return end_result;
 }
