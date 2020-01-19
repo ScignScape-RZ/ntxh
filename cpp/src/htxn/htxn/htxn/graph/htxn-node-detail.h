@@ -48,8 +48,15 @@ flags_(2)
  bool post_line_gap:1;
  bool pre_space_gap:1;
  bool post_space_gap:1;
-
+ bool pre_line_double_gap:1;
+ bool post_line_double_gap:1;
 _flags
+
+ enum Space_Codes {
+   N_A = 0, Pre_Line_Gap = 1, Post_Line_Gap = 2,
+   Pre_Space_Gap = 3, Post_Space_Gap = 4,
+   Pre_Line_Double_Gap = 5, Post_Line_Double_Gap = 6
+ };
 
  void* node_ref;
 
@@ -62,6 +69,13 @@ _flags
  HTXN_Node_Detail(u4 e, u4 l);
 
  HTXN_Node_Detail();
+
+ QString get_pre_space() const;
+ QString get_post_space() const;
+
+ void note_space_code(Space_Codes sc);
+ void note_whitespace_code(u2 wsc);
+ static QPair<Space_Codes, Space_Codes> parse_whitespace_code(u2 wsc);
 
  void add_node_ref(u4 nc);
  QVector<u4>* get_refs() const;

@@ -220,3 +220,9 @@ void NGML_Output_Event_Handler::check_update_index_after_whitespace(const NGML_O
  b.index += tile.ws().get_length();
 }
 
+void NGML_Output_Event_Handler::check_update_index_after_whitespace(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ b.index += ntc.ws().get_length();
+}
+

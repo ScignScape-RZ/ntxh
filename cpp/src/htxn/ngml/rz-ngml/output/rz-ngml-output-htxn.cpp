@@ -53,6 +53,8 @@ NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document)
 // tag_command_arg_gl_->set_description("tag_command_arg_gl_");
 
  tag_command_arg_qts_.setString(&tag_command_arg_layer_);
+ whitespace_qts_.setString(&whitespace_scratch_);
+
 }
 
 void NGML_Output_HTXN::init_callbacks()
@@ -180,6 +182,39 @@ caon_ptr<NGML_Command_Callback> NGML_Output_HTXN::check_command_callback(caon_pt
 
 void NGML_Output_HTXN::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
+ CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+ ntc->write_whitespace(whitespace_qts_);
+
+ u2 space_count = 0;
+ u2 line_count = 0;
+ char other = 0;
+ for(QChar c : whitespace_scratch_)
+ {
+  if(c == ' ')
+    ++space_count;
+  else if(c == '\n')
+    ++line_count;
+  else
+  {
+   other = c.toLatin1();
+   break;
+  }
+ }
+
+ if(other)
+ {
+  ntc->write_whitespace(b.qts);
+  check_update_index_after_whitespace(b, *ntc);
+ }
+ else if(line_count == 1)
+   ntc->flags.left_line_gap = true;
+ else if(line_count > 1)
+   ntc->flags.left_line_double_gap = true;
+ else if(space_count >= 1)
+   ntc->flags.left_space_gap = true;
+
+ whitespace_scratch_.clear();
+ whitespace_qts_.reset();
  //? ntc->write_whitespace(b.qts);
  //? check_update_index_after_whitespace(b, ntc);
 }
@@ -278,6 +313,8 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
  CAON_PTR_B_DEBUG(NGML_Node ,node)
  chiefs_.push(b.node);
 
+ ntc->normalize_whitespace();
+
  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
 
  switch(b.connection_descriptor)
@@ -363,10 +400,12 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
   u4 nc1;
 
+  u2 wsc = ntc->get_whitespace_code();
+
   if(ntc->flags.is_region)
-    nc1 = htxn_document_.add_detail_range_region(tag_command_gl_, span_start, span_end);
+    nc1 = htxn_document_.add_detail_range_region(tag_command_gl_, span_start, span_end, wsc);
   else
-    nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end);
+    nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end, wsc);
 
   if(ntc->flags.is_multi_parent)
     multi_parent_range_stack_.push({nc1, {}});

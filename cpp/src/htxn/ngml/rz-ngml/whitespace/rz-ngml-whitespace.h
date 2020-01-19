@@ -30,6 +30,9 @@ public:
 
  QString to_string();
  void parse(QString raw_text);
+
+ void get_counts(u1* result);
+ void get_counts_as_inherited(u1* result);
 };
 
 _RZNS(NGML)

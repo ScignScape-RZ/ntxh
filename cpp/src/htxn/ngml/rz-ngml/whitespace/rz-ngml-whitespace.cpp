@@ -21,6 +21,52 @@ NGML_Whitespace::NGML_Whitespace(QString raw_text)
  parse(raw_text);
 }
 
+void NGML_Whitespace::get_counts(u1* result)
+{
+ result[0] = 0;
+ result[1] = 0;
+
+ if(raw_text_)
+ {
+//  #ifdef NO_CAON
+//   // //  actually we should count from raw_text_ ...
+//  result[0] = 255;
+//  result[1] = 255;
+//  #else //NO_CAON
+  if(raw_text_.is_fixnum())
+  {
+   size_t v = raw_text_.get_fixnum();
+   while(v > 0)
+   {
+    u1 encode = v & 3;
+    switch(encode)
+    {
+    case 0:
+    case 2:
+     result[0] = 255;
+     result[1] = 255;
+     return;
+    case 1:
+     ++result[1];
+     break;
+    case 3:
+     ++result[0];
+     break;
+    }
+    v >>= 2;
+   }
+   return;
+  }
+ }
+}
+
+void NGML_Whitespace::get_counts_as_inherited(u1* result)
+{
+  // //  offset into the array ...
+ get_counts(result + 2);
+}
+
+
 u1 NGML_Whitespace::get_length()
 {
  int result = 0;

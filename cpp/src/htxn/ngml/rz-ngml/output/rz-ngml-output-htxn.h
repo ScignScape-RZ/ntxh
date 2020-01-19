@@ -49,6 +49,9 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
  QTextStream tag_command_arg_qts_;
  u4 tag_command_arg_index_;
 
+ QString whitespace_scratch_;
+ QTextStream whitespace_qts_;
+
  Glyph_Layer_8b* tag_command_gl_;
  Glyph_Layer_8b* tag_command_arg_gl_;
  Glyph_Layer_8b* main_gl_;

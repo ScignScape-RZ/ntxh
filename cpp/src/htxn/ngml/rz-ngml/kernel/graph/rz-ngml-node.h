@@ -12,6 +12,7 @@
 
 RZNS_(NGML)
 
+class NGML_Whitespace_Holder;
 
 class NGML_Node : public node_ptr<NGML_Dominion>
 {
@@ -22,6 +23,11 @@ public:
 
 
  QString debug_connectors() const;
+
+ NGML_Whitespace_Holder* wsh()
+ {
+  return reinterpret_cast<NGML_Whitespace_Holder*>(vertex_.raw_pointer());
+ }
 
  template<typename T>
  caon_ptr<T> as()

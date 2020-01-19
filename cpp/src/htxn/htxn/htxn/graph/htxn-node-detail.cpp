@@ -27,10 +27,75 @@ QVector<u4>* HTXN_Node_Detail::get_refs_from_split() const
  return &pr->second;
 }
 
+QString HTXN_Node_Detail::get_pre_space() const
+{
+ if(flags.pre_line_gap)
+   return "\n";
+ if(flags.pre_line_double_gap)
+   return "\n\n";
+ if(flags.pre_space_gap)
+   return " ";
+ return {};
+}
+
+QString HTXN_Node_Detail::get_post_space() const
+{
+ if(flags.post_line_gap)
+   return "\n";
+ if(flags.post_line_double_gap)
+   return "\n\n";
+ if(flags.post_space_gap)
+   return " ";
+ return {};
+}
+
+
 QVector<u4>* HTXN_Node_Detail::get_refs() const
 {
  return (flags.split_node_ref)? get_refs_from_split() : nullptr;
 }
+
+void HTXN_Node_Detail::note_whitespace_code(u2 wsc)
+{
+ QPair<Space_Codes, Space_Codes> pr = parse_whitespace_code(wsc);
+ note_space_code(pr.first);
+ note_space_code(pr.second);
+}
+
+QPair<HTXN_Node_Detail::Space_Codes, HTXN_Node_Detail::Space_Codes>
+  HTXN_Node_Detail::parse_whitespace_code(u2 wsc)
+{
+ static QMap<u2, QPair<Space_Codes, Space_Codes>> static_map {{
+   {2020, {Pre_Line_Double_Gap, Post_Line_Double_Gap}},
+   {2010, {Pre_Line_Double_Gap, Post_Line_Gap}},
+   {2001, {Pre_Line_Double_Gap, Post_Space_Gap}},
+
+   {1020, {Pre_Line_Gap, Post_Line_Double_Gap}},
+   {1010, {Pre_Line_Gap, Post_Line_Gap}},
+   {1001, {Pre_Line_Gap, Post_Space_Gap}},
+
+   {120, {Pre_Space_Gap, Post_Line_Double_Gap}},
+   {110, {Pre_Space_Gap, Post_Line_Gap}},
+   {101, {Pre_Space_Gap, Post_Space_Gap}},
+  }};
+
+ return static_map.value(wsc, {Space_Codes::N_A, Space_Codes::N_A});
+}
+
+void HTXN_Node_Detail::note_space_code(Space_Codes sc)
+{
+ switch (sc)
+ {
+ case Pre_Line_Gap: flags.pre_line_gap = true; break;
+ case Post_Line_Gap: flags.post_line_gap = true; break;
+ case Pre_Space_Gap: flags.pre_space_gap = true; break;
+ case Post_Space_Gap: flags.post_space_gap = true; break;
+ case Pre_Line_Double_Gap: flags.pre_line_double_gap = true; break;
+ case Post_Line_Double_Gap: flags.post_line_double_gap = true; break;
+ default: break;
+ }
+}
+
 
 void HTXN_Node_Detail::add_node_ref(u4 nc)
 {

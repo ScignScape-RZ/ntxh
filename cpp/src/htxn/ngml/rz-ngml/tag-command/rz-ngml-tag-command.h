@@ -42,6 +42,16 @@ public:
   bool multi_arg_layer:1;
   bool multi_main_layer:1;
   bool autogen_multi_name:1;
+
+  bool left_space_gap:1;
+  bool right_space_gap:1;
+  bool left_line_gap:1;
+  bool right_line_gap:1;
+  bool left_line_double_gap:1;
+  bool right_line_double_gap:1;
+
+  bool nonstandard_space:1;
+
  _flags
 
 public:
@@ -67,6 +77,10 @@ public:
    QString parent_tag_type = QString());
 
  QString latex_name();
+
+ void normalize_whitespace();
+
+ u2 get_whitespace_code();
 
 };
 

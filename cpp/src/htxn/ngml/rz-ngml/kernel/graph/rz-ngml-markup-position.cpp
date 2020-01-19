@@ -150,6 +150,7 @@ void NGML_Markup_Position::tag_command_entry(caon_ptr<NGML_Node> node)
   }
   // fallthrough
  case Root:
+   node->wsh()->inherit_whitespace(current_node_->wsh());
  case Annotation_Close:
  case Tile_Sequence:
   current_node_ << fr_/qry_.Tag_Command_Entry >> node;
