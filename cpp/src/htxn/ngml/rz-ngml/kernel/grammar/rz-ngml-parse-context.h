@@ -19,7 +19,7 @@ class NGML_Parse_Context
  typedef NGML_Node tNode;
 
 public:
- flags_(1)
+ flags_(2)
   flag_(1, inside_khif_tile);
   flag_(2, inside_multiline_comment);
   flag_(3, inside_tag_body);
@@ -28,6 +28,7 @@ public:
   flag_(6, inside_inline_multi_parent);
   flag_(7, inside_html_script_tag);
   flag_(8, inside_html_style_tag);
+  flag_(9, inside_multi_parent_semis);
  _flags_
 
 public:

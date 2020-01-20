@@ -3,15 +3,15 @@
 `[//]articleHypergraph-Based Type Theory 
 for Software Development in a Cyber-Physical Context`[/]
 
-`[//]documentclassdocumenttitle`[/]
+`[//]documentclassincludedocumenttitle`[/]
 
-`[//]10pt`[/]
+`[//]11pt, twocolumncommands`[/]
 
 @@ ranges
 3
 =0
-2<1>0;1,
-9<2>90;4,90;5,
+2<1>8;1,
+9<3>0;4,90;6,90;7,
 !
 =1
 !
@@ -19,12 +19,14 @@ for Software Development in a Cyber-Physical Context`[/]
 !
  *
 @@ details
-5
+7
 24768;2:14
-4;2:5
+4;2:16
 0;2:8
-24577;15:22
-24576;23:27
+24768;15:21
+0;17:25
+24577;22:29
+24576;30:34
  *
 %% ties
 &&1
@@ -33,6 +35,11 @@ for Software Development in a Cyber-Physical Context`[/]
 &!2
 !
 &!0
+!
+&&1
+5~
+!
+&!2
 !
 &!1
 !

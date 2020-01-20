@@ -407,7 +407,7 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   else
     nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end, wsc);
 
-  if(ntc->flags.is_multi_parent)
+  if(ntc->flags.is_multi_parent || ntc->flags.is_multi_parent_semis)
     multi_parent_range_stack_.push({nc1, {}});
 
   QStringList args;

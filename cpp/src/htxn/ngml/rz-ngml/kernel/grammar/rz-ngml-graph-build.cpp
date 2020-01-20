@@ -540,20 +540,30 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QStri
 void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
   QString tag_body_follow, QString first_arg_marker)
 {
- Tag_Body_Follow_Mode m = parse_tag_body_follow(tag_body_follow);
+ Tag_Body_Follow_Mode m = tag_body_follow.isEmpty() ? Normal
+   : parse_tag_body_follow(tag_body_follow);
 
  caon_ptr<NGML_Tag_Command> ntc = tag_command_entry({}, 
    tag_command, {});
+
  if(m == Region)
    ntc->flags.is_region = true;
 
- ntc->flags.is_multi_parent = true;
+ if(tag_body_follow.isEmpty())
+   ntc->flags.is_multi_parent_semis = true;
+ else
+   ntc->flags.is_multi_parent = true;
+
  ntc->flags.has_entry = true;
 
  tag_body_leave();
 
  tag_command_entry_inside_multi(tag_command, first_arg_marker);
- parse_context_.flags.inside_multi_parent = true;
+
+ if(tag_body_follow.isEmpty())
+   parse_context_.flags.inside_multi_parent_semis = true;
+ else
+   parse_context_.flags.inside_multi_parent = true;
 }
 
 
@@ -690,9 +700,15 @@ void NGML_Graph_Build::check_html_tag_command_leave(QString tag_command, QString
 void NGML_Graph_Build::check_multi_parent_reset()
 {
  if(caon_ptr<NGML_Tag_Command> ntc = markup_position_.get_current_tag_command())
-   parse_context_.flags.inside_multi_parent = ntc->flags.is_multi_parent;
+ {
+  parse_context_.flags.inside_multi_parent = ntc->flags.is_multi_parent;
+  parse_context_.flags.inside_multi_parent_semis = ntc->flags.is_multi_parent_semis;
+ }
  else
-   parse_context_.flags.inside_multi_parent = false;
+ {
+  parse_context_.flags.inside_multi_parent = false;
+  parse_context_.flags.inside_multi_parent_semis = false;
+ }
 }
 
 void NGML_Graph_Build::check_tag_command_leave(QString tag_command, QString match_text)
