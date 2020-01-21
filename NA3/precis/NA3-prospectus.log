@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  20 JAN 2020 17:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  21 JAN 2020 09:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -490,6 +490,10 @@ Package breakurl Warning: You are using breakurl while processing via pdflatex.
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box48
+)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/hyperref.s
 ty
 Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
@@ -586,7 +590,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip117
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 91.
+Package hyperref Info: Option `colorlinks' set `true' on input line 93.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcolorbox
 .sty
@@ -606,7 +610,7 @@ util-common.tex
 util-common-lists.tex))
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/utilities/pgf
 util-latex.def
-\pgfutil@abb=\box48
+\pgfutil@abb=\box49
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
@@ -690,7 +694,7 @@ til.code.tex)
 arser.code.tex
 \pgfmath@dimen=\dimen162
 \pgfmath@count=\count273
-\pgfmath@box=\box49
+\pgfmath@box=\box50
 \pgfmath@toks=\toks27
 \pgfmath@stack@operand=\toks28
 \pgfmath@stack@operation=\toks29
@@ -750,9 +754,9 @@ File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcorescopes.code.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box50
-\pgf@hbox=\box51
-\pgf@layerbox@main=\box52
+\pgfpic=\box51
+\pgf@hbox=\box52
+\pgf@layerbox@main=\box53
 \pgf@picture@serial@count=\count275
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
@@ -797,7 +801,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box53
+\pgfexternal@startupbox=\box54
 ))
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcorelayers.code.tex
@@ -814,7 +818,7 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/modules/pgfmo
 duleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box54
+\pgfnodeparttextbox=\box55
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/modules/pgfmo
 duleplot.code.tex
@@ -845,17 +849,17 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 \@envbody=\toks32
 )
-\tcb@titlebox=\box55
-\tcb@upperbox=\box56
-\tcb@lowerbox=\box57
-\tcb@phantombox=\box58
+\tcb@titlebox=\box56
+\tcb@upperbox=\box57
+\tcb@lowerbox=\box58
+\tcb@phantombox=\box59
 \c@tcbbreakpart=\count277
 \c@tcblayer=\count278
 \tcolorbox@number=\count279
-\tcb@temp=\box59
 \tcb@temp=\box60
 \tcb@temp=\box61
 \tcb@temp=\box62
+\tcb@temp=\box63
 \tcb@out=\write4
 \tcb@record@out=\write5
 
@@ -909,10 +913,10 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@lastysaved=\dimen195
 \tikzleveldistance=\dimen196
 \tikzsiblingdistance=\dimen197
-\tikz@figbox=\box63
-\tikz@figbox@bg=\box64
-\tikz@tempbox=\box65
-\tikz@tempbox@bg=\box66
+\tikz@figbox=\box64
+\tikz@figbox@bg=\box65
+\tikz@tempbox=\box66
+\tikz@tempbox@bg=\box67
 \tikztreelevel=\count284
 \tikznumberofchildren=\count285
 \tikznumberofcurrentchild=\count286
@@ -931,7 +935,7 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 /tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-\tcb@waterbox=\box67
+\tcb@waterbox=\box68
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcbskinsj
 igsaw.code.tex
@@ -940,9 +944,9 @@ Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '4.13'
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcbbreaka
 ble.code.tex
 Library (tcolorbox): 'tcbbreakable.code.tex' version '4.13'
-\tcb@testbox=\box68
-\tcb@totalupperbox=\box69
-\tcb@totallowerbox=\box70
+\tcb@testbox=\box69
+\tcb@totalupperbox=\box70
+\tcb@totallowerbox=\box71
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcbhooks.
 code.tex
@@ -981,8 +985,8 @@ LaTeX Info: Redefining \overline on input line 375.
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box71
-\strutbox@=\box72
+\Mathstrutbox@=\box72
+\strutbox@=\box73
 \big@size=\dimen256
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
@@ -1055,33 +1059,33 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip121
 \enit@outerparindent=\dimen266
 \enit@toks=\toks40
-\enit@inbox=\box73
+\enit@inbox=\box74
 \enitdp@description=\count305
 ) (./NA3-prospectus.aux)
 \openout1 = `NA3-prospectus.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 356.
-LaTeX Font Info:    ... okay on input line 356.
-\AtBeginShipoutBox=\box74
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 358.
+LaTeX Font Info:    ... okay on input line 358.
+\AtBeginShipoutBox=\box75
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count306
 \scratchdimen=\dimen267
-\scratchbox=\box75
+\scratchbox=\box76
 \nofMPsegments=\count307
 \nofMParguments=\count308
 \everyMPshowfont=\toks41
@@ -1118,19 +1122,19 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 523.9575pt, 54.2025pt)
-* v-part:(T,H,B)=(57.81621pt, 881.69379pt, 108.405pt)
+* h-part:(L,W,R)=(65.04256pt, 534.79866pt, 50.58878pt)
+* v-part:(T,H,B)=(57.81621pt, 899.76129pt, 108.405pt)
 * \paperwidth=650.43pt
-* \paperheight=1047.915pt
-* \textwidth=523.9575pt
-* \textheight=881.69379pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
+* \paperheight=1065.9825pt
+* \textwidth=534.79866pt
+* \textheight=899.76129pt
+* \oddsidemargin=-7.22743pt
+* \evensidemargin=-7.22743pt
 * \topmargin=-51.45378pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
-* \footskip=23.0pt
+* \footskip=31.0pt
 * \marginparwidth=65.0pt
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
@@ -1144,7 +1148,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 356.
+Package hyperref Info: Link coloring ON on input line 358.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -1156,150 +1160,148 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count312
 )
-LaTeX Info: Redefining \ref on input line 356.
-LaTeX Info: Redefining \pageref on input line 356.
-LaTeX Info: Redefining \nameref on input line 356.
+LaTeX Info: Redefining \ref on input line 358.
+LaTeX Info: Redefining \pageref on input line 358.
+LaTeX Info: Redefining \nameref on input line 358.
  (./NA3-prospectus.out) (./NA3-prospectus.out)
 \@outlinefile=\write6
 \openout6 = `NA3-prospectus.out'.
 
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for T1+qcr on input line 394.
+LaTeX Font Info:    Try loading font information for T1+qcr on input line 396.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qcr.fd
 File: t1qcr.fd 2009/09/25 v1.2 font definition file for T1/qcr
 )
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 404.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 406.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 LaTeX Font Info:    Try loading font information for T1+Cabin-TLF on input line
- 406.
+ 408.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
 )
-Overfull \hbox (2.17964pt too wide) in paragraph at lines 406--415
+Overfull \hbox (3.33849pt too wide) in paragraph at lines 408--417
 []\T1/ptm/m/n/13 The [] plat-form en-com-passes both server-side com-po-nents (
 the [], or \T1/qcr/m/n/13 ``\T1/ptm/m/n/13 Native/Cloud-Native\T1/qcr/m/n/13 ''
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 430.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 433.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <13> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 430.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 433.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 430.
+(Font)              size <12> substituted on input line 433.
 
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 481.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 491.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 481.
+(Font)              size <12> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 481.
+(Font)              size <6> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13> not available
-(Font)              size <12> substituted on input line 481.
+(Font)              size <12> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 481.
+(Font)              size <6> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 481.
+(Font)              size <12> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 481.
+(Font)              size <6> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 481.
+(Font)              size <12> substituted on input line 491.
 
 
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 503.
+(Font)              size <12> substituted on input line 510.
 
 <e-logo.png, id=7, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 503.
-(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
+Package pdftex.def Info: e-logo.png  used on input line 510.
+(pdftex.def)             Requested size: 155.08801pt x 110.75745pt.
 <logo.png, id=9, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 503.
-(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
+Package pdftex.def Info: logo.png  used on input line 510.
+(pdftex.def)             Requested size: 106.9581pt x 63.4745pt.
 [1
 
 {/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map} <./e-logo.png> <./logo.png>]
 LaTeX Font Info:    Font shape `T1/qcr/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/qcr/b/n' tried instead on input line 526.
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 572.
-(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 572.
-(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
- [2]
+(Font)              Font shape `T1/qcr/b/n' tried instead on input line 533.
 
-LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <13> not available
-(Font)              size <12> substituted on input line 578.
-
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 578.
-
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/t1cmss.fd
-File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-
-LaTeX Font Warning: Font shape `T1/cmss/bx/n' in size <13> not available
-(Font)              size <12> substituted on input line 578.
-
-
-Overfull \hbox (0.93846pt too wide) in paragraph at lines 581--589
-\T1/ptm/m/n/13 de-vel-op-ment re-quire-ments as databases, data mod-el-ing, scr
-ipt-ing, data se-ri-al-iz-ing/deserialization,
+Overfull \hbox (29.95477pt too wide) in paragraph at lines 548--593
+\T1/ptm/m/n/13 NXP), by re-al-time and/or plat-form ser-vices (Mender, Timesys,
+ Map-box), as well as hard-ware/mircroprocessor
  []
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 668.
-(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
+Package pdftex.def Info: e-logo.png  used on input line 593.
+(pdftex.def)             Requested size: 155.08801pt x 110.75745pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 668.
-(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
+Package pdftex.def Info: logo.png  used on input line 593.
+(pdftex.def)             Requested size: 106.9581pt x 63.4745pt.
+[2]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 601.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 601.
+
+ (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+
+LaTeX Font Warning: Font shape `T1/cmss/bx/n' in size <13> not available
+(Font)              size <12> substituted on input line 601.
+
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 695.
+(pdftex.def)             Requested size: 155.08801pt x 110.75745pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 695.
+(pdftex.def)             Requested size: 106.9581pt x 63.4745pt.
 [3]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 674.
-(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
+Package pdftex.def Info: e-logo.png  used on input line 779.
+(pdftex.def)             Requested size: 155.08801pt x 110.75745pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 674.
-(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
+Package pdftex.def Info: logo.png  used on input line 779.
+(pdftex.def)             Requested size: 106.9581pt x 63.4745pt.
  [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 674.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 674.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 779.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 779.
  (./NA3-prospectus.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 674.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 674.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 779.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 779.
 Package rerunfilecheck Info: File `NA3-prospectus.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1310,35 +1312,38 @@ LaTeX Font Warning: Size substitutions with differences
  )
 (\end occurred inside a group at level 3)
 
-### simple group (level 3) entered at line 572 ({)
-### simple group (level 2) entered at line 520 ({)
-### simple group (level 1) entered at line 358 ({)
+### simple group (level 3) entered at line 594 ({)
+### simple group (level 2) entered at line 527 ({)
+### simple group (level 1) entered at line 360 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 30160 strings out of 492649
- 617519 string characters out of 6122986
- 715989 words of memory out of 5000000
- 33610 multiletter control sequences out of 15000+600000
- 589281 words of font info for 59 fonts, out of 8000000 for 9000
+ 30238 strings out of 492649
+ 618724 string characters out of 6122986
+ 716395 words of memory out of 5000000
+ 33676 multiletter control sequences out of 15000+600000
+ 594273 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,93p,10403b,878s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,14n,93p,10403b,878s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
-ps/cm-super/cm-super-t1.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/f
-onts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-d
-ist/fonts/enc/dvips/cabin/cbn_hvmmj2.enc}{/home/nlevisrael/texl/texlive-install
-/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/nlevisrael/texl/texlive-install/
+ps/base/8r.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvip
+s/cm-super/cm-super-t1.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fo
+nts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-di
+st/fonts/enc/dvips/cabin/cbn_hvmmj2.enc}</home/nlevisrael/texl/texlive-install/
 texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrael/texl/te
 xlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/nlevi
-srael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.pfb></ho
-me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrr.
-pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/cm-sup
-er/sfrm1000.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/p
-ublic/cm-super/sfsx1200.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
-onts/type1/urw/times/utmr8a.pfb>
-Output written on NA3-prospectus.pdf (4 pages, 179962 bytes).
+srael/texl/texlive-install/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></
+home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcr
+b.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-
+gyre/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/pub
+lic/cm-super/sfrm1000.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fon
+ts/type1/public/cm-super/sfsx1200.pfb></home/nlevisrael/texl/texlive-install/te
+xmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/nlevisrael/texl/texlive-instal
+l/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/nlevisrael/texl/texlive-in
+stall/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on NA3-prospectus.pdf (4 pages, 208215 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 47 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
+ 83 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
