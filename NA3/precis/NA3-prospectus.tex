@@ -51,10 +51,10 @@
 %\textwidth 4.5in  % width of text
 %\columnsep 0.8in  % separation between columns
 
-\setlength{\footskip}{31pt}
+\setlength{\footskip}{20pt}
 
-\usepackage[paperheight=14.75in,paperwidth=9in]{geometry}
-\geometry{left=.9in,top=.8in,right=.7in,bottom=1.5in} %margins
+\usepackage[paperheight=12.3in,paperwidth=9in]{geometry}
+\geometry{left=.75in,top=.7in,right=.6in,bottom=1.4in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
 
@@ -186,6 +186,9 @@
 
 \newcommand{\OS}{\resizebox{!}{8.5pt}{\AcronymText{OS}}}
 
+\newcommand{\GNome}{\resizebox{!}{8.5pt}{\AcronymText{GNome}}}
+
+
 \newcommand{\CPU}{\resizebox{!}{8.5pt}{\AcronymText{CPU}}}
 \newcommand{\MQTT}{\resizebox{!}{8.5pt}{\AcronymText{MQTT}}}
 \newcommand{\CoAP}{\resizebox{!}{8.5pt}{\AcronymText{CoAP}}}
@@ -193,6 +196,9 @@
 
 \newcommand{\KDE}{\resizebox{!}{8.5pt}{\AcronymText{KDE}}}
 \newcommand{\MFC}{\resizebox{!}{8.5pt}{\AcronymText{MFC}}}
+
+\newcommand{\QGIS}{\resizebox{!}{8.5pt}{\AcronymText{QGIS}}}
+
 
 
 \newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
@@ -223,8 +229,9 @@
 
 \newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
 
-\newcommand{\lunvs}{\vspace{2.25em}}
-
+\newcommand{\lunvs}{\vspace{2.5em}}
+\newcommand{\lunvss}{\vspace{2em}}
+\newcommand{\lunvsa}{\vspace{.25em}}
 
 \colorlet{orr}{orange!60!red}
 
@@ -294,7 +301,7 @@
 
 \newcommand{\p}{
 
-\vspace{1.2em}}
+\vspace{1em}}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -371,7 +378,7 @@
 \colorlet{ctmppp}{ctmpp!50!black}
 \colorlet{ctmpppp}{ctmppp!90!logoRed}
 
-\vspace{.75em}
+\vspace{.5em}
 
 %{\colorbox{darkBlGreen!30!darkRed}{%
 \begin{tcolorbox}
@@ -459,7 +466,7 @@ where \Qt{} tools and protocols are usable on both
 server and client sides.  Consequently 
 (as the \Qt{} team itself acknowledged when 
 promoting \Qt{} Cloud Services: 
-\q{Qt Cloud Beta has solved an immense need for Qt developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the Qt ecosystem with an all-in-one Qt solution for cloud computing}), the market 
+\q{\Qt{} Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}), the market 
 for hybrid \Qt{}-cloud solutions remains untapped.
 
 \pseudoIndent{} In the context of \NAThree{}, the most 
@@ -475,7 +482,7 @@ store this data, and desktop clients which manage the data.
 
 \item{} \Qt{} is the basis 
 for one of the two main User Interface technologies employed 
-on Linux systems (the other being GNome), so a 
+on Linux systems (the other being \GNome{}), so a 
 substantial percentage of Linux users run software on 
 \Qt{} (often without realizing as much).  Consequently, 
 any software implemented to target Linux/\Qt{} Operating 
@@ -489,7 +496,7 @@ sample includes
 CERN ROOT (CERN's physics/subatomic analytics 
 platform), IQmol (for chemistry/molecular physics), 
 medInria (for radiology), TeXstudio (for \LaTeX{} processing), 
-Mendeley Desktop (for Reference/Citation Management), QGIS (for Geoinformatics), 
+Mendeley Desktop (for Reference/Citation Management), \QGIS{} (for Geoinformatics), 
 MeshLab (for \ThreeD{} modeling), 
 OpenSCAD (for \ThreeD{} geometry), 
 Octave (a MATLAB emulator), 
@@ -531,6 +538,7 @@ attention to the \Qt{}-specific version of \NAThree{}.
 
 {\lunvs}
 \noindent\lun{\lsNAThree{} Revenue and Marketing}
+{\lunvsa}
 \p{History suggests that most commercial 
 software products generate revenue, in their 
 early stages, primarily from customer-specific 
@@ -543,7 +551,12 @@ as the product's development team
 implements project-specific deployments, observing 
 \q{in the field} which features are most useful and 
 how these features are best made available to 
-developers.}
+developers.  As a \q{standardized} version of the 
+product rounds into shape, an increasing user-base 
+who simply downloads and develops solutions with the 
+standard version gradually overtakes, in terms of 
+licensing revenue, the organizations who contract 
+for customizations.}
 
 \p{Taking the official \q{\Qt{} partners} cohort as a 
 representative cross-section of the \Qt{} market, 
@@ -582,7 +595,7 @@ said that, financial records released by the
 \Qt{} company itself suggest that commercial 
 (\q{Developer} and \q{Distribution}) licenses 
 are \Qt{}'s largest revenues source (targets 
-released in 2018 indicate that The Qt Group Plc 
+released in 2018 indicate that The \Qt{} Group Plc 
 aims for 60\% revenue from licenses, 20\% from 
 consulting, and 20\% for \q{support and maintenance} 
 (which is an offshoot of developer licenses; 
@@ -596,8 +609,8 @@ of revenue share for \NAThree{}, but we can
 identify four distinct profit streams appropriate for 
 \NAThree{} as an integrated platform: 
 
-\begin{enumerate}[itemsep=7pt,
-	topsep=12pt,leftmargin=14pt]
+\begin{enumerate}[itemsep=13pt,
+	topsep=14pt,leftmargin=14pt]
 \item \textbf{Customization} \hspace{.5em} Custom-implemented applications 
 using project-specific versions of \NCN{} and/or \AThreeR{}.
 
@@ -661,7 +674,7 @@ LTS's cloud resources.}
      
 \p{At the same time, the \AThreeR{} (Application-as-a-Resource) 
 model also envisions desktop applications as 
-self-contained, sharrable units, which can 
+self-contained, shareable units, which can 
 be hosted on web servers (including \NCN{} instances) 
 as zip and metadata files.  Therefore, LTS's 
 \NCN{} deployment can serve as an access-point 
@@ -670,8 +683,9 @@ for users acquiring or obtaining information about
 published as \q{Research Objects} using \AThreeR{} 
 within their code base).}
 
-{\lunvs}
+{\lunvss}
 \noindent\lun{\lsNAThree{} and the Research Object Protocol}
+{\lunvsa}
 \p{Open-access data sets conforming to the Research 
 Object Protocol are a good example of use-cases 
 where the \AThreeR{} development strategies may 
@@ -692,6 +706,18 @@ particularly appropriate for this Research Object
 context wherein a data set's technology --- its 
 structural organization and custom code base 
 --- becomes itself a scientific artifact.}
+
+\p{Academic data-hosting is also a sector where 
+LTS has a marketing head-start, insofar 
+as LTS founder Dr. Amy Neustein serves as editor 
+of the International Journal of Speech Technology 
+and has authored or edited 14 academic/technical 
+volumes.  LTS is currently in discussions with
+several publishers to make \AThreeR{} tools available 
+to authors for document and/or data-set preparation, collaborations which LTS is pursuing partly 
+to introduce \NAThree{} within the scientific 
+community and partly to curate and spur the emergence 
+of an \AThreeR{} application corpus.}
  
 \p{\lAThreeR{} data sets serve two distinct 
 purposes in the context of marketing \NAThree{}.  
@@ -705,7 +731,7 @@ well as documentation that will explain both
 the \NCN{} and \AThreeR{} frameworks).  Second, 
 open-access \AThreeR{} data sets model a specific 
 non-commercial version of \AThreeR{}, which serves as a 
-baseline demonstration of \AThreeR{} featurs.  
+baseline demonstration of \AThreeR{} features.  
 The open-source \AThreeR{} implementation provides 
 rudimentary support for scripting, data persistence, 
 cloud integration, \ThreeD{} graphics, 
