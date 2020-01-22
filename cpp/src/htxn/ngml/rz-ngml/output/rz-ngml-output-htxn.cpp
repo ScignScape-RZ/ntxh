@@ -402,6 +402,8 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
   u2 wsc = ntc->get_whitespace_code();
 
+  HTXN_Document::
+
   if(ntc->flags.is_region)
     nc1 = htxn_document_.add_detail_range_region(tag_command_gl_, span_start, span_end, wsc);
   else

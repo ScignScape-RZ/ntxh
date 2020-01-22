@@ -20,6 +20,29 @@ HTXN_Node_Detail::HTXN_Node_Detail()
 
 }
 
+void HTXN_Node_Detail::incorporate_wrap_mode_indicator(Wrap_Mode_Indicator_Codes wmic)
+{
+ switch(wmic)
+ {
+ default:
+ case Wrap_Mode_Indicator_Codes::Normal:
+   break;
+ case Wrap_Mode_Indicator_Codes::Left:
+   nd.flags.wmi_left = true;
+   // fallthrough ...
+ case Wrap_Mode_Indicator_Codes::Left_With_Space:
+   nd.flags.wmi_with_space = true;
+   break;
+ case Wrap_Mode_Indicator_Codes::None:
+   nd.flags.wmi_none = true;
+   // fallthrough ...
+ case Wrap_Mode_Indicator_Codes::None_With_Space:
+   nd.flags.wmi_with_space = true;
+   break;
+ }
+}
+
+
 QVector<u4>* HTXN_Node_Detail::get_refs_from_split() const
 {
  QPair<Glyph_Layer_8b*, QVector<u4>>* pr = 

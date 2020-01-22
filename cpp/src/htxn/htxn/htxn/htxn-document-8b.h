@@ -43,6 +43,7 @@ class HTXN_Document_8b : public Glyph_Layers_8b,
 
 public:
 
+
  HTXN_Document_8b();
 
 // ACCESSORS_SET(GlyphDeck_Base_8b* ,current_deck)
@@ -67,11 +68,14 @@ public:
    Glyph_Vector_8b* offset_acc = nullptr, QIODevice* qiod = nullptr, 
    u4 buffer_length = 0);
 
- u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave,
+ u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave, 
+   Wrap_Mode_Indicator_Codes wmic,  
    u2 whitespace_code = 0);
  u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave,
+   Wrap_Mode_Indicator_Codes wmic, 
    u2 whitespace_code = 0);
  u4 add_detail_range_optional(Glyph_Layer_8b* layer, u4 enter, u4 leave,
+   Wrap_Mode_Indicator_Codes wmic, 
    u2 whitespace_code = 0);
 
  void tie_detail_range_preempt(u4 rc1, u4 rc2);

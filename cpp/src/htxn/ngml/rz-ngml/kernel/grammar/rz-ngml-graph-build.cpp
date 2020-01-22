@@ -413,11 +413,29 @@ caon_ptr<NGML_Tag_Command> NGML_Graph_Build::html_tag_command_entry(QString pref
 
 }
 
-caon_ptr<NGML_Tag_Command> NGML_Graph_Build::tag_command_entry(QString prefix, QString tag_command, QString argument, QString parent_tag_type)
+void NGML_Graph_Build::check_non_or_left_wrapped(QString wmi, caon_ptr<NGML_Tag_Command> ntc)
+{
+ if(wmi.startsWith(':'))
+ {
+  if(wmi.startsWith("::"))
+    ntc->flags.is_non_wrapped = true;
+  else
+    ntc->flags.is_left_wrapped = true;
+ }
+ if(wmi.startsWith(':'))
+ {
+  ntc->flags.has_non_wrapped_space = true;
+ } 
+}
+
+caon_ptr<NGML_Tag_Command> NGML_Graph_Build::tag_command_entry(QString wmi, 
+  QString prefix, QString tag_command, QString argument, QString parent_tag_type)
 {
  check_tile_acc();
  caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(tag_command, 
    argument, parent_tag_type);
+
+ check_non_or_left_wrapped(wmi, ntc);
 
 //?
 // if(prefix == "/")
@@ -486,14 +504,15 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
  return document_info_.light_xml();
 }
 
-void NGML_Graph_Build::multi_arg_transition(QString arg_marker)
+void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
 {
  tag_command_leave();
  QString tag_command = markup_position_.current_tag_command_name();
- tag_command_entry_inside_multi(tag_command, arg_marker);
+ tag_command_entry_inside_multi(wmi, tag_command, arg_marker);
 }
 
-void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QString arg_marker, QString argument, QString name)
+void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi, 
+  QString tag_command, QString arg_marker, QString argument, QString name)
 {
  QString nn = name;
  if(nn.isEmpty())
@@ -504,6 +523,8 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QStri
  caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(nn, argument);
  if(name.isEmpty())
    ntc->flags.autogen_multi_name = true;
+
+ check_non_or_left_wrapped(wmi, ntc);
 
  caon_ptr<tNode> node = make_new_node(ntc);
 
@@ -537,13 +558,13 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString tag_command, QStri
  }
 }
 
-void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
-  QString tag_body_follow, QString first_arg_marker)
+void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
+  QString tag_body_follow, QString first_arg_wmi, QString first_arg_marker)
 {
  Tag_Body_Follow_Mode m = tag_body_follow.isEmpty() ? Normal
    : parse_tag_body_follow(tag_body_follow);
 
- caon_ptr<NGML_Tag_Command> ntc = tag_command_entry({}, 
+ caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(wmi, {}, 
    tag_command, {});
 
  if(m == Region)
@@ -558,7 +579,7 @@ void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
 
  tag_body_leave();
 
- tag_command_entry_inside_multi(tag_command, first_arg_marker);
+ tag_command_entry_inside_multi(first_arg_wmi, tag_command, first_arg_marker);
 
  if(tag_body_follow.isEmpty())
    parse_context_.flags.inside_multi_parent_semis = true;
@@ -567,12 +588,12 @@ void NGML_Graph_Build::tag_command_entry_multi(QString tag_command,
 }
 
 
-void NGML_Graph_Build::tag_command_entry_inline(QString tag_command,
+void NGML_Graph_Build::tag_command_entry_inline(QString wmi, QString tag_command,
  QString tag_body_follow, QString argument)
 {
  Tag_Body_Follow_Mode m = parse_tag_body_follow(tag_body_follow);
  QString prefix;
- caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(prefix, 
+ caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(wmi, prefix, 
    tag_command, argument);
 
  switch(m)

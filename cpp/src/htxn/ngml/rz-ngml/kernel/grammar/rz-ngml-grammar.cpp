@@ -29,6 +29,8 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  pre_rule( "end-of-line", "[__\\t\\S]* \\n" );
  pre_rule( "single-space", "[__\\t]" );
 
+ pre_rule( "tag-command-wrap-mode-indicator", ": :? \\.?" );
+
  Context ngml_context = add_context("ngml-context");
  Context html_context = add_context("html-context");
 
@@ -265,17 +267,18 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   });
 
 
-
-
  add_rule( ngml_context, "tag-command-entry",
-  " `< (?<prefix> / )? (?<tag-command> .valid-tag-command-name. ) "
+  "  `< (?<prefix> / )? "
+  " (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+  " (?<tag-command> .valid-tag-command-name. ) "
   " (?: \\[ (?<parent-tag-type> \\w+ ) \\] )? "
            ,[&]
  {
+  QString wmi = p.matched("wmi");
   QString prefix = p.matched("prefix");
   QString tag_command = p.matched("tag-command");
   QString parent_tag_type = p.matched("parent_tag_type");
-  graph_build.tag_command_entry(prefix, tag_command, parent_tag_type);
+  graph_build.tag_command_entry(wmi, prefix, tag_command, parent_tag_type);
  });
 
 #ifdef HIDE
@@ -338,22 +341,24 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
 
  add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
   ngml_context, 
-  "multi-arg-transition",
-  " -{1,2}>{1,2} "
+  "multi-arg-transition-semis",
+  " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
    ,[&]
  {
-  QString m = p.match_text();
-  graph_build.multi_arg_transition(m);
+  QString wmi = p.matched("wmi");  
+  QString m = p.matched("main");
+  graph_build.multi_arg_transition(wmi, m);
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_parent),
   ngml_context, 
   "multi-arg-transition",
-  " -{1,2}>{1,2} "
+  " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
    ,[&]
  {
-  QString m = p.match_text();
-  graph_build.multi_arg_transition(m);
+  QString wmi = p.matched("wmi"); 
+  QString m = p.matched("main");
+  graph_build.multi_arg_transition(wmi, m);
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
@@ -375,28 +380,35 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
 
 
  add_rule( ngml_context, "tag-command-entry-multi",
-  " `(?<tag-command> .valid-tag-command-name. ) "
+  " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) " 
+  " (?<tag-command> .valid-tag-command-name. ) "
   " (?<tag-body-follow> [,.]?) \\s+ (?<first-arg> "
+  " (?<fwmi> .tag-command-wrap-mode-indicator.? ) "
      " -{1,2} >{1,2} ) "
            ,[&]
  {
+  QString wmi = p.matched("wmi");
+  QString fwmi = p.matched("fwmi");
   QString tag_command = p.matched("tag-command");
   QString tag_body_follow = p.matched("tag-body-follow");
   QString first_arg = p.matched("first-arg");
-  graph_build.tag_command_entry_multi(tag_command, tag_body_follow, first_arg);
+  graph_build.tag_command_entry_multi(wmi, tag_command, 
+    tag_body_follow, fwmi, first_arg);
   //graph_build.tag_body_leave();
  });
 
 
  add_rule( ngml_context, "tag-command-entry-inline",
-  " `(?<tag-command> .valid-tag-command-name. ) "
+  " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+  " (?<tag-command> .valid-tag-command-name. ) "
   " (?: < (?<argument> [^>]+ ) >)?  (?<tag-body-follow> [,;.] ) "
            ,[&]
  {
+  QString wmi = p.matched("wmi");
   QString tag_command = p.matched("tag-command");
   QString tag_body_follow = p.matched("tag-body-follow");
   QString argument = p.matched("argument");
-  graph_build.tag_command_entry_inline(tag_command, tag_body_follow, argument);
+  graph_build.tag_command_entry_inline(wmi, tag_command, tag_body_follow, argument);
   //graph_build.tag_body_leave();
  });
 

@@ -25,7 +25,7 @@ class NGML_Tag_Command : public NGML_Whitespace_Holder
 {
 public:
 
- flags_(4)
+ flags_(5)
   bool is_region:1;
   bool is_closed:1;
   bool is_html:1;
@@ -56,6 +56,9 @@ public:
 
   bool nonstandard_space:1;
 
+  bool has_non_wrapped_space:1;
+  bool is_non_wrapped:1;
+  bool is_left_wrapped:1;
  _flags
 
 public:

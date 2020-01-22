@@ -116,12 +116,14 @@ public:
  void tag_command_leave_multi(QString tag_command);
 
  void inline_tag_command_leave();
- caon_ptr<NGML_Tag_Command> tag_command_entry(QString prefix, QString tag_command, QString argument, QString parent_tag_type = QString());
+ caon_ptr<NGML_Tag_Command> tag_command_entry(QString wmi, QString prefix, QString tag_command, QString argument, QString parent_tag_type = QString());
  void tag_command_instruction_leave(caon_ptr<tNode> node);
  void tag_body_leave(QString match = QString());
  void call_leave();
  void tile_acc(QString str);
  void check_tile_acc(Acc_Mode new_mode = Main_Tile);
+
+ void check_non_or_left_wrapped(QString wmi, caon_ptr<NGML_Tag_Command> ntc);
 
  void html_tag_body_leave(QString prefix);
 
@@ -162,18 +164,18 @@ public:
 
  void check_multi_parent_reset();
 
- void multi_arg_transition(QString arg_marker);
+ void multi_arg_transition(QString wmi, QString arg_marker);
 
  caon_ptr<NGML_Attribute_Tile> complete_html_tag_command_attribute();
 
  caon_ptr<NGML_Attribute_Tile> make_new_attribute_tile(QString key, QString value);
 
- void tag_command_entry_multi(QString tag_command,
-   QString tag_body_follow, QString arg_marker);
+ void tag_command_entry_multi(QString wmi, QString tag_command,
+   QString tag_body_follow, QString first_arg_wmi, QString first_arg_marker);
 
- void tag_command_entry_inside_multi(QString tag_command, QString first_arg_marker, QString argument = QString(), QString name = QString());
+ void tag_command_entry_inside_multi(QString wmi, QString tag_command, QString arg_marker, QString argument = QString(), QString name = QString());
 
- void tag_command_entry_inline(QString tag_command,
+ void tag_command_entry_inline(QString wmi, QString tag_command,
    QString tag_body_follow, QString argument = QString());
 
  void mark_attribute_tile();

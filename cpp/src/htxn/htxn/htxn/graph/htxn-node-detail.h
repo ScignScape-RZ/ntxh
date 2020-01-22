@@ -33,7 +33,7 @@ class Glyph_Layer_8b;
 
 struct HTXN_Node_Detail
 {
-flags_(2)
+flags_(3)
  bool region:1;
  bool self_close:1;
  bool optional:1;
@@ -52,6 +52,11 @@ flags_(2)
  bool post_line_double_gap:1;
 
  bool region_main_preempts_wrap:1;
+
+ bool wmi_left;
+ bool wmi_none;
+ bool wmi_with_space;
+
 _flags
 
  enum Space_Codes {
@@ -59,6 +64,12 @@ _flags
    Pre_Space_Gap = 3, Post_Space_Gap = 4,
    Pre_Line_Double_Gap = 5, Post_Line_Double_Gap = 6
  };
+
+ enum class Wrap_Mode_Indicator_Codes {
+  Normal, Left, Left_With_Space, None, None_With_Space, 
+ };
+
+ void incorporate_wrap_mode_indicator(Wrap_Mode_Indicator_Codes wmic);
 
  void* node_ref;
 
