@@ -476,7 +476,15 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
    command_print_name = ntc->name();
 
  if(ntc->flags.is_multi_parent)
-   multi_parent_range_stack_.pop();
+ {
+  u4 nc1 = multi_parent_range_stack_.pop().first;
+
+  if(ntc->flags.is_region)
+  {
+   // //  we have to mark the last ref as a main tile ...
+   htxn_document_.mark_last_as_environment_main_tile(nc1);
+  }
+ }
 
  if(ntc->flags.is_multi_optional)
  {

@@ -46,6 +46,20 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 
 // void HTXN_Document_8b::sss;
 
+void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref)
+{
+ const HTXN_Node_Detail& nd = node_details_[ref - 1];
+ if(QVector<u4>* vec = nd.get_refs())
+ {
+  if(vec->isEmpty())
+    return;
+  u4 last = vec->last();
+  HTXN_Node_Detail& nd1 = node_details_[last - 1];
+  nd1.flags.region_main_preempts_wrap = true;
+ } 
+}
+
+
 void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
   QVector<QPair<HTXN_Node_Detail*, QString>>& result,
   Glyph_Layer_8b* calling_layer)
@@ -180,6 +194,8 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   {
    if(pr.first->flags.optional)
      result.append(QString("[%1]").arg(pr.second));
+   else if(pr.first->flags.region_main_preempts_wrap)
+     result.append(pr.second);
    else
      result.append(QString("{%1}").arg(pr.second));
   }

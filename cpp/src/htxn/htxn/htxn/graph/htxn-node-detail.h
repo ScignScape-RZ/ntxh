@@ -50,6 +50,8 @@ flags_(2)
  bool post_space_gap:1;
  bool pre_line_double_gap:1;
  bool post_line_double_gap:1;
+
+ bool region_main_preempts_wrap:1;
 _flags
 
  enum Space_Codes {
