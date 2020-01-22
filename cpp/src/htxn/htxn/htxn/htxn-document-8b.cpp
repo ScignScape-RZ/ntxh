@@ -146,7 +146,12 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
 //  result.append(pre_space);
 
   if(nd.flags.ref_preempts_wrap)
-    result.append(QString("\\%1").arg(cmd));
+  {
+   if(nd.flags.region)
+     result.append(QString("\\begin{%1}").arg(cmd));
+   else
+     result.append(QString("\\%1").arg(cmd));
+  }
   else if(nd.flags.optional)
     result.append(QString("\\%1[").arg(cmd));
   else if(nd.flags.region)
