@@ -69,13 +69,13 @@ public:
    u4 buffer_length = 0);
 
  u4 add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave, 
-   Wrap_Mode_Indicator_Codes wmic,  
+   HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic,  
    u2 whitespace_code = 0);
  u4 add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave,
-   Wrap_Mode_Indicator_Codes wmic, 
+   HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic, 
    u2 whitespace_code = 0);
  u4 add_detail_range_optional(Glyph_Layer_8b* layer, u4 enter, u4 leave,
-   Wrap_Mode_Indicator_Codes wmic, 
+   HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic, 
    u2 whitespace_code = 0);
 
  void tie_detail_range_preempt(u4 rc1, u4 rc2);

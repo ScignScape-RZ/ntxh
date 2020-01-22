@@ -527,40 +527,38 @@ void HTXN_Document_8b::read_glyph_point(Glyph_Argument_Package& gap,
 
 }
 
-void HTXN_Document_8b::incorporate_wrap_mode_indicator(HTXN_Node_Detail& nd,
- Wrap_Mode_Indicator_Codes wmic)
 
 u4 HTXN_Document_8b::add_detail_range_region(Glyph_Layer_8b* layer, u4 enter, u4 leave,
-  Wrap_Mode_Indicator_Codes wmic, u2 whitespace_code)
+  HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic, u2 whitespace_code)
 {
  u4 result = 0;
  HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
  nd->set_layer(layer);
  nd->flags.region = true;
- incorporate_wrap_mode_indicator(*nd, wmic);
+ nd->incorporate_wrap_mode_indicator(wmic);
  nd->note_whitespace_code(whitespace_code);
  return result;
 }
 
 u4 HTXN_Document_8b::add_detail_range(Glyph_Layer_8b* layer, u4 enter, u4 leave,
-  Wrap_Mode_Indicator_Codes wmic, u2 whitespace_code)
+  HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic, u2 whitespace_code)
 {
  u4 result = 0;
  HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
  nd->set_layer(layer);
- incorporate_wrap_mode_indicator(*nd, wmic);
+ nd->incorporate_wrap_mode_indicator(wmic);
  nd->note_whitespace_code(whitespace_code);
  return result;
 }
 
 u4 HTXN_Document_8b::add_detail_range_optional(Glyph_Layer_8b* layer, u4 enter, u4 leave,
-  Wrap_Mode_Indicator_Codes wmic, u2 whitespace_code)
+  HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic, u2 whitespace_code)
 {
  u4 result = 0;
  HTXN_Node_Detail* nd = this->HTXN_Node_Details::add_detail_range(enter, leave, result);
  nd->set_layer(layer);
  nd->flags.optional = true;
- incorporate_wrap_mode_indicator(*nd, wmic);
+ nd->incorporate_wrap_mode_indicator(wmic);
  nd->note_whitespace_code(whitespace_code);
  return result;
 }

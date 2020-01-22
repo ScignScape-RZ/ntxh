@@ -43,6 +43,8 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
+ HTXN_Node_Detail::Wrap_Mode_Indicator_Codes get_wmic(NGML_Tag_Command& ntc);
+
  QString tag_command_layer_;
  QString tag_command_arg_layer_;
 
