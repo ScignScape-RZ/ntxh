@@ -478,7 +478,7 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
   if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
   {
-   u4 order = tag_command_arg_gl_->add_range(b.index, 0, nc1);
+   u4 order = tag_command_arg_gl_->add_range(tag_command_arg_index_, 0, nc1);
    ntc->set_ref_position(tag_command_arg_index_);
    ntc->set_ref_order(order);
   }
