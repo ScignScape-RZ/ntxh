@@ -339,6 +339,37 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  });
 #endif
 
+ // //  these should be for graph_build the equivalent
+  //    of ->> (etc.) then `::some_cmd;
+ add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
+  ngml_context,
+  "cmd-multi-arg-transition-semis",
+  " :: (?<main> -{1,2}>{1,2}) "
+  " \\s+ (?<cmd> .valid-tag-command-name. ) "
+   ,[&]
+ {
+  QString m = p.matched("main");
+  QString cmd = p.matched("cmd");
+  graph_build.multi_arg_transition({}, m);
+  graph_build.tag_command_entry_inline("::", cmd, ";", {});
+ });
+
+ add_rule( flags_all_(parse_context ,inside_multi_parent),
+   ngml_context,
+   "cmd-multi-arg-transition",
+   " :: (?<main> -{1,2}>{1,2}) "
+   " \\s+ (?<cmd> .valid-tag-command-name. ) "
+   ,[&]
+ {
+  QString m = p.matched("main");
+  QString cmd = p.matched("cmd");
+  graph_build.multi_arg_transition({}, m);
+  graph_build.tag_command_entry_inline("::", cmd, ";", {});
+ });
+
+
+
+
  add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
   ngml_context, 
   "multi-arg-transition-semis",
@@ -379,21 +410,42 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  });
 
 
+ add_rule( ngml_context, "cmd-tag-command-entry-multi",
+   " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+   " (?<tag-command> .valid-tag-command-name. ) "
+   " (?<tag-body-follow> [,.]?) "
+   " \\s+ :: "
+   " (?<first-arg-marker> -{1,2} >{1,2} ) \\s+ (?<cmd> .valid-tag-command-name. )"
+   ,[&]
+ {
+  QString wmi = p.matched("wmi");
+  QString tag_command = p.matched("tag-command");
+  QString tag_body_follow = p.matched("tag-body-follow");
+  QString first_arg_marker = p.matched("first-arg-marker");
+  graph_build.tag_command_entry_multi(wmi, tag_command,
+    tag_body_follow, {}, first_arg_marker);
+  QString cmd = p.matched("cmd");
+  graph_build.tag_command_entry_inline("::", cmd, ";", {});
+
+  //graph_build.tag_body_leave();
+ });
+
+
  add_rule( ngml_context, "tag-command-entry-multi",
   " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) " 
   " (?<tag-command> .valid-tag-command-name. ) "
-  " (?<tag-body-follow> [,.]?) \\s+ (?<first-arg> "
+  " (?<tag-body-follow> [,.]?) \\s+  "
   " (?<fwmi> .tag-command-wrap-mode-indicator.? ) "
-     " -{1,2} >{1,2} ) "
+  " (?<first-arg-marker> -{1,2} >{1,2} ) "
            ,[&]
  {
   QString wmi = p.matched("wmi");
   QString fwmi = p.matched("fwmi");
   QString tag_command = p.matched("tag-command");
   QString tag_body_follow = p.matched("tag-body-follow");
-  QString first_arg = p.matched("first-arg");
+  QString first_arg_marker = p.matched("first-arg-marker");
   graph_build.tag_command_entry_multi(wmi, tag_command, 
-    tag_body_follow, fwmi, first_arg);
+    tag_body_follow, fwmi, first_arg_marker);
   //graph_build.tag_body_leave();
  });
 

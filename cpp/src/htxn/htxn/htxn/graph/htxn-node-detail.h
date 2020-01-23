@@ -53,9 +53,11 @@ flags_(3)
 
  bool region_main_preempts_wrap:1;
 
- bool wmi_left;
- bool wmi_none;
- bool wmi_with_space;
+ bool wmi_left:1;
+ bool wmi_none:1;
+ bool wmi_with_space:1;
+
+ bool needs_write_end:1;
 
 _flags
 

@@ -48,7 +48,7 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 
 void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref)
 {
- const HTXN_Node_Detail& nd = node_details_[ref - 1];
+ HTXN_Node_Detail& nd = node_details_[ref - 1];
  if(QVector<u4>* vec = nd.get_refs())
  {
   if(vec->isEmpty())
@@ -56,6 +56,9 @@ void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref)
   u4 last = vec->last();
   HTXN_Node_Detail& nd1 = node_details_[last - 1];
   nd1.flags.region_main_preempts_wrap = true;
+  // // maybe even elevate nd1 to a main tile ...
+   //   but for now just try
+  nd.flags.needs_write_end = true;
  } 
 }
 
@@ -234,6 +237,8 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
    result.append(post_space);
   }
   precs.clear();
+  if(nd.flags.needs_write_end)
+    result.append(QString("\\end{%1}").arg(cmd));
  }
 
  QString end_result;
