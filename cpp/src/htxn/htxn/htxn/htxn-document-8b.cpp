@@ -59,7 +59,6 @@ void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref)
  } 
 }
 
-
 void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
   QVector<QPair<HTXN_Node_Detail*, QString>>& result,
   Glyph_Layer_8b* calling_layer)
@@ -303,15 +302,17 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  QString end_result;
  QVector<QPair<HTXN_Node_Detail*, QString>> precs;
  QStringList succs;
- for(u4 i = enter; i <= leave; ++i)
+  // //  need to run at least once if leave < enter ...
+ for(u4 i = enter; (leave < enter) || (i <= leave); ++i)
  {
-  if(nd)
-  {
-   // // nd is only non-null if this is a partial
-    //   generation going in to an argument ... 
-   // // anything? ...
-  }
-  else
+//?
+//  if(nd)
+//  {
+//   // // nd is only non-null if this is a partial
+//    //   generation going in to an argument ...
+//   // // anything? ...
+//  }
+//  else
   {
    u4 lg = gl->check_insert_loop_guard(i);
    if(lg > 1)
@@ -334,6 +335,8 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
     i = lg;
     continue;
    }
+   if(leave < enter)
+     break;
   }
   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
   if(gap.chr.isNull())

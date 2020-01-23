@@ -109,6 +109,12 @@ void NGML_Markup_Position::merge_multi_parent_inherited(caon_ptr<tNode> parent,
      || ntc->flags.is_multi_parent;
    ntc1->flags.is_multi_parent_semis_inherited = ntc->flags.is_multi_parent_semis_inherited
      || ntc->flags.is_multi_parent_semis;
+
+   ntc1->flags.multi_arg_layer_inherited = ntc->flags.multi_arg_layer
+     || ntc->flags.multi_arg_layer_inherited;
+   ntc1->flags.multi_main_layer_inherited = ntc->flags.multi_main_layer
+     || ntc->flags.multi_main_layer_inherited;
+
   }
  }
 }
@@ -123,6 +129,8 @@ void NGML_Markup_Position::merge_multi_parent_sequence(caon_ptr<tNode> prior, ca
    CAON_PTR_DEBUG(NGML_Tag_Command ,ntc1)
    ntc1->flags.is_multi_parent_inherited = ntc->flags.is_multi_parent_inherited;
    ntc1->flags.is_multi_parent_semis_inherited = ntc->flags.is_multi_parent_semis_inherited;
+   ntc1->flags.multi_arg_layer_inherited = ntc->flags.multi_arg_layer_inherited;
+   ntc1->flags.multi_main_layer_inherited = ntc->flags.multi_main_layer_inherited;
   }
  }
 }

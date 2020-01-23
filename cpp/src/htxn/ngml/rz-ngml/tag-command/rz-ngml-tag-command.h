@@ -48,6 +48,10 @@ public:
 
   bool multi_arg_layer:1;
   bool multi_main_layer:1;
+
+  bool multi_arg_layer_inherited:1;
+  bool multi_main_layer_inherited:1;
+
   bool autogen_multi_name:1;
 
   bool left_space_gap:1;

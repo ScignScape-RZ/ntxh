@@ -476,9 +476,19 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
    //tag_command_gl_->
   }
 
-  u4 order = main_gl_->add_range(b.index, 0, nc1);
-  ntc->set_ref_position(b.index);
-  ntc->set_ref_order(order);
+  if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
+  {
+   u4 order = tag_command_arg_gl_->add_range(b.index, 0, nc1);
+   ntc->set_ref_position(tag_command_arg_index_);
+   ntc->set_ref_order(order);
+  }
+  else
+  {
+   u4 order = main_gl_->add_range(b.index, 0, nc1);
+   ntc->set_ref_position(b.index);
+   ntc->set_ref_order(order);
+  }
+
 
 //  b.qts << '\n' << '[' << command_print_name;
 
@@ -523,22 +533,27 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
 
  if(ntc->flags.is_multi_optional)
  {
-  if(ntc->flags.multi_arg_layer)
+  if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
     tie_multi_optional_arg_layer(b, *ntc);
-  else if(ntc->flags.multi_main_layer)
+  else if(ntc->flags.multi_main_layer || ntc->flags.multi_main_layer_inherited)
     tie_multi_optional_main_layer(b, *ntc);
  }
  else if(ntc->flags.is_multi_mandatory)
  {
-  if(ntc->flags.multi_arg_layer)
+  if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
     tie_multi_mandatory_arg_layer(b, *ntc);
-  else if(ntc->flags.multi_main_layer)
+  else if(ntc->flags.multi_main_layer || ntc->flags.multi_main_layer_inherited)
     tie_multi_mandatory_main_layer(b, *ntc);
  }
  else if(ntc->flags.is_multi_parent)
    ; // nothing ...
  else if(!ntc->flags.is_self_closed)
-   main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index - 1);
+ {
+  if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
+    tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_ - 1);
+  else
+    main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index - 1);
+ }
 }
 
 void NGML_Output_HTXN::generic_generate_tile(QString text, u4 width,
