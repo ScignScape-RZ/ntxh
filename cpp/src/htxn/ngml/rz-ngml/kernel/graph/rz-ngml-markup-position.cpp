@@ -96,6 +96,49 @@ bool NGML_Markup_Position::check_leave_multiline_comment(int semis, int tildes)
  return false;
 }
 
+void NGML_Markup_Position::merge_multi_parent_inherited(NGML_Tag_Command& parent,
+  NGML_Tag_Command& ntc)
+{
+ ntc.flags.is_multi_parent_inherited = parent.flags.is_multi_parent_inherited
+   || parent.flags.is_multi_parent;
+ ntc.flags.is_multi_parent_semis_inherited = parent.flags.is_multi_parent_semis_inherited
+   || parent.flags.is_multi_parent_semis;
+
+ ntc.flags.multi_arg_layer_inherited = parent.flags.multi_arg_layer
+   || parent.flags.multi_arg_layer_inherited;
+ ntc.flags.multi_main_layer_inherited = parent.flags.multi_main_layer
+   || parent.flags.multi_main_layer_inherited;
+}
+
+void NGML_Markup_Position::merge_multi_parent_sequence(NGML_Tag_Command& parent,
+  NGML_Tag_Command& ntc)
+{
+ ntc.flags.is_multi_parent_inherited = parent.flags.is_multi_parent_inherited;
+ ntc.flags.is_multi_parent_semis_inherited = parent.flags.is_multi_parent_semis_inherited;
+
+ ntc.flags.multi_arg_layer_inherited = parent.flags.multi_arg_layer_inherited;
+ ntc.flags.multi_main_layer_inherited = parent.flags.multi_main_layer_inherited;
+}
+
+void NGML_Markup_Position::merge_multi_parent_inherited(NGML_Tile& parent,
+  NGML_Tag_Command& ntc)
+{
+ if(caon_ptr<NGML_Tag_Command> pntc = get_current_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,pntc)
+  ntc.flags.is_multi_parent_inherited = pntc->flags.is_multi_parent_inherited
+      || pntc->flags.is_multi_parent;
+    ntc.flags.is_multi_parent_semis_inherited = pntc->flags.is_multi_parent_semis_inherited
+      || pntc->flags.is_multi_parent_semis;
+
+    ntc.flags.multi_arg_layer_inherited = pntc->flags.multi_arg_layer
+      || pntc->flags.multi_arg_layer_inherited;
+    ntc.flags.multi_main_layer_inherited = pntc->flags.multi_main_layer
+      || pntc->flags.multi_main_layer_inherited;
+ }
+}
+
+
 void NGML_Markup_Position::merge_multi_parent_inherited(caon_ptr<tNode> parent,
   caon_ptr<tNode> node)
 {
@@ -105,16 +148,16 @@ void NGML_Markup_Position::merge_multi_parent_inherited(caon_ptr<tNode> parent,
   if(caon_ptr<NGML_Tag_Command> ntc1 = node->ngml_tag_command())
   {
    CAON_PTR_DEBUG(NGML_Tag_Command ,ntc1)
-   ntc1->flags.is_multi_parent_inherited = ntc->flags.is_multi_parent_inherited
-     || ntc->flags.is_multi_parent;
-   ntc1->flags.is_multi_parent_semis_inherited = ntc->flags.is_multi_parent_semis_inherited
-     || ntc->flags.is_multi_parent_semis;
-
-   ntc1->flags.multi_arg_layer_inherited = ntc->flags.multi_arg_layer
-     || ntc->flags.multi_arg_layer_inherited;
-   ntc1->flags.multi_main_layer_inherited = ntc->flags.multi_main_layer
-     || ntc->flags.multi_main_layer_inherited;
-
+   merge_multi_parent_inherited(*ntc, *ntc1);
+  }
+ }
+ else if(caon_ptr<NGML_Tile> tile = parent->ngml_tile())
+ {
+  CAON_PTR_DEBUG(NGML_Tile ,tile)
+  if(caon_ptr<NGML_Tag_Command> ntc1 = node->ngml_tag_command())
+  {
+   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc1)
+   merge_multi_parent_inherited(*tile, *ntc1);
   }
  }
 }
@@ -127,11 +170,7 @@ void NGML_Markup_Position::merge_multi_parent_sequence(caon_ptr<tNode> prior, ca
   if(caon_ptr<NGML_Tag_Command> ntc1 = node->ngml_tag_command())
   {
    CAON_PTR_DEBUG(NGML_Tag_Command ,ntc1)
-   ntc1->flags.is_multi_parent_inherited = ntc->flags.is_multi_parent_inherited;
-   ntc1->flags.is_multi_parent_semis_inherited = ntc->flags.is_multi_parent_semis_inherited;
-   ntc1->flags.multi_arg_layer_inherited = ntc->flags.multi_arg_layer_inherited;
-   ntc1->flags.multi_main_layer_inherited = ntc->flags.multi_main_layer_inherited;
-  }
+   merge_multi_parent_sequence(*ntc, *ntc1);  }
  }
 }
 

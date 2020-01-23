@@ -93,6 +93,20 @@ public:
  void merge_multi_parent_sequence(caon_ptr<tNode> prior,
    caon_ptr<tNode> node);
 
+ void merge_multi_parent_inherited(NGML_Tag_Command& parent,
+   NGML_Tag_Command& ntc);
+ void merge_multi_parent_sequence(NGML_Tag_Command& parent,
+   NGML_Tag_Command& ntc);
+
+// void merge_multi_parent_inherited(NGML_Tag_Command& parent,
+//   NGML_Tile& ntc);
+// void merge_multi_parent_sequence(NGML_Tag_Command& parent,
+//   NGML_Tile& ntc);
+
+ void merge_multi_parent_inherited(NGML_Tile& parent,
+   NGML_Tag_Command& ntc);
+
+
  void enter_multiline_comment(int semis, int tildes);
  bool check_leave_multiline_comment(int semis, int tildes);
  void add_tile_node(caon_ptr<NGML_Node> node);
