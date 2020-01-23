@@ -422,7 +422,7 @@ void NGML_Graph_Build::check_non_or_left_wrapped(QString wmi, caon_ptr<NGML_Tag_
   else
     ntc->flags.is_left_wrapped = true;
  }
- if(wmi.startsWith(':'))
+ if(wmi.endsWith('.'))
  {
   ntc->flags.has_non_wrapped_space = true;
  } 
@@ -722,8 +722,11 @@ void NGML_Graph_Build::check_multi_parent_reset()
 {
  if(caon_ptr<NGML_Tag_Command> ntc = markup_position_.get_current_tag_command())
  {
-  parse_context_.flags.inside_multi_parent = ntc->flags.is_multi_parent;
-  parse_context_.flags.inside_multi_parent_semis = ntc->flags.is_multi_parent_semis;
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  parse_context_.flags.inside_multi_parent = ntc->flags.is_multi_parent
+    || ntc->flags.is_multi_parent_inherited;
+  parse_context_.flags.inside_multi_parent_semis = ntc->flags.is_multi_parent_semis
+    || ntc->flags.is_multi_parent_semis_inherited;
  }
  else
  {

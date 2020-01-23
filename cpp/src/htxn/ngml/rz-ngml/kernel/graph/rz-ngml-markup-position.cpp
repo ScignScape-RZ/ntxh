@@ -96,6 +96,37 @@ bool NGML_Markup_Position::check_leave_multiline_comment(int semis, int tildes)
  return false;
 }
 
+void NGML_Markup_Position::merge_multi_parent_inherited(caon_ptr<tNode> parent,
+  caon_ptr<tNode> node)
+{
+ if(caon_ptr<NGML_Tag_Command> ntc = parent->ngml_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  if(caon_ptr<NGML_Tag_Command> ntc1 = node->ngml_tag_command())
+  {
+   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc1)
+   ntc1->flags.is_multi_parent_inherited = ntc->flags.is_multi_parent_inherited
+     || ntc->flags.is_multi_parent;
+   ntc1->flags.is_multi_parent_semis_inherited = ntc->flags.is_multi_parent_semis_inherited
+     || ntc->flags.is_multi_parent_semis;
+  }
+ }
+}
+
+void NGML_Markup_Position::merge_multi_parent_sequence(caon_ptr<tNode> prior, caon_ptr<tNode> node)
+{
+ if(caon_ptr<NGML_Tag_Command> ntc = prior->ngml_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  if(caon_ptr<NGML_Tag_Command> ntc1 = node->ngml_tag_command())
+  {
+   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc1)
+   ntc1->flags.is_multi_parent_inherited = ntc->flags.is_multi_parent_inherited;
+   ntc1->flags.is_multi_parent_semis_inherited = ntc->flags.is_multi_parent_semis_inherited;
+  }
+ }
+}
+
 void NGML_Markup_Position::await_mandatory_or_optional(caon_ptr<tNode> node)
 {
  if(caon_ptr<NGML_Tag_Command> ntc = current_node_->ngml_tag_command())
@@ -108,9 +139,11 @@ void NGML_Markup_Position::await_mandatory_or_optional(caon_ptr<tNode> node)
 //? case Tag_Command_Entry:
  case Tag_Body_Leave:
   current_node_ << fr_/qry_.Tag_Command_Entry >> node;
+  merge_multi_parent_inherited(current_node_, node);
   break;
  case Tag_Command_Leave:
   current_node_ << fr_/qry_.Tag_Command_Cross >> node;
+  merge_multi_parent_sequence(current_node_, node);
   break;
  default:
    // // any others?
@@ -154,11 +187,13 @@ void NGML_Markup_Position::tag_command_entry(caon_ptr<NGML_Node> node)
  case Annotation_Close:
  case Tile_Sequence:
   current_node_ << fr_/qry_.Tag_Command_Entry >> node;
+  merge_multi_parent_inherited(current_node_, node);
   position_state_ = Tag_Command_Entry;
   break;
 
  case Tag_Command_Leave:
   current_node_ << fr_/qry_.Tag_Command_Cross >> node;
+  merge_multi_parent_sequence(current_node_, node);
   position_state_ = Tag_Command_Entry;
   break;
 

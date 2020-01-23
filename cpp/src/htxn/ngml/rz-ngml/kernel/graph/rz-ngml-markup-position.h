@@ -88,6 +88,11 @@ public:
  void await_optional(caon_ptr<tNode> node);
  void await_mandatory(caon_ptr<tNode> node);
 
+ void merge_multi_parent_inherited(caon_ptr<tNode> parent,
+   caon_ptr<tNode> node);
+ void merge_multi_parent_sequence(caon_ptr<tNode> prior,
+   caon_ptr<tNode> node);
+
  void enter_multiline_comment(int semis, int tildes);
  bool check_leave_multiline_comment(int semis, int tildes);
  void add_tile_node(caon_ptr<NGML_Node> node);

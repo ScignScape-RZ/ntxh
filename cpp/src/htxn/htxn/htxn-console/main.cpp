@@ -71,17 +71,17 @@ int main1(int argc, char *argv[])
 // u4 rc1 = doc.add_detail_range_region(gl2, 22, 29);
 // gl1->add_range(2, 32, rc1);
 
- u4 rc1 = doc.add_detail_range(gl2, 2, 14);
- u4 rc11 = doc.add_detail_range(gl3, 2, 9);
+ u4 rc1 = doc.add_detail_range(gl2, 2, 14, HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
+ u4 rc11 = doc.add_detail_range(gl3, 2, 9, HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
  doc.tie_detail_range_preempt(rc1, rc11);
 
  gl1->add_range(2, 0, rc1);
 
- u4 rc2 = doc.add_detail_range_region(gl2, 15, 22);
+ u4 rc2 = doc.add_detail_range_region(gl2, 15, 22, HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
  gl1->add_range(2, 32, rc2);
 
 
- u4 rc3 = doc.add_detail_range(gl2, 23, 23);
+ u4 rc3 = doc.add_detail_range(gl2, 23, 23, HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
  gl1->add_range(7, 8, rc3);
 
  //doc.read_layer("Th|`is.");

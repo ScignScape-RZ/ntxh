@@ -24,21 +24,22 @@ void HTXN_Node_Detail::incorporate_wrap_mode_indicator(Wrap_Mode_Indicator_Codes
 {
  switch(wmic)
  {
- default:
  case Wrap_Mode_Indicator_Codes::Normal:
-   break;
- case Wrap_Mode_Indicator_Codes::Left:
-   flags.wmi_left = true;
-   // fallthrough ...
+  break;
  case Wrap_Mode_Indicator_Codes::Left_With_Space:
-   flags.wmi_with_space = true;
-   break;
- case Wrap_Mode_Indicator_Codes::None:
-   flags.wmi_none = true;
-   // fallthrough ...
+  flags.wmi_with_space = true;
+  // fallthrough ...
+  [[clang::fallthrough]];
+ case Wrap_Mode_Indicator_Codes::Left:
+  flags.wmi_left = true;
+  break;
  case Wrap_Mode_Indicator_Codes::None_With_Space:
-   flags.wmi_with_space = true;
-   break;
+  // fallthrough ...
+  flags.wmi_with_space = true;
+  [[clang::fallthrough]];
+ case Wrap_Mode_Indicator_Codes::None:
+  flags.wmi_none = true;
+  break;
  }
 }
 

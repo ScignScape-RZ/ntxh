@@ -167,15 +167,44 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
      result.append(QString("\\%1").arg(cmd));
   }
   else if(nd.flags.optional)
-    result.append(QString("\\%1[").arg(cmd));
+  {
+   if(nd.flags.wmi_left)
+   {
+    if(nd.flags.wmi_with_space)
+      result.append(QString("[\\%1 ").arg(cmd));
+    else
+      result.append(QString("[\\%1").arg(cmd));
+   }
+   else
+     result.append(QString("\\%1[").arg(cmd));
+  }
   else if(nd.flags.region)
     result.append(QString("\\begin{%1}").arg(cmd));
   else
+  {
+   if(nd.flags.wmi_left)
+   {
+    if(nd.flags.wmi_with_space)
+      result.append(QString("{\\%1 ").arg(cmd));
+    else
+      result.append(QString("{\\%1").arg(cmd));
+   }
+   else if(nd.flags.wmi_none)
+   {
+    if(nd.flags.wmi_with_space)
+      result.append(QString("\\%1 ").arg(cmd));
+    else
+      result.append(QString("\\%1").arg(cmd));
+   }
+   else
     result.append(QString("\\%1{").arg(cmd));
+  }
   cmdgap.reset();
   if(leave == 0)
   {
    if(nd.flags.ref_preempts_wrap)
+     ; // nothing
+   else if(nd.flags.wmi_none)
      ; // nothing
    else if(nd.flags.optional)
      result.append("]");

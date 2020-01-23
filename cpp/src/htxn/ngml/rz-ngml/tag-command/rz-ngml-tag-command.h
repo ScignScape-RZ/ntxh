@@ -43,6 +43,9 @@ public:
  
   bool is_multi_parent_semis:1;
 
+  bool is_multi_parent_inherited:1;
+  bool is_multi_parent_semis_inherited:1;
+
   bool multi_arg_layer:1;
   bool multi_main_layer:1;
   bool autogen_multi_name:1;
