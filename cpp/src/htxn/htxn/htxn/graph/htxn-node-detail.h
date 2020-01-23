@@ -58,6 +58,7 @@ flags_(3)
  bool wmi_with_space:1;
 
  bool needs_write_end:1;
+ bool is_ghosted:1;
 
 _flags
 

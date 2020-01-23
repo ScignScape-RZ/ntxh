@@ -115,7 +115,8 @@ public:
 
  void mark_diacritic_code(Glyph_Vector_8b& target, u4 index, u2 diacritic_code);
 
- void mark_last_as_environment_main_tile(u4 ref);
+ void mark_last_as_environment_main_tile(u4 ref, Glyph_Layer_8b* target_layer,
+   u4 ref_position, u4 ref_order, u4 leave);
 
 
  QString check_latex_insert(Glyph_Layer_8b& gl,

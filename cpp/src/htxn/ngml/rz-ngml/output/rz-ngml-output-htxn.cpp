@@ -485,6 +485,7 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   else
   {
    u4 order = main_gl_->add_range(b.index, 0, nc1);
+   ntc->flags.is_main_layer = true;
    ntc->set_ref_position(b.index);
    ntc->set_ref_order(order);
   }
@@ -527,7 +528,11 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
   if(ntc->flags.is_region)
   {
    // //  we have to mark the last ref as a main tile ...
-   htxn_document_.mark_last_as_environment_main_tile(nc1);
+   if(ntc->flags.is_main_layer)
+     htxn_document_.mark_last_as_environment_main_tile(nc1, main_gl_,
+     ntc->ref_position(), ntc->ref_order(), b.index - 1);
+   else
+     htxn_document_.mark_last_as_environment_main_tile(nc1, nullptr, 0, 0, 0);
   }
  }
 

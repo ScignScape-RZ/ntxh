@@ -66,6 +66,8 @@ public:
   bool has_non_wrapped_space:1;
   bool is_non_wrapped:1;
   bool is_left_wrapped:1;
+
+  bool is_main_layer:1;
  _flags
 
 public:

@@ -46,7 +46,8 @@ void HTXN_Document_8b::add_standard_diacritic_deck()
 
 // void HTXN_Document_8b::sss;
 
-void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref)
+void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref,
+  Glyph_Layer_8b* target_layer, u4 ref_position, u4 ref_order, u4 leave)
 {
  HTXN_Node_Detail& nd = node_details_[ref - 1];
  if(QVector<u4>* vec = nd.get_refs())
@@ -58,6 +59,15 @@ void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref)
   nd1.flags.region_main_preempts_wrap = true;
   // // maybe even elevate nd1 to a main tile ...
    //   but for now just try
+  if(target_layer)
+  {
+   if(nd1.get_layer() == target_layer)
+   {
+    nd1.flags.is_ghosted = true;
+    target_layer->set_range_leave(ref_position, ref_order, leave);
+    return;
+   }
+  }
   nd.flags.needs_write_end = true;
  } 
 }
@@ -80,6 +90,12 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
     [this, calling_layer](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
   {
    HTXN_Node_Detail* nd = &node_details_[i - 1];
+
+   if(nd->flags.is_ghosted)
+   {
+    pr.first = nullptr;
+    return QString("<ghost>");
+   }
 
    if(nd->get_layer() == calling_layer)
      calling_layer->add_insert_loop_guard(nd->enter);
@@ -223,6 +239,8 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
   check_precedent_ranges(nd, precs, &gl);
   for(QPair<HTXN_Node_Detail*, QString>& pr : precs)
   {
+   if(!pr.first)
+     continue; // ghosted ...
    if(pr.first->flags.optional)
      result.append(QString("[%1]").arg(pr.second));
    else if(pr.first->flags.region_main_preempts_wrap)
