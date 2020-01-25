@@ -579,12 +579,20 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
 
  tag_body_leave();
 
- tag_command_entry_inside_multi(first_arg_wmi, tag_command, first_arg_marker);
-
- if(tag_body_follow.isEmpty())
-   parse_context_.flags.inside_multi_parent_semis = true;
+ if(first_arg_marker == "@")
+ {
+  parse_context_.flags.inside_attribute_sequence = true;
+ }
  else
-   parse_context_.flags.inside_multi_parent = true;
+ {
+  tag_command_entry_inside_multi(first_arg_wmi, tag_command, first_arg_marker);
+
+  parse_context_.flags.inside_multi_generic = true;
+  if(tag_body_follow.isEmpty())
+    parse_context_.flags.inside_multi_parent_semis = true;
+  else
+    parse_context_.flags.inside_multi_parent = true;
+ }
 }
 
 
@@ -727,9 +735,12 @@ void NGML_Graph_Build::check_multi_parent_reset()
     || ntc->flags.is_multi_parent_inherited;
   parse_context_.flags.inside_multi_parent_semis = ntc->flags.is_multi_parent_semis
     || ntc->flags.is_multi_parent_semis_inherited;
+  parse_context_.flags.inside_multi_generic = 
+    parse_context_.flags.inside_multi_parent || parse_context_.flags.inside_multi_parent_semis;
  }
  else
  {
+  parse_context_.flags.inside_multi_generic = false;
   parse_context_.flags.inside_multi_parent = false;
   parse_context_.flags.inside_multi_parent_semis = false;
  }
@@ -897,6 +908,12 @@ caon_ptr<NGML_Graph_Build::tNode> NGML_Graph_Build::make_new_node(caon_ptr<NGML_
  return result;
 }
 
+void NGML_Graph_Build::attribute_sequence_leave()
+{
+ parse_context_.flags.inside_attribute_sequence = false;
+ parse_context_.flags.inside_multi_generic = false;
+ markup_position_.attribute_sequence_leave();
+}
 
 void NGML_Graph_Build::tag_body_leave(QString match)
 {

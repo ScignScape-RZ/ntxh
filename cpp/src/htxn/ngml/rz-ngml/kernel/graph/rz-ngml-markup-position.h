@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_MARKUP_POSITION__H
 #define RZ_NGML_MARKUP_POSITION__H
 
@@ -105,6 +111,8 @@ public:
 
  void merge_multi_parent_inherited(NGML_Tile& parent,
    NGML_Tag_Command& ntc);
+
+ void attribute_sequence_leave();
 
 
  void enter_multiline_comment(int semis, int tildes);

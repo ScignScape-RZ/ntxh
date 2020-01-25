@@ -267,6 +267,10 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   });
 
 
+#ifdef HIDE
+
+
+ //?
  add_rule( ngml_context, "tag-command-entry",
   "  `< (?<prefix> / )? "
   " (?<wmi> .tag-command-wrap-mode-indicator.? ) "
@@ -281,7 +285,8 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.tag_command_entry(wmi, prefix, tag_command, parent_tag_type);
  });
 
-#ifdef HIDE
+
+
  add_rule( flags_all_(parse_context ,inside_html_tag_body), "html-tag-body-close",
   " (?<pre-space> \\s* ) (?<prefix> /? ) > "
    ,[&]
@@ -339,11 +344,33 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  });
 #endif
 
+ add_rule( flags_all_(parse_context ,inside_attribute_sequence),
+   ngml_context, "attribute-sequence-leave",
+   " \\s+ => \\s+ "
+   //" [/-]? "
+   //" > "
+   //" [,;.]? "
+   ,[&]
+ {
+  //QString m = p.match_text();
+  graph_build.attribute_sequence_leave();
+ });
+
+ add_rule( flags_all_(parse_context ,inside_attribute_sequence),
+   ngml_context, "mark-attribute-tile",
+   " \\s+ @ \\s+ "
+   ,[&]
+ {
+  graph_build.mark_attribute_tile();
+ });
+
+
+
  // //  these should be for graph_build the equivalent
   //    of ->> (etc.) then `::some_cmd;
- add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
+ add_rule( flags_all_(parse_context ,inside_multi_generic),
   ngml_context,
-  "cmd-multi-arg-transition-semis",
+  "cmd-multi-arg-transition",
   " :: (?<main> -{1,2}>{1,2}) "
   " \\s+ (?<cmd> .valid-tag-command-name. ) "
    ,[&]
@@ -354,25 +381,10 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.tag_command_entry_inline("::", cmd, ";", {});
  });
 
- add_rule( flags_all_(parse_context ,inside_multi_parent),
-   ngml_context,
-   "cmd-multi-arg-transition",
-   " :: (?<main> -{1,2}>{1,2}) "
-   " \\s+ (?<cmd> .valid-tag-command-name. ) "
-   ,[&]
- {
-  QString m = p.matched("main");
-  QString cmd = p.matched("cmd");
-  graph_build.multi_arg_transition({}, m);
-  graph_build.tag_command_entry_inline("::", cmd, ";", {});
- });
 
-
-
-
- add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
+ add_rule( flags_all_(parse_context ,inside_multi_generic),
   ngml_context, 
-  "multi-arg-transition-semis",
+  "multi-arg-transition",
   " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
    ,[&]
  {
@@ -381,29 +393,18 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.multi_arg_transition(wmi, m);
  });
 
- add_rule( flags_all_(parse_context ,inside_multi_parent),
-  ngml_context, 
-  "multi-arg-transition",
-  " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
-   ,[&]
- {
-  QString wmi = p.matched("wmi"); 
-  QString m = p.matched("main");
-  graph_build.multi_arg_transition(wmi, m);
- });
-
  add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
    ngml_context, "tag-command-leave-multi",
-  "  \\s+ ;; "
-  ,[&]
+   "  \\s+ ;; "
+   ,[&]
  {
   graph_build.tag_command_leave_multi({});
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_parent),
    ngml_context, "tag-command-leave-multi",
-  "  ` (?<tag-command> .valid-tag-command-name.? ) ` "
-  ,[&]
+   "  ` (?<tag-command> .valid-tag-command-name.? ) ` "
+   ,[&]
  {
   QString tag_command = p.matched("tag-command");
   graph_build.tag_command_leave_multi(tag_command);
@@ -436,7 +437,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   " (?<tag-command> .valid-tag-command-name. ) "
   " (?<tag-body-follow> [,.]?) \\s+  "
   " (?<fwmi> .tag-command-wrap-mode-indicator.? ) "
-  " (?<first-arg-marker> -{1,2} >{1,2} ) "
+  " (?<first-arg-marker> @ | (?: -{1,2} >{1,2} ) ) \\s+ "
            ,[&]
  {
   QString wmi = p.matched("wmi");
@@ -446,15 +447,15 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   QString first_arg_marker = p.matched("first-arg-marker");
   graph_build.tag_command_entry_multi(wmi, tag_command, 
     tag_body_follow, fwmi, first_arg_marker);
-  //graph_build.tag_body_leave();
+    //graph_build.tag_body_leave();
  });
 
 
  add_rule( ngml_context, "tag-command-entry-inline",
-  " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
-  " (?<tag-command> .valid-tag-command-name. ) "
-  " (?: < (?<argument> [^>]+ ) >)?  (?<tag-body-follow> [,;.] ) "
-           ,[&]
+   " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+   " (?<tag-command> .valid-tag-command-name. ) "
+   " (?: < (?<argument> [^>]+ ) >)?  (?<tag-body-follow> [,;.] ) "
+   ,[&]
  {
   QString wmi = p.matched("wmi");
   QString tag_command = p.matched("tag-command");
@@ -464,25 +465,6 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   //graph_build.tag_body_leave();
  });
 
-
- add_rule( flags_all_(parse_context ,inside_tag_body),
-  ngml_context, "tag-body-leave",
-  " [/-]? "
-  " > "
-  " [,;.]? "
-           ,[&]
- {
-  QString m = p.match_text();
-  graph_build.tag_body_leave(m);
- });
-
- add_rule( flags_all_(parse_context ,inside_tag_body),
-  ngml_context, "tag-annotation-tile",
-  " \\s+ @ \\s+ "
-           ,[&]
- {
-  graph_build.mark_attribute_tile();
- });
 
 #ifdef HIDE
  add_rule( html_context, "html-tag-command-leave",

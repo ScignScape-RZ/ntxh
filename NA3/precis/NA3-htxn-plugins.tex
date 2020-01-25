@@ -1,0 +1,460 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{eso-pic}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>0{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\setlength{\footskip}{23pt}
+
+\usepackage[paperheight=11.5in,paperwidth=9in]{geometry}
+\geometry{left=.9in,top=.6in,right=.75in,bottom=1.4in} %margins
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{1pt}\hspace{8pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+
+
+\newcommand{\CSML}{\resizebox{!}{8.5pt}{\AcronymText{CSML}}}
+
+\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+
+\newcommand{\DTD}{\resizebox{!}{8pt}{\AcronymText{DTD}}}
+
+
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\JSON}{\resizebox{!}{8pt}{\AcronymText{JSON}}}
+
+\newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{8pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{8pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{8pt}{\AcronymText{IQmol}}}
+
+\newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
+
+\newcommand{\OS}{\resizebox{!}{8.5pt}{\AcronymText{OS}}}
+
+\newcommand{\SGML}{SGML}
+
+\newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
+
+\newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
+
+\newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
+
+\newcommand{\UI}{\resizebox{!}{8pt}{\AcronymText{UI}}}
+%\newcommand{\NDPCloud}{\resizebox{!}{8pt}{%
+%\AcronymText{NDP-Cloud}}}
+
+%\newcommand{\lNDPCloud}{\resizebox{!}{8.5pt}{%
+%\AcronymText{NDP-Cloud}}}
+
+\newcommand{\lNDPCloud}{\lfNDPCloud}
+
+
+\newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{8pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{8pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+\newcommand{\lunvs}{\vspace{2.25em}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\NAThree}{\resizebox{!}{8pt}{\AcronymText{NA3}}}
+\newcommand{\NCN}{\resizebox{!}{8pt}{\AcronymText{NCN}}}
+\newcommand{\AThreeR}{\resizebox{!}{8pt}{\AcronymText{A3R}}}
+
+\newcommand{\lQt}{\resizebox{!}{10.5pt}{\AcronymText{Qt}}}
+
+\newcommand{\lNCN}{\resizebox{!}{9pt}{\AcronymText{NCN}}}
+\newcommand{\lAThreeR}{\resizebox{!}{9pt}{\AcronymText{A3R}}}
+\newcommand{\lNAThree}{\resizebox{!}{9pt}{\AcronymText{NA3}}}
+
+\newcommand{\lsNCN}{\resizebox{!}{10.5pt}{\AcronymText{NCN}}}
+\newcommand{\lsAThreeR}{\resizebox{!}{10.5pt}{\AcronymText{A3R}}}
+\newcommand{\lsNAThree}{\resizebox{!}{10.5pt}{\AcronymText{NA3}}}
+
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{8pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{8pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{8pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{8pt}{\MOSAIC}}
+
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
+\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+\newcommand{\p}{
+
+\vspace{1.2em}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\setlist[description]{%
+  topsep=30pt,               % space before start / after end of list
+  itemsep=5pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+
+\setlength\parindent{24pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\underline{#1}}}}}}
+
+
+\begin{document}
+	
+{\linespread{1.1}\selectfont
+
+\vspace*{-5em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+\vspace{1em}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.7\textwidth,
+colback=ctmpppp!60,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\begin{minipage}{\textwidth}	
+\begin{center}		
+{\setlength{\fboxsep}{18pt}
+	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{NA3 HTXN Plugin Framework
+}}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\vspace{-1em}
+
+%\noindent\lun{Overview}
+\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
+{\sectsp}
+\p{This paper will describe the plugin mechanism for 
+\HTXN{} (the Hypergraph Text Encoding Protocol), which is 
+part of the \NAThree{} Native Application Framework.  
+\lHTXN{} is a new document format with several breakthrough 
+features: a \LaTeX{}-compatible Document Object Model; the option 
+of generating versions of the document in multiple formats, such 
+as \LaTeX{} and \XML{}; and fine-grained representation of 
+structural features such as sentence boundaries.  When used 
+in \NAThree{} applications, \HTXN{} allows authors to compose 
+manuscripts which depict or discuss data maintained within the 
+host application.  One feature of \HTXN{} is the ability to 
+call host-application procedures to generate content which is 
+inserted or linked into a manuscript.  For instance, if an author 
+wants to insert a graphic before a specific paragraph, 
+an \HTXN{} instruction would invoke host procedures to create the figure 
+as an external asset file, then insert code in the manuscript  
+to include the figure at the desired point in the text.}
+
+\p{\lHTXN{} plugins can also be used with software not explicitly engineered 
+via \NAThree{}.  In principle, any application popular with scientists or 
+researchers can host \HTXN{} plugins, which become valuable when researchers 
+transition from obtaining and analyzing data to publishing their research 
+findings.  Many scientific and technical applications have a built-in plugin or 
+extension mechanism wherein users download and install plugins which add 
+new features to the host application; others are open-source projects where 
+plugins can be implemented as new libraries added to the source code.   
+\lHTXN{} can, in particular, be implemented via \textit{publisher-specific} 
+plugins, which generate documents matching publishers' internal specifications, 
+such as \XML{} Document Type Declarations (\DTD{}s).  This capability is 
+beneficial to publishers because it eliminates one step in the 
+document-preparation workflow --- namely, converting a document submitted 
+in formats such as \LaTeX{} to in-house \XML{} or \SGML{} files.}
+
+\p{Aside 
+from practical document-preparation benefits, publisher-specific plugins may also serve as a 
+promotional vehicle for publishers.  Application users would see the options 
+to load different publishers' plugins; the plugin documentation, as well as a 
+splash-screen when the plugin is loaded, could describe advances features of 
+the publishers' platform.  Publishers are branching out away from conventional 
+text documents to incorporate data sets and multi-media content; it behooves 
+them therefore to find opportunities to describe and promote the more advanced 
+features of their platform.  Moreover, plugins demonstrate a level 
+of technical sophistication; implementing plugins to scientific and 
+technical applications demans advanced software-engineering techniques, 
+so a publisher-specific plugin signals to the academic community that 
+the publisher is comfortable engineering or designing complex 
+scientific-computing components.  By 
+embedding plugins in applications spanning a 
+range of academic disciplines, publishers 
+have a convenient promotional hook into 
+different scientific communities.}
+  
+
+%\p{}
+
+\end{document}
+

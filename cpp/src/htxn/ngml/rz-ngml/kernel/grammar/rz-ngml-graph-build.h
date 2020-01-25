@@ -118,7 +118,10 @@ public:
  void inline_tag_command_leave();
  caon_ptr<NGML_Tag_Command> tag_command_entry(QString wmi, QString prefix, QString tag_command, QString argument, QString parent_tag_type = QString());
  void tag_command_instruction_leave(caon_ptr<tNode> node);
+
+ void attribute_sequence_leave();
  void tag_body_leave(QString match = QString());
+
  void call_leave();
  void tile_acc(QString str);
  void check_tile_acc(Acc_Mode new_mode = Main_Tile);

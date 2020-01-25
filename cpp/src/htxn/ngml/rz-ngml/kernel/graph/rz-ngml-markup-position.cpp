@@ -405,6 +405,12 @@ void NGML_Markup_Position::tag_body_leave()
 }
 
 
+void NGML_Markup_Position::attribute_sequence_leave()
+{
+
+}
+
+
 caon_ptr<NGML_Markup_Position::tNode> NGML_Markup_Position::check_tag_command_leave(QString tag_command)
 {
  if(tag_commands_.isEmpty())
