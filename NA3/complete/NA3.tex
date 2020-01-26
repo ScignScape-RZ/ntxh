@@ -188,8 +188,8 @@
 
 \newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
 
-\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
-\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+%\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
+%\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
 
 \newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
 
@@ -287,6 +287,9 @@
 
 \newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
 \newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+%\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+%\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
 
 \newcommand{\p}{
 
@@ -697,18 +700,76 @@ of floating-point decimals.  (Universal Numbers are a mathematical representatio
 by John Gustafson, which in many contexts are more precise than floats). 
 
 \item An overall preference for employing application-specific data types instead 
-of generic types, like integers and strings.  
+of generic types like integers and strings.  Using types which expressly model 
+a particular empirical phenomenon facilitates Requirements Engineering insofar as 
+the custom type becomes a basic unit of asserting and verifying requirements.
 
 \item A novel channel/hypegraph-based \Cpp{} reflection mechanism, which can be 
-used in addition to or in place of \Qt{} meta-objects.
+used in addition to or in place of \Qt{} meta-objects.  This in turn promotes 
+scripting and testing for custom data types, so that types' testing and implementation 
+can proceed in modular fashion, with requirements observed at the individual 
+type level.
 
+\item Leveraging \Qt{}'s model/view architecture to pair up application-specific 
+data types with corresponding \GUI{} component types.  In general, 
+documenting inter-type relations --- particularly the connections between 
+data structures and their corresponding \GUI{} representations --- leads 
+to rigorous application development and effective maintenance 
+(see \textit{Advances in Ubiquitous Computing}, page 55).
 \end{itemize}
-
-\Cpp{} reflection is conducive to Requirements Engineering because 
-
 }
 
-\p{}
+{\lunvs}
+\noindent\lun{The Hypergraph Text Encoding Protocol}
+\p{Correlated with \HGDM{}, which uses hypergraphs to model raw 
+data, \AThreeR{} defines a Hypergraph Text Encoding Protocol 
+(\HTXN{}) for natural-language text.  \lHTXN{} is 
+relevant for \AThreeR{} applications when users wish to 
+compose manuscripts (e.g., technical papers describing 
+research findings) related to data managed by an \AThreeR{} application 
+(although \HTXN{} can equally well be used as a general-purpose 
+document-preparation tool, outside the \AThreeR{} context).  
+The \HTXN{} parsers and document generators are designed to 
+be embedded in a host application; if this host recognizes the 
+\HTXN{} protocol, it is possible for \HTXN{} documents to include 
+instructions which call procedures exposed by the host application 
+(so as to insert application data into a manuscript, for example).  
+In general, \HTXN{} is engineered to priotize integrating 
+and cross-referencing publications and data sets.} 
+
+\p{The benefits of \HTXN{} include:
+
+\begin{description}[leftmargin=13pt,labelsep=15pt,itemsep=12pt]
+\item[Mix-and-Match Formats] Given documents encoded in \HTXN{}, 
+\q{secondary documents}, or \q{views}, can be generated in a 
+variety of conventional formats, such as \LaTeX{} and \XML{}. 
+\lHTXN{} employs \q{stand-off} annotation, which allows multiple 
+markup protocols to be defined simultaneously on the same 
+document.  In addition, \lHTXN{} uses a flexible 
+character-encoding protocol that ensures 
+compatibility with diverse text representations
+(such as {\XML}, {\LaTeX}, Unicode, and {\Qt}/QString).  
+Overall, then, \HTXN{} can be useful when it is 
+desirable to employ different formats for a single 
+manuscript at different stages of the publication workflow: 
+for instance, \XML{} for editing and \LaTeX{} for \PDF{} generation.   
+   
+\item[Fine-Grained Character Encoding] The \HTXN{} 
+protocol includes more detailed document structure 
+information compared to conventional 
+markup.  For example, \HTXN{} identifies 
+sentence boundaries and punctuation features, 
+disambiguating logically distinct 
+but often visually identical 
+characters (such as \makebox{dots/periods or dashes/hyphens, 
+which have different structural meanings in different contexts}).   
+
+\item[A LaTeX-Compatible Document Object Model] 
+\lHTXN{} files have a graph-based structure that 
+can be searched and traversed similar to the \XML{} 
+Document Object Model.  
+  
+}
 
 \p{}
 
