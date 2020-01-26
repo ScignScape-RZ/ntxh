@@ -188,7 +188,7 @@
 
 \newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
 
-%\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
 %\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
 
 \newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
@@ -767,11 +767,35 @@ which have different structural meanings in different contexts}).
 \item[A LaTeX-Compatible Document Object Model] 
 \lHTXN{} files have a graph-based structure that 
 can be searched and traversed similar to the \XML{} 
-Document Object Model.  
-  
-}
+Document Object Model.  \lHTXN{}'s document model, 
+however, is designed to represent most structural 
+features of \LaTeX{} representation as well as \XML{}. 
+Therefore, in conjunction with generating \LaTeX{} views 
+on an \HTXN{} manuscript, \HTXN{} provides in effect a 
+means to traverse \LaTeX{} documents via software 
+(e.g., via \Cpp{} procedures).}
+
+\item[A Transparent and Extensible Parsing Model] 
+\p{\lHTXN{} is a text-encoding system, so it is impractical 
+to compose documents in \HTXN{} directly.  Instead, \HTXN{} 
+files need to be built from text sources in some other 
+format (\NAThree{} has its own markup style, called 
+\q{\NGML{}} for \q{Next-Generation Markup Language}, 
+which outputs \HTXN{} and (from the \HTXN{} files) 
+\LaTeX{} or \XML{}.  The \NGML{} parsers can be readily 
+adapted and modified, so that projects can use a 
+custom-built document language if desired.  The parsers 
+and generators are also \q{transparent} in the sense 
+that they are self-contained \Qt{}/\Cpp{} libraries that 
+can be dropped into any \Cpp{} project which can link 
+against the \Qt{} core (which also makes the components 
+easy to examine through debugging sessions, when implementing 
+alternative grammars or generators for customized 
+markup languages targeting \HTXN{}). 
+
 
 \p{}
+
 
 
 %\vspace{2em}
