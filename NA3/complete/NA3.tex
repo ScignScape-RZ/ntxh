@@ -1,0 +1,721 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{eso-pic}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>0{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\setlength{\footskip}{23pt}
+
+\usepackage[paperheight=14.5in,paperwidth=9in]{geometry}
+\geometry{left=1in,top=.8in,right=.75in,bottom=1.5in} %margins
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{1pt}\hspace{8pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+
+
+\newcommand{\CSML}{\resizebox{!}{8.5pt}{\AcronymText{CSML}}}
+
+\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\JSON}{\resizebox{!}{8pt}{\AcronymText{JSON}}}
+
+\newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{8pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{8pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{8pt}{\AcronymText{IQmol}}}
+
+\newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
+
+\newcommand{\OS}{\resizebox{!}{8.5pt}{\AcronymText{OS}}}
+
+\newcommand{\lHGDM}{\resizebox{!}{8.5pt}{\AcronymText{HGDM}}}
+
+\newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
+
+\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
+
+\newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
+
+\newcommand{\UI}{\resizebox{!}{8pt}{\AcronymText{UI}}}
+%\newcommand{\NDPCloud}{\resizebox{!}{8pt}{%
+%\AcronymText{NDP-Cloud}}}
+
+%\newcommand{\lNDPCloud}{\resizebox{!}{8.5pt}{%
+%\AcronymText{NDP-Cloud}}}
+
+\newcommand{\lNDPCloud}{\lfNDPCloud}
+
+
+\newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{8pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{8pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+\newcommand{\lunvs}{\vspace{2.25em}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\NAThree}{\resizebox{!}{8pt}{\AcronymText{NA3}}}
+\newcommand{\NCN}{\resizebox{!}{8pt}{\AcronymText{NCN}}}
+\newcommand{\AThreeR}{\resizebox{!}{8pt}{\AcronymText{A3R}}}
+
+\newcommand{\HGDM}{\resizebox{!}{8pt}{\AcronymText{HGDM}}}
+
+\newcommand{\lQt}{\resizebox{!}{10.5pt}{\AcronymText{Qt}}}
+
+\newcommand{\lNCN}{\resizebox{!}{9pt}{\AcronymText{NCN}}}
+\newcommand{\lAThreeR}{\resizebox{!}{9pt}{\AcronymText{A3R}}}
+\newcommand{\lNAThree}{\resizebox{!}{9pt}{\AcronymText{NA3}}}
+
+\newcommand{\lsNCN}{\resizebox{!}{10.5pt}{\AcronymText{NCN}}}
+\newcommand{\lsAThreeR}{\resizebox{!}{10.5pt}{\AcronymText{A3R}}}
+\newcommand{\lsNAThree}{\resizebox{!}{10.5pt}{\AcronymText{NA3}}}
+
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{8pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{8pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{8pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{8pt}{\MOSAIC}}
+
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
+\newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+\newcommand{\p}{
+
+\vspace{1.2em}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\setlist[description]{%
+  topsep=30pt,               % space before start / after end of list
+  itemsep=5pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+
+\setlength\parindent{24pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\underline{#1}}}}}}
+
+
+\begin{document}
+	
+{\linespread{1.1}\selectfont
+
+\vspace*{-5em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+\vspace{1em}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.7\textwidth,
+colback=ctmpppp!60,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\begin{minipage}{\textwidth}	
+\begin{center}		
+{\setlength{\fboxsep}{18pt}
+	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{NCN/A3R Native Application Framework
+\\\vspace{.5em}
+
+ \large{(\q{Native-Cloud/Native} 
+ 	services and \q{Application-as-a-Resource})}}}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\vspace{-1em}
+
+%\noindent\lun{Overview}
+\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
+{\sectsp}
+\p{\NCN{}/\AThreeR{} (hereafter \NAThree{}) is a \Qt{}-based 
+application-development framework which prioritizes 
+hybrid solutions combining cloud and desktop/native 
+components.  The \NCN{} (Native-Cloud/Native) 
+model refers to desktop client applications that 
+are integrated with Cloud/Native back-ends; 
+by sharing code libraries and data formats across 
+both end-points, \NCN{} solutions are more streamlined 
+than native front-ends with generic back-ends, or 
+Cloud/Native back-ends with web-application clients.  
+The \AThreeR{} (Application-as-a-Resource) model promotes 
+self-contained, downloadable applications that can 
+be distributed in source-code fashion and compiled 
+with few (if any) non-\Qt{} dependencies.  The 
+combined \NAThree{} framework yields a 
+comprehensive application-development toolkit 
+with numerous components to streamline the 
+implementation of \Qt{} applications 
+(\NAThree{} can also be used as a template 
+for implementations based on frameworks other 
+than \Qt{}, such as wxWidgets or 
+Operating-System-specific options).           
+}
+
+{\lunvs}
+\noindent\lun{The Current Status of \lQt{} Cloud Integration}
+\p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  
+We use the term \q{Native-Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
+}
+
+\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{Qt Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
+}
+
+\p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields where (due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
+ 
+\p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of a \q{Native-Cloud/Native} approach is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application ecosystem.}
+
+{\lunvs}
+\noindent\lun{Native-Cloud/Native in the Context of \lsNAThree{}}
+\p{In light of the Cloud/Native limitations just identified, 
+LTS intends to contribute tools or hosting arrangements that would bring some of the capabilities of \Qt{} Cloud Services back to the market.  The simplest commercial model for such a product is to license a containerized \Qt{}-based \HTTP{} server that can run as a local application during testing and development, before being deployed to a container hosting service.  
+We have implemented a prototype server along these lines 
+that we call \NDPCloud{} (for \q{Native-Driven Platform on the Cloud}).  
+\lNDPCloud{} is fully self-contained in a \Qt{} context 
+(it bundles portions of the Node.js code base and 
+utilizes the \Qt{} network module, so it requires no 
+external \HTTP{} or sockets libraries).  One significant 
+benefit of \NDPCloud{} is that it is fully transparent: 
+all of the code for parsing and routing \HTTP{} 
+requests can be loaded into \IDE{}s (such as \Qt{} creator)
+and examined by the debugger.  Another benefit is that 
+project-specific libraries can be compiled into both 
+\NDPCloud{} instances and client front-ends; therefore, 
+clients and servers can share procedures for serializing 
+and deserializing domain-specific data structures.  
+For development and prototyping, \NDPCloud{} 
+can be launched as an ordinary (non-virtual) 
+Operating System process, which can receive 
+requests via \HTTP{} but also via sockets, or 
+the command line (allowing request-management 
+logic to be tested in abstraction from the 
+\HTTP{} layer).  Further testing can then be performed 
+running \NDPCloud{} as a local Docker container, 
+before eventually deploying the application to 
+a remote Docker hosting environment. 
+}
+
+\p{Via \NDPCloud{}, \NCN{} applications can be 
+deployed on any Docker cloud service, 
+such as OpenShift.  In this guise LTS has 
+no direct involvement with the hosting service 
+(although \NDPCloud{} includes some tools 
+to streamline cloud deployment).  Ideally, 
+however, LTS would like to secure its own 
+hosting capabilities, perhaps by using an 
+LTS-specific container deployed on OpenShift 
+or a similar platform.  LTS would allocate 
+cloud assets to \NDPCloud{} licensees 
+(e.g. a limited free-tier hosting plan) 
+for testing and development.  A further 
+possibility is to provide free 
+hosting, subject to data-space constraints, 
+to scientific institutions.  The dwindling 
+availability of free-tier Cloud/Native options 
+is a hindrance to projects' adoption of 
+Cloud/Native solutions for sharing and 
+disseminating scientific data; this can 
+result in researchers hosting data sets on 
+platforms such as Mendeley or DataVerse, 
+which have limited functionality or 
+customizability compared to Cloud/Native 
+containers.  Use-cases for \NAThree{} in 
+the context of scientific data sets are explained in 
+the discussion of \AThreeR{} below.}
+
+{\lunvs}
+\noindent\lun{Application Development via \lsAThreeR{}}
+\p{The \AThreeR{} model facilitates implementation of 
+standalone native applications, whose data models and 
+\UI{} logistics are described via integrated metadata.
+As much as possible, \AThreeR{} applications 
+are entirely self-contained, so that all application 
+code and data can be packaged into single 
+downloadable resource.  In a \Qt{} environment, 
+\Qt{} modules are available for concerns such 
+as networking, database management, \Cpp{} reflection, 
+\XML{} or \JSON{} parsing/querying, 
+and embedded web viewers, so that 
+\AThreeR{} can leverage these capabilities without 
+requiring separate library installs.  For many use-cases, 
+then, an entire desktop application can be deployed 
+in source-code form, to be compiled and launched 
+via a single click within \Qt{} creator.  
+Self-contained in this manner, \AThreeR{} 
+applications can be treated as single 
+resource units --- somewhat analogous 
+to container images, but achieving their 
+autonomy by leveraging the \Qt{} ecosystem 
+rather than by virtualization.  
+}
+
+\p{\lAThreeR{} applications are also autonomous resources 
+by virtue of detailed metadata bundled with application code.  
+This metadata provides a summary of application-specific 
+data models, capabilities, \UI{} features, and 
+user documentation.  The metadata may be accessed 
+by human users or by automated tools to help 
+users become familiar with a 
+newly-acquired \AThreeR{} resource.}
+
+\p{The \AThreeR{} architecture is especially 
+warranted when applications are designed to 
+work with one or several non-standardized, 
+domain-specific data formats (including those 
+unique to an individual data set).  In these 
+scenarios, \AThreeR{} applications provide 
+both libraries for parsing and manipulating 
+the domain-specific formats and a \q{reference 
+implementation} documenting the proper 
+visualization and User Experience optimal 
+for the unique data structures involved.  
+This structural profiling is advanced not 
+only by domain-specific \GUI{} components 
+implemented within \AThreeR{} applications, 
+but also by \AThreeR{} metadata which 
+describes application-specific data types, 
+and declares interface requirements for
+any software components targeting 
+such data types.}
+
+\p{The \lAThreeR{} toolkit includes numerous 
+components which may be useful to programmers 
+implementing cross-platform, desktop-style 
+applications, including a library 
+for in-memory hypergraph-structured data, 
+a built-in database engine for persistent data, 
+a parsing and grammar library, and a foundation 
+for building customized scripting languages.  
+These components have no external requirements 
+and are distributed as raw \Cpp{} files 
+that could be dropped in to any \Qt{}/\Cpp{} 
+project.  As with \NDPCloud{} on the 
+server side, these components are therefore 
+\q{transparent}: their code is directly 
+bundled with application sources, and may 
+be clearly examined in a debugging session.  
+This is in contrast to typical libraries 
+providing application-development features 
+such as database engines or code parsers, 
+which typically require separate installation 
+(often with separate build tools) and are 
+opaque to the debugger.  Another benefit 
+of using internal \AThreeR{} components is 
+that they can be simultaneously compiled 
+into \NCN{} instances developed alongside them.  
+With that said, developers could certainly 
+use non-\AThreeR{} components in modular 
+fashion (e.g., \Qt{}'s \SQL{}-based 
+data persistence features) to replace their \AThreeR{} 
+equivalents (either initially or after an 
+\AThreeR{}-standalone protyping phase).}
+
+{\lunvs}
+\noindent\lun{\lsNCN{} and \lsAThreeR{} in Consort}
+\p{While \NCN{} applications need not use \AThreeR{}, 
+or vice-versa, the two models are organically 
+paired together.  Their integration can take the form of 
+\NCN{} servers hosting \AThreeR{} applications 
+as resources, and/or \AThreeR{} software 
+connecting to \NCN{} instances as a domain-specific 
+cloud back-end.  The \AThreeR{} metadata 
+paradigm, based on \q{Hypergraph Ontologies}, 
+provides tools to streamline the encoding and 
+distribution of application-specific data structures.  
+This model thereby accelerates the process of 
+implementing cloud services procedurally 
+aligned with \AThreeR{} components, because 
+complementary \AThreeR{} and \NCN{} endpoints 
+can share the same information representations.  
+Moreover, \AThreeR{} interface definitions 
+can serve as references for implementing 
+compatible \NCN{} server-side code; 
+the interface specification illustrates which 
+client-side procedures will handle any 
+server-originating data structures, so the 
+server-side data providers can be constructed 
+accordingly.
+}
+
+\p{To ensure rigorous alignment between client and server endpoints, \NAThree{} employs a data modeling paradigm based on hypergraphs; the mathematical framework for the relevant new hypergraph model (which adds some additional structure to the theory of Hypergraph Categories) is provisionally outlined in a chapter of a book edited by LTS's founder (the chapter authored by a member of the LTS team), soon be published (we can share this material, or alternatively a more thorough unpublished explication, as desired).  In practical terms, the advantage of this model is that \Qt{}-specific data structures can be conveniently serialized and shared with or through cloud services; meanwhile the relevant data structures --- and their interface and procedural requirements --- are rigorously characterized, to support application testing, code-verification, documentation, and systematic User Interface development.  
+\lNAThree{} concretely operationalizes theories 
+which have been advanced in the scientific-computing 
+and knowledge-engineering communities toward a 
+more conceptually refined and \q{multi-scale} 
+Semantic Web.  \lAThreeR{} extends \q{Semantic Web 
+alternatives} such as Conceptual Space Markup 
+Language (\CSML{}) and Categorial Informatics, 
+while also providing a self-contained \Cpp{} 
+Hypergraph library comparable in some respects 
+to AtomSpace (part of the 
+OpenCOG platform) or to HypergraphDB (Hypergraphs 
+and Conceptual Spaces have been proposed in 
+combination as a comprehensive foundation 
+for computational semantics, notably in 
+the article \textit{Interacting Conceptual Spaces} 
+which arose from an Oxford University reading 
+group on Category Theory and formal grammar).
+}
+
+\p{A good example of an \AThreeR{} use-case is 
+that of hosting scientific data sets.  According 
+to the emerging \q{Research Object} paradigm, 
+scientific data should be published alongside 
+code which ensures that subsequent readers and 
+researchers have the tools they need to 
+access, analyze, and visualize the data set, 
+including double-checking statistical analyses 
+and/or replicating experiments.  With 
+\AThreeR{}, data sets can be self-contained 
+Research Object \q{bundles} while still 
+being provisioned with full-featured 
+desktop applications tailored to their 
+specific information profile.  
+LTS is actively developing a framework (called DataSet Creator, or \dsC{}) for building data sets that are paired with academic publications and with native software implemented in custom fashion for each data set (we can provide links to several data sets published as demonstration examples of this technology).  The hosting and implementation of data sets along these lines offers concrete examples of \NAThree{} solutions and an opportunity to promote \NAThree{}-style development in the scientific and publishing communities. 
+}
+ 
+\p{As this use-case illustrates, 
+our novel \NCN{} model is based on rigorous serialization and interface-definition paradigms; in comparison, \Qt{} Cloud Services tended to reuse structures more appropriate for non-native contexts (e.g. \JSON{}), which arguably limited client-to-server interoperability.  LTS's \NAThree{} model, by contrast, is combined with data modeling and serialization features that bring their own benefits to application projects over all; as such, this model does not only provide cloud-integration capabilities, but can be used as an overarching application-development framework.}
+
+{\lunvs}
+\noindent\lun{Hypergraph Data Modeling and Requirements Engineering}
+\p{\AThreeR{} uses a so-called \q{Hypergraph Data Modeling Protocol} 
+(\HGDM{}) to describe and serialize application data.  Hypergraphs are a 
+flexible and expressive representation mechanism; this permits data to 
+be marshaled with less boilerplate code than would be needed for 
+more restrictive formats such as \SQL{} or \RDF{}.}
+
+\p{\lHGDM{}'s expressiveness is further enhanced by the introduction of 
+a structuring element called \q{channels}, which are aggregates of 
+edges (by analogy to hypernodes being aggregates of nodes).  Channels 
+in this sense are a mechanism not previously developed in Hypergraph 
+libraries or databases (channels aggregate edges --- most 
+often edges that are each incident to one hypernode --- without 
+likewise grouping their other vertices; in this sense 
+channels are distinct from hypernodes which collapse edges into a single 
+hyperedge).  The theoretical basis for channels is discussed in 
+Chapter Three of \textit{Advances in Ubiquitous Computing, 
+Cyber-Physical Systems, Smart Cities and Ecological Monitoring} 
+(\href{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}).  Channels are particularly useful when modeling procedure 
+types, leading to a version of type theory formalized in a 
+Hypergraph context (see \textit{Advances in Ubiquitous Computing}, page 94).  
+In \AThreeR{}, channel notations can be employed to identify procedure 
+types; similar notation is then used for an Interface Definition 
+Language, describing interrelated groups of procedures with 
+their corresponding types.}
+
+\p{Aside from streamlining data serialization and deserialization, 
+an arguably more substantial benefit of expressive data models 
+(such as via Hypergraphs) concerns how precise data models 
+document coding assumptions and requirements, which promotes 
+the long-term maintenance of an application.  \lAThreeR{} 
+supports several Requirements Engineering features, including:
+
+\begin{itemize}
+\item Range-based numeric values, which prohibits data being constructed 
+when it fails to lie within empirically meaningful ranges
+
+\item The option to use Universal Numbers for non-integer values, in lieu 
+of floating-point decimals.  (Universal Numbers are a mathematical representation developed 
+by John Gustafson, which in many contexts are more precise than floats). 
+
+\item An overall preference for employing application-specific data types instead 
+of generic types, like integers and strings.  
+
+\item A novel channel/hypegraph-based \Cpp{} reflection mechanism, which can be 
+used in addition to or in place of \Qt{} meta-objects.
+
+\end{itemize}
+
+\Cpp{} reflection is conducive to Requirements Engineering because 
+
+}
+
+\p{}
+
+\p{}
+
+
+%\vspace{2em}
+%\noindent\lun{Complex Exolinks and Interoperability}
+
+
+\end{document}
+

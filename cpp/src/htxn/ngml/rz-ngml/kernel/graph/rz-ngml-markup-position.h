@@ -40,7 +40,7 @@ class NGML_Markup_Position
    Tag_Body_Leave, Tag_Command_Leave,
    Active_Khif_Connector, Khif_Tag_Command_Leave, 
    Annotation_Close,
-
+    Tag_Body_Leave_Awaiting_Attributes, 
    Awaiting_Optional, Awaiting_Mandatory
  };
 
