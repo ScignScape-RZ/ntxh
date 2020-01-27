@@ -174,7 +174,7 @@
 
 \newcommand{\JSON}{\resizebox{!}{8pt}{\AcronymText{JSON}}}
 
-\newcommand{\lsIT}{\resizebox{!}{9.5pt}{\AcronymText{IT}}}
+\newcommand{\lsIT}{\resizebox{!}{10.5pt}{\AcronymText{IT}}}
 
 \newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
 
@@ -462,8 +462,7 @@ Operating-System-specific options).
 We use the term \q{Native-Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
 
-\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{\lQt{} Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
-}
+\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{\lQt{} Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another Cloud/Native service, Arukas, shut at the end of January 2020.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container).}
 
 \p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields where (due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
  
@@ -621,7 +620,7 @@ use non-\AThreeR{} components in modular
 fashion (e.g., \Qt{}'s \SQL{}-based 
 data persistence features) to replace their \AThreeR{} 
 equivalents (either initially or after an 
-\AThreeR{}-standalone protyping phase).}
+\AThreeR{}-standalone prototyping phase).}
 
 \p{While \NCN{} applications need not use \AThreeR{}, 
 or vice-versa, the two models are organically 
@@ -731,7 +730,7 @@ mapped to a corresponding \HGDM{}-modeled type
 and then used in an Interface Definition.  
 Analogously, data structures which are instances of almost 
 any type can be converted to a 
-hypegraph structure, where they may be automatically serialized.}
+hypergraph structure, where they may be automatically serialized.}
 
 %{\vspace{4em}}
 {\lunvs}
@@ -813,10 +812,13 @@ This is not only a matter of software products themselves
 being marketed; it applies to any product (such as biomedical, 
 military, Cyber-Physical, automotive, or industrial equipment) 
 where \Qt{} software is essential to the operational or 
-maintenance of the deployed product.  In these scenarios 
-the software originally built in an open-source context 
+maintenance of the deployed product.  In these scenarios, 
+software originally built in an open-source context 
 for Research and Development then becomes an operational 
-asset in a commercialized infrastructure.}      
+asset in a commercialized infrastructure.  This is another 
+dimension to the \Qt{} market space which may not be 
+properly assessed only through metrics of 
+commercial \Qt{} licencees.}      
 
 \p{History suggests that most commercial 
 software products generate revenue, in their 
@@ -837,14 +839,14 @@ standard version gradually overtakes, in terms of
 licensing revenue, the organizations who contract 
 for customizations.}
 
-\p{Taking the official \q{\Qt{} partners} cohort as a 
+\p{Taking the official \Qt{} partners cohort as a 
 representative cross-section of the \Qt{} market, 
 we can find companies whose revenue is driven 
 by custom software development (ICS, Woboq, KDAB, Base2, 
 Bitfactor, Sequality), by commercial licensing 
 (Wind River, VNC Automotive, FrogLogic, NXP), 
 by realtime and/or platform services (Mender, Timesys, Mapbox), 
-as well as hardware/mircroprocessor providers (Toradex, ARM, 
+as well as hardware/microprocessor providers (Toradex, ARM, 
 Texas Instruments).  It is probably true that 
 companies whose products depend in whole or 
 in significant part on \Qt{} generate revenue from 
@@ -929,7 +931,7 @@ would therefore be a resource in the public
 interest, allowing LTS to receive compensation 
 from companies financially supporting the 
 portal because of its merits as a technology 
-benefitting science or scholarship.
+benefiting science or scholarship.
 \end{enumerate}
 
 \vspace{-12pt}
@@ -985,7 +987,7 @@ and cross-referencing publications and data sets.}
 \p{The benefits of \HTXN{} include:
 \vspace{-1.5em}
 \begin{description}[leftmargin=13pt,
-labelsep=15pt,itemsep=12pt]
+labelsep=20pt,itemsep=12pt]
 
 \item[Mix-and-Match Formats] Once a document has been constructed 
 in \HTXN{} --- this becomes the \q{primary} document --- 
@@ -1015,11 +1017,10 @@ markup.  For example, \HTXN{} identifies
 sentence boundaries and punctuation features, 
 disambiguating logically distinct 
 but often visually identical 
-characters (such as \makebox{dots/periods or dashes/hyphens, 
-	which have different structural meanings in different contexts}).   
+characters (such as dots/periods or dashes/hyphens, which have different structural meanings in different contexts).   
 
 \item[A LaTeX-Compatible Document Object Model] 
-\lHTXN{} files have a graph-based structure that 
+\hspace{.1em}\lHTXN{} files have a graph-based structure that 
 can be searched and traversed similar to the \XML{} 
 Document Object Model.  \lHTXN{}'s document model, 
 however, is designed to represent most structural 
@@ -1103,6 +1104,7 @@ scientific-computing components.}
 %\noindent\Large{\underline{\lsHTXN{} Plugins}}
 %\p{}
 
+%\vspace{6em}
 {\lunvs}
 \noindent\lun{Using \lsHTXN{} and \lsHGDM{} In Consort: A case study}
 {\lunvsa}
