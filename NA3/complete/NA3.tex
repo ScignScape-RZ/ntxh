@@ -53,8 +53,8 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=14.5in,paperwidth=9in]{geometry}
-\geometry{left=1in,top=.8in,right=.75in,bottom=1.5in} %margins
+\usepackage[paperheight=14.75in,paperwidth=9.5in]{geometry}
+\geometry{left=.9in,top=.8in,right=.7in,bottom=1.5in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
 
@@ -228,7 +228,7 @@
 \newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
 
 \newcommand{\lunvs}{\vspace{2.25em}}
-
+\newcommand{\lunvsa}{\vspace{.5em}}
 
 \colorlet{orr}{orange!60!red}
 
@@ -310,7 +310,7 @@
 
 \newcommand{\p}{
 
-\vspace{1.2em}}
+\vspace{.75em}}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -364,18 +364,17 @@
 \newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
 
 
-\setlength\parindent{24pt}
+\setlength\parindent{40pt}
 %\input{commands}
 
 
 
-\newcommand{\lun}[1]{\parbox{6in}{{{\fontfamily{qcr}\selectfont{%
-\LARGE{\textbf{\raggedleft #1}}}}}}}
+%\newcommand{\lun}[1]{\parbox{9in}{{{\fontfamily{qcr}\selectfont{%
+%\LARGE{\textbf{\raggedleft #1}}}}}}}
 
 \usepackage[official]{eurosym}
 
-%\newcommand{\lun}[1]{\parbox{6in}{{{\fontfamily{qcr}\selectfont{%
-%					\LARGE{\textbf{#1}}}}}}}
+\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{\LARGE{\textbf{#1}}}}}
 
 
 \begin{document}
@@ -458,6 +457,7 @@ Operating-System-specific options).
 
 {\lunvs}
 \noindent\lun{The Current Status of \lQt{} Cloud Integration}
+{\lunvsa}
 \p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  
 We use the term \q{Native-Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
@@ -471,6 +471,7 @@ We use the term \q{Native-Cloud/Native} to describe hybrid applications whose se
 
 {\lunvs}
 \noindent\lun{Native Cloud/Native in the Context of \lsNAThree{}}
+{\lunvsa}
 \p{In light of the Cloud/Native limitations just identified, 
 LTS (Linguistic Technology Systems) intends to contribute 
 tools or hosting arrangements that would bring 
@@ -536,6 +537,7 @@ the discussion of \AThreeR{} below.}
 
 {\lunvs}
 \noindent\lun{Application Development via \lsAThreeR{}}
+{\lunvsa}
 \p{The \AThreeR{} model facilitates implementation of 
 standalone native applications, whose data models and 
 \UI{} logistics are described via integrated metadata.
@@ -646,10 +648,9 @@ server-side data providers can be constructed
 accordingly.
 }
 
-\vspace{1.5em}
 {\lunvs}
-\vspace{.5em}
-\hspace{-34pt}\noindent\lun{Hypergraph Data Modeling and Requirements Engineering \\}
+\noindent\lun{Hypergraph Data Modeling and Requirements Engineering}
+{\lunvsa}
 \p{\AThreeR{} uses a so-called \q{Hypergraph Data Modeling Protocol} 
 (\HGDM{}) to describe and serialize application data.  Hypergraphs are a 
 flexible and expressive representation mechanism; this permits data to 
@@ -682,7 +683,7 @@ document coding assumptions and requirements, which promotes
 the long-term maintenance of an application.  \lAThreeR{} 
 supports several Requirements Engineering features, including:
 
-\begin{itemize}[itemsep=13pt,
+\begin{itemize}[itemsep=10pt,
 	topsep=21pt,leftmargin=14pt]
 \item Range-based numeric values, which prohibits data being constructed 
 when it fails to lie within empirically meaningful ranges
@@ -722,16 +723,23 @@ architecture for \HGDM{} aims to develop an expressive,
 general-purpose type system which is naturally suited 
 to data serialization and which is compatible with 
 mainstream programming languages (we can provide 
-more details about the space of type contructions 
-recognized according to this system on request).}
+more details about the space of type constructions 
+recognized according to this system on request).  
+In effect, almost any kind of function signature can be 
+mapped to a corresponding \HGDM{}-modeled type 
+(technically, to a \textit{channel complex}), 
+and then used in an Interface Definition.  
+Analogously, data structures which are instances of almost 
+any type can be converted to a 
+hypegraph structure, where they may be automatically serialized.}
 
-
-\vspace{2em}
-\hspace{-74pt}\noindent\lun{Native Application Development in the Larger \lsIT{} Context \\}
-
+%{\vspace{4em}}
+{\lunvs}
+\noindent\lun{Native Application Development in the Larger \lsIT{} Context}
+{\lunvsa}
 \p{While users have gravitated to web and phone appliations for some 
 day-to-day tasks (social networking, banking, e-commerce), desktop-style 
-native software remains the preeminent front-end paradign in 
+native software remains the preeminent front-end paradigm in 
 sectors where complex, highly interactive \GUI{}s are needed: 
 science, engineering, industrial design, architecture, 
 biomedical, pharmaceutical, military, and so forth.  
@@ -798,10 +806,9 @@ organizations may contract for the implementation of
 \Qt{} software, even if the finished product will be 
 released non-commercially.}
 
-%{\lunvs}
-\vspace{2em}
+{\lunvs}
 \noindent\lun{\lsNAThree{} Revenue and Marketing}
-%{\lunvsa}
+{\lunvsa}
 \p{History suggests that most commercial 
 software products generate revenue, in their 
 early stages, primarily from customer-specific 
@@ -949,6 +956,7 @@ within their code base).}
 
 {\lunvs}
 \noindent\lun{The Hypergraph Text Encoding Protocol}
+{\lunvsa}
 \p{Correlated with \HGDM{}, which uses hypergraphs to model raw 
 data, \AThreeR{} defines a Hypergraph Text Encoding Protocol 
 (\HTXN{}) for natural-language text.  \lHTXN{} is 
@@ -1086,8 +1094,9 @@ scientific-computing components.}
 %\noindent\Large{\underline{\lsHTXN{} Plugins}}
 %\p{}
 
-\vspace{2em}
+{\lunvs}
 \noindent\lun{Using \lsHTXN{} and \lsHGDM{} In Consort}
+{\lunvsa}
 \p{As hypergraph text and data encoding protocols, respectively, 
 \HTXN{} and \HGDM{} can interoperate organically.  The 
 typical scenario where both formats would be used is that 
@@ -1165,13 +1174,12 @@ in the article's \HTXN{} file.}
 important to help ensure that the data/text cross-references 
 get preserved.  If instead the publisher derives 
 their \XML{} files by conversion (e.g., from 
-\LaTeX{}), the \LaTeX{} labels engineered to enable 
+\LaTeX{}), the labels engineered to enable 
 \q{Context Menu Coordination} may be eliminated or 
-renamed, which can force a time-consuming task of 
-reconstructing text anchors.}
+renamed, so that the text anchors are forced to be reconstructed.}
 
 
-\vspace{2em}
+{\lunvs}
 \noindent\lun{\lsNAThree{} and the Research Object Protocol}
 \p{Open-access data sets conforming to the Research 
 Object protocol are a good example of use-cases 
@@ -1274,7 +1282,7 @@ case-study.  We can supply additional references, or
 more detailed information about \NAThree{} 
 components and technical innovations, as desired.}
 
-\p{}
+%\p{}
 
 \end{document}
 
