@@ -173,6 +173,8 @@
 
 \newcommand{\JSON}{\resizebox{!}{8pt}{\AcronymText{JSON}}}
 
+\newcommand{\lsIT}{\resizebox{!}{9.5pt}{\AcronymText{IT}}}
+
 \newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
 
 \newcommand{\HNaN}{\resizebox{!}{8pt}{\AcronymText{HN%
@@ -361,8 +363,13 @@
 \setlength\parindent{24pt}
 %\input{commands}
 
-\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
-\LARGE{\textbf{\underline{#1}}}}}}
+
+
+\newcommand{\lun}[1]{\parbox{6in}{{{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\raggedleft #1}}}}}}}
+
+%\newcommand{\lun}[1]{\parbox{6in}{{{\fontfamily{qcr}\selectfont{%
+%					\LARGE{\textbf{#1}}}}}}}
 
 
 \begin{document}
@@ -669,7 +676,7 @@ LTS is actively developing a framework (called DataSet Creator, or \dsC{}) for b
 our novel \NCN{} model is based on rigorous serialization and interface-definition paradigms; in comparison, \Qt{} Cloud Services tended to reuse structures more appropriate for non-native contexts (e.g. \JSON{}), which arguably limited client-to-server interoperability.  LTS's \NAThree{} model, by contrast, is combined with data modeling and serialization features that bring their own benefits to application projects over all; as such, this model does not only provide cloud-integration capabilities, but can be used as an overarching application-development framework.}
 
 {\lunvs}
-\noindent\lun{Hypergraph Data Modeling and Requirements Engineering}
+\hspace{-34pt}\noindent\lun{Hypergraph Data Modeling and Requirements Engineering \\}
 \p{\AThreeR{} uses a so-called \q{Hypergraph Data Modeling Protocol} 
 (\HGDM{}) to describe and serialize application data.  Hypergraphs are a 
 flexible and expressive representation mechanism; this permits data to 
@@ -944,6 +951,15 @@ their \XML{} files by conversion (e.g., from
 \q{Context Menu Coordination} may be eliminated or 
 renamed, which can force a time-consuming task of 
 reconstructing text anchors.}
+
+\vspace{2em}
+\hspace{-74pt}\noindent\lun{Native Application Development in the Larger \lsIT{} Context \\}
+
+\p{}
+
+\p{}
+
+\p{}
 
 \end{document}
 
