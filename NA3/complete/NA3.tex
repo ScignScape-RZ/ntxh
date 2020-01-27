@@ -161,6 +161,8 @@
 \newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
 \newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
 
+\newcommand{\DTD}{\resizebox{!}{8pt}{\AcronymText{DTD}}}
+
 
 \newcommand{\CSML}{\resizebox{!}{8.5pt}{\AcronymText{CSML}}}
 
@@ -185,6 +187,11 @@
 \newcommand{\OS}{\resizebox{!}{8.5pt}{\AcronymText{OS}}}
 
 \newcommand{\lHGDM}{\resizebox{!}{8.5pt}{\AcronymText{HGDM}}}
+\newcommand{\lsHGDM}{\resizebox{!}{9.5pt}{\AcronymText{HGDM}}}
+
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{HTXN}}}
+
+\newcommand{\lsXML}{\resizebox{!}{9.5pt}{\AcronymText{HTXN}}}
 
 \newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
 
@@ -253,7 +260,7 @@
 \newcommand{\lsAThreeR}{\resizebox{!}{10.5pt}{\AcronymText{A3R}}}
 \newcommand{\lsNAThree}{\resizebox{!}{10.5pt}{\AcronymText{NA3}}}
 
-\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+%\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
 
 \newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
 
@@ -738,8 +745,9 @@ In general, \HTXN{} is engineered to priotize integrating
 and cross-referencing publications and data sets.} 
 
 \p{The benefits of \HTXN{} include:
-
+\vspace{-2em}
 \begin{description}[leftmargin=13pt,labelsep=15pt,itemsep=12pt]
+
 \item[Mix-and-Match Formats] Given documents encoded in \HTXN{}, 
 \q{secondary documents}, or \q{views}, can be generated in a 
 variety of conventional formats, such as \LaTeX{} and \XML{}. 
@@ -753,7 +761,7 @@ Overall, then, \HTXN{} can be useful when it is
 desirable to employ different formats for a single 
 manuscript at different stages of the publication workflow: 
 for instance, \XML{} for editing and \LaTeX{} for \PDF{} generation.   
-   
+
 \item[Fine-Grained Character Encoding] The \HTXN{} 
 protocol includes more detailed document structure 
 information compared to conventional 
@@ -762,7 +770,7 @@ sentence boundaries and punctuation features,
 disambiguating logically distinct 
 but often visually identical 
 characters (such as \makebox{dots/periods or dashes/hyphens, 
-which have different structural meanings in different contexts}).   
+	which have different structural meanings in different contexts}).   
 
 \item[A LaTeX-Compatible Document Object Model] 
 \lHTXN{} files have a graph-based structure that 
@@ -773,10 +781,10 @@ features of \LaTeX{} representation as well as \XML{}.
 Therefore, in conjunction with generating \LaTeX{} views 
 on an \HTXN{} manuscript, \HTXN{} provides in effect a 
 means to traverse \LaTeX{} documents via software 
-(e.g., via \Cpp{} procedures).}
+(e.g., via \Cpp{} procedures).
 
 \item[A Transparent and Extensible Parsing Model] 
-\p{\lHTXN{} is a text-encoding system, so it is impractical 
+\lHTXN{} is a text-encoding system, so it is impractical 
 to compose documents in \HTXN{} directly.  Instead, \HTXN{} 
 files need to be built from text sources in some other 
 format (\NAThree{} has its own markup style, called 
@@ -793,14 +801,101 @@ easy to examine through debugging sessions, when implementing
 alternative grammars or generators for customized 
 markup languages targeting \HTXN{}). 
 
+\item[\lsHTXN{} Plugins]
+As a standalone library, \HTXN{} (along with a document-composition 
+language such as \NGML{}) can be included in almost any 
+application that are equipped to call procedures in \Qt{}/\Cpp{} 
+libraries (obviously this includes scientific software 
+which uses \Qt{} internally).  Many scientific and technical 
+applications have a built-in plugin or 
+extension mechanism, which makes it possible to introduce \HTXN{} 
+as an added features; others are open-source projects where 
+plugins can simply be inserted as new components in the source code.  
+\lHTXN{} Plugins can then make \HTXN{} available to authors who 
+regularly use the host application for their scientific or 
+research work.
+ 
 
-\p{}
+\item[Publisher-Specific \lsXML{}]
+When generating \XML{} from \HTXN{} documents, applications 
+can target a specific \DTD{} depending on the publisher 
+to which a manuscript will be submitted.  The resulting 
+\XML{} files can then be included alongside \LaTeX{} 
+and \PDF{} in the documents sent to the publisher.  This 
+benefits publishers in turn, because it eliminates the 
+need for a separate conversion process; submitted manuscripts 
+will already have a version which is compatible with the 
+remainder of their publication workflow. 
+\end{description}
+\vspace{-1em}
+}
 
-
-
+\p{The option of validating \HTXN{}-generated \XML{} against 
+publisher-specific \DTD{}s --- combined with \HTXN{} plugins 
+to new or pre-existing scientific or technical applications 
+--- opens up the possibility of \textit{publisher-specific} 
+plugins, which can include \HTXN{} but also other 
+features of the publisher's platform (such as access to 
+\API{}s).  In effect, publisher-specific plugins serve 
+as miniature \NAThree{} applications embedded in some 
+other software.  Aside from practical document-preparation benefits, 
+these plugins may also serve as a 
+promotional vehicle for publishers --- the plugin documentation, as well as a 
+splash-screen when the plugin is loaded, could describe advanced features of 
+the publishers' online and/or document-curation capabilities.  
+Publishers are branching out away from conventional 
+text documents to incorporate data sets and multi-media content; it behooves 
+them therefore to find opportunities to describe and promote the more advanced 
+features of their platform.  Moreover, plugins demonstrate a level 
+of technical sophistication; implementing plugins to scientific and 
+technical applications demands advanced software-engineering techniques, 
+so a publisher-specific plugin signals to the academic community that 
+the publisher is comfortable engineering or designing complex 
+scientific-computing components.}  
+%\p{}
+%\vspace{-1em}
+%\noindent\Large{\underline{\lsHTXN{} Plugins}}
+%\p{}
 %\vspace{2em}
-%\noindent\lun{Complex Exolinks and Interoperability}
 
+\noindent\lun{Using \lsHTXN{} and \lsHGDM{} In Consort}
+\p{As hypergraph text and data encoding protocols, respectively, 
+\HTXN{} and \HGDM{} can interoperate conveniently.  The 
+typical scenario where both formats would be used is that 
+of preparing academic manuscripts accompanied by data sets 
+which are serialized or documented via \HGDM{}.  Specific 
+data samples, or figure illustrations derived from the 
+data set, may then need to be inserted into \HTXN{} 
+publications.  \AThreeR{} components would then be 
+implemented accordingly to track text-to-data cross-references 
+(and vice-versa).}
+
+\p{A typical \AThreeR{} data set provides native front-end 
+code so that the shared data can be viewed and manipulated 
+through custom \GUI{} components.  In conjunction with \PDF{} 
+manuscripts explicating or analyzing the corresponding data, 
+readers then have two potentially interrelated components 
+(typically two top-level windows), one for the \PDF{} 
+and one for the raw data.  Ideally, the two windows would 
+interoperate, e.g. via (in \AThreeR{} parlance) 
+\q{Coordinated Context Menus}.  In the canonical case, 
+a context menu action activated on a particular sample, field, 
+or other data set element (such as a table column) would 
+load the \PDF{} to the text location where that aspect 
+of the data set is discussed.  In the other direction,  
+links embedded in the \PDF{} can trigger a signal to 
+manipulate the data set \GUI{} in correlation with the 
+relevant text location --- again the canonical case is 
+scrolling and \q{unhiding} to ensure that a data sample 
+or field, mentioned at that text point, is visible.}
+
+\noindent\Large{\underline{Case Study}}
+\p{To concretely illustrate \HTXN{}/\HGDM{} interop, 
+consider the following scenario (essentially 
+typified by one of the data sets accompanying 
+\textit{Advances in Ubiquitous Computing} 
+
+}
 
 \end{document}
 
