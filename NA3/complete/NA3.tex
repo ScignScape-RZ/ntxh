@@ -292,6 +292,10 @@
 \newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
 \newcommand{\SQL}{\resizebox{!}{8pt}{\AcronymText{SQL}}}
 
+\newcommand{\CoNLLU}{\resizebox{!}{8pt}{\AcronymText{CoNLL-U}}}
+
+
+
 \newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
 \newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
 
@@ -676,14 +680,14 @@ more restrictive formats such as \SQL{} or \RDF{}.}
 a structuring element called \q{channels}, which are aggregates of 
 edges (by analogy to hypernodes being aggregates of nodes).  Channels 
 in this sense are a mechanism not previously developed in Hypergraph 
-libraries or databases (channels aggregate edges --- most 
+databases or libraries (channels aggregate edges --- most 
 often edges that are each incident to one hypernode --- without 
 likewise grouping their other vertices; in this sense 
-channels are distinct from hypernodes which collapse edges into a single 
+channels are distinct from hypernodes, which collapse edges into a single 
 hyperedge).  The theoretical basis for channels is discussed in 
 Chapter Three of \textit{Advances in Ubiquitous Computing, 
 Cyber-Physical Systems, Smart Cities and Ecological Monitoring} 
-(\href{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}).  Channels are particularly useful when modeling procedure 
+(previewed \href{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}{here}).  Channels are particularly useful when modeling procedure 
 types, leading to a version of type theory formalized in a 
 Hypergraph context (see \textit{Advances in Ubiquitous Computing}, page 94).  
 In \AThreeR{}, channel notations can be employed to identify procedure 
@@ -703,7 +707,7 @@ supports several Requirements Engineering features, including:
 when it fails to lie within empirically meaningful ranges
 
 \item The option to use Universal Numbers for non-integer values, in lieu 
-of floating-point decimals.  (Universal Numbers are a mathematical representation developed 
+of floating-point types.  (Universal Numbers are a mathematical representation developed 
 by John Gustafson, which in many contexts are more precise than floats). 
 
 \item An overall preference for employing application-specific data types instead 
@@ -711,7 +715,7 @@ of generic types like integers and strings.  Using types which expressly model
 a particular empirical phenomenon facilitates Requirements Engineering insofar as 
 the custom type becomes a basic unit of asserting and verifying requirements.
 
-\item A novel channel/hypegraph-based \Cpp{} reflection mechanism, which can be 
+\item A novel channel/hypergraph-based \Cpp{} reflection mechanism, which can be 
 used in addition to or in place of \Qt{} meta-objects.  This in turn promotes 
 scripting and testing for custom data types, so that types' testing and implementation 
 can proceed in modular fashion, with requirements observed at the individual 
@@ -741,7 +745,7 @@ be embedded in a host application; if this host recognizes the
 \HTXN{} protocol, it is possible for \HTXN{} documents to include 
 instructions which call procedures exposed by the host application 
 (so as to insert application data into a manuscript, for example).  
-In general, \HTXN{} is engineered to priotize integrating 
+In general, \HTXN{} is engineered to prioritize integrating 
 and cross-referencing publications and data sets.} 
 
 \p{The benefits of \HTXN{} include:
@@ -789,8 +793,8 @@ to compose documents in \HTXN{} directly.  Instead, \HTXN{}
 files need to be built from text sources in some other 
 format (\NAThree{} has its own markup style, called 
 \q{\NGML{}} for \q{Next-Generation Markup Language}, 
-which outputs \HTXN{} and (from the \HTXN{} files) 
-\LaTeX{} or \XML{}.  The \NGML{} parsers can be readily 
+which outputs \HTXN{} and then \LaTeX{} or \XML{}).  
+The \NGML{} parsers can be readily 
 adapted and modified, so that projects can use a 
 custom-built document language if desired.  The parsers 
 and generators are also \q{transparent} in the sense 
@@ -804,12 +808,12 @@ markup languages targeting \HTXN{}).
 \item[\lsHTXN{} Plugins]
 As a standalone library, \HTXN{} (along with a document-composition 
 language such as \NGML{}) can be included in almost any 
-application that are equipped to call procedures in \Qt{}/\Cpp{} 
+application that is equipped to call procedures in \Qt{}/\Cpp{} 
 libraries (obviously this includes scientific software 
-which uses \Qt{} internally).  Many scientific and technical 
+written with \Qt{} to begin with).  Many scientific and technical 
 applications have a built-in plugin or 
 extension mechanism, which makes it possible to introduce \HTXN{} 
-as an added features; others are open-source projects where 
+as an added feature; others are open-source projects where 
 plugins can simply be inserted as new components in the source code.  
 \lHTXN{} Plugins can then make \HTXN{} available to authors who 
 regularly use the host application for their scientific or 
@@ -856,17 +860,17 @@ scientific-computing components.}
 %\vspace{-1em}
 %\noindent\Large{\underline{\lsHTXN{} Plugins}}
 %\p{}
-%\vspace{2em}
 
+\vspace{2em}
 \noindent\lun{Using \lsHTXN{} and \lsHGDM{} In Consort}
 \p{As hypergraph text and data encoding protocols, respectively, 
-\HTXN{} and \HGDM{} can interoperate conveniently.  The 
+\HTXN{} and \HGDM{} can interoperate organically.  The 
 typical scenario where both formats would be used is that 
 of preparing academic manuscripts accompanied by data sets 
 which are serialized or documented via \HGDM{}.  Specific 
 data samples, or figure illustrations derived from the 
 data set, may then need to be inserted into \HTXN{} 
-publications.  \AThreeR{} components would then be 
+publications.  \AThreeR{} components would be 
 implemented accordingly to track text-to-data cross-references 
 (and vice-versa).}
 
@@ -889,13 +893,57 @@ relevant text location --- again the canonical case is
 scrolling and \q{unhiding} to ensure that a data sample 
 or field, mentioned at that text point, is visible.}
 
+\vspace{1em}
 \noindent\Large{\underline{Case Study}}
 \p{To concretely illustrate \HTXN{}/\HGDM{} interop, 
 consider the following scenario (essentially 
 typified by one of the data sets accompanying 
-\textit{Advances in Ubiquitous Computing} 
+\textit{Advances in Ubiquitous Computing}).  Consider a 
+data set including linguistic corpora annotated with a 
+grammar format such as \CoNLLU{} (named after 
+the Conference on Computational Natural Language Learning).  
+Assuming that some corpus samples are discussed in an 
+article accompanying the data set, these samples are 
+then found in two places: as numbered examples (according 
+to linguistic convention) within the text, as well as in 
+the raw data.  Here is a good example of text/data 
+cross-references: assuming that the \GUI{} components for the 
+data set are some kind of list, table, or tree view 
+where users can scroll through the language samples, 
+optimal integration implies that context menus associated 
+with individual samples on the data end are correlated 
+with locations where the corresponding sample is printed in the 
+article text.  This is an especially substantial case of 
+cross-referencing because the actual raw data (sentences or 
+other language/dialog excerpts) is fully present in the 
+text (in the form of numbered linguistic examples).  
+The essential step in this cross-referencing is to embed 
+data in the \PDF{} file which uniquely identifies each sample, 
+to be read by customized \PDF{} viewers so as to 
+orchestrate the desired \GUI{} coordination.}
 
-}
+\p{A further requirement comes into play if the text will include 
+figures documenting samples' syntactic structure (perhaps 
+generated by a \LaTeX{} package such as TikZ-dependency).  Building 
+such illustrations requires extracting certain fields from the 
+\CoNLLU{} data and using the selected information to 
+populate \LaTeX{} code inserted at the desired document position.  
+This can be achieved by bundling a \CoNLLU{} library 
+(such as \q{UDPipe}) with the data set and implementing a 
+\Cpp{} procedure to call the relevant UDPipe functions, 
+build an intermediate data structure, and use the result 
+to fill in a \LaTeX{} template.  This \Cpp{} procedure can 
+then be triggered by instructions at the relevant locations 
+in the article's \HTXN{} file.}
+
+\p{In this scenario generating publisher-specific \XML{} may be 
+important to help ensure that the data/text cross-references 
+get preserved.  If instead the publisher derives 
+their \XML{} files by conversion (e.g., from 
+\LaTeX{}), the \LaTeX{} labels engineered to enable 
+\q{Context Menu Coordination} may be eliminated or 
+renamed, which can force a time-consuming task of 
+reconstructing text anchors.}
 
 \end{document}
 
