@@ -462,7 +462,7 @@ Operating-System-specific options).
 We use the term \q{Native-Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
 
-\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{Qt Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
+\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{\lQt{} Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another company with Cloud/Native options, Arukas, is folding at the end of this month.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container)
 }
 
 \p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields where (due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
@@ -470,9 +470,16 @@ We use the term \q{Native-Cloud/Native} to describe hybrid applications whose se
 \p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of a \q{Native-Cloud/Native} approach is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application ecosystem.}
 
 {\lunvs}
-\noindent\lun{Native-Cloud/Native in the Context of \lsNAThree{}}
+\noindent\lun{Native Cloud/Native in the Context of \lsNAThree{}}
 \p{In light of the Cloud/Native limitations just identified, 
-LTS intends to contribute tools or hosting arrangements that would bring some of the capabilities of \Qt{} Cloud Services back to the market.  The simplest commercial model for such a product is to license a containerized \Qt{}-based \HTTP{} server that can run as a local application during testing and development, before being deployed to a container hosting service.  
+LTS (Linguistic Technology Systems) intends to contribute 
+tools or hosting arrangements that would bring 
+some of the capabilities of \Qt{} Cloud Services 
+back to the market.  The simplest commercial model for 
+such a product is to license a containerized 
+\Qt{}-based \HTTP{} server that can run as a local 
+application during testing and development, 
+before being deployed to a container hosting service.  
 We have implemented a prototype server along these lines 
 that we call \NDPCloud{} (for \q{Native-Driven Platform on the Cloud}).  
 \lNDPCloud{} is fully self-contained in a \Qt{} context 
@@ -614,8 +621,6 @@ data persistence features) to replace their \AThreeR{}
 equivalents (either initially or after an 
 \AThreeR{}-standalone protyping phase).}
 
-{\lunvs}
-\noindent\lun{\lsNCN{} and \lsAThreeR{} in Consort}
 \p{While \NCN{} applications need not use \AThreeR{}, 
 or vice-versa, the two models are organically 
 paired together.  Their integration can take the form of 
@@ -641,47 +646,9 @@ server-side data providers can be constructed
 accordingly.
 }
 
-\p{To ensure rigorous alignment between client and server endpoints, \NAThree{} employs a data modeling paradigm based on hypergraphs; the mathematical framework for the relevant new hypergraph model (which adds some additional structure to the theory of Hypergraph Categories) is provisionally outlined in a chapter of a book edited by LTS's founder (the chapter authored by a member of the LTS team), soon be published (we can share this material, or alternatively a more thorough unpublished explication, as desired).  In practical terms, the advantage of this model is that \Qt{}-specific data structures can be conveniently serialized and shared with or through cloud services; meanwhile the relevant data structures --- and their interface and procedural requirements --- are rigorously characterized, to support application testing, code-verification, documentation, and systematic User Interface development.  
-\lNAThree{} concretely operationalizes theories 
-which have been advanced in the scientific-computing 
-and knowledge-engineering communities toward a 
-more conceptually refined and \q{multi-scale} 
-Semantic Web.  \lAThreeR{} extends \q{Semantic Web 
-alternatives} such as Conceptual Space Markup 
-Language (\CSML{}) and Categorial Informatics, 
-while also providing a self-contained \Cpp{} 
-Hypergraph library comparable in some respects 
-to AtomSpace (part of the 
-OpenCOG platform) or to HypergraphDB (Hypergraphs 
-and Conceptual Spaces have been proposed in 
-combination as a comprehensive foundation 
-for computational semantics, notably in 
-the article \textit{Interacting Conceptual Spaces} 
-which arose from an Oxford University reading 
-group on Category Theory and formal grammar).
-}
-
-\p{A good example of an \AThreeR{} use-case is 
-that of hosting scientific data sets.  According 
-to the emerging \q{Research Object} paradigm, 
-scientific data should be published alongside 
-code which ensures that subsequent readers and 
-researchers have the tools they need to 
-access, analyze, and visualize the data set, 
-including double-checking statistical analyses 
-and/or replicating experiments.  With 
-\AThreeR{}, data sets can be self-contained 
-Research Object \q{bundles} while still 
-being provisioned with full-featured 
-desktop applications tailored to their 
-specific information profile.  
-LTS is actively developing a framework (called DataSet Creator, or \dsC{}) for building data sets that are paired with academic publications and with native software implemented in custom fashion for each data set (we can provide links to several data sets published as demonstration examples of this technology).  The hosting and implementation of data sets along these lines offers concrete examples of \NAThree{} solutions and an opportunity to promote \NAThree{}-style development in the scientific and publishing communities. 
-}
- 
-\p{As this use-case illustrates, 
-our novel \NCN{} model is based on rigorous serialization and interface-definition paradigms; in comparison, \Qt{} Cloud Services tended to reuse structures more appropriate for non-native contexts (e.g. \JSON{}), which arguably limited client-to-server interoperability.  LTS's \NAThree{} model, by contrast, is combined with data modeling and serialization features that bring their own benefits to application projects over all; as such, this model does not only provide cloud-integration capabilities, but can be used as an overarching application-development framework.}
-
+\vspace{1.5em}
 {\lunvs}
+\vspace{.5em}
 \hspace{-34pt}\noindent\lun{Hypergraph Data Modeling and Requirements Engineering \\}
 \p{\AThreeR{} uses a so-called \q{Hypergraph Data Modeling Protocol} 
 (\HGDM{}) to describe and serialize application data.  Hypergraphs are a 
@@ -715,7 +682,8 @@ document coding assumptions and requirements, which promotes
 the long-term maintenance of an application.  \lAThreeR{} 
 supports several Requirements Engineering features, including:
 
-\begin{itemize}
+\begin{itemize}[itemsep=13pt,
+	topsep=21pt,leftmargin=14pt]
 \item Range-based numeric values, which prohibits data being constructed 
 when it fails to lie within empirically meaningful ranges
 
@@ -741,7 +709,243 @@ data structures and their corresponding \GUI{} representations --- leads
 to rigorous application development and effective maintenance 
 (see \textit{Advances in Ubiquitous Computing}, page 55).
 \end{itemize}
+\vspace{-1em}
 }
+
+\p{Hypergraph data models provide some of the same documentary 
+benefits as Semantic Web Ontologies, only potentially more so, 
+insofar as ordinary \q{Semantic} Ontologies have fewer resources 
+to describe multi-tier structures (at least Ontologies in the 
+conventional sense targeting single-tier graph structures, 
+canonically those of \RDF{}).  The data and type representation 
+architecture for \HGDM{} aims to develop an expressive, 
+general-purpose type system which is naturally suited 
+to data serialization and which is compatible with 
+mainstream programming languages (we can provide 
+more details about the space of type contructions 
+recognized according to this system on request).}
+
+
+\vspace{2em}
+\hspace{-74pt}\noindent\lun{Native Application Development in the Larger \lsIT{} Context \\}
+
+\p{While users have gravitated to web and phone appliations for some 
+day-to-day tasks (social networking, banking, e-commerce), desktop-style 
+native software remains the preeminent front-end paradign in 
+sectors where complex, highly interactive \GUI{}s are needed: 
+science, engineering, industrial design, architecture, 
+biomedical, pharmaceutical, military, and so forth.  
+\lQt{} is the most popular framework among companies 
+who develop native \textit{cross-platform} software, as opposed 
+to applications targeting a single Operating System.  
+Supporting those developers, in turn, is a network of companies 
+(many of them \Qt{} \q{partners}) implementing \GUI{} components, 
+developer tools, \Qt{} Creator plugins, and other enhancements 
+to the \Qt{} ecosystem.  On purely technical grounds, 
+it is reasonable to say --- via its Cloud/Native, scripting, 
+and data-modeling strategies --- that \NAThree{} can likewise be a 
+significant addition to the \Qt{} ecosystem, assuming it is 
+developed and stress-tested to production-grade maturity.}
+
+\p{This document has focused on \NAThree{}'s 
+default implementation via the \Qt{} platform, 
+although  
+it is worth adding that the unique technical 
+innovations expressed via \NAThree{} have applications 
+beyond the \Qt{} ecosystem.  In most cases, \Qt{} 
+data types and protocols have corresponding 
+equivalents in other application frameworks, 
+both cross-platform and Operating-System-specific, 
+such as wxWidgets (cross-platform), Xcode 
+(Apple) or \MFC{} (Microsoft Foundation Classes).  
+A reasonable estimate is that porting \NAThree{} 
+to non-\Qt{} platforms would comprise a 
+six-month project for a two- or three-person 
+development team.  In order to stay focused on 
+the near-term strategy for \NAThree{}, however, 
+the remainder of this presentation will restrict 
+attention to the \Qt{}-specific version.} 
+
+\p{\lQt{} has approximately 
+one million active developers, over 5,000 client 
+companies, and tens of mullions of downloads of 
+recent \Qt{} versions (metrics according to the 
+\Qt{} Group).  These official figures may actually 
+undercount the full \Qt{} market size; in particular, 
+they do not appear to reflect open-source \Qt{} licenses 
+(e.g., Linux software for the \KDE{}/Plasma environment).  
+\lQt{} is used for many scientific computing 
+applications, in numerous disciplines; a representative 
+sample includes  
+CERN ROOT (CERN's physics/subatomic analytics 
+platform), IQmol (for chemistry/molecular physics), 
+medInria (for radiology), TeXstudio (for \LaTeX{} processing), 
+Mendeley Desktop (for Reference/Citation Management), \QGIS{} (for Geoinformatics), 
+MeshLab (for \ThreeD{} modeling), 
+OpenSCAD (for \ThreeD{} geometry), 
+Octave (a MATLAB emulator), 
+ParaView (for data visualization), 
+and the \Qt{} Creator \IDE{} (Integrated Development Environment).  
+Most of these applications would not be included 
+in the \Qt{} company's official user metrics because 
+they are maintained by academic or research 
+institutions with an open-source \Qt{} license; 
+nevertheless, institutions allocate resources 
+for developing and maintaining technical applications.  
+In sum, academic and Linux-oriented projects should 
+be included in the commercial \Qt{} market, because 
+organizations may contract for the implementation of 
+\Qt{} software, even if the finished product will be 
+released non-commercially.}
+
+%{\lunvs}
+\vspace{2em}
+\noindent\lun{\lsNAThree{} Revenue and Marketing}
+%{\lunvsa}
+\p{History suggests that most commercial 
+software products generate revenue, in their 
+early stages, primarily from customer-specific 
+customizations, but then eventually derive 
+their most valuable profit-stream from 
+commercial licenses.  Special-license customizations 
+help mold the product into a widely-usable standard 
+version, given the natural feedback loop which emerges 
+as the product's development team  
+implements project-specific deployments, observing 
+\q{in the field} which features are most useful and 
+how these features are best made available to 
+developers.  As a \q{standardized} version of the 
+product rounds into shape, an increasing user-base 
+who simply downloads and develops solutions with the 
+standard version gradually overtakes, in terms of 
+licensing revenue, the organizations who contract 
+for customizations.}
+
+\p{Taking the official \q{\Qt{} partners} cohort as a 
+representative cross-section of the \Qt{} market, 
+we can find companies whose revenue is driven 
+by custom software development (ICS, Woboq, KDAB, Base2, 
+Bitfactor, Sequality), by commercial licensing 
+(Wind River, VNC Automotive, FrogLogic, NXP), 
+by realtime and/or platform services (Mender, Timesys, Mapbox), 
+as well as hardware/mircroprocessor providers (Toradex, ARM, 
+Texas Instruments).  It is probably true that 
+companies whose products depend in whole or 
+in significant part on \Qt{} generate revenue from 
+customization and consulting more than in other 
+technology sectors.  This may reflect the position  
+of front-end technology in relation to software in general: 
+many software projects begin with new kinds of 
+data or new user-interaction models, and only 
+later address the need for implementing high-quality 
+\GUI{}s.  
+Given that desktop-style front-end development 
+is a rather specialized subdiscipline, many 
+companies end up hiring \Qt{}-focused companies 
+as service contractors, which in turn supports a robust 
+ecosystem of \Qt{} partner companies 
+(data from sources such as 
+Glassdoor suggest that larger \Qt{} consulting 
+partners have revenues roughly comparable to 
+\Qt{} itself, indicating that the worldwide 
+\Qt{} consulting/contracting market falls in 
+the US \$150-\$250 Million range; factoring 
+commercial licenses, \Qt{}-enabled 
+hardware, and \Qt{}-based software reasonably 
+projects the overall \Qt{} market to roughly one-half 
+billion US dollars).}
+
+\p{This being said, financial records released by the 
+\Qt{} company itself suggest that commercial 
+(\q{Developer} and \q{Distribution}) licenses 
+are \Qt{}'s largest revenues source (targets 
+released in 2018 indicate that The \Qt{} Group Plc 
+aims for 60\% revenue from licenses, 20\% from 
+consulting, and 20\% for \q{support and maintenance}, 
+which is an offshoot of developer licenses; 
+total net revenue across these sources from 2018, 
+the most recent figures available, was 
+\euro{}45.6 Million, just over 
+US \$57 Million at 2018 rates).}
+
+\p{It is premature to estimate a comparable partonomy 
+of revenue share for \NAThree{}, but we can 
+identify four distinct profit streams appropriate for 
+\NAThree{} as an integrated platform: 
+
+\begin{enumerate}[itemsep=13pt,
+	topsep=14pt,leftmargin=14pt]
+\item \textbf{Customization} \hspace{.5em} Custom-implemented applications 
+using project-specific versions of \NCN{} and/or \AThreeR{}.
+
+\item \textbf{Licensing}  \hspace{.5em} Commercial licenses required for 
+any deployment of \NCN{} outside LTS-controled 
+servers and/or any deployment of \AThreeR{} 
+applications (or of software including 
+\AThreeR{} components for such 
+development requirements as databases, data modeling, 
+scripting, data serializing/deserialization, 
+and text parsing) in a commercial context.
+
+\item \textbf{Hosting}  \hspace{.5em} LTS anticipates running proprietary 
+containers via a Cloud-Native service such as 
+OpenShift, and then leasing access to this service 
+to \NAThree{} users.  LTS can offer integrated hosting and consulting 
+wherein LTS fully implements and maintains a back-end 
+paired to any desktop/native client software.
+Because the expertise involved 
+in building native desktop applications is very different 
+from the techniques required to deploy a Cloud-Native container 
+image, the option of delegating all 
+backend responsibilities to LTS may 
+appeal to \Qt{}-oriented development teams.
+
+\item \textbf{Sponsorship}  \hspace{.5em} As discussed below, LTS anticipates 
+running a data-sharing platform which would be a 
+publicly-visible introduction to LTS's in-house 
+\NCN{} service (whereas other sub- or para-containers 
+would be leased to third parties and provide 
+publicly-visible content only at their discretion).  
+This \q{demo} container, while being a vehicle for 
+the general public to learn about \NAThree{}, 
+would also host research data sets and 
+would therefore be a resource in the public 
+interest, allowing LTS to receive compensation 
+from companies financially supporting the 
+portal because of its merits as a technology 
+benefitting science or scholarship.
+\end{enumerate}
+
+\vspace{-12pt}
+\p{The remainder of this summary, to elaborate 
+further on the hosting and sponsorship 
+possibilities, will focus on cloud services 
+expressly maintained by LTS (in contrast 
+to commercial \NCN{} instances whose licensees 
+host the \NCN{} code on their own).  In 
+\NCN{} parlance, sub- or para-containers 
+are units within a larger \NCN{} environment 
+utilizing isolated \HTTP{} access protocols 
+and data/file storage.  Each such partial container 
+can be twinned with a specific \AThreeR{} 
+application, providing a cloud end-point for 
+storing application-specific data and/or sharing 
+such data between different executable instances 
+of the application.  Potentially, then, 
+any \AThreeR{} project developed by LTS 
+may have a corresponding presence on 
+LTS's cloud resources.} 
+     
+\p{At the same time, the \AThreeR{} (Application-as-a-Resource) 
+model also envisions desktop applications as 
+self-contained, shareable units, which can 
+be hosted on web servers (including \NCN{} instances) 
+as zip and metadata files.  Therefore, LTS's 
+\NCN{} deployment can serve as an access-point 
+for users acquiring or obtaining information about 
+\AThreeR{} applications (including data sets 
+published as \q{Research Objects} using \AThreeR{} 
+within their code base).}
 
 {\lunvs}
 \noindent\lun{The Hypergraph Text Encoding Protocol}
@@ -762,20 +966,28 @@ In general, \HTXN{} is engineered to prioritize integrating
 and cross-referencing publications and data sets.} 
 
 \p{The benefits of \HTXN{} include:
-\vspace{-2em}
-\begin{description}[leftmargin=13pt,labelsep=15pt,itemsep=12pt]
+\vspace{-1.5em}
+\begin{description}[leftmargin=13pt,
+labelsep=15pt,itemsep=12pt]
 
-\item[Mix-and-Match Formats] Given documents encoded in \HTXN{}, 
-\q{secondary documents}, or \q{views}, can be generated in a 
-variety of conventional formats, such as \LaTeX{} and \XML{}. 
+\item[Mix-and-Match Formats] Once a document has been constructed 
+in \HTXN{} --- this becomes the \q{primary} document --- 
+a choice of \q{generators} is then available (or can be 
+implemented) to produce
+secondary documents, or \q{views}, in a 
+variety of conventional formats (canonically \LaTeX{} and \XML{}). 
 \lHTXN{} employs \q{stand-off} annotation, which allows multiple 
 markup protocols to be defined simultaneously on the same 
-document.  In addition, \lHTXN{} uses a flexible 
+document.  Accordingly, an \HTXN{} document may be prepared 
+for eventually use by both \LaTeX{} and \XML{} generators, 
+including \XML{} content (such as attributes) ignored 
+by the \LaTeX{} generator, and vice-versa.  
+In addition, \lHTXN{} uses a flexible 
 character-encoding protocol that ensures 
 compatibility with diverse text representations
 (such as {\XML}, {\LaTeX}, Unicode, and {\Qt}/QString).  
 Overall, then, \HTXN{} can be useful when it is 
-desirable to employ different formats for a single 
+necessary to employ different formats for a single 
 manuscript at different stages of the publication workflow: 
 for instance, \XML{} for editing and \LaTeX{} for \PDF{} generation.   
 
@@ -958,225 +1170,6 @@ their \XML{} files by conversion (e.g., from
 renamed, which can force a time-consuming task of 
 reconstructing text anchors.}
 
-\vspace{2em}
-\hspace{-74pt}\noindent\lun{Native Application Development in the Larger \lsIT{} Context \\}
-
-\p{While users have gravitated to web and phone appliations for some 
-day-to-day tasks (social networking, banking, e-commerce), desktop-style 
-native software remains the preeminent front-end paradign in 
-sectors where complex, highly interactive \GUI{}s are needed: 
-science, engineering, industrial design, architecture, 
-biomedical, pharmaceutical, military, and so forth.  
-\lQt{} is the most popular framework among companies 
-who develop native \textit{cross-platform} software, as opposed 
-to applications targeting a single Operating System.  
-Supporting those developers, in turn, is a network of companies 
-(many of them \Qt{} \q{partners}) implementing \GUI{} components, 
-developer tools, \Qt{} Creator plugins, and other enhancecments 
-to the \Qt{} ecosystem.  On purely technical grounds, 
-it is reasonable to say --- via its Cloud/Native, scripting, 
-and data-modeling strategies --- that \NAThree{} can likewise be a 
-significant addition to the \Qt{} ecosystem, assuming it is 
-developed and stress-tested to production-grade maturity.}
-
-\p{This document has focused on \NAThree{}'s 
-default implementation via the \Qt{} platform, 
-although  
-it is worth adding that the unique technical 
-innovations expressed via \NAThree{} have applications 
-beyond the \Qt{} ecosystem.  In most cases, \Qt{} 
-data types and protocols have corresponding 
-equivalents in other application frameworks, 
-both cross-platform and Operating-System-specific, 
-such as wxWidgets (cross-platform), Xcode 
-(Apple) or \MFC{} (Microsoft Foundation Classes).  
-A reasonable estimate is that porting \NAThree{} 
-to non-\Qt{} platforms would comprise a 
-six-month project for a two- or three-person 
-development team.  In order to stay focused on 
-the near-term strategy for \NAThree{}, however, 
-the remainder of this presentation will restrict 
-attention to the \Qt{}-specific version.} 
-
-\p{\lQt{} has approximately 
-one million active developers, over 5,000 client 
-companies, and tens of mullions of downloads of 
-recent \Qt{} versions (metrics according to the 
-\Qt{} Group).  These official figures may actually 
-undercount the full \Qt{} market size; in particular, 
-they do not appear to reflect open-source \Qt{} licenses 
-(e.g., Linux software for the \KDE{}/Plasma environment).  
-\lQt{} is used for many scientific computing 
-applications, in numerous disciplines; a representative 
-sample includes  
-CERN ROOT (CERN's physics/subatomic analytics 
-platform), IQmol (for chemistry/molecular physics), 
-medInria (for radiology), TeXstudio (for \LaTeX{} processing), 
-Mendeley Desktop (for Reference/Citation Management), \QGIS{} (for Geoinformatics), 
-MeshLab (for \ThreeD{} modeling), 
-OpenSCAD (for \ThreeD{} geometry), 
-Octave (a MATLAB emulator), 
-ParaView (for data visualization), 
-and the \Qt{} Creator \IDE{} (Integrated Development Environment).  
-Most of these applications would not be included 
-in the \Qt{} company's official user metrics because 
-they are maintained by academic or research 
-institutions with an open-source \Qt{} license; 
-nevertheless, institutions allocate resources 
-for developing and maintaining technical applications.  
-In sum, academic and Linux-oriented projects should 
-be included in the commercial \Qt{} market, because 
-organizations may contract for the implementation of 
-\Qt{} software, even if the finished product will be 
-released non-commercially.}
-
-%{\lunvs}
-%\noindent\lun{\lsNAThree{} Revenue and Marketing}
-%{\lunvsa}
-\p{History suggests that most commercial 
-software products generate revenue, in their 
-early stages, primarily from customer-specific 
-customizations, but then eventually derive 
-their most valuable profit-stream from 
-commercial licenses.  Special-license customizations 
-help mold the product into a widely-usable standard 
-version, given the natural feedback loop which emerges 
-as the product's development team  
-implements project-specific deployments, observing 
-\q{in the field} which features are most useful and 
-how these features are best made available to 
-developers.  As a \q{standardized} version of the 
-product rounds into shape, an increasing user-base 
-who simply downloads and develops solutions with the 
-standard version gradually overtakes, in terms of 
-licensing revenue, the organizations who contract 
-for customizations.}
-
-\p{Taking the official \q{\Qt{} partners} cohort as a 
-representative cross-section of the \Qt{} market, 
-we can find companies whose revenue is driven 
-by custom software development (ICS, Woboq, KDAB, Base2, 
-Bitfactor, Sequality), by commercial licensing 
-(Wind River, VNC Automotive, FrogLogic, NXP), 
-by realtime and/or platform services (Mender, Timesys, Mapbox), 
-as well as hardware/mircroprocessor providers (Toradex, ARM, 
-Texas Instruments).  It is probably true that 
-companies whose products depend in whole or 
-in significant part on \Qt{} generate revenue from 
-customization and consulting more than in other 
-technology sectors.  This may reflect the position  
-of front-end technology in relation to software in general: 
-many software projects begin with new kinds of 
-data or new user-interaction models, and only 
-later address the need for implementing high-quality 
-\GUI{}s.  
-Given that desktop-style front-end development 
-is a rather specialized subdiscipline, many 
-companies end up hiring \Qt{}-focused companies 
-as service contractors, which in turn supports a robust 
-ecosystem of \Qt{} partner companies 
-(data from sources such as 
-Glassdoor suggest that larger \Qt{} consulting 
-partners have revenues roughly comparable to 
-\Qt{} itself, indicating that the worldwide 
-\Qt{} consulting/contracting market falls in 
-the US \$150-\$250 Million range; factoring 
-commercial licenses, \Qt{}-enabled 
-hardware, and \Qt{}-based software reasonably 
-projects the overall \Qt{} market to roughly one-half 
-billion US dollars).}
-
-\p{This being said, financial records released by the 
-\Qt{} company itself suggest that commercial 
-(\q{Developer} and \q{Distribution}) licenses 
-are \Qt{}'s largest revenues source (targets 
-released in 2018 indicate that The \Qt{} Group Plc 
-aims for 60\% revenue from licenses, 20\% from 
-consulting, and 20\% for \q{support and maintenance}, 
-which is an offshoot of developer licenses; 
-total net revenue across these sources from 2018, 
-the most recent figures available, was 
-\euro{}45.6 Million, just over 
-US \$57 Million at 2018 rates).}
-
-\p{It is premature to estimate a comparable partonomy 
-of revenue share for \NAThree{}, but we can 
-identify four distinct profit streams appropriate for 
-\NAThree{} as an integrated platform: 
-
-\begin{enumerate}[itemsep=13pt,
-	topsep=14pt,leftmargin=14pt]
-\item \textbf{Customization} \hspace{.5em} Custom-implemented applications 
-using project-specific versions of \NCN{} and/or \AThreeR{}.
-
-\item \textbf{Licensing}  \hspace{.5em} Commercial licenses required for 
-any deployment of \NCN{} outside LTS-controled 
-servers and/or any deployment of \AThreeR{} 
-applications (or of software including 
-\AThreeR{} components for such 
-development requirements as databases, data modeling, 
-scripting, data serializing/deserialization, 
-and text parsing) in a commercial context.
-
-\item \textbf{Hosting}  \hspace{.5em} LTS anticipates running proprietary 
-containers via a Cloud-Native service such as 
-OpenShift, and then leasing access to this service 
-to \NAThree{} users.  LTS can offer integrated hosting and consulting 
-wherein LTS fully implements and maintains a back-end 
-paired to any desktop/native client software.
-Because the expertise involved 
-in building native desktop applications is very different 
-from the techniques required to deploy a Cloud-Native container 
-image, the option of delegating all 
-backend responsibilities to LTS may 
-appeal to \Qt{}-oriented development teams.
-
-\item \textbf{Sponsorship}  \hspace{.5em} As discussed below, LTS anticipates 
-running a data-sharing platform which would be a 
-publicly-visible introduction to LTS's in-house 
-\NCN{} service (whereas other sub- or para-containers 
-would be leased to third parties and provide 
-publicly-visible content only at their discretion).  
-This \q{demo} container, while being a vehicle for 
-the general public to learn about \NAThree{}, 
-would also host research data sets and 
-would therefore be a resource in the public 
-interest, allowing LTS to receive compensation 
-from companies financially supporting the 
-portal because of its merits as a technology 
-benefitting science or scholarship.
-\end{enumerate}
-
-\vspace{-12pt}
-\p{The remainder of this summary, to elaborate 
-further on the hosting and sponsorship 
-possibilities, will focus on cloud services 
-expressly maintained by LTS (in contrast 
-to commercial \NCN{} instances whose licensees 
-host the \NCN{} code on their own).  In 
-\NCN{} parlance, sub- or para-containers 
-are units within a larger \NCN{} environment 
-utilizing isolated \HTTP{} access protocols 
-and data/file storage.  Each such partial container 
-can be twinned with a specific \AThreeR{} 
-application, providing a cloud end-point for 
-storing application-specific data and/or sharing 
-such data between different executable instances 
-of the application.  Potentially, then, 
-any \AThreeR{} project developed by LTS 
-may have a corresponding presence on 
-LTS's cloud resources.} 
-     
-\p{At the same time, the \AThreeR{} (Application-as-a-Resource) 
-model also envisions desktop applications as 
-self-contained, shareable units, which can 
-be hosted on web servers (including \NCN{} instances) 
-as zip and metadata files.  Therefore, LTS's 
-\NCN{} deployment can serve as an access-point 
-for users acquiring or obtaining information about 
-\AThreeR{} applications (including data sets 
-published as \q{Research Objects} using \AThreeR{} 
-within their code base).}
 
 \vspace{2em}
 \noindent\lun{\lsNAThree{} and the Research Object Protocol}
