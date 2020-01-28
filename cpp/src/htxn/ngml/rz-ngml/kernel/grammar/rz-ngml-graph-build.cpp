@@ -506,7 +506,19 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
 
 void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
 {
- tag_command_leave();
+ if(flags.active_attribute_sequence)
+ {
+  if(caon_ptr<tNode> cn = markup_position_.current_node())
+  {
+   if(caon_ptr<NGML_Tag_Command> ntc = cn->ngml_tag_command())
+   {
+    CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+    ntc->flags.is_multi_parent = true;
+   }
+  }
+ }
+ else
+   tag_command_leave();
  QString tag_command = markup_position_.current_tag_command_name();
  tag_command_entry_inside_multi(wmi, tag_command, arg_marker);
 }
@@ -579,6 +591,8 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
   ntc->flags.is_provisional_multi_parent = true;
   markup_position_.prepare_attribute_sequence();
   parse_context_.flags.inside_attribute_sequence = true;
+  parse_context_.flags.inside_multi_generic = true;
+  flags.active_attribute_sequence = true;
   acc_mode_ = Attribute;
  }
  else
@@ -597,7 +611,6 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
     parse_context_.flags.inside_multi_parent = true;
  }
 }
-
 
 void NGML_Graph_Build::tag_command_entry_inline(QString wmi, QString tag_command,
  QString tag_body_follow, QString argument)

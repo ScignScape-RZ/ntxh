@@ -381,7 +381,6 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   graph_build.tag_command_entry_inline("::", cmd, ";", {});
  });
 
-
  add_rule( flags_all_(parse_context ,inside_multi_generic),
   ngml_context, 
   "multi-arg-transition",

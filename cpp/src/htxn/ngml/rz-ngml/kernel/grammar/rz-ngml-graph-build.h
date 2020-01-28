@@ -40,6 +40,7 @@ class NGML_Graph_Build
   bool skip_command_node_insert:1;
   bool active_annotation_entry:1;
   bool active_annotation_tile:1;
+  bool active_attribute_sequence:1;
  _flags
 
  enum Acc_Mode {
