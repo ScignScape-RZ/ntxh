@@ -508,17 +508,22 @@ void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
 {
  if(flags.active_attribute_sequence)
  {
+  flags.active_attribute_sequence = false;
   if(caon_ptr<tNode> cn = markup_position_.current_node())
   {
    if(caon_ptr<NGML_Tag_Command> ntc = cn->ngml_tag_command())
    {
     CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+    check_tile_acc();
+    markup_position_.attribute_sequence_leave();
     ntc->flags.is_multi_parent = true;
+    parse_context_.flags.inside_multi_parent = true;
+    tag_command_entry_inside_multi(wmi, ntc->name(), arg_marker);
+    return;
    }
   }
  }
- else
-   tag_command_leave();
+ tag_command_leave();
  QString tag_command = markup_position_.current_tag_command_name();
  tag_command_entry_inside_multi(wmi, tag_command, arg_marker);
 }
