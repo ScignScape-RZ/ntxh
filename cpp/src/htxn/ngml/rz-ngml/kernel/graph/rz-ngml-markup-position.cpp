@@ -112,8 +112,10 @@ void NGML_Markup_Position::merge_multi_parent_inherited(NGML_Tag_Command& parent
 {
  ntc.flags.is_multi_parent_inherited = parent.flags.is_multi_parent_inherited
    || parent.flags.is_multi_parent;
- ntc.flags.is_multi_parent_semis_inherited = parent.flags.is_multi_parent_semis_inherited
-   || parent.flags.is_multi_parent_semis;
+ ntc.flags.anticipate_semis_inherited =
+   parent.flags.anticipate_semis_inherited || parent.flags.anticipate_semis;
+// ntc.flags.is_multi_parent_semis_inherited = parent.flags.is_multi_parent_semis_inherited
+//   || parent.flags.is_multi_parent_semis;
 
  ntc.flags.multi_arg_layer_inherited = parent.flags.multi_arg_layer
    || parent.flags.multi_arg_layer_inherited;
@@ -125,7 +127,7 @@ void NGML_Markup_Position::merge_multi_parent_sequence(NGML_Tag_Command& parent,
   NGML_Tag_Command& ntc)
 {
  ntc.flags.is_multi_parent_inherited = parent.flags.is_multi_parent_inherited;
- ntc.flags.is_multi_parent_semis_inherited = parent.flags.is_multi_parent_semis_inherited;
+ ntc.flags.anticipate_semis_inherited = parent.flags.anticipate_semis_inherited;
 
  ntc.flags.multi_arg_layer_inherited = parent.flags.multi_arg_layer_inherited;
  ntc.flags.multi_main_layer_inherited = parent.flags.multi_main_layer_inherited;
@@ -138,14 +140,14 @@ void NGML_Markup_Position::merge_multi_parent_inherited(NGML_Tile& parent,
  {
   CAON_PTR_DEBUG(NGML_Tag_Command ,pntc)
   ntc.flags.is_multi_parent_inherited = pntc->flags.is_multi_parent_inherited
-      || pntc->flags.is_multi_parent;
-    ntc.flags.is_multi_parent_semis_inherited = pntc->flags.is_multi_parent_semis_inherited
-      || pntc->flags.is_multi_parent_semis;
+    || pntc->flags.is_multi_parent;
+  ntc.flags.anticipate_semis_inherited = pntc->flags.anticipate_semis_inherited
+    || pntc->flags.anticipate_semis;
 
-    ntc.flags.multi_arg_layer_inherited = pntc->flags.multi_arg_layer
-      || pntc->flags.multi_arg_layer_inherited;
-    ntc.flags.multi_main_layer_inherited = pntc->flags.multi_main_layer
-      || pntc->flags.multi_main_layer_inherited;
+  ntc.flags.multi_arg_layer_inherited = pntc->flags.multi_arg_layer
+    || pntc->flags.multi_arg_layer_inherited;
+  ntc.flags.multi_main_layer_inherited = pntc->flags.multi_main_layer
+    || pntc->flags.multi_main_layer_inherited;
  }
 }
 

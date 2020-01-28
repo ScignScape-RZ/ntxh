@@ -516,16 +516,14 @@ void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
     CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
     check_tile_acc();
     markup_position_.attribute_sequence_leave();
-    if(ntc->flags.is_provisional_multi_parent_semis)
-    {
-     ntc->flags.is_multi_parent_semis = true;
-     parse_context_.flags.inside_multi_parent_semis = true;
-    }
+    ntc->flags.is_multi_parent = true;
+
+    //if(ntc->flags.is_provisional_multi_parent_semis)
+    //?ntc->flags.is_multi_parent_semis = true;
+    if(ntc->flags.anticipate_semis)
+      parse_context_.flags.inside_multi_parent_semis = true;
     else
-    {
-     ntc->flags.is_multi_parent =  true;
-     parse_context_.flags.inside_multi_parent = true;
-    }
+      parse_context_.flags.inside_multi_parent = true;
     tag_command_entry_inside_multi(wmi, ntc->name(), arg_marker);
     return;
    }
@@ -599,13 +597,12 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
 
  tag_body_leave();
 
+ if(tag_body_follow.isEmpty())
+   ntc->flags.anticipate_semis = true;
+
  if(first_arg_marker == "@")
  {
-  if(tag_body_follow.isEmpty())
-    ntc->flags.is_provisional_multi_parent_semis = true;
-  else
-    ntc->flags.is_provisional_multi_parent = true;
-
+  ntc->flags.is_provisional_multi_parent = true;
   markup_position_.prepare_attribute_sequence();
   parse_context_.flags.inside_attribute_sequence = true;
   parse_context_.flags.inside_multi_generic = true;
@@ -614,11 +611,7 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
  }
  else
  {
-  if(tag_body_follow.isEmpty())
-    ntc->flags.is_multi_parent_semis = true;
-  else
-    ntc->flags.is_multi_parent = true;
-
+  ntc->flags.is_multi_parent = true;
   tag_command_entry_inside_multi(first_arg_wmi, tag_command, first_arg_marker);
 
   parse_context_.flags.inside_multi_generic = true;
@@ -764,12 +757,14 @@ void NGML_Graph_Build::check_multi_parent_reset()
  if(caon_ptr<NGML_Tag_Command> ntc = markup_position_.get_current_tag_command())
  {
   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
-  parse_context_.flags.inside_multi_parent = ntc->flags.is_multi_parent
-    || ntc->flags.is_multi_parent_inherited;
-  parse_context_.flags.inside_multi_parent_semis = ntc->flags.is_multi_parent_semis
-    || ntc->flags.is_multi_parent_semis_inherited;
-  parse_context_.flags.inside_multi_generic = 
-    parse_context_.flags.inside_multi_parent || parse_context_.flags.inside_multi_parent_semis;
+  if(ntc->flags.is_multi_parent || ntc->flags.is_multi_parent_inherited)
+  {
+   parse_context_.flags.inside_multi_generic = true;
+   if(ntc->flags.anticipate_semis)
+     parse_context_.flags.inside_multi_parent_semis = true;
+   else
+     parse_context_.flags.inside_multi_parent = true;
+  }
  }
  else
  {

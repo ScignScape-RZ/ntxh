@@ -423,7 +423,7 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 
  case 28: return QChar('/'); // // 92 // Boundary
 
- case 29: return QChar('\t'); // // 93 // SpaceX
+ case 29: return QChar(); // // 93 // SpaceX
 
  case 30: return QChar('-'); // // 94  // DashX
  case 31: return QChar('/'); // // 95  // FslX
@@ -435,7 +435,7 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
  case 34: return QChar('{'); // // 98  // OCyBrX
  case 35: return QChar('}'); // // 99  // CCyBrX
 
- case 36: return QChar('\n'); // // 100  // Null
+ case 36: return QChar(); // // 100  // Null
 
  case 37: return QChar('^'); // // 101  // TxtHatX
  case 38: return QChar(','); // // 102  // NpCmaX

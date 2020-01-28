@@ -439,7 +439,7 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   else
     nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end, wmic, wsc);
 
-  if(ntc->flags.is_multi_parent || ntc->flags.is_multi_parent_semis)
+  if(ntc->flags.is_multi_parent)
     multi_parent_range_stack_.push({nc1, {}});
 
   QStringList args;
@@ -552,7 +552,17 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  }
  else if(ntc->flags.is_multi_parent)
    ; // nothing ...
- else if(!ntc->flags.is_self_closed)
+ else if(ntc->flags.is_self_closed)
+ {
+  // // maybe need to add a one-character filler ...
+  if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
+  {
+   tag_command_arg_layer_ += "`{/}";
+   tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_);
+   ++tag_command_arg_index_;
+  }
+ }
+ else
  {
   if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
     tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_ - 1);

@@ -265,7 +265,9 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
  for(auto pr: prs)
  {
   const HTXN_Node_Detail* nd = pr.second;
-  if(nd->flags.optional)
+  if(nd->flags.wmi_none)
+    ; // nothing
+  else if(nd->flags.optional)
     end_result.append("]");
   else if(nd->flags.region)
     end_result.append(QString("\\end{%1}").arg(pr.first));
