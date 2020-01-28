@@ -90,6 +90,8 @@ public:
 
  NGML_Markup_Position(caon_ptr<tNode> current_node);
 
+ void prepare_attribute_sequence();
+
  void await_mandatory_or_optional(caon_ptr<tNode> node);
  void await_optional(caon_ptr<tNode> node);
  void await_mandatory(caon_ptr<tNode> node);

@@ -570,21 +570,24 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
  if(m == Region)
    ntc->flags.is_region = true;
 
- if(tag_body_follow.isEmpty())
-   ntc->flags.is_multi_parent_semis = true;
- else
-   ntc->flags.is_multi_parent = true;
-
  ntc->flags.has_entry = true;
 
  tag_body_leave();
 
  if(first_arg_marker == "@")
  {
+  ntc->flags.is_provisional_multi_parent = true;
+  markup_position_.prepare_attribute_sequence();
   parse_context_.flags.inside_attribute_sequence = true;
+  acc_mode_ = Attribute;
  }
  else
  {
+  if(tag_body_follow.isEmpty())
+    ntc->flags.is_multi_parent_semis = true;
+  else
+    ntc->flags.is_multi_parent = true;
+
   tag_command_entry_inside_multi(first_arg_wmi, tag_command, first_arg_marker);
 
   parse_context_.flags.inside_multi_generic = true;
@@ -910,6 +913,7 @@ caon_ptr<NGML_Graph_Build::tNode> NGML_Graph_Build::make_new_node(caon_ptr<NGML_
 
 void NGML_Graph_Build::attribute_sequence_leave()
 {
+ check_tile_acc();
  parse_context_.flags.inside_attribute_sequence = false;
  parse_context_.flags.inside_multi_generic = false;
  markup_position_.attribute_sequence_leave();

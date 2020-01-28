@@ -68,6 +68,8 @@ public:
   bool is_left_wrapped:1;
 
   bool is_main_layer:1;
+  bool is_provisional_multi_parent:1;
+
  _flags
 
 public:

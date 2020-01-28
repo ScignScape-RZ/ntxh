@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-markup-position.h"
 
 #include "tag-command/rz-ngml-tag-command.h"
@@ -19,6 +25,11 @@ NGML_Markup_Position::NGML_Markup_Position(caon_ptr<tNode> current_node)
    fr_(NGML_Frame::instance()), qry_(NGML_Query::instance()),
    position_state_(Root), held_position_state_(Held_Empty), current_khif_connector_(Khif_Connectors::Khif_N_A)
 {
+}
+
+void NGML_Markup_Position::prepare_attribute_sequence()
+{
+ position_state_ = Tag_Body_Leave_Awaiting_Attributes;
 }
 
 QString NGML_Markup_Position::current_tag_command_name()
@@ -407,7 +418,7 @@ void NGML_Markup_Position::tag_body_leave()
 
 void NGML_Markup_Position::attribute_sequence_leave()
 {
-
+ position_state_ = Tag_Body_Leave;
 }
 
 

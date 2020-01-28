@@ -312,7 +312,7 @@
 
 \vspace{.75em}}
 
-\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+\newcommand{\q}[1]{{\fontfamily{phv}\selectfont ``}#1{\fontfamily{phv}\selectfont ''}} 
 
 %\newcommand{\deconum}[1]{{\textcircled{#1}}}
 
@@ -859,15 +859,14 @@ later address the need for implementing high-quality
 \GUI{}s.  
 Given that desktop-style front-end development 
 is a rather specialized subdiscipline, many 
-companies end up hiring \Qt{}-focused companies 
+organizations end up hiring \Qt{}-focused companies 
 as service contractors, which in turn supports a robust 
-ecosystem of \Qt{} partner companies 
-(data from sources such as 
+\Qt{} ecosystem (data from sources such as 
 Glassdoor suggest that larger \Qt{} consulting 
 partners have revenues roughly comparable to 
 \Qt{} itself, indicating that the worldwide 
 \Qt{} consulting/contracting market falls in 
-the US \$150-\$250 Million range; factoring 
+the US \$150-\$250 Million range; factoring in 
 commercial licenses, \Qt{}-enabled 
 hardware, and \Qt{}-based software reasonably 
 projects the overall \Qt{} market to roughly one-half 
@@ -1017,14 +1016,15 @@ markup.  For example, \HTXN{} identifies
 sentence boundaries and punctuation features, 
 disambiguating logically distinct 
 but often visually identical 
-characters (such as dots/periods or dashes/hyphens, which have different structural meanings in different contexts).   
+characters (such as dots/periods or dashes/hyphens, 
+which have different structural meanings in different contexts).   
 
 \item[A LaTeX-Compatible Document Object Model] 
 \hspace{.1em}\lHTXN{} files have a graph-based structure that 
 can be searched and traversed similar to the \XML{} 
 Document Object Model.  \lHTXN{}'s document model, 
 however, is designed to represent most structural 
-features of \LaTeX{} representation as well as \XML{}. 
+features of \LaTeX{} encoding as well as \XML{}. 
 Therefore, in conjunction with generating \LaTeX{} views 
 on an \HTXN{} manuscript, \HTXN{} provides in effect a 
 means to traverse \LaTeX{} documents via software 
@@ -1104,7 +1104,7 @@ scientific-computing components.}
 %\noindent\Large{\underline{\lsHTXN{} Plugins}}
 %\p{}
 
-%\vspace{6em}
+%\vspace{3em}
 {\lunvs}
 \noindent\lun{Using \lsHTXN{} and \lsHGDM{} In Consort: A case study}
 {\lunvsa}
@@ -1139,9 +1139,10 @@ scrolling and \q{unhiding} to ensure that a data sample
 or field, mentioned at that text point, is visible.}
 
 \p{To concretely illustrate \HTXN{}/\HGDM{} interop, 
-consider the following scenario (essentially 
-typified by one of the data sets accompanying 
-\textit{Advances in Ubiquitous Computing}).  Consider a 
+consider the following scenario (this was the situation 
+with one of the data sets accompanying 
+\textit{Advances in Ubiquitous Computing}, which can serve as 
+a case-study).  Consider a 
 data set including linguistic corpora annotated with a 
 grammar format such as \CoNLLU{} (named after 
 the Conference on Computational Natural Language Learning).  
