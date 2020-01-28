@@ -172,6 +172,10 @@
 \newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
 \newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
 
+
+\newcommand{\UX}{\resizebox{!}{8pt}{\AcronymText{UX}}}
+
+
 \newcommand{\JSON}{\resizebox{!}{8pt}{\AcronymText{JSON}}}
 
 \newcommand{\lsIT}{\resizebox{!}{10.5pt}{\AcronymText{IT}}}
@@ -256,7 +260,8 @@
 
 \newcommand{\HGDM}{\resizebox{!}{8pt}{\AcronymText{HGDM}}}
 
-\newcommand{\lQt}{\resizebox{!}{10.5pt}{\AcronymText{Qt}}}
+\newcommand{\lQt}{\resizebox{!}{9.5pt}{\AcronymText{Qt}}}
+\newcommand{\lsQt}{\resizebox{!}{10.5pt}{\AcronymText{Qt}}}
 
 \newcommand{\lNCN}{\resizebox{!}{9pt}{\AcronymText{NCN}}}
 \newcommand{\lAThreeR}{\resizebox{!}{9pt}{\AcronymText{A3R}}}
@@ -456,17 +461,18 @@ Operating-System-specific options).
 }
 
 {\lunvs}
-\noindent\lun{The Current Status of \lQt{} Cloud Integration}
+\noindent\lun{The Current Status of \lsQt{} Cloud Integration}
 {\lunvsa}
-\p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  
-We use the term \q{Native-Cloud/Native} to describe hybrid applications whose server and client endpoints are both internally native -- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
+\p{There has been considerable demand in the native-application sector for a systematized Cloud Services model designed to interoperate with cross-platform native applications.  Cloud/Native components can augment the functionality of native/desktop software by providing remote storage for user data; enabling users to share content for collaborative work; maintaining domain-specific repositories (i.e., spaces of resources whose format is specialized so that only select applications can access them properly); and upgrading or extending applications without re-install.  In \NCN{}, the term \q{Native Cloud/Native} is used to 
+describe hybrid applications whose server and client endpoints are both native components 
+-- in contrast to conventional Cloud/Native where native servers are paired with (potentially) non-native clients. 
 }
 
-\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{\lQt{} Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later (retroactively we can identify some design flaws which might have hindered the project).  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another Cloud/Native service, Arukas, shut at the end of January 2020.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container).}
+\p{Cloud/Native support in existing cross-platform native-application frameworks is fairly primitive.  Since \Qt{} is by far the most widely-used such framework, the \Qt{} case is instructive.  In 2013 (following an earlier beta phase) the \Qt{} company introduced \q{\Qt{} Cloud Services}, which provided a convenient, \Qt{}-aware cloud-hosting platform for \Qt{} accounts (in the company's words: \q{\lQt{} Cloud Beta has solved an immense need for \Qt{} developers when it comes to backend-as-a-service and believe that there is an even greater need to provide the \Qt{} ecosystem with an all-in-one \Qt{} solution for cloud computing}).  However --- to the consternation of the \Qt{} community --- this project was discontinued several years later.  Meanwhile, OpenShift discontinued their free-tier Cloud/Native hosting last year, and another Cloud/Native service, Arukas, shut at the end of January 2020.  This means that \Qt{} developers have limited options even for hosting hand-rolled \Qt{} cloud solutions (which can be done by compiling \Qt{} into a Ubuntu container, as one method).}
 
 \p{Considering the prominence of both \Qt{} and Cloud/Native technologies in the contemporary computing landscape, it is disconcerting that no standard framework or hosting service provides a cloud platform which works with \Qt{} \q{out-of-the-box.}  The existence of such a platform would be a boon to software in sectors like scientific computing, bioinformatics, bioimaging, pharmaceuticals, academic publishing, and other fields where (due to complex \GUI{} and/or data-analytic requirements) the software is predominantly native-compiled and desktop-oriented.}
  
-\p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of a \q{Native-Cloud/Native} approach is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application ecosystem.}
+\p{Of course, many desktop applications have some web integration, but the current architecture forces the client-facing and web-facing components of the application to be almost completely separate, which adds to development time and expense.  Moreover, current native-application environments do not fully leverage Cloud/Native services; they may well be implemented via more old-fashioned non-cloud servers.  The great possibility of a \q{Native Cloud/Native} approach is a peer-to-peer client-server relationship, sharing libraries and data formats on both ends; and the infrastructure to bring the benefits of Cloud Computing (e.g. faster development and deployment, and less expensive hosting, as compared to non-cloud web services) to the native-application ecosystem.}
 
 {\lunvs}
 \noindent\lun{Native Cloud/Native in the Context of \lsNAThree{}}
@@ -510,7 +516,7 @@ a remote Docker hosting environment.
 deployed on any Docker cloud service, 
 such as OpenShift.  In this guise LTS has 
 no direct involvement with the hosting service 
-(although \NDPCloud{} includes some tools 
+(although \NCN{} includes some tools 
 to streamline cloud deployment).  Ideally, 
 however, LTS would like to secure its own 
 hosting capabilities, perhaps by using an 
@@ -552,7 +558,8 @@ and embedded web viewers, so that
 requiring separate library installs.  For many use-cases, 
 then, an entire desktop application can be deployed 
 in source-code form, to be compiled and launched 
-via a single click within \Qt{} creator.  
+via a single click within \Qt{} creator, 
+or a minimal command-line \q{make} instruction.  
 Self-contained in this manner, \AThreeR{} 
 applications can be treated as single 
 resource units --- somewhat analogous 
@@ -579,7 +586,7 @@ scenarios, \AThreeR{} applications provide
 both libraries for parsing and manipulating 
 the domain-specific formats and a \q{reference 
 implementation} documenting the proper 
-visualization and User Experience optimal 
+visualization and User Experience (\UX{}) optimal 
 for the unique data structures involved.  
 This structural profiling is advanced not 
 only by domain-specific \GUI{} components 
@@ -610,12 +617,17 @@ This is in contrast to typical libraries
 providing application-development features 
 such as database engines or code parsers, 
 which typically require separate installation 
-(often with separate build tools) and are 
-opaque to the debugger.  Another benefit 
+(often with separate build tools) and are often 
+opaque to the debugger --- that is, it may be 
+impossible in some contexts to examine their function 
+bodies or stack frames.}
+
+\p{Another benefit 
 of using internal \AThreeR{} components is 
 that they can be simultaneously compiled 
 into \NCN{} instances developed alongside them.  
-With that said, developers could certainly 
+With that said, developers implementing \NCN{}-based
+solutions could certainly 
 use non-\AThreeR{} components in modular 
 fashion (e.g., \Qt{}'s \SQL{}-based 
 data persistence features) to replace their \AThreeR{} 
@@ -629,23 +641,30 @@ paired together.  Their integration can take the form of
 as resources, and/or \AThreeR{} software 
 connecting to \NCN{} instances as a domain-specific 
 cloud back-end.  The \AThreeR{} metadata 
-paradigm, based on \q{Hypergraph Ontologies}, 
+paradigm, based on Hypergraphs or \q{Hypergraph Ontologies} 
+(discussed in the next section), 
 provides tools to streamline the encoding and 
 distribution of application-specific data structures.  
 This model thereby accelerates the process of 
 implementing cloud services procedurally 
 aligned with \AThreeR{} components, because 
 complementary \AThreeR{} and \NCN{} endpoints 
-can share the same information representations.  
-Moreover, \AThreeR{} interface definitions 
+can share the same information representations.}
+
+\p{Moreover, \AThreeR{} interface definitions 
 can serve as references for implementing 
-compatible \NCN{} server-side code; 
+compatible \NCN{} server-side code ---  
 the interface specification illustrates which 
 client-side procedures will handle any 
 server-originating data structures, so the 
 server-side data providers can be constructed 
-accordingly.
-}
+accordingly.  More precisely, an \AThreeR{} 
+interface presents a \q{procedural contract} --- 
+it guarantees that a given suite of procedures are
+available to be launched, insofar as the application 
+receives new data from a server.  The server-side 
+code should then be implemented to send data according 
+to those contract-specified procedures' requirements.}
 
 {\lunvs}
 \noindent\lun{Hypergraph Data Modeling and Requirements Engineering}
@@ -667,7 +686,9 @@ channels are distinct from hypernodes, which collapse edges into a single
 hyperedge).  The theoretical basis for channels is discussed in 
 Chapter Three of \textit{Advances in Ubiquitous Computing, 
 Cyber-Physical Systems, Smart Cities and Ecological Monitoring} 
-(previewed \href{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}{here}).  Channels are particularly useful when modeling procedure 
+(previewed \href{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}{here}; a more detailed unpublished review 
+of channel \q{theory} is also available on request).  
+Channels are particularly useful when modeling procedure 
 types, leading to a version of type theory formalized in a 
 Hypergraph context (see \textit{Advances in Ubiquitous Computing}, page 94).  
 In \AThreeR{}, channel notations can be employed to identify procedure 
@@ -696,7 +717,7 @@ of generic types like integers and strings.  Using types which expressly model
 a particular empirical phenomenon facilitates Requirements Engineering insofar as 
 the custom type becomes a basic unit of asserting and verifying requirements.
 
-\item A novel channel/hypergraph-based \Cpp{} reflection mechanism, which can be 
+\item A novel channel/Hypergraph-based \Cpp{} reflection mechanism, which can be 
 used in addition to or in place of \Qt{} meta-objects.  This in turn promotes 
 scripting and testing for custom data types, so that types' testing and implementation 
 can proceed in modular fashion, with requirements observed at the individual 
@@ -730,7 +751,7 @@ mapped to a corresponding \HGDM{}-modeled type
 and then used in an Interface Definition.  
 Analogously, data structures which are instances of almost 
 any type can be converted to a 
-hypergraph structure, where they may be automatically serialized.}
+hypergraph structure, from where they may be automatically serialized.}
 
 %{\vspace{4em}}
 {\lunvs}
@@ -755,9 +776,8 @@ significant addition to the \Qt{} ecosystem, assuming it is
 developed and stress-tested to production-grade maturity.}
 
 \p{This document has focused on \NAThree{}'s 
-default implementation via the \Qt{} platform, 
-although  
-it is worth adding that the unique technical 
+default (\Qt{}) implementation,  
+although it is worth adding that the unique technical 
 innovations expressed via \NAThree{} have applications 
 beyond the \Qt{} ecosystem.  In most cases, \Qt{} 
 data types and protocols have corresponding 
@@ -817,8 +837,8 @@ software originally built in an open-source context
 for Research and Development then becomes an operational 
 asset in a commercialized infrastructure.  This is another 
 dimension to the \Qt{} market space which may not be 
-properly assessed only through metrics of 
-commercial \Qt{} licencees.}      
+properly assessed when considering 
+commercial \Qt{} licencees exclusively.}      
 
 \p{History suggests that most commercial 
 software products generate revenue, in their 
@@ -953,7 +973,7 @@ any \AThreeR{} project developed by LTS
 may have a corresponding presence on 
 LTS's cloud resources.} 
      
-\p{At the same time, the \AThreeR{} (Application-as-a-Resource) 
+\p{At the same time, the \AThreeR{}  
 model also envisions desktop applications as 
 self-contained, shareable units, which can 
 be hosted on web servers (including \NCN{} instances) 
@@ -981,16 +1001,16 @@ be embedded in a host application; if this host recognizes the
 instructions which call procedures exposed by the host application 
 (so as to insert application data into a manuscript, for example).  
 In general, \HTXN{} is engineered to prioritize integrating 
-and cross-referencing publications and data sets.} 
+\makebox{and cross-referencing publications and data sets.}} 
 
 \p{The benefits of \HTXN{} include:
-\vspace{-1.5em}
+\vspace{-1em}
 \begin{description}[leftmargin=13pt,
-labelsep=20pt,itemsep=12pt]
+labelsep=20pt,itemsep=9pt]
 
 \item[Mix-and-Match Formats] Once a document has been constructed 
 in \HTXN{} --- this becomes the \q{primary} document --- 
-a choice of \q{generators} is then available (or can be 
+a choice of generators is then available (or can be 
 implemented) to produce
 secondary documents, or \q{views}, in a 
 variety of conventional formats (canonically \LaTeX{} and \XML{}). 
