@@ -208,6 +208,7 @@
 \newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
 
 \newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
+\newcommand{\TwoD}{\resizebox{!}{8pt}{\AcronymText{2D}}}
 
 \newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
 
@@ -259,6 +260,15 @@
 \newcommand{\MFC}{\resizebox{!}{8.5pt}{\AcronymText{MFC}}}
 
 \newcommand{\HGDM}{\resizebox{!}{8pt}{\AcronymText{HGDM}}}
+
+\newcommand{\IT}{\resizebox{!}{9pt}{\AcronymText{IT}}}
+
+
+\newcommand{\TikZ}{\resizebox{!}{8pt}{\AcronymText{TikZ}}}
+
+\newcommand{\UDPipe}{\resizebox{!}{8pt}{\AcronymText{UDPipe}}}
+
+
 
 \newcommand{\lQt}{\resizebox{!}{9.5pt}{\AcronymText{Qt}}}
 \newcommand{\lsQt}{\resizebox{!}{10.5pt}{\AcronymText{Qt}}}
@@ -838,9 +848,19 @@ for Research and Development then becomes an operational
 asset in a commercialized infrastructure.  This is another 
 dimension to the \Qt{} market space which may not be 
 properly assessed when considering 
-commercial \Qt{} licencees exclusively.}      
+commercial \Qt{} licensees exclusively.}      
 
-\p{History suggests that most commercial 
+\p{Part of the \Qt{} market, of course, is the 
+\Qt{} ecosystem itself; commercially-licensed 
+\Qt{} code bases or development tools get used 
+in turn by \Qt{}-oriented companies to implement 
+end-user solutions.  \lQt{} \q{products} as 
+such are either software applications for end 
+users or developer tools via which the former 
+are implemented (although components 
+conceived for single projects may later 
+be reused as general tools). 
+History suggests that most commercial 
 software products generate revenue, in their 
 early stages, primarily from customer-specific 
 customizations, but then eventually derive 
@@ -852,12 +872,7 @@ as the product's development team
 implements project-specific deployments, observing 
 \q{in the field} which features are most useful and 
 how these features are best made available to 
-developers.  As a \q{standardized} version of the 
-product rounds into shape, an increasing user-base 
-who simply downloads and develops solutions with the 
-standard version gradually overtakes, in terms of 
-licensing revenue, the organizations who contract 
-for customizations.}
+developers.}
 
 \p{Taking the official \Qt{} partners cohort as a 
 representative cross-section of the \Qt{} market, 
@@ -910,7 +925,7 @@ of revenue share for \NAThree{}, but we can
 identify four distinct profit streams appropriate for 
 \NAThree{} as an integrated platform: 
 
-\begin{enumerate}[itemsep=13pt,
+\begin{enumerate}[itemsep=6pt,
 	topsep=14pt,leftmargin=14pt]
 \item \textbf{Customization} \hspace{.5em} Custom-implemented applications 
 using project-specific versions of \NCN{} and/or \AThreeR{}.
@@ -982,7 +997,8 @@ as zip and metadata files.  Therefore, LTS's
 for users acquiring or obtaining information about 
 \AThreeR{} applications (including data sets 
 published as \q{Research Objects} using \AThreeR{} 
-within their code base).}
+within their code base).  The next three sections 
+will discuss these academic applications further.}
 
 {\lunvs}
 \noindent\lun{The Hypergraph Text Encoding Protocol}
@@ -1017,7 +1033,7 @@ variety of conventional formats (canonically \LaTeX{} and \XML{}).
 \lHTXN{} employs \q{stand-off} annotation, which allows multiple 
 markup protocols to be defined simultaneously on the same 
 document.  Accordingly, an \HTXN{} document may be prepared 
-for eventually use by both \LaTeX{} and \XML{} generators, 
+for eventual use by both \LaTeX{} and \XML{} generators, 
 including \XML{} content (such as attributes) ignored 
 by the \LaTeX{} generator, and vice-versa.  
 In addition, \lHTXN{} uses a flexible 
@@ -1041,7 +1057,7 @@ which have different structural meanings in different contexts).
 
 \item[A LaTeX-Compatible Document Object Model] 
 \hspace{.1em}\lHTXN{} files have a graph-based structure that 
-can be searched and traversed similar to the \XML{} 
+can be searched and traversed similarly to the \XML{} 
 Document Object Model.  \lHTXN{}'s document model, 
 however, is designed to represent most structural 
 features of \LaTeX{} encoding as well as \XML{}. 
@@ -1058,7 +1074,7 @@ format (\NAThree{} has its own markup style, called
 \q{\NGML{}} for \q{Next-Generation Markup Language}, 
 which outputs \HTXN{} and then \LaTeX{} or \XML{}).  
 The \NGML{} parsers can be readily 
-adapted and modified, so that projects can use a 
+adapted and modified, for projects to use a 
 custom-built document language if desired.  The parsers 
 and generators are also \q{transparent} in the sense 
 that they are self-contained \Qt{}/\Cpp{} libraries that 
@@ -1077,7 +1093,7 @@ written with \Qt{} to begin with).  Many scientific and technical
 applications have a built-in plugin or 
 extension mechanism, which makes it possible to introduce \HTXN{} 
 as an added feature; others are open-source projects where 
-plugins can simply be inserted as new components in the source code.  
+plugins may simply be inserted as new components in the source code.  
 \lHTXN{} Plugins can then make \HTXN{} available to authors who 
 regularly use the host application for their scientific or 
 research work.
@@ -1087,7 +1103,7 @@ research work.
 When generating \XML{} from \HTXN{} documents, applications 
 can target a specific \DTD{} depending on the publisher 
 to which a manuscript will be submitted.  The resulting 
-\XML{} files can then be included alongside \LaTeX{} 
+\XML{} files could then be included alongside \LaTeX{} 
 and \PDF{} in the documents sent to the publisher.  This 
 benefits publishers in turn, because it eliminates the 
 need for a separate conversion process; submitted manuscripts 
@@ -1101,12 +1117,13 @@ remainder of their publication workflow.
 publisher-specific \DTD{}s --- combined with \HTXN{} plugins 
 to new or pre-existing scientific or technical applications 
 --- opens up the possibility of \textit{publisher-specific} 
-plugins, which can include \HTXN{} but also other 
-features of the publisher's platform (such as access to 
+plugins, which may include an \HTXN{} 
+implementation, but also other 
+features relevant to the publisher's platform (such as access to 
 \API{}s).  In effect, publisher-specific plugins serve 
 as miniature \NAThree{} applications embedded in some 
 other software.  Aside from practical document-preparation benefits, 
-these plugins may also serve as a 
+these plugins might also serve as a 
 promotional vehicle for publishers --- the plugin documentation, as well as a 
 splash-screen when the plugin is loaded, could describe advanced features of 
 the publishers' online and/or document-curation capabilities.  
@@ -1130,7 +1147,7 @@ scientific-computing components.}
 {\lunvsa}
 \p{As hypergraph text and data encoding protocols, respectively, 
 \HTXN{} and \HGDM{} can interoperate organically.  The 
-typical scenario where both formats would be used is that 
+canonical scenario where both formats would be used is that 
 of preparing academic manuscripts accompanied by data sets 
 which are serialized or documented via \HGDM{}.  Specific 
 data samples, or figure illustrations derived from the 
@@ -1155,21 +1172,24 @@ of the data set is discussed.  In the other direction,
 links embedded in the \PDF{} can trigger a signal to 
 manipulate the data set \GUI{} in correlation with the 
 relevant text location --- again the canonical case is 
-scrolling and \q{unhiding} to ensure that a data sample 
-or field, mentioned at that text point, is visible.}
+scrolling or unhiding elements, as necessary, to ensure that a data sample 
+or field, mentioned at that text point, is visible.  
+Context Menus can also be coordinated among three or 
+more windows (for example, between viewers for \PDF{}, \ThreeD{}, and \TwoD{} charts or diagrams).}
 
 \p{To concretely illustrate \HTXN{}/\HGDM{} interop, 
-consider the following scenario (this was the situation 
-with one of the data sets accompanying 
+consider the following scenario (this is a situation 
+typified by one of the data sets accompanying 
 \textit{Advances in Ubiquitous Computing}, which can serve as 
 a case-study).  Consider a 
 data set including linguistic corpora annotated with a 
 grammar format such as \CoNLLU{} (named after 
-the Conference on Computational Natural Language Learning).  
+the \q{Conference on Computational Natural Language Learning}).  
 Assuming that some corpus samples are discussed in an 
 article accompanying the data set, these samples are 
-then found in two places: as numbered examples (according 
-to linguistic convention) within the text, as well as in 
+then found in two places: first as numbered examples (according 
+to linguistic convention) within the text, and 
+secondly in 
 the raw data.  Here is a good example of text/data 
 cross-references: assuming that the \GUI{} components for the 
 data set are some kind of list, table, or tree view 
@@ -1188,15 +1208,17 @@ orchestrate the desired \GUI{} coordination.}
 
 \p{A further requirement comes into play if the text will include 
 figures documenting samples' syntactic structure (perhaps 
-generated by a \LaTeX{} package such as TikZ-dependency).  Building 
+generated by a \LaTeX{} package such as \TikZ{}-dependency).  Building 
 such illustrations requires extracting certain fields from the 
 \CoNLLU{} data and using the selected information to 
 populate \LaTeX{} code inserted at the desired document position.  
 This can be achieved by bundling a \CoNLLU{} library 
-(such as \q{UDPipe}) with the data set and implementing a 
-\Cpp{} procedure to call the relevant UDPipe functions, 
+with the data set, 
+such as \UDPipe{} (which is written in \Cpp{}). 
+Then, a 
+\Cpp{} procedure could be implemented to call the relevant \UDPipe{} functions, 
 build an intermediate data structure, and use the result 
-to fill in a \LaTeX{} template.  This \Cpp{} procedure can 
+to fill in a \LaTeX{} template.  This \Cpp{} procedure may 
 then be triggered by instructions at the relevant locations 
 in the article's \HTXN{} file.}
 
@@ -1209,9 +1231,11 @@ their \XML{} files by conversion (e.g., from
 renamed, forcing a time-consuming task of 
 reconstructing text anchors.}
 
-
-{\lunvs}
+\newpage{}
+%{\lunvs}
+\begin{samepage}
 \noindent\lun{\lsNAThree{} and the Research Object Protocol}
+\nopagebreak{}
 \p{Open-access data sets conforming to the Research 
 Object protocol are a good example of use-cases 
 where the \AThreeR{} development strategies may 
@@ -1232,7 +1256,7 @@ particularly appropriate for this Research Object
 context wherein a data set's technology --- its 
 structural organization and custom code base 
 --- becomes itself a scientific artifact.}
-
+\nopagebreak{}
 \p{Academic data-hosting is also a sector where 
 LTS has a marketing head-start, insofar 
 as LTS founder Dr. Amy Neustein serves as editor 
@@ -1245,14 +1269,14 @@ collaborations which LTS is pursuing partly
 to introduce \NAThree{} within the scientific 
 community and partly to curate and spur the emergence 
 of an \AThreeR{} application corpus.}
- 
+\nopagebreak{} 
 \p{\lAThreeR{} data sets serve two distinct 
 purposes in the context of marketing \NAThree{}.  
 On the one hand, these data sets may be 
 published on respected scientific platforms (notwithstanding 
-their being hosted on an \NCN{} service), which 
+their also being hosted, potentially, on an \NCN{} service), which 
 provides a forum for promoting \NAThree{} 
-to the scientific, academic, and Information Technology 
+to the scientific, academic, and \IT{} 
 communities (through included \AThreeR{} code as 
 well as documentation that will explain both 
 the \NCN{} and \AThreeR{} frameworks).  Second, 
@@ -1268,31 +1292,31 @@ often desired for contemporary application development.
 Licensee developers (or LTS itself in a consulting/contracting  
 role) can then extend whichever of these features are relevant 
 for a commercial project.  The minimal dataset applications 
-serve to concretize the overall structure of 
+serve to prototype the overall structure of 
 \AThreeR{} software, helping developers and/or 
 acquisition teams visualize 
 the practical benefits of \AThreeR{} and also 
 decide on which \AThreeR{} features they 
 will use on a commercial-grade scale in their project.}
-
+\nopagebreak{}
 \p{Generalizing to \NAThree{} overall, the 
 concrete example of \AThreeR{} data sets helps 
 illustrate \NCN{} features, because server-side 
 capabilities are best understood in terms of 
-how they complement client-side User Experience.  
+how they complement client-side \UX{}.  
 Desirable cloud-integration features include 
 persisting one user's application state across 
-computers (home/school/office, etc.), sharing 
-data in application-specific formats between users, 
-collaborative editing, non-local backup, 
-web-searching application corpora, and 
+computers (home/school/office, etc.); sharing 
+data in application-specific formats between users; 
+collaborative editing; non-local backup; 
+web-searching application corpora; and 
 dynamic or non-recompile upgrades to running applications.  
 Although such capabilities in the context of 
 \NAThree{} depend on properly implemented 
 \NCN{} services, they can be tangibly demonstrated 
 for prospective customers through prototypical 
 \AThreeR{} front-ends.}
-
+\nopagebreak{}
 \p{In this sense open-access data sets created via 
 \AThreeR{} serve as demonstrations and 
 concrete examples of \NAThree{} technology, and 
@@ -1306,7 +1330,7 @@ additional data sets will be made publicly
 available in conjunction with the upcoming 
 publication of  
 \textit{Advances in Ubiquitous Computing}.}
-
+\nopagebreak{}
 \p{LTS can therefore arrange to demonstrate the various 
 facets of \NAThree{} using published data sets as a 
 case-study.  We can supply additional references, or 
@@ -1314,6 +1338,6 @@ more detailed information about \NAThree{}
 components and technical innovations, as desired.}
 
 %\p{}
-
+\end{samepage}
 \end{document}
 

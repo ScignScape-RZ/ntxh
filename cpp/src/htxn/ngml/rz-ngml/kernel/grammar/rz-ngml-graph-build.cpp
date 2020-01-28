@@ -516,8 +516,16 @@ void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
     CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
     check_tile_acc();
     markup_position_.attribute_sequence_leave();
-    ntc->flags.is_multi_parent = true;
-    parse_context_.flags.inside_multi_parent = true;
+    if(ntc->flags.is_provisional_multi_parent_semis)
+    {
+     ntc->flags.is_multi_parent_semis = true;
+     parse_context_.flags.inside_multi_parent_semis = true;
+    }
+    else
+    {
+     ntc->flags.is_multi_parent =  true;
+     parse_context_.flags.inside_multi_parent = true;
+    }
     tag_command_entry_inside_multi(wmi, ntc->name(), arg_marker);
     return;
    }
@@ -593,7 +601,11 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
 
  if(first_arg_marker == "@")
  {
-  ntc->flags.is_provisional_multi_parent = true;
+  if(tag_body_follow.isEmpty())
+    ntc->flags.is_provisional_multi_parent_semis = true;
+  else
+    ntc->flags.is_provisional_multi_parent = true;
+
   markup_position_.prepare_attribute_sequence();
   parse_context_.flags.inside_attribute_sequence = true;
   parse_context_.flags.inside_multi_generic = true;

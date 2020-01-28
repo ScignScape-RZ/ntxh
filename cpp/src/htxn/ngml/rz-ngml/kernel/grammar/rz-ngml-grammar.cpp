@@ -369,11 +369,11 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  // //  these should be for graph_build the equivalent
   //    of ->> (etc.) then `::some_cmd;
  add_rule( flags_all_(parse_context ,inside_multi_generic),
-  ngml_context,
-  "cmd-multi-arg-transition",
-  " :: (?<main> -{1,2}>{1,2}) "
-  " \\s+ (?<cmd> .valid-tag-command-name. ) "
-   ,[&]
+   ngml_context,
+   "cmd-multi-arg-transition",
+   " :: (?<main> -{1,2}>{1,2}) "
+   " \\s+ (?<cmd> .valid-tag-command-name. ) "
+    ,[&]
  {
   QString m = p.matched("main");
   QString cmd = p.matched("cmd");
@@ -382,9 +382,9 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_generic),
-  ngml_context, 
-  "multi-arg-transition",
-  " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
+   ngml_context, 
+   "multi-arg-transition",
+   " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
    ,[&]
  {
   QString wmi = p.matched("wmi");  

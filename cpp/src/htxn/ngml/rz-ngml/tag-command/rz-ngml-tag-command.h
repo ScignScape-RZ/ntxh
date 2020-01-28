@@ -41,10 +41,11 @@ public:
   bool is_multi_optional:1;
   bool is_multi_mandatory:1;
  
-  bool is_multi_parent_semis:1;
+  //bool is_multi_parent_semis:1;
+  bool anticipate_multi_parent_semis:1;
 
   bool is_multi_parent_inherited:1;
-  bool is_multi_parent_semis_inherited:1;
+//?  bool is_multi_parent_semis_inherited:1;
 
   bool multi_arg_layer:1;
   bool multi_main_layer:1;
@@ -69,6 +70,7 @@ public:
 
   bool is_main_layer:1;
   bool is_provisional_multi_parent:1;
+//?  bool is_provisional_multi_parent_semis:1;
 
  _flags
 
