@@ -79,6 +79,8 @@ _flags
  u4 enter;
  u4 leave;
 
+ u2 order;
+
 // u8 get_encoding();
 // u8 get_raw_encoding();
 

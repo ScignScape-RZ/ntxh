@@ -155,6 +155,8 @@ void NGML_Output_HTXN::export_htxne(QString path)
  htxn_document_.read_layer(tag_command_gl_, tag_command_layer_);
  htxn_document_.read_layer(tag_command_arg_gl_, tag_command_arg_layer_);
 
+ htxn_document_.calculate_orders();
+
  QFile outfile(path);
  if(outfile.open(QFile::WriteOnly | QIODevice::Text))
  {
@@ -557,9 +559,9 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
   // // maybe need to add a one-character filler ...
   if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
   {
-   tag_command_arg_layer_ += "`{/}";
-   tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_);
-   ++tag_command_arg_index_;
+//?   tag_command_arg_layer_ += "`{/}";
+//?   tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_);
+//?   ++tag_command_arg_index_;
   }
  }
  else

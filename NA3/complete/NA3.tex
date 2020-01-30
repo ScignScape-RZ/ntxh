@@ -30,17 +30,17 @@
 \ifnum\value{page}>0
 
 
-{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
-{\color{inOne}\transparent{0.8}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
-{\color{inTwo}\transparent{0.3}\put(300,11){{\rule{0.5\paperwidth}{.3cm}}}}
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,7){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,5){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,8){{\rule{0.5\paperwidth}{.3cm}}}}
 
-\put(301,18){%
+\put(318,18){%
 \transparent{0.7}{
-\includegraphics[width=0.2\textwidth]{logo.png}} }
+\includegraphics[width=0.18\textwidth]{logo.png}} }
 
-{\color{blGreen!70!yellow}\transparent{0.6}{\put(5.6,2){\rule{0.5\paperwidth}{.4cm}}}}%
-{\color{inOne}\transparent{0.5}{\put(5.6,7){\rule{0.5\paperwidth}{.4cm}}}}%
-{\color{inTwo}\transparent{0.2}\put(5.6,12){{\rule{0.5\paperwidth}{.4cm}}}}
+{\color{blGreen!70!yellow}\transparent{0.6}{\put(5.4,2){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{0.5}{\put(5.4,7){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.2}\put(5.4,12){{\rule{0.5\paperwidth}{.4cm}}}}
 
 \fi
 }
@@ -51,7 +51,7 @@
 %\textwidth 4.5in  % width of text
 %\columnsep 0.8in  % separation between columns
 
-\setlength{\footskip}{23pt}
+\setlength{\footskip}{38pt}
 
 \usepackage[paperheight=14.75in,paperwidth=9.5in]{geometry}
 \geometry{left=.9in,top=.8in,right=.7in,bottom=1.5in} %margins
@@ -408,6 +408,8 @@
 \colorlet{ctmppp}{ctmpp!50!black}
 \colorlet{ctmpppp}{ctmppp!90!logoRed}
 
+\colorlet{ctmppppy}{ctmppp!60!orange}
+
 \vspace{1em}
 
 %{\colorbox{darkBlGreen!30!darkRed}{%
@@ -416,10 +418,10 @@
 %%enhanced,
 %%frame hidden,
 %interior hidden
-arc=2pt,outer arc=0pt,
+arc=12pt,outer arc=0pt,
 enhanced jigsaw,
 width=.7\textwidth,
-colback=ctmpppp!60,
+colback=ctmppppy!40,
 colframe=logoRed!30!darkRed,
 drop shadow=logoPurple!50!darkRed,
 %boxsep=0pt,
@@ -713,8 +715,8 @@ document coding assumptions and requirements, which promotes
 the long-term maintenance of an application.  \lAThreeR{} 
 supports several Requirements Engineering features, including:
 
-\begin{itemize}[itemsep=10pt,
-	topsep=21pt,leftmargin=14pt]
+\begin{itemize}[itemsep=8pt,
+	topsep=10pt,leftmargin=14pt]
 \item Range-based numeric values, which prohibits data being constructed 
 when it fails to lie within empirically meaningful ranges
 
@@ -929,8 +931,8 @@ of revenue share for \NAThree{}, but we can
 identify four distinct profit streams appropriate for 
 \NAThree{} as an integrated platform: 
 
-\begin{enumerate}[itemsep=6pt,
-	topsep=14pt,leftmargin=14pt]
+\begin{enumerate}[itemsep=4pt,
+	topsep=9pt,leftmargin=16pt]
 \item \textbf{Customization} \hspace{.5em} Custom-implemented applications 
 using project-specific versions of \NCN{} and/or \AThreeR{}.
 
@@ -1265,9 +1267,9 @@ structural organization and custom code base
 LTS has a marketing head-start, insofar 
 as LTS founder, Amy Neustein, Ph.D., serves as Editor-in-Chief 
 of the \textit{International Journal of Speech Technology} 
-and has authored/edited 12 academic volumes, and serves 
-as editor of three book series, adding up to more than 50 
-academic and technical books.  
+and has authored/edited 12 academic volumes.  In 
+addition, she serves 
+as editor of three book series, adding up to more than 50 academic and technical books.  
 LTS is currently in discussions with
 several publishers to make \AThreeR{} tools available 
 to authors for document and/or data-set preparation. 

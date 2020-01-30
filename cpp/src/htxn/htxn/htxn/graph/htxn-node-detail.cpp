@@ -9,13 +9,13 @@
 USING_KANS(HTXN)
 
 HTXN_Node_Detail::HTXN_Node_Detail(u4 e, u4 l)
- :  Flags(0), enter(e), leave(l), node_ref(nullptr)
+ :  Flags(0), enter(e), leave(l), node_ref(nullptr), order(0)
 {
 
 }
 
 HTXN_Node_Detail::HTXN_Node_Detail()
- :  Flags(0), enter(0), leave(0), node_ref(nullptr)
+ :  Flags(0), enter(0), leave(0), node_ref(nullptr), order(0)
 {
 
 }

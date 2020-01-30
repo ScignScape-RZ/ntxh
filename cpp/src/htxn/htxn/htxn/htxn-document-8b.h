@@ -53,6 +53,8 @@ public:
  void add_standard_deck();
  void add_standard_diacritic_deck();
 
+ void calculate_orders();
+
  Glyph_Layer_8b* read_layer(QString text, u2 offset = 0);
  void read_layer(Glyph_Layer_8b* gl, QString text, u2 offset = 0);
 
@@ -81,7 +83,7 @@ public:
  void tie_detail_range_preempt(u4 rc1, u4 rc2);
 
  void check_precedent_ranges(const HTXN_Node_Detail& nd,
-   QVector<QPair<HTXN_Node_Detail*, QString>>& result,
+   u2 enter_order, QVector<QPair<HTXN_Node_Detail*, QString>>& result,
    Glyph_Layer_8b* calling_layer);
 
  void get_qstring_out(u4 layer, QString& result);
@@ -96,11 +98,11 @@ public:
 
  void get_latex_out(u4 layer, QString& result);
 
- void get_latex_out(Glyph_Layer_8b* gl, 
+ void get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
    u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd = nullptr);
 
- void get_latex_insert(HTXN_Node_Detail* nd,
-  QString& result);
+ void get_latex_insert(HTXN_Node_Detail* nd, u2 enter_order, 
+   QString& result);
 
  void get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
    Glyph_Argument_Package& gap, QString& result); 
@@ -120,7 +122,7 @@ public:
 
 
  QString check_latex_insert(Glyph_Layer_8b& gl,
-   u4 index, Glyph_Argument_Package& cmdgap, 
+   u2 enter_order, u4 index, Glyph_Argument_Package& cmdgap, 
    QVector<QPair<HTXN_Node_Detail*, QString>>& precs, QStringList& succs, QString& result);
 
 };

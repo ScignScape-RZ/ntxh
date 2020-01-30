@@ -73,7 +73,7 @@ void HTXN_Document_8b::mark_last_as_environment_main_tile(u4 ref,
 }
 
 void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
-  QVector<QPair<HTXN_Node_Detail*, QString>>& result,
+  u2 enter_order, QVector<QPair<HTXN_Node_Detail*, QString>>& result,
   Glyph_Layer_8b* calling_layer)
 {
  if(QVector<u4>* vec = nd.get_refs())
@@ -87,7 +87,7 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
   QStringList check;
   std::transform(vec->begin(), vec->end(), 
     result.begin(), std::back_inserter(check),
-    [this, calling_layer](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
+    [this, enter_order, calling_layer](u4 i, QPair<HTXN_Node_Detail*, QString>& pr)
   {
    HTXN_Node_Detail* nd = &node_details_[i - 1];
 
@@ -99,7 +99,8 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
 
    if(nd->get_layer() == calling_layer)
      calling_layer->add_insert_loop_guard(nd->enter);
-   get_latex_insert(nd, pr.second);
+
+   get_latex_insert(nd, nd->order,  pr.second);
 
    if(nd->get_layer() == calling_layer)
      calling_layer->update_insert_loop_guard(nd->enter, nd->leave);
@@ -114,10 +115,10 @@ void HTXN_Document_8b::check_precedent_ranges(const HTXN_Node_Detail& nd,
 }
 
 void HTXN_Document_8b::get_latex_insert(HTXN_Node_Detail* nd,
-  QString& result)
+  u2 enter_order, QString& result)
 {
  Glyph_Layer_8b* gl = nd->get_layer();
- get_latex_out(gl, nd->enter, nd->leave, result, nd);
+ get_latex_out(gl, enter_order, nd->enter, nd->leave, result, nd);
 } 
 
 void HTXN_Document_8b::check_pre_space_append(QString& text, const HTXN_Node_Detail& nd)
@@ -150,15 +151,26 @@ void HTXN_Document_8b::check_pre_space_append(QString& text, const HTXN_Node_Det
  }
 }
 
+void HTXN_Document_8b::calculate_orders()
+{
+ QMap< QPair<Glyph_Layer_8b*, u4>, u2 > counts;
+ for(HTXN_Node_Detail& nd : node_details_)
+ {
+  nd.order = ++counts[{nd.get_layer(), nd.enter}];
+ }
+}
+
 
 QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
-  u4 index, Glyph_Argument_Package& cmdgap, 
+  u2 enter_order, u4 index, Glyph_Argument_Package& cmdgap, 
   QVector<QPair<HTXN_Node_Detail*, QString>>& precs,
   QStringList& succs, QString& result)
 {
  // //  check enters ...
  u4 leave = 0;
  u2 count = 0;
+ if(enter_order > 0)
+   count = enter_order - 1;
  for (;;)
  {
   u4 node_code = gl.get_range_by_enter(index, leave, count);
@@ -236,7 +248,7 @@ QString HTXN_Document_8b::check_latex_insert(Glyph_Layer_8b& gl,
     gl.add_leave(leave, cmd, &nd, node_code);
 
    // // here ?
-  check_precedent_ranges(nd, precs, &gl);
+  check_precedent_ranges(nd, enter_order, precs, &gl);
   for(QPair<HTXN_Node_Detail*, QString>& pr : precs)
   {
    if(!pr.first)
@@ -305,7 +317,7 @@ void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
  Glyph_Layer_8b* gl = value(layer);
  if(!gl)
    return;
- get_latex_out(gl, 0, gl->size() - 1, result);
+ get_latex_out(gl, 0, 0, gl->size() - 1, result);
 }
 
 void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
@@ -315,7 +327,7 @@ void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
 }
 
 
-void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, 
+void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
   u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd)
 {
  //parse_layer(gv)
@@ -327,8 +339,14 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
  QString end_result;
  QVector<QPair<HTXN_Node_Detail*, QString>> precs;
  QStringList succs;
+
+  // //  this is only relevant at the start of the loop; 
+   //    then set it to 0 ...
+ u2 insert_enter_order = enter_order;
+
   // //  need to run at least once if leave < enter ...
- for(u4 i = enter; (leave < enter) || (i <= leave); ++i)
+   //    
+ for(u4 i = enter; (leave < enter) || (i <= leave); ++i, insert_enter_order = 0)
  {
 //?
 //  if(nd)
@@ -348,7 +366,7 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl,
     continue;
    }
    if(lg == 0)
-     end_result = check_latex_insert(*gl, i, cmdgap,
+     end_result = check_latex_insert(*gl, insert_enter_order, i, cmdgap,
      precs, succs, result); 
 
     // //  the insert might have changed the guard...
