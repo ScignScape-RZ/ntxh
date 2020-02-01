@@ -452,7 +452,7 @@
 
 \usepackage{changepage}
 
-\newcommand{\nodeincludegraphicsLOCTRV}[7]{
+\newcommand{\nodeincludegraphicsLOCTRVqqq}[7]{
 \node[anchor=south west,inner sep=0,thick,
 drop shadow={top color=logoBlue!50!logoCyan,
               bottom color=logoRed!50!logoCyan,
@@ -482,7 +482,7 @@ drop shadow={top color=logoBlue!50!logoCyan,
 \node[anchor=south west,inner sep=0] (image) at (#1){%
 \includegraphics[scale=#2]{#3}};}
 
-\newcommand{\nodeincludegraphicsLOCTR}[5]{
+\newcommand{\nodeincludegraphicsLOCTRqq}[5]{
 \node[anchor=south west,inner sep=0] (image) at (#1){%
 \includegraphics[scale=#2,trim={0 #4 #3 0},clip]{#5}};}
 
@@ -568,6 +568,17 @@ drop shadow={top color=logoBlue!50!logoCyan,
 	at (2, 0) {};\end{tikzpicture}}
 
 
+\newcommand{\nodeincludegraphicsLOCTR}[7]{
+\node[anchor=south west,inner sep=0,thick,
+drop shadow={top color=logoBlue!50!logoCyan,
+              bottom color=logoRed!50!logoCyan,
+              shadow xshift=-1pt,
+              shadow yshift=-3pt,
+              rounded corners}] (image) at (#1){%
+\fcolorbox{logoRed}{logoPeach!40!logoRed}{\includegraphics[scale=#2,trim={#5 #4 #3 #6},clip]{#7}}};}
+
+
+
 \begin{document}
 
 %\input{cqlDescriptionSlide}
@@ -576,6 +587,30 @@ drop shadow={top color=logoBlue!50!logoCyan,
 \input{slide2}
 \input{slide3}
 \input{slide4}
+\input{slide5}
+
+\input{slide-vt4}
+
+\input{slide-ph2}
+\input{slide-ph3}
+\input{slide-ph4}
+
+\input{slide-ec1}
+\input{slide-ec2}
+\input{slide-ec3}
+\input{slide-ec4}
+
+\input{slide-rad1}
+\input{slide-rad2}
+\input{slide-rad3}
+
+\input{slide-pub1}
+\input{slide-pub2}
+\input{slide-pub3}
+\input{slide-pub4}
+\input{slide-pub5}
+\input{slide-pub6}
+
 
 %\input{thanks}
 

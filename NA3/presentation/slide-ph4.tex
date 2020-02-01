@@ -1,0 +1,64 @@
+
+
+\begin{frame}{\ft{Photo Viewer Alternative Interface}}
+
+\doubleFrame{For realtors who prefer showing/hiding 
+thumbnails (as opposed to using color-coding to 
+differentiate groups), the 
+Photo Viewer can also be implemented with this alternative design, 
+or the two designs can be combined.  
+In general, realtors will be afforded a lot of control over the 
+layout and operational design of Re-PDF interactive windows.}
+
+\begin{tikzpicture}
+
+\nodeincludegraphicsTRRS{1}{4cm}{0.05cm}{3cm}{1.35cm}{screenshots/ss-ph4.png}
+
+
+\node [anchor=west,fill=brown!8!white,inner sep=12, 
+opacity=0.88, text opacity=1] (note) at (4.5,8.2) {\hc{Visible Groups}};
+
+
+\ann{BlueGreen}{1}{.8mm}{grammarArrowColor}{0.5}{3.61,5.5}{2.4}{.6}{0.7}
+%\ann{BlueGreen!30!red}{1}{.8mm}{blue!50!orange}{0.5}{3.61,5.5}{2.4}{.6}{0.7}
+
+%{BlueGreen}{0.3}{1mm}{grammarArrowColor}{0.5}
+
+\colorarr{>=latex, ->}{fcBoxColor!60!black}
+{0.8}{blGreen!30!red}{2}{1mm}{note.south}{6, 5.9}
+
+
+
+
+\node [anchor=west,fill=brown!8!white,inner sep=12, 
+opacity=0.88, text opacity=1] (note) at (11,3.8) {\hc{Hidden Groups}};
+
+
+\ann{BlueGreen!30!red}{1}{.8mm}{blue!50!orange}{0.5}{3.61,1.7}{2.4}{.6}{0.7}
+
+\colorarr{>=latex, ->}{fcBoxColor!20!black}
+{0.8}{darkRed!70!blue}{2}{1mm}{note.west}{6, 1.9}
+
+
+%\node [anchor=west,fill=brown!8!white,inner sep=12, 
+%opacity=0.88, text opacity=1] (note) at (6.7,9.7) {\hc{Not Yet Viewed (horizontal color band)}};
+
+%\ann{BlueGreen!30!red}{1}{.8mm}{blue!50!orange}{0.5}{7.6, 7.3}{.73}{.35}{0.7}
+
+%\colorarr{>=latex, ->}{fcBoxColor!20!black}
+%{0.8}{darkRed!70!blue}{2}{1mm}{note.south}{8.2, 7.25}
+
+
+
+%\node [anchor=west,fill=brown!8!white,inner sep=12, 
+%opacity=0.88, text opacity=1] (note) at (5,1.89) {\hc{Current Photo (viewed for the second time)}};
+
+%\colorarr{>=latex, ->}{fcBoxColor!60!black}
+%{0.8}{blGreen!30!red}{1}{1mm}{note.north west}{4.35, 4.75}
+
+
+\end{tikzpicture}
+
+
+\end{frame}
+
