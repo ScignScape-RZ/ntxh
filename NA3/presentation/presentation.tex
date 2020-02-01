@@ -544,6 +544,29 @@ drop shadow={top color=logoBlue!50!logoCyan,
 \colorlet{brred}{brown!53!red}
 \colorlet{grred}{grammarArrowColor!40!red!60}
 
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+
+
+\newcommand*{\MyDiamond}{%
+	\begin{tikzpicture}{baseline}	
+	\node [draw, shape=diamond, %shape border rotate=100,
+	line width=.2mm, left color=flColor, right color=darkRed, draw=logoPurple, aspect=1,
+	draw opacity=0.6, fill opacity=0.8, xscale=0.5, yscale=0.5,
+	minimum width=1mm, 
+	] 
+	at (2, 0) {};\end{tikzpicture}}
+
 
 \begin{document}
 
@@ -552,6 +575,7 @@ drop shadow={top color=logoBlue!50!logoCyan,
 \input{slide1}
 \input{slide2}
 \input{slide3}
+\input{slide4}
 
 %\input{thanks}
 
