@@ -6,7 +6,7 @@
 implemented in A3R-style photo viewers is a filtering 
 option, which --- given a collection of pictures 
 classified into several groups --- allows users 
-to show or hide photos based on the group they belong to.}
+to show or hide photos based on the group they belong to (note the check-box buttons on the group listing).}
 
 \begin{tikzpicture}
 
@@ -27,9 +27,19 @@ opacity=0.88, text opacity=1] (note) at (4.5,8.2) {\hc{Visible Groups}};
 
 
 
+\node [anchor=west,fill=brown!8!white,inner sep=12, 
+opacity=0.88, text opacity=1] (cb) at (6,4.2) {\hc{Check Boxes}};
+
+\draw[>=stealth, ->>,bend right=5, 
+draw=orange!40!red,% rgb{0.5,0.1,0.4}, 
+draw opacity=0.3,
+fill=red!20!black, fill opacity=1, 
+line width=1.2mm
+] (cb.west) to (1.68, 3.56);
+
 
 \node [anchor=west,fill=brown!8!white,inner sep=12, 
-opacity=0.88, text opacity=1] (note) at (11,3.8) {\hc{Hidden Groups}};
+opacity=0.88, text opacity=1] (note) at (11,2.6) {\hc{Hidden Groups}};
 
 
 \ann{BlueGreen!30!red}{1}{.8mm}{blue!50!orange}{0.5}{3.61,1.7}{2.4}{.6}{0.7}
