@@ -21,6 +21,7 @@ RZNS_(NGML)
 class NGML_Graph;
 class NGML_Document;
 
+class NGML_HTXN_Node;
 
 class NGML_Attribute_Tile;
 class NGML_Tile;
@@ -45,6 +46,9 @@ public:
  void generate(QTextStream& qts);
 
  void generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+
+ void generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+
  void generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
  void generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
@@ -56,7 +60,6 @@ public:
 
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc)  Q_DECL_OVERRIDE;
 
- QString get_htxn_tag_command_name(NGML_Tag_Command& ntc);
  
 };
 
