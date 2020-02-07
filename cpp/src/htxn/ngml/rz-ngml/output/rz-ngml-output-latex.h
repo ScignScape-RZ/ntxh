@@ -14,6 +14,11 @@
 #include "rz-ngml-output-base.h"
 #include "rz-ngml-output-event-handler.h"
 
+#include "kans.h"
+
+KANS_CLASS_DECLARE(HTXN, HTXN_Node_Detail)
+USING_KANS(HTXN)
+
 #include "rzns.h"
 
 RZNS_(NGML)
@@ -35,6 +40,8 @@ class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Han
  QString htxn_acc_;
  QTextStream htxn_qts_;
 
+ QMap<HTXN_Node_Detail*, QString> region_end_names_;
+
 public:
 
 
@@ -50,11 +57,14 @@ public:
  void generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
 
  void generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+ void generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+
  void generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+ void generate_tag_body_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
 
  void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile) Q_DECL_OVERRIDE;
-
  void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Attribute_Tile> tile) Q_DECL_OVERRIDE;
+ void generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn) Q_DECL_OVERRIDE;
 
  void handle_annotation(caon_ptr<NGML_Tile> tile, caon_ptr<NGML_Annotation_Tile> atile) Q_DECL_OVERRIDE;
 

@@ -87,6 +87,12 @@ void HTXN_Node_Details::read_ties(QTextStream& qts,
  }
 }
 
+HTXN_Node_Detail* HTXN_Node_Details::mark_ghosted(u4 nc)
+{
+ HTXN_Node_Detail& nd = node_details_[nc - 1];
+ nd.flags.is_ghosted = true;
+ return &nd;
+}
 
 HTXN_Node_Detail* HTXN_Node_Details::tie_detail_range(u4 nc1, u4 nc2)
 {

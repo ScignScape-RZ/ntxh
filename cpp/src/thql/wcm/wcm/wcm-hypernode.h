@@ -59,6 +59,9 @@ class WCM_Hypernode
 
  QMap<quint32, QString>* indexed_column_map_;
 
+ QPair<QString, QString>* test_;
+
+
 public:
 
  ACCESSORS__RGET(QVector<WCM_Hyponode*> ,hyponodes)
@@ -67,6 +70,9 @@ public:
 // ACCESSORS__SET(PASTE_EXPRESSION(QMap<quint32, QString*>)* ,indexed_column_map)
 
  ACCESSORS(MACRO_PASTE(QMap<quint32, QString>)* ,indexed_column_map)
+
+ ACCESSORS(MACRO_PASTE(QPair<QString, QString>)* ,test)
+
 
  WCM_Hypernode();
 

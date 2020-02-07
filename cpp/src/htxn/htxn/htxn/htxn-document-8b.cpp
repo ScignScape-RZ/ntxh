@@ -326,6 +326,13 @@ void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
  nd->flags.ref_preempts_wrap = true;
 }
 
+void HTXN_Document_8b::write_minimal_latex_out(u4 layer_code,
+  const QPair<u4, u4>& range, QTextStream& qts)
+{
+ Glyph_Layer_8b* gl = value(layer_code - 1);
+ write_minimal_latex_out(gl, range.first, range.second, qts);
+}
+
 
 void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts)
 {

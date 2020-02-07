@@ -9,12 +9,18 @@
 
 #include "relae-caon-ptr.h"
 
+#include "accessors.h"
+
+
 #include <QMultiMap>
 #include <QMapIterator>
 #include <QString>
 #include <QList>
 #include <QPair>
 
+#ifndef MACRO_PASTE
+#define MACRO_PASTE(...) __VA_ARGS__
+#endif
 
 #ifndef ACCESSORS__GET
 #define ACCESSORS__GET(type ,name) \
@@ -28,8 +34,8 @@
 
 #ifndef ACCESSORS
 #define ACCESSORS(type ,name) \
-  ACCESSORS__GET(type ,name) \
-  ACCESSORS__SET(type ,name)
+  ACCESSORS__GET(MACRO_PASTE(type) ,name) \
+  ACCESSORS__SET(MACRO_PASTE(type) ,name)
 #endif
 
 #ifdef RELAE_LABEL_NODES

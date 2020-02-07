@@ -12,7 +12,7 @@
 
 #include "accessors.h"
 
-
+//#define PASTE_ARG(...) __VA_ARGS__
 
 #include "kans.h"
 KANS_CLASS_DECLARE(HTXN ,HTXN_Node_Detail)
@@ -38,6 +38,9 @@ public:
 
  ACCESSORS(u4 ,detail_code)
  ACCESSORS(u4 ,layer_code)
+
+ ACCESSORS(MACRO_PASTE(QPair<u4, u4>) ,range)
+
 
  HTXN_Node_Detail* get_node_detail(HTXN_Document_8b* doc);
 

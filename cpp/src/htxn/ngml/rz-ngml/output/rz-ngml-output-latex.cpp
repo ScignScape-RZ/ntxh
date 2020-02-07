@@ -127,14 +127,32 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
 {
  HTXN_Node_Detail* nd = htxn_document_->get_node_detail(nhn.detail_code());
  Glyph_Layer_8b* gl = nd->get_layer();
- htxn_document_->write_minimal_latex_out(gl, nd->enter,
-   nd->leave, htxn_qts_);
- if(nd->flags.region)
-   b.qts << "\\begin{" << htxn_acc_;// << '}';
+
+ if(nd->flags.is_ghosted)
+   b.qts << "{";
  else
-   b.qts << '\\' << htxn_acc_;// << '{';
- htxn_acc_.clear();
- htxn_qts_.reset();
+ {
+  htxn_document_->write_minimal_latex_out(gl, nd->enter,
+    nd->leave, htxn_qts_);
+
+//  if(nd->flags.ref_preempts_wrap)
+//    b.qts << '\\' << htxn_acc_;
+  if(nd->flags.region)
+  {
+   b.qts << "\\begin{" << htxn_acc_;// << '}';
+   region_end_names_[nd] = htxn_acc_;
+  }
+  else
+    b.qts << '\\' << htxn_acc_;// << '{';
+  htxn_acc_.clear();
+  htxn_qts_.reset();
+
+ }
+}
+
+void NGML_Output_Latex::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+ htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts);
 }
 
 
@@ -190,7 +208,20 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
     tag_command_annotation(nt, n);
   }
  }
+}
 
+void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+ HTXN_Node_Detail* nd = htxn_document_->get_node_detail(nhn.detail_code());
+
+ if(nd->flags.is_ghosted)
+   b.qts << '}';
+ else if(nd->flags.ref_preempts_wrap)
+   ; // nothing
+ else if(nd->flags.region)
+   b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+ else
+   b.qts << '}';
 }
 
 
@@ -206,20 +237,48 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
    return;
  }
 
- if(ntc->flags.is_region)
+ if(htxn_document_)
  {
-  b.qts << "\\end{" << ntc->latex_name() << '}';
+  if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
+  {
+   generate_tag_command_leave(b, *nhn);
+   return;
+  }
  }
+
+ if(ntc->flags.is_region)
+   b.qts << "\\end{" << ntc->latex_name() << '}';
  else
-  b.qts << '}';
+   b.qts << '}';
+}
+
+void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+ HTXN_Node_Detail* nd = htxn_document_->get_node_detail(nhn.detail_code());
+
+ if(nd->flags.is_ghosted)
+   ; // nothing
+ else if(nd->flags.ref_preempts_wrap)
+   ; // nothing
+ else if(nd->flags.region)
+   b.qts << '}';
+ else
+   b.qts << '{';
 }
 
 void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
- if(ntc->flags.is_region)
+ if(htxn_document_)
  {
-  b.qts << '}';
+  if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
+  {
+   generate_tag_body_leave(b, *nhn);
+   return;
+  }
  }
+
+ if(ntc->flags.is_region)
+   b.qts << '}';
  else
   b.qts << '{';
 }

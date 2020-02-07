@@ -21,6 +21,7 @@ class NGML_Root;
 class NGML_Annotation_Tile;
 class NGML_Output_Bundle;
 class NGML_Command_Callback;
+class NGML_HTXN_Node;
 
 class NGML_Output_Event_Handler
 {
@@ -62,6 +63,12 @@ public:
  virtual void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Attribute_Tile> tile);
  virtual void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile);
  virtual void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Annotation_Tile> tile);
+
+ virtual void generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+ virtual void generate_attribute_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+ virtual void generate_parelex_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+ virtual void generate_annotation_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+
 
  virtual void handle_annotation(caon_ptr<NGML_Tile> tile, caon_ptr<NGML_Annotation_Tile> atile);
  virtual void handle_annotation(caon_ptr<NGML_Tile> tile, caon_ptr<tNode> node);

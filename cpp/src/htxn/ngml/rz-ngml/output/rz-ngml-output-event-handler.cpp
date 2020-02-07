@@ -153,10 +153,37 @@ void NGML_Output_Event_Handler::check_update_index(const NGML_Output_Bundle& b,
  b.index += tile.raw_text().length();
 }
 
+void NGML_Output_Event_Handler::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+
+}
+
+void NGML_Output_Event_Handler::generate_attribute_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+
+}
+
+void NGML_Output_Event_Handler::generate_parelex_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+
+}
+
+void NGML_Output_Event_Handler::generate_annotation_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+
+}
+
 void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b,
   caon_ptr<NGML_Tile> tile)
 {
  CAON_PTR_DEBUG(NGML_Tile ,tile)
+
+ if(NGML_HTXN_Node* nhn = tile->ngml_htxn_node())
+ {
+  generate_tile_via_htxn(b, *nhn);
+  return;
+ }
+
  QString rt = tile->raw_text();
 
  if(!rt.startsWith("*:"))
