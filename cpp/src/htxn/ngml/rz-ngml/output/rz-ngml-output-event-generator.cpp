@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-output-event-generator.h"
 
 #include <QDebug>
@@ -28,7 +34,10 @@ void NGML_Output_Event_Generator::generate(QTextStream& qts)
  CAON_PTR_DEBUG(tNode ,root_node)
  root_node->debug_connectors();
  u4 index = 2; // // assume `[//] ...
- const NGML_Output_Bundle& b {qts, index, root_node};
+//? const NGML_Output_Bundle b& {qts, index, root_node, nullptr, hdoc};
+
+ NGML_Output_Bundle b {qts, index, root_node, {}, nullptr, htxn_document_};
+
  if(caon_ptr<NGML_Root> nr = root_node->ngml_root())
  {
   CAON_PTR_DEBUG(NGML_Root ,nr)

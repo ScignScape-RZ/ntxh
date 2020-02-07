@@ -52,7 +52,7 @@ public:
 
  Glyph_Layer_8b(u4 id);
 
- ACCESSORS(QString ,description);
+ ACCESSORS(QString ,description)
  ACCESSORS(u4 ,id)
 
  void activate_assymetric_leaves();

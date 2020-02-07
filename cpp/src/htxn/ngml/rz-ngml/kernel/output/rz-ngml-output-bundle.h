@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_OUTPUT_BUNDLE__H
 #define RZ_NGML_OUTPUT_BUNDLE__H
 
@@ -7,16 +13,22 @@
 
 #include "global-types.h"
 
-#include "rzns.h"
-
 class QTextStream;
 
+#include "kans.h"
+KANS_CLASS_DECLARE(HTXN ,HTXN_Document_8b)
+USING_KANS(HTXN)
+
+
+#include "rzns.h"
 
 RZNS_(NGML)
 
 class NGML_Node;
 class NGML_Connection_Descriptor;
 class NGML_Command_Callback;
+
+
 
 struct NGML_Output_Bundle
 {
@@ -28,6 +40,8 @@ struct NGML_Output_Bundle
  caon_ptr<tNode> node;
  NGML_Connection_Descriptor connection_descriptor;
  caon_ptr<NGML_Command_Callback> cb;
+
+ caon_ptr<HTXN_Document_8b> htxn_document; 
 
  NGML_Output_Bundle with(QTextStream& new_qts) const;
  NGML_Output_Bundle with(caon_ptr<tNode> n, NGML_Connection_Descriptor descriptor) const;
@@ -46,7 +60,9 @@ struct NGML_Output_Partial_Bundle
 
  operator NGML_Output_Bundle()
  {
-  return {qts, index, node, NGML_Connection_Descriptor(), caon_ptr<NGML_Command_Callback> ( nullptr )};
+  return {qts, index, node, NGML_Connection_Descriptor(),
+    caon_ptr<NGML_Command_Callback> ( nullptr ), 
+    caon_ptr<HTXN_Document_8b>( nullptr ) };
  }
 };
 

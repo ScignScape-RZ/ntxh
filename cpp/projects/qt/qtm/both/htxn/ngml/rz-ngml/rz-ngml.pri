@@ -81,8 +81,8 @@ HEADERS += \
  $$SRC_DIR/output/rz-ngml-output-htxn.callbacks.h \
  $$SRC_DIR/whitespace/rz-ngml-whitespace.h \
  $$SRC_DIR/whitespace/rz-ngml-whitespace-holder.h \
-
-
+ $$SRC_DIR/whitespace/rz-ngml-whitespace-holder.h \
+ $$SRC_DIR/ngml-htxn/ngml-htxn-node.h \
 
 
 SOURCES += \
@@ -119,6 +119,7 @@ SOURCES += \
  $$SRC_DIR/output/rz-ngml-output-htxn.cpp \
  $$SRC_DIR/whitespace/rz-ngml-whitespace.cpp \
  $$SRC_DIR/whitespace/rz-ngml-whitespace-holder.cpp \
+ $$SRC_DIR/ngml-htxn/ngml-htxn-node.cpp \
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

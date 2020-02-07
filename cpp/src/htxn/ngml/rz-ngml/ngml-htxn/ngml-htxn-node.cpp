@@ -9,10 +9,11 @@
 
 #include "htxn/htxn-document-8b.h"
 
+USING_RZNS(NGML)
 
 NGML_HTXN_Node::NGML_HTXN_Node(u4 detail_code) 
   :  detail_code_(detail_code), 
-     layer_code_(layer_code), range_({0,0})
+     layer_code_(0), range_({0,0})
 {
 
 }

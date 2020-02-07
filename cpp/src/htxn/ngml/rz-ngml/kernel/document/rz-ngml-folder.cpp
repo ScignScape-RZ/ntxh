@@ -248,11 +248,13 @@ void NGML_Folder::convert_all_files(QString output_path, QString khif_path)
   NGML_Output_Html ngo(ngd);
   ngo.export_html(output_path + '/' + qfi.completeBaseName() + ".html");
 
+  // //?
+  NGML_Output_HTXN noh(ngd, nullptr);
+  noh.export_htxne(output_path + '/' + qfi.completeBaseName() + ".htxne");
+
   NGML_Output_Latex nol(ngd);
   nol.export_latex(output_path + '/' + qfi.completeBaseName() + ".tex");
 
-  NGML_Output_HTXN noh(ngd);
-  noh.export_htxne(output_path + '/' + qfi.completeBaseName() + ".htxne");
 
 //?  if(!khif_path.isEmpty())
 //?  {

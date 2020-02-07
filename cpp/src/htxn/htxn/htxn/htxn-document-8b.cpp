@@ -640,7 +640,7 @@ u4 HTXN_Document_8b::add_detail_range_optional(Glyph_Layer_8b* layer, u4 enter, 
 
 Glyph_Layer_8b* HTXN_Document_8b::add_layer()
 {
- Glyph_Layer_8b* result = new Glyph_Layer_8b(size());
+ Glyph_Layer_8b* result = new Glyph_Layer_8b(size() + 1);
  push_back(result);
  return result;
 }

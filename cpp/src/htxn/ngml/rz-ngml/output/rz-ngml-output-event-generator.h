@@ -10,6 +10,10 @@
 
 #include "accessors.h"
 
+#include "kans.h"
+KANS_CLASS_DECLARE(HTXN ,HTXN_Document_8b)
+USING_KANS(HTXN)
+
 #include "rzns.h"
 
 RZNS_(NGML)
@@ -27,6 +31,8 @@ class NGML_Output_Event_Generator : NGML_Output_Base
 {
  NGML_Output_Event_Handler& handler_;
 
+ HTXN_Document_8b* htxn_document_;
+
 protected:
 
  typedef NGML_Node tNode;
@@ -34,6 +40,8 @@ protected:
 public:
 
  NGML_Output_Event_Generator(NGML_Output_Base& base, NGML_Output_Event_Handler& handler);
+
+ ACCESSORS(HTXN_Document_8b* ,htxn_document)
 
  void generate(QTextStream& qts);
 

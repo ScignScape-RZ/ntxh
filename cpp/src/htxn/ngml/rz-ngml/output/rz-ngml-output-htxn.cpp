@@ -33,19 +33,24 @@
 USING_RZNS(NGML)
 
 
-NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document)
+NGML_Output_HTXN::NGML_Output_HTXN(NGML_Document& document, 
+HTXN_Document_8b* htxn_document)
  : NGML_Output_Base(document), NGML_Output_Event_Handler(),
    current_multi_arg_(nullptr), tag_command_arg_index_(2)
 {
+ this->NGML_Output_Base::htxn_document_ = htxn_document;
+
  init_callbacks();
 
- htxn_document_.add_standard_deck();
- htxn_document_.add_standard_diacritic_deck();
+ htxn_document_->add_standard_deck();
+ htxn_document_->add_standard_diacritic_deck();
 // Glyph_Layer_8b* 
 
- main_gl_ = htxn_document_.add_layer();
- tag_command_gl_ = htxn_document_.add_layer();
- tag_command_arg_gl_ = htxn_document_.add_layer();
+ //discard_gl_ = htxn_document_->add_layer();
+
+ main_gl_ = htxn_document_->add_layer();
+ tag_command_gl_ = htxn_document_->add_layer();
+ tag_command_arg_gl_ = htxn_document_->add_layer();
 
  Glyph_Layer_8b__SET_DESCRIPTION(main_gl_)
  Glyph_Layer_8b__SET_DESCRIPTION(tag_command_gl_)
@@ -134,7 +139,7 @@ void NGML_Output_HTXN::write_latex_out(QString path)
  {
   QTextStream qts(&file);
   qts << htxne_top_;
-  htxn_document_.write_latex_out(qts); 
+  htxn_document_->write_latex_out(qts); 
  }
 }
 
@@ -154,17 +159,17 @@ void NGML_Output_HTXN::export_htxne(QString path)
  QString htxne_output;
  write_htxne_output(htxne_output);
 
- htxn_document_.read_layer(main_gl_, htxne_output);
- htxn_document_.read_layer(tag_command_gl_, tag_command_layer_);
- htxn_document_.read_layer(tag_command_arg_gl_, tag_command_arg_layer_);
+ htxn_document_->read_layer(main_gl_, htxne_output);
+ htxn_document_->read_layer(tag_command_gl_, tag_command_layer_);
+ htxn_document_->read_layer(tag_command_arg_gl_, tag_command_arg_layer_);
 
- htxn_document_.calculate_orders();
+ htxn_document_->calculate_orders();
 
  QFile outfile(path);
  if(outfile.open(QFile::WriteOnly | QIODevice::Text))
  {
   htxne_path_ = path;
-  htxn_document_.write_htxne_out(outfile);
+  htxn_document_->write_htxne_out(outfile);
 //  outfile.write(htxne_output.toLatin1());
   outfile.close();
  }
@@ -298,8 +303,8 @@ void NGML_Output_HTXN::tie_multi_optional_main_layer(const NGML_Output_Bundle& b
  u4 nc1 = multi_parent_range_stack_.top().first;
  u4 enter = ntc.ref_position();
  u4 leave = b.index - 1;
- u4 nc2 = htxn_document_.add_detail_range_optional(main_gl_, enter, leave, wmic);
- htxn_document_.tie_detail_range_preempt(nc1, nc2);
+ u4 nc2 = htxn_document_->add_detail_range_optional(main_gl_, enter, leave, wmic);
+ htxn_document_->tie_detail_range_preempt(nc1, nc2);
  current_multi_arg_ = nullptr;
 }
 
@@ -311,8 +316,8 @@ void NGML_Output_HTXN::tie_multi_mandatory_main_layer(const NGML_Output_Bundle& 
  u4 nc1 = multi_parent_range_stack_.top().first;
  u4 enter = ntc.ref_position();
  u4 leave = b.index - 1;
- u4 nc2 = htxn_document_.add_detail_range(main_gl_, enter, leave, wmic);
- htxn_document_.tie_detail_range_preempt(nc1, nc2);
+ u4 nc2 = htxn_document_->add_detail_range(main_gl_, enter, leave, wmic);
+ htxn_document_->tie_detail_range_preempt(nc1, nc2);
  current_multi_arg_ = nullptr;
 }
 
@@ -325,8 +330,8 @@ void NGML_Output_HTXN::tie_multi_optional_arg_layer(const NGML_Output_Bundle& b,
  u4 nc1 = multi_parent_range_stack_.top().first;
  u4 enter = ntc.ref_position();
  u4 leave = tag_command_arg_index_ - 1;
- u4 nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave, wmic);
- htxn_document_.tie_detail_range_preempt(nc1, nc2);
+ u4 nc2 = htxn_document_->add_detail_range_optional(tag_command_arg_gl_, enter, leave, wmic);
+ htxn_document_->tie_detail_range_preempt(nc1, nc2);
  current_multi_arg_ = nullptr;
 }
 
@@ -338,8 +343,8 @@ void NGML_Output_HTXN::tie_multi_mandatory_arg_layer(const NGML_Output_Bundle& b
  u4 nc1 = multi_parent_range_stack_.top().first;
  u4 enter = ntc.ref_position();
  u4 leave = tag_command_arg_index_ - 1;
- u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave, wmic);
- htxn_document_.tie_detail_range_preempt(nc1, nc2);
+ u4 nc2 = htxn_document_->add_detail_range(tag_command_arg_gl_, enter, leave, wmic);
+ htxn_document_->tie_detail_range_preempt(nc1, nc2);
  current_multi_arg_ = nullptr;
 }
 
@@ -440,9 +445,9 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   HTXN_Node_Detail::Wrap_Mode_Indicator_Codes wmic = get_wmic(*ntc);
 
   if(ntc->flags.is_region)
-    nc1 = htxn_document_.add_detail_range_region(tag_command_gl_, span_start, span_end, wmic, wsc);
+    nc1 = htxn_document_->add_detail_range_region(tag_command_gl_, span_start, span_end, wmic, wsc);
   else
-    nc1 = htxn_document_.add_detail_range(tag_command_gl_, span_start, span_end, wmic, wsc);
+    nc1 = htxn_document_->add_detail_range(tag_command_gl_, span_start, span_end, wmic, wsc);
 
   if(ntc->flags.is_multi_parent)
     multi_parent_range_stack_.push({nc1, {}});
@@ -460,9 +465,9 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
     tag_command_arg_qts_ << args[0]; //tag_command_arg_layer_ += args[0];
     tag_command_arg_index_ += args[0].size(); //qts_
     u4 leave = tag_command_arg_index_ - 1;
-    u4 nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave, 
+    u4 nc2 = htxn_document_->add_detail_range(tag_command_arg_gl_, enter, leave, 
       HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
-    htxn_document_.tie_detail_range_preempt(nc1, nc2);
+    htxn_document_->tie_detail_range_preempt(nc1, nc2);
    }
    else for(QString arg : args)
    {
@@ -474,12 +479,12 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
     u4 leave = tag_command_arg_index_ - 1;
     u4 nc2;
     if(c == '?')
-      nc2 = htxn_document_.add_detail_range_optional(tag_command_arg_gl_, enter, leave, 
+      nc2 = htxn_document_->add_detail_range_optional(tag_command_arg_gl_, enter, leave, 
       HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
     else if(c == '!')
-      nc2 = htxn_document_.add_detail_range(tag_command_arg_gl_, enter, leave, 
+      nc2 = htxn_document_->add_detail_range(tag_command_arg_gl_, enter, leave, 
       HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
-    htxn_document_.tie_detail_range_preempt(nc1, nc2);
+    htxn_document_->tie_detail_range_preempt(nc1, nc2);
    }
    //tag_command_gl_->
   }
@@ -537,10 +542,10 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
   {
    // //  we have to mark the last ref as a main tile ...
    if(ntc->flags.is_main_layer)
-     htxn_document_.mark_last_as_environment_main_tile(nc1, main_gl_,
+     htxn_document_->mark_last_as_environment_main_tile(nc1, main_gl_,
      ntc->ref_position(), ntc->ref_order(), b.index - 1);
    else
-     htxn_document_.mark_last_as_environment_main_tile(nc1, nullptr, 0, 0, 0);
+     htxn_document_->mark_last_as_environment_main_tile(nc1, nullptr, 0, 0, 0);
   }
  }
 

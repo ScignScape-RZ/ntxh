@@ -10,16 +10,19 @@
 
 #include "global-types.h"
 
+#include "accessors.h"
+
+
+
+#include "kans.h"
+KANS_CLASS_DECLARE(HTXN ,HTXN_Node_Detail)
+KANS_CLASS_DECLARE(HTXN ,HTXN_Document_8b)
+USING_KANS(HTXN)
+
 
 #include "rzns.h"
 
-KANS_CLASS_DECLARE(HTXN ,HTXN_Node_Detail)
-KANS_CLASS_DECLARE(HTXN ,HTXN_Document_8b)
-
-
 RZNS_(NGML)
-
-
 
 class NGML_HTXN_Node 
 {

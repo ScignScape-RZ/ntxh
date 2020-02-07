@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-output-latex.h"
 
 #include "rz-ngml-output-event-generator.h"
@@ -118,6 +124,8 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
 
  caon_ptr<NGML_Command_Callback> cb = b.cb;
+
+
 
  switch(b.connection_descriptor)
  {

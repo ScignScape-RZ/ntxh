@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml/kernel/document/rz-ngml-document.h"
 
 //?#include "rz-ngml/output/rz-ngml-output-html.h"
@@ -41,12 +47,15 @@ int main(int argc, char* argv[])
  NGML_Document ndoc; //(DEFAULT_DIRECTORY "/t1.ngml");
  ndoc.load_and_parse(DEFAULT_DIRECTORY "/t1.ngml");
 
- NGML_Output_HTXN noh(ndoc);
+ HTXN_Document_8b* hxd = new HTXN_Document_8b;
+
+ NGML_Output_HTXN noh(ndoc, hxd);
  noh.export_htxne();
 
 // noh.write_latex_out(DEFAULT_DIRECTORY "/t1.ngml.htxne.tex");
 
  NGML_Output_Latex nol(ndoc);
+ nol.set_htxn_document(hxd);
  nol.export_latex(DEFAULT_DIRECTORY "/t1.ngml.tex");
    // output_path + '/' + qfi.completeBaseName() + ".tex");
 

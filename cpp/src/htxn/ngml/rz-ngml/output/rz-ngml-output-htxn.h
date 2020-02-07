@@ -69,7 +69,7 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  u4 write_position_;
 
- HTXN_Document_8b htxn_document_;
+// HTXN_Document_8b* htxn_document_;
 
  QString htxne_path_;
 
@@ -85,7 +85,7 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
 public:
 
- NGML_Output_HTXN(NGML_Document& document);
+ NGML_Output_HTXN(NGML_Document& document, HTXN_Document_8b* htxn_document);
 
  void export_htxne(QString path = "..htxne");
  void write_htxne_output(QString& html_output);
