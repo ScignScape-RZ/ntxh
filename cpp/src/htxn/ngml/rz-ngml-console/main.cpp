@@ -1,13 +1,14 @@
 
 #include "rz-ngml/kernel/document/rz-ngml-document.h"
 
-#include "rz-ngml/output/rz-ngml-output-html.h"
+//?#include "rz-ngml/output/rz-ngml-output-html.h"
+
 #include "rz-ngml/output/rz-ngml-output-latex.h"
 #include "rz-ngml/output/rz-ngml-output-htxn.h"
 
-#include "rz-ngml/output/rz-ngml-output-xml.h"
+//?#include "rz-ngml/output/rz-ngml-output-xml.h"
 
-#include "rz-ngml/kernel/document/rz-ngml-folder.h"
+//?#include "rz-ngml/kernel/document/rz-ngml-folder.h"
 
 #include "rzns.h"
 
@@ -43,7 +44,12 @@ int main(int argc, char* argv[])
  NGML_Output_HTXN noh(ndoc);
  noh.export_htxne();
 
- noh.write_latex_out(DEFAULT_DIRECTORY "/t1.ngml.htxne.tex");
+// noh.write_latex_out(DEFAULT_DIRECTORY "/t1.ngml.htxne.tex");
+
+ NGML_Output_Latex nol(ndoc);
+ nol.export_latex(DEFAULT_DIRECTORY "/t1.ngml.tex");
+   // output_path + '/' + qfi.completeBaseName() + ".tex");
+
 
 //? QFile file(DEFAULT_DIRECTORY "/t1.ngml.htxne");
 //? if(file.open(QIODevice::WriteOnly | QIODevice::Text))

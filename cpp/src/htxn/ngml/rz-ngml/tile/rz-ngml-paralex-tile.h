@@ -22,6 +22,8 @@
 
 RZNS_(NGML)
 
+class NGML_HTXN_Node;
+
 class NGML_Paralex_Tile : public NGML_Whitespace_Holder
 {
 public:
@@ -39,12 +41,17 @@ private:
  
  u1 width_or_alt_;
 
+ NGML_HTXN_Node* ngml_htxn_node_;
+
+
  template<Kind>
  void to_string(QString& result);
 
 public:
 
  NGML_Paralex_Tile(QString raw_text, Kind k, u1 w);
+
+ ACCESSORS(NGML_HTXN_Node* ,ngml_htxn_node)
 
  QString to_string();
  

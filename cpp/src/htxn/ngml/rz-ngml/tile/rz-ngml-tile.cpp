@@ -7,7 +7,7 @@ USING_RZNS(NGML)
 
 
 NGML_Tile::NGML_Tile(QString raw_text)
- :  raw_text_(raw_text)
+ :  raw_text_(raw_text), ngml_htxn_node_(nullptr)
 {
 
 }

@@ -21,6 +21,8 @@
 
 RZNS_(NGML)
 
+class NGML_HTXN_Node;
+
 class NGML_Tag_Command : public NGML_Whitespace_Holder
 {
 public:
@@ -76,7 +78,7 @@ public:
 
  _flags
 
-public:
+private:
 
  QString name_;
  QString argument_; 
@@ -86,6 +88,8 @@ public:
  u4 ref_position_;
  u4 ref_order_;
 
+ NGML_HTXN_Node* ngml_htxn_node_;
+
 public:
 
  ACCESSORS(QString ,name)
@@ -94,6 +98,8 @@ public:
 
  ACCESSORS(u4 ,ref_position)
  ACCESSORS(u4 ,ref_order)
+
+ ACCESSORS(NGML_HTXN_Node* ,ngml_htxn_node)
 
  NGML_Tag_Command(QString name, QString argument,
    QString parent_tag_type = QString());

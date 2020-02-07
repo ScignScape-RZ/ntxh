@@ -4,6 +4,7 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
+
 #include "htxn-node-details.h"
 
 #include "glyph-layer-8b.h"
@@ -102,6 +103,12 @@ HTXN_Node_Detail* HTXN_Node_Details::add_detail_range( // Glyph_Layer_8b* layer,
  nc = node_details_.size();
  return &(node_details_[nc - 1]);
 }
+
+HTXN_Node_Detail* HTXN_Node_Details::get_node_detail(u4 nc)
+{
+ return &(node_details_[nc - 1]);
+}
+
 
 KANS_(HTXN)
 

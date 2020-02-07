@@ -15,7 +15,8 @@ USING_RZNS(NGML)
 
 
 NGML_Paralex_Tile::NGML_Paralex_Tile(QString raw_text, Kind k, u1 w)
- :  kind_(k), width_or_alt_(w), raw_text_(raw_text)
+ :  kind_(k), width_or_alt_(w), raw_text_(raw_text), 
+    ngml_htxn_node_(nullptr)
 {
 }
 

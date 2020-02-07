@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_TILE__H
 #define RZ_NGML_TILE__H
 
@@ -13,13 +19,18 @@
 
 RZNS_(NGML)
 
+class NGML_HTXN_Node;
+
 class NGML_Tile : public NGML_Whitespace_Holder
 {
  QString raw_text_;
 
+ NGML_HTXN_Node* ngml_htxn_node_;
+
 public:
 
  ACCESSORS(QString ,raw_text)
+ ACCESSORS(NGML_HTXN_Node* ,ngml_htxn_node)
 
  NGML_Tile(QString raw_text);
 

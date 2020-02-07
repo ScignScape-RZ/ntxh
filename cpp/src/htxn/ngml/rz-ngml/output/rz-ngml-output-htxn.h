@@ -29,6 +29,7 @@ RZNS_(NGML)
 class NGML_Graph;
 class NGML_Document;
 class NGML_Command_Callback;
+class NGML_HTXN_Node;
 
 class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Handler
 {
@@ -113,9 +114,9 @@ public:
  void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile) Q_DECL_OVERRIDE;
  void generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Tile> tile) Q_DECL_OVERRIDE;
 
- void generic_generate_tile(QString text, u4 width, QTextStream& qts, u4& index);
+ void generic_generate_tile(QString text, u4 width, QTextStream& qts, u4& index, NGML_HTXN_Node& nhn);
  void generic_generate_tile(const NGML_Output_Bundle& b,
-   QString text, u4 width);
+   QString text, u4 width, NGML_HTXN_Node& nhn);
 };
 
 _RZNS(NGML)

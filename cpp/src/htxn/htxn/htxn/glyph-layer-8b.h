@@ -49,6 +49,7 @@ private:
  QMap<u4, u4> insert_loop_guards_;
 
 public:
+
  Glyph_Layer_8b(u4 id);
 
  ACCESSORS(QString ,description);

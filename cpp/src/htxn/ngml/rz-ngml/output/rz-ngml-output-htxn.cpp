@@ -21,6 +21,9 @@
 
 #include "htxn/glyph-layer-8b.h"
 
+#include "ngml-htxn/ngml-htxn-node.h"
+
+
 #include <QFile>
 #include <QFileInfo>
 #include <QDebug>
@@ -444,6 +447,9 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   if(ntc->flags.is_multi_parent)
     multi_parent_range_stack_.push({nc1, {}});
 
+  NGML_HTXN_Node* nhn = new NGML_HTXN_Node(nc1);
+  ntc->set_ngml_htxn_node(nhn);
+
   QStringList args;
   u4 sz = split_arg_layer_arguments(ntc->argument(), args);
   if(sz > 0)
@@ -574,24 +580,28 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
 }
 
 void NGML_Output_HTXN::generic_generate_tile(QString text, u4 width,
-  QTextStream& qts, u4& index)
+  QTextStream& qts, u4& index, NGML_HTXN_Node& nhn)
 {
  qts << text;
+ nhn.set_range_enter(index);
  index += width;
+ nhn.set_range_leave(index);
 }
 
 void NGML_Output_HTXN::generic_generate_tile(const NGML_Output_Bundle& b,
-  QString text, u4 width)
+  QString text, u4 width, NGML_HTXN_Node& nhn)
 {
  if(current_multi_arg_)
  {
   if(current_multi_arg_->flags.multi_arg_layer)
   {
-   generic_generate_tile(text, width, tag_command_arg_qts_, tag_command_arg_index_);
+   generic_generate_tile(text, width, tag_command_arg_qts_, tag_command_arg_index_, nhn);
+   nhn.set_layer_code(tag_command_arg_gl_->id());
    return;
   }
  }
- generic_generate_tile(text, width, b.qts, b.index);
+ generic_generate_tile(text, width, b.qts, b.index, nhn);
+ nhn.set_layer_code(main_gl_->id());
 }
 
 
@@ -601,8 +611,10 @@ void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b,
  CAON_PTR_DEBUG(NGML_Tile ,tile)
 //
  QString rt = tile->raw_text();
+ NGML_HTXN_Node* nhn = new NGML_HTXN_Node();
 // b.qts << tile->raw_text();
- generic_generate_tile(b, rt, rt.size());
+ generic_generate_tile(b, rt, rt.size(), *nhn);
+ tile->set_ngml_htxn_node(nhn);
 
  //check_update_index(b, *tile);
 
@@ -611,7 +623,9 @@ void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b,
 
 void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
 {   //    || (current_multi_arg_->flags.is_multi_mandatory) )
- generic_generate_tile(b, tile->to_string(), tile->get_width());
+ NGML_HTXN_Node* nhn = new NGML_HTXN_Node();
+ generic_generate_tile(b, tile->to_string(), tile->get_width(), *nhn);
+ tile->set_ngml_htxn_node(nhn);
 }
 
 void NGML_Output_HTXN::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
