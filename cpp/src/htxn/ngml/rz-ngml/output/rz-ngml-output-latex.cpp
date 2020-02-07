@@ -17,6 +17,11 @@
 
 #include "kernel/graph/rz-ngml-node.h"
 
+#include "ngml-htxn/ngml-htxn-node.h"
+
+
+#include "htxn/htxn-document-8b.h"
+
 
 #include <QFile>
 #include <QFileInfo>
@@ -29,6 +34,7 @@ USING_RZNS(NGML)
 NGML_Output_Latex::NGML_Output_Latex(NGML_Document& document)
  : NGML_Output_Base(document)
 {
+ htxn_qts_.setString(&htxn_acc_);
  init_callbacks();
 }
 
@@ -126,6 +132,16 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  caon_ptr<NGML_Command_Callback> cb = b.cb;
 
 
+ QString name;
+ if(htxn_document_)
+ {
+  name = get_htxn_tag_command_name(*ntc);
+ }
+ else
+ {
+  name = ntc->latex_name();
+ }
+
 
  switch(b.connection_descriptor)
  {
@@ -164,6 +180,23 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  }
 
 }
+
+QString NGML_Output_Latex::get_htxn_tag_command_name(NGML_Tag_Command& ntc)
+{
+ QString result;
+ if(NGML_HTXN_Node* nhn = ntc.ngml_htxn_node())
+ {
+  HTXN_Node_Detail* nd = htxn_document_->get_node_detail(nhn->detail_code());
+  Glyph_Layer_8b* gl = nd->get_layer();
+  htxn_document_->write_minimal_latex_out(gl, nd->enter,
+    nd->leave, htxn_qts_);
+  result = htxn_acc_;
+  htxn_acc_.clear(); 
+  htxn_qts_.reset();
+ }
+ return result;
+}
+
 
 void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {

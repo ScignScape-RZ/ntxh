@@ -308,13 +308,13 @@ void HTXN_Document_8b::get_latex_command(Glyph_Layer_8b& gl, u4 enter, u4 leave,
 void HTXN_Document_8b::write_latex_out(QTextStream& qts)
 {
  QString text;
- get_latex_out(0, text);
+ get_latex_out(1, text);
  qts << text;
 } 
 
 void HTXN_Document_8b::get_latex_out(u4 layer, QString& result)
 {
- Glyph_Layer_8b* gl = value(layer);
+ Glyph_Layer_8b* gl = value(layer - 1);
  if(!gl)
    return;
  get_latex_out(gl, 0, 0, gl->size() - 1, result);
@@ -327,10 +327,30 @@ void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
 }
 
 
+void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts)
+{
+ Glyph_Argument_Package gap;
+ Glyph_Argument_Package cmdgap;
+ gap.internal_deck = current_deck_;
+ cmdgap.internal_deck = current_deck_;
+
+ for(u4 i = enter; i <= leave; ++i)
+ {
+  this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
+  if(gap.chr.isNull())
+    qts << gap.str;
+  else
+    qts << gap.chr;
+  gap.reset();
+ }
+
+}
+
+
 void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
   u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd)
 {
- //parse_layer(gv)
+ //parse_layer(gv)l
  Glyph_Argument_Package gap;
  Glyph_Argument_Package cmdgap;
  gap.internal_deck = current_deck_;

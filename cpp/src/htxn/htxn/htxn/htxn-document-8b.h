@@ -98,6 +98,8 @@ public:
 
  void get_latex_out(u4 layer, QString& result);
 
+ void write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts);
+
  void get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
    u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd = nullptr);
 

@@ -41,8 +41,6 @@ struct NGML_Output_Bundle
  NGML_Connection_Descriptor connection_descriptor;
  caon_ptr<NGML_Command_Callback> cb;
 
- caon_ptr<HTXN_Document_8b> htxn_document; 
-
  NGML_Output_Bundle with(QTextStream& new_qts) const;
  NGML_Output_Bundle with(caon_ptr<tNode> n, NGML_Connection_Descriptor descriptor) const;
  NGML_Output_Bundle with(NGML_Connection_Descriptor descriptor) const;
@@ -61,8 +59,7 @@ struct NGML_Output_Partial_Bundle
  operator NGML_Output_Bundle()
  {
   return {qts, index, node, NGML_Connection_Descriptor(),
-    caon_ptr<NGML_Command_Callback> ( nullptr ), 
-    caon_ptr<HTXN_Document_8b>( nullptr ) };
+    caon_ptr<NGML_Command_Callback> ( nullptr ) };
  }
 };
 

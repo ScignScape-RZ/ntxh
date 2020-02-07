@@ -8,6 +8,8 @@
 #ifndef RZ_NGML_OUTPUT_LATEX__H
 #define RZ_NGML_OUTPUT_LATEX__H
 
+#include <QTextStream>
+
 
 #include "rz-ngml-output-base.h"
 #include "rz-ngml-output-event-handler.h"
@@ -29,6 +31,8 @@ class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Han
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();
 
+ QString htxn_acc_;
+ QTextStream htxn_qts_;
 
 public:
 
@@ -52,6 +56,8 @@ public:
 
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc)  Q_DECL_OVERRIDE;
 
+ QString get_htxn_tag_command_name(NGML_Tag_Command& ntc);
+ 
 };
 
 _RZNS(NGML)

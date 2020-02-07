@@ -34,9 +34,13 @@ void NGML_Output_Event_Generator::generate(QTextStream& qts)
  CAON_PTR_DEBUG(tNode ,root_node)
  root_node->debug_connectors();
  u4 index = 2; // // assume `[//] ...
-//? const NGML_Output_Bundle b& {qts, index, root_node, nullptr, hdoc};
+//? 
 
- NGML_Output_Bundle b {qts, index, root_node, {}, nullptr, htxn_document_};
+// const NGML_Output_Bundle b& {qts, index, root_node};
+// NGML_Output_Bundle b {qts, index, root_node};
+
+ NGML_Output_Bundle b {.qts = qts, .index = index, 
+   .node = root_node };
 
  if(caon_ptr<NGML_Root> nr = root_node->ngml_root())
  {
