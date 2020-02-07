@@ -15,7 +15,8 @@ NGML_Tag_Command::NGML_Tag_Command(QString name,
   QString argument, QString parent_tag_type)
  : Flags(0), name_(name), argument_(argument),
    parent_tag_type_(parent_tag_type),
-   ref_position_(0), ref_order_(0), ngml_htxn_node_(nullptr)
+   ref_position_(0), ref_order_(0),
+   ngml_htxn_node_(nullptr), arg_ngml_htxn_node_(nullptr)
 {
 
 }

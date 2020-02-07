@@ -9,8 +9,9 @@
 
 #include <functional>
 
+#ifndef MACRO_PASTE
 #define MACRO_PASTE(...) __VA_ARGS__
-
+#endif
 
 #ifndef ACCESSORS__GET
 #define ACCESSORS__GET(type, name) \

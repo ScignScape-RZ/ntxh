@@ -129,7 +129,12 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  Glyph_Layer_8b* gl = nd->get_layer();
 
  if(nd->flags.is_ghosted)
-   b.qts << "{";
+ {
+  if(nd->flags.region_main_preempts_wrap)
+    ; // nothing
+  else
+    b.qts << "{";
+ }
  else
  {
   htxn_document_->write_minimal_latex_out(gl, nd->enter,
@@ -155,6 +160,21 @@ void NGML_Output_Latex::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML
  htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts);
 }
 
+void NGML_Output_Latex::generate_tag_command_argument(const NGML_Output_Bundle& b,
+  NGML_HTXN_Node& nhn)
+{
+ HTXN_Node_Detail* nd = htxn_document_->get_node_detail(nhn.detail_code());
+ b.qts << '{';
+ htxn_document_->write_minimal_latex_out(nd->get_layer(), nd->enter, nd->leave, b.qts);
+ b.qts << '}';
+}
+
+void NGML_Output_Latex::check_generate_tag_command_argument(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ if(NGML_HTXN_Node* nhn = ntc.arg_ngml_htxn_node())
+   generate_tag_command_argument(b, *nhn);
+}
 
 void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
@@ -189,6 +209,7 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
    if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
    {
     generate_tag_command_entry(b, *nhn);
+    check_generate_tag_command_argument(b, *ntc);
     break;
    }
   }
@@ -215,9 +236,17 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
  HTXN_Node_Detail* nd = htxn_document_->get_node_detail(nhn.detail_code());
 
  if(nd->flags.is_ghosted)
-   b.qts << '}';
+ {
+  if(nd->flags.region_main_preempts_wrap)
+    ; // nothing ...
+  else
+    b.qts << '}';
+ }
  else if(nd->flags.ref_preempts_wrap)
-   ; // nothing
+ {
+  if(nd->flags.region)
+    b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+ }
  else if(nd->flags.region)
    b.qts << "\\end{" << region_end_names_.take(nd) << '}';
  else
@@ -227,6 +256,8 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
 
 void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
+ CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+
  if(b.cb)
  {
   if(b.cb->flags.has_post_callback)
@@ -259,7 +290,10 @@ void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, NGM
  if(nd->flags.is_ghosted)
    ; // nothing
  else if(nd->flags.ref_preempts_wrap)
-   ; // nothing
+ {
+  if(nd->flags.region)
+     b.qts << '}';
+ }
  else if(nd->flags.region)
    b.qts << '}';
  else
@@ -268,6 +302,8 @@ void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, NGM
 
 void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
+ CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+
  if(htxn_document_)
  {
   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())

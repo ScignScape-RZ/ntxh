@@ -52,6 +52,12 @@ public:
 
  void generate(QTextStream& qts);
 
+ void check_generate_tag_command_argument(const NGML_Output_Bundle& b,
+   NGML_Tag_Command& ntc);
+ void generate_tag_command_argument(const NGML_Output_Bundle& b,
+   NGML_HTXN_Node& nhn);
+
+
  void generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
  void generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);

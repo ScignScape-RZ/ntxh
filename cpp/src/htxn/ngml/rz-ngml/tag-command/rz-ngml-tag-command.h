@@ -89,6 +89,8 @@ private:
  u4 ref_order_;
 
  NGML_HTXN_Node* ngml_htxn_node_;
+ NGML_HTXN_Node* arg_ngml_htxn_node_;
+
 
 public:
 
@@ -100,6 +102,7 @@ public:
  ACCESSORS(u4 ,ref_order)
 
  ACCESSORS(NGML_HTXN_Node* ,ngml_htxn_node)
+ ACCESSORS(NGML_HTXN_Node* ,arg_ngml_htxn_node)
 
  NGML_Tag_Command(QString name, QString argument,
    QString parent_tag_type = QString());

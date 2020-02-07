@@ -486,8 +486,13 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
     tag_command_arg_qts_ << args[0]; //tag_command_arg_layer_ += args[0];
     tag_command_arg_index_ += args[0].size(); //qts_
     u4 leave = tag_command_arg_index_ - 1;
-    u4 nc2 = htxn_document_->add_detail_range(tag_command_arg_gl_, enter, leave, 
+
+    u4 nc2 = htxn_document_->add_detail_range(tag_command_arg_gl_, enter, leave,
       HTXN_Node_Detail::Wrap_Mode_Indicator_Codes::Normal);
+
+    NGML_HTXN_Node* nhn = new NGML_HTXN_Node(nc2);
+    ntc->set_arg_ngml_htxn_node(nhn);
+
     htxn_document_->tie_detail_range_preempt(nc1, nc2);
    }
    else for(QString arg : args)
