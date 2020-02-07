@@ -616,7 +616,7 @@ void NGML_Output_HTXN::generic_generate_tile(QString text, u4 width,
  qts << text;
  nhn.set_range_enter(index);
  index += width;
- nhn.set_range_leave(index);
+ nhn.set_range_leave(index - 1);
 }
 
 void NGML_Output_HTXN::generic_generate_tile(const NGML_Output_Bundle& b,

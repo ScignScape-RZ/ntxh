@@ -132,8 +132,10 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  {
   if(nd->flags.region_main_preempts_wrap)
     ; // nothing
+  else if(nd->flags.optional)
+    b.qts << '[';
   else
-    b.qts << "{";
+    b.qts << '{';
  }
  else
  {
@@ -239,6 +241,8 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
  {
   if(nd->flags.region_main_preempts_wrap)
     ; // nothing ...
+  else if(nd->flags.optional)
+    b.qts << ']';
   else
     b.qts << '}';
  }
