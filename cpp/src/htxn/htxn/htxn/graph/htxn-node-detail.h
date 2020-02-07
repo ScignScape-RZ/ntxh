@@ -32,8 +32,9 @@ KANS_(HTXN)
 class Glyph_Layer_8b;
 
 struct HTXN_Node_Detail
-{
-flags_(3)
+{ 
+flags_(4)
+
  bool region:1;
  bool self_close:1;
  bool optional:1;
@@ -60,7 +61,26 @@ flags_(3)
  bool needs_write_end:1;
  bool is_ghosted:1;
 
+ bool has_nav_ref_enter:1;
+ bool has_nav_ref_cross:1;
+
+ bool has_ref_package:1;
+ bool has_ref_package_no_layer:1;
+
 _flags
+
+ struct Ref_Package
+ {
+  Glyph_Layer_8b* gl;
+  u4 enter_code;  
+  u4 cross_code;  
+ };
+
+ struct Ref_Package_No_Layer
+ {
+  u4 enter_code;  
+  u4 cross_code;  
+ };
 
  enum Space_Codes {
    N_A = 0, Pre_Line_Gap = 1, Post_Line_Gap = 2,
@@ -99,6 +119,9 @@ _flags
  QVector<u4>* get_refs() const;
  QVector<u4>* get_refs_from_split() const;
  Glyph_Layer_8b* get_layer_from_split() const;
+
+ Glyph_Layer_8b* get_layer_from_package(void* pkg) const;
+ Ref_Package* set_layer_from_package(Glyph_Layer_8b* gl, void* pkg);
 
  Glyph_Layer_8b* get_layer() const;
  void set_layer(Glyph_Layer_8b* gl);

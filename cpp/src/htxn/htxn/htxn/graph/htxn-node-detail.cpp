@@ -156,9 +156,12 @@ void HTXN_Node_Detail::add_node_ref(u4 nc)
   }
   else
   {
-   QPair<Glyph_Layer_8b*, QVector<u4>>* pr = new 
-     QPair<Glyph_Layer_8b*, QVector<u4>>(
-     {static_cast<Glyph_Layer_8b*>(node_ref), {nc}});
+   QPair<void*, QVector<u4>>* pr = new
+     QPair<void*, QVector<u4>>({node_ref, {nc}});
+
+//   QPair<Glyph_Layer_8b*, QVector<u4>>* pr = new
+//     QPair<Glyph_Layer_8b*, QVector<u4>>(
+//     {static_cast<Glyph_Layer_8b*>(node_ref), {nc}});
    node_ref = pr;
    flags.split_node_ref = true;
   }
@@ -166,29 +169,74 @@ void HTXN_Node_Detail::add_node_ref(u4 nc)
  else
  {
   node_ref = new 
-    QPair<Glyph_Layer_8b*, QVector<u4>>({nullptr, {nc}});
+    QPair<void*, QVector<u4>>({nullptr, {nc}});
   flags.split_node_ref = true;
  }
 }
 
+Glyph_Layer_8b* HTXN_Node_Detail::get_layer_from_package(void* pkg) const
+{
+ if(flags.has_ref_package)
+   return static_cast<Ref_Package*>(pkg)->gl;
+ if(flags.has_ref_package_no_layer)
+   return nullptr;
+ return static_cast<Glyph_Layer_8b*>(pkg);
+}
+
 Glyph_Layer_8b* HTXN_Node_Detail::get_layer_from_split() const
 {
- return 
-   static_cast<QPair<Glyph_Layer_8b*, QVector<u4>>*>(node_ref)->first;
+ void* pkg = static_cast<QPair<void*, QVector<u4>>*>(node_ref)->first;
+ return get_layer_from_package(pkg);
 }
 
 Glyph_Layer_8b* HTXN_Node_Detail::get_layer() const
 {
  if(flags.split_node_ref)
    return get_layer_from_split();
- return static_cast<Glyph_Layer_8b*>(node_ref);
+ return get_layer_from_package(node_ref);
+}
+
+HTXN_Node_Detail::Ref_Package* HTXN_Node_Detail::set_layer_from_package(Glyph_Layer_8b* gl, void* pkg)
+{
+ if(flags.has_ref_package)
+ {
+  static_cast<Ref_Package*>(pkg)->gl = gl;
+  return nullptr;
+ }
+ if(flags.has_ref_package_no_layer)
+ {
+  Ref_Package_No_Layer* old = static_cast<Ref_Package_No_Layer*>(pkg);
+  Ref_Package* result = new Ref_Package{gl, old->cross_code, old->enter_code};
+  flags.has_ref_package = true;
+  flags.has_ref_package_no_layer = false;
+  return result;
+ }
 }
 
 void HTXN_Node_Detail::set_layer(Glyph_Layer_8b* gl)
 {
  if(flags.split_node_ref)
-   static_cast<QPair<Glyph_Layer_8b*, QVector<u4>>*>(node_ref)
-   ->first = gl;
+ {
+  void*& pkg = static_cast<QPair<void*, QVector<u4>>*>(node_ref)->first;
+  if(flags.has_ref_package)
+    set_layer_from_package(gl, pkg);
+  else if(flags.has_ref_package_no_layer)
+  {
+   Ref_Package_No_Layer* old = static_cast<Ref_Package_No_Layer*>(pkg);
+   pkg = set_layer_from_package(gl, old);
+   delete old;
+  }
+  else
+    pkg = gl;
+ }
+ else if(flags.has_ref_package)
+   set_layer_from_package(gl, node_ref);
+ else if(flags.has_ref_package_no_layer)
+ {
+  Ref_Package_No_Layer* old = static_cast<Ref_Package_No_Layer*>(node_ref);
+  node_ref = set_layer_from_package(gl, old);
+  delete old;
+ }
  else
    node_ref = gl;
 }
@@ -197,7 +245,7 @@ void HTXN_Node_Detail::prepare_read()
 {
  if(flags.split_node_ref)
  {
-  node_ref = new QPair<Glyph_Layer_8b*, QVector<u4>>;
+  node_ref = new QPair<void*, QVector<u4>>;
  }
 }
 
