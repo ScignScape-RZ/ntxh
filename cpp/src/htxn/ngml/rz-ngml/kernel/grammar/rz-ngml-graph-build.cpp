@@ -504,7 +504,8 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
  return document_info_.light_xml();
 }
 
-void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
+void NGML_Graph_Build::multi_arg_transition(QString wmi, 
+  QString fiat, QString arg_marker)
 {
  if(flags.active_attribute_sequence)
  {
@@ -524,17 +525,17 @@ void NGML_Graph_Build::multi_arg_transition(QString wmi, QString arg_marker)
       parse_context_.flags.inside_multi_parent_semis = true;
     else
       parse_context_.flags.inside_multi_parent = true;
-    tag_command_entry_inside_multi(wmi, ntc->name(), arg_marker);
+    tag_command_entry_inside_multi(wmi, fiat, ntc->name(),  arg_marker);
     return;
    }
   }
  }
  tag_command_leave();
  QString tag_command = markup_position_.current_tag_command_name();
- tag_command_entry_inside_multi(wmi, tag_command, arg_marker);
+ tag_command_entry_inside_multi(wmi, fiat, tag_command, arg_marker);
 }
 
-void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi, 
+void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi, QString fiat, 
   QString tag_command, QString arg_marker, QString argument, QString name)
 {
  QString nn = name;
@@ -548,6 +549,13 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi,
    ntc->flags.autogen_multi_name = true;
 
  check_non_or_left_wrapped(wmi, ntc);
+
+ if(fiat == '=')
+ {
+  ntc->flags.is_fiat = true;
+  if(!ntc->flags.is_left_wrapped)
+    ntc->flags.is_non_wrapped = true;
+ }
 
  caon_ptr<tNode> node = make_new_node(ntc);
 
@@ -582,7 +590,7 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi,
 }
 
 void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
-  QString tag_body_follow, QString first_arg_wmi, QString first_arg_marker)
+  QString tag_body_follow, QString fiat, QString first_arg_wmi, QString first_arg_marker)
 {
  Tag_Body_Follow_Mode m = tag_body_follow.isEmpty() ? Normal
    : parse_tag_body_follow(tag_body_follow);
@@ -612,7 +620,7 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
  else
  {
   ntc->flags.is_multi_parent = true;
-  tag_command_entry_inside_multi(first_arg_wmi, tag_command, first_arg_marker);
+  tag_command_entry_inside_multi(first_arg_wmi, fiat, tag_command, first_arg_marker);
 
   parse_context_.flags.inside_multi_generic = true;
   if(tag_body_follow.isEmpty())
@@ -622,13 +630,17 @@ void NGML_Graph_Build::tag_command_entry_multi(QString wmi, QString tag_command,
  }
 }
 
-void NGML_Graph_Build::tag_command_entry_inline(QString wmi, QString tag_command,
+void NGML_Graph_Build::tag_command_entry_inline(QString wmi, QString fiat, QString tag_command,
  QString tag_body_follow, QString argument)
 {
  Tag_Body_Follow_Mode m = parse_tag_body_follow(tag_body_follow);
  QString prefix;
- caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(wmi, prefix, 
+
+ caon_ptr<NGML_Tag_Command> ntc = tag_command_entry(wmi, prefix,
    tag_command, argument);
+
+ if(fiat == "=")
+   ntc->flags.is_fiat = true;
 
  switch(m)
  {
@@ -649,7 +661,17 @@ void NGML_Graph_Build::tag_command_entry_inline(QString wmi, QString tag_command
 
 caon_ptr<NGML_Tag_Command> NGML_Graph_Build::make_new_tag_command(QString name, QString argument, QString parent_tag_type)
 {
- return caon_ptr<NGML_Tag_Command>( new NGML_Tag_Command(name, argument, parent_tag_type) );
+ NGML_Tag_Command* result;
+ if(name.startsWith('='))
+ {
+  result = new NGML_Tag_Command(name.mid(1), argument, parent_tag_type);
+  result->flags.is_fiat = true;
+  result->flags.is_non_wrapped = true;
+ }
+ else
+   result = new NGML_Tag_Command(name, argument, parent_tag_type);
+   
+ return result;
 }
 
 

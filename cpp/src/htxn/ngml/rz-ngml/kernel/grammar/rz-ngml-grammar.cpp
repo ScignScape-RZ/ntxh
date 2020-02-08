@@ -371,25 +371,32 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  add_rule( flags_all_(parse_context ,inside_multi_generic),
    ngml_context,
    "cmd-multi-arg-transition",
-   " :: (?<main> -{1,2}>{1,2}) "
+   " (?<fiat-or-cmd> (?: :: ) | = ) (?<main> -{1,2}>{1,2}) "
    " \\s+ (?<cmd> .valid-tag-command-name. ) "
     ,[&]
  {
   QString m = p.matched("main");
   QString cmd = p.matched("cmd");
-  graph_build.multi_arg_transition({}, m);
-  graph_build.tag_command_entry_inline("::", cmd, ";", {});
+  QString fiat = p.matched("fiat-or-cmd");
+  graph_build.multi_arg_transition({}, {}, m);
+  if(fiat == "=")
+    graph_build.tag_command_entry_inline("::", fiat, cmd, ";", {});
+  else
+    graph_build.tag_command_entry_inline(fiat, {}, cmd, ";", {});
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_generic),
    ngml_context, 
    "multi-arg-transition",
-   " (?<wmi> .tag-command-wrap-mode-indicator.? ) (?<main> -{1,2}>{1,2} ) "
+   " (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+   " (?<fiat> =?)  "
+   " (?<main> -{1,2}>{1,2} ) "
    ,[&]
  {
   QString wmi = p.matched("wmi");  
+  QString fiat = p.matched("fiat");  
   QString m = p.matched("main");
-  graph_build.multi_arg_transition(wmi, m);
+  graph_build.multi_arg_transition(wmi, fiat, m);
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_parent_semis),
@@ -414,18 +421,23 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
    " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
    " (?<tag-command> .valid-tag-command-name. ) "
    " (?<tag-body-follow> [,.]?) "
-   " \\s+ :: "
+   " \\s+ (?<fiat-or-cmd> (?: :: ) | = ) "
    " (?<first-arg-marker> -{1,2} >{1,2} ) \\s+ (?<cmd> .valid-tag-command-name. )"
    ,[&]
  {
   QString wmi = p.matched("wmi");
   QString tag_command = p.matched("tag-command");
   QString tag_body_follow = p.matched("tag-body-follow");
+  QString fiat = p.matched("fiat-or-cmd");
   QString first_arg_marker = p.matched("first-arg-marker");
   graph_build.tag_command_entry_multi(wmi, tag_command,
-    tag_body_follow, {}, first_arg_marker);
+    tag_body_follow, {}, {}, first_arg_marker);
   QString cmd = p.matched("cmd");
-  graph_build.tag_command_entry_inline("::", cmd, ";", {});
+
+  if(fiat == "=")
+    graph_build.tag_command_entry_inline("::", fiat, cmd, ";", {});
+  else
+    graph_build.tag_command_entry_inline(fiat, {}, cmd, ";", {});
 
   //graph_build.tag_body_leave();
  });
@@ -445,7 +457,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   QString tag_body_follow = p.matched("tag-body-follow");
   QString first_arg_marker = p.matched("first-arg-marker");
   graph_build.tag_command_entry_multi(wmi, tag_command, 
-    tag_body_follow, fwmi, first_arg_marker);
+    tag_body_follow, {}, fwmi, first_arg_marker);
     //graph_build.tag_body_leave();
  });
 
@@ -460,7 +472,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   QString tag_command = p.matched("tag-command");
   QString tag_body_follow = p.matched("tag-body-follow");
   QString argument = p.matched("argument");
-  graph_build.tag_command_entry_inline(wmi, tag_command, tag_body_follow, argument);
+  graph_build.tag_command_entry_inline(wmi, {}, tag_command, tag_body_follow, argument);
   //graph_build.tag_body_leave();
  });
 
