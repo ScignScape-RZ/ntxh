@@ -168,6 +168,8 @@ public:
 
  void check_multi_parent_reset();
 
+ void multi_arg_transition_to_main_tile();
+
  void multi_arg_transition(QString wmi, QString fiat, 
    QString arg_marker);
 

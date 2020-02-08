@@ -313,6 +313,12 @@ public:
   return lhs.raw_pointer() != rhs.raw_pointer();
  }
 
+
+ friend bool operator |=(caon_ptr lhs, size_t rhs)
+ {
+  return lhs.value_ |= rhs;
+ }
+
  template<typename U>
  void set_direct_value(U t)
  {

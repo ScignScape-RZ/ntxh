@@ -386,11 +386,20 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_generic),
+   ngml_context,
+   "multi-arg-transition-to-main-tile",
+   " \\s+ => \\s+ "
+   ,[&]
+ {
+  graph_build.multi_arg_transition_to_main_tile();
+ });
+
+ add_rule( flags_all_(parse_context ,inside_multi_generic),
    ngml_context, 
    "multi-arg-transition",
-   " (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+   " \\s+ (?<wmi> .tag-command-wrap-mode-indicator.? ) "
    " (?<fiat> =?)  "
-   " (?<main> -{1,2}>{1,2} ) "
+   " (?<main> -{1,2}>{1,2} ) \\s+ "
    ,[&]
  {
   QString wmi = p.matched("wmi");  

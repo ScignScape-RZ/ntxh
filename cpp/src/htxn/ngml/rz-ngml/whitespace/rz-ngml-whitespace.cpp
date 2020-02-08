@@ -1,9 +1,17 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-whitespace.h"
 
 #include <QDebug>
 
-#include <bitset>
+//?#include <bitset>
+
+#include "global-types.h"
 
 #include "rzns.h"
 
@@ -16,10 +24,61 @@ NGML_Whitespace::NGML_Whitespace()
 
 }
 
+
 NGML_Whitespace::NGML_Whitespace(QString raw_text)
 {
  parse(raw_text);
 }
+
+void NGML_Whitespace::set_left_code(Left_Right_Codes c)
+{
+ set_lr_code(c, 2);
+}
+
+void NGML_Whitespace::set_right_code(Left_Right_Codes c)
+{
+ set_lr_code(c, 5);
+}
+
+void NGML_Whitespace::set_lr_code(Left_Right_Codes c, u1 shift)
+{
+ if(raw_text_)
+ {
+  if(raw_text_.is_fixnum())
+  {
+   u1 code = (u1) c;
+   code <<= shift;
+   raw_text_ |= code;
+  }
+ }
+}
+
+
+NGML_Whitespace::Left_Right_Codes NGML_Whitespace::get_left_code()
+{
+ if(raw_text_)
+ {
+  if(raw_text_.is_fixnum())
+  {
+   size_t v = raw_text_.get_fixnum();
+   return (Left_Right_Codes) (v | 7);
+  }
+ }
+}
+
+NGML_Whitespace::Left_Right_Codes NGML_Whitespace::get_right_code()
+{
+ if(raw_text_)
+ {
+  if(raw_text_.is_fixnum())
+  {
+   size_t v = raw_text_.get_fixnum();
+   v >>= 3;
+   return (Left_Right_Codes) (v | 7);
+  }
+ }
+}
+
 
 void NGML_Whitespace::get_counts(u1* result)
 {
@@ -28,34 +87,38 @@ void NGML_Whitespace::get_counts(u1* result)
 
  if(raw_text_)
  {
-//  #ifdef NO_CAON
-//   // //  actually we should count from raw_text_ ...
-//  result[0] = 255;
-//  result[1] = 255;
-//  #else //NO_CAON
   if(raw_text_.is_fixnum())
   {
    size_t v = raw_text_.get_fixnum();
+
+   // // discard codes
+   v >>= 6;
+
    while(v > 0)
    {
-    u1 encode = v & 3;
-    switch(encode)
+    u1 encode = v & 7;
+    Space_Codes sc = (Space_Codes) encode;
+    switch(sc)
     {
-    case 0:
-    case 2:
+    case Space_Codes::N_A:
+    case Space_Codes::Tab:
+    case Space_Codes::CR:
+    case Space_Codes::Other:
      result[0] = 255;
      result[1] = 255;
      return;
-    case 1:
-     ++result[1];
-     break;
-    case 3:
+    case Space_Codes::Line:
      ++result[0];
      break;
+    case Space_Codes::Space:
+     ++result[0];
+     break;
+    case Space_Codes::Comment:
+    case Space_Codes::Comment_Pad:
+     break;
     }
-    v >>= 2;
+    v >>= 3;
    }
-   return;
   }
  }
 }
@@ -78,12 +141,16 @@ u1 NGML_Whitespace::get_length()
   if(raw_text_.is_fixnum())
   {
    size_t v = raw_text_.get_fixnum();
+
+   // // discard codes
+   v >>= 6;
+
    while(v > 0)
    {
-    u1 encode = v & 3;
+    u1 encode = v & 7;
     if(encode > 0)
       ++result;
-    v >>= 2;
+    v >>= 3;
    }
    return (u1) result;
   }
@@ -106,22 +173,33 @@ QString NGML_Whitespace::to_string()
   if(raw_text_.is_fixnum())
   {
    size_t v = raw_text_.get_fixnum();
+
+   // // discard codes
+   v >>= 6;
+
    QString result;
+
    while(v > 0)
    {
-    int encode = v & 3;
-    switch(encode)
+    u1 encode = v & 7;
+    Space_Codes sc = (Space_Codes) encode;
+    switch(sc)
     {
-    case 0:
+    case Space_Codes::CR:
      result += '\r'; break;
-    case 1:
+
+    case Space_Codes::Space:
      result += ' '; break;
-    case 2:
+
+    case Space_Codes::Tab:
      result += '\t'; break;
-    case 3:
+
+    case Space_Codes::Line:
      result += '\n'; break;
+
+    default: break;
     }
-    v >>= 2;
+    v >>= 3;
    }
    return result;
   }
@@ -138,30 +216,34 @@ void NGML_Whitespace::parse(QString raw_text)
 {
  size_t code = 0;
  int size = raw_text.size();
- if(size > 13)
+ if(size > 18)
  {
   raw_text_ = caon_ptr<QString>( new QString(raw_text) );
   return;
  }
  for(int i = 0; i < size; ++i)
  {
-  int encode = 0;
   QChar qc = raw_text[i];
+
+  Space_Codes sc = Space_Codes::N_A;
+
   switch(qc.toLatin1())
   {
-  case '\r': break;
-  case ' ': encode = 1; break;
-  case '\t': encode = 2; break;
-  case '\n': encode = 3; break;
+  case '\r': sc = Space_Codes::CR; break;
+  case ' ': sc = Space_Codes::Space; break;
+  case '\t': sc = Space_Codes::Tab; break;
+  case '\n': sc = Space_Codes::Line; break;
   default:
    raw_text_ = caon_ptr<QString>( new QString(raw_text) );
    return;
   }
-  encode <<= (i*2);
+
+  size_t encode = (size_t) sc;
+
+  encode <<= (6 + (i*3));
   code |= encode;
  }
  #ifdef NO_CAON
- //?raw_text_ = new QStringraw_text;
  #else //NO_CAON
  raw_text_.set_fixnum(code);
  #endif //NO_CAON

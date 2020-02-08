@@ -896,10 +896,10 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
    { { '?', 1 }, Standard_GlyphDeck_8b::NpQmX },
 //?   { { '?', 1 }, Standard_GlyphDeck_8b::IndQm },
 
-   { { '<', 0 }, 88 },
+   { { '<', 0 }, Standard_GlyphDeck_8b::NpLtX },
    { { '<', 1 }, Standard_GlyphDeck_8b::NpLtX },
 
-   { { '>', 0 }, 89 },
+   { { '>', 0 }, Standard_GlyphDeck_8b::NpGtX },
    { { '>', 1 }, Standard_GlyphDeck_8b::NpGtX },
 
    { { '=', 0 }, Standard_GlyphDeck_8b::TxtEqX },

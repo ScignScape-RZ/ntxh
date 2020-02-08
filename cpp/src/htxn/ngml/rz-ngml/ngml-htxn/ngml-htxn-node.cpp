@@ -20,6 +20,8 @@ NGML_HTXN_Node::NGML_HTXN_Node(u4 detail_code)
 
 HTXN_Node_Detail* NGML_HTXN_Node::get_node_detail(HTXN_Document_8b* doc)
 {
+ if(detail_code_ == 0)
+   return nullptr;
  return doc->get_node_detail(detail_code_);
 }
 

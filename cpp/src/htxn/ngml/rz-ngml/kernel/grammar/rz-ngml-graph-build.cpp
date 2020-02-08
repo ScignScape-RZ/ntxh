@@ -504,6 +504,12 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
  return document_info_.light_xml();
 }
 
+void NGML_Graph_Build::multi_arg_transition_to_main_tile()
+{
+ multi_arg_transition({}, {}, "-->");
+  // // need to mark as main tile somehow ...
+}
+
 void NGML_Graph_Build::multi_arg_transition(QString wmi, 
   QString fiat, QString arg_marker)
 {
