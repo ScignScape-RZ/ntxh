@@ -230,6 +230,8 @@ void NGML_Markup_Position::await_mandatory(caon_ptr<tNode> node)
 void NGML_Markup_Position::tag_command_entry(caon_ptr<NGML_Node> node)
 {
  CAON_PTR_DEBUG(tNode ,current_node_)
+ CAON_PTR_DEBUG(tNode ,node)
+
  current_attribute_node_ = caon_ptr<tNode>( nullptr );
  switch(position_state_)
  {
@@ -241,11 +243,15 @@ void NGML_Markup_Position::tag_command_entry(caon_ptr<NGML_Node> node)
     ntc->flags.has_entry = true;
    }
   }
+
   // fallthrough
  case Root:
-   node->wsh()->inherit_whitespace(current_node_->wsh());
- case Annotation_Close:
  case Tile_Sequence:
+   node->wsh()->inherit_whitespace(current_node_->wsh());
+
+  [[clang::fallthrough]];
+  // // what about inherit_whitespace for Annotation_Close?
+ case Annotation_Close:
   current_node_ << fr_/qry_.Tag_Command_Entry >> node;
   merge_multi_parent_inherited(current_node_, node);
   position_state_ = Tag_Command_Entry;

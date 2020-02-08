@@ -35,6 +35,8 @@ public:
 
  void inherit_whitespace(NGML_Whitespace_Holder* wsh);
 
+ void get_whitespace_counts_as_inherited(u1* result);
+
  template<typename T>
  void write_whitespace(T& t)
  {

@@ -74,7 +74,7 @@ void NGML_Output_Latex::write_latex_output(QString& latex_output)
 {
  QTextStream qts(&latex_output);
  generate(qts);
- latex_output.replace(QRegularExpression("\\n+"), "\n");
+ latex_output.replace(QRegularExpression("\\n{2,}"), "\n\n");
 }
 
 void NGML_Output_Latex::generate(QTextStream& qts)
@@ -127,6 +127,13 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
 {
  HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
  Glyph_Layer_8b* gl = nd->get_layer();
+
+ if(nd->flags.pre_line_double_gap)
+   b.qts << "\n\n";
+ else if(nd->flags.pre_line_gap)
+   b.qts << '\n';
+ else if(nd->flags.pre_space_gap)
+   b.qts << ' ';
 
  if(nd->flags.is_ghosted)
  {
@@ -257,7 +264,7 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
   if(nd->flags.region)
   {
     // // should be some sort of whitespace flag ...
-   b.qts << '\n';
+   b.qts << "%\n";
    b.qts << "\\end{" << region_end_names_.take(nd) << '}';
   }
  }
@@ -267,6 +274,13 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
    ; // nothing
  else
    b.qts << '}';
+
+ if(nd->flags.post_line_double_gap)
+   b.qts << "\n\n";
+ else if(nd->flags.post_line_gap)
+   b.qts << '\n';
+ else if(nd->flags.post_space_gap)
+   b.qts << ' ';
 }
 
 

@@ -111,7 +111,7 @@ void NGML_Whitespace::get_counts(u1* result)
      ++result[0];
      break;
     case Space_Codes::Space:
-     ++result[0];
+     ++result[1];
      break;
     case Space_Codes::Comment:
     case Space_Codes::Comment_Pad:
@@ -216,7 +216,7 @@ void NGML_Whitespace::parse(QString raw_text)
 {
  size_t code = 0;
  int size = raw_text.size();
- if(size > 18)
+ if(size > 8)
  {
   raw_text_ = caon_ptr<QString>( new QString(raw_text) );
   return;
@@ -229,10 +229,10 @@ void NGML_Whitespace::parse(QString raw_text)
 
   switch(qc.toLatin1())
   {
-  case '\r': sc = Space_Codes::CR; break;
   case ' ': sc = Space_Codes::Space; break;
-  case '\t': sc = Space_Codes::Tab; break;
   case '\n': sc = Space_Codes::Line; break;
+  case '\t': sc = Space_Codes::Tab; break;
+  case '\r': sc = Space_Codes::CR; break;
   default:
    raw_text_ = caon_ptr<QString>( new QString(raw_text) );
    return;

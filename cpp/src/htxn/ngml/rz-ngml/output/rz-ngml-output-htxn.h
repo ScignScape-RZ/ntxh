@@ -83,6 +83,9 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
  void tie_multi_optional_main_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
  void tie_multi_mandatory_main_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
 
+ void check_whitespace_merge(NGML_Tag_Command& ntc);
+
+
 public:
 
  NGML_Output_HTXN(NGML_Document& document, HTXN_Document_8b* htxn_document);

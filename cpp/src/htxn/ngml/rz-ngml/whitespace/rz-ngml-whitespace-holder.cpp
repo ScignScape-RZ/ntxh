@@ -17,6 +17,17 @@ NGML_Whitespace_Holder::NGML_Whitespace_Holder()
 
 }
 
+void NGML_Whitespace_Holder::get_whitespace_counts_as_inherited(u1* result)
+{
+ if(inherited_)
+   inherited_->ws().get_counts_as_inherited(result);
+ else
+ {
+  result[2] = 0;
+  result[3] = 0;
+ }
+}
+
 void NGML_Whitespace_Holder::inherit_whitespace(NGML_Whitespace_Holder* wsh)
 {
  inherited_ = wsh;

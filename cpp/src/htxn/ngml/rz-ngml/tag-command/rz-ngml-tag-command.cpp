@@ -46,7 +46,7 @@ void NGML_Tag_Command::normalize_whitespace()
 {
  u1 counts [4];
  ws().get_counts(counts);
- ws().get_counts_as_inherited(counts);
+ get_whitespace_counts_as_inherited(counts);
  for(int i = 0; i < 4; ++i)
    if(counts[i] == 255)
    {
@@ -55,19 +55,18 @@ void NGML_Tag_Command::normalize_whitespace()
    }
 
  if(counts[0] > 1)
-  flags.left_line_double_gap = true;
+   flags.right_line_double_gap = true;
  else if(counts[0] == 1)
-  flags.left_line_gap = true;
+   flags.right_line_gap = true;
  if(counts[1] >= 1)
-  flags.left_space_gap = true;
+   flags.right_space_gap = true;
 
  if(counts[2] > 1)
-  flags.right_line_double_gap = true;
+   flags.left_line_double_gap = true;
  else if(counts[2] == 1)
-  flags.right_line_gap = true;
- if(counts[2] >= 1)
-  flags.right_space_gap = true;
-
+   flags.left_line_gap = true;
+ if(counts[3] >= 1)
+   flags.left_space_gap = true;
 }
 
 

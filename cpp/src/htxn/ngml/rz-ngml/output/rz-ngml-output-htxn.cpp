@@ -193,8 +193,11 @@ caon_ptr<NGML_Command_Callback> NGML_Output_HTXN::check_command_callback(caon_pt
 void NGML_Output_HTXN::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+
+   // // this is just for debugging to see the ws ...
  ntc->write_whitespace(whitespace_qts_);
 
+#ifdef HIDE
  u2 space_count = 0;
  u2 line_count = 0;
  char other = 0;
@@ -217,17 +220,37 @@ void NGML_Output_HTXN::check_generate_whitespace(const NGML_Output_Bundle& b, ca
   check_update_index_after_whitespace(b, *ntc);
  }
  else if(line_count == 1)
-   ntc->flags.left_line_gap = true;
+   ntc->flags.right_line_gap = true;
  else if(line_count > 1)
-   ntc->flags.left_line_double_gap = true;
+   ntc->flags.right_line_double_gap = true;
  else if(space_count >= 1)
-   ntc->flags.left_space_gap = true;
+   ntc->flags.right_space_gap = true;
+
+#endif // HIDE
+
+ check_whitespace_merge(*ntc);
 
  whitespace_scratch_.clear();
  whitespace_qts_.reset();
- //? ntc->write_whitespace(b.qts);
- //? check_update_index_after_whitespace(b, ntc);
 }
+
+void NGML_Output_HTXN::check_whitespace_merge(NGML_Tag_Command& ntc)
+{
+ if(NGML_HTXN_Node* node = ntc.ngml_htxn_node())
+ {
+  if(HTXN_Node_Detail* nd = node->get_node_detail(htxn_document_))
+  {
+   nd->flags.pre_line_double_gap = ntc.flags.left_line_double_gap;
+   nd->flags.pre_line_gap = ntc.flags.left_line_gap;
+   nd->flags.pre_space_gap = ntc.flags.left_space_gap;
+
+   nd->flags.post_space_gap = ntc.flags.right_space_gap;
+   nd->flags.post_line_gap = ntc.flags.right_line_gap;
+   nd->flags.post_line_double_gap = ntc.flags.right_line_double_gap;
+  }
+ }
+}
+
 
 void NGML_Output_HTXN::check_post_callback
  (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node)
