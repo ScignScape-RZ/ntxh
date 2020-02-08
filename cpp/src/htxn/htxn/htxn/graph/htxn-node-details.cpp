@@ -87,6 +87,13 @@ void HTXN_Node_Details::read_ties(QTextStream& qts,
  }
 }
 
+HTXN_Node_Detail* HTXN_Node_Details::mark_fiat(u4 nc)
+{
+ HTXN_Node_Detail& nd = node_details_[nc - 1];
+ nd.flags.is_fiat = true;
+ return &nd;
+}
+
 HTXN_Node_Detail* HTXN_Node_Details::mark_ghosted(u4 nc)
 {
  HTXN_Node_Detail& nd = node_details_[nc - 1];

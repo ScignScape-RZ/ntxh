@@ -67,6 +67,8 @@ flags_(4)
  bool has_ref_package:1;
  bool has_ref_package_no_layer:1;
 
+ bool is_fiat:1;
+
 _flags
 
  struct Ref_Package

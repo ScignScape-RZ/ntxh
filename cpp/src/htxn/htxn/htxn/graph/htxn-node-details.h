@@ -45,7 +45,7 @@ public:
  HTXN_Node_Detail* tie_detail_range(u4 nc1, u4 nc2);
 
  HTXN_Node_Detail* mark_ghosted(u4 nc);
-
+ HTXN_Node_Detail* mark_fiat(u4 nc);
 
  HTXN_Node_Detail* get_node_detail(u4 nc);
 

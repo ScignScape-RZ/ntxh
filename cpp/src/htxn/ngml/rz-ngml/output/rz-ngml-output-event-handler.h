@@ -74,6 +74,8 @@ public:
  virtual void handle_annotation(caon_ptr<NGML_Tile> tile, caon_ptr<tNode> node);
 
 
+ virtual void check_generate_whitespace(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+
  virtual void check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tile> tile);
  virtual void check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile);
  virtual void check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc);

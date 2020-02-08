@@ -470,6 +470,9 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
   else
     nc1 = htxn_document_->add_detail_range(tag_command_gl_, span_start, span_end, wmic, wsc);
 
+  if(ntc->flags.is_fiat)
+    htxn_document_->mark_fiat(nc1);
+
   if(ntc->flags.is_multi_parent)
     multi_parent_range_stack_.push({nc1, {}});
 
@@ -646,6 +649,7 @@ void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b,
 // b.qts << tile->raw_text();
  generic_generate_tile(b, rt, rt.size(), *nhn);
  tile->set_ngml_htxn_node(nhn);
+ nhn->set_ws(tile->ws());
 
  //check_update_index(b, *tile);
 

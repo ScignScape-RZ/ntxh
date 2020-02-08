@@ -12,7 +12,7 @@
 
 #include "accessors.h"
 
-//#define PASTE_ARG(...) __VA_ARGS__
+#include "whitespace/rz-ngml-whitespace.h"
 
 #include "kans.h"
 KANS_CLASS_DECLARE(HTXN ,HTXN_Node_Detail)
@@ -32,6 +32,8 @@ class NGML_HTXN_Node
 
  QPair<u4, u4> range_;
 
+ NGML_Whitespace ws_;
+
 public:
 
  NGML_HTXN_Node(u4 detail_code = 0);
@@ -41,6 +43,8 @@ public:
 
  ACCESSORS(MACRO_PASTE(QPair<u4, u4>) ,range)
 
+ ACCESSORS(NGML_Whitespace ,ws)
+
 
  HTXN_Node_Detail* get_node_detail(HTXN_Document_8b* doc);
 
@@ -49,6 +53,13 @@ public:
 
  void set_range_enter(u4 enter);
  void set_range_leave(u4 leave);
+
+ template<typename T>
+ void write_whitespace(T& t)
+ {
+  t << ws_.to_string();
+ }
+
 
 };
 

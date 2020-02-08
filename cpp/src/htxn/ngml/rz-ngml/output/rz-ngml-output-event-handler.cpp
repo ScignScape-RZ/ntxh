@@ -18,6 +18,8 @@
 
 #include "annotation/rz-ngml-annotation-tile.h"
 
+#include "ngml-htxn/ngml-htxn-node.h"
+
 #include <QFile>
 #include <QFileInfo>
 
@@ -181,6 +183,8 @@ void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b,
  if(NGML_HTXN_Node* nhn = tile->ngml_htxn_node())
  {
   generate_tile_via_htxn(b, *nhn);
+   // // here?
+  check_generate_whitespace(b, *nhn);
   return;
  }
 
@@ -224,8 +228,15 @@ void NGML_Output_Event_Handler::generate_tile(const NGML_Output_Bundle& b, caon_
 
 }
 
+void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+ nhn.write_whitespace(b.qts);
+}
+
+
 void NGML_Output_Event_Handler::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 {
+ CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
  ntc->write_whitespace(b.qts);
  //? check_update_index_after_whitespace(b, ntc);
 }
