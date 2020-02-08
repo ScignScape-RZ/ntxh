@@ -71,7 +71,7 @@ void Standard_GlyphDeck_8b::get_htxne_out(u1 gp, Glyph_Argument_Package& gap)
   { Standard_GlyphDeck_8b::NpColX, 1 },
   { Standard_GlyphDeck_8b::NpSemiX, 1 },
   { Standard_GlyphDeck_8b::NpQmX, 1 },
-  { Standard_GlyphDeck_8b::IndQm, 1 },
+//?  { Standard_GlyphDeck_8b::IndQm, 1 },
   { Standard_GlyphDeck_8b::NpLtX, 1 },
   { Standard_GlyphDeck_8b::NpGtX, 1 },
   { Standard_GlyphDeck_8b::OSqBrX, 1 },
@@ -414,8 +414,8 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
  case 21: return QChar(']'); // // 85
 
  case 22: return QChar('/'); // // 86
+ case 23: return QChar('\\'); // // 87
 
- case 23: return QChar('?'); // // 87  // IndQm
  case 24: return QChar('.'); // // 88  // NsPer
  case 25: return QChar('?'); // // 89  // NsQm
  case 26: return QChar('!'); // // 90  // NsExc

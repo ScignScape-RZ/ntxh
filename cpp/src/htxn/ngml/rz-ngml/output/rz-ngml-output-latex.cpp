@@ -149,11 +149,17 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
    b.qts << "\\begin{" << htxn_acc_;// << '}';
    region_end_names_[nd] = htxn_acc_;
   }
+  else if(nd->flags.wmi_left)
+  {
+   if(nd->flags.wmi_with_space)
+     b.qts << "{\\" << htxn_acc_ << ' ';
+   else
+     b.qts << "{\\" << htxn_acc_;
+  }
   else
     b.qts << '\\' << htxn_acc_;// << '{';
   htxn_acc_.clear();
   htxn_qts_.reset();
-
  }
 }
 
@@ -217,9 +223,9 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
   }
 
   if(ntc->flags.is_region)
-    b.qts << "\\begin{" << ntc->latex_name();// << '}';
+    b.qts << "\\begin{" << ntc->latex_name();
   else
-    b.qts << '\\' << ntc->latex_name();// << '{';
+    b.qts << '\\' << ntc->latex_name();
   break;
  }
 
@@ -253,6 +259,8 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
  }
  else if(nd->flags.region)
    b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+ else if(nd->flags.wmi_none)
+   ; // nothing
  else
    b.qts << '}';
 }
@@ -293,6 +301,12 @@ void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, NGM
 
  if(nd->flags.is_ghosted)
    ; // nothing
+ else if(nd->flags.wmi_left)
+   ; // nothing
+ else if(nd->flags.wmi_none)
+ {
+   ; // nothing
+ }
  else if(nd->flags.ref_preempts_wrap)
  {
   if(nd->flags.region)

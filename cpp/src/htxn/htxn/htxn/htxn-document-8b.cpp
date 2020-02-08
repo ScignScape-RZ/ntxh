@@ -894,7 +894,7 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
 
    { { '?', 0 }, 73 },
    { { '?', 1 }, Standard_GlyphDeck_8b::NpQmX },
-   { { '?', 1 }, Standard_GlyphDeck_8b::IndQm },
+//?   { { '?', 1 }, Standard_GlyphDeck_8b::IndQm },
 
    { { '<', 0 }, 88 },
    { { '<', 1 }, Standard_GlyphDeck_8b::NpLtX },
@@ -911,13 +911,13 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
  };
 
  static QMap<QPair<char, u1>, quint8> static_96 {
-   { { '[', 0 }, 86 },
+   { { '[', 0 }, 84 },
    { { '[', 1 }, Standard_GlyphDeck_8b::OSqBrX },
 
-   { { ']', 0 }, 87 },
+   { { ']', 0 }, 85 },
    { { ']', 1 }, Standard_GlyphDeck_8b::CSqBrX },
 
-   { { '\\', 0 }, 90 },
+   { { '\\', 0 }, 87 },
    { { '\\', 1 }, Standard_GlyphDeck_8b::BslX },
 
    { { '^', 0 }, Standard_GlyphDeck_8b::TxtHatX },

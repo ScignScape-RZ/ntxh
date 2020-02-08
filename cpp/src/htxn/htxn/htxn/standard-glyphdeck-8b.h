@@ -45,7 +45,7 @@ public:
    NpDot = 76,
    SnDash = 81,
    DashSML = 82,
-   IndQm = 87,
+   //?IndQm = 87,
    NsPer = 88,
    NsQm = 89,
    NsExc = 90,
