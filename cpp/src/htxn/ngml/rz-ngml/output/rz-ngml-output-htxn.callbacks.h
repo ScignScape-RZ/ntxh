@@ -28,27 +28,6 @@ RENAME_TAG(pdf-ref, span)
 RENAME_(latex-only, span, latex-only)
 
 
-NGML_CALLBACK_(q)
- WHEN_(pre)
- {
-  //? qts << " (kf-span +[@] class quote +[e] &ldquo;";
-
-  qts << "$NOSTAG$&ldquo;";
-
- }
- _WHEN_(post)
- {
-  //? qts << "&rdquo; )";
-
-  qts << "&rdquo;$NOETAG$";
-
-  //?check_post_whitespace(qts, node);
- }
- _WHEN
-_NGML_CALLBACK
-
-
-
  NGML_CALLBACK_(khi-file-info)
   WHEN_(around)
   {

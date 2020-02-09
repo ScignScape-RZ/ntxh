@@ -925,7 +925,7 @@ void NGML_Graph_Build::special_character_sequence(QString match_text,
  switch(k)
  {
  case NGML_Paralex_Tile::Alt_Interpretation:
-  tile_acc_length_adjustment_ += w - 1;
+  tile_acc_length_adjustment_ += (text.size() + 3) - w;
   switch (mode)
   {
   case 1:
@@ -943,7 +943,7 @@ void NGML_Graph_Build::special_character_sequence(QString match_text,
   }
   break;
  case NGML_Paralex_Tile::Pipe_Escape:
-  tile_acc_length_adjustment_ += w;
+  tile_acc_length_adjustment_ += (text.size() + 1) - w;
   tile_acc(QString("|%1").arg(text));
   return; 
  default:
