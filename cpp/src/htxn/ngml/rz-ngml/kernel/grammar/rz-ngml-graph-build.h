@@ -172,7 +172,7 @@ public:
  void multi_arg_transition_to_main_tile();
 
  void multi_arg_transition(QString wmi, QString fiat, 
-   QString arg_marker);
+   QString arg_marker, QString carried_arg_marker = {});
 
  caon_ptr<NGML_Attribute_Tile> complete_html_tag_command_attribute();
 
@@ -181,7 +181,8 @@ public:
  void tag_command_entry_multi(QString wmi, QString tag_command,
    QString tag_body_follow, QString fiat, QString first_arg_wmi, QString first_arg_marker);
 
- void tag_command_entry_inside_multi(QString wmi, QString fiat,  QString tag_command, QString arg_marker, QString argument = QString(), QString name = QString());
+ void tag_command_entry_inside_multi(QString wmi, QString fiat,  QString tag_command, QString arg_marker, 
+QString* carried_arg_marker = nullptr, QString argument = QString(), QString name = QString());
 
  void tag_command_entry_inline(QString wmi, QString fiat, QString tag_command,
    QString tag_body_follow, QString argument = QString());

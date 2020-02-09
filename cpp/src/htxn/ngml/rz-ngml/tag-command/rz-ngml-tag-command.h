@@ -78,6 +78,7 @@ public:
   bool is_provisional_multi_parent:1;
 
   bool is_fiat:1;
+  bool marked_main:1;
 
 //?  bool is_provisional_multi_parent_semis:1;
 

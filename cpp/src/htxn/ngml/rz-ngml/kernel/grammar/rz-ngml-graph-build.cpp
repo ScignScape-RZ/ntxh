@@ -510,12 +510,12 @@ NGML_Document_Light_Xml* NGML_Graph_Build::get_light_xml()
 
 void NGML_Graph_Build::multi_arg_transition_to_main_tile()
 {
- multi_arg_transition({}, {}, "-->");
+ multi_arg_transition({}, {}, "-->", "=>");
   // // need to mark as main tile somehow ...
 }
 
 void NGML_Graph_Build::multi_arg_transition(QString wmi, 
-  QString fiat, QString arg_marker)
+  QString fiat, QString arg_marker, QString carried_arg_marker)
 {
  if(flags.active_attribute_sequence)
  {
@@ -535,18 +535,21 @@ void NGML_Graph_Build::multi_arg_transition(QString wmi,
       parse_context_.flags.inside_multi_parent_semis = true;
     else
       parse_context_.flags.inside_multi_parent = true;
-    tag_command_entry_inside_multi(wmi, fiat, ntc->name(),  arg_marker);
+    tag_command_entry_inside_multi(wmi, fiat, ntc->name(), 
+      arg_marker);
     return;
    }
   }
  }
  tag_command_leave();
  QString tag_command = markup_position_.current_tag_command_name();
- tag_command_entry_inside_multi(wmi, fiat, tag_command, arg_marker);
+ tag_command_entry_inside_multi(wmi, fiat, tag_command, 
+   arg_marker, &carried_arg_marker);
 }
 
 void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi, QString fiat, 
-  QString tag_command, QString arg_marker, QString argument, QString name)
+  QString tag_command, QString arg_marker, 
+  QString* carried_arg_marker, QString argument, QString name)
 {
  QString nn = name;
  if(nn.isEmpty())
@@ -557,6 +560,9 @@ void NGML_Graph_Build::tag_command_entry_inside_multi(QString wmi, QString fiat,
  caon_ptr<NGML_Tag_Command> ntc = make_new_tag_command(nn, argument);
  if(name.isEmpty())
    ntc->flags.autogen_multi_name = true;
+
+ if(carried_arg_marker && (*carried_arg_marker == "=>"))
+   ntc->flags.marked_main = true;
 
  check_non_or_left_wrapped(wmi, ntc);
 

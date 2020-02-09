@@ -68,6 +68,8 @@ flags_(4)
  bool has_ref_package_no_layer:1;
 
  bool is_fiat:1;
+ bool main_only_block_environment:1;
+ bool block_environment_marked_main:1;
 
 _flags
 

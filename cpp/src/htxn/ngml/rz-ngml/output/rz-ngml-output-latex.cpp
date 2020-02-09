@@ -138,7 +138,10 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  if(nd->flags.is_ghosted)
  {
   if(nd->flags.region_main_preempts_wrap)
-    ; // nothing
+  {
+   if(nd->flags.block_environment_marked_main)
+     b.qts << '\n';
+  }
   else if(nd->flags.optional)
     b.qts << '[';
   else
@@ -269,12 +272,16 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
   if(nd->flags.region)
   {
     // // should be some sort of whitespace flag ...
-   b.qts << "%\n";
+   b.qts << '\n';
    b.qts << "\\end{" << region_end_names_.take(nd) << '}';
   }
  }
  else if(nd->flags.region)
-   b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+ {
+  if(nd->flags.main_only_block_environment)
+    b.qts << '\n';
+  b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+ }
  else if(nd->flags.wmi_none)
    ; // nothing
  else
@@ -372,7 +379,11 @@ void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, NGM
      b.qts << '}';
  }
  else if(nd->flags.region)
-   b.qts << '}';
+ {
+  b.qts << '}';
+  if(nd->flags.main_only_block_environment)
+    b.qts << '\n';
+ }
  else
    b.qts << '{';
 }

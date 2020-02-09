@@ -352,6 +352,12 @@ void NGML_Output_HTXN::tie_multi_mandatory_main_layer(const NGML_Output_Bundle& 
  NGML_HTXN_Node* nhn = new NGML_HTXN_Node(nc2);
  ntc.set_ngml_htxn_node(nhn);
 
+ if(ntc.flags.marked_main)
+ {
+  HTXN_Node_Detail* nd = nhn->get_node_detail(htxn_document_);
+  nd->flags.block_environment_marked_main = true;
+ }
+
  current_multi_arg_ = nullptr;
 }
 
@@ -501,6 +507,12 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
   NGML_HTXN_Node* nhn = new NGML_HTXN_Node(nc1);
   ntc->set_ngml_htxn_node(nhn);
+
+  if(ntc->flags.is_region && !(ntc->flags.is_multi_parent))
+  {
+   if(HTXN_Node_Detail* nd = nhn->get_node_detail(htxn_document_))
+     nd->flags.main_only_block_environment = true;
+  }
 
   QStringList args;
   u4 sz = split_arg_layer_arguments(ntc->argument(), args);
