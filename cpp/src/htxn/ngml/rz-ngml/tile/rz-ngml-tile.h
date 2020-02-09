@@ -13,6 +13,8 @@
 #include "accessors.h"
 #include "flags.h"
 
+#include "global-types.h"
+
 #include "whitespace/rz-ngml-whitespace-holder.h"
 
 #include "rzns.h"
@@ -25,6 +27,8 @@ class NGML_Tile : public NGML_Whitespace_Holder
 {
  QString raw_text_;
 
+ u4 length_adjustment_;
+
  NGML_HTXN_Node* ngml_htxn_node_;
 
 public:
@@ -32,9 +36,14 @@ public:
  ACCESSORS(QString ,raw_text)
  ACCESSORS(NGML_HTXN_Node* ,ngml_htxn_node)
 
+ ACCESSORS(u4 ,length_adjustment)
+
+
  NGML_Tile(QString raw_text);
 
  QString to_string();
+
+ u4 effective_length();
 
  QString thumbnail(int max_characters = 6);
 

@@ -30,7 +30,8 @@ USING_RZNS(NGML)
 NGML_Graph_Build::NGML_Graph_Build(NGML_Graph& g, NGML_Document_Info& document_info)
  : markup_position_(g.root_node()), acc_mode_(Main_Tile), document_info_(document_info),
    current_parsing_mode_(NGML_Parsing_Modes::NGML), //?current_annotation_tile_(nullptr),
-   qts_tile_acc_(&tile_acc_), qts_string_literal_acc_(&string_literal_acc_)
+   tile_acc_length_adjustment_(0),
+   tile_acc_qts_(&tile_acc_), qts_string_literal_acc_(&string_literal_acc_)
 {
 
 }
@@ -57,7 +58,7 @@ void NGML_Graph_Build::check_leave_multiline_comment(QString semis, QString tild
 
 void NGML_Graph_Build::tile_acc(QString str)
 {
- qts_tile_acc_ << str;
+ tile_acc_qts_ << str;
 }
 
 
@@ -132,7 +133,7 @@ void NGML_Graph_Build::check_tile_acc(Acc_Mode new_mode)
  if(tile_acc_.trimmed().isEmpty())
  {
   attach_whitespace(tile_acc_);
-  qts_tile_acc_.reset();
+  tile_acc_qts_.reset();
   tile_acc_.clear();
   acc_mode_ = new_mode;
   return;
@@ -144,7 +145,8 @@ void NGML_Graph_Build::check_tile_acc(Acc_Mode new_mode)
   check_add_words();
   add_tile(tile_acc_.trimmed());
   attach_right_whitespace();
-  qts_tile_acc_.reset();
+  tile_acc_length_adjustment_ = 0;
+  tile_acc_qts_.reset();
   tile_acc_.clear();
   break;
 
@@ -152,13 +154,15 @@ void NGML_Graph_Build::check_tile_acc(Acc_Mode new_mode)
   attach_left_whitespace();
   add_tile(tile_acc_.trimmed());
   attach_right_whitespace();
-  qts_tile_acc_.reset();
+  tile_acc_length_adjustment_ = 0;
+  tile_acc_qts_.reset();
   tile_acc_.clear();
   break;
 
  case Attribute:
   add_attribute_tile(tile_acc_);
-  qts_tile_acc_.reset();
+  tile_acc_length_adjustment_ = 0;
+  tile_acc_qts_.reset();
   tile_acc_.clear();
   break;
 
@@ -690,6 +694,7 @@ caon_ptr<NGML_Tile> NGML_Graph_Build::add_tile(QString tile_str)
  }
 
  caon_ptr<NGML_Tile> tile = make_new_tile(tile_str);
+ tile->set_length_adjustment(tile_acc_length_adjustment_);
  caon_ptr<tNode> node = make_new_node(tile);
  //?
  markup_position_.add_tile_node(node);
@@ -829,7 +834,7 @@ void NGML_Graph_Build::check_tag_command_leave(QString tag_command, QString matc
 //  //     This could be a spot for a callback which takes the
 //  //     tile_acc_ string before clearing it.
 //  tile_acc_.clear();
-//  qts_tile_acc_.reset();
+//  tile_acc_qts_.reset();
 // }
 // add_string_literal_tile(string_literal_acc_);
 // string_literal_acc_.clear();
@@ -900,7 +905,9 @@ void NGML_Graph_Build::special_character_sequence(QString match_text,
  case 5:
   if(match_text == "||")
   {
-   tile_acc("|");
+    // // preserve the escape?
+   tile_acc("||");
+   ++tile_acc_length_adjustment_;
    return;
   }
   text = esc; 
@@ -913,6 +920,36 @@ void NGML_Graph_Build::special_character_sequence(QString match_text,
     w = 1;
   break;
  }
+
+ // // maybe we just acc everything ...
+ switch(k)
+ {
+ case NGML_Paralex_Tile::Alt_Interpretation:
+  tile_acc_length_adjustment_ += w - 1;
+  switch (mode)
+  {
+  case 1:
+   tile_acc(QString("`(%1)").arg(text));
+   return;
+  case 2:
+   tile_acc(QString("`{%1}").arg(text));
+   return;
+  case 3:
+   tile_acc(QString("`[%1]").arg(text));
+   return;
+  case 4:
+   tile_acc(QString("`<%1>").arg(text));
+   return;
+  }
+  break;
+ case NGML_Paralex_Tile::Pipe_Escape:
+  tile_acc_length_adjustment_ += w;
+  tile_acc(QString("|%1").arg(text));
+  return; 
+ default:
+  break;
+ }
+
  check_tile_acc();
  
  caon_ptr<NGML_Paralex_Tile> xtile = make_new_paralex_tile(text, k, w);

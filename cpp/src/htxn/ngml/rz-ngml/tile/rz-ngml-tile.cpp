@@ -7,11 +7,16 @@ USING_RZNS(NGML)
 
 
 NGML_Tile::NGML_Tile(QString raw_text)
- :  raw_text_(raw_text), ngml_htxn_node_(nullptr)
+  :  raw_text_(raw_text), 
+  ngml_htxn_node_(nullptr), length_adjustment_(0)
 {
 
 }
 
+u4 NGML_Tile::effective_length()
+{
+ return raw_text_.size() - length_adjustment_;
+}
 
 QString NGML_Tile::thumbnail(int max_characters)
 {

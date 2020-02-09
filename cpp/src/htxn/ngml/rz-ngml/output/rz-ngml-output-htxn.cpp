@@ -669,8 +669,11 @@ void NGML_Output_HTXN::generate_tile(const NGML_Output_Bundle& b,
 //
  QString rt = tile->raw_text();
  NGML_HTXN_Node* nhn = new NGML_HTXN_Node();
+
+ u4 len = tile->effective_length();
+
 // b.qts << tile->raw_text();
- generic_generate_tile(b, rt, rt.size(), *nhn);
+ generic_generate_tile(b, rt, len, *nhn);
  tile->set_ngml_htxn_node(nhn);
  nhn->set_ws(tile->ws());
 

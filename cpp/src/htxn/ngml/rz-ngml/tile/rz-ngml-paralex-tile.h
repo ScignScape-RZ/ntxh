@@ -28,7 +28,7 @@ class NGML_Paralex_Tile : public NGML_Whitespace_Holder
 {
 public:
  enum Kind {
-  N_A, Alt_Interpretation, Pipe_Escape, 
+   N_A, Alt_Interpretation, Pipe_Escape,
    Numeric_Character_Reference
   };
 

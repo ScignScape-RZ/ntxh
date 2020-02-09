@@ -78,8 +78,9 @@ class NGML_Graph_Build
 
  typedef NGML_Node tNode;
 
+ u4 tile_acc_length_adjustment_;
  QString tile_acc_;
- QTextStream qts_tile_acc_;
+ QTextStream tile_acc_qts_;
 
  QString string_literal_acc_;
  QTextStream qts_string_literal_acc_;

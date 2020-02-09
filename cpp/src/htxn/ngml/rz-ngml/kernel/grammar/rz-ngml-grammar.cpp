@@ -551,7 +551,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
    " (?: %-- ) "
    "  | (?: ` \\( (?<bq-esc1> [^]]+ ) \\) ) "
    "  | (?: ` { (?<bq-esc2> [^}]+ ) } ) "
-   "  | (?: ` \\[ (?<bq-esc3> [^)]+ ) \\] ) "
+   "  | (?: ` \\[ (?<bq-esc3> [^]]+ ) \\] ) "
    "  | (?: ` < (?<bq-esc4> [^>]+ ) \\> ) "
    "  | (?: \\| (?<pipe-esc> [^|]+) \\| )"
  
