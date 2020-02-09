@@ -32,9 +32,10 @@ USING_RZNS(NGML)
 
 
 NGML_Output_Latex::NGML_Output_Latex(NGML_Document& document)
- : NGML_Output_Base(document)
+  :  NGML_Output_Base(document), active_gap_code_(0)
 {
  htxn_qts_.setString(&htxn_acc_);
+ ws_qts_.setString(&ws_acc_);
  init_callbacks();
 }
 
@@ -116,11 +117,75 @@ void NGML_Output_Latex::handle_annotation(caon_ptr<NGML_Tile> tile, caon_ptr<NGM
  document_.tag_command_annotation(tile, atile);
 }
 
+void NGML_Output_Latex::check_reconcile_gap(const NGML_Output_Bundle& b, u1 new_code)
+{
+ check_reconcile_gap(b, new_code, active_gap_code_);
+}
+
+void NGML_Output_Latex::check_reconcile_gap(const NGML_Output_Bundle& b, u1 new_code, u1& result)
+{
+ u2 code = (active_gap_code_ * 100) + new_code;
+
+ switch(code)
+ {
+ case 2020:
+  result = 20; break;
+ case 2121: 
+  result = 21; break;
+ case 2120:
+  result = 21; break;
+ case 2010:
+  result = 20; break;
+ case 2111:
+  result = 21; break;
+ case 2110:
+  result = 21; break;
+ case 1010:
+  result = 10; break;
+ case 1111:
+  result = 11; break;
+ case 1110:
+  result = 11; break;
+ case 2101:
+  result = 21; break;
+ case 1101:
+  result = 11; break;
+ case 1011:
+  b.qts << ' '; result = 11; break;
+ case 2021:
+  b.qts << ' '; result = 21; break;
+ case 1001:
+  b.qts << ' '; result = 11; break;
+ case 2001:
+  b.qts << ' '; result = 21; break;
+ case 1:
+  b.qts << ' '; result = 1; break;
+ case 1020:
+  b.qts << '\n'; result = 20; break;
+ case 1120:
+  b.qts << '\n'; result = 20; break;
+ case 10:
+  b.qts << '\n'; result = 10; break;
+ case 1021:
+  b.qts << "\n "; result = 21; break;
+ case 1121:
+  b.qts << "\n "; result = 21; break;
+ case 11:
+  b.qts << "\n "; result = 11; break;
+ case 21:
+  b.qts << "\n\n "; result = 21; break;
+ case 20:
+  b.qts << "\n\n"; result = 20; break;
+ default: break;
+ }
+}
+
 
 void NGML_Output_Latex::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Paralex_Tile> tile)
 {
  tile->write_latex(b.qts);
  check_generate_whitespace(b, tile);
+ reset_active_gap_code();
 }
 
 void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
@@ -129,23 +194,29 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  Glyph_Layer_8b* gl = nd->get_layer();
 
  if(nd->flags.pre_line_double_gap)
-   b.qts << "\n\n";
+   check_reconcile_gap(b, 20);  //? b.qts << "\n\n";
  else if(nd->flags.pre_line_gap)
-   b.qts << '\n';
+   check_reconcile_gap(b, 10);  //? b.qts << '\n';
  else if(nd->flags.pre_space_gap)
-   b.qts << ' ';
+   check_reconcile_gap(b, 1);  //? b.qts << ' ';
 
  if(nd->flags.is_ghosted)
  {
   if(nd->flags.region_main_preempts_wrap)
   {
    if(nd->flags.block_environment_marked_main)
-     b.qts << '\n';
+     check_reconcile_gap(b, 10);  //? b.qts << '\n';
   }
   else if(nd->flags.optional)
-    b.qts << '[';
+  {
+   b.qts << '[';
+   reset_active_gap_code();
+  }
   else
-    b.qts << '{';
+  {
+   b.qts << '{';
+   reset_active_gap_code();
+  }
  }
  else
  {
@@ -176,6 +247,7 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
 void NGML_Output_Latex::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
 {
  htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts);
+ reset_active_gap_code();
 }
 
 void NGML_Output_Latex::generate_tag_command_argument(const NGML_Output_Bundle& b,
@@ -233,6 +305,7 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
    {
     generate_tag_command_entry(b, *nhn);
     check_generate_tag_command_argument(b, *ntc);
+    reset_active_gap_code();
     break;
    }
   }
@@ -241,6 +314,7 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
     b.qts << "\\begin{" << ntc->latex_name();
   else
     b.qts << '\\' << ntc->latex_name();
+  reset_active_gap_code();
   break;
  }
 
@@ -263,36 +337,47 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
   if(nd->flags.region_main_preempts_wrap)
     ; // nothing ...
   else if(nd->flags.optional)
-    b.qts << ']';
+  {
+   b.qts << ']';
+   reset_active_gap_code();
+  }
   else
-    b.qts << '}';
+  {
+   b.qts << '}';
+   reset_active_gap_code();
+  }
  }
  else if(nd->flags.ref_preempts_wrap)
  {
   if(nd->flags.region)
   {
     // // should be some sort of whitespace flag ...
-   b.qts << '\n';
+   check_reconcile_gap(b, 10);  //? b.qts << '\n';
    b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+   reset_active_gap_code();
   }
  }
  else if(nd->flags.region)
  {
   if(nd->flags.main_only_block_environment)
-    b.qts << '\n';
+    check_reconcile_gap(b, 10);  //? b.qts << '\n';
   b.qts << "\\end{" << region_end_names_.take(nd) << '}';
+  reset_active_gap_code();
  }
  else if(nd->flags.wmi_none)
    ; // nothing
  else
-   b.qts << '}';
+ {
+  b.qts << '}';
+  reset_active_gap_code();
+ }
 
  if(nd->flags.post_line_double_gap)
-   b.qts << "\n\n";
+   check_reconcile_gap(b, 20);  //? b.qts << "\n\n";
  else if(nd->flags.post_line_gap)
-   b.qts << '\n';
+   check_reconcile_gap(b, 10);  //? b.qts << '\n';
  else if(nd->flags.post_space_gap)
-   b.qts << ' ';
+   check_reconcile_gap(b, 1);  //? b.qts << ' ';
 }
 
 
@@ -323,6 +408,8 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
    b.qts << "\\end{" << ntc->latex_name() << '}';
  else
    b.qts << '}';
+
+ reset_active_gap_code();
 }
 
 void NGML_Output_Latex::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tile> tile)
@@ -335,6 +422,27 @@ void NGML_Output_Latex::check_generate_whitespace(const NGML_Output_Bundle& b, c
  NGML_Output_Event_Handler::check_generate_whitespace(b, tile);
 }
 
+u1 NGML_Output_Latex::get_ws_gap_code()
+{
+ return get_ws_gap_code(ws_acc_);
+}
+
+u1 NGML_Output_Latex::get_ws_gap_code(const QString& str)
+{
+ if(str.endsWith("\n\n"))
+   return 20;
+ if(str.endsWith("\n"))
+   return 10;
+ if(str.endsWith("\n\n "))
+   return 21;
+ if(str.endsWith("\n "))
+   return 11;
+ if(str.endsWith(' '))
+   return 1;
+ return 0;
+}
+
+
 void NGML_Output_Latex::check_generate_whitespace(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
 {
  HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
@@ -343,7 +451,73 @@ void NGML_Output_Latex::check_generate_whitespace(const NGML_Output_Bundle& b, N
  if(nd->flags.wmi_none)
    return;
   // // or take ws from the node detail?
- nhn.write_whitespace(b.qts);
+
+ nhn.write_whitespace(ws_qts_); //b.qts);
+
+ if(ws_acc_.isEmpty())
+ {
+  ws_qts_.reset();
+  return;
+ }
+
+ u1 wsgc = get_ws_gap_code();
+
+ if(active_gap_code_ == 0)
+ {
+  active_gap_code_ = wsgc;
+  b.qts << ws_acc_;
+  ws_acc_.clear();
+  ws_qts_.reset();
+  return;
+ }
+ if(wsgc == 0)
+ {
+  b.qts << ws_acc_;
+  ws_acc_.clear();
+  ws_qts_.reset();
+  reset_active_gap_code();
+  return;
+ }
+
+ u2 code = (active_gap_code_ * 100) + wsgc;
+
+ switch (code)
+ {
+ case 2121:
+   ws_acc_.chop(3); break;
+ case 2020:
+ case 1111:
+   ws_acc_.chop(2); break;
+ case 1010:
+ case 101:
+   ws_acc_.chop(1); break;
+ case 2010:
+   ws_acc_.chop(1); break;
+ case 1020:
+   ws_acc_.chop(1); active_gap_code_ = 20; break;
+ case 2110:
+   active_gap_code_ = 10; break;
+ case 2120:
+   active_gap_code_ = 20; break;
+ case 2111:
+   ws_acc_.chop(2); break;
+ case 2101:
+   ws_acc_.chop(1); break;
+ case 110:
+  active_gap_code_ = 10; break;
+ case 111:
+  active_gap_code_ = 11; break;
+ case 120:
+  active_gap_code_ = 20; break;
+ case 121:
+  active_gap_code_ = 21; break;
+ default:
+  reset_active_gap_code();
+ }
+
+ b.qts << ws_acc_;
+ ws_acc_.clear();
+ ws_qts_.reset();
 }
 
 void NGML_Output_Latex::check_generate_whitespace(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
@@ -376,16 +550,27 @@ void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, NGM
  else if(nd->flags.ref_preempts_wrap)
  {
   if(nd->flags.region)
-     b.qts << '}';
+  {
+   b.qts << '}';
+   reset_active_gap_code();
+  }
  }
  else if(nd->flags.region)
  {
   b.qts << '}';
   if(nd->flags.main_only_block_environment)
-    b.qts << '\n';
+  {
+    //?check_reconcile_gap(b, 10);  //? 
+   b.qts << '\n';
+   active_gap_code_ = 10;
+  }
+  reset_active_gap_code();
  }
  else
-   b.qts << '{';
+ {
+  b.qts << '{';
+  reset_active_gap_code();
+ }
 }
 
 void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
@@ -405,6 +590,8 @@ void NGML_Output_Latex::generate_tag_body_leave(const NGML_Output_Bundle& b, cao
    b.qts << '}';
  else
   b.qts << '{';
+
+ reset_active_gap_code();
 }
 
 caon_ptr<NGML_Command_Callback> NGML_Output_Latex::check_command_callback(caon_ptr<NGML_Tag_Command> ntc)

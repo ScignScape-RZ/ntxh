@@ -14,6 +14,8 @@
 #include "rz-ngml-output-base.h"
 #include "rz-ngml-output-event-handler.h"
 
+#include "global-types.h"
+
 #include "kans.h"
 
 KANS_CLASS_DECLARE(HTXN, HTXN_Node_Detail)
@@ -40,7 +42,12 @@ class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Han
  QString htxn_acc_;
  QTextStream htxn_qts_;
 
+ QString ws_acc_;
+ QTextStream ws_qts_;
+
  QMap<HTXN_Node_Detail*, QString> region_end_names_;
+
+ u1 active_gap_code_;
 
 public:
 
@@ -52,8 +59,21 @@ public:
 
  void generate(QTextStream& qts);
 
+ void reset_active_gap_code()
+ {
+  active_gap_code_ = 0;
+ }
+
+ u1 get_ws_gap_code();
+ u1 get_ws_gap_code(const QString& str);
+
+ void check_reconcile_gap(const NGML_Output_Bundle& b, u1 new_code);
+ void check_reconcile_gap(const NGML_Output_Bundle& b, 
+   u1 new_code, u1& result);
+
  void check_generate_tag_command_argument(const NGML_Output_Bundle& b,
    NGML_Tag_Command& ntc);
+
  void generate_tag_command_argument(const NGML_Output_Bundle& b,
    NGML_HTXN_Node& nhn);
 
