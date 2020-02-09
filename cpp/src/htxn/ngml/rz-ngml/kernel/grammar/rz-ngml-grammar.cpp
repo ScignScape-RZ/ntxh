@@ -470,7 +470,6 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
     //graph_build.tag_body_leave();
  });
 
-
  add_rule( ngml_context, "tag-command-entry-inline",
    " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
    " (?<tag-command> .valid-tag-command-name. ) "
@@ -482,6 +481,25 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
   QString tag_body_follow = p.matched("tag-body-follow");
   QString argument = p.matched("argument");
   graph_build.tag_command_entry_inline(wmi, {}, tag_command, tag_body_follow, argument);
+  //graph_build.tag_body_leave();
+ });
+
+ add_rule( ngml_context, "alt-tag-command-entry-inline",
+   " ` (?<wmi> .tag-command-wrap-mode-indicator.? ) "
+   " (?<tag-command> .valid-tag-command-name. ) "
+   " <> (?<argument> [^;]* ) ;"
+   ,[&]
+ {
+  QString wmi = p.matched("wmi");
+  QString tag_command = p.matched("tag-command");
+  QString argument = p.matched("argument");
+
+  argument.replace('{', "! ");
+  argument.replace('[', "? ");
+  argument.replace('}', " ");
+  argument.replace(']', " ");
+
+  graph_build.tag_command_entry_inline(wmi, {}, tag_command, ";", argument);
   //graph_build.tag_body_leave();
  });
 

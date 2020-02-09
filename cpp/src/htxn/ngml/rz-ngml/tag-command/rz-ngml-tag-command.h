@@ -10,6 +10,8 @@
 
 #include <QString>
 
+#include <functional>
+
 #include "accessors.h"
 #include "flags.h"
 
@@ -92,8 +94,10 @@ private:
  u4 ref_order_;
 
  NGML_HTXN_Node* ngml_htxn_node_;
+
  NGML_HTXN_Node* arg_ngml_htxn_node_;
 
+ QList<NGML_HTXN_Node*> arg_ngml_htxn_nodes_;
 
 public:
 
@@ -111,6 +115,10 @@ public:
    QString parent_tag_type = QString());
 
  QString latex_name();
+
+ void add_arg_ngml_htxn_node(NGML_HTXN_Node* nhn);
+
+ void each_arg_ngml_htxn_node(std::function<void(NGML_HTXN_Node*)> fn);
 
  void normalize_whitespace();
 

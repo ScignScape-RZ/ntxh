@@ -21,6 +21,17 @@ NGML_Tag_Command::NGML_Tag_Command(QString name,
 
 }
 
+void NGML_Tag_Command::each_arg_ngml_htxn_node(std::function<void(NGML_HTXN_Node*)> fn)
+{
+ for(NGML_HTXN_Node* nhn : arg_ngml_htxn_nodes_)
+   fn(nhn);
+}
+
+void NGML_Tag_Command::add_arg_ngml_htxn_node(NGML_HTXN_Node* nhn)
+{
+ arg_ngml_htxn_nodes_.append(nhn);
+}
+
 u2 NGML_Tag_Command::get_whitespace_code()
 {
  if(flags.nonstandard_space)

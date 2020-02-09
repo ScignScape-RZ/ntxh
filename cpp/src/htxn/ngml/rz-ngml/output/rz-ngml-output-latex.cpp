@@ -179,9 +179,9 @@ void NGML_Output_Latex::generate_tag_command_argument(const NGML_Output_Bundle& 
   NGML_HTXN_Node& nhn)
 {
  HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
- b.qts << '{';
+ b.qts << (nd->flags.optional? '[' : '{');
  htxn_document_->write_minimal_latex_out(nd->get_layer(), nd->enter, nd->leave, b.qts);
- b.qts << '}';
+ b.qts << (nd->flags.optional? ']' : '}');
 }
 
 void NGML_Output_Latex::check_generate_tag_command_argument(const NGML_Output_Bundle& b,
@@ -189,6 +189,11 @@ void NGML_Output_Latex::check_generate_tag_command_argument(const NGML_Output_Bu
 {
  if(NGML_HTXN_Node* nhn = ntc.arg_ngml_htxn_node())
    generate_tag_command_argument(b, *nhn);
+
+ ntc.each_arg_ngml_htxn_node([&b, this](NGML_HTXN_Node* nhn)
+ {
+  generate_tag_command_argument(b, *nhn);
+ });
 }
 
 void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
