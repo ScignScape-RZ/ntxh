@@ -290,7 +290,7 @@
 
 %\usepackage{microtype}
 
-
+%\usepackage{mathtools}
 
 \newcommand{\yhc}[1]{{ %
 {\contourlength{1.2pt}
@@ -612,6 +612,33 @@ drop shadow={top color=logoBlue!50!logoCyan,
 	] 
 	at (2, 0) {};\end{tikzpicture}}
 
+%\usetikzlibrary{fadings}
+
+\newcommand*{\MySquare}{%
+	\begin{tikzpicture}{baseline}
+	\node [draw, %shape border rotate=100,
+	line width=1pt, left color=blue!60!cyan, right color=yellow!30!cyan, draw=cyan!30!blue, aspect=1,
+	%path fading=south,
+	draw opacity=0.8, fill opacity=1, 
+	xscale=0.75, yscale=0.75,
+	minimum width=.4mm, shading angle=60
+	] 
+	at (0, 0) {};
+
+  \draw[draw=red!70!orange,draw opacity=0.5,] (-.14,-.14) -- (.14,-.14) -- (.14,.14);
+  
+	
+%			\node [draw, 
+%			line width=1pt, draw=red,
+%			draw opacity=0.3, fill opacity=0, 
+%			xscale=0.8, yscale=0.8,
+%			minimum width=.4mm
+%			] 
+%			at (0, 0) {};	
+			
+	\end{tikzpicture}}
+
+\newcommand{\sqitem}{\item[\raisebox{2pt}{\MySquare}]}
 
 \newcommand{\nodeincludegraphicsLOCTR}[7]{
 \node[anchor=south west,inner sep=0,thick,
