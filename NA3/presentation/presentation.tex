@@ -612,6 +612,19 @@ drop shadow={top color=logoBlue!50!logoCyan,
 	] 
 	at (2, 0) {};\end{tikzpicture}}
 
+%\usetikzlibrary{shapes.geometric}
+
+\newcommand*{\MyOctagon}{%
+	\begin{tikzpicture}{baseline}	
+	\node [draw, regular polygon, regular polygon sides=8, %shape border rotate=100,
+	line width=.2mm, left color=blue!60!cyan, right color=yellow!30!cyan, draw=blue!50!red, aspect=.7,
+	draw opacity=.8, fill opacity=0.8, xscale=0.7, yscale=0.7,
+	minimum width=1mm, 
+	] 
+	at (0, 0) {};\end{tikzpicture}}
+
+\newcommand*{\MyOct}{\hspace{14pt}\raisebox{1pt}{\MyOctagon}\hspace{13pt}}
+	
 %\usetikzlibrary{fadings}
 
 \newcommand*{\MySquare}{%
