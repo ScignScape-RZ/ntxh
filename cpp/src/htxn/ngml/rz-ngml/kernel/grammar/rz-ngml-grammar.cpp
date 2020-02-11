@@ -414,6 +414,8 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
    ,[&]
  {
   graph_build.tag_command_leave_multi({});
+ //?  parse_context.flags.inside_multi_parent_semis = false;
+ //? parse_context.flags.inside_multi_parent = false;
  });
 
  add_rule( flags_all_(parse_context ,inside_multi_parent),
@@ -423,6 +425,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
  {
   QString tag_command = p.matched("tag-command");
   graph_build.tag_command_leave_multi(tag_command);
+//?  parse_context.flags.inside_multi_parent = false;
  });
 
 
