@@ -752,12 +752,24 @@ void NGML_Graph_Build::tag_command_leave_multi(QString tag_command)
   CAON_PTR_DEBUG(tNode ,node)
   check_tile_acc();
   markup_position_.confirm_tag_command_leave(node);
-   // //  two leaves here because the first is an arg ...
-  if(caon_ptr<tNode> node1 = markup_position_.tag_command_leave())
+
+  if(caon_ptr<NGML_Tag_Command> ntc = node->ngml_tag_command())
   {
-   markup_position_.confirm_tag_command_leave(node1);
-   check_multi_parent_reset();
+   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+
+   if( (ntc->flags.is_multi_optional) || (ntc->flags.is_multi_mandatory) )
+   {
+     // //  two leaves here because the first is an arg ...
+    if(caon_ptr<tNode> node1 = markup_position_.tag_command_leave())
+    {
+     markup_position_.confirm_tag_command_leave(node1);
+//?
+//     check_multi_parent_reset();
+//     return;
+    }
+   }
   }
+  check_multi_parent_reset();
  }
 }
 
