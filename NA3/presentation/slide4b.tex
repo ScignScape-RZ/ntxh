@@ -1,0 +1,39 @@
+
+
+\begin{frame}{\ft{Overview of Software Development Market}}
+
+%\doubleFrame{EC1.}
+
+
+
+\begin{tikzpicture}
+
+ \node [anchor=west,inner sep=15, text width=5cm,
+ draw = pink!20!black,
+ top color=white,
+ bottom color=pink!40,
+ rounded corners=6pt%,
+ %blur shadow={shadow blur steps=2}
+ ]
+ (longnote) at (1,5) {\baselineskip=22pt%  %{\color{rb!85!red}{
+ 	{\LARGE \textbf{.}}\par};
+%[/tikz/every legend entry/.style={text=red}]
+
+ \pie [rotate = 180,
+ /tikz/nodes={text=white, font=\bfseries},
+text=legend,radius = 7,%pos = {4,6},
+%/tikz/every legend/.style={text=black},
+ color={{rgb:red,0.2;green,0;blue,0.5}, 	
+ 	{rgb:red,0;green,0.24;blue,0.25}, 	
+ 	lqboutercolor!30!purple,
+ 	lqboutercolor!30!blue,red!40!green},
+ polar, explode=0.2%, text=legend
+ ]
+    {14/Qt, 60/Windows MFC,
+     12/Apple XCode, 7/Java, 7/Other}
+
+\end{tikzpicture}
+
+
+\end{frame}
+
