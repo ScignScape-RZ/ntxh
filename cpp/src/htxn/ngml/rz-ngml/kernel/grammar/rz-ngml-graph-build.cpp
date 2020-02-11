@@ -900,17 +900,26 @@ caon_ptr<NGML_Graph_Build::tNode> NGML_Graph_Build::make_new_node(caon_ptr<NGML_
  return result;
 }
 
+void NGML_Graph_Build::check_nonstandard_special_character_sequence
+  (QString match_text, QString& esc, u1& mode)
+{
+ static QMap<QString, std::pair<QString, u1> > static_map {
+  {"%--", {"-", 2}},
+ };
+
+ auto it = static_map.find(match_text);
+ if(it != static_map.end())
+ {
+  std::tie(esc, mode) = it.value();
+//  esc = it.value().first;
+//  mode = it.value().second;
+ }
+}
 
 void NGML_Graph_Build::special_character_sequence(QString match_text, 
   QString esc, u1 mode)
 {
- if(match_text == "%--")
- {
-//  match_text = "`{-}";
-  tile_acc("`{-}");
-  tile_acc_length_adjustment_ += 3; 
-  return;
- }
+ check_nonstandard_special_character_sequence(match_text, esc, mode);
 
  QString text;
  NGML_Paralex_Tile::Kind k = NGML_Paralex_Tile::N_A;
