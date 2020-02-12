@@ -24,7 +24,8 @@ chart by using PGF/Tikz package.]
 % #6: fill color
 % #7: radius
 % #8: center
-\newcommand{\pgfpie@slice}[8]{
+% #9: extra text
+\newcommand{\pgfpie@slice}[9]{
   \pgfmathparse{0.5*(#1)+0.5*(#2)}
   \let\midangle\pgfmathresult
 
@@ -57,7 +58,7 @@ chart by using PGF/Tikz package.]
 
     % number
     \path (O) -- ++(\midangle:\innerpos) node
-    {\scalefont{#3}\beforenumber#3\afternumber};
+    {\scalefont{#3}\beforenumber#3\afternumber #9};
   }
 }
 
@@ -179,7 +180,7 @@ chart by using PGF/Tikz package.]
   \fi
 }
 
-\newcommand{\pie}[2][]
+\newcommand{\pie}[3][]
 {
   % load default parameters
   \pgfkeys{
@@ -384,10 +385,13 @@ chart by using PGF/Tikz package.]
   \xdef\theradius{\radius}
   \fi
 
+
   \xdef\pgfpie@angleBegin{\the\pgfpie@angleEnd}
-  % drawing loop
-  \foreach \p/\t [count=\i from 0] in {#2}
-  {
+  \foreach \p/\t/\x [count=\i from 0, 
+evaluate=\i as \y using {{#3}[\i]}] in {#2}
+  { 
+   %\pgfmathsetmacro{\y}{{#3}[\i]}
+  	\message{p is {\p}, i is \i, t is {\t}, y is {\y} } %array(#3,\i)}
     \pgfmathsetlength{\pgfpie@angleEnd}{\pgfpie@angleBegin}
     \ifpolar
     % Polar area diagram
@@ -404,14 +408,15 @@ chart by using PGF/Tikz package.]
 
     % find color
     \pgfpie@findColor{\i}
+
     \pgfpie@slice{\pgfpie@angleBegin/\pgfpie@sum*360+\rotate}
     {\the\pgfpie@angleEnd/\pgfpie@sum*360+\rotate}
-    {\p}
+    {\p} % {\${\i} }}
     {\t}
     {\theexplode}
     {\thecolor}
     {\theradius}
-    {\pos}
+    {\pos}{\hspace{4pt}\y}%array(#3,\i)} %\x}
     \xdef\pgfpie@angleBegin{\the\pgfpie@angleEnd}
   }
   %%%%%%%%%% CIRCLE PIE END %%%%%%%%%%%
@@ -420,7 +425,7 @@ chart by using PGF/Tikz package.]
 
   % legend
   \iflegend
-  \coordinate[xshift=-22mm,
+  \coordinate[xshift=-10mm,
   yshift=((\value{pgfpie@sliceLength}*0.5+1)*0.5cm)+4cm] (legendpos) at
   (current bounding box.east);
 

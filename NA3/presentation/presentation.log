@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  11 FEB 2020 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  12 FEB 2020 16:00
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1704,17 +1704,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  (./presentation.nav) (./slide1.tex
-<slide1pic1.png, id=160, 667.74469pt x 532.99126pt>
+<slide1pic1.png, id=164, 667.74469pt x 532.99126pt>
 File: slide1pic1.png Graphic file (type png)
 <use slide1pic1.png>
 Package pdftex.def Info: slide1pic1.png  used on input line 53.
 (pdftex.def)             Requested size: 345.41151pt x 250.06474pt.
-<lp/lp1.png, id=164, 542.77782pt x 499.11469pt>
+<lp/lp1.png, id=168, 542.77782pt x 499.11469pt>
 File: lp/lp1.png Graphic file (type png)
 <use lp/lp1.png>
 Package pdftex.def Info: lp/lp1.png  used on input line 53.
 (pdftex.def)             Requested size: 242.93556pt x 192.65137pt.
-<slide1pic1a.png, id=166, 766.36313pt x 460.72125pt>
+<slide1pic1a.png, id=170, 766.36313pt x 460.72125pt>
 File: slide1pic1a.png Graphic file (type png)
 <use slide1pic1a.png>
 Package pdftex.def Info: slide1pic1a.png  used on input line 53.
@@ -1781,7 +1781,22 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 ex.map}
 
  <./slide1pic1.png> <./lp/lp1.png (PNG copy)> <./slide1pic1a.png (PNG copy)>]) 
-(./slide2.tex
+(./slide-team.tex
+contour: Using real outline for `{\Huge{\textbf{Team Members}}}' on input line 
+31.
+
+Overfull \hbox (15.36453pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (15.36453pt too wide) has occurred while \output is active
+[] 
+ []
+
+[2
+
+]) (./slide2.tex
 LaTeX Font Info:    Try loading font information for T1+uhv on input line 48.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/helvetic/t1uhv.fd
@@ -1904,7 +1919,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[2
+[3
 
 ]) (./slide4.tex
 LaTeX Font Info:    Try loading font information for T1+bch on input line 40.
@@ -2003,7 +2018,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[3
+[4
 
 ]) (./slide3.tex
 Missing character: There is no b in font nullfont!
@@ -2079,9 +2094,10 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[4
+[5
 
 ]) (./slide4b.tex
+p is {15}, i is 0, t is {Qt}, y is {(\protect \T1\textdollar 27b)} 
 Missing character: There is no l in font nullfont!
 Missing character: There is no q in font nullfont!
 Missing character: There is no b in font nullfont!
@@ -2106,7 +2122,10 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no e in font nullfont!
 LaTeX Font Info:    Font shape `T1/yly/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/yly/b/n' tried instead on input line 85.
+(Font)              Font shape `T1/yly/b/n' tried instead on input line 88.
+
+p is {60}, i is 1, t is {Windows MFC}, y is {(\protect \T1\textdollar 135 billi
+on)} 
 Missing character: There is no r in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no b in font nullfont!
@@ -2137,6 +2156,8 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no 5 in font nullfont!
+
+p is {12}, i is 2, t is {Apple XCode}, y is {(\protect \T1\textdollar 25b)} 
 Missing character: There is no r in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no b in font nullfont!
@@ -2165,6 +2186,8 @@ Missing character: There is no , in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no 5 in font nullfont!
+
+p is {7}, i is 3, t is {Java}, y is {(\protect \T1\textdollar 13b)} 
 Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -2177,6 +2200,8 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no n in font nullfont!
+
+p is {6}, i is 4, t is {Other}, y is {} 
 Missing character: There is no r in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no b in font nullfont!
@@ -2231,7 +2256,7 @@ Missing character: There is no p in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no e in font nullfont!
 LaTeX Font Info:    Font shape `T1/yly/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/yly/b/n' tried instead on input line 85.
+(Font)              Font shape `T1/yly/b/n' tried instead on input line 88.
 Missing character: There is no r in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no b in font nullfont!
@@ -2334,12 +2359,12 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no 2 in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-Overfull \hbox (15.78198pt too wide) in paragraph at lines 85--85
+Overfull \hbox (3.82074pt too wide) in paragraph at lines 88--88
 [][]  
  []
 
 contour: Using real outline for `{\Huge{\textbf{Overview of the Software Develo
-pment Market}}}' on input line 85.
+pment Market}}}' on input line 88.
 
 Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 []
@@ -2350,7 +2375,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[5
+[6
 
 ]) (./slide4a.tex
 Overfull \hbox (6.79999pt too wide) in paragraph at lines 49--49
@@ -2369,7 +2394,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[6
+[7
 
 ]) (./slide5.tex
 LaTeX Font Info:    Font shape `T1/yly/bx/n' in size <14.4> not available
@@ -2447,14 +2472,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[7
+[8
 
 ]) (./slide-rad2.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 21--21
 [][][][] 
  []
 
-<pics/RAD-2.png, id=430, 1028.34187pt x 536.0025pt>
+<pics/RAD-2.png, id=477, 1028.34187pt x 536.0025pt>
 File: pics/RAD-2.png Graphic file (type png)
 <use pics/RAD-2.png>
 Package pdftex.def Info: pics/RAD-2.png  used on input line 21.
@@ -2487,14 +2512,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[8
+[9
 
  <./pics/Rad-2.png (PNG copy)>]) (./slide-rad3.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 31--31
 [][][][] 
  []
 
-<pics/RAD-3.png, id=469, 1028.34187pt x 654.94687pt>
+<pics/RAD-3.png, id=516, 1028.34187pt x 654.94687pt>
 File: pics/RAD-3.png Graphic file (type png)
 <use pics/RAD-3.png>
 Package pdftex.def Info: pics/RAD-3.png  used on input line 31.
@@ -2531,10 +2556,10 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[9
+[10
 
  <./pics/Rad-3.png (PNG copy)>]) (./slide-res1.tex
-<pics/Res-2a.jpeg, id=505, 389.95688pt x 377.15906pt>
+<pics/Res-2a.jpeg, id=553, 389.95688pt x 377.15906pt>
 File: pics/Res-2a.jpeg Graphic file (type jpg)
 <use pics/Res-2a.jpeg>
 Package pdftex.def Info: pics/Res-2a.jpeg  used on input line 24.
@@ -2554,10 +2579,10 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[10
+[11
 
  <./pics/Res-2a.jpeg>]) (./slide-res2.tex
-<pics/Res-1.jpeg, id=542, 752.8125pt x 444.91219pt>
+<pics/Res-1.jpeg, id=589, 752.8125pt x 444.91219pt>
 File: pics/Res-1.jpeg Graphic file (type jpg)
 <use pics/Res-1.jpeg>
 Package pdftex.def Info: pics/Res-1.jpeg  used on input line 25.
@@ -2600,7 +2625,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[11
+[12
 
  <./pics/Res-1.jpeg>]) (./slide-res3.tex
 LaTeX Font Info:    Font shape `T1/yly/bx/it' in size <14.4> not available
@@ -2612,7 +2637,7 @@ Overfull \hbox (0.32892pt too wide) in paragraph at lines 21--21
 [][][][] 
  []
 
-<pics/Res-4.png, id=578, 682.80093pt x 486.31688pt>
+<pics/Res-4.png, id=625, 682.80093pt x 486.31688pt>
 File: pics/Res-4.png Graphic file (type png)
 <use pics/Res-4.png>
 Package pdftex.def Info: pics/Res-4.png  used on input line 21.
@@ -2647,14 +2672,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[12
+[13
 
  <./pics/Res-4.png (PNG copy)>]) (./slide-ec1.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 20--20
 [][][][] 
  []
 
-<pics/EC-1.png, id=614, 813.79031pt x 499.8675pt>
+<pics/EC-1.png, id=663, 813.79031pt x 499.8675pt>
 File: pics/EC-1.png Graphic file (type png)
 <use pics/EC-1.png>
 Package pdftex.def Info: pics/EC-1.png  used on input line 20.
@@ -2676,10 +2701,10 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[13
+[14
 
  <./pics/EC-1.png (PNG copy)>]) (./slide-ec2.tex
-<pics/EC-4.jpg, id=659, 752.8125pt x 385.44pt>
+<pics/EC-4.jpg, id=706, 752.8125pt x 385.44pt>
 File: pics/EC-4.jpg Graphic file (type jpg)
 <use pics/EC-4.jpg>
 Package pdftex.def Info: pics/EC-4.jpg  used on input line 24.
@@ -2706,14 +2731,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[14
+[15
 
  <./pics/EC-4.jpg>]) (./slide-ec3.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 20--20
 [][][][] 
  []
 
-<pics/EC-3.png, id=693, 843.90282pt x 499.8675pt>
+<pics/EC-3.png, id=740, 843.90282pt x 499.8675pt>
 File: pics/EC-3.png Graphic file (type png)
 <use pics/EC-3.png>
 Package pdftex.def Info: pics/EC-3.png  used on input line 20.
@@ -2735,7 +2760,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[15
+[16
 
  <./pics/EC-3.png (PNG copy)>]) (./slide-ph2.tex
 Overfull \hbox (4.58444pt too wide) in paragraph at lines 32--32
@@ -2747,7 +2772,7 @@ Overfull \hbox (16.5857pt too wide) in paragraph at lines 32--32
 [][][][] 
  []
 
-<screenshots/ss-ph2.png, id=729, 802.49812pt x 456.20438pt>
+<screenshots/ss-ph2.png, id=777, 802.49812pt x 456.20438pt>
 File: screenshots/ss-ph2.png Graphic file (type png)
 <use screenshots/ss-ph2.png>
 Package pdftex.def Info: screenshots/ss-ph2.png  used on input line 32.
@@ -2776,7 +2801,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[16
+[17
 
  <./screenshots/ss-ph2.png (PNG copy)>]) (./slide-ph3.tex
 Overfull \hbox (2.29659pt too wide) in paragraph at lines 50--50
@@ -2788,7 +2813,7 @@ Overfull \hbox (10.08498pt too wide) in paragraph at lines 50--50
 [][][][] 
  []
 
-<screenshots/ss-ph3.png, id=766, 802.49812pt x 456.20438pt>
+<screenshots/ss-ph3.png, id=813, 802.49812pt x 456.20438pt>
 File: screenshots/ss-ph3.png Graphic file (type png)
 <use screenshots/ss-ph3.png>
 Package pdftex.def Info: screenshots/ss-ph3.png  used on input line 50.
@@ -2823,14 +2848,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[17
+[18
 
  <./screenshots/ss-ph3.png (PNG copy)>]) (./slide-ph4.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 71--71
 [][][][] 
  []
 
-<screenshots/ss-ph4.png, id=802, 849.92531pt x 415.5525pt>
+<screenshots/ss-ph4.png, id=849, 849.92531pt x 415.5525pt>
 File: screenshots/ss-ph4.png Graphic file (type png)
 <use screenshots/ss-ph4.png>
 Package pdftex.def Info: screenshots/ss-ph4.png  used on input line 71.
@@ -2870,14 +2895,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[18
+[19
 
  <./screenshots/ss-ph4.png (PNG copy)>]) (./slide-vt4.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 35--35
 [][][][] 
  []
 
-<screenshots/ss-vt5.png, id=838, 724.20563pt x 432.86719pt>
+<screenshots/ss-vt5.png, id=887, 724.20563pt x 432.86719pt>
 File: screenshots/ss-vt5.png Graphic file (type png)
 <use screenshots/ss-vt5.png>
 Package pdftex.def Info: screenshots/ss-vt5.png  used on input line 35.
@@ -2904,14 +2929,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[19
+[20
 
  <./screenshots/ss-vt5.png (PNG copy)>]) (./slide-pub1.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 27--27
 [][][][] 
  []
 
-<pics/Pub-2.png, id=876, 859.71187pt x 538.26094pt>
+<pics/Pub-2.png, id=923, 859.71187pt x 538.26094pt>
 File: pics/Pub-2.png Graphic file (type png)
 <use pics/Pub-2.png>
 Package pdftex.def Info: pics/Pub-2.png  used on input line 27.
@@ -2932,7 +2957,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[20
+[21
 
  <./pics/Pub-2.png (PNG copy)>]) (./slide-pub2.tex
 Overfull \hbox (1.697pt too wide) in paragraph at lines 21--21
@@ -2944,7 +2969,7 @@ Overfull \hbox (10.08498pt too wide) in paragraph at lines 21--21
 [][][][] 
  []
 
-<pics/Pub-1.png, id=912, 938.00438pt x 521.69907pt>
+<pics/Pub-1.png, id=959, 938.00438pt x 521.69907pt>
 File: pics/Pub-1.png Graphic file (type png)
 <use pics/Pub-1.png>
 Package pdftex.def Info: pics/Pub-1.png  used on input line 21.
@@ -2966,14 +2991,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[21
+[22
 
  <./pics/Pub-1.png (PNG copy)>]) (./slide-pub3.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 22--22
 [][][][] 
  []
 
-<pics/Pub-3.png, id=945, 901.86937pt x 438.13687pt>
+<pics/Pub-3.png, id=993, 901.86937pt x 438.13687pt>
 File: pics/Pub-3.png Graphic file (type png)
 <use pics/Pub-3.png>
 Package pdftex.def Info: pics/Pub-3.png  used on input line 22.
@@ -3011,14 +3036,14 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[22
+[23
 
  <./pics/Pub-3.png (PNG copy)>]) (./slide-pub5.tex
 Overfull \hbox (0.32892pt too wide) in paragraph at lines 30--30
 [][][][] 
  []
 
-<pics/Pub-5.png, id=981, 998.9822pt x 553.31718pt>
+<pics/Pub-5.png, id=1028, 998.9822pt x 553.31718pt>
 File: pics/Pub-5.png Graphic file (type png)
 <use pics/Pub-5.png>
 Package pdftex.def Info: pics/Pub-5.png  used on input line 30.
@@ -3063,7 +3088,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[23
+[24
 
  <./pics/Pub-5.png (PNG copy)>]) (./thanks.tex
 Overfull \hbox (0.97316pt too wide) in paragraph at lines 42--42
@@ -3075,27 +3100,27 @@ Overfull \hbox (0.91522pt too wide) in paragraph at lines 42--42
 [][] 
  []
 
-<lp/lp2.png, id=1016, 752.8125pt x 385.44pt>
+<lp/lp2.png, id=1063, 752.8125pt x 385.44pt>
 File: lp/lp2.png Graphic file (type png)
 <use lp/lp2.png>
 Package pdftex.def Info: lp/lp2.png  used on input line 42.
 (pdftex.def)             Requested size: 295.42921pt x 154.17326pt.
-<lp/lp3.png, id=1019, 1028.34187pt x 536.0025pt>
+<lp/lp3.png, id=1066, 1028.34187pt x 536.0025pt>
 File: lp/lp3.png Graphic file (type png)
 <use lp/lp3.png>
 Package pdftex.def Info: lp/lp3.png  used on input line 42.
 (pdftex.def)             Requested size: 343.04407pt x 168.87361pt.
-<lp/lp4.png, id=1021, 886.81313pt x 493.0922pt>
+<lp/lp4.png, id=1068, 886.81313pt x 493.0922pt>
 File: lp/lp4.png Graphic file (type png)
 <use lp/lp4.png>
 Package pdftex.def Info: lp/lp4.png  used on input line 42.
 (pdftex.def)             Requested size: 328.11572pt x 140.33183pt.
-<lp/lp5.png, id=1023, 861.9703pt x 510.40688pt>
+<lp/lp5.png, id=1070, 861.9703pt x 510.40688pt>
 File: lp/lp5.png Graphic file (type png)
 <use lp/lp5.png>
 Package pdftex.def Info: lp/lp5.png  used on input line 42.
 (pdftex.def)             Requested size: 265.11572pt x 158.63553pt.
-<lp/lp2.jpeg, id=1025, 752.8125pt x 385.44pt>
+<lp/lp2.jpeg, id=1072, 752.8125pt x 385.44pt>
 File: lp/lp2.jpeg Graphic file (type jpg)
 <use lp/lp2.jpeg>
 Package pdftex.def Info: lp/lp2.jpeg  used on input line 42.
@@ -3116,7 +3141,7 @@ Overfull \hbox (15.36453pt too wide) has occurred while \output is active
 [] 
  []
 
-[24
+[25
 
  <./lp/lp2.png> <./lp/lp3.png (PNG copy)> <./lp/lp4.png (PNG copy)> <./lp/lp5.p
 ng (PNG copy)> <./lp/lp2.jpeg>])
@@ -3129,24 +3154,24 @@ ng (PNG copy)> <./lp/lp2.jpeg>])
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 748.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 748.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 748.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 748.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 345214F001AE5A16EC23632096D3E5BA;1591.
+(rerunfilecheck)             Checksum: 777F3827EFE66E71B220943B51343480;1640.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 36408 strings out of 492649
- 756597 string characters out of 6122986
- 892484 words of memory out of 5000000
- 39368 multiletter control sequences out of 15000+600000
- 698383 words of font info for 145 fonts, out of 8000000 for 9000
+ 36438 strings out of 492649
+ 757068 string characters out of 6122986
+ 893967 words of memory out of 5000000
+ 39390 multiletter control sequences out of 15000+600000
+ 698958 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,20n,80p,10401b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/libris/libr
@@ -3161,11 +3186,12 @@ exlive-install/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></home/nlevisrael
 visrael/texl/texlive-install/texmf-dist/fonts/type1/arkandis/libris/ylyb8a.pfb>
 </home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/arkandis/libris/y
 lybi8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/arkand
-is/libris/ylyr8a.pfb>
-Output written on presentation.pdf (24 pages, 7404863 bytes).
+is/libris/ylyr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/ty
+pe1/arkandis/libris/ylyri8a.pfb>
+Output written on presentation.pdf (25 pages, 7422264 bytes).
 PDF statistics:
- 1112 PDF objects out of 1200 (max. 8388607)
- 977 compressed objects within 10 object streams
- 77 named destinations out of 1000 (max. 500000)
- 32995 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1166 PDF objects out of 1200 (max. 8388607)
+ 1028 compressed objects within 11 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 33003 words of extra memory for PDF output out of 35830 (max. 10000000)
 

@@ -15,7 +15,7 @@
 
 \pie [rotate = 180,
 /tikz/nodes={text=white, font=\bfseries},
-text=legend,radius = 7,%pos = {4,6},
+text=legend,radius = 7.5,%pos = {4,6},
 %/tikz/every legend/.style={text=black},
 color={
     lqboutercolor!30!purple,	
@@ -25,11 +25,14 @@ color={
 	{rgb:red,0.1;green,0.2;blue,0.2},},
 polar, explode=0.2%, text=legend
 ]
-{   14/Qt (\$27 billion), 
-	60/Windows MFC (\$135 billion),
-	12/Apple XCode (\$25 billion), 
-	7/Java (\$13.5 billion), 
-	7/Other};
+{   15/Qt/(\$27b), 
+	60/Windows MFC/(\$135 billion),
+	12/Apple XCode/(\$25b), 
+	7/Java/(\$13b), 
+	6/Other/(\$10b)}
+{"(\$27b)","(\$135 billion)","(\$25b)",
+	"(\$13b)",""	
+	};
 
  \node [anchor=west,inner sep=15, text width=20cm,
  draw = pink!20!black,
@@ -55,13 +58,13 @@ polar, explode=0.2%, text=legend
  text=black,rounded corners=6pt%,
  %blur shadow={shadow blur steps=2}
  ]
- (longnote) at (11.2,-1.2) {\baselineskip=22pt%  %{\color{rb!85!red}{
+ (longnote) at (10.1,-.9) {\baselineskip=22pt%  %{\color{rb!85!red}{
  	{\LARGE \textbf{\makebox{Taking the 
  Qt implementations} of the NCN and A3R 
  protocols as a prototype, 
  analogous versions may be 
  built targeting other popular 
- software- development platforms 
+ software-development platforms 
  (see next slide for a more detailed outline).}}\par};
 
 
