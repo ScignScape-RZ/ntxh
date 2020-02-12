@@ -420,8 +420,8 @@ chart by using PGF/Tikz package.]
 
   % legend
   \iflegend
-  \coordinate[xshift=0.8cm,
-  yshift=((\value{pgfpie@sliceLength}*0.5+1)*0.5cm)+3cm] (legendpos) at
+  \coordinate[xshift=-22mm,
+  yshift=((\value{pgfpie@sliceLength}*0.5+1)*0.5cm)+4cm] (legendpos) at
   (current bounding box.east);
 
   \begin{scope}[node distance=1cm]
