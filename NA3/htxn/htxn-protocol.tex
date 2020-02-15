@@ -1,0 +1,546 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{eso-pic}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>0{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\setlength{\footskip}{23pt}
+
+\usepackage[paperheight=14.5in,paperwidth=9.1in]{geometry}
+\geometry{left=.9in,top=1.1in,right=.6in,bottom=1.4in} %margins
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{1pt}\hspace{8pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+
+\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{8pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{8pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{8pt}{\AcronymText{IQmol}}}
+
+\newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
+
+\newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
+
+\newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
+
+\newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{8pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{8pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{8pt}{\AcronymText{TeXMECS}}}
+
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{8pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{8pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{8pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{8pt}{\MOSAIC}}
+
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
+\newcommand{\QtSQL}{\resizebox{!}{8pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+\newcommand{\p}{
+
+\vspace{1.2em}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\setlist[description]{%
+  topsep=30pt,               % space before start / after end of list
+  itemsep=5pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+
+\setlength\parindent{24pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\underline{#1}}}}}}
+
+
+\begin{document}
+	
+{\linespread{1.1}\selectfont
+
+\vspace*{-7em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+\vspace{1em}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.7\textwidth,
+colback=ctmpppp!60,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\begin{minipage}{\textwidth}	
+\begin{center}		
+{\setlength{\fboxsep}{18pt}
+	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{Hypergraph Text Encoding Protocol (\HTXN{})}}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\vspace{-1em}
+
+%\noindent\lun{Overview}
+\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
+{\sectsp}
+\p{The Hypergraph Text 
+Encoding Protocol (\HTXN{}) is a new publication 
+format which can generate documents in 
+a variety of different representations 
+(such as {\LaTeX}, {\XML}, {\HTML}, and 
+{\RDF}).  \lHTXN{} enables publication workflows 
+to combine two or more 
+existing formats (e.g., {\LaTeX} and {\XML}).  
+A document with \HTXN{} encoding will 
+generate {\LaTeX} or {\XML} \q{views} 
+which can each be constructed for use at different stages 
+in the document-preparation pipeline.  \lHTXN{} is 
+also designed to work with publications that are 
+embedded in a larger data or multi-media ecosystem 
+--- in particular, documents that are paired with 
+data sets or multi-media content that need 
+specialized software.  
+
+\vspace{2.25em}
+\noindent\lun{Benefits}
+\vspace{-1em}
+\begin{description}[leftmargin=13pt,labelsep=15pt,itemsep=12pt]
+\item[Mix-and-Match Formats] \lHTXN{} employs 
+\q{stand-off} annotation, which allows multiple markup 
+protocols to be defined simultaneously on the same 
+document.  In addition, \lHTXN{} uses a flexible 
+character-encoding protocol that ensures 
+compatibility with diverse text representations
+(such as {\XML}, {\LaTeX}, Unicode, and {\Qt}/QString).  
+Via secondary documents or \q{views} (generated from the primary 
+\HTXN{} document), \HTXN{} can be used wherever 
+{\XML} or {\LaTeX} (or other formats) are desired.   
+   
+\item[Fine-Grained Character Encoding] The \HTXN{} 
+protocol includes more detailed document structure 
+information compared to conventional 
+markup.  For example, \HTXN{} identifies 
+sentence boundaries and punctuation features, 
+disambiguating logically distinct 
+but often visually identical 
+characters (such as \makebox{dots/periods or dashes/hyphens, 
+which may have different structural meanings in different contexts}).   
+
+\item[Multi-Media and Data Set Integration] 
+\lHTXN{} is optimized for sophisticated 
+publishing environments which combine 
+conventional natural-language texts with 
+interactive data sets and software.  
+Contemporary publishing increasingly sees 
+academic texts as part 
+of a multi-faceted ecosystem, where  
+publications, research data, and interactive 
+software can be packaged into multi-media 
+presentations.  \lHTXN{} ensures that 
+documents can be properly experienced within these 
+augmented publishing platforms.
+\end{description}
+}
+
+\vspace{-.5em}
+\noindent\lun{Complex Anchors and Interoperability}
+\p{\lHTXN{} introduces a variation on micro-citations 
+and conventional {\HTML} or {\LaTeX} anchors/labels, 
+which we call \q{complex anchors}, to facilitate 
+interoperability with research data sets 
+and external software.  Complex anchors permit concepts, 
+terms, and data structures to be tracked and cross-referenced 
+between publications and their associated data sets or 
+supplemental software.  Consider a table-structured 
+data set whose columns represent scientific 
+concepts or statistical parameters that are discussed in an associated publication (e.g. article or book chapter), 
+or where data from a specific table is 
+presented graphically as a figure within the publication.  Via 
+complex anchors, these kinds of thematic relationships between 
+data-set elements and corresponding points in 
+the research text may be made explicit, 
+so that data-set applications (including software 
+expressly implemented for a newly published data set) 
+can recognize references 
+\q{pointing in} to the publication.  In the context of tabular data, 
+data-set software could provide 
+context-menu actions associated with 
+each column (or, in the case of figure illustrations, the overall table), linking to an anchor in the text 
+where the relevant concepts, terminology, 
+or visualizations are explained.    
+}
+
+\p{This level of 
+interoperation can be achieved by implementing 
+document viewers (such as a \PDF{} viewer) embedded in 
+scientific software or software expressly designed for 
+a data set.  With embedded viewers, 
+the operation of opening associated publications to 
+specific anchor-points (such as figure illustrations) 
+can be integrated as an interactive extension to 
+their host applications, triggered by menu items 
+or other {\GUI} components.  To support this 
+interoperability, {\HTXN} provides anchors whose 
+identifiers and embedded data can be customized 
+to work with domain-specific host applications. 
+}
+
+\vspace{2em}
+\noindent\lun{Complex Exolinks and Interoperability}
+\p{\HTXN{} \q{exolinks} refer to data or multi-media content \textit{outside} the text (so they 
+are effectively the converse of 
+complex anchors, which support 
+references pointing \textit{inside} the text from 
+external software components).  Complex 
+exolinks designate 
+data or multi-media content --- such as video, audio, or \ThreeD{} (scenes or panoramic-photography) graphics --- which are outside the text,  
+but potentially part of a larger publication package 
+wherein an article is accompanied by data sets and/or 
+multimedia content.  
+Traditional external/{\HTTP} references in {\HTML} or {\PDF} 
+are designed to reference resources on the 
+World Wide Web, but not content downloaded in a 
+package along with publications themselves.
+Therefore, special reference formats are required 
+for document viewers to properly handle links in the 
+text that point to non-web content (which is a technical 
+limitation present in conventional document encoding 
+formats).  {\lHTXN} will ensure that, when accessing multi-media content, properly encoded signals will be sent between the 
+document-viewer components 
+and applications which support the relevant 
+multimedia file types (potentially host applications 
+where the document viewers themselves may be embedded).}
+
+\p{As a concrete example, consider 
+a chemistry paper which  
+is paired with {\ThreeD} descriptions of a 
+particular molecule.  In order for readers to view this content, 
+a signal needs to be sent to compatible molecular-visualization 
+software (such as {\IQmol} --- to cite a 
+\Qt{}-based, open-source 
+case-study).  Analogously, when reading a paper concerning {\ThreeD} radiology, signals may be sent to --- or be read on components 
+embedded within --- {\ThreeD} viewers such as  
+{\MeshLab} (again \Qt{}/open-source).
+To support interoperability requirements as shown 
+by these examples, the \HTXN{} specification includes an 
+\HTXN{}-specific \q{Native Application Network} (\HNaN{}) protocol to connect document viewers with 
+external and/or host applications; 
+\lHTXN{} exolinks encode data which ensures that 
+the concordant \HNaN{} signals are properly generated.
+}
+
+\p{\lHTXN{} has numerous features for 
+interoperation with software applications where document 
+viewers may be embedded, or  
+which support \HNaN{} via plugins.  In particular, 
+\HTXN{} parsers and generators are provided via 
+a \QtCpp{} library that can be dropped in to the 
+source code of native \CLang{}/\Cpp{} applications, 
+so it is straightforward to add \HNaN{} to existing 
+software.  Based on \Qt{} (a \Cpp{} \GUI{} and 
+application-development framework), 
+\HTXN{} can leverage the full range of 
+\Qt{} networking or front-end features (for instance, access to publishers' \API{}s can be 
+introduced as a processing stage during 
+document preparation).  In addition, \HTXN{}'s graph-based 
+parsing framework and hypergraph-based annotation 
+model can be customized and paired with project-specific 
+\GUI{} components for viewing and accessing data 
+sets.  Via such customizations, \HTXN{} can be 
+adapted to provide a domain-specific publication 
+platform for specific research projects or 
+environments (individual journals, 
+book series, research labs and academic departments, etc.).  
+\lHTXN{}'s \q{reference implementation} includes a 
+specially-designed \q{Next-Generation} markup language 
+(\NGML{}), as one way to build \HTXN{} files.  The 
+\NGML{} library is transparent and distributed 
+in source-code form, so it can be modified 
+to create domain-specific markup styles.  A 
+customized version of \NGML{} can thereby be used 
+to construct \HTXN{} documents according to each individual 
+lab's or journal's specifications.
+}
+
+\end{document}
+

@@ -1,0 +1,665 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{eso-pic}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>0{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\usepackage{geometry}
+\geometry{left=.9in,top=1in,right=.8in,bottom=1.4in} %margins
+
+\newcommand{\sectsp}{\vspace{6pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{1pt}\hspace{8pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+\newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{8pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{8pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\small{#1}}{\scriptsize{#2}}}}
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{8pt}{\AcronymText{TeXMECS}}}
+
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{8pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{8pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{8pt}{\MOSAIC}}
+
+
+\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
+\newcommand{\QtSQL}{\resizebox{!}{8pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+\newcommand{\p}{
+
+\vspace{.8em}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\setlist[description]{%
+  topsep=30pt,               % space before start / after end of list
+  itemsep=5pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+
+\setlength\parindent{34pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{{\fontfamily{psv}\selectfont{\LARGE{\underline{#1}}}}}
+
+
+\begin{document}
+	
+{\linespread{1.1}\selectfont
+
+\vspace*{-7em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+\vspace{1em}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.7\textwidth,
+colback=ctmpppp!60,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\begin{minipage}{\textwidth}	
+\begin{center}		
+{\setlength{\fboxsep}{18pt}
+	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{Hypergraph Text Encoding Protocol (\HTXN{})}}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+
+\vspace{11pt}
+
+
+
+%}}
+
+\end{center}
+
+\vspace{1em}
+
+\noindent\lun{Overview}
+\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
+{\sectsp}
+\p{The Hypergraph Text Encoding Protocol is a 
+framework for detailed encoding of text 
+documents.  \HTXN{} is not a markup language, 
+although the \HTXN{} \q{Reference Implementation} 
+includes a new markup format (called \NGML{}, or 
+\q{Next Generation Markup Language}) which 
+is one way to create \HTXN{} documents.  
+Instead, \HTXN{} is a binary encoding that can 
+represent the structure of several different 
+markup formats, including \XML{}, \LaTeX{}, and 
+\RDF{}.  \HTXN{} allows document collections to 
+have a common representation, even if the 
+original documents are in different 
+formats.  \HTXN{} also facilitates converting 
+between formats; for example, one document 
+can be represented in both \LaTeX{} and \XML{}.}
+
+\p{The motivations for \HTXN{} are both practical and technological.  
+Practically speaking, mismatch between document formats 
+can be a noticeable impediment to editing and fine-tuning 
+publications, and integrating them into digital 
+ecosystems.  For example, converting from \LaTeX{} to 
+\XML{} discards document anchors and auxiliary data 
+that could be used to externally cite specific 
+locations in a publication (\q{Micro-Citations} go 
+hand-in-hand with fine-grained textual annotations, because 
+\PDF{} viewers can, given proper metadata, browse to 
+the exact line where a person, data structure, or 
+technical concept appears in a document).  Technologically, 
+different formats each have their own unique virtues.  
+\LargeLaTeX{}, in many people's opinion, creates the 
+most visually compelling documents, and also has sophisticated 
+auxiliary-file and data-generation features 
+(this auxiliary data is increasingly important 
+in a publishing industry where text-based 
+content, such as \PDF{} files, are only one part of an 
+integrated digital platform).  \LargeLaTeX{}, however, has no 
+established proofing and change-tracking protocol.  
+\XML{} is architecturally well-designed for multi-party 
+editing and tracking, but typically yields 
+mediocre (\HTML{}-based) renderings.  \RDF{}, by supporting concurrent 
+and overlapping markup, is more expressive than 
+\XML{} and \LaTeX{}, but it lacks \LaTeX{}'s pre-processing 
+(auxiliary data) capabilities as well as \XML{}'s 
+post-processing document-interaction functionality.}
+
+\p{Rather than accept the limitations of any one format, 
+\HTXN{} embraces a philosophy of encoding documents 
+in its own internal system, then generating 
+\q{views} onto the document in a range of structures, 
+so as to benefit from different formats' features 
+at different stages of finalizing a publication.  
+An \HTXN{} file may be converted to \LaTeX{} to 
+generate auxiliary data, then converted to 
+\XML{} for collaborative editing, and finally 
+converted to \RDF{} (or another graph representation) 
+for searching and indexing.}
+
+\vspace{2em}
+\noindent\lun{Features}
+{\sectsp}
+\p{Apart from its overarching philosophy, 
+\HTXN{}'s distinguishing features include:
+
+\begin{enumerate}
+\item{} A unified document-structure model which accommodates 
+the idiosyncracies of different markup styles, 
+such as attribute child nodes in \XML{}, 
+optional arguments in \LaTeX{}, subject defaults in 
+\RDF{}, and concurrent/overlapping markup as in \TeXMECS{}. 
+
+\item{} An encoding built from the ground up to support 
+multi-party editing and collaboration.  Internally, 
+\HTXN{} uses \q{stand-off} annotations which logically 
+separate markup content from the underlying text.  
+Multiple sources can thereby contribute distinct 
+markup structure, which may be used, for example, 
+to differentiate document changes made by 
+authors from those made by editors.
+
+\item{} A convenient architecture for \q{subordinate} documents which 
+expose some restricted portion of their \q{parent} documents.  
+This is also useful for editing.  Starting with an overall 
+\HTXN{} parent, one can selectively create a subordinate document 
+which (for example) includes only editable text, yielding 
+a simplified version of the document suitable for 
+textual revisions.  After editing, changes made to the 
+subordinate document are then folded into its parent.
+
+\item{} A detailed system for pairing documents with external 
+data and data sets.  In particular, \HTXN{} supports document 
+anchors allowing structured data within a data set to 
+reference locations in accompanying publications.  These 
+back-references could be used, for example, to identify 
+points in a publication where there is a definition, 
+explanation, review, or visualization of technical concepts 
+and/or data aggregates introduced in a data set.  Unlike 
+\LaTeX{} references or \HTML{} anchors, these \HTXN{} anchors 
+are data-specific and logically separated from textual 
+cross-references. 
+
+\item{} Several special features for data-based annotations, 
+or ascribing metadata or interpretations to text 
+segments which conform to structured data types 
+(proper names, acronyms, dates, times, magnitudes, etc.).  
+This includes numeric types typically unrepresented 
+in most markup formats, such as range-delimited 
+integer types and \q{Universal Numbers}, or \q{posits}, 
+a recent alternative to floating-point decimals.  
+
+\item{} Functionality for creating data sets directly 
+from the text itself.  For instance, example 
+sentences used within linguistic publications, 
+to illustrate semantic or syntactic principles, 
+can be compiled as a sentence-corpus to produce 
+a distinct data set associated with the 
+original publication.  Larger corpora can then 
+be compiled from collections of linguistic 
+texts.  Similar techniques can be employed 
+in analogous \q{digital humanities} contexts; 
+for example, extracting a corpus of discussions 
+about cultural artifacts by extracting sentences 
+or paragraphs pertaining to an 
+externally identifiable object (such as an 
+artwork held in a museum).   
+
+\item{} A framework for \q{complex microcitations}, meaning 
+individually citable locations in a document which involve 
+multipart data structures.  A case study would be linguistic 
+examples that display (alongside or within a sentence) supplemental 
+visual cues such as intonation, prosody, lexical category, 
+morphology, or grammatical-structural annotations.  
+Such material needs special typesetting instructions, but 
+the visual format in turn depends on formal sentence 
+models.  For another example, graphics such as charts 
+or plots may represent a specific statistical 
+view on a data set; the construction of that distinct 
+perspective marshals formal data, such as dependent 
+and independent variables, axes, scales, scaling 
+factors (e.g. scalar multipliers or logarithms), and 
+ranges.  In these examples, textual content is not only 
+a presentation layer which merely exposits or 
+reviews scientific frameworks; instead, 
+the code describing textual structure and appearance 
+reflects scientific paradigms and is therefore 
+a theoretical artifact in its own right.
+In particular, textual anchors and 
+typesetting reflects not only raw text but structured 
+data whose format and provenance represents specific 
+scientific models.  Here it is valuable to 
+cross-reference text with data sources:  
+typesetting code may be generated directly from a 
+data set, while the generated instructions (in \LaTeX{}, 
+say) can trigger anchor labels and page references 
+to be \q{forward-referenced} into the data set via 
+auxiliary files.  Complete cross-references 
+thereby integrate raw and textual data, 
+yielding \textit{bi-directional} complex microcitations.  
+ 
+\item{} A \Qt{}-based Reference Implementation which conveniently 
+documents the \HTXN{} specifications.  With no external 
+dependencies apart from \Qt{} Creator (a \Cpp{} Integrated 
+Development Environment), authors can construct \HTXN{} documents 
+via \NGML{} and, if desired, examine all parsing and encoding code 
+(both statically and, dynamically, during document creation).  
+The Reference Implementation also supports importing and 
+conversions to \HTXN{} from \XML{}, using \Qt{}'s \XML{} module. 
+
+\item{} Options for stashing compiled \HTXN{} documents in a 
+database, so that saving files containing text serialization 
+(in \NGML{}, for example) is not a prerequisite for maintaining 
+persistent copies of \HTXN{} documents.  The Reference 
+Implementation supports persistent 
+\HTXN{} documents via the \WhiteDB{} database engine.
+
+\item{} A flexible parsing engine which allows input languages 
+for generating \HTXN{} documents to be customized and extended.
+\end{enumerate}
+}
+
+\vspace{2em}
+\noindent\lun{Architecture}
+{\sectsp}
+\p{Internally, \HTXN{} uses a Hypergraph representation where 
+nodes are ranges pointing toward character streams in a 
+separate multi-layered buffer (zero-length ranges represent 
+anchors and locations within documents).  Ranges 
+(and so therefore their corresponding nodes) can overlap 
+or encompass one another in any combination.  The data 
+establishing nodes' ranges and markup specifications (such as 
+tag/command names) is separated from the text layers.}
+
+\p{Also external to the text layers are extra data that affects 
+the interpretation of individual characters (for 
+example, to accommodate special symbols).  By factoring 
+out this supplemental information, each \HTXN{} character 
+has a consistent bit-length (typically one or two bytes, 
+or a 10-bit pack corresponding to two base-32 digits).  
+In general, each \HTXN{} character also has a visual 
+representation (a \q{glyph}), because non-visual markup is 
+modeled via standoff annotations rather than via content 
+embedded in the text itself.  In particular, \HTXN{} does 
+not internally use \XML{} entity references, Unicode points, 
+diacritics, or other variant-length constructions where 
+multiple physical characters correspond to one single 
+text character.  Instead, any text character needing 
+such supplemental detail is flagged via special codes, 
+and an external table is used to retrieve that character's 
+specifications.  The rationale for this design is to fully 
+separate the markup-related processes of defining and 
+annotating \textit{ranges}, from the text-encoding requirements 
+concerning foreign letters, special symbols, and other 
+nonstandard characters.}
+
+\p{Instead of statically modeling character encodings, 
+\HTXN{} provides an \textit{interface-based} encoding protocol.  
+This means that \HTXN{} will recognize any encoding of a 
+character, a character-set, a character-stream, 
+and a character-stream offset range, so long as it is 
+possible to obtain certain specific pieces of 
+information with regard to the 
+object in question.  At the lowest level, this 
+means that character-sets and character-streams 
+are implemented via \Cpp{} classes which inherit 
+from an abstract base class.  Users can then 
+build their own character sets by implementing 
+their own \Cpp{} classes.  At a higher level, one 
+character-set class can provide multiple 
+character-set instances by loading data 
+from an external file.  In either case, 
+\HTXN{}'s character-encoding mechanism is 
+orthogonal to encodings used for \XML{}, 
+\LaTeX{}, Unicode, or any other markup/encoding format 
+(though character sets can provide conversions 
+to these formats as needed).  This promotes 
+\HTXN{}'s capabilities to convert between and 
+to integrate multiple markup protocols, 
+such as \LaTeX{} and \XML{}.  More generally, it 
+allows programmers to use Object-Oriented 
+coding techniques to fine-tune the text-encoding 
+process more aggressively than is possible 
+with most markup and text-encoding formats.}
+
+\vspace{2em}
+\noindent\lun{Document Editing}
+{\sectsp}
+\p{One benefit of \HTXN{} encoding concerns how 
+\HTXN{} may be integrated with those application  
+which allow multiple users to edit the text at hand.}
+
+\p{As already described, a parent \HTXN{} 
+document may be paired with a subordinate 
+document providing restricted access to the 
+parent.  This schema applies in contexts 
+where only \textit{restricted editing} is 
+appropriate.  In contrast to 
+\textit{unrestricted editing}, restricted editing 
+proceeds in the context of rules limiting 
+which editing actions are possible.  In particular, 
+restrictions may stipulate that only certain 
+document content --- such as text that will be 
+visible in the final publication --- may be 
+modified.  Restrictions may also limit the degree 
+to which a document's graph structure is altered.  
+Added nodes, for example, may be required to fit 
+inside other nodes (disabling interwoven markup that 
+is normally accepted in \HTXN{}).  Added nodes 
+may also be restricted to a subset of tags/commands, 
+such as those providing visual markup 
+(like italics and boldface) for published text, 
+or metadata which permits annotations without changing 
+the text or its appearance.}
+
+\p{In order to enforce such restrictions, editors 
+may be prevented from modifying \HTXN{} documents 
+as raw text files; this in turn demands software 
+which presents views onto documents' contents 
+other than through text serialization.  For these use 
+cases, \HTXN{} natively supports integration with 
+\Qt{} applications.  In particular, subordinate 
+\HTXN{} documents can be rendered via the 
+\QTextDocument{} class, which allows restricted editing 
+of visible textual content without directly 
+changing the underlying \HTXN{} data.  
+With \QTextDocument{}, editing actions can be 
+initiated through a responsive native front end 
+supporting context menus, secondary windows, 
+undo/redo, and other convenient features 
+associated with native desktop \GUI{}s.  
+Alternatively, subordinate documents may be 
+converted to \HTML{} and visualized through 
+\QWebEngineView{}, which offers similar 
+interactive functionality.}
+
+\p{Each edit initiated through \QTextDocument{} 
+or \QWebEngineView{} may then generate 
+a data structure through which the 
+changes are registered in subordinate and parent 
+\HTXN{} documents.  These data structures, describing 
+individual edits and groups of edits, may then be 
+shared over \HTTP{} via \QNetworkManager{} and 
+related classes.  This allows multiple users 
+to synchronize their local document views in 
+collaborative-editing contexts, and simultaneously allows 
+publishers to track changes and maintain an official 
+version for publication.  Maintaining one 
+canonical document --- so that 
+multiple users (e.g. authors, volume editors, series editors, 
+and production editors) may update the document in real time 
+--- is obviously more efficient than users 
+sending successive copies of their document back 
+and forth.  This, of course, is one reason 
+why web-based collaborative editing is popular.  
+The improvements introduced by \HTXN{} are first that 
+co-edited documents are actually subordinate versions 
+of parent documents which have more complex typesetting 
+and metadata capabilities.  In so doing, the changes 
+introduced in the subordinate document are thereby 
+(as desired) reflected in the parent document.  Second, the 
+editing \GUI{}s can be part of native-compiled applications 
+with a full range of desktop-style functionality 
+rather than web portals 
+which have a more restricted interactive experience. 
+In short, with the \HTXN{} framework  
+the publication (books and journals) production process 
+would be accelerated by virtue of \HTXN{}'s 
+native-application features.}
+
+\end{document}
+

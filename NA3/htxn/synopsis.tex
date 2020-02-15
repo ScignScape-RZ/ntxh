@@ -1,0 +1,532 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{eso-pic}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>0{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\usepackage[paperheight=13in,paperwidth=8.25in]{geometry}
+\geometry{left=.8in,top=.6in,right=.6in,bottom=1.2in} %margins
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{1pt}\hspace{8pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+
+\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
+
+\newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
+
+\newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
+
+\newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{8pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{8pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{8pt}{\AcronymText{TeXMECS}}}
+
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{8pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{8pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{8pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{8pt}{\MOSAIC}}
+
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
+\newcommand{\QtSQL}{\resizebox{!}{8pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+\newcommand{\p}{
+
+\vspace{.6em}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\setlist[description]{%
+  topsep=30pt,               % space before start / after end of list
+  itemsep=5pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+
+\setlength\parindent{34pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{{\fontfamily{psv}\selectfont{\LARGE{\underline{#1}}}}}
+
+
+\begin{document}
+	
+{\linespread{1.1}\selectfont
+
+\vspace*{-7em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+\vspace{2.5em}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.7\textwidth,
+colback=ctmpppp!60,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\begin{minipage}{\textwidth}	
+\begin{center}		
+{\setlength{\fboxsep}{6pt}
+	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{HTXN/MOSAIC Synopsis}}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+
+\vspace{10pt}
+
+
+
+%}}
+
+\end{center}
+
+\vspace{-2.5em}
+
+%\noindent\lun{Overview}
+\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
+{\sectsp}
+\p{This paper will review the Hypergraph Text 
+Encoding Protocol (\HTXN{}) and \MOSAIC{} 
+(Multi-Paradigm Ontologies for Scientific, Academic, 
+and Technical Publications), which is a model 
+for describing published data sets and academic/research 
+publications.  \lMOSAIC{} defines a protocol 
+for embedding document viewers, along with access 
+to publishers' metatadata, within scientific and 
+technical applications.  This protocol can be 
+specialized for individual publishing companies, 
+so that each company may have its own customized 
+embedded platform targeted at the software  
+which scientists use for their research.}
+
+\p{\lMOSAIC{} is designed with an emphasis on 
+(1) representing the interconnections between 
+publications and data sets and 
+(2) describing the software used to properly 
+access data sets.  \lMOSAIC{} prioritizes 
+self-contained \q{Research Objects} which 
+grant informative, interactive access to 
+research data without requiring users to 
+download external software, either by 
+providing a comprehensive code base 
+(called a \q{dataset application}) along 
+with the raw data, or by using a tool such 
+as ReproZip to bundle external dependencies 
+into a single executable package.  \lMOSAIC{} 
+data (which can be embedded in data sets 
+as one branch of metadata conformant to 
+the Research Object Protocol, and/or 
+exposed via a \MOSAIC{} \API{}) describes 
+data/code integration (function signatures, 
+test suites, data types, file/executable 
+formats and paths, and User Interface 
+documentation) as well as data/text integration 
+(cross-references between data sets and 
+publications via text anchors and embedded data).}
+
+\p{The \MOSAIC{} \API{} is not a single web service but 
+rather a prototype that can be reused in different 
+publishing contexts.  The \HTXN{} reference implementation 
+includes both \MOSAIC{} \API{} client libraries and 
+a demonstration server-side utility hosting \MOSAIC{} 
+content.  The \MOSAIC{} \API{} client may be 
+natively embedded in \QtCpp{} applications, 
+via an embedding protocol that can be extended 
+to other scientific and publishing-related 
+\API{}s (for example, Elsevier's 
+\API{} suite and Developer Portal).  The \Qt{} platform undergirds  
+many scientific and publishing applications 
+--- TeXstudio (for \LaTeX{} processing), 
+Mendeley Desktop (for Reference/Citation Management), 
+CERN ROOT (CERN's physics/subatomic analytics 
+platform), IQmol (for chemistry/molecular physics), 
+medInria (for radiology), QGIS (for Geoinformatics), 
+MeshLab (for \ThreeD{} modeling), 
+OpenSCAD (for \ThreeD{} geometry), 
+Octave (a MATLAB emulator), 
+ParaView (for data visualization), 
+Qt Creator \IDE{} (Integrated Development Environment), 
+to name a few.  With \API{} client plugins or 
+extensions, any \Qt{}-based application 
+can become a platform for accessing 
+publication-related information, 
+so that the unique capabilities of 
+domain-specific technical software can 
+augment the reading and preparation of 
+technical publications.}
+
+\p{The \lHTXN{} format, in turn, serves as an illustrative 
+case-study for embedded 
+\API{} clients.  This format was designed with 
+four main goals: (1) to construct documents which 
+can be expressed in multiple formats 
+(such as \LaTeX{}, \XML{}, and \RDF{}); 
+(2) to have a flexible grammar and parsing 
+engine so that the input language can be adapted 
+for different environments; (3) to achieve 
+fine-grained integration and cross-referencing between 
+documents and data sets; and (4) to support 
+a reference implementation encompassing both 
+parsers from text files to \HTXN{} (with 
+output-generators for \LaTeX{} or \XML{}) and 
+a demonstrative server-side \API{} engine.  Data integration is 
+facilitated through \textit{Complex Microcitations}, 
+which are citable document anchors that embed 
+structured data either encoding a data asset directly 
+or referencing an external structured resource.  
+Complex Microcitations may encode data in 
+special-purpose formats pertinent to publications' 
+data sets; in these scenarios, \HTXN{} processors 
+may be embedded within domain-specific 
+applications that can handle the relevant 
+domain-specific data.}
+
+\p{Wherever possible, technologies for 
+publications should be integrated with technologies 
+working with data sets.  Such integration has numerous 
+benefits for authors and publishers, including:
+
+\begin{enumerate}[leftmargin=20pt,labelsep=9pt]
+\item{} Authors' contributions in the form of 
+published data can be recognized as essential 
+facets of their research.  For example, 
+the novelty of accompanying data can be 
+identified as vouching for the originality of 
+the research documented in a publication.
+
+\item{} Data sets enhance publications' value 
+according to the \q{\FAIR{}} criteria 
+(Findable, Accessible, Interoperable, Reusable).  
+Data sets make publications more 
+\q{discoverable} because publications, 
+by virtue of associated research information, can be 
+linked to searchable archives of data repositories.
+
+\item{} The formats describing structured 
+data comprising and/or summarizing data sets are 
+themselves illustrations and encapsulations of 
+scientific principles.  Readers who become 
+familiar with domain-specific data formats 
+and scientific visual/analytic tools 
+gain insights into the research paradigms  
+and experimental/analytical protocols through 
+which shareable data is generated.  
+
+\item{} Publications (in 
+formats like \PDF{}) can be used as supplements 
+to data sets.  In particular, technology for 
+reading documents (such as \PDF{} viewers), 
+when embedded in domain-specific technical applications, 
+ensure that the proper  
+graphical and analytic capabilities 
+--- \ThreeD{} models, molecular visualization, 
+panoramic photography viewers, physical simulations, 
+linguistic annotation, statistical reparameterization, 
+etc. --- are available to 
+publications' authors, reviewers, and readers.
+\end{enumerate}
+}
+
+\p{\lHTXN{} has several features augmenting 
+these benefits --- for instance, \lHTXN{} 
+documents can be paired with scripts demonstrating 
+data set features, which can help reviewers 
+understand the organization and features of 
+publications' data sets, helping to ensure 
+that data sets are properly examined and considered 
+during the peer-review process.  In the context of 
+publication-related \API{}s, then, a typical scenario 
+would unfold as follows: \HTXN{} parsers 
+are embedded within special-purpose scientific 
+or technical applications (take \Qt{} Creator as a 
+case-study).  The \HTXN{} documents will 
+include domain-specific metadata targeted at the 
+host application (which, for \Qt{} Creator, 
+may also be a project loaded in the current \IDE{}
+session).  Calls to publication-related \API{}s, 
+within the host application, can then link 
+the metadata situated in local \HTXN{} files to the 
+corresponding points in publication-related resources, 
+such as the documents' page proofs or 
+document/data-set metadata.  
+Via this architecture, technical software 
+such as \Qt{} Creator, with publisher-specific 
+plugins, can serve as document-preparation 
+applications usable across multiple stages in the 
+publication workflow.}
+
+\end{document}
+
