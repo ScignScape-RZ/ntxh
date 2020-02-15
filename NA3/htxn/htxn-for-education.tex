@@ -312,6 +312,7 @@
 \newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
 \LARGE{\textbf{\underline{#1}}}}}}
 
+\newcommand{\inditem}{\itemindent10pt\item}
 
 \begin{document}
 	
@@ -396,24 +397,135 @@ experience multi-media content.}
 \p{The generic term \q{multi-media content} actually 
 encompasses multiple phenomena:
 
-\begin{description}
+\begin{description}[leftmargin=2pt,
+	labelindent=-2pt,labelsep=12pt]
 \item[Multimedia Files]  Individual 
 files representing audio, video, or 3D graphics content.  
 These files may be linked from specific locations in 
 the primary manuscript, or even embedded within manuscripts 
 when they are published in \PDF{} format.
  
+\item[Data Sets and Data Visualization]  Publishers 
+increasingly emphasize sharing research data alongside 
+texts, so readers can verify or even attempt to 
+replicate claimed results.  Data sets are also a form 
+of multimedia content because, apart from being aggregates 
+of raw data, data sets are almost always accompanied 
+by interactive, visual content: charts, diagrams, or 
+plots to visualize the information holistically, or 
+interactive tools to examine or navigate through the 
+data set at finer scales.  
 
-\item[Data Sets and Data Visualization]  . 
+\item[Application Networks]  Another genre of multi-media 
+content involves resources which may only be experienced 
+through specialized software.  This classification encompasses 
+content from particular scientific or technical domains, 
+which is encoded in domain-specific formats: representations 
+of molecular structures, archaeological sites, image-processing 
+data, wave-forms for signal processing, sentence-parses for 
+linguistic analysis, and so forth.  To conveniently access 
+this kind of multi-media, readers need to use software 
+which can send signals to the specialized applications 
+having the capability to recognize the domain-specific 
+formats and translate them to interactive, 
+visual presentations.  In short, publication viewers 
+(e.g., e-readers) need to participate in multi-application 
+networks, where data can be sent and received between 
+each component.  Publishers can provide this 
+functionality to readers by implementing special 
+e-readers and, in addition, writing plugins 
+(or collaborating with external application developers) 
+to ensure that applications networked with e-readers 
+are properly aligned with the e-readers themselves.
 
-\item[Application Networks]  .
-
-\item[Publications-as-Applications]  . 
-
+\item[Publications-as-Applications]  In some 
+cases, publications themselves are a form of 
+multi-layered multi-media content.  This applies 
+to publications which are not simply read from 
+start to end, but instead naturally lend 
+themselves to a reading process which navigates 
+back and forth between different sections of 
+the text, or juxtaposes different sections to be 
+visible at the same time.  A canonical example 
+of such layered reading is testing materials 
+and test preparation, where exam questions, 
+instructions, supplemental materials (such 
+as passages for reading-comprehension 
+assessment), and comments or analyses about 
+answers (in the case of prep materials), 
+each form different layers which 
+students may wish to view side-by-side.  
+In these cases, e-readers cannot simply 
+treat the publication as one single ePub 
+or PDF file.  Instead, the manuscript needs 
+to identify text segments which can be factored 
+into different layers, and the e-reader 
+needs to implement text-viewers which allow 
+each layer to be viewed in separate windows, 
+with readers able to juxtapose and position the 
+windows as desired. 
 \end{description}
-
 }
 
+
+\p{\lHTXN{} represents publication manuscripts 
+using structures which rigorously document 
+publications' multi-media content and multi-application 
+networking requirements.  This detailed 
+multi-media support has several dimensions: 
+
+\begin{enumerate}[leftmargin=2pt]
+\inditem{} Defining points in the manuscript where 
+multi-media files are linked or embedded: this 
+involves annotating locations in the manuscript 
+with hyper-references to multi-media files 
+(audio, video, etc.) which readers should be 
+able to access when they reach the corresponding 
+point in the text.
+
+\inditem{} Establishing granular cross-references between 
+publications and multi-media content: this is a 
+more complex case where manuscript locations have to 
+link \textit{to} or \textit{from} limited 
+\textit{portions} of the corresponding multi-media 
+resources.  For example, a passage in the manuscript 
+may discuss a single sample within a data set; or 
+may explicate a particular facet of the data set, 
+such as an individual column in a tabular 
+information space, or a specific set of 
+statistical parameters against which quantitative 
+operations are performed.  These scenarios 
+call for bi-directional cross-references between the 
+data set and the publication, wherein the granular 
+data-set facet topically relevant to the 
+corresponding manuscript location (the sample, 
+table-column, parameters, etc.) is formally 
+isolated and declared as a reference-target.  
+
+\inditem{} Cross-referances may also be 
+defined between publications' non-textual or 
+non-paragraph content and corresponding 
+multi-media resources.  For example, tables 
+or diagrams visually presented in a manuscript 
+may be liked to statistical data from which 
+the figures are derived.  A similar situation 
+applies when visuals inluded in a publication 
+are linked to multi-media resources which 
+represent the same information in a different 
+experiential register: a PDF document may 
+include a two-dimensional graphic which is created 
+by taking a camera shot of a \ThreeD{} model, 
+which readers may also experience with a 
+\ThreeD{} graphics engine; or a publication may 
+reproduce a graph or scatter-plot derived 
+from a data set, where data visualization 
+software can represent the same information 
+in a more interactive medium, with parameters 
+plotted as curves or surfaces in a \ThreeD{} 
+ambient space, or where systems are visualized 
+as systems evolving over time.  
+\end{enumerate}
+}
 
 
 \end{document}
