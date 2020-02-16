@@ -1,0 +1,153 @@
+
+\documentclass{beamer}
+
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows, positioning, shapes}
+
+\usetheme{Singapore}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{caption}[numbered]
+
+\setlength{\paperwidth}{10.in}
+\setlength{\paperheight}{7.5in}
+\setlength{\textwidth}{9.in}
+\setlength{\textheight}{6.5in}
+
+\newcommand{\cfbox}[2]{%
+	\colorlet{currentcolor}{.}%
+	{\color[rgb]{#1}%
+		\fbox{\color{currentcolor}#2}}%
+}
+
+
+\usecolortheme{spruce}
+%\setbeamercolor{block title}{red}   
+%\setbeamercolor{block title}{red}   
+\usecolortheme{orchid}
+%\usepackage{float}
+
+%\setbeamerfont{itemize/enumerate body}{size=\small}
+%\setbeamerfont{normaltext}{size=\}
+%\setbeamerfont{block body}{size=\small}
+\setbeamerfont{block title}{size=\large}
+%\setbeamerfont{block body example}{size=\tiny}
+
+\newcommand{\colortriangle}{{\color[rgb]{0.45, 0.4, 0.28}$\blacktriangleright$}}
+	
+\newcommand\FourQuad[4]{%
+	
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#1\end{minipage}\hfill%
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#2\end{minipage}\\[0.5em]
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#3\end{minipage}\hfill
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#4\end{minipage}%
+}
+
+\newcommand\ThreeQuad[3]{%
+	\hspace{2pt}\begin{minipage}[b][.23\textheight][c]{.99\textwidth}#1\end{minipage}\hfill%
+	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#2\end{minipage}\hfill
+	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#3\end{minipage}%
+}
+
+\newcommand\TwoQuad[2]{%
+	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#1\end{minipage}\hfill
+	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#2\end{minipage}%
+}
+
+\newenvironment{quadblock}[1]{\begin{block}{\begin{center}\Large{%
+\colorbox[rgb]{0.25,0.1,0.25}{\color{yellow}{\textbf{#1}}}
+}\end{center}}%
+\begin{minipage}[c]{.97\textwidth}\vspace{1em}
+}{
+\end{minipage}
+\end{block}}
+
+
+\newenvironment{mpblock}[1]{\begin{block}{\begin{center}\Large{%
+\colorbox[rgb]{0.25,0.1,0.25}{\color{yellow}{\textbf{#1}}}
+}\end{center}}%
+\begin{minipage}[c]{.97\textwidth}\vspace{1em}
+\begin{textsf}}{\end{textsf}
+\end{minipage}
+\end{block}}
+
+
+
+%\newcommand{\doubleCenteredFramebox}[1]{%
+%\begin{center}%
+%\framebox{%
+%\begin{minipage}{0.85\textwidth}\begin{center}%
+%#1\end{minipage}\end{center}}\end{center}}
+
+%\setlength{\fboxsep}{0.15em}
+
+
+
+\newcommand{\doubleCenteredFramebox}[1]{%
+\setlength{\fboxsep}{2em}\setlength{\fboxrule}{2pt}
+\begin{center}\cfbox{0.1, 0.5, 0.8}{\begin{minipage}{0.85\textwidth}\begin{center}\setlength{\fboxsep}{.25em}#1
+	\end{center}\end{minipage}}\end{center}}
+
+\newcommand{\sfitem}[1]{\item \LARGE{\textbf{\textsf{#1}}}}				
+\newcommand{\scitem}[1]{\item \large{\textsc{#1}}}			
+\newcommand{\embitem}[1]{\item \textbf{#1}}			
+
+
+%\begin{minipage}[.45\textheight][t]}{\end{minipage}\end{block}}
+
+\newcommand{\manyasciimacron}{\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+}
+
+\newcommand{\manyemdash}{\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+ \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+ \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+}
+
+%\newcommand{\conversationPatterns}{\framebox{%
+%Conver\-\\
+%sation\\
+%Patterns}}
+
+\newcommand{\conversationPatterns}{	
+\begin{minipage}{35pt}\centering{\begin{footnotesize}\textbf{Convers\-ation\\Patterns}\end{footnotesize}} 
+\end{minipage}}
+
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\begin{document}
+
+\begin{frame}{\Huge{\textbf{Language Techology, Threat Mitigation}}}
+{\Huge
+\vspace{2em}{\color{darkRed}
+\colorbox{pink}
+{\begin{minipage}{.55\textwidth}\centering 
+Identify Recruitment Patterns and Imminent Threats \\ with 
+Multilevel Language Analysis \\ --- Semantics, Sequence Packages, 
+and Conversation Patterns --- \\ Integrated with Structured Data
+\end{minipage}}}\vspace{2em}\\
+\colorbox{white}{\setlength{\fboxsep}{1.5em}
+\framebox{\begin{minipage}{.85\textwidth}\centering
+Linguistic Technology Systems \\
+POC: Amy Neustein, Ph.D. \\
+Founder and CEO \\
+amy.neustein@verizon.net \\
+201-224-5096 \vspace{1em}\\
+Lead Software Architect: Nathaniel Christen
+\end{minipage}}}
+}
+\end{frame}
+
+\begin{frame}{\Huge{\textbf{Imp of Qt}}}
+
+\end{frame}\label{}
+
+
+\end{document}

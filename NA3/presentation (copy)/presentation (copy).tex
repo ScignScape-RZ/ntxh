@@ -1,0 +1,434 @@
+
+\documentclass{beamer}
+
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows, positioning, shapes}
+
+\usetheme{Singapore}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{caption}[numbered]
+
+\setlength{\paperwidth}{10.in}
+\setlength{\paperheight}{7.5in}
+\setlength{\textwidth}{9.in}
+\setlength{\textheight}{6.5in}
+
+\newcommand{\cfbox}[2]{%
+	\colorlet{currentcolor}{.}%
+	{\color[rgb]{#1}%
+		\fbox{\color{currentcolor}#2}}%
+}
+
+
+\usecolortheme{spruce}
+%\setbeamercolor{block title}{red}   
+%\setbeamercolor{block title}{red}   
+\usecolortheme{orchid}
+%\usepackage{float}
+
+%\setbeamerfont{itemize/enumerate body}{size=\small}
+%\setbeamerfont{normaltext}{size=\}
+%\setbeamerfont{block body}{size=\small}
+\setbeamerfont{block title}{size=\large}
+%\setbeamerfont{block body example}{size=\tiny}
+
+\newcommand{\colortriangle}{{\color[rgb]{0.45, 0.4, 0.28}$\blacktriangleright$}}
+	
+\newcommand\FourQuad[4]{%
+	
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#1\end{minipage}\hfill%
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#2\end{minipage}\\[0.5em]
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#3\end{minipage}\hfill
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#4\end{minipage}%
+}
+
+\newcommand\ThreeQuad[3]{%
+	\hspace{2pt}\begin{minipage}[b][.23\textheight][c]{.99\textwidth}#1\end{minipage}\hfill%
+	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#2\end{minipage}\hfill
+	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#3\end{minipage}%
+}
+
+\newcommand\TwoQuad[2]{%
+	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#1\end{minipage}\hfill
+	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#2\end{minipage}%
+}
+
+\newenvironment{quadblock}[1]{\begin{block}{\begin{center}\Large{%
+\colorbox[rgb]{0.25,0.1,0.25}{\color{yellow}{\textbf{#1}}}
+}\end{center}}%
+\begin{minipage}[c]{.97\textwidth}\vspace{1em}
+}{
+\end{minipage}
+\end{block}}
+
+
+\newenvironment{mpblock}[1]{\begin{block}{\begin{center}\Large{%
+\colorbox[rgb]{0.25,0.1,0.25}{\color{yellow}{\textbf{#1}}}
+}\end{center}}%
+\begin{minipage}[c]{.97\textwidth}\vspace{1em}
+\begin{textsf}}{\end{textsf}
+\end{minipage}
+\end{block}}
+
+
+
+%\newcommand{\doubleCenteredFramebox}[1]{%
+%\begin{center}%
+%\framebox{%
+%\begin{minipage}{0.85\textwidth}\begin{center}%
+%#1\end{minipage}\end{center}}\end{center}}
+
+%\setlength{\fboxsep}{0.15em}
+
+
+
+\newcommand{\doubleCenteredFramebox}[1]{%
+\setlength{\fboxsep}{2em}\setlength{\fboxrule}{2pt}
+\begin{center}\cfbox{0.1, 0.5, 0.8}{\begin{minipage}{0.85\textwidth}\begin{center}\setlength{\fboxsep}{.25em}#1
+	\end{center}\end{minipage}}\end{center}}
+
+\newcommand{\sfitem}[1]{\item \LARGE{\textbf{\textsf{#1}}}}				
+\newcommand{\scitem}[1]{\item \large{\textsc{#1}}}			
+\newcommand{\embitem}[1]{\item \textbf{#1}}			
+
+
+%\begin{minipage}[.45\textheight][t]}{\end{minipage}\end{block}}
+
+\newcommand{\manyasciimacron}{\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+}
+
+\newcommand{\manyemdash}{\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+ \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+ \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+}
+
+%\newcommand{\conversationPatterns}{\framebox{%
+%Conver\-\\
+%sation\\
+%Patterns}}
+
+\newcommand{\conversationPatterns}{	
+\begin{minipage}{35pt}\centering{\begin{footnotesize}\textbf{Convers\-ation\\Patterns}\end{footnotesize}} 
+\end{minipage}}
+
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\begin{document}
+
+\begin{frame}{\Huge{\textbf{Language Techology, Threat Mitigation}}}
+{\Huge
+\vspace{2em}{\color{darkRed}
+\colorbox{pink}
+{\begin{minipage}{.55\textwidth}\centering 
+Identify Recruitment Patterns and Imminent Threats \\ with 
+Multilevel Language Analysis \\ --- Semantics, Sequence Packages, 
+and Conversation Patterns --- \\ Integrated with Structured Data
+\end{minipage}}}\vspace{2em}\\
+\colorbox{white}{\setlength{\fboxsep}{1.5em}
+\framebox{\begin{minipage}{.85\textwidth}\centering
+Linguistic Technology Systems \\
+POC: Amy Neustein, Ph.D. \\
+Founder and CEO \\
+amy.neustein@verizon.net \\
+201-224-5096 \vspace{1em}\\
+Lead Software Architect: Nathaniel Christen
+\end{minipage}}}
+}
+\end{frame}
+
+\begin{frame}{\Huge{\textbf{PROFILING SUSPECTS}}}
+
+\begin{minipage}[b][.99\textheight][t]{.47\textwidth}
+\begin{mpblock}{Threat Assessment from Natural Language}
+{\LARGE	
+\textbf{\texttt{Language Clues can Assess Terror Suspects on Three Axes:}}
+\vspace{.25em}
+\begin{list}{\textborn}{}
+\sfitem{Familiarity with recruiters and/or their family members and friends}
+\sfitem{Interest in colluding with terrorist \\ groups}
+\sfitem{Level of collaboration with terrorist \\ entities}
+\end{list}
+\vspace{2em}
+{\hrule}
+\vspace{1.75em}
+\textbf{\texttt{Conversation Patterns can Reveal Imminent Threats:}}
+\vspace{.25em}
+\begin{list}{\textborn}{}
+\sfitem{Unusual speech patterns that \\ suggest speakers using coded language}
+\sfitem{Matching conversations against \\ locations / activities to pinpoint \\ recruitment campaigns}
+\sfitem{Conversations in their Natural Language contexts can be matched 
+	against Threat Databases and Data Models (``Threat Scenarios")}
+\end{list}}
+\end{mpblock}
+\end{minipage}\hfill%
+\begin{minipage}[b][.99\textheight][t]{.50\textwidth}
+\begin{minipage}[b][.50\textheight][t]{.99\textwidth}
+\begin{mpblock}{Language Data Repositories}
+{\LARGE	
+  \textbf{\texttt{Data Sources for Language Clues Include:}}
+\begin{list}{\textcolor{brown}{$\Box$}}{}
+\sfitem{Online Social Media Posts and Tweets}
+\sfitem{Email Communications} 
+\sfitem{Recorded Phone Calls and/or Meetings}
+\sfitem{Interviews with Residents in Communities Seeing Recruitment Actions}
+\sfitem{Regional databases of idioms, colloquial speech, Social Media conventions ...}
+\sfitem{Government-Fabricated Recordings of Terror Leaders
+ \footnote{\begin{minipage}{.95\textwidth}These recordings would be mined for flaws, resulting in an 
+ improved simulation of the conversational patterns of terror leaders.\end{minipage}}} 	
+\end{list} 
+}
+\end{mpblock}
+\end{minipage}
+\begin{minipage}[t][.38\textheight][b]{.99\textwidth}
+\begin{mpblock}{Object Data Models}
+{\LARGE	
+\begin{list}{\textborn}{}
+\sfitem{Match Conversations ({\normalsize Visually and Algorithmically}) to Locations, Events, and Times}
+\sfitem{Synchronize Natural Language Databases with Threat Scenarios ({\normalsize Object-Oriented Models}) }
+\sfitem{Project Sources \underline{from} Multiple Human Languages \underline{to} 
+	Unified Semantic Models (who/what/when/where ...)}
+\end{list}
+}
+\end{mpblock}
+\end{minipage}
+\end{minipage}
+
+\end{frame}\label{}
+\begin{frame}{\Huge{\textbf{The CIGQL Database Stack}}}
+	
+\tikzstyle{nlComponent}=[double,draw=brown!120,fill=
+{blue!50,thin,inner sep=.2cm]
+\tikzstyle{sdComponent}=[double,rounded corners,draw=brown!120,fill=blue!50,thin,inner sep=.2cm]
+\tikzstyle{cnvComponent}=[double,shape=diamond,rounded corners,draw=brown!120,fill=blue!50,thin,inner sep=0cm]
+\tikzstyle{cfStyle}=[fill=red!50,draw,shape=ellipse,inner sep=.15cm]
+
+\TwoQuad
+\begin{quadblock}{The CIGQL Query Stack}
+%\raisebox{.1em}{\begin{minipage}{\textwidth}
+\begin{figure}
+\doubleCenteredFramebox{%
+\begin{tikzpicture}
+
+\path 
+ node (nlpNode) at (0,0) [nlComponent] {Natural Language Data}
+ node (hiddenArcLeft) [above=of nlpNode] {}
+ node (hiddenCenter) [right=of nlpNode] {}
+ node (siNode) [sdComponent, right=of hiddenCenter] {Structured Information}
+ node (hiddenArcRight) [above=of siNode] {}
+ node (caNode) [cnvComponent, above=of hiddenCenter] {\conversationPatterns}
+ node (dataModel) [rounded corners,double,draw=darkRed,above=of caNode] {(Data Models)}
+% node (hiddenArcTopLeft) [left=.1cm of hiddenArc] {}
+% node (hiddenArcTopRight) [right=.1cm of hiddenArc] {}
+ node (cfNode) [cfStyle, above=of dataModel] {CIGQL-F}
+ node (feedbackNode) [cnvComponent, left=of cfNode,inner sep=.15cm, draw=pink!120] {Feedback}
+ 
+ node (cnNode) [double,draw=pink!120,fill=gray!50,inner sep=.5em,above=of cfNode] {{\hspace*{.5em}}CIGQL-N\hspace*{1em}};
+
+\draw[ |-,-|, <->, thick, double equal sign distance, >= stealth, shorten <= .25cm, shorten >= .25cm ] 
+(nlpNode.east) to node 
+{\raisebox{2.5em}{\begin{minipage}{4em}%
+\centering{\begin{footnotesize}\color{darkRed}{Matched Object Fields}\end{footnotesize}}
+\end{minipage}}} 
+(siNode.west);
+
+
+\draw[thick, shorten <= .25cm, shorten >= .25cm ] 
+(nlpNode.north)
+to node {%
+\raisebox{4em}{%	
+\colorbox{white}{%	
+\begin{minipage}[t]{3.5em}	 
+\centering{\begin{footnotesize}
+\color{blGreen}{Sequence Package Analysis}
+\end{footnotesize}}
+\end{minipage}}}}
+(caNode);
+
+\draw[ |-,-|, ->>, very thick, >= triangle 90, shorten <= .25cm, shorten >= .25cm ]
+ (cnNode.south) to node {{\manyemdash}\textit{compiles to}...} (cfNode.north);
+ 
+\draw[ |-,-|, ->, very thick, >= latex', shorten >= .25cm ]
+(cfNode.south)  to node {{\manyasciimacron}\raisebox{.5em}{\textit{queries}...}}  (dataModel.north);
+
+\draw[->, thick, >= angle 90, shorten >= .25cm ]
+ (dataModel) edge [bend right=100,looseness=1,draw=purple] (hiddenArcLeft.west);
+\draw[-, thick, shorten >= .25cm ]
+ (dataModel) edge [bend right=100,looseness=1.05,draw=black] (hiddenArcLeft.west);
+\draw[-, thick, shorten >= .25cm ]
+(dataModel) edge [bend right=100,looseness=1.1,draw=purple] (hiddenArcLeft.west);
+
+\draw[->, thick, >= angle 90, shorten >= .25cm ]
+ (dataModel) edge [bend left=100,looseness=1,draw=purple] (hiddenArcRight.east);
+\draw[->, thick, >= angle 90, shorten >= .25cm ]
+(dataModel) edge [bend left=100,looseness=1.05] (hiddenArcRight.east);
+\draw[->, thick, >= angle 90, shorten >= .25cm ]
+(dataModel) edge [bend left=100,looseness=1.1,draw=purple] (hiddenArcRight.east);
+
+\draw[ <->>, thick, >= triangle 60, shorten <= .15cm, shorten >= 1.5cm ]
+ (dataModel) to node 
+ {\raisebox{8.5em}{\begin{footnotesize}\hspace*{.75em}%
+\color{darkRed}{Object Oriented}\end{footnotesize}}} (siNode);
+ 
+\draw[ ->, >= angle 90, shorten <= .15cm, draw=cyan ] 
+  (caNode) to node 
+{%
+ \raisebox{-6em}{\begin{footnotesize}\begin{minipage}{6em}%
+ \color{blGreen}{Query as \\Conversation}
+ \end{minipage}\end{footnotesize}}} 
+(feedbackNode);
+
+\draw[ ->, >= angle 90, shorten >= .15cm, draw=cyan ] 
+  (feedbackNode) -- (cnNode);
+
+\draw[ |-,-|, ->, thick, >= latex', shorten <= .25cm, shorten >= .25cm ]
+(caNode)
+to node 
+{\colorbox{white}{\begin{minipage}{5em}\begin{footnotesize}\color{blGreen}{Actionable}\end{footnotesize}
+		\end{minipage}}} 
+(siNode.north) [double];
+ 
+%\draw[->, thick, >= angle 90, shorten >= .25cm ]
+%  (hiddenArcRight.east)
+%   edge [bend left=100,looseness=1]  (hiddenCenter);
+
+%\draw[ <->, thick, >= latex', shorten >= .25cm ]
+% (hiddenArcLeft.north) edge [bend left=-100hiddenArc, bend right=100, looseness=1] (hiddenArcRight.north);
+
+\end{tikzpicture}}
+\caption{CIGQL Stack}\label{fig:CIGQLStack}
+\end{figure}	
+%\end{minipage}{\textwidth}}
+\end{quadblock}
+}
+{
+	\begin{quadblock}{Key}
+		\large{{\color[rgb]{0.25,0.25,0.1}{\textbf{Figure~\ref{fig:CIGQLStack}}}}
+			(left) outlines major components for storing CIGQL-aware data and executing CIGQL Queries.  
+			Note: \begin{itemize}
+\item Components modeled as Natural Language are shown as Rectangles (with straight edges and corners)
+\item Components modeled as Conversations are shown as Diamonds
+\item Components modeled as Structured are shown as Rectangles (with rounded corners)
+			 \end{itemize}}  
+			 
+\vspace{.5em}			 
+\hrule		 
+\vspace{.25em}			 
+
+		\begin{list}{\colortriangle}{}
+			\scitem{CIGQL-F: A Formal Query Language integrating Language, Conversation, and Structured Data}  		
+			\scitem{CIGQL-N: A way to write CIGQL-F queries using Natural Language} 
+			\scitem{``Query as Conversation": Database User Experience, inspired by Natural Language}
+		\end{list}	
+	\end{quadblock}	
+}			
+\end{frame}
+
+\begin{frame}{\Huge{\textbf{CIGQL Information}}}	
+{
+	\begin{quadblock}{CIGQL: The Conversational Intelligence-Gathering Query Language}
+		{\LARGE A high level query language that integrates \textbf{Sequence Package Analysis} 
+			algorithms with \textbf{Natural Language Processing} and 
+			\textbf{Structured Information} (who/what/when/where).} \\ 
+		
+		\vspace{1em}
+		{\colortriangle 
+			%\begin{minipage}{.9\textwidth}
+			\centering{\LARGE Analyzing Natural Language in terms of both \textit{Conversation} 
+				and \textit{Structured Data} helps 
+				convert observations to actionable intelligence}
+			
+		} 
+	\end{quadblock}
+	
+	\begin{quadblock}{Using CIGQL}
+			
+			\begin{list}{\textborn}{}
+				\scitem{CIGQL-F is a Formal Query Language to find signatures of} 
+				\begin{itemize}
+					\embitem{Conversation patterns 
+						$\rightarrow$ {\normalsize often unconscious; detected by using Sequence Package Analysis} \\%
+						\makebox{\hspace{-.45em}(example $\equiv$ covert relationships between speakers)}}
+					\embitem{Natural Language patterns \\\makebox{\hspace{-.45em}(}example $\equiv$ word meanings, parts of speech)} 
+					\embitem{Structured Data patterns \\\makebox{\hspace{-.45em}(}annotating Object-Oriented data models to 
+						connect data fields with words and phrases)}  
+				\end{itemize}
+				\scitem{CIGQL-F extends existing technology:} 
+				\begin{itemize}
+                 \embitem{Modern implementation of SBQL (the Stack-Based Query Language, designed to 
+                 	query complex Application and Object-Oriented data)}
+                 \embitem{Partial implementation of Functor Query Lanuage (a mathematical 
+                 	framework used in Categorical Informatics)}
+                 \embitem{Secure Access Layer based on the E programming language}                 
+				\end{itemize}
+				
+				\scitem{CIGQL-N is a way to write CIGQL-F queries using Natural Language 
+					(extensible to support multiple languages and alphabets).}
+				\scitem{``Query as Conversation": An \nobreakdash interface \nobreakdash designed to 
+					show and review query results in 
+					\nobreakdash conversational ways, modeling 
+					user/data interaction via \nobreakdash \textbf{Sequence Package Analysis}.}
+			\end{list}	
+		\end{quadblock}	
+	
+}
+
+
+\begin{frame}{\Huge{\textbf{Costs}}}	
+\begin{minipage}[b][.33\textheight][t]{.99\textwidth}
+\begin{mpblock}{Research Team and Time Span}
+{\LARGE	
+{\color{orange}Time Span:} 18 months (with deliverables every quarter, please see below)\vspace{1em}\\
+{\color{orange}Team:} 9 full-time researchers in Speech Engineering, Natural Language Processing, Conversation Analysis, Computational Linguistics, and Statistical Mathematics;\vspace{1em}\\ 
+5 veterans who know the regional dialects in the areas where they served\vspace{1em}\\
+{\color{orange}Costs:} 1.175 Million\\
+}
+\end{mpblock}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Deliverables}
+\begin{minipage}[b][.65\textheight][t]{.99\textwidth}
+\begin{mpblock}{Six Quarters starting mid-2015}
+{\large 
+{\LARGE 2015 – 3rd Quarter} 
+\begin{itemize}
+\item Improved Government-Fabricated Voice Recordings 
+\item Framework for Database Integration between \textit{Natural Language} and 
+\textit{Structured Information} Layers (for example, Threat Scenarios)
+\end{itemize}\vspace{.25em}
+{\LARGE 2015 – 4th Quarter} 
+\begin{itemize}
+\item Language tool to assess familiarity of suspects with Recruiters and/or their Family Members and Friends
+\item Extending the Integration Framework to interrelate \textit{Conversation Pattern Observations} with 
+\textit{Actionable Structured Information} based on their shared \textit{Natural Language Semantic Context}
+\end{itemize}\vspace{.25em}
+{\LARGE 2016 – 1st Quarter} 
+\begin{itemize}
+\item Language tool to assess suspects\textsc{'} interest in colluding with terrorist groups
+\item Formal Specification, Parsers, and Intermediate Representation for CIGQL-F as a formal query language  
+\end{itemize}\vspace{.25em}
+{\LARGE 2016 – 2nd Quarter} 
+\begin{itemize}
+\item Language tool to assess suspects\textsc{'} level of collaboration with terrorist organizations
+\item Implementation of CIGQL-F and underlying database engines 
+{\color{blue}{$\bullet$}} Prototype of CIGQL-N for writing queries in Natural Language  
+\end{itemize}\vspace{.25em}
+{\LARGE 2016 – 3rd Quarter} 
+\begin{itemize}
+\item Apply suite of language tools to new geographic regions, by modifying generic algorithms with region-specific conversational markers		
+\item Full Implementation of CIGQL-N and the \textsc{``}Queries as Conversation\textsc{"} User Experience model	
+\end{itemize}
+}\end{mpblock}
+\end{minipage}
+\end{frame}
+
+\end{document}

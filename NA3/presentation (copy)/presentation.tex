@@ -1,0 +1,766 @@
+
+\documentclass{beamer}
+
+\usepackage{setspace}
+\usepackage{varioref}
+
+\newcommand{\q}[1]{{\fontfamily{phv}\selectfont ``}#1{\fontfamily{phv}\selectfont ''}} 
+
+
+%%??\usepackage{spath3}
+%\usepackage{pstricks}
+
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{tikz}
+
+\newcommand{\colorbullet}[1]{{\color{#1}\ensuremath{\bullet}}}
+
+%\usetikzlibrary{shapes,snakes}
+%%?\usepackage[backslant]{aurical}
+
+%%?\usepackage{hanging}
+
+%\usepackage{DejaVuSerif}
+
+\usepackage{setspace}
+
+\usepackage[outline]{contour}
+
+
+
+%{{\color{red!60!yellow}{\textbf{#1}}}}}}}
+
+\usepackage{microtype}
+\usepackage{hyphenat}
+%%?\usepackage{dashrule}
+%\usepackage[usenames,dvipsnames]{xcolor}
+
+\usetikzlibrary{arrows, positioning, shapes}
+\usetikzlibrary{backgrounds}
+
+
+%%?\usepackage{wrapfig}
+
+\usetikzlibrary{arrows, positioning, shapes}
+
+%
+%
+%\usetheme{Singapore}
+
+%\usetheme{AnnArbor}
+%\usecolortheme{spruce}
+
+\usetheme{BerkeleyAA}
+\usecolortheme{spruceaa}
+
+\def\swidth{1cm}
+\setbeamersize{sidebar width left=\swidth}
+%\addtobeamertemplate{frametitle}{\vspace*{6cm}}{\vspace*{0.3cm}}
+
+\usepackage{mdframed}
+
+\newcommand{\ft}[1]{\vspace*{.25cm}\raisebox{-.45cm}{%
+\contour{MSUgreen!50!yellow}{{\protect\Huge{\protect\textbf{#1}}}}}}
+
+
+%C:/dgch-dev/cpp/testdia/bulletin/reslides/beamerthemeBerkeley.sty
+%:/dgch-dev/cpp/testdia/bulletin/reslides/beamerthemeAnnArbor.sty
+%C:/dgch-dev/cpp/testdia/bulletin/reslides/beamerthemeAntibes.sty
+%C:/dgch-dev/cpp/testdia/bulletin/reslides/beamerthemeBergen.sty
+
+%\usecolortheme{frigatebird}
+%\usecolortheme{spruce}
+%
+%\usetheme{Berlin}
+%
+%\usecolortheme{spruce}
+%\usecolortheme{wolverine}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{frametitle}[default][center]
+\setbeamertemplate{caption}[numbered]
+
+\setlength{\paperwidth}{10.in}
+\setlength{\paperheight}{7.5in}
+\setlength{\textwidth}{9.in}
+\setlength{\textheight}{6.5in}
+
+\newcommand{\curlyquote}[1]{{\fontfamily{gar}\selectfont{``}}#1%
+{\fontfamily{gar}\selectfont{''}}}
+
+\newcommand{\curlyapos}[1]{{\fontfamily{gar}\selectfont{'}}}
+
+\newcommand{\cfbox}[2]{%
+	\colorlet{currentcolor}{.}%
+	{\color[rgb]{#1}%
+		\fbox{\color{currentcolor}#2}}%
+}
+
+
+%%?\usecolortheme{spruce}
+
+%\setbeamercolor{block title}{red}   
+%\setbeamercolor{block title}{red}   
+
+%%\usecolortheme{orchid}
+%\usepackage{float}
+
+%\setbeamerfont{itemize/enumerate body}{size=\small}
+%\setbeamerfont{normaltext}{size=\}
+%\setbeamerfont{block body}{size=\small}
+\setbeamerfont{block title}{size=\large}
+%\setbeamerfont{block body example}{size=\tiny}
+
+\newcommand{\colortriangle}{{\color[rgb]{0.45, 0.4, 0.28}$\blacktriangleright$}}
+	
+\newcommand\FourQuad[4]{%
+	
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#1\end{minipage}\hfill%
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#2\end{minipage}\\[0.5em]
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#3\end{minipage}\hfill
+	\begin{minipage}[b][.45\textheight][t]{.47\textwidth}#4\end{minipage}%
+}
+
+\newcommand\ThreeQuad[3]{%
+	\hspace{2pt}\begin{minipage}[b][.23\textheight][c]{.99\textwidth}#1\end{minipage}\hfill%
+	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#2\end{minipage}\hfill
+	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#3\end{minipage}%
+}
+
+\newcommand\TwoQuad[2]{%
+	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#1\end{minipage}\hfill
+	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#2\end{minipage}%
+}
+
+\newcommand\OneQuad[1]{%
+	\begin{minipage}[b][.45\textheight][t]{1.01\textwidth}#1\end{minipage}\hfill
+	%\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#2\end{minipage}%
+}
+
+
+\newenvironment{quadblock}[1]{\begin{block}{\begin{center}\Large{%
+\colorbox[rgb]{0.25,0.1,0.25}{\color{yellow}{\textbf{#1}}}
+}\end{center}}%
+\begin{minipage}[c]{.97\textwidth}\vspace{1em}
+}{
+\end{minipage}
+\end{block}}
+
+
+\newenvironment{mpblock}[1]{\begin{block}{\begin{center}\Large{%
+\colorbox[rgb]{0.25,0.1,0.25}{\color{yellow}{\textbf{#1}}}
+}\end{center}}%
+\begin{minipage}[c]{.97\textwidth}\vspace{1em}
+\begin{textsf}}{\end{textsf}
+\end{minipage}
+\end{block}}
+
+\usepackage{aurical}
+
+%%?\usepackage{pbsi}
+%\usepackage{oesch}
+%\usepackage{LobsterTwo}
+
+%\newcommand{\doubleCenteredFramebox}[1]{%
+%\begin{center}%
+%\framebox{%
+%\begin{minipage}{0.85\textwidth}\begin{center}%
+%#1\end{minipage}\end{center}}\end{center}}
+
+%\setlength{\fboxsep}{0.15em}
+
+
+
+\newcommand{\doubleCenteredFramebox}[1]{%
+\setlength{\fboxsep}{2em}\setlength{\fboxrule}{2pt}
+\begin{center}\cfbox{0.1, 0.5, 0.8}{\begin{minipage}{0.85\textwidth}\begin{center}\setlength{\fboxsep}{.25em}#1
+	\end{center}\end{minipage}}\end{center}}
+
+
+\newcommand{\halfPageFramebox}[1]{%
+	\setlength{\fboxsep}{2em}\setlength{\fboxrule}{1pt}
+	\begin{center}\cfbox{0.1, 0.5, 0.8}{\begin{minipage}{0.5\textwidth}\begin{center}\setlength{\fboxsep}{.25em}#1
+				\end{center}\end{minipage}}\end{center}}
+
+\newcommand{\sfitem}[1]{\item \LARGE{\textbf{\textsf{#1}}}}				
+
+\renewcommand*\rmdefault{cmfib}
+
+\newcommand{\scitem}[1]{\item {\Large{{\fontfamily{pag}\selectfont \textbf{#1}}}}}			
+\newcommand{\smscitem}[1]{\item {\small{{\fontfamily{pag}\selectfont \textbf{#1}}}}}			
+
+
+\newcommand{\embitem}[1]{\item \textbf{{\large #1}}}			
+
+
+\newcommand{\highlightframebox}[1]{\cfbox{1,.5,1}{#1}}
+
+%\begin{minipage}[.45\textheight][t]}{\end{minipage}\end{block}}
+
+\newcommand{\manyasciimacron}{\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron\textasciimacron%
+}
+
+\newcommand{\manyemdash}{\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+ \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+ \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
+}
+
+%\usepackage[nodisplayskipstretch]{setspace}
+
+\newenvironment{lightquadblock}[1]{\begin{center}\LARGE{%
+			\colorbox[rgb]{.39,0,0.28}{\color[rgb]{1,1,1}{\hspace{-1em}\makebox[\textwidth]{\textbf{#1}}}}
+		}\end{center}
+		%\begin{framebox}
+		\begin{minipage}[c]{.9\textwidth}\vspace{1em}
+		}{
+	\end{minipage}}
+	
+\newenvironment{lightquadblockc}[2]{\begin{center}\LARGE{%
+			\colorbox[rgb]{#1}{\color[rgb]{1,1,1}{\hspace{-1em}\makebox[\textwidth]{\textbf{#2}}}}
+		}\end{center}
+		%\begin{framebox}
+		\begin{minipage}[c]{.9\textwidth}\vspace{1em}
+		}{
+	\end{minipage}}
+
+	
+	\newenvironment{lightqblock}[1]{\begin{center}\LARGE{%
+				\colorbox[rgb]{.90,.90,0.90}{\cfbox{.96,.4,.96}{\color[rgb]{.2,.06,.04}{\hspace{-1em}\makebox[\textwidth]{#1}}}}
+			}\end{center}
+			%\begin{framebox}
+			\begin{minipage}[c]{.99\textwidth}\vspace{1em}
+			}{
+		\end{minipage}}
+		
+
+\newcommand\TwoQuadV[4]{%
+	\begin{minipage}[b][.20\textheight][t]{1.04\textwidth}\begin{lightqblock}{#1}#2\end{lightqblock}\end{minipage}
+	\begin{center}\begin{minipage}[t][.78\textheight][t]{.9\textwidth}%
+		\begin{quadblock}{#3}\begin{minipage}{\textwidth}#4\end{minipage}\end{quadblock}\end{minipage}\end{center}%
+}
+
+
+%\newcommand{\conversationPatterns}{\framebox{%
+%Conver\-\\
+%sation\\
+%Patterns}}
+
+\newcommand{\reParser}{	
+\begin{minipage}{32pt}\centering{\begin{scriptsize}\textbf{Relae\\\vspace{-6pt}Parser}\end{scriptsize}} 
+\end{minipage}}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+
+%\newcommand{\q}[1]{``#1"}
+
+\definecolor{quadgrey}{rgb}{.9,.9.,.89}
+\colorlet{snakegrey}{black!80!white}
+\colorlet{blbl}{blue!20!black}
+
+\definecolor{lqboutercolor}{rgb}{.92,.91,0}
+\definecolor{lqbinnercolor}{rgb}{.98,.98,.98}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{postLinkColor}{rgb}{.5,.5,.1}
+
+\definecolor{fcBoxColor}{rgb}{.8,.6,.3}
+
+\definecolor{BlueGreen}{rgb}{.1,.6,.4}
+
+\colorlet{ry}{red!80!yellow}
+\colorlet{rblue}{red!70!blue}
+\colorlet{rb}{rblue!40!black}
+\colorlet{bg}{blGreen!40!black}
+
+\newcommand{\hc}[1]{{\Huge %
+{\contour{ry}{\protect\contour{rb}{{\protect\color{blGreen!40!black}{\protect\textbf{#1}}}}}}}}
+
+\colorlet{yy}{yellow!80!blue}
+\colorlet{yo}{yellow!80!orange}
+\colorlet{yw}{yellow!20!white}
+
+
+
+%\usepackage{microtype}
+
+%\usepackage{mathtools}
+
+\newcommand{\yhc}[1]{{ %
+{\contourlength{1.2pt}
+{{\protect\contour{yw!50}{\protect\contour{yo!50}{{\protect\color{yy}{\protect\textbf{%
+{\protect\Huge{\protect\textls[240]{#1}}}}}}}}}}}}}
+
+
+\newcommand{\cframedbox}[1]{\begin{mdframed}
+[linecolor=rb!85!red,linewidth=0.4mm]#1\end{mdframed}}
+
+\newcommand{\cframedboxpanda}[1]{\begin{mdframed}
+		[linecolor=yellow!70!blue,linewidth=0.8mm]#1\end{mdframed}}
+
+\newcommand{\cframedboxblue}[1]{\begin{mdframed}
+		[linecolor=blue!70!black,linewidth=0.8mm]#1\end{mdframed}}
+
+
+\newcommand{\cframedboxx}[3]{\begin{mdframed}
+		[linecolor=rb!85!red,linewidth=#2]\hspace{#1}#3\end{mdframed}}
+
+\newcommand{\cframedboxyellow}[1]{\begin{mdframed}
+[linecolor=rb!45!yellow,linewidth=0.4mm]#1\end{mdframed}}
+
+\newenvironment{postfragment}{\begin{minipage}{5.4cm}\begin{small}}
+{\end{small}\end{minipage}}
+
+\newenvironment{postComment}{\begin{minipage}{8cm}\begin{small}}
+{\end{small}\end{minipage}}
+
+\newenvironment{postLongComment}{\begin{minipage}{9cm}\begin{small}}
+		{\end{small}\end{minipage}}
+
+
+\newenvironment{tightcenter}{%
+	\setlength\topsep{0pt}
+	\setlength\parskip{0pt}
+	\begin{center}
+	}{%
+\end{center}
+}
+
+\newcommand{\tightcenterline}[1]{\begin{tightcenter}#1\end{tightcenter}}
+
+
+
+\definecolor{postBkgColor}{rgb}{.95,.85,.95}
+\definecolor{postCommentBkgColor}{rgb}{.85,.85,.95}
+
+\definecolor{grammarArrowColor}{rgb}{.85,.85,.45}
+
+\tikzstyle{postStyle}=[draw=yellow!120,rounded corners,fill=postBkgColor,thin,inner sep=.2cm]
+\tikzstyle{postCommentStyle}=[draw=postCommentBkgColor,double,fill=postCommentBkgColor,thick,inner sep=.2cm]
+
+\tikzstyle{sdComponent}=[double,rounded corners,draw=brown!120,fill=blue!50,thin,inner sep=.2cm]
+\tikzstyle{cnvComponent}=[double,shape=diamond,rounded corners,draw=brown!120,fill=blue!50,thin,inner sep=0cm]
+
+\tikzstyle{baseStyle}=[fill=purple!50,draw=cyan!20,ultra thick,double,shape=diamond,inner sep=.15cm]
+\tikzstyle{componentStyle}=[fill=red!50,draw,shape=ellipse,inner sep=.15cm]
+
+\tikzstyle{componentExtendedStyle}=[fill={rgb:red,10;green,10;blue,2},draw,shape=rectangle,inner sep=.15cm]
+
+\newcommand{\emphcolor}{%
+	\colorlet{currentcolor}{.}%
+	\color[rgb]{.4,.4,.4}}
+
+\newcommand{\ncolor}{%
+	\color{currentcolor}}
+
+
+\definecolor{slidePartHeadColor}{rgb}{0,.2,.1}
+
+\newcommand{\slidePartHead}[1]{{\fontfamily{pnc}\selectfont\color{slidePartHeadColor}\LARGE#1}}
+
+\newcommand{\slidePartHeadCenter}[1]{\slidePartHead{\begin{minipage}{\textwidth}\begin{center}#1\end{center}\end{minipage}}}
+
+\newcommand{\componentLabel}[1]{\begin{minipage}{3.5cm}\begin{center}#1\end{center}\end{minipage}}
+\newcommand{\baseComponentLabel}[1]{\begin{minipage}{2cm}\textbf{\begin{center}#1\end{center}}\end{minipage}}
+
+\newcommand{\componentExtendedLabel}[1]{\begin{minipage}{10cm}\begin{center}\textbf{#1}\end{center}\end{minipage}}
+
+\newcommand{\cstd}[1]{\textbf{{\color[rgb]{.4,.4,.1}#1}}}
+
+\usepackage{setspace}
+
+%\fontfamily{pag}\selectfont \textbf{
+\newcommand{\raiseBoxL}[1]{\makebox{\raisebox{.1em}{{\fontfamily{put}\fontseries{sb}\selectfont #1}\hspace{1.2em}}}}
+%	\begin{textsf}{\small}{}\end{textsf}\end{minipage}}
+
+\newcommand{\doubleFrame}[1]{\doubleFrameX{.98\textwidth}{#1}}
+
+\newcommand{\doubleFrameX}[2]{\doubleFrameXX{2pt}{#1}{#2}}
+
+\newcommand{\doubleFrameXX}[3]{%
+	\fcolorbox{fcBoxColor!90!cyan}{gray!50}{
+		%{\begin{center}
+		\begin{minipage}{.985\textwidth}
+			%\begin{center}	
+			\hspace{#1}\vspace*{1pt}		
+			\fcolorbox{fcBoxColor!50!cyan}{white}{%
+				\begin{minipage}{#2}%
+					\begin{center}\begin{minipage}{.97\textwidth}				
+							\begin{spacing}{1.8}\vspace{.5em}{\textbf{\Large #3}\vspace{-20pt}}\end{spacing}%
+						\end{minipage}\end{center}
+					\end{minipage}}
+					%\end{center}
+				\end{minipage}}
+				%\end{center}}
+			}%
+			
+
+\newcommand{\doubleFrameXspec}[3]{%
+	\fcolorbox{fcBoxColor!90!cyan}{gray!50}{
+		%{\begin{center}
+		\begin{minipage}{\textwidth}
+			%\begin{center}	
+			\hspace{#1}\vspace*{1pt}		
+			\fcolorbox{fcBoxColor!50!cyan}{white}{%
+				\begin{minipage}{#2}%
+					\begin{center}\begin{minipage}{.99\textwidth}				
+							\begin{spacing}{1.8}\vspace{.5em}{\textbf{\Large #3}\vspace{-20pt}}\end{spacing}%
+						\end{minipage}\end{center}
+					\end{minipage}}
+					%\end{center}
+				\end{minipage}}
+				%\end{center}}
+			}%
+			
+
+
+
+\newcommand{\doubleFrameY}[6]{%
+	\fcolorbox{fcBoxColor!90!black}{gray!50}{
+		\setlength{\fboxsep}{#5}%{\begin{center}
+		\begin{minipage}{#1}
+			%\begin{center}	
+			\hspace{#2}\vspace*{1pt}		
+			\fcolorbox{fcBoxColor!50!black}{white}{%
+\begin{minipage}{#3}%
+					\begin{center}\begin{minipage}{#4}				
+							\begin{spacing}{1.8}\vspace{.5em}{\textbf{\Large #6}\vspace{-20pt}}\end{spacing}%
+						\end{minipage}\end{center}
+					\end{minipage}}
+					%\end{center}
+				\end{minipage}}
+				%\end{center}}
+			}%
+			
+			
+
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+\usepackage{libris}
+\usepackage{relsize}
+
+\newcommand{\VersatileUX}{{\color{red!85!black}\Fontauri Versatile}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+
+\newcommand{\doubleFrameTwo}[2]{%
+\begin{center}
+\begin{minipage}{\textwidth}	
+\fcolorbox{fcBoxColor!50}{gray!50}{
+%	\begin{center}
+\begin{minipage}{\textwidth}
+	\begin{center}
+			%\hspace{4pt}\vspace*{2pt}		
+			\fcolorbox{fcBoxColor!90}{white}{%
+				\begin{minipage}{.95\textwidth}%
+\begin{center}\begin{minipage}{.91\textwidth}#1\end{minipage}\end{center}%
+				\end{minipage}}\vspace*{.5em}\\
+%\vspace*{2pt}
+%\hspace{4pt}				
+\fcolorbox{fcBoxColor!90}{white}{
+		\begin{minipage}{.94\textwidth}
+\begin{center}\begin{minipage}{.91\textwidth}#2\end{minipage}\end{center}%
+		\end{minipage}}
+\end{center}		
+\end{minipage}
+%
+}\par 
+\end{minipage}
+\end{center}		
+}
+
+\newcommand{\itup}[1]{\raisebox{2pt}{{\normalsize(#1)}}}
+
+\newcommand{\FER}{{\color[rgb]{0.1,0.25,0.6}{FER}}}
+\newcommand{\BER}{{\color[rgb]{0.1,0.25,0.6}{BER}}}
+\newcommand{\IR}{{\color[rgb]{0.1,0.25,0.6}{IR}}}
+
+\newcommand{\FrontEnd}{{\color[rgb]{0.1,0.25,0.6}{Front-End}}}
+\newcommand{\BackEnd}{{\color[rgb]{0.1,0.25,0.6}{Back-End}}}
+\newcommand{\Intermediate}{{\color[rgb]{0.1,0.25,0.6}{Intermediate}}}
+
+%\newcommand{\doubleFrameTwo}[2]{%
+%\fcolorbox{fcBoxColor}{gray!50}{
+%\begin{minipage}{.98\textwidth}
+%\hspace{4pt}\vspace*{2pt}	
+%\fcolorbox{fcBoxColor}{white}{%
+%\begin{minipage}{.95\textwidth}#1
+%\end{minipage}}#1
+%\fcolorbox{fcBoxColor}{white}{%
+%\begin{minipage}{.95\textwidth}#2%
+%\end{minipage}}
+%}
+
+
+%\newenvironment{doubleFrame}{%
+%\fcolorbox{fcBoxColor}{gray!50}{\begin{minipage}{\textwidth}}
+%{\end{minipage}}}
+
+%\newenvironment{doubleFrame}{% \fcolorbox{fcBoxColor}{gray!50}{%
+%\fbox{\begin{minipage}{\textwidth}%
+%}
+%{\end{minipage}}}
+%}}
+\usetikzlibrary{shadows}
+\definecolor{logoRed}{rgb}{.3,0,0}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+
+\usepackage{changepage}
+
+\newcommand{\nodeincludegraphicsLOCTRV}[7]{
+\node[anchor=south west,inner sep=0,thick,
+drop shadow={top color=logoBlue!50!logoCyan,
+              bottom color=logoRed!50!logoCyan,
+              shadow xshift=-1pt,
+              shadow yshift=-3pt,
+              rounded corners}] (image) at (#1){%
+\fcolorbox{logoRed}{logoPeach!40!logoRed}{\includegraphics[scale=#2,trim={#5 #4 #3 #6},clip]{#7}}};}
+
+%\newcommand{\doubleFrame}[1]
+\newcommand{\nodeincludegraphics}[2][0.8\textwidth]{
+\node[anchor=south west,inner sep=0] (image) at (0,0){%
+\includegraphics[width=#1]{#2}};}
+
+\newcommand{\nodeincludegraphicsR}[2][1]{
+\node[anchor=south west,inner sep=0] (image) at (0,0){%
+\includegraphics[scale=#1]{#2}};}
+
+\newcommand{\nodeincludegraphicsAS}[1]{
+\node[anchor=south west,inner sep=0] (image) at (0,0){%
+\includegraphics{#1}};}
+
+%\newcommand{\nodeincludegraphicsLOC}[3]{
+%\node[anchor=south west,inner sep=0] (image) at (#1){%
+%\includegraphics[scale=1]{#3}};}
+
+\newcommand{\nodeincludegraphicsLOC}[3]{
+\node[anchor=south west,inner sep=0] (image) at (#1){%
+\includegraphics[scale=#2]{#3}};}
+
+\newcommand{\nodeincludegraphicsTRRSqqq}[6]{
+\node[anchor=south west,inner sep=0] (image) at (0,0){%
+\includegraphics[scale=#1,trim={#2 #3 #4 #5},clip]{#6}};}
+
+\newcommand{\nodeincludegraphicsTR}[3]{
+\node[anchor=south west,inner sep=0] (image) at (0,0){%
+\includegraphics[trim={0 #2 #1 0},clip]{#3}};}
+
+\newcommand{\nodeincludegraphicsTRR}[5]{
+	\node[anchor=south west,inner sep=0] (image) at (0,0){%
+		\includegraphics[trim={#3 #2 #1 #4},clip]{#5}};}
+
+\newcommand{\nodeincludegraphicsTRRS}[6]{
+\node[anchor=south west,inner sep=0,scale=#1] (image) at (0,0){%
+\includegraphics[trim={#4 #3 #2 #5},clip]{#6}};}
+
+
+\newcommand{\ann}[9]{%
+	\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+	(#6) ellipse(#7 and #8) ellipse(#7*#9 and #8*#9);}
+
+\newcommand{\polyann}[9]{%
+\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+	node [minimum size=#8,regular polygon,regular polygon sides=#7] at (#6) {}
+	node [minimum size=#9,regular polygon,regular polygon sides=#7] at (#6) {};}
+	
+
+%\newcommand{\polyann}[9]{%
+%	\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+%	path minimum size=2cm,regular polygon,regular polygon sides=6(#7 and #8) ellipse(#7*#9 and %#8*#9);}
+
+
+\makeatletter
+\newcommand*\getX[1]{\expandafter\getX@i#1\@nil}
+\newcommand*\getY[1]{\expandafter\getY@i#1\@nil}
+\def\getX@i#1,#2\@nil{#1}
+\def\getY@i#1,#2\@nil{#2}
+\makeatother
+
+\newcommand{\rectann}[9]{%
+	\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+	(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+	({\getX{#6}+((#7-(#7*#9))/2)},{\getY{#6}+((#8-(#8*#9))/2)}) rectangle %
+	({\getX{#6}+((#7-(#7*#9))/2)+#7*#9},{\getY{#6}+((#8-(#8*#9))/2)+#8*#9});}
+
+\newcommand{\rectanneatdbl}[9]{%
+	\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+	(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+	({\getX{#6}+\getX{#9}},{\getY{#6}+\getY{#9}}) rectangle %
+	({\getX{#6}+#7-\getX{#9}},{\getY{#6}+#8-\getY{#9}})
+	;}
+
+\newcommand{\rectanneat}[9]{%
+	\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+	(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+	({\getX{#6}+(#7/abs(#7))*#9},{\getY{#6}+(#8/abs(#8))*#9})
+	rectangle({\getX{#6}+#7-(#7/abs(#7))*#9},{\getY{#6}+#8-(#8/abs(#8))*#9});}
+
+\newcommand{\colorarr}[8]{
+	\draw [#1, draw=#2,draw opacity=#3,
+	fill=#4,fill opacity=#5,line width=#6] (#7) to (#8);
+}
+
+\colorlet{brred}{brown!53!red}
+\colorlet{grred}{grammarArrowColor!40!red!60}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+
+
+\newcommand*{\MyDiamond}{%
+	\begin{tikzpicture}{baseline}	
+	\node [draw, shape=diamond, %shape border rotate=100,
+	line width=.2mm, left color=flColor, right color=darkRed, draw=logoPurple, aspect=1,
+	draw opacity=0.6, fill opacity=0.8, xscale=0.5, yscale=0.5,
+	minimum width=1mm, 
+	] 
+	at (2, 0) {};\end{tikzpicture}}
+
+%\usetikzlibrary{shapes.geometric}
+
+\newcommand*{\MyOctagon}{%
+	\begin{tikzpicture}{baseline}	
+	\node [draw, regular polygon, regular polygon sides=8, %shape border rotate=100,
+	line width=.2mm, left color=blue!60!cyan, right color=yellow!30!cyan, draw=blue!50!red, aspect=.7,
+	draw opacity=.8, fill opacity=0.8, xscale=0.7, yscale=0.7,
+	minimum width=1mm, 
+	] 
+	at (0, 0) {};\end{tikzpicture}}
+
+\newcommand*{\MyOct}{\hspace{14pt}\raisebox{1pt}{\MyOctagon}\hspace{13pt}}
+	
+%\usetikzlibrary{fadings}
+
+\newcommand*{\MySquare}{%
+	\begin{tikzpicture}{baseline}
+	\node [draw, %shape border rotate=100,
+	line width=1pt, left color=blue!60!cyan, right color=yellow!30!cyan, draw=cyan!30!blue, aspect=1,
+	%path fading=south,
+	draw opacity=0.8, fill opacity=1, 
+	xscale=0.75, yscale=0.75,
+	minimum width=.4mm, shading angle=60
+	] 
+	at (0, 0) {};
+
+  \draw[draw=red!70!orange,draw opacity=0.5,] (-.14,-.14) -- (.14,-.14) -- (.14,.14);
+  
+	
+%			\node [draw, 
+%			line width=1pt, draw=red,
+%			draw opacity=0.3, fill opacity=0, 
+%			xscale=0.8, yscale=0.8,
+%			minimum width=.4mm
+%			] 
+%			at (0, 0) {};	
+			
+	\end{tikzpicture}}
+
+\newcommand{\sqitem}{\item[\raisebox{2pt}{\MySquare}]}
+\newcommand{\dmitem}{\item[\raisebox{2pt}{\MyDiamond}]}
+
+\newcommand{\nodeincludegraphicsLOCTR}[7]{
+\node[anchor=south west,inner sep=0,thick,
+drop shadow={top color=logoBlue!50!logoCyan,
+              bottom color=logoRed!50!logoCyan,
+              shadow xshift=-1pt,
+              shadow yshift=-3pt,
+              rounded corners}] (image) at (#1){%
+\fcolorbox{logoRed}{logoPeach!40!logoRed}{\includegraphics[scale=#2,trim={#5 #4 #3 #6},clip]{#7}}};}
+
+
+\newcommand{\lsep}{\hspace{7pt}}
+\newcommand{\llsep}{\hspace{14pt}}
+
+\usepackage[official]{eurosym}
+
+\usetikzlibrary{shadings}
+\usepackage{pgf-pie}
+
+%\usepackage[official]{eurosym}
+
+\newcommand{\thrule}{\vspace{1.2em}{%
+\color[RGB]{200,47,100}{\hrule}\vspace{3pt}
+\color[RGB]{164,67,19}{\hrule}}\vspace{1.2em}}
+
+\begin{document}
+
+%\input{cqlDescriptionSlide}
+
+\part{Intro}
+
+\input{slide1}
+
+\input{slide-roi}
+\input{slide-team}
+
+\input{slide2}
+
+%\input{slide3}
+
+\input{slide4}
+
+\input{slide4c}
+\input{slide4d}
+\input{slide4e}
+\input{slide4f}
+\input{slide4g}
+
+\input{slide4b}
+\input{slide4a}
+\input{slide5}
+
+\part{Research Data Case Studies}
+
+%\input{slide-rad1}
+\input{slide-rad2}
+\input{slide-rad3}
+
+\input{slide-res1}
+\input{slide-res2}
+\input{slide-res3}
+
+\part{E-Commerce and Real Estate Case Studies}
+
+\input{slide-ec1}
+\input{slide-ec2}
+\input{slide-ec3}
+%\input{slide-ec4}
+
+\input{slide-ph2}
+\input{slide-ph3}
+\input{slide-ph4}
+
+\input{slide-vt4}
+
+\part{Publishing Case Studies}
+
+\input{slide-pub1}
+\input{slide-pub2}
+\input{slide-pub3}
+%\input{slide-pub4}
+\input{slide-pub5}
+
+\part{Thanks}
+
+\input{thanks}
+
+\end{document}
