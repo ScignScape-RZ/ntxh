@@ -166,6 +166,8 @@
 \newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
 \newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
 
+\newcommand{\XPDF}{\resizebox{!}{8.5pt}{\AcronymText{XPDF}}}
+\newcommand{\GRE}{\resizebox{!}{8.5pt}{\AcronymText{GRE}}}
 
 \newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
 
@@ -402,7 +404,7 @@ focused on statistical/quantitative data sets),
 MeshLab (a \ThreeD{} graphics engine), 
 Octave (an open-source Matlab emulator),  
 \Qt{} Creator (a \Cpp{} Integrated Development 
-Environment), and \XPDF{} (a \PDF{} viewer).}
+Environment), and XPDF (a \PDF{} viewer).}
 
 \vspace{2em}
 \noindent\lun{The Technological Role of \lssapp{} Plugins}
@@ -419,9 +421,9 @@ To explain the features of the plugin suite, consider
 the following scenarios: 
 
 \begin{description}
-\item[Scenario 1: A student reads textbooks, articles, 
+\item[\parbox{14cm}{Scenario 1: A student reads textbooks, articles, 
 or test-preparation materials which may be enhanced 
-with multi-media content]  To enhance the reading 
+with multi-media content}]  To enhance the reading 
 experience, educational texts may be supplemented 
 with files describing visual, interactive materials 
 which require specialized software.  For example, 
@@ -526,11 +528,57 @@ rearrange the IQmol menus and toolbars, to foreground
 those analytic tasks which are relevant to the 
 course curriculum.  
 
+\item[Scenario 3: Integrated Development Environments 
+(\IDE{}s) may be used as teaching tools]  
+Using \IDE{}s is a prerequite for most courses 
+in computer science and computer programming, and 
+in this context \sapp{} plugins may be used 
+as with other specialized software.  An ETS 
+plugin for \Qt{} Creator, for example, could 
+load source and project files curated for 
+individual classes, and display instructions 
+or assignments for students based on instructor 
+input.  The use-cases for \IDE{} plugins, however, 
+extend beyond computer science proper, and include 
+any scenario where students would write computer 
+code as a learning aid or part of an assignment.  
+Physics students might write algorithms 
+to approximate answers to equations which lack  
+closed-form solutions; biology students might 
+write code to examine genetic patterns; 
+chemistry students might develop simulations 
+of materials' behavior in different force 
+fields.  In these situations \sapp{} 
+plugins would allow students to get information 
+from instructors, within the \IDE{} itself, 
+about the goals and requirements for a 
+code-writing exercise. 
 
+\pseudoIndent{} A further use-case for \IDE{} 
+plugins is for building other \sapp{}-enabled 
+applications.  For example, many scientific 
+applications can be built from source on 
+students' computers, with the aid of 
+\IDE{}s such as \Qt{} Creator.  In these 
+cases instructors can provide students 
+with application code, perhaps modified 
+according to the course curriculum 
+(including with their own \sapp{} plugins).   
+For example, \Qt{}-based applications such 
+as IQmol, MeshLab, and XPDF can be built 
+directly from \Qt{} Creator.  An 
+ETS plugin for \Qt{} Creator could then be 
+the first tool which students use at the 
+start of a course, with that plugin obtaining 
+information from a Cloud service about which 
+applications are needed for the course.  
+Behind-the-scenes tasks such as defining
+project files and setting up build environments 
+can then be performed automatically via the 
+plugin, helping ensure that the student's 
+system has the necessary prerequisites to 
+run all the course-related software. 
 \end{description}
-
-  
-
 }
 
 
