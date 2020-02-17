@@ -371,11 +371,175 @@ Education and Publishing (\sapp{})}}}}
 %\noindent\lun{Overview}
 \fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
 {\sectsp}
-\p{This paper will summarize the Hypergraph Text 
-Encoding Protocol (\HTXN{}) and discuss its 
+\p{This paper will summarize the \sapp{} plugin 
+framework and discuss its 
 applications for testing, education, and the 
 development of test and test-preparation materials.  
+The goal of \sapp{} is to augment scientific and 
+technical applications with features that enhance 
+their usefulness as teaching materials.  
+\lsapp{} plugins can integrate desktop applications 
+with course curricula, educational materials, 
+and cloud services hosting student, instructor, 
+and course information.   In general, 
+\sapp{} refers not to a single plugin but rather a 
+framework for creating plugins tailored 
+to individual publishers, academic institutions, 
+or educational software packages.  A given 
+scientific or technical application may 
+host multiple \sapp{} plugins, each tracking 
+information structured according to the requirements 
+of the plugin provider.}
+
+\p{For sake of discussion, this paper will 
+describe \sapp{} in terms of hypothetical 
+ETS plugins developed expressly for Educational 
+Testing Service.  To make the discussion more concrete, 
+the paper will consider hypothetical ETS plugins for 
+IQmol (a molecular visualization application), 
+ParaView (data analysis and visualization software 
+focused on statistical/quantitative data sets), 
+MeshLab (a \ThreeD{} graphics engine), 
+Octave (an open-source Matlab emulator),  
+\Qt{} Creator (a \Cpp{} Integrated Development 
+Environment), and \XPDF{} (a \PDF{} viewer).}
+
+\vspace{2em}
+\noindent\lun{The Technological Role of \lssapp{} Plugins}
+{\sectsp}
+
+\p{A suite of inter-related \sapp{} plugins 
+--- for example, an ETS plugin suite --- would contribute 
+two kinds of functionality to their host 
+applications: (1) tracking and presenting 
+information specific to individual students, courses, 
+and instructors; and (2) allowing multiple applications 
+which each have ETS plugins to interoperate.  
+To explain the features of the plugin suite, consider 
+the following scenarios: 
+
+\begin{description}
+\item[Scenario 1: A student reads textbooks, articles, 
+or test-preparation materials which may be enhanced 
+with multi-media content]  To enhance the reading 
+experience, educational texts may be supplemented 
+with files describing visual, interactive materials 
+which require specialized software.  For example, 
+texts about chemistry (e.g., study materials for 
+the chemistry \GRE{} exams) may include \ThreeD{} 
+models of chemical compouns which can be viewed 
+with IQmol; biology texts may be illustrated 
+with \ThreeD{} tissue models which can be viewed 
+in MeshLab; physics texts may describe 
+equations or empirical data which may be visualized 
+via ParaView, or Matlab simulations that could be 
+executed through Octave.  Publications could then 
+embed these supplemental 
+materials directly, or else include links from which 
+the multi-media files may be downloaded.  If the 
+documents are viewed with an e-reader which itself 
+hosts an ETS plugin --- take XPDF as a case-study --- 
+then the viewer would identify the locations in the 
+text where the multi-media files are relevant and, 
+when the student is reading that part of the text, 
+notify him or her of the option to automatically 
+launch the proper application with which to access the content.
+
+\pseudoIndent{} A hypothetical XPDF plugin, for example, 
+would identify the correct application to use to view 
+multi-media content based on the file type.  This feature 
+could also be refined via a cloud service --- information 
+provided by instructors could include notation of the 
+kinds of software used for any particular course.  
+This cloud-hosted data might, for instance, indicate 
+that a specific course is using IQmol as a pedagogical 
+tool, and indicate that cheminformatic files linked 
+to teaching materials for the course should always be 
+viewed with IQmol.  Once the XPDF plugin identifies 
+the proper multi-media software to use, it can 
+lanch the application on the student's computer and 
+--- assuming the target application also has an ETS 
+plugin --- send that application signals identifying 
+which files to load into the application session.   
+The XPDF plugin may also send 
+information about the current student and 
+class/curriculum, which the target application may use to 
+personalize the User Interface according to students' 
+or instructors' preferances (see the next scenario 
+for more about personalization).
+
+\pseudoIndent{} For multi-media content which is 
+not specific to specialized technical softwar 
+--- that is, generic multi-media formats such as 
+audio, video, or panoramic-photography --- 
+\sapp{} plugins for PDF or ePub viewers can present 
+this content directly, in separate windows detached 
+from the principle document viewer, rather than 
+routing the files to external software.   
+
+\item[Scenario 2: A student launches a scientific 
+application which is used as a pedagogical tool]  
+Teachers often instruct students to download 
+and install software relevant to course curriculum, 
+and this software can potentially be an essential 
+part of the course content.  Instructors may 
+(1) use the visualization capabilities of these 
+domain-specific applications to help students 
+understand the concepts covered in class; 
+(2) provide instruction in how to use the 
+software as part of the curriculum; 
+(3) evaluate students' understanding of the 
+software as part of their assessment of 
+students' mastery of the curriculum; or 
+(4) use applications' analytic features as an 
+overview of analytic or quantitative methodologies 
+relevant to the course's subject matter.  In 
+the case of IQmol, features such as 
+energy minimization, plotting orbitals, 
+calculating vibrational frequencies, and many 
+other chemphysical computations provide an 
+overview of scientific concepts which 
+might be covered in a Chemistry class. 
+ 
+\pseudoIndent{} To facilitate the 
+use of scientific applications as teaching tools, 
+\sapp{} plugins help instructors personalize the 
+applications which their students use in 
+conjunction with course curricula.  This personalization 
+can have several dimenions, including: 
+(1) manipulating the User Interface to prioritize 
+concepts pertinent to each course; (2) 
+enabling the application to present 
+course-specific instructions to the student, 
+such as instructions and assignments; 
+(3) tracking a suite of resources curated 
+for the specific class; and potentially (4) 
+allowing students to send questions to the 
+instructor with screenshots and application-state 
+information.  Again using IQmol as a case-study,  
+an ETS plugin could show students a list of molecular 
+examples discussed in class (based on data 
+provided by the instructor) and allow students 
+to view the corresponding \ThreeD{} molecular 
+graphics accordingly; instructors could also 
+rearrange the IQmol menus and toolbars, to foreground 
+those analytic tasks which are relevant to the 
+course curriculum.  
+
+
+\end{description}
+
+  
+
 }
+
+
+\p{
+
+}
+
+
+
 
 \p{\lHTXN{} is a new format and protocol for 
 representing publications.  The central goal 
