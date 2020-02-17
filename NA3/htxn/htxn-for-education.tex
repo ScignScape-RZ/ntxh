@@ -536,7 +536,71 @@ as systems evolving over time.
 \noindent\lun{\lsHTXN{} for Teaching Materials}
 {\sectsp}
 \p{
+\begin{description}[leftmargin=2pt,
+	labelindent=-2pt,labelsep=12pt]
+\item[ETS Plugin Framework]
+The proposed ETS Plugin Framework would create 
+a common code base that can be used to 
+implement ETS-specific plugins to 
+applications spanning a range of academic 
+disciplines and subject areas.  The primary 
+goal of these plugins would be to connect 
+e-reader software --- applications 
+for viewing test-preparation and course 
+materials --- with domain-specific software 
+which instructors may use as teaching aids.  
+With respect to GRE exams in fields 
+such as biology, chemistry, or physics, 
+domain-specific applications might include 
+bioinformatics, molecular visualization, 
+or physical simulation tools, respectively.  
+ETS plugins would help scientific applications 
+become more valuable as classroom tools.  In 
+particular, with ETS plugins these applications 
+can (1) receive signals from document viewers 
+(such as PDF viewers) to automatically display 
+multi-media content and (2) display course 
+and instructional materials.  As a 
+concrete example, consider molecularal 
+visualization software such as IQmol.  Via 
+an ETS plugin, IQmol could (1) render a \ThreeD{} 
+image given data, in a chemical file format, 
+received from an e-reader with a similar plugin; 
+and (2) display instructions, questions, 
+assignments, or course-related content 
+(such as graphics for chemical compounds discussed 
+in class) provided by instructors. 
 
+\item[Cloud Support for ETS Plugins]  
+Supplementing the functionality described in the 
+preceding paragraph, Cloud Services can be 
+used to connect individual applications 
+to content and curricula specific to individual 
+courses.  Because most scientific applications 
+are implemented as desktop software, the hosting 
+of the cloud back-ends to support these features 
+would be a natural fit for LTS's \q{Native Cloud/Native} 
+(NCN) protocol, which is specifically designed 
+to integrate desktop front-ends with Cloud/Native 
+services.  According to this architecture, 
+NCN services would host information specific to 
+individual courses, students, and instructors.  
+When a student launches an application with an 
+ETS plugin, the plugin would retrieve data 
+pertaining to that student and to his or her classes.  
+As appropriate, the plugin could then instruct the 
+host application to load specific content, and/or 
+present questions or instructions supplied 
+by the instructor.  For example, IQmol could 
+load a list of molecular files corresponding to 
+chemicals studied in the students' class.  
+The ETS Plugin Cloud back-end would also be 
+used by document (e.g., PDF) viewers to obtain 
+information needed to properly route signals 
+to other applications using ETS Plugins.
+
+
+\end{description}
 }
 
 \end{document}
