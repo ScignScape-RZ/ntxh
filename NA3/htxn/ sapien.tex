@@ -322,6 +322,17 @@
 
 \newcommand{\inditem}{\itemindent10pt\item}
 
+
+\usepackage{scrextend}
+\newenvironment{mldescription}{%
+  \begin{addmargin}[2em]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1][]{\par\medskip\textbf{##1}\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
+
 \begin{document}
 	
 {\linespread{1.1}\selectfont
@@ -420,10 +431,12 @@ which each have ETS plugins to interoperate.
 To explain the features of the plugin suite, consider 
 the following scenarios: 
 
-\begin{description}
-\item[\parbox{14cm}{Scenario 1: A student reads textbooks, articles, 
+\begin{mldescription}
+\mlitem[%\parbox{14cm}{
+Scenario 1: A student reads textbooks, articles, 
 or test-preparation materials which may be enhanced 
-with multi-media content}]  To enhance the reading 
+with multi-media content%}
+]  To augment the reading 
 experience, educational texts may be supplemented 
 with files describing visual, interactive materials 
 which require specialized software.  For example, 
@@ -479,7 +492,7 @@ this content directly, in separate windows detached
 from the principle document viewer, rather than 
 routing the files to external software.   
 
-\item[Scenario 2: A student launches a scientific 
+\mlitem[Scenario 2: A student launches a scientific 
 application which is used as a pedagogical tool]  
 Teachers often instruct students to download 
 and install software relevant to course curriculum, 
@@ -528,8 +541,8 @@ rearrange the IQmol menus and toolbars, to foreground
 those analytic tasks which are relevant to the 
 course curriculum.  
 
-\item[Scenario 3: Integrated Development Environments 
-(\IDE{}s) may be used as teaching tools]  
+\mlitem[Scenario 3: A student launches an Integrated Development Environment 
+(\IDE{}) which is used as a teaching tool]  
 Using \IDE{}s is a prerequite for most courses 
 in computer science and computer programming, and 
 in this context \sapp{} plugins may be used 
@@ -578,7 +591,7 @@ can then be performed automatically via the
 plugin, helping ensure that the student's 
 system has the necessary prerequisites to 
 run all the course-related software. 
-\end{description}
+\end{mldescription}
 }
 
 
