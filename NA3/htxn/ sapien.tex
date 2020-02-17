@@ -1,0 +1,638 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{eso-pic}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>0{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\setlength{\footskip}{23pt}
+
+\usepackage[paperheight=14.5in,paperwidth=9.1in]{geometry}
+\geometry{left=.9in,top=1.1in,right=.6in,bottom=1.4in} %margins
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+\urlstyle{same}
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{1pt}\hspace{8pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{HTXN}}}
+
+\newcommand{\sapp}{\resizebox{!}{8pt}{\AcronymText{Sapien+}}}
+\newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
+\newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
+
+
+\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{8pt}{\AcronymText{RDF}}}
+
+\newcommand{\CLang}{\resizebox{!}{8pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{8pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{8pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{8pt}{\AcronymText{IQmol}}}
+
+\newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
+
+\newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
+
+\newcommand{\IDE}{\resizebox{!}{8pt}{\AcronymText{IDE}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{8pt}{\AcronymText{3D}}}
+
+\newcommand{\FAIR}{\resizebox{!}{8pt}{\AcronymText{FAIR}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{8pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{8pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{8pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{8pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{8pt}{\AcronymText{TeXMECS}}}
+
+\newcommand{\NGML}{\resizebox{!}{8pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{8pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{8pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{8pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{8pt}{\MOSAIC}}
+
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{8pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7.5pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{9pt}{\AcronymText{Qt}}}
+\newcommand{\QtSQL}{\resizebox{!}{8pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
+
+\newcommand{\p}{
+
+\vspace{1.2em}}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\setlist[description]{%
+  topsep=30pt,               % space before start / after end of list
+  itemsep=5pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+
+\setlength\parindent{24pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\underline{#1}}}}}}
+
+\newcommand{\inditem}{\itemindent10pt\item}
+
+\begin{document}
+	
+{\linespread{1.1}\selectfont
+
+\vspace*{-7em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+\vspace{1em}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.7\textwidth,
+colback=ctmpppp!60,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\begin{minipage}{\textwidth}	
+\begin{center}		
+{\setlength{\fboxsep}{18pt}
+	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{Scientific Application Plugins for 
+Education and Publishing (\sapp{})}}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\vspace{-1em}
+
+%\noindent\lun{Overview}
+\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
+{\sectsp}
+\p{This paper will summarize the Hypergraph Text 
+Encoding Protocol (\HTXN{}) and discuss its 
+applications for testing, education, and the 
+development of test and test-preparation materials.  
+}
+
+\p{\lHTXN{} is a new format and protocol for 
+representing publications.  The central goal 
+of \HTXN{} is to support a new generation of 
+publishing technologies, where conventional 
+document formats are increasingly being supplanted 
+by digital, multi-media reader experiences.  
+In the contemporary publishing paradigm, 
+individual publications are often linked 
+with other forms of digital content: multi-media 
+resources, research data sets, machine-readable 
+representations of document text, and 
+domain-specific sofware applications 
+(used to study or visualize the case-studies or 
+research findings discussed in publications).  
+The conventional manuscript (the \q{primary} 
+resource which is cited and downloaded) 
+is then networked with a package of 
+supplemental (or \q{secondary}) resources.  
+The \HTXN{} protocol is designed to 
+rigorously document these multi-media networks, enabling 
+e-readers and domain-specific applications to be 
+integrated so that readers may easily access and 
+experience multi-media content.}
+
+\vspace{2em}
+\noindent\lun{\lsHTXN{} for Multi-Media}
+{\sectsp}
+\p{The generic term \q{multi-media content} actually 
+encompasses multiple phenomena:
+
+\vspace{-1em}
+\begin{description}[leftmargin=2pt,
+	labelindent=-2pt,labelsep=12pt]
+\item[Multimedia Files]  Individual 
+files representing audio, video, or 3D graphics content.  
+These files may be linked from specific locations in 
+the primary manuscript, or even embedded within manuscripts 
+when they are published in \PDF{} format.
+ 
+\item[Data Sets and Data Visualization]  Publishers 
+increasingly emphasize sharing research data alongside 
+texts, so readers can verify or even attempt to 
+replicate claimed results.  Data sets are also a form 
+of multimedia content because, apart from being aggregates 
+of raw data, data sets are almost always accompanied 
+by interactive, visual content: charts, diagrams, or 
+plots to visualize the information holistically, or 
+interactive tools to examine or navigate through the 
+data set at finer scales.  
+
+\item[Application Networks]  Another genre of multi-media 
+content involves resources which may only be experienced 
+through specialized software.  This classification encompasses 
+content from particular scientific or technical domains, 
+which is encoded in domain-specific formats: representations 
+of molecular structures, archaeological sites, image-processing 
+data, wave-forms for signal processing, sentence-parses for 
+linguistic analysis, and so forth.  To conveniently access 
+this kind of multi-media, readers need to use software 
+which can send signals to the specialized applications 
+having the capability to recognize the domain-specific 
+formats and translate them to interactive, 
+visual presentations.  In short, publication viewers 
+(e.g., e-readers) need to participate in multi-application 
+networks, where data can be sent and received between 
+each component.  Publishers can provide this 
+functionality to readers by implementing special 
+e-readers and, in addition, writing plugins 
+(or collaborating with external application developers) 
+to ensure that applications networked with e-readers 
+are properly aligned with the e-readers themselves.
+
+\item[Publications-as-Applications]  In some 
+cases, publications themselves are a form of 
+multi-layered multi-media content.  This applies 
+to publications which are not simply read from 
+start to end, but instead naturally lend 
+themselves to a reading process which navigates 
+back and forth between different sections of 
+the text, or juxtaposes different sections to be 
+visible at the same time.  A canonical example 
+of such layered reading is testing materials 
+and test preparation, where exam questions, 
+instructions, supplemental materials (such 
+as passages for reading-comprehension 
+assessment), and comments or analyses about 
+answers (in the case of prep materials), 
+each form different layers which 
+students may wish to view side-by-side.  
+In these cases, e-readers cannot simply 
+treat the publication as one single ePub 
+or PDF file.  Instead, the manuscript needs 
+to identify text segments which can be factored 
+into different layers, and the e-reader 
+needs to implement text-viewers which allow 
+each layer to be viewed in separate windows, 
+with readers able to juxtapose and position the 
+windows as desired. 
+\end{description}\vspace{-2em}
+}
+
+
+\p{\lHTXN{} represents publication manuscripts 
+using structures which rigorously document 
+publications' multi-media content and multi-application 
+networking requirements.  This detailed 
+multi-media support has several dimensions: 
+
+\begin{enumerate}[leftmargin=2pt]
+\inditem{} Defining points in the manuscript where 
+multi-media files are linked or embedded: this 
+involves annotating locations in the manuscript 
+with hyper-references to multi-media files 
+(audio, video, etc.) which readers should be 
+able to access when they reach the corresponding 
+point in the text.
+
+\inditem{} Establishing granular cross-references between 
+publications and multi-media content: this is a 
+more complex case where manuscript locations have to 
+link \textit{to} or \textit{from} limited 
+\textit{portions} of the corresponding multi-media 
+resources.  For example, a passage in the manuscript 
+may discuss a single sample within a data set; or 
+may explicate a particular facet of the data set, 
+such as an individual column in a tabular 
+information space, or a specific set of 
+statistical parameters against which quantitative 
+operations are performed.  These scenarios 
+call for bi-directional cross-references between the 
+data set and the publication, wherein the granular 
+data-set facet topically relevant to the 
+corresponding manuscript location (the sample, 
+table-column, parameters, etc.) is formally 
+isolated and declared as a reference-target.  
+
+\inditem{} Cross-referances may also be 
+defined between publications' non-textual or 
+non-paragraph content and corresponding 
+multi-media resources.  For example, tables 
+or diagrams visually presented in a manuscript 
+may be liked to statistical data from which 
+the figures are derived.  A similar situation 
+applies when visuals inluded in a publication 
+are linked to multi-media resources which 
+represent the same information in a different 
+experiential register: a PDF document may 
+include a two-dimensional graphic which is created 
+by taking a camera shot of a \ThreeD{} model, 
+which readers may also experience with a 
+\ThreeD{} graphics engine; or a publication may 
+reproduce a graph or scatter-plot derived 
+from a data set, where data visualization 
+software can represent the same information 
+in a more interactive medium, with parameters 
+plotted as curves or surfaces in a \ThreeD{} 
+ambient space, or where systems are visualized 
+as systems evolving over time.  
+\end{enumerate}
+}
+
+\vspace{2em}
+\noindent\lun{\lsHTXN{} for Teaching Materials}
+{\sectsp}
+\p{
+\begin{description}[leftmargin=2pt,
+	labelindent=-2pt,labelsep=12pt]
+\item[ETS Plugin Framework]
+The proposed ETS Plugin Framework would create 
+a common code base that can be used to 
+implement ETS-specific plugins to 
+applications spanning a range of academic 
+disciplines and subject areas.  The primary 
+goal of these plugins would be to connect 
+e-reader software --- applications 
+for viewing test-preparation and course 
+materials --- with domain-specific software 
+which instructors may use as teaching aids.  
+With respect to GRE exams in fields 
+such as biology, chemistry, or physics, 
+domain-specific applications might include 
+bioinformatics, molecular visualization, 
+or physical simulation tools, respectively.  
+ETS plugins would help scientific applications 
+become more valuable as classroom tools.  In 
+particular, with ETS plugins these applications 
+can (1) receive signals from document viewers 
+(such as PDF viewers) to automatically display 
+multi-media content and (2) display course 
+and instructional materials.  As a 
+concrete example, consider molecularal 
+visualization software such as IQmol.  Via 
+an ETS plugin, IQmol could (1) render a \ThreeD{} 
+image given data, in a chemical file format, 
+received from an e-reader with a similar plugin; 
+and (2) display instructions, questions, 
+assignments, or course-related content 
+(such as graphics for chemical compounds discussed 
+in class) provided by instructors. 
+
+\item[Cloud Support for ETS Plugins]  
+Supplementing the functionality described in the 
+preceding paragraph, Cloud Services can be 
+used to connect individual applications 
+to content and curricula specific to individual 
+courses.  Because most scientific applications 
+are implemented as desktop software, the hosting 
+of the cloud back-ends to support these features 
+would be a natural fit for LTS's \q{Native Cloud/Native} 
+(NCN) protocol, which is specifically designed 
+to integrate desktop front-ends with Cloud/Native 
+services.  According to this architecture, 
+NCN services would host information specific to 
+individual courses, students, and instructors.  
+When a student launches an application with an 
+ETS plugin, the plugin would retrieve data 
+pertaining to that student and to his or her classes.  
+As appropriate, the plugin could then instruct the 
+host application to load specific content, and/or 
+present questions or instructions supplied 
+by the instructor.  For example, IQmol could 
+load a list of molecular files corresponding to 
+chemicals studied in the students' class.  
+The ETS Plugin Cloud back-end would also be 
+used by document (e.g., PDF) viewers to obtain 
+information needed to properly route signals 
+to other applications using ETS Plugins.
+
+\item[Student Dashboards]  
+One feature which should be common to all ETS 
+Plugins is a \q{dashboard}, or a separate window 
+aggregating the student's information.  The 
+dashboard's design would be roughly as follows: 
+student information would be divided into 
+four or perhaps five tabs, with labels such 
+as \q{My Courses}, \q{My Library}, 
+perhaps \q{My Tests}, \q{My Applications}, and 
+\q{My Account}.  Under the Courses tab, 
+students select one course to focus on, 
+which would cause the Library and Tests 
+tabs to prioritize tests, test preparation, and 
+readings assigned for that course.  Under 
+the Applications tab, students could see 
+a list of all applications on their computer 
+which have the ETS Plugin installed, or 
+which are used as pedagogical tools for their 
+courses, or which they are instructed to install 
+(the plugin could identify required software 
+which students have not yet installed based 
+on information provided by the ETS Cloud Service).
+
+     
+
+\end{description}
+}
+
+\end{document}
+
+
