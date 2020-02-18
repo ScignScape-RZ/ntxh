@@ -14,8 +14,8 @@
 
 \AddToShipoutPicture{%
 {
- {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{.55cm}{\paperheight}}}}%
- {\color{darkRed!70!purple}\transparent{1}\put(6,0){{\rule{.3cm}{\paperheight}}}}
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{3pt}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(3,0){{\rule{4pt}{\paperheight}}}}
 % {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
 % {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
 % \put(18,726){\thepage}
@@ -54,7 +54,7 @@
 \setlength{\footskip}{23pt}
 
 \usepackage[paperheight=14.5in,paperwidth=9.1in]{geometry}
-\geometry{left=.9in,top=1.1in,right=.6in,bottom=1.4in} %margins
+\geometry{left=1.1in,top=1.1in,right=.6in,bottom=1.4in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
 
@@ -134,7 +134,7 @@
 
 \newcommand{\pseudoIndent}{
 
-\vspace{1pt}\hspace{8pt}}
+\vspace{1pt}\hspace*{38pt}}
 
 \newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
 
@@ -328,13 +328,29 @@
 
 \usepackage{scrextend}
 \newenvironment{mldescription}{%
-  \begin{addmargin}[2em]{1em}
+  \begin{addmargin}[4pt]{1em}
     \setlength{\parindent}{-1em}%
     \newcommand*{\mlitem}[1][]{\par\medskip\textbf{##1}\quad}\indent
 }{%
   \end{addmargin}
   \medskip
 }
+
+\usepackage{marginnote}
+
+\newcommand{\mnote}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{1em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{14}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
 
 \begin{document}
 	
@@ -362,7 +378,7 @@
 %interior hidden
 arc=2pt,outer arc=0pt,
 enhanced jigsaw,
-width=.7\textwidth,
+width=.75\textwidth,
 colback=ctmpppp!60,
 colframe=logoRed!30!darkRed,
 drop shadow=logoPurple!50!darkRed,
@@ -375,7 +391,7 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}		
 {\setlength{\fboxsep}{18pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Scientific Application Plugins for 
+{Scientific/Multi-Media Application Plugins for 
 Education and Publishing (\sapp{})}}}}
 \end{center}
 \end{minipage}
@@ -684,13 +700,96 @@ in a more conventional, less interactive fashion.
 \end{mldescription}
 }
 
+\vspace{2em}
+\noindent\lun{The Proposed ETS Plugin Framework}
+{\sectsp}
 
-\p{
+\p{As proposed, the ETS Plugin Framework would create 
+a common code base that can be used to 
+implement ETS-specific plugins to 
+applications spanning a range of academic 
+disciplines and subject areas.  The primary 
+goal of these plugins would be to connect 
+e-reader software --- applications 
+for viewing test-preparation and course 
+materials --- with domain-specific software 
+which instructors may use as teaching aids.  
+With respect to GRE exams in fields 
+such as biology, chemistry, or physics, 
+domain-specific applications might include 
+bioinformatics, molecular visualization, 
+or physical simulation tools, respectively.  
+ETS plugins would help scientific applications 
+become more valuable as classroom tools.  In 
+particular, with ETS plugins these applications 
+can (1) receive signals from document viewers 
+(such as PDF viewers) to automatically display 
+multi-media content and (2) display course 
+and instructional materials.  As a 
+concrete example, consider molecularal 
+visualization software such as IQmol.  Via 
+an ETS plugin, IQmol could (1) render a \ThreeD{} 
+image given data, in a chemical file format, 
+received from an e-reader with a similar plugin; 
+and (2) display instructions, questions, 
+assignments, or course-related content 
+(such as graphics for chemical compounds discussed 
+in class) provided by instructors.}
 
-}
+\mnote{ETS\\ Plugin \\Cloud \\Services}
+\p{Supplementing the functionality described in the 
+preceding paragraph, Cloud Services can be 
+used to connect individual applications 
+to content and curricula specific to individual 
+courses.  Because most scientific applications 
+are implemented as desktop software, the hosting 
+of the cloud back-ends to support these features 
+would be a natural fit for LTS's \q{Native Cloud/Native} 
+(NCN) protocol, which is specifically designed 
+to integrate desktop front-ends with Cloud/Native 
+services.  According to this architecture, 
+NCN services would host information specific to 
+individual courses, students, and instructors.  
+When a student launches an application with an 
+ETS plugin, the plugin would retrieve data 
+pertaining to that student and to his or her classes.  
+As appropriate, the plugin could then instruct the 
+host application to load specific content, and/or 
+present questions or instructions supplied 
+by the instructor.  For example, IQmol could 
+load a list of molecular files corresponding to 
+chemicals studied in the students' class.  
+The ETS Plugin Cloud back-end would also be 
+used by document (e.g., PDF) viewers to obtain 
+information needed to properly route signals 
+to other applications using ETS Plugins.}
 
+\mnote{Student \\Dashboard}
+\p{In addition, one feature which should be common to all ETS 
+Plugins is a \q{dashboard}, or a separate window 
+aggregating the student's information.  The 
+dashboard's design would be roughly as follows: 
+student information would be divided into 
+four or perhaps five tabs, with labels such 
+as \q{My Courses}, \q{My Library}, 
+perhaps \q{My Tests}, \q{My Applications}, and 
+\q{My Account}.  Under the Courses tab, 
+students select one course to focus on, 
+which would cause the Library and Tests 
+tabs to prioritize tests, test preparation, and 
+readings assigned for that course.  Under 
+the Applications tab, students could see 
+a list of all applications on their computer 
+which have the ETS Plugin installed, or 
+which are used as pedagogical tools for their 
+courses, or which they are instructed to install 
+(the plugin could identify required software 
+which students have not yet installed based 
+on information provided by the ETS Cloud Service).}
 
-
+\vspace{2em}
+\noindent\lun{The \lsHTXN{} Protocol}
+{\sectsp}
 
 \p{\lHTXN{} is a new format and protocol for 
 representing publications.  The central goal 
@@ -716,9 +815,6 @@ e-readers and domain-specific applications to be
 integrated so that readers may easily access and 
 experience multi-media content.}
 
-\vspace{2em}
-\noindent\lun{\lsHTXN{} for Multi-Media}
-{\sectsp}
 \p{The generic term \q{multi-media content} actually 
 encompasses multiple phenomena:
 
@@ -851,101 +947,6 @@ plotted as curves or surfaces in a \ThreeD{}
 ambient space, or where systems are visualized 
 as systems evolving over time.  
 \end{enumerate}
-}
-
-\vspace{2em}
-\noindent\lun{\lsHTXN{} for Teaching Materials}
-{\sectsp}
-\p{
-\begin{description}[leftmargin=2pt,
-	labelindent=-2pt,labelsep=12pt]
-\item[ETS Plugin Framework]
-The proposed ETS Plugin Framework would create 
-a common code base that can be used to 
-implement ETS-specific plugins to 
-applications spanning a range of academic 
-disciplines and subject areas.  The primary 
-goal of these plugins would be to connect 
-e-reader software --- applications 
-for viewing test-preparation and course 
-materials --- with domain-specific software 
-which instructors may use as teaching aids.  
-With respect to GRE exams in fields 
-such as biology, chemistry, or physics, 
-domain-specific applications might include 
-bioinformatics, molecular visualization, 
-or physical simulation tools, respectively.  
-ETS plugins would help scientific applications 
-become more valuable as classroom tools.  In 
-particular, with ETS plugins these applications 
-can (1) receive signals from document viewers 
-(such as PDF viewers) to automatically display 
-multi-media content and (2) display course 
-and instructional materials.  As a 
-concrete example, consider molecularal 
-visualization software such as IQmol.  Via 
-an ETS plugin, IQmol could (1) render a \ThreeD{} 
-image given data, in a chemical file format, 
-received from an e-reader with a similar plugin; 
-and (2) display instructions, questions, 
-assignments, or course-related content 
-(such as graphics for chemical compounds discussed 
-in class) provided by instructors. 
-
-\item[Cloud Support for ETS Plugins]  
-Supplementing the functionality described in the 
-preceding paragraph, Cloud Services can be 
-used to connect individual applications 
-to content and curricula specific to individual 
-courses.  Because most scientific applications 
-are implemented as desktop software, the hosting 
-of the cloud back-ends to support these features 
-would be a natural fit for LTS's \q{Native Cloud/Native} 
-(NCN) protocol, which is specifically designed 
-to integrate desktop front-ends with Cloud/Native 
-services.  According to this architecture, 
-NCN services would host information specific to 
-individual courses, students, and instructors.  
-When a student launches an application with an 
-ETS plugin, the plugin would retrieve data 
-pertaining to that student and to his or her classes.  
-As appropriate, the plugin could then instruct the 
-host application to load specific content, and/or 
-present questions or instructions supplied 
-by the instructor.  For example, IQmol could 
-load a list of molecular files corresponding to 
-chemicals studied in the students' class.  
-The ETS Plugin Cloud back-end would also be 
-used by document (e.g., PDF) viewers to obtain 
-information needed to properly route signals 
-to other applications using ETS Plugins.
-
-\item[Student Dashboards]  
-One feature which should be common to all ETS 
-Plugins is a \q{dashboard}, or a separate window 
-aggregating the student's information.  The 
-dashboard's design would be roughly as follows: 
-student information would be divided into 
-four or perhaps five tabs, with labels such 
-as \q{My Courses}, \q{My Library}, 
-perhaps \q{My Tests}, \q{My Applications}, and 
-\q{My Account}.  Under the Courses tab, 
-students select one course to focus on, 
-which would cause the Library and Tests 
-tabs to prioritize tests, test preparation, and 
-readings assigned for that course.  Under 
-the Applications tab, students could see 
-a list of all applications on their computer 
-which have the ETS Plugin installed, or 
-which are used as pedagogical tools for their 
-courses, or which they are instructed to install 
-(the plugin could identify required software 
-which students have not yet installed based 
-on information provided by the ETS Cloud Service).
-
-     
-
-\end{description}
 }
 
 \end{document}
