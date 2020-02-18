@@ -162,6 +162,9 @@
 \newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
 \newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{HTXN}}}
 
+
+\newcommand{\PVD}{\resizebox{!}{8pt}{\AcronymText{PVD}}}
+
 \newcommand{\sapp}{\resizebox{!}{8pt}{\AcronymText{Sapien+}}}
 \newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
 \newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
@@ -541,8 +544,7 @@ rearrange the IQmol menus and toolbars, to foreground
 those analytic tasks which are relevant to the 
 course curriculum.  
 
-\mlitem[Scenario 3: A student launches an Integrated Development Environment 
-(\IDE{}) which is used as a teaching tool]  
+\mlitem[Scenario 3: A student launches an Integrated Development Environment (\IDE{}) which is used as a teaching tool]  
 Using \IDE{}s is a prerequite for most courses 
 in computer science and computer programming, and 
 in this context \sapp{} plugins may be used 
@@ -591,6 +593,94 @@ can then be performed automatically via the
 plugin, helping ensure that the student's 
 system has the necessary prerequisites to 
 run all the course-related software. 
+
+\mlitem[Scenario 4: Authors Develop Educational 
+Materials Targeting Specific Applications]
+In this scenario, authors compose books, articles, 
+or test-preparation materials with the anticipation 
+that readers will use specific software applications to 
+enhance their reading experience.  This sort 
+of interrelationship between publications and external 
+software is presupposed at a rudimentary level 
+as soon as authors link documents to specialized 
+multi-media files.  For example, files in the 
+ParaView Data (\PVD{}) format are intended to be 
+used by the ParaView software; as a result, documents 
+which reference such files presuppose that readers 
+will have ParaView installed on their computer, for 
+the full reading experience.  Similarly, files 
+in cheminformatic formats such as Protein data bank 
+(.pdb) or Chemical markup language (.cml) need to 
+be opened with chemistry-related software such 
+as IQmol.  
+  
+\pseudoIndent{} In some cases, however, authors may 
+desire a more rigorous degree of interop between 
+document viewers and scientific/multi-media software.  
+This situation applies when it is useful for readers not 
+view particular multi-media files in domain-specific 
+applications, but for the applications to be 
+reconfigured so as to emphasize features or 
+capabilities relevant to the publication which readers 
+are studying.  Applications may temporarily modify their 
+layout or appearance for reasons similar to those 
+identified for Scenario 2: instructors may wish to foreground 
+certain kinds of analyses which are pertinent to 
+course curricula, or to group together files which 
+are interrelated in the context of the course 
+(e.g., based on study requirements for an upcoming 
+class session).  Similar use-cases apply to 
+publications which interoperate with domain-specific 
+software.  The difference between the current scenario 
+and the earlier use-cases is that Scenario 2 assumed 
+that domain-specific applications will receive data 
+from a cloud service, curated by instructors, 
+to personalize their appearance and features 
+for each course.  By contrast, the current 
+scenario assumes that similar customization 
+data is provided by publications themselves.  
+Therefore, authors can personalize the 
+software which enhances the reading experience, 
+similar to how instructors may customize 
+domain-specific software for each course.    
+    
+\pseudoIndent{} Although it is not a prerequisite 
+for \sapp{} plugins, one tool which can help 
+authors customize their audience's reading 
+experience is the Hypergraph Text Encoding 
+Protocol (\HTXN{}), formulated in conjunction with 
+\sapp{}.  \lHTXN{} explicitly supports information 
+sharing between document viewers and 
+external software, such as scientific/multi-media 
+applications.  While the \q{signals} routed 
+via \HTXN{} between applications may simply be 
+instructions to load and display a single file, 
+they may also be more complex data structures 
+which describe how the target application should 
+adopt to the pedagogical role of presenting 
+multi-media or technical content specifically 
+linked to a publication which the current user is reading.  
+\lHTXN{} is discussed in greater detail below.
+ 
+\pseudoIndent{} Note also that \q{external software} 
+referenced by a publication may actually be 
+a unique application developed specifically 
+for that document.  Examples of this scenario include 
+publications which are paired with open-access 
+data sets, when the data sets themselves include 
+code for accessing and analyzing the published 
+data.  Contemporary standards, such as the 
+\q{Research Object} format, encourage authors not 
+only to share raw data but to develop 
+code libraries which help readers verify 
+research findings.  These project-specific 
+code libraries, particularly if they include 
+\GUI{} components, can therefore play the role 
+of multi-media applications which augment 
+the reading experience, enhancing the 
+publications which present research findings 
+in a more conventional, less interactive fashion. 
+
 \end{mldescription}
 }
 

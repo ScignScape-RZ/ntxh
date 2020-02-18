@@ -691,7 +691,7 @@ $l: #2^^J%
 \phantomsection \label{#1}
 \addcontentsline{toc}{subsection}{#1}
 \stepcounter{subs}
-\vspace*{3em}\\{\LARGE\em\thesection.{\Large\thesubs}} {
+\vspace*{3em}\noindent{\LARGE\em\thesection.{\Large\thesubs}} {
 \hspace{-2.75em}
 			%\begin{minipage}{}
 			\protect\raisebox{-5pt}{%
@@ -703,7 +703,7 @@ $l: #2^^J%
 } 
 }
 
-%\renewcommand{\subsection}[1]{\subss{#1}{#1}}
+\renewcommand{\subsection}[1]{\subss{#1}{#1}}
 
 
 \newsavebox{\twolinebox}
@@ -714,7 +714,7 @@ $l: #2^^J%
 
 \newcommand{\twoline}{\usebox{\twolinebox}}
 
-\newcommand{\subsectiontwolinejj}[1]{\stwoline{#1}\subss{#1}{\twoline}}
+\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subss{#1}{\twoline}}
 
 \newcommand{\spsubsection}[1]{%
 \vspace{-.25em}
@@ -722,14 +722,14 @@ $l: #2^^J%
 \vspace{1em}
 }
 
-\newcommand{\spsubsectiontwolinejj}[1]{%
+\newcommand{\spsubsectiontwoline}[1]{%
 	\subsectiontwoline{#1}
 	\vspace{1em}
 }
 
-\newcommand{\spsubsectiontwoline}[1]{%
+%\newcommand{\spsubsectiontwoline}[1]{%
 %\subsection{#1}
-}
+%}
 
 
 
