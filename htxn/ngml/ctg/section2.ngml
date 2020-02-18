@@ -180,8 +180,9 @@ functional sequencing attributed to a sentence during analysis.
 Given, say, 
 
 `sentenceList,
-`sentenceItem; \swl{itm:ambience}{The city's ambience is colonial and the climate is tropical.}{sem}
-\udref{en_gum-ud-train}{GUM_voyage_merida-20}
+`sentenceItem; `swl. -> itm:ambience --> The city's ambience is colonial and the climate is tropical. -> sem
+`swl`
+`udref -> en_gum-ud-train -> GUM_voyage_merida-20 ;;
 `sentenceList`
 
 the gloss `gl.(and (is ((The ('s city)) ambience) colonial) (is (the climate) tropical))`
@@ -259,8 +260,9 @@ applied to other inputs in turn.
 For a concrete example, consider 
 
 `sentenceList,
-`sentenceItem; \swl{itm:actually}{The most popular lodging is actually camping on the beaches.}{sem}
-\udref{en_gum-ud-train}{GUM_voyage_socotra-16}
+`sentenceItem; `swl. -> itm:actually --> The most popular lodging is actually camping on the beaches. -> sem
+`swl`
+`udref -> en_gum-ud-train -> GUM_voyage_socotra-16 ;;
 `sentenceList`
 
 with gloss, as I take it, `gl.((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))`/.  
@@ -406,12 +408,16 @@ to be neither wholly subsumed by their surrounding phrase nor wholly
 autonomous: 
 
 `sentenceList,
-`sentenceItem; \swl{students}{Many students and their parents 
-came to complain about the tuition hikes.}{sco}
-`sentenceItem; \swl{office}{Many students came by my office to complain about their grades.}{sco}
-`sentenceItem; \swl{after}{Student after student complained about the tuition hikes.}{sco}
-`sentenceItem; \swl{parents}{Student after student came with their parents to complain 
-about the tuition hikes.}{sco}
+`sentenceItem; `swl. -> students --> Many students and their parents 
+came to complain about the tuition hikes. -> sco
+`swl`
+`sentenceItem; `swl. -> office --> Many students came by my office to complain about their grades. -> sco
+`swl`
+`sentenceItem; `swl. -> after --> Student after student complained about the tuition hikes. -> sco
+`swl`
+`sentenceItem; `swl. -> parents --> Student after student came with their parents to complain 
+about the tuition hikes. -> sco
+`swl`
 `sentenceList`
 
 In (\ref{students}) and (\ref{office}), we read `i.Many students` as topicalizing a multitude, 
@@ -427,9 +433,11 @@ context; consider Langacker's example:
 (repeating \ref{itm:threetimes})
 \end{lrbox}
 `sentenceList,
-`sentenceItem; \swl{}{Three times, students asked an interesting question.}
-[\usebox{\Langackerboxi}]{sco}
-`sentenceItem; \swl{}{Three times, a student asked an interesting question.}{sco}
+`sentenceItem; `swl. -> ->- --> Three times, students asked an interesting question.}
+[\usebox{\Langackerboxi}]{sco
+`swl`
+`sentenceItem; `swl. -> ->-  --> Three times, a student asked an interesting question. -> sco
+`swl`
 `sentenceList`
 
 Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
@@ -730,8 +738,10 @@ collide in the same sentence.  Slightly modifying two examples:`footnote.
 `footnote`
 
 `sentenceList,
-`sentenceItem; \swl{}{The newspaper you are reading is being sued.}{lex}
-`sentenceItem; \swl{itm:Liverpool}{Liverpool, an important harbor, built new docks.}{lex}
+`sentenceItem; `swl. -> ->-  --> The newspaper you are reading is being sued. -> lex
+`swl`
+`sentenceItem; `swl. -> itm:Liverpool --> Liverpool, an important harbor, built new docks. -> lex
+`swl`
 `sentenceList`
 
 Both have a mid-sentence shift between senses, which is analyzed
@@ -742,9 +752,11 @@ is how it correctly predicts that such coercions are not guaranteed to
 be accepted:
 
 `sentenceList,
-`sentenceItem; \swl{}{The newspaper fired a reporter and fell off
-the table.}[(?)]{lex}
-`sentenceItem; \swl{}{Liverpool beat Tottenham and built new docks.}[(?)]{lex}
+`sentenceItem; `swl. -> ->-  --> The newspaper fired a reporter and fell off
+the table. ->> (?) -> lex
+`swl`
+`sentenceItem; `swl. -> ->-  --> Liverpool beat Tottenham and built new docks. ->> (?) -> lex
+`swl`
 `sentenceList`
 
 (again, slightly modifying the counter-examples).  Type coercions are
@@ -766,8 +778,10 @@ attributing mental states forces us to conceive of their referents
 in those terms:
 
 `sentenceList,
-`sentenceItem; \swl{}{Liverpool wants to sign a left-footed striker.}{ont}
-`sentenceItem; \swl{}{That newspaper plans to fire its editorial staff.}{ont}
+`sentenceItem; `swl. -> ->-  --> Liverpool wants to sign a left-footed striker. -> ont
+`swl`
+`sentenceItem; `swl. -> ->-  --> That newspaper plans to fire its editorial staff. -> ont
+`swl`
 `sentenceList`
 
 This `i.can` be analyzed as `q.type coercions`/; but the type-theoretic machinery should contribute
@@ -1047,10 +1061,14 @@ Referents are not always material things; they can even
 be the `i.absence` of objects, or of substance: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:footprints}{There are footprints on the beach.}{ref}
-`sentenceItem; \swl{itm:hole}{There's a hole in the bucket.}{ref}
-`sentenceItem; \swl{itm:footprintsleading}{There are footprints leading up the hill.}{ref}
-`sentenceItem; \swl{itm:traintracks}{There are train tracks leading up the hill.}{ref}
+`sentenceItem; `swl. -> itm:footprints --> There are footprints on the beach. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:hole --> There's a hole in the bucket. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:footprintsleading --> There are footprints leading up the hill. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:traintracks --> There are train tracks leading up the hill. -> ref
+`swl`
 `sentenceList`  
 
 In (\ref{itm:footprints}) our attention is direct not to any `i.object`/, but 
@@ -1101,9 +1119,12 @@ contrast between situationally grounded or conceptually
 generalized references: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:Salesmen}{Salesmen are intelligent.}{ont}
-`sentenceItem; \swl{itm:knocking}{Salesmen are knocking on the door.}{ont}
-`sentenceItem; \swl{itm:Should}{Should I let them in?}{ont}
+`sentenceItem; `swl. -> itm:Salesmen --> Salesmen are intelligent. -> ont
+`swl`
+`sentenceItem; `swl. -> itm:knocking --> Salesmen are knocking on the door. -> ont
+`swl`
+`sentenceItem; `swl. -> itm:Should --> Should I let them in? -> ont
+`swl`
 `sentenceList`  
 
 The effects of (\ref{itm:knocking}) 
@@ -1138,11 +1159,15 @@ perceptual continua become part of their extralinguistic
 background, reflected in lexical conventions: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:ink}{There are ink stains on the pages of this book.}{ref}
-`sentenceItem; \swl{itm:sunset}{There is a pretty sunset over the river.}{ref}
-`sentenceItem; \swl{itm:cicada}{In some neighborhoods, cicada insects make loud sounds from sunset to sunrise.}{ref}
-\udref{en_gum-ud-train}{GUM_voyage_phoenix-30}
-`sentenceItem; \swl{itm:applause}{The audience rose to give thundering applause.}{ref}
+`sentenceItem; `swl. -> itm:ink --> There are ink stains on the pages of this book. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:sunset --> There is a pretty sunset over the river. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:cicada --> In some neighborhoods, cicada insects make loud sounds from sunset to sunrise. -> ref
+`swl`
+`udref -> en_gum-ud-train -> GUM_voyage_phoenix-30 ;;
+`sentenceItem; `swl. -> itm:applause --> The audience rose to give thundering applause. -> ref
+`swl`
 `sentenceList`  
 
 The unifying theme in these examples is that their central concepts are 
@@ -1320,8 +1345,10 @@ I'll point out that this fits a not-uncommon rhetorical
 pattern, as in: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:hall}{I am in the Hall of Fame.}{ref}
-`sentenceItem; \swl{itm:ontv}{I am on TV.}{ref}
+`sentenceItem; `swl. -> itm:hall --> I am in the Hall of Fame. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:ontv --> I am on TV. -> ref
+`swl`
 `sentenceList`  
 
 Nunberg argues that reference, in these kinds of cases, will
@@ -1336,7 +1363,8 @@ scenario such as a painter %-- referring to the location of her
 work in transit %-- saying something like (his example 12):
 
 `sentenceList,
-`sentenceItem; \swl{itm:crate}{I'm in the second crate on the right.}{ref}
+`sentenceItem; `swl. -> itm:crate --> I'm in the second crate on the right. -> ref
+`swl`
 `sentenceList`  
  
 In other words, Nunberg's analysis turns on theorizing various 

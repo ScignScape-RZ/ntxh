@@ -569,7 +569,7 @@ void NGML_Grammar::init(NGML_Parser& p, NGML_Graph& g, NGML_Graph_Build& graph_b
 
 
   add_rule( ngml_context, "special-character-sequence",
-   " (?: %-- ) "
+   " (?: %-- ) | (?: ->- ) "
    "  | (?: ` \\( (?<bq-esc1> [^]]+ ) \\) ) "
    "  | (?: ` { (?<bq-esc2> [^}]+ ) } ) "
    "  | (?: ` \\[ (?<bq-esc3> [^]]+ ) \\] ) "

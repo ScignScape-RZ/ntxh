@@ -72,9 +72,12 @@ directive and `q.inquisitive` dimensions can
 overlap:
 
 `sentenceList,
-`sentenceItem; \swl{itm:almond}{Do you have almond milk?}{pra}
-`sentenceItem; \swl{}{Can you get MsNBC on your TV?}{pra}
-`sentenceItem; \swl{itm:needcorkscrew}{This isn't a screw-cap bottle: I need a corkscrew.}{pra}
+`sentenceItem; `swl. -> itm:almond --> Do you have almond milk? -> pra
+`swl`
+`sentenceItem; `swl. -> ->- --> Can you get MsNBC on your TV? -> pra
+`swl`
+`sentenceItem; `swl. -> itm:needcorkscrew --> This isn't a screw-cap bottle: I need a corkscrew. -> pra
+`swl`
 `sentenceList`
 
 These `i.can` be read as bare directives, and would
@@ -94,10 +97,14 @@ two, as if people expressed themselves like this:
 
 
 `sentenceList,
-`sentenceItem; \swl{}{I think the window is open, can you close it?}{pra}
-`sentenceItem; \swl{}{I see you have almond milk, can I have some?}{pra}
-`sentenceItem; \swl{}{If you get MsNBC, can you turn on Rachel Maddow?}{pra}
-`sentenceItem; \swl{}{If there is a corkscrew in the house, can you get it?}{pra}
+`sentenceItem; `swl. -> ->-  --> I think the window is open, can you close it? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> I see you have almond milk, can I have some? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> If you get MsNBC, can you turn on Rachel Maddow? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> If there is a corkscrew in the house, can you get it? -> pra
+`swl`
 `sentenceList`
 `p`
 
@@ -158,11 +165,15 @@ pattern is to use `i.I believe` or `i.I believe that` as an
 implicature analogous to interrogatives:
 
 `sentenceList,
-`sentenceItem; \swl{}{I believe you have a reservation for Jones?}{pra}
-`sentenceItem; \swl{}{I believe this is the customer service desk?}{pra}
-`sentenceItem; \swl{}{I believe we ordered a second basket of garlic bread?}{pra}
-`sentenceItem; \swl{}{I believe you can help me find computer
-accessories in this section?}{pra}
+`sentenceItem; `swl. -> ->-  --> I believe you have a reservation for Jones? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> I believe this is the customer service desk? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> I believe we ordered a second basket of garlic bread? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> I believe you can help me find computer
+accessories in this section? -> pra
+`swl`
 `sentenceList`
 
 These speakers are indirectly signaling what they want
@@ -196,9 +207,12 @@ content in light of contexts and implicatures.
 Note that both of these are possible:
 
 `sentenceList,
-`sentenceItem; \swl{}{Do you have any milk?}{pra}
-`sentenceItem; \swl{}{Yes, we have almond milk.}{pra}
-`sentenceItem; \swl{}{No, we have almond milk.}{pra}
+`sentenceItem; `swl. -> ->-  --> Do you have any milk? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> Yes, we have almond milk. -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> No, we have almond milk. -> pra
+`swl`
 `sentenceList`
 
 A request for milk in a vegan restaurant could plausibly be
@@ -220,8 +234,10 @@ constituent concepts.
 Suppose my friend says this, before and after:
 
 `sentenceList,
-`sentenceItem; \swl{itm:put}{Can you put some almond milk in my coffee?}{pra}
-`sentenceItem; \swl{itm:after}{Is there milk in this coffee?}{pra}
+`sentenceItem; `swl. -> itm:put --> Can you put some almond milk in my coffee? -> pra
+`swl`
+`sentenceItem; `swl. -> itm:after --> Is there milk in this coffee? -> pra
+`swl`
 `sentenceList`
 
 Between (\ref{itm:put}) and (\ref{itm:after}) I do put almond milk
@@ -254,11 +270,14 @@ kitchen window.  Each of these are plausible and
 basically polite responses:
 
 `sentenceList,
-`sentenceItem; \swl{}{It's not open, but there's still some
-cold air coming through the cracks.}{pra}
-`sentenceItem; \swl{}{It's not open, but I closed the window in
-the bedroom.}{pra}
-`sentenceItem; \swl{}{I can't %-- it's stuck.}{pra}
+`sentenceItem; `swl. ->  ->-  --> It's not open, but there's still some
+cold air coming through the cracks. -> pra
+`swl`
+`sentenceItem; `swl. ->  ->-  --> It's not open, but I closed the window in
+the bedroom. -> pra
+`swl`
+`sentenceItem; `swl. ->  ->-  --> I can't %-- it's stuck. -> pra
+`swl`
 `sentenceList`
 
 In each case I have not fulfilled her request `visavis;
@@ -267,8 +286,10 @@ in terms of conversational maxims.  Similarly,
 the `i.Handbook` has this case (example 12, p. 203, chapter 8): 
 
 `sentenceList,
-`sentenceItem; \swl{itm:TheWindow}{The window, it's still open.}{pra}
-`sentenceItem; \swl{itm:AWindow}{A window, it's still open.}{pra}
+`sentenceItem; `swl. -> itm:TheWindow --> The window, it's still open. -> pra
+`swl`
+`sentenceItem; `swl. -> itm:AWindow --> A window, it's still open. -> pra
+`swl`
 `sentenceList`
 
 Chapter authors Jeanette K. Gundel and Thorstein Fretheim 
@@ -280,8 +301,8 @@ wish was `i.expressed` via a `i.close the window`/.`footnote.
 Consider also the case of (`i.Handbook`/, example 9, 
 page 132, chapter 6):
 `sentenceList,
-`sentenceItem; \swl{itm:scribbled}{He scribbled on a living-room wall.}{sem}
-%\udref{HandbookCh.}{}
+`sentenceItem; `swl. -> itm:scribbled --> He scribbled on a living-room wall. -> sem
+`swl`
 `sentenceList`
 
 Barbara Abbott (chapter author) finds the indefinite article 
@@ -394,10 +415,12 @@ So the grandkids should reason as if translating
 between these two implied meanings:
 
 `sentenceList,
-`sentenceItem; \swl{}{I believe the kitchen window
-is open %-- please close it!}{pra}
-`sentenceItem; \swl{}{I believe some window
-is open %-- please close it!}{pra}
+`sentenceItem; `swl. -> ->-  --> I believe the kitchen window
+is open %-- please close it! -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> I believe some window
+is open %-- please close it! -> pra
+`swl`
 `sentenceList`
 
 They have to revise the simplest reading of
@@ -418,8 +441,10 @@ thinking to ourselves (or even saying to others) things
 like
 
 `sentenceList,
-`sentenceItem; \swl{}{Grandma wants us to close the window.}{pra}
-`sentenceItem; \swl{}{He wants a bottle opener.}{pra}
+`sentenceItem; `swl. -> ->-  --> Grandma wants us to close the window. -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> He wants a bottle opener. -> pra
+`swl`
 `sentenceList`
 
 But to respond politely we need to modify
@@ -427,8 +452,10 @@ the parse of their requests to capture the
 `q.essential` content:
 
 `sentenceList,
-`sentenceItem; \swl{}{Grandma wants us to eliminate the cold draft.}{pra}
-`sentenceItem; \swl{}{He wants something to open that bottle.}{pra}
+`sentenceItem; `swl. -> ->-  --> Grandma wants us to eliminate the cold draft. -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> He wants something to open that bottle. -> pra
+`swl`
 `sentenceList`
 
 We have to read outside the literal interpretation
@@ -458,8 +485,10 @@ vegan restaurant, or `i.kitchen window` to
 that is open:
 
 `sentenceList,
-`sentenceItem; \swl{itm:can}{Can I have some milk?}{pra}
-`sentenceItem; \swl{itm:close}{Can you close the kitchen window?}{pra}
+`sentenceItem; `swl. -> itm:can --> Can I have some milk? -> pra
+`swl`
+`sentenceItem; `swl. -> itm:close --> Can you close the kitchen window? -> pra
+`swl`
 `sentenceList`
 
 The point of these `q.mappings` is that they
@@ -512,11 +541,13 @@ are more directly assertorial, or less directly
 illocutionary.  Compare between:
 
 `sentenceList,
-`sentenceItem; \swl{itm:store}{Remember that wine we tasted on the Niagara 
+`sentenceItem; `swl. -> itm:store --> Remember that wine we tasted on the Niagara 
 Peninsula last summer?  Can you find it in our 
-local liquor store?}{pra}
-`sentenceItem; \swl{itm:varietal}{Remember that wine we tasted on the Niagara 
-Peninsula last summer?  What varietal was that again?}{pra}
+local liquor store? -> pra
+`swl`
+`sentenceItem; `swl. -> itm:varietal --> Remember that wine we tasted on the Niagara 
+Peninsula last summer?  What varietal was that again? -> pra
+`swl`
 `sentenceList`
 
 The first sentence in each pair attempts to 
@@ -638,9 +669,11 @@ speech-acts from the relevant cognitive, linguistic, and
 real-world situational contexts:
 
 `sentenceList,
-`sentenceItem; \swl{}{That wine was a Cabernet Franc.}{ref}
-`sentenceItem; \swl{}{Those dogs are my neighbor's.  
-They are very sweet.}{ref}
+`sentenceItem; `swl. -> ->- --> That wine was a Cabernet Franc. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> Those dogs are my neighbor's.  
+They are very sweet. -> ref
+`swl`
 `sentenceList`
 
 Although there is a determinate propositional content being 
@@ -772,15 +805,18 @@ pit bulls), I would be fuzzier about observational warrants
 and could end up in a conversation like:
 
 `sentenceList,
-`sentenceItem; \swl{}{Those dogs are Staffordshires.}{pra}
-`sentenceItem; \swl{}{What's a Staffordshire?}{pra}
-`sentenceItem; \swl{}{It's a breed of dog.}{pra}
+`sentenceItem; `swl. -> ->- --> Those dogs are Staffordshires. -> pra
+`swl`
+`sentenceItem; `swl. -> ->- --> What's a Staffordshire? -> pra
+`swl`
+`sentenceItem; `swl. -> ->- --> It's a breed of dog. -> pra
+`swl`
 `sentenceList`
  
 `noindent;Here I still don't really have a picture of what it is 
 like to tell observationally that a dog is a Staffordshire.  
 There may not be any visual cues %-- at least none I 
-know of %-- which announce to the world that some dog's
+know of %-- which announce to the world that some dog is
 a Staffy (compared to those announcing that it is male,
 say).  But insofar as I am acquainted 
 with the concept `i.dog breed`/, I also understand 
@@ -927,10 +963,12 @@ constituents in the service of pragmatic ends.
 Consider:
 
 `sentenceList,
-`sentenceItem; \swl{}{My colleague Ms. O'Shea would like to interview
-Mr. Jones, who's an old friend of mine.  Can he take this call?}{pra}
-`sentenceItem; \swl{itm:Jones}{I'm sorry, this is his secretary.  Mr. Jones
-is not available at the moment.}{pra}
+`sentenceItem; `swl. -> ->- --> My colleague Ms. O'Shea would like to interview
+Mr. Jones, who's an old friend of mine.  Can he take this call? -> pra
+`swl`
+`sentenceItem; `swl. -> itm:Jones --> I'm sorry, this is his secretary.  Mr. Jones
+is not available at the moment. -> pra
+`swl`
 `sentenceList`
 
 It sounds like Ms. O'Shea is trying to use personal
@@ -948,12 +986,14 @@ Or:
 
 
 `sentenceList,
-`sentenceItem; \swl{}{Mr. Jones, were you present at a meeting where
+`sentenceItem; `swl. -> ->-  --> Mr. Jones, were you present at a meeting where
 the governor promised your employer
-a contract in exchange for campaign contributions?}{pra}
-`sentenceItem; \swl{}{After consulting with my lawyers, I decline
+a contract in exchange for campaign contributions? -> pra
+`swl`
+`sentenceItem; `swl. -> ->-  --> After consulting with my lawyers, I decline
 to answer that question on the grounds that it
-may incriminate me.}{pra}
+may incriminate me. -> pra
+`swl`
 `sentenceList`
 
 Here Mr. Jones neither confirms nor denies his
@@ -968,8 +1008,10 @@ a complete breakdown of language:
 
 
 `sentenceList,
-`sentenceItem; \swl{itm:isJones}{Is Jones there?}{pra}
-`sentenceItem; \swl{itm:not}{He is not available.}{pra}
+`sentenceItem; `swl. -> itm:isJones --> Is Jones there? -> pra
+`swl`
+`sentenceItem; `swl. -> itm:not --> He is not available. -> pra
+`swl`
 `sentenceList`
 
 The speaker of (\ref{itm:not}) does not
@@ -1127,12 +1169,15 @@ of logical possibilities:
 
 
 `sentenceList,
-`sentenceItem; \swl{}{If the kitchen window is closed,
-we can see if other windows are open.}{pra}
-`sentenceItem; \swl{}{If no windows are open,
-we can see if there is a draft through the window-cracks.}{pra}
-`sentenceItem; \swl{}{If there is no draft, we can
-ask if she wants a sweater.}{pra}
+`sentenceItem; `swl. -> ->- --> If the kitchen window is closed,
+we can see if other windows are open. -> pra
+`swl`
+`sentenceItem; `swl. -> ->- --> If no windows are open,
+we can see if there is a draft through the window-cracks. -> pra
+`swl`
+`sentenceItem; `swl. -> ->- --> If there is no draft, we can
+ask if she wants a sweater. -> pra
+`swl`
 `sentenceList`
 
 This is still a logical process: starting from an
@@ -1249,8 +1294,10 @@ compounds, etc.  It would be the kind of theory motivated
 by cases like
 
 `sentenceList,
-`sentenceItem; \swl{}{This wine is a young Syrah.}{log}
-`sentenceItem; \swl{}{My cousin adopted one of my neighbor's dog's puppies.}{log}
+`sentenceItem; `swl. -> ->- --> This wine is a young Syrah. -> log
+`swl`
+`sentenceItem; `swl. -> ->- --> My cousin adopted one of my neighbor's dog's puppies. -> log
+`swl`
 `sentenceList`
 
 where morphosyntactic form %-- possessives, adjective/noun
@@ -1277,11 +1324,14 @@ such as these (supplementing my earlier, more preliminary discussion of
 (\ref{itm:ants})-(\ref{itm:princess})):
 
 `sentenceList,
-`sentenceItem; \swl{itm:maj}{The majority of students polled were
-opposed to tuition increases.}{log}
-`sentenceItem; \swl{itm:most}{Most of the students expressed disappointment
-about tuition increases.}{log}
-`sentenceItem; \swl{itm:many}{Many students have protested the tuition increases.}{log}
+`sentenceItem; `swl. -> itm:maj --> The majority of students polled were
+opposed to tuition increases. -> log
+`swl`
+`sentenceItem; `swl. -> itm:most --> Most of the students expressed disappointment
+about tuition increases. -> log
+`swl`
+`sentenceItem; `swl. -> itm:many --> Many students have protested the tuition increases. -> log
+`swl`
 `sentenceList`
 `p`
 
@@ -1427,8 +1477,10 @@ logical structures can be considered by subtly varying
 the discourse, like:
 
 `sentenceList,
-`sentenceItem; \swl{}{Most students oppose the tuition increase.}{sem}
-`sentenceItem; \swl{itm:indef}{Most students oppose a tuition increase.}{sem}
+`sentenceItem; `swl. -> ->- --> Most students oppose the tuition increase. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:indef --> Most students oppose a tuition increase. -> sem
+`swl`
 `sentenceList`
 
 These show the possibility of `i.increase` being singular
@@ -1442,12 +1494,14 @@ a discussion about hikes in general.
 But maybe not; cases like these are perfectly plausible:
 
 `sentenceList,
-`sentenceItem; \swl{itm:today}{Today the state university system
+`sentenceItem; `swl. -> itm:today --> Today the state university system
 announced plans to raise tuition by
-at least 10\%.  Most students oppose a tuition increase.}{sem}
-`sentenceItem; \swl{itm:colleges}{Colleges all over the country, facing
+at least 10\%.  Most students oppose a tuition increase. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:colleges --> Colleges all over the country, facing
 rising costs, have had to raise tuition, but
-most students oppose a tuition increase.}{sem}
+most students oppose a tuition increase. -> sem
+`swl`
 `sentenceList`
 
 In (\ref{itm:today}) the definite article could also be used, but saying
@@ -1557,13 +1611,17 @@ varying how the subject noun-phrases are conceptualized
 propositional and linguistic composition can break down:
 
 `sentenceList,
-`sentenceItem; \swl{itm:sas}{Student after student came out against the tuition hikes.}{sem}
-`sentenceItem; \swl{itm:substantial}{A substantial number of students
-have come out against the tuition hikes.}{sem}
-`sentenceItem; \swl{itm:mass}{The number of students protesting the tuition hikes
-may soon reach a critical mass.}{sem}
-`sentenceItem; \swl{itm:tipping}{Protests against the tuition hikes
-may have reached a tipping point.}{sem}
+`sentenceItem; `swl. -> itm:sas --> Student after student came out against the tuition hikes. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:substantial --> A substantial number of students
+have come out against the tuition hikes. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:mass --> The number of students protesting the tuition hikes
+may soon reach a critical mass. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:tipping --> Protests against the tuition hikes
+may have reached a tipping point. -> sem
+`swl`
 `sentenceList`
 
 Each of these sentences says something about a large number
@@ -1935,8 +1993,9 @@ the `q.Liverpool` examples for city qua architecture and qua locale)
 parse-graph.  And in, say, 
 
 `sentenceList,
-`sentenceItem; \swl{itm:pipe}{We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well.}{sco}
-\udref{en_gum-ud-train}{email-enronsent03_01-0143}
+`sentenceItem; `swl. -> itm:pipe --> We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well. -> sco
+`swl`
+`udref -> en_gum-ud-train -> email-enronsent03_01-0143 ;;
 `sentenceList`
 
 there is a two-layer scope implication: given `i.also` we read the hearer as knowing that 

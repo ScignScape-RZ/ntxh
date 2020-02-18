@@ -247,8 +247,10 @@ pragmatically, and sensorially).  This is suggested by the
 substitutability of just `i.toast` for `i.buttered toast`/:
 
 `sentenceList,
-`sentenceItem; \swl{}{I snacked on toast and coffee.}{sem}
-`sentenceItem; \swl{}{I snacked on buttered toast and iced coffee.}{sem}
+`sentenceItem; `swl. -> ->- --> I snacked on toast and coffee. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> I snacked on buttered toast and iced coffee. -> sem
+`swl`
 `sentenceList`
 
 Because the first sentence is perfectly clear, it seems
@@ -276,8 +278,10 @@ given how erstwhile aggregate expressions become established units.
 Different phrases exhibit different levels of entrenchment:
 
 `sentenceList,
-`sentenceItem; \swl{}{I snacked on toast and instant coffee.}{sem}
-`sentenceItem; \swl{}{I snacked on toast and Eritrean coffee.}{sem}
+`sentenceItem; `swl. -> ->- --> I snacked on toast and instant coffee. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> I snacked on toast and Eritrean coffee. -> sem
+`swl`
 `sentenceList`
 
 Arguably `q.instant coffee` is a de facto lexical unit, partly
@@ -614,13 +618,19 @@ plurality of coffee (as liquid, or maybe coffee grounds/beans)
 in spatial and/or physical/dynamic terms.  So we have:
 
 `sentenceList,
-`sentenceItem; \swl{itm:coffeeshirt}{There's some coffee on your shirt.}{ref}
-`sentenceItem; \swl{}{There's coffee all over the table.}{ref}
-`sentenceItem; \swl{}{She poured coffee from an ornate beaker.}{ref}
-`sentenceItem; \swl{}{There's too much coffee in the grinder.}{ref}
-`sentenceItem; \swl{}{There's a lot of coffee left in the pot.}{ref}
-`sentenceItem; \swl{}{There's a lot of coffee left in the pot
-%-- should I pour it out?}{ref}
+`sentenceItem; `swl. -> itm:coffeeshirt --> There's some coffee on your shirt. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There's coffee all over the table. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> She poured coffee from an ornate beaker. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There's too much coffee in the grinder. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There's a lot of coffee left in the pot. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There's a lot of coffee left in the pot
+%-- should I pour it out? -> ref
+`swl`
 `sentenceList`
 
 These sentences use phrases associated with plurality (`i.all over`/,
@@ -631,10 +641,13 @@ With count-plurals the collective is figured more as an
 aggregate of discrete individuals:
 
 `sentenceList,
-`sentenceItem; \swl{}{There are coffees all over the far wall at the espresso bar.}{ref}
-`sentenceItem; \swl{}{She poured coffees from an ornate beaker.}{ref}
-`sentenceItem; \swl{itm:coffeetable}{There are a lot of coffees left on the table
- %-- shall I pour them out?}{ref}
+`sentenceItem; `swl. -> ->- --> There are coffees all over the far wall at the espresso bar. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> She poured coffees from an ornate beaker. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:coffeetable --> There are a lot of coffees left on the table
+ %-- shall I pour them out? -> ref
+`swl`
 `sentenceList`
 `p`
 
@@ -664,10 +677,13 @@ collections.  This is one dimension I left unexamined
 in the earlier `q.New York` examples: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:NYboroughs}{New Yorkers live in one of five boroughs.}{ref}
-`sentenceItem; \swl{itm:NYDem}{New Yorkers reliably vote for Democratic presidential candidates.}{ref}
-`sentenceItem; \swl{itm:NYcommute}{New Yorkers constantly complain about how long it takes to commute
-to New York City.}{ref}
+`sentenceItem; `swl. -> itm:NYboroughs --> New Yorkers live in one of five boroughs. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:NYDem --> New Yorkers reliably vote for Democratic presidential candidates. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:NYcommute --> New Yorkers constantly complain about how long it takes to commute
+to New York City. -> ref
+`swl`
 `sentenceList`
 
 The first sentence is consistent with a reading applied to
@@ -754,8 +770,10 @@ of both semantics and grammar proper; maybe it is even prelinguistic.
 Consider
 
 `sentenceList,
-`sentenceItem; \swl{itm:pf}{People fed the rescued dogs.}{sem}
-`sentenceItem; \swl{itm:ve}{Vets examined the rescued dogs.}{sem}
+`sentenceItem; `swl. -> itm:pf --> People fed the rescued dogs. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:ve --> Vets examined the rescued dogs. -> sem
+`swl`
 `sentenceList`
 
 There appears to be no explicit principle either in the semantics
@@ -771,10 +789,14 @@ dogs have to be physically brought to).  For a similar case-study,
 consider the sentences:
 
 `sentenceList,
-`sentenceItem; \swl{}{Every singer performed two songs.}{sem}
-`sentenceItem; \swl{}{Everyone performed two songs.}{sem}
-`sentenceItem; \swl{}{Everyone sang along to two songs.}{sem}
-`sentenceItem; \swl{}{Everyone in the audience sang along to two songs.}{sem}
+`sentenceItem; `swl. -> ->- --> Every singer performed two songs. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Everyone performed two songs. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Everyone sang along to two songs. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Everyone in the audience sang along to two songs. -> sem
+`swl`
 `sentenceList`
 
 The last of these examples strongly suggests that of potentially
@@ -805,16 +827,17 @@ alone.  After all, in more exotic but not implausible
 scenarios the readings would be reversed:
 
 `sentenceList,
-`sentenceItem; \swl{}{The rescued dogs had been treated by vets in the past
-(but were subsequently abandoned by their owners).}[]{sem}%
-[The rescued dogs had been treated by vets in the past.]
-`sentenceItem; \swl{}{Every singer performed (the last) two songs
-(for the grand finale).}[]{sem}%
-[Every singer performed the last two songs for the grand finale.]
-`sentenceItem; \swl{}{Everyone in the audience sang along to two songs
+`sentenceItem; `swl. -> ->- --> The rescued dogs had been treated by vets in the past
+(but were subsequently abandoned by their owners). ->>  -> sem ->> The rescued dogs had been treated by vets in the past.
+`swl`
+`sentenceItem; `swl. -> ->- --> Every singer performed (the last) two songs
+(for the grand finale). ->>  -> sem ->> Every singer performed the last two songs for the grand finale.
+`swl`
+`sentenceItem; `swl. -> ->- --> Everyone in the audience sang along to two songs
 (they were randomly handed lyrics to different songs when
 they came in, and we asked them to join in when the song being
-performed onstage matched the lyrics they had in hand).}{sem}
+performed onstage matched the lyrics they had in hand). -> sem
+`swl`
 `sentenceList`
 
 In short, it's not as if dictionary entries would specify that
@@ -998,13 +1021,15 @@ available for follow-up conversation:
 
 
 `sentenceList,
-`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+`sentenceItem; `swl. -> ->- --> The rescued dogs were treated by an experienced vet.
 One needed surgery and one got a blood transfusion.  We went there
-yesterday and both looked much better.}{sem}
-`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+yesterday and both looked much better. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> The rescued dogs were treated by an experienced vet.
 One had been struck by a car and needed surgery on his leg.  We
 went there yesterday and saw debris from another car crash
-%-- it's a dangerous stretch of highway.}{sem}
+%-- it's a dangerous stretch of highway. -> sem
+`swl`
 `sentenceList`
 
 In the first sentence `i.there` designates the veterinary clinic, while in
@@ -1014,13 +1039,16 @@ involved in the original sentence (as locations and also
 consider these final three examples).
 
 `sentenceList,
-`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
-We saw a lot of other dogs getting medical attention.}{sem}
-`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
-It looked very modern, like a human hospital.}{sem}
-`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+`sentenceItem; `swl. -> ->- --> The rescued dogs were treated by an experienced vet.
+We saw a lot of other dogs getting medical attention. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> The rescued dogs were treated by an experienced vet.
+It looked very modern, like a human hospital. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> The rescued dogs were treated by an experienced vet.
 We looked around and realized how dangerous that road is %--
-for humans as well as dogs.}{sem}
+for humans as well as dogs. -> sem
+`swl`
 `sentenceList`
 `p`
 
@@ -1097,11 +1125,14 @@ of the underlying lexeme.  In the case of `q.rescue` we have less
 literal and more humorous or idiomatic examples like:
 
 `sentenceList,
-`sentenceItem; \hspace{-3pt}\swl{}{The trade rescued a star athlete from a losing team.}{idi}
-`sentenceItem; \swl{}{New mathematical models rescued her original research from obscurity.}{idi}
-`sentenceItem; \hspace{-3pt}\swl{}{Discovery of nearby earth-like planets rescued that
+`sentenceItem; \hspace{-3pt}`swl. -> ->- --> The trade rescued a star athlete from a losing team. -> idi
+`swl`
+`sentenceItem; `swl. -> ->- --> New mathematical models rescued her original research from obscurity. -> idi
+`swl`
+`sentenceItem; \hspace{-3pt}`swl. -> ->- --> Discovery of nearby earth-like planets rescued that
 star from its reputation as ordinary and boring and revealed that its solar
-system may actually be extraordinary.}{idi}
+system may actually be extraordinary. -> idi
+`swl`
 `sentenceList`
 
 Each of these cases subverts the conventional `q.rescue` script by
@@ -1270,24 +1301,35 @@ in singular or plural forms evokes schema which guide situational
 interpretations.  So for instance:
 
 `sentenceList,
-`sentenceItem; \swl{}{My favorite band gave a free concert last night.
-They played some new songs.}{ref}
-`sentenceItem; \swl{}{There was some pizza earlier, but it's all gone.}{ref}
-`sentenceItem; \swl{}{There were some slices of pizza earlier, but it's all gone.}{ref}
-`sentenceItem; \swl{}{There were some slices of toast earlier, but there's none left.}{ref}
-`sentenceItem; \swl{}{There was some toast earlier, but they're all gone.}{ref}
-`sentenceItem; \swl{}{That franchise had a core of talented young players, but it
-got eroded by trades and free agency.}{ref}
-`sentenceItem; \swl{}{That franchise had a cohort of talented players, but they
-drifted away due to trades and free agency.}{ref}
-`sentenceItem; \swl{}{Many star players were drafted by that franchise, but it
-has not won a title in decades.}{ref}
-`sentenceItem; \swl{}{Many star players were drafted by that franchise, but they
-failed to surround them with enough depth.}{ref}
-`sentenceItem; \swl{}{Many star players were drafted by that franchise, but they
-were not surrounded with enough depth.}{ref}
-`sentenceItem; \swl{}{Many star players were drafted by that franchise, but they
-did not have enough depth (around them).}{ref}
+`sentenceItem; `swl. -> ->- --> My favorite band gave a free concert last night.
+They played some new songs. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There was some pizza earlier, but it's all gone. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There were some slices of pizza earlier, but it's all gone. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There were some slices of toast earlier, but there's none left. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> There was some toast earlier, but they're all gone. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> That franchise had a core of talented young players, but it
+got eroded by trades and free agency. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> That franchise had a cohort of talented players, but they
+drifted away due to trades and free agency. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> Many star players were drafted by that franchise, but it
+has not won a title in decades. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> Many star players were drafted by that franchise, but they
+failed to surround them with enough depth. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> Many star players were drafted by that franchise, but they
+were not surrounded with enough depth. -> ref
+`swl`
+`sentenceItem; `swl. -> ->- --> Many star players were drafted by that franchise, but they
+did not have enough depth (around them). -> ref
+`swl`
 `sentenceList`
 
 Plurality here is introduced not only by isolated morphology (like `i.slices`/,
@@ -1363,12 +1405,15 @@ because only the band's `i.musicians` (not stage crew, managers, etc.)
 typically actually perform:
 
 `sentenceList,
-`sentenceItem; \swl{tour}{The band planned a tour, where
-they debuted new songs.}{ref}
-`sentenceItem; \swl{itm:teamflew}{The team flew to
-New York and they played the Yankees.}{ref}
-`sentenceItem; \swl{itm:theflies}{The city's largest theater company
-will perform `q.The Flies`/.}{ref}
+`sentenceItem; `swl. -> tour --> The band planned a tour, where
+they debuted new songs. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:teamflew --> The team flew to
+New York and they played the Yankees. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:theflies --> The city's largest theater company
+will perform `q.The Flies`/. -> ref
+`swl`
 `sentenceList`
 
 Likewise in (\ref{itm:teamflew}), only the athletes are referenced via
@@ -1594,8 +1639,10 @@ concept as a schema or prototype to thinking of its extension (maybe in some con
 Compare:
 
 `sentenceList,
-`sentenceItem; \swl{itm:rhinor}{Rhinos in that park are threatened by poachers.}{sem}
-`sentenceItem; \swl{}{Young rhinos are threatened by poachers.}{sem}
+`sentenceItem; `swl. -> itm:rhinor --> Rhinos in that park are threatened by poachers. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Young rhinos are threatened by poachers. -> sem
+`swl`
 `sentenceList`
 
 Both sentences focus a conceptual lens in greater detail than `i.rhino` in general, but
@@ -1655,7 +1702,8 @@ different examples, invoking a `q.script` for further elaboration, or for buildi
 In, say, 
 
 `sentenceList,
-`sentenceItem; \swl{}{Let's find a restaurant that's family-friendly.}{sem}
+`sentenceItem; `swl. -> ->- --> Let's find a restaurant that's family-friendly. -> sem
+`swl`
 `sentenceList`
 
 allowing such one-off narrowing is a feature
@@ -1820,8 +1868,10 @@ interpretation.  A benefactive with an `q.artifact` noun, for example,
 almost forces the thing to be heard as somehow disrepaired:
 
 `sentenceList,
-`sentenceItem; \swl{}{I got glue for your daughter.}{sem}
-`sentenceItem; \swl{}{I got glue for your coffee mug.}{sem}
+`sentenceItem; `swl. -> ->- --> I got glue for your daughter. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> I got glue for your coffee mug. -> sem
+`swl`
 `sentenceList`
 
 We gather (in the second case) that the mug is broken %-- but this is never spelled out
@@ -1831,10 +1881,14 @@ a locative construction rarely targets `q.sentient` nouns, so in
 (reprising (\ref{itm:grandma})-(\ref{itm:press}))
 
 `sentenceList,
-`sentenceItem; \swl{}{We're going to Grandma!}{sem}
-`sentenceItem; \swl{}{Let's go to him right now.}{sem}
-`sentenceItem; \swl{}{Let's go to the lawyers.}{sem}
-`sentenceItem; \swl{}{Let's go to the press.}{sem}
+`sentenceItem; `swl. -> ->- --> We're going to Grandma! -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Let's go to him right now. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Let's go to the lawyers. -> sem
+`swl`
+`sentenceItem; `swl. -> ->- --> Let's go to the press. -> sem
+`swl`
 `sentenceList`
 
 we mentally substitute the person with the place where they live or work.

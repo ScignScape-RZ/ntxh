@@ -16,9 +16,14 @@ In some cases word-relations can still be theorized mostly via
 syntax.  Consider hypothetical, example sentences like 
 
 `sentenceList,
-`sentenceItem; \swl{itm:having}{His having lied in the past damages his credibilty in the present.}{syn}
-`sentenceItem; \swl{itm:whether}{Voters question whether he is truthful this time around.}{syn}
+`sentenceItem; `swl. -> itm:having --> 
+His having lied in the past damages his credibilty in the present. -> syn
+`swl`
+`sentenceItem; `swl. -> itm:whether --> 
+Voters question whether he is truthful this time around. -> syn
+`swl`
 `sentenceList`
+
 
 In (\ref{itm:having}), `i.having` is necessary to syntactically transform its ground 
 `i.lied` from a verb-form to a noun (something which can be inserted into a 
@@ -69,9 +74,12 @@ or between morphological classes (singular/plural, object/location, etc.).
 Consider locative constructions like 
 
 `sentenceList,
-`sentenceItem; \swl{itm:grandma}{Let's go to Grandma.}{syn}
-`sentenceItem; \swl{itm:lawyers}{Let's go to the lawyers.}{syn}
-`sentenceItem; \swl{itm:press}{Let's go to the press.}{syn}
+`sentenceItem; `swl. -> itm:grandma --> Let's go to Grandma. -> syn
+`swl`
+`sentenceItem; `swl. -> itm:lawyers --> Let's go to the lawyers. -> syn
+`swl`
+`sentenceItem; `swl. -> itm:press --> Let's go to the press. -> syn
+`swl`
 `sentenceList`
 
 Here nouns like `i.Grandma`/, `i.the lawyers`/, and `i.the press` are 
@@ -295,9 +303,12 @@ varied, even among similar sentences at the surface level.
 Compare between examples like:
 
 `sentenceList,
-`sentenceItem; \swl{itm:black}{I saw my neighbor's two black dogs.}{sem}
-`sentenceItem; \swl{itm:rescued}{I saw my neighbor's two rescued dogs.}{sem}
-`sentenceItem; \swl{itm:latest}{I saw my neighbor's two latest dogs.}{sem}
+`sentenceItem; `swl. -> itm:black --> I saw my neighbor's two black dogs. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:rescued --> I saw my neighbor's two rescued dogs. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:latest --> I saw my neighbor's two latest dogs. -> sem
+`swl`
 `sentenceList`
 
 Whereas (\ref{itm:black}) presents a fairly straightforward conceptual 
@@ -326,9 +337,11 @@ interpret this in terms of patients the vet has seen over the course of
 a day: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:vet}{We have to wait until after the vet's two latest dogs.}{sem}
-`sentenceItem; \swl{itm:organization}{I'm concerned for the rescue organization's
-two latest dogs.}{sem}
+`sentenceItem; `swl. -> itm:vet --> We have to wait until after the vet's two latest dogs. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:organization --> I'm concerned for the rescue organization's
+two latest dogs. -> sem
+`swl`
 `sentenceList`
  
 Understanding the relevant time-frame depends on understanding the relation
@@ -355,8 +368,10 @@ involving the dogs' eventual owners; in some context the more
 generic meaning of `i.rescue` could supersede:
 
 `sentenceList,
-`sentenceItem; \swl{itm:boatmen}{Boatmen rescued dogs from the flooded streets.}{sem}
-`sentenceItem; \swl{itm:firemen}{Firemen rescued dogs from the burning building.}{sem}
+`sentenceItem; `swl. -> itm:boatmen --> Boatmen rescued dogs from the flooded streets. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:firemen --> Firemen rescued dogs from the burning building. -> sem
+`swl`
 `sentenceList`
 
 Neither (\ref{itm:boatmen}) nor (\ref{itm:firemen}) imply that the dogs were abandoned, or 
@@ -456,12 +471,17 @@ semantic readings bifurcate in ways wholly dependent on
 extra-linguitic conceptualization. Consider for instance: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:boroughs}{All New Yorkers live in one of five boroughs.}{sem}
-`sentenceItem; \swl{itm:commute}{All New Yorkers complain about how long it 
-takes to commute to New York City.}{sem}
-`sentenceItem; \swl{itm:Cambridge}{The south side of Cambridge voted Conservative.}{ref}
-`sentenceItem; \swl{itm:lower}{Lower Manhattan voted Republican.}{ref}
-`sentenceItem; \swl{itm:si}{Staten Island voted Republican.}{ref}
+`sentenceItem; `swl. -> itm:boroughs --> All New Yorkers live in one of five boroughs. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:commute --> All New Yorkers complain about how long it 
+takes to commute to New York City. -> sem
+`swl`
+`sentenceItem; `swl. -> itm:Cambridge --> The south side of Cambridge voted Conservative. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:lower --> Lower Manhattan voted Republican. -> ref
+`swl`
+`sentenceItem; `swl. -> itm:si --> Staten Island voted Republican. -> ref
+`swl`
 `sentenceList`
 
 Sentence (\ref{itm:Cambridge}) is taken from the `i.Handbook of Pragmantics` 
@@ -552,11 +572,14 @@ considerations resolve the ambiguity by rejecting one or another
 Consider: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:beat}{The Leafs failed to beat the Habs for the first time this year.}{amb}
-`sentenceItem; \swl{itm:consecutive}{The Leafs failed to win two consecutive games for the 
-first time this year.}{amb}
-`sentenceItem; \swl{itm:goal}{The Leafs failed to score a goal for the 
-first time this year.}{amb}
+`sentenceItem; `swl. -> itm:beat --> The Leafs failed to beat the Habs for the first time this year. -> amb
+`swl`
+`sentenceItem; `swl. -> itm:consecutive --> The Leafs failed to win two consecutive games for the 
+first time this year. -> amb
+`swl`
+`sentenceItem; `swl. -> itm:goal --> The Leafs failed to score a goal for the 
+first time this year. -> amb
+`swl`
 `sentenceList`
   
 Sentence (\ref{itm:beat}) has two competing readings: either the Toronto Maple Leafs 
@@ -592,12 +615,16 @@ localized in the communicated ideas themselves, but in their
 typical linguistic encoding: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:allresidents}{All residents of the city of New York live in one of five boroughs.}{log}
-`sentenceItem; \swl{itm:manyresidents}{Many residents of the New York metropolitan area 
-complain about how long it takes to commute to New York City.}{log}
-`sentenceItem; \swl{itm:SouthCambridge}{All districts on the south side of Cambridge voted Conservative.}{log}
-`sentenceItem; \swl{itm:leafshabs}{For the first time this year, the Leafs failed to beat 
-the Habs.}{log}
+`sentenceItem; `swl. -> itm:allresidents --> All residents of the city of New York live in one of five boroughs. -> log
+`swl`
+`sentenceItem; `swl. -> itm:manyresidents --> Many residents of the New York metropolitan area 
+complain about how long it takes to commute to New York City. -> log
+`swl`
+`sentenceItem; `swl. -> itm:SouthCambridge --> All districts on the south side of Cambridge voted Conservative. -> log
+`swl`
+`sentenceItem; `swl. -> itm:leafshabs --> For the first time this year, the Leafs failed to beat 
+the Habs. -> log
+`swl`
 `sentenceList`
 
 These versions are more logically transparent, in that their propositional 
@@ -615,14 +642,20 @@ Geoffrey Nunberg's chapter (15) in the
 factors determining proxies and substitutions in referential contexts: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:parked}{I am parked out back.}[(example 3, page 371)]{ref}
-`sentenceItem; \swl{itm:waiting}{I am parked out back and have been waiting for 15 minutes.}
-[(example 3)]{ref}
-`sentenceItem; \swl{itm:start}{I am parked out back and may not start.}[(example 6, page 371)]{ref}
-`sentenceItem; \swl{itm:Whitney}{I'm in the Whitney Museum.}[(page 375)]{ref}
-`sentenceItem; \swl{itm:beers}{I drank two beers.}[(page 375)]{ref}
-`sentenceItem; \swl{itm:Michelobs}{I drank two Michelobs.}[(page 375)]{ref}
-`sentenceItem; \swl{itm:Sauternes}{I drank two Sauternes last night.}[(page 375)]{ref}
+`sentenceItem; `swl. -> itm:parked --> I am parked out back. ->> (example 3, page 371) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:waiting --> I am parked out back and have been waiting for 15 minutes. ->> (example 3) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:start --> I am parked out back and may not start. ->> (example 6, page 371) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:Whitney --> I'm in the Whitney Museum. ->> (page 375) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:beers --> I drank two beers. ->> (page 375) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:Michelobs --> I drank two Michelobs. ->> (page 375) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:Sauternes --> I drank two Sauternes last night. ->> (page 375) -> ref
+`swl`
 `sentenceList`  
 
 Someone says `q.I am parked` as proxy for their car, or `q.in the Whitney` as 
@@ -644,9 +677,11 @@ We accept an artist proxying her work in a museum, but
 (\ref{itm:autoshop}) 
 
 `sentenceList,
-`sentenceItem; \swl{itm:library}{I'm in the library.}[(said by an author whose books are there)]{ref}
-`sentenceItem; \swl{itm:autoshop}{I've been in the auto shop for the 
-last 15 days.}{ref}
+`sentenceItem; `swl. -> itm:library --> I'm in the library. ->> (said by an author whose books are there) -> ref
+`swl`
+`sentenceItem; `swl. -> itm:autoshop --> I've been in the auto shop for the 
+last 15 days. -> ref
+`swl`
 `sentenceList`  
 
 Nunberg attributes these discrepancies to cultural conventions, like the
@@ -656,9 +691,12 @@ versus savoring a celebrated wine.  Here too there are
 logically transparent alternatives: 
 
 `sentenceList,
-`sentenceItem; \swl{}{My car is parked out back and have been waiting for 15 minutes.}{log}
-`sentenceItem; \swl{}{I drank two pints of beer last night.}{log}
-`sentenceItem; \swl{}{I tried two different Sauternes last night.}{log}
+`sentenceItem; `swl. -> ->- --> My car is parked out back and have been waiting for 15 minutes. -> log
+`swl`
+`sentenceItem; `swl. -> ->- --> I drank two pints of beer last night. -> log
+`swl`
+`sentenceItem; `swl. -> ->- --> I tried two different Sauternes last night. -> log
+`swl`
 `sentenceList`
 
 Again, though, the seemingly simpler versions %-- whose forms 
@@ -791,7 +829,8 @@ Cognitive Grammar literature.
 In Ronald Langacker's `i.Foundations of Cognitive Grammar`/, the sentence
 
 `sentenceList,
-`sentenceItem; \swl{itm:threetimes}{Three times, students asked an interesting question.}{sco}
+`sentenceItem; `swl. -> itm:threetimes --> Three times, students asked an interesting question. -> sco
+`swl`
 `sentenceList`
 
 is used to demonstrate how
@@ -835,7 +874,8 @@ The mapping of (\ref{itm:threetimes}) to a logical
 substratum would be more transparent with a case like: 
 
 `sentenceList,
-`sentenceItem; \swl{itm:threes}{Three students asked interesting questions.}{log}
+`sentenceItem; `swl. -> itm:threes --> Three students asked interesting questions. -> log
+`swl`
 `sentenceList`
 
 (\ref{itm:threes}) is a more direct translation of the facts
@@ -865,25 +905,23 @@ This is not an isolated example.  Many sentences can be provided with similar
 phrase-structure complications, particularly with respect to singular/plural agreement.
 
 `sentenceList,
-`sentenceItem; \swl{}{Time after time, tourists (a tourist) walk(s) by this building
-with no idea of its history.}[]{sco}%
-[Time after time, tourists walk by this building
+`sentenceItem; `swl. -> ->- --> Time after time, tourists (a tourist) walk(s) by this building
+with no idea of its history. ->> ->- -> sco ->> Time after time, tourists walk by this building
 with no idea of its history.]
 
-`sentenceItem; \swl{}{The streets around here are confusing; often people (someone)
-will ask me for directions.}[]{sco}%
-[The streets around here are confusing; often someone
+`sentenceItem; `swl. -> ->-  --> The streets around here are confusing; often people (someone)
+will ask me for directions. ->> ->- -> sco ->> The streets around here are confusing; often someone
 will ask me for directions.]
 
-`sentenceItem; \swl{itm:students}{Student after student came with their (his/her)
-paper to complain about my grade(s).}[]{sco}%
-[Student after student came with their
-paper to complain about my grades.]
+`sentenceItem; `swl. -> itm:students --> Student after student came with their (his/her)
+paper to complain about my grade(s). ->> ->- -> sco ->> Student after student came with their
+paper to complain about my grades.
+`swl`
 
-`sentenceItem; \swl{itm:parents}{Student after student %-- and their (his/her) parents
-%-- complained about the tuition increase.}[]{sco}%
-[Student after student %-- and their parents
-%-- complained about the tuition increase.]
+`sentenceItem; `swl. -> itm:parents --> Student after student %-- and their (his/her) parents
+%-- complained about the tuition increase. ->> ->- -> sco ->> Student after student %-- and their parents
+%-- complained about the tuition increase.
+`swl`
 `sentenceList`
 
 On a straightforward phrase-structure reading, `i.student after student` reduces to an
@@ -1112,22 +1150,31 @@ so forth.  In the most recent Universal Dependencies Shared Task corpus
 we can find examples like:  
 
 `sentenceList,
-`sentenceItem; \swl{itm:tumour}{It is the most common tumour found in babies, occurring in one of every 35,000 births.}{log}
-\udref{en_pud}{n01051007}
-`sentenceItem; \swl{itm:Dengue}{Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.}{log}
-\udref{en_partut-ud-train}{en_partut-ud-1498}
-`sentenceItem; \swl{itm:TalibanKarzai}{Many Taliban living in Afghanistan voted for President Karzai.}{log}
-\udref{en_ewt-ud-train}{w03002048}
-`sentenceItem; \swl{itm:Ashraf}{Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.}{log}
-\udref{en_ewt-ud-train}{weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112}
-`sentenceItem; \swl{itm:ChinaSpace}{Most experts believe China intends to develop a small space station of its own over the next several years.}{log}
-\udref{en_ewt-ud-train}{newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020}
-`sentenceItem; \swl{itm:tastings}{Check out their wine tastings every Friday night!}{log}
-\udref{en_ewt-ud-train}{reviews-322225-0005}
-`sentenceItem; \swl{itm:tag}{For each start tag , there is a corresponding end tag.}{log}
-\udref{en_lines-ud-train}{166}
-`sentenceItem; \swl{itm:Warhol}{Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.}{log}
-\udref{en_gum-ud-train}{GUM_news_warhol-35}
+`sentenceItem; `swl. -> itm:tumour --> It is the most common tumour found in babies, occurring in one of every 35,000 births. -> log
+`swl`
+`udref -> en_pud -> n01051007 ;;
+`sentenceItem; `swl. -> itm:Dengue --> Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year. -> log
+`swl`
+`udref -> en_partut-ud-train -> en_partut-ud-1498 ;;
+`sentenceItem; `swl. -> itm:TalibanKarzai --> Many Taliban living in Afghanistan voted for President Karzai. -> log
+`swl`
+`udref -> en_ewt-ud-train -> w03002048 ;;
+`sentenceItem; `swl. -> itm:Ashraf --> Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents. -> log
+`swl`
+`udref -> en_ewt-ud-train -> weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112 ;;
+`sentenceItem; `swl. -> itm:ChinaSpace --> Most experts believe China intends to develop a small space station of its own over the next several years. -> log
+`swl`
+`udref -> en_ewt-ud-train -> newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020
+`swl`
+`sentenceItem; `swl. -> itm:tastings --> Check out their wine tastings every Friday night! -> log
+`swl`
+`udref -> en_ewt-ud-train -> reviews-322225-0005 ;;
+`sentenceItem; `swl. -> itm:tag --> For each start tag , there is a corresponding end tag. -> log
+`swl`
+`udref -> en_lines-ud-train -> 166 ;;
+`sentenceItem; `swl. -> itm:Warhol --> Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities. -> log
+`swl`
+`udref -> en_gum-ud-train -> GUM_news_warhol-35 ;;
 `sentenceList`
 
 These sentences have straightforward logical structure, in terms of 
@@ -1169,14 +1216,18 @@ case-studies:
 
 
 `sentenceList,
-`sentenceItem; \swl{itm:ants}{A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.}{sem}
-\udref{en_lines-ud-train}{2157}
-`sentenceItem; \swl{itm:current-waiting-period}{The current waiting period is eight weeks.}{sem}
-\udref{en_pud}{n01050009}
-`sentenceItem; \swl{itm:immersed}{I think that's why they immersed themselves in pattern and colour.}{sem}
-\udref{en_pud}{n01087018}
-`sentenceItem; \swl{itm:princess}{With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.}{sem}
-\udref{en_pud}{w01119076}
+`sentenceItem; `swl. -> itm:ants --> A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate. -> sem
+`swl`
+`udref -> en_lines-ud-train -> 2157 ;;
+`sentenceItem; `swl. -> itm:current-waiting-period --> The current waiting period is eight weeks. -> sem
+`swl`
+`udref -> en_pud -> n01050009 ;;
+`sentenceItem; `swl. -> itm:immersed --> I think that's why they immersed themselves in pattern and colour. -> sem
+`swl`
+`udref -> en_pud -> n01087018 ;;
+`sentenceItem; `swl. -> itm:princess --> With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage. -> sem
+`swl`
+`udref -> en_pud -> w01119076 ;;
 `sentenceList`
 
 It requires a certain cognitive flexibility to understand a band of ants as `q.flurry`/, or 
