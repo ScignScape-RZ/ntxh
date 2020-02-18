@@ -715,14 +715,14 @@ which are structured to avoid scope ambiguities; which use transparent
 semantic resources to describe verb subjects and objects; and 
 so forth.  In the most recent Universal Dependencies Shared Task corpus 
 we can find examples like:\swl`({)itm:tumour`(}{)It is the most common tumour found in babies, occurring in one of every 35,000 births.`(}{)log`(})
-\udref`({)enApud`(}{)n01051007`(})\swl`({)itm:Dengue`(}{)Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.`(}{)log`(})
-\udref`({)enApartut-ud-train`(}{)enApartut-ud-1498`(})\swl`({)itm:TalibanKarzai`(}{)Many Taliban living in Afghanistan voted for President Karzai.`(}{)log`(})
-\udref`({)enAewt-ud-train`(}{)w03002048`(})\swl`({)itm:Ashraf`(}{)Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.`(}{)log`(})
-\udref`({)enAewt-ud-train`(}{)weblog-blogspot.comArigorousintuitionA20060511134300AENGA20060511A134300-0112`(})\swl`({)itm:ChinaSpace`(}{)Most experts believe China intends to develop a small space station of its own over the next several years.`(}{)log`(})
-\udref`({)enAewt-ud-train`(}{)newsgroup-groups.google.comAFOOLEDA7554c5ce34a5a49eAENGA20051012A144800-0020`(})\swl`({)itm:tastings`(}{)Check out their wine tastings every Friday night!`(}{)log`(})
-\udref`({)enAewt-ud-train`(}{)reviews-322225-0005`(})\swl`({)itm:tag`(}{)For each start tag , there is a corresponding end tag.`(}{)log`(})
-\udref`({)enAlines-ud-train`(}{)166`(})\swl`({)itm:Warhol`(}{)Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.`(}{)log`(})
-\udref`({)enAgum-ud-train`(}{)GUMAnewsAwarhol-35`(})These sentences have straightforward logical structure, in terms of 
+\udref`({)en_pud`(}{)n01051007`(})\swl`({)itm:Dengue`(}{)Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.`(}{)log`(})
+\udref`({)en_partut-ud-train`(}{)en_partut-ud-1498`(})\swl`({)itm:TalibanKarzai`(}{)Many Taliban living in Afghanistan voted for President Karzai.`(}{)log`(})
+\udref`({)en_ewt-ud-train`(}{)w03002048`(})\swl`({)itm:Ashraf`(}{)Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.`(}{)log`(})
+\udref`({)en_ewt-ud-train`(}{)weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112`(})\swl`({)itm:ChinaSpace`(}{)Most experts believe China intends to develop a small space station of its own over the next several years.`(}{)log`(})
+\udref`({)en_ewt-ud-train`(}{)newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020`(})\swl`({)itm:tastings`(}{)Check out their wine tastings every Friday night!`(}{)log`(})
+\udref`({)en_ewt-ud-train`(}{)reviews-322225-0005`(})\swl`({)itm:tag`(}{)For each start tag , there is a corresponding end tag.`(}{)log`(})
+\udref`({)en_lines-ud-train`(}{)166`(})\swl`({)itm:Warhol`(}{)Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.`(}{)log`(})
+\udref`({)en_gum-ud-train`(}{)GUM_news_warhol-35`(})These sentences have straightforward logical structure, in terms of 
 how they establish topical foci (one of every 35,000 births;as many as 100 million people;Many Taliban;every Friday night;For each start tag), 
 and how predicates or references are bound together to create more 
 precise significations (the tropics and subtropics;in Mujahedeen schools in Ashraf;a corresponding end tag).
@@ -748,10 +748,10 @@ sentences' propositional content may depend on a subtle
 interpretive trajectory.  I will present examples throughout this 
 paper, but a few further corpus items are reasonable 
 case-studies:\swl`({)itm:ants`(}{)A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.`(}{)sem`(})
-\udref`({)enAlines-ud-train`(}{)2157`(})\swl`({)itm:current-waiting-period`(}{)The current waiting period is eight weeks.`(}{)sem`(})
-\udref`({)enApud`(}{)n01050009`(})\swl`({)itm:immersed`(}{)I think that's why they immersed themselves in pattern and colour.`(}{)sem`(})
-\udref`({)enApud`(}{)n01087018`(})\swl`({)itm:princess`(}{)With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.`(}{)sem`(})
-\udref`({)enApud`(}{)w01119076`(})It requires a certain cognitive flexibility to understand a band of ants asflurry, or 
+\udref`({)en_lines-ud-train`(}{)2157`(})\swl`({)itm:current-waiting-period`(}{)The current waiting period is eight weeks.`(}{)sem`(})
+\udref`({)en_pud`(}{)n01050009`(})\swl`({)itm:immersed`(}{)I think that's why they immersed themselves in pattern and colour.`(}{)sem`(})
+\udref`({)en_pud`(}{)n01087018`(})\swl`({)itm:princess`(}{)With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.`(}{)sem`(})
+\udref`({)en_pud`(}{)w01119076`(})It requires a certain cognitive flexibility to understand a band of ants asflurry, or 
 to parse the disjoint timeframes incurrent waiting period.  In (\ref`({)itm:immersed`(})), 
 the presumed sense ofimmersetranscends any immediate, perceptual immersion, 
 instead involving scholarship or engagement with artistic form; and (\ref`({)itm:princess`(})) 

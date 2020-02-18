@@ -51,27 +51,30 @@ void process_ngml_file(QString path)
  nol.export_latex(path + ".tex");
 }
 
-int main(int argc, char* argv[])
+int main2(int argc, char* argv[])
 {
  QStringList ngml_files;
 
  NGML_Folder nf(DEFAULT_DIRECTORY "/ctg");
  nf.get_ngml_files(ngml_files);
  
- for(const QString& f: ngml_files)   
-   process_ngml_file(f);
+ for(const QString& f: ngml_files) 
+ {
+  qDebug() << "Processing file: " << f; 
+  process_ngml_file(f);
+ }
 
  return 0;
 }
 
-int main2(int argc, char* argv[])
+int main1(int argc, char* argv[])
 {
  process_ngml_file(DEFAULT_DIRECTORY "/ctg/ctg.ngml");
  return 0;
 }
 
 
-int main1(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
 // QApplication qapp(argc, argv);
 

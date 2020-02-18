@@ -856,22 +856,22 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
    { { '\'', 0 }, 70 },
    { { '\'', 1 }, Standard_GlyphDeck_8b::SqSqX },
 
-   { { '#', 0 }, 76 },
+   { { '#', 0 }, 77 },
    { { '#', 1 }, Standard_GlyphDeck_8b::TxtNumX },
 
-   { { '$', 0 }, 77 },
+   { { '$', 0 }, 78 },
    { { '$', 1 }, Standard_GlyphDeck_8b::TxtDolX },
 
-   { { '%', 0 }, 78 },
+   { { '%', 0 }, 79 },
    { { '%', 1 }, Standard_GlyphDeck_8b::TxtPerX },
 
-   { { '&', 0 }, 79 },
+   { { '&', 0 }, 80 },
    { { '&', 1 }, Standard_GlyphDeck_8b::TxtAmpX },
 
-   { { '"', 0 }, 93 },
+   { { '"', 0 }, Standard_GlyphDeck_8b::SqDqX },
    { { '"', 1 }, Standard_GlyphDeck_8b::SqDqX },
 
-   { { '*', 0 }, 82 },
+   { { '*', 0 }, Standard_GlyphDeck_8b::TxtStarX },
    { { '*', 1 }, Standard_GlyphDeck_8b::TxtStarX },
 
    { { '+', 0 }, 75 },
@@ -923,7 +923,7 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
    { { '^', 0 }, Standard_GlyphDeck_8b::TxtHatX },
    { { '^', 1 }, Standard_GlyphDeck_8b::TxtHatX },
 
-   { { '_', 0 }, 37 },
+   { { '_', 0 }, 36 },
    //?{ { '_', 1 }, Standard_GlyphDeck_8b::NullX },
 
    { { '`', 0 }, Standard_GlyphDeck_8b::BqX },
@@ -1197,6 +1197,9 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
      held_state = 11;
      continue;
     }
+   }
+   else
+   {
     code = static_127.value( {chr, held_state} );
     if(code == 0)
      continue;

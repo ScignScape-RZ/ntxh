@@ -321,7 +321,7 @@ $l: #2^^J%
 %\usepackage{euler}
 
 \let\OldI\i
-
+\let\inodot\i
 
 \newcommand{\mdash}{---}
 \newcommand{\q}[1]{``#1"}
@@ -720,9 +720,14 @@ $l: #2^^J%
 \subss{#1}{#1}
 \vspace{1em}
 }
+
+\newcommand{\spsubsectiontwolinejj}[1]{%
+	\subsectiontwoline{#1}
+	\vspace{1em}
+}
+
 \newcommand{\spsubsectiontwoline}[1]{%
-\subsectiontwoline{#1}
-\vspace{1em}
+%\subsection{#1}
 }
 
 

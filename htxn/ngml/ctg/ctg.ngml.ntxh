@@ -1,0 +1,744 @@
+- Generated from LaTeX File ctg.ngml.tex 
+17/2/2020, 23:23
+.
+
+- i=id p=page s=ud source, section number c=classification
+l=label x=latex label t=text r=pre o=post a=archival 
+.
+
+&type SentenceList [8;3;2] 
+:i:1 :p:2 :s:3 ;
+
+&type SentenceItem {14} 
+:i:1 :p:2 :x:3 :t:4 :s:5 :l:6 :r:7 :o:8 :a:9 :c:10 
+:si:11 :sp:12 :am:13 :alt:14 ; 
+
+&type Subdocument {3} 
+:au:1 :start:2 :end:3 ; 
+
+&type DatasetInfo {4} 
+:ae:1 :sdc:2 :sk:3 :pdf:4 ; 
+
+
+&/
+
+
+!/ DatasetInfo
+$ae: Nathaniel Christen
+$sdc: 4
+$sk: Section
+$pdf: @/data/ntxh/main.pdf
+
+/!
+<+>
+
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 4 
+$end: 14 
+/! 
+<+> 
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 14 
+$end: 0 
+/! 
+<+> 
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 0 
+$end: 0 
+/! 
+<+> 
+
+!/ Subdocument 
+$au: Nathaniel Christen
+$start: 0 
+$end: 0 
+/!
+<+>
+
+
+
+!/ SentenceList
+$i: 1
+$p: 4
+$s: 1
+
+!/ SentenceItem
+$i: 1
+$p: 4
+$x: itm:having
+$t: His having lied in the past damages his credibilty in the present.
+$c: syn
+/!
+<>>
+
+!/ SentenceItem
+$i: 2
+$p: 4
+$x: itm:whether
+$t: Voters question whether he is truthful this time around.
+$c: syn
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 2
+$p: 4
+$s: 1
+
+!/ SentenceItem
+$i: 3
+$p: 4
+$x: itm:grandma
+$t: Let's go to Grandma.
+$c: syn
+/!
+<>>
+
+!/ SentenceItem
+$i: 4
+$p: 4
+$x: itm:lawyers
+$t: Let's go to the lawyers.
+$c: syn
+/!
+<>>
+
+!/ SentenceItem
+$i: 5
+$p: 5
+$x: itm:press
+$t: Let's go to the press.
+$c: syn
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 3
+$p: 6
+$s: 1
+
+!/ SentenceItem
+$i: 6
+$p: 6
+$x: itm:black
+$t: I saw my neighbor's two black dogs.
+$c: sem
+/!
+<>>
+
+!/ SentenceItem
+$i: 7
+$p: 6
+$x: itm:rescued
+$t: I saw my neighbor's two rescued dogs.
+$c: sem
+/!
+<>>
+
+!/ SentenceItem
+$i: 8
+$p: 6
+$x: itm:latest
+$t: I saw my neighbor's two latest dogs.
+$c: sem
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 4
+$p: 7
+$s: 1
+
+!/ SentenceItem
+$i: 9
+$p: 7
+$x: itm:vet
+$t: We have to wait until after the vet's two latest dogs.
+$c: sem
+/!
+<>>
+
+!/ SentenceItem
+$i: 10
+$p: 7
+$x: itm:organization
+$t: I'm concerned for the rescue organization's two latest dogs.
+$c: sem
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 5
+$p: 7
+$s: 1
+
+!/ SentenceItem
+$i: 11
+$p: 7
+$x: itm:boatmen
+$t: Boatmen rescued dogs from the flooded streets.
+$c: sem
+/!
+<>>
+
+!/ SentenceItem
+$i: 12
+$p: 7
+$x: itm:firemen
+$t: Firemen rescued dogs from the burning building.
+$c: sem
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 6
+$p: 8
+$s: 1
+
+!/ SentenceItem
+$i: 13
+$p: 8
+$x: itm:boroughs
+$t: All New Yorkers live in one of five boroughs.
+$c: sem
+/!
+<>>
+
+!/ SentenceItem
+$i: 14
+$p: 8
+$x: itm:commute
+$t: All New Yorkers complain about how long it takes to commute to New York City.
+$c: sem
+/!
+<>>
+
+!/ SentenceItem
+$i: 15
+$p: 8
+$x: itm:Cambridge
+$t: The south side of Cambridge voted Conservative.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 16
+$p: 8
+$x: itm:lower
+$t: Lower Manhattan voted Republican.
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 17
+$p: 8
+$x: itm:si
+$t: Staten Island voted Republican.
+$c: ref
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 7
+$p: 8
+$s: 1
+
+!/ SentenceItem
+$i: 18
+$p: 8
+$x: itm:beat
+$t: The Leafs failed to beat the Habs for the first time this year.
+$c: amb
+/!
+<>>
+
+!/ SentenceItem
+$i: 19
+$p: 8
+$x: itm:consecutive
+$t: The Leafs failed to win two consecutive games for the first time this year.
+$c: amb
+/!
+<>>
+
+!/ SentenceItem
+$i: 20
+$p: 8
+$x: itm:goal
+$t: The Leafs failed to score a goal for the first time this year.
+$c: amb
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 8
+$p: 9
+$s: 1
+
+!/ SentenceItem
+$i: 21
+$p: 9
+$x: itm:allresidents
+$t: All residents of the city of New York live in one of five boroughs.
+$c: log
+/!
+<>>
+
+!/ SentenceItem
+$i: 22
+$p: 9
+$x: itm:manyresidents
+$t: Many residents of the New York metropolitan area complain about how long it takes to commute to New York City.
+$c: log
+/!
+<>>
+
+!/ SentenceItem
+$i: 23
+$p: 9
+$x: itm:SouthCambridge
+$t: All districts on the south side of Cambridge voted Conservative.
+$c: log
+/!
+<>>
+
+!/ SentenceItem
+$i: 24
+$p: 9
+$x: itm:leafshabs
+$t: For the first time this year, the Leafs failed to beat the Habs.
+$c: log
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 9
+$p: 9
+$s: 1
+
+!/ SentenceItem
+$i: 25
+$p: 9
+$x: itm:parked
+$t: I am parked out back.
+$o: (example 3, page 371)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 26
+$p: 9
+$x: itm:waiting
+$t: I am parked out back and have been waiting for 15 minutes.
+$o: (example 3)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 27
+$p: 9
+$x: itm:start
+$t: I am parked out back and may not start.
+$o: (example 6, page 371)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 28
+$p: 9
+$x: itm:Whitney
+$t: I'm in the Whitney Museum.
+$o: (page 375)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 29
+$p: 9
+$x: itm:beers
+$t: I drank two beers.
+$o: (page 375)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 30
+$p: 9
+$x: itm:Michelobs
+$t: I drank two Michelobs.
+$o: (page 375)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 31
+$p: 9
+$x: itm:Sauternes
+$t: I drank two Sauternes last night.
+$o: (page 375)
+$c: ref
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 10
+$p: 9
+$s: 1
+
+!/ SentenceItem
+$i: 32
+$p: 9
+$x: itm:library
+$t: I'm in the library.
+$o: (said by an author whose books are there)
+$c: ref
+/!
+<>>
+
+!/ SentenceItem
+$i: 33
+$p: 9
+$x: itm:autoshop
+$t: I've been in the auto shop for the last 15 days.
+$c: ref
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 11
+$p: 9
+$s: 1
+
+!/ SentenceItem
+$i: 34
+$p: 9
+$t: My car is parked out back and have been waiting for 15 minutes.
+$c: log
+/!
+<>>
+
+!/ SentenceItem
+$i: 35
+$p: 9
+$t: I drank two pints of beer last night.
+$c: log
+/!
+<>>
+
+!/ SentenceItem
+$i: 36
+$p: 9
+$t: I tried two different Sauternes last night.
+$c: log
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 12
+$p: 10
+$s: 1
+
+!/ SentenceItem
+$i: 37
+$p: 10
+$x: itm:threetimes
+$t: Three times, students asked an interesting question.
+$c: sco
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 13
+$p: 11
+$s: 1
+
+!/ SentenceItem
+$i: 38
+$p: 11
+$x: itm:threes
+$t: Three students asked interesting questions.
+$c: log
+/!
+<>>
+
+/!
+<+>
+
+!/ SentenceList
+$i: 14
+$p: 13
+$s: 1
+
+!/ SentenceItem
+$i: 39
+$p: 13
+$x: itm:tumour
+$t: It is the most common tumour found in babies, occurring in one of every 35,000 births.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_pud
+$l: n01051007
+&/s
+
+!/ SentenceItem
+$i: 40
+$p: 13
+$x: itm:Dengue
+$t: Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_partut-ud-train
+$l: en_partut-ud-1498
+&/s
+
+!/ SentenceItem
+$i: 41
+$p: 13
+$x: itm:TalibanKarzai
+$t: Many Taliban living in Afghanistan voted for President Karzai.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_ewt-ud-train
+$l: w03002048
+&/s
+
+!/ SentenceItem
+$i: 42
+$p: 13
+$x: itm:Ashraf
+$t: Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_ewt-ud-train
+$l: weblog-blogspot.com_rigorousintuition_20060511134300_ENG_20060511_134300-0112
+&/s
+
+!/ SentenceItem
+$i: 43
+$p: 13
+$x: itm:ChinaSpace
+$t: Most experts believe China intends to develop a small space station of its own over the next several years.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_ewt-ud-train
+$l: newsgroup-groups.google.com_FOOLED_7554c5ce34a5a49e_ENG_20051012_144800-0020
+&/s
+
+!/ SentenceItem
+$i: 44
+$p: 13
+$x: itm:tastings
+$t: Check out their wine tastings every Friday night!
+$c: log
+/!
+<>>
+
+&s/
+$s: en_ewt-ud-train
+$l: reviews-322225-0005
+&/s
+
+!/ SentenceItem
+$i: 45
+$p: 13
+$x: itm:tag
+$t: For each start tag , there is a corresponding end tag.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_lines-ud-train
+$l: 166
+&/s
+
+!/ SentenceItem
+$i: 46
+$p: 13
+$x: itm:Warhol
+$t: Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.
+$c: log
+/!
+<>>
+
+&s/
+$s: en_gum-ud-train
+$l: GUM_news_warhol-35
+&/s
+
+/!
+<+>
+
+!/ SentenceList
+$i: 23
+$p: 13
+$s: 1
+
+!/ SentenceItem
+$i: 47
+$p: 13
+$x: itm:ants
+$t: A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.
+$c: sem
+/!
+<>>
+
+&s/
+$s: en_lines-ud-train
+$l: 2157
+&/s
+
+!/ SentenceItem
+$i: 48
+$p: 13
+$x: itm:current-waiting-period
+$t: The current waiting period is eight weeks.
+$c: sem
+/!
+<>>
+
+&s/
+$s: en_pud
+$l: n01050009
+&/s
+
+!/ SentenceItem
+$i: 49
+$p: 13
+$x: itm:immersed
+$t: I think that's why they immersed themselves in pattern and colour.
+$c: sem
+/!
+<>>
+
+&s/
+$s: en_pud
+$l: n01087018
+&/s
+
+!/ SentenceItem
+$i: 50
+$p: 14
+$x: itm:princess
+$t: With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.
+$c: sem
+/!
+<>>
+
+&s/
+$s: en_pud
+$l: w01119076
+&/s
+
+/!
+<+>
+
+!/ SentenceList
+$i: 28
+$p: 16
+$s: 2
+
+!/ SentenceItem
+$i: 51
+$p: 16
+$x: itm:ambience
+$t: The city's ambience is colonial and the climate is tropical.
+$c: sem
+/!
+<>>
+
+&s/
+$s: en_gum-ud-train
+$l: GUM_voyage_merida-20
+&/s
+
+/!
+<+>
+
+!/ SentenceList
+$i: 30
+$p: 16
+$s: 2
+
+!/ SentenceItem
+$i: 52
+$p: 16
+$x: itm:actually
+$t: The most popular lodging is actually camping on the beaches.
+$c: sem
+/!
+<>>
+
+&s/
+$s: en_gum-ud-train
+$l: GUM_voyage_socotra-16
+&/s
+
+/!
+<+>
+
