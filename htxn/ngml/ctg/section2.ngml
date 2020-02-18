@@ -111,7 +111,7 @@ operand.  The result is a new operand or a new operator.
 This operation can be repeated as many times as necessary 
 to construct the linguistic expressions' functional semantic 
 representation.
-\cite[p. 1]{Rossi}
+`cite ->> p. 1 -> Rossi ;;
 `quote`
 
 So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
@@ -329,8 +329,8 @@ has index 2 relative to the verb, and the indirect object has
 index 3), we can transform any expression-tree into a labeled graph. 
 Parse graphs can then be annotated with these double-indices 
 via the same presentations employed for Link or Dependency Grammar 
-labels.  Sentence (\ref{itm:actually}) could be visualized as in 
-Figure~\ref{fig:actuallydbl}, with the double-indices juxtaposed 
+labels.  Sentence (`ref<itm:actually>;) could be visualized as in 
+Figure~`ref<fig:actuallydbl>;, with the double-indices juxtaposed 
 alongside conventional Dependency labels (the indices below the sentence, 
 and relation labels above it); the upper parse is drawn from the 
 Universal Dependency corpus (other annotated examples are included 
@@ -420,7 +420,7 @@ about the tuition hikes. -> sco
 `swl`
 `sentenceList`
 
-In (\ref{students}) and (\ref{office}), we read `i.Many students` as topicalizing a multitude, 
+In (`ref<students>;) and (`ref<office>;), we read `i.Many students` as topicalizing a multitude, 
 but we recognize that each student has their own parents, grade, and we assume they came to 
 the office at different times (rather than all at once).  So `i.students` links 
 conceptually with other sentence elements, in a way that pulls it partly outside the 
@@ -430,7 +430,7 @@ reflected in how the singular/plural alternative is underdetermined in a multi-s
 context; consider Langacker's example: 
 \newsavebox{\Langackerboxi}
 \begin{lrbox}{\Langackerboxi}
-(repeating \ref{itm:threetimes})
+(repeating `ref<itm:threetimes>;)
 \end{lrbox}
 `sentenceList,
 `sentenceItem; `swl. -> ->- --> Three times, students asked an interesting question.}
@@ -440,13 +440,13 @@ context; consider Langacker's example:
 `swl`
 `sentenceList`
 
-Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
+Meanwhile, in (`ref<after>;) and (`ref<parents>;) the phrase 
 `i.Student after student` invokes a multiplicity akin to `i.Many students`/, 
 but the former phrase has distinct syntactic properties; in particular
 we can replace `i.their parents` (which is ambiguous between a plural and 
 a gender-neutral singular reading) with, say, `i.his parents` (at a 
-boy's school), a valid substitution in (\ref{after})-(\ref{parents})
-but not (\ref{students})-(\ref{office}).  
+boy's school), a valid substitution in (`ref<after>;)-(`ref<parents>;)
+but not (`ref<students>;)-(`ref<office>;).  
 `p`
 
 `p.
@@ -636,7 +636,7 @@ certain `i.type` of noun, something that can be interpreted
 as an idea or proposition of some kind (`qmarkdubious;`i.I believed flower`/).
 Asher and Pustejovsky point out the anomaly in a sentence
 like `q.Bob's idea weighs five pounds`
-\cite[example 2, p. 5]{AsherPustejovsky}, which
+`cite ->> example 2, p. 5 -> AsherPustejovsky ;;, which
 possesses a flavor of unacceptability that feels akin to
 Part of Speech errors but are not in fact syntactic
 errors.  The object of `i.weigh` is `q.five pounds` and
@@ -733,8 +733,8 @@ Type-theoretic semantics can also apply Ontological tropes to unpack the overlap
 like `i.material object` or `i.place` or `i.institution`/.
 This mode of analysis is especially well illustrated when competing senses
 collide in the same sentence.  Slightly modifying two examples:`footnote.
-\cite[p. 40]{ChatzikyriakidisLuo} (former) and
-\cite[p. 4]{MeryMootRetore} (latter).
+`cite ->> p. 40 -> ChatzikyriakidisLuo ;; (former) and
+`cite ->> p. 4 -> MeryMootRetore ;; (latter).
 `footnote`
 
 `sentenceList,
@@ -919,7 +919,7 @@ Ronald Langacker, and Peter `Gardenfors; %-- along with, as
 and others alongside `q.a French semiotic tradition, 
 exemplified by [Jean-Pierre] Descl\'es ... and 
 [Jean] Petitot-Cocorda ... which shares many features with the 
-American (mainly Californian) group` \cite[p. 4]{Gardenfors}.  
+American (mainly Californian) group` `cite ->> p. 4 -> Gardenfors ;;.  
 `footnote`  At the same time, Petitot also links with a 
 tradition that combines elements of phenomenology and 
 Analytic Philosophy, represented by philosophers like 
@@ -944,7 +944,7 @@ words, the `q.constitution` of objects).
 Petitot employs differential geometry and morphodynamics
 to model phenomenal experience, and Smith uses formal structures from
 mereotopology (the theory of parts, wholes, and their boundaries)
-to a similar effect. \cite[p. 38]{Ramstead}
+to a similar effect. `cite ->> p. 38 -> Ramstead ;;
 `quote`
 `footnote` 
 `q.Cognitive` in these contexts 
@@ -1071,7 +1071,7 @@ be the `i.absence` of objects, or of substance:
 `swl`
 `sentenceList`  
 
-In (\ref{itm:footprints}) our attention is direct not to any `i.object`/, but 
+In (`ref<itm:footprints>;) our attention is direct not to any `i.object`/, but 
 to a certain perceptual pattern which has some factual significance, enough 
 to warrant a distinct concept.  Insofar as `i.one` footprint is a 
 focus of attention, we notice some pattern of discontinuity which allows 
@@ -1090,12 +1090,12 @@ being cognized in aggregate.
 `p`
 
 `p.
-In (\ref{itm:footprintsleading}), moreover, we conceive the totality in conjunction 
+In (`ref<itm:footprintsleading>;), moreover, we conceive the totality in conjunction 
 with a sense of direction, and protention.  The implication is that we 
 do not see `i.all` of the footprints, but we can discern from their 
 pattern a direction which, we anticipate, will reveal more footprints.  
 Meanwhile the footprints are presumably disjoint, unlike train tracks.
-So the perceptual foreground in (\ref{itm:footprintsleading}) is phenomenologically 
+So the perceptual foreground in (`ref<itm:footprintsleading>;) is phenomenologically 
 complex, including a totality we perceive that implies a greater 
 totality, part of which is experienced anticipatorily rather than 
 explicitly, along with a fragmentation which nonetheless permits a 
@@ -1127,15 +1127,15 @@ generalized references:
 `swl`
 `sentenceList`  
 
-The effects of (\ref{itm:knocking}) 
-(which with (\ref{itm:Salesmen}) are from the `i.Handbook`/, example 44, page 169, 
+The effects of (`ref<itm:knocking>;) 
+(which with (`ref<itm:Salesmen>;) are from the `i.Handbook`/, example 44, page 169, 
 chapter 6) are manifest in several 
-changes to conversants' collective understanding: (\ref{itm:knocking}) 
+changes to conversants' collective understanding: (`ref<itm:knocking>;) 
 establishes both a domain of potential reference (the salesmen 
 could be subsequently identified as `i.the salesmen` or 
 `i.those salesmen` or `i.them`/), and the fact of their being 
 at the door established as a basis for further dialog (e.g., 
-(\ref{itm:Should})).  The more generic (\ref{itm:Salesmen}) 
+(`ref<itm:Should>;)).  The more generic (`ref<itm:Salesmen>;) 
 does not have any comparable situational effects, though 
 it permits further dialog on a more generic plane. 
 `p`
@@ -1175,9 +1175,9 @@ experienced in terms of a matrix of phenomenological criteria that can
 be harnessed into a general theory: how an ink stain is (in part) 
 materially continuous with the stained paper that extends around it; 
 how `i.a pretty sunset` is an imprecisely bounded but conceptually 
-integral atmospheric event; how (\ref{itm:applause}) figures the audience as 
+integral atmospheric event; how (`ref<itm:applause>;) figures the audience as 
 discrete individuals who, at that moment, act in such a way as to present a 
-conceptual and perceptual totality; how (\ref{itm:cicada}) likewise proposes 
+conceptual and perceptual totality; how (`ref<itm:cicada>;) likewise proposes 
 a totality but in a more complex fashion, because the speaker is 
 describing a typical `i.kind` of experience rather than the specific 
 sounds of cicadas on one specific occasion. 
@@ -1193,7 +1193,7 @@ They become part of a language's lexical machinery and
 therefore embed, in lexical conventions, phenomenological 
 prototypes that imply a situational background, called 
 forth by the lexical potency of the specific words.  
-The point is not that the hearer of (\ref{itm:sunset}), say, 
+The point is not that the hearer of (`ref<itm:sunset>;), say, 
 sees the sunset also, and thus `i.explicitly` undergoes the 
 disclosure-experience of a sunset (in all its sensory 
 vividness and individuating vagueness).  Instead, the 
@@ -1219,11 +1219,11 @@ flair, often bounding expressive possibilities on
 phenomenological rather than narrowly semantic grounds.  
 I would dispute some of Nunberg's analyses I mentioned 
 in the last section, for example, on the 
-dubiousness of (\ref{itm:start}) or the exceptionality 
-of (\ref{itm:Sauternes}).  I do not find
-(\ref{itm:start}) exceptionally jarring, considering the 
-situational construal common to (\ref{itm:start}) along 
-with (\ref{itm:parked}) and (\ref{itm:waiting}): 
+dubiousness of (`ref<itm:start>;) or the exceptionality 
+of (`ref<itm:Sauternes>;).  I do not find
+(`ref<itm:start>;) exceptionally jarring, considering the 
+situational construal common to (`ref<itm:start>;) along 
+with (`ref<itm:parked>;) and (`ref<itm:waiting>;): 
 the formation `i.I am parked` is not `i.just` a matter of 
 a person proxy-referring their car.  Usually a person 
 saying `i.I am parked` is `i.in` their car, so they are 
@@ -1245,7 +1245,7 @@ taking.
 `p`
 
 `p.
-This analysis then implies that (\ref{itm:start}) is 
+This analysis then implies that (`ref<itm:start>;) is 
 acceptable on similar operational grounds; first-personalizing 
 the cars location, so to speak, foregrounds that location 
 only in the context of an operational totality involving 
@@ -1255,8 +1255,8 @@ this is relevant to how the overall situation is
 cognized, and therefore the transition from the speaker-centered 
 `i.I am parked ...` to the discordant `i.and may not start` 
 is understandable.  I would similarly argue that the 
-apparent difference between (\ref{itm:Sauternes}) and
-(\ref{itm:beers})-(\ref{itm:Michelobs}) depends on how 
+apparent difference between (`ref<itm:Sauternes>;) and
+(`ref<itm:beers>;)-(`ref<itm:Michelobs>;) depends on how 
 referential foci are established.  The phrase 
 `i.a beer` can designate a specific glass or bottle of 
 beer %-- something perceptually and enactively/kinaesthetically 
@@ -1386,7 +1386,7 @@ attribute to others based on their behavior).
 
 `p.
 On the other hand, I would argue that the pattern in 
-(\ref{itm:hall})-(\ref{itm:ontv}) is not reducible to 
+(`ref<itm:hall>;)-(`ref<itm:ontv>;) is not reducible to 
 referential proxying as a logical maxim.  We can speculate that
 `i.I` obliquely references, say, the bust and info about an 
 athlete who has been elected to a Hall of Fame, or to the 
@@ -1401,11 +1401,11 @@ which is lexically embedded in expressions like
 `i.Hall of Fame` and `i.on TV`/.  There is a long process 
 leading to retired athletes being recognized as worthy of 
 a Hall; there is also a long process whereby personalities 
-get a chance to appear on television.  Actually, (\ref{itm:ontv}) 
+get a chance to appear on television.  Actually, (`ref<itm:ontv>;) 
 has two interpretations %-- someone could be on TV just momentarily, 
 e.g. as a bystander during on-location news coverage %-- or 
 as someone like a policy expert who is interviewed on occasion.  
-But the more interesting reading of (\ref{itm:ontv}) involves 
+But the more interesting reading of (`ref<itm:ontv>;) involves 
 a person being described as `q.on TV` not on the occasion of 
 their appearing on-screen in that moment, but as a recurring 
 event.  In this case `i.being on TV` encapsulates a backstory 
@@ -1419,7 +1419,7 @@ reference: `i.I am in the Hall` or `i.on TV` indirectly reports
 that the speaker has undergone some process which the addressee, 
 assumed competent with the relevant lexicon, at least
 minimally understands.
-So a pattern like (\ref{itm:hall}) packages up that backstory 
+So a pattern like (`ref<itm:hall>;) packages up that backstory 
 `i.in the guise` of a referring expression; it is not so much the 
 athlete's bust as a target of referential proxying, but more of the 
 act of referring to that bust (i.e., to the referentiable 
@@ -1443,8 +1443,8 @@ hypothetical perceptual nexus.  So a painter `i.in the Whitney` means
 that a visitor can, in the right room and orientation, perceptually 
 encounter her work; a personality `i.on TV` means that the 
 addressee can, at times, see her on-screen.  Those potential perceptual 
-givens ground the semantics of expressions like (\ref{itm:Whitney}) or 
-(\ref{itm:ontv}).  This does not mean that the sentences are only 
+givens ground the semantics of expressions like (`ref<itm:Whitney>;) or 
+(`ref<itm:ontv>;).  This does not mean that the sentences are only 
 meaningful to an addressee who wants to go find the speaker at the 
 museum or on the television.  But it does present the perceptual 
 ground as a foundation for the conceptual implications which 
@@ -1466,7 +1466,7 @@ determines how the perceptual ground should be understood.
 Usually the discourse is `q.about` that backstory, not about 
 the precise situations where explicit perceptual grounds would 
 be relevant %-- an artist probably would not say 
-(\ref{itm:Whitney}) only to someone looking to visit a museum to 
+(`ref<itm:Whitney>;) only to someone looking to visit a museum to 
 see her art work.  The `q.I am in...` pattern 
 turns on how these two different levels are played off 
 in interpretation.
@@ -1479,7 +1479,7 @@ of the painting directly relevant to the present conversation?
 `p`
 
 `p.
-A statement like (\ref{itm:crate}) (the speaker being
+A statement like (`ref<itm:crate>;) (the speaker being
 `q.in the crate on the right`/) does not have the more
 `q.autobiographical` reading, since (absent some bizarry
 imaginary scene) there is no status or reputation attached
@@ -1490,13 +1490,13 @@ artists' works are in several different crates and
 the speaker wants to direct focus onto the one holding
 her own works.  So, in the proper context,
 I have no objection to
-(\ref{itm:crate}) or `i.I am in that crate` (forms which Nunberg rejects).
-The gist here, as in (\ref{itm:Whitney}), is to establish conceptual
+(`ref<itm:crate>;) or `i.I am in that crate` (forms which Nunberg rejects).
+The gist here, as in (`ref<itm:Whitney>;), is to establish conceptual
 focus onto a painting or art work, and to do so via a
 first-person referential lead-in.  So the situation determines 
 first `i.why` the focus is thus singled out and second 
 `i.how` the first-person reference can proxy that focus.  
-In (\ref{itm:Whitney}), we single out a painting insofar as it 
+In (`ref<itm:Whitney>;), we single out a painting insofar as it 
 is a product of the artist's creativity, so appreciation of the 
 work is manifestly appreciation of the artist.  The artist is 
 then referentially linked to the work because the backstory of 
@@ -1505,7 +1505,7 @@ artists' careers and reputations.
 `p` 
 
 `p.
-In (\ref{itm:crate}) the situation is different: presumably 
+In (`ref<itm:crate>;) the situation is different: presumably 
 the focus is on one or several art works because of some concern 
 about transporting or accessing them, so we're attending to the 
 works in their guise as (fragile) physical objects.  Moreover 
@@ -1531,7 +1531,7 @@ acceptability: the more that we incorporate
 multiple layers of posssible context, the wider becomes
 the circle of sentences that feel reasonable
 (cf. the reasonableness, in my estimation, of
-(\ref{itm:crate}) and (\ref{itm:Sauternes})).`footnote.
+(`ref<itm:crate>;) and (`ref<itm:Sauternes>;)).`footnote.
 Granted that, perhaps, with a lot of imagination
 almost any construction could be deemed
 plausible in `i.some` context.  Accordingly,
@@ -1555,10 +1555,10 @@ many cases overrate the distinction between
 For example, I dispute that the beer/wine
 contrast, or painting in a museum or in a crate
 contrast, are such a divergence between normal and
-unusual contexts that (\ref{itm:crate}) has
+unusual contexts that (`ref<itm:crate>;) has
 essentially different plausibility than
-(\ref{itm:Whitney}), or (\ref{itm:Sauternes})
-compared to (\ref{itm:beers}) and (\ref{itm:Michelobs}).
+(`ref<itm:Whitney>;), or (`ref<itm:Sauternes>;)
+compared to (`ref<itm:beers>;) and (`ref<itm:Michelobs>;).
 `footnote`  Failure to identify these
 layers' workings can lead analysis toward searches 
 for reproducible logical rules governing which constructions  

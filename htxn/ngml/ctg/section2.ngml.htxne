@@ -72,8 +72,7 @@ its functional semantic interpretation.  They use thefundamental operation of ap
 operand.  The result is a new operand or a new operator. 
 This operation can be repeated as many times as necessary 
 to construct the linguistic expressions' functional semantic 
-representation.
-\cite[p. 1]`({)Rossi`(})So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
+representation.So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
 an adjective takes a noun and produces another noun; 
 and a verb takes a noun and produces a proposition.  Byfunctionwe can consider 
 some kind of conceptual transformation:loudlytransforms the
@@ -214,8 +213,8 @@ has index 2 relative to the verb, and the indirect object has
 index 3), we can transform any expression-tree into a labeled graph. 
 Parse graphs can then be annotated with these double-indices 
 via the same presentations employed for Link or Dependency Grammar 
-labels.  Sentence (\ref`({)itm:actually`(})) could be visualized as in 
-Figure~\ref`({)fig:actuallydbl`(}), with the double-indices juxtaposed 
+labels.  Sentence () could be visualized as in 
+Figure~, with the double-indices juxtaposed 
 alongside conventional Dependency labels (the indices below the sentence, 
 and relation labels above it); the upper parse is drawn from the 
 Universal Dependency corpus (other annotated examples are included 
@@ -269,7 +268,7 @@ core,students.  In real-world examples, however, lexemes tend
 to be neither wholly subsumed by their surrounding phrase nor wholly 
 autonomous:Many students and their parents 
 came to complain about the tuition hikes.Many students came by my office to complain about their grades.Student after student complained about the tuition hikes.Student after student came with their parents to complain 
-about the tuition hikes.In (\ref`({)students`(})) and (\ref`({)office`(})), we readMany studentsas topicalizing a multitude, 
+about the tuition hikes.In () and (), we readMany studentsas topicalizing a multitude, 
 but we recognize that each student has their own parents, grade, and we assume they came to 
 the office at different times (rather than all at once).  Sostudentslinks 
 conceptually with other sentence elements, in a way that pulls it partly outside theMany studentsphrase; the phrase itself is a space-builder which leaves open 
@@ -278,14 +277,14 @@ reflected in how the singular/plural alternative is underdetermined in a multi-s
 context; consider Langacker's example: 
 \newsavebox`({)\Langackerboxi`(})
 \begin`({)lrbox`(}{)\Langackerboxi`(})
-(repeating \ref`({)itm:threetimes`(}))
+(repeating)
 \end`({)lrbox`(})Three times, students asked an interesting question.`(})
-[\usebox`({)\Langackerboxi`(})]`({)scoThree times, a student asked an interesting question.Meanwhile, in (\ref`({)after`(})) and (\ref`({)parents`(})) the phraseStudent after studentinvokes a multiplicity akin toMany students, 
+[\usebox`({)\Langackerboxi`(})]`({)scoThree times, a student asked an interesting question.Meanwhile, in () and () the phraseStudent after studentinvokes a multiplicity akin toMany students, 
 but the former phrase has distinct syntactic properties; in particular
 we can replacetheir parents(which is ambiguous between a plural and 
 a gender-neutral singular reading) with, say,his parents(at a 
-boy's school), a valid substitution in (\ref`({)after`(}))-(\ref`({)parents`(}))
-but not (\ref`({)students`(}))-(\ref`({)office`(})).Cases likeStudent after student(or considertime after time,year after year, and so forth; this is a common idiomatic pattern 
+boy's school), a valid substitution in ()-()
+but not ()-().Cases likeStudent after student(or considertime after time,year after year, and so forth; this is a common idiomatic pattern 
 in English) present a further difficulty for Dependency Grammar, 
 since it is hard to identify which word of the three is the more 
 significant, or thehead.  Arguably Constituency Grammar is 
@@ -423,7 +422,7 @@ Xgenerally requires thatXbe a noun
 certaintypeof noun, something that can be interpreted
 as an idea or proposition of some kind (I believed flower).
 Asher and Pustejovsky point out the anomaly in a sentence
-likeBob's idea weighs five pounds\cite[example 2, p. 5]`({)AsherPustejovsky`(}), which
+likeBob's idea weighs five pounds, which
 possesses a flavor of unacceptability that feels akin to
 Part of Speech errors but are not in fact syntactic
 errors.  The object ofweighisfive poundsand
@@ -496,8 +495,7 @@ microclassification of nouns (and verbs, etc.) via Ontological and
 spatial/dynamic/configuration criteria.Type-theoretic semantics can also apply Ontological tropes to unpack the overlapping mesh of word-senses,
 likematerial objectorplaceorinstitution.
 This mode of analysis is especially well illustrated when competing senses
-collide in the same sentence.  Slightly modifying two examples:\cite[p. 40]`({)ChatzikyriakidisLuo`(}) (former) and
-\cite[p. 4]`({)MeryMootRetore`(}) (latter).The newspaper you are reading is being sued.Liverpool, an important harbor, built new docks.Both have a mid-sentence shift between senses, which is analyzed
+collide in the same sentence.  Slightly modifying two examples:(former) and(latter).The newspaper you are reading is being sued.Liverpool, an important harbor, built new docks.Both have a mid-sentence shift between senses, which is analyzed
 in terms oftype coercions(see alsoand).
 The interesting detail of this treatment
 is how it correctly predicts that such coercions are not guaranteed to
@@ -615,7 +613,7 @@ Ronald Langacker, and Peter`{-} along with, aspoints out, phenomenologists like 
 and others alongsidea French semiotic tradition, 
 exemplified by [Jean-Pierre] Descl\'es ... and 
 [Jean] Petitot-Cocorda ... which shares many features with the 
-American (mainly Californian) group\cite[p. 4]`({)Gardenfors`(}).At the same time, Petitot also links with a 
+American (mainly Californian) group.At the same time, Petitot also links with a 
 tradition that combines elements of phenomenology and 
 Analytic Philosophy, represented by philosophers like 
 Barry Smith and David Woodruff Smith and byAnalytic PhenomenologyorNaturalizing Phenomenologyprojects, the latter also being 
@@ -633,7 +631,7 @@ words, theconstitutionof objects).
 Petitot employs differential geometry and morphodynamics
 to model phenomenal experience, and Smith uses formal structures from
 mereotopology (the theory of parts, wholes, and their boundaries)
-to a similar effect. \cite[p. 38]`({)Ramstead`(})Cognitivein these contexts 
+to a similar effect.Cognitivein these contexts 
 tends to imply desire to ground analyses on holistic
 human experience, in its experiential, embodied, pragmatically-oriented, 
 first-personal, and intersubjective dimensions.Note that in this senseCognitiveconnotes a very different perspective than this same 
@@ -719,7 +717,7 @@ offer a few ideas in the remainder of this section.Types and PhenomenologyIn the
 requires binding language to objects orphenomenain 
 speakers' collective perceptual (or conceptual) horizon.  
 Referents are not always material things; they can even 
-be theabsenceof objects, or of substance:There are footprints on the beach.There's a hole in the bucket.There are footprints leading up the hill.There are train tracks leading up the hill.In (\ref`({)itm:footprints`(})) our attention is direct not to anyobject, but 
+be theabsenceof objects, or of substance:There are footprints on the beach.There's a hole in the bucket.There are footprints leading up the hill.There are train tracks leading up the hill.In () our attention is direct not to anyobject, but 
 to a certain perceptual pattern which has some factual significance, enough 
 to warrant a distinct concept.  Insofar asonefootprint is a 
 focus of attention, we notice some pattern of discontinuity which allows 
@@ -734,12 +732,12 @@ may be darker or more compact than the sand around it).  When talking
 aboutfootprints, plural, we have to direct attention to a perceptual 
 totality, something extending over our visual field and possessing inner 
 parts, but also suggesting a conceptual totality, a worthiness of 
-being cognized in aggregate.In (\ref`({)itm:footprintsleading`(})), moreover, we conceive the totality in conjunction 
+being cognized in aggregate.In (), moreover, we conceive the totality in conjunction 
 with a sense of direction, and protention.  The implication is that we 
 do not seeallof the footprints, but we can discern from their 
 pattern a direction which, we anticipate, will reveal more footprints.  
 Meanwhile the footprints are presumably disjoint, unlike train tracks.
-So the perceptual foreground in (\ref`({)itm:footprintsleading`(})) is phenomenologically 
+So the perceptual foreground in () is phenomenologically 
 complex, including a totality we perceive that implies a greater 
 totality, part of which is experienced anticipatorily rather than 
 explicitly, along with a fragmentation which nonetheless permits a 
@@ -755,14 +753,14 @@ perceptual foci in inter-personal environments.
 We therefore have to understand how languagehooksinto conversants' phenomenological faculties. 
 So we have, at a basic level, a 
 contrast between situationally grounded or conceptually 
-generalized references:Salesmen are intelligent.Salesmen are knocking on the door.Should I let them in?The effects of (\ref`({)itm:knocking`(})) 
-(which with (\ref`({)itm:Salesmen`(})) are from theHandbook, example 44, page 169, 
+generalized references:Salesmen are intelligent.Salesmen are knocking on the door.Should I let them in?The effects of () 
+(which with () are from theHandbook, example 44, page 169, 
 chapter 6) are manifest in several 
-changes to conversants' collective understanding: (\ref`({)itm:knocking`(})) 
+changes to conversants' collective understanding: () 
 establishes both a domain of potential reference (the salesmen 
 could be subsequently identified asthe salesmenorthose salesmenorthem), and the fact of their being 
 at the door established as a basis for further dialog (e.g., 
-(\ref`({)itm:Should`(}))).  The more generic (\ref`({)itm:Salesmen`(})) 
+()).  The more generic () 
 does not have any comparable situational effects, though 
 it permits further dialog on a more generic plane.Sometimes, of course, people dialog about things that are 
 perceptually evident around them collectively.  Probably 
@@ -784,9 +782,9 @@ experienced in terms of a matrix of phenomenological criteria that can
 be harnessed into a general theory: how an ink stain is (in part) 
 materially continuous with the stained paper that extends around it; 
 howa pretty sunsetis an imprecisely bounded but conceptually 
-integral atmospheric event; how (\ref`({)itm:applause`(})) figures the audience as 
+integral atmospheric event; how () figures the audience as 
 discrete individuals who, at that moment, act in such a way as to present a 
-conceptual and perceptual totality; how (\ref`({)itm:cicada`(})) likewise proposes 
+conceptual and perceptual totality; how () likewise proposes 
 a totality but in a more complex fashion, because the speaker is 
 describing a typicalkindof experience rather than the specific 
 sounds of cicadas on one specific occasion.The matrix of continuity/discontinuity, and individual coherence balanced
@@ -797,7 +795,7 @@ They become part of a language's lexical machinery and
 therefore embed, in lexical conventions, phenomenological 
 prototypes that imply a situational background, called 
 forth by the lexical potency of the specific words.  
-The point is not that the hearer of (\ref`({)itm:sunset`(})), say, 
+The point is not that the hearer of (), say, 
 sees the sunset also, and thusexplicitlyundergoes the 
 disclosure-experience of a sunset (in all its sensory 
 vividness and individuating vagueness).  Instead, the 
@@ -818,11 +816,11 @@ flair, often bounding expressive possibilities on
 phenomenological rather than narrowly semantic grounds.  
 I would dispute some of Nunberg's analyses I mentioned 
 in the last section, for example, on the 
-dubiousness of (\ref`({)itm:start`(})) or the exceptionality 
-of (\ref`({)itm:Sauternes`(})).  I do not find
-(\ref`({)itm:start`(})) exceptionally jarring, considering the 
-situational construal common to (\ref`({)itm:start`(})) along 
-with (\ref`({)itm:parked`(})) and (\ref`({)itm:waiting`(})): 
+dubiousness of () or the exceptionality 
+of ().  I do not find
+() exceptionally jarring, considering the 
+situational construal common to () along 
+with () and (): 
 the formationI am parkedis notjusta matter of 
 a person proxy-referring their car.  Usually a person 
 sayingI am parkedisintheir car, so they are 
@@ -840,7 +838,7 @@ parked `{-} even when the speaker is not at that spot
 `{-} indicates that the speaker is conceiving the car's 
 location in first-personal terms; that is, in terms 
 of the actions the speaker is taking or anticipates 
-taking.This analysis then implies that (\ref`({)itm:start`(})) is 
+taking.This analysis then implies that () is 
 acceptable on similar operational grounds; first-personalizing 
 the cars location, so to speak, foregrounds that location 
 only in the context of an operational totality involving 
@@ -848,8 +846,8 @@ only in the context of an operational totality involving
 If the speaker is concerned about the car not starting, 
 this is relevant to how the overall situation is 
 cognized, and therefore the transition from the speaker-centeredI am parked ...to the discordantand may not startis understandable.  I would similarly argue that the 
-apparent difference between (\ref`({)itm:Sauternes`(})) and
-(\ref`({)itm:beers`(}))-(\ref`({)itm:Michelobs`(})) depends on how 
+apparent difference between () and
+()-() depends on how 
 referential foci are established.  The phrasea beercan designate a specific glass or bottle of 
 beer `{-} something perceptually and enactively/kinaesthetically 
 individuated `{-} or also a specific preparation of beer,
@@ -932,7 +930,7 @@ in this paper) in the phenomenological
 conscious, intentional experience (in contrast
 to experience, or thoughts and feelings, we
 attribute to others based on their behavior).On the other hand, I would argue that the pattern in 
-(\ref`({)itm:hall`(}))-(\ref`({)itm:ontv`(})) is not reducible to 
+()-() is not reducible to 
 referential proxying as a logical maxim.  We can speculate thatIobliquely references, say, the bust and info about an 
 athlete who has been elected to a Hall of Fame, or to the 
 image of a TV personality which viewers see on screen.  
@@ -945,11 +943,11 @@ the contextual particulars, in particular the backstory
 which is lexically embedded in expressions likeHall of Fameandon TV.  There is a long process 
 leading to retired athletes being recognized as worthy of 
 a Hall; there is also a long process whereby personalities 
-get a chance to appear on television.  Actually, (\ref`({)itm:ontv`(})) 
+get a chance to appear on television.  Actually, () 
 has two interpretations `{-} someone could be on TV just momentarily, 
 e.g. as a bystander during on-location news coverage `{-} or 
 as someone like a policy expert who is interviewed on occasion.  
-But the more interesting reading of (\ref`({)itm:ontv`(})) involves 
+But the more interesting reading of () involves 
 a person being described ason TVnot on the occasion of 
 their appearing on-screen in that moment, but as a recurring 
 event.  In this casebeing on TVencapsulates a backstory 
@@ -959,7 +957,7 @@ reference:I am in the Halloron TVindirectly reports
 that the speaker has undergone some process which the addressee, 
 assumed competent with the relevant lexicon, at least
 minimally understands.
-So a pattern like (\ref`({)itm:hall`(})) packages up that backstoryin the guiseof a referring expression; it is not so much the 
+So a pattern like () packages up that backstoryin the guiseof a referring expression; it is not so much the 
 athlete's bust as a target of referential proxying, but more of the 
 act of referring to that bust (i.e., to the referentiable 
 object manifesting the speaker's being elected) entering
@@ -977,8 +975,8 @@ hypothetical perceptual nexus.  So a painterin the Whitneymeans
 that a visitor can, in the right room and orientation, perceptually 
 encounter her work; a personalityon TVmeans that the 
 addressee can, at times, see her on-screen.  Those potential perceptual 
-givens ground the semantics of expressions like (\ref`({)itm:Whitney`(})) or 
-(\ref`({)itm:ontv`(})).  This does not mean that the sentences are only 
+givens ground the semantics of expressions like () or 
+().  This does not mean that the sentences are only 
 meaningful to an addressee who wants to go find the speaker at the 
 museum or on the television.  But it does present the perceptual 
 ground as a foundation for the conceptual implications which 
@@ -996,7 +994,7 @@ determines how the perceptual ground should be understood.
 Usually the discourse isaboutthat backstory, not about 
 the precise situations where explicit perceptual grounds would 
 be relevant `{-} an artist probably would not say 
-(\ref`({)itm:Whitney`(})) only to someone looking to visit a museum to 
+() only to someone looking to visit a museum to 
 see her art work.  TheI am in...pattern 
 turns on how these two different levels are played off 
 in interpretation.
@@ -1005,7 +1003,7 @@ speaker's information is being proferred: is boasting
 of their art being hung in an elite museum mostly a
 way of conveying the speaker's status, so the main theme is
 essentially autobiographical; or is the actual location
-of the painting directly relevant to the present conversation?A statement like (\ref`({)itm:crate`(})) (the speaker beingin the crate on the right) does not have the moreautobiographicalreading, since (absent some bizarry
+of the painting directly relevant to the present conversation?A statement like () (the speaker beingin the crate on the right) does not have the moreautobiographicalreading, since (absent some bizarry
 imaginary scene) there is no status or reputation attached
 to which crate is carrying your paintings.  But the second kind of reading,
 where specific location is operationally relevant,
@@ -1014,17 +1012,17 @@ artists' works are in several different crates and
 the speaker wants to direct focus onto the one holding
 her own works.  So, in the proper context,
 I have no objection to
-(\ref`({)itm:crate`(})) orI am in that crate(forms which Nunberg rejects).
-The gist here, as in (\ref`({)itm:Whitney`(})), is to establish conceptual
+() orI am in that crate(forms which Nunberg rejects).
+The gist here, as in (), is to establish conceptual
 focus onto a painting or art work, and to do so via a
 first-person referential lead-in.  So the situation determines 
 firstwhythe focus is thus singled out and secondhowthe first-person reference can proxy that focus.  
-In (\ref`({)itm:Whitney`(})), we single out a painting insofar as it 
+In (), we single out a painting insofar as it 
 is a product of the artist's creativity, so appreciation of the 
 work is manifestly appreciation of the artist.  The artist is 
 then referentially linked to the work because the backstory of 
 how museums acquire art works overlaps with the story of 
-artists' careers and reputations.In (\ref`({)itm:crate`(})) the situation is different: presumably 
+artists' careers and reputations.In () the situation is different: presumably 
 the focus is on one or several art works because of some concern 
 about transporting or accessing them, so we're attending to the 
 works in their guise as (fragile) physical objects.  Moreover 
@@ -1046,7 +1044,7 @@ acceptability: the more that we incorporate
 multiple layers of posssible context, the wider becomes
 the circle of sentences that feel reasonable
 (cf. the reasonableness, in my estimation, of
-(\ref`({)itm:crate`(})) and (\ref`({)itm:Sauternes`(}))).Granted that, perhaps, with a lot of imagination
+() and ()).Granted that, perhaps, with a lot of imagination
 almost any construction could be deemed
 plausible insomecontext.  Accordingly,
 one could argue that it is analytically reasonable
@@ -1067,10 +1065,10 @@ many cases overrate the distinction betweennormalandexceptionalcircumstances.
 For example, I dispute that the beer/wine
 contrast, or painting in a museum or in a crate
 contrast, are such a divergence between normal and
-unusual contexts that (\ref`({)itm:crate`(})) has
+unusual contexts that () has
 essentially different plausibility than
-(\ref`({)itm:Whitney`(})), or (\ref`({)itm:Sauternes`(}))
-compared to (\ref`({)itm:beers`(})) and (\ref`({)itm:Michelobs`(})).Failure to identify these
+(), or ()
+compared to () and ().Failure to identify these
 layers' workings can lead analysis toward searches 
 for reproducible logical rules governing which constructions  
 are accepted by a language-community as recurring patterns, 
@@ -1082,9 +1080,9 @@ from both semantic and reference-theoretic angles.
 I will focus on this issue of logicality `{-} both its applicability 
 and its limits `{-} in the next section.`[/]
 
-`[//]sectionlabelpiqNPropciteNOverNVUnderVquotesentenceListsentenceItemswludrefglfootnotesubsectionvisavisinputNNtoPropargsToReturnNNtoPropYieldsPropPropToNYieldsNSeqNPplVPProptoNrefNtoNspsubsectiontwolineqmarkdubiousthindecolineGardenforsAI`[/]
+`[//]sectionlabelpiqNPropciteNOverNVUnderVquotesentenceListsentenceItemswludrefglfootnotesubsectionvisavisinputrefNNtoPropargsToReturnNNtoPropYieldsPropPropToNYieldsNSeqNPplVPProptoNNtoNspsubsectiontwolineqmarkdubiousthindecolineGardenforsAI`[/]
 
-`[//]s2BarkerShanTGKubotaLevineSivaReddyKiyoshiSudoChoeCharniakitm:ambiencesemen_gum-ud-trainGUM_voyage_merida-20JanVanEijckRikVanNoorditm:actuallysemen_gum-ud-trainGUM_voyage_socotra-16figactuallydblfigactuallyfigambiencestudentsscoofficescoafterscoparentssco`{  }scoOsborneMaxwellfig:IknowPinkerAnneVilnat`{ }lexitm:LiverpoollexZhaohuiLuoZhaohuiLuoSignatures`{ }(?)lex`{ }(?)lex`{ }ont`{ }ontKitFineitm:footprintsrefitm:holerefitm:footprintsleadingrefitm:traintracksrefitm:Salesmenontitm:knockingontitm:Shouldontitm:inkrefitm:sunsetrefitm:cicadarefen_gum-ud-trainGUM_voyage_phoenix-30itm:applauserefJamesPustejovskyAsherPustejovskyitm:hallrefitm:ontvrefitm:crateref`[/]
+`[//]s2BarkerShanTGKubotaLevinep. 1RossiSivaReddyKiyoshiSudoChoeCharniakitm:ambiencesemen_gum-ud-trainGUM_voyage_merida-20JanVanEijckRikVanNoorditm:actuallysemen_gum-ud-trainGUM_voyage_socotra-16figactuallydblitm:actuallyfig:actuallydblfigactuallyfigambiencestudentsscoofficescoafterscoparentsscostudentsofficeitm:threetimes`{  }scoafterparentsafterparentsstudentsofficeOsborneMaxwellfig:Iknowexample 2, p. 5AsherPustejovskyPinkerAnneVilnatp. 40ChatzikyriakidisLuop. 4MeryMootRetore`{ }lexitm:LiverpoollexZhaohuiLuoZhaohuiLuoSignatures`{ }(?)lex`{ }(?)lex`{ }ont`{ }ontp. 4Gardenforsp. 38RamsteadKitFineitm:footprintsrefitm:holerefitm:footprintsleadingrefitm:traintracksrefitm:footprintsitm:footprintsleadingitm:footprintsleadingitm:Salesmenontitm:knockingontitm:Shouldontitm:knockingitm:Salesmenitm:knockingitm:Shoulditm:Salesmenitm:inkrefitm:sunsetrefitm:cicadarefen_gum-ud-trainGUM_voyage_phoenix-30itm:applauserefitm:applauseitm:cicadaitm:sunsetitm:startitm:Sauternesitm:startitm:startitm:parkeditm:waitingitm:startitm:Sauternesitm:beersitm:MichelobsJamesPustejovskyAsherPustejovskyitm:hallrefitm:ontvrefitm:craterefitm:hallitm:ontvitm:ontvitm:ontvitm:hallitm:Whitneyitm:ontvitm:Whitneyitm:crateitm:crateitm:Whitneyitm:Whitneyitm:crateitm:crateitm:Sauternesitm:crateitm:Whitneyitm:Sauternesitm:beersitm:Michelobs`[/]
 
 @@ ranges
 3
@@ -1120,496 +1118,552 @@ and its limits `{-} in the next section.`[/]
 4002<1>4005;33,
 4024<1>0;34,
 4078<1>4082;35,
-4084<1>5910;36,
+4084<1>5891;36,
 4287<1>4295;37,
 4349<1>4359;38,
-4394<2>4943;39,4412;40,
+4394<2>4924;39,4412;40,
 4673<1>4708;41,
-5139<1>5146;42,
-5203<1>5208;43,
-5231<1>5234;44,
-5251<1>5259;45,
-5658<1>5663;46,
-5863<1>5872;47,
-5911<1>7068;48,
-5976<1>5983;49,
-6232<1>6235;50,
-6238<1>6243;51,
-6431<1>6436;52,
-6481<1>6484;53,
-7069<1>7330;54,
-7115<1>7117;55,
-7266<1>7276;56,
-7289<1>7289;57,
-7306<1>7306;58,
-7312<1>7312;59,
-7315<1>7315;60,
-7331<1>8428;61,
-7457<1>7469;62,
-7625<1>0;63,
-7626<1>0;65,
-7627<1>0;67,
-7807<3>7866;69,0;70,0;71,
-7867<1>0;75,
-7876<1>7949;78,
-8429<1>9047;79,
-8637<1>8756;80,
-8657<1>8670;81,
-9048<1>9071;82,
-9072<1>10210;83,
-9192<1>9200;84,
-9219<1>9224;85,
-9242<1>9249;86,
-9263<1>9269;87,
-9431<1>9436;88,
-10211<1>11610;89,
-10293<1>10309;90,
-10502<1>0;91,
-10505<1>0;93,
-10512<1>10517;95,
-10665<1>10674;96,
-10929<1>10936;97,
-11347<1>11352;98,
-11462<1>11469;99,
-11611<1>12710;100,
-11643<3>11702;101,0;102,0;103,
-11703<1>0;107,
-11728<1>11802;110,
-11822<1>11829;111,
-11855<1>11856;112,
-11928<1>11929;113,
-11934<1>11944;114,
-11971<1>11979;115,
-12083<1>12095;116,
-12176<1>12189;117,
-12229<1>12235;118,
-12238<1>12252;119,
-12609<1>12622;120,
-12624<1>12625;121,
-12674<1>12684;122,
-12711<1>13644;123,
-12754<1>12764;124,
-12782<1>12784;125,
-12815<1>12821;126,
-12839<1>12845;127,
-12899<1>12900;128,
-13001<1>13004;129,
-13047<1>13053;130,
-13143<1>13149;131,
-13206<1>13644;132,
-13245<1>13248;133,
-13326<1>13334;134,
-13409<1>13409;135,
-13446<1>13446;136,
-13531<1>13531;137,
-13598<1>13598;138,
-13622<1>13643;139,
-13639<1>13639;140,
-13645<1>14566;141,
-13671<1>13673;142,
-13688<1>13698;143,
-13733<1>13738;144,
-13742<1>13743;145,
-13817<1>13819;146,
-13826<1>13833;147,
-13872<1>13877;148,
-13949<1>13950;149,
-13966<2>0;150,13968;151,
-13977<1>13980;152,
-13989<2>0;153,13995;154,
-14131<1>14136;155,
-14157<1>14164;156,
-14229<1>14233;157,
-14295<1>14300;158,
-14334<1>14355;159,
-14382<1>14383;160,
-14385<1>14387;161,
-14396<1>14398;162,
-14407<1>14409;163,
-14435<1>14436;164,
-14484<1>14485;165,
-14486<1>14492;166,
-14501<1>14503;167,
-14505<1>14511;168,
-14536<1>14537;169,
-14544<1>14549;170,
-14567<2>0;171,15410;173,
-14592<1>14607;174,
-15410<1>0;175,
-15411<2>0;177,17808;179,
-15478<1>15492;180,
-15618<1>15627;181,
-15719<1>0;182,
-15720<1>16292;183,
-16014<1>0;184,
-16026<1>0;185,
-16029<1>0;186,
-16391<1>16503;187,
-16911<1>16923;188,
-16941<1>16947;189,
-17003<1>17013;190,
-17110<1>0;191,
-17112<1>0;192,
-17161<1>0;193,
-17194<1>0;194,
-17279<1>0;195,
-17384<1>0;196,
-17393<1>17396;197,
-17450<1>17465;198,
-17493<1>0;199,
-17494<1>17808;200,
-17554<1>17568;201,
-17705<1>17715;202,
-17809<1>18330;203,
-17813<1>17822;204,
-17827<1>0;205,
-17967<1>0;206,
-18279<1>18294;207,
-18331<1>20197;208,
-18409<1>18421;209,
-18477<1>18484;210,
-18616<3>18892;211,0;212,0;213,
-18690<2>0;217,0;218,
-18753<2>0;222,0;223,
-18810<2>0;227,0;228,
-18940<1>18952;232,
-19136<1>19143;233,
-19235<1>19247;234,
-19625<3>19760;235,0;236,0;237,
-19708<2>0;240,0;241,
-19819<1>19839;245,
-19870<1>19882;246,
-19971<1>19983;247,
-20071<1>20081;248,
-20198<1>21633;249,
-20208<1>20228;250,
-20241<1>20255;251,
-20257<1>20271;252,
-20475<1>20478;253,
-20685<1>20692;254,
-20879<1>20880;255,
-20922<1>20941;256,
-20966<1>20973;257,
-20977<1>20987;258,
-21395<1>21397;259,
-21559<1>0;260,
-21652<1>23171;262,
-22115<1>22118;263,
-22141<1>0;264,
-22223<2>0;265,22231;266,
-22234<1>0;267,
-22235<1>0;268,
-22247<1>0;269,
-22276<1>22289;270,
-22385<1>0;271,
-22491<1>0;272,
-22554<1>0;274,
-22564<1>0;275,
-22586<1>22587;276,
-22612<1>0;277,
-22630<1>22633;278,
-22638<1>0;279,
-22679<1>22682;280,
-22905<1>22906;281,
-22917<1>22924;282,
-22981<1>22987;283,
-23172<1>24658;284,
-23297<1>23311;285,
-23479<1>23483;286,
-23924<1>23937;287,
-24023<1>24035;288,
-24150<1>24159;289,
-24213<1>24225;290,
-24228<1>24235;291,
-24369<1>24373;292,
-24379<1>24386;293,
-24659<1>25779;294,
-24726<1>24729;295,
-24893<1>24905;296,
-25091<1>25095;297,
-25103<1>25106;298,
-25109<1>25129;299,
-25696<1>25716;300,
-25743<1>25749;301,
-25780<1>26132;302,
-26133<1>26169;303,
-26170<1>27145;304,
-26289<1>26297;305,
-26493<1>26501;306,
-27146<1>28300;307,
-27295<1>27302;308,
-27489<1>0;309,
-27490<1>0;310,
-27714<1>27727;311,
-28078<1>28082;312,
-28301<1>29255;313,
-28819<1>28826;314,
-29003<1>29006;315,
-29023<1>29023;316,
-29046<1>29049;317,
-29256<1>31011;318,
-29281<1>29292;319,
-29316<1>29316;320,
-29328<2>0;321,29341;322,
-29372<1>29375;323,
-29459<2>0;324,29475;325,
-29541<1>29569;326,
-29749<1>29753;327,
-29756<1>29766;328,
-29785<1>29794;329,
-29816<1>29828;330,
-29885<1>29892;331,
-30004<1>30029;332,
-30041<1>30044;333,
-30178<1>30182;334,
-30577<1>30584;335,
-30807<1>30827;336,
-30829<1>30844;337,
-30846<1>30865;338,
-31012<1>31878;339,
-31021<1>31031;340,
-31130<1>31168;341,
-31200<1>31203;342,
-31284<1>31287;343,
-31365<1>31391;344,
-31735<1>31743;345,
-31800<1>31801;346,
-31805<1>31811;347,
-31879<1>32647;348,
-32648<1>34735;349,
-32760<1>32769;350,
-32873<1>32881;351,
-32935<1>32945;352,
-33037<1>33046;353,
-33115<1>33133;354,
-33572<1>33862;355,
-33650<1>0;356,
-33737<1>0;358,
-33795<1>33814;360,
-33912<1>33919;361,
-34066<1>34095;362,
-34099<1>34138;363,
-34168<1>34197;364,
-34206<1>34211;365,
-34231<1>34235;366,
-34361<1>34366;367,
-34540<1>34547;368,
-34736<1>36149;369,
-34846<1>34860;370,
-34863<1>34867;371,
-34870<1>34880;372,
-35021<1>35104;373,
-35105<3>35196;374,0;375,0;376,
-35149<2>0;380,0;381,
-35273<1>35286;385,
-35296<1>0;386,
-35299<1>0;388,
-35426<3>35524;390,0;391,0;392,
-35480<2>0;397,0;398,
-35594<1>35601;403,
-35609<1>35618;404,
-35638<1>35642;405,
-36062<1>36067;406,
-36085<1>36095;407,
-36150<1>37695;408,
-36315<3>36409;409,0;410,0;411,
-36361<2>0;415,0;416,
-36414<1>36416;420,
-36431<1>36444;421,
-36658<1>36661;422,
-36667<1>36697;423,
-36765<1>36768;424,
-36774<1>36790;425,
-36935<1>36951;426,
-36963<1>36975;427,
-37428<1>37492;428,
-37696<1>38961;429,
-37705<1>37715;430,
-37726<1>37736;431,
-37739<1>37743;432,
-37885<1>37896;433,
-38049<1>38057;434,
-38061<1>38069;435,
-38271<1>38274;436,
-38372<1>38375;437,
-38378<1>38409;438,
-38489<1>38500;439,
-38640<1>38651;440,
-38752<1>38760;441,
-38808<2>0;442,38819;443,
-38821<2>0;444,38834;445,
-38839<1>38854;446,
-38856<1>38873;447,
-38962<1>41143;448,
-38965<1>38977;449,
-39076<1>39083;450,
-39161<1>39170;451,
-39252<1>39256;452,
-39613<1>39620;453,
-39666<1>39677;454,
-39721<1>39729;455,
-39978<1>39987;456,
-40048<1>40050;457,
-40454<1>40462;458,
-40622<1>40630;459,
-40713<1>40721;460,
-40781<1>40788;461,
-40840<1>40849;462,
-41144<1>42518;463,
-41185<1>41193;464,
-42376<1>0;465,
-42519<1>43898;466,
-43899<2>0;467,46603;468,
-43947<1>43955;469,
-44013<1>44021;470,
-44079<1>44087;471,
-44119<1>44141;472,
-44307<1>0;473,
-44323<1>0;474,
-44370<2>44638;475,0;476,
-44438<1>44614;477,
-44837<1>44858;478,
-44861<1>44886;479,
-44954<1>45877;480,
-45131<1>45877;481,
-45139<1>45157;482,
-45425<1>45432;483,
-45518<1>45539;484,
-45617<1>45628;485,
-45878<1>45886;486,
-46080<1>46603;487,
-46103<1>46111;488,
-46173<1>0;489,
-46299<1>46315;490,
-46492<1>46495;491,
-46572<1>46602;492,
-46604<1>48915;493,
-46639<1>46649;494,
-47152<1>47161;495,
-47162<1>0;496,
-48375<1>48915;498,
-48542<1>48556;499,
-48698<1>48718;500,
-48916<1>49971;501,
-49972<1>50692;502,
-50282<1>50287;503,
-50693<1>50715;504,
-50716<1>52223;505,
-50818<1>50826;506,
-50953<1>50959;507,
-50988<3>51134;508,0;509,0;510,
-51022<2>0;514,0;515,
-51051<2>0;519,0;520,
-51092<2>0;524,0;525,
-51195<1>51200;529,
-51327<1>51329;530,
-51990<1>51999;531,
-52224<1>53328;532,
-52391<1>52393;533,
-53322<1>53327;534,
-53329<1>54349;535,
-53486<1>53490;536,
-53651<3>53730;537,0;538,0;539,
-53676<2>0;543,0;544,
-53710<2>0;548,0;549,
-53813<1>53820;553,
-54053<1>54064;554,
-54067<1>54080;555,
-54083<1>54086;556,
-54350<1>56170;557,
-55210<3>55420;558,0;559,0;560,
-55257<2>0;564,0;565,
-55297<2>0;569,0;570,
-55375<3>0;574,0;577,0;578,
-55706<1>55720;582,
-56084<1>56087;583,
-56171<1>57514;584,
-56264<1>56270;585,
-56324<1>56335;586,
-56361<1>56370;587,
-56374<1>56383;588,
-56386<1>56393;589,
-56395<1>56401;590,
-56412<1>56418;591,
-56422<1>56427;592,
-56749<1>56758;593,
-57106<1>57109;594,
-57451<1>57473;595,
-57475<1>57506;596,
-57515<1>59055;597,
-58162<1>58172;598,
-58179<1>58182;599,
-58257<1>58267;600,
-58270<1>58271;601,
-58484<1>58486;602,
-58615<1>58617;603,
-58639<1>58649;604,
-59056<1>61264;605,
-59515<1>59529;606,
-59547<1>59563;607,
-59773<1>59778;608,
-60103<1>60119;609,
-60187<1>60191;610,
-60430<1>60438;611,
-60507<1>60523;612,
-60754<1>60762;613,
-60898<1>0;614,
-60966<1>60966;615,
-61265<1>62554;616,
-61425<1>61431;617,
-61668<1>61676;618,
-61705<1>61707;619,
-61747<1>61763;620,
-61776<1>61778;621,
-61926<1>61929;622,
-61945<1>61952;623,
-62175<1>62183;624,
-62220<1>62230;625,
-62242<1>0;626,
-62244<1>0;628,
-62278<1>62288;630,
-62555<2>0;631,63193;632,
-63194<1>64687;633,
-63256<1>63274;634,
-63384<3>63419;635,0;636,0;637,
-63409<2>0;641,0;642,
-63480<1>63487;646,
-63975<3>64011;647,0;648,0;649,
-64074<1>64083;653,
-64283<1>64687;654,
-64292<1>64303;655,
-64688<1>66216;656,
-64860<1>64860;657,
-65113<1>65134;658,
-65421<1>65432;659,
-65436<1>65440;660,
-65938<1>65942;661,
-66049<1>66059;662,
-66217<1>67159;663,
-66293<1>66308;664,
-66311<1>66315;665,
-66540<1>66551;666,
-66898<1>66899;667,
-67160<1>68412;668,
-67534<1>67547;669,
-67657<1>67661;670,
-68413<1>69476;671,
-68811<1>68815;672,
-69043<1>69052;673,
-69477<1>70750;674,
-69530<1>69554;675,
-69579<1>69594;676,
-70066<1>70083;677,
-70307<1>70309;678,
-70350<1>70352;679,
-70751<1>71511;680,
-71512<1>73835;681,
-72044<1>73286;682,
-72145<1>72148;683,
-72471<1>72477;684,
-72482<1>72487;685,
-72925<1>72930;686,
-72934<1>72944;687,
+4925<1>0;42,
+5120<1>5127;45,
+5184<1>5189;46,
+5212<1>5215;47,
+5232<1>5240;48,
+5639<1>5644;49,
+5844<1>5853;50,
+5892<1>7049;51,
+5957<1>5964;52,
+6213<1>6216;53,
+6219<1>6224;54,
+6412<1>6417;55,
+6462<1>6465;56,
+7050<1>7311;57,
+7096<1>7098;58,
+7247<1>7257;59,
+7270<1>7270;60,
+7287<1>7287;61,
+7293<1>7293;62,
+7296<1>7296;63,
+7312<1>8409;64,
+7438<1>7450;65,
+7606<1>0;66,
+7607<1>0;68,
+7608<1>0;70,
+7788<3>7847;72,0;73,0;74,
+7848<1>0;78,
+7857<1>7930;81,
+8410<1>9028;82,
+8618<1>8737;83,
+8638<1>8651;84,
+9029<1>9052;85,
+9053<1>10191;86,
+9173<1>9181;87,
+9200<1>9205;88,
+9223<1>9230;89,
+9244<1>9250;90,
+9412<1>9417;91,
+10192<1>11591;92,
+10274<1>10290;93,
+10483<1>0;94,
+10486<1>0;96,
+10493<1>10498;98,
+10646<1>10655;99,
+10910<1>10917;100,
+11328<1>11333;101,
+11443<1>11450;102,
+11592<1>12691;103,
+11624<3>11683;104,0;105,0;106,
+11684<1>0;110,
+11709<1>11783;113,
+11803<1>11810;114,
+11836<1>11837;115,
+11909<1>11910;116,
+11915<1>11925;117,
+11952<1>11960;118,
+12064<1>12076;119,
+12157<1>12170;120,
+12210<1>12216;121,
+12219<1>12233;122,
+12590<1>12603;123,
+12605<1>12606;124,
+12655<1>12665;125,
+12692<1>13625;126,
+12735<1>12745;127,
+12763<1>12765;128,
+12796<1>12802;129,
+12820<1>12826;130,
+12880<1>12881;131,
+12982<1>12985;132,
+13028<1>13034;133,
+13124<1>13130;134,
+13187<1>13625;135,
+13226<1>13229;136,
+13307<1>13315;137,
+13390<1>13390;138,
+13427<1>13427;139,
+13512<1>13512;140,
+13579<1>13579;141,
+13603<1>13624;142,
+13620<1>13620;143,
+13626<1>14547;144,
+13652<1>13654;145,
+13669<1>13679;146,
+13714<1>13719;147,
+13723<1>13724;148,
+13798<1>13800;149,
+13807<1>13814;150,
+13853<1>13858;151,
+13930<1>13931;152,
+13947<2>0;153,13949;154,
+13958<1>13961;155,
+13970<2>0;156,13976;157,
+14112<1>14117;158,
+14138<1>14145;159,
+14210<1>14214;160,
+14276<1>14281;161,
+14315<1>14336;162,
+14363<1>14364;163,
+14366<1>14368;164,
+14377<1>14379;165,
+14388<1>14390;166,
+14416<1>14417;167,
+14465<1>14466;168,
+14467<1>14473;169,
+14482<1>14484;170,
+14486<1>14492;171,
+14517<1>14518;172,
+14525<1>14530;173,
+14548<2>0;174,15352;176,
+14573<1>14588;177,
+15028<1>0;178,
+15064<1>0;180,
+15352<1>0;182,
+15353<2>0;184,17750;186,
+15420<1>15434;187,
+15560<1>15569;188,
+15661<1>0;189,
+15662<1>16234;190,
+15956<1>0;191,
+15968<1>0;192,
+15971<1>0;193,
+16333<1>16445;194,
+16853<1>16865;195,
+16883<1>16889;196,
+16945<1>16955;197,
+17052<1>0;198,
+17054<1>0;199,
+17103<1>0;200,
+17136<1>0;201,
+17221<1>0;202,
+17326<1>0;203,
+17335<1>17338;204,
+17392<1>17407;205,
+17435<1>0;206,
+17436<1>17750;207,
+17496<1>17510;208,
+17647<1>17657;209,
+17751<1>18272;210,
+17755<1>17764;211,
+17769<1>0;212,
+17909<1>0;213,
+18221<1>18236;214,
+18273<1>20018;215,
+18351<1>18363;216,
+18419<1>18426;217,
+18558<3>18834;218,0;219,0;220,
+18632<2>0;224,0;225,
+18695<2>0;229,0;230,
+18752<2>0;234,0;235,
+18839<1>0;239,
+18846<1>0;241,
+18856<1>18868;243,
+19052<1>19059;244,
+19151<1>19163;245,
+19507<1>0;246,
+19520<3>19655;248,0;249,0;250,
+19603<2>0;253,0;254,
+19671<1>0;258,
+19678<1>0;260,
+19690<1>19710;262,
+19741<1>19753;263,
+19842<1>19854;264,
+19942<1>19952;265,
+20000<1>0;266,
+20003<1>0;268,
+20014<1>0;270,
+20017<1>0;272,
+20019<1>21454;274,
+20029<1>20049;275,
+20062<1>20076;276,
+20078<1>20092;277,
+20296<1>20299;278,
+20506<1>20513;279,
+20700<1>20701;280,
+20743<1>20762;281,
+20787<1>20794;282,
+20798<1>20808;283,
+21216<1>21218;284,
+21380<1>0;285,
+21473<1>22992;287,
+21936<1>21939;288,
+21962<1>0;289,
+22044<2>0;290,22052;291,
+22055<1>0;292,
+22056<1>0;293,
+22068<1>0;294,
+22097<1>22110;295,
+22206<1>0;296,
+22312<1>0;297,
+22375<1>0;299,
+22385<1>0;300,
+22407<1>22408;301,
+22433<1>0;302,
+22451<1>22454;303,
+22459<1>0;304,
+22500<1>22503;305,
+22726<1>22727;306,
+22738<1>22745;307,
+22802<1>22808;308,
+22993<1>24479;309,
+23118<1>23132;310,
+23300<1>23304;311,
+23745<1>23758;312,
+23844<1>23856;313,
+23971<1>23980;314,
+24034<1>24046;315,
+24049<1>24056;316,
+24190<1>24194;317,
+24200<1>24207;318,
+24480<1>25600;319,
+24547<1>24550;320,
+24714<1>24726;321,
+24912<1>24916;322,
+24924<1>24927;323,
+24930<1>24950;324,
+25517<1>25537;325,
+25564<1>25570;326,
+25601<1>25953;327,
+25954<1>25990;328,
+25991<1>26966;329,
+26110<1>26118;330,
+26314<1>26322;331,
+26967<1>28121;332,
+27116<1>27123;333,
+27310<1>0;334,
+27311<1>0;335,
+27535<1>27548;336,
+27899<1>27903;337,
+28122<1>29076;338,
+28640<1>28647;339,
+28824<1>28827;340,
+28844<1>28844;341,
+28867<1>28870;342,
+29077<1>30792;343,
+29102<1>29113;344,
+29137<1>29137;345,
+29149<2>0;346,29162;347,
+29193<1>29196;348,
+29280<2>0;349,29296;350,
+29362<1>29390;351,
+29391<1>0;352,
+29530<1>29534;355,
+29537<1>29547;356,
+29566<1>29575;357,
+29597<1>29609;358,
+29666<1>29673;359,
+29785<1>29810;360,
+29822<1>29825;361,
+29959<1>29963;362,
+30358<1>30365;363,
+30588<1>30608;364,
+30610<1>30625;365,
+30627<1>30646;366,
+30793<1>31659;367,
+30802<1>30812;368,
+30911<1>30949;369,
+30981<1>30984;370,
+31065<1>31068;371,
+31146<1>31172;372,
+31516<1>31524;373,
+31581<1>31582;374,
+31586<1>31592;375,
+31660<1>32428;376,
+32429<1>34516;377,
+32541<1>32550;378,
+32654<1>32662;379,
+32716<1>32726;380,
+32818<1>32827;381,
+32896<1>32914;382,
+33353<1>33643;383,
+33431<1>0;384,
+33518<1>0;386,
+33576<1>33595;388,
+33693<1>33700;389,
+33847<1>33876;390,
+33880<1>33919;391,
+33949<1>33978;392,
+33987<1>33992;393,
+34012<1>34016;394,
+34142<1>34147;395,
+34321<1>34328;396,
+34517<1>35867;397,
+34627<1>34641;398,
+34644<1>34648;399,
+34651<1>34661;400,
+34802<2>34822;401,0;402,
+34814<1>0;405,
+34823<3>34914;408,0;409,0;410,
+34867<2>0;414,0;415,
+34991<1>35004;419,
+35014<1>0;420,
+35017<1>0;422,
+35144<3>35242;424,0;425,0;426,
+35198<2>0;431,0;432,
+35312<1>35319;437,
+35327<1>35336;438,
+35356<1>35360;439,
+35780<1>35785;440,
+35803<1>35813;441,
+35868<1>37413;442,
+36033<3>36127;443,0;444,0;445,
+36079<2>0;449,0;450,
+36132<1>36134;454,
+36149<1>36162;455,
+36376<1>36379;456,
+36385<1>36415;457,
+36483<1>36486;458,
+36492<1>36508;459,
+36653<1>36669;460,
+36681<1>36693;461,
+37146<1>37210;462,
+37414<1>38679;463,
+37423<1>37433;464,
+37444<1>37454;465,
+37457<1>37461;466,
+37603<1>37614;467,
+37767<1>37775;468,
+37779<1>37787;469,
+37989<1>37992;470,
+38090<1>38093;471,
+38096<1>38127;472,
+38207<1>38218;473,
+38358<1>38369;474,
+38470<1>38478;475,
+38526<2>0;476,38537;477,
+38539<2>0;478,38552;479,
+38557<1>38572;480,
+38574<1>38591;481,
+38680<1>40861;482,
+38683<1>38695;483,
+38794<1>38801;484,
+38879<1>38888;485,
+38970<1>38974;486,
+39331<1>39338;487,
+39384<1>39395;488,
+39439<1>39447;489,
+39696<1>39705;490,
+39766<1>39768;491,
+40172<1>40180;492,
+40340<1>40348;493,
+40431<1>40439;494,
+40499<1>40506;495,
+40558<1>40567;496,
+40862<1>42236;497,
+40903<1>40911;498,
+42094<1>0;499,
+42237<1>43616;500,
+43617<2>0;501,46275;502,
+43665<1>43673;503,
+43731<1>43739;504,
+43797<1>43805;505,
+43837<1>43859;506,
+44025<1>0;507,
+44041<1>0;508,
+44088<2>44333;509,0;510,
+44156<1>44332;511,
+44333<1>0;512,
+44532<1>44553;515,
+44556<1>44581;516,
+44649<1>45549;517,
+44826<1>45549;518,
+44834<1>44852;519,
+45120<1>45127;520,
+45213<1>45234;521,
+45312<1>45323;522,
+45550<2>0;523,45558;526,
+45752<1>46275;527,
+45775<1>45783;528,
+45845<1>0;529,
+45971<1>45987;530,
+46164<1>46167;531,
+46244<1>46274;532,
+46276<1>48587;533,
+46311<1>46321;534,
+46824<1>46833;535,
+46834<1>0;536,
+48047<1>48587;538,
+48214<1>48228;539,
+48370<1>48390;540,
+48588<1>49643;541,
+49644<1>50364;542,
+49954<1>49959;543,
+50365<1>50387;544,
+50388<1>51875;545,
+50490<1>50498;546,
+50625<1>50631;547,
+50660<3>50806;548,0;549,0;550,
+50694<2>0;554,0;555,
+50723<2>0;559,0;560,
+50764<2>0;564,0;565,
+50811<1>0;569,
+50847<1>50852;571,
+50979<1>50981;572,
+51642<1>51651;573,
+51876<1>52926;574,
+51880<1>0;575,
+52016<1>52018;577,
+52246<1>0;578,
+52920<1>52925;580,
+52927<1>53859;581,
+53084<1>53088;582,
+53249<3>53328;583,0;584,0;585,
+53274<2>0;589,0;590,
+53308<2>0;594,0;595,
+53345<1>0;599,
+53361<1>0;601,
+53375<1>53382;603,
+53495<1>0;604,
+53597<1>53608;606,
+53611<1>53624;607,
+53627<1>53630;608,
+53726<1>0;609,
+53749<1>0;611,
+53860<1>55646;613,
+54720<3>54930;614,0;615,0;616,
+54767<2>0;620,0;621,
+54807<2>0;625,0;626,
+54885<3>0;630,0;633,0;634,
+55216<1>55230;638,
+55308<1>0;639,
+55453<1>0;641,
+55560<1>55563;643,
+55647<1>56974;644,
+55740<1>55746;645,
+55800<1>55811;646,
+55837<1>55846;647,
+55850<1>55859;648,
+55862<1>55869;649,
+55871<1>55877;650,
+55888<1>55894;651,
+55898<1>55903;652,
+56170<1>0;653,
+56209<1>56218;655,
+56566<1>56569;656,
+56911<1>56933;657,
+56935<1>56966;658,
+56975<1>58418;659,
+57363<1>0;660,
+57392<1>0;662,
+57411<1>0;664,
+57486<1>0;666,
+57501<1>0;668,
+57508<1>0;670,
+57525<1>57535;672,
+57542<1>57545;673,
+57620<1>57630;674,
+57633<1>57634;675,
+57847<1>57849;676,
+57978<1>57980;677,
+58002<1>58012;678,
+58419<1>60559;679,
+58452<1>0;680,
+58863<1>58877;682,
+58895<1>58911;683,
+58995<1>0;684,
+59002<1>0;686,
+59005<1>0;688,
+59068<1>59073;690,
+59398<1>59414;691,
+59482<1>59486;692,
+59725<1>59733;693,
+59802<1>59818;694,
+60049<1>60057;695,
+60193<1>0;696,
+60261<1>60261;697,
+60560<1>61849;698,
+60720<1>60726;699,
+60963<1>60971;700,
+61000<1>61002;701,
+61042<1>61058;702,
+61071<1>61073;703,
+61221<1>61224;704,
+61240<1>61247;705,
+61470<1>61478;706,
+61515<1>61525;707,
+61537<1>0;708,
+61539<1>0;710,
+61573<1>61583;712,
+61850<2>0;713,62488;714,
+62489<1>63982;715,
+62551<1>62569;716,
+62679<3>62714;717,0;718,0;719,
+62704<2>0;723,0;724,
+62775<1>62782;728,
+63270<3>63306;729,0;730,0;731,
+63369<1>63378;735,
+63578<1>63982;736,
+63587<1>63598;737,
+63983<1>65455;738,
+64038<1>0;739,
+64041<1>0;741,
+64127<1>64127;743,
+64380<1>64401;744,
+64688<1>64699;745,
+64703<1>64707;746,
+64905<1>0;747,
+65138<1>0;749,
+65177<1>65181;751,
+65288<1>65298;752,
+65456<1>66384;753,
+65532<1>65547;754,
+65550<1>65554;755,
+65737<1>0;756,
+65765<1>65776;758,
+66123<1>66124;759,
+66385<1>67606;760,
+66759<1>66772;761,
+66882<1>66886;762,
+67025<1>0;763,
+67032<1>0;765,
+67607<1>68653;767,
+68005<1>68009;768,
+68150<1>0;769,
+68220<1>68229;771,
+68654<1>69863;772,
+68672<1>0;773,
+68692<1>68716;775,
+68741<1>68756;776,
+69209<1>0;777,
+69213<1>69230;779,
+69284<1>0;780,
+69437<1>69439;782,
+69480<1>69482;783,
+69538<1>0;784,
+69864<1>70609;786,
+69868<1>0;787,
+70610<1>72814;789,
+71098<1>0;790,
+71105<1>0;792,
+71108<1>72265;794,
+71209<1>71212;795,
+71535<1>71541;796,
+71546<1>71551;797,
+71989<1>71994;798,
+71998<1>72008;799,
+72188<1>0;800,
+72235<1>0;802,
+72242<1>0;804,
+72257<1>0;806,
+72264<1>0;808,
 !
 =2
 !
@@ -1617,7 +1671,7 @@ and its limits `{-} in the next section.`[/]
 !
  *
 @@ details
-687
+809
 1536;2:8
 1216;9:13
 0;2:3
@@ -1659,6 +1713,9 @@ and its limits `{-} in the next section.`[/]
 67135489;39:43
 12288;15:15
 6656;15:15
+1728;22:25
+1048580;28:31
+1048576;32:36
 6144;16:16
 6144;15:15
 6144;15:15
@@ -1681,20 +1738,20 @@ and its limits `{-} in the next section.`[/]
 16384;14:14
 2048;16:16
 2240;22:25
-0;28:36
+0;37:45
 2240;22:25
-0;37:47
+0;46:56
 2752;22:25
-0;48:59
+0;57:68
 67135489;44:55
 12288;56:67
 1216;68:70
-1048576;60:71
-1048576;7807:7866
-1048576;72:74
+1048576;69:80
+1048576;7788:7847
+1048576;81:83
 1216;71:75
-1048576;75:89
-1048576;90:109
+1048576;84:98
+1048576;99:118
 3072;76:77
 16384;14:14
 0;78:85
@@ -1709,9 +1766,9 @@ and its limits `{-} in the next section.`[/]
 16384;14:14
 2560;16:16
 3264;22:25
-0;110:120
+0;119:129
 2240;22:25
-0;121:131
+0;130:140
 6144;15:15
 6144;16:16
 6144;16:16
@@ -1721,12 +1778,12 @@ and its limits `{-} in the next section.`[/]
 67135489;44:55
 12288;56:67
 1216;68:70
-1048576;132:143
-1048576;11643:11702
-1048576;144:146
+1048576;141:152
+1048576;11624:11683
+1048576;153:155
 1216;71:75
-1048576;147:161
-1048576;162:182
+1048576;156:170
+1048576;171:191
 2048;76:77
 6144;15:15
 2048;15:15
@@ -1789,19 +1846,23 @@ and its limits `{-} in the next section.`[/]
 6144;15:15
 6144;15:15
 1216;103:107
-0;183:196
+0;192:205
 16384;14:14
 6144;16:16
+192;108:110
+0;206:217
+192;108:110
+0;218:232
 1216;103:107
-0;197:207
+0;233:243
 5312;103:107
-0;208:218
+0;244:254
 16384;14:14
 3072;16:16
 6144;16:16
-2048;108:115
+2048;111:118
 1024;78:85
-2048;116:127
+2048;119:130
 6144;17:17
 6144;18:21
 5120;78:85
@@ -1809,21 +1870,21 @@ and its limits `{-} in the next section.`[/]
 6144;15:15
 2048;16:16
 6144;18:21
-2048;108:115
+2048;111:118
 6144;18:21
 2048;17:17
-2048;128:145
+2048;131:148
 6144;18:21
 6656;15:15
 6144;15:15
-2560;146:159
+2560;149:162
 1024;78:85
 6144;16:16
 6144;16:16
 16384;14:14
 6144;16:16
-6144;108:115
-0;160:168
+6144;111:118
+0;163:171
 6144;16:16
 16384;14:14
 6144;15:15
@@ -1831,41 +1892,59 @@ and its limits `{-} in the next section.`[/]
 67135489;44:55
 12288;56:67
 1216;68:70
-1048576;219:226
-1048576;18616:18689
-1048576;227:229
+1048576;255:262
+1048576;18558:18631
+1048576;263:265
 4096;56:67
 1216;68:70
-1048576;230:235
-1048576;18690:18752
-1048576;236:238
+1048576;266:271
+1048576;18632:18694
+1048576;272:274
 4096;56:67
 1216;68:70
-1048576;239:243
-1048576;18753:18809
-1048576;244:246
+1048576;275:279
+1048576;18695:18751
+1048576;280:282
 4096;56:67
 1216;68:70
-1048576;247:253
-1048576;18810:18892
-1048576;254:256
+1048576;283:289
+1048576;18752:18834
+1048576;290:292
+192;108:110
+0;293:300
+192;108:110
+0;301:306
 6144;15:15
 6144;15:15
 6656;15:15
+2240;108:110
+0;307:320
 67125761;44:55
 12288;56:67
 1216;68:70
-1048576;257:257
-1048576;19625:19707
+1048576;321:321
+1048576;19520:19602
 4096;56:67
 1216;68:70
-1048576;258:258
-1048576;19708:19760
-1048576;259:261
+1048576;322:322
+1048576;19603:19655
+1048576;323:325
+192;108:110
+0;326:330
+192;108:110
+0;331:337
 6656;15:15
 2048;15:15
 6144;15:15
 6144;15:15
+192;108:110
+0;338:342
+192;108:110
+0;343:349
+192;108:110
+0;350:357
+192;108:110
+0;358:363
 16384;14:14
 6144;15:15
 2048;15:15
@@ -1878,19 +1957,19 @@ and its limits `{-} in the next section.`[/]
 2048;15:15
 6144;15:15
 4288;22:25
-0;262:275
+0;364:377
 18944;14:14
 6144;16:16
 4608;18:21
-6144;108:115
+6144;111:118
 4096;16:16
 2048;18:21
-6144;169:175
+6144;172:178
 2048;17:17
 6144;16:16
 6144;18:21
-192;176:178
-0;276:284
+192;108:110
+0;378:386
 6144;179:182
 4608;17:17
 2048;15:15
@@ -1944,6 +2023,9 @@ and its limits `{-} in the next section.`[/]
 0;202:213
 0;15:15
 3072;16:16
+192;22:25
+1048580;387:401
+1048576;402:417
 6144;15:15
 6144;16:16
 2048;16:16
@@ -1974,9 +2056,9 @@ and its limits `{-} in the next section.`[/]
 2048;16:16
 4096;78:85
 2240;22:25
-0;285:290
+0;418:423
 2240;22:25
-0;291:300
+0;424:433
 6144;15:15
 6144;16:16
 6144;15:15
@@ -1991,35 +2073,41 @@ and its limits `{-} in the next section.`[/]
 6144;15:15
 2048;15:15
 16384;78:85
+12480;22:25
+1048580;434:438
+1048576;439:457
+4800;22:25
+1048580;458:461
+1048576;462:475
 67125249;44:55
 12288;56:67
 1216;68:70
-1048576;301:301
-1048576;35105:35148
-1048576;302:304
+1048576;476:476
+1048576;34823:34866
+1048576;477:479
 4096;56:67
 1216;68:70
-1048576;305:317
-1048576;35149:35196
-1048576;318:320
+1048576;480:492
+1048576;34867:34914
+1048576;493:495
 6144;16:16
 3264;22:25
-0;321:330
+0;496:505
 2240;22:25
-0;331:350
+0;506:525
 67133441;44:55
 12288;56:67
 1216;68:70
-1048576;351:351
-1048576;35426:35479
-1048580;352:354
-1048576;355:357
+1048576;526:526
+1048576;35144:35197
+1048580;527:529
+1048576;530:532
 4096;56:67
 1216;68:70
-1048576;358:358
-1048576;35480:35524
-1048580;359:361
-1048576;362:364
+1048576;533:533
+1048576;35198:35242
+1048580;534:536
+1048576;537:539
 4608;15:15
 2048;15:15
 6144;16:16
@@ -2029,14 +2117,14 @@ and its limits `{-} in the next section.`[/]
 67133441;44:55
 12288;56:67
 1216;68:70
-1048576;365:365
-1048576;36315:36360
-1048576;366:368
+1048576;540:540
+1048576;36033:36078
+1048576;541:543
 4096;56:67
 1216;68:70
-1048576;369:369
-1048576;36361:36409
-1048576;370:372
+1048576;544:544
+1048576;36079:36127
+1048576;545:547
 6144;15:15
 2048;16:16
 6144;15:15
@@ -2082,7 +2170,7 @@ and its limits `{-} in the next section.`[/]
 2048;15:15
 16384;14:14
 6144;15:15
-6144;146:159
+6144;149:162
 16384;14:14
 1024;214:225
 16384;14:14
@@ -2095,6 +2183,9 @@ and its limits `{-} in the next section.`[/]
 4096;78:85
 6144;226:235
 6144;16:16
+192;22:25
+1048580;548:551
+1048576;552:561
 7168;16:16
 6144;16:16
 5120;78:85
@@ -2103,6 +2194,9 @@ and its limits `{-} in the next section.`[/]
 2048;16:16
 6144;16:16
 6144;16:16
+3264;22:25
+1048580;562:566
+1048576;567:574
 4096;16:16
 5120;78:85
 6656;16:16
@@ -2114,7 +2208,7 @@ and its limits `{-} in the next section.`[/]
 6144;16:16
 7168;15:15
 192;22:25
-0;373:379
+0;575:581
 1024;78:85
 2048;15:15
 2048;15:15
@@ -2128,78 +2222,98 @@ and its limits `{-} in the next section.`[/]
 67139585;44:55
 14336;56:67
 1216;68:70
-1048576;380:393
-1048576;50988:51021
-1048576;394:396
+1048576;582:595
+1048576;50660:50693
+1048576;596:598
 4096;56:67
 1216;68:70
-1048576;397:404
-1048576;51022:51050
-1048576;405:407
+1048576;599:606
+1048576;50694:50722
+1048576;607:609
 4096;56:67
 1216;68:70
-1048576;408:428
-1048576;51051:51091
-1048576;429:431
+1048576;610:630
+1048576;50723:50763
+1048576;631:633
 4096;56:67
 1216;68:70
-1048576;432:446
-1048576;51092:51134
-1048576;447:449
+1048576;634:648
+1048576;50764:50806
+1048576;649:651
+192;108:110
+0;652:665
 2048;15:15
 6144;15:15
 2048;15:15
 16384;14:14
+192;108:110
+0;666:686
 6144;15:15
+192;108:110
+0;687:707
 0;16:16
 16384;14:14
 6656;16:16
 67139585;44:55
 14336;56:67
 1216;68:70
-1048576;450:461
-1048576;53651:53675
-1048576;462:464
+1048576;708:719
+1048576;53249:53273
+1048576;720:722
 4096;56:67
 1216;68:70
-1048576;465:476
-1048576;53676:53709
-1048576;477:479
+1048576;723:734
+1048576;53274:53307
+1048576;735:737
 4096;56:67
 1216;68:70
-1048576;480:489
-1048576;53710:53730
-1048576;490:492
+1048576;738:747
+1048576;53308:53328
+1048576;748:750
+192;108:110
+0;751:762
+192;108:110
+0;763:774
 2048;15:15
+192;108:110
+0;775:786
 6144;15:15
 6656;15:15
 2048;15:15
+192;108:110
+0;787:796
+192;108:110
+0;797:808
 16384;14:14
 67139585;44:55
 14336;56:67
 1216;68:70
-1048576;493:499
-1048576;55210:55256
-1048576;500:502
+1048576;809:815
+1048576;54720:54766
+1048576;816:818
 4096;56:67
 1216;68:70
-1048576;503:512
-1048576;55257:55296
-1048576;513:515
+1048576;819:828
+1048576;54767:54806
+1048576;829:831
 4096;56:67
 1216;68:70
-1048576;516:525
-1048576;55297:55374
-1048576;526:528
+1048576;832:841
+1048576;54807:54884
+1048576;842:844
 1216;71:75
-1048576;529:543
-1048576;544:564
+1048576;845:859
+1048576;860:880
 4096;56:67
 1216;68:70
-1048576;565:576
-1048576;55375:55420
-1048576;577:579
+1048576;881:892
+1048576;54885:54930
+1048576;893:895
 6144;15:15
+192;108:110
+0;896:907
+192;108:110
+0;908:917
 6144;15:15
 16384;14:14
 2048;16:16
@@ -2210,11 +2324,25 @@ and its limits `{-} in the next section.`[/]
 2048;15:15
 6144;15:15
 2048;15:15
+192;108:110
+0;918:927
 6144;15:15
 6656;15:15
 0;15:15
 2048;15:15
 16384;14:14
+192;108:110
+0;928:936
+192;108:110
+0;937:949
+192;108:110
+0;950:958
+192;108:110
+0;959:967
+192;108:110
+0;968:977
+192;108:110
+0;978:988
 6144;15:15
 6144;15:15
 6144;15:15
@@ -2223,8 +2351,16 @@ and its limits `{-} in the next section.`[/]
 6144;15:15
 6144;15:15
 16384;14:14
+192;108:110
+0;989:997
 6656;15:15
 7168;15:15
+192;108:110
+0;998:1010
+192;108:110
+0;1011:1019
+192;108:110
+0;1020:1032
 6656;15:15
 6656;15:15
 6144;15:15
@@ -2244,9 +2380,9 @@ and its limits `{-} in the next section.`[/]
 6144;16:16
 3072;16:16
 6336;22:25
-0;580:595
+0;1033:1048
 2752;22:25
-0;596:611
+0;1049:1064
 6144;16:16
 16384;214:225
 16384;14:14
@@ -2255,56 +2391,96 @@ and its limits `{-} in the next section.`[/]
 67139585;44:55
 14336;56:67
 1216;68:70
-1048576;612:619
-1048576;63384:63408
-1048576;620:622
+1048576;1065:1072
+1048576;62679:62703
+1048576;1073:1075
 4096;56:67
 1216;68:70
-1048576;623:630
-1048576;63409:63419
-1048576;631:633
+1048576;1076:1083
+1048576;62704:62714
+1048576;1084:1086
 4608;16:16
 67137537;44:55
 14336;56:67
 1216;68:70
-1048576;634:642
-1048576;63975:64011
-1048576;643:645
+1048576;1087:1095
+1048576;63270:63306
+1048576;1096:1098
 6656;16:16
 1024;78:85
 6144;16:16
 20480;14:14
+192;108:110
+0;1099:1106
+192;108:110
+0;1107:1114
 4608;15:15
 6144;16:16
 6656;15:15
 2048;15:15
+192;108:110
+0;1115:1122
+192;108:110
+0;1123:1130
 6144;16:16
 6144;15:15
 20480;14:14
 6144;15:15
 6144;15:15
+192;108:110
+0;1131:1138
 6656;15:15
 6656;16:16
 20480;14:14
 6144;15:15
 6144;15:15
+192;108:110
+0;1139:1149
+192;108:110
+0;1150:1157
 16384;14:14
 6144;16:16
+192;108:110
+0;1158:1168
 6144;16:16
 20480;14:14
+192;108:110
+0;1169:1177
 512;16:16
 4608;16:16
+192;108:110
+0;1178:1186
 6144;15:15
+192;108:110
+0;1187:1197
 6144;15:15
 6656;15:15
+192;108:110
+0;1198:1208
 16384;14:14
+192;108:110
+0;1209:1217
 1024;14:14
+192;108:110
+0;1218:1226
+192;108:110
+0;1227:1239
 4096;78:85
 6144;15:15
 4608;16:16
 6144;16:16
 4608;16:16
 6144;16:16
+192;108:110
+0;1240:1248
+192;108:110
+0;1249:1259
+192;108:110
+0;1260:1272
+192;108:110
+0;1273:1281
+192;108:110
+0;1282:1294
  *
 %% ties
 &!2
@@ -2392,60 +2568,10 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
 &&2
-64~
+43 44~
 !
 &!3
-!
-&&2
-66~
-!
-&!3
-!
-&&2
-68~
 !
 &!3
 !
@@ -2453,8 +2579,65 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
 &&2
-72 73 74~
+67~
+!
+&!3
+!
+&&2
+69~
+!
+&!3
+!
+&&2
+71~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+75 76 77~
 !
 &!3
 !
@@ -2463,7 +2646,7 @@ and its limits `{-} in the next section.`[/]
 &!3
 !
 &&2
-76 77~
+79 80~
 !
 &!3
 !
@@ -2496,12 +2679,12 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-92~
+95~
 !
 &!3
 !
 &&2
-94~
+97~
 !
 &!3
 !
@@ -2522,7 +2705,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-104 105 106~
+107 108 109~
 !
 &!3
 !
@@ -2531,7 +2714,7 @@ and its limits `{-} in the next section.`[/]
 &!3
 !
 &&2
-108 109~
+111 112~
 !
 &!3
 !
@@ -2660,7 +2843,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-172~
+175~
 !
 &!3
 !
@@ -2669,12 +2852,22 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-176~
+179~
 !
 &!3
 !
 &&2
-178~
+181~
+!
+&!3
+!
+&&2
+183~
+!
+&!3
+!
+&&2
+185~
 !
 &!3
 !
@@ -2747,29 +2940,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-214 215 216~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&&2
-219 220 221~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&&2
-224 225 226~
+221 222 223~
 !
 &!3
 !
@@ -2780,7 +2951,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-229 230 231~
+226 227 228~
 !
 &!3
 !
@@ -2790,7 +2961,35 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
+&&2
+231 232 233~
+!
+&!3
+!
+&!1
+!
+&!3
+!
 &!2
+!
+&&2
+236 237 238~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&&2
+240~
+!
+&!3
+!
+&&2
+242~
+!
+&!3
 !
 &!2
 !
@@ -2799,7 +2998,16 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-238 239~
+247~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+251 252~
 !
 &!3
 !
@@ -2808,7 +3016,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-242 243 244~
+255 256 257~
 !
 &!3
 !
@@ -2816,35 +3024,10 @@ and its limits `{-} in the next section.`[/]
 !
 &!3
 !
-&!2
+&&2
+259~
 !
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
+&!3
 !
 &&2
 261~
@@ -2859,17 +3042,20 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
-&!2
+&&2
+267~
 !
-&!2
+&!3
 !
-&!2
+&&2
+269~
 !
-&!2
+&!3
 !
-&!2
+&&2
+271~
 !
-&!2
+&!3
 !
 &&2
 273~
@@ -2898,7 +3084,10 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
-&!2
+&&2
+286~
+!
+&!3
 !
 &!2
 !
@@ -2920,19 +3109,10 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
-&!2
+&&2
+298~
 !
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
+&!3
 !
 &!2
 !
@@ -3041,76 +3221,119 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-357~
+353 354~
 !
 &!3
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
 !
 &&2
-359~
+385~
 !
 &!3
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&&2
-377 378 379~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&&2
-382 383 384~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
 !
 &&2
 387~
 !
 &!3
 !
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
 &&2
-389~
+403 404~
+!
+&!3
+!
+&!3
+!
+&&2
+406 407~
+!
+&!3
 !
 &!3
 !
@@ -3119,7 +3342,43 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-393 394 395 396~
+411 412 413~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+416 417 418~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+421~
+!
+&!3
+!
+&&2
+423~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+427 428 429 430~
 !
 &!3
 !
@@ -3132,7 +3391,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-399 400 401 402~
+433 434 435 436~
 !
 &!3
 !
@@ -3159,7 +3418,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-412 413 414~
+446 447 448~
 !
 &!3
 !
@@ -3170,230 +3429,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-417 418 419~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&&2
-497~
-!
-&!3
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&&2
-511 512 513~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&&2
-516 517 518~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&&2
-521 522 523~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&&2
-526 527 528~
+451 452 453~
 !
 &!3
 !
@@ -3421,8 +3457,183 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
 &&2
-540 541 542~
+513 514~
+!
+&!3
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+524 525~
+!
+&!3
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+537~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+551 552 553~
 !
 &!3
 !
@@ -3433,36 +3644,13 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-545 546 547~
+556 557 558~
 !
 &!3
 !
 &!1
 !
 &!3
-!
-&!2
-!
-&&2
-550 551 552~
-!
-&!3
-!
-&!1
-!
-&!3
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
 !
 &!2
 !
@@ -3486,112 +3674,30 @@ and its limits `{-} in the next section.`[/]
 !
 &!3
 !
+&&2
+570~
+!
+&!3
+!
 &!2
 !
-&&2
-571 572 573~
+&!2
 !
-&!3
-!
-&!1
-!
-&!3
-!
-&&2
-575 576~
-!
-&!3
-!
-&!3
+&!2
 !
 &!2
 !
 &&2
-579 580 581~
-!
-&!3
-!
-&!1
+576~
 !
 &!3
 !
 &!2
 !
-&!2
+&&2
+579~
 !
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
+&!3
 !
 &!2
 !
@@ -3604,31 +3710,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-627~
-!
-&!3
-!
-&&2
-629~
-!
-&!3
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&&2
-638 639 640~
+586 587 588~
 !
 &!3
 !
@@ -3639,7 +3721,303 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-643 644 645~
+591 592 593~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+596 597 598~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&&2
+600~
+!
+&!3
+!
+&&2
+602~
+!
+&!3
+!
+&!2
+!
+&&2
+605~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+610~
+!
+&!3
+!
+&&2
+612~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+617 618 619~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+622 623 624~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+627 628 629~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&&2
+631 632~
+!
+&!3
+!
+&!3
+!
+&!2
+!
+&&2
+635 636 637~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+640~
+!
+&!3
+!
+&&2
+642~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+654~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+661~
+!
+&!3
+!
+&&2
+663~
+!
+&!3
+!
+&&2
+665~
+!
+&!3
+!
+&&2
+667~
+!
+&!3
+!
+&&2
+669~
+!
+&!3
+!
+&&2
+671~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+681~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+685~
+!
+&!3
+!
+&&2
+687~
+!
+&!3
+!
+&&2
+689~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+709~
+!
+&!3
+!
+&&2
+711~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+720 721 722~
+!
+&!3
+!
+&!1
+!
+&!3
+!
+&!2
+!
+&&2
+725 726 727~
 !
 &!3
 !
@@ -3654,7 +4032,7 @@ and its limits `{-} in the next section.`[/]
 &!2
 !
 &&2
-650 651 652~
+732 733 734~
 !
 &!3
 !
@@ -3670,7 +4048,130 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
+&&2
+740~
+!
+&!3
+!
+&&2
+742~
+!
+&!3
+!
 &!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+748~
+!
+&!3
+!
+&&2
+750~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+757~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+764~
+!
+&!3
+!
+&&2
+766~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+770~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+774~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+778~
+!
+&!3
+!
+&!2
+!
+&&2
+781~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+785~
+!
+&!3
+!
+&!2
+!
+&&2
+788~
+!
+&!3
+!
+&!2
+!
+&&2
+791~
+!
+&!3
+!
+&&2
+793~
+!
+&!3
 !
 &!2
 !
@@ -3684,51 +4185,28 @@ and its limits `{-} in the next section.`[/]
 !
 &!2
 !
-&!2
+&&2
+801~
 !
-&!2
+&!3
 !
-&!2
+&&2
+803~
 !
-&!2
+&!3
 !
-&!2
+&&2
+805~
 !
-&!2
+&!3
 !
-&!2
+&&2
+807~
 !
-&!2
+&!3
 !
-&!2
+&&2
+809~
 !
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
-!
-&!2
+&!3
 !
