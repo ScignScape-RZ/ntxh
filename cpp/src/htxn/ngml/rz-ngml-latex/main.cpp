@@ -22,35 +22,8 @@ USING_RZNS(NGML)
 #include <QDebug>
 #include <QMap>
 
-
-struct mi_pair
-{
- mi_pair(int x, int y)
- {
-  qDebug() << ( (x < y)? "Ok": "No");
- }
-};
-
-void f(int x, int y,
- mi_pair pr)
-{
-
-}
-
-void f(int x, int y) throw (int)
-{
- if(y < x)
-  throw y - x;
- f(x, y, mi_pair(x, y));
-}
-
-typedef void (*test) (int, int);
-
 int main(int argc, char* argv[])
 {
- test tt = &f;
- (*tt)(5, 6);
-
  QString dir;
  {
   QApplication qapp(argc, argv);
@@ -59,6 +32,5 @@ int main(int argc, char* argv[])
 
  NGML_Folder folder(dir);
  folder.convert_to_latex();
-
 }
 

@@ -1,0 +1,2717 @@
+## htxne
+#
+`[//]Cognitive Transform Grammar and Transform-PairsThe idea that inter-word pairs are a foundational linguistic 
+unit `{-} from which larger aggregates can be built up recursively 
+`{-} is an central tenet of Dependency Grammar.  Here I will 
+generalize this perspective outside (but not excluding) 
+grammar, to overall semantic, pragmatic, and even 
+extralinguistic relations indicated via interword relations.In some cases word-relations can still be theorized mostly via 
+syntax.  Consider hypothetical, example sentences like\swl`({)itm:having`(}{)His having lied in the past damages his credibilty in the present.`(}{)syn`(})\swl`({)itm:whether`(}{)Voters question whether he is truthful this time around.`(}{)syn`(})In (\ref`({)itm:having`(})),havingis necessary to syntactically transform its groundliedfrom a verb-form to a noun (something which can be inserted into a 
+possessive clause).  Analogously, in (\ref`({)itm:whether`(}))whethermodifiesis(since this is the head of a subordinate clause), wrapping a propositional 
+clause into a noun so that it furnishes a direct object to the verbquestion.  The essential transformation in these cases is 
+motivated by grammatic considerations, particularly part-of-speech: 
+a verb and a subordinate, propositionally complete clause (in (\ref`({)itm:having`(})) and 
+(\ref`({)itm:whether`(})), respectively) need (for syntactic propriety) to be 
+modified so as to play a role in a site where a noun is expected 
+(in effect, they need to be bundled into a noun-phrase).The relevant transforms here `{-} signified byhavingandwhether`{-} have a 
+semantic dimension also, and we can speculate that the syntactic 
+rules (requiring a verb or propositional-clause to be transformed into a 
+noun) are actually driven by semantic considerations.  Conceptually, 
+for example,his having liedpackages a verb into a possessive 
+context because the sentence is not foregrounding a specific lying-event 
+but rather the fact of the existence of such occasions.  We cannot perhapspossessan event, but we possess (as part of our nature or history) 
+the fact of past occurrences, viz., events in the form of things we
+have done.  In this sensehis having liedmarks a conceptual transformation, 
+from events qua occurrents to events (as factical givens) qua states or
+possessions, and the grammatical norm `{-} how we cannot just sayhis lied`{-} is epiphenomenal to the conceptual logic here; 
+the erroneoushis liedsounds flawed because it does not 
+match a coherent conceptual pattern in how events and states fit together.  
+But, still, the syntactic requirement `{-} the expectation 
+that a noun or noun-phrase serve as the ground of a possessive 
+adjective, or the direct object of a verb `{-} manifests these 
+underlying conceptual patterns in the order of everyday language.  
+Syntactic patterns become entrenchedbecausethey are comfortable 
+translations of conceptual schema, butasentrenched we hear 
+these patterns as grammatically correct, not just as 
+conceptually well-formed.  Likewise, we hear errata likehis liedasungrammatical, not as conceptually incongruous.I contend, therefore, that many conceptually-motivated word-pairing 
+patterns become syntactically entrenched and thus engender a class 
+of transform-pairs where the crucial, surface-level transformation
+is syntactic, often in the form of translations between parts of speech, 
+or between morphological classes (singular/plural, object/location, etc.).  
+Consider locative constructions like\swl`({)itm:grandma`(}{)Let's go to Grandma.`(}{)syn`(})\swl`({)itm:lawyers`(}{)Let's go to the lawyers.`(}{)syn`(})\swl`({)itm:press`(}{)Let's go to the press.`(}{)syn`(})Here nouns likeGrandma,the lawyers, andthe pressare 
+used at sites in the surrounding sentence-forms that call for a designation 
+of place `{-} this compels us to read the nouns as describing a place, 
+even while they are not intrinsically spatial or geographical 
+(e.g., Grandma is associated with the place where she lives).In (\ref`({)itm:press`(})) and perhaps (\ref`({)itm:lawyers`(})), this locative 
+figuring may be metaphorical: goingto the pressdoes not necessarily 
+mean going to the newspaper's offices.  Indeed, each of these 
+usages are to some degree conventionalized: goingto Grandmais subtler than goingto Grandmas house, because the former 
+construction implies that you are going to aplace(Grandmais proxy for her house, say), but also that Grandma is actually 
+there, and that seeing her is the purpose of your visit.  In other words, 
+the specificgo to Grandmaformation carries a supply of 
+situational expectations.  There are analogous implications in 
+(\ref`({)itm:lawyers`(})) and (\ref`({)itm:press`(})) `{-} goingto the pressmeans trying to get some news story or information published.  
+But the underlying manipulation of concepts, which structures the 
+canonical situations implicated in (\ref`({)itm:grandma`(}))-(\ref`({)itm:press`(})), 
+is organized around the locative grammatical form as binding noun-concepts to a 
+locative interpretation.  However metaphorical or imbued with additional 
+situational implications, a person-to-location or institution-to-location 
+mapping is the kernel conceptual operation around which the further 
+expectations are organized.  Accordingly, the locative case qua 
+grammatic phenomenon signals the operation of these situational 
+conventions, and the syntactic norms in turn are manifest via 
+word-pairings, such asto Grandma.In short, a transform-pair liketo Grandmacan be analyzed in 
+several registers; we can see it as the straightforward 
+syntactic rendering of a locative construction (via inter-word morphology, 
+insofar as English has no locative case-markers) or explore further 
+situational implications.  In these examples, though, there is an 
+obvious grammatic account of pairs' transformations, notwithstanding 
+that there are also more semantic and conceptual accounts.  
+Part-of-speech transforms (likehaving lied) and 
+case transforms (liketo Grandma) are mandated by 
+syntactic norms and therefore can be absorbed into conventional 
+grammatic models, such as Dependency Grammar: the head/dependent 
+pairings inhaving liedandto Grandmaare each 
+covered by specific relations within the theory's inventory 
+of possible inter-word connections.  So a subset of 
+transform-pairs overlaps with (or can be associated with) 
+corresponding Dependency Grammar pairings.Another potential embedding of transform-pairs into 
+formal models can be motivated by Type Theory.  
+Such analysis may proceed on several levels, but 
+in general terms we can assume that parts of speech 
+form a functional type system (as elucidated, say, in 
+Combinatory Categorial Grammar; e.g.,).
+For instance, we can recognize 
+nouns and propositions (sentences or sentence-parts forming 
+logically complete clauses) as primitive types, and 
+treat other parts of speech as akin tofunctionsbetween 
+other types.  A verb, say, combines with a noun to 
+form a proposition, or complete idea:goacts onWeto yield the propositionWe go.  Schematically, 
+then, verbs are akin to functions that map nouns to propositions.  
+Similarly, adjectives map nouns to nouns, and 
+adverbs map verbs to other verbs (here I usenounorverbto 
+mean a linguistic unit which functions 
+(conceptually and/orsyntactic propriety) as a noun, or verb; 
+in this sense a noun-phrase is a kind of noun `{-} i.e., 
+a linguistic unit whosetypeis nominal).  
+This provides a type-theoretic architecture through 
+which transform-pairs can be analyzed.  
+An adverb modifies a verb; so an adverb in a transform 
+pair must have a verb as a ground.  Moreover, theproductof that transform is also a verb, in the sense that the
+adverb-verb pair, parsed as a phrase, can only be
+situated in grammatic contexts where a verb is expected.In effect, we can apply type-theoretic models to both 
+parts of a transform-pair and to the pair as a whole, 
+producing structural requirements on how words link up 
+into transform-pairs.  We can then see an entire sentence 
+as built up from a chain of such pairs, with the rules 
+of this construction expressed type-theoretically.  
+Given, say,his having lied flagrantlywe can identify a 
+chain of pairsflagrantly-lied,having-flagrantly, andhis-having, where 
+theoutcomeof one transform becomes subject to a 
+subsequent transform.  Soflagrantlymodifiesliedby expressing measure and emphasis, adding conceptual detail; 
+grammatically the outcome is still a verb.  Thenhaving, 
+as I argued earlier, applies a transform that maps this
+verb-outcome to a noun, which is then transformed by
+the possessivehis.  Each step in the chain is 
+governed by type-related requirements: the output of one 
+transform must be type-compatible with the modifier for 
+the next transform.  This induces a notion oftype-checkingtransform-chains, which is analogous to how type-checking 
+works in formal settings like computer programming languages, 
+Typed Lambda Calculus, and Dimensional Analysis.This gloss actually understates the explanatory power of 
+type-theoretic models for linguistics, since I have 
+mentioned only very coarse-grained type classifications 
+(noun, proposition, verb, adjective, adverb); more 
+complex type-theoretic constructions come into play 
+when this framework is refined to consider plural/singular, 
+classes of nouns, and so forth, establishing a basis for 
+more sophisticated structures adapted to language from 
+formal type theory, like type-coercions and
+dependent types (I will revisit these theories 
+in a later section).  Here, though, I will just point out 
+that Dependency Grammar and Type-Theoretic Semantics can
+often overlap in their analysis of word-pairs (inter-word 
+relations is not centralized in type-oriented methodology as much 
+as in Dependency Grammar, but type concepts can certainly
+be marshaled toward word-pair analysis).Even though Dependency and Type-Theoretic analyses will often reinforce 
+one another, they can offer distinct perspectives on 
+how pairs aggregate to form complete phrases and sentences.  
+In the transform-pairhaving lied,liedis clearly the 
+more significant word semantically.  This is reflected inhavingbeing annotated (at least according to the Universal Dependency 
+framework) as auxiliary, and the dependent element of the pair, whileliedis thehead.  Thenliedis also connected tohis, establishing a verb-subject relation.  Soliedbecomes 
+the nexus around which other, supporting sentence elements are 
+connected.  This is a typical pattern in Dependency Grammar parses, where
+the most semantically significant sentence elements also tend to be 
+the most densely connected (if we treat the parse-diagram as a 
+graph, these nodes tend to have the highestdegree, a measure of 
+nodes' importance at least as this is reflected in how many 
+other nodes connect to it).  Indeed, by counting word connections we 
+can get a rough estimation of semantic importance, distinguishingcentralandperipheralelements.  These are not 
+standard terms, but they suggest a norm in Dependency Grammar that the
+structure of parse-graphs generally reflects semantic priority: 
+the centralspineof a graph, so to speak, captures the 
+primary signifying intentions of the original sentence, while the 
+more peripheral areas capture finer details or syntactic auxiliaries 
+whose role is for grammatical propriety more than meaningful content.Conversely, a type-theoretic analysis might incline us to question this
+sense of semantic core versus periphery: in the case ofhis having lied, the transformhavingsupplies the outcome 
+which is content for the possessivehas.  If we see the sentence 
+as a cognitive unfolding, a series of mental adjustments toward an 
+ever-more-precise reading of speaker intent, then each step in the 
+transformation contributes consequential details to the final
+understanding.  Moreover,liedis only present in the transformation 
+signified byhisinsofar as it has in turn been transformed byhaving: each modifier in a transform-pair has a degree of 
+temporal priority becauseitseffects are directly present
+in the context of the following transformation.  This motivates a 
+flavor of Dependency Grammar where the head/dependent ordering is 
+inverted: a seemingly auxiliary component (like the function-word 
+to a content-word) can be notated as the head because its 
+output serves asinputto a subsequent transform.  In the analogy 
+to Lambda Calculus,his having liedwould be graphed withhavingbeing the head forlied, andhisthe head forhaving, reflecting the relation of functions to their arguments.  
+In lisp-like code, this could be written functionally as 
+(his (having lied)), showinghavingas one function, andhisas a second one, the former's output being the latter's input.  
+(Later I will include diagrams contrasting these different 
+styles of parse-representation.)Implicitly, then, Type-Theoretic Semantics and Dependency Grammar 
+can connote different perspectives on semantic importance and
+the unfolding of linguistic understanding.  I will explore 
+this distinction further below, with explicit juxtaposition of 
+parse graphs using the two methods.  I contend, however, that the 
+distinction reflects a manifest duality in linguistic meaning: 
+we can treat a linguistic artifact as an unfolding process or 
+as a static signification with more central and more peripheral 
+parts.  Both of these aspects coexist: on the one hand, we 
+understanding sentences via an unfolding cognitive process;
+on the other hand, this cognition includes forming a mental 
+review of the essential points of the sentence, a collation of 
+key ideas such as (for \ref`({)itm:having`(}))his,lied,damages, andcredibility.
+Given this two-toned cognitive status `{-} part dynamic process, 
+part static outline `{-} it is perhaps understandable that 
+different methodologies for deconstructing a sentence into 
+word-pair aggregates would converge on different structural 
+norms for how the pairs are interrelated, internally and to one another.This analysis, which I will extend later, has considered transform-pairs 
+from a syntactic angle `{-} in the sense that I have highlighted pairs 
+which obviously come to the fore via grammatic principles.  As I indicated, 
+I believe the notion of transform-pairs cuts across both syntax 
+and semantics, so I will pivot to some analyses which attend more 
+to the semantic dimension.Semantic Analyses of Transform-PairsIn the simplest cases, a transform-pair represents a modifier 
+adding conceptual detail to a ground, likeblack dogsfromdogs.  But the nature of this added detail 
+`{-} and its evident relation to surface language `{-} can be highly 
+varied, even among similar sentences at the surface level.  
+Compare between examples like:\swl`({)itm:black`(}{)I saw my neighbor's two black dogs.`(}{)sem`(})\swl`({)itm:rescued`(}{)I saw my neighbor's two rescued dogs.`(}{)sem`(})\swl`({)itm:latest`(}{)I saw my neighbor's two latest dogs.`(}{)sem`(})Whereas (\ref`({)itm:black`(})) presents a fairly straightforward conceptual 
+transformation, the detailing in (\ref`({)itm:rescued`(})) is a lot subtler;
+mentioningrescueddogs makes no reference to perceptual qualities, 
+but rather implies intricate situational background.  The termrescued dogsstrongly suggests that the dogs were adopted by their 
+current owner, probably after an animal-welfare organization 
+found them abandoned, or removed them from a prior abusive owner.  
+This kind of backstory is packaged up, as a kind of 
+situational prototype, in the conventionalized phraserescued dogs, implying a level of specificity more 
+precise than the ajectiverescuedalone implies.  
+Correspondingly, the verbto rescuewhen applied to 
+dogs suggest more information than in more 
+generic contexts.The phraselatest dogscarries implications in its own 
+right; we assume the neighbor had owned other dogs before.  
+Of courselatestimplies some temporal order, but the 
+understood time-scale depends on context.  
+If we hear talk about avet's two latest dogs, we would presumably 
+interpret this in terms of patients the vet has seen over the course of 
+a day:\swl`({)itm:vet`(}{)We have to wait until after the vet's two latest dogs.`(}{)sem`(})\swl`({)itm:organization`(}{)I'm concerned for the rescue organization's
+two latest dogs.`(}{)sem`(})Understanding the relevant time-frame depends on understanding the relation
+between the dogs and the possessive antecedent.  In (\ref`({)itm:latest`(}))
+the neighbor (in a typical case) actually owns the dogs, so the 
+situational context grounding the modifierlatestwould be understood 
+against the normal time-scale for dog ownership (at least several years).  
+In (\ref`({)itm:vet`(})), the vet onlypossessesthe dogs in the sense 
+of endeavoring to examine them, a process of minutes or hours.  
+In (\ref`({)itm:organization`(})), the implication of theorganization'spossessiverescued dogs is that the group endeavors 
+to rehabilitate and find permanent homes for the rescuees.  So in each
+caselatestimplies a succession of dogs, leading over time to 
+two most recent ones, but the implied time-frame for our conceptualizing 
+this sequence can be minutes-to-hours, or days-to-months, or years.We should also observe that the implied time-frames and backstories in 
+(\ref`({)itm:rescued`(}))-(\ref`({)itm:organization`(})) are not directly signified via 
+morphosyntax or lexical resources alone.  The wordrescuedonly 
+carries therescued dogbackstory when used in a context 
+involving the dogs' eventual owners; in some context the more 
+generic meaning ofrescuecould supersede:\swl`({)itm:boatmen`(}{)Boatmen rescued dogs from the flooded streets.`(}{)sem`(})\swl`({)itm:firemen`(}{)Firemen rescued dogs from the burning building.`(}{)sem`(})Neither (\ref`({)itm:boatmen`(})) nor (\ref`({)itm:firemen`(})) imply that the dogs were abandoned, or 
+will have new owners, or be sent to a shelter, or that their rescuers are 
+members of an animal-welfare organization `{-} in short, no element of 
+the conventionalized backstory usually invoked byrescued dogsis present.  
+Analogously, there is no lexical subdivision forlatestwhich regulates 
+the variance in time-frames among (\ref`({)itm:latest`(}))-(\ref`({)itm:organization`(})).  
+It is only by inferring a likely situational background that 
+conversants will make time-scale assumptions based on one situation 
+involving dog ownership, another involving veterinary exams, and a 
+third involving animal-welfare rehabilitation.That is to say, the time-scale inference I have analyzed is essentiallyextralinguistic: there is no specificlinguisticknowledge 
+(lexical or grammatical, or even pragmatic inferences in the sense of 
+deictic or anaphora resolution) which warrants the situational classification 
+of (\ref`({)itm:latest`(}))-(\ref`({)itm:organization`(})) into different time scales.  
+Instead, the inference is driven by (to some degree socially or culturally 
+specific) background-knowledge about phenomena like veterinary clinics
+or animal rescue groups.  Whether or not the nuances inrescued dogsare similarly extra-linguistic is an interesting question `{-} we can 
+argue that the phrase is now entrenched as ade factolexical 
+entrant in its own right, so the role ofrescuedis not only to 
+lend adjectival detail but to construct a recurring phrase with a 
+distinct meaning, likered card(in football) orstolen base(in baseball).  Lexical entrenchment is, I would argue, an 
+intra-linguistic phenomenon, in the sense that understanding entrenched 
+phrases is akin to familiarity with specific word-senses, which is a 
+properly linguistic kind of knowledge.  But even in that case, entrenchment 
+is only possible because the phrase has a signifying precision more 
+rigorous than its purely linguistic composition would imply.  
+There are, in short, extralinguistic considerations governingwhenphrases are candidates for entrenchment, and a language-user's 
+ability to learn the conventionalized meaning (which I believe 
+is an intra-linguistic cognitive development) depends on their 
+having the relevant (extra-linguistic) background knowledge.If we consider then the contrast between transform-pairs likeblack dogs,rescued dogs, andlatest dogs, 
+the similar grammatic constructions `{-} indeed similar semantic 
+constructions, in that each pair has an adjective modifying a 
+straightforward plural noun (dogsdesignates a similar 
+concept in each case; this is not a case of surface grammar 
+hiding semantic diversity, likestrong winevs.strong opinionvs.strong leashorlong afternoonvs.long historyvs.long leash) 
+`{-} package transforms whose cognitive resolution spans a 
+range of linguistic and extralinguistic considerations.  
+Straightforward adjectival modification inblack dogsgives 
+way to lexical entrenchment inrescued dogswhich, as 
+I argued, carries significant extra-linguistic background knowledge 
+even though possession of this knowledge is packaged into basic 
+linguistic familiarity withrescued dogsas a signifying unit; 
+and in the case oflatest dogsthe morphosyntactic evocation of 
+temporal precedence and two different multiplicities (the latest
+dogs and earlier ones) is fleshed out by 
+extra-linguistic estimations of time scale.  
+The same surface-level linguistic structures, in short, can 
+(or so such examples argue for) lead conversants on a 
+cognitive trajectory in which linguistic and extra-linguistic factors 
+interoperate in many different ways.This diversity should call into question the ability of conventional 
+syntactic and semantic analysis to elucidate sentence-meanings with 
+any precision or granularity.  Lexical and morphosyntactic 
+observations may certainly reflect details whichcontributeto 
+sentence-meanings, but the overall understanding of each sentence in
+context depends on holistic, interpretive acts by competent 
+language users in light of extra-linguistic, socially mediated 
+background knowledge and situational understanding.  Contextuality 
+applies here not only in the pragmatic sense that pronoun resolution, 
+say, depends on discursive context (who isherinher dogs); 
+more broadly, transcending even pragmatics, context describes 
+presumptive familiarity with conceptual structures like veterinary 
+clinics, animal shelters, and any other real-world domain which 
+provides an overall system wherein particular lexical significations 
+can be standardized.  Without the requisite conceptual background it 
+is hard to analyze how speakers can make sense even of 
+well-established variations in word-sense, liketreatas in 
+a veterinarian treating a dog, a doctor treating a wound, a carpenter 
+treating a piece of wood, or how an actor treats a part.  
+These senses have lexical specificity only in the domain-specific 
+contexts of medicine, carpentry, theater, and so forth.The problem of holistic cognitive interpretation (as requisite for 
+sentence-meanings) can be seen even more baldly in examples where 
+semantic readings bifurcate in ways wholly dependent on 
+extra-linguitic conceptualization. Consider for instance:\swl`({)itm:boroughs`(}{)All New Yorkers live in one of five boroughs.`(}{)sem`(})\swl`({)itm:commute`(}{)All New Yorkers complain about how long it 
+takes to commute to New York City.`(}{)sem`(})\swl`({)itm:Cambridge`(}{)The south side of Cambridge voted Conservative.`(}{)ref`(})\swl`({)itm:lower`(}{)Lower Manhattan voted Republican.`(}{)ref`(})\swl`({)itm:si`(}{)Staten Island voted Republican.`(}{)ref`(})Sentence (\ref`({)itm:Cambridge`(})) is taken from theHandbook of Pragmantics(example 40, page 379, chapter 15) which borrows in turn from Ann Copestake and 
+Ted Briscoe.  In theHandbookanalysis (chapter by Geoffrey Nunberg), 
+(\ref`({)itm:Cambridge`(})) is seen as ambiguous between 
+readingThe south side of Cambridgeas an oblique description of 
+thevotersin that territory or as topicalizing the territory 
+itself as a civic entity:On the face of things, we might analyze (40) in either of two ways: either the
+description within the subject NP has a transferred meaning that describes a
+group of people, or the VP has a transferred meaning in which it conveys the
+property that jurisdictions acquire in virtue of the voting behavior of their
+residents.The duality is significant because the designation insouth side of Cambridgewould be more informal in the prior reading, both geographically 
+and in the how the implied collective of people is figured.  The prior 
+reading accommodates a hearing wherein the speaker construessouth sidenot as a precise electoral district (or districts) but as a 
+vaguely defined part of the city.  That imprecision also allows the claimvoted Conservativeto be only loosely committal, implying that 
+some majority of voters appeared to vote Conservative but not that 
+this tendency is directly manifest in election results.  In short, 
+we can interpret (\ref`({)itm:Cambridge`(})) as making epistemically more 
+rigorous or more noncommittal claims depending on how we read 
+the geographical referencesouth side of Cambridge(as crisp 
+or fuzzy), the group of people selected via that reference 
+(mapping the region to its inhabitants, a kind oftype coercionsince places do not vote), and the assertive force of the 
+speech-act: how precisely the speaker intends her claim to be 
+understood.  Each of theseaxescontribute to the sentence's 
+meaning insofar as they constrain what would be dialogically 
+appropriate responses.Meanwhile, in (\ref`({)itm:boroughs`(})),New Yorkersrefers specifically to everyone who lives 
+in the City of New York, since the five boroughs collectively span the 
+whole of city.  In (\ref`({)itm:commute`(})), by contrast, we should understandNew Yorkersas referring to residents of the metropolitan areaoutsidethe city itself (who commutetothe city); and moreoverAllshould 
+be read less then literally: we do not hear the speaker in (\ref`({)itm:commute`(})) 
+committing to the proposition thatevery singleNew Yorker complains.  
+So bothAllandNew Yorkershave noticeably different meanings in the 
+two sentences.And yet, I cannot find any purely linguistic mechanism 
+(lexical, semantic, syntactic, morphological) which would account for 
+these difference as linguistic signifiedsper se: the actual differences 
+depend on conversants knowing some details about New York 
+(or, respectively, Cambridge) geography, and 
+also general cultural background.  It does not make too much sense to 
+commute to a place where you already live, so our conventional picture of 
+the wordcommuteconstrains our interpretation of (\ref`({)itm:commute`(})) `{-} 
+but this depends oncommutehaving a specific meaning, of traveling 
+in to a city, usually from a suburban home, on a regular basis; a meaning 
+in turn indebted to the norms of the modern urban lifestyle (it would be 
+hard derive an analogous word-sense in the language spoken by a nomadic 
+tribe, or a pre-industrial agrarian community).  Likewise, 
+readingAllin (\ref`({)itm:boroughs`(})) asliterallyalldepends on knowing that the five boroughs are in fact the whole of 
+the city's territory.  I am from New York, not Cambridge; 
+perhaps residents of the latter city would clearly readsouth sideas referencing a fixed civic/electoral area 
+(likeStaten Island) or as only vaguely defined (likeLower Manhattan).  For New Yorkers, 
+(\ref`({)itm:lower`(})) would be read as fuzzy and 
+(\ref`({)itm:si`(})) as fixed: the latter sentence has a clearly 
+prescribed fact-check (since Staten Island is a distinct 
+electoral district) which the former lacks.Given that in everyday speech quantifiers likealloreveryare often only approximate `{-} and that designations likeNew Yorkerare often used imprecisely, with not-identical 
+alternative meanings intended on a case-by-case basis `{-} 
+these kind of examples point to signifying ambiguities that 
+can easily arise as a consequence.  Often extra-linguistic 
+considerations resolve the ambiguity by rejecting one or another 
+(otherwise linguistically plausible) reading as non-sensical.  
+Consider:\swl`({)itm:beat`(}{)The Leafs failed to beat the Habs for the first time this year.`(}{)amb`(})\swl`({)itm:consecutive`(}{)The Leafs failed to win two consecutive games for the 
+first time this year.`(}{)amb`(})\swl`({)itm:goal`(}{)The Leafs failed to score a goal for the 
+first time this year.`(}{)amb`(})Sentence (\ref`({)itm:beat`(})) has two competing readings: either the Toronto Maple Leafs 
+wonallornoneof their previous games, in the relevant year, against the 
+Montreal Canadiens.  The difference is whetherfor the first time this yearattaches tobeator tofail.  In (\ref`({)itm:consecutive`(})), 
+on the other hand, the only sensible interpretation is that the Leafs had 
+not yet won two games: while it is logically accurate to describe a 
+team on a long winning streak as repeatedly winning two consecutive games, it would 
+be very unexpected for (\ref`({)itm:consecutive`(})) to be used in a case where the Leafs 
+lost for the first time, after a three-plus-game winning streak.  
+And in (\ref`({)itm:goal`(})) any hockey fan would hear that the Leafs had scored 
+at least one goal in all prior games; even though there is no linguistic rule 
+foreclosing the reading such that the Leafs have not scored a goal inanygame.These variations `{-} the degree to which superficial ambiguity is actually 
+perceived by competent language-users as presenting competing plausible 
+meanings `{-} depend on background factors; the contingencies of 
+hockey fix how potential ambiguities resolve out because one or another 
+alternative is extralinguistically incoherent.  But these cases point to 
+how linguistic criteria alone, no matter how broadly understood, 
+cannot necessarily predict in what sense linguistic structurations 
+have empirically plausible meanings `{-} or whether they have 
+sensible meanings at all.Notice however that all these examples have alternate versions which are less 
+subtle or ambiguous, which shows that the complications are not 
+localized in the communicated ideas themselves, but in their 
+typical linguistic encoding:\swl`({)itm:allresidents`(}{)All residents of the city of New York live in one of five boroughs.`(}{)log`(})\swl`({)itm:manyresidents`(}{)Many residents of the New York metropolitan area 
+complain about how long it takes to commute to New York City.`(}{)log`(})\swl`({)itm:SouthCambridge`(}{)All districts on the south side of Cambridge voted Conservative.`(}{)log`(})\swl`({)itm:leafshabs`(}{)For the first time this year, the Leafs failed to beat 
+the Habs.`(}{)log`(})These versions are more logically transparent, in that their propositional 
+content is more directly modeled by the structure of the sentences. 
+Indeed, hearers unfamiliar with New York (respectively Cambridge) 
+or with hockey might find these 
+versions easier to understand; more context-neutral and journalistic.  
+But perhaps for this reason thejournalisticversions actually 
+sound stilted or non-idiomatic for everyday discourse.Geoffrey Nunberg's chapter (15) in theHandbookalso has interesting examples that point to extralinguistic 
+factors determining proxies and substitutions in referential contexts:\swl`({)itm:parked`(}{)I am parked out back.`(})[(example 3, page 371)]`({)ref`(})\swl`({)itm:waiting`(}{)I am parked out back and have been waiting for 15 minutes.`(})
+[(example 3)]`({)ref`(})\swl`({)itm:start`(}{)I am parked out back and may not start.`(})[(example 6, page 371)]`({)ref`(})\swl`({)itm:Whitney`(}{)I'm in the Whitney Museum.`(})[(page 375)]`({)ref`(})\swl`({)itm:beers`(}{)I drank two beers.`(})[(page 375)]`({)ref`(})\swl`({)itm:Michelobs`(}{)I drank two Michelobs.`(})[(page 375)]`({)ref`(})\swl`({)itm:Sauternes`(}{)I drank two Sauternes last night.`(})[(page 375)]`({)ref`(})Someone saysI am parkedas proxy for their car, orin the Whitneyas 
+proxy for their art work.  Nunberg questions the acceptability of 
+(\ref`({)itm:start`(})) on the premise that once we establish talking of 
+people as an oblique reference to their cars, it sounds awkward to switch 
+to content that canonlyapply to the car, likemay not start.  
+He also argues that we interpret (\ref`({)itm:beers`(})) and (\ref`({)itm:Michelobs`(})) 
+as references, quite possibly, two glasses or bottles ofthe samebeverage, while (\ref`({)itm:Sauternes`(})) implies two samples ofdifferentwines.  The analysis turns on conventions for 
+creating referring expressions; in particular, he argues, 
+extralinguistic factors (albeit not using this term) 
+regulate when referential substitutions as exemplified in 
+(\ref`({)itm:parked`(}))-(\ref`({)itm:Sauternes`(})) are comfortable.
+We accept an artist proxying her work in a museum, but 
+(\ref`({)itm:Whitney`(})) arguably does not generalize to a case like 
+(\ref`({)itm:library`(})), and (\ref`({)itm:waiting`(})) does not generalize to 
+(\ref`({)itm:autoshop`(}))\swl`({)itm:library`(}{)I'm in the library.`(})[(said by an author whose books are there)]`({)ref`(})\swl`({)itm:autoshop`(}{)I've been in the auto shop for the 
+last 15 days.`(}{)ref`(})Nunberg attributes these discrepancies to cultural conventions, like the
+difference in prestige between having a painting in a museum compared to 
+having one copy of one's book in a library; or chugging a cheap been 
+versus savoring a celebrated wine.  Here too there are 
+logically transparent alternatives:\swl`({}{)My car is parked out back and have been waiting for 15 minutes.`(}{)log`(})\swl`({}{)I drank two pints of beer last night.`(}{)log`(})\swl`({}{)I tried two different Sauternes last night.`(}{)log`(})Again, though, the seemingly simpler versions `{-} whose forms 
+generalize more readily to variant cases `{-} seemlessnatural 
+or fluent, as if their very generalizability makes them sound 
+awkward compared to logically more opaque, but idiomatically 
+more sociable, renderings.  Impersonal, journalistic 
+language can sound rather cold or unfriendly in contexts 
+where speakers expect a dialect register characteristic 
+of conversations among peers.In short, even if sentences have a basically transparent 
+logical content,howsentences holistically signify this 
+content does not always emerge straightforwardly from semantic 
+or syntactic structures on their own.  I think this weakens the 
+case for semantic paradigms that concentrate on logically-structured 
+content which appears to be signified through sentences 
+`{-} even if we grant that this propositional ground of meaning 
+is real, it does not follow that propositional contents are 
+designated by purely linguistic means, rather than by 
+a cohort of cognitive processes many of which are extra-linguistic.  
+This is the basis of my proposinglogicomorphicqualities 
+as one axis for evaluating sentences, which I will now discuss further.Gaps in Logical Phrase-ModelsAssume we have a baseline lambda-calculus-like 
+functional summary of sentences and derived types.  That is, 
+any sentence can be rewritten as if a sequence offunction calls, 
+assuming an underlying representational vocabulary of a typed 
+Lambda Calculus, with sentences having overallpropositiontypes 
+(I will present this model in detail next section).My overall goal is to embrace a hybrid methodology `{-} 
+accepting formal analyses when they shed light on linguistic 
+processes, but not going so far as to treat logical, mathematical, 
+or computational models as full explanations for linguistic 
+rationality qua scientific phenomenon.  
+Cognitive Grammar, in particular, challenges our assumption that 
+grammar and semantics are methodologically separate.  Received 
+wisdom suggests that grammar concerns theformof sentences 
+whereas semantics considers the meaning of words `{-} implicitly 
+assuming thatword combinationsproduce new meanings, and 
+that theorderby which words are combines determines how 
+new meanings are produced.  This notion, in turn, is allied 
+with the essentially logical or propositional picture of 
+signifying via doxa: the idea that inter-word relations cue up 
+different logically salient transformations of an underlying 
+predicate model.  Thus `{-} to initiate a case-study I will 
+return to several times `{-}many studentsas a phrase is 
+more significatorily precise thanstudentsas a word, because 
+the phrase (with intimations of quantitative comparison) has 
+more logical detail.  Similarlymany students complainedis more logically complete because, provisioning both a verb-idea 
+and a noun-idea, it represents a whole proposition.In general, then, phrases are more complete than words because 
+they pack together more elements which have some logical role, 
+establishing individuals, sets, spatiotemporal setting, and 
+predicates which collectively establish sufficiently 
+completed propositional attitudes.  On this account the 
+key role of phrase-structure is to establish phrases as 
+signifying units on a logical level analogous to 
+how lexemes are signifying units on a referential or conceptual 
+level.  Moreover, phrases' internal structure are understood 
+to be governed by rule defininghowword-combinations 
+draw in extra logical detail.  A link between words is not a 
+random synthesis of concepts, but rather implies a certain 
+logical connective which acts as a de factothird partyin 
+a double-word link, proscribing with orientation to predicate 
+structureshowthe words' semantic concepts are to be 
+joined.  Inmany studentsthe implied connector is 
+the propositional act of conceiving a certain quantitative 
+scale to a conceptualized set; instudents complainedthe 
+implied connector is a subject-plus-verb-equals-proposition 
+assertiveness.  Phrases acquire logical specificity by 
+building up word-to-word connections into 
+more complex aggregates.One implication of this model is that phrases are semantically 
+substitutable with individual lexemes that carry similar meanings, 
+having been entrenched by convention to capture a multipart concept 
+which would otherwise be conveyed with the aggregation of a 
+phrase: considerMPformember of parliament, orprimariedforsubject without your own party to a primary 
+challenge.  Conversely, phrases can be repeatedly used in a 
+specific context until they function as quasi lexical units in 
+their own right.  These patterns of entrenchment imply that we 
+hear language in term of phrases bearing semantic content; and 
+insofar as we are comfortable with how we parse a sentence, each 
+word sited in its specific phrasal hierarchy, we do not tend to 
+consider individual words semantically outside of their 
+constituent phrases.This theory of the syntax-to-semantic relationship is a paradigmatic 
+partner, at the grammatic level, to the belief that meanings are 
+fixed bytruth makers: that is a sentence asserts a true fact, 
+this fact is its first and foremost meaning, and if not, the meaning 
+is somehow the description of a possible world where itistrue.  
+One of my projects here is to criticize (to some extent) thesetruth-theoreticparadigms.  At present I want to point out 
+how this philosophical paradigm can influence our 
+appraisal of phrase-structure.  Simplisticlogic-basedconceptions of 
+phrases can be based on two concerns: first, the idea that lexemes retain some 
+syntactic and semantic autonomy even within clearly defined phrases 
+where they are included; and, second, that the shape of phrases 
+insofar as they are perceived as holistic signifying units 
+is often driven by figurative orgestaltprinciples rather than 
+neat logical structuration.  I'll call the former the issue ofphrasal isolation(or lack thereof): syntactic and semantic effect 
+often cross phrasal boundaries, even outside the overarching hierarchy 
+whose apex is the whole sentence.  Both of these lines of reasoning 
+`{-} arguably especially the second `{-} are developed in 
+Cognitive Grammar literature.In Ronald Langacker'sFoundations of Cognitive Grammar, the sentence\swl`({)itm:threetimes`(}{)Three times, students asked an interesting question.`(}{)sco`(})is used to demonstrate how
+grammatical principles follow from cognitiveconstrualsof the relevant situations,
+those which language seeks to describe or takes as presupposed context.For example, \cite[pp. 119 and 128]`({)LangackerFoundations`(}),
+discussed by \cite[p. 189]`({)LineBrandt`(}), and \cite[p. 9]`({)EstherPascual`(}).In particular, Langacker argues thatstudentsandquestioncan both be either singular or
+plural: syntax is open-ended here, with neither form more evidently correct.  Langacker uses this
+example to make the Cognitive-Linguistic point that
+we assess syntactic propriety relative to cognitive frames and conversational context.  In this
+specific case, we are actually working with two different cognitive frames which are interlinked
+`{-} on the one hand, we recognize distinct events consisting of a student asking a question, but
+the speaker calls attention, too, to their recurrence, so the events can also be understood
+as part of a single, larger pattern.  There are therefore two different cognitive foci, at two
+different scales of time and attention, asplit focuswhich makes both singular and plural
+invocations ofstudentandquestionacceptable.Supplementing this analysis, however, we can additionally focus attention directly on
+grammatical relations.  The wordsstudentandquestionare clearly linked as the subject and
+object of the verbasked; yet, contrary to any simple presentation of rules,
+no agreement of singular or plural is required between them (they can be singular and/or plural in
+any combination).  Moreover, this anomaly is only in force due to the context established
+by an initial phrase likethree times; absent some such framing, the singular/plural
+relation would be more rigid.  For example,A student asked interesting questionswould
+(in isolation) strongly implyonestudent askingseveralquestions.  So the initialThree timesphrase alters how the subsequent phrase-structure is understood while remaining
+structurally isolated from the rest of the sentence.  Semantically, it suggests aspace builderin the manner of Gilles Fauconnier or Per Aage Brandt;, but we
+need to supplement Mental Space analysis with a theory of how these spaces
+influence syntactic acceptability, which would seem to be logically prior to the stage where Mental Spaces
+would come in play.The mapping of (\ref`({)itm:threetimes`(})) to a logical
+substratum would be more transparent with a case like:\swl`({)itm:threes`(}{)Three students asked interesting questions.`(}{)log`(})(\ref`({)itm:threes`(})) is a more direct translation of the facts
+which the original sentence conveys.  But thismore logicalexample has different
+connotations than the sentence Langacker cites; (\ref`({)itm:threetimes`(})) places the emphasis
+elsewhere, calling attention more to the idea of something temporally drawn-out,
+of a recurrence of events and a sense of time-scale.  Themore logicalsentence
+lacks this direct invocation of time scale and temporal progression.We can say that theThree studentsversion is a more direct statement of fact, whereas
+Langacker's version is more speaker-relative, in the sense that it elaborates more
+on the speaker's own acknowledgment of belief.  The speaker retraces the steps of her
+coming to appreciate the fact `{-} of coming to realize that theinteresting questionswere a recurrent phenomenon and therefore worthy of mention.  By situating expressions
+relative to cognitive processes rather than to the facts themselves, the sentence
+takes on a structure which models the cognition rather than the states of affairs.
+But this shift of semantic grounding from the factual to the cognitive also apparently
+breaks down the logical orderliness of the phrase structure.Three times, compared
+tothree students, leads to a morphosyntactic choice-space which isunderdeterminedand leaves room for speakers' shades of emphasis.This is not an isolated example.  Many sentences can be provided with similar
+phrase-structure complications, particularly with respect to singular/plural agreement.\swl`({}{)Time after time, tourists (a tourist) walk(s) by this building
+with no idea of its history.`(})[]`({)sco`(})$
+[Time after time, tourists walk by this building
+with no idea of its history.]\swl`({}{)The streets around here are confusing; often people (someone)
+will ask me for directions.`(})[]`({)sco`(})$
+[The streets around here are confusing; often someone
+will ask me for directions.]\swl`({)itm:students`(}{)Student after student came with their (his/her)
+paper to complain about my grade(s).`(})[]`({)sco`(})$
+[Student after student came with their
+paper to complain about my grades.]\swl`({)itm:parents`(}{)Student after student `{-} and their (his/her) parents
+`{-} complained about the tuition increase.`(})[]`({)sco`(})$
+[Student after student `{-} and their parents
+`{-} complained about the tuition increase.]On a straightforward phrase-structure reading,student after studentreduces to an
+elegant equivalent ofmany students, with the rhetorical flourish abstracted away
+to a logical form.  But our willingness to accept both singular and plural agreements
+(his/her/their parents, grades, papers) shows that clearly we don't simply substitutemany students; we recognize the plural as a logical gloss on the situation but
+engage the sentence in a more cogntively complex way, recognizing connotations of temporal
+unfolding and juxtapositions of cognitive frames.  The singular/plural underdeterminism
+is actually a signification in its own right, a signal to the listener that the
+sentence in question demands a layered cognitive attitude.  Here again, syntactic
+structure (morphosyntactic, in that syntactic allowances are linked with
+variations in the morphology of individual words, such as singular or plural form)
+serves to corroborate conversants' cognitive frames rather than to model logical
+form.The contrast between the phrasesStudent after studentandMany studentscannot be based onabstractsemantics alone `{-} how the evident temporal implications of the
+first form, for example, are concretely understood, depends on conversants' mutual recognition
+of a relevant time frame.  The dialog may concern a single day, a school year, many
+years.  We assume that the speakers share a similar choice of timescale(or can converge on one through subsequent conversation).Sometime-frame
+is therefore presupposed in the discursive context, and the first phrase invokes
+this presumed but unstated framing.  The semantics of the phrase are therefore somewhat open-ended:
+the phrasehooks intoshared understanding of a temporal cognitive framing without referring
+to it directly.  By contrast, the second phrase is less open-ended: it is consistent with both
+a more and less temporally protracted understanding ofmany, but leaves such details (whatever
+they may be) unsignified.  The factual circumstance is designated with a level of abstraction that sets
+temporal considerations outside the focus of concern.  The second (Many students) phrase 
+is therefore both
+less open-ended and also less expressive: it carries less detail but accordingly also relies
+less on speaker's contextual understanding to fill in detail.The examples I have used so far may also imply that a choice of phrase structure is
+always driven by semantic connotations of one structure or another;
+but seemingly the reverse can happen as
+well `{-} speakers choose a semantic variant because its grammatic realization lends a useful
+organization to the larger expression.  There are many ways to saymany,
+for example:a lot of,quite a few, not to mentiontime after timestyle constructions.  Whatever their
+subtle semantic variations, these phrases also have different syntactic properties:Quite a fewis legitimate as standalone (like an answer to a question);A lot ofis not, andA loton its own is awkward.  On the other hand theofinA lot ofcanfloatto be replicated further on:A lot of students, of citizens,
+believe education must be our top prioritysounds more decorous than the equivalent sentence with the
+secondofreplaced byand.  If the cadence of that sentence appeals to the speaker, then
+such stylistic preference will influence takingA lot ofas themanyvariant of choice.
+So speakers have leeway in choosing grammatic forms that highlight one or another aspect of
+situations; but they also have leeway in choosing rhetorical and stylistic pitch.  Both cognitive
+framings and stylistic performance can be factored when reconstructing what compels the
+choice of one sentence over alternatives.One consequence of these analyses is that grammar
+needs to be approached holistically: the grammatic structure of phrases cannot,
+except when deliberate oversimplification is warranted, be isolated from
+surrounded sentences and still larger discourse units.  Semantic roles
+of phrases have some effect on their syntax, but phrases are nonetheless chosen
+from sets of options, whose variations reflect subtle semantic and syntactic
+maneuvers manifest at super-phrasal scales.  The constituent words of phrases retain some
+autonomy, and can enter into inter-word and phrasal structures with other words outside their
+immediate phrase-context.  We can still apply formal models to phrase
+structure `{-} for example, Applicative and Cognitive Grammar () considers phrases
+asapplicationsof (something like) linguistic or cognitive functions,
+with (say) an adjective modeled as a function applied to a noun,
+to yield a different noun (viz., something playing a noun's conceptual role)`{-} but we should not read these transformations
+too hastily as a purely semantic correlation within a space of denotable conceptssuch thatthe new concept wholly replaces the
+contained parts, which then cease to have further linguistic role and effect.
+Instead, applicative structures represent shifts or evolutions in
+mental construal, which proceed in stages as conversants form
+cognitive models of each others' discourse.  Even if phrase structure
+sets landmarks in this unfolding, phrases do not wholly subsume their
+constituents; the parts within phrases do notvanishon the higher scale,
+but remain latent and may behookedby other, overlapping phrases.Consider the effect ofMany students complained.  Propositionally, this appears
+to say essentially thatstudentscomplained; but, on hermeneutic charity, the
+speaker hadsomereason to saymany.  The familiar analysis is thatmanysuggests relative size; but this
+is only half the story.  If the speaker chose merelystudents complained, we would hear an assertion
+that more than one student did, but we would also understand that there were several
+occasions when complaints happened.  Addingmanydoes not just
+implymorestudents, but suggests a mental shift away from the particular episodes.
+In the other direction, sayinga student complainedis not just
+asserting how at least one student did so, but
+apparently reports one specific occasion (which perhaps the speaker wishes to
+elaborate on).  In other words, we cannot really capture the singular/plural semantics,
+or different varieties of plural, just by looking at the relative size of implied
+sets; we need to track how representations of singleness or multitude imply
+temporal and event-situational details.Against this backdrop,Student after student complainedcaptures both dimensions,
+implying both a widespread unrest among the student body and also
+temporal recurrence of complainings.
+Theidiom is a special caseafter, where 
+theargumenttoafteris repeated in both positions, suggesting an unusual degree of repetition,
+something frustratingly recurrent:He went on and on;Car after car passed
+us by;Time after time I got turned down.
+Although I have no problem
+treating these constructions as idiomatic plurals, I also contend (on the
+premise of phrase-overlap) that the dependent constituents in theconstruction can be hooked to other phrases as well (which is whyand [their/his/her] parentscan also be singular, in this case).  I dwell on
+this example because it shows how type-theoretic accounts of phrase structure, 
+which I will explore next section, 
+can be useful even if we treat phrases more as frames which overlay linguistic
+structure, not as rigid compositional isolates.  Eachstudentsvariation uses
+morphology to nudge cognitive attention in one direction or another, toward events or the
+degree to which events are representative of some global property (here of
+a student body), or both.  The pluralizing transformation `{-} from 
+one student to many students `{-} is notthemorphosyntactic meaning, but instead the skeleton on which the full meaning
+(via cognitive schema) is designed.If this analysis has merit, it suggests that a Combinatory Grammar or type-logical
+approach to phrases likemany studentsorstudent after student(singular-to-plural or plural-to-plural mappings) should be understood not just
+as functions among Part of Speech () types but as adding cognitive shading, foregrounding
+or backgrounding cognitive elements like events or typicality in some context.
+In other words,many studentsis type-theoretically a pluralizing action, 
+but, in more detail, it adds a kind of cognitive rider attached to the mapping which focuses
+cognition in the subsequent discourse onto events (their recurrence and temporal distribution);
+similarlystudent after studenthas aridersuggesting more of a temporal
+unfolding.  The second form implies not only that many students complained, but that
+the events of these complainings were spread out over some stretch of time.
+Each such functional application (mappings betweenunderstood as linguistic types)
+produces not only a resultingtype, but also a reconfiguration of cognitive
+attitudes toward the relevant situation and context.
+Language users have many ways to craft a sentence with similar meanings, and arguably one
+task for linguistic analysis is to model the space of choices which are available in a
+given situation and represent what specific ideas and effects are invoked by one
+choice over others.Logical semantic models build up propositional representations from the 
+word level to phrase and sentence levels.  Even when we find that a logicaltelosis in effect, however, at each of these levels we can 
+find interpretive and situational details which may complicate, flesh out, 
+or cognitively supersede a more transparent logical meaning.
+So at the word-pair level, there is more going on in 
+a transform likerescued dogthan simply applying the 
+predicaterescueto the grounddog.  The construction 
+drafts a complex backstory that influences our cognizing both 
+component words.  Scaling up, as I argued in the last several 
+paragraphs, a phrase likestudent after studentcarries 
+conceptual effects beyond just effectuating a logical 
+operation of pluralization.  I will argue that similar 
+effects can be identified at the sentence level `{-} so 
+there are certain lacunae in narrowly logically-based 
+reconstructions of language components at the 
+distinct levels of word (transform) pairs, phrases, 
+and whole sentences.  I'll sketch my arguments 
+here and give a more thorough analysis later in 
+Section \ref`({)sec:Gaps`(}).Logical Structure versus Sentence StructureLet us grant in general that particular sentences can be 
+mapped to distinct, relatively transparent propositional 
+contents.  In some cases sentences expresses propositional 
+attitudes to such content (requests, commands, questioning) 
+rather than unadorned locutionary assertions.  To 
+properly respond to speech-acts, however (even ones with 
+illocutionary force) conversants need to derive the 
+content which is logically conjured via the discourse,
+either as the speaker's primary intent or as a condition 
+for that intent.  In effect, a proposition likethe window 
+is closedfurnishes logical content to assertions likeThe window is closed nowbut also statements of 
+belief (I think the window is closed) or 
+requests or opinions (The window should be closed;Please close the window).Philosophicaltruth-theoreticparadigms imply that such 
+propositional contents are theessentialmeanings within 
+language; that analyzing semantic forms via logical 
+structure is the core of a rigorous theory of semantics.  
+It is certainly true that many elements of language 
+can be translated, or deemed as conventionalized encodings 
+for, structures in predicate logic `{-} invocations of 
+multiplicity and quantification; logical connectives between 
+propositions; negations, modalities, and possibilia.  
+This provides an analytic matrix whereinsomesentences' structures may be analyzed.  I will argue, 
+however, that in typical cases logical forms are 
+invoked only indirectly `{-} which calls into question 
+the applicability of logical analysis as explanatory 
+vehicles forlinguisticanalysis in itself 
+(as opposed to more general cognitive/extralinguistic 
+processing).There are several cognitive operations requisite for grasping 
+sentence-meanings as a logical gestalt: figuring individuals 
+or multiplicities as conceptual foci (verb subjects or objects); 
+establishing relationships between individuals and multiplicities 
+or among multiplicities (member/part of, larger/smaller, 
+overlap/disjoint); predicating properties to individuals 
+or multiplicities; quantification; logical conjunction or disjunction, 
+between predicates (also negation).  In some cases we can find 
+these operations fairly directly encoded in explicit language form 
+`{-} sentences which are precise in figuring multiplicities numerically, 
+or through unambiguous use of determiners likeallandevery; 
+which are structured to avoid scope ambiguities; which use transparent
+semantic resources to describe verb subjects and objects; and 
+so forth.  In the most recent Universal Dependencies Shared Task corpus 
+we can find examples like:\swl`({)itm:tumour`(}{)It is the most common tumour found in babies, occurring in one of every 35,000 births.`(}{)log`(})
+\udref`({)enApud`(}{)n01051007`(})\swl`({)itm:Dengue`(}{)Dengue fever is a leading cause of illness and death in the tropics and subtropics, with as many as 100 million people infected each year.`(}{)log`(})
+\udref`({)enApartut-ud-train`(}{)enApartut-ud-1498`(})\swl`({)itm:TalibanKarzai`(}{)Many Taliban living in Afghanistan voted for President Karzai.`(}{)log`(})
+\udref`({)enAewt-ud-train`(}{)w03002048`(})\swl`({)itm:Ashraf`(}{)Most of the girls I was meeting had grown up in Mujahedeen schools in Ashraf, where they lived separated from their parents.`(}{)log`(})
+\udref`({)enAewt-ud-train`(}{)weblog-blogspot.comArigorousintuitionA20060511134300AENGA20060511A134300-0112`(})\swl`({)itm:ChinaSpace`(}{)Most experts believe China intends to develop a small space station of its own over the next several years.`(}{)log`(})
+\udref`({)enAewt-ud-train`(}{)newsgroup-groups.google.comAFOOLEDA7554c5ce34a5a49eAENGA20051012A144800-0020`(})\swl`({)itm:tastings`(}{)Check out their wine tastings every Friday night!`(}{)log`(})
+\udref`({)enAewt-ud-train`(}{)reviews-322225-0005`(})\swl`({)itm:tag`(}{)For each start tag , there is a corresponding end tag.`(}{)log`(})
+\udref`({)enAlines-ud-train`(}{)166`(})\swl`({)itm:Warhol`(}{)Each collection donated by the Andy Warhol Photographic Legacy Program holds Polaroids of well-known celebrities.`(}{)log`(})
+\udref`({)enAgum-ud-train`(}{)GUMAnewsAwarhol-35`(})These sentences have straightforward logical structure, in terms of 
+how they establish topical foci (one of every 35,000 births;as many as 100 million people;Many Taliban;every Friday night;For each start tag), 
+and how predicates or references are bound together to create more 
+precise significations (the tropics and subtropics;in Mujahedeen schools in Ashraf;a corresponding end tag).
+Properties ascribed to subject foci are neatly drawn, both in 
+conveying the property intended and its bearer, according to 
+the sentence's terms:the most common tumour found in babies;a leading cause of illness and death;China intends to develop a small space station;holds Polaroids of well-known celebrities.  With 
+aggregate foci and/or quantification, there is an unambiguous 
+framing of predication and quantifier scope `{-} Each collection 
+has its set of Polaroids; the set of Karzai voters, Dengue infections, 
+birth tumours, etc., are crisply figured.For many philosophers of language, identifying similar 
+logical structuration is an intrinsic aspect of 
+coming to terms with human language in general.  This paradigm 
+also reinforces the goal of Artificial Intelligent Natural Language Processing, 
+because computers can certainly engage in the kind of 
+symbolic-logical reasoning outlining signified meanings in cases 
+where language reciprocates propositional morphology very clearly.  
+The problem is that language artifacts very often cloak their 
+logical core, such that examples like (\ref`({)itm:tumour`(}))-(\ref`({)itm:Warhol`(})) 
+are not representative of language as a whole.  Logical patterns
+may certainly be present, but they are not necessarily 
+structurally reproduced in surface-level formations; rather a 
+sentences' propositional content may depend on a subtle 
+interpretive trajectory.  I will present examples throughout this 
+paper, but a few further corpus items are reasonable 
+case-studies:\swl`({)itm:ants`(}{)A furry black band of ants led up a cupboard door to some scrap that had flicked from a plate.`(}{)sem`(})
+\udref`({)enAlines-ud-train`(}{)2157`(})\swl`({)itm:current-waiting-period`(}{)The current waiting period is eight weeks.`(}{)sem`(})
+\udref`({)enApud`(}{)n01050009`(})\swl`({)itm:immersed`(}{)I think that's why they immersed themselves in pattern and colour.`(}{)sem`(})
+\udref`({)enApud`(}{)n01087018`(})\swl`({)itm:princess`(}{)With her appearance finalized, Jasmine became Disney's first non-white princess as opposed to being of European heritage.`(}{)sem`(})
+\udref`({)enApud`(}{)w01119076`(})It requires a certain cognitive flexibility to understand a band of ants asflurry, or 
+to parse the disjoint timeframes incurrent waiting period.  In (\ref`({)itm:immersed`(})), 
+the presumed sense ofimmersetranscends any immediate, perceptual immersion, 
+instead involving scholarship or engagement with artistic form; and (\ref`({)itm:princess`(})) 
+depends on us understanding the meaning of temporality in Jasmine's appearance beingfinalized, and also herbecomingnon-white.  As a fictional character, 
+discourse about Jasmine can be evaluated in the time-frame of her artistic 
+creation, distinct from the fictional time of her narrated world.I think the intended propositional content in (\ref`({)itm:ants`(}))-(\ref`({)itm:princess`(})) 
+is no less evident than in (\ref`({)itm:tumour`(}))-(\ref`({)itm:Warhol`(})); however, interpreting 
+the topical foci and predicate attributions constituting such 
+propositional content requires a holistic reading whose compositional 
+structure is not recapitulated in the sentence-forms themselves.  
+In the latter examples, then, merely notating propositional 
+content in logical fashion does not yield a very informativelinguisticanalysis, since it does not address the key question 
+ofhowthe sentences signify those propositions.I propose to use the termlogicomorphicfor sentence in the former vein; 
+in such cases, pointing out propositional content is linguistically 
+useful because we can treat that content as a prototype for 
+sentence organization.  That is, propositional content is not onlyholisticallysignified but, in its logical structure, sheds 
+light on pattern in the language.  The purpose of phraseology 
+likemost common tumour,Many Taliban living in Afghanistan,Most of the girls I was meeting, etc., is to circumscribe 
+a focus or a property suitable for predication, and we can 
+logically model the tools used to do so: logical superlative (most common), 
+assertions of magnitude (Many,Most of), refining an multiplicity 
+with some further criteria (the girls I was meeting,Taliban living in Afghanistan), and so forth.  These arelogicomorphicconstructions in that we can read the logical 
+structure of signified propositional content as a direct cause 
+of the given phrasal morpholgy.On the other hand, I call examples like (\ref`({)itm:ants`(}))-(\ref`({)itm:princess`(}))interpretivebecause the sentences' propositional content, with 
+its logical structure, does not explain the compositional 
+rationale for the explicit linguistic form: we cannot read any 
+pattern in the logic as a direct motivation for how the 
+sentence is pieced together.  The spectrum betweenlogicomorphicandinterpretiverepresents different 
+strategies by which language is composed in anticipation of 
+its cognitive reception, with the eventual goal of 
+establishing a signified propositional content, but in different ways.  
+On the logicomorphic side, logical form informs language directly; 
+on the interpretive side, the actual rationale for 
+compositional structures transcends exact predicative structure 
+`{-} a more perceptual or indirect figuring of topical 
+focus, for instance, or a more elliptical construal of 
+predicate attributes, leaving the hearer to piece together the 
+final propositional via some pragmatic or extralinguistic calculation.Accordingly, thelogicomorphic/interpretivedistinction `{-} along with the 
+overall contrast between linguistic and extralinguistic 
+aspects of meaning `{-} are contrasts between sentences that become manifest 
+in the compositional maxims evident at subsentence (phrasal and 
+inter-word) scales.  We can apply all four criteria to 
+estimate the cognitive as well as syntactic and semantic 
+paradigms in effect for given inter-word pairs and phrasal structure; 
+identifying sentences as logicomorphic or interpretive propagates down 
+to how phrasal and interword patterns should be analyzed.  
+With this in mind, having presented certain claims as to the 
+holistic nature of sentencespropositional content, 
+I will now switch attention to the composition of 
+sentences from the interword level upward.`[/]
+
+`[//]sectionlabelpsentenceListsentenceItemiqcitevisavisspsubsectiontwolinequotefootnoteACGBlankAfterBlankPOSwhdecoline`[/]
+
+`[//]s1BiskriDesclesFauconnierPerAageBrandtDescles2010`[/]
+
+@@ ranges
+3
+=1
+2<1>48;1,
+49<2>0;2,402;4,
+403<1>1464;5,
+521<2>689;6,0;7,
+610<1>0;8,
+712<1>717;9,
+768<1>771;10,
+896<1>902;11,
+911<1>912;12,
+1056<1>1063;13,
+1465<1>3032;14,
+1508<1>1513;15,
+1517<1>1523;16,
+1756<1>1770;17,
+1954<1>1960;18,
+2115<1>2129;19,
+2300<1>2307;20,
+2371<1>2378;21,
+2777<1>2783;22,
+2844<1>2845;23,
+2976<1>2983;24,
+2986<1>2998;25,
+3033<1>3882;26,
+3424<2>3559;27,0;28,
+3468<1>0;29,
+3516<1>0;30,
+3575<1>3581;31,
+3583<1>3593;32,
+3599<1>3607;33,
+3883<1>5311;34,
+3987<1>3998;35,
+4133<1>4142;36,
+4164<1>4180;37,
+4247<1>4251;38,
+4253<1>4259;39,
+4412<1>4424;40,
+4569<1>4580;41,
+5301<1>5310;42,
+5312<1>6262;43,
+5343<1>5352;44,
+5804<1>5814;45,
+5843<1>5852;46,
+6014<1>6024;47,
+6028<1>6037;48,
+6263<1>7652;49,
+6560<1>0;50,
+6747<1>6755;52,
+6854<1>6855;53,
+6863<1>6864;54,
+6889<1>6893;55,
+7072<1>7075;56,
+7078<1>7081;57,
+7146<1>0;58,
+7266<1>7269;59,
+7484<1>7490;60,
+7653<1>8828;61,
+7998<1>8023;62,
+8057<1>8066;63,
+8068<1>8071;64,
+8073<1>8078;65,
+8080<1>8089;66,
+8095<1>8097;67,
+8099<1>8104;68,
+8117<1>8123;69,
+8188<1>8197;70,
+8206<1>8209;71,
+8321<1>8326;72,
+8453<1>8455;73,
+8646<1>8658;74,
+8829<1>9708;75,
+9709<1>11226;76,
+9919<1>9929;77,
+9931<1>9934;78,
+10008<1>10013;79,
+10148<1>10151;80,
+10158<1>10161;81,
+10169<1>10172;82,
+10193<1>10195;83,
+10239<1>10242;84,
+10566<1>10571;85,
+10784<1>10790;86,
+10794<1>10803;87,
+10977<1>10981;88,
+11227<1>12685;89,
+11354<1>11368;90,
+11384<1>11389;91,
+11447<1>11449;92,
+11700<1>11703;93,
+11755<1>11757;94,
+11803<1>11808;95,
+11887<1>11889;96,
+12195<1>12199;97,
+12263<1>12277;98,
+12299<1>12304;99,
+12323<1>12326;100,
+12332<1>12334;101,
+12347<1>12352;102,
+12500<1>12505;103,
+12526<1>12528;104,
+12686<1>13829;105,
+13483<1>13485;106,
+13487<1>13490;107,
+13492<1>13498;108,
+13504<1>13514;109,
+13830<1>14207;110,
+14208<1>14243;111,
+14244<1>15526;112,
+14349<1>14358;113,
+14363<1>14366;114,
+14562<2>14738;115,0;116,
+14619<1>0;117,
+14680<1>0;118,
+14892<1>14898;119,
+15011<1>15022;120,
+15314<1>15325;121,
+15391<1>15397;122,
+15440<1>15448;123,
+15527<1>16924;124,
+15537<1>15547;125,
+15651<1>15656;126,
+15762<1>15764;127,
+15885<2>16047;128,0;129,
+15959<1>0;130,
+16302<1>16307;131,
+16437<1>16445;132,
+16585<1>16598;133,
+16609<1>0;134,
+16726<1>16731;135,
+16925<1>18144;136,
+17124<1>17130;137,
+17148<1>17158;138,
+17274<1>17279;139,
+17296<2>17436;140,0;141,
+17366<1>0;142,
+17722<1>17733;143,
+17796<1>17801;144,
+18145<1>19759;145,
+18216<1>18230;146,
+18253<1>18262;147,
+18703<1>18714;148,
+18827<1>18834;149,
+18884<1>18890;150,
+18996<1>19003;151,
+19020<1>19030;152,
+19504<1>19507;153,
+19760<1>21087;154,
+19821<1>19830;155,
+19832<1>19843;156,
+19849<1>19859;157,
+20018<1>20021;158,
+20136<1>20146;159,
+20150<1>20163;160,
+20167<1>20178;161,
+20181<1>20194;162,
+20198<1>20209;163,
+20213<1>20222;164,
+20383<1>20392;165,
+20430<1>20441;166,
+20614<1>20625;167,
+20667<1>20677;168,
+21088<1>22443;169,
+21335<1>21344;170,
+21724<1>21726;171,
+21729<1>21736;172,
+22180<1>22184;173,
+22444<1>24983;174,
+22693<2>23042;175,0;176,
+22763<1>0;177,
+22865<1>0;178,
+22938<1>0;179,
+22993<1>0;180,
+23091<1>23113;181,
+23215<1>23222;182,
+23323<1>23349;183,
+23383<1>23388;184,
+23466<1>23786;185,
+23840<1>23862;186,
+24061<1>24070;187,
+24205<1>24222;188,
+24562<1>24584;189,
+24705<1>24717;190,
+24866<1>24869;191,
+24984<1>25580;192,
+25019<1>25029;193,
+25218<1>25228;194,
+25279<1>25285;195,
+25314<1>25315;196,
+25339<1>25341;197,
+25464<1>25475;198,
+25507<1>25509;199,
+25513<1>25523;200,
+25581<1>27032;201,
+25749<1>25754;202,
+26040<1>26046;203,
+26122<1>26128;204,
+26459<1>26461;205,
+26488<1>26496;206,
+26497<1>26499;207,
+26682<1>26691;208,
+26742<1>26754;209,
+26789<1>26803;210,
+27033<1>28692;211,
+27079<1>27081;212,
+27084<1>27088;213,
+27144<1>27153;214,
+27519<2>27790;215,0;216,
+27603<1>0;217,
+27707<1>0;218,
+27880<1>27882;219,
+27885<1>27888;220,
+27995<1>28022;221,
+28034<1>28037;222,
+28043<1>28046;223,
+28685<1>28687;224,
+28693<1>29268;225,
+29269<1>30358;226,
+29503<2>29925;227,0;228,
+29599<1>0;229,
+29740<1>0;230,
+29835<1>0;231,
+30274<1>30285;232,
+30359<1>33158;233,
+30397<1>30404;234,
+30536<2>31027;235,0;236,
+30603<1>0;237,
+30699<1>0;238,
+30783<1>0;239,
+30845<1>0;240,
+30897<1>0;241,
+30957<1>0;242,
+31040<1>31050;243,
+31077<1>31090;244,
+31324<1>31327;245,
+31350<1>31362;246,
+31501<1>31508;247,
+31569<1>31577;248,
+32065<2>32224;249,0;250,
+32151<1>0;251,
+32533<2>32714;252,0;253,
+32609<1>0;254,
+32659<1>0;255,
+32823<1>32826;256,
+33159<1>33904;257,
+33233<1>33235;258,
+33810<1>33822;259,
+33905<1>33933;260,
+33934<1>34287;261,
+34093<1>34106;262,
+34219<1>34229;263,
+34288<1>35592;264,
+34745<1>34748;265,
+34839<1>34855;266,
+34891<1>34895;267,
+35268<1>35280;268,
+35330<1>35337;269,
+35451<1>35474;270,
+35593<1>36826;271,
+36158<1>36160;272,
+36345<1>36355;273,
+36433<1>36435;274,
+36487<1>36499;275,
+36619<1>36637;276,
+36827<1>37651;277,
+37105<1>37106;278,
+37110<1>37129;279,
+37134<1>37142;280,
+37146<1>37199;281,
+37652<1>38915;282,
+37796<1>37807;283,
+37976<1>37977;284,
+38048<1>38062;285,
+38200<1>38210;286,
+38533<1>38539;287,
+38626<1>38642;288,
+38916<1>40214;289,
+38937<1>38968;290,
+38983<2>39061;291,0;292,
+39133<1>39142;293,
+39242<1>39371;294,
+39408<1>39415;295,
+39419<1>39426;296,
+40124<1>40134;297,
+40186<1>40192;298,
+40196<1>40203;299,
+40215<1>41352;300,
+40334<1>40340;301,
+40344<1>40351;302,
+40408<1>40412;303,
+40680<1>40690;304,
+40782<1>40818;305,
+40854<1>40856;306,
+40871<1>40877;307,
+40904<1>40914;308,
+41076<1>41088;309,
+41142<1>0;310,
+41143<1>0;312,
+41353<1>41982;314,
+41458<2>41523;315,0;316,
+41631<1>41642;317,
+41894<1>41905;318,
+41983<1>42869;319,
+42002<1>42015;320,
+42298<1>42318;321,
+42718<1>42728;322,
+42742<1>42755;323,
+42806<1>42820;324,
+42870<1>44794;325,
+43035<2>43799;326,0;327,
+43221<1>0;328,
+43409<1>0;329,
+43596<1>0;330,
+43846<1>43866;331,
+43902<1>43914;332,
+44133<1>44145;333,
+44795<1>47448;334,
+44827<1>44847;335,
+44851<1>44863;336,
+44882<1>44889;337,
+45198<1>45202;338,
+45260<1>45263;339,
+45466<1>45475;340,
+45696<1>45699;341,
+45907<2>45919;342,45919;343,
+46102<1>47448;344,
+46451<1>46454;345,
+46469<1>46476;346,
+46478<1>46488;347,
+46505<1>46519;348,
+46640<1>46650;349,
+46710<1>46717;350,
+46729<1>46733;351,
+46779<1>46780;352,
+46783<1>46790;353,
+46794<1>46798;354,
+46827<1>46900;355,
+46966<1>46967;356,
+46979<1>46981;357,
+47093<1>47100;358,
+47107<1>47110;359,
+47449<1>49078;360,
+48194<1>0;361,
+48216<1>48227;362,
+48424<1>0;363,
+48552<1>48560;365,
+48988<1>48993;366,
+49043<1>49048;367,
+49079<1>50134;368,
+49101<1>49124;369,
+49181<1>49188;370,
+49245<1>49248;371,
+49262<1>49265;372,
+49298<1>49301;373,
+49387<1>49405;374,
+49563<1>49566;375,
+49586<1>49589;376,
+49693<1>49712;377,
+50135<1>51524;378,
+50157<1>50188;379,
+50321<1>0;380,
+50344<2>0;381,50348;382,
+50361<1>50368;383,
+50371<1>50375;384,
+50485<1>50501;385,
+50503<1>50528;386,
+50530<1>50562;387,
+50731<1>0;388,
+50796<1>50822;389,
+51120<1>51127;390,
+51411<1>51413;391,
+51525<1>52896;392,
+51632<1>51644;393,
+51647<1>51667;394,
+51783<1>0;395,
+51932<1>51944;396,
+52188<1>52208;397,
+52214<1>52218;398,
+52460<1>0;399,
+52521<2>0;400,52524;401,
+52897<2>0;402,54021;403,
+53045<1>53049;404,
+53312<1>53322;405,
+53358<1>53363;406,
+53377<1>53379;407,
+53552<1>53572;408,
+54022<1>54064;409,
+54065<1>54853;410,
+54624<1>54644;411,
+54689<1>54712;412,
+54745<1>54772;413,
+54801<1>54827;414,
+54829<1>54851;415,
+54854<1>55724;416,
+54867<1>54881;417,
+54939<1>54947;418,
+55400<1>55403;419,
+55628<1>55637;420,
+55725<1>58973;421,
+56420<1>56422;422,
+56426<1>56430;423,
+56667<2>58025;424,0;425,
+56802<1>0;426,
+57009<1>0;427,
+57136<1>0;428,
+57386<1>0;429,
+57622<1>0;430,
+57741<1>0;431,
+57846<1>0;432,
+58128<1>58153;433,
+58155<1>58183;434,
+58185<1>58196;435,
+58198<1>58215;436,
+58217<1>58234;437,
+58331<1>58356;438,
+58358<1>58388;439,
+58390<1>58412;440,
+58562<1>58599;441,
+58601<1>58636;442,
+58638<1>58683;443,
+58685<1>58725;444,
+58974<1>61106;445,
+59929<2>60471;446,0;447,
+60076<1>0;448,
+60183<1>0;449,
+60300<1>0;450,
+60547<1>60552;451,
+60594<1>60615;452,
+60666<1>60672;453,
+60896<1>60904;454,
+60919<1>60926;455,
+61107<1>61712;456,
+61603<1>61612;457,
+61669<1>61671;458,
+61713<1>62686;459,
+61738<1>61750;460,
+61981<1>61992;461,
+62108<1>62125;462,
+62127<1>62160;463,
+62162<1>62192;464,
+62343<1>62353;465,
+62383<1>62386;466,
+62388<1>62394;467,
+62452<1>62474;468,
+62476<1>62504;469,
+62532<1>62544;470,
+62687<1>63721;471,
+62764<1>62775;472,
+63058<1>63070;473,
+63074<1>63085;474,
+63722<1>64514;475,
+63738<1>63750;476,
+63752<1>63763;477,
+64398<1>0;478,
+64515<1>64514;479,
+!
+=2
+!
+=3
+!
+ *
+@@ details
+479
+1536;2:8
+16576;9:13
+0;2:3
+16384;14:14
+16384;14:14
+67135489;15:26
+12288;27:38
+4608;27:38
+6144;39:39
+6656;39:39
+6144;39:39
+6656;39:39
+2560;39:39
+16384;14:14
+6144;39:39
+6144;39:39
+6144;39:39
+6656;40:40
+6144;39:39
+6656;40:40
+6144;40:40
+6144;39:39
+6144;39:39
+6656;40:40
+2048;39:39
+16384;14:14
+67135489;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+2048;39:39
+2048;39:39
+6144;39:39
+16384;14:14
+6144;39:39
+7168;39:39
+2048;39:39
+7168;39:39
+4096;40:40
+6144;39:39
+7168;39:39
+2048;39:39
+16384;14:14
+6144;39:39
+2048;39:39
+2048;39:39
+6144;39:39
+6144;39:39
+16384;14:14
+704;41:44
+0;4:16
+6144;40:40
+6144;39:39
+6656;39:39
+2048;39:39
+6144;40:40
+6144;40:40
+6144;45:51
+6144;39:39
+7168;40:40
+16384;14:14
+6144;39:39
+2048;39:39
+0;39:39
+2560;39:39
+0;39:39
+2048;39:39
+0;39:39
+6144;40:40
+6144;39:39
+7168;39:39
+2048;39:39
+2048;39:39
+7168;39:39
+16384;14:14
+16384;14:14
+2048;39:39
+6144;39:39
+6656;39:39
+6656;39:39
+2048;40:40
+6144;39:39
+2560;39:39
+6144;39:39
+2048;40:40
+6656;40:40
+6144;40:40
+6144;40:40
+16384;14:14
+2560;39:39
+6144;39:39
+2048;39:39
+6144;39:39
+6144;39:39
+2560;39:39
+6144;39:39
+6144;40:40
+6144;39:39
+6656;39:39
+2048;39:39
+6144;39:39
+2560;39:39
+6144;39:39
+6656;39:39
+16384;14:14
+512;39:39
+2048;39:39
+2048;39:39
+2048;39:39
+16384;14:14
+1024;52:70
+16384;14:14
+7168;39:39
+2048;39:39
+67133441;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+6144;39:39
+6656;39:39
+2560;39:39
+6144;39:39
+6144;39:39
+16384;14:14
+6144;39:39
+6144;40:40
+2048;39:39
+67139585;15:26
+14336;27:38
+4608;27:38
+6144;39:39
+6144;40:40
+7168;39:39
+6144;45:51
+6144;39:39
+16384;14:14
+6144;39:39
+6144;39:39
+6144;39:39
+67133441;15:26
+12288;27:38
+4608;27:38
+6144;39:39
+6144;39:39
+16384;14:14
+2560;39:39
+6144;39:39
+7168;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+7168;39:39
+7168;39:39
+16384;14:14
+2560;39:39
+2048;39:39
+2048;39:39
+4096;39:39
+6144;39:39
+6656;39:39
+6144;39:39
+6656;39:39
+6144;39:39
+2048;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+16384;14:14
+6144;39:39
+6144;39:39
+2048;39:39
+6144;39:39
+16384;14:14
+67135489;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+7168;39:39
+6144;39:39
+6144;40:40
+6144;39:39
+67135489;71:75
+7168;40:40
+6656;40:40
+6656;40:40
+6144;40:40
+7168;40:40
+6144;40:40
+16384;14:14
+6144;39:39
+6656;39:39
+7168;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+16384;14:14
+2048;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+5120;40:40
+6656;40:40
+2048;39:39
+2560;39:39
+16384;14:14
+6144;39:39
+7168;39:39
+6656;39:39
+67139585;15:26
+14336;27:38
+4608;27:38
+4608;27:38
+6144;39:39
+6144;39:39
+3072;39:39
+6144;39:39
+2048;39:39
+6144;39:39
+16384;14:14
+16384;14:14
+67135489;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+6144;40:40
+16384;14:14
+6656;39:39
+67139585;15:26
+14336;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+6144;40:40
+6144;40:40
+6144;39:39
+2048;39:39
+7168;39:39
+4608;39:39
+67139585;15:26
+14336;27:38
+4608;27:38
+67135489;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+6144;39:39
+16384;14:14
+6144;39:39
+6144;40:40
+1024;52:70
+16384;14:14
+2048;40:40
+6144;40:40
+16384;14:14
+6144;40:40
+6144;39:39
+6144;39:39
+6144;39:39
+6144;39:39
+7168;39:39
+16384;14:14
+6144;39:39
+6144;40:40
+6144;39:39
+6144;39:39
+6144;39:39
+16384;14:14
+6144;40:40
+2048;39:39
+6656;40:40
+2048;39:39
+16384;14:14
+2048;40:40
+6144;39:39
+6656;40:40
+6144;40:40
+6144;40:40
+6656;40:40
+16384;14:14
+2048;39:39
+67133441;15:26
+12288;27:38
+6144;40:40
+1024;76:83
+6144;40:40
+6144;40:40
+6144;40:40
+6144;40:40
+6144;40:40
+16384;14:14
+6144;39:39
+6144;39:39
+2048;39:39
+2048;39:39
+6144;40:40
+6144;39:39
+6144;39:39
+4608;40:40
+4608;40:40
+704;41:44
+0;17:26
+2240;41:44
+0;27:39
+16384;14:14
+67135489;15:26
+12288;27:38
+6144;40:40
+6144;40:40
+16384;14:14
+6144;40:40
+3072;40:40
+2048;40:40
+2048;40:40
+4608;40:40
+16384;14:14
+67133441;15:26
+12288;27:38
+12288;27:38
+12288;27:38
+12288;27:38
+6144;39:39
+2048;39:39
+512;39:39
+16384;14:14
+6144;39:39
+3072;39:39
+6144;40:40
+3072;40:40
+6144;39:39
+6144;40:40
+2048;39:39
+0;40:40
+0;39:39
+1024;76:83
+2048;40:40
+2048;39:39
+512;39:39
+6144;40:40
+4608;39:39
+4608;39:39
+6144;39:39
+6144;40:40
+4608;39:39
+6144;40:40
+6144;40:40
+6144;40:40
+2048;40:40
+6144;40:40
+6144;40:40
+16384;14:14
+0;84:86
+6144;40:40
+4800;41:44
+0;40:50
+4608;39:39
+6144;40:40
+6144;40:40
+16384;14:14
+2048;40:40
+6144;39:39
+6144;39:39
+2048;40:40
+4608;40:40
+2048;39:39
+6144;40:40
+6144;40:40
+6144;39:39
+16384;14:14
+6144;39:39
+6144;87:101
+6144;45:51
+0;40:40
+6144;40:40
+4608;39:39
+2048;39:39
+2048;39:39
+2048;39:39
+3072;87:101
+4608;40:40
+6144;40:40
+3072;39:39
+16384;14:14
+6144;39:39
+3072;39:39
+0;102:104
+6144;39:39
+6144;40:40
+6144;40:40
+6144;102:104
+6144;102:104
+0;40:40
+1024;105:114
+16384;14:14
+6656;39:39
+6144;39:39
+6144;40:40
+2048;40:40
+6144;39:39
+1024;52:70
+16384;14:14
+6144;39:39
+6656;39:39
+0;39:39
+0;39:39
+2560;39:39
+16384;14:14
+6144;40:40
+6144;39:39
+7168;39:39
+6144;39:39
+16384;14:14
+6144;39:39
+2048;39:39
+67135489;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+0;39:39
+2560;39:39
+2560;39:39
+2048;39:39
+2048;39:39
+0;39:39
+2560;39:39
+2048;39:39
+2048;39:39
+2560;39:39
+2560;39:39
+2560;39:39
+16384;14:14
+67135489;15:26
+12288;27:38
+4608;27:38
+4608;27:38
+4608;27:38
+2048;40:40
+2048;39:39
+6144;40:40
+2560;39:39
+6144;39:39
+16384;14:14
+6656;39:39
+6144;39:39
+16384;14:14
+6144;40:40
+6656;39:39
+2048;39:39
+2048;39:39
+2560;39:39
+0;39:39
+0;39:39
+2048;39:39
+0;39:39
+2560;39:39
+6656;40:40
+16384;14:14
+6656;40:40
+6656;39:39
+6144;39:39
+16384;14:14
+2048;39:39
+4096;39:39
+6144;45:51
+16384;14:14
+ *
+%% ties
+&!2
+!
+&&2
+3~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+51~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+311~
+!
+&!3
+!
+&&2
+313~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+364~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!

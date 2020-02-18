@@ -1,0 +1,3877 @@
+## htxne
+#
+`[//]Gaps in Truth-Theoretic SemanticsI take as a given that typical sentences have a propositional core, 
+against which they take a performative stance 
+(which can be outright assertion, or else asserting speakers' 
+more complex propositional attitudes).  I would further 
+say thattruth-theoreticsemantics, in particular, 
+is organized around this propositional content as the 
+core target of linguistic analysis.  I am thinking of 
+truth-theoretic semantics in a broad sense, perhaps the 
+most influential paradigm in the Philosophy of Language 
+and by extension philosophy and linguistics in general 
+(not to mention Computer Science and Artificial Intelligence 
+research).  The most notable counter-paradigm is Cognitive Linguistics; 
+consider George Lakoff and Mark Johnson's extended critique 
+of truth-theoretic paradigms inPhilosophy in the Flesh.  
+Adherents of the latter perspective need not 
+dispute the logical substance of language artifacts' propositional 
+content, but tend to direct theoretical attention not to 
+the nature of propositional content itself, but to the cognitive 
+processes through which this content is understood.As I argued earlier, many sentences do not simplistically 
+reproduce the logical structure of their propositional 
+content, so models of that structure are only tangentially 
+relevant to analysis on the language side.  This is why we 
+need distinct analyses, beyond a mere logical gloss, 
+covering the interpretive steps leading to holistic 
+sentence-understanding.   This section will consider several 
+cognitive and pragmatic themes moving toward a general theory 
+of this phenomenon.Enaction and Illocutionary ForceI will start by reviewing illocutionary pragmatics, to 
+identify some of the contextual and interpretive 
+transformations that pertain to mapping surface language 
+to propositional contents.  My point is to establish 
+what should be a common theory of logicality that can be
+shared by both critics and defenders oftruth-theoreticparadigms, on which basis their legitimate disputes 
+can be investigated.Many linguists (on both sides, I would say, of my 
+central truth-theoretic pro/con), 
+seem to analyze hedges likecould you pleaseas merely dressing over crude commands: we don't
+want to come across as giving people orders, but
+sometimes we do intend to ask people to do specific
+things.  As a result, we feel obliged to couch the
+request in conversational gestures that signal
+our awareness of how bald commands may lie outside
+the conversational norms.  These ritualisticcould you please-like gestures may have
+metalinguistic content, but `{-} so the theory
+goes `{-} they do notsemanticallyalter
+the speech-act's directive nature.The problem with this analysis is that sometimes
+directive andinquisitivedimensions can
+overlap:\swl`({)itm:almond`(}{)Do you have almond milk?`(}{)pra`(})\swl`({}{)Can you get MsNBC on your TV?`(}{)pra`(})\swl`({)itm:needcorkscrew`(}{)This isn't a screw-cap bottle: I need a corkscrew.`(}{)pra`(})Thesecanbe read as bare directives, and would
+be interpreted as such if the hearer believed the
+speaker already knew that yes, he has almond milk, and yes,
+he gets MsNBC.  In (\ref`({)itm:needcorkscrew`(})), if both parties
+know there's one corkscrew in the house,
+the statement implies a directive to fetchthatcorkscrew.
+But, equally, (\ref`({)itm:almond`(}))-(\ref`({)itm:needcorkscrew`(})) canalsobe read as bare
+questions with no implicature: say, as fans of
+almond milk and MsNBC endorsing those selections,
+or pointing out that opening the bottle
+will needsomecorkscrew.
+And, meanwhile, (\ref`({)itm:almond`(}))-(\ref`({)itm:needcorkscrew`(}))
+canalsobe read as a mixture of the
+two, as if people expressed themselves like this:\swl`({}{)I think the window is open, can you close it?`(}{)pra`(})\swl`({}{)I see you have almond milk, can I have some?`(}{)pra`(})\swl`({}{)If you get MsNBC, can you turn on Rachel Maddow?`(}{)pra`(})\swl`({}{)If there is a corkscrew in the house, can you get it?`(}{)pra`(})I think the mixed case is the most prototypical, and pure
+directives or inquiries should be treated as degenerate
+structures where either directive or inquisitive content
+has dropped out.  After all, even a dictatorial
+command includes the implicit assumption that the order
+both makes sense and is not impossible.  On
+the other hand, we don't ask questions for no
+reason:do you have almond milkmay be a
+suggestion rather than a request, but it still
+carries an implicature (e.g., that the addresseeshouldget almond milk).Ordinary requests carry the assumption that addressees
+can follow through without undue inconvenience,
+which includes a package of assumptions about both
+what is currently the case and what is possible.Close the windowonly has literal force if the
+window is open.  So, when making a request, speakers
+have to signal that they recognize the request involves
+certain assumptions and are rational enough to
+accept modifications of these assumptions in
+lieu of literal compliance.  This is why
+interrogative forms likecan youorcould youare both semantically nontrivial
+and metadiscursively polite: they leave open the
+possibility of subsequent discourse framing the original
+request just as a belief-assertion.  Developments
+likecan you open the window`{-}no, it's closedare not ruled out.  At the same time, interrogative forms
+connote that the speaker assumes the addressees can
+fulfill the request without great effort: an implicit
+assumption is that theycanand alsoare
+willing tosatisfy the directive.  This is an
+assumption, not a presumption: the speaker
+would seem like a bully if he acted as if he
+gave no thought to his demands being too much
+of an imposition `{-} as if he were taking
+the answer tocan youquestions for granted.
+This is another reason why requests
+should be framed as questions.  So, in short,commandsare framed as questions because the speaker
+literally does not know for sure whether the command is
+possible; given this uncertainty a commandisa question,
+and the interrogative form is not just a non-semantic
+exercise in politesse.Sometimes the link between directives and
+belief assertions is made explicit.  A common
+pattern is to useI believeorI believe thatas an
+implicature analogous to interrogatives:\swl`({}{)I believe you have a reservation for Jones?`(}{)pra`(})\swl`({}{)I believe this is the customer service desk?`(}{)pra`(})\swl`({}{)I believe we ordered a second basket of garlic bread?`(}{)pra`(})\swl`({}{)I believe you can help me find computer
+accessories in this section?`(}{)pra`(})These speakers are indirectly signaling what they want
+someone to do by openly stating the requisite
+assumptions `{-}I believe you canin place
+ofcan you?.  The implication is that
+such assumptions translate clearly to a
+subsequent course of action `{-} the guest whodoeshave that reservation should be checked in;
+the cashier whocanhelp a customer find
+accessories should do so.  But underlying these
+performances is recognition that
+illocutionary force is tied to background
+assumptions, and conversants are reacting to
+the propositional content of those assumptions
+as well as the force itself.  If Idoclose the
+window I am not only fulfilling
+the request but also confirming that the windowcouldbe closed (a piece of information
+that may become relevant in the future).In sum, when we engage pragmatically with other
+language-users, we tend to do so cooperatively,
+sensitive to what they wish to achieve with
+language as well as to the propositional
+details of their discourse.  But this often means
+that I have to interpret propositional
+content in light of contexts and implicatures.
+Note that both of these are possible:\swl`({}{)Do you have any milk?`(}{)pra`(})\swl`({}{)Yes, we have almond milk.`(}{)pra`(})\swl`({}{)No, we have almond milk.`(}{)pra`(})A request for milk in a vegan restaurant could plausibly be
+interpreted as a request for a vegan milk-substitute.
+So the conceptmilkin that context may actually be
+interpreted as the conceptvegan milk.  
+Responding to the force of speech-acts
+compels me to treat them as notwhollyillocutionary `{-} they are in part statements of
+belief (like ordinary assertions).  One reason I need
+to adopt an epistemic (and not just obligatory)
+attitude to illocutionary acts is that I need to
+clarify what meanings the speaker intends, which
+depends on what roles she is assigning to
+constituent concepts.Suppose my friend says this, before and after:\swl`({)itm:put`(}{)Can you put some almond milk in my coffee?`(}{)pra`(})\swl`({)itm:after`(}{)Is there milk in this coffee?`(}{)pra`(})Between (\ref`({)itm:put`(})) and (\ref`({)itm:after`(})) I do put almond milk
+in his coffee and affirmyesto (\ref`({)itm:after`(})).  I feel it
+proper to read (\ref`({)itm:after`(}))'smilkas really meaningalmond milk, in light of (\ref`({)itm:put`(})).  Actually
+I should belessinclined to sayyesif (maybe as a prank) someone had instead
+put real (cow) milk in the coffee.  In responding
+to his question I mentally substitute what
+he almost certainlymeantfor how
+(taken out of context) (\ref`({)itm:after`(})) would usually
+be interpreted.  In this current
+dialog, themilkconcept not only
+includes vegan milks, apparently, butexcludesactual milk.It seems `{-} on the evidence of cases like this one `{-}
+as if when we are dealing with
+illocutionary force we are obliged to subject
+what we hear to extra interpretation, rather
+than resting only withinliteralmeanings
+of sentences, conventionally understood.
+This point is worth emphasizing because it complicates
+our attempts to link illocution with propositional
+content.  Suppose grandma asks us to close the
+kitchen window.  Each of these are plausible and
+basically polite responses:\swl`({}{)It's not open, but there's still some
+cold air coming through the cracks.`(}{)pra`(})\swl`({}{)It's not open, but I closed the window in
+the bedroom.`(}{)pra`(})\swl`({}{)I can't `{-} it's stuck.`(}{)pra`(})In each case I have not fulfilled her requestits literal meaning, but Ihaveacted benevolently
+in terms of conversational maxims.  Similarly, 
+theHandbookhas this case (example 12, p. 203, chapter 8):\swl`({)itm:TheWindow`(}{)The window, it's still open.`(}{)pra`(})\swl`({)itm:AWindow`(}{)A window, it's still open.`(}{)pra`(})Chapter authors Jeanette K. Gundel and Thorstein Fretheim 
+suggest that (\ref`({)itm:AWindow`(})) is dubious, but in context 
+it may make perfect sense `{-} particularly if it follows 
+a discourse where a requester wantedwhateverwindow 
+closed (whichever window was causing a draft); even if that 
+wish wasexpressedvia aclose the window.Consider also the case of (Handbook, example 9, 
+page 132, chapter 6):\swl`({)itm:scribbled`(}{)He scribbled on a living-room wall.`(}{)sem`(})
+$\udref`({)HandbookCh.`(}{})Barbara Abbott (chapter author) finds the indefinite article 
+in (\ref`({)itm:scribbled`(})) awkward.  Here, like in (\ref`({)itm:AWindow`(})), 
+I think the acceptability ofbothdefinite and indefinite 
+articles points to the flexibility of articles in English: 
+we can useclosethewindoweven if we are referentially 
+ambiguous about which window is open `{-} both (\ref`({)itm:AWindow`(})) 
+and (\ref`({)itm:TheWindow`(})) are almost interchangeable.  The reason
+is apparently that the very act of talking about an open or 
+closed window foregrounds it such that it can be approached 
+definitely.  In (\ref`({)itm:scribbled`(})) Abbott's intuition is 
+probably that we usually speak ofthewall of a room `{-} even 
+in the normal case of a room with four walls `{-} because there is 
+no common reason to single out one wall, as with an indefinite 
+article (sayingawall implies that the other walls are 
+differentiated from the one referenced).  But I believe we can 
+clearly cognize the walls of a room as a collection of discrete 
+things, and that the formationthewall `{-} unifying 
+them into a single `{-} is not so much a matter of discounting 
+the perceptual multiplicity of four walls, but 
+of conceivingwallsthemselves functionally as well as 
+perceptually.  In my reading,the wallrefers not only 
+to something perceptually individuated but to an element 
+of the architectural complex of a building: a wall is something 
+that prohibits movement, muffles sounds, provides some privacy, 
+protects people inside the room (part of a building's 
+structural integrity), and so forth.  We can saythewall 
+because we cognize walls as occupying that phenomenal niche, 
+so all four walls of a room are collectivelythewallsuch a niche, even while on sensory grounds we 
+can switch to treating them as separate (warranting the (\ref`({)itm:scribbled`(})) 
+version).Part of reading propositional content is
+syncing our conceptual schemas with our fellow
+conversants.  The illocutionary
+dimension of a request likecan I have some milk?makes this interpretation especially important,
+because the addressee wants to make a good-faith effort
+to cooperate with the pragmatic intent of the
+spech-act.  But cooperation requires the
+cooperating parties' conceptual schemas to
+be properly aligned.  I therefore have to
+suspend the illocutionary force of a directive
+temporarily and treat it as locutionary
+statement of belief, interpret its apparent
+conceptual underpinnings in that mode, and
+then add the illocutionary force back in: if I
+broughtrealmilk to a vegan customer who
+asked formilkI would beun-cooperative.The upshot is that conversational implicatures
+help us contextualize the conceptual negotiations
+that guarantee our grasping the correct
+propositional contents, and vice-versa.  This means
+that propositionality is woven throughout both
+assertive and all other modes of language, but it
+also means that propositional content can be
+indecipherable without a detailed picture
+of the current context (including illocutionary
+content).  The propositional content of,
+say,there is milk in this coffeehas to be
+judged sensitive to contexts likemilkmeaningvegan milk`{-} and this
+propagates from a direct propositional
+to any propositional attitudes which may
+be directed towards it, including requests likeplease put milk in this coffee.Suppose the grandkids close grandma's bedroom window
+when she asks them to close the kitchen window.
+The propositional content at the core of grandma's
+request is that the kitchen window be closed; the
+content attached to it is an unstated belief that
+this window is open.  Thus, the truth-conditions
+satisfying her implicit understanding would be
+that the kitchen window went from being open to being
+closed.  Suppose, as it happens, that window is already
+closed.  So the truth-conditions that would satisfy
+grandma's initial belief-state do not obtain `{-} her
+beliefs are false `{-} but the truth conditions satisfying
+her desired resultdoobtain.  The windowisclosed.  Yet the grandkids should not thereby
+assume that her request has been properly responded to;
+it is more polite to guess at the motivation behind
+the request, e.g., that she felt a draft
+of cold air.  In short, they should look outside
+the truth conditions of her original
+request taken literally, andinterprether request, finding different content
+with different truth-conditions that are both consistent
+with fact and address whatever pragmatic goals
+grandma had when making her request.  They might
+infer her goal is to prevent an uncomfortable
+draft, and so a reasonablesubstitute contentis
+the proposition thatsomewindow is open,
+and they should closethatone.So the grandkids should reason as if translating
+between these two implied meanings:\swl`({}{)I believe the kitchen window
+is open `{-} please close it!`(}{)pra`(})\swl`({}{)I believe some window
+is open `{-} please close it!`(}{)pra`(})They have to revise the simplest reading of
+the implicit propositional content of grandma'sactualrequest, because the actual request is
+inconsistent with pertinent facts.  In short, they
+feel obliged to explore propositional alternatives
+so as to find an replacement, implicit request whose
+propositional contentisconsistent with
+fact and also meets the original request's illocutionary
+force cooperatively.In essence, we need to express a requester's desire as
+itself, in its totality, a specific propositional content,
+thinking to ourselves (or even saying to others) things
+like\swl`({}{)Grandma wants us to close the window.`(}{)pra`(})\swl`({}{)He wants a bottle opener.`(}{)pra`(})But to respond politely we need to modify
+the parse of their requests to capture theessentialcontent:\swl`({}{)Grandma wants us to eliminate the cold draft.`(}{)pra`(})\swl`({}{)He wants something to open that bottle.`(}{)pra`(})We have to read outside the literal interpretation
+of what they are saying.  This re-reading is something
+that may be appropriate to do with respect to
+other forms of speech also; 
+but our conversational responsibility to infer
+some unstated content is especially pronounced
+when we are responding to an explicit
+request for something.Certainly, in many cases, meanings are not literal.
+But how then do we understand what people are saying?
+Trying to formulate a not-entirely-haphazard
+account of this process, we can speculate
+that interpreting what someone isreallysaying
+involves systematically mapping their apparent
+concepts and references to some superimposed
+inventory designed to mitigate false beliefs or
+conceptual misalignments among language users in some
+context.  That means, we are looking for mappings
+likemilktoalmond milkin (\ref`({)itm:can`(})) from a
+vegan restaurant, orkitchen windowtobedroom windowin (\ref`({)itm:close`(})) if it is the latter
+that is open:\swl`({)itm:can`(}{)Can I have some milk?`(}{)pra`(})\swl`({)itm:close`(}{)Can you close the kitchen window?`(}{)pra`(})The point of thesemappingsis that they
+preserve the possibility of
+modeling theoriginalpropositional content
+by identifying truth conditions
+for that content to be satisfied.Aliteraltruth-condition model doesn't work in
+cases like (\ref`({)itm:can`(})) and (\ref`({)itm:close`(})): the diner's request
+isnotsatisfied if it is the case
+that there is now (real) milk in her coffee; and
+grandma's request is not necessarily satisfied if it is
+the case that the kitchen window is closed.  The
+propositionthe kitchen window is closedonly bears on
+grandma's utterance insofar as she believes that
+this window is open and causing a draft.  So if we want
+to interpret the underlying locutionary content
+of (\ref`({)itm:can`(})) and (\ref`({)itm:close`(})) truth-theoreticaly, we need to
+map the literal concepts appearing
+in these sentences to an appropriate translation,
+a kind ofcoordinate transformationthat
+can map concepts onto others, like milk/almond milk
+and kitchen window/bedroom window.In sum, a theory of sentences' logical nexus can only 
+be complete with some model of discursive contextstructured in such a waythat we can repesent the 
+interpretations and concept-transforms internal to 
+parsing sentences to their propositional core.  
+I will now consider what such atheory of contextmight look like.The co-framing system and the
+doxa systemIllucutionary acts expressly signify our desire for 
+something to change in our environment (with the 
+help of our addressees), but similar implications 
+of pragmatic desire are evident even when sentences 
+are more directly assertorial, or less directly 
+illocutionary.  Compare between:\swl`({)itm:store`(}{)Remember that wine we tasted on the Niagara 
+Peninsula last summer?  Can you find it in our 
+local liquor store?`(}{)pra`(})\swl`({)itm:varietal`(}{)Remember that wine we tasted on the Niagara 
+Peninsula last summer?  What varietal was that again?`(}{)pra`(})The first sentence in each pair attempts to 
+establish a common frame of reference between 
+addresser and addressee `{-} it does not, in and 
+of itself, request any practical (extramental) action.  
+The second sentence in (\ref`({)itm:store`(}))canbe read as 
+requesting that the addressee buy a bottle, though an alternate
+interpretation is to learn forfuture referencewhether someonecouldbuy that bottle.  The 
+second sentence in (\ref`({)itm:varietal`(})) carries no directive 
+implicature at all, at least with any directness; 
+it asks for more information.Despite these variations, it seems reasonable to say that 
+language is always performed in an overarching setting 
+where concrete (extralinguistic) activity 
+willeventuallytake place.  If in (\ref`({)itm:varietal`(})) I intend
+to recommend that grape variety to a friend, I may not be  
+making a direct request of him, but Iamproposing an eventual action that he 
+might take.  If in (\ref`({)itm:store`(})) I am not issuing a directive, I 
+am however establishing (and reserving the future possibility) 
+that such a directive would be reasonable.  As a result, some 
+extralinguistic state change seems to be lurking 
+behind the linguistic content: I want my friend 
+to go from having never tasted that varietal 
+to having tasted it. 
+Or I want to go from not having a bottle of that 
+wine to having one.  Or, if I do not 
+want these things at the moment, I want 
+to confirm intellectually that these wishes are 
+plausible.  We seem to use language to 
+set up the interpersonal understandings needed 
+toeventuallyengage in (usually collective) 
+practical activity, which means effectuating some 
+(extralinguistic) change.That is, most expressions are not direct 
+requests or suggestions of theclose the windoworlet's get some winevariety, but they are 
+stitches in the thread of coordinated human actions.
+Often however we use language toprepare,negotiate, anddecide uponjoint actions.  
+We may have aholisticsense that meanings orbit around 
+extralinguistic and extramental state-change, 
+but at the level of particular sentences most 
+changes that occur, or are proposed, tend to be 
+changes in our conceptualization of situations.  
+Accordingly, we can pursue a semantic theory 
+based onchange of stateif we accept that 
+such changes run the gambit from changesinternalto language `{-} to conversants' 
+appraisal of dialogic context `{-} to 
+changes effectuated by human activity inspired by language. 
+Dialogs 
+themselves change: the first sentences in 
+(\ref`({)itm:store`(})) and (\ref`({)itm:varietal`(})) 
+modify the discursive frame so that, for example, 
+a particular wine becomes available as the anaphoric
+target forthatandthat wine`{-} and also, 
+metonymically,that varietal,that grape,that winery.  Conceptual frames can change: 
+if we are discussing a visit to Ontario and 
+I mention a particular winery, one effect is to 
+(insofar as the conversation follows my lead) 
+refigure our joint framing to something 
+narrower and more granular that the prior frame (but 
+still contained in it; I am not changing the subject 
+entirely).  We can pull a frame out as well as in
+`{-} e.g., switch from talking about one winery visit to 
+the whole trip, or one Leafs game to the entire season.
+Moreover, our beliefs can change/evolve: if you tell me 
+the wine was Cabernet Franc, I have that piece of 
+info in my arsenal that I did not have before.So I assume in this paper that
+linguistic meanings are grounded in state-changes, 
+with the stipulation that theregisterwhere the changes occur can 
+vary over several cognitive and extramental options: 
+actual change in our environment (the window closed, 
+milk in the coffee, the bottle opened); changes to the 
+dialog structure (for anaphoric references, pronoun 
+resolution, metalinguistic cues likecan you say that 
+again, etc.); changes to conceptual framings
+(zoom in, zoom out, add detail); changes to beliefs.
+Each of these kinds of changes deserve their own analysis, 
+but we can imagine the totality of such analyses 
+forming an umbrella theory of meanings.During the course of a conversation `{-} and indeed 
+of any structured cognitive activity `{-} we 
+maintain conceptual frames representing relevant 
+information; what other people know or believe;
+what are our goals and plans (individually and 
+collectively); and so forth.  We update
+these frames periodically, and use language to 
+compel others to modify their frames in
+ways that we can (to some approximation) anticipate 
+and encode in linguistic structure.In the simplest case, we can effectuate changes in 
+others' frames by making assertions they are likely 
+to believe to be true (assuming they deem us 
+reliable).  In general, it is impossible 
+to extricate the explicit content of the relevant 
+speech-acts from the relevant cognitive, linguistic, and 
+real-world situational contexts:\swl`({}{)That wine was a Cabernet Franc.`(}{)ref`(})\swl`({}{)Those dogs are my neighbor's.  
+They are very sweet.`(}{)ref`(})Although there is a determinate propositional content being 
+asserted and although there is no propositional attitude 
+other than bald assertion to complicate the pragmatics, 
+still the actual words depend on addressees drawing from 
+the dialogic context in accord with how I expect them to
+(as manifest in open-ended expressions likethat wine,those dogs,they).  Moreover, the  
+open-ended components can refer outward in differentregisters: inthat wineI may be 
+referencing a concept previously established in 
+the conversation, whilethose dogsmay refer to 
+pets we saw or heard but had not previously 
+talked about.  Of course, the scenarios 
+could be reversed: I could introducethat wineinto the conversation by gesturing to a bottle 
+you had not noticed before, and refer viathose dogsto animals you have never seen or heard but 
+had talked about, or heard talk about, in the recent past.
+These dialog steps need to be resolved via a mixture of 
+linguistic and extra-linguistic cues: 
+surface-level language is not always clear as to whether 
+referring expressions are to workdeictically(drawing content from the ambient context, 
+signified by gestures, rather than from any 
+linguistic meaning proper),discursively(referring within chains of dialog, e.g. 
+anaphora), ordescriptively(using 
+purely semantic means to establish a designation, 
+likemy next-door neighbor's dogsorInniskillin Cabernet Franc Icewine 2015).Let's agree to call the set of entities sufficiently 
+relevant to a discourse or conversation context theledger.
+Bysufficiently relevantI mean whatever is already 
+established in a discourse so it can be referenced with something 
+less that full definite description (and without the aid 
+of extralinguistic gestures).  I assume that gestures
+and/or descriptions are communicative acts whichaddto the ledger.  The purely linguistic case `{-} let's say,descriptive additions`{-} can themselves be distinguished
+by their level of grounding in the current context.  
+A description can bedefinitivein a specific situation without 
+being adefinite descriptionin Bertrand Russell's sense
+(seethat wine we tasted last summer).So, descriptive additions to the ledger are one kind of 
+semantic side-effect: we can change the ledger via 
+language acts.  I will similarly dub another facet of 
+cognitive-linguistic frames as alens: the idea
+that in conversation we canzoomattention 
+in and out and move it around in time.That wine we 
+tasted last summer in Ontarioboth modifies 
+theledger(adding a new referent for convenient
+designation) and might alter thelens:
+potentially compelling subsequent 
+conversation to focus on that time and/or place.  
+Finally, I will identify a class of frame-modifications 
+which do directly involve propositional content: 
+the capacity for language to promote shared beliefs 
+between people whose cognitive frames are in 
+the proper resonance, by adding details to conceptual
+pictures already established:those dogs are Staffordshires,that wine is Cabernet Franc,we have almond milk, etc.For sake of discussion, I will call this latter part of theactivecognitive frame, for some discussion 
+`{-} the part concerning shared beliefs or asserted facts `{-}
+thedoxa inventory.
+Thisdatabase-like repository stands alongside theledgerandlensto track propositional content 
+asserted, collectively established, or already 
+considered as background knowledge,some 
+discourse.  Manipulations of the lens and ledger allow 
+speakers to designate (using referential cues
+that could be ambiguous out-of-context) 
+propositional contents which they 
+wish to add to thedoxa inventory.  I'll also say 
+that modifying this inventorycanbe done through 
+language, but participants in a discourse are entitled 
+to assume that everyone formulates certain beliefs 
+which are observationally obvious, and can therefore 
+be linguistically presupposed rather than reported 
+(the likes of that a traffic light 
+is red, or a train has pulled into a station, or 
+that it's raining).So, I will assume that the machinery of frames is cognitive, 
+not just linguistic.  We have analogous faculties forrefocusingattention and adding conceptual details
+via interaction with our environment, both alone and with others, 
+and both via language and via other means.  Some 
+aspects oflinguisticcognitive framing `{-} like 
+theledgerof referents previously established in a 
+conversation `{-} may be of a purely linguistic character, 
+but these are the exception rather than the rule.  
+In the typical case we have a latent ability to 
+direct attention and form beliefs by 
+direct observationorby accepting others' reports as
+proxies for direct observation.When we are told that two dogs are male, for instance, 
+we may not perceptually encounter the dogs but we understand what 
+sorts of perceptual disclosures could
+serve as motivation for someone believing that idea.  We therefore 
+assume that such belief was initially warranted by 
+observation and subsequently got passed through a chain 
+of language-acts whose warrants are rooted in the perceived 
+credibility of the speaker.  Internal to this 
+process is our prior knowledge of the parameters for judging 
+statements likethis dog is maleobservationally.True, sometimes such observational warrants are less on 
+display.  If I had never heard of Staffies (Staffordshire
+pit bulls), I would be fuzzier about observational warrants
+and could end up in a conversation like:\swl`({}{)Those dogs are Staffordshires.`(}{)pra`(})\swl`({}{)What's a Staffordshire?`(}{)pra`(})\swl`({}{)It's a breed of dog.`(}{)pra`(})Here I still don't really have a picture of what it is 
+like to tell observationally that a dog is a Staffordshire.  
+There may not be any visual cues `{-} at least none I 
+know of `{-} which announce to the world that some dog's
+a Staffy (compared to those announcing that it is male,
+say).  But insofar as I am acquainted 
+with the conceptdog breed, I also understand 
+the general pattern of these observations.  For instance 
+I may know breeds like poodles or huskies and be able to 
+identifytheseby distinctive visual cues.  I also 
+understand that dogs' parentage is often documented, allowing 
+informed parties to know their breeds via those of their 
+forebearers.  That is, I am familiar with 
+how beliefs about breeds are formed based on 
+observation rather than just accepting others' 
+reports, so I know the extralinguistic epistemology 
+anchoring chains of linguistic reports in this area 
+to originating observations `{-} even if 
+I cannot in this case initiate such a chain myself.My overall point is that language enables us to formulate beliefs 
+based on the beliefs of others, but this is possible because 
+we also realize what it is like to formulateour ownbeliefs, and envision that sort of practice at the 
+origin of reports that later get circulated via language.  
+If we can't sufficiently picture the originating 
+observations, we don't feel like we are grasping 
+the linguistic simulacrum of those reports with enough 
+substance.  If I never learn what Stafforshire is, 
+an assertion that some dogs are Staffordshires 
+has no real meaning for me `{-} even if I trust the asserter 
+and do indeed thereby believe that the dogs are Staffordshires.  
+Notice that merely knowing Staffordshire is a breed of 
+dog does not expand my conceptual repertoire very much
+`{-} it does not tell me how to recognize a Staffordshire 
+or what I can do with the knowledge 
+that a dog is one (it cannot, for instance, help 
+me anticipate his behavior).  Nevertheless even (only) knowing 
+that Staffordshire is a breed of 
+dog seems to fundamentally change the status 
+of sentences likethose dogs are Staffiesfor me: I do nothavethe conceptual machinery 
+to exploit that knowledge, but I understand
+whatsortof machinery is involved.In short, thelinguisticmeaning of concepts is tightly bound 
+to how concepts factor in perceptual observations anterior 
+to linguistic articulation.  As a result, 
+during any episode wherein conversants use language to 
+compel others' beliefs, an intrinsic dimension of the 
+unfolding conversation is that people will form 
+their own (extralinguistic) beliefs `{-} and can also 
+imagine themselves in the role of originating the 
+reports they hear via language, whether or not they 
+can actually test out the reports by their own 
+observations.This extralinguistic epistemic 
+capacity is clearly exploited by the form of language itself.  
+If a tasting organizer hands me a glass and saysThis is Syrah, she clearly expects me to infer that I 
+should take the glass from her and taste the wine (and 
+know that the glass contains wine, etc.).  These conventions
+may bemediatedby language `{-} we are more likely to 
+understandunspokennorms by asking questions, until we gain 
+enough literacy in the relevant practical domain to 
+understand unspoken cues and assumptions.  But many situational 
+assumptions are extralinguistic because 
+they are (by convention) not explicitly stated, 
+even if they accompany content thatisexplicitly stated.This is Syrahaccompanied by the gesture of handing
+me a glass is an indirect invitation for me to drink it 
+(compare toPlease hold this for a second?orPlease hand this to the man behind you?).I bring to every linguistic situation a 
+capacity to make extralinguistc observations, and 
+to understand every utterance in the context of hypothetical 
+extralinguistc observations from which is originates.  
+My conversation peers can use language to trigger 
+these extralinguistic observations.  Sometimes thegap`{-} the conceptual slot which 
+extralinguistic reasoning is expected to fill 
+`{-} is directly expressed, as inSee the
+dog over there?.  But elsewhere theextralinguistic implicatureis more indirect, 
+as inThis is Syrahand my expected belief that 
+I should take and taste from the glass.  But in any 
+case the phenomenon of triggering these 
+extralinguistic observation is 
+one form of linguisticside effect, initiating a 
+change in my overall conceptualization of a situation by 
+compelling me to augment beliefs with new observations.All told, then, the language which is presented to me has the effect 
+of initiating changes in what I believe 
+`{-} partly via signifying propositional
+content that I could take on faith, but partly 
+also via directing my attention and my interpretive 
+dispositions to guide me towards extralinguistic 
+observations.  Here I will argue that side-effects like 
+these are not side-effectsoflinguistic meaning, 
+but are in some senseconstitutiveof 
+meaning.Side-Effects and Logical IncompletenessIn the most common analysis, I would argue, side-effects and propositional 
+content overlap.  The effect of an utterance, all else being equal, is 
+that addressees understand the claimed report as believed by the speaker and 
+`{-} depending on their deeming the speaker credible `{-} accept it as 
+a provisional doxic given themselves.  There are many other effects, 
+such as how one speaker's assertion changes dialogic context in a way 
+that alters the current topical focus and the interpretation of 
+context-specific expressions.  But these generally build off of 
+a statements' coherence and credibility `{-} a non-sensical 
+comment is less likely to veer a discourse in new directions 
+or reinscribe the dialogicledger.  For these reasons, we 
+may be tempted to focus analysis on the architecture of 
+propositional content rather than the itemization of side-effects.  
+I would argue, however, that linguistic side-effects are more 
+universal than logically pristine propositional signification, and 
+that communicating doxic content is a special case of side effects 
+more than side-effects are the passive consequence of rational 
+conversation.I will defend this perspective via cases where 
+language users seem to traffic in 
+a relativeabsenceof semantic determinism, with no 
+detrimental effects to thetelosof language in context.  
+These cases buttress an idea that language is not targeted at 
+doxic specificity as a precondition for meaning in general, 
+but rather packages doxa along with other contextualizing 
+constituents in the service of pragmatic ends.  
+Consider:\swl`({}{)My colleague Ms. O'Shea would like to interview
+Mr. Jones, who's an old friend of mine.  Can he take this call?`(}{)pra`(})\swl`({)itm:Jones`(}{)I'm sorry, this is his secretary.  Mr. Jones
+is not available at the moment.`(}{)pra`(})It sounds like Ms. O'Shea is trying to use personal
+connections to score an interview with Mr. Jones.  Hence
+her colleague initiates a process intended to
+culminate in Ms. O'Shea getting on the telephone
+with Mr. Jones.  But his secretary demurs with a
+familiar phrase, deliberately formulated to
+foment ambiguity: (\ref`({)itm:Jones`(})) could mean that Mr. Jones
+is not in the office, or that he is in a meeting, or he is
+unwilling to talk, or even missing (like
+the ex-governor consummating an affair in Argentina
+while his aides thought he was hiking in Virginia).
+Or:\swl`({}{)Mr. Jones, were you present at a meeting where
+the governor promised your employer
+a contract in exchange for campaign contributions?`(}{)pra`(})\swl`({}{)After consulting with my lawyers, I decline
+to answer that question on the grounds that it
+may incriminate me.`(}{)pra`(})Here Mr. Jones neither confirms nor denies his
+presence at a corrupt meeting.As these examples intimate, the processes language
+initiates do not always result in a meaningful
+logical structure.  But this is not necessarily
+a complete breakdown of language:\swl`({)itm:isJones`(}{)Is Jones there?`(}{)pra`(})\swl`({)itm:not`(}{)He is not available.`(}{)pra`(})The speaker of (\ref`({)itm:not`(})) does not
+provide any prima facie logical content: it neither affirms
+nor denies Jones's presence.  Nonetheless that speaker
+is a cooperative conversational partner
+(even if they are not being very cooperative in real life):
+(\ref`({)itm:not`(})) responds to the implicature in
+(\ref`({)itm:isJones`(})) that what the
+first speaker really wants is
+to interview Jones.
+So the second speaker conducts what I called
+atransformand mapsJones is heretoJones is willing to be interviewed.
+Responding to thistransformedquestion allows
+(\ref`({)itm:not`(})) to be (at least) linguistically cooperative
+while nonetheless avoiding a response at thelogicallevel to (\ref`({)itm:isJones`(})).  (\ref`({)itm:not`(})) obeys
+conversational maxims but is still rather obtuse.So one problem for theories that read meanings in terms
+of logically structured content `{-} something like, the
+meaning of an (assertorial) sentence is what the world would be
+like if the sentence were true `{-} is that the actual
+logical content supplied by some constructions
+(likeJones is not available) can be pretty
+minimal `{-} but these are still valid and
+conversationally cooperative segments of discourse.  To be sure, this
+content does not appear to becompletelyempty:Jones is not availablemeans the
+conjunction of several possibilities (he cannot be found
+or does not want to talk or etc.).
+So (\ref`({)itm:not`(})) does seem to evoke some
+disjunctive predicate.  But such does not mean
+that this disjunctive predicate is themeaningof
+(\ref`({)itm:not`(})).  It does not seem as if (\ref`({)itm:not`(}))
+when uttered by a bodyguard is intended first and foremost to
+convey the disjunctive predicate.  Instead, the
+bodyguard is responding to the implicature
+in the originalIs Jones there?query `{-} the
+speaker presumably does not merely want
+to know Jones's location, but to see Jones.
+Here people are acting out social roles, and just happen
+to be using linguistic expressions to negotiate
+what they are able and allowed to do.Performing social roles `{-} including through language `{-}
+often involves incomplete information: possibly
+the secretary or bodyguard themselves do not know
+where Jones is or why he's not available.
+We could argue that there isenoughinformation to
+still groundsomepropositional content.  But this
+is merely saying that we can extract some propositional content from
+what speakers are supposed to say as social acts, which seems
+to make the content (in these kinds of cases)
+logically derivative on the enactive/performative
+meaning of the speech-acts, whereas a truth-theoretic
+paradigm would need the derivational dependence
+to run the other way.  By sayingJones is unavailablethe speaker is informing us that our own prior speech
+act (asking to see or talk to him) cannot have
+our desired effect `{-} the process we initiated cannot be
+completed, and we are being informed of that.  The
+person sayingJones is unavailableis likewise
+initiating anewprocess, one that counters our process
+and, if we are polite and cooperative, will have its
+own effect `{-} the effect being that we do not insist on
+seeing Jones.  The goal ofJones is unavailableis to create
+that effect, nudging our behavior in that direction.
+Anylogichere seems derivative on the practical initiatives.And moreover this practicality is explicitly marked by how
+the chosen verbiage is deliberately vague.  The declarationJones is unavailabledoes notneedlogical precision to
+achieve its effect.  It needssomelogical content, but it exploits a
+kind of disconnect between logical and practical/enactive
+structure, a disconnect which allowsJones is unavailableto
+be at once logically ambiguous and practically clear `{-}
+in the implication that we should not try to see Jones.
+I think this example has some structural
+analogs to the grandma's window case:therewe
+play at logical substitutions to respond practically
+to grandma's request in spirit rather thande dicto.Herea secretary or bodyguard can engage in logical
+substitution to formulate a linguistic performance
+designed to be conversationally decisive
+while conveying as little information as possible.  The logical
+substitution in grandma's contextaddedlogical content by
+trying alternatives for the window being closed; here,
+the context allows adiminutionin
+logical content.  We can strip away logical detail from
+our speech without diminishing the potency of
+that speech to achieve affects.  And while the remaining residue
+of logical content suggests that some basic logicality is still
+essential to meaning, the fact that logical content can
+be freely subtracted without altering practical effects
+suggests that logic's relation to meaning is something
+other than fully determinate: effect is partially autonomous from
+logic, so a theory of effect would seem to be
+partially autonomous from a theory of logic.
+I can be logically vague without being
+conversationally vague.   This evidently means that conversational
+clarity is not identical to logical clarity.Let us agree that `{-} beneath surface-level
+co-framing complexity `{-} many language acts have a
+transparent content asdoxathat gets conveyed between
+people with sufficiently resonant
+cognitive frames.  Soin the overall course of communicationwe have propositional contents that converge among discourse 
+partners, suspended between the various cognitive and pragmatic 
+units which contextualize a given, unfolding dialog.  
+There is in short aholisticmapping between units of 
+discourse andunitsof propositionality, ordoxa.  
+This general observation leaves unstated, however,howlanguage elements map to corresponding doxic 
+particulars.  I have argued that focusing on thelogical 
+structuresof propositions can lead us astray if we 
+seek to find concordant formations on the language side.Consider our attempts to close grandma's kitchen window.  
+My analysis related to conceptualtransformsassumed that we can find, substituting forliteralpropositional content, someother(representation of a) proposition that fulfills a
+speaker's unstatedrealmeaning.  Sometimes
+this makes sense: the propositionthat thebedroomwindow is closedcan neatly,
+if the facts warrant, play the role of the
+proposition thatthe kitchen window is closed.
+But we can run the example differently: there
+may benowindow open, but instead a draft
+caused by non-airtight windows (grandma might ask
+us to put towels by the cracks).  Maybe there is
+no draft at all (if grandma is cold, we can
+fetch her a sweater).  Instead of a single
+transform, we need a a system of potential transforms
+that can adapt to the facts as we discover them.
+Pragmatically, the underlying problem is
+thatgrandma is cold.  We can address this
+`{-} if we want to faithfully respond to her request,
+playing the role of cooperative conversation
+partners (and grandkids) `{-} via a matrix
+of logical possibilities:\swl`({}{)If the kitchen window is closed,
+we can see if other windows are open.`(}{)pra`(})\swl`({}{)If no windows are open,
+we can see if there is a draft through the window-cracks.`(}{)pra`(})\swl`({}{)If there is no draft, we can
+ask if she wants a sweater.`(}{)pra`(})This is still a logical process: starting from an
+acknowledged proposition (grandma is cold) we
+entertain various other propositional possibilities,
+trying to rationally determine what pragmas we
+should enact to alter that case
+(viz., to instead make true the proposition thatgrandma is warm).  Here we are not just testing
+possibilities against fact, but strategically
+acting to modify some facts in our environment.But the kind of reasoning involved here is not logical
+reasoning per se: abstract logic does not tell us
+to check the bedroom window if the kitchen window is closed,
+or to check for gaps and cracks if all windows
+are closed.  This all solicits practical, domain-specific knowledge
+(about windows, air, weather, and houses).
+Yet we are still deploying our practical
+knowledge in logical ways `{-} there is a logical
+structure underpinning grandma's request and
+our response to it.  In sum: we (the grandkids)
+are equipped with some practical knowledge
+about houses and a faculty to logically utilize this
+knowledge to solve the stated problem, reading
+beyond theexplicitform of grandma's discourse.
+We use a combination of logic and background
+knowledge to reinterpret the discourse as needed.
+By making a request, grandma is not expressing
+one attitude to one proposition, so much asinitiating a process.  This is why it would
+be impolite to simply do no more
+if the kitchen window is closed: our conversational
+responsibility is to enact a process trying to
+redress grandma's discomfort, not to entertain the
+truth of any one proposition.For all that, there is still an overarching logical
+structure here that language clearly marshals.  We read
+past grandma's explicit request to infer what she isreally saying`{-} e.g.,that she is cold`{-} but we
+still regard her speech act in terms of its (now indirect)
+propositional content.  However, notice 
+how our ascertaining this content only one step toward 
+legitimate understanding of the original speech-act 
+(even accounting for its illocutionary dimensions).  
+The doxa arefactorsin understanding but, 
+given these cases, are not straightforwarddesignataof linguistic compounds.  This implies a critique of 
+truth-theoretic paradigms from a semiotic and 
+compositional perspective: language is notcomposedto convey doxa through semantic reference and 
+grammatic form internally (without the mediation of 
+extralinguistic cognition); propositional content does 
+notfall outof syntax and semantics.  I will expand 
+on this critique in the next section.To summarize my current arguments, then, I believe that most sentences 
+have an accompanying propositional content, and that during conversations 
+we interpret this content as a factor in sentence meanings, becoming aware of 
+what our partners believe, desire, or inquire to be the case.  We retain this 
+awareness in a cumulative model of conversational context `{-} adoxa inventory`{-} alongside other referential and deictic axes establishing each dialogic 
+setting.  Essentially, 
+I grant that this doxic layer is central to 
+linguistic performance in general `{-} but given this very centrality I 
+will argue that the logical substratum of language cannot beseparatedfrom the totality of syntactic, semantic, and pragmatic processing such 
+that models based on formal logic could be curated in isolation from 
+the overarching interconnectedness of language as a cognitive system.The Illogic of SyntaxAs I understand it, a non-trivial truth-theoretic semantics 
+requires more than a holistic association between 
+sentences and propositional content: it requires that this 
+association be establishedby linguistic meansandon linguistic grounds(syntax, semantics, pragmatics).  
+I will present several arguments against this possibility, in 
+the general cases `{-} that is, against the possibility that 
+fortypicalsentences we can analyze syntactic form through 
+the lens of the logical structure of propositions signified 
+via a sentence; or analyze natural-language semantics through a 
+logically well-structured semantics of propositions.  
+I will emphasize two issues: first, that the architecture of 
+linguistic performancesdoes not, in the general case,recapitulate propositional structure; and, second, 
+that language-acts work through gaps in logical specificity that 
+complicate how we should theorize the triangular relation between 
+surface language, propositional content, and side-effect meanings.Since it is widely understood that the essence of language
+is compositionality, the clearest path to
+a truth-theoretic semantics would be via thesyntax of semantics: a theory of how
+language designates propositional content by
+emulating or iconifying propositional structure
+in its own structure (i.e., in grammar).
+This would be a theory of how linguistic
+connectives reciprocate logical connectives,
+phrase hierarchies reconstruct propositional
+compounds, etc.  It would be the kind of theory motivated
+by cases like\swl`({}{)This wine is a young Syrah.`(}{)log`(})\swl`({}{)My cousin adopted one of my neighbor's dog's puppies.`(}{)log`(})where morphosyntactic form `{-} possessives, adjective/noun
+links `{-} seems to transparently recapitulate predicate
+relations.  Thus the wine is youngandSyrah, and the puppy is the offspring of a dog who
+is the pet of someone who is the neighbor of the speaker.  These
+are well-established logical forms: predicate conjunction, here;
+the chaining of predicate
+operators to form new operators, there.  Such are embedded in
+language lexically as well as grammatically: the conjunction
+of husband andformer, of a prior timeyields ex-husband;
+a parent's sibling's daughter is a cousin.The interesting question is to what extentmorphosyntax
+recapitulates predicate structureholds in general
+cases.  This can be considered by examining the logical
+structure of reported assertions and then the structures
+via which they are expressed in language.  I'll
+carry out this exerciseseveral sentences,
+such as these (supplementing my earlier, more preliminary discussion of 
+(\ref`({)itm:ants`(}))-(\ref`({)itm:princess`(}))):\swl`({)itm:maj`(}{)The majority of students polled were
+opposed to tuition increases.`(}{)log`(})\swl`({)itm:most`(}{)Most of the students expressed disappointment
+about tuition increases.`(}{)log`(})\swl`({)itm:many`(}{)Many students have protested the tuition increases.`(}{)log`(})There are several logically significant elements here that
+seem correspondingly expressed in linguistic
+elements `{-} that is, to have some model
+in both prelinguistic predicate structure
+and in, in consort, semantic or syntactic principles.
+All three of (\ref`({)itm:maj`(}))-(\ref`({)itm:many`(})) have similar but not
+identical meanings, and the differences are
+manifest both propositionally and
+linguistically (aside from the specific superficial
+fact that they are not the same sentence).
+I will review the propositional differences first,
+then the linguistic ones.One obvious predicative contrast is that
+(\ref`({)itm:maj`(})) and (\ref`({)itm:most`(}))
+ascribes a certainqualityto students (e.g., disappointment),
+whereas (\ref`({)itm:most`(})) and (\ref`({)itm:many`(}))
+indicateevents.  As such
+the different forms capture the contrast betweenbearing
+quality #Q#anddoing or having done action
+#A#: the former a predication and the latter an event-report.
+In the case of (\ref`({)itm:most`(})), both forms are available because we can
+infer fromexpressingdisappointment
+tohavingdisappointment.
+There may be logics that would map one
+to the other, but let's assume we can
+analyze language with a logic expressive enough
+to distinguish events from quality-instantiations.Other logical forms evident here involve how the
+subject noun-phrases are constructed.A majorityandmanyimply a multiplicity
+which is within some second multiplicity, and
+numerically significant there.  The sentences differ
+in terms of how the multiplicities are circumscribed.
+In the case ofstudents polled, an extra determinant is
+provided, to construct the set of students forming the
+predicate base: we are not talking about students in
+general or (necessarily) students at one school,
+but specifically students who participated in a poll.Interrelated with these effects are how thetuition increasesare figured.  Using
+the explicit definite article suggests that there issome specifictuition hike policy
+raising students' ire.  This would also favor a
+reading wherestudentsrefers collectively to those
+at a particular school, who would be directly affected by the
+hikes.  Theabsenceof an article ontuition increasesin (\ref`({)itm:most`(})) leaves open an interpretation
+that the students are not opining on some specific policy, but on
+the idea of hikes in general.Such full details are not explicitly laid out in the sentences,
+but it is entirely possible that they are clear in context.
+Let's take as given that, in at least some cases where they would
+occur, the sentences have a basically pristine
+logical structure given the proper contextual framing `{-}
+context-dependency, in and of itself, does not weaken
+our sense of language's logicality.  In particular,
+the kind of structures constituting the sentences'
+precise content `{-} the details that seem context-dependent
+`{-} have bona fide logical interpretations.  For
+example, we can consider whether students are
+responding tospecifictuition hikes
+or to hikes in general.  We can consider
+whether the objectionable hikes have already
+happened or instead are proposed for the future.  Context
+presumably identifies whetherstudentsare
+drawn from one school, one governmental
+jurisdiction, or some other aggregating criteria
+(like, all those who took a poll).
+Context can also determine whether aggregation is
+more set- or type-based, more extensional
+or intensional.  In (\ref`({)itm:maj`(}))-(\ref`({)itm:many`(})) the implication
+is that we should readstudentsmore as a set or
+collection, but variants likestudents
+hate tuition hikesoperates more at the level
+of students as atype.  Instudents polledthere is a familiar pattern of referencing a set by
+marrying a type (students in general) with a descriptive
+designation (e.g., those taking a specific
+poll).  The wording of (\ref`({)itm:maj`(})) does not
+mandate thatonlystudents took the poll; it
+does however employ a type as a kind of operator on a set:
+of those who took the poll, focus on students
+in particular.These are all essentially logical structures and can
+be used to model the propositional
+content carried by the sentences `{-} theirdoxa.
+We have operators and distinctions like past/future,
+set/type, single/multiple, subset/superset, and
+abstract/concrete comparisons like tuition hikesquaidea
+vs.fait accompli.  A logical system could
+certainly model these distinctions and accordingly capture
+the semantic differences between (\ref`({)itm:maj`(}))-(\ref`({)itm:many`(})).
+So such details are all still consistent
+with a truth-theoretic paradigm, although
+we have to consider how linguistic form actually
+conveys the propositional forms carved out via
+these distinctions.Ok, then, to the linguistic side.  My first observation is that some
+logically salient structures have fairly clear analogs
+in the linguistic structure.  For instance, the logical operator for
+deriving a set from criteria ofstudentmerged withtaking a
+pollis brought forth by the verb-as-adjective
+formulationstudents polled.  Subset/superset arrangements
+are latent as lexical norms in senses likemanyandmajority.  Concrete/abstract and past/future distinctions
+are alluded to by the presence or absence of a definite
+article.  Sothetuition increasesconnotes that
+the hikes have already occurred, or at least been
+approved or proposed, in the past relative to theenunciatory present(as well as that they are a
+concrete policy, not just the idea),
+whereas articlelesstuition increasescan be read as
+referring to future hikes and the idea of hikes
+in general: past and concrete tends to
+contrast with future and abstract.A wider range of
+logical structures can be considered by subtly varying
+the discourse, like:\swl`({}{)Most students oppose the tuition increase.`(}{)sem`(})\swl`({)itm:indef`(}{)Most students oppose a tuition increase.`(}{)sem`(})These show the possibility ofincreasebeing singular
+(which would tend to imply it refers to a concrete
+policy, somespecificincrease), although in
+(\ref`({)itm:indef`(})) theindefinite articlemayconnote
+a discussion about hikes in general.But maybe not; cases like these are perfectly plausible:\swl`({)itm:today`(}{)Today the state university system
+announced plans to raise tuition by
+at least 10\$.  Most students oppose a tuition increase.`(}{)sem`(})\swl`({)itm:colleges`(}{)Colleges all over the country, facing
+rising costs, have had to raise tuition, but
+most students oppose a tuition increase.`(}{)sem`(})In (\ref`({)itm:today`(})) the definite article could also be used, but sayingatuition increaseseems to reinforce the
+idea that while plans were announced, the details
+are not finalized.  And in (\ref`({)itm:colleges`(})) the pluralincreasescould be used, but the indefinite singular connotes the
+status of tuition hikes as a general phenomenon
+apart from individual examples `{-} even though the
+sentence also makes reference to concrete examples.  In other
+words, these morphosyntactic cues are like
+levers that can fine-tune the logical designation
+more to abstract or concrete, past or future, as
+the situation warrants.  Again, context should
+clarify the details.  But morphosyntactic forms
+`{-} e.g., presence or absence of articles (definite
+or indefinite), and singular/plural `{-} are
+vehicles for language, through its own
+forms and rules, to denote propositional-content structures
+like abstract/concrete and past/future.So these are myconcessionexamples: cases where 
+language structuresdo, in their compound architectonics, 
+signifying propositional contents `{-} and moreover the 
+lexical and morphosyntactic cues (like singular/plural or the 
+choice of articles) drive this language-to-logic mapping in 
+an apparently rule-bound and replicable fashion.  These are 
+potential case-studies of how a truth theory of language, 
+without neglecting contextual and semantic subtelties,couldwork: capturing granular semantic constructs via sufficiently
+nuanced logics, and theorizing word-senses and morphology through 
+the aegis of a structural reduction between surface language and 
+predicate structure.  My tactic for critiquing truth-theoretic 
+paradigms is to argue that many sentencesfailto 
+display a mapping between lexico/morphosyntactic details and 
+predicate structurein this relatively mechanical fashion.
+By pointing out examples where morphosytaxdoesrather seamlessly 
+recapitulate propositional content (e.g.the tuition hikeplural/definite), 
+we can appreciate the more circuitous hermeneutics for examples I 
+will present wherein the morphosytax-to-logic translation, while 
+present, is notsui generis.Varying the current examples yields cases 
+`{-} in a sense, intermediate between 
+logical transparency and oblique constructions I will 
+discuss next `{-} 
+where logical implications are more circuitous.  For instance,
+describing students asdisappointed(\ref`({)itm:most`(}))
+implies that the disliked hikes have already occurred,
+whereas phraseology likestudents are gearing for a fightwould imply, conversely, that they are sill only planned or proposed.  
+The mapping from
+propositional-content structure to surface language here
+is less mechanical than, for instance, merely
+using the definite article onthe tuition increases.
+Arguablydisappointment`{-} rather than just, say,opposition`{-} implies a specific timeline
+and concreteness, an effect analogous to the definite
+article.  The semantic register
+ofdisappointmentbearing this implication is a
+more speculative path of conceptual resonances, compared
+to the brute morphosyntacticthe.  There is subtle
+conceptual calculation behind the scenes in the former
+case.  Nonetheless, it does seem as if via this
+subtlety linguistic resources are expressing
+the constituent units of logical forms, like
+past/future and abstract/concrete.So, I am arguing (and conceding) that there are units of
+logical structure that are conveyed by units of
+linguistic structure, and this is partly how
+language-expressions can indicate propositional
+content.  The next question is to explore this
+correspondence compositionally `{-} is there a
+kind of aggregative, hierarchical order in terms
+of howlogical modeling elementsfit together,
+on one side, and linguistic elements fit
+together, on the other?
+There is evidence of compositional concordance
+to a degree, examples of which I have cited.  Instudents polled, the compositional structure of
+the phrase mimics the logical construct `{-} deriving
+a set (as a predicate base) from a type crossed with
+some other predicate.  Another example is the
+phraseologya/the majority of, which directly
+nominates a subset/superset relation and so
+reciprocates a logical quantification (together
+with a summary of relative
+size; the same logical structure, but with
+different ordinal implications, is seen in cases
+likea minority oforonly a few).
+Here there is a relatively mechanical translation
+between propositional structuring elements
+and linguistic structuring elements.However, varying the examples `{-} for instance,
+varying how the subject noun-phrases are conceptualized
+`{-} points to how the synchrony between
+propositional and linguistic composition can break down:\swl`({)itm:sas`(}{)Student after student came out against the tuition hikes.`(}{)sem`(})\swl`({)itm:substantial`(}{)A substantial number of students
+have come out against the tuition hikes.`(}{)sem`(})\swl`({)itm:mass`(}{)The number of students protesting the tuition hikes
+may soon reach a critical mass.`(}{)sem`(})\swl`({)itm:tipping`(}{)Protests against the tuition hikes
+may have reached a tipping point.`(}{)sem`(})Each of these sentences says something about a large number
+of students opposing the hikes.  But in each
+case they bring new conceptual details to the fore, and
+I will also argue that they do so in a way that
+deviates from how propositional structures are composed.First, considerstudent after studentas a way of
+designatingmany students(I analyzed the very similar 
+case (\ref`({)after`(})) in terms ofspace building).  
+There is a little more
+rhetorical flourish here than in, say,a majority
+of students, but this is not just a matter of
+eloquence (as if the difference were stylistic,
+not semantic).Student after studentcreates a
+certain rhetorical effect, suggesting via how it
+invokes its multiplicity a certain recurring or
+unfolding phenomenon.  One imagines the speaker, time
+and again, hearing or encountering an angry student.
+To be sure, there are different kinds of contexts
+that are consistent with (\ref`({)itm:sas`(})): the events could
+unfold over the course of a single hearing
+or an entire semester.  Context would foreclose
+some interpretations `{-} but it would do so in any
+case, even with simpler designations likemajority
+of students.  What wecansay is that the speaker's
+chosen phraseology cognitively highlight a
+dimension in the events that carries a certain
+subjective content, invoking their temporality and
+repetition.  The phrasing carries an effect of
+cognitivezooming in, each distinct event
+figured as if temporally inside it; the sense
+of being tangibly present in the midst of the event is
+stronger here than in less temporalized language,
+likemany students.  And then at the same time
+the temporalized event is situated in the context of many
+such events, collectively suggesting a recurring presence.
+The phraseology zooms in and back out again,
+in the virtuallensour our cognitively figuring
+the discourse presented to us `{-} all in just
+three or four words.  Even ifstudent after studentis said just for rhetorical effect `{-} which
+is contextually possible `{-}howit
+stages this effect still introduces a subjective
+coloring to the report.Another factor in (\ref`({)itm:sas`(})) and (\ref`({)itm:substantial`(}))
+is the various possible meanings ofcome out against.  This could be
+read as merely expressing a negative opinion, or as a
+more public and visible posturing.  In fact, a similar
+dual meaning holds also forprotesting.  Context,
+again, would dictate whetherprotestingmeans
+actual activism or merely voicing displeasure.  Nonetheless,
+the choice of words can shade how we frame situations.
+Tocome out againstconnotes expressing disapproval
+in a public, performative forum, inviting
+the contrast of inside/outside (the famous example
+beingcome out of the closetto mean publicly
+identifying as).  Students may not literally
+be standing outside with a microphone, but `{-} even
+if the actual situation is just students
+complaining rather passively `{-} usingcome out againstpaints the situation in an extra rhetorical hue.  The students
+are expressing thekindof anger that can goad
+someone to make their sentiments known theatrically and
+confrontationally.  Similarly, usingprotestin lieu
+of, say,criticize`{-} whether or not students are actually
+marching on the quad `{-} impugns to the students a level
+of anger commensurate with politicized confrontation.All these sentences are of coursealsocompatible with
+literal rioting in the streets; but for sake of argument
+let's imagine (\ref`({)itm:sas`(}))-(\ref`({)itm:tipping`(})) spoken in contexts
+where the protesting is more like a few comments to a school
+newspaper and hallway small-talk.  The speakers have still
+chosen to use words whose span of meanings
+includes the more theatrical readings:come out againstandprotestoverlap withcomplain aboutoroppose,
+but they imply greater agency, greater intensity.  These lexical
+choices establish subtle conceptual variations; for instance,
+toprotestconnotes a greater shade of anger than tooppose.Such conceptual shading is not itself unlogical; one
+can use more facilely propositional terms to evoke
+similar shading, likevery angryorextremely angry.
+However, considerhowlanguage like
+(\ref`({)itm:sas`(}))-(\ref`({)itm:tipping`(}))
+conveys the relevant facts of the mater: there is
+an observational, in-the-midst-of-things staging at
+work in these latter sentences that I find missing
+in the earlier examples.The majority ofsounds
+statistical, or clinical; it suggests journalistic reportage,
+the speaker making an atmospheric effort to sound like someone
+reporting facts as established knowledge rather than
+observing them close-at-hand.
+By contrast, I find (\ref`({)itm:sas`(}))-(\ref`({)itm:tipping`(}))
+to be morenovelisticthanjournalistic.  The speaker in these cases is reporting
+the facts by, in effect,narratingthem.  She is building
+linguistic constructions that describe propositional
+content through narrative structure `{-} or, at least, cognitive structures
+that exemplify and come to the fore in narrative understanding.  Sayinga substantial number of students, for example, rather than
+just (e.g.)manystudents, employs semantics
+redolant offorce-dynamics: the weight of student
+anger is described as if asubstance, something with the
+potency and efficacy of matter.This theme is also explicit incritical mass, and eventipping pointhas material
+connotations.  We can imagine different versions of what
+lies one the other side of the tipping point
+`{-} protests go from complaining to activism?  The school
+forced to reverse course?  Or, contrariwise, the
+schoolcracking downon the students
+(another partly imagistic, partly force-dynamic metaphor)?
+Whatever the case, language
+likecritical massortipping pointis language
+that carries a structure of story-telling;
+it tries tie facts together with a narrative coherence.  The
+students' protests grew more and more strident until ...
+the protests turned aggressive; or the school dropped its plans;
+or they won public sympathy; or attracted media attention, etc.
+Whatever the situation's details, describing the facts in
+force-dynamic, storylike, spatialized language (e.g.comeoutagainst) represents an implicit attempt to report
+observations or beliefs with the extra fabric and completeness
+of narrative.  It ascribes causal order to how the
+situation changes (a critical mass of anger couldcausethe
+school to change its mind).  It brings a photographic or
+cinematic immersion to accounts of events and descriptions:student after studentandcome outinvite us
+to grasp the asserted facts byimaginingsituations.The denoument of my argument is now that these narrative, cinematic,
+photographic structures of linguistic reportage `{-} signaled
+by spatialized, storylike, force-dynamic turns of phrase `{-}
+represent a fundamentally different way of signifying
+propositional content, even while theydo(with sufficient contextual grounding) carry
+propositional content through the folds of the narrative.
+I don't dispute that hearers understand logical forms
+via (\ref`({)itm:sas`(}))-(\ref`({)itm:tipping`(}))
+similar to those morejournaslisticallycaptured in (\ref`({)itm:maj`(}))-(\ref`({)itm:many`(})).  Nor do I
+deny that the richer rhetoric of
+(\ref`({)itm:sas`(}))-(\ref`({)itm:tipping`(})) play a logical
+role, capturing granular shades of meaning.  My
+point is rather that the logical picture painted by the latter
+sentences is drawn via (I'll say as a kind of suggestive
+analogy)narrative structure.I argued earlier that elements of propositional
+structure `{-} for example, the
+set/type selective operator efficacious instudents polled`{-} can
+have relatively clean morphosyntactic manifestation in
+structural elements in language, like the verb-to-adjective
+mapping onpolled(here denoted, in English, by unusual
+word position rather than morphology, although the
+rules would be different in other languages).  Given my
+subsequent analysis, however, I now want to claim that
+the map between propositional structure and linguistic structure
+is often much less direct.  I'm not arguing thatnarrativeconstructions lack logical structure, or
+even that their rhetorical dimension lies outside
+of logic writ large: on the contrary, I believe
+that they use narrative effects to communicate granular
+details which have reasonable logical bases, like
+degrees of students' anger, or the causative
+interpretation implied in such phrases ascritical mass.
+The rhetorical dimension does not prohibit a reading
+of (\ref`({)itm:sas`(}))-(\ref`({)itm:tipping`(})) and 
+(\ref`({)itm:students`(}))-(\ref`({)itm:parents`(})) 
+as expressing propositional content `{-} and using
+rhetorical flourishes to do so.I believe, however, thathowthey do so unzips any neat
+alignment between linguistic and propositional structure.
+Saying that students' protestsmay have reached a critical masscertainly expresses propositional content (e.g., that enough
+students may now be protesting to effectuate change),
+but it does so not by mechanically asserting its propositional
+idea; instead, via a kind of mental imagery which portrays
+its idea, in some imaginative sense, iconographically.Critical masscompels us to read its meaning imagistically;
+in the present context we are led to actually visualize
+students protestingen masse.  Whatever the actual, empirical
+nature of their protestation, this language paints a picture
+that serves to the actual situation as an interpretive
+prototype.  This is not only a conceptual image, but
+a visual one.Figurative language `{-} even if
+it is actually metaphorical, likeanger boiling over`{-} has similar effect.  Alongside the analysis
+of metaphor asconcept blending, persuasively
+articulated by writers like Gilles Fauconnier and
+Per Aage Brandt, we should also recognize how metaphor
+(and other rhetorical effects) introduces into
+discourse language that invites visual imagery.  Sometimes
+this works by evoking an ambient spatiality (likecome out against) and sometimes by figuring
+phenomena that fill or occupy space (likestudents protesting`{-} one salience of this language is that we imagine
+protest as a demonstrative gesture expanding outward, as if
+space itself were a theater of conflict:
+protesters arrayed to form long lines, fists splayed
+upward or forward).  There is a kind of visual patterning
+to these evocations, a kind of semiotic grammar:
+we can analyze which figurative senses work via connotingambientspace or viafillingspace,
+taking the terms I just used.  But the details of such a
+semiotic are tangential to my point here, which is that
+the linguistic structures evoking
+these visual, imagistic, narrative frames are not
+simply reciprocating propositionl structure
+`{-}- even if the narrative frames, via aniconicor prototype-like modeling of the actual situation,areeffective vehicles forcommunicatingpropositional structure.What breaks down here is not propositionality butcompositionality:
+the idea that language signifies propositional contentbut
+alsodoes so compositionally, where we can
+break down larger-scale linguistic elements to smaller partsandsee logical structures mirrored in the parts'
+combinatory maxims.  In the later examples, I have argued that
+the language signifies propositional content by creating narrative
+mock-ups.  The point of these imagistic frames
+is not to recapitulate logical structure, but to have a kind
+of theatrical coherence `{-} to evoke visual and narrative order,
+an evolving storyline `{-} from which we then understand
+propositional claims by interpreting the imagined scene.
+Any propositional signifying in these kinds of
+cases works through an intermediate stage of
+narrative visualization, whose structure is
+holistic more than logically compositional.
+It relies on our faculties for imaginative
+reconstruction, which are hereby drafted into
+our language-processing franchise.This kind of language, in short, leverages its
+ability to trigger narrative/visual framing as a
+cognitive exercise, intermediary to the eventual
+extraction of propositional content.  As such
+it depends on a cognitive layer of narrative/visual
+understanding `{-} which, I claim, belongs
+to a different cognitive register than building
+logical models of propositional content directly.Triggers vs. CompositionalityIn the absence of a compelling analysis ofcompositionalityin the structural correspondence between narrative-framed language
+and logically-ordered propositional content, I consequently think we
+need a new theory of how the former signifies the latter.  My own
+intuition is that language works by trigeringseveral
+differentcognitive
+subsystems.  Some of these hew closely to predicate
+logic; some are more holistic and narrative/visual.
+Cognitive processes in the second sense may be informed
+and refined by language, but they have an extralinguistic
+and prelinguistic core: we can exercise faculties of narrative
+imagination without explicit use of
+language (however much language orders our imaginations
+by entrenching some concepts more than others, via lexical
+reinforcement).I'm not just talking here aboutimaginationin the sense
+of fairy tales: we use imaginative cognition to make sense
+of any scenario described to us from afar.  When presented with
+linguistic reports of not-directly-observable situations,
+we need to build cognitive frames modeling the context
+as it is discussed.  In the terms I suggested earlier, we
+build adoxa inventorytracking beliefs and
+assertions.  Sometimes this means internalizing
+relatively transparent logical forms.  But sometimes
+it means building a narrative/visual account, playing
+an imaginary version of the situation in our minds.
+Language could not signify in its depth and
+nuance without triggering thisinterpretive-imaginativefaculty.  Cognitively, then, language is anintermediaryto this cognitive system.  
+Using terms from Olin Vakarelov'sInterface Theory 
+of Meaning,we might say that 
+language is aninterface tointerpretive-imaginative
+cognitive capabilities.My argument is then that extra-linguistic cognition `{-} e.g., narrative 
+construals, or situational understanding `{-} can supply crucial 
+steps in the emergence of sentences' intended propositional content; 
+so relying on logical assessment of propositional content and 
+correlated linguistic patterns is, at best, incomplete.  
+I have presented numerous sentences which, in my opinion, evince 
+patterns whose rational contributions lie outside linguistic 
+cognition proper, but which become attached as interpretations 
+or refinements of given linguistic content; for example 
+the semantic model ofcritical massortipping pointencapsulating a complex situational presenting.The extra-linguistic source of many signifying contributors can 
+be observed directly in reference to more formalized 
+(say, Dependency-Grammatic) analyses (or indeed what they 
+leave out).  In the (\ref`({)itm:actually`(})) case, the modifieractuallyimplies that the asserted fact is somehow surprising 
+and counterintuitive; it's easy enough to conclude that the 
+speaker senses a certain lexical frisson, particularly in 
+howcampingis described aslodging.  So the work 
+of (\ref`({)itm:actually`(})) is not just to point out that 
+people camp on the beach, but also that this arrangement is the 
+most popularlodgingeven though in its usual senselodgingapplies more to hotels and inns.  This latter 
+pattern circuits especially through the wordsactually,lodging, andcamping, none of which are word-relations 
+identified by the Universal Dependency parse (refer back to 
+Figure0\ref`({)fig:actuallydbl`(})) but which can be seen as a second-order 
+network superimposed on the sentence's syntactic core.For other examples, in (\ref`({)itm:ambience`(})) thecolonial ambienceandtropical climatedisjunction partly shifts the sense ofthe cityfrom its status as something constructed and
+historical (thearchitectureis colonial) to a geographic location.  We 
+of course readthe climateasits(the city's) climate, which 
+establish a link between the twothe.  This is almost anaphoric 
+`{-} if the phrase wereits climatewe would resolveitbackward
+tothe city`{-} but the pattern is varied, by replacingits climatewiththe climate, which conceptually foregrounds 
+the aspect of climate as an ambient phenomenon (amenable to a 
+definite article) rather than just a possession (viz., a property 
+of geographic places).  So there are several intersecting patterns 
+`{-} both referential commonality and interpretive changes (see also 
+theLiverpoolexamples for city qua architecture and qua locale) 
+`{-} between the two sentence-halves, which are not described in the 
+parse-graph.  And in, say,\swl`({)itm:pipe`(}{)We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well.`(}{)sco`(})
+\udref`({)enAgum-ud-train`(}{)email-enronsent03A01-0143`(})there is a two-layer scope implication: givenalsowe read the hearer as knowing that 
+they are picketing someotherproject.  But we also hearthe pipe fittersas referring to some specific group of pipefitters, with which the speaker has 
+some contractual relation; we do not interpret this as a comment about pipe-fitters in 
+general.The details of (\ref`({)itm:pipe`(})), in short, bound the scope ofthe pipe fittersfrom both above and below.  The importance ofalsofor this interpretive understanding is elided from the 
+corpora parse-graph, which just seesalsoas a common auxiliary.  
+In general, the extralayersof meaning I have identified for 
+(\ref`({)itm:actually`(})), (\ref`({)itm:ambience`(})), and (\ref`({)itm:pipe`(})) 
+require some interpretive (and seemingly extralinguistic) 
+reasoning, so they are not explicitly traced in purely 
+formulaic Intermediate Representations involving core 
+linguistic aspects, such as parse-graphssyntax.The extralinguistic dimensions of language are not, of 
+course, completely apart from language: extralinguistic 
+reasoning is appropriate to fill in the gaps left 
+by straightforward syntactic or logico-semantic 
+intellection alone, but those gaps existbecauselanguage leads (via intra-linguistic structures) to 
+signifying complexes.  The logic and conceptual detail 
+achieved through intra-linguistic processes set forth 
+the parameters on extra-linguic cognition that 
+supplements them; so analytic coverage of the 
+intra-linguistic aspect is still requisite for 
+good analysis of the extra-linguistic.  This 
+formal necessity, however, should not be mistaken 
+for a belief that logically-inflected models 
+of syntax and semantics are complete or 
+self-sufficient.  Full implementation of a 
+rigorous, logical syntactic-semantic system still 
+does not get us tolanguage.This then raises the question of what kinds of 
+formal systemsareappropriate models for language.  
+In a truth-theoretic semantics, the founding analogy is 
+that meanings are propositional, so that language builds 
+up aggregate content much as logical expressions build 
+up complex propositions.  This analogy allows the 
+resources of mathematical logic to transfer, with 
+some degree of rigor, over to linguistic 
+representation `{-} not only predicate logic but 
+also modal logic, typed lambda calculus, and 
+type theory in general.  On the other hand, if 
+we accept the picture that linguistic structures 
+are often triggers to extralinguistic cognitive 
+activity `{-} that this is their contribution 
+to language comprehension `{-} then we may need 
+to draw inspiration from a different suite of 
+formal theories.Probably influenced by early Analytic Philosophy, 
+linguistics' formalizing paradigms have gravitated 
+to mathematical logic, reflecting the influence of  
+early 20th-century symbolic logic on a broad swath of 
+Anglo-American science and intellectual life.  
+Mathematics `{-} and by extension formal logic as a
+theory of mathematical foundations `{-} came to be 
+seen as a template for rigorous analysis to which 
+philosophy should aspire; on that hypothesis 
+the speculative styles of phenomenology and 
+Continental Philosophy were widely seen as
+methodologically flawed, compared to the 
+systematized argumentation presented by the likes
+of Gottlob Frege, Bertrand Russel, Rudolf Carnap, or 
+Willard Van Orman Quine.  It is not a stretch to 
+see the contemporary split between Cognitive and 
+Computational linguistics as retracing, reiterating, 
+or in a sense derived from last century's 
+divorce between Analytic and Continental Philosophy.On the other hand, in the digital age, a 
+host of new formalizing projects offer an 
+alternative to this mathematics-centric 
+ideology.  These probably includeresearch 
+to some degree, but also many other 
+technical disciplines associated with the 
+inner workings of computers and software 
+`{-} compilers and compiler design; 
+stack machines and other low-level computing 
+frameworks; applied type theory; database implementation; 
+process algebras and other theories of 
+communicating, interdependent, or concurrent 
+processes.  This technical ecosystem is 
+arguably a better mine for linguistic 
+inspiration precisely because all of these 
+fields grapple with the problem of how 
+to wrangle rationalistic behavior out of 
+stubbornly unintelligent machines.  
+When trying to coax a compiler to identify 
+the correct functions for function-calls 
+notated at each source-code location, for 
+example, it does not directly matter whether 
+the function-resolution is theoretically 
+transparent `{-} i.e., that a correct 
+and unique resolution can be demonstrated
+by formal type analysis.  A compiler 
+(or other software) ecosystem does not 
+internally manifest type theory; at besthumansengineer software to abide by 
+regulations which guarantee program  
+behaviors through type-theoretic 
+(and similar) analysis.  But engineering 
+computational systems in conformance with 
+mathematical, or otherwise formalizable, 
+abstractions is itself a significant 
+technical project.  The mere presence of 
+abstractly provable structural properties 
+is of only indirect relevance to 
+computer implementations.Likewise, it seems, the mere presence of system 
+invariants which can be formalized from mental 
+activity and given their own eidetic analysis is 
+only indirectly relevant to cognitive scienceper se.  Presumably brains have evolved under 
+evolutionary pressures to undergird reasonable behavior; 
+and perhaps structuralistic laws alongside physical ones 
+are inevitable for any intelligent systems 
+manifest in physical substance.  So it is likely that 
+logical and other formal theories have some explanatory 
+value in identifying regulative parameters influencing 
+the gestation and physical realization of intelligence.  
+But unlike mathematics, where the mere demonstration of 
+the necessary truth of a theorem guarantees its existence 
+as mathematical fact, in the realms of both cognition 
+and computation abstract formal truths are not 
+manifested merely by being true.  Organized systems 
+must provide a dynamic space whose states are constrained 
+by the relevant formal properties, in order for 
+these formal certainties to be empirically 
+influential.Ultimately, computers have a limited collection of kernel 
+functions, and software stacks are architectures that 
+strategically call these functions in turn `{-} 
+through several layers of translation and interpretation 
+`{-} to achieve holistic effects (like displaying a 
+textual document on a computer screen, or creating a 
+three-dimensional animation from a set of 
+geometric instructions).  While some logical 
+considerations structure the process by which high-level 
+computer code is translated to low-level system functionality, 
+the manifest ground of this system is not any logical 
+structure but the low-level functions themselves, along with 
+their physical side-effects (like rendering colors on-screen).  
+This is a useful analogy for natural language: the 
+material unfolding of language as an empirical 
+phenomenon is not a direct concretization of any 
+logical structure, but rather the inventory of 
+cognitive processes which language may trigger.  
+Extralinguistic cognition is then analogous, in the 
+human mind, to a computer'ssystem kernel.  
+Whilemind as computeranalogies are 
+usually reductionistic `{-} software has no human 
+subtlety to (inter)subjectivity `{-} this architectural 
+metaphor perhaps has some merit.  At least it can 
+point to topics in computer science that could be
+placed alongside predicate logic as formalizing 
+intuitions for the study of natural language.`[/]
+
+`[//]sectionlabelpisubsectionqsentenceListsentenceItemvisavisfootnoteunderlinespsubsectiontwolinenoindentLGBTQcitethindecolineAI`[/]
+
+`[//]s3sec:GapsOrlinVakarelovVakarelovAgent`[/]
+
+@@ ranges
+3
+=1
+2<1>34;1,
+35<3>0;2,0;4,1143;6,
+279<1>293;7,
+828<1>850;8,
+1144<1>1629;9,
+1630<1>1661;10,
+1662<1>2063;11,
+1976<1>1990;12,
+2064<1>2689;13,
+2177<1>2192;14,
+2536<1>2551;15,
+2638<1>2649;16,
+2690<1>3900;17,
+2752<1>2762;18,
+2786<2>2954;19,0;20,
+2833<1>0;21,
+2875<1>0;22,
+2960<1>2962;23,
+3256<1>3259;24,
+3333<1>3336;25,
+3499<1>3502;26,
+3578<1>3581;27,
+3659<2>3900;28,0;29,
+3717<1>0;30,
+3774<1>0;31,
+3835<1>0;32,
+3901<1>4422;33,
+4273<1>4295;34,
+4400<1>4405;35,
+4423<1>5971;36,
+4625<1>4640;37,
+4937<1>4943;38,
+4946<1>4954;39,
+5148<1>5170;40,
+5172<1>5186;41,
+5374<1>5376;42,
+5385<1>5398;43,
+5621<1>5627;44,
+5732<1>5739;45,
+5882<1>5883;46,
+5972<1>7173;47,
+6077<1>6085;48,
+6088<1>6101;49,
+6148<2>6407;50,0;51,
+6204<1>0;52,
+6261<1>0;53,
+6327<1>0;54,
+6522<1>6538;55,
+6550<1>6557;56,
+6668<1>6671;57,
+6731<1>6733;58,
+7004<1>7005;59,
+7095<1>7099;60,
+7174<1>8226;61,
+7528<2>7636;62,0;63,
+7562<1>0;64,
+7600<1>0;65,
+7765<1>7768;66,
+7827<1>7836;67,
+7911<1>7916;68,
+8227<1>8996;69,
+8273<2>8385;70,0;71,
+8335<1>0;72,
+8477<1>8479;73,
+8547<1>8550;74,
+8568<1>8578;75,
+8631<1>8634;76,
+8650<1>8652;77,
+8807<1>8811;78,
+8919<1>8922;79,
+8977<1>8984;80,
+8997<1>12258;81,
+9195<1>9201;82,
+9481<2>9667;83,0;84,
+9567<1>0;85,
+9634<1>0;86,
+9713<1>0;87,
+9739<1>9742;88,
+9813<1>9820;89,
+9867<2>9970;90,0;91,
+9921<1>0;92,
+10183<1>10190;93,
+10268<1>10276;94,
+10282<1>10297;95,
+10299<1>12258;96,
+10326<1>10333;97,
+10369<2>10452;98,0;99,
+10614<1>10617;100,
+10713<1>10726;101,
+10718<1>10720;102,
+11104<1>11106;103,
+11274<1>11274;104,
+11473<1>11475;105,
+11615<1>11619;106,
+11685<1>11692;107,
+12001<1>12003;108,
+12116<1>12118;109,
+12123<1>0;110,
+12259<1>13001;111,
+12406<1>12426;112,
+12931<1>12934;113,
+12973<1>12976;114,
+12987<1>12988;115,
+13002<1>13728;116,
+13468<1>13495;117,
+13539<1>13542;118,
+13550<1>13559;119,
+13698<1>13727;120,
+13729<1>15058;121,
+14364<1>14365;122,
+14385<1>14386;123,
+14696<1>14704;124,
+14969<1>14986;125,
+15010<1>15013;126,
+15051<1>15054;127,
+15059<1>15678;128,
+15143<2>15271;129,0;130,
+15211<1>0;131,
+15363<1>15368;132,
+15584<1>15585;133,
+15679<1>16486;134,
+15853<2>15940;135,0;136,
+15903<1>0;137,
+16025<1>16033;138,
+16042<2>16151;139,0;140,
+16100<1>0;141,
+16487<1>17390;142,
+16713<1>16718;143,
+16974<1>16977;144,
+16980<1>16990;145,
+17037<1>17050;146,
+17053<1>17066;147,
+17121<2>17216;148,0;149,
+17162<1>0;150,
+17235<1>17242;151,
+17296<1>17303;152,
+17391<1>18181;153,
+17392<1>17398;154,
+17509<1>17511;155,
+17705<1>17732;156,
+18066<1>18090;157,
+18182<1>18500;158,
+18286<1>18309;159,
+18468<1>18484;160,
+18501<1>18541;161,
+18542<1>19632;162,
+18830<2>19086;163,0;164,
+18964<1>0;165,
+19323<1>19325;166,
+19432<1>19447;167,
+19463<1>19467;168,
+19633<1>20740;169,
+19795<1>19804;170,
+19951<1>19952;171,
+20623<1>20632;172,
+20741<1>22447;173,
+20813<1>20828;174,
+20831<1>20849;175,
+20958<1>20964;176,
+20966<1>20974;177,
+20980<1>20990;178,
+21021<1>21028;179,
+21310<1>21324;180,
+21384<1>21391;181,
+21730<1>21733;182,
+21737<1>21745;183,
+21773<1>21785;184,
+21787<1>21796;185,
+21798<1>21808;186,
+22448<1>23114;187,
+22560<1>22567;188,
+22850<1>22872;189,
+23115<1>23569;190,
+23570<1>25433;191,
+23904<2>24012;192,0;193,
+23948<1>0;194,
+24347<1>24355;195,
+24357<1>24366;196,
+24368<1>24371;197,
+24444<1>24452;198,
+24457<1>24465;199,
+24548<1>24557;200,
+24694<1>24702;201,
+24792<1>24801;202,
+25093<1>25103;203,
+25220<1>25231;204,
+25287<1>25299;205,
+25363<1>25390;206,
+25393<1>25431;207,
+25434<1>26146;208,
+25539<1>25544;209,
+25549<1>25569;210,
+25825<1>25827;211,
+25883<1>25903;212,
+26012<1>26021;213,
+26062<1>26081;214,
+26114<1>26144;215,
+26147<1>27038;216,
+26343<1>26346;217,
+26385<1>26388;218,
+26438<1>26480;219,
+26499<1>26504;220,
+26575<1>26578;221,
+26956<1>26984;222,
+26986<1>27012;223,
+27014<1>27032;224,
+27039<1>27996;225,
+27098<1>27103;226,
+27202<1>27215;227,
+27222<1>27229;228,
+27267<1>27272;229,
+27276<1>27279;230,
+27395<1>0;231,
+27597<1>27610;232,
+27658<1>27660;233,
+27997<1>28654;234,
+28112<1>28121;235,
+28289<1>28298;236,
+28328<1>28333;237,
+28590<1>28591;238,
+28655<1>29209;239,
+29178<1>29193;240,
+29210<1>30521;241,
+29425<2>29536;242,0;243,
+29468<1>0;244,
+29504<1>0;245,
+29537<1>0;246,
+29872<1>29880;247,
+30026<1>30030;248,
+30522<1>31755;249,
+30695<1>30701;250,
+31610<1>31632;251,
+31649<1>31652;252,
+31727<1>31730;253,
+31756<1>32296;254,
+31769<1>31778;255,
+32297<1>33178;256,
+32441<1>32453;257,
+32619<1>32626;258,
+32674<1>32681;259,
+32967<1>32968;260,
+32987<1>32999;261,
+33106<1>33135;262,
+33138<1>33176;263,
+33179<1>34022;264,
+33490<1>33492;265,
+33599<1>33621;266,
+33642<1>33668;267,
+33693<1>33705;268,
+33883<1>33893;269,
+34023<1>34473;270,
+34406<1>34407;271,
+34450<1>34461;272,
+34474<1>34512;273,
+34513<1>35655;274,
+35222<1>35227;275,
+35656<1>37221;276,
+35749<1>35755;277,
+35816<1>35820;278,
+36088<2>36309;279,0;280,
+36212<1>0;281,
+36876<2>37144;282,0;283,
+37022<1>0;284,
+37222<1>38237;285,
+37401<2>37479;286,0;287,
+37440<1>0;288,
+37912<1>37920;289,
+37929<1>37941;290,
+37944<1>37977;291,
+37998<1>38008;292,
+38129<1>38135;293,
+38238<1>39448;294,
+38516<1>38537;295,
+38693<1>38702;296,
+38709<1>38730;297,
+38961<1>38967;298,
+39196<1>39210;299,
+39449<1>40708;300,
+39672<1>39677;301,
+39705<1>39708;302,
+40103<1>40122;303,
+40344<1>40363;304,
+40388<1>40390;305,
+40564<1>40583;306,
+40653<1>40657;307,
+40709<1>42422;308,
+40827<1>40846;309,
+40855<1>40858;310,
+40909<1>40912;311,
+41042<1>41061;312,
+41254<1>41258;313,
+41357<1>41364;314,
+41366<1>41369;315,
+41606<1>41610;316,
+41705<1>41714;317,
+42423<1>43208;318,
+42537<1>42540;319,
+42623<1>42660;320,
+42862<1>42869;321,
+42909<1>42913;322,
+42937<1>42940;323,
+42995<1>42997;324,
+43092<1>43110;325,
+43209<1>44931;326,
+43301<1>43310;327,
+43353<1>43359;328,
+43387<1>43391;329,
+43460<1>43463;330,
+43517<1>43547;331,
+43525<1>43531;332,
+43619<1>43646;333,
+43701<1>43702;334,
+44070<1>44084;335,
+44269<2>44514;336,0;337,
+44352<1>0;338,
+44446<1>0;339,
+44791<1>44805;340,
+44932<1>46067;341,
+45590<1>45597;342,
+45812<1>45831;343,
+46068<1>47024;344,
+46228<1>46240;345,
+46248<1>46263;346,
+46548<1>46554;347,
+46620<1>46628;348,
+46772<1>46779;349,
+46939<1>46946;350,
+47025<1>47899;351,
+47391<1>47404;352,
+47679<1>47687;353,
+47900<1>47920;354,
+47921<1>48924;355,
+48119<1>48137;356,
+48141<1>48161;357,
+48322<1>48328;358,
+48644<1>48651;359,
+48674<1>48709;360,
+48925<1>50124;361,
+49070<1>49088;362,
+49443<2>49548;363,0;364,
+49483<1>0;365,
+49694<1>49696;366,
+50041<1>50063;367,
+50125<1>50793;368,
+50167<1>50212;369,
+50414<1>0;370,
+50545<2>50793;371,0;372,
+50631<1>0;373,
+50722<1>0;374,
+50794<1>51348;375,
+51349<1>52025;376,
+51445<1>51451;377,
+51542<1>51547;378,
+51607<1>51625;379,
+51629<1>51659;380,
+51802<1>51811;381,
+51829<1>51834;382,
+52026<1>52567;383,
+52112<1>52121;384,
+52125<1>52128;385,
+52317<1>52331;386,
+52568<1>53088;387,
+52611<1>52627;388,
+52700<1>52712;389,
+52794<1>52801;390,
+52904<1>52910;391,
+52927<1>52943;392,
+53089<1>54726;393,
+53703<1>53710;394,
+53898<1>53905;395,
+54217<1>54224;396,
+54271<1>54297;397,
+54341<1>54344;398,
+54350<1>54364;399,
+54577<1>54580;400,
+54727<1>55383;401,
+54855<1>54858;402,
+55010<1>55012;403,
+55021<1>55033;404,
+55384<1>56302;405,
+55608<1>55614;406,
+55626<1>55638;407,
+55692<1>55706;408,
+55781<1>55784;409,
+55788<1>55795;410,
+55914<2>55933;411,55916;412,
+56047<1>56065;413,
+56150<1>56166;414,
+56303<1>56743;415,
+56395<2>56511;416,0;417,
+56450<1>0;418,
+56541<1>56548;419,
+56627<1>56634;420,
+56679<1>56680;421,
+56697<1>56699;422,
+56744<1>58006;423,
+56800<2>57095;424,0;425,
+56948<1>0;426,
+57168<2>57184;427,57168;428,
+57316<1>57324;429,
+58007<1>59197;430,
+58022<1>58031;431,
+58074<1>58075;432,
+58465<1>58469;433,
+58770<1>58773;434,
+58859<1>58895;435,
+58940<1>58943;436,
+59003<1>59018;437,
+59186<1>59196;438,
+59198<1>60368;439,
+59433<1>59444;440,
+59541<1>59572;441,
+59794<1>59814;442,
+59825<1>59838;443,
+59863<1>59872;444,
+59991<1>60004;445,
+60120<1>60122;446,
+60369<1>61526;447,
+60713<1>60737;448,
+60912<1>60926;449,
+61121<1>61137;450,
+61370<1>61382;451,
+61385<1>61394;452,
+61527<1>62361;453,
+61723<2>62096;454,0;455,
+61800<1>0;456,
+61901<1>0;457,
+62005<1>0;458,
+62362<1>64152;459,
+62377<1>62397;460,
+62421<1>62433;461,
+62494<1>62507;462,
+62574<1>62595;463,
+62693<1>62713;464,
+63218<1>63237;465,
+63248<1>63250;466,
+63474<1>63483;467,
+63661<1>63673;468,
+63879<1>63882;469,
+63985<1>64005;470,
+64075<1>64077;471,
+64153<1>65354;472,
+64250<1>64265;473,
+64419<1>64428;474,
+64469<1>64478;475,
+64603<1>64618;476,
+64749<1>64770;477,
+64802<1>0;478,
+64960<1>64975;479,
+65057<1>65060;480,
+65176<1>65182;481,
+65199<1>65207;482,
+65355<1>65980;483,
+65388<1>65391;484,
+65735<1>65750;485,
+65754<1>65760;486,
+65773<1>65786;487,
+65789<1>65794;488,
+65926<1>65932;489,
+65974<1>65979;490,
+65981<1>67237;491,
+66106<1>66115;492,
+66118<1>66132;493,
+66152<1>66154;494,
+66382<1>66396;495,
+66678<1>66687;496,
+66692<1>66703;497,
+66771<1>66779;498,
+67000<1>67031;499,
+67070<1>67073;500,
+67113<1>67126;501,
+67177<1>67185;502,
+67238<1>68526;503,
+67268<1>67280;504,
+67291<1>67303;505,
+67530<1>67542;506,
+67650<1>67662;507,
+67665<1>67677;508,
+68090<1>68103;509,
+68094<1>68096;510,
+68310<1>68314;511,
+68435<1>68455;512,
+68459<1>68466;513,
+68507<1>68515;514,
+68527<1>69378;515,
+68806<1>68807;516,
+69026<1>69042;517,
+69359<1>69377;518,
+69379<1>70535;519,
+69498<1>69512;520,
+69644<1>69649;521,
+69963<1>69971;522,
+70303<1>70315;523,
+70536<1>71358;524,
+70560<1>70562;525,
+70678<1>70709;526,
+71001<1>71013;527,
+71135<1>71142;528,
+71359<1>72695;529,
+71422<1>71439;530,
+71500<1>71515;531,
+71791<1>71806;532,
+71876<1>71894;533,
+72264<1>72270;534,
+72283<1>72289;535,
+72577<1>72582;536,
+72634<1>72636;537,
+72659<1>72671;538,
+72696<1>73686;539,
+72745<1>72760;540,
+72817<1>72824;541,
+72923<1>72925;542,
+73687<1>74066;543,
+74067<1>74095;544,
+74096<1>74874;545,
+74138<1>74153;546,
+74401<1>74417;547,
+74875<1>75808;548,
+74906<1>74916;549,
+75231<1>75244;550,
+75547<1>75570;551,
+75614<1>75625;552,
+75687<1>75714;553,
+75715<1>0;554,
+75716<1>0;556,
+75749<1>75760;558,
+75809<1>76478;559,
+76404<1>76416;560,
+76419<1>76431;561,
+76479<1>77463;562,
+76716<1>76723;563,
+76901<1>76907;564,
+76923<1>76929;565,
+77078<1>77084;566,
+77115<1>77121;567,
+77214<1>77221;568,
+77223<1>77229;569,
+77235<1>77241;570,
+77464<1>78929;571,
+77511<1>77527;572,
+77531<1>77546;573,
+77585<1>77592;574,
+77653<1>77664;575,
+77723<1>77733;576,
+77736<1>77738;577,
+77800<1>77802;578,
+77852<1>77862;579,
+77879<1>77880;580,
+77892<1>77899;581,
+77941<1>77951;582,
+77956<1>77966;583,
+78269<1>78277;584,
+78423<2>78598;585,0;586,
+78644<1>78647;587,
+78707<1>78711;588,
+78738<1>78753;589,
+78930<1>79520;590,
+78991<1>79006;591,
+79052<1>79055;592,
+79148<1>79151;593,
+79198<1>79203;594,
+79514<1>0;595,
+79521<1>80393;596,
+79774<1>79780;597,
+80385<1>80392;598,
+80394<2>0;599,81201;600,
+80456<1>80458;601,
+81202<1>82138;602,
+82139<1>83728;603,
+82298<1>0;604,
+83311<1>83316;605,
+83729<1>84789;606,
+83921<1>83926;607,
+84790<1>86182;608,
+85833<1>85845;609,
+85855<1>85870;610,
+!
+=2
+!
+=3
+!
+ *
+@@ details
+610
+1024;2:8
+1216;9:13
+0;2:3
+1216;9:13
+0;4:11
+20480;14:14
+6144;15:15
+2048;15:15
+16384;14:14
+16384;16:25
+16384;14:14
+7168;26:26
+16384;14:14
+3072;26:26
+512;26:26
+6144;15:15
+16384;14:14
+6144;26:26
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;39:50
+6144;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+67118081;27:38
+4608;39:50
+4608;39:50
+4608;39:50
+4608;39:50
+16384;14:14
+6144;26:26
+4608;15:15
+16384;14:14
+4608;26:26
+6144;26:26
+4608;26:26
+6144;15:15
+3072;15:15
+6144;15:15
+6144;15:15
+6144;26:26
+4608;26:26
+6144;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;39:50
+4608;39:50
+6144;15:15
+2048;15:15
+4608;15:15
+6144;15:15
+6144;15:15
+4608;15:15
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;39:50
+6144;15:15
+2048;15:15
+3072;15:15
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+6144;26:26
+6144;26:26
+512;26:26
+6144;15:15
+3072;26:26
+6144;15:15
+6144;15:15
+4608;15:15
+16384;14:14
+6144;26:26
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;39:50
+3072;51:57
+6144;15:15
+6144;15:15
+67135489;27:38
+12288;39:50
+4608;39:50
+6144;15:15
+6144;15:15
+2048;15:15
+5120;58:65
+0;15:15
+67125761;27:38
+12288;39:50
+6144;15:15
+6144;15:15
+6144;66:74
+6144;15:15
+6144;15:15
+6144;15:15
+6144;26:26
+6144;15:15
+6144;15:15
+6144;26:26
+6656;51:57
+16384;14:14
+3072;15:15
+6144;15:15
+6144;26:26
+2048;15:15
+16384;14:14
+6144;15:15
+3072;15:15
+6144;15:15
+512;15:15
+16384;14:14
+6144;15:15
+4608;15:15
+3072;15:15
+6144;26:26
+6144;15:15
+6144;15:15
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;15:15
+6144;15:15
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;26:26
+67133441;27:38
+12288;39:50
+4608;39:50
+16384;14:14
+6144;26:26
+6144;15:15
+6144;15:15
+6144;15:15
+4608;15:15
+67133441;27:38
+12288;39:50
+4608;39:50
+6144;26:26
+6144;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+6144;26:26
+6144;26:26
+16384;14:14
+6656;15:15
+7168;26:26
+16384;75:93
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+6144;15:15
+7168;15:15
+6144;15:15
+16384;14:14
+6144;15:15
+7168;15:15
+6144;15:15
+16384;14:14
+7168;26:26
+6144;26:26
+2048;15:15
+2560;15:15
+6144;15:15
+4608;15:15
+6144;15:15
+6656;15:15
+6144;15:15
+6144;15:15
+2048;15:15
+2048;15:15
+2560;15:15
+16384;14:14
+6144;26:26
+2048;15:15
+16384;14:14
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+2048;15:15
+2560;15:15
+2048;15:15
+2560;26:26
+6144;15:15
+6144;15:15
+7168;15:15
+6656;15:15
+7168;26:26
+7168;26:26
+6144;26:26
+6144;26:26
+2560;26:26
+16384;14:14
+2048;15:15
+6144;26:26
+7168;26:26
+6656;15:15
+6144;26:26
+6144;15:15
+2048;26:26
+16384;14:14
+2048;15:15
+6144;26:26
+6144;26:26
+6144;15:15
+2048;15:15
+2048;15:15
+512;15:15
+2048;15:15
+16384;14:14
+7168;26:26
+2048;15:15
+2048;26:26
+6656;26:26
+6144;26:26
+6144;51:57
+2048;26:26
+6144;15:15
+16384;14:14
+6656;26:26
+6144;15:15
+6144;26:26
+6144;15:15
+16384;14:14
+6144;15:15
+16384;14:14
+67137537;27:38
+14336;39:50
+4608;39:50
+4608;39:50
+0;94:101
+2048;15:15
+6144;15:15
+16384;14:14
+7168;15:15
+3072;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+6144;15:15
+16384;14:14
+2560;26:26
+6144;15:15
+6144;26:26
+6144;15:15
+6656;15:15
+6144;15:15
+2560;15:15
+16384;14:14
+6656;26:26
+2048;15:15
+6656;26:26
+6144;15:15
+2048;26:26
+16384;14:14
+6144;15:15
+6144;15:15
+1024;75:93
+16384;14:14
+2048;26:26
+16384;14:14
+6144;15:15
+6144;15:15
+67133441;27:38
+12288;39:50
+4608;39:50
+67133441;27:38
+12288;39:50
+4608;39:50
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+6144;26:26
+6144;15:15
+512;15:15
+6144;26:26
+4608;15:15
+16384;14:14
+2048;15:15
+3072;15:15
+6144;26:26
+6144;15:15
+6144;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+3072;15:15
+6144;15:15
+6144;15:15
+6144;26:26
+6144;15:15
+16384;14:14
+4608;26:26
+6144;15:15
+6144;15:15
+6144;26:26
+6144;15:15
+2048;15:15
+4608;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+6144;26:26
+7168;15:15
+6144;15:15
+6144;26:26
+2048;26:26
+6656;15:15
+6144;15:15
+16384;14:14
+3072;26:26
+3072;15:15
+3072;15:15
+6144;26:26
+6144;26:26
+4608;15:15
+2048;15:15
+6144;15:15
+2048;15:15
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;39:50
+512;15:15
+16384;14:14
+6144;15:15
+512;15:15
+16384;14:14
+4608;26:26
+6144;15:15
+6144;15:15
+7168;15:15
+7168;15:15
+6144;15:15
+16384;14:14
+7168;26:26
+7168;15:15
+16384;16:25
+16384;14:14
+6144;15:15
+6656;15:15
+6144;15:15
+2048;15:15
+2560;15:15
+16384;14:14
+512;26:26
+67133441;27:38
+12288;39:50
+4608;39:50
+3072;15:15
+6144;26:26
+16384;14:14
+6144;26:26
+6144;51:57
+67118081;27:38
+4608;39:50
+4608;39:50
+4608;39:50
+16384;14:14
+16384;14:14
+6144;15:15
+2048;15:15
+6144;26:26
+2048;26:26
+6144;15:15
+6144;15:15
+16384;14:14
+4608;26:26
+6144;26:26
+2048;15:15
+16384;14:14
+4608;15:15
+4608;15:15
+6144;26:26
+6144;15:15
+4608;26:26
+16384;14:14
+6144;15:15
+6144;26:26
+6144;26:26
+6144;15:15
+2048;15:15
+3072;26:26
+6144;15:15
+16384;14:14
+2048;26:26
+6144;15:15
+2048;15:15
+16384;14:14
+6144;26:26
+6144;26:26
+2048;15:15
+6144;15:15
+512;15:15
+6144;26:26
+6144;15:15
+4608;26:26
+6144;26:26
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+6144;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;26:26
+6144;15:15
+3072;26:26
+20480;14:14
+6144;26:26
+2048;15:15
+6656;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+2048;15:15
+16384;14:14
+6144;15:15
+3072;26:26
+2048;15:15
+6144;26:26
+4608;26:26
+6144;26:26
+2048;26:26
+16384;14:14
+6144;26:26
+512;15:15
+2048;15:15
+6144;15:15
+2048;15:15
+16384;14:14
+67133441;27:38
+12288;39:50
+4608;39:50
+4608;39:50
+4608;39:50
+16384;14:14
+6144;15:15
+6144;15:15
+2048;26:26
+2048;15:15
+6144;26:26
+2048;15:15
+6144;15:15
+2048;26:26
+2048;26:26
+6144;26:26
+3072;26:26
+6144;15:15
+16384;14:14
+512;26:26
+2048;26:26
+6144;15:15
+6144;15:15
+6144;15:15
+2048;102:106
+3072;15:15
+6144;15:15
+6144;26:26
+6144;26:26
+16384;14:14
+6144;15:15
+3072;26:26
+6144;26:26
+6144;26:26
+2048;26:26
+6144;15:15
+2048;15:15
+16384;14:14
+6144;26:26
+2048;26:26
+6144;15:15
+6144;26:26
+6144;26:26
+512;26:26
+6144;15:15
+512;26:26
+6144;15:15
+2048;26:26
+2048;26:26
+16384;14:14
+512;26:26
+6144;15:15
+6144;26:26
+6144;26:26
+6144;26:26
+2048;26:26
+3072;15:15
+6144;15:15
+4608;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+4608;15:15
+3072;26:26
+2048;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+4608;26:26
+2048;15:15
+16384;14:14
+6144;15:15
+3072;26:26
+4608;26:26
+2048;15:15
+16384;14:14
+3072;26:26
+2048;26:26
+512;26:26
+3072;26:26
+4608;26:26
+6144;26:26
+3072;26:26
+4608;15:15
+3072;15:15
+16384;14:14
+2048;15:15
+6144;15:15
+4608;15:15
+16384;14:14
+1024;16:25
+16384;14:14
+3072;15:15
+6144;15:15
+16384;14:14
+6144;26:26
+6144;26:26
+3072;15:15
+4608;15:15
+6144;26:26
+192;107:110
+0;12:25
+7360;107:110
+0;26:39
+6144;15:15
+16384;14:14
+6144;15:15
+7168;15:15
+16384;14:14
+6656;15:15
+6144;15:15
+2048;15:15
+6144;26:26
+6656;15:15
+2048;15:15
+512;15:15
+2048;15:15
+16384;14:14
+6144;15:15
+6656;15:15
+6656;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+6656;15:15
+2048;15:15
+6144;26:26
+67135489;27:38
+12288;39:50
+6144;15:15
+6144;15:15
+7168;15:15
+16384;14:14
+6656;15:15
+6656;15:15
+6144;15:15
+6144;26:26
+7168;51:57
+16384;14:14
+7168;15:15
+2048;15:15
+16384;111:122
+16384;14:14
+6144;15:15
+16384;14:14
+16384;14:14
+6144;123:124
+6656;15:15
+16384;14:14
+2560;15:15
+1024;14:14
+2048;26:26
+6144;26:26
+ *
+%% ties
+&!2
+!
+&&2
+3~
+!
+&!3
+!
+&&2
+5~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+555~
+!
+&!3
+!
+&&2
+557~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!

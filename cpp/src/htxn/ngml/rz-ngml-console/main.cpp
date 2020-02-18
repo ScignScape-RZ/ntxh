@@ -14,11 +14,12 @@
 
 //?#include "rz-ngml/output/rz-ngml-output-xml.h"
 
-//?#include "rz-ngml/kernel/document/rz-ngml-folder.h"
+//?
+#include "rz-ngml/kernel/document/rz-ngml-folder.h"
 
 #include "rzns.h"
 
-#include <QRegularExpression>
+#include <QStringList>
 
 // //
 //#include <QDomDocument>
@@ -34,8 +35,43 @@ USING_RZNS(NGML)
 //#include <QFileDialog>
 #include <QDebug>
 
+void process_ngml_file(QString path)
+{
+ NGML_Document ndoc;
+ ndoc.load_and_parse(path);
+
+//? HTXN_Document_8b* hxd = new HTXN_Document_8b;
+ HTXN_Document_8b hxd;
+
+ NGML_Output_HTXN noh(ndoc, &hxd);
+ noh.export_htxne();
+
+ NGML_Output_Latex nol(ndoc);
+ nol.set_htxn_document(&hxd);
+ nol.export_latex(path + ".tex");
+}
 
 int main(int argc, char* argv[])
+{
+ QStringList ngml_files;
+
+ NGML_Folder nf(DEFAULT_DIRECTORY "/ctg");
+ nf.get_ngml_files(ngml_files);
+ 
+ for(const QString& f: ngml_files)   
+   process_ngml_file(f);
+
+ return 0;
+}
+
+int main2(int argc, char* argv[])
+{
+ process_ngml_file(DEFAULT_DIRECTORY "/ctg/ctg.ngml");
+ return 0;
+}
+
+
+int main1(int argc, char* argv[])
 {
 // QApplication qapp(argc, argv);
 

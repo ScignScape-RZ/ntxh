@@ -50,6 +50,8 @@ public:
  void read_output_path(QString document_file);
  void display_user_highlights();
 
+ void get_ngml_files(QStringList& result);
+
  void convert_to_latex();
 
 // void convert_all_khif_files(QString khif_dir, QString html_dir);

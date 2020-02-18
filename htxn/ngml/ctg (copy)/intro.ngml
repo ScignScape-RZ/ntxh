@@ -1,0 +1,327 @@
+
+`p.
+The question of whether computers can be programmed to understand 
+language may be philosophical, but it overlaps with 
+broad methodological bifurcations: after all, linguists 
+`i.are` programming computers to `q.understand` language, at 
+least to some approximation.  Given that computational 
+linguistics is now a well-established practice, we can 
+consider how this program for investigating the nature of 
+language orients into linguistics as a whole: to what degree 
+are the computers really `q.understanding` their linguistic 
+input?  How much does `i.behavior` consistent with language-understanding 
+suggest actual understanding?  Is linguistic competence mostly a 
+behavioral phenomenon, or something more holistic and (inter-) subjective?  
+Are the imperfections of automated Natural Language Processing 
+inevitable, and if so, does that foreclose the possibility of 
+`NLP; engines being considered truly linguistic?  That is, 
+should we treat flawed and oversimplistic (but practically useful) 
+`NLP; software %-- or `q.personas` driven by this software, like 
+`q.digital assistants` %-- as bonafide (if rather primitive) 
+participants in the world of human language?  Or are they merely 
+machines that simulate linguistic behavior without manifesting 
+real linguistic behavior, as a computer simulation of a 
+celestial galaxy is not a real galaxy?  
+`p`
+
+`p.
+These are methodological as well as thematic questions.  There is a 
+wide swath of formal and computational linguistics, for instance, for 
+which the measure of a theory is its chance of being operationalized 
+on `NLP; terms and within `NLP; tools, yielding automated systems whose accuracy and/or 
+computational efficiency competes favorably with other systems.  
+Faithfulness to how `i.humans` process language is at most a secondary 
+concern.  Conversely, there is a broad literature in Cognitive Linguistics 
+and the Philosophy of Language for which uncovering the cognitive and 
+interpretive registers through which `i.we` understand, produce, and 
+are affected by language is the main goal.  For scholars chasing 
+that telos, failure to encode theoretical models in mathematical 
+or software systems is not `i.prima facie` an explanatory limitation 
+%-- conversely, we might take this as evidence that cognitive models 
+are addressing the deep, subtle realities of language that are 
+opaque to computer simulation.   
+`p`
+
+`p.
+Then there is hybrid work, like attempts to formalize 
+Cognitive Grammar (Matt Selway `cite<MattSelway>;, 
+Kenneth Holmqvist `cite<KennethHolmqvist>;, `cite<HolmqvistDiss>;), or
+other branches of Cognitive Linguistics 
+(cf. Terry Regier's influential `cite<TerryRegier>;), 
+or Conceptual Space Theory as initiated by 
+Peter `Gardenfors; (which has seen several attempts at 
+mathematical-computational formalization, such as 
+Frank Zenker, Martin Raubal, and Benjamin Adams's 
+metascientific perspectives `cite<RaubalAdams>;, 
+`cite<RaubalAdamsCSML>;, `cite<Zenker>;, and more recent 
+Category-Theoretic structures linked to mathematicians 
+such as Bob Coecke and David Spivak `cite<InteractingConceptualSpaces>;).  
+To this list we could add research that extends beyond 
+language alone to broader cognitive-perceptual and 
+conceptual themes, like formal descriptions rooted in 
+Husserlian analyses by phenomenologists whose methods 
+encompass some computer-scientific techniques, like 
+Barry Smith (as in `cite<BittnerSmithDonnelly>;) and 
+Jean Petitot (see `cite<JeanPetitot>;); we can see 
+these accounts as generalizing cognitive-linguistic 
+theories by noting the phenomenological basis 
+of linguistic phenomena, as articulated by (say) Olav 
+K. Wiegand (`cite<OlavKWiegand>;, `cite<WiegandGestalts>;) 
+and Jordan Zlatev (`cite<JordanZlatev>;).  
+In each of the works just cited (prior anyhow to the 
+last three)  
+we can find formal/computational models whose 
+rationale is, in large part, to 
+shed light on human cognitive processes 
+(albeit not necessarily translating to practical 
+`NLP; components in any straightforward way). 
+`p`
+
+`p.
+This kind of `q.intermediate` research is perhaps 
+under-appreciated, because it neither accepts the dismissive 
+attitude that formal models are a distraction from 
+the analysis of `q.real` language, nor the reductionistic 
+faith that language is `i.intrinsically` computational %-- 
+that progress toward ideal `NLP; avatars is just a matter 
+of time.  To be sure, layering formal systems on a 
+cognitive/phenomenological foundation adds a complexity of 
+theoretical structure, which could prompt questions about the 
+efficacy of the theoretical dilation: is extra complexity 
+desirable as an end in itself, if the new formalizations 
+have only limited explanatory or practical pay-offs?  
+If there is a human kernel in language that is intrinsically 
+non-computable and non-formalizable, does analysis of 
+language truly benefit from complex but only partly 
+applicable structural overlays?  On the other hand, if 
+language `i.is` computationally tractable, shouldn't 
+`NLP; implementation be a factor in assessing which 
+formal models are worthy of attention? 
+`p`
+
+`p.
+Perhaps for these kinds of considerations, linguistics seems to 
+bifurcate between a camp that essentially ignores 
+computational methodology and resources and a camp 
+that centers its whole attention on building better automated 
+`NLP; tools.  Left out of this division is research that 
+invokes formal models as explanatory vehicles while not 
+enmeshing them in an ecosystem oriented toward automation %-- 
+the difference between deploying formal repesentations to 
+model (some aspects) of language processing, syntax, and 
+semantics, and trying to program software to `i.automate` the 
+construction, translation, and pipeline between and among
+formal models.  When situating research relative to 
+computational linguistics, we should bear in mind the 
+metatheoretical point that `i.incorporating` formal 
+schema into linguictis models does not `i.necessarily` 
+mean committing ourselves to a task of programming 
+computers to discover the target representations 
+on their own, given raw linguistic input.
+`p`
+
+`p.
+But this perspective is not only metatheoretical: I believe  
+that the nature of language is `i.intrinsically` `q.hybrid` 
+in a manner that warrants neither blind faith in 
+automation nor `i.a priori` disengagement with formalizing 
+projects.  This is first of all because language is neither 
+wholly isolated from other cognitive phenomena nor 
+without some structural autonomy.  It is reasonable to
+suppose that there are distinct intellectual faculties 
+internal to our understanding of language, while other 
+reasonings intrinsic to parsing the form and intentions 
+of a linguistic unit are drawn from the wider 
+inventory of situational, conceptual, social, and 
+practical/enactive cognition.  Sentences can vary 
+in terms of their context-sensitivity and the degree to 
+which extralinguistic rationality is implicit in 
+grasping intended meanings.  So neither a theory which 
+ignores extralinguistic cognition, nor one which 
+treats `i.all` linguistic processing as inseparable
+from the totality of our cognitive processes from moment to moment, 
+are complete.  A fully-forged theory needs to place 
+sentences on a spectrum, where extralinguistic and (I'll say)
+`q.intra-linguistic` theoretical machinery is 
+available to analyze different sentences as their 
+form and context demands. 
+`p`
+
+`input<x-diagram>;
+
+`p.
+Extending this point, I believe a comparable spectrum 
+matches the duality of language seen as intrinsically 
+formalizable and computable or as too subtle, social/cultural, 
+embodied, and context-dependent to be tractable to any 
+computer or any idealized logicomathematical abstraction.  
+Some sentence are more logically straightforward; others 
+are more elusive, requiring holistic and context-sensitive 
+interpretation on conversants' parts to be understood.  
+Combined with my claims last paragraph, I argue accordingly 
+that we can (at least as a suggestive picture) view 
+linguistic artifacts (canonically, sentences) 
+along a two-axis spectrum defined both by extralinguistic 
+integration (or lack thereof) and by formal tractability 
+(or lack thereof), like so: (this is intended as an intuitive 
+sketch, not a formal model). 
+\begin{center}\usebox{\mxbox}\end{center}
+I will elucidate the terms on that picture later.  Summarily, though, 
+I claim that `i.some` sentences evince logically straightforward 
+compositional patterns that can be analyzed `i.either` at the
+language-specific (syntactic or semantic) level `i.or` within 
+cognitive registers outside of language proper (e.g., situational 
+schemata); conversely, some sentences have nuances that
+call for interpretive judgments which appear to transcend 
+formal simulacra outside the full range of human 
+intelligence, emotion, and embodiment, `i.either` in 
+terms of parsing complex syntactic or semantic structures 
+`i.or` in grounding linguistic phenomena in ambient contexts.  
+My overall point is then that sentences take a spectrum of 
+models spanned by these axes; no one paradigm is 
+self-contained as a metalinguistic commitment. 
+`p` 
+
+`p.
+In effect, the choice between paradigms wherein language is or 
+is not formally/computationally tractable, and between paradigms 
+wherein language is or is not intellectually autonomous `visavis; 
+our total cognitive faculties, should not be seen as a 
+metaphysical alternative anterior to language as a totality.  
+Instead, these spectra are threaded into language internally, 
+competing polarities which rise or fall from sentence to 
+sentence.  Language is not `i.intrinsically` either formal 
+or non-formal; autonomous or non-autonomous.    
+`p`
+
+`p.
+But at the same time, sentences are clearly phenomena of the 
+same ilk; the distinctions I have made are not so sharp as to 
+disrupt the ontological similitude among sentences, so that 
+two sentences (however much they differ on the spectra of 
+my diagram) are still manifestations of the same ontological 
+place; they are still roughly the same `i.sort` of existents.  
+Accordingly, we should conclude philosophically that there are 
+certain aspects of sentences that lie beneath the formal/interpretive  
+and intralinguistic/extralinguistic dualities.  There are, in short,
+paleostructures in language that manifest `i.either` with formal 
+specificity or with contextual nuance; `i.either` 
+internal to syntax or semantics or external to intrinsically 
+linguistic cognition; varying from sentence to sentence.  
+This paper will present a theory of one such paleostructure, 
+drawing inspiration both from formal theories (Dependency Grammar, 
+Type-Theoretic Semantics, Generative Lexicon) and from 
+more philosophical approaches (Cognitive Grammar, Semiotics, Phenomenology).    
+`p`
+
+`p.
+The central element in my analysis is the `i.conceptual modification` 
+implied or effected by one word in the presence of another word.  
+More precisely, some words' linguistic roles can be analyzed as 
+adding cognitive detail (conceptual and/or perceptual and/or pragmatic) 
+to the ideas or referents signified via other words.  The underlying scheme, 
+at this level where the model is undeveloped and thus fairly simple, 
+is close to Dependency Grammar: in lieu of a head/dependent relation 
+we can treat one word (or similar lexical unit) as a `i.modifier` and the  
+second as a `i.ground`/.  I believe this two-pronged picture is not 
+completely vacuous, but is general and underspecified enough to
+spread over both syntax and semantics, and over competing 
+paradigms.  I will call the modifier's effect on its ground 
+a `i.transform`/, and the two words together (taking `q.word` as a 
+convenient designation for lexemes in general) as a 
+`i.transform pair`/.
+`p`
+
+`p.
+I will argue that the underlying transform-pair concept is 
+amenable to both more formal and more philophical/interpretive 
+development.  One the one hand, transform-pairs can sometimes 
+be mapped explicitly to dependency or link-grammar pairs, 
+so the theory can be treated as a philosophical preliminary 
+or motivation for Dependency or Link Grammar.`footnote.
+Dependency and Link Grammar both build syntactic structures
+from inter-word pairs (rather than larger phrasal units), 
+so the latter is at least in part a species of the former.  
+In lieu of head/dependent relations, however, Link Grammar 
+identifies each linguistically meaningful connection between 
+words (and lexical or constituent sentence units in general) 
+as motivated by a specific connection rule, which depends on 
+compatible connecting potentiality present on both words in a 
+connection, which are part of their lexical profile.  Formally then 
+Link Grammar removes one theoretical structuring posit 
+(the `q.ranking` of pair-elements as head or dependent) 
+but adds a different posit related to the two `q.potentialities` 
+which get fused into a single link; linkage capacities become rooted 
+in the lexicon arguably more so than in (conventional) Dependency Grammar 
+`cite<Schneider>;, `cite<SleatorTamperley>;, 
+`cite<GoertzelPLN>;, `cite<ErwanMoreau>;.   
+`footnote`  Relatedly,  
+transforms themselves can be integrated into type systems 
+(e.g., the kinds of transforms associated with adjectives 
+depend on their ground being typed as a noun), so 
+a theory of transform-pairs can motivate elaboration in a 
+Type-Theoretic context.  On the other hand, we can focus 
+on the interpretive and situational nuance often evident in 
+cognitive transformations to find evidence for linguistic 
+phenomena which do not fit neatly into Dependency Grammar
+or Type-Theoretic (or any other) formalization.  
+These various continuations, which I will present further 
+over the next several sections, try not to foreclose either 
+formal or philosophical/interpretive paradigms.  The goal is 
+to trace both formal models of language and alternative
+models %-- for which excessive formalization is reductionistic 
+and depends on ad-hoc avoidance of many real-world 
+significations %-- to a common structural kernel from which 
+both perspectives can be deployed on a case-by-case 
+(e.g., sentence-by-sentence) basis.
+`p`
+
+`p.
+In keeping with the perspective that formal models have `i.some` 
+merit, I have tried to orient the presentation around certain 
+computational-linguistic techniques.  Some of my examples are 
+drawn from popular annotated corpora, and I provide models 
+of other examples as processed by representative `NLP; technologies 
+(e.g., Malt Parser trained against the most recent Universal 
+Dependency training data at the time of writing).  
+I also select multiple examples from the Blackwell `i.Handbook of Pragmatics` 
+`cite<BlackwellPragmatics>;; the data set includes code I used 
+to compile all examples from that volume into a collection.  
+I have packaged the examples and supporting code into an 
+open-source data set for purposes of demonstration.  
+I do not dwell on the accuracy of the `NLP; components, 
+in part because I am motivated in this paper to examine 
+how computational methods can be employed as explanatory 
+tools separate and apart from their feasibility in 
+automated pipelines.  That is, the computational 
+resources I present here are designed more as technological 
+supplements to philosophical, interpretive, and 
+speculative examinations of interesting linguistic 
+examples, rather than as algorithms ultimately targeted 
+at fully automated `NLP; frameworks.  I incorporate 
+code and data as a supplement to my argumentation in the 
+hope that this can serve as an example of computational 
+linguistics adopted outside the priorities of `NLP; 
+automation and Artificial Intelligence in its more reductive, 
+science-fictional sense.  I am not aspiring to 
+develop code or theoretical claims that could advance the 
+hypothetical project of implementing artificial agents that 
+can mimic and understand human language and behavior in 
+all its subjectivity and complexity.  However, I `i.do` 
+want to leverage certain computational techniques as  
+offering their own explanatory perspectives on structures 
+in human language.  
+`p`
+
+`p.
+The remainder of this paper will draw and expand on the outline 
+of terms and structures sketched thus far, specifically the 
+contrast of intra/extra-linguistic and `q.logicomorphic`//interpretive 
+aspects from my `q.diagram` of sentences' paradigmatic spectrum, 
+and the basic modifier/ground transform-pair account.  I 
+use the phrase Cognitive Transform Grammar for the core notion of 
+`q.transform-pairs` as, at core, cognitive phenomena, which nonetheless 
+allow for further exposition via different methods.  I will explain 
+some of this variation in the first section.  
+`p`
+

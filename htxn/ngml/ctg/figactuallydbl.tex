@@ -1,0 +1,63 @@
+
+\begin{figure*}
+\caption{Parse Graph with Dependency Relations as well as Double (Functional-Type) Indices}
+\label{fig:actuallydbl}
+
+\begin{dependency}[theme=brazil]
+\begin{deptext}[column sep=14pt]
+The \& most \& popular \& lodging \& is \& actually \& camping \& on \& the \& beaches \& . \\
+DET \& ADV \& ADJ \& NOUN \& AUX \& ADV \& VERB \& ADP \& DET \& NOUN \& PUNCT \\
+DT \& RBS \& JJ \& NN \& VBZ \& RB \& VBG \& IN \& DT \& NNS \& . \\
+\end{deptext}
+
+\depedge{1}{4}{det}
+\depedge{2}{3}{advmod}
+\depedge{3}{4}{amod}
+\depedge{4}{7}{nsubj}
+\depedge{5}{7}{aux}
+\depedge{6}{7}{advmod}
+\deproot{7}{root}
+\depedge{8}{10}{case}
+\depedge{9}{10}{det}
+\depedge{10}{7}{obl}
+\depedge[edge unit distance=2ex]{11}{7}{punct}
+
+\deproot[edge below, edge theme=iron, label theme=grassy, edge unit distance=2.5ex]{6}{root} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{6}{5}{11} 
+\depedge[edge below, edge theme=iron, label theme=grassy, edge unit distance=2ex]{6}{2}{21}
+\depedge[edge below, edge theme=iron, label theme=grassy]{2}{3}{11} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{2}{1}{21} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{2}{4}{31} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{6}{8}{22} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{8}{9}{11} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{9}{10}{11} 
+\depedge[edge below, edge theme=iron, label theme=grassy]{7}{6}{21}
+
+
+\end{dependency}
+
+((actually is) (((most popular) The) lodging) ((on (the beaches)) camping))
+
+\begin{dependency}[theme=night,edge theme=copper,label theme=iron]
+\begin{deptext}[column sep=14pt]
+actually \& is \& most \& popular \& The \& lodging \& on \& the \& beaches \& camping \\
+ADV \& AUX \& ADV \& ADJ \& DET \& NOUN \& ADP \& DET \& NOUN \& VERB \\
+RB \& VBZ \& RBS \& JJ \& DT \& NN \& IN \& DT \& NNS \& VBG \\
+\end{deptext}
+
+\deproot[edge below, edge unit distance=3.5ex]{1}{root} 
+\depedge[edge below]{1}{2}{11} 
+\depedge[edge below]{1}{3}{21} 
+\depedge[edge below]{3}{4}{11} 
+\depedge[edge below]{3}{5}{21} 
+\depedge[edge below]{3}{6}{31} 
+\depedge[edge below, edge unit distance=2ex]{1}{7}{22} 
+\depedge[edge below]{7}{8}{11} 
+\depedge[edge below]{8}{9}{11} 
+\depedge[edge below]{7}{10}{21} 
+
+
+\end{dependency}
+
+\end{figure*}
+

@@ -197,7 +197,23 @@ QString NGML_Folder::partials_codes_to_lisp()
  return result;
 }
 
+void NGML_Folder::get_ngml_files(QStringList& result)
+{
+ QDir dir(local_path_);
+ dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+ dir.setSorting(QDir::Size | QDir::Reversed);
 
+ QFileInfoList qfil = dir.entryInfoList();
+
+ QListIterator<QFileInfo> it(qfil);
+
+ while(it.hasNext())
+ {
+  QFileInfo qfi = it.next();
+  if(qfi.suffix() == "ngml")
+    result << qfi.absoluteFilePath();
+ }
+}
 
 
 void NGML_Folder::convert_all_files(QString output_path, QString khif_path)

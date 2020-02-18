@@ -1,0 +1,1545 @@
+
+`section.Functional Type Theory in Cognitive and Dependency Grammars`
+`label<s2>;
+`p.
+My discussion so far has focused on 
+characterizing sentences' holistic meaning.  On the face of 
+it, such holistic analysis is more semantic than syntactic.  
+However, syntactic paradigms can be grounded in theories 
+of how language elements aggregate `i.toward` holistic meaning.   
+`p`
+
+`p.
+Here I propose a notion of `q.cognitive transforms` 
+%-- that holistic meanings emerge from a series of 
+interpretive and situational modeling modifications 
+which progressively refine our understanding of a 
+speaker's construal of our environing context and her 
+propositional attitudes.  While elucidation of these 
+transforms as cognitive phenomena may belong to semantics, 
+syntactic structure dictates the `i.sequence` of 
+transforms.  Many transforms are expressed by 
+individual word-pairs.  Taking the temporal or logical 
+order of transforms into consideration, we can derive a 
+syntactic model of sentences by introducing an order among 
+word-pairs %-- a methodology akin to using Dependency Grammar 
+parse-graphs as an intermediate stage, then ordering the 
+graph-edges around an estimation of cognitive aggregation.  
+One transform is a successor to a predecessor if the 
+modifications induced by the predecessor are 
+consequential for the cognitive reorientation pertinent to 
+the successor, and/or to the morphosyntactic features which 
+trigger it.  
+`p`
+
+`p.
+In this spirit I talk of Cognitive Transform `i.Grammar`/, because 
+while in the general case transforms are semantic and interpretive 
+%-- not the purview of grammar per se %-- we can theorize 
+grammar as governing the `i.order of precedence` among transforms.  
+More precisely, there is a particular order of precedence germane 
+to sentence meaning; sentences have their precise syntax 
+in order to compel recipients' reception of the linguistic 
+performance according to that same ordering.  
+`p`
+
+`p.
+From this perspective, an essential aspect of grammar theory is that 
+whatever units are understood as syntactic constituents %-- like 
+phrase structure or word-pairs %-- an order of precedence should 
+`q.fall out` of grammatic reconstructions.  We should be able 
+to supplement parse-representations with a listing of salient 
+syntactic features in order, retracing the `i.cognitive` steps 
+by which localized sense-alterations synthesize into holistic 
+meaning.  The details of this precedence-establishment 
+will vary across grammatic paradigms, so one way to assess 
+grammar theories is to consider how the engender corresponding 
+cognitive-transform models. 
+`p`
+
+`p.
+Type theory can be adopted in this context because 
+most versions of type theory include a notion of 
+`q.function-like` types: types whose instances modify 
+instances of some other type (or types).  This 
+establishes an order of precedence: anything modified 
+by a function is in some sense logically prior to 
+that function.  In formal (e.g., programming) languages, 
+the procedure whose output becomes input to a different 
+procedure must be evaluated before the latter procedure 
+begins (or at least before the output-to-input value is 
+used by that latter procedure).   
+`p`
+
+`p.
+A common paradigm is to consider natural-language types as generated 
+by just two bases %-- a noun type `N; and a proposition type 
+`Prop;, the type of sentences and of sentence-parts which are 
+complete ideas %-- having in themselves a propositional content 
+(see e.g. `cite<BarkerShanTG>; or `cite<KubotaLevine>;).    
+Different models derive new types on this basis in different ways.
+One approach, inspired by mathematical `q.pregroups`/, establishes 
+derivative types in terms of word pairs %-- an adjective followed 
+by a noun yields another noun (a noun-phrase, but `N; is the phrase's 
+`i.type`/) %-- e.g., `i.rescued dogs`/, like `i.dogs`/, is conceptually 
+a noun.  Adjectives themselves then have the type of words which form 
+nouns when paired with a following noun, often written as 
+`NOverN;.  Pregroup grammars distinguish left-hand and right-hand 
+adjacency %-- `i.bark loudly`/, say, demonstrates an adverb `i.after` a
+verb, yielding a verb phrase: so `q.loudly` here has the type of a 
+word producing a verb in combination with a verb to its `i.left` 
+(sometimes written `VUnderV;); by contrast adjectives combine with 
+nouns to their `i.right`/.
+`p`
+
+`p.
+A related formalization, whose formal 
+analogs lie in Typed Lambda Calculus, abstracts from left-or-right 
+word order to models derived types as equivalent (at least 
+for purposes of type attribution) to `q.functions`/.  
+This engenders a fundamental notion of functional `i.application` 
+and operator/operand distinctions: 
+
+`quote,
+`i.Categorial Grammars` make the connection between the 
+first and the second level of the ACG.  These models are 
+typed applicative systems that verify if a linguistic 
+expression is syntactically well-formed, and then construct 
+its functional semantic interpretation.  They use the 
+`i.fundamental operation of application` of an operator to an 
+operand.  The result is a new operand or a new operator. 
+This operation can be repeated as many times as necessary 
+to construct the linguistic expressions' functional semantic 
+representation.
+\cite[p. 1]{Rossi}
+`quote`
+
+So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
+an adjective takes a noun and produces another noun; 
+and a verb takes a noun and produces a proposition.  By `q.function` we can consider 
+some kind of conceptual transformation: `i.loudly` transforms the
+concept `i.bark` into the concept `i.loud bark`/.  
+Assuming all lexemes are assigned a Part of 
+Speech drawn from such a type system, the definition of 
+functional types directly yields a precedence order: 
+instances of functional types are functionally dependent 
+on their inputs, which are therefore precedent to them.  
+On this basis, any well-typed functional expression has a 
+unique precedence ordering on its terminal elements 
+(i.e., its `q.leaves` when the expression is viewed as a 
+tree, or its nodes when viewed as a graph), which 
+can be uncovered via a straightforward algorithm 
+(one implementation is part of this paper's data set; 
+see the `q.parse\_sxp` method in file ntxh-udp-sentence.cpp).
+`p`
+
+`p.
+Functional parts of speech 
+that can be formally modeled with one `q.argument` 
+(the most common case),  
+having a single input and output type, 
+conveniently lend themselves 
+to cognitive transforms defined through word 
+pairs %-- an adjective modifies a noun to another 
+noun, an adverb maps a verb to a verb, an auxiliary 
+like `i.that` or `i.having` can map verbs or propositions 
+to nouns, and so forth.  The only main complication 
+to this picture is that verbs, which typically have subjects 
+as well as objects, can take two or three `q.inputs` 
+instead of just one.  Instead of a transform `i.pair` we 
+can then consider a three- or four-part transform structure 
+(verb, subject, direct object, indirect object).  
+We can still assign a precedence ordering to verb-headed phrases, 
+however, perhaps by stipulating that the subject takes 
+precedence before the direct object, and the direct object
+before the indirect.  This ordering seems cognitively 
+motivated: our construal of the significance of a 
+direct object appears to intellectually depend on the verb's 
+subject; likewise the indirect object depends on the direct 
+object to the degree that it is rationally consequential.    
+`p`
+
+`p.
+A secondary complication involves copulae like `i.and`/, which 
+can connect more than two words or clauses.  Here, though, a 
+natural ordering seems to derive from linear position in the 
+sentence: given `i.x, y, and z` we can treat `i.x` as 
+precedent to `i.y`/, and `i.y` to `i.z`/, respectively.
+`p`
+
+`p.
+In total, sentences as a whole can thus be seen as structurally 
+akin to nested expressions in lambda calculi
+(and notated via `q.S-Expressions`/, like code in the 
+Lisp programming language).  S-Expressions are occasionally 
+recommended as representations for some level of 
+linguistic analysis (cf. `cite<SivaReddy>;, `cite<KiyoshiSudo>;, 
+`cite<ChoeCharniak>;), and if this form by itself may add little 
+extra data, it does offer a succinct way to capture the 
+functional sequencing attributed to a sentence during analysis.  
+Given, say, 
+
+`sentenceList,
+`sentenceItem; \swl{itm:ambience}{The city's ambience is colonial and the climate is tropical.}{sem}
+\udref{en_gum-ud-train}{GUM_voyage_merida-20}
+`sentenceList`
+
+the gloss `gl.(and (is ((The ('s city)) ambience) colonial) (is (the climate) tropical))`
+summarizes analytic commitments with regard to the root structure of the sentence 
+(in my treatment the copula is the overall root word) and to precedence between words 
+(which words are seen as modifiers and which are their ground, for instance).  
+So even without extra annotations (without, say, the kind of tagging data included 
+by treebanks using S-Expression serializations), rewriting sentences as 
+nested expressions captures primitive but significant syntactic details.     
+`p`
+
+`p.
+Nested-expression models also give rise directly to two other representations: 
+a precedence ordering among lexemes automatically follows by taking 
+function inputs as precedent to function (words) themselves`footnote.But 
+note that using `q.function-words` as terminology here generalizes 
+this term beyond its conventional meaning in grammar.`/; 
+moreover, S-Expression formats can be rewritten as sets of 
+word-pairs, borrowing the representational paradigms (if not 
+identical structures) of Dependency Graphs.  This allows Dependency Graphs 
+and S-Expressions to be juxtaposed, which I will discuss in the remainder of this section.  
+`p`
+
+`subsection.Double de Bruijn Indices`
+`p.
+Assume then that all non-trivial sentences are nested expressions, and that 
+all lexemes other than nouns are notionally `i.functions`/, which take typed 
+`q.inputs` and produce typed `q.outcomes`/.  Expression `q.nesting` means 
+that function inputs are often outcomes from other functions (which establishes a 
+precedence order among functions).  Since there is an obvious notion of 
+`q.parent` %-- instances of functional types are parents of the words or 
+phrase-heads which are their inputs %-- nestable expressions are formally 
+trees.  Via tree-to-graph embedding, they can also be treated as graphs, 
+with edges linking parents to children; since parse-graphs are canonical 
+in some grammar theories (like Link and Dependency grammar), it is 
+useful to consider the graph-style representation as 
+the intrinsic structure of linguistic glosses based on S-Expressions.  
+That is, we want to define a Category of labeled graphs 
+each of whose objects is isomorphic to an S-Expression (using this 
+terminology in the sense of mathematical Category Theory); equivalently, a 
+bijective encoding of S-Expressions within labeled graphs given 
+a suitable class of edge-labels.
+`p`
+
+`p.
+Indeed, labels comprised of 
+two numbers suffice, generalizing the lambda-calculus 
+`q.de Bruijn Indices`/.  The de Bruijn notation is an alternative 
+presentation of lambda terms using numeric indices in lieu of 
+lambda-abstracted symbol (cf., for a linguistic
+or discourse-representation context, `cite<JanVanEijck>;
+and `cite<RikVanNoord>;).  The `i.double` indices
+accommodate the fact that, in the general case, the 
+functional component of an expression may be itself a nested 
+expression, meaning that `q.evaluation` has to proceed in several 
+stages: a function (potentially with one or more inputs) is 
+evaluated, yielding another function, which is then applied 
+to inputs, perhaps again yielding a function applied to still 
+more inputs, and so forth.  I use the term `q.evaluate` which 
+is proper to the computer-science context, but in linguistics 
+we can take this as a suggestive metaphor.  More correctly, 
+we can say that a function/input structure represents a
+cognitive transform which produces a new function 
+(i.e., a phrase with a function-like part of speech), that is
+then the modifier to a new transform, and so forth.  
+In general, the result of a transform can either be 
+the `i.ground` of a subsequent transform, which is akin to 
+passing a function-result to another function; or 
+it can be the `i.modifier` of a subsequent transform, which is akin to 
+evaluating a nested expression to produce a new function, then 
+applied to other inputs in turn.
+`p`
+
+`p.
+For a concrete example, consider 
+
+`sentenceList,
+`sentenceItem; \swl{itm:actually}{The most popular lodging is actually camping on the beaches.}{sem}
+\udref{en_gum-ud-train}{GUM_voyage_socotra-16}
+`sentenceList`
+
+with gloss, as I take it, `gl.((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping))`/.  
+Here the adverb `i.actually` is taken as a modifier to `i.is`/, so we imagine that 
+interpreting the sentence involves first refining `i.is` into `i.is actually`/, 
+yielding a new verb (or `q.verb-idea`/) that then participates in a verb-subject-object 
+pattern.  Hence, the parse opens with the evaluation `gl.(actually is)` in the 
+head-position of the sentence's top-level expression.  Similarly, I read `i.on the beaches` as 
+functionally a kind of adverb, like `q.outside` in `i.camping outside`/.  
+In the generic pattern, a verb can be paired with a designation of location 
+to construct the idea of the verb happening at such location; the designation-of-location 
+is then a modifier to the verb's ground.  When this designation is a locative 
+construction, the whole expression becomes a modifier, while it also has its own 
+internal structure.  In `i.on the beaches`/, `i.on` serves as a modifier which 
+maps or reinterprets `i.the beaches` to a designation of place.
+`p`
+
+`p.
+So here is the 
+unfolding of the phrase: in `i.the beaches` the determinant (`i.the`/) is a modifier 
+to the ground `i.beaches`/, signifying that `i.beaches` are to be circumscribed 
+as an aggregate focus.  Then `i.on` modifies the outcome of that first transform, 
+re-inscribing the focus as a place-designation.  Then `i.that` transform's output 
+becomes a modifier for `i.camping`/, wherein the locative construction becomes 
+a de-facto adverb, adding detail to the verb `i.camping` (camping on the 
+beach as a kind of camping, in effect).`footnote.
+If it seems better to read camping as a `i.noun` %-- the act or phenomenon 
+of camping %-- then we could treat the locative 
+as an `i.adjective`/, with the stipulation that the operation 
+converting verbs to nouns (from `i.X` to the phenomenon, act, or 
+state of `i.X`/-ing) 
+propagates to any modifiers on the verb: modifying constructions that 
+refine `i.X` as verb are implicitly mapped to be adjectives likewise 
+modifying `i.X` in the nominal sense of `q.the phenomenon of `i.X`/-ing`/.  
+`footnote`    
+`p`
+
+`p.
+Notice in this review that `i.the` as modifier in `i.the beaches` yield 
+a pair whose outcome is the `i.ground` for `i.on`/.  If we take the 
+modifier as representative for a modifier-ground pair, `i.the` is the 
+`i.modifier` in its own transform pair but then the `i.ground` in the 
+subsequent pair; the pattern is modifier-then-ground.  However, 
+`i.on` is the modifier `visavis; `i.the` and then `i.also` modifier 
+`visavis; `i.camping`/; the pattern is modifier-then-modifier.  
+This latter case is the scenario where a lexeme will be a modifier 
+on two or more different `q.levels`/, giving rise to the `q.doubling` 
+of de Bruijn indices.  The first index, that is, represents 
+the `q.level` tieing a modifier to a ground, while the second 
+index is the `i.normal` notation of lambda-position.  
+In `i.camping on the beaches`/, the indices for the pair 
+`i.on`//`i.the` would be `gl.1,1` (meaning `i.the` is the first 
+argument to `i.on` on the first transform level); the 
+indices for `i.on`/`i.camping` would be `gl.2,1` (`i.camping` 
+is the first argument to `i.on` on the `i.second` transform level).  
+`p`
+
+`input<figactuallydbl>;
+`p.
+By combining an index for `q.transform levels` %-- capturing cases 
+where a modifier produces an outcome which is a modifier again, not a
+ground %-- with an index for lambda position (e.g. the direct object 
+has index 2 relative to the verb, and the indirect object has 
+index 3), we can transform any expression-tree into a labeled graph. 
+Parse graphs can then be annotated with these double-indices 
+via the same presentations employed for Link or Dependency Grammar 
+labels.  Sentence (\ref{itm:actually}) could be visualized as in 
+Figure~\ref{fig:actuallydbl}, with the double-indices juxtaposed 
+alongside conventional Dependency labels (the indices below the sentence, 
+and relation labels above it); the upper parse is drawn from the 
+Universal Dependency corpus (other annotated examples are included 
+in this paper's downloadable data set).
+%`input<figactually>;
+%`input<figambience>; 
+`p`
+
+`p.
+As a natural corollary to this notation,  
+parts of speech can have `q.type signatures`
+notionally similar to the signatures of function types in programming languages: a verb
+needing a direct object, for example, `q.transforms` two nouns (Subject and Object)
+to a proposition, which could be notated with something like `NNtoProp;.`footnote.
+A note on notation: I adopt the Haskell convention (referring to the Haskell
+programming language and other functional languages) of using arrows both between
+parameters and before output notation, but for visual cue I add one dot above the
+arrow in the former case, and two dots in the latter: `argsToReturn;.
+I will use `N; and `Prop; for the broadest designation of nouns and 
+propositions/sentences (the broadest
+noun type, respectively type of sentences, 
+assuming we are using type-theoretic principles).  I will 
+use some extra markings (in diagrams below) for more specific versions of 
+nouns.
+`footnote`
+The notation is consistent so long as each constituent of a verb 
+phrase has a fixed index number.`footnote.The subject at position one, for instance; 
+direct object at position two; and indirect object at position three.
+`footnote`    
+Transforms (potentially with two or more arguments) then combine lexemes 
+%-- having the right signatures %-- with one or more words or phrases. 
+Type analysis recognizes criteria on these combinations, insofar 
+as the phrases or lexemes at a given index have a type consistent 
+with (potentially a subtype of) the corresponding position in the 
+head-word's signature.  Ideally, this representation can 
+explain `i.ungrammatical` constructions via `i.failure` for 
+these types to align properly.  If the combination `q.type-checks`/, 
+then we can assign the phrase as a whole the type indicated 
+in the signature's output type %-- `Prop; in `NNtoProp;, say; 
+in this case the signature points out how `Prop; derives from the 
+phrase with two `N;s as its components (along with the verb), 
+a derivation we could in turn notate like `NNtoPropYieldsProp;.   
+A resulting phrase can then be included, like a nested expression, 
+in other phrases; for instance a `Prop; joined to 
+`i.that` so as to create a noun-phrase (recall my 
+analysis of `i.question whether` last section); notationally   
+`PropToNYieldsN;.`footnote.
+Numeric indices take the place of left and right adjacency
+%-- `q.looking forward` or backward %-- in Combinatory Categorial 
+Grammar; the type-theoretic perspective abstracts from word order.  
+The theory of result types `q.falling out` from a 
+type-checked phrase structure, however, carries over to this 
+more abstract analysis.
+`footnote`
+`p`
+
+`p.
+Type `q.signatures` like `NNtoProp; may 
+seem little more than notational variants of conventional linguistic
+wisdom, such as sentences' requiring a noun (-phrase) and a verb (`SeqNPplVP;).
+Even at this level, however, type-theoretic intuitions
+offer techniques for making sense of more complex, layered sentences,
+where integrating Dependency Graphs and phrase structures can be complex.
+One complication is 
+the problem of applying Dependency Grammar where phrases do not seem
+to have an obviously `q.most significant` word for linkage with other phrases.
+`p`
+
+`p.
+Often phrases are refinements of one 
+single crucial component %-- a phrase
+like `i.many students` becomes in some sense collapsible to its semantic
+core, `i.students`/.  In real-world examples, however, lexemes tend 
+to be neither wholly subsumed by their surrounding phrase nor wholly 
+autonomous: 
+
+`sentenceList,
+`sentenceItem; \swl{students}{Many students and their parents 
+came to complain about the tuition hikes.}{sco}
+`sentenceItem; \swl{office}{Many students came by my office to complain about their grades.}{sco}
+`sentenceItem; \swl{after}{Student after student complained about the tuition hikes.}{sco}
+`sentenceItem; \swl{parents}{Student after student came with their parents to complain 
+about the tuition hikes.}{sco}
+`sentenceList`
+
+In (\ref{students}) and (\ref{office}), we read `i.Many students` as topicalizing a multitude, 
+but we recognize that each student has their own parents, grade, and we assume they came to 
+the office at different times (rather than all at once).  So `i.students` links 
+conceptually with other sentence elements, in a way that pulls it partly outside the 
+`i.Many students` phrase; the phrase itself is a space-builder which leaves open 
+the possibility of multiple derived spaces.  This kind of space-building duality is 
+reflected in how the singular/plural alternative is underdetermined in a multi-space 
+context; consider Langacker's example: 
+\newsavebox{\Langackerboxi}
+\begin{lrbox}{\Langackerboxi}
+(repeating \ref{itm:threetimes})
+\end{lrbox}
+`sentenceList,
+`sentenceItem; \swl{}{Three times, students asked an interesting question.}
+[\usebox{\Langackerboxi}]{sco}
+`sentenceItem; \swl{}{Three times, a student asked an interesting question.}{sco}
+`sentenceList`
+
+Meanwhile, in (\ref{after}) and (\ref{parents}) the phrase 
+`i.Student after student` invokes a multiplicity akin to `i.Many students`/, 
+but the former phrase has distinct syntactic properties; in particular
+we can replace `i.their parents` (which is ambiguous between a plural and 
+a gender-neutral singular reading) with, say, `i.his parents` (at a 
+boy's school), a valid substitution in (\ref{after})-(\ref{parents})
+but not (\ref{students})-(\ref{office}).  
+`p`
+
+`p.
+Cases like `i.Student after student` (or consider `i.time after time`/, 
+`i.year after year`/, and so forth; this is a common idiomatic pattern 
+in English) present a further difficulty for Dependency Grammar, 
+since it is hard to identify which word of the three is the more 
+significant, or the `q.head`/.  Arguably Constituency Grammar is 
+more intuitive here because then phrases as a whole can get linked 
+to other phrases, without needing to nominate one word to proxy 
+the enclosing phrase.  As I feel the `q.students` examples illustrated, however, 
+it is too simplistic to treat phrases as full-scale replacements for 
+semantic units, as if any phrase is an ad-hoc single lexeme 
+(of course some phrases `i.do` get entrenched as de facto lexemes, 
+like `i.Member of Parliament`/, or my earlier examples 
+`i.red card` and `i.stolen base`/).  
+In the general case though component words retain some syntactic and 
+semantic autonomy (entrenchment diminishes but does not entirely 
+eliminate such autonomy).  There is, then, a potential dilemma:
+phrases link to other phrases (sometimes via subsumption and 
+sometimes more indirectly, as in anaphora resolution), but phrases 
+are not undifferentiated units; lexemes, which on this sort of 
+analysis `i.are` units, can be designated as proxies for their 
+phrase; but then we can have controversy over which word in a 
+phrase is the most useful stand-in for the whole 
+(`cite<OsborneMaxwell>; has an interesting review of a similar 
+controversy in Dependency Grammar).
+`p`
+
+\input{figure.tex} 
+`p.
+Incorporating 
+type theory, we can skirt these issues by modeling phrases through the perspective of
+type signatures: given Part of Speech annotations for phrasal units and then for
+some of their parts, the signatures of other parts, like verbs or adjectives
+linked to nouns, or adverbs linked to verbs, tend to follow automatically.  
+A successful analysis yields a formal tree, where if (in an act of semantic
+abstraction) words are replaced by their types, the `q.root` type is something like
+`Prop; and the rest of a tree is formally a reducible structure in
+Typed Lambda Calculus: `NNtoProp; `q.collapses` to `Prop;, `ProptoN; collapses
+to `N;, and so forth, with the tree `q.folding inward` like a
+fan until only the root remains %-- though a more subtle analysis would
+replace the single `Prop; type with variants that recognize different
+forms of speech acts, like questions and commands.
+In Figure ~`ref<fig:Iknow>;,
+this can be seen via the type annotations: from right to left `NtoN; yields the
+`N; as second argument for `i.is`/, which in turn yields a `Prop; that is mapped
+(by `i.that`/) to `N;, finally becoming the second argument to `i.know`/.  This calculation
+only considers the most coarse-grained classification (noun, verb, proposition) %-- as I
+have emphasized, a purely formal reduction can introduce finer-grained grammatical or
+lexico-semantic classes (like `i.at` needing an `q.argument` which is somehow an expression
+of place %-- or time, as in `i.at noon`/).  Just as useful, however, may be analyses
+which leave the formal type scaffolding at a very basic level and introduce
+finer type or type-instance qualifications at a separate stage.
+`p`
+
+`p.
+In either case, Parts of Speech are modeled as (somehow analogous to) 
+functions, but the important
+analogy is that they have `i.type signatures` which formally resemble functions'.
+Words with function-like types proxy their corresponding phrase, not because 
+they are necessarily more important or are Dependency `q.heads`/, but 
+because they supply the pivot in the type resolutions which, 
+collectively/sequentially, progress to a propositional culmination.  
+This epistemological telos induces a sequencing on the 
+type resolutions %-- there is a fixed way that trees collapse %-- 
+which motivates the selection of function-words to proxy phrases; 
+they are not semantically more consequential, necessarily, but 
+are landmarks in a dynamic figured syntactically as `q.folding inward` 
+and semantically as a progressive signifying refinement.   
+Phrases are modeled via a `q.function-like` Parts of Speech along with one or more
+additional words whose own types match its signature; the type calculations
+`q.collapsing` these phrases can mimic semantic simplifications
+like `i.many students` to `i.students`/, but here the theory is explicit
+that the simplification is grammatic and not semantic: the collapse
+is acknowledged at the level of `i.types`/, not `i.meanings`/.  In addition,
+tree structures can be modeled purely in terms of inter-word relations 
+%-- as I have proposed here with double-indices %-- 
+so a type-summary of a sentence's phrase structure can be notated and
+analyzed without leaving the Link or Dependency Grammar paradigm.  
+`p`
+
+`p.
+In sum, then, function-like words can always be represented as 
+the `q.head` of corresponding phrases, but this implies 
+neither greater semantic importance nor that phrases are 
+conceptual units that fully subsume their parts.  Instead, 
+a `q.head-function` notation captures the idea that 
+sentence-synthesis is bounded by considerations of 
+conceptual integrity that we can model, to some coarse 
+approximation, via type theory.  Designating `i.after` as 
+the `q.head` in `i.student after student` means that we have a 
+type machinery that models (coarsely but formally) how successive cognitive refinement 
+converges onto something with the conceptual profile of a 
+proposition, and that we can leverage this formality by 
+identifying certain words as functional pivots in the 
+synthesis-toward-proposition: these words are not necessarily 
+pivotal in term of meaning, but they are the core skeleton of
+the schematic type-based model which we attach to a 
+sentence while modeling the constraints on its synthesizing 
+process.  (There is a further dimension in the `i.student after student` 
+phrase %-- the repetition of `q.student` %-- which I will discuss later.)
+`p`
+
+`p.
+Or at least, this is one area of analysis where type theory 
+is relevant for linguistics.  I will argue that there are 
+several different methodologies where linguists have 
+turned to type theory, and moreover that they can 
+be integrated into a unified picture organized around 
+the granularity of types themselves, according to the 
+relevant theories.
+`p`
+
+
+`spsubsectiontwoline.Three tiers of linguistic type theory`
+
+`p.
+When explaining grammaticality as type-checking %-- the 
+concordance between function-like signatures and 
+word or phrase `q.arguments` %-- types are 
+essentially structural artifacts; their 
+significance lies in the compositional patterns 
+guiding phrases to merge into larger phrases in a 
+well-ordered way %-- specifically, that the `q.outermost` 
+expression, canonically the whole sentence, is 
+type-theoretically a proposition.  I proposed earlier that 
+sentence-understanding be read as an accretion of detail 
+culminating in a complete idea; type-checking then imposes 
+regulatory guidelines on this accretion, with each 
+constituent phrase being an intermediate stage.  Assigning 
+types to phrases presents a formal means of checking that 
+the accretion stays on track to an epistemological 
+telos %-- that the accumulated detail will eventually 
+cohere into a propositional whole, a trajectory formally 
+captured by the progressive folding-inward of phrase types 
+to a propositional root.
+`p`
+
+`p.
+Types themselves are therefore partly structural fiats 
+%-- they are marks on intermediate processing stages 
+embodying the paradigm that type-checking `i.captures` 
+the orderliness of how successive cognitive transforms 
+accrue detail toward a propositionally free-standing end-point.  
+At the same time, types also have semantic interpretations; 
+the `N;/`Prop; distinction, for example, is motivated by 
+the cognitive difference between nominals and states of affairs 
+as units of reason.  Type-theoretic semantics allows the 
+structural paradigm of type-checked resolutions, the 
+tree `q.folding inward` onto its root, to be merged with 
+a more semantic or conceptual analysis of types qua 
+categories or classifications of meanings (or of 
+units comprising meanings).  I have described this merger 
+at a coarse level of classification, taking broad 
+parts of speech as individual types, but similar 
+methods apply to more fine-grained analysis.
+By three `q.tiers` of linguistic organization, I am thinking of
+different levels of granularity, distinguished by relative scales of
+resolution, amongst the semantic implications of
+putative type representations for linguistic phenomena.
+`p`
+
+`p.
+From one perspective, grammar is just a
+most top-level semantics, the primordial Ontological division of language into designations of
+things or substances (nouns), events or processes (verbs), qualities and attributes (adjectives),
+and so forth.  Further distinctions like count, mass, and plural nouns add
+semantic precision but arguably remain in the orbit of grammar (singular/plural
+agreement rules, for example); the question is whether semantic detail gets
+increasingly fine-grained and somewhere therein lies a `q.boundary` between syntax and
+semantics.  The mass/count distinction is perhaps a topic in grammar more so than
+semantics, because its primary manifestation in language is via agreement
+(`i.some` wine in a glass; `i.a` wine that won a prize; `i.many` wines
+from Bordeaux).  But what about distinctions between natural and constructed objects,
+or animate and inanimate kinds, or social institutions and natural
+systems, matters more of grammar or of lexicon?  
+
+
+`p`
+
+`p.
+For example, the template `i.I believed
+X` generally requires that `i.X` be a noun
+(`qmarkdubious;`i.I believed run`/), but more narrowly a
+certain `i.type` of noun, something that can be interpreted
+as an idea or proposition of some kind (`qmarkdubious;`i.I believed flower`/).
+Asher and Pustejovsky point out the anomaly in a sentence
+like `q.Bob's idea weighs five pounds`
+\cite[example 2, p. 5]{AsherPustejovsky}, which
+possesses a flavor of unacceptability that feels akin to
+Part of Speech errors but are not in fact syntactic
+errors.  The object of `i.weigh` is `q.five pounds` and
+its subject is `q.Bob's idea`/, which is admissible
+`i.syntactically` but fails to honor our semantic convention
+that the verb `q.to weigh` should be applied to things
+with physical mass (at least if the direct object denotes a quantity;
+contrast with `i.Let's all weigh Bob's idea`/, where the
+`i.idea` is object rather than subject).  These conventions are
+analogous to Part of Speech rules but more fine-grained:
+there is a meaning of `i.weigh` which has (like any transitive
+verb) to be paired with a subject and object noun, but beyond
+just being nouns the subject must be a physical body
+(in effect a sub-type of nouns) and the object a quantitative
+expression (another sub-type of nouns).  Potentially, type
+restrictions on a coarse scale (e.g. that the subject of a verb
+must be a noun) and those on a finer scale (as in this
+sense of `i.to weigh`/) can be unified into an overarching theory,
+which spans both grammar and semantics %-- for instance,
+both Part of Speech rules and usage conventions of the
+kind often subtly or cleverly subverted in metaphor and
+idioms (see `i.flowers want sunshine`/, `i.my computer died`/,
+`i.neutrinos are sneaky`/, as rather elegantly compactified
+by assigning sentient states to inert things).  This is one way of
+reading the type-theoretic semantic project.
+`p`
+
+`p.
+Certainly `q.Ontological` qualities of signifieds engender
+agreements and propriety which appear similar to
+grammatic rules.  `i.The tree wants to run away from the dog` sounds wrong %-- because
+the verb `i.want`/, suggestive of propositional attitudes, seems incompatible with
+the nonsentient `i.tree`/.  Structurally, the problem with this sentence seems analogous
+to the flawed `i.The trees wants to run away`/: the latter has incorrect singular/plural linkage,
+the former has incorrect sentient/nonsentient linkage, so to speak.  But does this
+structural resemblance imply that singular/plural is as much part of semantics as grammar, or
+sentient/nonsentient as much part of grammar as semantics?  It is true that there are no
+morphological markers for `q.sentience` or its absence, at least in English %-- except
+perhaps for `q.it` vs. `q.him/her` %-- but is this an accident of English or revealing
+something deeper?
+`p`
+
+`p.
+In effect, assessments of propriety seem to operate on several levels.  First 
+(not to imply an actual temporal priority, though) 
+we may consider fine-grained word-sense: which lexical entrant for 
+such-and-such word is plausible in the current context?  Then 
+we can consider larger-scale Ontological criteria: is the subject 
+of this sentence figured as material or immaterial, 
+sentient or nonsentient, natural or sociocultural, spatially and/or 
+temporally extended or pointwise; and so forth?  And finally, 
+what Part of Speech is consistent for various words given syntactic
+principles and morphological cues %-- distinguishing noun/verb/adjective, 
+and etc., along with singular/plural, mass/count, verb tense and case, 
+and other criteria of morphosyntactic fit?  
+`p`
+
+`p.
+So type-related observations can be grouped (not necessarily
+exclusively or exhaustively) into those I will call
+`i.macrotypes` %-- relating mostly to Parts of Speech and the functional treatment
+of phrases as applicative structures; `i.mesotypes` %-- engaged with
+existential/experiential qualities and `q.Ontological` classifications
+like sentient/nonsentient, rigid/nonrigid, and
+others I have discussed; and `i.microtypes` %-- related to lexemes and word-senses.
+This lexical level can include  `q.microclassification`/, or
+gathering nouns and verbs by the auxiliary prepositions they allow and
+constructions they participate in (such as, different cases), and
+especially how through this they compel various spatial and
+force-dynamic readings; their morphosyntactic resources for describing states
+of affairs; and, within semantics, when we look toward even more fine-grained classifications
+of particular word-senses, to reason through contrasts in usage.`footnote.
+So, conceiving microclasses similar in spirit to Steven Pinker in
+Chapter 2 of `cite<Pinker>;, though I'm not committing to using the
+term only in the way Pinker uses it.  Cf. also `cite<AnneVilnat>;, which
+combines a microclass theory I find reminiscent of `i.The Stuff of Thought` with
+formal strategies like Unification Grammar.
+`footnote`  Microclasses can point out similarities
+in mental `q.pictures` that explain words' similar behaviors, or
+study why different senses of one word succeed or fail to be acceptable in particular phrases.
+There are `i.stains all over the tablecloth` and `i.paint splattered all over the tablecloth`/,
+but not (or not as readily) `i.dishes all over the tablecloth`/.  While `q.stains` is count-plural and
+`q.paint` is mass-aggregate, they work in similar phrase-structures because both
+imply extended but not rigid spatial presence; whereas `q.dishes` can work for
+this schema only by mentally adjusting to that perspective, spatial construal shifting
+from visual/perceptual to practical/operational (we might think of dishes `q.all over` the
+tablecloth if we have the chore of clearing them).  Such observations support
+microclassification of nouns (and verbs, etc.) via Ontological and
+spatial/dynamic/configuration criteria.
+`p`
+
+`p.
+Type-theoretic semantics can also apply Ontological tropes to unpack the overlapping mesh of word-senses,
+like `i.material object` or `i.place` or `i.institution`/.
+This mode of analysis is especially well illustrated when competing senses
+collide in the same sentence.  Slightly modifying two examples:`footnote.
+\cite[p. 40]{ChatzikyriakidisLuo} (former) and
+\cite[p. 4]{MeryMootRetore} (latter).
+`footnote`
+
+`sentenceList,
+`sentenceItem; \swl{}{The newspaper you are reading is being sued.}{lex}
+`sentenceItem; \swl{itm:Liverpool}{Liverpool, an important harbor, built new docks.}{lex}
+`sentenceList`
+
+Both have a mid-sentence shift between senses, which is analyzed
+in terms of `q.type coercions` (see also `cite<ZhaohuiLuo>;
+and `cite<ZhaohuiLuoSignatures>;).
+The interesting detail of this treatment
+is how it correctly predicts that such coercions are not guaranteed to
+be accepted:
+
+`sentenceList,
+`sentenceItem; \swl{}{The newspaper fired a reporter and fell off
+the table.}[(?)]{lex}
+`sentenceItem; \swl{}{Liverpool beat Tottenham and built new docks.}[(?)]{lex}
+`sentenceList`
+
+(again, slightly modifying the counter-examples).  Type coercions are
+`i.possible` but not `i.inevitable`/.  Some word-senses `q.block` certain coercions
+%-- that is, certain sense combinations, or juxtapositions, are disallowed.
+These preliminary, motivating analyses carry to more
+complex and higher-scale types, like plurals (the plural of a type-coercion
+works as a type-coercion of the plural, so to speak).
+As it becomes structurally established that type rules at the
+simpler levels have correspondents at more complex levels, the use of
+type notions `i.per se` (rather than just `q.word senses` or other
+classifications) becomes more well-motivated.
+`p`
+
+`p.
+Clearly, for example,
+only certain kinds of agents may have beliefs or desires, so
+attributing mental states forces us to conceive of their referents
+in those terms:
+
+`sentenceList,
+`sentenceItem; \swl{}{Liverpool wants to sign a left-footed striker.}{ont}
+`sentenceItem; \swl{}{That newspaper plans to fire its editorial staff.}{ont}
+`sentenceList`
+
+This `i.can` be analyzed as `q.type coercions`/; but the type-theoretic machinery should contribute
+more than just obliquely stating linguistic wisdom, such as
+maintaining consistent conceptual frames or joining only suitably
+related word senses.  The sense of `i.sign` as in `q.employ to play on
+a sports team` can only be linked to a sense of Liverpool as the
+Football Club; or `i.fire` as in
+`q.relieve from duty` is only compatible with newspapers as
+institutions.  These dicta can be expressed in multiple ways.
+But the propagation of classifications
+(like `q.inanimate objects` compared to
+`q.mental agents`/) through complex type structures lends credence to the
+notion that type-theoretic perspectives are more than just an expository tool;
+they provide an analytic framework which integrates grammar and semantics, and
+various scales of linguistic structuration.
+For instance, we are prepared to accept some examples of dual-framing
+or frame-switching, like thinking of a newspaper as a physical object and a city government
+(but we reject other cases, like `i.Liverpool voted in a new city government and signed a
+new striker` %-- purporting to switch from the city to the Football Club).  The rules for
+such juxtapositions appear to reveal a system of types with some parallels to
+those in formal settings, like computer languages.
+`p`
+
+`p.
+In short, `q.Ontological` types like `i.institution` or `i.place` serve in some
+examples to partition senses of one multi-faceted word.  Here they reveal
+similar cognitive dynamics to reframing-examples like `i.to the press`/, where
+Ontological criteria (like reading something as a place) are triggered by
+phrase-scale structure.  But there are also interesting contrasts:
+the `i.newspaper` and `i.Liverpool` examples
+imply that some words have multiple framings which are well-conventionalized;
+newspaper-as-institution feels less idiomatic and metaphorical than
+press-as-place.  So these examples suggest two `q.axes` of variation.
+First, whether the proper Ontological framing follows from other word-choices
+(like `q.fire` in `i.the newspaper fired the reporter`/, which has
+its own semantic needs), or from morphosyntax
+(like the locative in `i.to the press`/); and, second, whether triggered framings work
+by selecting from established word senses or by something more metaphorical.
+Metaphors like `i.to the press` do have an element of standardization;
+but apparently not so much so to be distinct senses: note how `i.the press` as metaphorical place
+does not work in general: `qmarkdubious;`i.at the press`/, `qmarkdubious;`i.near the press`
+(but `i.at the newspaper`/, `i.near the newspaper`
+%-- imagine two journalists meeting outside the paper's offices %-- sound quite reasonable).
+`p`
+
+`p.
+The `q.type coercion` analysis works for mid-sentence frame-shifts; but other
+examples suggest a more gradual conceptual `q.blending`/.  For example, the
+place/institution dynamic is particularly significant for `i.restaurant`
+(whose spatial location is, more so, an intrinsic part of its
+identity).  Being a `i.place` implies both location and extension; most places are not single
+points but have an inside where particular kinds of things happen.  I am not convinced
+that restaurant as place and as institution are separate word senses; perhaps, instead,
+conversations can emphasize one aspect or another, non-exclusively.  
+We need not incorporate all framing effects via `q.subtypes` (restaurant as either
+subtype of hypothetical `q.types of all` places or institutions, respectively).  But
+`q.placehood`/, the Ontological quality of being a place %-- or analogously being
+a social institution %-- identify associations that factor into cognitive frames; types
+can then be augmented with criteria of tolerating or requiring one association or another.
+So if `q.restaurant` is a type, one of its properties is an institutionality that `i.may`
+be associated with its instances.  In conversation,
+a restaurant may be talked about as a business or community, foregrounding this
+dimension.  Or (like in asking for directions) its spatial dimension may be foregrounded.
+The availability of these foregroundings is a feature of a hypothetical restaurant type,
+whether or not these phenomena are modeled by subtyping or something more sophisticated.
+The `q.newspaper` examples suggest how Ontological considerations
+clearly partition distinct senses marked by properties like objecthood or
+institutionality (respectively).  For `q.newspaper` the dimensions are less available for
+foregrounding from a blended construal, than `q.unblended` by conventional usage; that
+is why reframings evince a type `i.coercion` and not a gentler shift of emphasis.
+The example of `i.restaurant`/, in contrast, shows that competing routes for
+cognitive framing need not solidify into competing senses, though they trace
+various paths which dialogs may follow.
+But both kinds of examples put into evidence an underlying
+cognitive-Ontological dynamic which has potential type-oriented models.
+`p`
+
+`p.
+At the most general level %-- what I called `i.macrotype` modeling %-- a type
+system recognizes initially only the grammatical backbone of expressions, and
+then further type nuances can be seen as shadings and interpretations which add substance
+to the syntactic form.  So in type-theoretical analysis at this more grammatic level,
+we can still keep the more fine-grained theory in mind:
+the relation of syntax to semantics is like the relation of a spine to its flesh,
+which is a somewhat different paradigm than treating syntax as a logical or temporal
+stage of processing.  Instead of a step-by-step algorithm where grammatical parsing
+is followed by semantic interpretation, the syntax/semantics interface can be seen
+as more analogous to stimulus-and-response: observation that a certain grammatic
+configuration appears to hold, in the present language artifact, triggers a marshaling
+of conceptual and cognitive resources so that the syntactic backbone can be filled in.
+Perhaps a useful metaphor is grammar as gravitation, or the structure of a gravitational
+field, and semantics is like the accretion of matter through the interplay of multiple
+gravitational centers and orbits.  For this analogy, imagine typed lambda
+reductions like `PropToNYieldsN; taking the place of gravitational equations;
+and sentences' grammatic spine taking the place of curvature pulling mass into a planetary center.
+`p`
+
+`p.
+As I have argued, sentences' progression toward complete ideas can be 
+assessed more semantically %-- accretion of conceptual detail %-- 
+or more syntactically, in terms of regulated type resolutions pulling in 
+from a tree's leaves to its root.  The latter model is a kind of 
+schematic outline of the former, marking signposts in the accretion 
+process rather like a meetings' agenda.  Type theory allows points in 
+conceptual accretion to be selected %-- corresponding to nested phrases 
+%-- where type-checking signals that the accretion is progressing 
+in an orderly fashion.  Or, more precisely, type-checking acts 
+as a window on a cognitive process; phrasal units are like 
+periodic gaps in a construction wall allowing us to reconstruct interpretive 
+processes, and the possibility of certain linguistic elements being 
+assigned types marks the points where such windows are possible.  
+So type theory can impose a formal paradigm on our assessment 
+of sentence structure, but at the cost of sampling only 
+discrete steps of an unfolding completion toward understanding.  
+In practice, this discrete analysis should be supplemented 
+with a more holistic and interpretive paradigm, which explores 
+%-- perhaps speculatively, without demanding thorough 
+formalization %-- the gaps between the formalizable windows.  
+I will transition toward this style of analysis in the next section. 
+`p`
+
+`thindecoline;
+`p.
+At the same time, I feel that the foundations of `q.cognitive` 
+linguistics deserve a little more attention.  I have used 
+`i.cognitive` rather informally, depending on the intuitive 
+picture of `q.cognitive` linguistics, grammar, or indeed 
+`q.cognitive phenomenology`/, which emerges from the 
+speculative project we associate with linguists/philosophers 
+like George Lakoff, Mark Johnson, Leonard Talmy, 
+Ronald Langacker, and Peter `Gardenfors; %-- along with, as 
+`Gardenfors; points out, phenomenologists like Jean Petitot.`footnote.
+`Gardenfors; mentions Lakoff, Langacker, Talmy, Fauconnier, 
+and others alongside `q.a French semiotic tradition, 
+exemplified by [Jean-Pierre] Descl\'es ... and 
+[Jean] Petitot-Cocorda ... which shares many features with the 
+American (mainly Californian) group` \cite[p. 4]{Gardenfors}.  
+`footnote`  At the same time, Petitot also links with a 
+tradition that combines elements of phenomenology and 
+Analytic Philosophy, represented by philosophers like 
+Barry Smith and David Woodruff Smith and by `q.Analytic Phenomenology` 
+or `q.Naturalizing Phenomenology` projects, the latter also being 
+a large volumes Petitot co-edited.`footnote.
+Petitot's and Barry Smith's formalizing projects were parallel
+and collaborative to some extent.  Maxwell James Ramstead
+in a 2015 master's thesis reviews the history elegantly:
+
+`quote,
+Now, the `q.science of salience`
+proposed by Petitot and Smith (1997) illustrates the
+kind of formalized analysis made possible through the direct
+mathematization of phenomenological descriptions.
+Its aim is to account for the invariant descriptive
+structures of lived experience (what Husserl called `q.essences`/)
+through formalization, providing a descriptive geometry of
+macroscopic phenomena, a `q.morphological eidetics` of the
+disclosure of objects in conscious experience (in Husserl's
+words, the `q.constitution` of objects).
+Petitot employs differential geometry and morphodynamics
+to model phenomenal experience, and Smith uses formal structures from
+mereotopology (the theory of parts, wholes, and their boundaries)
+to a similar effect. \cite[p. 38]{Ramstead}
+`quote`
+`footnote` 
+`q.Cognitive` in these contexts 
+tends to imply desire to ground analyses on holistic
+human experience, in its experiential, embodied, pragmatically-oriented, 
+first-personal, and intersubjective dimensions.`footnote.
+Note that in this sense 
+`q.Cognitive` connotes a very different perspective than this same 
+term in `AI; research, for example; on the one side we have a 
+philosophical commitment to the irreducibility of
+human reason to computable `q.symbol processing`/, whereas 
+on the other there is a paradigm where, in effect 
+(perhaps simply because mental activity is presumably 
+reducible to low-level biological processes), there 
+exists `i.some` computable core of cognition, which scientists 
+can unlock to build powerful `q.Artificial General Intelligence`/.
+`footnote`   
+`p`
+
+`p.
+Cognitive linguistics can be called `q.speculative` because its 
+methodology generally relies on linguists' assessments of 
+acceptability rather than empirical data from surveys, 
+computational or statistical analyses of copora, or 
+psycholinguistic studies of language processing or acquisition.  
+Analytic Phenomenology is speculative in similar ways; 
+although in some cases phenomenological structures are 
+related to formal/mathematical theories like 
+Mereotopology or Differential Geometry (cf. Barry Smith and 
+Petitot, respectively, or Kit Fine's `i.Part-whole` 
+`cite<KitFine>;), phenomenologists' assessments of 
+common perceptual patterns (and how they are 
+situationally or conceptually interpreted and engaged with) 
+is principally introspective.  Both phenomenologists 
+and cognitive linguists, in short, introspect on 
+conscious and linguistic experience to identify patterns 
+which they believe are not eccentric to their own cognition,
+but have some public disputability and theoretical merit.  
+Of course, the overall dialog wherein philosophers debate 
+and compare their own introspective reports allows 
+this speculative method to have some rigor, because descriptions 
+of cognitive processes %-- in their first-personal 
+facticity %-- which seem both subjectively faithful and
+structurally revealing will emerge as analyses of 
+general pattern so long as multiple philosophical treatments 
+agree on their fidelity to experience.  So 
+analyses get theoretically favored if they meet three 
+different criteria of structural productivity %-- in the 
+sense that produce new insight onto cognitive processes, 
+rather than just describing cognition as an experienced
+givenness %-- plus both faithfulness to each person's 
+conscious experience and also generality to many 
+people's experience.`footnote.
+So for instance, Husserl's examination of 
+protention and retention in sensing spatial form during 
+perceptual episodes focused on discrete, extended objects 
+(e.g. in `i.Thing and Space`/), or his investigation of 
+how intersubjectivity contributed to consolidating our 
+conceptual integration of perceptual givens 
+(e.g. in the `i.Cartesian Meditations`/), can be 
+considered classic phenomenological analyses because they 
+have been deemed both experientially accurate and 
+theoretically insightful by subsequent generations' worth of 
+public review.
+`footnote`
+`p`
+
+`p.
+At their best, then, both phenomenology and cognitive linguistics 
+combine introspective analysis and public disputation to 
+develop theories of cognitive-experiential structures %-- of 
+how the immediate structuraion of perceptual experience as 
+primordial conscious content unfolds into the
+schematic and rational models of our surrounding environment
+and situations, for purpose of goal-directed activity and 
+inter-personal, collective reasonableness.  The underlying assumption 
+is that raw structures, below the threshold of conscious 
+deliberation, are enmeshed in immediate experience, and that from 
+there we can identify ambient and situational patterns; 
+mental representations of 
+the structural and material properties of surrounding 
+objects and places and the social/pragmatic rules 
+governing interpersonal situations.  We can then 
+posit situational prototypes and morphological principles 
+apparently operating in these representations, which become 
+the basis of systematic theorizing of cognitive activity 
+in general, including language.
+`p`
+
+`p.
+In this paradigm, situational and organizational prototypes 
+and patterns lend their structure to language, so 
+%-- in many cases, i.e., with respect to many 
+language artifacts %-- the scenarios influencing 
+linguistic structure are these extra- or pre-linguistic 
+gestalts rather than semantic to syntactic rules 
+`i.per se`/.  But for this belief about the origin of 
+(at least some) surface-level linguistic form to be 
+leveraged as a diligent semantic or syntactic method, 
+we need a systematic account of how phenomenological 
+pattern evolve into (by grounding) linguistic 
+structures.  A thorough treatment of this problem 
+is far beyond the scope of one paper, but I will 
+offer a few ideas in the remainder of this section.
+`p`
+
+
+`subsection.Types and Phenomenology`
+`p.
+In their proper context, understanding linguistic expressions 
+requires binding language to objects or `q.phenomena` in 
+speakers' collective perceptual (or conceptual) horizon.  
+Referents are not always material things; they can even 
+be the `i.absence` of objects, or of substance: 
+
+`sentenceList,
+`sentenceItem; \swl{itm:footprints}{There are footprints on the beach.}{ref}
+`sentenceItem; \swl{itm:hole}{There's a hole in the bucket.}{ref}
+`sentenceItem; \swl{itm:footprintsleading}{There are footprints leading up the hill.}{ref}
+`sentenceItem; \swl{itm:traintracks}{There are train tracks leading up the hill.}{ref}
+`sentenceList`  
+
+In (\ref{itm:footprints}) our attention is direct not to any `i.object`/, but 
+to a certain perceptual pattern which has some factual significance, enough 
+to warrant a distinct concept.  Insofar as `i.one` footprint is a 
+focus of attention, we notice some pattern of discontinuity which allows 
+a foreground to emerge from a background %-- but there is perceptual 
+blend of discontinuity and continuity, since a footprint is literally 
+situated in a material expanse with its surroundings.  To focus on the 
+footprint %-- a cognitive act which is both perceptual and conceptual 
+%-- we have to retain awareness both of the footprint materially 
+continuous with the surrounding sand (say) and also distinct from it 
+via a somewhat different color or composition (e.g., the sand in the footprint 
+may be darker or more compact than the sand around it).  When talking 
+about `i.footprints`/, plural, we have to direct attention to a perceptual 
+totality, something extending over our visual field and possessing inner 
+parts, but also suggesting a conceptual totality, a worthiness of 
+being cognized in aggregate.  
+`p`
+
+`p.
+In (\ref{itm:footprintsleading}), moreover, we conceive the totality in conjunction 
+with a sense of direction, and protention.  The implication is that we 
+do not see `i.all` of the footprints, but we can discern from their 
+pattern a direction which, we anticipate, will reveal more footprints.  
+Meanwhile the footprints are presumably disjoint, unlike train tracks.
+So the perceptual foreground in (\ref{itm:footprintsleading}) is phenomenologically 
+complex, including a totality we perceive that implies a greater 
+totality, part of which is experienced anticipatorily rather than 
+explicitly, along with a fragmentation which nonetheless permits a 
+perceptual unification into a coherent whole.  These kinds of 
+perceptual/conceptual complexities in arrangements 
+%-- blending continuity and discontinuity, wholeness and 
+fragmentation, sensation and protention %-- are canonical 
+to the phenomenology of attentional foci in any cognition 
+engaged with ambient situations, which certainly 
+includes language.  We are not robots experiencing the 
+world as a tableau of simply discrete, integral object-`q.things`/.
+`p`
+
+`p.
+Language serves as a guide to negotiating the complexities of 
+perceptual foci in inter-personal environments.  
+We therefore have to understand how language 
+`q.hooks` into conversants' phenomenological faculties. 
+So we have, at a basic level, a 
+contrast between situationally grounded or conceptually 
+generalized references: 
+
+`sentenceList,
+`sentenceItem; \swl{itm:Salesmen}{Salesmen are intelligent.}{ont}
+`sentenceItem; \swl{itm:knocking}{Salesmen are knocking on the door.}{ont}
+`sentenceItem; \swl{itm:Should}{Should I let them in?}{ont}
+`sentenceList`  
+
+The effects of (\ref{itm:knocking}) 
+(which with (\ref{itm:Salesmen}) are from the `i.Handbook`/, example 44, page 169, 
+chapter 6) are manifest in several 
+changes to conversants' collective understanding: (\ref{itm:knocking}) 
+establishes both a domain of potential reference (the salesmen 
+could be subsequently identified as `i.the salesmen` or 
+`i.those salesmen` or `i.them`/), and the fact of their being 
+at the door established as a basis for further dialog (e.g., 
+(\ref{itm:Should})).  The more generic (\ref{itm:Salesmen}) 
+does not have any comparable situational effects, though 
+it permits further dialog on a more generic plane. 
+`p`
+
+`p.
+Sometimes, of course, people dialog about things that are 
+perceptually evident around them collectively.  Probably 
+more common, though, is that the structures of 
+presentational perception translated to general 
+cognitive patterns that are signified through language.  
+That is to say, the rules of perceptual gestalts 
+%-- the partial continuity and partial discontinuity 
+between background and foreground; and the mixture of 
+singular integrity and divisibility characterizing attentional  
+foregrounds %-- are taken for granted as patterns 
+typifying perception in general, whether that be 
+perceptions presently occurring in the situational 
+context or those conceptualized indirectly, abstractly, 
+or hypothetically.  How foci of attention figure into 
+perceptual continua become part of their extralinguistic 
+background, reflected in lexical conventions: 
+
+`sentenceList,
+`sentenceItem; \swl{itm:ink}{There are ink stains on the pages of this book.}{ref}
+`sentenceItem; \swl{itm:sunset}{There is a pretty sunset over the river.}{ref}
+`sentenceItem; \swl{itm:cicada}{In some neighborhoods, cicada insects make loud sounds from sunset to sunrise.}{ref}
+\udref{en_gum-ud-train}{GUM_voyage_phoenix-30}
+`sentenceItem; \swl{itm:applause}{The audience rose to give thundering applause.}{ref}
+`sentenceList`  
+
+The unifying theme in these examples is that their central concepts are 
+experienced in terms of a matrix of phenomenological criteria that can 
+be harnessed into a general theory: how an ink stain is (in part) 
+materially continuous with the stained paper that extends around it; 
+how `i.a pretty sunset` is an imprecisely bounded but conceptually 
+integral atmospheric event; how (\ref{itm:applause}) figures the audience as 
+discrete individuals who, at that moment, act in such a way as to present a 
+conceptual and perceptual totality; how (\ref{itm:cicada}) likewise proposes 
+a totality but in a more complex fashion, because the speaker is 
+describing a typical `i.kind` of experience rather than the specific 
+sounds of cicadas on one specific occasion. 
+`p`
+
+`p.
+The matrix of continuity/discontinuity, and individual coherence balanced
+(within intentional `q.noemata`/) 
+against internal structuration and diversity, 
+are `i.conceptually` intrinsic to notions like `i.ink stains` (or `i.footprints`/), 
+`i.applause`/, `i.sunsets`/, and even `i.cicadas` and `i.noises`/.  
+They become part of a language's lexical machinery and 
+therefore embed, in lexical conventions, phenomenological 
+prototypes that imply a situational background, called 
+forth by the lexical potency of the specific words.  
+The point is not that the hearer of (\ref{itm:sunset}), say, 
+sees the sunset also, and thus `i.explicitly` undergoes the 
+disclosure-experience of a sunset (in all its sensory 
+vividness and individuating vagueness).  Instead, the 
+patterns of sensation and (dynamic, imprecise, un-fixed) 
+individuation are abstracted to prototypes poised within 
+the lexicon itself to be perceived as applicable to the 
+talked-about situation.  We have some idea of the 
+`i.kind` of experience is involved in a sunset, not just 
+perceptually but in the nexus of conceptual and 
+rational processes which leads us to identify the sunset 
+as such and estimate its phenomenal specificity 
+%-- its spatial form, its temporality %-- so that it 
+has some determinate epistemic content, something 
+that can be discussed with others (`i.Did you see the 
+sunset`/; `i.Is it too late to see the sunset`/; etc.).  
+`p`
+
+`p.
+Phenomenological patterns in construing conceptual and 
+referential foci, solicited by lexical and idiomatic 
+conventions, give language flexibility and rhetorical 
+flair, often bounding expressive possibilities on 
+phenomenological rather than narrowly semantic grounds.  
+I would dispute some of Nunberg's analyses I mentioned 
+in the last section, for example, on the 
+dubiousness of (\ref{itm:start}) or the exceptionality 
+of (\ref{itm:Sauternes}).  I do not find
+(\ref{itm:start}) exceptionally jarring, considering the 
+situational construal common to (\ref{itm:start}) along 
+with (\ref{itm:parked}) and (\ref{itm:waiting}): 
+the formation `i.I am parked` is not `i.just` a matter of 
+a person proxy-referring their car.  Usually a person 
+saying `i.I am parked` is `i.in` their car, so they are 
+describing a larger situation %-- the conceptual foreground 
+is the totality of the car and themselves in it.  Were the 
+addressee to find them, their attention would be directed 
+to the car `i.and` the speaker, as a complex but 
+integral (in that episode of time) whole.  
+This then carries over to cases where the speaker 
+is `i.not` in their car.  Saying `i.I am parked` (along with 
+a place-description) outlines the steps needed to return to 
+the car; it is a way of framing the car's location 
+operationally.  Using the first person for where the car is 
+parked %-- even when the speaker is not at that spot 
+%-- indicates that the speaker is conceiving the car's 
+location in first-personal terms; that is, in terms 
+of the actions the speaker is taking or anticipates 
+taking.   
+`p`
+
+`p.
+This analysis then implies that (\ref{itm:start}) is 
+acceptable on similar operational grounds; first-personalizing 
+the cars location, so to speak, foregrounds that location 
+only in the context of an operational totality involving 
+(presumably) going to the car and then driving it.  
+If the speaker is concerned about the car not starting, 
+this is relevant to how the overall situation is 
+cognized, and therefore the transition from the speaker-centered 
+`i.I am parked ...` to the discordant `i.and may not start` 
+is understandable.  I would similarly argue that the 
+apparent difference between (\ref{itm:Sauternes}) and
+(\ref{itm:beers})-(\ref{itm:Michelobs}) depends on how 
+referential foci are established.  The phrase 
+`i.a beer` can designate a specific glass or bottle of 
+beer %-- something perceptually and enactively/kinaesthetically 
+individuated %-- or also a specific preparation of beer,
+individuated by the unique flavor of the beverage rather than 
+the material identity of the liquid.  These 
+differences have phenomenological overtones: if I say 
+`i.I drank two beers` I could mean two glasses, pints, or 
+bottles; I could also mean two `i.kinds` of beer 
+(maybe multiple pints of each).  The phrasing itself 
+is ambiguous, but the ambiguity is extra-linguistic: 
+it relates to how linguistic content binds to empirical 
+givens with their rules of phenomenological 
+individuation.  The `q.two pints` reading implies 
+one kind of phenomenological architecture governing 
+`q.word-to-world fit`/, where elements in language 
+link to discrete, perceptually/operationally integral
+objects like glasses (though of course a glass of 
+beer is also an integral complex where the beer and 
+the glass are semi-autonomous parts).  The `q.two kinds`
+reading is more subtle, resting conceptual focus on the 
+belief that a distinct kind of beer has a distinct 
+flavor that is both unique `visavis; other beers and 
+also consistent across bottles (or kegs), so it has 
+`i.a` taste that people can jointly experience and 
+talk about.  Nunberg makes the reasonable claim 
+that we are more likely the hear the 
+former interpretation when it comes to beers, and 
+the latter one for Sauternes, but I can imagine plausible
+conversations where these conventions would be reversed.  
+`p`
+
+`p.
+To return to type theory, then, this style of 
+formalization is a potential window onto how the 
+lexicalized concepts negotiate the phenomenological 
+options in `q.binding` words to phenomena.  
+The matrix of continuity/discontinuity and 
+individuation (singularity)/complexity (internal 
+structure or diversity) forms a tableau which 
+different word senses and, in explicit phrase contexts, 
+different usages `q.hook into` in different ways.  
+So beer `i.qua` liquid has one conventional 
+pattern in `q.word-to-world fit`/, while beer 
+`i.qua` consumer product, or a brewer's creative 
+endeavor, evinces a different phenomenological 
+pattern.  This is modeled, to some approximation, 
+by the `q.type` (or as I put it `q.mesotype`/) 
+distinction of a liquid (more generally a substance) 
+against a consumer product or social good 
+(more generally a socio-cultural artifact).  We 
+can refer to beers in both senses, and I have 
+mentioned theories of type `q.coercions` or
+juxtapositions (cf. Pustejovsky's `q.dot product`
+theories in `cite<JamesPustejovsky>; or 
+`cite<AsherPustejovsky>;) that explore when 
+the different `q.Ontological` construals or sentences can be 
+combined or alternated.  At this point I would add that 
+these Ontological details are not only relevant to 
+semantics; they also govern how phenomenological 
+patterns can be reified and typified in lexical and 
+idiomatic conventions.  
+`p`
+
+`thindecoline;
+
+`p.
+For successful conversation, participants need to converge 
+for each sentence on a common conceptual focus; not surprisingly, 
+this process often reciprocates the phenomenology of 
+perceptual focus, or enactive/kinaesthetic attention.  
+Drawing form from phenomenological structure, referential 
+signification often takes shapes that can seem opaque 
+on purely logical considerations.  In analysis of 
+referring expressions, then %-- analogously to 
+semantic analyses as earlier in this section %-- we need 
+to be sensitive to the possibilities of language form 
+molding to perceptual and situational gestalts rather 
+than predicate structure.  
+`p`
+
+`p.
+Nunberg, for instance, investigates how the proxying effect in 
+`i.I am in the Whitney` can be generalized to other cases.  
+I'll point out that this fits a not-uncommon rhetorical 
+pattern, as in: 
+
+`sentenceList,
+`sentenceItem; \swl{itm:hall}{I am in the Hall of Fame.}{ref}
+`sentenceItem; \swl{itm:ontv}{I am on TV.}{ref}
+`sentenceList`  
+
+Nunberg argues that reference, in these kinds of cases, will
+`q.transfer` between conceptually
+linked designata, so I can refer to my car's location as my location, 
+or to my painting as myself.  If we analyze this logically, 
+the rule appears to be that I can substitute first-person 
+reference for reference to something associated with 
+myself (that I own or have created, etc.).  
+He then finds that the pattern does not generalize to a 
+scenario such as a painter %-- referring to the location of her
+work in transit %-- saying something like (his example 12):
+
+`sentenceList,
+`sentenceItem; \swl{itm:crate}{I'm in the second crate on the right.}{ref}
+`sentenceList`  
+ 
+In other words, Nunberg's analysis turns on theorizing various 
+`q.I am in...` constructions as a kind of referential transfer 
+or (as I would say) proxying, and then seeking the logical rules 
+behind how and when such proxying works in a first-person
+(morphosyntactic) context.`footnote.
+Obviously `q.first person` in this setting concerns
+verb tense and other linguistic cues linking to
+the speaker/enunciator of a piece of language; the
+same term is also encountered (including elsewhere
+in this paper) in the phenomenological
+(and Philosophy-of-Mind) sense of
+conscious, intentional experience (in contrast
+to experience, or thoughts and feelings, we
+attribute to others based on their behavior).
+`footnote`
+`p`
+
+`p.
+On the other hand, I would argue that the pattern in 
+(\ref{itm:hall})-(\ref{itm:ontv}) is not reducible to 
+referential proxying as a logical maxim.  We can speculate that
+`i.I` obliquely references, say, the bust and info about an 
+athlete who has been elected to a Hall of Fame, or to the 
+image of a TV personality which viewers see on screen.  
+So analyzing this construction as a case where reference 
+is transferred from the `q.subject of enunciation` to 
+some subordinate vehicle %-- her bust, image, and so forth 
+%-- is a plausible gloss on the pattern.  But looking for a 
+single maxim to accommodate these different cases overlooks 
+the contextual particulars, in particular the backstory 
+which is lexically embedded in expressions like 
+`i.Hall of Fame` and `i.on TV`/.  There is a long process 
+leading to retired athletes being recognized as worthy of 
+a Hall; there is also a long process whereby personalities 
+get a chance to appear on television.  Actually, (\ref{itm:ontv}) 
+has two interpretations %-- someone could be on TV just momentarily, 
+e.g. as a bystander during on-location news coverage %-- or 
+as someone like a policy expert who is interviewed on occasion.  
+But the more interesting reading of (\ref{itm:ontv}) involves 
+a person being described as `q.on TV` not on the occasion of 
+their appearing on-screen in that moment, but as a recurring 
+event.  In this case `i.being on TV` encapsulates a backstory 
+reflecting a measure of personal success and esteem, not unlike 
+an athlete in a Hall of Fame or an artist in a prestigious museum.
+`p` 
+
+`p.
+The relevant backstories govern interpretations for first-person 
+reference: `i.I am in the Hall` or `i.on TV` indirectly reports 
+that the speaker has undergone some process which the addressee, 
+assumed competent with the relevant lexicon, at least
+minimally understands.
+So a pattern like (\ref{itm:hall}) packages up that backstory 
+`i.in the guise` of a referring expression; it is not so much the 
+athlete's bust as a target of referential proxying, but more of the 
+act of referring to that bust (i.e., to the referentiable 
+object manifesting the speaker's being elected) entering
+the Hall of Fame backstory into the discursive ledger.  This 
+carries over to the Whitney case: calling oneself 
+`q.in` a museum does not just proxy the self for one's art, 
+but uses patterns of reference to the art work as a 
+vehicle for introducing the backstory of one's 
+rise through the art world (or whatever is the relevant 
+autobiographical context) into the conversation.
+`p` 
+
+`p.
+I would argue, in short, that referential proxying is not a 
+primarily logical operation, but relies on backstory context to 
+regulate how referring patterns are received.  To establish conceptual 
+foci, addressees have to negotiate the language given to them, in 
+search of the focal element or foreground, often an explicit or 
+hypothetical perceptual nexus.  So a painter `i.in the Whitney` means 
+that a visitor can, in the right room and orientation, perceptually 
+encounter her work; a personality `i.on TV` means that the 
+addressee can, at times, see her on-screen.  Those potential perceptual 
+givens ground the semantics of expressions like (\ref{itm:Whitney}) or 
+(\ref{itm:ontv}).  This does not mean that the sentences are only 
+meaningful to an addressee who wants to go find the speaker at the 
+museum or on the television.  But it does present the perceptual 
+ground as a foundation for the conceptual implications which 
+lead from that perceptual situation: from the perceptual presence 
+of an art work in a museum to the backstory of its provenance 
+and implications for the artist's career or place in history; 
+or from the on-screen image to the context of how TV shows 
+are produced and the careers and reputations of the figures that 
+show up.
+`p` 
+
+`p.
+We approach referring expressions in these contexts at two levels: 
+we identify the canonical perceptually-oriented references which 
+supply a conceptual ground (the painting as perceptual 
+object, the on-screen image as perceptual simulacrum); but then 
+we recognize the backstory and situational context which 
+determines how the perceptual ground should be understood.  
+Usually the discourse is `q.about` that backstory, not about 
+the precise situations where explicit perceptual grounds would 
+be relevant %-- an artist probably would not say 
+(\ref{itm:Whitney}) only to someone looking to visit a museum to 
+see her art work.  The `q.I am in...` pattern 
+turns on how these two different levels are played off 
+in interpretation.
+In particular, the addressee needs to ascertain why the
+speaker's information is being proferred: is boasting
+of their art being hung in an elite museum mostly a
+way of conveying the speaker's status, so the main theme is
+essentially autobiographical; or is the actual location
+of the painting directly relevant to the present conversation?
+`p`
+
+`p.
+A statement like (\ref{itm:crate}) (the speaker being
+`q.in the crate on the right`/) does not have the more
+`q.autobiographical` reading, since (absent some bizarry
+imaginary scene) there is no status or reputation attached
+to which crate is carrying your paintings.  But the second kind of reading,
+where specific location is operationally relevant,
+is plausible in some contexts; perhaps several different
+artists' works are in several different crates and
+the speaker wants to direct focus onto the one holding
+her own works.  So, in the proper context,
+I have no objection to
+(\ref{itm:crate}) or `i.I am in that crate` (forms which Nunberg rejects).
+The gist here, as in (\ref{itm:Whitney}), is to establish conceptual
+focus onto a painting or art work, and to do so via a
+first-person referential lead-in.  So the situation determines 
+first `i.why` the focus is thus singled out and second 
+`i.how` the first-person reference can proxy that focus.  
+In (\ref{itm:Whitney}), we single out a painting insofar as it 
+is a product of the artist's creativity, so appreciation of the 
+work is manifestly appreciation of the artist.  The artist is 
+then referentially linked to the work because the backstory of 
+how museums acquire art works overlaps with the story of 
+artists' careers and reputations.
+`p` 
+
+`p.
+In (\ref{itm:crate}) the situation is different: presumably 
+the focus is on one or several art works because of some concern 
+about transporting or accessing them, so we're attending to the 
+works in their guise as (fragile) physical objects.  Moreover 
+the link between the artist and the work, which guides the 
+referential proxying, is presumably that the artist is 
+concerned about accessing and protecting those objects.  
+The situational elements are different, but in both these 
+cases %-- whether paintings are in the crate or in the 
+Whitney %-- there is some structural resonance in how
+situational, backstory, and hypothetical-perceptual 
+gestalts are all integrated into patterns of grounding 
+referential interpretation in ambient conceptual contexts.  
+`p`
+
+`p.
+I think that linguists sometimes underestimate the 
+multiplicity of layers %-- situational, contextual, 
+phenomenological (explicit and hypothetical), 
+referential, contextual %-- that all converge on 
+meaning and reference.  Perhaps this tendency can
+be empirically examined by testing judgments of
+acceptability: the more that we incorporate
+multiple layers of posssible context, the wider becomes
+the circle of sentences that feel reasonable
+(cf. the reasonableness, in my estimation, of
+(\ref{itm:crate}) and (\ref{itm:Sauternes})).`footnote.
+Granted that, perhaps, with a lot of imagination
+almost any construction could be deemed
+plausible in `i.some` context.  Accordingly,
+one could argue that it is analytically reasonable
+to distinguish sentences that exemplify proper
+language in a wide range of contexts, as compared
+to sentences which could only be meaningful
+in very select circumstances.  Even on this perspective,
+however, we have to unpack the distinction between
+`q.generic` from `q.select` circumstances %-- what
+qualities of these situations, together with
+relevant word-meanings, make these examples
+of broad usage patterns as against unexpected
+usages that are nonsensical without a very
+specific background?  Rather than being a neutral
+arbiter of acceptability, such genericity is a
+phenomenon that needs to be explained.  I would
+argue that assessments of unacceptability will in
+many cases overrate the distinction between
+`q.normal` and `q.exceptional` circumstances.
+For example, I dispute that the beer/wine
+contrast, or painting in a museum or in a crate
+contrast, are such a divergence between normal and
+unusual contexts that (\ref{itm:crate}) has
+essentially different plausibility than
+(\ref{itm:Whitney}), or (\ref{itm:Sauternes})
+compared to (\ref{itm:beers}) and (\ref{itm:Michelobs}).
+`footnote`  Failure to identify these
+layers' workings can lead analysis toward searches 
+for reproducible logical rules governing which constructions  
+are accepted by a language-community as recurring patterns, 
+and logical explanations for the limits on that 
+generalizability.  This is one example of
+overestimating the logicality of language in 
+general, an issue I have approached in this section 
+from both semantic and reference-theoretic angles.  
+I will focus on this issue of logicality %-- both its applicability 
+and its limits %-- in the next section.
+`p`

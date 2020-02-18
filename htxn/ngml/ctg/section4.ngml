@@ -1,0 +1,2018 @@
+`section.Cognitive and Computational Processes`
+`label<s4>;
+`p.
+Any attempt to bridge Computational Linguistics and
+Cognitive Grammar or Phenomenology must solicit one or several
+`q.founding analogies`/, linking phenomena on the
+formal/computational side with those on the
+cognitive/computational side.  Here, I will start from
+the analogy of `i.cognitive` and `i.computational` `i.process`/,
+or generically `q.process` (of either variety).
+Processes, per se, I will
+leave undefined, although a `q.computational` process
+can be considered roughly analogous to a single
+procedure implemented in a computer programming language.
+The story I want to tell goes something like this: understanding
+language involves many cognitive processes, many of
+which are subtly determined by each exact language artifact
+and the context where it is created.  Properly understanding a
+piece of language depends on correctly weaving together
+the various processes involved in understanding its
+component parts, and the structure of the
+multi-process integration is suggested by the grammar of
+the artifact.  Grammar, in a nutshell, uses relationships
+between words to evoke relationships between
+cognitive processes.
+`p`
+
+`p.
+My formal elaboration of this model will be inspired at an
+elementary level by process `i.algebra` in the computational
+setting, as well as applied `i.type theory`/.
+Inter-process relations are the core topic of Process
+Algebra, including sequentiality (one process followed by
+another) and concurrency (one process executing alongside
+another).  In practice, detailed research around Process Algebra
+seems to focus especially on concurrency, perhaps because
+this is the more complex area of application
+(designing computer systems which can run multiple threads in
+parallel).  It is likewise tempting to
+imagine that cognitive-linguistic processes exhibit some
+degree of parallelism, so that the various pieces of
+understanding `q.fall into place` together as we grasp
+the meaning of a sentence (henceforth using `i.sentence` as a
+representative example of a mid-size language artifact in general).
+Nevertheless, I will focus more on `i.sequential` relations between
+processes, suggesting a language model (even if rather idealized)
+where cognitive processes unfold in a temporal order.
+`p`
+
+`p.
+On both the cognitive and computational side, temporality is relative
+rather than quantitative: the significant detail is not
+`q.before` and `q.after` in the sense of measuring time but rather how
+one process logically precedes another in effects and prerequisites.
+No theoretical importance is attached to `i.how long` it takes
+before processes finish, or how much time elapses between
+antecedent and subsequent processes (in contrast to subjects like
+optimization theory, where such details are often significant).
+We can set aside notions of a temporal continuum
+where subsequent processes occupy disjoint, extended time-regions;
+instead, one process follows another if anything affected by the first
+process reflects this effect at the onset of the second process.
+Time, in this sense, only exists as manifest in the variations
+of any state relevant to processes %-- in the computational
+context, in the overall state of the computer (and potentially
+other computers on a network) where a computation is
+carried out.  Two times are different only insofar as the
+overall state at one time differs from the state at the second time.
+Time is `i.discrete` because the relevant states are discrete, and
+because beneath a certain scale of time delta there is no
+possibility of state change.
+`p`
+
+`p.
+Analogously, in language, I suggest that we set aside notions of
+an unfolding process reflecting the temporality of expression.
+Of course, the fact that parts of a sentence are heard first
+biases understanding somewhat; and speakers often exploit
+temporality for rhetorical effect, elonging the pronunciation
+of words for emphasis, or pausing before words to
+signal an especially calculated word choice, for example.
+These data are not irrelevant, but, for core semantic and
+syntactic analysis, I will nonetheless treat a sentence as
+an integrated temporal unit, with no value attributed to
+temporal ordering amongst words except insofar as temporal
+order establishes word order and word order has grammatical
+significance in the relevant natural language/dialect.
+`p`
+
+`p.
+While antecedent/subsequent inter-process relations are among those
+formally recognized in Process Algebra, this specific genre
+of relation is implicit to other models important
+to computer science, such as Type Theory and Lambda Calculus.
+If `typeT; is a type, then any computational process
+which produces a value of type `typeT; has a corresponding
+(`q.functional`/) type (for sake of discussion, assume a `q.value`
+is anything that can be encoded in a finite sequence of numbers
+and that `q.types` are classifications for values that introduce
+distinctions between functions %-- e.g., the function to add two
+integers is different than the function to add two decimals; more
+rigorous definitions of primordial notions like `q.type` and
+`q.value` are possible but not needed for this paper).
+Similarly a process which takes as `i.input` a value of
+`typeT; is its own type.  If two processes have these two
+types respectively %-- one outputs `typeT; and the other
+inputs `typeT; %-- then the two can be put in sequence, where
+the output from the antecedent becomes the input to the subsequent.
+In this manner inter-process sequential relations become
+subsumed into `q.type systems` and can be studied using
+type-theoretic machinery rather than Process Algebras or
+Process Calculi as such.
+`p`
+
+`p.
+The above comments apply to type theory applied in 
+constructed environments like computer programming 
+languages; but as I have discussed here 
+there exists a robust type-theoretic tradition
+in (Natural Language) semantics, which is disjoint from
+but not entirely irrelevant to the type systems of
+formal and programming languages.  Semantic types are
+recognized at several different levels of classification 
+%-- I proposed the terms `i.macrotype`/, `i.mesotype`/, 
+and `i.microtype`/.  Some of the most 
+interesting type-theoretic effects
+involve medium-grained semantic criteria that are
+more general than lexical entries but more specific than
+Parts of Speech; this is the level where linguists have 
+seemed to find the most fertile applications of 
+sophisticated aspects to formal type theory, like 
+dependent types and type-coercion.  This perhaps 
+reflects the situation of `q.mesotypes` as 
+intermediary between and therefore interconnecting 
+types in a mostly grammatic (Part of Speech) and 
+a mostly semantic (lexical) sense; and therefore 
+a topic or tool for both syntax and semantics. 
+`p`
+
+`p.
+Here my argumentation is informed 
+particularly by the merged notion of `i.typed`
+processes.  If we say that something (sticking with the 
+mesotype level) has the `i.type`
+of a physical-body noun %-- that `q.Physical Body` is
+a type in the overall semantics of language %-- then
+I propose a corresponding type of cognitive
+(perceptual and conceptual) processes characteristic
+of perceiving and reasoning about physical things.  A particular
+designatum %-- a bag of rice, say %-- is subsumed under
+the semantic type insofar as our perceptual encounters with that
+thing %-- and/or our conceptual exercises pertaining to
+its properties and proclivities (like being difficult to carry)
+%-- are roughly prototyped by a certain generic kind of
+cognitive process.  This assumes that there is a similitude among
+processes of perceiving and thinking about physical bodies
+(at least the mid-sized, quotidian physical things that tend
+to enter nonspecialist language) sufficient to subsume them under
+a common prototype, which I then argue forms the cognitive
+substratum for the semantic type `q.Physical Object`/.
+Moreover, I contend a similar cognitive substratum
+can be found for other mid-scale semantic types that underlie analyses
+of semantic acceptability and metaphoricality, like
+`q.Living Thing`/, `q.Sentient Living Thing` (`i.flowers want
+sunshine` is metaphorical because it ascribes propositional
+attitudes to something whose type does not literally support them),
+and `q.Social Institutions` (`i.The newspaper you're reading
+fired its editor` exhibits a `q.type coercion` where `i.newspaper` is read
+first as an object and then as a company).  One feature of semantic
+types is the lexical superposition of different types to produce what
+(in a slightly different context) Fauconnier calls a `q.blend`/:
+in `i.Liverpool, which is near the ocean, built new docks` 
+(see \ref{itm:Liverpool}), the
+city is treated as both a geographic region and a body politic.
+`p`
+
+`p.
+`q.Weighs`/, too, as a verb, can be given a typed-process
+interpretation.  In its least metaphoric sense, `q.to weigh`
+connotes a practical action of measuring some object's weight by
+using something like a scale; as `i.cognitive` process the
+verb embodies are ability to plan, reflect upon, or contemplate
+this practice.  So an `q.idea weighing 5 pounds` is anomalous because
+it is hard to play out in our minds a form of this practical act
+where the thing being weighed is mental.  However, there are plenty
+of more figurative uses related to `q.weighing ideas`/, `q.heavy ideas`/,
+and so forth, so we are able to isolate the dimension of
+`q.judging` and `q.measuring` which is explicit in literal
+`q.weighing`/, and abstracting from the physical details use
+`q.weigh` to mean `q.measure` or `q.assess` in general.
+The phrase `i.weigh an idea` therefore connotes its own cognitive
+process %-- imagining someone thinking about the idea in an
+evaluative way %-- but this figurative `q.script` is closed off by
+`q.5 pounds` which forces us to conceive the weighing literally
+with a scale, not figuratively as a kind of mental assessment.
+Once again, the type anomaly can be seen as a failure to
+map the linguistic senses evident in a sentence to an internally
+consistent set of cognitive procedures for dilating the semantic
+content seeded within each word.
+`p`
+
+`p.
+Notice that I am treating cognitive processes, in themselves,
+as semantic more than grammatical phenomena.  Literally,
+weighing something is a multi-step act
+(lifting it on the sale, reading the measurement), and even in
+our mental replay of hypothetical weighing-acts it seems impossible
+not to imagine distinct phases (just as it is impossible not
+to picture left and right sides of an imaginary cow).
+However, I assume that the cognitive script is figured by the
+lexeme `q.weighs` as a connotative unit: whatever internal structure
+our mental script of `q.weighing something` has,
+this structure is not a `i.linguistic` structure that must be
+encoded grammatically.  Similarly, the concept
+`i.buttered toast` suggests a confluence of
+perceptual, physical-operational, and conceptual aspects
+%-- we are inclined to regard toast as `i.buttered` if it
+looks a certain way and also if we have seen someone apply
+butter to it (or have done so ourselves) and also if
+we are in a context where we expect to find toast that may be
+buttered (we are not disposed to call a piece of bread in a
+grocery store `q.buttered toast` even if it has that appearance).
+So the adjective `i.buttered` introduces multiple cross-modal
+parameters in addition to the underlying concept `i.toast`/; but I feel
+that the lexeme aggregates these parameters into a
+single `i.linguistic` unit.  In Langacker's terms, the various
+elements of `q.buttered` do not suggest `i.constructive effort`/,
+as if deliberate `i.linguistic` processing were needed to unpack the
+linguistic entity to its constituent parts.  Instead, `q.buttered`
+functions `i.semantically` as a unit (and likewise syntactically
+as the unit entering relations with other words %-- e.g. buttered-toast
+is an adjective/noun pair, not the noun `i.butter` at the root of the
+adjective) %-- even if its cognitive process
+is multi-faceted.  Indeed, this is precisely the signifying economy
+of language: it captures complex cognitive procedures by
+iconic, repeatable lexical units.
+`p`
+
+`p.
+On that theory, tieing specific word-senses to stereotyped
+cognitive processes is a matter of semantics, not grammar per se.
+Grammar, I contend, comes into play when multiple processes need to
+be integrated.  The concept `q.buttered toast`/, for example, seems
+to start from a more generic concept (toast) and then add
+extra detail (the buttering, with all that implies conceptually,
+pragmatically, and sensorially).  This is suggested by the
+substitutability of just `i.toast` for `i.buttered toast`/:
+
+`sentenceList,
+`sentenceItem; \swl{}{I snacked on toast and coffee.}{sem}
+`sentenceItem; \swl{}{I snacked on buttered toast and iced coffee.}{sem}
+`sentenceList`
+
+Because the first sentence is perfectly clear, it seems
+that the ideas expressed (at least in this context) by
+`i.toast` and `i.coffee` are reasonably complete
+in themselves, so the adjectives have the effect of starting
+with a complete idea and adding on extra detail.  Procedurally,
+then, it seems like we have some process which takes us to
+`q.toast` and `q.coffee` and then, subsequent to that
+(logically if not temporally) we add the wrinkle of
+re-conceiving the toast as buttered and the coffee as iced.
+In short, the adjective-noun pairing is compelling us to
+run a pair of cognitive processes in sequence, one
+establishing the noun-concept as a baseline and one adding
+descriptive detail by an `q.adjectival`/, a specificational
+process.
+`p`
+
+`p.
+Counter to that analysis, someone might judge that
+phrases like `q.buttered toast` and `q.iced coffee` are
+conventional enough that we don't interpret them through
+two meaningfully disjoint processes.  This is entirely possible,
+given how erstwhile aggregate expressions become established units.  
+Different phrases exhibit different levels of entrenchment:
+
+`sentenceList,
+`sentenceItem; \swl{}{I snacked on toast and instant coffee.}{sem}
+`sentenceItem; \swl{}{I snacked on toast and Eritrean coffee.}{sem}
+`sentenceList`
+
+Arguably `q.instant coffee` is a de facto lexical unit, partly
+because reading it in terms of constituent parts is rather
+nonsensical (there's no non-oblique way to understand
+`q.coffee` being qualified as `q.instant`/).  Surely, however,
+`i.Eritrean coffee` is heard as a compound phrase
+(at least in 2019 %-- it is unlikely, but not
+impossible, that future Eritrean coffee growers will be so
+successful that we hear the phrase as a brand name
+or culinary term of art, like `q.Hershey's kisses`
+or `q.French toast`/).  The status of `i.iced coffee` is probably
+somewhere between these two.  But to the degree that
+a language element (whether word or phrase) is entrenched and
+generally processed linguistically as a unit, I maintain,
+it tends to be governed by an integrally complete cognitive
+process %-- not necessarily one without inner structure, but where the
+elements of this structure piece together perceptually and
+situationally, rather than seeming to be
+`i.linguistically` disjoint conceptualizations that are brought together
+by the shape of linguistic phrases.  Conversely, where a cognitive
+process has this integral character, discursive pressures nudge
+the language toward entrenching some descriptive phrase as a
+quasi-lexeme; what starts being heard as a compound designation
+evolves to the point where language users don't attend to
+constituent parts.
+`p`
+
+`p.
+Obviously, this theory presupposes that there is an available
+distinction to be drawn between a `q.procedural` synthesis of
+disparate cognitive processes and a perceptual and/or conceptual
+synthesis constitutive of individual cognitive episodes.
+Phenomonology seems to back this up %-- there are some
+conceptual compounds that come across as more episodically fused than
+others.  Buttered toast may evoke a temporally
+not-quite-instantaneous conceptualization %-- at the core of
+the concept is a practical activity that takes a few seconds to
+complete %-- but we also can imagine the buttering-act
+apprehended in one sole episode.  On the other hand,
+`q.Eritrean coffee` ties together concepts of much more scattered
+provenance; the perceptual unity of `i.coffee` (in the sense
+of a specific liquid in a specific container) along with
+the geopolitical `q.background knowledge`
+implicit in the adjective `i.Eritrean`/.  As a cognitive
+synthesis `i.Eritrean coffee` is conceptual rather than
+perceptual.  Provisionally we can treat this in the context of
+`i.buttered toast` being a partially-entrenched phraseology
+while `i.Eritrean coffee` is undeniably a phrasal compound,
+something whose constructive form must be parsed linguistically
+rather than figuratively.
+`p`
+
+`p.
+This analysis, though, needs many caveats.  After all, many
+bonafide `i.phrases` (not `q.quasi-lexemes`/) nevertheless
+exhibit significant phenomenological unity %-- i.e., they
+evoke integral perceptual complexes: `i.big dog`/;
+`i.hot coffee`/; `i.speeding car`/; `i.red foliage`/.
+Linguistically these seem like an underlying concept
+acquiring perceptual specificity via adjectival
+modification: `q.hot` was how the coffee came to my
+experience because I experienced it as hot (it wasn't like
+I experienced the coffee and then had to contemplate
+whether it is hot or cold).  Coffee can't `i.not` be
+experienced as hot, cold, or lukewarm; it cannot be experienced
+without temperature (assuming I am coming into contact
+with it and not just looking at it).  Similarly a car must be
+seen as at rest, moving slowly, or speeding along; 
+foliage must be
+seen as having some color(s).
+`p`
+
+`p.
+I have argued, however, that
+unless entrenched as idiomatic phrases adjective-noun pairs
+like `i.hot coffee` or `i.buttered toast` should be read
+as grammatical complexes and accordingly (in my theory) as junctures
+between distinct cognitive processes.  On the other hand, I argued
+that `q.instant coffee` was effectively entrenched `i.because`
+there is no simplistic conceptual unity between `i.instant` and
+`i.coffee`/, which makes it harder to hear the phrase as descriptive.
+Instead, the semantics of that particular adjective-noun
+connection are circuitous and a little hyperbolic: `q.instant`
+coffee is coffee as a substance (not a drink, in that state)
+from which coffee the drink can be quickly (but not
+instantaneously) prepared.  There is a lot going on the seemingly
+simple `q.instant coffee`/: the shift from coffee-as-substance
+to coffee-as-drink; the `q.instant` exaggeration.  In this
+case, the adjectival modification has `i.so many` moving
+parts that, I'm inclined to argue, it is hard to cover the
+whole scenario with a descriptive phrase; which in turn
+creates selective pressures for some pseudo-lexical unit
+to emerge (which turned out to be `i.instant coffee`/)
+as a mnemonic for the whole conceptual multiplex.  Indeed
+conceptually intricate wholes tend to quickly acquire
+pithy conventional nominalizations simply
+for rhetorical convenience (`q.Brexit`/;
+`q.Quantum Gravity`/; `q.International Transfer
+Window`/; `q.\#metoo`/).
+`p`
+
+`p.
+Notwithstanding these variations, I still find a certain logic
+in the relation between phenomenological unity and semantic
+entrenchment.  Perceptually integrated wholes may correlate
+with linguistically aggregate constructions insofar as there
+is a transparent logical destructuring in the perceptual
+unity: in the case of substance-attribute pairs (like
+`i.hot coffee`/) %-- deferring in the phenomenological
+context to Husserl's account of `q.dependent moments` %-- there
+is a basically unsubtle distinction between an underlying
+concept (like coffee) and the qualities which are its
+mode of appearance as well as conceptual predicates (like
+hot, cold,  black, or light, describing sensory properties
+innate to the experience of a coffee-token as well as
+state-reports that can be propositionally attributed to it).
+Although the minimal sensate intention of the coffee and
+the predicative disposition toward ascriptions like `i.black`
+and `i.hot` are consciously intertwined, surely I am aware of
+a logicality in experience that gives the sensate and predicative
+dimensions different epistemic status.  I don't think of
+my experience of the coffee's being hot as just a hot sensation
+qua medium of my sensorily apprehending the coffee, but rather as
+the sensate mechanism by which I observe the apparent fact that
+the coffee is hot, as a state of affairs and not just as
+subjective impression.  We are constantly extrapolating our perceptual
+encounters to propositional content along these lines.
+`p`
+
+`p.
+As such, I contend that such an (in some sense) innate
+perception-to-predication instinct grounds the procedural
+slicing of linguistic processes: `i.hot coffee` retraces in a 
+linguistic construction the logical order of a coffee perception
+which on one level is a raw perceptual encounter but is simultaneously
+a predicative attribution.  `q.Hot coffee` denotes a substance that
+can be experienced in the mode of a base concept (coffee)
+which is given predicative qualification (the coffee `i.is` hot).
+The fact that there may be no noticed temporal gap
+in `i.experience` between the sensate perception and the
+epistemic posture does not preclude a certain logical
+antecedent-subsequent ordering: the concept `i.coffee` is the
+predicative base for my propositional attitude that what I
+am dealing with here is hot coffee, not
+hot-sensations-disclosing-coffee or coffee-I-experience-as-hot
+(but who knows, maybe I'm hallucinating) or any other artificial
+skeptifying of my actual experience, which is of raw perception
+pregnant with propositional content.
+`p`
+
+`p.
+So I wish to justify claims that (non-entrenched) phrase 
+complexes like `q.hot coffee` are unions of disjoint cognitive
+processes by noting that while such phrases evoke a certain perceptual
+unity, they evoke a `i.kind` of unity
+which we habitually regard `i.conceptually` as divided into
+sensate givenness founding epistemic attitudes.  Cognitive
+processes are not exclusively perceptual; they are
+some mixture of perceptual and conceptual (and
+enactive/kinaesthetic/operational).  A perceptual unity can
+cover two conceptual aspects, like a sheet covering two
+mattresses.  So the perceptual unity of hot coffee can
+become the conceptual two-step of coffee as substance
+and hot as attribute; committing this unity to
+cognition as an overarching lifelong faculty involves registering
+a thought-process of coffee as a substance which can, in acts of
+logical predication, be believed to be hot or cold, black or
+light, etc.  The apprehension of the substance is a different
+cognitive process than the predication of the attribute, in terms of
+how these mental acts fit within our epistemic models, even if
+these two processes are experientially fused.  Typically we see the
+coffee before we touch or taste it, so already the coffee has a logical
+status apart from the heat we predicate in it.
+`p`
+
+`p.
+Likewise, even if the black color is inextricable
+from our perceiving (apart from
+odd situations where we drink the coffee without looking at it),
+we know the color will change if we add milk (even if just in
+principle because, preferring black coffee, I don't actually do so);
+so we know the coffee has a logical substrate apart from its color
+too.  All of this ideation is latent in the coffee-perceptions
+notwithstanding whatever perceptual unities we experience that
+cloak logical forms like substance/attribute under the inexorable
+togetherness of disclosure (the phenomenological impossibility of
+spatial expanse without color, say).  In short, disjoint
+cognitive processes can be required to reconstruct a perceptually
+unified situation or episode, insofar as we are not just living
+through the episode but prototyping, logically reconstructing,
+signifying it %-- the perceptual unity in the moment does not
+propagate to procedural atomicity in absorbing the episode into
+rational exercises.
+`p`
+
+`p.
+Experience, then, presents `i.both` perceptual unities and
+cognitive-propositional multiplicity; language can inherit
+both holism on the perceptual side and compositionality
+on the rational side, even in a single enactive/perceptual
+episode.  Depending on how we via language want to
+figure and express experience, we can bring either unity
+or compositionality to the fore.  Our linguistic choices
+will evoke perceptual unity if they select entrenched word-senses
+or quasi-lexical forms; they will evoke compositionality
+if they gravitate toward compound phrases and complex,
+relatively rare lexicalizations and modes of expression.
+To the degree that we are interested in a
+cognitive-phenomenological `i.semantics`/, we can attend
+to the first part of this equation, to how the understood
+atomicity of a word sense or a conventionalized phrase often
+suggests an object or phenomenon consciously apprehended as
+an integral whole; we can trace phenomenologically the
+apperceptive unity that seems to drive the linguistic
+community's accepting lexical atoms in this sense.
+Conversely, to the degree that we are interested in a
+cognitive-phenomenological `i.grammar`/, we can attend to how
+logically composite predication emerges even within
+perceptual unity, because our encounter with phenomena is
+not (save for exotic artistic or meditative pursuits) the
+`q.`i.dasein`/` of irreflective sensory beings immersed in a
+world of pure experience but the deliberate action of
+epistemic beings carrying (modifiable but not random)
+propositional attitudes to perceptual encounters.
+`p`
+
+`p.
+Modeling grammar as a coordination between cognitive processes may
+be an idealization, precisely because the compositive and integrative
+faces of consciousness are two sides of the same
+coin: it's not as if we work through a thought of
+`i.coffee` or `i.toast`/, abstract and without sensory
+specificity, noticeably prelude to conceived/perceived
+attributes like `i.hot`/, `i.cold`/, or `i.buttered`/.
+But we can still ascribe to linguistic-understanding
+processes an idealized, `q.as if` temporality, treating the
+elucidating of a sentence as a sequence of procedures leading from
+bare concepts to well-rendered logical tableau,
+suffused with some level of descriptive and situational
+particularity.  So we go from `i.coffee` to `i.iced coffee` to
+`i.buttered toast and iced coffee` to `i.snacking on
+buttered toast and iced coffee`/; each link in the chain
+stepping up toward propositional totality.
+`p`
+
+`p.
+My point is not that the logical form of the 
+sentence is composed from
+logically primitive and abstract parts, which is fairly trite;
+my point is that such logical composition is only apparent
+after a pattern of cognitive integration
+that is more subtle and exceptional.  Extra-mentally, buttered
+toast is just toast with butter on it, a fairly simplistic
+logical conjunction.  Read as a baton passed between
+two acts of mind, however %-- conceiving toast and then conceiving
+it buttered %-- the conjunction is more elaborate;
+the cognitive resources of `i.buttered` are not just
+`q.something with butter on it` but the implication of a sensory
+summation (the flavor, color, scent) and operational narrative
+(we have seen or performed the deliberate act of applying the
+butter).  Similarly a person dressed up is not just
+someone whose torso is encircled by articles of clothing; a
+barking dog is not just an animal making random noises;
+a stray cat is different from a lost cat.  In their
+interpenetration, cognitive processes develop (in the
+photographer's sense) narrative
+and causative threads that are latent in worldly situations
+but reduced out of logical glosses; that is why it
+seems incomplete, lacking nuance, or
+beside the point to explicate semantic meanings in logical
+terms, like `q.bachelor` as `q.unmarried man` (we can
+certainly imagine a sentence like `i.My best friend
+has been married for years but he's still a bachelor`/,
+to imply he still has the habits and
+attitudes of his single days).
+`p`
+
+
+`p.
+A theory of sentences building from conceptual
+underspecification to logical concreteness does
+not preclude there being different scales
+of specificity.  `i.I snacked on toast and coffee`
+is just as acceptable as `i.I snacked on buttered toast
+and iced coffee`/.  The communication conveys as much
+situational detail as warranted in the conversational,
+pragmatic context.  Language always has the `i.capability` to
+push further and further into specificity; how
+exhaustively the language user avails of this
+capability is a matter of choice.  As theorists of language we
+must then analyze how language possesses the `i.latent` capacity
+to draw ever finer pictures; the adjectival `i.buttered` toast and
+`i.iced` coffee takes the granularity of signifying at one
+level (the level of the `i.I snacked on toast and coffee` sentence)
+and layers on (or really layers `i.within`/) a yet more
+specific level.  The architecture of how this happens is
+well addressed by type-theoretic methods (both coarse and mid-grained).
+`p`
+
+`p.
+The remainder of this section will try to expand on this type-theoretic intuition.
+My central thesis is that language understanding
+involves integrating diverse `q.cognitive procedures`/,
+each associated with specific words, word morphologies (plural
+forms, verb tense, etc) and sometimes phrases.
+The form of type theory appropriate in this context
+is therefore one closely associated with procedural typing
+and resolution: that is, assigning types to procedures,
+and differentiating procedures based on the types of
+their `q.arguments` or `q.parameters` (input and output data).
+`p`
+
+`subsection.Interpretive Processes and Triggers`
+
+`p.
+The type-theory/procedural perspective I will mostly work from
+here contrasts with and adds nuance to
+a more `q.logical` or `q.truth-theoretic` paradigm which
+tends to interpret semantic phenomena via formal logic %--
+for example, singular/plural in Natural Language
+as a basically straightforward translation of the
+individual/set distinction in formal logic.  Such
+formal intuitions are limited in the sense that (to
+continue this example) the conceptual mapping from
+single to plural can reflect a wide range of
+residual details beyond just quantity and multitudes.
+Case in point are plurals: for each plural usage we have a conceptual
+transformation of an underlying singular to a collective, but
+how that collective is pictured varies in context.  One
+dimension of this variation lies with mass/count: the
+mass-plural `i.coffee` (as in `q.some coffee`/) figures the
+plurality of coffee (as liquid, or maybe coffee grounds/beans)
+in spatial and/or physical/dynamic terms.  So we have:
+
+`sentenceList,
+`sentenceItem; \swl{itm:coffeeshirt}{There's some coffee on your shirt.}{ref}
+`sentenceItem; \swl{}{There's coffee all over the table.}{ref}
+`sentenceItem; \swl{}{She poured coffee from an ornate beaker.}{ref}
+`sentenceItem; \swl{}{There's too much coffee in the grinder.}{ref}
+`sentenceItem; \swl{}{There's a lot of coffee left in the pot.}{ref}
+`sentenceItem; \swl{}{There's a lot of coffee left in the pot
+%-- should I pour it out?}{ref}
+`sentenceList`
+
+These sentences use phrases associated with plurality (`i.all over`/,
+`i.a lot`/, `i.too much`/) but with referents that on perceptual and
+operational grounds can be treated as singular %-- as in the
+appropriate pairing of `i.a lot` and `i.it` in the last sentence.
+With count-plurals the collective is figured more as an
+aggregate of discrete individuals:
+
+`sentenceList,
+`sentenceItem; \swl{}{There are coffees all over the far wall at the espresso bar.}{ref}
+`sentenceItem; \swl{}{She poured coffees from an ornate beaker.}{ref}
+`sentenceItem; \swl{itm:coffeetable}{There are a lot of coffees left on the table
+ %-- shall I pour them out?}{ref}
+`sentenceList`
+`p`
+
+`p.
+So mass versus count %-- the choice of which plural form to use %--
+triggers an interpretation shaping how the plurality is pictured and
+conceived (which is itself triggered by the use of a plural to
+begin with).  Compare `i.I sampled some chocolates` (where the count-plural
+suggests `i.pieces` of chocolate) and
+`i.I sampled some coffees` (where the count-plural implies
+distinguishing coffees by virtue of grind, roast, and other
+differences in preparation) (note that both are contrasted
+to mass-plural forms like `i.I sampled some coffee` where
+plural agreement points toward material continuity; there
+is no discrete unit of coffee qua liquid).  Or compare
+`i.People love rescued dogs` with `i.People fed the rescued dogs`
+%-- the second, but not the first, points toward
+an interpretation that certain `i.specific` people
+fed the dogs (and they did so `i.before` the dogs
+were rescued).
+`p`
+
+`p.
+But if we restrict attention to just, say,
+count-plurals, there are still different schemata for intending
+collections.  This is one dimension I left unexamined 
+in the earlier `q.New York` examples: 
+
+`sentenceList,
+`sentenceItem; \swl{itm:NYboroughs}{New Yorkers live in one of five boroughs.}{ref}
+`sentenceItem; \swl{itm:NYDem}{New Yorkers reliably vote for Democratic presidential candidates.}{ref}
+`sentenceItem; \swl{itm:NYcommute}{New Yorkers constantly complain about how long it takes to commute
+to New York City.}{ref}
+`sentenceList`
+
+The first sentence is consistent with a reading applied to
+`i.all` New Yorkers %-- the five boroughs encompass the whole
+extent of New York City.  The second sentence is only reasonable
+when applied exclusively to the city's registered voters %-- not all
+residents %-- and moreover there is no implication that the
+claim applies to all such voters, only a proportion north of one-half.
+And the final sentence, while perfectly reasonable, uses `q.New Yorkers`
+to name a population completely distinct from the
+first sentence %-- only residents from the metro
+area, but not the city itself, commute `i.to` the city.
+`p`
+
+`p.
+The assumption that logical modeling can capture all the
+pertinent facets of Natural-Language meaning can
+lead us to miss the amount of situational reasoning
+requisite for commonplace understanding.  In
+`i.People fed the rescued dogs` there is an exception to the
+usual pattern of how tense and adjectival modification
+interact: we read `q.people fed` in
+`i.People fed the rescued dogs` as occurring `i.before` the rescue;
+because we assume that `i.after` being rescued the dogs would be
+fed by veterinarians and other professionals (who would
+probably not be designated with the generic `q.people`/), and
+also we assume the feeding helped the dogs survive.  We also
+hear the verb as describing a recurring event; compare
+with `i.I fed the dog a cheeseburger`/.
+`p`
+
+`p.
+To be sure, there are patterns and templates governing
+scope/quantity/tense interactions that help us build logical models
+of situations described in language.  Thus
+`i.I fed the dogs a cheeseburger` can be read such that there
+are multiple cheeseburgers %-- each dog gets one %--
+notwithstanding the singular form on `i.a cheeseburger`/:
+the plural `i.dogs` creates a scope that can elevate
+the singular `i.cheeseburger` to an implied plural;
+the discourse creates multiple reference frames each
+with one cheeseburger.  Likewise the morphosyntax is
+quite correct in: `i.All the rescued dogs are taken to an
+experienced vet; in fact, they all came from the same
+veterinary college` %-- the singular on `i.vet` is properly
+aligned with the plural `i.they` because of the scope-binding
+(from a syntactic perspective) and space-building
+(from a semantic perspective) effects of the `q.dogs` plural.
+Or, in the case of `i.I fed the dog a cheeseburger every day`
+there is an implicit plural because `q.every day` builds
+multiple spaces: we can refer via the spaces collectively
+using a plural (`i.I fed the dog a cheeseburger every day %--
+I made them at home with vegan cheese`/) or refer within
+one space more narrowly, switching to the singular
+(`i.Except Tuesday, when it was a turkey burger`/).
+`p`
+
+`p.
+Layers of scope, tense, and adjectives interact in complex ways that
+leave room for common ambiguities: `i.All the rescued dogs are [/were]
+taken to an experienced [/specialist] vet` is consistent with a reading
+wherein there is exactly one vet, and she has or had treated every dog.
+It is `i.also` consistent with a reading where there
+are multiple vets and each dog is or was treated
+by one or another.  Resolving such ambiguities
+tends to call for situational reasoning and a `q.feel` for situations,
+rather than brute-force logic.  If a large dog shelter describes
+their operational procedures over many years, we might assume
+there are multiple vets they work or worked with.  If instead the
+conversation centers on one specific rescue we would be
+inclined to imagine just one veterinarian.  Lexical and tense
+variation also guides these impressions: the past-tense
+form (`i....the rescued dogs were taken...`/) nudges us
+toward assuming the discourse references one rescue (though it
+could also be a past-tense retrospective of general operations).
+Qualifying the vet as `i.specialist` rather than the vaguer
+`i.experienced` also nudges us toward a singular interpretation.
+`p`
+
+`p.
+What I am calling a `q.nudge`/, however, is based on situational
+models and arguably flows from a conceptual stratum outside
+of both semantics and grammar proper; maybe it is even prelinguistic.
+Consider
+
+`sentenceList,
+`sentenceItem; \swl{itm:pf}{People fed the rescued dogs.}{sem}
+`sentenceItem; \swl{itm:ve}{Vets examined the rescued dogs.}{sem}
+`sentenceList`
+
+There appears to be no explicit principle either in the semantics
+of the lexeme `i.to feed`/, or in the relevant tense agreements,
+stipulating that the feeding in (\ref{itm:pf})
+was prior to the rescue %-- or conversely that
+(\ref{itm:ve}) describes events
+`i.after` the rescue.  Instead, we interpret the discourse through
+a narrative framework that fills in details not provided by
+the language artifacts explicitly (that abandoned dogs are
+likely to be hungry; that veterinarians treat dogs in clinics, which
+dogs have to be physically brought to).  For a similar case-study,
+consider the sentences:
+
+`sentenceList,
+`sentenceItem; \swl{}{Every singer performed two songs.}{sem}
+`sentenceItem; \swl{}{Everyone performed two songs.}{sem}
+`sentenceItem; \swl{}{Everyone sang along to two songs.}{sem}
+`sentenceItem; \swl{}{Everyone in the audience sang along to two songs.}{sem}
+`sentenceList`
+
+The last of these examples strongly suggests that of potentially
+many songs in a concert, exactly two of them were popular and singable
+for the audience.  The first sentence, contrariwise, fairly strongly
+implies that there were multiple pairs of songs, each pair performed
+by a different singer.  The middle two sentences imply either
+the first or last reading, respectively (depending on how we
+interpret `q.everyone`/).  Technically, the
+first two sentences imply a multi-space reading and the latter two
+a single-space reading.  But the driving force
+behind these implications are the pragmatics of `i.perform` versus
+`i.sing along`/: the latter verb is bound more tightly to
+its subject, so we hear it less likely that
+`i.many` singers are performing `i.one` song pair, or conversely that
+every audience member `i.sings along` to one song pair, but
+each chooses a `i.different` song pair.
+`p`
+
+`p.
+The competing interpretations for `i.perform` compared to
+`i.sing along`/, and `i.feed` compared to `i.treat`/, are grounded
+in lexical differences between the verbs.  I contend, though, that
+the contrasts are not laid out in lexical specifications
+for any of the words, at least so that the implied readings
+follow just mechanically, or on logical considerations
+alone.  After all, in more exotic but not implausible
+scenarios the readings would be reversed:
+
+`sentenceList,
+`sentenceItem; \swl{}{The rescued dogs had been treated by vets in the past
+(but were subsequently abandoned by their owners).}[]{sem}%
+[The rescued dogs had been treated by vets in the past.]
+`sentenceItem; \swl{}{Every singer performed (the last) two songs
+(for the grand finale).}[]{sem}%
+[Every singer performed the last two songs for the grand finale.]
+`sentenceItem; \swl{}{Everyone in the audience sang along to two songs
+(they were randomly handed lyrics to different songs when
+they came in, and we asked them to join in when the song being
+performed onstage matched the lyrics they had in hand).}{sem}
+`sentenceList`
+
+In short, it's not as if dictionary entries would specify that
+`i.to feed` applies to rescued dogs before they are rescued,
+and `i.to treat` applies after they are rescued.  Or
+that `i.sing along` nudges scope interpretation in one direction
+and `i.perform` nudges in a different direction.
+These interpretations are driven by narrative
+construals narrowly specific to given expressions.  The
+appraisals would be very different for other uses of the verbs in
+(lexically) similar (but situationally different) cases:
+to `q.treat` a wound or a sickness, to `q.perform` a gesture or a
+play.  We construct an interpretive scaffolding
+for resolving issues like scope-binding and space-building based
+on fine-tuned narrative construals that can vary alot
+even across small word-sense variance:
+As we follow along with these sentences, we have to build a narrative
+and situational picture which matches the speaker's intent,
+sufficiently well.
+`p`
+
+`p.
+And that requires prelinguistic background
+knowledge which is leveraged and activated (but not mechanically
+or logically constructed) by lexical, semantic, or grammatical
+rules and forms: `i.rescued dogs` all alone constructs a fairly
+detailed mental picture where we can fill in many details by
+default, unless something in the discourse tells otherwise
+(we can assume such dogs are in need of food, medical care,
+shelter, etc., or they would not be described as
+`q.rescued`/).  Likewise `i.sing along` carries a rich mental
+picture of a performer and an audience and how they interact, one
+which we understand based on having attended concerts rather than
+by any rule governing `i.along` as a modifier to `q.sing`
+%-- compare the effects of `i.along` in `i.walk along`/,
+`i.ride along`/, `i.play along`/, `i.go along`/.  Merely
+by understanding how `i.along` modifies `i.walk`/, say
+(which is basically straightforward; to
+`q.walk along` is basically to `q.walk alongside`/) we
+would not automatically generalize to more idiomatic
+and metaphorical uses like `q.sing along` or `q.play along`
+(as in `i.I was skeptical but I played along (so as not to
+start an argument)`/).
+`p`
+
+`p.
+We have access to a robust collection of `q.mental scripts` which
+represent hypothetical scenarios and social milieus where
+language plays out.  Language can activate various such
+`q.scripts` (and semantic as well as grammatical formations
+try to ensure that the `q.right` scripts are selected).
+Nonetheless, we can argue that the conceptual and cognitive
+substance of the scripts comes not from language per se
+but from our overall social and cultural lives.
+We are disposed to make linguistic inferences %-- like
+the timeframes implied by `i.fed the rescued dogs` or the scopes
+implied by `i.sang along to two songs` %-- because of
+our enculturated familiarity with events like dog rescues
+(and dog rescue organizations) and concerts
+(plus places like concert halls).  These concepts are not
+produced by the English language, or even by any dialect
+thereof (a fluent English speaker from a different
+cultural background would not necessarily make the
+same inferences %-- and even if we restrict attention to,
+say, American speakers, the commonality of disposition
+reflects a commonality of the relevant cultural
+anchors %-- like dog rescues, and concerts %-- rather than
+any homogenizing effects of an `q.American` dialect).
+For these reasons, I believe that trying to account for
+situational particulars via formal language models alone
+is a dead end.  This does not mean that formal language
+models are unimportant, only that we need to picture them
+resting on a fairly detailed prelinguistic
+world-disclosure.
+`p`
+
+`p.
+There are interesting parallels in this thesis to the role
+of phenomenological analysis, and the direct thematization
+of issues like attention and intentionality: analyses
+which are truly `q.to the things themselves` should take for
+granted the extensive subconscious reasoning that undergirds
+what we consciously thematize and would be aware of, in terms of
+what we deliberately focus on and are conscious of
+believing (or not knowing), for a first-personal `expose;.
+Phenomenological analysis should not consider itself as
+thematizing every small quale, every little patch of
+color or haptic/kinasthetic sensation which by some subconscious
+process feeds into the logical picture of our surroundings that
+props up our conscious perception.  Analogously, linguistic
+analysis should not thematize every conceptual and inferential
+judgment that guides us when forming the mental, situational
+pictures we then consult to set the groundwork for linguistic
+understanding proper.
+`p`
+
+`p.
+These comments apply to both conceptual `q.background knowledge` and
+to situational particulars of which we are cognizant in
+reference to our immediate surroundings and actions.  This
+is the perceptual and operational surrounding that gets
+linguistically embodied in deictic reference and other
+contextual `q.groundings`/.  Our situational awareness therefore
+has both a conceptual aspect %-- while attending a concert,
+or dining at a restaurant, say, we exercise cultural background
+knowledge to interpret and participate in social events
+ %-- and also our phenomenological construal of our locales,
+our immediate spatial and physical surroundings.
+Phenomenological philosophers have explored in detail how these
+two facets of situationality interconnect (David Woodruff Smith and
+Ronald McIntyre in `i.Husserl and Intentionality:
+A Study of Mind, Meaning, and Language`/, for instance).
+Cognitive Linguistics covers similar territory; the `q.cognitive`
+in Cognitive Semantics and Cognitive Grammar generally tends
+to thematize the conception/perception interface and
+how both aspects are merged in situational understanding
+and situationally grounded linguistic activity (certainly
+more than anything involving Artificial Intelligence or
+Computational Models of Mind as are connoted by terms like
+`q.Cognitive Computing`/).  Phenomenological and Cognitive
+Linguistic analyses of situationality and perceptual/conceptual
+cognition (cognition as the mental synthesis of
+perception and conceptualization) can certainly enhance and
+reinforce each other.
+`p`
+
+`p.
+But in addition, both point to a cognitive and situational
+substratum underpinning both first-person
+awareness and linguistic formalization proper %-- in other words,
+they point to the thematic limits of
+phenomenology and Cognitive Grammar and
+the analytic boundary where they give way to
+an overarching Cognitive Science.  In the case of
+phenomenology, there are cognitive structures that suffuse
+consciousness without being directly objects of attention
+or intention(ality), just as sensate hyletic experience is
+part our consciousness but not, as explicit content,
+something we in the general case are conscious `i.of`/.
+Analogously, conceptual and situational models
+permeate our interpretations of linguistic forms, but
+are not presented explicitly `i.through` these
+forms: instead, they are solicited obliquely and
+particularly.
+`p`
+
+`p.
+What phenomenology `i.should` explicate is not background situational
+cognition but how attention, sensate awareness, and intentionality
+structure our orientation `i.`visavis;` this background: how variations
+in focus and affective intensity play strategic roles in our engaged
+interactions with the world around us.  Awareness is a scale, and
+the more conscious we are of a sense-quality, an attentional focus,
+or an epistemic attitude, reflects our estimation of the
+importance of that explicit content compared to a muted experiential
+background.  Hence when we describe consciousness as a stream
+of `i.intentional` relations we mean not that the intended
+noemata (whether perceived objects or abstract thoughts)
+are sole objects of consciousness (even in the moment)
+but are that within conscious totality which we are most aware
+of, and our choice to direct attention here and there reflects our
+intelligent, proactive interacting with the life-world.
+Situational cognition forms the background,
+and phenomenology addresses the structure of intentional
+and attentional modulations constituting the conscious
+foreground.
+`p`
+
+`p.
+Analogously, the proper role for linguistic
+analysis is to represent how multiple layers or strands
+of prelinguistic understanding, or `q.scripts`/, or
+`q.mental spaces`/, are woven
+together by the compositional structures of language.
+For instance, `i.The rescued dogs were treated by an experienced vet`
+integrates two significantly different narrative frames
+(and space-constructions, and so forth): the frame implied
+by `q.rescued dogs` is distinct from that implied
+by `q.treated by a veterinarian`/.  Note that both spaces are
+available for follow-up conversation:
+
+
+`sentenceList,
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+One needed surgery and one got a blood transfusion.  We went there
+yesterday and both looked much better.}{sem}
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+One had been struck by a car and needed surgery on his leg.  We
+went there yesterday and saw debris from another car crash
+%-- it's a dangerous stretch of highway.}{sem}
+`sentenceList`
+
+In the first sentence `i.there` designates the veterinary clinic, while in
+the second it designates the rescue site.  Both of these locales are
+involved in the original sentence (as locations and also
+`q.spaces` with their own environments and configurations:
+consider these final three examples).
+
+`sentenceList,
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+We saw a lot of other dogs getting medical attention.}{sem}
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+It looked very modern, like a human hospital.}{sem}
+`sentenceItem; \swl{}{The rescued dogs were treated by an experienced vet.
+We looked around and realized how dangerous that road is %--
+for humans as well as dogs.}{sem}
+`sentenceList`
+`p`
+
+`p.
+What these double space-constructions reveal is that accurate
+language understanding does not only require
+the proper activated `q.scripts` accompanying words and
+phrases, like `q.rescued dogs` and `q.treated by a vet`/.
+It also requires the correct integration of each script,
+or each mental space, tieing them together in accord with
+speaker intent.  So in the current example we should read that
+the dogs `i.could` be taken to the vet `i.because` they were
+rescued, and `i.needed` to be taken to the vet `i.because` their
+needing rescued was associated with being injured or in poor 
+health.  Language structures guide us
+toward how we should tie the mental spaces, and the
+language segments where they are constructed, together: the
+phrase `q.`i.rescued` dogs` becomes the subject of the passive-voice
+`i.were treated by a vet`/ causing the two narrative strands of the
+sentence to encounter one another, creating a hybrid space
+(or perhaps more accurately a patterning between
+two spaces with a particular temporal and causal
+sequencing; a hybrid narration bridging the spaces).
+It is of course this hybrid space, this narrative
+recount, which the speaker intends via the sentence.  This
+idea is what the sentence is crafted to convey %-- not just
+that the dogs were rescued, or that they were taken to a vet, but
+that a causal and narrative thread links the two events.
+`p`
+
+`p.
+I maintain, therefore, that the analyses which are proper to linguistics
+%-- highlighting what linguistic reasoning contributes above and beyond
+background knowledge and situational cognition %-- should focus on
+the `i.integration` of multiple mental `q.scripts`/,
+each triggered by different parts and properties of the linguistic
+artifact.  The `i.triggers` themselves can be individual words, but
+also morphological details (like plurals or tense marking) and
+morphological agreement.  On this theory, analysis has two distinct
+areas of concerns: identification of grammatical, lexical, and
+morphosyntactic features which trigger (assumedly prelinguistic)
+interpretive scripts; and reconstructing how these scripts
+interoperate (and how language structure determines such integration).
+`p`
+
+`p.
+In the case of isolating triggers, a wide range of linguistic features
+can trigger interpretive reasoning %-- including base lexical choice;
+word-senses carry prototypical narrative and situational templates that
+guide interpretation of how the word is used in any given context.
+`i.Rescued`/, for example, brings on board a network of likely
+externalities: that there are rescuers, typically understood to be
+benevolent and intending to protect the rescuees from harm; that
+the rescuees are in danger prior to the rescue but safe afterward;
+that they need the rescuers and could not have reached safety themselves.
+Anyone using the word `q.rescue` anticipates that their addressees will
+reason through some such interpretive frame, so the speaker's role is
+to fill in the details descriptively or deictically: who are the rescuees
+and why they are in danger; who are the rescuers and why they are benevolent
+and able to protect the rescuees.  The claim that
+the word `i.rescue`/, by virtue of its lexical properties, triggers an
+interpretive `q.script`/, is a proposal to the effect that when trying
+to faithfully reconstruct speaker intentions
+we will try to match the interpretive
+frame to the current situation.
+`p`
+
+`p.
+The `q.script` triggered by word-choice is not just an interpretive
+frame in the abstract, but the interpretive `i.process` that matches
+the frame to the situation.  This process can be exploited for
+metaphorical and figurative effect, broadening the semantic scope
+of the underlying lexeme.  In the case of `q.rescue` we have less
+literal and more humorous or idiomatic examples like:
+
+`sentenceList,
+`sentenceItem; \hspace{-3pt}\swl{}{The trade rescued a star athlete from a losing team.}{idi}
+`sentenceItem; \swl{}{New mathematical models rescued her original research from obscurity.}{idi}
+`sentenceItem; \hspace{-3pt}\swl{}{Discovery of nearby earth-like planets rescued that
+star from its reputation as ordinary and boring and revealed that its solar
+system may actually be extraordinary.}{idi}
+`sentenceList`
+
+Each of these cases subverts the conventional `q.rescue` script by
+varying some of the prototypical frame details:  maybe the
+`q.danger` faced by the rescuee is actually trivial (as in the
+first three), or the rescuee is not a living thing
+whose state we'd normally qualify in terms of `q.danger` or `q.safety`/,
+or by overturning the benevolence we typically attribute to
+rescue events.  
+But in these uses subverting the familiar script does not
+weaken the lexical merit of the word choice; instead, the interpretive
+act of matching the conventional `q.rescue` script to the matter at hand
+reveals details and opinions that the speaker wishes to convey.  The
+first sentence, for instance, uses `q.rescue` to connote
+that being stuck on a losing team is an unpleasant (even if not life-threatening)
+circumstance.  So one part of the frame (that the rescuee needs
+outside intervention) holds while the other (that
+the rescue is in danger) comes across as excessive but
+(by this very hyperbole) communicating speaker sentiment.  By
+both invoking the `q.rescue` script and exploiting mismatches between
+its template case and the current context, the speaker
+conveys both situational facts and personal opinions quite
+economically.  Similarly, `i.rescue a paper from obscurity` is
+an economical way of saying that research work has been rediscovered
+in light of new science; and `q.rescued from a reputation` is a 
+clever way of describing, with rhetorical force, 
+how opinions have changed about someone or something.
+`p`
+
+`p.
+All of these interpretive effects %-- both conventional
+and unconventional usages %-- stem from the interpretive
+scripts bound to words (and triggered by word-choice) at
+the underlying lexical level %-- we can assess these by reference
+to lexical details alone, setting aside syntactic and morphological
+qualities.  When morphosyntactic details `i.are` considered 
+%-- e.g. plurals, as in (\ref{itm:coffeeshirt})-(\ref{itm:coffeetable}) 
+%-- we then have a spectrum of other linguistic `q.triggers`/, 
+involving perceptual and enactive figurations (e.g. how 
+plurality/multiplicities are conceived), alongside interpretive 
+`q.scripts`/.  My essential point however is that language 
+needs to trigger a collection of interpretive, perceptual, and 
+enactive/operational processes, for complete understanding; 
+and moreover that that language structures need to signal 
+the `q.routing` of information between such processes, 
+establishing patterns of priority/sequencing and 
+information-supplementation among them.  These patterns, 
+I believe, can be modeled to some approximation via 
+computational type and process theories. 
+`p`
+
+`p.
+I contend, moreover, that these cognitive processes are not 
+`i.themselves` linguistic: while they may overlap with 
+some language-relevant concerns (like conceptualization, and 
+doxic specificity) they are not woven from the cloth of 
+syntactic, semantic, or pragmatic elements internal to language.  
+It is not within the purview of linguistics then to analyze 
+interpretive scripts (except as a subsidiary case-study), or 
+perceptual understanding, or situationally-mediated action.  
+What `i.can` be left for linguistics proper is identifying the 
+`i.triggers` to these cognitive realities %-- insofar as content or 
+formations in language, within our goal-directed attempt to 
+understand others' linguistic performances, compels us toward 
+these extra-linguistic registers.
+`p`
+
+`p.
+Linguistics on this perspective is necessarily and properly incomplete: 
+we should not look to linguistic analysis to materially or structurally 
+explain the cognitive processes triggered by language.  But we `i.can` 
+analyze the triggers themselves %-- potentially via formal and 
+even computational methods.  So the formal models I reviewed 
+earlier %-- such as the combination of Dependency graphs 
+with typed S-Expressions encoded via double-indices %-- can be adopted 
+in a basically non-formalized, cognitive-linguistic paradigm, 
+insofar as we ascribe to the global picture of language as an 
+`q.interface` or `q.trigger` to extralinguistic cognition.
+`p`
+
+`thindecoline;
+
+`p.
+Suppose, for instance, that morphosyntax confirms the 
+presence of a pluralizing operation, like 
+`i.New Yorkers`/.  Against this minimal linguistic 
+`q.information`/, we need
+to invoke narrative frames, interpretive scripts, and prelinguistic
+background knowledge to understand what `i.sort` of plurality
+the speaker intends.  The phrase `i.New Yorkers` can refer 
+to those who live in New York City (\ref{itm:NYboroughs}, \ref{itm:boroughs}); 
+in the New York 
+are but `i.outside` the city (\ref{itm:NYcommute}, \ref{itm:NYcommute}); 
+or some combination.  
+It can also mean `i.all` (\ref{itm:NYboroughs}, \ref{itm:boroughs}) or 
+just `i.some` New Yorkers (\ref{itm:NYcommute}, \ref{itm:NYcommute}, \ref{itm:NYDem}).
+Usually these alternatives are not explicitly 
+spelled out, and have to be inferred from context 
+and via background knowledge about which readings 
+are plausible.    
+As I argued from multiple angles earlier,
+in the typical case %-- i.e., stylistically
+neutral, day-to-day language %-- syntactic
+composition does not neatly recapitulate logical form.
+`p`
+
+`p.
+My prior analysis demonstrated warrants for this idea by
+highlighting narrative and imagistic aspects
+of language used to convey ideas, like `q.come out against`
+providing the verb-phrases in reports of people
+criticizing something.  The `q.New York` examples like
+(\ref{itm:NYboroughs})-(\ref{itm:NYcommute}) point to a similar
+conclusion, but from a more lexico-semantic orientation:
+words like `i.borough` and `i.commute` carry a space
+of logical details that tend to force logical
+interpretations one way or another
+(e.g., the detail that the territory of a city
+is fully partitioned by boroughs, `i.so`/, it
+is `i.all` citizens who live in a borough).  This part of the
+logic is however not reflected in sentence-structure; it is,
+rather, latent
+in lexical norms and assumed part of understanding
+relevant sentences only because linguistic
+competence is understood to include
+familiarity with the logical
+implications of the lexicalized concepts:
+e.g. that the quantification in `q.New Yorkers
+live in one of five boroughs` is `i.all`/,
+but the quantification in `q.New Yorkers
+vote democratic` is `i.most`/.
+`p`
+
+`p.
+Here I'll also add the
+following: the current examples show
+how if addressees `i.have` the requisite background knowledge,
+linguistic structure does not have to replicate logical structure very
+closely to be understood.  The content which addressees understand may
+have a logical form, and language evokes this form %-- guides
+addressees toward considering specific propositional content %-- but
+this does not happen because linguistic structure in any precise way mimics,
+replicates, reconstructs, or is otherwise organized propositionally.  Instead,
+the relation of language to predicate structures is evidently
+oblique and indirect: language triggers interpretive processes
+which guide us toward propositional content, but the structure
+of language is shaped around fine-tuning the activation of
+this background cognitive dynamics more than around any need to model
+predicate organization architecturally.   In the case of plurals,
+the appearance of plural forms like `i.New Yorkers` or `i.coffees`
+compels us to find a reasonable cognitive model for the
+signified multitude, and this model will have a logical form
+%-- but the linguistic structures themselves do not in general
+model this form for us, except to the limited degree needed to
+activate prelinguistic interpretive thought-processes.
+`p`
+
+`p.
+I make this point in terms of plural `i.forms`/, and earlier made
+similar claims in terms of lexical details (cf. `i.(live in a) borough` 
+vs. `i.vote (Democratic)`/.  A third group of triggers I
+outlined involved morphosyntactic `i.agreement`/, which establishes
+inter-word connections that themselves trigger interpretive processing.
+Continuing the topic of plurals, how words agree with other words
+in singular or plural forms evokes schema which guide situational
+interpretations.  So for instance:
+
+`sentenceList,
+`sentenceItem; \swl{}{My favorite band gave a free concert last night.
+They played some new songs.}{ref}
+`sentenceItem; \swl{}{There was some pizza earlier, but it's all gone.}{ref}
+`sentenceItem; \swl{}{There were some slices of pizza earlier, but it's all gone.}{ref}
+`sentenceItem; \swl{}{There were some slices of toast earlier, but there's none left.}{ref}
+`sentenceItem; \swl{}{There was some toast earlier, but they're all gone.}{ref}
+`sentenceItem; \swl{}{That franchise had a core of talented young players, but it
+got eroded by trades and free agency.}{ref}
+`sentenceItem; \swl{}{That franchise had a cohort of talented players, but they
+drifted away due to trades and free agency.}{ref}
+`sentenceItem; \swl{}{Many star players were drafted by that franchise, but it
+has not won a title in decades.}{ref}
+`sentenceItem; \swl{}{Many star players were drafted by that franchise, but they
+failed to surround them with enough depth.}{ref}
+`sentenceItem; \swl{}{Many star players were drafted by that franchise, but they
+were not surrounded with enough depth.}{ref}
+`sentenceItem; \swl{}{Many star players were drafted by that franchise, but they
+did not have enough depth (around them).}{ref}
+`sentenceList`
+
+Plurality here is introduced not only by isolated morphology (like `i.slices`/,
+`i.players`/, `i.songs`/), but via agreements marked by
+word-forms in syntactically significant pairings: was/were, it/they,
+there is/there are.  Framing all of these cases is how we can usually schematize
+collections both plurally and singularly: the same set can be cognized as a
+collection of discrete individuals one moment and as an integral whole the next.
+This allows language some flexibility when designating plurals
+(cf. `i.Three times, students asked an interesting question`/).  A sentence
+discussing `i.slices of pizza` can schematically shift to treating
+the pizza as a mass aggregate in `i.it's all gone`/.  Here the antecedent
+of `i.it` is `i.slices` (of pizza).  In the opposite direction, the mass-plural
+`q.toast` can be refigured as a set of individual pieces in `i.they're all gone`/.
+The single `i.band` becomes the group of musicians in the band.
+In short, how agreements are executed invites the addressee to reconstruct
+the speaker's conceptualization of different referents discussed by
+a sentence, at different parts of the sentence: linking
+`i.it` to `i.slices` or `i.cohort`/, or `i.they` to `i.the band` or
+`i.the toast`/, evokes a conceptual interpretation shaped in
+part by how morphosyntactic agreement overlaps with `q.semantic`
+agreement.  Matching `i.they` to `i.the band` presents agreement
+in terms of how we conceive the aggregate (as a collection of
+musicians); using `q.it` would also present an agreement, but
+one schematizing other aspect of the band concept.
+`p`
+
+`p.
+In the last five above cases, `i.it` similarly binds (being singular) to
+`i.the franchise` seen as a single unit %-- here basic grammar and
+conceptual schema coincide %-- but `i.it` also binds
+to the `i.core of young players`/.  The
+players on a team can be figured as a unit or a multiple.  The franchise itself
+can be treated as a multiple (the various team executives and decision-makers),
+as in `i.they failed to surround the stars with enough depth`/.  The last sentence
+is ambiguous between both readings: `q.they` could designate either the players
+or the franchise.  Which reading we hear alters the sense of `q.have`/: asserting
+that the star `i.players` lack enough depth implies that they cannot execute
+plays during the game as effectively as with better supporting players;
+asserting that the `i.franchise` lacks depth makes the subtly different point
+that there is not enough talent over all.  The variant which would include
+`q.around them` nudges toward the second reading; but it is
+still permissible to, according to speaker intent, parse the last
+`i.they` as designating the `i.franchise` and the last `i.them` as
+the `i.players` %-- i.e., that final `i.they`//`i.them` pair
+having different antecedents.
+`p`
+
+`p.
+The unifying theme across these cases is that when forming sentences we often
+have a choice of how we figure plurality, and moreover these choices can be
+expressed not only in individual word-forms but in patterns of agreement.
+Choosing to pronominalize `i.slices of pizza` or `i.cohort of players`
+as `i.it`/, or alternatively `i.they`/, draws attention to either the more
+singular or more multitudinal aspects of the aggregate in question.
+But this effect is not localized to the individual
+`i.it`//`i.they` choice; it depends on
+tracing the pronoun to its antecedent and construing
+how the antecedent referent has both individuating and
+multiplicity-like aspects.
+Thus both individuation and plurality are latent in phrases like
+`i.slices of` or `i.cohort of`/, and this singular/plural co-conceiving
+is antecedently figured by how subsequent morphosyntax agrees
+with the singular or, alternatively, the plural.
+`p`
+
+`p.
+Moreover, these patterns of agreement invoke new layers of
+interpretation to identify the proper conceptual scope of plurals.
+In `i.The band planned a tour, where they debuted new songs` we hear
+the scope of `q.they` as narrower than its antecedent `q.the band`/,
+because only the band's `i.musicians` (not stage crew, managers, etc.)
+typically actually perform:
+
+`sentenceList,
+`sentenceItem; \swl{tour}{The band planned a tour, where
+they debuted new songs.}{ref}
+`sentenceItem; \swl{itm:teamflew}{The team flew to
+New York and they played the Yankees.}{ref}
+`sentenceItem; \swl{itm:theflies}{The city's largest theater company
+will perform `q.The Flies`/.}{ref}
+`sentenceList`
+
+Likewise in (\ref{itm:teamflew}), only the athletes are referenced via
+`i.they played`/; but presumably many other people (trainers, coaches, staff)
+are encompassed by `q.the team flew`/.  And in (\ref{itm:theflies})
+we do not imply that the Board of Directors will
+actually take the stage (the President
+as Zeus, say).  Even in the course of one sentence, plurals
+are reinterpreted and redirected:
+
+`sentenceList,
+`sentenceItem; The city's largest theater company
+performed `q.The Flies` in French, but everyone's accent
+sounded Quebecois.
+`sentenceItem; The city's largest theater company
+performed `q.The Flies`/; then they invited a professor
+to discuss Sartre's philosophy when the play was over.
+`sentenceList`
+
+In the first sentence, the `q.space` built by the sentence is wider
+initially but narrows to encompass only the actual actors on stage.
+In the second, the `q.space` narrows in a different direction, since
+we hear a programming decision like pairing a performance with a
+lecture as made by a theater's administrators rather than its actors.
+I discussed similar modulation in conceptual schemas related to plurality
+and pluralization earlier; what is distinct in these last examples is how
+the interpretive processes for cognizing plurality are shaped by
+agreement-patterns (like `i.it` or `i.they` to a
+composite antecedent) as
+much as by lexical choice, or morphology, in isolation.
+`p`
+
+`p.
+I have accordingly outlined a theory where lexical, morphological, and
+morphosyntactic layers all introduce `q.triggers` for cognitive processes,
+and it is these processes which (via substantially prelinguistic perception
+and conceptualization) ultimately deliver linguistic meaning.  What is
+`i.linguistic` about these phenomena is how specifically linguistic
+formations %-- word choice, word forms, inter-word agreements in form %--
+trigger these (in no small measure pre- or extra-linguistic) interpretations.
+But as I suggested this account is only preliminary to analysis of
+how multiple interpretive processes are `i.integrated`/.  Linguistic
+`i.structure` contributes the arrangements through which the
+crossing and intersecting between interpretive
+`q.scripts` are orchestrated.  Hence at the higher linguistic scales and
+levels of complexity, the substance of linguistic research, on this view,
+should gravitate toward structural integration of interpretive
+processes, even more than individual interpretive triggers themselves.
+`p`
+
+`p.
+I have thus far emphasized types' structural role, on the 
+premise that type theory offers technical models that can 
+be applied to the study of `q.cognitive process integration`/.  
+Requirements on the transfer of information between 
+processes %-- how processes complement one another and 
+take other's details as givens %-- are suggestive analogies 
+to latent interactions between mental `q.scripts` we are 
+poised to apply to situations; and these interactions 
+are the essential cognitive targets which linguistic structures 
+have to trigger by semantic/lexical, and syntactic/morphosyntactic 
+means.  The point of analyzing process preconditions 
+type-theoretically is to leverage types as constructional  
+media for structural theories of inter-process integration.      
+`p`
+
+`p.
+This approach is largely syntactic: while many lexical and semantic 
+details may be analytically relevant, the style of analysis I 
+just proposed is ultimately a form of grammar, identifying 
+how organizational patterns among language-elements 
+trigger (and are thereby explained by the intention of) 
+corresponding patterns among cognitive processes.  
+For sake of completeness, though, I will conclude by 
+offering a few thoughts on the more `q.semantic` manifestation 
+of types (and type theory) as premises of 
+organizing concepts.  
+`p`
+
+`subsection.Types, Sets, and Concepts`
+`p.
+In formal/computational contexts, types can be defined as sets of both values and
+`q.expectations` `cite<MathieuBouchard>; (meaning assumptions which may be made about
+all values covered by the type); alternatively, we can (perhaps better) consider types as
+`i.spaces` of values.  Types' extensions have internal structure; there
+can be `q.null` or `q.invalid` values, default-constructed values, and
+so forth, which are `q.regions` of the conceptual space spanned or 
+encompassing types.  
+There is definitional interdependence
+between types and functions: a function is defined in terms of the types it accepts as parameters and
+returns %-- rather than its entire set of possible inputs and outputs, which can
+vary across computing environments.`footnote.
+Moreover, expectations in a particular case
+may be more precise than what is implied by the type itself %-- it is erroneous
+to assume that a proper type system will allow a correct `q.set of values` to
+be stipulated for each point in a computation (the kind of contract enforced via
+by documentation and unit testing).  So state-space in a given context may include many
+`q.unreasonable` values, implying that within the overall space there is a `q.reasonable`
+subspace, except that this subspace may not be crisply defined.
+`footnote`  These are some reasons why in theoretical
+Computer Science types are not `q.reduced` to underlying sets; instead, extensions
+are sometimes complex spaces that model states of, or internal organization of comparisons
+among, type instances.
+`p`
+
+`p.
+Moreover, despite mathematical set theory's influence on 
+formal logic (and philosophy, by extension), 
+philosophers have long been troubled by 
+the seeming arbitrariness and minimal structure of 
+the essential notion of `i.sets` themselves,
+and have explored other constructs to play 
+analogous intellectually foundational roles, 
+such as Michael Jubien's Property Theory 
+`cite<MichaelJubien>;
+or Jiri Benovsky `q.modal perdurants` \cite[p. 8]{JiriBenovsky} 
+(here citing two treatments I find particularly 
+persuasive or thought-provoking).  
+This is one `i.philosophical` interest in 
+type theory as types have more formal structure 
+and also, in a sense, more metaphysical coherence 
+than `q.sets` (in the classical sense allowing 
+set-composition from unrelated members).  
+In a certain intellectual role, however, types are 
+still somehow `q.set-like` in that we can 
+consider the totality of values that may inhabit 
+each type, and we need some theory or model 
+of that totality %-- which in turn engenders 
+different versions of type theory.
+`p`
+
+`p.
+An obvious paradigm is organizing type-extensions around prototype/borderline
+cases %-- there are instances which are clear examples of types and
+ones whose classification is dubious.  I contend, however, 
+that common resemblance is not always a good marker
+for types being well-conceived %-- many useful concepts are common
+precisely because they cover many cases, which makes defining
+`q.prototypes` or `q.common properties` misleading.  
+Also, sometimes the clearest
+`q.representative` example of a type or concept is actually not a
+`i.typical` example: a sample latter or model home is actually not (in
+many cases) a real letter or home.  So resemblance-to-prototype is at
+best one kind of `q.inner organization` of concepts' and types' spaces
+of extension.  
+`p`
+
+`p.
+Sets, concepts, and types represent three different primordial thought-vehicles for
+grounding notions of logic and meaning.  To organize systems around `i.sets` is
+to forefront notions of inclusion, exclusion, extension, and intersection,
+which are also formally essential to mathematical logic and undergird the
+classical interdependence of sets, logic, and mathematics.
+To organize systems around `i.concepts` is to forefront practical engagement
+and how we mold conceptual profiles, as collections of ideas and pragmas,
+to empirical situations.  To organize systems around `i.types` is to forefront
+`q.functions` or transformations which operate on typed values, the interrelationships
+between different types (like subtypes and inclusion %-- a type can itself
+encompass multiple values of other types), and the conceptual abstraction
+of types themselves from the actual sets of values they may exhibit
+in different environments.  Sets and types are
+formal, abstract phenomena; whereas concepts are characterized by
+gradations of applicability, and play flexible roles in thought and language.
+The cognitive role of concepts can be discussed with some rigor, but there is a
+complex interplay of cognitive schema and practical engagements which
+would have to be meticulously sketched in many real-world scenarios, if
+our goal were to translate conceptual reasoning to formal structures
+on a case-by-case basis.  We can, however, consider in general
+terms how type-theoretic semantics can capture conceptual structures
+as part of the overall transitioning of thoughts to language.
+`p`
+
+`p.
+A concept does not merely package up a definition, like `q.restaurant` as
+`q.a place to order food`/; instead concepts link up with other concepts
+as tools for describing and participating in situations.  Concepts are
+associated with `q.scripts` of discourse and action, and find their
+range of application through a variegated pragmatic scope.
+We should be careful not to overlook these pragmatics, and
+assume that conceptual structures can be simplistically
+translated to formal models.
+Cognitive Linguistics critiques
+Set-Theoretic or Modal Logic reductionism (where a concept is just a set
+of instances, or an extension across different possible worlds) %-- George Lakoff and Mark Johnson,
+prominently, argue for concepts' organization around
+prototypes (\cite[p. 18]{LakoffJohnson}; \cite[p. 171, or p. \textit{xi}]{Johnson})
+and embodied/enactive patterns of interaction (\cite[p. 90]{LakoffJohnson};
+\cite[p. 208]{Johnson}).
+
+Types, by contrast, at least in linguistic applications of type theory, are abstractions
+defined in large part by quasi-functional notions of phrase structure.
+Nevertheless, the `i.patterns` of how types may inter-relate
+(mass-noun or count-noun, sentient or non-sentient, and so forth)
+provide an infrastructure for conceptual understandings to be
+encoded in language %-- specifically, to be signaled by which typed
+articulations conversants choose to use.  A concept like
+`i.restaurant` enters language with a collection of understood
+qualities (social phenomena, with some notion of spatial location and
+being a `q.place`/, etc.) that in turn can be marshaled by sets of
+allowed or disallowed phrasal combinations, whose parameters
+can be given type-like descriptions.  Types, in this sense,
+are not direct expressions of concepts but vehicles for
+introducing concepts into language.
+`p`
+
+`p.
+Concepts (and types also) are not cognitively the same as their
+extension %-- the concept `i.restaurant`/, I believe, is distinct from
+concepts like `i.all restaurants` or `i.the set of all restaurants`/.
+This is for several reasons.  First, concepts can be pairwise different
+not only through their instances, but because they highlight different
+sets of attributes or indicators.  The concepts `q.American President` and `q.Commander in Chief`
+refer to the same person, but the latter foregrounds a military role.
+Formal Concept Analysis considers `i.extensions` and `q.properties`
+%-- suggestive indicators that inhere in each
+instance %-- as jointly (and co-dependently) determinate: concepts
+are formally a synthesis of instance-sets and property-sets `cite<YiyuYao>;,
+`cite<Belohlavek>;, `cite<Wille>;.  Second,
+in language, clear evidence for the contrast between `i.intension` and
+`i.extension` comes from phrase structure: certain constructions specifically
+refer to concept-extension, triggering a mental shift from thinking of the
+concept as a schema or prototype to thinking of its extension (maybe in some context).
+Compare:
+
+`sentenceList,
+`sentenceItem; \swl{itm:rhinor}{Rhinos in that park are threatened by poachers.}{sem}
+`sentenceItem; \swl{}{Young rhinos are threatened by poachers.}{sem}
+`sentenceList`
+
+Both sentences focus a conceptual lens in greater detail than `i.rhino` in general, but
+the second does so more intensionally, by adding an extra indicative criterion; while
+the former does so extensionally, using a phrase-structure designed to operate on
+and narrow our mental construal of `q.the set of all rhinos`/, in the sense of
+`i.existing` rhinos, their physical place and habitat, as opposed to
+the `q.abstract` (or `q.universal`/) type.  So there is a familiar semantic
+pattern which mentally transitions from a lexical type to its extension and
+then extension-narrowing %-- an interpretation that, if accepted, clearly
+shows a different mental role for concepts of concepts' `i.extension` than the
+concepts themselves.`footnote.
+There is a type-theoretic correspondence between intension and
+extension %-- for a type `Tnoindex; there is a corresponding `q.higher-order` type
+of `i.sets` whose members are `Tnoindex; 
+(related constructions are the type of `i.ordered sequences` of `Tnoindex;;
+unordered collections of `Tnoindex; allowing repetition; and stacks, queues, and
+deques %-- double-ended queues %-- as `Tnoindex;-lists that can grow or shrink
+at their beginning and/or end).  If we take this (higher-order)
+type gloss seriously, the extension of a concept is not its `i.meaning`/, but a
+different, albeit interrelated concept.  Extension is not definition.
+`i.Rhino` does not mean `i.all rhinos` (or `i.all possible rhinos`/) %-- though arguably
+there are concepts `i.all rhinos` and `i.all restaurants` (etc.) along with the concepts
+`i.rhino` and `i.restaurant`/.
+`footnote`  
+`p`
+
+`p.
+Concepts, in short, do not mentally signify sets, or
+extensions, or sets-of-shared-properties.  Concepts, rather, are cognitive/dialogic tools.
+Each concept-choice, as presentation device,
+invites its own follow-up.  `i.Restaurant` or `i.house` have meaning not via
+idealized mental pictures, or proto-schema, but via kinds of things
+we do (eat, live), of conversations we have, of qualities we deem relevant.  Concepts do not
+have to paint a complete picture, because we use them as part of ongoing situations
+%-- in language, ongoing conversations.  Narrow concepts %-- which may best exemplify
+`q.logical` models of concepts as resemblance-spaces or as rigid designators to
+natural kinds %-- have, in practice, fewer use-cases `i.because` there
+are fewer chances for elaboration.  Very broad concepts, on the other hand, can have,
+in context, too `i.little` built-in `i.a priori` detail.
+(We say `q.restaurant` more often than `i.eatery`/, and
+more often than `i.diner`/, `i.steakhouse`/, or `i.taqueria`/).  Concepts dynamically play
+against each other, making `q.spaces` where different niches of meaning, including
+levels of precision, converge as site for one or another.  Speakers need freedom to choose
+finer or coarser grain, so concepts are profligate, but the most oft-used trend toward middle
+ground, neither too narrow nor too broad.  `i.Restaurant` or `i.house` are useful because they are noncommittal, inviting more detail.
+These dynamics govern the flow of inter-concept relations (disjointness, subtypes, partonymy, etc.).
+`p`
+
+`p.
+Concepts are not rigid formulae (like instance-sets or even attributes fixing when
+they apply); they are mental gadgets to initiate and
+guide dialog.  Importantly, this
+contradicts the idea that concepts are unified around instances' similarity (to each other or
+to some hypothetical prototype): concepts have avenues for contrasting
+different examples, invoking a `q.script` for further elaboration, or for building temporary filters.  
+In, say, 
+
+`sentenceList,
+`sentenceItem; \swl{}{Let's find a restaurant that's family-friendly.}{sem}
+`sentenceList`
+
+allowing such one-off narrowing is a feature
+of the concept's flexibility.
+`p`
+
+`p.
+In essence: no less important, than acknowledged similarities across all instances, are well-rehearsed ways
+`visavis; each concept to narrow scope by marshaling lines of `i.contrast`/, of `i.dissimilarity`/.
+A `i.house` is obviously different from a `i.skyscraper`
+or a `i.tent`/, and better resembles other houses; but there are also more nontrivial `i.comparisons`
+between houses, than between a house and a skyscraper
+or a tent.  Concepts are not only spaces of similarity, but of `i.meaningful kinds of differences`/.
+`p`
+
+`p.
+To this account of conceptual breadth we can add the conceptual matrix spanned by
+various (maybe overlapping) word-senses: to `i.fly`/, for example, names
+not a single concept, but a family of concepts all related to airborn
+travel.  Variations highlight different features: the path of flight (`i.fly to Korea`/, `i.fly over the mountain`/);
+the means (`i.fly Korean air`/, `i.that model flew during World War II`/);
+the cause (`i.sent flying (by an explosion)`/, `i.the bird flew away (after a loud noise)`/,
+`i.leaves flying in the wind`/).  Words allow different use-contexts
+to the degree that their various `i.senses` offer an inventory of aspects for
+highlighting by `i.morphosyntactic` convention.  Someone who says `i.I hate to fly` is not
+heard to dislike hand-gliding or jumping off mountains.`footnote.
+People, unlike birds, do not fly %-- so the verb, used intransitively
+(not flying `i.to` somewhere in particular or `i.in` something in particular),
+is understood to refer less to the physical motion and more to the socially
+sanctioned phenomenon of buying a seat on a scheduled flight on an airplane. The construction
+highlights the procedural and commercial dimension, not the physical mechanism and
+spatial path.  But it does so `i.because` we know human flight is
+unnatural: we can poetically describe how the sky is filled with flying leaves or birds,
+but not `q.flying people`/, even if we are nearby an airport.
+`footnote`  Accordant variations
+of cognitive construal (attending more to mode of action, or path, or motives, etc.),
+which are elsewhere signaled by grammatic choices, are also spanned by a conceptual
+space innate to a given word: senses are finer-grained meanings availing themselves to one construal or another.
+`p`
+
+`p.
+So situational construals can be signaled by word- and/or
+syntactic form choice (locative, benefactive, direct and indirect
+object constructions, and so forth).  Whereas conceptual organization
+often functions by establishing classifications, and/or invoking
+`q.scripts` of dialogic elaboration, cognitive structure tends to apply more
+to our attention focusing on particular objects, sets of objects, events, or
+aspects of events or situations.  
+So the contrast between singular, mass-multiples, and count-multiples,
+among nouns, depends on cognitive
+construal of the behavior of the referent in question (if singular, its
+propensity to act or be conceived as an integral whole; if multiple, its
+disposition to either be divisible into discrete units, or not).
+Or, events can be construed in terms of their causes
+(their conditions at the outset), or their goals (their conditions at
+the conclusion), or their means (their conditions in the interim).
+Compare `i.attaching` something to a wall (means-focused) to
+`i.hanging` something on a wall (ends-focused); `i.baking` a cake
+(cause-focus: putting a cake in the oven with deliberate intent to cook it)
+to `i.burning` a cake (accidentally overcooking it).`footnote.
+We can express
+an intent to bake someone a cake, but not (well, maybe comedically) to
+`i.burn` someone a cake (`q.burn`/, at least in this context, implies
+something not intended); however, we `i.can` say
+`q.I burnt your cake`/, while it is a little jarring to say
+`q.I baked your cake`/ %-- the possessive implies that some
+specific cake is being talked about, and there is less apparent reason
+to focus on one particular stage of its preparation (the baking) once
+it is done.  I `i.will` bake a cake, in the future, uses
+`q.bake` to mean also other steps in preparation (like `q.make`/), while,
+in the present, `q.the cake `i.is` baking` emphasizes more its
+actual time in the oven.  I `i.baked your cake` seems to focus
+(rather unexpectedly) on this specific stage even after it is completed,
+whereas `i.I baked you a cake`/, which is worded as if the recipient
+did not know about the cake ahead of time, apparently uses `q.bake` in
+the broader sense of `q.made`/, not just `q.cooked in an oven`/.
+Words' senses mutate in relation to the kinds of situations where they are used
+%-- why else would `i.bake` mean `q.make`//`q.prepare` in the past or future tense but
+`q.cook`//`q.heat` in the present?
+`footnote`
+These variations are not random assortments of polysemous words' senses:
+they are, instead, rather predictably distributed according
+to speakers' context-specific knowledge and motives.
+`p`
+
+
+`p.
+I claim therefore that `i.concepts` enter language complexly, influenced by
+conceptual `i.spaces` and multi-dimensional semantic and syntactic selection-spaces.
+Concepts are not simplistically `q.encoded` by types, as if for
+each concept there is a linguistic or lexical type that just
+disquotationally references it %-- that the type `q.rhino` means the concept
+`i.rhino` (`q.type` in the sense that type-theoretic semantics would model lexical
+data according to type-theoretic rules, such as `i.rhino` as subtype of `i.animal` or
+`i.living thing`/).
+Cognitive schema, at least in the terms I just laid out, select particularly
+important gestalt principles (force dynamics, spatial frames, action-intention)
+and isolate these from a conceptual matrix.  On this basis, we can argue that
+these schemata form a precondition for concept-to-type association; or,
+in the opposite logical direction, that language users' choices to employ
+particular type articulations follow forth from their prelinguistic
+cognizing of practical scenarios as this emerges out of collections
+of concepts used to form a basic understanding of and self-positioning within them.
+`p`
+
+`p.
+In this sense I called types `q.vehicles` for concepts: not that types `i.denote`
+concepts but that they (metaphorically) `q.carry` concepts into language.  
+`q.Carrying` is enabled by types' semi-formal rule-bound
+interactions with other types, which are positioned to capture concepts' variations and
+relations with other concepts.  
+This is the relationship I would propose for integrating 
+theories of concepts %-- as cognitive and lexicosemantic 
+phenomena %-- with applications of type theory which, 
+as I argued above, are fundamentally syntactic: 
+types as structural invariants patterning the integration 
+between processes operative in language understanding.
+`p`
+
+`p.
+To express a noun in the benefactive case, for example, which can be seen as attributing to
+it a linguistic type consistent with being the target of a benefactive,
+is to capture the concept in a type-theoretic gloss.
+It tells us, I'm thinking about this thing in such a way that it
+`i.can` take a benefactive (the type formalism attempting to capture
+that `q.such a way`/).
+A concept-to-type `q.map`/, as I just
+suggested, is mediated (in experience and practical reasoning) by
+cognitive organizations; when (social, embodied) enactions take
+linguistic form, these organizing principles can be encoded in how
+speakers apply morphosyntactic rules.  
+`p`
+
+`p.
+So the linguistic structures,
+which I propose can be formally modeled by a kind of type theory, work
+communicatively as carriers and thereby signifiers of cognitive
+attitudes. The type is a vehicle for the concept because it takes part in constructions
+which express conceptual details %-- the details
+don't emerge merely by virtue of the type itself.
+I am not arguing for a neat concept-to-type correspondence; instead, a type system provides a
+`q.formal substrate` that models (with some abstraction and simplification) how
+properties of individual concepts translate
+(via cognitive-schematic intermediaries) to their
+manifestation in both semantics and syntax.
+`p`
+
+`p.
+Continuing with declension as a case study,
+consider how an `q.ontology` of word senses 
+can interrelate with the benefactive.
+A noun as a benefactive target most often is a person or some other
+sentient/animate being; an inanimate benefactive is most likely
+something artificial and constructed (cf., `i.I got the car new tires`/).
+How readily hearers accept a sentence %-- and the path they
+take to construing its meaning so as to make it grammatically acceptable
+%-- involves interlocking morphological and type-related considerations;
+in the current example, the mixture of benefactive case and which noun
+`q.type` (assuming a basic division of nouns into e.g.
+animate/constructed/natural) forces a broader or narrower
+interpretation.  A benefactive with an `q.artifact` noun, for example,
+almost forces the thing to be heard as somehow disrepaired:
+
+`sentenceList,
+`sentenceItem; \swl{}{I got glue for your daughter.}{sem}
+`sentenceItem; \swl{}{I got glue for your coffee mug.}{sem}
+`sentenceList`
+
+We gather (in the second case) that the mug is broken %-- but this is never spelled out
+by any lexical choice; it is implied indirectly by using benefactive case.  
+It is easy to design similar examples with other cases:
+a locative construction rarely targets `q.sentient` nouns, so in 
+(reprising (\ref{itm:grandma})-(\ref{itm:press}))
+
+`sentenceList,
+`sentenceItem; \swl{}{We're going to Grandma!}{sem}
+`sentenceItem; \swl{}{Let's go to him right now.}{sem}
+`sentenceItem; \swl{}{Let's go to the lawyers.}{sem}
+`sentenceItem; \swl{}{Let's go to the press.}{sem}
+`sentenceList`
+
+we mentally substitute the person with the place where they live or work.
+`p`
+
+`p.
+Morphosyntactic
+considerations are also at play: `i.to the lawyers` makes `q.go` sound more like `q.consult with`/,
+partly because of the definite article (`i.the` lawyers implies conversants have some prior involvement
+with specific lawyers or else are using the phrase metonymically, as in `q.go to court` or
+`q.to the courts`/, for
+legal institutions generally; either reading draws attention away from literal spatial implications of
+`q.go`/). `i.Go to him` implies that `q.he` needs
+some kind of help, because if the speaker just meant going to wherever he's at, she probably would
+have said that instead.
+`p`
+
+`p.
+Similarly, the locative in `i.to the press` forces the mind to
+reconfigure the landmark/trajector structure, where `i.going` is thought not as a literal
+spatial path and `i.press` not a literal destination %-- in other words, the phrase must be
+read as a metaphor.  But the `q.metaphor` here is not `q.idiomatic` or removed from linguistic rules
+(based on mental resemblance, not language structure); here it
+clearly works off of formal language patterns: the landmark/trajector
+relation is read abstracted from literal spatial movement because the locative is applied
+to an expression (`i.the press`/) which does not (simplistically) meet
+the expected interpretation as `q.designation of place`/.
+In short, there are two different levels of `i.granularity` where we 
+can look for agreement requirements: a more fine-grained level where e.g. 
+`i.locative` draws in a type-specification of a `i.place` or `i.location`/; 
+and a coarser level oriented toward Parts of Speech, and typologies 
+of phrasal units.  The former analysis addresses the level I have called 
+`q.macrotypes`/, while the latter scale is at the `q.macrotype` level. 
+`p`
+
+`p.
+I envision the unfolding that I have just sketched out as something Phenomenological
+%-- it arises from a unified and subjective consciousness, one marked by
+embodied personal identity and social situation.  If there are structural stases
+that can be found in this temporality of experience, these are not constitutive
+of conscious reality but a mesh of rationality that supports it, like the veins in
+a leaf.  Stuctural configurations can be lifted from language insofar as it is a
+conscious, formally governed activity, and lifted from the ambient situations which
+lend language context and meaning intents.  So any analytic emphasis on
+structural fixpoints threaded through the lived temporality of consciousness is an
+abstraction, but one that is deliberate and necessary if we want to make scientific
+or in any other manner disputatable claims about how language and congition works.
+`p`
+
+`p.
+To return to the example of `i.Student after student`/, I 
+commented that designating
+one word to `q.represent` the phrase seemed arbitrary.  
+If we consider functional-typing alone, `i.after` is the only non-noun,
+the natural conclusion is that `q.after` should be typed `NNtoN;
+(which implies that `q.after` is analogous to the `q.functional` position, and
+in a lambda-calculus style reconstruction would be considered the `q.head`
+%-- Figure ~`ref<fig:ESA>; is an example of how
+the sentence could be annotated, for sake of discussion).
+This particular idiom depends however
+on the two constituent nouns being the same word (a pattern I've also alluded to with
+idioms like `i.time after time`/).  
+Technically, this appears to be an example of `i.dependent types`/: 
+specifically, a type-theoretic model of `i.after` in this would seem 
+to require that the `NNtoN; signature be constrained so that the second 
+noun matches the first %-- so the second `N; type is actually constrained 
+to be a singleton type dependent on the first `N;'s value.  
+By way
+of illustration, Figure ~`ref<fig:ESA>; shows a
+destructuring with implicit type annotations.  `input<figure2.tex>;
+Earlier I opined that the repetition in `BlankAfterBlank; is a 
+rhetorical effect emphasizing that the recurrence of some
+phenomenon is tedious or noteworthy %-- in this one usage `i.after` 
+becomes a pluralizing adjective that takes two arguments, but
+requires them to be the same.  This sense of `i.after` can be
+given a function-like `POS; notation as, say,
+`AfterNSingAndNSingToNPl; (using `NSing; and `NPl; to mean singular
+and count-plural nouns, respectively), but with a further 
+stipulation that the second argument duplicates the first.  
+Formally, then, the parameters
+for `i.after` are a dependent type pair 
+`cite<BernardyEtAl>;, `cite<TanakaEtAl>; satisfied by an identity comparison between
+the two nouns.  This analysis captures a type-theoretic gloss on the 
+structural contrast between `i.Student after student` and 
+`i.Many students`/, phrases which are similar but not identical 
+in meaning (so whose differences need explaining).
+`p`
+
+`p.
+I have offered a more cognitive account focusing on 
+the implicit temporality of `i.Student after student`/; this later 
+type-oriented model is more formal, or at least leaves open the 
+possibility that language is organically taking in structures 
+engineered into artificial (e.g., computer programming) languages. 
+It is certainly possible to witness formalizable structures in 
+language patterns %-- Zhaohui Luo finds strong evidence for
+dependent types being a good model for semantic norms in 
+`cite<LuoSoloviev>;, for example.  Whether these kinds of 
+formalisms have important causal influence on 
+language acquiring its evident patterns, or are more like 
+just convenient representational tools, is perhaps an 
+open (and maybe case-by-case) question.   
+`p`
+
+`p.
+Consider alternatives for `q.many students`/.  The phrase as
+written suggests a type signature (with `q.many` as the `q.function-like` or
+derivative type) `NpltoNpl;, yielding a syntactic interpretation of the phrase; this
+interpretation also suggests a semantic progression, an accretion of intended detail.
+From `i.students` to `i.many students` is a conversion between two plural nouns
+(at the level of concepts and semantic roles); but it also implies relative size,
+so it implies some `i.other` plural, some still larger group of students from which
+`q.many` are selected.  While rather abstract and formal, the `NpltoNpl; representation
+points toward a more cognitive grounding which considers this `q.function` as a form
+of thought-operation; a refinement of a situational model, descriptive resolution,
+and so forth.  If we are prepared to accept a cognitive underpinning to semantic
+classification, we can make the intuition of part of speech signatures as `q.functions`
+more concrete: in response to what `q.many` (for example) is a function `i.of`/,
+we can say a function of propositional attitude, cognitive schema, or attentional
+focus.
+`p`
+
+`p.
+The schema which usefully captures the sense and picture of `i.students` is
+distinct (but arguably a variation on) that for `i.many students`/, and there is a
+`q.mental operation` triggered by the `i.many students` construction which
+`q.maps` the first to the second.  Similarly, `i.student after student` triggers a
+`q.scheme evolution` which involves a more explicit temporal unfolding
+(in contrast to how `i.many students` instead involves a more explicit
+quantitative `i.many/all` relation).  What these examples show is that
+associating parts of speech with type signatures is not just a formal
+fiat, which `q.works` representationally but does not necessarily capture
+deeper patterns of meaning.  Instead, I would argue, type signatures
+and their resonance into linkage acceptability structures
+(like singular/plural and mass/count agreement) `i.point toward` the
+effects of cognitive schema on what we consider meaningful.
+`p`
+
+`p.
+In `i.Student after student came out against the proposal`/,
+to `i.come out`/, for/against, lies in the semantic frame of attitude and expression
+(it requires a mental agent, for example), but, as per my prior analysis, its reception
+carries a trace of spatial form: to come out `i.to` a public place, to
+go on record with an opinion.  Usually
+`q.come out [for/against]`/, in the context of a policy or idea, is similarly
+metaphorical.  But the concrete spatial interpretation remains latent, as a kind
+of residue on even this abstract rendition, and the spatial 
+undercurrent is poised to emerge
+as more literal, should the context warrant.  However literally or metaphorically
+the `q.space` of the `q.coming out` is
+understood, however explicit or latent its cogitative figuration,
+is not something internal to the language; it is a potentiality which
+will present in different ways in different circumstances.  This is not to say that
+it is something apart from linguistic meaning, but it shows how linguistic meaning
+lies neither in abstract structure alone, nor contextual pragmatics, but in their cross-reference.
+`p`
+
+
+`p.
+
+`p`
+
+`p.
+
+`p`
+
+
+`p.
+
+`p`
+
+`p.
+
+`p`
+
+
+
+
+`p.
+`p`
+

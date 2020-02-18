@@ -1,0 +1,2123 @@
+`section.Gaps in Truth-Theoretic Semantics`
+`label<s3>;
+`label<sec:Gaps>;
+`p.
+I take as a given that typical sentences have a propositional core, 
+against which they take a performative stance 
+(which can be outright assertion, or else asserting speakers' 
+more complex propositional attitudes).  I would further 
+say that `i.truth-theoretic` semantics, in particular, 
+is organized around this propositional content as the 
+core target of linguistic analysis.  I am thinking of 
+truth-theoretic semantics in a broad sense, perhaps the 
+most influential paradigm in the Philosophy of Language 
+and by extension philosophy and linguistics in general 
+(not to mention Computer Science and Artificial Intelligence 
+research).  The most notable counter-paradigm is Cognitive Linguistics; 
+consider George Lakoff and Mark Johnson's extended critique 
+of truth-theoretic paradigms in `i.Philosophy in the Flesh`/.  
+Adherents of the latter perspective need not 
+dispute the logical substance of language artifacts' propositional 
+content, but tend to direct theoretical attention not to 
+the nature of propositional content itself, but to the cognitive 
+processes through which this content is understood.  
+`p` 
+
+`p.
+As I argued earlier, many sentences do not simplistically 
+reproduce the logical structure of their propositional 
+content, so models of that structure are only tangentially 
+relevant to analysis on the language side.  This is why we 
+need distinct analyses, beyond a mere logical gloss, 
+covering the interpretive steps leading to holistic 
+sentence-understanding.   This section will consider several 
+cognitive and pragmatic themes moving toward a general theory 
+of this phenomenon.
+`p`
+
+
+`subsection.Enaction and Illocutionary Force`
+
+`p.
+I will start by reviewing illocutionary pragmatics, to 
+identify some of the contextual and interpretive 
+transformations that pertain to mapping surface language 
+to propositional contents.  My point is to establish 
+what should be a common theory of logicality that can be
+shared by both critics and defenders of `q.truth-theoretic` 
+paradigms, on which basis their legitimate disputes 
+can be investigated.
+`p`
+
+`p.
+Many linguists (on both sides, I would say, of my 
+central truth-theoretic pro/con), 
+seem to analyze hedges like `q.could you please`
+as merely dressing over crude commands: we don't
+want to come across as giving people orders, but
+sometimes we do intend to ask people to do specific
+things.  As a result, we feel obliged to couch the
+request in conversational gestures that signal
+our awareness of how bald commands may lie outside
+the conversational norms.  These ritualistic
+`q.could you please`/-like gestures may have
+metalinguistic content, but %-- so the theory
+goes %-- they do not `i.semantically` alter
+the speech-act's directive nature.
+`p`
+
+`p.
+The problem with this analysis is that sometimes
+directive and `q.inquisitive` dimensions can
+overlap:
+
+`sentenceList,
+`sentenceItem; \swl{itm:almond}{Do you have almond milk?}{pra}
+`sentenceItem; \swl{}{Can you get MsNBC on your TV?}{pra}
+`sentenceItem; \swl{itm:needcorkscrew}{This isn't a screw-cap bottle: I need a corkscrew.}{pra}
+`sentenceList`
+
+These `i.can` be read as bare directives, and would
+be interpreted as such if the hearer believed the
+speaker already knew that yes, he has almond milk, and yes,
+he gets MsNBC.  In (\ref{itm:needcorkscrew}), if both parties
+know there's one corkscrew in the house,
+the statement implies a directive to fetch `i.that` corkscrew.
+But, equally, (\ref{itm:almond})-(\ref{itm:needcorkscrew}) can `i.also` be read as bare
+questions with no implicature: say, as fans of
+almond milk and MsNBC endorsing those selections,
+or pointing out that opening the bottle
+will need `i.some` corkscrew.
+And, meanwhile, (\ref{itm:almond})-(\ref{itm:needcorkscrew})
+can `i.also` be read as a mixture of the
+two, as if people expressed themselves like this:
+
+
+`sentenceList,
+`sentenceItem; \swl{}{I think the window is open, can you close it?}{pra}
+`sentenceItem; \swl{}{I see you have almond milk, can I have some?}{pra}
+`sentenceItem; \swl{}{If you get MsNBC, can you turn on Rachel Maddow?}{pra}
+`sentenceItem; \swl{}{If there is a corkscrew in the house, can you get it?}{pra}
+`sentenceList`
+`p`
+
+`p.
+I think the mixed case is the most prototypical, and pure
+directives or inquiries should be treated as degenerate
+structures where either directive or inquisitive content
+has dropped out.  After all, even a dictatorial
+command includes the implicit assumption that the order
+both makes sense and is not impossible.  On
+the other hand, we don't ask questions for no
+reason: `q.do you have almond milk` may be a
+suggestion rather than a request, but it still
+carries an implicature (e.g., that the addressee
+`i.should` get almond milk).
+`p`
+
+`p.
+Ordinary requests carry the assumption that addressees
+can follow through without undue inconvenience,
+which includes a package of assumptions about both
+what is currently the case and what is possible.
+`q.Close the window` only has literal force if the
+window is open.  So, when making a request, speakers
+have to signal that they recognize the request involves
+certain assumptions and are rational enough to
+accept modifications of these assumptions in
+lieu of literal compliance.  This is why
+interrogative forms like `q.can you` or
+`q.could you` are both semantically nontrivial
+and metadiscursively polite: they leave open the
+possibility of subsequent discourse framing the original
+request just as a belief-assertion.  Developments
+like `i.can you open the window` %-- `i.no, it's closed`
+are not ruled out.  At the same time, interrogative forms
+connote that the speaker assumes the addressees can
+fulfill the request without great effort: an implicit
+assumption is that they `i.can` and also `i.are
+willing to` satisfy the directive.  This is an
+assumption, not a presumption: the speaker
+would seem like a bully if he acted as if he
+gave no thought to his demands being too much
+of an imposition %-- as if he were taking
+the answer to `q.can you` questions for granted.
+This is another reason why requests
+should be framed as questions.  So, in short,
+`q.commands` are framed as questions because the speaker
+literally does not know for sure whether the command is
+possible; given this uncertainty a command `i.is` a question,
+and the interrogative form is not just a non-semantic
+exercise in politesse.
+`p`
+
+`p.
+Sometimes the link between directives and
+belief assertions is made explicit.  A common
+pattern is to use `i.I believe` or `i.I believe that` as an
+implicature analogous to interrogatives:
+
+`sentenceList,
+`sentenceItem; \swl{}{I believe you have a reservation for Jones?}{pra}
+`sentenceItem; \swl{}{I believe this is the customer service desk?}{pra}
+`sentenceItem; \swl{}{I believe we ordered a second basket of garlic bread?}{pra}
+`sentenceItem; \swl{}{I believe you can help me find computer
+accessories in this section?}{pra}
+`sentenceList`
+
+These speakers are indirectly signaling what they want
+someone to do by openly stating the requisite
+assumptions %-- `i.I believe you can` in place
+of `i.can you?`/.  The implication is that
+such assumptions translate clearly to a
+subsequent course of action %-- the guest who
+`i.does` have that reservation should be checked in;
+the cashier who `i.can` help a customer find
+accessories should do so.  But underlying these
+performances is recognition that
+illocutionary force is tied to background
+assumptions, and conversants are reacting to
+the propositional content of those assumptions
+as well as the force itself.  If I `i.do` close the
+window I am not only fulfilling
+the request but also confirming that the window
+`i.could` be closed (a piece of information
+that may become relevant in the future).
+`p`
+
+`p.
+In sum, when we engage pragmatically with other
+language-users, we tend to do so cooperatively,
+sensitive to what they wish to achieve with
+language as well as to the propositional
+details of their discourse.  But this often means
+that I have to interpret propositional
+content in light of contexts and implicatures.
+Note that both of these are possible:
+
+`sentenceList,
+`sentenceItem; \swl{}{Do you have any milk?}{pra}
+`sentenceItem; \swl{}{Yes, we have almond milk.}{pra}
+`sentenceItem; \swl{}{No, we have almond milk.}{pra}
+`sentenceList`
+
+A request for milk in a vegan restaurant could plausibly be
+interpreted as a request for a vegan milk-substitute.
+So the concept `i.milk` in that context may actually be
+interpreted as the concept `i.vegan milk`/.  
+Responding to the force of speech-acts
+compels me to treat them as not `i.wholly`
+illocutionary %-- they are in part statements of
+belief (like ordinary assertions).  One reason I need
+to adopt an epistemic (and not just obligatory)
+attitude to illocutionary acts is that I need to
+clarify what meanings the speaker intends, which
+depends on what roles she is assigning to
+constituent concepts.
+`p`
+
+`p.
+Suppose my friend says this, before and after:
+
+`sentenceList,
+`sentenceItem; \swl{itm:put}{Can you put some almond milk in my coffee?}{pra}
+`sentenceItem; \swl{itm:after}{Is there milk in this coffee?}{pra}
+`sentenceList`
+
+Between (\ref{itm:put}) and (\ref{itm:after}) I do put almond milk
+in his coffee and affirm `q.yes` to (\ref{itm:after}).  I feel it
+proper to read (\ref{itm:after})'s `q.milk` as really meaning
+`q.almond milk`/, in light of (\ref{itm:put}).  Actually
+I should be `i.less` inclined to say `q.yes`
+if (maybe as a prank) someone had instead
+put real (cow) milk in the coffee.  In responding
+to his question I mentally substitute what
+he almost certainly `i.meant` for how
+(taken out of context) (\ref{itm:after}) would usually
+be interpreted.  In this current
+dialog, the `i.milk` concept not only
+includes vegan milks, apparently, but
+`i.excludes` actual milk.
+`p`
+
+`p.
+It seems %-- on the evidence of cases like this one %--
+as if when we are dealing with
+illocutionary force we are obliged to subject
+what we hear to extra interpretation, rather
+than resting only within `q.literal` meanings
+of sentences, conventionally understood.
+This point is worth emphasizing because it complicates
+our attempts to link illocution with propositional
+content.  Suppose grandma asks us to close the
+kitchen window.  Each of these are plausible and
+basically polite responses:
+
+`sentenceList,
+`sentenceItem; \swl{}{It's not open, but there's still some
+cold air coming through the cracks.}{pra}
+`sentenceItem; \swl{}{It's not open, but I closed the window in
+the bedroom.}{pra}
+`sentenceItem; \swl{}{I can't %-- it's stuck.}{pra}
+`sentenceList`
+
+In each case I have not fulfilled her request `visavis;
+its literal meaning, but I `i.have` acted benevolently
+in terms of conversational maxims.  Similarly, 
+the `i.Handbook` has this case (example 12, p. 203, chapter 8): 
+
+`sentenceList,
+`sentenceItem; \swl{itm:TheWindow}{The window, it's still open.}{pra}
+`sentenceItem; \swl{itm:AWindow}{A window, it's still open.}{pra}
+`sentenceList`
+
+Chapter authors Jeanette K. Gundel and Thorstein Fretheim 
+suggest that (\ref{itm:AWindow}) is dubious, but in context 
+it may make perfect sense %-- particularly if it follows 
+a discourse where a requester wanted `i.whatever` window 
+closed (whichever window was causing a draft); even if that 
+wish was `i.expressed` via a `i.close the window`/.`footnote.
+Consider also the case of (`i.Handbook`/, example 9, 
+page 132, chapter 6):
+`sentenceList,
+`sentenceItem; \swl{itm:scribbled}{He scribbled on a living-room wall.}{sem}
+%\udref{HandbookCh.}{}
+`sentenceList`
+
+Barbara Abbott (chapter author) finds the indefinite article 
+in (\ref{itm:scribbled}) awkward.  Here, like in (\ref{itm:AWindow}), 
+I think the acceptability of `i.both` definite and indefinite 
+articles points to the flexibility of articles in English: 
+we can use `i.close `underline.the` window` even if we are referentially 
+ambiguous about which window is open %-- both (\ref{itm:AWindow}) 
+and (\ref{itm:TheWindow}) are almost interchangeable.  The reason
+is apparently that the very act of talking about an open or 
+closed window foregrounds it such that it can be approached 
+definitely.  In (\ref{itm:scribbled}) Abbott's intuition is 
+probably that we usually speak of `i.the` wall of a room %-- even 
+in the normal case of a room with four walls %-- because there is 
+no common reason to single out one wall, as with an indefinite 
+article (saying `i.a` wall implies that the other walls are 
+differentiated from the one referenced).  But I believe we can 
+clearly cognize the walls of a room as a collection of discrete 
+things, and that the formation `i.the` wall %-- unifying 
+them into a single %-- is not so much a matter of discounting 
+the perceptual multiplicity of four walls, but 
+of conceiving `q.walls` themselves functionally as well as 
+perceptually.  In my reading, `i.the wall` refers not only 
+to something perceptually individuated but to an element 
+of the architectural complex of a building: a wall is something 
+that prohibits movement, muffles sounds, provides some privacy, 
+protects people inside the room (part of a building's 
+structural integrity), and so forth.  We can say `i.the` wall 
+because we cognize walls as occupying that phenomenal niche, 
+so all four walls of a room are collectively `q.the` wall 
+`visavis; such a niche, even while on sensory grounds we 
+can switch to treating them as separate (warranting the (\ref{itm:scribbled}) 
+version).     
+`footnote`   
+`p`
+
+`p.
+Part of reading propositional content is
+syncing our conceptual schemas with our fellow
+conversants.  The illocutionary
+dimension of a request like `i.can I have some milk?`
+makes this interpretation especially important,
+because the addressee wants to make a good-faith effort
+to cooperate with the pragmatic intent of the
+spech-act.  But cooperation requires the
+cooperating parties' conceptual schemas to
+be properly aligned.  I therefore have to
+suspend the illocutionary force of a directive
+temporarily and treat it as locutionary
+statement of belief, interpret its apparent
+conceptual underpinnings in that mode, and
+then add the illocutionary force back in: if I
+brought `i.real` milk to a vegan customer who
+asked for `q.milk` I would be `i.un`/-cooperative.
+`p`
+
+`p.
+The upshot is that conversational implicatures
+help us contextualize the conceptual negotiations
+that guarantee our grasping the correct
+propositional contents, and vice-versa.  This means
+that propositionality is woven throughout both
+assertive and all other modes of language, but it
+also means that propositional content can be
+indecipherable without a detailed picture
+of the current context (including illocutionary
+content).  The propositional content of,
+say, `i.there is milk in this coffee` has to be
+judged sensitive to contexts like `i.milk`
+meaning `i.vegan milk` %-- and this
+propagates from a direct propositional
+to any propositional attitudes which may
+be directed towards it, including requests like
+`i.please put milk in this coffee`/.
+`p`
+
+`p.
+Suppose the grandkids close grandma's bedroom window
+when she asks them to close the kitchen window.
+The propositional content at the core of grandma's
+request is that the kitchen window be closed; the
+content attached to it is an unstated belief that
+this window is open.  Thus, the truth-conditions
+satisfying her implicit understanding would be
+that the kitchen window went from being open to being
+closed.  Suppose, as it happens, that window is already
+closed.  So the truth-conditions that would satisfy
+grandma's initial belief-state do not obtain %-- her
+beliefs are false %-- but the truth conditions satisfying
+her desired result `i.do` obtain.  The window
+`i.is` closed.  Yet the grandkids should not thereby
+assume that her request has been properly responded to;
+it is more polite to guess at the motivation behind
+the request, e.g., that she felt a draft
+of cold air.  In short, they should look outside
+the truth conditions of her original
+request taken literally, and `i.interpret`
+her request, finding different content
+with different truth-conditions that are both consistent
+with fact and address whatever pragmatic goals
+grandma had when making her request.  They might
+infer her goal is to prevent an uncomfortable
+draft, and so a reasonable `q.substitute content` is
+the proposition that `i.some` window is open,
+and they should close `i.that` one.
+`p`
+
+`p.
+So the grandkids should reason as if translating
+between these two implied meanings:
+
+`sentenceList,
+`sentenceItem; \swl{}{I believe the kitchen window
+is open %-- please close it!}{pra}
+`sentenceItem; \swl{}{I believe some window
+is open %-- please close it!}{pra}
+`sentenceList`
+
+They have to revise the simplest reading of
+the implicit propositional content of grandma's
+`i.actual` request, because the actual request is
+inconsistent with pertinent facts.  In short, they
+feel obliged to explore propositional alternatives
+so as to find an replacement, implicit request whose
+propositional content `i.is` consistent with
+fact and also meets the original request's illocutionary
+force cooperatively.
+`p`
+
+`p.
+In essence, we need to express a requester's desire as
+itself, in its totality, a specific propositional content,
+thinking to ourselves (or even saying to others) things
+like
+
+`sentenceList,
+`sentenceItem; \swl{}{Grandma wants us to close the window.}{pra}
+`sentenceItem; \swl{}{He wants a bottle opener.}{pra}
+`sentenceList`
+
+But to respond politely we need to modify
+the parse of their requests to capture the
+`q.essential` content:
+
+`sentenceList,
+`sentenceItem; \swl{}{Grandma wants us to eliminate the cold draft.}{pra}
+`sentenceItem; \swl{}{He wants something to open that bottle.}{pra}
+`sentenceList`
+
+We have to read outside the literal interpretation
+of what they are saying.  This re-reading is something
+that may be appropriate to do with respect to
+other forms of speech also; 
+but our conversational responsibility to infer
+some unstated content is especially pronounced
+when we are responding to an explicit
+request for something.
+`p`
+
+`p.
+Certainly, in many cases, meanings are not literal.
+But how then do we understand what people are saying?
+Trying to formulate a not-entirely-haphazard
+account of this process, we can speculate
+that interpreting what someone is `q.really` saying
+involves systematically mapping their apparent
+concepts and references to some superimposed
+inventory designed to mitigate false beliefs or
+conceptual misalignments among language users in some
+context.  That means, we are looking for mappings
+like `i.milk` to `i.almond milk` in (\ref{itm:can}) from a
+vegan restaurant, or `i.kitchen window` to
+`i.bedroom window` in (\ref{itm:close}) if it is the latter
+that is open:
+
+`sentenceList,
+`sentenceItem; \swl{itm:can}{Can I have some milk?}{pra}
+`sentenceItem; \swl{itm:close}{Can you close the kitchen window?}{pra}
+`sentenceList`
+
+The point of these `q.mappings` is that they
+preserve the possibility of
+modeling the `i.original` propositional content
+by identifying truth conditions
+for that content to be satisfied.
+`p`
+
+`p.
+A `i.literal` truth-condition model doesn't work in
+cases like (\ref{itm:can}) and (\ref{itm:close}): the diner's request
+is `i.not` satisfied if it is the case
+that there is now (real) milk in her coffee; and
+grandma's request is not necessarily satisfied if it is
+the case that the kitchen window is closed.  The
+proposition `q.the kitchen window is closed` only bears on
+grandma's utterance insofar as she believes that
+this window is open and causing a draft.  So if we want
+to interpret the underlying locutionary content
+of (\ref{itm:can}) and (\ref{itm:close}) truth-theoreticaly, we need to
+map the literal concepts appearing
+in these sentences to an appropriate translation,
+a kind of `q.coordinate transformation` that
+can map concepts onto others, like milk/almond milk
+and kitchen window/bedroom window.
+`p`
+
+
+`p.
+In sum, a theory of sentences' logical nexus can only 
+be complete with some model of discursive context 
+`i.structured in such a way` that we can repesent the 
+interpretations and concept-transforms internal to 
+parsing sentences to their propositional core.  
+I will now consider what such a `q.theory of context` 
+might look like.
+`p`
+
+
+`spsubsectiontwoline.The co-framing system and the
+doxa system`
+
+`p.
+Illucutionary acts expressly signify our desire for 
+something to change in our environment (with the 
+help of our addressees), but similar implications 
+of pragmatic desire are evident even when sentences 
+are more directly assertorial, or less directly 
+illocutionary.  Compare between:
+
+`sentenceList,
+`sentenceItem; \swl{itm:store}{Remember that wine we tasted on the Niagara 
+Peninsula last summer?  Can you find it in our 
+local liquor store?}{pra}
+`sentenceItem; \swl{itm:varietal}{Remember that wine we tasted on the Niagara 
+Peninsula last summer?  What varietal was that again?}{pra}
+`sentenceList`
+
+The first sentence in each pair attempts to 
+establish a common frame of reference between 
+addresser and addressee %-- it does not, in and 
+of itself, request any practical (extramental) action.  
+The second sentence in (\ref{itm:store}) `i.can` be read as 
+requesting that the addressee buy a bottle, though an alternate
+interpretation is to learn for `i.future reference` 
+whether someone `i.could` buy that bottle.  The 
+second sentence in (\ref{itm:varietal}) carries no directive 
+implicature at all, at least with any directness; 
+it asks for more information. 
+`p`
+
+`p.
+Despite these variations, it seems reasonable to say that 
+language is always performed in an overarching setting 
+where concrete (extralinguistic) activity 
+will `i.eventually` take place.  If in (\ref{itm:varietal}) I intend
+to recommend that grape variety to a friend, I may not be  
+making a direct request of him, but I `i.am`  
+proposing an eventual action that he 
+might take.  If in (\ref{itm:store}) I am not issuing a directive, I 
+am however establishing (and reserving the future possibility) 
+that such a directive would be reasonable.  As a result, some 
+extralinguistic state change seems to be lurking 
+behind the linguistic content: I want my friend 
+to go from having never tasted that varietal 
+to having tasted it. 
+Or I want to go from not having a bottle of that 
+wine to having one.  Or, if I do not 
+want these things at the moment, I want 
+to confirm intellectually that these wishes are 
+plausible.  We seem to use language to 
+set up the interpersonal understandings needed 
+to `i.eventually` engage in (usually collective) 
+practical activity, which means effectuating some 
+(extralinguistic) change.  
+`p`
+
+`p.
+That is, most expressions are not direct 
+requests or suggestions of the `q.close the window` 
+or `q.let's get some wine` variety, but they are 
+stitches in the thread of coordinated human actions.
+Often however we use language to `i.prepare`/, 
+`i.negotiate`/, and `i.decide upon` joint actions.  
+We may have a
+`i.holistic` sense that meanings orbit around 
+extralinguistic and extramental state-change, 
+but at the level of particular sentences most 
+changes that occur, or are proposed, tend to be 
+changes in our conceptualization of situations.  
+Accordingly, we can pursue a semantic theory 
+based on `i.change of state` if we accept that 
+such changes run the gambit from changes 
+`i.internal` to language %-- to conversants' 
+appraisal of dialogic context %-- to 
+changes effectuated by human activity inspired by language. 
+Dialogs 
+themselves change: the first sentences in 
+(\ref{itm:store}) and (\ref{itm:varietal}) 
+modify the discursive frame so that, for example, 
+a particular wine becomes available as the anaphoric
+target for `i.that` and `i.that wine` %-- and also, 
+metonymically, `i.that varietal`/, `i.that grape`/, 
+`i.that winery`/.  Conceptual frames can change: 
+if we are discussing a visit to Ontario and 
+I mention a particular winery, one effect is to 
+(insofar as the conversation follows my lead) 
+refigure our joint framing to something 
+narrower and more granular that the prior frame (but 
+still contained in it; I am not changing the subject 
+entirely).  We can pull a frame out as well as in
+%-- e.g., switch from talking about one winery visit to 
+the whole trip, or one Leafs game to the entire season.
+Moreover, our beliefs can change/evolve: if you tell me 
+the wine was Cabernet Franc, I have that piece of 
+info in my arsenal that I did not have before.    
+`p`
+
+`p.
+So I assume in this paper that
+linguistic meanings are grounded in state-changes, 
+with the stipulation that the `q.register` where the changes occur can 
+vary over several cognitive and extramental options: 
+actual change in our environment (the window closed, 
+milk in the coffee, the bottle opened); changes to the 
+dialog structure (for anaphoric references, pronoun 
+resolution, metalinguistic cues like `i.can you say that 
+again`/, etc.); changes to conceptual framings
+(zoom in, zoom out, add detail); changes to beliefs.
+Each of these kinds of changes deserve their own analysis, 
+but we can imagine the totality of such analyses 
+forming an umbrella theory of meanings. 
+`p`
+
+`p.
+During the course of a conversation %-- and indeed 
+of any structured cognitive activity %-- we 
+maintain conceptual frames representing relevant 
+information; what other people know or believe;
+what are our goals and plans (individually and 
+collectively); and so forth.  We update
+these frames periodically, and use language to 
+compel others to modify their frames in
+ways that we can (to some approximation) anticipate 
+and encode in linguistic structure.
+`p`
+
+`p.
+In the simplest case, we can effectuate changes in 
+others' frames by making assertions they are likely 
+to believe to be true (assuming they deem us 
+reliable).  In general, it is impossible 
+to extricate the explicit content of the relevant 
+speech-acts from the relevant cognitive, linguistic, and 
+real-world situational contexts:
+
+`sentenceList,
+`sentenceItem; \swl{}{That wine was a Cabernet Franc.}{ref}
+`sentenceItem; \swl{}{Those dogs are my neighbor's.  
+They are very sweet.}{ref}
+`sentenceList`
+
+Although there is a determinate propositional content being 
+asserted and although there is no propositional attitude 
+other than bald assertion to complicate the pragmatics, 
+still the actual words depend on addressees drawing from 
+the dialogic context in accord with how I expect them to
+(as manifest in open-ended expressions like `i.that wine`/, 
+`i.those dogs`/, `i.they`/).  Moreover, the  
+open-ended components can refer outward in different 
+`q.registers`/: in `i.that wine` I may be 
+referencing a concept previously established in 
+the conversation, while `i.those dogs` may refer to 
+pets we saw or heard but had not previously 
+talked about.  Of course, the scenarios 
+could be reversed: I could introduce `i.that wine` 
+into the conversation by gesturing to a bottle 
+you had not noticed before, and refer via 
+`i.those dogs` to animals you have never seen or heard but 
+had talked about, or heard talk about, in the recent past.
+These dialog steps need to be resolved via a mixture of 
+linguistic and extra-linguistic cues: 
+surface-level language is not always clear as to whether 
+referring expressions are to work `q.deictically` 
+(drawing content from the ambient context, 
+signified by gestures, rather than from any 
+linguistic meaning proper), `q.discursively` 
+(referring within chains of dialog, e.g. 
+anaphora), or `q.descriptively` (using 
+purely semantic means to establish a designation, 
+like `q.my next-door neighbor's dogs` or 
+`q.Inniskillin Cabernet Franc Icewine 2015`/).   
+`p`
+
+`p.
+Let's agree to call the set of entities sufficiently 
+relevant to a discourse or conversation context the `i.ledger`/.
+By `q.sufficiently relevant` I mean whatever is already 
+established in a discourse so it can be referenced with something 
+less that full definite description (and without the aid 
+of extralinguistic gestures).  I assume that gestures
+and/or descriptions are communicative acts which `q.add` 
+to the ledger.  The purely linguistic case %-- let's say, 
+`i.descriptive additions` %-- can themselves be distinguished
+by their level of grounding in the current context.  
+A description can be `q.definitive` in a specific situation without 
+being a `i.definite description` in Bertrand Russell's sense
+(see `q.that wine we tasted last summer`/). 
+`p`
+
+`p.
+So, descriptive additions to the ledger are one kind of 
+semantic side-effect: we can change the ledger via 
+language acts.  I will similarly dub another facet of 
+cognitive-linguistic frames as a `i.lens`/: the idea
+that in conversation we can `q.zoom` attention 
+in and out and move it around in time.  `q.That wine we 
+tasted last summer in Ontario` both modifies 
+the `i.ledger` (adding a new referent for convenient
+designation) and might alter the `i.lens`/:
+potentially compelling subsequent 
+conversation to focus on that time and/or place.  
+Finally, I will identify a class of frame-modifications 
+which do directly involve propositional content: 
+the capacity for language to promote shared beliefs 
+between people whose cognitive frames are in 
+the proper resonance, by adding details to conceptual
+pictures already established: `i.those dogs are Staffordshires`/,
+`i.that wine is Cabernet Franc`/, `i.we have almond milk`/, etc.
+`p`
+
+`p.
+For sake of discussion, I will call this latter part of the `q.active` 
+cognitive frame, for some discussion 
+%-- the part concerning shared beliefs or asserted facts %--
+the `i.doxa inventory`/.
+This `q.database`/-like repository stands alongside the 
+`q.ledger` and `q.lens` to track propositional content 
+asserted, collectively established, or already 
+considered as background knowledge, `visavis; some 
+discourse.  Manipulations of the lens and ledger allow 
+speakers to designate (using referential cues
+that could be ambiguous out-of-context) 
+propositional contents which they 
+wish to add to the `q.doxa inventory`/.  I'll also say 
+that modifying this inventory `i.can` be done through 
+language, but participants in a discourse are entitled 
+to assume that everyone formulates certain beliefs 
+which are observationally obvious, and can therefore 
+be linguistically presupposed rather than reported 
+(the likes of that a traffic light 
+is red, or a train has pulled into a station, or 
+that it's raining).  
+`p`
+
+`p.
+So, I will assume that the machinery of frames is cognitive, 
+not just linguistic.  We have analogous faculties for 
+`q.refocusing` attention and adding conceptual details
+via interaction with our environment, both alone and with others, 
+and both via language and via other means.  Some 
+aspects of `i.linguistic` cognitive framing %-- like 
+the `q.ledger` of referents previously established in a 
+conversation %-- may be of a purely linguistic character, 
+but these are the exception rather than the rule.  
+In the typical case we have a latent ability to 
+direct attention and form beliefs by 
+direct observation `i.or` by accepting others' reports as
+proxies for direct observation.
+`p`
+
+`p.
+When we are told that two dogs are male, for instance, 
+we may not perceptually encounter the dogs but we understand what 
+sorts of perceptual disclosures could
+serve as motivation for someone believing that idea.  We therefore 
+assume that such belief was initially warranted by 
+observation and subsequently got passed through a chain 
+of language-acts whose warrants are rooted in the perceived 
+credibility of the speaker.  Internal to this 
+process is our prior knowledge of the parameters for judging 
+statements like `i.this dog is male` observationally.
+`p`
+
+`p.  
+True, sometimes such observational warrants are less on 
+display.  If I had never heard of Staffies (Staffordshire
+pit bulls), I would be fuzzier about observational warrants
+and could end up in a conversation like:
+
+`sentenceList,
+`sentenceItem; \swl{}{Those dogs are Staffordshires.}{pra}
+`sentenceItem; \swl{}{What's a Staffordshire?}{pra}
+`sentenceItem; \swl{}{It's a breed of dog.}{pra}
+`sentenceList`
+ 
+`noindent;Here I still don't really have a picture of what it is 
+like to tell observationally that a dog is a Staffordshire.  
+There may not be any visual cues %-- at least none I 
+know of %-- which announce to the world that some dog's
+a Staffy (compared to those announcing that it is male,
+say).  But insofar as I am acquainted 
+with the concept `i.dog breed`/, I also understand 
+the general pattern of these observations.  For instance 
+I may know breeds like poodles or huskies and be able to 
+identify `i.these` by distinctive visual cues.  I also 
+understand that dogs' parentage is often documented, allowing 
+informed parties to know their breeds via those of their 
+forebearers.  That is, I am familiar with 
+how beliefs about breeds are formed based on 
+observation rather than just accepting others' 
+reports, so I know the extralinguistic epistemology 
+anchoring chains of linguistic reports in this area 
+to originating observations %-- even if 
+I cannot in this case initiate such a chain myself.
+`p`
+
+`p.
+My overall point is that language enables us to formulate beliefs 
+based on the beliefs of others, but this is possible because 
+we also realize what it is like to formulate `i.our own` 
+beliefs, and envision that sort of practice at the 
+origin of reports that later get circulated via language.  
+If we can't sufficiently picture the originating 
+observations, we don't feel like we are grasping 
+the linguistic simulacrum of those reports with enough 
+substance.  If I never learn what Stafforshire is, 
+an assertion that some dogs are Staffordshires 
+has no real meaning for me %-- even if I trust the asserter 
+and do indeed thereby believe that the dogs are Staffordshires.  
+Notice that merely knowing Staffordshire is a breed of 
+dog does not expand my conceptual repertoire very much
+%-- it does not tell me how to recognize a Staffordshire 
+or what I can do with the knowledge 
+that a dog is one (it cannot, for instance, help 
+me anticipate his behavior).  Nevertheless even (only) knowing 
+that Staffordshire is a breed of 
+dog seems to fundamentally change the status 
+of sentences like `i.those dogs are Staffies`
+for me: I do not `i.have` the conceptual machinery 
+to exploit that knowledge, but I understand
+what `i.sort` of machinery is involved.  
+`p`
+
+`p.
+In short, the `i.linguistic` meaning of concepts is tightly bound 
+to how concepts factor in perceptual observations anterior 
+to linguistic articulation.  As a result, 
+during any episode wherein conversants use language to 
+compel others' beliefs, an intrinsic dimension of the 
+unfolding conversation is that people will form 
+their own (extralinguistic) beliefs %-- and can also 
+imagine themselves in the role of originating the 
+reports they hear via language, whether or not they 
+can actually test out the reports by their own 
+observations.
+`p`
+
+`p.
+This extralinguistic epistemic 
+capacity is clearly exploited by the form of language itself.  
+If a tasting organizer hands me a glass and says 
+`q.This is Syrah`/, she clearly expects me to infer that I 
+should take the glass from her and taste the wine (and 
+know that the glass contains wine, etc.).  These conventions
+may be `i.mediated` by language %-- we are more likely to 
+understand `q.unspoken` norms by asking questions, until we gain 
+enough literacy in the relevant practical domain to 
+understand unspoken cues and assumptions.  But many situational 
+assumptions are extralinguistic because 
+they are (by convention) not explicitly stated, 
+even if they accompany content that `i.is` explicitly stated.  
+`i.This is Syrah` accompanied by the gesture of handing
+me a glass is an indirect invitation for me to drink it 
+(compare to `i.Please hold this for a second?` or 
+`i.Please hand this to the man behind you?`/). 
+`p`
+
+`p.
+I bring to every linguistic situation a 
+capacity to make extralinguistc observations, and 
+to understand every utterance in the context of hypothetical 
+extralinguistc observations from which is originates.  
+My conversation peers can use language to trigger 
+these extralinguistic observations.  Sometimes the 
+`q.gap` %-- the conceptual slot which 
+extralinguistic reasoning is expected to fill 
+%-- is directly expressed, as in `i.See the
+dog over there?`/.  But elsewhere the 
+`q.extralinguistic implicature` is more indirect, 
+as in `i.This is Syrah` and my expected belief that 
+I should take and taste from the glass.  But in any 
+case the phenomenon of triggering these 
+extralinguistic observation is 
+one form of linguistic `q.side effect`/, initiating a 
+change in my overall conceptualization of a situation by 
+compelling me to augment beliefs with new observations.
+`p`
+
+`p.
+All told, then, the language which is presented to me has the effect 
+of initiating changes in what I believe 
+%-- partly via signifying propositional
+content that I could take on faith, but partly 
+also via directing my attention and my interpretive 
+dispositions to guide me towards extralinguistic 
+observations.  Here I will argue that side-effects like 
+these are not side-effects `i.of` linguistic meaning, 
+but are in some sense `i.constitutive` of 
+meaning.  
+`p`
+
+`spsubsectiontwoline.Side-Effects and Logical Incompleteness`
+`p.
+In the most common analysis, I would argue, side-effects and propositional 
+content overlap.  The effect of an utterance, all else being equal, is 
+that addressees understand the claimed report as believed by the speaker and 
+%-- depending on their deeming the speaker credible %-- accept it as 
+a provisional doxic given themselves.  There are many other effects, 
+such as how one speaker's assertion changes dialogic context in a way 
+that alters the current topical focus and the interpretation of 
+context-specific expressions.  But these generally build off of 
+a statements' coherence and credibility %-- a non-sensical 
+comment is less likely to veer a discourse in new directions 
+or reinscribe the dialogic `q.ledger`/.  For these reasons, we 
+may be tempted to focus analysis on the architecture of 
+propositional content rather than the itemization of side-effects.  
+I would argue, however, that linguistic side-effects are more 
+universal than logically pristine propositional signification, and 
+that communicating doxic content is a special case of side effects 
+more than side-effects are the passive consequence of rational 
+conversation. 
+`p`
+
+`p.
+I will defend this perspective via cases where 
+language users seem to traffic in 
+a relative `i.absence` of semantic determinism, with no 
+detrimental effects to the `i.telos` of language in context.  
+These cases buttress an idea that language is not targeted at 
+doxic specificity as a precondition for meaning in general, 
+but rather packages doxa along with other contextualizing 
+constituents in the service of pragmatic ends.  
+Consider:
+
+`sentenceList,
+`sentenceItem; \swl{}{My colleague Ms. O'Shea would like to interview
+Mr. Jones, who's an old friend of mine.  Can he take this call?}{pra}
+`sentenceItem; \swl{itm:Jones}{I'm sorry, this is his secretary.  Mr. Jones
+is not available at the moment.}{pra}
+`sentenceList`
+
+It sounds like Ms. O'Shea is trying to use personal
+connections to score an interview with Mr. Jones.  Hence
+her colleague initiates a process intended to
+culminate in Ms. O'Shea getting on the telephone
+with Mr. Jones.  But his secretary demurs with a
+familiar phrase, deliberately formulated to
+foment ambiguity: (\ref{itm:Jones}) could mean that Mr. Jones
+is not in the office, or that he is in a meeting, or he is
+unwilling to talk, or even missing (like
+the ex-governor consummating an affair in Argentina
+while his aides thought he was hiking in Virginia).
+Or:
+
+
+`sentenceList,
+`sentenceItem; \swl{}{Mr. Jones, were you present at a meeting where
+the governor promised your employer
+a contract in exchange for campaign contributions?}{pra}
+`sentenceItem; \swl{}{After consulting with my lawyers, I decline
+to answer that question on the grounds that it
+may incriminate me.}{pra}
+`sentenceList`
+
+Here Mr. Jones neither confirms nor denies his
+presence at a corrupt meeting.
+`p`
+
+`p.
+As these examples intimate, the processes language
+initiates do not always result in a meaningful
+logical structure.  But this is not necessarily
+a complete breakdown of language:
+
+
+`sentenceList,
+`sentenceItem; \swl{itm:isJones}{Is Jones there?}{pra}
+`sentenceItem; \swl{itm:not}{He is not available.}{pra}
+`sentenceList`
+
+The speaker of (\ref{itm:not}) does not
+provide any prima facie logical content: it neither affirms
+nor denies Jones's presence.  Nonetheless that speaker
+is a cooperative conversational partner
+(even if they are not being very cooperative in real life):
+(\ref{itm:not}) responds to the implicature in
+(\ref{itm:isJones}) that what the
+first speaker really wants is
+to interview Jones.
+So the second speaker conducts what I called
+a `q.transform` and maps `i.Jones is here` to
+`i.Jones is willing to be interviewed`/.
+Responding to this `q.transformed` question allows
+(\ref{itm:not}) to be (at least) linguistically cooperative
+while nonetheless avoiding a response at the
+`i.logical` level to (\ref{itm:isJones}).  (\ref{itm:not}) obeys
+conversational maxims but is still rather obtuse.
+`p`
+
+`p.
+So one problem for theories that read meanings in terms
+of logically structured content %-- something like, the
+meaning of an (assertorial) sentence is what the world would be
+like if the sentence were true %-- is that the actual
+logical content supplied by some constructions
+(like `i.Jones is not available`/) can be pretty
+minimal %-- but these are still valid and
+conversationally cooperative segments of discourse.  To be sure, this
+content does not appear to be `i.completely`
+empty: `q.Jones is not available` means the
+conjunction of several possibilities (he cannot be found
+or does not want to talk or etc.).
+So (\ref{itm:not}) does seem to evoke some
+disjunctive predicate.  But such does not mean
+that this disjunctive predicate is the `i.meaning` of
+(\ref{itm:not}).  It does not seem as if (\ref{itm:not})
+when uttered by a bodyguard is intended first and foremost to
+convey the disjunctive predicate.  Instead, the
+bodyguard is responding to the implicature
+in the original `i.Is Jones there?` query %-- the
+speaker presumably does not merely want
+to know Jones's location, but to see Jones.
+Here people are acting out social roles, and just happen
+to be using linguistic expressions to negotiate
+what they are able and allowed to do.
+`p`
+
+`p.
+Performing social roles %-- including through language %--
+often involves incomplete information: possibly
+the secretary or bodyguard themselves do not know
+where Jones is or why he's not available.
+We could argue that there is `i.enough` information to
+still ground `i.some` propositional content.  But this
+is merely saying that we can extract some propositional content from
+what speakers are supposed to say as social acts, which seems
+to make the content (in these kinds of cases)
+logically derivative on the enactive/performative
+meaning of the speech-acts, whereas a truth-theoretic
+paradigm would need the derivational dependence
+to run the other way.  By saying `i.Jones is unavailable`
+the speaker is informing us that our own prior speech
+act (asking to see or talk to him) cannot have
+our desired effect %-- the process we initiated cannot be
+completed, and we are being informed of that.  The
+person saying `i.Jones is unavailable` is likewise
+initiating a `i.new` process, one that counters our process
+and, if we are polite and cooperative, will have its
+own effect %-- the effect being that we do not insist on
+seeing Jones.  The goal of `q.Jones is unavailable` is to create
+that effect, nudging our behavior in that direction.
+Any `i.logic` here seems derivative on the practical initiatives.
+`p`
+
+`p.
+And moreover this practicality is explicitly marked by how
+the chosen verbiage is deliberately vague.  The declaration
+`q.Jones is unavailable` does not `i.need` logical precision to
+achieve its effect.  It needs `i.some` logical content, but it exploits a
+kind of disconnect between logical and practical/enactive
+structure, a disconnect which allows `q.Jones is unavailable` to
+be at once logically ambiguous and practically clear %--
+in the implication that we should not try to see Jones.
+I think this example has some structural
+analogs to the grandma's window case: `i.there` we
+play at logical substitutions to respond practically
+to grandma's request in spirit rather than `i.de dicto`/.
+`i.Here`  a secretary or bodyguard can engage in logical
+substitution to formulate a linguistic performance
+designed to be conversationally decisive
+while conveying as little information as possible.  The logical
+substitution in grandma's context `i.added` logical content by
+trying alternatives for the window being closed; here,
+the context allows a `i.diminution` in
+logical content.  We can strip away logical detail from
+our speech without diminishing the potency of
+that speech to achieve affects.  And while the remaining residue
+of logical content suggests that some basic logicality is still
+essential to meaning, the fact that logical content can
+be freely subtracted without altering practical effects
+suggests that logic's relation to meaning is something
+other than fully determinate: effect is partially autonomous from
+logic, so a theory of effect would seem to be
+partially autonomous from a theory of logic.
+I can be logically vague without being
+conversationally vague.   This evidently means that conversational
+clarity is not identical to logical clarity.
+`p`
+
+`p.
+Let us agree that %-- beneath surface-level
+co-framing complexity %-- many language acts have a
+transparent content as `q.doxa` that gets conveyed between
+people with sufficiently resonant
+cognitive frames.  So `i.in the overall course of communication` 
+we have propositional contents that converge among discourse 
+partners, suspended between the various cognitive and pragmatic 
+units which contextualize a given, unfolding dialog.  
+There is in short a `i.holistic` mapping between units of 
+discourse and `q.units` of propositionality, or `q.doxa`/.  
+This general observation leaves unstated, however, 
+`i.how` language elements map to corresponding doxic 
+particulars.  I have argued that focusing on the `i.logical 
+structures` of propositions can lead us astray if we 
+seek to find concordant formations on the language side.
+`p`
+
+`p.
+Consider our attempts to close grandma's kitchen window.  
+My analysis related to conceptual `q.transforms`
+assumed that we can find, substituting for `i.literal`
+propositional content, some `i.other`
+(representation of a) proposition that fulfills a
+speaker's unstated `q.real` meaning.  Sometimes
+this makes sense: the proposition `q.that the
+`i.bedroom` window is closed` can neatly,
+if the facts warrant, play the role of the
+proposition that `i.the kitchen window is closed`/.
+But we can run the example differently: there
+may be `i.no` window open, but instead a draft
+caused by non-airtight windows (grandma might ask
+us to put towels by the cracks).  Maybe there is
+no draft at all (if grandma is cold, we can
+fetch her a sweater).  Instead of a single
+transform, we need a a system of potential transforms
+that can adapt to the facts as we discover them.
+Pragmatically, the underlying problem is
+that `i.grandma is cold`/.  We can address this
+%-- if we want to faithfully respond to her request,
+playing the role of cooperative conversation
+partners (and grandkids) %-- via a matrix
+of logical possibilities:
+
+
+`sentenceList,
+`sentenceItem; \swl{}{If the kitchen window is closed,
+we can see if other windows are open.}{pra}
+`sentenceItem; \swl{}{If no windows are open,
+we can see if there is a draft through the window-cracks.}{pra}
+`sentenceItem; \swl{}{If there is no draft, we can
+ask if she wants a sweater.}{pra}
+`sentenceList`
+
+This is still a logical process: starting from an
+acknowledged proposition (grandma is cold) we
+entertain various other propositional possibilities,
+trying to rationally determine what pragmas we
+should enact to alter that case
+(viz., to instead make true the proposition that
+`i.grandma is warm`/).  Here we are not just testing
+possibilities against fact, but strategically
+acting to modify some facts in our environment.
+`p`
+
+`p.
+But the kind of reasoning involved here is not logical
+reasoning per se: abstract logic does not tell us
+to check the bedroom window if the kitchen window is closed,
+or to check for gaps and cracks if all windows
+are closed.  This all solicits practical, domain-specific knowledge
+(about windows, air, weather, and houses).
+Yet we are still deploying our practical
+knowledge in logical ways %-- there is a logical
+structure underpinning grandma's request and
+our response to it.  In sum: we (the grandkids)
+are equipped with some practical knowledge
+about houses and a faculty to logically utilize this
+knowledge to solve the stated problem, reading
+beyond the `i.explicit` form of grandma's discourse.
+We use a combination of logic and background
+knowledge to reinterpret the discourse as needed.
+By making a request, grandma is not expressing
+one attitude to one proposition, so much as
+`i.initiating a process`/.  This is why it would
+be impolite to simply do no more
+if the kitchen window is closed: our conversational
+responsibility is to enact a process trying to
+redress grandma's discomfort, not to entertain the
+truth of any one proposition.
+`p`
+
+`p.
+For all that, there is still an overarching logical
+structure here that language clearly marshals.  We read
+past grandma's explicit request to infer what she is
+`q.really saying` %-- e.g., `i.that she is cold` %-- but we
+still regard her speech act in terms of its (now indirect)
+propositional content.  However, notice 
+how our ascertaining this content only one step toward 
+legitimate understanding of the original speech-act 
+(even accounting for its illocutionary dimensions).  
+The doxa are `i.factors` in understanding but, 
+given these cases, are not straightforward `i.designata` 
+of linguistic compounds.  This implies a critique of 
+truth-theoretic paradigms from a semiotic and 
+compositional perspective: language is not `i.composed` 
+to convey doxa through semantic reference and 
+grammatic form internally (without the mediation of 
+extralinguistic cognition); propositional content does 
+not `i.fall out` of syntax and semantics.  I will expand 
+on this critique in the next section.  
+`p`
+
+`p.
+To summarize my current arguments, then, I believe that most sentences 
+have an accompanying propositional content, and that during conversations 
+we interpret this content as a factor in sentence meanings, becoming aware of 
+what our partners believe, desire, or inquire to be the case.  We retain this 
+awareness in a cumulative model of conversational context %-- a `q.doxa inventory` 
+%-- alongside other referential and deictic axes establishing each dialogic 
+setting.  Essentially, 
+I grant that this doxic layer is central to 
+linguistic performance in general %-- but given this very centrality I 
+will argue that the logical substratum of language cannot be `i.separated` 
+from the totality of syntactic, semantic, and pragmatic processing such 
+that models based on formal logic could be curated in isolation from 
+the overarching interconnectedness of language as a cognitive system.   
+`p`
+
+
+`subsection.The Illogic of Syntax`
+
+`p.
+As I understand it, a non-trivial truth-theoretic semantics 
+requires more than a holistic association between 
+sentences and propositional content: it requires that this 
+association be established `i.by linguistic means` and 
+`i.on linguistic grounds` (syntax, semantics, pragmatics).  
+I will present several arguments against this possibility, in 
+the general cases %-- that is, against the possibility that 
+for `i.typical` sentences we can analyze syntactic form through 
+the lens of the logical structure of propositions signified 
+via a sentence; or analyze natural-language semantics through a 
+logically well-structured semantics of propositions.  
+I will emphasize two issues: first, that the architecture of 
+linguistic performances `i.does not`/, in the general case, 
+`i.recapitulate propositional structure`/; and, second, 
+that language-acts work through gaps in logical specificity that 
+complicate how we should theorize the triangular relation between 
+surface language, propositional content, and side-effect meanings.
+`p`
+
+`p.
+Since it is widely understood that the essence of language
+is compositionality, the clearest path to
+a truth-theoretic semantics would be via the
+`q.syntax of semantics`/: a theory of how
+language designates propositional content by
+emulating or iconifying propositional structure
+in its own structure (i.e., in grammar).
+This would be a theory of how linguistic
+connectives reciprocate logical connectives,
+phrase hierarchies reconstruct propositional
+compounds, etc.  It would be the kind of theory motivated
+by cases like
+
+`sentenceList,
+`sentenceItem; \swl{}{This wine is a young Syrah.}{log}
+`sentenceItem; \swl{}{My cousin adopted one of my neighbor's dog's puppies.}{log}
+`sentenceList`
+
+where morphosyntactic form %-- possessives, adjective/noun
+links %-- seems to transparently recapitulate predicate
+relations.  Thus the wine is young `i.and`
+Syrah, and the puppy is the offspring of a dog who
+is the pet of someone who is the neighbor of the speaker.  These
+are well-established logical forms: predicate conjunction, here;
+the chaining of predicate
+operators to form new operators, there.  Such are embedded in
+language lexically as well as grammatically: the conjunction
+of husband and `q.former, of a prior time` yields ex-husband;
+a parent's sibling's daughter is a cousin.
+`p`
+
+`p.
+The interesting question is to what extent `q.morphosyntax
+recapitulates predicate structure` holds in general
+cases.  This can be considered by examining the logical
+structure of reported assertions and then the structures
+via which they are expressed in language.  I'll
+carry out this exercise `visavis; several sentences,
+such as these (supplementing my earlier, more preliminary discussion of 
+(\ref{itm:ants})-(\ref{itm:princess})):
+
+`sentenceList,
+`sentenceItem; \swl{itm:maj}{The majority of students polled were
+opposed to tuition increases.}{log}
+`sentenceItem; \swl{itm:most}{Most of the students expressed disappointment
+about tuition increases.}{log}
+`sentenceItem; \swl{itm:many}{Many students have protested the tuition increases.}{log}
+`sentenceList`
+`p`
+
+`p.
+There are several logically significant elements here that
+seem correspondingly expressed in linguistic
+elements %-- that is, to have some model
+in both prelinguistic predicate structure
+and in, in consort, semantic or syntactic principles.
+All three of (\ref{itm:maj})-(\ref{itm:many}) have similar but not
+identical meanings, and the differences are
+manifest both propositionally and
+linguistically (aside from the specific superficial
+fact that they are not the same sentence).
+I will review the propositional differences first,
+then the linguistic ones.
+`p`
+
+`p.
+One obvious predicative contrast is that
+(\ref{itm:maj}) and (\ref{itm:most})
+ascribes a certain `i.quality` to students (e.g., disappointment),
+whereas (\ref{itm:most}) and (\ref{itm:many})
+indicate `i.events`/.  As such
+the different forms capture the contrast between `q.bearing
+quality $Q$` and `q.doing or having done action
+$A$`/: the former a predication and the latter an event-report.
+In the case of (\ref{itm:most}), both forms are available because we can
+infer from `i.expressing` disappointment
+to `i.having` disappointment.
+There may be logics that would map one
+to the other, but let's assume we can
+analyze language with a logic expressive enough
+to distinguish events from quality-instantiations.
+`p`
+
+`p.
+Other logical forms evident here involve how the
+subject noun-phrases are constructed.
+`q.A majority` and `q.many` imply a multiplicity
+which is within some second multiplicity, and
+numerically significant there.  The sentences differ
+in terms of how the multiplicities are circumscribed.
+In the case of `i.students polled`/, an extra determinant is
+provided, to construct the set of students forming the
+predicate base: we are not talking about students in
+general or (necessarily) students at one school,
+but specifically students who participated in a poll.
+`p`
+
+`p.
+Interrelated with these effects are how the
+`i.tuition increases` are figured.  Using
+the explicit definite article suggests that there is
+`i.some specific` tuition hike policy
+raising students' ire.  This would also favor a
+reading where `q.students` refers collectively to those
+at a particular school, who would be directly affected by the
+hikes.  The `i.absence` of an article on
+`q.tuition increases` in (\ref{itm:most}) leaves open an interpretation
+that the students are not opining on some specific policy, but on
+the idea of hikes in general.
+`p`
+
+`p.
+Such full details are not explicitly laid out in the sentences,
+but it is entirely possible that they are clear in context.
+Let's take as given that, in at least some cases where they would
+occur, the sentences have a basically pristine
+logical structure given the proper contextual framing %--
+context-dependency, in and of itself, does not weaken
+our sense of language's logicality.  In particular,
+the kind of structures constituting the sentences'
+precise content %-- the details that seem context-dependent
+%-- have bona fide logical interpretations.  For
+example, we can consider whether students are
+responding to `i.specific` tuition hikes
+or to hikes in general.  We can consider
+whether the objectionable hikes have already
+happened or instead are proposed for the future.  Context
+presumably identifies whether `q.students` are
+drawn from one school, one governmental
+jurisdiction, or some other aggregating criteria
+(like, all those who took a poll).
+Context can also determine whether aggregation is
+more set- or type-based, more extensional
+or intensional.  In (\ref{itm:maj})-(\ref{itm:many}) the implication
+is that we should read `q.students` more as a set or
+collection, but variants like `i.students
+hate tuition hikes` operates more at the level
+of students as a `i.type`/.  In `q.students polled`
+there is a familiar pattern of referencing a set by
+marrying a type (students in general) with a descriptive
+designation (e.g., those taking a specific
+poll).  The wording of (\ref{itm:maj}) does not
+mandate that `i.only` students took the poll; it
+does however employ a type as a kind of operator on a set:
+of those who took the poll, focus on students
+in particular.
+`p`
+
+`p.
+These are all essentially logical structures and can
+be used to model the propositional
+content carried by the sentences %-- their `q.doxa`/.
+We have operators and distinctions like past/future,
+set/type, single/multiple, subset/superset, and
+abstract/concrete comparisons like tuition hikes `i.qua` idea
+vs. `i.fait accompli`/.  A logical system could
+certainly model these distinctions and accordingly capture
+the semantic differences between (\ref{itm:maj})-(\ref{itm:many}).
+So such details are all still consistent
+with a truth-theoretic paradigm, although
+we have to consider how linguistic form actually
+conveys the propositional forms carved out via
+these distinctions.
+`p`
+
+`p.
+Ok, then, to the linguistic side.  My first observation is that some
+logically salient structures have fairly clear analogs
+in the linguistic structure.  For instance, the logical operator for
+deriving a set from criteria of `q.student` merged with `q.taking a
+poll` is brought forth by the verb-as-adjective
+formulation `i.students polled`/.  Subset/superset arrangements
+are latent as lexical norms in senses like `i.many` and
+`i.majority`/.  Concrete/abstract and past/future distinctions
+are alluded to by the presence or absence of a definite
+article.  So `q.`i.the` tuition increases` connotes that
+the hikes have already occurred, or at least been
+approved or proposed, in the past relative to the
+`q.enunciatory present` (as well as that they are a
+concrete policy, not just the idea),
+whereas articleless `q.tuition increases` can be read as
+referring to future hikes and the idea of hikes
+in general: past and concrete tends to
+contrast with future and abstract.
+`p`
+
+`p.
+A wider range of
+logical structures can be considered by subtly varying
+the discourse, like:
+
+`sentenceList,
+`sentenceItem; \swl{}{Most students oppose the tuition increase.}{sem}
+`sentenceItem; \swl{itm:indef}{Most students oppose a tuition increase.}{sem}
+`sentenceList`
+
+These show the possibility of `i.increase` being singular
+(which would tend to imply it refers to a concrete
+policy, some `i.specific` increase), although in
+(\ref{itm:indef}) the `i.in`/definite article `i.may` connote
+a discussion about hikes in general.
+`p`
+
+`p.
+But maybe not; cases like these are perfectly plausible:
+
+`sentenceList,
+`sentenceItem; \swl{itm:today}{Today the state university system
+announced plans to raise tuition by
+at least 10\%.  Most students oppose a tuition increase.}{sem}
+`sentenceItem; \swl{itm:colleges}{Colleges all over the country, facing
+rising costs, have had to raise tuition, but
+most students oppose a tuition increase.}{sem}
+`sentenceList`
+
+In (\ref{itm:today}) the definite article could also be used, but saying
+`q.`i.a` tuition increase` seems to reinforce the
+idea that while plans were announced, the details
+are not finalized.  And in (\ref{itm:colleges}) the plural `q.increases`
+could be used, but the indefinite singular connotes the
+status of tuition hikes as a general phenomenon
+apart from individual examples %-- even though the
+sentence also makes reference to concrete examples.  In other
+words, these morphosyntactic cues are like
+levers that can fine-tune the logical designation
+more to abstract or concrete, past or future, as
+the situation warrants.  Again, context should
+clarify the details.  But morphosyntactic forms
+%-- e.g., presence or absence of articles (definite
+or indefinite), and singular/plural %-- are
+vehicles for language, through its own
+forms and rules, to denote propositional-content structures
+like abstract/concrete and past/future.
+`p`
+
+`p.
+So these are my `q.concession` examples: cases where 
+language structures `i.do`/, in their compound architectonics, 
+signifying propositional contents %-- and moreover the 
+lexical and morphosyntactic cues (like singular/plural or the 
+choice of articles) drive this language-to-logic mapping in 
+an apparently rule-bound and replicable fashion.  These are 
+potential case-studies of how a truth theory of language, 
+without neglecting contextual and semantic subtelties, 
+`i.could` work: capturing granular semantic constructs via sufficiently
+nuanced logics, and theorizing word-senses and morphology through 
+the aegis of a structural reduction between surface language and 
+predicate structure.  My tactic for critiquing truth-theoretic 
+paradigms is to argue that many sentences `i.fail` to 
+display a mapping between lexico/morphosyntactic details and 
+predicate structure `i.in this relatively mechanical fashion`/.
+By pointing out examples where morphosytax `i.does` rather seamlessly 
+recapitulate propositional content (e.g. `i.the tuition hike` plural/definite), 
+we can appreciate the more circuitous hermeneutics for examples I 
+will present wherein the morphosytax-to-logic translation, while 
+present, is not `i.sui generis`/.
+`p` 
+
+`p.
+Varying the current examples yields cases 
+%-- in a sense, intermediate between 
+logical transparency and oblique constructions I will 
+discuss next %-- 
+where logical implications are more circuitous.  For instance,
+describing students as `i.disappointed` (\ref{itm:most})
+implies that the disliked hikes have already occurred,
+whereas phraseology like `q.students are gearing for a fight`
+would imply, conversely, that they are sill only planned or proposed.  
+The mapping from
+propositional-content structure to surface language here
+is less mechanical than, for instance, merely
+using the definite article on `i.the tuition increases`/.
+Arguably `q.disappointment` %-- rather than just, say,
+`q.opposition` %-- implies a specific timeline
+and concreteness, an effect analogous to the definite
+article.  The semantic register
+of `q.disappointment` bearing this implication is a
+more speculative path of conceptual resonances, compared
+to the brute morphosyntactic `q.the`/.  There is subtle
+conceptual calculation behind the scenes in the former
+case.  Nonetheless, it does seem as if via this
+subtlety linguistic resources are expressing
+the constituent units of logical forms, like
+past/future and abstract/concrete.
+`p`
+
+`p.
+So, I am arguing (and conceding) that there are units of
+logical structure that are conveyed by units of
+linguistic structure, and this is partly how
+language-expressions can indicate propositional
+content.  The next question is to explore this
+correspondence compositionally %-- is there a
+kind of aggregative, hierarchical order in terms
+of how `q.logical modeling elements` fit together,
+on one side, and linguistic elements fit
+together, on the other?
+There is evidence of compositional concordance
+to a degree, examples of which I have cited.  In
+`i.students polled`/, the compositional structure of
+the phrase mimics the logical construct %-- deriving
+a set (as a predicate base) from a type crossed with
+some other predicate.  Another example is the
+phraseology `i.a/the majority of`/, which directly
+nominates a subset/superset relation and so
+reciprocates a logical quantification (together
+with a summary of relative
+size; the same logical structure, but with
+different ordinal implications, is seen in cases
+like `i.a minority of` or `i.only a few`/).
+Here there is a relatively mechanical translation
+between propositional structuring elements
+and linguistic structuring elements.
+`p`
+
+`p.
+However, varying the examples %-- for instance,
+varying how the subject noun-phrases are conceptualized
+%-- points to how the synchrony between
+propositional and linguistic composition can break down:
+
+`sentenceList,
+`sentenceItem; \swl{itm:sas}{Student after student came out against the tuition hikes.}{sem}
+`sentenceItem; \swl{itm:substantial}{A substantial number of students
+have come out against the tuition hikes.}{sem}
+`sentenceItem; \swl{itm:mass}{The number of students protesting the tuition hikes
+may soon reach a critical mass.}{sem}
+`sentenceItem; \swl{itm:tipping}{Protests against the tuition hikes
+may have reached a tipping point.}{sem}
+`sentenceList`
+
+Each of these sentences says something about a large number
+of students opposing the hikes.  But in each
+case they bring new conceptual details to the fore, and
+I will also argue that they do so in a way that
+deviates from how propositional structures are composed.
+`p`
+
+`p.
+First, consider `i.student after student` as a way of
+designating `i.many students` (I analyzed the very similar 
+case (\ref{after}) in terms of `q.space building`/).  
+There is a little more
+rhetorical flourish here than in, say, `i.a majority
+of students`/, but this is not just a matter of
+eloquence (as if the difference were stylistic,
+not semantic).  `q.Student after student` creates a
+certain rhetorical effect, suggesting via how it
+invokes its multiplicity a certain recurring or
+unfolding phenomenon.  One imagines the speaker, time
+and again, hearing or encountering an angry student.
+To be sure, there are different kinds of contexts
+that are consistent with (\ref{itm:sas}): the events could
+unfold over the course of a single hearing
+or an entire semester.  Context would foreclose
+some interpretations %-- but it would do so in any
+case, even with simpler designations like `i.majority
+of students`/.  What we `i.can` say is that the speaker's
+chosen phraseology cognitively highlight a
+dimension in the events that carries a certain
+subjective content, invoking their temporality and
+repetition.  The phrasing carries an effect of
+cognitive `q.zooming in`/, each distinct event
+figured as if temporally inside it; the sense
+of being tangibly present in the midst of the event is
+stronger here than in less temporalized language,
+like `q.many students`/.  And then at the same time
+the temporalized event is situated in the context of many
+such events, collectively suggesting a recurring presence.
+The phraseology zooms in and back out again,
+in the virtual `q.lens` our our cognitively figuring
+the discourse presented to us %-- all in just
+three or four words.  Even if `q.student after student`
+is said just for rhetorical effect %-- which
+is contextually possible %-- `i.how` it
+stages this effect still introduces a subjective
+coloring to the report.
+`p`
+
+`p.
+Another factor in (\ref{itm:sas}) and (\ref{itm:substantial})
+is the various possible meanings of
+`q.come out against`/.  This could be
+read as merely expressing a negative opinion, or as a
+more public and visible posturing.  In fact, a similar
+dual meaning holds also for `q.protesting`/.  Context,
+again, would dictate whether `i.protesting` means
+actual activism or merely voicing displeasure.  Nonetheless,
+the choice of words can shade how we frame situations.
+To `i.come out against` connotes expressing disapproval
+in a public, performative forum, inviting
+the contrast of inside/outside (the famous example
+being `i.come out of the closet` to mean publicly
+identifying as `LGBTQ;).  Students may not literally
+be standing outside with a microphone, but %-- even
+if the actual situation is just students
+complaining rather passively %-- using `i.come out against`
+paints the situation in an extra rhetorical hue.  The students
+are expressing the `i.kind` of anger that can goad
+someone to make their sentiments known theatrically and
+confrontationally.  Similarly, using `q.protest` in lieu
+of, say, `q.criticize` %-- whether or not students are actually
+marching on the quad %-- impugns to the students a level
+of anger commensurate with politicized confrontation.
+`p`
+
+`p.
+All these sentences are of course `i.also` compatible with
+literal rioting in the streets; but for sake of argument
+let's imagine (\ref{itm:sas})-(\ref{itm:tipping}) spoken in contexts
+where the protesting is more like a few comments to a school
+newspaper and hallway small-talk.  The speakers have still
+chosen to use words whose span of meanings
+includes the more theatrical readings: `q.come out against`
+and `q.protest` overlap with `q.complain about` or `q.oppose`/,
+but they imply greater agency, greater intensity.  These lexical
+choices establish subtle conceptual variations; for instance,
+to `i.protest` connotes a greater shade of anger than to `i.oppose`/.
+`p`
+
+`p.
+Such conceptual shading is not itself unlogical; one
+can use more facilely propositional terms to evoke
+similar shading, like `q.very angry` or `q.extremely angry`/.
+However, consider `i.how` language like
+(\ref{itm:sas})-(\ref{itm:tipping})
+conveys the relevant facts of the mater: there is
+an observational, in-the-midst-of-things staging at
+work in these latter sentences that I find missing
+in the earlier examples.  `q.The majority of` sounds
+statistical, or clinical; it suggests journalistic reportage,
+the speaker making an atmospheric effort to sound like someone
+reporting facts as established knowledge rather than
+observing them close-at-hand.
+By contrast, I find (\ref{itm:sas})-(\ref{itm:tipping})
+to be more `q.novelistic` than
+`q.journalistic`/.  The speaker in these cases is reporting
+the facts by, in effect, `i.narrating` them.  She is building
+linguistic constructions that describe propositional
+content through narrative structure %-- or, at least, cognitive structures
+that exemplify and come to the fore in narrative understanding.  Saying
+`q.a substantial number of students`/, for example, rather than
+just (e.g.) `i.many` students, employs semantics
+redolant of `q.force-dynamics`/: the weight of student
+anger is described as if a `q.substance`/, something with the
+potency and efficacy of matter.
+`p`
+
+`p.
+This theme is also explicit in
+`q.critical mass`/, and even `i.tipping point` has material
+connotations.  We can imagine different versions of what
+lies one the other side of the tipping point
+%-- protests go from complaining to activism?  The school
+forced to reverse course?  Or, contrariwise, the
+school `q.cracking down` on the students
+(another partly imagistic, partly force-dynamic metaphor)?
+Whatever the case, language
+like `q.critical mass` or `q.tipping point` is language
+that carries a structure of story-telling;
+it tries tie facts together with a narrative coherence.  The
+students' protests grew more and more strident until ...
+the protests turned aggressive; or the school dropped its plans;
+or they won public sympathy; or attracted media attention, etc.
+Whatever the situation's details, describing the facts in
+force-dynamic, storylike, spatialized language (e.g. `q.come `i.out`
+against`/) represents an implicit attempt to report
+observations or beliefs with the extra fabric and completeness
+of narrative.  It ascribes causal order to how the
+situation changes (a critical mass of anger could `i.cause` the
+school to change its mind).  It brings a photographic or
+cinematic immersion to accounts of events and descriptions:
+`i.student after student` and `i.come out` invite us
+to grasp the asserted facts by `i.imagining` situations.
+`p`
+
+`p.
+The denoument of my argument is now that these narrative, cinematic,
+photographic structures of linguistic reportage %-- signaled
+by spatialized, storylike, force-dynamic turns of phrase %--
+represent a fundamentally different way of signifying
+propositional content, even while they
+`i.do` (with sufficient contextual grounding) carry
+propositional content through the folds of the narrative.
+I don't dispute that hearers understand logical forms
+via (\ref{itm:sas})-(\ref{itm:tipping})
+similar to those more `q.journaslistically`
+captured in (\ref{itm:maj})-(\ref{itm:many}).  Nor do I
+deny that the richer rhetoric of
+(\ref{itm:sas})-(\ref{itm:tipping}) play a logical
+role, capturing granular shades of meaning.  My
+point is rather that the logical picture painted by the latter
+sentences is drawn via (I'll say as a kind of suggestive
+analogy) `i.narrative structure`/.
+`p`
+
+`p.
+I argued earlier that elements of propositional
+structure %-- for example, the
+set/type selective operator efficacious in `i.students polled` %-- can
+have relatively clean morphosyntactic manifestation in
+structural elements in language, like the verb-to-adjective
+mapping on `i.polled` (here denoted, in English, by unusual
+word position rather than morphology, although the
+rules would be different in other languages).  Given my
+subsequent analysis, however, I now want to claim that
+the map between propositional structure and linguistic structure
+is often much less direct.  I'm not arguing that
+`q.narrative` constructions lack logical structure, or
+even that their rhetorical dimension lies outside
+of logic writ large: on the contrary, I believe
+that they use narrative effects to communicate granular
+details which have reasonable logical bases, like
+degrees of students' anger, or the causative
+interpretation implied in such phrases as `i.critical mass`/.
+The rhetorical dimension does not prohibit a reading
+of (\ref{itm:sas})-(\ref{itm:tipping}) and 
+(\ref{itm:students})-(\ref{itm:parents}) 
+as expressing propositional content %-- and using
+rhetorical flourishes to do so.
+`p`
+
+`p.
+I believe, however, that `i.how` they do so unzips any neat
+alignment between linguistic and propositional structure.
+Saying that students' protests `q.may have reached a critical mass`
+certainly expresses propositional content (e.g., that enough
+students may now be protesting to effectuate change),
+but it does so not by mechanically asserting its propositional
+idea; instead, via a kind of mental imagery which portrays
+its idea, in some imaginative sense, iconographically.
+`q.Critical mass` compels us to read its meaning imagistically;
+in the present context we are led to actually visualize
+students protesting `i.en masse`/.  Whatever the actual, empirical
+nature of their protestation, this language paints a picture
+that serves to the actual situation as an interpretive
+prototype.  This is not only a conceptual image, but
+a visual one.
+`p`
+
+`p.
+Figurative language %-- even if
+it is actually metaphorical, like `q.anger boiling over`
+%-- has similar effect.  Alongside the analysis
+of metaphor as `q.concept blending`/, persuasively
+articulated by writers like Gilles Fauconnier and
+Per Aage Brandt, we should also recognize how metaphor
+(and other rhetorical effects) introduces into
+discourse language that invites visual imagery.  Sometimes
+this works by evoking an ambient spatiality (like
+`q.come out against`/) and sometimes by figuring
+phenomena that fill or occupy space (like `q.students protesting`
+%-- one salience of this language is that we imagine
+protest as a demonstrative gesture expanding outward, as if
+space itself were a theater of conflict:
+protesters arrayed to form long lines, fists splayed
+upward or forward).  There is a kind of visual patterning
+to these evocations, a kind of semiotic grammar:
+we can analyze which figurative senses work via connoting
+`q.ambient` space or via `q.filling` space,
+taking the terms I just used.  But the details of such a
+semiotic are tangential to my point here, which is that
+the linguistic structures evoking
+these visual, imagistic, narrative frames are not
+simply reciprocating propositionl structure
+%--- even if the narrative frames, via an `q.iconic`
+or prototype-like modeling of the actual situation,
+`i.are` effective vehicles for `i.communicating`
+propositional structure.
+`p`
+
+`p.
+What breaks down here is not propositionality but `i.compositionality`/:
+the idea that language signifies propositional content `i.but
+also` does so compositionally, where we can
+break down larger-scale linguistic elements to smaller parts
+`i.and` see logical structures mirrored in the parts'
+combinatory maxims.  In the later examples, I have argued that
+the language signifies propositional content by creating narrative
+mock-ups.  The point of these imagistic frames
+is not to recapitulate logical structure, but to have a kind
+of theatrical coherence %-- to evoke visual and narrative order,
+an evolving storyline %-- from which we then understand
+propositional claims by interpreting the imagined scene.
+Any propositional signifying in these kinds of
+cases works through an intermediate stage of
+narrative visualization, whose structure is
+holistic more than logically compositional.
+It relies on our faculties for imaginative
+reconstruction, which are hereby drafted into
+our language-processing franchise.
+`p`
+
+`p.
+This kind of language, in short, leverages its
+ability to trigger narrative/visual framing as a
+cognitive exercise, intermediary to the eventual
+extraction of propositional content.  As such
+it depends on a cognitive layer of narrative/visual
+understanding %-- which, I claim, belongs
+to a different cognitive register than building
+logical models of propositional content directly.
+`p`
+
+
+`subsection.Triggers vs. Compositionality`
+`p.
+In the absence of a compelling analysis of `i.compositionality`
+in the structural correspondence between narrative-framed language
+and logically-ordered propositional content, I consequently think we
+need a new theory of how the former signifies the latter.  My own
+intuition is that language works by trigering `i.several
+different` cognitive
+subsystems.  Some of these hew closely to predicate
+logic; some are more holistic and narrative/visual.
+Cognitive processes in the second sense may be informed
+and refined by language, but they have an extralinguistic
+and prelinguistic core: we can exercise faculties of narrative
+imagination without explicit use of
+language (however much language orders our imaginations
+by entrenching some concepts more than others, via lexical
+reinforcement).
+`p`
+
+`p.
+I'm not just talking here about `q.imagination` in the sense
+of fairy tales: we use imaginative cognition to make sense
+of any scenario described to us from afar.  When presented with
+linguistic reports of not-directly-observable situations,
+we need to build cognitive frames modeling the context
+as it is discussed.  In the terms I suggested earlier, we
+build a `q.doxa inventory` tracking beliefs and
+assertions.  Sometimes this means internalizing
+relatively transparent logical forms.  But sometimes
+it means building a narrative/visual account, playing
+an imaginary version of the situation in our minds.
+Language could not signify in its depth and
+nuance without triggering this `i.interpretive-imaginative`
+faculty.  Cognitively, then, language is an
+`i.intermediary` to this cognitive system.  
+Using terms from Olin Vakarelov's `q.Interface Theory 
+of Meaning` `cite<OrlinVakarelov>;, `cite<VakarelovAgent>; 
+we might say that 
+language is an `i.interface to` interpretive-imaginative
+cognitive capabilities.  
+`p`
+
+`p.
+My argument is then that extra-linguistic cognition %-- e.g., narrative 
+construals, or situational understanding %-- can supply crucial 
+steps in the emergence of sentences' intended propositional content; 
+so relying on logical assessment of propositional content and 
+correlated linguistic patterns is, at best, incomplete.  
+I have presented numerous sentences which, in my opinion, evince 
+patterns whose rational contributions lie outside linguistic 
+cognition proper, but which become attached as interpretations 
+or refinements of given linguistic content; for example 
+the semantic model of `i.critical mass` or `i.tipping point` 
+encapsulating a complex situational presenting. 
+`p`
+
+`p.
+The extra-linguistic source of many signifying contributors can 
+be observed directly in reference to more formalized 
+(say, Dependency-Grammatic) analyses (or indeed what they 
+leave out).  In the (\ref{itm:actually}) case, the modifier 
+`i.actually` implies that the asserted fact is somehow surprising 
+and counterintuitive; it's easy enough to conclude that the 
+speaker senses a certain lexical frisson, particularly in 
+how `i.camping` is described as `i.lodging`/.  So the work 
+of (\ref{itm:actually}) is not just to point out that 
+people camp on the beach, but also that this arrangement is the 
+most popular `q.lodging` even though in its usual sense 
+`i.lodging` applies more to hotels and inns.  This latter 
+pattern circuits especially through the words `i.actually`/,
+`i.lodging`/, and `i.camping`/, none of which are word-relations 
+identified by the Universal Dependency parse (refer back to 
+Figure~\ref{fig:actuallydbl}) but which can be seen as a second-order 
+network superimposed on the sentence's syntactic core.
+`p`
+
+`p.
+For other examples, in (\ref{itm:ambience}) the `i.colonial ambience` and 
+`i.tropical climate` disjunction partly shifts the sense of 
+`i.the city` from its status as something constructed and
+historical (the `i.architecture` is colonial) to a geographic location.  We 
+of course read `i.the climate` as `i.its` (the city's) climate, which 
+establish a link between the two `i.the`/.  This is almost anaphoric 
+%-- if the phrase were `i.its climate` we would resolve `i.it` backward
+to `i.the city` %-- but the pattern is varied, by replacing 
+`i.its climate` with `i.the climate`/, which conceptually foregrounds 
+the aspect of climate as an ambient phenomenon (amenable to a 
+definite article) rather than just a possession (viz., a property 
+of geographic places).  So there are several intersecting patterns 
+%-- both referential commonality and interpretive changes (see also 
+the `q.Liverpool` examples for city qua architecture and qua locale) 
+%-- between the two sentence-halves, which are not described in the 
+parse-graph.  And in, say, 
+
+`sentenceList,
+`sentenceItem; \swl{itm:pipe}{We understand that the pipe fitters are also planning to picket the Lake Worth, Florida project as well.}{sco}
+\udref{en_gum-ud-train}{email-enronsent03_01-0143}
+`sentenceList`
+
+there is a two-layer scope implication: given `i.also` we read the hearer as knowing that 
+they are picketing some `i.other` project.  But we also hear `i.the pipe fitters` 
+as referring to some specific group of pipefitters, with which the speaker has 
+some contractual relation; we do not interpret this as a comment about pipe-fitters in 
+general.
+`p`
+
+`p.
+The details of (\ref{itm:pipe}), in short, bound the scope of 
+`i.the pipe fitters` from both above and below.  The importance of 
+`i.also` for this interpretive understanding is elided from the 
+corpora parse-graph, which just sees `i.also` as a common auxiliary.  
+In general, the extra `q.layers` of meaning I have identified for 
+(\ref{itm:actually}), (\ref{itm:ambience}), and (\ref{itm:pipe}) 
+require some interpretive (and seemingly extralinguistic) 
+reasoning, so they are not explicitly traced in purely 
+formulaic Intermediate Representations involving core 
+linguistic aspects, such as parse-graphs `visavis;  
+syntax.  
+`p`
+
+`p.
+The extralinguistic dimensions of language are not, of 
+course, completely apart from language: extralinguistic 
+reasoning is appropriate to fill in the gaps left 
+by straightforward syntactic or logico-semantic 
+intellection alone, but those gaps exist `i.because` 
+language leads (via intra-linguistic structures) to 
+signifying complexes.  The logic and conceptual detail 
+achieved through intra-linguistic processes set forth 
+the parameters on extra-linguic cognition that 
+supplements them; so analytic coverage of the 
+intra-linguistic aspect is still requisite for 
+good analysis of the extra-linguistic.  This 
+formal necessity, however, should not be mistaken 
+for a belief that logically-inflected models 
+of syntax and semantics are complete or 
+self-sufficient.  Full implementation of a 
+rigorous, logical syntactic-semantic system still 
+does not get us to `i.language`/. 
+`p`
+
+`thindecoline;
+
+`p.
+This then raises the question of what kinds of 
+formal systems `i.are` appropriate models for language.  
+In a truth-theoretic semantics, the founding analogy is 
+that meanings are propositional, so that language builds 
+up aggregate content much as logical expressions build 
+up complex propositions.  This analogy allows the 
+resources of mathematical logic to transfer, with 
+some degree of rigor, over to linguistic 
+representation %-- not only predicate logic but 
+also modal logic, typed lambda calculus, and 
+type theory in general.  On the other hand, if 
+we accept the picture that linguistic structures 
+are often triggers to extralinguistic cognitive 
+activity %-- that this is their contribution 
+to language comprehension %-- then we may need 
+to draw inspiration from a different suite of 
+formal theories. 
+`p`
+
+`p.
+Probably influenced by early Analytic Philosophy, 
+linguistics' formalizing paradigms have gravitated 
+to mathematical logic, reflecting the influence of  
+early 20th-century symbolic logic on a broad swath of 
+Anglo-American science and intellectual life.  
+Mathematics %-- and by extension formal logic as a
+theory of mathematical foundations %-- came to be 
+seen as a template for rigorous analysis to which 
+philosophy should aspire; on that hypothesis 
+the speculative styles of phenomenology and 
+Continental Philosophy were widely seen as
+methodologically flawed, compared to the 
+systematized argumentation presented by the likes
+of Gottlob Frege, Bertrand Russel, Rudolf Carnap, or 
+Willard Van Orman Quine.  It is not a stretch to 
+see the contemporary split between Cognitive and 
+Computational linguistics as retracing, reiterating, 
+or in a sense derived from last century's 
+divorce between Analytic and Continental Philosophy.
+`p`
+
+`p.
+On the other hand, in the digital age, a 
+host of new formalizing projects offer an 
+alternative to this mathematics-centric 
+ideology.  These probably include `AI; research 
+to some degree, but also many other 
+technical disciplines associated with the 
+inner workings of computers and software 
+%-- compilers and compiler design; 
+stack machines and other low-level computing 
+frameworks; applied type theory; database implementation; 
+process algebras and other theories of 
+communicating, interdependent, or concurrent 
+processes.  This technical ecosystem is 
+arguably a better mine for linguistic 
+inspiration precisely because all of these 
+fields grapple with the problem of how 
+to wrangle rationalistic behavior out of 
+stubbornly unintelligent machines.  
+When trying to coax a compiler to identify 
+the correct functions for function-calls 
+notated at each source-code location, for 
+example, it does not directly matter whether 
+the function-resolution is theoretically 
+transparent %-- i.e., that a correct 
+and unique resolution can be demonstrated
+by formal type analysis.  A compiler 
+(or other software) ecosystem does not 
+internally manifest type theory; at best 
+`i.humans` engineer software to abide by 
+regulations which guarantee program  
+behaviors through type-theoretic 
+(and similar) analysis.  But engineering 
+computational systems in conformance with 
+mathematical, or otherwise formalizable, 
+abstractions is itself a significant 
+technical project.  The mere presence of 
+abstractly provable structural properties 
+is of only indirect relevance to 
+computer implementations.
+`p`
+
+`p.
+Likewise, it seems, the mere presence of system 
+invariants which can be formalized from mental 
+activity and given their own eidetic analysis is 
+only indirectly relevant to cognitive science 
+`i.per se`/.  Presumably brains have evolved under 
+evolutionary pressures to undergird reasonable behavior; 
+and perhaps structuralistic laws alongside physical ones 
+are inevitable for any intelligent systems 
+manifest in physical substance.  So it is likely that 
+logical and other formal theories have some explanatory 
+value in identifying regulative parameters influencing 
+the gestation and physical realization of intelligence.  
+But unlike mathematics, where the mere demonstration of 
+the necessary truth of a theorem guarantees its existence 
+as mathematical fact, in the realms of both cognition 
+and computation abstract formal truths are not 
+manifested merely by being true.  Organized systems 
+must provide a dynamic space whose states are constrained 
+by the relevant formal properties, in order for 
+these formal certainties to be empirically 
+influential.     
+`p`
+
+`p.
+Ultimately, computers have a limited collection of kernel 
+functions, and software stacks are architectures that 
+strategically call these functions in turn %-- 
+through several layers of translation and interpretation 
+%-- to achieve holistic effects (like displaying a 
+textual document on a computer screen, or creating a 
+three-dimensional animation from a set of 
+geometric instructions).  While some logical 
+considerations structure the process by which high-level 
+computer code is translated to low-level system functionality, 
+the manifest ground of this system is not any logical 
+structure but the low-level functions themselves, along with 
+their physical side-effects (like rendering colors on-screen).  
+This is a useful analogy for natural language: the 
+material unfolding of language as an empirical 
+phenomenon is not a direct concretization of any 
+logical structure, but rather the inventory of 
+cognitive processes which language may trigger.  
+Extralinguistic cognition is then analogous, in the 
+human mind, to a computer's `q.system kernel`/.  
+While `q.mind as computer` analogies are 
+usually reductionistic %-- software has no human 
+subtlety to (inter)subjectivity %-- this architectural 
+metaphor perhaps has some merit.  At least it can 
+point to topics in computer science that could be
+placed alongside predicate logic as formalizing 
+intuitions for the study of natural language. 
+`p`
+

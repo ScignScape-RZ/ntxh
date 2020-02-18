@@ -1,0 +1,3338 @@
+## htxne
+#
+`[//]Functional Type Theory in Cognitive and Dependency GrammarsMy discussion so far has focused on 
+characterizing sentences' holistic meaning.  On the face of 
+it, such holistic analysis is more semantic than syntactic.  
+However, syntactic paradigms can be grounded in theories 
+of how language elements aggregatetowardholistic meaning.Here I propose a notion ofcognitive transforms`{-} that holistic meanings emerge from a series of 
+interpretive and situational modeling modifications 
+which progressively refine our understanding of a 
+speaker's construal of our environing context and her 
+propositional attitudes.  While elucidation of these 
+transforms as cognitive phenomena may belong to semantics, 
+syntactic structure dictates thesequenceof 
+transforms.  Many transforms are expressed by 
+individual word-pairs.  Taking the temporal or logical 
+order of transforms into consideration, we can derive a 
+syntactic model of sentences by introducing an order among 
+word-pairs `{-} a methodology akin to using Dependency Grammar 
+parse-graphs as an intermediate stage, then ordering the 
+graph-edges around an estimation of cognitive aggregation.  
+One transform is a successor to a predecessor if the 
+modifications induced by the predecessor are 
+consequential for the cognitive reorientation pertinent to 
+the successor, and/or to the morphosyntactic features which 
+trigger it.In this spirit I talk of Cognitive TransformGrammar, because 
+while in the general case transforms are semantic and interpretive 
+`{-} not the purview of grammar per se `{-} we can theorize 
+grammar as governing theorder of precedenceamong transforms.  
+More precisely, there is a particular order of precedence germane 
+to sentence meaning; sentences have their precise syntax 
+in order to compel recipients' reception of the linguistic 
+performance according to that same ordering.From this perspective, an essential aspect of grammar theory is that 
+whatever units are understood as syntactic constituents `{-} like 
+phrase structure or word-pairs `{-} an order of precedence shouldfall outof grammatic reconstructions.  We should be able 
+to supplement parse-representations with a listing of salient 
+syntactic features in order, retracing thecognitivesteps 
+by which localized sense-alterations synthesize into holistic 
+meaning.  The details of this precedence-establishment 
+will vary across grammatic paradigms, so one way to assess 
+grammar theories is to consider how the engender corresponding 
+cognitive-transform models.Type theory can be adopted in this context because 
+most versions of type theory include a notion offunction-liketypes: types whose instances modify 
+instances of some other type (or types).  This 
+establishes an order of precedence: anything modified 
+by a function is in some sense logically prior to 
+that function.  In formal (e.g., programming) languages, 
+the procedure whose output becomes input to a different 
+procedure must be evaluated before the latter procedure 
+begins (or at least before the output-to-input value is 
+used by that latter procedure).A common paradigm is to consider natural-language types as generated 
+by just two bases `{-} a noun typeand a proposition type, the type of sentences and of sentence-parts which are 
+complete ideas `{-} having in themselves a propositional content 
+(see e.g.or).    
+Different models derive new types on this basis in different ways.
+One approach, inspired by mathematicalpregroups, establishes 
+derivative types in terms of word pairs `{-} an adjective followed 
+by a noun yields another noun (a noun-phrase, butis the phrase'stype) `{-} e.g.,rescued dogs, likedogs, is conceptually 
+a noun.  Adjectives themselves then have the type of words which form 
+nouns when paired with a following noun, often written as.  Pregroup grammars distinguish left-hand and right-hand 
+adjacency `{-}bark loudly, say, demonstrates an adverbaftera
+verb, yielding a verb phrase: soloudlyhere has the type of a 
+word producing a verb in combination with a verb to itsleft(sometimes written); by contrast adjectives combine with 
+nouns to theirright.A related formalization, whose formal 
+analogs lie in Typed Lambda Calculus, abstracts from left-or-right 
+word order to models derived types as equivalent (at least 
+for purposes of type attribution) tofunctions.  
+This engenders a fundamental notion of functionalapplicationand operator/operand distinctions:Categorial Grammarsmake the connection between the 
+first and the second level of the ACG.  These models are 
+typed applicative systems that verify if a linguistic 
+expression is syntactically well-formed, and then construct 
+its functional semantic interpretation.  They use thefundamental operation of applicationof an operator to an 
+operand.  The result is a new operand or a new operator. 
+This operation can be repeated as many times as necessary 
+to construct the linguistic expressions' functional semantic 
+representation.
+\cite[p. 1]`({)Rossi`(})So, e.g., an adverb becomes a function which takes a verb and produces another verb; 
+an adjective takes a noun and produces another noun; 
+and a verb takes a noun and produces a proposition.  Byfunctionwe can consider 
+some kind of conceptual transformation:loudlytransforms the
+conceptbarkinto the conceptloud bark.  
+Assuming all lexemes are assigned a Part of 
+Speech drawn from such a type system, the definition of 
+functional types directly yields a precedence order: 
+instances of functional types are functionally dependent 
+on their inputs, which are therefore precedent to them.  
+On this basis, any well-typed functional expression has a 
+unique precedence ordering on its terminal elements 
+(i.e., itsleaveswhen the expression is viewed as a 
+tree, or its nodes when viewed as a graph), which 
+can be uncovered via a straightforward algorithm 
+(one implementation is part of this paper's data set; 
+see theparse\Asxpmethod in file ntxh-udp-sentence.cpp).Functional parts of speech 
+that can be formally modeled with oneargument(the most common case),  
+having a single input and output type, 
+conveniently lend themselves 
+to cognitive transforms defined through word 
+pairs `{-} an adjective modifies a noun to another 
+noun, an adverb maps a verb to a verb, an auxiliary 
+likethatorhavingcan map verbs or propositions 
+to nouns, and so forth.  The only main complication 
+to this picture is that verbs, which typically have subjects 
+as well as objects, can take two or threeinputsinstead of just one.  Instead of a transformpairwe 
+can then consider a three- or four-part transform structure 
+(verb, subject, direct object, indirect object).  
+We can still assign a precedence ordering to verb-headed phrases, 
+however, perhaps by stipulating that the subject takes 
+precedence before the direct object, and the direct object
+before the indirect.  This ordering seems cognitively 
+motivated: our construal of the significance of a 
+direct object appears to intellectually depend on the verb's 
+subject; likewise the indirect object depends on the direct 
+object to the degree that it is rationally consequential.A secondary complication involves copulae likeand, which 
+can connect more than two words or clauses.  Here, though, a 
+natural ordering seems to derive from linear position in the 
+sentence: givenx, y, and zwe can treatxas 
+precedent toy, andytoz, respectively.In total, sentences as a whole can thus be seen as structurally 
+akin to nested expressions in lambda calculi
+(and notated viaS-Expressions, like code in the 
+Lisp programming language).  S-Expressions are occasionally 
+recommended as representations for some level of 
+linguistic analysis (cf.,,), and if this form by itself may add little 
+extra data, it does offer a succinct way to capture the 
+functional sequencing attributed to a sentence during analysis.  
+Given, say,\swl`({)itm:ambience`(}{)The city's ambience is colonial and the climate is tropical.`(}{)sem`(})
+\udref`({)enAgum-ud-train`(}{)GUMAvoyageAmerida-20`(})the gloss(and (is ((The ('s city)) ambience) colonial) (is (the climate) tropical))summarizes analytic commitments with regard to the root structure of the sentence 
+(in my treatment the copula is the overall root word) and to precedence between words 
+(which words are seen as modifiers and which are their ground, for instance).  
+So even without extra annotations (without, say, the kind of tagging data included 
+by treebanks using S-Expression serializations), rewriting sentences as 
+nested expressions captures primitive but significant syntactic details.Nested-expression models also give rise directly to two other representations: 
+a precedence ordering among lexemes automatically follows by taking 
+function inputs as precedent to function (words) themselvesBut 
+note that usingfunction-wordsas terminology here generalizes 
+this term beyond its conventional meaning in grammar.; 
+moreover, S-Expression formats can be rewritten as sets of 
+word-pairs, borrowing the representational paradigms (if not 
+identical structures) of Dependency Graphs.  This allows Dependency Graphs 
+and S-Expressions to be juxtaposed, which I will discuss in the remainder of this section.Double de Bruijn IndicesAssume then that all non-trivial sentences are nested expressions, and that 
+all lexemes other than nouns are notionallyfunctions, which take typedinputsand produce typedoutcomes.  Expressionnestingmeans 
+that function inputs are often outcomes from other functions (which establishes a 
+precedence order among functions).  Since there is an obvious notion ofparent`{-} instances of functional types are parents of the words or 
+phrase-heads which are their inputs `{-} nestable expressions are formally 
+trees.  Via tree-to-graph embedding, they can also be treated as graphs, 
+with edges linking parents to children; since parse-graphs are canonical 
+in some grammar theories (like Link and Dependency grammar), it is 
+useful to consider the graph-style representation as 
+the intrinsic structure of linguistic glosses based on S-Expressions.  
+That is, we want to define a Category of labeled graphs 
+each of whose objects is isomorphic to an S-Expression (using this 
+terminology in the sense of mathematical Category Theory); equivalently, a 
+bijective encoding of S-Expressions within labeled graphs given 
+a suitable class of edge-labels.Indeed, labels comprised of 
+two numbers suffice, generalizing the lambda-calculusde Bruijn Indices.  The de Bruijn notation is an alternative 
+presentation of lambda terms using numeric indices in lieu of 
+lambda-abstracted symbol (cf., for a linguistic
+or discourse-representation context,and).  Thedoubleindices
+accommodate the fact that, in the general case, the 
+functional component of an expression may be itself a nested 
+expression, meaning thatevaluationhas to proceed in several 
+stages: a function (potentially with one or more inputs) is 
+evaluated, yielding another function, which is then applied 
+to inputs, perhaps again yielding a function applied to still 
+more inputs, and so forth.  I use the termevaluatewhich 
+is proper to the computer-science context, but in linguistics 
+we can take this as a suggestive metaphor.  More correctly, 
+we can say that a function/input structure represents a
+cognitive transform which produces a new function 
+(i.e., a phrase with a function-like part of speech), that is
+then the modifier to a new transform, and so forth.  
+In general, the result of a transform can either be 
+thegroundof a subsequent transform, which is akin to 
+passing a function-result to another function; or 
+it can be themodifierof a subsequent transform, which is akin to 
+evaluating a nested expression to produce a new function, then 
+applied to other inputs in turn.For a concrete example, consider\swl`({)itm:actually`(}{)The most popular lodging is actually camping on the beaches.`(}{)sem`(})
+\udref`({)enAgum-ud-train`(}{)GUMAvoyageAsocotra-16`(})with gloss, as I take it,((actually is) ((The (most popular)) lodging) ((on (the beaches)) camping)).  
+Here the adverbactuallyis taken as a modifier tois, so we imagine that 
+interpreting the sentence involves first refiningisintois actually, 
+yielding a new verb (orverb-idea) that then participates in a verb-subject-object 
+pattern.  Hence, the parse opens with the evaluation(actually is)in the 
+head-position of the sentence's top-level expression.  Similarly, I readon the beachesas 
+functionally a kind of adverb, likeoutsideincamping outside.  
+In the generic pattern, a verb can be paired with a designation of location 
+to construct the idea of the verb happening at such location; the designation-of-location 
+is then a modifier to the verb's ground.  When this designation is a locative 
+construction, the whole expression becomes a modifier, while it also has its own 
+internal structure.  Inon the beaches,onserves as a modifier which 
+maps or reinterpretsthe beachesto a designation of place.So here is the 
+unfolding of the phrase: inthe beachesthe determinant (the) is a modifier 
+to the groundbeaches, signifying thatbeachesare to be circumscribed 
+as an aggregate focus.  Thenonmodifies the outcome of that first transform, 
+re-inscribing the focus as a place-designation.  Thenthattransform's output 
+becomes a modifier forcamping, wherein the locative construction becomes 
+a de-facto adverb, adding detail to the verbcamping(camping on the 
+beach as a kind of camping, in effect).If it seems better to read camping as anoun`{-} the act or phenomenon 
+of camping `{-} then we could treat the locative 
+as anadjective, with the stipulation that the operation 
+converting verbs to nouns (fromXto the phenomenon, act, or 
+state ofX-ing) 
+propagates to any modifiers on the verb: modifying constructions that 
+refineXas verb are implicitly mapped to be adjectives likewise 
+modifyingXin the nominal sense ofthe phenomenon ofX-ing.Notice in this review thattheas modifier inthe beachesyield 
+a pair whose outcome is thegroundforon.  If we take the 
+modifier as representative for a modifier-ground pair,theis themodifierin its own transform pair but then thegroundin the 
+subsequent pair; the pattern is modifier-then-ground.  However,onis the modifiertheand thenalsomodifiercamping; the pattern is modifier-then-modifier.  
+This latter case is the scenario where a lexeme will be a modifier 
+on two or more differentlevels, giving rise to thedoublingof de Bruijn indices.  The first index, that is, represents 
+theleveltieing a modifier to a ground, while the second 
+index is thenormalnotation of lambda-position.  
+Incamping on the beaches, the indices for the pairon/thewould be1,1(meaningtheis the first 
+argument toonon the first transform level); the 
+indices foroncampingwould be2,1(campingis the first argument toonon thesecondtransform level).By combining an index fortransform levels`{-} capturing cases 
+where a modifier produces an outcome which is a modifier again, not a
+ground `{-} with an index for lambda position (e.g. the direct object 
+has index 2 relative to the verb, and the indirect object has 
+index 3), we can transform any expression-tree into a labeled graph. 
+Parse graphs can then be annotated with these double-indices 
+via the same presentations employed for Link or Dependency Grammar 
+labels.  Sentence (\ref`({)itm:actually`(})) could be visualized as in 
+Figure0\ref`({)fig:actuallydbl`(}), with the double-indices juxtaposed 
+alongside conventional Dependency labels (the indices below the sentence, 
+and relation labels above it); the upper parse is drawn from the 
+Universal Dependency corpus (other annotated examples are included 
+in this paper's downloadable data set).
+$$As a natural corollary to this notation,  
+parts of speech can havetype signaturesnotionally similar to the signatures of function types in programming languages: a verb
+needing a direct object, for example,transformstwo nouns (Subject and Object)
+to a proposition, which could be notated with something like.A note on notation: I adopt the Haskell convention (referring to the Haskell
+programming language and other functional languages) of using arrows both between
+parameters and before output notation, but for visual cue I add one dot above the
+arrow in the former case, and two dots in the latter:.
+I will useandfor the broadest designation of nouns and 
+propositions/sentences (the broadest
+noun type, respectively type of sentences, 
+assuming we are using type-theoretic principles).  I will 
+use some extra markings (in diagrams below) for more specific versions of 
+nouns.The notation is consistent so long as each constituent of a verb 
+phrase has a fixed index number.The subject at position one, for instance; 
+direct object at position two; and indirect object at position three.Transforms (potentially with two or more arguments) then combine lexemes 
+`{-} having the right signatures `{-} with one or more words or phrases. 
+Type analysis recognizes criteria on these combinations, insofar 
+as the phrases or lexemes at a given index have a type consistent 
+with (potentially a subtype of) the corresponding position in the 
+head-word's signature.  Ideally, this representation can 
+explainungrammaticalconstructions viafailurefor 
+these types to align properly.  If the combinationtype-checks, 
+then we can assign the phrase as a whole the type indicated 
+in the signature's output type `{-}in, say; 
+in this case the signature points out howderives from the 
+phrase with twos as its components (along with the verb), 
+a derivation we could in turn notate like.   
+A resulting phrase can then be included, like a nested expression, 
+in other phrases; for instance ajoined tothatso as to create a noun-phrase (recall my 
+analysis ofquestion whetherlast section); notationally.Numeric indices take the place of left and right adjacency
+`{-}looking forwardor backward `{-} in Combinatory Categorial 
+Grammar; the type-theoretic perspective abstracts from word order.  
+The theory of result typesfalling outfrom a 
+type-checked phrase structure, however, carries over to this 
+more abstract analysis.Typesignatureslikemay 
+seem little more than notational variants of conventional linguistic
+wisdom, such as sentences' requiring a noun (-phrase) and a verb ().
+Even at this level, however, type-theoretic intuitions
+offer techniques for making sense of more complex, layered sentences,
+where integrating Dependency Graphs and phrase structures can be complex.
+One complication is 
+the problem of applying Dependency Grammar where phrases do not seem
+to have an obviouslymost significantword for linkage with other phrases.Often phrases are refinements of one 
+single crucial component `{-} a phrase
+likemany studentsbecomes in some sense collapsible to its semantic
+core,students.  In real-world examples, however, lexemes tend 
+to be neither wholly subsumed by their surrounding phrase nor wholly 
+autonomous:\swl`({)students`(}{)Many students and their parents 
+came to complain about the tuition hikes.`(}{)sco`(})\swl`({)office`(}{)Many students came by my office to complain about their grades.`(}{)sco`(})\swl`({)after`(}{)Student after student complained about the tuition hikes.`(}{)sco`(})\swl`({)parents`(}{)Student after student came with their parents to complain 
+about the tuition hikes.`(}{)sco`(})In (\ref`({)students`(})) and (\ref`({)office`(})), we readMany studentsas topicalizing a multitude, 
+but we recognize that each student has their own parents, grade, and we assume they came to 
+the office at different times (rather than all at once).  Sostudentslinks 
+conceptually with other sentence elements, in a way that pulls it partly outside theMany studentsphrase; the phrase itself is a space-builder which leaves open 
+the possibility of multiple derived spaces.  This kind of space-building duality is 
+reflected in how the singular/plural alternative is underdetermined in a multi-space 
+context; consider Langacker's example: 
+\newsavebox`({)\Langackerboxi`(})
+\begin`({)lrbox`(}{)\Langackerboxi`(})
+(repeating \ref`({)itm:threetimes`(}))
+\end`({)lrbox`(})\swl`({}{)Three times, students asked an interesting question.`(})
+[\usebox`({)\Langackerboxi`(})]`({)sco`(})\swl`({}{)Three times, a student asked an interesting question.`(}{)sco`(})Meanwhile, in (\ref`({)after`(})) and (\ref`({)parents`(})) the phraseStudent after studentinvokes a multiplicity akin toMany students, 
+but the former phrase has distinct syntactic properties; in particular
+we can replacetheir parents(which is ambiguous between a plural and 
+a gender-neutral singular reading) with, say,his parents(at a 
+boy's school), a valid substitution in (\ref`({)after`(}))-(\ref`({)parents`(}))
+but not (\ref`({)students`(}))-(\ref`({)office`(})).Cases likeStudent after student(or considertime after time,year after year, and so forth; this is a common idiomatic pattern 
+in English) present a further difficulty for Dependency Grammar, 
+since it is hard to identify which word of the three is the more 
+significant, or thehead.  Arguably Constituency Grammar is 
+more intuitive here because then phrases as a whole can get linked 
+to other phrases, without needing to nominate one word to proxy 
+the enclosing phrase.  As I feel thestudentsexamples illustrated, however, 
+it is too simplistic to treat phrases as full-scale replacements for 
+semantic units, as if any phrase is an ad-hoc single lexeme 
+(of course some phrasesdoget entrenched as de facto lexemes, 
+likeMember of Parliament, or my earlier examplesred cardandstolen base).  
+In the general case though component words retain some syntactic and 
+semantic autonomy (entrenchment diminishes but does not entirely 
+eliminate such autonomy).  There is, then, a potential dilemma:
+phrases link to other phrases (sometimes via subsumption and 
+sometimes more indirectly, as in anaphora resolution), but phrases 
+are not undifferentiated units; lexemes, which on this sort of 
+analysisareunits, can be designated as proxies for their 
+phrase; but then we can have controversy over which word in a 
+phrase is the most useful stand-in for the whole 
+(has an interesting review of a similar 
+controversy in Dependency Grammar).\input`({)figure.tex`(})Incorporating 
+type theory, we can skirt these issues by modeling phrases through the perspective of
+type signatures: given Part of Speech annotations for phrasal units and then for
+some of their parts, the signatures of other parts, like verbs or adjectives
+linked to nouns, or adverbs linked to verbs, tend to follow automatically.  
+A successful analysis yields a formal tree, where if (in an act of semantic
+abstraction) words are replaced by their types, theroottype is something likeand the rest of a tree is formally a reducible structure in
+Typed Lambda Calculus:collapsesto,collapses
+to, and so forth, with the treefolding inwardlike a
+fan until only the root remains `{-} though a more subtle analysis would
+replace the singletype with variants that recognize different
+forms of speech acts, like questions and commands.
+In Figure 0,
+this can be seen via the type annotations: from right to leftyields theas second argument foris, which in turn yields athat is mapped
+(bythat) to, finally becoming the second argument toknow.  This calculation
+only considers the most coarse-grained classification (noun, verb, proposition) `{-} as I
+have emphasized, a purely formal reduction can introduce finer-grained grammatical or
+lexico-semantic classes (likeatneeding anargumentwhich is somehow an expression
+of place `{-} or time, as inat noon).  Just as useful, however, may be analyses
+which leave the formal type scaffolding at a very basic level and introduce
+finer type or type-instance qualifications at a separate stage.In either case, Parts of Speech are modeled as (somehow analogous to) 
+functions, but the important
+analogy is that they havetype signatureswhich formally resemble functions'.
+Words with function-like types proxy their corresponding phrase, not because 
+they are necessarily more important or are Dependencyheads, but 
+because they supply the pivot in the type resolutions which, 
+collectively/sequentially, progress to a propositional culmination.  
+This epistemological telos induces a sequencing on the 
+type resolutions `{-} there is a fixed way that trees collapse `{-} 
+which motivates the selection of function-words to proxy phrases; 
+they are not semantically more consequential, necessarily, but 
+are landmarks in a dynamic figured syntactically asfolding inwardand semantically as a progressive signifying refinement.   
+Phrases are modeled via afunction-likeParts of Speech along with one or more
+additional words whose own types match its signature; the type calculationscollapsingthese phrases can mimic semantic simplifications
+likemany studentstostudents, but here the theory is explicit
+that the simplification is grammatic and not semantic: the collapse
+is acknowledged at the level oftypes, notmeanings.  In addition,
+tree structures can be modeled purely in terms of inter-word relations 
+`{-} as I have proposed here with double-indices `{-} 
+so a type-summary of a sentence's phrase structure can be notated and
+analyzed without leaving the Link or Dependency Grammar paradigm.In sum, then, function-like words can always be represented as 
+theheadof corresponding phrases, but this implies 
+neither greater semantic importance nor that phrases are 
+conceptual units that fully subsume their parts.  Instead, 
+ahead-functionnotation captures the idea that 
+sentence-synthesis is bounded by considerations of 
+conceptual integrity that we can model, to some coarse 
+approximation, via type theory.  Designatingafteras 
+theheadinstudent after studentmeans that we have a 
+type machinery that models (coarsely but formally) how successive cognitive refinement 
+converges onto something with the conceptual profile of a 
+proposition, and that we can leverage this formality by 
+identifying certain words as functional pivots in the 
+synthesis-toward-proposition: these words are not necessarily 
+pivotal in term of meaning, but they are the core skeleton of
+the schematic type-based model which we attach to a 
+sentence while modeling the constraints on its synthesizing 
+process.  (There is a further dimension in thestudent after studentphrase `{-} the repetition ofstudent`{-} which I will discuss later.)Or at least, this is one area of analysis where type theory 
+is relevant for linguistics.  I will argue that there are 
+several different methodologies where linguists have 
+turned to type theory, and moreover that they can 
+be integrated into a unified picture organized around 
+the granularity of types themselves, according to the 
+relevant theories.Three tiers of linguistic type theoryWhen explaining grammaticality as type-checking `{-} the 
+concordance between function-like signatures and 
+word or phrasearguments`{-} types are 
+essentially structural artifacts; their 
+significance lies in the compositional patterns 
+guiding phrases to merge into larger phrases in a 
+well-ordered way `{-} specifically, that theoutermostexpression, canonically the whole sentence, is 
+type-theoretically a proposition.  I proposed earlier that 
+sentence-understanding be read as an accretion of detail 
+culminating in a complete idea; type-checking then imposes 
+regulatory guidelines on this accretion, with each 
+constituent phrase being an intermediate stage.  Assigning 
+types to phrases presents a formal means of checking that 
+the accretion stays on track to an epistemological 
+telos `{-} that the accumulated detail will eventually 
+cohere into a propositional whole, a trajectory formally 
+captured by the progressive folding-inward of phrase types 
+to a propositional root.Types themselves are therefore partly structural fiats 
+`{-} they are marks on intermediate processing stages 
+embodying the paradigm that type-checkingcapturesthe orderliness of how successive cognitive transforms 
+accrue detail toward a propositionally free-standing end-point.  
+At the same time, types also have semantic interpretations; 
+the/distinction, for example, is motivated by 
+the cognitive difference between nominals and states of affairs 
+as units of reason.  Type-theoretic semantics allows the 
+structural paradigm of type-checked resolutions, the 
+treefolding inwardonto its root, to be merged with 
+a more semantic or conceptual analysis of types qua 
+categories or classifications of meanings (or of 
+units comprising meanings).  I have described this merger 
+at a coarse level of classification, taking broad 
+parts of speech as individual types, but similar 
+methods apply to more fine-grained analysis.
+By threetiersof linguistic organization, I am thinking of
+different levels of granularity, distinguished by relative scales of
+resolution, amongst the semantic implications of
+putative type representations for linguistic phenomena.From one perspective, grammar is just a
+most top-level semantics, the primordial Ontological division of language into designations of
+things or substances (nouns), events or processes (verbs), qualities and attributes (adjectives),
+and so forth.  Further distinctions like count, mass, and plural nouns add
+semantic precision but arguably remain in the orbit of grammar (singular/plural
+agreement rules, for example); the question is whether semantic detail gets
+increasingly fine-grained and somewhere therein lies aboundarybetween syntax and
+semantics.  The mass/count distinction is perhaps a topic in grammar more so than
+semantics, because its primary manifestation in language is via agreement
+(somewine in a glass;awine that won a prize;manywines
+from Bordeaux).  But what about distinctions between natural and constructed objects,
+or animate and inanimate kinds, or social institutions and natural
+systems, matters more of grammar or of lexicon?For example, the templateI believed
+Xgenerally requires thatXbe a noun
+(I believed run), but more narrowly a
+certaintypeof noun, something that can be interpreted
+as an idea or proposition of some kind (I believed flower).
+Asher and Pustejovsky point out the anomaly in a sentence
+likeBob's idea weighs five pounds\cite[example 2, p. 5]`({)AsherPustejovsky`(}), which
+possesses a flavor of unacceptability that feels akin to
+Part of Speech errors but are not in fact syntactic
+errors.  The object ofweighisfive poundsand
+its subject isBob's idea, which is admissiblesyntacticallybut fails to honor our semantic convention
+that the verbto weighshould be applied to things
+with physical mass (at least if the direct object denotes a quantity;
+contrast withLet's all weigh Bob's idea, where theideais object rather than subject).  These conventions are
+analogous to Part of Speech rules but more fine-grained:
+there is a meaning ofweighwhich has (like any transitive
+verb) to be paired with a subject and object noun, but beyond
+just being nouns the subject must be a physical body
+(in effect a sub-type of nouns) and the object a quantitative
+expression (another sub-type of nouns).  Potentially, type
+restrictions on a coarse scale (e.g. that the subject of a verb
+must be a noun) and those on a finer scale (as in this
+sense ofto weigh) can be unified into an overarching theory,
+which spans both grammar and semantics `{-} for instance,
+both Part of Speech rules and usage conventions of the
+kind often subtly or cleverly subverted in metaphor and
+idioms (seeflowers want sunshine,my computer died,neutrinos are sneaky, as rather elegantly compactified
+by assigning sentient states to inert things).  This is one way of
+reading the type-theoretic semantic project.CertainlyOntologicalqualities of signifieds engender
+agreements and propriety which appear similar to
+grammatic rules.The tree wants to run away from the dogsounds wrong `{-} because
+the verbwant, suggestive of propositional attitudes, seems incompatible with
+the nonsentienttree.  Structurally, the problem with this sentence seems analogous
+to the flawedThe trees wants to run away: the latter has incorrect singular/plural linkage,
+the former has incorrect sentient/nonsentient linkage, so to speak.  But does this
+structural resemblance imply that singular/plural is as much part of semantics as grammar, or
+sentient/nonsentient as much part of grammar as semantics?  It is true that there are no
+morphological markers forsentienceor its absence, at least in English `{-} except
+perhaps foritvs.him/her`{-} but is this an accident of English or revealing
+something deeper?In effect, assessments of propriety seem to operate on several levels.  First 
+(not to imply an actual temporal priority, though) 
+we may consider fine-grained word-sense: which lexical entrant for 
+such-and-such word is plausible in the current context?  Then 
+we can consider larger-scale Ontological criteria: is the subject 
+of this sentence figured as material or immaterial, 
+sentient or nonsentient, natural or sociocultural, spatially and/or 
+temporally extended or pointwise; and so forth?  And finally, 
+what Part of Speech is consistent for various words given syntactic
+principles and morphological cues `{-} distinguishing noun/verb/adjective, 
+and etc., along with singular/plural, mass/count, verb tense and case, 
+and other criteria of morphosyntactic fit?So type-related observations can be grouped (not necessarily
+exclusively or exhaustively) into those I will callmacrotypes`{-} relating mostly to Parts of Speech and the functional treatment
+of phrases as applicative structures;mesotypes`{-} engaged with
+existential/experiential qualities andOntologicalclassifications
+like sentient/nonsentient, rigid/nonrigid, and
+others I have discussed; andmicrotypes`{-} related to lexemes and word-senses.
+This lexical level can includemicroclassification, or
+gathering nouns and verbs by the auxiliary prepositions they allow and
+constructions they participate in (such as, different cases), and
+especially how through this they compel various spatial and
+force-dynamic readings; their morphosyntactic resources for describing states
+of affairs; and, within semantics, when we look toward even more fine-grained classifications
+of particular word-senses, to reason through contrasts in usage.So, conceiving microclasses similar in spirit to Steven Pinker in
+Chapter 2 of, though I'm not committing to using the
+term only in the way Pinker uses it.  Cf. also, which
+combines a microclass theory I find reminiscent ofThe Stuff of Thoughtwith
+formal strategies like Unification Grammar.Microclasses can point out similarities
+in mentalpicturesthat explain words' similar behaviors, or
+study why different senses of one word succeed or fail to be acceptable in particular phrases.
+There arestains all over the tableclothandpaint splattered all over the tablecloth,
+but not (or not as readily)dishes all over the tablecloth.  Whilestainsis count-plural andpaintis mass-aggregate, they work in similar phrase-structures because both
+imply extended but not rigid spatial presence; whereasdishescan work for
+this schema only by mentally adjusting to that perspective, spatial construal shifting
+from visual/perceptual to practical/operational (we might think of dishesall overthe
+tablecloth if we have the chore of clearing them).  Such observations support
+microclassification of nouns (and verbs, etc.) via Ontological and
+spatial/dynamic/configuration criteria.Type-theoretic semantics can also apply Ontological tropes to unpack the overlapping mesh of word-senses,
+likematerial objectorplaceorinstitution.
+This mode of analysis is especially well illustrated when competing senses
+collide in the same sentence.  Slightly modifying two examples:\cite[p. 40]`({)ChatzikyriakidisLuo`(}) (former) and
+\cite[p. 4]`({)MeryMootRetore`(}) (latter).\swl`({}{)The newspaper you are reading is being sued.`(}{)lex`(})\swl`({)itm:Liverpool`(}{)Liverpool, an important harbor, built new docks.`(}{)lex`(})Both have a mid-sentence shift between senses, which is analyzed
+in terms oftype coercions(see alsoand).
+The interesting detail of this treatment
+is how it correctly predicts that such coercions are not guaranteed to
+be accepted:\swl`({}{)The newspaper fired a reporter and fell off
+the table.`(})[(?)]`({)lex`(})\swl`({}{)Liverpool beat Tottenham and built new docks.`(})[(?)]`({)lex`(})(again, slightly modifying the counter-examples).  Type coercions arepossiblebut notinevitable.  Some word-sensesblockcertain coercions
+`{-} that is, certain sense combinations, or juxtapositions, are disallowed.
+These preliminary, motivating analyses carry to more
+complex and higher-scale types, like plurals (the plural of a type-coercion
+works as a type-coercion of the plural, so to speak).
+As it becomes structurally established that type rules at the
+simpler levels have correspondents at more complex levels, the use of
+type notionsper se(rather than justword sensesor other
+classifications) becomes more well-motivated.Clearly, for example,
+only certain kinds of agents may have beliefs or desires, so
+attributing mental states forces us to conceive of their referents
+in those terms:\swl`({}{)Liverpool wants to sign a left-footed striker.`(}{)ont`(})\swl`({}{)That newspaper plans to fire its editorial staff.`(}{)ont`(})Thiscanbe analyzed astype coercions; but the type-theoretic machinery should contribute
+more than just obliquely stating linguistic wisdom, such as
+maintaining consistent conceptual frames or joining only suitably
+related word senses.  The sense ofsignas inemploy to play on
+a sports teamcan only be linked to a sense of Liverpool as the
+Football Club; orfireas inrelieve from dutyis only compatible with newspapers as
+institutions.  These dicta can be expressed in multiple ways.
+But the propagation of classifications
+(likeinanimate objectscompared tomental agents) through complex type structures lends credence to the
+notion that type-theoretic perspectives are more than just an expository tool;
+they provide an analytic framework which integrates grammar and semantics, and
+various scales of linguistic structuration.
+For instance, we are prepared to accept some examples of dual-framing
+or frame-switching, like thinking of a newspaper as a physical object and a city government
+(but we reject other cases, likeLiverpool voted in a new city government and signed a
+new striker`{-} purporting to switch from the city to the Football Club).  The rules for
+such juxtapositions appear to reveal a system of types with some parallels to
+those in formal settings, like computer languages.In short,Ontologicaltypes likeinstitutionorplaceserve in some
+examples to partition senses of one multi-faceted word.  Here they reveal
+similar cognitive dynamics to reframing-examples liketo the press, where
+Ontological criteria (like reading something as a place) are triggered by
+phrase-scale structure.  But there are also interesting contrasts:
+thenewspaperandLiverpoolexamples
+imply that some words have multiple framings which are well-conventionalized;
+newspaper-as-institution feels less idiomatic and metaphorical than
+press-as-place.  So these examples suggest twoaxesof variation.
+First, whether the proper Ontological framing follows from other word-choices
+(likefireinthe newspaper fired the reporter, which has
+its own semantic needs), or from morphosyntax
+(like the locative into the press); and, second, whether triggered framings work
+by selecting from established word senses or by something more metaphorical.
+Metaphors liketo the pressdo have an element of standardization;
+but apparently not so much so to be distinct senses: note howthe pressas metaphorical place
+does not work in general:at the press,near the press(butat the newspaper,near the newspaper`{-} imagine two journalists meeting outside the paper's offices `{-} sound quite reasonable).Thetype coercionanalysis works for mid-sentence frame-shifts; but other
+examples suggest a more gradual conceptualblending.  For example, the
+place/institution dynamic is particularly significant forrestaurant(whose spatial location is, more so, an intrinsic part of its
+identity).  Being aplaceimplies both location and extension; most places are not single
+points but have an inside where particular kinds of things happen.  I am not convinced
+that restaurant as place and as institution are separate word senses; perhaps, instead,
+conversations can emphasize one aspect or another, non-exclusively.  
+We need not incorporate all framing effects viasubtypes(restaurant as either
+subtype of hypotheticaltypes of allplaces or institutions, respectively).  Butplacehood, the Ontological quality of being a place `{-} or analogously being
+a social institution `{-} identify associations that factor into cognitive frames; types
+can then be augmented with criteria of tolerating or requiring one association or another.
+So ifrestaurantis a type, one of its properties is an institutionality thatmaybe associated with its instances.  In conversation,
+a restaurant may be talked about as a business or community, foregrounding this
+dimension.  Or (like in asking for directions) its spatial dimension may be foregrounded.
+The availability of these foregroundings is a feature of a hypothetical restaurant type,
+whether or not these phenomena are modeled by subtyping or something more sophisticated.
+Thenewspaperexamples suggest how Ontological considerations
+clearly partition distinct senses marked by properties like objecthood or
+institutionality (respectively).  Fornewspaperthe dimensions are less available for
+foregrounding from a blended construal, thanunblendedby conventional usage; that
+is why reframings evince a typecoercionand not a gentler shift of emphasis.
+The example ofrestaurant, in contrast, shows that competing routes for
+cognitive framing need not solidify into competing senses, though they trace
+various paths which dialogs may follow.
+But both kinds of examples put into evidence an underlying
+cognitive-Ontological dynamic which has potential type-oriented models.At the most general level `{-} what I calledmacrotypemodeling `{-} a type
+system recognizes initially only the grammatical backbone of expressions, and
+then further type nuances can be seen as shadings and interpretations which add substance
+to the syntactic form.  So in type-theoretical analysis at this more grammatic level,
+we can still keep the more fine-grained theory in mind:
+the relation of syntax to semantics is like the relation of a spine to its flesh,
+which is a somewhat different paradigm than treating syntax as a logical or temporal
+stage of processing.  Instead of a step-by-step algorithm where grammatical parsing
+is followed by semantic interpretation, the syntax/semantics interface can be seen
+as more analogous to stimulus-and-response: observation that a certain grammatic
+configuration appears to hold, in the present language artifact, triggers a marshaling
+of conceptual and cognitive resources so that the syntactic backbone can be filled in.
+Perhaps a useful metaphor is grammar as gravitation, or the structure of a gravitational
+field, and semantics is like the accretion of matter through the interplay of multiple
+gravitational centers and orbits.  For this analogy, imagine typed lambda
+reductions liketaking the place of gravitational equations;
+and sentences' grammatic spine taking the place of curvature pulling mass into a planetary center.As I have argued, sentences' progression toward complete ideas can be 
+assessed more semantically `{-} accretion of conceptual detail `{-} 
+or more syntactically, in terms of regulated type resolutions pulling in 
+from a tree's leaves to its root.  The latter model is a kind of 
+schematic outline of the former, marking signposts in the accretion 
+process rather like a meetings' agenda.  Type theory allows points in 
+conceptual accretion to be selected `{-} corresponding to nested phrases 
+`{-} where type-checking signals that the accretion is progressing 
+in an orderly fashion.  Or, more precisely, type-checking acts 
+as a window on a cognitive process; phrasal units are like 
+periodic gaps in a construction wall allowing us to reconstruct interpretive 
+processes, and the possibility of certain linguistic elements being 
+assigned types marks the points where such windows are possible.  
+So type theory can impose a formal paradigm on our assessment 
+of sentence structure, but at the cost of sampling only 
+discrete steps of an unfolding completion toward understanding.  
+In practice, this discrete analysis should be supplemented 
+with a more holistic and interpretive paradigm, which explores 
+`{-} perhaps speculatively, without demanding thorough 
+formalization `{-} the gaps between the formalizable windows.  
+I will transition toward this style of analysis in the next section.At the same time, I feel that the foundations ofcognitivelinguistics deserve a little more attention.  I have usedcognitiverather informally, depending on the intuitive 
+picture ofcognitivelinguistics, grammar, or indeedcognitive phenomenology, which emerges from the 
+speculative project we associate with linguists/philosophers 
+like George Lakoff, Mark Johnson, Leonard Talmy, 
+Ronald Langacker, and Peter`{-} along with, aspoints out, phenomenologists like Jean Petitot.mentions Lakoff, Langacker, Talmy, Fauconnier, 
+and others alongsidea French semiotic tradition, 
+exemplified by [Jean-Pierre] Descl\'es ... and 
+[Jean] Petitot-Cocorda ... which shares many features with the 
+American (mainly Californian) group\cite[p. 4]`({)Gardenfors`(}).At the same time, Petitot also links with a 
+tradition that combines elements of phenomenology and 
+Analytic Philosophy, represented by philosophers like 
+Barry Smith and David Woodruff Smith and byAnalytic PhenomenologyorNaturalizing Phenomenologyprojects, the latter also being 
+a large volumes Petitot co-edited.Petitot's and Barry Smith's formalizing projects were parallel
+and collaborative to some extent.  Maxwell James Ramstead
+in a 2015 master's thesis reviews the history elegantly:Now, thescience of salienceproposed by Petitot and Smith (1997) illustrates the
+kind of formalized analysis made possible through the direct
+mathematization of phenomenological descriptions.
+Its aim is to account for the invariant descriptive
+structures of lived experience (what Husserl calledessences)
+through formalization, providing a descriptive geometry of
+macroscopic phenomena, amorphological eideticsof the
+disclosure of objects in conscious experience (in Husserl's
+words, theconstitutionof objects).
+Petitot employs differential geometry and morphodynamics
+to model phenomenal experience, and Smith uses formal structures from
+mereotopology (the theory of parts, wholes, and their boundaries)
+to a similar effect. \cite[p. 38]`({)Ramstead`(})Cognitivein these contexts 
+tends to imply desire to ground analyses on holistic
+human experience, in its experiential, embodied, pragmatically-oriented, 
+first-personal, and intersubjective dimensions.Note that in this senseCognitiveconnotes a very different perspective than this same 
+term inresearch, for example; on the one side we have a 
+philosophical commitment to the irreducibility of
+human reason to computablesymbol processing, whereas 
+on the other there is a paradigm where, in effect 
+(perhaps simply because mental activity is presumably 
+reducible to low-level biological processes), there 
+existssomecomputable core of cognition, which scientists 
+can unlock to build powerfulArtificial General Intelligence.Cognitive linguistics can be calledspeculativebecause its 
+methodology generally relies on linguists' assessments of 
+acceptability rather than empirical data from surveys, 
+computational or statistical analyses of copora, or 
+psycholinguistic studies of language processing or acquisition.  
+Analytic Phenomenology is speculative in similar ways; 
+although in some cases phenomenological structures are 
+related to formal/mathematical theories like 
+Mereotopology or Differential Geometry (cf. Barry Smith and 
+Petitot, respectively, or Kit Fine'sPart-whole), phenomenologists' assessments of 
+common perceptual patterns (and how they are 
+situationally or conceptually interpreted and engaged with) 
+is principally introspective.  Both phenomenologists 
+and cognitive linguists, in short, introspect on 
+conscious and linguistic experience to identify patterns 
+which they believe are not eccentric to their own cognition,
+but have some public disputability and theoretical merit.  
+Of course, the overall dialog wherein philosophers debate 
+and compare their own introspective reports allows 
+this speculative method to have some rigor, because descriptions 
+of cognitive processes `{-} in their first-personal 
+facticity `{-} which seem both subjectively faithful and
+structurally revealing will emerge as analyses of 
+general pattern so long as multiple philosophical treatments 
+agree on their fidelity to experience.  So 
+analyses get theoretically favored if they meet three 
+different criteria of structural productivity `{-} in the 
+sense that produce new insight onto cognitive processes, 
+rather than just describing cognition as an experienced
+givenness `{-} plus both faithfulness to each person's 
+conscious experience and also generality to many 
+people's experience.So for instance, Husserl's examination of 
+protention and retention in sensing spatial form during 
+perceptual episodes focused on discrete, extended objects 
+(e.g. inThing and Space), or his investigation of 
+how intersubjectivity contributed to consolidating our 
+conceptual integration of perceptual givens 
+(e.g. in theCartesian Meditations), can be 
+considered classic phenomenological analyses because they 
+have been deemed both experientially accurate and 
+theoretically insightful by subsequent generations' worth of 
+public review.At their best, then, both phenomenology and cognitive linguistics 
+combine introspective analysis and public disputation to 
+develop theories of cognitive-experiential structures `{-} of 
+how the immediate structuraion of perceptual experience as 
+primordial conscious content unfolds into the
+schematic and rational models of our surrounding environment
+and situations, for purpose of goal-directed activity and 
+inter-personal, collective reasonableness.  The underlying assumption 
+is that raw structures, below the threshold of conscious 
+deliberation, are enmeshed in immediate experience, and that from 
+there we can identify ambient and situational patterns; 
+mental representations of 
+the structural and material properties of surrounding 
+objects and places and the social/pragmatic rules 
+governing interpersonal situations.  We can then 
+posit situational prototypes and morphological principles 
+apparently operating in these representations, which become 
+the basis of systematic theorizing of cognitive activity 
+in general, including language.In this paradigm, situational and organizational prototypes 
+and patterns lend their structure to language, so 
+`{-} in many cases, i.e., with respect to many 
+language artifacts `{-} the scenarios influencing 
+linguistic structure are these extra- or pre-linguistic 
+gestalts rather than semantic to syntactic rulesper se.  But for this belief about the origin of 
+(at least some) surface-level linguistic form to be 
+leveraged as a diligent semantic or syntactic method, 
+we need a systematic account of how phenomenological 
+pattern evolve into (by grounding) linguistic 
+structures.  A thorough treatment of this problem 
+is far beyond the scope of one paper, but I will 
+offer a few ideas in the remainder of this section.Types and PhenomenologyIn their proper context, understanding linguistic expressions 
+requires binding language to objects orphenomenain 
+speakers' collective perceptual (or conceptual) horizon.  
+Referents are not always material things; they can even 
+be theabsenceof objects, or of substance:\swl`({)itm:footprints`(}{)There are footprints on the beach.`(}{)ref`(})\swl`({)itm:hole`(}{)There's a hole in the bucket.`(}{)ref`(})\swl`({)itm:footprintsleading`(}{)There are footprints leading up the hill.`(}{)ref`(})\swl`({)itm:traintracks`(}{)There are train tracks leading up the hill.`(}{)ref`(})In (\ref`({)itm:footprints`(})) our attention is direct not to anyobject, but 
+to a certain perceptual pattern which has some factual significance, enough 
+to warrant a distinct concept.  Insofar asonefootprint is a 
+focus of attention, we notice some pattern of discontinuity which allows 
+a foreground to emerge from a background `{-} but there is perceptual 
+blend of discontinuity and continuity, since a footprint is literally 
+situated in a material expanse with its surroundings.  To focus on the 
+footprint `{-} a cognitive act which is both perceptual and conceptual 
+`{-} we have to retain awareness both of the footprint materially 
+continuous with the surrounding sand (say) and also distinct from it 
+via a somewhat different color or composition (e.g., the sand in the footprint 
+may be darker or more compact than the sand around it).  When talking 
+aboutfootprints, plural, we have to direct attention to a perceptual 
+totality, something extending over our visual field and possessing inner 
+parts, but also suggesting a conceptual totality, a worthiness of 
+being cognized in aggregate.In (\ref`({)itm:footprintsleading`(})), moreover, we conceive the totality in conjunction 
+with a sense of direction, and protention.  The implication is that we 
+do not seeallof the footprints, but we can discern from their 
+pattern a direction which, we anticipate, will reveal more footprints.  
+Meanwhile the footprints are presumably disjoint, unlike train tracks.
+So the perceptual foreground in (\ref`({)itm:footprintsleading`(})) is phenomenologically 
+complex, including a totality we perceive that implies a greater 
+totality, part of which is experienced anticipatorily rather than 
+explicitly, along with a fragmentation which nonetheless permits a 
+perceptual unification into a coherent whole.  These kinds of 
+perceptual/conceptual complexities in arrangements 
+`{-} blending continuity and discontinuity, wholeness and 
+fragmentation, sensation and protention `{-} are canonical 
+to the phenomenology of attentional foci in any cognition 
+engaged with ambient situations, which certainly 
+includes language.  We are not robots experiencing the 
+world as a tableau of simply discrete, integral object-things.Language serves as a guide to negotiating the complexities of 
+perceptual foci in inter-personal environments.  
+We therefore have to understand how languagehooksinto conversants' phenomenological faculties. 
+So we have, at a basic level, a 
+contrast between situationally grounded or conceptually 
+generalized references:\swl`({)itm:Salesmen`(}{)Salesmen are intelligent.`(}{)ont`(})\swl`({)itm:knocking`(}{)Salesmen are knocking on the door.`(}{)ont`(})\swl`({)itm:Should`(}{)Should I let them in?`(}{)ont`(})The effects of (\ref`({)itm:knocking`(})) 
+(which with (\ref`({)itm:Salesmen`(})) are from theHandbook, example 44, page 169, 
+chapter 6) are manifest in several 
+changes to conversants' collective understanding: (\ref`({)itm:knocking`(})) 
+establishes both a domain of potential reference (the salesmen 
+could be subsequently identified asthe salesmenorthose salesmenorthem), and the fact of their being 
+at the door established as a basis for further dialog (e.g., 
+(\ref`({)itm:Should`(}))).  The more generic (\ref`({)itm:Salesmen`(})) 
+does not have any comparable situational effects, though 
+it permits further dialog on a more generic plane.Sometimes, of course, people dialog about things that are 
+perceptually evident around them collectively.  Probably 
+more common, though, is that the structures of 
+presentational perception translated to general 
+cognitive patterns that are signified through language.  
+That is to say, the rules of perceptual gestalts 
+`{-} the partial continuity and partial discontinuity 
+between background and foreground; and the mixture of 
+singular integrity and divisibility characterizing attentional  
+foregrounds `{-} are taken for granted as patterns 
+typifying perception in general, whether that be 
+perceptions presently occurring in the situational 
+context or those conceptualized indirectly, abstractly, 
+or hypothetically.  How foci of attention figure into 
+perceptual continua become part of their extralinguistic 
+background, reflected in lexical conventions:\swl`({)itm:ink`(}{)There are ink stains on the pages of this book.`(}{)ref`(})\swl`({)itm:sunset`(}{)There is a pretty sunset over the river.`(}{)ref`(})\swl`({)itm:cicada`(}{)In some neighborhoods, cicada insects make loud sounds from sunset to sunrise.`(}{)ref`(})
+\udref`({)enAgum-ud-train`(}{)GUMAvoyageAphoenix-30`(})\swl`({)itm:applause`(}{)The audience rose to give thundering applause.`(}{)ref`(})The unifying theme in these examples is that their central concepts are 
+experienced in terms of a matrix of phenomenological criteria that can 
+be harnessed into a general theory: how an ink stain is (in part) 
+materially continuous with the stained paper that extends around it; 
+howa pretty sunsetis an imprecisely bounded but conceptually 
+integral atmospheric event; how (\ref`({)itm:applause`(})) figures the audience as 
+discrete individuals who, at that moment, act in such a way as to present a 
+conceptual and perceptual totality; how (\ref`({)itm:cicada`(})) likewise proposes 
+a totality but in a more complex fashion, because the speaker is 
+describing a typicalkindof experience rather than the specific 
+sounds of cicadas on one specific occasion.The matrix of continuity/discontinuity, and individual coherence balanced
+(within intentionalnoemata) 
+against internal structuration and diversity, 
+areconceptuallyintrinsic to notions likeink stains(orfootprints),applause,sunsets, and evencicadasandnoises.  
+They become part of a language's lexical machinery and 
+therefore embed, in lexical conventions, phenomenological 
+prototypes that imply a situational background, called 
+forth by the lexical potency of the specific words.  
+The point is not that the hearer of (\ref`({)itm:sunset`(})), say, 
+sees the sunset also, and thusexplicitlyundergoes the 
+disclosure-experience of a sunset (in all its sensory 
+vividness and individuating vagueness).  Instead, the 
+patterns of sensation and (dynamic, imprecise, un-fixed) 
+individuation are abstracted to prototypes poised within 
+the lexicon itself to be perceived as applicable to the 
+talked-about situation.  We have some idea of thekindof experience is involved in a sunset, not just 
+perceptually but in the nexus of conceptual and 
+rational processes which leads us to identify the sunset 
+as such and estimate its phenomenal specificity 
+`{-} its spatial form, its temporality `{-} so that it 
+has some determinate epistemic content, something 
+that can be discussed with others (Did you see the 
+sunset;Is it too late to see the sunset; etc.).Phenomenological patterns in construing conceptual and 
+referential foci, solicited by lexical and idiomatic 
+conventions, give language flexibility and rhetorical 
+flair, often bounding expressive possibilities on 
+phenomenological rather than narrowly semantic grounds.  
+I would dispute some of Nunberg's analyses I mentioned 
+in the last section, for example, on the 
+dubiousness of (\ref`({)itm:start`(})) or the exceptionality 
+of (\ref`({)itm:Sauternes`(})).  I do not find
+(\ref`({)itm:start`(})) exceptionally jarring, considering the 
+situational construal common to (\ref`({)itm:start`(})) along 
+with (\ref`({)itm:parked`(})) and (\ref`({)itm:waiting`(})): 
+the formationI am parkedis notjusta matter of 
+a person proxy-referring their car.  Usually a person 
+sayingI am parkedisintheir car, so they are 
+describing a larger situation `{-} the conceptual foreground 
+is the totality of the car and themselves in it.  Were the 
+addressee to find them, their attention would be directed 
+to the carandthe speaker, as a complex but 
+integral (in that episode of time) whole.  
+This then carries over to cases where the speaker 
+isnotin their car.  SayingI am parked(along with 
+a place-description) outlines the steps needed to return to 
+the car; it is a way of framing the car's location 
+operationally.  Using the first person for where the car is 
+parked `{-} even when the speaker is not at that spot 
+`{-} indicates that the speaker is conceiving the car's 
+location in first-personal terms; that is, in terms 
+of the actions the speaker is taking or anticipates 
+taking.This analysis then implies that (\ref`({)itm:start`(})) is 
+acceptable on similar operational grounds; first-personalizing 
+the cars location, so to speak, foregrounds that location 
+only in the context of an operational totality involving 
+(presumably) going to the car and then driving it.  
+If the speaker is concerned about the car not starting, 
+this is relevant to how the overall situation is 
+cognized, and therefore the transition from the speaker-centeredI am parked ...to the discordantand may not startis understandable.  I would similarly argue that the 
+apparent difference between (\ref`({)itm:Sauternes`(})) and
+(\ref`({)itm:beers`(}))-(\ref`({)itm:Michelobs`(})) depends on how 
+referential foci are established.  The phrasea beercan designate a specific glass or bottle of 
+beer `{-} something perceptually and enactively/kinaesthetically 
+individuated `{-} or also a specific preparation of beer,
+individuated by the unique flavor of the beverage rather than 
+the material identity of the liquid.  These 
+differences have phenomenological overtones: if I sayI drank two beersI could mean two glasses, pints, or 
+bottles; I could also mean twokindsof beer 
+(maybe multiple pints of each).  The phrasing itself 
+is ambiguous, but the ambiguity is extra-linguistic: 
+it relates to how linguistic content binds to empirical 
+givens with their rules of phenomenological 
+individuation.  Thetwo pintsreading implies 
+one kind of phenomenological architecture governingword-to-world fit, where elements in language 
+link to discrete, perceptually/operationally integral
+objects like glasses (though of course a glass of 
+beer is also an integral complex where the beer and 
+the glass are semi-autonomous parts).  Thetwo kindsreading is more subtle, resting conceptual focus on the 
+belief that a distinct kind of beer has a distinct 
+flavor that is both uniqueother beers and 
+also consistent across bottles (or kegs), so it hasataste that people can jointly experience and 
+talk about.  Nunberg makes the reasonable claim 
+that we are more likely the hear the 
+former interpretation when it comes to beers, and 
+the latter one for Sauternes, but I can imagine plausible
+conversations where these conventions would be reversed.To return to type theory, then, this style of 
+formalization is a potential window onto how the 
+lexicalized concepts negotiate the phenomenological 
+options inbindingwords to phenomena.  
+The matrix of continuity/discontinuity and 
+individuation (singularity)/complexity (internal 
+structure or diversity) forms a tableau which 
+different word senses and, in explicit phrase contexts, 
+different usageshook intoin different ways.  
+So beerqualiquid has one conventional 
+pattern inword-to-world fit, while beerquaconsumer product, or a brewer's creative 
+endeavor, evinces a different phenomenological 
+pattern.  This is modeled, to some approximation, 
+by thetype(or as I put itmesotype) 
+distinction of a liquid (more generally a substance) 
+against a consumer product or social good 
+(more generally a socio-cultural artifact).  We 
+can refer to beers in both senses, and I have 
+mentioned theories of typecoercionsor
+juxtapositions (cf. Pustejovsky'sdot producttheories inor) that explore when 
+the differentOntologicalconstruals or sentences can be 
+combined or alternated.  At this point I would add that 
+these Ontological details are not only relevant to 
+semantics; they also govern how phenomenological 
+patterns can be reified and typified in lexical and 
+idiomatic conventions.For successful conversation, participants need to converge 
+for each sentence on a common conceptual focus; not surprisingly, 
+this process often reciprocates the phenomenology of 
+perceptual focus, or enactive/kinaesthetic attention.  
+Drawing form from phenomenological structure, referential 
+signification often takes shapes that can seem opaque 
+on purely logical considerations.  In analysis of 
+referring expressions, then `{-} analogously to 
+semantic analyses as earlier in this section `{-} we need 
+to be sensitive to the possibilities of language form 
+molding to perceptual and situational gestalts rather 
+than predicate structure.Nunberg, for instance, investigates how the proxying effect inI am in the Whitneycan be generalized to other cases.  
+I'll point out that this fits a not-uncommon rhetorical 
+pattern, as in:\swl`({)itm:hall`(}{)I am in the Hall of Fame.`(}{)ref`(})\swl`({)itm:ontv`(}{)I am on TV.`(}{)ref`(})Nunberg argues that reference, in these kinds of cases, willtransferbetween conceptually
+linked designata, so I can refer to my car's location as my location, 
+or to my painting as myself.  If we analyze this logically, 
+the rule appears to be that I can substitute first-person 
+reference for reference to something associated with 
+myself (that I own or have created, etc.).  
+He then finds that the pattern does not generalize to a 
+scenario such as a painter `{-} referring to the location of her
+work in transit `{-} saying something like (his example 12):\swl`({)itm:crate`(}{)I'm in the second crate on the right.`(}{)ref`(})In other words, Nunberg's analysis turns on theorizing variousI am in...constructions as a kind of referential transfer 
+or (as I would say) proxying, and then seeking the logical rules 
+behind how and when such proxying works in a first-person
+(morphosyntactic) context.Obviouslyfirst personin this setting concerns
+verb tense and other linguistic cues linking to
+the speaker/enunciator of a piece of language; the
+same term is also encountered (including elsewhere
+in this paper) in the phenomenological
+(and Philosophy-of-Mind) sense of
+conscious, intentional experience (in contrast
+to experience, or thoughts and feelings, we
+attribute to others based on their behavior).On the other hand, I would argue that the pattern in 
+(\ref`({)itm:hall`(}))-(\ref`({)itm:ontv`(})) is not reducible to 
+referential proxying as a logical maxim.  We can speculate thatIobliquely references, say, the bust and info about an 
+athlete who has been elected to a Hall of Fame, or to the 
+image of a TV personality which viewers see on screen.  
+So analyzing this construction as a case where reference 
+is transferred from thesubject of enunciationto 
+some subordinate vehicle `{-} her bust, image, and so forth 
+`{-} is a plausible gloss on the pattern.  But looking for a 
+single maxim to accommodate these different cases overlooks 
+the contextual particulars, in particular the backstory 
+which is lexically embedded in expressions likeHall of Fameandon TV.  There is a long process 
+leading to retired athletes being recognized as worthy of 
+a Hall; there is also a long process whereby personalities 
+get a chance to appear on television.  Actually, (\ref`({)itm:ontv`(})) 
+has two interpretations `{-} someone could be on TV just momentarily, 
+e.g. as a bystander during on-location news coverage `{-} or 
+as someone like a policy expert who is interviewed on occasion.  
+But the more interesting reading of (\ref`({)itm:ontv`(})) involves 
+a person being described ason TVnot on the occasion of 
+their appearing on-screen in that moment, but as a recurring 
+event.  In this casebeing on TVencapsulates a backstory 
+reflecting a measure of personal success and esteem, not unlike 
+an athlete in a Hall of Fame or an artist in a prestigious museum.The relevant backstories govern interpretations for first-person 
+reference:I am in the Halloron TVindirectly reports 
+that the speaker has undergone some process which the addressee, 
+assumed competent with the relevant lexicon, at least
+minimally understands.
+So a pattern like (\ref`({)itm:hall`(})) packages up that backstoryin the guiseof a referring expression; it is not so much the 
+athlete's bust as a target of referential proxying, but more of the 
+act of referring to that bust (i.e., to the referentiable 
+object manifesting the speaker's being elected) entering
+the Hall of Fame backstory into the discursive ledger.  This 
+carries over to the Whitney case: calling oneselfina museum does not just proxy the self for one's art, 
+but uses patterns of reference to the art work as a 
+vehicle for introducing the backstory of one's 
+rise through the art world (or whatever is the relevant 
+autobiographical context) into the conversation.I would argue, in short, that referential proxying is not a 
+primarily logical operation, but relies on backstory context to 
+regulate how referring patterns are received.  To establish conceptual 
+foci, addressees have to negotiate the language given to them, in 
+search of the focal element or foreground, often an explicit or 
+hypothetical perceptual nexus.  So a painterin the Whitneymeans 
+that a visitor can, in the right room and orientation, perceptually 
+encounter her work; a personalityon TVmeans that the 
+addressee can, at times, see her on-screen.  Those potential perceptual 
+givens ground the semantics of expressions like (\ref`({)itm:Whitney`(})) or 
+(\ref`({)itm:ontv`(})).  This does not mean that the sentences are only 
+meaningful to an addressee who wants to go find the speaker at the 
+museum or on the television.  But it does present the perceptual 
+ground as a foundation for the conceptual implications which 
+lead from that perceptual situation: from the perceptual presence 
+of an art work in a museum to the backstory of its provenance 
+and implications for the artist's career or place in history; 
+or from the on-screen image to the context of how TV shows 
+are produced and the careers and reputations of the figures that 
+show up.We approach referring expressions in these contexts at two levels: 
+we identify the canonical perceptually-oriented references which 
+supply a conceptual ground (the painting as perceptual 
+object, the on-screen image as perceptual simulacrum); but then 
+we recognize the backstory and situational context which 
+determines how the perceptual ground should be understood.  
+Usually the discourse isaboutthat backstory, not about 
+the precise situations where explicit perceptual grounds would 
+be relevant `{-} an artist probably would not say 
+(\ref`({)itm:Whitney`(})) only to someone looking to visit a museum to 
+see her art work.  TheI am in...pattern 
+turns on how these two different levels are played off 
+in interpretation.
+In particular, the addressee needs to ascertain why the
+speaker's information is being proferred: is boasting
+of their art being hung in an elite museum mostly a
+way of conveying the speaker's status, so the main theme is
+essentially autobiographical; or is the actual location
+of the painting directly relevant to the present conversation?A statement like (\ref`({)itm:crate`(})) (the speaker beingin the crate on the right) does not have the moreautobiographicalreading, since (absent some bizarry
+imaginary scene) there is no status or reputation attached
+to which crate is carrying your paintings.  But the second kind of reading,
+where specific location is operationally relevant,
+is plausible in some contexts; perhaps several different
+artists' works are in several different crates and
+the speaker wants to direct focus onto the one holding
+her own works.  So, in the proper context,
+I have no objection to
+(\ref`({)itm:crate`(})) orI am in that crate(forms which Nunberg rejects).
+The gist here, as in (\ref`({)itm:Whitney`(})), is to establish conceptual
+focus onto a painting or art work, and to do so via a
+first-person referential lead-in.  So the situation determines 
+firstwhythe focus is thus singled out and secondhowthe first-person reference can proxy that focus.  
+In (\ref`({)itm:Whitney`(})), we single out a painting insofar as it 
+is a product of the artist's creativity, so appreciation of the 
+work is manifestly appreciation of the artist.  The artist is 
+then referentially linked to the work because the backstory of 
+how museums acquire art works overlaps with the story of 
+artists' careers and reputations.In (\ref`({)itm:crate`(})) the situation is different: presumably 
+the focus is on one or several art works because of some concern 
+about transporting or accessing them, so we're attending to the 
+works in their guise as (fragile) physical objects.  Moreover 
+the link between the artist and the work, which guides the 
+referential proxying, is presumably that the artist is 
+concerned about accessing and protecting those objects.  
+The situational elements are different, but in both these 
+cases `{-} whether paintings are in the crate or in the 
+Whitney `{-} there is some structural resonance in how
+situational, backstory, and hypothetical-perceptual 
+gestalts are all integrated into patterns of grounding 
+referential interpretation in ambient conceptual contexts.I think that linguists sometimes underestimate the 
+multiplicity of layers `{-} situational, contextual, 
+phenomenological (explicit and hypothetical), 
+referential, contextual `{-} that all converge on 
+meaning and reference.  Perhaps this tendency can
+be empirically examined by testing judgments of
+acceptability: the more that we incorporate
+multiple layers of posssible context, the wider becomes
+the circle of sentences that feel reasonable
+(cf. the reasonableness, in my estimation, of
+(\ref`({)itm:crate`(})) and (\ref`({)itm:Sauternes`(}))).Granted that, perhaps, with a lot of imagination
+almost any construction could be deemed
+plausible insomecontext.  Accordingly,
+one could argue that it is analytically reasonable
+to distinguish sentences that exemplify proper
+language in a wide range of contexts, as compared
+to sentences which could only be meaningful
+in very select circumstances.  Even on this perspective,
+however, we have to unpack the distinction betweengenericfromselectcircumstances `{-} what
+qualities of these situations, together with
+relevant word-meanings, make these examples
+of broad usage patterns as against unexpected
+usages that are nonsensical without a very
+specific background?  Rather than being a neutral
+arbiter of acceptability, such genericity is a
+phenomenon that needs to be explained.  I would
+argue that assessments of unacceptability will in
+many cases overrate the distinction betweennormalandexceptionalcircumstances.
+For example, I dispute that the beer/wine
+contrast, or painting in a museum or in a crate
+contrast, are such a divergence between normal and
+unusual contexts that (\ref`({)itm:crate`(})) has
+essentially different plausibility than
+(\ref`({)itm:Whitney`(})), or (\ref`({)itm:Sauternes`(}))
+compared to (\ref`({)itm:beers`(})) and (\ref`({)itm:Michelobs`(})).Failure to identify these
+layers' workings can lead analysis toward searches 
+for reproducible logical rules governing which constructions  
+are accepted by a language-community as recurring patterns, 
+and logical explanations for the limits on that 
+generalizability.  This is one example of
+overestimating the logicality of language in 
+general, an issue I have approached in this section 
+from both semantic and reference-theoretic angles.  
+I will focus on this issue of logicality `{-} both its applicability 
+and its limits `{-} in the next section.`[/]
+
+`[//]sectionlabelpiqNPropciteNOverNVUnderVquotesentenceListsentenceItemglfootnotesubsectionvisavisinputNNtoPropargsToReturnNNtoPropYieldsPropPropToNYieldsNSeqNPplVPProptoNrefNtoNspsubsectiontwolineqmarkdubiousthindecolineGardenforsAI`[/]
+
+`[//]s2BarkerShanTGKubotaLevineSivaReddyKiyoshiSudoChoeCharniakJanVanEijckRikVanNoordfigactuallydblfigactuallyfigambienceOsborneMaxwellfig:IknowPinkerAnneVilnatZhaohuiLuoZhaohuiLuoSignaturesKitFineJamesPustejovskyAsherPustejovsky`[/]
+
+@@ ranges
+3
+=1
+2<1>60;1,
+61<2>0;2,335;4,
+313<1>318;5,
+336<1>1380;6,
+362<1>381;7,
+737<1>744;8,
+1381<1>1857;9,
+1425<1>1431;10,
+1590<1>1608;11,
+1858<1>2502;12,
+2054<1>2061;13,
+2217<1>2225;14,
+2503<1>3066;15,
+2603<1>2615;16,
+3067<1>4083;17,
+3168<1>0;18,
+3190<1>0;19,
+3319<1>0;20,
+3321<1>0;22,
+3433<1>3441;24,
+3571<1>0;25,
+3586<1>3589;26,
+3599<1>3610;27,
+3617<1>3620;28,
+3768<1>0;29,
+3838<1>3848;30,
+3878<1>3882;31,
+3917<1>3922;32,
+4002<1>4005;33,
+4024<1>0;34,
+4078<1>4082;35,
+4084<1>5910;36,
+4287<1>4295;37,
+4349<1>4359;38,
+4394<2>4943;39,4412;40,
+4673<1>4708;41,
+5139<1>5146;42,
+5203<1>5208;43,
+5231<1>5234;44,
+5251<1>5259;45,
+5658<1>5663;46,
+5863<1>5872;47,
+5911<1>7068;48,
+5976<1>5983;49,
+6232<1>6235;50,
+6238<1>6243;51,
+6431<1>6436;52,
+6481<1>6484;53,
+7069<1>7330;54,
+7115<1>7117;55,
+7266<1>7276;56,
+7289<1>7289;57,
+7306<1>7306;58,
+7312<1>7312;59,
+7315<1>7315;60,
+7331<1>8499;61,
+7457<1>7469;62,
+7625<1>0;63,
+7626<1>0;65,
+7627<1>0;67,
+7807<2>7937;69,0;70,
+7947<1>8020;71,
+8500<1>9118;72,
+8708<1>8827;73,
+8728<1>8741;74,
+9119<1>9142;75,
+9143<1>10281;76,
+9263<1>9271;77,
+9290<1>9295;78,
+9313<1>9320;79,
+9334<1>9340;80,
+9502<1>9507;81,
+10282<1>11681;82,
+10364<1>10380;83,
+10573<1>0;84,
+10576<1>0;86,
+10583<1>10588;88,
+10736<1>10745;89,
+11000<1>11007;90,
+11418<1>11423;91,
+11533<1>11540;92,
+11682<1>12853;93,
+11714<2>11845;94,0;95,
+11871<1>11945;96,
+11965<1>11972;97,
+11998<1>11999;98,
+12071<1>12072;99,
+12077<1>12087;100,
+12114<1>12122;101,
+12226<1>12238;102,
+12319<1>12332;103,
+12372<1>12378;104,
+12381<1>12395;105,
+12752<1>12765;106,
+12767<1>12768;107,
+12817<1>12827;108,
+12854<1>13787;109,
+12897<1>12907;110,
+12925<1>12927;111,
+12958<1>12964;112,
+12982<1>12988;113,
+13042<1>13043;114,
+13144<1>13147;115,
+13190<1>13196;116,
+13286<1>13292;117,
+13349<1>13787;118,
+13388<1>13391;119,
+13469<1>13477;120,
+13552<1>13552;121,
+13589<1>13589;122,
+13674<1>13674;123,
+13741<1>13741;124,
+13765<1>13786;125,
+13782<1>13782;126,
+13788<1>14709;127,
+13814<1>13816;128,
+13831<1>13841;129,
+13876<1>13881;130,
+13885<1>13886;131,
+13960<1>13962;132,
+13969<1>13976;133,
+14015<1>14020;134,
+14092<1>14093;135,
+14109<2>0;136,14111;137,
+14120<1>14123;138,
+14132<2>0;139,14138;140,
+14274<1>14279;141,
+14300<1>14307;142,
+14372<1>14376;143,
+14438<1>14443;144,
+14477<1>14498;145,
+14525<1>14526;146,
+14528<1>14530;147,
+14539<1>14541;148,
+14550<1>14552;149,
+14578<1>14579;150,
+14627<1>14628;151,
+14629<1>14635;152,
+14644<1>14646;153,
+14648<1>14654;154,
+14679<1>14680;155,
+14687<1>14692;156,
+14710<2>0;157,15553;159,
+14735<1>14750;160,
+15553<1>0;161,
+15554<2>0;163,17951;165,
+15621<1>15635;166,
+15761<1>15770;167,
+15862<1>0;168,
+15863<1>16435;169,
+16157<1>0;170,
+16169<1>0;171,
+16172<1>0;172,
+16534<1>16646;173,
+17054<1>17066;174,
+17084<1>17090;175,
+17146<1>17156;176,
+17253<1>0;177,
+17255<1>0;178,
+17304<1>0;179,
+17337<1>0;180,
+17422<1>0;181,
+17527<1>0;182,
+17536<1>17539;183,
+17593<1>17608;184,
+17636<1>0;185,
+17637<1>17951;186,
+17697<1>17711;187,
+17848<1>17858;188,
+17952<1>18473;189,
+17956<1>17965;190,
+17970<1>0;191,
+18110<1>0;192,
+18422<1>18437;193,
+18474<1>20439;194,
+18552<1>18564;195,
+18620<1>18627;196,
+18759<2>19113;197,0;198,
+18854<1>0;199,
+18936<1>0;200,
+19011<1>0;201,
+19161<1>19173;202,
+19357<1>19364;203,
+19456<1>19468;204,
+19846<2>20002;205,0;206,
+19937<1>0;207,
+20061<1>20081;208,
+20112<1>20124;209,
+20213<1>20225;210,
+20313<1>20323;211,
+20440<1>21875;212,
+20450<1>20470;213,
+20483<1>20497;214,
+20499<1>20513;215,
+20717<1>20720;216,
+20927<1>20934;217,
+21121<1>21122;218,
+21164<1>21183;219,
+21208<1>21215;220,
+21219<1>21229;221,
+21637<1>21639;222,
+21801<1>0;223,
+21894<1>23413;225,
+22357<1>22360;226,
+22383<1>0;227,
+22465<2>0;228,22473;229,
+22476<1>0;230,
+22477<1>0;231,
+22489<1>0;232,
+22518<1>22531;233,
+22627<1>0;234,
+22733<1>0;235,
+22796<1>0;237,
+22806<1>0;238,
+22828<1>22829;239,
+22854<1>0;240,
+22872<1>22875;241,
+22880<1>0;242,
+22921<1>22924;243,
+23147<1>23148;244,
+23159<1>23166;245,
+23223<1>23229;246,
+23414<1>24900;247,
+23539<1>23553;248,
+23721<1>23725;249,
+24166<1>24179;250,
+24265<1>24277;251,
+24392<1>24401;252,
+24455<1>24467;253,
+24470<1>24477;254,
+24611<1>24615;255,
+24621<1>24628;256,
+24901<1>26021;257,
+24968<1>24971;258,
+25135<1>25147;259,
+25333<1>25337;260,
+25345<1>25348;261,
+25351<1>25371;262,
+25938<1>25958;263,
+25985<1>25991;264,
+26022<1>26374;265,
+26375<1>26411;266,
+26412<1>27387;267,
+26531<1>26539;268,
+26735<1>26743;269,
+27388<1>28542;270,
+27537<1>27544;271,
+27731<1>0;272,
+27732<1>0;273,
+27956<1>27969;274,
+28320<1>28324;275,
+28543<1>29497;276,
+29061<1>29068;277,
+29245<1>29248;278,
+29265<1>29265;279,
+29288<1>29291;280,
+29498<1>31253;281,
+29523<1>29534;282,
+29558<1>29558;283,
+29570<2>0;284,29583;285,
+29614<1>29617;286,
+29701<2>0;287,29717;288,
+29783<1>29811;289,
+29991<1>29995;290,
+29998<1>30008;291,
+30027<1>30036;292,
+30058<1>30070;293,
+30127<1>30134;294,
+30246<1>30271;295,
+30283<1>30286;296,
+30420<1>30424;297,
+30819<1>30826;298,
+31049<1>31069;299,
+31071<1>31086;300,
+31088<1>31107;301,
+31254<1>32120;302,
+31263<1>31273;303,
+31372<1>31410;304,
+31442<1>31445;305,
+31526<1>31529;306,
+31607<1>31633;307,
+31977<1>31985;308,
+32042<1>32043;309,
+32047<1>32053;310,
+32121<1>32889;311,
+32890<1>34977;312,
+33002<1>33011;313,
+33115<1>33123;314,
+33177<1>33187;315,
+33279<1>33288;316,
+33357<1>33375;317,
+33814<1>34104;318,
+33892<1>0;319,
+33979<1>0;321,
+34037<1>34056;323,
+34154<1>34161;324,
+34308<1>34337;325,
+34341<1>34380;326,
+34410<1>34439;327,
+34448<1>34453;328,
+34473<1>34477;329,
+34603<1>34608;330,
+34782<1>34789;331,
+34978<1>36466;332,
+35088<1>35102;333,
+35105<1>35109;334,
+35112<1>35122;335,
+35263<1>35346;336,
+35347<2>35477;337,0;338,
+35404<1>0;339,
+35554<1>35567;340,
+35577<1>0;341,
+35580<1>0;343,
+35707<2>35841;345,0;346,
+35779<1>0;347,
+35911<1>35918;348,
+35926<1>35935;349,
+35955<1>35959;350,
+36379<1>36384;351,
+36402<1>36412;352,
+36467<1>38038;353,
+36632<2>36752;354,0;355,
+36691<1>0;356,
+36757<1>36759;357,
+36774<1>36787;358,
+37001<1>37004;359,
+37010<1>37040;360,
+37108<1>37111;361,
+37117<1>37133;362,
+37278<1>37294;363,
+37306<1>37318;364,
+37771<1>37835;365,
+38039<1>39304;366,
+38048<1>38058;367,
+38069<1>38079;368,
+38082<1>38086;369,
+38228<1>38239;370,
+38392<1>38400;371,
+38404<1>38412;372,
+38614<1>38617;373,
+38715<1>38718;374,
+38721<1>38752;375,
+38832<1>38843;376,
+38983<1>38994;377,
+39095<1>39103;378,
+39151<2>0;379,39162;380,
+39164<2>0;381,39177;382,
+39182<1>39197;383,
+39199<1>39216;384,
+39305<1>41486;385,
+39308<1>39320;386,
+39419<1>39426;387,
+39504<1>39513;388,
+39595<1>39599;389,
+39956<1>39963;390,
+40009<1>40020;391,
+40064<1>40072;392,
+40321<1>40330;393,
+40391<1>40393;394,
+40797<1>40805;395,
+40965<1>40973;396,
+41056<1>41064;397,
+41124<1>41131;398,
+41183<1>41192;399,
+41487<1>42861;400,
+41528<1>41536;401,
+42719<1>0;402,
+42862<1>44241;403,
+44242<2>0;404,46946;405,
+44290<1>44298;406,
+44356<1>44364;407,
+44422<1>44430;408,
+44462<1>44484;409,
+44650<1>0;410,
+44666<1>0;411,
+44713<2>44981;412,0;413,
+44781<1>44957;414,
+45180<1>45201;415,
+45204<1>45229;416,
+45297<1>46220;417,
+45474<1>46220;418,
+45482<1>45500;419,
+45768<1>45775;420,
+45861<1>45882;421,
+45960<1>45971;422,
+46221<1>46229;423,
+46423<1>46946;424,
+46446<1>46454;425,
+46516<1>0;426,
+46642<1>46658;427,
+46835<1>46838;428,
+46915<1>46945;429,
+46947<1>49258;430,
+46982<1>46992;431,
+47495<1>47504;432,
+47505<1>0;433,
+48718<1>49258;435,
+48885<1>48899;436,
+49041<1>49061;437,
+49259<1>50314;438,
+50315<1>51035;439,
+50625<1>50630;440,
+51036<1>51058;441,
+51059<1>52676;442,
+51161<1>51169;443,
+51296<1>51302;444,
+51331<2>51587;445,0;446,
+51392<1>0;447,
+51442<1>0;448,
+51517<1>0;449,
+51648<1>51653;450,
+51780<1>51782;451,
+52443<1>52452;452,
+52677<1>53781;453,
+52844<1>52846;454,
+53775<1>53780;455,
+53782<1>54875;456,
+53939<1>53943;457,
+54104<2>54256;458,0;459,
+54154<1>0;460,
+54213<1>0;461,
+54339<1>54346;462,
+54579<1>54590;463,
+54593<1>54606;464,
+54609<1>54612;465,
+54876<1>56834;466,
+55736<2>56084;467,0;468,
+55803<1>0;469,
+55866<1>0;470,
+56014<1>0;471,
+56370<1>56384;472,
+56748<1>56751;473,
+56835<1>58178;474,
+56928<1>56934;475,
+56988<1>56999;476,
+57025<1>57034;477,
+57038<1>57047;478,
+57050<1>57057;479,
+57059<1>57065;480,
+57076<1>57082;481,
+57086<1>57091;482,
+57413<1>57422;483,
+57770<1>57773;484,
+58115<1>58137;485,
+58139<1>58170;486,
+58179<1>59719;487,
+58826<1>58836;488,
+58843<1>58846;489,
+58921<1>58931;490,
+58934<1>58935;491,
+59148<1>59150;492,
+59279<1>59281;493,
+59303<1>59313;494,
+59720<1>61928;495,
+60179<1>60193;496,
+60211<1>60227;497,
+60437<1>60442;498,
+60767<1>60783;499,
+60851<1>60855;500,
+61094<1>61102;501,
+61171<1>61187;502,
+61418<1>61426;503,
+61562<1>0;504,
+61630<1>61630;505,
+61929<1>63218;506,
+62089<1>62095;507,
+62332<1>62340;508,
+62369<1>62371;509,
+62411<1>62427;510,
+62440<1>62442;511,
+62590<1>62593;512,
+62609<1>62616;513,
+62839<1>62847;514,
+62884<1>62894;515,
+62906<1>0;516,
+62908<1>0;518,
+62942<1>62952;520,
+63219<2>0;521,63857;522,
+63858<1>65415;523,
+63920<1>63938;524,
+64048<2>64125;525,0;526,
+64094<1>0;527,
+64186<1>64193;528,
+64681<2>64739;529,0;530,
+64802<1>64811;531,
+65011<1>65415;532,
+65020<1>65031;533,
+65416<1>66944;534,
+65588<1>65588;535,
+65841<1>65862;536,
+66149<1>66160;537,
+66164<1>66168;538,
+66666<1>66670;539,
+66777<1>66787;540,
+66945<1>67887;541,
+67021<1>67036;542,
+67039<1>67043;543,
+67268<1>67279;544,
+67626<1>67627;545,
+67888<1>69140;546,
+68262<1>68275;547,
+68385<1>68389;548,
+69141<1>70204;549,
+69539<1>69543;550,
+69771<1>69780;551,
+70205<1>71478;552,
+70258<1>70282;553,
+70307<1>70322;554,
+70794<1>70811;555,
+71035<1>71037;556,
+71078<1>71080;557,
+71479<1>72239;558,
+72240<1>74563;559,
+72772<1>74014;560,
+72873<1>72876;561,
+73199<1>73205;562,
+73210<1>73215;563,
+73653<1>73658;564,
+73662<1>73672;565,
+!
+=2
+!
+=3
+!
+ *
+@@ details
+565
+1536;2:8
+1216;9:13
+0;2:3
+16384;14:14
+6144;15:15
+16384;14:14
+7168;16:16
+6144;15:15
+16384;14:14
+2048;15:15
+6144;15:15
+16384;14:14
+6656;16:16
+6144;15:15
+16384;14:14
+6656;16:16
+16384;14:14
+6144;17:17
+2560;18:21
+6336;22:25
+0;4:15
+2240;22:25
+0;16:27
+2048;16:16
+6144;17:17
+2560;15:15
+2048;15:15
+2048;15:15
+2560;26:31
+2048;15:15
+6144;15:15
+6144;16:16
+7168;15:15
+2048;32:38
+2048;15:15
+16384;14:14
+2048;16:16
+7168;15:15
+67135489;39:43
+12288;15:15
+6656;15:15
+6144;16:16
+6144;15:15
+6144;15:15
+2048;15:15
+6144;16:16
+6144;16:16
+16384;14:14
+7168;16:16
+6144;15:15
+6144;15:15
+7168;16:16
+6144;15:15
+16384;14:14
+2048;15:15
+6144;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+2048;15:15
+16384;14:14
+2048;16:16
+2240;22:25
+0;28:36
+2240;22:25
+0;37:47
+2752;22:25
+0;48:59
+67135489;44:55
+12288;56:67
+3072;68:69
+16384;14:14
+0;70:77
+6144;16:16
+1024;78:87
+16384;14:14
+2048;15:15
+6656;16:16
+2048;16:16
+6144;16:16
+6656;16:16
+16384;14:14
+2560;16:16
+3264;22:25
+0;60:70
+2240;22:25
+0;71:81
+6144;15:15
+6144;16:16
+6144;16:16
+6144;15:15
+6144;15:15
+16384;14:14
+67135489;44:55
+12288;56:67
+2048;68:69
+6144;15:15
+2048;15:15
+6144;15:15
+2048;15:15
+2048;16:16
+6144;68:69
+6144;15:15
+6144;16:16
+2048;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+6144;15:15
+0;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+5120;70:77
+6144;15:15
+2048;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+2048;16:16
+2048;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+6656;15:15
+6144;15:15
+6656;15:15
+6144;88:94
+4096;15:15
+6144;15:15
+6656;88:94
+0;15:15
+2048;16:16
+7168;16:16
+6144;16:16
+6144;15:15
+2048;15:15
+2560;15:15
+4096;15:15
+6144;68:69
+6144;15:15
+6144;15:15
+2048;15:15
+4096;15:15
+6144;68:69
+5120;15:15
+6144;15:15
+6144;15:15
+1216;95:99
+0;82:95
+16384;14:14
+6144;16:16
+1216;95:99
+0;96:106
+5312;95:99
+0;107:117
+16384;14:14
+3072;16:16
+6144;16:16
+2048;100:107
+1024;70:77
+2048;108:119
+6144;17:17
+6144;18:21
+5120;70:77
+6144;15:15
+6144;15:15
+2048;16:16
+6144;18:21
+2048;100:107
+6144;18:21
+2048;17:17
+2048;120:137
+6144;18:21
+6656;15:15
+6144;15:15
+2560;138:151
+1024;70:77
+6144;16:16
+6144;16:16
+16384;14:14
+6144;16:16
+6144;100:107
+0;152:160
+6144;16:16
+16384;14:14
+6144;15:15
+2048;15:15
+67135489;44:55
+12288;56:67
+4608;56:67
+4608;56:67
+4608;56:67
+6144;15:15
+6144;15:15
+6656;15:15
+67125761;44:55
+12288;56:67
+4608;56:67
+6656;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+6144;15:15
+2048;15:15
+2560;15:15
+2048;16:16
+6144;16:16
+6144;15:15
+2048;15:15
+6656;15:15
+2048;15:15
+6144;15:15
+4288;22:25
+0;118:131
+18944;14:14
+6144;16:16
+4608;18:21
+6144;100:107
+4096;16:16
+2048;18:21
+6144;161:167
+2048;17:17
+6144;16:16
+6144;18:21
+192;168:170
+0;132:140
+6144;171:174
+4608;17:17
+2048;15:15
+6144;18:21
+2048;15:15
+2048;17:17
+2048;15:15
+6144;15:15
+6144;16:16
+2048;15:15
+16384;14:14
+6144;15:15
+2048;16:16
+7168;16:16
+6144;16:16
+4608;16:16
+6144;15:15
+2048;15:15
+2048;15:15
+2048;15:15
+16384;14:14
+6144;16:16
+6144;16:16
+6144;15:15
+6144;16:16
+6144;15:15
+7168;15:15
+6144;16:16
+16384;14:14
+16384;175:193
+16384;14:14
+6144;16:16
+7168;16:16
+16384;14:14
+7168;15:15
+2048;17:17
+4096;18:21
+6144;16:16
+6144;16:16
+16384;14:14
+6144;16:16
+4096;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+0;194:205
+0;15:15
+6144;15:15
+0;194:205
+0;15:15
+3072;16:16
+6144;15:15
+6144;16:16
+2048;16:16
+4608;15:15
+6144;16:16
+2048;15:15
+4608;15:15
+6144;15:15
+2048;15:15
+2048;15:15
+2048;15:15
+512;15:15
+16384;14:14
+6144;16:16
+6144;15:15
+2048;15:15
+2048;15:15
+2048;15:15
+6144;16:16
+6144;16:16
+6144;16:16
+16384;14:14
+16384;14:14
+4608;15:15
+6144;15:15
+6144;16:16
+6144;15:15
+2048;16:16
+4096;70:77
+2240;22:25
+0;141:146
+2240;22:25
+0;147:156
+6144;15:15
+6144;16:16
+6144;15:15
+2048;15:15
+2048;15:15
+6144;16:16
+4608;16:16
+6144;16:16
+6144;16:16
+16384;14:14
+6144;15:15
+6144;15:15
+2048;15:15
+16384;70:77
+67125249;44:55
+12288;56:67
+4608;56:67
+6144;16:16
+3264;22:25
+0;157:166
+2240;22:25
+0;167:186
+67133441;44:55
+12288;56:67
+4608;56:67
+4608;15:15
+2048;15:15
+6144;16:16
+6144;15:15
+6144;16:16
+16384;14:14
+67133441;44:55
+12288;56:67
+4608;56:67
+6144;15:15
+2048;16:16
+6144;15:15
+6144;16:16
+6144;15:15
+4608;16:16
+6144;16:16
+512;16:16
+6144;15:15
+16384;14:14
+6144;16:16
+6144;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+6144;16:16
+6144;16:16
+2048;15:15
+2048;15:15
+6144;15:15
+6144;15:15
+2048;194:205
+0;15:15
+2048;194:205
+1024;15:15
+2048;15:15
+3072;15:15
+16384;14:14
+6144;16:16
+2048;16:16
+3072;15:15
+6144;15:15
+6144;16:16
+6144;16:16
+512;16:16
+6144;16:16
+3072;15:15
+6144;16:16
+6144;16:16
+6144;16:16
+6144;15:15
+2048;15:15
+16384;14:14
+6144;15:15
+6144;138:151
+16384;14:14
+1024;206:217
+16384;14:14
+7168;16:16
+6656;15:15
+6144;16:16
+2560;16:16
+6144;218:227
+6656;218:227
+4096;70:77
+6144;218:227
+6144;16:16
+7168;16:16
+6144;16:16
+5120;70:77
+67118081;39:43
+3072;16:16
+2048;16:16
+6144;16:16
+6144;16:16
+4096;16:16
+5120;70:77
+6656;16:16
+6144;228:229
+2048;16:16
+6144;15:15
+2048;16:16
+16384;14:14
+6144;16:16
+7168;15:15
+192;22:25
+0;187:193
+1024;70:77
+2048;15:15
+2048;15:15
+16384;14:14
+16384;14:14
+2560;15:15
+1024;78:87
+16384;14:14
+6144;16:16
+6144;15:15
+67139585;44:55
+14336;56:67
+4608;56:67
+4608;56:67
+4608;56:67
+2048;15:15
+6144;15:15
+2048;15:15
+16384;14:14
+6144;15:15
+0;16:16
+16384;14:14
+6656;16:16
+67139585;44:55
+14336;56:67
+4608;56:67
+4608;56:67
+2048;15:15
+6144;15:15
+6656;15:15
+2048;15:15
+16384;14:14
+67139585;44:55
+14336;56:67
+4608;56:67
+4608;56:67
+4608;56:67
+6144;15:15
+6144;15:15
+16384;14:14
+2048;16:16
+6144;15:15
+6144;15:15
+2048;15:15
+2560;15:15
+2048;15:15
+6144;15:15
+2048;15:15
+6144;15:15
+6656;15:15
+0;15:15
+2048;15:15
+16384;14:14
+6144;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+6144;15:15
+16384;14:14
+6656;15:15
+7168;15:15
+6656;15:15
+6656;15:15
+6144;15:15
+6144;16:16
+2560;16:16
+3072;16:16
+6144;88:94
+6656;15:15
+16384;14:14
+6144;16:16
+6144;16:16
+6144;15:15
+2048;16:16
+6656;15:15
+6144;16:16
+2048;16:16
+6144;16:16
+3072;16:16
+6336;22:25
+0;194:209
+2752;22:25
+0;210:225
+6144;16:16
+16384;206:217
+16384;14:14
+16384;14:14
+6656;15:15
+67139585;44:55
+14336;56:67
+4608;56:67
+4608;16:16
+67137537;44:55
+14336;56:67
+6656;16:16
+1024;70:77
+6144;16:16
+20480;14:14
+4608;15:15
+6144;16:16
+6656;15:15
+2048;15:15
+6144;16:16
+6144;15:15
+20480;14:14
+6144;15:15
+6144;15:15
+6656;15:15
+6656;16:16
+20480;14:14
+6144;15:15
+6144;15:15
+16384;14:14
+6144;16:16
+6144;16:16
+20480;14:14
+512;16:16
+4608;16:16
+6144;15:15
+6144;15:15
+6656;15:15
+16384;14:14
+1024;14:14
+4096;70:77
+6144;15:15
+4608;16:16
+6144;16:16
+4608;16:16
+6144;16:16
+ *
+%% ties
+&!2
+!
+&&2
+3~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+21~
+!
+&!3
+!
+&&2
+23~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+64~
+!
+&!3
+!
+&&2
+66~
+!
+&!3
+!
+&&2
+68~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+85~
+!
+&!3
+!
+&&2
+87~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+158~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&&2
+162~
+!
+&!3
+!
+&&2
+164~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+224~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+236~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+320~
+!
+&!3
+!
+&&2
+322~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+342~
+!
+&!3
+!
+&&2
+344~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+434~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&&2
+517~
+!
+&!3
+!
+&&2
+519~
+!
+&!3
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
+&!2
+!
