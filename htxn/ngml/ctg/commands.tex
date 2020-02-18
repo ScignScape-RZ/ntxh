@@ -657,8 +657,9 @@ $l: #2^^J%
 \titleformat*{\subsection}{\Large\bfseries}
 
 \let\OldSubsection\subsection
-\renewcommand\subsection[1]{
 
+%\renewcommand\subsection[1]{
+\newcommand\subsectionjj[1]{
 	\vspace{12pt}
 	
     %{\LARGE
@@ -702,7 +703,7 @@ $l: #2^^J%
 } 
 }
 
-\renewcommand{\subsection}[1]{\subss{#1}{#1}}
+%\renewcommand{\subsection}[1]{\subss{#1}{#1}}
 
 
 \newsavebox{\twolinebox}
@@ -713,7 +714,7 @@ $l: #2^^J%
 
 \newcommand{\twoline}{\usebox{\twolinebox}}
 
-\newcommand{\subsectiontwoline}[1]{\stwoline{#1}\subss{#1}{\twoline}}
+\newcommand{\subsectiontwolinejj}[1]{\stwoline{#1}\subss{#1}{\twoline}}
 
 \newcommand{\spsubsection}[1]{%
 \vspace{-.25em}

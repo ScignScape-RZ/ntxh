@@ -1197,6 +1197,9 @@ void HTXN_Document_8b::encode_latin1(QByteArray& src,
      held_state = 11;
      continue;
     }
+    code = static_127.value( {chr, held_state} );
+    if(code == 0)
+     continue;
    }
    else
    {

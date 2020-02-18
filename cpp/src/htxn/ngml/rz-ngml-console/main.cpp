@@ -51,7 +51,7 @@ void process_ngml_file(QString path)
  nol.export_latex(path + ".tex");
 }
 
-int main2(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
  QStringList ngml_files;
 
@@ -74,7 +74,7 @@ int main1(int argc, char* argv[])
 }
 
 
-int main(int argc, char* argv[])
+int main2(int argc, char* argv[])
 {
 // QApplication qapp(argc, argv);
 
