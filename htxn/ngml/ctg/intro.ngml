@@ -165,7 +165,9 @@ along a two-axis spectrum defined both by extralinguistic
 integration (or lack thereof) and by formal tractability 
 (or lack thereof), like so: (this is intended as an intuitive 
 sketch, not a formal model). 
-\begin{center}\usebox{\mxbox}\end{center}
+`center,
+`usebox ::-> mxbox ;;
+`center`
 I will elucidate the terms on that picture later.  Summarily, though, 
 I claim that `i.some` sentences evince logically straightforward 
 compositional patterns that can be analyzed `i.either` at the

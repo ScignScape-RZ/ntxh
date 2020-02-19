@@ -428,13 +428,13 @@ conceptually with other sentence elements, in a way that pulls it partly outside
 the possibility of multiple derived spaces.  This kind of space-building duality is 
 reflected in how the singular/plural alternative is underdetermined in a multi-space 
 context; consider Langacker's example: 
-\newsavebox{\Langackerboxi}
-\begin{lrbox}{\Langackerboxi}
+`newsavebox =-> Langackerboxi ;;
+`lrbox, ::-> Langackerboxi => 
 (repeating `ref<itm:threetimes>;)
-\end{lrbox}
+`lrbox`
 `sentenceList,
-`sentenceItem; `swl. -> ->- --> Three times, students asked an interesting question.}
-[\usebox{\Langackerboxi}]{sco
+`sentenceItem; `swl. -> ->- --> Three times, students asked an interesting question. ->>
+`usebox ::-> Langackerboxi ;; -> sco
 `swl`
 `sentenceItem; `swl. -> ->-  --> Three times, a student asked an interesting question. -> sco
 `swl`
@@ -476,7 +476,7 @@ phrase is the most useful stand-in for the whole
 controversy in Dependency Grammar).
 `p`
 
-\input{figure.tex} 
+`input<figure.tex>; 
 `p.
 Incorporating 
 type theory, we can skirt these issues by modeling phrases through the perspective of
@@ -917,7 +917,7 @@ Ronald Langacker, and Peter `Gardenfors; %-- along with, as
 `Gardenfors; points out, phenomenologists like Jean Petitot.`footnote.
 `Gardenfors; mentions Lakoff, Langacker, Talmy, Fauconnier, 
 and others alongside `q.a French semiotic tradition, 
-exemplified by [Jean-Pierre] Descl\'es ... and 
+exemplified by [Jean-Pierre] Descl|'e|s ... and 
 [Jean] Petitot-Cocorda ... which shares many features with the 
 American (mainly Californian) group` `cite ->> p. 4 -> Gardenfors ;;.  
 `footnote`  At the same time, Petitot also links with a 

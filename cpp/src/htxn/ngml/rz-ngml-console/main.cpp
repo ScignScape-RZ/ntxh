@@ -12,7 +12,7 @@
 #include "rz-ngml/output/rz-ngml-output-latex.h"
 #include "rz-ngml/output/rz-ngml-output-htxn.h"
 
-//?#include "rz-ngml/output/rz-ngml-output-xml.h"
+#include "rz-ngml/output/rz-ngml-output-xml.h"
 
 //?
 #include "rz-ngml/kernel/document/rz-ngml-folder.h"
@@ -49,9 +49,13 @@ void process_ngml_file(QString path)
  NGML_Output_Latex nol(ndoc);
  nol.set_htxn_document(&hxd);
  nol.export_latex(path + ".tex");
+
+ NGML_Output_XML nox(ndoc);
+ nox.set_htxn_document(&hxd);
+ nox.export_xml(path + ".xml");
 }
 
-int main(int argc, char* argv[])
+int main1(int argc, char* argv[])
 {
  QStringList ngml_files;
 
@@ -67,9 +71,9 @@ int main(int argc, char* argv[])
  return 0;
 }
 
-int main1(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
- process_ngml_file(DEFAULT_DIRECTORY "/ctg/ctg.ngml");
+ process_ngml_file(DEFAULT_DIRECTORY "/t1.ngml");
  return 0;
 }
 

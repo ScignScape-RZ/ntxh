@@ -34,12 +34,11 @@
 \setbeamercolor{subsection in head/foot}{parent=palette secondary,bg=}
 
 \colorlet{titleleft}{red!60!black}
-\colorlet{titlemiddlex}{orange!37!red}
-\colorlet{titlemiddle}{titlemiddlex!50}
+\colorlet{titlemiddlex}{orange!60!red}
+\colorlet{titlemiddle}{titlemiddlex!40}
 \colorlet{titleright}{gray!40}
 \colorlet{titlerightredx}{gray!80!red}
 \colorlet{titlerightred}{titlerightredx!40}
-
 
 \pgfdeclarehorizontalshading[titleleft,titlemiddle,titleright]      {beamer@frametitleshade}{\paperheight}{%
     color(0\paperwidth)=(titleleft);
@@ -50,15 +49,18 @@
   color(\paperwidth)=(titleright)
 }
 
-\colorlet{lorr}{orange!18!red}
+\colorlet{drr}{red!50!black}
+\colorlet{titlebmiddlex}{orange!24!drr}
+\colorlet{titlebmiddle}{titlebmiddlex!75}
+
 
 \pgfdeclarehorizontalshading[titleleft,titlemiddle,titleright]      {beamer@frametitleshadeb}{\paperheight}{%
     color(0)=(titleleft);
-    color(1)=(titleleft!80);
-    color(2)=(titleleft!70);
-    color(5)=(titleleft!60);
-    color(8)=(titleleft!50);
-    color(28)=(titlemiddle);
+    color(1)=(titleleft!50);
+    color(2)=(titleleft!85);
+    color(7)=(titleleft!75);
+    color(8)=(titleleft!70);
+    color(28)=(titlebmiddle);
    color(88)=(titleleft!80);
   color(0.4\paperwidth)=(titleleft!60);
   color(0.8\paperwidth)=(titlerightred);

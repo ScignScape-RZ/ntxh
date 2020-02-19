@@ -1,13 +1,28 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_OUTPUT_XML__H
 #define RZ_NGML_OUTPUT_XML__H
 
 #include <QStack>
+#include <QTextStream>
 
 #include "rz-ngml-output-base.h"
 #include "rz-ngml-output-event-handler.h"
 
+#include "global-types.h"
+
+#include "kans.h"
+
+KANS_CLASS_DECLARE(HTXN, HTXN_Node_Detail)
+USING_KANS(HTXN)
+
 #include "rzns.h"
+
 
 RZNS_(NGML)
 
@@ -15,10 +30,17 @@ class NGML_Graph;
 class NGML_Document;
 class NGML_Command_Callback;
 
-class NGML_Output_Xml : public NGML_Output_Base, private NGML_Output_Event_Handler
+class NGML_HTXN_Node;
+
+
+class NGML_Output_XML : public NGML_Output_Base, private NGML_Output_Event_Handler
 {
  QStack<caon_ptr<NGML_Node>> chiefs_;
 
+ QMap<HTXN_Node_Detail*, QString> end_names_;
+
+ QString htxn_acc_;
+ QTextStream htxn_qts_;
 
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();
@@ -31,7 +53,7 @@ class NGML_Output_Xml : public NGML_Output_Base, private NGML_Output_Event_Handl
 
 public:
 
- NGML_Output_Xml(NGML_Document& document);
+ NGML_Output_XML(NGML_Document& document);
 
  void export_xml(QString path = "..xml");
  void write_xml_output(QString& html_output);
@@ -43,11 +65,17 @@ public:
 // void generate_space_following_token(const NGML_Output_Bundle& b) Q_DECL_OVERRIDE;
 // void generate_token(const NGML_Output_Bundle& b, caon_ptr<NGML_Token> token) Q_DECL_OVERRIDE;
 // void generate_token_connection_descriptor(const NGML_Output_Bundle& b) Q_DECL_OVERRIDE;
+
  void generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+ void generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+
 
  void generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+ void generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
 
  void generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+ void generate_tag_body_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
+
  void generate_tag_command_auto_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
 };
