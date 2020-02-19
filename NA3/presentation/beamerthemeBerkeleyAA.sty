@@ -34,14 +34,35 @@
 \setbeamercolor{subsection in head/foot}{parent=palette secondary,bg=}
 
 \colorlet{titleleft}{red!60!black}
-\colorlet{titlemiddle}{red!40!}
+\colorlet{titlemiddlex}{orange!37!red}
+\colorlet{titlemiddle}{titlemiddlex!50}
 \colorlet{titleright}{gray!40}
+\colorlet{titlerightredx}{gray!80!red}
+\colorlet{titlerightred}{titlerightredx!40}
+
 
 \pgfdeclarehorizontalshading[titleleft,titlemiddle,titleright]      {beamer@frametitleshade}{\paperheight}{%
     color(0\paperwidth)=(titleleft);
     color(0.15\paperwidth)=(titleleft);
-  color(0.5\paperwidth)=(titlemiddle);
-  color(0.85\paperwidth)=(titleright);
+  color(0.84\paperwidth)=(titlerightred);
+  color(0.94\paperwidth)=(titlemiddle);
+  color(0.98\paperwidth)=(titleright);
+  color(\paperwidth)=(titleright)
+}
+
+\colorlet{lorr}{orange!18!red}
+
+\pgfdeclarehorizontalshading[titleleft,titlemiddle,titleright]      {beamer@frametitleshadeb}{\paperheight}{%
+    color(0)=(titleleft);
+    color(1)=(titleleft!80);
+    color(2)=(titleleft!70);
+    color(5)=(titleleft!60);
+    color(8)=(titleleft!50);
+    color(28)=(titlemiddle);
+   color(88)=(titleleft!80);
+  color(0.4\paperwidth)=(titleleft!60);
+  color(0.8\paperwidth)=(titlerightred);
+  color(0.9\paperwidth)=(titleright);
   color(\paperwidth)=(titleright)
 }
 
@@ -57,8 +78,9 @@
             \usebeamerfont{title in head/foot}\insertshorttitle
         \end{beamercolorbox}%
         \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
-            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
-            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+            \usebeamerfont{date in head/foot}%\insertshortdate{}
+\hspace*{2em}
+%            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
         \end{beamercolorbox}%
         }%
         \vskip-\beamer@tempdim%
@@ -67,7 +89,7 @@
         \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{20pt}
             \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
             \pgfusepath{clip}
-            \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+            \pgftext[left,base]{\pgfuseshading{beamer@frametitleshadeb}}
         \end{pgfpicture}
         \vskip-\beamer@tempdim%
         \box\beamer@tempbox%    
