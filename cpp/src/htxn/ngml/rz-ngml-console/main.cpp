@@ -51,6 +51,7 @@ void process_ngml_file(QString path)
  nol.export_latex(path + ".tex");
 
  NGML_Output_XML nox(ndoc);
+ nox.set_ngml_output_htxn(&noh);
  nox.set_htxn_document(&hxd);
  nox.export_xml(path + ".xml");
 }

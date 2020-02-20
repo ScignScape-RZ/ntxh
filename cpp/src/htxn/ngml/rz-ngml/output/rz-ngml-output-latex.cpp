@@ -270,12 +270,12 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
 
    if(cb->flags.has_around_callback)
    {
-    cb->around_callback(b.qts, b.node, b.cb);
+    cb->around_callback(b.qts, b.node, b.index, b.cb);
     break;
    }
 
    if(cb->flags.has_pre_callback)
-    cb->pre_callback(b.qts, b.node, b.cb);
+    cb->pre_callback(b.qts, b.node, b.index, b.cb);
    if(!cb->flags.pre_fallthrough)
     break;
   }
@@ -370,7 +370,7 @@ void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, 
  {
   if(b.cb->flags.has_post_callback)
   {
-   b.cb->post_callback(b.qts, b.node, b.cb);
+   b.cb->post_callback(b.qts, b.node, b.index, b.cb);
   }
   if(!b.cb->flags.post_fallthrough)
    return;

@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-output-html.h"
 
 #include "rz-ngml-output-event-generator.h"
@@ -26,29 +32,9 @@ NGML_Output_Html::NGML_Output_Html(NGML_Document& document)
 
 void NGML_Output_Html::init_callbacks()
 {
-#define RENAME_(name, tag, style_class) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag, #style_class) ); \
-
-
-#define RENAME_TAG(name, tag) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag) ); \
-
-
-#define NGML_CALLBACK_(name) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, \
-  NGML_Command_Callback::Callback_Map_type{{ \
-
-#define WHEN_(kind) \
- {#kind, [this](QTextStream& qts, caon_ptr<tNode> node, caon_ptr<NGML_Command_Callback> cb)
-
-#define _WHEN },
-
-#define _WHEN_(kind) _WHEN WHEN_(kind)
-
-#define _NGML_CALLBACK }}) );
+ #include "rz-ngml-output-callbacks-common.h"
 
  #include "rz-ngml-output-html.callbacks.h"
-
 }
 
 void NGML_Output_Html::insert_khif_link(QTextStream& qts)
@@ -117,11 +103,11 @@ caon_ptr<NGML_Command_Callback> NGML_Output_Html::check_command_callback(caon_pt
 
 
 void NGML_Output_Html::check_post_callback
- (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node)
+ (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node, u4 index)
 {
  if(cb->flags.has_post_callback)
  {
-  cb->post_callback(qts, node, cb);
+  cb->post_callback(qts, node, index, cb);
  }
 }
 
@@ -147,12 +133,12 @@ void NGML_Output_Html::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
    if(cb->flags.has_around_callback)
    {
-    cb->around_callback(b.qts, b.node, b.cb);
+    cb->around_callback(b.qts, b.node, b.index, b.cb);
     break;
    }
 
    if(cb->flags.has_pre_callback)
-    cb->pre_callback(b.qts, b.node, b.cb);
+    cb->pre_callback(b.qts, b.node, b.index, b.cb);
    if(!cb->flags.pre_fallthrough)
     break;
 
@@ -193,7 +179,7 @@ void NGML_Output_Html::generate_tag_command_leave(const NGML_Output_Bundle& b,
  {
   if(b.cb->flags.has_post_callback)
   {
-   b.cb->post_callback(b.qts, b.node, b.cb);
+   b.cb->post_callback(b.qts, b.node, b.index, b.cb);
   }
   if(!b.cb->flags.post_fallthrough)
    return;

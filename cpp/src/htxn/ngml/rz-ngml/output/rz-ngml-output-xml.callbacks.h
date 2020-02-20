@@ -17,7 +17,8 @@ _NGML_CALLBACK
 NGML_CALLBACK_(xmlsave_)
  WHEN_(pre)
  {
-  qDebug() << "xmlsave_";
+  //enter_xml_save(node);
+  //qDebug() << "xmlsave_";
   suppress_node_ = node;
  }
  _WHEN_(post)
@@ -63,10 +64,12 @@ _NGML_CALLBACK
 NGML_CALLBACK_(savedxml)
  WHEN_(around)
  {
-  qDebug() << "savedxml";
+  write_saved_xml(qts, node);
+  //qDebug() << "savedxml";
  }
  _WHEN
 _NGML_CALLBACK
+
 
 NGML_CALLBACK_(saved-xml)
  WHEN_(around)

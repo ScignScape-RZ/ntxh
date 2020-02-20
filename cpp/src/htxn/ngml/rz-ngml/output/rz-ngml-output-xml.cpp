@@ -7,6 +7,8 @@
 
 #include "rz-ngml-output-xml.h"
 
+#include "rz-ngml-output-htxn.h"
+
 #include "rz-ngml-output-event-generator.h"
 #include "kernel/document/rz-ngml-document.h"
 #include "kernel/output/rz-ngml-output-bundle.h"
@@ -33,7 +35,7 @@ USING_RZNS(NGML)
 
 NGML_Output_XML::NGML_Output_XML(NGML_Document& document)
  :  NGML_Output_Base(document), NGML_Output_Event_Handler(), 
-    suppress_node_(nullptr)
+    suppress_node_(nullptr), ngml_output_htxn_(nullptr)
 {
  htxn_qts_.setString(&htxn_acc_);
  init_callbacks();
@@ -114,13 +116,30 @@ caon_ptr<NGML_Command_Callback> NGML_Output_XML::check_command_callback(caon_ptr
 //}
 
 void NGML_Output_XML::check_post_callback
- (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node)
+ (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node, u4 index)
 {
  if(cb->flags.has_post_callback)
  {
-  cb->post_callback(qts, node, cb);
+  cb->post_callback(qts, node, index, cb);
  }
 }
+
+void NGML_Output_XML::write_saved_xml(QTextStream& qts, caon_ptr<NGML_Node> node)
+{
+ CAON_PTR_DEBUG(NGML_Node ,node)
+ if(caon_ptr<NGML_Tag_Command> ntc = node->ngml_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  QString arg = ntc->argument();
+  if(ngml_output_htxn_)
+  {
+   QString text;
+   ngml_output_htxn_->write_saved_xml(arg, text);
+   qts << text;
+  }
+ }
+}
+
 
 void NGML_Output_XML::generate_tag_command_auto_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 { 
@@ -215,12 +234,12 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, ca
 
    if(cb->flags.has_around_callback)
    {
-    cb->around_callback(b.qts, b.node, b.cb);
+    cb->around_callback(b.qts, b.node, b.index, b.cb);
     break;
    }
 
    if(cb->flags.has_pre_callback)
-    cb->pre_callback(b.qts, b.node, b.cb);
+    cb->pre_callback(b.qts, b.node, b.index, b.cb);
    if(!cb->flags.pre_fallthrough)
     break;
   }
@@ -317,7 +336,7 @@ void NGML_Output_XML::generate_tag_command_leave(const NGML_Output_Bundle& b,
  {
   if(b.cb->flags.has_post_callback)
   {
-   b.cb->post_callback(b.qts, b.node, b.cb);
+   b.cb->post_callback(b.qts, b.node, b.index, b.cb);
   }
   if(!b.cb->flags.post_fallthrough)
    return;

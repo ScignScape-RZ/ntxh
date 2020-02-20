@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_OUTPUT_HTML__H
 #define RZ_NGML_OUTPUT_HTML__H
 
@@ -6,6 +12,8 @@
 
 #include "rz-ngml-output-base.h"
 #include "rz-ngml-output-event-handler.h"
+
+#include "global-types.h"
 
 #include "rzns.h"
 
@@ -24,7 +32,8 @@ class NGML_Output_Html : public NGML_Output_Base, private NGML_Output_Event_Hand
  void init_callbacks();
 
  void check_post_callback(QTextStream& qts,
-  caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node);
+  caon_ptr<NGML_Command_Callback> cb, 
+  caon_ptr<tNode> node, u4 index);
 
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 

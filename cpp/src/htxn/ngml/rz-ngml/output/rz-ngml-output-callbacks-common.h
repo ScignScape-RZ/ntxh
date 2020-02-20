@@ -21,8 +21,12 @@
  callbacks_[QSTRING_STRIP_HYPHEN(#name)] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, \
   NGML_Command_Callback::Callback_Map_type{{ \
 
+
+// //  Should b be captured, or an argument?
+
 #define WHEN_(kind) \
- {#kind, [this](QTextStream& qts, caon_ptr<tNode> node, caon_ptr<NGML_Command_Callback> cb)
+ {#kind, [this](QTextStream& qts, caon_ptr<tNode> node, \
+ u4 index, caon_ptr<NGML_Command_Callback> cb)
 
 #define _WHEN },
 

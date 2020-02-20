@@ -37,14 +37,6 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
 
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
- void init_callbacks();
-
- void check_post_callback(QTextStream& qts,
-  caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node);
-
- caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
-
- HTXN_Node_Detail::Wrap_Mode_Indicator_Codes get_wmic(NGML_Tag_Command& ntc);
 
  QString tag_command_layer_;
  QString tag_command_arg_layer_;
@@ -60,6 +52,9 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
  Glyph_Layer_8b* main_gl_;
 
  QMap<QString, QPair<u4, u4>> tag_command_spans_;
+
+ QMap<QString, QPair<Glyph_Layer_8b*, QPair<u4, u4>>> xml_save_spans_; 
+ QStack<QString> xml_save_stack_; 
 
  QMap<u4, QPair<u4, u4>> range_starts_;
 
@@ -77,6 +72,14 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  u4 split_arg_layer_arguments(QString arg, QStringList& args);
 
+ void init_callbacks();
+
+ void check_post_callback(QTextStream& qts,
+  caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node, u4 index);
+
+ caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+ HTXN_Node_Detail::Wrap_Mode_Indicator_Codes get_wmic(NGML_Tag_Command& ntc);
+
  void tie_multi_optional_arg_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
  void tie_multi_mandatory_arg_layer(const NGML_Output_Bundle& b, NGML_Tag_Command& ntc);
 
@@ -85,6 +88,8 @@ class NGML_Output_HTXN : public NGML_Output_Base, private NGML_Output_Event_Hand
 
  void check_whitespace_merge(NGML_Tag_Command& ntc);
 
+ void enter_xml_save(caon_ptr<NGML_Node> node, u4 index);
+ void leave_xml_save(u4 index);
 
 public:
 
@@ -94,6 +99,8 @@ public:
  void write_htxne_output(QString& html_output);
 
  void write_latex_out(QString path);
+
+ void write_saved_xml(QString arg, QString& text);
 
  void generate(QTextStream& qts);
 

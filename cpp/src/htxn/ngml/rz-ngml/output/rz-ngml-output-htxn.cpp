@@ -67,30 +67,59 @@ HTXN_Document_8b* htxn_document)
 
 void NGML_Output_HTXN::init_callbacks()
 {
-#define RENAME_(name, tag, style_class) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag, #style_class) ); \
-
-
-#define RENAME_TAG(name, tag) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag) ); \
-
-
-#define NGML_CALLBACK_(name) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, \
-  NGML_Command_Callback::Callback_Map_type{{ \
-
-#define WHEN_(kind) \
- {#kind, [this](QTextStream& qts, caon_ptr<tNode> node, caon_ptr<NGML_Command_Callback> cb)
-
-#define _WHEN },
-
-#define _WHEN_(kind) _WHEN WHEN_(kind)
-
-#define _NGML_CALLBACK }}) );
+ #include "rz-ngml-output-callbacks-common.h"
 
  #include "rz-ngml-output-htxn.callbacks.h"
-
 }
+
+void NGML_Output_HTXN::leave_xml_save(u4 index)
+{
+ QString key = xml_save_stack_.pop();
+ QPair<Glyph_Layer_8b*, QPair<u4, u4>>& pr = xml_save_spans_[key];
+ if(pr.first == main_gl_)
+   pr.second.second = index;
+ else if(pr.first == tag_command_arg_gl_)
+   pr.second.second = tag_command_arg_index_;
+}
+
+void NGML_Output_HTXN::write_saved_xml(QString arg, QString& text)
+{
+ auto it = xml_save_spans_.find(arg);
+ if(it == xml_save_spans_.end())
+   return;
+ Glyph_Layer_8b* gl = it->first;
+ if(!gl)
+   return;
+ QTextStream qts(&text);
+ htxn_document_->write_minimal_xml_out(gl, it->second.first, 
+   it->second.second, qts);
+}
+
+void NGML_Output_HTXN::enter_xml_save(caon_ptr<NGML_Node> node, u4 index)
+{
+ CAON_PTR_DEBUG(NGML_Node ,node)
+ QStringList args;
+ if(caon_ptr<NGML_Tag_Command> ntc = node->ngml_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  QString arg = ntc->argument();
+  args = arg.split(':');  
+ }
+ if(args.size() >= 2)
+ {
+  if(args[0] == "main")
+    xml_save_spans_[args[1]] = {main_gl_, {index, 0}};
+  else if(args[0] == "arg")
+    xml_save_spans_[args[1]] = {tag_command_arg_gl_, {tag_command_arg_index_, 0}};
+  xml_save_stack_.push(args[1]);
+ }
+ else if(args.size() == 1)
+ {
+  xml_save_spans_[args[0]] = {main_gl_, {index, 0}};
+  xml_save_stack_.push(args[0]);
+ }
+}
+
 
 void NGML_Output_HTXN::write_htxne_output(QString& htxne_output)
 {
@@ -253,11 +282,11 @@ void NGML_Output_HTXN::check_whitespace_merge(NGML_Tag_Command& ntc)
 
 
 void NGML_Output_HTXN::check_post_callback
- (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node)
+ (QTextStream& qts, caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node, u4 index)
 {
  if(cb->flags.has_post_callback)
  {
-  cb->post_callback(qts, node, cb);
+  cb->post_callback(qts, node, index, cb);
  }
 }
 
@@ -421,12 +450,12 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
    if(cb->flags.has_around_callback)
    {
-    cb->around_callback(b.qts, b.node, b.cb);
+    cb->around_callback(b.qts, b.node, b.index, b.cb);
     break;
    }
 
    if(cb->flags.has_pre_callback)
-    cb->pre_callback(b.qts, b.node, b.cb);
+    cb->pre_callback(b.qts, b.node, b.index, b.cb);
    if(!cb->flags.pre_fallthrough)
     break;
   }
@@ -588,7 +617,7 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  {
   if(b.cb->flags.has_post_callback)
   {
-   b.cb->post_callback(b.qts, b.node, b.cb);
+   b.cb->post_callback(b.qts, b.node, b.index, b.cb);
   }
   if(!b.cb->flags.post_fallthrough)
    return;

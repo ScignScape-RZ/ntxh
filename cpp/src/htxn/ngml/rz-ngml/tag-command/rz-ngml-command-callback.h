@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef RZ_NGML_COMMAND_CALLBACK__H
 #define RZ_NGML_COMMAND_CALLBACK__H
 
@@ -6,6 +12,8 @@
 #include "flags.h"
 
 #include "relae-graph/relae-caon-ptr.h"
+
+#include "global-types.h"
 
 #include <QString>
 #include <QMap>
@@ -37,9 +45,9 @@ private:
 
  QString command_name_trigger_;
 
- std::function<void(QTextStream&, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb)> pre_callback_;
- std::function<void(QTextStream&, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb)> post_callback_;
- std::function<void(QTextStream&, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb)> around_callback_;
+ std::function<void(QTextStream&, caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb)> pre_callback_;
+ std::function<void(QTextStream&, caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb)> post_callback_;
+ std::function<void(QTextStream&, caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb)> around_callback_;
 
  QString rename_tag_;
  QString rename_style_class_;
@@ -55,7 +63,7 @@ public:
   flags.has_rename_style_class = true;
  }
 
- typedef QMap<QString, std::function<void(QTextStream&, caon_ptr<NGML_Node>, caon_ptr<NGML_Command_Callback> cb)> >
+ typedef QMap<QString, std::function<void(QTextStream&, caon_ptr<NGML_Node>, u4 index, caon_ptr<NGML_Command_Callback> cb)> >
   Callback_Map_type;
 
  NGML_Command_Callback(QString command_name);
@@ -71,9 +79,9 @@ public:
 
 
 
- void pre_callback(QTextStream& qts, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb) const;
- void post_callback(QTextStream& qts, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb) const;
- void around_callback(QTextStream& qts, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb) const;
+ void pre_callback(QTextStream& qts, caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb) const;
+ void post_callback(QTextStream& qts, caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb) const;
+ void around_callback(QTextStream& qts, caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb) const;
 
 
 };

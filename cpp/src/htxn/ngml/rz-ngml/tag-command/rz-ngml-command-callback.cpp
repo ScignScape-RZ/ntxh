@@ -1,4 +1,10 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include "rz-ngml-command-callback.h"
 
 #include "rzns.h"
@@ -30,10 +36,9 @@ NGML_Command_Callback::NGML_Command_Callback(QString command_name,
 }
 
 
-
-
 NGML_Command_Callback::NGML_Command_Callback(QString command_name,
-  QMap<QString, std::function<void(QTextStream&, caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb)> > callbacks)
+  QMap<QString, std::function<void(QTextStream&, caon_ptr<NGML_Node> node, 
+u4 index, caon_ptr<NGML_Command_Callback> cb)> > callbacks)
  : Flags(0), command_name_trigger_(command_name)
 {
  absorb(callbacks);
@@ -45,21 +50,21 @@ NGML_Command_Callback::NGML_Command_Callback(QString command_name)
 }
 
 void NGML_Command_Callback::pre_callback(QTextStream& qts, caon_ptr<NGML_Node> node,
- caon_ptr<NGML_Command_Callback> cb) const
+ u4 index, caon_ptr<NGML_Command_Callback> cb) const
 {
- pre_callback_(qts, node, cb);
+ pre_callback_(qts, node, index, cb);
 }
 
 void NGML_Command_Callback::post_callback(QTextStream& qts,
- caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb) const
+ caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb) const
 {
- post_callback_(qts, node, cb);
+ post_callback_(qts, node, index, cb);
 }
 
 void NGML_Command_Callback::around_callback(QTextStream& qts,
- caon_ptr<NGML_Node> node, caon_ptr<NGML_Command_Callback> cb) const
+ caon_ptr<NGML_Node> node, u4 index, caon_ptr<NGML_Command_Callback> cb) const
 {
- around_callback_(qts, node, cb);
+ around_callback_(qts, node, index, cb);
 }
 
 void NGML_Command_Callback::absorb(Callback_Map_type callbacks)

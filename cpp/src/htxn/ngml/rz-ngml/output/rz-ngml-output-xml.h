@@ -31,7 +31,7 @@ class NGML_Document;
 class NGML_Command_Callback;
 
 class NGML_HTXN_Node;
-
+class NGML_Output_HTXN;
 
 class NGML_Output_XML : public NGML_Output_Base, private NGML_Output_Event_Handler
 {
@@ -44,19 +44,24 @@ class NGML_Output_XML : public NGML_Output_Base, private NGML_Output_Event_Handl
  
  caon_ptr<tNode> suppress_node_;
 
+ NGML_Output_HTXN* ngml_output_htxn_;
 
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();
 
  void check_post_callback(QTextStream& qts,
-  caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node);
+  caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node, u4 index);
 
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+
+ void write_saved_xml(QTextStream& qts, caon_ptr<NGML_Node> node);
 
 
 public:
 
  NGML_Output_XML(NGML_Document& document);
+
+ ACCESSORS(NGML_Output_HTXN* ,ngml_output_htxn)
 
  void export_xml(QString path = "..xml");
  void write_xml_output(QString& html_output);

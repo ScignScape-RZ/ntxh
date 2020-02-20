@@ -9,13 +9,33 @@ NGML_CALLBACK_(analysis-package)
 _NGML_CALLBACK
 
 
- NGML_CALLBACK_(fnl)
-  WHEN_(around)
-  {
-   qts << '\n';
-  }
-  _WHEN
- _NGML_CALLBACK
+NGML_CALLBACK_(xmlsave_)
+ WHEN_(pre)
+ {
+  enter_xml_save(node, index);
+  //qDebug() << "xmlsave_";
+  //suppress_node_ = node;
+ }
+ _WHEN_(post)
+ {
+ }
+ _WHEN
+_NGML_CALLBACK
+
+
+NGML_CALLBACK_(_xmlsave)
+ WHEN_(pre)
+ {
+  leave_xml_save(index);
+  //qDebug() << "xmlsave_";
+  //suppress_node_ = node;
+ }
+ _WHEN_(post)
+ {
+ }
+ _WHEN
+_NGML_CALLBACK
+
 
 
 
