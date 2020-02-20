@@ -190,7 +190,7 @@ QString Standard_Diacritic_GlyphDeck::get_xml_stem(u1 gp)
 }
 
 
-QString Standard_Diacritic_GlyphDeck::get_xml_out(u1 gp, char cue)
+QString Standard_Diacritic_GlyphDeck::get_xml_out(u2 gp, char cue)
 {
  //Standard_Diacritic_GlyphDeck::
 
@@ -669,6 +669,24 @@ QString Standard_Diacritic_GlyphDeck::get_latex_out(u2 gp, char cue)
  get_latex_out(code, gp, scope, cue, result);
  return result;
 }
+
+#ifdef HIDE
+QString Standard_Diacritic_GlyphDeck::get_xml_out(u2 gp, char cue)
+{
+ QString result;
+ u1 scope = (gp >> 6) + 1;
+ u1 code = gp;
+ code &= 63;
+ code *= 100;
+ code += (scope * 10000);
+ code += get_cue_code(cue);
+ get_xml_out(code, gp, scope, cue, result);
+ return result;
+}
+#endif //def HIDE
+
+
+
 
 QString Standard_Diacritic_GlyphDeck::get_qstring_out(u1 gp, char cue)
 {

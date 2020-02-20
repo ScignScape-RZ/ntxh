@@ -30,6 +30,7 @@ public:
   (u2 gp, QChar cue, QChar& rep, QString& full_rep) = 0;
 
  virtual QString get_latex_out(u2 gp, char cue) = 0;
+ virtual QString get_xml_out(u2 gp, char cue) = 0;
 };
 
 _KANS(HTXN)

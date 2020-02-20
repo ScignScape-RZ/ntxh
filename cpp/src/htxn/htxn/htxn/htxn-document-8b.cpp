@@ -333,7 +333,6 @@ void HTXN_Document_8b::write_minimal_latex_out(u4 layer_code,
  write_minimal_latex_out(gl, range.first, range.second, qts);
 }
 
-
 void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts)
 {
  Glyph_Argument_Package gap;
@@ -350,9 +349,32 @@ void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 
     qts << gap.chr;
   gap.reset();
  }
-
 }
 
+void HTXN_Document_8b::write_minimal_xml_out(u4 layer_code,
+  const QPair<u4, u4>& range, QTextStream& qts)
+{
+ Glyph_Layer_8b* gl = value(layer_code - 1);
+ write_minimal_xml_out(gl, range.first, range.second, qts);
+}
+
+void HTXN_Document_8b::write_minimal_xml_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts)
+{
+ Glyph_Argument_Package gap;
+ Glyph_Argument_Package cmdgap;
+ gap.internal_deck = current_deck_;
+ cmdgap.internal_deck = current_deck_;
+
+ for(u4 i = enter; i <= leave; ++i)
+ {
+  this->Glyph_Layers_8b::get_xml_out(*gl, i, gap);
+  if(gap.chr.isNull())
+    qts << gap.str;
+  else
+    qts << gap.chr;
+  gap.reset();
+ }
+}
 
 void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
   u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd)

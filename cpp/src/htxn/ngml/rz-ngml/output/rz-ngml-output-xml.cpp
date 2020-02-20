@@ -16,16 +16,23 @@
 #include "kernel/rz-ngml-root.h"
 #include "tag-command/rz-ngml-command-callback.h"
 
+#include "ngml-htxn/ngml-htxn-node.h"
+#include "htxn/htxn-document-8b.h"
+
 #include <QFile>
 #include <QFileInfo>
 
 #include "rzns.h"
 
+#define CHECK_SUPPRESS_NODE if(suppress_node_) return;
+
+
 USING_RZNS(NGML)
 
 
 NGML_Output_XML::NGML_Output_XML(NGML_Document& document)
- : NGML_Output_Base(document), NGML_Output_Event_Handler()
+ :  NGML_Output_Base(document), NGML_Output_Event_Handler(), 
+    suppress_node_(nullptr)
 {
  htxn_qts_.setString(&htxn_acc_);
  init_callbacks();
@@ -135,12 +142,37 @@ void NGML_Output_XML::check_post_callback
 }
 
 void NGML_Output_XML::generate_tag_command_auto_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
-{
+{ 
+ CHECK_SUPPRESS_NODE
  b.qts << "/>";
 }
 
-void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+void NGML_Output_XML::generate_tag_command_argument(const NGML_Output_Bundle& b,
+  NGML_HTXN_Node& nhn)
 {
+ CHECK_SUPPRESS_NODE
+ HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
+ b.qts << (nd->flags.optional? "<opt>" : "<man>");
+ htxn_document_->write_minimal_xml_out(nd->get_layer(), nd->enter, nd->leave, b.qts);
+ b.qts << (nd->flags.optional? "<opt>" : "<man>");
+}
+
+void NGML_Output_XML::check_generate_tag_command_argument(const NGML_Output_Bundle& b,
+  NGML_Tag_Command& ntc)
+{
+ CHECK_SUPPRESS_NODE
+ if(NGML_HTXN_Node* nhn = ntc.arg_ngml_htxn_node())
+   generate_tag_command_argument(b, *nhn);
+
+ ntc.each_arg_ngml_htxn_node([&b, this](NGML_HTXN_Node* nhn)
+ {
+  generate_tag_command_argument(b, *nhn);
+ });
+}
+
+void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{ 
+ CHECK_SUPPRESS_NODE
  HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
  Glyph_Layer_8b* gl = nd->get_layer();
 
@@ -167,13 +199,13 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, NG
   }
   else
   {
-   b.qts << "<man>;
+   b.qts << "<man>";
 //?   reset_active_gap_code();
   }
  }
  else
  {
-  htxn_document_->write_minimal_latex_out(gl, nd->enter,
+  htxn_document_->write_minimal_xml_out(gl, nd->enter,
     nd->leave, htxn_qts_);
 
   b.qts << '<' << htxn_acc_;// << '}';
@@ -185,7 +217,8 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, NG
 
 
 void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
-{
+{ 
+ CHECK_SUPPRESS_NODE
  CAON_PTR_B_DEBUG(NGML_Node ,node)
  chiefs_.push(b.node);
  switch(b.connection_descriptor)
@@ -217,7 +250,7 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, ca
    if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
    {
     generate_tag_command_entry(b, *nhn);
-//?    check_generate_tag_command_argument(b, *ntc);
+    check_generate_tag_command_argument(b, *ntc);
 //?    reset_active_gap_code();
     break;
    }
@@ -240,8 +273,8 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, ca
  }
 }
 
-void NGML_Output_Latex::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
-{
+void NGML_Output_XML::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{ 
  HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
 
  if(nd->flags.is_ghosted)
@@ -309,6 +342,7 @@ void NGML_Output_XML::generate_tag_command_leave(const NGML_Output_Bundle& b,
    return;
  }
 
+ CHECK_SUPPRESS_NODE
  if(htxn_document_)
  {
   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
@@ -328,6 +362,7 @@ void NGML_Output_XML::generate_tag_command_leave(const NGML_Output_Bundle& b,
 
 void NGML_Output_XML::generate_tag_body_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
 {
+ CHECK_SUPPRESS_NODE
  HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
 
 #ifdef HIDE
@@ -369,7 +404,8 @@ void NGML_Output_XML::generate_tag_body_leave(const NGML_Output_Bundle& b, NGML_
 }
 
 void NGML_Output_XML::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
-{
+{ 
+ CHECK_SUPPRESS_NODE
  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
 
  if(htxn_document_)
@@ -383,5 +419,12 @@ void NGML_Output_XML::generate_tag_body_leave(const NGML_Output_Bundle& b, caon_
 
  b.qts << '>';
  ntc->write_whitespace(b.qts);
+}
+
+void NGML_Output_XML::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
+{
+ CHECK_SUPPRESS_NODE
+ htxn_document_->write_minimal_xml_out(nhn.layer_code(), nhn.range(), b.qts);
+ //? reset_active_gap_code();
 }
 

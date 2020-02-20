@@ -306,6 +306,15 @@ QChar Standard_GlyphDeck_8b::get_text_default(u1 cue)
 void Standard_GlyphDeck_8b::get_xml_nondia(u1 gp, Glyph_Argument_Package& gap)
 {
  // gap.chr = get_nondiacritic_default(gp & 63);
+ static QMap<u1, QString> static_map {
+   {Alt_Interpretation_Codes::Boundary, {}},
+   {Alt_Interpretation_Codes::SnDash, "&emdash;"},
+ };
+ auto it = static_map.find(gp);
+ if(it == static_map.end())
+   gap.chr = get_nondiacritic_default(gp & 63);
+ else
+   gap.str = *it;
 }
 
 
@@ -538,7 +547,16 @@ void Standard_GlyphDeck_8b::get_latex(u1 gp, Glyph_Argument_Package& gap)
 
 void Standard_GlyphDeck_8b::get_xml(u1 gp, Glyph_Argument_Package& gap)
 {
+ Standard_GlyphPack_8b code{gp}; 
+ u1 kind, cue;
+ std::tie(kind, cue) = code.get_xml_cue();
 
+ switch(kind)
+ {
+ case 0: gap.chr = get_text_default(cue); break;
+// case 1: case 3: case 4: dia = cue; return QChar();
+// case 2:
+ }
 }
 
 //void Standard_GlyphDeck_8b::get_xml_dia(u1 gp, Glyph_Argument_Package& gap)

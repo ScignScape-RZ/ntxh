@@ -41,6 +41,9 @@ class NGML_Output_XML : public NGML_Output_Base, private NGML_Output_Event_Handl
 
  QString htxn_acc_;
  QTextStream htxn_qts_;
+ 
+ caon_ptr<tNode> suppress_node_;
+
 
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();
@@ -69,6 +72,10 @@ public:
  void generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
  void generate_tag_command_entry(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
 
+ void generate_tag_command_argument(const NGML_Output_Bundle& b,
+   NGML_HTXN_Node& nhn);
+ void check_generate_tag_command_argument(const NGML_Output_Bundle& b,
+   NGML_Tag_Command& ntc);
 
  void generate_tag_command_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
  void generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
@@ -77,6 +84,8 @@ public:
  void generate_tag_body_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn);
 
  void generate_tag_command_auto_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
+
+ void generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn) Q_DECL_OVERRIDE;
 
 };
 

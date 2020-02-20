@@ -117,8 +117,30 @@ void Glyph_Layers_8b::get_qstring_out(Glyph_Vector_8b& gv,
 
 }
 
-//void Glyph_Layers_8b::get_latex(u4 layer, u4 index,
-//  Glyph_Argument_Package& gap)
+void Glyph_Layers_8b::get_xml_out(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
+{
+ GlyphDeck_Base_8b& deck = *gap.internal_deck;
+ gv.check_external(index, deck, gap);
+ if(gap.flags.normal)
+   deck.get_xml((u1)gap.glyph_code, gap);
+ else if(gap.flags.confirmed_non_diacritic)
+ {
+  deck.get_xml_nondia((u1)gap.glyph_code, gap);
+ }
+ else if(gap.flags.confirmed_external_diacritic)
+ {
+  u2 edc = gap.external_deck_code;
+  u2 code = gap.external_diacritic_code;
+  Diacritic_GlyphDeck_Base* dia = 
+    decks_by_id_[edc - 1].dia;
+   
+  char cc = deck.get_char_code((u1)gap.glyph_code);
+  
+  gap.str = dia->get_xml_out(code, cc);
+ }
+}
+
 
 void Glyph_Layers_8b::get_latex_command_out(Glyph_Vector_8b& gv,
   u4 index, Glyph_Argument_Package& gap)

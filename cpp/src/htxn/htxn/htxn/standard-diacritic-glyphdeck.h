@@ -37,6 +37,7 @@ public:
    QChar cue, QChar& rep, QString& full_rep) Q_DECL_OVERRIDE;
  
  QString get_latex_out(u2 gp, char cue) Q_DECL_OVERRIDE;
+ QString get_xml_out(u2 gp, char cue) Q_DECL_OVERRIDE;
 
  u1 get_representation(u1 gp, QChar& rep); 
  u1 get_code(char cue, u1 scope); 
@@ -52,8 +53,11 @@ public:
 
  void get_latex_out(u2 code, u1 gp, u1 scope, char cue, QString& result); 
 
+//? void get_xml_out(u2 code, u1 gp, u1 scope, char cue, QString& result); 
+
  QString get_htxne_out(u1 gp, char cue);
- QString get_xml_out(u1 gp, char cue);
+
+//? QString get_xml_out(u1 gp, char cue);
 
  QString get_xml_stem(u1 gp);
 

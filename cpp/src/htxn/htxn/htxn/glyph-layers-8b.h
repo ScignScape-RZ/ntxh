@@ -59,6 +59,9 @@ public:
  void get_latex_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 
+ void get_xml_out(Glyph_Vector_8b& gv,
+   u4 index, Glyph_Argument_Package& gap);
+
  void get_latex_command_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 

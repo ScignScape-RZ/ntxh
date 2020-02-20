@@ -39,7 +39,16 @@ std::pair<u1, u1> Standard_GlyphPack_8b::get_latex_cue()
 
 std::pair<u1, u1> Standard_GlyphPack_8b::get_xml_cue()
 {
-
+ if( (code_ & 128) > 0 )
+ {
+  return {2, code_ & 127 };
+ }
+ if( (code_ & 64) > 0 )
+ {
+  u1 c = code_ & 63;
+  return {1, c};
+ }
+ return {0, code_};
 }
 
 u1 Standard_GlyphPack_8b::get_diacritic_code_cue()

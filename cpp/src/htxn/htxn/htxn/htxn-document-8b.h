@@ -101,6 +101,10 @@ public:
  void write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts);
  void write_minimal_latex_out(u4 layer_code, const QPair<u4, u4>& range, QTextStream& qts);
 
+ void write_minimal_xml_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts);
+ void write_minimal_xml_out(u4 layer_code, const QPair<u4, u4>& range, QTextStream& qts);
+
+
  void get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
    u4 enter, u4 leave, QString& result, HTXN_Node_Detail* nd = nullptr);
 

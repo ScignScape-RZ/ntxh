@@ -8,6 +8,37 @@ NGML_CALLBACK_(analysis-package)
  _WHEN
 _NGML_CALLBACK
 
+NGML_CALLBACK_(documentclass)
+ WHEN_(pre)
+ {
+  suppress_node_ = node;
+ }
+ _WHEN_(post)
+ {
+  suppress_node_ = nullptr;
+ }
+ _WHEN
+_NGML_CALLBACK
+
+NGML_CALLBACK_(document)
+ WHEN_(pre)
+ {
+ }
+ _WHEN_(post)
+ {
+ }
+ _WHEN
+_NGML_CALLBACK
+
+
+NGML_CALLBACK_(include)
+ WHEN_(around)
+ {
+ }
+ _WHEN
+_NGML_CALLBACK
+
+
 
  NGML_CALLBACK_(fnl)
   WHEN_(around)
