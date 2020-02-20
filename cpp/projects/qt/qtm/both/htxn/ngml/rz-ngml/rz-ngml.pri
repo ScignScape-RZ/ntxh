@@ -73,8 +73,10 @@ HEADERS += \
  $$SRC_DIR/output/rz-ngml-output-event-handler.h \
  $$SRC_DIR/output/rz-ngml-output-event-generator.h \
  $$SRC_DIR/output/rz-ngml-output-latex.h \
+ $$SRC_DIR/output/rz-ngml-output-callbacks-common.h \
  $$SRC_DIR/output/rz-ngml-output-html.callbacks.h \
  $$SRC_DIR/output/rz-ngml-output-latex.callbacks.h \
+ $$SRC_DIR/output/rz-ngml-output-xml.callbacks.h \
  $$SRC_DIR/output/rz-ngml-output-html.h \
  $$SRC_DIR/output/rz-ngml-output-xml.h \
  $$SRC_DIR/output/rz-ngml-output-htxn.h \

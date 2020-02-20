@@ -14,58 +14,25 @@ NGML_CALLBACK_(analysis-package)
 _NGML_CALLBACK
 
 
-NGML_CALLBACK_(xmlsave_)
- WHEN_(pre)
- {
-  //enter_xml_save(node);
-  //qDebug() << "xmlsave_";
-  suppress_node_ = node;
- }
- _WHEN_(post)
- {
- }
- _WHEN
-_NGML_CALLBACK
-
-
 NGML_CALLBACK_(xml-save_)
  WHEN_(pre)
  {
-  qDebug() << "xml-save_";
   suppress_node_ = node;
  }
  _WHEN_(post)
  {
- }
- _WHEN
-_NGML_CALLBACK
-
-
-NGML_CALLBACK_(_xmlsave)
- WHEN_(around)
- {
-  qDebug() << "_xmlsave";
-  suppress_node_ = nullptr;
  }
  _WHEN
 _NGML_CALLBACK
 
 
 NGML_CALLBACK_(_xml-save)
- WHEN_(around)
+ WHEN_(pre)
  {
-  qDebug() << "_xml-save";
   suppress_node_ = nullptr;
  }
- _WHEN
-_NGML_CALLBACK
-
-
-NGML_CALLBACK_(savedxml)
- WHEN_(around)
+ _WHEN_(post)
  {
-  write_saved_xml(qts, node);
-  //qDebug() << "savedxml";
  }
  _WHEN
 _NGML_CALLBACK
@@ -74,7 +41,7 @@ _NGML_CALLBACK
 NGML_CALLBACK_(saved-xml)
  WHEN_(around)
  {
-  qDebug() << "saved-xml";
+  write_saved_xml(qts, node);
  }
  _WHEN
 _NGML_CALLBACK

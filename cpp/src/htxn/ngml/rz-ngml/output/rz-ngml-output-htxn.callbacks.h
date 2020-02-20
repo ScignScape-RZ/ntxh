@@ -9,7 +9,7 @@ NGML_CALLBACK_(analysis-package)
 _NGML_CALLBACK
 
 
-NGML_CALLBACK_(xmlsave_)
+NGML_CALLBACK_(xml-save_)
  WHEN_(pre)
  {
   enter_xml_save(node, index);
@@ -23,7 +23,7 @@ NGML_CALLBACK_(xmlsave_)
 _NGML_CALLBACK
 
 
-NGML_CALLBACK_(_xmlsave)
+NGML_CALLBACK_(_xml-save)
  WHEN_(pre)
  {
   leave_xml_save(index - 1);

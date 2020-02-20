@@ -7,18 +7,18 @@
 
 //?#define QSTRING_STRIP_HYPHEN(x) QString(x).remove('-')
 
-#define QSTRING_STRIP_HYPHEN(x) QString(x)
+//?#define QSTRING_STRIP_HYPHEN(x) QString(x)
 
 #define RENAME_(name, tag, style_class) \
- callbacks_[QSTRING_STRIP_HYPHEN(#name)] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag, #style_class) ); \
+ callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag, #style_class) ); \
 
 
 #define RENAME_TAG(name, tag) \
- callbacks_[QSTRING_STRIP_HYPHEN(#name)] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag) ); \
+ callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag) ); \
 
 
 #define NGML_CALLBACK_(name) \
- callbacks_[QSTRING_STRIP_HYPHEN(#name)] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, \
+ callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, \
   NGML_Command_Callback::Callback_Map_type{{ \
 
 
