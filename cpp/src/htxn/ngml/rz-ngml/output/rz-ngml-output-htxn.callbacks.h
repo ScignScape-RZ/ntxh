@@ -26,7 +26,7 @@ _NGML_CALLBACK
 NGML_CALLBACK_(_xmlsave)
  WHEN_(pre)
  {
-  leave_xml_save(index);
+  leave_xml_save(index - 1);
   //qDebug() << "xmlsave_";
   //suppress_node_ = node;
  }
