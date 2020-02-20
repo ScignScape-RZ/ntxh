@@ -41,29 +41,8 @@ NGML_Output_Latex::NGML_Output_Latex(NGML_Document& document)
 
 void NGML_Output_Latex::init_callbacks()
 {
-#define RENAME_(name, tag, style_class) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag, #style_class) ); \
-
-
-#define RENAME_TAG(name, tag) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, #tag) ); \
-
-
-#define NGML_CALLBACK_(name) \
- callbacks_[#name] = caon_ptr<NGML_Command_Callback>( new NGML_Command_Callback(#name, \
-  NGML_Command_Callback::Callback_Map_type{{ \
-
-#define WHEN_(kind) \
- {#kind, [this](QTextStream& qts, caon_ptr<tNode> node, caon_ptr<NGML_Command_Callback> cb)
-
-#define _WHEN },
-
-#define _WHEN_(kind) _WHEN WHEN_(kind)
-
-#define _NGML_CALLBACK }}) );
-
+ #include "rz-ngml-output-callbacks-common.h"
  #include "rz-ngml-output-latex.callbacks.h"
-
 }
 
 void NGML_Output_Latex::generate_tile(const NGML_Output_Bundle& b, caon_ptr<NGML_Attribute_Tile> tile)

@@ -1,4 +1,9 @@
 
+//           Copyright Nathaniel Christen 2019.
+//  Distributed under the Boost Software License, Version 1.0.
+//     (See accompanying file LICENSE_1_0.txt or copy at
+//           http://www.boost.org/LICENSE_1_0.txt)
+
 
 NGML_CALLBACK_(analysis-package)
  WHEN_(around)
@@ -8,7 +13,29 @@ NGML_CALLBACK_(analysis-package)
  _WHEN
 _NGML_CALLBACK
 
-NGML_CALLBACK_(documentclass)
+
+NGML_CALLBACK_SUPPRESS(documentclass)
+NGML_CALLBACK_NOACTION(include)
+
+NGML_CALLBACK_(noxml_)
+ WHEN_(around)
+ {
+  suppress_node_ = node;
+ }
+ _WHEN
+_NGML_CALLBACK
+
+
+NGML_CALLBACK_(_noxml)
+ WHEN_(around)
+ {
+  suppress_node_ = nullptr;
+ }
+ _WHEN
+_NGML_CALLBACK
+
+
+NGML_CALLBACK_(dclass)
  WHEN_(pre)
  {
   suppress_node_ = node;
@@ -19,6 +46,7 @@ NGML_CALLBACK_(documentclass)
  }
  _WHEN
 _NGML_CALLBACK
+
 
 NGML_CALLBACK_(document)
  WHEN_(pre)
@@ -31,7 +59,7 @@ NGML_CALLBACK_(document)
 _NGML_CALLBACK
 
 
-NGML_CALLBACK_(include)
+NGML_CALLBACK_(inc)
  WHEN_(around)
  {
  }
