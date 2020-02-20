@@ -21,6 +21,7 @@
 
 #include <QFile>
 #include <QFileInfo>
+#include <QDebug>
 
 #include "rzns.h"
 
@@ -41,6 +42,7 @@ NGML_Output_XML::NGML_Output_XML(NGML_Document& document)
 void NGML_Output_XML::init_callbacks()
 {
  #include "rz-ngml-output-callbacks-common.h"
+
  #include "rz-ngml-output-xml.callbacks.h"
 }
 
@@ -197,7 +199,6 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, NG
 
 void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 { 
- CHECK_SUPPRESS_NODE
  CAON_PTR_B_DEBUG(NGML_Node ,node)
  chiefs_.push(b.node);
  switch(b.connection_descriptor)
@@ -223,6 +224,7 @@ void NGML_Output_XML::generate_tag_command_entry(const NGML_Output_Bundle& b, ca
    if(!cb->flags.pre_fallthrough)
     break;
   }
+  CHECK_SUPPRESS_NODE
 
   if(htxn_document_)
   {

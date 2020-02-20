@@ -47,6 +47,8 @@ class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Han
 
  QMap<HTXN_Node_Detail*, QString> region_end_names_;
 
+ caon_ptr<tNode> suppress_node_;
+
  u1 active_gap_code_;
 
 public:

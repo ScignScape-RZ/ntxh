@@ -1,17 +1,12 @@
 
-`documentclass ->> 10pt,twocolumn -> article ;;
-`include<commands>;
-`include<copyright>;
-
 `document,
 
-`title.From `cq.Naturalizing Phenomenology` to 
-Formalizing Cognitive Linguistics (I): Cognitive Transform Grammar`
-
-`noxml_;
-
+`lrbox,
+`xml-save_<main:q1>;
 vvv
+`_xml-save;
+`lrbox`
 
-`_noxml;
+`saved-xml<q1>;
 
 `document`
