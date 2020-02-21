@@ -193,6 +193,8 @@
 \newcommand{\MeshLab}{\resizebox{!}{8pt}{\AcronymText{MeshLab}}}
 \newcommand{\IQmol}{\resizebox{!}{8pt}{\AcronymText{IQmol}}}
 
+\newcommand{\SGML}{\resizebox{!}{8pt}{\AcronymText{SGML}}}
+
 \newcommand{\GUI}{\resizebox{!}{8pt}{\AcronymText{GUI}}}
 
 \newcommand{\API}{\resizebox{!}{8pt}{\AcronymText{API}}}
@@ -403,8 +405,8 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}		
 {\setlength{\fboxsep}{18pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Scientific/Multi-Media Application Plugins for 
-Education and Publishing (\sapp{})}}}}
+{Latex/XML/Concurrent/RDF Document Object Model and 
+Plugin Framework (\lsLXCR{})}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
@@ -442,16 +444,16 @@ and Concurrent Markup paradigms, features which are not
 internally part of \XML{} and therefore not directly 
 represented by \XML{}'s \DOM{}.}
 
-\p{Complementing \LXCR{}'c Document Object Model 
+\p{Complementing \LXCR{}'s Document Object Model 
 (\LDOM{}), the \LXCR{} Plugin Framework (\LPF{}) 
 presents a standard model for embedding publication 
 tools into software applications --- in particular, 
 scientific and/or multimedia applications which 
 permit users to view specialized technical information 
-and/or multi-media content.  \lLXCR{} is designed for a 
+and/or multimedia content.  \lLXCR{} is designed for a 
 contemporary publishing industry where individual 
-books or articles are only one part of a network 
-encompassing text, data, and multi-media resources.  
+books and articles are only one part of a network 
+encompassing text, data, and multimedia resources.  
 Traditionally, the digital version of a published 
 document could be fully provided in a single 
 file --- most often, a \PDF{} (Portable Document 
@@ -460,7 +462,7 @@ primary format for readers to initially find and
 view publications, contemporary publishers often 
 prioritize enhancing this primary document with 
 one or more secondary resources --- ranging from 
-multi-media files which help readers visualize or 
+multimedia files which help readers visualize or 
 interactively experience data presented in the 
 publication, to analytic code or data sets which 
 help readers evaluate or even reproduce research 
@@ -469,18 +471,17 @@ publishing ecosystem, it is important that publishing
 software --- both tools for authors to create documents and 
 tools for readers to fully experience them --- 
 properly model and implement networks which can 
-integrate disparate reading, technical, and multi-media 
+integrate disparate reading, technical, and multimedia 
 applications into a unified e-reading platform.
 }
 
-\p{
-Given that a full publication package (not just  
+\p{Insofar as a full publication package (not just  
 primary books/articles but also data sets, 
 computer code, or multimedia files) encompasses 
 many different kinds of digital resources, 
 it is no longer adequate to consider one 
 single application (e.g., a \PDF{} viewer) 
-as \q{the} e-reader used to access the publication.  
+as \q{the} e-reader used to access a publication.  
 Instead, a network of distinct applications may be 
 needed for readers to experience all facets 
 of the publication package.  This is especially 
@@ -494,24 +495,23 @@ protein structures.  In order for readers to
 experience this multimedia content, their document 
 viewer must be able to launch and/or send signals to 
 the proper molecular-visualization applications, and 
-this software must know how to respond to the data 
-sent from the document viewer.  This kind of inter-operability 
+these applications in turn must know how to respond to the data 
+sent from the document viewer.  Such inter-operability 
 can be achieved by embedding plugins in both applications; 
 most of the inter-application integration is then achieved 
 by the plugins communicating with one another.  
 }
 
-\p{
-This paper will present further information about both 
-aspects of LXCD --- the Document Object Model and the 
+\p{This paper will present further information about both 
+aspects of \LXCR{} --- the Document Object Model and the 
 Plugin Framework.  To be clear, though, these two 
 dimensions are closely interrelated.  The data pertinent 
 to inter-application networking, in the context of 
 creating and reading publications, is closely linked 
-to the document structure, which in turned is modeled 
+to document structure --- which in turned is expressed 
 by a Document Object Model.  For example, each 
-supplemental multimedia resource (such as a \ThreeD{} graphics 
-model) is particularly relevant at specific locations in the 
+supplemental multimedia resource (such as \ThreeD{} graphics) 
+is especially relevant at specific locations in the 
 publication text.  Interactive \ThreeD{} views of a 
 chemical compound (or analogously biological or physical  
 entities such as viruses, tissue samples, vector fields, etc.) 
@@ -519,8 +519,8 @@ are most helpful to the reader in conjunction with
 locations in the text where that specific chemical, biological, or 
 physical phenomenon is discussed.  Continuing the 
 above example, links to Protein Data Bank files should be 
-embedded at the point publication where the protein is 
-mentioned or analyzed in the publication.  It is not 
+embedded at the point in a publication where the protein is 
+mentioned or analyzed.  It is not 
 sufficient, that is, simply to note that a given 
 multimedia file is a supplement to a given publication; 
 instead, the link between the two resources 
@@ -534,16 +534,15 @@ options --- at the document locations which are
 most convenient for the reader.
 }
 
-\p{
-This specific example --- embedding visual cues and 
+\p{This specific example --- embedding visual cues and 
 user actions within publications, so that readers 
 can conveniently launch external software to view 
 supplemental multimedia files --- demonstrates 
 the interrelationship between application plugins 
 and the Document Object Model, although there 
 are many kinds of possible inter-operation between 
-publication viewers and scientific or multi-media 
-applications (loading individual multi-media resources 
+publication viewers and scientific or multimedia 
+applications (loading individual multimedia resources 
 is just one use-case).  The remainder of this paper 
 will outline several different scenarios where 
 inter-application networking is important for 
@@ -562,8 +561,11 @@ contemporary publishing technology
 \vspace{2em}
 \noindent\lun{The LTXH Plugin Framework (\lsLPF{})}
 {\sectsp}  
-\p{
-The goal of \LPF{} is to augment scientific and 
+\p{The goal of \LPF{} is to define a standard protocol 
+for extending software applications so that they 
+may be used in conjunction with software for viewing 
+and composing publications.  In an educational context, 
+\LPF{} plugins can augment scientific and 
 technical applications with features that enhance 
 their usefulness as teaching materials.  
 \lLPF{} plugins can integrate desktop applications 
@@ -606,7 +608,7 @@ the following scenarios:
 \mlitem[%\parbox{14cm}{
 Scenario 1: A student reads textbooks, articles, 
 or test-preparation materials which may be enhanced 
-with multi-media content%}
+with multimedia content%}
 ]  To augment the reading 
 experience, educational texts may be supplemented 
 with files describing visual, interactive materials 
@@ -622,18 +624,18 @@ via ParaView, or Matlab simulations that could be
 executed through Octave.  Publications could then 
 embed these supplemental 
 materials directly, or else include links from which 
-the multi-media files may be downloaded.  If the 
+the multimedia files may be downloaded.  If the 
 documents are viewed with an e-reader which itself 
 hosts an ETS plugin --- take XPDF as a case-study --- 
 then the viewer would identify the locations in the 
-text where the multi-media files are relevant and, 
+text where the multimedia files are relevant and, 
 when the student is reading that part of the text, 
 notify him or her of the option to automatically 
 launch the proper application with which to access the content.
 
 \pseudoIndent{} A hypothetical XPDF plugin, for example, 
 would identify the correct application to use to view 
-multi-media content based on the file type.  This feature 
+multimedia content based on the file type.  This feature 
 could also be refined via a cloud service --- information 
 provided by instructors could include notation of the 
 kinds of software used for any particular course.  
@@ -642,7 +644,7 @@ that a specific course is using IQmol as a pedagogical
 tool, and indicate that cheminformatic files linked 
 to teaching materials for the course should always be 
 viewed with IQmol.  Once the XPDF plugin identifies 
-the proper multi-media software to use, it can 
+the proper multimedia software to use, it can 
 lanch the application on the student's computer and 
 --- assuming the target application also has an ETS 
 plugin --- send that application signals identifying 
@@ -654,16 +656,98 @@ personalize the User Interface according to students'
 or instructors' preferances (see the next scenario 
 for more about personalization).
 
-\pseudoIndent{} For multi-media content which is 
+\pseudoIndent{} For multimedia content which is 
 not specific to specialized technical softwar 
---- that is, generic multi-media formats such as 
+--- that is, generic multimedia formats such as 
 audio, video, or panoramic-photography --- 
 \LPF{} plugins for PDF or ePub viewers can present 
 this content directly, in separate windows detached 
 from the principle document viewer, rather than 
 routing the files to external software.   
 
-\mlitem[Scenario 2: A student launches a scientific 
+\mlitem[Scenario 2: Authors or instructors 
+analyze publications' content to develop teaching 
+materials]  When documents are read in an 
+educational context, they become part of a 
+larger ecosystem that extends beyond publication 
+itself --- an ecosystem of assessment, test preparation, 
+curricular design, and overall teaching environments 
+(labs, classrooms, and so forth).  This superimposes 
+additional criteria on publications: why is a given 
+reading assignment included in a course curriculum?  
+How can students' understanding of the reading be 
+tested?  How can the publication be used in the 
+context of the actual pedagogical environment where 
+students are active (in labs with specific 
+equipment and software, for example)?  How can 
+instructors use or compose supplemental material to 
+help students master the primary texts 
+--- explanatory reviews, for instance, but also 
+visualization tools, glossaries, additional readings, 
+and other resources which promote students' intuitive 
+understanding of the subject material?    
+
+\pseudoIndent{} These are questions which become 
+relevant for any document which is used in an 
+instructional context --- including but not limited 
+to publications originally created for 
+educational use (such as textbooks or test-preparation 
+materials).  Such use-cases illustrate the value of 
+machine-readable Document Object Models which provide 
+structured access to publication content, as opposed 
+to the merely visual access offered by \PDF{} files.  
+Pedagogically using publications can involve extracting 
+information from texts, or laying on additional 
+content: inserting review questions at strategic 
+points in the text; compiling glossaries indicating 
+when technical terms are first used; foregrounding 
+graphics and figure illustrations and encouraging 
+students to explore them in depth 
+(for instance, performing for themselves the calculations 
+which are plotted in a statistical diagram; or 
+identifying the axes, scales of measurement, dimensions, 
+free and dependent parameters, and other mathematical 
+details of a quantitative illustration).  Both of 
+these kinds of operations --- extracting or adding 
+content --- require computational access to a 
+Document Object Model.    
+ 
+\pseudoIndent{} These use-cases reveal the limitations of 
+presenting digital manuscripts solely in \PDF{} (or 
+e-Pub or \HTML{}) formats --- in general it is difficult or 
+impossible to pull information from these formats analogous 
+to how algorithms may traverse an \XML{} \DOM{}.  For 
+this reason, certain publishers and electronic journals offer 
+machine-readable views on their publications as supplements 
+to the human-readable \PDF{} files; however, this practice 
+is not widely adopted in educational settings.  Also, 
+many publishers use \XML{} as an internal representation 
+for the publishing workflow (editing, typesetting, compositing, 
+etc., often through legacy software originally implemented 
+for \SGML{}); however, those in-house files are 
+not usually made available to the public (even purchasers or 
+subscribers who have digital rights to the final publication).  
+This situation explains the importance of a 
+multi-format Document Object Model: by publishing 
+machine-readable infosets capturing the content of 
+human-readable manuscripts, as supplemental materials 
+to manuscripts themselves, it is easier for 
+educational technology to integrate publications 
+into a digital learning platform.      
+
+\pseudoIndent{} Computer code which operates on 
+\LXCR{} Document Object Models can therefore act 
+in consort with \LPF{} plugins.  For example, an 
+\LDOM{} component could define review questions 
+or glossary definitions linked to specific points 
+in the text; this supplemental content may then 
+be packaged along with the original publication.  
+With suitable \LPF{} plugins, the document viewer 
+can then process the review material and 
+superimpose pedagogical questions, comments, or instructions 
+on the underlying document text.     
+
+\mlitem[Scenario 3: A student launches a scientific 
 application which is used as a pedagogical tool]  
 Teachers often instruct students to download 
 and install software relevant to course curriculum, 
@@ -712,7 +796,8 @@ rearrange the IQmol menus and toolbars, to foreground
 those analytic tasks which are relevant to the 
 course curriculum.  
 
-\mlitem[Scenario 3: A student launches an Integrated Development Environment (\IDE{}) which is used as a teaching tool]  
+\mlitem[Scenario 4: A student launches an Integrated Development 
+Environment (\IDE{}) which is used as a teaching tool]  
 Using \IDE{}s is a prerequite for most courses 
 in computer science and computer programming, and 
 in this context \LPF{} plugins may be used 
@@ -762,7 +847,7 @@ plugin, helping ensure that the student's
 system has the necessary prerequisites to 
 run all the course-related software. 
 
-\mlitem[Scenario 4: Authors Develop Educational 
+\mlitem[Scenario 5: Authors Develop Educational 
 Materials Targeting Specific Applications]
 In this scenario, authors compose books, articles, 
 or test-preparation materials with the anticipation 
@@ -771,7 +856,7 @@ enhance their reading experience.  This sort
 of interrelationship between publications and external 
 software is presupposed at a rudimentary level 
 as soon as authors link documents to specialized 
-multi-media files.  For example, files in the 
+multimedia files.  For example, files in the 
 ParaView Data (\PVD{}) format are intended to be 
 used by the ParaView software; as a result, documents 
 which reference such files presuppose that readers 
@@ -784,9 +869,9 @@ as IQmol.
   
 \pseudoIndent{} In some cases, however, authors may 
 desire a more rigorous degree of interop between 
-document viewers and scientific/multi-media software.  
+document viewers and scientific/multimedia software.  
 This situation applies when it is useful for readers not 
-view particular multi-media files in domain-specific 
+view particular multimedia files in domain-specific 
 applications, but for the applications to be 
 reconfigured so as to emphasize features or 
 capabilities relevant to the publication which readers 
@@ -819,14 +904,14 @@ experience is the Hypergraph Text Encoding
 Protocol (\HTXN{}), formulated in conjunction with 
 \LPF{}.  \lHTXN{} explicitly supports information 
 sharing between document viewers and 
-external software, such as scientific/multi-media 
+external software, such as scientific/multimedia 
 applications.  While the \q{signals} routed 
 via \HTXN{} between applications may simply be 
 instructions to load and display a single file, 
 they may also be more complex data structures 
 which describe how the target application should 
 adopt to the pedagogical role of presenting 
-multi-media or technical content specifically 
+multimedia or technical content specifically 
 linked to a publication which the current user is reading.  
 \lHTXN{} is discussed in greater detail below.
  
@@ -844,7 +929,7 @@ code libraries which help readers verify
 research findings.  These project-specific 
 code libraries, particularly if they include 
 \GUI{} components, can therefore play the role 
-of multi-media applications which augment 
+of multimedia applications which augment 
 the reading experience, enhancing the 
 publications which present research findings 
 in a more conventional, less interactive fashion. 
@@ -876,7 +961,7 @@ become more valuable as classroom tools.  In
 particular, with ETS plugins these applications 
 can (1) receive signals from document viewers 
 (such as PDF viewers) to automatically display 
-multi-media content and (2) display course 
+multimedia content and (2) display course 
 and instructional materials.  As a 
 concrete example, consider molecularal 
 visualization software such as IQmol.  Via 
@@ -916,7 +1001,7 @@ used by document (e.g., PDF) viewers to obtain
 information needed to properly route signals 
 to other applications using ETS Plugins.}
 
-\mnote{Student \\Dashboard}
+\mnote{Student \\Dash-\\board}
 \p{In addition, one feature which should be common to all ETS 
 Plugins is a \q{dashboard}, or a separate window 
 aggregating the student's information.  The 
@@ -948,10 +1033,10 @@ representing publications.  The central goal
 of \HTXN{} is to support a new generation of 
 publishing technologies, where conventional 
 document formats are increasingly being supplanted 
-by digital, multi-media reader experiences.  
+by digital, multimedia reader experiences.  
 In the contemporary publishing paradigm, 
 individual publications are often linked 
-with other forms of digital content: multi-media 
+with other forms of digital content: multimedia 
 resources, research data sets, machine-readable 
 representations of document text, and 
 domain-specific sofware applications 
@@ -962,12 +1047,12 @@ resource which is cited and downloaded)
 is then networked with a package of 
 supplemental (or \q{secondary}) resources.  
 The \HTXN{} protocol is designed to 
-rigorously document these multi-media networks, enabling 
+rigorously document these multimedia networks, enabling 
 e-readers and domain-specific applications to be 
 integrated so that readers may easily access and 
-experience multi-media content.}
+experience multimedia content.}
 
-\p{The generic term \q{multi-media content} actually 
+\p{The generic term \q{multimedia content} actually 
 encompasses multiple phenomena:
 
 \vspace{-1em}
@@ -990,7 +1075,7 @@ plots to visualize the information holistically, or
 interactive tools to examine or navigate through the 
 data set at finer scales.  
 
-\item[Application Networks]  Another genre of multi-media 
+\item[Application Networks]  Another genre of multimedia 
 content involves resources which may only be experienced 
 through specialized software.  This classification encompasses 
 content from particular scientific or technical domains, 
@@ -998,7 +1083,7 @@ which is encoded in domain-specific formats: representations
 of molecular structures, archaeological sites, image-processing 
 data, wave-forms for signal processing, sentence-parses for 
 linguistic analysis, and so forth.  To conveniently access 
-this kind of multi-media, readers need to use software 
+this kind of multimedia, readers need to use software 
 which can send signals to the specialized applications 
 having the capability to recognize the domain-specific 
 formats and translate them to interactive, 
@@ -1014,7 +1099,7 @@ are properly aligned with the e-readers themselves.
 
 \item[Publications-as-Applications]  In some 
 cases, publications themselves are a form of 
-multi-layered multi-media content.  This applies 
+multi-layered multimedia content.  This applies 
 to publications which are not simply read from 
 start to end, but instead naturally lend 
 themselves to a reading process which navigates 
@@ -1044,24 +1129,24 @@ windows as desired.
 
 \p{\lHTXN{} represents publication manuscripts 
 using structures which rigorously document 
-publications' multi-media content and multi-application 
+publications' multimedia content and multi-application 
 networking requirements.  This detailed 
 multi-media support has several dimensions: 
 
 \begin{enumerate}[leftmargin=2pt]
 \inditem{} Defining points in the manuscript where 
-multi-media files are linked or embedded: this 
+multimedia files are linked or embedded: this 
 involves annotating locations in the manuscript 
-with hyper-references to multi-media files 
+with hyper-references to multimedia files 
 (audio, video, etc.) which readers should be 
 able to access when they reach the corresponding 
 point in the text.
 
 \inditem{} Establishing granular cross-references between 
-publications and multi-media content: this is a 
+publications and multimedia content: this is a 
 more complex case where manuscript locations have to 
 link \textit{to} or \textit{from} limited 
-\textit{portions} of the corresponding multi-media 
+\textit{portions} of the corresponding multimedia 
 resources.  For example, a passage in the manuscript 
 may discuss a single sample within a data set; or 
 may explicate a particular facet of the data set, 
@@ -1079,12 +1164,12 @@ isolated and declared as a reference-target.
 \inditem{} Cross-referances may also be 
 defined between publications' non-textual or 
 non-paragraph content and corresponding 
-multi-media resources.  For example, tables 
+multimedia resources.  For example, tables 
 or diagrams visually presented in a manuscript 
 may be liked to statistical data from which 
 the figures are derived.  A similar situation 
 applies when visuals inluded in a publication 
-are linked to multi-media resources which 
+are linked to multimedia resources which 
 represent the same information in a different 
 experiential register: a PDF document may 
 include a two-dimensional graphic which is created 
