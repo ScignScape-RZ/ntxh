@@ -134,7 +134,7 @@
 
 \newcommand{\pseudoIndent}{
 
-\vspace{1pt}\hspace*{38pt}}
+\vspace{10pt}\hspace*{38pt}}
 
 \newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
 
@@ -344,7 +344,7 @@
 \newenvironment{mldescription}{%
   \begin{addmargin}[4pt]{1em}
     \setlength{\parindent}{-1em}%
-    \newcommand*{\mlitem}[1][]{\par\medskip\textbf{##1}\quad}\indent
+    \newcommand*{\mlitem}[1][]{\vspace{20pt}\par\medskip\textbf{##1}\quad}\indent
 }{%
   \end{addmargin}
   \medskip
@@ -604,7 +604,8 @@ which each have ETS plugins to interoperate.
 To explain the features of the plugin suite, consider 
 the following scenarios: 
 
-\begin{mldescription}
+\begin{mldescription}%[itemsep=50pt]
+%\setlength{\itemsep}{50pt}
 \mlitem[%\parbox{14cm}{
 Scenario 1: A student reads textbooks, articles, 
 or test-preparation materials which may be enhanced 
