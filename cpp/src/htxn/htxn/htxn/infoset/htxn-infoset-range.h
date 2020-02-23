@@ -17,8 +17,7 @@
 #include "kans.h"
 
 #include <QString>
-#include <QList>
-#include <QDate>
+#include <QMap>
 
 #include <functional>
 
@@ -29,6 +28,12 @@ KANS_(HTXN)
 
 class Glyph_Layer_8b;
 class HTXN_Node_Detail;
+
+struct HTXN_Layer_Position
+{
+ u4 position;
+ Glyph_Layer_8b* layer;
+}
 
 class HTXN_Infoset_Range 
 { 
@@ -43,6 +48,8 @@ class HTXN_Infoset_Range
 
  QString classifier_;
 
+ QMap<QString*, HTXN_Infoset_Range*> connections_;
+
 public:
 
  HTXN_Infoset_Range(u4 enter, u4 leave, u4 layer_id);
@@ -54,6 +61,9 @@ public:
  ACCESSORS(void* ,input_data)
  ACCESSORS(HTXN_Node_Detail* ,node_detail)
  ACCESSORS(QString ,classifier)
+
+
+ void add_connection(QString* label, HTXN_Infoset_Range* range); 
 
  template<typename T>
  T* input_data_as()

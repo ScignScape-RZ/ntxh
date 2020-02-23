@@ -22,6 +22,8 @@
 
 #include <functional>
 
+#include "htxn-infoset-range.h"
+
 
 class QTextStream;
 
@@ -33,6 +35,9 @@ class HTXN_Infoset_8b;
 class HTXN_Infoset_Cursor_8b 
 { 
  HTXN_Infoset_8b* infoset_;
+ HTXN_Infoset_Range* current_range_;
+  
+ HTXN_Layer_Position current_position_;
 
 public:
 

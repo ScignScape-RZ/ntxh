@@ -21,4 +21,9 @@ HTXN_Infoset_Range::HTXN_Infoset_Range(u4 enter, u4 leave, u4 layer_id)
 
 }
 
+void HTXN_Infoset_Range::add_connection(QString* label, HTXN_Infoset_Range* range)
+{
+ connections_[label] = range;
+}
 
+ 

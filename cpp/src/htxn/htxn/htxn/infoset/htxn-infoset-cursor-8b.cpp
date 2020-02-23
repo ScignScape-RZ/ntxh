@@ -15,7 +15,8 @@ USING_KANS(HTXN)
 
 
 HTXN_Infoset_Cursor_8b::HTXN_Infoset_Cursor_8b(HTXN_Infoset_8b* infoset)
-  :  infoset_(infoset)
+  :  infoset_(infoset), current_range_(nullptr),
+     current_position_({nullptr, 0})
 {
 
 }

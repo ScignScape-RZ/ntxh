@@ -86,6 +86,8 @@ public:
    u2 enter_order, QVector<QPair<HTXN_Node_Detail*, QString>>& result,
    Glyph_Layer_8b* calling_layer);
 
+ Glyph_Layer_8b* get_layer(u4 layer);
+
  void get_qstring_out(u4 layer, QString& result);
  void get_htxne_out(u4 layer, QByteArray& result);
  void get_htxne_out(u4 layer, QString& result);

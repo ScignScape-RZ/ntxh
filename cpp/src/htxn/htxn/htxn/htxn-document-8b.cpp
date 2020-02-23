@@ -444,6 +444,10 @@ void HTXN_Document_8b::get_latex_out(Glyph_Layer_8b* gl, u2 enter_order,
  }
 }
 
+Glyph_Layer_8b* HTXN_Document_8b::get_layer(u4 layer)
+{
+ return value(layer);
+}
 
 void HTXN_Document_8b::get_qstring_out(u4 layer, QString& result)
 {
