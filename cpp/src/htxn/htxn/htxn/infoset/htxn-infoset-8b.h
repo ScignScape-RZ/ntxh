@@ -31,7 +31,7 @@ KANS_(HTXN)
 
 class Glyph_Layer_8b;
 class HTXN_Document_8b;
-class HTXN_Infoset_Cursor;
+class HTXN_Infoset_Cursor_8b;
 
 class HTXN_Infoset_8b 
 { 
@@ -62,7 +62,7 @@ public:
  void add_connection(HTXN_Infoset_Range* range, QString label, 
    HTXN_Infoset_Range* target); 
 
- HTXN_Infoset_Cursor* new_cursor(); 
+ HTXN_Infoset_Cursor_8b* new_cursor();
 
 };
 

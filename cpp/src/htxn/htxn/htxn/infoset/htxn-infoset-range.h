@@ -31,9 +31,9 @@ class HTXN_Node_Detail;
 
 struct HTXN_Layer_Position
 {
- u4 position;
  Glyph_Layer_8b* layer;
-}
+ u4 position;
+};
 
 class HTXN_Infoset_Range 
 { 

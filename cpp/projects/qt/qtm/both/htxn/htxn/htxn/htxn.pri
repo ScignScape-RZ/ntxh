@@ -50,6 +50,10 @@ HEADERS += \
   $$SRC_DIR/htxn-document-8b.h \
   $$SRC_DIR/graph/htxn-node-detail.h \
   $$SRC_DIR/graph/htxn-node-details.h \
+  $$SRC_DIR/infoset/htxn-infoset-8b.h \
+  $$SRC_DIR/infoset/htxn-infoset-range.h \
+  $$SRC_DIR/infoset/htxn-infoset-cursor-8b.h \
+
 
 
 SOURCES += \
@@ -64,6 +68,9 @@ SOURCES += \
   $$SRC_DIR/htxn-document-8b.cpp \
   $$SRC_DIR/graph/htxn-node-detail.cpp \
   $$SRC_DIR/graph/htxn-node-details.cpp \
+  $$SRC_DIR/infoset/htxn-infoset-8b.cpp \
+  $$SRC_DIR/infoset/htxn-infoset-range.cpp \
+  $$SRC_DIR/infoset/htxn-infoset-cursor-8b.cpp \
 
 
 #?

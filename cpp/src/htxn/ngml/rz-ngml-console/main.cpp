@@ -11,6 +11,7 @@
 
 #include "rz-ngml/output/rz-ngml-output-latex.h"
 #include "rz-ngml/output/rz-ngml-output-htxn.h"
+#include "rz-ngml/output/rz-ngml-output-infoset.h"
 
 #include "rz-ngml/output/rz-ngml-output-xml.h"
 
@@ -45,6 +46,11 @@ void process_ngml_file(QString path)
 
  NGML_Output_HTXN noh(ndoc, &hxd);
  noh.export_htxne();
+
+ HTXN_Infoset_8b infoset(&hxd);
+ NGML_Output_Infoset noi(ndoc, &infoset);
+ noi.export_infoset(path + ".info.txt");
+ 
 
  NGML_Output_Latex nol(ndoc);
  nol.set_htxn_document(&hxd);
