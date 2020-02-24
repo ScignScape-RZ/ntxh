@@ -128,7 +128,10 @@ public:
  {
   return gp;
  }
-
+ 
+ void swap_false_sentence_end(u1& end) Q_DECL_OVERRIDE;
+ void swap_sentence_end_space(u1& space) Q_DECL_OVERRIDE;
+ bool check_swap_dot(u1& end) Q_DECL_OVERRIDE;
 
 // void get_htxne_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 

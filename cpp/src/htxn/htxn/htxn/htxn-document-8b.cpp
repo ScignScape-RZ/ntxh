@@ -359,22 +359,125 @@ struct _csb
  u4 leave;
  Glyph_Layers_8b& layers;
  Glyph_Layer_8b& gl;
+ GlyphDeck_Base_8b& deck; 
  QMap<u4, QString> notes;
+ States state;
+ u4 r1;
+ u4 r2;
  
  enum States {
-   
+   N_A, Letter, Maybe_Sentence_End, 
+   One_Space, Two_Space,    
 
  };
 
  void check_sentence_boundaries();
- void check_state(u1 gp);
+ void check_state(u1 gp, u4 i);
+ void check_state_letter();
+ void check_state_space();  
+ void check_state_maybe_sentence_end(u4 i);
 };
 
-void _csb::check_state(u1 gp)
+void _csb::check_state_letter()
 {
+ switch(state)
+ {
+ case N_A:
+ case Letter:  
+ case Two_Space:
+   state = Letter;
+   break;
+ case One_Space:
+   deck.swap_false_sentence_end(gl[r1]); 
+   break;  
+ case Maybe_Sentence_End:
+   deck.check_swap_dot(gl[r1]);
+   break;
+ }
+ r1 = 0;
+ r2 = 0;
+}
+
+void _csb::check_state_maybe_sentence_end(u1 i)
+{
+ switch(state)
+ {
+ case N_A:
+ case Letter: 
+   state = Maybe_Sentence_End;
+   r1 = i;
+   break;
+ case Maybe_Sentence_End:
+    // //?
+   deck.check_swap_dot(gl[r1]);
+   break;
+ case One_Space:
+   deck.swap_false_sentence_end(gl[i]);   
+   goto r_reset;
+ case Maybe_Sentence_End:
+   state = One_Space;
+   r2 = i;
+   break;
+ case Two_Space:
+   goto r_reset;
+ }
+ return;
+r_reset:
+ r1 = 0;
+ r2 = 0;
+}
+
+void _csb::check_state_space(u1 i)
+{
+ switch(state)
+ {
+ case N_A:
+ case Letter: 
+   state = Letter;
+   goto r_reset;
+ case One_Space:
+   deck.swap_sentence_end_space(gl[r2]);   
+   goto r_reset;
+ case Maybe_Sentence_End:
+   state = One_Space;
+   r2 = i;
+   break;
+ case Two_Space:
+   goto r_reset;
+ }
+ return;
+r_reset:
+ r1 = 0;
+ r2 = 0;
+}
+
+
+void _csb::check_state(u1 gp, u4 i)
+{
+ if(gp == 100) // //  null 
+ {
+  // // actually should really check if 
+   //   there's an extension ...
+  check_state_letter();
+  return;
+ }
+ else if(gp < 63)
+ {
+  check_state_letter();
+  return;
+ }
+ else if(gp == 63)
+ {
+  check_state_space(i);
+  return;
+ }
+
+ gp &= 63;
+   
  switch(gp)
  {
- 
+ case 0: case 1: case 9:
+  check_state_maybe_sentence_end(i);   
  }
 }
 
@@ -389,14 +492,18 @@ void _csb::check_sentence_boundaries()
  {
   layers.get_screened_code(*gl, i, gap);
   u1 gp = gap.internal_deck->get_standard_equivalent(gap.screened_code);
-  check_state(gp);
+  check_state(gp, i);
  } 
 }
 
 void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl, 
-  u4 enter, u4 leave, QMap<u4, QString>& notes)
+  u4 enter, u4 leave, QMap<u4, QString>& notes, GlyphDeck_Base_8b* deck)
 {
- _csb({enter, leave, *this, *gl, notes}).check_sentence_boundaries();
+ if(!deck)
+   deck = current_deck_;
+
+ _csb({enter, leave, *this, *gl, *deck, notes, 
+   _csb::N_A, 0, 0}).check_sentence_boundaries();
 }
 
 void HTXN_Document_8b::write_minimal_xml_out(u4 layer_code,

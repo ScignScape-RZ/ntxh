@@ -135,7 +135,7 @@ public:
    QVector<QPair<HTXN_Node_Detail*, QString>>& precs, QStringList& succs, QString& result);
 
  void check_sentence_boundaries(Glyph_Layer_8b* gl, 
-   u4 enter, u4 leave, QMap<u4, QString>& notes);
+   u4 enter, u4 leave, QMap<u4, QString>& notes, GlyphDeck_Base_8b* deck = nullptr);
 
 };
 

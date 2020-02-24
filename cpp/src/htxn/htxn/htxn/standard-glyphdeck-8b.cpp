@@ -157,6 +157,7 @@ void Standard_GlyphDeck_8b::get_qstring_out(u1 gp, Glyph_Argument_Package& gap)
    gap.chr = get_nondiacritic_default(gp - 64);
 }
 
+
 char Standard_GlyphDeck_8b::get_char_code(u1 gp)
 {
  gp &= 63;
@@ -391,6 +392,36 @@ QString Standard_GlyphDeck_8b::get_nondiacritic_xdefault_latex(u1 cue)
  case 18: return QString("{\\sqIAe}");
  case 19: return QString("{\\sqIAl}");
 #endif // HIDE
+
+
+
+void Standard_GlyphDeck_8b::swap_false_sentence_end(u1& end)
+{
+ u1 cue = end & 63;
+ static QMap<u1, u1> subs {
+  {0, 12 | 63},
+  {1 , 25 | 63},
+  {9 , 26 | 63}
+ };
+ end = subs.value(cue, end);   
+}
+
+void Standard_GlyphDeck_8b::swap_sentence_end_space(u1& space)
+{
+ if( (space == 63) || (space & 63) == 63 ))
+   space = 27 | 63;
+}
+
+bool Standard_GlyphDeck_8b::check_swap_dot(u1& dot)
+{
+ if((dot & 63) == 0)
+ {
+  dot = 24 | 63;
+  return true;
+ }
+ return false;
+}
+
 
 QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 {

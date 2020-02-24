@@ -57,6 +57,10 @@ public:
  virtual void get_screened_code(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual u1 null_code() = 0;
 
+ virtual void swap_false_sentence_end(u1& end) = 0;
+ virtual void swap_sentence_end_space(u1& end) = 0;
+ virtual bool check_swap_dot(u1& dot) = 0;
+
  virtual u1 get_standard_equivalent(u1 gp);
 };
 
