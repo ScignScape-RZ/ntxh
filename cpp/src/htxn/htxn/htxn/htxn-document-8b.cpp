@@ -361,20 +361,24 @@ struct _csb
  Glyph_Layer_8b& gl;
  GlyphDeck_Base_8b& deck; 
  QMap<u4, QString> notes;
+
+ enum States {
+   N_A, Letter, Maybe_Sentence_End, 
+   One_Space, Two_Space, 
+   //?Confirmed_Sentence_End   
+ };
+
  States state;
  u4 r1;
  u4 r2;
+
+ QVector<u4> intermediates;
  
- enum States {
-   N_A, Letter, Maybe_Sentence_End, 
-   One_Space, Two_Space,    
-
- };
-
  void check_sentence_boundaries();
  void check_state(u1 gp, u4 i);
  void check_state_letter();
- void check_state_space();  
+ void check_state_space(u4 i);  
+ void check_state_newline(u4 i);  
  void check_state_maybe_sentence_end(u4 i);
 };
 
@@ -388,17 +392,20 @@ void _csb::check_state_letter()
    state = Letter;
    break;
  case One_Space:
-   deck.swap_false_sentence_end(gl[r1]); 
+   deck.swap_false_sentence_end(gl[r1]);
+   for(u4 u : intermediates)
+     deck.swap_false_sentence_end(gl[u]);
+   intermediates.clear();
    break;  
  case Maybe_Sentence_End:
-   deck.check_swap_dot(gl[r1]);
+   deck.check_swap_dot(gl[r1], true);
    break;
  }
  r1 = 0;
  r2 = 0;
 }
 
-void _csb::check_state_maybe_sentence_end(u1 i)
+void _csb::check_state_maybe_sentence_end(u4 i)
 {
  switch(state)
  {
@@ -408,17 +415,23 @@ void _csb::check_state_maybe_sentence_end(u1 i)
    r1 = i;
    break;
  case Maybe_Sentence_End:
-    // //?
-   deck.check_swap_dot(gl[r1]);
+   if(!intermediates.isEmpty())
+     intermediates.push_back(i);
+    // // i.e., if this is true, the 
+     //   period is interpreted as 
+     //   non-punctuation (e.g., abbreviation)
+     //   which means the current glyph 
+     //   is the true sentence end ...
+   else if(deck.check_swap_dot(gl[r1], true))
+     r1 = i;
+   else
+     intermediates = {i};     
    break;
  case One_Space:
-   deck.swap_false_sentence_end(gl[i]);   
-   goto r_reset;
- case Maybe_Sentence_End:
-   state = One_Space;
-   r2 = i;
+   deck.swap_false_sentence_end(gl[i]);
    break;
  case Two_Space:
+   deck.swap_false_sentence_end(gl[i]);
    goto r_reset;
  }
  return;
@@ -427,7 +440,7 @@ r_reset:
  r2 = 0;
 }
 
-void _csb::check_state_space(u1 i)
+void _csb::check_state_space(u4 i)
 {
  switch(state)
  {
@@ -436,14 +449,19 @@ void _csb::check_state_space(u1 i)
    state = Letter;
    goto r_reset;
  case One_Space:
-   deck.swap_sentence_end_space(gl[r2]);   
+   if(r2)
+     deck.swap_sentence_end_space(gl[r2]);
+   for(u4 u : intermediates)
+     deck.swap_false_sentence_end(gl[u]);
+   intermediates.clear();
+   state = Two_Space;
    goto r_reset;
  case Maybe_Sentence_End:
    state = One_Space;
    r2 = i;
    break;
  case Two_Space:
-   goto r_reset;
+   break;
  }
  return;
 r_reset:
@@ -451,6 +469,13 @@ r_reset:
  r2 = 0;
 }
 
+void _csb::check_state_newline(u4 i)
+{
+  // //  newline is like two spaces ...
+ if(state == Maybe_Sentence_End)
+   state = One_Space;
+ check_state_space(i);
+}
 
 void _csb::check_state(u1 gp, u4 i)
 {
@@ -477,20 +502,28 @@ void _csb::check_state(u1 gp, u4 i)
  switch(gp)
  {
  case 0: case 1: case 9:
-  check_state_maybe_sentence_end(i);   
+  check_state_maybe_sentence_end(i);
+  break;
+ case 3: // // )
+ case 21: // // ]
+  break; // // no change in state ...
+ case 63:
+  check_state_newline(i);
+  break;
+ default:
+  check_state_letter();
+  break;  
  }
 }
 
 void _csb::check_sentence_boundaries()
 {
  Glyph_Argument_Package gap;
-//? Glyph_Argument_Package cmdgap;
  gap.internal_deck = current_deck_;
-//? cmdgap.internal_deck = current_deck_;
 
  for(u4 i = enter; i <= leave; ++i)
  {
-  layers.get_screened_code(*gl, i, gap);
+  layers.get_screened_code(gl, i, gap);
   u1 gp = gap.internal_deck->get_standard_equivalent(gap.screened_code);
   check_state(gp, i);
  } 
@@ -503,7 +536,7 @@ void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl,
    deck = current_deck_;
 
  _csb({enter, leave, *this, *gl, *deck, notes, 
-   _csb::N_A, 0, 0}).check_sentence_boundaries();
+   _csb::N_A, 0, 0, {}}).check_sentence_boundaries();
 }
 
 void HTXN_Document_8b::write_minimal_xml_out(u4 layer_code,

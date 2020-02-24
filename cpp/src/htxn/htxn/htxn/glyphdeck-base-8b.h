@@ -58,8 +58,10 @@ public:
  virtual u1 null_code() = 0;
 
  virtual void swap_false_sentence_end(u1& end) = 0;
+ //virtual void swap_sentence_end(u1& e1, u1& e2) = 0;
+ 
  virtual void swap_sentence_end_space(u1& end) = 0;
- virtual bool check_swap_dot(u1& dot) = 0;
+ virtual bool check_swap_dot(u1& dot, bool to_non_punctuation) = 0;
 
  virtual u1 get_standard_equivalent(u1 gp);
 };

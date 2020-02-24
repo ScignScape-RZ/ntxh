@@ -123,7 +123,7 @@ void Glyph_Layers_8b::get_screened_code(Glyph_Vector_8b& gv,
  GlyphDeck_Base_8b& deck = *gap.internal_deck;
  gv.check_external(index, deck, gap);
  if(gap.flags.normal)
-   deck.get_screened_code((u1)gap.screened_code);
+   deck.get_screened_code((u1)gap.screened_code, gap);
  else if(gap.flags.confirmed_non_diacritic)
  {
   gap.screened_code = deck.null_code();

@@ -408,15 +408,24 @@ void Standard_GlyphDeck_8b::swap_false_sentence_end(u1& end)
 
 void Standard_GlyphDeck_8b::swap_sentence_end_space(u1& space)
 {
- if( (space == 63) || (space & 63) == 63 ))
+ if( (space == 63) || (space & 63) == 63 )
    space = 27 | 63;
 }
 
-bool Standard_GlyphDeck_8b::check_swap_dot(u1& dot)
+//void Standard_GlyphDeck_8b::swap_sentence_end(u1& e1, u1& e2)
+//{
+// if(e1 == 64)
+//   e1 = (12 | 63);
+// else 
+//   swap_false_sentence_end(e2);
+//}
+
+bool Standard_GlyphDeck_8b::check_swap_dot(u1& dot, bool to_non_punctuation)
 {
- if((dot & 63) == 0)
+ if(dot == 64)
  {
-  dot = 24 | 63;
+  dot = to_non_punctuation? 
+    (12 | 63) : (24 | 63);
   return true;
  }
  return false;
