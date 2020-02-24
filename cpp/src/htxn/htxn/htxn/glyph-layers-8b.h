@@ -53,6 +53,9 @@ public:
 
 // void get_latex(u4 layer, u4 index, Glyph_Argument_Package& gap);
 
+ void get_screened_code(Glyph_Vector_8b& gv,
+   u4 index, Glyph_Argument_Package& gap);
+
  void get_qstring_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 

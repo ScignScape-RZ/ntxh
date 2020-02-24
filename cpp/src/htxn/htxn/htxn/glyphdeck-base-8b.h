@@ -53,6 +53,11 @@ public:
 
  virtual void get_htxne_out(u1 gp, Glyph_Argument_Package& gap) = 0;
  virtual void get_qstring_out(u1 gp, Glyph_Argument_Package& gap) = 0;
+
+ virtual void get_screened_code(u1 gp, Glyph_Argument_Package& gap) = 0;
+ virtual u1 null_code() = 0;
+
+ virtual u1 get_standard_equivalent(u1 gp);
 };
 
 _KANS(HTXN)

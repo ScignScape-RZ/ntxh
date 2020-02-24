@@ -121,6 +121,15 @@ public:
 
  char get_char_code(u1 gp) Q_DECL_OVERRIDE;
 
+ void get_screened_code(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
+ u1 null_code() Q_DECL_OVERRIDE;
+
+ u1 get_standard_equivalent(u1 gp) Q_DECL_OVERRIDE
+ {
+  return gp;
+ }
+
+
 // void get_htxne_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
 // virtual void check_external(u1 gp, Glyph_Argument_Package& gap);

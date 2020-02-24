@@ -484,6 +484,28 @@ QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
  }
 }
 
+void Standard_GlyphDeck_8b::get_screened_code(u1 gp, Glyph_Argument_Package& gap)
+{
+ if(gp < 64)
+ {
+  gap.screened_code = gp;
+  return;
+ }
+ gp &= 63;
+ if(gp < 29)
+   gap.screened_code = gp | 63; 
+ else if(gp == 63)
+   gap.screened_code = gp | 63;
+ else
+   gap.screened_code = 100;
+}
+
+u1 Standard_GlyphDeck_8b::null_code()
+{
+ return 100;
+}
+
+
 void Standard_GlyphDeck_8b::get_nondiacritic_supplement(u1 cue, QString& result)
 {
  static QVector<QString> static_vec {

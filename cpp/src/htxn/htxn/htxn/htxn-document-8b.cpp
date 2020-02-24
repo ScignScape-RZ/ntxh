@@ -336,9 +336,9 @@ void HTXN_Document_8b::write_minimal_latex_out(u4 layer_code,
 void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts)
 {
  Glyph_Argument_Package gap;
- Glyph_Argument_Package cmdgap;
+//? Glyph_Argument_Package cmdgap;
  gap.internal_deck = current_deck_;
- cmdgap.internal_deck = current_deck_;
+//? cmdgap.internal_deck = current_deck_;
 
  for(u4 i = enter; i <= leave; ++i)
  {
@@ -349,6 +349,54 @@ void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 
     qts << gap.chr;
   gap.reset();
  }
+}
+
+// // use a "private" struct in this case for the 
+ //   enum ...
+struct _csb
+{
+ u4 enter;
+ u4 leave;
+ Glyph_Layers_8b& layers;
+ Glyph_Layer_8b& gl;
+ QMap<u4, QString> notes;
+ 
+ enum States {
+   
+
+ };
+
+ void check_sentence_boundaries();
+ void check_state(u1 gp);
+};
+
+void _csb::check_state(u1 gp)
+{
+ switch(gp)
+ {
+ 
+ }
+}
+
+void _csb::check_sentence_boundaries()
+{
+ Glyph_Argument_Package gap;
+//? Glyph_Argument_Package cmdgap;
+ gap.internal_deck = current_deck_;
+//? cmdgap.internal_deck = current_deck_;
+
+ for(u4 i = enter; i <= leave; ++i)
+ {
+  layers.get_screened_code(*gl, i, gap);
+  u1 gp = gap.internal_deck->get_standard_equivalent(gap.screened_code);
+  check_state(gp);
+ } 
+}
+
+void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl, 
+  u4 enter, u4 leave, QMap<u4, QString>& notes)
+{
+ _csb({enter, leave, *this, *gl, notes}).check_sentence_boundaries();
 }
 
 void HTXN_Document_8b::write_minimal_xml_out(u4 layer_code,

@@ -124,7 +124,7 @@ void NGML_Output_Infoset::check_post_callback
 void NGML_Output_Infoset::generate_tag_command_auto_leave(const NGML_Output_Bundle& b, caon_ptr<NGML_Tag_Command> ntc)
 { 
  CHECK_SUPPRESS_NODE
- b.qts << "/>";
+//? b.qts << "/>";
 }
 
 void NGML_Output_Infoset::generate_tag_command_argument(const NGML_Output_Bundle& b,
@@ -236,6 +236,24 @@ void NGML_Output_Infoset::generate_tag_command_entry(const NGML_Output_Bundle& b
    }
   }
  }
+}
+
+void NGML_Output_Infoset::check_sentence_boundaries(caon_ptr<tNode> node)
+{
+ CAON_PTR_DEBUG(tNode ,node)
+ if(caon_ptr<NGML_Tag_Command> ntc = node->ngml_tag_command())
+ {
+  CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
+  if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
+  {
+   check_sentence_boundaries(*nhn);
+  }  
+ } 
+}
+
+void NGML_Output_Infoset::check_sentence_boundaries(NGML_HTXN_Node& nhn)
+{
+ htxn_document_->check_sentence_boundaries(nhn.get_range_enter(), nhn.get_range_leave());
 }
 
 void NGML_Output_Infoset::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)

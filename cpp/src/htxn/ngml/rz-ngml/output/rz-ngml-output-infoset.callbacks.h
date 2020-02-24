@@ -5,6 +5,24 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
+NGML_CALLBACK_(p)
+ WHEN_(around)
+ {
+  check_sentence_boundaries(node);
+ }
+ _WHEN
+// WHEN_(pre)
+// {
+// }
+// _WHEN_(post)
+// {
+//  check_
+// }
+// _WHEN
+_NGML_CALLBACK
+
+
+
 NGML_CALLBACK_(analysis-package)
  WHEN_(around)
  {

@@ -134,6 +134,9 @@ public:
    u2 enter_order, u4 index, Glyph_Argument_Package& cmdgap, 
    QVector<QPair<HTXN_Node_Detail*, QString>>& precs, QStringList& succs, QString& result);
 
+ void check_sentence_boundaries(Glyph_Layer_8b* gl, 
+   u4 enter, u4 leave, QMap<u4, QString>& notes);
+
 };
 
 _KANS(HTXN)

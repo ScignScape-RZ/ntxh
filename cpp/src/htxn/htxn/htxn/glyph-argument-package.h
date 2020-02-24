@@ -76,6 +76,8 @@ struct Glyph_Argument_Package
  u2 external_diacritic_code;
  u8 glyph_code;
  GlyphDeck_Base_8b* internal_deck;
+ u8 screened_code;
+
 //? Diacritic_GlyphDeck_Base* internal_diacritic_deck;
 
  Glyph_Argument_Package();

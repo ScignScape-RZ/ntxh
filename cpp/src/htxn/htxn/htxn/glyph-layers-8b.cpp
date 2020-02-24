@@ -117,6 +117,20 @@ void Glyph_Layers_8b::get_qstring_out(Glyph_Vector_8b& gv,
 
 }
 
+void Glyph_Layers_8b::get_screened_code(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
+{
+ GlyphDeck_Base_8b& deck = *gap.internal_deck;
+ gv.check_external(index, deck, gap);
+ if(gap.flags.normal)
+   deck.get_screened_code((u1)gap.screened_code);
+ else if(gap.flags.confirmed_non_diacritic)
+ {
+  gap.screened_code = deck.null_code();
+ }
+}
+
+
 void Glyph_Layers_8b::get_xml_out(Glyph_Vector_8b& gv,
   u4 index, Glyph_Argument_Package& gap)
 {

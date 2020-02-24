@@ -13,3 +13,9 @@ GlyphDeck_Base_8b::GlyphDeck_Base_8b()
 {
 
 }
+
+u1 GlyphDeck_Base_8b::get_standard_equivalent(u1 gp)
+{
+ return null_code();
+}
+
