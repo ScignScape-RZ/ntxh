@@ -137,8 +137,10 @@ bool Glyph_Layers_8b::check_letter(Glyph_Vector_8b& gv,
  gv.check_external(index, deck, gap);
  if(gap.flags.normal)
    return deck.check_letter((u1)gap.glyph_code);
- else if(gap.flags.confirmed_non_diacritic)
+ else if(gap.flags.confirmed_external_diacritic)
    return true;
+ else if(gap.flags.confirmed_non_diacritic)
+   return false;
  return false;
 }
 
@@ -148,7 +150,7 @@ bool Glyph_Layers_8b::check_sentence_end_marker(Glyph_Vector_8b& gv,
  GlyphDeck_Base_8b& deck = *gap.internal_deck;
  gv.check_external(index, deck, gap);
  if(gap.flags.normal)
-   return false;
+   return deck.check_sentence_end_marker((u1)gap.glyph_code);
  else if(gap.flags.confirmed_non_diacritic)
    return deck.check_sentence_end_marker((u1)gap.glyph_code);
  return false;

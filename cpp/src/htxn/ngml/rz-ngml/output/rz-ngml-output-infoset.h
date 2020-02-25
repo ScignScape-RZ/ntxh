@@ -55,7 +55,8 @@ class NGML_Output_Infoset : public NGML_Output_Base, private NGML_Output_Event_H
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
  void check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node);
- void check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node, NGML_HTXN_Node& nhn);
+ void check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node,
+   NGML_HTXN_Node& nhn, u4 enter, u4 leave);
 
  void mark_sentence(QTextStream& qts, caon_ptr<tNode> node, u4 
    enter, u4 leave);

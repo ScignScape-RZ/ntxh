@@ -20,6 +20,7 @@
 
 #include "ngml-htxn/ngml-htxn-node.h"
 #include "htxn/htxn-document-8b.h"
+#include "htxn/glyph-layer-8b.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -246,10 +247,16 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<t
   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
   {
-   qts << "\np_";
-   check_sentence_boundaries(qts, node, *nhn);
-   qts << "_p\n";
-  }  
+   u4 rp = ntc->ref_position();
+   u4 ro = ntc->ref_order();
+   u4 leave = 0;
+   if(ngml_output_htxn_->main_gl()->get_range_by_enter(rp, leave, ro))
+   {
+    qts << "\np_";
+    check_sentence_boundaries(qts, node, *nhn, rp, leave);
+    qts << "\n_p\n";
+   }
+  }
  } 
 }
 
@@ -258,27 +265,39 @@ void NGML_Output_Infoset::mark_sentence(QTextStream& qts, caon_ptr<tNode> node, 
  qts << "\n$ " << enter << " " << leave;
 }
 
-void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node, NGML_HTXN_Node& nhn)
+void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts,
+  caon_ptr<tNode> node, NGML_HTXN_Node& nhn, u4 enter, u4 leave)
 { 
  QMap<u4, QString> notes;
- u4 e = nhn.get_range_enter();
- u4 l = nhn.get_range_leave();
+// HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
+// if(!nd)
+//   return;
+// QVector<u4>* r = nd->get_refs();
+// if(!r)
+//   return;
+// if(r->isEmpty())
+//   return;
+// HTXN_Node_Detail* nd1 = htxn_document_->get_node_detail(r->first());
+// u4 e = nd1->enter; //nhn.get_range_enter();
+// if(e < 2)
+//   return;
+// u4 l = nd1->leave;
+// if(l < e)
+//   return;
  Glyph_Layer_8b* gl = ngml_output_htxn_->main_gl();
  htxn_document_->check_sentence_boundaries(gl, 
-   e, l, notes);
- u4 i = e;
- while(i <= l)
+   enter, leave, notes);
+ u4 i = enter;
+ while(i <= leave)
  {
   u4 ss = 0;
-  if(htxn_document_->scan_for_sentence_start(gl, i, l, ss))
-  {
-   u4 se = 0;
-   if(htxn_document_->scan_for_sentence_end(gl, ss, l, se))
-   {
-    mark_sentence(qts, node, ss, se);
-    i = se + 1;
-   }
-  }
+  if(!htxn_document_->scan_for_sentence_start(gl, i, leave, ss))
+    break;
+  u4 se = 0;
+  if(!htxn_document_->scan_for_sentence_end(gl, ss, leave, se))
+    break;
+  mark_sentence(qts, node, ss, se);
+  i = se + 1;
  }
 }
 
