@@ -238,7 +238,7 @@ void NGML_Output_Infoset::generate_tag_command_entry(const NGML_Output_Bundle& b
  }
 }
 
-void NGML_Output_Infoset::check_sentence_boundaries(caon_ptr<tNode> node)
+void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node)
 {
  CAON_PTR_DEBUG(tNode ,node)
  if(caon_ptr<NGML_Tag_Command> ntc = node->ngml_tag_command())
@@ -246,17 +246,40 @@ void NGML_Output_Infoset::check_sentence_boundaries(caon_ptr<tNode> node)
   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
   {
-   check_sentence_boundaries(*nhn);
+   qts << "\np_";
+   check_sentence_boundaries(qts, node, *nhn);
+   qts << "_p\n";
   }  
  } 
 }
 
-void NGML_Output_Infoset::check_sentence_boundaries(NGML_HTXN_Node& nhn)
+void NGML_Output_Infoset::mark_sentence(QTextStream& qts, caon_ptr<tNode> node, u4 enter, u4 leave)
+{
+ qts << "\n$ " << enter << " " << leave;
+}
+
+void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node, NGML_HTXN_Node& nhn)
 { 
  QMap<u4, QString> notes;
- htxn_document_->check_sentence_boundaries(ngml_output_htxn_->main_gl(), 
-   nhn.get_range_enter(), 
-   nhn.get_range_leave(), notes);
+ u4 e = nhn.get_range_enter();
+ u4 l = nhn.get_range_leave();
+ Glyph_Layer_8b* gl = ngml_output_htxn_->main_gl();
+ htxn_document_->check_sentence_boundaries(gl, 
+   e, l, notes);
+ u4 i = e;
+ while(i <= l)
+ {
+  u4 ss = 0;
+  if(htxn_document_->scan_for_sentence_start(gl, i, l, ss))
+  {
+   u4 se = 0;
+   if(htxn_document_->scan_for_sentence_end(gl, ss, l, se))
+   {
+    mark_sentence(qts, node, ss, se);
+    i = se + 1;
+   }
+  }
+ }
 }
 
 void NGML_Output_Infoset::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)

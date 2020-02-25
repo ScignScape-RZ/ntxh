@@ -130,6 +130,29 @@ void Glyph_Layers_8b::get_screened_code(Glyph_Vector_8b& gv,
  }
 }
 
+bool Glyph_Layers_8b::check_letter(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
+{
+ GlyphDeck_Base_8b& deck = *gap.internal_deck;
+ gv.check_external(index, deck, gap);
+ if(gap.flags.normal)
+   return deck.check_letter((u1)gap.glyph_code);
+ else if(gap.flags.confirmed_non_diacritic)
+   return true;
+ return false;
+}
+
+bool Glyph_Layers_8b::check_sentence_end_marker(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
+{
+ GlyphDeck_Base_8b& deck = *gap.internal_deck;
+ gv.check_external(index, deck, gap);
+ if(gap.flags.normal)
+   return false;
+ else if(gap.flags.confirmed_non_diacritic)
+   return deck.check_sentence_end_marker((u1)gap.glyph_code);
+ return false;
+}
 
 void Glyph_Layers_8b::get_xml_out(Glyph_Vector_8b& gv,
   u4 index, Glyph_Argument_Package& gap)

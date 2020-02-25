@@ -431,6 +431,29 @@ bool Standard_GlyphDeck_8b::check_swap_dot(u1& dot, bool to_non_punctuation)
  return false;
 }
 
+bool Standard_GlyphDeck_8b::check_letter(u1 gp)
+{
+ if(gp >= 63)
+   return false;
+ if(gp < 10) // 0-9
+   return false;
+ if(gp < 36) // a-z
+   return true;
+ if(gp == 36)
+   return false;
+ if(gp < 63) // A-Z
+   return true; 
+}
+
+bool Standard_GlyphDeck_8b::check_sentence_end_marker(u1 gp)
+{
+ if(gp <= 63)
+   return false;
+ gp &= 63;
+ return (gp == 0) // .
+   || (gp == 1) // !
+   || (gp == 9); // ?  
+}
 
 QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 {

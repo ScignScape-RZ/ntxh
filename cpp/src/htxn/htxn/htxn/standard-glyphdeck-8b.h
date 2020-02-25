@@ -133,6 +133,9 @@ public:
  void swap_sentence_end_space(u1& space) Q_DECL_OVERRIDE;
  bool check_swap_dot(u1& end, bool to_non_punctuation) Q_DECL_OVERRIDE;
 
+ bool check_letter(u1 gp) Q_DECL_OVERRIDE;
+ bool check_sentence_end_marker(u1 gp) Q_DECL_OVERRIDE;
+
 // void get_htxne_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 
 // virtual void check_external(u1 gp, Glyph_Argument_Package& gap);

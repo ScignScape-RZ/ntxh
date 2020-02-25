@@ -63,6 +63,9 @@ public:
  virtual void swap_sentence_end_space(u1& end) = 0;
  virtual bool check_swap_dot(u1& dot, bool to_non_punctuation) = 0;
 
+ virtual bool check_letter(u1 gp) = 0;
+ virtual bool check_sentence_end_marker(u1 gp) = 0;
+
  virtual u1 get_standard_equivalent(u1 gp);
 };
 

@@ -137,6 +137,10 @@ public:
  void check_sentence_boundaries(Glyph_Layer_8b* gl, 
    u4 enter, u4 leave, QMap<u4, QString>& notes, GlyphDeck_Base_8b* deck = nullptr);
 
+ bool scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck = nullptr);
+
+ bool scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck = nullptr);
+
 };
 
 _KANS(HTXN)

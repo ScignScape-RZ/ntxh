@@ -71,6 +71,12 @@ public:
  void get_htxne_out(Glyph_Vector_8b& gv,
    u4 index, Glyph_Argument_Package& gap);
 
+ bool check_letter(Glyph_Vector_8b& gv,
+   u4 index, Glyph_Argument_Package& gap);
+
+ bool check_sentence_end_marker(Glyph_Vector_8b& gv,
+   u4 index, Glyph_Argument_Package& gap);
+
  //virtual void check_external(u1 gp, Glyph_Argument_Package& gap); 
 
 };

@@ -8,7 +8,7 @@
 NGML_CALLBACK_(p)
  WHEN_(around)
  {
-  check_sentence_boundaries(node);
+  check_sentence_boundaries(qts, node);
  }
  _WHEN
 // WHEN_(pre)

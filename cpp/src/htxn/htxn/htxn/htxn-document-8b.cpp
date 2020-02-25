@@ -539,6 +539,44 @@ void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl,
    _csb::N_A, 0, 0, {}}).check_sentence_boundaries();
 }
 
+bool HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
+{
+ if(!deck)
+  deck = current_deck_;
+
+ Glyph_Argument_Package gap;
+ gap.internal_deck = deck;
+
+ for(u4 i = start; i <= end; ++i)
+ {
+  if(check_letter(*gl, i, gap))
+  {
+   result = i;
+   return true;
+  }
+ }
+ return false; 
+}
+
+bool HTXN_Document_8b::scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
+{
+ if(!deck)
+  deck = current_deck_;
+
+ Glyph_Argument_Package gap;
+ gap.internal_deck = deck;
+
+ for(u4 i = start; i <= end; ++i)
+ {
+  if(check_sentence_end_marker(*gl, i, gap))
+  {
+   result = i;
+   return true;
+  }
+ }
+}
+
+
 void HTXN_Document_8b::write_minimal_xml_out(u4 layer_code,
   const QPair<u4, u4>& range, QTextStream& qts)
 {

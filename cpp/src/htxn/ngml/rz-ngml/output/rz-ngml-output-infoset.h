@@ -54,17 +54,20 @@ class NGML_Output_Infoset : public NGML_Output_Base, private NGML_Output_Event_H
 
  caon_ptr<NGML_Command_Callback> check_command_callback(caon_ptr<NGML_Tag_Command> ntc) Q_DECL_OVERRIDE;
 
- void check_sentence_boundaries(caon_ptr<tNode> node);
- void check_sentence_boundaries(NGML_HTXN_Node& nhn);
+ void check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node);
+ void check_sentence_boundaries(QTextStream& qts, caon_ptr<tNode> node, NGML_HTXN_Node& nhn);
+
+ void mark_sentence(QTextStream& qts, caon_ptr<tNode> node, u4 
+   enter, u4 leave);
 
 public:
 
  NGML_Output_Infoset(NGML_Document& document, HTXN_Infoset_8b* infoset);
 
+ ACCESSORS(NGML_Output_HTXN* ,ngml_output_htxn)
+
  void write_infoset_output(QString& output);
  void export_infoset(QString path);
-
- ACCESSORS(NGML_Output_HTXN* ,ngml_output_htxn)
 
  void generate(QTextStream& qts);
 
