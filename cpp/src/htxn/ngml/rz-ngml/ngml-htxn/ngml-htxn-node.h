@@ -27,10 +27,11 @@ RZNS_(NGML)
 class NGML_HTXN_Node 
 {
  u4 detail_code_;
-
  u4 layer_code_;
 
  QPair<u4, u4> range_;
+
+ u4 ref_order_;
 
  NGML_Whitespace ws_;
 
@@ -51,8 +52,14 @@ public:
  u4 get_range_enter();
  u4 get_range_leave();
 
+ u4 get_ref_enter();
+ u4 get_ref_leave();
+
  void set_range_enter(u4 enter);
  void set_range_leave(u4 leave);
+
+ void set_ref_positions(u4 pos, u4 order, 
+   u4 leave);
 
  template<typename T>
  void write_whitespace(T& t)

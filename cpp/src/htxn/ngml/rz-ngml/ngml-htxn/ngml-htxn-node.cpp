@@ -13,7 +13,8 @@ USING_RZNS(NGML)
 
 NGML_HTXN_Node::NGML_HTXN_Node(u4 detail_code) 
   :  detail_code_(detail_code), 
-     layer_code_(0), range_({0,0})
+     layer_code_(0), range_({0,0}),
+     ref_order_(0)
 {
 
 }
@@ -36,14 +37,40 @@ void NGML_HTXN_Node::set_range_leave(u4 leave)
  range_.second = leave;
 }
 
+void NGML_HTXN_Node::set_ref_positions(u4 pos, u4 order, 
+  u4 leave)
+{
+ ref_order_ = order;
+ range_ = {pos, leave};
+}
+
+u4 NGML_HTXN_Node::get_ref_enter()
+{
+ if(ref_order_ == 0)
+   return 0;
+ return range_.first;
+}
+
+u4 NGML_HTXN_Node::get_ref_leave()
+{
+ if(ref_order_ == 0)
+   return 0;
+ return range_.second;
+}
+
 
 u4 NGML_HTXN_Node::get_range_enter()
 {
- return range_.first;
+ if(ref_order_ == 0)
+   return range_.first;
+ return 0;
 }
 
 u4 NGML_HTXN_Node::get_range_leave()
 {
- return range_.second;
+ if(ref_order_ == 0)
+   return range_.second;
+ return 0;
 }
+
 

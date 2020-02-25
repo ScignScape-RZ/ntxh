@@ -675,9 +675,17 @@ void NGML_Output_HTXN::generate_tag_command_leave(const NGML_Output_Bundle& b,
  else
  {
   if(ntc->flags.multi_arg_layer || ntc->flags.multi_arg_layer_inherited)
-    tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_ - 1);
+  {
+   tag_command_arg_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), tag_command_arg_index_ - 1);
+   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
+     nhn->set_ref_positions(ntc->ref_position(), ntc->ref_order() + 1, b.index - 1);
+  }
   else
-    main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index - 1);
+  {
+   main_gl_->set_range_leave(ntc->ref_position(), ntc->ref_order(), b.index - 1);
+   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
+     nhn->set_ref_positions(ntc->ref_position(), ntc->ref_order() + 1, b.index - 1);
+  }
  }
 }
 

@@ -247,15 +247,31 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<t
   CAON_PTR_DEBUG(NGML_Tag_Command ,ntc)
   if(NGML_HTXN_Node* nhn = ntc->ngml_htxn_node())
   {
-   u4 rp = ntc->ref_position();
-   u4 ro = ntc->ref_order();
-   u4 leave = 0;
-   if(ngml_output_htxn_->main_gl()->get_range_by_enter(rp, leave, ro))
+   u4 enter = nhn->get_ref_enter();
+   if(enter > 1)
    {
-    qts << "\np_";
-    check_sentence_boundaries(qts, node, *nhn, rp, leave);
-    qts << "\n_p\n";
+    u4 leave = nhn->get_ref_leave();
+    if(leave >= enter)
+    {
+     qts << "\np_";
+     check_sentence_boundaries(qts, node, *nhn, enter, leave);
+     qts << "\n_p";
+    } 
    }
+
+//   u4 rp = ntc->ref_position();
+//   u4 ro = ntc->ref_order();
+//   u4 leave = 0;
+//
+//   if(ngml_output_htxn_->main_gl()->get_range_by_enter(rp, leave, ro))
+//   {
+//    qts << "\np_";
+
+//check_sentence_boundaries(qts, node, *nhn, rp, leave);
+
+//    check_sentence_boundaries(qts, node, *nhn, rp, leave);
+//   qts << "\n_p\n";
+//   }
   }
  } 
 }
