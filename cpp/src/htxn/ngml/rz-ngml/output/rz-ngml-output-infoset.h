@@ -34,6 +34,7 @@ class NGML_Command_Callback;
 
 class NGML_HTXN_Node;
 class NGML_Output_HTXN;
+//class NGML_Output_Infoset
 
 class NGML_Output_Infoset : public NGML_Output_Base, private NGML_Output_Event_Handler
 {
@@ -46,6 +47,8 @@ class NGML_Output_Infoset : public NGML_Output_Base, private NGML_Output_Event_H
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();
 
+ NGML_Output_HTXN* ngml_output_htxn_;
+ 
  void check_post_callback(QTextStream& qts,
   caon_ptr<NGML_Command_Callback> cb, caon_ptr<tNode> node, u4 index);
 
@@ -61,7 +64,7 @@ public:
  void write_infoset_output(QString& output);
  void export_infoset(QString path);
 
-//? ACCESSORS(NGML_Output_HTXN* ,ngml_output_htxn)
+ ACCESSORS(NGML_Output_HTXN* ,ngml_output_htxn)
 
  void generate(QTextStream& qts);
 

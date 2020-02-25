@@ -519,7 +519,7 @@ void _csb::check_state(u1 gp, u4 i)
 void _csb::check_sentence_boundaries()
 {
  Glyph_Argument_Package gap;
- gap.internal_deck = current_deck_;
+ gap.internal_deck = &deck;
 
  for(u4 i = enter; i <= leave; ++i)
  {

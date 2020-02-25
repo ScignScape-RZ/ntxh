@@ -95,6 +95,8 @@ public:
 
  NGML_Output_HTXN(NGML_Document& document, HTXN_Document_8b* htxn_document);
 
+ ACCESSORS(Glyph_Layer_8b* ,main_gl)
+
  void export_htxne(QString path = "..htxne");
  void write_htxne_output(QString& html_output);
 

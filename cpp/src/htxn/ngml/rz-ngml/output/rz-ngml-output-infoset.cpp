@@ -35,7 +35,7 @@ USING_RZNS(NGML)
 
 NGML_Output_Infoset::NGML_Output_Infoset(NGML_Document& document, HTXN_Infoset_8b* infoset)
  :  NGML_Output_Base(document), NGML_Output_Event_Handler(), 
-    infoset_(infoset), suppress_node_(nullptr) //, ngml_output_htxn_(nullptr)
+    infoset_(infoset), suppress_node_(nullptr), ngml_output_htxn_(nullptr)
 {
  //?htxn_qts_.setString(&htxn_acc_);
  init_callbacks();
@@ -252,8 +252,11 @@ void NGML_Output_Infoset::check_sentence_boundaries(caon_ptr<tNode> node)
 }
 
 void NGML_Output_Infoset::check_sentence_boundaries(NGML_HTXN_Node& nhn)
-{
- htxn_document_->check_sentence_boundaries(nhn.get_range_enter(), nhn.get_range_leave());
+{ 
+ QMap<u4, QString> notes;
+ htxn_document_->check_sentence_boundaries(ngml_output_htxn_->main_gl(), 
+   nhn.get_range_enter(), 
+   nhn.get_range_leave(), notes);
 }
 
 void NGML_Output_Infoset::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
