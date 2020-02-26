@@ -54,7 +54,7 @@
 \setlength{\footskip}{23pt}
 
 \usepackage[paperheight=14.5in,paperwidth=9.1in]{geometry}
-\geometry{left=1.1in,top=1.1in,right=.6in,bottom=1.8in} %margins
+\geometry{left=1.1in,top=1.1in,right=.6in,bottom=1.4in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
 
@@ -431,56 +431,26 @@ software applications.}
 \p{The \LXCR{} Document Object 
 Model defines a protocol for examining document structure 
 which recognizes the dictinct structural features 
-of different manuscript formats, particularly 
+of different manuscript formats, such as 
 \LaTeX{}, \XML{}, Concurrent Markup, and 
 graph-oriented markup formats such as \RDF{}.  
 In short, \LXCR{} offers a common representation for 
 publications structured as either \LaTeX{} or 
-\XML{}/\HTML{} documents (or a combination of the two), 
-including \RDF{} and Concurrent Markup which, 
-technically, are structural extensions of \XML{}.  
+\XML{}/\HTML{} documents (or a combination of the two).  
 Conceptually, the \LXCR{} Document Object Model effectively 
 extends the \XML{} Document Object Model (\DOM{}) 
 to incorporate unique features of \LaTeX{}, \RDF{}, 
 and Concurrent Markup paradigms, features which are not 
 internally part of \XML{} and therefore not directly 
-represented by \XML{}'s Document Object Model.}
+represented by \XML{}'s \DOM{}.}
 
-\p{In \XML{}, the \DOM{} is considered a protocol for 
-accessing an \XML{} \textit{infoset}, which is an 
-internal representation of \XML{} documents that 
-abstracts from surface-level syntax.  Analogously, 
-\LXCR{} documents have an internal structure which 
-can be built from different kinds of source 
-files; as such, different markup language may 
-be used to create the same \LXCR{} document. 
-In this manner, publishers or educational institutions can 
-create their own \LXCR{}-compatible markup language --- either a 
-specialized version of familiar languages 
-such as \XML{}, or something entirely different. 
-By compiling the markup to \LXCR{}, manuscripts 
-in diverse surface-level formats can be 
-used interoperably, or combined into larger documents.  
-Because the source markup is abstracted from the 
-internal representation, \LXCR{} data structures 
-may be more precisely described as \q{infosets} 
-rather than as \q{documents}.  Nevertheless 
-(to sustain the analogy with \XML{}), 
-the protocol for defining and accessing the 
-structure of \LXCR{} infosets is called the \LXCR{} 
-Document Object Model (\LDOM{}).
-}
-
-\p{Complementing this Document Object Model, 
-the \LXCR{} Plugin Framework (\LPF{}) 
+\p{Complementing \LXCR{}'s Document Object Model 
+(\LDOM{}), the \LXCR{} Plugin Framework (\LPF{}) 
 presents a standard model for embedding publication 
 tools into software applications --- in particular, 
 scientific and/or multimedia applications which 
-enhance the reading experience by giving readers 
-convenient access to interactive, multimedia content.}
-
-\mnote{\LXCR{} for multi-media and data-sets}
-\p{\lLXCR{} is designed for a 
+permit users to view specialized technical information 
+and/or multimedia content.  \lLXCR{} is designed for a 
 contemporary publishing industry where individual 
 books and articles are only one part of a network 
 encompassing text, data, and multimedia resources.  
@@ -498,16 +468,16 @@ publication, to analytic code or data sets which
 help readers evaluate or even reproduce research 
 findings.  Given this data- and multimedia-oriented 
 publishing ecosystem, it is important that publishing 
-software (both tools for authors to create documents and tools for readers to fully experience them) 
+software --- both tools for authors to create documents and 
+tools for readers to fully experience them --- 
 properly model and implement networks which can 
 integrate disparate reading, technical, and multimedia 
 applications into a unified e-reading platform.
 }
 
-\mnote{Publi-cation Packages}
 \p{Insofar as a full publication package (not just  
 primary books/articles but also data sets, 
-computer code, and/or multimedia files) encompasses 
+computer code, or multimedia files) encompasses 
 many different kinds of digital resources, 
 it is no longer adequate to consider one 
 single application (e.g., a \PDF{} viewer) 
@@ -527,21 +497,21 @@ viewer must be able to launch and/or send signals to
 the proper molecular-visualization applications, and 
 these applications in turn must know how to respond to the data 
 sent from the document viewer.  Such inter-operability 
-can be achieved by embedding \LXCR{} plugins in both applications; 
+can be achieved by embedding plugins in both applications; 
 most of the inter-application integration is then achieved 
 by the plugins communicating with one another.  
 }
 
-\mnote{How \LPF{} \\and \LDOM{} are inter-related}
 \p{This paper will present further information about both 
 aspects of \LXCR{} --- the Document Object Model and the 
-Plugin Framework.  To be clear, though, \LDOM{} and \LPF{} are closely interrelated.  The data pertinent 
+Plugin Framework.  To be clear, though, these two 
+dimensions are closely interrelated.  The data pertinent 
 to inter-application networking, in the context of 
 creating and reading publications, is closely linked 
 to document structure --- which in turned is expressed 
 by a Document Object Model.  For example, each 
 supplemental multimedia resource (such as \ThreeD{} graphics) 
-is especially relevant at a specific location in the 
+is especially relevant at specific locations in the 
 publication text.  Interactive \ThreeD{} views of a 
 chemical compound (or analogously biological or physical  
 entities such as viruses, tissue samples, vector fields, etc.) 
@@ -549,9 +519,9 @@ are most helpful to the reader in conjunction with
 locations in the text where that specific chemical, biological, or 
 physical phenomenon is discussed.  Continuing the 
 above example, links to Protein Data Bank files should be 
-embedded at the point in a publication where the modeled protein is 
+embedded at the point in a publication where the protein is 
 mentioned or analyzed.  It is not 
-sufficient simply to note that a given 
+sufficient, that is, simply to note that a given 
 multimedia file is a supplement to a given publication; 
 instead, the link between the two resources 
 has to be grounded at a granular location in the 
@@ -584,7 +554,7 @@ not exist a standard model for combining plugins and
 \DOM{}s into a unified protocol.  \lLXCR{} therefore 
 represents a novel paradigm which specifically 
 addresses the implementational challenges of  
-contemporary publishing technology.
+contemporary publishing technology    
 }
 
 
@@ -969,32 +939,110 @@ in a more conventional, less interactive fashion.
 }
 
 \vspace{2em}
+\noindent\lun{The Proposed ETS Plugin Framework}
+{\sectsp}
+
+\p{As proposed, the ETS Plugin Framework would create 
+a common code base that can be used to 
+implement ETS-specific plugins to 
+applications spanning a range of academic 
+disciplines and subject areas.  The primary 
+goal of these plugins would be to connect 
+e-reader software --- applications 
+for viewing test-preparation and course 
+materials --- with domain-specific software 
+which instructors may use as teaching aids.  
+With respect to GRE exams in fields 
+such as biology, chemistry, or physics, 
+domain-specific applications might include 
+bioinformatics, molecular visualization, 
+or physical simulation tools, respectively.  
+ETS plugins would help scientific applications 
+become more valuable as classroom tools.  In 
+particular, with ETS plugins these applications 
+can (1) receive signals from document viewers 
+(such as PDF viewers) to automatically display 
+multimedia content and (2) display course 
+and instructional materials.  As a 
+concrete example, consider molecularal 
+visualization software such as IQmol.  Via 
+an ETS plugin, IQmol could (1) render a \ThreeD{} 
+image given data, in a chemical file format, 
+received from an e-reader with a similar plugin; 
+and (2) display instructions, questions, 
+assignments, or course-related content 
+(such as graphics for chemical compounds discussed 
+in class) provided by instructors.}
+
+\mnote{ETS\\ Plugin \\Cloud \\Services}
+\p{Supplementing the functionality described in the 
+preceding paragraph, Cloud Services can be 
+used to connect individual applications 
+to content and curricula specific to individual 
+courses.  Because most scientific applications 
+are implemented as desktop software, the hosting 
+of the cloud back-ends to support these features 
+would be a natural fit for LTS's \q{Native Cloud/Native} 
+(NCN) protocol, which is specifically designed 
+to integrate desktop front-ends with Cloud/Native 
+services.  According to this architecture, 
+NCN services would host information specific to 
+individual courses, students, and instructors.  
+When a student launches an application with an 
+ETS plugin, the plugin would retrieve data 
+pertaining to that student and to his or her classes.  
+As appropriate, the plugin could then instruct the 
+host application to load specific content, and/or 
+present questions or instructions supplied 
+by the instructor.  For example, IQmol could 
+load a list of molecular files corresponding to 
+chemicals studied in the students' class.  
+The ETS Plugin Cloud back-end would also be 
+used by document (e.g., PDF) viewers to obtain 
+information needed to properly route signals 
+to other applications using ETS Plugins.}
+
+\mnote{Student \\Dash-\\board}
+\p{In addition, one feature which should be common to all ETS 
+Plugins is a \q{dashboard}, or a separate window 
+aggregating the student's information.  The 
+dashboard's design would be roughly as follows: 
+student information would be divided into 
+four or perhaps five tabs, with labels such 
+as \q{My Courses}, \q{My Library}, 
+perhaps \q{My Tests}, \q{My Applications}, and 
+\q{My Account}.  Under the Courses tab, 
+students select one course to focus on, 
+which would cause the Library and Tests 
+tabs to prioritize tests, test preparation, and 
+readings assigned for that course.  Under 
+the Applications tab, students could see 
+a list of all applications on their computer 
+which have the ETS Plugin installed, or 
+which are used as pedagogical tools for their 
+courses, or which they are instructed to install 
+(the plugin could identify required software 
+which students have not yet installed based 
+on information provided by the ETS Cloud Service).}
+
+\vspace{2em}
 \noindent\lun{The \lsHTXN{} Protocol}
 {\sectsp}
 
-\p{\lHTXN{} defines a protocol for character-encoding manuscripts and 
-defining document structures via 
-graphs, whose nodes correspond to 
-ranges in a character stream.  
-\lHTXN{} therefore uses 
-\q{standoff annotation} (i.e., character 
-encoding and document structure are 
-defined in isolation from one another), and 
-can be used to encode manuscripts in 
-many different markup formats.  
-\lLXCR{} and \lHTXN{} are autonomous 
-technologies (each may be used apart 
-from the other), but they form a 
-natural pairing to encode both 
-the character/orthographic data and 
-the document structure of 
-manuscripts for publication.}
-
-\p{The central goal 
-of \HTXN{} is to support the new generation of 
+\p{\lHTXN{} is a new format and protocol for 
+representing publications.  The central goal 
+of \HTXN{} is to support a new generation of 
 publishing technologies, where conventional 
 document formats are increasingly being supplanted 
 by digital, multimedia reader experiences.  
+In the contemporary publishing paradigm, 
+individual publications are often linked 
+with other forms of digital content: multimedia 
+resources, research data sets, machine-readable 
+representations of document text, and 
+domain-specific sofware applications 
+(used to study or visualize the case-studies or 
+research findings discussed in publications).  
 The conventional manuscript (the \q{primary} 
 resource which is cited and downloaded) 
 is then networked with a package of 
@@ -1138,93 +1186,6 @@ ambient space, or where systems are visualized
 as systems evolving over time.  
 \end{enumerate}
 }
-
-\vspace{2em}
-\noindent\lun{The Proposed ETS Plugin Framework}
-{\sectsp}
-
-\p{As proposed, the ETS Plugin Framework would create 
-	a common code base that can be used to 
-	implement ETS-specific plugins to 
-	applications spanning a range of academic 
-	disciplines and subject areas.  The primary 
-	goal of these plugins would be to connect 
-	e-reader software --- applications 
-	for viewing test-preparation and course 
-	materials --- with domain-specific software 
-	which instructors may use as teaching aids.  
-	With respect to GRE exams in fields 
-	such as biology, chemistry, or physics, 
-	domain-specific applications might include 
-	bioinformatics, molecular visualization, 
-	or physical simulation tools, respectively.  
-	ETS plugins would help scientific applications 
-	become more valuable as classroom tools.  In 
-	particular, with ETS plugins these applications 
-	can (1) receive signals from document viewers 
-	(such as PDF viewers) to automatically display 
-	multimedia content and (2) display course 
-	and instructional materials.  As a 
-	concrete example, consider molecularal 
-	visualization software such as IQmol.  Via 
-	an ETS plugin, IQmol could (1) render a \ThreeD{} 
-	image given data, in a chemical file format, 
-	received from an e-reader with a similar plugin; 
-	and (2) display instructions, questions, 
-	assignments, or course-related content 
-	(such as graphics for chemical compounds discussed 
-	in class) provided by instructors.}
-
-\mnote{ETS\\ Plugin \\Cloud \\Services}
-\p{Supplementing the functionality described in the 
-	preceding paragraph, Cloud Services can be 
-	used to connect individual applications 
-	to content and curricula specific to individual 
-	courses.  Because most scientific applications 
-	are implemented as desktop software, the hosting 
-	of the cloud back-ends to support these features 
-	would be a natural fit for LTS's \q{Native Cloud/Native} 
-	(NCN) protocol, which is specifically designed 
-	to integrate desktop front-ends with Cloud/Native 
-	services.  According to this architecture, 
-	NCN services would host information specific to 
-	individual courses, students, and instructors.  
-	When a student launches an application with an 
-	ETS plugin, the plugin would retrieve data 
-	pertaining to that student and to his or her classes.  
-	As appropriate, the plugin could then instruct the 
-	host application to load specific content, and/or 
-	present questions or instructions supplied 
-	by the instructor.  For example, IQmol could 
-	load a list of molecular files corresponding to 
-	chemicals studied in the students' class.  
-	The ETS Plugin Cloud back-end would also be 
-	used by document (e.g., PDF) viewers to obtain 
-	information needed to properly route signals 
-	to other applications using ETS Plugins.}
-
-\mnote{Student \\Dash-\\board}
-\p{In addition, one feature which should be common to all ETS 
-	Plugins is a \q{dashboard}, or a separate window 
-	aggregating the student's information.  The 
-	dashboard's design would be roughly as follows: 
-	student information would be divided into 
-	four or perhaps five tabs, with labels such 
-	as \q{My Courses}, \q{My Library}, 
-	perhaps \q{My Tests}, \q{My Applications}, and 
-	\q{My Account}.  Under the Courses tab, 
-	students select one course to focus on, 
-	which would cause the Library and Tests 
-	tabs to prioritize tests, test preparation, and 
-	readings assigned for that course.  Under 
-	the Applications tab, students could see 
-	a list of all applications on their computer 
-	which have the ETS Plugin installed, or 
-	which are used as pedagogical tools for their 
-	courses, or which they are instructed to install 
-	(the plugin could identify required software 
-	which students have not yet installed based 
-	on information provided by the ETS Cloud Service).}
 
 \end{document}
 
