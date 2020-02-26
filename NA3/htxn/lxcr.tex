@@ -279,7 +279,7 @@
 
 \newcommand{\p}{
 
-\vspace{1.2em}}
+\vspace{1em}}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -347,10 +347,11 @@
 \sethlcolor{hlcolor}
 
 \usepackage{scrextend}
-\newenvironment{mldescription}{%
+%\vspace*{3em}
+\newenvironment{mldescription}{\vspace{1em}%
   \begin{addmargin}[4pt]{1em}
     \setlength{\parindent}{-1em}%
-    \newcommand*{\mlitem}[1][]{\vspace{20pt}\par\medskip%
+    \newcommand*{\mlitem}[1][]{\vspace{5pt}\par\medskip%
 \hl{\textbf{##1}}\quad}\indent
 }{%
   \end{addmargin}
@@ -372,6 +373,21 @@
 		\textit{#1}}}
 \end{mdframed}}
 	}[3em]}}
+
+\newcommand{\mnoteb}[1]{%
+	\vspace*{1em}
+	\reversemarginpar
+	\raisebox{1em}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#1}}}
+				\end{mdframed}}
+			}[3em]}}
+
 
 \begin{document}
 	
@@ -510,6 +526,8 @@ integrate disparate reading, technical, and multimedia
 applications into a unified e-reading platform.
 }
 
+%\pagebreak
+%\vspace*{-5em}
 \mnote{Publi-cation Packages}
 \p{Insofar as a full publication package (not just  
 primary books/articles but also data sets, 
@@ -593,7 +611,7 @@ addresses the implementational challenges of
 contemporary publishing technology.
 }
 
-\vspace{2em}
+\vspace{4em}
 \noindent\lun{The LTXH Plugin Framework (\lsLPF{})}
 {\sectsp}  
 \p{The goal of \LPF{} is to define a standard protocol 
@@ -1083,7 +1101,7 @@ many different markup formats.
 \lLXCR{} and \lHTXN{} are autonomous 
 technologies (each may be used apart 
 from the other), but they form a 
-natural pairing to encode both 
+natural pairing, encompassing both 
 the character/orthographic data and 
 the document structure of 
 manuscripts for publication.}
@@ -1095,18 +1113,17 @@ document formats are increasingly being supplanted
 by digital, multimedia reader experiences.  
 The conventional manuscript (the \q{primary} 
 resource which is cited and downloaded) 
-is then networked with a package of 
+is, accordingly, often networked with a package of 
 supplemental (or \q{secondary}) resources.  
-The \HTXN{} protocol is designed to 
+\lHTXN{} protocol is designed to 
 rigorously document these multimedia networks, enabling 
 e-readers and domain-specific applications to be 
-integrated so that readers may easily access and 
-experience multimedia content.}
+integrated so that user may easily access multimedia content.}
 
 \p{The generic term \q{multimedia content} actually 
 encompasses multiple phenomena:
 
-\vspace{-1em}
+\vspace{-2em}
 \begin{description}[leftmargin=2pt,
 	labelindent=-2pt,labelsep=12pt]
 \item[Multimedia Files]  Individual 
@@ -1134,19 +1151,16 @@ which is encoded in domain-specific formats: representations
 of molecular structures, archaeological sites, image-processing 
 data, wave-forms for signal processing, sentence-parses for 
 linguistic analysis, and so forth.  To conveniently access 
-this kind of multimedia, readers need to use software 
+this kind of multimedia content, readers need to use software 
 which can send signals to the specialized applications 
 having the capability to recognize the domain-specific 
 formats and translate them to interactive, 
 visual presentations.  In short, publication viewers 
 (e.g., e-readers) need to participate in multi-application 
 networks, where data can be sent and received between 
-each component.  Publishers can provide this 
-functionality to readers by implementing special 
-e-readers and, in addition, writing plugins 
-(or collaborating with external application developers) 
-to ensure that applications networked with e-readers 
-are properly aligned with the e-readers themselves.
+each component.  One way to achieve this is via 
+protocols, such as \LPF{}, shared between both e-readers and 
+target applications.
 
 \item[Publications-as-Applications]  In some 
 cases, publications themselves are a form of 
@@ -1156,18 +1170,18 @@ start to end, but instead naturally lend
 themselves to a reading process which navigates 
 back and forth between different sections of 
 the text, or juxtaposes different sections to be 
-visible at the same time.  A canonical example 
-of such layered reading is testing materials 
-and test preparation, where exam questions, 
+visible at the same time.  Testing materials 
+and test preparation are a canonical example 
+of such layered reading, where exam questions, 
 instructions, supplemental materials (such 
 as passages for reading-comprehension 
 assessment), and comments or analyses about 
-answers (in the case of prep materials), 
-each form different layers which 
+answers (in the case of prep materials) 
+embody different layers which 
 students may wish to view side-by-side.  
 In these cases, e-readers cannot simply 
-treat the publication as one single ePub 
-or PDF file.  Instead, the manuscript needs 
+treat the publication as a single file.  
+Instead, the manuscript needs 
 to identify text segments which can be factored 
 into different layers, and the e-reader 
 needs to implement text-viewers which allow 
