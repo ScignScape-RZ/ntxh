@@ -53,8 +53,8 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=14.5in,paperwidth=9.1in]{geometry}
-\geometry{left=1.1in,top=1.1in,right=.6in,bottom=1.8in} %margins
+\usepackage[paperheight=15in,paperwidth=9.1in]{geometry}
+\geometry{left=1.3in,top=1.1in,right=.6in,bottom=1.6in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
 
@@ -275,6 +275,8 @@
 \newcommand{\HTML}{\resizebox{!}{8pt}{\AcronymText{HTML}}}
 \newcommand{\PDF}{\resizebox{!}{8pt}{\AcronymText{PDF}}}
 
+\newcommand{\lGRE}{\resizebox{!}{8pt}{\AcronymText{GRE}}}
+
 \newcommand{\p}{
 
 \vspace{1.2em}}
@@ -339,12 +341,17 @@
 
 \newcommand{\inditem}{\itemindent10pt\item}
 
+\usepackage{soul}
+
+\definecolor{hlcolor}{RGB}{246,252,161}
+\sethlcolor{hlcolor}
 
 \usepackage{scrextend}
 \newenvironment{mldescription}{%
   \begin{addmargin}[4pt]{1em}
     \setlength{\parindent}{-1em}%
-    \newcommand*{\mlitem}[1][]{\vspace{20pt}\par\medskip\textbf{##1}\quad}\indent
+    \newcommand*{\mlitem}[1][]{\vspace{20pt}\par\medskip%
+\hl{\textbf{##1}}\quad}\indent
 }{%
   \end{addmargin}
   \medskip
@@ -361,7 +368,7 @@
 	linecolor=red!20!cyan,userdefinedwidth=4em,
 	topline=false,
 	rightline=false]
-{{\fontfamily{ppl}\fontsize{14}{0}\selectfont
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
 		\textit{#1}}}
 \end{mdframed}}
 	}[3em]}}
@@ -392,7 +399,7 @@
 %interior hidden
 arc=2pt,outer arc=0pt,
 enhanced jigsaw,
-width=.75\textwidth,
+width=.98\textwidth,
 colback=ctmpppp!60,
 colframe=logoRed!30!darkRed,
 drop shadow=logoPurple!50!darkRed,
@@ -405,8 +412,7 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}		
 {\setlength{\fboxsep}{18pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Latex/XML/Concurrent/RDF Document Object Model and 
-Plugin Framework (\lsLXCR{})}}}}
+{\makebox{The Latex/XML/Concurrent/RDF Infoset and Plugin Framework} \\\vspace*{10pt}(\lsLXCR{})}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
@@ -417,9 +423,9 @@ Plugin Framework (\lsLXCR{})}}}}
 %\noindent\lun{Overview}
 \fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
 {\sectsp}
-\p{This paper will summarize the \LXCR{} document 
-object model and plugin 
-framework and discuss its 
+\p{The following pages will summarize \LXCR{} (a Document 
+Object Model and Plugin 
+Framework) and discuss its 
 applications for testing, education, and the 
 development of test and test-preparation materials.  
 \lLXCR{} combines the requirements of a 
@@ -429,8 +435,8 @@ as well as document-preparation tools inside
 software applications.}
 
 \p{The \LXCR{} Document Object 
-Model defines a protocol for examining document structure 
-which recognizes the dictinct structural features 
+Model defines a protocol for compiling and examining 
+document structure, one which recognizes the distinct structural features 
 of different manuscript formats, particularly 
 \LaTeX{}, \XML{}, Concurrent Markup, and 
 graph-oriented markup formats such as \RDF{}.  
@@ -479,7 +485,7 @@ scientific and/or multimedia applications which
 enhance the reading experience by giving readers 
 convenient access to interactive, multimedia content.}
 
-\mnote{\LXCR{} for multi-media and data-sets}
+\mnote{\LXCR{} for multi-media and datasets}
 \p{\lLXCR{} is designed for a 
 contemporary publishing industry where individual 
 books and articles are only one part of a network 
@@ -542,10 +548,10 @@ to document structure --- which in turned is expressed
 by a Document Object Model.  For example, each 
 supplemental multimedia resource (such as \ThreeD{} graphics) 
 is especially relevant at a specific location in the 
-publication text.  Interactive \ThreeD{} views of a 
+publication text.  In the case of interactive \ThreeD{} views of a 
 chemical compound (or analogously biological or physical  
-entities such as viruses, tissue samples, vector fields, etc.) 
-are most helpful to the reader in conjunction with 
+entities such as viruses, tissue samples, vector fields, etc.), 
+these assets are most helpful to the reader in conjunction with 
 locations in the text where that specific chemical, biological, or 
 physical phenomenon is discussed.  Continuing the 
 above example, links to Protein Data Bank files should be 
@@ -554,15 +560,15 @@ mentioned or analyzed.  It is not
 sufficient simply to note that a given 
 multimedia file is a supplement to a given publication; 
 instead, the link between the two resources 
-has to be grounded at a granular location in the 
+has to be grounded at a fixed location in the 
 text --- which is to say, at a specific point in the 
-document structure.  With this information, the 
+document structure.  With this information attached 
+to the document structure, a 
 publication viewer can add the visual cues and 
 user actions to access the supplemental content 
---- for example, hyprrefs, buttons, or context menu 
-options --- at the document locations which are 
-most convenient for the reader.
-}
+--- for example, hyperrefs, buttons, or context menu 
+options --- at document locations which are 
+most convenient for the reader.}
 
 \p{This specific example --- embedding visual cues and 
 user actions within publications, so that readers 
@@ -587,22 +593,21 @@ addresses the implementational challenges of
 contemporary publishing technology.
 }
 
-
 \vspace{2em}
 \noindent\lun{The LTXH Plugin Framework (\lsLPF{})}
 {\sectsp}  
 \p{The goal of \LPF{} is to define a standard protocol 
 for extending software applications so that they 
-may be used in conjunction with software for viewing 
-and composing publications.  In an educational context, 
+may be used in conjunction with software for composing and '
+viewing publications.  In an educational context, 
 \LPF{} plugins can augment scientific and 
 technical applications with features that enhance 
-their usefulness as teaching materials.  
-\lLPF{} plugins can integrate desktop applications 
+their usefulness as teaching platforms.  
+In particular, \LPF{} plugins can integrate desktop applications 
 with course curricula, educational materials, 
 and cloud services hosting student, instructor, 
-and course information.   In general, 
-\LPF{} refers not to a single plugin but rather a 
+and course information.  Overall, \LPF{} 
+refers not to a single plugin but rather a 
 framework for creating plugins tailored 
 to individual publishers, academic institutions, 
 or educational software packages.  A given 
@@ -624,6 +629,93 @@ Octave (an open-source Matlab emulator),
 \Qt{} Creator (a \Cpp{} Integrated Development 
 Environment), and XPDF (a \PDF{} viewer).}
 
+\p{This proposed ETS Plugin Framework would create 
+	a common code base that can be used to 
+	implement ETS-specific plugins for 
+	applications spanning a range of academic 
+	disciplines and subject areas.  The primary 
+	goal of these plugins would be to connect 
+	e-reader software --- applications 
+	for viewing test-preparation and course 
+	materials --- with domain-specific software 
+	which instructors may use as teaching aids.  
+	With respect to \GRE{} exams in fields 
+	such as biology, chemistry, or physics, 
+	domain-specific applications might include 
+	bioinformatics, molecular visualization, 
+	or physical simulation tools, respectively.  
+	ETS plugins would then help scientific applications 
+	become more valuable as classroom tools.  In 
+	particular, with ETS plugins these applications 
+	can (1) receive signals from document viewers 
+	(such as PDF viewers) to automatically display 
+	multimedia content and (2) display course 
+	and instructional materials.  As a 
+	concrete example, consider molecular 
+	visualization software such as IQmol.  Via 
+	an ETS plugin, IQmol could (1) render a \ThreeD{} 
+	image when it receives data, in a chemical file format, 
+	from e-readers with similar plugins; 
+	and (2) display instructions, questions, 
+	assignments, or course-related content 
+	(such as graphics for chemical compounds discussed 
+	in class) provided by instructors.}
+
+\mnote{ETS\\ Plugin \\Cloud \\Services}
+\p{Supplementing the functionality described in the 
+	preceding paragraph, Cloud Services can be 
+	used to connect individual applications 
+	to content and curricula specific to individual 
+	courses.  Because most scientific applications 
+	are implemented as desktop software, the hosting 
+	of the cloud back-ends to support these features 
+	would be a natural fit for Linguistic Technology 
+	System's \q{Native Cloud/Native} 
+	(NCN) protocol, which is specifically designed 
+	to integrate desktop front-ends with Cloud/Native 
+	services.  According to this architecture, 
+	NCN services would host information specific to 
+	individual courses, students, and instructors.  
+	When a student launches an application with an 
+	ETS plugin, the plugin would retrieve data 
+	pertaining to that student and to his or her classes.  
+	As appropriate, the plugin could then instruct the 
+	host application to load specific content, and/or 
+	present questions or instructions supplied 
+	by the instructor.  For example, IQmol could 
+	load a list of molecular files corresponding to 
+	chemicals studied in the students' class.  
+	The ETS plugin's back-end would also be 
+	used by document (e.g., PDF) viewers to obtain 
+	information needed to properly route signals 
+	to other applications using ETS Plugins.}
+
+\mnote{Student \\Dash-\\board}
+\p{In addition, one feature which should be common to all ETS 
+	Plugins is a \q{dashboard}, or a separate window 
+	aggregating the student's information.  The 
+	dashboard's design would be roughly as follows: 
+	student information would be divided into 
+	four or perhaps five tabs, with labels such 
+	as \q{My Courses}, \q{My Library}, 
+	perhaps \q{My Tests}, \q{My Applications}, and 
+	\q{My Account}.  The Account tab would review basic 
+	information such as login credentials and schools 
+	or programs where the student is registered. 
+	Under the Courses tab, 
+	students could select one course to focus on, 
+	which would cause the Library and Tests 
+	tabs to prioritize tests, test preparation, and 
+	readings assigned for that course.  Under 
+	the Applications tab, students could see 
+	a list of all applications on their computer 
+	which have the ETS Plugin installed, or 
+	which are used as pedagogical tools for their 
+	courses, or which they are instructed to install 
+	(the plugin could identify required software 
+	which students have not yet installed based 
+	on information provided by the ETS Cloud Service).}
+
 \p{A suite of inter-related \LPF{} plugins 
 --- for example, an ETS plugin suite --- would contribute 
 two kinds of functionality to their host 
@@ -631,9 +723,19 @@ applications: (1) tracking and presenting
 information specific to individual students, courses, 
 and instructors; and (2) allowing multiple applications 
 which each have ETS plugins to interoperate.  
-To explain the features of the plugin suite, consider 
-the following scenarios: 
+To explain the features of the plugin suite, the following 
+section will consider different scenarios where 
+ETS plugins could contribute new technology 
+benefiting student, instructors, authors, and publishers. 
 
+\vspace{2em}
+\noindent\lun{Use-Cases for the Proposed ETS Plugin Framework}
+{\sectsp}
+
+\p{To illustrate the functionality that would 
+be implemented via ETS plugins, consider 
+the following scenarios: 
+\vspace*{-2em}
 \begin{mldescription}%[itemsep=50pt]
 %\setlength{\itemsep}{50pt}
 \mlitem[%\parbox{14cm}{
@@ -646,37 +748,34 @@ with files describing visual, interactive materials
 which require specialized software.  For example, 
 texts about chemistry (e.g., study materials for 
 the chemistry \GRE{} exams) may include \ThreeD{} 
-models of chemical compouns which can be viewed 
+models of chemical compounds which can be viewed 
 with IQmol; biology texts may be illustrated 
 with \ThreeD{} tissue models which can be viewed 
 in MeshLab; physics texts may describe 
 equations or empirical data which may be visualized 
-via ParaView, or Matlab simulations that could be 
+via ParaView, or MatLab simulations that could be 
 executed through Octave.  Publications could then 
 embed these supplemental 
 materials directly, or else include links from which 
 the multimedia files may be downloaded.  If the 
 documents are viewed with an e-reader which itself 
-hosts an ETS plugin --- take XPDF as a case-study --- 
-then the viewer would identify the locations in the 
+hosts an ETS plugin, the viewer would identify locations in the 
 text where the multimedia files are relevant and, 
 when the student is reading that part of the text, 
 notify him or her of the option to automatically 
 launch the proper application with which to access the content.
 
 \pseudoIndent{} A hypothetical XPDF plugin, for example, 
-would identify the correct application to use to view 
-multimedia content based on the file type.  This feature 
-could also be refined via a cloud service --- information 
-provided by instructors could include notation of the 
-kinds of software used for any particular course.  
-This cloud-hosted data might, for instance, indicate 
+could identify the correct application to use for 
+multimedia content based on its file type, perhaps 
+in conjunction with data obtained from an ETS cloud service.  
+Cloud-hosted data might, for instance, indicate 
 that a specific course is using IQmol as a pedagogical 
-tool, and indicate that cheminformatic files linked 
+tool, and request that cheminformatic files linked 
 to teaching materials for the course should always be 
 viewed with IQmol.  Once the XPDF plugin identifies 
 the proper multimedia software to use, it can 
-lanch the application on the student's computer and 
+launch the correct application on the student's computer and 
 --- assuming the target application also has an ETS 
 plugin --- send that application signals identifying 
 which files to load into the application session.   
@@ -684,17 +783,17 @@ The XPDF plugin may also send
 information about the current student and 
 class/curriculum, which the target application may use to 
 personalize the User Interface according to students' 
-or instructors' preferances (see the next scenario 
+or instructors' preferences (see the next scenario 
 for more about personalization).
 
 \pseudoIndent{} For multimedia content which is 
-not specific to specialized technical softwar 
+not specific to specialized technical software 
 --- that is, generic multimedia formats such as 
-audio, video, or panoramic-photography --- 
+audio and video --- 
 \LPF{} plugins for PDF or ePub viewers can present 
 this content directly, in separate windows detached 
-from the principle document viewer, rather than 
-routing the files to external software.   
+from the principle document viewer (rather than 
+routing the files to external software).   
 
 \mlitem[Scenario 2: Authors or instructors 
 analyze publications' content to develop teaching 
@@ -724,7 +823,7 @@ instructional context --- including but not limited
 to publications originally created for 
 educational use (such as textbooks or test-preparation 
 materials).  Such use-cases illustrate the value of 
-machine-readable Document Object Models which provide 
+machine-readable Document Infosets which provide 
 structured access to publication content, as opposed 
 to the merely visual access offered by \PDF{} files.  
 Pedagogically using publications can involve extracting 
@@ -747,7 +846,7 @@ Document Object Model.
 presenting digital manuscripts solely in \PDF{} (or 
 e-Pub or \HTML{}) formats --- in general it is difficult or 
 impossible to pull information from these formats analogous 
-to how algorithms may traverse an \XML{} \DOM{}.  For 
+to how algorithms may traverse an \XML{} Infoset.  For 
 this reason, certain publishers and electronic journals offer 
 machine-readable views on their publications as supplements 
 to the human-readable \PDF{} files; however, this practice 
@@ -756,7 +855,7 @@ many publishers use \XML{} as an internal representation
 for the publishing workflow (editing, typesetting, compositing, 
 etc., often through legacy software originally implemented 
 for \SGML{}); however, those in-house files are 
-not usually made available to the public (even purchasers or 
+not usually made available to the public (even to purchasers or 
 subscribers who have digital rights to the final publication).  
 This situation explains the importance of a 
 multi-format Document Object Model: by publishing 
@@ -781,7 +880,7 @@ on the underlying document text.
 \mlitem[Scenario 3: A student launches a scientific 
 application which is used as a pedagogical tool]  
 Teachers often instruct students to download 
-and install software relevant to course curriculum, 
+and install software relevant to the course curriculum, 
 and this software can potentially be an essential 
 part of the course content.  Instructors may 
 (1) use the visualization capabilities of these 
@@ -807,12 +906,12 @@ use of scientific applications as teaching tools,
 \LPF{} plugins help instructors personalize the 
 applications which their students use in 
 conjunction with course curricula.  This personalization 
-can have several dimenions, including: 
+can have several dimensions, including: 
 (1) manipulating the User Interface to prioritize 
 concepts pertinent to each course; (2) 
 enabling the application to present 
 course-specific instructions to the student, 
-such as instructions and assignments; 
+such as practice tasks and assignments; 
 (3) tracking a suite of resources curated 
 for the specific class; and potentially (4) 
 allowing students to send questions to the 
@@ -828,10 +927,10 @@ those analytic tasks which are relevant to the
 course curriculum.  
 
 \mlitem[Scenario 4: A student launches an Integrated Development 
-Environment (\IDE{}) which is used as a teaching tool]  
-Using \IDE{}s is a prerequite for most courses 
+Environment (\IDE{}) which is employed as a teaching tool]  
+Using \IDE{}s is a prerequisite for most courses 
 in computer science and computer programming, and 
-in this context \LPF{} plugins may be used 
+\LPF{} plugins may be introduced in this context 
 as with other specialized software.  An ETS 
 plugin for \Qt{} Creator, for example, could 
 load source and project files curated for 
@@ -893,10 +992,9 @@ used by the ParaView software; as a result, documents
 which reference such files presuppose that readers 
 will have ParaView installed on their computer, for 
 the full reading experience.  Similarly, files 
-in cheminformatic formats such as Protein data bank 
-(.pdb) or Chemical markup language (.cml) need to 
-be opened with chemistry-related software such 
-as IQmol.  
+in cheminformatic formats such as Protein Data Bank 
+(.pdb) or Chemical Markup Language (.cml) need to 
+be opened with chemistry-related software like IQmol.  
   
 \pseudoIndent{} In some cases, however, authors may 
 desire a more rigorous degree of interop between 
@@ -908,7 +1006,7 @@ reconfigured so as to emphasize features or
 capabilities relevant to the publication which readers 
 are studying.  Applications may temporarily modify their 
 layout or appearance for reasons similar to those 
-identified for Scenario 2: instructors may wish to foreground 
+identified for Scenario 3: instructors may wish to foreground 
 certain kinds of analyses which are pertinent to 
 course curricula, or to group together files which 
 are interrelated in the context of the course 
@@ -916,7 +1014,7 @@ are interrelated in the context of the course
 class session).  Similar use-cases apply to 
 publications which interoperate with domain-specific 
 software.  The difference between the current scenario 
-and the earlier use-cases is that Scenario 2 assumed 
+and the earlier use-cases is that Scenario 3 assumed 
 that domain-specific applications will receive data 
 from a cloud service, curated by instructors, 
 to personalize their appearance and features 
@@ -933,7 +1031,7 @@ for \LPF{} plugins, one tool which can help
 authors customize their audience's reading 
 experience is the Hypergraph Text Encoding 
 Protocol (\HTXN{}), formulated in conjunction with 
-\LPF{}.  \lHTXN{} explicitly supports information 
+\LXCR{}.  \lHTXN{} explicitly supports information 
 sharing between document viewers and 
 external software, such as scientific/multimedia 
 applications.  While the \q{signals} routed 
@@ -972,15 +1070,15 @@ in a more conventional, less interactive fashion.
 \noindent\lun{The \lsHTXN{} Protocol}
 {\sectsp}
 
-\p{\lHTXN{} defines a protocol for character-encoding manuscripts and 
-defining document structures via 
-graphs, whose nodes correspond to 
+\p{\lHTXN{} defines a protocol for (1) encoding manuscripts' 
+character data and (2) defining document structures via 
+graphs whose nodes correspond to 
 ranges in a character stream.  
 \lHTXN{} therefore uses 
 \q{standoff annotation} (i.e., character 
 encoding and document structure are 
 defined in isolation from one another), and 
-can be used to encode manuscripts in 
+can be employed to encode manuscripts in 
 many different markup formats.  
 \lLXCR{} and \lHTXN{} are autonomous 
 technologies (each may be used apart 
@@ -1114,14 +1212,14 @@ corresponding manuscript location (the sample,
 table-column, parameters, etc.) is formally 
 isolated and declared as a reference-target.  
 
-\inditem{} Cross-referances may also be 
+\inditem{} Cross-references may also be 
 defined between publications' non-textual or 
 non-paragraph content and corresponding 
 multimedia resources.  For example, tables 
 or diagrams visually presented in a manuscript 
 may be liked to statistical data from which 
 the figures are derived.  A similar situation 
-applies when visuals inluded in a publication 
+applies when visuals included in a publication 
 are linked to multimedia resources which 
 represent the same information in a different 
 experiential register: a PDF document may 
@@ -1139,92 +1237,9 @@ as systems evolving over time.
 \end{enumerate}
 }
 
-\vspace{2em}
-\noindent\lun{The Proposed ETS Plugin Framework}
-{\sectsp}
-
-\p{As proposed, the ETS Plugin Framework would create 
-	a common code base that can be used to 
-	implement ETS-specific plugins to 
-	applications spanning a range of academic 
-	disciplines and subject areas.  The primary 
-	goal of these plugins would be to connect 
-	e-reader software --- applications 
-	for viewing test-preparation and course 
-	materials --- with domain-specific software 
-	which instructors may use as teaching aids.  
-	With respect to GRE exams in fields 
-	such as biology, chemistry, or physics, 
-	domain-specific applications might include 
-	bioinformatics, molecular visualization, 
-	or physical simulation tools, respectively.  
-	ETS plugins would help scientific applications 
-	become more valuable as classroom tools.  In 
-	particular, with ETS plugins these applications 
-	can (1) receive signals from document viewers 
-	(such as PDF viewers) to automatically display 
-	multimedia content and (2) display course 
-	and instructional materials.  As a 
-	concrete example, consider molecularal 
-	visualization software such as IQmol.  Via 
-	an ETS plugin, IQmol could (1) render a \ThreeD{} 
-	image given data, in a chemical file format, 
-	received from an e-reader with a similar plugin; 
-	and (2) display instructions, questions, 
-	assignments, or course-related content 
-	(such as graphics for chemical compounds discussed 
-	in class) provided by instructors.}
-
-\mnote{ETS\\ Plugin \\Cloud \\Services}
-\p{Supplementing the functionality described in the 
-	preceding paragraph, Cloud Services can be 
-	used to connect individual applications 
-	to content and curricula specific to individual 
-	courses.  Because most scientific applications 
-	are implemented as desktop software, the hosting 
-	of the cloud back-ends to support these features 
-	would be a natural fit for LTS's \q{Native Cloud/Native} 
-	(NCN) protocol, which is specifically designed 
-	to integrate desktop front-ends with Cloud/Native 
-	services.  According to this architecture, 
-	NCN services would host information specific to 
-	individual courses, students, and instructors.  
-	When a student launches an application with an 
-	ETS plugin, the plugin would retrieve data 
-	pertaining to that student and to his or her classes.  
-	As appropriate, the plugin could then instruct the 
-	host application to load specific content, and/or 
-	present questions or instructions supplied 
-	by the instructor.  For example, IQmol could 
-	load a list of molecular files corresponding to 
-	chemicals studied in the students' class.  
-	The ETS Plugin Cloud back-end would also be 
-	used by document (e.g., PDF) viewers to obtain 
-	information needed to properly route signals 
-	to other applications using ETS Plugins.}
-
-\mnote{Student \\Dash-\\board}
-\p{In addition, one feature which should be common to all ETS 
-	Plugins is a \q{dashboard}, or a separate window 
-	aggregating the student's information.  The 
-	dashboard's design would be roughly as follows: 
-	student information would be divided into 
-	four or perhaps five tabs, with labels such 
-	as \q{My Courses}, \q{My Library}, 
-	perhaps \q{My Tests}, \q{My Applications}, and 
-	\q{My Account}.  Under the Courses tab, 
-	students select one course to focus on, 
-	which would cause the Library and Tests 
-	tabs to prioritize tests, test preparation, and 
-	readings assigned for that course.  Under 
-	the Applications tab, students could see 
-	a list of all applications on their computer 
-	which have the ETS Plugin installed, or 
-	which are used as pedagogical tools for their 
-	courses, or which they are instructed to install 
-	(the plugin could identify required software 
-	which students have not yet installed based 
-	on information provided by the ETS Cloud Service).}
+%\vspace{2em}
+%\noindent\lun{The Proposed ETS Plugin Framework}
+%{\sectsp}
 
 \end{document}
 
