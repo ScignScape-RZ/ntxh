@@ -60,6 +60,8 @@
 
 // // mosaic
 #include "mpf/mpf-plugin-info-dialog.h"
+#include <QWidgetAction>
+#include <QPainter>
 
 //?extern void add_to_data_set(QString qs, int page);
 
@@ -222,6 +224,102 @@ XpdfViewerCmd XpdfViewer::cmdTab[] = {
 };
 
 #define nCmds (sizeof(cmdTab) / sizeof(XpdfViewerCmd))
+
+
+
+// // mosaic
+class Mosaic_Menubar : public QMenuBar
+{
+public:
+ Mosaic_Menubar();
+ void paintEvent(QPaintEvent *e) override;
+
+};
+
+Mosaic_Menubar::Mosaic_Menubar() : QMenuBar()
+{
+
+}
+
+void Mosaic_Menubar::paintEvent(QPaintEvent *e){
+
+     QStyleOption opt;
+     opt.init(this);
+     QPainter p1(this);
+     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p1, this);
+
+//return;
+
+    QPainter p(this);
+    QRegion emptyArea(rect());
+
+    // Draw the items
+    for (int i = 0; i < actions().size(); ++i) {
+        QAction* action = actions().at(i);
+        QRect adjustedActionRect = this->actionGeometry(action);
+
+        // Fill by the magic color the selected item
+        if (action->property("mosaic") == true)
+        {
+         QLinearGradient* qlg = (QLinearGradient*) action->data().value<void*>();
+         p.fillRect(adjustedActionRect, *qlg);
+        }
+
+        // Fill by the magic color the selected item
+        if (action->property("menu-separator") == true)
+        {
+         QRect qr(adjustedActionRect.x(), 
+           adjustedActionRect.y() + 5, 1, 10);
+//         qDebug() << "...";
+//         adjustedActionRect.adjust(0, 0, 10, 10);
+         p.fillRect(qr, QColor(70,70,70));
+         continue;
+        }
+
+//        if (i == 2)
+//            p.fillRect(adjustedActionRect, QColor(255,0,0));
+
+
+        // Draw all the other stuff (text, special background..)
+        if (adjustedActionRect.isEmpty() || !action->isVisible())
+            continue;
+        if(!e->rect().intersects(adjustedActionRect))
+            continue;
+
+        emptyArea -= adjustedActionRect;
+        QStyleOptionMenuItem opt;
+        initStyleOption(&opt, action);
+        opt.rect = adjustedActionRect;
+        style()->drawControl(QStyle::CE_MenuBarItem, &opt, &p, this);
+    }
+
+     //draw border
+    if(int fw = style()->pixelMetric(QStyle::PM_MenuBarPanelWidth, 0, this)) {
+        QRegion borderReg;
+        borderReg += QRect(0, 0, fw, height()); //left
+        borderReg += QRect(width()-fw, 0, fw, height()); //right
+        borderReg += QRect(0, 0, width(), fw); //top
+        borderReg += QRect(0, height()-fw, width(), fw); //bottom
+        p.setClipRegion(borderReg);
+        emptyArea -= borderReg;
+        QStyleOptionFrame frame;
+        frame.rect = rect();
+        frame.palette = palette();
+        frame.state = QStyle::State_None;
+        frame.lineWidth = style()->pixelMetric(QStyle::PM_MenuBarPanelWidth);
+        frame.midLineWidth = 0;
+        style()->drawPrimitive(QStyle::PE_PanelMenuBar, &frame, &p, this);
+    }
+    p.setClipRegion(emptyArea);
+    QStyleOptionMenuItem menuOpt;
+    menuOpt.palette = palette();
+    menuOpt.state = QStyle::State_None;
+    menuOpt.menuItemType = QStyleOptionMenuItem::EmptyArea;
+    menuOpt.checkType = QStyleOptionMenuItem::NotCheckable;
+    menuOpt.rect = rect();
+    menuOpt.menuRect = rect();
+style()->drawControl(QStyle::CE_MenuBarEmptyArea, &menuOpt, &p, this);
+}
 
 //------------------------------------------------------------------------
 // XpdfMenuButton
@@ -2810,8 +2908,40 @@ void XpdfViewer::addToolBarStretch() {
   toolBar->addWidget(stretch);
 }
 
+class MyWidgetAction : public QWidgetAction {
+public:
+    MyWidgetAction(QObject* parent = 0) : QWidgetAction(parent) {}
+    QWidget* createWidget(QWidget *parent) {
+        static QLabel* lb = new QLabel(parent);
+        lb->setText("saic");
+        return lb;
+    }
+    QWidget* createW(QWidget* parent) { return createWidget(parent); }
+
+};
+
+
+// // mosaic
+QWidgetAction* createTextSeparator(XpdfViewer* _this, const QString& text)
+{
+    auto* pLabel = new QLabel(text);
+    pLabel->setMinimumWidth(10); //_this->minimumWidth() - 4);
+    // grayish style
+    pLabel->setStyleSheet("background: #FF4B4B4B;");
+    // possible alignment
+    // pLabel->setAlignment(Qt::AlignCenter);
+    auto* separator = new QWidgetAction(_this);
+    separator->setDefaultWidget(pLabel);
+    return separator;
+}
+
 void XpdfViewer::createMainMenu() {
-  mainMenu = menuBar();
+  mainMenu = new Mosaic_Menubar; //?menuBar();
+  mainMenu->setObjectName("mainMenu");
+
+//  qDebug() << mainMenu->metaObject()->className();
+
+  setMenuBar(mainMenu);
 
   QMenu *fileSubmenu = mainMenu->addMenu("&File");
   fileSubmenu->addAction("&Open...", this, SLOT(openMenuAction()));
@@ -2892,9 +3022,43 @@ void XpdfViewer::createMainMenu() {
   helpSubmenu->addAction("Help...", this, SLOT(helpMenuAction()));
   helpSubmenu->addAction("About XpdfReader...", this, SLOT(aboutMenuAction()));
 
+//?  QApplication::setStyle("Fusion");
   // // mosaic
-  mainMenu->addSeparator();
+ // mainMenu->addSeparator();
+
+  //QAction* sep = 
+  QWidgetAction* sep = createTextSeparator(this, "Mosaic:");
+  mainMenu->addAction(sep);
+  sep->setProperty("menu-separator", true);
+
+//  QAction* sep = mainMenu->addAction("|");
+//  sep->setProperty("menu-separator", true);
+
+//  QAction* sep = mainMenu->addSeparator();
+//  sep->setProperty("menu-separator", true);
+  
+//  mainMenu->addAction(createTextSeparator(this, "Mosaic:"));
+//  mainMenu->addSeparator()->setText(tr("Alignment"));
+//?  mainMenu->addAction("|");
+
+//  QLabel *mstext = new QLabel(QString("&Mosaic"), this);
+//  mstext->setStyleSheet("color: blue"); 
+//?  // init widget action
+//?  QWidgetAction *msact= new QWidgetAction(this);
+//?  msact->setDefaultWidget(mstext);
+
   QMenu* mosaic_submenu = mainMenu->addMenu("&Mosaic");
+
+  mosaic_submenu->menuAction()->setProperty("mosaic", true);
+  QLinearGradient* qlg = new QLinearGradient(0,0,0,400);
+  qlg->setColorAt(0.0, QColor(250,255,245));
+  qlg->setColorAt(0.1, QColor(125,0,120));
+  mosaic_submenu->menuAction()->setData(qVariantFromValue((void*)qlg));
+
+//new QMenu("&Mosaic", this); //mosaic_submenu = mainMenu->addMenu("&Mosaic");
+//  mosaic_submenu->menuAction()->setDefaultWidget(mstext);
+
+  mosaic_submenu->setObjectName("mosaic_submenu");
   mosaic_submenu->addAction("ETS Plugin (active)");
   mosaic_submenu->addAction("Springer Plugin (active)");
   mosaic_submenu->addAction("Manage Plugins ...", []
@@ -2902,6 +3066,79 @@ void XpdfViewer::createMainMenu() {
    MPF_Plugin_Info_Dialog* mid = new MPF_Plugin_Info_Dialog(nullptr);
    mid->show();
   });
+
+  mainMenu->setStyleSheet(R"(#mainMenu{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 white, stop:1 darkgray);
+    spacing: 3px; /* spacing between menu bar items */
+   }
+
+  #mainMenu::item:selected {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 yellow, stop:1 darkgray);
+  }
+
+  #mainMenu::separator {
+     height: 2px;
+    background: lightblue;
+    margin-left: 10px;
+    margin-right: 5px;  }
+
+
+  )");
+
+  mosaic_submenu->setProperty("mosaic", true);
+
+//  mosaic_submenu->setStyleSheet(R"(QMenu {
+//    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+//                                      stop:0 yellow, stop:1 darkgray);
+//   }
+//  )");
+
+//?  MyWidgetAction* msact = new MyWidgetAction(mainMenu) ;// QWidgetAction(mainMenu);
+
+//  QLabel *mstext = new QLabel(QString("saic"), this);
+//  mstext->setStyleSheet("color: blue"); 
+
+//  msact->setDefaultWidget(msact->createW(mainMenu)); 
+//  msact->setDefaultWidget(mosaic_submenu); 
+//?  mainMenu->addAction(msact);//, [mosaic_submenu, this]()
+  //{
+  // mosaic_submenu->popup(QCursor::pos());
+  //}); 
+
+//  QAction* mosaic_submenu_action = mosaic_submenu->menuAction();
+
+//  QWidget* qw = mosaic_submenu->widgetForAction(mosaic_submenu_action);
+//  qw->setObjectName("qw");
+
+//  qw->setStyleSheet(R"({
+//   background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+//                                     stop:0 yellow, stop:1 darkgray);
+
+//  })");
+
+
+//  QMenu#mosaic_submenu {
+//    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+//                                      stop:0 yellow, stop:1 darkgray);
+//  }
+
+//  QMenu#mosaic_submenu:title {
+//    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+//                                      stop:0 blue, stop:1 darkgray);
+//  }
+//  QMenu#mosaic_submenu::item:selected {
+//    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+//                                      stop:0 red, stop:1 darkgray);
+
+//  mosaic_submenu->setStyleSheet(R"(QMenu::item:selected {
+//    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+//                                      stop:0 red, stop:1 darkgray);
+//  }
+//)");
+
+//  QMenu::item#mosaic_submenu {
 
 }
 

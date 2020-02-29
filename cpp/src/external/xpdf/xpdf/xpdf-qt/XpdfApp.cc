@@ -164,6 +164,7 @@ void XpdfApp::run_fig_msg(QString msg, QString fig)
 XpdfApp::XpdfApp(int &argc, char **argv):
   QApplication(argc, argv)
 {
+//?  QApplication::setStyle("Fusion");
 
 #ifdef HIDE
  QTcpServer* tcp_server = new QTcpServer();

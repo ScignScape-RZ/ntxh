@@ -114,6 +114,8 @@ private:
 
 class Xpdf_Component;
 
+class Mosaic_Menubar;
+
 class XpdfViewer: public QMainWindow {
   Q_OBJECT
 
@@ -375,7 +377,8 @@ private:
   int last_hold_page_;
 
   // menu
-  QMenuBar *mainMenu;
+  Mosaic_Menubar* mainMenu;
+  //QMenuBar *mainMenu;
   QMenu *displayModeSubmenu;
   QAction *fullScreenMenuItem;
 

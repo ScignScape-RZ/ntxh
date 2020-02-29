@@ -16,6 +16,7 @@
 #include <QScrollArea>
 
 
+
 #include "kans.h"
 
 KANS_CLASS_DECLARE(MPF ,MPF_Plugin_Info)
