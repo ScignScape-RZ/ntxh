@@ -158,9 +158,11 @@
 \newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
 {\color{red!15!black}{C}}}}}
 
+\definecolor{tcolor}{RGB}{24,52,61}
+
 \newcommand{\HTXN}{\resizebox{!}{8pt}{\AcronymText{HTXN}}}
 \newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
-\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{HTXN}}}
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
 
 
 \newcommand{\PVD}{\resizebox{!}{8pt}{\AcronymText{PVD}}}
@@ -170,6 +172,9 @@
 \newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
 
 %\lsLPF
+
+
+
 \newcommand{\LPF}{\resizebox{!}{8pt}{\AcronymText{LPF}}}
 \newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
 \newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
@@ -336,8 +341,9 @@
 \setlength\parindent{24pt}
 %\input{commands}
 
-\newcommand{\lun}[1]{{\fontfamily{qcr}\selectfont{%
-\LARGE{\textbf{\underline{#1}}}}}}
+
+\newcommand{\lun}[1]{\raisebox{-4pt}{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\textcolor{tcolor}{#1}}}}}\vspace{-2pt}}
 
 \newcommand{\inditem}{\itemindent10pt\item}
 
@@ -415,7 +421,7 @@
 %interior hidden
 arc=2pt,outer arc=0pt,
 enhanced jigsaw,
-width=.98\textwidth,
+width=.984\textwidth,
 colback=ctmpppp!60,
 colframe=logoRed!30!darkRed,
 drop shadow=logoPurple!50!darkRed,
@@ -426,9 +432,9 @@ drop shadow=logoPurple!50!darkRed,
 ]
 \begin{minipage}{\textwidth}	
 \begin{center}		
-{\setlength{\fboxsep}{18pt}
+{\setlength{\fboxsep}{19pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{\makebox{The Latex/XML/Concurrent/RDF Infoset and Plugin Framework} \\\vspace*{10pt}(\lsLXCR{})}}}}
+{The Latex/XML/Concurrent/RDF\\ Infoset and Plugin Framework \\\vspace*{10pt}(\lsLXCR{})}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
@@ -600,7 +606,7 @@ applications (loading individual multimedia resources
 is just one use-case).  The remainder of this paper 
 will outline several different scenarios where 
 inter-application networking is important for 
-composing and reading manuscrips.  To provide a
+composing and reading manuscripts.  To provide a
 quick summary of \LXCR{} overall, however, note that 
 (despite the operational relationships between 
 \DOM{} and plugin frameworks) currently there does 
@@ -643,7 +649,7 @@ IQmol (a molecular visualization application),
 ParaView (data analysis and visualization software 
 focused on statistical/quantitative data sets), 
 MeshLab (a \ThreeD{} graphics engine), 
-Octave (an open-source Matlab emulator),  
+Octave (an open-source MatLab emulator),  
 \Qt{} Creator (a \Cpp{} Integrated Development 
 Environment), and XPDF (a \PDF{} viewer).}
 
@@ -783,6 +789,7 @@ when the student is reading that part of the text,
 notify him or her of the option to automatically 
 launch the proper application with which to access the content.
 
+\mnote{Plugins with XPDF}
 \pseudoIndent{} A hypothetical XPDF plugin, for example, 
 could identify the correct application to use for 
 multimedia content based on its file type, perhaps 
@@ -835,6 +842,7 @@ visualization tools, glossaries, additional readings,
 and other resources which promote students' intuitive 
 understanding of the subject material?    
 
+\mnote{Pedago\-gical use-cases for \LPF{}}
 \pseudoIndent{} These are questions which become 
 relevant for any document which is used in an 
 instructional context --- including but not limited 
@@ -918,7 +926,8 @@ calculating vibrational frequencies, and many
 other chemphysical computations provide an 
 overview of scientific concepts which 
 might be covered in a Chemistry class. 
- 
+
+\mnote{Science applications as\\ teaching tools} 
 \pseudoIndent{} To facilitate the 
 use of scientific applications as teaching tools, 
 \LPF{} plugins help instructors personalize the 
@@ -970,6 +979,7 @@ from instructors, within the \IDE{} itself,
 about the goals and requirements for a 
 code-writing exercise. 
 
+\mnote{Building plugins from source} 
 \pseudoIndent{} A further use-case for \IDE{} 
 plugins is for building other \LPF{}-enabled 
 applications.  For example, many scientific 
@@ -1013,7 +1023,8 @@ the full reading experience.  Similarly, files
 in cheminformatic formats such as Protein Data Bank 
 (.pdb) or Chemical Markup Language (.cml) need to 
 be opened with chemistry-related software like IQmol.  
-  
+
+\mnote{Altering host applications via\\ plugins}  
 \pseudoIndent{} In some cases, however, authors may 
 desire a more rigorous degree of interop between 
 document viewers and scientific/multimedia software.  
@@ -1084,7 +1095,7 @@ in a more conventional, less interactive fashion.
 \end{mldescription}
 }
 
-\vspace{2em}
+\vspace{1em}
 \noindent\lun{The \lsHTXN{} Protocol}
 {\sectsp}
 
@@ -1106,6 +1117,7 @@ the character/orthographic data and
 the document structure of 
 manuscripts for publication.}
 
+\mnote{\HTXN{} and multi-media content}  
 \p{The central goal 
 of \HTXN{} is to support the new generation of 
 publishing technologies, where conventional 
@@ -1115,10 +1127,10 @@ The conventional manuscript (the \q{primary}
 resource which is cited and downloaded) 
 is, accordingly, often networked with a package of 
 supplemental (or \q{secondary}) resources.  
-\lHTXN{} protocol is designed to 
+\lHTXN{} is designed to 
 rigorously document these multimedia networks, enabling 
 e-readers and domain-specific applications to be 
-integrated so that user may easily access multimedia content.}
+integrated so that users may easily access multimedia content.}
 
 \p{The generic term \q{multimedia content} actually 
 encompasses multiple phenomena:
@@ -1207,6 +1219,7 @@ with hyper-references to multimedia files
 able to access when they reach the corresponding 
 point in the text.
 
+\mnote{\HTXN{} cross-references to data-\\sets}
 \inditem{} Establishing granular cross-references between 
 publications and multimedia content: this is a 
 more complex case where manuscript locations have to 
@@ -1226,6 +1239,7 @@ corresponding manuscript location (the sample,
 table-column, parameters, etc.) is formally 
 isolated and declared as a reference-target.  
 
+\mnote{\HTXN{} cross-references to multi-\\media assets}
 \inditem{} Cross-references may also be 
 defined between publications' non-textual or 
 non-paragraph content and corresponding 
@@ -1236,7 +1250,7 @@ the figures are derived.  A similar situation
 applies when visuals included in a publication 
 are linked to multimedia resources which 
 represent the same information in a different 
-experiential register: a PDF document may 
+experiential register: a \PDF{} document may 
 include a two-dimensional graphic which is created 
 by taking a camera shot of a \ThreeD{} model, 
 which readers may also experience with a 
@@ -1250,6 +1264,12 @@ ambient space, or where systems are visualized
 as systems evolving over time.  
 \end{enumerate}
 }
+
+\p{A summary of the \HTXN{} protocol,  
+sample documents which compile to \HTXN{}-encoded 
+text, and more information about \LXCR{}, 
+are all available on request from 
+Linguistic Technology Systems.  
 
 %\vspace{2em}
 %\noindent\lun{The Proposed ETS Plugin Framework}

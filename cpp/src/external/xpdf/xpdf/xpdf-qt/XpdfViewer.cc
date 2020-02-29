@@ -57,7 +57,11 @@
 
 #include "Annot.h"
 
-extern void add_to_data_set(QString qs, int page);
+
+// // mosaic
+#include "mpf/mpf-plugin-info-dialog.h"
+
+//?extern void add_to_data_set(QString qs, int page);
 
 #include "xpdf-component.h"
 
@@ -2887,6 +2891,18 @@ void XpdfViewer::createMainMenu() {
   QMenu *helpSubmenu = mainMenu->addMenu("&Help");
   helpSubmenu->addAction("Help...", this, SLOT(helpMenuAction()));
   helpSubmenu->addAction("About XpdfReader...", this, SLOT(aboutMenuAction()));
+
+  // // mosaic
+  mainMenu->addSeparator();
+  QMenu* mosaic_submenu = mainMenu->addMenu("&Mosaic");
+  mosaic_submenu->addAction("ETS Plugin (active)");
+  mosaic_submenu->addAction("Springer Plugin (active)");
+  mosaic_submenu->addAction("Manage Plugins ...", []
+  {
+   MPF_Plugin_Info_Dialog* mid = new MPF_Plugin_Info_Dialog(nullptr);
+   mid->show();
+  });
+
 }
 
 // This can't be named createPopupMenu because there's a QMainWindow

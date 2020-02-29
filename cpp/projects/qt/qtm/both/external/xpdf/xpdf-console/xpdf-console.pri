@@ -25,13 +25,13 @@ SOURCES += \
 LIBS += -L$$TARGETSDIR -lxpdf -lfreetype #-lpdf-pull -ldsmain
 
 
-contains(CHOICE_FEATURES, "pdf-pull") \#/
-{
- message(DEFINE\'ing USING_PDF_PULL)
- DEFINES += USING_PDF_PULL
- LIBS +=-L$$TARGETSDIR -lpdf-pull  \
-   -ldsmain -lntxh -lntxh-builder -lntxh-parser
-}
+#?contains(CHOICE_FEATURES, "pdf-pull") \#/
+#?{
+#? message(DEFINE\'ing USING_PDF_PULL)
+#? DEFINES += USING_PDF_PULL
+#? LIBS +=-L$$TARGETSDIR -lpdf-pull  \
+#?   -ldsmain -lntxh -lntxh-builder -lntxh-parser
+#?}
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

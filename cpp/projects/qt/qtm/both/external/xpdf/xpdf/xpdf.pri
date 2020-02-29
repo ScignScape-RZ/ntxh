@@ -17,7 +17,7 @@ RESOURCES += \
 LIBS +=  -lfreetype
 
 
-INCLUDEPATH += $$SRC_DIR/
+INCLUDEPATH += $$SRC_DIR
 INCLUDEPATH += $$SRC_DIR/aconf
 INCLUDEPATH += $$SRC_DIR/goo
 
@@ -29,6 +29,20 @@ INCLUDEPATH += $$SRC_DIR/freetype/ft2build
 
 INCLUDEPATH += $$SRC_DIR/freetype
 INCLUDEPATH += $$SRC_DIR/ft2build
+
+# # mosaic
+HEADERS += \
+  $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info.h \
+  $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info-dialog.h \
+
+SOURCES += \
+  $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info.cpp \
+  $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info-dialog.cpp \
+
+SOURCES += \
+  $$SRC_ROOT_DIR/add-minimize-frame.cpp \
+
+INCLUDEPATH += $$MPF_SRC_GROUP_DIR
 
 
 # # dsC
@@ -276,12 +290,12 @@ SOURCES += \
     $$SRC_DIR/xpdf-qt/xpdf-component.cpp \
 
 
-contains(CHOICE_FEATURES, "pdf-pull") \#/
-{
- message(DEFINE\'ing USING_PDF_PULL)
- DEFINES += USING_PDF_PULL
- LIBS +=-L$$TARGETSDIR -lpdf-pull
-}
+#?contains(CHOICE_FEATURES, "pdf-pull") \#/
+#?{
+#? message(DEFINE\'ing USING_PDF_PULL)
+#? DEFINES += USING_PDF_PULL
+#? LIBS +=-L$$TARGETSDIR -lpdf-pull
+#?}
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
