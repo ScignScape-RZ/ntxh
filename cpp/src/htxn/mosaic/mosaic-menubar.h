@@ -16,6 +16,7 @@ class QWidgetAction;
 class Mosaic_Menubar : public QMenuBar
 {
 public:
+
  Mosaic_Menubar();
  void paintEvent(QPaintEvent *e) Q_DECL_OVERRIDE;
  
@@ -23,6 +24,12 @@ public:
  static void* get_action_data(QAction* qa, QString key);
 
  QWidgetAction* add_text_separator(QString text = QString(), QWidget* parent = nullptr);
+
+ void use_default_stylesheet(QString name);
+ void add_to_style_sheet(QString sheet);
+
+ static void handle_screenshot(QString path, int target_window_id);
+ static void handle_screenshot(int target_window_id);
 };
 
 

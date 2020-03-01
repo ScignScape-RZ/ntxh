@@ -9,10 +9,69 @@
 
 #include <QPainter>
 #include <QWidgetAction>
+#include <QScreen>
+
 
 Mosaic_Menubar::Mosaic_Menubar() : QMenuBar()
 {
 
+}
+
+void Mosaic_Menubar::use_default_stylesheet(QString name)
+{
+ setStyleSheet(QString(R"(#%1{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 white, stop:1 darkgray);
+    spacing: 3px; /* spacing between menu bar items */
+   }
+
+  #%1::item:selected {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 yellow, stop:1 darkgray);
+  }
+
+  #%1::separator {
+     height: 2px;
+    background: lightblue;
+    margin-left: 10px;
+    margin-right: 5px;  }
+  )").arg(name));
+
+}
+
+void Mosaic_Menubar::add_to_style_sheet(QString sheet)
+{
+ setStyleSheet(styleSheet().append(sheet));
+}
+
+void Mosaic_Menubar::handle_screenshot(int target_window_id)
+{
+ QDir qd;
+ qd.cdUp();
+ QString path = qd.filePath("ScreenShot");
+ handle_screenshot(path, target_window_id); 
+}
+
+
+void Mosaic_Menubar::handle_screenshot(QString path, int target_window_id)
+{
+ QScreen* screen = QGuiApplication::primaryScreen();
+ if (!screen)
+   return;
+ QApplication::beep();
+  //int target_window_id  = dlg.winId();
+
+ QTimer::singleShot(10000, [=]
+ {
+  QPixmap pixmap = screen->grabWindow(target_window_id );
+  qDebug() << "Saving to path: " << path;
+
+  QFile file(path);
+  if(file.open(QIODevice::WriteOnly))
+  {
+   pixmap.save(&file, "PNG");
+  }
+ });
 }
 
 void* Mosaic_Menubar::get_action_data(QAction* qa, QString key)

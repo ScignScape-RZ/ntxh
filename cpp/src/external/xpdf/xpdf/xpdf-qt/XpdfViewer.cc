@@ -64,6 +64,7 @@
 #include <QWidgetAction>
 #include <QPainter>
 
+
 //?extern void add_to_data_set(QString qs, int page);
 
 #include "xpdf-component.h"
@@ -2832,7 +2833,7 @@ public:
 
 void XpdfViewer::createMainMenu() {
   mainMenu = new Mosaic_Menubar; //?menuBar();
-  mainMenu->setObjectName("mainMenu");
+  mainMenu->setObjectName("the_Mosaic_Menubar");
 
 //  qDebug() << mainMenu->metaObject()->className();
 
@@ -2933,24 +2934,25 @@ void XpdfViewer::createMainMenu() {
    MPF_Plugin_Info_Dialog* mid = new MPF_Plugin_Info_Dialog(nullptr);
    mid->show();
   });
+  mosaic_submenu->addAction("Take ScreenShot", [this]
+  {
+   Mosaic_Menubar::handle_screenshot(this->winId());
+  });
 
-  mainMenu->setStyleSheet(R"(#mainMenu{
-    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                                      stop:0 white, stop:1 darkgray);
-    spacing: 3px; /* spacing between menu bar items */
-   }
+  mainMenu->use_default_stylesheet("the_Mosaic_Menubar");
 
-  #mainMenu::item:selected {
+  mainMenu->add_to_style_sheet(R"(#mosaic_submenu::item {
     background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                                      stop:0 yellow, stop:1 darkgray);
+                                      stop:0 pink, stop:1 lightgray);
   }
 
-  #mainMenu::separator {
-     height: 2px;
-    background: lightblue;
-    margin-left: 10px;
-    margin-right: 5px;  }
+  #mosaic_submenu::item:selected {
+    color:blue;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 pink, stop:1 darkgray);
+  }
   )");
+
 }
 
 // This can't be named createPopupMenu because there's a QMainWindow
@@ -3164,10 +3166,31 @@ void XpdfViewer::addTab() {
 //   if(qsl.value())
 
    //if(_qs)
-   qm->addAction(QString("View figure info for %1 %2")
+   if(!fignum.isEmpty())
+   {
+    qm->addAction(QString("View figure info for %1 %2")
       .arg(figk).arg(fignum), []
+    {
+    });
+   }
+
+   QString chem_name;
+   if(pg == 11)
+     chem_name = "thionyl chloride";
+   else if(pg == 37)
+     chem_name = "lactose";
+
+//   qDebug() << "Page: " << pg;
+   qm->addAction(QString("Copy \"%1\"").arg(chem_name),
+     []
    {
    });
+
+   qm->addAction(QString("3D %1 Viewer (launch IQmol)").arg(chem_name),
+     []
+   {
+   });
+
 
    if(figname.startsWith("lst"))
    {
