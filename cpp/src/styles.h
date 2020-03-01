@@ -278,17 +278,19 @@ inline QString group_box_style_sheet_()
 {
  return 
   "QGroupBox"
-  "{ border: 1px ridge rgb(35, 250, 17); "
-  "  border-radius: 2px; "
+  "{ border: 2px ridge %3; "
+  "  border-radius: 7px; "
+  "  background-color: %1; "
   "  font-size: 11px; "
   "  font-weight: bold;"
-  "  margin-top: 10px;"
+  "  margin-top: 15px;"
   "} \n"
 
   "QGroupBox::title"
   "{ subcontrol-origin: margin;"
   "  subcontrol-position: top left;"
-  "  padding: 0 15px 0 15px ;"
+  "  background-color: %2;"
+  "  padding: 2 15px 2 15px ;"
   "} \n";
 
 }

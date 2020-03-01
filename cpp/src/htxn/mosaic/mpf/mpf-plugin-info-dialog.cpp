@@ -21,6 +21,8 @@
 
 MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
 {
+ setWindowTitle("IQmol");
+
  button_box_ = new QDialogButtonBox(this);
 
  button_ok_ = new QPushButton("OK");
@@ -47,7 +49,19 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  main_tab_widget_ = new QTabWidget(this);
 
  QString styles = tab_style_sheet_();
- styles.append(group_box_style_sheet_());
+
+ QString line_clr = "rgb(197, 212, 217)";
+ QString normal_bkg = "rgb(237, 232, 237)";
+ QString back_bkg = "rgb(207, 217, 219)"; // "rgb(197, 212, 217)";
+ QString mid_bkg = "rgb(207, 217, 219)";
+
+
+ styles.append(group_box_style_sheet_().arg(normal_bkg).arg(mid_bkg).arg(line_clr));
+
+ styles.append(QString(
+   "QFrame {background-color: %1;}\n"   
+   "QLabel {background-color: %2;}\n").arg(back_bkg).arg(normal_bkg)
+);
 
  main_tab_widget_->setStyleSheet(styles); 
 
