@@ -210,22 +210,23 @@ inline QString tab_style_sheet_()
  return "QTabBar::tab {"
         "background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,"
         "                            stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,"
-        "                            stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);"
+        "                            stop: 0.5 #D8D8D8, stop: 1.0 #D30000);"
         "border: 2px solid #C4C4C3;"
         "border-bottom-color: #C2C7CB; /* same as the pane color */"
         "border-top-left-radius: 4px;"
         "border-top-right-radius: 4px;"
         "min-width: 8ex;"
         "padding: 2px;"
-        "color:rgb(85,10,10)"
+        "color:rgb(145,50,70)"
         "}"
 
         "QTabBar::tab:selected, QTabBar::tab:hover {"
         "background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,"
         "                            stop: 0 #fafafa, stop: 0.4 #f4f4f4,"
-        "                            stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);"
+        "                            stop: 0.5 #e7e7e7, stop: 1.0 #fafadd);"
         "border-color: #5BAB9B;"
         "border-bottom-color: #C2C7CB; /* same as pane color */"
+        "color:rgb(85,10,10)"
         "}"
 
         "QTabBar::tab:hover { border-color: #ABABCB; }"
@@ -242,11 +243,9 @@ inline QString tab_style_sheet_()
         "QTabBar::tab::disabled {"
         "width: 0; height: 0; margin: 0; padding: 0; border: none;"
         "}"
-
-        "QTabWidget{border:solid white 3px; background:white}"
-
    ;
 
+//        "QTabWidget{border:solid white 3px; background:white}"
 }
 
 

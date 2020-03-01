@@ -11,10 +11,12 @@
 #include <QDialog>
 #include <QFormLayout>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QDialogButtonBox>
 #include <QFrame>
-#include <QScrollArea>
-
+#include <QTabWidget>
+#include <QCheckBox>
+#include <QGroupBox>
 
 
 #include "kans.h"
@@ -36,9 +38,23 @@ class MPF_Plugin_Info_Dialog  : public QDialog
  QPushButton* button_cancel_;
  QVBoxLayout* main_layout_;
 
- QFormLayout* main_form_layout_;
- QFrame* main_form_frame_;
- QScrollArea* main_scroll_area_;
+ QFormLayout* basic_form_layout_;
+ QVBoxLayout* basic_info_layout_;
+ QFrame* basic_info_frame_;
+ QHBoxLayout* plugin_active_layout_;
+ QCheckBox* plugin_active_ckb_;
+ QPushButton* plugin_active_button_;
+
+ QGroupBox* can_group_box_;
+ QHBoxLayout* can_layout_;
+ QCheckBox* can_send_ckb_;
+ QCheckBox* can_receive_ckb_;
+ QCheckBox* can_launch_ckb_;
+
+ QFormLayout* request_form_layout_;
+ QFrame* request_info_frame_;
+
+ QTabWidget* main_tab_widget_;
 
  MPF_Plugin_Info* info_;
 

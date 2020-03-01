@@ -43,17 +43,53 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
 
  main_layout_ = new QVBoxLayout;
 
- main_form_layout_ = new QFormLayout;
+ main_tab_widget_ = new QTabWidget(this);
 
- main_form_layout_->addRow("Plugin Name", new QLabel("ETS"));
+ main_tab_widget_->setStyleSheet(tab_style_sheet_()); 
 
- main_scroll_area_ = new QScrollArea(this);
- main_form_frame_ = new QFrame(this);
- main_form_frame_->setLayout(main_form_layout_);
+ basic_info_frame_ = new QFrame(this);
+ basic_info_layout_ = new QVBoxLayout;
 
- main_scroll_area_->setWidget(main_form_frame_);
+ basic_form_layout_ = new QFormLayout;
+ basic_form_layout_->addRow("Plugin Name: ", new QLabel("ETS", basic_info_frame_));
+ basic_form_layout_->addRow("Plugin Version: ", new QLabel("1.0.0", basic_info_frame_));
+ basic_form_layout_->addRow("Plugin Provider: ", new QLabel("Educational Testing Service", basic_info_frame_));
 
- main_layout_->addWidget(main_scroll_area_);
+ plugin_active_layout_ = new QHBoxLayout;
+ plugin_active_ckb_ = new QCheckBox("Active", basic_info_frame_);
+ plugin_active_layout_->addWidget(plugin_active_ckb_);
+ plugin_active_button_ = new QPushButton("Deactivate", basic_info_frame_);
+ plugin_active_layout_->addWidget(plugin_active_button_);
+
+ basic_form_layout_->addRow("Plugin State: ", plugin_active_layout_);
+ basic_info_layout_->addLayout(basic_form_layout_);
+
+ can_group_box_ = new QGroupBox("Plugin Can", basic_info_frame_);
+ can_layout_ = new QHBoxLayout;
+ can_send_ckb_ = new QCheckBox("Send Requests", basic_info_frame_);
+ can_receive_ckb_ = new QCheckBox("Receive Requests", basic_info_frame_);
+ can_launch_ckb_ = new QCheckBox("Launch Applications", basic_info_frame_);
+
+ can_layout_->addWidget(can_send_ckb_);
+ can_layout_->addWidget(can_receive_ckb_);
+ can_layout_->addWidget(can_launch_ckb_);
+
+ can_group_box_->setLayout(can_layout_);
+ basic_info_layout_->addWidget(can_group_box_);
+
+ basic_info_frame_->setLayout(basic_info_layout_);
+
+ main_tab_widget_->addTab(basic_info_frame_, "Basic Plugin Info");
+
+ request_info_frame_ = new QFrame(this);
+ request_form_layout_ = new QFormLayout;
+ request_form_layout_->addRow("Source Application", new QLabel("XPDF", request_info_frame_));
+ request_info_frame_->setLayout(request_form_layout_);
+
+ main_tab_widget_->addTab(request_info_frame_, "Request/Launch Info");
+
+ main_layout_->addWidget(main_tab_widget_);
+
 
  minimize_layout_ = add_minimize_frame(button_box_, [this]
  {
