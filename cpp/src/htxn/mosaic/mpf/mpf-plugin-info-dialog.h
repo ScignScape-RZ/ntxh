@@ -17,6 +17,7 @@
 #include <QTabWidget>
 #include <QCheckBox>
 #include <QGroupBox>
+#include <QGridLayout>
 
 
 #include "kans.h"
@@ -38,9 +39,15 @@ class MPF_Plugin_Info_Dialog  : public QDialog
  QPushButton* button_cancel_;
  QVBoxLayout* main_layout_;
 
+ QFrame* basic_info_frame_;
+
  QFormLayout* basic_form_layout_;
  QVBoxLayout* basic_info_layout_;
- QFrame* basic_info_frame_;
+
+ QGridLayout* basic_view_layout_;
+ QPushButton* view_mosaic_documentation_;
+ QPushButton* view_plugin_documentation_;
+
  QHBoxLayout* plugin_active_layout_;
  QCheckBox* plugin_active_ckb_;
  QPushButton* plugin_active_button_;
@@ -51,8 +58,21 @@ class MPF_Plugin_Info_Dialog  : public QDialog
  QCheckBox* can_receive_ckb_;
  QCheckBox* can_launch_ckb_;
 
- QFormLayout* request_form_layout_;
  QFrame* request_info_frame_;
+ QVBoxLayout* request_info_layout_;
+
+ QGroupBox* request_app_box_;
+ QFormLayout* request_app_layout_;
+
+ QGroupBox* request_form_box_;
+ QFormLayout* request_form_layout_;
+
+ QHBoxLayout* request_detail_layout_;
+ QPushButton* request_detail_button_;
+
+ QGroupBox* launch_form_box_;
+ QFormLayout* launch_form_layout_;
+
 
  QTabWidget* main_tab_widget_;
 

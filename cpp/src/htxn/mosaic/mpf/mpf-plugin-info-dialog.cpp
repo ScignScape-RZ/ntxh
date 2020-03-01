@@ -15,6 +15,7 @@
 #include <QPushButton>
 #include <QString>
 #include <QLabel>
+#include <QDateTime>
 
 //USING_KANS(MPF)
 
@@ -59,7 +60,9 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  plugin_active_ckb_ = new QCheckBox("Active", basic_info_frame_);
  plugin_active_layout_->addWidget(plugin_active_ckb_);
  plugin_active_button_ = new QPushButton("Deactivate", basic_info_frame_);
+ plugin_active_button_->setStyleSheet(colorful_small_button_style_sheet_());
  plugin_active_layout_->addWidget(plugin_active_button_);
+ plugin_active_layout_->addStretch();
 
  basic_form_layout_->addRow("Plugin State: ", plugin_active_layout_);
  basic_info_layout_->addLayout(basic_form_layout_);
@@ -77,16 +80,80 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  can_group_box_->setLayout(can_layout_);
  basic_info_layout_->addWidget(can_group_box_);
 
+ basic_view_layout_ = new QGridLayout;
+ basic_view_layout_->setColumnStretch(0, 1);
+ basic_view_layout_->setColumnStretch(2, 1);
+
+ view_mosaic_documentation_ = new QPushButton("View Mosaic Documentation", basic_info_frame_);
+ view_plugin_documentation_ = new QPushButton("View ETS Plugin Documentation", basic_info_frame_);
+
+ view_mosaic_documentation_->setStyleSheet(colorful_small_button_style_sheet_());
+ view_plugin_documentation_->setStyleSheet(colorful_small_button_style_sheet_());
+
+ basic_view_layout_->addWidget(view_mosaic_documentation_, 0, 1);
+ basic_view_layout_->addWidget(view_plugin_documentation_, 1, 1);
+
+ basic_info_layout_->addLayout(basic_view_layout_); 
+ basic_info_layout_->addStretch();
+
  basic_info_frame_->setLayout(basic_info_layout_);
 
  main_tab_widget_->addTab(basic_info_frame_, "Basic Plugin Info");
 
  request_info_frame_ = new QFrame(this);
+ request_info_layout_ = new QVBoxLayout;
+
+ QGroupBox* request_app_box_ = new QGroupBox("Application Info", request_info_frame_);
+
+ request_app_layout_ = new QFormLayout;
+
+ request_app_layout_->addRow("Source Application Name: ", new QLabel("XpdfReader", request_info_frame_));
+ request_app_layout_->addRow("Source Application Path: ", new QLabel("/home/.../xpdf-console", request_info_frame_));
+ request_app_layout_->addRow("Target Application Name: ", new QLabel("IQmol", request_info_frame_));
+ request_app_layout_->addRow("Target Application Path: ", new QLabel("/home/.../IQmol", request_info_frame_));
+ 
+ request_app_box_->setLayout(request_app_layout_);
+ request_info_layout_->addWidget(request_app_box_);
+
+
+ QGroupBox* request_form_box_ = new QGroupBox("Request Info", request_info_frame_);
  request_form_layout_ = new QFormLayout;
- request_form_layout_->addRow("Source Application", new QLabel("XPDF", request_info_frame_));
- request_info_frame_->setLayout(request_form_layout_);
+
+ request_form_layout_->addRow("Request Resource Description: ", new QLabel("Lactose (3D View)", request_info_frame_));
+
+ request_form_layout_->addRow("Request Resource Type: ", new QLabel("Molecular Data File", request_info_frame_));
+
+ request_form_layout_->addRow("Request Resource File: ", new QLabel("14641-93-1.mol", request_info_frame_));
+
+ request_detail_layout_ = new QHBoxLayout;
+ request_detail_layout_->addWidget(new QLabel("NTXH", request_info_frame_));
+ request_detail_button_ = new QPushButton("View Request Details", request_info_frame_);
+ request_detail_button_->setStyleSheet(colorful_small_button_style_sheet_());
+ request_detail_layout_->addWidget(request_detail_button_);
+ request_detail_layout_->addStretch();
+
+ request_form_layout_->addRow("Request Format: ", request_detail_layout_);
+ request_form_box_->setLayout(request_form_layout_);
+
+ request_info_layout_->addWidget(request_form_box_);
+
+ launch_form_box_ = new QGroupBox("Launch Info", request_info_frame_);
+ launch_form_layout_ = new QFormLayout;
+ 
+ launch_form_layout_->addRow("TimeStamp: ", new QLabel(QDateTime::currentDateTime().toString(), request_info_frame_));
+
+ launch_form_layout_->addRow("Launch/Request Info: ", new QLabel("Not Applicable", request_info_frame_));
+
+ launch_form_box_->setLayout(launch_form_layout_);
+
+ request_info_layout_->addWidget(launch_form_box_);
+
+ request_info_frame_->setLayout(request_info_layout_);
 
  main_tab_widget_->addTab(request_info_frame_, "Request/Launch Info");
+
+ main_tab_widget_->addTab(new QFrame(), "Cloud Service Info");
+ main_tab_widget_->addTab(new QFrame(), "User Account Info");
 
  main_layout_->addWidget(main_tab_widget_);
 
