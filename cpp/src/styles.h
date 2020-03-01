@@ -274,6 +274,25 @@ inline QString colorful_button_style_sheet_down_()
    "}\n";
 }
 
+inline QString group_box_style_sheet_()
+{
+ return 
+  "QGroupBox"
+  "{ border: 1px ridge rgb(35, 250, 17); "
+  "  border-radius: 2px; "
+  "  font-size: 11px; "
+  "  font-weight: bold;"
+  "  margin-top: 10px;"
+  "} \n"
+
+  "QGroupBox::title"
+  "{ subcontrol-origin: margin;"
+  "  subcontrol-position: top left;"
+  "  padding: 0 15px 0 15px ;"
+  "} \n";
+
+}
+
 inline QString colorful_small_button_style_sheet_()
 {
  return

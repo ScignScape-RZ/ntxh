@@ -30,7 +30,7 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  button_ok_->setDefault(false);
  button_ok_->setAutoDefault(false);
 
- button_cancel_->setDefault(true);
+ button_ok_->setDefault(true);
 
  button_ok_->setStyleSheet(basic_button_style_sheet_());
  button_cancel_->setStyleSheet(basic_button_style_sheet_());
@@ -46,9 +46,15 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
 
  main_tab_widget_ = new QTabWidget(this);
 
- main_tab_widget_->setStyleSheet(tab_style_sheet_()); 
+ QString styles = tab_style_sheet_();
+ styles.append(group_box_style_sheet_());
+
+ main_tab_widget_->setStyleSheet(styles); 
 
  basic_info_frame_ = new QFrame(this);
+
+ basic_info_group_box_ = new QGroupBox("Plugin Origin", basic_info_frame_); 
+
  basic_info_layout_ = new QVBoxLayout;
 
  basic_form_layout_ = new QFormLayout;
@@ -58,6 +64,7 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
 
  plugin_active_layout_ = new QHBoxLayout;
  plugin_active_ckb_ = new QCheckBox("Active", basic_info_frame_);
+ plugin_active_ckb_->setChecked(true);
  plugin_active_layout_->addWidget(plugin_active_ckb_);
  plugin_active_button_ = new QPushButton("Deactivate", basic_info_frame_);
  plugin_active_button_->setStyleSheet(colorful_small_button_style_sheet_());
@@ -65,13 +72,18 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  plugin_active_layout_->addStretch();
 
  basic_form_layout_->addRow("Plugin State: ", plugin_active_layout_);
- basic_info_layout_->addLayout(basic_form_layout_);
+
+ basic_info_group_box_->setLayout(basic_form_layout_);
+ basic_info_layout_->addWidget(basic_info_group_box_);
 
  can_group_box_ = new QGroupBox("Plugin Can", basic_info_frame_);
  can_layout_ = new QHBoxLayout;
  can_send_ckb_ = new QCheckBox("Send Requests", basic_info_frame_);
  can_receive_ckb_ = new QCheckBox("Receive Requests", basic_info_frame_);
  can_launch_ckb_ = new QCheckBox("Launch Applications", basic_info_frame_);
+ can_send_ckb_->setChecked(true);
+ can_receive_ckb_->setChecked(true);
+ can_launch_ckb_->setChecked(true);
 
  can_layout_->addWidget(can_send_ckb_);
  can_layout_->addWidget(can_receive_ckb_);
@@ -80,6 +92,31 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  can_group_box_->setLayout(can_layout_);
  basic_info_layout_->addWidget(can_group_box_);
 
+ QGroupBox* basic_list_group_box_;
+ QGridLayout* basic_list_layout_;
+ QPushButton* view_local_application_list_;
+ QPushButton* view_application_list_;
+
+ basic_list_group_box_ = new QGroupBox("View ETS Plugin Applications", basic_info_frame_);
+ basic_list_layout_ = new QGridLayout;
+ basic_list_layout_->setColumnStretch(0, 1);
+ basic_list_layout_->setColumnStretch(2, 1);
+
+ view_local_application_list_ = new QPushButton("Local Applications", basic_info_frame_);
+ view_application_list_ = new QPushButton("Browse All (launches web browser)", basic_info_frame_);
+
+ view_local_application_list_->setStyleSheet(colorful_small_button_style_sheet_());
+ view_application_list_->setStyleSheet(colorful_small_button_style_sheet_());
+
+ basic_list_layout_->addWidget(view_local_application_list_, 0, 1);
+ basic_list_layout_->addWidget(view_application_list_, 1, 1);
+
+ basic_list_group_box_->setLayout(basic_list_layout_);
+
+ basic_info_layout_->addWidget(basic_list_group_box_); 
+
+
+ basic_view_group_box_ = new QGroupBox("Documentation", basic_info_frame_);
  basic_view_layout_ = new QGridLayout;
  basic_view_layout_->setColumnStretch(0, 1);
  basic_view_layout_->setColumnStretch(2, 1);
@@ -93,7 +130,9 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  basic_view_layout_->addWidget(view_mosaic_documentation_, 0, 1);
  basic_view_layout_->addWidget(view_plugin_documentation_, 1, 1);
 
- basic_info_layout_->addLayout(basic_view_layout_); 
+ basic_view_group_box_->setLayout(basic_view_layout_);
+ basic_info_layout_->addWidget(basic_view_group_box_); 
+
  basic_info_layout_->addStretch();
 
  basic_info_frame_->setLayout(basic_info_layout_);

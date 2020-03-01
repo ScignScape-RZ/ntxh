@@ -44,9 +44,17 @@ class MPF_Plugin_Info_Dialog  : public QDialog
  QFormLayout* basic_form_layout_;
  QVBoxLayout* basic_info_layout_;
 
+ QGroupBox* basic_info_group_box_;
+
+ QGroupBox* basic_view_group_box_;
  QGridLayout* basic_view_layout_;
  QPushButton* view_mosaic_documentation_;
  QPushButton* view_plugin_documentation_;
+
+ QGroupBox* basic_list_group_box_;
+ QGridLayout* basic_list_layout_;
+ QPushButton* view_local_application_list_;
+ QPushButton* view_application_list_;
 
  QHBoxLayout* plugin_active_layout_;
  QCheckBox* plugin_active_ckb_;
