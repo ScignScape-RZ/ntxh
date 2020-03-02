@@ -755,12 +755,16 @@ Linguistic Technology Systems\\
 
 \setbeamercolor{background canvas}{bg=}
 
+\makeatletter
+\define@key{Gin}{resolution}{\pdfimageresolution=#1\relax}
+\makeatother
+
 \begin{document}
 	
 	\pdfpagewidth 32cm
 %	\pdfpageheight 30cm
 	
-%\part{ScreenShots}
+\part{ScreenShots}
 %\section{Group_1-1-intro}
 \input{texs/pre1}
 \input{texs/expand}
@@ -781,9 +785,10 @@ Linguistic Technology Systems\\
 \input{texs/lingcopy}
 \input{texs/nixon}
 \input{texs/pre14}
-\input{texs/trilink}
+
 \input{texs/sxpr}
 \input{texs/float}
+\input{texs/trilink}
 
 %{
 %	\setbeamercolor{background canvas}{bg=}
