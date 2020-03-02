@@ -2,6 +2,7 @@
 
 \usepackage{eso-pic}
 
+
 \AddToShipoutPictureBG{%
 
 \ifnum\value{page}>0{
@@ -288,9 +289,9 @@
 
 \newcommand{\lGRE}{\resizebox{!}{8pt}{\AcronymText{GRE}}}
 
-\newcommand{\p}{
+\newcommand{\p}[1]{
 
-\vspace{1em}}
+\vspace{1em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -399,7 +400,11 @@
 							\textit{#1}}}
 				\end{mdframed}}
 			}[3em]}}
+	
+\usepackage{wrapfig}
 
+\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{shapes.arrows}
 
 \begin{document}
 	
@@ -418,6 +423,7 @@
 \colorlet{ctmpppp}{ctmppp!90!logoRed}
 
 \vspace{1em}
+
 
 %{\colorbox{darkBlGreen!30!darkRed}{%
 \begin{tcolorbox}
@@ -447,6 +453,7 @@ drop shadow=logoPurple!50!darkRed,
 \end{center}
 
 \vspace{-1em}
+
 
 %\noindent\lun{Overview}
 \fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
@@ -479,8 +486,10 @@ ETS plugins can then examine a publication's
 \SDI{} so as to determine how to augment the 
 underlying document with additional 
 instructional and/or multimedia features.
+}
 %When publications have an \SDI{}, ETS plugins can read 
-}  
+
+%}  
 
 \mnote{How \EPF{} enables multi-application networking}
 \p{\lEPF{} refers not to a single plugin, but a 
@@ -498,7 +507,10 @@ plugins for scientific or multimedia applications so
 that students could access multimedia content 
 linked to test-preparation materials.}
 
-\p{For a concrete example of advanced functionality 
+
+\p{\begin{wrapfigure}{r}{110mm}
+		\input{etsf1.tex}
+\end{wrapfigure}For a concrete example of advanced functionality 
 that can be achieved by connecting two distinct 
 \EPF{} plugins, consider a student reading the \GRE{} 
 Chemistry Practice Book published by ETS.  This book 
@@ -506,7 +518,8 @@ has sample questions such as (number 4, page 11)
 \textbf{The molecular geometry of thionyl chloride, 
 SOCl$_2$, is best described as} \textit{(A) 
 trigonal planar, (B) T-shaped, (C) tetrahedral, 
-(D) trigonal pyramidal, or (E) linear}.  To understand 
+(D) trigonal pyramidal, or (E) linear}.  
+To understand 
 this question/answer, it may help students to view as 
 \ThreeD{} model of thionyl chloride, which can be done 
 through molecular visualization software such as IQmol.  
