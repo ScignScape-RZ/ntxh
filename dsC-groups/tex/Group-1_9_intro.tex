@@ -1,20 +1,8 @@
 
 \documentclass{beamer}
 
-%\usepackage{geometry}
-%\geometry{papewidth=20cm,paperheight=20cm}
-
-%\pdfpagewidth 41cm
-%\pdfpageheight 29.7cm
-
-\setbeamersize{text margin left=0.1em}  % <- like this
-\setbeamersize{text margin right=0.1em} % <- like this
-
 \usepackage{setspace}
 \usepackage{varioref}
-
-\newcommand{\q}[1]{{\fontfamily{phv}\selectfont ``}#1{\fontfamily{phv}\selectfont ''}} 
-
 
 %%??\usepackage{spath3}
 %\usepackage{pstricks}
@@ -60,7 +48,7 @@
 %\usetheme{AnnArbor}
 %\usecolortheme{spruce}
 
-\usetheme[width=0pt]{BerkeleyAA}
+\usetheme{BerkeleyAA}
 \usecolortheme{spruceaa}
 
 \def\swidth{1cm}
@@ -71,6 +59,13 @@
 
 \newcommand{\ft}[1]{\vspace*{.25cm}\raisebox{-.45cm}{%
 \contour{MSUgreen!50!yellow}{{\protect\Huge{\protect\textbf{#1}}}}}}
+
+\newcommand{\sft}[1]{\vspace*{.25cm}\raisebox{-.35cm}{%
+\contour{MSUgreen!50!yellow}{{\protect\LARGE{\protect\textbf{#1}}}}}}
+
+\newcommand{\lft}[1]{\vspace*{.25cm}\raisebox{-.35cm}{%
+\contour{MSUgreen!50!yellow}{{\protect\LARGE{\protect\textbf{#1}}}}}}
+
 
 
 %C:/dgch-dev/cpp/testdia/bulletin/reslides/beamerthemeBerkeley.sty
@@ -89,12 +84,6 @@
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{frametitle}[default][center]
 \setbeamertemplate{caption}[numbered]
-
-\beamertemplatenavigationsymbolsempty{}
-%\setbeamertemplate{navigationsymbols}{empty}
-%\setbeamertemplate{footline}{}
-%\setbeamertemplate{footline}[-----]{}
-%\setbeamertemplate{headline}{}
 
 \setlength{\paperwidth}{10.in}
 \setlength{\paperheight}{7.5in}
@@ -144,8 +133,8 @@
 }
 
 \newcommand\TwoQuad[2]{%
-	\begin{minipage}[b][.75\textheight][t]{.55\textwidth}#1\end{minipage}\hfill
-	\begin{minipage}[b][.75\textheight][t]{.43\textwidth}#2\end{minipage}%
+	\begin{minipage}[b][.45\textheight][t]{1.01\textwidth}#1\end{minipage}
+	\begin{minipage}[b][.45\textheight][t]{1.01\textwidth}#2\end{minipage}%
 }
 
 \newcommand\OneQuad[1]{%
@@ -224,27 +213,18 @@
  \texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash\texttwelveudash%
 }
 
-%\usepackage[nodisplayskipstretch]{setspace}
 
 \newenvironment{lightquadblock}[1]{\begin{center}\LARGE{%
-			\colorbox[rgb]{.39,0,0.28}{\color[rgb]{1,1,1}{\hspace{-1em}\makebox[\textwidth]{\textbf{#1}}}}
+			\colorbox[rgb]{.99,.99,0.66}{\color[rgb]{.14,.14,.04}{\hspace{-1em}\makebox[\textwidth]{#1}}}
 		}\end{center}
 		%\begin{framebox}
 		\begin{minipage}[c]{.9\textwidth}\vspace{1em}
 		}{
 	\end{minipage}}
 	
-\newenvironment{lightquadblockc}[2]{\begin{center}\LARGE{%
-			\colorbox[rgb]{#1}{\color[rgb]{1,1,1}{\hspace{-1em}\makebox[\textwidth]{\textbf{#2}}}}
-		}\end{center}
-		%\begin{framebox}
-		\begin{minipage}[c]{.9\textwidth}\vspace{1em}
-		}{
-	\end{minipage}}
-
 	
 	\newenvironment{lightqblock}[1]{\begin{center}\LARGE{%
-				\colorbox[rgb]{.90,.90,0.90}{\cfbox{.96,.4,.96}{\color[rgb]{.2,.06,.04}{\hspace{-1em}\makebox[\textwidth]{#1}}}}
+				\colorbox[rgb]{.90,.90,0.90}{\cfbox{.96,.94,.96}{\color[rgb]{.2,.06,.04}{\hspace{-1em}\makebox[\textwidth]{#1}}}}
 			}\end{center}
 			%\begin{framebox}
 			\begin{minipage}[c]{.99\textwidth}\vspace{1em}
@@ -271,13 +251,13 @@
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{decorations.pathmorphing}
 
-%\newcommand{\q}[1]{``#1"}
+\newcommand{\q}[1]{``#1"}
 
 \definecolor{quadgrey}{rgb}{.9,.9.,.89}
 \colorlet{snakegrey}{black!80!white}
 \colorlet{blbl}{blue!20!black}
 
-\definecolor{lqboutercolor}{rgb}{.92,.91,0}
+\definecolor{lqboutercolor}{rgb}{.93,.91,.92}
 \definecolor{lqbinnercolor}{rgb}{.98,.98,.98}
 
 \definecolor{blGreen}{rgb}{.2,.7,.3}
@@ -305,7 +285,7 @@
 
 %\usepackage{microtype}
 
-%\usepackage{mathtools}
+
 
 \newcommand{\yhc}[1]{{ %
 {\contourlength{1.2pt}
@@ -315,16 +295,6 @@
 
 \newcommand{\cframedbox}[1]{\begin{mdframed}
 [linecolor=rb!85!red,linewidth=0.4mm]#1\end{mdframed}}
-
-\newcommand{\cframedboxpanda}[1]{\begin{mdframed}
-		[linecolor=yellow!70!blue,linewidth=0.8mm]#1\end{mdframed}}
-
-\newcommand{\cframedboxblue}[1]{\begin{mdframed}
-		[linecolor=blue!70!black,linewidth=0.8mm]#1\end{mdframed}}
-
-
-\newcommand{\cframedboxx}[3]{\begin{mdframed}
-		[linecolor=rb!85!red,linewidth=#2]\hspace{#1}#3\end{mdframed}}
 
 \newcommand{\cframedboxyellow}[1]{\begin{mdframed}
 [linecolor=rb!45!yellow,linewidth=0.4mm]#1\end{mdframed}}
@@ -394,67 +364,22 @@
 \newcommand{\raiseBoxL}[1]{\makebox{\raisebox{.1em}{{\fontfamily{put}\fontseries{sb}\selectfont #1}\hspace{1.2em}}}}
 %	\begin{textsf}{\small}{}\end{textsf}\end{minipage}}
 
-\newcommand{\doubleFrame}[1]{\doubleFrameX{.98\textwidth}{#1}}
-
-\newcommand{\doubleFrameX}[2]{\doubleFrameXX{2pt}{#1}{#2}}
-
-\newcommand{\doubleFrameXX}[3]{%
-	\fcolorbox{fcBoxColor!90!cyan}{gray!50}{
-		%{\begin{center}
-		\begin{minipage}{.985\textwidth}
-			%\begin{center}	
-			\hspace{#1}\vspace*{1pt}		
-			\fcolorbox{fcBoxColor!50!cyan}{white}{%
-				\begin{minipage}{#2}%
-					\begin{center}\begin{minipage}{.97\textwidth}				
-							\begin{spacing}{1.8}\vspace{.5em}{\textbf{\Large #3}\vspace{-20pt}}\end{spacing}%
-						\end{minipage}\end{center}
-					\end{minipage}}
-					%\end{center}
-				\end{minipage}}
-				%\end{center}}
-			}%
-			
-
-\newcommand{\doubleFrameXspec}[3]{%
-	\fcolorbox{fcBoxColor!90!cyan}{gray!50}{
-		%{\begin{center}
-		\begin{minipage}{\textwidth}
-			%\begin{center}	
-			\hspace{#1}\vspace*{1pt}		
-			\fcolorbox{fcBoxColor!50!cyan}{white}{%
-				\begin{minipage}{#2}%
-					\begin{center}\begin{minipage}{.99\textwidth}				
-							\begin{spacing}{1.8}\vspace{.5em}{\textbf{\Large #3}\vspace{-20pt}}\end{spacing}%
-						\end{minipage}\end{center}
-					\end{minipage}}
-					%\end{center}
-				\end{minipage}}
-				%\end{center}}
-			}%
-			
-
-
-
-\newcommand{\doubleFrameY}[6]{%
-	\fcolorbox{fcBoxColor!90!black}{gray!50}{
-		\setlength{\fboxsep}{#5}%{\begin{center}
-		\begin{minipage}{#1}
-			%\begin{center}	
-			\hspace{#2}\vspace*{1pt}		
-			\fcolorbox{fcBoxColor!50!black}{white}{%
-\begin{minipage}{#3}%
-					\begin{center}\begin{minipage}{#4}				
-							\begin{spacing}{1.8}\vspace{.5em}{\textbf{\Large #6}\vspace{-20pt}}\end{spacing}%
-						\end{minipage}\end{center}
-					\end{minipage}}
-					%\end{center}
-				\end{minipage}}
-				%\end{center}}
-			}%
-			
-			
-
+\newcommand{\doubleFrame}[1]{%
+\fcolorbox{fcBoxColor!50}{gray!50}{
+%{\begin{center}
+\begin{minipage}{.985\textwidth}
+%\begin{center}	
+\hspace{2pt}\vspace*{1pt}		
+\fcolorbox{fcBoxColor!90}{white}{%
+\begin{minipage}{.98\textwidth}%
+\begin{center}\begin{minipage}{.955\textwidth}				
+\begin{spacing}{1}\vspace{1em}\part{title}#1\end{spacing}%
+\end{minipage}\end{center}
+\end{minipage}}
+%\end{center}
+\end{minipage}}
+%\end{center}}
+}%
 
 \usepackage{aurical}
 \usepackage[T1]{fontenc}
@@ -561,17 +486,13 @@ drop shadow={top color=logoBlue!50!logoCyan,
 \node[anchor=south west,inner sep=0] (image) at (#1){%
 \includegraphics[scale=#2]{#3}};}
 
-\newcommand{\nodeincludegraphicsTRRSqqq}[6]{
-\node[anchor=south west,inner sep=0] (image) at (0,0){%
-\includegraphics[scale=#1,trim={#2 #3 #4 #5},clip]{#6}};}
+\newcommand{\nodeincludegraphicsLOCTR}[5]{
+\node[anchor=south west,inner sep=0] (image) at (#1){%
+\includegraphics[scale=#2,trim={0 #4 #3 0},clip]{#5}};}
 
 \newcommand{\nodeincludegraphicsTR}[3]{
 \node[anchor=south west,inner sep=0] (image) at (0,0){%
 \includegraphics[trim={0 #2 #1 0},clip]{#3}};}
-
-\newcommand{\nodeincludegraphicsTRR}[5]{
-	\node[anchor=south west,inner sep=0] (image) at (0,0){%
-		\includegraphics[trim={#3 #2 #1 #4},clip]{#5}};}
 
 \newcommand{\nodeincludegraphicsTRRS}[6]{
 \node[anchor=south west,inner sep=0,scale=#1] (image) at (0,0){%
@@ -627,237 +548,19 @@ drop shadow={top color=logoBlue!50!logoCyan,
 \colorlet{brred}{brown!53!red}
 \colorlet{grred}{grammarArrowColor!40!red!60}
 
-\definecolor{elColor}{rgb}{.2,.1,0}
-\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+\newcommand\Mitemitem{%
+  \begingroup
+  \leavevmode
+  \usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}%
+  \usebeamertemplate**{itemize item}%
+  \endgroup
+}
 
-\definecolor{logoOrange}{RGB}{108, 18, 30}
-\definecolor{logoGreen}{RGB}{85, 153, 89}
-\definecolor{logoPurple}{RGB}{200, 208, 30}
-
-\definecolor{logoBlue}{RGB}{4, 2, 25}
-\definecolor{logoPeach}{RGB}{255, 159, 102}
-\definecolor{logoCyan}{RGB}{66, 206, 244}
-\definecolor{logoRed}{rgb}{.3,0,0}
-
-
-
-\newcommand*{\MyDiamond}{%
-	\begin{tikzpicture}{baseline}	
-	\node [draw, shape=diamond, %shape border rotate=100,
-	line width=.2mm, left color=flColor, right color=darkRed, draw=logoPurple, aspect=1,
-	draw opacity=0.6, fill opacity=0.8, xscale=0.5, yscale=0.5,
-	minimum width=1mm, 
-	] 
-	at (2, 0) {};\end{tikzpicture}}
-
-%\usetikzlibrary{shapes.geometric}
-
-\newcommand*{\MyOctagon}{%
-	\begin{tikzpicture}{baseline}	
-	\node [draw, regular polygon, regular polygon sides=8, %shape border rotate=100,
-	line width=.2mm, left color=blue!60!cyan, right color=yellow!30!cyan, draw=blue!50!red, aspect=.7,
-	draw opacity=.8, fill opacity=0.8, xscale=0.7, yscale=0.7,
-	minimum width=1mm, 
-	] 
-	at (0, 0) {};\end{tikzpicture}}
-
-\newcommand*{\MyOct}{\hspace{14pt}\raisebox{1pt}{\MyOctagon}\hspace{13pt}}
-	
-%\usetikzlibrary{fadings}
-
-\newcommand*{\MySquare}{%
-	\begin{tikzpicture}{baseline}
-	\node [draw, %shape border rotate=100,
-	line width=1pt, left color=blue!60!cyan, right color=yellow!30!cyan, draw=cyan!30!blue, aspect=1,
-	%path fading=south,
-	draw opacity=0.8, fill opacity=1, 
-	xscale=0.75, yscale=0.75,
-	minimum width=.4mm, shading angle=60
-	] 
-	at (0, 0) {};
-
-  \draw[draw=red!70!orange,draw opacity=0.5,] (-.14,-.14) -- (.14,-.14) -- (.14,.14);
-  
-	
-%			\node [draw, 
-%			line width=1pt, draw=red,
-%			draw opacity=0.3, fill opacity=0, 
-%			xscale=0.8, yscale=0.8,
-%			minimum width=.4mm
-%			] 
-%			at (0, 0) {};	
-			
-	\end{tikzpicture}}
-
-\newcommand{\sqitem}{\item[\raisebox{2pt}{\MySquare}]}
-\newcommand{\dmitem}{\item[\raisebox{2pt}{\MyDiamond}]}
-
-\newcommand{\nodeincludegraphicsLOCTR}[7]{
-\node[anchor=south west,inner sep=0,thick,
-drop shadow={top color=logoBlue!50!logoCyan,
-              bottom color=logoRed!50!logoCyan,
-              shadow xshift=-1pt,
-              shadow yshift=-3pt,
-              rounded corners}] (image) at (#1){%
-\fcolorbox{logoRed}{logoPeach!40!logoRed}{\includegraphics[scale=#2,trim={#5 #4 #3 #6},clip]{#7}}};}
-
-
-\newcommand{\lsep}{\hspace{7pt}}
-\newcommand{\llsep}{\hspace{14pt}}
-
-\usepackage[official]{eurosym}
-
-\usetikzlibrary{shadings}
-\usepackage{pgf-pie}
-
-
-\newcommand{\AtR}{A{\smaller{3}}R}
-
-%\usepackage[official]{eurosym}
-
-\newcommand{\thrule}{\vspace{.5em}{%
-\color[RGB]{200,47,100}{\hrule}\vspace{3pt}
-\color[RGB]{164,67,19}{\hrule}}\vspace{.9em}}
-
-\newcommand{\thrulex}{\vspace{-1.5em}{%
-\color[RGB]{14,67,19}{\hrule  height 8pt}\vspace{-2pt}
-\color[RGB]{10,47,100}{\hrule height 8pt}}\vspace{2.3em}}
-
-\usepackage{pdfpages}
-
-\input{annot}
-
-\usepackage{eso-pic}
-
-\newcommand{\atspt}{%
-	\AddToShipoutPicture*{%
-		\raisebox{16.5cm}{\hspace{25.5cm}\parbox{6cm}{%
-				\includegraphics[width=6cm]{e-logo.png}
-			}}}}
-
-
-\newcommand{\atsp}{%
-\AddToShipoutPicture*{%
-\raisebox{9.5cm}{\hspace{25.5cm}\parbox{6cm}{%
-\includegraphics[width=6cm]{e-logo.png}\\
-
-\vspace*{6cm}
-
-\begin{center}
-Linguistic Technology Systems\\
-\includegraphics[width=4cm]{logo.png}
-\end{center}
-	
-}}}}
-
-%\raisebox{4cm}{\hspace{26cm}\includegraphics[width=8cm]{logo.png}}
-
-
-\setbeamercolor{background canvas}{bg=}
+%\setbeamersize{description width=4cm}
 
 \begin{document}
-	
-	\pdfpagewidth 32cm
-%	\pdfpageheight 30cm
-	
-%\part{ScreenShots}
-%\section{Group_1-1-intro}
-\input{tex/pre1}
-\input{texs/coord}
 
-%{
-%	\setbeamercolor{background canvas}{bg=}
-%\part{ScreenShots}		
-
-%\section{Group_1-1-intro}\begin{frame}{\ft{Features of dsC}}
-%\includepdf[pages=1]{Group_1-1-intro.pdf}
-%\end{frame}
-
-%\section{Group_1-1}\begin{frame}{\ft{Conventional Spreadsheet}}
-%\includepdf[pages=1]{Group_1-1-OriginalSpreadsheet.pdf}
-%\end{frame}
-
-%\section{Group_1-2}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-2-InitialApplicationWindow.pdf}
-%\end{frame}
-
-%\section{Group_1-3}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-3-MoreTreeWidgetFeatures.pdf}
-%\end{frame}
-
-%\section{Group_1-4}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-4-InteractingWithTheMainWindow.pdf}
-%\end{frame}
-
-%\section{Group_1-5}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-5-CoordinatedDataVisualization.pdf}
-%\end{frame}
-
-%\section{Group_1-6}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-6-InteractingWithTheVisuals.pdf}
-%\end{frame}
-
-%\section{Group_1-7-intro}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-7_intro.pdf}
-%\end{frame}
-
-%\section{Group_1-7}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-7-ObtainingInformationAboutParameters.pdf}
-%\end{frame}
-
-%\section{Group_1-8}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-8-EmbeddingXPDF.pdf}
-%\end{frame}
-
-%\section{Group_1-9-intro}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-9_intro.pdf}
-%\end{frame}
-
-%\section{Group_1-9}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-9-ConfiguringTheDataSetApplication.pdf}
-%\end{frame}
-
-%\section{Group_1-10}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_1-10-TestingTheDataSetApplication.pdf}
-%\end{frame}
-
-%\section{Group_2-11-intro}\begin{frame}{\ft{Tree Widget}}
-%	\includepdf[pages=1]{Group_2-11_intro.pdf}
-%\end{frame}
-
-%\section{Group_2-11}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_2-11-CreatingADataSetFromABook.pdf}
-%\end{frame}
-
-%\section{Group_2-12}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_2-12-InteractingWithDataSamples.pdf}
-%\end{frame}
-
-%\section{Group_2-13}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_2-13-LinkingBackToTheBook.pdf}
-%\end{frame}
-
-%\section{Group_2-14-intro}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_2-14_intro.pdf}
-%\end{frame}
-
-%\section{Group_2-14}\begin{frame}{\ft{Tree Widget}}
-%	\includepdf[pages=1]{Group_2-14-BuildingParsingModels.pdf}
-%\end{frame}
-
-%\section{Group_2-15}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_2-15-UsingDockWidgetsForFlexibleLayout.pdf}
-%\end{frame}
-
-%\section{Group_2-16}\begin{frame}{\ft{Tree Widget}}
-%\includepdf[pages=1]{Group_2-16-LinkAndDependencyGrammarAnnotations.pdf}
-%\end{frame}
-
-%}
-\part{Publishing}	
-\input{slide-pub1}
-\input{slide-pub2}
-\input{slide-pub3}
-\input{slide-pub4}
+\input{pre9}
 
 \end{document}
