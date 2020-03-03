@@ -761,6 +761,32 @@ Linguistic Technology Systems\\
 
 \newcommand{\annfont}{\fontsize{13}{15}\selectfont}
 
+
+% for double arrows a la chef
+% adapt line thickness and line width, if needed
+\tikzstyle{vecArrow} = [thick, fill=white, decoration={markings,mark=at position
+	1 with {\arrow[semithick]{open triangle 60}}},
+double distance=1.4pt, shorten >= 5.5pt,
+preaction = {decorate},
+postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, draw=white,line width=1.4pt, shorten >= .5pt]
+
+\newcommand{\curicon}[2]{%
+\node at (#1,#2) [
+draw=black,
+%minimum width=2ex,
+inner sep=.7pt,
+fill=white,
+single arrow,
+single arrow head extend=3pt,
+single arrow head indent=1.5pt,
+single arrow tip angle=45,
+line join=bevel,
+minimum height=4.6mm,
+rotate=115
+] {};
+}
+
 \begin{document}
 	
 	\pdfpagewidth 32cm
@@ -889,8 +915,15 @@ Linguistic Technology Systems\\
 \input{slide-pub3}
 \input{slide-pub4}
 
+\part{Mosaic}
 \input{after/mosaic}
 \input{after/atr}
+\input{after/mpf-1}
+\input{after/mpf-2}
+\input{after/mpf-3}
+\input{after/mpf-4}
+\input{after/mpf-5}
+\input{after/mpf-6}
 
 \part{Thanks}
 \input{after/thanks}
