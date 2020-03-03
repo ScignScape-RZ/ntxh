@@ -1,17 +1,23 @@
-%\atspt
-\begin{frame}{\ft{The Mosaic Plugin Framework (MPF)}}
-\section{Mosaic -- Intro}
-\doubleFrame{MPF allows document viewers to communicate 
-with external software, including Dataset Applications.}
+%\atsp
+\begin{frame}{\ft{MPF Request Info}}
+\section{MPF -- Request}
+\doubleFrame{Common MPF functionality includes 
+showing information about data sent 
+between applications.}
 
 \vspace*{6pt}\hspace*{8pt}\begin{tikzpicture}
-\nodeincludegraphicsTRRS{1.125}{0cm}{1cm}{0cm}{0cm}{after/mpf-4.png}
+\nodeincludegraphicsTRRS{1.3}{0cm}{2cm}{0cm}{0cm}{after/mpf-4.png}
 
- \node [anchor=west,bottom color=yellow!20!orange, top color=darkRed!70!red,inner sep=3, text width=14cm]
-  (longnote) at (2.9,10.3) {\vspace{-7pt}%  %{\color{rb!85!red}{
-  {\cframedbox{\annfont\textbf{This slide and the next 
-shows interop between a publication viewer (XPDF) and 
-IQmol (a molecular visualization program).}}}};
+ \node [anchor=west,bottom color=yellow!20!orange, top color=darkRed!70!red,inner sep=3, text width=6cm]
+  (longnote) at (24,7) {\vspace{-7pt}%  %{\color{rb!85!red}{
+  {\cframedbox{\annfont\textbf{This slide shows another 
+dimension of functionality common to disparate MPF 
+plugins: the ability to examine inter-application 
+request information.  The   \q{request info} tab on 
+a \q{plugin info} dialog documents the origin 
+and details of the most recent inter-application request which 
+triggered the plugin to respond (in this case, 
+instructions to load a specific Molecular Data file).}}}};
 
 \curicon{27}{1.7}
 

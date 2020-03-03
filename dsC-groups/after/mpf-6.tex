@@ -1,17 +1,23 @@
-%\atspt
-\begin{frame}{\ft{The Mosaic Plugin Framework (MPF)}}
-\section{Mosaic -- Intro}
-\doubleFrame{MPF allows document viewers to communicate 
-with external software, including Dataset Applications.}
+%\atsp
+\begin{frame}{\ft{Reloading User Sessions}}
+\section{Mosaic -- Reloading}
+\doubleFrame{After being launched a second time, the 
+MPF plugin can reload the prior application state.}
 
 \vspace*{6pt}\hspace*{8pt}\begin{tikzpicture}
-\nodeincludegraphicsTRRS{1.125}{0cm}{1cm}{0cm}{0cm}{after/mpf-6.png}
+\nodeincludegraphicsTRRS{1.3}{0cm}{1cm}{0cm}{0cm}{after/mpf-6.png}
 
- \node [anchor=west,bottom color=yellow!20!orange, top color=darkRed!70!red,inner sep=3, text width=14cm]
-  (longnote) at (2.9,10.3) {\vspace{-7pt}%  %{\color{rb!85!red}{
-  {\cframedbox{\annfont\textbf{This slide and the next 
-shows interop between a publication viewer (XPDF) and 
-IQmol (a molecular visualization program).}}}};
+ \node [anchor=west,top color=yellow!20!gray, bottom color=darkRed!70!red,inner sep=3, text width=25cm]
+  (longnote) at (3.8,11.7) {\vspace{-7pt}%  %{\color{rb!85!red}{
+  {\cframedbox{\annfont\textbf{Following up on the 
+previous slide, here IQmol is launched a second 
+time, with a request to view the molecular structure 
+of lactose.  In response, IQmol opens the Molecular Data 
+file for lactose (C$_12$H$_22$O$_11$), but  
+also reloads the 
+prior session --- in \mbox{particular}, the previously-viewed 
+thionyl chloride file (7719-09-7) is also loaded (and can be viewed 
+from the side panel).}}}};
 
 \curicon{27}{1.7}
 

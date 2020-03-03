@@ -1,17 +1,25 @@
-%\atspt
-\begin{frame}{\ft{The Mosaic Plugin Framework (MPF)}}
-\section{Mosaic -- Intro}
+%\atsp
+\begin{frame}{\ft{Application Interop via MPF}}
+\section{MPF -- Interop}
 \doubleFrame{MPF allows document viewers to communicate 
 with external software, including Dataset Applications.}
 
-\vspace*{6pt}\hspace*{8pt}\begin{tikzpicture}
-\nodeincludegraphicsTRRS{1.125}{0cm}{1cm}{0cm}{0cm}{after/mpf-2.png}
+\vspace*{2pt}\hspace*{8pt}\begin{tikzpicture}
+\nodeincludegraphicsTRRS{1.5}{0cm}{2cm}{0cm}{0cm}{after/mpf-2.png}
 
- \node [anchor=west,bottom color=yellow!20!orange, top color=darkRed!70!red,inner sep=3, text width=14cm]
-  (longnote) at (2.9,10.3) {\vspace{-7pt}%  %{\color{rb!85!red}{
-  {\cframedbox{\annfont\textbf{This slide and the next 
-shows interop between a publication viewer (XPDF) and 
-IQmol (a molecular visualization program).}}}};
+ \node [anchor=west,inner sep=4, 
+ top color=rb!85!yellow,
+ %middle color=blue!40!black,
+ bottom color=blue!40,
+ rounded corners=1pt, text width=14cm]
+  (longnote) at (15.72,11) {\vspace{-12pt}%  %{\color{rb!85!red}{
+  {\cframedboxx{3pt}{3pt}{\annfont\textbf{IQmol has 
+received data from the student reading a question 
+about thionyl chloride (SOCl$_2$) and has loaded 
+a Molecular Data file for SOCl$_2$.  By interactively 
+exploring thionyl chloride's molecular structure in 
+three dimensions, the student may better understand 
+the question and answer in the practice test.}}}};
 
 \curicon{27}{1.7}
 
