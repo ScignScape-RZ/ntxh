@@ -7,8 +7,16 @@
         \begin{annotatedFigure}{0pt}{0pt}
             {\includegraphics[scale=1.5]{texs/about.png}}
             
-  \node [text width=13cm,inner sep=14pt,align=justify,fill=logoCyan!20, draw=logoBlue, 
-  draw opacity=0.5,line width=1mm, fill opacity=0.9]
+\pgfdeclareverticalshading{myshading}{100bp}{color(0bp)=(yellow!60); 
+	%color(30bp)=(yellow!10); 
+	%color(70bp)=(green!10); 
+	color(100bp)=(green!10)}
+            
+  \node [text width=13cm,inner sep=14pt,align=justify,%fill=logoCyan!20, %draw=logoBlue, 
+  %draw opacity=0.5,
+  line width=1mm, fill opacity=0.9,
+  draw=green!40!black,shading=myshading, 
+  shading angle=125]
    at (0.58,0.76){\annfont\textbf{Context menus also allow users to 
    obtain information and explanations about individual parts of the 
    data set, such as individual statistical parameters.  In this 
