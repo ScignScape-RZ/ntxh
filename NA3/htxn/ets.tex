@@ -406,6 +406,22 @@
 \usetikzlibrary{arrows, decorations.markings}
 \usetikzlibrary{shapes.arrows}
 
+\newcommand{\curicon}[2]{%
+	\node at (#1,#2) [
+	draw=black,
+	%minimum width=2ex,
+	inner sep=.7pt,
+	fill=white,
+	single arrow,
+	single arrow head extend=3pt,
+	single arrow head indent=1.5pt,
+	single arrow tip angle=45,
+	line join=bevel,
+	minimum height=4.6mm,
+	rotate=115
+	] {};
+}
+
 \begin{document}
 	
 {\linespread{1.1}\selectfont
@@ -532,7 +548,8 @@ would be asserted in the Document Infoset, and
 read by a document viewer (e.g., \XPDF{}).  The 
 \XPDF{} plugin would then launch IQmol and send the 
 molecular file to the IQmol ETS Plugin, with instructions 
-to load this file into an IQmol session.  The end result 
+to load this file into an IQmol session 
+(see Figure ~\ref{fig:i1}).  The end result 
 would be that the student, with a single 
 click (such as selecting a visualization action from 
 a context menu on the practice question) have access 
@@ -542,6 +559,26 @@ functionality would be available for any chemical
 compound with multimedia files in formats 
 like Molecular Data, Protein Data Bank, or Chemical 
 Markup Language).}
+\input{etsf2.tex}
+
+p{\begin{wrapfigure}{l}{110mm}
+		\input{etsf3.tex}
+\end{wrapfigure}
+The data sent between \EPF{} applications 
+may be more complex than a request to open 
+a single multimedia file.  Suppose a student reading 
+the GRE Chemistry practice exam launches IQmol a 
+second time --- perhaps in conjunction with a 
+later question (95) about the molecular structure of 
+glucose.  In this case, the plugin can send 
+information not only about the present request but 
+about the student's prior usage; in particular 
+the fact that he or she had previously viewed the 
+SOCl$_2$ file.  The \EPF{} plugin on the IQmol 
+side can then load the prior file along with the 
+new one, so the student can browse back to prior 
+screens if desired (see the History panel on the 
+second IQmol screenshot).}
 
 \p{In addition to data visualization, scientific 
 applications can help students understand concepts 
@@ -560,6 +597,22 @@ provided by the ETS Plugin --- explaining
 the Canonical Orbital Surfaces features in 
 IQmol and enabling students to explore 
 these with a variety of different molecules.}
+
+\p{In general, the functionality provided by each ETS plugin will 
+depend in part on the host application where the 
+plugin is embedded.  An IQmol plugin would load 
+cheminformatics files and may activate IQmol's analytic 
+capabilities in the domain of chemistry, whereas 
+a plugin in Data Visualization applications (such 
+as ParaView) could open quantitative data sets 
+with 2D or 3D views (via sufaces, scatter-plots, 
+bar charts, etc.} and activate statistical calculations.  
+Certain functionality, however, would be shared 
+among all ETS plugin, including a dialog window to 
+show basic plugin information (see figure at right) 
+and also a more detailed review of data transmitted 
+between applications via plugins.   
+
 
 
 
