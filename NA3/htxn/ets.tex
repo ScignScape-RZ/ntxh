@@ -526,7 +526,8 @@ linked to test-preparation materials.}
 
 \p{\begin{wrapfigure}{r}{110mm}
 		\input{etsf1.tex}
-\end{wrapfigure}For a concrete example of advanced functionality 
+\end{wrapfigure}
+For a concrete example of advanced functionality 
 that can be achieved by connecting two distinct 
 \EPF{} plugins, consider a student reading the \GRE{} 
 Chemistry Practice Book published by ETS.  This book 
@@ -534,9 +535,12 @@ has sample questions such as (number 4, page 11)
 \textbf{The molecular geometry of thionyl chloride, 
 SOCl$_2$, is best described as} \textit{(A) 
 trigonal planar, (B) T-shaped, (C) tetrahedral, 
-(D) trigonal pyramidal, or (E) linear}.  
-To understand 
-this question/answer, it may help students to view as 
+(D) trigonal pyramidal, or (E) linear}.
+
+\begin{wrapfigure}{l}{110mm}
+	\input{etsf2.tex}
+\end{wrapfigure}\noindent{}To understand 
+this question/answer, it may help students to view a 
 \ThreeD{} model of thionyl chloride, which can be done 
 through molecular visualization software such as IQmol.  
 Accordingly, this specific question in the book 
@@ -559,14 +563,13 @@ functionality would be available for any chemical
 compound with multimedia files in formats 
 like Molecular Data, Protein Data Bank, or Chemical 
 Markup Language).}
-\input{etsf2.tex}
 
-p{\begin{wrapfigure}{l}{110mm}
+\p{\begin{wrapfigure}{r}{110mm}
 		\input{etsf3.tex}
-\end{wrapfigure}
+	\end{wrapfigure}
 The data sent between \EPF{} applications 
 may be more complex than a request to open 
-a single multimedia file.  Suppose a student reading 
+a single multimedia file.  Suppose a student reading 	
 the GRE Chemistry practice exam launches IQmol a 
 second time --- perhaps in conjunction with a 
 later question (95) about the molecular structure of 
@@ -577,8 +580,10 @@ the fact that he or she had previously viewed the
 SOCl$_2$ file.  The \EPF{} plugin on the IQmol 
 side can then load the prior file along with the 
 new one, so the student can browse back to prior 
-screens if desired (see the History panel on the 
-second IQmol screenshot).}
+screens if desired (see the Model View panel on 
+Figure ~\ref{fig:i2}).}
+\input{etsf4.tex}
+
 
 \p{In addition to data visualization, scientific 
 applications can help students understand concepts 
@@ -598,22 +603,27 @@ the Canonical Orbital Surfaces features in
 IQmol and enabling students to explore 
 these with a variety of different molecules.}
 
-\p{In general, the functionality provided by each ETS plugin will 
+\p{\begin{wrapfigure}{r}{115mm}
+		\input{etsf5.tex}
+	\end{wrapfigure}In general, the functionality provided by each ETS plugin will 
 depend in part on the host application where the 
 plugin is embedded.  An IQmol plugin would load 
-cheminformatics files and may activate IQmol's analytic 
+cheminformatic files and may activate IQmol's analytic 
 capabilities in the domain of chemistry, whereas 
 a plugin in Data Visualization applications (such 
 as ParaView) could open quantitative data sets 
-with 2D or 3D views (via sufaces, scatter-plots, 
-bar charts, etc.} and activate statistical calculations.  
+with 2D or 3D views (via surfaces, scatter-plots, 
+bar charts, etc.) and activate statistical calculations.  
 Certain functionality, however, would be shared 
 among all ETS plugin, including a dialog window to 
 show basic plugin information (see figure at right) 
 and also a more detailed review of data transmitted 
-between applications via plugins.   
-
-
+between applications via plugins.  The 
+\q{request info} tab allows students, instructors, 
+and plugin developers to see information about the 
+request which caused the current application to be 
+launched or to open a specific file.}
+\input{etsf6.tex}
 
 
 
