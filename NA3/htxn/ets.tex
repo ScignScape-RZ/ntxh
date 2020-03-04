@@ -625,11 +625,309 @@ request which caused the current application to be
 launched or to open a specific file.}
 \input{etsf6.tex}
 
+\vspace{2em}
+\noindent\lun{Use-Cases for the Proposed ETS Plugin Framework}
+{\sectsp}
 
+\p{The above figures illustrate some of the 
+canonical use-cases for ETS plugins: students 
+read textbooks, articles, 
+or test-preparation materials which are be enhanced 
+with multimedia content.  For other use cases, consider 
+the following scenarios: 
+\vspace*{-2em}
+\begin{mldescription}
+\mlitem[Scenario 1: Using scientific 
+application as pedagogical tools]  
+Teachers often instruct students to download 
+and install software relevant to the course curriculum, 
+and this software can potentially be an essential 
+part of the course content.  Instructors may 
+(1) use the visualization capabilities of these 
+domain-specific applications to help students 
+understand the concepts covered in class; 
+(2) provide instruction in how to use the 
+software as part of the curriculum; 
+(3) evaluate students' understanding of the 
+software as part of their assessment of 
+students' mastery of the curriculum; or 
+(4) use applications' analytic features as an 
+overview of analytic or quantitative methodologies 
+relevant to the course's subject matter.  In 
+the case of IQmol, features such as 
+energy minimization, plotting orbitals, 
+calculating vibrational frequencies, and many 
+other chemphysical computations provide an 
+overview of scientific concepts which 
+might be covered in a Chemistry class. 
+
+\mnote{Science applications as\\ teaching tools} 
+\pseudoIndent{} To facilitate the 
+use of scientific applications as teaching tools, 
+\LPF{} plugins help instructors personalize the 
+applications which their students use in 
+conjunction with course curricula.  Again using IQmol as 
+a case-study, an ETS plugin could show students a list of molecular 
+examples discussed in class (based on data 
+provided by the instructor) and allow students 
+to view the corresponding \ThreeD{} molecular 
+graphics accordingly.  
+
+\mlitem[Scenario 2: Authors or instructors 
+analyze publications' content to develop teaching 
+materials]  When documents are read in an 
+educational context, they become part of a 
+larger ecosystem that extends beyond publication 
+itself --- an ecosystem of assessment, test preparation, 
+curricular design, and overall teaching environments 
+(labs, classrooms, and so forth).  
+%\mnote{Pedago\-gical use-cases for \LPF{}}
+%Such use-cases illustrate the value of 
+%machine-readable Document Infosets which provide 
+%structured access to publication content, as opposed 
+%to the merely visual access offered by \PDF{} files.  
+Pedagogically using publications can involve extracting 
+information from texts, or laying on additional 
+content: inserting review questions at strategic 
+points in the text; compiling glossaries indicating 
+when technical terms are first used; foregrounding 
+graphics and figure illustrations and encouraging 
+students to explore them in depth 
+(for instance, performing for themselves the calculations 
+which are plotted in a statistical diagram; or 
+identifying the axes, scales of measurement, dimensions, 
+free and dependent parameters, and other mathematical 
+details of a quantitative illustration).  Both of 
+these kinds of operations --- extracting or adding 
+content --- require computational access to a 
+Document Infoset providing 
+structured access to publication content.   
+%Such use-cases illustrate the value of 
+%machine-readable Document Infosets which provide 
+%structured access to publication content, as opposed 
+%to the merely visual access offered by \PDF{} files.   
+
+\pseudoIndent{} Computer code which operates on 
+manuscripts composed in coordination with 
+\EPF{} can therefore act 
+in consort with \EPF{} plugins.  For example, review questions 
+or glossary definitions may linked to specific points 
+in the text; this supplemental content may then 
+be packaged along with the original publication.  
+With suitable \EPF{} plugins, the document viewer 
+can then process the review material and 
+superimpose pedagogical questions, comments, or instructions 
+on the underlying document text.     
+
+\mlitem[Scenario 3: Authors Develop Educational 
+Materials Targeting Specific Applications]
+In this scenario, authors compose books, articles, 
+or test-preparation materials with the anticipation 
+that readers will use specific software applications to 
+enhance their reading experience.  This sort 
+of interrelationship between publications and external 
+software is presupposed at a rudimentary level 
+as soon as authors link documents to specialized 
+multimedia files.  For example, files in the 
+ParaView Data (\PVD{}) format are intended to be 
+used by the ParaView software; as a result, documents 
+which reference such files presuppose that readers 
+will have ParaView installed on their computer, for 
+the full reading experience.  Similarly, files 
+in cheminformatic formats such as Protein Data Bank 
+(.pdb) or Chemical Markup Language (.cml) need to 
+be opened with chemistry-related software like IQmol.  
+
+%\mnote{Altering host applications via\\ plugins}      
+\pseudoIndent{} Although it is not a prerequisite 
+for \EPF{} plugins, one tool which can help 
+authors customize their audience's reading 
+experience is the Hypergraph Text Encoding 
+Protocol (\HTXN{}), discussed in greater detail below.
+\end{mldescription}
+}
+
+\vspace{1em}
+\noindent\lun{The \lsHTXN{} Protocol}
+{\sectsp}
+
+\p{\lHTXN{} defines a protocol for (1) encoding manuscripts' 
+character data and (2) defining document structures via 
+graphs whose nodes correspond to 
+ranges in a character stream.  
+\lHTXN{} therefore uses 
+\q{standoff annotation} (i.e., character 
+encoding and document structure are 
+defined in isolation from one another), and 
+can be employed to encode manuscripts in 
+many different markup formats.  
+\lLXCR{} and \lHTXN{} are autonomous 
+technologies (each may be used apart 
+from the other), but they form a 
+natural pairing, encompassing both 
+the character/orthographic data and 
+the document structure of 
+manuscripts for publication.}
+
+\mnote{\HTXN{} and multi-media content}  
+\p{The central goal 
+of \HTXN{} is to support the new generation of 
+publishing technologies, where conventional 
+document formats are increasingly being supplanted 
+by digital, multimedia reader experiences.  
+The conventional manuscript (the \q{primary} 
+resource which is cited and downloaded) 
+is, accordingly, often networked with a package of 
+supplemental (or \q{secondary}) resources.  
+\lHTXN{} is designed to 
+rigorously document these multimedia networks, enabling 
+e-readers and domain-specific applications to be 
+integrated so that users may easily access multimedia content.}
+
+\p{The generic term \q{multimedia content} actually 
+encompasses multiple phenomena:
+
+\vspace{-2em}
+\begin{description}[leftmargin=2pt,
+	labelindent=-2pt,labelsep=12pt]
+\item[Multimedia Files]  Individual 
+files representing audio, video, or 3D graphics content.  
+These files may be linked from specific locations in 
+the primary manuscript, or even embedded within manuscripts 
+when they are published in \PDF{} format.
+ 
+\item[Data Sets and Data Visualization]  Publishers 
+increasingly emphasize sharing research data alongside 
+texts, so readers can verify or even attempt to 
+replicate claimed results.  Data sets are also a form 
+of multimedia content because, apart from being aggregates 
+of raw data, data sets are almost always accompanied 
+by interactive, visual content: charts, diagrams, or 
+plots to visualize the information holistically, or 
+interactive tools to examine or navigate through the 
+data set at finer scales.  
+
+\item[Application Networks]  Another genre of multimedia 
+content involves resources which may only be experienced 
+through specialized software.  This classification encompasses 
+content from particular scientific or technical domains, 
+which is encoded in domain-specific formats: representations 
+of molecular structures, archaeological sites, image-processing 
+data, wave-forms for signal processing, sentence-parses for 
+linguistic analysis, and so forth.  To conveniently access 
+this kind of multimedia content, readers need to use software 
+which can send signals to the specialized applications 
+having the capability to recognize the domain-specific 
+formats and translate them to interactive, 
+visual presentations.  In short, publication viewers 
+(e.g., e-readers) need to participate in multi-application 
+networks, where data can be sent and received between 
+each component.  One way to achieve this is via 
+protocols, such as \LPF{}, shared between both e-readers and 
+target applications.
+
+\item[Publications-as-Applications]  In some 
+cases, publications themselves are a form of 
+multi-layered multimedia content.  This applies 
+to publications which are not simply read from 
+start to end, but instead naturally lend 
+themselves to a reading process which navigates 
+back and forth between different sections of 
+the text, or juxtaposes different sections to be 
+visible at the same time.  Testing materials 
+and test preparation are a canonical example 
+of such layered reading, where exam questions, 
+instructions, supplemental materials (such 
+as passages for reading-comprehension 
+assessment), and comments or analyses about 
+answers (in the case of prep materials) 
+embody different layers which 
+students may wish to view side-by-side.  
+In these cases, e-readers cannot simply 
+treat the publication as a single file.  
+Instead, the manuscript needs 
+to identify text segments which can be factored 
+into different layers, and the e-reader 
+needs to implement text-viewers which allow 
+each layer to be viewed in separate windows, 
+with readers able to juxtapose and position the 
+windows as desired. 
+\end{description}\vspace{-2em}
+}
+
+
+\p{\lHTXN{} represents publication manuscripts 
+using structures which rigorously document 
+publications' multimedia content and multi-application 
+networking requirements.  This detailed 
+multi-media support has several dimensions: 
+
+\begin{enumerate}[leftmargin=2pt]
+\inditem{} Defining points in the manuscript where 
+multimedia files are linked or embedded: this 
+involves annotating locations in the manuscript 
+with hyper-references to multimedia files 
+(audio, video, etc.) which readers should be 
+able to access when they reach the corresponding 
+point in the text.
+
+\mnote{\HTXN{} cross-references to data-\\sets}
+\inditem{} Establishing granular cross-references between 
+publications and multimedia content: this is a 
+more complex case where manuscript locations have to 
+link \textit{to} or \textit{from} limited 
+\textit{portions} of the corresponding multimedia 
+resources.  For example, a passage in the manuscript 
+may discuss a single sample within a data set; or 
+may explicate a particular facet of the data set, 
+such as an individual column in a tabular 
+information space, or a specific set of 
+statistical parameters against which quantitative 
+operations are performed.  These scenarios 
+call for bi-directional cross-references between the 
+data set and the publication, wherein the granular 
+data-set facet topically relevant to the 
+corresponding manuscript location (the sample, 
+table-column, parameters, etc.) is formally 
+isolated and declared as a reference-target.  
+
+\mnote{\HTXN{} cross-references to multi-\\media assets}
+\inditem{} Cross-references may also be 
+defined between publications' non-textual or 
+non-paragraph content and corresponding 
+multimedia resources.  For example, tables 
+or diagrams visually presented in a manuscript 
+may be liked to statistical data from which 
+the figures are derived.  A similar situation 
+applies when visuals included in a publication 
+are linked to multimedia resources which 
+represent the same information in a different 
+experiential register: a \PDF{} document may 
+include a two-dimensional graphic which is created 
+by taking a camera shot of a \ThreeD{} model, 
+which readers may also experience with a 
+\ThreeD{} graphics engine; or a publication may 
+reproduce a graph or scatter-plot derived 
+from a data set, where data visualization 
+software can represent the same information 
+in a more interactive medium, with parameters 
+plotted as curves or surfaces in a \ThreeD{} 
+ambient space, or where systems are visualized 
+as systems evolving over time.  
+\end{enumerate}
+}
+
+\p{A summary of the \HTXN{} protocol,  
+sample documents which compile to \HTXN{}-encoded 
+text, and more information about plugins, 
+are all available on request from 
+Linguistic Technology Systems.}
 
 %\vspace{2em}
 %\noindent\lun{The Proposed ETS Plugin Framework}
 %{\sectsp}
+
+
 
 \end{document}
 
