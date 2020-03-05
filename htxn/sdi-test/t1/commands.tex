@@ -7,36 +7,33 @@
 \newwrite\sdiFile
 \immediate\openout\sdiFile=\jobname.sdi.txt
 
-\newcounter{sdiCounter}
+\newcommand{\p}[1]{
+
+\vspace{10pt}#1}
+
+%\newcounter{sdiCounter}
 
 \newcommand{\writeSDI}[1]{\immediate\write\sdiFile#1}
 
 \newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
 
-\newcommand{\sss}[2]{%
-%\stepcounter{sdiCounter}%
-%\emblink{ss}{\thesdiCounter}
-\immediate\write\sdiFile{%
-i: #1^^J%
-p: \thepage^^J%
-}
-\wsss{#1}{#2}
-}
+\newcount\sdiCounter
+\def\advsdiCounter{\global\advance\sdiCounter by1}
 
-\newcommand{\wsss}[2]{%
-\pdfsavepos\write\sdiFile{%
-i: #1^^J%
-s: #2^^J%
-x: \the\pdflastxpos^^J%
-y: \the\pdflastypos^^J%
+\def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
+
+\newcommand{\sss}{%
+\advsdiCounter%
+\pdfsavepos\write\sdiFile\expandafter\expandafter{%
+\the\sdiCounter:\thepage^^J%
+x: \topt\pdflastxpos^^J%
+y: \topt\pdflastypos^^J%
 }}
 
-\newcommand{\sse}[2]{%
-%\emblink{se}{\thesdiCounter}
-\pdfsavepos\write\sdiFile{%
-i: #1^^J%
-e: #2^^J%
-x: \the\pdflastxpos^^J%
-y: \the\pdflastypos^^J%
+\newcommand{\sse}{%
+\pdfsavepos\write\sdiFile\expandafter{%
+\the\sdiCounter = ^^J%
+x: \topt\pdflastxpos^^J%
+y: \topt\pdflastypos^^J%
 }}
 
