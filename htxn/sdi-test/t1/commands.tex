@@ -2,6 +2,8 @@
 
 \usepackage{hyperref}
 
+\usepackage{zref-user}
+
 \newwrite\sdiFile
 \immediate\openout\sdiFile=\jobname.sdi.txt
 
@@ -11,18 +13,30 @@
 
 \newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
 
-\newcommand{\sss}{%
-\stepcounter{sdiCounter}%
-\emblink{ss}{\thesdiCounter}
+\newcommand{\sss}[2]{%
+%\stepcounter{sdiCounter}%
+%\emblink{ss}{\thesdiCounter}
 \immediate\write\sdiFile{%
-s: \thesdiCounter^^J%
+i: #1^^J%
 p: \thepage^^J%
+}
+\wsss{#1}{#2}
+}
+
+\newcommand{\wsss}[2]{%
+\pdfsavepos\write\sdiFile{%
+i: #1^^J%
+s: #2^^J%
+x: \the\pdflastxpos^^J%
+y: \the\pdflastypos^^J%
 }}
 
-\newcommand{\sse}{%
-\emblink{se}{\thesdiCounter}
-\immediate\write\sdiFile{%
-e: \thesdiCounter^^J%
-p: \thepage^^J%
+\newcommand{\sse}[2]{%
+%\emblink{se}{\thesdiCounter}
+\pdfsavepos\write\sdiFile{%
+i: #1^^J%
+e: #2^^J%
+x: \the\pdflastxpos^^J%
+y: \the\pdflastypos^^J%
 }}
 

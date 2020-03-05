@@ -982,6 +982,16 @@ bool XpdfWidget::convertWindowToPDFCoords(int winX, int winY,
   }
 }
 
+bool XpdfWidget::convertWindowToDevCoords(int winX, int winY,
+       int *page,
+       int *pdfX, int *pdfY) {
+  try {
+    return core->cvtWindowToDev(winX, winY, page, pdfX, pdfY);
+  } catch (GMemException e) {
+    return false;
+  }
+}
+
 void XpdfWidget::convertPDFToWindowCoords(int page, double pdfX, double pdfY,
        int *winX, int *winY) {
   try {

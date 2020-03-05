@@ -3119,8 +3119,20 @@ void XpdfViewer::addTab() {
    int pg;
    double x, y;
 
+   int xx, yy;
+   pdf->convertWindowToDevCoords(p.x(), p.y(),
+          &pg, &xx, &yy);
+
+   qDebug() << "Dev: " << xx << ", " << yy 
+     << "(" << (xx * 65536) << ", " << (yy * 65536) << ")";
+   
+
    pdf->convertWindowToPDFCoords(p.x(), p.y(),
           &pg, &x, &y);
+
+   qDebug() << "Coords: " << x << ", " << y 
+     << "(" << (x * 65536) << ", " << (y * 65536) << ")";
+
 
    XpdfAnnotHandle xh = pdf->onAnnot(pg, x, y);
 

@@ -481,6 +481,10 @@ public:
   bool convertWindowToPDFCoords(int winX, int winY,
     int *page, double *pdfX, double *pdfY);
 
+  bool convertWindowToDevCoords(int winX, int winY,
+    int *page, int *pdfX, int *pdfY);
+
+
   //! Convert PDF coordinates to window coordinates.
   void convertPDFToWindowCoords(int page, double pdfX, double pdfY,
     int *winX, int *winY);
