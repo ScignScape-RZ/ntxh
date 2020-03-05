@@ -1,0 +1,28 @@
+%\usepakage{newfile}
+
+\usepackage{hyperref}
+
+\newwrite\sdiFile
+\immediate\openout\sdiFile=\jobname.sdi.txt
+
+\newcounter{sdiCounter}
+
+\newcommand{\writeSDI}[1]{\immediate\write\sdiFile#1}
+
+\newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
+
+\newcommand{\sss}{%
+\stepcounter{sdiCounter}%
+\emblink{ss}{\thesdiCounter}
+\immediate\write\sdiFile{%
+s: \thesdiCounter^^J%
+p: \thepage^^J%
+}}
+
+\newcommand{\sse}{%
+\emblink{se}{\thesdiCounter}
+\immediate\write\sdiFile{%
+e: \thesdiCounter^^J%
+p: \thepage^^J%
+}}
+

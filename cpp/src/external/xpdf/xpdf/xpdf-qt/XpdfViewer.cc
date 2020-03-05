@@ -3146,6 +3146,8 @@ void XpdfViewer::addTab() {
     pdf->getLinkTarget(pg, x, y, targetFileName,
              targetPage, targetDest);
 
+    qDebug() << "Target Dest: " << targetDest;
+
     if(targetDest.endsWith(".pgvm-pdf"))
     {
      figname = targetDest;
