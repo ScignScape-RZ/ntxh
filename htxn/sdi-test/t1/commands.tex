@@ -2,6 +2,8 @@
 
 \usepackage{hyperref}
 
+\usepackage{etoolbox}
+
 \usepackage{zref-user}
 
 \newwrite\sdiFile
@@ -11,29 +13,58 @@
 
 \vspace{10pt}#1}
 
-%\newcounter{sdiCounter}
+\newif\iftabng
+\tabngfalse
+
+
+\usepackage{letltxmacro}
+\LetLtxMacro{\oldmmsemi}{\;}
+\LetLtxMacro{\oldtbplus}{\+}
+\LetLtxMacro{\oldtbgt}{\>}
+\LetLtxMacro{\oldmmgt}{\+}
+
+\newcommand{\+}{\iftabng\oldtbplus\else\sss\fi}
+
+\renewcommand{\>}{\iftabng\oldtbplus\else
+\ifmmode\oldmmgt\else\sse\sss\fi\fi}
+
+%\renewcommand{\>}{\sse\sss}
+
+\renewcommand{\;}{\relax\ifmmode\oldmmsemi\else\sse\fi}
 
 \newcommand{\writeSDI}[1]{\immediate\write\sdiFile#1}
 
 \newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
 
-\newcount\sdiCounter
-\def\advsdiCounter{\global\advance\sdiCounter by1}
+%\newcount\sdiCounter
+%\def\advsdiCounter{\global\advance\sdiCounter by1}
+
+%\newcount\sdiCounterP
+%\def\advsdiCounterP{\global\advance\sdiCounterP by1}
+
+%\newcounter{sdiCounter}
+\newcounter{sdiCounterP}[page]
+\newcounter{sdiCounter}
 
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
+\makeatletter
 \newcommand{\sss}{%
-\advsdiCounter%
-\pdfsavepos\write\sdiFile\expandafter\expandafter{%
-\the\sdiCounter:\thepage^^J%
+\stepcounter{sdiCounterP}
+\stepcounter{sdiCounter}
+\pdfsavepos\write\sdiFile\expandafter{%
+\the\c@sdiCounter-\the\c@page-\the\c@page^^J%
 x: \topt\pdflastxpos^^J%
 y: \topt\pdflastypos^^J%
 }}
+\makeatother
 
+\makeatletter
 \newcommand{\sse}{%
 \pdfsavepos\write\sdiFile\expandafter{%
-\the\sdiCounter = ^^J%
+\the\c@sdiCounter:\thepage=^^J%
 x: \topt\pdflastxpos^^J%
 y: \topt\pdflastypos^^J%
 }}
+\makeatother
 
