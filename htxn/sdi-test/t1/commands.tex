@@ -49,22 +49,44 @@
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
 \makeatletter
+%\catcode`\*=10
 \newcommand{\sss}{%
 \stepcounter{sdiCounterP}
 \stepcounter{sdiCounter}
-\pdfsavepos\write\sdiFile\expandafter{%
-\the\c@sdiCounter-\the\c@page-\the\c@page^^J%
-x: \topt\pdflastxpos^^J%
-y: \topt\pdflastypos^^J%
+\pdfsavepos\write\sdiFile{!/ SDI_Sentence_Start} 
+\write\sdiFile\expandafter{\expandafter$%
+\expandafter i\expandafter:%
+\expandafter\space\the\c@sdiCounter}
+\write\sdiFile\expandafter{\expandafter$%
+\expandafter o\expandafter:%
+\expandafter\space\the\c@sdiCounterP}
+\write\sdiFile\expandafter{\expandafter$%
+\expandafter p\expandafter:%
+\expandafter\space\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos^^J%
+/!^^J%
+<<>^^J%
 }}
+%\catcode`\%=14
 \makeatother
 
 \makeatletter
 \newcommand{\sse}{%
-\pdfsavepos\write\sdiFile\expandafter{%
-\the\c@sdiCounter:\thepage=^^J%
-x: \topt\pdflastxpos^^J%
-y: \topt\pdflastypos^^J%
+\pdfsavepos\write\sdiFile{!/ SDI_Sentence_End} 
+\write\sdiFile\expandafter{\expandafter$%
+\expandafter i\expandafter:%
+\expandafter\space\the\c@sdiCounter}
+\write\sdiFile\expandafter{\expandafter$%
+\expandafter o\expandafter:%
+\expandafter\space\the\c@sdiCounterP}
+\write\sdiFile\expandafter{\expandafter$%
+\expandafter p\expandafter:%
+\expandafter\space\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos^^J%
+/!^^J%
+<<>^^J%
 }}
 \makeatother
 
