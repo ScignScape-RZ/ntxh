@@ -66,8 +66,16 @@ public:
 
 };
 
-
-
 _KANS(HTXN)
+
+
+class SDI_Callback
+{
+ virtual void marked_sentence_start(Glyph_Layer_8b& gl, u4 pos){}
+ virtual void marked_non_pivot_sentence_end(Glyph_Layer_8b& gl, u4 pos){}
+};
+
+
+
 
 #endif // HTXN_INFOSET_8B__H

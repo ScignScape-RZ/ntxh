@@ -360,7 +360,7 @@ struct _csb
  Glyph_Layers_8b& layers;
  Glyph_Layer_8b& gl;
  GlyphDeck_Base_8b& deck; 
- QMap<u4, QString> notes;
+ QMap<u4, QString>& notes;
 
  enum States {
    N_A, Letter, Maybe_Sentence_End, 
@@ -529,8 +529,19 @@ void _csb::check_sentence_boundaries()
  } 
 }
 
+//void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl, 
+//  u4 enter, u4 leave, QMap<u4, QString>& notes, 
+//  GlyphDeck_Base_8b* deck)
+//{
+// SDI_Callback cb;
+// check_sentence_boundaries(gl, enter, leave, 
+//   notes, &cb, deck);
+//}
+
 void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl, 
-  u4 enter, u4 leave, QMap<u4, QString>& notes, GlyphDeck_Base_8b* deck)
+  u4 enter, u4 leave, QMap<u4, QString>& notes, 
+  //SDI_Callback* cb, 
+  GlyphDeck_Base_8b* deck)
 {
  if(!deck)
    deck = current_deck_;
@@ -539,7 +550,7 @@ void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl,
    _csb::N_A, 0, 0, {}}).check_sentence_boundaries();
 }
 
-bool HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
+u4 HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
 {
  if(!deck)
   deck = current_deck_;
@@ -552,13 +563,26 @@ bool HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 
   if(check_letter(*gl, i, gap))
   {
    result = i;
-   return true;
+   return i;
   }
  }
  return false; 
 }
 
-bool HTXN_Document_8b::scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
+u4 HTXN_Document_8b::check_advance_to_sentence_end_space(Glyph_Layer_8b* gl, 
+  u4 pos, GlyphDeck_Base_8b* deck)
+{
+ if(!deck)
+   deck = current_deck_;
+
+ Glyph_Argument_Package gap;
+ gap.internal_deck = deck;
+
+ return check_sentence_end_space(*gl, i + 1, gap)?
+   i + 1 : i;
+}
+
+u4 HTXN_Document_8b::scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
 {
  if(!deck)
   deck = current_deck_;

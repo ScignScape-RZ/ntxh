@@ -135,6 +135,7 @@ public:
 
  bool check_letter(u1 gp) Q_DECL_OVERRIDE;
  bool check_sentence_end_marker(u1 gp) Q_DECL_OVERRIDE;
+ bool check_sentence_end_space(u1 gp) Q_DECL_OVERRIDE;
 
 // void get_htxne_dia(u1 gp, Glyph_Argument_Package& gap) Q_DECL_OVERRIDE;
 

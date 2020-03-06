@@ -65,6 +65,7 @@ public:
 
  virtual bool check_letter(u1 gp) = 0;
  virtual bool check_sentence_end_marker(u1 gp) = 0;
+ virtual bool check_sentence_end_space(u1 gp) = 0;
 
  virtual u1 get_standard_equivalent(u1 gp);
 };

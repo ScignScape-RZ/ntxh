@@ -144,6 +144,18 @@ bool Glyph_Layers_8b::check_letter(Glyph_Vector_8b& gv,
  return false;
 }
 
+bool Glyph_Layers_8b::check_sentence_end_space(Glyph_Vector_8b& gv,
+  u4 index, Glyph_Argument_Package& gap)
+{
+ GlyphDeck_Base_8b& deck = *gap.internal_deck;
+ gv.check_external(index, deck, gap);
+ if(gap.flags.normal)
+   return deck.check_sentence_end_space((u1)gap.glyph_code);
+ else if(gap.flags.confirmed_non_diacritic)
+   return deck.check_sentence_end_space((u1)gap.glyph_code);
+ return false;
+}
+
 bool Glyph_Layers_8b::check_sentence_end_marker(Glyph_Vector_8b& gv,
   u4 index, Glyph_Argument_Package& gap)
 {

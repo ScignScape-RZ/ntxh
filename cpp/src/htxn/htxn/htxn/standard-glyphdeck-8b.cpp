@@ -455,6 +455,11 @@ bool Standard_GlyphDeck_8b::check_sentence_end_marker(u1 gp)
    || (gp == 9); // ?  
 }
 
+bool Standard_GlyphDeck_8b::check_sentence_end_space(u1 gp)
+{
+ return gp == (27 | 63);
+}
+
 QChar Standard_GlyphDeck_8b::get_nondiacritic_default(u1 cue)
 {
  switch(cue)

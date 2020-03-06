@@ -2,14 +2,14 @@
 \begin{frame}{\ft{Components of Mosaic}}
 \section{Mosaic}
 
-\vspace*{5pt}
+\vspace*{21pt}
 {\thrulex}
 
 %\MyDiamond{}
 {\fontsize{18}{25}\fontfamily{ppl}\selectfont
 %\begin{center}
-\hspace*{7pt}\begin{minipage}{.996\textwidth}
-\vspace{-1pt}
+\hspace*{25pt}\begin{minipage}{1.2\textwidth}
+\vspace{-6pt}
 
 
 %\definecolor{blback}{RGB}{0,100,100}	
@@ -21,9 +21,11 @@
 %\begin{minipage}{1.1\textwidth}
 
 {\setlength{\leftmargini}{13pt}\begin{enumerate}
+\setlength{\labelsep}{13pt}
 \vspace{11pt}
 \dmitem \textbf{Mosaic/HTXN Semantic Document 
-Infoset (MH-SDI)}:  \hspace{.25em} 
+Infoset (MH-SDI)}:  
+\hspace*{.4em} 
 The Mosaic/HTXN Infoset is similar to an XML Infoset, 
 embodying a machine-readable representation of documents' 
 text, structure, and secondary resources which 
@@ -32,10 +34,17 @@ can be accessed according to different protocols
 XML, the MH-SDI supports more detailed semantic 
 queries against document structures, such as 
 identifying sentence boundaries and matching 
-multimedia assets to manuscript locations. 
+multimedia assets to manuscript locations.  Documents 
+composed with HTXN embed PDF page coordinates for 
+semantically significant text locations (such as 
+sentence boundaries), allowing PDF viewer plugins to 
+provide supplemental features (such as dataset links or 
+\q{review questions} joined to individual sentences, paragraphs, 
+or figure illustrations).
 
 \vspace{27pt}  
-\dmitem \textbf{Mosaic Plugin Framework (MPF)}:  \hspace{.25em} 
+\dmitem  
+\textbf{Mosaic Plugin Framework (MPF)}:  \hspace*{.4em} 
 The Mosaic Plugin Framework is a \\
 protocol for 
 embedding plugins or extensions within document 
