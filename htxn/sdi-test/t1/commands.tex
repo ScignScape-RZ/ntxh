@@ -22,13 +22,14 @@
 \LetLtxMacro{\oldtbplus}{\+}
 \LetLtxMacro{\oldtbgt}{\>}
 \LetLtxMacro{\oldmmgt}{\+}
+\LetLtxMacro{\oldtblt}{\>}
 
 \newcommand{\+}{\iftabng\oldtbplus\else\sss\fi}
 
 \renewcommand{\>}{\iftabng\oldtbplus\else
 \ifmmode\oldmmgt\else\sse\sss\fi\fi}
 
-%\renewcommand{\>}{\sse\sss}
+\renewcommand{\>}{\sse\sss}
 
 \renewcommand{\;}{\relax\ifmmode\oldmmsemi\else\sse\fi}
 
@@ -43,50 +44,81 @@
 %\def\advsdiCounterP{\global\advance\sdiCounterP by1}
 
 %\newcounter{sdiCounter}
-\newcounter{sdiCounterP}[page]
+\newcounter{sdiCounterO}[page]
 \newcounter{sdiCounter}
+
+\newcounter{sdiCounterPO}[page]
+\newcounter{sdiCounterP}
 
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
-\makeatletter
-%\catcode`\*=10
-\newcommand{\sss}{%
-\stepcounter{sdiCounterP}
-\stepcounter{sdiCounter}
-\pdfsavepos\write\sdiFile{!/ SDI_Sentence_Start} 
-\write\sdiFile\expandafter{\expandafter$%
-\expandafter i\expandafter:%
-\expandafter\space\the\c@sdiCounter}
-\write\sdiFile\expandafter{\expandafter$%
-\expandafter o\expandafter:%
-\expandafter\space\the\c@sdiCounterP}
-\write\sdiFile\expandafter{\expandafter$%
-\expandafter p\expandafter:%
-\expandafter\space\thepage^^J%
-$x: \topt\pdflastxpos^^J%
-$y: \topt\pdflastypos^^J%
-/!^^J%
-<<>^^J%
-}}
-%\catcode`\%=14
-\makeatother
+
+\newcommand{\writeSdiStart}[1]{\write\sdiFile{!/ SDI_#1_Start}}
+\newcommand{\writeSdiEnd}[1]{\write\sdiFile{!/ SDI_#1_End}}
+\newcommand{\writeSdiValEnd}{\write\sdiFile{/!^^J<<>^^J}}
+
+\newcommand{\fieldmark}[1]{\expandafter$\expandafter#1%
+\expandafter:\expandafter\space}
 
 \makeatletter
-\newcommand{\sse}{%
-\pdfsavepos\write\sdiFile{!/ SDI_Sentence_End} 
-\write\sdiFile\expandafter{\expandafter$%
-\expandafter i\expandafter:%
-\expandafter\space\the\c@sdiCounter}
-\write\sdiFile\expandafter{\expandafter$%
-\expandafter o\expandafter:%
-\expandafter\space\the\c@sdiCounterP}
-\write\sdiFile\expandafter{\expandafter$%
-\expandafter p\expandafter:%
-\expandafter\space\thepage^^J%
+\newcommand{\fieldmark@i}{\fieldmark{i}}
+\newcommand{\fieldmark@o}{\fieldmark{o}}
+\newcommand{\fieldmark@s}{\fieldmark{s}}
+\newcommand{\fieldmark@p}{\fieldmark{p}}
+\newcommand{\fieldmark@e}{\fieldmark{e}}
+
+\newcommand{\sss}{%
+\stepcounter{sdiCounterO}
+\stepcounter{sdiCounter}
+\pdfsavepos\writeSdiStart{Sentence} 
+\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+\the\c@sdiCounter}
+\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+\the\c@sdiCounterO}
+\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\thepage^^J%
 $x: \topt\pdflastxpos^^J%
-$y: \topt\pdflastypos^^J%
-/!^^J%
-<<>^^J%
-}}
+$y: \topt\pdflastypos}
+\writeSdiValEnd}
+
+\newcommand{\sse}{%
+\pdfsavepos\writeSdiEnd{Sentence} 
+\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+\the\c@sdiCounter}
+\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+\the\c@sdiCounterP}
+\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}
+\writeSdiValEnd}
+
+\newcommand{\sps}{%
+\stepcounter{sdiCounterP}
+\stepcounter{sdiCounterPO}
+\pdfsavepos\writeSdiStart{Paragraph} 
+\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+	\the\c@sdiCounterP}
+\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+	\the\c@sdiCounterPO}
+\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+	\thepage^^J%
+	$x: \topt\pdflastxpos^^J%
+	$y: \topt\pdflastypos}
+\writeSdiValEnd}
+
+\newcommand{\spe}{%
+\pdfsavepos\writeSdiEnd{Paragraph} 
+\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+	\the\c@sdiCounterP}
+\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+	\the\c@sdiCounterPO}
+\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+	\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}
+\writeSdiValEnd}
+
+
 \makeatother
 
