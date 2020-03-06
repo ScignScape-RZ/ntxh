@@ -1,4 +1,4 @@
-!/ SDI_Sentence_Start
+!/ SDI_Paragraph_Start
 $i: 1
 $o: 1
 $p: 1
@@ -7,35 +7,55 @@ $y: 722.7pt
 /!
 <<>
 
+!/ SDI_NoSentenceFlag
+$r: 1
+$x: 72.26999pt
+$y: 722.7pt
+/!
+<<>
+
+!/ SDI_Sentence_Start
+$i: 1
+$r: 1
+$c: 1
+$o: 1
+$p: 1
+$x: 205.29597pt
+$y: 700.7pt
+/!
+<<>
+
 !/ SDI_Sentence_End
 $i: 1
-$o: 0
+$o: 1
 $p: 1
-$x: 195.31865pt
-$y: 712.7pt
+$x: 130.99226pt
+$y: 676.7pt
+/!
+<<>
+
+!/ SDI_Paragraph_End
+$i: 1
+$o: 1
+$p: 1
+$x: 148.77003pt
+$y: 676.7pt
+/!
+<<>
+
+!/ SDI_Paragraph_Start
+$i: 2
+$o: 1
+$p: 2
+$x: 72.26999pt
+$y: 722.7pt
 /!
 <<>
 
 !/ SDI_Sentence_Start
 $i: 2
-$o: 2
-$p: 1
-$x: 231.3959pt
-$y: 712.7pt
-/!
-<<>
-
-!/ SDI_Sentence_End
-$i: 2
-$o: 0
-$p: 1
-$x: 167.68678pt
-$y: 688.7pt
-/!
-<<>
-
-!/ SDI_Sentence_Start
-$i: 3
+$r: 2
+$c: 1
 $o: 1
 $p: 2
 $x: 72.26999pt
@@ -44,8 +64,8 @@ $y: 722.7pt
 <<>
 
 !/ SDI_Sentence_End
-$i: 3
-$o: 0
+$i: 2
+$o: 2
 $p: 2
 $x: 196.65898pt
 $y: 712.7pt
@@ -53,19 +73,30 @@ $y: 712.7pt
 <<>
 
 !/ SDI_Sentence_Start
-$i: 4
+$i: 3
+$r: 2
+$c: 2
 $o: 2
 $p: 2
-$x: 223.32564pt
+$x: 227.77008pt
 $y: 712.7pt
 /!
 <<>
 
 !/ SDI_Sentence_End
-$i: 4
-$o: 0
+$i: 3
+$o: 2
 $p: 2
-$x: 378.85358pt
+$x: 392.1869pt
+$y: 712.7pt
+/!
+<<>
+
+!/ SDI_Paragraph_End
+$i: 2
+$o: 1
+$p: 2
+$x: 409.96468pt
 $y: 712.7pt
 /!
 <<>

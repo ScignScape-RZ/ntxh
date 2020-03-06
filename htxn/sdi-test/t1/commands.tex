@@ -16,22 +16,32 @@
 \newif\iftabng
 \tabngfalse
 
+\newif\ifsdinossflag
+\sdinossflagfalse
+
 
 \usepackage{letltxmacro}
 \LetLtxMacro{\oldmmsemi}{\;}
 \LetLtxMacro{\oldtbplus}{\+}
 \LetLtxMacro{\oldtbgt}{\>}
+\LetLtxMacro{\oldtblt}{\<}
 \LetLtxMacro{\oldmmgt}{\+}
-\LetLtxMacro{\oldtblt}{\>}
+\LetLtxMacro{\oldmmcolon}{\:}
+\LetLtxMacro{\oldmmexc}{\!}
+
 
 \newcommand{\+}{\iftabng\oldtbplus\else\sss\fi}
+\newcommand{\<}{\iftabng\oldtblt\else\spe\fi}
 
 \renewcommand{\>}{\iftabng\oldtbplus\else
 \ifmmode\oldmmgt\else\sse\sss\fi\fi}
 
-\renewcommand{\>}{\sse\sss}
+%\renewcommand{\>}{\sse\sss}
 
 \renewcommand{\;}{\relax\ifmmode\oldmmsemi\else\sse\fi}
+\renewcommand{\:}{\relax\ifmmode\oldmmcolon\else\sps\fi}
+\renewcommand{\!}{\relax\ifmmode\oldmmexc\else\sdinoss\fi}
+
 
 \newcommand{\writeSDI}[1]{\immediate\write\sdiFile#1}
 
@@ -44,17 +54,21 @@
 %\def\advsdiCounterP{\global\advance\sdiCounterP by1}
 
 %\newcounter{sdiCounter}
-\newcounter{sdiCounterO}[page]
 \newcounter{sdiCounter}
+\newcounter{sdiCounterO}[page]
 
-\newcounter{sdiCounterPO}[page]
 \newcounter{sdiCounterP}
+\newcounter{sdiCounterPO}[page]
+
+\newcounter{sdiCounterC}[sdiCounterP]
+
 
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
 
 \newcommand{\writeSdiStart}[1]{\write\sdiFile{!/ SDI_#1_Start}}
 \newcommand{\writeSdiEnd}[1]{\write\sdiFile{!/ SDI_#1_End}}
+\newcommand{\writeSdiValStart}[1]{\write\sdiFile{!/ SDI_#1}}
 \newcommand{\writeSdiValEnd}{\write\sdiFile{/!^^J<<>^^J}}
 
 \newcommand{\fieldmark}[1]{\expandafter$\expandafter#1%
@@ -66,20 +80,40 @@
 \newcommand{\fieldmark@s}{\fieldmark{s}}
 \newcommand{\fieldmark@p}{\fieldmark{p}}
 \newcommand{\fieldmark@e}{\fieldmark{e}}
+\newcommand{\fieldmark@r}{\fieldmark{r}}
+\newcommand{\fieldmark@c}{\fieldmark{c}}
+
+\newcommand{\sdinoss}{%
+\pdfsavepos\writeSdiValStart{NoSentenceFlag} 
+\write\sdiFile\expandafter{\expandafter\fieldmark@r%
+\the\c@sdiCounterP^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}
+\writeSdiValEnd
+\sdinossflagtrue}
 
 \newcommand{\sss}{%
+\ifsdinossflag
+\sdinossflagfalse
+\else
 \stepcounter{sdiCounterO}
+\stepcounter{sdiCounterC}
 \stepcounter{sdiCounter}
 \pdfsavepos\writeSdiStart{Sentence} 
 \write\sdiFile\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiCounter}
+\write\sdiFile\expandafter{\expandafter\fieldmark@r%
+\the\c@sdiCounterP}
+\write\sdiFile\expandafter{\expandafter\fieldmark@c%
+\the\c@sdiCounterC}
 \write\sdiFile\expandafter{\expandafter\fieldmark@o%
 \the\c@sdiCounterO}
 \write\sdiFile\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}
-\writeSdiValEnd}
+\writeSdiValEnd
+\fi}
 
 \newcommand{\sse}{%
 \pdfsavepos\writeSdiEnd{Sentence} 
@@ -117,7 +151,8 @@ $y: \topt\pdflastypos}
 	\thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}
-\writeSdiValEnd}
+\writeSdiValEnd
+\sdinossflagfalse}
 
 
 \makeatother
