@@ -36,7 +36,10 @@ USING_RZNS(NGML)
 
 NGML_Output_Infoset::NGML_Output_Infoset(NGML_Document& document, HTXN_Infoset_8b* infoset)
  :  NGML_Output_Base(document), NGML_Output_Event_Handler(), 
-    infoset_(infoset), suppress_node_(nullptr), ngml_output_htxn_(nullptr)
+    infoset_(infoset), suppress_node_(nullptr), 
+    ngml_output_htxn_(nullptr), 
+    held_sdi_sentence_end_index_(0), 
+    canceled_sdi_sentence_start_index_(0)
 {
  //?htxn_qts_.setString(&htxn_acc_);
  init_callbacks();
@@ -49,9 +52,58 @@ void NGML_Output_Infoset::init_callbacks()
  #include "rz-ngml-output-infoset.callbacks.h"
 }
 
+// // common functionality for both insert methods ...
+
+void _insert_start(u8* u, QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+{
+    if(index == canceled_sdi_sentence_start_index_)
+    {
+     // //  the \> supplants the \+ ...
+     canceled_sdi_sentence_start_index_ = 0;
+    }
+    else
+    {
+     pre_result.append("\\+");
+     ++count;
+    }
+
+}
+
+void _insert_end(u8* u, QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+{
+
+}
+
+void _insert_start(u8* u, u4 index, QString& pre_result)
+{
+ _insert_start(u, nullptr, index);
+}
+
+void _insert_start(QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+{
+ _insert_start(nullptr, vec, index);
+}
+
+void _insert_end(u8* u, u4 index, QString& pre_result)
+{
+ _insert_end(u, nullptr, index);
+}
+
+void _insert_end(QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+{
+ _insert_end(nullptr, vec, index);
+}
+
+
 u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QString& pre_result, QString& post_result)
 {
- u8 count;
+ u8 count = 0;
+ if(index == held_sdi_sentence_end_index_)
+ {
+  ++count;
+  held_sdi_sentence_end_index_ = 0;
+  post_result.append("\\>");
+ }
  {
   auto it = marked_paragraph_starts_.find(index);
   if(it != marked_paragraph_starts_.end())
@@ -64,8 +116,16 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QSt
   auto it = marked_sentence_starts_.find(index);
   if(it != marked_sentence_starts_.end())
   {
-   pre_result.append("\\+");
-   ++count;
+//   if(index == canceled_sdi_sentence_start_index_)
+//   {
+//    // //  the \> supplants the \+ ...
+//    canceled_sdi_sentence_start_index_ = 0;
+//   }
+//   else
+//   {
+//    pre_result.append("\\+");
+//    ++count;
+//   }
   }
  }
  {
@@ -96,19 +156,34 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QSt
   {
    u4 new_index = htxn_document_->
      check_advance_to_sentence_end_space(gl, index);
+
    if(new_index == index)
-     post_result.append("\\;");
+   {
+    post_result.append("\\;");
+    ++count;
+   }
    else
-     post_result.append("\\>");
-     
-   ++count;
+   {
+    // // this assumes the post-space will always be 
+     //   separated from a new sentence by one space or newline ...
+    if(marked_sentence_starts_.contains(new_index + 2))
+    {
+     held_sdi_sentence_end_index_ = new_index;
+     canceled_sdi_sentence_start_index_ = new_index + 2;
+    }
+    else
+    {
+     post_result.append("\\;");
+     ++count;
+    }
+   }
   }
  }
  {
   auto it = marked_paragraph_ends_.find(index);
   if(it != marked_paragraph_ends_.end())
   {
-   pre_result.append("\\<");
+   post_result.append("\\<");
    ++count;
   }
  }
@@ -386,7 +461,7 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<t
     {
      // //  this assumes that ntc is a paragraph ...
      marked_paragraph_starts_[enter] = node;
-     marked_paragraph_starts_[leave] = node;
+     marked_paragraph_ends_[leave] = node;
      check_sentence_boundaries(qts, node, *nhn, enter, leave);
     } 
    }

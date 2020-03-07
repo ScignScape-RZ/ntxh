@@ -51,6 +51,8 @@ class NGML_Output_Infoset : public NGML_Output_Base, private NGML_Output_Event_H
  QMap<u4, caon_ptr<tNode>> marked_paragraph_ends_;
  QMap<u4, QPair<QString, caon_ptr<tNode>>> sdi_marks_;
  QMap<u4, QPair<QString, caon_ptr<tNode>>> sdi_secondary_marks_;
+ u4 held_sdi_sentence_end_index_;
+ u4 canceled_sdi_sentence_start_index_;
 
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();
