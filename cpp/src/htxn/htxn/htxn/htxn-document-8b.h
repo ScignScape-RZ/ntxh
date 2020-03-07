@@ -24,7 +24,7 @@
 
 #include "graph/htxn-node-details.h"
 
-//class WCM_WhiteDB;
+class SDI_Callback_8b;
 
 KANS_(HTXN)
 
@@ -100,8 +100,16 @@ public:
 
  void get_latex_out(u4 layer, QString& result);
 
- void write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts);
- void write_minimal_latex_out(u4 layer_code, const QPair<u4, u4>& range, QTextStream& qts);
+ void write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave,
+   QTextStream& qts, SDI_Callback_8b* cb);
+ void write_minimal_latex_out(u4 layer_code, const QPair<u4, u4>& range,
+   QTextStream& qts, SDI_Callback_8b* cb);
+
+ void write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave,
+   QTextStream& qts);
+ void write_minimal_latex_out(u4 layer_code, const QPair<u4, u4>& range,
+   QTextStream& qts);
+
 
  void write_minimal_xml_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts);
  void write_minimal_xml_out(u4 layer_code, const QPair<u4, u4>& range, QTextStream& qts);
@@ -139,19 +147,17 @@ public:
    GlyphDeck_Base_8b* deck = nullptr);
 
  u4 check_advance_to_sentence_end_space(Glyph_Layer_8b* gl, 
-  u4 pos, GlyphDeck_Base_8b* deck = nullptr)
+  u4 pos, GlyphDeck_Base_8b* deck = nullptr);
 
 // void check_sentence_boundaries(Glyph_Layer_8b* gl, 
 //   u4 enter, u4 leave, QMap<u4, QString>& notes, 
 //   SDI_Callback* cb, GlyphDeck_Base_8b* deck = nullptr);
+//, GlyphDeck_Base_8b* deck
 
-, GlyphDeck_Base_8b* deck
  bool scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck = nullptr);
-
  bool scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck = nullptr);
-
- bool scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck = nullptr);
-
+// bool scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck = nullptr);
+                            //Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck
 };
 
 _KANS(HTXN)

@@ -21,7 +21,12 @@
 
 
 #include "htxn/htxn-document-8b.h"
+#include "htxn/glyph-layer-8b.h"
 
+#include "htxn/infoset/sdi-callback-8b.h"
+
+#include "rz-ngml-output-infoset.h"
+#include "rz-ngml-output-htxn.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -29,6 +34,21 @@
 
 #include "rzns.h"
 USING_RZNS(NGML)
+
+struct _SDI_Callback : public SDI_Callback_8b
+{
+ NGML_Output_Infoset& infoset;
+ u4 target_layer_id;
+ _SDI_Callback(NGML_Output_Infoset& noi, u4 u);
+ void pre_write(Glyph_Layer_8b& gl, u4 pos,
+   Glyph_Argument_Package& gap, u8& skip_flag, QString& insert) Q_DECL_OVERRIDE;
+};
+
+_SDI_Callback::_SDI_Callback(NGML_Output_Infoset& noi, u4 u)
+  :  infoset(noi), target_layer_id(u)
+{
+
+}
 
 
 NGML_Output_Latex::NGML_Output_Latex(NGML_Document& document)
@@ -225,9 +245,26 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
  }
 }
 
+void _SDI_Callback::pre_write(Glyph_Layer_8b& gl, u4 pos,
+  Glyph_Argument_Package& gap, u8& skip_flag, QString& insert)
+{
+ if(gl.id() != target_layer_id)
+   return;
+ QString result;
+ u8 inserts = infoset.check_sdi_latex_insert(pos, result);
+ if(inserts)
+   insert = result;
+}
+
 void NGML_Output_Latex::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
 {
- htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts);
+ if(infoset_)
+ {
+  _SDI_Callback cb(*infoset_, infoset_->ngml_output_htxn()->main_gl()->id());
+  htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts, &cb);
+ }
+ else
+   htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts);
  reset_active_gap_code();
 }
 

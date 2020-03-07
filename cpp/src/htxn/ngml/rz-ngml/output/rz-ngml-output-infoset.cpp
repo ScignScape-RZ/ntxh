@@ -49,6 +49,126 @@ void NGML_Output_Infoset::init_callbacks()
  #include "rz-ngml-output-infoset.callbacks.h"
 }
 
+u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
+{
+ u8 count;
+ {
+  auto it = marked_paragraph_starts_.find(index);
+  if(it != marked_paragraph_starts_.end())
+  {
+   result.append("\\:");
+   ++count;
+  }
+ }
+ {
+  auto it = marked_sentence_starts_.find(index);
+  if(it != marked_sentence_starts_.end())
+  {
+   result.append("\\+");
+   ++count;
+  }
+ }
+ {
+  auto it = sdi_marks_.find(index);
+  if(it != sdi_marks_.end())
+  {
+   if(it.value().first.isEmpty())
+     result.append("\\?");
+   else
+     result.append(QString("\\?[%1]").arg(it.value().first));
+   ++count;
+  }
+ }
+ {
+  auto it = sdi_secondary_marks_.find(index);
+  if(it != sdi_secondary_marks_.end())
+  {
+   if(it.value().first.isEmpty())
+     result.append("\\,");
+   else
+     result.append(QString("\\,[%1]").arg(it.value().first));
+   ++count;
+  }
+ }
+ {
+  auto it = marked_sentence_ends_.find(index);
+  if(it != marked_sentence_ends_.end())
+  {
+   result.append("\\;");
+   ++count;
+  }
+ }
+ {
+  auto it = marked_paragraph_ends_.find(index);
+  if(it != marked_paragraph_ends_.end())
+  {
+   result.append("\\<");
+   ++count;
+  }
+ }
+}
+
+QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex_insert_nodes(u4 index, QString& result)
+{
+ QVector<caon_ptr<tNode>> rvec;
+ {
+  auto it = marked_paragraph_starts_.find(index);
+  if(it != marked_paragraph_starts_.end())
+  {
+   result.append("\\:");
+   rvec.push_back(it.value());
+  }
+ }
+ {
+  auto it = marked_sentence_starts_.find(index);
+  if(it != marked_sentence_starts_.end())
+  {
+   result.append("\\+");
+   rvec.push_back(it.value());
+  }
+ }
+ {
+  auto it = sdi_marks_.find(index);
+  if(it != sdi_marks_.end())
+  {
+   if(it.value().first.isEmpty())
+     result.append("\\?");
+   else
+     result.append(QString("\\?[%1]").arg(it.value().first));
+   rvec.push_back(it.value().second);
+  }
+ }
+ {
+  auto it = sdi_secondary_marks_.find(index);
+  if(it != sdi_secondary_marks_.end())
+  {
+   if(it.value().first.isEmpty())
+     result.append("\\,");
+   else
+     result.append(QString("\\,[%1]").arg(it.value().first));
+   rvec.push_back(it.value().second);
+  }
+ }
+ {
+  auto it = marked_sentence_ends_.find(index);
+  if(it != marked_sentence_ends_.end())
+  {
+   result.append("\\;");
+   rvec.push_back(it.value());
+  }
+ }
+ {
+  auto it = marked_paragraph_ends_.find(index);
+  if(it != marked_paragraph_ends_.end())
+  {
+   result.append("\\<");
+   rvec.push_back(it.value());
+  }
+ }
+ return rvec;
+}
+
+
 void NGML_Output_Infoset::write_infoset_output(QString& output)
 {
  QTextStream qts(&output);

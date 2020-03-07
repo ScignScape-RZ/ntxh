@@ -15,6 +15,8 @@
 
 #include "glyph-argument-package.h"
 
+#include "infoset/sdi-callback-8b.h"
+
 #include <QDebug>
 
 USING_KANS(HTXN)
@@ -327,18 +329,24 @@ void HTXN_Document_8b::tie_detail_range_preempt(u4 rc1, u4 rc2)
 }
 
 void HTXN_Document_8b::write_minimal_latex_out(u4 layer_code,
+  const QPair<u4, u4>& range, QTextStream& qts, SDI_Callback_8b* cb)
+{
+ Glyph_Layer_8b* gl = value(layer_code - 1);
+ write_minimal_latex_out(gl, range.first, range.second, qts, cb);
+}
+
+void HTXN_Document_8b::write_minimal_latex_out(u4 layer_code,
   const QPair<u4, u4>& range, QTextStream& qts)
 {
  Glyph_Layer_8b* gl = value(layer_code - 1);
  write_minimal_latex_out(gl, range.first, range.second, qts);
 }
 
-void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 leave, QTextStream& qts)
+void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter,
+  u4 leave, QTextStream& qts)
 {
  Glyph_Argument_Package gap;
-//? Glyph_Argument_Package cmdgap;
  gap.internal_deck = current_deck_;
-//? cmdgap.internal_deck = current_deck_;
 
  for(u4 i = enter; i <= leave; ++i)
  {
@@ -347,6 +355,36 @@ void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter, u4 
     qts << gap.str;
   else
     qts << gap.chr;
+  gap.reset();
+ }
+}
+
+void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter,
+  u4 leave, QTextStream& qts, SDI_Callback_8b* cb)
+{
+ Glyph_Argument_Package gap;
+ gap.internal_deck = current_deck_;
+ u8 skip_flag = 0;
+ QString insert;
+
+ for(u4 i = enter; i <= leave; ++i)
+ {
+  cb->pre_write(*gl, i, gap, skip_flag, insert);
+  if(!insert.isEmpty())
+  {
+   qts << insert;
+   insert.clear();
+  }
+  if(skip_flag)
+    skip_flag = 0;
+  else
+  {
+   this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
+   if(gap.chr.isNull())
+     qts << gap.str;
+   else
+     qts << gap.chr;
+  }
   gap.reset();
  }
 }
@@ -550,7 +588,7 @@ void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl,
    _csb::N_A, 0, 0, {}}).check_sentence_boundaries();
 }
 
-u4 HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
+bool HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
 {
  if(!deck)
   deck = current_deck_;
@@ -578,11 +616,11 @@ u4 HTXN_Document_8b::check_advance_to_sentence_end_space(Glyph_Layer_8b* gl,
  Glyph_Argument_Package gap;
  gap.internal_deck = deck;
 
- return check_sentence_end_space(*gl, i + 1, gap)?
-   i + 1 : i;
+ return check_sentence_end_space(*gl, pos + 1, gap)?
+   pos + 1 : pos;
 }
 
-u4 HTXN_Document_8b::scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
+bool HTXN_Document_8b::scan_for_sentence_end(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
 {
  if(!deck)
   deck = current_deck_;
