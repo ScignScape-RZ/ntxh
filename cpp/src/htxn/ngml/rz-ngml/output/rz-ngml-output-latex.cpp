@@ -41,7 +41,8 @@ struct _SDI_Callback : public SDI_Callback_8b
  u4 target_layer_id;
  _SDI_Callback(NGML_Output_Infoset& noi, u4 u);
  void pre_write(Glyph_Layer_8b& gl, u4 pos,
-   Glyph_Argument_Package& gap, u8& skip_flag, QString& insert) Q_DECL_OVERRIDE;
+   Glyph_Argument_Package& gap, u8& skip_flag, 
+   QString& pre_insert, QString& post_insert) Q_DECL_OVERRIDE;
 };
 
 _SDI_Callback::_SDI_Callback(NGML_Output_Infoset& noi, u4 u)
@@ -246,14 +247,21 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
 }
 
 void _SDI_Callback::pre_write(Glyph_Layer_8b& gl, u4 pos,
-  Glyph_Argument_Package& gap, u8& skip_flag, QString& insert)
+  Glyph_Argument_Package& gap, u8& skip_flag, 
+  QString& pre_insert, QString& post_insert)
 {
  if(gl.id() != target_layer_id)
    return;
- QString result;
- u8 inserts = infoset.check_sdi_latex_insert(pos, result);
+ QString pre_result;
+ QString post_result;
+ u8 inserts = infoset.check_sdi_latex_insert(&gl, pos, 
+   pre_result, post_result);
+
  if(inserts)
-   insert = result;
+ {
+  pre_insert = pre_result;
+  post_insert = post_result;
+ }
 }
 
 void NGML_Output_Latex::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)

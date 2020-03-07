@@ -41,6 +41,8 @@ class HTXN_Document_8b : public Glyph_Layers_8b,
 
  Glyph_Vector_8b* current_glyph_vector_;
 
+ QMap<Glyph_Layer_8b*, QMap<u4, u4>> sentence_end_gaps_;
+
 public:
 
 

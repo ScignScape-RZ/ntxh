@@ -49,14 +49,14 @@ void NGML_Output_Infoset::init_callbacks()
  #include "rz-ngml-output-infoset.callbacks.h"
 }
 
-u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
+u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QString& pre_result, QString& post_result)
 {
  u8 count;
  {
   auto it = marked_paragraph_starts_.find(index);
   if(it != marked_paragraph_starts_.end())
   {
-   result.append("\\:");
+   pre_result.append("\\:");
    ++count;
   }
  }
@@ -64,7 +64,7 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
   auto it = marked_sentence_starts_.find(index);
   if(it != marked_sentence_starts_.end())
   {
-   result.append("\\+");
+   pre_result.append("\\+");
    ++count;
   }
  }
@@ -73,9 +73,9 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
   if(it != sdi_marks_.end())
   {
    if(it.value().first.isEmpty())
-     result.append("\\?");
+     pre_result.append("\\?");
    else
-     result.append(QString("\\?[%1]").arg(it.value().first));
+     pre_result.append(QString("\\?[%1]").arg(it.value().first));
    ++count;
   }
  }
@@ -84,9 +84,9 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
   if(it != sdi_secondary_marks_.end())
   {
    if(it.value().first.isEmpty())
-     result.append("\\,");
+     post_result.append("\\,");
    else
-     result.append(QString("\\,[%1]").arg(it.value().first));
+     post_result.append(QString("\\,[%1]").arg(it.value().first));
    ++count;
   }
  }
@@ -94,7 +94,13 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
   auto it = marked_sentence_ends_.find(index);
   if(it != marked_sentence_ends_.end())
   {
-   result.append("\\;");
+   u4 new_index = htxn_document_->
+     check_advance_to_sentence_end_space(gl, index);
+   if(new_index == index)
+     post_result.append("\\;");
+   else
+     post_result.append("\\>");
+     
    ++count;
   }
  }
@@ -102,20 +108,20 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(u4 index, QString& result)
   auto it = marked_paragraph_ends_.find(index);
   if(it != marked_paragraph_ends_.end())
   {
-   result.append("\\<");
+   pre_result.append("\\<");
    ++count;
   }
  }
 }
 
-QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex_insert_nodes(u4 index, QString& result)
+QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex_insert_nodes(Glyph_Layer_8b* gl, u4 index, QString& pre_result, QString& post_result)
 {
  QVector<caon_ptr<tNode>> rvec;
  {
   auto it = marked_paragraph_starts_.find(index);
   if(it != marked_paragraph_starts_.end())
   {
-   result.append("\\:");
+   pre_result.append("\\:");
    rvec.push_back(it.value());
   }
  }
@@ -123,7 +129,7 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   auto it = marked_sentence_starts_.find(index);
   if(it != marked_sentence_starts_.end())
   {
-   result.append("\\+");
+   pre_result.append("\\+");
    rvec.push_back(it.value());
   }
  }
@@ -132,9 +138,9 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   if(it != sdi_marks_.end())
   {
    if(it.value().first.isEmpty())
-     result.append("\\?");
+     pre_result.append("\\?");
    else
-     result.append(QString("\\?[%1]").arg(it.value().first));
+     pre_result.append(QString("\\?[%1]").arg(it.value().first));
    rvec.push_back(it.value().second);
   }
  }
@@ -143,9 +149,9 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   if(it != sdi_secondary_marks_.end())
   {
    if(it.value().first.isEmpty())
-     result.append("\\,");
+     post_result.append("\\,");
    else
-     result.append(QString("\\,[%1]").arg(it.value().first));
+     post_result.append(QString("\\,[%1]").arg(it.value().first));
    rvec.push_back(it.value().second);
   }
  }
@@ -153,7 +159,13 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   auto it = marked_sentence_ends_.find(index);
   if(it != marked_sentence_ends_.end())
   {
-   result.append("\\;");
+   u4 new_index = htxn_document_->
+     check_advance_to_sentence_end_space(gl, index);
+   if(new_index == index)
+     post_result.append("\\;");
+   else
+     post_result.append("\\>");
+
    rvec.push_back(it.value());
   }
  }
@@ -161,7 +173,7 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   auto it = marked_paragraph_ends_.find(index);
   if(it != marked_paragraph_ends_.end())
   {
-   result.append("\\<");
+   pre_result.append("\\<");
    rvec.push_back(it.value());
   }
  }
@@ -352,7 +364,6 @@ void NGML_Output_Infoset::generate_tag_command_entry(const NGML_Output_Bundle& b
    {
     generate_tag_command_entry(b, *nhn);
     check_generate_tag_command_argument(b, *ntc);
-//?    reset_active_gap_code();
     break;
    }
   }
@@ -373,30 +384,17 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<t
     u4 leave = nhn->get_ref_leave();
     if(leave >= enter)
     {
-     qts << "\np_";
+     // //  this assumes that ntc is a paragraph ...
+     marked_paragraph_starts_[enter] = node;
+     marked_paragraph_starts_[leave] = node;
      check_sentence_boundaries(qts, node, *nhn, enter, leave);
-     qts << "\n_p";
     } 
    }
-
-//   u4 rp = ntc->ref_position();
-//   u4 ro = ntc->ref_order();
-//   u4 leave = 0;
-//
-//   if(ngml_output_htxn_->main_gl()->get_range_by_enter(rp, leave, ro))
-//   {
-//    qts << "\np_";
-
-//check_sentence_boundaries(qts, node, *nhn, rp, leave);
-
-//    check_sentence_boundaries(qts, node, *nhn, rp, leave);
-//   qts << "\n_p\n";
-//   }
   }
  } 
 }
 
-void NGML_Output_Infoset::mark_sentence(QTextStream& qts, caon_ptr<tNode> node, u4 enter, u4 leave)
+void NGML_Output_Infoset::mark_sentence(QTextStream& qts, caon_ptr<tNode> node, u4 enter, u4 leave)//, u4 pleave)
 {
  marked_sentence_starts_[enter] = node;
  marked_sentence_ends_[leave] = node;
@@ -407,21 +405,6 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts,
   caon_ptr<tNode> node, NGML_HTXN_Node& nhn, u4 enter, u4 leave)
 { 
  QMap<u4, QString> notes;
-// HTXN_Node_Detail* nd = nhn.get_node_detail(htxn_document_);
-// if(!nd)
-//   return;
-// QVector<u4>* r = nd->get_refs();
-// if(!r)
-//   return;
-// if(r->isEmpty())
-//   return;
-// HTXN_Node_Detail* nd1 = htxn_document_->get_node_detail(r->first());
-// u4 e = nd1->enter; //nhn.get_range_enter();
-// if(e < 2)
-//   return;
-// u4 l = nd1->leave;
-// if(l < e)
-//   return;
  Glyph_Layer_8b* gl = ngml_output_htxn_->main_gl();
  htxn_document_->check_sentence_boundaries(gl, 
    enter, leave, notes);
@@ -434,6 +417,7 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts,
   u4 se = 0;
   if(!htxn_document_->scan_for_sentence_end(gl, ss, leave, se))
     break;
+  
   mark_sentence(qts, node, ss, se);
   i = se + 1;
  }

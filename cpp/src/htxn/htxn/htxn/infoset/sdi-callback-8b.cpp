@@ -15,7 +15,8 @@ SDI_Callback_8b::SDI_Callback_8b()
 }
 
 void SDI_Callback_8b::pre_write(Glyph_Layer_8b& gl, u4 pos,
-  Glyph_Argument_Package& gap, u8& skip_flag, QString& insert)
+  Glyph_Argument_Package& gap, u8& skip_flag, 
+  QString& pre_insert, QString& post_insert)
 {
 
 }

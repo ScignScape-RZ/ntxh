@@ -365,18 +365,26 @@ void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter,
  Glyph_Argument_Package gap;
  gap.internal_deck = current_deck_;
  u8 skip_flag = 0;
- QString insert;
+ QString pre_insert;
+ QString post_insert;
 
  for(u4 i = enter; i <= leave; ++i)
  {
-  cb->pre_write(*gl, i, gap, skip_flag, insert);
-  if(!insert.isEmpty())
+  cb->pre_write(*gl, i, gap, skip_flag, pre_insert, post_insert);
+  if(!pre_insert.isEmpty())
   {
-   qts << insert;
-   insert.clear();
+   qts << pre_insert;
+   pre_insert.clear();
   }
   if(skip_flag)
-    skip_flag = 0;
+  {
+   skip_flag = 0;
+   if(!post_insert.isEmpty())
+   {
+    qts << post_insert;
+    post_insert.clear();
+   }
+  }
   else
   {
    this->Glyph_Layers_8b::get_latex_out(*gl, i, gap);
@@ -384,6 +392,11 @@ void HTXN_Document_8b::write_minimal_latex_out(Glyph_Layer_8b* gl, u4 enter,
      qts << gap.str;
    else
      qts << gap.chr;
+   if(!post_insert.isEmpty())
+   {
+    qts << post_insert;
+    post_insert.clear();
+   }
   }
   gap.reset();
  }
@@ -411,6 +424,7 @@ struct _csb
  u4 r2;
 
  QVector<u4> intermediates;
+ QVector<QPair<u4, u4>>& gaps;
  
  void check_sentence_boundaries();
  void check_state(u1 gp, u4 i);
@@ -488,7 +502,14 @@ void _csb::check_state_space(u4 i)
    goto r_reset;
  case One_Space:
    if(r2)
-     deck.swap_sentence_end_space(gl[r2]);
+   {
+    if(r1)
+    {
+     if(r2 > (r1 + 1))
+       gaps.push_back({r1, r2});
+    }
+    deck.swap_sentence_end_space(gl[r2]);
+   }
    for(u4 u : intermediates)
      deck.swap_false_sentence_end(gl[u]);
    intermediates.clear();
@@ -584,8 +605,15 @@ void HTXN_Document_8b::check_sentence_boundaries(Glyph_Layer_8b* gl,
  if(!deck)
    deck = current_deck_;
 
+ QVector<QPair<u4, u4>> gaps;
+
  _csb({enter, leave, *this, *gl, *deck, notes, 
-   _csb::N_A, 0, 0, {}}).check_sentence_boundaries();
+   _csb::N_A, 0, 0, {}, gaps}).check_sentence_boundaries();
+
+ for(QPair<u4, u4> pr : gaps)
+ {
+  sentence_end_gaps_[gl][pr.first] = pr.second; 
+ }
 }
 
 bool HTXN_Document_8b::scan_for_sentence_start(Glyph_Layer_8b* gl, u4 start, u4 end, u4& result, GlyphDeck_Base_8b* deck)
@@ -615,6 +643,10 @@ u4 HTXN_Document_8b::check_advance_to_sentence_end_space(Glyph_Layer_8b* gl,
 
  Glyph_Argument_Package gap;
  gap.internal_deck = deck;
+
+ if(sentence_end_gaps_.contains(gl) && 
+   sentence_end_gaps_[gl].contains(pos))
+   return sentence_end_gaps_[gl][pos];
 
  return check_sentence_end_space(*gl, pos + 1, gap)?
    pos + 1 : pos;

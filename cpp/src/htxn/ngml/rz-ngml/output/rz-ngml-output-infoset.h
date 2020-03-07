@@ -75,8 +75,10 @@ public:
 
  ACCESSORS(NGML_Output_HTXN* ,ngml_output_htxn)
 
- u8 check_sdi_latex_insert(u4 index, QString& result);
- QVector<caon_ptr<tNode>> get_sdi_latex_insert_nodes(u4 index, QString& result);
+ u8 check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, 
+   QString& pre_result, QString& post_result);
+
+ QVector<caon_ptr<tNode>> get_sdi_latex_insert_nodes(Glyph_Layer_8b* gl, u4 index, QString& pre_result, QString& post_result);
 
  void write_infoset_output(QString& output);
  void export_infoset(QString path);
