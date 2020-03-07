@@ -33,7 +33,7 @@ USING_RZNS(NGML)
 
 NGML_Output_Latex::NGML_Output_Latex(NGML_Document& document)
   :  NGML_Output_Base(document), active_gap_code_(0), 
-     suppress_node_(nullptr)
+     suppress_node_(nullptr), infoset_(nullptr)
 {
  htxn_qts_.setString(&htxn_acc_);
  ws_qts_.setString(&ws_acc_);

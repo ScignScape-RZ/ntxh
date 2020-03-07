@@ -10,6 +10,7 @@
 
 #include <QStack>
 #include <QTextStream>
+#include <QSet>
 
 #include "rz-ngml-output-base.h"
 #include "rz-ngml-output-event-handler.h"
@@ -43,6 +44,13 @@ class NGML_Output_Infoset : public NGML_Output_Base, private NGML_Output_Event_H
  QStack<caon_ptr<NGML_Node>> chiefs_;
 
  caon_ptr<tNode> suppress_node_;
+
+ QMap<u4, caon_ptr<tNode>> marked_sentence_starts_;
+ QMap<u4, caon_ptr<tNode>> marked_sentence_ends_;
+ QMap<u4, caon_ptr<tNode>> marked_paragraph_starts_;
+ QMap<u4, caon_ptr<tNode>> marked_paragraph_ends_;
+ QMap<u4, QPair<QString, caon_ptr<tNode>> sdi_marks_;
+ QMap<u4, QPair<QString, caon_ptr<tNode>> sdi_secondary_marks_;
 
  QMap<QString, caon_ptr<NGML_Command_Callback>> callbacks_;
  void init_callbacks();

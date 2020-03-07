@@ -47,15 +47,16 @@ void process_ngml_file(QString path)
  NGML_Output_HTXN noh(ndoc, &hxd);
  noh.export_htxne();
 
- NGML_Output_Latex nol(ndoc);
- nol.set_htxn_document(&hxd);
- nol.export_latex(path + ".tex");
-
  HTXN_Infoset_8b infoset(&hxd);
  NGML_Output_Infoset noi(ndoc, &infoset);
  noi.set_htxn_document(&hxd);
  noi.set_ngml_output_htxn(&noh);
  noi.export_infoset(path + ".info.txt");
+
+ NGML_Output_Latex nol(ndoc);
+ nol.set_htxn_document(&hxd);
+ nol.set_infoset(&noi);
+ nol.export_latex(path + ".tex");
 
  NGML_Output_XML nox(ndoc);
  nox.set_ngml_output_htxn(&noh);

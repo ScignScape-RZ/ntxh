@@ -278,7 +278,9 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts, caon_ptr<t
 
 void NGML_Output_Infoset::mark_sentence(QTextStream& qts, caon_ptr<tNode> node, u4 enter, u4 leave)
 {
- qts << "\n$ " << enter << " " << leave;
+ marked_sentence_starts_[enter] = node;
+ marked_sentence_ends_[leave] = node;
+ //qts << "\n$ " << enter << " " << leave;
 }
 
 void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts,
@@ -316,6 +318,8 @@ void NGML_Output_Infoset::check_sentence_boundaries(QTextStream& qts,
   i = se + 1;
  }
 }
+// QSet<u4> marked_sentence_starts_;
+// QSet<u4> marked_non_pivot_sentence_ends_;
 
 void NGML_Output_Infoset::generate_tag_command_leave(const NGML_Output_Bundle& b, NGML_HTXN_Node& nhn)
 { 

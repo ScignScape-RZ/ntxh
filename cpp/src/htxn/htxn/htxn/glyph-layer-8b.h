@@ -48,8 +48,8 @@ private:
 
  QMap<u4, u4> insert_loop_guards_;
 
- QSet<u4> marked_sentence_starts_;
- QSet<u4> marked_non_pivot_sentence_ends_;
+// QSet<u4> marked_sentence_starts_;
+// QSet<u4> marked_non_pivot_sentence_ends_;
 
 public:
 

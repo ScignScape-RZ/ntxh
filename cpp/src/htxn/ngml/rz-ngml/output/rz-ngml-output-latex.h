@@ -33,6 +33,8 @@ class NGML_HTXN_Node;
 class NGML_Attribute_Tile;
 class NGML_Tile;
 
+class NGML_Output_Infoset;
+
 
 class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Handler
 {
@@ -51,10 +53,14 @@ class NGML_Output_Latex : public NGML_Output_Base, private NGML_Output_Event_Han
 
  u1 active_gap_code_;
 
+ NGML_Output_Infoset* infoset_;
+
 public:
 
 
  NGML_Output_Latex(NGML_Document& document);
+
+ ACCESSORS(NGML_Output_Infoset* ,infoset)
 
  void export_latex(QString path = "..tex");
  void write_latex_output(QString& latex_output);

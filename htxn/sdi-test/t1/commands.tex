@@ -5,6 +5,12 @@
 \usepackage{etoolbox}
 
 \usepackage{zref-user}
+\usepackage{xifthen}
+
+\newlength\origbasels % original baselineskip
+\AtBeginDocument{%
+\setlength\origbasels{\baselineskip}%
+} 
 
 \newwrite\sdiFile
 \immediate\openout\sdiFile=\jobname.sdi.txt
@@ -94,6 +100,11 @@
 \newcommand{\fieldmark@e}{\fieldmark{e}}
 \newcommand{\fieldmark@r}{\fieldmark{r}}
 \newcommand{\fieldmark@c}{\fieldmark{c}}
+\newcommand{\fieldmark@b}{\fieldmark{b}}
+
+\newcommand{\sdi@checkWriteBLS}{%
+\ifthenelse{\lengthtest{\origbasels=\baselineskip}}{}%
+{\write\sdiFile\expandafter{\expandafter\fieldmark@b\the\baselineskip}}}
 
 %\newcommand{\smk}[1]{\ifnum#1>0{smk#1}\else{smk}\fi}
 
@@ -109,6 +120,10 @@
 \the\c@sdiMarkO}
 \write\sdiFile\expandafter{\expandafter\fieldmark@r%
 \the\c@sdiCounterP}
+\sdi@checkWriteBLS
+%\ifthenelse{\lengthtest{\origbasels=\baselineskip}}{}{%
+%\write\sdiFile\expandafter{\expandafter\fieldmark@b%
+%\the\baselineskip}}
 \write\sdiFile\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
@@ -120,6 +135,7 @@ $y: \topt\pdflastypos}
 \pdfsavepos\writeSdiValStart{Mark_Secondary} 
 \write\sdiFile\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiMark}
+\sdi@checkWriteBLS
 \if#1\empty\else\write\sdiFile\expandafter{\expandafter\fieldmark@s#1}\fi
 \write\sdiFile\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
@@ -130,6 +146,7 @@ $y: \topt\pdflastypos}
 
 \newcommand{\sdinoss}{%
 \pdfsavepos\writeSdiValStart{NoSentenceFlag} 
+\sdi@checkWriteBLS
 \write\sdiFile\expandafter{\expandafter\fieldmark@r%
 \the\c@sdiCounterP^^J%
 $x: \topt\pdflastxpos^^J%
@@ -153,6 +170,7 @@ $y: \topt\pdflastypos}
 \the\c@sdiCounterC}
 \write\sdiFile\expandafter{\expandafter\fieldmark@o%
 \the\c@sdiCounterO}
+\sdi@checkWriteBLS
 \write\sdiFile\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
@@ -177,29 +195,28 @@ $y: \topt\pdflastypos}
 \stepcounter{sdiCounterPO}
 \pdfsavepos\writeSdiStart{Paragraph} 
 \write\sdiFile\expandafter{\expandafter\fieldmark@i%
-	\the\c@sdiCounterP}
+\the\c@sdiCounterP}
 \write\sdiFile\expandafter{\expandafter\fieldmark@o%
-	\the\c@sdiCounterPO}
+\the\c@sdiCounterPO}
+\sdi@checkWriteBLS
 \write\sdiFile\expandafter{\expandafter\fieldmark@p%
-	\thepage^^J%
-	$x: \topt\pdflastxpos^^J%
-	$y: \topt\pdflastypos}
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}
 \writeSdiValEnd}
 
 \newcommand{\spe}{%
 \ActiveSdiMarkfalse
 \pdfsavepos\writeSdiEnd{Paragraph} 
 \write\sdiFile\expandafter{\expandafter\fieldmark@i%
-	\the\c@sdiCounterP}
+\the\c@sdiCounterP}
 \write\sdiFile\expandafter{\expandafter\fieldmark@o%
-	\the\c@sdiCounterPO}
+\the\c@sdiCounterPO}
 \write\sdiFile\expandafter{\expandafter\fieldmark@p%
-	\thepage^^J%
+\thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}
 \writeSdiValEnd
 \sdinossflagfalse}
 
-
 \makeatother
-
