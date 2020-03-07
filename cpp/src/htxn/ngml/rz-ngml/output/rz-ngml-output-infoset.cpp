@@ -39,7 +39,8 @@ NGML_Output_Infoset::NGML_Output_Infoset(NGML_Document& document, HTXN_Infoset_8
     infoset_(infoset), suppress_node_(nullptr), 
     ngml_output_htxn_(nullptr), 
     held_sdi_sentence_end_index_(0), 
-    canceled_sdi_sentence_start_index_(0)
+    canceled_sdi_sentence_start_index_(0),
+    held_sdi_sentence_end_node_(nullptr)
 {
  //?htxn_qts_.setString(&htxn_acc_);
  init_callbacks();
@@ -54,44 +55,95 @@ void NGML_Output_Infoset::init_callbacks()
 
 // // common functionality for both insert methods ...
 
-void _insert_start(u8* u, QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+void _insert_start(u8* u, QVector<caon_ptr<NGML_Node>>* vec, u4 index, QString& pre_result, caon_ptr<NGML_Node> n, 
+  u4& canceled_sdi_sentence_start_index)
 {
-    if(index == canceled_sdi_sentence_start_index_)
-    {
-     // //  the \> supplants the \+ ...
-     canceled_sdi_sentence_start_index_ = 0;
-    }
-    else
-    {
-     pre_result.append("\\+");
-     ++count;
-    }
-
+ if(index == canceled_sdi_sentence_start_index)
+ {
+  // //  the \> supplants the \+ ...
+  canceled_sdi_sentence_start_index = 0;
+ }
+ else
+ {
+  pre_result.append("\\+");
+  if(u)
+    ++*u;
+  if(vec)
+    vec->push_back(n);
+ }
 }
 
-void _insert_end(u8* u, QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+void _insert_end(u8* u, QVector<caon_ptr<NGML_Node>>* vec, u4 index,
+  u4 new_index, QString& post_result, 
+  QMap<u4, caon_ptr<NGML_Node>>& marked_sentence_starts,
+  caon_ptr<NGML_Node> n, 
+  u4& held_sdi_sentence_end_index,
+  u4& canceled_sdi_sentence_start_index, 
+  caon_ptr<NGML_Node>* held_sdi_sentence_end_node)
 {
-
+ if(new_index == index)
+ {
+  post_result.append("\\;");
+  if(u)
+    ++*u;
+  if(vec)
+    vec->push_back(n);
+ }
+ else
+ {
+  // // this assumes the post-space will always be 
+   //   separated from a new sentence by one space or newline ...
+  if(marked_sentence_starts.contains(new_index + 2))
+  {
+   held_sdi_sentence_end_index = new_index;
+   if(held_sdi_sentence_end_node)
+     *held_sdi_sentence_end_node = n;
+   canceled_sdi_sentence_start_index = new_index + 2;
+  }
+  else
+  {
+   post_result.append("\\;");
+   if(u)
+     ++*u;
+   if(vec)
+     vec->push_back(n);
+  }
+ }
 }
 
-void _insert_start(u8* u, u4 index, QString& pre_result)
+void _insert_start(u8* u, u4 index, QString& pre_result, u4& canceled_sdi_sentence_start_index)
 {
- _insert_start(u, nullptr, index);
+ _insert_start(u, nullptr, index, pre_result, nullptr, canceled_sdi_sentence_start_index);
 }
 
-void _insert_start(QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+void _insert_start(QVector<caon_ptr<NGML_Node>>* vec, u4 index, QString& pre_result, caon_ptr<NGML_Node> n, u4& canceled_sdi_sentence_start_index)
 {
- _insert_start(nullptr, vec, index);
+ _insert_start(nullptr, vec, index, pre_result, n, canceled_sdi_sentence_start_index);
 }
 
-void _insert_end(u8* u, u4 index, QString& pre_result)
+void _insert_end(u8* u, u4 index, u4 new_index, 
+  QString& post_result, QMap<u4, caon_ptr<NGML_Node>>& marked_sentence_starts,
+  u4& held_sdi_sentence_end_index,  
+  u4& canceled_sdi_sentence_start_index)
 {
- _insert_end(u, nullptr, index);
+ _insert_end(u, nullptr, index, new_index, post_result, 
+   marked_sentence_starts, nullptr, 
+   held_sdi_sentence_end_index, canceled_sdi_sentence_start_index, 
+   nullptr);
 }
 
-void _insert_end(QVector<caon_ptr<tNode>>* vec, u4 index, QString& pre_result)
+void _insert_end(QVector<caon_ptr<NGML_Node>>* vec, 
+  u4 index, u4 new_index, 
+  QString& post_result, 
+  QMap<u4, caon_ptr<NGML_Node>>& marked_sentence_starts, caon_ptr<NGML_Node> n, 
+  u4& held_sdi_sentence_end_index,
+  u4& canceled_sdi_sentence_start_index, 
+  caon_ptr<NGML_Node>* held_sdi_sentence_end_node)
 {
- _insert_end(nullptr, vec, index);
+ _insert_end(nullptr, vec, index, new_index, post_result, 
+   marked_sentence_starts, n, 
+   held_sdi_sentence_end_index, canceled_sdi_sentence_start_index,
+   held_sdi_sentence_end_node);
 }
 
 
@@ -116,6 +168,7 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QSt
   auto it = marked_sentence_starts_.find(index);
   if(it != marked_sentence_starts_.end())
   {
+   _insert_start(&count, index, pre_result, canceled_sdi_sentence_start_index_);
 //   if(index == canceled_sdi_sentence_start_index_)
 //   {
 //    // //  the \> supplants the \+ ...
@@ -157,6 +210,14 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QSt
    u4 new_index = htxn_document_->
      check_advance_to_sentence_end_space(gl, index);
 
+   _insert_end(&count, index, new_index, post_result, 
+     marked_sentence_starts_,
+     held_sdi_sentence_end_index_,
+     canceled_sdi_sentence_start_index_);
+   #ifdef HIDE
+   u4 new_index = htxn_document_->
+     check_advance_to_sentence_end_space(gl, index);
+
    if(new_index == index)
    {
     post_result.append("\\;");
@@ -177,6 +238,7 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QSt
      ++count;
     }
    }
+   #endif HIDE
   }
  }
  {
@@ -189,9 +251,15 @@ u8 NGML_Output_Infoset::check_sdi_latex_insert(Glyph_Layer_8b* gl, u4 index, QSt
  }
 }
 
-QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex_insert_nodes(Glyph_Layer_8b* gl, u4 index, QString& pre_result, QString& post_result)
+QVector<caon_ptr<NGML_Node>> NGML_Output_Infoset::get_sdi_latex_insert_nodes(Glyph_Layer_8b* gl, u4 index, QString& pre_result, QString& post_result)
 {
  QVector<caon_ptr<tNode>> rvec;
+ if(index == held_sdi_sentence_end_index_)
+ {
+  rvec.push_back(held_sdi_sentence_end_node_);
+  held_sdi_sentence_end_index_ = 0;
+  post_result.append("\\>");
+ }
  {
   auto it = marked_paragraph_starts_.find(index);
   if(it != marked_paragraph_starts_.end())
@@ -204,8 +272,9 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   auto it = marked_sentence_starts_.find(index);
   if(it != marked_sentence_starts_.end())
   {
-   pre_result.append("\\+");
-   rvec.push_back(it.value());
+   _insert_start(&rvec, index, pre_result, it.value(), canceled_sdi_sentence_start_index_);
+//   pre_result.append("\\+");
+//   rvec.push_back(it.value());
   }
  }
  {
@@ -236,12 +305,22 @@ QVector<caon_ptr<NGML_Output_Infoset::tNode>> NGML_Output_Infoset::get_sdi_latex
   {
    u4 new_index = htxn_document_->
      check_advance_to_sentence_end_space(gl, index);
-   if(new_index == index)
-     post_result.append("\\;");
-   else
-     post_result.append("\\>");
 
-   rvec.push_back(it.value());
+   _insert_end(&rvec, index, new_index, post_result, 
+      marked_sentence_starts_,
+      it.value(),   
+      held_sdi_sentence_end_index_,
+      canceled_sdi_sentence_start_index_,
+      &held_sdi_sentence_end_node_);
+
+//   u4 new_index = htxn_document_->
+//     check_advance_to_sentence_end_space(gl, index);
+//   if(new_index == index)
+//     post_result.append("\\;");
+//   else
+//     post_result.append("\\>");
+
+//   rvec.push_back(it.value());
   }
  }
  {
