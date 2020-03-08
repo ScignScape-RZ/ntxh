@@ -438,6 +438,7 @@ void NGML_Output_HTXN::generate_tag_command_entry(const NGML_Output_Bundle& b, c
 
  switch(b.connection_descriptor)
  {
+ case NGML_Connection_Descriptor::Tag_Command_Cross_From_Blank:
  case NGML_Connection_Descriptor::Tag_Command_Cross:
   //?
  case NGML_Connection_Descriptor::Tag_Command_Entry:

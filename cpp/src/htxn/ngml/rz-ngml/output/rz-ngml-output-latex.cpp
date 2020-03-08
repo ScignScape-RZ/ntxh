@@ -268,7 +268,8 @@ void NGML_Output_Latex::generate_tile_via_htxn(const NGML_Output_Bundle& b, NGML
 {
  if(infoset_)
  {
-  _SDI_Callback cb(*infoset_, infoset_->ngml_output_htxn()->main_gl()->id());
+  u4 id = infoset_->ngml_output_htxn()->main_gl()->id();
+  _SDI_Callback cb(*infoset_, id);
   htxn_document_->write_minimal_latex_out(nhn.layer_code(), nhn.range(), b.qts, &cb);
  }
  else
@@ -307,6 +308,7 @@ void NGML_Output_Latex::generate_tag_command_entry(const NGML_Output_Bundle& b, 
 
  switch(b.connection_descriptor)
  {
+ case NGML_Connection_Descriptor::Tag_Command_Cross_From_Blank:
  case NGML_Connection_Descriptor::Tag_Command_Cross:
  case NGML_Connection_Descriptor::Tag_Command_Entry:
   if(cb)

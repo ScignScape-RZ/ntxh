@@ -1,8 +1,12 @@
 `documentclass<article>;
 `include<sdi-commands>;
 
+`document,
+
 `p.
 Test sentence.  Another test sentence.
 `p`
+
+`document`
 
 
