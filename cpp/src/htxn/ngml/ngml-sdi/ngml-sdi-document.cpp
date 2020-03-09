@@ -9,6 +9,7 @@
 
 #include "ntxh-parser/ntxh-document.h"
 
+#include "global-types.h"
 
 NGML_SDI_Document::NGML_SDI_Document(QString path)
   :  path_(path)
@@ -26,13 +27,22 @@ void NGML_SDI_Document::parse()
  NTXH_Graph& g = *doc.graph();
  const QVector<hypernode_type*>& v = g.hypernodes();
 
- int i = 0;
+ u4 i = 0;
+
+ u8 bls = 12; // default ... 
 
  for(hypernode_type* h : v)
  {
-  g.get_sf(h, 1, [](QPair<QString, void*>& pr)
+//  QString name;
+  g.get_sf(h, 1, [&bls](QPair<QString, void*>& pr)
   {
-//   sent.set_id(pr.first.toInt());
+   QString name = pr.first;
+   qDebug() << name;   
+
+//   QString b = pr.first;
+//   if(b.endsWith("pt")
+//     b.chop(2);
+//   bls=b.toLongLong();
   });
 
   g.get_sf(h, 2, [](QPair<QString, void*>& pr)
@@ -40,6 +50,7 @@ void NGML_SDI_Document::parse()
 //   sent.set_corpus_name(pr.first);
   });
 
+#ifdef HIDE
   g.get_sf(h, 3, [](QPair<QString, void*>& pr)
   {
 //   sent.set_sxp_text(pr.first);
@@ -54,6 +65,7 @@ void NGML_SDI_Document::parse()
   {
 //   qts << pr.first << "\n\n";
   });
+#endif
  } 
 
 }

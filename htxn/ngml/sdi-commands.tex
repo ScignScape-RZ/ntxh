@@ -17,7 +17,7 @@
 } 
 
 \newwrite\sdiFile
-\immediate\openout\sdiFile=\jobname.sdi.txt
+\immediate\openout\sdiFile=\jobname.sdi.ntxh
 
 \newif\iftabng
 \tabngfalse
@@ -84,10 +84,13 @@
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
 
-\newcommand{\writeSdiStart}[1]{\write\sdiFile{!/ SDI_#1_Start}}
-\newcommand{\writeSdiEnd}[1]{\write\sdiFile{!/ SDI_#1_End}}
-\newcommand{\writeSdiValStart}[1]{\write\sdiFile{!/ SDI_#1}}
-\newcommand{\writeSdiValEnd}{\write\sdiFile{/!^^J<<>^^J}}
+\newcommand{\writeSdiStart}[1]{\write\sdiFile{!/ SDI_#1_Start}%
+\write\sdiFile{$n: #1:Start}}
+\newcommand{\writeSdiEnd}[1]{\write\sdiFile{!/ SDI_#1_End}%
+\write\sdiFile{$n: #1:End}}
+\newcommand{\writeSdiValStart}[1]{\write\sdiFile{!/ SDI_#1}%
+\write\sdiFile{$n: #1}}
+\newcommand{\writeSdiValEnd}{\write\sdiFile{/!^^J<+>^^J}}
 
 \newcommand{\fieldmark}[1]{\expandafter$\expandafter#1%
 \expandafter:\expandafter\space}
@@ -218,38 +221,38 @@ $y: \topt\pdflastypos}%
   \the\day/\the\month/\the\year, \the\currenthour:\the\currentminute ^^J%
 .^^J%
 ^^J%
-- i=id p=page r=paragraph o=order (on page)^^J%
+- i=id n=name (entity kind) p=page r=paragraph o=order (on page)^^J%
   s=size c=count (in paragraph) x,y=pdf coords b=baselineskip^^J%
 .^^J%
 ^^J%
-&type Sdi_Sentence_Start {8}^^J%
-  :i:1 :r:2 :c:3 :o:4 :p:6 :x:7 :y:8 :b:5 ;^^J%
+&type SDI_Sentence_Start {9}^^J%
+  :n:1 :i:2 :r:3 :c:4 :o:5 :p:7 :x:8 :y:9 :b:6 ;^^J%
 ^^J%
-&type Sdi_Sentence_End {5}^^J%
-  :i:1 :o:2 :p:3 :x:4 :y:5 ;^^J%
+&type SDI_Sentence_End {6}^^J%
+  :n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
 ^^J%
-&type Sdi_Paragraph_Start {5}^^J%
-  :i:1 :o:2 :p:3 :x:4 :y:5 ;^^J%
+&type SDI_Paragraph_Start {6}^^J%
+  :n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
 ^^J%
-&type Sdi_Paragraph_End {5}^^J%
-  :i:1 :o:2 :p:3 :x:4 :y:5 ;^^J%
+&type SDI_Paragraph_End {6}^^J%
+  :n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
 ^^J%
-&type Sdi_Mark {4}^^J%
-  :i:1 :o:2 :r:3 :p:4 :x:5 :y:6 ;^^J%
+&type SDI_Mark {7}^^J%
+  :n:1 :i:2 :o:3 :r:4 :p:5 :x:6 :y:7 ;^^J%
 ^^J%
-&type Sdi_Mark_Secondary {4}^^J%
-  :i:1 :p:3 :x:4 :y:5 ;^^J%
+&type SDI_Mark_Secondary {5}^^J%
+  :n:1 :i:2 :p:3 :x:4 :y:5 ;^^J%
 ^^J%
-&type Sdi_Info {4}^^J%
-  :global-baseline-skip:1 :p:3 :x:4 :y:5 ;^^J%
+&type SDI_Info {2}^^J%
+  :n:1 :global-baseline-skip:2 ;^^J%
 ^^J%
 ^^J%
 &/^^J%
 ^^J%
 ^^J%
-!/ Sdi_Info^^J%
-$global-baseline-skip: \origbasels^^J%
-$job-name: \jobname^^J%
+!/ SDI_Info^^J%
+$n: Info^^J%
+$global-baseline-skip: \the\origbasels^^J%
 ^^J%
 /!^^J%
 <+>^^J%

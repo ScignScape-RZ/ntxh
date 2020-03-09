@@ -25,18 +25,24 @@ s=size c=count (in paragraph) x,y=pdf coords b=baselineskip
 :i:1 :p:3 :x:4 :y:5 ;
 
 &type Sdi_Info {4}
-:global-baseline-skip:1 :p:3 :x:4 :y:5 ;
+:global-baseline-skip:1 :job-name:2 ;
 
 
 &/
 
-
 !/ Sdi_Info
-$global-baseline-skip: 12pt 
+$global-baseline-skip: 12.0pt 
 $job-name: t1
-
 /!
 <+>
+
+!/ Sdi_Info
+$global-baseline-skip: 12.0pt 
+$job-name: t1
+/!
+<+>
+
+
 
 /&
 

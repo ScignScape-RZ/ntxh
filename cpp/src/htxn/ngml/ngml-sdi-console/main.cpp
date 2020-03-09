@@ -22,7 +22,7 @@ USING_KANS(TextIO)
 
 int main(int argc, char* argv[])
 {
- NGML_SDI_Document nsd(DEFAULT_SDI_FOLDER "/ngml-sdi/t1.ntxh");
+ NGML_SDI_Document nsd(DEFAULT_SDI_FOLDER "/ngml-sdi/t1.ngml.sdi.ntxh");
  nsd.parse();
 
  return 0; 
