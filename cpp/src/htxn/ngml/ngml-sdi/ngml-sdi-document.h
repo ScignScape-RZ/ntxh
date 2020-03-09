@@ -10,6 +10,8 @@
 
 #include "ngml-sdi-document.h"
 
+#include "global-types.h"
+
 
 #include <QDebug>
 
@@ -21,19 +23,29 @@ USING_KANS(TextIO)
 #include "ntxh-parser/ntxh-document.h"
 
 #include "kans.h"
+
+KANS_CLASS_DECLARE(HGDMCore ,NTXH_Graph)
+
 USING_KANS(HGDMCore)
 
 #include "rzns.h"
+
+//class hypernode_type;
 
 
 class NGML_SDI_Document
 {
  QString path_;
+ u8 global_base_line_skip_;// = 12
 
 public:
  
  NGML_SDI_Document(QString path);
  void parse();
+
+ void parse_paragraph_start_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_paragraph_end_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_info_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
 
 };
 

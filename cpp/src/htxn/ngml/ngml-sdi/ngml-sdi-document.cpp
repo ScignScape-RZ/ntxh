@@ -11,13 +11,44 @@
 
 #include "global-types.h"
 
+typedef NTXH_Graph::hypernode_type hypernode_type;
+
 NGML_SDI_Document::NGML_SDI_Document(QString path)
-  :  path_(path)
+  :  path_(path), global_base_line_skip_(12)
 {
 }
 
+void NGML_SDI_Document::parse_paragraph_start_hypernode(const NTXH_Graph& g, hypernode_type* h)
+{
+ qDebug() << "parse_paragraph_start_hypernode()";
+}
+
+void NGML_SDI_Document::parse_paragraph_end_hypernode(const NTXH_Graph& g, hypernode_type* h)
+{
+ qDebug() << "parse_paragraph_end_hypernode()";
+}
+
+void NGML_SDI_Document::parse_info_hypernode(const NTXH_Graph& g, hypernode_type* h)
+{
+ qDebug() << "parse_info_hypernode()";
+}
+
+
 void NGML_SDI_Document::parse()
 {
+ QMap<QString, void(NGML_SDI_Document::*)(const NTXH_Graph&, hypernode_type*)> methods {
+  {"Info", &NGML_SDI_Document::parse_info_hypernode},
+  {"Paragraph:Start",
+    &NGML_SDI_Document::parse_paragraph_start_hypernode},
+  {"Paragraph:End",
+    &NGML_SDI_Document::parse_paragraph_end_hypernode},
+//"Sentence:Start"
+//"Sentence:End"
+//"Sentence:Start"
+//"Sentence:End"
+//"Paragraph:End"
+ };
+
  NTXH_Document doc(path_);
 
  doc.parse();
@@ -29,26 +60,24 @@ void NGML_SDI_Document::parse()
 
  u4 i = 0;
 
- u8 bls = 12; // default ... 
+// u8 bls = 12; // default ... 
 
  for(hypernode_type* h : v)
  {
 //  QString name;
-  g.get_sf(h, 1, [&bls](QPair<QString, void*>& pr)
+  g.get_sf(h, 1, [this, &methods, g, h](QPair<QString, void*>& pr)
   {
-   QString name = pr.first;
-   qDebug() << name;   
-
-//   QString b = pr.first;
-//   if(b.endsWith("pt")
-//     b.chop(2);
-//   bls=b.toLongLong();
+   auto it = methods.find(pr.first);
+   if(it != methods.end())
+   {
+    (this->**it)(g, h);
+   }
   });
 
-  g.get_sf(h, 2, [](QPair<QString, void*>& pr)
-  {
+//  g.get_sf(h, 2, [](QPair<QString, void*>& pr)
+//  {
 //   sent.set_corpus_name(pr.first);
-  });
+//  });
 
 #ifdef HIDE
   g.get_sf(h, 3, [](QPair<QString, void*>& pr)
