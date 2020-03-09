@@ -24,7 +24,7 @@ NTXH_Document::NTXH_Document(QString path)
  : graph_(nullptr), grammar_(nullptr)
 {
  if(!path.isEmpty())
-  load_file(path);
+   load_file(path);
 }
 
 void NTXH_Document::surround(QString divider, QString text)

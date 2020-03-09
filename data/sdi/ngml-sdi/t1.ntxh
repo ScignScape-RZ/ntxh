@@ -1,0 +1,42 @@
+- Generated from LaTeX File t1.tex 
+8/3/2020, 10:27
+.
+
+- i=id p=page r=paragraph o=order (on page)
+s=size c=count (in paragraph) x,y=pdf coords b=baselineskip
+.
+
+&type Sdi_Sentence_Start {8}
+:i:1 :r:2 :c:3 :o:4 :p:6 :x:7 :y:8 :b:5 ;
+
+&type Sdi_Sentence_End {5}
+:i:1 :o:2 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Paragraph_Start {5}
+:i:1 :o:2 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Paragraph_End {5}
+:i:1 :o:2 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Mark {4}
+:i:1 :o:2 :r:3 :p:4 :x:5 :y:6 ;
+
+&type Sdi_Mark_Secondary {4}
+:i:1 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Info {4}
+:global-baseline-skip:1 :p:3 :x:4 :y:5 ;
+
+
+&/
+
+
+!/ Sdi_Info
+$global-baseline-skip: 12pt 
+$job-name: t1
+
+/!
+<+>
+
+/&
+

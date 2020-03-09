@@ -11,8 +11,13 @@
 
 
 NGML_SDI_Document::NGML_SDI_Document(QString path)
+  :  path_(path)
 {
- NTXH_Document doc(path);
+}
+
+void NGML_SDI_Document::parse()
+{
+ NTXH_Document doc(path_);
 
  doc.parse();
 
@@ -25,27 +30,27 @@ NGML_SDI_Document::NGML_SDI_Document(QString path)
 
  for(hypernode_type* h : v)
  {
-  g.get_sf(h, 1, [&sent](QPair<QString, void*>& pr)
+  g.get_sf(h, 1, [](QPair<QString, void*>& pr)
   {
 //   sent.set_id(pr.first.toInt());
   });
 
-  g.get_sf(h, 2, [&sent](QPair<QString, void*>& pr)
+  g.get_sf(h, 2, [](QPair<QString, void*>& pr)
   {
 //   sent.set_corpus_name(pr.first);
   });
 
-  g.get_sf(h, 3, [&sent](QPair<QString, void*>& pr)
+  g.get_sf(h, 3, [](QPair<QString, void*>& pr)
   {
 //   sent.set_sxp_text(pr.first);
   });
 
-  g.get_sf(h, 4, [&sent](QPair<QString, void*>& pr)
+  g.get_sf(h, 4, [](QPair<QString, void*>& pr)
   {
 //   sent.set_latex_out_file(pr.first);
   });
 
-  g.get_sf(h, 5, [&qts](QPair<QString, void*>& pr)
+  g.get_sf(h, 5, [](QPair<QString, void*>& pr)
   {
 //   qts << pr.first << "\n\n";
   });

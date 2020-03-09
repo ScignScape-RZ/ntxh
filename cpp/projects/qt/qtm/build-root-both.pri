@@ -28,6 +28,7 @@ ROOT_DIR = $$_PRO_FILE_PWD_
 ROOT_DIR ~= s!/cpp/projects/qt/.*!!
 
 CPP_ROOT_DIR = $$ROOT_DIR/cpp
+DATA_ROOT_DIR = $$ROOT_DIR/data
 
 message(RD: $$ROOT_DIR)
 

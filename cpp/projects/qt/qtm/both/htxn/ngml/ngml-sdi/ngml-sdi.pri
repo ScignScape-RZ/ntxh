@@ -8,12 +8,8 @@ PROJECT_NAME = ngml-sdi
 
 include(../build-group.pri)
 
-TEMPLATE = app
-
 INCLUDEPATH += $$SRC_DIR $$SRC_GROUP_DIR $$SRC_ROOT_DIR
-INCLUDEPATH += $$SRC_GROUP_DIR/rz-ngml
 
-INCLUDEPATH += $$WCM_SRC_GROUP_DIR
 INCLUDEPATH += $$NTXH_SRC_GROUP_DIR
 
 INCLUDEPATH += $$HTXN_SRC_GROUP_DIR
@@ -53,7 +49,7 @@ SOURCES += \
   $$SRC_DIR/ngml-sdi-document.cpp \
 
 
-LIBS += -L$$TARGETSDIR -lrz-ngml -lhtxn
+LIBS += -L$$TARGETSDIR -lntxh
 
 
 #?

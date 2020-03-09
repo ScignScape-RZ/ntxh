@@ -18,10 +18,13 @@
 USING_KANS(TextIO)
 
 
+//DEFAULT_SDI_FOLDER=
+
 int main(int argc, char* argv[])
 {
- NGML_SDI_Document nsd (ROOT_DIR "/ngml-sdi/t1.ntxh");
- 
+ NGML_SDI_Document nsd(DEFAULT_SDI_FOLDER "/ngml-sdi/t1.ntxh");
+ nsd.parse();
+
  return 0; 
 }
 

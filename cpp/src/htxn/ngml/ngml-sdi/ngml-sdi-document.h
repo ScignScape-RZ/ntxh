@@ -23,13 +23,17 @@ USING_KANS(TextIO)
 #include "kans.h"
 USING_KANS(HGDMCore)
 
+#include "rzns.h"
+
 
 class NGML_SDI_Document
 {
+ QString path_;
 
 public:
  
  NGML_SDI_Document(QString path);
+ void parse();
 
 };
 
