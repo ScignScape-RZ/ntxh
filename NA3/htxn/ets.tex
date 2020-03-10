@@ -186,6 +186,7 @@
 
 
 \newcommand{\XPDF}{\resizebox{!}{8.5pt}{\AcronymText{XPDF}}}
+
 \newcommand{\GRE}{\resizebox{!}{8.5pt}{\AcronymText{GRE}}}
 
 \newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
@@ -236,6 +237,16 @@
 
 \newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
 				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\iXPDF}{\resizebox{!}{8pt}{\textsccserif{%
+\textit{XPDF}}}}
+
+\newcommand{\iEPF}{\resizebox{!}{8pt}{\textsccserif{%
+\textit{EPF}}}}
+
+\newcommand{\iHTXN}{\resizebox{!}{8pt}{\textsccserif{%
+\textit{HTXN}}}}
 
 
 \newcommand{\AcronymText}[1]{{\textscc{#1}}}
@@ -341,6 +352,11 @@
 \let\OldLaTeX\LaTeX
 
 \renewcommand{\LaTeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\let\OldTeX\TeX
+
+\renewcommand{\TeX}{\resizebox{!}{8pt}{\color{orr!35!black}{\OldTeX}}}
+
 
 \newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
 
@@ -480,7 +496,7 @@ of \EPF{} is to integrate document viewers with
 test-taking technology and with 
 scientific and multi-media applications, so that 
 multiple applications can be unified into  
-interactive, multi-media pedagogical platforms.  
+interactive, multi-media pedagogic platforms.  
 With \EPF{}, applications can be retrofitted to 
 serve as teaching and testing tools.  This 
 may involve taking practice tests 
@@ -488,7 +504,7 @@ may involve taking practice tests
 or using instructional materials co-ordinated 
 with technical applications to help students 
 master technical subject-matter.   
-Interactive multimedia presentations 
+Moreover, while studying for exams, interactive multimedia presentations 
 can help students benefit from sophisticated 
 data visualization and \ThreeD{} graphics tools.} 
 
@@ -500,8 +516,8 @@ data visualization and \ThreeD{} graphics tools.}
 \p{A second 
 goal of \EPF{} is to provide machine-readable 
 structural representations of publication manuscripts, 
-which Document Viewers may use to introduce 
-additional pedagogical content: review questions, 
+which document viewers may use to introduce 
+additional pedagogic content: review questions, 
 student instructions, glossaries, reading assignments, 
 and so forth.  For this technology, each publication 
 may provide a \q{Semantic Document Infoset} 
@@ -518,11 +534,11 @@ instructional and/or multimedia features.}
 %}  
 
 \input{etsf0.tex}
-\mnote{Employing \EPF{} as test-taking software}
+\mnote{Employing \iEPF{} as\\test-taking software}
 \p{One use-case for \EPF{} is to embed capabilities 
 to host or administer tests within document viewers 
 and scientific applications.  At the most basic 
-level, these features include separate windows 
+level, these features would include separate windows 
 which show questions and answer choices, with 
 options to navigate between questions.  When used 
 for test preparation, students can use this format 
@@ -538,7 +554,7 @@ as a book-like publication and also conducting a
 practice test session in a more exam-like fashion, 
 viewing one question at a time.}
 
-\mnote{Writing exams with \LaTeX{} and \XPDF{} plugins.}
+\mnote{Writing exams with \LaTeX{} and \iXPDF{} plugins.}
 \p{To support 
 this technology, \EPF{} distributions can include 
 \LaTeX{} packages for composing exams which allow 
@@ -548,7 +564,7 @@ structured format (such as \XML{}), and placed
 as an embedded file in the generated \PDF{} document.  
 This embedded data can then be read by 
 \EPF{} plugins to create the question/answer windows.  
-In documents (such as the \GRE{} practices) where 
+In manuscripts (such as the ETS \GRE{} practices) where 
 questions are printed as part of the publication text, 
 the \LaTeX{} code can store questions' \PDF{} coordinates 
 so that the document automatically scrolls while 
@@ -559,19 +575,19 @@ documents which are not expressly designed
 as test-prep materials, such as textbooks and 
 research papers.  In this latter case, 
 question/answer windows may be synced to 
-sentences or paragraphs in the publication 
+sentences or paragraphs in those publications 
 which are relevant to the review question that 
 the student is currently reading in 
-the question/answer window.}
+a question/answer window.}
 
 \mnote{Remote Test Administration}
 \p{Similar technology can also potentially be 
 used for remote administration of actual 
 exams.  Such a use-case is consistent with 
 the current trend toward online test-taking --- 
-a trend which may be accelerate in the near future 
+a trend which may accelerate in the near future 
 as educational opportunities tick upward 
-in remote areas where students cannot easily 
+in remote areas and countries, where students cannot easily 
 travel to testing centers (or even due to 
 situations such as Covid-19 that disrupt 
 conventional testing logistics).  Remote 
@@ -584,7 +600,7 @@ online test-taking, except that students
 use technical applications or document viewers 
 instead of web browsers for the actual test-taking.}
 
-\mnote{How \EPF{} enables multi-application networking}
+\mnote{How \iEPF{} enables multi-appli- cation networking}
 \p{In addition to potential test-taking features, \EPF{} 
 also supports connecting multiple applications, 
 so that students benefit from an interactive, multi-media 
@@ -599,10 +615,11 @@ would quickly understand how to use plugins present
 in a different context.  An important \EPF{} feature 
 is that distinct ETS plugins would be able to 
 communicate with each other.  In particular, 
-Document Viewer plugins would send data to 
-plugins for scientific or multimedia applications so 
+plugins for document viewers would send data to 
+plugins for scientific or multimedia applications, so 
 that students could access multimedia content 
-linked to test-preparation materials.}
+linked to manuscripts, such as test-preparation materials, 
+that they are currently reading.}
 
 
 \p{\begin{wrapfigure}{r}{110mm}
@@ -610,7 +627,7 @@ linked to test-preparation materials.}
 \end{wrapfigure}
 For a concrete example of advanced functionality 
 that can be achieved by connecting two distinct 
-\EPF{} plugins, consider a student reading the \GRE{} 
+\EPF{} plugins, consider a student studying the \GRE{} 
 Chemistry Practice Book published by ETS.  This book 
 has sample questions such as (number 4, page 11) 
 \textbf{The molecular geometry of thionyl chloride, 
@@ -622,13 +639,14 @@ this question/answer, it may help students to view a
 \ThreeD{} model of thionyl chloride, which can be done 
 through molecular visualization software such as IQmol.  Accordingly, this specific question in the book 
 may be associated with Molecular Data file for 
-SOCl$_2$ (this file is available from the Chemical Abstracts Service database). \hspace{1em} The relation between the specific textual location  
+SOCl$_2$ (this file is available from the \q{Chemical Abstracts Service} database). %\hspace{.5em} 
+The relation between the specific textual location  
 
 \begin{wrapfigure}{l}{110mm}
 	\input{etsf2.tex}
 \end{wrapfigure}\noindent{}(where the practice Question 4 is 
 presented) and the supplemental Molecular Data file 
-would be asserted in the Document Infoset, and 
+would be asserted in the Semantic Document Infoset, and 
 read by a document viewer (e.g., \XPDF{}).  The 
 \XPDF{} plugin would then launch IQmol and send the 
 molecular file to the IQmol ETS Plugin, with instructions 
@@ -636,12 +654,12 @@ to load this file into an IQmol session
 (see Figure ~\ref{fig:i1}).  The end result 
 would be that the student, with a single 
 click (such as selecting a visualization action from 
-a context menu on the practice question) have access 
+a context menu on the practice question) has access 
 to an interactive \ThreeD{} graphic representing 
 thionyl chloride.  (Of course, analogous 
 functionality would be available for any chemical 
-compound with multimedia files in formats 
-like Molecular Data, Protein Data Bank, or Chemical 
+compound with multimedia files in such formats 
+as Molecular Data, Protein Data Bank, or Chemical 
 Markup Language).}
 
 \p{\begin{wrapfigure}{r}{110mm}
@@ -660,7 +678,7 @@ the fact that he or she had previously viewed the
 SOCl$_2$ file.  The \EPF{} plugin on the IQmol 
 side can then load the prior file along with the 
 new one, so the student can browse back to prior 
-screens if desired (see the Model View panel on 
+application-states if desired (see the Model View panel on 
 Figure ~\ref{fig:i2}).}
 \input{etsf4.tex}
 
@@ -677,7 +695,7 @@ Figure ~\ref{fig:i2}).}
 	with 2D or 3D views (via surfaces, scatter-plots, 
 	bar charts, etc.) and activate statistical calculations.  Certain functionality, however, would be shared 
 	among all ETS plugin, including a dialog window to 
-	show basic plugin information (see figure at right) 
+	show basic plugin information (see figure at left) 
 	and also a more detailed review of data transmitted 
 	between applications via plugins.  
 	The \q{request info} tab allows students, instructors, 
@@ -730,7 +748,7 @@ understand the concepts covered in class;
 software as part of the curriculum; 
 (3) evaluate students' understanding of the 
 software as part of their assessment of 
-students' mastery of the curriculum; or 
+students' mastery of the curriculum; and 
 (4) use applications' analytic features as an 
 overview of analytic or quantitative methodologies 
 relevant to the course's subject matter.  In 
@@ -753,6 +771,7 @@ provided by the instructor) and allow students
 to view the corresponding \ThreeD{} molecular 
 graphics accordingly.  
 
+\vspace{.5em}
 \mlitem[Scenario 2: Authors or instructors 
 analyze publications' content to develop teaching 
 materials]  When documents are read in an 
@@ -842,7 +861,7 @@ encoding and document structure are
 defined in isolation from one another), and 
 can be employed to encode manuscripts in 
 many different markup formats.  
-\lLXCR{} and \lHTXN{} are autonomous 
+\lEPF{} and \lHTXN{} are autonomous 
 technologies (each may be used apart 
 from the other), but they form a 
 natural pairing, encompassing both 
@@ -850,13 +869,13 @@ the character/orthographic data and
 the document structure of 
 manuscripts for publication.}
 
-\mnote{\HTXN{} and multi-media content}  
+\mnote{\iHTXN{} and multi-media content}  
 \p{The central goal 
 of \HTXN{} is to support the new generation of 
 publishing technologies, where conventional 
 document formats are increasingly being supplanted 
 by digital, multimedia reader experiences.  
-The conventional manuscript (the \q{primary} 
+The traditional manuscript (the \q{primary} 
 resource which is cited and downloaded) 
 is, accordingly, often networked with a package of 
 supplemental (or \q{secondary}) resources.  
@@ -865,14 +884,15 @@ rigorously document these multimedia networks, enabling
 e-readers and domain-specific applications to be 
 integrated so that users may easily access multimedia content.}
 
+\vspace{1em}
 \p{The generic term \q{multimedia content} actually 
 encompasses multiple phenomena:
 
-\vspace{-2em}
+\vspace{-1em}
 \begin{description}[leftmargin=2pt,
-	labelindent=-2pt,labelsep=12pt]
+	labelindent=-2pt,labelsep=12pt,itemsep=13pt]
 \item[Multimedia Files]  Individual 
-files representing audio, video, or 3D graphics content.  
+files representing audio, video, or \ThreeD{} graphics content.  
 These files may be linked from specific locations in 
 the primary manuscript, or even embedded within manuscripts 
 when they are published in \PDF{} format.
@@ -882,8 +902,8 @@ increasingly emphasize sharing research data alongside
 texts, so readers can verify or even attempt to 
 replicate claimed results.  Data sets are also a form 
 of multimedia content because, apart from being aggregates 
-of raw data, data sets are almost always accompanied 
-by interactive, visual content: charts, diagrams, or 
+of raw data, data sets are almost always viewable 
+via interactive, visual content: charts, diagrams, or 
 plots to visualize the information holistically, or 
 interactive tools to examine or navigate through the 
 data set at finer scales.  
@@ -904,7 +924,7 @@ visual presentations.  In short, publication viewers
 (e.g., e-readers) need to participate in multi-application 
 networks, where data can be sent and received between 
 each component.  One way to achieve this is via 
-protocols, such as \LPF{}, shared between both e-readers and 
+protocols, such as \EPF{}, shared between both e-readers and 
 target applications.
 
 \item[Publications-as-Applications]  In some 
@@ -943,7 +963,8 @@ publications' multimedia content and multi-application
 networking requirements.  This detailed 
 multi-media support has several dimensions: 
 
-\begin{enumerate}[leftmargin=2pt]
+\vspace{8pt}
+\begin{enumerate}[leftmargin=2pt,itemsep=-4pt]
 \inditem{} Defining points in the manuscript where 
 multimedia files are linked or embedded: this 
 involves annotating locations in the manuscript 
@@ -952,7 +973,7 @@ with hyper-references to multimedia files
 able to access when they reach the corresponding 
 point in the text.
 
-\mnote{\HTXN{} cross-references to data-\\sets}
+\mnote{\iHTXN{} cross-references to data-\\sets}
 \inditem{} Establishing granular cross-references between 
 publications and multimedia content: this is a 
 more complex case where manuscript locations have to 
@@ -972,7 +993,7 @@ corresponding manuscript location (the sample,
 table-column, parameters, etc.) is formally 
 isolated and declared as a reference-target.  
 
-\mnote{\HTXN{} cross-references to multi-\\media assets}
+\mnote{\iHTXN{} cross-references to multi-\\media assets}
 \inditem{} Cross-references may also be 
 defined between publications' non-textual or 
 non-paragraph content and corresponding 
