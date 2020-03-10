@@ -84,9 +84,13 @@
 \newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
 \newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
 
+\colorlet{blCyan}{cyan!50!blue}
+
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
 \hypersetup{
     colorlinks=true,
-    linkcolor=cyan,
+    linkcolor=blCyan!80!darkRed,
     filecolor=magenta,
     urlcolor=blue,
 }
@@ -94,7 +98,6 @@
 \urlstyle{same}
 
 \definecolor{blGreen}{rgb}{.2,.7,.3}
-\definecolor{darkRed}{rgb}{.2,.0,.1}
 
 \definecolor{darkBlGreen}{rgb}{.1,.3,.2}
 
@@ -132,6 +135,8 @@
 \usepackage[T1]{fontenc}
 
 \usepackage{relsize}
+
+\newcommand{\bref}[1]{\hspace*{1pt}\textbf{\ref{#1}}}
 
 \newcommand{\pseudoIndent}{
 
@@ -534,7 +539,7 @@ instructional and/or multimedia features.}
 %}  
 
 \input{etsf0.tex}
-\mnote{Employing \iEPF{} as\\test-taking software}
+\mnote{Employ-\\ing \iEPF{}\\as test-\\taking software}
 \p{One use-case for \EPF{} is to embed capabilities 
 to host or administer tests within document viewers 
 and scientific applications.  At the most basic 
@@ -545,7 +550,7 @@ for test preparation, students can use this format
 as a convenient simulation of an actual test, while 
 also browsing back and forth between the question/answer 
 window and the host application.  As depicted in 
-Figure ~\ref{fig:i1}, question/answer plugins may 
+Figure~\bref{fig:qa}, question/answer plugins may 
 be embedded in a \PDF{} viewer which loads a 
 practice test in text format (in this case practice 
 for the Chemistry \GRE{}), so students have the 
@@ -639,19 +644,20 @@ this question/answer, it may help students to view a
 \ThreeD{} model of thionyl chloride, which can be done 
 through molecular visualization software such as IQmol.  Accordingly, this specific question in the book 
 may be associated with Molecular Data file for 
-SOCl$_2$ (this file is available from the \q{Chemical Abstracts Service} database). %\hspace{.5em} 
-The relation between the specific textual location  
+SOCl$_2$ (this file is available from the \q{Chemical Abstracts Service} database).  
+The relation between%\hspace{.5em} 
 
 \begin{wrapfigure}{l}{110mm}
 	\input{etsf2.tex}
-\end{wrapfigure}\noindent{}(where the practice Question 4 is 
+\end{wrapfigure}\noindent{}the specific textual location 
+(where the practice Question 4 is 
 presented) and the supplemental Molecular Data file 
 would be asserted in the Semantic Document Infoset, and 
 read by a document viewer (e.g., \XPDF{}).  The 
 \XPDF{} plugin would then launch IQmol and send the 
 molecular file to the IQmol ETS Plugin, with instructions 
 to load this file into an IQmol session 
-(see Figure ~\ref{fig:i1}).  The end result 
+(see Figure ~\bref{fig:i1}).  The end result 
 would be that the student, with a single 
 click (such as selecting a visualization action from 
 a context menu on the practice question) has access 
@@ -679,7 +685,7 @@ SOCl$_2$ file.  The \EPF{} plugin on the IQmol
 side can then load the prior file along with the 
 new one, so the student can browse back to prior 
 application-states if desired (see the Model View panel on 
-Figure ~\ref{fig:i2}).}
+Figure~\bref{fig:i2}).}
 \input{etsf4.tex}
 
 \p{\begin{wrapfigure}{l}{115mm}
@@ -701,7 +707,7 @@ Figure ~\ref{fig:i2}).}
 	The \q{request info} tab allows students, instructors, 
 	and plugin developers to see information about the 
 	request which caused the current application to be 
-	launched or to open a specific file.}
+	launched or to open a specific file (see Figure~\bref{fig:i6}).}
 
 \p{In addition to data visualization, scientific 
 applications can help students understand concepts 
@@ -762,7 +768,7 @@ might be covered in a Chemistry class.
 \mnote{Science applications as\\ teaching tools} 
 \pseudoIndent{} To facilitate the 
 use of scientific applications as teaching tools, 
-\LPF{} plugins help instructors personalize the 
+\EPF{} plugins help instructors personalize the 
 applications which their students use in 
 conjunction with course curricula.  Again using IQmol as 
 a case-study, an ETS plugin could show students a list of molecular 
