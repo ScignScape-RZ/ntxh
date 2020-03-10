@@ -15,7 +15,16 @@
 #include <QPushButton>
 #include <QString>
 #include <QLabel>
-#include <QDateTime>
+#include <QDebug>
+
+#include <QTextDocument>
+#include <QPainter>
+#include <QPixmap>
+
+#include <QFileInfo>
+#include <QDir>
+
+//QTextDocument
 
 //USING_KANS(MPF)
 
@@ -25,9 +34,62 @@ MPF_Test_Dialog::MPF_Test_Dialog()
 
  button_box_ = new QDialogButtonBox(this);
 
- button_prev_ = new QPushButton("<- Previous Question");
- button_next_ = new QPushButton("-> Next Question");
- button_suspend_ = new QPushButton("Pause ...");
+ // // temporary, use this file to get an icon folder ...
+ QString folder = DEFAULT_PDF_FILE;
+ QFileInfo qfi(folder);
+ QDir qd = qfi.absoluteDir();
+ qd.cd("icons");
+ folder = qd.absolutePath(); 
+ qDebug() << folder;
+
+ int w = 13;
+ int fs = 13;
+ int pb = 10;
+
+ QTextDocument doc_prev;
+ doc_prev.setHtml(QString("<img src='%1/larrowx.png' width='%2'><span style='font-size:%3px'>Previous Question</span>").arg(folder).arg(w).arg(fs));
+ doc_prev.setTextWidth(doc_prev.size().width());
+
+ QPixmap pixmap_prev(doc_prev.size().width(), doc_prev.size().height());
+ pixmap_prev.fill( Qt::transparent );
+ QPainter painter_prev(&pixmap_prev);
+ doc_prev.drawContents(&painter_prev);
+
+ QTextDocument doc_next;
+ doc_next.setHtml(QString("<img src='%1/arrowx.png' width='%2'><span style='font-size:%3px'>Next Question</span>").arg(folder).arg(w).arg(fs).arg(pb));
+ doc_next.setTextWidth(doc_next.size().width());
+
+ QPixmap pixmap_next(doc_next.size().width(), doc_next.size().height());
+ pixmap_next.fill( Qt::transparent );
+ QPainter painter_next(&pixmap_next);
+ doc_next.drawContents(&painter_next);
+
+ QTextDocument doc_susp;
+ doc_susp.setHtml(QString("<img src='%1/susp.png' width=16><span style='font-size:%2px'>Suspend ...</span>").arg(folder).arg(fs));
+ doc_susp.setTextWidth(doc_susp.size().width());
+
+ QPixmap pixmap_susp(doc_susp.size().width(), doc_susp.size().height());
+ pixmap_susp.fill( Qt::transparent );
+ QPainter painter_susp(&pixmap_susp);
+ doc_susp.drawContents(&painter_susp);
+
+
+// QPushButton button;
+// button.setIconSize(pixmap.size());
+// button.setIcon(pixmap);
+// button.show();
+
+ button_prev_ = new QPushButton(this);
+ button_prev_->setIconSize(pixmap_prev.size());
+ button_prev_->setIcon(pixmap_prev);
+
+ button_next_ = new QPushButton(this);
+ button_next_->setIconSize(pixmap_next.size());
+ button_next_->setIcon(pixmap_next);
+
+ button_suspend_ = new QPushButton(this);
+ button_suspend_->setIconSize(pixmap_susp.size());
+ button_suspend_->setIcon(pixmap_susp);
 
 // button_ok_->setDefault(false);
 // button_ok_->setAutoDefault(false);
