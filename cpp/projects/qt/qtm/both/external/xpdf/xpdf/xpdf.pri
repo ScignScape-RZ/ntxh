@@ -34,10 +34,12 @@ INCLUDEPATH += $$SRC_DIR/ft2build
 HEADERS += \
   $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info.h \
   $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info-dialog.h \
+  $$MPF_SRC_GROUP_DIR/mpf/mpf-test-dialog.h \
 
 SOURCES += \
   $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info.cpp \
   $$MPF_SRC_GROUP_DIR/mpf/mpf-plugin-info-dialog.cpp \
+  $$MPF_SRC_GROUP_DIR/mpf/mpf-test-dialog.cpp \
 
 SOURCES += \
   $$SRC_ROOT_DIR/add-minimize-frame.cpp \

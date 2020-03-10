@@ -60,6 +60,7 @@
 
 // // mosaic
 #include "mpf/mpf-plugin-info-dialog.h"
+#include "mpf/mpf-test-dialog.h"
 #include "htxn/mosaic/mosaic-menubar.cpp"
 #include <QWidgetAction>
 #include <QPainter>
@@ -2933,6 +2934,9 @@ void XpdfViewer::createMainMenu() {
   {
    MPF_Plugin_Info_Dialog* mid = new MPF_Plugin_Info_Dialog(nullptr);
    mid->show();
+
+   MPF_Test_Dialog* mtd = new MPF_Test_Dialog;
+   mtd->show();
   });
   mosaic_submenu->addAction("Take ScreenShot", [this]
   {

@@ -106,11 +106,6 @@ MPF_Plugin_Info_Dialog::MPF_Plugin_Info_Dialog(MPF_Plugin_Info* info)
  can_group_box_->setLayout(can_layout_);
  basic_info_layout_->addWidget(can_group_box_);
 
- QGroupBox* basic_list_group_box_;
- QGridLayout* basic_list_layout_;
- QPushButton* view_local_application_list_;
- QPushButton* view_application_list_;
-
  basic_list_group_box_ = new QGroupBox("View ETS Plugin Applications", basic_info_frame_);
  basic_list_layout_ = new QGridLayout;
  basic_list_layout_->setColumnStretch(0, 1);
