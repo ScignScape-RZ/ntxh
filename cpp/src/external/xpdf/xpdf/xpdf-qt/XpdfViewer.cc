@@ -58,12 +58,28 @@
 #include "Annot.h"
 
 
-// // mosaic
+// // mosaic //////////////////////////////
 #include "mpf/mpf-plugin-info-dialog.h"
 #include "mpf/mpf-test-dialog.h"
 #include "htxn/mosaic/mosaic-menubar.cpp"
 #include <QWidgetAction>
 #include <QPainter>
+
+#include "textio.h"
+
+USING_KANS(TextIO)
+
+void process_sdi_file(XpdfWidget* pdf, int idx, QString file_name)
+{
+ qDebug() << "Path: " << file_name;
+ pdf->saveEmbeddedFile(idx, file_name);
+ QString rt = load_file(file_name);
+ qDebug() << "RT: " << rt;
+ 
+}
+
+///////////////////////////////////////////
+
 
 
 //?extern void add_to_data_set(QString qs, int page);
@@ -3549,7 +3565,18 @@ void XpdfViewer::fillAttachmentList() {
     saveBtn->setStyleSheet("padding-left:4px; padding-right:4px;");
     btnGroup->addButton(saveBtn, i);
     currentTab->attachmentList->setCellWidget(i, 0, saveBtn);
-    item = new QTableWidgetItem(currentTab->pdf->getEmbeddedFileName(i));
+
+    // // mosaic
+    QString efn = currentTab->pdf->getEmbeddedFileName(i);
+    if(efn.endsWith(".sdi.ntxh"))
+      process_sdi_file(currentTab->pdf, i, efn);
+
+    item = new QTableWidgetItem(efn);
+
+//    item = new QTableWidgetItem(currentTab->pdf->getEmbeddedFileName(i));
+
+
+
     currentTab->attachmentList->setItem(i, 1, item);
   }
   connect(btnGroup, SIGNAL(buttonClicked(int)),

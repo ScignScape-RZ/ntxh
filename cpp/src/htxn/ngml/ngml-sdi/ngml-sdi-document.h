@@ -7,18 +7,12 @@
 #ifndef NGML_SDI_DOCUMENT__H
 #define NGML_SDI_DOCUMENT__H
 
-
-#include "ngml-sdi-document.h"
-
 #include "global-types.h"
 
 
 #include <QDebug>
 
 #include <QTextStream>
-
-#include "textio.h"
-USING_KANS(TextIO)
 
 #include "ntxh-parser/ntxh-document.h"
 

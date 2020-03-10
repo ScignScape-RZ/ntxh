@@ -14,8 +14,11 @@
 \setlength\origbasels{\baselineskip}%
 } 
 
+\usepackage{embedfile}
+\embedfile{\jobname.sdi.ntxh}
+
 \newwrite\sdiFile
-\immediate\openout\sdiFile=\jobname.sdi.txt
+\immediate\openout\sdiFile=\jobname.sdi.ntxh
 
 \newcommand{\p}[1]{
 

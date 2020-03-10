@@ -43,10 +43,18 @@ DEFINES += RELAE_LABEL_NODES
 
 HEADERS += \
   $$SRC_DIR/ngml-sdi-document.h \
+  $$SRC_DIR/ngml-sdi-mark-base.h \
+  $$SRC_DIR/ngml-sdi-mark-generic.h \
+  $$SRC_DIR/ngml-sdi-paragraph.h \
+  $$SRC_DIR/ngml-sdi-sentence.h \
 
 
 SOURCES += \
   $$SRC_DIR/ngml-sdi-document.cpp \
+  $$SRC_DIR/ngml-sdi-mark-base.cpp \
+  $$SRC_DIR/ngml-sdi-mark-generic.cpp \
+  $$SRC_DIR/ngml-sdi-paragraph.cpp \
+  $$SRC_DIR/ngml-sdi-sentence.cpp \
 
 
 LIBS += -L$$TARGETSDIR -lntxh
