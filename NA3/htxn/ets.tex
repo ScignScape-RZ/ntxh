@@ -5,7 +5,7 @@
 
 \AddToShipoutPictureBG{%
 
-\ifnum\value{page}>0{
+\ifnum\value{page}>1{
 \AtTextUpperLeft{
 \makebox[18.5cm][r]{
 \raisebox{-2.3cm}{%
@@ -54,7 +54,7 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=15in,paperwidth=9.1in]{geometry}
+\usepackage[paperheight=15.5in,paperwidth=9.1in]{geometry}
 \geometry{left=1.3in,top=1.1in,right=.6in,bottom=1.6in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
@@ -291,7 +291,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{1em}#1}
+\vspace{.5em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -587,7 +587,7 @@ instead of web browsers for the actual test-taking.}
 \mnote{How \EPF{} enables multi-application networking}
 \p{In addition to potential test-taking features, \EPF{} 
 also supports connecting multiple applications, 
-so that students benefit from an inteactive, multi-media 
+so that students benefit from an interactive, multi-media 
 pedagogical environment.  \lEPF{} refers not to a 
 single plugin, but a 
 toolkit for implementing ETS plugins to be 
@@ -617,17 +617,16 @@ has sample questions such as (number 4, page 11)
 SOCl$_2$, is best described as} \textit{(A) 
 trigonal planar, (B) T-shaped, (C) tetrahedral, 
 (D) trigonal pyramidal, or (E) linear}.
+To understand 
+this question/answer, it may help students to view a 
+\ThreeD{} model of thionyl chloride, which can be done 
+through molecular visualization software such as IQmol.  Accordingly, this specific question in the book 
+may be associated with Molecular Data file for 
+SOCl$_2$ (this file is available from the Chemical Abstracts Service database). \hspace{1em} The relation between the specific textual location  
 
 \begin{wrapfigure}{l}{110mm}
 	\input{etsf2.tex}
-\end{wrapfigure}\noindent{}To understand 
-this question/answer, it may help students to view a 
-\ThreeD{} model of thionyl chloride, which can be done 
-through molecular visualization software such as IQmol.  
-Accordingly, this specific question in the book 
-may be associated with Molecular Data file for 
-SOCl$_2$ (this file is available from the Chemical Abstracts Service database).  The relation between the specific 
-textual location (where the practice Question 4 is 
+\end{wrapfigure}\noindent{}(where the practice Question 4 is 
 presented) and the supplemental Molecular Data file 
 would be asserted in the Document Infoset, and 
 read by a document viewer (e.g., \XPDF{}).  The 
@@ -665,6 +664,26 @@ screens if desired (see the Model View panel on
 Figure ~\ref{fig:i2}).}
 \input{etsf4.tex}
 
+\p{\begin{wrapfigure}{l}{115mm}
+		\input{etsf5.tex}
+	\end{wrapfigure}In general, the functionality 
+	provided by each ETS plugin will 
+	depend in part on the host application where the 
+	plugin is embedded.  An IQmol plugin would load 
+	cheminformatic files and may activate IQmol's analytic 
+	capabilities in the domain of chemistry, whereas 
+	a plugin in Data Visualization applications (such 
+	as ParaView) could open quantitative data sets 
+	with 2D or 3D views (via surfaces, scatter-plots, 
+	bar charts, etc.) and activate statistical calculations.  Certain functionality, however, would be shared 
+	among all ETS plugin, including a dialog window to 
+	show basic plugin information (see figure at right) 
+	and also a more detailed review of data transmitted 
+	between applications via plugins.  
+	The \q{request info} tab allows students, instructors, 
+	and plugin developers to see information about the 
+	request which caused the current application to be 
+	launched or to open a specific file.}
 
 \p{In addition to data visualization, scientific 
 applications can help students understand concepts 
@@ -684,26 +703,6 @@ the Canonical Orbital Surfaces features in
 IQmol and enabling students to explore 
 these with a variety of different molecules.}
 
-\p{\begin{wrapfigure}{r}{115mm}
-		\input{etsf5.tex}
-	\end{wrapfigure}In general, the functionality provided by each ETS plugin will 
-depend in part on the host application where the 
-plugin is embedded.  An IQmol plugin would load 
-cheminformatic files and may activate IQmol's analytic 
-capabilities in the domain of chemistry, whereas 
-a plugin in Data Visualization applications (such 
-as ParaView) could open quantitative data sets 
-with 2D or 3D views (via surfaces, scatter-plots, 
-bar charts, etc.) and activate statistical calculations.  
-Certain functionality, however, would be shared 
-among all ETS plugin, including a dialog window to 
-show basic plugin information (see figure at right) 
-and also a more detailed review of data transmitted 
-between applications via plugins.  The 
-\q{request info} tab allows students, instructors, 
-and plugin developers to see information about the 
-request which caused the current application to be 
-launched or to open a specific file.}
 \input{etsf6.tex}
 
 \vspace{2em}
@@ -800,6 +799,7 @@ can then process the review material and
 superimpose pedagogical questions, comments, or instructions 
 on the underlying document text.     
 
+\vspace{1em}
 \mlitem[Scenario 3: Authors Develop Educational 
 Materials Targeting Specific Applications]
 In this scenario, authors compose books, articles, 
