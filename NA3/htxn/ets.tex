@@ -55,7 +55,7 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=16.25in,paperwidth=9.1in]{geometry}
+\usepackage[paperheight=16.5in,paperwidth=9.1in]{geometry}
 \geometry{left=1.3in,top=1.1in,right=.6in,bottom=1.6in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
@@ -685,12 +685,12 @@ Nevertheless, certain functionality would be shared
 	and plugin developers to see information about the 
 	request which prompted the current application to be 
 	launched and/or to open a specific file (see Figure~\bref{fig:i6}).}
-
 \input{etsf4.tex}
+%
 
-%\vspace{3em}
+\vspace{1em}
 \noindent\lun{ETSpf Tools for Composing Test-Preparation Materials}
-{\sectsp}
+{\sectsp}\vspace{-2em}
 \p{In general, \EPF{} plugins for document viewers such as 
 \XPDF{} would draw information from 
 \PDF{} files (or files in other formats, 
@@ -708,9 +708,9 @@ document elements requiring special \EPF{} actions.
 In the above \GRE{} chemistry examples, for instance, 
 the \EPF{} data would permit plugins to insert context 
 menus where text that has \EPF{} actions is 
-visible --- specifically, for questions (4) and 
+visible (for questions (4) and 
 (95) illustrated above, the option to view the 
-relevant compounds in IQmol.}  
+relevant compounds in IQmol).}  
 
 \p{To support these capabilities, \EPF{} would 
 include tools to help compose publications 
@@ -790,158 +790,12 @@ can be employed to encode manuscripts in
 different markup formats (both \LaTeX{} and \XML{}, 
 for instance).  In the context of \EPF{}, \HTXN{} would be used to 
 encode document information and text within the \SDI{}.}
-
-\vspace{3em}
-\noindent\lun{Other Use-Cases for the ETS Plugin Framework}
-{\sectsp}
-
-\p{In addition to use-cases for ETS plugins 
-reviewed above --- students 
-read textbooks, articles, 
-or test-preparation materials which can be enhanced 
-with multimedia content --- consider 
-the following scenarios: 
-\vspace*{-2em}
-\begin{mldescription}
-\mlitem[Scenario 1: Using scientific 
-applications as pedagogic tools]  
-Teachers often instruct students to download 
-and install software relevant to the course curriculum, 
-and this software can potentially be an essential 
-part of the course content.  Instructors may 
-(1) use the visualization capabilities of these 
-domain-specific applications to help students 
-understand the concepts covered in class; 
-(2) provide instruction in how to use the 
-software as part of the curriculum; 
-(3) evaluate students' understanding of the 
-software as part of their assessment of 
-students' mastery of the curriculum; and 
-(4) use applications' analytic features as an 
-overview of analytic or quantitative methodologies 
-relevant to the course's subject matter.  In 
-the case of IQmol, features such as 
-energy minimization, plotting orbitals, 
-calculating vibrational frequencies, and many 
-other chemphysical computations provide an 
-overview of scientific concepts which 
-might be covered in a Chemistry class. 
-
-%\mnote{Science applications as\\ teaching tools} 
-\pseudoIndent{} To facilitate the 
-use of scientific applications as teaching tools, 
-\EPF{} plugins effectively help instructors to personalize the 
-applications which their students use in 
-conjunction with course curricula.  Again using IQmol as 
-a case-study, an ETS plugin could show students a list of molecular 
-examples discussed in class (based on data 
-provided by the instructor) and allow students 
-to view the corresponding \ThreeD{} molecular 
-graphics in the application accordingly.
-
-\vspace{.5em}
-\mlitem[Scenario 2: Generating Test-Preparation Materials]  
-%When documents are read in an 
-%educational context, they become part of a 
-%larger ecosystem that extends beyond publication 
-%itself --- an ecosystem of assessment, test preparation, 
-%curricular design, and overall teaching environments 
-%(labs, classrooms, and so forth).  
-%\mnote{Pedago\-gical use-cases for \LPF{}}
-%Such use-cases illustrate the value of 
-%machine-readable Document Infosets which provide 
-%structured access to publication content, as opposed 
-%to the merely visual access offered by \PDF{} files.  
-%Such use-cases illustrate the value of 
-%machine-readable Document Infosets which provide 
-%structured access to publication content, as opposed 
-%to the merely visual access offered by \PDF{} files.   
-%\pseudoIndent{} 
-Computer code which operates on 
-manu\-scripts composed in coordination with 
-\EPF{} can act 
-in consort with \EPF{} plugins.  
-For teaching purposes, one may need to customize 
-chapters, books, and articles by inserting review questions at 
-strategic points in the text; compiling glossaries indicating 
-when technical terms are first used; foregrounding 
-graphics and figure illustrations and encouraging 
-students to explore them in depth 
-(for instance, performing for themselves the calculations 
-which are plotted in a statistical diagram; or 
-identifying the axes, scales of measurement, dimensions, 
-free and dependent parameters, and other mathematical 
-details of a quantitative illustration).  Both of 
-these kinds of operations --- extracting or adding 
-content --- require computational access to a 
-Semantic Document Infoset providing 
-structured access to publication content.   
-For example, review questions 
-or glossary definitions may be linked to specific points 
-in the text; this supplemental content may then 
-be packaged along with the original publication.  
-In short, with an appropriate \EPF{} plugin, the document viewer 
-can then process the review material and 
-superimpose pedagogic questions, comments, or instructions 
-on the underlying document text.     
-
 \input{etsf6.tex}
-\vspace{2em}
-\mlitem[Scenario 3: Developing Educational 
-Materials Targeting Specific Applications]
-In this scenario, test-preparation 
-materials are composed with the anticipation 
-that readers will use specific software applications to 
-enhance their reading experience.  This sort 
-of interoperability between publications and external 
-software is assumed at a basic level 
-as soon as documents are linked to specialized 
-multimedia files, because readers will need an 
-application which can open those files.  For example, files in the 
-ParaView Data (\PVD{}) format are intended to be 
-used by the ParaView software; as a result, documents 
-which reference such files presuppose that readers 
-will have ParaView installed on their computer, at least for 
-the full reading experience which includes viewing ParaView graphics.  Similarly, files 
-in cheminformatic formats such as Protein Data Bank 
-(.pdb) or Chemical Markup Language (.cml) need to 
-be opened with chemistry-related software (such as  IQmol).
 
-\pseudoIndent{}In some cases, however, authors may 
-desire a more rigorous degree of interop between 
-document viewers and scientific/multi-media software --- beyond just sharing files 
-with applications that can open 
-the relevant file type.  For instance, 
-instructors may wish to foreground 
-certain kinds of analyses which are pertinent to 
-course curricula, or to group together files which 
-are interrelated in the context of the course 
-(e.g., based on study requirements for an upcoming 
-class session).  \lEPF{} would correspondingly 
-allow more complex data structures to be 
-shared share between applications, so 
-that requests could trigger applications 
-to enact multi-step response sequences: to  reconfigure their state or layout, 
-load groups of files, present specialized instructions to users, and so forth.  
-ETS plugins would include a special 
-format for encoding data structures to 
-conveniently pass requests between 
-host applications.
-\end{mldescription}
-}
-
-%\p{A summary of the \HTXN{} protocol,  
-%sample documents which compile to \HTXN{}-encoded 
-%text, and more information about plugins, 
-%are all available on request from 
-%Linguistic Technology Systems.}
-
-%\vspace{2em}
-%\noindent\lun{The Proposed ETS Plugin Framework}
-%{\sectsp}
-
-
-
+\p{LTS can provide a more detailed overview of 
+\EPF{} with additional use-cases, technical 
+information about plugin code, and sample 
+\HTXN{}-encoded documents, on request.}
 \end{document}
 
 
