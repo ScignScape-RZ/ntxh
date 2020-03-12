@@ -271,9 +271,6 @@
 \newcommand{\iEPF}{\resizebox{!}{8pt}{\textsccserif{%
 \textit{ETSpf}}}}
 
-\newcommand{\iSDI}{\resizebox{!}{8pt}{\textsccserif{%
-\textit{SDI}}}}
-
 \newcommand{\iHTXN}{\resizebox{!}{8pt}{\textsccserif{%
 \textit{HTXN}}}}
 
@@ -538,7 +535,7 @@ drop shadow=logoPurple!50!darkRed,
 \end{tcolorbox}
 \end{center}
 
-\vspace{-1.5em}
+\vspace{-1em}
 
 %\noindent\lun{Overview}
 \fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
@@ -548,34 +545,37 @@ is to augment document-viewing applications (for example, \PDF{} viewers),
 along with scientific and multi-media applications, with 
 instructional and test-preparation features.  
 ETS plugins would allow 
-document viewers to launch and share 
+document viewers to present multimedia content to
+a degree that is not currently possible, because 
+they would acquire the ability to launch and share 
 data with a diverse array of applications 
 (including software specialized for scientific 
-disciplines such as chemistry, physics, biology, 
+displines such as chemistry, physics, biology, 
 and medicine), supporting a diverse array of 
-data types and file formats. 
-Document viewers would therefore support an interactive, multimedia reading 
-experience to an unprecedented degree, 
-which would especially benefit students during test 
-preparation.  
-In particular, students would have at their 
-disposal pedagogically stimulating multimedia presentations that offer sophisticated 
+data types and file formats.  Students would therefore have at their 
+disposal interactive multimedia presentations 
+which would offer sophisticated 
 data visualization and \ThreeD{} graphics tools, 
 customized for individual subjects 
 (\ThreeD{} molecular models for chemistry, 
 \ThreeD{} tissue models in for biology, and so forth).
 ETS plugins could also enhance document viewers 
-with instructional features introduced as 
-supplements to the documents which students 
+with pedagogic features introduced as 
+supplements to the documents which the students 
 are reading, such as review questions or 
 assignment instructions.}
 
 
-\vspace{1em}
+\vspace{2em}
 \noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 {\sectsp}
-\vspace{-.5em}
-\p{\lEPF{} refers not to a 
+\vspace{2em}
+\mnote{How \iEPF{} enables multi-appli- cation networking}
+\p{%\lEPF{} would 
+%also support connecting multiple applications, 
+%so that students benefit from an interactive, multi-media 
+%pedagogic environment.  
+\lEPF{} refers not to a 
 single plugin, but a 
 toolkit for implementing ETS plugins to be 
 embedded in many different applications.  
@@ -593,9 +593,8 @@ linked to documents (e.g., test-preparation materials)
 that they are currently reading.}
 
 
-\mnote{How \iEPF{} enables multi-appli- cation networking}%\\\vspace{27em}}
-\p{\begin{wrapfigure}[10]{r}{110mm}
-\vspace{-2em}\input{etsf1.tex}
+\p{\begin{wrapfigure}{r}{110mm}
+		\input{etsf1.tex}
 \end{wrapfigure}
 For a concrete example of advanced functionality 
 that can be achieved by connecting two distinct 
@@ -621,9 +620,11 @@ would be asserted in the Semantic Document Infoset, and
 read by a document viewer (e.g.,}
 
 \begin{wrapfigure}[10]{l}{110mm}
-%\vspace{-1em}
+\vspace{-1em}
 \input{etsf2.tex}
-\end{wrapfigure}\noindent{}\XPDF{}). The \XPDF{} plugin would then 
+\end{wrapfigure}\noindent{}\vspace{1.35em}\XPDF{}). The \XPDF{} plugin would then 
+
+\vspace*{-1.25em}
 launch IQmol and send the 
 molecular file to the IQmol ETS plugin, with
 instructions 
@@ -667,8 +668,8 @@ Figure~\bref{fig:i2}).}
 \p{\begin{wrapfigure}[14]{l}{115mm}\vspace{-1em}
 \input{etsf5.tex}%
 \end{wrapfigure}In general, the functionality 
-	provided by each ETS plugin would 
-	depend in part on the domain of the host application in which the 
+	provided by each ETS plugin will 
+	depend in part on domain of the host application in which the 
 	plugin is embedded.  For example, an IQmol plugin would load 
 	cheminformatic files and may activate IQmol's analytic 
 	capabilities in the domain of chemistry, whereas 
@@ -688,11 +689,10 @@ Nevertheless, certain functionality would be shared
 \input{etsf4.tex}
 %
 
-\vspace{1.5em}
+\vspace{1em}
 \noindent\lun{ETSpf Tools for Composing Test-Preparation Materials}
-{\sectsp}\vspace{-.5em}
-\mnote{\iEPF{} data\\in em-\\bedded files}
-\p{In most cases, \EPF{} plugins for document viewers such as 
+{\sectsp}\vspace{-2em}
+\p{In general, \EPF{} plugins for document viewers such as 
 \XPDF{} would draw information from 
 \PDF{} files (or files in other formats, 
 e.g. \ePub{} or \HTML{}) to implement 
@@ -705,20 +705,14 @@ When a document is opened, the \EPF{} plugin would then
 extract the embedded file so as to read 
 \EPF{}-specific data about the document --- in 
 particular, to identify \PDF{} coordinates for 
-document elements requiring special \EPF{} actions.  For questions (4) and 
-(95) as illustrated above, the relevant 
-\EPF{} action would be an option to view the 
-question-specific molecular files in IQmol.  
-\lEPF{} data is needed in order to 
-map the textual boundaries of the 
-question (and its multiple-choice answers) 
-to on-screen coordinates, so that  
-context menus can be customized 
-for each question.}  
-\input{etsf6.tex}
+document elements requiring special \EPF{} actions.  
+In the above \GRE{} chemistry examples, for instance, 
+the \EPF{} data would permit plugins to insert context 
+menus where text that has \EPF{} actions is 
+visible (for questions (4) and 
+(95) illustrated above, the option to view the 
+relevant compounds in IQmol).}  
 
-\mnote{Semantic Document Infosets 
-(\iSDI{}s)}
 \p{To support these capabilities, \EPF{} would 
 include tools to help compose publications 
 (such as test-preparation materials) that 
@@ -737,11 +731,7 @@ instructional and/or multimedia features --- review questions,
 student instructions, glossaries, reading assignments, 
 and so forth.  The \SDI{} can be used 
 to guide \EPF{} plugins when sharing data 
-between applications --- in Figure~\bref{fig:tc}, for example, 
-selecting the Molecular Data file to 
-send to IQmol based on the screen 
-coordinates of the context menu --- 
-but also to enhance the 
+between applications, but also to enhance the 
 presentation of content within the host application.  
 For example, Figure~\bref{fig:qa} shows how 
 an \EPF{} plugin could provide an alternative 
@@ -752,7 +742,6 @@ isolated in its own window.}
 
 %\mnote{Writing exams with \LaTeX{} and \iXPDF{} plugins.}
 
-\mnote{Using \LaTeX{} to\\generate \iSDI{} info- sets}
 \p{\EPF{} implementations can include 
 \LaTeX{} packages which automate the creation 
 of \SDI{} data (placed 
@@ -762,7 +751,7 @@ This embedded data can then be read by
 requests, populate question/answer windows, or introduce 
 other kinds of pedagogic content (e.g., review questions, 
 glossaries, or class discussion suggestions). 
-In documents where 
+In manuscripts where 
 questions are printed as part of the publication 
 text (for example, the ETS \GRE{} practices), 
 the \LaTeX{} code can store questions' \PDF{} coordinates 
@@ -779,8 +768,7 @@ which are relevant to the review question that
 the student is currently reading in 
 a question/answer window.}
 
-\vspace*{-3em}
-\mnotel{\iHTXN{} (Hypergraph Text Encoding Protocol) Specifications}  
+\mnote{\iHTXN{} Specifications}  
 \p{As an additional feature, \EPF{} plugins 
 would implement a protocol which we call 
 \HTXN{} (for \q{Hypergraph Text Encoding}).  
@@ -803,6 +791,7 @@ can be employed to encode manuscripts in
 different markup formats (both \LaTeX{} and \XML{}, 
 for instance).  In the context of \EPF{}, \HTXN{} would be used to 
 encode document information and text within the \SDI{}.}
+\input{etsf6.tex}
 
 \p{LTS can provide a more detailed overview of 
 \EPF{} with additional use-cases, technical 
