@@ -9,7 +9,7 @@
 \usepackage{zref-user}
 \usepackage{xifthen}
 
-\catcode`\_=12 
+%\catcode`\_=12 
  
 \newlength\origbasels % original baselineskip
 \AtBeginDocument{%
@@ -20,7 +20,7 @@
 
 \catcode`\_=11
 \newwrite\sdi_file
-\immediate\openout\sdi_file=\jobname.sdi.ntxh
+\immediate\openout\sdi_file\jobname.sdi.ntxh
 
 \newcommand{\p}[1]{
 

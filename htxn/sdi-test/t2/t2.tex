@@ -1,0 +1,50 @@
+\documentclass{article}
+%\include{commands}
+%\usepackage{pdfcomment}
+
+% ,x ::: int;
+% x <\= 5;
+% x <\\= 5;
+% x \<\= 5;
+
+\usepackage{xparse}
+
+\usepackage{letltxmacro}
+\LetLtxMacro{\hyphenHokHhere}{\-}
+
+\catcode`!=11
+
+\global\newcommand{\sdiXtestHoneHarg}[1]{Arg: #1}
+
+\begingroup
+\catcode`-=11
+\catcode`!=11  % \active here means 13
+\gdef\sdi!test-one-arg{\sdiXtestHoneHarg}
+\gdef\hyphen-ok-here{\hyphenHokHhere}
+\endgroup
+
+
+%\begingroup
+%  \catcode`_ = 11 
+%  \gdef\cul_r{Goodbye!}
+%  \gdef\sdilater\cul_r
+%\endgroup
+
+\newcommand{\sdilater}[3]{Hello #1, #2 and #3}
+
+\NewDocumentCommand{\sdiXlater}{D<>{there}O{you}m}%
+{\sdilater{#1}{#2}{#3}}
+
+
+\def\sdi!later{\sdiXlater}
+
+\begin{document}
+\catcode`-=11
+\catcode`!=11
+\renewcommand{\-}{\hyphen-ok-here}
+
+I said \sdi!test-one-arg{c} ``\sdi!later<there>[you]{me}!''. 
+eee\-{}eee  \the\catcode`!
+\end{document}
+
+
