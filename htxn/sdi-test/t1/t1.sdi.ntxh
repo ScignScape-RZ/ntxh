@@ -1,0 +1,104 @@
+- Generated from LaTeX File t1.tex 
+11/3/2020, 14:5
+.
+
+- i=id p=page r=paragraph o=order (on page)
+s=size c=count (in paragraph) x,y=pdf coords b=baselineskip
+.
+
+&type Sdi_Sentence_Start {8}
+:i:1 :r:2 :c:3 :o:4 :p:6 :x:7 :y:8 :b:5 ;
+
+&type Sdi_Sentence_End {5}
+:i:1 :o:2 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Paragraph_Start {5}
+:i:1 :o:2 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Paragraph_End {5}
+:i:1 :o:2 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Mark {4}
+:i:1 :o:2 :r:3 :p:4 :x:5 :y:6 ;
+
+&type Sdi_Mark_Secondary {4}
+:i:1 :p:3 :x:4 :y:5 ;
+
+&type Sdi_Info {4}
+:global-baseline-skip:1 :p:3 :x:4 :y:5 ;
+
+
+&/
+
+
+!/ Sdi_Info
+$global-baseline-skip: 12.0pt
+$job-name: t1
+
+/!
+<+>
+
+
+
+!/ SDI_Paragraph_Start
+$i: 1
+$o: 1
+$p: 1
+$x: 134.26999pt
+$y: 669.7pt
+/!
+<<>
+
+!/ SDI_Sentence_Start
+$i: 1
+$r: 1
+$c: 1
+$o: 1
+$p: 1
+$x: 134.26999pt
+$y: 669.7pt
+/!
+<<>
+
+!/ SDI_Sentence_End
+$i: 1
+$o: 1
+$p: 1
+$x: 249.21452pt
+$y: 659.7pt
+/!
+<<>
+
+!/ SDI_Sentence_Start
+$i: 2
+$r: 1
+$c: 2
+$o: 2
+$p: 1
+$x: 253.65897pt
+$y: 659.7pt
+/!
+<<>
+
+!/ SDI_Sentence_End
+$i: 2
+$o: 1
+$p: 1
+$x: 381.96468pt
+$y: 659.7pt
+/!
+<<>
+
+!/ SDI_Paragraph_End
+$i: 1
+$o: 1
+$p: 1
+$x: 381.96468pt
+$y: 659.7pt
+/!
+<<>
+
+
+/&
+
+

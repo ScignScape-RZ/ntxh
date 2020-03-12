@@ -9,16 +9,18 @@
 \usepackage{zref-user}
 \usepackage{xifthen}
 
+\catcode`\_=12 
+ 
 \newlength\origbasels % original baselineskip
 \AtBeginDocument{%
 \setlength\origbasels{\baselineskip}%
 } 
 
 \usepackage{embedfile}
-\embedfile{\jobname.sdi.ntxh}
 
-\newwrite\sdiFile
-\immediate\openout\sdiFile=\jobname.sdi.ntxh
+\catcode`\_=11
+\newwrite\sdi_file
+\immediate\openout\sdi_file=\jobname.sdi.ntxh
 
 \newcommand{\p}[1]{
 
@@ -63,7 +65,7 @@
 \renewcommand{\!}{\relax\ifmmode\oldmmexc\else\sdinoss\fi}
 
 
-\newcommand{\writeSDI}[1]{\immediate\write\sdiFile#1}
+\newcommand{\writeSDI}[1]{\immediate\write\sdi_file#1}
 
 \newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
 
@@ -89,10 +91,10 @@
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
 
-\newcommand{\writeSdiStart}[1]{\write\sdiFile{!/ SDI_#1_Start}}
-\newcommand{\writeSdiEnd}[1]{\write\sdiFile{!/ SDI_#1_End}}
-\newcommand{\writeSdiValStart}[1]{\write\sdiFile{!/ SDI_#1}}
-\newcommand{\writeSdiValEnd}{\write\sdiFile{/!^^J<<>^^J}}
+\newcommand{\writeSdiStart}[1]{\write\sdi_file{!/ SDI_#1_Start}}
+\newcommand{\writeSdiEnd}[1]{\write\sdi_file{!/ SDI_#1_End}}
+\newcommand{\writeSdiValStart}[1]{\write\sdi_file{!/ SDI_#1}}
+\newcommand{\writeSdiValEnd}{\write\sdi_file{/!^^J<<>^^J}}
 
 \newcommand{\fieldmark}[1]{\expandafter$\expandafter#1%
 \expandafter:\expandafter\space}
@@ -109,7 +111,7 @@
 
 \newcommand{\sdi@checkWriteBLS}{%
 \ifthenelse{\lengthtest{\origbasels=\baselineskip}}{}%
-{\write\sdiFile\expandafter{\expandafter\fieldmark@b\the\baselineskip}}}
+{\write\sdi_file\expandafter{\expandafter\fieldmark@b\the\baselineskip}}}
 
 %\newcommand{\smk}[1]{\ifnum#1>0{smk#1}\else{smk}\fi}
 
@@ -141,8 +143,8 @@ $y: \topt\pdflastypos}
 \write\sdiFile\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiMark}
 \sdi@checkWriteBLS
-\if#1\empty\else\write\sdiFile\expandafter{\expandafter\fieldmark@s#1}\fi
-\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\if#1\empty\else\write\sdi_file\expandafter{\expandafter\fieldmark@s#1}\fi
+\write\sdi_file\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}
@@ -170,16 +172,16 @@ $y: \topt\pdflastypos}
 \stepcounter{sdiCounterC}%
 \stepcounter{sdiCounter}%
 \pdfsavepos\writeSdiStart{Sentence}% 
-\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+\write\sdi_file\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiCounter}%
-\write\sdiFile\expandafter{\expandafter\fieldmark@r%
+\write\sdi_file\expandafter{\expandafter\fieldmark@r%
 \the\c@sdiCounterP}%
-\write\sdiFile\expandafter{\expandafter\fieldmark@c%
+\write\sdi_file\expandafter{\expandafter\fieldmark@c%
 \the\c@sdiCounterC}%
-\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+\write\sdi_file\expandafter{\expandafter\fieldmark@o%
 \the\c@sdiCounterO}%
 \sdi@checkWriteBLS%
-\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\write\sdi_file\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}%
@@ -188,11 +190,11 @@ $y: \topt\pdflastypos}%
 
 \newcommand{\sse}{%
 \pdfsavepos\writeSdiEnd{Sentence}%
-\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+\write\sdi_file\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiCounter}%
-\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+\write\sdi_file\expandafter{\expandafter\fieldmark@o%
 \the\c@sdiCounterP}%
-\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\write\sdi_file\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}%
@@ -202,12 +204,12 @@ $y: \topt\pdflastypos}%
 \stepcounter{sdiCounterP}
 \stepcounter{sdiCounterPO}
 \pdfsavepos\writeSdiStart{Paragraph} 
-\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+\write\sdi_file\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiCounterP}
-\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+\write\sdi_file\expandafter{\expandafter\fieldmark@o%
 \the\c@sdiCounterPO}
 \sdi@checkWriteBLS
-\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\write\sdi_file\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}
@@ -216,11 +218,11 @@ $y: \topt\pdflastypos}
 \newcommand{\spe}{%
 \ActiveSdiMarkfalse
 \pdfsavepos\writeSdiEnd{Paragraph} 
-\write\sdiFile\expandafter{\expandafter\fieldmark@i%
+\write\sdi_file\expandafter{\expandafter\fieldmark@i%
 \the\c@sdiCounterP}
-\write\sdiFile\expandafter{\expandafter\fieldmark@o%
+\write\sdi_file\expandafter{\expandafter\fieldmark@o%
 \the\c@sdiCounterPO}
-\write\sdiFile\expandafter{\expandafter\fieldmark@p%
+\write\sdi_file\expandafter{\expandafter\fieldmark@p%
 \thepage^^J%
 $x: \topt\pdflastxpos^^J%
 $y: \topt\pdflastypos}
@@ -228,7 +230,7 @@ $y: \topt\pdflastypos}
 \sdinossflagfalse}
 \makeatother
 
-\newcommand{\writeSdiNtxhStart}{\immediate\write\sdiFile{%
+\newcommand{\writeSdiNtxhStart}{\immediate\write\sdi_file{%
 		- Generated from LaTeX File \jobname.tex ^^J%
 		\the\day/\the\month/\the\year, \the\currenthour:\the\currentminute ^^J%
 		.^^J%
@@ -272,12 +274,14 @@ $y: \topt\pdflastypos}
 		^^J%
 	}}
 	
-	\newcommand{\writeSdiNtxhEnd}{\write\sdiFile{%
+	\newcommand{\writeSdiNtxhEnd}{\write\sdi_file{%
 			^^J%
 			/&^^J%
 			^^J%
 		}}
 		
 		\AtBeginDocument{{\writeSdiNtxhStart}}
-		\AtEndDocument{{\writeSdiNtxhEnd}}
+		\AtEndDocument{{\writeSdiNtxhEnd\embedfile{\jobname.sdi.ntxh}
+				}}
 		
+\catcode`\_=8
