@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  13 MAR 2020 08:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  13 MAR 2020 08:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**t4.tex
-(./t4.tex
+**t6.tex
+(./t6.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/article.cls
@@ -22,13 +22,6 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-\@input{nhv-commands.aux}
-\openout2 = `nhv-commands.aux'.
-
-(./nhv-commands.tex
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/import/import.sty
-Package: import 2009/03/23  v 5.1
 )
 (./nhv-setup-commands.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/l3packages/xparse/x
@@ -356,7 +349,7 @@ Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
 ))
 \orig-basels=\skip52
 \sdi-file=\write3
-\openout3 = `t4.sdi.ntxh'.
+\openout3 = `t6.sdi.ntxh'.
 
 \c@sdi-counter=\count273
 \c@sdi-counter-O=\count274
@@ -365,45 +358,67 @@ Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
 \c@sdi-counter-P=\count277
 \c@sdi-counter-PO=\count278
 \c@sdi-counter-C=\count279
-)) (./t4.aux)
-\openout1 = `t4.aux'.
+) (./t6.aux)
+\openout1 = `t6.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/fmtcount/fc-english
 .def
 File: fc-english.def 2016/01/12
-) [1
+)
+LaTeX Font Info:    Try loading font information for OT1+gar on input line 15.
+LaTeX Font Info:    No file OT1gar.fd. on input line 15.
 
 
+LaTeX Font Warning: Font shape `OT1/gar/m/n' undefined
+(Font)              using `OT1/cmr/m/n' instead on input line 15.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 15.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 15.
+
+LaTeX Warning: No \author given.
+
+[1
 
 {/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdftex
-.map}] (./t4.aux) ) 
+.map}] (./t6.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 10482 strings out of 492649
- 206301 string characters out of 6122986
- 251850 words of memory out of 5000000
- 14322 multiletter control sequences out of 15000+600000
- 530272 words of font info for 22 fonts, out of 8000000 for 9000
+ 10486 strings out of 492649
+ 206108 string characters out of 6122986
+ 252528 words of memory out of 5000000
+ 14323 multiletter control sequences out of 15000+600000
+ 533307 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,4n,40p,10424b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
-</home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb>
-Output written on t4.pdf (1 page, 12593 bytes).
+ 38i,6n,31p,10380b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
+</home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb></home/nlevisrael/texl/texlive-install/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+Output written on t6.pdf (1 page, 37925 bytes).
 PDF statistics:
- 12 PDF objects out of 1000 (max. 8388607)
- 7 compressed objects within 1 object stream
+ 24 PDF objects out of 1000 (max. 8388607)
+ 16 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

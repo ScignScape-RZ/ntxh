@@ -65,19 +65,13 @@
 %\renewcommand{\>}{\sse\sss}
 
 \renewcommand{\;}{\relax\ifmmode\oldmmsemi\else\sse\fi}
-
-\catcode`:=12
 \renewcommand{\:}{\relax\ifmmode\oldmmcolon\else\sps\fi}
-%\catcode`:=11
-
 \renewcommand{\!}{\relax\ifmmode\oldmmexc\else\sdi-no-ss\fi}
 
 
 \newcommand{\write-sdi}[1]{\immediate\write\sdi-file#1}
 
-%\catcode`:=12
 \newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
-%\catcode`:=11
 
 \newcounter{sdi-counter}
 \newcounter{sdi-counter-O}[page]
@@ -90,6 +84,9 @@
 
 \newcounter{sdi-counter-C}[sdi-counter-P]
 
+\newcounter{sdi-element}
+\newcounter{sdi-element-O}[page]
+\newcounter{sdi-element-C}[sdi-counter-P]
 
 \def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
 
@@ -114,10 +111,45 @@
 \newcommand{\field-mark@r}{\field-mark{r}}
 \newcommand{\field-mark@c}{\field-mark{c}}
 \newcommand{\field-mark@b}{\field-mark{b}}
+\newcommand{\field-mark@k}{\field-mark{k}}
 
 \newcommand{\sdi@check-write-bls}{%
 \ifthenelse{\lengthtest{\orig-basels=\baselineskip}}{}%
 {\write\sdi-file\expandafter{\expandafter\field-mark@b\the\baselineskip}}}
+
+
+\newcommand{\nhv!sdi-element-start}[1]{%
+\stepcounter{sdi-element}%
+\stepcounter{sdi-element-O}%
+\stepcounter{sdi-element-C}%
+\pdfsavepos\write-sdi-val-start{Element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-element-O}%
+\write\sdi-file\expandafter{\expandafter\field-mark@c%
+\the\c@sdi-element-C}%
+\write\sdi-file\expandafter{\expandafter\field-mark@r%
+\the\c@sdi-counter-P}%
+\write\sdi-file\expandafter{\expandafter\field-mark@k#1}%
+\sdi@check-write-bls%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
+
+\newcommand{\nhv!sdi-element-end}[1]{%
+\pdfsavepos\write-sdi-end{Element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-element-O}%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
 
 \newcommand{\smk}[1]{%
 \active-sdi-marktrue%
@@ -251,10 +283,16 @@ $y: \topt\pdflastypos}%
   :n:1 :i:2 :o:3 :r:4 :p:5 :x:6 :y:7 ;^^J%
 ^^J%
 &type SDI_Mark_Secondary {5}^^J%
-  :n:1 :i:2 :p:3 :x:4 :y:5 ;^^J%
+:n:1 :i:2 :p:3 :x:4 :y:5 ;^^J%
+^^J%
+&type SDI_Element_Start {7}^^J%
+:n:1 :i:2 :o:3 :c:4 :r:5 :k:6 :p:7 :x:8 :y:9 ;^^J%
+^^J%
+&type SDI_Element_End {7}^^J%
+:n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
 ^^J%
 &type SDI_Info {2}^^J%
-  :n:1 :global-baseline-skip:2 ;^^J%
+:n:1 :global-baseline-skip:2 ;^^J%
 ^^J%
 ^^J%
 &/^^J%
@@ -279,5 +317,4 @@ $global-baseline-skip: \the\orig-basels^^J%
 \AtBeginDocument{{\write-sdi-ntxh-start}}
 \AtEndDocument{{\write-sdi-ntxh-end}}
 
-\catcode`:=12
 \oldCCforEXC\oldCCforDASH

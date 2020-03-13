@@ -1,0 +1,12 @@
+
+\newcommand{\sdiXtestHoneHarg}[1]{Arg: #1}
+
+\begingroup
+\catcode`-=11
+\catcode`!=11  % \active here means 13
+\gdef\sdi!test-one-arg{\sdiXtestHoneHarg}
+\gdef\hyphen-ok-here{\hyphenHokHhere}
+\endgroup
+
+
+
