@@ -575,7 +575,7 @@ assignment instructions.}
 \vspace{1.5em}
 \mnote{The \iEPF{} toolkit}
 \p{\lEPF{} does not refer to a 
-single plugin, but a 
+single plugin, but to a 
 toolkit for implementing multiple ETS plugins to be 
 embedded in many different scientific and 
 social-scientific applications.  
@@ -615,21 +615,21 @@ this question and its corresponding multiple-choice answers, it would help stude
 with the aid of molecular visualization software, such as IQmol.  To support this functionality, 
 our plugin within the document-viewer application 
 (here \XPDF{})
-would launch IQmol, and send data through a corresponding 
+would launch IQmol, sending data through a corresponding 
 ETS plugin embedded in IQmol.  
-Accordingly, question 4 in the practice test  
-may be associated with Molecular Data file for 
-SOCl$_2$ (this file is available from the \q{Chemical Abstracts Service} database).  
-The \XPDF{} plugin would then launch 
+Specifically, question 4 in the practice test  
+may be associated with a Molecular Data file for 
+SOCl$_2$; the \XPDF{} plugin \makebox{would launch IQmol and send 
+along a data package identifying this 
+\hspace{2pt}SOCl$_2$\hspace{2pt} file to IQmol's ETS}
 
-\begin{wrapfigure}[10]{l}{110mm}
+\begin{wrapfigure}[9]{l}{110mm}
 \vspace{-2em}
 \input{etsf2.tex}
-\end{wrapfigure}\vspace{.2em}\noindent{}
-\vspace{-.1em} IQmol, sending along the 
-molecular data to the IQmol ETS plugin, with
+\end{wrapfigure}\vspace{.2em}\noindent{}%
+\vspace{-.1em}plugin, with
 instructions 
-to load this file into an IQmol session 
+to load the file into an IQmol session 
 (see Figure~\bref{fig:i1}).  The end result 
 would be that the student, with a single 
 click (such as selecting a visualization action from 
@@ -637,9 +637,8 @@ a context menu on the practice question) has access
 to an interactive \ThreeD{} graphic representing 
 thionyl chloride.  (Of course, analogous 
 functionality would be available for any chemical 
-compound with multimedia files in such formats 
-as Molecular Data, Protein Data Bank, or Chemical 
-Markup Language).}
+compound which has associated data in formats such as Molecular Data, Protein Data Bank, 
+or Chemical Markup Language.)}
 
 
 \vspace{-3em}
@@ -695,7 +694,7 @@ Nevertheless, certain functionality would be shared
 
 \vspace{1.5em}
 \noindent\lun{ETSpf Tools for Composing Test-Preparation Materials}
-{\sectsp}\vspace{-.5em}
+{\sectsp}\vspace{-1.25em}
 \mnote{\iEPF{} data\\in em-\\bedded files}
 \p{In most cases, \EPF{} plugins for document viewers such as 
 \XPDF{} would draw information from 
@@ -813,7 +812,7 @@ for instance).  In the context of \EPF{}, however,
 encode document information and text within the Semantic 
 Document Infoset.}
 
-\p{LTS can provide demo with a more detailed overview of 
+\p{LTS can provide a demo with a more detailed overview of 
 \EPF{}, additional use-cases, technical 
 information about plugin code, and sample 
 \HTXN{}-encoded documents.}
