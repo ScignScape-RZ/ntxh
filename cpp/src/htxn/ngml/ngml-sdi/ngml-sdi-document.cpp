@@ -18,6 +18,16 @@ NGML_SDI_Document::NGML_SDI_Document(QString path)
 {
 }
 
+void NGML_SDI_Document::parse_element_start_hypernode(const NTXH_Graph& g, hypernode_type* h)
+{
+ qDebug() << "parse_element_start_hypernode()";
+}
+
+void NGML_SDI_Document::parse_element_end_hypernode(const NTXH_Graph& g, hypernode_type* h)
+{
+ qDebug() << "parse_element_end_hypernode()";
+}
+
 void NGML_SDI_Document::parse_paragraph_start_hypernode(const NTXH_Graph& g, hypernode_type* h)
 {
  qDebug() << "parse_paragraph_start_hypernode()";
@@ -38,10 +48,19 @@ void NGML_SDI_Document::parse()
 {
  QMap<QString, void(NGML_SDI_Document::*)(const NTXH_Graph&, hypernode_type*)> methods {
   {"Info", &NGML_SDI_Document::parse_info_hypernode},
+
   {"Paragraph:Start",
     &NGML_SDI_Document::parse_paragraph_start_hypernode},
+
   {"Paragraph:End",
     &NGML_SDI_Document::parse_paragraph_end_hypernode},
+
+  {"Element:Start",
+    &NGML_SDI_Document::parse_element_start_hypernode},
+
+  {"Element:End",
+    &NGML_SDI_Document::parse_element_end_hypernode},
+
 //"Sentence:Start"
 //"Sentence:End"
 //"Sentence:Start"

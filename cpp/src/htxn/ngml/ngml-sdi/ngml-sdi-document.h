@@ -38,7 +38,14 @@ public:
  void parse();
 
  void parse_paragraph_start_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+
  void parse_paragraph_end_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+
+ void parse_element_start_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+
+ void parse_element_end_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+
+
  void parse_info_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
 
 };
