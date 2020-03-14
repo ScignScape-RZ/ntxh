@@ -5,8 +5,8 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef NGML_SDI_ELEMENT__H
-#define NGML_SDI_ELEMENT__H
+#ifndef NGML_SDI_PAGE__H
+#define NGML_SDI_PAGE__H
 
 #include "global-types.h"
 
@@ -15,7 +15,9 @@
 
 #include <QTextStream>
 
-//#include "ntxh-parser/ntxh-document.h"
+#include "ngml-sdi-page-element.h"
+
+#include <set>
 
 #include "kans.h"
 
@@ -24,22 +26,25 @@
 //KANS_CLASS_DECLARE(HGDMCore ,NTXH_Graph)
 //USING_KANS(HGDMCore)
 
-#include "ngml-sdi-mark-base.h"
-
 //class hypernode_type;
 
+class NGML_SDI_Mark_Base; 
 
-class NGML_SDI_Element : public NGML_SDI_Mark_Base
+class NGML_SDI_Page 
 {
- QString kind_;
+ u4 number_;
+
+ std::set<NGML_SDI_Page_Element> page_element_;
 
 public:
  
- NGML_SDI_Element();
+ NGML_SDI_Page(u4 number);
 
- ACCESSORS(QString ,kind)
+ ACCESSORS(u4 ,number)
+
+ void add_page_element(NGML_SDI_Mark_Base* mark);
 
 };
 
 
-#endif // NGML_SDI_ELEMENT__H
+#endif // NGML_SDI_PAGE__H

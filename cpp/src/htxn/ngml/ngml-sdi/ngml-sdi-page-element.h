@@ -5,8 +5,8 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef NGML_SDI_MARK_BASE__H
-#define NGML_SDI_MARK_BASE__H
+#ifndef NGML_SDI_PAGE_ELEMENT__H
+#define NGML_SDI_PAGE_ELEMENT__H
 
 #include "global-types.h"
 
@@ -24,40 +24,25 @@
 //KANS_CLASS_DECLARE(HGDMCore ,NTXH_Graph)
 //USING_KANS(HGDMCore)
 
-#include "rzns.h"
-
 //class hypernode_type;
 
+class NGML_SDI_Mark_Base;
 
-class NGML_SDI_Mark_Base
+class NGML_SDI_Page_Element 
 {
- u4 id_;
-
- u4 start_index_;
- u4 end_index_;
-
- u4 start_x_;
- u4 start_y_;
- u4 end_x_;
- u4 end_y_;
+ NGML_SDI_Mark_Base* mark_;
 
 public:
  
- NGML_SDI_Mark_Base();
+ NGML_SDI_Page_Element(NGML_SDI_Mark_Base* mark);
 
- ACCESSORS(u4 ,start_index)
- ACCESSORS(u4 ,end_index)
+ ACCESSORS(NGML_SDI_Mark_Base* ,mark)
 
- ACCESSORS(u4 ,start_x)
- ACCESSORS(u4 ,start_y)
- ACCESSORS(u4 ,end_x)
- ACCESSORS(u4 ,end_y)
+ static QPair<u4, u4> get_minimal_vertical_compare_offset(QPair<u4, u4> new_values = {0, 0});
 
-// virtual u8 get_base_line_skip()
-// {
-//  return 0;
-// }
 };
 
+bool operator <<(const NGML_SDI_Page_Element& lhs, 
+  const NGML_SDI_Page_Element& rhs);
 
-#endif // NGML_SDI_SENTENCE__H
+#endif // NGML_SDI_PAGE_ELEMENT__H
