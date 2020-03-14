@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  13 MAR 2020 23:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  14 MAR 2020 11:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1203,11 +1203,11 @@ e
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(93.95122pt, 520.3438pt, 43.36243pt)
-* v-part:(T,H,B)=(79.49744pt, 1004.55257pt, 115.63243pt)
+* v-part:(T,H,B)=(79.49744pt, 1033.46013pt, 115.63243pt)
 * \paperwidth=657.65744pt
-* \paperheight=1199.68243pt
+* \paperheight=1228.59pt
 * \textwidth=520.3438pt
-* \textheight=1004.55257pt
+* \textheight=1033.46013pt
 * \oddsidemargin=21.68123pt
 * \evensidemargin=21.68123pt
 * \topmargin=-29.77255pt
@@ -1405,12 +1405,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--649
 
 
 LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <13> not available
-(Font)              size <12> substituted on input line 650.
+(Font)              size <12> substituted on input line 653.
 
 <logo.png, id=13, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 650.
+Package pdftex.def Info: logo.png  used on input line 653.
 (pdftex.def)             Requested size: 104.06717pt x 61.75891pt.
 [1
 
@@ -1451,7 +1451,20 @@ File: xScreenShot1.png Graphic file (type png)
 <use xScreenShot1.png>
 Package pdftex.def Info: xScreenShot1.png  used on input line 8.
 (pdftex.def)             Requested size: 312.9803pt x 189.19455pt.
-) (./etsf5.tex
+)
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <13> not available
+(Font)              size <12> substituted on input line 684.
+
+
+LaTeX Warning: Reference `fig;x2' on page 2 undefined on input line 684.
+
+
+Underfull \hbox (badness 3428) in paragraph at lines 684--686
+[][]\T1/ptm/m/n/13 The pre-vi-ous case-study in-volv-ing
+ []
+
+(./etsf5.tex
 <xScreenShot.png, id=39, 653.44125pt x 389.95688pt>
 File: xScreenShot.png Graphic file (type png)
 <use xScreenShot.png>
@@ -1469,27 +1482,27 @@ Overfull \hbox (19.42143pt too wide) in paragraph at lines 12--13
  []
 
 )
-Underfull \hbox (badness 3029) in paragraph at lines 698--701
+Underfull \hbox (badness 3029) in paragraph at lines 709--712
 \T1/ptm/m/n/13 plu-gin is em-bed-ded. For ex-
  []
 
 
-Underfull \hbox (badness 2221) in paragraph at lines 698--701
+Underfull \hbox (badness 2221) in paragraph at lines 709--712
 \T1/ptm/m/n/13 am-ple, an IQ-mol plu-gin would
  []
 
 
-Underfull \hbox (badness 5091) in paragraph at lines 698--701
+Underfull \hbox (badness 5091) in paragraph at lines 709--712
 \T1/ptm/m/n/13 ac-ti-vate IQ-mol's an-a-lytic ca-pa-
  []
 
 
-Underfull \hbox (badness 1337) in paragraph at lines 698--701
+Underfull \hbox (badness 1337) in paragraph at lines 709--712
 \T1/ptm/m/n/13 bil-i-ties in the do-main of chem-
  []
 
 
-Underfull \hbox (badness 1817) in paragraph at lines 698--701
+Underfull \hbox (badness 1817) in paragraph at lines 709--712
 \T1/ptm/m/n/13 vi-su-al-iza-tion, such as Par-aView,
  []
 
@@ -1497,25 +1510,25 @@ Underfull \hbox (badness 1817) in paragraph at lines 698--701
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package marginnote Info: Margin note 2.2 is on absolute page 2
-(marginnote)              on input line 705.
-Package marginnote Info: right page because not two side mode on input line 705
+(marginnote)              on input line 716.
+Package marginnote Info: right page because not two side mode on input line 716
 .
 
-Underfull \hbox (badness 10000) in paragraph at lines 705--705
+Underfull \hbox (badness 10000) in paragraph at lines 716--716
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 705--705
+Underfull \hbox (badness 10000) in paragraph at lines 716--716
 \T1/ppl/m/it/12 bedded
  []
 
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 705.
+ mdframed uses option nobreak mdframed on input line 716.
 Package marginnote Info: xpos seems to be 97.20122pt,
-(marginnote)             \marginnoteleftadjust ignored on input line 705.
+(marginnote)             \marginnoteleftadjust ignored on input line 716.
 
-Overfull \hbox (18.792pt too wide) in paragraph at lines 703--728
+Overfull \hbox (18.792pt too wide) in paragraph at lines 714--739
 []
  []
 
@@ -1529,42 +1542,42 @@ Package pdftex.def Info: iScreenShot.png  used on input line 10.
 <e-logo.png, id=47, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 730.
+Package pdftex.def Info: e-logo.png  used on input line 741.
 (pdftex.def)             Requested size: 150.8962pt x 107.77083pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 730.
+Package pdftex.def Info: logo.png  used on input line 741.
 (pdftex.def)             Requested size: 104.06717pt x 61.75891pt.
  [2 <./xScreenShot1.png (PNG copy)> <./xScreenShot.png (PNG copy)> <./e-logo.pn
 g>]
 Package marginnote Info: Margin note 3.1 is on absolute page 3
-(marginnote)              on input line 733.
-Package marginnote Info: right page because not two side mode on input line 733
+(marginnote)              on input line 744.
+Package marginnote Info: right page because not two side mode on input line 744
 .
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--733
+Underfull \hbox (badness 10000) in paragraph at lines 744--744
 []\T1/ppl/m/it/12 Semantic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--733
+Underfull \hbox (badness 10000) in paragraph at lines 744--744
 \T1/ppl/m/it/12 Doc-u-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--733
+Underfull \hbox (badness 10000) in paragraph at lines 744--744
 \T1/ppl/m/it/12 ment
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--733
+Underfull \hbox (badness 10000) in paragraph at lines 744--744
 \T1/ppl/m/it/12 In-fos-ets
  []
 
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 733.
+ mdframed uses option nobreak mdframed on input line 744.
 Package marginnote Info: xpos seems to be 93.95122pt,
-(marginnote)             \marginnoteleftadjust ignored on input line 733.
+(marginnote)             \marginnoteleftadjust ignored on input line 744.
 (./etsf0.tex
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
@@ -1575,7 +1588,7 @@ File: logo.png Graphic file (type png)
 Package pdftex.def Info: logo.png  used on input line 1.
 (pdftex.def)             Requested size: 104.06717pt x 61.75891pt.
  [3 <./iScreenShot2.png (PNG copy)> <./iScreenShot.png (PNG copy)>]
-<ScreenShot.png, id=67, 763.35187pt x 428.35031pt>
+<ScreenShot.png, id=68, 763.35187pt x 428.35031pt>
 File: ScreenShot.png Graphic file (type png)
 <use ScreenShot.png>
 Package pdftex.def Info: ScreenShot.png  used on input line 11.
@@ -1591,80 +1604,80 @@ Overfull \hbox (214.55357pt too wide) in paragraph at lines 20--21
 
 )
 Package marginnote Info: Margin note 4.1 is on absolute page 4
-(marginnote)              on input line 771.
-Package marginnote Info: right page because not two side mode on input line 771
+(marginnote)              on input line 782.
+Package marginnote Info: right page because not two side mode on input line 782
 .
 
-Underfull \hbox (badness 10000) in paragraph at lines 771--771
+Underfull \hbox (badness 10000) in paragraph at lines 782--782
 []\T1/ppl/m/it/12 Using
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 771--771
+Underfull \hbox (badness 10000) in paragraph at lines 782--782
 \T1/ppl/m/it/12 generate
  []
 
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 771.
+ mdframed uses option nobreak mdframed on input line 782.
 Package marginnote Info: xpos seems to be 93.95122pt,
-(marginnote)             \marginnoteleftadjust ignored on input line 771.
+(marginnote)             \marginnoteleftadjust ignored on input line 782.
 Package marginnote Info: Margin note 4.2 is on absolute page 4
-(marginnote)              on input line 800.
-Package marginnote Info: right page because not two side mode on input line 800
+(marginnote)              on input line 811.
+Package marginnote Info: right page because not two side mode on input line 811
 .
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 \T1/ppl/m/it/12 (Hy-per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 \T1/ppl/m/it/12 graph
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 \T1/ppl/m/it/12 Text
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 \T1/ppl/m/it/12 En-cod-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 \T1/ppl/m/it/12 Pro-to-col)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--800
+Underfull \hbox (badness 10000) in paragraph at lines 811--811
 \T1/ppl/m/it/12 Spec-i-fi-ca-
  []
 
 Package mdframed Info: mdframed inside a box 
- mdframed uses option nobreak mdframed on input line 800.
+ mdframed uses option nobreak mdframed on input line 811.
 Package marginnote Info: xpos seems to be 93.95122pt,
-(marginnote)             \marginnoteleftadjust ignored on input line 800.
+(marginnote)             \marginnoteleftadjust ignored on input line 811.
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 829.
+Package pdftex.def Info: e-logo.png  used on input line 840.
 (pdftex.def)             Requested size: 150.8962pt x 107.77083pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 829.
+Package pdftex.def Info: logo.png  used on input line 840.
 (pdftex.def)             Requested size: 104.06717pt x 61.75891pt.
 [4 <./ScreenShot.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 829.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 829.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 840.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 840.
  (./ets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 829.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 829.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 840.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 840.
 Package rerunfilecheck Info: File `ets.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1672,17 +1685,20 @@ Package rerunfilecheck Info: File `ets.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
+
+LaTeX Warning: There were undefined references.
+
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 497 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 32493 strings out of 492649
- 671509 string characters out of 6122986
- 788152 words of memory out of 5000000
- 35846 multiletter control sequences out of 15000+600000
- 585822 words of font info for 72 fonts, out of 8000000 for 9000
+ 32497 strings out of 492649
+ 671553 string characters out of 6122986
+ 788122 words of memory out of 5000000
+ 35849 multiletter control sequences out of 15000+600000
+ 586598 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,17n,93p,10392b,874s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
@@ -1696,16 +1712,17 @@ install/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrael
 /nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.pf
 b></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre
 /qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/
-cm-super/sfrm1000.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/t
-ype1/urw/palatino/uplbi8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist
-/fonts/type1/urw/palatino/uplri8a.pfb></home/nlevisrael/texl/texlive-install/te
-xmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/nlevisrael/texl/texlive-instal
-l/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/nlevisrael/texl/texlive-in
-stall/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ets.pdf (4 pages, 917504 bytes).
+cm-super/sfbx1200.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1000.pfb></home/nlevisrael/texl/texlive-install/texmf-
+dist/fonts/type1/urw/palatino/uplbi8a.pfb></home/nlevisrael/texl/texlive-instal
+l/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></home/nlevisrael/texl/texliv
+e-install/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/nlevisrael/texl/te
+xlive-install/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/nlevisrael/tex
+l/texlive-install/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ets.pdf (4 pages, 920086 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 123 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
  12 named destinations out of 1000 (max. 500000)
  106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -55,7 +55,7 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=16.6in,paperwidth=9.1in]{geometry}
+\usepackage[paperheight=17in,paperwidth=9.1in]{geometry}
 \geometry{left=1.3in,top=1.1in,right=.6in,bottom=1.6in} %margins
 
 \newcommand{\sectsp}{\vspace{12pt}}
@@ -456,6 +456,20 @@
 \end{mdframed}}
 	}[3em]}}
 
+\newcommand{\mnoteh}[3]{%
+	\vspace*{#1}
+	\reversemarginpar
+	\raisebox{#2}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#3}}}
+				\end{mdframed}}
+			}[3em]}}
+
 
 \newcommand{\mnoteb}[1]{%
 	\vspace*{1em}
@@ -654,23 +668,34 @@ of\\students' previous activity.}
 \p{\begin{wrapfigure}[11]{r}{110mm}
 \vspace{-1.5em}\input{etsf3.tex}
 	\end{wrapfigure}
-In meeting the study habits of each student, the plugin framework is designed to handle at times some relatively more complex tasks. As a result, the information sent between plugins may sometimes be more extensive than a simple request to open a single multimedia file.
-Suppose a student reading through the GRE Chemistry 
+The previous case-study involving Thionyl Chloride exemplified 
+a simple data structure transmitted between ETS plugins: 
+specifically, the name of a single file to open.  
+In other cases, the information sent between plugins would 
+be more complex.  As a result, all ETS plugins need a 
+common vocabulary for representing multi-part data 
+structures, which is engineered by \EPF{}.  
+For example, if a student views a \textit{second} 
+molecule in IQmol, the document viewer should 
+identify not only \textit{that} file, but any 
+\textit{previous} files they had viewed, so that 
+they could conveniently refer back to those files 
+as desired.  Suppose a student reading through the GRE Chemistry 
 practice exam launches IQmol a second time --- perhaps in 
 conjunction with a later question 
-(number \textit{95} in the test --- see 
-figure at right) about the molecular structure of lactose.  In this case, the plugin would be 
-equipped with the ability to send 
+about the molecular structure of lactose 
+(which is question number \textit{95} in the test --- see 
+Figure~\ref{fig;x2} above).
+In this case, the plugin would send 
 information not only about the present request but 
 about the student's prior usage; in particular 
 the fact that they had previously viewed the 
-SOCl$_2$ file.  The \EPF{} plugin on the IQmol 
-side can then load the prior file along with the 
-new one, so that the student can then 
-browse back to their prior 
-application-states (see the Model View panel at 
+SOCl$_2$ file --- see the Model View panel at 
 the top-left on 
-Figure~\bref{fig:i2}) when needed.}
+Figure~\bref{fig:i2}, where the Thionyl Chloride 
+file is listed above the checked Lactose file 
+(the latter is checked because it corresponds 
+to the file currently visible in the view-port).}
 %\input{etsf4.tex}
 
 %\vspace{-1em}
@@ -701,9 +726,9 @@ Nevertheless, certain functionality would be shared
 
 \vspace{1.5em}
 \noindent\lun{ETSpf Tools for Composing Test-Preparation Materials}
-{\sectsp}\vspace{-1.25em}
-\mnote{\iEPF{} data\\in em-\\bedded files}
-\p{In most cases, ETS plugins for document viewers such as 
+{\sectsp}
+\mnoteb{\iEPF{} data\\in em-\\bedded files}\vspace{-.5em}
+\p{\vspace{-4em}In most cases, ETS plugins for document viewers such as 
 \XPDF{} would draw information from 
 \PDF{} files (or files in other formats, 
 e.g. \ePub{} or \HTML{}) to implement 
@@ -728,7 +753,7 @@ context menus can be customized
 for each question.}  
 \input{etsf6.tex}
 
-\vspace{-.5em}
+%\vspace{-.5em}
 \mnote{Semantic Document Infosets 
 (\iSDI{}s)}
 \p{To support these capabilities, \EPF{} would 
@@ -767,7 +792,7 @@ attention on each question in turn.}
 \input{etsf0.tex}
 
 %\mnote{Writing exams with \LaTeX{} and \iXPDF{} plugins.}
-\vspace{-1em}
+%\vspace{-em}
 \mnote{Using \LaTeX{} to\\generate \iSDI{} info- sets}
 \p{\EPF{} implementations can include 
 \LaTeX{} packages which automate the creation 
@@ -796,7 +821,7 @@ sentences or paragraphs in those publications
 which are relevant to the review question that 
 the student is currently reading/studying.}
 
-\vspace*{-3.5em}
+\vspace*{-3em}
 \mnotel{\iHTXN{} (Hypergraph Text Encoding Protocol) Specifications}  
 \p{As an additional feature, \EPF{} plugins 
 would implement a protocol which we call 
