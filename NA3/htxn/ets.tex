@@ -593,7 +593,7 @@ communicate with one another.  For example,
 plugins for document viewers would send data to 
 plugins for scientific or multimedia applications.  
 In this way, students would be able to access multimedia content 
-linked to the documents (viv., the test-preparation materials) 
+linked to the documents (viz., the test-preparation materials) 
 that they are currently studying.}
 
 \mnote{How \iEPF{} enables multi-appli- cation 
@@ -619,11 +619,11 @@ our plugin within the document-viewer application
 (here \XPDF{})
 would launch IQmol, sending data through a corresponding 
 ETS plugin embedded in IQmol.  
-Specifically, question 4 in the practice test  
+Specifically, question \textit{4} in the practice test  
 may be associated with a Molecular Data file for 
 SOCl$_2$; the \XPDF{} plugin \makebox{would launch IQmol and send 
 along a data package identifying this 
-\hspace{2pt}SOCl$_2$\hspace{2pt} file to IQmol's own}
+\hspace{2pt}SOCl$_2$\hspace{3pt} file\hspace{2pt} to IQmol's own}
 
 \begin{wrapfigure}[10]{l}{110mm}
 \vspace{-2em}
@@ -636,8 +636,8 @@ to load the file into an IQmol session
 (see Figure~\bref{fig:i1}).  The 
 student could initiate this process by 
 selecting a context-menu option 
-(called \q{3D thionyl chloride viewer} in 
-Figure~\bref{fig:i1}, the highlighted option where the 
+(called \q{3D thionyl chloride Viewer} in 
+Figure~\bref{fig:tc}, the highlighted option where the 
 cursor is pointing).
 The end result, then,  
 would be that the student, with a single 
@@ -651,18 +651,15 @@ or Chemical Markup Language.}
 \vspace{-3em}
 \mnotel{\\\iEPF{} features\\for\\keeping track 
 of\\students' previous activity.}
-\p{\begin{wrapfigure}[12]{r}{110mm}
-\vspace{-1em}\input{etsf3.tex}
+\p{\begin{wrapfigure}[11]{r}{110mm}
+\vspace{-1.5em}\input{etsf3.tex}
 	\end{wrapfigure}
-The information sent between plugins 
-may sometimes be more extensive than a simple 
-request to open a single multimedia file.  Suppose a 
-student reading through	the GRE Chemistry practice 
-exam launches IQmol a second time --- perhaps in 
+In meeting the study habits of each student, the plugin framework is designed to handle at times some relatively more complex tasks. As a result, the information sent between plugins may sometimes be more extensive than a simple request to open a single multimedia file.
+Suppose a student reading through the GRE Chemistry 
+practice exam launches IQmol a second time --- perhaps in 
 conjunction with a later question 
-(number 95 in the test --- see 
-figure at right) about the molecular structure of 
-lactose.  In this case, the plugin would be 
+(number \textit{95} in the test --- see 
+figure at right) about the molecular structure of lactose.  In this case, the plugin would be 
 equipped with the ability to send 
 information not only about the present request but 
 about the student's prior usage; in particular 
@@ -676,6 +673,7 @@ the top-left on
 Figure~\bref{fig:i2}) when needed.}
 %\input{etsf4.tex}
 
+%\vspace{-1em}
 \p{\begin{wrapfigure}[14]{l}{115mm}\vspace{-1.5em}
 \input{etsf5.tex}%
 \end{wrapfigure}In general, the functionality 
@@ -730,6 +728,7 @@ context menus can be customized
 for each question.}  
 \input{etsf6.tex}
 
+\vspace{-.5em}
 \mnote{Semantic Document Infosets 
 (\iSDI{}s)}
 \p{To support these capabilities, \EPF{} would 
