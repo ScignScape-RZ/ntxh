@@ -34,7 +34,7 @@ class NGML_SDI_Page
 {
  u4 number_;
 
- std::set<NGML_SDI_Page_Element> page_element_;
+ std::set<NGML_SDI_Page_Element> page_elements_;
 
 public:
  

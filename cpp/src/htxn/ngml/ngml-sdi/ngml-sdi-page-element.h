@@ -42,7 +42,7 @@ public:
 
 };
 
-bool operator <<(const NGML_SDI_Page_Element& lhs, 
+bool operator <(const NGML_SDI_Page_Element& lhs, 
   const NGML_SDI_Page_Element& rhs);
 
 #endif // NGML_SDI_PAGE_ELEMENT__H

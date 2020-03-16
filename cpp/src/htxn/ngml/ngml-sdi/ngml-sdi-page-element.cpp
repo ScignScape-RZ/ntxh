@@ -20,15 +20,15 @@ NGML_SDI_Page_Element::NGML_SDI_Page_Element(NGML_SDI_Mark_Base* mark)
 {
 }
 
-static QPair<u4, u4> NGML_SDI_Page_Element::get_minimal_vertical_compare_offset(u4 new_value = 0)
+QPair<u4, u4> NGML_SDI_Page_Element::get_minimal_vertical_compare_offset(QPair<u4, u4> new_values)
 {
  static QPair<u4, u4> the_values = {4, 2};
- if(new_values)
+ if(new_values.first)
    the_values = new_values;
  return the_values;
 } 
 
-bool operator <<(const NGML_SDI_Page_Element& lhs, 
+bool operator <(const NGML_SDI_Page_Element& lhs, 
   const NGML_SDI_Page_Element& rhs)
 { 
  QPair<u4, u4> pr = NGML_SDI_Page_Element::get_minimal_vertical_compare_offset();

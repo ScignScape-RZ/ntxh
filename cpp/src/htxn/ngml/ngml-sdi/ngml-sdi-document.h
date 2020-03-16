@@ -25,29 +25,32 @@ USING_KANS(HGDMCore)
 #include "rzns.h"
 
 //class hypernode_type;
-
+class NGML_SDI_Page;
 
 class NGML_SDI_Document
 {
  QString path_;
  u8 global_base_line_skip_;// = 12
 
+ QVector<NGML_SDI_Page*> pages_;
+
 public:
  
  NGML_SDI_Document(QString path);
  void parse();
 
- void parse_paragraph_start_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_paragraph_start_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
 
- void parse_paragraph_end_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_paragraph_end_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
 
- void parse_element_start_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_element_start_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
 
- void parse_element_end_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_element_end_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
 
 
- void parse_info_hypernode(const NTXH_Graph& g, NTXH_Graph::hypernode_type* h);
+ void parse_info_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
 
+ NGML_SDI_Page* get_page(u4 page);
 };
 
 

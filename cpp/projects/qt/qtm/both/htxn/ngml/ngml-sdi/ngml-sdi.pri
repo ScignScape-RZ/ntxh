@@ -47,6 +47,9 @@ HEADERS += \
   $$SRC_DIR/ngml-sdi-mark-generic.h \
   $$SRC_DIR/ngml-sdi-paragraph.h \
   $$SRC_DIR/ngml-sdi-sentence.h \
+  $$SRC_DIR/ngml-sdi-page.h \
+  $$SRC_DIR/ngml-sdi-element.h \
+  $$SRC_DIR/ngml-sdi-page-element.h \
 
 
 SOURCES += \
@@ -55,6 +58,9 @@ SOURCES += \
   $$SRC_DIR/ngml-sdi-mark-generic.cpp \
   $$SRC_DIR/ngml-sdi-paragraph.cpp \
   $$SRC_DIR/ngml-sdi-sentence.cpp \
+  $$SRC_DIR/ngml-sdi-page.cpp \
+  $$SRC_DIR/ngml-sdi-element.cpp \
+  $$SRC_DIR/ngml-sdi-page-element.cpp \
 
 
 LIBS += -L$$TARGETSDIR -lntxh
