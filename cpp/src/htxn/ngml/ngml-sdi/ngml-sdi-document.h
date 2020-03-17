@@ -30,13 +30,16 @@ class NGML_SDI_Page;
 class NGML_SDI_Document
 {
  QString path_;
+ QString folder_;
  u8 global_base_line_skip_;// = 12
 
  QVector<NGML_SDI_Page*> pages_;
 
+ QMap<QPair<QString, u4>, void*> open_elements_;
+
 public:
  
- NGML_SDI_Document(QString path);
+ NGML_SDI_Document(QString path, QString folder);
  void parse();
 
  void parse_paragraph_start_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
@@ -51,6 +54,7 @@ public:
  void parse_info_hypernode(NTXH_Graph& g, NTXH_Graph::hypernode_type* hn);
 
  NGML_SDI_Page* get_page(u4 page);
+ void output_pages();
 };
 
 

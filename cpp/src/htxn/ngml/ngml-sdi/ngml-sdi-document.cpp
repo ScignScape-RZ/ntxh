@@ -14,10 +14,16 @@
 
 #include "global-types.h"
 
+#include "textio.h"
+
+USING_KANS(TextIO)
+
+#include <QDir>
+
 typedef NTXH_Graph::hypernode_type hypernode_type;
 
-NGML_SDI_Document::NGML_SDI_Document(QString path)
-  :  path_(path), global_base_line_skip_(12)
+NGML_SDI_Document::NGML_SDI_Document(QString path, QString folder)
+  :  path_(path), folder_(folder), global_base_line_skip_(12)
 {
 }
 
@@ -28,7 +34,7 @@ NGML_SDI_Page* NGML_SDI_Document::get_page(u4 page)
  {
   result = new NGML_SDI_Page(page);
   if(page >= pages_.size())
-    pages_.resize(page - 1);
+    pages_.resize(page);
   pages_[page - 1] = result;
  }
  return result;  
@@ -40,40 +46,58 @@ void NGML_SDI_Document::parse_element_start_hypernode(NTXH_Graph& g, hypernode_t
  g.get_sfsr(hn, {{2,10}}, [this, nsel](QVector<QPair<QString, void*>>& prs)
  {
   //:n:1 :i:2 :o:3 :c:4 :r:5 :k:6 :p:8 :x:9 :y:10 :b:7 ;
-  nsel->set_id(prs[0].first.toInt());
-  u4 start_x = prs[8].first.toInt();
-  u4 start_y = prs[9].first.toInt();
-  if(prs[6].first.isEmpty())
+  u4 id = prs[0].first.toInt();
+  nsel->set_id(id);
+  this->open_elements_[{"NGML_SDI_Element", id}] = nsel;
+
+  nsel->set_kind(prs[4].first);
+
+  u4 start_x = prs[7].first.toInt();
+  u4 start_y = prs[8].first.toInt();
+  if(prs[5].first.isEmpty())
     start_y -= (u4) this->global_base_line_skip_;    
 
   nsel->set_start_x(start_x);
   nsel->set_start_y(start_y);
  
-  u4 pg = prs[7].first.toInt();
+  u4 pg = prs[6].first.toInt();
   NGML_SDI_Page* page = this->get_page(pg);
   page->add_page_element(nsel);   
  });
 
-
- qDebug() << "parse_element_start_hypernode()";
+// qDebug() << "parse_element_start_hypernode()";
 }
 
-void NGML_SDI_Document::parse_element_end_hypernode(NTXH_Graph&, hypernode_type* h)
+void NGML_SDI_Document::parse_element_end_hypernode(NTXH_Graph& g, hypernode_type* hn)
 {
- qDebug() << "parse_element_end_hypernode()";
+ g.get_sfsr(hn, {{2,6}}, [this](QVector<QPair<QString, void*>>& prs)
+ {
+  //:i:2 :o:3 :p:4 :x:5 :y:6 ;
+  u4 id = prs[0].first.toInt();
+
+  void* pv = this->open_elements_.value({"NGML_SDI_Element", id});
+  if(!pv)
+    return;
+  NGML_SDI_Element* nsel = static_cast<NGML_SDI_Element*>(pv);
+  u4 end_x = prs[3].first.toInt();
+  u4 end_y = prs[4].first.toInt();
+  nsel->set_end_x(end_x);
+  nsel->set_end_y(end_y);
+ });
+// qDebug() << "parse_element_end_hypernode()";
 }
 
-void NGML_SDI_Document::parse_paragraph_start_hypernode(NTXH_Graph&, hypernode_type* h)
+void NGML_SDI_Document::parse_paragraph_start_hypernode(NTXH_Graph& g, hypernode_type* hn)
 {
  qDebug() << "parse_paragraph_start_hypernode()";
 }
 
-void NGML_SDI_Document::parse_paragraph_end_hypernode(NTXH_Graph&, hypernode_type* h)
+void NGML_SDI_Document::parse_paragraph_end_hypernode(NTXH_Graph& g, hypernode_type* hn)
 {
  qDebug() << "parse_paragraph_end_hypernode()";
 }
 
-void NGML_SDI_Document::parse_info_hypernode(NTXH_Graph&, hypernode_type* h)
+void NGML_SDI_Document::parse_info_hypernode(NTXH_Graph& g, hypernode_type* hn)
 {
  qDebug() << "parse_info_hypernode()";
 }
@@ -81,7 +105,7 @@ void NGML_SDI_Document::parse_info_hypernode(NTXH_Graph&, hypernode_type* h)
 
 void NGML_SDI_Document::parse()
 {
- QMap<QString, void(NGML_SDI_Document::*)(NTXH_Graph&, hypernode_type*)> methods {
+ QMap<QString, void(NGML_SDI_Document::*)(NTXH_Graph& g, hypernode_type*)> methods {
   {"Info", &NGML_SDI_Document::parse_info_hypernode},
 
   {"Paragraph:Start",
@@ -151,4 +175,20 @@ void NGML_SDI_Document::parse()
 #endif
  } 
 
+ output_pages();
 }
+
+void NGML_SDI_Document::output_pages()
+{
+ QDir qd(folder_);
+ for(NGML_SDI_Page* page : pages_)
+ {
+  QString fn = QString::number(page->number());
+  fn.prepend('p');
+  fn.append(".txt");
+  fn = qd.absoluteFilePath(fn);
+  save_file(fn, "OK");
+ }
+}
+
+
