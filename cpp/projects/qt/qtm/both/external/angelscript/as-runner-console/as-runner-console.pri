@@ -11,7 +11,7 @@ TEMPLATE = app
 INCLUDEPATH += $$SRC_GROUP_DIR
 INCLUDEPATH += $$SRC_GROUP_DIR/include
 
-INCLUDEPATH += $$SRC_GROUP_DIR/angelscript/add_on
+#INCLUDEPATH += $$SRC_GROUP_DIR/angelscript/add_on
 
 
 DEFINES += CAON_DEBUG

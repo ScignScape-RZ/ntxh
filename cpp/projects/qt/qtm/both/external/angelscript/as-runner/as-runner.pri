@@ -8,6 +8,7 @@
 include(../build-group.pri)
 
 INCLUDEPATH += $$SRC_DIR
+INCLUDEPATH += $$SRC_GROUP_DIR
 INCLUDEPATH += $$SRC_GROUP_DIR/include
 
 QMAKE_CXXFLAGS += -Wno-strict-aliasing

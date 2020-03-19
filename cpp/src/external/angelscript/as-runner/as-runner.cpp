@@ -7,10 +7,98 @@
 
 #include "as-runner.h"
 
+#include "angelscript/add_on/scriptstdstring/scriptstdstring.h"
+#include "angelscript/add_on/scriptbuilder/scriptbuilder.h"
+
+// Print the script string to the standard output stream
+void print(std::string &msg)
+{
+  printf("%s", msg.c_str());
+}
+
+void AS_Runner::message_callback(const asSMessageInfo* msg, void* param)
+{
+ const char *type = "ERR ";
+ if( msg->type == asMSGTYPE_WARNING ) 
+   type = "WARN";
+ else if( msg->type == asMSGTYPE_INFORMATION ) 
+   type = "INFO";
+ printf("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); 
+}
+
 AS_Runner::AS_Runner()
 {
+  // Create the script engine
+ engine_ = asCreateScriptEngine();
  
+ int r = engine_->SetMessageCallback(asFUNCTION(&AS_Runner::message_callback), 0,  asCALL_CDECL); 
+ assert( r >= 0 );
+ 
+ RegisterStdString(engine_);
+ 
+ // Register the function that we want the scripts to call 
+ r = engine_->RegisterGlobalFunction("void print(const string &in)", asFUNCTION(print), asCALL_CDECL); 
+ assert( r >= 0 );
 
+
+}
+
+void AS_Runner::run_script(QString path)
+{
+ CScriptBuilder builder;
+ int r1 = builder.StartNewModule(engine_, "MyModule"); 
+ if( r1 < 0 ) 
+ {
+  // If the code fails here it is usually because there
+  // is no more memory to allocate the module
+  printf("Unrecoverable error while starting a new module.\n");
+ }
+ r1 = builder.AddSectionFromFile(path.toStdString().c_str()); //AS_ROOT_DIR "/test.as");
+ if( r1 < 0 )
+ {
+  // The builder wasn't able to load the file. Maybe the file
+  // has been removed, or the wrong name was given, or some
+  // preprocessing commands are incorrectly written.
+  std::printf("Please correct the errors in the script and try again.\n");
+ }
+ r1 = builder.BuildModule();
+ if( r1 < 0 )
+ {
+  // An error occurred. Instruct the script writer to fix the 
+  // compilation errors that were listed in the output stream.
+  printf("Please correct the errors in the script and try again.\n");
+ }
+
+ // Find the function that is to be called. 
+ asIScriptModule *mod = engine_->GetModule("MyModule");
+ asIScriptFunction *func = mod->GetFunctionByDecl("void main()");
+ if( func == 0 )
+ {
+  // The function couldn't be found. Instruct the script writer
+  // to include the expected function in the script.
+  printf("The script must have the function 'void main()'. Please add it and try again.\n");
+ }
+ 
+ // Create our context, prepare it, and then execute
+ asIScriptContext *ctx = engine_->CreateContext();
+ ctx->Prepare(func);
+ int rr = ctx->Execute();
+ if( rr != asEXECUTION_FINISHED )
+ {
+  // The execution didn't complete as expected. Determine what happened.
+  if( rr == asEXECUTION_EXCEPTION )
+  {
+   // An exception occurred, let the script writer know what happened so it can be corrected.
+   std::printf("An exception '%s' occurred. Please correct the code and try again.\n", ctx->GetExceptionString());
+  }
+ }
+ ctx->Release();
+}
+
+AS_Runner::~AS_Runner()
+{
+ // Clean up
+ engine_->ShutDownAndRelease();
 }
 
 

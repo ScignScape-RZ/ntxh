@@ -10,13 +10,21 @@
 #include <QDebug>
 #include <QFile>
 
+#include "angelscript.h"
+
 class AS_Runner
 {
+ asIScriptEngine* engine_; 
+
+ static void message_callback(const asSMessageInfo* msg, void* param);
  
 public:
 
  AS_Runner(); 
 
+ ~AS_Runner(); 
+
+ void run_script(QString path);
 
 };
 
