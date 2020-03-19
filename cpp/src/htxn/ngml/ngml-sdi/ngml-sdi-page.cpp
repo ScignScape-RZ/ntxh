@@ -7,7 +7,9 @@
 
 #include "ngml-sdi-page.h"
 
-//#include "ntxh-parser/ntxh-document.h"
+#include "ngml-sdi-mark-base.h"
+
+#include <QTextStream>
 
 #include "global-types.h"
 
@@ -25,6 +27,19 @@ void NGML_SDI_Page::add_page_element(NGML_SDI_Mark_Base* mark)
 
 void NGML_SDI_Page::write(QString& contents)
 {
- 
+ QTextStream qts(&contents);
+
+ int c = 0;
+ for(const NGML_SDI_Page_Element& el : page_elements_)
+ {
+  ++c;
+  NGML_SDI_Mark_Base& mark = *el.mark();
+  
+  qts << c << ' ' << mark.id() << ' ' << mark.start_x() 
+    << ' ' << mark.start_y() << ' ' << mark.end_x() 
+    << ' ' << mark.end_y() << '\n'; 
+ }
+
+ qDebug() << "Contents " << contents;
 }
 

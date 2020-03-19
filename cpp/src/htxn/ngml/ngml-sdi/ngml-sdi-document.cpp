@@ -52,8 +52,18 @@ void NGML_SDI_Document::parse_element_start_hypernode(NTXH_Graph& g, hypernode_t
 
   nsel->set_kind(prs[4].first);
 
-  u4 start_x = prs[7].first.toInt();
-  u4 start_y = prs[8].first.toInt();
+  // //  assume that everything is in pts for now ...
+  QString sx = prs[7].first;
+  if(sx.endsWith("pt"))
+    sx.chop(2);
+
+  QString sy = prs[8].first;
+  if(sy.endsWith("pt"))
+    sy.chop(2);
+
+  u4 start_x = (int) sx.toDouble();
+  u4 start_y = (int) sy.toDouble();
+
   if(prs[5].first.isEmpty())
     start_y -= (u4) this->global_base_line_skip_;    
 
@@ -79,8 +89,18 @@ void NGML_SDI_Document::parse_element_end_hypernode(NTXH_Graph& g, hypernode_typ
   if(!pv)
     return;
   NGML_SDI_Element* nsel = static_cast<NGML_SDI_Element*>(pv);
-  u4 end_x = prs[3].first.toInt();
-  u4 end_y = prs[4].first.toInt();
+
+  // //  assume that everything is in pts for now ...
+  QString ex = prs[3].first;
+  if(ex.endsWith("pt"))
+    ex.chop(2);
+
+  QString ey = prs[4].first;
+  if(ey.endsWith("pt"))
+    ey.chop(2);
+
+  u4 end_x = (int) ex.toDouble();
+  u4 end_y = (int) ey.toDouble();
   nsel->set_end_x(end_x);
   nsel->set_end_y(end_y);
  });
@@ -189,7 +209,7 @@ void NGML_SDI_Document::output_pages()
   fn = qd.absoluteFilePath(fn);
   QString contents;
   page->write(contents);
-  save_file(fn, "OK");
+  save_file(fn, contents);
  }
 }
 
