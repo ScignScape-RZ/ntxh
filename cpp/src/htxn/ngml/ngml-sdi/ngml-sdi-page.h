@@ -44,6 +44,8 @@ public:
 
  void add_page_element(NGML_SDI_Mark_Base* mark);
 
+ void write(QString& contents);
+
 };
 
 

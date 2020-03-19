@@ -156,6 +156,10 @@
 \newcommand{\NDPCloud}{{\color{red!15!black}%
 {\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
 
+\newcommand{\TThreeK}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {T3K}}}}
+
+
 \newcommand{\lfNDPCloud}{{\color{red!15!black}%
 {\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
 
@@ -184,6 +188,9 @@
 
 
 \newcommand{\PVD}{\resizebox{!}{8pt}{\AcronymText{PVD}}}
+
+\newcommand{\THQL}{\resizebox{!}{8pt}{\AcronymText{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{8pt}{\AcronymText{lTHQL}}}
 
 \newcommand{\sapp}{\resizebox{!}{8pt}{\AcronymText{Sapien+}}}
 \newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
@@ -613,14 +620,47 @@ existing research-data platforms.  Publishers
 have, to some degree, recognized the extra-ordinary 
 nature of the new coronavirus crisis and 
 taken some commensurate mearures; for example, 
-Springer Nature has committed to releasing as 
+several publishing houses (including Springer Nature, 
+Elsevier, Wiley, and the New England Journal 
+of Medicine) have committed to releasing as 
 open-access documents a collection of papers 
 potentially helpful for doctors and 
 policymakers responding to the pandemic --- 
 some newly published and some dating back several 
-years (the earlier research involving viruses 
-biologically similar to Covid-19).  As of 
-mid-March, this portal encompassed 43 articles, 
+years (the older research concerns viruses 
+biologically similar to Covid-19).  On 
+March 16, the White House announced a 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID-19} and simultaneously released 
+a  \q{Covid-19 Open Research Dataset} (CORD-19) that was 
+curated by a consortium of industry and academic 
+institutions.  This \q{dataset} is actually a 
+\q{machine-readable Coronavirus literature collection} 
+which includes article metadata (not the publications themselves) 
+for just over 13,000 coronavirus research papers.  
+This resource is accompanied by links to open-access 
+document collections hosted on portals such as 
+Springer Nature and Wiley Online.}
+
+\q{Although the goal of opening these materials for 
+access to the general public is, at least in part, 
+to spur \textit{data mining} for Covid-19 research, 
+all of the resources aggregated via CORD-19 are 
+poorly designed for this priority.  Neither the article 
+metadata nor the full open-access document collections have 
+any mechanism for actually obtaining data published 
+alongside research papers (or even identifying which papers 
+have accompanying data in the first place).  The Springer 
+Nature collection --- which had already come online 
+some time before CORD-19 was officially announced --- 
+illustrates the limitations of this relatively unstructured 
+data-publishing appoach.  (In reality, Springer Nature 
+allows readers to browse articles in \HTML{} within their 
+web portal; with other CORD-19 resources it is actually 
+harder to locate supplemental data, because in general 
+there is no way to ascertain whether research data 
+exists for an article without downloading and reading 
+it).  As of mid-March, the Springer Nature portal 
+encompassed 43 articles, 
 of which 15 were accompanied by research data that 
 could be separately downloaded (this number does 
 not include papers that document research 
@@ -799,9 +839,97 @@ structural and persistence methodologies implemented
 at large scale by cloud-analytic services such as 
 BigData or \NCBI{} Nucleotide/GenBank.}
 
+\p{One important goal of the Research Object protocol 
+is to make research data available with a minimum of 
+additional effort.  In particular, Research Object should 
+try to minimize external dependencies --- in particular, 
+should minimize extent to which users need to install 
+software beyond what is provided by the Research Object Bundle 
+itself.  This \q{stand-alone} status can be achieved in 
+various ways.  One option is to organize Research Objects 
+around widely used scientific computing platforms, 
+such as R, Jupyter, or Matlab; another is to bundle 
+dependencies into a virtual platform, using tools such 
+as ReproZip.  Another solution, arguably more 
+in keeping with the vision of truly \textit{self-contained} 
+Research Objects, is to provide a kind of out-of-the-box 
+computing platform contained entirely within the 
+downloadable code and data.  In this context, code bases 
+which can be distributed in pure source fashion --- such 
+as WhiteDB for a database engine or AngelScript 
+(an embedded \Cpp{}-based scripting language) for a 
+scripting engine --- are especially valuable.}
+
+\p{The vision of \textit{standalone} and \textit{self-contained} 
+Research Object Bundles reveals new criteria that can 
+be introduced as goals for data publication, analogous 
+to \FAIR{}.  In particular, Research Objects should 
+be (1) \textit{self-contained} (with few or no external 
+dependencies), (2) \textit{transparent} (meaning that 
+all computing operations should be implemented by 
+source code within the bundle that can be examined 
+as code files and within a debugging session), 
+and (3) interactive (meaning that the bundle does not 
+only include raw data but also software to interactively 
+view and manipulate this data.  Research Objects which 
+embrace these priorities will try to provide data visualization, 
+persistence, and analysis through \GUI{}, database, and 
+scripting engines that can be embedded as source 
+code in the Research Object itself.  In particular, 
+self-contained bundles can be organized around what 
+might be called a \q{triple-kernel} (or 
+\TThreeK{}, for transparent-triple-kernel) architecture, 
+referring to database, data visualization, and 
+scripting engines.  A good prototype for 
+triple-kernel implementation would use 
+WhiteDB for the database kernel, AngelScript 
+for the scripting kernel, and \Qt{} for 
+the data visualization kernel (and also for networking).  
+With the (freely available) \Qt{} libraries, 
+each of these components can be built via 
+the \Qt{} build system and distributed in source 
+code fashion; there is no need to system-level 
+installs or any other external build or install operations.  
+} 
+
+\p{A fully self-contained \TThreeK{} 
+bundle as just described will support several 
+different forms of analytic operations and 
+queries: assuming the WhiteDB/AngelScript/\Qt{} 
+architecture, this would include queries against 
+the WhiteDB database engine, queries executed 
+by running Angel scripts, and queries against 
+remote services via \Qt{} Networking (to support 
+non-downloadable data).  Hypergraph code and 
+data representation can then support a unified 
+\q{Transparent Hypergraph Query Language} 
+(\THQL{}) which provides a common mechanism for 
+accessing these different varieties of queries.  
+\lTHQL{} is implemented via the notion of 
+\q{hypergraph construction as intermediate 
+representation}: specifically, the logic to construct 
+queries is understood as a manifestation of the logic 
+to populate hypergraphs meeting certain formal criteria.  
+Consequently, a hypergraph-construction language can 
+serve as a kind of bytecode for compiling database, 
+scripting, and networking queries in a common framework; 
+\THQL{} provides an Intermediate Representation and 
+Virtual Machine which dispatches queries to the 
+respective \TThreeK{} kernels (in the prototype case, 
+to the WhiteDB, AngelScript, and \Qt{} engines respectively).  
+A canonical WhiteDB/AngelScript/\Qt{} \TThreeK{} framework 
+can be facilitated by a Standard Development Kit, 
+extending the AngelScript \SDK{} with WhiteDB and 
+\Qt{} integration.}
+
+\p{Having described a \TThreeK{} model for \textit{individual} 
+Research Objects, one can then consider the development 
+of data set \textit{collections} encompassing research 
+ }
+
 \p{This discussion has highligted limitations of data 
 sets published in conjunction with coronavirus articles made 
-available as open-access recources on SpringerNature.  
+available as open-access recources on Springer Nature.  
 The point here is not to criticize the work of individual 
 authors, but rather to argue for a distinct data-curation 
 stage in the publication process, with data curators 
@@ -883,6 +1011,15 @@ collection, for example, could include components
 implemented to access the John Hopkins and 
 (anticipated) Verily data sets as well as all 
 the data brought in via the Springer Nature articles.  
+In particular, a useful starting-point for Covid-19 
+data integration would be a single data type 
+(e.g., a \Cpp{} class) whose specific purpose is 
+to obtain the most recent available coronavirus 
+data: one procedure to download the latest 
+files from the John Hopkins dashboard, one procedure 
+to search Springer Nature for new relevant content, 
+etc.  Such a data type would then serve as a 
+guide for obtaining Covid-19 information.    
 Insofar as conscious effort is made to integrate 
 all publicly accessible Covid-19 data via 
 an overarching toolkit, it will be easier to continually 
@@ -912,6 +1049,8 @@ benefit of unifying disparate Covid-19 data
 as effectively as possible, where this technology 
 can then be generalized to other medical 
 priorities and other academic disciplines overall.}
+
+
 
 \p{Supplemental to this overview, we can provide information 
 about a proposed portal for publishing research papers 

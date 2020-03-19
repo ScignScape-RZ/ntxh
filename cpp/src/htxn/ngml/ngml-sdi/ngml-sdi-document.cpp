@@ -187,6 +187,8 @@ void NGML_SDI_Document::output_pages()
   fn.prepend('p');
   fn.append(".txt");
   fn = qd.absoluteFilePath(fn);
+  QString contents;
+  page->write(contents);
   save_file(fn, "OK");
  }
 }

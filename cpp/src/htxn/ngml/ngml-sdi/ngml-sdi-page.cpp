@@ -23,3 +23,8 @@ void NGML_SDI_Page::add_page_element(NGML_SDI_Mark_Base* mark)
  page_elements_.insert({mark});
 }
 
+void NGML_SDI_Page::write(QString& contents)
+{
+ 
+}
+
