@@ -17,7 +17,6 @@
 
 USING_KANS(TextIO)
 
-
 //DEFAULT_SDI_FOLDER=
 
 int main(int argc, char* argv[])

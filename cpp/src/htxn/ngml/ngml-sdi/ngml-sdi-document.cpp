@@ -16,6 +16,9 @@
 
 #include "textio.h"
 
+#include "quazip/quazip.h"
+#include "quazip/quazipfile.h"
+
 USING_KANS(TextIO)
 
 #include <QDir>
@@ -65,7 +68,15 @@ void NGML_SDI_Document::parse_element_start_hypernode(NTXH_Graph& g, hypernode_t
   u4 start_y = (int) sy.toDouble();
 
   if(prs[5].first.isEmpty())
-    start_y -= (u4) this->global_base_line_skip_;    
+    start_y -= (u4) this->global_base_line_skip_;
+  else
+  {
+   QString b = prs[5].first;
+   if(b.endsWith("pt"))
+     b.chop(2);
+   start_y -= (int) b.toDouble();
+  }    
+
 
   nsel->set_start_x(start_x);
   nsel->set_start_y(start_y);
@@ -201,16 +212,82 @@ void NGML_SDI_Document::parse()
 void NGML_SDI_Document::output_pages()
 {
  QDir qd(folder_);
+
+ QList<QPair<QString, QPair<QString, QString>>> files;
+
  for(NGML_SDI_Page* page : pages_)
  {
   QString fn = QString::number(page->number());
   fn.prepend('p');
   fn.append(".txt");
-  fn = qd.absoluteFilePath(fn);
+  QString ffn = qd.absoluteFilePath(fn);
   QString contents;
   page->write(contents);
-  save_file(fn, contents);
+  save_file(ffn, contents);
+  files.push_back({ffn, {qd.dirName() + "/" + fn, fn}});
  }
+
+ QuaZip zip(folder_ + ".sdi.zip");
+ zip.setFileNameCodec("IBM866");
+
+ if (!zip.open(QuaZip::mdCreate)) 
+ {
+  qDebug() << "Zip open failed ...";
+ }
+
+ QFile inFile;
+ QuaZipFile outFile(&zip);
+ 
+ char c;
+ int j = 0;
+ 
+ for(QPair<QString, QPair<QString, QString>> pr : files)
+ {
+  qDebug() << "PR: " << pr;
+
+  inFile.setFileName(pr.first);
+  if (!inFile.open(QIODevice::ReadOnly))
+  {  
+   qDebug() << "Infile open failed ...";
+   continue;
+  }
+
+  QuaZipNewInfo qni = QuaZipNewInfo(pr.second.first, pr.second.second);
+  //qni.setPermissions(QFileDevice::ReadOther);
+  qni.setFilePermissions(pr.first);
+
+  if (!outFile.open(QIODevice::WriteOnly, qni))
+  {
+   qDebug() << "Outfile open failed ...";
+   continue; 
+  }
+ 
+//  qni.setPermissions(QFileDevice::ReadOther);
+  //qni.setFilePermissions(pr.first);
+
+  while (inFile.getChar(&c))
+    outFile.putChar(c);
+ 
+  if (outFile.getZipError() != ZIP_OK)
+  {
+   qDebug() << "Outfile write failed ...";   
+   continue;
+  }
+  outFile.close();
+ 
+  if (outFile.getZipError() != ZIP_OK)
+  {
+   qDebug() << "Outfile close failed ...";   
+   continue; 
+  }
+
+  inFile.close();
+ }
+ 
+ zip.close();
+ 
+ if (zip.getZipError() != 0)
+   qDebug() << "Zip failed ...";
 }
 
 

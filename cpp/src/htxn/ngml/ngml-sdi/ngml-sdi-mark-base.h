@@ -45,6 +45,7 @@ public:
  
  NGML_SDI_Mark_Base();
 
+
  ACCESSORS(u4 ,id);
 
  ACCESSORS(u4 ,start_index)

@@ -53,7 +53,7 @@ SOURCES += \
   $$SRC_DIR/main.cpp \
 
 
-LIBS += -L$$TARGETSDIR -lngml-sdi -lntxh-parser -lntxh
+LIBS += -L$$TARGETSDIR -lngml-sdi -lntxh-parser -lntxh -lquazip
 
 
 
