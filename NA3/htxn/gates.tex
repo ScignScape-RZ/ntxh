@@ -60,7 +60,7 @@
 
 \setlength{\footskip}{23pt}
 
-\usepackage[paperheight=16in,paperwidth=9.1in]{geometry}
+\usepackage[paperheight=14in,paperwidth=9in]{geometry}
 \geometry{left=1.3in,top=1.1in,right=.6in,bottom=1.6in} %margins
 
 %\linespread{1.3}
@@ -431,8 +431,8 @@
 
 \newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
 
-
-\setlength\parindent{24pt}
+\setlength\parindent{0pt}
+%\setlength\parindent{24pt}
 %\input{commands}
 
 
@@ -584,24 +584,41 @@ drop shadow=logoPurple!50!darkRed,
 %right=0pt,
 %top=2pt,
 ]
-\begin{minipage}{\textwidth}	
+\hspace{-9pt}\begin{minipage}{1.04\textwidth}	
 \begin{center}		
-{\setlength{\fboxsep}{19pt}
+{\setlength{\fboxsep}{12pt}
 	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Proposing a CORD-19 SDK}}}}
+{Proposing a CORD-19 SDK to Improve Machine Readability \\
+ {\fontsize{12}{14}\selectfont TO COORDINATE WITH SPRINGER NATURE, WILEY, ELSEVIER, the AMERICAN SOCIETY FOR MICROBIOLOGY, 
+ and the NEW ENGLAND JOURNAL OF MEDICINE}}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
 \end{center}
 
-\vspace{-1.5em}
-
+\vspace{.75em}
 %\noindent\lun{Overview}
 %\fontfamily{ptm}\fontsize{13pt}{18pt}\selectfont
 %{\sectsp}
-...
-\p{As a supplement to the main book, 
-several data sets will be published (or 
+
+\begin{center}\parbox{0.8\textwidth}{\color{red!60!black}
+\fontfamily{ptm}\fontsize{13pt}{15pt}\selectfont Supplemental to \textit{Advances in Ubiquitous Computing: 
+Cyber-Physical Systems, Smart Cities and Ecological Monitoring}, 
+edited by Amy Neustein, part of the Series 
+\q{Advances in Ubiquitous Sensing Applications for Healthcare}, 
+Elsevier, series editors Nilanjen Dey, Amira Ashour, 
+and Simon James Fong.}
+\end{center}
+
+\vspace{.5em}
+
+\p{One goal of \textit{Advances in Ubiquitous Computing} 
+is to advocate for a refined, more rigorous data publishing 
+protocol, which may be especially important at the 
+current moment when the urgency of sharing Covid-19 
+research is boosting the contemporary open-access 
+and data-centric publishing model.  As a supplement to 
+\textit{Advances}, several data sets will be published (or 
 republished) relevant to subjects covered by 
 chapters in the text, such as signal-processing, 
 bioacoustics, and Natural Language Processing.  
@@ -613,7 +630,7 @@ chapter's author).  These data sets introduce a new
 protocol for publishing research data, which essentially 
 extends existing initiatives such as Research Objects 
 and \FAIR{} (which stands for \q{Findable, Accessible, 
-Interoperable, Reusable}.  In principle, these initiatives 
+Interoperable, Reusable}).  In principle, these initiatives 
 --- which have been pushed by publishers, academic 
 institutions, and certain government agencies 
 (such as the National Institutes of Health) --- are intended to make 
@@ -658,9 +675,8 @@ Springer Nature and Wiley Online.}
 \p{Although the goal of opening these materials for 
 access to the general public is, at least in part, 
 to spur \textit{data mining} for Covid-19 research, 
-all of the resources aggregated via \Cnineteen{} are, 
-one can reasonably judge,  
-poorly designed for this priority.  Neither the article 
+all of the resources aggregated via \Cnineteen{} are  
+arguably poorly designed for this priority.  Neither the article 
 metadata nor the full open-access document collections have 
 any mechanism for actually obtaining data published 
 alongside research papers (or even identifying which papers 
