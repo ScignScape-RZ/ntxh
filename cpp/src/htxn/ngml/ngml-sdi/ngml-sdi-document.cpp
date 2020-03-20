@@ -290,4 +290,8 @@ void NGML_SDI_Document::output_pages()
    qDebug() << "Zip failed ...";
 }
 
+void NGML_SDI_Document::check_read_page(QString zip_file_path, u4 page_number)
+{
+
+}
 

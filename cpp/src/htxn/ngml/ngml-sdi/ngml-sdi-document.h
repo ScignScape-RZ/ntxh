@@ -55,6 +55,8 @@ public:
 
  NGML_SDI_Page* get_page(u4 page);
  void output_pages();
+
+ void check_read_page(QString zip_file_path, u4 page_number);
 };
 
 
