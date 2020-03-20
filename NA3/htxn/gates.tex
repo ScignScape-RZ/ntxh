@@ -1107,7 +1107,13 @@ operations to aggregate \Cnineteen{} data sets into a
 common representational format.}
 
 \section{The MOSAIC Protocol}
-\p{One important goal of the Research Object protocol 
+\p{As mentioned at the top, the \MOSAIC{} data-publishing 
+model prioritizes the implementation of 
+\textit{self-contained} data sets.  \q{Self-Contained} 
+means that researchers who download a data set 
+will not need to download \textit{additional} 
+software in order to examine and reuse the data set.  
+One important goal of the Research Object protocol 
 is to make research data available with a minimum of 
 additional effort.  Accordingly, Research Object should 
 try to minimize external dependencies --- in particular, 
@@ -1121,13 +1127,65 @@ dependencies into a virtual platform, using tools such
 as ReproZip.  An alternative solution,
 more in keeping with the 
 vision of truly \textit{self-contained} 
-Research Objects --- the one which would be adopted for our proposed \Cnineteen{} \SDK{} --- is to provide a kind of out-of-the-box 
+Research Objects --- the one which is embraced by \MOSAIC{} and 
+would be adopted for our proposed \Cnineteen{} \SDK{} --- 
+is to provide a kind of out-of-the-box 
 computing platform contained entirely within the 
 downloadable code and data.  In this context, code bases 
 which can be distributed in pure source fashion --- such 
 as WhiteDB for a database engine or AngelScript 
 (an embedded \Cpp{}-based scripting language) for a 
 scripting engine --- are especially valuable.}
+
+\p{Considering the inter-disciplinary nature of Covid-19 research, 
+it is unavoidable that different scientists will need 
+different sorts of specialized software to analyze the 
+kinds of information relevant to their research.  The 
+computational techniques applicable to diagnosing 
+coronavirus infection are scientifically very different 
+from those used for genomic or epidemiological studies 
+of the disease; it is impractical to expect 
+pathologists to use the same software as bioinformaticians 
+studying the pathogen, or for either to use the same 
+software as virologists modeling the potential or observed 
+spread of the disease.  In short, even if 
+scientists from disparate disciplines start with a 
+common pool of raw data, they will need to 
+analyze this data through a diverse set of 
+supplemental computational tools, which will vary 
+not only across disciplines but also in terms of 
+the software and laboratory facilities available 
+to different researchers through their institutions.  
+In this sense it is impossible to unify all 
+\Cnineteen{} data into a \textit{fully} self-contained 
+information space.}
+
+\p{Nevertheless, committing to \q{standalone} data publishing 
+remains a valuable goal even in a context where published 
+data sets will inevitably migrate to different 
+digital ecosystems.  Although scientists may use 
+external digital tools \textit{when necessary} to 
+perform certain calculations, or to interface with 
+laboratory equipment, we can hope to minimize the 
+\textit{degree of variation} across different 
+domain-specific extensions to \Cnineteen{}.  
+Ideally, that is, the version of \Cnineteen{} 
+(along with its supporting technology) 
+found in a biomedical setting will be as 
+similar as possible to that found in a 
+biochemical context, or a health-policy 
+contest.  By providing a self-contained computing 
+framework is delivered as an integral package accompanying 
+\Cnineteen{}, a multi-disciplinary \Cnineteen{} 
+software package (which could be organized through our 
+proposed \SDK{}) would limit the degree of 
+technological divergence that would naturally 
+tend to arise as \Cnineteen{} is leveraged by 
+different scientific fields.  In the absence of 
+any initiative to limit this drift, \Cnineteen{} 
+could easily devolve into a federation of 
+separate resources which have no interconnection 
+apart from their nominal focus on Covid-19.}
 
 \p{The vision of \textit{standalone} and \textit{self-contained} 
 Research Object Bundles reveals new criteria that can 
@@ -1146,11 +1204,13 @@ persistence, and analysis through \GUI{}, database, and
 scripting engines that can be embedded as source 
 code in the Research Object itself.  In particular, 
 self-contained bundles can be organized around what 
-might be called a \q{triple-kernel} (or 
+in \MOSAIC{} is called a \q{triple-kernel} (or 
 \MThreeK{}, for \MOSAIC{} Triple Kernel) architecture, 
 referring to database, data visualization, and 
 scripting engines.  A good prototype for 
-triple-kernel implementation would use 
+triple-kernel implementation would gravitate 
+toward components that can be unified into a 
+common code base: for example, 
 WhiteDB for the database kernel, AngelScript 
 for the scripting kernel, and \Qt{} for 
 the data visualization kernel (and also for networking).  
@@ -1211,7 +1271,8 @@ of Covid-19 research, from demographic and
 quantitative epidemiological modeling 
 to networking with remote genomic data.}
 
-\p{This discussion has highlighted limitations of data 
+\section{Conclusion}
+\p{This paper has highlighted limitations of data 
 sets published in conjunction with coronavirus articles made 
 available as open-access resources on Springer Nature 
 (and, by extension, \Cnineteen{}).  
