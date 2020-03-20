@@ -102,14 +102,6 @@
 
 \definecolor{darkRed}{rgb}{.2,.0,.1}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blCyan!80!darkRed,
-    filecolor=magenta,
-    urlcolor=blue,
-}
-
-\urlstyle{same}
 
 \definecolor{blGreen}{rgb}{.2,.7,.3}
 
@@ -557,6 +549,20 @@
 	rotate=115
 	] {};
 }
+
+\makeatletter
+\def\@cite#1#2{[\textbf{#1\if@tempswa , #2\fi}]}
+\def\@biblabel#1{[\textbf{#1}]}
+\makeatother
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta,
+	urlcolor=blue,
+}
+
+\urlstyle{same}
 
 \begin{document}
 	
@@ -1125,13 +1131,13 @@ data sets indexed by our \SDK{}.  As a concrete example,
 a concept such as \q{expiratory flow} appears in \Cnineteen{} 
 both as a table column in research data and as a medical concept 
 discussed in research papers; a unified microcitation framework 
-should there map \textit{expiratory flow} as a keyphrase 
+should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
 to both textual locations and data set parameters.  
 Similarly, a concept such as 
-\textit{2{\textquotesingle}-C-ethynyl} (mentioned earlier 
+\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier 
 in the context of transcription errors) 
 should be identified both as a phrase in 
-article text and as a molecular component 
+article texts and as a molecular component 
 present within compounds whose scientific 
 properties are investigated through \Cnineteen{} 
 research data, so that a search for this 
@@ -1143,7 +1149,10 @@ those used for marking up Natural Language techniques;
 consequently, the proposed \SDK{} would include a custom 
 data-annotation library, to be employed in conjunction with 
 operations to aggregate \Cnineteen{} data sets into a 
-common representational format.}
+common representational format.  In addition, 
+the \SDK{} would include a customized document viewer 
+which embeds code to recognize and interact with 
+microcitations in both manuscript and data-set environments.}
 
 \section{The MOSAIC Protocol}
 \p{As mentioned at the top, the \MOSAIC{} data-publishing 
@@ -1250,8 +1259,9 @@ scripting engines.  A good prototype for
 triple-kernel implementation would gravitate 
 toward components that can be unified into a 
 common code base: for example, 
-WhiteDB for the database kernel, AngelScript 
-for the scripting kernel, and \Qt{} for 
+WhiteDB for the database kernel (see \cite{EnarReilent}), AngelScript 
+for the scripting kernel (see \cite{AS}), and \Qt{} 
+(see \cite{IvanCukic}) for 
 the data visualization kernel (and also for networking).  
 With the (freely available) \Qt{} libraries, 
 each of these components can be built via 
@@ -1494,25 +1504,40 @@ while the pandemic continues to present a global crisis.}
 
 \begin{thebibliography}{99}
 
-\bibitem{Shi}{%
-Heshui Shi, \textit{et. al.},
-\q{Radiological findings from 81 patients with COVID-19 
-pneumonia in Wuhan, China: a descriptive study}.
-\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
+\bibitem{CORD}{%
+	\q{COVID-19 Open Research Dataset (CORD-19)}. 2020. Version 2020-03-13. Retrieved from https://pages.semanticscholar.org/coronavirus-research. Accessed 2020-03-20. doi:10.5281/zenodo.3715506
+	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+
+\bibitem{Eyer}{%
+	Lud\"ek Eyer, \textit{et. al.},
+	\q{Nucleoside analogs as a rich source of antiviral agents active against arthropod-borne flaviviruses}.
+	\biburl{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890575/}}
+
+\bibitem{AS}{%
+	Andreas J\"onsson,
+	\q{AngelCode Scripting Library}, 
+	\biburl{www.AngelCode.com/AngelScript/}}
+
+\bibitem{IvanCukic}{%
+	Ivan \v{C}uki\'c,
+	\q{Functional and imperative reactive programming based on a generalization of the continuation monad in the C++ programming language}, 
+	\biburl{http://elibrary.matf.bg.ac.rs/bitstream/handle/123456789/4738/ivan_cukic_phd.pdf?sequence=1}}
 
 \bibitem{ESIP}{%
 Mark A. Parsons and Ruth Duerr,
 \q{Data Identifiers, Versioning, and Micro-citation}, 
 \biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
 
-\bibitem{Eyer}{%
-Lud\"ek Eyer, \textit{et. al.},
-\q{Nucleoside analogs as a rich source of antiviral agents active against arthropod-borne flaviviruses}.
-\biburl{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890575/}}
+\bibitem{EnarReilent}{%
+	Enar Reilent,
+	\q{Whiteboard Architecture for the Multi-agent Sensor Systems}, 
+	\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
 
-\bibitem{CORD}{%
-\q{COVID-19 Open Research Dataset (CORD-19)}. 2020. Version 2020-03-13. Retrieved from https://pages.semanticscholar.org/coronavirus-research. Accessed 2020-03-20. doi:10.5281/zenodo.3715506
-\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+\bibitem{Shi}{%
+	Heshui Shi, \textit{et. al.},
+	\q{Radiological findings from 81 patients with COVID-19 
+		pneumonia in Wuhan, China: a descriptive study}.
+	\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
 
 \end{thebibliography}
 
