@@ -708,12 +708,98 @@ This resource is accompanied by links to open-access
 document collections hosted on portals such as 
 Springer Nature and Wiley Online.}
 
-\p{Over all, then, \Cnineteen{} }
+\p{Over all, then, \Cnineteen{} has two 
+distinct parts: there are, first, links to 
+web portals offering full access to a select 
+group of publications (in human-readable formats 
+like \PDF{} and \HTML{}) and, second, 
+a much larger machine-readable corpus of article 
+texts relevant to Covid-19.  The \Cnineteen{} 
+collection was formulated with the explicit goal 
+of promoting both text mining and data mining solutions 
+to advance coronavirus research.  This means that 
+\Cnineteen{} is intended to be used both as a document 
+archive for text mining and as a repository for 
+finding and obtaining coronavirus data for subsequent 
+research.  Unfortunately, \Cnineteen{} is not particularly 
+well structured for either text or data mining, for 
+reasons that will be outlined shortly.  To some extent, 
+this probably reflects \Cnineteen{} being conceived as 
+just a starting point, a spur to further implementation.  
+The White House announcement directly requests 
+institutions to develop technologies which can 
+take advantage of \Cnineteen{} as it was initially 
+published.  In short, \Cnineteen{} was released with the 
+explicit anticipation that industry or academia would 
+augment the underlying data by layering on additional 
+software.  Our porposed \Cnineteen{} \SDK{} would be 
+one example of a component providing analytic 
+capabilities which make the raw \Cnineteen{} data 
+more valuable, and also a toolkit for creating 
+new solutions targeting \Cnineteen{}.}
 
-\p{\textbf{Even if the goal of opening these materials for 
-access to the general public is, at least in part, 
-to spur \textit{data mining} for Covid-19 research, 
-the is that all of the resources aggregated via \Cnineteen{} are poorly designed for this priority}.  The reason why is because neither the article 
+\p{Lacunae in the raw \Cnineteen{} data 
+--- the problems which require customized \Cnineteen{} software --- 
+can be identified both in the text encoding through which 
+\Cnineteen{} functions as a corpus for text mining, and 
+in the connection between papers archived 
+by \Cnineteen{} and Covid-19 research data.  
+With respect to text mining, an immediate problem lies 
+in how the text was parsed from \PDF{} files, a process 
+which can cause imprecise or inaccurate text representation.  
+In particular, the \Cnineteen{} library evinces  
+transcription errors, particularly in relation to 
+technical or scientific phrases and terminology.  
+For example, scientific notation may be improperly 
+transcribed; a formal notation such as \q{2{\textquotesingle}-C-ethynyl}
+(to take one specific case) is encoded in \Cnineteen{} 
+as \q{2 0 -C-ethynyl}, which could stymie text searches 
+against the \Cnineteen{} corpus.  Moreover, there is no 
+semantic marking identifying that the \q{2 0 -C-ethynyl} 
+text segment has a specific technical meaning.  These 
+errors or limitations arise in part from unavoidable 
+anomalies which occur when reading texts from \PDF{} files 
+rather than from machine-readable, structured 
+formats such as \XML{}.}
+
+\p{To address these problems, our proposed 
+\SDK{} would try to cross-reference the 
+\Cnineteen{} \JSON{} data against \XML{} or \LaTeX{} manuscripts 
+which may have been saved by authors or publishers as part 
+of the publication process.  At its most complete, this 
+would entail requesting authors whose papers are indexed 
+on \Cnineteen{} to submit source materials if they are 
+available in a machine-readable format, such as \LaTeX{}, 
+as well as requesting composit-related representations from 
+affiliated publishers, with the goal of providing machine-readable 
+access to publications in multiple formats.  
+The \SDK{} would then include built-in client libraries 
+with procedures to 
+merge different representations of each document.}
+ 
+\p{It is also worth observing that the \JSON{} format used 
+for encoding \Cnineteen{} manuscripts presents some 
+logistical challenges for any operations related to 
+text-mining or to cross-referencing publications and 
+data sets.  In particular, \Cnineteen{} makes 
+partial use of \q{standoff annotation}; specifically, 
+document features such as citations and references are 
+notated through character offsets into the paragraph where 
+they appear.  As a result, accurately reading these document 
+elements requires synthesizing data points parsed from several 
+distinct objects in the \JSON{} code, which is only feasible given 
+a client library built to interface with the \Cnineteen{} files 
+in accord with their specific schema.  Such a client 
+library, again proposed as part of a 
+\Cnineteen{} \SDK{}, would implement convenience procedures to handle 
+recurring tasks, such as obtaining the full bibliographic 
+reference affixed to a given location in a manuscript.}
+
+\p{With respect to \textit{data} mining in the \Cnineteen{} 
+context, the limitations in the currently available raw 
+\Cnineteen{} data are even more pronounced than in the 
+context of text mining.  In particular, 
+neither the article 
 metadata nor the full open-access document collections have 
 any mechanism for actually obtaining data published 
 alongside research papers, or even identifying which papers 
@@ -765,60 +851,7 @@ publisher has their own mechanism for alerting readers
 to the existence of open-access data and allowing them 
 to download the relevant data sets.}
 
-\p{It is also worth observing that the \JSON{} format used 
-for encoding \Cnineteen{} manuscripts presents some 
-logistical challenges for any operations related to 
-text-mining or to cross-referencing publications and 
-data sets.  In particular, \Cnineteen{} makes 
-partial use of \q{standoff annotation}; specifically, 
-document features such as citations and references are 
-notated through character offsets into the paragraph where 
-they appear.  As a result, accurately reading these document 
-elements requires synthesizing data points parsed from several 
-distinct objects in the \JSON{} code, which is only feasible given 
-a client library built to interface with the \Cnineteen{} files 
-in accord with their specific schema.  Such a client 
-library, which could be provided as part of a 
-\Cnineteen{} \SDK{}, could implement convenience procedures to handle 
-recurring tasks, such as obtaining the full bibliographic 
-reference affixed to a given location in a manuscript.}
-
-\p{A further complication in \Cnineteen{} arises 
-from how the text was parsed from \PDF{} files, a process 
-which can cause imprecise or inaccurate text representation.  Upon downloading and 
-examining the \Cnineteen{} library, one will encounter 
-transcription errors arising from how document  
-   
-For example, scientific notation may be improperly 
-transcribed; a formal notation such as \q{2{\textquotesingle}-C-ethynyl}
-(to take one specific case) is encoded in \Cnineteen{} 
-as \q{2 0 -C-ethynyl}, which could stymie text searches 
-against the \Cnineteen{} corpus.  Moreover, there is no 
-semantic marking identifying that the \q{2 0 -C-ethynyl} 
-text segment has a specific technical meaning.  These 
-errors or limitations arise in part from unavoidable 
-anomalies which occur when reading texts from \PDF{} files 
-rather than from machine-readable, structured 
-formats such as \XML{}.  To address these problems, 
-it would be optimal to cross-reference the 
-\Cnineteen{} \JSON{} data against \XML{} or \LaTeX{} manuscripts 
-which may have been saved by authors or publishers as part 
-of the publication process.  At its most complete, this 
-would entail requesting authors whose papers are indexed 
-on \Cnineteen{} to submit source materials if they are 
-available in a machine-readable format, such as \LaTeX{}, 
-as well as requesting composit-related representations from 
-affiliated publishers, with the goal of providing machine-readable 
-access to publications in multiple formats.  In addressing this problem, our proposed \SDK{} for 
-\Cnineteen{} would include built-in client libraries 
-with procedures to 
-merge different representations of each document.  As well 
-as facilitating text-mining across the corpus, these client 
-libraries would also improve the usability of \Cnineteen{} data sets; 
-in particular, it would be possible to search the document corpus 
-for terms which appear in data sets, thereby building a 
-network of links between data sets and publications.}
-
+\section{Data Integration within CORD-19}
 \p{Aside from the issues, described over the last several 
 paragraphs, which are likely to hinder text and data mining 
 across \Cnineteen{}, the 
