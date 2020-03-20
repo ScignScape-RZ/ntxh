@@ -288,10 +288,137 @@ void NGML_SDI_Document::output_pages()
  
  if (zip.getZipError() != 0)
    qDebug() << "Zip failed ...";
+
+ QString new_path = folder_ + "/../../test/" + qd.dirName() + ".sdi.zip";
+ QString unzip_path = folder_ + "/../../test/test";
+
+ qDebug() << new_path;
+
+ if(QFile::exists(new_path))
+ {
+   QFile::remove(new_path);
+ }
+
+ qDebug() << "Copying ... " << folder_ + ".sdi.zip" << " to " << new_path;
+
+ QFile::copy(folder_ + ".sdi.zip", new_path); 
+
+ check_read_page(new_path, unzip_path, qd.dirName(), 1);
 }
 
-void NGML_SDI_Document::check_read_page(QString zip_file_path, u4 page_number)
+void NGML_SDI_Document::check_read_page(QString zip_file_path, 
+  QString unzip_path, QString unzip_folder_name, u4 page_number)
 {
+ check_unzip_folder(zip_file_path, unzip_path, unzip_folder_name);
+ QDir dir(*unzip_folder_);
+ QString path = dir.absoluteFilePath(QString("p%1.txt").arg(page_number));
+ QString text = load_file(path);
+
+ qDebug() << "Text: " << text;
+   
+}
+
+void NGML_SDI_Document::check_unzip_folder(QString zip_file_path, 
+  QString unzip_path, QString unzip_folder_name)
+{
+ if(unzip_folder_)
+   return;
+
+ QDir dir(unzip_path);
+ dir.mkdir(unzip_folder_name);
+ unzip_folder_ = new QString(dir.absoluteFilePath(unzip_folder_name));
+
+//? qDebug() << "UZ: " << dir.absolutePath();
+//? if (!dir.exists())
+//?   dir.mkpath(".");
+
+ QuaZip zip(zip_file_path);
+
+ if (!zip.open(QuaZip::mdUnzip)) 
+ {
+  qWarning("testRead(): zip.open(): %d", zip.getZipError());
+  return;
+ }
+
+ zip.setFileNameCodec("IBM866");
+
+ qWarning("%d entries\n", zip.getEntriesCount());
+ qWarning("Global comment: %s\n", zip.getComment().toLocal8Bit().constData());
+
+ QuaZipFileInfo info;
+
+ QuaZipFile file(&zip);
+
+ QFile out;
+ QString name;
+ char c;
+ for (bool more = zip.goToFirstFile(); more; more = zip.goToNextFile()) 
+ {
+  if (!zip.getCurrentFileInfo(&info)) 
+  {
+   qWarning("testRead(): getCurrentFileInfo(): %d\n", zip.getZipError());
+  }
+//?  if (!singleFileName.isEmpty())
+//?    if (!info.name.contains(singleFileName))
+//?      continue;
+
+  if (!file.open(QIODevice::ReadOnly)) 
+  {
+   qWarning("testRead(): file.open(): %d", file.getZipError());
+   return;
+  }
+
+  name = QString("%1/%2").arg(unzip_path).arg(file.getActualFileName());
+
+  qDebug() << "Name: " << name;
+
+  if (file.getZipError() != UNZ_OK) 
+  {
+   qWarning("testRead(): file.getFileName(): %d", file.getZipError());
+   return;
+  }
+
+  //out.setFileName("out/" + name);
+  out.setFileName(name);
+
+  // this will fail if "name" contains subdirectories, but we don't mind that
+  if(!out.open(QIODevice::WriteOnly))
+    qDebug() << "Out failed ...";
+  // Slow like hell (on GNU/Linux at least), but it is not my fault.
+  // Not ZIP/UNZIP package's fault either.
+  // The slowest thing here is out.putChar(c).
+  while (file.getChar(&c)) out.putChar(c);
+
+  out.close();
+
+  if (file.getZipError() != UNZ_OK) 
+  {
+   qWarning("testRead(): file.getFileName(): %d", file.getZipError());
+   return;
+  }
+
+  if (!file.atEnd()) 
+  {
+   qWarning("testRead(): read all but not EOF");
+   return;
+  }
+
+  file.close();
+
+  if (file.getZipError() != UNZ_OK) 
+  { 
+   qWarning("testRead(): file.close(): %d", file.getZipError());
+   return;
+  }
+ }
+
+ zip.close();
+
+ if (zip.getZipError() != UNZ_OK) 
+ {
+  qWarning("testRead(): zip.close(): %d", zip.getZipError());
+  return;
+ }
 
 }
 

@@ -37,6 +37,8 @@ class NGML_SDI_Document
 
  QMap<QPair<QString, u4>, void*> open_elements_;
 
+ QString* unzip_folder_;
+
 public:
  
  NGML_SDI_Document(QString path, QString folder);
@@ -56,7 +58,12 @@ public:
  NGML_SDI_Page* get_page(u4 page);
  void output_pages();
 
- void check_read_page(QString zip_file_path, u4 page_number);
+ void check_read_page(QString zip_file_path, 
+   QString unzip_path, QString unzip_folder_name, u4 page_number);
+
+ void check_unzip_folder(QString zip_file_path, 
+  QString unzip_path, QString unzip_folder_name);
+
 };
 
 
