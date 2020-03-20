@@ -165,8 +165,8 @@
 \newcommand{\NDPCloud}{{\color{red!15!black}%
 {\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
 
-\newcommand{\TThreeK}{{\color{red!15!black}%
-{\fontfamily{qhv}\selectfont {T3K}}}}
+\newcommand{\MThreeK}{{\color{blue!15!black}%
+{\fontfamily{qhv}\selectfont {M3K}}}}
 
 
 \newcommand{\lfNDPCloud}{{\color{red!15!black}%
@@ -400,11 +400,15 @@
 
 \usepackage{enumitem}
 
+\colorlet{dsl}{purple!20!brown}
+\colorlet{dslr}{dsl!50!blue}
+
 \setlist[description]{%
-  topsep=30pt,               % space before start / after end of list
-  itemsep=5pt,               % space between items
-  font={\bfseries\sffamily}, % set the label font
-%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+  topsep=10pt,
+  labelsep=12pt,
+  itemsep=12pt,               % space between items
+  %font={\bfseries\sffamily}, % set the label font
+  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
 }
 
 \setlist[enumerate]{%
@@ -620,23 +624,47 @@ prototype a data-publishing protocol that extends
 existing initiatives such as \q{Research Objects} 
 and \FAIR{} (\q{Findable, Accessible, 
 Interoperable, Reusable}), both of which 
-reflect publishers' current prioritization 
-of publicly shared research data.  Implementing 
-this new \q{data-centric} publishing paradigm 
+reflect publishers' current emphasis on 
+publicly sharing research data.  In the last 
+few years, academic, governmental, and 
+industry stakeholders have increasingly 
+prioritized open-access data publication as a 
+complement to the traditional ecosystem of 
+peer-reviewed scientific literature.  
+This new \q{data-centric} paradigm seeks to 
+augment the value and accuracy research 
+data by provisioning scientists with digital 
+tools to find, evaluate, and reuse data 
+which is relevant to their research.  
+At the present moment, the urgency of sharing Covid-19 
+research is further boosting this data-centric and open-access publishing model.  Indeed, Covid-19 
+presents a unique opportunity for researchers 
+and publishers to assess the strengths and 
+weaknesses of current publishing technology, 
+because we are now in a global environment where there 
+is an unprecedented societal demand 
+for pooling and accelerating research in 
+one specific, easily demarcated domain 
+(that of Covid-19 in particular and 
+coronaviruses in general).}
+
+\p{Realizing a new data-centric publishing paradigm 
 requires more than just enouraging authors to 
-prepare downloadable data sets accompanying research 
-papers; it also requires a technological 
+prepare downloadable data sets to accompanying their research 
+papers.  It also requires a technological 
 infrastructure to support the curation of 
-data sets and data set collections, so that 
-scientists can locate data sets which are 
-relevant to their research and then incorporate these
-data sets into subsequent research.  One goal 
-of \textit{Advances in Ubiquitous Computing} 
+data sets and data set collections.  New digital solutions 
+are needed to accommodate the sheer volume and diversity of 
+peer-reviewed research work, and the implementation of 
+these solutions will have to be guided by interdisciplinary 
+theoretical models integrating computer science, knowledge 
+engineering, biblioinformatics, as well as individual 
+natural and social sciences.  In this vein, 
+one goal of \textit{Advances in Ubiquitous Computing} 
 is to advocate for an even more rigorous data publishing 
-protocol, which is especially important at the 
-current moment when the urgency of sharing Covid-19 
-research is boosting the contemporary open-access 
-and data-centric publishing model.  As a supplement to 
+protocol, taking a multi-disciplinary and multi-paradigm 
+perspective on the curation and structuring of 
+published research data.  In particular, as a supplement to 
 \textit{Advances}, several data sets will be published (or 
 republished) relevant to subjects covered by 
 chapters in the text, such as signal-processing, 
@@ -665,7 +693,7 @@ to develop a concrete implementation of the
 and particularly the \q{Covid-19 Open Research Dataset} (\Cnineteen{}) 
 research collection recently published at the launch of a new 
 White House initiative devoted to Covid-19.  In particular, 
-we propose to create a Standard Development Toolkit 
+we propose to create a Standard Development Kit 
 (\SDK{}) that would facilitate the deployment of 
 software targeting \Cnineteen{}.  In order to explain 
 the role of this proposed \SDK{} in relation to 
@@ -724,34 +752,74 @@ finding and obtaining coronavirus data for subsequent
 research.  Unfortunately, \Cnineteen{} is not particularly 
 well structured for either text or data mining, for 
 reasons that will be outlined shortly.  To some extent, 
-this probably reflects \Cnineteen{} being conceived as 
-just a starting point, a spur to further implementation.  
+this reflects \Cnineteen{} being conceived as 
+just a starting point; a spur to further implementation.  
 The White House announcement directly requests 
-institutions to develop technologies which can 
+institutions to develop \textit{further} technologies 
+which would help scientists and jurisdictions to 
 take advantage of \Cnineteen{} as it was initially 
 published.  In short, \Cnineteen{} was released with the 
 explicit anticipation that industry or academia would 
 augment the underlying data by layering on additional 
-software.  Our porposed \Cnineteen{} \SDK{} would be 
-one example of a component providing analytic 
+software.  Our proposed \Cnineteen{} \SDK{} would 
+do just that, as a component providing analytic 
 capabilities which make the raw \Cnineteen{} data 
-more valuable, and also a toolkit for creating 
+more valuable, and also a toolkit through which 
+other developers could create 
 new solutions targeting \Cnineteen{}.}
 
 \p{Lacunae in the raw \Cnineteen{} data 
 --- the problems which require customized \Cnineteen{} software --- 
 can be identified both in the text encoding through which 
 \Cnineteen{} functions as a corpus for text mining, and 
-in the connection between papers archived 
-by \Cnineteen{} and Covid-19 research data.  
-With respect to text mining, an immediate problem lies 
-in how the text was parsed from \PDF{} files, a process 
-which can cause imprecise or inaccurate text representation.  
-In particular, the \Cnineteen{} library evinces  
+in the research data potentially made 
+available via \Cnineteen{} and its archived publications.  
+These problems fall into three broad categories, 
+which will be discussed on more detail over the 
+next several paragraphs: 
+
+%\vspace{-2em}
+\begin{description}
+	
+\item[Transription Errors]  This problem 
+arises from incorrect or simplified translation 
+of publication texts into a machine-readable 
+format, which can cause the machine-readable 
+text archive to misrepresent the structure 
+and content of documents, hindering text-mining 
+technology that targets the archive.
+
+\item[Poorly Indexed Research Data]  Although 
+\Cnineteen{} provides a structured representation 
+of a large collection of research 
+\textit{papers}, there is no easy-to-use tool 
+for finding research \textit{data} 
+through \Cnineteen{}.
+
+\item[Poorly Integrated Research Data]  The 
+research data which \textit{can} be 
+accessed through \Cnineteen{} evinces 
+a wide variety of technical fields 
+and formats, with distinct software 
+requirements; as a result, it is a 
+difficult task to merge and integrate 
+different data sets related to 
+Covid-19.  At present, \Cnineteen{} 
+does not include any software tools 
+or computer code that would facilitate 
+data integration.   
+\end{description}}
+
+\p{With respect to text mining, an immediate problem lies 
+in \Cnineteen{}'s archive-construction methodology: 
+especially, how the text was parsed from \PDF{} files.  
+This is a process 
+which almost inevitably causes imprecise or inaccurate text representation, which can degrade the quality of 
+the archive unless manual or automated corrections are made.  In particular, the \Cnineteen{} library evinces  
 transcription errors, particularly in relation to 
-technical or scientific phrases and terminology.  
-For example, scientific notation may be improperly 
-transcribed; a formal notation such as \q{2{\textquotesingle}-C-ethynyl}
+technical or scientific phrases and terminology,  
+and scientific notation may be improperly 
+transcribed.  A formal designation such as \q{2{\textquotesingle}-C-ethynyl}
 (to take one specific case) is encoded in \Cnineteen{} 
 as \q{2 0 -C-ethynyl}, which could stymie text searches 
 against the \Cnineteen{} corpus.  Moreover, there is no 
@@ -803,18 +871,18 @@ neither the article
 metadata nor the full open-access document collections have 
 any mechanism for actually obtaining data published 
 alongside research papers, or even identifying which papers 
-have accompanying data in the first place.    The Springer 
-Nature collection --- which had already come online 
-some time before \Cnineteen{} was officially announced --- 
-illustrates the limitations of this relatively unstructured 
-data-publishing approach.  This paper will 
-focus on Springer Nature, but problems 
-allows readers to browse articles in \HTML{} within their 
-web portal; with other \Cnineteen{} resources it is actually 
-harder to locate supplemental data, because in general 
-there is no way to ascertain whether research data 
+have accompanying data in the first place.  The Springer 
+Nature collection illustrates the limitations of this relatively unstructured 
+data-publishing approach (this following analysis will 
+focus on Springer Nature, but the problems identified 
+are no less pronounced on the other \Cnineteen{} portals 
+--- 
+if anything, because Springer Nature 
+allows readers to browse articles in \HTML{} within the 
+web portal directly, one can ascertain whether research data 
 exists for an article without downloading and reading 
-it.  As of mid-March, the Springer Nature portal 
+it; with other \Cnineteen{} resources it is actually 
+harder to locate supplemental data when available).  As of mid-March, the Springer Nature portal 
 encompassed 43 articles, 
 of which 15 were accompanied by research data that 
 could be separately downloaded (this number does 
@@ -851,6 +919,23 @@ publisher has their own mechanism for alerting readers
 to the existence of open-access data and allowing them 
 to download the relevant data sets.}
 
+\p{To address the \Cnineteen{} text and data mining 
+limitations, our \SDK{} would provide capabilities 
+including (1) a client library for manipulating and 
+examining the \Cnineteen{} 
+\JSON{} files; (2) supplementing the \Cnineteen{} files 
+with alternative document representations which would 
+offer a more detailed infoset for document content, 
+wherever such files are available; (3) a machine-readable 
+index of open-access data sets linked to \Cnineteen{} 
+articles; and (4) software tools for downloading 
+and manipulating these coronavirus data sets.  
+In addition, our \SDK{} would provide tools for 
+merging and integrating Covid-19 data from 
+disparate sources.  The problems of data integration, 
+and solutions offered by the proposed \SDK{}, are 
+discussed in the following paragraphs.}
+
 \section{Data Integration within CORD-19}
 \p{Aside from the issues, described over the last several 
 paragraphs, which are likely to hinder text and data mining 
@@ -876,7 +961,6 @@ computational manner.  A properly curated data collection
 would need to unify disparate sources 
 into a common machine-readable representation (such as \XML{}).}
 
-%\section{Solutions}
 \p{Going further, productive data curation should also 
 aspire to \textit{semantic} integration, unifying disparate 
 sources into a common data model.  For example, multiple 
@@ -963,43 +1047,66 @@ a Covid-19 package; in particular, computer code
 can be provided which automates the process of 
 networking with remote genomics archives through the 
 accession numbers and file-formats which those archives 
-recognize.  A case-study in this type of technology is 
-provided by Verily, the Alphabet division which 
-(according to news reports, such as a New York Times
-cover-page story on March 15th) is developing an 
-online platform for the public to check symptoms and 
-locate providers prepared to treat Covid-19 cases.  
-One Verily project is PurpleData, esssentially a 
-miniature version of Google's \q{BigData} platform; 
-unlike its larger archetype, PurpleData is designed 
-to run and host data sets small enough for a single 
-computer, so as to develop and test analytic queries 
-which are eventually posted to remote BigData services.  
-In short, PurpleData is a simulation of BigData designed 
-for prototyping code which will interface with BigData.  
-This prototyping/simulation paradigm is a useful model 
-to apply to other remote-analytics services, such as 
-the National Center for Biotechnology Information (\NCBI{}) 
-genomics archives 
-where some of emerging Covid-19 data has been stored.  
-The point here is not to recommend a direct generalization of 
-PurpleData --- indeed, PurpleData (implemented in Python) is 
-not an ideal case-study in prototyping/simulation techniques 
-because it is not legitimately self-contained.  
-One could argue that alternative technologies, 
-such as WhiteDB --- 
-an under-appreciated database engine (an \SQL{}/\NoSQL{} hybrid) 
-currently used for 
-certain CyberPhysical and 
-telemedical systems --- would be a more definitive framework for prototyping 
-solutions.  WhiteDB is a standalone \CCpp{} engine which can 
-be dropped as source code into any compiled project; 
-it therefore offers fully transparent access to data-serialization 
-code, and would be especially useful for emulating the 
-structural and persistence methodologies implemented 
-at large scale by cloud-analytic services such as 
-BigData or \NCBI{} Nucleotide/GenBank.}
+recognize.  More generally, our proposed 
+\SDK{} would provide a toolkit for composing client 
+libraries targeting remote data services --- 
+formulating queries and then parsing the results delivered 
+in formats such as \XML{} or \JSON{} --- as well 
+as concrete libraries for remote data sources repeatedly 
+used by \Cnineteen{} data sets.}
 
+\p{As a final point on the topic of integrating 
+disparate \Cnineteen{} research data, note that 
+an overarching framework for indexing Covid-19 data 
+sets would also facilitate the process of cross-referencing 
+article text and research data.  In particular, 
+our proposed \SDK{} would introduce a 
+system of \textit{microcitations} that apply 
+to portions of manuscripts \textit{as well as} data sets.  
+In the publishing context, a microcitation is defined as a 
+reference to a partially isolated fragment of a larger 
+document, such as a table or figure illustration, or a 
+sentence or paragraph defining a technical term, 
+or (in mathematics) the statement/proof of a definition, axiom, 
+or theorem.  In data publishing, \q{data citations} are 
+unique references to data sets in their entirety or to 
+smaller parts of data sets.  A data microcitation is then a 
+fine-grained reference into a data set: for example, 
+\q{the precise data records actually used in a study} (as 
+defined by the Federation of Earth Science Information Partners), 
+one column in a spreadsheet, or one statistical parameter in a 
+quantitative analysis.}
+
+\p{The unique feature we propose 
+for our \SDK{} would be to combine the text-mining and 
+data-mining notions of microcitation into a unified 
+framework.  In particular, text-based searches against 
+the \Cnineteen{} corpus would try to find matches in the 
+data sets indexed by our \SDK{}.  As a concrete example, 
+a concept such as \q{expiratory flow} appears in \Cnineteen{} 
+both as a table column in research data and as a medical concept 
+discussed in research papers; a unified microcitation framework 
+should there map \textit{expiratory flow} as a keyphrase 
+to both textual locations and data set parameters.  
+Similarly, a concept such as 
+\textit{2{\textquotesingle}-C-ethynyl} (mentioned earlier 
+in the context of transcription errors) 
+should be identified both as a phrase in 
+article text and as a molecular component 
+present within compounds whose scientific 
+properties are investigated through \Cnineteen{} 
+research data, so that a search for this 
+concept can trigger both publication and 
+data-set matches. 
+Implementing this kind of unified search mechanism requires that data 
+sets be \textit{annotated} with techniques similar to 
+those used for marking up Natural Language techniques; 
+consequently, the proposed \SDK{} would include a custom 
+data-annotation library, to be employed in conjunction with 
+operations to aggregate \Cnineteen{} data sets into a 
+common representational format.}
+
+\section{The MOSAIC Protocol}
 \p{One important goal of the Research Object protocol 
 is to make research data available with a minimum of 
 additional effort.  Accordingly, Research Object should 
@@ -1040,7 +1147,7 @@ scripting engines that can be embedded as source
 code in the Research Object itself.  In particular, 
 self-contained bundles can be organized around what 
 might be called a \q{triple-kernel} (or 
-\TThreeK{}, for transparent-triple-kernel) architecture, 
+\MThreeK{}, for \MOSAIC{} Triple Kernel) architecture, 
 referring to database, data visualization, and 
 scripting engines.  A good prototype for 
 triple-kernel implementation would use 
@@ -1053,7 +1160,7 @@ the \Qt{} build system and distributed in source
 code fashion; there is no need to system-level 
 installs or any other external build or install operations.} 
 
-\p{A fully self-contained \TThreeK{} 
+\p{A fully self-contained \MThreeK{} 
 bundle as just described will support several 
 different forms of analytic operations and 
 queries: assuming the WhiteDB/AngelScript/\Qt{} 
@@ -1076,19 +1183,19 @@ serve as a kind of bytecode for compiling database,
 scripting, and networking queries in a common framework; 
 \THQL{} provides an Intermediate Representation and 
 Virtual Machine which dispatches queries to the 
-respective \TThreeK{} kernels (in the prototype case, 
+respective \MThreeK{} kernels (in the prototype case, 
 to the WhiteDB, AngelScript, and \Qt{} engines respectively).  
-A canonical WhiteDB/AngelScript/\Qt{} \TThreeK{} framework 
+A canonical WhiteDB/AngelScript/\Qt{} \MThreeK{} framework 
 can be facilitated by a Standard Development Kit, 
 extending the AngelScript \SDK{} with WhiteDB and 
 \Qt{} integration.}
 
-\p{Having described a \TThreeK{} model for \textit{individual} 
+\p{Having described a \MThreeK{} model for \textit{individual} 
 Research Objects, one can then consider the development 
 of data set \textit{collections} encompassing 
 multiple research papers.  A protocol for 
 Research Object aggregation can be developed by 
-extending a \TThreeK{} \SDK{} with domain-specific 
+extending a \MThreeK{} \SDK{} with domain-specific 
 code appropriate for the shared topics and 
 subject-matter which unify the presented research 
 work.  In \textit{Advances in Ubiquitous Computing}, 
@@ -1156,7 +1263,7 @@ built around a foundation where advanced computing
 capabilities are available in a transparent, 
 standalone fashion, without requiring tools 
 outside the collection itself.  One way to 
-achieve this is via a \TThreeK{} architecture 
+achieve this is via a \MThreeK{} architecture 
 as outlined earlier; it is straightforward 
 to publish the WhiteDB and AngelScpipt code 
 bases within a Research Object collection, and 
