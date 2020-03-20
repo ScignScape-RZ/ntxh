@@ -591,8 +591,9 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{12pt}
 	\relscale{1.3}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Proposing a CORD-19 SDK Solution to Improve Machine Readability}
-}}}
+{Proposing a CORD-19 SDK Solution to Improve Machine Readability \\\vspace{6pt}
+ {\fontfamily{ptm}\fontsize{12}{14}\selectfont to coordinate with \\SPRINGER NATURE, WILEY, ELSEVIER,\\the AMERICAN SOCIETY FOR MICROBIOLOGY, 
+ \\and the NEW ENGLAND JOURNAL OF MEDICINE}}}}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
@@ -614,25 +615,8 @@ and Simon James Fong.}
 
 \vspace{2.5em}
 
-\p{The forthcoming volume \textit{Advances in Ubiquitous Computing: 
-Cyber-Physical Systems, Smart Cities and Ecological Monitoring} will 
-prototype a data-publishing protocol that extends 
-existing initiatives such as \q{Research Objects} 
-and \FAIR{} (\q{Findable, Accessible, 
-Interoperable, Reusable}), both of which 
-reflect publishers' current prioritization 
-of publicly shared research data.  Implementing 
-this new \q{data-centric} publishing paradigm 
-requires more than just enouraging authors to 
-prepare downloadable data sets accompanying research 
-papers; it also requires a technological 
-infrastructure to support the curation of 
-data sets and data set collections, so that 
-scientists can locate data sets which are 
-relevant to their research and then incorporate these
-data sets into subsequent research.  One goal 
-of \textit{Advances in Ubiquitous Computing} 
-is to advocate for an even more rigorous data publishing 
+\p{One goal of \textit{Advances in Ubiquitous Computing} 
+is to advocate for a refined, more rigorous data publishing 
 protocol, which is especially important at the 
 current moment when the urgency of sharing Covid-19 
 research is boosting the contemporary open-access 
@@ -645,38 +629,24 @@ The primary purpose of these datasets is to demonstrate
 data-management and software-development techniques 
 discussed in the volume, particularly in the 
 third chapter (the data sets are being curated by that 
-chapter's author).  These data sets will introduce a 
-so-called \q{\MOSAIC{}} protocol which, 
-compared to ordinary Research Objects, 
-places greater emphasis on (1) self-contained 
-code libraries bundled with data sets to provide 
-sophisticated computational features; (2) 
-cross-referencing between data sets and published 
-articles; and (3) unifying collections of data sets, 
-spanning multiple publications, into an integral whole.  
-The central elements of \MOSAIC{} (which stands for 
-\q{Multiparadigm Ontologies for Scientific, Academic, 
-and Technical Publishing}) will be outlined below.}
+chapter's author).  These data sets introduce a new 
+protocol for publishing research data, which essentially 
+extends existing initiatives such as Research Objects 
+and \FAIR{} (which stands for \q{Findable, Accessible, 
+Interoperable, Reusable}).  In principle, these initiatives 
+--- which have been pushed by publishers, academic 
+institutions, and certain government agencies 
+(such as the National Institutes of Health) --- are intended to make 
+it easier for scientists to find, assess, 
+reuse, and re-produce research data.  
+In practice, however --- due partly to  
+technological limitations and partly to 
+authors and publishers being slow to adopt 
+the new protocols --- the ecosystem of 
+published data sets remains far less rigorously 
+organized than the ecosystem of published 
+scientific/academic books and articles.}
 
-\p{In response to the contemporary Covid-19 crisis, 
-my company, Linguistic Technology Systems, proposes 
-to develop a concrete implementation of the 
-\MOSAIC{} protocol targeting Covid-19 data sets, 
-and particularly the \q{Covid-19 Open Research Dataset} (\Cnineteen{}) 
-research collection recently published at the launch of a new 
-White House initiative devoted to Covid-19.  In particular, 
-we propose to create a Standard Development Toolkit 
-(\SDK{}) that would facilitate the deployment of 
-software targeting \Cnineteen{}.  In order to explain 
-the role of this proposed \SDK{} in relation to 
-the currently existing \Cnineteen{} resourses, 
-this paper will examine the present state of 
-\Cnineteen{}, and will point out certain limitations of 
-existing \Cnineteen{} data that can be ameliorated with code 
-libraries that would be bundled with our proposed 
-\Cnineteen{} \SDK{}.}
-
-\section{Assessing the CORD-19 Collection}
 \p{The sudden emergence of Covid-19 as a 
 medical and governmental priority presents a 
 unique case-study of the limitations of our 
@@ -692,14 +662,13 @@ potentially helpful for doctors and
 policymakers responding to the pandemic --- 
 some newly published and some dating back several 
 years (the older research concerns viruses 
-biologically similar to Covid-19).  On 
+biologically similar to Covid-19).  \textbf{On 
 March 16, the White House announced a 
-\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID-19} and simultaneously released the \Cnineteen{} resources, 
-which had been 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID-19} and simultaneously released 
+a \q{Covid-19 Open Research Dataset} (\Cnineteen{}) that was 
 curated by a consortium of industry and academic 
-institutions}.  The \Cnineteen{} collection, 
-described as a \q{dataset} by the 
-White House, is actually a 
+institutions}.  This \q{dataset}, referred to in the 
+White House initiative, is actually a 
 \q{machine-readable Coronavirus literature collection} 
 which includes article metadata and (in most cases) 
 publication text  
@@ -707,8 +676,6 @@ for over 13,000 coronavirus research papers.
 This resource is accompanied by links to open-access 
 document collections hosted on portals such as 
 Springer Nature and Wiley Online.}
-
-\p{Over all, then, \Cnineteen{} }
 
 \p{\textbf{Even if the goal of opening these materials for 
 access to the general public is, at least in part, 
