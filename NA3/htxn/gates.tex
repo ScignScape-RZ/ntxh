@@ -3,6 +3,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{tgtermes}
 
+\usepackage[hang,flushmargin]{footmisc}
+
 %\usepackage{mathptmx}
 
 \usepackage{eso-pic}
@@ -58,10 +60,10 @@
 %\textwidth 4.5in  % width of text
 %\columnsep 0.8in  % separation between columns
 
-\setlength{\footskip}{23pt}
+\setlength{\footskip}{13pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.8in,top=1.1in,right=.62in,bottom=1.8in} %margins
+\geometry{left=.78in,top=1.1in,right=.6in,bottom=1.8in} %margins
 
 \usepackage[hyphens]{url}
 \newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
@@ -122,6 +124,8 @@
 \definecolor{logoPeach}{RGB}{255, 159, 102}
 \definecolor{logoCyan}{RGB}{66, 206, 244}
 \definecolor{logoRed}{rgb}{.3,0,0}
+
+\newcommand{\colorq}[1]{{\color{logoOrange!70!black}{\q{\small\textbf{#1}}}}}
 
 \definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
 \definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
@@ -257,6 +261,8 @@
 \newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
 \newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
 \newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
+
+\newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
 
 \newcommand{\CLang}{\resizebox{!}{7pt}{\AcronymText{C}}}
 
@@ -573,6 +579,8 @@
 	urlcolor=blue,
 }
 
+\renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
+
 \urlstyle{same}
 
 \begin{document}
@@ -646,19 +654,19 @@ existing initiatives such as \q{Research Objects}
 and \FAIR{} (\q{Findable, Accessible, 
 Interoperable, Reusable}), both of which 
 reflect publishers' current emphasis on 
-publicly sharing research data.  In the last 
+publicly sharing research data.  Over the last 
 few years, academic, governmental, and 
 industry stakeholders have increasingly 
 prioritized open-access data publication as a 
 complement to the traditional ecosystem of 
 peer-reviewed scientific literature.  
 This new \q{data-centric} paradigm seeks to 
-augment the value and accuracy research 
+augment the value and accuracy of research 
 data by provisioning scientists with digital 
 tools to find, evaluate, and reuse data 
 which is relevant to their research.  
-At the present moment, the urgency of sharing Covid-19 
-research is further boosting this data-centric and open-access publishing model.  Indeed, Covid-19 
+At the present moment, the urgency of sharing \Covid{} 
+research is further boosting this data-centric and open-access publishing model.  Indeed, \Covid{} 
 presents a unique opportunity for researchers 
 and publishers to assess the strengths and 
 weaknesses of current publishing technology, 
@@ -666,8 +674,7 @@ because we are now in a global environment where there
 is an unprecedented societal demand 
 for pooling and accelerating research in 
 one specific, easily demarcated domain 
-(that of Covid-19 in particular and 
-coronaviruses in general).}
+(that of coronaviruses in general and \Covid{} in particular.}
 
 \p{Realizing a new data-centric publishing paradigm 
 requires more than just enouraging authors to 
@@ -684,7 +691,7 @@ natural and social sciences.  In this vein,
 one goal of \textit{Advances in Ubiquitous Computing} 
 is to advocate for an even more rigorous data publishing 
 protocol, taking a multi-disciplinary and multi-paradigm 
-perspective on the curation and structuring of 
+perspective on the curation and structuration of 
 published research data.  In particular, as a supplement to 
 \textit{Advances}, several data sets will be published (or 
 republished) relevant to subjects covered by 
@@ -707,13 +714,14 @@ The central elements of \MOSAIC{} (which stands for
 \q{Multiparadigm Ontologies for Scientific, Academic, 
 and Technical Publishing}) will be outlined below.}
 
-\p{In response to the contemporary Covid-19 crisis, 
+\p{In response to the contemporary \Covid{} crisis, 
 my company, Linguistic Technology Systems, proposes 
 to develop a concrete implementation of the 
-\MOSAIC{} protocol targeting Covid-19 data sets, 
+\MOSAIC{} protocol targeting \Covid{} data sets, 
 and particularly the \q{Covid-19 Open Research Dataset} (\Cnineteen{}) 
 research collection recently published at the launch of a new 
-White House initiative devoted to Covid-19.  In particular, 
+White House initiative devoted to \Covid{} (see 
+\href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  In particular, 
 we propose to create a Standard Development Kit 
 (\SDK{}) that would facilitate the deployment of 
 software targeting \Cnineteen{}.  In order to explain 
@@ -726,12 +734,12 @@ libraries that would be bundled with our proposed
 \Cnineteen{} \SDK{}.}
 
 \section{Assessing the CORD-19 Collection}
-\p{The sudden emergence of Covid-19 as a 
+\p{The sudden emergence of \Covid{} as a 
 medical and governmental priority presents a 
 unique case-study of the limitations of our 
 existing research-data platforms.  Publishers 
-have, to some degree, recognized the extra-ordinary 
-nature of the new coronavirus crisis and 
+have, to some degree, recognized the extraordinary 
+nature of the new coronavirus crisis and have 
 taken some commensurate measures; for example, 
 several publishing houses (including Springer Nature, 
 Wiley, Elsevier, the American Society for Microbiology, and the New England Journal 
@@ -741,9 +749,11 @@ potentially helpful for doctors and
 policymakers responding to the pandemic --- 
 some newly published and some dating back several 
 years (the older research concerns viruses 
-biologically similar to Covid-19).  On 
-March 16, the White House announced a 
-\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID-19} and simultaneously released the \Cnineteen{} resources, 
+biologically similar to \Covid{}).  Then, 
+on March 16, the White House announced the 
+project referenced earlier, describing this 
+initiative as a 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID-19}, and simultaneously released the \Cnineteen{} resources, 
 which had been 
 curated by a consortium of industry and academic 
 institutions}.  The \Cnineteen{} collection 
@@ -753,7 +763,7 @@ White House, is actually a
 \q{machine-readable Coronavirus literature collection} 
 which includes article metadata and (in most cases) 
 publication text  
-for over 13,000 coronavirus research papers.  
+for over 44,000 coronavirus research papers.  
 This resource is accompanied by links to open-access 
 document collections hosted on portals such as 
 Springer Nature and Wiley Online.}
@@ -764,7 +774,7 @@ web portals offering full access to a select
 group of publications (in human-readable formats 
 like \PDF{} and \HTML{}) and, second, 
 a much larger machine-readable corpus of article 
-texts relevant to Covid-19.  The \Cnineteen{} 
+texts relevant to \Covid{}.  The \Cnineteen{} 
 collection was formulated with the explicit goal 
 of promoting both text mining and data mining solutions 
 to advance coronavirus research.  This means that 
@@ -777,11 +787,12 @@ reasons that will be outlined shortly.  To some extent,
 this reflects \Cnineteen{} being conceived as 
 just a starting point; a spur to further implementation.  
 The White House announcement directly requests 
-institutions to develop \textit{further} technologies 
+institutions to develop \textit{additional} technologies 
 which would help scientists and jurisdictions to 
 take advantage of \Cnineteen{} as it was initially 
-published.  In short, \Cnineteen{} was released with the 
-explicit anticipation that industry or academia would 
+published: \q{The White House joins these institutions in issuing a call to action to the Nation's artificial intelligence experts to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to COVID-19.}  
+In short, \Cnineteen{} was released with the 
+explicit anticipation that industry and academia would 
 augment the underlying data by layering on additional 
 software.  Our proposed \Cnineteen{} \SDK{} would 
 do just that, as a component providing analytic 
@@ -796,8 +807,8 @@ can be identified both in the text encoding through which
 \Cnineteen{} functions as a corpus for text mining, and 
 in the research data potentially made 
 available via \Cnineteen{} and its archived publications.  
-These problems fall into three broad categories, 
-which will be discussed on more detail over the 
+These problems fall into four broad categories, 
+which will be discussed in more detail over the 
 next several paragraphs: 
 
 %\vspace{-2em}
@@ -806,7 +817,7 @@ next several paragraphs:
 \item[Transription Errors]  This problem 
 arises from incorrect or simplified translation 
 of publication texts into a machine-readable 
-format, which can cause the machine-readable 
+format.  Transription errors cause the machine-readable 
 text archive to misrepresent the structure 
 and content of documents, hindering text-mining 
 technology that targets the archive.
@@ -826,7 +837,7 @@ and formats, with distinct software
 requirements; as a result, it is a 
 difficult task to merge and integrate 
 different data sets related to 
-Covid-19.  At present, \Cnineteen{} 
+\Covid{}.  At present, \Cnineteen{} 
 does not include any software tools 
 or computer code that would facilitate 
 data integration.   
@@ -838,7 +849,7 @@ document portals (for instance, the
 National Center for Biotechnology Information website), 
 the \Cnineteen{} archival schema does not represent 
 these links (except indirectly via Document Object 
-Identifiers)  As such, there is no easy way for 
+Identifiers).  As such, there is no easy way for 
 researchers to find and read publications which have been 
 flagged by text-mining algorithms as being potentially 
 of interest to them.  Furthermore, there is no direct 
@@ -870,36 +881,46 @@ allow the text of \textit{Advances} to be published in a
 machine-readable format consistent with the 
 \Cnineteen{} schema; and similar technology can 
 be used for future editions of \IJST{} as well 
-as future volumes in the \textit{Advances in Ubiquitous 
+as subsequent volumes in the \textit{Advances in Ubiquitous 
 Sensing for Healthcare} series.  It is certainly possible 
 that some future articles in this series will be 
-relevant to Covid-19; indeed, remote diagnosis and 
-cyber-physical screening devices are an important 
+relevant to \Covid{}; indeed, remote diagnosis and 
+cyber-physical screening devices (both of which are 
+intrinsic to the field of medical Ubiquitous Sensing) 
+are an important 
 aspect of attempts to mitigate the pandemic.  I 
 am hoping that the corpus-integration technology I 
 adopt as an editor can provide a prototype which 
 can be adapted by journals that can feed articles 
-directly to \Cnineteen{} or similar initiatives.  
+directly to \Cnineteen{} and similar initiatives.  
 In particular, the process of adding new publications 
 to resources such as Springer Nature should automatically 
 include the operation of generating machine-readable 
 text or metadata which can be integrated with 
-corpora such as \Cnineteen{}.}
+corpora such as \Cnineteen{}.  As archival operations 
+are more tightly supported within a publishing 
+pipeline, problems such as those outlined above 
+are less likely to emerge.  Concomitantly, 
+the problems discussed in the following 
+paragraphs are due in part to the logistical 
+\textit{gap} between publishers and archival 
+curates (e.g., in the case of \Cnineteen{}, the 
+Allen Institute).} 
 
-\p{With respect to text mining, an immediate problem lies 
+\p{With respect to text mining, an immediate problem arises 
 in \Cnineteen{}'s archive-construction methodology: 
 especially, how the text was parsed from \PDF{} files.  
 This is a process 
 which almost inevitably causes imprecise or inaccurate text representation, which can degrade the quality of 
 the archive unless manual or automated corrections are made.  In particular, the \Cnineteen{} library evinces  
-transcription errors, particularly in relation to 
-technical or scientific phrases and terminology,  
-and scientific notation may be improperly 
-transcribed.  A formal designation such as \q{2{\textquotesingle}-C-ethynyl}
+transcription errors (especially in relation to 
+technical or scientific phrases and terminology); 
+scientific notation in particular may be improperly 
+encoded.  A formal designation such as \colorq{2{\textquotesingle}-C-ethynyl}
 (to take one specific case) is encoded in \Cnineteen{} 
-as \q{2 0 -C-ethynyl}, which could stymie text searches 
+as \colorq{2 0 -C-ethynyl}, which could stymie text searches 
 against the \Cnineteen{} corpus (see \cite{Eyer}).  Moreover, there is no 
-semantic marking identifying that the \q{2 0 -C-ethynyl} 
+semantic marking identifying that the \colorq{2 0 -C-ethynyl} 
 text segment has a specific technical meaning.  These 
 errors or limitations arise in part from unavoidable 
 anomalies which occur when reading texts from \PDF{} files 
@@ -968,7 +989,7 @@ printed inline with the text).  Collectively
 these articles referenced over 30 distinct data 
 sets (some papers were linked to multiple 
 data sets), forming a data collection which could 
-be a valuable resource for Covid-19 research --- 
+be a valuable resource for \Covid{} research --- 
 not only through the raw data made available 
 but as a kernel around which new coronavirus data 
 could accumulate.  However, there is currently no 
@@ -980,11 +1001,11 @@ how the Research Object protocol is limited in applying
 only to \textit{single} articles.  As a result, there is no 
 commensurate protocol for publishing \textit{groups} 
 of articles which are tied to groups of data sets unified 
-into an integral whole.  Open-access Covid-19 papers also 
+into an integral whole.  Open-access \Covid{} papers also 
 reveal limitations of exiting online document portals, 
-particularly with respect to how publications are 
+especially with respect to how publications are 
 linked to data sets.  In particular, there is no clear indication that a 
-given paper is associated with downloaded data; usually 
+given paper is associated with downloadable data; usually 
 readers ascertain this information only by reading or 
 scrolling down to a \q{supplemental materials} or 
 \q{data availability} addendum near the end of the article.  
@@ -1007,20 +1028,20 @@ index of open-access data sets linked to \Cnineteen{}
 articles; and (4) software tools for downloading 
 and manipulating these coronavirus data sets.  
 In addition, our \SDK{} would provide tools for 
-merging and integrating Covid-19 data from 
+merging and integrating \Covid{} data from 
 disparate sources.  The problems of data integration, 
 and solutions offered by the proposed \SDK{}, are 
-discussed in the following paragraphs.}
+discussed in the following section.}
 
 \section{Data Integration within CORD-19}
-\p{Aside from the issues, described over the last several 
-paragraphs, which are likely to hinder text and data mining 
+\p{Aside from the issues (described in the preceding 
+section) which are likely to hinder text and data mining 
 across \Cnineteen{}, the 
-collective group of Covid-19 data sets also illustrate 
+collective group of \Covid{} data sets also illustrates 
 the limitations of information spaces pieced 
 together from disconnected raw data files with little 
 additional curation.  The files included in this 
-group of data sets encompass an array of file types 
+group of data sets encompass a wide array of file types 
 and formats, including \FASTA{} (which stands for Fast-All, 
 a genomics format), \SRA{} (Sequence Read Archive, for 
 \DNA{} sequencing), \PDB{} (Protein Data Bank,  
@@ -1040,13 +1061,13 @@ into a common machine-readable representation (such as \XML{}).}
 \p{Going further, productive data curation should also 
 aspire to \textit{semantic} integration, unifying disparate 
 sources into a common data model.  For example, multiple 
-spreadsheets among the Springer Nature Covid-19 data sets 
+spreadsheets among the Springer Nature \Covid{} data sets 
 hold sociodemographic and epidemiological information relevant 
 to modeling the spread of the disease.  These different 
 sources could certainly be integrated into a canonical 
 social-epidemiology-based representational paradigm which 
 recognizes the disparate data points which might be 
-relevant for tracking the spread of Covid-19 (with the 
+relevant for tracking the spread of \Covid{} (with the 
 potential to unify data from many countries and 
 jurisdictions).  This is not only a matter of data
 \textit{representation} (viz., how data is physically 
@@ -1054,9 +1075,9 @@ laid out), but also of data types and computer code.
 According to the Research Object protocol, 
 data sets should include a code base 
 which provides convenient computational access to the 
-published data.  In the case of Covid-19, this entails 
+published data.  In the case of \Covid{}, this entails 
 creating a sociodemographic and epidemiological code 
-library optimized for Covid-19 information, which would 
+library optimized for \Covid{} information, which would 
 be the primary access point for researchers seeking to 
 use the data which has been published in conjunction with 
 the 43 manuscripts examined here that were aggregated 
@@ -1067,7 +1088,7 @@ or \CSV{} form, but to more complex molecular or
 microscopy data that needs specialized scientific software 
 to be properly visualized.}
 
-\p{Considering the overall space of Covid-19 data, it is 
+\p{Considering the overall space of \Covid{} data, it is 
 unavoidable that some files require special applications 
 and cannot be directly merged with the overall collection.  
 For instance, there is no coherent semantics for 
@@ -1077,34 +1098,34 @@ can only be understood by special-purpose software.
 Nevertheless, a well-curated data-set collection can 
 make using such special-purpose data as convenient as 
 possible.  In the case of Protein Data Bank, a downloadable 
-Covid-19 archive can include source code for \IQmol{}, a 
+\Covid{} archive can include source code for \IQmol{}, a 
 molecular-visualization application that supports 
 \PDB{} (among other file formats) and has few 
 external dependencies (so it is relatively easy to 
 build from source).}
 
-\p{Indeed, a curated Covid-19 archive 
+\p{Indeed, a curated \Covid{} archive 
 might include an enhanced version of \IQmol{} prioritizing 
-Covid-19 research, with the goal of integrating biomolecular 
+\Covid{} research, with the goal of integrating biomolecular 
 and social-epidemiological data as much as possible.  
-For example, as Covid-19 potentially mutates in different 
+For example, as \Covid{} potentially mutates in different 
 ways in different geographic areas, it will be important 
 to model the connections between \q{hard} scientific 
-Covid-19 information and sociodemographics.  
+\Covid{} information and sociodemographics.  
 As the pandemic evolves, genomic and biochemical information 
 may be linked to particular strains of virus, which 
 in turn are linked to sociodemographic profiles: certain 
 strains will be more prevalent in certain populations.  
-Consequently, models of Covid-19 variation will need to be 
+Consequently, models of \Covid{} variation will need to be 
 formulated and then integrated with both chemical/molecular 
 data and sociodemographic/epidemiological data.  Different 
-Covid-19 strains then form a bridge linking these different 
+\Covid{} strains then form a bridge linking these different 
 sorts of information; researchers should be able to pass 
 back and forth from molecular or genomic visualizations of 
-Covid-19 to social-epidemiological charts and tables based 
+\Covid{} to social-epidemiological charts and tables based 
 on viral strains.  Ideally, capabilities for this 
 sort of interdisciplinary data integration would be 
-provide by a Covid-19 archive as enhancements to applications, 
+provide by a \Covid{} archive as enhancements to applications, 
 such as \IQmol{}, that scientists would use to study the 
 published data.}
 
@@ -1113,17 +1134,16 @@ published data.}
 which is a more stringent requirement than simply publishing 
 data alongside which can be understood by domain-specific 
 software.  For example, radiological imaging can be a source 
-of Covid-19 data insofar as patterns of lung 
+of \Covid{} data insofar as patterns of lung 
 scarring, such as \q{ground-glass opacity}, is a leading 
 indicator of the disease.  Consequently, diagnostic 
-images of Covid-19 patients are a relevant kind of 
-content for inclusion in a Covid-19 data set 
+images of \Covid{} patients are a relevant kind of 
+content for inclusion in a \Covid{} data set 
 (see \cite{Shi} as a case-study).  However, 
 diagnostic images are not in themselves 
-\q{machine readable}; when medical imaging is 
-used in a quantitative context (e.g. performing 
-Machine Learning for pathology) it is nesessary to 
-perform Image Analysis to convert the raw data 
+\q{machine readable.}  When medical imaging is 
+used in a quantitative context (e.g. applying 
+Machine Learning for diagnostic pathology), it is necessary to perform Image Analysis to convert the raw data 
 (viz., in this case, radiological graphics) into 
 quantitative aggregates (for instance by using image 
 segmentation to demarcate geometric boundaries and 
@@ -1131,14 +1151,9 @@ then defining diagnostically relevant features, such
 as opacity, as a scalar field over the segments).  
 In short, even after research data is openly published 
 by article authors, it may be necessary to perform 
-aditional analysis on the data for it to be 
+additional analysis on the data for it to be 
 a full-fledged component of a 
-machine-readable information space.
-Even within the limited group of data sets linked specifically 
-to the Springer Nature articles, some of the published 
-data actually comprises image graphics that need to be 
-converted to numerical formats to work with 
-\Cnineteen{} overall.\footnote{%
+machine-readable information space.\footnote{%
 This does not mean that diagnostic images (or 
 other graphical data) should not be placed in a 
 data set; only that computational reuse of such 
@@ -1151,7 +1166,7 @@ supplement to the data set.}}
 
 \p{Another concern in developing an integrated \Cnineteen{} 
 data collection is that, logistically speaking, 
-not all Covid-19 data is practical 
+not all \Covid{} data is practical 
 to reuse as a downloadable package.  This is especially 
 true for genomics; several of the aforementioned 
 43 coronavirus papers included data published via 
@@ -1162,7 +1177,7 @@ analytic scripts that are sent remotely to the online
 repositories, so that researchers access the actual 
 published data only indirectly.  Nevertheless, access to 
 these data sets can still be curated as part of 
-a Covid-19 package; in particular, computer code 
+a \Covid{} package; in particular, computer code 
 can be provided which automates the process of 
 networking with remote genomics archives through the 
 accession numbers and file-formats which those archives 
@@ -1176,7 +1191,7 @@ used by \Cnineteen{} data sets.}
 
 \p{As a final point on the topic of integrating 
 disparate \Cnineteen{} research data, note that 
-an overarching framework for indexing Covid-19 data 
+an overarching framework for indexing \Covid{} data 
 sets would also facilitate the process of cross-referencing 
 article text and research data.  In particular, 
 our proposed \SDK{} would introduce a 
@@ -1221,7 +1236,7 @@ data-set matches.
 Implementing this kind of unified search mechanism requires that data 
 sets be \textit{annotated} with techniques similar to 
 those used for marking up Natural Language techniques; 
-consequently, the proposed \SDK{} would include a custom 
+consequently, our proposed \SDK{} would include a custom 
 data-annotation library, to be employed in conjunction with 
 operations to aggregate \Cnineteen{} data sets into a 
 common representational format.  In addition, 
@@ -1260,7 +1275,7 @@ as WhiteDB for a database engine or AngelScript
 (an embedded \Cpp{}-based scripting language) for a 
 scripting engine --- are especially valuable.}
 
-\p{Considering the inter-disciplinary nature of Covid-19 research, 
+\p{Considering the inter-disciplinary nature of \Covid{} research, 
 it is unavoidable that different scientists will need 
 different sorts of specialized software to analyze the 
 kinds of information relevant to their research.  For 
@@ -1309,7 +1324,7 @@ different scientific fields.  In the absence of
 any initiative to limit this drift, \Cnineteen{} 
 could easily devolve into a federation of 
 separate resources which have no interconnection 
-apart from their nominal focus on Covid-19.}
+apart from their nominal focus on \Covid{}.}
 
 \p{The vision of \textit{standalone} and \textit{self-contained} 
 Research Object Bundles reveals new criteria that can 
@@ -1392,7 +1407,7 @@ would include a mixture of signal-processing and
 \NLP{} libraries.  Analogously, a \Cnineteen{} \SDK{}, 
 as proposed here, 
 could bundle code related to different facets 
-of Covid-19 research, from demographic and 
+of \Covid{} research, from demographic and 
 quantitative epidemiological modeling 
 to networking with remote genomic data.}
 
@@ -1465,7 +1480,7 @@ the underlying operational milieu for
 using and obtaining the data sets.  For example, 
 it would be possible to implement \Qt{}-specific 
 libraries for interfacing with the \Cnineteen{} library 
-and with other Covid-19 dashboards and data sets.   
+and with other \Covid{} dashboards and data sets.   
 
 \item{}  A unified data-set collection should also provide 
 prototyping and remote-access tools to interface with 
@@ -1490,9 +1505,9 @@ quantitative data is derived.
 
 \p{The above discussion has considered the Springer Nature 
 articles as a case-study, but analogous comments would 
-apply to other Covid-19 related resources.  For 
+apply to other \Covid{} related resources.  For 
 example, John Hopkins University has created and deployed 
-a Covid-19 \q{dashboard} tracking the spread of the virus 
+a \Covid{} \q{dashboard} tracking the spread of the virus 
 (this is one of several dashboards that have come online 
 for visualizing the evolution of the pandemic, with varying 
 degrees of complexity); 
@@ -1501,14 +1516,14 @@ via a \GIT{} archive roughly once daily.    If and
 when the reported Verily portal comes online, hopefully 
 machine-readable access to that public data will be 
 provided either via an analogous updated archive or 
-via an \API{}.  Ideally, these disparate Covid-19 
+via an \API{}.  Ideally, these disparate \Covid{} 
 projects will be interoperable: any code published 
 in relation to the Springer Nature coronavirus 
 collection, for example, could include components 
 implemented to access the John Hopkins and 
 (anticipated) Verily data sets as well as all 
 the data brought in via the \Cnineteen{} articles.  
-In particular, a useful starting-point for Covid-19 
+In particular, a useful starting-point for \Covid{} 
 data integration would be a single data type 
 (e.g., a \Cpp{} class) whose specific purpose is 
 to obtain the most recent available coronavirus 
@@ -1516,13 +1531,13 @@ data: one procedure to download the latest
 files from the John Hopkins dashboard, one procedure 
 to search Springer Nature for new relevant content, 
 etc.  Such a data type would then serve as a 
-guide for obtaining Covid-19 information.    
+guide for obtaining \Covid{} information.    
 Insofar as conscious effort is made to integrate 
-all publicly accessible Covid-19 data via 
+all publicly accessible \Covid{} data via 
 an overarching toolkit, it will be easier to continually 
 accumulate new data sources as these come online.}
 
-\p{This discussion has also used the Covid-19 crisis as a 
+\p{This discussion has also used the \Covid{} crisis as a 
 lens through which to examine data-publishing limitations 
 in general.  These problems are not specific to 
 coronavirus, but the almost unprecedented 
@@ -1540,9 +1555,9 @@ such a protocol, so as to operationalize some
 of the ideas laid out in \textit{Advances in Ubiquitous 
 Computing}.  It would be especially rewarding if 
 an integrated data-set collection devoted to 
-Covid-19 would serve as a first example and a test-bed 
+\Covid{} would serve as a first example and a test-bed 
 for this new paradigm, given the potential public 
-benefit of unifying disparate Covid-19 data 
+benefit of unifying disparate \Covid{} data 
 as effectively as possible, where this technology 
 can then be generalized to other medical 
 priorities and other academic disciplines overall.}
@@ -1567,7 +1582,7 @@ and (4) an overview of an architecture for
 research portals which we call \lMOSAIC{}, 
 that could guide the implementation of portals 
 supporting data-set collections, such as a 
-Covid-19 archive that could serve as a model 
+\Covid{} archive that could serve as a model 
 for future work as well as a useful resource 
 while the pandemic continues to present a global crisis.}
 
