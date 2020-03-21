@@ -13,11 +13,28 @@
 
 #include "global-types.h"
 
+#include <vector>
+
 //typedef NTXH_Graph::hypernode_type hypernode_type;
 
 NGML_SDI_Page_Element::NGML_SDI_Page_Element(NGML_SDI_Mark_Base* mark)
-  :  mark_(mark)
+  :  mark_(mark), count_in_page_(0)
 {
+}
+
+void NGML_SDI_Page_Element::read_from_strings(QStringList& qsl)
+{
+ std::vector<u4> nums(6);
+ std::transform(qsl.begin(), qsl.end(), 
+   nums.begin(), [](const QString& qs)
+   {
+    return qs.toInt();
+   });
+ mark_->set_id(nums[1]);
+ mark_->set_start_x(nums[2]);
+ mark_->set_start_y(nums[3]);
+ mark_->set_end_x(nums[4]);
+ mark_->set_end_y(nums[5]);
 }
 
 QPair<u4, u4> NGML_SDI_Page_Element::get_minimal_vertical_compare_offset(QPair<u4, u4> new_values)

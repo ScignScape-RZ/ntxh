@@ -25,6 +25,16 @@ void NGML_SDI_Page::add_page_element(NGML_SDI_Mark_Base* mark)
  page_elements_.insert({mark});
 }
 
+void NGML_SDI_Page::read_page_element_from_strings(QStringList& strings)
+{
+ qDebug() << strings;
+ NGML_SDI_Mark_Base* mark = new NGML_SDI_Mark_Base;
+ NGML_SDI_Page_Element el = NGML_SDI_Page_Element(mark);
+ el.read_from_strings(strings);
+ page_elements_.insert(el);
+ qDebug() << "SX: " << el.mark()->start_x();  
+}
+
 void NGML_SDI_Page::write(QString& contents)
 {
  QTextStream qts(&contents);

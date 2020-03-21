@@ -46,6 +46,8 @@ public:
 
  void write(QString& contents);
 
+ void read_page_element_from_strings(QStringList& strings);
+
 };
 
 

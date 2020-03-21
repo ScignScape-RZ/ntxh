@@ -306,16 +306,25 @@ void NGML_SDI_Document::output_pages()
  check_read_page(new_path, unzip_path, qd.dirName(), 1);
 }
 
-void NGML_SDI_Document::check_read_page(QString zip_file_path, 
+NGML_SDI_Page* NGML_SDI_Document::check_read_page(QString zip_file_path, 
   QString unzip_path, QString unzip_folder_name, u4 page_number)
 {
  check_unzip_folder(zip_file_path, unzip_path, unzip_folder_name);
  QDir dir(*unzip_folder_);
  QString path = dir.absoluteFilePath(QString("p%1.txt").arg(page_number));
- QString text = load_file(path);
+ NGML_SDI_Page* result = new NGML_SDI_Page(page_number);
+ load_file(path, [result](QString& line) -> u8
+ {
+  if(line.isEmpty())
+    return 0;
+  QStringList nums = line.simplified().split(' ');
+  if(nums.length() < 6)
+    return 1; // malformed; stop reading
+  result->read_page_element_from_strings(nums);   
+ });
 
- qDebug() << "Text: " << text;
-   
+ return result;
+ //qDebug() << "Text: " << text;
 }
 
 void NGML_SDI_Document::check_unzip_folder(QString zip_file_path, 

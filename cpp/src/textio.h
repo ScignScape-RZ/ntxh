@@ -9,6 +9,8 @@
 
 #include "kans.h"
 
+#include "global-types.h"
+
 #include <QFile>
 #include <QTextStream>
 
@@ -48,6 +50,26 @@ inline void load_file(QString path, QByteArray& contents)
  contents = infile.readAll();
  infile.close();
 }
+
+inline void load_file(QString path, std::function<int(QString&)> fn)
+{
+ QFile infile(path);
+ if (!infile.open(QIODevice::ReadOnly | QIODevice::Text))
+   return;
+ QTextStream instream(&infile);
+ u8 i = 0;
+ QString line;
+ while(i == 0) 
+ {
+  line = instream.readLine();
+  if(line.isNull())
+    break;
+  i = fn(line);
+  line.clear();
+ }
+ infile.close();
+}
+
 
 inline void save_file(QString path, QByteArray& contents)
 {
