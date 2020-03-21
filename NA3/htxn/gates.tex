@@ -161,8 +161,8 @@
 \newcommand{\NDPCloud}{{\color{red!15!black}%
 {\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
 
-\newcommand{\MThreeK}{{\color{blue!15!black}%
-{\fontfamily{qhv}\selectfont {M3K}}}}
+\newcommand{\MThreeK}{{\color{blGreen!45!black}%
+{\fontfamily{qhv}\fontsize{10}{8}\selectfont {M3K}}}}
 
 
 \newcommand{\lfNDPCloud}{{\color{red!15!black}%
@@ -195,7 +195,7 @@
 \newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
 
 \newcommand{\THQL}{\resizebox{!}{7pt}{\AcronymText{THQL}}}
-\newcommand{\lTHQL}{\resizebox{!}{8pt}{\AcronymText{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{7.5pt}{\AcronymText{THQL}}}
 
 \newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
@@ -366,6 +366,9 @@
 
 \newcommand{\HTML}{\resizebox{!}{7pt}{\AcronymText{HTML}}}
 \newcommand{\PDF}{\resizebox{!}{7pt}{\AcronymText{PDF}}}
+
+\newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
+
 
 \newcommand{\lGRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
 
@@ -1068,7 +1071,16 @@ In short, even after research data is openly published
 by article authors, it may be necessary to perform 
 aditional analysis on the data for it to be 
 a full-fledged component of a 
-machine-readable information space.
+machine-readable information space.\footnote{%
+This does not mean that diagnostic images (or 
+other graphical data) should not be placed in a 
+data set; only that computational reuse of such 
+data will usually involve certain numeric 
+processing, such as image segmentation.  
+Insofar as this subsequent analysis is performed, 
+the resulting data should wherever possible 
+be added to the underlying image data as a 
+supplement to the data set.}
 Even within the limited group of data sets linked specifically 
 to the Springer Nature articles, some of the published 
 data actually comprises image graphics that need to be 
@@ -1170,7 +1182,7 @@ software beyond what is provided by the Research Object Bundle
 itself.  This \q{stand-alone} status can be achieved in 
 various ways.  One option is to organize Research Objects 
 around widely used scientific computing platforms, 
-such as R, Jupyter, or Matlab; another is to bundle 
+such as \R{}, Jupyter, or Matlab; another is to bundle 
 dependencies into a virtual platform, using tools such 
 as ReproZip.  An alternative solution,
 more in keeping with the 
@@ -1188,7 +1200,8 @@ scripting engine --- are especially valuable.}
 \p{Considering the inter-disciplinary nature of Covid-19 research, 
 it is unavoidable that different scientists will need 
 different sorts of specialized software to analyze the 
-kinds of information relevant to their research.  The 
+kinds of information relevant to their research.  For 
+instance, the 
 computational techniques applicable to diagnosing 
 coronavirus infection are scientifically very different 
 from those used for genomic or epidemiological studies 
@@ -1222,7 +1235,7 @@ Ideally, that is, the version of \Cnineteen{}
 found in a biomedical setting will be as 
 similar as possible to that found in a 
 biochemical context, or a health-policy 
-contest.  By providing a self-contained computing 
+context.  By providing a self-contained computing 
 framework is delivered as an integral package accompanying 
 \Cnineteen{}, a multi-disciplinary \Cnineteen{} 
 software package (which could be organized through our 
@@ -1299,12 +1312,12 @@ can be facilitated by a Standard Development Kit,
 extending the AngelScript \SDK{} with WhiteDB and 
 \Qt{} integration.}
 
-\p{Having described a \MThreeK{} model for \textit{individual} 
+\p{Having described an \MThreeK{} model for \textit{individual} 
 Research Objects, one can then consider the development 
 of data set \textit{collections} encompassing 
 multiple research papers.  A protocol for 
 Research Object aggregation can be developed by 
-extending a \MThreeK{} \SDK{} with domain-specific 
+extending an \MThreeK{} \SDK{} with domain-specific 
 code appropriate for the shared topics and 
 subject-matter which unify the presented research 
 work.  In \textit{Advances in Ubiquitous Computing}, 
@@ -1327,7 +1340,13 @@ available as open-access resources on Springer Nature
 (and, by extension, \Cnineteen{}).  
 The central point here is to argue for a distinct data-curation 
 stage in the publication process, with data curators 
-playing a role distinct from that of both authors and editors.  
+playing a role distinct from that of both 
+authors and editors.\footnote{%
+The point here is not to critique the work of individual 
+authors; curating data sets according to exacting 
+scientific standards demands a separate vein of 
+expertise which may lie outside researchers' 
+disciplinary scope.}  
 Moreover, the discussion has hopefully highlighted problems 
 with current data-sharing paradigms, even those such 
 as the Research Object and \FAIR{} initiatives which are 
@@ -1491,7 +1510,7 @@ while the pandemic continues to present a global crisis.}
 
 \p{}
 
-\vspace{1.5em}
+\vspace{-.5em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
 %\setlength{\bsep}{7pt}
