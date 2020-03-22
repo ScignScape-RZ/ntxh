@@ -5,13 +5,13 @@
 //           http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "phra-runner/phra-runner.h"
+#include "phr-angel/phra-runner.h"
 
 
 int main(int argc, char* argv[])
 {
- PHRA_Runner asr;
- asr.run_script(PHRA_ROOT_DIR "/test.as");
+ PHRA_Runner par;
+ par.run_script(PHRA_ROOT_DIR "/test.as");
  return 0;
 }
 
