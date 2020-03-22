@@ -31,6 +31,9 @@ int main(int argc, char **argv)
 {
  PHR_Graph pgr;
 
+ qDebug() << DEFAULT_PHR_GEN_FOLDER "/t1.phr";
+ //return 0;
+
  PHR_Graph_PHR_Output pgo(DEFAULT_PHR_GEN_FOLDER "/t1.phr");
 
  pgo.document()->set_graph(&pgr);

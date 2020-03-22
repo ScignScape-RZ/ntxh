@@ -115,7 +115,12 @@ PHAONLIB_SRC_GROUP_DIR = $$SRC_ROOT_DIR/rz/PhaonLib
 PHR_RUNTIME_SRC_GROUP_DIR = $$SRC_ROOT_DIR/rz/phr-runtime
 TESTS_PHR_SRC_GROUP_DIR = $$SRC_ROOT_DIR/rz/tests-phr
 WCM_SRC_GROUP_DIR = $$SRC_ROOT_DIR/thql/wcm
+
+QUA_ZIP_SRC_GROUP_DIR = $$SRC_ROOT_DIR/external/quazip
+ # this was an error; fix ...
 QUA_ZIP_GROUP_DIR = $$SRC_ROOT_DIR/external/quazip
+
+ANGELSCRIPT_SRC_GROUP_DIR = $$SRC_ROOT_DIR/external/angelscript
 
 HTXN_SRC_GROUP_DIR = $$SRC_ROOT_DIR/htxn/htxn
 MPF_SRC_GROUP_DIR = $$SRC_ROOT_DIR/htxn/mosaic
