@@ -30,12 +30,15 @@ DEFINES += RELAE_LABEL_NODES
 
 HEADERS += \
   $$SRC_DIR/phra-runner.h \
+  $$SRC_DIR/phra-run-context.h \
+
 
 SOURCES += \
   $$SRC_DIR/phra-runner.cpp \
+  $$SRC_DIR/phra-run-context.cpp \
 
 
-LIBS += -L$$TARGETSDIR -langelscript
+LIBS += -L$$TARGETSDIR -langelscript  -lphr-graph-core
 
 
 

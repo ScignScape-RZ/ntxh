@@ -50,7 +50,7 @@ SOURCES += \
 
 
 
-LIBS += -L$$TARGETSDIR  -lphr-graph-core
+LIBS += -L$$TARGETSDIR  -lphr-graph-core 
 
 
 

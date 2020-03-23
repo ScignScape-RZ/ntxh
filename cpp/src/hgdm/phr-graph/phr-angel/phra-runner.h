@@ -22,6 +22,7 @@ RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_Query)
 
 USING_RZNS(PhrGraphCore)
 
+class PHRA_Run_Context;
 
 class PHRA_Runner
 {
@@ -29,12 +30,6 @@ class PHRA_Runner
 
  static void message_callback(const asSMessageInfo* msg, void* param);
 
- PHR_Graph* phr_graph_;
-
- PHR_Graph_PHR_Output* phr_out_;
-
- PHR_Graph_Frame& fr_;
- const PHR_Graph_Query& qy_;
  
 public:
 
@@ -44,7 +39,6 @@ public:
 
  void run_script(QString path);
 
- void init_graph();
 };
 
 

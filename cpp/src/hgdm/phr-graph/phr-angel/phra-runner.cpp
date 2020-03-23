@@ -23,6 +23,8 @@
 #include "phr-graph-core/kernel/frame/phr-graph-frame.h"
 #include "phr-graph-core/kernel/query/phr-graph-query.h"
 
+#include "phra-run-context.h"
+
 
 // Print the script string to the standard output stream
 void print(std::string &msg)
@@ -30,9 +32,23 @@ void print(std::string &msg)
   printf("%s", msg.c_str());
 }
 
+PHRA_Run_Context* init_gr()
+{
+//  printf("%s", msg.c_str());
+ qDebug() << "IG";
+ return new PHRA_Run_Context;
+}
+
+void init_g(std::string &msg)
+{
+  printf("%s", msg.c_str());
+// qDebug() << "IG";
+// return new PHRA_Run_Context;
+}
+
+
+
 PHRA_Runner::PHRA_Runner()
-  :  fr_(PHR_Graph_Frame::instance()),
-     qy_(PHR_Graph_Query::instance())
 {
   // Create the script engine
  engine_ = asCreateScriptEngine();
@@ -46,28 +62,22 @@ PHRA_Runner::PHRA_Runner()
  r = engine_->RegisterGlobalFunction("void print(const string &in)", asFUNCTION(print), asCALL_CDECL); 
  assert( r >= 0 );
 
+ r = engine_->RegisterGlobalFunction("void init_g(const string &in)", asFUNCTION(print), asCALL_CDECL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectType("PHRA_Run_Context", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Run_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Run_Context,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterGlobalFunction("PHRA_Run_Context@ init_gr()", asFUNCTION(init_gr), asCALL_CDECL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Run_Context", "void init_graph()", asMETHOD(PHRA_Run_Context,init_graph), asCALL_THISCALL); 
+ assert( r >= 0 );
 }
 
-
-
-void PHRA_Runner::init_graph()
-{
- PHR_Graph pgr;
-
- PHR_Graph_PHR_Output pgo(DEFAULT_PHR_GEN_FOLDER "/t1.phr");
-
- pgo.document()->set_graph(&pgr);
-
-
- PHR_Graph_Frame& fr = PHR_Graph_Frame::instance();
- const PHR_Graph_Query& qy = PHR_Graph_Query::instance();
-
-
- caon_ptr<PHR_Graph_Root> rt = new PHR_Graph_Root(pgo.document().raw_pointer());
- caon_ptr<PHR_Graph_Node> rn = new PHR_Graph_Node(rt);
-
- pgr.set_root_node(rn);
-}
 
 void PHRA_Runner::message_callback(const asSMessageInfo* msg, void* param)
 {
@@ -178,7 +188,12 @@ int main(int argc, char* argv[])
  RegisterStdString(engine);
  
  // Register the function that we want the scripts to call 
- r = engine->RegisterGlobalFunction("void print(const string &in)", asFUNCTION(print), asCALL_CDECL); assert( r >= 0 );
+ r = engine->RegisterGlobalFunction("void printc(const string &in)", asFUNCTION(printc), asCALL_CDECL); assert( r >= 0 );
+
+// int rrr = engine->RegisterGlobalFunction(
+//   "void initgraph(const string &in)", asFUNCTION(print), asCALL_CDECL); 
+// assert( rrr >= 0 );
+
 
  // The CScriptBuilder helper is an add-on that loads the file,
  // performs a pre-processing pass if necessary, and then tells

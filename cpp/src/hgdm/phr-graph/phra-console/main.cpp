@@ -10,8 +10,10 @@
 
 int main(int argc, char* argv[])
 {
+ qDebug() << "Running ...";
+
  PHRA_Runner phrr;
- phrr.init_graph();
+// phrr.init_graph();
  phrr.run_script(PHRA_ROOT_DIR "/test.as");
  return 0;
 }

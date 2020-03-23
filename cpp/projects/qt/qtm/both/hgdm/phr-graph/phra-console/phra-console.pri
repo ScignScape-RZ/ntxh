@@ -24,12 +24,16 @@ DEFINES += PHRA_ROOT_DIR=\\\"$$ROOT_DIR/phra\\\"
 
 CONFIG += no_keywords
 
+
+message(SRC: $$SRC_DIR)
+
 SOURCES += \
   $$SRC_DIR/main.cpp \
 
 
 
-LIBS += -L$$TARGETSDIR -langelscript  -lphr-angel  
+LIBS += -L$$TARGETSDIR -langelscript  -lphr-angel  \
+  -lphr-graph-core  
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)
