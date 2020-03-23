@@ -12,6 +12,17 @@
 
 #include "angelscript.h"
 
+#include "rzns.h"
+
+RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph)
+RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_PHR_Output)
+
+RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_Frame)
+RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_Query)
+
+USING_RZNS(PhrGraphCore)
+
+
 class PHRA_Runner
 {
  asIScriptEngine* engine_; 
@@ -33,6 +44,7 @@ public:
 
  void run_script(QString path);
 
+ void init_graph();
 };
 
 

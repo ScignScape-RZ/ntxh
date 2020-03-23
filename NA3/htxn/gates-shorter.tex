@@ -263,7 +263,7 @@
 \newcommand{\lsEPF}{\resizebox{!}{9.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
 
 
-\newcommand{\XPDF}{\resizebox{!}{8.5pt}{\AcronymText{XPDF}}}
+\newcommand{\XPDF}{\resizebox{!}{7pt}{\AcronymText{XPDF}}}
 
 \newcommand{\GRE}{\resizebox{!}{8.5pt}{\AcronymText{GRE}}}
 
@@ -352,7 +352,7 @@
 
 \newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
 
-\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+\newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
 
 \newcommand{\WhiteDB}{\resizebox{!}{7pt}{\AcronymText{WhiteDB}}}
 
@@ -631,7 +631,7 @@ drop shadow=logoPurple!50!darkRed,
 %top=2pt,
 ]
 \hspace{22pt}
-\begin{minipage}{.85\textwidth}	
+\begin{minipage}{.95\textwidth}	
 \begin{center}	
 {\setlength{\fboxsep}{12pt}
 	\relscale{1.3}{{\fontfamily{qcr}\fontseries{b}\selectfont%
@@ -646,9 +646,9 @@ drop shadow=logoPurple!50!darkRed,
 which was released in conjunction with a White House 
 \q{call to action} to spur Covid-19 research.  
 This White House initiative is described as a 
-\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \COVID{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  As raw data for this initiative, the White House 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \Covid{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  As raw data for this initiative, the White House 
 spearheaded a consortium of industry and academic 
-institutions, headed by the Allen Institute for AI Research, 
+institutions, led by the Allen Institute for AI Research, 
 who curated a \q{machine-readable Coronavirus literature collection} 
 which includes article metadata and (in most cases) 
 publication text  
@@ -658,11 +658,22 @@ corpus is paired with links to publisher portals
 Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine) providing full open access to \Covid{}-related 
 literature; these resources collectively constitute 
 \Cnineteen{} (the \q{Covid-19 Open Research Dataset}; 
-see \cite{CORD}).   
-To help scientists utilize \Cnineteen{}, my company, 
+see \cite{CORD}).}
+
+\p{To help scientists utilize \Cnineteen{}, my company, 
 Linguistic Technology Systems, proposes to create a Software 
 Development Kit (\SDK{}) that would facilitate the deployment of 
-software targeting \Cnineteen{}.}
+software targeting \Cnineteen{}.  This \SDK{} 
+would include new code libraries explicitly 
+implemented for data-management operations 
+specific to \Cnineteen{}.  The 
+\SDK{} would also include a package of applications, 
+modified to support \Covid{} research, that 
+would collectively create an integrated 
+and self-contained computing environment.  
+These two parts of the \SDK{} --- the new 
+code libraries and the application package --- 
+will be outlined in this paper.}
 
 \section{New Code Libraries within the Proposed SDK}
 \p{The \Cnineteen{} 
@@ -672,11 +683,10 @@ to advance coronavirus research.  This means that
 \Cnineteen{} is intended to be used both as a document 
 archive for text mining and as a repository for 
 finding and obtaining coronavirus data for subsequent 
-research.  The White House announcement directly requests 
-institutions to develop \textit{additional} technologies 
+research.  The White House announcement requests 
+institutions to develop additional technologies 
 which would help scientists and jurisdictions to 
-take advantage of \Cnineteen{} as it was initially 
-published.  In short, \Cnineteen{} was released with the 
+take advantage of \Cnineteen{}.  In short, \Cnineteen{} was released with the 
 explicit anticipation that industry and academia would 
 augment the underlying data by layering on additional 
 software.  Our proposed \Cnineteen{} \SDK{} would 
@@ -694,20 +704,20 @@ enhance the underlying data by providing the following
 features: 
 
 %\vspace{-2em}
-\begin{description}
+\begin{description}[leftmargin=10pt,itemsep=10pt]
 	
 \item[Tools for Correcting Transription Errors]  
 Transription errors can cause the machine-readable 
 text archive to misrepresent the structure 
-and content of documents, hindering text-mining 
-technology that targets the archive.  In \Cnineteen{}, 
-for instance, there are cases of scientific notation and terminology 
+and content of documents.  For instance, 
+there are cases in \Cnineteen{} 
+of scientific notation and terminology 
 being improperly encoded.  As a concrete example, \colorq{2{\textquotesingle}-C-ethynyl} is encoded in \Cnineteen{} 
 as \colorq{2 0 -C-ethynyl}, 
 which could stymie text searches 
 against the \Cnineteen{} corpus (see \cite{Eyer} for 
 the human-readable publication where this error is 
-observed; the corresponding index in the corpus is 9555f44156bc5f2c6ac191dda2fb651501a7bd7b.json).  
+observed; the corresponding index in the corpus is \textcolor{blGreen!45!black}{9555f44156bc5f2c6ac191dda2fb651501a7bd7b}).  
 To help address these errors, our \SDK{} would 
 augment the \Cnineteen{} corpus by providing 
 alternate machine-readable encodings of the 
@@ -740,8 +750,9 @@ Language Learning).
    
 \item[Tools for Enhanced Annotation]
 The existing \Cnineteen{} corpus does not 
-directly provide a mechanism for text-mining 
-annotations, such as Named Entity Recognition and 
+directly provide a mechanism for asserting 
+annotations related to  text mining, 
+such as Named Entity Recognition or 
 formally recognized biomedical concepts.  
 However, the archival schemas supports standoff 
 annotation for intra-document references, so 
@@ -861,7 +872,7 @@ with biomedical ontologies);
 \item AngelScript: An embeddable scripting engine 
 that could be used for analytic processing 
 of data generated by text and data mining operations 
-on \Cnineteed{} (see \cite{AS});
+on \Cnineteen{} (see \cite{AS});
 
 \item WhiteDB: A persistent database 
 engine that supports both relational 
@@ -875,6 +886,16 @@ are employed by some \Covid{} data sets;
 
 \item MeshLab: A general-purpose \ThreeD{} graphics 
 viewer;
+ 
+\item UDPipe: a \Cpp{} library for manipulating 
+\CoNLL{} data;
+
+\item LaTeXML: a \LaTeX{}-to-\XML{} converter;
+
+\item PositLib: a library for use in high-precision computations based on the \q{Universal Number} format, 
+which is more accurate than traditional floating-point 
+encoding in some scientific contexts 
+(see \cite{JohnGustafson}).
  
 \end{itemize}}
   
@@ -912,7 +933,14 @@ processing, such as image segmentation.
 Insofar as this subsequent analysis is performed, 
 the resulting data should wherever possible 
 be added to the underlying image data as a 
-supplement to the data set.}} 
+supplement to the data set.}  To 
+deal with this sort of situation, our 
+proposed \SDK{} would include a data-modeling 
+vocabulary that would identify the 
+interrelationships between data representations 
+and define the workflows needed to 
+convert \Cnineteen{}-linked research data 
+into machine-readable data sets.} 
 
 \p{Another concern in developing an integrated \Cnineteen{} 
 data collection is that of indexing \Covid{} data 
@@ -958,7 +986,8 @@ research data, so that a search for this
 concept can trigger both publication and 
 data-set matches.}
 
-\p{The vision of \textit{standalone} and \textit{self-contained} 
+\section{Conclusion}
+\p{The vision of a \textit{standalone} and \textit{self-contained} 
 \Covid{} data-set collection is consistent with 
 new publishing initiatives such as 
 Research Objects (see \cite{KhalidBelhajjame}) 
@@ -1011,6 +1040,13 @@ corpus of \Cnineteen{} articles.}
 	Lud\"ek Eyer, \textit{et. al.},
 	\q{Nucleoside analogs as a rich source of antiviral agents active against arthropod-borne flaviviruses}.
 	\biburl{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890575/}}
+
+\bibitem{JohnGustafson}{%
+	John Gustafson,
+	\q{Beating Floating Point at its Own Game: Posit Arithmetic}, 
+	\biburl{http://www.johngustafson.net/pdfs/BeatingFloatingPoint.pdf}}
+
+
 \bibitem{AS}{%
 	Andreas J\"onsson,
 	\q{AngelCode Scripting Library}, 
