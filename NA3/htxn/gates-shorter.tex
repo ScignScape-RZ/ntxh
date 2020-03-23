@@ -1,0 +1,1049 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{tgtermes}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\usepackage{titlesec}
+\usepackage{lipsum}% just to generate text for the example
+
+\titlespacing*{\section}
+{0pt}{5ex plus 1ex minus .2ex}{1.1ex plus .2ex}
+
+%\usepackage{mathptmx}
+
+\usepackage{eso-pic}
+
+%\setlength\parindent{0pt}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>1{
+\AtTextUpperLeft{
+\makebox[18.5cm][r]{
+\raisebox{-2.3cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{3pt}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(3,0){{\rule{4pt}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+
+
+\AddToShipoutPicture{%
+
+\ifnum\value{page}>0
+
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+\setlength{\footskip}{7pt}
+
+\usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
+\geometry{left=.78in,top=1.1in,right=.6in,bottom=1.75in} %margins
+
+\renewcommand{\thepage}{\raisebox{-3em}{\arabic{page}}}
+
+\usepackage[hyphens]{url}
+\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
+{\scriptsize {\url{#1}}}}}}
+
+%\linespread{1.3}
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{textcomp}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\colorlet{blCyan}{cyan!50!blue}
+
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\newcommand{\colorq}[1]{{\color{logoOrange!70!black}{\q{\small\textbf{#1}}}}}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newlength{\bsep}
+\setlength{\bsep}{-1pt}
+\let\xbibitem\bibitem
+\renewcommand{\bibitem}[2]{\vspace{\bsep}\xbibitem{#1}{#2}}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+
+\usepackage{relsize}
+
+\newcommand{\bref}[1]{\hspace*{1pt}\textbf{\ref{#1}}}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{10pt}\hspace*{12pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+\newcommand{\visavis}{vis-\`a-vis}
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\MThreeK}{{\color{blGreen!45!black}%
+{\fontfamily{qhv}\fontsize{10}{8}\selectfont {M3K}}}}
+
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\definecolor{tcolor}{RGB}{24,52,61}
+
+\newcommand{\CCpp}{\resizebox{!}{7pt}{\AcronymText{C}}/\Cpp{}}
+\newcommand{\NoSQL}{\resizebox{!}{7pt}{\AcronymText{NoSQL}}}
+\newcommand{\SQL}{\resizebox{!}{7pt}{\AcronymText{SQL}}}
+
+\newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
+
+\newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
+
+
+\usepackage{mdframed}
+
+\newcommand{\cframedboxpanda}[1]{\begin{mdframed}[linecolor=yellow!70!blue,linewidth=0.4mm]#1\end{mdframed}}
+
+
+\newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
+
+\newcommand{\THQL}{\resizebox{!}{7pt}{\AcronymText{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{7.5pt}{\AcronymText{THQL}}}
+
+\newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
+\newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
+
+%\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+
+\newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
+
+\newcommand{\BioC}{\resizebox{!}{7pt}{\AcronymText{BioC}}}
+
+\newcommand{\CoNLL}{\resizebox{!}{7pt}{\AcronymText{CoNLL}}}
+
+\newcommand{\sapp}{\resizebox{!}{7pt}{\AcronymText{Sapien+}}}
+\newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
+\newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
+
+\newcommand{\ePub}{\resizebox{!}{7pt}{\AcronymText{ePub}}}
+
+%\lsLPF
+
+
+\newcommand{\GIT}{\resizebox{!}{7pt}{\AcronymText{GIT}}}
+
+\newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
+\newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
+\newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
+
+\makeatletter
+
+\newcommand*\getX[1]{\expandafter\getX@i#1\@nil}
+
+\newcommand*\getY[1]{\expandafter\getY@i#1\@nil}
+\def\getX@i#1,#2\@nil{#1}
+\def\getY@i#1,#2\@nil{#2}
+\makeatother
+	
+\newcommand{\rectann}[9]{%
+\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+({\getX{#6}+((#7-(#7*#9))/2)},{\getY{#6}+((#8-(#8*#9))/2)}) rectangle %
+({\getX{#6}+((#7-(#7*#9))/2)+#7*#9},{\getY{#6}+((#8-(#8*#9))/2)+#8*#9});}
+
+
+\definecolor{pfcolor}{RGB}{94, 54, 73}
+
+\newcommand{\EPF}{\resizebox{!}{7pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lEPF}{\resizebox{!}{8.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lsEPF}{\resizebox{!}{9.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+
+
+\newcommand{\XPDF}{\resizebox{!}{8.5pt}{\AcronymText{XPDF}}}
+
+\newcommand{\GRE}{\resizebox{!}{8.5pt}{\AcronymText{GRE}}}
+
+\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
+\newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
+
+\newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
+
+\newcommand{\CLang}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{7pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+\newcommand{\JSON}{\resizebox{!}{7pt}{\AcronymText{JSON}}}
+
+\newcommand{\MeshLab}{\resizebox{!}{7pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{7pt}{\AcronymText{IQmol}}}
+
+\newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
+
+\newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
+
+\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+
+\newcommand{\SDI}{\resizebox{!}{7pt}{\AcronymText{SDI}}}
+
+\newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{7pt}{\AcronymText{3D}}}
+
+\newcommand{\FAIR}{\resizebox{!}{7pt}{\AcronymText{FAIR}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{7pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{7pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{7pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{7pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\iXPDF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{XPDF}}}}
+
+\newcommand{\iEPF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{ETSpf}}}}
+
+\newcommand{\iSDI}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{SDI}}}}
+
+\newcommand{\iHTXN}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{HTXN}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\FASTA}{{\resizebox{!}{7pt}{\AcronymText{FASTA}}}}
+\newcommand{\SRA}{{\resizebox{!}{7pt}{\AcronymText{SRA}}}}
+\newcommand{\DNA}{{\resizebox{!}{7pt}{\AcronymText{DNA}}}}
+\newcommand{\MAP}{{\resizebox{!}{7pt}{\AcronymText{MAP}}}}
+\newcommand{\EPS}{{\resizebox{!}{7pt}{\AcronymText{EPS}}}}
+\newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
+\newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{7pt}{\AcronymText{TeXMECS}}}
+
+\newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
+
+\newcommand{\Cpp}{\resizebox{!}{8.5pt}{\AcronymText{C++}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{7pt}{\AcronymText{WhiteDB}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{7pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{7pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{7pt}{\MOSAIC}}
+
+\newcommand{\LDOM}{\resizebox{!}{7pt}{\AcronymText{LDOM}}}
+\newcommand{\Cnineteen}{\resizebox{!}{7pt}{\AcronymText{CORD-19}}}
+
+
+\newcommand{\LXCR}{\resizebox{!}{7pt}{\AcronymText{LXCR}}}
+\newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
+\newcommand{\lsLXCR}{\resizebox{!}{9.5pt}{\AcronymText{LXCR}}}
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{7pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
+\newcommand{\QtSQL}{\resizebox{!}{7pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{7pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{7pt}{\AcronymText{PDF}}}
+
+\newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
+
+
+\newcommand{\lGRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
+
+\newcommand{\p}[1]{
+
+\vspace{.75em}#1}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+
+\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+
+\colorlet{dsl}{purple!20!brown}
+\colorlet{dslr}{dsl!50!blue}
+
+\setlist[description]{%
+  topsep=10pt,
+  labelsep=12pt,
+  itemsep=12pt,               % space between items
+  %font={\bfseries\sffamily}, % set the label font
+  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\let\OldTeX\TeX
+
+\renewcommand{\TeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldTeX}}}
+
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\setlength\parindent{0pt}
+%\setlength\parindent{24pt}
+%\input{commands}
+
+
+\newcommand{\lun}[1]{\raisebox{-4pt}{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\textcolor{tcolor}{#1}}}}}\vspace{-2pt}}
+
+\newcommand{\inditem}{\itemindent10pt\item}
+
+\usepackage{soul}
+
+\definecolor{hlcolor}{RGB}{114, 54, 203}
+\colorlet{hlcol}{hlcolor!35}
+\sethlcolor{hlcol}
+
+\makeatletter
+\def\SOUL@hlpreamble{%
+	\setul{}{3ex}%         !!!change this value!!! default is 2.5ex
+	\let\SOUL@stcolor\SOUL@hlcolor
+	\SOUL@stpreamble
+}
+\makeatother
+
+\usepackage{scrextend}
+%\vspace*{3em}
+\newenvironment{mldescription}{\vspace{1em}%
+  \begin{addmargin}[4pt]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1][]{\vspace{5pt}\par\medskip%
+%\colorbox{hlcolor}{\textbf{##1}}\quad}\indent
+\hl{ \textbf{##1} }\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
+
+\usepackage{marginnote}
+
+\newcommand{\mnote}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{1em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnotel}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{-4em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnoteh}[3]{%
+	\vspace*{#1}
+	\reversemarginpar
+	\raisebox{#2}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#3}}}
+				\end{mdframed}}
+			}[3em]}}
+
+
+\newcommand{\mnoteb}[1]{%
+	\vspace*{1em}
+	\reversemarginpar
+	\raisebox{1em}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#1}}}
+				\end{mdframed}}
+			}[3em]}}
+	
+\usepackage{wrapfig}
+
+\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{shapes.arrows}
+
+\newcommand{\curicon}[2]{%
+	\node at (#1,#2) [
+	draw=black,
+	%minimum width=2ex,
+	inner sep=.7pt,
+	fill=white,
+	single arrow,
+	single arrow head extend=3pt,
+	single arrow head indent=1.5pt,
+	single arrow tip angle=45,
+	line join=bevel,
+	minimum height=4.6mm,
+	rotate=115
+	] {};
+}
+
+\makeatletter
+\def\@cite#1#2{[\textbf{#1\if@tempswa , #2\fi}]}
+\def\@biblabel#1{[\textbf{#1}]}
+\makeatother
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta,
+	urlcolor=blue,
+}
+
+\renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
+
+\urlstyle{same}
+
+\begin{document}
+	
+{\linespread{1.2}\selectfont
+
+\vspace*{-7em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+
+%\vspace{2em}
+
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=.92\textwidth,
+colback=ctmpppp!30,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+\hspace{22pt}
+\begin{minipage}{.85\textwidth}	
+\begin{center}	
+{\setlength{\fboxsep}{12pt}
+	\relscale{1.3}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{Proposing a CORD-19 Software Development Kit}
+}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\p{\Cnineteen{} is a new coronavirus data collection 
+which was released in conjunction with a White House 
+\q{call to action} to spur Covid-19 research.  
+This White House initiative is described as a 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \COVID{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  As raw data for this initiative, the White House 
+spearheaded a consortium of industry and academic 
+institutions, headed by the Allen Institute for AI Research, 
+who curated a \q{machine-readable Coronavirus literature collection} 
+which includes article metadata and (in most cases) 
+publication text  
+for over 44,000 coronavirus research papers.  This 
+corpus is paired with links to publisher portals 
+(including Springer Nature, 
+Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine) providing full open access to \Covid{}-related 
+literature; these resources collectively constitute 
+\Cnineteen{} (the \q{Covid-19 Open Research Dataset}; 
+see \cite{CORD}).   
+To help scientists utilize \Cnineteen{}, my company, 
+Linguistic Technology Systems, proposes to create a Software 
+Development Kit (\SDK{}) that would facilitate the deployment of 
+software targeting \Cnineteen{}.}
+
+\section{New Code Libraries within the Proposed SDK}
+\p{The \Cnineteen{} 
+collection was formulated with the explicit goal 
+of promoting both text mining and data mining solutions 
+to advance coronavirus research.  This means that 
+\Cnineteen{} is intended to be used both as a document 
+archive for text mining and as a repository for 
+finding and obtaining coronavirus data for subsequent 
+research.  The White House announcement directly requests 
+institutions to develop \textit{additional} technologies 
+which would help scientists and jurisdictions to 
+take advantage of \Cnineteen{} as it was initially 
+published.  In short, \Cnineteen{} was released with the 
+explicit anticipation that industry and academia would 
+augment the underlying data by layering on additional 
+software.  Our proposed \Cnineteen{} \SDK{} would 
+do just that, as a component providing analytic 
+capabilities which make the raw \Cnineteen{} data 
+more valuable, and also a toolkit through which 
+other developers could create 
+new solutions targeting \Cnineteen{}.}
+
+\p{Our proposed \SDK{} would include a collection of 
+new code libraries to aid programmers in the 
+implementation of algorithms to investigate the 
+\Cnineteen{} corpus.  These code libraries would 
+enhance the underlying data by providing the following 
+features: 
+
+%\vspace{-2em}
+\begin{description}
+	
+\item[Tools for Correcting Transription Errors]  
+Transription errors can cause the machine-readable 
+text archive to misrepresent the structure 
+and content of documents, hindering text-mining 
+technology that targets the archive.  In \Cnineteen{}, 
+for instance, there are cases of scientific notation and terminology 
+being improperly encoded.  As a concrete example, \colorq{2{\textquotesingle}-C-ethynyl} is encoded in \Cnineteen{} 
+as \colorq{2 0 -C-ethynyl}, 
+which could stymie text searches 
+against the \Cnineteen{} corpus (see \cite{Eyer} for 
+the human-readable publication where this error is 
+observed; the corresponding index in the corpus is 9555f44156bc5f2c6ac191dda2fb651501a7bd7b.json).  
+To help address these errors, our \SDK{} would 
+augment the \Cnineteen{} corpus by providing 
+alternate machine-readable encodings of the 
+corpus documents in formats such as \XML{} whenever 
+these are available, as a supplement to \Cnineteen{}'s 
+\JSON{} representation.  Because the alternate 
+encodings would be based directly on published 
+manuscripts, they would not be subject to transcription 
+errors.  The \SDK{} would then provide tools to 
+cross-reference multiple versions of each document, 
+so as to correct errors in the original \JSON{} encodings. 
+    
+\item[Tools for Converting Between Data Formats]
+Although the \Cnineteen{} corpus is published 
+as \JSON{} files, many text-mining tools such 
+as those I review in \cite{NeusteinText} take 
+input in alternative formats, such as \XML{},  
+\BioC{}, or \JSON{} trees with different 
+schema than \Cnineteen{}.  Our proposed 
+\SDK{} would provide libraries to read 
+\Cnineteen{}'s \JSON{} files and output 
+data in one of these alternative formats, 
+so as to initiate a text mining workflow. 
+The \SDK{} would also include tools for 
+manipulating which \textit{results} from 
+text mining algorithms, which is 
+often represented in formats such as 
+\XML{} and \CoNLL{} (Conference on Natural 
+Language Learning). 
+   
+\item[Tools for Enhanced Annotation]
+The existing \Cnineteen{} corpus does not 
+directly provide a mechanism for text-mining 
+annotations, such as Named Entity Recognition and 
+formally recognized biomedical concepts.  
+However, the archival schemas supports standoff 
+annotation for intra-document references, so 
+our \SDK{} can provide code for additional 
+standoff annotation categories of the kinds 
+commonly used in biomedical text mining.  
+As a concrete example, the corrected 
+text segment \colorq{2{\textquotesingle}-C-ethynyl} mentioned 
+earlier can be annotated as a molecular component. 
+
+\item[Tools for Research Data-Mining]  Although 
+\Cnineteen{} provides a structured representation 
+of a large collection of research 
+\textit{papers}, there is no easy-to-use tool 
+for finding research \textit{data} 
+through \Cnineteen{}.  However, 
+the \Cnineteen{} resources indirectly include 
+numerous research data sets published 
+alongside the scientific articles.  
+The collection of manuscripts available 
+through the Springer Nature portal, for 
+example, which is linked from \Cnineteen{}, 
+included over 30 \Covid{} data sets 
+encompassing a wide array of file types 
+and formats, including \FASTA{} (which stands for Fast-All, 
+a genomics format), \SRA{} (Sequence Read Archive, for 
+\DNA{} sequencing), \PDB{} (Protein Data Bank,  
+representing the \ThreeD{} geometry of protein 
+molecules), \MAP{} (Electron Microscopy Map), \EPS{} 
+(Embedded Postscript), \CSV{} (comma-separated values), 
+and tables represented in Microsoft Word 
+and Excel formats.  Our \SDK{} would marge 
+these resources into a common representation 
+(such as \XML{}) wherever possible.  
+
+\item[Wrappers for Network Requests]  Scientific 
+use of \Cnineteen{} will often require communicating 
+with remote servers.  For example, genomics 
+information in the \Covid{} data sets is generally 
+provided in the form of accession numbers which 
+are used to query online genomics services.  
+Similarly, text mining algorithms often 
+rely on dedicated servers to perform 
+Natural Language Processing; these services 
+might take requests in \BioC{} form and respond 
+with \CoNLL{} data; or epidemiological 
+studies of \Covid{} may need to access \API{}s or data 
+sets such as the John Hopkins University \q{dashboard} 
+(see \href{https://coronavirus.jhu.edu/map.html}{https://coronavirus.jhu.edu/map.html}).  To reduce the amount 
+of \q{biolerplate code} which developers need 
+for these networking requirements, the \SDK{} 
+would provide code libraries based on the 
+\Qt{} Networking Module to manage networking 
+requests and responses.  Programmers would 
+therefore have a unified framework with which 
+to construct remote queries and route responses, 
+a framework which could be used across 
+disparate scientific disciplines 
+(genomics, \NLP{}, epidemiology, and so forth). 
+\end{description}}
+
+\p{The code libraries just decribed would 
+augment the value of \Cnineteen{} by providing 
+tools out-of-the-box to help scientists 
+(and their codewriters) leverage \Cnineteen{} data.  
+Although we can expect that numerous code libraries 
+will be implemented so that researchers can 
+use \Cnineteen{}, a \Cnineteen{} \SDK{} 
+would be beneficial because it would integrate 
+multiple libraries into a single package, 
+designed to be easily interoperable.  
+In particular, these libraries would be implemented 
+in a manner which prioritizes ease of development: 
+the \SDK{} would comprise a \textit{standalone} 
+and \textit{self-contained} development 
+environment with minimal external dependencies.  
+This priority would extend also to software 
+tools that would be bundled together with 
+the new code libraries.  These software 
+tools will be discussed next.}
+
+\section{Software Components Within the Proposed SDK}
+\p{In addition to the code libraries described 
+above, whose purpose would be to manipulate 
+\Cnineteen{} data to prepare for text mining and 
+data mining operations, our proposed \SDK{} would 
+bundle numerous applications used for database 
+storage, data visualization, and scripting.  
+The goal of this application package would be to 
+provide researchers with a self-contained computing 
+platform optimized for science related to 
+\Covid{}.  The components within this application 
+package would be selected with an emphasis on 
+tools that could be distributed in source-code 
+fashion, and then compiled within the \SDK{}'s 
+development framwork with few, if any, external 
+dependencies.  In short, the \SDK{} would try 
+to eliminate almost all scenarios where 
+programmers would need to perform a \q{system 
+install}; for the most part the entire 
+computing platform (including scripting 
+and database capabilities) could be compiled 
+from source \q{out-of-the-box}.  The 
+\SDK{} would also modify the included applications 
+to enhance their interoperability and their 
+usefulness for \Covid{} research.} 
+
+\p{The applications bundled with the \SDK{} would 
+likely include the following:
+
+\begin{itemize}
+
+\item \XPDF{}: A \PDF{} viewer for reading full-text articles 
+(augmented with \Cnineteen{} features, such as integration 
+with biomedical ontologies);
+
+\item AngelScript: An embeddable scripting engine 
+that could be used for analytic processing 
+of data generated by text and data mining operations 
+on \Cnineteed{} (see \cite{AS});
+
+\item WhiteDB: A persistent database 
+engine that supports both relational 
+and \NoSQL{}-style architectures 
+(see \cite{EnarReilent});
+
+\item IQmol: Molecular Visualization software 
+that can be used to study chemical data 
+presented in formats such as \PDB{} which 
+are employed by some \Covid{} data sets;
+
+\item MeshLab: A general-purpose \ThreeD{} graphics 
+viewer;
+ 
+\end{itemize}}
+  
+
+\p{It is worth noting that a data-mining platform requires 
+\textit{machine-readable} open-access research data, 
+which is a more stringent requirement than simply publishing 
+data alongside which can be understood by domain-specific 
+software.  For example, radiological imaging can be a source 
+of \Covid{} data insofar as patterns of lung 
+scarring, such as \q{ground-glass opacity}, is a leading 
+indicator of the disease.  Consequently, diagnostic 
+images of \Covid{} patients are a relevant kind of 
+content for inclusion in a \Covid{} data set 
+(see \cite{Shi} as a case-study).  However, 
+diagnostic images are not in themselves 
+\q{machine readable.}  When medical imaging is 
+used in a quantitative context (e.g. applying 
+Machine Learning for diagnostic pathology), it is necessary to perform Image Analysis to convert the raw data 
+(viz., in this case, radiological graphics) into 
+quantitative aggregates (for instance by using image 
+segmentation to demarcate geometric boundaries and 
+then defining diagnostically relevant features, such 
+as opacity, as a scalar field over the segments).  
+In short, even after research data is openly published 
+by article authors, it may be necessary to perform 
+additional analysis on the data for it to be 
+a full-fledged component of a 
+machine-readable information space.\footnote{%
+This does not mean that diagnostic images (or 
+other graphical data) should not be placed in a 
+data set; only that computational reuse of such 
+data will usually involve certain numeric 
+processing, such as image segmentation.  
+Insofar as this subsequent analysis is performed, 
+the resulting data should wherever possible 
+be added to the underlying image data as a 
+supplement to the data set.}} 
+
+\p{Another concern in developing an integrated \Cnineteen{} 
+data collection is that of indexing \Covid{} data 
+for both text mining \textit{and} data mining.  
+In particular, 
+our proposed \SDK{} would introduce a 
+system of \textit{microcitations} that apply 
+to portions of manuscripts \textit{as well as} data sets.  
+In the publishing context, a microcitation is defined as a 
+reference to a partially isolated fragment of a larger 
+document, such as a table or figure illustration, or a 
+sentence or paragraph defining a technical term, 
+or (in mathematics) the statement/proof of a definition, axiom, 
+or theorem.  In data publishing, \q{data citations} are 
+unique references to data sets in their entirety or to 
+smaller parts of data sets.  A data microcitation is then a 
+fine-grained reference into a data set: for example, 
+\q{the precise data records actually used in a study} (as 
+defined by the Federation of Earth Science Information Partners; 
+see \cite{ESIP}), 
+one column in a spreadsheet, or one statistical parameter in a 
+quantitative analysis.}
+
+\p{The unique feature we propose 
+for our \SDK{} would be to combine the text-mining and 
+data-mining notions of microcitation into a unified 
+framework.  In particular, text-based searches against 
+the \Cnineteen{} corpus would try to find matches in the 
+data sets indexed by our \SDK{}.  As a concrete example, 
+a concept such as \q{expiratory flow} appears in \Cnineteen{} 
+both as a table column in research data and as a medical concept 
+discussed in research papers; a unified microcitation framework 
+should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
+to both textual locations and data set parameters.  
+Similarly, a concept such as 
+\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier 
+in the context of transcription errors) 
+should be identified both as a phrase in 
+article texts and as a molecular component 
+present within compounds whose scientific 
+properties are investigated through \Cnineteen{} 
+research data, so that a search for this 
+concept can trigger both publication and 
+data-set matches.}
+
+\p{The vision of \textit{standalone} and \textit{self-contained} 
+\Covid{} data-set collection is consistent with 
+new publishing initiatives such as 
+Research Objects (see \cite{KhalidBelhajjame}) 
+and \FAIR{} (\q{Findable, Accessible, 
+Interoperable, Reusable}; see \cite{TrifanOliveira}).  
+Indeed, our \Cnineteen{} \SDK{} would 
+function as a macro-scale Research Object, 
+which would be (1) \textit{self-contained} (with few or no external 
+dependencies), (2) \textit{transparent} (meaning that 
+all computing operations should be implemented by 
+source code within the bundle that can be examined 
+as code files and within a debugging session), 
+and (3) interactive (meaning that the bundle does not 
+only include raw data but also software to interactively 
+view and manipulate this data).  Research Objects which 
+embrace these priorities will try to provide data visualization, 
+persistence, and analysis through \GUI{}, database, and 
+scripting engines that can be embedded as source 
+code in the Research Object itself.  
+Our proposed \SDK{} would embrace the 
+same paradigm, only translating it 
+to a larger data space integrating 
+the information contained in dozens 
+of \Covid{} data sets as well as the 
+corpus of \Cnineteen{} articles.} 
+
+\vspace{-.5em}
+%\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
+
+\setlength{\bsep}{-2pt}
+%\setlength{\parskip}{0pt}
+%\setlength{\itemsep}{-2pt}
+
+\makeatletter
+    \clubpenalty10000
+    \@clubpenalty \clubpenalty
+    \widowpenalty10000
+\makeatother
+
+\begin{thebibliography}{99}
+\vspace{1em}
+\bibitem{KhalidBelhajjame}{%
+	Khalid Belhajjame, \textit{et. al.},
+	\q{Workflow-centric research objects:  First class citizens in scholarly discourse}.	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+
+\bibitem{CORD}{%
+	\q{COVID-19 Open Research Dataset (CORD-19)}. 2020. Version 2020-03-13. Retrieved from https://pages.semanticscholar.org/coronavirus-research. Accessed 2020-03-20. doi:10.5281/zenodo.3715506
+	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+\bibitem{Eyer}{%
+	Lud\"ek Eyer, \textit{et. al.},
+	\q{Nucleoside analogs as a rich source of antiviral agents active against arthropod-borne flaviviruses}.
+	\biburl{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890575/}}
+\bibitem{AS}{%
+	Andreas J\"onsson,
+	\q{AngelCode Scripting Library}, 
+	\biburl{www.AngelCode.com/AngelScript/}}
+
+\bibitem{NeusteinText}{%
+	Amy Neustein, \textit{et. al.},
+	\q{Application of Text Mining to Biomedical Knowledge Extraction: Analyzing Clinical Narratives and Medical Literature}, 
+	\biburl{https://www.researchgate.net/publication/262372604_Application_of_Text_Mining_to_Biomedical_Knowledge_Extraction_Analyzing_Clinical_Narratives_and_Medical_Literature}}
+
+\bibitem{ESIP}{%
+Mark A. Parsons and Ruth Duerr,
+\q{Data Identifiers, Versioning, and Micro-citation}, 
+\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
+
+\bibitem{EnarReilent}{%
+	Enar Reilent,
+	\q{Whiteboard Architecture for the Multi-agent Sensor Systems}, 
+	\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
+\bibitem{Shi}{%
+	Heshui Shi, \textit{et. al.},
+	\q{Radiological findings from 81 patients with COVID-19 
+		pneumonia in Wuhan, China: a descriptive study}.
+	\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
+
+\bibitem{TrifanOliveira}{%
+	Alina Trifan and Jos\'e Lu\'\i{}s Oliveira,
+	\q{FAIRness in Biomedical Data Discovery}.
+	\biburl{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}}
+
+
+\end{thebibliography}
+
+\end{document}
+
+

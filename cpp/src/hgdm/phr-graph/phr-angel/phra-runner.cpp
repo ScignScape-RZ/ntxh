@@ -10,23 +10,29 @@
 #include "angelscript/add_on/scriptstdstring/scriptstdstring.h"
 #include "angelscript/add_on/scriptbuilder/scriptbuilder.h"
 
+#include "phr-graph-core/kernel/graph/phr-graph.h"
+
+#include "phr-graph-core/output/phr-graph-phr-output.h"
+#include "phr-graph-core/kernel/graph/phr-graph-node.h"
+#include "phr-graph-core/kernel/graph/phr-graph-connection.h"
+
+#include "phr-graph-core/kernel/phr-graph-root.h"
+#include "phr-graph-core/token/phr-graph-token.h"
+#include "phr-graph-core/kernel/document/phr-graph-document.h"
+
+#include "phr-graph-core/kernel/frame/phr-graph-frame.h"
+#include "phr-graph-core/kernel/query/phr-graph-query.h"
+
+
 // Print the script string to the standard output stream
 void print(std::string &msg)
 {
   printf("%s", msg.c_str());
 }
 
-void PHRA_Runner::message_callback(const asSMessageInfo* msg, void* param)
-{
- const char *type = "ERR ";
- if( msg->type == asMSGTYPE_WARNING ) 
-   type = "WARN";
- else if( msg->type == asMSGTYPE_INFORMATION ) 
-   type = "INFO";
- printf("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); 
-}
-
 PHRA_Runner::PHRA_Runner()
+  :  fr_(PHR_Graph_Frame::instance()),
+     qy_(PHR_Graph_Query::instance())
 {
   // Create the script engine
  engine_ = asCreateScriptEngine();
@@ -40,7 +46,37 @@ PHRA_Runner::PHRA_Runner()
  r = engine_->RegisterGlobalFunction("void print(const string &in)", asFUNCTION(print), asCALL_CDECL); 
  assert( r >= 0 );
 
+}
 
+
+
+void PHRA_Runner::init_graph()
+{
+ PHR_Graph pgr;
+
+ PHR_Graph_PHR_Output pgo(DEFAULT_PHR_GEN_FOLDER "/t1.phr");
+
+ pgo.document()->set_graph(&pgr);
+
+
+ PHR_Graph_Frame& fr = PHR_Graph_Frame::instance();
+ const PHR_Graph_Query& qy = PHR_Graph_Query::instance();
+
+
+ caon_ptr<PHR_Graph_Root> rt = new PHR_Graph_Root(pgo.document().raw_pointer());
+ caon_ptr<PHR_Graph_Node> rn = new PHR_Graph_Node(rt);
+
+ pgr.set_root_node(rn);
+}
+
+void PHRA_Runner::message_callback(const asSMessageInfo* msg, void* param)
+{
+ const char *type = "ERR ";
+ if( msg->type == asMSGTYPE_WARNING ) 
+   type = "WARN";
+ else if( msg->type == asMSGTYPE_INFORMATION ) 
+   type = "INFO";
+ printf("%s (%d, %d) : %s : %s\n", msg->section, msg->row, msg->col, type, msg->message); 
 }
 
 void PHRA_Runner::run_script(QString path)

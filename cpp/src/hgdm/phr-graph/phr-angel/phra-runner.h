@@ -17,6 +17,13 @@ class PHRA_Runner
  asIScriptEngine* engine_; 
 
  static void message_callback(const asSMessageInfo* msg, void* param);
+
+ PHR_Graph* phr_graph_;
+
+ PHR_Graph_PHR_Output* phr_out_;
+
+ PHR_Graph_Frame& fr_;
+ const PHR_Graph_Query& qy_;
  
 public:
 
