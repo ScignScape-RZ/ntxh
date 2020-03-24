@@ -609,6 +609,7 @@
 \colorlet{ctmpp}{ctmp!90!yellow}
 \colorlet{ctmppp}{ctmpp!50!black}
 \colorlet{ctmpppp}{ctmppp!90!logoRed}
+\colorlet{ctmcyan}{ctmpppp!70!cyan}
 
 %\vspace{2em}
 
@@ -622,7 +623,7 @@
 arc=2pt,outer arc=0pt,
 enhanced jigsaw,
 width=.92\textwidth,
-colback=ctmpppp!30,
+colback=ctmcyan!50,
 colframe=logoRed!30!darkRed,
 drop shadow=logoPurple!50!darkRed,
 %boxsep=0pt,
@@ -636,7 +637,7 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{12pt}
 	\relscale{1.3}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Proposing a CORD-19 Software Development 
-Kit to Improve Machine Readability}
+Kit \\\vspace{.4em}to Improve Machine Readability}
 }}}
 \end{center}
 \end{minipage}
@@ -661,9 +662,9 @@ Wiley, Elsevier, the American Society for Microbiology, and the New England Jour
 literature; these resources collectively constitute 
 \Cnineteen{} (see \cite{CORD}).}
 
-\p{Linguistic Technology Systems (LTS), 
+\p{Linguistic Technology Systems (LTS) 
 would like to create a Software 
-Development Kit (\SDK{}) that would 
+Development Kit (\SDK{}) to 
 help scientists utilize \Cnineteen{}.  This \SDK{} 
 would include new code libraries explicitly 
 implemented for data-management operations 
@@ -693,13 +694,13 @@ take advantage of \Cnineteen{},
 explicit anticipation that industry and academia would 
 augment the underlying data by layering on additional 
 software.  Our proposed \Cnineteen{} \SDK{} would 
-do just that: this \SDK{} would be component providing 
+do just that: this \SDK{} would be a component providing 
 analytic capabilities which make the raw \Cnineteen{} data 
 more valuable, and a toolkit through which 
 other developers could create 
 new solutions targeting \Cnineteen{}.}
 
-\p{To accomplish this goal, our 
+\p{To accomplish these goals, our 
 proposed \SDK{} would include a collection of 
 new code libraries to aid programmers in the 
 implementation of algorithms to investigate the 
