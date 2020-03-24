@@ -131,7 +131,16 @@ PHRA_Runner::PHRA_Runner()
 
  r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Binary_Channel,release), asCALL_THISCALL); assert( r >= 0 );
 
+ r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint8)", asMETHODPR(PHRA_Binary_Channel,append,(u1),void), asCALL_THISCALL); 
+ assert( r >= 0 );
+
  r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint16)", asMETHODPR(PHRA_Binary_Channel,append,(u2),void), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint32)", asMETHODPR(PHRA_Binary_Channel,append,(u4),void), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint64)", asMETHODPR(PHRA_Binary_Channel,append,(u8),void), asCALL_THISCALL); 
  assert( r >= 0 );
 
  r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void test_extract(uint16, uint8)", asMETHODPR(PHRA_Binary_Channel,test_extract,(u2,u1),void), asCALL_THISCALL); 

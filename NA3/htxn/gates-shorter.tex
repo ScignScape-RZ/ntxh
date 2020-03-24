@@ -635,35 +635,36 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{12pt}
 	\relscale{1.3}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Proposing a CORD-19 Software Development Kit}
+{Proposing a CORD-19 Software Development 
+Kit to Improve Machine Readability}
 }}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
 \end{center}
 
-\p{\Cnineteen{} is a new coronavirus data collection 
+\p{\Cnineteen{} (the \q{Covid-19 Open Research Dataset}) 
+is a new coronavirus data collection 
 which was released in conjunction with a White House 
-\q{call to action} to spur Covid-19 research.  
-This White House initiative is described as a 
-\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \Covid{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  As raw data for this initiative, the White House 
+initiative to spur Covid-19 research.  
+This initiative is described as a 
+\q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \Covid{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  The White House 
 spearheaded a consortium of industry and academic 
 institutions, led by the Allen Institute for AI Research, 
 who curated a \q{machine-readable Coronavirus literature collection} 
 which includes article metadata and (in most cases) 
-publication text  
+publication text 
 for over 44,000 coronavirus research papers.  This 
 corpus is paired with links to publisher portals 
 (including Springer Nature, 
 Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine) providing full open access to \Covid{}-related 
 literature; these resources collectively constitute 
-\Cnineteen{} (the \q{Covid-19 Open Research Dataset}; 
-see \cite{CORD}).}
+\Cnineteen{} (see \cite{CORD}).}
 
-\p{To help scientists utilize \Cnineteen{}, my company, 
-Linguistic Technology Systems, proposes to create a Software 
-Development Kit (\SDK{}) that would facilitate the deployment of 
-software targeting \Cnineteen{}.  This \SDK{} 
+\p{Linguistic Technology Systems (LTS), 
+would like to create a Software 
+Development Kit (\SDK{}) that would 
+help scientists utilize \Cnineteen{}.  This \SDK{} 
 would include new code libraries explicitly 
 implemented for data-management operations 
 specific to \Cnineteen{}.  The 
@@ -673,30 +674,33 @@ would collectively create an integrated
 and self-contained computing environment.  
 These two parts of the \SDK{} --- the new 
 code libraries and the application package --- 
-will be outlined in this paper.}
+are outlined in this paper.}
 
 \section{New Code Libraries within the Proposed SDK}
 \p{The \Cnineteen{} 
 collection was formulated with the explicit goal 
-of promoting both text mining and data mining solutions 
+of promoting both \textit{text mining} and 
+\textit{data mining} solutions 
 to advance coronavirus research.  This means that 
 \Cnineteen{} is intended to be used both as a document 
 archive for text mining and as a repository for 
 finding and obtaining coronavirus data for subsequent 
-research.  The White House announcement requests 
+research.  Because the White House announcement requests 
 institutions to develop additional technologies 
 which would help scientists and jurisdictions to 
-take advantage of \Cnineteen{}.  In short, \Cnineteen{} was released with the 
+take advantage of \Cnineteen{}, 
+\Cnineteen{} was released with the 
 explicit anticipation that industry and academia would 
 augment the underlying data by layering on additional 
 software.  Our proposed \Cnineteen{} \SDK{} would 
-do just that, as a component providing analytic 
-capabilities which make the raw \Cnineteen{} data 
-more valuable, and also a toolkit through which 
+do just that: this \SDK{} would be component providing 
+analytic capabilities which make the raw \Cnineteen{} data 
+more valuable, and a toolkit through which 
 other developers could create 
 new solutions targeting \Cnineteen{}.}
 
-\p{Our proposed \SDK{} would include a collection of 
+\p{To accomplish this goal, our 
+proposed \SDK{} would include a collection of 
 new code libraries to aid programmers in the 
 implementation of algorithms to investigate the 
 \Cnineteen{} corpus.  These code libraries would 
@@ -723,7 +727,7 @@ augment the \Cnineteen{} corpus by providing
 alternate machine-readable encodings of the 
 corpus documents in formats such as \XML{} whenever 
 these are available, as a supplement to \Cnineteen{}'s 
-\JSON{} representation.  Because the alternate 
+\JSON{} representation.  Because these alternate 
 encodings would be based directly on published 
 manuscripts, they would not be subject to transcription 
 errors.  The \SDK{} would then provide tools to 

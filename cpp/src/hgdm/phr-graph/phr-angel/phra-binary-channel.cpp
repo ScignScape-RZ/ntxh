@@ -15,6 +15,8 @@ PHRA_Binary_Channel::PHRA_Binary_Channel()
 
 void PHRA_Binary_Channel::test_extract_1(u2 index)
 {
+ u1 value = values_[index - 1];
+ qDebug() << "Value is: " << value;
 
 }
 
@@ -30,12 +32,29 @@ void PHRA_Binary_Channel::test_extract_2(u2 index)
 
 void PHRA_Binary_Channel::test_extract_4(u2 index)
 {
+ u4 value = 0;
+ value |= values_[index - 1];
+ value |= (values_[index] << 8); 
+// value |= (values_[index + 1] << 16); 
+// value |= (values_[index + 2] << 32); 
 
+ qDebug() << "Value (4) is: " << value;
 }
 
 void PHRA_Binary_Channel::test_extract_8(u2 index)
 {
+ u8 value = 0;
+ value |= values_[index - 1];
+ value |= (values_[index] << 8); 
+ value |= (values_[index + 1] << 16); 
+ value |= (values_[index + 2] << 24);
+ 
+ value |= (values_[index + 3] << 32); 
+ value |= (values_[index + 4] << 40); 
+ value |= (values_[index + 5] << 48); 
+ value |= (values_[index + 6] << 56); 
 
+ qDebug() << "Value is: " << value;
 }
 
 
@@ -72,8 +91,8 @@ void PHRA_Binary_Channel::append(u4 u)
  values_.append(4, 0);
  values_[sz] =      u & 0x000000ff; 
  values_[sz + 1] = (u & 0x0000ff00) >> 8; 
- values_[sz + 2] = (u & 0x00ff0000) >> 16; 
- values_[sz + 3] = (u & 0xff000000) >> 24; 
+// values_[sz + 2] = (u & 0x00ff0000) >> 16; 
+// values_[sz + 3] = (u & 0xff000000) >> 24; 
 }
 
 void PHRA_Binary_Channel::append(u8 u)

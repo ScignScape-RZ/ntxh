@@ -3,15 +3,19 @@ void test_fn(uint)
 {
 // PHRA_Runtime_Context@ prc = new_rt_context();
  PHRA_Binary_Channel@ pbc = new_binary_channel();
- uint16 u2 = 97;
- pbc.append(u2);
+// uint16 u = 1097;
+// pbc.append(u);
 
- pbc.append(7);
- pbc.append(u2);
+ uint32 uu = 2025;
+ pbc.append(uu);
 
- pbc.test_extract(5, 2);
- pbc.test_extract(1, 2);
- pbc.test_extract(3, 2);
+ pbc.test_extract(1, 4);
+
+// pbc.append(u);
+
+// pbc.test_extract(7, 2);
+// pbc.test_extract(1, 2);
+// pbc.test_extract(3, 4);
  
 }
 
