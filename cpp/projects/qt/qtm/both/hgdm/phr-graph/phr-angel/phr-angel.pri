@@ -31,11 +31,19 @@ DEFINES += RELAE_LABEL_NODES
 HEADERS += \
   $$SRC_DIR/phra-runner.h \
   $$SRC_DIR/phra-run-context.h \
+  $$SRC_DIR/phra-graph-build.h \
+  $$SRC_DIR/phra-runtime.h \
+  $$SRC_DIR/phra-runtime-context.h \
+  $$SRC_DIR/phra-binary-channel.h \
 
 
 SOURCES += \
   $$SRC_DIR/phra-runner.cpp \
   $$SRC_DIR/phra-run-context.cpp \
+  $$SRC_DIR/phra-graph-build.cpp \
+  $$SRC_DIR/phra-runtime.cpp \
+  $$SRC_DIR/phra-runtime-context.cpp \
+  $$SRC_DIR/phra-binary-channel.cpp \
 
 
 LIBS += -L$$TARGETSDIR -langelscript  -lphr-graph-core

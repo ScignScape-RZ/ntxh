@@ -24,6 +24,11 @@
 #include "phr-graph-core/kernel/query/phr-graph-query.h"
 
 #include "phra-run-context.h"
+#include "phra-graph-build.h"
+
+#include "phra-runtime-context.h"
+#include "phra-runtime.h"
+#include "phra-binary-channel.h"
 
 
 // Print the script string to the standard output stream
@@ -38,6 +43,21 @@ PHRA_Run_Context* init_gr()
  qDebug() << "IG";
  return new PHRA_Run_Context;
 }
+
+PHRA_Runtime_Context* new_rt_context()
+{
+//  printf("%s", msg.c_str());
+ qDebug() << "RTC";
+ return new PHRA_Runtime_Context;
+}
+
+PHRA_Binary_Channel* new_binary_channel()
+{
+//  printf("%s", msg.c_str());
+ qDebug() << "RTC";
+ return new PHRA_Binary_Channel;
+}
+
 
 void init_g(std::string &msg)
 {
@@ -65,17 +85,61 @@ PHRA_Runner::PHRA_Runner()
  r = engine_->RegisterGlobalFunction("void init_g(const string &in)", asFUNCTION(print), asCALL_CDECL); 
  assert( r >= 0 );
 
+ r = engine_->RegisterObjectType("PHRA_Graph_Build", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Graph_Build", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Graph_Build,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Graph_Build", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Graph_Build,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Graph_Build", "void test()", asMETHOD(PHRA_Graph_Build,test), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+
  r = engine_->RegisterObjectType("PHRA_Run_Context", 0, asOBJ_REF); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Run_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Run_Context,release), asCALL_THISCALL); assert( r >= 0 );
 
+ r = engine_->RegisterObjectMethod("PHRA_Run_Context", "PHRA_Graph_Build@ init_graph()", asMETHOD(PHRA_Run_Context,init_graph), asCALL_THISCALL); 
+ assert( r >= 0 );
+
  r = engine_->RegisterGlobalFunction("PHRA_Run_Context@ init_gr()", asFUNCTION(init_gr), asCALL_CDECL); 
  assert( r >= 0 );
 
- r = engine_->RegisterObjectMethod("PHRA_Run_Context", "void init_graph()", asMETHOD(PHRA_Run_Context,init_graph), asCALL_THISCALL); 
+
+ r = engine_->RegisterObjectType("PHRA_Runtime_Context", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Runtime_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Runtime_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Runtime_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Runtime_Context,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterGlobalFunction("PHRA_Runtime_Context@ new_rt_context()", asFUNCTION(new_rt_context), asCALL_CDECL); 
  assert( r >= 0 );
+
+
+ r = engine_->RegisterObjectType("PHRA_Runtime", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Runtime,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Runtime,release), asCALL_THISCALL); assert( r >= 0 );
+
+
+ r = engine_->RegisterObjectType("PHRA_Binary_Channel", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Binary_Channel,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Binary_Channel,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint16)", asMETHODPR(PHRA_Binary_Channel,append,(u2),void), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void test_extract(uint16, uint8)", asMETHODPR(PHRA_Binary_Channel,test_extract,(u2,u1),void), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterGlobalFunction("PHRA_Binary_Channel@ new_binary_channel()", asFUNCTION(new_binary_channel), asCALL_CDECL); 
+ assert( r >= 0 );
+
 }
 
 

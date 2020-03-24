@@ -4,15 +4,18 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef PHRA_RUN_CONTEXT__H
-#define PHRA_RUN_CONTEXT__H
+#ifndef PHRA_RUNTIME_CONTEXT__H
+#define PHRA_RUNTIME_CONTEXT__H
 
 #include <QDebug>
-#include <QFile>
+#include <QVector>
+#include <QString>
 
 #include "angelscript.h"
 
 #include "rzns.h"
+
+#include "global-types.h"
 
 RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph)
 RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_PHR_Output)
@@ -24,22 +27,22 @@ USING_RZNS(PhrGraphCore)
 
 class PHRA_Graph_Build;
 
-class PHRA_Run_Context
+class PHRA_Runtime_Context
 {
- PHRA_Graph_Build* phra_graph_build_;
+ QVector<u4> u4s_;
+ QVector<u8> u8s_;
+ QVector<QString> strs_;
 
  int ref_count_;
  
 public:
 
- PHRA_Run_Context(); 
-
- PHRA_Graph_Build* init_graph();
+ PHRA_Runtime_Context(); 
 
  void add_ref();
  void release();
 };
 
 
-#endif //  PHRA_RUN_CONTEXT__H
+#endif //  PHRA_RUNTIME_CONTEXT__H
 

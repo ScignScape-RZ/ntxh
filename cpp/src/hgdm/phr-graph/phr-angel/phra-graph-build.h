@@ -4,8 +4,8 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef PHRA_RUN_CONTEXT__H
-#define PHRA_RUN_CONTEXT__H
+#ifndef PHRA_GRAPH_BUILD__H
+#define PHRA_GRAPH_BUILD__H
 
 #include <QDebug>
 #include <QFile>
@@ -22,22 +22,27 @@ RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_Query)
 
 USING_RZNS(PhrGraphCore)
 
-class PHRA_Graph_Build;
 
-class PHRA_Run_Context
+class PHRA_Graph_Build
 {
- PHRA_Graph_Build* phra_graph_build_;
+ PHR_Graph* phr_graph_;
+
+ PHR_Graph_PHR_Output* phr_out_;
+
+ PHR_Graph_Frame& fr_;
+ const PHR_Graph_Query& qy_;
 
  int ref_count_;
  
 public:
 
- PHRA_Run_Context(); 
+ PHRA_Graph_Build(); 
 
- PHRA_Graph_Build* init_graph();
+ void init_graph();
 
  void add_ref();
  void release();
+ void test();
 };
 
 
