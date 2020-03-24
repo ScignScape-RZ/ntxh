@@ -38,13 +38,18 @@
 }
 }
 
+\AddToShipoutPicture{%
+\ifnum\value{page}=1
+\put(257.5,956){%
+	\transparent{0.7}{
+		\includegraphics[width=0.2\textwidth]{logo.png}}}
+\fi
+}	
+
 
 
 \AddToShipoutPicture{%
-
-\ifnum\value{page}>0
-
-
+\ifnum\value{page}>1
 {\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
@@ -68,7 +73,7 @@
 
 \setlength{\footskip}{7pt}
 
-\usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
+\usepackage[paperheight=14.5in,paperwidth=8.5in]{geometry}
 \geometry{left=.78in,top=1.1in,right=.6in,bottom=1.75in} %margins
 
 \renewcommand{\thepage}{\raisebox{-3em}{\arabic{page}}}
@@ -594,11 +599,13 @@
 
 \urlstyle{same}
 
+%\setmainfont{QTChanceryType}
+
 \begin{document}
 	
 {\linespread{1.2}\selectfont
 
-\vspace*{-7em}
+\vspace*{1em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -644,14 +651,19 @@ Kit \\\vspace{.4em}to Improve Machine Readability}
 \end{tcolorbox}
 \end{center}
 
+\vspace*{1em}
+\begin{center}
+\parbox{.8\textwidth}{%
+{\fontfamily{pzc}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
 series editor of \q{Speech Technology and 
 Text Mining in Health Care} (published by de Gruyter), 
-and Editor of textit{Advances in Ubiquitous Computing: 
-Cyber-Physical Devices, Smart Cities, 
+and Editor of {\bf Advances in Ubiquitous Computing: 
+Cyber-Physical Systems, Smart Cities, 
 and Ecological Montioring}. 
-(published by Elsevier, forthcoming).
-
+(published by Elsevier, forthcoming).}}
+\end{center}
+	
 \p{\Cnineteen{} (the \q{Covid-19 Open Research Dataset}) 
 is a new coronavirus data collection 
 which was released in conjunction with a White House 
