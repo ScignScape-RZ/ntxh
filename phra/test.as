@@ -1,30 +1,19 @@
 
-void test_fn(uint)
+void test_fn(PHRA_Binary_Channel@ pbc)
 {
-// PHRA_Runtime_Context@ prc = new_rt_context();
- PHRA_Binary_Channel@ pbc = new_binary_channel();
- uint64 u = 1234567891011;
- pbc.append(u);
-
-// uint32 uu = 2025;
-// pbc.append(uu);
-
-// pbc.test_extract(1, 4);
-
-// pbc.append(u);
-
-// pbc.test_extract(13, 8);
- pbc.test_extract(1, 8);
-// pbc.test_extract(9, 4);
- 
+ pbc.test_extract(1, 2);
 }
 
 
 
 void main()
 {
+ PHRA_Binary_Channel@ pbc = new_binary_channel();
+
+ uint16 u = 1099;
+ pbc.append(u);
 //
- test_fn(99);
+ test_fn(pbc);
 
 // lambda_88 l8(7);
 

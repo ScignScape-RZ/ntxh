@@ -644,10 +644,18 @@ Kit \\\vspace{.4em}to Improve Machine Readability}
 \end{tcolorbox}
 \end{center}
 
+LTS is founded by Amy Neustein, PhD, 
+series editor of \q{Speech Technology and 
+Text Mining in Health Care} (published by de Gruyter), 
+and Editor of textit{Advances in Ubiquitous Computing: 
+Cyber-Physical Devices, Smart Cities, 
+and Ecological Montioring}. 
+(published by Elsevier, forthcoming).
+
 \p{\Cnineteen{} (the \q{Covid-19 Open Research Dataset}) 
 is a new coronavirus data collection 
 which was released in conjunction with a White House 
-initiative to spur Covid-19 research.  
+initiative to spur \hspace{2pt} Covid-19 research.  
 This initiative is described as a 
 \q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \Covid{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  The White House 
 spearheaded a consortium of industry and academic 
@@ -658,7 +666,7 @@ publication text
 for over 44,000 coronavirus research papers.  This 
 corpus is paired with links to publisher portals 
 (including Springer Nature, 
-Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine) providing full open access to \Covid{}-related 
+Wiley, Elsevier, the American Society for Microbiology, and the New England Journal of Medicine), providing full open access to \Covid{}-related 
 literature; these resources collectively constitute 
 \Cnineteen{} (see \cite{CORD}).}
 
@@ -690,15 +698,16 @@ research.  Because the White House announcement requests
 institutions to develop additional technologies 
 which would help scientists and jurisdictions to 
 take advantage of \Cnineteen{}, 
-\Cnineteen{} was released with the 
-explicit anticipation that industry and academia would 
+the collection was released with the 
+anticipation that industry and academia would 
 augment the underlying data by layering on additional 
 software.  Our proposed \Cnineteen{} \SDK{} would 
-do just that: this \SDK{} would be a component providing 
-analytic capabilities which make the raw \Cnineteen{} data 
-more valuable, and a toolkit through which 
+do just that: this \SDK{} would serve as a component 
+that would provide analytic capabilities 
+to make the raw \Cnineteen{} data 
+more valuable; it would also serve as a toolkit through which 
 other developers could create 
-new solutions targeting \Cnineteen{}.}
+new solutions targeting the \Cnineteen{} repository.}
 
 \p{To accomplish these goals, our 
 proposed \SDK{} would include a collection of 
@@ -706,7 +715,7 @@ new code libraries to aid programmers in the
 implementation of algorithms to investigate the 
 \Cnineteen{} corpus.  These code libraries would 
 enhance the underlying data by providing the following 
-features: 
+useful features: 
 
 %\vspace{-2em}
 \begin{description}[leftmargin=10pt,itemsep=10pt]
@@ -725,20 +734,19 @@ the human-readable publication where this error is
 observed; the corresponding index in the corpus is \textcolor{blGreen!45!black}{9555f44156bc5f2c6ac191dda2fb651501a7bd7b}).  
 To help address these errors, our \SDK{} would 
 augment the \Cnineteen{} corpus by providing 
-alternate machine-readable encodings of the 
-corpus documents in formats such as \XML{} whenever 
-these are available, as a supplement to \Cnineteen{}'s 
-\JSON{} representation.  Because these alternate 
-encodings would be based directly on published 
-manuscripts, they would not be subject to transcription 
-errors.  The \SDK{} would then provide tools to 
+alternate machine-readable encodings 
+of the corpus documents in formats such as \XML{} 
+(would not be subject to transcription 
+errors) whenever they are available, 
+as a supplement to \Cnineteen{}'s 
+\JSON{} representation.  The \SDK{} would then provide tools to 
 cross-reference multiple versions of each document, 
 so as to correct errors in the original \JSON{} encodings. 
     
 \item[Tools for Converting Between Data Formats]
 Although the \Cnineteen{} corpus is published 
 as \JSON{} files, many text-mining tools such 
-as those I review in \cite{NeusteinText} take 
+as those reviewed in \cite{NeusteinText} recognize 
 input in alternative formats, such as \XML{},  
 \BioC{}, or \JSON{} trees with different 
 schema than \Cnineteen{}.  Our proposed 
@@ -747,7 +755,7 @@ schema than \Cnineteen{}.  Our proposed
 data in one of these alternative formats, 
 so as to initiate a text mining workflow. 
 The \SDK{} would also include tools for 
-manipulating which \textit{results} from 
+manipulating the \textit{results} of 
 text mining algorithms, which is 
 often represented in formats such as 
 \XML{} and \CoNLL{} (Conference on Natural 
@@ -756,11 +764,11 @@ Language Learning).
 \item[Tools for Enhanced Annotation]
 The existing \Cnineteen{} corpus does not 
 directly provide a mechanism for asserting 
-annotations related to  text mining, 
+annotations related to text mining, 
 such as Named Entity Recognition or 
 formally recognized biomedical concepts.  
-However, the archival schemas supports standoff 
-annotation for intra-document references, so 
+However, because the archival schema supports standoff 
+annotation for intra-document references,  
 our \SDK{} can provide code for additional 
 standoff annotation categories of the kinds 
 commonly used in biomedical text mining.  
@@ -768,20 +776,21 @@ As a concrete example, the corrected
 text segment \colorq{2{\textquotesingle}-C-ethynyl} mentioned 
 earlier can be annotated as a molecular component. 
 
-\item[Tools for Research Data-Mining]  Although 
+\item[Tools for Research Data-Mining]  In 
+spite of the fact that 
 \Cnineteen{} provides a structured representation 
 of a large collection of research 
 \textit{papers}, there is no easy-to-use tool 
 for finding research \textit{data} 
-through \Cnineteen{}.  However, 
+through \Cnineteen{}.  Nevertheless, 
 the \Cnineteen{} resources indirectly include 
 numerous research data sets published 
 alongside the scientific articles.  
-The collection of manuscripts available 
+For example, the collection of manuscripts available 
 through the Springer Nature portal, for 
 example, which is linked from \Cnineteen{}, 
-included over 30 \Covid{} data sets 
-encompassing a wide array of file types 
+includes over 30 \Covid{} data sets.  
+These data sets encompass a wide array of file types 
 and formats, including \FASTA{} (which stands for Fast-All, 
 a genomics format), \SRA{} (Sequence Read Archive, for 
 \DNA{} sequencing), \PDB{} (Protein Data Bank,  
@@ -789,7 +798,9 @@ representing the \ThreeD{} geometry of protein
 molecules), \MAP{} (Electron Microscopy Map), \EPS{} 
 (Embedded Postscript), \CSV{} (comma-separated values), 
 and tables represented in Microsoft Word 
-and Excel formats.  Our \SDK{} would marge 
+and Excel formats.  To promote data
+
+  Our \SDK{} would marge 
 these resources into a common representation 
 (such as \XML{}) wherever possible.  
 
@@ -802,13 +813,14 @@ are used to query online genomics services.
 Similarly, text mining algorithms often 
 rely on dedicated servers to perform 
 Natural Language Processing; these services 
-might take requests in \BioC{} form and respond 
+might take requests in \BioC{} format and respond 
 with \CoNLL{} data; or epidemiological 
 studies of \Covid{} may need to access \API{}s or data 
 sets such as the John Hopkins University \q{dashboard} 
 (see \href{https://coronavirus.jhu.edu/map.html}{https://coronavirus.jhu.edu/map.html}).  To reduce the amount 
 of \q{biolerplate code} which developers need 
-for these networking requirements, the \SDK{} 
+for these networking requirements, our 
+company's \SDK{} 
 would provide code libraries based on the 
 \Qt{} Networking Module to manage networking 
 requests and responses.  Programmers would 
@@ -819,7 +831,7 @@ disparate scientific disciplines
 (genomics, \NLP{}, epidemiology, and so forth). 
 \end{description}}
 
-\p{The code libraries just decribed would 
+\p{In short, the code libraries decribed above would 
 augment the value of \Cnineteen{} by providing 
 tools out-of-the-box to help scientists 
 (and their codewriters) leverage \Cnineteen{} data.  
@@ -827,19 +839,19 @@ Although we can expect that numerous code libraries
 will be implemented so that researchers can 
 use \Cnineteen{}, a \Cnineteen{} \SDK{} 
 would be beneficial because it would integrate 
-multiple libraries into a single package, 
+\textit{multiple} libraries into a single package, 
 designed to be easily interoperable.  
 In particular, these libraries would be implemented 
-in a manner which prioritizes ease of development: 
+in a manner which prioritizes rapid development: 
 the \SDK{} would comprise a \textit{standalone} 
 and \textit{self-contained} development 
 environment with minimal external dependencies.  
 This priority would extend also to software 
 tools that would be bundled together with 
 the new code libraries.  These software 
-tools will be discussed next.}
+tools are discussed next.}
 
-\section{Software Components Within the Proposed SDK}
+\section{The Software Application Package within the Proposed SDK}
 \p{In addition to the code libraries described 
 above, whose purpose would be to manipulate 
 \Cnineteen{} data to prepare for text mining and 
@@ -848,25 +860,27 @@ bundle numerous applications used for database
 storage, data visualization, and scripting.  
 The goal of this application package would be to 
 provide researchers with a self-contained computing 
-platform optimized for science related to 
+platform optimized for scienctific research 
+and findings related to 
 \Covid{}.  The components within this application 
 package would be selected with an emphasis on 
 tools that could be distributed in source-code 
 fashion, and then compiled within the \SDK{}'s 
-development framwork with few, if any, external 
+development framework with few, if any, external 
 dependencies.  In short, the \SDK{} would try 
 to eliminate almost all scenarios where 
 programmers would need to perform a \q{system 
-install}; for the most part the entire 
+install}; for the most part, the entire 
 computing platform (including scripting 
 and database capabilities) could be compiled 
 from source \q{out-of-the-box}.  The 
-\SDK{} would also modify the included applications 
+\SDK{} would also modify the applications 
+included in the package so as 
 to enhance their interoperability and their 
 usefulness for \Covid{} research.} 
 
 \p{The applications bundled with the \SDK{} would 
-likely include the following:
+likely include the following components:
 
 \begin{itemize}
 
@@ -906,27 +920,28 @@ encoding in some scientific contexts
   
 
 \p{It is worth noting that a data-mining platform requires 
-\textit{machine-readable} open-access research data, 
-which is a more stringent requirement than simply publishing 
-data alongside which can be understood by domain-specific 
-software.  For example, radiological imaging can be a source 
+\textit{machine-readable} open-access research data
+(which is a more stringent requirement than simply 
+pairing publications with data that can only 
+be understood by domain-specific 
+software).  For example, radiological imaging can be a source 
 of \Covid{} data insofar as patterns of lung 
-scarring, such as \q{ground-glass opacity}, is a leading 
+scarring, such as \q{ground-glass opacity,} is a leading 
 indicator of the disease.  Consequently, diagnostic 
 images of \Covid{} patients are a relevant kind of 
 content for inclusion in a \Covid{} data set 
 (see \cite{Shi} as a case-study).  However, 
 diagnostic images are not in themselves 
 \q{machine readable.}  When medical imaging is 
-used in a quantitative context (e.g. applying 
+used in a quantitative context (e.g., applying 
 Machine Learning for diagnostic pathology), it is necessary to perform Image Analysis to convert the raw data 
-(viz., in this case, radiological graphics) into 
-quantitative aggregates (for instance by using image 
-segmentation to demarcate geometric boundaries and 
-then defining diagnostically relevant features, such 
-as opacity, as a scalar field over the segments).  
-In short, even after research data is openly published 
-by article authors, it may be necessary to perform 
+--- in this case, radiological graphics --- into 
+quantitative aggregates.  For instance, by using image 
+segmentation to demarcate geometric boundaries one 
+is able to define diagnostically relevant features (such 
+as opacity) represented as a scalar field over the segments.  
+In short, even after research data is openly published, 
+it may be necessary to perform 
 additional analysis on the data for it to be 
 a full-fledged component of a 
 machine-readable information space.\footnote{%
@@ -940,10 +955,10 @@ the resulting data should wherever possible
 be added to the underlying image data as a 
 supplement to the data set.}  To 
 deal with this sort of situation, our 
-proposed \SDK{} would include a data-modeling 
-vocabulary that would identify the 
+proposed \SDK{} would include a \textit{data-modeling 
+vocabulary} that would identify the 
 interrelationships between data representations 
-and define the workflows needed to 
+and would define the workflows needed to 
 convert \Cnineteen{}-linked research data 
 into machine-readable data sets.} 
 
@@ -962,33 +977,33 @@ or (in mathematics) the statement/proof of a definition, axiom,
 or theorem.  In data publishing, \q{data citations} are 
 unique references to data sets in their entirety or to 
 smaller parts of data sets.  A data microcitation is then a 
-fine-grained reference into a data set: for example, 
-\q{the precise data records actually used in a study} (as 
+fine-grained reference into a data set.  For example it 
+can consist of one column in a spreadsheet, 
+one statistical parameter in a quantitative analysis, 
+or \q{the precise data records actually used in a study} (as 
 defined by the Federation of Earth Science Information Partners; 
-see \cite{ESIP}), 
-one column in a spreadsheet, or one statistical parameter in a 
-quantitative analysis.}
+see \cite{ESIP}).}
 
 \p{The unique feature we propose 
 for our \SDK{} would be to combine the text-mining and 
-data-mining notions of microcitation into a unified 
-framework.  In particular, text-based searches against 
-the \Cnineteen{} corpus would try to find matches in the 
-data sets indexed by our \SDK{}.  As a concrete example, 
+data-mining notions of microcitation into a \textit{unified} 
+framework.  In particular, text-based searches 
+against the \Cnineteen{} corpus 
+would try to find matches in the 
+data sets indexed by our \SDK{} alongide matches within textual contet.  As a concrete example, 
 a concept such as \q{expiratory flow} appears in \Cnineteen{} 
 both as a table column in research data and as a medical concept 
 discussed in research papers; a unified microcitation framework 
 should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
 to both textual locations and data set parameters.  
 Similarly, a concept such as 
-\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier 
-in the context of transcription errors) 
+\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier in the context of transcription errors) 
 should be identified both as a phrase in 
 article texts and as a molecular component 
 present within compounds whose scientific 
 properties are investigated through \Cnineteen{} 
-research data, so that a search for this 
-concept can trigger both publication and 
+research data.  In so doing, a search for this 
+concept would then trigger both publication and 
 data-set matches.}
 
 \section{Conclusion}
@@ -1001,22 +1016,23 @@ Interoperable, Reusable}; see \cite{TrifanOliveira}).
 Indeed, our \Cnineteen{} \SDK{} would 
 function as a macro-scale Research Object, 
 which would be (1) \textit{self-contained} (with few or no external 
-dependencies), (2) \textit{transparent} (meaning that 
+dependencies); (2) \textit{transparent} (meaning that 
 all computing operations should be implemented by 
 source code within the bundle that can be examined 
-as code files and within a debugging session), 
+as code files and within a debugging session); 
 and (3) interactive (meaning that the bundle does not 
 only include raw data but also software to interactively 
 view and manipulate this data).  Research Objects which 
-embrace these priorities will try to provide data visualization, 
+embrace these priorities attempt to provide data visualization, 
 persistence, and analysis through \GUI{}, database, and 
 scripting engines that can be embedded as source 
 code in the Research Object itself.  
-Our proposed \SDK{} would embrace the 
-same paradigm, only translating it 
-to a larger data space integrating 
-the information contained in dozens 
-of \Covid{} data sets as well as the 
+Our proposed \SDK{} would be based on the 
+same paradigm, but instead of applying it 
+to a single data set, it would 
+translate it to a larger data space integrating 
+the information contained in multiple 
+\Covid{} data sets as well as the entire 
 corpus of \Cnineteen{} articles.} 
 
 \vspace{-.5em}
