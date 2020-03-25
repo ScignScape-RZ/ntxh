@@ -71,12 +71,19 @@
 %\textwidth 4.5in  % width of text
 %\columnsep 0.8in  % separation between columns
 
-\setlength{\footskip}{7pt}
+%\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14.5in,paperwidth=8.5in]{geometry}
-\geometry{left=.78in,top=1.1in,right=.6in,bottom=1.75in} %margins
+\geometry{left=.78in,top=1.1in,right=.6in,bottom=1.5in} %margins
 
-\renewcommand{\thepage}{\raisebox{-3em}{\arabic{page}}}
+\renewcommand{\thepage}{\raisebox{-1em}{\arabic{page}}}
+
+\renewcommand{\footnoterule}{%
+	\kern -3pt
+	\hrule width .92\textwidth height .5pt
+	\kern 10pt
+}
+
 
 \usepackage[hyphens]{url}
 \newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
@@ -602,6 +609,8 @@
 %\setmainfont{QTChanceryType}
 
 \begin{document}
+
+\setlength{\skip\footins}{18pt}	
 	
 {\linespread{1.2}\selectfont
 
@@ -651,7 +660,7 @@ Kit \\\vspace{.25em}to Improve Machine Readability}
 \end{tcolorbox}
 \end{center}
 
-\vspace*{1em}
+\vspace*{.75em}
 \begin{center}
 \parbox{.8\textwidth}{%
 {\fontfamily{pzc}\selectfont   
@@ -663,7 +672,7 @@ Cyber-Physical Systems, Smart Cities,
 and Ecological Monitoring} 
 (published by Elsevier, forthcoming).}}
 \end{center}
-\vspace*{1em}	
+\vspace*{.75em}	
 	
 \p{\Cnineteen{} (the \q{\Covid{} Open Research Dataset}) 
 is a new coronavirus data collection which was released in conjunction with a White House initiative to 
@@ -965,7 +974,7 @@ it may be necessary to perform
 additional analysis on the data for it to be 
 a full-fledged component of a 
 machine-readable information space.\footnote{%
-This does not mean that diagnostic images (or 
+\raisebox{-10pt}{\hspace{3pt}\parbox{.9\textwidth}{This does not mean that diagnostic images (or 
 other graphical data) should not be placed in a 
 data set; only that computational reuse of such 
 data will usually involve certain numeric 
@@ -973,7 +982,7 @@ processing, such as image segmentation.
 Insofar as this subsequent analysis is performed, 
 the resulting data should wherever possible 
 be added to the underlying image data as a 
-supplement to the data set.}  To 
+supplement to the data set.}}}  To 
 deal with this sort of situation, our 
 proposed \SDK{} would include a \textit{procedural 
 data-modeling vocabulary} that would both identify the 
