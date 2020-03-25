@@ -146,13 +146,15 @@ PHRA_Runner::PHRA_Runner()
  r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Runtime,release), asCALL_THISCALL); assert( r >= 0 );
 
 
-
-
  r = engine_->RegisterObjectType("PHRA_Binary_Channel", 0, asOBJ_REF); assert( r >= 0 );
+
 
  r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Binary_Channel,add_ref), asCALL_THISCALL); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Binary_Channel,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void set_kind(const string &in)", asMETHODPR(PHRA_Binary_Channel,set_kind,(const std::string&),void), asCALL_THISCALL); 
+ assert( r >= 0 );
 
  r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint8)", asMETHODPR(PHRA_Binary_Channel,append,(u1),void), asCALL_THISCALL); 
  assert( r >= 0 );
@@ -170,6 +172,10 @@ PHRA_Runner::PHRA_Runner()
  assert( r >= 0 );
 
  r = engine_->RegisterGlobalFunction("PHRA_Binary_Channel@ new_binary_channel()", asFUNCTION(new_binary_channel), asCALL_CDECL); 
+ assert( r >= 0 );
+
+
+ r = engine_->RegisterObjectMethod("PHRA_Value_Context", "void merge_binary_channel(PHRA_Binary_Channel@, uint8, uint64)", asMETHOD(PHRA_Value_Context,merge_binary_channel), asCALL_THISCALL); 
  assert( r >= 0 );
 
 }
@@ -208,7 +214,7 @@ void PHRA_Runner::run_script(QString path)
  {
   // An error occurred. Instruct the script writer to fix the 
   // compilation errors that were listed in the output stream.
-  printf("Please correct the errors in the script and try again.\n");
+  std::printf("Please correct the errors in the script and try again.\n");
  }
 
  // Find the function that is to be called. 
@@ -218,7 +224,7 @@ void PHRA_Runner::run_script(QString path)
  {
   // The function couldn't be found. Instruct the script writer
   // to include the expected function in the script.
-  printf("The script must have the function 'void main()'. Please add it and try again.\n");
+  std::printf("The script must have the function 'void main()'. Please add it and try again.\n");
  }
  
  // Create our context, prepare it, and then execute

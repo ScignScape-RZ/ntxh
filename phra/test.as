@@ -2,7 +2,8 @@
 void test_fn(PHRA_Binary_Channel@ pbc)
 {
  PHRA_Runtime_Context@ prc = new_rt_context();
- prc.init_value_context(); 
+ PHRA_Value_Context@ pvc = prc.init_value_context();
+ pvc.merge_binary_channel(pbc, 1, 1);
  pbc.test_extract(1, 2);
 }
 
@@ -11,6 +12,7 @@ void test_fn(PHRA_Binary_Channel@ pbc)
 void main()
 {
  PHRA_Binary_Channel@ pbc = new_binary_channel();
+ pbc.set_kind("lambda");
 
  uint16 u = 1099;
  pbc.append(u);

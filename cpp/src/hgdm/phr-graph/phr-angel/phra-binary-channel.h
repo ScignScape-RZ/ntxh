@@ -18,6 +18,9 @@
 
 #include "global-types.h"
 
+#include "accessors.h"
+
+
 RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph)
 RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_PHR_Output)
 
@@ -38,6 +41,10 @@ class PHRA_Binary_Channel
 public:
 
  PHRA_Binary_Channel(); 
+
+ ACCESSORS(QString ,kind)
+
+ void set_kind(const std::string& ss);
 
  void append(u1 u);
  void append(u2 u);

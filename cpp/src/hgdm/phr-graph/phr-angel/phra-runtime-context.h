@@ -26,6 +26,8 @@ RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_Query)
 
 USING_RZNS(PhrGraphCore)
 
+class PHRA_Binary_Channel;
+
 class PHRA_Value_Context
 {
  QVector<u1> u1s_;
@@ -41,6 +43,9 @@ class PHRA_Value_Context
 public:
 
  PHRA_Value_Context(); 
+
+ void merge_binary_channel(PHRA_Binary_Channel* pbc, 
+   u1 length, u8 mask); 
 
  void add_ref();
  void release();

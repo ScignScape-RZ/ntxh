@@ -7,11 +7,17 @@
 
 #include "phra-runtime-context.h"
 
-#include "phra-graph-build.h"
+#include "phra-binary-channel.h"
 
 PHRA_Value_Context::PHRA_Value_Context()
   :  ref_count_(0)
 {
+}
+
+void PHRA_Value_Context::merge_binary_channel(PHRA_Binary_Channel* pbc, u1 length, u8 mask)
+{
+ qDebug() << "PBC k is " << pbc->kind();
+ 
 }
 
 void PHRA_Value_Context::add_ref()

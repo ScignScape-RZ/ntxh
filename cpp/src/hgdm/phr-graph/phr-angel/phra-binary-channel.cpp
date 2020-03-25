@@ -59,6 +59,10 @@ void PHRA_Binary_Channel::test_extract_8(u2 index)
  qDebug() << "Value is: " << value;
 }
 
+void PHRA_Binary_Channel::set_kind(const std::string& ss)
+{
+ set_kind(QString::fromStdString(ss));
+}
 
 void PHRA_Binary_Channel::test_extract(u2 index, u1 length)
 {
