@@ -1,6 +1,8 @@
 
 void test_fn(PHRA_Binary_Channel@ pbc)
 {
+ PHRA_Runtime_Context@ prc = new_rt_context();
+ prc.init_value_context(); 
  pbc.test_extract(1, 2);
 }
 

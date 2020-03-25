@@ -14,6 +14,7 @@
 #include "angelscript.h"
 
 #include "rzns.h"
+#include "flags.h"
 
 #include "global-types.h"
 
@@ -25,19 +26,76 @@ RZNS_CLASS_DECLARE(PhrGraphCore ,PHR_Graph_Query)
 
 USING_RZNS(PhrGraphCore)
 
-class PHRA_Graph_Build;
-
-class PHRA_Runtime_Context
+class PHRA_Value_Context
 {
+ QVector<u1> u1s_;
+ QVector<u2> u2s_;
+
  QVector<u4> u4s_;
  QVector<u8> u8s_;
+
  QVector<QString> strs_;
 
  int ref_count_;
  
 public:
 
+ PHRA_Value_Context(); 
+
+ void add_ref();
+ void release();
+};
+
+class PHRA_Symbol_Info
+{
+ flags_(1)
+  bool pre_init:1;
+  bool retired_init:1;
+  bool constant:1;
+ _flags
+
+ u1 locator_;
+ void* typeref_;
+
+public:
+  
+ PHRA_Symbol_Info() : 
+   Flags(0), locator_(0), typeref_(nullptr)
+ {
+ }
+
+};
+
+class PHRA_Symbol_Context
+{
+ QMap<QString, PHRA_Symbol_Info> symbols_;
+
+ int ref_count_; 
+
+public:
+
+ PHRA_Symbol_Context(); 
+
+ void add_ref();
+ void release();
+};
+
+
+
+
+class PHRA_Runtime_Context
+{
+ PHRA_Value_Context* values_;
+ PHRA_Symbol_Context* symbols_;
+
+ int ref_count_;
+ 
+public:
+
  PHRA_Runtime_Context(); 
+
+ PHRA_Value_Context* init_value_context();
+ PHRA_Symbol_Context* init_symbol_context();
 
  void add_ref();
  void release();

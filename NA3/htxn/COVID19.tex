@@ -654,23 +654,23 @@ Kit \\\vspace{.25em}to Improve Machine Readability}
 \vspace*{1em}
 \begin{center}
 \parbox{.8\textwidth}{%
-{\fontfamily{pzc}\selectfont 
+{\fontfamily{pzc}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
-series editor of {\bf Speech Technology and 
-Text Mining in Health Care} (de Gruyter), 
+Series Editor of {\bf Speech Technology and 
+Text Mining in Health Care} (de Gruyter); 
 and Editor of {\bf Advances in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
-and Ecological Monitoring}. 
-(Elsevier, forthcoming).}}
+and Ecological Monitoring} 
+(published by Elsevier, forthcoming).}}
 \end{center}
 \vspace*{1em}	
 	
-\p{\Cnineteen{} (the \q{Covid-19 Open Research Dataset}) 
+\p{\Cnineteen{} (the \q{\Covid{} Open Research Dataset}) 
 is a new coronavirus data collection which was released in conjunction with a White House initiative to 
-spur \hspace{-1pt} Covid-19 \hspace{-1pt} research.  
+spur \hspace{-1pt} \Covid{} \hspace{-1pt} research.  
 This initiative is described as a 
 \q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \Covid{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  The White House 
-spearheaded a consortium of industry and academic 
+is spearheading a consortium of industry and academic 
 institutions, led by the Allen Institute for AI Research, 
 who curated a \q{machine-readable Coronavirus literature collection} 
 which includes article metadata and (in most cases) 
@@ -738,7 +738,7 @@ text archive to misrepresent the structure
 and content of documents.  For instance, 
 there are cases in \Cnineteen{} 
 of scientific notation and terminology 
-being improperly encoded.  As a concrete example, \colorq{2{\textquotesingle}-C-ethynyl} is encoded in one \Cnineteen{} file 
+being improperly encoded.  As a concrete example, \colorq{2{\textquotesingle}-C-ethynyl} is encoded incorrectly in one \Cnineteen{} file 
 as \makebox{\colorq{2 0 -C-ethynyl}} (see \cite{Eyer} for 
 the human-readable publication where this error is 
 observed; the corresponding index in the corpus is \textcolor{blGreen!45!black}{9555f44156bc5f2c6ac191dda2fb651501a7bd7b.json}).  
@@ -755,8 +755,9 @@ as a supplement to \Cnineteen{}'s
 Compared to article content obtained indirectly 
 by \q{scraping} text from \HTML{} or \PDF{} 
 files, these \XML{} representations 
-(derived from the structured documents used 
-for editing prior to publication) would not be subject to transcription 
+(which would be derived from the structured documents used 
+in the editing process prior to publication) 
+would not be subject to transcription 
 errors.  The \SDK{} would then provide tools to 
 cross-reference multiple versions of each document, 
 so as to correct errors in the original \JSON{} encodings. 
@@ -804,7 +805,7 @@ through the Springer Nature portal linked
 from \Cnineteen{} includes over 30 \Covid{} data sets,
 but researchers can only discover that these data 
 sets exist by looking for a \q{supplemental materials} or 
-\q{data availability} addendum near the end of each article.
+a \q{data availability} addendum near the end of each article.
 These Springer Nature data sets encompass a wide array of file types 
 and formats, including \FASTA{} (which stands for Fast-All, 
 a genomics format), \SRA{} (Sequence Read Archive, for 
@@ -893,9 +894,10 @@ computing platform (including scripting
 and database capabilities) could be compiled 
 from source \q{out-of-the-box}.  The 
 \SDK{} would also modify the applications 
-included in the package so as 
-to enhance their interoperability and their 
-usefulness for \Covid{} research.} 
+included in the package (e.g., embedding 
+plugins to enable the applications to share 
+data) so as to enhance their interoperability and 
+their usefulness for \Covid{} research.} 
 
 \p{The applications bundled with the \SDK{} would 
 likely include the following components:
@@ -973,9 +975,10 @@ the resulting data should wherever possible
 be added to the underlying image data as a 
 supplement to the data set.}  To 
 deal with this sort of situation, our 
-proposed \SDK{} would include a \textit{procedural  data-modeling vocabulary} that would identify the 
+proposed \SDK{} would include a \textit{procedural 
+data-modeling vocabulary} that would both identify the 
 interrelationships between data representations 
-and would define the workflows needed to 
+and define the workflows needed to 
 convert \Cnineteen{}-linked research data 
 into machine-readable data sets.} 
 
@@ -993,7 +996,7 @@ sentence or paragraph defining a technical term,
 or (in mathematics) the statement/proof of a definition, axiom, 
 or theorem.  In data publishing, \q{data citations} are 
 unique references to data sets in their entirety or to 
-smaller parts of data sets.  A data microcitation is then a 
+their smaller parts.  A data microcitation is then a 
 fine-grained reference into a data set.  For example, 
 a data microcitation can consist of one 
 column in a spreadsheet, 
@@ -1008,25 +1011,26 @@ data-mining notions of microcitation into a \textit{unified}
 framework.  In particular, text-based searches 
 against the \Cnineteen{} corpus 
 would try to find matches in the 
-data sets indexed by our \SDK{} alongide matches within textual contet.  As a concrete example, 
+data sets indexed by our \SDK{} alongide matches within textual content.  As a concrete example, 
 a concept such as \q{expiratory flow} appears in \Cnineteen{} 
 both as a table column in research data and as a medical concept 
 discussed in research papers; a unified microcitation framework 
 should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
 to both textual locations and data set parameters.  
 Similarly, a concept such as 
-\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier in the context of transcription errors) 
+\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier, in the context of transcription errors) 
 should be identified both as a phrase in 
 article texts and as a molecular component 
 present within compounds whose scientific 
 properties are investigated through \Cnineteen{} 
 research data.  In so doing, a search for this 
 concept would then trigger both publication and 
-data-set matches.}
+data-set matches at the same time.}
 
 \section{Conclusion}
-\p{The vision of a \textit{standalone} and \textit{self-contained} 
-\Covid{} data-set collection is consistent with 
+\p{The LTS vision of a \textit{standalone} and 
+\textit{self-contained} \Covid{} data-set 
+collection is consistent with 
 new publishing initiatives such as 
 Research Objects (see \cite{KhalidBelhajjame}) 
 and \FAIR{} (\q{Findable, Accessible, 
@@ -1046,12 +1050,12 @@ persistence, and analysis through \GUI{}, database, and
 scripting engines that can be embedded as source 
 code in the Research Object itself.  
 Our proposed \SDK{} would be based on the 
-same paradigm, but instead of applying it 
-to a single data set, it would 
+same paradigm, but instead of applying the Research Object 
+model to a single data set, our \SDK{} would 
 translate it to a larger data space integrating 
 the information contained in multiple 
 \Covid{} data sets as well as the entire 
-corpus of \Cnineteen{} articles.} 
+corpus of \Cnineteen{} articles.}
 
 \vspace{-.5em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}

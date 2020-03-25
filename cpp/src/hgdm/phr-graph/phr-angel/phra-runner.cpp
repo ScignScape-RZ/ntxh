@@ -108,6 +108,20 @@ PHRA_Runner::PHRA_Runner()
  assert( r >= 0 );
 
 
+ r = engine_->RegisterObjectType("PHRA_Value_Context", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Value_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Value_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Value_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Value_Context,release), asCALL_THISCALL); assert( r >= 0 );
+
+
+ r = engine_->RegisterObjectType("PHRA_Symbol_Context", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Symbol_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Symbol_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Symbol_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Symbol_Context,release), asCALL_THISCALL); assert( r >= 0 );
+
+
  r = engine_->RegisterObjectType("PHRA_Runtime_Context", 0, asOBJ_REF); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Runtime_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Runtime_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
@@ -117,12 +131,21 @@ PHRA_Runner::PHRA_Runner()
  r = engine_->RegisterGlobalFunction("PHRA_Runtime_Context@ new_rt_context()", asFUNCTION(new_rt_context), asCALL_CDECL); 
  assert( r >= 0 );
 
+ r = engine_->RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Value_Context@ init_value_context()", asMETHOD(PHRA_Runtime_Context,init_value_context), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Symbol_Context@ init_symbol_context()", asMETHOD(PHRA_Runtime_Context,init_symbol_context), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+
 
  r = engine_->RegisterObjectType("PHRA_Runtime", 0, asOBJ_REF); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Runtime,add_ref), asCALL_THISCALL); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Runtime,release), asCALL_THISCALL); assert( r >= 0 );
+
+
 
 
  r = engine_->RegisterObjectType("PHRA_Binary_Channel", 0, asOBJ_REF); assert( r >= 0 );
