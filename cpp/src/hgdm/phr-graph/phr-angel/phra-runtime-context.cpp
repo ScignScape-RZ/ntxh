@@ -16,8 +16,32 @@ PHRA_Value_Context::PHRA_Value_Context()
 
 void PHRA_Value_Context::merge_binary_channel(PHRA_Binary_Channel* pbc, u1 length, u8 mask)
 {
- qDebug() << "PBC k is " << pbc->kind();
- 
+ //qDebug() << "PBC k is " << pbc->kind();
+ u8 index = 1;
+ for(int i = 0; i < length; ++i)
+ {
+  u1 m = mask & 3;
+  mask >>= 2;
+  switch(m)
+  {
+  case 0: 
+   u1s_.push_back(pbc->extract_1(index));
+   index += 1;
+   break;
+  case 1: 
+   u2s_.push_back(pbc->extract_2(index));
+   index += 2;
+   break;
+  case 2: 
+   u4s_.push_back(pbc->extract_4(index));
+   index += 4;
+   break;
+  case 3: 
+   u8s_.push_back(pbc->extract_8(index));
+   index += 8;
+   break;
+  }
+ } 
 }
 
 void PHRA_Value_Context::add_ref()

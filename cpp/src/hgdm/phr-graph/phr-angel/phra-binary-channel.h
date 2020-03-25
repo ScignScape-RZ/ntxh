@@ -57,6 +57,11 @@ public:
  void test_extract_4(u2 index);
  void test_extract_8(u2 index);
 
+ u1 extract_1(u2 index);
+ u2 extract_2(u2 index);
+ u4 extract_4(u2 index);
+ u8 extract_8(u2 index);
+
 
  void add_ref();
  void release();

@@ -20,27 +20,47 @@ void PHRA_Binary_Channel::test_extract_1(u2 index)
 
 }
 
+u1 PHRA_Binary_Channel::extract_1(u2 index)
+{
+ return (u1)values_[index - 1];
+}
+
+
 void PHRA_Binary_Channel::test_extract_2(u2 index)
 {
  u2 value = 0;
- value |= (u8)(u1)values_[index - 1];
- value |= ( ((u8)(u1)values_[index]) << 8); 
+ value |= (u2)(u1)values_[index - 1];
+ value |= ( ((u2)(u1)values_[index]) << 8); 
 
  qDebug() << "Value is: " << value;
 }
 
+u2 PHRA_Binary_Channel::extract_2(u2 index)
+{
+ return ((u2)(u1)values_[index - 1])
+   | (( ((u2)(u1)values_[index]) << 8)); 
+
+}
 
 void PHRA_Binary_Channel::test_extract_4(u2 index)
 {
  u4 value = 0;
- value |= (u8)(u1) values_[index - 1];
+ value |= (u4)(u1) values_[index - 1];
 
- value |= ( ((u8)(u1)values_[index]) << 8); 
+ value |= ( ((u4)(u1)values_[index]) << 8); 
 
- value |= ( ((u8)(u1)values_[index + 1]) << 16); 
- value |= ( ((u8)(u1)values_[index + 2]) << 32); 
+ value |= ( ((u4)(u1)values_[index + 1]) << 16); 
+ value |= ( ((u4)(u1)values_[index + 2]) << 32); 
 
  qDebug() << "Value is: " << value;
+}
+
+u4 PHRA_Binary_Channel::extract_4(u2 index)
+{
+ return ((u4)(u1)values_[index - 1])
+   | (( ((u4)(u1)values_[index]) << 8))
+   | (( ((u4)(u1)values_[index + 1]) << 16))
+   | (( ((u4)(u1)values_[index + 2]) << 32));
 }
 
 void PHRA_Binary_Channel::test_extract_8(u2 index)
@@ -58,6 +78,19 @@ void PHRA_Binary_Channel::test_extract_8(u2 index)
 
  qDebug() << "Value is: " << value;
 }
+
+u8 PHRA_Binary_Channel::extract_8(u2 index)
+{
+ return ((u8)(u1)values_[index - 1])
+   | (( ((u8)(u1)values_[index]) << 8))
+   | (( ((u8)(u1)values_[index + 1]) << 16))
+   | (( ((u8)(u1)values_[index + 2]) << 32))
+   | (( ((u8)(u1)values_[index + 3]) << 32))
+   | (( ((u8)(u1)values_[index + 4]) << 40)) 
+   | (( ((u8)(u1)values_[index + 5]) << 48)) 
+   | (( ((u8)(u1)values_[index + 6]) << 56));
+}
+
 
 void PHRA_Binary_Channel::set_kind(const std::string& ss)
 {
