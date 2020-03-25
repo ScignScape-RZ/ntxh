@@ -34,8 +34,14 @@
 // Print the script string to the standard output stream
 void print(std::string &msg)
 {
-  printf("%s", msg.c_str());
+  std::printf("%s", msg.c_str());
 }
+
+void print_u2(u2 val)
+{
+  std::printf("Val is: %d\n", val);
+}
+
 
 PHRA_Run_Context* init_gr()
 {
@@ -81,6 +87,10 @@ PHRA_Runner::PHRA_Runner()
  // Register the function that we want the scripts to call 
  r = engine_->RegisterGlobalFunction("void print(const string &in)", asFUNCTION(print), asCALL_CDECL); 
  assert( r >= 0 );
+
+ r = engine_->RegisterGlobalFunction("void print_u2(uint16)", asFUNCTION(print_u2), asCALL_CDECL); 
+ assert( r >= 0 );
+
 
  r = engine_->RegisterGlobalFunction("void init_g(const string &in)", asFUNCTION(print), asCALL_CDECL); 
  assert( r >= 0 );
@@ -176,6 +186,18 @@ PHRA_Runner::PHRA_Runner()
 
 
  r = engine_->RegisterObjectMethod("PHRA_Value_Context", "void merge_binary_channel(PHRA_Binary_Channel@, uint8, uint64)", asMETHOD(PHRA_Value_Context,merge_binary_channel), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint8 get1v(uint8)", asMETHOD(PHRA_Value_Context,get1v), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint16 get2v(uint8)", asMETHOD(PHRA_Value_Context,get2v), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint32 get4v(uint8)", asMETHOD(PHRA_Value_Context,get4v), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint64 get8v(uint8)", asMETHOD(PHRA_Value_Context,get8v), asCALL_THISCALL); 
  assert( r >= 0 );
 
 }

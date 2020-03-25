@@ -47,6 +47,13 @@ public:
  void merge_binary_channel(PHRA_Binary_Channel* pbc, 
    u1 length, u8 mask); 
 
+ u1 get1v(u1 locator);
+ u2 get2v(u1 locator);
+ u4 get4v(u1 locator);
+ u8 get8v(u1 locator);
+
+
+
  void add_ref();
  void release();
 };

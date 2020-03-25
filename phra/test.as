@@ -3,8 +3,11 @@ void test_fn(PHRA_Binary_Channel@ pbc)
 {
  PHRA_Runtime_Context@ prc = new_rt_context();
  PHRA_Value_Context@ pvc = prc.init_value_context();
- pvc.merge_binary_channel(pbc, 5, 2);
+ pvc.merge_binary_channel(pbc, 2, 5);
  pbc.test_extract(1, 2);
+
+ uint16 u = pvc.get2v(5);
+ print_u2(u);
 }
 
 

@@ -14,6 +14,51 @@ PHRA_Value_Context::PHRA_Value_Context()
 {
 }
 
+u1 PHRA_Value_Context::get1v(u1 locator)
+{
+ switch(locator & 3)
+ {
+ case 0: return u1s_[(locator >> 2) - 1];
+ case 1: return get2v(locator);
+ case 2: return get4v(locator);
+ case 3: return get8v(locator);
+ }
+}
+
+u2 PHRA_Value_Context::get2v(u1 locator)
+{
+ switch(locator & 3)
+ {
+ case 0: return get1v(locator); 
+ case 1: return u2s_[(locator >> 2) - 1];
+ case 2: return get4v(locator);
+ case 3: return get8v(locator);
+ }
+}
+
+u4 PHRA_Value_Context::get4v(u1 locator)
+{
+ switch(locator & 3)
+ {
+ case 0: return get1v(locator); 
+ case 1: return get2v(locator);
+ case 2: return u4s_[(locator >> 2) - 1];
+ case 3: return get8v(locator);
+ }
+}
+
+u8 PHRA_Value_Context::get8v(u1 locator)
+{
+ switch(locator & 3)
+ {
+ case 0: return get1v(locator); 
+ case 1: return get2v(locator);
+ case 2: return get4v(locator);
+ case 3: return u8s_[(locator >> 2) - 1];
+ }
+}
+
+
 void PHRA_Value_Context::merge_binary_channel(PHRA_Binary_Channel* pbc, u1 length, u8 mask)
 {
  //qDebug() << "PBC k is " << pbc->kind();
@@ -28,7 +73,7 @@ void PHRA_Value_Context::merge_binary_channel(PHRA_Binary_Channel* pbc, u1 lengt
    u1s_.push_back(pbc->extract_1(index));
    index += 1;
    break;
-  case 1: 
+  case 1:
    u2s_.push_back(pbc->extract_2(index));
    index += 2;
    break;
