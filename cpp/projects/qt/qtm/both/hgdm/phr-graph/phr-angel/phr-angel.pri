@@ -54,6 +54,10 @@ SOURCES += \
   $$SRC_DIR/channels/phra-carrier-channel.cpp \
   $$SRC_DIR/types/phra-type-object.cpp \
   $$SRC_DIR/types/phra-type-system.cpp \
+  $$SRC_DIR/init/init-binary-channel.cpp \
+  $$SRC_DIR/init/init-value-context.cpp \
+  $$SRC_DIR/init/init-symbol-context.cpp \
+  $$SRC_DIR/init/init-runtime-context.cpp \
 
 
 LIBS += -L$$TARGETSDIR -langelscript  -lphr-graph-core

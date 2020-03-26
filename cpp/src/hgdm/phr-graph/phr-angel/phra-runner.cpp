@@ -35,6 +35,11 @@
 
 #include "channels/phra-binary-channel.h"
 
+extern void init_binary_channel(asIScriptEngine& engine);
+extern void init_value_context(asIScriptEngine& engine);
+extern void init_symbol_context(asIScriptEngine& engine);
+extern void init_runtime_context(asIScriptEngine& engine);
+
 
 // Print the script string to the standard output stream
 void print(std::string &msg)
@@ -46,38 +51,6 @@ void print_u2(u2 val)
 {
   std::printf("Val is: %d\n", val);
 }
-
-
-PHRA_Run_Context* init_gr()
-{
-//  printf("%s", msg.c_str());
- qDebug() << "IG";
- return new PHRA_Run_Context;
-}
-
-PHRA_Runtime_Context* new_rt_context()
-{
-//  printf("%s", msg.c_str());
- qDebug() << "RTC";
- return new PHRA_Runtime_Context;
-}
-
-PHRA_Binary_Channel* new_binary_channel()
-{
-//  printf("%s", msg.c_str());
- qDebug() << "RTC";
- return new PHRA_Binary_Channel;
-}
-
-
-void init_g(std::string &msg)
-{
-  printf("%s", msg.c_str());
-// qDebug() << "IG";
-// return new PHRA_Run_Context;
-}
-
-
 
 PHRA_Runner::PHRA_Runner()
 {
@@ -97,113 +70,16 @@ PHRA_Runner::PHRA_Runner()
  assert( r >= 0 );
 
 
- r = engine_->RegisterGlobalFunction("void init_g(const string &in)", asFUNCTION(print), asCALL_CDECL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectType("PHRA_Graph_Build", 0, asOBJ_REF); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Graph_Build", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Graph_Build,add_ref), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Graph_Build", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Graph_Build,release), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Graph_Build", "void test()", asMETHOD(PHRA_Graph_Build,test), asCALL_THISCALL); 
- assert( r >= 0 );
-
-
- r = engine_->RegisterObjectType("PHRA_Run_Context", 0, asOBJ_REF); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Run_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Run_Context,release), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Run_Context", "PHRA_Graph_Build@ init_graph()", asMETHOD(PHRA_Run_Context,init_graph), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterGlobalFunction("PHRA_Run_Context@ init_gr()", asFUNCTION(init_gr), asCALL_CDECL); 
- assert( r >= 0 );
-
-
- r = engine_->RegisterObjectType("PHRA_Value_Context", 0, asOBJ_REF); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Value_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Value_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Value_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Value_Context,release), asCALL_THISCALL); assert( r >= 0 );
-
-
- r = engine_->RegisterObjectType("PHRA_Symbol_Context", 0, asOBJ_REF); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Symbol_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Symbol_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Symbol_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Symbol_Context,release), asCALL_THISCALL); assert( r >= 0 );
-
-
- r = engine_->RegisterObjectType("PHRA_Runtime_Context", 0, asOBJ_REF); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Runtime_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Runtime_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Runtime_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Runtime_Context,release), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterGlobalFunction("PHRA_Runtime_Context@ new_rt_context()", asFUNCTION(new_rt_context), asCALL_CDECL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Value_Context@ init_value_context()", asMETHOD(PHRA_Runtime_Context,init_value_context), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Symbol_Context@ init_symbol_context()", asMETHOD(PHRA_Runtime_Context,init_symbol_context), asCALL_THISCALL); 
- assert( r >= 0 );
-
-
+ init_binary_channel(*engine_);
+ init_value_context(*engine_);
+ init_symbol_context(*engine_);
+ init_runtime_context(*engine_);
 
  r = engine_->RegisterObjectType("PHRA_Runtime", 0, asOBJ_REF); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Runtime,add_ref), asCALL_THISCALL); assert( r >= 0 );
 
  r = engine_->RegisterObjectBehaviour("PHRA_Runtime", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Runtime,release), asCALL_THISCALL); assert( r >= 0 );
-
-
- r = engine_->RegisterObjectType("PHRA_Binary_Channel", 0, asOBJ_REF); assert( r >= 0 );
-
-
- r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Binary_Channel,add_ref), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectBehaviour("PHRA_Binary_Channel", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Binary_Channel,release), asCALL_THISCALL); assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void set_kind(const string &in)", asMETHODPR(PHRA_Binary_Channel,set_kind,(const std::string&),void), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint8)", asMETHODPR(PHRA_Binary_Channel,append,(u1),void), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint16)", asMETHODPR(PHRA_Binary_Channel,append,(u2),void), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint32)", asMETHODPR(PHRA_Binary_Channel,append,(u4),void), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint64)", asMETHODPR(PHRA_Binary_Channel,append,(u8),void), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Binary_Channel", "void test_extract(uint16, uint8)", asMETHODPR(PHRA_Binary_Channel,test_extract,(u2,u1),void), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterGlobalFunction("PHRA_Binary_Channel@ new_binary_channel()", asFUNCTION(new_binary_channel), asCALL_CDECL); 
- assert( r >= 0 );
-
-
- r = engine_->RegisterObjectMethod("PHRA_Value_Context", "void merge_binary_channel(PHRA_Binary_Channel@, uint8, uint64)", asMETHOD(PHRA_Value_Context,merge_binary_channel), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint8 get1v(uint8)", asMETHOD(PHRA_Value_Context,get1v), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint16 get2v(uint8)", asMETHOD(PHRA_Value_Context,get2v), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint32 get4v(uint8)", asMETHOD(PHRA_Value_Context,get4v), asCALL_THISCALL); 
- assert( r >= 0 );
-
- r = engine_->RegisterObjectMethod("PHRA_Value_Context", "uint64 get8v(uint8)", asMETHOD(PHRA_Value_Context,get8v), asCALL_THISCALL); 
- assert( r >= 0 );
 
 }
 
@@ -392,6 +268,35 @@ void print(std::string &msg)
 {
   printf("%s", msg.c_str());
 }
+
+
+
+
+ r = engine_->RegisterGlobalFunction("void init_g(const string &in)", asFUNCTION(print), asCALL_CDECL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterObjectType("PHRA_Graph_Build", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Graph_Build", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Graph_Build,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Graph_Build", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Graph_Build,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Graph_Build", "void test()", asMETHOD(PHRA_Graph_Build,test), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+
+ r = engine_->RegisterObjectType("PHRA_Run_Context", 0, asOBJ_REF); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_ADDREF, "void f()", asMETHOD(PHRA_Run_Context,add_ref), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectBehaviour("PHRA_Run_Context", asBEHAVE_RELEASE, "void f()", asMETHOD(PHRA_Run_Context,release), asCALL_THISCALL); assert( r >= 0 );
+
+ r = engine_->RegisterObjectMethod("PHRA_Run_Context", "PHRA_Graph_Build@ init_graph()", asMETHOD(PHRA_Run_Context,init_graph), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine_->RegisterGlobalFunction("PHRA_Run_Context@ init_gr()", asFUNCTION(init_gr), asCALL_CDECL); 
+ assert( r >= 0 );
+
 
 #endif //def HIDE
 
