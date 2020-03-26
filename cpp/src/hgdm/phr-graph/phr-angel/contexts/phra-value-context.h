@@ -44,7 +44,10 @@ public:
  u4 get4v(u1 locator);
  u8 get8v(u1 locator);
 
-
+ u1 loc1(u1 value);
+ u1 loc2(u2 value);
+ u1 loc4(u4 value);
+ u1 loc8(u8 value);
 
  void add_ref();
  void release();

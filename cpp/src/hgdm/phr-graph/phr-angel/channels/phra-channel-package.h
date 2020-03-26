@@ -4,14 +4,13 @@
 //     (See accompanying file LICENSE_1_0.txt or copy at
 //           http://www.boost.org/LICENSE_1_0.txt)
 
-
-#ifndef PHRA_CARRIER_CHANNEL__H
-#define PHRA_CARRIER_CHANNEL__H
+#ifndef PHRA_CHANNEL_PACKAGE__H
+#define PHRA_CHANNEL_PACKAGE__H
 
 #include <QDebug>
 #include <QVector>
 #include <QString>
-#include <QByteArray>
+#include <QList>
 
 #include "angelscript.h"
 
@@ -21,29 +20,23 @@
 
 #include "accessors.h"
 
-class PHRA_Carrier;
+class PHRA_Carrier_Channel;
 
-class PHRA_Carrier_Channel : QVector<PHRA_Carrier*>
+class PHRA_Channel_Package : QList<PHRA_Carrier_Channel*>
 {
- QString kind_;
-
  int ref_count_;
 
 public:
 
- PHRA_Carrier_Channel(QString kind); 
+ PHRA_Channel_Package(); 
 
- ACCESSORS(QString ,kind)
-
- void add_carrier(const std::string& type_name, 
-   const std::string& symbol_name, u1 locator); 
+ PHRA_Carrier_Channel* add_carrier_channel(QString kind);
 
  void add_ref();
  void release();
 
-
 };
 
 
-#endif //  PHRA_CARRIER_CHANNEL__H
+#endif //  PHRA_CHANNEL_PACKAGE__H
 

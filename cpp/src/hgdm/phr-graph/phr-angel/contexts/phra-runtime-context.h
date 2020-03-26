@@ -21,7 +21,7 @@
 
 class PHRA_Symbol_Context;
 class PHRA_Value_Context;
-
+class PHRA_Channel_Package;
 
 class PHRA_Runtime_Context
 {
@@ -36,6 +36,7 @@ public:
 
  PHRA_Value_Context* init_value_context();
  PHRA_Symbol_Context* init_symbol_context();
+ PHRA_Channel_Package* new_channel_package();
 
  void add_ref();
  void release();

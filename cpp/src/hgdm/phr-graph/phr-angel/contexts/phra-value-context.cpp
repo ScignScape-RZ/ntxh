@@ -14,6 +14,31 @@ PHRA_Value_Context::PHRA_Value_Context()
 {
 }
 
+u1 PHRA_Value_Context::loc1(u1 value)
+{
+ u1s_.push_back(value);
+ return (u1s_.size() << 2);
+}
+
+u1 PHRA_Value_Context::loc2(u2 value)
+{
+ u2s_.push_back(value);
+ return (u2s_.size() << 2) | 1;
+}
+
+u1 PHRA_Value_Context::loc4(u4 value)
+{
+ u4s_.push_back(value);
+ return (u4s_.size() << 2) | 2;
+}
+
+u1 PHRA_Value_Context::loc8(u8 value)
+{
+ u8s_.push_back(value);
+ return (u8s_.size() << 2) | 3;
+}
+
+
 u1 PHRA_Value_Context::get1v(u1 locator)
 {
  switch(locator & 3)

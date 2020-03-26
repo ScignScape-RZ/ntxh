@@ -38,6 +38,7 @@ HEADERS += \
   $$SRC_DIR/contexts/phra-symbol-context.h \
   $$SRC_DIR/channels/phra-binary-channel.h \
   $$SRC_DIR/channels/phra-carrier-channel.h \
+  $$SRC_DIR/channels/phra-carrier.h \
   $$SRC_DIR/types/phra-type-object.h \
   $$SRC_DIR/types/phra-type-system.h \
 
@@ -52,9 +53,13 @@ SOURCES += \
   $$SRC_DIR/contexts/phra-symbol-context.cpp \
   $$SRC_DIR/channels/phra-binary-channel.cpp \
   $$SRC_DIR/channels/phra-carrier-channel.cpp \
+  $$SRC_DIR/channels/phra-carrier.cpp \
+  $$SRC_DIR/channels/phra-channel-package.cpp \
   $$SRC_DIR/types/phra-type-object.cpp \
   $$SRC_DIR/types/phra-type-system.cpp \
   $$SRC_DIR/init/init-binary-channel.cpp \
+  $$SRC_DIR/init/init-carrier-channel.cpp \
+  $$SRC_DIR/init/init-channel-package.cpp \
   $$SRC_DIR/init/init-value-context.cpp \
   $$SRC_DIR/init/init-symbol-context.cpp \
   $$SRC_DIR/init/init-runtime-context.cpp \

@@ -36,6 +36,8 @@
 #include "channels/phra-binary-channel.h"
 
 extern void init_binary_channel(asIScriptEngine& engine);
+extern void init_channel_package(asIScriptEngine& engine);
+extern void init_carrier_channel(asIScriptEngine& engine);
 extern void init_value_context(asIScriptEngine& engine);
 extern void init_symbol_context(asIScriptEngine& engine);
 extern void init_runtime_context(asIScriptEngine& engine);
@@ -71,6 +73,8 @@ PHRA_Runner::PHRA_Runner()
 
 
  init_binary_channel(*engine_);
+ init_carrier_channel(*engine_);
+ init_channel_package(*engine_);
  init_value_context(*engine_);
  init_symbol_context(*engine_);
  init_runtime_context(*engine_);

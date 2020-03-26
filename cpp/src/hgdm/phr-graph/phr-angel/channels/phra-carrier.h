@@ -49,6 +49,8 @@ public:
 
  ACCESSORS(u1 ,locator)
 
+ void encode_symbol_name(QString name);
+
 };
 
 

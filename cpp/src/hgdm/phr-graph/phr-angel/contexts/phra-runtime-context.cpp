@@ -10,6 +10,8 @@
 #include "phra-symbol-context.h"
 #include "phra-value-context.h"
 
+#include "channels/phra-channel-package.h"
+
 
 PHRA_Runtime_Context::PHRA_Runtime_Context()
   :  ref_count_(0), values_(nullptr), symbols_(nullptr)
@@ -26,6 +28,11 @@ PHRA_Symbol_Context* PHRA_Runtime_Context::init_symbol_context()
 {
  symbols_ = new PHRA_Symbol_Context;
  return symbols_; 
+}
+
+PHRA_Channel_Package* PHRA_Runtime_Context::new_channel_package()
+{
+ return new PHRA_Channel_Package;
 }
 
 

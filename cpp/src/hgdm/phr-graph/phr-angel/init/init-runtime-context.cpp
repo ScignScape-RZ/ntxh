@@ -34,6 +34,7 @@
 #include "phra-runtime.h"
 
 #include "channels/phra-binary-channel.h"
+#include "channels/phra-channel-package.h"
 
 
 PHRA_Runtime_Context* new_rt_context()
@@ -55,6 +56,9 @@ void init_runtime_context(asIScriptEngine& engine)
  assert( r >= 0 );
 
  r = engine.RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Value_Context@ init_value_context()", asMETHOD(PHRA_Runtime_Context,init_value_context), asCALL_THISCALL); 
+ assert( r >= 0 );
+
+ r = engine.RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Channel_Package@ new_channel_package()", asMETHOD(PHRA_Runtime_Context,new_channel_package), asCALL_THISCALL); 
  assert( r >= 0 );
 
  r = engine.RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Symbol_Context@ init_symbol_context()", asMETHOD(PHRA_Runtime_Context,init_symbol_context), asCALL_THISCALL); 
