@@ -68,5 +68,5 @@ public:
 };
 
 
-#endif //  PHRA_RUNTIME_CONTEXT__H
+#endif //  PHRA_BINARY_CHANNEL__H
 

@@ -26,9 +26,14 @@
 #include "phra-run-context.h"
 #include "phra-graph-build.h"
 
-#include "phra-runtime-context.h"
+#include "contexts/phra-runtime-context.h"
+#include "contexts/phra-value-context.h"
+#include "contexts/phra-symbol-context.h"
+
+
 #include "phra-runtime.h"
-#include "phra-binary-channel.h"
+
+#include "channels/phra-binary-channel.h"
 
 
 // Print the script string to the standard output stream

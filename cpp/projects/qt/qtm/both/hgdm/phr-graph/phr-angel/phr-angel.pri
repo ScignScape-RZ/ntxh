@@ -33,8 +33,13 @@ HEADERS += \
   $$SRC_DIR/phra-run-context.h \
   $$SRC_DIR/phra-graph-build.h \
   $$SRC_DIR/phra-runtime.h \
-  $$SRC_DIR/phra-runtime-context.h \
-  $$SRC_DIR/phra-binary-channel.h \
+  $$SRC_DIR/contexts/phra-runtime-context.h \
+  $$SRC_DIR/contexts/phra-value-context.h \
+  $$SRC_DIR/contexts/phra-symbol-context.h \
+  $$SRC_DIR/channels/phra-binary-channel.h \
+  $$SRC_DIR/channels/phra-carrier-channel.h \
+  $$SRC_DIR/types/phra-type-object.h \
+  $$SRC_DIR/types/phra-type-system.h \
 
 
 SOURCES += \
@@ -42,8 +47,13 @@ SOURCES += \
   $$SRC_DIR/phra-run-context.cpp \
   $$SRC_DIR/phra-graph-build.cpp \
   $$SRC_DIR/phra-runtime.cpp \
-  $$SRC_DIR/phra-runtime-context.cpp \
-  $$SRC_DIR/phra-binary-channel.cpp \
+  $$SRC_DIR/contexts/phra-runtime-context.cpp \
+  $$SRC_DIR/contexts/phra-value-context.cpp \
+  $$SRC_DIR/contexts/phra-symbol-context.cpp \
+  $$SRC_DIR/channels/phra-binary-channel.cpp \
+  $$SRC_DIR/channels/phra-carrier-channel.cpp \
+  $$SRC_DIR/types/phra-type-object.cpp \
+  $$SRC_DIR/types/phra-type-system.cpp \
 
 
 LIBS += -L$$TARGETSDIR -langelscript  -lphr-graph-core
