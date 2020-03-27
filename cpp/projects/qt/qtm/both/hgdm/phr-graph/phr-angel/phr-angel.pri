@@ -40,6 +40,9 @@ HEADERS += \
   $$SRC_DIR/channels/phra-carrier.h \
   $$SRC_DIR/types/phra-type-object.h \
   $$SRC_DIR/types/phra-type-system.h \
+  $$SRC_DIR/runner/phra-channel-runner.h \
+  $$SRC_DIR/runner/phra-function-table.h \
+
 
 #  $$SRC_DIR/phra-graph-build.cpp \
 #  $$SRC_DIR/phra-graph-build.h \
@@ -64,6 +67,9 @@ SOURCES += \
   $$SRC_DIR/init/init-value-context.cpp \
   $$SRC_DIR/init/init-symbol-context.cpp \
   $$SRC_DIR/init/init-runtime-context.cpp \
+  $$SRC_DIR/runner/phra-channel-runner.cpp \
+  $$SRC_DIR/runner/phra-function-table.cpp \
+  $$SRC_DIR/runner/phra-function-table.init.cpp \
 
 
 LIBS += -L$$TARGETSDIR -langelscript  # -lphr-graph-core

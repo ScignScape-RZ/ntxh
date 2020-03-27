@@ -114,6 +114,7 @@ void PHRA_Binary_Channel::append(u1 u)
  int sz = values_.size();
  values_.append(1, 0);
  values_[sz] = u; 
+ mask_ <<= 3;
 }
 
 void PHRA_Binary_Channel::append(u2 u)
@@ -122,6 +123,8 @@ void PHRA_Binary_Channel::append(u2 u)
  values_.append(2, 0);
  values_[sz] =      u & 0x00ff; 
  values_[sz + 1] = (u & 0xff00) >> 8; 
+ mask_ <<= 3;
+ mask_ |= 1;
 }
 
 void PHRA_Binary_Channel::append(u4 u)
@@ -133,6 +136,9 @@ void PHRA_Binary_Channel::append(u4 u)
  values_[sz + 1] = (u1) ((u & 0x0000ff00) >> 8); 
  values_[sz + 2] = (u1) ((u & 0x00ff0000) >> 16); 
  values_[sz + 3] = (u1) ((u & 0xff000000) >> 24); 
+
+ mask_ <<= 3;
+ mask_ |= 3;
 }
 
 void PHRA_Binary_Channel::append(u8 u)
@@ -147,6 +153,31 @@ void PHRA_Binary_Channel::append(u8 u)
  values_[sz + 5] = (u1) ((u & 0x0000ff0000000000) >> 40); 
  values_[sz + 6] = (u1) ((u & 0x00ff000000000000) >> 48); 
  values_[sz + 7] = (u1) ((u & 0xff00000000000000) >> 56); 
+
+ mask_ <<= 3;
+ mask_ |= 7;
+}
+
+u8 PHRA_Binary_Channel::mask_hint(u1 ret)
+{
+ qDebug() << "mk: " << mask_;
+ u8 result = ret;
+ u8 mult = 1;
+ u8 temp = 0;
+ for(u8 m = mask_; m > 0; m >>= 3)
+ {
+  result *= 10;
+  switch(m & 7)
+  {
+  case 0: temp += mult; break;
+  case 1: temp += (mult * 2); break;
+  case 3: temp += (mult * 4); break;
+  case 7: temp += (mult * 8); break;
+  default: break;
+  }
+  mult *= 10; 
+ }
+ return result + temp;
 }
 
 void PHRA_Binary_Channel::add_ref()

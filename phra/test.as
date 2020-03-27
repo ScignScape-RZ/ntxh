@@ -6,6 +6,8 @@ void test_fn(PHRA_Binary_Channel@ pbc)
  pvc.merge_binary_channel(pbc, 2, 5);
 
  PHRA_Channel_Package@ pcp = prc.new_channel_package();
+ pcp.add_fname("test_u2_u4");
+
  PHRA_Carrier_Channel@ pcc = pcp.add_carrier_channel("lambda");
  
  pcc.add_carrier("u2", "x", pvc.loc2(1088));

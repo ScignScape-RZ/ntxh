@@ -50,8 +50,8 @@ void init_channel_package(asIScriptEngine& engine)
  r = engine.RegisterObjectMethod("PHRA_Channel_Package", "PHRA_Carrier_Channel@ add_carrier_channel(const string &in)", asMETHOD(PHRA_Channel_Package,add_carrier_channel), asCALL_THISCALL); 
  assert( r >= 0 );
 
-// r = engine.RegisterObjectMethod("PHRA_Channel_Package", "void append(uint8)", asMETHODPR(PHRA_Channel_Package,append,(u1),void), asCALL_THISCALL); 
-// assert( r >= 0 );
+ r = engine.RegisterObjectMethod("PHRA_Channel_Package", "void add_fname(const string &in)", asMETHOD(PHRA_Channel_Package,add_fname), asCALL_THISCALL); 
+ assert( r >= 0 );
 
 // r = engine.RegisterObjectMethod("PHRA_Channel_Package", "void append(uint16)", asMETHODPR(PHRA_Binary_Channel,append,(u2),void), asCALL_THISCALL); 
 // assert( r >= 0 );

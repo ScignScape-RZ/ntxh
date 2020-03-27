@@ -24,11 +24,16 @@ class PHRA_Value_Context;
 class PHRA_Channel_Package;
 class PHRA_Binary_Channel;
 
+class PHRA_Function_Table;
 
 class PHRA_Runtime_Context
 {
  PHRA_Value_Context* values_;
  PHRA_Symbol_Context* symbols_;
+
+ PHRA_Function_Table* ftable_;
+
+ static PHRA_Function_Table* get_ftable();
 
  int ref_count_;
  

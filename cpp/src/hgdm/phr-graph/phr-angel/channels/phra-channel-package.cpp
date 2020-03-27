@@ -15,6 +15,11 @@ PHRA_Channel_Package::PHRA_Channel_Package()
 {
 }
 
+void PHRA_Channel_Package::add_fname(const std::string& name)
+{
+ fname_ = QString::fromStdString(name);
+}
+
 PHRA_Carrier_Channel* PHRA_Channel_Package::add_carrier_channel(QString kind)
 {
  return new PHRA_Carrier_Channel(kind);

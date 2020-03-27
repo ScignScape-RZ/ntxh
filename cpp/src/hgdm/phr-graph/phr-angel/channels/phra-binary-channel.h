@@ -46,6 +46,8 @@ public:
  ACCESSORS(QString ,kind)
  ACCESSORS(u8 ,mask)
 
+ u8 mask_hint(u1 ret);
+
  void set_kind(const std::string& ss);
 
  void append(u1 u);

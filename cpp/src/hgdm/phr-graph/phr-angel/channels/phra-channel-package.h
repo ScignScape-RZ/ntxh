@@ -24,13 +24,19 @@ class PHRA_Carrier_Channel;
 
 class PHRA_Channel_Package : QList<PHRA_Carrier_Channel*>
 {
+ QString fname_;
+
  int ref_count_;
 
 public:
 
  PHRA_Channel_Package(); 
 
+ ACCESSORS(QString ,fname)
+
  PHRA_Carrier_Channel* add_carrier_channel(QString kind);
+
+ void add_fname(const std::string& name);
 
  void add_ref();
  void release();

@@ -13,16 +13,35 @@
 #include "channels/phra-channel-package.h"
 #include "channels/phra-binary-channel.h"
 
+#include "runner/phra-channel-runner.h"
+
+#include "runner/phra-function-table.h"
+
 
 PHRA_Runtime_Context::PHRA_Runtime_Context()
   :  ref_count_(0), values_(nullptr), symbols_(nullptr)
 {
+ ftable_ = get_ftable();
+}
+
+extern void init_ftable(PHRA_Function_Table*& pft);
+
+PHRA_Function_Table* PHRA_Runtime_Context::get_ftable()
+{
+ static PHRA_Function_Table* result = nullptr;
+ if(!result)
+   init_ftable(result);
+ return result;
 }
 
 void PHRA_Runtime_Context::run(PHRA_Channel_Package* pcp, 
-   PHRA_Binary_Channel* pbc)
+  PHRA_Binary_Channel* pbc)
 {
- u8 m = pbc->mask();
+ u8 mh = pbc->mask_hint(9);
+ 
+ PHRA_Channel_Runner pcr(*ftable_, *pbc);
+ pcr.set_fname(pcp->fname());
+ pcr.run(mh);
 }
 
 PHRA_Value_Context* PHRA_Runtime_Context::init_value_context()
