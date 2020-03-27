@@ -9,7 +9,7 @@
 
 
 PHRA_Binary_Channel::PHRA_Binary_Channel()
-  :  ref_count_(0)
+  :  ref_count_(0), mask_(0)
 {
 }
 

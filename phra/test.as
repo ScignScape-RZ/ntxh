@@ -9,7 +9,13 @@ void test_fn(PHRA_Binary_Channel@ pbc)
  PHRA_Carrier_Channel@ pcc = pcp.add_carrier_channel("lambda");
  
  pcc.add_carrier("u2", "x", pvc.loc2(1088));
+ pcc.add_carrier("u4", "y", pvc.loc4(12));
 
+ PHRA_Binary_Channel@ pbc1 = pcc.to_binary(pvc);
+
+ prc.run(pcp, pbc1);
+
+ pbc1.test_extract(1, 2);
  pbc.test_extract(1, 2);
 // uint16 u = pvc.get2v(5);
 // print_u2(u);

@@ -73,9 +73,9 @@ PHRA_Runner::PHRA_Runner()
 
 
  init_binary_channel(*engine_);
+ init_value_context(*engine_);
  init_carrier_channel(*engine_);
  init_channel_package(*engine_);
- init_value_context(*engine_);
  init_symbol_context(*engine_);
  init_runtime_context(*engine_);
 

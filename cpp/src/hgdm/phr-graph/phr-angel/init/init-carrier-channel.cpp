@@ -51,6 +51,8 @@ void init_carrier_channel(asIScriptEngine& engine)
  r = engine.RegisterObjectMethod("PHRA_Carrier_Channel","void add_carrier(const string& in, const string& in, uint8 loc)", asMETHODPR(PHRA_Carrier_Channel,add_carrier,(const std::string&, const std::string&, u1),void), asCALL_THISCALL); 
  assert( r >= 0 );
 
+ r = engine.RegisterObjectMethod("PHRA_Carrier_Channel","PHRA_Binary_Channel@ to_binary(PHRA_Value_Context@)", asMETHOD(PHRA_Carrier_Channel,to_binary), asCALL_THISCALL); 
+ assert( r >= 0 );
  
 }
 

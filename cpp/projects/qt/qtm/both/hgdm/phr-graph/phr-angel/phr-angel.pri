@@ -31,7 +31,6 @@ DEFINES += RELAE_LABEL_NODES
 HEADERS += \
   $$SRC_DIR/phra-runner.h \
   $$SRC_DIR/phra-run-context.h \
-  $$SRC_DIR/phra-graph-build.h \
   $$SRC_DIR/phra-runtime.h \
   $$SRC_DIR/contexts/phra-runtime-context.h \
   $$SRC_DIR/contexts/phra-value-context.h \
@@ -42,11 +41,13 @@ HEADERS += \
   $$SRC_DIR/types/phra-type-object.h \
   $$SRC_DIR/types/phra-type-system.h \
 
+#  $$SRC_DIR/phra-graph-build.cpp \
+#  $$SRC_DIR/phra-graph-build.h \
+
 
 SOURCES += \
   $$SRC_DIR/phra-runner.cpp \
   $$SRC_DIR/phra-run-context.cpp \
-  $$SRC_DIR/phra-graph-build.cpp \
   $$SRC_DIR/phra-runtime.cpp \
   $$SRC_DIR/contexts/phra-runtime-context.cpp \
   $$SRC_DIR/contexts/phra-value-context.cpp \
@@ -65,7 +66,7 @@ SOURCES += \
   $$SRC_DIR/init/init-runtime-context.cpp \
 
 
-LIBS += -L$$TARGETSDIR -langelscript  -lphr-graph-core
+LIBS += -L$$TARGETSDIR -langelscript  # -lphr-graph-core
 
 
 

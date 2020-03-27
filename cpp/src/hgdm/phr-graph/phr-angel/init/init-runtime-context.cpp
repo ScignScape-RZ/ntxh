@@ -64,6 +64,8 @@ void init_runtime_context(asIScriptEngine& engine)
  r = engine.RegisterObjectMethod("PHRA_Runtime_Context", "PHRA_Symbol_Context@ init_symbol_context()", asMETHOD(PHRA_Runtime_Context,init_symbol_context), asCALL_THISCALL); 
  assert( r >= 0 );
 
+ r = engine.RegisterObjectMethod("PHRA_Runtime_Context", "void run(PHRA_Channel_Package@ pcp,PHRA_Binary_Channel@ pbc)", asMETHOD(PHRA_Runtime_Context,run), asCALL_THISCALL); 
+ assert( r >= 0 );
 
 }
 

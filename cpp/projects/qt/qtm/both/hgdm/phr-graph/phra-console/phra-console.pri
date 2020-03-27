@@ -33,7 +33,7 @@ SOURCES += \
 
 
 LIBS += -L$$TARGETSDIR -langelscript  -lphr-angel  \
-  -lphr-graph-core  
+  # -lphr-graph-core
 
 
 message(choice: $$CPP_ROOT_DIR/targets/$$CHOICE_CODE/$$PROJECT_SET--$$PROJECT_GROUP--$$PROJECT_NAME)

@@ -11,11 +11,18 @@
 #include "phra-value-context.h"
 
 #include "channels/phra-channel-package.h"
+#include "channels/phra-binary-channel.h"
 
 
 PHRA_Runtime_Context::PHRA_Runtime_Context()
   :  ref_count_(0), values_(nullptr), symbols_(nullptr)
 {
+}
+
+void PHRA_Runtime_Context::run(PHRA_Channel_Package* pcp, 
+   PHRA_Binary_Channel* pbc)
+{
+ u8 m = pbc->mask();
 }
 
 PHRA_Value_Context* PHRA_Runtime_Context::init_value_context()

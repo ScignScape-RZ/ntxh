@@ -11,7 +11,7 @@
 
 
 PHRA_Run_Context::PHRA_Run_Context()
-  :  phra_graph_build_(nullptr),
+  : //? phra_graph_build_(nullptr),
      ref_count_(0)
 {
 }
@@ -29,11 +29,11 @@ void PHRA_Run_Context::release()
    delete this;
 }
 
-PHRA_Graph_Build* PHRA_Run_Context::init_graph()
-{
- phra_graph_build_ = new PHRA_Graph_Build;
- phra_graph_build_->init_graph();
- return phra_graph_build_;
-}
+//PHRA_Graph_Build* PHRA_Run_Context::init_graph()
+//{
+// phra_graph_build_ = new PHRA_Graph_Build;
+// phra_graph_build_->init_graph();
+// return phra_graph_build_;
+//}
 
 

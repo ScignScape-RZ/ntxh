@@ -51,6 +51,8 @@ public:
 
  void encode_symbol_name(QString name);
 
+ QString get_symbol_name();
+
 };
 
 

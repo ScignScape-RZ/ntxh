@@ -38,6 +38,16 @@ u1 PHRA_Value_Context::loc8(u8 value)
  return (u8s_.size() << 2) | 3;
 }
 
+void PHRA_Value_Context::locator_to_binary(PHRA_Binary_Channel& pbc, u1 locator)
+{
+ switch(locator & 3)
+ {
+ case 0: pbc.append( u1s_[(locator >> 2) - 1] ); break;
+ case 1: pbc.append( u2s_[(locator >> 2) - 1] ); break;
+ case 2: pbc.append( u4s_[(locator >> 2) - 1] ); break;
+ case 3: pbc.append( u8s_[(locator >> 2) - 1] ); break;
+ } 
+}
 
 u1 PHRA_Value_Context::get1v(u1 locator)
 {

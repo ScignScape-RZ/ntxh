@@ -35,6 +35,7 @@ class PHRA_Binary_Channel
 {
  QString kind_;
  QByteArray values_;
+ u8 mask_;
 
  int ref_count_;
  
@@ -43,6 +44,7 @@ public:
  PHRA_Binary_Channel(); 
 
  ACCESSORS(QString ,kind)
+ ACCESSORS(u8 ,mask)
 
  void set_kind(const std::string& ss);
 

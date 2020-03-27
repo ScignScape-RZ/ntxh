@@ -22,6 +22,8 @@
 #include "accessors.h"
 
 class PHRA_Carrier;
+class PHRA_Binary_Channel;
+class PHRA_Value_Context;
 
 class PHRA_Carrier_Channel : QVector<PHRA_Carrier*>
 {
@@ -37,6 +39,8 @@ public:
 
  void add_carrier(const std::string& type_name, 
    const std::string& symbol_name, u1 locator); 
+
+ PHRA_Binary_Channel* to_binary(PHRA_Value_Context* pvc);
 
  void add_ref();
  void release();
