@@ -57,6 +57,9 @@ void init_binary_channel(asIScriptEngine& engine)
  r = engine.RegisterObjectMethod("PHRA_Binary_Channel", "void set_kind(const string &in)", asMETHODPR(PHRA_Binary_Channel,set_kind,(const std::string&),void), asCALL_THISCALL); 
  assert( r >= 0 );
 
+ r = engine.RegisterObjectMethod("PHRA_Binary_Channel", "uint64 short_mask()", asMETHOD(PHRA_Binary_Channel,short_mask), asCALL_THISCALL);
+ assert( r >= 0 );
+
  r = engine.RegisterObjectMethod("PHRA_Binary_Channel", "void append(uint8)", asMETHODPR(PHRA_Binary_Channel,append,(u1),void), asCALL_THISCALL); 
  assert( r >= 0 );
 

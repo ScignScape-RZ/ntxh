@@ -9,6 +9,8 @@
 
 #include "phra-function-table.h"
 
+#include "channels/phra-binary-channel.h"
+
 
 
 void test(u2 x, u4 y)
@@ -25,15 +27,14 @@ PHRA_Channel_Runner::PHRA_Channel_Runner(PHRA_Function_Table& pft, PHRA_Binary_C
 
 void PHRA_Channel_Runner::run(u8 mh)
 {
- qDebug() << "MH " << mh;
  PHRA_Function_Table::_s0a_fn1_16_32_type fn = 
    pft_.get_fn(fname_);
-  // void (*fn)(u2, u4) = &test;
+
  switch(mh)
  {
  case 924:{
-   u2 arg1 = 2020;
-   u4 arg2 = 19;
+   u2 arg1 = pbc_.extract_2(1);
+   u4 arg2 = pbc_.extract_4(3);
    fn(arg1, arg2);
   }; break;
  default: break;

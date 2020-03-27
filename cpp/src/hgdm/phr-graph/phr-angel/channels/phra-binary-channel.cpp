@@ -158,9 +158,26 @@ void PHRA_Binary_Channel::append(u8 u)
  mask_ |= 7;
 }
 
+u8 PHRA_Binary_Channel::short_mask()
+{
+ u8 result = 0;
+ for(u8 m = mask_; m > 0; m >>= 3)
+ {
+  result <<= 2;
+  switch(m & 7)
+  {
+  case 0: break;
+  case 1: result |= 1; break;
+  case 3: result |= 2; break;
+  case 7: result |= 3; break;
+  default: break;
+  }
+ }
+ return result;
+}
+
 u8 PHRA_Binary_Channel::mask_hint(u1 ret)
 {
- qDebug() << "mk: " << mask_;
  u8 result = ret;
  u8 mult = 1;
  u8 temp = 0;

@@ -47,6 +47,7 @@ public:
  ACCESSORS(u8 ,mask)
 
  u8 mask_hint(u1 ret);
+ u8 short_mask();
 
  void set_kind(const std::string& ss);
 
