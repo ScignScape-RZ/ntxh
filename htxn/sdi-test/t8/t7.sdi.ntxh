@@ -1,0 +1,76 @@
+- Generated from LaTeX File t7.tex 
+21/3/2020, 22:58
+.
+
+- i=id n=name (entity kind) k=element kind p=page r=paragraph o=order (on page)
+s=size c=count (in paragraph) x,y=pdf coords b=baselineskip
+.
+
+&type SDI_Sentence_Start {9}
+:n:1 :i:2 :r:3 :c:4 :o:5 :p:7 :x:8 :y:9 :b:6 ;
+
+&type SDI_Sentence_End {6}
+:n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;
+
+&type SDI_Paragraph_Start {7}
+:n:1 :i:2 :o:3 :p:5 :x:6 :y:7 :b:4 ;
+
+&type SDI_Paragraph_End {6}
+:n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;
+
+&type SDI_Mark {8}
+:n:1 :i:2 :o:3 :r:4 :p:6 :x:7 :y:8 :b:5 ;
+
+&type SDI_Mark_Secondary {6}
+:n:1 :i:2 :p:4 :x:5 :y:6 :b:3 ;
+
+&type SDI_Element_Start {10}
+:n:1 :i:2 :o:3 :c:4 :r:5 :k:6 :p:8 :x:9 :y:10 :b:7 ;
+
+&type SDI_Element_End {7}
+:n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;
+
+&type SDI_Info {2}
+:n:1 :global-baseline-skip:2 ;
+
+
+&/
+
+
+!/ SDI_Info
+$n: Info
+$global-baseline-skip: 12.0pt
+
+/!
+<+>
+
+
+
+!/ SDI_Element_Start
+$n: Element:Start
+$i: 1
+$o: 1
+$c: 1
+$r: 0
+$k: quote-tech
+$b: 22.0pt
+$p: 1
+$x: 210.06892pt
+$y: 667.77682pt
+/!
+<+>
+
+!/ SDI_Element_End
+$n: Element:End
+$i: 1
+$o: 1
+$p: 1
+$x: 425.86252pt
+$y: 667.77682pt
+/!
+<+>
+
+
+/&
+
+

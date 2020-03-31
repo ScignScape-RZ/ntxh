@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  29 MAR 2020 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  31 MAR 2020 18:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -96,10 +96,6 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \titlewidthlast=\dimen107
 \titlewidthfirst=\dimen108
 )
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lipsum/lipsum.sty
-Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
-\c@lips@count=\count89
-)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
 
@@ -147,9 +143,9 @@ Package ifvtex Info: VTeX not detected.
 ty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count90
-\Gm@cntv=\count91
-\c@Gm@tempcnt=\count92
+\Gm@cnth=\count89
+\Gm@cntv=\count90
+\c@Gm@tempcnt=\count91
 \Gm@bindingoffset=\dimen109
 \Gm@wd@mp=\dimen110
 \Gm@odd@mp=\dimen111
@@ -350,7 +346,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count93
+\c@float@type=\count92
 \float@exts=\toks18
 \float@box=\box27
 \@float@everytoks=\toks19
@@ -368,18 +364,18 @@ Package: expl3 2018/03/05 L3 programming layer (loader)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/l3kernel/expl3-code
 .tex
 Package: expl3 2018/03/05 L3 programming layer (code)
-\c_max_int=\count94
-\l_tmpa_int=\count95
-\l_tmpb_int=\count96
-\g_tmpa_int=\count97
-\g_tmpb_int=\count98
-\g__intarray_font_int=\count99
-\g__prg_map_int=\count100
-\c_log_iow=\count101
-\l_iow_line_count_int=\count102
-\l__iow_line_target_int=\count103
-\l__iow_one_indent_int=\count104
-\l__iow_indent_int=\count105
+\c_max_int=\count93
+\l_tmpa_int=\count94
+\l_tmpb_int=\count95
+\g_tmpa_int=\count96
+\g_tmpb_int=\count97
+\g__intarray_font_int=\count98
+\g__prg_map_int=\count99
+\c_log_iow=\count100
+\l_iow_line_count_int=\count101
+\l__iow_line_target_int=\count102
+\l__iow_one_indent_int=\count103
+\l__iow_indent_int=\count104
 \c_zero_dim=\dimen123
 \c_max_dim=\dimen124
 \l_tmpa_dim=\dimen125
@@ -398,77 +394,77 @@ Package: expl3 2018/03/05 L3 programming layer (code)
 \l_tmpb_muskip=\muskip14
 \g_tmpa_muskip=\muskip15
 \g_tmpb_muskip=\muskip16
-\l_keys_choice_int=\count106
-\c__fp_leading_shift_int=\count107
-\c__fp_middle_shift_int=\count108
-\c__fp_trailing_shift_int=\count109
-\c__fp_big_leading_shift_int=\count110
-\c__fp_big_middle_shift_int=\count111
-\c__fp_big_trailing_shift_int=\count112
-\c__fp_Bigg_leading_shift_int=\count113
-\c__fp_Bigg_middle_shift_int=\count114
-\c__fp_Bigg_trailing_shift_int=\count115
-\c__fp_rand_size_int=\count116
-\c__fp_rand_four_int=\count117
-\c__fp_rand_eight_int=\count118
-\l__sort_length_int=\count119
-\l__sort_min_int=\count120
-\l__sort_top_int=\count121
-\l__sort_max_int=\count122
-\l__sort_true_max_int=\count123
-\l__sort_block_int=\count124
-\l__sort_begin_int=\count125
-\l__sort_end_int=\count126
-\l__sort_A_int=\count127
-\l__sort_B_int=\count128
-\l__sort_C_int=\count129
-\l__tl_build_start_index_int=\count130
-\l__tl_build_index_int=\count131
-\l__tl_analysis_normal_int=\count132
-\l__tl_analysis_index_int=\count133
-\l__tl_analysis_nesting_int=\count134
-\l__tl_analysis_type_int=\count135
-\l__regex_internal_a_int=\count136
-\l__regex_internal_b_int=\count137
-\l__regex_internal_c_int=\count138
-\l__regex_balance_int=\count139
-\l__regex_group_level_int=\count140
-\l__regex_mode_int=\count141
-\c__regex_cs_in_class_mode_int=\count142
-\c__regex_cs_mode_int=\count143
-\l__regex_catcodes_int=\count144
-\l__regex_default_catcodes_int=\count145
-\c__regex_catcode_D_int=\count146
-\c__regex_catcode_S_int=\count147
-\c__regex_catcode_L_int=\count148
-\c__regex_catcode_O_int=\count149
-\c__regex_catcode_A_int=\count150
-\c__regex_all_catcodes_int=\count151
-\l__regex_show_lines_int=\count152
-\l__regex_min_state_int=\count153
-\l__regex_max_state_int=\count154
-\l__regex_left_state_int=\count155
-\l__regex_right_state_int=\count156
-\l__regex_capturing_group_int=\count157
-\l__regex_min_pos_int=\count158
-\l__regex_max_pos_int=\count159
-\l__regex_curr_pos_int=\count160
-\l__regex_start_pos_int=\count161
-\l__regex_success_pos_int=\count162
-\l__regex_curr_char_int=\count163
-\l__regex_curr_catcode_int=\count164
-\l__regex_last_char_int=\count165
-\l__regex_case_changed_char_int=\count166
-\l__regex_curr_state_int=\count167
-\l__regex_step_int=\count168
-\l__regex_min_active_int=\count169
-\l__regex_max_active_int=\count170
-\l__regex_replacement_csnames_int=\count171
-\l__regex_match_count_int=\count172
-\l__regex_min_submatch_int=\count173
-\l__regex_submatch_int=\count174
-\l__regex_zeroth_submatch_int=\count175
-\g__regex_trace_regex_int=\count176
+\l_keys_choice_int=\count105
+\c__fp_leading_shift_int=\count106
+\c__fp_middle_shift_int=\count107
+\c__fp_trailing_shift_int=\count108
+\c__fp_big_leading_shift_int=\count109
+\c__fp_big_middle_shift_int=\count110
+\c__fp_big_trailing_shift_int=\count111
+\c__fp_Bigg_leading_shift_int=\count112
+\c__fp_Bigg_middle_shift_int=\count113
+\c__fp_Bigg_trailing_shift_int=\count114
+\c__fp_rand_size_int=\count115
+\c__fp_rand_four_int=\count116
+\c__fp_rand_eight_int=\count117
+\l__sort_length_int=\count118
+\l__sort_min_int=\count119
+\l__sort_top_int=\count120
+\l__sort_max_int=\count121
+\l__sort_true_max_int=\count122
+\l__sort_block_int=\count123
+\l__sort_begin_int=\count124
+\l__sort_end_int=\count125
+\l__sort_A_int=\count126
+\l__sort_B_int=\count127
+\l__sort_C_int=\count128
+\l__tl_build_start_index_int=\count129
+\l__tl_build_index_int=\count130
+\l__tl_analysis_normal_int=\count131
+\l__tl_analysis_index_int=\count132
+\l__tl_analysis_nesting_int=\count133
+\l__tl_analysis_type_int=\count134
+\l__regex_internal_a_int=\count135
+\l__regex_internal_b_int=\count136
+\l__regex_internal_c_int=\count137
+\l__regex_balance_int=\count138
+\l__regex_group_level_int=\count139
+\l__regex_mode_int=\count140
+\c__regex_cs_in_class_mode_int=\count141
+\c__regex_cs_mode_int=\count142
+\l__regex_catcodes_int=\count143
+\l__regex_default_catcodes_int=\count144
+\c__regex_catcode_D_int=\count145
+\c__regex_catcode_S_int=\count146
+\c__regex_catcode_L_int=\count147
+\c__regex_catcode_O_int=\count148
+\c__regex_catcode_A_int=\count149
+\c__regex_all_catcodes_int=\count150
+\l__regex_show_lines_int=\count151
+\l__regex_min_state_int=\count152
+\l__regex_max_state_int=\count153
+\l__regex_left_state_int=\count154
+\l__regex_right_state_int=\count155
+\l__regex_capturing_group_int=\count156
+\l__regex_min_pos_int=\count157
+\l__regex_max_pos_int=\count158
+\l__regex_curr_pos_int=\count159
+\l__regex_start_pos_int=\count160
+\l__regex_success_pos_int=\count161
+\l__regex_curr_char_int=\count162
+\l__regex_curr_catcode_int=\count163
+\l__regex_last_char_int=\count164
+\l__regex_case_changed_char_int=\count165
+\l__regex_curr_state_int=\count166
+\l__regex_step_int=\count167
+\l__regex_min_active_int=\count168
+\l__regex_max_active_int=\count169
+\l__regex_replacement_csnames_int=\count170
+\l__regex_match_count_int=\count171
+\l__regex_min_submatch_int=\count172
+\l__regex_submatch_int=\count173
+\l__regex_zeroth_submatch_int=\count174
+\g__regex_trace_regex_int=\count175
 \c_empty_box=\box29
 \l_tmpa_box=\box30
 \l_tmpb_box=\box31
@@ -513,19 +509,19 @@ Package: expl3 2018/03/05 L3 programming layer (code)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/l3kernel/l3pdfmode.
 def
 File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count177
+\l__driver_color_stack_int=\count176
 ))
 Package: xparse 2018/02/21 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count178
-\g__xparse_grabber_int=\count179
-\l__xparse_m_args_int=\count180
-\l__xparse_mandatory_args_int=\count181
-\l__xparse_v_nesting_int=\count182
+\l__xparse_current_arg_int=\count177
+\g__xparse_grabber_int=\count178
+\l__xparse_m_args_int=\count179
+\l__xparse_mandatory_args_int=\count180
+\l__xparse_v_nesting_int=\count181
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/etoolbox/etoolbox.s
 ty
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count183
+\etb@tempcnta=\count182
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/zref-abspa
 ge.sty
@@ -556,7 +552,7 @@ Package zref Info: New property list: main on input line 759.
 Package zref Info: New property: default on input line 760.
 Package zref Info: New property: page on input line 761.
 )
-\c@abspage=\count184
+\c@abspage=\count183
 Package zref Info: New property: abspage on input line 62.
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/needspace/needspace
@@ -564,7 +560,7 @@ Package zref Info: New property: abspage on input line 62.
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
 \mdf@templength=\skip52
-\c@mdf@globalstyle@cnt=\count185
+\c@mdf@globalstyle@cnt=\count184
 \mdf@skipabove@length=\skip53
 \mdf@skipbelow@length=\skip54
 \mdf@leftmargin@length=\skip55
@@ -641,7 +637,7 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \mdf@horizontalspaceofbox=\skip116
 \mdfsubtitleheight=\skip117
 \mdfsubsubtitleheight=\skip118
-\c@mdfcountframes=\count186
+\c@mdfcountframes=\count185
 
 ****** mdframed patching \endmdf@trivlist
 
@@ -657,10 +653,10 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 . 
 . Defining command \mdtheorem with sig. ' O{} m o m o ' on line 701.
 .................................................
-\mdf@envdepth=\count187
-\c@mdf@env@i=\count188
-\c@mdf@env@ii=\count189
-\c@mdf@zref@counter=\count190
+\mdf@envdepth=\count186
+\c@mdf@env@i=\count187
+\c@mdf@env@ii=\count188
+\c@mdf@zref@counter=\count189
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/setspace/setspace.s
@@ -681,7 +677,7 @@ tex
 \XKV@toks=\toks20
 \XKV@tempa@toks=\toks21
 )
-\XKV@depth=\count191
+\XKV@depth=\count190
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 
@@ -730,15 +726,15 @@ Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
 \@linkdim=\dimen154
-\Hy@linkcounter=\count192
-\Hy@pagecounter=\count193
+\Hy@linkcounter=\count191
+\Hy@pagecounter=\count192
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count194
+\Hy@SavedSpaceFactor=\count193
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/latexconfig/hyperre
 f.cfg
@@ -751,10 +747,10 @@ Package hyperref Info: Plain pages OFF on input line 4524.
 Package hyperref Info: Backreferencing OFF on input line 4529.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count195
+\c@Hy@tempcnt=\count194
 LaTeX Info: Redefining \url on input line 5115.
 \XeTeXLinkMargin=\dimen155
-\Fld@menulength=\count196
+\Fld@menulength=\count195
 \Field@Width=\dimen156
 \Fld@charsize=\dimen157
 Package hyperref Info: Hyper figures OFF on input line 6369.
@@ -766,18 +762,18 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count197
-\c@Item=\count198
-\c@Hfootnote=\count199
+\Hy@abspage=\count196
+\c@Item=\count197
+\c@Hfootnote=\count198
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/hpdftex.de
 f
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\HyAnn@Count=\count266
-\Fld@listcount=\count267
-\c@bookmark@seq@number=\count268
+\HyAnn@Count=\count199
+\Fld@listcount=\count266
+\c@bookmark@seq@number=\count267
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/rerunfilec
 heck.sty
@@ -843,10 +839,10 @@ keysfiltered.code.tex
 \pgf@yc=\dimen167
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count269
-\c@pgf@countb=\count270
-\c@pgf@countc=\count271
-\c@pgf@countd=\count272
+\c@pgf@counta=\count268
+\c@pgf@countb=\count269
+\c@pgf@countc=\count270
+\c@pgf@countd=\count271
 \t@pgf@toka=\toks26
 \t@pgf@tokb=\toks27
 \t@pgf@tokc=\toks28
@@ -868,8 +864,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/systemlayer/p
 gfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count273
-\pgfsyssoftpath@bigbuffer@items=\count274
+\pgfsyssoftpath@smallbuffer@items=\count272
+\pgfsyssoftpath@bigbuffer@items=\count273
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/systemlayer/p
 gfsysprotocol.code.tex
@@ -888,7 +884,7 @@ til.code.tex)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/math/pgfmathp
 arser.code.tex
 \pgfmath@dimen=\dimen168
-\pgfmath@count=\count275
+\pgfmath@count=\count274
 \pgfmath@box=\box50
 \pgfmath@toks=\toks29
 \pgfmath@stack@operand=\toks30
@@ -914,7 +910,7 @@ unctions.misc.code.tex)
 unctions.integerarithmetics.code.tex)))
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/math/pgfmathf
 loat.code.tex
-\c@pgfmathroundto@lastzeros=\count276
+\c@pgfmathroundto@lastzeros=\count275
 ))
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcorepoints.code.tex
@@ -956,7 +952,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box51
 \pgf@hbox=\box52
 \pgf@layerbox@main=\box53
-\pgf@picture@serial@count=\count277
+\pgf@picture@serial@count=\count276
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcoregraphicstate.code.tex
@@ -991,7 +987,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 fcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen192
-\pgf@sys@shading@range@num=\count278
+\pgf@sys@shading@range@num=\count277
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/basiclayer/pg
 fcoreimage.code.tex
@@ -1052,9 +1048,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box57
 \tcb@lowerbox=\box58
 \tcb@phantombox=\box59
-\c@tcbbreakpart=\count279
-\c@tcblayer=\count280
-\tcolorbox@number=\count281
+\c@tcbbreakpart=\count278
+\c@tcblayer=\count279
+\tcolorbox@number=\count280
 \tcb@temp=\box60
 \tcb@temp=\box61
 \tcb@temp=\box62
@@ -1065,9 +1061,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcbraster
 .code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '4.13'
-\c@tcbrastercolumn=\count282
-\c@tcbrasterrow=\count283
-\c@tcbraster=\count284
+\c@tcbrastercolumn=\count281
+\c@tcbrasterrow=\count282
+\c@tcbraster=\count283
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcbskins.
 code.tex
@@ -1103,7 +1099,7 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/libraries/pgf
 libraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count285
+\pgf@plot@mark@count=\count284
 \pgfplotmarksize=\dimen197
 )
 \tikz@lastx=\dimen198
@@ -1116,19 +1112,19 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@figbox@bg=\box65
 \tikz@tempbox=\box66
 \tikz@tempbox@bg=\box67
-\tikztreelevel=\count286
-\tikznumberofchildren=\count287
-\tikznumberofcurrentchild=\count288
-\tikz@fig@count=\count289
+\tikztreelevel=\count285
+\tikznumberofchildren=\count286
+\tikznumberofcurrentchild=\count287
+\tikz@fig@count=\count288
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/modules/pgfmo
 dulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count290
-\pgfmatrixcurrentcolumn=\count291
-\pgf@matrix@numberofcolumns=\count292
+\pgfmatrixcurrentrow=\count289
+\pgfmatrixcurrentcolumn=\count290
+\pgf@matrix@numberofcolumns=\count291
 )
-\tikz@expandcount=\count293
+\tikz@expandcount=\count292
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/frontendlayer
 /tikz/libraries/tikzlibrarytopaths.code.tex
@@ -1174,13 +1170,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 y
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count294
+\inf@bad=\count293
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count295
-\leftroot@=\count296
+\uproot@=\count294
+\leftroot@=\count295
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count297
-\DOTSCASE@=\count298
+\classnum@=\count296
+\DOTSCASE@=\count297
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -1189,15 +1185,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen262
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count299
-\c@MaxMatrixCols=\count300
+\macc@depth=\count298
+\c@MaxMatrixCols=\count299
 \dotsspace@=\muskip17
-\c@parentequation=\count301
-\dspbrk@lvl=\count302
+\c@parentequation=\count300
+\dspbrk@lvl=\count301
 \tag@help=\toks38
-\row@=\count303
-\column@=\count304
-\maxfields@=\count305
+\row@=\count302
+\column@=\count303
+\maxfields@=\count304
 \andhelp@=\toks39
 \eqnshift@=\dimen263
 \alignsep@=\dimen264
@@ -1218,7 +1214,7 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '4.13'
 \tcbfitdim=\dimen269
 \tcb@lowerfitdim=\dimen270
 \tcb@upperfitdim=\dimen271
-\tcb@cur@hbadness=\count306
+\tcb@cur@hbadness=\count305
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcbxparse
 .code.tex
@@ -1261,7 +1257,7 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@outerparindent=\dimen272
 \enit@toks=\toks42
 \enit@inbox=\box74
-\enitdp@description=\count307
+\enitdp@description=\count306
 ) (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@word=\toks43
@@ -1301,12 +1297,12 @@ LaTeX Warning: Command \@footnotemark  has changed.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/marginnote/marginno
 te.sty
 Package: marginnote 2017/04/22 v1.2b non floating margin notes for LaTeX
-\c@mn@abspage=\count308
+\c@mn@abspage=\count307
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen276
 \WF@size=\dimen277
-\c@WF@wrappedlines=\count309
+\c@WF@wrappedlines=\count308
 \WF@box=\box75
 \WF@everypar=\toks48
 Package: wrapfig 2003/01/31  v 3.6
@@ -1331,7 +1327,7 @@ duledecorations.code.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen281
 \pgfdecoratedinputsegmentremainingdistance=\dimen282
 \pgf@decorate@distancetomove=\dimen283
-\pgf@decorate@repeatstate=\count310
+\pgf@decorate@repeatstate=\count309
 \pgfdecorationsegmentamplitude=\dimen284
 \pgfdecorationsegmentlength=\dimen285
 )
@@ -1347,47 +1343,47 @@ File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 pes/pgflibraryshapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 603.
+Package hyperref Info: Option `colorlinks' set `true' on input line 618.
  (./CORD19.aux)
 \openout1 = `CORD19.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 611.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 611.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 630.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 630.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 611.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 611.
-LaTeX Font Info:    ... okay on input line 611.
+LaTeX Font Info:    ... okay on input line 630.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 630.
+LaTeX Font Info:    ... okay on input line 630.
 \AtBeginShipoutBox=\box77
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count311
+\scratchcounter=\count310
 \scratchdimen=\dimen286
 \scratchbox=\box78
-\nofMPsegments=\count312
-\nofMParguments=\count313
+\nofMPsegments=\count311
+\nofMParguments=\count312
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count314
+\MPscratchCnt=\count313
 \MPscratchDim=\dimen287
-\MPnumerator=\count315
-\makeMPintoPDFobject=\count316
+\MPnumerator=\count314
+\makeMPintoPDFobject=\count315
 \everyMPtoPDFconversion=\toks50
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/epstopdf-b
@@ -1417,15 +1413,15 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(56.3705pt, 514.56207pt, 43.36243pt)
-* v-part:(T,H,B)=(79.49744pt, 860.01256pt, 108.405pt)
+* h-part:(L,W,R)=(52.75679pt, 523.9575pt, 37.5807pt)
+* v-part:(T,H,B)=(65.04256pt, 881.69489pt, 101.17755pt)
 * \paperwidth=614.295pt
 * \paperheight=1047.915pt
-* \textwidth=514.56207pt
-* \textheight=860.01256pt
-* \oddsidemargin=-15.89949pt
-* \evensidemargin=-15.89949pt
-* \topmargin=-29.77255pt
+* \textwidth=523.9575pt
+* \textheight=881.69489pt
+* \oddsidemargin=-19.5132pt
+* \evensidemargin=-19.5132pt
+* \topmargin=-44.22743pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -1443,7 +1439,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 611.
+Package hyperref Info: Link coloring ON on input line 630.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -1453,11 +1449,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 string.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count317
+\c@section@level=\count316
 )
-LaTeX Info: Redefining \ref on input line 611.
-LaTeX Info: Redefining \pageref on input line 611.
-LaTeX Info: Redefining \nameref on input line 611.
+LaTeX Info: Redefining \ref on input line 630.
+LaTeX Info: Redefining \pageref on input line 630.
+LaTeX Info: Redefining \nameref on input line 630.
  (./CORD19.out) (./CORD19.out)
 \@outlinefile=\write6
 \openout6 = `CORD19.out'.
@@ -1467,139 +1463,239 @@ ABD: EveryShipout initializing macros
 Package marginnote Info: \pdfoutput not 0 or unimportant and
 (marginnote)             \pdflastxpos or \lastxpos available.
 (marginnote)             Extended position detection mode activated.
-LaTeX Font Info:    Try loading font information for T1+qcr on input line 654.
+LaTeX Font Info:    Try loading font information for T1+qcr on input line 673.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qcr.fd
 File: t1qcr.fd 2009/09/25 v1.2 font definition file for T1/qcr
 )
-Overfull \hbox (1.72238pt too wide) in paragraph at lines 650--660
-[]  $[]$ 
- []
+LaTeX Font Info:    Try loading font information for T1+pzc on input line 696.
 
-LaTeX Font Info:    Try loading font information for T1+pzc on input line 676.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1pzc.fd
 File: t1pzc.fd 2001/06/04 font definitions for T1/pzc.
 )
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <10.95> not available
-(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 676.
+(Font)              Font shape `T1/pzc/mb/it' tried instead on input line 696.
 LaTeX Font Info:    Try loading font information for T1+Cabin-TLF on input line
- 676.
+ 696.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
 )
-Overfull \hbox (1.66425pt too wide) in paragraph at lines 697--698
-\T1/qtm/m/n/10.95 re-lated to []\T1/qcr/m/n/10.95 '' \T1/qtm/m/n/10.95 (see [][
-]https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new
--machine-
- []
 
-LaTeX Font Info:    Try loading font information for TS1+qtm on input line 866.
+! Package xcolor Error: Undefined color `navy'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.743 are outlined in this paper.}
+                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! Package xcolor Error: Undefined color `navy'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.743 are outlined in this paper.}
+                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+LaTeX Font Info:    Try loading font information for TS1+qtm on input line 897.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 )
-<logo.png, id=22, 154.6578pt x 91.7829pt>
+<logo.png, id=26, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 866.
-(pdftex.def)             Requested size: 102.91084pt x 61.07266pt.
+Package pdftex.def Info: logo.png  used on input line 897.
+(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 866.
+(hyperref)                removing `\@ifnextchar' on input line 897.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 866.
+(hyperref)                removing `\@ifnextchar' on input line 897.
 
 [1
 
 {/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map} <./logo.png>]
-<e-logo.png, id=43, 2107.875pt x 1505.625pt>
+<e-logo.png, id=48, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 917.
-(pdftex.def)             Requested size: 149.21954pt x 106.57619pt.
+Package pdftex.def Info: e-logo.png  used on input line 948.
+(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 917.
-(pdftex.def)             Requested size: 102.91084pt x 61.07266pt.
+Package pdftex.def Info: logo.png  used on input line 948.
+(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 917.
+(hyperref)                removing `\@ifnextchar' on input line 948.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 917.
+(hyperref)                removing `\@ifnextchar' on input line 948.
 
 [2 <./e-logo.png>]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1045.
-(pdftex.def)             Requested size: 149.21954pt x 106.57619pt.
+Package pdftex.def Info: e-logo.png  used on input line 1076.
+(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1045.
-(pdftex.def)             Requested size: 102.91084pt x 61.07266pt.
+Package pdftex.def Info: logo.png  used on input line 1076.
+(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1045.
+(hyperref)                removing `\@ifnextchar' on input line 1076.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1045.
+(hyperref)                removing `\@ifnextchar' on input line 1076.
 
 [3]
-LaTeX Font Info:    Try loading font information for T1+gar on input line 1093.
 
-LaTeX Font Info:    No file T1gar.fd. on input line 1093.
+! Package xcolor Error: Undefined color `navy'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1077 \LVee
+            {}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+<argument> Both \AFX 
+                     {} and \HTXN {} are integrated with tools which have be...
+l.1200 \AFX{} text-extraction features.}
+                                        
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...acts embedded files containing \AFX 
+                                                  {} and \HTXN {} data, usin...
+l.1200 \AFX{} text-extraction features.}
+                                        
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ... used to query manuscripts for \AFX 
+                                                  {} data. These viewer and ...
+l.1200 \AFX{} text-extraction features.}
+                                        
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...ewer which internally supports \AFX 
+                                                  {} text-extraction features.
+l.1200 \AFX{} text-extraction features.}
+                                        
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! Package xcolor Error: Undefined color `navy'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1201 \LWedge
+              {}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1202.
+(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1202.
+(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1202.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1202.
+
+[4]
+LaTeX Font Info:    Try loading font information for T1+gar on input line 1250.
+
+LaTeX Font Info:    No file T1gar.fd. on input line 1250.
 
 
 LaTeX Font Warning: Font shape `T1/gar/m/n' undefined
-(Font)              using `T1/cmr/m/n' instead on input line 1093.
+(Font)              using `T1/cmr/m/n' instead on input line 1250.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1101
+Underfull \hbox (badness 10000) in paragraph at lines 1254--1258
 []\T1/qcr/m/n/10.95 ``\T1/qtm/m/n/10.95 COVID-19 Open Re-search Dataset (CORD-1
 9)\T1/qcr/m/n/10.95 ''\T1/qtm/m/n/10.95 . 2020. Ver-sion 2020-03-13. Re-trieved
  from
  []
 
 
-Underfull \hbox (badness 7433) in paragraph at lines 1097--1101
+Underfull \hbox (badness 10000) in paragraph at lines 1254--1258
 \T1/qtm/m/n/10.95 https://pages.semanticscholar.org/coronavirus-research. Ac-ce
 ssed 2020-03-20. doi:10.5281/zenodo.3715506
  []
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1142.
-(pdftex.def)             Requested size: 149.21954pt x 106.57619pt.
+Package pdftex.def Info: e-logo.png  used on input line 1305.
+(pdftex.def)             Requested size: 151.94415pt x 108.52898pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1142.
-(pdftex.def)             Requested size: 102.91084pt x 61.07266pt.
+Package pdftex.def Info: logo.png  used on input line 1305.
+(pdftex.def)             Requested size: 104.7899pt x 62.18886pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1142.
+(hyperref)                removing `\@ifnextchar' on input line 1305.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1142.
+(hyperref)                removing `\@ifnextchar' on input line 1305.
 
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1142.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1142.
+[5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1305.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1305.
  (./CORD19.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1142.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1142.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1305.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1305.
 
 Package rerunfilecheck Info: File `CORD19.out' has not changed.
-(rerunfilecheck)             Checksum: C42277D102F3FE3C994F9AF486B4F39C;213.
+(rerunfilecheck)             Checksum: 56922052050E240EEF462106B6B581C9;262.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1607,14 +1703,14 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 615 ({)
+### simple group (level 1) entered at line 634 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 33411 strings out of 492649
- 684115 string characters out of 6122986
- 901253 words of memory out of 5000000
- 36759 multiletter control sequences out of 15000+600000
- 598506 words of font info for 66 fonts, out of 8000000 for 9000
+ 33254 strings out of 492649
+ 682146 string characters out of 6122986
+ 800691 words of memory out of 5000000
+ 36600 multiletter control sequences out of 15000+600000
+ 606485 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,93p,10395b,875s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
@@ -1624,18 +1720,19 @@ dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/t
 exmf-dist/fonts/enc/dvips/cabin/cbn_hvmmj2.enc}{/home/nlevisrael/texl/texlive-i
 nstall/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/nlevisrael/texl/texlive-in
 stall/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrael/t
-exl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.pfb></home/nlev
-israel/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrr.pfb></h
-ome/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qtmb
-.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-g
-yre/qtmr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/publ
-ic/tex-gyre/qtmri.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/t
-ype1/public/cm-super/sfrm0800.pfb></home/nlevisrael/texl/texlive-install/texmf-
-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on CORD19.pdf (4 pages, 271182 bytes).
+exl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home
+/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.pf
+b></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre
+/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/
+tex-gyre/qtmb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1
+/public/tex-gyre/qtmr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fon
+ts/type1/public/tex-gyre/qtmri.pfb></home/nlevisrael/texl/texlive-install/texmf
+-dist/fonts/type1/public/cm-super/sfrm0800.pfb></home/nlevisrael/texl/texlive-i
+nstall/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on CORD19.pdf (5 pages, 287822 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 47 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 151 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 55 words of extra memory for PDF output out of 10000 (max. 10000000)
 

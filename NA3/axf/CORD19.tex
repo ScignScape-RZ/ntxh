@@ -1,12 +1,13 @@
 \documentclass[11pt,letterpaper]{article}
 
+% pmml  arff  openannotation
+
 \usepackage[T1]{fontenc}
 \usepackage{tgtermes}
 
 \usepackage[hang,flushmargin]{footmisc}
 
 \usepackage{titlesec}
-\usepackage{lipsum}% just to generate text for the example
 
 \titlespacing*{\section}
 {0pt}{5ex plus 1ex minus .2ex}{1.1ex plus .2ex}
@@ -40,7 +41,7 @@
 
 \AddToShipoutPicture{%
 \ifnum\value{page}=1
-\put(257.5,956){%
+\put(257.5,975){%
 	\transparent{0.7}{
 		\includegraphics[width=0.2\textwidth]{logo.png}}}
 \fi
@@ -74,7 +75,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14.5in,paperwidth=8.5in]{geometry}
-\geometry{left=.78in,top=1.1in,right=.6in,bottom=1.5in} %margins
+\geometry{left=.73in,top=.9in,right=.52in,bottom=1.4in} %margins
 
 \renewcommand{\thepage}{\raisebox{-1em}{\arabic{page}}}
 
@@ -229,13 +230,16 @@
 \newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
 
-%\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+\newcommand{\AXF}{\resizebox{!}{7pt}{\AcronymText{AXF}}}
+\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\AcronymText{AXF}}}
+\newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\AcronymText{AXF}}}
 
 \newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
 
 \newcommand{\BioC}{\resizebox{!}{7pt}{\AcronymText{BioC}}}
 
 \newcommand{\CoNLL}{\resizebox{!}{7pt}{\AcronymText{CoNLL}}}
+\newcommand{\CoNLLU}{\resizebox{!}{7pt}{\AcronymText{CoNLL-U}}}
 
 \newcommand{\sapp}{\resizebox{!}{7pt}{\AcronymText{Sapien+}}}
 \newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
@@ -298,6 +302,8 @@
 \newcommand{\IQmol}{\resizebox{!}{7pt}{\AcronymText{IQmol}}}
 
 \newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
+
+\newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
 
 \newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
 
@@ -362,6 +368,13 @@
 
 \newcommand{\TeXMECS}{\resizebox{!}{7pt}{\AcronymText{TeXMECS}}}
 
+% pmml  arff  openannotation
+
+\newcommand{\PMML}{\resizebox{!}{7pt}{\AcronymText{PMML}}}
+\newcommand{\ARFF}{\resizebox{!}{7pt}{\AcronymText{ARFF}}}
+\newcommand{\leXML}{\resizebox{!}{7pt}{\AcronymText{leXML}}}
+
+
 \newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
 
 \newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
@@ -405,6 +418,8 @@
 \newcommand{\PDF}{\resizebox{!}{7pt}{\AcronymText{PDF}}}
 
 \newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
+\newcommand{\SciXML}{\resizebox{!}{7pt}{\AcronymText{SciXML}}}
+
 
 
 \newcommand{\lGRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
@@ -604,6 +619,10 @@
 
 \renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
 
+
+\newcommand{\LVee}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\vee$}}}}}
+\newcommand{\LWedge}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\wedge$}}}}}
+
 \urlstyle{same}
 
 %\setmainfont{QTChanceryType}
@@ -647,13 +666,14 @@ drop shadow=logoPurple!50!darkRed,
 %right=0pt,
 %top=2pt,
 ]
-\hspace{22pt}
-\begin{minipage}{.95\textwidth}	
+%\hspace{22pt}
+\begin{minipage}{.99\textwidth}	
 \begin{center}	
-{\setlength{\fboxsep}{21pt}
-	\relscale{1.3}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{\setlength{\fboxsep}{28pt}
+	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Proposing a CORD-19 Software Development 
-Kit \\\vspace{.25em}to Improve Machine Readability}
+Kit to Improve \\\vspace{.25em}Machine Readability 
+and Text Mining Interoperability}
 }}}
 \end{center}
 \end{minipage}
@@ -699,16 +719,27 @@ resources collectively constitute
 \p{Linguistic Technology Systems (LTS) 
 would like to create a Software 
 Development Kit (\SDK{}) to 
-help scientists utilize \Cnineteen{}.  This \SDK{} 
-would include new code libraries explicitly 
+help scientists utilize \Cnineteen{}.  
+\LVee{}The basic foundation of this \SDK{} would 
+be a framework called Annotation Exchange Format 
+(\AXF{}), which LTS designed to facilitate 
+document preparation as well as interoperability 
+between text and/or data mining tools.  
+\lAXF{} is employed as a querying format 
+integrated with data sets accompanying the 
+forthcoming \textit{Advances in Ubiquitous Computing} 
+volume, part of Elsevier's \textit{Ubiquitous 
+Sensing for Healthcare} series.\LWedge{}  
+Our proposed \SDK{} 
+would also include new code libraries explicitly 
 implemented for data-management operations 
-specific to \Cnineteen{}.  The 
-\SDK{} would also include a package of applications, 
-modified to support \Covid{} research, that 
-would collectively create an integrated 
+specific to \Cnineteen{}, as well as a package of 
+applications, modified to support \Covid{} research, 
+that would collectively create an integrated 
 and self-contained computing environment.  
-These two parts of the \SDK{} --- the new 
-code libraries and the application package --- 
+These three parts of the \SDK{} --- 
+the new code libraries, 
+the application package, and \AXF{} --- 
 are outlined in this paper.}
 
 \section{New Code Libraries within the Proposed SDK}
@@ -1039,9 +1070,135 @@ should be identified both as a phrase in
 article texts and as a molecular component 
 present within compounds whose scientific 
 properties are investigated through \Cnineteen{} 
-research data.  \textit{In so doing, a search for this 
+research data.  In so doing, a search for this 
 concept would then trigger both publication and 
-data-set matches at the same time.}}
+data-set matches at the same time.}
+
+\LVee{}
+\section{The AXF Format}
+\p{Conceptually, \AXF{} is intended for document 
+preparation as well as for text mining.  
+As a rule, annotations deliberately introduced 
+by authors or editors are more likely to be 
+accurate than annotations which depend on 
+Machine Learning or Natural Language Processing.  
+Producing annotations as part of the document-preparation 
+process represents only a small extension to the tasks 
+of authoring and compositing documents to begin with.  
+For example, many text segments that would be 
+annotated as Named Entities --- such as acronyms, 
+chemical formulae, technical jargon, etc. --- 
+require distinct typesetting rules to visually 
+differentiate them from normal text.  In \LaTeX{}, 
+the corresponding commands can then be redefined 
+to output annotation data to an auxiliary file, 
+before applying the relevant typesetting instructions.  
+Similarly, for \XML{}-based documents, tag and attribute 
+names may be used to isolate charater sequences which 
+are candidates for annotation.  Manuscript composition 
+rules also regulate document structure in ways that 
+promote trivial pattern extraction: paragraphs are 
+always denoted by tags or commands, and sentence 
+boundaries are identified by bare punctuation (in 
+well-formed \LaTeX{}, for instance, periods which 
+are \textit{not} punctuation markers have a distinct 
+kerning rules and therefore should be notated with 
+distinct commands).  Consequently, when dealing 
+with either \LaTeX{} or \XML{}, relatively trivial 
+authoring or editing paradigms can be applied 
+which generate highly structured documents 
+with built-in sentence and Named Entity demarcations.}
+
+\p{Of course, text-mining technology is needed 
+for the relatively less-well-structured publications 
+which constitute most of our digital ecosystem.  
+The \AXF{} format, however, is built around data 
+structures that may be produced automatically 
+by pre- and post-processing manuscripts which 
+adhere to certain simple conventions.  In particular, 
+these data structures assert the character indices, 
+paragraph and sentence ids, page numbers, and 
+\PDF{} page/viewport coordinates for Named Entities 
+(as well as quotations, hyperref links, equations, and 
+other semantically consequential locations in publication 
+content).  With this genre of annotation --- produced 
+directly from pre-publication manuscripts --- as a 
+foundation, \AXF{} then generalizes to include 
+notation related to text and data mining \API{}s and 
+file format.  For example, an \AXF{} representation 
+can decribe requests and responses against the 
+BeCAS or NextBio \API{}s, or encapsulate 
+a file in formats such as \CoNLL{} or \PMML{} 
+(Predictive Model Markup Language).}
+
+\p{Operationally, \AXF{} is modeled most 
+directly on the BeCAS \API{} \cite{TiagoNunes}.  
+In particular, 
+the \AXF{} toolkit includes a command-line 
+tool to \q{query} manuscripts using an 
+interface based on BeCAS.  However, \AXF{} 
+also supports the representation of data 
+structures used by a variety of 
+data and text mining tools and methodologies, 
+such as \PMML{}, \ARFF{} (Attribute-Relation File Format), 
+\leXML{}, \CoNLLU{}, OpenAnnotations, and \SciXML{}.  
+Moreover, \AXF{} can certainly evolve 
+to support new capabilities or resources, 
+based on the practical requirements of projects 
+such as \Cnineteen{}.}
+
+\p{For document preparation, \AXF{} is 
+paired with a Hypergraph Text Encoding Protocol 
+(\HTXN{}), which provides a canonical character 
+encoding against which annotations can be 
+defined.  An annotation target is therefore a 
+character-index interval in the context of an 
+\HTXN{} character stream.  \lHTXN{} code-points 
+are distinguished in terms of their semantic 
+role, which may be more granular than their 
+visible appearance --- for example, 
+a period glyph is assigned different code-points 
+depending on whether it marks a sentence-ending 
+punctuation, an abbreviation, a decimal point, 
+or part of an ellipsis.  On that basis, 
+\HTXN{} treats documents as graphs whose nodes 
+are ranges in a character stream, where text can 
+be recovered as an operation on one or more nodes 
+(e.g., the text of a sentence is derived from a 
+pair of nodes representing the sentence's start 
+and end).  Procedures are implemented to 
+represent text in different formats, such as 
+\ASCII{}, Unicode, \XML{}, or \LaTeX{}.  In 
+contrast to a format such as Web Annotations, 
+any particular human-readable text presentation 
+(including \ASCII{}) is considered a derived 
+property of the annotation, not a foundational 
+representation.}
+
+\p{Both \AFX{} and \HTXN{} are integrated with 
+tools which have been proposed for the 
+\Cnineteen{} \q{Application Package}.  In particular, 
+LTS has implemented a modified version of the 
+\XPDF{} viewer which extracts embedded files 
+containing \AFX{} and \HTXN{} data, using this 
+information to context menus sensitive to the 
+location of text which is an annotation 
+target, as well as to sentence boundaries, 
+in the \PDF{} viewport (allowing the reader, 
+for instance, to automatically copy one sentence's 
+text to the clipboard, were the relevant 
+sentence is identified by mouse position).  
+Similarly, LTS has implemented an AngelScript 
+interface which can be used to query 
+manuscripts for \AFX{} data.  These 
+viewer and query capabilities are 
+provided as Research Object code that may be 
+included in published data sets.  Anyone 
+who downloads data sets constructed according 
+to this protocol therefore has access to a 
+document viewer which internally supports 
+\AFX{} text-extraction features.}
+\LWedge{}
 
 \section{Conclusion}
 \p{The LTS vision of a \textit{standalone} and 
@@ -1115,6 +1272,12 @@ corpus of \Cnineteen{} articles.}
 	Amy Neustein, \textit{et. al.},
 	\q{Application of Text Mining to Biomedical Knowledge Extraction: Analyzing Clinical Narratives and Medical Literature}, 
 	\biburl{https://www.researchgate.net/publication/262372604_Application_of_Text_Mining_to_Biomedical_Knowledge_Extraction_Analyzing_Clinical_Narratives_and_Medical_Literature}}
+
+\bibitem{TiagoNunes}{%
+	Tiago Nunes, \textit{et. al.},
+	\q{BeCAS: biomedical
+concept recognition services and visualization}.
+	\biburl{https://www.ncbi.nlm.nih.gov/pubmed/23736528}}
 
 \bibitem{ESIP}{%
 Mark A. Parsons and Ruth Duerr,

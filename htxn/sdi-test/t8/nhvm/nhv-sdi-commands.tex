@@ -1,0 +1,328 @@
+
+%% comment this to set a different p gap ... 
+\newcommand{\p}[1]{
+
+\vspace{1em}#1}
+%%
+
+
+\usepackage{datetime}
+\usepackage{etoolbox}
+
+\usepackage{zref-user}
+\usepackage{xifthen}
+
+\newCCforEXC\newCCforDASH
+
+%\newCCforCOL
+%\newCCforCOL{}
+
+%\catcode`:=11
+
+\newlength\orig-basels % original baselineskip
+\AtBeginDocument{%
+\setlength\orig-basels{\baselineskip}%
+} 
+
+\newwrite\sdi-file
+\immediate\openout\sdi-file=\jobname.sdi.ntxh
+
+\newif\iftabng
+\tabngfalse
+
+\newif\ifactive-sdi-mark
+\active-sdi-markfalse
+
+\newif\ifsdi-no-ss-flag
+\sdi-no-ss-flagfalse
+
+\usepackage{letltxmacro}
+\LetLtxMacro{\oldmmsemi}{\;}
+\LetLtxMacro{\oldtbplus}{\+}
+\LetLtxMacro{\oldtbgt}{\>}
+\LetLtxMacro{\oldtblt}{\<}
+\LetLtxMacro{\oldmmgt}{\+}
+\LetLtxMacro{\oldmmexc}{\!}
+\LetLtxMacro{\oldmmcomma}{\,}
+
+%\oldCCforCOL{}
+\catcode`:=12
+\LetLtxMacro{\oldmmcolon}{\:}
+%\catcode`:=11
+
+\newcommand{\?}[1][]{\smk{#1}}
+\renewcommand{\,}[1][]{\ifactive-sdi-mark%
+\relax\ifmmode\oldmmcomma\else\smd{#1}\fi\else\oldmmcomma\fi}
+
+%\renewcommand{\!}{\relax\ifmmode\oldmmexc\else\sdi-no-ss\fi}
+
+\newcommand{\+}{\iftabng\oldtbplus\else\sss\fi}
+\newcommand{\<}{\iftabng\oldtblt\else\spe\fi}
+
+\renewcommand{\>}{\iftabng\oldtbplus\else\relax%
+\ifmmode\oldmmgt\else\sse\sss\fi\fi}
+
+%\renewcommand{\>}{\sse\sss}
+
+\renewcommand{\;}{\relax\ifmmode\oldmmsemi\else\sse\fi}
+\renewcommand{\:}{\relax\ifmmode\oldmmcolon\else\sps\fi}
+\renewcommand{\!}{\relax\ifmmode\oldmmexc\else\sdi-no-ss\fi}
+
+
+\newcommand{\write-sdi}[1]{\immediate\write\sdi-file#1}
+
+\newcommand{\emblink}[2]{\href{\#sdi:#1--#2}{\#sdi:#1--#2}}
+
+\newcounter{sdi-counter}
+\newcounter{sdi-counter-O}[page]
+
+\newcounter{sdi-mark}
+\newcounter{sdi-mark-O}[page]
+
+\newcounter{sdi-counter-P}
+\newcounter{sdi-counter-PO}[page]
+
+\newcounter{sdi-counter-C}[sdi-counter-P]
+
+\newcounter{sdi-element}
+\newcounter{sdi-element-O}[page]
+\newcounter{sdi-element-C}[sdi-counter-P]
+
+\def\topt#1{\expandafter\the\dimexpr\dimexpr#1sp\relax\relax}
+
+
+\newcommand{\write-sdi-start}[1]{\write\sdi-file{!/ SDI_#1_Start}%
+\write\sdi-file{$n: #1:Start}}
+\newcommand{\write-sdi-end}[1]{\write\sdi-file{!/ SDI_#1_End}%
+\write\sdi-file{$n: #1:End}}
+\newcommand{\write-sdi-val-start}[1]{\write\sdi-file{!/ SDI_#1}%
+\write\sdi-file{$n: #1}}
+\newcommand{\write-sdi-val-end}{\write\sdi-file{/!^^J<+>^^J}}
+
+\newcommand{\field-mark}[1]{\expandafter$\expandafter#1%
+\expandafter:\expandafter\space}
+
+\makeatletter
+\newcommand{\field-mark@i}{\field-mark{i}}
+\newcommand{\field-mark@o}{\field-mark{o}}
+\newcommand{\field-mark@s}{\field-mark{s}}
+\newcommand{\field-mark@p}{\field-mark{p}}
+\newcommand{\field-mark@e}{\field-mark{e}}
+\newcommand{\field-mark@r}{\field-mark{r}}
+\newcommand{\field-mark@c}{\field-mark{c}}
+\newcommand{\field-mark@b}{\field-mark{b}}
+\newcommand{\field-mark@k}{\field-mark{k}}
+
+\newcommand{\sdi@check-write-bls}{%
+\ifthenelse{\lengthtest{\orig-basels=\baselineskip}}{}%
+{\write\sdi-file\expandafter{\expandafter\field-mark@b\the\baselineskip}}}
+
+
+\newcommand{\nhv!sdi-element-start}[1]{%
+\stepcounter{sdi-element}%
+\stepcounter{sdi-element-O}%
+\stepcounter{sdi-element-C}%
+\pdfsavepos\write-sdi-start{Element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-element-O}%
+\write\sdi-file\expandafter{\expandafter\field-mark@c%
+\the\c@sdi-element-C}%
+\write\sdi-file\expandafter{\expandafter\field-mark@r%
+\the\c@sdi-counter-P}%
+\write\sdi-file\expandafter{\expandafter\field-mark@k#1}%
+\sdi@check-write-bls%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
+
+\newcommand{\nhv!sdi-element-end}[1]{%
+\pdfsavepos\write-sdi-end{Element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-element}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-element-O}%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
+
+\newcommand{\smk}[1]{%
+\active-sdi-marktrue%
+\stepcounter{sdi-mark}%
+\stepcounter{sdi-mark-O}%
+\pdfsavepos\write-sdi-val-start{Mark}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-mark}%
+\if#1\empty\else\write\sdi-file\expandafter{\expandafter\field-mark@s#1}\fi%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-mark-O}%
+\write\sdi-file\expandafter{\expandafter\field-mark@r%
+\the\c@sdi-counter-P}%
+\sdi@check-write-bls%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
+
+\newcommand{\smd}[1]{%
+\active-sdi-markfalse%
+\pdfsavepos\write-sdi-val-start{Mark_Secondary}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-mark}%
+\sdi@check-write-bls%
+\if#1\empty\else\write\sdi-file\expandafter{\expandafter\field-mark@s#1}\fi%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
+
+
+\newcommand{\sdi-no-ss}{%
+\pdfsavepos\write-sdi-val-start{NoSentenceFlag}%
+\sdi@check-write-bls%
+\write\sdi-file\expandafter{\expandafter\field-mark@r%
+\the\c@sdi-counter-P^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end%
+\sdi-no-ss-flagtrue}
+
+\newcommand{\sss}{%
+\ifsdi-no-ss-flag\sdi-no-ss-flagfalse\else%
+\stepcounter{sdi-counter-O}%
+\stepcounter{sdi-counter-C}%
+\stepcounter{sdi-counter}%
+\pdfsavepos\write-sdi-start{Sentence}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-counter}%
+\write\sdi-file\expandafter{\expandafter\field-mark@r%
+\the\c@sdi-counter-P}%
+\write\sdi-file\expandafter{\expandafter\field-mark@c%
+\the\c@sdi-counter-C}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-counter-O}%
+\sdi@check-write-bls%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end%
+\fi}
+
+\newcommand{\sse}{%
+\pdfsavepos\write-sdi-end{Sentence}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-counter}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-counter-P}%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}
+
+\newcommand{\sps}{%
+\stepcounter{sdi-counter-P}%
+\stepcounter{sdi-counter-PO}%
+\pdfsavepos\write-sdi-start{Paragraph}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-counter-P}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-counter-PO}%
+\sdi@check-write-bls%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end}%
+
+\newcommand{\spe}{%
+\active-sdi-markfalse%
+\pdfsavepos\write-sdi-end{Paragraph}%
+\write\sdi-file\expandafter{\expandafter\field-mark@i%
+\the\c@sdi-counter-P}%
+\write\sdi-file\expandafter{\expandafter\field-mark@o%
+\the\c@sdi-counter-PO}%
+\write\sdi-file\expandafter{\expandafter\field-mark@p%
+\thepage^^J%
+$x: \topt\pdflastxpos^^J%
+$y: \topt\pdflastypos}%
+\write-sdi-val-end%
+\sdi-no-ss-flagfalse}
+\makeatother
+
+\newcommand{\write-sdi-ntxh-start}{\immediate\write\sdi-file{%
+- Generated from LaTeX File \jobname.tex ^^J%
+  \the\day/\the\month/\the\year, \the\currenthour:\the\currentminute ^^J%
+.^^J%
+^^J%
+- i=id n=name (entity kind) k=element kind p=page r=paragraph o=order (on page)^^J%
+  s=size c=count (in paragraph) x,y=pdf coords b=baselineskip^^J%
+.^^J%
+^^J%
+&type SDI_Sentence_Start {9}^^J%
+  :n:1 :i:2 :r:3 :c:4 :o:5 :p:7 :x:8 :y:9 :b:6 ;^^J%
+^^J%
+&type SDI_Sentence_End {6}^^J%
+  :n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
+^^J%
+&type SDI_Paragraph_Start {7}^^J%
+  :n:1 :i:2 :o:3 :p:5 :x:6 :y:7 :b:4 ;^^J%
+^^J%
+&type SDI_Paragraph_End {6}^^J%
+  :n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
+^^J%
+&type SDI_Mark {8}^^J%
+  :n:1 :i:2 :o:3 :r:4 :p:6 :x:7 :y:8 :b:5 ;^^J%
+^^J%
+&type SDI_Mark_Secondary {6}^^J%
+:n:1 :i:2 :p:4 :x:5 :y:6 :b:3 ;^^J%
+^^J%
+&type SDI_Element_Start {10}^^J%
+:n:1 :i:2 :o:3 :c:4 :r:5 :k:6 :p:8 :x:9 :y:10 :b:7 ;^^J%
+^^J%
+&type SDI_Element_End {7}^^J%
+:n:1 :i:2 :o:3 :p:4 :x:5 :y:6 ;^^J%
+^^J%
+&type SDI_Info {2}^^J%
+:n:1 :global-baseline-skip:2 ;^^J%
+^^J%
+^^J%
+&/^^J%
+^^J%
+^^J%
+!/ SDI_Info^^J%
+$n: Info^^J%
+$global-baseline-skip: \the\orig-basels^^J%
+^^J%
+/!^^J%
+<+>^^J%
+^^J%
+^^J%
+}}
+
+\newcommand{\write-sdi-ntxh-end}{\write\sdi-file{%
+^^J%
+/&^^J%
+^^J%
+}}
+
+\AtBeginDocument{{\write-sdi-ntxh-start}}
+\AtEndDocument{{\write-sdi-ntxh-end}}
+
+\usepackage{embedfile}
+{\message{^^J^^JSDI: Trying to embed \jobname.sdi.zip ...} 
+\IfFileExists{\jobname.sdi.zip}
+{\embedfile{\jobname.sdi.zip}\message{OK^^J^^J}}
+{\message{File not found^^J^^J}}}
+
+\message{File}
+
+\oldCCforEXC\oldCCforDASH
