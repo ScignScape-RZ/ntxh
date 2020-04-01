@@ -75,9 +75,9 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14.5in,paperwidth=8.5in]{geometry}
-\geometry{left=.73in,top=.9in,right=.52in,bottom=1.4in} %margins
+\geometry{left=.73in,top=.7in,right=.52in,bottom=1.3in} %margins
 
-\renewcommand{\thepage}{\raisebox{-1em}{\arabic{page}}}
+\renewcommand{\thepage}{\raisebox{-4pt}{\arabic{page}}}
 
 \renewcommand{\footnoterule}{%
 	\kern -3pt
@@ -213,7 +213,7 @@
 \newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
 
 \newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
-\newcommand{\lHTXN}{\resizebox{!}{8.5pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{HTXN}}}
 \newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
 
 
@@ -372,7 +372,7 @@
 
 \newcommand{\PMML}{\resizebox{!}{7pt}{\AcronymText{PMML}}}
 \newcommand{\ARFF}{\resizebox{!}{7pt}{\AcronymText{ARFF}}}
-\newcommand{\leXML}{\resizebox{!}{7pt}{\AcronymText{leXML}}}
+\newcommand{\IeXML}{\resizebox{!}{7pt}{\AcronymText{IeXML}}}
 
 
 \newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
@@ -673,7 +673,7 @@ drop shadow=logoPurple!50!darkRed,
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Proposing a CORD-19 Software Development 
 Kit to Improve \\\vspace{.25em}Machine Readability 
-and Text Mining Interoperability}
+and Text Mining}
 }}}
 \end{center}
 \end{minipage}
@@ -720,24 +720,25 @@ resources collectively constitute
 would like to create a Software 
 Development Kit (\SDK{}) to 
 help scientists utilize \Cnineteen{}.  
-\LVee{}The basic foundation of this \SDK{} would 
-be a framework called Annotation Exchange Format 
-(\AXF{}), which LTS designed to facilitate 
+This \SDK{} would be divided into three main part.  
+(1) \LVee{}The basic foundation of this \SDK{} is 
+a framework that we call \q{Annotation Exchange Format} 
+(\AXF{}).  This framework is designed to facilitate 
 document preparation as well as interoperability 
 between text and/or data mining tools.  
-\lAXF{} is employed as a querying format 
-integrated with data sets accompanying the 
-forthcoming \textit{Advances in Ubiquitous Computing} 
-volume, part of Elsevier's \textit{Ubiquitous 
-Sensing for Healthcare} series.\LWedge{}  
-Our proposed \SDK{} 
+\lAXF{} is employed as a querying format that is 
+integrated with data sets which will accompany the 
+forthcoming volume, \textit{Advances in Ubiquitous Computing}, 
+which is part of Elsevier's \textit{Advances in Ubiquitous 
+Sensing Applications for Healthcare} series.\LWedge{}  
+(2) Our proposed \SDK{} 
 would also include new code libraries explicitly 
 implemented for data-management operations 
 specific to \Cnineteen{}, as well as a package of 
 applications, modified to support \Covid{} research, 
 that would collectively create an integrated 
 and self-contained computing environment.  
-These three parts of the \SDK{} --- 
+(3) These three parts of the \SDK{} --- 
 the new code libraries, 
 the application package, and \AXF{} --- 
 are outlined in this paper.}
@@ -1001,7 +1002,8 @@ content for inclusion in a \Covid{} data set
 diagnostic images are not in themselves 
 \q{machine readable.}  When medical imaging is 
 used in a quantitative context (e.g., applying 
-Machine Learning for diagnostic pathology), it is necessary to perform Image Analysis to convert the raw data 
+Machine Learning for diagnostic pathology), it is necessary 
+to perform Image Analysis to convert the raw data 
 --- in this case, radiological graphics --- into 
 quantitative aggregates.  For instance, by using image 
 segmentation to demarcate geometric boundaries one 
@@ -1075,16 +1077,30 @@ concept would then trigger both publication and
 data-set matches at the same time.}
 
 \LVee{}
-\section{The AXF Format}
+\section{The AXF (Annotation Exchange) Format}
 \p{Conceptually, \AXF{} is intended for document 
 preparation as well as for text mining.  
 As a rule, annotations deliberately introduced 
 by authors or editors are more likely to be 
 accurate than annotations which depend on 
 Machine Learning or Natural Language Processing.  
-Producing annotations as part of the document-preparation 
-process represents only a small extension to the tasks 
-of authoring and compositing documents to begin with.  
+As a result, the best paradigm for machine-readable 
+document corpora 
+(that are well-suited for text mining purposes) 
+are publications composed in anticipation of 
+archival text-mining requirements.  The goal 
+of \AXF{} is to facilitate the creation of 
+such archives in the future while \textit{also} 
+supporting text mining technology in the present.  
+These two goals are interrelated, because the 
+data structures supporting human-annotated 
+documents can also serve as guidelines for 
+aggregating information gleaned from Natural Language Processing 
+modules.}
+
+\p{Producing annotations as part of the document-preparation 
+process represents a relatively minor extension to the tasks 
+of authoring and compositing documents.  
 For example, many text segments that would be 
 annotated as Named Entities --- such as acronyms, 
 chemical formulae, technical jargon, etc. --- 
@@ -1101,18 +1117,15 @@ promote trivial pattern extraction: paragraphs are
 always denoted by tags or commands, and sentence 
 boundaries are identified by bare punctuation (in 
 well-formed \LaTeX{}, for instance, periods which 
-are \textit{not} punctuation markers have a distinct 
+are \textit{not} punctuation markers have distinct 
 kerning rules and therefore should be notated with 
 distinct commands).  Consequently, when dealing 
 with either \LaTeX{} or \XML{}, relatively trivial 
-authoring or editing paradigms can be applied 
-which generate highly structured documents 
+authoring or editing paradigms can be readily applied 
+in order to generate highly structured documents 
 with built-in sentence and Named Entity demarcations.}
 
-\p{Of course, text-mining technology is needed 
-for the relatively less-well-structured publications 
-which constitute most of our digital ecosystem.  
-The \AXF{} format, however, is built around data 
+\p{The \AXF{} format is built around data 
 structures that may be produced automatically 
 by pre- and post-processing manuscripts which 
 adhere to certain simple conventions.  In particular, 
@@ -1121,11 +1134,18 @@ paragraph and sentence ids, page numbers, and
 \PDF{} page/viewport coordinates for Named Entities 
 (as well as quotations, hyperref links, equations, and 
 other semantically consequential locations in publication 
-content).  With this genre of annotation --- produced 
-directly from pre-publication manuscripts --- as a 
-foundation, \AXF{} then generalizes to include 
+content).  This degree of semantic detail is 
+possible when text-mining operations are anticipated 
+during the publication process.  Of course, 
+\NLP{}-based text-mining 
+technology is needed 
+for the relatively less-well-structured publications 
+which constitute most of our digital ecosystem.  
+With the manuscript-based genre of annotation --- produced 
+directly from pre-publication manuscripts --- serving as a 
+foundation, \AXF{}, accordingly, generalizes to include 
 notation related to text and data mining \API{}s and 
-file format.  For example, an \AXF{} representation 
+file formats.  For example, an \AXF{} representation 
 can decribe requests and responses against the 
 BeCAS or NextBio \API{}s, or encapsulate 
 a file in formats such as \CoNLL{} or \PMML{} 
@@ -1141,47 +1161,47 @@ also supports the representation of data
 structures used by a variety of 
 data and text mining tools and methodologies, 
 such as \PMML{}, \ARFF{} (Attribute-Relation File Format), 
-\leXML{}, \CoNLLU{}, OpenAnnotations, and \SciXML{}.  
-Moreover, \AXF{} can certainly evolve 
+\IeXML{}, \CoNLLU{}, OpenAnnotations, and \SciXML{}.  
+Moreover, \AXF{} can certainly expand 
 to support new capabilities or resources, 
 based on the practical requirements of projects 
 such as \Cnineteen{}.}
 
 \p{For document preparation, \AXF{} is 
-paired with a Hypergraph Text Encoding Protocol 
+paired with our Hypergraph Text Encoding Protocol 
 (\HTXN{}), which provides a canonical character 
 encoding against which annotations can be 
-defined.  An annotation target is therefore a 
-character-index interval in the context of an 
-\HTXN{} character stream.  \lHTXN{} code-points 
+defined.  Within this protocol, an annotation target is 
+a character-index interval in the context of an 
+\HTXN{} character stream.  On that basis, 
+\HTXN{} treats documents as graphs whose nodes 
+are ranges in a character stream, where text can 
+be recovered as an operation on one or more nodes 
+(e.g., the text of a sentence is derived from a 
+pair of nodes representing the sentence's start 
+and end).  \lHTXN{} code-points 
 are distinguished in terms of their semantic 
 role, which may be more granular than their 
 visible appearance --- for example, 
 a period glyph is assigned different code-points 
 depending on whether it marks a sentence-ending 
 punctuation, an abbreviation, a decimal point, 
-or part of an ellipsis.  On that basis, 
-\HTXN{} treats documents as graphs whose nodes 
-are ranges in a character stream, where text can 
-be recovered as an operation on one or more nodes 
-(e.g., the text of a sentence is derived from a 
-pair of nodes representing the sentence's start 
-and end).  Procedures are implemented to 
+or part of an ellipsis.  Procedures are then implemented to 
 represent text in different formats, such as 
 \ASCII{}, Unicode, \XML{}, or \LaTeX{}.  In 
 contrast to a format such as Web Annotations, 
 any particular human-readable text presentation 
-(including \ASCII{}) is considered a derived 
+(including \ASCII{}) is considered a \textit{derived} 
 property of the annotation, not a foundational 
 representation.}
 
-\p{Both \AFX{} and \HTXN{} are integrated with 
+\p{Both \AXF{} and \HTXN{} are integrated with 
 tools which have been proposed for the 
-\Cnineteen{} \q{Application Package}.  In particular, 
+\Cnineteen{} \q{application package}.  In particular, 
 LTS has implemented a modified version of the 
 \XPDF{} viewer which extracts embedded files 
-containing \AFX{} and \HTXN{} data, using this 
-information to context menus sensitive to the 
+containing \AXF{} and \HTXN{} data, using this 
+information to make context menus sensitive to the 
 location of text which is an annotation 
 target, as well as to sentence boundaries, 
 in the \PDF{} viewport (allowing the reader, 
@@ -1190,14 +1210,14 @@ text to the clipboard, were the relevant
 sentence is identified by mouse position).  
 Similarly, LTS has implemented an AngelScript 
 interface which can be used to query 
-manuscripts for \AFX{} data.  These 
+manuscripts for \AXF{} data.  These 
 viewer and query capabilities are 
 provided as Research Object code that may be 
 included in published data sets.  Anyone 
 who downloads data sets constructed according 
 to this protocol therefore has access to a 
 document viewer which internally supports 
-\AFX{} text-extraction features.}
+\AXF{} text-extraction features.}
 \LWedge{}
 
 \section{Conclusion}
