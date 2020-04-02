@@ -23,7 +23,7 @@
 \ifnum\value{page}>1{
 \AtTextUpperLeft{
 \makebox[20.5cm][r]{
-\raisebox{-1.3cm}{%
+\raisebox{-1.9cm}{%
 {\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
 }\fi
 }
@@ -450,6 +450,7 @@
 \newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
 
 \usepackage{enumitem}
+%\usepackage{listings}
 
 \colorlet{dsl}{purple!20!brown}
 \colorlet{dslr}{dsl!50!blue}
@@ -623,6 +624,10 @@
 \newcommand{\LVee}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\vee$}}}}}
 \newcommand{\LWedge}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\wedge$}}}}}
 
+\renewcommand{\LVee}{}
+\renewcommand{\LWedge}{}
+
+
 \urlstyle{same}
 
 %\setmainfont{QTChanceryType}
@@ -720,25 +725,24 @@ resources collectively constitute
 would like to create a Software 
 Development Kit (\SDK{}) to 
 help scientists utilize \Cnineteen{}.  
-This \SDK{} would be divided into three main part.  
-(1) \LVee{}The basic foundation of this \SDK{} is 
+\LVee{}The foundation of the \SDK{} is 
 a framework that we call \q{Annotation Exchange Format} 
-(\AXF{}).  This framework is designed to facilitate 
+(\AXF{}), which is designed to facilitate 
 document preparation as well as interoperability 
 between text and/or data mining tools.  
 \lAXF{} is employed as a querying format that is 
 integrated with data sets which will accompany the 
 forthcoming volume, \textit{Advances in Ubiquitous Computing}, 
-which is part of Elsevier's \textit{Advances in Ubiquitous 
-Sensing Applications for Healthcare} series.\LWedge{}  
-(2) Our proposed \SDK{} 
+which is part of Elsevier's Series, \textit{Advances in Ubiquitous 
+Sensing Applications for Healthcare}.\LWedge{}  
+Our proposed \SDK{} 
 would also include new code libraries explicitly 
 implemented for data-management operations 
 specific to \Cnineteen{}, as well as a package of 
 applications, modified to support \Covid{} research, 
 that would collectively create an integrated 
 and self-contained computing environment.  
-(3) These three parts of the \SDK{} --- 
+These three parts of the \SDK{} --- 
 the new code libraries, 
 the application package, and \AXF{} --- 
 are outlined in this paper.}
@@ -777,7 +781,24 @@ useful features:
 
 %\vspace{-2em}
 \begin{description}[leftmargin=9pt,itemsep=4pt]
-	
+
+\item[Datatypes Encapsulating Access to the 
+Semantic Scholar API]  This library would provide 
+a \Qt{}-based wrapper around Semantic Scholar \API{} 
+calls, and model certain objects relevant to this 
+\API{}, such as entities and their mentions, 
+citations, and authorship links.  One use-case 
+for such a library concerns document preparation, 
+where the \API{} may be valuable for obtaining 
+information such as Semantic Scholar paper ids 
+and entity strings, which can be employed when 
+building metadata files embedded in publications and/or 
+to add features to human-readable manuscripts 
+(examples in the second case include providing 
+Semantic Scholar paper ids within bibliographic 
+entries and selecting keywords based on entities 
+mentioned within cited papers).   
+
 \item[Tools for Correcting Transription Errors]  
 Transription errors can cause the machine-readable 
 text archive to misrepresent the structure 
@@ -798,13 +819,7 @@ of the archived documents in formats such as \XML{},
 whenever they are available, 
 as a supplement to \Cnineteen{}'s 
 \JSON{} representation.  
-Compared to article content obtained indirectly 
-by \q{scraping} text from \HTML{} or \PDF{} 
-files, these \XML{} representations 
-(which would be derived from the structured documents used 
-in the editing process prior to publication) 
-would not be subject to transcription 
-errors.  The \SDK{} would then provide tools to 
+The \SDK{} would then provide tools to 
 cross-reference multiple versions of each document, 
 so as to correct errors in the original \JSON{} encodings. 
     
@@ -950,7 +965,7 @@ their usefulness for \Covid{} research.}
 \p{The applications bundled with the \SDK{} would 
 likely include the following components:
 
-\begin{itemize}
+\begin{itemize}[itemsep=-2pt]
 
 \item \XPDF{}: A \PDF{} viewer for reading full-text articles 
 (augmented with \Cnineteen{} features, such as integration 
@@ -1094,7 +1109,7 @@ such archives in the future while \textit{also}
 supporting text mining technology in the present.  
 These two goals are interrelated, because the 
 data structures supporting human-annotated 
-documents can also serve as guidelines for 
+documents can additionally serve as guidelines for 
 aggregating information gleaned from Natural Language Processing 
 modules.}
 
@@ -1132,7 +1147,16 @@ adhere to certain simple conventions.  In particular,
 these data structures assert the character indices, 
 paragraph and sentence ids, page numbers, and 
 \PDF{} page/viewport coordinates for Named Entities 
-(as well as quotations, hyperref links, equations, and 
+(as well as quotations, citations,\footnote{%
+Preprocessing docouments allows fairly detailed 
+citation info to be compiled.  For instance, 
+Semantic Scholar or Crossref paper ids can be listed 
+in bibliographies, and citation intent and context 
+can be asserted (in the case of intent, this feature 
+is enabled via a modified \texttt{\textbackslash{}cite} command 
+with an option for authors to note the relation of the 
+cited work to the current document.%
+}hyperref links, equations, and 
 other semantically consequential locations in publication 
 content).  This degree of semantic detail is 
 possible when text-mining operations are anticipated 
@@ -1253,7 +1277,7 @@ corpus of \Cnineteen{} articles.}
 \vspace{-.5em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
-\setlength{\bsep}{-2pt}
+\setlength{\bsep}{-3pt}
 %\setlength{\parskip}{0pt}
 %\setlength{\itemsep}{-2pt}
 
@@ -1265,6 +1289,7 @@ corpus of \Cnineteen{} articles.}
 
 \begin{thebibliography}{99}
 \vspace{1.5em}
+{\fontsize{10}{11}\selectfont
 \bibitem{KhalidBelhajjame}{%
 	Khalid Belhajjame, \textit{et. al.},
 	\q{Workflow-centric research objects:  First class citizens in scholarly discourse}.	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
@@ -1319,7 +1344,7 @@ Mark A. Parsons and Ruth Duerr,
 	\q{FAIRness in Biomedical Data Discovery}.
 	\biburl{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}}
 
-
+}
 \end{thebibliography}
 
 \end{document}
