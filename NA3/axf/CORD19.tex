@@ -10,7 +10,7 @@
 \usepackage{titlesec}
 
 \titlespacing*{\section}
-{0pt}{5ex plus 1ex minus .2ex}{1.1ex plus .2ex}
+{0pt}{4.5ex plus 1ex minus .5ex}{.7ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -705,7 +705,8 @@ linked from \Cnineteen{}.}}
 \vspace*{.25em}	
 	
 \p{\Cnineteen{} (the \q{\Covid{} Open Research Dataset}) 
-is a new coronavirus data collection which was released in conjunction with a White House initiative to 
+is a new coronavirus data collection which was released 
+in conjunction with a White House initiative to 
 spur \hspace{-1pt} \Covid{} \hspace{-1pt} research.  
 This initiative is described as a 
 \q{call to action ... to develop new text and data mining techniques that can help the science community answer high-priority scientific questions related to \Covid{}} (see \href{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}{https://www.whitehouse.gov/briefings-statements/call-action-tech-community-new-machine-readable-covid-19-dataset/}).  The White House 
@@ -741,12 +742,12 @@ The \AXF{} framework includes an \SDK{} oriented to
 the construction of document archives organized 
 around particular themes or topics; our proposed 
 \SDK{} for \Cnineteen{} would therefore be a 
-specialization and extension to our generic 
-\AXF{} \SDK{}.  Our proposed \SDK{} 
-would also include new code libraries explicitly 
+specialization and extension of our generic 
+\AXF{} \SDK{}.  Our proposed \Cnineteen{} \SDK{} 
+would include new code libraries explicitly 
 implemented for data-management operations 
-specific to \Cnineteen{}, as well as a package of 
-applications, modified to support \Covid{} research, 
+specific to \Cnineteen{}.  It would also include a package 
+of applications, modified to support \Covid{} research, 
 that would collectively create an integrated 
 and self-contained computing environment.  
 These three parts of the \SDK{} --- 
@@ -849,15 +850,16 @@ often represented in formats such as
 Language Learning; this is a schema for representing 
 sentences via parse-graphs). 
    
-\item[Tools for Enhanced Annotation]
-Currently \Cnineteen{} does not 
-directly provide a mechanism for asserting 
-annotations related to text mining, 
-such as Named Entity Recognition or 
-formally recognized biomedical concepts.  
-However, because the archival schema supports standoff 
-annotation for intra-document references,  
-our \SDK{} can provide code for additional 
+\item[An LAF Architecture for Annotations over CORD-19]
+The structure of \Cnineteen{} allows text segments to 
+be defined via a combination of \JSON{} file names, 
+paragraph ids, and character indices.  Consequently, 
+the archival schema's mechanism for standoff 
+annotation of intra-document references may be 
+extended for assertions of linguistic, resource,  
+or topical annotations from multiple Annotation Spaces.  
+The proposed \SDK{}, in particular, 
+would provide code for additional 
 standoff annotation categories of the kinds 
 commonly used in biomedical text mining.  
 As a concrete example, the corrected 
@@ -905,7 +907,8 @@ might take requests in \BioC{} format and respond
 with \CoNLL{} data.  As another case study epidemiological 
 studies of \Covid{} may need to access \API{}s or data 
 sets such as the John Hopkins University \q{dashboard} 
-(see \href{https://coronavirus.jhu.edu/map.html}{https://coronavirus.jhu.edu/map.html}, which is paired with a \GIT{} archive updated almost daily).  To reduce the amount 
+(see \href{https://coronavirus.jhu.edu/map.html}{https://coronavirus.jhu.edu/map.html}, which is paired with a \GIT{} archive 
+updated almost daily).  To reduce the amount 
 of \q{biolerplate code} which developers need 
 for these networking requirements, our 
 company's \SDK{} 
@@ -1196,8 +1199,7 @@ tool to \q{query} manuscripts using an
 interface based on BeCAS.  Moreover, \AXF{} 
 uses a two-tier node structure similar to 
 \LAF{}; at one level is an extensible text-encoding 
-methodology (see the overview 
-of \AXF{}'s character encoding protocol below), 
+methodology (disussed in the next paragraph), 
 while a higher level defines annotations in terms 
 of directed hypergraphs.  Programmatically, 
 \AXF{} aims in the canonical case for a level of 
@@ -1207,9 +1209,11 @@ mostly on isolatable semantic resources such
 as citations and named entities) and \NLP{}-oriented 
 paradigms such as \LAF{}.  That is, \AXF{} does not 
 natively serialize fine-grained \NLP{} data at the 
-level of individual words, although it does 
-support queries which return sentences as word-sequences.  
-On the other hand, it provides granular information about 
+level of individual words (the kind of data asserting 
+semantic and morphosyntactic details: lemmatization, Part of Speech, 
+dependency relations), although it does support 
+queries which return sentences as (unparsed) word-sequences.  
+On the other hand, \AXF{} offers \text{some} granular information about 
 small-scale linguistic units, such as the 
 role of non-alphanumeric characters, or 
 \PDF{} coordinates of sentence start and end points.  
@@ -1299,7 +1303,12 @@ code in the Research Object itself.
 Our proposed \SDK{} would be based on the 
 same paradigm, but instead of applying the Research Object 
 model to a single data set, our \SDK{} would 
-translate it to a larger data space, integrating 
+translate it to a larger data space, viz., 
+a research \textit{archive}.  Analogous to code bundled 
+with a single research \textit{object}, an archive-specific 
+\SDK{} is then associated with each Research Archive.  In 
+the case of \Cnineteen{}, the archive \SDK{} would serve the 
+goal of integrating 
 the information contained in multiple 
 \Covid{} data sets as well as the entire 
 corpus of \Cnineteen{} articles.}
