@@ -41,7 +41,7 @@
 
 \AddToShipoutPicture{%
 \ifnum\value{page}=1
-\put(257.5,975){%
+\put(257.5,998){%
 	\transparent{0.7}{
 		\includegraphics[width=0.2\textwidth]{logo.png}}}
 \fi
@@ -74,7 +74,7 @@
 
 %\setlength{\footskip}{7pt}
 
-\usepackage[paperheight=14.5in,paperwidth=8.5in]{geometry}
+\usepackage[paperheight=15in,paperwidth=8.5in]{geometry}
 \geometry{left=.73in,top=.7in,right=.52in,bottom=1.3in} %margins
 
 \renewcommand{\thepage}{\raisebox{-4pt}{\arabic{page}}}
@@ -215,6 +215,8 @@
 \newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
 \newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{HTXN}}}
 \newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
+
+\newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
 
 
 \usepackage{mdframed}
@@ -638,7 +640,7 @@
 	
 {\linespread{1.2}\selectfont
 
-\vspace*{.5em}
+\vspace*{2em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -685,7 +687,7 @@ and Text Mining}
 \end{tcolorbox}
 \end{center}
 
-\vspace*{.5em}
+\vspace*{.25em}
 \begin{center}
 \parbox{.86\textwidth}{%
 {\fontfamily{pzc}\selectfont   
@@ -700,7 +702,7 @@ publishers have placed Dr. Neustein's
 publications on their open access portals 
 linked from \Cnineteen{}.}}
 \end{center}
-\vspace*{.5em}	
+\vspace*{.25em}	
 	
 \p{\Cnineteen{} (the \q{\Covid{} Open Research Dataset}) 
 is a new coronavirus data collection which was released in conjunction with a White House initiative to 
@@ -1176,17 +1178,40 @@ a file in formats such as \CoNLL{} or \PMML{}
 (Predictive Model Markup Language).}
 
 \p{Operationally, \AXF{} is modeled most 
-directly on the BeCAS \API{} \cite{TiagoNunes}.  
-In particular, 
-the \AXF{} toolkit includes a command-line 
-tool to \q{query} manuscripts using an 
-interface based on BeCAS.  However, \AXF{} 
+directly on the BeCAS \API{} \cite{TiagoNunes} 
+and the Linguistic Annotation Framework (\LAF{}).\footnote{%
+However, \AXF{} 
 also supports the representation of data 
 structures used by a variety of 
 data and text mining tools and methodologies, 
 such as \PMML{}, \ARFF{} (Attribute-Relation File Format), 
-\IeXML{}, \CoNLLU{}, OpenAnnotations, and \SciXML{}.  
-Moreover, \AXF{} can certainly expand 
+\IeXML{}, \CoNLLU{}, OpenAnnotations, and \SciXML{}.}  
+In particular, the \AXF{} toolkit includes a command-line 
+tool to \q{query} manuscripts using an 
+interface based on BeCAS.  Moreover, \AXF{} 
+uses a two-tier node structure similar to 
+\LAF{}; at one level is an extensible text-encoding 
+methodology (see the overview 
+of \AXF{}'s character encoding protocol below), 
+while a higher level defines annotations in terms 
+of directed hypergraphs.  Programmatically, 
+\AXF{} aims in the canonical case for a level of 
+detail intermediate between linked-data-oriented 
+projects like Web Annotations (which tend to focus 
+mostly on isolatable semantic resources such 
+as citations and named entities) and \NLP{}-oriented 
+paradigms such as \LAF{}.  That is, \AXF{} does not 
+natively serialize fine-grained \NLP{} data at the 
+level of individual words, although it does 
+support queries which return sentences as word-sequences.  
+On the other hand, it provides granular information about 
+small-scale linguistic units, such as the 
+role of non-alphanumeric characters, or 
+\PDF{} coordinates of sentence start and end points.  
+In short, \AXF{} occupies a unique space in the 
+landscape of annotation tools at the intersection 
+of application-development, \NLP{}, and document-preparation 
+requirements.  Moreover, \AXF{} can certainly expand 
 to support new capabilities or resources, 
 based on the practical requirements of projects 
 such as \Cnineteen{}.}
@@ -1277,7 +1302,7 @@ corpus of \Cnineteen{} articles.}
 \vspace{-.5em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
-\setlength{\bsep}{-3pt}
+\setlength{\bsep}{-5pt}
 %\setlength{\parskip}{0pt}
 %\setlength{\itemsep}{-2pt}
 
@@ -1288,7 +1313,7 @@ corpus of \Cnineteen{} articles.}
 \makeatother
 
 \begin{thebibliography}{99}
-\vspace{1.5em}
+\vspace{1em}
 {\fontsize{10}{11}\selectfont
 \bibitem{KhalidBelhajjame}{%
 	Khalid Belhajjame, \textit{et. al.},
@@ -1307,6 +1332,10 @@ corpus of \Cnineteen{} articles.}
 	\q{Beating Floating Point at its Own Game: Posit Arithmetic}, 
 	\biburl{http://www.johngustafson.net/pdfs/BeatingFloatingPoint.pdf}}
 
+\bibitem{IdeSuderman}{%
+	Nancy Ide and Keith Suderman,
+	\q{GrAF: A Graph-based Format for Linguistic Annotations}, 
+	\biburl{https://www.cs.vassar.edu/~ide/papers/LAW.pdf}}
 
 \bibitem{AS}{%
 	Andreas J\"onsson,
