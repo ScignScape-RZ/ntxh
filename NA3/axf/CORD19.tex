@@ -10,7 +10,7 @@
 \usepackage{titlesec}
 
 \titlespacing*{\section}
-{0pt}{4.5ex plus 1ex minus .5ex}{.7ex plus .2ex}
+{0pt}{4.5ex plus 1ex minus .5ex}{.9ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -75,7 +75,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=15in,paperwidth=8.5in]{geometry}
-\geometry{left=.73in,top=.7in,right=.52in,bottom=1.3in} %margins
+\geometry{left=.63in,top=.7in,right=.5in,bottom=1.3in} %margins
 
 \renewcommand{\thepage}{\raisebox{-4pt}{\arabic{page}}}
 
@@ -640,7 +640,7 @@
 	
 {\linespread{1.2}\selectfont
 
-\vspace*{2em}
+\vspace*{3em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -687,7 +687,7 @@ and Text Mining}
 \end{tcolorbox}
 \end{center}
 
-\vspace*{.25em}
+\vspace*{1.25em}
 \begin{center}
 \parbox{.86\textwidth}{%
 {\fontfamily{pzc}\selectfont   
@@ -702,7 +702,7 @@ publishers have placed Dr. Neustein's
 publications on their open access portals 
 linked from \Cnineteen{}.}}
 \end{center}
-\vspace*{.25em}	
+\vspace*{.75em}	
 	
 \p{\Cnineteen{} (the \q{\Covid{} Open Research Dataset}) 
 is a new coronavirus data collection which was released 
@@ -738,13 +738,13 @@ integrated with data sets which will accompany the
 forthcoming volume, \textit{Advances in Ubiquitous Computing}, 
 which is part of Elsevier's Series, \textit{Advances in Ubiquitous 
 Sensing Applications for Healthcare}.\LWedge{}  
-The \AXF{} framework includes an \SDK{} oriented to 
-the construction of document archives organized 
+The \AXF{} framework includes an \SDK{} geared to 
+the construction of document archives that are organized 
 around particular themes or topics; our proposed 
 \SDK{} for \Cnineteen{} would therefore be a 
 specialization and extension of our generic 
-\AXF{} \SDK{}.  Our proposed \Cnineteen{} \SDK{} 
-would include new code libraries explicitly 
+Annotation Exchange Framework \SDK{}.  Our proposed 
+\Cnineteen{} \SDK{} would include new code libraries explicitly 
 implemented for data-management operations 
 specific to \Cnineteen{}.  It would also include a package 
 of applications, modified to support \Covid{} research, 
@@ -788,23 +788,23 @@ enhance the underlying data by providing the following
 useful features: 
 
 %\vspace{-2em}
-\begin{description}[leftmargin=9pt,itemsep=4pt]
+\begin{description}[leftmargin=9pt,itemsep=2pt]
 
 \item[Datatypes Encapsulating Access to the 
 Semantic Scholar API]  This library would provide 
 a \Qt{}-based wrapper around Semantic Scholar \API{} 
-calls, and model certain objects relevant to this 
+calls and model certain objects relevant to this 
 \API{}, such as entities and their mentions, 
 citations, and authorship links.  One use-case 
-for such a library concerns document preparation, 
-where the \API{} may be valuable for obtaining 
+for such a library concerns document preparation. 
+Here the \API{} may be valuable for obtaining 
 information such as Semantic Scholar paper ids 
 and entity strings, which can be employed when 
-building metadata files embedded in publications and/or 
-to add features to human-readable manuscripts 
-(examples in the second case include providing 
-Semantic Scholar paper ids within bibliographic 
-entries and selecting keywords based on entities 
+building metadata files embedded in publications; 
+and/or to add features to human-readable manuscripts 
+(e.g., providing Semantic Scholar 
+paper ids within bibliographic 
+entries, and selecting keywords based on entities 
 mentioned within cited papers).   
 
 \item[Tools for Correcting Transription Errors]  
@@ -853,18 +853,23 @@ sentences via parse-graphs).
 \item[An LAF Architecture for Annotations over CORD-19]
 The structure of \Cnineteen{} allows text segments to 
 be defined via a combination of \JSON{} file names, 
-paragraph ids, and character indices.  Consequently, 
-the archival schema's mechanism for standoff 
-annotation of intra-document references may be 
+paragraph ids, and character indices.  
+With suitable programming, this structure 
+may be utilized as a concrete instantiations of 
+the \LAF{} (Linguistic Annotation Framework) data model 
+\cite{IdeSuderman}, 
+so that the archival schema's standoff 
+annotation mechanism can be 
 extended for assertions of linguistic, resource,  
 or topical annotations from multiple Annotation Spaces.  
-The proposed \SDK{}, in particular, 
+Our proposed \SDK{}, in particular, 
 would provide code for additional 
-standoff annotation categories of the kinds 
+annotation categories of the kinds 
 commonly used in biomedical text mining.  
 As a concrete example, the corrected 
 text segment \colorq{2{\textquotesingle}-C-ethynyl} mentioned 
-earlier can be annotated as a molecular component. 
+earlier can be annotated as a molecular component.  
+
 
 \item[Tools for Research Data-Mining]  Even though 
 many papers in \Cnineteen{} are paired with 
@@ -1102,10 +1107,10 @@ concept would then trigger both publication and
 data-set matches at the same time.}
 
 \LVee{}
-\section{The AXF (Annotation Exchange) Format}
-\p{Conceptually, \AXF{} is intended for document 
-preparation as well as for text mining.  
-As a rule, annotations deliberately introduced 
+\section{The Annotation Exchange Format (AXF)}
+\p{Conceptually, the \AXF{} system 
+is intended for document preparation as well as for text 
+mining.  As a rule, annotations deliberately introduced 
 by authors or editors are more likely to be 
 accurate than annotations which depend on 
 Machine Learning or Natural Language Processing.  
@@ -1203,7 +1208,7 @@ methodology (disussed in the next paragraph),
 while a higher level defines annotations in terms 
 of directed hypergraphs.  Programmatically, 
 \AXF{} aims in the canonical case for a level of 
-detail intermediate between linked-data-oriented 
+detail that is intermediate between linked-data-oriented 
 projects like Web Annotations (which tend to focus 
 mostly on isolatable semantic resources such 
 as citations and named entities) and \NLP{}-oriented 
@@ -1211,7 +1216,7 @@ paradigms such as \LAF{}.  That is, \AXF{} does not
 natively serialize fine-grained \NLP{} data at the 
 level of individual words (the kind of data asserting 
 semantic and morphosyntactic details: lemmatization, Part of Speech, 
-dependency relations), although it does support 
+dependency relations, and so forth), although it does support 
 queries which return sentences as (unparsed) word-sequences.  
 On the other hand, \AXF{} offers \text{some} granular information about 
 small-scale linguistic units, such as the 
@@ -1260,11 +1265,11 @@ LTS has implemented a modified version of the
 \XPDF{} viewer which extracts embedded files 
 containing \AXF{} and \HTXN{} data, using this 
 information to make context menus sensitive to the 
-location of text which is an annotation 
-target, as well as to sentence boundaries, 
-in the \PDF{} viewport (allowing the reader, 
+location of that text which is an annotation 
+target; as well as to sentence boundaries 
+in the \PDF{} viewport --- allowing the reader, 
 for instance, to automatically copy one sentence's 
-text to the clipboard, were the relevant 
+text to the clipboard (where the relevant 
 sentence is identified by mouse position).  
 Similarly, LTS has implemented an AngelScript 
 interface which can be used to query 
@@ -1304,19 +1309,21 @@ Our proposed \SDK{} would be based on the
 same paradigm, but instead of applying the Research Object 
 model to a single data set, our \SDK{} would 
 translate it to a larger data space, viz., 
-a research \textit{archive}.  Analogous to code bundled 
-with a single research \textit{object}, an archive-specific 
-\SDK{} is then associated with each Research Archive.  In 
-the case of \Cnineteen{}, the archive \SDK{} would serve the 
-goal of integrating 
-the information contained in multiple 
+a research \textit{archive}.  An archive-specific 
+\SDK{} is then associated with each research archive.  
+These \SDK{}s are analogous to code bundled with a single 
+research \textit{object}, but with an expanded 
+focus, one that encompasses the archive as a whole.  
+In the case of 
+\Cnineteen{}, the archive \SDK{} would serve the 
+goal of integrating the information contained in multiple 
 \Covid{} data sets as well as the entire 
 corpus of \Cnineteen{} articles.}
 
-\vspace{-.5em}
+\vspace{-.75em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
-\setlength{\bsep}{-5pt}
+\setlength{\bsep}{-3pt}
 %\setlength{\parskip}{0pt}
 %\setlength{\itemsep}{-2pt}
 
@@ -1327,7 +1334,7 @@ corpus of \Cnineteen{} articles.}
 \makeatother
 
 \begin{thebibliography}{99}
-\vspace{1em}
+\vspace{.5em}
 {\fontsize{10}{11}\selectfont
 \bibitem{KhalidBelhajjame}{%
 	Khalid Belhajjame, \textit{et. al.},
