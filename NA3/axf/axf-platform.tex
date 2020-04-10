@@ -412,8 +412,12 @@
 \newcommand{\LDOM}{\resizebox{!}{7pt}{\AcronymText{LDOM}}}
 \newcommand{\Cnineteen}{\resizebox{!}{7pt}{\AcronymText{CORD-19}}}
 
+\newcommand{\lCnineteen}{\resizebox{!}{7.5pt}{\AcronymText{CORD-19}}}
+
 
 \newcommand{\MOL}{\resizebox{!}{7pt}{\AcronymText{MOL}}}
+
+\newcommand{\ACL}{\resizebox{!}{7pt}{\AcronymText{ACL}}}
 
 \newcommand{\LXCR}{\resizebox{!}{7pt}{\AcronymText{LXCR}}}
 \newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
@@ -712,7 +716,7 @@ and Ecological Monitoring}
 (Elsevier, forthcoming).  These 
 publishers have placed Dr. Neustein's 
 publications on their open access portals 
-linked from \Cnineteen{}.}}
+linked from \Cnineteen{} (discussed below).}}
 \end{center}
 \vspace*{.75em}	
 	
@@ -988,62 +992,64 @@ corpus of multiple documents, then form the backbone of an
 \AXF{} publication repository, as will be discussed next.}
 
 \section{AXF Publication Repositories}
-\p{}
+\p{The \AXF{} platform is designed for hosting collections 
+of publications sharing a common academic or technical 
+focus.  If \AXF{} is used in the context of a 
+general-purpose text and/or data repository, 
+the platform is designed to work with collections that 
+are organized into separate projects or topics, 
+each giving rise to an archive or corpus of publications.  
+Insofar as these corpora internally share a common theme 
+or focus, they can be associated with their own 
+ontologies, code libraries, annotation models, and 
+application-networking protocols, based on the sorts 
+of applications and data structures commonly used 
+in the corresponding scholarly discipline.  
+In some cases, publishers may choose to package 
+an entire arcive of research papers (perhaps along with 
+research data) as a single downloadable resource.  
+\lAXF{} allows publishers to construct such Research Archives 
+following the structure of existing examples such as 
+the \ACL{} (Association for Computational Linguistics) 
+Anthology or the recent \Cnineteen{} corpus.   This 
+latter archive is a useful case-study in both the 
+possibilities and limitations of existing 
+publication-repository technology.}
 
-\section{New Code Libraries within the Proposed SDK}
-\p{The \Cnineteen{} 
+\p{\lCnineteen{}, curated by the Allen Institute for 
+Artificial Intelligence, was spearheaded by 
+a White House initiative to centralize scientific 
+research related to \Covid{}.  The  
 collection was formulated with the explicit goal 
 of promoting both \textit{text mining} and 
 \textit{data mining} solutions 
-to advance coronavirus research.  This means that 
+to advance coronavirus research, so that 
 \Cnineteen{} is intended to be used both as a document 
 archive for text mining and as a repository for 
 finding and obtaining coronavirus data for subsequent 
-research.  Because the White House announcement requests 
-institutions to develop additional technologies 
-which would help scientists and jurisdictions to 
-take advantage of \Cnineteen{}, 
-the collection was released with the 
-anticipation that industry and academia would 
-augment the underlying data by layering on additional 
-software.  Our proposed \Cnineteen{} \SDK{} would 
-do just that: this \SDK{} would serve as a component 
-that would provide analytic capabilities 
-to make the raw \Cnineteen{} data 
-more valuable; it would also serve as a toolkit through which 
-other developers could create 
-new solutions targeting the \Cnineteen{} repository.}
+research.  Although novel research is being 
+incorporated into \Cnineteen{}, many of the articles 
+reproduced in this corpus are older publications related 
+to coronaviruses and to SARS in general, not just to the 
+current pandemic.  As a result, the full-text versions 
+of these publications were retroactively aggregated 
+into a single archive due to the unanticipated emergence 
+of a coronavirus crisis, with the full text often obtained 
+from \PDF{} files rather than from structured 
+representations (such as \JATS{}) explicitly intended 
+for text mining.}
 
-\p{To accomplish these goals, our 
-proposed \SDK{} would include a collection of 
-new code libraries to aid programmers in the 
-implementation of algorithms to investigate the 
-\Cnineteen{} corpus.  These code libraries would 
-enhance the underlying data by providing the following 
-useful features: 
+\p{This archival methodology results in \Cnineteen{} being 
+limited as a \TDM{} framework.  These limitations include 
+the following:
 
-%\vspace{-2em}
-\begin{description}[leftmargin=9pt,itemsep=2pt]
-
-\item[Datatypes Encapsulating Access to the 
-Semantic Scholar API]  This library would provide 
-a \Qt{}-based wrapper around Semantic Scholar \API{} 
-calls and model certain objects relevant to this 
-\API{}, such as entities and their mentions, 
-citations, and authorship links.  One use-case 
-for such a library concerns document preparation. 
-Here the \API{} may be valuable for obtaining 
-information such as Semantic Scholar paper ids 
-and entity strings, which can be employed when 
-building metadata files embedded in publications; 
-and/or to add features to human-readable manuscripts 
-(e.g., providing Semantic Scholar 
-paper ids within bibliographic 
-entries, and selecting keywords based on entities 
-mentioned within cited papers).   
-
-\item[Tools for Correcting Transription Errors]  
-Transription errors can cause the machine-readable 
+\item[Transcription Errors]  
+Transription errors can easily result from trying to 
+read scientific data and notations based on 
+\PDF{} files --- or on full-text representations using 
+relatively unstructured formats such as \XOCS{} 
+(the resonse-encoding format for the ScienceDirect 
+\API{}).  Transcription errors cause the machine-readable 
 text archive to misrepresent the structure 
 and content of documents.  For instance, 
 there are cases in \Cnineteen{} 
@@ -1055,58 +1061,37 @@ observed; the corresponding index in the corpus is \textcolor{blGreen!45!black}{
 To help address these sorts of errors --- 
 which could stymie text searches 
 against the \Cnineteen{} corpus --- 
-our \SDK{} would 
-augment the \Cnineteen{} repository by providing 
-alternate machine-readable encodings 
-of the archived documents in formats such as \XML{}, 
-whenever they are available, 
-as a supplement to \Cnineteen{}'s 
-\JSON{} representation.  
-The \SDK{} would then provide tools to 
-cross-reference multiple versions of each document, 
-so as to correct errors in the original \JSON{} encodings. 
+it is obviously preferable to archive structured, 
+machine-readable versions of publications, using 
+a platform such as \AXF{}.  
     
-\item[Tools for Converting Between Data Formats]
+\item[Converting Between Data Formats]
 Although the \Cnineteen{} corpus is published 
 as \JSON{} files, many text-mining tools such 
 as those reviewed in \cite{NeusteinText} recognize 
-input in alternative formats, such as \XML{},  
-\BioC{}, or \JSON{} trees with different 
-schema than \Cnineteen{}.  Our proposed 
-\SDK{} would provide libraries to read 
-\Cnineteen{}'s \JSON{} files and output 
-data in one of these alternative formats, 
-so as to initiate a text mining workflow. 
-The \SDK{} would also include tools for 
-manipulating the \textit{results} of 
-text mining algorithms, which is 
-often represented in formats such as 
-\XML{} and \CoNLL{} (Conference on Natural 
-Language Learning; this is a schema for representing 
-sentences via parse-graphs). 
-   
-\item[An LAF Architecture for Annotations over CORD-19]
+inputs or produce outputs in alternative formats, 
+such as \XML{}, \BioC{}, \CoNLL{} (Conference on Natural 
+Language Learning), or \JSON{} trees with 
+different schema than \Cnineteen{}.  For this 
+reason, rather than providing data with one single 
+representational format, it is better to 
+encode the data along with code libraries that can 
+express the data in different formats as needed 
+for different \TDM{} ecosystems.
+
+\item[Inconsistent Annotations]  
 The structure of \Cnineteen{} allows text segments to 
 be defined via a combination of \JSON{} file names, 
-paragraph ids, and character indices.  
-With suitable programming, this structure 
-may be utilized as a concrete instantiations of 
-the \LAF{} (Linguistic Annotation Framework) data model 
-\cite{IdeSuderman}, 
-so that the archival schema's standoff 
-annotation mechanism can be 
-extended for assertions of linguistic, resource,  
-or topical annotations from multiple Annotation Spaces.  
-Our proposed \SDK{}, in particular, 
-would provide code for additional 
-annotation categories of the kinds 
-commonly used in biomedical text mining.  
-As a concrete example, the corrected 
-text segment \colorq{2{\textquotesingle}-C-ethynyl} mentioned 
-earlier can be annotated as a molecular component.  
+paragraph ids, and character indices.  This indexing 
+schema is used for representing certain internal 
+details of individual articles, such as citations, 
+but is not explicitly defined as an annotation 
+target structure for standoff annotations against 
+the archive as a whole.  This problem could 
+also be rectified with code libraries that map 
+index targets to file handles and character pointers. 
 
-
-\item[Tools for Research Data-Mining]  Even though 
+\item[Limited Support for Research Data-Mining]  Even though 
 many papers in \Cnineteen{} are paired with 
 published data sets, there is currently no tool for 
 locating  research \textit{data} 
@@ -1125,12 +1110,17 @@ representing the \ThreeD{} geometry of protein
 molecules), \MAP{} (Electron Microscopy Map), \EPS{} 
 (Embedded Postscript), \CSV{} (comma-separated values), 
 and tables represented in Microsoft Word 
-and Excel formats.  To promote data mining 
-in the context of \Cnineteen{}, our 
-\SDK{} would (1) maintain an index of 
+and Excel formats.  To make this data more 
+readily accessible in the context of \Cnineteen{}, it 
+would be appropriate to (1) maintain an index of 
 data sets linked to \Cnineteen{} articles 
 and (2) merge these resources into a common representation 
-(such as \XML{}) wherever possible.  
+(such as \XML{}) wherever possible.  This research-data 
+curation can then be treated as a supplement to 
+text-mining operations.  In particular, queries 
+against the full-text publications could be evaluated 
+\textit{also} as queries against the relevant set 
+collection of research data sets.    
 
 \item[Wrappers for Network Requests]  Scientific 
 use of \Cnineteen{} will often require communicating 
@@ -1150,73 +1140,65 @@ sets such as the John Hopkins University \q{dashboard}
 (see \href{https://coronavirus.jhu.edu/map.html}{https://coronavirus.jhu.edu/map.html}, which is paired with a \GIT{} archive 
 updated almost daily).  To reduce the amount 
 of \q{biolerplate code} which developers need 
-for these networking requirements, our 
-company's \SDK{} 
-would provide code libraries based on the 
-\Qt{} Networking Module to manage networking 
-requests and responses.  Programmers would 
-therefore have a unified framework with which 
-to construct remote queries and route responses, 
-a framework which could be used across 
+for these networking requirements, an archive's 
+text-mining code could provide a unified framework with which 
+to construct web-\API{} queries, 
+one that could be used across 
 disparate scientific disciplines 
 (genomics, \NLP{}, epidemiology, and so forth). 
 \end{description}}
 
-\p{In short, the code libraries decribed above would 
-augment the value of \Cnineteen{} by providing 
-tools out-of-the-box to help scientists 
-(and their codewriters) leverage \Cnineteen{} data.  
-Although we can expect that numerous code libraries 
-will be implemented so that researchers can 
-use \Cnineteen{}, a \Cnineteen{} \SDK{} 
-would be beneficial because it would integrate 
-\textit{multiple} libraries into a single package, 
-designed to be easily interoperable.  
-In particular, these libraries would be implemented 
-in a manner which prioritizes rapid development: 
-the \SDK{} would comprise a \textit{standalone} 
-and \textit{self-contained} development 
-environment with minimal external dependencies.  
-This priority would extend also to software 
-tools that would be bundled together with 
-the new code libraries.  These software 
-tools are discussed next.}
+\p{Many of these limitations observed in \Cnineteen{} 
+reflect the fact that this corpus was prepared 
+as \q{raw (text) data} without any supporting code.  
+Recent initiatives, such as the Research Object 
+protocol (see \cite{KhalidBelhajjame}) 
+and \FAIR{} (\q{Findable, Accessible, 
+Interoperable, Reusable}; see \cite{TrifanOliveira}) 
+encourage authors to publish code and data together, 
+so that the computing environment needed to process 
+published data is provided within the data set itself.  
+This Research Object model is usually defined in 
+the context of a single publication, but the paradigm 
+applies equally well to corpora encompassing many 
+single articles.  That is, \AXF{} is structured so 
+that Research Archives can be designed as higher-scale 
+Research Objests, wherein the document collection is bundled 
+with supporting code and an overall computing and 
+software-development environment.  Such archive-specific 
+\SDK{}s would include \AXF{}-specific code as well 
+as libraries or applications often utilized in 
+the academic disciplines relevant to the archival 
+subject areas.  The \AXF{} platform especially 
+promotes the design of domain-specific \SDK{} 
+which are \textit{standalone} 
+and \textit{self-contained}, with minimal external 
+dependencies.  As much as possible, users should 
+not have to install external software to utilize 
+data provided along with an \AXF{} repository; 
+instead, the needed data-management tools should be 
+provided in source-code form within the archive itself.}
 
-\section{The Software Application Package within the Proposed SDK}
-\p{In addition to the code libraries described 
-above, whose purpose would be to manipulate 
-\Cnineteen{} data to prepare for text mining and 
-data mining operations, our proposed \SDK{} would 
+\p{Each \AXF{} repository, then, should 
 bundle numerous applications used for database 
 storage, data visualization, and scripting.  
 The goal of this application package would be to 
 provide researchers with a self-contained computing 
 platform optimized for scientific research 
-and findings related to 
-\Covid{}.  The components within this application 
-package would be selected with an emphasis on 
-tools that could be distributed in source-code 
-fashion, and then compiled within the \SDK{}'s 
-development framework with few, if any, external 
-dependencies.  In short, the \SDK{} would try 
+and findings related to the arhived publications.  
+Archival \SDK{}s should try 
 to eliminate almost all scenarios where 
 programmers would need to perform a \q{system 
 install}; for the most part, the entire 
 computing platform (including scripting 
-and database capabilities) could be compiled 
-from source \q{out-of-the-box}.  The 
-\SDK{} would also modify the applications 
-included in the package (e.g., embedding 
-plugins to enable the applications to share 
-data amongst themselves) so as to enhance 
-their interoperability and 
-their usefulness for \Covid{} research.} 
-
-\p{The applications bundled with the \SDK{} would 
-likely include the following components:
+and database capabilities) should be compiled 
+from source \q{out-of-the-box}.  While the 
+actual libraries and applications bundled with 
+an archive would depend on its topical 
+focus, the following is an example of components 
+that would be appropriate in many different \SDK{}: 
 
 \begin{itemize}[itemsep=-1pt]
-
 \item \XPDF{}: A \PDF{} viewer for reading full-text articles 
 (augmented with \Cnineteen{} features, such as integration 
 with biomedical ontologies);
@@ -1231,25 +1213,22 @@ engine that supports both relational
 and \NoSQL{}-style architectures 
 (see \cite{EnarReilent});
 
-\item IQmol: Molecular Visualization software 
-that can be used to study chemical data 
-presented in formats such as \PDB{} which 
-are employed by some \Covid{} data sets;
-
 \item MeshLab: A general-purpose \ThreeD{} graphics 
 viewer;
- 
-\item UDPipe: a \Cpp{} library for manipulating 
-\CoNLL{} data;
 
 \item LaTeXML: a \LaTeX{}-to-\XML{} converter;
 
 \item PositLib: a library for use in high-precision computations based on the \q{Universal Number} format, 
 which is more accurate than traditional floating-point 
 encoding in some scientific contexts 
-(see \cite{JohnGustafson}).
- 
-\end{itemize}}
+(see \cite{JohnGustafson}). 
+\end{itemize}
+
+To this list one might add components specific to various 
+scientific fields: \IQmol{} for chemistry and molecular 
+biology, for example, or open-source libraries such 
+as EpiFire 
+}
   
 
 \p{It is worth noting that a data-mining platform requires 
