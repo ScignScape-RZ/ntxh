@@ -213,6 +213,9 @@
 \newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
 
 \newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
+
+\newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
+
 \newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{HTXN}}}
 \newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
 
@@ -318,6 +321,9 @@
 
 
 \newcommand{\SDI}{\resizebox{!}{7pt}{\AcronymText{SDI}}}
+\newcommand{\SDIV}{\resizebox{!}{7pt}{\AcronymText{SDIV}}}
+
+
 
 \newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
 
@@ -724,6 +730,35 @@ scenario, the primary goal of an \AXF{} repository is to
 host manuscripts in \AXFD{} format, along with software 
 to aid viewing and text-mining of the associated publications.}
 
+\p{\lAXFD{} therefore has two distinct purposes: (1) to 
+aid in text- and data-mining (\TDM{}) of full 
+publication text (along with research data that may be 
+linked to publications), and (2) to enhance the reader 
+experience, given e-Reader software (canonically, 
+\PDF{} viewers) which are programmed to consume 
+\AXF{} information.  To aid (1) in text mining, \AXFD{} documents 
+can be compiled into different structured representations, 
+yielding document versions that can be registered 
+on services such as CrossREF \TDM{} and SemanticScholar.  Given 
+a Document Object Identifier, text-mining tools can therefore 
+readily obtain a highly structured, machine readable version 
+of the publication, which may then be used as the basis 
+of further text-mining and \NLP{} operations.  Simultaneously, 
+to (2) improve reader experience, the \AXF{} platform generates 
+numeric data linking semantically significant text locations 
+to \PDF{} viewport coordinates 
+(such text locations include annotation, quotation, or citation 
+start/end points and paragraph or sentence boundaries --- 
+collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+\PDF{} applications to provide contexts 
+for word searches, to localize context 
+menus, to activate multi-media features at different points 
+in the text, and in general to make \PDF{} files more 
+interactive.  Data sets composed in conjunction with 
+\AXF{} may include source code for a \PDF{} viewer (an extension 
+to \XPDF{}) capable of leveraging \AXF{} data.}
+
 \p{In addition to the \AXFD{} document format, the \AXF{} platform 
 includes the Annotation Exchange Format itself, a protocol for 
 defining and sharing annotations on full-text publications.  
@@ -775,7 +810,50 @@ compose \AXFD{} papers to conform with several common
 publication \XML{} standards, such as \JATS{} 
 (Journal Article Tag Suite), SciXML, and 
 IeXML (the latter is an annotation-oriented 
-\XML{} language used by the BeCAS project.}
+\XML{} language used by the BeCAS project).}
+
+\p{One distinct feature of \AXF{} is that \LaTeX{} and 
+\XML{} generation are chained in a pipeline: the \LaTeX{} 
+and subsequent \PDF{} generation steps yield auxiliary data, 
+which includes \PDF{} viewport data.  Specifically, 
+\AXFD{}-generated \LaTeX{} files include notations for 
+semantic annotations and for sentence boundaries, implemented 
+via \LaTeX{} commands which, as one processing step, 
+write \PDF{} coordinates to auxiliary files.  The resulting 
+data is then read by a \Cpp{} program which collates 
+annotaitons and sentence-boundaries into a vector of 
+data structures indexed by \PDF{} page numbers, creating a 
+distinct file for each page, and zips those files into an 
+archive which can be distributed alongside (or embedded inside) 
+the \PDF{} publications.  Simultaneously, sentences, 
+paragraphs, annotations, and other semantically significant 
+content (such as quotations and citations) are assigned 
+unique ids and compiled into their own data structures 
+(from which machine-readable \XML{} full-text may be generated).  
+These \XML{} files may then be hosted and/or registered on 
+\TDM{}-oriented services such as CrossRef.  At the same 
+time, unique identifier unify this \XML{} data 
+(focused on text mining) with \PDF{} viewport data 
+(focused on reader experience).  The goal of such 
+integration is to incorporate text-mining results 
+so as to enhance reader experience.  For example, 
+Named Entity Recognizers might flag a word-sequence 
+as matching a concept within a controlled vocabulary.  
+Via the relevant paper's \SDI{} model, this annotation 
+may be placed in a proper semantic context --- for 
+example, obtaining the text of the sentence where the 
+Named Entity occurs.  This semantic information may then 
+be used by a \PDF{} viewer --- e.g., providing a 
+context menu option to select the sentence text, when 
+the context menu is activated within the rectangular 
+coordinates of the annotation itself.}
+
+\p{As a representation of annotation data structures, 
+\AXF{} ensures that \SDI{} and viewport data is included 
+among annotations wherever this data is available.  
+This facilitates the integration between text-mining 
+tools and \PDF{} viewer software.    }
+
 
 
 \section{New Code Libraries within the Proposed SDK}
