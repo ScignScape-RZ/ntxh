@@ -413,6 +413,8 @@
 \newcommand{\Cnineteen}{\resizebox{!}{7pt}{\AcronymText{CORD-19}}}
 
 
+\newcommand{\MOL}{\resizebox{!}{7pt}{\AcronymText{MOL}}}
+
 \newcommand{\LXCR}{\resizebox{!}{7pt}{\AcronymText{LXCR}}}
 \newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
 \newcommand{\lsLXCR}{\resizebox{!}{9.5pt}{\AcronymText{LXCR}}}
@@ -885,9 +887,108 @@ such capabilities in the context of a chemistry publication
 --- specifically, test-preperation materials for the 
 Chemistry \GRE{} exam).}
 
+\p{To support this kind of multimedia functionality, 
+\AXF{} standardizes a Plugin Framework, dubbed \q{\Mosaic{}}, 
+allowing programmers to embed code which can parse and 
+respond to \AXF{} annotations in different scientific and 
+document-viewer applications.  \lMosaic{} allows different 
+applications to inter-operate; in particular, 
+\PDF{} viewers can share data with scientific applications 
+that can render files in domain-specific formats such as 
+\PDB{}.  This application networking protocol is considered 
+part of the \AXF{} annotation model, because application-oriented 
+information is computationally relevant for many concepts 
+encountered in scientific and technical environments.  For instance, 
+one aspect of cheminformatic data is that many chemical 
+compounds are modeled by \PDB{}, \MOL{}, or \ChemXML{} files, 
+which in turn are associated by software applications that 
+can load files with those file types.  This inter-application 
+networking data then becomes relevant to \PDF{} viewers 
+when displaying manuscripts with annotations that suggest 
+links to special file types and their applications; the 
+viewers can employ this information to launch and/or communicate 
+with the corresponding software.  \lAXF{} is designed to 
+facilitate implementation of application-networking protocols 
+as an operational continuation of processes related to obtaining 
+and consuming annotation data.}
+
+\p{The \AXF{} document model, at the manuscript-structure 
+level, is paired with a novel \q{Hypergraph Text Encoding 
+Protocol} (\HTXN{}) operating at the character-encoding level.  
+Within the \HTXN{} protocol, an annotation target is 
+a character-index interval in the context of an 
+\HTXN{} character stream.  On that basis, 
+\HTXN{} treats documents as graphs whose nodes 
+are ranges in a character stream, where text can 
+be recovered as an operation on one or more nodes 
+(e.g., the text of a sentence is derived from a 
+pair of nodes representing the sentence's start 
+and end).  \lHTXN{} code-points 
+are distinguished in terms of their semantic 
+role, which may be more granular than their 
+visible appearance --- for example, 
+a period glyph is assigned different code-points 
+depending on whether it marks a sentence-ending 
+punctuation, an abbreviation, a decimal point, 
+or part of an ellipsis.  Procedures are then implemented to 
+represent text in different formats, such as 
+\ASCII{}, Unicode, \XML{}, or \LaTeX{}.  In 
+contrast to a format such as Web Annotations, 
+any particular human-readable text presentation 
+(including \ASCII{}) is considered a \textit{derived} 
+property of the annotation, not a foundational 
+representation.}
+
+\p{\lAXFD{} manuscripts do not need to utilize \HTXN{} 
+for character data, but \HTXN{} simplifies certain \AXF{} 
+operations, such as identifying sentence boundaries.  
+In particular, \HTXN{} provides distinct code-points for 
+end-of-sentence punctuation, so that sentence-boundary 
+detection reduces to a trivial search for those particular 
+code-pounts.  Proper \HTXN{} encoding requires that authors 
+follow certain simple heuristics --- e.g., that end-of-sentence 
+periods should be followed by two spaces and/or a newline, 
+whereas other uses of a period character should precede at 
+most one space.  Aside from the goal of preparing documents 
+for text-mining machine-readability, such conventions are 
+appropriate even for basic typesetting, because non-punctuation 
+characters have distinct kerning rules (this is why 
+\LaTeX{} provides a distinct command for non-punctuation glyphs 
+that would otherwise be read as punctuation characters).  \lHTXN{} 
+hides many of these typesetting details within its character-encoding 
+schema, which is useful both for producing professional-caliber 
+\LaTeX{} output and for identifying \SDI{} details (such as 
+sentence boundaries) which with less rigorously structured 
+text would need elaborate text-mining or \NLP{} algorithms.}
+
+\p{Each \AXFD{} document is, in sum, associated with an 
+aggregate of character-encoding, annotation, document-structure, 
+and \PDF{} viewport information.  The \AXF{} platform uses 
+code libraries to pull this information together as a 
+runtime object system, so that any application which loads 
+an \AXFD{} manuscript can execute queries against the 
+corresponding collection of \AXF{} objects (queries such 
+as obtaining the sentence text around an annotation, obtaining 
+the concave-octagonal viewport coordinates for a sentence,\footnote{
+In the general case, sentence coordinates are concave octagons because 
+they incoporate the line height of their start and end lines; 
+in the general case sentences share start and end lines with other 
+sentences, while also including whole lines vertically positioned 
+between these extrema.  A sentence octagon roughly corresponds with 
+the screen area where a mouse/pointer action should be understood as 
+occurring in the context of that sentense from the user's point 
+of view --- implying that the user would benefit from context menu 
+options pertaining specifically to that sentence, such as 
+copy-to-clipboard.} obtaining application-networking 
+information for an annotation, 
+etc.)  In addition to such runtime data, \AXF{} platforms can 
+compile the full suite of information into machine-readable 
+files for text and data mining.  These files, collected across a 
+corpus of multiple documents, then form the backbone of an 
+\AXF{} publication repository, as will be discussed next.}
+
+\section{AXF Publication Repositories}
 \p{}
-
-
 
 \section{New Code Libraries within the Proposed SDK}
 \p{The \Cnineteen{} 
