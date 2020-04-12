@@ -1,5 +1,6 @@
 \documentclass[11pt,letterpaper]{article}
 
+
 % pmml  arff  openannotation
 
 \usepackage[T1]{fontenc}
@@ -858,6 +859,8 @@ context menu option to select the sentence text, when
 the context menu is activated within the rectangular 
 coordinates of the annotation itself.}
 
+%\input{pics/xl}
+\input{pics/il}
 \p{As a representation of annotation data structures, 
 \AXF{} ensures that \SDI{} and viewport data is included 
 among annotations wherever this data is available.  
@@ -1392,9 +1395,10 @@ Often this will involve mapping one concept to
 several computational units (for instance, several 
 procedure implementations).}
 
+\input{pics/oxy}
 \p{For a concrete example of these points concerning 
 data citations, consider the data set pictured 
-in Figure 3, representing cyber-physical measurements 
+in Figure~\ref{fig:oxy}, representing cyber-physical measurements 
 used to calculate oxygenated airflow.  The data-set 
 application displays tabular data via a tree widget 
 (which functions as a generalized, multi-scale spreadsheet 
@@ -1405,7 +1409,7 @@ percentages).  Conceptually, these columns have distinct
 methodological roles and therefore can be microcited; 
 indeed, the application links the columns to article 
 text where the corresponding concepts are presented 
-(see Figure 4).  However, the implementation does not introduce 
+(see Figure~\ref{fig:about}).  However, the implementation does not introduce 
 a distinct \Cpp{} object uniquely designating individual 
 columns.  Instead, the individual columns can be annotated 
 in terms of \Cpp{} methods providing column-specific 
@@ -1417,11 +1421,12 @@ protocol for data-set annotations, \AXF{} proposes
 heuristic guidelines for how best to map programming 
 constructs to scientifically salient data-set concepts.}
 
+\input{pics/about}
 \p{Defining an annotation schema for data sets can potentially 
 be an organic outgrowth of software-development methodology, 
 such as implementing unit tests.  This point is illustrated in 
-Figure 5, which shows a \GUI{}-based testing environment for 
-the data set depicted in Figures 3 and 4.  For this data set, 
+Figure~\ref{fig:testing}, which shows a \GUI{}-based testing environment for 
+the data set depicted in Figures~\ref{fig:about} and \ref{fig:oxy}.  For this data set, 
 the context menu actions providing column-specific functionality 
 are also discrete capabilities which can be covered by 
 unit tests, so the set of procedures mapped to the citable 
@@ -1439,7 +1444,7 @@ basis of a dataset applications' scripting, testing, and/or
 query-evaluation code.  However, this is only a heuristic 
 guideline, and \AXF{} does not presuppose any data-annotation 
 scheme \textit{a priori}.}
-
+\input{pics/testing}
 
 %a file in formats such as \CoNLL{} or \PMML{} 
 %(Predictive Model Markup Language).}
