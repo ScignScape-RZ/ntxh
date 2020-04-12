@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  12 APR 2020 17:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  12 APR 2020 16:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**book.tex
-(./book.tex
+**book-toc.tex
+(./book-toc.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (./statsoc.cls
@@ -563,10 +563,6 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box40
 \enitdp@description=\count130
 )
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/setspace/setspace.s
-ty
-Package: setspace 2011/12/19 v6.7a set line spacing
-)
 
 ! Package xcolor Error: Undefined color `grey'.
 
@@ -574,26 +570,26 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.57 \colorlet{rgrey}{red!30!grey}
+l.53 \colorlet{rgrey}{red!30!grey}
                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-(./book.aux)
-\openout1 = `book.aux'.
+(./book-toc.aux)
+\openout1 = `book-toc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
@@ -642,7 +638,7 @@ f-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for T1+phv on input line 97.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 82.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
@@ -656,16 +652,16 @@ File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
 * h-part:(L,W,R)=(28.45274pt, 540.60239pt, 28.45274pt)
-* v-part:(T,H,B)=(51.21504pt, 771.06952pt, 22.76228pt)
+* v-part:(T,H,B)=(22.76228pt, 799.52228pt, 22.76228pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=540.60239pt
-* \textheight=771.06952pt
+* \textheight=799.52228pt
 * \oddsidemargin=-43.81725pt
 * \evensidemargin=-43.81725pt
-* \topmargin=-52.05495pt
+* \topmargin=-67.5077pt
 * \headheight=9.0pt
-* \headsep=22.0pt
+* \headsep=9.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
 * \marginparwidth=107.0pt
@@ -682,340 +678,68 @@ File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
-
- []
-
-LaTeX Font Info:    Try loading font information for T1+qcr on input line 188.
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qcr.fd
-File: t1qcr.fd 2009/09/25 v1.2 font definition file for T1/qcr
-)
-LaTeX Font Info:    Try loading font information for T1+Cabin-TLF on input line
- 188.
-
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
-d
-File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
-) [1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pd
-ftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 291--291
+Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--293
+Underfull \hbox (badness 10000) in paragraph at lines 102--102
 
  []
 
-[2]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 296.
- (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ulasy.fd
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+
+ []
+
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 108.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 108.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 108.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 108.
+
+LaTeX Font Info:    Try loading font information for U+lasy on input line 108.
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
-! LaTeX Error: There's no line here to end.
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 108.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.298 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+[1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdft
+ex.map}] (./book-toc.aux)
 
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 298--306
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.310 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 310--316
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.320 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 320--325
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.329 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 330.
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 329--336
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.340 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 340--349
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.359 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 359--368
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.372 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 372--381
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.386 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 386--399
-[] $[]$ 
- []
-
-[3]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.403 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 403--412
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.416 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 416--430
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.440 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 440--448
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.452 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 452--460
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.464 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 464--473
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.478 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 478--481
-[] $[]$ 
- []
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.487 \begin{summary}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 487--491
-[] $[]$ 
- []
-
-[4] [5] (./book.aux) )
-(\end occurred inside a group at level 1)
-
-### simple group (level 1) entered at line 103 ({)
-### bottom level 
+ ) 
 Here is how much of TeX's memory you used:
- 14114 strings out of 492649
- 276339 string characters out of 6122986
- 325346 words of memory out of 5000000
- 17689 multiletter control sequences out of 15000+600000
- 84230 words of font info for 57 fonts, out of 8000000 for 9000
+ 13949 strings out of 492649
+ 273350 string characters out of 6122986
+ 322060 words of memory out of 5000000
+ 17552 multiletter control sequences out of 15000+600000
+ 26662 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,56p,434b,569s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
-ps/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/en
-c/dvips/cabin/cbn_hvmmj2.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/
-fonts/enc/dvips/base/8r.enc}</home/nlevisrael/texl/texlive-install/texmf-dist/f
-onts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrael/texl/texlive-instal
-l/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/nlevisrael/texl/te
-xlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/nlevi
-srael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qbkb.pfb></ho
-me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qbkr.
-pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gy
-re/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/h
-elvetic/uhvb8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type
-1/urw/helvetic/uhvr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fon
-ts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on book.pdf (5 pages, 137422 bytes).
+ 62i,5n,56p,438b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/tex-gyre/q-
+ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/base/8
+r.enc}</home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type
+1/public/tex-gyre/qbkb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fo
+nts/type1/public/tex-gyre/qbkr.pfb></home/nlevisrael/texl/texlive-install/texmf
+-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></home/nlevisrael/texl/texlive-instal
+l/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on book-toc.pdf (1 page, 79680 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 33 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

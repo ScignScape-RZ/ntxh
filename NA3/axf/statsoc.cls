@@ -79,7 +79,7 @@
 \@medpenalty  151
 \@highpenalty 301
 \setlength\headheight{9\p@}
-\setlength\headsep   {9\p@}
+\setlength\headsep   {22\p@}
 \setlength\topskip   {10\p@}
 \setlength\footskip{30\p@}
 \setlength\maxdepth{0.5\topskip}
@@ -171,9 +171,12 @@
   \def\ps@statsoc{%
       \let\@oddfoot\@empty\let\@evenfoot\@empty
 
-\def\@evenhead{{\sffamily\small\thepage\qquad\slshape\@shortauthor\hfil}}%
+\def\@evenhead{{\sffamily\small\thepage\qquad\slshape\@shortauthor\hfil{\sffamily\small{\slshape\@shorttitle}}}}%
 
-\def\@oddhead{\hfil{\sffamily\small{\slshape\@shorttitle}\qquad\thepage}}%
+\def\@oddhead{{\sffamily\small\thepage\qquad\slshape\@shortauthor\hfil{\sffamily\small{\slshape\@shorttitle}}}}%
+
+%\def\@oddhead{\hfil{\sffamily\small{\slshape\@shorttitle}\qquad\thepage}}%
+
       \let\@mkboth\markboth
     \def\sectionmark##1{%
       \markboth {\MakeUppercase{%
@@ -209,7 +212,7 @@
   \def\@shorttitle{#1}}
 \def\author{\@dblarg\statsoc@author}
 \def\statsoc@author[#1]#2{%
-  \g@addto@macro\@correspondence{\item[]{\normalsize #2}}%
+  \g@addto@macro\@correspondence{\vspace{.5em}\item[]{\normalsize #2}}%
   \def\@shortauthor{#1}}
  \let\@correspondence\@empty
   \newcommand\maketitle{%

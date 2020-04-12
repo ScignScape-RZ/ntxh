@@ -1,0 +1,159 @@
+
+\documentclass{statsoc}
+
+\usepackage[a4paper, outer=1cm, inner=1cm,top=.8cm,bottom=.8cm]{geometry}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{tgbonum}
+
+\usepackage{graphicx}
+\usepackage[textwidth=8em,textsize=small]{todonotes}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newcommand{\p}[1]{
+
+\vspace{.75em}#1}
+
+\setlength{\parindent}{60pt}
+
+\colorlet{orr}{orange!60!red}
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+
+\newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+\newcommand{\EMR}{\resizebox{!}{7pt}{\AcronymText{EMR}}}
+
+\newcommand{\HCI}{\resizebox{!}{7pt}{\AcronymText{HCI}}}
+
+\newcommand{\visavis}{vis-\`a-vis}
+
+\usepackage{enumitem}
+
+\setlist[itemize]{topsep=20pt,before=\leavevmode\vspace{-1.5em}}
+
+
+\colorlet{dsl}{purple!20!brown}
+\colorlet{dslr}{dsl!50!blue}
+
+\setlist[description]{%
+  topsep=10pt,
+  labelsep=12pt,
+  itemsep=12pt,               % space between items
+  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
+  style=nextline 
+}
+
+\colorlet{rgrey}{red!30!grey}
+
+
+\newif\ifSummaryInText
+\SummaryInTexttrue
+
+\makeatletter
+\long\def\grabsummary#1#2\end{%
+  \applydraftsummary{#2}
+  \end}
+
+\long\def\applydraftsummary#1{%
+\vspace{-12pt}
+  \textcolor{rgrey!50!purple}{\hrule width \textwidth\kern4pt} %
+  %\textbf{Summary}%
+  \vspace{2pt}#1\vspace{1pt}
+  %\begin{itemize}#1\end{itemize}%
+  \textcolor{rgrey!50}{\hrule width \textwidth\medskip} \vspace{10pt}}%
+\newenvironment{summary}[1][0]{\let\BEGIN\begin\let\END\end\grabsummary{#1}}{}%
+\makeatother
+
+
+\title[Data Modeling and Text Mining for Covid-19]{Advances in Data Modeling and Text Mining for Covid-19 Research}
+\author[Amy Neustein]{Amy Neustein}
+\author[Amy Neustein]{Nathaniel Christen}
+%\address{Linguistic Technology Systems}
+
+  % 
+
+\begin{document}
+
+\vspace{1em}
+\noindent{}Approx 250 pages, 15 chapters\\
+Manuscript Submission Date: August 31, 2020\\
+
+
+%\begin{abstract}
+%Abstracts are meant to give a brief flavour of the article.
+%\ldots\ something here just to end the sentence.
+%\end{abstract}
+
+
+\section{Table of Contents}
+\vspace{1em}
+
+\begin{description}
+
+\item[Foreword (Invited)]
+
+\item[Authors' Introduction]
+
+
+\item[Part I: Architecting Data Models for Scientific Disciplines Associated with Covid-19]
+
+\begin{itemize}
+\item Chapter 1: Data Structures for Molecular Biology and Virology
+
+\item Chapter 2: How Genomic Data is Stored and Analyzed in the Coronavirus Context
+
+\item Chapter 3: Structuring of Radiographic and Diagnostic Data in the Context of Covid-19
+
+\item Chapter 4: Reviewing Epidemiological Structures and Methodology for SARS-Cov-2 Research
+
+\item Chapter 5: Modeling Clinical Data in the Covid-19 Patient Population  
+
+\end{itemize}
+
+\item[Part II: Creating a Cross-Disciplinary Ecosystem for Covid-19]
+
+\begin{itemize}
+
+\item Chapter 6: \hspace{3pt} Approaches for Merging Heterogeneous Data Sets: Ontologies and Hypergraphs
+
+\item Chapter 7: \hspace{3pt} Scientific Workflows and Inter-Application Networking: Reviewing data pipelines commonly used in Covid-19 research
+
+\item Chapter 8: \hspace{0.5pt} Formal Procedural Models: Representing computational procedures applicable to Covid-19
+
+\item Chapter 9: \hspace{2pt} Integrating Procedural and Data Models
+
+\item Chapter 10: Type Theories for Procedural Data Modeling
+
+\end{itemize}
+
+\item[Part III: Text and Data Mining for Covid-19]
+
+\begin{itemize}
+
+\item Chapter 11: Applying Data Mining Techniques to Covid-19 Research Corpora
+
+\item Chapter 12: Text Mining of Covid-19 Publication Archives
+
+\item Chapter 13: Human-Computer Interaction Approaches for Covid-19 Software 
+
+\item Chapter 14: Using Text-Mining Tools to Extract Medical History from Clinical Narratives 
+
+\item Chapter 15: Annotating Patient Narratives for Emerging 
+Covid-19 Symptomatology 
+
+
+\end{itemize}
+
+\end{description}
+
+
+\end{document}
+
+

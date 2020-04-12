@@ -1,7 +1,12 @@
 
 \documentclass{statsoc}
 
-\usepackage[a4paper, outer=1cm, inner=1cm]{geometry}
+\usepackage[a4paper, outer=1cm, inner=1cm,top=1.8cm,bottom=.8cm]{geometry}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{tgbonum}
+
 \usepackage{graphicx}
 \usepackage[textwidth=8em,textsize=small]{todonotes}
 \usepackage{amsmath}
@@ -23,11 +28,17 @@
 \newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
 
 \newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
-\newcommand{\EMR}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+\newcommand{\EMR}{\resizebox{!}{7pt}{\AcronymText{EMR}}}
+
+\newcommand{\HCI}{\resizebox{!}{7pt}{\AcronymText{HCI}}}
+
+\newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
+
 
 \newcommand{\visavis}{vis-\`a-vis}
 
 \usepackage{enumitem}
+\usepackage{setspace}
 
 \setlist[itemize]{topsep=20pt,before=\leavevmode\vspace{-1.5em}}
 
@@ -55,34 +66,41 @@
   \end}
 
 \long\def\applydraftsummary#1{%
-\vspace{-12pt}
-  \textcolor{rgrey!50!purple}{\hrule width \textwidth\kern4pt} %
-  %\textbf{Summary}%
-  \vspace{2pt}#1\vspace{12pt}
-  %\begin{itemize}#1\end{itemize}%
-  \textcolor{rgrey!50}{\hrule width \textwidth\medskip} }%
-\newenvironment{summary}[1][0]{\let\BEGIN\begin\let\END\end\grabsummary{#1}}{}%
+\vspace{-2pt}
+  \noindent\hfil\textcolor{rgrey!50!purple}{\rule{0.5\textwidth}{.4pt}}\hfil 
+
+  \vspace{-2pt}{%
+{\fontfamily{phv}\fontsize{9}{11}\selectfont #1}
+}\\\vspace{-20pt}
+  {\begin{center}\textcolor{rgrey!50}{\rule{0.5\textwidth}{.4pt}}\end{center}}}
+
+\newenvironment{summaryx}[1][0]{\let\BEGIN\begin\let\END\end\grabsummary{#1}}{}%
 \makeatother
 
 
-\title[Short title]{Advances in Data Modeling and Text Mining for Covid-19 Research}
+\newenvironment{summary}{\\\vspace{-4pt}%
+%
+%
+\noindent\hfil\textcolor{rgrey!50!purple}{\rule{0.5\textwidth}{.4pt}}\hfil
+
+\hspace{-2cm}\begin{minipage}{1.02\textwidth}\fontfamily{phv}\fontsize{9}{11}\selectfont}%
+{\\\vspace{-1em}\end{minipage}
+%\vspace*{-2em}
+{\begin{center}\textcolor{rgrey!50!yellow}{\rule{0.5\textwidth}{.4pt}}\end{center}}
+\vspace{2em}}%
+
+
+\title[Data Modeling and Text Mining for Covid-19]{Advances in Data Modeling and Text Mining for Covid-19 Research}
 \author[Amy Neustein]{Amy Neustein}
-\address{Linguistic Technology Systems,
-Fort Lee, NJ.}
-\email{amy.neustein@verizon.net}
-%\\\vspace*{1em}
 \author[Amy Neustein]{Nathaniel Christen}
-\address{Linguistic Technology Systems,
-Fort Lee, NJ.}
 
 \begin{document}
 
-%\begin{abstract}
-%Abstracts are meant to give a brief flavour of the article.
-%\ldots\ something here just to end the sentence.
-%\end{abstract}
+\vspace{1em}
+\noindent{}Approx 250 pages, 15 chapters\\
+Manuscript Submission Date: August 31, 2020\\
 
-
+{\fontsize{10}{14}\selectfont
 \section{Introduction}
 
 \p{The Covid-19 pandemic has inspired an unprecedented 
@@ -90,13 +108,13 @@ convergence of scientific research, driven in part
 by publishers choosing to allow open public access 
 to many research papers and published data 
 relevant to Covid-19 (the disease) and SARS-CoV-2 
-(the viral agent).  The sheer volume of the data 
-presents both a practical challenge --- to help 
-scientists find the information most relevant to them 
---- and a valuable case-study in the challenges and 
+(the viral agent).  The sheer volume of this data 
+presents both a practical challenge --- how should 
+scientists find the information most relevant to them? 
+--- and a valuable case-study in the difficulties and 
 possibilities for curating multi-disiplinary 
 information spaces unified around a common 
-scientific theme and research project (in this case, 
+scientific theme (in this case, 
 determining how best to treat Covid-19 and to 
 mitigate the global SARS-CoV-2 pandemic).}
 
@@ -144,16 +162,11 @@ review their distinct paradigms for
 data acquisition, analysis, and modeling.  
 The point of these expositions is to bring 
 the reader from conceiving \q{data} as something 
-abstract and amorphous, to understand 
+abstract and amorphous, to understanding 
 data as the building-blocks of scientific 
-research and scientific claims.  We 
-want readers to have some awareness, when 
-hearing or assessing claims made by either 
-domain experts or public officials, the 
-provenance and history of the data behind these 
-claims.  One way to supply this backstory 
+research and biomedical claims.  One way to supply this backstory 
 is to examine Covid-19 data from the viewpoint 
-of software engineering --- to demonstrate 
+of software engineering: to demonstrate 
 the methodology for data acquisition and 
 management from the perspective of programmers 
 implementing software which manipulates Covid-19 data.  
@@ -184,12 +197,13 @@ pandemic is a unique case-study in data
 curation and integration.  From this perspective, 
 the Covid-19 data ecosystem is a concrete example 
 through which theories of data integration can 
-be presented and put to the test.}
+be presented and exercised.}
 
 \subsection{Data Integration in the Covid-19 Context}
 \p{There are two distinct phenomena which render 
 inter-disciplinary data integration significant for 
-Covid-19.  First, certain forms of analysis explicitly 
+Covid-19 in particular, and clinical/biomedical practices 
+in general.  First, certain forms of analysis explicitly 
 combine information or statistical parameters from 
 distinct subject areas.  For example, in addition 
 to epidemiological models of SARS-Cov-2 within an 
@@ -198,36 +212,36 @@ present or projected spread of the disease among
 different social groups, identified by age, gender, 
 race, economic status, and so forth.  This form 
 of analysis will therefore merge epidemiological 
-and sociodemographic data and methods.  This is an 
-example of analysis where it is explicitly necessary 
-to pool data which is typically represented 
-via different schema, and accessed via different 
-protocols, into a single algorithm or computational 
-environment.  The current volume will therefore 
+and sociodemographic data and methods; as such it is an 
+instance of analyses wherein it is explicitly necessary 
+to pool data that is typically represented 
+via different schemas, and accessed via different 
+protocols, into a single algorithmic or computational 
+environment.  This volume will therefore 
 examine cross-disciplinary analysis along these 
 lines as case studies of data integration on a procedural 
 level: how computer code can obtain and marshal heterogeneous 
-data into a common form suitable for (often quantitative) analysis.} 
+data into a common form suitable for qualitative and quantitative analysis.} 
    
 \p{The second context where multi-disciplinary integration 
 becomes relevant operates at a higher level: the development 
 of heterogenous information spaces which can absorb 
 data from many environments, evincing a variety of 
-disciplinary orientations.  The demand for such heterogeneous 
-repositories is often practical and logistical: institutions 
-will curate a single, coprehensive data ecosystem shared 
+disciplinary orientations.  The rationale for such heterogeneous 
+repositories is often practical and logistical; institutions 
+have operational reasons for curating a single, comprehensive data ecosystem shared 
 by multiple information producers and consumers, such as 
 a \q{Semantic Data Lake}.  In these situations, one 
 large central repository will take the place of numerous 
 narrower, domain-specific databases.  A central repository 
 may be subdivided into smaller components implementing 
-narrower protocols; a clinical software network may provide 
+narrower protocols --- a clinical software network may provide 
 diagnostic images via a \PACS{} (Picture Archiving and Communication 
 System) service, and treatment/outcome data via an 
 \EMR{} (Electronic Medical Record) architecture.  The 
 structure and use of data in these two environments 
---- \PACS{} and \EMR{} --- is very different.  Nevertheless, 
-clinical institutions will often unify these systems into 
+(\PACS{} and \EMR{}) is very different.  Nevertheless, 
+institutions will often unify these systems into 
 a single data platform, for logistical reasons: it 
 is more convenient for doctors and researchers to 
 have a single access point, a single login account, 
@@ -270,8 +284,11 @@ text mining and software development.}
 
 \section{Table of Contents}
 
-
 \begin{description}
+
+\item[Foreword (Invited)]
+
+\item[Authors' Introduction]
 
 \item[Part I: Architecting Data Models for Scientific Disciplines Associated with Covid-19]
 
@@ -303,7 +320,7 @@ distributed software networks.
 \begin{summary}
 This chapter will focus on information germane to identifying Covid-19 infections.  
 It will be centered on diagnostic imaging, but will also consider 
-the structure of data generated by Covid-19 tests or for 
+the structure of data generated by Covid-19 tests or 
 biometric indicators of possible SARS-Cov-2 infection.
 \end{summary}
 
@@ -321,7 +338,7 @@ how these magnitudes are assessed both empirically and theoretically.
 \item Chapter 5: Modeling Clinical Data in the Covid-19 Patient Population  
 
 \begin{summary}
-This chapter will examing medical record in the context of 
+This chapter will examing medical records, in the context of 
 Covid-19 as a case-study: formats for representing 
 diagnostic, treatment, and outcome data in a clinical setting, 
 and the construction of patient cohorts.  Focus will be 
@@ -329,7 +346,6 @@ placed on one specific technology --- the
 Clinical Looking Glass software application and Object Model --- 
 as a representative example of how patient-centered 
 data is structured and queried.
-
 \end{summary}
 
 \end{itemize}
@@ -351,59 +367,136 @@ sufficiently generic data structures appropriate
 for cross-disciplinary integrated ontologies.   
 \end{summary}
 
-\item Chapter 7: Scientific Workflows and Inter-Application Networking: reviewing data pipelines commonly used in Covid-19 research
+\item Chapter 7: Scientific Workflows and Inter-Application Networking: Reviewing data pipelines commonly used in Covid-19 research
 
 \begin{summary}
-This chapter ...
+This chapter will focus on \API{}s, command-line interfaces, 
+and related technologies through which software components 
+communicate with one another.  The purpose of this review is 
+to direct attention not at specific procedures which are 
+implemented within a given software component, but rather 
+how components expose functionality to the 
+\q{outside world}.  This review can then set the 
+stage for a more internal focus in the following chapter. 
 \end{summary}
 
-\item Chapter 8: Formal Procedural Models: representing computational procedures applicable 
+\item Chapter 8: Formal Procedural Models: Representing computational procedures applicable 
 to Covid-19
 
 \begin{summary}
-This chapter ...
+This chapter will concentrate more rigorously on individual 
+procedures implemented within software component.  
+The goal is to use external interface models (discussed 
+in the previous chapter) as entry-points to analyzing 
+components at a procedural level: a good method for 
+analyzing software functionality is to examine how 
+internal procedures provide the capabilities exposed 
+to an external interface.  On this basis we will 
+develop a general model of procedural properties 
+which adequately represents computational logic 
+across different programming languages and 
+software-development methodologies.   
 \end{summary}
 
 \item Chapter 9: Integrating Procedural and Data Models
 
 \begin{summary}
-This chapter ...
+This chapter will unify the discussion within the prior 
+three chapters, which will have yielded first a 
+general and cross-domain model of data structures, and 
+second a paradigm-agnostic model of procedural logic.  
+The current chapter will merge both models into an 
+overarching paradigm, exploiting the fact that 
+procedural types and requirements are representable 
+as data structures in their own right. 
 \end{summary}
 
 \item Chapter 10: Type Theories for Procedural Data Modeling
 
 \begin{summary}
-This chapter ...
+This chapter will provide a formal structure supporting 
+the analysis developed in Chapter 9.  The priority 
+in this chapter is codifying a hypergraph-based 
+type theory, one which exploits the hypergraph context 
+to concretely anchor a type system: each inhabited 
+type is by definition an attribute of one or more 
+hypernodes.  This starting-point, along with the 
+specification of a particular genre of 
+\q{channelized} hypergraphs (introduced preliminarily in 
+Nathaniel Christen's chapter in Amy Neustein's 
+just-published \textit{Advances in Ubiquitous Computing} 
+volume), permits the construction of a general-purpose 
+type theory applicable to most programming environments.  
 \end{summary}
 
 \end{itemize}
 
-\item[Part III: Software Development Methods for Covid-19]
+\item[Part III: Text and Data Mining for Covid-19]
 
 \begin{itemize}
 
-\item Chapter 11: Applying Data Mining techniques to Covid-19 Research Corpora
+\item Chapter 11: Applying Data Mining Techniques to Covid-19 Research Corpora
 
 \begin{summary}
-This chapter ...
+This chapter will take a concrete look at research data published 
+in conjunction with Covid-19 data-sharing initiatives.  
+The machinery of the prior chapters will be leveraged 
+to examine this existing data in a rigorous fashion, 
+using formally described data types and hypergraph 
+meta-models as methodologically tools in surveying the 
+Covid-19 data ecosystem.
 \end{summary}
 
 \item Chapter 12: Text Mining of Covid-19 Publication Archives
 
 \begin{summary}
-This chapter ...
+This chapter will examine Covid-19 corpora with a concrete 
+focus that overlaps with Chapter 11's, but with an emphasis 
+on text rather than data mining.  The goal of the 
+present chapter is to review publishers' efforts to 
+provide open-access document corpora to support 
+Covid-19 research, and to demonstrate how text 
+mining tools can make these corpora more valuable.
 \end{summary}
 
-\item Chapter 13: Human-Computer Interaction Approaches for Covid-19 software 
+\item Chapter 13: Human-Computer Interaction Approaches for Covid-19 Software 
 
 \begin{summary}
-This chapter ...
+This chapter will apply hypergraph-based type theory 
+(as developed in Part II) to \HCI{} methodology, 
+with Covid-19 Text and Data Mining (\TDM{}) as a case-study.  
+The goal of this chapter is to consider \TDM{} software 
+targeting Covid-19 corpora as concrete examples illustrating 
+how \HCI{} concerns may be analyzed through the lens 
+of the data models and type systems developed earlier in 
+the volume. 
 \end{summary}
+
+\item Chapter 14: Using Text-Mining Tools to Extract Medical History 
+from Clinical Narratives  
+
+\begin{summary}
+This chapter will examine how text-mining technology considered 
+in Chapter 12 may be applied to clinical and patient narratives ...  
+\end{summary}
+
+
+\item Chapter 15: Annotating Patient Narratives for Emerging 
+Covid-19 Symptomatology 
+
+\begin{summary}
+This chapter will introduce techniques for encoding 
+rhetorical structures identified within patient 
+narratives ...  
+\end{summary}
+
 
 \end{itemize}
 
 \end{description}
 
+%\end{spacing}
+%}
 
 \end{document}
 
