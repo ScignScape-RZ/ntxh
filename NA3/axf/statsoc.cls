@@ -102,7 +102,7 @@
 %%%%%%
   \@settopoint\oddsidemargin
 %%%%%%Updation
-\setlength\evensidemargin  {3.5pc}
+\setlength\evensidemargin  {4pc}
 %%\setlength\evensidemargin   {0pc}
 %%%%%%
   \@settopoint\evensidemargin
