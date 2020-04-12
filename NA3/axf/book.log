@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  12 APR 2020 09:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  12 APR 2020 10:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -508,38 +508,58 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \mathdisplay@stack=\toks34
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
-) (./book.aux
-\statsocwidth@a=\dimen169
 )
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/enumitem/enumitem.s
+ty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip52
+\enit@outerparindent=\dimen169
+\enit@toks=\toks35
+\enit@inbox=\box40
+\enitdp@description=\count130
+)
+
+! Package xcolor Error: Undefined color `grey'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \colorlet{rgrey}{red!30!grey}
+                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+(./book.aux)
 \openout1 = `book.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count130
+\scratchcounter=\count131
 \scratchdimen=\dimen170
-\scratchbox=\box40
-\nofMPsegments=\count131
-\nofMParguments=\count132
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count133
+\scratchbox=\box41
+\nofMPsegments=\count132
+\nofMParguments=\count133
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count134
 \MPscratchDim=\dimen171
-\MPnumerator=\count134
-\makeMPintoPDFobject=\count135
-\everyMPtoPDFconversion=\toks36
+\MPnumerator=\count135
+\makeMPintoPDFobject=\count136
+\everyMPtoPDFconversion=\toks37
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/epstopdf-b
 ase.sty
@@ -603,17 +623,17 @@ f-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 41.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 78.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <11> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 41.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 78.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 41.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 78.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 41.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 78.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -650,14 +670,14 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for OT1+qcr on input line 138.
+LaTeX Font Info:    Try loading font information for OT1+qcr on input line 175.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/ot1qcr.fd
 File: ot1qcr.fd 2009/09/25 v1.2 font definition file for OT1/qcr
 )
 LaTeX Font Info:    Try loading font information for OT1+Cabin-TLF on input lin
-e 138.
+e 175.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/OT1Cabin-TLF.
 fd
@@ -665,52 +685,42 @@ File: OT1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for OT1/Cabin-TLF.
 
 ) [1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pd
 ftex.map}] [2]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 242.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 279.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 242.
+(Font)              size <5> substituted on input line 279.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 242.
+(Font)              size <5> substituted on input line 279.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 242.
+(Font)              size <5> substituted on input line 279.
 
-LaTeX Font Info:    Try loading font information for U+lasy on input line 242.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 279.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 242.
+(Font)              size <5> substituted on input line 279.
 
-
-Overfull \hbox (2.25363pt too wide) in paragraph at lines 242--243
-[]\OT1/cmr/m/n/10.95 Chapter 1:
- []
-
-
-Overfull \hbox (4.72781pt too wide) in paragraph at lines 263--264
-[]\OT1/cmr/m/n/10.95 Chapter 11: Ap-ply-ing Data Min-ing tech-niques
- []
-
-[3] (./book.aux)
+[3] [4] (./book.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 13527 strings out of 492649
- 268385 string characters out of 6122986
- 316099 words of memory out of 5000000
- 17131 multiletter control sequences out of 15000+600000
+ 13811 strings out of 492649
+ 273173 string characters out of 6122986
+ 322517 words of memory out of 5000000
+ 17411 multiletter control sequences out of 15000+600000
  24963 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,6n,56p,434b,226s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,7n,56p,434b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/cabin/cbn_g
 i6ftn.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/tex
 -gyre/q-rmm.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
@@ -724,10 +734,10 @@ me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.p
 fb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/helvetic/u
 hvr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on book.pdf (3 pages, 100309 bytes).
+Output written on book.pdf (4 pages, 102581 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
