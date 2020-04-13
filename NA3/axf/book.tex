@@ -31,8 +31,10 @@
 \newcommand{\EMR}{\resizebox{!}{7pt}{\AcronymText{EMR}}}
 
 \newcommand{\HCI}{\resizebox{!}{7pt}{\AcronymText{HCI}}}
-
 \newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
+
+\newcommand{\sHCI}{\resizebox{!}{6.5pt}{\AcronymText{HCI}}}
+\newcommand{\sTDM}{\resizebox{!}{6.5pt}{\AcronymText{TDM}}}
 
 
 \newcommand{\visavis}{vis-\`a-vis}
@@ -101,37 +103,39 @@
 Manuscript Submission Date: August 31, 2020\\
 
 {\fontsize{10}{14}\selectfont
-\section{Introduction}
+\section{PROJECT SUMMARY}
 
+\subsection{Purpose/Summary of the Project}
 \p{The Covid-19 pandemic has inspired an unprecedented 
 convergence of scientific research, driven in part 
 by publishers choosing to allow open public access 
-to many research papers and published data 
+to many research papers and data sets 
 relevant to Covid-19 (the disease) and SARS-CoV-2 
 (the viral agent).  The sheer volume of this data 
 presents both a practical challenge --- how should 
-scientists find the information most relevant to them? 
+scientists find the information most relevant to them 
 --- and a valuable case-study in the difficulties and 
-possibilities for curating multi-disiplinary 
+possibilities for curating multi-disciplinary 
 information spaces unified around a common 
-scientific theme (in this case, 
-determining how best to treat Covid-19 and to 
-mitigate the global SARS-CoV-2 pandemic).}
+scientific theme: in this case, 
+determining how best to approach Covid-19 and to 
+mitigate the global SARS-CoV-2 pandemic.}
 
-\p{In a matter of mere weeks, the scientific and publication 
+\p{In a matter of mere weeks, the scientific and publishing 
 community has essentially engineered the origination of 
-an entirely new data ecosystem, unified around the 
+an entirely new data ecosystem, centered around the 
 challenges of studying and predicting properties 
 of Covid-19 and SARS-CoV-2 at the molecular, genomic, 
 epidemiological, clinical, and public-health levels.  
 In many respects, this ecosystem has emerged 
-haphazardly, with the rush to publicly share 
-text and data taking priority over rigorous 
-curation and accuracy.  In this context, 
-scientists and policymakers may benefit from a 
+haphazardly.  There appears to be a rush to publicly 
+share text and data which has taken priority over 
+rigorous curation and accuracy.  In this context, 
+we are proposing a volume for scientists, computer 
+scientists, and policymakers who may benefit from a 
 volume which provides a critical and analytic 
 overview of the Covid-19 data ecosystem: the 
-different genres of data which are marshalled 
+different genres of data which are marshaled 
 toward scientific investigation of Covid-19 
 and SARS-CoV-2; how this data is obtained, 
 consumed, analyzed, and interpreted; how 
@@ -139,16 +143,10 @@ research data supports scientific claims
 pertaining to Covid-19's biological and 
 epidemiological mechanisms and trajectory; 
 and how these scientific claims should 
-translate into public policy, taking into 
-consideration both the importance of 
-basing government actions on empirical data and 
-the gaps in scientific knowledge which make 
-such data inexact and provisional.} 
+translate into public policy.} 
 
-\subsection{Audience}
-\p{Against this background, our proposed volume 
-will be directed at two distinct audiences.  
-At one level, we intend to examine the 
+%\subsection{Audience}
+\p{At one level, we intend to examine the 
 operational logistics of Covid-19 data: its 
 structures, protocols, analytic methodology, 
 and empirical significance.  That is, we 
@@ -156,7 +154,7 @@ intend to identify the distinct scientific
 disciplines which each concern one facet 
 of Covid-19 research --- molecular biology, 
 genomics, radiology, epidemiology, clinical 
-informatics, and their variatious subfields 
+informatics, and their various subfields 
 --- and, for each of these disciplines, 
 review their distinct paradigms for 
 data acquisition, analysis, and modeling.  
@@ -187,6 +185,8 @@ Covid-19 information from the realm of
 laboratories and experiments to the realm of 
 public health and policy.}
 
+%\p{Our volume will be directed at two distinct audiences.  
+
 \p{Apart from that topical focus --- the analysis 
 of Covid-19 data as a concrete ecosystem 
 manifest in standardized formats, global 
@@ -199,7 +199,7 @@ the Covid-19 data ecosystem is a concrete example
 through which theories of data integration can 
 be presented and exercised.}
 
-\subsection{Data Integration in the Covid-19 Context}
+%\subsection{Data Integration in the Covid-19 Context}
 \p{There are two distinct phenomena which render 
 inter-disciplinary data integration significant for 
 Covid-19 in particular, and clinical/biomedical practices 
@@ -225,7 +225,7 @@ data into a common form suitable for qualitative and quantitative analysis.}
    
 \p{The second context where multi-disciplinary integration 
 becomes relevant operates at a higher level: the development 
-of heterogenous information spaces which can absorb 
+of heterogeneous information spaces which can absorb 
 data from many environments, evincing a variety of 
 disciplinary orientations.  The rationale for such heterogeneous 
 repositories is often practical and logistical; institutions 
@@ -235,7 +235,7 @@ a \q{Semantic Data Lake}.  In these situations, one
 large central repository will take the place of numerous 
 narrower, domain-specific databases.  A central repository 
 may be subdivided into smaller components implementing 
-narrower protocols --- a clinical software network may provide 
+narrower protocols --- e.g., a clinical software network may provide 
 diagnostic images via a \PACS{} (Picture Archiving and Communication 
 System) service, and treatment/outcome data via an 
 \EMR{} (Electronic Medical Record) architecture.  The 
@@ -261,7 +261,7 @@ which can accommodate a diversity of data models, and
 this diversity presents technological challenges.  
 It appears that Covid-19 demonstrates the problems 
 engendered by these complexities in a tangible way, 
-insofar as health and governmental officials have criticised 
+insofar as health and governmental officials have criticized 
 the lack of integrated data across disciplinary and 
 jurisdictional boundaries --- poor coordination between 
 city, state, and federal governments in the US, for 
@@ -275,12 +275,22 @@ technology in the future.}
 \p{The volume will therefore be organized in a pattern 
 which progresses from domain-specific to integrative 
 styles of analysis: the first part will focus on data 
-models and protocols within individual disiplines 
-relevant to Covid-19, while the second part will discuss 
-cross-disiplinary integration at both a theoretical and 
+models and protocols within individual disciplines, 
+while the second part will discuss 
+cross-disciplinary integration at both a theoretical and 
 practical level.  The third part will then delve deeper 
 into integrative paradigms in several areas, particularly 
 text mining and software development.}  
+
+\subsection{Coverage and Approach}
+
+\p{As just outlined,  }
+
+
+\subsection{Competition}
+
+\p{As just outlined,  }
+
 
 \section{Table of Contents}
 
@@ -301,7 +311,7 @@ investigation of SARS-Cov-2's viral mechanisms.  It will
 consider how data modeling the pathogen's proteins, 
 physical structure, and interactions with human cells 
 is collected and utilized.  Emphasis will be placed 
-on cheminformatic pipelines and protocols for 
+on \makebox{cheminformatic} pipelines and protocols for 
 working with molecular-biological information.   
 \end{summary}
 
@@ -327,18 +337,18 @@ biometric indicators of possible SARS-Cov-2 infection.
 \item Chapter 4: Reviewing Epidemiological Structures and Methodology for SARS-Cov-2 Research
 
 \begin{summary}
-This chapter will consider epidemiological modeling both \textit{a posteriori}, 
-via empirical clinical data, and simulations, analyses which try to 
-predict different possible trajectories for the Covid-19 pandemic.  
+This chapter will consider epidemiological modeling both \textit{a posteriori}
+(via empirical clinical data) and via simulations (which try to 
+predict different possible trajectories for the Covid-19 pandemic).  
 The chapter will review fundamental epidemiologic measures such 
-as infection and transmission rate, mortality, and R$_O$, documenting 
-how these magnitudes are assessed both empirically and theoretically. 
+as infection and transmission rate, mortality rate, and R$_O$ --- 
+documenting how these magnitudes are assessed both empirically and theoretically. 
 \end{summary}
 
 \item Chapter 5: Modeling Clinical Data in the Covid-19 Patient Population  
 
 \begin{summary}
-This chapter will examing medical records, in the context of 
+This chapter will examine medical records, in the context of 
 Covid-19 as a case-study: formats for representing 
 diagnostic, treatment, and outcome data in a clinical setting, 
 and the construction of patient cohorts.  Focus will be 
@@ -362,12 +372,13 @@ specific information domains and, via ontology integration,
 to construct unified knowledge systems that encompass 
 multiple domains.  The chapter will present varieties 
 of hypergraphs as generic data containers applicable 
-to heterogenous domains, with the goal of identifying 
+to heterogeneous domains, with the goal of identifying 
 sufficiently generic data structures appropriate 
 for cross-disciplinary integrated ontologies.   
 \end{summary}
 
-\item Chapter 7: Scientific Workflows and Inter-Application Networking: Reviewing data pipelines commonly used in Covid-19 research
+\item Chapter 7: Scientific Workflows and Inter-Application Networking: 
+Reviewing data pipelines commonly used in Covid-19 research
 
 \begin{summary}
 This chapter will focus on \API{}s, command-line interfaces, 
@@ -375,20 +386,21 @@ and related technologies through which software components
 communicate with one another.  The purpose of this review is 
 to direct attention not at specific procedures which are 
 implemented within a given software component, but rather 
-how components expose functionality to the 
-\q{outside world}.  This review can then set the 
-stage for a more internal focus in the following chapter. 
+to show how components expose functionality to the 
+\q{outside world.}  This review sets the 
+stage for a more internal focus (implementation 
+details within a software component) in the following chapter. 
 \end{summary}
 
-\item Chapter 8: Formal Procedural Models: Representing computational procedures applicable 
-to Covid-19
+\item Chapter 8: Formal Procedural Models: Representing 
+computational procedures applicable to Covid-19
 
 \begin{summary}
 This chapter will concentrate more rigorously on individual 
-procedures implemented within software component.  
+procedures implemented within software components.  
 The goal is to use external interface models (discussed 
 in the previous chapter) as entry-points to analyzing 
-components at a procedural level: a good method for 
+components at a procedural level: viz., a good method for 
 analyzing software functionality is to examine how 
 internal procedures provide the capabilities exposed 
 to an external interface.  On this basis we will 
@@ -402,9 +414,9 @@ software-development methodologies.
 
 \begin{summary}
 This chapter will unify the discussion within the prior 
-three chapters, which will have yielded first a 
-general and cross-domain model of data structures, and 
-second a paradigm-agnostic model of procedural logic.  
+three chapters, which will have yielded, first, a 
+general and cross-domain model of data structures and, 
+second, a paradigm-agnostic model of procedural logic.  
 The current chapter will merge both models into an 
 overarching paradigm, exploiting the fact that 
 procedural types and requirements are representable 
@@ -443,7 +455,7 @@ in conjunction with Covid-19 data-sharing initiatives.
 The machinery of the prior chapters will be leveraged 
 to examine this existing data in a rigorous fashion, 
 using formally described data types and hypergraph 
-meta-models as methodologically tools in surveying the 
+meta-models as methodological tools in surveying the 
 Covid-19 data ecosystem.
 \end{summary}
 
@@ -451,7 +463,7 @@ Covid-19 data ecosystem.
 
 \begin{summary}
 This chapter will examine Covid-19 corpora with a concrete 
-focus that overlaps with Chapter 11's, but with an emphasis 
+focus that overlaps with that of Chapter 11, but with an emphasis 
 on text rather than data mining.  The goal of the 
 present chapter is to review publishers' efforts to 
 provide open-access document corpora to support 
@@ -463,12 +475,12 @@ mining tools can make these corpora more valuable.
 
 \begin{summary}
 This chapter will apply hypergraph-based type theory 
-(as developed in Part II) to \HCI{} methodology, 
-with Covid-19 Text and Data Mining (\TDM{}) as a case-study.  
-The goal of this chapter is to consider \TDM{} software 
+(as developed in Part II) to \sHCI{} methodology, 
+with Covid-19 Text and Data Mining (\sTDM{}) as a case-study.  
+The goal of this chapter is to consider \sTDM{} software 
 targeting Covid-19 corpora as concrete examples illustrating 
-how \HCI{} concerns may be analyzed through the lens 
-of the data models and type systems developed earlier in 
+how \sHCI{} concerns may be analyzed through the lens 
+of the data models and type systems presented earlier in 
 the volume. 
 \end{summary}
 
@@ -477,7 +489,10 @@ from Clinical Narratives
 
 \begin{summary}
 This chapter will examine how text-mining technology considered 
-in Chapter 12 may be applied to clinical and patient narratives ...  
+in Chapter 12 may be applied to clinical and patient narratives 
+for the purpose of extracting relevant patient data, 
+pharmacological data, and epidemiological data, to improve 
+patient care.  
 \end{summary}
 
 
@@ -487,7 +502,12 @@ Covid-19 Symptomatology
 \begin{summary}
 This chapter will introduce techniques for encoding 
 rhetorical structures identified within patient 
-narratives ...  
+narratives where patients describe their first-hand 
+experiential symptomology associated with Covid-19.  
+These subjective descriptions can be found 
+on social media websites and in the patient histories 
+uploaded to portals which are made part of the overall 
+Electronic Health Records.
 \end{summary}
 
 
