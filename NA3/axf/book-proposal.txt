@@ -1,108 +1,3 @@
-
-\documentclass{statsoc}
-
-\usepackage[a4paper, outer=1cm, inner=1cm,top=2cm,bottom=1.8cm]{geometry}
-
-\usepackage[T1]{fontenc}
-
-\usepackage{tgbonum}
-
-\usepackage{graphicx}
-\usepackage[textwidth=8em,textsize=small]{todonotes}
-\usepackage{amsmath}
-\usepackage{natbib}
-
-\newcommand{\p}[1]{
-
-\vspace{.75em}#1}
-
-\setlength{\parindent}{0pt}
-
-\colorlet{orr}{orange!60!red}
-\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
-						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
-\newcommand{\AcronymText}[1]{{\textscc{#1}}}
-
-
-\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
-\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
-
-\newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
-\newcommand{\EMR}{\resizebox{!}{7pt}{\AcronymText{EMR}}}
-
-\newcommand{\HCI}{\resizebox{!}{7pt}{\AcronymText{HCI}}}
-\newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
-
-\newcommand{\sHCI}{\resizebox{!}{6.5pt}{\AcronymText{HCI}}}
-\newcommand{\sTDM}{\resizebox{!}{6.5pt}{\AcronymText{TDM}}}
-
-
-\newcommand{\visavis}{vis-\`a-vis}
-
-\usepackage{enumitem}
-\usepackage{setspace}
-
-\setlist[itemize]{topsep=20pt,before=\leavevmode\vspace{-1.5em}}
-
-
-\colorlet{dsl}{purple!20!brown}
-\colorlet{dslr}{dsl!50!blue}
-
-\setlist[description]{%
-  topsep=10pt,
-  labelsep=12pt,
-  itemsep=12pt,               % space between items
-  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
-  style=nextline 
-}
-
-\colorlet{rgrey}{red!30!grey}
-
-
-\newif\ifSummaryInText
-\SummaryInTexttrue
-
-\makeatletter
-\long\def\grabsummary#1#2\end{%
-  \applydraftsummary{#2}
-  \end}
-
-\long\def\applydraftsummary#1{%
-\vspace{-2pt}
-  \noindent\hfil\textcolor{rgrey!50!purple}{\rule{0.5\textwidth}{.4pt}}\hfil 
-
-  \vspace{-2pt}{%
-{\fontfamily{phv}\fontsize{9}{11}\selectfont #1}
-}\\\vspace{-20pt}
-  {\begin{center}\textcolor{rgrey!50}{\rule{0.5\textwidth}{.4pt}}\end{center}}}
-
-\newenvironment{summaryx}[1][0]{\let\BEGIN\begin\let\END\end\grabsummary{#1}}{}%
-\makeatother
-
-
-\newenvironment{summary}{\\\vspace{-4pt}%
-%
-%
-\noindent\hfil\textcolor{rgrey!50!purple}{\rule{0.5\textwidth}{.4pt}}\hfil
-
-\hspace{-2cm}\begin{minipage}{1.02\textwidth}\fontfamily{phv}\fontsize{9}{11}\selectfont}%
-{\\\vspace{-1em}\end{minipage}
-%\vspace*{-2em}
-{\begin{center}\textcolor{rgrey!50!yellow}{\rule{0.5\textwidth}{.4pt}}\end{center}}
-\vspace{2em}}%
-
-
-\title[Cross-Disciplinary Data Integration for Covid-19]{Cross-Disciplinary Data Integration Models for the New Covid-19 Data Ecosystem}
-\author[Amy Neustein]{Amy Neustein}
-\author[Amy Neustein]{Nathaniel Christen}
-
-\begin{document}
-
-\vspace{1em}
-\noindent{}Approx 250 pages: 15 chapters\\
-Manuscript Submission Date: October 15, 2020\\
-
-{\fontsize{10}{14}\selectfont
 \section{PROJECT SUMMARY}
 
 \subsection{Purpose/Summary of the Project}
@@ -114,25 +9,24 @@ relevant to Covid-19 (the disease) and SARS-CoV-2
 (the viral agent).  The sheer volume of this data 
 presents both a practical challenge --- how should 
 scientists find the information most relevant to them 
---- and a valuable case-study in the obstacles presented 
-in the curation of multi-disciplinary 
-information spaces, unified around a common 
+--- and a valuable case-study in the difficulties and 
+possibilities for curating multi-disciplinary 
+information spaces unified around a common 
 scientific theme: in this case, 
 determining how best to approach Covid-19 and to 
 mitigate the global SARS-CoV-2 pandemic.}
 
-\p{In a matter of weeks, the scientific and publishing 
+\p{In a matter of mere weeks, the scientific and publishing 
 community has essentially engineered the origination of 
 an entirely new data ecosystem, centered around the 
 challenges of studying and predicting properties 
 of Covid-19 and SARS-CoV-2 at the molecular, genomic, 
 epidemiological, clinical, and public-health levels.  
-In many respects, this ecosystem has emerged somewhat 
-haphazardly: there appears to be a rush to publicly 
-share text and data, which has taken priority over 
+In many respects, this ecosystem has emerged 
+haphazardly.  There appears to be a rush to publicly 
+share text and data which has taken priority over 
 rigorous curation and accuracy.  In this context, 
-we are proposing a volume for scientists, 
-biostatisticians, computer 
+we are proposing a volume for scientists, computer 
 scientists, and policymakers who may benefit from a 
 volume which provides a critical and analytic 
 overview of the Covid-19 data ecosystem: the 
@@ -152,9 +46,9 @@ operational logistics of Covid-19 data: its
 structures, protocols, analytic methodology, 
 and empirical significance.  That is, we 
 intend to identify the distinct scientific 
-disciplines, each of which is aimed at one 
-particular facet of Covid-19 research --- molecular 
-biology, genomics, radiology, epidemiology, clinical 
+disciplines which each concern one facet 
+of Covid-19 research --- molecular biology, 
+genomics, radiology, epidemiology, clinical 
 informatics, and their various subfields 
 --- and, for each of these disciplines, 
 review their distinct paradigms for 
@@ -167,38 +61,40 @@ research and biomedical claims.  One way to supply this backstory
 is to examine Covid-19 data from the viewpoint 
 of software engineering: to demonstrate 
 the methodology for data acquisition and 
-management from the perspective of programmers, 
+management from the perspective of programmers 
 implementing software which manipulates Covid-19 data.  
 This explication would therefore examine the 
 data structures, file formats, \API{} protocols, 
 and other technical details intrinsic to writing 
 code which works with Covid-19 data as a 
-digital artifact.  Though such an exposition might be 
+digital artifact.  Such an exposition might be 
 of interest to programmers who actually are 
-writing Covid-19-related code, the primary 
+writing Covid-19-related code, but the primary 
 goal of these discussions will be to help 
 scientists (who may be well-versed in data 
 structures relevant to their specialization 
 but less so \visavis{} other disciplines), 
-policymakers, and a discerning general public understand 
+policymakers, and the general public understand 
 the technical chains which transform 
 Covid-19 information from the realm of 
 laboratories and experiments to the realm of 
-public policy and public health.}
+public health and policy.}
 
 %\p{Our volume will be directed at two distinct audiences.  
 
-\p{Apart from that topical focus geared toward scientists and 
-policymakers, this book will also satisfy a 
-more theoretical and IT-focused audience for whom the 
+\p{Apart from that topical focus --- the analysis 
+of Covid-19 data as a concrete ecosystem 
+manifest in standardized formats, global 
+identifiers, and other concrete information 
+artifacts --- we also intend to write for a 
+more theoretical audience for whom the 
 pandemic is a unique case-study in data 
 curation and integration.  From this perspective, 
 the Covid-19 data ecosystem is a concrete example 
-through which theories of cross-disciplinary data integration 
-can be presented.}
+through which theories of data integration can 
+be presented and exercised.}
 
 %\subsection{Data Integration in the Covid-19 Context}
-
 \p{There are two distinct phenomena which render 
 inter-disciplinary data integration significant for 
 Covid-19 in particular, and clinical/biomedical practices 
@@ -211,38 +107,37 @@ present or projected spread of the disease among
 different social groups, identified by age, gender, 
 race, economic status, and so forth.  This form 
 of analysis will therefore merge epidemiological 
-and sociodemographic data and methods, as such it is an 
+and sociodemographic data and methods; as such it is an 
 instance of analyses wherein it is explicitly necessary 
 to pool data that is typically represented 
-via different schemas --- and accessed via different 
-protocols --- into a single algorithmic or computational 
+via different schemas, and accessed via different 
+protocols, into a single algorithmic or computational 
 environment.  This volume will therefore 
 examine cross-disciplinary analysis along these 
 lines as case studies of data integration on a procedural 
 level: how computer code can obtain and marshal heterogeneous 
-data into a common form suitable for 
-qualitative and quantitative analyses.} 
+data into a common form suitable for qualitative and quantitative analysis.} 
    
 \p{The second context where multi-disciplinary integration 
 becomes relevant operates at a higher level: the development 
 of heterogeneous information spaces which can absorb 
 data from many environments, evincing a variety of 
 disciplinary orientations.  The rationale for such heterogeneous 
-repositories is often practical and logistical: institutions 
-have operational reasons for curating a single, comprehensive data ecosystem 
-that is shared by multiple information producers and consumers, such as 
-a \q{Semantic Data Lake.}  In these situations, one 
+repositories is often practical and logistical; institutions 
+have operational reasons for curating a single, comprehensive data ecosystem shared 
+by multiple information producers and consumers, such as 
+a \q{Semantic Data Lake}.  In these situations, one 
 large central repository will take the place of numerous 
 narrower, domain-specific databases.  A central repository 
 may be subdivided into smaller components implementing 
 narrower protocols --- e.g., a clinical software network may provide 
 diagnostic images via a \PACS{} (Picture Archiving and Communication 
 System) service, and treatment/outcome data via an 
-\EMR{} (Electronic Medical Record) architecture.  It is understood 
-that the structure and use of data in these two environments 
+\EMR{} (Electronic Medical Record) architecture.  The 
+structure and use of data in these two environments 
 (\PACS{} and \EMR{}) is very different.  Nevertheless, 
 institutions will often unify these systems into 
-a single data platform for logistical reasons: it 
+a single data platform, for logistical reasons: it 
 is more convenient for doctors and researchers to 
 have a single access point, a single login account, 
 a single query framework, etc., which accesses the 
@@ -253,28 +148,27 @@ activities.}
 challenges which are different from granular 
 syntheses of heterogeneous data into a single 
 procedural/algorithmic context.  Disparate data structures 
-in a heterogenous archive, such as a \q{Data Lake,} may 
+in a heterogenous archive, such as a \q{Data Lake}, may 
 never be directly combined in a single computation.  
 Nevertheless, Data Lakes and their kin seek to 
 provide a single software, query, and accession infrastructure 
-which can presumably accommodate a diversity of data models, and 
-this diversity certainly presents technological challenges.  
-And in fact, Covid-19 demonstrates the problems 
+which can accommodate a diversity of data models, and 
+this diversity presents technological challenges.  
+It appears that Covid-19 demonstrates the problems 
 engendered by these complexities in a tangible way, 
 insofar as health and governmental officials have criticized 
 the lack of integrated data across disciplinary and 
 jurisdictional boundaries --- poor coordination between 
 city, state, and federal governments in the US, for 
 example, as well as between medical and governmental institutions.  
-Covid-19 therefore presents a case-study in the challenges 
-of implementing large-scale heterogeneous data repositories.  
-\textit{The purpose of this volume in addition to 
-reviewing Covid-19 data models, is to offer theoretical analyses 
-and practical recommendations to improve such 
-technology for the present and future.}} 
+Covid-19 therefore offers a case-study in the challenges 
+of implementing large-scale heterogeneous data repositories, 
+and we intend to offer theoretical analyses and practical 
+recommendations which could potentially improve such 
+technology in the future.} 
 
-\p{The volume will therefore be organized structurally in a 
-format which progresses from domain-specific to integrative 
+\p{The volume will therefore be organized in a pattern 
+which progresses from domain-specific to integrative 
 styles of analysis: the first part will focus on data 
 models and protocols within individual disciplines, 
 while the second part will discuss 
@@ -285,29 +179,27 @@ text mining and software development.}
 
 \subsection{Coverage and Approach}
 
-\p{As just outlined above, this volume will examine 
-Covid-19 research on two levels: one that is  
-empirically focused, and one that is more theoretical.  As 
-such, this volume would be of interest 
-to two distinct audiences.  On an empirical level, 
+\p{As just outlined, the book will examine 
+Covid-19 research on two levels --- one more 
+empirical and one more theoretical.  As such, 
+we believe the volume will be of interest 
+to two distinct audiences.  On the one hand, 
 scientists and policymakers could benefit 
 from a broad overview of Covid-19 research, 
 one which uses empirical case-studies to 
 illustrate how Covid-19 data is accessed and 
-analyzed within the disparate disciplines that 
+analyzed, within the disparate disciplines that 
 collectively contribute to our knowledge 
-about the disease.  On a more theoretical 
-level, the book would be of interest to 
+about the disease.  On a more technical 
+level, the book may be of interest to 
 computer scientists and software engineers 
 who will find new theoretical models and 
 type systems with which to investigate 
 data-integration problems.  The new 
-theories and methods explicated in this book have practical 
-applications to fields such as database implementation and 
-Software Language Engineering.  Such applications will be 
-documented via the supporting code available 
-within publicly-accessible data sets, helping 
-to further the goals of the Research Object Protocol.}
+theory developed here has practical applications 
+to fields such as database implementation and 
+Software Language Engineering, which we will 
+document via supporting code.}
 
 \section{Table of Contents}
 
@@ -506,7 +398,7 @@ from Clinical Narratives
 
 \begin{summary}
 This chapter will examine how text-mining technology considered 
-in Chapter 12 may be applied to clinical narratives 
+in Chapter 12 may be applied to clinical and patient narratives 
 for the purpose of extracting relevant patient data, 
 pharmacological data, and epidemiological data, to improve 
 patient care.  
@@ -524,7 +416,7 @@ experiential symptomology associated with Covid-19.
 These subjective descriptions can be found 
 on social media websites and in the patient histories 
 uploaded to portals which are made part of the overall 
-Electronic Health Record (\EHR{}) system.
+Electronic Health Records.
 \end{summary}
 
 
@@ -532,21 +424,7 @@ Electronic Health Record (\EHR{}) system.
 
 \end{description}
 
-
-\section{About the Market}
-
-\subsection{Secondary Markets}
-\p{Epidemiology; Computation Epidemiology; Biostatistics; 
-Public Policy; Software Engineering; 
-Quantitative Analytics/Statistics; 
-Data Visualization; and Text Mining}
-
-\subsection{Audience}
-\p{Public Policymakers; Government Health Officials; 
-Healthcare Administrators; Statisticians; Epidemiologists; 
-and Software Engineers}
-
-\subsection{Competition}
+\section{Competition}
 \p{The structure and presentation of this book is 
 inspired in part by Alexandru Telea's 
 \textit{Data Visualization --- Principles and Practice}.  
@@ -564,11 +442,5 @@ the current volume is focused on data modeling
 rather than data visualization, and of course 
 uses Covid-19 research as a case study for 
 all data-modeling examples.}
-
-
-%\end{spacing}
-%}
-
-\end{document}
 
 
