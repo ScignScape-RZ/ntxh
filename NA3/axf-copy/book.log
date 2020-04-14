@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  13 APR 2020 19:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  13 APR 2020 21:20
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -582,18 +582,18 @@ If that doesn't work, type  X <return>  to quit.
 (./book.aux)
 \openout1 = `book.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
@@ -642,11 +642,122 @@ f-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for T1+phv on input line 107.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 106.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
+
+! LaTeX Error: \begin{document} ended by \end{center}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.106 \begin{document}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.106 \begin{document}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.106 \begin{document}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.106 \begin{document}
+                      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.106 \begin{document}
+                      
+Things are pretty mixed up, but I think the worst is over.
+
+! Too many }'s.
+\maketitle ...mily \bfseries \Large \@title \par }
+                                                  \vskip 2pc{\sffamily {\@co...
+l.106 \begin{document}
+                      
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.106 \begin{document}
+                      
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 106
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.106 \begin{document}
+                      
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 106
+[][]
+ []
+
+! Too many }'s.
+\maketitle ... \@accepted ]\fi \fi \fi }\endlist }
+                                                   \thispagestyle {title}\la...
+l.106 \begin{document}
+                      
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+! Too many }'s.
+\maketitle ...e {title}\label@firstpage \@thanks }
+                                                   \global \let \thanks \rel...
+l.106 \begin{document}
+                      
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -682,32 +793,32 @@ File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-Underfull \hbox (badness 10000) in paragraph at lines 110--112
+Underfull \hbox (badness 10000) in paragraph at lines 109--117
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+qcr on input line 193.
+LaTeX Font Info:    Try loading font information for T1+qcr on input line 201.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qcr.fd
 File: t1qcr.fd 2009/09/25 v1.2 font definition file for T1/qcr
 )
 LaTeX Font Info:    Try loading font information for T1+Cabin-TLF on input line
- 193.
+ 201.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
 ) [1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pd
 ftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
+Underfull \hbox (badness 10000) in paragraph at lines 332--332
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--326
+Underfull \hbox (badness 10000) in paragraph at lines 334--334
 
  []
 
-LaTeX Font Info:    Try loading font information for U+lasy on input line 329.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 337.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
@@ -718,14 +829,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.331 \begin{summary}
+l.339 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 331--339
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 339--347
 [] $[]$ 
  []
 
@@ -736,14 +847,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.343 \begin{summary}
+l.351 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 343--349
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 351--357
 [] $[]$ 
  []
 
@@ -754,14 +865,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.353 \begin{summary}
+l.361 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 353--358
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 361--366
 [] $[]$ 
  []
 
@@ -772,16 +883,16 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.362 \begin{summary}
+l.370 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 363.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 371.
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 362--369
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 370--377
 [] $[]$ 
  []
 
@@ -792,14 +903,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.373 \begin{summary}
+l.381 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 373--382
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 381--390
 [] $[]$ 
  []
 
@@ -810,14 +921,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.394 \begin{summary}
+l.400 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 [3]
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 394--403
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 400--409
 [] $[]$ 
  []
 
@@ -828,14 +939,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.408 \begin{summary}
+l.414 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 408--418
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 414--424
 [] $[]$ 
  []
 
@@ -846,14 +957,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.423 \begin{summary}
+l.429 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 423--436
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 429--442
 [] $[]$ 
  []
 
@@ -864,14 +975,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.440 \begin{summary}
+l.446 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 440--449
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 446--455
 [] $[]$ 
  []
 
@@ -882,14 +993,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.453 \begin{summary}
+l.459 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 453--467
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 459--473
 [] $[]$ 
  []
 
@@ -900,14 +1011,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.477 \begin{summary}
+l.483 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 477--485
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 483--491
 [] $[]$ 
  []
 
@@ -918,14 +1029,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.489 \begin{summary}
+l.495 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 489--497
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 495--503
 [] $[]$ 
  []
 
@@ -937,14 +1048,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.501 \begin{summary}
+l.507 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 501--510
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 507--516
 [] $[]$ 
  []
 
@@ -955,14 +1066,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.515 \begin{summary}
+l.521 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 515--521
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 521--527
 [] $[]$ 
  []
 
@@ -973,26 +1084,26 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.527 \begin{summary}
+l.533 \begin{summary}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.90887pt too wide) in paragraph at lines 527--536
+Overfull \hbox (0.90887pt too wide) in paragraph at lines 533--542
 [] $[]$ 
  []
 
 [5] (./book.aux) )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 113 ({)
+### simple group (level 1) entered at line 121 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
  14120 strings out of 492649
  276376 string characters out of 6122986
- 326453 words of memory out of 5000000
+ 326445 words of memory out of 5000000
  17694 multiletter control sequences out of 15000+600000
  87465 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1012,7 +1123,7 @@ ic/tex-gyre/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/ty
 pe1/urw/helvetic/uhvb8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
 onts/type1/urw/helvetic/uhvr8a.pfb></home/nlevisrael/texl/texlive-install/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on book.pdf (5 pages, 169781 bytes).
+Output written on book.pdf (5 pages, 172210 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
