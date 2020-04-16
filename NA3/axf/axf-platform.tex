@@ -24,7 +24,7 @@
 \ifnum\value{page}>1{
 \AtTextUpperLeft{
 \makebox[20.5cm][r]{
-\raisebox{-1.9cm}{%
+\raisebox{-1.95cm}{%
 {\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
 }\fi
 }
@@ -819,9 +819,23 @@ so as to generate machine-readable, structured full-text
 versions of the manuscripts.  Authors can choose to 
 compose \AXFD{} papers to conform with several common 
 publication \XML{} standards, such as \JATS{} 
-(Journal Article Tag Suite), SciXML, and 
-IeXML (the latter is an annotation-oriented 
-\XML{} language used by the BeCAS project).}
+(Journal Article Tag Suite), \SciXML{} \cite{CJRupp}, and 
+\IeXML{} \cite{DietrichRebholzSchuhman} 
+(the latter is an annotation-oriented 
+\XML{} language used by the BeCAS project 
+\cite{TiagoNunes}).  Authors or editors 
+may further define or model scientific 
+concepts via strategies focused on 
+computer simulation (in the broad sense 
+as defined, for instance, in \cite{EricWinsberg}) 
+or statistics (e.g., Predictive Model Markup Language 
+or Attribute-Relation File Format), 
+and/or conceptual semantics, such as Conceptual Space Markpup 
+Language (which was inspired by the linguist 
+Peter G\"ardenfors, but developed in a 
+scientific/mathematical framework in e.g.
+\cite{RaubalAdams}, \cite{RaubalAdamsCSML},
+\cite{Zenker}, and \cite{InteractingConceptualSpaces}).}
 
 \p{One distinct feature of \AXF{} is that \LaTeX{} and 
 \XML{} generation are chained in a pipeline: the \LaTeX{} 
@@ -893,7 +907,7 @@ be rendered.  Via \AXF{}, the relevant document-to-software
 connections are asserted not only on the overall document 
 level, but on the granular scale of the precise character 
 and \PDF{} viewport coordinates where the relevant 
-annotation is grounded (Figures 1 and 2 illustrate 
+annotation is grounded (Figure~\ref{fig:il} illustrates 
 such capabilities in the context of a chemistry publication 
 --- specifically, test-preperation materials for the 
 Chemistry \GRE{} exam).}
@@ -1377,6 +1391,7 @@ protocol from being required, \AXF{} adopts a strategy of
 defining a rigorous protocol for \Cpp{} code bases, which 
 can then be emulated by other languages.}
 
+\input{pics/oxy}
 \p{As outlined above, data citations refer to parts within a 
 data set --- such as individual data records, but also larger-scale 
 aggregates such as table columns or statistical parameters.  
@@ -1395,7 +1410,6 @@ Often this will involve mapping one concept to
 several computational units (for instance, several 
 procedure implementations).}
 
-\input{pics/oxy}
 \p{For a concrete example of these points concerning 
 data citations, consider the data set pictured 
 in Figure~\ref{fig:oxy}, representing cyber-physical measurements 
@@ -1483,7 +1497,7 @@ requirements.}
 \vspace{-.75em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
-\setlength{\bsep}{-3pt}
+\setlength{\bsep}{-5pt}
 %\setlength{\parskip}{0pt}
 %\setlength{\itemsep}{-2pt}
 
@@ -1496,9 +1510,26 @@ requirements.}
 \begin{thebibliography}{99}
 \vspace{.5em}
 {\fontsize{10}{11}\selectfont
+
+\bibitem{RaubalAdams}
+Benjamin Adams and Martin Raubal, 
+\q{A Metric Conceptual Space Algebra}.
+\biburl{https://pdfs.semanticscholar.org/521a/cbab9658df27acd9f40bba2b9445f75d681c.pdf}
+
+\bibitem{RaubalAdamsCSML}
+Benjamin Adams and Martin Raubal, 
+\q{Conceptual Space Markup Language (CSML): Towards the Cognitive Semantic Web}.
+\biburl{http://idwebhost-202-147.ethz.ch/Publications/RefConferences/ICSC_2009_AdamsRaubal_Camera-FINAL.pdf}
+
 \bibitem{KhalidBelhajjame}{%
 	Khalid Belhajjame, \textit{et. al.},
 	\q{Workflow-centric research objects:  First class citizens in scholarly discourse}.	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+
+\bibitem{InteractingConceptualSpaces}
+Joe Bolt, \i{et. al.}, 
+\cq{Interacting Conceptual Spaces I:
+Grammatical Composition of Concepts}.
+\biburl{https://arxiv.org/pdf/1703.08314.pdf}
 
 \bibitem{CORD}{%
 	\q{COVID-19 Open Research Dataset (CORD-19)}. 2020. Version 2020-03-13. Retrieved from https://pages.semanticscholar.org/coronavirus-research. Accessed 2020-03-20. doi:10.5281/zenodo.3715506
@@ -1507,6 +1538,13 @@ requirements.}
 	Lud\"ek Eyer, \textit{et. al.},
 	\q{Nucleoside analogs as a rich source of antiviral agents active against arthropod-borne flaviviruses}.
 	\biburl{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890575/}}
+
+\bibitem{Zenker}
+Peter G\"ardenfors and Frank Zenker,  
+\cq{Theory Change as Dimensional Change: Conceptual Spaces 
+	Applied to the Dynamics of Empirical Theories}.
+\intitle{Synthese 190(6)}, pp. 1039-1058, 2013.  
+\biburl{http://lup.lub.lu.se/record/1775234}
 
 \bibitem{JohnGustafson}{%
 	John Gustafson,
@@ -1543,16 +1581,31 @@ Mark A. Parsons and Ruth Duerr,
 	Enar Reilent,
 	\q{Whiteboard Architecture for the Multi-agent Sensor Systems}, 
 	\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
+
 \bibitem{Shi}{%
 	Heshui Shi, \textit{et. al.},
 	\q{Radiological findings from 81 patients with COVID-19 
 		pneumonia in Wuhan, China: a descriptive study}.
 	\biburl{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}}
 
+\bibitem{DietrichRebholzSchuhman}{%
+	Dietrich Rebholz-Schuhman, \textit{et. al.},
+	\q{IeXML: towards an annotation framework for biomedical semantic types enabling interoperability of text processing modules}.
+	\biburl{https://www.semanticscholar.org/paper/IeXML\%3A-towards-an-annotation-framework-for-semantic-Rebholz-Schuhmann-Kirsch/1d72a56b6576117c62f388a5f2193965e4c7e293}}
+
+\bibitem{CJRupp}{%
+	C. J. Rupp, \textit{et. al.},
+	\q{Flexible Interfaces in the Application of Language Technology to an eScience Corpus}.
+	\biburl{https://www.cl.cam.ac.uk/~sht25/papers/Rupp_et_al.pdf}}
+
 \bibitem{TrifanOliveira}{%
 	Alina Trifan and Jos\'e Lu\'\i{}s Oliveira,
 	\q{FAIRness in Biomedical Data Discovery}.
 	\biburl{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}}
+
+\bibitem{EricWinsberg}{%
+	Eric Winsberg, \textit{Science in the Age of Computer Simulation}.
+	\biburl{https://www.press.uchicago.edu/ucp/books/book/chicago/S/bo9003670.html}}
 
 }
 \end{thebibliography}
