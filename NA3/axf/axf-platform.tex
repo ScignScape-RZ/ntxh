@@ -774,7 +774,7 @@ to \XPDF{}) capable of leveraging \AXF{} data.}
 includes the Annotation Exchange Format itself, a protocol for 
 defining and sharing annotations on full-text publications.  
 Linguistic Technology Systems has developed \AXF{} to 
-address shortcomings of existing annotation standards, particuarly 
+address shortcomings of existing annotation standards, particularly 
 in the context of annotation environments integrating application, 
 semantic, and multimedia content.  The goal of \AXF{} is to represent 
 annotations at a novel level of detail.  In particular 
@@ -800,7 +800,7 @@ disciplines, or coding requirements.}
 
 \section{AXF and AXF Documents}
 
-\p{The \AXFD{} format for desribing document content and 
+\p{The \AXFD{} format for describing document content and 
 structure is designed to be a \q{Pivot Representation} in the 
 sense of \LAF{}.  In particular, \AXFD{} can represent 
 the structure of both \XML{} (including several 
@@ -830,7 +830,7 @@ computer simulation (in the broad sense
 as defined, for instance, in \cite{EricWinsberg}) 
 or statistics (e.g., Predictive Model Markup Language 
 or Attribute-Relation File Format), 
-and/or conceptual semantics, such as Conceptual Space Markpup 
+and/or conceptual semantics, such as Conceptual Space Markup 
 Language (which was inspired by the linguist 
 Peter G\"ardenfors, but developed in a 
 scientific/mathematical framework in e.g.
@@ -846,7 +846,7 @@ semantic annotations and for sentence boundaries, implemented
 via \LaTeX{} commands which, as one processing step, 
 write \PDF{} coordinates to auxiliary files.  The resulting 
 data is then read by a \Cpp{} program which collates 
-annotaitons and sentence-boundaries into a vector of 
+annotations and sentence-boundaries into a vector of 
 data structures indexed by \PDF{} page numbers, creating a 
 distinct file for each page, and zips those files into an 
 archive which can be distributed alongside (or embedded inside) 
@@ -902,14 +902,14 @@ corpus level.  Once a chemical compound (mentioned in a
 publication) is linked to a \PDB{} file (or any other 
 \ThreeD{} format) the \PDF{} viewer may include 
 options to for the reader to connect to software or 
-web applications where the correspinding visuals can 
+web applications where the corresponding visuals can 
 be rendered.  Via \AXF{}, the relevant document-to-software 
 connections are asserted not only on the overall document 
 level, but on the granular scale of the precise character 
 and \PDF{} viewport coordinates where the relevant 
 annotation is grounded (Figure~\ref{fig:il} illustrates 
 such capabilities in the context of a chemistry publication 
---- specifically, test-preperation materials for the 
+--- specifically, test-preparation materials for the 
 Chemistry \GRE{} exam).}
 
 \p{To support this kind of multimedia functionality, 
@@ -970,7 +970,7 @@ operations, such as identifying sentence boundaries.
 In particular, \HTXN{} provides distinct code-points for 
 end-of-sentence punctuation, so that sentence-boundary 
 detection reduces to a trivial search for those particular 
-code-pounts.  Proper \HTXN{} encoding requires that authors 
+code-points.  Proper \HTXN{} encoding requires that authors 
 follow certain simple heuristics --- e.g., that end-of-sentence 
 periods should be followed by two spaces and/or a newline, 
 whereas other uses of a period character should precede at 
@@ -996,12 +996,12 @@ corresponding collection of \AXF{} objects (queries such
 as obtaining the sentence text around an annotation, obtaining 
 the concave-octagonal viewport coordinates for a sentence,\footnote{
 In the general case, sentence coordinates are concave octagons because 
-they incoporate the line height of their start and end lines; 
+they incorporate the line height of their start and end lines; 
 in the general case sentences share start and end lines with other 
 sentences, while also including whole lines vertically positioned 
 between these extrema.  A sentence octagon roughly corresponds with 
 the screen area where a mouse/pointer action should be understood as 
-occurring in the context of that sentense from the user's point 
+occurring in the context of that sentence from the user's point 
 of view --- implying that the user would benefit from context menu 
 options pertaining specifically to that sentence, such as 
 copy-to-clipboard.} obtaining application-networking 
@@ -1027,7 +1027,7 @@ application-networking protocols, based on the sorts
 of applications and data structures commonly used 
 in the corresponding scholarly discipline.  
 In some cases, publishers may choose to package 
-an entire arcive of research papers (perhaps along with 
+an entire archive of research papers (perhaps along with 
 research data) as a single downloadable resource.  
 \lAXF{} allows publishers to construct such Research Archives 
 following the structure of existing examples such as 
@@ -1066,11 +1066,11 @@ the following:
 
 \begin{description}
 \item[Transcription Errors]  
-Transription errors can easily result from trying to 
+Transcription errors can easily result from trying to 
 read scientific data and notations based on 
 \PDF{} files --- or on full-text representations using 
 relatively unstructured formats such as \XOCS{} 
-(the resonse-encoding format for the ScienceDirect 
+(the response-encoding format for the ScienceDirect 
 \API{}).  Transcription errors cause the machine-readable 
 text archive to misrepresent the structure 
 and content of documents.  For instance, 
@@ -1207,7 +1207,7 @@ storage, data visualization, and scripting.
 The goal of this application package would be to 
 provide researchers with a self-contained computing 
 platform optimized for scientific research 
-and findings related to the arhived publications.  
+and findings related to the archived publications.  
 Archival \SDK{}s should try 
 to eliminate almost all scenarios where 
 programmers would need to perform a \q{system 
@@ -1417,7 +1417,7 @@ used to calculate oxygenated airflow.  The data-set
 application displays tabular data via a tree widget 
 (which functions as a generalized, multi-scale spreadsheet 
 table), with tabular columns expressing quantities such 
-as air flow and oxgen levels in several formats (raw 
+as air flow and oxygen levels in several formats (raw 
 measures as well as sample rankings and min-max 
 percentages).  Conceptually, these columns have distinct 
 methodological roles and therefore can be microcited; 
@@ -1443,7 +1443,7 @@ Figure~\ref{fig:testing}, which shows a \GUI{}-based testing environment for
 the data set depicted in Figures~\ref{fig:about} and \ref{fig:oxy}.  For this data set, 
 the context menu actions providing column-specific functionality 
 are also discrete capabilities which can be covered by 
-unit tests, so the set of procedures mapped to the citable 
+unit tests, so the set of procedures mapped to the citeable 
 concept correspond with a set of unit-test requirements.  
 In this data set, these procedures are also exposed to 
 scripting engines via the \Qt{} meta-object system.  In general, 
@@ -1451,7 +1451,7 @@ there is often a structural correlation between
 scripting, unit testing, and microcitation, so that 
 an applications' scripting and testing protocol can serve 
 as the basis for annotation schema.  For data sets which use 
-in-memory or persistant databases, evaluable queries against 
+in-memory or persistent databases, evaluable queries against 
 these databases provide an additional grounding for annotations.  
 In general, data-annotation should be designed on the 
 basis of a dataset applications' scripting, testing, and/or 
