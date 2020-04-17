@@ -76,7 +76,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=15in,paperwidth=8.5in]{geometry}
-\geometry{left=.63in,top=.7in,right=.5in,bottom=1.3in} %margins
+\geometry{left=.65in,top=.65in,right=.45in,bottom=1.25in} %margins
 
 \renewcommand{\thepage}{\raisebox{-4pt}{\arabic{page}}}
 
@@ -708,25 +708,25 @@ drop shadow=logoPurple!50!darkRed,
 \end{tcolorbox}
 \end{center}
 
-\vspace*{1.25em}
+\vspace*{.15em}
 \begin{center}
 \parbox{.86\textwidth}{%
 {\fontfamily{pzc}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
 Series Editor of {\bf Speech Technology and 
 Text Mining in Medicine and Health Care} (de Gruyter); 
-and Editor of {\bf Advances in Ubiquitous Computing: 
+Editor of {\bf Advances in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
 and Ecological Monitoring} 
-(Elsevier, forthcoming).  These 
-publishers have placed Dr. Neustein's 
-publications on their open access portals 
-linked from \Cnineteen{} (discussed below).}}
+(Elsevier, forthcoming); and 
+Author of {\bf Cross-Disciplinary Data Integration Models
+for the New Covid-19 Data Ecosystem} 
+(Elsevier, forthcoming).}}
 \end{center}
 \vspace*{.75em}	
 	
-\p{The \AXF{} Platform (hereafter called just 
-\AXF{}) is a toolkit for hosting full-text, open access 
+\p{The \AXF{} Platform (hereafter called \AXF{}) 
+is a toolkit for hosting full-text, open access 
 publications, with an emphasis on scientific, academic, 
 and technical documents.  At the core of an \AXF{} 
 Publication Repository is a collection of files 
@@ -742,19 +742,19 @@ host manuscripts in \AXFD{} format, along with software
 to aid viewing and text-mining of the associated publications.}
 
 \p{\lAXFD{} therefore has two distinct purposes: (1) to 
-aid in text- and data-mining (\TDM{}) of full 
+aid in text and data mining (\TDM{}) of full 
 publication text (along with research data that may be 
 linked to publications), and (2) to enhance the reader 
 experience, given e-Reader software (canonically, 
 \PDF{} viewers) which are programmed to consume 
-\AXF{} information.  To aid (1) in text mining, \AXFD{} documents 
+\AXF{} information.  To (1) aid in text mining, \AXFD{} documents 
 can be compiled into different structured representations, 
 yielding document versions that can be registered 
 on services such as CrossREF \TDM{} and SemanticScholar.  Given 
 a Document Object Identifier, text-mining tools can therefore 
 readily obtain a highly structured, machine readable version 
 of the publication, which may then be used as the basis 
-of further text-mining and \NLP{} operations.  Simultaneously, 
+for further text-mining and \NLP{} operations.  Simultaneously, 
 to (2) improve reader experience, the \AXF{} platform generates 
 numeric data linking semantically significant text locations 
 to \PDF{} viewport coordinates 
@@ -766,43 +766,69 @@ This \SDI{}+Viewport (\SDIV{}) information can then be used by
 for word searches, to localize context 
 menus, to activate multi-media features at different points 
 in the text, and in general to make \PDF{} files more 
-interactive.  Data sets composed in conjunction with 
-\AXF{} may include source code for a \PDF{} viewer (an extension 
+interactive.  Data sets composed with the aid of \AXF{} 
+tools may include source code for a \PDF{} viewer (an extension 
 to \XPDF{}) capable of leveraging \AXF{} data.}
 
 \p{In addition to the \AXFD{} document format, the \AXF{} platform 
 includes the Annotation Exchange Format itself, a protocol for 
 defining and sharing annotations on full-text publications.  
-Linguistic Technology Systems has developed \AXF{} to 
-address shortcomings of existing annotation standards, particularly 
-in the context of annotation environments integrating application, 
-semantic, and multimedia content.  The goal of \AXF{} is to represent 
-annotations at a novel level of detail.  In particular 
-(as will be described below), the \textit{target} of the annotation 
-should be represented in both semantic and interactive contexts 
-(to include, for instance, both sentence-level context and 
-\PDF{} viewport coordinates).  Meanwhile, the \textit{body} 
-of the annotation (using terms originating with the 
-Linguistic Annotation Framework) can be linked to data 
-\q{microcitations}, multimedia assets, or 
-controlled vocabularies.  \lAXF{} is optimized for 
-\AXFD{} manuscripts --- i.e., documents encoded according to 
-the native \AXF{} protocol --- but \AXF{} can potentially 
-be used as an exchange format for document-annotation 
-operations in a variety of contexts (named entity recognizers, 
-science-data \API{}s, publication metadata sharing, and so forth.}
+\lAXF{} differs from other annotation-representation 
+strategies by (1) providing more detail concerning 
+the location of annotated text segments, in the 
+surrounding publication context, and (2) supplying 
+annotation data in multimedia or microcitation 
+formats which extend beyond conventional 
+\q{controlled vocabularies}.  In terms of (1) 
+publication context --- that is, the annotation 
+\textit{target} (using terminology from the 
+Linguistic Annotation Framework, or \LAF{}) --- \AXF{} 
+represents \SDIV{} information as introduced 
+above, supplementing the node/index coordinates 
+used by traditional annotation mechanisms.  
+With respect to (2) annotation metadata --- 
+or the annotation \textit{body} (again using 
+\LAF{} terminology) 
+--- \AXF{} introduces models for multimedia 
+assets, software components, and data set 
+content, which may be linked to annotation 
+targets.  With this additional metadata, 
+annotations may be used in application-development 
+environments, not only for text mining.}
+
+%Linguistic Technology Systems has developed \AXF{} to 
+%address shortcomings of existing annotation standards, particularly 
+%in the context of annotation environments integrating application, 
+%semantic, and multimedia content.  The goal of \AXF{} is to represent 
+%annotations at a novel level of detail.  In particular 
+%(as will be described below), the \textit{target} of the annotation 
+%should be represented in both semantic and interactive contexts 
+%(to include, for instance, both sentence-level context and 
+%\PDF{} viewport coordinates).  Meanwhile, the \textit{body} 
+%of the annotation (using terms originating with the 
+%Linguistic Annotation Framework) can be linked to data 
+%\q{microcitations}, multimedia assets, or 
+%controlled vocabularies.  \lAXF{} is optimized for 
+%\AXFD{} manuscripts --- i.e., documents encoded according to 
+%the native \AXF{} protocol --- but \AXF{} can potentially 
+%be used as an exchange format for document-annotation 
+%operations in a variety of contexts (named entity recognizers, 
+%science-data \API{}s, publication metadata sharing, and so forth.}
+
 
 \p{The following sections will (1) outline \AXF{} and \AXFD{} 
-in greater detail and (2) describe how \AXF{} repositories 
+in greater detail, (2) describe how \AXF{} repositories 
 can unify publications sharing similar themes, scholarly 
-disciplines, or coding requirements.}
+disciplines, or coding requirements, and (3) 
+describe features for data-set publication in 
+the context of \AXF{} repositories.}
 
 
 \section{AXF and AXF Documents}
 
 \p{The \AXFD{} format for describing document content and 
 structure is designed to be a \q{Pivot Representation} in the 
-sense of \LAF{}.  In particular, \AXFD{} can represent 
+sense of \LAF{} (see \cite{IdeSuderman}).  In particular, \AXFD{} can represent 
 the structure of both \XML{} (including several 
 \XML{} flavors used in publishing) and \LaTeX{}.  
 Technically, \AXFD{} does not prescribe any 
@@ -1040,7 +1066,7 @@ publication-repository technology.}
 \p{\lCnineteen{}, curated by the Allen Institute for 
 Artificial Intelligence, was spearheaded by 
 a White House initiative to centralize scientific 
-research related to \Covid{}.  The  
+research related to \Covid{} (see \cite{CORD}).  The  
 collection was formulated with the explicit goal 
 of promoting both \textit{text mining} and 
 \textit{data mining} solutions 
@@ -1375,10 +1401,29 @@ how data sets are structured, which is addressed in the next section.}
 \section{Research Objects and Data Microcitations}
 \p{The design of \AXF{} assumes that many Research Archives, 
 comprising of multiple publications sharing an academic 
-focus, will also include open-access research data.  This means 
-that well-curated archives can prepare data sets for data 
+focus, will also include open-access research data.  
+The primary motivation for publishing 
+research data is to ensure transparency and 
+reusability: open-access data allows readers to verify 
+that scientific/technical claims are warrented, 
+and/or to reuse or incorporate existing data into 
+new research.  Open-access data has other purposes 
+as well: data sets, for example, can serve 
+as pedagogic tools helping readers understand 
+publications' concepts experimentally and 
+interactively (a good example is \cite{AlexandruTelea}, 
+which pairs data sets with most chapters to 
+illustrate principles in data visualization).  
+Moreover, the theory informing how data sets are 
+organized can serve as a technical exposition 
+of research principles and methodology.  For all 
+of these reasons, open-access data is an 
+increasingly important part of the publishing 
+ecosystem.  This means 
+that well-curated archives will often need to 
+prepare data sets for data 
 mining, alongside the preparation of text materials for 
-text mining.}
+text mining.  }
 
 \p{In contrast to text mining, however, it is not feasible, 
 in the general case, to 
@@ -1497,7 +1542,7 @@ requirements.}
 \vspace{-.75em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
-\setlength{\bsep}{-5pt}
+\setlength{\bsep}{-6pt}
 %\setlength{\parskip}{0pt}
 %\setlength{\itemsep}{-2pt}
 
@@ -1597,6 +1642,12 @@ Mark A. Parsons and Ruth Duerr,
 	C. J. Rupp, \textit{et. al.},
 	\q{Flexible Interfaces in the Application of Language Technology to an eScience Corpus}.
 	\biburl{https://www.cl.cam.ac.uk/~sht25/papers/Rupp_et_al.pdf}}
+
+\bibitem{AlexandruTelea}{%
+	Alexandru Telea,
+	\q{Data Visualization --- Principles and Practice}.
+	\biburl{https://www.semanticscholar.org/paper/Data-visualization-principles-and-practice-Telea/c853f4b8aee67cd749e03b3a4413769792222776}}
+
 
 \bibitem{TrifanOliveira}{%
 	Alina Trifan and Jos\'e Lu\'\i{}s Oliveira,
