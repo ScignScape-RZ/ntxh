@@ -294,9 +294,11 @@
 
 \newcommand{\XPDF}{\resizebox{!}{7pt}{\AcronymText{XPDF}}}
 
-\newcommand{\GRE}{\resizebox{!}{8.5pt}{\AcronymText{GRE}}}
+\newcommand{\GRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
+\newcommand{\CAS}{\resizebox{!}{7pt}{\AcronymText{CAS}}}
 
-\newcommand{\lMOSAIC}{\resizebox{!}{8.5pt}{\AcronymText{MOSAIC}}}
+\newcommand{\lMOSAIC}{%
+\resizebox{!}{7.5pt}{\AcronymText{MOSAIC}}}
 
 \newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
 \newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
@@ -385,6 +387,8 @@
 \newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
 \newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
 
+\newcommand{\ChemXML}{{\resizebox{!}{7pt}{\AcronymText{ChemXML}}}}
+
 \newcommand{\TeXMECS}{\resizebox{!}{7pt}{\AcronymText{TeXMECS}}}
 
 % pmml  arff  openannotation
@@ -447,7 +451,7 @@
 
 
 
-\newcommand{\lGRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
+\newcommand{\lGRE}{\resizebox{!}{7.5pt}{\AcronymText{GRE}}}
 
 \newcommand{\p}[1]{
 
@@ -784,7 +788,7 @@ publication context --- that is, the annotation
 \textit{target} (using terminology from the 
 Linguistic Annotation Framework, or \LAF{}) --- \AXF{} 
 represents \SDIV{} information as introduced 
-above, supplementing the node/index coordinates 
+above; this data supplements the node/index coordinates 
 used by traditional annotation mechanisms.  
 With respect to (2) annotation metadata --- 
 or the annotation \textit{body} (again using 
@@ -866,7 +870,9 @@ scientific/mathematical framework in e.g.
 \p{One distinct feature of \AXF{} is that \LaTeX{} and 
 \XML{} generation are chained in a pipeline: the \LaTeX{} 
 and subsequent \PDF{} generation steps yield auxiliary data, 
-which includes \PDF{} viewport data.  Specifically, 
+which includes \PDF{} viewport data, that can be 
+subsequently incorporated into \XML{} views onto 
+the documents.  Specifically, 
 \AXFD{}-generated \LaTeX{} files include notations for 
 semantic annotations and for sentence boundaries, implemented 
 via \LaTeX{} commands which, as one processing step, 
@@ -883,7 +889,7 @@ unique ids and compiled into their own data structures
 (from which machine-readable \XML{} full-text may be generated).  
 These \XML{} files may then be hosted and/or registered on 
 \TDM{}-oriented services such as CrossRef.  At the same 
-time, unique identifier unify this \XML{} data 
+time, unique identifiers unify this \XML{} data 
 (focused on text mining) with \PDF{} viewport data 
 (focused on reader experience).  The goal of such 
 integration is to incorporate text-mining results 
@@ -917,8 +923,9 @@ keyword can accordingly be flagged for annotation. 
 As one encoding of the corresponding scientific concept, 
 the annotation can include the chemical's Chemical Abstract 
 Service Reference Number, via which it is possible to obtain 
-Protein Data Bank files to view the molecule in \ThreeD{}.  
-Therefore, annotations supply a constellation of data 
+Protein Data Bank files to view the relevant 
+molecular structure in \ThreeD{}.  In sum, 
+annotations supply a constellation of data 
 --- in this example, concepts may be linked not only to 
 identifiers in cheminformatic ontologies, but also to \CAS{} 
 reference numbers and thereby to \ThreeD{} graphics files 
@@ -952,10 +959,10 @@ information is computationally relevant for many concepts
 encountered in scientific and technical environments.  For instance, 
 one aspect of cheminformatic data is that many chemical 
 compounds are modeled by \PDB{}, \MOL{}, or \ChemXML{} files, 
-which in turn are associated by software applications that 
-can load files with those file types.  This inter-application 
-networking data then becomes relevant to \PDF{} viewers 
-when displaying manuscripts with annotations that suggest 
+which in turn are associated with software applications that 
+can load those file types.  Such inter-application 
+networking data is relevant to \PDF{} viewers 
+when they display manuscripts with annotations that suggest 
 links to special file types and their applications; the 
 viewers can employ this information to launch and/or communicate 
 with the corresponding software.  \lAXF{} is designed to 
@@ -1041,9 +1048,9 @@ corpus of multiple documents, then form the backbone of an
 \section{AXF Publication Repositories}
 \p{The \AXF{} platform is designed for hosting collections 
 of publications sharing a common academic or technical 
-focus.  If \AXF{} is used in the context of a 
+focus.  When \AXF{} is used in the context of a 
 general-purpose text and/or data repository, 
-the platform is designed to work with collections that 
+the \AXF{} platform is designed to work with collections that 
 are organized into separate projects or topics, 
 each giving rise to an archive or corpus of publications.  
 Insofar as these corpora internally share a common theme 
