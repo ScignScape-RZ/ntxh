@@ -78,7 +78,7 @@
 \usepackage[paperheight=15in,paperwidth=8.5in]{geometry}
 \geometry{left=.65in,top=.65in,right=.45in,bottom=1.25in} %margins
 
-\renewcommand{\thepage}{\raisebox{-4pt}{\arabic{page}}}
+\renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
 \renewcommand{\footnoterule}{%
 	\kern -3pt
@@ -155,6 +155,19 @@
 \definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
 \definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
 
+\colorlet{linkcolor}{flColor!60!red}
+
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta!30!logoBlue,
+	urlcolor=blue,
+    linkcolor=linkcolor!70!black,
+%    allcolors=blCyan!40!green
+}
+
+
 \usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
 
 \usepackage{transparent}
@@ -217,7 +230,9 @@
 
 \newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
 
-\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{HTXN}}}
+\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{H}}%
+\resizebox{!}{6.5pt}{\AcronymText{TXN}}}
+
 \newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
 
 \newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
@@ -241,11 +256,18 @@
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
 
 \newcommand{\AXF}{\resizebox{!}{7pt}{\AcronymText{AXF}}}
-\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\AcronymText{AXF}}}
+
+\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
+\resizebox{!}{6.5pt}{\AcronymText{XF}}}
+
+
 \newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\AcronymText{AXF}}}
 
 \newcommand{\AXFD}{\resizebox{!}{7pt}{\AcronymText{AXFD}}}
-\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{AXFD}}}
+
+\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
+\resizebox{!}{6.5pt}{\AcronymText{XFD}}}
+
 
 \newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
 
@@ -298,7 +320,8 @@
 \newcommand{\CAS}{\resizebox{!}{7pt}{\AcronymText{CAS}}}
 
 \newcommand{\lMOSAIC}{%
-\resizebox{!}{7.5pt}{\AcronymText{MOSAIC}}}
+\resizebox{!}{8pt}{\AcronymText{M}}%
+\resizebox{!}{6pt}{\AcronymText{OSAIC}}}
 
 \newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
 \newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
@@ -386,6 +409,9 @@
 \newcommand{\EPS}{{\resizebox{!}{7pt}{\AcronymText{EPS}}}}
 \newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
 \newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
+
+\newcommand{\XOCS}{{\resizebox{!}{7pt}{\AcronymText{XOCS}}}}
+
 
 \newcommand{\ChemXML}{{\resizebox{!}{7pt}{\AcronymText{ChemXML}}}}
 
@@ -487,7 +513,7 @@
 \setlist[description]{%
   topsep=10pt,
   labelsep=12pt,
-  itemsep=12pt,               % space between items
+  itemsep=7pt,               % space between items
   %font={\bfseries\sffamily}, % set the label font
   font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
 }
@@ -640,12 +666,12 @@
 \def\@biblabel#1{[\textbf{#1}]}
 \makeatother
 
-\hypersetup{
-	colorlinks=true,
-	citecolor=blCyan!40!green,
-	filecolor=magenta,
-	urlcolor=blue,
-}
+
+%\let\origref\ref
+%\renewcommand{\ref}[1]{{\LARGE #1}}
+
+%\def\ref#1{\textbf{\origref{{\LARGE #1}}}}
+
 
 \renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
 
@@ -722,8 +748,9 @@ Text Mining in Medicine and Health Care} (de Gruyter);
 Editor of {\bf Advances in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
 and Ecological Monitoring} 
-(Elsevier, forthcoming); and 
-Author of {\bf Cross-Disciplinary Data Integration Models
+(Elsevier, 2020); and 
+co-author (with Nathaniel Christen) 
+of {\bf Cross-Disciplinary Data Integration Models
 for the New Covid-19 Data Ecosystem} 
 (Elsevier, forthcoming).}}
 \end{center}
@@ -923,7 +950,7 @@ keyword can accordingly be flagged for annotation. 
 As one encoding of the corresponding scientific concept, 
 the annotation can include the chemical's Chemical Abstract 
 Service Reference Number, via which it is possible to obtain 
-Protein Data Bank files to view the relevant 
+Protein Data Bank (\PDB{}) files to view the relevant 
 molecular structure in \ThreeD{}.  In sum, 
 annotations supply a constellation of data 
 --- in this example, concepts may be linked not only to 
@@ -940,7 +967,7 @@ be rendered.  Via \AXF{}, the relevant document-to-software
 connections are asserted not only on the overall document 
 level, but on the granular scale of the precise character 
 and \PDF{} viewport coordinates where the relevant 
-annotation is grounded (Figure~\ref{fig:il} illustrates 
+annotation is grounded (Figure~\bref{fig:il} illustrates 
 such capabilities in the context of a chemistry publication 
 --- specifically, test-preparation materials for the 
 Chemistry \GRE{} exam).}
@@ -1010,11 +1037,11 @@ whereas other uses of a period character should precede at
 most one space.  Aside from the goal of preparing documents 
 for text-mining machine-readability, such conventions are 
 appropriate even for basic typesetting, because non-punctuation 
-characters have distinct kerning rules (this is why 
+characters have their own kerning rules (this is why 
 \LaTeX{} provides a distinct command for non-punctuation glyphs 
 that would otherwise be read as punctuation characters).  \lHTXN{} 
-hides many of these typesetting details within its character-encoding 
-schema, which is useful both for producing professional-caliber 
+hides these typesetting details within its character-encoding 
+schema, which is then useful both for producing professional-caliber 
 \LaTeX{} output and for identifying \SDI{} details (such as 
 sentence boundaries) which with less rigorously structured 
 text would need elaborate text-mining or \NLP{} algorithms.}
@@ -1068,7 +1095,8 @@ the \ACL{} (Association for Computational Linguistics)
 Anthology or the recent \Cnineteen{} corpus.   This 
 latter archive is a useful case-study in both the 
 possibilities and limitations of existing 
-publication-repository technology.}
+publication-repository technology, 
+so it is reviewed here in more detail.}
 
 \p{\lCnineteen{}, curated by the Allen Institute for 
 Artificial Intelligence, was spearheaded by 
@@ -1205,15 +1233,18 @@ disparate scientific disciplines
 
 \p{Many of these limitations observed in \Cnineteen{} 
 reflect the fact that this corpus was prepared 
-as \q{raw (text) data} without any supporting code.  
-Recent initiatives, such as the Research Object 
+as raw (text) data, without any supporting code.  
+By contrast, recent initiatives --- such as the Research Object 
 protocol (see \cite{KhalidBelhajjame}) 
 and \FAIR{} (\q{Findable, Accessible, 
-Interoperable, Reusable}; see \cite{TrifanOliveira}) 
+Interoperable, Reusable}; see \cite{TrifanOliveira}) --- 
 encourage authors to publish code and data together, 
 so that the computing environment needed to process 
 published data is provided within the data set itself.  
-This Research Object model is usually defined in 
+The \Cnineteen{} limitations accordingly provide an 
+example of why Research Objects, rather than raw data 
+sets, should be preferred for data publication in the 
+future.  The Research Object model is usually defined in 
 the context of a single publication, but the paradigm 
 applies equally well to corpora encompassing many 
 single articles.  That is, \AXF{} is structured so 
@@ -1310,7 +1341,8 @@ languages like \R{} or Python that researchers may be
 more comfortable using).  
 In general, Research Archive code should be 
 (1) \textit{self-contained} (with few or no external 
-dependencies); (2) \textit{transparent} (meaning that 
+dependencies, as emphasized above); 
+(2) \textit{transparent} (meaning that 
 all computing operations should be implemented by 
 source code within the bundle that can be examined 
 as code files and within a debugging session); 
@@ -1411,15 +1443,15 @@ comprising of multiple publications sharing an academic
 focus, will also include open-access research data.  
 The primary motivation for publishing 
 research data is to ensure transparency and 
-reusability: open-access data allows readers to verify 
-that scientific/technical claims are warrented, 
+reusability --- open-access data allows readers to verify 
+that scientific/technical claims are warranted, 
 and/or to reuse or incorporate existing data into 
 new research.  Open-access data has other purposes 
 as well: data sets, for example, can serve 
 as pedagogic tools helping readers understand 
 publications' concepts experimentally and 
 interactively (a good example is \cite{AlexandruTelea}, 
-which pairs data sets with most chapters to 
+which pairs data sets with its individual chapters to 
 illustrate principles in data visualization).  
 Moreover, the theory informing how data sets are 
 organized can serve as a technical exposition 
@@ -1464,18 +1496,19 @@ procedure implementations).}
 
 \p{For a concrete example of these points concerning 
 data citations, consider the data set pictured 
-in Figure~\ref{fig:oxy}, representing cyber-physical measurements 
+in Figure~\bref{fig:oxy}, representing cyber-physical measurements 
 used to calculate oxygenated airflow.  The data-set 
-application displays tabular data via a tree widget 
+application (interactive-visualization code deployed within 
+the Research Object) displays tabular data via a tree widget 
 (which functions as a generalized, multi-scale spreadsheet 
-table), with tabular columns expressing quantities such 
-as air flow and oxygen levels in several formats (raw 
+table), with tabular columns expressing quantities --- such 
+as air flow and oxygen levels --- in several formats (raw 
 measures as well as sample rankings and min-max 
 percentages).  Conceptually, these columns have distinct 
 methodological roles and therefore can be microcited; 
 indeed, the application links the columns to article 
 text where the corresponding concepts are presented 
-(see Figure~\ref{fig:about}).  However, the implementation does not introduce 
+(see Figure~\bref{fig:about}).  However, the implementation does not introduce 
 a distinct \Cpp{} object uniquely designating individual 
 columns.  Instead, the individual columns can be annotated 
 in terms of \Cpp{} methods providing column-specific 
@@ -1489,10 +1522,14 @@ constructs to scientifically salient data-set concepts.}
 
 \input{pics/about}
 \p{Defining an annotation schema for data sets can potentially 
-be an organic outgrowth of software-development methodology, 
-such as implementing unit tests.  This point is illustrated in 
-Figure~\ref{fig:testing}, which shows a \GUI{}-based testing environment for 
-the data set depicted in Figures~\ref{fig:about} and \ref{fig:oxy}.  For this data set, 
+be an organic outgrowth of software-development methodology 
+--- viz., the engineering steps, 
+such as implementing unit tests, which are essential 
+to deploying a commercial-grade application.  
+This point is illustrated in 
+Figure~\bref{fig:testing}, which shows a \GUI{}-based testing environment for 
+the data set depicted in Figures~\bref{fig:oxy} and 
+\bref{fig:about}.  For this data set, 
 the context menu actions providing column-specific functionality 
 are also discrete capabilities which can be covered by 
 unit tests, so the set of procedures mapped to the citeable 
@@ -1505,7 +1542,7 @@ an applications' scripting and testing protocol can serve
 as the basis for annotation schema.  For data sets which use 
 in-memory or persistent databases, evaluable queries against 
 these databases provide an additional grounding for annotations.  
-In general, data-annotation should be designed on the 
+In general, data-annotation should be engineered on the 
 basis of a dataset applications' scripting, testing, and/or 
 query-evaluation code.  However, this is only a heuristic 
 guideline, and \AXF{} does not presuppose any data-annotation 
@@ -1523,8 +1560,8 @@ scheme \textit{a priori}.}
 \section{Conclusion}
 \p{\AXF{} uses a two-tier node structure similar to 
 \LAF{}; at one level is an extensible text-encoding 
-methodology (disussed in the next paragraph), 
-while a higher level defines annotations in terms 
+methodology (outlined earlier in the context of 
+\HTXN{}), while a higher level defines annotations in terms 
 of directed hypergraphs.  Programmatically, 
 \AXF{} aims in the canonical case for a level of 
 detail that is intermediate between linked-data-oriented 
