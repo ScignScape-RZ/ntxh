@@ -287,6 +287,19 @@
 
 \newcommand{\GIT}{\resizebox{!}{7pt}{\AcronymText{GIT}}}
 
+%\definecolor{atColor}{RGB}{11, 71, 17}
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}
+
+\newcommand{\DgDb}{\raisebox{-3pt}{\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}
+
+
 \newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
 \newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
 \newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
@@ -780,7 +793,8 @@ either general-purpose data hosting frameworks
 (Dryad, DataVerse, Mendeley) or 
 research corpora focused on Covid-19, but 
 not necessarily placing a priority on data mining 
-and data integration (such as \Cnineteen{}, 
+and data integration (an example of the second 
+category is \Cnineteen{}, 
 which is a large corpus of scientific publications 
 related to Covid-19).  Although a significant body 
 of relevant scientific literature can be found on 
@@ -940,7 +954,7 @@ models as outlined in \cite{EranBellin}, for example.}
 
 
 \p{As the previous two paragraphs have outlined, a 
-significant subset of Covid-19 data (or , more generally 
+significant subset of Covid-19 data (or, more generally, 
 any clinical/biomedical information) 
 conforms to either tabular or graph structures, 
 and so it is feasible to unify all of this information 
@@ -966,12 +980,76 @@ realistically translated to \HGXF{}.  In particular,
 fields requiring substantial quantitative 
 analysis --- e.g., biomechanics or genomics --- 
 express data via encodings optimized for relevant 
-mathematical operations.
-  }
+mathematical operations.  In this scenario, 
+\CRtwo{} will not attempt to migrate \textit{all} 
+of a data file to \HGXF{}.  However, even for 
+these files \CRtwo{} will generally provide a 
+supplemental \HGXF{} encoding supplying data 
+\textit{about} the original file, with information 
+about the file type, preferred software components 
+for viewing/manipulating its data, and so forth.  
+In this manner the contents of non-\HGXF{} files 
+can be indirectly included into the \CRtwo{} 
+hypergraph-based ecosystem.}
 
-\p{}
+\p{As this summary has implied, hypergraph data 
+models and the \HGXF{} format are a significant 
+aspect of how \CRtwo{} is designed and how it 
+technogically achieves its stated goals.  The 
+\HGXF{} format will therefore be examined 
+in greater detail in the following section.  
+Researchers who are considering submitting data 
+to \CRtwo{} should bear in mind that we will 
+attempt to convert files comprising the related 
+data sets into \HGXF{} format, in whole or in 
+part, and to provide \HGXF{} files as proxies 
+to resources in other formats as needed.}
 
-\p{}
+\section{DigammaDB and the HGXF Format}
+\p{\lCRtwo{} will introduce a new database engine for 
+preparing the information provided within the 
+repository (called DigammaDB, or \DgDb{} for short) 
+as well as the Hypergraph Exchange Format (\HGXF{}).  In 
+general, \HGXF{} files can be generated from 
+\DgDb{} instances, capturing the state of the 
+database at a moment in time.  \lDgDb{} could therefore 
+be used to store research data.  When scientists 
+choose to publish data, they could then output the 
+information from their database into \HGXF{}, using 
+the resulting files as the published raw data.  
+In the \CRtwo{} context, \DgDb{} will be used 
+to merge data from multiple files into a single 
+database, yielding \HGXF{} output forming most of the 
+raw data republished in \CRtwo{}.}
+
+\p{Operationally, \DgDb{} is designed to emulate the 
+programming interface provided by several existing 
+databases and hypergraph libraries --- for 
+instance, HyperGraphDB (\cite{HyperGraphDB}), WhiteDB
+(\cite{EnarReilent}), and hglib.  That is, 
+\DgDb{} is designed so that existing code using 
+these technologies can be adopted for \DgDb{} 
+with relatively little effort.  \lDgDb{} also 
+introduces some new concepts and structuring features, 
+which will reviewed below.  In addition to 
+prior technologies such as HyperGraphDB, \DgDb{} 
+draws on theoretical work connected to hypergraphs 
+and their value as multi-paradigm, general-purpose 
+metamodels.  The reach of hypergraph theory encompasses 
+several paradigms for modeling scientific data, 
+such as Conceptual Graph Semantics (see \cite{MattSelway}) 
+and Conceptual Space Theory (which is linked to hypergraphs 
+in work summarized by \cite{InteractingConceptualSpaces}, 
+where Conceptual Space Semantics is paired with 
+hypergraph categorial grammar).  \lDgDb{} therefore 
+introduces modeling elements designed to capture 
+scientific details (such as dimensional analysis and units 
+of measurement).  When discussing graph structures and 
+programming techniques, \DgDb{} draws terminology 
+from these scientific perspectives as well as from 
+existing Hypergraph database engines.}
+	
+\p{DigammaDB (\DgDb{})}
 
 
 
@@ -1534,7 +1612,7 @@ on \Cnineteen{} (see \cite{AS});
 \item WhiteDB: A persistent database 
 engine that supports both relational 
 and \NoSQL{}-style architectures 
-(see \cite{EnarReilent});
+(see above);
 
 \item MeshLab: A general-purpose \ThreeD{} graphics 
 viewer;
@@ -1907,6 +1985,13 @@ Mark A. Parsons and Ruth Duerr,
 	C. J. Rupp, \textit{et. al.},
 	\q{Flexible Interfaces in the Application of Language Technology to an eScience Corpus}.
 	\biburl{https://www.cl.cam.ac.uk/~sht25/papers/Rupp_et_al.pdf}}
+
+\bibitem{MattSelway}{%
+	Matt Selway, 
+	\q{Formal Models from Controlled Natural
+Language via Cognitive Grammar and
+Configuration}.
+	\biburl{https://aise.unisa.edu.au/wp/wp-content/papercite-data/pdf/selwaythesis2016.pdf}}
 
 \bibitem{AlexandruTelea}{%
 	Alexandru Telea,
