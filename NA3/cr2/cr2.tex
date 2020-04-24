@@ -1204,10 +1204,94 @@ the design of \HGXF{}, insofar as one goal of
 \HGXF{} is to serialize \DgDb{} instances.  However, 
 \HGXF{} files are also generic resources for 
 serializing research data (or any other technical 
-information) }
+information), and \DgDb{} includes libraries 
+for using \HGXF{} (not necessarily in the context 
+of \DgDb{} instances).  Therefore, \HGXF{} deserves 
+a brief overview in its own right.}
 
+\p{Like any hypergraph meta-model, \HGXF{} represents 
+information on two levels.  On the one hand, 
+each \q{node} is (in genral) a synthesis of multiple 
+smaller parts.  In \HGXF{}, the parts of a hypernode 
+are \textit{structure fields} and \textit{array fields}, 
+where the former are roughly analogous to named columns, 
+and the latter are usually either units within 
+expandable collections (such as lists, queues, and dictionaries) 
+or fixed-size arrays of numeric fields with similar 
+dimensional qualities (e.g., vectors representing point in space).  
+\lHGXF{} files define \q{types}, which are internal to 
+the file (but may be associated with \DgDb{} types) and 
+describe the layout of fields within the containing 
+hypernode (in particular, the number and names of 
+structure fields, and restrictions on the number of 
+array fields, if any).  \lHGXF{} types may also 
+provide hints about how to best encode the parsed 
+data in running memory.}
 
-\p{}
+\p{The structure of \HGXF{} files is specified by 
+a Reference Implementation using \Cpp{} to 
+parse and manipulate \HGXF{} data.  In general, 
+this code library mixes functional and object-oriented 
+programming styles.  The central procedures in 
+this library are ones to isolate single hypernodes, 
+by graph traversal or queries, and then procedures 
+to operate on array and structure fields contained 
+within hypernodes.  The basic interface for this 
+latter context involves passing criteria for selecting 
+one or more fields, along with a callback function 
+which will be called with the vector of matching 
+fields (or else a procedure to operate on fields 
+one at a time).  In this functional style, \HGXF{} 
+hypernodes can be seen as monads encapsulating 
+access to their internal structure and array 
+fields (or \q{hyponodes}).}
+
+\p{On a higher level, applying not to the 
+scope of a single hypernode but to groups of 
+hypernodes, \HGXF{} introduces several 
+higher-level structuring elements (mostly 
+derived from corresponding \DgDb{} features). 
+In particular, \textit{channels} are 
+aggregates of edges, and \textit{frames} are 
+contexts for defining edges and nodes.  
+In \DgDb{}, every node and edge is constructed 
+in the context of a frame, which \textit{may} 
+(but need not) offer either additional 
+semantic detailing or callback functionality 
+to add code affecting how graph data is 
+constructed.  All graphs have a \q{default} 
+frame that implies no special semantic 
+context (i.e., edges are asserted relations 
+that apply in general, with no 
+contextual filter) and that utilizes 
+general-purpose algorithms for edge and 
+node construction.  Developers can 
+introduce more specialized frames as desired, 
+and construct nodes and edges in these 
+tailored contexts.  Such frames can then be 
+identified in \HGXF{} as the context where a 
+given node or edge serialization applies.}
+
+\p{\lHGXF{} also supports microcitations, which are 
+discussed above.  By designating parts of 
+a data set as microcitation targets, \HGXF{} can 
+be integrated with annotation systems designed 
+for scientific publications.  These features 
+allow document annotations --- which are 
+used, for instance, to connect text in a 
+research paper with scientific concepts and 
+Ontologies --- to connect also with microcitable 
+elements within data sets and Research Objects 
+which serialize data via \HGXF{}.  In this 
+use-case, \HGXF{} works in conjunction with 
+a related protocol, the Annotation Exchange Format 
+(\AXF{}), which is also initially developed to 
+support the \CRtwo{} implementation.  In \CRtwo{}, 
+\AXF{} will be used to connect Covid-19 research 
+data with publications where the corresponding 
+data sets are introduced to the scientific 
+community.  The \AXF{} format and design principles 
+will be discussed further in the next section.}
 
 
 \section{The AXF Platform}	
@@ -1310,7 +1394,7 @@ describe features for data-set publication in
 the context of \AXF{} repositories.}
 
 
-\section{AXF and AXF Documents}
+\subsection{AXF Documents}
 
 \p{The \AXFD{} format for describing document content and 
 structure is designed to be a \q{Pivot Representation} in the 
@@ -1527,7 +1611,7 @@ files for text and data mining.  These files, collected across a
 corpus of multiple documents, then form the backbone of an 
 \AXF{} publication repository, as will be discussed next.}
 
-\section{AXF Publication Repositories}
+\subsection{AXF Publication Repositories}
 \p{The \AXF{} platform is designed for hosting collections 
 of publications sharing a common academic or technical 
 focus.  When \AXF{} is used in the context of a 
@@ -1892,7 +1976,7 @@ data-set matches at the same time.}
 how data sets are structured, which is addressed in the next section.}
 
 
-\section{Research Objects and Data Microcitations}
+\subsection{Research Objects and Data Microcitations}
 \p{The design of \AXF{} assumes that many Research Archives, 
 comprising of multiple publications sharing an academic 
 focus, will also include open-access research data.  
@@ -2068,6 +2152,11 @@ Benjamin Adams and Martin Raubal,
 \bibitem{KhalidBelhajjame}{%
 	Khalid Belhajjame, \textit{et. al.},
 	\q{Workflow-centric research objects:  First class citizens in scholarly discourse}.	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+
+\bibitem{EranBellin}{%
+	Eran Bellin, 
+	\q{Riddles in Accountable Healthcare}.	\biburl{https://streamlinehealth.net/wp-content/uploads/2016/02/Riddles-In-Accountable-Care_Defining-Your-Outcomes.pdf} (summary presentation)} 
+
 
 \bibitem{InteractingConceptualSpaces}
 Joe Bolt, \i{et. al.}, 
