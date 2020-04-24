@@ -291,13 +291,14 @@
 \definecolor{atColor}{RGB}{50, 22, 40}
 \newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
 
-\newcommand{\DgDb}{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\newcommand{\DgDb}{\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
-\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
 
-\newcommand{\DgDb}{\raisebox{-3pt}{\resizebox{!}{12pt}{\ATextClr{%
+\newcommand{\lDgDb}{\makebox{\raisebox{-3pt}{%
+\resizebox{!}{12pt}{\ATextClr{%
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
-\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
 
 
 \newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
@@ -1014,7 +1015,7 @@ general, \HGXF{} files can be generated from
 \DgDb{} instances, capturing the state of the 
 database at a moment in time.  \lDgDb{} could therefore 
 be used to store research data.  When scientists 
-choose to publish data, they could then output the 
+choose to publish data, they would then output the 
 information from their database into \HGXF{}, using 
 the resulting files as the published raw data.  
 In the \CRtwo{} context, \DgDb{} will be used 
@@ -1049,9 +1050,164 @@ programming techniques, \DgDb{} draws terminology
 from these scientific perspectives as well as from 
 existing Hypergraph database engines.}
 	
-\p{DigammaDB (\DgDb{})}
+\subsection{Scientific Features of DigammaDB}
+\p{\lDgDb{} has no specific connection to SARS-COV-2 or 
+Covid-19; it is conceived as a general-purpose database 
+engine that can facilitate application development 
+across many domains and industries.  However, \DgDb{} is 
+designed with exceptional attention to scientific research 
+and software, with repect to metadata, \GUI{} integration, 
+its representation of files and file-types, 
+and interoperability with technologies related 
+to publishing and open-access research data.  
+A full enumeration of \DgDb{}'s scientific 
+focus is outside the scope of this outline, but 
+certain features are specifically relevant 
+to \CRtwo{}, so they can be discussed here: 
+
+\begin{description}
+
+\item[From the Ground Up \Qt{} Integration]  All 
+\DgDb{} classes natively interoperate with 
+\Qt{} (a leading cross-platform application-developement 
+and \GUI{} framework).  Programmers then have 
+access to features like QDataStream and 
+Qt meta-objects for binary serialization of \Cpp{} 
+objects for persistence in the database.  Robust 
+\Qt{} support also makes it easy to design 
+\GUI{} classes for interacting with \DgDb{} data, 
+and for employing \DgDb{} as a technology for 
+managing and storing application state.  This is 
+important in the scientific computing context 
+because most scientific software is designed 
+as native desktop-style applications needing 
+special-purpose \GUI{} classes.  In this 
+environment it is usually not possible to 
+adopt techniques such as \HTML{} page 
+templates which are commonplace in the 
+web-programming context for creating user 
+views onto database objects.  
+
+\item[Projections and Scientific Annotations]  
+\lDgDb{} adopts the HyperGraphDB notion of 
+\textit{projections}, or descriptions of 
+individual fields within a complex object 
+that can automate the extrapolation of 
+binary-serialization algorithms (which 
+in turn allows complex objects to be 
+stored in \DgDb{} alongside primitive values 
+like strings and numbers).  \lDgDb{} also 
+uses projections as a basis for introducing 
+metadata associated with Conceptual Spaces 
+and Conceptual Space Markup Language (\CSML{}) 
+as mentioned earlier.  In particular, projections 
+can be annotated with statistical/quantitative 
+details such as dimensions (e.g., base quantities 
+and units of measurement), scales or \q{measurement levels} 
+(in \CSML{} terms, particularly the 
+distinction between nominal, ordinal, interval, and ratio 
+axes), minima and maxima, probability distributions, 
+and the aggregation of isolated units into complex 
+dimensions, or \CSML{} \q{domains} (vectors, tensors, 
+area/volume spans, and so forth).
+
+\item[Data Microcitations]  Most scientific 
+data is formally or informally linked to 
+peer-reviewed publications which present 
+research findings.  Published data sets 
+make these connections explicit, by joining 
+document identifiers and \URL{}s with 
+the corresponding identifiers for designating 
+and locating data sets.  These connections 
+are however coarse-grained, applying only to 
+documents and data sets in their entirety.  
+By contrast, an emerging trend in publishing is 
+to link portions of publications --- such 
+as individual sentences, paragraphs, or figure 
+illustrations --- with smaller parts of a data 
+set (which could be an individual record/sample, 
+or a table column, or some conceptually 
+related group of records or columns).  To support 
+microcitations, where must be some formal 
+mechanism to individuate small parts of a data set.  
+This structure is provided internally by 
+\DgDb{}: there are multiple microcitable 
+\q{zones} in a database, which introduce 
+encodings for microcitation targets that 
+become exposed to publications via \HGXF{}.  
+Here \q{zones} refer to aspects or 
+portions of a database that may be cited 
+individually, apart from the database 
+as a whole: records/atoms, types, 
+projection, subgraphs, software 
+components implementing a digamma-application 
+interface (analogous to HGApplication in 
+HyperGraphDB), among others.  These entities can 
+be given identifiers which are unique not only in the context of a single database, but if needed over a larger corpus (e.g. an archive of research data) so that the relevant atoms/types/projections can be referenced from publication texts (and similar resources).  Such references can also be linked to \GUI{}s; one can for instance say that the data currently visible in a \GUI{} window or dialog box is a view onto a specific 
+databas  atom, information that could be used for debugging, storing application state, inter-application networking (e.g. linking \PDF{} viewers for research papers with applications to view research data), 
+and so forth.
+
+\item[Memory and Persistence Models]  \lDgDb{} can be 
+run in several different \q{modes}, which determine 
+how data is stored in memory while an application 
+is running and/or is stored in files.  If desired, 
+\DgDb{} can be used as an \q{in-memory} database which 
+does not maintain persistent file state at all.  
+This feature can be useful in a research-data context 
+where all information derives from data files.  
+In this scenario, a \DgDb{} instance can be 
+loaded from parsed serializations (e.g., \HGXF{} 
+files) without using other file-system resources.  
+The database engine can then be adopted as a 
+tool for accessing and manipulating the \q{infoset} 
+derived from these data files, analogous to 
+\XML{} libraries interfacing with a Document Object Model.
+
+\item[Scientific-Computing Interface Description]  Following 
+HyperGraphDB, \DgDb{} establishes a \q{type system} 
+unique to each database, which is responsible for 
+translating application-level types to database atoms.  
+The type system used by \DgDb{} is actually 
+more detailed (compared to HyperGraphDB) and 
+allows for the description of procedure signatures 
+and the declaration of conceptually related 
+procedural groupings, which collectively 
+enable interface definition as persistent 
+data within the database itself.  \lDgDb{} 
+likewise supports a notion of \q{meta-procedures}, 
+which are indirectly derived from Alexandru Telea's 
+\textit{metaclasses} and \textit{dataflow interfaces} 
+(see \cite{TeleaVISSION}).  Moreover, \DgDb{} 
+introduces a notion of \q{channels}, which are a 
+higher-level graph structuring feature 
+(see \cite[Chapter 3]{NeusteinCPS}) that may, 
+in particular, be applied for the semantic 
+annotation of function signatures so as 
+to refine interface documentations.  
+Collectively, these features enable 
+each \DgDb{} database to store information 
+about procedures used to access and 
+interact with their stored information, 
+to facilitate the implementation of 
+scientific workflows and \GUI{}s for 
+accessing and using \DgDb{} data.
+
+\end{description}
+}
 
 
+\subsection{Programming with HGXF Files}
+
+\p{The prior outline decribed some of the principle 
+features of \DgDb{}, which in turn influened 
+the design of \HGXF{}, insofar as one goal of 
+\HGXF{} is to serialize \DgDb{} instances.  However, 
+\HGXF{} files are also generic resources for 
+serializing research data (or any other technical 
+information) }
+
+
+\p{}
 
 
 \section{The AXF Platform}	
@@ -1949,6 +2105,13 @@ Peter G\"ardenfors and Frank Zenker,
 	\q{AngelCode Scripting Library}, 
 	\biburl{www.AngelCode.com/AngelScript/}}
 
+\bibitem{NeusteinCPS}{%
+	Amy Neustein, \textit{ed.},
+	\q{Advances in Ubiquitous Computing: Cyber-Physical 
+Systems, Smart Cities and Ecological Monitoring}, 
+	\biburl{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}}
+
+
 \bibitem{NeusteinText}{%
 	Amy Neustein, \textit{et. al.},
 	\q{Application of Text Mining to Biomedical Knowledge Extraction: Analyzing Clinical Narratives and Medical Literature}, 
@@ -1997,6 +2160,12 @@ Configuration}.
 	Alexandru Telea,
 	\q{Data Visualization --- Principles and Practice}.
 	\biburl{https://www.semanticscholar.org/paper/Data-visualization-principles-and-practice-Telea/c853f4b8aee67cd749e03b3a4413769792222776}}
+
+\bibitem{TeleaVISSION}{%
+	Alexandru Telea and Jarke J. van Wijk,
+	\q{VISSION: An Object Oriented Dataflow System
+for Simulation and Visualization}.
+	\biburl{https://www.rug.nl/research/portal/files/3178139/1999ProcVisSymTelea.pdf}}
 
 
 \bibitem{TrifanOliveira}{%
