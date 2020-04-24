@@ -782,7 +782,7 @@ Integration Models for the Emerging Covid-19 Data
 Ecosystem}, scheduled to be published in October of 
 this year (2020).  The current paper will discuss 
 the goals and structure of \CRtwo{}.  It will also 
-explain how scientists or organizations can contribute 
+explain how scientists or oganizations can contribute 
 data to \CRtwo{}.  The authors are hoping to 
 find and/or republish data sets representing a 
 diverse spectrum of scientific fields which 
@@ -915,10 +915,10 @@ structure into a common representation: any field in a table
 can be accessed via a record number and a column name and/or 
 index.  In some cases, more rigorous integration is also 
 possible, for example by identifying situations where 
-columns in one table corresponding semantically or conceptually 
+columns in one table correspong semantically or conceptually 
 to those in a second table.  In either case, 
-it is reasonable to assume that a single abstract data 
-format lies behind surface data-expression in forms 
+it is reaonable to assume that a single abstract data 
+format lies behing surface data-expression in forms 
 like spreadsheets and \CSV{}, so that all files in an 
 archive encoding spreadsheet-like data can be 
 migrated to a common model.  Other forms of 
@@ -936,12 +936,12 @@ a certain clinical observation \textit{causes} a
 care team to request a laboratory analysis, 
 which \textit{yields} results that \textit{factor} 
 into the team's desicion to \textit{administer} some 
-treatment (say, a drug \textit{from} some provider 
+treament (say, a drug \textit{from} some provider 
 \textit{with} some chemical structure), which 
 observationally \textit{results} in the patient improving 
 and eventually \textit{being} discharged.  In short, 
 patient-care information often takes the form 
---- at least conceptually --- of a network comprised 
+--- at least conceptually --- of a network comprosed 
 of different \q{events}, each event involving some 
 observation, action, intervention, or decision made 
 my care providers, and where the important data 
@@ -960,7 +960,7 @@ any clinical/biomedical information)
 conforms to either tabular or graph structures, 
 and so it is feasible to unify all of this information 
 into a common framework to the degree that one 
-works with a meta-model which incorporates both 
+works with a meta-model which incoporates both 
 record-sets and graph structures (node-sets and edge-sets) 
 in its representational arsenal.  A graph-plus-table 
 architecture is generally considered some form of 
@@ -996,7 +996,7 @@ hypergraph-based ecosystem.}
 \p{As this summary has implied, hypergraph data 
 models and the \HGXF{} format are a significant 
 aspect of how \CRtwo{} is designed and how it 
-technologically achieves its stated goals.  The 
+technogically achieves its stated goals.  The 
 \HGXF{} format will therefore be examined 
 in greater detail in the following section.  
 Researchers who are considering submitting data 
@@ -1056,7 +1056,7 @@ Covid-19; it is conceived as a general-purpose database
 engine that can facilitate application development 
 across many domains and industries.  However, \DgDb{} is 
 designed with exceptional attention to scientific research 
-and software, with respect to metadata, \GUI{} integration, 
+and software, with repect to metadata, \GUI{} integration, 
 its representation of files and file-types, 
 and interoperability with technologies related 
 to publishing and open-access research data.  
@@ -1069,7 +1069,7 @@ to \CRtwo{}, so they can be discussed here:
 
 \item[From the Ground Up \Qt{} Integration]  All 
 \DgDb{} classes natively interoperate with 
-\Qt{} (a leading cross-platform application-development 
+\Qt{} (a leading cross-platform application-developement 
 and \GUI{} framework).  Programmers then have 
 access to features like QDataStream and 
 Qt meta-objects for binary serialization of \Cpp{} 
@@ -1144,7 +1144,7 @@ components implementing a digamma-application
 interface (analogous to HGApplication in 
 HyperGraphDB), among others.  These entities can 
 be given identifiers which are unique not only in the context of a single database, but if needed over a larger corpus (e.g. an archive of research data) so that the relevant atoms/types/projections can be referenced from publication texts (and similar resources).  Such references can also be linked to \GUI{}s; one can for instance say that the data currently visible in a \GUI{} window or dialog box is a view onto a specific 
-database atom, information that could be used for debugging, storing application state, inter-application networking (e.g. linking \PDF{} viewers for research papers with applications to view research data), 
+databas  atom, information that could be used for debugging, storing application state, inter-application networking (e.g. linking \PDF{} viewers for research papers with applications to view research data), 
 and so forth.
 
 \item[Memory and Persistence Models]  \lDgDb{} can be 
@@ -1198,8 +1198,8 @@ accessing and using \DgDb{} data.
 
 \subsection{Programming with HGXF Files}
 
-\p{The prior outline described some of the principle 
-features of \DgDb{}, which in turn influenced 
+\p{The prior outline decribed some of the principle 
+features of \DgDb{}, which in turn influened 
 the design of \HGXF{}, insofar as one goal of 
 \HGXF{} is to serialize \DgDb{} instances.  However, 
 \HGXF{} files are also generic resources for 
@@ -1285,13 +1285,13 @@ within the database.}
 conceives edges as \RDF{}-style \q{triples}, 
 where a directed pair of nodes is annotated 
 with a simple label (which may or may not 
-be defined within a controlled vocabulary) and/or 
+be defined within a controled vocabulary) and/or 
 a more complex object; edges can be marked with 
 hypernodes of their own.  The source and target 
 hypernodes of a hyperedge correspond to the 
 source and target node-sets defined in most 
 mathematical treatments of hypergraph theory.  
-In libraries such as HgLib, which (compared to 
+In libraries such as hglib, which (compared to 
 graph/hypergraph databases) are more directly based 
 on this mathematical theory) hyperedges are defined 
 by providing one or two (for undirected or directed 
@@ -2172,7 +2172,7 @@ requirements.}
 \p{\lHGXF{} is first and foremost a tool for 
 serializing \lDgDb{} data sets, but can 
 also be employed as a generic system for 
-describing research data.  Finally, \lDgDb{} is a 
+desribing research data.  Finally, \lDgDb{} is a 
 \Cpp{} database engine which brings sophisticated 
 hypergraph modeling capabilities to the \Cpp{} and 
 \Qt{} ecosystem.  Unlike many high-level databases, 
