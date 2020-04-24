@@ -42,7 +42,7 @@
 
 \AddToShipoutPicture{%
 \ifnum\value{page}=1
-\put(257.5,998){%
+\put(257.5,918){%
 	\transparent{0.7}{
 		\includegraphics[width=0.2\textwidth]{logo.png}}}
 \fi
@@ -75,8 +75,8 @@
 
 %\setlength{\footskip}{7pt}
 
-\usepackage[paperheight=15in,paperwidth=8.5in]{geometry}
-\geometry{left=.65in,top=.65in,right=.45in,bottom=1.25in} %margins
+\usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
+\geometry{left=.7in,top=.6in,right=.65in,bottom=1.35in} %margins
 
 \renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
@@ -531,8 +531,8 @@
 
 \setlist[description]{%
   topsep=10pt,
-  labelsep=12pt,
-  itemsep=7pt,               % space between items
+  labelsep=12pt, leftmargin=5pt,
+  itemsep=5pt,               % space between items
   %font={\bfseries\sffamily}, % set the label font
   font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
 }
@@ -757,9 +757,9 @@ drop shadow=logoPurple!50!darkRed,
 \end{tcolorbox}
 \end{center}
 
-\vspace*{.15em}
+\vspace*{1.15em}
 \begin{center}
-\parbox{.88\textwidth}{%
+\parbox{.92\textwidth}{%
 {\fontfamily{pzc}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
 Series Editor of {\bf Speech Technology and 
@@ -801,7 +801,7 @@ related to Covid-19).  Although a significant body
 of relevant scientific literature can be found on 
 platforms such as Dryad and \Cnineteen{}, mining 
 these resources for usable raw data can take 
-considerable effort.  \lCrtwo{} seeks to 
+considerable effort.  \lCRtwo{} seeks to 
 streamline this process by aggregating 
 Covid data into a central corpus and by 
 integrating data sets, as much as possible, 
@@ -1026,8 +1026,8 @@ raw data republished in \CRtwo{}.}
 \p{Operationally, \DgDb{} is designed to emulate the 
 programming interface provided by several existing 
 databases and hypergraph libraries --- for 
-instance, HyperGraphDB (\cite{HyperGraphDB}), WhiteDB
-(\cite{EnarReilent}), and hglib.  That is, 
+instance, HyperGraphDB (\cite{BorislavIordanov}), WhiteDB
+(\cite{EnarReilent}), and HgLib (\cite[p. 9]{Erable}).  That is, 
 \DgDb{} is designed so that existing code using 
 these technologies can be adopted for \DgDb{} 
 with relatively little effort.  \lDgDb{} also 
@@ -1270,7 +1270,41 @@ introduce more specialized frames as desired,
 and construct nodes and edges in these 
 tailored contexts.  Such frames can then be 
 identified in \HGXF{} as the context where a 
-given node or edge serialization applies.}
+given node or edge serialization applies.  
+Hypernodes may also be annotated within frames 
+to identify a conceptual, operational, or semantic 
+role of a node within some larger node-collection.  
+Indeed, \lDgDb{} introduces the concept of a 
+\textit{virtual frame} to capture logical patterns 
+implicit in certain node-annotations which are not 
+explicitly designated by frame objects allocated 
+within the database.}
+
+\p{The default behavior for edge-construction 
+(which can be overridden within individual frames) 
+conceives edges as \RDF{}-style \q{triples}, 
+where a directed pair of nodes is annotated 
+with a simple label (which may or may not 
+be defined within a controled vocabulary) and/or 
+a more complex object; edges can be marked with 
+hypernodes of their own.  The source and target 
+hypernodes of a hyperedge correspond to the 
+source and target node-sets defined in most 
+mathematical treatments of hypergraph theory.  
+In libraries such as hglib, which (compared to 
+graph/hypergraph databases) are more directly based 
+on this mathematical theory) hyperedges are defined 
+by providing one or two (for undirected or directed 
+edges respectively) sets of nodes.  \lDgDb{} supports 
+this construction as well, essentially constructing 
+hypernodes \q{on the fly}, but in this case the 
+fields within these auto-constructed hypernodes are 
+\q{proxies} for hypernodes (possibly three or more) 
+linked by the edge.  Proxies can also be 
+defined for more complex objects, such as 
+frames and subgraphs, allowing multi-dimensional, 
+nested graph structures if these are desired for 
+a particular domain model.} 
 
 \p{\lHGXF{} also supports microcitations, which are 
 discussed above.  By designating parts of 
@@ -2003,6 +2037,7 @@ prepare data sets for data
 mining, alongside the preparation of text materials for 
 text mining.  }
 
+\input{pics/oxy}
 \p{In contrast to text mining, however, it is not feasible, 
 in the general case, to 
 assign one single format (like \AXFD{} or \JATS{}) for all 
@@ -2014,7 +2049,6 @@ protocol from being required, \AXF{} adopts a strategy of
 defining a rigorous protocol for \Cpp{} code bases, which 
 can then be emulated by other languages.}
 
-\input{pics/oxy}
 \p{As outlined above, data citations refer to parts within a 
 data set --- such as individual data records, but also larger-scale 
 aggregates such as table columns or statistical parameters.  
@@ -2097,7 +2131,20 @@ scheme \textit{a priori}.}
 %interface based on BeCAS.  Moreover, 
 
 \section{Conclusion}
-\p{\AXF{} uses a two-tier node structure similar to 
+\p{This outline has focused on \AXF{}, 
+\HGXF{}, and DigammaDB, which are complementary 
+technologies designed in particular for
+creating and managing scientific or technical 
+data sets.  Although applicable for many 
+use-cases, the initial motivation for 
+implementing these technologies in their current 
+form is to enable the curation of a Covid-19 
+data repository in conjunction with the volume 
+\textit{Cross-Disciplinary Data 
+Integration Models for the Emerging Covid-19 Data 
+Ecosystem}}.
+
+\p{\lAXF{} uses a two-tier node structure similar to 
 \LAF{}; at one level is an extensible text-encoding 
 methodology (outlined earlier in the context of 
 \HTXN{}), while a higher level defines annotations in terms 
@@ -2122,10 +2169,39 @@ landscape of annotation tools at the intersection
 of application-development, \NLP{}, and document-preparation 
 requirements.}
 
+\p{\lHGXF{} is first and foremost a tool for 
+serializing \lDgDb{} data sets, but can 
+also be employed as a generic system for 
+desribing research data.  Finally, \lDgDb{} is a 
+\Cpp{} database engine which brings sophisticated 
+hypergraph modeling capabilities to the \Cpp{} and 
+\Qt{} ecosystem.  Unlike many high-level databases, 
+\DgDb{} is mostly self-contained and \q{transparent}: 
+it can be distributed in source-code fashion 
+along with applications and/or research data sets.}
+
+\p{Although a number of open-access Covid-19 data sets have 
+already been published, the \lCRtwo{} repository can be a 
+site for sharing new Covid-19 data as well as republishing 
+existing data in the rigorous data-modeling framework 
+established for \CRtwo{}.  Scientists can propose new 
+data sets for inclusion in the corpus through an 
+official GitHub repository.  Depending on the size and 
+nature of these resources, the submitted information 
+will then be translated in whole or in part into 
+hypergraph data models and the \HGXF{} format; moreover, 
+open-access publications, if applicable, may be 
+annotated with \AXF{} to properly link data sets to 
+their corresponding research papers.  \lCRtwo{} can 
+then be used as a portal for hosting Covid-19 related 
+manuscripts as well as the collection of research 
+objects tailored to the pandemic and its proper 
+medical and governmental response.}
+
 \vspace{-.75em}
 %\noindent\lun{ETS\textsc{pf} for Scientific and Technical Applications}
 
-\setlength{\bsep}{-6pt}
+\setlength{\bsep}{-2pt}
 %\setlength{\parskip}{0pt}
 %\setlength{\itemsep}{-2pt}
 
@@ -2136,7 +2212,7 @@ requirements.}
 \makeatother
 
 \begin{thebibliography}{99}
-\vspace{.5em}
+\vspace{1.5em}
 {\fontsize{10}{11}\selectfont
 
 \bibitem{RaubalAdams}
@@ -2167,10 +2243,17 @@ Grammatical Composition of Concepts}.
 \bibitem{CORD}{%
 	\q{COVID-19 Open Research Dataset (CORD-19)}. 2020. Version 2020-03-13. Retrieved from https://pages.semanticscholar.org/coronavirus-research. Accessed 2020-03-20. doi:10.5281/zenodo.3715506
 	\biburl{https://pages.semanticscholar.org/coronavirus-research}}
+
 \bibitem{Eyer}{%
 	Lud\"ek Eyer, \textit{et. al.},
 	\q{Nucleoside analogs as a rich source of antiviral agents active against arthropod-borne flaviviruses}.
 	\biburl{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5890575/}}
+
+\bibitem{Erable}{%
+	Project-Team ERABLE: \q{Activity Report 2018}
+(European Research Team in Algorithms and
+Biology, Formal and Experimental).
+	\biburl{https://raweb.inria.fr/rapportsactivite/RA2018/erable/erable.pdf}}
 
 \bibitem{Zenker}
 Peter G\"ardenfors and Frank Zenker,  
@@ -2186,8 +2269,13 @@ Peter G\"ardenfors and Frank Zenker,
 
 \bibitem{IdeSuderman}{%
 	Nancy Ide and Keith Suderman,
-	\q{GrAF: A Graph-based Format for Linguistic Annotations}, 
+	\q{GrAF: A Graph-based Format for Linguistic Annotations}.
 	\biburl{https://www.cs.vassar.edu/~ide/papers/LAW.pdf}}
+
+\bibitem{BorislavIordanov}{%
+	Borislav Iordanov,
+	\q{HyperGraphDB: A Generalized Graph Database}.
+	\biburl{http://www.hypergraphdb.org/docs/hypergraphdb.pdf}}
 
 \bibitem{AS}{%
 	Andreas J\"onsson,
@@ -2196,7 +2284,7 @@ Peter G\"ardenfors and Frank Zenker,
 
 \bibitem{NeusteinCPS}{%
 	Amy Neustein, \textit{ed.},
-	\q{Advances in Ubiquitous Computing: Cyber-Physical 
+	\textit{Advances in Ubiquitous Computing: Cyber-Physical 
 Systems, Smart Cities and Ecological Monitoring}, 
 	\biburl{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}}
 
@@ -2247,7 +2335,7 @@ Configuration}.
 
 \bibitem{AlexandruTelea}{%
 	Alexandru Telea,
-	\q{Data Visualization --- Principles and Practice}.
+	\textit{Data Visualization --- Principles and Practice}.
 	\biburl{https://www.semanticscholar.org/paper/Data-visualization-principles-and-practice-Telea/c853f4b8aee67cd749e03b3a4413769792222776}}
 
 \bibitem{TeleaVISSION}{%
