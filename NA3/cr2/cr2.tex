@@ -300,7 +300,8 @@
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
 \resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
 
-
+\newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
+\newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
 \newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
 \newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
 \newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
@@ -484,8 +485,11 @@
 \newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
 
 \newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
+
+\newcommand{\lQt}{\resizebox{!}{8.5pt}{Qt}}
 \newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
 \newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
+
 \newcommand{\QtSQL}{\resizebox{!}{7pt}{\AcronymText{QtSQL}}}
 
 \newcommand{\HTML}{\resizebox{!}{7pt}{\AcronymText{HTML}}}
@@ -531,7 +535,7 @@
 
 \setlist[description]{%
   topsep=10pt,
-  labelsep=12pt, leftmargin=5pt,
+  labelsep=22pt, leftmargin=5pt,
   itemsep=5pt,               % space between items
   %font={\bfseries\sffamily}, % set the label font
   font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
@@ -759,7 +763,7 @@ drop shadow=logoPurple!50!darkRed,
 
 \vspace*{1.15em}
 \begin{center}
-\parbox{.92\textwidth}{%
+\parbox{.9\textwidth}{%
 {\fontfamily{pzc}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
 Series Editor of {\bf Speech Technology and 
@@ -815,11 +819,12 @@ available as a package that can be downloaded and
 used on an ordinary computer --- analogous to \Cnineteen{}, 
 which covers over 33,000 research papers but 
 is encoded in such a way that the total size of 
-the corpus is not prohibitively large.  Having 
-said that, we believe a more substantial 
+the corpus is not prohibitively large.  We also believe 
+a more substantial 
 (and not necessarily fully open-access) Covid-19 
 information space would be beneficial to the 
-scientific community.  Ideally, \CRtwo{} can be 
+scientific community, but this larger project is 
+not the direct mission of \CRtwo{}.  Ideally, \CRtwo{} can be 
 paired with a larger technology sharing a similar 
 implementational strategy but with different 
 accession paradigms, allowing for an open-ended 
@@ -896,7 +901,7 @@ functionality such as user validation and
 \q{logging in} (to the degree that access 
 to parts of a repository may be restricted), 
 searching for data and/or data sets, file 
-management, updating information, etc.  
+management, updating information, and so on.  
 The central software may then be complemented 
 with narrower applications that provide 
 more complex capabilities, but within the 
@@ -915,20 +920,20 @@ structure into a common representation: any field in a table
 can be accessed via a record number and a column name and/or 
 index.  In some cases, more rigorous integration is also 
 possible, for example by identifying situations where 
-columns in one table corresponding semantically or conceptually 
+columns in one table correspond semantically or conceptually 
 to those in a second table.  In either case, 
 it is reasonable to assume that a single abstract data 
 format lies behind surface data-expression in forms 
 like spreadsheets and \CSV{}, so that all files in an 
 archive encoding spreadsheet-like data can be 
-migrated to a common model.  Other forms of 
+migrated to a common model.}
+
+\p{Other forms of 
 clinical and epidemiological inputs are more 
 amenable to graph-like representations: for example, 
 trajectories of viral transmission through 
 person-to-person contact is obviously an instance 
-of social network analysis.}
-
-\p{Similarly, models of 
+of social network analysis.  Similarly, models of 
 clinical treatments and outcomes can take graph-like 
 form insofar as there are causal or institutional 
 relations between discrete medical events: 
@@ -944,14 +949,14 @@ patient-care information often takes the form
 --- at least conceptually --- of a network comprised 
 of different \q{events}, each event involving some 
 observation, action, intervention, or decision made 
-my care providers, and where the important data 
+by care providers, and where the important data 
 lies in how the events are interconnected: both their 
 logical relationships (e.g., cause/effect) and their 
 temporal dynamics (how long before a drug leads to a 
 patient's improvement; how long before admission to 
 a hospital and discharge).  These graph-like representations 
 are a natural formalization of \q{patient-centered} data 
-models as outlined in \cite{EranBellin}, for example.}     
+models as outlined, for example, in \cite{EranBellin}.}     
 
 
 \p{As the previous two paragraphs have outlined, a 
@@ -965,8 +970,7 @@ record-sets and graph structures (node-sets and edge-sets)
 in its representational arsenal.  A graph-plus-table 
 architecture is generally considered some form of 
 Hypergraph model, and indeed \CRtwo{} uses a hypergraph 
-paradigm, based on the HyperGraphDB database engine, 
-to merge many different sorts of information into a 
+paradigm to merge many different sorts of information into a 
 common structure.  In particular, \CRtwo{} introduces 
 a new \q{Hypergraph Exchange Format} (\HGXF{}) which 
 can provide a text encoding of many files that, 
@@ -998,13 +1002,7 @@ models and the \HGXF{} format are a significant
 aspect of how \CRtwo{} is designed and how it 
 technologically achieves its stated goals.  The 
 \HGXF{} format will therefore be examined 
-in greater detail in the following section.  
-Researchers who are considering submitting data 
-to \CRtwo{} should bear in mind that we will 
-attempt to convert files comprising the related 
-data sets into \HGXF{} format, in whole or in 
-part, and to provide \HGXF{} files as proxies 
-to resources in other formats as needed.}
+in greater detail in the following section.}
 
 \section{DigammaDB and the HGXF Format}
 \p{\lCRtwo{} will introduce a new database engine for 
@@ -1027,7 +1025,8 @@ raw data republished in \CRtwo{}.}
 programming interface provided by several existing 
 databases and hypergraph libraries --- for 
 instance, HyperGraphDB (\cite{BorislavIordanov}), WhiteDB
-(\cite{EnarReilent}), and HgLib (\cite[p. 9]{Erable}).  That is, 
+(\cite{EnarReilent}), and HgLib (\cite[\textnormal{p. 9}]{Erable}).  
+That is, 
 \DgDb{} is designed so that existing code using 
 these technologies can be adopted for \DgDb{} 
 with relatively little effort.  \lDgDb{} also 
@@ -1041,7 +1040,7 @@ several paradigms for modeling scientific data,
 such as Conceptual Graph Semantics (see \cite{MattSelway}) 
 and Conceptual Space Theory (which is linked to hypergraphs 
 in work summarized by \cite{InteractingConceptualSpaces}, 
-where Conceptual Space Semantics is paired with 
+where Conceptual Space semantics is paired with 
 hypergraph categorial grammar).  \lDgDb{} therefore 
 introduces modeling elements designed to capture 
 scientific details (such as dimensional analysis and units 
@@ -1067,12 +1066,12 @@ to \CRtwo{}, so they can be discussed here:
 
 \begin{description}
 
-\item[From the Ground Up \Qt{} Integration]  All 
+\item[From-the-Ground-Up \lQt{} Integration]  All 
 \DgDb{} classes natively interoperate with 
 \Qt{} (a leading cross-platform application-development 
 and \GUI{} framework).  Programmers then have 
 access to features like QDataStream and 
-Qt meta-objects for binary serialization of \Cpp{} 
+\Qt{} meta-objects for binary serialization of \Cpp{} 
 objects for persistence in the database.  Robust 
 \Qt{} support also makes it easy to design 
 \GUI{} classes for interacting with \DgDb{} data, 
@@ -1081,12 +1080,17 @@ managing and storing application state.  This is
 important in the scientific computing context 
 because most scientific software is designed 
 as native desktop-style applications needing 
-special-purpose \GUI{} classes.  In this 
+special-purpose \GUI{} classes (in this 
 environment it is usually not possible to 
 adopt techniques such as \HTML{} page 
 templates which are commonplace in the 
 web-programming context for creating user 
-views onto database objects.  
+views onto database objects).  Therefore, 
+implementing custom \GUI{} logic is an 
+important part of the development requirements 
+for scientific applications, and it is helpful 
+to interface with a database engine prioritizing 
+that aspect of software engineering.  
 
 \item[Projections and Scientific Annotations]  
 \lDgDb{} adopts the HyperGraphDB notion of 
@@ -1128,7 +1132,7 @@ illustrations --- with smaller parts of a data
 set (which could be an individual record/sample, 
 or a table column, or some conceptually 
 related group of records or columns).  To support 
-microcitations, where must be some formal 
+microcitations, there must be some formal 
 mechanism to individuate small parts of a data set.  
 This structure is provided internally by 
 \DgDb{}: there are multiple microcitable 
@@ -1139,7 +1143,7 @@ Here \q{zones} refer to aspects or
 portions of a database that may be cited 
 individually, apart from the database 
 as a whole: records/atoms, types, 
-projection, subgraphs, software 
+projections, subgraphs, software 
 components implementing a digamma-application 
 interface (analogous to HGApplication in 
 HyperGraphDB), among others.  These entities can 
@@ -1180,7 +1184,7 @@ which are indirectly derived from Alexandru Telea's
 (see \cite{TeleaVISSION}).  Moreover, \DgDb{} 
 introduces a notion of \q{channels}, which are a 
 higher-level graph structuring feature 
-(see \cite[Chapter 3]{NeusteinCPS}) that may, 
+(see \cite[\textnormal{Chapter 3}]{NeusteinCPS}) that may, 
 in particular, be applied for the semantic 
 annotation of function signatures so as 
 to refine interface documentations.  
@@ -1261,8 +1265,8 @@ semantic detailing or callback functionality
 to add code affecting how graph data is 
 constructed.  All graphs have a \q{default} 
 frame that implies no special semantic 
-context (i.e., edges are asserted relations 
-that apply in general, with no 
+context (i.e., all edges are asserted relations 
+deemed to apply in general, with no 
 contextual filter) and that utilizes 
 general-purpose algorithms for edge and 
 node construction.  Developers can 
