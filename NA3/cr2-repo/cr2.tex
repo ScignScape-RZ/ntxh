@@ -1021,11 +1021,59 @@ and store data, rather than needing to re-implement
 this logic for a large number of different file formats 
 and/or database models.}
 
-\p{}
+\p{Quality software --- especially in the clinical and 
+biomedical context --- demands a careful balance between 
+applictions which are either too narrow or too broad 
+in scope.  On the one hand, doctors often complain 
+that homogenous Electronic Health Record systems (where 
+every digital record or observation is managed by a single 
+all-encompassing application) are unwieldy and hard to work 
+with.  This is understandable, because the clinical tasks 
+of health workers with different specializations can be very 
+different.  Conversely, doctors also complain about 
+software and information systems which are so balkanized 
+that they must repeatedly switch between different, non-interoperable 
+applications.  In short, clinical, diagnostic, and research software 
+should be neither too homogenous nor too isolated; finding the 
+proper balance between these extremes is, one can say, 
+a major challenge to the usability of electronic health 
+systems going forward.}
 
-\p{}
+\p{Against this background \CRtwo{} demonstrates novel 
+solutions to this problem: it focuses on the dimensions 
+of data acquisition and management that are specific 
+to individual scientific or medical specializations, 
+while also identifying requirments that are 
+consistent across domains.  Scientific software 
+generally needs to hone in 
+on the data visualization and analytic 
+requirements of particular disciplines; 
+biochemists use different programs than 
+astrophysicists.  However, much 
+of the code underlying scientific applications 
+has nothing to do with these high-level 
+models or theories, but is simply a 
+fulfillment of basic data-management 
+functionality: data storage, accession, provenance, 
+searching, user validation, and so forth.  
+In short, the computational requirements 
+of scientific and biomedical software can 
+be partitioned into two classes: one the 
+one hand, domain-specific logic which reflects the 
+quantitative or theoretical models of 
+narrow scientific fields; on the other hand, 
+data-management logistics which can be 
+realized within a central access hub, rather 
+than being re-implemented by each application 
+in isolation.}
 
-
+\p{In short, this architecture conceives of a 
+central hub which is responsible for storing 
+data and for serving as a common access point 
+--- providing the gateway where authorized 
+users can gain access to heterogeneous information 
+spaces utilized by an array of domain-specific 
+software applications.    }
 
 \p{}
 
