@@ -757,7 +757,8 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.27}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Developing a Data Mining Repository to Accelerate Covid-19 Research}
+{Developing a Data Mining Repository to Accelerate Covid-19 Research 
+for the Scientific Community and Public Policymakers}
 }}}
 \end{center}
 \end{minipage}
@@ -780,22 +781,26 @@ for the Emerging Covid-19 Data Ecosystem}
 (Elsevier, forthcoming).}}
 \vspace*{.75em}	
 
-\p{This paper will describe the 
-Cross-Disciplinary Repository for Covid-19 Research 
-(hereafter called \CRtwo{}).  \lCRtwo{} is a collection 
+\section{Introduction}
+\p{Our company's Cross-Disciplinary Repository for Covid-19 Research 
+(\CRtwo{}) is a collection 
 of open-access research data sets related to 
-SARS-COV-2 and Covid-19, which will be developed 
-as a supplement to a forthcoming academic volume 
+SARS-COV-2 and Covid-19, which is being developed 
+as a supplement to an academic volume 
 examining Covid-19 research from the perspective 
-of text and data mining.  We believe that \CRtwo{} 
-can accelerate Covid-19 research by 
+of text and data mining technologies that 
+cut across disiplines.  The benefit of \CRtwo{} 
+is that it can accelerate Covid-19 research by 
 (1) pooling a diverse collection of data sets into a 
 single resource which scientists can utilize; 
 (2) serving as the prototype for larger research 
 portals that can aggregate new Covid-19 data 
 that will emerge from hospitals, labs, and 
-academic institutions in the future; and 
-(3) accelerating the implementation of novel 
+academic institutions in the future; (3) formalizing 
+a framework for aggregating patient narratives 
+to accurately capture first-hand experiential symptomatology of 
+the patient suffering from Covid-19; and 
+(4) accelerating the implementation of novel 
 data-integration and software-development 
 technologies which can contribute to scientific 
 progress \visavis{} Covid-19 
@@ -810,15 +815,17 @@ products may be found on the development repository
 for the aggregation of \CRtwo{} data 
 (\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR}).}
 
+\section{Background}
 \p{The sudden emergence of Covid-19 as a global crisis has 
 cast a spotlight on computational and technological challenges 
 which, in the absence of a catastrophic pandemic, would 
 rarely rise to public attention.  In particular, an effective 
 response to the dangers of \makebox{SARS-COV-2} requires coordinated 
-policymaking integrating different levels of government as 
+policymaking, integrating different levels of government as 
 well as diverse modes of scientific inquiry.  Genomic, biomolecular, 
-epidemiological, sociodemographic, clinical, and radiological information 
-are all pertinent to Covid-19.  It is important that the 
+epidemiological, socio-demographic, clinical, and radiological information 
+are all pertinent to Covid-19.  In this environment, it is 
+important that the 
 empirical foundations for expert recommendations --- which 
 in turn drive public policies of enormous social and 
 economic consequence --- be transparently documented 
@@ -828,43 +835,49 @@ the gaps in our current Covid-19 knowledge, it is
 appropriate that different jurisdictions craft responses to 
 the pandemic in different ways.  There is no central authority 
 with sufficient epistemic force to legitimize homogeneous 
-mandates across the entire country.  But it is also important 
-that policy differences reflect alternative interpretations of our 
-scientific knowledge, or the diverse needs of local communities 
+mandates across the entire country.  However it is also important 
+that policy differences are a product of alternative interpretations of 
+scientific knowledge, or of local communities having diverse needs 
 --- rather than being a haphazard consequence of governments 
-merely working with divergent, competing, and poorly integrated data.}
+working with divergent, competing, and poorly integrated data.}
 
 \p{The current administration, along with numerous corporate and academic 
 entities, has clearly recognized the need for a more 
 centralized paradigm for sharing Covid-19 data.  For example, 
 the White House spearheaded a scientific initiative to 
-develop \Cnineteen{}, an open-access corpus of over 33,000 
+develop \Cnineteen{}, an open-access corpus of over 46,000 
 peer-reviewed publications related to Covid-19, which 
-were transformed into a common  machine-readable representation 
+were transformed into a common machine-readable representation 
 so as to promote text and data mining.  Similarly, 
 large institutions such as Google, Johns Hopkins, and 
 Springer Nature have all implemented some form of coronavirus 
 data-sharing platform targeted to both scientists and 
 policymakers.  However, these two aspects of the 
-corporate/academic contributions to Covid-19 data sharing 
+corporate/academic contributions (exemplified by 
+\Cnineteen{} and by institution-generated portals, respectively) 
+to Covid-19 data sharing 
 have been incomplete, for opposite but complementary 
-reasons.  \lCnineteen{} is highly structured and tightly 
-integrated, but it focuses on text mining and the analysis 
-of scientific documents.  While it is possible to find 
-research data about Covid-19 through \Cnineteen{}, the 
-techniques to do so are cumbersome and non-scalable.  
-Conversely, projects such as the Johns Hopkins coronavirus 
-\q{dashboard} provide accessible data sets, but these 
+reasons.  That is, \lCnineteen{} is highly structured and tightly 
+integrated, but it focuses primarily on text mining and 
+scientific documents, not \textit{research} data.  Specifically, 
+while it is possible to find data 
+sets about Covid-19 through \Cnineteen{}, the 
+techniques to do so are both cumbersome and non-scalable.  
+On the other hand, projects such as the Johns Hopkins coronavirus 
+\q{dashboard} provide accessible data sets, yet these 
 projects are isolated and do not offer the level of 
 structure and integration evinced by \Cnineteen{}.  In 
 short, an optimal Covid-19 research platform 
 would merge the structural text-mining rigor of 
 \Cnineteen{} with the data-centric focus of several 
 isolated projects sharing Covid-19 data 
-with the general public.}
+with the scientific community, policy makers, 
+and the general public.}
 
-\p{These are the principles which have guided the design of 
-\CRtwo{}.  In particular, \CRtwo{} can provide value at different 
+\section{Description}
+\p{The design of \CRtwo{} derives from the principles outlined 
+in the previous paragraph --- specifically, .
+In particular, \CRtwo{} can provide value at different 
 scales of realization.  Relatively small data 
 sets serve several scientific and computational 
 purposes: (1) they can provide researchers 
@@ -887,36 +900,38 @@ As a result, \CRtwo{} can provide a
 testbed for implementing data-integration 
 technologies which can scale up as needed.  
 To fulfill this mission, \CRtwo{} can aggregate 
-relatively small data sets which have until 
-now been published on academic and research 
-portals, such as Springer Nature, Dryad, and DataVerse.}
-
-\p{At the same time, a more substantial 
+relatively small data sets which have 
+previously been published on academic and research 
+portals, such as Springer Nature, Dryad, and DataVerse.  
+At the same time, a more substantial 
 (and not necessarily fully open-access) Covid-19 
-information space would also be beneficial to the 
-scientific and policymaking community.  Ideally, then, 
+data-set collection would also be beneficial to the 
+scientific and policy-making community.  Ideally, then, 
 \CRtwo{} will be 
-paired with a larger technology sharing a similar 
+paired with a larger technology which shares a similar 
 implementational strategy but with different 
 accession paradigms, allowing for an open-ended 
 collection of Covid-19 data which users may 
 selectively access, instead of a single package 
 that users may acquire as an integrated resource.  
-The common denominator in both cases is the 
+The common denominator in both cases 
+(whether the focus is on relatively smaller or 
+larger data sets) is the 
 importance of deploying novel and contemporary 
 data-integration techniques to centralize 
 Covid-19 research as much as possible.  
-Accordingly, this paper will briefly summarize 
-how \CRtwo{} can accelerate Covid-19 data integration on a 
+Accordingly, this summary will briefly explain 
+how \CRtwo{} can accelerate Covid-19 data integration 
+on both a 
 practical and technological level.}
  
 \section{Methodology for Covid-19 Data Integration}
 
-\p{As indicated above, pertinent Covid-19 data derives 
+\p{As indicated above, pertinent Covid-19 data is drawn 
 from multiple scientific disciplines.  On a technological level, 
 Covid-19 data is documented via a wide array of file 
-types and data formats.  This diversity presents technological challenges: 
-if a Covid-19 information space encompasses 
+types and data formats.  This diversity presents technological 
+challenges: if a Covid-19 information space encompasses 
 files representing 25 different incompatible 
 formats, users need 25 different technologies 
 to fully benefit from this data.  In many 
@@ -926,17 +941,19 @@ Covid-19 data, for example, has a common
 tabular meta-model, even if the data is 
 realized in clashing technologies (spreadsheets, 
 relational databases, comma-separated-value or 
-Numeric Python files, and so forth).  One level of 
-data integration can therefore be achieved simply by encoding tabular 
+Numeric Python files, and so forth).  Applying \CRtwo{}'s technology, 
+one level of data integration can thus 
+be achieved simply by encoding tabular 
 structure into a common representation: any field in a table 
 can be accessed via a record number and a column name and/or 
 index.  In some cases, more rigorous integration is also 
-possible, for example by identifying situations where 
+possible --- for example, by identifying situations where 
 columns in one table correspond semantically or conceptually 
 to those in a second table.  In either case, 
 it is reasonable to assume that a single abstract data 
-format lies behind surface data-expression in forms 
-like spreadsheets and \CSV{}, so that all files in an 
+format lies behind surface data-expression in patterns 
+such as spreadsheets and comma-separated values 
+(\CSV{}), so that all files in an 
 archive encoding spreadsheet-like data can be 
 migrated to a common model.}
 
@@ -953,8 +970,8 @@ a certain clinical observation \textit{causes} a
 care team to request a laboratory analysis, 
 which \textit{yields} results that \textit{factor} 
 into the team's decision to \textit{administer} some 
-treatment (say, a drug \textit{from} some provider 
-\textit{with} some chemical structure), which 
+treatment (e.g., a drug \textit{from} a particular 
+provider \textit{with} a specific chemical structure), which 
 observationally \textit{results} in the patient improving 
 and eventually \textit{being} discharged.  In short, 
 patient-care information often takes the form 
@@ -965,12 +982,12 @@ by care providers, and where the important data
 lies in how the events are interconnected: both their 
 logical relationships (e.g., cause/effect) and their 
 temporal dynamics (how long before a drug leads to a 
-patient's improvement; how long before admission to 
+patient's improvement; how much time elapses between admission to 
 a hospital and discharge).  These graph-like representations 
 are a natural formalization of \q{patient-centered} data 
 models.}
 
-\p{A higher level of data integration can then be 
+\p{Using Applying \CRtwo{}'s  A higher level of data integration can then be 
 achieved by merging tabular and graph-like models into a 
 single \textit{hypergraph} format.  A 
 significant subset of Covid-19 data (or, more generally, 
@@ -1059,9 +1076,9 @@ of the code underlying scientific applications
 has nothing to do with these high-level 
 models or theories, but is simply a 
 fulfillment of basic data-management 
-functionality: data storage, accession, provenance, 
+functionality --- data storage, accession, provenance, 
 searching, user validation, and so forth.  
-In short, the computational requirements 
+In effect, the computational requirements 
 of scientific and biomedical software can 
 be partitioned into two classes: one the 
 one hand, domain-specific logic which reflects the 
@@ -1105,7 +1122,7 @@ by multiple client applications.  Similarly, machine-learning
 and Artificial Intelligence often adopts \q{software agents}, 
 or analytic modules in contexts such as Online 
 Analytic Processing, which again represent semi-autonomous 
-software components jointly connecting to a central 
+software components sharing an originary 
 data hub.  Web applications, too, often act as domain-specific 
 subsidiaries deferring operational requirements, such 
 as user authentication or transaction processing, to a 
@@ -1116,7 +1133,7 @@ with relatively primitive user-interface design.}
 
 \p{By contrast, the technology introduced with \CRtwo{} will 
 develop multi-application networking in the context of more 
-substantial, desktop-style scientific applications.  In short, 
+substantial, desktop-style scientific applications.  In sum, 
 this technology offers a hybrid of the development methodologies 
 employed for desktop scientific software and those 
 applicable to multi-agent heterogeneous data stores, like 
@@ -1166,7 +1183,7 @@ data collection and analysis; this means that
 patient narrative representations may be paired 
 with \GUI{} or multi-media content.  For example, 
 the software with which patients submit information 
-could allow them to pair text-form narratives with 
+could allow them to combine text-form narratives with 
 graphics indicating the source of pain or 
 discomfort; or narratives may be accompanied 
 by audio files where patients cough or speak into 
