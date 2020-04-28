@@ -10,8 +10,14 @@
 
 \usepackage{titlesec}
 
+%\usepackage{sectsty}
+%\sectionfont{\fontsize{13}{4}\selectfont}
+
+\titleformat{\section}
+  {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
+
 \titlespacing*{\section}
-{0pt}{4.5ex plus 1ex minus .5ex}{.9ex plus .2ex}
+{0pt}{2ex plus 1ex minus .5ex}{-.4ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -77,7 +83,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.5in,top=.6in,right=.45in,bottom=1.35in} %margins
+\geometry{left=.5in,top=.6in,right=.45in,bottom=1.15in} %margins
 
 \renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
@@ -430,9 +436,11 @@
 
 \newcommand{\HGXF}{{\resizebox{!}{7pt}{\AcronymText{HGXF}}}}
 \newcommand{\lHGXF}{{\resizebox{!}{7.5pt}{\AcronymText{HGXF}}}}
+\newcommand{\sHGXF}{{\resizebox{!}{5.5pt}{\AcronymText{HGXF}}}}
 
 \newcommand{\CRtwo}{{\resizebox{!}{7pt}{\AcronymText{CR2}}}}
 \newcommand{\lCRtwo}{{\resizebox{!}{7.5pt}{\AcronymText{CR2}}}}
+\newcommand{\sCRtwo}{{\resizebox{!}{5.5pt}{\AcronymText{CR2}}}}
 
 \newcommand{\ChemXML}{{\resizebox{!}{7pt}{\AcronymText{ChemXML}}}}
 
@@ -505,14 +513,14 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.75em}#1}
+\vspace{.7em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
 %\newcommand{\deconum}[1]{{\textcircled{#1}}}
 
-
-\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesection}{\protect\hspace{-1.5em}}
+%\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 
 \newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
@@ -696,6 +704,7 @@
 
 %\def\ref#1{\textbf{\origref{{\LARGE #1}}}}
 
+\setlength{\footnotesep}{0pt}
 
 \renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
 
@@ -758,7 +767,7 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.27}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Developing a Data Mining Repository to Accelerate Covid-19 Research 
-for the Scientific Community and Public Policymakers}
+for the Scientific Community and Public Policy Makers}
 }}}
 \end{center}
 \end{minipage}
@@ -782,11 +791,11 @@ for the Emerging Covid-19 Data Ecosystem}
 \vspace*{.75em}	
 
 \section{Introduction}
-\p{Our company's Cross-Disciplinary Repository for Covid-19 Research 
+\p{The LTS Cross-Disciplinary Repository for Covid-19 Research 
 (\CRtwo{}) is a collection 
 of open-access research data sets related to 
 SARS-COV-2 and Covid-19, which is being developed 
-as a supplement to an academic volume 
+as a supplement to the forthcoming Elsevier volume 
 examining Covid-19 research from the perspective 
 of text and data mining technologies that 
 cut across disiplines.  The benefit of \CRtwo{} 
@@ -798,17 +807,17 @@ portals that can aggregate new Covid-19 data
 that will emerge from hospitals, labs, and 
 academic institutions in the future; (3) formalizing 
 a framework for aggregating patient narratives 
-to accurately capture first-hand experiential symptomatology of 
+to accurately capture first-hand subjective symptomatology of 
 the patient suffering from Covid-19; and 
 (4) accelerating the implementation of novel 
 data-integration and software-development 
 technologies which can contribute to scientific 
 progress \visavis{} Covid-19 
-in particular, as well as to biomedical and 
-overall scientific computing methodology in general.
+in particular, and biomedical/scientific computing 
+methodology in general.
 The software used to curate \CRtwo{} data has 
 diverse applications for software and database engineering, 
-and provides solutions to technical problems with 
+and provides solutions to technical problems with a 
 broad reach in the private sector.  Further 
 documentation of the \CRtwo{} technology and 
 products may be found on the development repository 
@@ -821,23 +830,22 @@ cast a spotlight on computational and technological challenges
 which, in the absence of a catastrophic pandemic, would 
 rarely rise to public attention.  In particular, an effective 
 response to the dangers of \makebox{SARS-COV-2} requires coordinated 
-policymaking, integrating different levels of government as 
-well as diverse modes of scientific inquiry.  Genomic, biomolecular, 
-epidemiological, socio-demographic, clinical, and radiological information 
-are all pertinent to Covid-19.  In this environment, it is 
-important that the 
+policy making integrating diverse modes of scientific inquiry.  
+Genomic, biomolecular, epidemiological, socio-demographic, clinical, 
+and radiological information are all pertinent to Covid-19.  
+In this environment, it is important that the 
 empirical foundations for expert recommendations --- which 
 in turn drive public policies of enormous social and 
 economic consequence --- be transparently documented 
 and critically examined.  The proper synergy between government 
 and science depends on data centralization: given 
 the gaps in our current Covid-19 knowledge, it is 
-appropriate that different jurisdictions craft responses to 
+understandable that different jurisdictions will craft responses to 
 the pandemic in different ways.  There is no central authority 
 with sufficient epistemic force to legitimize homogeneous 
-mandates across the entire country.  However it is also important 
-that policy differences are a product of alternative interpretations of 
-scientific knowledge, or of local communities having diverse needs 
+mandates across the entire country.  However, such 
+policy differences should be a consequence of alternative interpretations of 
+scientific knowledge or the diverse needs of local communities  
 --- rather than being a haphazard consequence of governments 
 working with divergent, competing, and poorly integrated data.}
 
@@ -852,15 +860,15 @@ so as to promote text and data mining.  Similarly,
 large institutions such as Google, Johns Hopkins, and 
 Springer Nature have all implemented some form of coronavirus 
 data-sharing platform targeted to both scientists and 
-policymakers.  However, these two aspects of the 
-corporate/academic contributions (exemplified by 
-\Cnineteen{} and by institution-generated portals, respectively) 
-to Covid-19 data sharing 
+policy makers.  However, these two aspects of the 
+corporate/academic contributions to Covid-19 data sharing 
+(exemplified by the \Cnineteen{} White House initiative and by 
+institution-generated portals, respectively) 
 have been incomplete, for opposite but complementary 
-reasons.  That is, \lCnineteen{} is highly structured and tightly 
+reasons.  Specifically, \lCnineteen{} is highly structured and tightly 
 integrated, but it focuses primarily on text mining and 
-scientific documents, not \textit{research} data.  Specifically, 
-while it is possible to find data 
+scientific documents, not \textit{research} data.  
+While it is possible to find data 
 sets about Covid-19 through \Cnineteen{}, the 
 techniques to do so are both cumbersome and non-scalable.  
 On the other hand, projects such as the Johns Hopkins coronavirus 
@@ -869,15 +877,22 @@ projects are isolated and do not offer the level of
 structure and integration evinced by \Cnineteen{}.  In 
 short, an optimal Covid-19 research platform 
 would merge the structural text-mining rigor of 
-\Cnineteen{} with the data-centric focus of several 
-isolated projects sharing Covid-19 data 
+\Cnineteen{} with the data-centric focus of  
+isolated projects that share Covid-19 data 
 with the scientific community, policy makers, 
 and the general public.}
 
 \section{Description}
 \p{The design of \CRtwo{} derives from the principles outlined 
-in the previous paragraph --- specifically, .
-In particular, \CRtwo{} can provide value at different 
+in the previous paragraph.  In particular, an ideal data-sharing 
+ecosystem should merge data from multiple sources, but should do so 
+in a fashion which yields a machine-readable totality, 
+analogous to \Cnineteen{}'s structuration with respect to 
+text mining.  The merit of \CRtwo{} therefore lies not 
+only in the data which it will encompass but also in 
+novel technology that it will concretize for constructing 
+data repositories adhering to these principles.  
+Accordingly, \CRtwo{} can provide value at different 
 scales of realization.  Relatively small data 
 sets serve several scientific and computational 
 purposes: (1) they can provide researchers 
@@ -907,13 +922,12 @@ At the same time, a more substantial
 (and not necessarily fully open-access) Covid-19 
 data-set collection would also be beneficial to the 
 scientific and policy-making community.  Ideally, then, 
-\CRtwo{} will be 
-paired with a larger technology which shares a similar 
-implementational strategy but with different 
+\CRtwo{} will be paired with a larger technology which shares 
+a similar implementational strategy but with different 
 accession paradigms, allowing for an open-ended 
 collection of Covid-19 data which users may 
-selectively access, instead of a single package 
-that users may acquire as an integrated resource.  
+selectively access (instead of a single package 
+that users may acquire as an integrated resource).  
 The common denominator in both cases 
 (whether the focus is on relatively smaller or 
 larger data sets) is the 
@@ -922,8 +936,7 @@ data-integration techniques to centralize
 Covid-19 research as much as possible.  
 Accordingly, this summary will briefly explain 
 how \CRtwo{} can accelerate Covid-19 data integration 
-on both a 
-practical and technological level.}
+on both a practical and technological level.}
  
 \section{Methodology for Covid-19 Data Integration}
 
@@ -933,13 +946,13 @@ Covid-19 data is documented via a wide array of file
 types and data formats.  This diversity presents technological 
 challenges: if a Covid-19 information space encompasses 
 files representing 25 different incompatible 
-formats, users need 25 different technologies 
+formats, users would need 25 different technologies 
 to fully benefit from this data.  In many 
 cases, however, data incompatibilities are 
 merely superficial --- an important subset of 
 Covid-19 data, for example, has a common 
 tabular meta-model, even if the data is 
-realized in clashing technologies (spreadsheets, 
+realized in discordant technologies (spreadsheets, 
 relational databases, comma-separated-value or 
 Numeric Python files, and so forth).  Applying \CRtwo{}'s technology, 
 one level of data integration can thus 
@@ -949,7 +962,7 @@ can be accessed via a record number and a column name and/or
 index.  In some cases, more rigorous integration is also 
 possible --- for example, by identifying situations where 
 columns in one table correspond semantically or conceptually 
-to those in a second table.  In either case, 
+to those in another table.  In either case, 
 it is reasonable to assume that a single abstract data 
 format lies behind surface data-expression in patterns 
 such as spreadsheets and comma-separated values 
@@ -957,9 +970,8 @@ such as spreadsheets and comma-separated values
 archive encoding spreadsheet-like data can be 
 migrated to a common model.}
 
-\p{Other forms of 
-clinical and epidemiological inputs are more 
-amenable to graph-like representations.  For instance, 
+\p{Other forms of clinical and epidemiological inputs are often 
+more amenable to graph-like representations.  For instance, 
 trajectories of viral transmission through 
 person-to-person contact is obviously an instance 
 of social network analysis.  Similarly, models of 
@@ -976,7 +988,7 @@ observationally \textit{results} in the patient improving
 and eventually \textit{being} discharged.  In short, 
 patient-care information often takes the form 
 --- at least conceptually --- of a network comprised 
-of different \q{events}, each event involving some 
+of different \q{events,} each event involving some 
 observation, action, intervention, or decision made 
 by care providers, and where the important data 
 lies in how the events are interconnected: both their 
@@ -987,19 +999,17 @@ a hospital and discharge).  These graph-like representations
 are a natural formalization of \q{patient-centered} data 
 models.}
 
-\p{Using Applying \CRtwo{}'s  A higher level of data integration can then be 
+\p{Using \CRtwo{} associated software, a higher level of 
+data integration can then be 
 achieved by merging tabular and graph-like models into a 
 single \textit{hypergraph} format.  A 
 significant subset of Covid-19 data (or, more generally, 
 any clinical/biomedical information) 
-conforms to either tabular or graph structures, 
-and so it is feasible to unify all of this information 
-into a common framework to the degree that one 
-works with a meta-model which incorporates both 
-record-sets and graph structures (node-sets and edge-sets) 
-in its representational arsenal.  A graph-plus-table 
+conforms to either tabular or graph structures; 
+thus it is feasible to unify all of this information 
+into a common framework.  A graph-plus-table 
 architecture is generally considered some form of 
-Hypergraph model, and indeed \CRtwo{} uses a hypergraph 
+Hypergraph model, and indeed \CRtwo{} adopts a hypergraph 
 paradigm to merge many different sorts of information into a 
 common structure.  In particular, \CRtwo{} introduces 
 a new \q{Hypergraph Exchange Format} (\HGXF{}) which 
@@ -1007,33 +1017,33 @@ can provide a text encoding of many files that,
 when originally published, embodied a diverse 
 array of file-types requiring a corresponding 
 array of different technologies.  \lCRtwo{} 
-will include computer code to read \HGXF{} files 
+will include specialized computer code that 
+would enable machine-readability of the \HGXF{} files, 
 and use them to create hypergraph-database instances.  
 In short, \CRtwo{} will promote Covid-19 data integration 
 by translating a wide range of files into a common 
-\HGXF{} format.}
-
-\p{Not every format relevant to Covid-19 can be 
-realistically translated to \HGXF{}.  In particular, 
+\HGXF{} format, something that has not yet been done 
+before.\footnote{Not every format relevant to Covid-19 can be 
+realistically translated to \sHGXF{}.  In particular, 
 scienctific fields requiring substantial quantitative 
 analysis --- e.g., biomechanics or genomics --- 
 express data via encodings optimized for relevant 
 mathematical operations.  In this scenario, 
-\CRtwo{} will not attempt to migrate \textit{all} 
-of a data file to \HGXF{}.  However, even for 
-these files \CRtwo{} will generally provide a 
-supplemental \HGXF{} encoding supplying data 
+\sCRtwo{} will not attempt to migrate \textit{all} 
+of a data file to \sHGXF{}.  However, even for 
+these files \sCRtwo{} will generally provide a 
+supplemental \sHGXF{} encoding supplying data 
 \textit{about} the original file, with information 
 about the file type, preferred software components 
 for viewing/manipulating its data, and so forth.  
-In this manner the contents of non-\HGXF{} files 
-can be indirectly included into the \CRtwo{} 
-hypergraph-based ecosystem.}
+In this manner the contents of non-\sHGXF{} files 
+can be indirectly included into the \sCRtwo{} 
+hypergraph-based ecosystem.}}
 
-\subsection{Hypergraph Data Models and Multi-Application Networks}
+\section{Hypergraph Data Models and Multi-Application Networks}
 
-\p{As has been outlined thus far, vast quantities 
-of Covid-19 data can be wholly or partially integrated 
+\p{As has been outlined thus far, via the \CRtwo{} 
+technology most Covid-19 data can be wholly or partially integrated 
 into a single hypergraph framework, which accordingly simplifies 
 the process of designing software applications and 
 algorithms to analyze and manipulate this data.  
@@ -1043,21 +1053,21 @@ and store data, rather than needing to re-implement
 this logic for a large number of different file formats 
 and/or database models.}
 
-\p{Quality software --- especially in the clinical and 
-biomedical context --- demands a careful balance between 
-applications which are either too narrow or too broad 
+\p{Quality software (especially in the clinical and 
+biomedical context) demands a balance between 
+applications which are either too broad or too narrow 
 in scope.  On the one hand, doctors often complain 
 that homogeneous Electronic Health Record systems (where 
 every digital record or observation is managed by a single 
 all-encompassing application) are unwieldy and hard to work 
 with.  This is understandable, because the clinical tasks 
-of health workers with different specializations can be very 
-different.  Conversely, doctors also complain about 
+of health care workers with different specializations can be very 
+different.  On the other hand, doctors also complain about 
 software and information systems which are so balkanized 
 that they must repeatedly switch between different, non-interoperable 
 applications.  In short, clinical, diagnostic, and research software 
 should be neither too homogeneous nor too isolated; finding the 
-proper balance between these extremes is, one can say, 
+proper balance between these extremes is, no doubt, 
 a major challenge to the usability of electronic health 
 systems going forward.}
 
@@ -1069,7 +1079,7 @@ while also identifying requirements that are
 consistent across domains.  Scientific software 
 generally needs to hone in 
 on the data visualization and analytic 
-requirements of particular disciplines; 
+requirements of particular disciplines; for example, 
 biochemists use different programs than 
 astrophysicists.  However, much 
 of the code underlying scientific applications 
@@ -1080,28 +1090,28 @@ functionality --- data storage, accession, provenance,
 searching, user validation, and so forth.  
 In effect, the computational requirements 
 of scientific and biomedical software can 
-be partitioned into two classes: one the 
-one hand, domain-specific logic which reflects the 
+be partitioned into two classes: (1) 
+domain-specific logic which reflects the 
 quantitative or theoretical models of 
-narrow scientific fields; on the other hand, 
+narrow scientific fields; and (2) 
 data-management logistics which can be 
 realized within a central access hub, rather 
 than being re-implemented by each application 
 in isolation.}
 
-\p{In short, this architecture conceives of a 
-central hub which is responsible for storing 
+\p{In short, the architecture enabled by \CRtwo{} 
+conceives of a central hub which is responsible for storing 
 data and for serving as a common access point 
---- providing the gateway where authorized 
+--- providing the \q{gateway} where authorized 
 users can gain access to heterogeneous information 
 spaces utilized by an array of domain-specific 
-software applications.  These peer applications  
+software applications.  Since peer applications  
 would not be directly responsible for data persistence 
-or user identity management, so they can focus 
+or user identity management, they can focus 
 on their specific data analysis and visualization 
 capabilities.  The central hub, serving multiple 
 peer applications, is then a heterogeneous data space 
-managing multiple applications' information while 
+managing information from multiple applications while 
 also tracking information about the applications 
 themselves: helping users to identify and launch the 
 software which is most directly relevant to their 
@@ -1112,14 +1122,14 @@ workflows where one application may send and receive
 data from its peers, allowing applications to complement 
 each others' capabilities.}
 
-\p{The multi-application networking architecture 
-just outlined has precedents in current database and 
-engineering technologies.  Many hospitals and 
+\p{This multi-application networking architecture 
+has precedents in some of the current database and 
+engineering technologies.  For example, many hospitals and 
 medical institutions employ some version of a 
-\q{Data Lake}, pooling disparate data sources into 
+\q{Data Lake,} pooling disparate data sources into 
 a heterogeneous aggregate which is then accessed 
-by multiple client applications.  Similarly, machine-learning 
-and Artificial Intelligence often adopts \q{software agents}, 
+by multiple client applications.  Similarly, Machine Learning 
+and Artificial Intelligence often adopts \q{software agents} 
 or analytic modules in contexts such as Online 
 Analytic Processing, which again represent semi-autonomous 
 software components sharing an originary 
@@ -1128,16 +1138,17 @@ subsidiaries deferring operational requirements, such
 as user authentication or transaction processing, to a 
 central web service.  The limitation of multi-application 
 networks in these existing contexts are that the 
-software agents involved are generally \q{lightweight}, 
-with relatively primitive user-interface design.}
-
-\p{By contrast, the technology introduced with \CRtwo{} will 
-develop multi-application networking in the context of more 
-substantial, desktop-style scientific applications.  In sum, 
-this technology offers a hybrid of the development methodologies 
+software agents involved are generally \q{lightweight,} 
+with relatively primitive user-interface design.  
+By contrast, the hypergraph technology introduced with \CRtwo{} 
+will support multi-application networking in the context of more 
+substantial desktop-style scientific applications.  In sum, 
+the novel hypergraph technology developed by LTS offers a 
+hybrid of the development methodologies 
 employed for desktop scientific software and those 
 applicable to multi-agent heterogeneous data stores, like 
-a Semantic Data Lake.  In particular, \CRtwo{} will utilize 
+a Semantic Data Lake.  To accomplish these goals, 
+\CRtwo{} will utilize 
 a new hypergraph database engine, coded in the \Cpp{} 
 programming language, which has a unique focus on 
 supporting native \GUI{} applications from the ground 
@@ -1145,34 +1156,29 @@ up, including persisting application state and
 storing application documentation within 
 the database itself.}
 
-\section{Augmenting Covid-19 Data with Patient Narratives}
+\section{Adding Patient Narratives to Covid-19 Data}
 
 \p{In addition to aggregating published data sets, \CRtwo{} 
 may be used as a repository for collecting new Covid-19 
 information.  With that in mind, we are prioritizing the 
 design of a standard for storing and accessing 
 natural-language text representing patients' subjective 
-descriptions, which may be useful both for diagnostic 
-assessments and for gleaning information about 
-Covid's psychological and neurological effects.}
+symptom descriptions, which is quite useful for 
+diagnostic/prognostic assessments of patients 
+infected by Covid-19.}
 
-\p{Here again \Cnineteen{} offers a useful case study.  
-The \Cnineteen{} corpus has archived thousands of 
-research papers in a common format suitable for text mining.  
-This textual data was then made openly available to 
-researchers and programmers in the hopes that developers 
-would implement new text-mining algorithms to mine data 
-or detect patterns in the overall corpus.  Just as 
-\CRtwo{} envisions an analogous curation of research 
-data sets for data mining, we can also see the 
-benefit of a text-mining repository of patient narratives 
-submitted by citizens who have been diagnosed with, 
-or believe they may have, Covid-19.  \CRtwo{} will not 
-specify how these narratives should be collected, but 
-it will implement a common representational format 
-so that patient narratives can be pooled, analogous 
-to the merging of research manuscripts 
-within \Cnineteen{}.}
+\p{Just as \CRtwo{} envisions a curation of published 
+data sets for data mining to improve machine-readability 
+of Covid-19 research, LTS also sees the 
+benefit of a repository of patient narratives prepared 
+for text mining, to improve machine readability of the 
+open-ended symptom descriptions offered by patients.  
+While \CRtwo{} does not need to specify how these 
+narratives should be collected, it will implement 
+a common representational format 
+so that patient narratives can be pooled, similar to  
+to how \Cnineteen{} research texts are merged and 
+encoded with a system that permits annotation.}
 
 \p{In modeling patient narratives, this technology 
 will be oriented toward the scientific-computing 
@@ -1180,48 +1186,42 @@ ecosystem outlined in the previous section.
 In particular, we assume that \GUI{}-based desktop 
 applications will be the primary instruments for 
 data collection and analysis; this means that 
-patient narrative representations may be paired 
-with \GUI{} or multi-media content.  For example, 
-the software with which patients submit information 
-could allow them to combine text-form narratives with 
-graphics indicating the source of pain or 
-discomfort; or narratives may be accompanied 
-by audio files where patients cough or speak into 
-a microphone.  A patient-narrative representation 
-therefore must be flexible enough to include 
-these possible forms of multi-media content.}
+the encoding of patient narratives may, at times, 
+need to be paired with \GUI{} or multi-media content.  For example, 
+the software fot patients to submit 
+medical history information could also allow 
+them to pair (text-form) narratives with 
+graphics indicating the location of pain or 
+discomfort.  Furthermore, the software could 
+allow narratives to be accompanied 
+by an audio file where patients could cough/speak into 
+a microphone.  A patient-narrative 
+encoding must therefore, in light of this 
+range of possible inputs, be flexible enough to 
+include diverse multi-media content.}
 
 \p{As described earlier, an information space 
 adapted for multiple peer applications should encompass 
-capabilities for saving application state, which 
+capabilities for saving application state 
+(the current visual appearance of the program), which 
 includes features for modeling instances of 
 \GUI{} classes.  This technology provides the 
 necessary infrastructure for managing patient 
-narratives; for example, consider a multi-media 
+narratives.  For example, consider a multi-media 
 intake form where patients may describe symptoms by 
 placing icons (representing pain or discomfort) 
-against anatomic silhouettes (back, front, head, and so forth).  
-As patients use such a form, \GUI{} state corresponds 
-to the subjective symptomology which should be 
-incorporated into patient narratives and medical 
-records.  This is an example of how 
+against anatomic silhouettes (head/body, back/front, 
+extremities, and so forth).  
+As patients use such a multi-media form, \GUI{} application 
+state corresponds to the patient's subjective symptomology, 
+so that their graphics-based represention of symptoms 
+could be incorporated into the overall patient 
+narrative.  This is an example of how 
 application-persistence logic can be marshaled to 
 the related project of curating patient narratives.}
 
-\p{Once aggregated into research corpora, patient 
-narratives are available to be analyzed by different 
-language-processing and text-mining methodologies.  
-Our strategies for encoding patient texts are based 
-on Sequence Package Analysis, a novel discourse-representation 
-technique developed by Amy Neustein (see 
-\href{https://www.semanticscholar.org/paper/Using-Sequence-Package-Analysis-to-Improve-Natural-Neustein/422873abcd06164362350981bd7fbc7342746ac8}{Using Sequence Package Analysis to Improve Natural Language Understanding}).  
-The patient-narrative models are also designed to 
-facilitate annotation according to techniques described 
-in Dr. Neustein's \href{https://www.semanticscholar.org/paper/1.-Application-of-text-mining-to-biomedical-and-Neustein-Imambi/bcf9d9fc1ddfc533f63de010c5f03e0d109659c6}{Application of Text Mining to Biomedical Knowledge Extraction: Analyzing Clinical Narratives
-and Medical Literature}.}
-
 \p{Further documentation of text-encoding methodology applicable 
-both to patient narratives and to manuscripts associated 
+to both patient narratives and publications associated 
 with \CRtwo{} research data is available on the \CRtwo{} 
 web site, such as \href{http://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/CR2.pdf}{here} (this is a downloadable \PDF{} link; 
 visit the repository to see the larger archive structure).}
