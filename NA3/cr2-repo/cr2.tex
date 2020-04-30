@@ -1,4 +1,4 @@
-\documentclass[10pt,letterpaper]{article}
+\documentclass[11pt,letterpaper]{article}
 
 
 % pmml  arff  openannotation
@@ -63,9 +63,23 @@
 {\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
 
+\ifnum\value{page}<4
 \put(301,16){%
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
+
+\else
+\put(137,76){
+ {\setlength{\fboxsep}{.65em}
+
+   {\color{pink!75!black}{\parbox{15.3cm}{\vspace{7pt}\framebox{\begin{minipage}{.5\textwidth}
+	  {\textbf{\color{blGreen!40!blbl}{\Large For more information, please contact:} \\ 
+	  {\color{blGreen!20!black}\hspace*{2em}Linguistic Technology Systems \\
+      \hspace*{2em}amy.neustein@verizon.net
+      \hspace*{.5em}\bullet{}\hspace*{.5em} \textbf{(917) 817-2184} }}}
+	 \end{minipage}}}}}}
+}
+\fi
 
 {\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
 {\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
@@ -83,7 +97,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.5in,top=.6in,right=.45in,bottom=1.15in} %margins
+\geometry{left=.5in,top=.5in,right=.45in,bottom=1.25in} %margins
 
 \renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
@@ -765,7 +779,7 @@ drop shadow=logoPurple!50!darkRed,
 \begin{minipage}{\textwidth}	
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
-	\relscale{1.27}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Developing a Data Mining Repository to Accelerate Covid-19 Research 
 for the Scientific Community and Public Policy Makers}
 }}}
@@ -1156,6 +1170,50 @@ up, including persisting application state and
 storing application documentation within 
 the database itself.}
 
+\section{Data Microcitations}
+\p{An additional feature of the \CRtwo{} database engine, 
+which will make it particular useful for curating research 
+data, is support for annotating individual components of a 
+database --- a technology sometimes referred to as 
+\q{micro-citation}.  Data microcitations are a references to 
+integral parts of a data set; for instance, an individual table, 
+or a single record or column in a table.  Microcitations allow 
+individual elements within a data set to be cited by and linked 
+to publications.  Microcitations are also a tool for data mining, 
+because a data set can be analyzed by examining each annotated 
+element within the data set.}
+
+\p{In some contexts, microcitations 
+can link data set elements to scientific concepts and 
+controled vocabularies, which can clarify the scientific 
+meaning attributed to the corresponding element.  
+For example, microcitations allow table columns to be 
+mapped to statistical parameters, enabling their 
+empirical properties (such as min/max values and distribution) 
+to be queried.  Similarly, dimensional and measurement 
+annotations describe the empirical and experimental 
+significance of the measured or calculated quantities which 
+are stored in a database.  Quantity dimensions model the 
+conceptual roles which particular parameters perform: 
+the axiation \q{mJ/cm$^2$}(millijoule per 
+square centimeter), for example, indicates the intensity of 
+Ultraviolet light, which means that any table (or any other 
+data aggregate) having a column or field with this dimension 
+is intrinsically associated with observations or experiments 
+pertaining to Ultraviolet light.  Consequently, to 
+locate data sets relevant for research about the 
+antiviral Ultraviolet radiation, 
+one method is to search for data fields dimensionalized 
+in terms of joule or millijoule per square centimeter.  
+As this example illustrates, data microcitaition 
+--- via annotations on data fields, statistical parameters, 
+and table columns --- is an important data-mining tool.  
+Database-level support for microcitations therefore 
+serves two distinct benefits: (1) to aid data mining, and 
+(2) to enable granular links to be established between 
+publications and data sets, making it easier for researchers 
+to find the specific information most relevant to their own research.}
+
 \section{Adding Patient Narratives to Covid-19 Data}
 
 \p{In addition to aggregating published data sets, \CRtwo{} 
@@ -1188,16 +1246,16 @@ applications will be the primary instruments for
 data collection and analysis; this means that 
 the encoding of patient narratives may, at times, 
 need to be paired with \GUI{} or multi-media content.  For example, 
-the software fot patients to submit 
+the software for patients to submit 
 medical history information could also allow 
 them to pair (text-form) narratives with 
-graphics indicating the location of pain or 
+graphics indicating the location of their pain or 
 discomfort.  Furthermore, the software could 
 allow narratives to be accompanied 
 by an audio file where patients could cough/speak into 
-a microphone.  A patient-narrative 
-encoding must therefore, in light of this 
-range of possible inputs, be flexible enough to 
+a microphone.  In light of this 
+range of possible inputs, a patient-narrative 
+encoding must, therefore, be flexible enough to 
 include diverse multi-media content.}
 
 \p{As described earlier, an information space 
@@ -1213,18 +1271,21 @@ placing icons (representing pain or discomfort)
 against anatomic silhouettes (head/body, back/front, 
 extremities, and so forth).  
 As patients use such a multi-media form, \GUI{} application 
-state corresponds to the patient's subjective symptomology, 
-so that their graphics-based represention of symptoms 
-could be incorporated into the overall patient 
+state corresponds to the patient's subjective symptomology; 
+in this way the graphics-based represention of symptoms 
+could then be incorporated into the overall patient 
 narrative.  This is an example of how 
 application-persistence logic can be marshaled to 
 the related project of curating patient narratives.}
 
+\pagestyle{empty}
 \p{Further documentation of text-encoding methodology applicable 
 to both patient narratives and publications associated 
 with \CRtwo{} research data is available on the \CRtwo{} 
-web site, such as \href{http://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/CR2.pdf}{here} (this is a downloadable \PDF{} link; 
+web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/cr2.pdf}{here} (this is a downloadable \PDF{} link; 
 visit the repository to see the larger archive structure).}
+
+
 
 \end{document}
 
