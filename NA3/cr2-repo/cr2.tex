@@ -68,14 +68,14 @@
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
 \ifnum\value{page}=6
-\put(137,126){
+\put(26,106){
  {\setlength{\fboxsep}{.65em}
 
-   {\color{pink!75!black}{\parbox{15.3cm}{\vspace{7pt}\framebox{\begin{minipage}{.5\textwidth}
-	  {\textbf{\color{blGreen!40!blbl}{\Large For more information, please contact:} \\ 
-	  {\color{blGreen!20!black}\hspace*{2em}Linguistic Technology Systems \\
-      \hspace*{2em}amy.neustein@verizon.net
-      \hspace*{.5em}\bullet{}\hspace*{.5em} \textbf{(917) 817-2184} }}}
+   {\color{white}{\parbox{10cm}{\vspace{7pt}\framebox{\begin{minipage}{.4\textwidth}
+	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
+       \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
+      amy.neustein@verizon.net
+      \\\textbf{(917) 817-2184} }}}
 	 \end{minipage}}}}}}
 }
 \fi
@@ -795,17 +795,17 @@ for the Scientific Community and Public Policy Makers}
 
 \vspace*{1.5em}
 \hspace{-7pt}\parbox{1.02\textwidth}{%
-{\fontfamily{fvs}\fontsize{10}{11}\selectfont   
+{\fontfamily{fvs}\fontsize{9}{9}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
-Series Editor of {\bf Speech Technology and 
-Text Mining in Medicine and Health Care} (de Gruyter); 
-Editor of {\bf Advances in Ubiquitous Computing: 
+Series Editor of {\textbf{Speech Technology and 
+Text Mining in Medicine and Health Care}} (de Gruyter); 
+Editor of {\textbf{Advances in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
-and Ecological Monitoring} 
+and Ecological Monitoring}} 
 (Elsevier, 2020); and 
 co-author (with Nathaniel Christen) 
-of {\bf Cross-Disciplinary Data Integration Models
-for the Emerging Covid-19 Data Ecosystem} 
+of {\textbf{Cross-Disciplinary Data Integration Models
+for the Emerging Covid-19 Data Ecosystem}} 
 (Elsevier, forthcoming).}}
 \vspace*{-.25em}	
 
@@ -1175,39 +1175,40 @@ up, including persisting application state and
 storing application documentation within 
 the database itself.}
 
-\section{Data Transparency and the LTS ``Dataset Creator"}
+\section{A New Paradigm for Data Sharing and Data Transparency}
 \p{One exceptional feature of Covid-19 research is the 
 extent of public attention focused on scientific discoveries 
 about the disease.  Academic and commercial research teams 
 find themselves in an unprecedented situation where 
 there is unusual pressure to accelerate the 
-Research and Development process, as well as demand for a 
-novel level of transparency and openness.  For example, 
+Research and Development process, and a concomitant demand for 
+a novel level of transparency and openness.  For example, 
 vaccine development protocols are being fast-forwarded 
 to take months instead of years, and information about 
 the development process (such as trial results and 
 scheduling) will likely be shared with the public much 
 more than is standard practice.  This new reality, 
 in turn, calls for a commensurate evolution in 
-the technology for public data sharing.}
+the technology for public data-sharing.}
 
 \p{In conventional biomedical R\&D, much of the research 
 data is proprietary, and revealed only in restricted 
 contexts to select parties (such as the Food and Drug 
-Administration).  Data which \textit{is} publicly shared 
-tends to be tied to research papers which are read by a 
-relatively small, specialist audience.  All of this is 
+Administration).  Data which \textit{is} then publicly shared 
+tends to be tied to published research papers 
+in peer-reviewed literature, primarily read 
+by a relatively small, specialist audience.  All of this is 
 changing with SARS-CoV-2: companies pursuing 
 Covid-19 R\&D (in the context of vaccine trials, for example) 
 are facing pressure to publicly share their results 
-as soon and as transparently as possible; and 
-policy makers, scientists, and journalists are 
-looking for access to research data directly, 
+as soon, and as transparently, as possible; and 
+policy makers, scientists, and journalists are no 
+less looking for quick access to research data directly, 
 rather than circuitously through academic publications.}
 
 \p{\lCRtwo{} will introduce a new \q{Dataset Creator} technology 
 targeted toward this new environment of direct, transparent 
-data access.  Technically, Dataset Creator is a framework for 
+data-access.  Dataset Creator is a framework for 
 constructing data sets which include computer code based on the 
 \Qt{} application-development platform.  Data sets created 
 via this technology therefore implement the \q{Research Object Protocol,} 
@@ -1218,10 +1219,11 @@ designed by a consortium of academic and governmental
 entities, such as the National Institutes of Health, to 
 promote a paradigm for data publishing which prioritizes 
 multi-faceted research tools over \q{raw} data that 
-can be difficult to reuse.  In particular, Research Objects 
+can be difficult to reuse in the absence of supporting code.  
+In particular, Research Objects 
 should be (as much as possible) \textit{self-contained,} 
 which means that scientists do not need external 
-software to access and study the data --- any special 
+software dependencies to access and study the data --- any special 
 code which is a prerequisite to using this data should 
 be included, alongside the raw data, as part of the 
 Research Object itself.}
@@ -1230,7 +1232,7 @@ Research Object itself.}
 to construct Research Objects with exceptional 
 \GUI{} and data mining capabilities.  \lQt{}, the 
 leading native cross-platform development toolkit, 
-is a very comprehensive framework encompassing 
+is a comprehensive framework encompassing 
 a thorough inventory of programming features 
 --- networking, \GUI{} implementation, file 
 management, data visualization, \ThreeD{} graphics, 
@@ -1239,77 +1241,86 @@ users to obtain a copy of the \Qt{} platform, but
 \Qt{} is free for non-commercial use and easy to 
 install --- importantly, \Qt{} is wholly contained 
 in its own folder and does not affect any other 
-files on user's computers (in this manner \Qt{} is 
+files on the user's computers (in this manner \Qt{} is 
 different than most software packages, which usually 
 demand a \q{system install}).}
 
-\p{By leveraging the \Qt{} platform, Dataset Creator enables 
+\p{By leveraging the \Qt{} platform, our Dataset Creator enables 
 standalone, self-contained, and full-featured 
-native applications to be uniquely implemented 
+native/desktop applications to be uniquely implemented 
 for each data set, distributed in source-code fashion 
 along with raw research data.  Adopting such a 
 data-curation method makes data sets easier to 
 use across a wide range of scientific disciplines, 
 because the data sets are freed from having to rely on domain-specific 
 software (software which may be commonly used in one scientific 
-field but unfamiliar outside that field).  
-Research Objects composed with Dataset Creator can 
-also readily be integrated into Multi-Application Networks 
+field but is unfamiliar outside that field).  
+In addition, Research Objects composed with Dataset Creator can 
+be readily integrated into Multi-Application Networks 
 as described above, since the dataset applications 
 are autonomous, native \GUI{} applications that can 
 easily interoperate via \Qt{} messaging protocols.}
 
-\p{For \CRtwo{}, the data sets included in the repository 
-were created with a wide range of software products;  
-many predate (or fail to apply) contemporary specifications 
-such as the Research Object Protocol.  Therefore, not 
-every \CRtwo{} data set will have the full set of 
-features described in this section.  However, 
-\CRtwo{} will try to maximize the value of each data set 
+\p{However, \CRtwo{} will try to maximize the value of each data set 
 by translating them into a \Qt{}-based format --- in 
 particular, \CRtwo{} will provide \Qt{} code for 
 reading \HGXF{} files, as well as a \Qt{}-based hypergraph 
-representation library.  \lCRtwo{} will also include 
+representation library.\footnote{Some of the data sets included in the 
+repository were obviously created with a wide range of software products;  
+many predate (or fail to apply) contemporary specifications 
+such as the Research Object Protocol; not 
+every \CRtwo{} data set will have the full set of 
+features described in this section.  However, following the 
+data integration methods outlined earlier, much of this 
+data can be merged into a \Qt{}-based framework.}  
+\lCRtwo{} will also include 
 \Qt{}-based software, such as a customized \PDF{} viewer, which 
 will help researchers utilize the corpus in its 
-entirety.  For example, the \CRtwo{} \PDF{} application 
-will include special code to connet \PDF{} files 
-with data sets via \q{micro-citations,} discussed in the 
+entirety.  For example, \CRtwo{}'s \PDF{} viewer 
+will include special code to connect \PDF{} files 
+with data sets via \q{micro-citations,} as discussed in the 
 next section.}
 
 
-\section{Supporting Data Micro-Citations to Improve Machine Readability 
-(Vaccine Trials and Ultraviolet Ray Data Model Examples)}
+\section{Supporting Data Micro-Citations to Improve Machine Readability: 
+Vaccine Trials and UV Light Data Modeling}
 
 \p{The \CRtwo{} database engine supports annotating individual components 
-of a database, technology sometimes referred to as 
-\q{micro-citation}.  Data microcitations are references to 
+of a database --- a technology sometimes referred to as 
+\q{micro-citation.}  Data micro-citations are references to 
 integral parts of a data set, such as an individual table, 
-or a single row/record or column in a table.  Microcitations allow 
+or a single row/record or column in a table.  Micro-citations allow 
 these integral parts within the data set to be cited by and linked 
 to publications, for purposes of machine readility and 
-attribution.  For example, preliminary vaccine trials often 
+attribution.  As an example, preliminary vaccine trials often 
 target a patient cohort selected for demographic or medical 
 criteria matching the population who would most benefit from 
-the vaccine.  These criteria may be described in the texts of 
-articles, but they are also identified by socio-demographic data 
-which is part of the information generated by the trial: 
-each patient has both a demographic profile and a 
-innoculation outcome.  By making these connections explicit, 
+the vaccine.  These criteria for selecting the cohort for 
+the vaccine study are usually described in the texts of the 
+articles.  However, these criteria are also identified 
+within the data set by socio-demographic 
+data which is part of the information \makebox{generated 
+by the trial. \hspace{-6pt} By making these connections between criteria 
+discussed in the article and those 
+rep-} resented in the corresponding data set explicit, 
 text and data mining can be \textit{merged} as analytic 
-tools targeting a data repository.  
+tools targeting a data repository, so that 
 %\lCRtwo{} is therefore 
 %designed to optimize the convenience and rigor of micro-citations 
 %both within data sets and within research papers.  
-Software is then able to mine not just article text but the data 
-on (for example) patient demographics and medical outcomes.}
+machine reading is able to mine not just article text but the 
+corresponding data.}  
+
+%, accelerating the 
+%extraction of current scientific information that is 
+%of use to scientists and policy makers.}
 
 \p{One reason why micro-citations are important is that they 
 clarify the scientific meaning attributed to data set  
 elements by connecting these elements to scientific concepts and 
-controled vocabularies (such as a list of drug names, 
+\q{controled vocabularies} (such as a list of drug names, 
 diseases, proteins, etc.).  
-For instance, microcitations allow table columns to be 
+For instance, micro-citations allow table columns to be 
 mapped to statistical parameters, enabling their 
 empirical properties (such as min/max values and distribution) 
 to be queried by text and data mining software.  Likewise, 
@@ -1333,13 +1344,13 @@ As this example illustrates, data micro-citation
 and table columns --- is an important data-mining tool.  
 In short, constructing micro-citations within a database 
 serves two distinct benefits: (1) to aid data mining; and 
-(2) to enable granular links to be established between 
-publications and data sets, making it easier for researchers 
-to find the specific information most 
-relevant to their own research 
-(by joining specific parts of articles to corresponding
-parts of the data set, analogous to hyperlinks 
-between web pages).}
+(2) to enable granular links (joining specific 
+parts of articles to corresponding parts of the data set in 
+the data set repository --- analogous to hyperlinks 
+between web pages) to be established between 
+publications and data sets, making it \textit{easier} for 
+researchers to find the specific information most 
+relevant to their own research.}
 
 \section{Adding Patient Narratives to Covid-19 Data}
 
