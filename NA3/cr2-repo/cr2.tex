@@ -1,4 +1,4 @@
-\documentclass[10pt,letterpaper]{article}
+\documentclass[11pt,letterpaper]{article}
 
 
 % pmml  arff  openannotation
@@ -17,7 +17,7 @@
   {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
 
 \titlespacing*{\section}
-{0pt}{4ex plus 1ex minus .5ex}{1.4ex plus .2ex}
+{0pt}{4.5ex plus 1ex minus .5ex}{.9ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -48,10 +48,10 @@
 
 \AddToShipoutPicture{%
 \ifnum\value{page}=1
-\put(257.5,918){%
+\put(257.5,932){%
 	\transparent{0.7}{
 		\includegraphics[width=0.2\textwidth]{logo.png}}}
-\put(59,948){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}EXECUTIVE SUMMARY}}}
+\put(59,953){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}EXECUTIVE SUMMARY}}}
 \fi
 }	
 
@@ -67,8 +67,8 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=4
-\put(137,176){
+\ifnum\value{page}=6
+\put(137,126){
  {\setlength{\fboxsep}{.65em}
 
    {\color{pink!75!black}{\parbox{15.3cm}{\vspace{7pt}\framebox{\begin{minipage}{.5\textwidth}
@@ -201,8 +201,12 @@
 
 \newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
 
-\usepackage{aurical}
+\usepackage{gfsdidot}
 \usepackage[T1]{fontenc}
+%\usepackage{LibreBodoni}
+
+%\usepackage{fontspec}
+%\setmainfont{QTBengal}
 
 \usepackage{relsize}
 
@@ -370,6 +374,8 @@
 \textsc{a}N}}}
 
 \newcommand{\JSON}{\resizebox{!}{7pt}{\AcronymText{JSON}}}
+\newcommand{\UV}{\resizebox{!}{7pt}{\AcronymText{UV}}}
+
 
 \newcommand{\MeshLab}{\resizebox{!}{7pt}{\AcronymText{MeshLab}}}
 \newcommand{\IQmol}{\resizebox{!}{7pt}{\AcronymText{IQmol}}}
@@ -508,7 +514,7 @@
 
 \newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
 
-\newcommand{\lQt}{\resizebox{!}{8.5pt}{Qt}}
+\newcommand{\lQt}{\resizebox{!}{8.5pt}{\AcronymText{Qt}}}
 \newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
 \newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
 
@@ -754,7 +760,7 @@
 
 \colorlet{ctmppppy}{ctmppp!60!orange}
 
-\vspace{3em}
+\vspace{.5em}
 
 %{\colorbox{darkBlGreen!30!darkRed}{%
 \begin{tcolorbox}
@@ -787,9 +793,9 @@ for the Scientific Community and Public Policy Makers}
 \end{tcolorbox}
 \end{center}
 
-\vspace*{1.15em}
+\vspace*{1.5em}
 \hspace{-7pt}\parbox{1.02\textwidth}{%
-{\fontfamily{fvs}\fontsize{11}{11}\selectfont   
+{\fontfamily{fvs}\fontsize{10}{11}\selectfont   
 LTS is founded by Amy Neustein, PhD, 
 Series Editor of {\bf Speech Technology and 
 Text Mining in Medicine and Health Care} (de Gruyter); 
@@ -801,13 +807,13 @@ co-author (with Nathaniel Christen)
 of {\bf Cross-Disciplinary Data Integration Models
 for the Emerging Covid-19 Data Ecosystem} 
 (Elsevier, forthcoming).}}
-\vspace*{.75em}	
+\vspace*{-.25em}	
 
 \section{Introduction}
 \p{The LTS Cross-Disciplinary Repository for Covid-19 Research 
 (\CRtwo{}) is a collection 
 of open-access research data sets related to 
-SARS-COV-2 and Covid-19, which is being developed 
+SARS-CoV-2 and Covid-19, which is being developed 
 as a supplement to the forthcoming Elsevier volume 
 examining Covid-19 research from the perspective 
 of text and data mining technologies that 
@@ -842,7 +848,7 @@ for the aggregation of \CRtwo{} data
 cast a spotlight on computational and technological challenges 
 which, in the absence of a catastrophic pandemic, would 
 rarely rise to public attention.  In particular, an effective 
-response to the dangers of \makebox{SARS-COV-2} requires coordinated 
+response to the dangers of \makebox{SARS-CoV-2} requires coordinated 
 policy making integrating diverse modes of scientific inquiry.  
 Genomic, biomolecular, epidemiological, socio-demographic, clinical, 
 and radiological information are all pertinent to Covid-19.  
@@ -1169,58 +1175,171 @@ up, including persisting application state and
 storing application documentation within 
 the database itself.}
 
-\section{Data Microcitations}
-\p{An additional feature of the \CRtwo{} database engine, 
-which will make it particular useful for curating research 
-data, is support for annotating individual components of a 
-database --- a technology sometimes referred to as 
-\q{micro-citation}.  Data microcitations are a references to 
-integral parts of a data set; for instance, an individual table, 
-or a single record or column in a table.  Microcitations allow 
-individual elements within a data set to be cited by and linked 
-to publications.  For example, early-stage vaccine trials often 
+\section{Data Transparency and the LTS ``Dataset Creator"}
+\p{One exceptional feature of Covid-19 research is the 
+extent of public attention focused on scientific discoveries 
+about the disease.  Academic and commercial research teams 
+find themselves in an unprecedented situation where 
+there is unusual pressure to accelerate the 
+Research and Development process, as well as demand for a 
+novel level of transparency and openness.  For example, 
+vaccine development protocols are being fast-forwarded 
+to take months instead of years, and information about 
+the development process (such as trial results and 
+scheduling) will likely be shared with the public much 
+more than is standard practice.  This new reality, 
+in turn, calls for a commensurate evolution in 
+the technology for public data sharing.}
+
+\p{In conventional biomedical R\&D, much of the research 
+data is proprietary, and revealed only in restricted 
+contexts to select parties (such as the Food and Drug 
+Administration).  Data which \textit{is} publicly shared 
+tends to be tied to research papers which are read by a 
+relatively small, specialist audience.  All of this is 
+changing with SARS-CoV-2: companies pursuing 
+Covid-19 R\&D (in the context of vaccine trials, for example) 
+are facing pressure to publicly share their results 
+as soon and as transparently as possible; and 
+policy makers, scientists, and journalists are 
+looking for access to research data directly, 
+rather than circuitously through academic publications.}
+
+\p{\lCRtwo{} will introduce a new \q{Dataset Creator} technology 
+targeted toward this new environment of direct, transparent 
+data access.  Technically, Dataset Creator is a framework for 
+constructing data sets which include computer code based on the 
+\Qt{} application-development platform.  Data sets created 
+via this technology therefore implement the \q{Research Object Protocol,} 
+which mandates that research data be bundled with code allowing 
+scientists to analyze and manipulate the information in the 
+corresponding data set.  The Research Object framework was 
+designed by a consortium of academic and governmental 
+entities, such as the National Institutes of Health, to 
+promote a paradigm for data publishing which prioritizes 
+multi-faceted research tools over \q{raw} data that 
+can be difficult to reuse.  In particular, Research Objects 
+should be (as much as possible) \textit{self-contained,} 
+which means that scientists do not need external 
+software to access and study the data --- any special 
+code which is a prerequisite to using this data should 
+be included, alongside the raw data, as part of the 
+Research Object itself.}
+
+\p{Dataset Creator takes advantage of the \Qt{} platform 
+to construct Research Objects with exceptional 
+\GUI{} and data mining capabilities.  \lQt{}, the 
+leading native cross-platform development toolkit, 
+is a very comprehensive framework encompassing 
+a thorough inventory of programming features 
+--- networking, \GUI{} implementation, file 
+management, data visualization, \ThreeD{} graphics, 
+and so forth.  Data sets based on \Qt{} require 
+users to obtain a copy of the \Qt{} platform, but 
+\Qt{} is free for non-commercial use and easy to 
+install --- importantly, \Qt{} is wholly contained 
+in its own folder and does not affect any other 
+files on user's computers (in this manner \Qt{} is 
+different than most software packages, which usually 
+demand a \q{system install}).}
+
+\p{By leveraging the \Qt{} platform, Dataset Creator enables 
+standalone, self-contained, and full-featured 
+native applications to be uniquely implemented 
+for each data set, distributed in source-code fashion 
+along with raw research data.  Adopting such a 
+data-curation method makes data sets easier to 
+use across a wide range of scientific disciplines, 
+because the data sets are freed from having to rely on domain-specific 
+software (software which may be commonly used in one scientific 
+field but unfamiliar outside that field).  
+Research Objects composed with Dataset Creator can 
+also readily be integrated into Multi-Application Networks 
+as described above, since the dataset applications 
+are autonomous, native \GUI{} applications that can 
+easily interoperate via \Qt{} messaging protocols.}
+
+\p{For \CRtwo{}, the data sets included in the repository 
+were created with a wide range of software products;  
+many predate (or fail to apply) contemporary specifications 
+such as the Research Object Protocol.  Therefore, not 
+every \CRtwo{} data set will have the full set of 
+features described in this section.  However, 
+\CRtwo{} will try to maximize the value of each data set 
+by translating them into a \Qt{}-based format --- in 
+particular, \CRtwo{} will provide \Qt{} code for 
+reading \HGXF{} files, as well as a \Qt{}-based hypergraph 
+representation library.  \lCRtwo{} will also include 
+\Qt{}-based software, such as a customized \PDF{} viewer, which 
+will help researchers utilize the corpus in its 
+entirety.  For example, the \CRtwo{} \PDF{} application 
+will include special code to connet \PDF{} files 
+with data sets via \q{micro-citations,} discussed in the 
+next section.}
+
+
+\section{Supporting Data Micro-Citations to Improve Machine Readability 
+(Vaccine Trials and Ultraviolet Ray Data Model Examples)}
+
+\p{The \CRtwo{} database engine supports annotating individual components 
+of a database, technology sometimes referred to as 
+\q{micro-citation}.  Data microcitations are references to 
+integral parts of a data set, such as an individual table, 
+or a single row/record or column in a table.  Microcitations allow 
+these integral parts within the data set to be cited by and linked 
+to publications, for purposes of machine readility and 
+attribution.  For example, preliminary vaccine trials often 
 target a patient cohort selected for demographic or medical 
 criteria matching the population who would most benefit from 
-the vaccine.  These criteria may be described in article 
-texts, but they are also suggested by sociodemographic data 
-which is part of the information generated by the trial 
-(insofar each patient has both a demographic profile and a 
-treatment outcome).  By making these connections explicit, 
+the vaccine.  These criteria may be described in the texts of 
+articles, but they are also identified by socio-demographic data 
+which is part of the information generated by the trial: 
+each patient has both a demographic profile and a 
+innoculation outcome.  By making these connections explicit, 
 text and data mining can be \textit{merged} as analytic 
-tools targeting a data repository.  \lCRtwo{} is therefore 
-designed to optimize the convenience and rigor of microcitations 
-both within data sets and within research papers.}
+tools targeting a data repository.  
+%\lCRtwo{} is therefore 
+%designed to optimize the convenience and rigor of micro-citations 
+%both within data sets and within research papers.  
+Software is then able to mine not just article text but the data 
+on (for example) patient demographics and medical outcomes.}
 
-\p{In some contexts, microcitations 
-can link data set elements to scientific concepts and 
-controled vocabularies, which can clarify the scientific 
-meaning attributed to the corresponding element.  
-For example, microcitations allow table columns to be 
+\p{One reason why micro-citations are important is that they 
+clarify the scientific meaning attributed to data set  
+elements by connecting these elements to scientific concepts and 
+controled vocabularies (such as a list of drug names, 
+diseases, proteins, etc.).  
+For instance, microcitations allow table columns to be 
 mapped to statistical parameters, enabling their 
 empirical properties (such as min/max values and distribution) 
-to be queried.  Similarly, dimensional and measurement 
-annotations describe the empirical and experimental 
+to be queried by text and data mining software.  Likewise, 
+\CRtwo{} enables dimensional 
+and measurement annotations to describe the empirical and experimental 
 significance of the measured or calculated quantities which 
-are stored in a database.  Quantity dimensions model the 
+are stored in a database.  Such quantity dimensions model the 
 conceptual roles which particular parameters perform: 
-the axiation \q{mJ/cm$^2$}(millijoule per 
-square centimeter), for example, indicates the intensity of 
-Ultraviolet light, which means that any table (or any other 
+e.g., the axiation \q{mJ/cm$^2$}(millijoule per 
+square centimeter) indicates the intensity of 
+ultraviolet light --- any table (or other 
 data aggregate) having a column or field with this dimension 
 is intrinsically associated with observations or experiments 
-pertaining to Ultraviolet light.  Consequently, to 
-locate data sets relevant for research about the 
-antiviral Ultraviolet radiation, 
+pertaining to \UV{} light.  Consequently, to 
+locate data sets relevant for research about the clinical uses of 
+antiviral \UV{} radiation, 
 one method is to search for data fields dimensionalized 
 in terms of joule or millijoule per square centimeter.  
-As this example illustrates, data microcitaition 
+As this example illustrates, data micro-citation 
 --- via annotations on data fields, statistical parameters, 
 and table columns --- is an important data-mining tool.  
-Database-level support for microcitations therefore 
-serves two distinct benefits: (1) to aid data mining, and 
+In short, constructing micro-citations within a database 
+serves two distinct benefits: (1) to aid data mining; and 
 (2) to enable granular links to be established between 
 publications and data sets, making it easier for researchers 
-to find the specific information most relevant to their own research.}
+to find the specific information most 
+relevant to their own research 
+(by joining specific parts of articles to corresponding
+parts of the data set, analogous to hyperlinks 
+between web pages).}
 
 \section{Adding Patient Narratives to Covid-19 Data}
 
@@ -1286,7 +1405,7 @@ narrative.  This is an example of how
 application-persistence logic can be marshaled to 
 the related project of curating patient narratives.}
 
-\pagestyle{empty}
+%\pagestyle{empty}
 \p{Further documentation of text-encoding methodology applicable 
 to both patient narratives and publications associated 
 with \CRtwo{} research data is available on the \CRtwo{} 
