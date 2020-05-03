@@ -67,7 +67,7 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=6
+\ifnum\value{page}=16
 \put(26,106){
  {\setlength{\fboxsep}{.65em}
 
@@ -549,6 +549,16 @@
 \newcommand{\lMosaic}{\lMOSAIC}
 \newcommand{\lfMosaic}{\lfMOSAIC}
 
+%\newcommand{\dsC}{}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\ltextds}[1]{{\fontfamily{lmdh}\fontsize{12}{11}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+\newcommand{\ldsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
 
 \newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
 
@@ -785,8 +795,7 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Developing a Data Mining Repository to Accelerate Covid-19 Research 
-for the Scientific Community and Public Policy Makers}
+{New LTS Tools to Accelerate Covid-19 Research}
 }}}
 \end{center}
 \end{minipage}
@@ -810,40 +819,120 @@ for the Emerging Covid-19 Data Ecosystem}}
 \vspace*{-.25em}	
 
 \section{Introduction}
-\p{The LTS Cross-Disciplinary Repository for Covid-19 Research 
+\p{The Cross-Disciplinary Repository for Covid-19 Research 
 (\CRtwo{}) is a collection 
 of open-access research data sets related to 
 SARS-CoV-2 and Covid-19, which is being developed 
 as a supplement to the forthcoming Elsevier volume 
 examining Covid-19 research from the perspective 
-of text and data mining technologies that 
-cut across disiplines.  The benefit of \CRtwo{} 
-is that it can accelerate Covid-19 research by 
-(1) pooling a diverse collection of data sets into a 
-single resource which scientists can utilize; 
-(2) serving as the prototype for larger research 
-portals that can aggregate new Covid-19 data 
-that will emerge from hospitals, labs, and 
-academic institutions in the future; (3) formalizing 
-a framework for aggregating patient narratives 
-to accurately capture first-hand subjective symptomatology of 
-the patient suffering from Covid-19; and 
-(4) accelerating the implementation of novel 
-data-integration and software-development 
-technologies which can contribute to scientific 
-progress \visavis{} Covid-19 
-in particular, and biomedical/scientific computing 
-methodology in general.
-The software used to curate \CRtwo{} data has 
-diverse applications for software and database engineering, 
-and provides solutions to technical problems with a 
-broad reach in the private sector.  Further 
-documentation of the \CRtwo{} technology and 
-products may be found on the development repository 
-for the aggregation of \CRtwo{} data 
-(\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR}).}
+of text and data mining.  This repository is 
+an opportunity for LTS to develop and showcase 
+new database engineering and data-set construction 
+technologies.  Both the new technologies and the 
+\CRtwo{} repository will be outlined in the following 
+sections.}
 
-\section{Background}
+\p{Some of the \CRtwo{} code/data will be hosted on 
+GitHub at \href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR} 
+(for data aggregation) and 
+\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/LingTechSys}.  
+The second repository includes \q{preview} code sampling 
+database engine features (the logic for constructing a 
+database in shared memory, encoding data types for persistence, 
+and so forth).  Companies or research groups interested in a more 
+substantial code preview are invited to contact LTS, where 
+we can discuss how the data management tools developed 
+for \CRtwo{} can be customized for your own projects.}
+
+\section{Overview of the New Technology}
+\p{The main challenge when curating a 
+data repository such as \CRtwo{} is reconciling 
+heterogeneous data formats.  
+In response to these problems, LTS has 
+focused on hypergraph-based data models 
+which can unify many different information 
+structures into a common format.  
+In particular, \CRtwo{} will introduce 
+a Hypergraph Exchange Format (\HGXF{}) 
+which can take the place of disparate 
+tabular or graph file formats 
+(comma-separated values, numeric python, 
+spreadsheets, graph-network serializations, 
+etc.).  In addition, \CRtwo{} will 
+introduce a new protocol for engineering 
+hypergraph databases, dubbed \THQL{} 
+(Transparent Hypergraph Query Language).  
+Databases conformant to the \THQL{} model will 
+be able to export data in hypergraph-based 
+formats, thereby generating a data set 
+which can be used as a published, citable 
+Research Object.  \lCRtwo{} will introduce a 
+new database engine (called DigammaDB) which 
+serves as a \q{Reference Implementation} for 
+\THQL{}.  In \CRtwo{}, DigammaDB is used 
+to curate data sets before their final 
+form is exported into the main data repository.  
+However, DigammaDB is only a prototype and 
+reference demonstration for \THQL{}; 
+Customized commercial versions of a \THQL{} 
+engine can be tailored to each project's 
+data storage and 
+application-development requirements.} 
+    
+\p{\lTHQL{} is designed with a priority on 
+application development.  In particular, 
+any instantiation of \THQL{} should 
+provide data persistence capabilities 
+through (as much as possible) self-contained 
+code libraries that can be included in 
+source-code form within an overall application.  
+\lTHQL{} is designed to integrate seamlessly 
+with native, desktop-style standalone 
+applications --- for example, it is 
+easy to implement \GUI{} components which 
+are initialized with data obtained from a 
+\THQL{} database.  In short, \THQL{} 
+represents an unprecedented combination of 
+native desktop-style software development 
+and hypergraph database engineering.} 
+
+\p{Complementing \THQL{}'s application-development 
+focus, \CRtwo{} will also introduce \q{Dataset Creator,} 
+(\dsC{}), a new tool for curating research data sets.  
+The pre-eminent feature of Dataset Creator is 
+its use of native software components 
+(called \q{Dataset Applications}) 
+allowing researchers to view, manipulate, and 
+reuse research data.  In sum, the typical 
+Research Object built with \dsC{} 
+will include self-contained source code 
+implementing a customized desktop application 
+providing access to the accompanying data set.  
+In addition to \GUI{} code, each 
+Dataset Application will provide \q{data-access} 
+code libraries for 
+parsing the raw data-set files, so as to obtain 
+the information visualized within the 
+Dataset Application's \GUI{} classes.  
+These data-access libraries are also useful for 
+providing machine-readable access to 
+such raw data.  Subsequent researchers can then 
+re-use the data-access code so as to transform, 
+filter, or analyze the published data in 
+the context of replication studies and/or 
+novel research projects.} 
+  
+\p{Development of \THQL{} and \dsC{} is 
+keyed to \CRtwo{}; the \CRtwo{} repository will 
+provide a practical test-bed for validating 
+this new technology.  Accordingly, the 
+following sections will describe \CRtwo{} 
+in greater detail, followed by 
+sections providing more information about 
+\THQL{} and \dsC{}.}
+
+\section{The Cross-Disciplinary Repository for Covid-19 Research}
+%\section{Background}
 \p{The sudden emergence of Covid-19 as a global crisis has 
 cast a spotlight on computational and technological challenges 
 which, in the absence of a catastrophic pandemic, would 
@@ -901,7 +990,33 @@ isolated projects that share Covid-19 data
 with the scientific community, policy makers, 
 and the general public.}
 
-\section{Description}
+\p{The benefit of \CRtwo{} 
+is that it can accelerate Covid-19 research by 
+(1) pooling a diverse collection of data sets into a 
+single resource which scientists can utilize; 
+(2) serving as the prototype for larger research 
+portals that can aggregate new Covid-19 data 
+that will emerge from hospitals, labs, and 
+academic institutions in the future; (3) formalizing 
+a framework for aggregating patient narratives 
+to accurately capture first-hand subjective symptomatology of 
+the patient suffering from Covid-19; and 
+(4) accelerating the implementation of novel 
+data-integration and software-development 
+technologies which can contribute to scientific 
+progress \visavis{} Covid-19 
+in particular, and biomedical/scientific computing 
+methodology in general.
+The software used to curate \CRtwo{} data has 
+diverse applications for software and database engineering, 
+and provides solutions to technical problems with a 
+broad reach in the private sector.  Further 
+documentation of the \CRtwo{} technology and 
+products may be found on the development repository 
+for the aggregation of \CRtwo{} data 
+(\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR}).}
+
+%\section{Description}
 \p{The design of \CRtwo{} derives from the principles outlined 
 in the previous paragraph.  In particular, an ideal data-sharing 
 ecosystem should merge data from multiple sources, but should do so 
@@ -1206,11 +1321,10 @@ policy makers, scientists, and journalists are no
 less looking for quick access to research data directly, 
 rather than circuitously through academic publications.}
 
-\p{\lCRtwo{} will introduce a new \q{Dataset Creator} technology 
+\p{\lCRtwo{} will introduce the new Dataset Creator technology 
 targeted toward this new environment of direct, transparent 
-data-access.  Dataset Creator is a framework for 
-constructing data sets which include computer code based on the 
-\Qt{} application-development platform.  Data sets created 
+data-access (\dsC{} will be discussed in greater detail below).  
+Data sets created 
 via this technology therefore implement the \q{Research Object Protocol,} 
 which mandates that research data be bundled with code allowing 
 scientists to analyze and manipulate the information in the 
@@ -1228,24 +1342,7 @@ code which is a prerequisite to using this data should
 be included, alongside the raw data, as part of the 
 Research Object itself.}
 
-\p{Dataset Creator takes advantage of the \Qt{} platform 
-to construct Research Objects with exceptional 
-\GUI{} and data mining capabilities.  \lQt{}, the 
-leading native cross-platform development toolkit, 
-is a comprehensive framework encompassing 
-a thorough inventory of programming features 
---- networking, \GUI{} implementation, file 
-management, data visualization, \ThreeD{} graphics, 
-and so forth.  Data sets based on \Qt{} require 
-users to obtain a copy of the \Qt{} platform, but 
-\Qt{} is free for non-commercial use and easy to 
-install --- importantly, \Qt{} is wholly contained 
-in its own folder and does not affect any other 
-files on the user's computers (in this manner \Qt{} is 
-different than most software packages, which usually 
-demand a \q{system install}).}
-
-\p{By leveraging the \Qt{} platform, our Dataset Creator enables 
+\p{Dataset Creator enables 
 standalone, self-contained, and full-featured 
 native/desktop applications to be uniquely implemented 
 for each data set, distributed in source-code fashion 
@@ -1255,32 +1352,36 @@ use across a wide range of scientific disciplines,
 because the data sets are freed from having to rely on domain-specific 
 software (software which may be commonly used in one scientific 
 field but is unfamiliar outside that field).  
-In addition, Research Objects composed with Dataset Creator can 
+In addition, Research Objects composed with \dsC{} can 
 be integrated into Multi-Application Networks  
 (which are described in the previous section) because 
 the dataset applications are autonomous native \GUI{} applications that 
 can easily interoperate via \Qt{} messaging protocols.}
 
-\p{However, \CRtwo{} will try to maximize the value of each data set 
+\p{Of course, most of the \CRtwo{} data sets are 
+previously-published work composed via older technology. 
+Many of these resources, created with a wide range of software 
+products, predate (or fail to apply) contemporary specifications 
+such as the Research Object Protocol; not 
+every \CRtwo{} data set will have the full set of 
+features described in this section.  However, 
+\CRtwo{} will try to maximize the value of each data set 
 by translating them into a \Qt{}-based format --- in 
 particular, \CRtwo{} will provide \Qt{} code for 
 reading \HGXF{} files, as well as a \Qt{}-based hypergraph 
-representation library.\footnote{Some of the data sets included in the 
-repository were obviously created with a wide range of software products;  
-many predate (or fail to apply) contemporary specifications 
-such as the Research Object Protocol; not 
-every \CRtwo{} data set will have the full set of 
-features described in this section.  However, following the 
-data integration methods outlined earlier, much of this 
-data can be merged into a \Qt{}-based framework.}  
-\lCRtwo{} will also include 
+representation library.  Following the 
+data integration methods outlined earlier, much of the 
+\CRtwo{} data can be merged into a \Qt{}-based framework, 
+which can facilitate the implementation of 
+new, more sophisticated Dataset Applications 
+as the information in \CRtwo{} gets reused 
+for subsequent research.  \lCRtwo{} will also include 
 \Qt{}-based software, such as a customized \PDF{} viewer, which 
 will help researchers utilize the corpus in its 
 entirety.  For example, \CRtwo{}'s \PDF{} viewer 
 will include special code to connect \PDF{} files 
 with data sets via \q{micro-citations,} as discussed in the 
 next section.}
-
 
 \section{Supporting Data Micro-Citations to Improve Machine Readability}
 
@@ -1421,6 +1522,45 @@ to both patient narratives and publications associated
 with \CRtwo{} research data is available on the \CRtwo{} 
 web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/cr2.pdf}{here} (this is a downloadable \PDF{} link; 
 visit the repository to see the larger archive structure).}
+
+
+\section{Dataset Creator}
+\p{Dataset Creator is a framework for 
+constructing data sets which include computer code based on the 
+\Qt{} application-development platform.}
+
+\p{Dataset Creator takes advantage of the \Qt{} platform 
+to construct Research Objects with exceptional 
+\GUI{} and data mining capabilities.  \lQt{}, the 
+leading native cross-platform development toolkit, 
+is a comprehensive framework encompassing 
+a thorough inventory of programming features 
+--- networking, \GUI{} implementation, file 
+management, data visualization, \ThreeD{} graphics, 
+and so forth.  Data sets based on \Qt{} require 
+users to obtain a copy of the \Qt{} platform, but 
+\Qt{} is free for non-commercial use and easy to 
+install --- importantly, \Qt{} is wholly contained 
+in its own folder and does not affect any other 
+files on the user's computers (in this manner \Qt{} is 
+different than most software packages, which usually 
+demand a \q{system install}).}
+
+\p{By leveraging the \Qt{} platform, our Dataset Creator enables 
+standalone, self-contained, and full-featured 
+native/desktop applications to be uniquely implemented 
+for each data set, distributed in source-code fashion 
+along with raw research data.  Adopting such a 
+data-curation method makes data sets easier to 
+use across a wide range of scientific disciplines, 
+because the data sets are freed from having to rely on domain-specific 
+software (software which may be commonly used in one scientific 
+field but is unfamiliar outside that field).  
+In addition, Research Objects composed with Dataset Creator can 
+be integrated into Multi-Application Networks  
+(which are described in the previous section) because 
+the dataset applications are autonomous native \GUI{} applications that 
+can easily interoperate via \Qt{} messaging protocols.}
 
 
 
