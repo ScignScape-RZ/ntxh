@@ -807,9 +807,9 @@ drop shadow=logoPurple!50!darkRed,
 \vspace*{1.5em}
 \hspace{-7pt}\parbox{1.02\textwidth}{%
 {\fontfamily{fvs}\fontsize{9}{9}\selectfont   
-LTS is founded by Amy Neustein, PhD, 
-Series Editor of {\textbf{Speech Technology and 
-Text Mining in Medicine and Health Care}} (de Gruyter); 
+LTS (Linguistic Technology Systems) is founded by 
+Amy Neustein, PhD, Series Editor of {\textbf{Speech Technology 
+and Text Mining in Medicine and Health Care}} (de Gruyter); 
 Editor of {\textbf{Advances in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
 and Ecological Monitoring}} 
@@ -1652,19 +1652,46 @@ through which values are routed before they can be
 stored persistently.}
 
 \p{In DigammaDB, the \THQL{} Reference Implementation, 
+persisted data storage is implemented via the WhiteDB 
+database engine.  WhiteDB is a hybrid 
+graph/record database which allocates a persistent 
+data store in shared memory (allowing each database to be 
+accessed from multiple applications).  DigammaDB encodes 
+hypernodes in WhiteDB records (although programmers 
+can interface with the underlying WhiteDB instances if 
+desired).  DigammaDB can then use WhiteDB's index and 
+query mechanism as the foundation for its own 
+higher-level query system.  To support different 
+\THQL{} operational modes, DigammaDB organizes a 
+stage-structure based on encoding WhiteDB values: 
+at the ground level, values are simply pointers 
+to in-memory \Cpp{} objects.  At an intermediate level, 
+values are encoded (via the QDataStream class in \Qt{}) 
+into structures which recognize the WhiteDB encoding 
+scheme but do not themselves interact with WhiteDB. 
+Finally, values may be recorded as WhiteDB fields 
+and records ready for persistent storage.}
 
-}
-
-\p{}
-
-
+\p{WhiteDB also allows databases to be shared 
+(including sent over a network) by storing all 
+database information in a special file format.  
+DigammaDB instances can be shared via this 
+same mechanism, although another option is to 
+export the contents of a DigammaDB database to 
+\HGXF{} files, which in turn form the core 
+of a research data set representing the 
+database contents at a specific moment in time.  
+In this guise DigammaDB works in conjunction 
+with \dsC{}, serving as the engine to 
+construct a data set publishing research data 
+curated via a DigammaDB database.  Our 
+\dsC{} technology will be described in the next section.}
 
 \section{Dataset Creator}
-\p{Dataset Creator is a framework for 
+\p{Dataset Creator (\dsC{}) is a framework for 
 constructing data sets which include computer code based on the 
-\Qt{} application-development platform.}
-
-\p{Dataset Creator takes advantage of the \Qt{} platform 
+\Qt{} application-development platform.  
+Dataset Creator takes advantage of the \Qt{} platform 
 to construct Research Objects with exceptional 
 \GUI{} and data mining capabilities.  \lQt{}, the 
 leading native cross-platform development toolkit, 
@@ -1681,7 +1708,7 @@ files on the user's computers (in this manner \Qt{} is
 different than most software packages, which usually 
 demand a \q{system install}).}
 
-\p{By leveraging the \Qt{} platform, our Dataset Creator enables 
+\p{By leveraging the \Qt{} platform, \dsC{} enables 
 standalone, self-contained, and full-featured 
 native/desktop applications to be uniquely implemented 
 for each data set, distributed in source-code fashion 
@@ -1691,9 +1718,9 @@ use across a wide range of scientific disciplines,
 because the data sets are freed from having to rely on domain-specific 
 software (software which may be commonly used in one scientific 
 field but is unfamiliar outside that field).  
-In addition, Research Objects composed with Dataset Creator can 
+In addition, Research Objects composed with \dsC{} can 
 be integrated into Multi-Application Networks  
-(which are described in the previous section) because 
+(which are described above) because 
 the dataset applications are autonomous native \GUI{} applications that 
 can easily interoperate via \Qt{} messaging protocols.}
 
