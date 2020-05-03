@@ -248,6 +248,8 @@
 \newcommand{\NoSQL}{\resizebox{!}{7pt}{\AcronymText{NoSQL}}}
 \newcommand{\SQL}{\resizebox{!}{7pt}{\AcronymText{SQL}}}
 
+\newcommand{\SPARQL}{\resizebox{!}{7pt}{\AcronymText{SPARQL}}}
+
 \newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
 
 \newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
@@ -866,7 +868,7 @@ Databases conformant to the \THQL{} model will
 be able to export data in hypergraph-based 
 formats, thereby generating a data set 
 which can be used as a published, citable 
-Research Object.  \lCRtwo{} will introduce a 
+Research Object.  \lCRtwo{} will also introduce a 
 new database engine (called DigammaDB) which 
 serves as a \q{Reference Implementation} for 
 \THQL{}.  In \CRtwo{}, DigammaDB is used 
@@ -1517,11 +1519,144 @@ application-persistence logic can be marshaled to
 the related project of curating patient narratives.}
 
 %\pagestyle{empty}
-\p{Further documentation of text-encoding methodology applicable 
-to both patient narratives and publications associated 
-with \CRtwo{} research data is available on the \CRtwo{} 
-web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/cr2.pdf}{here} (this is a downloadable \PDF{} link; 
-visit the repository to see the larger archive structure).}
+
+%\p{Further documentation of text-encoding methodology applicable 
+%to both patient narratives and publications associated 
+%with \CRtwo{} research data is available on the \CRtwo{} 
+%web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/%cr2.pdf}{here} (this is a downloadable \PDF{} link; 
+%visit the repository to see the larger archive structure).}
+
+\section{Native Application Development with THQL}
+
+\p{As described earlier, \THQL{} is a database 
+engineering protocol which prioritizes 
+data persistence components that can be 
+included in source code fashion within application-development 
+projects.  \lTHQL{} is \q{transparent} in that 
+all layers of data persistence and 
+query processing logic are provided 
+via self-contained source-code libraries.  
+The complete database functionality can 
+then be statically examined via the source-code 
+files, and dynamically examined by running the 
+client application through a debugger.  Moreover, 
+because all \THQL{} source code is bundled with 
+application code, \THQL{} can be configured to 
+integrate seamlessly into the client application  
+logic.  For example, \THQL{} can be 
+extended to natively recognize client-specific 
+datatypes as data fields, or to execute 
+client algorithms as query parameters.}
+
+\p{As a query \textit{language,} \THQL{} can 
+be instantiated either by a special language 
+with its own syntax and semantics 
+(analogous the \SQL{} or \SPARQL{}), or 
+as an interface and pattern specified 
+for a conventional language, such as 
+\Cpp{}.  In the latter guise, 
+\THQL{} provides a common protocol for 
+essential database tasks, such as 
+constructing, updating, querying, 
+and backing up database instances.  
+Each procedure comprising the 
+\THQL{} protocol is assigned a 
+specific role, so the protocol 
+can be abstractly modeled as a 
+set of data-management roles 
+mapped to corresponding procedure 
+implementations.  On this basis, 
+custom query languages can be 
+achieved by exposing each role-procedure 
+to a scripting interface.  For example, 
+\THQL{}'s Reference Implementation, 
+DigammaDB, exposes each protocol-specific 
+procedure via a set of globally 
+accessible pointers to \Cpp{} functions.  
+Parsing a query languags is then a 
+straightforward process of mapping query 
+expressions to the requisite procedure, 
+whose corresponding handle can then be 
+obtained via \Cpp{} interop.}
+
+\p{As indicated by its name, \THQL{} 
+centered around the operations to 
+define and store hypergraph-form data: 
+information which has several levels 
+or scales of structuration.  
+This means that the \THQL{} protocol 
+includes procedures for registering 
+individual data fields 
+(representing, in general, primitive 
+types such as integers and decimals) in a 
+database; aggregating fields into 
+\q{hypernodes,} or groups of interrelated 
+information; connecting pairs of 
+hypernodes by identifying a specific 
+connection which they have; 
+adding contextual details or annotations 
+(via so-called \textit{frames} and \textit{channels}) 
+which refine assertions of hypernode connections; 
+and constructing \q{proxies} to database elements 
+(such as hypernodes, frames, and subgraphs) which 
+can be referenced via unique identifiers, 
+as individual data fields.  Since proxies 
+can then be aggregated into hypernodes in 
+turn, \THQL{} graphs can have, if desired, 
+arbitratily deep nested structures.}
+
+\p{In addition to the operations just outlined, 
+\THQL{} recognizes additional stuctures 
+corresponding to conceptual details described 
+above --- for example, fields within 
+hypernodes can be linked with 
+dimensional attributes (e.g. scales and 
+units of measurement) and identified 
+as microcitation targets.  \lTHQL{} likewise 
+supports controled vocabularies, 
+called \q{dominions} (which stands for 
+Domain-Specific Mini-Ontologies), applying to 
+hypernode-types and/or connection labels.  A graph 
+can then be configured to only accept hypernodes 
+which conform to one of the dominion-defined 
+types; or to only allow connections to be 
+asserted between hypernodes when these connections 
+can be labeled from a dominion-specific list 
+of connectors.  Less restrictively, graphs 
+can be defined in a more free-form style 
+but use dominions to filter or 
+query nodes and edges.}
+
+\p{Another feature of \THQL{}, relevant 
+to application integration, is the notion of 
+cofiguring each database to support different 
+\q{modes} of data persistence.  It is possible
+to use \THQL{} for completely in-memory data management, 
+with no direct data persistence at all.  This would be 
+an appropriate solution when data can be read all at once 
+from a static source, such as a data set.  In this guise, 
+\THQL{} would be used to build a structural model 
+of the data set, which can then be queried by application 
+code.  Conversely, it is possible to employ \THQL{} as a 
+continuously-updated data store, where changes to 
+an underlying \THQL{} graph are persisted to disk 
+as soon as they are registered.  Between these extremes, 
+\THQL{} graphs can hold dynamically changing representations 
+of a persistent database, which are only incorporated 
+into the underlying database when instructed by 
+the client application.  To support these different 
+operational modes, \THQL{} engines need the capability 
+to represent each data type in several different 
+formats, tailored to different stages of processing 
+through which values are routed before they can be 
+stored persistently.}
+
+\p{In DigammaDB, the \THQL{} Reference Implementation, 
+
+}
+
+\p{}
+
 
 
 \section{Dataset Creator}
