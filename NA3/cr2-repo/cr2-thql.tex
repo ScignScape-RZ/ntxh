@@ -3,8 +3,11 @@
 
 % pmml  arff  openannotation
 
-\usepackage[condensed,math]{anttor}
-\usepackage[T1]{fontenc}
+%\usepackage[condensed,math]{anttor}
+%\usepackage[T1]{fontenc}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{tgtermes}
 
 \usepackage[hang,flushmargin]{footmisc}
 
@@ -200,8 +203,24 @@
 
 \newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
 
+
+%\usepackage[T1]{fontenc}
+
+%\usepackage{aurical}
+% \Fontauri
+
 \usepackage{gfsdidot}
 \usepackage[T1]{fontenc}
+
+%\makeatletter
+%\f@family,  cmr, T1, n, m,
+%\f@encoding,
+%\f@shape,
+%\f@series,
+%\makeatother
+
+
+
 %\usepackage{LibreBodoni}
 
 %\usepackage{fontspec}
@@ -313,17 +332,23 @@
 \newcommand{\GIT}{\resizebox{!}{7pt}{\AcronymText{GIT}}}
 
 %\definecolor{atColor}{RGB}{11, 71, 17}
+
+
+\DeclareMathVersion{fordg}
+\SetSymbolFont{letters}{fordg}{OML}{cmr}{b}{n}
+
 \definecolor{atColor}{RGB}{50, 22, 40}
 \newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
 
-\newcommand{\DgDb}{\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\newcommand{\DgDb}{{\mathversion{fordg}%
+\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
-\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
 
-\newcommand{\lDgDb}{\makebox{\raisebox{-3pt}{%
+\newcommand{\lDgDb}{{\mathversion{fordg}%
 \resizebox{!}{12pt}{\ATextClr{%
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
-\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
 
 \newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
 \newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
@@ -383,6 +408,8 @@
 
 \newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
 
+\newcommand{\WhiteDB}{\makebox{WhiteDB}}
+
 \newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
 
 \newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
@@ -395,6 +422,17 @@
 \newcommand{\SDI}{\resizebox{!}{7pt}{\AcronymText{SDI}}}
 \newcommand{\SDIV}{\resizebox{!}{7pt}{\AcronymText{SDIV}}}
 
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+\newcommand{\lDgDb}{\makebox{\raisebox{-3pt}{%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
 
 
 \newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
@@ -477,7 +515,7 @@
 
 \newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
 
-\newcommand{\WhiteDB}{\resizebox{!}{7pt}{\AcronymText{WhiteDB}}}
+%\newcommand{\\WhiteDB{}}{\resizebox{!}{7pt}{\AcronymText{\WhiteDB{}}}}
 
 \colorlet{drp}{darkRed!70!purple}
 
@@ -836,7 +874,8 @@ sections.}
 \p{Some of the \CRtwo{} code/data will be hosted on 
 GitHub at \href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR} 
 (for data aggregation) and 
-\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/LingTechSys}.  
+\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/LingTechSys} 
+(for code previews).  
 The second repository includes \q{preview} code sampling 
 database engine features (the logic for constructing a 
 database in shared memory, encoding data types for persistence, 
@@ -852,7 +891,7 @@ heterogeneous data formats.
 In response to these problems, LTS has 
 focused on hypergraph-based data models 
 which can unify many different information 
-structures into a common format.  
+structures into a common structure.  
 In particular, \CRtwo{} will introduce 
 a Hypergraph Exchange Format (\HGXF{}) 
 which can take the place of disparate 
@@ -870,10 +909,10 @@ which can be used as a published, citable
 Research Object.  \lCRtwo{} will also introduce a 
 new database engine (called DigammaDB) which 
 serves as a \q{Reference Implementation} for 
-\THQL{}.  In \CRtwo{}, DigammaDB is used 
+\THQL{}.  In \CRtwo{}, DigammaDB (\DgDb{}) is used 
 to curate data sets before their final 
 form is exported into the main data repository.  
-However, DigammaDB is only a prototype and 
+However, \DgDb{} is only a prototype and 
 reference demonstration for \THQL{}; 
 Customized commercial versions of a \THQL{} 
 engine can be tailored to each project's 
@@ -928,7 +967,7 @@ keyed to \CRtwo{}; the \CRtwo{} repository will
 provide a practical test-bed for validating 
 this new technology.  Accordingly, the 
 following sections will describe \CRtwo{} 
-in greater detail, followed by 
+in greater detail, followed afterword by 
 sections providing more information about 
 \THQL{} and \dsC{}.}
 
@@ -1578,7 +1617,7 @@ expressions to the requisite procedure,
 whose corresponding handle can then be 
 obtained via \Cpp{} interop.}
 
-\p{As indicated by its name, \THQL{} 
+\p{As indicated by its name, \THQL{} is 
 centered around the operations to 
 define and store hypergraph-form data: 
 information which has several levels 
@@ -1618,7 +1657,7 @@ Domain-Specific Mini-Ontologies), applying to
 hypernode-types and/or connection labels.  A graph 
 can then be configured to only accept hypernodes 
 which conform to one of the dominion-defined 
-types; or to only allow connections to be 
+types; and/or to only allow connections to be 
 asserted between hypernodes when these connections 
 can be labeled from a dominion-specific list 
 of connectors.  Less restrictively, graphs 
@@ -1651,36 +1690,36 @@ through which values are routed before they can be
 stored persistently.}
 
 \p{In DigammaDB, the \THQL{} Reference Implementation, 
-persisted data storage is implemented via the WhiteDB 
-database engine.  WhiteDB is a hybrid 
+persisted data storage is implemented via the \WhiteDB{} 
+database engine.  \WhiteDB{} is a hybrid 
 graph/record database which allocates a persistent 
 data store in shared memory (allowing each database to be 
-accessed from multiple applications).  DigammaDB encodes 
-hypernodes in WhiteDB records (although programmers 
-can interface with the underlying WhiteDB instances if 
-desired).  DigammaDB can then use WhiteDB's index and 
+accessed from multiple applications).  \lDgDb{} encodes 
+hypernodes in \WhiteDB{} records (although programmers 
+can interface with the underlying \WhiteDB{} instances if 
+desired).  \lDgDb{} can then use \WhiteDB{}'s index and 
 query mechanism as the foundation for its own 
 higher-level query system.  To support different 
-\THQL{} operational modes, DigammaDB organizes a 
-stage-structure based on encoding WhiteDB values: 
+\THQL{} operational modes, \DgDb{} organizes a 
+stage-structure based on encoding \WhiteDB{} values: 
 at the ground level, values are simply pointers 
 to in-memory \Cpp{} objects.  At an intermediate level, 
 values are encoded (via the QDataStream class in \Qt{}) 
-into structures which recognize the WhiteDB encoding 
-scheme but do not themselves interact with WhiteDB. 
-Finally, values may be recorded as WhiteDB fields 
+into structures which recognize the \WhiteDB{} encoding 
+scheme but do not themselves interact with \WhiteDB{}. 
+Finally, values may be recorded as \WhiteDB{} fields 
 and records ready for persistent storage.}
 
-\p{WhiteDB also allows databases to be shared 
+\p{\WhiteDB{} also allows databases to be shared 
 (including sent over a network) by storing all 
 database information in a special file format.  
-DigammaDB instances can be shared via this 
+\lDgDb{} instances can be shared via this 
 same mechanism, although another option is to 
-export the contents of a DigammaDB database to 
+export the contents of a \DgDb{} database to 
 \HGXF{} files, which in turn form the core 
 of a research data set representing the 
 database contents at a specific moment in time.  
-In this guise DigammaDB works in conjunction 
+In this guise \lDgDb{} works in conjunction 
 with \dsC{}, serving as the engine to 
 construct a data set publishing research data 
 curated via a DigammaDB database.  Our 
@@ -1760,7 +1799,7 @@ language.  The goal of these text-processing
 technologies is to improve the interoperability 
 between research papers and data sets.  In particular, 
 the \LaTeX{} pre-processors, and subsequent 
-\LaTeX{}-to-\PDF{} convertors, generate \HGXF{} 
+\LaTeX{}-to-\PDF{} converters, generate \HGXF{} 
 files which store information about textual and 
 \PDF{} viewport coordinates locating semantically 
 meaningful elements, such as sentences and annotations.  
@@ -1781,8 +1820,8 @@ application-level interface between the \PDF{} viewers
 \p{With proper customization, both the \PDF{} viewers 
 and the \dsC{} Dataset Applications can interoperate, 
 with \PDF{} context menus calling up windows in 
-the Dataset Applications \GUI{} implementation, 
-and vice-versa.  For example, a researchers reading 
+the Dataset Application's \GUI{} implementation, 
+and vice-versa.  For example, researchers reading 
 the \PDF{} version of a scientific article can 
 launch the Dataset Application to explore some 
 detail mentioned in the text.  This is an example of 
