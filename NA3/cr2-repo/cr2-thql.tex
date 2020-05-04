@@ -17,7 +17,7 @@
   {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
 
 \titlespacing*{\section}
-{0pt}{4.5ex plus 1ex minus .5ex}{.9ex plus .2ex}
+{0pt}{4ex plus 1ex minus .5ex}{.9ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -67,15 +67,14 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=16
-\put(26,106){
+\ifnum\value{page}=9
+\put(16,56){
  {\setlength{\fboxsep}{.65em}
 
-   {\color{white}{\parbox{10cm}{\vspace{7pt}\framebox{\begin{minipage}{.4\textwidth}
+   {\color{white}{\parbox{10cm}{\vspace{7pt}\framebox{\begin{minipage}{.42\textwidth}
 	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
        \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
-      amy.neustein@verizon.net
-      \\\textbf{(917) 817-2184} }}}
+      amy.neustein@verizon.net \textbullet{} \textbf{(917) 817-2184} }}}
 	 \end{minipage}}}}}}
 }
 \fi
@@ -96,7 +95,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.5in,top=.5in,right=.45in,bottom=1.25in} %margins
+\geometry{left=.5in,top=.45in,right=.45in,bottom=1.2in} %margins
 
 \renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
@@ -534,7 +533,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.7em}#1}
+\vspace{.5em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -1724,7 +1723,123 @@ be integrated into Multi-Application Networks
 the dataset applications are autonomous native \GUI{} applications that 
 can easily interoperate via \Qt{} messaging protocols.}
 
+\p{Because every data set is unique, each Dataset Application 
+will necessarily include some code specific to that one 
+Research Object.  However, \dsC{} will provide a core 
+code base and file layout which is shared by all 
+\dsC{} data sets by default.  This common core is 
+structured in part by the goal of developing 
+Dataset Applications in a \Qt{} context; \dsC{} 
+projects are structured to use \Qt{}'s \q{qmake} 
+build system as the primary tool for compiling 
+data-set code.  The common \dsC{} code therefore 
+includes qmake project files which support 
+compiling application with several build configurations.  
+Data set users are also classified into several 
+different roles --- in addition to ordinary users 
+(specifically researchers who want to work with 
+data sets but have no development connection to 
+the data sets themselves), \dsC{} recognizes 
+roles for authors, editors, testers, and other 
+users who are responsible for bringing data 
+sets into publication-ready form to begin with.  
+Depending on the administrative role, data set 
+code can be compiled with additional 
+features (e.g., unit testing features).}
 
+\p{Another core component of \dsC{} is \LaTeX{} 
+code that authors may use when preparing documents 
+accompanying their data set.  These \LaTeX{} files 
+encompass special functionality for defining code 
+annotations and semantically significant points in 
+article text, such as sentence and paragraph 
+boundaries.  This \LaTeX{} code can be used 
+in conjunction with a pre-processor that 
+generates \LaTeX{} files from a special input 
+language.  The goal of these text-processing 
+technologies is to improve the interoperability 
+between research papers and data sets.  In particular, 
+the \LaTeX{} pre-processors, and subsequent 
+\LaTeX{}-to-\PDF{} convertors, generate \HGXF{} 
+files which store information about textual and 
+\PDF{} viewport coordinates locating semantically 
+meaningful elements, such as sentences and annotations.  
+These files are then zipped and embedded in 
+\PDF{} files.  With \dsC{}, these \PDF{} files can 
+then be loaded into a customized \PDF{} viewer which 
+can read the embedded \HGXF{} data.  This allows the 
+\PDF{} application to utilize the embedded information 
+so as to provide a more interactive reading 
+experience --- for instance, viewing annotations 
+or copying sentences via context menus, where viewport 
+data maps cursor position to textual elements visible 
+on the \PDF{} page.  These features provide an 
+application-level interface between the \PDF{} viewers 
+(considered as \GUI{} components) and the corresponding 
+\GUI{} components in Dataset Applications.}
+
+\p{With proper customization, both the \PDF{} viewers 
+and the \dsC{} Dataset Applications can interoperate, 
+with \PDF{} context menus calling up windows in 
+the Dataset Applications \GUI{} implementation, 
+and vice-versa.  For example, a researchers reading 
+the \PDF{} version of a scientific article can 
+launch the Dataset Application to explore some 
+detail mentioned in the text.  This is an example of 
+where microcitations are practically useful: 
+any microcitable element in a document (such as a table, 
+column, row/record, or analytic procedure formalized as a 
+procedural asset associated with a data set) 
+can be linked to a corresponding \GUI{} element 
+in the Dataset Application.  For example, a statistical 
+parameter --- mentioned by name in the text, and perhaps 
+represented in serialization within raw data --- can 
+be mapped to a \GUI{} table column, and specifically 
+the column header; this is then an annotation target, 
+in the sense that for readers to gain more information it 
+is proper to link mentions of the relevant scientific 
+concept in article text to the column header as a 
+graphical element that can be made visible.  The 
+link is operationalized by implementing a procedure 
+to show the \GUI{} window where the table is located, 
+and ensure that the column header lies in the visible 
+portion of the screen, as a response to readers on the 
+\PDF{} side signaling a desire for information on 
+the annotated text element.  In the opposite direction, 
+database elements can be annotated with 
+links that the Dataset Application can use to launch 
+a \PDF{} window opened to the page and location where 
+the corresponding conception is discussed in the article.}
+
+\p{In order to properly model this semantic, 
+viewport, and data set data integration, 
+\dsC{} uses a new document-representation format 
+called \HTXN{} (Hypergraph Text Encoding Protocol).  
+With \dsC{}, \HTXN{} files are not only associated 
+with data set assets; they are also machine-readable 
+document encodings that can be introduced into 
+publication repositories and other corpora 
+oriented toward machine-readability.  Authors can 
+host \HTXN{} files within data sets and link to 
+them via services such as CrossRef, thereby 
+ensuring that a highly structured, machine-readable 
+version of their papers is available for 
+text and data mining.  The \HTXN{} protocol is 
+also useful for encoding natural-language content 
+which becomes part of a data set as data assets 
+in themselves; for example, patient narratives 
+(as discussed earlier).} 
+
+\p{Further documentation of text-encoding methodology applicable 
+to both patient narratives and publications associated 
+with \CRtwo{} research data is available on the \CRtwo{} 
+web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/cr2.pdf}{here} (this is a downloadable \PDF{} link; 
+visit the repository to see the larger archive structure).  
+The document just referenced contains more information 
+on \dsC{}, \HGXF{}, \HTXN{}, and other technologies 
+discussed here.}
+
+%\p{ }
 
 \end{document}
 
