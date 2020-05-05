@@ -71,7 +71,7 @@
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
 \ifnum\value{page}=9
-\put(12,66){
+\put(12,61){
  {\setlength{\fboxsep}{.65em}
 
    {\color{white}{\parbox{10cm}{\vspace{7pt}\framebox{\begin{minipage}{.42\textwidth}
@@ -794,7 +794,7 @@
 	
 {\linespread{1.2}\selectfont
 
-\vspace*{3em}
+\vspace*{1.5em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -841,7 +841,7 @@ drop shadow=logoPurple!50!darkRed,
 \end{tcolorbox}
 \end{center}
 
-\vspace*{1.5em}
+\vspace*{1em}
 \hspace{-7pt}\parbox{1.02\textwidth}{%
 {\fontfamily{fvs}\fontsize{9}{9}\selectfont   
 LTS (Linguistic Technology Systems) is founded by 
@@ -1196,20 +1196,20 @@ would enable machine-readability of the \HGXF{} files,
 and use them to create hypergraph-database instances.  
 In short, \CRtwo{} will promote Covid-19 data integration 
 by translating a wide range of files into a common 
-\HGXF{} format.\footnote{\CRtwo{} data sets, 
-of course, are not required to compile all files 
+\HGXF{} format.\footnote{\CRtwo{} data sets 
+are not required to compile all files 
 to a hypergraph format; in particular, 
-scientific fields requiring substantial quantitative 
+fields requiring substantial quantitative 
 analysis --- e.g., biomechanics or genomics --- 
 express data via encodings optimized for relevant 
 mathematical operations, and have parser libaries 
-optimized for these specific formats.  However, even for 
-these files \sCRtwo{} will generally provide a 
-supplemental \sHGXF{} encoding supplying data 
+optimized for these specific formats.  For 
+these files \sCRtwo{} will generally provide an 
+\sHGXF{} encoding supplying data 
 \textit{about} the original file, with information 
 concerning the file type, preferred software components 
-for viewing/manipulating its data, and so forth.  
-In this manner the contents of non-\sHGXF{} files 
+for viewing/manipulating its data, etc.,  
+so that the contents of non-\sHGXF{} files 
 can be indirectly included into the \sCRtwo{} 
 hypergraph-based ecosystem.}}
 
@@ -1272,9 +1272,9 @@ realized within a central access hub, rather
 than being re-implemented by each application 
 in isolation.}
 
-\p{In short, the architecture enabled by \CRtwo{} 
-conceives of a central hub which is responsible for storing 
-data and for serving as a common access point 
+\p{In short, \CRtwo{} architecture  
+conceives of a central hub responsible for storing 
+data and serving as a common access point 
 --- providing the \q{gateway} where authorized 
 users can gain access to heterogeneous information 
 spaces utilized by an array of domain-specific 
@@ -1532,9 +1532,9 @@ graphics indicating the location of their pain or
 discomfort.  Furthermore, the software could 
 allow narratives to be accompanied 
 by an audio file where patients could cough/speak into 
-a microphone.  In light of this 
-range of possible inputs, a patient-narrative 
-encoding must, therefore, be flexible enough to 
+a microphone.  Given this 
+range of possible inputs, patient-narrative 
+encodings must be flexible enough to 
 include diverse multi-media content.}
 
 \p{As described earlier, an information space 
@@ -1699,7 +1699,18 @@ hypernodes in \WhiteDB{} records (although programmers
 can interface with the underlying \WhiteDB{} instances if 
 desired).  \lDgDb{} can then use \WhiteDB{}'s index and 
 query mechanism as the foundation for its own 
-higher-level query system.  To support different 
+higher-level query system.  \lDgDb{} provides a 
+convenient interface for binary-encoding user-defined \Cpp{} 
+types, so that arbitrary application-level data can be 
+stored via \THQL{}.  In addition --- as an alternative 
+to writing serializers for bonafide \Cpp{} types --- 
+it is possible to construct \q{ghost} types, which are 
+\Qt{} data structures built via the \q{QVariant} class, 
+so that all (or most) hypernodes in the corresponding 
+database have a single \Cpp{} type (this technique 
+is appropriate when, for instance, the purpose of a \THQL{} instance 
+is to read and then update \HGXF{} files with new information).   
+To support different 
 \THQL{} operational modes, \DgDb{} organizes a 
 stage-structure based on encoding \WhiteDB{} values: 
 at the ground level, values are simply pointers 
