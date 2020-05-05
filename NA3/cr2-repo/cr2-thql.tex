@@ -71,7 +71,7 @@
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
 \ifnum\value{page}=9
-\put(16,56){
+\put(12,66){
  {\setlength{\fboxsep}{.65em}
 
    {\color{white}{\parbox{10cm}{\vspace{7pt}\framebox{\begin{minipage}{.42\textwidth}
@@ -1196,19 +1196,18 @@ would enable machine-readability of the \HGXF{} files,
 and use them to create hypergraph-database instances.  
 In short, \CRtwo{} will promote Covid-19 data integration 
 by translating a wide range of files into a common 
-\HGXF{} format, something that has not yet been done 
-before.\footnote{Not every format relevant to Covid-19 can be 
-realistically translated to \sHGXF{}.  In particular, 
-scienctific fields requiring substantial quantitative 
+\HGXF{} format.\footnote{\CRtwo{} data sets, 
+of course, are not required to compile all files 
+to a hypergraph format; in particular, 
+scientific fields requiring substantial quantitative 
 analysis --- e.g., biomechanics or genomics --- 
 express data via encodings optimized for relevant 
-mathematical operations.  In this scenario, 
-\sCRtwo{} will not attempt to migrate \textit{all} 
-of a data file to \sHGXF{}.  However, even for 
+mathematical operations, and have parser libaries 
+optimized for these specific formats.  However, even for 
 these files \sCRtwo{} will generally provide a 
 supplemental \sHGXF{} encoding supplying data 
 \textit{about} the original file, with information 
-about the file type, preferred software components 
+concerning the file type, preferred software components 
 for viewing/manipulating its data, and so forth.  
 In this manner the contents of non-\sHGXF{} files 
 can be indirectly included into the \sCRtwo{} 
@@ -1386,7 +1385,9 @@ Research Object itself.}
 standalone, self-contained, and full-featured 
 native/desktop applications to be uniquely implemented 
 for each data set, distributed in source-code fashion 
-along with raw research data.  Adopting such a 
+along with raw research data (\dsC{} Dataset Applications 
+use \Qt{} by default to provide native \GUI{} classes, 
+tailored to the relevant Research Object).  Adopting such a 
 data-curation method makes data sets easier to 
 use across a wide range of scientific disciplines, 
 because the data sets are freed from having to rely on domain-specific 
@@ -1607,10 +1608,9 @@ implementations.  On this basis,
 custom query languages can be 
 achieved by exposing each role-procedure 
 to a scripting interface.  For example, 
-\THQL{}'s Reference Implementation, 
-DigammaDB, exposes each protocol-specific 
-procedure via a set of globally 
-accessible pointers to \Cpp{} functions.  
+\THQL{}'s Reference Implementation 
+(DigammaDB) exposes the protocol-specific 
+procedures via a set of pointers to \Cpp{} functions.  
 Parsing a query languags is then a 
 straightforward process of mapping query 
 expressions to the requisite procedure, 
