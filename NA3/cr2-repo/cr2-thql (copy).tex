@@ -888,7 +888,7 @@ for \CRtwo{} can be customized for your own projects.}
 \p{The main challenge when curating a 
 data repository such as \CRtwo{} is reconciling 
 heterogeneous data formats.  
-In response to this challenge, LTS has 
+In response to these problems, LTS has 
 focused on hypergraph-based data models 
 which can unify many different information 
 structures into a common structure.  
@@ -898,29 +898,26 @@ which can take the place of disparate
 tabular or graph file formats 
 (comma-separated values, numeric python, 
 spreadsheets, graph-network serializations, 
-etc.), so as to merge data sets into a common 
-machine-readable archive.  In addition, \CRtwo{} will 
+etc.).  In addition, \CRtwo{} will 
 introduce a new protocol for engineering 
 hypergraph databases, dubbed \THQL{} 
 (Transparent Hypergraph Query Language).  
 Databases conformant to the \THQL{} model will 
 be able to export data in hypergraph-based 
-formats, thereby generating data sets 
-which can be used as published, citable 
-Research Objects (discussed below).  \lCRtwo{} will demonstrate 
-\THQL{} via a new database engine called DigammaDB 
-(or \q{\DgDb{}}) which 
+formats, thereby generating a data set 
+which can be used as a published, citable 
+Research Object.  \lCRtwo{} will also introduce a 
+new database engine (called DigammaDB) which 
 serves as a \q{Reference Implementation} for 
-\THQL{}.  In \CRtwo{}, \DgDb{} is 
-a prototype and reference example for \THQL{}, used 
+\THQL{}.  In \CRtwo{}, DigammaDB (\DgDb{}) is used 
 to curate data sets before their final 
 form is exported into the main data repository.  
-LTS can also customize commercial versions of a \THQL{} 
-engine tailored to individual projects' 
+However, \DgDb{} is only a prototype and 
+reference demonstration for \THQL{}; 
+Customized commercial versions of a \THQL{} 
+engine can be tailored to each project's 
 data storage and 
-application-development requirements 
-(please see contact information at the end of 
-this paper to schedule a consultation).} 
+application-development requirements.} 
     
 \p{\lTHQL{} is designed with a priority on 
 application development.  In particular, 
@@ -931,7 +928,10 @@ code libraries that can be included in
 source-code form within an overall application.  
 \lTHQL{} is designed to integrate seamlessly 
 with native, desktop-style standalone 
-applications.  In short, \THQL{} 
+applications --- for example, it is 
+easy to implement \GUI{} components which 
+are initialized with data obtained from a 
+\THQL{} database.  In short, \THQL{} 
 represents an unprecedented combination of 
 native desktop-style software development 
 and hypergraph database engineering.} 
@@ -939,7 +939,7 @@ and hypergraph database engineering.}
 \p{Complementing \THQL{}'s application-development 
 focus, \CRtwo{} will also introduce \q{Dataset Creator,} 
 (\dsC{}), a new tool for curating research data sets.  
-The preeminent feature of Dataset Creator is 
+The pre-eminent feature of Dataset Creator is 
 its use of native software components 
 (called \q{Dataset Applications}) 
 allowing researchers to view, manipulate, and 
@@ -949,14 +949,14 @@ will include self-contained source code
 implementing a customized desktop application 
 providing access to the accompanying data set.  
 In addition to \GUI{} code, each 
-Dataset Application will supply \q{data-access} 
+Dataset Application will provide \q{data-access} 
 code libraries for 
 parsing the raw data-set files, so as to obtain 
 the information visualized within the 
 Dataset Application's \GUI{} classes.  
-These data-access libraries offer machine-readable access 
-to the Research Object's raw data, permitting 
-subsequent researchers to 
+These data-access libraries are also useful for 
+providing machine-readable access to 
+such raw data.  Subsequent researchers can then 
 re-use the data-access code so as to transform, 
 filter, or analyze the published data in 
 the context of replication studies and/or 
@@ -967,8 +967,8 @@ keyed to \CRtwo{}; the \CRtwo{} repository will
 provide a practical test-bed for validating 
 this new technology.  Accordingly, the 
 following sections will describe \CRtwo{} 
-in greater detail, followed afterward by 
-sections offering more information about 
+in greater detail, followed afterword by 
+sections providing more information about 
 \THQL{} and \dsC{}.}
 
 \section{The Cross-Disciplinary Repository for Covid-19 Research}
@@ -1046,19 +1046,27 @@ data-integration and software-development
 technologies which can contribute to scientific 
 progress \visavis{} Covid-19 
 in particular, and biomedical/scientific computing 
-methodology in general.  These principles, in turn, 
-will shape the design of \CRtwo{}.  An ideal data-sharing 
+methodology in general.
+The software used to curate \CRtwo{} data has 
+diverse applications for software and database engineering, 
+and provides solutions to technical problems with a 
+broad reach in the private sector.  Further 
+documentation of the \CRtwo{} technology and 
+products may be found on the development repository 
+for the aggregation of \CRtwo{} data 
+(\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR}).}
+
+%\section{Description}
+\p{The design of \CRtwo{} derives from the principles outlined 
+in the previous paragraph.  In particular, an ideal data-sharing 
 ecosystem should merge data from multiple sources, but should do so 
 in a fashion which yields a machine-readable totality, 
 analogous to \Cnineteen{}'s structuration with respect to 
 text mining.  The merit of \CRtwo{} therefore lies not 
 only in the data which it will encompass but also in 
 novel technology that it will concretize for constructing 
-data repositories adhering to these goals 
---- aggregating data, but also instantiating novel 
-data-integration and database engineering strategies.}
-
-\p{Given these varying goals, \CRtwo{} can provide value at different 
+data repositories adhering to these principles.  
+Accordingly, \CRtwo{} can provide value at different 
 scales of realization.  Relatively small data 
 sets serve several scientific and computational 
 purposes: (1) they can provide researchers 
@@ -1165,9 +1173,7 @@ a hospital and discharge).  These graph-like representations
 are a natural formalization of \q{patient-centered} data 
 models.}
 
-\p{Using \CRtwo{}'s associated software 
-(for example, importing Covid-19 data sets into a 
-\THQL{} database), a higher level of 
+\p{Using \CRtwo{} associated software, a higher level of 
 data integration can then be 
 achieved by merging tabular and graph-like models into a 
 single \textit{hypergraph} format.  A 
@@ -1193,10 +1199,10 @@ by translating a wide range of files into a common
 \HGXF{} format.\footnote{\CRtwo{} data sets 
 are not required to compile all files 
 to a hypergraph format; in particular, 
-sciences requiring substantial quantitative 
+fields requiring substantial quantitative 
 analysis --- e.g., biomechanics or genomics --- 
 express data via encodings optimized for relevant 
-mathematical operations, and have parser libraries 
+mathematical operations, and have parser libaries 
 optimized for these specific formats.  For 
 these files \sCRtwo{} will generally provide an 
 \sHGXF{} encoding supplying data 
@@ -1426,7 +1432,7 @@ of a database --- a technology sometimes referred to as
 integral parts of a data set, such as an individual table, 
 or a single row/record or column in a table.  Micro-citations allow 
 these integral parts within the data set to be cited by and linked 
-to publications, for purposes of machine readability and 
+to publications, for purposes of machine readility and 
 attribution.  As an example, preliminary vaccine trials often 
 target a patient cohort selected for demographic or medical 
 criteria matching the population who would most benefit from 
@@ -1453,7 +1459,7 @@ corresponding data.}
 \p{One reason why micro-citations are important is that they 
 clarify the scientific meaning attributed to data set  
 elements by connecting these elements to scientific concepts and 
-\q{controlled vocabularies} (such as a list of drug names, 
+\q{controled vocabularies} (such as a list of drug names, 
 diseases, proteins, etc.).  
 For instance, micro-citations allow table columns to be 
 mapped to statistical parameters, enabling their 
@@ -1545,7 +1551,7 @@ against anatomic silhouettes (head/body, back/front,
 extremities, and so forth).  
 As patients use such a multi-media form, \GUI{} application 
 state corresponds to the patient's subjective symptomology; 
-in this way the graphics-based representation of symptoms 
+in this way the graphics-based represention of symptoms 
 could then be incorporated into the overall patient 
 narrative.  This is an example of how 
 application-persistence logic can be marshaled to 
@@ -1561,12 +1567,9 @@ the related project of curating patient narratives.}
 
 \section{Native Application Development with THQL}
 
-\p{Having outlined the content and goals \CRtwo{}, the remaining sections 
-will focus on the new technology underlying \CRtwo{}, 
-technology with potential applications in many scientific and 
-programming domains.   As described earlier, \THQL{} is a database 
+\p{As described earlier, \THQL{} is a database 
 engineering protocol which prioritizes 
-data-persistence components that can be 
+data persistence components that can be 
 included in source code fashion within application-development 
 projects.  \lTHQL{} is \q{transparent} in that 
 all layers of data persistence and 
@@ -1578,16 +1581,16 @@ files, and dynamically examined by running the
 client application through a debugger.  Moreover, 
 because all \THQL{} source code is bundled with 
 application code, \THQL{} can be configured to 
-integrate seamlessly into its environing client-application  
+integrate seamlessly into the client application  
 logic.  For example, \THQL{} can be 
 extended to natively recognize client-specific 
 datatypes as data fields, or to execute 
 client algorithms as query parameters.}
 
 \p{As a query \textit{language,} \THQL{} can 
-be instantiated either by special languages 
-with their own syntax and semantics 
-(analogous to \SQL{} or \SPARQL{}), or 
+be instantiated either by a special language 
+with its own syntax and semantics 
+(analogous the \SQL{} or \SPARQL{}), or 
 as an interface and pattern specified 
 for a conventional language, such as 
 \Cpp{}.  In the latter guise, 
@@ -1597,24 +1600,24 @@ constructing, updating, querying,
 and backing up database instances.  
 Each procedure comprising the 
 \THQL{} protocol is assigned a 
-specific role, so that the protocol 
+specific role, so the protocol 
 can be abstractly modeled as a 
 set of data-management roles 
 mapped to corresponding procedure 
 implementations.  On this basis, 
 custom query languages can be 
-constructed by exposing each role-procedure 
+achieved by exposing each role-procedure 
 to a scripting interface.  For example, 
 \THQL{}'s Reference Implementation 
 (DigammaDB) exposes the protocol-specific 
 procedures via a set of pointers to \Cpp{} functions.  
-Parsing a query language is then a 
+Parsing a query languags is then a 
 straightforward process of mapping query 
-expressions to the requisite procedures, 
+expressions to the requisite procedure, 
 whose corresponding handle can then be 
 obtained via \Cpp{} interop.}
 
-\p{As suggested by its name, \THQL{} is 
+\p{As indicated by its name, \THQL{} is 
 centered around the operations to 
 define and store hypergraph-form data: 
 information which has several levels 
@@ -1638,16 +1641,16 @@ can be referenced via unique identifiers,
 as individual data fields.  Since proxies 
 can then be aggregated into hypernodes in 
 turn, \THQL{} graphs can have, if desired, 
-arbitrarily deep nested structures.}
+arbitratily deep nested structures.}
 
-\p{\THQL{} also recognizes additional structures 
+\p{\THQL{} also recognizes additional stuctures 
 corresponding to conceptual details described 
 earlier --- for example, fields within 
 hypernodes can be linked with 
 dimensional attributes (e.g. scales and 
 units of measurement) and identified 
 as microcitation targets.  \lTHQL{} likewise 
-supports controlled vocabularies, 
+supports controled vocabularies, 
 called \q{dominions} (which stands for 
 Domain-Specific Mini-Ontologies), applying to 
 hypernode-types and/or connection labels.  A graph 
@@ -1699,7 +1702,7 @@ higher-level query system.  \lDgDb{} provides a
 convenient interface for binary-encoding user-defined \Cpp{} 
 types, so that arbitrary application-level data can be 
 stored via \THQL{} (contact LTS for a document describing 
-hypergraph-encoding with WhiteDB in greater detail).  
+hypergraph-encoding with WhiteDB in greater detaul).  
 In addition --- as an alternative 
 to writing serializers for bonafide \Cpp{} types --- 
 it is possible to construct \q{ghost} types, which are 
