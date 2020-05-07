@@ -1633,8 +1633,8 @@ adding contextual details or annotations
 (via so-called \textit{frames} and \textit{channels}) 
 which refine assertions of hypernode connections; 
 and constructing \q{proxies} to database elements 
-(such as hypernodes, frames, and subgraphs) which 
-can be referenced via unique identifiers, 
+(e.g. hypernodes, frames, and subgraphs) which 
+can be referenced (via unique identifiers) 
 as individual data fields.  Since proxies 
 can then be aggregated into hypernodes in 
 turn, \THQL{} graphs can have, if desired, 
@@ -1647,11 +1647,10 @@ hypernodes can be linked with
 dimensional attributes (e.g. scales and 
 units of measurement) and identified 
 as microcitation targets.  \lTHQL{} likewise 
-supports controlled vocabularies, 
-called \q{dominions} (which stands for 
-Domain-Specific Mini-Ontologies), applying to 
-hypernode-types and/or connection labels.  A graph 
-can then be configured to only accept hypernodes 
+supports a genre of controlled vocabularies 
+applying to hypernode-types and/or connection labels 
+(called \q{dominions}, for \q{Domain-Specific Mini-Ontologies}).  
+A graph can then, if desired, be configured to only accept hypernodes 
 which conform to one of the dominion-defined 
 types; and/or to only allow connections to be 
 asserted between hypernodes when these connections 
@@ -1777,17 +1776,18 @@ Research Object.  However, \dsC{} will provide a core
 code base and file layout which is shared by all 
 \dsC{} data sets by default.  This common core is 
 structured in part by the goal of developing 
-Dataset Applications in a \Qt{} context; \dsC{} 
-projects are structured to use \Qt{}'s \q{qmake} 
+Dataset Applications in a \Qt{} context; for 
+instance, \dsC{} projects are structured to use \Qt{}'s \q{qmake} 
 build system as the primary tool for compiling 
 data-set code.  The common \dsC{} code therefore 
 includes qmake project files which support 
 compiling application with several build configurations.  
-Data set users are also classified into several 
+In this framework, data-set users are classified into several 
 different roles --- in addition to ordinary users 
-(specifically researchers who want to work with 
+(specifically, researchers who want to work with 
+and draw information from 
 data sets but have no development connection to 
-the data sets themselves), \dsC{} recognizes 
+these data sets themselves), \dsC{} recognizes 
 roles for authors, editors, testers, and other 
 users who are responsible for bringing data 
 sets into publication-ready form to begin with.  
@@ -1807,15 +1807,15 @@ generates \LaTeX{} files from a special input
 language.  The goal of these text-processing 
 technologies is to improve the interoperability 
 between research papers and data sets.  In particular, 
-the \LaTeX{} pre-processors, and subsequent 
-\LaTeX{}-to-\PDF{} converters, generate \HGXF{} 
+the \LaTeX{} pre-processors (and subsequent 
+\LaTeX{}-to-\PDF{} converters) generate \HGXF{} 
 files which store information about textual and 
-\PDF{} viewport coordinates locating semantically 
-meaningful elements, such as sentences and annotations.  
+\PDF{} viewport coordinates specifying the location of semantically 
+meaningful elements such as sentences and annotations.  
 These files are then zipped and embedded in 
-\PDF{} files.  With \dsC{}, these \PDF{} files can 
-then be loaded into a customized \PDF{} viewer which 
-can read the embedded \HGXF{} data.  This allows the 
+\PDF{} files.  With \dsC{}, the resulting \PDF{} files can 
+then be loaded into a customized \PDF{} viewer capable of 
+reading the embedded \HGXF{} data.  This allows the 
 \PDF{} application to utilize the embedded information 
 so as to provide a more interactive reading 
 experience --- for instance, viewing annotations 
@@ -1855,9 +1855,9 @@ portion of the screen, as a response to readers on the
 \PDF{} side signaling a desire for information on 
 the annotated text element.  In the opposite direction, 
 database elements can be annotated with 
-links that the Dataset Application can use to launch 
+links that can used by the Dataset Application to launch 
 a \PDF{} window opened to the page and location where 
-the corresponding conception is discussed in the article.}
+the corresponding concept is discussed in the article.}
 
 \p{In order to properly model this semantic, 
 viewport, and data set data integration, 
