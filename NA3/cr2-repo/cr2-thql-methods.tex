@@ -70,7 +70,7 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=10
+\ifnum\value{page}=12
 \put(12,51){
  {\setlength{\fboxsep}{.65em}
 
@@ -368,6 +368,7 @@
 \newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
 
 \newcommand{\AI}{\resizebox{!}{7pt}{\AcronymText{AI}}}
+\newcommand{\lAI}{\resizebox{!}{7.5pt}{\AcronymText{AI}}}
 
 \makeatletter
 
@@ -624,9 +625,9 @@
 \colorlet{dslr}{dsl!50!blue}
 
 \setlist[description]{%
-  topsep=10pt,
+  topsep=20pt,
   labelsep=22pt, leftmargin=5pt,
-  itemsep=5pt,               % space between items
+  itemsep=25pt,               % space between items
   %font={\bfseries\sffamily}, % set the label font
   font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
 }
@@ -1658,21 +1659,63 @@ of Artificial Intelligence, where the goal is to
 simulate the patterns of human conceptualization within 
 \AI{} engines.  
    
-\item[Cognitive Discourse Analysis]  Cognitive discourse 
+\item[Cognitive Discourse Analysis and 
+Conceptual Role Semantics]  Cognitive discourse 
 theory is similar to Conceptual Space Theory in 
 investigating the overlap between conceptualization 
 and scientific knowledge --- or, more generally, 
 all of our observed facts or empirical beliefs 
-as they are encoded in language.    
-   
-    
-
+as they are encoded in language.  Although it is 
+obvious that most of our language is based in 
+concrete beliefs about the world around us, this 
+basic linguistic principle is not usually 
+captured in full rigor within formal reconstructions 
+of linguistic expressions.  The essential paradigm 
+in cognitive linguistics is the notion of 
+cognitive \textit{grounding,} or how every 
+object and event included in a sentence 
+connects to the speaker's fundamental understanding 
+of the situation around them, and its relevant 
+facts and observables.  While all linguistic theories 
+acknowledge grounding, cognitive analyses 
+develop a detailed theory of how grounding works in 
+all its aspects.  There are multiple dimensions of 
+grounding, because we connect objects/events 
+to situations in many different ways.  For example, 
+objects relevant to a given event play distinct 
+empirical roles (the \textit{agent}, which 
+\textit{causes} something --- some change --- to happen; 
+the \textit{patient}, which is thereby changed/affected; 
+and potentially secondary participants such as the 
+instrument by which the change is effected; the 
+\q{benefactor,} i.e., the object for whose benefit 
+the change is caused, etc.).  These conceptual differences 
+are rigorously treated within Conceptual Role Semantics, 
+which shares a similar philosophical orientation to 
+Cognitive Discourse Analysis.  As a practical tool 
+for analyzing language, these two methodologies 
+provide a matrix of classifications for objects 
+and events (and their corresponding linguistic 
+units) in terms of the situational background 
+where every object and event (in a given discursive 
+context) is perceived.  Formally, these classifications 
+then provide a layer of annotation which capture 
+linguistic details at a cognitive level more rigorous 
+than usually found in Natural Language Processing.  
+\lAI{} methods in this field focus on automatically 
+identifying cognitive-discursive patterns in language, 
+although data sets can also be formed by manually 
+annotating language samples according to 
+cognitive-discourse and conceptual-role vocabularies.  
+In either case (whether via manual or \AI{}-driven 
+annotations), Cognitive Discourse Analysis represents 
+one emerging technique for the representation 
+of natural-language assets --- such as Patient Narratives 
+--- for the purposes of applying advanced text mining 
+strategies.
 \end{description} 
 }
 
-\p{}
-
-\p{}
 
 \section{Adding Patient Narratives to Covid-19 Data}
 
