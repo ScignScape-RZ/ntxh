@@ -367,6 +367,8 @@
 \newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
 \newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
 
+\newcommand{\AI}{\resizebox{!}{7pt}{\AcronymText{AI}}}
+
 \makeatletter
 
 \newcommand*\getX[1]{\expandafter\getX@i#1\@nil}
@@ -1223,8 +1225,8 @@ hypergraph-based ecosystem.}}
 
 \section{Hypergraph Data Models and Multi-Application Networks}
 
-\p{As outlined thus far, most Covid-19 data via the \CRtwo{} 
-technology can be wholly or partially integrated 
+\p{As has been outlined thus far, via the \CRtwo{} 
+technology most Covid-19 data can be wholly or partially integrated 
 into a single hypergraph framework, which accordingly simplifies 
 the process of designing software applications and 
 algorithms to analyze and manipulate this data.  
@@ -1501,6 +1503,176 @@ between web pages) to be established between
 publications and data sets, making it \textit{easier} for 
 researchers to find the specific information most 
 relevant to their own research.}
+
+\section{Data Sets for Analytic Methodology}
+\p{In addition to raw data sets whose essential purpose 
+is to present empirical observations concerning Covid-19, 
+one section of \CRtwo{} will be devoted to archives 
+illustrating analytic techniques which may be applied to 
+\CRtwo{} data as a whole.  These \q{methodological} archives 
+may include code libraries, real or hypothetical 
+data sets curated specifically to test and/or document 
+computational methods, or some combination thereof.  
+Here are some of the methodological approaches which, 
+in light of current Covid-19 research, will be important 
+components of \CRtwo{}:
+
+\begin{description}
+\item[Computational Epidemiology]  Methods in this 
+category generally concern the simulation of disease 
+transmission given a set of initial parameters 
+(such as an infectious agent's reproduction rate 
+and an average level of person-to-person contact), 
+often alongside empirical data observing how a disease 
+has spread within some observable subpopulation.  
+The empirical findings therefore suggest 
+\textit{a posteriori} which statistical model best 
+fits the actual nature of the disease in question.  
+The accuracy of this analysis depends in part on 
+how well the observed subpopulation mirrors the 
+susceptible population as a whole, but it also 
+depends on the accuracy of the mathematical formulae 
+translating initial parameters into projected 
+epidemiological simulations, to be compared against 
+\textit{a posteriori} data.  Concrete expositions 
+of these mathematical frameworks --- in particular, 
+computer code implementing the calculations 
+which drive a simulated model --- therefore 
+constitute a computational asset in their own 
+right.  \lCRtwo{} will include several self-contained 
+code libraries that have been published 
+as tools investigating different quantitative 
+epidemiological models.
+
+\item[Event Modeling]  Event modeling, sometimes called 
+\q{Entity-Event Modeling,} is an emerging data-analytic 
+trend which focuses on events, rather than objects, 
+as the most fundamental form of observation within a data 
+space.  Conceptually, the rationale for this paradigm 
+is that every property which is attributed to 
+some object can (at least in an empirical system) be 
+tied to a specific event wherein the given property was 
+measured, observed, discovered, or inferred.  
+For instance, asserting that a patient is 
+\textit{infected} with SARS-Cov-2 necessarily 
+implies that a \textit{test} for SARS-Cov-2 
+was positive.  Focusing attention on the \textit{event} 
+(viz., the test and its result) allows the 
+data model to accrue more detailed information: 
+the relevant testing method/kit used; false 
+positive/negative rates; the time ellapsed between the 
+onset of symptoms (if any) and the test being ordered, 
+and then between the test being ordered and 
+the results being provided; the observations 
+or other factors (such as the subject's exposure 
+to an infected family member) which 
+compelled doctors to order the test; and so on.  
+Many of these details might be included in a conventional 
+database as well, but focusing on events allows the 
+relevant information to be obtained more easily, because 
+the event model supplies a temporal and operational 
+organization to the underlying information.  
+Event models are especially useful when 
+temporal sequencing and duration are important 
+considerations for uncovering scientific 
+facts about the phenomenon being studied --- in the 
+context of infectious diseases, intervals such 
+as the length of time between exposure and the 
+appearance of symptoms (or when the carrier becomes 
+contagious), or such as the length of hospital stays, 
+are essential to our understanding of the disease's 
+biology. 
+
+\item[Fuzzy Sets and Fuzzy Logic]  Mathematically, 
+fuzzy logic is often conceived in terms of replacing a 
+simple binary logic (\q{true}/\q{false}) with a 
+more complex multi-valued logic, wherein properties 
+may be true or false to varying degrees.  On the 
+surface, this thereby introduces quantitative models 
+(such as the calculation of the conjunction or disjunction 
+of fuzzy predicates) as a substitute for purely 
+logical reasoning.  In practice, however, fuzzy 
+sets often have the opposite effect: this theory 
+gives rise to methods which can simplify empirical 
+analyses by \textit{eliminating} quantitative 
+formulae --- in particular, parameters of a continuous 
+variable.  Fuzzy set models tend to simplify data 
+spaces by collapsing continuous quantities into discrete 
+cases (e.g., \textit{low}, \textit{medium}, \textit{high}), 
+or grouping objects into similarity clusters.  
+Via these operations, data models that depend on 
+computationally intensive mathematical variables 
+can be replaced by qualitative models, often 
+representable in graph form (where graph edges 
+may designate membership in a prototype-class, 
+or the evolution of some observable according to 
+several property classes, each of which 
+collapses a spectrum of granular cases into a single 
+prototype).  Fuzzy methods can be shown to be 
+effective simplications of complex data models 
+by demonstrating that analyses conducted via 
+qualitative reconstructions of a data space, 
+for a given set a observations, 
+are comparable to results obtained from more 
+quantitative methods and/or are a good fit to 
+empirical data.  Research data sets which emerge 
+from fuzzy methods can be qualitative models 
+derived from quantitative data spaces, as 
+well as code libraries which perform the relevant 
+transformations.
+
+\item[Conceptual Space Theory]  Conceptual spaces, 
+which have some similarities to Fuzzy Sets, 
+have likewise been proposed as a modeling paradigm 
+for scientific knowledge and for Artificial 
+Intelligence.  Conceptual Space Theory is 
+rooted in cognitive and linguistic investigations 
+of how humans formulate and understand concepts 
+(which then extends to scientific theories, and 
+how we process scientific information to infer 
+facts about the world).  Conceptual spaces have therefore 
+been proposed as a language for representations or descriptions 
+of scientific knowledge, with an emphasis on how 
+scientific models are built up from individual 
+conceptual parameters (e.g., points in space/time, 
+notions of length, heat, speed/acceleration, electric 
+charge, etc.).  As scientific ideas become formalized, 
+our intuitive conceptualization of spatial or observational 
+quantities gets translated into physical, mathematical, or 
+statistical details: scales and units of measurement, 
+observational value ranges, statistical levels 
+(Nominal, Ordinal, Interval, Ratio), and so forth.  
+Formal implementations of conceptual spaces therefore 
+focus attention on the dimensional and measurement 
+properties of data parameters --- information 
+which is usually not made explicit in data publishing 
+--- and on how these parameters aggregate into conceptual 
+units (for example, two geographical coordinates define a 
+geospatial location; or shape and color, in combination, characterize 
+visible objects).  One conceptual-space represenation is 
+Conceptual Space Markup Language (\CSML{}), one form of 
+which \CRtwo{} will use to document scientific parameters 
+within data sets.  Other conceptual-space models and 
+analytic libraries are developed in the context 
+of Artificial Intelligence, where the goal is to 
+simulate the patterns of human conceptualization within 
+\AI{} engines.  
+   
+\item[Cognitive Discourse Analysis]  Cognitive discourse 
+theory is similar to Conceptual Space Theory in 
+investigating the overlap between conceptualization 
+and scientific knowledge --- or, more generally, 
+all of our observed facts or empirical beliefs 
+as they are encoded in language.    
+   
+    
+
+\end{description} 
+}
+
+\p{}
+
+\p{}
 
 \section{Adding Patient Narratives to Covid-19 Data}
 

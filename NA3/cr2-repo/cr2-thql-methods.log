@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  8 MAY 2020 09:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  8 MAY 2020 11:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**cr2-thql.tex
-(./cr2-thql.tex
+**cr2-thql-methods.tex
+(./cr2-thql-methods.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/article.cls
@@ -1734,7 +1734,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.437 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
+l.439 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1748,7 +1748,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.441 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.443 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1762,7 +1762,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.446 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.448 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1776,7 +1776,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.605 \raisebox{-1pt}{#1}}}}
+l.607 \raisebox{-1pt}{#1}}}}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1790,7 +1790,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.610 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+l.612 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1889,8 +1889,8 @@ File: tikzlibraryshapes.arrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/generic/pgf/libraries/sha
 pes/pgflibraryshapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2008/06/26 v3.0.1a (rcs-revision 1.1)
-)) (./cr2-thql.aux)
-\openout1 = `cr2-thql.aux'.
+)) (./cr2-thql-methods.aux)
+\openout1 = `cr2-thql-methods.aux'.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
@@ -1982,7 +1982,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 802.
+Package hyperref Info: Link coloring ON on input line 804.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -1994,12 +1994,12 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 802.
-LaTeX Info: Redefining \pageref on input line 802.
-LaTeX Info: Redefining \nameref on input line 802.
- (./cr2-thql.out) (./cr2-thql.out)
+LaTeX Info: Redefining \ref on input line 804.
+LaTeX Info: Redefining \pageref on input line 804.
+LaTeX Info: Redefining \nameref on input line 804.
+ (./cr2-thql-methods.out) (./cr2-thql-methods.out)
 \@outlinefile=\write6
-\openout6 = `cr2-thql.out'.
+\openout6 = `cr2-thql-methods.out'.
 
 
 ABD: EveryShipout initializing macros
@@ -2040,23 +2040,23 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 
 LaTeX Font Warning: Font shape `OML/cmr/b/n' undefined
-(Font)              using `OML/cmr/m/it' instead on input line 937.
+(Font)              using `OML/cmr/m/it' instead on input line 939.
 
-<logo.png, id=53, 154.6578pt x 91.7829pt>
+<logo.png, id=57, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 976.
+Package pdftex.def Info: logo.png  used on input line 978.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 976.
+(hyperref)                removing `\@ifnextchar' on input line 978.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 976.
+(hyperref)                removing `\@ifnextchar' on input line 978.
 
 [1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdft
 ex.map}
@@ -2068,160 +2068,160 @@ File: t1lmdh.fd 2009/10/30 v1.6 Font defs for Latin Modern
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
-<e-logo.png, id=71, 2107.875pt x 1505.625pt>
+<e-logo.png, id=75, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1074.
+Package pdftex.def Info: e-logo.png  used on input line 1076.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1074.
+Package pdftex.def Info: logo.png  used on input line 1076.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1074.
+(hyperref)                removing `\@ifnextchar' on input line 1076.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1074.
+(hyperref)                removing `\@ifnextchar' on input line 1076.
 
 [2 <./e-logo.png>]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1181.
+Package pdftex.def Info: e-logo.png  used on input line 1183.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1181.
+Package pdftex.def Info: logo.png  used on input line 1183.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1181.
+(hyperref)                removing `\@ifnextchar' on input line 1183.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1181.
+(hyperref)                removing `\@ifnextchar' on input line 1183.
 
 [3]
 Overfull \vbox (1.20073pt too high) has occurred while \output is active []
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1282.
+Package pdftex.def Info: e-logo.png  used on input line 1284.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1282.
+Package pdftex.def Info: logo.png  used on input line 1284.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1282.
+(hyperref)                removing `\@ifnextchar' on input line 1284.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1282.
+(hyperref)                removing `\@ifnextchar' on input line 1284.
 
 [4]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1370.
+Package pdftex.def Info: e-logo.png  used on input line 1372.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1370.
+Package pdftex.def Info: logo.png  used on input line 1372.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1370.
+(hyperref)                removing `\@ifnextchar' on input line 1372.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1370.
+(hyperref)                removing `\@ifnextchar' on input line 1372.
 
 [5]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1504.
+Package pdftex.def Info: e-logo.png  used on input line 1506.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1504.
+Package pdftex.def Info: logo.png  used on input line 1506.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1504.
+(hyperref)                removing `\@ifnextchar' on input line 1506.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1504.
+(hyperref)                removing `\@ifnextchar' on input line 1506.
 
 [6]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1601.
+Package pdftex.def Info: e-logo.png  used on input line 1671.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1601.
+Package pdftex.def Info: logo.png  used on input line 1671.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1601.
+(hyperref)                removing `\@ifnextchar' on input line 1671.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1601.
+(hyperref)                removing `\@ifnextchar' on input line 1671.
 
 [7]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1702.
+Package pdftex.def Info: e-logo.png  used on input line 1700.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1702.
+Package pdftex.def Info: logo.png  used on input line 1700.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1702.
+(hyperref)                removing `\@ifnextchar' on input line 1700.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1702.
+(hyperref)                removing `\@ifnextchar' on input line 1700.
 
 [8]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1812.
+Package pdftex.def Info: e-logo.png  used on input line 1829.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1812.
+Package pdftex.def Info: logo.png  used on input line 1829.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1812.
+(hyperref)                removing `\@ifnextchar' on input line 1829.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1812.
+(hyperref)                removing `\@ifnextchar' on input line 1829.
 
 [9]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1906.
+Package pdftex.def Info: e-logo.png  used on input line 1922.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1906.
+Package pdftex.def Info: logo.png  used on input line 1922.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
@@ -2231,8 +2231,8 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1906 \end{document}
-                     
+l.1922 
+       
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
@@ -2241,21 +2241,57 @@ If that doesn't work, type  X <return>  to quit.
 s.fd)
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1906.
+(hyperref)                removing `\@ifnextchar' on input line 1922.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1906.
+(hyperref)                removing `\@ifnextchar' on input line 1922.
 
 [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1906.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1906.
- (./cr2-thql.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1906.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1906.
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 2048.
+(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 2048.
+(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
-Package rerunfilecheck Info: File `cr2-thql.out' has not changed.
-(rerunfilecheck)             Checksum: 9E6F172715E71EFB70D5D57603B09D5C;905.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2048.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2048.
+
+[11]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 2078.
+(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 2078.
+(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2078.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2078.
+
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2078.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2078.
+ (./cr2-thql-methods.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2078.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2078.
+
+Package rerunfilecheck Info: File `cr2-thql-methods.out' has not changed.
+(rerunfilecheck)             Checksum: ABCEC88BA389CF2D18EEF5BF89A2A25B;982.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2263,16 +2299,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 806 ({)
+### simple group (level 1) entered at line 808 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 35198 strings out of 492649
- 710122 string characters out of 6122986
- 807796 words of memory out of 5000000
- 38468 multiletter control sequences out of 15000+600000
+ 35205 strings out of 492649
+ 710319 string characters out of 6122986
+ 808830 words of memory out of 5000000
+ 38472 multiletter control sequences out of 15000+600000
  633355 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,93p,10397b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,15n,93p,10405b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
 ps/gfsdidot/didotOT1sc.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fo
 nts/enc/dvips/gfsdidot/didottabnums.enc}{/home/nlevisrael/texl/texlive-install/
@@ -2296,10 +2332,10 @@ re/qcrb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/publi
 c/tex-gyre/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/typ
 e1/public/tex-gyre/qhvr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
 onts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on cr2-thql.pdf (10 pages, 391781 bytes).
+Output written on cr2-thql-methods.pdf (12 pages, 399585 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 157 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
