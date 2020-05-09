@@ -51,10 +51,10 @@
 
 \AddToShipoutPicture{%
 \ifnum\value{page}=1
-\put(257.5,932){%
+\put(257.5,942){%
 	\transparent{0.7}{
 		\includegraphics[width=0.2\textwidth]{logo.png}}}
-\put(59,923){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}WHITE PAPER}}}
+\put(59,933){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}WHITE PAPER}}}
 \fi
 }	
 
@@ -71,7 +71,7 @@
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
 \ifnum\value{page}=12
-\put(12,51){
+\put(12,61){
  {\setlength{\fboxsep}{.65em}
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -98,7 +98,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.74in,top=.5in,right=.74in,bottom=1.2in} %margins
+\geometry{left=.7in,top=.5in,right=.7in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -304,8 +304,10 @@
 
 \newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
 
-\newcommand{\THQL}{\resizebox{!}{7pt}{\AcronymText{THQL}}}
-\newcommand{\lTHQL}{\resizebox{!}{7.5pt}{\AcronymText{THQL}}}
+\newcommand{\AIMConc}{\resizebox{!}{7pt}{\ATextClr{AIM-Concepts}}}
+
+\newcommand{\THQL}{\resizebox{!}{7pt}{\ATextClr{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{7.5pt}{\ATextClr{THQL}}}
 
 \newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
@@ -355,6 +357,7 @@
 \makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
 \resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
 
 \newcommand{\lDgDb}{{\mathversion{fordg}%
 \resizebox{!}{12pt}{\ATextClr{%
@@ -527,6 +530,7 @@
 
 \newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
 
+
 \newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
 
 %\newcommand{\\WhiteDB{}}{\resizebox{!}{7pt}{\AcronymText{\WhiteDB{}}}}
@@ -625,9 +629,9 @@
 \colorlet{dslr}{dsl!50!blue}
 
 \setlist[description]{%
-  topsep=20pt,
+  topsep=12pt,
   labelsep=22pt, leftmargin=5pt,
-  itemsep=25pt,               % space between items
+  itemsep=15pt,               % space between items
   %font={\bfseries\sffamily}, % set the label font
   font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
 }
@@ -823,7 +827,7 @@
 
 \colorlet{ctmppppy}{ctmppp!60!orange}
 
-\vspace{4em}
+\vspace{1em}
 
 %{\colorbox{darkBlGreen!30!darkRed}{%
 \begin{tcolorbox}
@@ -857,7 +861,7 @@ Archive Construction Technology to Accelerate Covid-19 Research}
 \end{center}
 
 %\vspace{1em}
-\vspace*{12pt}
+\vspace*{2pt}
 \begin{center}
 \parbox{.88\textwidth}{%
 {\fontfamily{fvs}\fontsize{9}{9}\selectfont   
@@ -869,11 +873,12 @@ Cyber-Physical Systems, Smart Cities,
 and Ecological \makebox{Monitoring}}} 
 (Elsevier, 2020); and 
 co-author (with Nathaniel Christen) 
-of {\textbf{Cross-Disciplinary Data Integration Models
-for the Emerging Covid-19 Data Ecosystem}} 
+of {\textbf{Cross-Disciplinary Data Integration 
+and Conceptual Space Models
+for the Covid-19 Data Ecosystem}} 
 (Elsevier, forthcoming).}}\end{center}
 
-\vspace*{1em}	
+\vspace*{4pt}	
 
 \section{Introduction}
 \p{LTS is curating a Cross-Disciplinary Archive/Repository 
@@ -1509,18 +1514,29 @@ publications and data sets, making it \textit{easier} for
 researchers to find the specific information most 
 relevant to their own research.}
 
-\section{Data Sets for Analytic Methodology}
-\p{In addition to raw data sets whose essential purpose 
+\section{Data Sets for Analytic and AI Methodology}
+\p{As a companion to \CRtwo{}, whose essential purpose 
 is to present empirical observations concerning Covid-19, 
-one section of \CRtwo{} will be devoted to archives 
-illustrating analytic techniques which may be applied to 
-\CRtwo{} data as a whole.  These \q{methodological} archives 
-may include code libraries, real or hypothetical 
-data sets curated specifically to test and/or document 
-computational methods, or some combination thereof.  
+LTS is also curating the \AIMConc{} archive, which focused 
+on code supporting Artificial Intellegence and 
+concrete data-integration methodology.  At the 
+core of \AIMConc{} is a collection of code libraries 
+implementing analytic techniques and representations 
+used by \AI{} researchers, as well as by software 
+engineers --- in particular, hypergraphs, fuzzy sets, 
+and conceptual spaces.  So as to integrate this code into a 
+common programming framework, the \AIMConc{} libraries are 
+ported or modified when necessary, with \C{} or \Cpp{} 
+as the primary development language and \Qt{}/qmake as 
+the primary development framework and build system.
+\lCRtwo{} and \AIMConc{} will be interconnected 
+by employing \CRtwo{} data sets as concrete 
+examples for demonstrating how \AIMConc{} libraries 
+may be used within software applications.   
 Here are some of the methodological approaches which, 
-in light of current Covid-19 research, will be important 
-components of \CRtwo{}:
+basid in part on Covid-19 research providing 
+concrete use-cases, will be important 
+components of \AIMConc{}:
 
 \begin{description}
 \item[Computational Epidemiology]  Methods in this 
@@ -1547,7 +1563,16 @@ constitute a computational asset in their own
 right.  \lCRtwo{} will include several self-contained 
 code libraries that have been published 
 as tools investigating different quantitative 
-epidemiological models.
+epidemiological models.  Although some epidemiological simulations 
+rely primarily on mathematical equations, most 
+epidemiology libraries internally use graph-based models, 
+often emloying weighted graphs where edges denote, 
+for example, the probability of viral transmission 
+between people in close contact.  As a result, 
+distinct epidemiological models can sometimes 
+be merged into a common analytic framework, 
+using custom quantitative algorithms composed 
+within a common graph-traversal framework.   
 
 \item[Event Modeling]  Event modeling, sometimes called 
 \q{Entity-Event Modeling,} is an emerging data-analytic 
@@ -1555,7 +1580,7 @@ trend which focuses on events, rather than objects,
 as the most fundamental form of observation within a data 
 space.  Conceptually, the rationale for this paradigm 
 is that every property which is attributed to 
-some object can (at least in an empirical system) be 
+some object can be 
 tied to a specific event wherein the given property was 
 measured, observed, discovered, or inferred.  
 For instance, asserting that a patient is 
