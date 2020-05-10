@@ -349,6 +349,7 @@
 \newcommand{\ATextCClr}[1]{\textcolor{atcColor}{\textbf{#1}}}
 
 \newcommand{\AIMConc}{\resizebox{!}{7.5pt}{\ATextCClr{AIM-Concepts}}}
+\newcommand{\lAIMConc}{\resizebox{!}{8pt}{\ATextCClr{AIM-Concepts}}}
 
 \newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATextCClr{HGXF}}}}
 \newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATextCClr{HGXF}}}}
@@ -867,19 +868,19 @@ Archive Construction Technology to Accelerate Covid-19 Research}
 %\vspace{1em}
 \vspace*{2pt}
 \begin{center}
-\parbox{.88\textwidth}{%
+\parbox{.86\textwidth}{%
 {\fontfamily{fvs}\fontsize{9}{9}\selectfont   
 LTS (Linguistic Technology Systems) is founded by 
 Amy Neustein, PhD, Series Editor of {\textbf{Speech Technology 
 and Text Mining in Medicine and Health Care}} (de Gruyter); 
-Editor of {\textbf{Advances in Ubiquitous Computing: 
+Editor of {\textbf{\makebox{Advances} in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
 and Ecological \makebox{Monitoring}}} 
 (Elsevier, 2020); and 
 co-author (with Nathaniel Christen) 
 of {\textbf{Cross-Disciplinary Data Integration 
 and Conceptual Space Models
-for the Covid-19 Data Ecosystem}} 
+for Covid-19}} 
 (Elsevier, forthcoming).}}\end{center}
 
 \vspace*{4pt}	
@@ -890,19 +891,19 @@ of open-access research data sets related to
 SARS-CoV-2 and Covid-19.  \lCRtwo{} is being developed 
 as a supplement to our forthcoming Elsevier volume 
 examining Covid-19 research from the perspective 
-of text and data mining.  In building this repository, 
-LTS will develop and demonstrate 
-new database engineering and dataset/repository construction 
-technologies.  As a companion to \CRtwo{}, LTS is also 
-compiling an additional methodology-focused archive 
-called \q{\AIMConc{}} (Archive for \lAI{} Methodology and Conceptual Space Theory) 
+of text and data mining.  In building this \CRtwo{} repository, 
+LTS will develop and demonstrate new database engineering 
+and dataset/repository construction 
+technologies.  As a companion to the \CRtwo{} archive, LTS is likewise 
+compiling an archive called \q{\AIMConc{}} 
+(Archive for \lAI{} Methodology and Conceptual Space Theory) 
 featuring \AI{}-related code which can be concretely applied 
 to \CRtwo{} data.  Part I of this paper will outline the \CRtwo{} 
 and \AIMConc{} repositories; 
-and Part II will discuss the new technologies 
-in greater detail.  Such database engineering and archive 
-construction technologies have deep market penetration 
-in many areas, including but not limited to 
+and Part II will discuss the new database engineering 
+and archive construction technologies 
+in greater detail.  These technologies have deep market penetration 
+in many areas, including, but not limited to, 
 pharmaceuticals, manufacturing, fintech, 
 healthcare, educational software, and bioinformatics.}
 
@@ -1522,18 +1523,18 @@ publications and data sets, making it \textit{easier} for
 researchers to find the specific information most 
 relevant to their own research.}
 
-\section{Code Libraries and Data Sets for Analytic and AI Methodology}
+\section{Code Libraries and Data Sets for Analytic Methodology}
 \p{As a companion to \CRtwo{}, whose essential purpose 
-is to present empirical observations concerning Covid-19, 
-LTS is also curating the \AIMConc{} archive, which is focused 
-on code supporting Artificial Intellegence and 
+is to present \textit{empirical} observations concerning Covid-19, 
+we are curating the \AIMConc{} archive, which is focused 
+on code that supports Artificial Intellegence and 
 concrete data-integration methodology.  At the 
 core of \AIMConc{} is a collection of code libraries 
 implementing analytic techniques and representations 
-used by \AI{} researchers, as well as by software 
+used by \AI{} researchers as well as by software 
 engineers --- in particular, different varieties of hypergraphs; 
-fuzzy sets/logic; and conceptual spaces.  So as to integrate this code into a 
-common programming framework, the \AIMConc{} libraries are 
+fuzzy sets/logic; and conceptual spaces.  In order to integrate this code 
+into a common programming framework, the \AIMConc{} libraries are 
 ported or modified when necessary, with \C{} or \Cpp{} 
 as the primary development language and \Qt{}/qmake as 
 the primary development framework and build system.
@@ -1541,9 +1542,9 @@ the primary development framework and build system.
 by employing \CRtwo{} data sets as concrete 
 examples for demonstrating how \AIMConc{} libraries 
 may be used within software applications.   
-Here are some of the methodological approaches which, 
-based in part on how Covid-19 research can provide 
-concrete use-cases, will be important 
+Here are some of the methodological approaches 
+(based in part on how Covid-19 research can provide 
+concrete use-cases) which will be important 
 components of \AIMConc{}:
 
 \begin{description}
@@ -1551,35 +1552,35 @@ components of \AIMConc{}:
 category generally concern the simulation of disease 
 transmission given a set of initial parameters 
 (such as an infectious agent's reproduction rate 
-and an average level of person-to-person contact), 
-often alongside empirical data tracking how a disease 
+and an average degree of person-to-person contact), 
+often concomitant with empirical data, tracking how a disease 
 has spread within some observable subpopulation.  
-The empirical findings therefore suggest 
+The empirical findings, therefore, suggest 
 \textit{a posteriori} which statistical model best 
 fits the actual nature of the disease in question.  
-The accuracy of this analysis depends in part on 
+The accuracy of this analysis depends, in part, on 
 how well the observed subpopulation mirrors the 
-susceptible population as a whole, but it also 
+susceptible population as a whole; but it also 
 depends on the accuracy of the mathematical formulae 
 translating initial parameters into projected 
-epidemiological simulations, to be compared against 
-\textit{a posteriori} data.  Concrete expositions 
+epidemiological simulations to be compared against 
+\textit{a posteriori} data.  As such, concrete expositions 
 of these mathematical frameworks --- in particular, 
 computer code implementing the calculations 
-which drive a simulated model --- therefore 
+which drive a simulated model --- 
 constitute a computational asset in their own 
-right.  \lCRtwo{} will include several self-contained 
+right.  \lAIMConc{} will include several  
 code libraries that have been published 
 as tools investigating different quantitative 
 epidemiological models.  Although some epidemiological simulations 
 rely primarily on mathematical equations, most 
 epidemiology libraries internally use graph-based models, 
-often emloying weighted graphs where edges denote, 
+often employing weighted graphs where edges denote, 
 for example, the probability of viral transmission 
 between people in close contact.  As a result, 
 distinct epidemiological models can sometimes 
 be merged into a common analytic framework, 
-using custom quantitative algorithms composed 
+using custom quantitative algorithms that are composed 
 within a common graph-traversal framework.   
 
 \item[Event Modeling]  Event modeling, sometimes called 
@@ -1588,45 +1589,43 @@ trend which focuses on events, rather than objects,
 as the most fundamental form of observation within a data 
 space.  Conceptually, the rationale for this paradigm 
 is that every property which is attributed to 
-some object can be 
-tied to a specific event wherein the given property was 
-measured, observed, discovered, or inferred.  
+some object can be tied to a specific event wherein the given property 
+was measured, observed, discovered, or inferred.  
 For instance, asserting that a patient is 
-\textit{infected} with SARS-Cov-2 necessarily 
+\textit{infected} with SARS-Cov-2  
 implies that a \textit{test} for SARS-Cov-2 
 was positive.  Focusing attention on the \textit{event} 
 (viz., the test and its result) allows the 
 data model to accrue information in a more detailed manner: 
 in the case of SARS-Cov-2 tests, the relevant testing method/kit used; false 
-positive/negative rates; the time ellapsed between the 
-onset of symptoms (if any) and the test being ordered, 
-and then between the test being ordered and 
-the results being provided; the observations 
+positive/negative rates in the population; the time ellapsed between the 
+onset of symptoms (if any) and the test being ordered 
+and the interval until the results are provided; the observations 
 or factors (such as the subject's exposure 
 to an infected family member) which 
-compelled doctors to order the test; and so on.  
+caused health care providers to order the test; and so on.  
 Many of these details might be included in a conventional 
-database as well, but focusing on events allows the 
-relevant information to be obtained more easily, because 
+database as well; however, focusing on events allows the 
+relevant information to be obtained more easily in that 
 the event model supplies a temporal and operational 
-organization to the underlying information.  
+organization for the underlying information.  
 Event models are especially useful when 
 temporal sequencing and duration are important 
 considerations for uncovering scientific 
-facts about the phenomenon being studied --- in the 
+facts about the phenomenon being studied.  In the 
 context of infectious diseases, intervals such 
-as the length of time between exposure and the 
-appearance of symptoms (or when the carrier becomes 
-contagious), or such as the length of hospital stays, 
-are essential to our understanding of the disease's 
+as the length of time between exposure 
+and contagiousness, length of time between exposure 
+and the appearance of symptoms, or the duration of hospital 
+stays, are essential to our understanding of the disease's 
 biology. 
 
 \item[Fuzzy Sets and Fuzzy Logic]  Mathematically, 
 fuzzy logic is often conceived in terms of replacing a 
 simple binary logic (\q{true}/\q{false}) with a 
 more complex multi-valued logic, wherein properties 
-may be true or false to varying degrees.  On the 
-surface, this thereby introduces quantitative models 
+may be true or false to varying degrees.  Thus, on the 
+surface, this introduces quantitative models 
 (such as the calculation of the conjunction or disjunction 
 of fuzzy predicates) as a substitute for purely 
 logical reasoning.  In practice, however, fuzzy 
