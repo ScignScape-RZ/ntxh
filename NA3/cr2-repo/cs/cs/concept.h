@@ -40,6 +40,14 @@ public:
  QPair<Concept*, Concept*> cut_at(? dimension, ? value);
  QVector<?> reduce_domains(domains, dimensions);
 
+ r8 hypervolume_cuboid(cuboid);
+ r8 size();
+ bool crisp_subset_of(Concept& other);
+ r8 implies(Concept& other);
+ r8 similarity_to(Concept& other, QString method="Jaccard");
+ r8 between(Concept& first, Concept& second,
+    QString method="integral", u4 num_alpha_cuts = 20):
+
 };
 
 

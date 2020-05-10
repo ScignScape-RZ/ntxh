@@ -1,6 +1,8 @@
 
 #include "concept.h"
 
+#include <tgmath.h>
+
 
 Concept::Concept(Conceptual_Space* cs, r8 self, Core core, r8 mu, r8 c, Weights weights)
   :  cs_(cs), core_(core), mu_(mu), c_(c), weights_(weights)
@@ -439,12 +441,313 @@ QVector<?>  Concept::reduce_domains(domains, dimensions)
  return new_domains;
 }
 
-void Concept::hypervolume_couboid(cuboid)
+r8 Concept::hypervolume_cuboid(cuboid)
      //   """Computes the hypervolume of a single fuzzified cuboid."""
 {
-
+ //?       all_dims = [dim for domain in core_.domains().values() for dim in domain]
+ u4 n = len(all_dims);
+ //        # calculating the factor in front of the sum
+ r8 weight_product = 1.0;
+ for (dom, dom_weight : weights_.domain_weights().items())
+ {
+  for (dim, dim_weight : weights_.dimension_weights()[dom].items())
+  {
+   weight_product *= dom_weight * qSqrt(dim_weight);
+  }
+ }
+ factor = self.mu_ / ( qExp(self.c_, n) * weight_product ) );
+ //        # outer sum
+ r8 outer_sum = 0.0;
+ for(i = 0; i < n + 1; ++i)
+   //         # inner sum
+ {
+  r8 inner_sum = 0.0;
+  ? subsets = list(itertools.combinations(all_dims, i));
+  for(? subset : subsets)
+   //             # first product
+  {
+   first_product = 1.0;
+   for(? dim : set(all_dims) - set(subset))
+   {
+    ? = filter([] (? x, ?y) { dim in y }, core_.domains().items());
+    dom =  ? [0][0];
+    w_dom = weights_.domain_weights()[dom];
+    w_dim = weights_.dimension_weights()[dom][dim];
+    ? b = cuboid._p_max[dim] - cuboid._p_min[dim]
+    first_product *= w_dom * qSqrt(w_dim) * b * self.c_;
+   }
+//                # second product
+   r8 second_product = 1.0;
+   ? reduced_domain_structure = reduce_domains(core_.domains, subset);
+   for( (dom, dims) : reduced_domain_structure.items())
+   {
+    u4 n_domain = len(dims);
+     // // tgamma in  <tgmath.h> 
+    second_product *= factorial(n_domain) * ( 
+      (qExp(pi, (n_domain/2.0))) / ( tgamma((n_domain/2.0) + 1)) );
+   }
+   inner_sum += first_product * second_product;
+  }
+  outer_sum += inner_sum;
+ }
+ return factor * outer_sum;
 }
 
+r8 Concept::size(self)
+{
+ //        """Computes the hypervolume of this concept."""
+ hypervolume = 0.0
+ num_cuboids = len(core_.cuboids());
+        
+ //       # use the inclusion-exclusion formula over all the cuboids
+ for( l = 1; l <= num_cuboids + 1):
+ r8 inner_sum = 0.0;
 
+ subsets = list(itertools.combinations(core_.cuboids(), l));
+ for(subset : subsets)
+ {
+  intersection = subset[0];
+  for( cuboid : subset)
+  {
+   intersection = intersection.intersect_with(cuboid);
+   inner_sum += self._hypervolume_cuboid(intersection);
+  }
+  hypervolume += inner_sum * qExp((-1.0), (l+1));
+ }
+ return hypervolume
+}
 
+r8 Concept::subset_of(Concept& other)
+{
+
+ //       """Computes the degree of subsethood between this concept and a given other concept."""
+
+ QMap <?> common_domains; // = {}
+ for( dom, dims : core_.domains().iteritems() )
+ {
+  if( dom in other.core_.domains() && other.core_.domains()[dom] == dims )
+    common_domains[dom] = dims;
+ }
+ projected_self = self.project_onto(common_domains)
+ projected_other = other.project_onto(common_domains)
+        
+ intersection = projected_self.intersect_with(projected_other)
+ intersection._c = projected_other._c
+ intersection._weights = projected_other._weights
+ projected_self._c = projected_other._c
+ projected_self._weights = projected_other._weights
+ subsethood = intersection.size() / projected_self.size()
+ return subsethood;
+}
+
+bool Concept::crisp_subset_of(Concept& other)
+{
+ //       """Checks whether this concept is a crisp subset of the given other concept."""
+
+ //       # self._mu must not be greater than other._mu
+ if(mu_ > other.mu_)
+   return false
+
+ //       # core of self must be subset of other's alpha-cut with alpha = self._mu
+ ? corner_points; // = []
+ <?> self_dims ;// = [dim for dims in self._core._domains.values() for dim in dims]
+ 
+ for(dims : core_.domains().values())
+ {
+  for(dim : dims)
+    self_dims.push_back(dim);
+ }
+
+ for(? cuboid : core_.cuboids())
+ {
+  binary_vecs = itertools.product([False, True], repeat = len(self_dims));
+  for(vec : binary_vecs)
+  {
+   <?> point;// = []
+   j = 0;
+   for(i : range(cs->number_of_dimensions())
+   {
+    if(i in self_dims)
+    {
+     point.append(vec[j] ? cuboid.p_max()[i] : cuboid.p_min()[i]);
+     ++j;
+    }
+    else
+      point.append(0.0);
+   }
+   corner_points.append(point);
+  }
+ }
+ for(point : corner_points)
+ {
+  if(other.membership_of(point) < self._mu)
+    return false;
+ }
+//       # domains on which other is defined must be subset of domains on which self is defined
+ for(dom, dims : other.core_.domains().iteritems())
+ {
+  if(! (dom in self.core_.domains() && self.core_.domains()[dom] == dims))
+    return false;
+ }
+//        # for all dimensions: c * w_dom * sqrt(dim) must not be larger for other than for self
+ for( dom, dims : other.core_.domains().iteritems())
+ {
+  for(? dim : dims)
+  {
+   other_value = other.c_ * other.weights_.domain_weights()[dom] 
+     * qSqrt(other.weights_.dimension_weights()[dom][dim]);
+   self_value = c_ * weights_.domain_weights()[dom] 
+     * qSqrt(weights_.dimension_weights()[dom][dim]);
+   if(other_value > self_value)
+     return false;
+  }
+ }
+ return true;
+}
+
+r8 Concept::implies(Concept& other)
+{
+ //       """Computes the degree of implication between this concept and a given other concept."""
+        
+ return subset_of(other);
+}
+
+//    def similarity_to(self, other, method="Jaccard"):
+r8 Concept::similarity_to(Concept& other, QString method) //="Jaccard")
+{
+ //       """Computes the similarity of this concept to the given other concept.
+        
+ //       The following methods are avaliable:
+ //           'Jaccard':                Jaccard similarity index (size of intersection over size of union) - used as default
+ //           'subset':                 degree of subsethood as computed in subset_of()
+//        """
+ 
+//         # project both concepts onto their common domains to find a common ground                              
+ QMap<?> common_domains; // = {}
+ for( dom, dims : core_.domains().iteritems())
+ {
+  if( (dom in other.core_.domains()) and (other.core_.domains()[dom] == dims) )
+    common_domains[dom] = dims;
+ }
+
+ if(len(common_domains) == 0)
+//            # can't really compare them because they have no common domains --> return 0.0
+   return 0.0;
+ projected_self = project_onto(common_domains);
+ projected_other = other.project_onto(common_domains);
+ if(method == "Jaccard")
+ {
+  intersection = projected_self.intersect_with(projected_other);
+  unify = projected_self.unify_with(projected_other);
+  r8 sim = intersection.size() / unify.size();
+  return sim;
+ }
+ else if(method == "subset")
+ {
+  return projected_self.subset_of(projected_other);
+ }  
+ else
+ {
+  raise Exception("Unknown method");
+ }
+}
+ 
+r8 Concept::between(Concept& first, Concept& second, 
+  QString method, u4 num_alpha_cuts) // ="integral", num_alpha_cuts = 20):
+{
+ //        """Computes the degree to which this concept is between the other two given concepts.
+       
+ //       The following methods are avaliable:
+ //           'minimum':  minimum over all alpha-cuts
+ //           'integral': coarse approximation of the integral over all alpha-cuts
+ //       """
+
+//         # if the three concepts are not defined on the exact same set of domains, we return zero
+ if(len(core_.domains().keys()) != len(first.core_.domains().keys()))
+   return 0.0;
+ if(len(core_.domains().keys()) != len(second.core_.domains().keys()))
+   return 0.0;
+
+ //        # now we know that the number of domains is the same --> check whether the domains themselves are the same
+ for(dom, dims : core_.domains().iteritems())
+ {
+  if(! (dom in first.core_.domains() && first.core_.domains()[dom] == dims))
+    return 0.0;
+  
+  if(! (dom in second.core_.domains() && second.core_.domains()[dom] == dims))
+    return 0.0;
+ }
+
+ if(method == "minimum")            
+//            # if self._mu is greater than any of first and second, the result is automatically zero
+ {
+  if( (mu_ > first.mu_) || (mu_ > second.mu_) )
+    return 0.0;
+//            # if self is a crisp subset of either of first or second, the result is automatically one
+  if(crisp_subset_of(first) || crisp_subset_of(second))
+    return 1.0;
+
+//            # for all dimensions: c * w_dom * sqrt(w_dim) must not be larger for first and second than for self
+  for(dom, dims : core_.domains().iteritems())
+  {
+   for(dim : dims)
+   {
+    first_value = first.c_ * first.weights_.domain_weights()[dom] 
+      * qSqrt(first.weights_.dimension_weights()[dom][dim]);
+
+    self_value = c_ * weights_.domain_weights()[dom] 
+      * qSqrt(weights_.dimension_weights()[dom][dim]);
+
+    second_value = second.c_ * second.weights_.domain_weights()[dom] 
+      * qSqrt(second.weights_.dimension_weights()[dom][dim]));
+
+    if( (first_value > self_value) && (second_value > self_value) )
+      return 0.0;
+   }
+  }
+
+  ? first_point = first.core_.midpoint();
+  ? second_point = second.core_.midpoint();            
+            
+//            # start at each corner of each cuboid to get a good estimation of minimum over all points in self
+  ? corners_min = [c._p_min for c in self._core._cuboids] 
+  ? corners_max = [c._p_max for c in self._core._cuboids]
+
+  ? candidates = [(point, "min") for point in corners_min] + [(point, "max") for point in corners_max];
+
+  <?> candidate_results; // = []
+  r8 tolerance = 0.01; //   # tolerance with respect to constraint violation, needed to ensure convergence
+
+  for(? candidate : candidates)
+  {                
+   //             # push the points a bit over the edge to ensure we have some sort of gradient in the beginning
+   if( candidate[1] == "min")
+     cand = list(map([] (x) { x - cs->epsilon() }, candidate[0]));
+   else
+     cand = list(map([] (x) { x + cs->epsilon() }, candidate[0]));
+                
+//                # start with three different values of alpha to get a good estimate over the minmum over all alphas
+   alpha_candidates = [0.05 * self._mu, 0.5 * self._mu, 0.95 * self._mu];
+   for(alpha : alpha_candidates)
+   {                  
+//                    # inner optimization: point in first and point in second (maximizing over both)                     
+    inner_x = first_point + second_point;
+                    
+//                    # function to minimize in inner optimization
+    auto neg_betweenness = [](x_inner,x_outer)
+    {
+     x = x_inner[:cs._n_dim]                
+                        y = x_outer[:-1]
+                        z = x_inner[cs._n_dim:]
+                        
+     return -1.0 * cs.between(x, y, z, self._weights, method='soft');
+    }
+
+   }     
+  }
+  
+
+ }
+
+}
 
