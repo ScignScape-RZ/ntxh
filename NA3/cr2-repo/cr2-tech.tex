@@ -70,9 +70,9 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=12
-\put(12,61){
- {\setlength{\fboxsep}{.65em}
+\ifnum\value{page}=14
+\put(12,56){
+ {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
 	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
@@ -98,7 +98,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.7in,top=.5in,right=.7in,bottom=1.2in} %margins
+\geometry{left=.8in,top=.5in,right=.8in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -596,7 +596,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.6em}#1}
+\vspace{1.2em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -817,7 +817,7 @@
 
 \setlength{\skip\footins}{18pt}	
 	
-{\linespread{1.2}\selectfont
+{\linespread{1.25}\selectfont
 
 \vspace*{1.5em}
 
@@ -868,7 +868,7 @@ Archive Construction Technology to Accelerate Covid-19 Research}
 %\vspace{1em}
 \vspace*{2pt}
 \begin{center}
-\parbox{.86\textwidth}{%
+\parbox{.88\textwidth}{%
 {\fontfamily{fvs}\fontsize{9}{9}\selectfont   
 LTS (Linguistic Technology Systems) is founded by 
 Amy Neustein, PhD, Series Editor of {\textbf{Speech Technology 
@@ -886,26 +886,78 @@ for Covid-19}}
 \vspace*{4pt}	
 
 \section{Executive Summary}
+\p{LTS is building SARS-CoV-2 and Covid-19 repositories 
+to accelerate scientific discovery and therapeutic 
+intervention.  To do so, LTS is developing a 
+pair of data and code repositories 
+to advance Covid-19 research, as well as advancing 
+methodology for data-integration and \AI{} research in general.  
+The first of these repositories, the 
+\q{Cross-Disciplinary Repository 
+for Covid-19 Research} (\CRtwo{}), is \textit{empirically-focused} 
+--- aggregating published data sets into a common research 
+platform so as to promote Covid-19-related data mining.  
+The second of these repositories, \lAI{} Methodology and 
+Conceptual Space Theory (\AIMConc{}), is \textit{methodology-focused} 
+--- providing a collection of code libraries implementing 
+techniques applicable both to data integration and to Artificial Intellegence 
+research.  \lAIMConc{} prioritizes analytic methods and 
+data representations --- such as hypergraphs, fuzzy sets, and 
+conceptual spaces --- which have broad applications in 
+software engineering as well as \AI{}.  Both \CRtwo{} and 
+\AIMConc{} are companion resources to the forthcoming Elsevier 
+volume (authored by the LTS team) titled \textit{Cross-Disciplinary Data 
+Integration and Conceptual Space Models
+for Covid-19.}  In this volume, we will provide concrete 
+examples of Covid-19 data integration/analytics by 
+examining data sets included in the \CRtwo{} repository; 
+we will likewise demonstrate analytic techniques by examining 
+computer code included in the \AIMConc{} repository.}
 
+\p{\AIMConc{}, with respect to methodology, will focus on 
+Conceptual Space Theory, which is  
+a valuable unifying framework connecting to both 
+fuzzy sets as an \AI{} analytic strategy and to 
+hypergraph models as a data representation strategy.  
+In addition to \AIMConc{} providing \AI{} code libraries based 
+on Conceptual Spaces, \CRtwo{} will also feature  
+conceptual space models, applying this paradigm as a framework 
+for describing research data.  To this end, 
+we will be introducing an updated version of 
+Conceptual Space Markup Language (\CSML{}) 
+--- expanded in order to serve as a general-purpose 
+dataset-description language.  \lCRtwo{} and \lAIMConc{} will be 
+connected by a new hypergraph database protocol, which 
+we are calling 
+\q{Transparent Hypergraph Query Language} (\THQL{}).  
+The \CRtwo{} archive will include an implementation 
+of this protocol used to aggregate \CRtwo{} data into 
+a common format.  Likewise, the methodology presented in 
+the \AIMConc{} archive will be examined via demonstrations 
+of how techniques and algorithms of the \AIMConc{} libraries 
+can be applied to data hosted in a \THQL{} database.  
+The \THQL{} technology has many concrete applications 
+outside the context of Covid-19, penetrating vertical 
+markets such as pharmaceuticals, manufacturing, fintech, 
+healthcare, educational software, and bioinformatics.}
 
 \section{Introduction}
-\p{LTS is curating a Cross-Disciplinary Archive/Repository 
-for Covid-19 Research (\CRtwo{}), a collection 
-of open-access research data sets related to 
-SARS-CoV-2 and Covid-19.  \lCRtwo{} is being developed 
-as a supplement to our forthcoming Elsevier volume 
-examining Covid-19 research from the perspective 
-of text and data mining.  In building this \CRtwo{} repository, 
+\p{In an effort to accelerate scientific discovery and therapeutic 
+intervention, LTS is engaged in the curation of 
+the \CRtwo{} (\q{Cross-Disciplinary Repository 
+for Covid-19 Research}) and \AIMConc{} 
+(\q{\lAI{} Methodology and Conceptual Space Theory}) repositories.  
+The purpose of such repositories is to 
+centralize \textit{disparate} Covid-19-related data and 
+code into a common research platform.   
+This code and data, as much as possible, will be marshaled into a common, 
+hypergraph-based representation format, and a 
+common \Cpp{}-based programming environment.  In 
+building the \CRtwo{} repository, 
 LTS will develop and demonstrate new database engineering 
 and dataset/repository construction 
-technologies.  As a companion to the \CRtwo{} archive, LTS is likewise 
-compiling an archive called \q{\AIMConc{}} 
-(Archive for \lAI{} Methodology and Conceptual Space Theory) 
-featuring \AI{}-related code which can be concretely applied 
-to \CRtwo{} data.  Part I of this paper will outline the \CRtwo{} 
-and \AIMConc{} repositories; 
-and Part II will discuss the new database engineering 
-and archive construction technologies 
+technologies.  Part I of this paper will outline the \CRtwo{} 
+and \AIMConc{} repositories; Part II will discuss the new technologies 
 in greater detail.  These technologies have deep market penetration 
 in many areas, including, but not limited to, 
 pharmaceuticals, manufacturing, fintech, 
@@ -1757,7 +1809,7 @@ of natural-language assets --- such as Patient Narratives
 --- for the purposes of applying advanced text/data mining 
 strategies (in the case of Patient Narratives, 
 to extract critical patient symptomology often 
-buried in circumlocutory patient narratives). 
+buried in circumlocutory discourse). 
 \end{description} 
 }
 

@@ -736,18 +736,331 @@ r8 Concept::between(Concept& first, Concept& second,
 //                    # function to minimize in inner optimization
     auto neg_betweenness = [](x_inner,x_outer)
     {
-     x = x_inner[:cs._n_dim]                
-                        y = x_outer[:-1]
-                        z = x_inner[cs._n_dim:]
-                        
+     ? x = x_inner[:cs._n_dim] ; 
+     ? y = x_outer[:-1] ;
+     ? z = x_inner[cs._n_dim:] ;
+                         
      return -1.0 * cs.between(x, y, z, self._weights, method='soft');
-    }
+    };
 
+    auto inner_optimization = [](? y)
+    {
+     ? alpha = y[-1];                        
+     inner_constraints = 
+       [{'type':'ineq', 
+         'fun': lambda x: first.membership_of(x[:cs._n_dim]) - alpha - tolerance}, 
+//# x in alpha-cut of first
+        {'type':'ineq', 
+         'fun': lambda x: second.membership_of(x[cs._n_dim:]) - alpha - tolerance}]  
+//# z in alpha-cut of second
+
+//
+     opt = scipy.optimize.minimize(neg_betweenness, inner_x, args=(y,), 
+       method='COBYLA', constraints=inner_constraints, 
+       options={'catol':2*tolerance, 
+       'tol':cs._epsilon, 'maxiter':1000, 'rhobeg':0.01});
+
+     if( (!opt.success) && (opt.status != 2) )
+// # opt.status = 2 means that we reached the iteration limit
+     {
+      print opt;
+      raise Exception("inner optimization failed: {0}".format(opt.message));
+     }
+     return opt;
+    };
+    
+//                    # outer optimization: point in self and alpha (minimizing over both)
+    outer_x = cand + [alpha];
+    outer_constraints = (
+//                                # alpha < self._mu
+      {'type':'ineq', 
+      'fun': lambda x: self._mu - x[-1]},
+//        # alpha > 0
+      {'type':'ineq', 'fun': lambda x: x[-1]}, 
+//        # y in alpha-cut of self
+      {'type':'ineq', 
+      'fun': lambda x: self.membership_of(x[:-1]) - x[-1] - tolerance}); 
+    
+    to_minimize_y = [] (? y) { -1 * inner_optimization(y).fun };
+
+    opt = scipy.optimize.minimize(to_minimize_y, outer_x, method='COBYLA', 
+      constraints=outer_constraints, 
+      options={'catol':2*tolerance, 'tol':cs->epsilon(), 'maxiter':1000, 'rhobeg':0.01});
+    
+    if( (!opt.success) && (opt.status != 2) ) 
+      // # opt.status = 2 means that we reached the iteration limit
+    {
+     print opt
+     raise Exception("outer optimization failed: {0}".format(opt.message));
+    }
+    candidate_results.append(opt.fun);
    }     
   }
-  
-
+  return min(candidate_results)
  }
+ else if(method == "integral")
+ {
+  //          # if self is a crisp subset of either of first or second, the result is automatically one
+  if(crisp_subset_of(first) or crisp_subset_of(second))
+    return 1.0;
 
+//            # create list of alpha cuts that we want to compute
+  step_size = 1.0 / num_alpha_cuts;
+  alphas = [step_size*i for i in range(1,num_alpha_cuts+1)]
+  <?> intermediate_results; // = []
+            
+  u4 num_successful_cuts = 0; 
+            
+  for(? alpha : alphas)
+  {
+   if(alpha > mu_)  //                  # alpha-cut of self is empty --> define as 1.0
+   {
+    intermediate_results.append(1.0);
+    ++num_successful_cuts;
+    continue;
+   }
+   if( (alpha > first.mu_) || (alpha > second.mu_) ) // # alpha-cut of self is not empty, but one of the others is empty
+   {
+    intermediate_results.append(0.0); //        # --> define as 0.0
+    ++num_successful_cuts;
+    continue;
+   }
+//                # start with all corner points of all cuboids to get a good estimate of min
+   corners_min = [c.p_min() for c in core_.cuboids()]; 
+   corners_max = [c.p_max() for c in core_.cuboids()];
+//                   # compute the maximal allowable difference to the core wrt each dimension
+   difference = [0]*cs_.n_dim();
+   for( dom, dims : core_.domains().iteritems() )
+   {
+    for( dim : dims )
+    {
+     difference[dim] = (-1.0 / 
+       (c_ * weights_.domain_weight()[dom] 
+       * qSqrt(weights_.dimension_weights()[dom][dim]))) * log(alpha / mu_);
+    }
+   }  
+//                   # walk away from each corner as much as possible to get candidate points
+   <?> candidates; // = []                
+   for(? corner : corners_min )
+   {
+    candidates.append(map(lambda x, y: x - y, corner, difference));
+   }
+   for(? corner : corners_max )
+   {
+    candidates.append(map(lambda x, y: x + y, corner, difference));
+   }           
+   <?> betweenness_values; // = []
+   for(?candidate : candidates)
+   {                    
+    //              # find closest point in alpha-cut to given candidate point
+    to_optimize = [] (? x) { (alpha - self.membership_of(x))**2 };
+    opt = scipy.optimize.minimize(to_optimize, candidate, method='Nelder-Mead');
+    if(! opt.success )
+      continue;
+                    
+    self_point = opt.x;
+//                    # compute maximal betweenness for any points x,z in alpha-cut of first and third
+    x_start = first.core_.midpoint() + second.core_.midpoint();
+    r8 tolerance = 0.002;
+
+    // # x in alpha-cut of first
+    constr = [{'type':'ineq', 
+      'fun': lambda x: first.membership_of(x[:cs._n_dim]) - alpha - tolerance},  
+              {'type':'ineq', 
+    // # z in alpha-cut of second
+      'fun': lambda x: second.membership_of(x[cs._n_dim:]) - alpha - tolerance}]  
+
+
+    auto neg_betweenness = [] (? x)
+    {
+     return -1.0 * cs_->between(x[:cs->n_dim()], 
+       self_point, x[cs->n_dim():], weights_, method='soft');
+    };
+    opt = scipy.optimize.minimize(neg_betweenness, x_start, 
+      constraints=constr, method='COBYLA', 
+        options={'catol':2*tolerance, 'tol':cs._epsilon, 'maxiter':1000, 'rhobeg':0.01})
+    if not opt.success and not opt.status == 2: 
+      //# opt.status = 2 means that we reached the iteration limit
+      continue;
+    betweenness_values.append(-opt.fun);
+   }
+   //        # minimum over all candidate points in alpha-cut of self
+   if( len(betweenness_values) > 0 )
+   { 
+    intermediate_results.append(min(betweenness_values))
+    ++num_successful_cuts;
+   }
+  }
+  //        # compute average of alpha-cuts to approximate the overall integral
+  if(num_successful_cuts < 0.8 * num_alpha_cuts)
+    raise Exception("Could compute only {0} of {1} alpha cuts!"
+    .format(num_successful_cuts, num_alpha_cuts));
+
+  return sum(intermediate_results) / num_successful_cuts;
+ }
+ else
+   raise Exception("Unknown method");
 }
 
+? Concept::sample(u4 num_samples)
+{
+ //       """Samples 'num_samples' instances from the concept, based on its membership function."""
+        
+ //       # get probability densitiy function by dividing the membership function by the concept's size
+ //       # this ensures that the integral over the function is equal to one.
+
+ u4 size = size()?
+ auto pdf = [this] (? x) { membership_of(x) / size; };
+        
+ <?> samples; // = []
+
+ //        # compute the boundaries to sample from:
+ //       # for each dimension, compute the intersection of membership(x) with y = 0.001
+
+ <?> boundaries; // = []
+ for( dim : range(cs->n_dim) )
+ {
+  core_min = float("inf");
+  core_max = float("-inf");
+ 
+  for(c : core_.cuboids() )
+  {
+   core_min = min(core_min, c._p_min[dim]);
+   core_max = max(core_max, c._p_max[dim]);
+   
+   if( (core_min == float("-inf")) && (core_max == float("inf")) )
+     //           # concept not defined in this dimension --> use arbitrary interval [-2,+2]
+     //          # TODO: come up with something better
+     boundaries.append([-2, 2]);
+
+   else
+   {
+    dom = filter(lambda (x,y): dim in y, self._core._domains.items())[0][0];
+    difference = - log(0.001/self._mu) / 
+      (c_ * weights_.domain_weights()[dom] 
+      * qSqrt(weights_.dimension_weights()[dom][dim]));
+
+    boundaries.append([core_min - difference, core_max + difference]);
+   }
+  }
+ }
+ //        # use rejection sampling to generate the expected number of samples
+ while( len(samples) < num_samples )
+ {          
+  //            # create a uniform sample based on the boundaries
+  ? candidate = [i for i in range(cs._n_dim)]
+  ? candidate = map(lambda x: uniform(boundaries[x][0], boundaries[x][1]), candidate)
+            
+  u = uniform(0,1);
+  if( (u * (1.1/size)) <= pdf(candidate) )
+    samples.append(candidate);
+ }
+ return samples;
+}
+
+void Concept::check_crisp_betweenness(points, first, second)
+{
+ //   """Returns a list of boolean flags indicating which of the given points are strictly between the first and the second concept."""
+    
+ //   # store whether the ith point has already be shown to be between the two other cores
+
+ <?> betweenness = [false]*len(points);
+  
+ for(? c1 : first.core_.cuboids() )
+ {
+  for(? c2 : second.core_.cuboids() )
+  {
+   if(! (c1.compatible(c2) )
+     raise Exception("Incompatible cuboids");
+   p_min = map(min, c1._p_min, c2._p_min);
+   p_max = map(max, c1._p_max, c2._p_max);
+   dom_union = dict(c1.domains());
+   dom_union.update(c2.domains());
+   bounding_box = cub.Cuboid(p_min, p_max, dom_union);
+
+   local_betweenness = [true]*len(points);                    
+   //         # check if each point is contained in the bounding box
+   for( i : range(len(points)) )
+     local_betweenness[i] = bounding_box.contains(points[i]);
+
+   if(reduce(lambda x,y: x or y, local_betweenness) == false )
+     //  # no need to check inequalities
+     continue;
+
+   //            # check additional contraints for each domain
+   for(domain : dom_union.values())
+   {
+    if(len(domain) < 2) //# we can safely ignore one-dimensional domains
+      continue;
+    for(i = 0; i < len(domain); ++i) //  i in range(len(domain)) )
+    {
+     for(j = i + 1; j < len(domain); ++j) //j in range(i+1, len(domain)) )
+     {
+      //  # look at all pairs of dimensions within this domain
+      d1 = domain[i];
+      d2 = domain[j];
+      //                  # create list of inequalities
+                              
+      <?> inequalities;// = []
+      auto makeInequality = [] (p1, p2, below)
+      {
+       sign = below? -1 : 1;
+       ? a = (p2[0] > p1[0])? (p2[1] - p1[1]) : (p1[1] - p2[1]);
+       ? b = - qAbs(p1[0] - p2[0]);
+       ? c = -1 * (a * p1[0] + b * p1[1]);
+       return ([](? x) { return (sign * (a * x[0] + b * x[1] + c) <= 0); } );
+      };
+      //# different cases
+      if ( (c2.p_max()[d1] > c1.p_max()[d1]) && (c2.p_min()[d2] > c1.p_min()[d2]) )
+        inequalities.append(makeInequality([c1.p_max()[d1], 
+        c1.p_min()[d2]], [c2.p_max()[d1], c2.p_min()[d2]], false));
+
+      if ( (c2.p_max()[d1] > c1.p_max()[d1]) && (c1.p_max()[d2] > c2.p_max()[d2]) )
+        inequalities.append(makeInequality(c1.p_max(), c2.p_max(), true)); 
+
+      if ( (c2.p_min()[d1] > c1.p_min()[d1]) && (c2.p_max()[d2] > c1.p_max()[d2]) )
+        inequalities.append(makeInequality([c1.p_min()[d1], 
+        c1.p_max()[d2]], [c2.p_min()[d1], c2.p_max()[d2]], true));
+
+      if ( (c2.p_min()[d1] > c1.p_min()[d1]) && (c2.p_min()[d2] < c1.p_min()[d2]) )
+        inequalities.append(makeInequality(c1.p_min(), c2.p_min(), false)); 
+
+      if ( (c1.p_max()[d1] > c2.p_max()[d1]) && (c1.p_min()[d2] > c2.p_min()[d2]) )
+        inequalities.append(makeInequality([c1.p_max()[d1], 
+        c1.p_min()[d2]], [c2.p_max()[d1], c2.p_min()[d2]], false));
+
+      if ( (c1.p_max()[d1] > c2.p_max()[d1]) && (c2.p_max()[d2] > c1.p_max()[d2]) )
+        inequalities.append(makeInequality(c1.p_max(), c2.p_max(), true)); 
+
+      if ( (c1.p_min()[d1] > c2.p_min()[d1]) && (c1.p_max()[d2] > c2.p_max()[d2]) )
+        inequalities.append(makeInequality([c1.p_min()[d1], 
+        c1.p_max()[d2]], [c2.p_min()[d1], c2.p_max()[d2]], true));
+
+      if ( (c1.p_min()[d1] > c2.p_min()[d1]) && (c1.p_min()[d2] < c2.p_min()[d2]) )
+        inequalities.append(makeInequality(c1.p_min(), c2.p_min(), false)); 
+
+      for(k = 0; k < len(points); ++k) // k in range(len(points)):
+      {
+       for(? ineq : inequalities)
+       {
+        local_betweenness[k] = local_betweenness[k] && 
+        ineq([points[k][d1], points[k][d2]]);
+       }
+      }
+      if(! reduce(lambda x, y: x or y, local_betweenness) )
+        break;
+     }
+     if(! reduce(lambda x, y: x or y, local_betweenness) )
+        break;
+    }
+    if(! reduce(lambda x, y: x or y, local_betweenness) )
+       break;
+    }
+    betweenness = map(lambda x, y: x or y, betweenness, local_betweenness);
+    if( reduce(lambda x, y: x and y, betweenness) )
+      return betweenness;
+   }
+  }
+ }
+ return betweenness;
+}
