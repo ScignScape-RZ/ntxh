@@ -4,16 +4,23 @@
 
 #include <QtGlobal>
 
-typedef quint32 r8;
+typedef quint32 u4;
 
 typedef double r8;
 
+typedef QVector<r8> r8vec;
+typedef QVector<u4> u4vec;
+
 class Cuboid
 {
+ r8vec p_min_;
+ r8vec p_max_;
+ QMap<QString, u4vec> domains_;
 
+ 
 public:
 
- Cuboid(p_min, p_max, domains);
+ Cuboid(r8vec p_min, r8vec p_max, QMap<QString, u4vec> domains);
 
  void get_most_distant_points(rhs Cuboid& other);
 

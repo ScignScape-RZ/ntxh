@@ -3,13 +3,19 @@
 #define WEIGHTS__H
 
 #include <QtGlobal>
+#include <QMap>
 
-typedef quint32 r8;
+typedef quint32 u4;
 
 typedef double r8;
 
+
 class Weights
 {
+ QMap<QString, r8> dimension_weights_;
+
+ QMap<QString, QMap<u4, r8>> dimension_weights_;
+
 
 public:
 

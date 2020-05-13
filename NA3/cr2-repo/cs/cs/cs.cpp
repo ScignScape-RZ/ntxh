@@ -1,67 +1,78 @@
 
 #include "cs.h"
 
-Conceptual_Space::Conceptual_Space(n_dim, domains, dim_names = None)
+Conceptual_Space::Conceptual_Space(u4 number_of_dimensions, 
+  const QMap<QString, u4vec>& domains, QStringList dimension_names)
 {
-//def init(n_dim, domains, dim_names = None):
+//def init(number_of_dimensions, domains, dimension_names = None):
 //    """Initializes a conceptual space with the given numer of dimensions and the given set of domains.
     
-//    'n_dim' is an integer >= 1 and 'domains' is a dictionary from domain ids to sets of dimensions.
-//    The optional argument 'dim_names' contains names for the individual dimensions. Its length must be identical to 'n_dim'.
+//    'number_of_dimensions' is an integer >= 1 and 'domains' is a dictionary from domain ids to sets of dimensions.
+//    The optional argument 'dimension_names' contains names for the individual dimensions. Its length must be identical to 'number_of_dimensions'.
 //    If it is not given, numbered dimension names are generated."""
 
- if(n_dim < 1)
+ if(number_of_dimensions < 1)
    raise Exception("Need at least one dimension");
     
- if(! check_domain_structure(domains, n_dim) )
+ if(! check_domain_structure(domains, number_of_dimensions) )
    raise Exception("Invalid domain structure");
         
- n_dim_ = n_dim;
- domains_ = domains;
+ number_of_dimensions_ = number_of_dimensions;
+ domains_ = &domains;
  <?> concepts_ = {};
  <?> concept_colors_ = {};
  //   # take care of dimension names
- if( !dim_names.isEmpty()  ) //dim_names != None:
+ if( !dimension_names.isEmpty()  ) //dim_names != None:
  {
-  if( len(dim_names) != n_dim )
+  if( len(dimension_names) != number_of_dimensions )
     raise Exception("Invalid number of dimension names");
   else
-    this.dim_names_ = dim_names;
+    dimension_names_ = dimension_names;
  }
- else
-   this.dim_names_ = {} ; //["dim_{0}".format(i) for i in range(n_dim)]
+// else
+//   this.dim_names_ = {} ; //["dim_{0}".format(i) for i in range
+//(number_of_dimensions)]
     
  //   # construct default weights
  dim_weights = {}
- dom_weights = {}
- for( (dom, dims) : domains.items() )
+ QMap<QString, r8> dom_weights = {}
+
+
+ //for( (dom, dims) : domains.items() )
+
+ QMutableMapIterator<QString, QVector<u4>> it(domains_);
+ while(it.hasNext())
  {
+  it.next();
+  QString dom = it.key();
   dom_weights[dom] = 1.0;
   local_dim_weights = {};
-  for(dim : dims)
+  QVector<u4>& dims = it.value();
+  dims.resize(dims.size());
+  for(u4 dim : dims)
   {
    local_dim_weights[dim] = 1;
   }
   dim_weights[dom] = local_dim_weights;
  }
- this._no_weights = wghts.Weights(dom_weights, dim_weights)
+ this._no_weights = wghts.Weights(dom_weights, dim_weights);
 }
 
-void check_domain_structure(domains, n_dim)
-//def _check_domain_structure(domains, n_dim):
+void check_domain_structure(domains, number_of_dimensions)
+//def _check_domain_structure(domains, number_of_dimensions):
 //    """Checks whether the domain structure is valid."""
 {
  vals = [val for domain in domains.values() for val in domain] # flatten values
    
  //   # each dimension must appear in exactly one domain
- for(i = 0; i < n_dim; ++i) //: range(n_dim))
+ for(i = 0; i < number_of_dimensions; ++i) //: range(number_of_dimensions))
  {
   if(vals.count(i) != 1)
     return false;
  }
     
  //  # we need the correct number of dimensions in total
- if(len(vals) != n_dim)
+ if(len(vals) != number_of_dimensions)
    return false;
     
  //  # there are no empty domains allowed
@@ -77,7 +88,7 @@ r8 Concept::distance(x, y, weights)
 {
  //    """Computes the combined metric d_C(x,y,W) between the two points x and y using the weights in 'weights'."""
     
- if( (len(x) != n_dim_) || (len(y) != n_dim_) )
+ if( (len(x) != number_of_dimensions_) || (len(y) != number_of_dimensions_) )
    raise Exception("Points have wrong dimensionality");
     
  r8 distance = 0.0;

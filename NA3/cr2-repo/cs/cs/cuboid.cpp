@@ -1,7 +1,7 @@
 
 #include "cuboid.h"
 
-Cuboid::Cuboid(p_min, p_max, domains)
+Cuboid::Cuboid(r8vec p_min, r8vec p_max, QMap<QString, u4vec> domains)
 {
  //        """Initializes the cuboid.
         

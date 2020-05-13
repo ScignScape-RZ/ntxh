@@ -1,7 +1,7 @@
 
 #include "core.h"
 
-Core::Core(cuboids, domains)
+Core::Core(QVector<Cuboid*> cuboids, QMap<QString, u4vec> domains)
 {
  //   def __init__(self, cuboids, domains):
  //       """Initializes the concept's core.

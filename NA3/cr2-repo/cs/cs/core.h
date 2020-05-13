@@ -4,9 +4,15 @@
 
 #include <QtGlobal>
 
-typedef quint32 r8;
+typedef quint32 u4;
 
 typedef double r8;
+
+typedef QVector<r8> r8vec;
+typedef QVector<u4> u4vec;
+
+class Cuboid;
+
 
 class Core
 {
@@ -14,10 +20,14 @@ class Core
     
 //    Implementation of the crisp Simple Star-Shaped Set (SSSS)"""
 
+ QVector<Cuboid*> cuboids_;
+ QMap<QString, u4vec> domains_;
+
+
 
 public:
 
- Core(cuboids, domains);
+ Core(QVector<Cuboid*> cuboids, QMap<QString, u4vec> domains);
 
  bool operator=(const Core& rhs);
  bool operator!=(const Core& rhs) { return !(*this == rhs); }

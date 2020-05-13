@@ -13,6 +13,15 @@ Weights::Weights(domain_weights, dimension_weights)
  
  for( (domain, weights) in dimension_weights.items() )
    dimension_weights_[domain] = normalize(weights, 1.0);       
+
+ QMutableMapIterator<QString, QMap<u4, r8>> it (domain_weights);
+ while(it.hasNext())
+ {
+  it.next();
+  dimension_weights_[it.key()] = normalize( it.val
+
+ }
+ 
 }
 
 <?> Weights::normalize(weights, total)
