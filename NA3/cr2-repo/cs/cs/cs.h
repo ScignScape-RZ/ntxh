@@ -17,6 +17,9 @@ typedef QVector<u4> u4vec;
 
 typedef double r8;
 
+typedef QVector<r8> r8vec;
+
+
 class Concept;
 
 class Weights;
@@ -41,12 +44,12 @@ public:
    const QMap<QString, QVector<u4>>& domains, 
    QStringList dimension_names = {});
 
- r8 distance(Concept& x, Concept& y, Weights& weights);
+ r8 distance(r8vec& x, r8vec& y, Weights& weights);
 
  void add_concept(QString key, Concept* concept, QString color = {});
  void delete_concept(key);
 
- void between(Concept& first, Concept& middle, Concept& second,  
+ void between(r8vec& first, r8vec& middle, r8vec& second,  
 Weights* weights = nullptr, QString method="crisp");
  
  void round(? x);

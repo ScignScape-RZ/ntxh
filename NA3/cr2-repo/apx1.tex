@@ -1,4 +1,212 @@
 
 \section{Appendex 1: Hypergraph Ontologies}
 
+\p{The notion of \textit{hypergraph} ontologies generalizes 
+the idea of \textit{ontology} in the context of 
+the Resource Description Framework (\RDF{}).  In 
+the Semantic Web, an \q{ontology} is essentially a 
+graph schema, defining metadata for any information 
+that can be serialized or represented in graph-like 
+fashion, as well as criteria which graphs must satisfy 
+when they are used to encode a specific sort of 
+data.  To encode information about a \textit{clinical 
+trial}, for instance, one may require that graphs include 
+one node (representing the trial itself) which is linked 
+to other nodes representing patients enrolled in the 
+trial, as well as one node (or a pair of nodes) representing 
+the trial's start and end dates.  These requirements 
+constitute both a structural mandate on the graphs 
+--- specifying how the nodes should be connected --- and a \textit{semantic} 
+requirement on the nodes, each of which must be 
+tagged with metadata clarifying that the corresponding 
+node embodies a trial, person, or date.  An ontology 
+then supplies a fixed vocabulary with which to rigorously 
+declare this necessary metadata, as well as the relevant 
+graph-construction rules.  Insofar as graphs are employed 
+to encode data, ontologies are analogous to 
+Document Type Declarations (\DTD{}s) in the context 
+of \XML{}.}
+
+\p{In conventional \RDF{} ontology, metadata is primarily 
+associated with graph nodes and edges.  In particular, 
+nodes are referenced to Uniform Reference Identifiers 
+(\URI{}s), such as web addresses, and edges are labeled 
+with concepts formally defined in one or more ontologies.  
+Concepts which are used to annotat graph-edges, and which are 
+given a fixed meaning in some controled vocabulary, are 
+often called \q{properties.}  One special \q{is-a} property 
+is often used to connect nodes with concepts that 
+classify entities into one of many categories defined 
+in an ontology, often called \q{classes.}  So most 
+\RDF{} ontologies are primarily composed of 
+\textit{classes} and \textit{properties}, each assigned 
+a unique label.  The metadata for a given graph 
+then links nodes to classes (for example, specifying 
+that one node represent a clinical trial and the second 
+represents a patient) and links edges to properties 
+(for example, specifying that a patient-node is connected 
+to a trial-node in that the patient is \textit{enrolled in} 
+the trial).}
+
+\p{Hypergraph ontologies are similar to conventional 
+\RDF{} ontologies in that they likewise provide 
+constraints and metadata for graphs, but hypergraph 
+ontologies are more complex because hypergraphs 
+are more complex than ordinary graphs --- in particular, 
+hypergraphs have different layers of structure.  
+Whereas \RDF{} nodes are intended to represent a 
+single concept or value --- such as a number, date, 
+name, or \URL{} --- a \textit{hypernode}, within a 
+graph, typically encompasses multiple pieces 
+of information inside it (often called \textit{hyponodes}, 
+\textit{projections}, or just \textit{nodes}).  
+In general, when analyzing hypergraphs it is necessary to 
+distinguish at least to \q{tiers} of nodes, 
+\textit{hypernodes} and \textit{hyponodes}, such that 
+hyponodes are contained within hypernodes.  As a result, 
+hypergraph ontologies need a corresponding distinction 
+for node and edge annotations: insofar as nodes are 
+categorized via classes, and edges via properties, 
+it is neccesary to stipulate whether these classifications 
+apply to hypernodes, hyponodes, or some combination.}
+
+\p{A further complication arises because hypergraphs 
+represent nested or hierarchical structures, but 
+these hierarchies are often partial or overlapping. 
+For example, a patient is \textit{part of} a 
+clinical trial, but a patient is also included in 
+other collections as well; for instance, a patient 
+may be enrolled in a specific health plan 
+(for insurance coverage).  One technique for modeling 
+overlapping hierarchical data via hypergraphs is to 
+employ \q{proxies,} which are digital identifiers encoding a 
+multi-faceted concept into a single value that can be 
+part of a hypernode (proxies are similar to 
+\q{foreign keys} in \SQL{}).  So each patient, represented 
+by its own hypernode, has an identifier which can be a 
+proxy-value for the patient assigned to a hyponode included 
+in the hypernode encoding the list of patients enrolled 
+in a clinical trail, and/or a hyponode included 
+in the hypernode encoding the list of patients enrolled 
+in a health plan.  Hypernodes can then be linked to 
+other hypernodes by virtue of proxies (e.g., the 
+trial-to-patient connection), and also by 
+virtue of overlap (e.g., the set of all patients 
+both enrolled in a given clinical trial \textit{and} 
+enrolled in a given health plan).}
+
+\p{In sum, compared to \RDF{} --- where there is one 
+single sort of node-to-node relationship, based on 
+whether or not an edge exists betweel nodes and 
+how this edge is labeled --- hypergraphs have 
+multiple genres of node-to-node relationships: 
+the relation between hypernodes and their inner 
+hypnodes; between hypernodes and one another; 
+between hyponodes in different hypernodes; 
+and variations on each of relation-types 
+wherein relations are defined indirectly through 
+proxies.  Moreover, in addition to hypernodes 
+and hyponodes, hypergraphs may have additional 
+levels of detail, such as \textit{frames}, 
+\textit{channels}, and \textit{axiations}.
+All of these details provide different 
+\q{sites} where hypergraph annotations and 
+metadata may be defined.  This means that 
+formats for describing hypergraph ontologies 
+have to be more expressive than \RDF{} ontologies, 
+because \RDF{} ontologies need only to classify 
+metadata as node-annotations or edge-annotations; 
+by contrast, hypergraph ontologies need to distribute 
+annotations among multiple sites of graph structure.}
+
+
+\p{An addition distinction within the Semantic Web 
+is the contrast between \textit{reference ontologies} and 
+\textit{application ontologies}.  In general, \textit{reference 
+ontologies} are general-purpose schema intended to 
+establish conventions shared by many different applications, 
+to ensure that a large collection of data-producing software 
+in a given domain is interoperable.  By contrast, 
+\textit{application ontologies} are narrower in scope, 
+more tightly integrated into applications that 
+directly send and receive data.  Ontologies 
+of either variety are used by software to interoperate 
+with other software: so long as two applications are 
+using the same ontologies, it is possible to 
+ensure that one application can understand the 
+data produced by a second, and vice-versa.  
+However, such inter-operability is only potential; 
+it is the responsibility of programmers to 
+actually implement code which produces and/or 
+consumes data that conforms to the relevant 
+ontology specifications.  In general, application 
+ontologies are structured in such a way that 
+these concrete implementations are more straightforward 
+to produce, compered with reference ontologies.  
+Reference ontologies offer little guidance to 
+developers \visavis{} how to directly support the 
+ontology within application code.  Application ontologies, 
+conversely, more rigorously describe the 
+data structures which applications must implement 
+in order to properly manipulate data structured 
+according to the ontology's specifications.}
+
+\p{Most of commonly used ontologies published 
+by large-scale Semantic Web projects, such as the 
+\OBO{} (Open Biomedical Ontology) Foundry, are 
+\textit{reference} ontologies (see for example the 
+\OBO{} tutorial at \href{https://github.com/jamesaoverton/obo-tutorial/blob/master/docs/obo.md}{https://github.com/jamesaoverton/obo-tutorial/blob/master/docs/obo.md}).  By contrast, hypergraph schema are 
+closer in spirit to \textit{application} ontologies, 
+although sometimes different terminology is used to 
+express this idea (see the HyperGraphDB tutorial 
+at \href{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}%
+{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}).
+In particular, there is often a direct correlation between 
+hypernode types and the data types understood by 
+code libraries implemented in a given programming language, 
+and these type-level correlations need to be modeled 
+by hypergraph ontologies.  As a result, hypergraph 
+ontologies require capabilities to model programming 
+languages' type systems (by contrast, conventional 
+\RDF{} ontologies do not intrinsically interact with 
+type systems outside a limited group of 
+\textbf{rdf:type}s).  Moreover, because programming 
+language types cover a range of use-cases --- including 
+functional and \GUI{} types --- hypergraph 
+ontologies need to directly model details 
+about how applications interact with human users, 
+including the visual objects (windows and their 
+components) which users see on-screen, and 
+the \q{operational semantics,} or patterns 
+of human-software interaction, which govern 
+how people use applications to achieve their 
+desired goals.  For example, if a software 
+tool exists in part to help researchers define 
+a patient cohort from an aggregate of clinical 
+data, a relevant application ontology can include 
+a description of the concrete steps which 
+users use, interacting with the software, to 
+achieve this end.}
+
+\p{Because hypergraph ontologies are more directly 
+structured around software operations and 
+programming language type systems, these ontologies 
+can be a more rigorous guide to those implementing 
+novel software solutions than reference ontologies 
+intended for Semantic Web data sharing.  Hypegraph 
+ontologies can therefore be especially important in 
+the context of multi-application networks (which are discussed 
+in the main paper) where collections of distinct 
+software applications share a common technological 
+and information infrastructure.  In general, hypergraph 
+ontologies are more appropriate for modeling data 
+in contexts where custom software implementation is 
+an important business requirement of the overall 
+data space --- that is, a particular data ecosystem 
+is engineered with a priority on enabling developers 
+to implement semi-autonomous software \q{agents} that 
+provide specialized views or analyses of a data 
+space shared by many such applications.}
+
+\p{}
 

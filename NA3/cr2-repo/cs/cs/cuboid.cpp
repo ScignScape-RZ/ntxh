@@ -110,7 +110,7 @@ bool Cuboid::compatible(other)
 }
 
 //    def intersect_with(self, other):
-Cuboid* Cuboid::intersect_with(other)
+Cuboid* Cuboid::intersect_with(Cuboid& other)
 {
 //        """Intersects this cuboid with another one and returns the result as a new cuboid. Returns None if intersection is empty"""
  

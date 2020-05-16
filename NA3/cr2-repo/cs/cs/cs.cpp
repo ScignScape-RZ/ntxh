@@ -88,26 +88,27 @@ void check_domain_structure(domains, number_of_dimensions)
  return true;
 }
 
-r8 Concept::distance(Concept& x, Concept& y, Weights& weights)
+r8 Concept::distance(r8vec& x, r8vec& y, Weights& weights)
 {
  //    """Computes the combined metric d_C(x,y,W) between the two points x and y using the weights in 'weights'."""
     
- if( (len(x) != number_of_dimensions_) || (len(y) != number_of_dimensions_) )
-   raise Exception("Points have wrong dimensionality");
+ if( x.length() != number_of_dimensions_) 
+   || y.length() != number_of_dimensions_) )
+   throw "Points have wrong dimensionality";
     
  r8 distance = 0.0;
 
  for( domain : domains_.keys() )
  {
   r8 inner_distance = 0.0;
-  if(! (domain in weights.domain_weights()) )
+  if(! weights.domain_weights().contains(domain) ) 
     //    # don't take into account domains w/o weights
     continue;
 
   for(dimension : domains_[domain])
   {
    inner_distance += weights.dimension_weights()[domain][dimension] * 
-     (x[dimension] - y[dimension])**2;
+     qExp( (x[dimension] - y[dimension]), 2);
    distance += weights.domain_weights()[domain] * qSqrt(inner_distance);
   }
  }
@@ -144,29 +145,30 @@ void Conceptual_Space::delete_concept(key)
 }
 
 //def add_concept(key, concept, color = None):
-void Conceptual_Space::between(Concept& first, Concept& middle, Concept& second,  Weights* weights, QString method)
+
+void Conceptual_Space::between(r8vec& first, r8vec& middle, r8vec& second,  Weights* weights, QString method)
 {
  //"""Computes the betweenness relation between the three given points.
     
  //   Right now only uses the crisp definition of betweenness (returns either 1.0 or 0.0)."""
-    
- if( weights == nullptr)
-   weights = default_weights_;
-    
+        
  if( method == "crisp" )
  {
-  if (distance(first, middle, default_weights_) 
-    + distance(middle, second, default_weights_) 
-    - distance(first, second, this._no_weights)) < 0.00001)
+  if (distance(first, middle, *default_weights_) 
+    + distance(middle, second, *default_weights_) 
+    - distance(first, second, *default_weights_)) < 0.00001)
     return 1.0;
   else
     return 0.0;
  }
  else if( method == "soft" )
  {
-  d1 = distance(first, middle, weights);
-  d2 = distance(middle, second, weights);
-  d3 = distance(first, second, weights);
+  if( weights == nullptr)
+    weights = default_weights_;
+
+  d1 = distance(first, middle, *weights);
+  d2 = distance(middle, second, *weights);
+  d3 = distance(first, second, *weights);
   return (d1 + d2 > 0)? d3 / (d1 + d2) : 1.0;
  }    
  else

@@ -32,7 +32,7 @@ public:
  }
 
  bool compatible(other);
- Cuboid* intersect_with(other);
+ Cuboid* intersect_with(Cuboid& other);
 
  Cuboid* project_onto(new_domains);
 
