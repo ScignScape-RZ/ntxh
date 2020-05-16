@@ -12,14 +12,15 @@ typedef double r8;
 
 class Weights
 {
- QMap<QString, r8> dimension_weights_;
+ QMap<QString, r8> domain_weights_;
 
  QMap<QString, QMap<u4, r8>> dimension_weights_;
 
 
 public:
 
- Weights();
+ Weights(QMap<QString, r8>& domain_weights, 
+   QMap<QString, QMap<u4, r8>>& dimension_weights);
 
  <?> normalize(weights, total);
 

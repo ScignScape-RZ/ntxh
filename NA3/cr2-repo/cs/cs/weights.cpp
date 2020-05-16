@@ -1,7 +1,8 @@
 
 #include "cuboid.h"
 
-Weights::Weights(domain_weights, dimension_weights)
+Weights::Weights(QMap<QString, r8>& domain_weights, 
+  QMap<QString, QMap<u4, r8>>& dimension_weights)
 {
  //        """Initializes the cuboid.
         
@@ -19,7 +20,6 @@ Weights::Weights(domain_weights, dimension_weights)
  {
   it.next();
   dimension_weights_[it.key()] = normalize( it.val
-
  }
  
 }

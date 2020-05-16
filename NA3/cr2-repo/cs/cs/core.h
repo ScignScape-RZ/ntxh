@@ -29,6 +29,11 @@ public:
 
  Core(QVector<Cuboid*> cuboids, QMap<QString, u4vec> domains);
 
+ const QMap<QString, u4vec>& domains()
+ {
+  return domains_;
+ }
+
  bool operator=(const Core& rhs);
  bool operator!=(const Core& rhs) { return !(*this == rhs); }
 
@@ -37,9 +42,9 @@ public:
 
  QPair<Core*, Core*> cut_at(dimension, value);
  Core* project_onto(new_domains);
- void midpoint();
+ r8vec midpoint();
 
- void get_center();
+ Cuboid* get_center();
  void check(cuboids, domains):
 
  Core* from_cuboids(cuboids, domains);

@@ -17,10 +17,10 @@ class Conceptual_Space;
 class Concept
 {
  Conceptual_Space* cs_;
- Core core_;
+ Core* core_;
  r8 mu_;
  r8 c_;
- Weights weights_;
+ Weights* weights_;
 
  r8 membership_of(Point p);
  void intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b, r8 mu):

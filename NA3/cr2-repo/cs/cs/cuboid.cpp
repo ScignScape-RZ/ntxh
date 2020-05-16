@@ -49,7 +49,7 @@ void find_closest_point(self, point)
 }
 
 //    def get_most_distant_points(self, other):
-void get_most_distant_points(other)
+void Cuboid::get_most_distant_points(other)
 {
  //       """Computes most distant points a in this and b in the other cuboid."""
  a; // = []

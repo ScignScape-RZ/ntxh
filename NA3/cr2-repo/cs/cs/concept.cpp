@@ -4,7 +4,8 @@
 #include <tgmath.h>
 
 
-Concept::Concept(Conceptual_Space* cs, r8 self, Core core, r8 mu, r8 c, Weights weights)
+Concept::Concept(Conceptual_Space* cs, //?r8 self, 
+  Core* core, r8 mu, r8 c, Weights* weights)
   :  cs_(cs), core_(core), mu_(mu), c_(c), weights_(weights)
 {
  
@@ -663,18 +664,29 @@ r8 Concept::between(Concept& first, Concept& second,
  //       """
 
 //         # if the three concepts are not defined on the exact same set of domains, we return zero
- if(len(core_.domains().keys()) != len(first.core_.domains().keys()))
+
+ if( core_.domains().keys().length() != 
+   first.core_.domains().keys().length() )
    return 0.0;
- if(len(core_.domains().keys()) != len(second.core_.domains().keys()))
+
+ if( core_.domains().keys().length() != 
+   second.core_.domains().keys().length() )
    return 0.0;
 
  //        # now we know that the number of domains is the same --> check whether the domains themselves are the same
- for(dom, dims : core_.domains().iteritems())
+
+ QMapIterator<QString, u4vec> it(core_.domains());
+ //for(dom, dims : core_.domains().iteritems())
+ while(it.hasNext())
  {
-  if(! (dom in first.core_.domains() && first.core_.domains()[dom] == dims))
+  it.next();
+  QString dom = it.key();
+  u4vec& dims = it.value();
+
+  if(first.core_.domains().value(dom) != dims) 
     return 0.0;
-  
-  if(! (dom in second.core_.domains() && second.core_.domains()[dom] == dims))
+
+  if(second.core_.domains().value(dom) != dims) 
     return 0.0;
  }
 
@@ -688,9 +700,20 @@ r8 Concept::between(Concept& first, Concept& second,
     return 1.0;
 
 //            # for all dimensions: c * w_dom * sqrt(w_dim) must not be larger for first and second than for self
-  for(dom, dims : core_.domains().iteritems())
+
+  QMapIterator<QString, u4vec> it(core_.domains());
+  //for(dom, dims : core_.domains().iteritems())
+  while(it.hasNext())
   {
-   for(dim : dims)
+   it.next();
+
+   QString dom = it.key();
+   u4vec& dims = it.value();
+
+   //for(dom, dims : core_.domains().iteritems())
+   //{
+
+   for(u4 dim : dims)
    {
     first_value = first.c_ * first.weights_.domain_weights()[dom] 
       * qSqrt(first.weights_.dimension_weights()[dom][dim]);

@@ -109,21 +109,47 @@ Core* Core::project_onto(new_domains)
  return new Core(projected_cuboids, new_domains);
 }
 
-void Core::midpoint()
+r8vec Core::midpoint()
 {
  //       """Computes the midpoint of this core's central region.
         
  //       Fills in 0 for all dimensions on which this core is not defined."""
- central_region = self.get_center();
- midpoint = map(lambda x, y: 0.5*(x + y), central_region.p_min(), central_region.p_max());
- midpoint = map([] (? x) { isnan(x)? 0.0 : x }, midpoint);
- return midpoint;
+ Cuboid* central_region = self.get_center();
+
+// midpoint = map(lambda x, y: 0.5*(x + y), 
+//   central_region.p_min(), 
+//   central_region.p_max() );
+
+ r8vec result;
+ r8vec midpoint;
+
+ midpoint.resize(central_region->p_min().size());
+ result.resize(midpoint.size());
+ 
+ //midpoint = 
+ std::transform(central_region->p_min().begin(),
+   central_region->p_min().end(), 
+   central_region->p_max().begin(), midpoint.begin, [](r8 x, r8 y)
+   {
+    return 0.5*(x + y);
+   }); 
+
+ std::transform(midpoint.begin(),
+   midpoint.end(), 
+   result.begin, [](r8 x)
+   {
+    return qIsNaN(x)? 0 : x;
+   }); 
+ 
+  // midpoint = std::transform(
+  // map([] (? x) { isnan(x)? 0.0 : x }, midpoint);
+ return result;
 }
 
-void Core::get_center()
+Cuboid* Core::get_center()
 {
- central_region = cuboids_[0];
- for( c : cuboids_ )
+ Cuboid* central_region = cuboids_[0];
+ for(Cuboid* c : cuboids_)
    central_region = central_region.intersect_with(c);
         
  return central_region;

@@ -34,8 +34,8 @@ Conceptual_Space::Conceptual_Space(u4 number_of_dimensions,
 //(number_of_dimensions)]
     
  //   # construct default weights
- dim_weights = {}
- QMap<QString, r8> dom_weights = {}
+ QMap<QString, QMap<u4, r8>> dim_weights;// = {}
+ QMap<QString, r8> dom_weights;// = {}
 
 
  //for( (dom, dims) : domains.items() )
@@ -46,7 +46,7 @@ Conceptual_Space::Conceptual_Space(u4 number_of_dimensions,
   it.next();
   QString dom = it.key();
   dom_weights[dom] = 1.0;
-  local_dim_weights = {};
+  QMap<QString, QMap<u4, r8>> local_dim_weights = {};
   QVector<u4>& dims = it.value();
   dims.resize(dims.size());
   for(u4 dim : dims)
@@ -55,7 +55,11 @@ Conceptual_Space::Conceptual_Space(u4 number_of_dimensions,
   }
   dim_weights[dom] = local_dim_weights;
  }
- this._no_weights = wghts.Weights(dom_weights, dim_weights);
+
+ //this._no_weights = wghts.Weights(dom_weights, dim_weights);
+
+ default_weights_ = new Weights(dom_weights, dim_weights);
+
 }
 
 void check_domain_structure(domains, number_of_dimensions)
@@ -84,7 +88,7 @@ void check_domain_structure(domains, number_of_dimensions)
  return true;
 }
 
-r8 Concept::distance(x, y, weights)
+r8 Concept::distance(Concept& x, Concept& y, Weights& weights)
 {
  //    """Computes the combined metric d_C(x,y,W) between the two points x and y using the weights in 'weights'."""
     
@@ -112,12 +116,13 @@ r8 Concept::distance(x, y, weights)
 }
 
 //def add_concept(key, concept, color = None):
-void Conceptual_Space::add_concept(key, concept, color = None)
+void Conceptual_Space::add_concept(QString key, Concept* concept, QString color)
 {
  //   """Adds a concept to the internal storage under the given key."""
     
- if(! isinstance(concept, con.Concept) )
-   raise Exception("Not a valid concept");
+// if(! isinstance(concept, con.Concept) )
+//   raise Exception("Not a valid concept");
+
  concepts_[key] = concept;
     
  if( color != None )
@@ -128,27 +133,30 @@ void Conceptual_Space::add_concept(key, concept, color = None)
 void Conceptual_Space::delete_concept(key)
 {
  //    """Deletes the concept with the given key form the internal storage."""
-    
- if(key : concepts_)
-   del concepts_[key];
- if(key : concept_colors_)
-   del concept_colors_[key];
+   
+ concepts_.remove(key);
+ concept_colors_.remove(key);
+ 
+// if(key : concepts_)
+//   del concepts_[key];
+// if(key : concept_colors_)
+//   del concept_colors_[key];
 }
 
 //def add_concept(key, concept, color = None):
-void Conceptual_Space::between(first, middle, second, weights=None, method="crisp")
+void Conceptual_Space::between(Concept& first, Concept& middle, Concept& second,  Weights* weights, QString method)
 {
  //"""Computes the betweenness relation between the three given points.
     
  //   Right now only uses the crisp definition of betweenness (returns either 1.0 or 0.0)."""
     
- if( weights == None )
-   weights = no_weights_;
+ if( weights == nullptr)
+   weights = default_weights_;
     
  if( method == "crisp" )
  {
-  if (distance(first, middle, no_weights_) 
-    + distance(middle, second, no_weights_) 
+  if (distance(first, middle, default_weights_) 
+    + distance(middle, second, default_weights_) 
     - distance(first, second, this._no_weights)) < 0.00001)
     return 1.0;
   else
@@ -162,7 +170,7 @@ void Conceptual_Space::between(first, middle, second, weights=None, method="cris
   return (d1 + d2 > 0)? d3 / (d1 + d2) : 1.0;
  }    
  else
-   raise Exception("Unknown method");
+   throw "Unknown method";
 }
 
 //def round(x):

@@ -70,7 +70,7 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=14
+\ifnum\value{page}=15
 \put(12,56){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -316,6 +316,28 @@
 \newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\AcronymText{AXF}}}
 
 \newcommand{\AXFD}{\resizebox{!}{7pt}{\AcronymText{AXFD}}}
+
+\newcommand{\CBICA}{\resizebox{!}{7pt}{\AcronymText{CBICA}}}
+
+\newcommand{\SeDI}{\resizebox{!}{7pt}{\AcronymText{SeDI}}}
+%\newcommand{\SEDI}{\resizebox{!}{7pt}{\AcronymText{SEDI}}}
+
+\newcommand{\CER}{\resizebox{!}{7pt}{\AcronymText{CER}}}
+\newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+
+\newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
+
+
+\newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
+
+\newcommand{\RadLex}{\resizebox{!}{7pt}{\AcronymText{RadLex}}}
+
+
+\newcommand{\OMOP}{\resizebox{!}{7pt}{\AcronymText{OMOP}}}
+\newcommand{\PCORnet}{\resizebox{!}{7pt}{\AcronymText{PCORnet}}}
+\newcommand{\FHIR}{\resizebox{!}{7pt}{\AcronymText{FHIR}}}
+
+
 
 \newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
 \resizebox{!}{6.5pt}{\AcronymText{XFD}}}
@@ -883,8 +905,7 @@ and Conceptual Space Models
 for Covid-19}} 
 (Elsevier, forthcoming).}}\end{center}
 
-\vspace*{4pt}	
-
+\vspace*{-4pt}	
 \section{Executive Summary}
 \p{LTS is building SARS-CoV-2/Covid-19 repositories 
 to accelerate scientific discovery and therapeutic 
@@ -940,6 +961,101 @@ The \THQL{} technology has many concrete applications
 outside the context of Covid-19, penetrating vertical 
 markets such as pharmaceuticals, manufacturing, fintech, 
 healthcare, educational software, and bioinformatics.}
+
+\p{One goal shared by both \CRtwo{} and \AIMConc{} is 
+to provide a common programming infrastructure which facilitates 
+the implementation of algorithms and \GUI{} components that 
+synthesize data across different scientific fields and 
+methodologies.  This common infrastructure is based primarily 
+on \Qt{}, a \Cpp{} application-development framework, and 
+secondarily on established scientific/medical code 
+projects such as \CBICA{} (Center for Biomedical Image 
+Computing \& Analytics) and ReproZip (a tool for packaging 
+scientific software dependencies).  In addition to utilities 
+and build tools, the programming core for \CRtwo{} and \AIMConc{} 
+will include \Cpp{} libraries to natively read and manipulate 
+data in formats commonly used for clinical, diagnostic, 
+and medical outcomes reporting, such as \OMOP{} 
+(from the Observational Medical Outcomes Partnership), 
+\PCORnet{} (defined by the Patient-Centered Clinical 
+Research Network), \FHIR{} (Fast Healthcare Interoperability 
+Resources), \RadLex{} (Radiology Lexicon), and \LOINC{} 
+(Logical Observation Identifiers Names and Codes).  
+While these data formats are normally 
+used in the context of relational databases, the 
+\CRtwo{} and \AIMConc{} programming tools allows developers 
+to manipulate clinical data in formats natively recognized 
+by data-mining and \GUI{} code, which enables programmers 
+to apply sophisticated algorithms to clinical data and 
+also to present human users with convenient desktop-style 
+applications to initiate and view the results of these 
+analytic processes.  Appendix 1 to this paper presents 
+more information about Medical Outcomes code incorporated 
+into \CRtwo{} and \AIMConc{}, with 
+specific focus on integration radiological and 
+Clinical Effectiveness data.}
+
+%  Appendix 1 to this paper presents 
+%more information about Medical Outcomes code incorporated 
+%into \CRtwo{} and \AIMConc{}.}
+
+\p{In the specific field of medical and diagnostic imaging, 
+recent research has focused on how to effectively connect 
+radiological data with medical outcomes and Comparative 
+Effectiveness Research (\CER{}).  Traditionally, 
+medical imaging formats such as \PACS{} (Picture Archiving 
+and Communication System) and \DICOM{} (Digital Imaging 
+and Communications in Medicine) have been largely separated 
+from clinical records.  As a result, it was difficult for 
+researchers to cross-reference radiological data with 
+clinical reports indicating subjects' subsequent 
+treatments and corresponding outcomes.  Attempts have been 
+made to remedy this information gap by the semantic 
+annotation of radiological findings, leading to the development 
+of imaging-related ontologies such as \RadLex{} and \SeDI{} 
+(Semantic \DICOM{} Ontology).  One goal of 
+\CRtwo{} is accordingly to generalize these semantic-imaging 
+frameworks to the more flexible paradigms of 
+\textit{hypergraph} ontologies, which define schema 
+on hypergraph instances by analogy to how 
+conventional ontologies define constraints on 
+directed, labeled, \RDF{} (Resource Description Framework) 
+style graphs.  Compared to \RDF{} ontologies, hypergraph 
+ontologies are more expressive and also more 
+complex, because there is a larger space of 
+distinct graph elements which are candidates for 
+semantic annotation (conventional ontologies are 
+primarily composed of only two sorts of concepts --- 
+\q{classes,} or node-annotations, and 
+\q{properties,} or edge-annotations.}
+
+\p{Another crucial research domain for Covid-19 
+is vaccine development and immunization, particularly 
+as scientific focus begins to shift from containing 
+the pandemic to developing an effective vaccine.  
+Conducting vaccine trials and vaccination campaigns 
+generates a diverse spectrum of data profiles, 
+ranging from observational reports of candidate vaccines' 
+effectiveness during their development to reports on 
+the extent and effectiveness of immunization projects, 
+which often depend on socioeconomic, geographic, and political 
+information as well as biomedical data.  Moreover, 
+scientific understanding of vaccines' effectiveness 
+depends on complex assessment of vaccinated individuals' 
+immunological response, which may incoporate data from 
+blood tests, molecular imaging, cytometry, serological profiling, 
+and so forth.  Comprehensive support for vaccine-related 
+data sets therefore requires technologies that can integrate 
+and represent information from a wide range of 
+laboratory and in-the-field methods.  As with radiology/outcomes 
+integration, this heterogeneous data profile has 
+led to the design of \RDF{} ontologies, notably the 
+\q{VIOLIN} Vaccine Ontology.  Here again, \CRtwo{} 
+will generalize this technology to the domain of 
+hypergraph ontologies (more information on 
+hypergraph ontologies, with specific reference 
+to radiological and vaccine-related lexicons, 
+is provided in Appendix 2).}  
 
 \section{Introduction}
 \p{In an effort to accelerate scientific discovery and therapeutic 
