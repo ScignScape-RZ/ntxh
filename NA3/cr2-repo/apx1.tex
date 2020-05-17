@@ -59,7 +59,17 @@ single concept or value --- such as a number, date,
 name, or \URL{} --- a \textit{hypernode}, within a 
 graph, typically encompasses multiple pieces 
 of information inside it (often called \textit{hyponodes}, 
-\textit{projections}, or just \textit{nodes}).  
+\textit{projections}, \textit{inner elements}, 
+\textit{roles}, or just \textit{nodes}).\footnote{
+The term \q{projections} is used by HyperGraphDB (see 
+\bhref{http://www.hypergraphdb.org/?project=hypergraphdb&page=RefCustomTypes}); 
+\q{roles} is used by Grakn.ai 
+(see \bhref{https://dev.grakn.ai/docs/schema/concepts}); 
+\q{inner entity} is used by the biointelligence project 
+(see \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3555311/}), 
+where the corresponding notion of \q{external entity} 
+refers to what in other contexts might be called 
+other hypernodes linked to a given hypernode via hyperedges.}  
 In general, when analyzing hypergraphs it is necessary to 
 distinguish at least to \q{tiers} of nodes, 
 \textit{hypernodes} and \textit{hyponodes}, such that 
@@ -155,12 +165,11 @@ according to the ontology's specifications.}
 by large-scale Semantic Web projects, such as the 
 \OBO{} (Open Biomedical Ontology) Foundry, are 
 \textit{reference} ontologies (see for example the 
-\OBO{} tutorial at \href{https://github.com/jamesaoverton/obo-tutorial/blob/master/docs/obo.md}{https://github.com/jamesaoverton/obo-tutorial/blob/master/docs/obo.md}).  By contrast, hypergraph schema are 
+\OBO{} tutorial at \bhref{https://github.com/jamesaoverton/obo-tutorial/blob/master/docs/obo.md}).  By contrast, hypergraph schema are 
 closer in spirit to \textit{application} ontologies, 
 although sometimes different terminology is used to 
 express this idea (see the HyperGraphDB tutorial 
-at \href{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}%
-{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}).
+at \bhref{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}).
 In particular, there is often a direct correlation between 
 hypernode types and the data types understood by 
 code libraries implemented in a given programming language, 

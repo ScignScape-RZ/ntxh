@@ -729,31 +729,73 @@ r8 Concept::between(Concept& first, Concept& second,
    }
   }
 
-  ? first_point = first.core_.midpoint();
-  ? second_point = second.core_.midpoint();            
+  r8vec first_point = first.core_.midpoint();
+  r8vec second_point = second.core_.midpoint();            
             
 //            # start at each corner of each cuboid to get a good estimation of minimum over all points in self
-  ? corners_min = [c._p_min for c in self._core._cuboids] 
-  ? corners_max = [c._p_max for c in self._core._cuboids]
 
-  ? candidates = [(point, "min") for point in corners_min] + [(point, "max") for point in corners_max];
+  QVector<r8vec> corners_min;
+  corners_min.resize(core_.cuboids().size());
+  QVector<r8vec> corners_max;
+  corners_max.resize(core_.cuboids().size());
+
+  std::transform(core_.cuboids().begin(), 
+    core_.cuboids().end(), corners_min.begin(), 
+    [](Cuboid* c) { return c->p_min(); }); 
+
+  std::transform(core_.cuboids().begin(), 
+    core_.cuboids().end(), corners_max.begin(), 
+    [](Cuboid* c) { return c->p_max(); }); 
+
+//  ? corners_min = [c._p_min for c in self._core._cuboids] 
+//  ? corners_max = [c._p_max for c in self._core._cuboids]
+
+//  ? candidates = [(point, "min") for point in corners_min] + [(point, "max") for point in corners_max];
+
+  QList<QPair<const r8vec&, QString>> candidates;
+
+  for(const r8vec& point : corners_min)
+    candidates.push_back(point, "min");
+
+  for(const r8vec& point : corners_max)
+    candidates.push_back(point, "max");
 
   <?> candidate_results; // = []
   r8 tolerance = 0.01; //   # tolerance with respect to constraint violation, needed to ensure convergence
 
-  for(? candidate : candidates)
-  {                
+  for(const QPair<const r8vec&, QString>& candidate : candidates)
+  {
+   r8vec cand;
+   cand.resize(candidate.first.size());                
    //             # push the points a bit over the edge to ensure we have some sort of gradient in the beginning
+
    if( candidate[1] == "min")
-     cand = list(map([] (x) { x - cs->epsilon() }, candidate[0]));
+     std::transform(candidate.first.begin(), 
+     candidate.first.end(), cand.begin(), [cs_](r8 x) 
+    {
+     return x - cs_->epsilon(); 
+    });    
+//     cand = list(map([] (x) { x - cs->epsilon() }, candidate[0]));
+
    else
-     cand = list(map([] (x) { x + cs->epsilon() }, candidate[0]));
+     std::transform(candidate.first.begin(), 
+     candidate.first.end(), cand.begin(), [cs_](r8 x) 
+    {
+     return x + cs_->epsilon(); 
+    });    
+//   else
+//     cand = list(map([] (x) { x + cs->epsilon() }, candidate[0]));
                 
 //                # start with three different values of alpha to get a good estimate over the minmum over all alphas
-   alpha_candidates = [0.05 * self._mu, 0.5 * self._mu, 0.95 * self._mu];
-   for(alpha : alpha_candidates)
+
+   r8vec alpha_candidates = {0.05 * self.mu_, 0.5 * self.mu_, 0.95 * self.mu_};
+
+   for(r8 alpha : alpha_candidates)
    {                  
-//                    # inner optimization: point in first and point in second (maximizing over both)                     
+//                    # inner optimization: point in first and point in second (maximizing over both)                  
+
+    /* this'll need work ...
+   
     inner_x = first_point + second_point;
                     
 //                    # function to minimize in inner optimization
@@ -817,6 +859,7 @@ r8 Concept::between(Concept& first, Concept& second,
      raise Exception("outer optimization failed: {0}".format(opt.message));
     }
     candidate_results.append(opt.fun);
+    */
    }     
   }
   return min(candidate_results)
@@ -828,13 +871,20 @@ r8 Concept::between(Concept& first, Concept& second,
     return 1.0;
 
 //            # create list of alpha cuts that we want to compute
-  step_size = 1.0 / num_alpha_cuts;
-  alphas = [step_size*i for i in range(1,num_alpha_cuts+1)]
+  r8 step_size = 1.0 / num_alpha_cuts;
+  //alphas = [step_size*i for i in range(1,num_alpha_cuts+1)]
+
+  r8vec alphas;
+  for(i = 1; i < num_alpha_cuts + 1; ++i)
+  {
+   alphas.push_back(step_size * i);
+  }   
+
   <?> intermediate_results; // = []
             
   u4 num_successful_cuts = 0; 
             
-  for(? alpha : alphas)
+  for(r8 alpha : alphas)
   {
    if(alpha > mu_)  //                  # alpha-cut of self is empty --> define as 1.0
    {
@@ -849,13 +899,41 @@ r8 Concept::between(Concept& first, Concept& second,
     continue;
    }
 //                # start with all corner points of all cuboids to get a good estimate of min
-   corners_min = [c.p_min() for c in core_.cuboids()]; 
-   corners_max = [c.p_max() for c in core_.cuboids()];
+
+//   corners_min = [c.p_min() for c in core_.cuboids()]; 
+//   corners_max = [c.p_max() for c in core_.cuboids()];
+
+   QVector<r8vec> corners_min;
+   corners_min.resize(core_.cuboids().size());
+   QVector<r8vec> corners_max;
+   corners_max.resize(core_.cuboids().size());
+
+   std::transform(core_.cuboids().begin(), 
+     core_.cuboids().end(), corners_min.begin(), 
+     [](Cuboid* c) { return c->p_min(); }); 
+
+   std::transform(core_.cuboids().begin(), 
+     core_.cuboids().end(), corners_max.begin(), 
+     [](Cuboid* c) { return c->p_max(); }); 
+
 //                   # compute the maximal allowable difference to the core wrt each dimension
-   difference = [0]*cs_.n_dim();
-   for( dom, dims : core_.domains().iteritems() )
+
+   r8vec difference;
+   difference.resize(cs_.number_of_dimensions());
+  // difference = [0]*cs_.number_of_dimensions();
+ 
+   QMapIterator<QString, u4vec> it(core_.domains());
+   //for(dom, dims : core_.domains().iteritems())
+   while(it.hasNext())
    {
-    for( dim : dims )
+    it.next();
+
+    QString dom = it.key();
+    u4vec& dims = it.value();
+   
+    //for( dom, dims : core_.domains().iteritems() )
+    //{
+    for( u4 dim : dims )
     {
      difference[dim] = (-1.0 / 
        (c_ * weights_.domain_weight()[dom] 
@@ -863,21 +941,41 @@ r8 Concept::between(Concept& first, Concept& second,
     }
    }  
 //                   # walk away from each corner as much as possible to get candidate points
-   <?> candidates; // = []                
-   for(? corner : corners_min )
+   // <?> candidates; // = []                
+   QList<r8vec> candidates;
+
+
+   for(const r8vec& corner : corners_min )
    {
-    candidates.append(map(lambda x, y: x - y, corner, difference));
+    candidates.push_back({});
+
+    std::transforrm(corner.begin(), corner.end(),
+      difference.begin(), std::back_inserter(candidates.last()),
+      [](r8 x, r8 y){ return x - y; });
+
+    //candidates.append(map(lambda x, y: x - y, corner, difference));
    }
-   for(? corner : corners_max )
+
+   for(const r8vec& corner  : corners_max )
    {
-    candidates.append(map(lambda x, y: x + y, corner, difference));
+    candidates.push_back({});
+
+    std::transforrm(corner.begin(), corner.end(),
+      difference.begin(), std::back_inserter(candidates.last()),
+      [](r8 x, r8 y){ return x + y; });
+
+//    candidates.append(map(lambda x, y: x + y, corner, difference));
    }           
-   <?> betweenness_values; // = []
-   for(?candidate : candidates)
-   {                    
+
+   //<?>
+   r8vec betweenness_values; // = []
+   for(r8vec& candidate : candidates)
+   {
+    /*                    
     //              # find closest point in alpha-cut to given candidate point
     to_optimize = [] (? x) { (alpha - self.membership_of(x))**2 };
     opt = scipy.optimize.minimize(to_optimize, candidate, method='Nelder-Mead');
+
     if(! opt.success )
       continue;
                     
@@ -901,16 +999,20 @@ r8 Concept::between(Concept& first, Concept& second,
     };
     opt = scipy.optimize.minimize(neg_betweenness, x_start, 
       constraints=constr, method='COBYLA', 
-        options={'catol':2*tolerance, 'tol':cs._epsilon, 'maxiter':1000, 'rhobeg':0.01})
+        options={'catol':2*tolerance, 
+        'tol':cs._epsilon, 'maxiter':1000, 'rhobeg':0.01})
     if not opt.success and not opt.status == 2: 
       //# opt.status = 2 means that we reached the iteration limit
       continue;
     betweenness_values.append(-opt.fun);
+    */
    }
    //        # minimum over all candidate points in alpha-cut of self
-   if( len(betweenness_values) > 0 )
-   { 
-    intermediate_results.append(min(betweenness_values))
+   if( betweenness_values.length() > 0 )
+   {
+    intermediate_results.append(
+      *std::min_element(betweenness_values.constBegin(),
+       betweenness_values.constEnd() );
     ++num_successful_cuts;
    }
   }

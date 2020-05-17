@@ -22,6 +22,16 @@ public:
 
  Cuboid(r8vec p_min, r8vec p_max, QMap<QString, u4vec> domains);
 
+ const r8vec& p_min() const
+ {
+  return p_min_;
+ }
+
+ const r8vec& p_max() const
+ {
+  return p_max_;
+ }
+
  void get_most_distant_points(rhs Cuboid& other);
 
  bool operator=(rhs Cuboid& other);
