@@ -42,10 +42,121 @@ space of data which accrues to a patient
 over the trajectory of their clinical history.  
 The manner in which both radiological and 
 clinical software are structured, however, 
-often makes it possible to  
+often makes it difficult to cross-reference 
+radiological data (particularly in the 
+context of image data sets, which may be 
+drawn from a diverse patient population) 
+with corresponding details describing 
+patients' treatment protocols and medical 
+outcomes once a radiological diagnosis has 
+been performed.  For a concrete example (see 
+\bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/pdf/nihms-822829.pdf}), 
+\q{to retrieve the radiation treatment plan} 
+associated with a \CT{} scan, one \q{has to search for the 
+RTSTRUCT object based on the specific CT scan, and from there 
+search for the RTPLAN object based on the RTSTRUCT object [which] is an inefficient operation because all RTSTRUCT [and] RTPLAN files for the patient need to be processed to find the correct treatment plan.}  
+Even within the context of analyzing radiological 
+data sets for radiology-specific data, established 
+\PACS{} software is not designed for large-scale query 
+evaluation linked to clinical data.  As pointed out 
+by the Semantic \DICOM{} documentation (see 
+\bhref{https://semantic-dicom.com/starting-page/}), 
+queries like \q{display all patients with a
+bronchial carcinoma bigger than 50 cm$^3$} cannot 
+be processed by \PACS{} systems: \q{although there are various powerful clinical applications to process image data and image data series to create significant clinical analyses, none of these analytic results can be merged with the clinical data of a single patient.  However, retrieving this data is an essential prerequisite to perform such search queries.}  
+These inefficiencies limit researchers' ability to 
+perform data mining which incorporates diagnostic 
+images, and also to prepare well-integrated data 
+sets for advancing diagnostic and Clinical Effectiveness 
+research.}
 
-}
+\p{In a well-integrated research framework, treatment plans 
+should be linked both to the diagnostic data which 
+motivated them (including radiological images) and 
+to reports of treatment outcomes.  As a concrete 
+example, consider the choice to use \IORT{} 
+(Intraoperative Radiation Therapy) as an alternative to 
+conventional cancer treatments (see 
+\bhref{https://www.cuimc.columbia.edu/news/new-cancer-treatment-personalized-radiation-therapy-during-cancer-surgery}).  
+Researchers can ask two different questions related to the 
+effectiveness of \IORT{}: (1) which diagnostic 
+cues indicate that a given patient may benefit from 
+\IORT{} in lieu of longer-term therapies, and 
+(2) which treatment is more effective at 
+promoting better survival rates.  These two lines 
+of inquiry both require an integrated data querying 
+mechanism that recognizes data from image analysis, 
+from clinical outcomes, and from descriptions of 
+medical treatment, each kind of data to be potentially 
+included as a source of parameters with which to define 
+patient cohorts or to search for statistical correlations.  
+The relatively new \IORT{} treatment is an example of 
+why integrated research is important --- oncologists 
+still have limited understanding of which diagnostic 
+clues are statistically associated with positive 
+outcomes from \IORT{} as compared with conventional therapy.}
 
+\p{Of course, Covid-19 is an even newer research priority, 
+and initiatives such as the \RASN{} repository are just 
+begin to aggregate radiological data in a manner which 
+permits broad-scale analysis to be performed.  This new 
+data presents opportunities for the use of semantic 
+annotation technology, including ontologies such 
+as \SeDI{} or ViSion (see \bhref{https://epos.myesr.org/esr/viewing/index.php?module=viewing_poster&task=&pi=155548}).  Although 
+radiological ontologies are primarily designed 
+for use in laboratory software itself --- i.e., the 
+programs radiologists use directly to derive and 
+present their findings --- radiological research 
+in general introduces further application domains, 
+including software for image analysis, for 
+integrating radiological and clinical data, and 
+for examining radiological data sets.}
+
+
+\p{Insofar as \PACS{} and \DICOM{} systems need 
+to be paired with applications in these other 
+categories, it could be valuable to 
+develop radiological \q{application} ontologies, 
+alongside the canonical \q{reference} ontologies 
+associated with diagnostic imaging.  Starting with 
+the Covid-19 context, but designed for more 
+general applications as well, one component of \CRtwo{} 
+is a novel radiology-focused \textit{application} 
+ontology, specifically the \q{Hypergraph Ontology 
+for Radiological/Diagnostic Imaging, Clinical 
+Outcomes, and Data Mining} (\HDICOM{}).  The goal 
+of \HDICOM{} is to connect \RDF{}-based 
+radiological ontologies with software applications 
+designed to manipulate radiological (and corresponding 
+treatment and outcomes) data.  Using the more 
+expressibe Hypergraph Ontology framework, developers 
+via \HDICOM{} can model how software objects 
+are connected to classes and properties standardized 
+within vocabularies such as \LexRad{}.  
+The \HDICOM{} system will also help developers 
+describe hypergraph and data-mining models 
+applicable to the information managed by 
+their specific applications.}
+
+\p{In the context of data mining, there are different 
+operations which belong to a data-mining pipeline, 
+distinctions which are appropriate to make within an 
+Application Ontology.  For example, we can distinguish 
+between \textit{integrative} data mining (merging 
+heterogeneous data into a common representation so as 
+to enlarge the available search space), 
+\textit{selective} data mining (filtering a large data 
+space to select a smaller aggregate that can be 
+directly managed by a specific application; e.g., a 
+patient cohort),  
+\textit{holistic} data mining (large-scale analysis 
+to uncover statistical patterns or correlations), 
+and \textit{investigative} data mining (executing 
+multi-parameter queries against a large, heterogeneous, 
+and/or multi-model data space).  
+
+
+  }
 
 \p{}
 
