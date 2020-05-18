@@ -1,7 +1,13 @@
 
 #include "cs.h"
 
-Conceptual_Space::Conceptual_Space(u4 number_of_dimensions, 
+Conceptual_Space::Conceptual_Space()
+  :  number_of_dimensions_(0)
+{
+
+}
+
+void Conceptual_Space::init(u4 number_of_dimensions, 
   const QMap<QString, u4vec>& domains, QStringList dimension_names)
 {
 //def init(number_of_dimensions, domains, dimension_names = None):
@@ -12,23 +18,28 @@ Conceptual_Space::Conceptual_Space(u4 number_of_dimensions,
 //    If it is not given, numbered dimension names are generated."""
 
  if(number_of_dimensions < 1)
-   raise Exception("Need at least one dimension");
+   throw "Need at least one dimension";
     
  if(! check_domain_structure(domains, number_of_dimensions) )
-   raise Exception("Invalid domain structure");
+   throw "Invalid domain structure";
         
  number_of_dimensions_ = number_of_dimensions;
  domains_ = &domains;
- <?> concepts_ = {};
- <?> concept_colors_ = {};
+
  //   # take care of dimension names
- if( !dimension_names.isEmpty()  ) //dim_names != None:
+ if( dimension_names.isEmpty()  ) //dim_names != None:
  {
-  if( len(dimension_names) != number_of_dimensions )
-    raise Exception("Invalid number of dimension names");
-  else
-    dimension_names_ = dimension_names;
+  dimension_names_.resize(number_of_dimensions);
+  for(u4 i = 0; i < number_of_dimensions; ++i)
+  {
+   dimension_names_[i] = QString("dim_%1").arg(i);
+  }
  }
+ else if( dimension_names.length() != number_of_dimensions )
+    throw "Invalid number of dimension names";
+ else
+   dimension_names_ = dimension_names;
+
 // else
 //   this.dim_names_ = {} ; //["dim_{0}".format(i) for i in range
 //(number_of_dimensions)]

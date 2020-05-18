@@ -238,9 +238,9 @@ It will give you a quick overview of the operations provided by this implementat
  wait_for_user();
 
  qDebug() << R"(A conceptual space can be defined as follows:
-  (1) import cs.cs as space')
-  (2) domains = {"color":[0], "shape":[1], "taste":[2]}')
-  (3) space.init(3, domains)')
+  (1) import cs.cs as space
+  (2) domains = {"color":[0], "shape":[1], "taste":[2]}
+  (3) space.init(3, domains)
 
 The first line imports the module responsible for representing the overall conceptual space.
 
@@ -285,7 +285,7 @@ The maximal membership is set to 1.0 and the sensitivity parameter (which contro
 
  qDebug() << R"(For convenience, the conceptual space also contains a dictionary for storing concepts.
 We can add our newly created concept to this dictionary under the identifier 'pear' as follows:
-    space.add_concept("pear", pear)')
+    space.add_concept("pear", pear)
 
 In this file, we have already defined several concepts for different types of fruit along with some properties.
 Variables for fruit concepts (with identifiers in parentheses): pear ('pear'), orange ('orange'), lemon ('lemon'), granny_smith ('Granny Smith'), apple ('apple'), banana ('banana')

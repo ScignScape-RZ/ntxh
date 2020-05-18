@@ -30,12 +30,20 @@ bool Concept::operator=(const Concept& rhs)
  return true;
 }
 
-r8 Concept::membership_of(Point p)
+r8 Concept::membership_of(const r8vec& point)
 {
+ r8vec distances;
+ r8vec closest = core_.find_closest_point_candidates(point);
+ distances.resize(closest.size);
+ std::transform(closest.begin(), closest.end(), 
+   distances.begin(), [&point, this](r8 x)
+   {
+    return cs_->distance(x, point, *weights_);
+   });
 //  min_distance = reduce(min, map(lambda x: cs.distance(x, point, weights_),
 //    core_.find_closest_point_candidates(p)))
- r8 min_distance = 0;      
- return mu_ * qExp(-c_ * min_distance)
+ r8 min_distance = *std::min_element(distances.begin(), distances.end());      
+ return mu_ * qExp(-c_ * min_distance);
 }
 
 void Concept::intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b, r8 mu)

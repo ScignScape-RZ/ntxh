@@ -116,23 +116,29 @@ Cuboid* Cuboid::intersect_with(Cuboid& other)
  
  if(! compatible(other) )
  {
-  raise Exception("Cuboids are not compatible");
+  throw "Cuboids are not compatible";
  }  
 
- <?> p_min; // = []
- <?> p_max; // = []
+ r8vec p_min; // = []
+ r8vec p_max; // = []
 
- for(? i = 0; i < len(p_min_); ++i) //  : range(len(self._p_min)):
+ for(u4 i = 0; i < p_min_.length(); ++i) //  : range(len(self._p_min)):
  {
-  if(other.p_max_[i] < p_min_[i]) || (other.p_min_[i] p_max_[i]) )
+  if( (other.p_max_[i] < p_min_[i]) || (other.p_min_[i] p_max_[i]) )
     return nullptr; //None # no overlap in dimension i
-  p_min_.append(qMax(p_min_[i], p_min_[i]));
-  p_max_.append(qMin(p_max_[i], p_max_[i]));
+
+  p_min.append(qMax(p_min_[i], other.p_min_[i]));
+  p_max.append(qMin(p_max_[i], other.p_max_[i]));
  }
 
- dom_union = dict(domains_);
- dom_union.update(domains_);         
-        
+ QMap<QString, u4vec> dom_union = other.domains_;
+
+ for( QString key : domains_.keys() )
+ {
+  if(!dom_union.contains(key))
+    dom_union.insert(key, domains_.value(key));
+ }
+
  return new Cuboid(p_min, p_max, dom_union);
 }
 

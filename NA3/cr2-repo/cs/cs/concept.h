@@ -4,9 +4,13 @@
 
 #include <QtGlobal>
 
-typedef quint32 r8;
-
+typedef quint32 u4;
 typedef double r8;
+
+typedef QVector<u4> u4vec;
+typedef QVector<r8> r8vec;
+
+
 
 class Core;
 class Weights;
@@ -22,7 +26,7 @@ class Concept
  r8 c_;
  Weights* weights_;
 
- r8 membership_of(Point p);
+ r8 membership_of(const r8vec& point);
  void intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b, r8 mu):
  void intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other):
 

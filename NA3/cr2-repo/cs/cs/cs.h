@@ -40,7 +40,9 @@ class Conceptual_Space
 
 public:
 
- Conceptual_Space(u4 number_of_dimensions, 
+ Conceptual_Space();
+
+ void init(u4 number_of_dimensions, 
    const QMap<QString, QVector<u4>>& domains, 
    QStringList dimension_names = {});
 
