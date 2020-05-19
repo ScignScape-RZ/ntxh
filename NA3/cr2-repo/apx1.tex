@@ -2,7 +2,7 @@
 \section{Appendex 1: Hypergraph Ontologies}
 
 \p{The notion of \textit{hypergraph} ontologies generalizes 
-the idea of \textit{ontology} in the context of 
+the idea of \textit{ontology} as this appears in the context of 
 the Resource Description Framework (\RDF{}).  In 
 the Semantic Web, an \q{ontology} is essentially a 
 graph schema, defining metadata for any information 
@@ -13,7 +13,7 @@ data.  To encode information about a \textit{clinical
 trial}, for instance, one may require that graphs include 
 one node (representing the trial itself) which is linked 
 to other nodes representing patients enrolled in the 
-trial, as well as one node (or a pair of nodes) representing 
+trial, as well as one or two nodes representing 
 the trial's start and end dates.  These requirements 
 constitute both a structural mandate on the graphs 
 --- specifying how the nodes should be connected --- and a \textit{semantic} 
@@ -27,12 +27,12 @@ to encode data, ontologies are analogous to
 Document Type Declarations (\DTD{}s) in the context 
 of \XML{}.}
 
-\p{In conventional \RDF{} ontology, metadata is primarily 
+\p{In a conventional \RDF{} ontology, metadata is primarily 
 associated with graph nodes and edges.  In particular, 
 nodes are referenced to Uniform Reference Identifiers 
 (\URI{}s), such as web addresses, and edges are labeled 
 with concepts formally defined in one or more ontologies.  
-Concepts which are used to annotat graph-edges, and which are 
+Concepts which are used to annotate graph-edges, and which are 
 given a fixed meaning in some controled vocabulary, are 
 often called \q{properties.}  One special \q{is-a} property 
 is often used to connect nodes with concepts that 
@@ -42,8 +42,8 @@ in an ontology, often called \q{classes.}  So most
 \textit{classes} and \textit{properties}, each assigned 
 a unique label.  The metadata for a given graph 
 then links nodes to classes (for example, specifying 
-that one node represent a clinical trial and the second 
-represents a patient) and links edges to properties 
+that one node represents a clinical trial and the second 
+represents a patient), and moreoever links edges to properties 
 (for example, specifying that a patient-node is connected 
 to a trial-node in that the patient is \textit{enrolled in} 
 the trial).}
@@ -55,8 +55,8 @@ ontologies are more complex because hypergraphs
 are more complex than ordinary graphs --- in particular, 
 hypergraphs have different layers of structure.  
 Whereas \RDF{} nodes are intended to represent a 
-single concept or value --- such as a number, date, 
-name, or \URL{} --- a \textit{hypernode}, within a 
+single concept or value (such as a number, date, 
+personal name, or \URL{}), a \textit{hypernode}, within a 
 graph, typically encompasses multiple pieces 
 of information inside it (often called \textit{hyponodes}, 
 \textit{projections}, \textit{inner elements}, 
@@ -78,7 +78,7 @@ hypergraph ontologies need a corresponding distinction
 for node and edge annotations: insofar as nodes are 
 categorized via classes, and edges via properties, 
 it is neccesary to stipulate whether these classifications 
-apply to hypernodes, hyponodes, or some combination.}
+apply to hypernodes, hyponodes, or some combination of the two.}
 
 \p{A further complication arises because hypergraphs 
 represent nested or hierarchical structures, but 
@@ -94,9 +94,9 @@ multi-faceted concept into a single value that can be
 part of a hypernode (proxies are similar to 
 \q{foreign keys} in \SQL{}).  So each patient, represented 
 by its own hypernode, has an identifier which can be a 
-proxy-value for the patient assigned to a hyponode included 
+proxy-value for the patient: e.g., assigned to a hyponode included 
 in the hypernode encoding the list of patients enrolled 
-in a clinical trail, and/or a hyponode included 
+in a clinical trail, or a hyponode included 
 in the hypernode encoding the list of patients enrolled 
 in a health plan.  Hypernodes can then be linked to 
 other hypernodes by virtue of proxies (e.g., the 
@@ -113,7 +113,7 @@ multiple genres of node-to-node relationships:
 the relation between hypernodes and their inner 
 hypnodes; between hypernodes and one another; 
 between hyponodes in different hypernodes; 
-and variations on each of relation-types 
+and variations on each of these relation-types 
 wherein relations are defined indirectly through 
 proxies.  Moreover, in addition to hypernodes 
 and hyponodes, hypergraphs may have additional 
@@ -130,7 +130,7 @@ by contrast, hypergraph ontologies need to distribute
 annotations among multiple sites of graph structure.}
 
 
-\p{An addition distinction within the Semantic Web 
+\p{An additional distinction within the Semantic Web 
 is the contrast between \textit{reference ontologies} and 
 \textit{application ontologies}.  In general, \textit{reference 
 ontologies} are general-purpose schema intended to 
@@ -152,7 +152,7 @@ consumes data that conforms to the relevant
 ontology specifications.  In general, application 
 ontologies are structured in such a way that 
 these concrete implementations are more straightforward 
-to produce, compered with reference ontologies.  
+to produce, compared with reference ontologies.  
 Reference ontologies offer little guidance to 
 developers \visavis{} how to directly support the 
 ontology within application code.  Application ontologies, 
@@ -164,39 +164,39 @@ according to the ontology's specifications.}
 \p{Although it is theoretically possible to encode 
 data directly via \RDF{} graphs, it is far more 
 common for applications to employ tabular and/or 
-hierarchical formats such as spreadsheets, 
+hierarchical formats such as spreadsheets, Protocol Buffers,
 \XML{}, or \JSON{}.  As a result, the role of ontologies 
 for constraining data structures (so that they adhere 
 to common standards) is indirect.  It is useful to 
 remember that ontologies are, at their most basic level, 
-Controled Vocabularies; so ontology constraints often 
+Controled Vocabularies; as such, ontology constraints often 
 amount to stipulating a set of acceptable terms for a data 
 value, column header, or annotation.  For a trivial example, 
 our calendar recognized twelve month names and seven day names, 
 which constrain the set of values permissible for \q{month} 
 and \q{day} values within a date.  These terms are 
-so commonplace that a \q{data ontology} is unnecessary, 
+so commonplace that a \q{date ontology} is unnecessary, 
 but in scientific or technical domains it is often 
 approrpriate to define similar lists of allowable 
 names or labels for data fields representing some 
 scientific value or measurement.  For instance, 
 the Ontology of Vaccine Adverse Events (see 
 \bhref{https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-40}) provides a nomenclature for use in Adverse Events Reporting, 
-so that researchers can describe symptoms via a canonically 
-recognized term rather than through informal 
+so that researchers or clinicians can describe symptoms via canonically 
+recognized terms rather than through informal 
 text descriptions.  In general, ontologies constrain 
 data sets by stipulating that particular individual 
-values within the overall data have a name or description 
+values within the overall data collection have names or descriptions 
 whose set of possible values is prescribed \textit{a priori} 
 by the applicable ontology.  However, the relationship between 
 ontologies and concrete data sets must itself be 
 documented, which is where application ontologies 
 can become relevant --- application ontologies provide 
 a bridge between reference ontologies and the 
-applications which use them (along with those
-applications' shared data).}
+applications which use them (along with the data 
+generated and shared by those applications).}
 
-\p{Most of commonly used ontologies published 
+\p{Most of the commonly used ontologies published 
 by large-scale Semantic Web projects, such as the 
 \OBO{} (Open Biomedical Ontology) Foundry, are 
 \textit{reference} ontologies (see for example the 
@@ -237,7 +237,7 @@ structured around software operations and
 programming language type systems, these ontologies 
 can be a more rigorous guide to those implementing 
 novel software solutions than reference ontologies 
-intended for Semantic Web data sharing.  Hypegraph 
+intended primarily for Semantic Web data sharing.  Hypergraph 
 ontologies can therefore be especially important in 
 the context of multi-application networks (which are discussed 
 in the main paper) where collections of distinct 
