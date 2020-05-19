@@ -46,7 +46,7 @@ r8 Concept::membership_of(const r8vec& point)
  return mu_ * qExp(-c_ * min_distance);
 }
 
-void Concept::intersection_mu_special_case(const r8vec& a, r8 c2, 
+QPair<r8vec, r8vec> Concept::intersection_mu_special_case(const r8vec& a, r8 c2, 
   const r8vec& b, r8 mu)
 {
  auto make_fun = [&b](r8 idx) -> r8(*)(r8)
@@ -147,31 +147,57 @@ void Concept::intersection_mu_special_case(const r8vec& a, r8 c2,
  return {minvec, maxvec};
 }
 
-void Concept::intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other)
+Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
 {
  // //  """Find the highest intersection of the 
   //    two cuboids (c1 from this, c2 from the other concept)."""
- crisp_intersection = c1.intersect_with(c2)
+ Cuboid* crisp_intersection = c1->intersect_with(*c2)
+
  if (crisp_intersection != nullptr):  // # crisp cuboids already intersect
-   return {min(mu_, other.mu_), crisp_intersection};
+   return {qMin(mu_, other.mu_), crisp_intersection};
  
  //       # already compute new set of domains
- new_domains = dict(c1.domains_);
- new_domains.update(c2.domains_); 
+ QMap<QString, u4vec> new_domains = c1->unify_domains(c2);
+ //new_domains.update(c2.domains_); 
 
- std::bind(a_range, b_range) = c1.get_closest_points(c2);
- a = map([](QVector<u4>& x){ x[0] }, a_range)
- b = map([](QVector<u4>& x){ x[0] }, b_range)
- extrude = map([](QVector<u4>& x){ x[0] != x[1] }, a_range);
+ //std::bind(a_range, b_range) =
 
- mu = 0;
- p_min = 0;
- p_max = 0;
- if(mu_ * qExp(-self.c_ * cs_->distance(a, b, weights_)) >= other.mu_)
+ QPair<QList<QPair<r8, r8>>> pr c1->get_closest_points(c2);
+
+ QList<QPair<r8, r8>>& a_range = pr.first;
+ QList<QPair<r8, r8>>& b_range = pr.second;
+
+ r8vec a;
+ a.resize(a_range.size);
+ r8vec b;
+ b.resize(b_range.size);
+
+ std::transform(a_range.begin(), a_range.end(),
+   a.begin(), [](QPair<r8, r8>& x) { return x.first; });
+
+ std::transform(b_range.begin(), b_range.end(),
+   b.begin(), [](QPair<r8, r8>& x) { return x.first; });
+
+// a = map([](QVector<u4>& x){ x[0] }, a_range)
+// b = map([](QVector<u4>& x){ x[0] }, b_range)
+
+ QVector<bool> extrude;
+ extrude.resize(a_range.size);
+
+ std::transform(a_range.begin(), a_range.end(),
+   extrude.begin(), [](QPair<r8, r8>& x) 
+   { return x.first != x.second; });
+
+ //extrude = map([](QVector<u4>& x){ x[0] != x[1] }, a_range);
+
+ r8 mu = 0;
+ r8vec p_min; // = nullptr;
+ r8vec p_max; // = nullptr;
+ if(mu_ * qExp( (-c_) * cs_->distance(a, b, weights_)) >= other.mu_)
  {
   //          # intersection is part of other cuboid
   mu = other.mu_;
-  std::bind(p_min, p_max) = intersection_mu_special_case(a, c2, b, mu);
+  std::tie(p_min, p_max) = intersection_mu_special_case(a, c2, b, mu);
  }
  else if(other.mu_ * qExp(-other.c_ * cs_->distance(a, b, other.weights_)) >= mu_)
  {
@@ -185,11 +211,12 @@ void Concept::intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other)
   //          # --> find point with highest identical membership to both cuboids
         
   //          # only use the relevant dimensions in order to make optimization easier
-  auto membership = [&extrude, this](x, point, mu, c, weights)
+  auto membership = [&extrude, this](r8vec x, r8vec point, r8 mu, r8 c,
+    Weights* weights)
   {
-   QVector<u4>& x_new; // = [];
+   r8vec x_new; // = [];
    u4 j = 0;
-   for(u4 dim : cs_->number_of_dimensions())
+   for(u4 dim = 0; dim < cs_->number_of_dimensions(); ++dim)
    {
     if(extrude[dim])
       x_new.append(point[dim]);
@@ -199,22 +226,31 @@ void Concept::intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other)
      ++j;
     }
    }
-   return mu * exp(-c * cs_->distance(point, x_new, weights));   
+   return mu * exp(-c * cs_->distance(point, x_new, *weights));   
   }
   
-  QVector<u4>& bounds; // = []
-  for(u4 dim : cs_->number_of_dimensions())
+  r8vec bounds; // = []
+  for(u4 dim = 0; dim < cs_->number_of_dimensions(); ++dim)
   {
    if(!extrude[dim])
      bounds.push_back({qMin(a[dim], b[dim]), qMax(a[dim], b[dim])});
   }
-  first_guess = map([](r8 x, r8 y){ (x + y)/2.0 }, bounds);
-  auto to_minimize = [this](r8 x}
+
+  r8vec first_guess;
+  first_guess.resize(bounds.size());
+ 
+  // = map([](r8 x, r8 y){ (x + y)/2.0 }, bounds);
+  std::transform(bounds.begin(), bounds.end(),
+    first_guess.begin(), [](r8 x, r8 y){ return (x + y)/2.0; });
+
+  auto to_minimize = [this, &x, &a](r8 x}
   {
    -membership(x, a, mu_, c_, weights_);
   };
   //constr = [{"type":"eq", "fun":(lambda x: abs(membership(x, a, self._mu, 
   //  self._c, self._weights) - membership(x, b, other._mu, other._c, other._weights)))}]
+
+/*
   opt = scipy.optimize.minimize(to_minimize, first_guess, 
     constraints = constr, 
     bounds = bounds, options = {"eps":cs._epsilon})// #, "maxiter":500
@@ -224,30 +260,35 @@ void Concept::intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other)
       ; //          raise Exception("Optimizer failed!")
    
 
+*/
     // # reconstruct full x by inserting fixed coordinates that will be extruded later
-  x_star = []
-  j = 0;
-  for(u4 dim : cs_->number_of_dimensions())
+
+
+  r8vec x_star; // = []
+  u4 j = 0;
+  for(u4 dim = 0; dim < cs_->number_of_dimensions(); ++dim)
   {
    if(extrude[dim])
      x_star.append(a[dim]);
    else
    {
-    x_star.append(opt.x[j])
+    //?x_star.append(opt.x[j])
     ++j;
    }
   }
-  mu = membership(opt.x, a, mu_, c_, weights_);
+  mu = 0; // membership(opt.x, a, mu_, c_, weights_);
+
    // # check if the weights are linearly dependent w.r.t. all relevant dimensions            
-  QVector<?> relevant_dimensions; // = []
+
+  u4vec relevant_dimensions; // = []
   for(u4 dim : cs_->number_of_dimensions())
   {    
    if(!extrude[dim])
      relevant_dimensions.append(dim);
   }
-  relevant_domains = reduce_domains_(cs.domains_, relevant_dimensions);
-  t = 0;
-  weights_dependent = true;
+  u4vec relevant_domains = reduce_domains(cs.domains_, relevant_dimensions);
+  r8 t = 0;
+  bool weights_dependent = true;
   for (QPair<?> pr /*dom, dims*/ : relevant_domains.items() )
   {
    for(dim : pr.second)

@@ -30,7 +30,7 @@ class Concept
 
  void intersection_mu_special_case(const r8vec& a, r8 c2, const r8vec& b, r8 mu):
 
- void intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other):
+ Cuboid* intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other):
 
  void check_crisp_betweenness(points, first, second);
 

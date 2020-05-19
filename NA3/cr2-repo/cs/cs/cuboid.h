@@ -22,6 +22,14 @@ public:
 
  Cuboid(r8vec p_min, r8vec p_max, QMap<QString, u4vec> domains);
 
+ QMap<QString, u4vec>& domains()
+ {
+  return domains_;
+ }
+
+ QMap<QString, u4vec> unify_domains(Cuboid& rhs);
+
+
  const r8vec& p_min() const
  {
   return p_min_;
@@ -32,7 +40,8 @@ public:
   return p_max_;
  }
 
- void get_most_distant_points(rhs Cuboid& other);
+ QPair<QList<QPair<r8, r8>>> get_closest_points(rhs Cuboid& other);
+ QPair<r8vec, r8vec> get_most_distant_points(rhs Cuboid& other);
 
  bool operator=(rhs Cuboid& other);
 

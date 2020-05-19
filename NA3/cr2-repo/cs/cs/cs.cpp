@@ -109,14 +109,14 @@ r8 Concept::distance(r8vec& x, r8vec& y, Weights& weights)
     
  r8 distance = 0.0;
 
- for( domain : domains_.keys() )
+ for( QString domain : domains_.keys() )
  {
   r8 inner_distance = 0.0;
   if(! weights.domain_weights().contains(domain) ) 
     //    # don't take into account domains w/o weights
     continue;
 
-  for(dimension : domains_[domain])
+  for(u4vec dimension : domains_[domain])
   {
    inner_distance += weights.dimension_weights()[domain][dimension] * 
      qExp( (x[dimension] - y[dimension]), 2);

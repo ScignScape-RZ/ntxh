@@ -48,31 +48,66 @@ void find_closest_point(self, point)
  return map(helper, p_min_, point, p_max_);
 }
 
+ //   def get_closest_points(self, other):
+QPair<QList<QPair<r8, r8>>> Cuboid::get_closest_points(Cuboid& other)
+{
+ //       """Computes closest points a in this and b in the other cuboid."""
+        
+ if(! compatible(other) )
+   throw "Cuboids not compatible";
+        
+ QList<QPair<r8vec, r8vec>> a; // = []
+ QList<QPair<r8vec, r8vec>> b; // = []
+
+ for(u4 i = 0; i < self.p_min.length(); ++i)
+ {
+  if(other.p_max_[i] < p_min_[i])  // # other cuboid below this one
+  {
+   a.push_back({p_min_[i], p_min_[i]});
+   b.push_back({other.p_max_[i], other.p_max_[i]});
+  }
+  else if(other.p_min_[i] > p_max_[i])  // # this cuboid below other one
+  {
+   a.push_back({p_max_[i], p_max_[i]});
+   b.push_back({other.p_min_[i], other.p_min_[i]});
+  }
+  else  // # cuboids intersect
+  {
+   r8 left = qMax(p_min_[i], other.p_min_[i]);
+   r8 right = qMin(p_max_[i], other.p_max_[i]);
+
+   a.push_back({left, right});
+   b.push_back({left, right});
+  }
+ }  
+ return {a, b};
+}
+
 //    def get_most_distant_points(self, other):
-void Cuboid::get_most_distant_points(other)
+QPair<r8vec, r8vec> Cuboid::get_most_distant_points(other)
 {
  //       """Computes most distant points a in this and b in the other cuboid."""
- a; // = []
- b; // = []
+ r8vec a; // = []
+ r8vec b; // = []
 
- for(i = 0; i < len(self._p_min); ++i)
+ for(i = 0; i < p_min_.length(); ++i)
  {            
   // # just brute force all combinations - most distance will always involve min and max points
-  dist_min_max = abs(self._p_min[i] - other._p_max[i]);
-  dist_max_min = abs(self._p_max[i] - other._p_min[i]);
+  dist_min_max = qAbs(p_min_[i] - other.p_max_[i]);
+  dist_max_min = qAbs(p_max_[i] - other.p_min_[i]);
             
   if(dist_min_max > dist_max_min)
   {
-   a.append(self._p_min[i]);
-   b.append(other._p_max[i]);
+   a.append(p_min_[i]);
+   b.append(other.p_max_[i]);
   }
   else
   {
-   a.append(self._p_max[i]);
-   b.append(other._p_min[i]);
+   a.append(p_max_[i]);
+   b.append(other.p_min_[i]);
   }
  }       
- return a, b
+ return {a, b};
 }
 
 bool Cuboid::operator=(Cuboid& other)
@@ -108,6 +143,19 @@ bool Cuboid::compatible(other)
 
  return all(dom in cs._domains.items() for dom in dom_union.items());
 }
+
+QMap<QString, u4vec> Cuboid::unify_domains(Cuboid& rhs)
+{
+ QMap<QString, u4vec> result = rhs.domains_;
+ 
+ for(QString key : domains_.keys())
+ {
+  if(!result.contains(key))
+    result.insert(key, domains_.value(key));
+ }
+ return result;
+}
+
 
 //    def intersect_with(self, other):
 Cuboid* Cuboid::intersect_with(Cuboid& other)
