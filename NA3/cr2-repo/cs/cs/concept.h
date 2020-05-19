@@ -27,8 +27,10 @@ class Concept
  Weights* weights_;
 
  r8 membership_of(const r8vec& point);
- void intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b, r8 mu):
- void intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other):
+
+ void intersection_mu_special_case(const r8vec& a, r8 c2, const r8vec& b, r8 mu):
+
+ void intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other):
 
  void check_crisp_betweenness(points, first, second);
 

@@ -46,18 +46,19 @@ r8 Concept::membership_of(const r8vec& point)
  return mu_ * qExp(-c_ * min_distance);
 }
 
-void Concept::intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b, r8 mu)
+void Concept::intersection_mu_special_case(const r8vec& a, r8 c2, 
+  const r8vec& b, r8 mu)
 {
  auto make_fun = [&b](r8 idx) -> r8(*)(r8)
  {
-  return [&b] (QVector<u4>& y)
+  return [&b] (u4vec& y)
   {
    return y[idx] - b[idx];
   };
  };
  
  r8 distance = - qLn(mu / mu_) / c_; 
- QVector<u4> y;
+ u4vec y;
  for(u4 i : cs_.number_of_dimensions())
  {
   if(a[i] == b[i])
@@ -73,6 +74,7 @@ void Concept::intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b
     }
     if(a[i] < b[i]
     {
+/*
      opt = scipy.optimize.minimize([](QVector<u4>& y)
      {
       -y[i]
@@ -80,9 +82,11 @@ void Concept::intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b
       //              if not opt.success:
       //                  raise Exception("Optimizer failed!")
      y.append(opt.x[i]); //  x is solution array ...
+*/
     }
     else
     {
+/*
      opt = scipy.optimize.minimize([](QVector<u4>& y)
      {
       y[i]
@@ -90,17 +94,57 @@ void Concept::intersection_mu_special_case(QVector<u4>& a, r8 c2, QVector<u4>& b
       //              if not opt.success:
       //                  raise Exception("Optimizer failed!")
      y.append(opt.x[i]); //  x is solution array ...
+*/
     }
 
    }
   }
  }
+
  // # arrange entries in b and y to make p_min and p_max; make sure we don't fall out of c2
- r8 p_min = map(max, map(min, b, y), c2._p_min)
- r8 p_max = map(min, map(max, b, y), c2._p_max)
+
+ r8vec minvec;
+ minvec.resize(c2.p_min_.size());
+ r8vec maxvec;
+ maxvec.resize(c2.p_max_.size());
+
+ r8vec byminvec;
+ byminvec.resize(b.size());
+ r8vec bymaxvec;
+ bymaxvec.resize(b.size());
+
+ std::transform(b.begin(), b.end(), y.begin(),  
+   byminvec.begin(), [](r8 rr1, r8 rr2)
+  {
+   return qMin(rr1, rr2);
+  })
+
+ std::transform(byminvec.begin(), byminvec.end(), c2.p_min_.begin(), 
+   minvec.begin(), [](r8 rr1, r8 rr2)
+  {
+   return qMax(rr1, rr2);
+  })
+
+ std::transform(b.begin(), b.end(), y.begin(),  
+   bymaxvec.begin(), [](r8 rr1, r8 rr2)
+  {
+   return qMax(rr1, rr2);
+  })
+
+ std::transform(bymaxvec.begin(), bymaxvec.end(), c2.p_max_.begin(), 
+   maxvec.begin(), [](r8 rr1, r8 rr2)
+  {
+   return qMin(rr1, rr2);
+  })
+
+
+// r8 p_min = map(max, map(min, b, y), c2.p_min_)
+// r8 p_max = map(min, map(max, b, y), c2.p_max_)
         
  // # take the unification of domains
- return {p_min, p_max};
+ // return {p_min, p_max};
+
+ return {minvec, maxvec};
 }
 
 void Concept::intersect_fuzzy_cuboids(Cuboid c1, Cuboid c2, Concept& other)

@@ -1,4 +1,4 @@
-
+%\part{Appendices}
 \section{Appendex 1: Hypergraph Ontologies}
 
 \p{The notion of \textit{hypergraph} ontologies generalizes 
@@ -160,6 +160,41 @@ conversely, more rigorously describe the
 data structures which applications must implement 
 in order to properly manipulate data structured 
 according to the ontology's specifications.}
+
+\p{Although it is theoretically possible to encode 
+data directly via \RDF{} graphs, it is far more 
+common for applications to employ tabular and/or 
+hierarchical formats such as spreadsheets, 
+\XML{}, or \JSON{}.  As a result, the role of ontologies 
+for constraining data structures (so that they adhere 
+to common standards) is indirect.  It is useful to 
+remember that ontologies are, at their most basic level, 
+Controled Vocabularies; so ontology constraints often 
+amount to stipulating a set of acceptable terms for a data 
+value, column header, or annotation.  For a trivial example, 
+our calendar recognized twelve month names and seven day names, 
+which constrain the set of values permissible for \q{month} 
+and \q{day} values within a date.  These terms are 
+so commonplace that a \q{data ontology} is unnecessary, 
+but in scientific or technical domains it is often 
+approrpriate to define similar lists of allowable 
+names or labels for data fields representing some 
+scientific value or measurement.  For instance, 
+the Ontology of Vaccine Adverse Events (see 
+\bhref{https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-40}) provides a nomenclature for use in Adverse Events Reporting, 
+so that researchers can describe symptoms via a canonically 
+recognized term rather than through informal 
+text descriptions.  In general, ontologies constrain 
+data sets by stipulating that particular individual 
+values within the overall data have a name or description 
+whose set of possible values is prescribed \textit{a priori} 
+by the applicable ontology.  However, the relationship between 
+ontologies and concrete data sets must itself be 
+documented, which is where application ontologies 
+can become relevant --- application ontologies provide 
+a bridge between reference ontologies and the 
+applications which use them (along with those
+applications' shared data).}
 
 \p{Most of commonly used ontologies published 
 by large-scale Semantic Web projects, such as the 

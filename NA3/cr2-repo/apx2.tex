@@ -1,6 +1,6 @@
-
-\section{Appendix 2: A Hypergraph Ontology for Radiological Outomes}
-
+\vspace{-1em}
+\section{Appendix 2: A Hypergraph Ontology for Radiological Outcomes}
+\vspace{-1em}
 \p{Diagnoistic imaging and radiological data sets are 
 an important aspect of Covid-19 data because radiological 
 analysis of the chest, particularly Computed Tomography 
@@ -123,7 +123,7 @@ the Covid-19 context, but designed for more
 general applications as well, one component of \CRtwo{} 
 is a novel radiology-focused \textit{application} 
 ontology, specifically the \q{Hypergraph Ontology 
-for Radiological/Diagnostic Imaging, Clinical 
+for Diagnostic Imaging, Clinical 
 Outcomes, and Data Mining} (\HDICOM{}).  The goal 
 of \HDICOM{} is to connect \RDF{}-based 
 radiological ontologies with software applications 
@@ -138,27 +138,47 @@ describe hypergraph and data-mining models
 applicable to the information managed by 
 their specific applications.}
 
-\p{In the context of data mining, there are different 
-operations which belong to a data-mining pipeline, 
-distinctions which are appropriate to make within an 
-Application Ontology.  For example, we can distinguish 
-between \textit{integrative} data mining (merging 
-heterogeneous data into a common representation so as 
-to enlarge the available search space), 
-\textit{selective} data mining (filtering a large data 
-space to select a smaller aggregate that can be 
-directly managed by a specific application; e.g., a 
-patient cohort),  
-\textit{holistic} data mining (large-scale analysis 
-to uncover statistical patterns or correlations), 
-and \textit{investigative} data mining (executing 
-multi-parameter queries against a large, heterogeneous, 
-and/or multi-model data space).  
+%\p{In the context of data mining, there are different 
+%operations which belong to a data-mining pipeline, 
+%distinctions which are appropriate to make within an 
+%Application Ontology.  For example, we can distinguish 
+%between \textit{integrative} data mining (merging 
+%heterogeneous data into a common representation so as 
+%to enlarge the available search space), 
+%\textit{selective} data mining (filtering a large data 
+%space to select a smaller aggregate that can be 
+%directly managed by a specific application; e.g., a 
+%patient cohort),  
+%\textit{holistic} data mining (large-scale analysis 
+%to uncover statistical patterns or correlations), 
+%and \textit{investigative} data mining (executing 
+%multi-parameter queries against a large, heterogeneous, 
+%and/or multi-modal data space).
+%}
 
+\p{Within data mining and image analysis, hypergraph 
+models are used in different ways for different 
+algorithms.  In the context of Covid-19 radiology, 
+\bhref{https://arxiv.org/pdf/2005.04043.pdf} 
+describes an algorithm for assessing the probability 
+of SARS-CoV-2 infection from chest \CT{} scans, 
+where hypernodes represent high-dimensional 
+vectors (191 dimensions overall) and hyperedges 
+represent k-nearest-neighbors; here each hypernode 
+represents an entire image, mapped to a 191-dimensional 
+feature-vector.  On the other hand, other image-analysis 
+methods use hypernodes to designate smaller segments 
+\textit{within} the image, where hyperedges 
+designate geometric adjacency and/or feature-space 
+similarities.  Whatever the algorithm, hypergraph 
+analyses would employ a hypergraph library 
+to store preliminary data for analysis and/or for 
+serialization within a data set.  One benefit of a 
+Hypergraph Application Ontology is therefore that 
+these data structures used internally to implement 
+analytic methods can be directly expressed within 
+the ontology, wheres \RDF{} ontologies can only 
+model hypergraphs indirectly.}
 
-  }
-
-\p{}
-
-\p{}
+%\p{}
 
