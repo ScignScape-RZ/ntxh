@@ -177,7 +177,7 @@ bool Core::check(cuboids, domains):
  return true;
 }
 
-Core* Core::from_cuboids(cuboids, domains)
+Core* Core::from_cuboids(const QVector<Cuboid*>& cuboids, domains)
 {
  //  # first: simplify the cuboids to make life easier (and avoid weird results down the road)
  ? cubs = simplify(cuboids)

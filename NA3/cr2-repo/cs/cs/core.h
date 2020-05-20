@@ -47,7 +47,7 @@ public:
  Cuboid* get_center();
  void check(cuboids, domains):
 
- Core* from_cuboids(cuboids, domains);
+ static Core* from_cuboids(const QVector<Cuboid*>& cuboids, domains);
  void simplify(cuboids);
 
 };

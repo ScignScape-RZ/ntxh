@@ -486,25 +486,30 @@ Concept* Concept::intersect_with(const Concept& other)
     mu = pr.first;
  }  
 
+ //QVector<QPair<r8, Cuboid*>> filtered_candidates; 
  QVector<Cuboid*> cuboids;
- cuboids.resize(candidates.size());
+ for(const QPair<r8, Cuboid*>& pr : candidates)
+ {
+  if(cs_->equal(pr.first, mu))
+    cuboids.push_back(pr.second);
+    //filtered_candidates.push_back(pr);
+ }  
 
- std::transform(candidates.begin(), candidates.end(),
-   cuboids.begin(), [cs_]( 
-
+// cuboids.resize(filtered_candidates.size());
+// std::transform(filtered_candidates.begin(), filtered_candidates.end(),
+//   cuboids.begin(), [cs_]( 
   // mu = reduce(max, map([](? x) { x[0] }, candidates)); // i.e., maximum of x[0]
 
- cuboids = map([cs_](? x) { x[1] }, 
-   filter([cs_] (? y) { cs_->equal(y[0],mu) }, candidates));
+// cuboids = map([cs_](? x) { x[1] }, 
+//   filter([cs_] (? y) { cs_->equal(y[0],mu) }, candidates));
  
  //       # create a repaired core
- ? core = cor.from_cuboids(cuboids, cuboids[0].domains());
+ Core* core = Core::from_cuboids(cuboids, cuboids[0]->domains());
  
  //       # calculate new c and new weights
- ? c = min(c_, other.c_)
- ? weights = weights_.merge_with(other.weights_, 0.5, 0.5);
+ r8 c = qMin(c_, other.c_)
+ Weights* weights = weights_.merge_with(other.weights_, 0.5, 0.5);
  return new Concept(core, mu, c, weights);
-   
 }
 
 Concept* Concept::unify_with(const Concept& other)
