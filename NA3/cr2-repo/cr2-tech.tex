@@ -70,9 +70,9 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
+%\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\pgfmathresult>0\relax
+\ifnum\value{page}=20   %\pgfmathresult>0\relax
 \put(12,56){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -100,7 +100,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.79in,top=.5in,right=.78in,bottom=1.2in} %margins
+\geometry{left=.78in,top=.5in,right=.79in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -1006,7 +1006,7 @@ tools are oriented toward custom data mining
 solutions as well as toward the implementation 
 of specialized desktop-style software applications 
 employing special-purpose \GUI{} classes.}
-In short, \CRtwo{} and \AIMConc{} are structured 
+In general, \CRtwo{} and \AIMConc{} are structured 
 in such a way that these repositories provide 
 a development environment for custom application 
 design, with an emphasis on \GUI{} 
@@ -1048,13 +1048,16 @@ of imaging-related ontologies such as \RadLex{} and \SeDI{}
 (Semantic \DICOM{} Ontology).  One goal of 
 \CRtwo{} is, accordingly, to generalize these semantic-imaging 
 frameworks to the more flexible paradigms of 
-\textit{hypergraph} ontologies --- that define schema 
-on hypergraph instances similar to how 
+\textit{hypergraph} ontologies --- schema defined 
+on hypergraph instances, similar to how 
 conventional ontologies define constraints on 
 directed, labeled, \RDF{} (Resource Description Framework) 
 style graphs.}
 
-\p{In the field of vaccine development and 
+\p{Another domain which has 
+significant public attention in the Covid-19 environment 
+is vaccine engineering. 
+In the field of vaccine development and 
 infectious-disease research, conducting vaccine 
 trials and vaccination campaigns 
 generates a diverse spectrum of data profiles. 
@@ -1063,11 +1066,11 @@ the effectiveness of candidate vaccines during their development, to
 reports on the extent and effectiveness of immunization projects 
 (which often depends on socioeconomic/geographic/political 
 information in addition to the biomedical data).  Moreover, 
-scientific understanding of effectiveness of vaccines 
-depends on assessment of the immunological response 
+scientific understanding of the effectiveness of vaccines 
+depends on assessments of the immunological response 
 of vaccinated individuals (which may incoporate data from 
 blood tests, molecular imaging, cytometry, serological profiling, 
-and so forth) generating fundamentally different forms of data than 
+and so forth) --- generating fundamentally different forms of data than 
 encountered in the context of vaccine trials and 
 vaccination compaigns.  Comprehensive support for vaccine-related 
 data sets, therefore, requires software-development 
@@ -2197,11 +2200,19 @@ export the contents of a \DgDb{} database to
 \HGXF{} files, which in turn form the core 
 of a research data set representing the 
 database contents at a specific moment in time.  
-In this guise \lDgDb{} works in conjunction 
+In this guise \DgDb{} works in conjunction 
 with \dsC{}, serving as the engine to 
 construct a data set through which research data 
-curated via a DigammaDB database can be published.  Our 
-\dsC{} technology will be described in the next section.}
+curated via a DigammaDB database can be published 
+(\dsC{} will be described in a later section).  
+\lDgDb{} also demonstrates how hypergraph databases --- 
+as well as data generated from these databases 
+for data-sharing initiatives --- can 
+store data constrained by \q{hypergraph ontologies,} 
+which are dicussed in the next section.}
+
+\input{apx1}
+
 
 \section{Dataset Creator}
 \p{Dataset Creator (\dsC{}) is a framework for 

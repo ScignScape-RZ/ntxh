@@ -147,7 +147,7 @@ QPair<r8vec, r8vec> Concept::intersection_mu_special_case(const r8vec& a, r8 c2,
  return {minvec, maxvec};
 }
 
-Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
+QPair<r8, Cuboid*> Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
 {
  // //  """Find the highest intersection of the 
   //    two cuboids (c1 from this, c2 from the other concept)."""
@@ -326,10 +326,12 @@ Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
   {   
    //           # weights are linearly dependent and at least two domains are involved
    //           # --> need to find all possible corner points of resulting cuboid
+/*
    r8 epsilon_1 = -qLn(mu / mu_) / c_;
    r8epsilon_2 = -qLn(mu / other.mu_) / other.c_;
    QVector<?> points;
-   for(u4 num_free_dims: range(1, len(relevant_dimensions))
+   for(u4 i = 1; i < relevant_dimensions.length(); ++i)
+    // for(u4 num_free_dims: range(1, len(relevant_dimensions))
    {
     //              # start with a single free dimensions (i.e., edges of the bounding box) and increase until we find a solution
     for(QVector<?> free_dims: itertools.combinations(relevant_dimensions, num_free_dims))
@@ -436,29 +438,30 @@ Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
 //                    # this should never happen - if the weights are dependent, there MUST be a solution
        ;//                  raise Exception("Could not find solution for dependent weights")
      
-
+*/
   }
   else
   {
     //           # weights are not linearly dependent: use single-point cuboid
-   p_min = list(x_star);
-   p_max = list(x_star);
+   u4vec p_min = x_star; // list(x_star);
+   u4vec p_max = x_star; //  list(x_star);
    //no op...  // pass;
   } 
  }
  //        # round everything, because we only found approximate solutions anyways
  mu = cs_->round(mu);
- p_min = map(&cs_->round, p_min)
- p_max = map(&cs_->round, p_max)
+
+//? p_min = map(&cs_->round, p_min)
+//? p_max = map(&cs_->round, p_max)
                                                   
  //     # extrude in remaining dimensions
- for(u4 i : len(extrude))
+ for(u4 i = 0; i < extrude.length(); ++i)
  {
   if(extrude[i])
     p_max[i] = a_range[i][1];
  }
 //        # finally, construct a cuboid and return it along with mu
- Cuboid cuboid = cub.Cuboid(p_min, p_max, new_domains)
+ Cuboid* cuboid = new Cuboid(p_min, p_max, new_domains)
  return {mu, cuboid};
 }
 
@@ -466,15 +469,31 @@ Concept* Concept::intersect_with(const Concept& other)
    //     """Computes the intersection of two concepts."""
 {
  // # intersect all cuboids pair-wise in order to get cuboid candidates
- QVector<Cuboid> candidates; // = []
- for(Cuboid c1 : core_.cuboids_)
+ QVector<QPair<r8, Cuboid*>> candidates; // = []
+ for(Cuboid* c1 : core_.cuboids_)
  {
-  for(Cuboid c2 : core_.cuboids_)
+  for(Cuboid* c2 : other.core_.cuboids_)
   {
    candidates.append(intersect_fuzzy_cuboids(c1, c2, other));
   }
  }
- mu = reduce(max, map([](? x) { x[0] }, candidates)); // i.e., maximum of x[0]
+
+ r8 mu = 0;
+
+ for(const QPair<r8, Cuboid*>& pr : candidates)
+ {
+  if(pr.first > mu)
+    mu = pr.first;
+ }  
+
+ QVector<Cuboid*> cuboids;
+ cuboids.resize(candidates.size());
+
+ std::transform(candidates.begin(), candidates.end(),
+   cuboids.begin(), [cs_]( 
+
+  // mu = reduce(max, map([](? x) { x[0] }, candidates)); // i.e., maximum of x[0]
+
  cuboids = map([cs_](? x) { x[1] }, 
    filter([cs_] (? y) { cs_->equal(y[0],mu) }, candidates));
  

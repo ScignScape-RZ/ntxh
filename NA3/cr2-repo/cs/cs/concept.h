@@ -41,7 +41,7 @@ public:
  bool operator=(const Concept& rhs);
  bool operator!=(const Concept& rhs) { return !(*this == rhs); }
  
- Concept* intersect_with(const Concept& other);
+ QPair<r8, Cuboid*> intersect_with(const Concept& other);
  Concept* unify_with(const Concept& other);
  Concept* project_onto(? domains);
 
