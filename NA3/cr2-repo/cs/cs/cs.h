@@ -42,6 +42,11 @@ public:
 
  Conceptual_Space();
 
+ const QMap<QString, u4vec>& domains()
+ {
+  return *domains_; 
+ }
+
  void init(u4 number_of_dimensions, 
    const QMap<QString, QVector<u4>>& domains, 
    QStringList dimension_names = {});

@@ -70,7 +70,9 @@
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}} }
 
-\ifnum\value{page}=15
+\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
+
+\ifnum\pgfmathresult>0\relax
 \put(12,56){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -98,7 +100,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.78in,top=.5in,right=.78in,bottom=1.2in} %margins
+\geometry{left=.79in,top=.5in,right=.78in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -979,100 +981,108 @@ outside the context of Covid-19, penetrating vertical
 markets such as pharmaceuticals, manufacturing, fintech, 
 healthcare, educational software, and bioinformatics.}
 
-\p{One goal shared by both \CRtwo{} and \AIMConc{} is 
-to provide a common programming infrastructure which facilitates 
+\p{The principle goal shared by both \CRtwo{} and \AIMConc{} is 
+to provide a \textit{common} programming infrastructure which facilitates 
 the implementation of algorithms and \GUI{} components that 
 synthesize data across different scientific fields and 
 methodologies.  This common infrastructure is based primarily 
-on \Qt{}, a \Cpp{} application-development framework, and 
+on \Qt{} --- a \Cpp{} application-development framework --- and 
 secondarily on established scientific/medical code 
 projects such as \CBICA{} (Center for Biomedical Image 
 Computing \& Analytics) and ReproZip (a tool for packaging 
 scientific software dependencies).  In addition to utilities 
 and build tools, the programming core for \CRtwo{} and \AIMConc{} 
-will include \Cpp{} libraries to natively read and manipulate 
+will include \Cpp{} libraries to read and manipulate 
 data in formats commonly used for clinical, diagnostic, 
-and medical outcomes reporting, such as \OMOP{} 
+and medical-outcome reporting, such as \OMOP{} 
 (from the Observational Medical Outcomes Partnership), 
 \PCORnet{} (defined by the Patient-Centered Clinical 
 Research Network), \FHIR{} (Fast Healthcare Interoperability 
 Resources), \RadLex{} (Radiology Lexicon), and \LOINC{} 
-(Logical Observation Identifiers Names and Codes).  
-While these data formats are normally 
-used in the context of relational databases, the 
-\CRtwo{} and \AIMConc{} programming tools allows developers 
-to manipulate clinical data in formats natively recognized 
-by data-mining and \GUI{} code, which enables programmers 
-to apply sophisticated algorithms to clinical data and 
-also to present human users with convenient desktop-style 
-applications to initiate and view the results of these 
-analytic processes.  Appendix 2 to this paper presents 
-more information about Medical Outcomes code incorporated 
-into \CRtwo{} and \AIMConc{}, with 
-specific focus on integration radiological and 
-Clinical Effectiveness data.}
+(Logical Observation Identifiers Names and Codes).\footnote{%
+Whereas these formats are normally used in the context of 
+relational databases, the \CRtwo{} and \AIMConc{} programming 
+tools are oriented toward custom data mining 
+solutions as well as toward the implementation 
+of specialized desktop-style software applications 
+employing special-purpose \GUI{} classes.}
+In short, \CRtwo{} and \AIMConc{} are structured 
+in such a way that these repositories provide 
+a development environment for custom application 
+design, with an emphasis on \GUI{} 
+implementations using the \Qt{} framework. 
+%While these data formats are normally 
+%used in the context of relational databases, the 
+%\CRtwo{} and \AIMConc{} programming tools allows developers 
+%to manipulate clinical data in formats natively recognized 
+%by data-mining and \GUI{} code, which enables programmers 
+%to apply sophisticated algorithms to clinical data and 
+%also to present human users with convenient desktop-style 
+%applications to initiate and view the results of these 
+%analytic processes.  
+Appendix 1 to this paper presents 
+more information about the integration of 
+clinical data with \GUI{} applications, with 
+specific focus on integrating radiological and 
+Comparative Effectiveness data.}
 
 %  Appendix 1 to this paper presents 
 %more information about Medical Outcomes code incorporated 
 %into \CRtwo{} and \AIMConc{}.}
 
-\p{In the specific field of medical and diagnostic imaging, 
+\p{In the specific field of radiological medical and diagnostic imaging, 
 recent research has focused on how to effectively connect 
 radiological data with medical outcomes and Comparative 
 Effectiveness Research (\CER{}).  Traditionally, 
 medical imaging formats such as \PACS{} (Picture Archiving 
 and Communication System) and \DICOM{} (Digital Imaging 
 and Communications in Medicine) have been largely separated 
-from clinical records.  As a result, it was difficult for 
-researchers to cross-reference radiological data with 
-clinical reports indicating subjects' subsequent 
-treatments and corresponding outcomes.  Attempts have been 
+from clinical records.  As a result, it has been difficult for 
+clinical outcome researchers to cross-reference radiological data with 
+clinical reports (clinical narratives, treatment protocols, etc.), 
+indicating patient/subjects' subsequent course of treatment and 
+corresponding outcomes.  Attempts have been 
 made to remedy this information gap by the semantic 
 annotation of radiological findings, leading to the development 
 of imaging-related ontologies such as \RadLex{} and \SeDI{} 
 (Semantic \DICOM{} Ontology).  One goal of 
-\CRtwo{} is accordingly to generalize these semantic-imaging 
+\CRtwo{} is, accordingly, to generalize these semantic-imaging 
 frameworks to the more flexible paradigms of 
-\textit{hypergraph} ontologies, which define schema 
-on hypergraph instances by analogy to how 
+\textit{hypergraph} ontologies --- that define schema 
+on hypergraph instances similar to how 
 conventional ontologies define constraints on 
 directed, labeled, \RDF{} (Resource Description Framework) 
-style graphs.  Compared to \RDF{} ontologies, hypergraph 
-ontologies are more expressive and also more 
-complex, because there is a larger space of 
-distinct graph elements which are candidates for 
-semantic annotation (conventional ontologies are 
-primarily composed of only two sorts of concepts --- 
-\q{classes,} or node-annotations, and 
-\q{properties,} or edge-annotations.}
+style graphs.}
 
-\p{Another crucial research domain for Covid-19 
-is vaccine development and immunization, particularly 
-as scientific focus begins to shift from containing 
-the pandemic to developing an effective vaccine.  
-Conducting vaccine trials and vaccination campaigns 
-generates a diverse spectrum of data profiles, 
-ranging from observational reports of candidate vaccines' 
-effectiveness during their development to reports on 
-the extent and effectiveness of immunization projects, 
-which often depend on socioeconomic, geographic, and political 
-information as well as biomedical data.  Moreover, 
-scientific understanding of vaccines' effectiveness 
-depends on complex assessment of vaccinated individuals' 
-immunological response, which may incoporate data from 
+\p{In the field of vaccine development and 
+infectious-disease research, conducting vaccine 
+trials and vaccination campaigns 
+generates a diverse spectrum of data profiles. 
+This information ranges from clinical observational reports of 
+the effectiveness of candidate vaccines during their development, to 
+reports on the extent and effectiveness of immunization projects 
+(which often depends on socioeconomic/geographic/political 
+information in addition to the biomedical data).  Moreover, 
+scientific understanding of effectiveness of vaccines 
+depends on assessment of the immunological response 
+of vaccinated individuals (which may incoporate data from 
 blood tests, molecular imaging, cytometry, serological profiling, 
-and so forth.  Comprehensive support for vaccine-related 
-data sets therefore requires technologies that can integrate 
+and so forth) generating fundamentally different forms of data than 
+encountered in the context of vaccine trials and 
+vaccination compaigns.  Comprehensive support for vaccine-related 
+data sets, therefore, requires software-development 
+technologies that would be able to integrate 
 and represent information from a wide range of 
 laboratory and in-the-field methods.  As with radiology/outcomes 
 integration, this heterogeneous data profile has 
 led to the design of \RDF{} ontologies, notably the 
 \q{VIOLIN} Vaccine Ontology.  Here again, \CRtwo{} 
-will generalize this technology to the domain of 
-hypergraph ontologies (more information on 
-hypergraph ontologies, with specific reference 
-to radiological and vaccine-related lexicons, 
-is provided in the appendices).}  
+(so as to promote specialized application implementation, 
+accelerating research and documentation related to 
+vaccine development) will expand the Vaccine Ontology to the domain of 
+hypergraph ontologies.  More information on hypergraph ontologies, 
+with specific reference to radiological and vaccine-related lexicons, 
+is provided in the appendices.}
 
 \section{Introduction}
 \p{In an effort to accelerate scientific discovery and therapeutic 
@@ -2346,9 +2356,11 @@ The document referenced in this hyperlink contains more information
 on \dsC{}, \HGXF{}, \HTXN{}, and the other technologies 
 discussed here.}
 
-\input{apx1}
+%\input{apx1}
+
 \input{apx2}
 \input{apx3}
+
 %\p{ }
 
 \end{document}

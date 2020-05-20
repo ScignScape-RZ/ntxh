@@ -46,7 +46,8 @@ public:
  Concept* project_onto(? domains);
 
  QPair<Concept*, Concept*> cut_at(? dimension, ? value);
- QVector<?> reduce_domains(domains, dimensions);
+ QMap<QString, u4vec> reduce_domains(const QMap<QString, u4vec>& domains, 
+   const u4vec& dimensions);
 
  r8 hypervolume_cuboid(cuboid);
  r8 size();

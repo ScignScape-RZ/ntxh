@@ -286,12 +286,18 @@ Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
    if(!extrude[dim])
      relevant_dimensions.append(dim);
   }
-  u4vec relevant_domains = reduce_domains(cs.domains_, relevant_dimensions);
+  QMap<QString, u4vec> relevant_domains = reduce_domains(cs_->domains(), relevant_dimensions);
   r8 t = 0;
   bool weights_dependent = true;
-  for (QPair<?> pr /*dom, dims*/ : relevant_domains.items() )
+  
+  QMapIterator<QString, u4vec> it( relevant_domains );
+  while(it.hasNext())
+  //for (QPair<?> pr /*dom, dims*/ : relevant_domains.items() )
   {
-   for(dim : pr.second)
+   it.next();
+   const QString& dom = it.key();
+   
+   for( u4 dim : it.value() )
    {
     if(t == 0)
       t = (weights_.domain_weights()[dom] * 
@@ -301,11 +307,12 @@ Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
     else
     {
      //                 # compare
-     t_prime = (weights_.domain_weights()[dom] * 
+     r8 t_prime = (weights_.domain_weights()[dom] * 
        qSqrt(weights_.dimension_weights()[dom][dim])) /
        (other.weights_.domain_weights()[dom] * 
        qSqrt(other.weights_.dimension_weights()[dom][dim]));
-     if(round(t,10) != round(t_prime,10))
+     if( t != t_prime ) // todo: handle rounding 
+                        // round(t,10) != round(t_prime,10))
      {
       weights_dependent = false;
       break;
@@ -315,7 +322,7 @@ Cuboid* Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Concept& other)
    if(!weights_dependent)
      break;
   }
-  if(weights_dependent && len(relevant_domains.keys()) > 1)
+  if(weights_dependent && (relevant_domains.keys().length() > 1) )
   {   
    //           # weights are linearly dependent and at least two domains are involved
    //           # --> need to find all possible corner points of resulting cuboid
@@ -521,16 +528,30 @@ QPair<Concept*, Concept*> Concept::cut_at(dimension, value)
  return {lower_concept, upper_concept};
 }
 
-QVector<?>  Concept::reduce_domains(domains, dimensions)
+QMap<QString, u4vec> Concept::reduce_domains(const 
+  QMap<QString, u4vec>& domains, const u4vec& dimensions)
 {
  //        """Reduces the domain structure such that only the given dimensions are still contained."""
- ? new_domains = {}
+ QMap<QString, u4vec> new_domains; // = {}
 
- for (? dom, dims : domains_.items())
+ 
+// for (? dom, dims : domains.items())
+
+ QMapIterator<QString, u4vec> it(domains); // = {}
+
+ while(it.hasNext())
  {
-  filtered_dims = ? //[dim for dim in set(dims) & set(dimensions)]
-  if(len(filtered_dims) > 0)
-    new_domains[dom] = filtered_dims;
+  it.next();
+  const QString& dom = it.key();
+  const u4vec& dims = it.value();
+
+  QSet<u4> filtered_dims = QSet::fromList(dims.toList());
+  QSet<u4> _dims = QSet::fromList(dimensions.toList());
+  filtered_dims &= _dims;
+
+  //filtered_dims = ? //[dim for dim in set(dims) & set(dimensions)]
+  if( filtered_dims.size() > 0 )
+    new_domains[dom] = filtered_dims.toList().toVector();
  } 
  return new_domains;
 }
