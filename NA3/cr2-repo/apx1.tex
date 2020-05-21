@@ -118,7 +118,7 @@ between hyponodes in different hypernodes;
 and variations on each of these relation-types 
 wherein relations are defined indirectly through 
 proxies.  Moreover, in addition to hypernodes 
-and hyponodes, hypergraphs may have additional 
+and hyponodes, hypergraphs afford additional 
 levels of detail, such as \textit{frames}, 
 \textit{channels}, and \textit{axiations}.
 All of these details provide different 
@@ -202,53 +202,52 @@ by large-scale Semantic Web projects, such as the
 \OBO{} (Open Biomedical Ontology) Foundry, are 
 \textit{reference} ontologies (see for example the 
 \OBO{} tutorial at \bhref{https://github.com/jamesaoverton/obo-tutorial/blob/master/docs/obo.md}).  By contrast, hypergraph schema are 
-closer in spirit to \textit{application} ontologies, 
+closer in spirit to \textit{application} ontologies.\footnote{% 
 although sometimes different terminology is used to 
 express this idea (see the HyperGraphDB tutorial 
-at \bhref{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}).
-In particular, there is often a direct correlation between 
+at \bhref{http://www.hypergraphdb.org/?project=hypergraphdb&page=IntroStoreData}).}
+in particular, there is often a direct correlation between 
 hypernode types and the data types understood by 
 code libraries implemented in a given programming language, 
 and these type-level correlations need to be modeled 
-by hypergraph ontologies.  As a result, hypergraph 
-ontologies require capabilities to model programming 
-languages' type systems (by contrast, conventional 
+by hypergraph ontologies (the ontology makes 
+explicit how types in the ontology and in the application 
+are interconnected).  As a result, hypergraph 
+ontologies require capabilities to model the type 
+systems of programming languages.\footnote{By contrast, conventional 
 \RDF{} ontologies do not intrinsically interact with 
 type systems outside a limited group of 
-\textbf{rdf:type}s).  Moreover, because programming 
+\textbf{rdf:type}s}.  Moreover, because programming 
 language types cover a range of use-cases --- including 
 functional and \GUI{} types --- hypergraph 
 ontologies need to directly model details 
 about how applications interact with human users, 
 including the visual objects (windows and their 
-components) which users see on-screen, and 
-the \q{operational semantics,} or patterns 
-of human-software interaction, which govern 
-how people use applications to achieve their 
+components) which users see on-screen.  They 
+also model the \q{operational semantics,} (viz., patterns 
+of human-software interaction) which govern 
+how one uses the application to achieve their 
 desired goals.  For example, if a software 
-tool exists in part to help researchers define 
+tool exists, in part, to help researchers define 
 a patient cohort from an aggregate of clinical 
 data, a relevant application ontology can include 
-a description of the concrete steps which 
-users use, interacting with the software, to 
-achieve this end.}
+a description of the concrete steps used to achieve this end.}
 
 \p{Because hypergraph ontologies are more directly 
 structured around software operations and 
-programming language type systems, these ontologies 
-can be a more rigorous guide to those implementing 
+programming-language type systems, these ontologies 
+function as a more rigorous guide to those implementing 
 novel software solutions than reference ontologies 
-intended primarily for Semantic Web data sharing.  Hypergraph 
-ontologies can therefore be especially important in 
-the context of multi-application networks (which are discussed 
-in the main paper) where collections of distinct 
-software applications share a common technological 
+intended primarily for Semantic Web data-sharing.  Hypergraph 
+ontologies can, therefore, be especially important in 
+the context of multi-application networks, where collections of 
+distinct software applications share a common technological 
 and information infrastructure.  In general, hypergraph 
 ontologies are more appropriate for modeling data 
 in contexts where custom software implementation is 
-an important business requirement of the overall 
+an important operational requirement of the overall 
 data space --- that is, a particular data ecosystem 
-is engineered with a priority on enabling developers 
+is engineered with a priority for enabling developers 
 to implement semi-autonomous software \q{agents} that 
 provide specialized views or analyses of a data 
 space shared by many such applications.}

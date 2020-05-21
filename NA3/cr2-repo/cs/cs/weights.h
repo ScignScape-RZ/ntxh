@@ -22,7 +22,8 @@ public:
  Weights(QMap<QString, r8>& domain_weights, 
    QMap<QString, QMap<u4, r8>>& dimension_weights);
 
- <?> normalize(weights, total);
+ static QMap<QString, r8> normalize(
+   const QMap<QString, r8>&  weights, r8 total);
 
  bool operator=(const Weights& other);
  bool operator!=(const Weights& other)
@@ -30,8 +31,8 @@ public:
   return !(*this == other);
  }
 
- Weights* merge_with(Weights& other, s = 0.5, t = 0.5);
- Weights* project_onto(new_domains);
+ Weights* merge_with(Weights& other, r8 s = 0.5, r8 t = 0.5);
+ Weights* project_onto(const QMap<QString, QString<u4, r8>>& new_domains);
 
  
 

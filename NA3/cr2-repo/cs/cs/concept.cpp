@@ -517,19 +517,19 @@ Concept* Concept::unify_with(const Concept& other)
  // """Computes the union of two concepts."""
 
  Core* core = core_.unify_with(other.core_); 
- ? mu = qMax(mu_, other.mu_);
- ? c = qMin(c_, other.c_)
- ? weights = weights_.merge_with(weights_, 0.5, 0.5);
+ r8 mu = qMax(mu_, other.mu_);
+ r8 c = qMin(c_, other.c_)
+ Weights* weights = weights_.merge_with(weights_, 0.5, 0.5);
  return new Concept(core, mu, c, weights);
 }
 
-Concept* Concept::project_onto(? domains)
+Concept* Concept::project_onto(const QMap<QString, u4vec>& domains)
 {
  //       """Computes the projection of this concept onto a subset of domains."""
         
  //       # no explicit check for domains - Core will take care of this
- ? new_core = core_.project_onto(domains);
- ? new_weights = weights_.project_onto(domains);
+ Core* new_core = core_->project_onto(domains);
+ Weights* new_weights = weights_->project_onto(domains);
         
  return new Concept(new_core, mu, c_, new_weights);
 }

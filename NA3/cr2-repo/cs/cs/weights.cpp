@@ -9,7 +9,9 @@ Weights::Weights(QMap<QString, r8>& domain_weights,
  //       All entries of p_min must be <= their corresponding entry in p_max.
  //       All dimensions contained in the domains must be finite, all other dimensions infinite."""
 
- domain_weights_ = normalize(domain_weights, len(domain_weights.keys()));
+ domain_weights_ = normalize(domain_weights,
+   domain_weights.keys().length());
+   //len(domain_weights.keys()));
  <?> dimension_weights_ = {};
  
  for( (domain, weights) in dimension_weights.items() )
@@ -24,15 +26,27 @@ Weights::Weights(QMap<QString, r8>& domain_weights,
  
 }
 
-<?> Weights::normalize(weights, total)
+//QList<?> Weights::normalize(weights, total)
+
+QMap<QString, r8> Weights::normalize(
+  const QMap<QString, r8>& weights, r8 total);
 {
  //       """Normalizes a given set of weights such that they sum up to the desired total."""
         
- <?> result; // = {}
- old_sum = sum(weights.values());
+ QMap<QString, r8> result; // = {}
+ r8 old_sum = std::accumulate(weights.values().begin(), 
+   weights.values().end(), 0.0);
         
- for (k,v) in weights.items():
-   result[k] = (1.0*v*total)/(old_sum);
+ QMapIterator<QString, r8> it(weights);
+
+ while(it.hasNext())
+ {
+  it.next();
+  result[it.key()] = (it.value()*total)/old_sum;
+ }
+
+ //for (k,v) in weights.items():
+ //  result[k] = (1.0*v*total)/(old_sum);
         
  return result;
 }
@@ -81,42 +95,60 @@ bool Weights::operator=(const Weights& other)
 
 //    def merge_with(self, other, s = 0.5, t = 0.5):
 
-Weights* Weights::merge_with(other, s = 0.5, t = 0.5)
+Weights* Weights::merge_with(Weights& other, 
+  r8 s = 0.5, r8 t = 0.5)
 {
  //       """Merge two weights, using the parameters s and t to interpolate between domain and dimension weights, respectively."""
         
- dom_weights; // = {}
- dim_weights; // = {}
+ QMap<QString, r8> dom_weights; // = {}
+ QMap<QString, QMap<u4, r8>> dim_weights; // = {}
 
- for(? dom in set(self._domain_weights.keys())
-   & set(other._domain_weights.keys()) )
+ QSet<QString> doms0 = QSet::fromList(domain_weights_.keys());
+ QSet<QString> domso = QSet::fromList(other.domain_weights_.keys());
+
+ QSet<QString> doms = doms0;
+ doms &= domso;
+
+ //for(? dom in set(self._domain_weights.keys())
+ //  & set(other._domain_weights.keys()) )
+
+ for(QString dom : doms)
  {
-  weight_dom = ( s * domain_weights_[dom] ) 
+  r8 weight_dom = ( s * domain_weights_[dom] ) 
     + ( (1.0 - s) * other.domain_weights_[dom] );
   dom_weights[dom] = weight_dom;
-  <?> weights_dim = {};
 
-  for( dim in dimension_weights_[dom].keys() )
+  QMap<u4, r8> weights_dim; // = {};
+
+  for(u4 dim : dimension_weights_[dom].keys() )
   {
-   w = t * dimension_weights_[dom][dim] 
+   r8 w = t * dimension_weights_[dom][dim] 
      + ( (1.0 - t) * other.dimension_weights_[dom][dim] );
    weights_dim[dim] = w;
   }
   dim_weights[dom] = weights_dim;
  }
 
- for( dom in set(self._domain_weights.keys()) 
-   - set(other._domain_weights.keys()) )
+ QSet<QString> doms1 = doms;
+ doms -= domso;
+
+// for( dom in set(self._domain_weights.keys()) 
+//   - set(other._domain_weights.keys()) )
+ for(QString dom : dom1) 
  {
-  dom_weights[dom] = self.domain_weights_[dom];
-  dim_weights[dom] = self.dimension_weights_[dom].copy();
+  dom_weights[dom] = domain_weights_[dom];
+  dim_weights[dom] = dimension_weights_[dom]; //.copy();
  }
 
- for( dom in set(other._domain_weights.keys()) 
-   - set(self._domain_weights.keys()) )
+ QSet<QString> doms2 = domso;
+ doms2 -= doms0;
+
+// for( dom in set(other._domain_weights.keys()) 
+//   - set(self._domain_weights.keys()) )
+ for(QString dom : dom2) 
  {
   dom_weights[dom] = other.domain_weights_[dom];
-  dim_weights[dom] = other.dimension_weights_[dom].copy();
+  dim_weights[dom] = other.dimension_weights_[dom]; //.copy();
  }
 
  return new Weights(dom_weights, dim_weights)
@@ -124,19 +156,23 @@ Weights* Weights::merge_with(other, s = 0.5, t = 0.5)
 
 //    def project_onto(self, new_domains):
 
-Weights* Weights::project_onto(new_domains)
+Weights* Weights::project_onto(
+  const QMap<QString, QString<u4, r8>>& new_domains)
 {
  //       """Projects this set of weights onto a subset of domains."""
 
- <?> dom_weights; // = {}
- <?> dim_weights; // = {}
- for( dom in new_domains.keys() )
+ QMap<QString, r8> dom_weights; // = {}
+ QMap<QString, QMap<u4, r8>> dim_weights; // = {}
+
+// <?> dom_weights; // = {}
+// <?> dim_weights; // = {}
+
+ for(QString dom : new_domains.keys() )
  {
   dom_weights[dom] = domain_weights_[dom];
-  dim_weights[dom] = dict(dimension_weights_[dom]);
-        
-  return new Weights(dom_weights, dim_weights);
+  dim_weights[dom] = dimension_weights_[dom];
  }
+ return new Weights(dom_weights, dim_weights);
 }
 
 //def check(domain_weights, dimension_weights):
