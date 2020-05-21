@@ -177,55 +177,106 @@ bool Core::check(cuboids, domains):
  return true;
 }
 
-Core* Core::from_cuboids(const QVector<Cuboid*>& cuboids, domains)
+Core* Core::from_cuboids(const QVector<Cuboid*>& cuboids, u4vec& domains)
 {
  //  # first: simplify the cuboids to make life easier (and avoid weird results down the road)
- ? cubs = simplify(cuboids)
+ QVector<Cuboid*> cubs = simplify(cuboids);
     
  if(check(cubs, domains))
    return new Core(cubs, domains); //  # all cuboids already intersect --> nothing to do
 
  //    # need to perform repair mechanism        
- <?> midpoints; // = []
- for(? cuboid : cubs) // # midpoint of each cuboid
-   midpoints.append(map(lambda x, y: 0.5*(x + y), cuboid.p_min(), cuboid.p_max()));
+ QList<r8vec> midpoints; // = []
+ //midpoints.resize(cubs.size());
+ for(Cuboid* cuboid : cubs) // # midpoint of each cuboid
+ {
+  r8vec r8v;
+  r8v.resize(cuboid.p_min().size());
+  std::transform(cuboid.p_min().begin(), 
+    cuboid.p_min().end(), cuboid.p_max().begin(), 
+    r8v.begin(), [](r8 x, r8 y) { return 0.5*(x + y); }); 
+//   midpoints.append(map(lambda x, y: 0.5*(x + y), cuboid.p_min(), cuboid.p_max()));
+  midpoints.append(r8v);
+ }
  
  //    # sum up all midpoints & divide by number of cuboids
- ? midpoint = reduce(lambda x, y: map(lambda a,b: a+b, x, y), midpoints);
- midpoint = map([] (? x) { x/len(cubs) }, midpoint);
+ //? midpoint = reduce(lambda x, y: map(lambda a,b: a+b, x, y), midpoints);
+ //r8vec initial; initial.resize(midpoints.first.size());
+ 
+ r8vec midpoint = std::accumulate(std::next(midpoints.begin()),
+   midpoints.end(), midpoints.first(), [](const& r8vec x, const& r8vec y)
+  {
+   r8vec result;
+   result.resize(x);
+   std::transform(x.begin(), x.end(), y.begin(),
+     result.begin(), [](r8 rr1, r8 rr2)
+    {
+     return rr1 + rr2;
+    });
+   return result;
+  });
+
+ //midpoint = map([] (? x) { x/len(cubs) }, midpoint);
+ for(r8& rr: midpoint)
+ {
+  rr /= cubs.length();
+ }
  
  //    # extend cuboids
- <?> modified_cuboids; // = []
- for(? cuboid : cubs)
+ QVector<Cuboid*> modified_cuboids; // = []
+ for(Cuboid* cuboid : cubs)
  {
-  p_min = map(min, cuboid._p_min, midpoint);
-  p_max = map(max, cuboid._p_max, midpoint);
-  modified_cuboids.append(cub.Cuboid(p_min, p_max, cuboid._domains));
+  r8vec p_min;
+  p_min.resize(midpoint.length());
+
+  r8vec p_max;
+  p_max.resize(midpoint.length());
+
+  std::transform(midpoint.begin(), midpoint.end(), 
+    p_min.begin(), &qMin);
+
+  std::transform(midpoint.begin(), midpoint.end(), 
+    p_max.begin(), &qMax);
+
+   // = map(min, cuboid._p_min, midpoint);
+   // = p_max = map(max, cuboid._p_max, midpoint);
+
+  //modified_cuboids.append(cub.Cuboid(p_min, p_max, cuboid._domains));
+
+  modified_cuboids.append(new Cuboid(p_min, p_max, cuboid.domains() ) ); 
  }   
+
  return new Core(modified_cuboids, domains)
 }
 
-void Core::simplify(cuboids)
+QVector<Cuboid*> Core::simplify(QVector<Cuboid*>& cuboids)
 {
  //    """Simplifies the given set of cuboids by removing redundant ones."""
     
- keep = [true]*len(cuboids);
- for(i = 0; i < len(cuboids); ++i) // in range(len(cuboids)):
+ // keep = [true]*len(cuboids);
+ QVector<Cuboid*> result = cuboids;
+
+ for(i = 0; i < cuboids.length(); ++i) // in range(len(cuboids)):
  {       
-  p_min = cuboids[i].p_min();
-  p_max = cuboids[i].p_max();
-  for(j = 0; j < len(cuboids); ++j)  // j in range(len(cuboids)):
+  r8vec p_min = cuboids[i].p_min();
+  r8vec p_max = cuboids[i].p_max();
+  for(j = 0; j < cuboids.length(); ++j)  // j in range(len(cuboids)):
   {
-   if( (i == j) || (keep[j] == false) )
+   if( (i == j) || (keep[j] == nullptr) )
      continue;
-   if( (cuboids[j].contains(p_min)) && (cuboids[j].contains(p_max))
+   if( (cuboids[j]->contains(p_min)) && (cuboids[j]->contains(p_max))
    {
-    keep[i] = false;
+    keep[i] = nullptr;
     break;
    }
   }
- }       
- return list(compress(cuboids, keep));
+ } 
+ result.erase(std::remove_if(result.begin(), 
+   result.end(), [](Cuboid* c) { return c == nullptr; }), 
+   result.end());
+
+ return result;      
+ //return list(compress(cuboids, keep));
 }
 
 

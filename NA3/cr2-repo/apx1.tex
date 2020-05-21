@@ -42,7 +42,7 @@ in an ontology, often called \q{classes.}  As such, most
 a unique label.  The purpose of metadata for a given graph 
 is then to link nodes to classes (for example, specifying 
 that one node represents a clinical trial and the second 
-represents a patient), and furthermore links edges to properties 
+represents a patient), and furthermore link edges to properties 
 (for example, specifying that a patient-node is connected 
 to a trial-node in that the patient is \textit{enrolled in} 
 the trial).}
@@ -70,7 +70,7 @@ where the corresponding notion of \q{external entity}
 refers to what in other contexts might be called 
 other hypernodes linked to a given hypernode via hyperedges.}  
 In general, when analyzing hypergraphs it is necessary to 
-distinguish at least to \q{tiers} of nodes, 
+distinguish at least two \q{tiers} of nodes, 
 \textit{hypernodes} and \textit{hyponodes}, such that 
 hyponodes are contained within hypernodes.  As a result, 
 hypergraph ontologies need a corresponding distinction 
@@ -94,11 +94,11 @@ multi-faceted concept into a single value that can be
 part of a hypernode (proxies are similar to 
 \q{foreign keys} in \SQL{}).  Therefore, each patient, represented 
 by its own hypernode, has an identifier which can be a 
-proxy-value for the patient, for example, a value 
-assigned to a hyponode included 
+proxy-value for the patient; for example, a value 
+assigned to a hyponode becomes included 
 in the hypernode encoding the list of patients enrolled 
-in a clinical trial or a hyponode included 
-in the hypernode encoding the list of patients enrolled 
+in a clinical trial, or in the hypernode 
+encoding the list of patients enrolled 
 in a specific health plan.  Hypernodes can then be linked to 
 other hypernodes by virtue of proxies (e.g., the 
 trial-to-patient connection), and also by 

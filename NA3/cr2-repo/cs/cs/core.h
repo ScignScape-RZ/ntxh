@@ -45,10 +45,12 @@ public:
  r8vec midpoint();
 
  Cuboid* get_center();
- void check(cuboids, domains):
+ void check(const QVector<Cuboid*>& cuboids, 
+   QMap<QString, u4vec& domains):
 
- static Core* from_cuboids(const QVector<Cuboid*>& cuboids, domains);
- void simplify(cuboids);
+ static Core* from_cuboids(const QVector<Cuboid*>& cuboids, 
+   u4vec& domains);
+ static QVector<Cuboid*> simplify(QVector<Cuboid*>& cuboids);
 
 };
 

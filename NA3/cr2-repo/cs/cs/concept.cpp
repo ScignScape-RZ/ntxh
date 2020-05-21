@@ -515,7 +515,8 @@ Concept* Concept::intersect_with(const Concept& other)
 Concept* Concept::unify_with(const Concept& other)
 {
  // """Computes the union of two concepts."""
- ? core = core_.unify_with(other.core_); 
+
+ Core* core = core_.unify_with(other.core_); 
  ? mu = qMax(mu_, other.mu_);
  ? c = qMin(c_, other.c_)
  ? weights = weights_.merge_with(weights_, 0.5, 0.5);
