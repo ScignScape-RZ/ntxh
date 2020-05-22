@@ -199,18 +199,20 @@ QPair<r8, Cuboid*> Concept::intersect_fuzzy_cuboids(Cuboid* c1, Cuboid* c2, Conc
   mu = other.mu_;
   std::tie(p_min, p_max) = intersection_mu_special_case(a, c2, b, mu);
  }
- else if(other.mu_ * qExp(-other.c_ * cs_->distance(a, b, other.weights_)) >= mu_)
+ else if(other.mu_ * 
+   qExp(-other.c_ * cs_->distance(a, b, other.weights_)) >= mu_)
  {
   // # intersection is part of this cuboid
   mu = mu_;
-  std::bind(p_min, p_max) = other.intersection_mu_special_case(b, c1, a, mu);
+  std::bind(p_min, p_max) = 
+    other.intersection_mu_special_case(b, c1, a, mu);
  }       
  else
  {
-  //          # intersection is in the cuboid between a and b
-  //          # --> find point with highest identical membership to both cuboids
+  //    # intersection is in the cuboid between a and b
+  //    # --> find point with highest identical membership to both cuboids
         
-  //          # only use the relevant dimensions in order to make optimization easier
+  // # only use the relevant dimensions in order to make optimization easier
   auto membership = [&extrude, this](r8vec x, r8vec point, r8 mu, r8 c,
     Weights* weights)
   {

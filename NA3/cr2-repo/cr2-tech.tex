@@ -72,7 +72,7 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=20   %\pgfmathresult>0\relax
+\ifnum\value{page}=21   %\pgfmathresult>0\relax
 \put(12,56){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -100,7 +100,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.79in,top=.5in,right=.79in,bottom=1.2in} %margins
+\geometry{left=.78in,top=.5in,right=.78in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -343,6 +343,8 @@
 \newcommand{\PCORnet}{\resizebox{!}{7pt}{\AcronymText{PCORnet}}}
 \newcommand{\FHIR}{\resizebox{!}{7pt}{\AcronymText{FHIR}}}
 
+\newcommand{\CaPTk}{\resizebox{!}{7pt}{\AcronymText{CaPTk}}}
+
 
 
 \newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
@@ -503,7 +505,16 @@
 
 \newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
 
+
+\newcommand{\ViSion}{\resizebox{!}{7pt}{\AcronymText{ViSion}}}
+
+\newcommand{\CWL}{\resizebox{!}{7pt}{\AcronymText{CWL}}}
+
 \newcommand{\ThreeD}{\resizebox{!}{7pt}{\AcronymText{3D}}}
+\newcommand{\TwoD}{\resizebox{!}{7pt}{\AcronymText{2D}}}
+
+\newcommand{\medInria}{\resizebox{!}{7pt}{\AcronymText{medInria}}}
+\newcommand{\ThreeDimViewer}{\resizebox{!}{7pt}{\AcronymText{3DimViewer}}}
 
 \newcommand{\FAIR}{\resizebox{!}{7pt}{\AcronymText{FAIR}}}
 
@@ -2027,7 +2038,7 @@ the related project of curating patient narratives.}
 %web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/%cr2.pdf}{here} (this is a downloadable \PDF{} link; 
 %visit the repository to see the larger archive structure).}
 
-\part{The new Database Engineering and Data-Set 
+\part{Novel Database Engineering and Data-Set 
 Construction Technology}
 
 \section{Native/Desktop Application Development with THQL}
