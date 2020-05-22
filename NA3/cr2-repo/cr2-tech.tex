@@ -72,7 +72,7 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=22   %\pgfmathresult>0\relax
+\ifnum\value{page}=23   %\pgfmathresult>0\relax
 \put(12,56){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -100,7 +100,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.725in,top=.5in,right=.725in,bottom=1.2in} %margins
+\geometry{left=.825in,top=.5in,right=.825in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -395,6 +395,7 @@
 
 \newcommand{\HDICOM}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-DICOM}}}
 
+\newcommand{\PhaonVI}{\resizebox{!}{7.5pt}{\ATextCClr{Phaon-VI}}}
 
 
 
@@ -644,7 +645,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.8em}#1}
+\vspace{1em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
