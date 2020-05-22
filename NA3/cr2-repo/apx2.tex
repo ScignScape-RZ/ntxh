@@ -1,4 +1,5 @@
-\section{Appendix 1: A Hypergraph Ontology for Radiological Outcomes}
+\section{Appendix 1: A Hypergraph Ontology for Radiological Outcomes 
+- An Extension to CaPTk}
 \p{Diagnostic imaging and radiological data sets are 
 an important aspect of Covid-19 data because radiological 
 analyses of the chest, particularly Computed Tomography 
@@ -113,9 +114,9 @@ analysis).  It is therefore possible
 to implement a data-sharing protocol which integrates 
 each of these applications; for instance, a researcher 
 could use \medInria{} for manual examination of an 
-image series and switch to \CaPTk{} to perform 
-\AI{}-driven analyses.  This applies not only to 
-radiologists conducting a prescribed diagnosis, 
+image series and then switch to \CaPTk{} to perform 
+\AI{}-driven analyses.  This data integration applies not 
+only to radiologists conducting a prescribed diagnosis, 
 but also --- perhaps more significantly --- 
 to researchers conducting analyses on images 
 published within a radiographic repository.  
@@ -137,14 +138,92 @@ effectively at the application level --- in effect,
 an Application Ontology.  Although the 
 Common Workflow Language (\CWL{}) provides a basic 
 layer of inter-application communication, a fully-developed 
-radiological application ontology has not been 
-formalized.  We will attempt to redress this 
-situation by defining a diagnostic-imaging Hypergraph 
+radiological application ontology has not yet been 
+formalized.  In curating the \CRtwo{} and \AIMConcepts{} 
+repositories, we will address 
+these lacunae by defining a diagnostic-imaging Hypergraph 
 Ontology and implementing support for the 
 corresponding schema as extensions to \CaPTk{}, 
 \medInria{}, \ThreeDimViewer{}, and other image-processing and 
 research tools.  We will also expand the scope of 
 this ontology to incoporate clinical and outcomes data.}
+
+\p{As illustrated by \CaPTk{}, multi-application workflows 
+are characterized both by the data which is 
+transferred between applications and by the 
+operations which connect the two applications 
+--- that is, which procedures are enacted by 
+each application when they become operationally 
+linked.  As a preliminary model, we can identify 
+two stages of operational connection between 
+an already-running application (which may be 
+called the \textit{primary} component) 
+and a second application launched by the primary 
+(which may be called the \textit{peer} component).  
+The first stage occurs when the primary component 
+launches the peer component, and is characterized 
+by two operational sequences: procedures enacted 
+by the primary prior to this launch, and procodures 
+enacted by the peer subsequent to the launch.  
+A second stage occurs when the peer component 
+has completed its actions, and sends data back 
+to the primary component, which again involves two 
+operational sequences: procedures enacted by the 
+peer prior to the transfer, and procedures enacted by the 
+primary subsequent to the transfer.  Fully describing 
+the procedural workflow therefore entails specifying 
+four operational sequences: primary, then peer, 
+during the launch stage; and peer, then primary, 
+during the transfer stage.  A schema describing 
+the operations performed during these four sequences 
+can be called a \textit{procedural ontology}.}
+
+\p{Consequently, rigorous models of multi-application networks 
+should \textit{synthsize} information about data structures 
+(the type of information shared between application-points) 
+with information about procedural workflows 
+(describing operational sequences prior to 
+the launch and transfer stages of a multi-application linkage).  
+The synthesis of this structural and procedural information 
+can be called a \textit{procedural application ontology}.  
+In the case of \CaPTk{}, such a procedural model is 
+implicitly recognized in the protocol for integrating 
+new applications with the \CaPTk{} software, but 
+this implicit protocol has not been explicitly 
+defined in ontological terms.  As such, we propose to 
+standardize a Procedural Application Ontology model which 
+can clarify the inner workings of multi-application 
+protocols such as those of \CaPTk{}.} 
+
+\p{Aside from enhancing \CaPTk{} itself, this form of ontology 
+can serve the more general purpose of prototyping 
+the kinds of inter-application networking which is 
+prerequisite for generalizing medical-imaging software 
+in the direction of data-repository curation and 
+Comparative Effectiveness research.  That is, 
+projects which seek to aggregate radiographic 
+data into third-party archives --- such as the 
+\RSNA{} \AI{} repository for Covid-19 --- 
+and/or projects which perform analyses cross-referencing 
+radiographic data with clinical outcomes, need 
+to pull data from radiological software systems so 
+that this information can be absorbed into a larger 
+clinical-evaluative ecosystem.  In effect, 
+radiological application networks need to be 
+expanded to accommodate patient-centered, epidemiological, 
+treatment plan, and outcomes data.  We propose to 
+formalize this extension phenomenon by 
+treating it as a generalization of 
+multi-application protocols already evidenced by 
+tools such as \CaPTk{} and analyzable in 
+terms of Procedural Application Ontologies 
+(it should be noted that other software platforms 
+--- such as Paraview, in the context of 
+data visualization, and CERN ROOT, in the context 
+of nuclear physics, have related extension 
+mechanisms that can also be analyzed as further 
+details for a general-purpose model of multi-native-application 
+networking).}
 
 \p{Radiological data repositories may be 
 developed in part to improve image-analysis 
@@ -161,10 +240,10 @@ clinical interventions: the ultimate goal is
 to automatically extract image data, given an 
 image series (together with clinical information 
 pertinent to the clinicians' decision to 
-request radiological evaluation) which 
+request radiological evaluation), which 
 suggests that one or another treatment 
 plan is more likely to produce positive 
-outcomes for the patient.
+outcomes for the patient.}
 %}
 %\p{Radiological data is intrinsically multi-modal, 
 %because radiological findings typically 
@@ -190,13 +269,11 @@ outcomes for the patient.
 %therefore can get absorbed into the larger 
 %space of data which accrues to a patient 
 %over the trajectory of their clinical history.  
-The manner in which both radiological and 
+
+\p{The manner in which both radiological and 
 clinical software are structured, however, 
 often makes it difficult to cross-reference 
-radiological data (particularly in the 
-context of image data sets, which may be 
-drawn from a diverse patient population) 
-with corresponding details describing 
+radiological data with corresponding details describing 
 patients' treatment protocols and medical 
 outcomes once a radiological diagnosis has 
 been performed.  For a concrete example (see 
@@ -204,8 +281,9 @@ been performed.  For a concrete example (see
 \q{to retrieve the radiation treatment plan} 
 associated with a \CT{} scan, one \q{has to search for the 
 RTSTRUCT object based on the specific CT scan, and from there 
-search for the RTPLAN object based on the RTSTRUCT object [which] is an inefficient operation because all RTSTRUCT [and] RTPLAN files for the patient need to be processed to find the correct treatment plan.}  
-Even within the context of analyzing radiological 
+search for the RTPLAN object based on the RTSTRUCT object [which] is an inefficient operation because all RTSTRUCT [and] RTPLAN files for the patient need to be processed to find the correct treatment plan.}}
+
+\p{Even within the context of analyzing radiological 
 data sets for radiology-specific data, established 
 \PACS{} software is not designed for large-scale query 
 evaluation linked to clinical data.  As pointed out 
@@ -222,7 +300,7 @@ research.}
 
 \p{In a well-integrated research framework, treatment plans 
 should be linked both to the diagnostic data which 
-motivated them (including radiological images) and 
+form the basis of the plan (including radiological images) and 
 to reports of treatment outcomes.  As a concrete 
 example, consider the choice to use \IORT{} 
 (Intraoperative Radiation Therapy) as an alternative to 
@@ -231,13 +309,14 @@ conventional cancer treatments (see
 Researchers can ask two different questions related to the 
 effectiveness of \IORT{}: (1) which diagnostic 
 cues indicate that a given patient may benefit from 
-\IORT{} in lieu of longer-term therapies, and 
+\IORT{} in lieu of longer-term therapies; and 
 (2) which treatment is more effective at 
 promoting better survival rates.  These two lines 
-of inquiry both require an integrated data querying 
+of inquiry both require an integrated data-querying 
 mechanism that recognizes data from image analysis, 
-from clinical outcomes, and from descriptions of 
-medical treatment, each kind of data to be potentially 
+clinical outcomes, and descriptions of 
+medical treatment; each of these kinds of 
+data can be potentially 
 included as a source of parameters with which to define 
 patient cohorts or to search for statistical correlations.  
 The relatively new \IORT{} treatment is an example of 
@@ -246,33 +325,33 @@ still have limited understanding of which diagnostic
 clues are statistically associated with positive 
 outcomes from \IORT{} as compared with conventional therapy.}
 
-\p{Of course, Covid-19 is an even newer research priority, 
-and initiatives such as the \RSNA{} repository are just 
+\p{In the context of Covid-19, which is an even newer research 
+priority, initiatives such as the \RSNA{} repository are just 
 beginning to aggregate radiological data in a manner which 
-permits broad-scale analysis to be performed.  This new 
-data presents opportunities for the use of semantic 
-annotation technology, including ontologies such 
-as \SeDI{} or \ViSion{} (see \bhref{https://epos.myesr.org/esr/viewing/index.php?module=viewing_poster&task=&pi=155548}).  Although 
-radiological ontologies are primarily designed 
+permits broad-scale analysis to be performed.  
+Although radiological ontologies are primarily designed 
 for use in laboratory software itself --- i.e., the 
 programs radiologists use directly to derive and 
 present their findings --- radiological research 
 in general introduces further application domains, 
 including software for image analysis, for 
 integrating radiological and clinical data, and 
-for examining radiological data sets.}
+for examining radiological data sets.
+This new data presents opportunities for the use of semantic 
+annotation technology, including ontologies such 
+as \SeDI{} or \ViSion{} (see \bhref{https://epos.myesr.org/esr/viewing/index.php?module=viewing_poster&task=&pi=155548}).}
 
 
 \p{Insofar as \PACS{} and \DICOM{} systems need 
-to be paired with applications in these other 
-categories, it is important to 
-develop radiological Application Ontologies, 
+to be paired with applications in the other 
+categories (such as image and data-set analysis), it is 
+important to develop radiological Application Ontologies, 
 alongside the canonical Reference Ontologies 
 associated with diagnostic imaging.  As such, starting with 
 the Covid-19 context, but designed for more 
 general applications as well, one component of \CRtwo{} 
 is a novel radiology-focused \textit{application} 
-ontology, specifically the \q{Hypergraph Ontology 
+ontology, specifically what LTS calls the \q{Hypergraph Ontology 
 for Diagnostic Imaging, Clinical 
 Outcomes, and Data Mining} (\HDICOM{}).  The goal 
 of \HDICOM{} is to connect \RDF{}-based 
@@ -316,7 +395,7 @@ where hypernodes represent high-dimensional
 vectors (191 dimensions overall) and hyperedges 
 represent k-nearest-neighbors; here each hypernode 
 represents an entire image, mapped to a 191-dimensional 
-feature-vector.  On the other hand, other image-analysis 
+feature-vector.  In contrast, other image-analysis 
 methods use hypernodes to designate smaller segments 
 \textit{within} the image, where hyperedges 
 designate geometric adjacency and/or feature-space 
@@ -327,7 +406,7 @@ serialization within a data set.  One benefit of a
 Hypergraph Application Ontology is therefore that 
 these data structures used internally to implement 
 analytic methods can be directly expressed within 
-the ontology, wheres \RDF{} ontologies can only 
+the ontology, whereas \RDF{} ontologies can only 
 model hypergraphs indirectly.}
 
 %\p{}

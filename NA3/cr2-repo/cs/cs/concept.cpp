@@ -603,6 +603,7 @@ r8 Concept::hypervolume_cuboid(cuboid)
  for(i = 0; i < n + 1; ++i)
    //         # inner sum
  {
+/*
   r8 inner_sum = 0.0;
   ? subsets = list(itertools.combinations(all_dims, i));
   for(? subset : subsets)
@@ -631,6 +632,7 @@ r8 Concept::hypervolume_cuboid(cuboid)
    inner_sum += first_product * second_product;
   }
   outer_sum += inner_sum;
+*/
  }
  return factor * outer_sum;
 }
@@ -638,25 +640,33 @@ r8 Concept::hypervolume_cuboid(cuboid)
 r8 Concept::size(self)
 {
  //        """Computes the hypervolume of this concept."""
- hypervolume = 0.0
- num_cuboids = len(core_.cuboids());
+ r8 hypervolume = 0.0
+ u4 num_cuboids = core_.cuboids().length();
         
  //       # use the inclusion-exclusion formula over all the cuboids
- for( l = 1; l <= num_cuboids + 1):
- r8 inner_sum = 0.0;
-
- subsets = list(itertools.combinations(core_.cuboids(), l));
- for(subset : subsets)
+ for(  l = 1; l <= num_cuboids; ++l )
  {
-  intersection = subset[0];
-  for( cuboid : subset)
+  r8 inner_sum = 0.0;
+
+  // subsets = list(itertools.combinations(core_.cuboids(), l));
+
+  QSet<QVector<Cuboid*>> subsets; 
+   // subsets has combo of all cuboid sequences 
+   // // of length l ...
+  for(QVector<Cuboid*> subset : subsets)
   {
-   intersection = intersection.intersect_with(cuboid);
-   inner_sum += self._hypervolume_cuboid(intersection);
+   Cuboid* intersection = subset[0];
+   for(Cuboid* cuboid : subset)
+   {
+    intersection = intersection->intersect_with(cuboid);
+    inner_sum += hypervolume_cuboid(intersection);
+   }
+   // // inner_sum * (-1.0)**(l+1)
+   s4 _l = (l % 2)? (l + 1) : - (l + 1); 
+   hypervolume += inner_sum * _l; // qExp((-1.0), (l+1));
   }
-  hypervolume += inner_sum * qExp((-1.0), (l+1));
  }
- return hypervolume
+ return hypervolume;
 }
 
 r8 Concept::subset_of(Concept& other)
@@ -664,21 +674,24 @@ r8 Concept::subset_of(Concept& other)
 
  //       """Computes the degree of subsethood between this concept and a given other concept."""
 
- QMap <?> common_domains; // = {}
- for( dom, dims : core_.domains().iteritems() )
+ QMap<QString, u4vec> common_domains; // = {}
+
+ for(QString dom : core_.domains().keys()) 
  {
-  if( dom in other.core_.domains() && other.core_.domains()[dom] == dims )
+// for( dom, dims : core_.domains().iteritems() )
+// {
+  if( other.core_.domains().value(dom) == dims )
     common_domains[dom] = dims;
  }
- projected_self = self.project_onto(common_domains)
- projected_other = other.project_onto(common_domains)
+ Concept* projected_self = self.project_onto(common_domains)
+ Concept* projected_other = other.project_onto(common_domains)
         
- intersection = projected_self.intersect_with(projected_other)
- intersection._c = projected_other._c
- intersection._weights = projected_other._weights
- projected_self._c = projected_other._c
- projected_self._weights = projected_other._weights
- subsethood = intersection.size() / projected_self.size()
+ Concept*  intersection = projected_self.intersect_with(projected_other)
+ intersection.c_ = projected_other.c_;
+ intersection.weights_ = projected_other.weights_;
+ projected_self.c_ = projected_other.c_;
+ projected_self.weights_ = projected_other._weights_;
+ r8 subsethood = intersection.size() / projected_self.size()
  return subsethood;
 }
 
