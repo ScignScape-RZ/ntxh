@@ -12,11 +12,12 @@ Vaccine data can be partitioned into information generated
 data generated during clinical trials, including 
 challenge trials) and information 
 generated \textit{after} a vaccine is adopted for immunization 
-campaigns.  Data in the former (clinical trial) phase tends to fit 
+campaigns.  Data in the clinical trial phase tends to fit 
 the structure of patient cohorts, demographics, and outcomes, 
-but data in the vaccine \q{deployment} phase can be more 
+whereas data in the vaccine \q{deployment} phase can be more 
 epidemiological/sociological by virtue of post-vaccination 
-analyses of the effects on the broad population.  In particular, 
+analysis identifying the effects on the population 
+writ large.  In particular, 
 modeling immunization drives often depends on gathering 
 geographical and political information --- that is, researchers 
 need to identify localities where vaccinations are performed 
@@ -41,7 +42,7 @@ As such, we will develop a novel ontology
 --- representing one example of an ontology 
 meeting these requirements --- 
 which we call \q{Hypergraph Ontology for 
-Vaccines and Immunization} (\hVaIm{}), 
+Vaccines and Immunization} (\hVaImm{}), 
 so as to integrate vaccinology data 
 within the overall \CRtwo{} information space.}
 
@@ -76,20 +77,20 @@ can provide in vivo non-invasive imaging for visualizing
 immune cell kinetics} 
 (see \bhref{https://pubmed.ncbi.nlm.nih.gov/31406689/}).}
 
-\p{The evolution of vaccine research, in effect, is an inversion 
+\p{The evolution of vaccine research is, in effect, an inversion 
 of that of diagnostic imaging.  That is, in the context of radiology, 
-image-based technology became established in previous 
-decades and has only recently been augmented with 
+image-based technology have become established in previous 
+decades and have only quite recently been augmented with 
 data-integration models that allow images to be cross-referenced 
 with clinical and outcomes data.  Conversely, in the vaccine 
-context, the clinical and epidemiological/sociodemographic 
+context, the \textit{clinical} and epidemiological/sociodemographic 
 dimensions of vaccine effectiveness have been modeled 
 for decades, but only recently has sophisticated 
 medical imaging become part of the vaccine engineering 
 arsenal.  Despite these inverted paths, 
 one can observe that contemporary radiological and vaccine research 
 have a similar technological infrastructure, characterized 
-by a digital synthesis of graphical, quantitative, and 
+by a digital synthesis of graphical/quantitative and 
 clinical information.}
 
 \p{Given the interdisciplinary nature of 
@@ -98,9 +99,9 @@ for curating data sets involving vaccine research
 should anticipate a similar diversity in the 
 information present within repositories which 
 include vaccine-related research.  That is 
-to say, data-set software applicable in the 
+to say, data-set software relevant in the 
 vaccinology context should be able to read 
-data in diverse formats which represent the 
+data in \textit{diverse formats,} which represent the 
 scope of vaccine investigations (clinical trials, 
 cytometry, blood/serum analysis, bioimaging, etc.).  
 Similarly, developers should provide a suite of 
@@ -108,19 +109,19 @@ software tools offering interactive visualization
 of this data spectrum, including imaging tools.  
 In short, a comprehensive software ecosystem 
 for vaccine-related data sets will have an architecture 
-similar to that for radiology, suggesting that 
+similar to that of radiology, suggesting that 
 the Procedural Application Ontology model described 
 in Appenndix 1 can also be used to describe 
 vaccinological research.  
-In short, \hVaIm{} and \HDICOM{} will function 
+In short, \hVaImm{} and \HDICOM{} will function 
 as sibling ontologies, reflecting their 
 common role as protocols structuring inter-application 
 communications within data repositories which 
 include both vaccinological and radiological 
 resources.  In particular, both of 
-these ontologies will be integrated into 
-software tools providing access to 
-\CRtwo{} data sets publishing information 
+these ontologies (\hVaImm{} and \HDICOM{}) will be integrated 
+by LTS into software tools providing access to 
+\CRtwo{} published data sets, consisting of information 
 about diagnostic imaging and vaccine engineering 
 in the context of Covid-19.}
 
