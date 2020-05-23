@@ -704,25 +704,31 @@ bool Concept::crisp_subset_of(Concept& other)
    return false
 
  //       # core of self must be subset of other's alpha-cut with alpha = self._mu
- ? corner_points; // = []
- <?> self_dims ;// = [dim for dims in self._core._domains.values() for dim in dims]
- 
- for(dims : core_.domains().values())
- {
-  for(dim : dims)
-    self_dims.push_back(dim);
- }
+ QList<r8vec> corner_points; // = []
 
- for(? cuboid : core_.cuboids())
+ u4vec self_dims ;// = [dim for dims in self._core._domains.values() for dim in dims]
+
+ for(const u4vec& dims : core.domains_.values())
+ {
+  self_dims.append(dims);
+ }
+ 
+// for(dims : core_.domains().values())
+// {
+//  for(dim : dims)
+//    self_dims.push_back(dim);
+// }
+
+ for(Cuboid* cuboid : core_.cuboids())
  {
   binary_vecs = itertools.product([False, True], repeat = len(self_dims));
   for(vec : binary_vecs)
   {
-   <?> point;// = []
+   r8vec point;// = []
    j = 0;
-   for(i : range(cs->number_of_dimensions())
+   for(u4 i = 0; i < cs->number_of_dimensions(); ++i)
    {
-    if(i in self_dims)
+    if(self_dims.contains(i))
     {
      point.append(vec[j] ? cuboid.p_max()[i] : cuboid.p_min()[i]);
      ++j;
@@ -733,21 +739,29 @@ bool Concept::crisp_subset_of(Concept& other)
    corner_points.append(point);
   }
  }
- for(point : corner_points)
+ for(r8vec& point : corner_points)
  {
-  if(other.membership_of(point) < self._mu)
+  if(other.membership_of(point) < mu_)
     return false;
  }
 //       # domains on which other is defined must be subset of domains on which self is defined
- for(dom, dims : other.core_.domains().iteritems())
+
+ for(QString dom : other.core_.domains().keys())
  {
-  if(! (dom in self.core_.domains() && self.core_.domains()[dom] == dims))
+ //for(dom, dims : other.core_.domains().iteritems())
+ //{
+  if(! (core_.domains().value(dom) == other.core_.domains()[dom]) ) 
     return false;
  }
+
 //        # for all dimensions: c * w_dom * sqrt(dim) must not be larger for other than for self
- for( dom, dims : other.core_.domains().iteritems())
+
+// for( dom, dims : other.core_.domains().iteritems())
+
+ for(QString dom : other.core_.domains().keys())
  {
-  for(? dim : dims)
+  const u4vec& dims = other.core_.domains()[dom];
+  for(u4 dim : dims)
   {
    other_value = other.c_ * other.weights_.domain_weights()[dom] 
      * qSqrt(other.weights_.dimension_weights()[dom][dim]);
@@ -777,23 +791,33 @@ r8 Concept::similarity_to(Concept& other, QString method) //="Jaccard")
  //           'subset':                 degree of subsethood as computed in subset_of()
 //        """
  
-//         # project both concepts onto their common domains to find a common ground                              
- QMap<?> common_domains; // = {}
- for( dom, dims : core_.domains().iteritems())
+//         # project both concepts onto their common domains to find a common ground                     
+
+ QMap<QString, u4vec> common_domains; // = {}
+
+ for(QString dom : core_.domains().keys())
  {
-  if( (dom in other.core_.domains()) and (other.core_.domains()[dom] == dims) )
+  const u4vec& dims = core_.domains()[dom];
+  if(other.core_.domains().value(dom) == dims)
     common_domains[dom] = dims;
  }
 
- if(len(common_domains) == 0)
+// for( dom, dims : core_.domains().iteritems())
+// {
+//  if( (dom in other.core_.domains()) and (other.core_.domains()[dom] == dims) )
+//    common_domains[dom] = dims;
+// }
+
+ if( common_domains.length() == 0 ) // len(common_domains) == 0)
 //            # can't really compare them because they have no common domains --> return 0.0
    return 0.0;
- projected_self = project_onto(common_domains);
- projected_other = other.project_onto(common_domains);
+
+ Concept* projected_self = project_onto(common_domains);
+ Concept* projected_other = other.project_onto(common_domains);
  if(method == "Jaccard")
  {
-  intersection = projected_self.intersect_with(projected_other);
-  unify = projected_self.unify_with(projected_other);
+  Concept* intersection = projected_self.intersect_with(projected_other);
+  Concept* unify = projected_self.unify_with(projected_other);
   r8 sim = intersection.size() / unify.size();
   return sim;
  }
@@ -803,7 +827,7 @@ r8 Concept::similarity_to(Concept& other, QString method) //="Jaccard")
  }  
  else
  {
-  raise Exception("Unknown method");
+  throw "Unknown method" ; //raise Exception("Unknown method");
  }
 }
  
@@ -1034,7 +1058,7 @@ r8 Concept::between(Concept& first, Concept& second,
    alphas.push_back(step_size * i);
   }   
 
-  <?> intermediate_results; // = []
+  r8vec intermediate_results; // = []
             
   u4 num_successful_cuts = 0; 
             
@@ -1178,10 +1202,10 @@ r8 Concept::between(Concept& first, Concept& second,
   return sum(intermediate_results) / num_successful_cuts;
  }
  else
-   raise Exception("Unknown method");
+   throw "Unknown method";
 }
 
-? Concept::sample(u4 num_samples)
+Concept* Concept::sample(u4 num_samples)
 {
  //       """Samples 'num_samples' instances from the concept, based on its membership function."""
         
@@ -1193,28 +1217,41 @@ r8 Concept::between(Concept& first, Concept& second,
         
  <?> samples; // = []
 
- //        # compute the boundaries to sample from:
- //       # for each dimension, compute the intersection of membership(x) with y = 0.001
+ // # compute the boundaries to sample from:
+ // # for each dimension, compute the intersection 
+   //  of membership(x) with y = 0.001
 
- <?> boundaries; // = []
- for( dim : range(cs->n_dim) )
+ QVector<QPair<r8, r8>> boundaries; // = []
+ for( u4 dim = 0; dim < cs_->number_of_dimensions(); ++ dim ) 
+   // dim : range(cs->n_dim) )
  {
-  core_min = float("inf");
-  core_max = float("-inf");
+  r8 core_min = QtINF; // float("inf");
+  r8 core_max = QtNegINF; // float("-inf");
  
   for(c : core_.cuboids() )
   {
-   core_min = min(core_min, c._p_min[dim]);
-   core_max = max(core_max, c._p_max[dim]);
+   r8 core_min = qMin(core_min, c.p_min_[dim]);
+   r8 core_max = qMax(core_max, c.p_max_[dim]);
    
-   if( (core_min == float("-inf")) && (core_max == float("inf")) )
-     //           # concept not defined in this dimension --> use arbitrary interval [-2,+2]
-     //          # TODO: come up with something better
-     boundaries.append([-2, 2]);
+   if( (core_min == QtNegINF) // float("-inf")) 
+     && (core_max == QtINF) )    //float("inf")   //) )
+      //           # concept not defined in this dimension 
+         //  --> use arbitrary interval [-2,+2]
+      //           # TO DO: come up with something better
+     boundaries.append({-2.0, 2.0});
 
    else
    {
+        
+
+    core_.domains_.items()
+
+
     dom = filter(lambda (x,y): dim in y, self._core._domains.items())[0][0];
+
+    
+
+
     difference = - log(0.001/self._mu) / 
       (c_ * weights_.domain_weights()[dom] 
       * qSqrt(weights_.dimension_weights()[dom][dim]));
