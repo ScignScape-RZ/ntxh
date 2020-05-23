@@ -1,0 +1,183 @@
+
+\p{Patient-centered research in the radiological 
+context focuses on improving the precision of 
+diagnostic-imaging techniques and the corresponding 
+clinical interventions.  The goal of contemporary 
+radiology is not only to confirm a diagnosis, 
+but also to extract diatnostic cues from 
+medical images that suggest which course of 
+treatment has the highest probability of 
+favorable treatment outcomes.  A related 
+goal is curating collections of diagnostic 
+images so as to improve our ability to 
+identify such diagnostic cues, potentially 
+using Machine Learning and/or Artificial 
+Intelligence applied to large-scale 
+image repositories.}
+
+\p{The goal of building \q{searchable} image repositories 
+has inspired projects such as the Semantic Dicom Ontology 
+(\SeDI{})\footnote{See \bhref{https://bioportal.bioontology.org/ontologies/SEDI}.} and the \ViSion{} \q{structured 
+reporting} system.\footnote{See \bhref{https://epos.myesr.org/esr/viewing/
+index.php?module=viewing_poster&task=&pi=155548}.}  
+As explained in the context of \SeDI{}: 
+\q{if a user has a CT scan, and wants to retrieve the [corresponding] radiation treatment plan ... he has to search for the 
+RTSTRUCT object based on the specific CT scan, and from there 
+search for the RTPLAN object based on the RTSTRUCT object.  This is an inefficient operation because all RTSTRUCT [and] RTPLAN files for the patient need to be processed to find the correct treatment 
+plan.}\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/}  Even relatively simple queries such as 
+\q{display all patients with a
+bronchial carcinoma bigger than 50 cm$^3$} cannot 
+be processed by \PACS{} systems: \q{although there are various powerful clinical applications to process image data and image data series to create significant clinical analyses, none of these analytic results can be merged with the clinical data of a single patient.}\footnote{See 
+\bhref{https://semantic-dicom.com/starting-page/}.}  These 
+limitations partly reflect the logistics of how 
+information is transferred between clinical institutions 
+and radiology labs.  So as to advance the science 
+of diagnostic image-analysis, organizations such as 
+the Radiological Society of North America 
+(\RSNA{}) have curated open-access data sets encompassing 
+medical images as well as image-annotations (encoding feature 
+vectors) which can serve as reference sets and test 
+corpora for investigating analytic methods.  Such 
+repositories are designed to integrate data from 
+multiple hospitals and multiple laboratories.}
+
+\p{This renewed focus on patient outcomes 
+has important consequences for the scope and 
+requirements of diagnostic-imaging software.  
+In particular, the domain of radiological applications 
+is no longer to limited to \PACS{} workstations 
+where pathologists perform their diagnostic analysis, 
+with the results transferred back to the referring institution 
+(and subsequently available only through that institution's 
+medical records, if at all).  In the 
+conventional workflow, radiographic images are requested by 
+some medical institution for diagnostic purposes.  
+Relevant information is therefore shared between 
+two end-points: the institution which prescribes 
+a diagostic evaluation and the radiologist or 
+laboratory which analyzes the resulting images.  
+Building radiographic data repositories complicates 
+this workflow because a third entity becomes 
+involved --- the organization responsible 
+for aggregating images and analyses is generally 
+distinct from both the prescribing institution and 
+the radiologists themselves.  As a result, both radiologists and prescribing 
+institutions, upon participation in the formation 
+of the target repository, must identify which image 
+series and which patient data are proper candidates 
+for the relevant repository.}
+
+\p{For a concrete example, \RSNA{} has announced the 
+forthcoming publication of an open-access image 
+repository devoted to 
+Covid-19.\footnote{See \bhref{https://www.rsna.org/covid-19}.}  
+This repository is being curated in collaboration with 
+multiple European, Asian, and South American organizations 
+so as to collect data from hospitals treating 
+Covid-19 patients.  Such a collaboration requires 
+protocols both for data submission and for patient privacy 
+and security.  As this example demonstrates, 
+these kinds of data-sharing initiatives present 
+new requirements for radiological software, which must 
+not only allow for the presentation, annotation, and 
+analysis of medical images, but also for participation 
+in data-sharing initiatives adhering to rigorous 
+modeling and operational protocols.}
+
+\p{Simultaneously, the science of diagnostic imaging 
+is also expanding as new image-analytic techniques 
+prove to be effective at detecting signals 
+within image data, often complementing the work 
+of human radiologists.  The proliferation of 
+image-analysis methodologies places a new emphasis 
+on \textit{extensibility,} where radiological 
+software becomes more powerful and flexible 
+because new analytic modules may be pluggin in 
+to a central \PACS{} system.  A good example of 
+this new paradigm is the Cancer Imaging Phenomics 
+Toolkit (\CaPTk{}), developed by the Center for Biomedical 
+Image Computing and Analytics (\CBICA{}) at the 
+University of Pennsylvania's Perelman School of Medicine.
+The \CaPTk{} project provides a central application 
+which provides a centralized User Interface and 
+takes responsibility for acquiring and loading 
+radiographic images.  The \CaPTk{} core application is 
+then paired with multiple \q{peer} applications 
+which can be launched from \CaPTk{}'s main window, 
+each peer focused on implementing specific 
+algorithms so as to transform and/or to extract feature vectors 
+from images sent between \CaPTk{} and its plugins.}
+
+\p{Both the patient-outcomes focus in building image 
+repositories and the integration of novel 
+Computer Vision algorithms depend, at their core, 
+on rigorous data sharing.  Taking the 
+\RSNA{} Covid-19 repository as a case study for 
+promoting research into post-diagnostic outcomes, 
+this repository is possible because an international 
+team of hospitals and institutions have agreed to 
+pool radiological data relevant to SARS-CoV-2 infection 
+according to a common protocol.  Taking \CaPTk{} as a 
+case-study in multi-modal image analysis, this 
+system is likewise possible because analytic modules 
+can be wrapped into a plugin mechanism which allows 
+many different algorithms to be bundled into a common 
+software platform.  Of course, these two areas 
+of data-sharing overlap: one mission of repositories 
+such as the \RSNA{}'s is to permit many different 
+analyses to be performed on the common image 
+assets.  The results of these analyses then become 
+additional information which enlarges the 
+repository proportionately.  If \CaPTk{} modules 
+are used to analyze the \RSNA{} Covid-19 images, 
+for example, there needs to be a mechanism for 
+exporting the resulting data outside the \CaPTk{} 
+system, so that the analyses may be integrated into 
+the repository either directly or as a supplemental 
+resource.}
+  
+\p{This example demonstrates how software such as 
+\CaPTk{} may be extended to support the curation 
+of image repositories dedicated to Patient Outcomes 
+and Comparative Effectiveness Research (\CER{}), insofar 
+as analytic data generated by \CaPTk{} components 
+can asquire the capability to share data according 
+to repository protocols.  A further level of 
+integration between \CaPTk{} and \CER{} initiatives 
+can be achieved if one observes that clinical 
+outcomes may be part of the analytic parameters 
+used by \CaPTk{} modules.  As presently constituted, 
+\CaPTk{} analytic tools are focused on extracting 
+quantitative (or quantifiable) features from 
+image themselves, without considering additional 
+patient-centered context.  There is no technical 
+limitation, however, which would prevent the 
+\CaPTk{} system from sharing more detailed clinical 
+information with its modules, allowing these 
+analytic components to cross-reference image features 
+with clinical or patient information.  Insofar as 
+the image analysis is often retroactive --- not 
+entertained in the course of a present diagnosis but 
+examining images from which a diagnosis has already 
+been rendered --- information about treatment 
+protocols and outcomes can also be shared between 
+the \CaPTk{} components, assuming this information 
+is provided along with images themselves in the 
+context of an image repository and/or a \q{semantic} 
+\DICOM{} system.}
+
+\p{We propose, therefore, to implement enhancements to 
+\CaPTk{} allowing for clinical and outcomes data 
+to be shared between \CaPTk{} components, and allowing 
+for \CaPTk{} modules to participate in data-sharing 
+initiatives devoted to integrating image analysis 
+with outcomes research.  Moreover, we believe that 
+the data-sharing protocol used internally by 
+\CaPTk{} can be formalized and generalized to 
+serve as a prototype for integrating diagnostic 
+imaging with clinical outcomes in broader contexts.  
+
+
+ }
+
+
