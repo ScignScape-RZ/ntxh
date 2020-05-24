@@ -382,7 +382,67 @@ which we will call the
 data-exchange protocol that we are also implementing, 
 the Hypergraph Exchange Format (\HGXF{}).}
 
-\p{}
+\p{To explain the rationale for \HMCL{} and \HGXF{}, 
+consider the role that data-serialization and Interface 
+Definition languages play in software engineering: 
+programmers need guidelines when implementing 
+procedures wherein one application sends, receives, 
+and/or acts upon data sent or requested by a 
+second application.  Standardized representation 
+formats provide guidelines that help codewriters 
+serializes data in ways that produce usable resources 
+--- representing data via \XML{}, for instance, ensures 
+that any application has the theoretical capacity 
+to decode the information (insofar as \XML{} libraries 
+exist for every mainstream programming language 
+and environment).  Optimally, both end-points in a 
+cross-application messaging scenario should be 
+able to encode and decode information with 
+as little \q{biolerplate} code as possible, which 
+is why applications may choose serialization 
+languages which are detailed and expressive, 
+so long as they have guarantees that partner 
+applications can recognize the same format.  
+This is one justification for hypergraph 
+serialization, insofar as hypergraphs are 
+a very flexible representation that can 
+accommodate almost any data structure 
+that needs to be encoded, often with 
+less translational effort than marshaling 
+data into formats such as \XML{} and \JSON{}.}
+
+\p{Hypergraphs provide a generalization of 
+graph-like and/or hierarchical data structures 
+in multiple contexts: in markup languages, 
+for example, hypergraphs allow for concurrent 
+or overlapping node-structures, yielding 
+formats which are more expressive than \XML{}.  
+In the Semantic Web, hypergraphs are used 
+as a generalization of \RDF{}, allowing for 
+nested levels of structure and data localization.  
+Within image analysis, hypergraphs are often 
+employed to represent feature vectors and/or 
+geometric relations between image segments.  
+Hypergraphs have also been utilized in the
+description of multi-part biological or 
+biomedical processes: protein complexes, 
+metabolic reactions, genomic sequences, 
+and so forth.  Considering the range of 
+specialized cases for hypergraph representations 
+--- as well as how hypergraph structures are 
+suitable for simpler data that could also 
+be represented via \XML{} or \RDF{} --- 
+it is reasonable to select hypergraphs 
+as a generic data-encoding format.  
+We propose a flexible hypergraph model which 
+can accommodate verious hypergraph 
+categories (e.g., both directed and 
+undirected) and can represent supplemental 
+information sometimes introduced into 
+hypergraph models, such as probabilities 
+and edge-annotations.
+
+ }
 
 \p{}
 
