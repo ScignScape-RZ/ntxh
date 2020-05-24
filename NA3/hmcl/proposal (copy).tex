@@ -50,46 +50,30 @@
 }
 
 \AddToShipoutPicture{%
-\ifnum\value{page}=1
-\put(257.5,942){%
-	\transparent{0.7}{
-		\includegraphics[width=0.2\textwidth]{logo.png}}}
-\put(59,953){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}WHITE PAPER}}}
-\fi
-}	
-
-
-
-\AddToShipoutPicture{%
 \ifnum\value{page}>1
 {\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
 
-\put(301,16){%
-\transparent{0.7}{
-\includegraphics[width=0.2\textwidth]{logo.png}} }
-
-%\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
-
-\ifnum\value{page}=23   %\pgfmathresult>0\relax
-\put(12,56){
- {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
-
-   {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
-	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
-       \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
-      amy.neustein@verizon.net \textbullet{} \textbf{(917) 817-2184} }}}
-	 \end{minipage}}}}}}
-}
-\fi
-
 {\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
 {\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
 {\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
 
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
 \fi
 }
+
+\AddToShipoutPicture{%
+\ifnum\value{page}=1
+\put(257.5,729){%
+	\transparent{0.7}{
+		\includegraphics[width=0.2\textwidth]{logo.png}}}
+%\put(59,953){}
+\fi
+}	
+
 
 %\pagestyle{empty} % no page number
 %\parskip 7.2pt    % space between paragraphs
@@ -99,8 +83,8 @@
 
 %\setlength{\footskip}{7pt}
 
-\usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.83in,top=.5in,right=.81in,bottom=1.2in} %margins
+\usepackage[paperheight=11in,paperwidth=8.5in]{geometry}
+\geometry{left=.85in,top=.5in,right=.85in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -905,6 +889,9 @@
 
 \colorlet{ctmppppy}{ctmppp!60!orange}
 
+
+
+
 %{\colorbox{darkBlGreen!30!darkRed}{%
 \begin{tcolorbox}
 [
@@ -940,9 +927,9 @@ Patient-Centered Research}
 \p{Patient-centered research in the radiological 
 context focuses on improving the precision of 
 diagnostic-imaging techniques and the corresponding 
-clinical interventions.  The goal of contemporary 
+clinical interventions.  Indeed, the goal of contemporary 
 radiology is not only to confirm a diagnosis, 
-but also to extract diatnostic cues from 
+but also to extract diagnostic cues from 
 medical images that suggest which course of 
 treatment has the highest probability of 
 favorable treatment outcomes.  A related 
@@ -962,7 +949,7 @@ As explained in the context of \SeDI{}:
 \q{if a user has a CT scan, and wants to retrieve the [corresponding] radiation treatment plan ... he has to search for the 
 RTSTRUCT object based on the specific CT scan, and from there 
 search for the RTPLAN object based on the RTSTRUCT object.  This is an inefficient operation because all RTSTRUCT [and] RTPLAN files for the patient need to be processed to find the correct treatment 
-plan.}\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/}  Even relatively simple queries such as 
+plan.}\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/}}  Even relatively simple queries such as 
 \q{display all patients with a
 bronchial carcinoma bigger than 50 cm$^3$} cannot 
 be processed by \PACS{} systems: \q{although there are various powerful clinical applications to process image data and image data series to create significant clinical analyses, none of these analytic results can be merged with the clinical data of a single patient.}\footnote{See 
@@ -983,11 +970,11 @@ multiple hospitals and multiple laboratories.}
 has important consequences for the scope and 
 requirements of diagnostic-imaging software.  
 In particular, the domain of radiological applications 
-is no longer to limited to \PACS{} workstations 
+is no longer limited to \PACS{} workstations 
 where pathologists perform their diagnostic analysis, 
 with the results transferred back to the referring institution 
 (and subsequently available only through that institution's 
-medical records, if at all).  In the 
+medical records, if at all).  In the older,  
 conventional workflow, radiographic images are requested by 
 some medical institution for diagnostic purposes.  
 Relevant information is therefore shared between 
@@ -1037,7 +1024,7 @@ Toolkit (\CaPTk{}), developed by the Center for Biomedical
 Image Computing and Analytics (\CBICA{}) at the 
 University of Pennsylvania's Perelman School of Medicine.
 The \CaPTk{} project provides a central application 
-which provides a centralized User Interface and 
+which supplies a centralized User Interface and 
 takes responsibility for acquiring and loading 
 radiographic images.  The \CaPTk{} core application is 
 then paired with multiple \q{peer} applications 
@@ -1079,7 +1066,7 @@ resource.}
 of image repositories dedicated to Patient Outcomes 
 and Comparative Effectiveness Research (\CER{}), insofar 
 as analytic data generated by \CaPTk{} components 
-can asquire the capability to share data according 
+can acquire the capability to share data according 
 to repository protocols.  A further level of 
 integration between \CaPTk{} and \CER{} initiatives 
 can be achieved if one observes that clinical 
@@ -1142,9 +1129,10 @@ integration between the components, not only
 shared data formats or Common Vocabularies.}
 
 \p{Architecturally, this pattern of organization is 
-analysis to the collection of software components 
+analogous to the collection of software components 
 that may share access to a data repository or 
-a research-data corpus.  The purpose of 
+a research-data corpus, include a corpus of 
+medical/diagnostic images.  The purpose of 
 research data archives --- particularly when 
 they embrace contemporary open-access standards 
 such as \FAIR{} (Findable, Accessible, Interoperable, 
@@ -1173,7 +1161,7 @@ based on each components' respective capabilities.
 In sum, the \CaPTk{} architecture --- consisting 
 of numerous autonomous, stand-alone, native 
 applications federated into a decentralized 
-but unified --- is similar logistically 
+but unified platform --- is similar logistically 
 to the kinds of application networks 
 appropriate for the technology supporting 
 archives of research date (including 
@@ -1187,7 +1175,7 @@ research data repositories.  As a starting point
 for modeling such multi-application networks, we 
 propose to concentrate on software which is 
 implementationally similar to \CaPTk{} within 
-the medical-imaging domain --- for example, 
+the medical-imaging domain.  For example, 
 \medInria{} (a general-purpose radiology 
 platform) and \ThreeDimViewer{} (a tool which generates 
 \ThreeD{} tissue models from \TwoD{} image series) 
@@ -1206,9 +1194,9 @@ platform --- whereas \CaPTk{} is focused on
 image analysis and \AI{}, \medInria{} functions 
 more as a conventional \PACS{} workstation for 
 manual image-annotation and diagnostic reporting, 
-whereas \ThreeDimViewer{} is specifically 
-focused on three-dimensional tissue modeling and 
-reconstruction.  A robust data-sharing protocol 
+while \ThreeDimViewer{} is specifically 
+focused on three-dimensional tissue modeling.  
+A robust data-sharing protocol 
 would ensure that each of these applications can 
 interoperate, allowing users the choice to 
 switch which program they are using depending on 
@@ -1586,4 +1574,5 @@ on the github page that will be used for
 republishing the relevant data 
 (see \bhref{https://github.com/Mosaic-DigammaDB/CRCR}).}
 
+\end{document}
 
