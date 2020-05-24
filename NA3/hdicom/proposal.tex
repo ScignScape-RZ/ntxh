@@ -440,9 +440,169 @@ categories (e.g., both directed and
 undirected) and can represent supplemental 
 information sometimes introduced into 
 hypergraph models, such as probabilities 
-and edge-annotations.
+(introducing measures of uncertainty or 
+fuzziness into relations) and \q{roles} 
+(characterizing multi-part relations in terms 
+of the situational status of their 
+constituents).\footnote{The concept of roles 
+is highlighted by Grakn.ai: see \bhref{https://dev.grakn.ai/docs/schema/concepts}.}  The general category of hypergraphs encompasses a 
+range of structures implemented by various 
+hypergraph libraries and database engines.  Although 
+several graph-serialization formats currently 
+exist, we believe a new Hypergraph Exhange Format 
+is warranted which is intrinsically designed 
+to model the full range of hypergraph structures 
+developed in the scientific literature as well 
+as the scientific-computing community.}
 
- }
+\p{This discussion illustrates the rationale for 
+designing our \HGXF{} format.  As mentioned above, 
+this format is intended to be paired with a Hypergraph 
+Multi-Application Configuration Language 
+(\HMCL{}).  The purpose of \HMCL{} is to represent 
+multi-application networking protocols with greater 
+procedural detail and specificity than provided 
+by traditional workflow or Interface Definition 
+languages.  Within the scope of multi-application 
+workflows, we have briefly outlined the protocols 
+adopted by \CaPTk{} in prior paragraphs.  A more rigorous 
+review of multi-application networking can be obtained 
+by considering anlogous protocols connecting 
+semi-autonomous software agents in other contexts: 
+ParaView extensions, \Qt{} Creator Plugins, Octave 
+scrips, and \ROOT{} modules, for example 
+(\ROOT{} referring to the physics platform developed 
+at \CERN{}) --- restricting attention to the 
+\Qt{}/\Cpp{} ecosystem.  Further afield, a similar 
+sense of semi-autonomy can be found in hybrid \GUI{} 
+and scripting platforms such as Jupyter (in the 
+Python context) and Seco (a Java-based \q{notebook} 
+framework built on top of HyperGraphDB, where 
+\textit{notebook} in this environment refers to 
+interactive code development and execution 
+containers such as Jupyter and RStudio).  
+These platforms are familiar to data visualization 
+and machine-learning engineering (where a script 
+may analyse data and a \GUI{} component follow up 
+by presenting a chart or dataplot summarizing the 
+analysis), as well as other quantitative 
+domains outside the natural scientists 
+(in financial services, for example, scripting 
+formats such as \MQFour{} execute investment strategies 
+while associated \GUI{} components present 
+finance-related visual objects, such as candlestick charts.)  
+Similar workflow models have been developed in 
+theoretically-informed frameworks such as 
+\VISSION{}, which is paired with programming constructs 
+such as \q{metaclasses} and \q{dataflow 
+interfaces}.\footnote{See \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.}     
+The common element in all of these systems is the 
+presence of a central \GUI{} application whose 
+capabilities are enhanced by customizable extensions with 
+their own analytic and/or \GUI{} features: these 
+extensions are neither fully autonomous 
+applications nor simple scripts that may automate 
+certain capabilities of the main application but 
+do not fundamentally extend its functionality.  
+This intermediate position --- neither wholly 
+autonomous nor functionally subservient --- 
+is expressed by the idea of \textit{semi-autonomous} 
+software agents.}
+
+
+\p{Rigorous models of application networks among semi-autonomous 
+components acquire an extra level of complexity precisely 
+because of this intermediate status: protocol definitions 
+have to specify both the functional interdependence 
+and the operational autonomy of different parts of 
+the application network.  We propose to 
+address this complexity by adopting a hypergraph-based 
+paradigm for procedural and type modeling, from 
+which derives our proposed \HMCL{} format.  
+The goal of \HMCL{} is to define protocols for 
+inter-application messaging by focusing on 
+procedures enacted by both applications before and 
+after each stage in the communication.  This 
+is not (in general) a \q{Remote Method Invocation} 
+or \q{Simple Object Access Protocol} where one 
+application explicitly initiates a specific procedure 
+for the second to perform; instead, the chain of 
+procedure calls (which we call the multi-application
+\textit{operational semantics}) is more indirenct, 
+with \textit{requests} and \textit{responses} that 
+may be mapped to different procedure-sequences in 
+different contexts.  Nevertheless, although 
+one application does not need detailed 
+knowledge of the other's internal procedure 
+signatures (which would break encapsulation), 
+a rigorous messaging protocol can be developed 
+by specifying requirements on the relevant 
+procedures implemented by each application.  
+Developers can then explicitly state that 
+a given set of procedures implements a given 
+\HMCL{} protocol (the multi-application documentation 
+thereby has more detailed information about 
+application-specific procedures than each 
+application has \visavis{} its peers).  The 
+functional interdependence between applications can 
+then be modeled by defining protocols which 
+must be satisfied by procedure-sets internal 
+to each end-point --- the relevant information 
+from an integrative standpoint is not the 
+actual procedures involved, but confirmation 
+that the relevant procedure sets adhere 
+to the relevant multi-procedural protocol.}
+
+\p{Reviewing the source code and documentation 
+for \CaPTk{} confirms that multi-application 
+messaging along these lines is implicitly adopted 
+by \CaPTk{}, but the protocols involved have not 
+been formalized with the level of rigor we 
+contend is possible via \HMCL{}.  As the 
+central element in our extension to \CaPTk{}, 
+we propose therefore to formalize the \CaPTk{} 
+protocol using \HMCL{}, which among other 
+benefits will allow plugins to be introduced 
+into \CaPTk{} via configuration files rather than 
+through the manual process described in the 
+\CaPTk{} literature.\footnote{See for example 
+\bhref{https://www.med.upenn.edu/cbica/assets/user-content/images/captk/2018_ISBI_CaPTk.0404.Part2.pdf}, particularly 
+the material starting on the 30th slide of that presentation.}  
+At a practical level, we believe these enhancements to 
+\CaPTk{} will make it a little easier for \CaPTk{} to be 
+used in a context where researchers wish to 
+analyze clinical outcomes in conjunction with 
+image data within the scope of statistical, 
+Machine Learning, or \AI{} methods.  Moreover, 
+they will allow \CaPTk{} to be integrated with 
+other radiological software (such as \medInria{} and 
+\ThreeDimViewer{}) and, more generally, with a 
+suite of scientific applications, arriving at a 
+multi-purpose research platform optimized for the 
+curation and re-use of open-access research data.  
+At a more theoretical level, we also believe 
+that the formats we have described here --- specifically 
+\HGXF{} and \HMCL{} --- can be useful in a wide 
+range of scientific computing and software engineering 
+contexts, particularly in conjunction with 
+\q{reference implementations} that we will provide 
+in the context of \CaPTk{}.} 
+
+\p{In sum, then, the following represents 
+contributions that we propose for inclusion into 
+patient-centered outcomes research in the 
+Covid-19 context, as prioritized by the 
+current funding opportunity: first, we 
+will implemented an extended radiological 
+software platform which both utilizes and 
+improves upon the extension mechanism present 
+in \CaPTk{}, and then integrates other radiological 
+software as well, such as \medInria{}.  
+We will develop extensions that allow researchers 
+to cross-reference radiological and clinical/outcomes 
+data, by introducing more sophisticated 
+   
+}
 
 \p{}
 
