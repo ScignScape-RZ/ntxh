@@ -176,8 +176,214 @@ the data-sharing protocol used internally by
 \CaPTk{} can be formalized and generalized to 
 serve as a prototype for integrating diagnostic 
 imaging with clinical outcomes in broader contexts.  
+The protocols adopted by \CaPTk{} reflect how the 
+\CaPTk{} system is designed: each \CaPTk{} 
+component is a semi-autonomous software application 
+providing specific analytic capabilities.  
+By default, each \CaPTk{} component is a \textit{stand-alone} 
+and \textit{native} application which is operationally 
+independent of \CaPTk{}, apart from receiving image data 
+from the main \CaPTk{} application.  Integration 
+between \CaPTk{} and its peer applications therefore 
+operates on several different levels, including 
+that of building and compiling the applications 
+alongside \CaPTk{} and registering the modules with 
+the central system, so that users can launch the 
+peer application while running the main \CaPTk{} program.  
+A variation of these protocols applies to 
+components deployed by some means other than 
+source-code level inclusion in a \CaPTk{} system; 
+e.g. as pre-built binaries or as Docker 
+images.\footnote{Our proposed enhancements will allow 
+an additional form of plugin using the ReproZip 
+framework; see \bhref{https://www.reprozip.org/}.}  
+In each of these cases, a rigorous formalization 
+of the \CaPTk{} protocol has to consider 
+compiler, executable, and workflow-related 
+integration between the components, not only 
+shared data formats or Common Vocabularies.}
 
+\p{Architecturally, this pattern of organization is 
+analysis to the collection of software components 
+that may share access to a data repository or 
+a research-data corpus.  The purpose of 
+research data archives --- particularly when 
+they embrace contemporary open-access standards 
+such as \FAIR{} (Findable, Accessible, Interoperable, 
+Reusable\footnote{See \bhref{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}.}) 
+and the Research Object 
+Protocol\footnote{See \bhref{https://pages.semanticscholar.org/coronavirus-research}} --- is to promote reuse and reproduction of 
+published data and findings, such that multiple subsequent research 
+projects may be based on data originally published 
+to accompany one book or article.  As a result, it is 
+expected that numerous projects may overlap in their 
+use of a common underlying data set, which potentially 
+means a diversity of software components implementing 
+a diversity of analytic techniques, each offering a unique 
+perspective on the underlying data.  Open-access data 
+publishing, as a result, is conducive to a software 
+engineering paradigm that favors the implementation 
+of autonomous software agents which, 
+their autonomy notwithstanding, can interoperate to the degree 
+that they are collectively oriented to a shared data source.  
+Such a multi-application network requires integration 
+not only at the level of data structures, but also 
+at the level of Human-Computer Interaction and 
+inter-application messaging --- in the optimal 
+case users can switch between applications 
+based on each components' respective capabilities.  
+In sum, the \CaPTk{} architecture --- consisting 
+of numerous autonomous, stand-alone, native 
+applications federated into a decentralized 
+but unified --- is similar logistically 
+to the kinds of application networks 
+appropriate for the technology supporting 
+archives of research date (including 
+diagnostic-imaging repositories).}
 
- }
+\p{Given this architectural correlation, we propose 
+that the \CaPTk{} architecture can be used 
+as a prototype for implementing multi-application 
+networks such as those applicable to 
+research data repositories.  As a starting point 
+for modeling such multi-application networks, we 
+propose to concentrate on software which is 
+implementationally similar to \CaPTk{} within 
+the medical-imaging domain --- for example, 
+\medInria{} (a general-purpose radiology 
+platform) and \ThreeDimViewer{} (a tool which generates 
+\ThreeD{} tissue models from \TwoD{} image series) 
+are both open-source \Cpp{} applications built 
+on top of the \Qt{} application development 
+platform, so they occupy essentially the 
+same niche in the software engineering 
+ecosystem as \CaPTk{}.  Our proposed \CaPTk{}  
+extensions therefore apply to these related 
+projects, insofar as we can implement plugins 
+extending all three applications with a more 
+rigorous data-integration protocol.  Each 
+of these applications likewise lends distinct 
+capabilities to a multi-application radiological 
+platform --- whereas \CaPTk{} is focused on 
+image analysis and \AI{}, \medInria{} functions 
+more as a conventional \PACS{} workstation for 
+manual image-annotation and diagnostic reporting, 
+whereas \ThreeDimViewer{} is specifically 
+focused on three-dimensional tissue modeling and 
+reconstruction.  A robust data-sharing protocol 
+would ensure that each of these applications can 
+interoperate, allowing users the choice to 
+switch which program they are using depending on 
+the specific analytic tasks they wish to take on 
+for a given session.}
+
+\p{Along with these radiology-specific applications, 
+the application network we are hereby describing 
+can moreover include other components commonly 
+used by researchers in a radiological context: 
+software such as \XPDF{} (a \PDF{} viewer), 
+\IQmol{} (a molecular-visualization program), 
+\ParaView{} (a data-visualization platform), 
+\Octave{} (an open-source Matlab alternative), 
+and \Qt{} Creator (a \Cpp{} Integrated Development 
+Environment) are all built with the same 
+\Qt{}/\Cpp{} foundation as the three radiology 
+tools mentioned above, and each of these 
+applications provide capabilities sometimes needed 
+for curating and conducting medical-imaging research.  
+Therefore, by extending each of these applications 
+with a common data-sharing and operational-integration 
+protocol, we can provide scientists with a flexible 
+research platform which synthesizes the capabilities 
+of many popular scientific-computing applications. 
+As an initial framework in which to implement this 
+platform, we propose to focus on software 
+tools for accessing Covid-19 research data included 
+in the \RSNA{} repository, as well as other 
+Covid-19 archives, such as the \Cnineteen{} 
+collection of academic publications concerning 
+Covid-19 and SARS-CoV-2.\footnote{See https://pages.semanticscholar.org/coronavirus-research}.}}
+
+\p{Initiatives such as Research Objects and 
+\FAIR{} advocate for a technological infrastructure 
+characterized by a diverse software ecosystem 
+paired with a open-access research data sets.  
+Scientific data repositories, linked to 
+academic publishing platforms, have been engineered 
+to help scientists locate and re-use data sets 
+which are relevant to their research projects.  
+Although formats such as Research Objects have been 
+standardized over the last decade, there has not 
+been a comparable level of attention given to 
+formalizing how mutiple software applications 
+should interoperate when manipulating 
+overlapping data.  The Common Workflow Language 
+(\CWL{}), which has been explicitly included in the 
+Research Object 
+model\footnote{see \bhref{http://www.researchobject.org/scopes/}},
+documents one layer of inter-application messaging, 
+including the encoding of parameters via command-line 
+arguments; \CaPTk{} provides a \Cpp{} implementation of 
+\CWL{} and uses it to pass initial data between 
+modules.  Serializing larger-scale data structures 
+is of course a generic task of canonical encoding 
+formats such as \JSON{}, \XML{}, \RDF{}, and 
+Protocol Buffers --- not to mention text or binary 
+resources serialized directly from runtime objects 
+via, for instance, QTextStream and QDataStream.  
+This means that some level of inter-application 
+communications is enabled via \CWL{}, and 
+that essentially any computationally tractable 
+data structure can be encoded via formats such 
+as \XML{}.  These solutions, however, are 
+sub-optimal: \XML{} (as well as \JSON{} and analogous 
+formats) is limited because it takes additional 
+development effort to compose the code that marshals 
+data between runtime and serial formats.  
+Similarly, although \CWL{} can model information 
+passed between applications, it provides 
+only an indirect guide to programmers implementing 
+each applications \q{operational semantics} --- 
+viz., the procedures which must be executed 
+before and after the event wherein data is 
+actually passed between endpoints.}
+
+\p{In the context of \CaPTk{}, for example, 
+integrating peer modules with the \CaPTk{} core 
+application involves more than simply 
+ensuring that these endpoints communicate 
+via a standardized data-serialization format: 
+the plugins must be \textit{registered} 
+with the core application, which affects the 
+core in several areas, including the build/compile 
+process and construction of the main \GUI{} 
+window.  Modeling the interconnections between 
+semi-autonomous modules, as \CaPTk{} demonstrates, 
+therefore require more detail than simply 
+modeling their shared data encodings; it 
+is furthermore necessary to represent all 
+procedural and User Interface requirements 
+in each component that may be affected by 
+the others.  Despite the standardization 
+efforts that have been invested in 
+Research Objects and the Common Workflow Language, 
+we contend that this fully detailed 
+protocol for multi-application interop has not 
+yet been rigorously formalized.  As part of 
+our project for extending \CaPTk{} and then 
+generalizing this extension to scientific 
+research platforms (not necessarily restricted 
+to radiology), we propose to ameliorate 
+this situation by implementing a more rigorous 
+protocol for multi-application networking, 
+which we will call the 
+\q{Hypergraph Multi-Application Configuration Language} 
+(\HMCL{}).  This language is paired with a new 
+data-exchange protocol that we are also implementing, 
+the Hypergraph Exchange Format (\HGXF{}).}
+
+\p{}
+
+\p{}
 
 
