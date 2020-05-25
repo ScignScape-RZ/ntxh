@@ -1,12 +1,270 @@
-
+\section{Hypergraph Ontologies, and a concrete Hypergraph Ontology for radiological outcomes} 
 \p{As explained above, the goal of \HGXF{} is to  
-provide a general-purposse hypergraph representation 
+provide a general-purpose hypergraph representation 
 format, suitable for all hypergraph data structures 
 as well as any structures which are categorically subsumed 
 by hypergraphs (such as \RDF{} graphs).  
-  
+Consequently, \HGXF{} is designed in part by 
+examining existing Hypergraph Database software 
+(such as HyperGraphDB, AllegroGraph, and Graken.ai)  
+and runtime hypergraph libraries, as well as 
+academic literature where hypergraph analyses have 
+been used for (e.g.) image-segmentation and 
+Machine Learning algorithms.  These resources 
+provide an overview of the range of data structures 
+which need to be encoded by a general-purpose language 
+such as \HGXF{}.  The design of \HGXF{} has also 
+been influenced by the Semantic Web, insofar as 
+hypergraphs are a generalization of the directed, labeled 
+graphs that are the building-blocks of the Semantic Web.  
+At the same time, hypergraphs --- along with 
+structures that can be modeled via hypergraphs, 
+such as Conceptual Spaces --- are an improvement 
+on Semantic Web data formats and schema, addressing 
+the limitations of a paradigm devoted to modeling 
+complex information via first-order logic and 
+non-nested graphs, with no notion of scoping or 
+locality.\footnote{These are familiar critiqued, but 
+laid out with particular thoroughness by the 
+Conceptual Space community: see \bhref{http://idwebhost-202-147.ethz.ch/Publications/RefConferences/ICSC_2009_AdamsRaubal_Camera-FINAL.pdf} 
+and \bhref{https://pdfs.semanticscholar.org/1d58/faa5cb23efb7394aeb3dfe688edd99797a91.pdf}.} }
 
-}
+
+\p{At the same time, a lot of effort has been extended 
+building technologies to integrate heterogenous 
+data spaces via the Resource Description Framework 
+(\RDF{}) and \RDF{} ontologies; it would be irresponsible 
+to ignore these contributions.  In radiology, for 
+example, attempts to better incorporate clinical 
+and outcomes data are centered on ontologies such 
+as \RadLex{}, \ViSion{}, and \SeDI{}; insofar 
+as these are (or have potential to become) 
+canonical reporting standards, Patient-Centered 
+research should promote rather than critique 
+these initiatives.  The important consideration, 
+then, is how to employ hypergraphs as an extension 
+to the Semantic Web when warranted while preserving 
+the virtues (and interoperating with) 
+conventional \RDF{} ontologies.}
+
+\p{The idea that hypergraphs \textit{extend} 
+but do not \textit{replace} \RDF{} and the 
+Semantic Web implies that hypergraph schema 
+are extensions of (but not substitutes for) 
+\RDF{} ontologies --- which in turn 
+yields the notion of \textit{hypergraph 
+ontologies}.  In a conventional \RDF{} ontology, metadata is primarily 
+associated with graph nodes and edges.  In particular, 
+nodes are referenced to Uniform Reference Identifiers 
+(\URI{}s), such as web addresses, and edges are labeled 
+with concepts formally defined in one or more ontologies.  
+Concepts which are used to annotate graph-edges, and which are 
+given a fixed meaning in some controled vocabulary, are 
+often called \q{properties.}  One special \q{is-a} property 
+is often used to connect nodes with concepts that 
+classify entities into one of many categories defined 
+in an ontology, often called \q{classes.}  As such, most 
+\RDF{} ontologies are primarily composed of 
+\textit{classes} and \textit{properties}, each assigned 
+a unique label.  The purpose of metadata for a given graph 
+is then to link nodes to classes (for example, specifying 
+that one node represents a clinical trial and the second 
+represents a patient), and furthermore link edges to properties 
+(for example, specifying that a patient-node is connected 
+to a trial-node in that the patient is \textit{enrolled in} 
+the trial).}
+
+\p{Hypergraph ontologies are similar to conventional 
+\RDF{} ontologies in that they likewise provide 
+constraints and metadata for graphs.  However, 
+hypergraph ontologies are more complex because hypergraphs 
+are likewise more complex than ordinary graphs.  In particular, 
+hypergraphs have different layers of structure:  
+whereas \RDF{} nodes are intended to represent a 
+single concept or value (such as a number, date, 
+personal name, or \URL{}), a \textit{hypernode}, within a 
+graph, typically encompasses multiple pieces 
+of information inside it (often called \textit{hyponodes}, 
+\textit{projections}, \textit{inner elements}, 
+\textit{roles}, or just \textit{nodes}).\footnote{
+The term \q{projections} is used by HyperGraphDB (see 
+\bhref{http://www.hypergraphdb.org/?project=hypergraphdb&page=RefCustomTypes}); 
+\q{roles} is used by Grakn.ai 
+(see \bhref{https://dev.grakn.ai/docs/schema/concepts}); 
+\q{inner entity} is used by the biointelligence project 
+(see \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3555311/}), 
+where the corresponding notion of \q{external entity} 
+refers to what in other contexts might be called 
+other hypernodes linked to a given hypernode via hyperedges.}  
+In general, when analyzing hypergraphs it is necessary to 
+distinguish at least two \q{tiers} of nodes, 
+\textit{hypernodes} and \textit{hyponodes}, such that 
+hyponodes are contained within hypernodes.  As a result, 
+hypergraph ontologies need a corresponding distinction 
+for node and edge annotations: insofar as nodes are 
+categorized via classes, and edges via properties, 
+it is neccesary to stipulate whether these classifications 
+apply to hypernodes, hyponodes, or some combination of the two.}
+
+\p{A further complication (contributing to the complexity of hypergraph 
+ontologies compared to \RDF{} ontologies) arises because, 
+even though hypergraphs represent nested or hierarchical structures,  
+these hierarchies are often partial or overlapping. 
+For example, a patient is \textit{part of} a 
+clinical trial, but a patient is also included in 
+other collections as well; for instance, a patient 
+may be enrolled in a specific health plan 
+(for insurance coverage).  One technique for modeling 
+overlapping hierarchical data via hypergraphs is to 
+employ \q{proxies,} which are digital identifiers encoding a 
+multi-faceted concept into a single value that can be 
+part of a hypernode (proxies are similar to 
+\q{foreign keys} in \SQL{}).  Therefore, each patient, represented 
+by its own hypernode, has an identifier which can be a 
+proxy-value for the patient; for example, a value 
+assigned to a hyponode becomes included 
+in the hypernode encoding the list of patients enrolled 
+in a clinical trial, or in the hypernode 
+encoding the list of patients enrolled 
+in a specific health plan.  Hypernodes can then be linked to 
+other hypernodes by virtue of proxies (e.g., the 
+trial-to-patient connection), and also by 
+virtue of overlap (e.g., the set of all patients 
+both enrolled in a given clinical trial \textit{and} 
+enrolled in a given health plan).}
+
+\p{In sum, compared to \RDF{} --- where there is one 
+single sort of node-to-node relationship, based on 
+whether or not an edge exists betweel nodes and 
+how this edge is labeled --- hypergraphs are more 
+flexible/expressive because they have 
+multiple genres of node-to-node relationships: 
+the relation between hypernodes and their inner 
+hypnodes; between hypernodes and one another; 
+between hyponodes in different hypernodes; 
+and variations on each of these relation-types 
+wherein relations are defined indirectly through 
+proxies.  Moreover, in addition to hypernodes 
+and hyponodes, hypergraphs afford additional 
+levels of detail, such as \textit{frames}, 
+\textit{channels}, and \textit{axiations}.
+All of these details provide different 
+\q{sites} where hypergraph annotations and 
+metadata may be defined.\footnote{This means that 
+formats for describing hypergraph ontologies 
+have to be more expressive than \RDF{} ontologies, 
+because \RDF{} ontologies need only to classify 
+metadata as node-annotations or edge-annotations; 
+by contrast, hypergraph ontologies need to distribute 
+annotations among multiple sites of graph structure.}}
+
+\p{An additional distinction within the Semantic Web 
+is the contrast between \textit{reference ontologies} and 
+\textit{application ontologies}.  In general, \textit{reference 
+ontologies} are general-purpose schema intended to 
+establish conventions shared by many different applications, 
+to ensure that a large collection of data-producing software 
+in a given domain is interoperable.  By contrast, 
+\textit{application ontologies} are narrower in scope 
+because they are more tightly integrated into applications that 
+directly send and receive data.  Ontologies 
+of either variety are used by software to interoperate 
+with other software: so long as two applications are 
+using the same ontologies, it is possible to 
+ensure that one application can understand the 
+data produced by a second, and vice-versa.  
+However, such inter-operability is only a potential; 
+it is the responsibility of programmers to 
+actually implement code which produces and/or 
+consumes data that conforms to the relevant 
+ontology specifications.  In general, application 
+ontologies are structured in such a way that 
+these concrete implementations are more straightforward 
+to produce, compared with reference ontologies.  
+Reference ontologies offer little guidance to 
+developers \visavis{} how to directly support the 
+ontology within application code.  Conversely, 
+application ontologies more rigorously describe the 
+data structures which applications must implement 
+in order to properly manipulate data that is structured 
+according to the specifications of the ontology.}
+
+\p{Within data mining and image analysis, hypergraph 
+models are used in different ways for different 
+algorithms.  In the context of Covid-19 radiology, 
+\bhref{https://arxiv.org/pdf/2005.04043.pdf} 
+describes an algorithm for assessing the probability 
+of SARS-CoV-2 infection from chest \CT{} scans, 
+where hypernodes represent high-dimensional 
+vectors (191 dimensions overall) and hyperedges 
+represent k-nearest-neighbors; here each hypernode 
+represents an entire image, mapped to a 191-dimensional 
+feature-vector.  In contrast, other image-analysis 
+methods use hypernodes to designate smaller segments 
+\textit{within} the image, where hyperedges 
+designate geometric adjacency and/or feature-space 
+similarities.  Whatever the algorithm, hypergraph 
+analyses would employ a hypergraph library 
+to store preliminary data for analysis and/or for 
+serialization within a data set.  One benefit of a 
+Hypergraph Application Ontology is therefore that 
+these data structures used internally to implement 
+analytic methods can be directly expressed within 
+the ontology, whereas \RDF{} ontologies can only 
+model hypergraphs indirectly.}
+
+\p{Although it is theoretically possible to encode 
+data directly via \RDF{} graphs, it is far more 
+common for applications to employ tabular and/or 
+hierarchical formats such as spreadsheets, Protocol Buffers,
+\XML{}, or \JSON{}.  As a result, the role of ontologies 
+for constraining data structures (so that they adhere 
+to common standards) is indirect.  It is useful to 
+remember that ontologies are, at their most basic level, 
+Controled Vocabularies; as such, ontology constraints often 
+amount to stipulating a set of acceptable terms for a data 
+value, column header, or annotation.  For a trivial example, 
+our calendar recognizes 12 month names and 7 day names, 
+which constrain the set of values permissible for \q{month} 
+and \q{day} within a calendar date.  These terms are 
+so commonplace that a \q{date ontology} is unnecessary, 
+but in scientific or technical domains it becomes 
+necessary to define vocabularies of allowable 
+names or labels for specific data fields that 
+representing some scientific value or measurement.  For instance, 
+the Ontology of Vaccine Adverse Events (see 
+\bhref{https://jbiomedsem.biomedcentral.com/articles/10.1186/2041-1480-4-40}) provides a nomenclature for use in Adverse Events Reporting, 
+so that researchers or clinicians can describe symptoms via canonically 
+recognized terms rather than through informal 
+text descriptions.  In general, ontologies constrain 
+data sets by stipulating that particular individual 
+values within the overall data collection have names or descriptions 
+whose associated set of possible values is prescribed \textit{a priori} 
+by the applicable ontology.  However, the relationship between 
+ontologies and concrete data sets must itself be 
+documented, which is where application ontologies 
+can become relevant --- application ontologies provide 
+a bridge between reference ontologies and the 
+applications which use them (along with the data 
+generated and shared by those applications).}
+
+\p{In order to preserve the benefits of \RDF{} 
+ontologies --- while also addressing those lacunae 
+which make the Semantic Web \q{not [really] semantic,} 
+--- hypergraph ontologies need to model constraint 
+schema on hypergraph constructions (which have 
+significantly more parameters of structuration 
+than \RDF{} graphs) while also connecting 
+these schemas to the Controled Vocabularies 
+and logical axioms of Semantic Web (particularly 
+\OWL{}) ontologies.  There are as such 
+several areas of detail within hypergraphs 
+where links to \RDF{} ontologies may be 
+drawn, which are outlined here:\footnote{A 
+full explanation of these concepts and terminology 
+depends on an in-depth treatment of hypergraph 
+type theory, which is outside the scope of 
+this proposal.}
 
 \begin{description}
 
@@ -22,18 +280,79 @@ by hypergraphs (such as \RDF{} graphs).
 
 \item[Proxies, Inverted Proxies, and Double-Inverted-Proxy Constructions]
 
-
-
-
-
-
-
 \end{description}
+}
+
+\p{As illustrated by \CaPTk{}, multi-application workflows 
+are characterized both by the data which is 
+transferred between applications and by the 
+operations which connect the two applications 
+--- that is, the procedures enacted by 
+each application when they become operationally 
+linked.  As a preliminary model, we can identify 
+two stages of operational connection between 
+an already-running application (which may be 
+called the \textit{primary} component) 
+and a second application launched by the primary 
+(which may be called the \textit{peer} component).  
+The first stage occurs when the primary component 
+launches the peer component, and is characterized 
+by two operational sequences: procedures enacted 
+by the primary prior to this launch, and procedures 
+enacted by the peer subsequent to the launch.  
+A second stage occurs when the peer component 
+has completed its actions, and sends data back 
+to the primary component, which again involves two 
+operational sequences: procedures enacted by the 
+peer prior to the transfer, and procedures enacted by the 
+primary subsequent to the transfer.  Fully describing 
+the procedural workflow therefore entails specifying 
+four operational sequences: primary, then peer, 
+during the launch stage; and peer, then primary, 
+during the transfer stage.  A schema describing 
+the operations performed during these four sequences 
+can be called a \textit{procedural ontology}.}
+
+\p{Consequently, rigorous models of multi-application networks 
+should \textit{synthsize} information about data structures 
+(the type of information shared between application-points) 
+with information about procedural workflows 
+(describing operational sequences prior to 
+the launch and transfer stages of a multi-application linkage).  
+The synthesis of this structural and procedural information 
+can be called a \textit{procedural application ontology}.  
+Insofar as the new \HMCL{} language defines the operational 
+semantics of multi-application workflows, \HMCL{} 
+can be seen as a format for asserting and 
+integrating procedural application ontologies (according 
+to this definition).}
+
+\p{Insofar as \PACS{} and \DICOM{} systems need 
+to be paired with applications in the other 
+categories (such as image and data-set analysis), it is 
+important to develop radiological Application Ontologies, 
+alongside the canonical Reference Ontologies 
+associated with diagnostic imaging.  As such, starting with 
+the Covid-19 context, but designed for more 
+general applications as well, our proposal includes 
+the development of a novel radiology-focused \textit{application} 
+ontology, specifically the \q{Hypergraph Ontology 
+for Diagnostic Imaging, Clinical 
+Outcomes, and Data Mining} (\HDICOM{}).  The goal 
+of \HDICOM{} is to connect \RDF{}-based 
+radiological ontologies with software applications 
+designed to manipulate radiological (and corresponding 
+treatment and outcomes) data.  
+In addition, \HDICOM{} will formalize 
+the data-sharing protocols implicitly adopted 
+by software aggregates such as \CaPTk{} 
+(this part of the ontology will be expressed 
+via \HMCL{}).} 
 
 
-\p{}
+%\p{}
 
-\p{}
+%\p{}
 
-\p{}
+%\p{}
 
