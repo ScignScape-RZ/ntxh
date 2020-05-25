@@ -269,19 +269,163 @@ this proposal.}
 \begin{description}
 
 \item[Hypernodes' Cocyclic Type Structure]
+One of the central principles of hypergraph data modeling 
+is the use of \textit{hypernode types} to 
+specify what sort of information is necessarily 
+associated with a hypernode.  In particular, 
+a hypernode encompasses multiple hyponodes, 
+each with their own type.  These hyponodes 
+represent information in some sense 
+\q{contained within} or \q{tightly connected  
+to} a hypernode (whereas data less canonically 
+associated with each hypernode would, in 
+general, be asserted via hyperedges rather than 
+via hypernode/hyponode containment.  In order 
+to ensure that hypergraphs are predictably 
+organized, hypernodes cannot have arbitrary 
+collections of hyponodes, but must instead 
+be aggregates of hyponodes which are assembled 
+according to a schematic pattern, defined in 
+terms of hyponode types.  For maximum generality, 
+a hypergraph type system should allow hyponode-type 
+patterns to be as flexible as possible without 
+introducing a need for metadata asserted at the 
+level of individual hypernodes rather than hypernode 
+types; this motivates the idea of a \q{cocyclic} 
+type system which is minimally constrained 
+(but not unconstrained).\footnote{A pattern 
+of hyponode types can be called \q{cocyclic} 
+if the type-sequence includes a (possibly empty) 
+tuple of types with no requisite pattern 
+(called the \q{precycle}) followed by a 
+repeatable type-tuple.  Cocyclically typed 
+hypernodes therefore represent expandable 
+data structures such as lists, stacks, 
+queues, deques, and dictionaries.  A typical 
+hypernode type may indirectly include multiple 
+collections-types via proxies.}   
+When translating \RDF{} ontologies to hypergraph 
+schema, then, one consideration is whether 
+edge-requirements are sufficiently ubiquitous 
+in some context (e.g. with respect to some 
+\textbf{rdf:class}) that these edges should 
+be translated to hypernode/hyponode inclusions, 
+and then to define a pattern of hyponode types 
+for the corresponding hypernode type.
 
-\item[Roles, Projections, and Hyponode Types]
+\item[Roles, Projections, and Dimensional Annotations]
+A hypernode type provides a schema defining a 
+sequence of hyponode types; it is sometimes 
+said that the hypernode \q{projects onto} that 
+space of hyponode types.  This projection is 
+minimally characterized by hyponode types, 
+but some hypergraph systems allow the 
+projection to be \textit{annotated}, introducing 
+additional metadata that constrain 
+(or augment the expressive power of) the 
+enclosing hypergraph.  Annotations can 
+define scales/units/levels of measurement, 
+probability distributions, situational roles, 
+and other details lending semantic grounding 
+to the data-field encapsulated by a hyponode.  
+This metadata can then be a vehicle for 
+translating \RDF{} class constraints to 
+hypergraph schema. 
 
 \item[Semantic Nominal Dimensions]
+The most direct translation of 
+Controled Vocabularies to a hypergraph context 
+is often that of constraining the space 
+of variation for one specific project to 
+a set of allowable terms.  In the typical 
+case, a hyponode type encapsulates a 
+nominal set of values (i.e., an enumeration), 
+so any hypernode including that type as one 
+of its projects is constrained by the 
+labels registered in the vocabulary 
+(a related formulation replaces 
+non-hierarchical vocabularies with 
+\textit{taxonomies}, where some labels 
+are treated as more or less granular 
+variants of others).
 
 \item[Dimension Aggregates, Domains, and Conceptual Spaces]
-
+Conceptual Space Theory can be modeled in the 
+hypergraph context by noting that hypnode 
+projections are sometimes interdependent: 
+dimensions tend to aggregate into semantically 
+related groups (like \textit{latitude} and 
+\textit{longitude} as geographic markers).  
+In Conceptual Space models, then, 
+projections are split into two 
+levels --- \textit{dimensions} and 
+\textit{domains} --- while other 
+dimensional-analytic constructions 
+(such as scales and units of measurement) are 
+carried over.\footnote{See \bhref{https://pdfs.semanticscholar.org/521a/cbab9658df27acd9f40bba2b9445f75d681c.pdf}, 
+\bhref{https://arxiv.org/pdf/1703.08314.pdf}, 
+or \bhref{http://lup.lub.lu.se/record/1775234}.}  
+Conceptual Space Theory then introduces 
+concepts of fuzzy logic or \q{convexivity} 
+(according to different metrics) to simulate 
+patterns in human 
+conceptualization.\footnote{A good review is 
+provided by the publications and code archived 
+at \bhref{https://github.com/lbechberger/ConceptualSpaces}.}
+  
 \item[Probabilistic, Temporal, and Overlapping Hypergraphs]
-
+Other forms of metadata constrained via ontologies 
+can be expressed in terms of annotations 
+defining weights or probabilities on 
+hypernodes and/or hyperedges.  One example is 
+the juxtaposition of alternative markup hierarchies, 
+in the context of hypergraph representations for 
+Concurrent Markup languages such as \TAGML{}.  
+Numeric edge-annotation can represent 
+weights (e.g., provide measures of the degree 
+of uncertainty in the edge's relation actually 
+obtaining), but constructions similar to 
+weights have other sorts of applications.  
+For instance, edge-annotations can be measures 
+of time-spans, allowing hypergraphs to 
+describe \q{entity-event models.}\footnote{See 
+\bhref{https://allegrograph.com/consulting/entity-event-knowledge-graphs/}.}  These models are particularly inportant 
+for patient-centered data via their use in 
+analyzing clinical outcomes by aggregating data 
+according to patient-centered reviews 
+extracted from \EHR{} 
+data.\footnote{See \bhref{http://exploreclg.montefiore.org/upload/training-materials/The\%20Cohort\%20ParadigmV30.pdf}.}
+  
 \item[Proxies, Inverted Proxies, and Double-Inverted-Proxy Constructions]
-
+As described earlier, hypernodes can assert \q{containment} of 
+other hypernodes by containing a \textit{hyponode} which 
+\textit{proxies} the second hypernode.  
+An \textit{inverted proxy} connection is therefore 
+the mirror-image of this assertion 
+(which may or may not be formally regognized 
+by a hypergraph).  A \textit{double-inverted-proxy} 
+connection is accordingly the relation obtaining 
+between two hypernodes which are both proxied by 
+one third hypernode (using the earlier example 
+of proxies, the fact that two patients 
+are enrolled in the same clinical trial).  
+Many graph connections identified in a 
+Semantic Web context (e.g., by \SPARQL{} queries) 
+are likely to translated to double-inverted proxies 
+in a hypergraph context.  
 \end{description}
-}
+
+In general, these hypergraph construction represent 
+sites for asserting constraints that 
+(for \RDF{} ontologies) would be defined on 
+classes or properties; they are therefore 
+the framework for translating \RDF{} ontologies 
+to hypergraphs.  Such a translation 
+mechanism allows existing ontologies 
+--- which may play a valuable role 
+in specifying protocols for workflows 
+and data-sharing between software components  
+--- to be reused in a hypergraph modeling environment.}
 
 \p{As illustrated by \CaPTk{}, multi-application workflows 
 are characterized both by the data which is 
