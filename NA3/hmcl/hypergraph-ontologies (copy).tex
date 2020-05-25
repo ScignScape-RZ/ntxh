@@ -24,14 +24,14 @@ on Semantic Web data formats and schema, addressing
 the limitations of a paradigm devoted to modeling 
 complex information via first-order logic and 
 non-nested graphs, with no notion of scoping or 
-locality.\footnote{These are familiar critiques, but 
+locality.\footnote{These are familiar critiqued, but 
 laid out with particular thoroughness by the 
 Conceptual Space community: see \bhref{http://idwebhost-202-147.ethz.ch/Publications/RefConferences/ICSC_2009_AdamsRaubal_Camera-FINAL.pdf} 
 and \bhref{https://pdfs.semanticscholar.org/1d58/faa5cb23efb7394aeb3dfe688edd99797a91.pdf}.} }
 
 
 \p{At the same time, a lot of effort has been extended 
-building technologies to integrate heterogeneous 
+building technologies to integrate heterogenous 
 data spaces via the Resource Description Framework 
 (\RDF{}) and \RDF{} ontologies; it would be irresponsible 
 to ignore these contributions.  In radiology, for 
@@ -59,7 +59,7 @@ nodes are referenced to Uniform Reference Identifiers
 (\URI{}s), such as web addresses, and edges are labeled 
 with concepts formally defined in one or more ontologies.  
 Concepts which are used to annotate graph-edges, and which are 
-given a fixed meaning in some controlled vocabulary, are 
+given a fixed meaning in some controled vocabulary, are 
 often called \q{properties.}  One special \q{is-a} property 
 is often used to connect nodes with concepts that 
 classify entities into one of many categories defined 
@@ -103,7 +103,7 @@ hyponodes are contained within hypernodes.  As a result,
 hypergraph ontologies need a corresponding distinction 
 for node and edge annotations: insofar as nodes are 
 categorized via classes, and edges via properties, 
-it is necessary to stipulate whether these classifications 
+it is neccesary to stipulate whether these classifications 
 apply to hypernodes, hyponodes, or some combination of the two.}
 
 \p{A further complication (contributing to the complexity of hypergraph 
@@ -140,7 +140,7 @@ how this edge is labeled --- hypergraphs are more
 flexible/expressive because they have 
 multiple genres of node-to-node relationships: 
 the relation between hypernodes and their inner 
-hyponodes; between hypernodes and one another; 
+hypnodes; between hypernodes and one another; 
 between hyponodes in different hypernodes; 
 and variations on each of these relation-types 
 wherein relations are defined indirectly through 
@@ -173,7 +173,7 @@ with other software: so long as two applications are
 using the same ontologies, it is possible to 
 ensure that one application can understand the 
 data produced by a second, and vice-versa.  
-However, such inter-operability is only potential; 
+However, such inter-operability is only a potential; 
 it is the responsibility of programmers to 
 actually implement code which produces and/or 
 consumes data that conforms to the relevant 
@@ -221,7 +221,7 @@ hierarchical formats such as spreadsheets, Protocol Buffers,
 for constraining data structures (so that they adhere 
 to common standards) is indirect.  It is useful to 
 remember that ontologies are, at their most basic level, 
-Controlled Vocabularies; as such, ontology constraints often 
+Controled Vocabularies; as such, ontology constraints often 
 amount to stipulating a set of acceptable terms for a data 
 value, column header, or annotation.  For a trivial example, 
 our calendar recognizes 12 month names and 7 day names, 
@@ -255,7 +255,7 @@ which make the Semantic Web \q{not [really] semantic,}
 schema on hypergraph constructions (which have 
 significantly more parameters of structuration 
 than \RDF{} graphs) while also connecting 
-these schemas to the Controlled Vocabularies 
+these schemas to the Controled Vocabularies 
 and logical axioms of Semantic Web (particularly 
 \OWL{}) ontologies.  There are as such 
 several areas of detail within hypergraphs 
@@ -334,7 +334,7 @@ hypergraph schema.
 
 \item[Semantic Nominal Dimensions]
 The most direct translation of 
-Controlled Vocabularies to a hypergraph context 
+Controled Vocabularies to a hypergraph context 
 is often that of constraining the space 
 of variation for one specific project to 
 a set of allowable terms.  In the typical 
@@ -351,7 +351,7 @@ variants of others).
 
 \item[Dimension Aggregates, Domains, and Conceptual Spaces]
 Conceptual Space Theory can be modeled in the 
-hypergraph context by noting that hyponode 
+hypergraph context by noting that hypnode 
 projections are sometimes interdependent: 
 dimensions tend to aggregate into semantically 
 related groups (like \textit{latitude} and 
@@ -402,7 +402,7 @@ other hypernodes by containing a \textit{hyponode} which
 \textit{proxies} the second hypernode.  
 An \textit{inverted proxy} connection is therefore 
 the mirror-image of this assertion 
-(which may or may not be formally recognized 
+(which may or may not be formally regognized 
 by a hypergraph).  A \textit{double-inverted-proxy} 
 connection is accordingly the relation obtaining 
 between two hypernodes which are both proxied by 
@@ -458,7 +458,7 @@ the operations performed during these four sequences
 can be called a \textit{procedural ontology}.}
 
 \p{Consequently, rigorous models of multi-application networks 
-should \textit{synthesize} information about data structures 
+should \textit{synthsize} information about data structures 
 (the type of information shared between application-points) 
 with information about procedural workflows 
 (describing operational sequences prior to 
