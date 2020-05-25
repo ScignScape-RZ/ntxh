@@ -1208,7 +1208,7 @@ of their research by presenting data in
 file formats used by data-visualization software; 
 they can also assert more fine-grained control 
 over data visualization by implementing 
-custom software.  Figure~\ref{fig:oxy} illustrates 
+custom software.  Figure~\bref{fig:oxy} illustrates 
 an example of a cutomized data-set application 
 presenting analysis in the context of 
 biomedical devices (specifically, \CPAP{} 
@@ -1229,7 +1229,7 @@ between document viewers and data-set
 applications.  For instance, individual table columns 
 can be associated with specific scientific concepts 
 or statistical parameters that are described 
-in the article text; Figure~\ref{fig:about} shows 
+in the article text; Figure~\bref{fig:about} shows 
 an example where a user activates a context 
 menu by right-clicking on a column header and 
 is given a list of options, one of which yields 
@@ -1271,6 +1271,48 @@ as the basis for annotation schema and structural
 models formalizing how a data set is organized.}
 \input{pics/testing}
 
+\p{Implementing a robust research-data software 
+framework involves integrating multiple scientific 
+applications, but also (ideally) extending these 
+applications with features specifically 
+of interest to those conducting or reviewing 
+research using published data sets and/or 
+described in academic literature: for 
+instance, capabilities to download data sets 
+from open-access scientific portals; to 
+parse microcitation formats; and to interoperate 
+with document viewers.  Figure~\bref{fig:il} 
+shows a case-study of these fearures, 
+where a molecular-visualization application 
+(\IQmol{}) has been extended with a multi-application 
+messaging capacity allowing it to send and receive 
+data from \XPDF{} (a \PDF{} viewer); in the 
+figures the displayed \PDF{} document is a 
+\GRE{} practice exam, and \IQmol{} is instructed 
+to present a \ThreeD{} graphic visualizing the 
+molecular structure of a compound 
+which is the topic of a test question 
+(the operation to launch \IQmol{} is provided 
+as a context-menu action localized to the 
+page-coordinate area close to the relevant 
+question and answers on the \PDF{} viewport.
+This example illustrates how applications 
+within an integrated research-software environment 
+can complement each other by providing 
+distinct capabilities (such as interactively 
+displaying Protein Data Bank files).  
+A similar example is visible in Figure~\bref{fig:rad-2} 
+and Figure~\bref{fig:rad-3}, which shows a multi-application 
+workflow connecting \ThreeDimViewer{} 
+(an example of \ThreeD{} radiology software described in the 
+next section) and \MeshLab{} 
+(a general-purpose \ThreeD{} visualization and 
+analysis program): \ThreeDimViewer{}'s algorithms 
+build a \ThreeD{} model from a \TwoD{} image series, 
+and the resulting mesh file is then sent as a data 
+package to \MeshLab{} so that it may be studied 
+in a more fully-featured graphical environment.}
+
 \p{This review of data-publishing technology is 
 relevant to radiology and to Patient-Centered 
 Outcomes because it typifies the emerging ecosystem 
@@ -1298,6 +1340,7 @@ to the kinds of application networks
 appropriate for the technology supporting 
 archives of research date (including 
 diagnostic-imaging repositories).}
+\input{pics/il}
 
 \p{Given this architectural correlation, we propose 
 that the \CaPTk{} architecture can be used 
@@ -1334,6 +1377,7 @@ interoperate, allowing users the choice to
 switch which program they are using depending on 
 the specific analytic tasks they wish to take on 
 for a given session.}
+\input{pics/rad-2}
 
 \p{Along with these radiology-specific applications, 
 the application network we are hereby describing 
@@ -1361,6 +1405,7 @@ in the \RSNA{} repository, as well as other
 Covid-19 archives, such as the \Cnineteen{} 
 collection of academic publications concerning 
 Covid-19 and SARS-CoV-2.\footnote{See \bhref{https://pages.semanticscholar.org/coronavirus-research}.}}
+\input{pics/rad-3}
 
 \p{Initiatives such as Research Objects and 
 \FAIR{} advocate for a technological infrastructure 
