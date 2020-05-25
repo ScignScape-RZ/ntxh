@@ -84,7 +84,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=11in,paperwidth=8.5in]{geometry}
-\geometry{left=.85in,top=.5in,right=.85in,bottom=1.2in} %margins
+\geometry{left=.72in,top=.5in,right=.73in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -330,6 +330,8 @@
 \newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
 
 \newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
+
+\newcommand{\CPAP}{\resizebox{!}{7pt}{\AcronymText{CPAP}}}
 
 \newcommand{\RadLex}{\resizebox{!}{7pt}{\AcronymText{RadLex}}}
 
@@ -916,20 +918,21 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Proposal for Radiological Software Extensions to Accelerate 
-Patient-Centered Research}
+Patient-Centered Research for Covid-19}
 }}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
 \end{center}
 
-%\vspace{1em}
+%\vspace{-1em}
+\section{Introduction}
 \p{Patient-centered research in the radiological 
 context focuses on improving the precision of 
-diagnostic-imaging techniques and the corresponding 
+diagnostic-imaging techniques and corresponding 
 clinical interventions.  Indeed, the goal of contemporary 
 radiology is not only to confirm a diagnosis, 
-but also to extract diagnostic cues from 
+but also to extract cues from 
 medical images that suggest which course of 
 treatment has the highest probability of 
 favorable treatment outcomes.  A related 
@@ -956,15 +959,20 @@ be processed by \PACS{} systems: \q{although there are various powerful clinical
 \bhref{https://semantic-dicom.com/starting-page/}.}  These 
 limitations partly reflect the logistics of how 
 information is transferred between clinical institutions 
-and radiology labs.  So as to advance the science 
+and radiology labs.  In response, and in an effort 
+to advance the science 
 of diagnostic image-analysis, organizations such as 
 the Radiological Society of North America 
 (\RSNA{}) have curated open-access data sets encompassing 
 medical images as well as image-annotations (encoding feature 
-vectors) which can serve as reference sets and test 
+vectors) that can serve as reference sets and test 
 corpora for investigating analytic methods.  Such 
 repositories are designed to integrate data from 
-multiple hospitals and multiple laboratories.}
+multiple hospitals and multiple laboratories --- bypassing 
+the conventional data flows wherein radiological 
+information is shared between clinicians 
+and radiologists, but is not also merged into broad-spectrum 
+corpora.}
 
 \p{This renewed focus on patient outcomes 
 has important consequences for the scope and 
@@ -1128,7 +1136,26 @@ compiler, executable, and workflow-related
 integration between the components, not only 
 shared data formats or Common Vocabularies.}
 
-\p{Architecturally, this pattern of organization is 
+\p{The following sections will describe our 
+proposed contributions to patient-centered 
+research, focusing on the diagnostic-imaging 
+context, via (1) formalizing and enhancing 
+the \CaPTk{} protocol; (2) implementing a general-purpose 
+research platform oriented toward integrating 
+radiological and clinical-outcomes data; and 
+(3) specifying and providing implementations 
+for novel data and workflow languages 
+which we claim are more rigorous, more expressive, 
+and more conducive to application integration 
+than (for example) \RDF{} ontologies.}
+
+\section{Multi-Application Networks in the Context of 
+Scientific Research Data}
+\p{Architecturally, the pattern of organization 
+just described --- semi-autonomous applications 
+linked together (often by virtue of being common 
+extensions to an overarching \q{core} software 
+platform) is 
 analogous to the collection of software components 
 that may share access to a data repository or 
 a research-data corpus, include a corpus of 
@@ -1146,8 +1173,113 @@ expected that numerous projects may overlap in their
 use of a common underlying data set, which potentially 
 means a diversity of software components implementing 
 a diversity of analytic techniques, each offering a unique 
-perspective on the underlying data.  Open-access data 
-publishing, as a result, is conducive to a software 
+perspective on the underlying data.  In addition to 
+providing diverse analytic analytic methods, 
+research-oriented software transforms the ecosystem 
+where scientific data and academic books/articles 
+are published and explored.  From a reader's point of 
+view, open-access data sets present an interactive, 
+multi-media experience which supplements reading 
+article texts.  Indeed, in recent years, publishing houses 
+have embraced the notion (albeit more of a future 
+vision than a present reality) that conventional 
+publications are only one part of a larger 
+package (e.g. a \q{Research Object Bundle}), 
+which may contain data, computer code, and/or 
+interactive graphics alongside text-based formats 
+such as \PDF{}.  At the same time, from 
+a scientist's point of view, open-access research 
+data offers a starting point for their own 
+investigations, or a contretemps with which to 
+reinforce or contrast their own findings.}
+\input{pics/oxy}
+
+\p{All of this means that scientists preparaing 
+academic papers are not only finalizing text 
+descriptions but also, often, curating data, 
+graphics, or code that demonstrates their work 
+in an interactive, multi-media fashion 
+(such assets are often presented to readers 
+via \q{supplemental material,} \q{additional 
+files,} or \q{data availability} sections 
+on web pages showing artice texts or abstracts).  
+Scientists can support multi-media exploration 
+of their research by presenting data in 
+file formats used by data-visualization software; 
+they can also assert more fine-grained control 
+over data visualization by implementing 
+custom software.  Figure~\ref{fig:oxy} illustrates 
+an example of a cutomized data-set application 
+presenting analysis in the context of 
+biomedical devices (specifically, \CPAP{} 
+oxygen-flow monitors) conducted by 
+Dr. James Rodger (Principle Investigator 
+for this project proposal).  One benefit of 
+custom data-set software is the possibility 
+of using \textit{microcitations} to 
+connect research data (and the \GUI{} 
+components where this data is visualized) 
+to publication texts.\footnote{Microcitations 
+are independently citeable smaller units of 
+a data set, such as an individual record, 
+a table column, or one table in a multi-table 
+collection; see \bhref{https://www.thelancet.com/action/showPdf?pii=S1473-3099\%2820\%2930086-4}.}  
+Microcitations enable application-level interoperability 
+between document viewers and data-set 
+applications.  For instance, individual table columns 
+can be associated with specific scientific concepts 
+or statistical parameters that are described 
+in the article text; Figure~\ref{fig:about} shows 
+an example where a user activates a context 
+menu by right-clicking on a column header and 
+is given a list of options, one of which yields 
+to a dialog box that displays a thumbnail 
+explanation of the column data and links to 
+anchors in the article's \PDF{} file.  
+This interop between data sets and 
+\PDF{} viewers is an example of 
+multi-application networking --- both the 
+data-set application and the \PDF{} software 
+need to be implemented or extended with 
+the capacity to execute microcitation-based 
+workflows.}
+\input{pics/about}
+
+\p{Moreover, data-set applications can provide 
+(through their type system and implementation 
+protocol) one form of structural model and 
+formal elaboration of research theories,  
+methodology, or experimental design.  
+Defining an annotation schema for data sets can potentially 
+be an organic outgrowth of software-development methodology 
+--- viz., the engineering steps, 
+such as implementing unit tests, which are essential 
+to deploying a commercial-grade application.  
+This point is illustrated in 
+Figure~\bref{fig:testing}, which shows a \GUI{}-based testing environment for the data set depicted in Figures~\bref{fig:oxy} and 
+\bref{fig:about}.  For this data set, 
+the context menu actions providing column-specific functionality 
+are also discrete capabilities which can be covered by 
+unit tests, so the set of procedures mapped to the citeable 
+concept correspond with a set of unit-test requirements.  
+In this data set, these procedures are also exposed to 
+scripting engines via the \Qt{} meta-object system.  In general, 
+there is often a structural correlation between 
+scripting, unit testing, and microcitation, so that 
+an applications' scripting and testing protocol can serve 
+as the basis for annotation schema and structural 
+models formalizing how a data set is organized.}
+\input{pics/testing}
+
+\p{This review of data-publishing technology is 
+relevant to radiology and to Patient-Centered 
+Outcomes because it typifies the emerging ecosystem 
+where scientific research and open-access data 
+is being disseminated.  Open-access data 
+publishing --- especially within the emerging 
+frameworks being advocated and developed 
+by publishers and research institutions 
+themselves --- is conducive to a software 
 engineering paradigm that favors the implementation 
 of autonomous software agents which, 
 their autonomy notwithstanding, can interoperate to the degree 
@@ -1306,8 +1438,11 @@ which we will call the
 \q{Hypergraph Multi-Application Configuration Language} 
 (\HMCL{}).  This language is paired with a new 
 data-exchange protocol that we are also implementing, 
-the Hypergraph Exchange Format (\HGXF{}).}
+the Hypergraph Exchange Format (\HGXF{}), 
+both of which are summarized in the next section.}
 
+\section{Our proposed Hypergraph Exchange Format and 
+Hypergraph Multi-Application Configuration Language}
 \p{To explain the rationale for \HMCL{} and \HGXF{}, 
 consider the role that data-serialization and Interface 
 Definition languages play in software engineering: 
@@ -1446,7 +1581,16 @@ and the operational autonomy of different parts of
 the application network.  We propose to 
 address this complexity by adopting a hypergraph-based 
 paradigm for procedural and type modeling, from 
-which derives our proposed \HMCL{} format.  
+which derives our proposed \HMCL{} 
+format.\footnote{A preliminary characterization 
+of hypergraph-based type systems (and their 
+corresponding representation of detailed 
+procedural signatures and requirements) 
+can be found in Nathaniel Christen's chapter 
+(chapter 3) in \textit{Advances in Ubiquitous Computing: 
+Cyber-Physical Systems, Smart Cities and Ecological Monitoring}, 
+edited by Dr. Neustein 
+(see \bhref{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}).} 
 The goal of \HMCL{} is to define protocols for 
 inter-application messaging by focusing on 
 procedures enacted by both applications before and 
@@ -1516,6 +1660,7 @@ contexts, particularly in conjunction with
 \q{reference implementations} that we will provide 
 in the context of \CaPTk{}.} 
 
+\section{Conclusion}
 \p{In sum, then, the following represents 
 contributions that we propose for inclusion into 
 patient-centered outcomes research in the 
