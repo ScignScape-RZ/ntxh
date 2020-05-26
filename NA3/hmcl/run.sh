@@ -1,2 +1,2 @@
 ar=`git rev-parse --show-toplevel`
-`cat $ar/../preferred-pdflatex` -interaction=nonstopmode --shell-escape proposal.tex
+`cat $ar/../preferred-pdflatex` -interaction=nonstopmode --shell-escape ResearchPlan_Rodger.tex

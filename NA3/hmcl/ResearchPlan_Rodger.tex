@@ -84,7 +84,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=11in,paperwidth=8.5in]{geometry}
-\geometry{left=.7in,top=.5in,right=.7in,bottom=1.2in} %margins
+\geometry{left=.74in,top=.5in,right=.74in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -727,8 +727,8 @@
 
 \newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
 
-\setlength\parindent{0pt}
-%\setlength\parindent{24pt}
+%\setlength\parindent{0pt}
+\setlength\parindent{24pt}
 %\input{commands}
 
 
@@ -933,27 +933,124 @@ Patient-Centered Research for Covid-19}
 %\vspace{-1em}
 \section{Introduction}
 \p{The project described in this proposal 
-concerns the implementation of computer 
+involves the implementation of computer 
 software and the design of data-sharing 
 protocols concerned with analyzing patient 
 outcomes in the context of radiology 
 and diagnostic imaging.  This proposal 
-takes, at its starting point, a relatively 
+takes, as its starting point, a relatively 
 new image-analysis technology 
 --- specifically, the Cancer Imaging 
 Phenomics Toolkit (\CaPTk{}), developed 
 at the Center for Biomedical Image Computing 
-and Analytics (\CBICA{}) --- which is an 
+and Analytics (\CBICA{}) at 
+the Univesity of Pennsylvania Perelman School of 
+Medicine --- which is an 
 extensible platform for implementing 
-analytic modules as extensions to a central 
-\PACS{} system.  
+analytic modules as peers to a central 
+\PACS{} system.  Given its innovative 
+architecture, \CaPTk{} can be used both as a 
+framework for the study of image corpora 
+assembled for research purposes and as a 
+vehicle for implementing and demonstrating 
+new methods or algorithms for the automated, 
+Machine Learning, and/or \AI{}-driven analysis 
+of diagnostic images.  By applying 
+sophisticated \q{Machine Vision} to medical 
+images, the scientific community hopes to 
+achieve diagnostic capabilities which are 
+not only more accurate, but also more 
+granular: identifying the 
+cause of patients' symptoms, but also 
+indicating which treatment plans would 
+likely be the most conducive to favorable outcomes.}
 
+\p{In order to integrate diagnostic 
+imaging rigorously into patient-centered 
+and \q{personalized} medicine, it is 
+necessary to develop new protocols for 
+curating clinical and outcomes data 
+alongside image corpora.  This 
+\q{radiological outcomes} priority 
+has spurred several initiatives 
+to standardize new diagnostic-imaging 
+technology and \q{reporting} vocabularies.  
+Such projects can be thematically compared 
+with \CaPTk{}, in that both envision 
+conventional image analysis being supplemented 
+with novel data-curation and analytic 
+techniques.  The current proposal, therefore, 
+suggests making these parallels explicit, 
+by formally introducing outcomes analysis 
+as a further methodology and source of 
+statistical parameters available for 
+\CaPTk{} and similar image-analysis systems.}
+ 
+\p{Because \CaPTk{} is extensible as part of 
+its essential design, it is both technologically 
+and philosophically consisent with 
+\CaPTk{}'s structure to introduce extensions 
+which focus on the analytic convergence 
+or cross-referencing between image-analysis 
+and outcomes data; and to implement data-sharing 
+protocols among \CaPTk{} modules which model 
+clinical and outcomes information alongside 
+image data.  In this sense, \CaPTk{} is a 
+logical starting point for the design 
+and situating of hybrid radiological/outcomes 
+software in a larger computational context.  
+Using extensions to \CaPTk{} as a prototype, 
+this project then envisions extending 
+this work to other radiological and 
+medical-imaging contexts, as will be detailed 
+below.}
 
+\p{This proposed project is a direct application 
+of patient-centered initiatives to the 
+diagnostic-imaging domain, because its goal is 
+to better integrate digital information which 
+is essential to declaring and analyzing patient 
+outcomes with image-analysis software.  The 
+project is also concretely applicable to 
+Covid-19 because radiology is an essential 
+component of Covid-19 diagnostics.  Indeed, 
+the Radiological Society of North America 
+(\RSNA{}) has announced that they are curating 
+an \AI{}-focused image repository, with collaboration 
+from an international community of hospitals 
+and research groups, which can serve as a test 
+corpus for image analysis in the Covid-19 and 
+SARS-CoV-2 context.  Once published, this 
+image repository can serve as a prime example 
+of how contemporary image-analysis software 
+should ideally be oriented toward working 
+with image archives drawn from a diverse  
+patient population, not only toward the 
+traditional workflow wherein radiologists 
+exchange data with one prescribing institution 
+so as to provide a diagnosis, with little 
+priority for larger-scale/multi-institutional 
+data curation.}
 
-
-Neustein and Christen are being assisted by 
+\p{The Administrative Officer for this proposal, 
+Dr. Amy Neustein, and an additional contributor, 
+Nathaniel Christen, are co-authors of a 
+forthcoming Elsevier volume on Covid-19, 
+titled \textit{Cross-Disciplinary Data 
+Integration and Conceptual Space Models for Covid-19}.  
+This volume will empirically and 
+theoretically explore different data-integration 
+strategies using Covid-19 as an 
+overall grounding case-study; integrating 
+diagnostic imaging and clinical outcomes 
+data is an important example of the 
+data-integration problem-space.  The 
+techniques and results of the project proposed 
+here would therefore be analyzed 
+in this Covid-19 volume.  For the project proposed 
+here, Neustein and Christen are being assisted by 
 Professor Todor Ganchev, Vice Rector of Research 
-at University of Varna, Bulgaria; 
+at University of Varna, Bulgaria; and by 
 Professor Amita Nandal and her colleague, 
 Professor Arvind Dhaka, both from 
 the Department of Department of Computer and 
@@ -962,7 +1059,11 @@ who have worked extensively on medical imaging and machine
 vision.  The Principal Investigator 
 is Dr. James A. Rodger, Professor of Management Information 
 Systems and Decision Sciences at Indiana University of 
-Pennsylvania.}
+Pennsylvania, who has researched data-analysis techniques 
+within the overall rubrick of Artificial Intelligence, 
+Fuzzy Logic, Data Mining, and Machine Learning, 
+including in the context of retroactive clinical-outcomes 
+analytics.}
 
 \section{Research Plan}
 \p{Patient-centered research in the radiological 
@@ -1065,11 +1166,9 @@ on \textit{extensibility,} where radiological
 software becomes more powerful and flexible 
 because new analytic modules may be plugged in 
 to a central \PACS{} system.  A good example of 
-this new paradigm is the Cancer Imaging Phenomics 
-Toolkit (\CaPTk{}), developed by the Center for Biomedical 
-Image Computing and Analytics (\CBICA{}) at the 
-University of Pennsylvania's Perelman School of Medicine.
-The \CaPTk{} project provides a central application 
+this new paradigm is \CaPTk{}, 
+as referenced in the Introduction.  The \CaPTk{} project
+provides a central application 
 which supplies a centralized User Interface and 
 takes responsibility for acquiring and loading 
 radiographic images.  The \CaPTk{} core application is 
@@ -1788,11 +1887,12 @@ schema constructed via \HGXF{} and \HMCL{}.}
 
 \p{The implementations hereby proposed as contributions to 
 the PCORnet initiatives coincide with software being 
-developed for a 
-forthcoming Elsevier volume titled \textit{Cross-Disciplinary Data 
+developed for the forthcoming Elsevier 
+volume (mentioned in the Introduction) 
+titled \textit{Cross-Disciplinary Data 
 Integration and Conceptual Space Models for Covid-19}, 
 co-authored by Amy Neustein and Nathaniel Christen.   
-In fact, Dr. Neustein is the Administrative Officer for 
+Dr. Neustein is the Administrative Officer for 
 this proposal and Nathaniel Christen is the developer 
 who has implemented prototypes for the \HGXF{} and 
 \HMCL{} languages described here.  
