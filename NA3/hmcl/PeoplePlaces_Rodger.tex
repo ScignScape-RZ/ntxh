@@ -1,0 +1,978 @@
+\documentclass[11pt,letterpaper]{article}
+
+
+% pmml  arff  openannotation
+
+%\usepackage[condensed,math]{anttor}
+%\usepackage[T1]{fontenc}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{tgtermes}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\usepackage{titlesec}
+
+%\usepackage{sectsty}
+%\sectionfont{\fontsize{13}{4}\selectfont}
+
+\titleformat{\section}
+  {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
+
+\titlespacing*{\section}
+{0pt}{3.5ex plus 1ex minus .1ex}{-.5ex plus .2ex}
+
+%\usepackage{mathptmx}
+
+\usepackage{eso-pic}
+
+%\setlength\parindent{0pt}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>1{
+\AtTextUpperLeft{
+\makebox[20.5cm][r]{
+\raisebox{-1.95cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{3pt}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(3,0){{\rule{4pt}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+\AddToShipoutPicture{%
+\ifnum\value{page}>1
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+\fi
+}
+
+\AddToShipoutPicture{%
+\ifnum\value{page}=1
+\put(257.5,729){%
+	\transparent{0.7}{
+		\includegraphics[width=0.2\textwidth]{logo.png}}}
+%\put(59,953){}
+\fi
+}	
+
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+%\setlength{\footskip}{7pt}
+
+\usepackage[paperheight=11in,paperwidth=8.5in]{geometry}
+\geometry{left=.74in,top=.5in,right=.74in,bottom=1.2in} %margins
+
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\@part}{\par}{\quad}{}{}
+\patchcmd{\@part}{\huge}{\Large}{}{}
+\makeatother
+
+\renewcommand{\partname}{\hspace{-1em}Part}
+
+\renewcommand*\thepart{\Roman{part}:}
+
+\renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
+
+\renewcommand{\footnoterule}{%
+	\kern -3pt
+	\hrule width .92\textwidth height .5pt
+	\kern 10pt
+}
+
+
+\usepackage[hyphens]{url}
+\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
+{\scriptsize {\url{#1}}}}}}
+
+%\linespread{1.3}
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{textcomp}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\colorlet{blCyan}{cyan!50!blue}
+
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\newcommand{\colorq}[1]{{\color{logoOrange!70!black}{\q{\small\textbf{#1}}}}}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\colorlet{linkcolor}{flColor!60!red}
+
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta!30!logoBlue,
+	urlcolor=blue,
+    linkcolor=linkcolor!70!black,
+%    allcolors=blCyan!40!green
+}
+
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newlength{\bsep}
+\setlength{\bsep}{-1pt}
+\let\xbibitem\bibitem
+\renewcommand{\bibitem}[2]{\vspace{\bsep}\xbibitem{#1}{#2}}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+
+%\usepackage[T1]{fontenc}
+
+%\usepackage{aurical}
+% \Fontauri
+
+\usepackage{gfsdidot}
+\usepackage[T1]{fontenc}
+
+%\makeatletter
+%\f@family,  cmr, T1, n, m,
+%\f@encoding,
+%\f@shape,
+%\f@series,
+%\makeatother
+
+
+
+%\usepackage{LibreBodoni}
+
+%\usepackage{fontspec}
+%\setmainfont{QTBengal}
+
+\usepackage{relsize}
+
+\newcommand{\bref}[1]{\hspace*{1pt}\textbf{\ref{#1}}}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{10pt}\hspace*{12pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+\newcommand{\visavis}{vis-\`a-vis}
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\MThreeK}{{\color{blGreen!45!black}%
+{\fontfamily{qhv}\fontsize{10}{8}\selectfont {M3K}}}}
+
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+%\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+%{\color{red!15!black}{C}}}}}
+
+\definecolor{tcolor}{RGB}{24,52,61}
+
+
+
+\newcommand{\ParaView}{\resizebox{!}{7pt}{\AcronymText{ParaView}}}
+\newcommand{\Octave}{\resizebox{!}{7pt}{\AcronymText{Octave}}}
+\newcommand{\ROOT}{\resizebox{!}{7pt}{\AcronymText{ROOT}}}
+\newcommand{\CERN}{\resizebox{!}{7pt}{\AcronymText{CERN}}}
+\newcommand{\MQFour}{\resizebox{!}{7pt}{\AcronymText{MQ4}}}
+\newcommand{\VISSION}{\resizebox{!}{7pt}{\AcronymText{VISSION}}}
+
+
+
+\newcommand{\CCpp}{\resizebox{!}{7pt}{\AcronymText{C}}/\Cpp{}}
+\newcommand{\NoSQL}{\resizebox{!}{7pt}{\AcronymText{NoSQL}}}
+\newcommand{\SQL}{\resizebox{!}{7pt}{\AcronymText{SQL}}}
+
+\newcommand{\SPARQL}{\resizebox{!}{7pt}{\AcronymText{SPARQL}}}
+
+\newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
+
+\newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
+
+\newcommand{\OWL}{\resizebox{!}{7pt}{\AcronymText{OWL}}}
+
+\newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
+
+\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{H}}%
+\resizebox{!}{6.5pt}{\AcronymText{TXN}}}
+
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
+
+\newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
+
+\newcommand{\UDpipe}{\resizebox{!}{7pt}{\AcronymText{UDpipe}}}
+
+\newcommand{\C}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+
+\usepackage{mdframed}
+
+\newcommand{\cframedboxpanda}[1]{\begin{mdframed}[linecolor=yellow!70!blue,linewidth=0.4mm]#1\end{mdframed}}
+
+
+\newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
+
+\newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
+\newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
+
+\newcommand{\AXF}{\resizebox{!}{7pt}{\AcronymText{AXF}}}
+
+\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
+\resizebox{!}{6.5pt}{\AcronymText{XF}}}
+
+
+\newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\AcronymText{AXF}}}
+
+\newcommand{\AXFD}{\resizebox{!}{7pt}{\AcronymText{AXFD}}}
+
+\newcommand{\CBICA}{\resizebox{!}{7pt}{\AcronymText{CBICA}}}
+
+\newcommand{\IORT}{\resizebox{!}{7pt}{\AcronymText{IORT}}}
+
+
+\newcommand{\SeDI}{\resizebox{!}{7pt}{\AcronymText{SeDI}}}
+\newcommand{\RSNA}{\resizebox{!}{7pt}{\AcronymText{RSNA}}}
+
+\newcommand{\CER}{\resizebox{!}{7pt}{\AcronymText{CER}}}
+\newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+
+\newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
+
+\newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
+
+\newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
+
+
+\newcommand{\TAGML}{\resizebox{!}{7pt}{\AcronymText{TAGML}}}
+
+\newcommand{\CPAP}{\resizebox{!}{7pt}{\AcronymText{CPAP}}}
+
+\newcommand{\RadLex}{\resizebox{!}{7pt}{\AcronymText{RadLex}}}
+
+
+\newcommand{\OMOP}{\resizebox{!}{7pt}{\AcronymText{OMOP}}}
+\newcommand{\PCORnet}{\resizebox{!}{7pt}{\AcronymText{PCORnet}}}
+\newcommand{\FHIR}{\resizebox{!}{7pt}{\AcronymText{FHIR}}}
+
+\newcommand{\CaPTk}{\resizebox{!}{7pt}{\AcronymText{CaPTk}}}
+
+\newcommand{\VIOLIN}{\resizebox{!}{7pt}{\AcronymText{VIOLIN}}}
+
+
+
+\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
+\resizebox{!}{6.5pt}{\AcronymText{XFD}}}
+
+
+\newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
+
+\newcommand{\BioC}{\resizebox{!}{7pt}{\AcronymText{BioC}}}
+
+\newcommand{\CoNLL}{\resizebox{!}{7pt}{\AcronymText{CoNLL}}}
+\newcommand{\CoNLLU}{\resizebox{!}{7pt}{\AcronymText{CoNLL-U}}}
+
+\newcommand{\sapp}{\resizebox{!}{7pt}{\AcronymText{Sapien+}}}
+\newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
+\newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
+
+\newcommand{\ePub}{\resizebox{!}{7pt}{\AcronymText{ePub}}}
+
+%\lsLPF
+
+
+\newcommand{\GIT}{\resizebox{!}{7pt}{\AcronymText{GIT}}}
+
+%\definecolor{atColor}{RGB}{11, 71, 17}
+
+
+\DeclareMathVersion{fordg}
+\SetSymbolFont{letters}{fordg}{OML}{cmr}{b}{n}
+
+\definecolor{atcColor}{RGB}{96, 17, 12}
+\newcommand{\ATextCClr}[1]{\textcolor{atcColor}{\textbf{#1}}}
+
+\newcommand{\AIMConc}{\resizebox{!}{7.5pt}{\ATextCClr{AIM-Concepts}}}
+\newcommand{\lAIMConc}{\resizebox{!}{8pt}{\ATextCClr{AIM-Concepts}}}
+
+\newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATextCClr{HGXF}}}}
+\newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATextCClr{HGXF}}}}
+\newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATextCClr{HGXF}}}}
+
+\newcommand{\HMCL}{{\resizebox{!}{7.5pt}{\ATextCClr{HMCL}}}}
+
+\newcommand{\CRtwo}{{\resizebox{!}{7.5pt}{\ATextCClr{CR2}}}}
+\newcommand{\lCRtwo}{{\resizebox{!}{8pt}{\ATextCClr{CR2}}}}
+\newcommand{\sCRtwo}{{\resizebox{!}{6pt}{\ATextCClr{CR2}}}}
+
+
+\newcommand{\THQL}{\resizebox{!}{7.5pt}{\ATextCClr{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{8pt}{\ATextCClr{THQL}}}
+
+\newcommand{\HDICOM}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-DICOM}}}
+
+\newcommand{\hVaImm}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-VaImm}}}
+
+
+\newcommand{\PhaonVI}{\resizebox{!}{7.5pt}{\ATextCClr{Phaon-VI}}}
+
+
+
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{{\mathversion{fordg}%
+\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+
+\newcommand{\lDgDb}{{\mathversion{fordg}%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+\newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
+\newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
+\newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
+\newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
+\newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
+
+\newcommand{\AI}{\resizebox{!}{7.5pt}{\AcronymText{AI}}}
+\newcommand{\lAI}{\resizebox{!}{8pt}{\AcronymText{AI}}}
+
+\makeatletter
+
+\newcommand*\getX[1]{\expandafter\getX@i#1\@nil}
+
+\newcommand*\getY[1]{\expandafter\getY@i#1\@nil}
+\def\getX@i#1,#2\@nil{#1}
+\def\getY@i#1,#2\@nil{#2}
+\makeatother
+	
+\newcommand{\rectann}[9]{%
+\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+({\getX{#6}+((#7-(#7*#9))/2)},{\getY{#6}+((#8-(#8*#9))/2)}) rectangle %
+({\getX{#6}+((#7-(#7*#9))/2)+#7*#9},{\getY{#6}+((#8-(#8*#9))/2)+#8*#9});}
+
+
+\definecolor{pfcolor}{RGB}{94, 54, 73}
+
+\newcommand{\EPF}{\resizebox{!}{7pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lEPF}{\resizebox{!}{8.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lsEPF}{\resizebox{!}{9.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+
+
+\newcommand{\XPDF}{\resizebox{!}{7pt}{\AcronymText{XPDF}}}
+
+\newcommand{\GRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
+\newcommand{\CAS}{\resizebox{!}{7pt}{\AcronymText{CAS}}}
+
+\newcommand{\lMOSAIC}{%
+\resizebox{!}{8pt}{\AcronymText{M}}%
+\resizebox{!}{6pt}{\AcronymText{OSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
+\newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
+
+\newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
+
+\newcommand{\CLang}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{7pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+\newcommand{\JSON}{\resizebox{!}{7pt}{\AcronymText{JSON}}}
+\newcommand{\UV}{\resizebox{!}{7pt}{\AcronymText{UV}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{7pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{7pt}{\AcronymText{IQmol}}}
+
+\newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
+
+\newcommand{\WhiteDB}{\makebox{WhiteDB}}
+
+\newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
+
+\newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
+
+\newcommand{\URI}{\resizebox{!}{7pt}{\AcronymText{URI}}}
+\newcommand{\DTD}{\resizebox{!}{7pt}{\AcronymText{DTD}}}
+
+\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+
+\newcommand{\JATS}{\resizebox{!}{7pt}{\AcronymText{JATS}}}
+
+
+\newcommand{\SDI}{\resizebox{!}{7pt}{\AcronymText{SDI}}}
+\newcommand{\SDIV}{\resizebox{!}{7pt}{\AcronymText{SDIV}}}
+
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+\newcommand{\lDgDb}{\makebox{\raisebox{-3pt}{%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+
+\newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
+
+
+\newcommand{\ViSion}{\resizebox{!}{7pt}{\AcronymText{ViSion}}}
+
+\newcommand{\CWL}{\resizebox{!}{7pt}{\AcronymText{CWL}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{7pt}{\AcronymText{3D}}}
+\newcommand{\TwoD}{\resizebox{!}{7pt}{\AcronymText{2D}}}
+
+\newcommand{\medInria}{\resizebox{!}{7pt}{\AcronymText{medInria}}}
+\newcommand{\ThreeDimViewer}{\resizebox{!}{7pt}{\AcronymText{3DimViewer}}}
+
+\newcommand{\FAIR}{\resizebox{!}{7pt}{\AcronymText{FAIR}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{7pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{7pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{7pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{7pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\iXPDF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{XPDF}}}}
+
+\newcommand{\iEPF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{ETSpf}}}}
+
+\newcommand{\iSDI}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{SDI}}}}
+
+\newcommand{\iHTXN}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{HTXN}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\FASTA}{{\resizebox{!}{7pt}{\AcronymText{FASTA}}}}
+\newcommand{\SRA}{{\resizebox{!}{7pt}{\AcronymText{SRA}}}}
+\newcommand{\DNA}{{\resizebox{!}{7pt}{\AcronymText{DNA}}}}
+\newcommand{\MAP}{{\resizebox{!}{7pt}{\AcronymText{MAP}}}}
+\newcommand{\EPS}{{\resizebox{!}{7pt}{\AcronymText{EPS}}}}
+\newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
+\newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
+
+
+\newcommand{\OBO}{{\resizebox{!}{7pt}{\AcronymText{OBO}}}}
+
+\newcommand{\XOCS}{{\resizebox{!}{7pt}{\AcronymText{XOCS}}}}
+
+\newcommand{\ChemXML}{{\resizebox{!}{7pt}{\AcronymText{ChemXML}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{7pt}{\AcronymText{TeXMECS}}}
+
+% pmml  arff  openannotation
+
+\newcommand{\PMML}{\resizebox{!}{7pt}{\AcronymText{PMML}}}
+\newcommand{\ARFF}{\resizebox{!}{7pt}{\AcronymText{ARFF}}}
+\newcommand{\IeXML}{\resizebox{!}{7pt}{\AcronymText{IeXML}}}
+
+
+\newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
+
+
+\newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
+
+%\newcommand{\\WhiteDB{}}{\resizebox{!}{7pt}{\AcronymText{\WhiteDB{}}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{7pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{7pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{7pt}{\MOSAIC}}
+
+\newcommand{\LDOM}{\resizebox{!}{7pt}{\AcronymText{LDOM}}}
+\newcommand{\Cnineteen}{\resizebox{!}{7pt}{\AcronymText{CORD-19}}}
+
+\newcommand{\lCnineteen}{\resizebox{!}{7.5pt}{\AcronymText{CORD-19}}}
+
+
+\newcommand{\MOL}{\resizebox{!}{7pt}{\AcronymText{MOL}}}
+
+\newcommand{\ACL}{\resizebox{!}{7pt}{\AcronymText{ACL}}}
+
+\newcommand{\LXCR}{\resizebox{!}{7pt}{\AcronymText{LXCR}}}
+\newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
+\newcommand{\lsLXCR}{\resizebox{!}{9.5pt}{\AcronymText{LXCR}}}
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{7pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
+
+\newcommand{\lQt}{\resizebox{!}{8.5pt}{\AcronymText{Qt}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
+
+\newcommand{\QtSQL}{\resizebox{!}{7pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{7pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{7pt}{\AcronymText{PDF}}}
+
+\newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
+\newcommand{\SciXML}{\resizebox{!}{7pt}{\AcronymText{SciXML}}}
+
+
+
+\newcommand{\lGRE}{\resizebox{!}{7.5pt}{\AcronymText{GRE}}}
+
+\newcommand{\p}[1]{
+
+\vspace{1em}#1}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+\renewcommand{\thesection}{\protect\hspace{-1.5em}}
+%\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+%\newcommand{\dsC}{}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\ltextds}[1]{{\fontfamily{lmdh}\fontsize{12}{11}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+\newcommand{\ldsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+%\usepackage{listings}
+
+\colorlet{dsl}{purple!20!brown}
+\colorlet{dslr}{dsl!50!blue}
+
+\setlist[description]{%
+  topsep=11pt,
+  labelsep=22pt, leftmargin=10pt,
+  itemsep=13pt,               % space between items
+  %font={\bfseries\sffamily}, % set the label font
+  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\let\OldTeX\TeX
+
+\renewcommand{\TeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldTeX}}}
+
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+%\setlength\parindent{0pt}
+\setlength\parindent{24pt}
+%\input{commands}
+
+
+\newcommand{\lun}[1]{\raisebox{-4pt}{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\textcolor{tcolor}{#1}}}}}\vspace{-2pt}}
+
+\newcommand{\inditem}{\itemindent10pt\item}
+
+\usepackage{soul}
+
+\definecolor{hlcolor}{RGB}{114, 54, 203}
+\colorlet{hlcol}{hlcolor!35}
+\sethlcolor{hlcol}
+
+\makeatletter
+\def\SOUL@hlpreamble{%
+	\setul{}{3ex}%         !!!change this value!!! default is 2.5ex
+	\let\SOUL@stcolor\SOUL@hlcolor
+	\SOUL@stpreamble
+}
+\makeatother
+
+\usepackage{scrextend}
+%\vspace*{3em}
+\newenvironment{mldescription}{\vspace{1em}%
+  \begin{addmargin}[4pt]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1][]{\vspace{5pt}\par\medskip%
+%\colorbox{hlcolor}{\textbf{##1}}\quad}\indent
+\hl{ \textbf{##1} }\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
+
+\usepackage{marginnote}
+
+\newcommand{\mnote}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{1em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnotel}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{-4em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnoteh}[3]{%
+	\vspace*{#1}
+	\reversemarginpar
+	\raisebox{#2}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#3}}}
+				\end{mdframed}}
+			}[3em]}}
+
+
+\newcommand{\mnoteb}[1]{%
+	\vspace*{1em}
+	\reversemarginpar
+	\raisebox{1em}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#1}}}
+				\end{mdframed}}
+			}[3em]}}
+	
+\usepackage{wrapfig}
+
+\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{shapes.arrows}
+
+\newcommand{\curicon}[2]{%
+	\node at (#1,#2) [
+	draw=black,
+	%minimum width=2ex,
+	inner sep=.7pt,
+	fill=white,
+	single arrow,
+	single arrow head extend=3pt,
+	single arrow head indent=1.5pt,
+	single arrow tip angle=45,
+	line join=bevel,
+	minimum height=4.6mm,
+	rotate=115
+	] {};
+}
+
+\makeatletter
+\def\@cite#1#2{[\textbf{#1\if@tempswa , #2\fi}]}
+\def\@biblabel#1{[\textbf{#1}]}
+\makeatother
+
+
+%\let\origref\ref
+%\renewcommand{\ref}[1]{{\LARGE #1}}
+
+%\def\ref#1{\textbf{\origref{{\LARGE #1}}}}
+
+\setlength{\footnotesep}{0pt}
+
+\renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
+
+
+\newcommand{\LVee}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\vee$}}}}}
+\newcommand{\LWedge}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\wedge$}}}}}
+
+\renewcommand{\LVee}{}
+\renewcommand{\LWedge}{}
+
+
+\urlstyle{same}
+
+\usepackage[preserveurlmacro]{breakurl}
+
+\newcommand{\bhref}[1]{\href{#1}{\burl{#1}}}
+
+%\setmainfont{QTChanceryType}
+
+\begin{document}
+
+\setlength{\skip\footins}{18pt}	
+	
+{\linespread{1.25}\selectfont
+
+\vspace*{1.5em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+\colorlet{ctmcyan}{ctmpppp!70!cyan}
+
+\colorlet{ctmppppy}{ctmppp!60!orange}
+
+
+
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=\textwidth,
+colback=ctmppppy!40,
+%colback=ctmcyan!50,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+%\hspace{22pt}
+\begin{minipage}{\textwidth}	
+\begin{center}	
+{\setlength{\fboxsep}{32pt}
+	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{Proposal for Radiological Software Extensions to Accelerate 
+Patient-Centered Research for Covid-19: Contributors}
+}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\p{The following are contributors to the project:
+
+\begin{description}
+
+\item[Principal Investigator]  Dr. James A. Rodger, 
+Professor of Management Information 
+Systems and Decision Sciences at Indiana University of 
+Pennsylvania.
+
+\item[Administrative Officer]  Dr. Amy Neustein, 
+founder of Linguistic Technology Systems.
+
+\item[Contributors]  
+\begin{itemize}\item[]
+
+\item Nathaniel Christen, software engineer
+
+\item Professor Amita Nandal, 
+Department of Department of Computer and 
+Communication Engineering at Manipal University, Jaipur
+
+\item Professor Arvind Dhaka, 
+Department of Department of Computer and 
+Communication Engineering at Manipal University, Jaipur; 
+recently visiting scholar at 
+University of Varna, Bulgaria
+
+\item Professor Todor Ganchev, Vice Rector of Research 
+at University of Varna, Bulgaria
+
+
+
+
+
+\end{itemize}
+
+
+
+
+\end{description}
+
+}
+
+
+\end{document}
+
