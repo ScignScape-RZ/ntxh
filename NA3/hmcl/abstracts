@@ -1,0 +1,150 @@
+Technical 
+
+The project described in this proposal 
+involves the implementation of computer 
+software and the design of data-sharing 
+protocols concerned with analyzing patient 
+outcomes in the context of radiology 
+and diagnostic imaging.  This proposal 
+takes, as its starting point, the Cancer Imaging 
+and Phenomics Toolkit (CaPTk), developed 
+at the Center for Biomedical Image Computing 
+and Analytics (CBICA) at 
+the University of Pennsylvania Perelman School of 
+Medicine, which is an extensible image-analysis 
+platform.  CaPTk is designed to serve as a 
+central PACS (Picture Archiving and Communication 
+System) application which is supplemented 
+by extensions that implement specific analytic 
+methods.  We propose developing extensions 
+which enable clinical outcomes data to be 
+integrated into image-analysis computations.  
+This work will use CaPTk as a software system, 
+but also develop data-sharing protocols and 
+code libraries that we will introduce as 
+extensions to other radiological software 
+platforms, and also formalize in such 
+a way that similar techniques can be 
+used in other medical imaging and 
+Patient-Centered or Comparative Effectiveness 
+Research contexts.  
+
+Given its innovative 
+architecture, CaPTk can be used both as a 
+framework for the study of image corpora 
+assembled for research purposes and as a 
+vehicle for implementing and demonstrating 
+new methods or algorithms for the automated, 
+Machine Learning, and/or AI-driven analysis 
+of diagnostic images.  By applying 
+sophisticated "Machine Vision" to medical 
+images, the scientific community hopes to 
+achieve diagnostic capabilities which are 
+not only more accurate, but also more 
+granular: identifying the 
+cause of patients' symptoms, but also 
+indicating which treatment plans would 
+likely be the most conducive to favorable outcomes.
+
+In order to integrate diagnostic 
+imaging rigorously into patient-centered 
+and "personalized" medicine, it is 
+necessary to develop new protocols for 
+curating clinical and outcomes data 
+alongside image corpora.  This 
+"radiological outcomes" priority 
+has spurred several initiatives 
+to standardize new diagnostic-imaging 
+technology and "reporting" vocabularies.  
+Such projects can be thematically compared 
+with CaPTk, in that both envision 
+conventional image analysis being supplemented 
+with novel data-curation and analytic 
+techniques.  The current proposal, therefore, 
+suggests making these parallels explicit, 
+by formally introducing outcomes analysis 
+as a further methodology and source of 
+statistical parameters available for 
+CaPTk and similar image-analysis systems.
+ 
+Given CaPTk's deliberate extensibility as part of 
+its essential design, it is both technologically 
+and philosophically consistent with 
+CaPTk's structure to introduce extensions 
+which focus on the analytic convergence 
+or cross-referencing between image-analysis 
+and outcomes data; and to implement data-sharing 
+protocols among CaPTk modules which model 
+clinical and outcomes information alongside 
+image data.  In this sense, CaPTk is a 
+logical starting point for the design 
+and situating of hybrid radiological/outcomes 
+software in a larger computational context.  
+Using extensions to CaPTk as a prototype, 
+this project then envisions extending 
+this work to other radiological and 
+medical-imaging contexts, as will be detailed 
+below.
+
+This proposed project is a direct application 
+of patient-centered initiatives to the 
+diagnostic-imaging domain, because its goal is 
+to better integrate digital information which 
+is essential to declaring and analyzing patient 
+outcomes with image-analysis software.  The 
+project is also concretely applicable to 
+Covid-19 because radiology is an essential 
+component of Covid-19 diagnostics.  Indeed, 
+the Radiological Society of North America 
+(RSNA) has announced that they are curating 
+an AI-focused image repository, with collaboration 
+from an international community of hospitals 
+and research groups, which can serve as a test 
+corpus for image analysis in the Covid-19 and 
+SARS-CoV-2 context.  Once published, this 
+image repository can serve as a prime example 
+of how contemporary image-analysis software 
+should ideally be oriented toward working 
+with image archives drawn from a diverse  
+patient population, not only toward the 
+traditional workflow wherein radiologists 
+exchange data with one prescribing institution 
+so as to provide a diagnosis, with little 
+priority for larger-scale/multi-institutional 
+data curation.
+
+
+
+Public 
+
+Our project combines the contributions of 
+an international team of researchers, from 
+the United States, Europe, and India, 
+for the implementation of computer 
+software and the design of data-sharing 
+protocols concerned with analyzing patient 
+outcomes in the context of radiology 
+and diagnostic imaging.  This proposal 
+takes, as its starting point, the Cancer Imaging 
+and Phenomics Toolkit (CaPTk), developed 
+at the Center for Biomedical Image Computing 
+and Analytics (CBICA) at 
+the University of Pennsylvania Perelman School of 
+Medicine, which is an extensible image-analysis 
+platform.  CaPTk is designed to serve as a 
+central PACS (Picture Archiving and Communication 
+System) application which is supplemented 
+by extensions that implement specific analytic 
+methods.  We propose developing extensions 
+which enable clinical outcomes data to be 
+integrated into image-analysis computations.  
+This work will use CaPTk as a software system, 
+but also develop data-sharing protocols and 
+code libraries that we will introduce as 
+extensions to other radiological software 
+platforms, and also formalize in such 
+a way that similar techniques can be 
+used in other medical imaging and 
+Patient-Centered or Comparative Effectiveness 
+Research contexts.  
+
