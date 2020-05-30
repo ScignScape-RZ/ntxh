@@ -20,7 +20,7 @@
   {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
 
 \titlespacing*{\section}
-{0pt}{3.5ex plus 1ex minus .1ex}{-.5ex plus .2ex}
+{0pt}{7ex plus 1ex minus .1ex}{2ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -390,6 +390,8 @@
 \newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATextCClr{HGXF}}}}
 
 \newcommand{\HMCL}{{\resizebox{!}{7.5pt}{\ATextCClr{HMCL}}}}
+\newcommand{\DSPIN}{{\resizebox{!}{7.5pt}{\ATextCClr{D-SPIN}}}}
+
 
 \newcommand{\CRtwo}{{\resizebox{!}{7.5pt}{\ATextCClr{CR2}}}}
 \newcommand{\lCRtwo}{{\resizebox{!}{8pt}{\ATextCClr{CR2}}}}
@@ -873,6 +875,8 @@
 
 \newcommand{\bhref}[1]{\href{#1}{\burl{#1}}}
 
+\newcommand{\dhref}[1]{\href{#1}{\url{#1}}}
+
 %\setmainfont{QTChanceryType}
 
 \begin{document}
@@ -922,60 +926,93 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{Proposal for Radiological Software Extensions to Accelerate 
-Patient-Centered Research for Covid-19: Contributors}
+{The Data Structure Protocol for Image-Analysis Networking: 
+Modules and Motivations}
 }}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
 \end{center}
 
-\p{The following are contributors to the project:
+\section{The Four Layers of the D-SPIN Object Model}
 
-\begin{description}
+\p{Although the \DSPIN{} pattern is not 
+exclusively targeted to Object-Oriented 
+programming environments, it is helpful to 
+use Object-Oriented terms when describing 
+the organization and properties of \DSPIN{}  
+structures.  Accordingly, the content 
+communicated by a \DSPIN{} file or package 
+is called an \textit{object}, and \DSPIN{} 
+objects are likewise comprised of four 
+more specific objects or layers, describing 
+different aspects of the shared image and 
+how it should be processed.  These 
+four layers are defined as follows:
 
-\item[Principal Investigator]  Dr. James A. Rodger, 
-Professor of Management Information 
-Systems and Decision Sciences at Indiana University of 
-Pennsylvania.
+\begin{description} 
 
-\item[Administrative Officer]  Dr. Amy Neustein, 
-founder of Linguistic Technology Systems.
+\item[Metadata Layer]  This object presents 
+metadata describing the image format and acquisition.  
+If the surrounding \DSPIN{} object represents an 
+image series (rather than a single image), the 
+metadata object should also declare the 
+size of the collection and how individual 
+images should be referenced.  The metadata 
+should include a file path or resource identifier 
+asserting where the image can be acquired from 
+(which in the case of a series can be a zipped 
+folder or a list of resource paths).  More 
+specific metadata depends on the image or images' 
+graphical format; to properly load images in 
+most formats (such as \PNG{}, \JPEG{}, \TIFF{}, 
+and \DICOM{}) applications need to specify 
+detail such as dimensions, resolution, and 
+color depth.  Of course, some of this information 
+is stored internally within the image file 
+(depending on its format), but certain formats 
+require some metadata to be shared along with 
+the image itself (moreover, it is often convenient 
+to have basic information available without needing 
+to extract it from binary image data).  The details 
+on which form of metadata are appropriate for 
+which image format can be determined based 
+on image-viewing code libraries, such as 
+\textbf{libpng}, \textbf{libtiff}, or 
+\DICOM{} clients.  If both end-points of a 
+\DSPIN{} communication have the same 
+libraries installed, the sending application 
+will have a clear idea of how much supplemental 
+data is needed over and above what will be 
+read from image files directly.  If there 
+are uncertainties in library alignment between 
+the two end-points, the sending application should 
+consider serializing a more detailed summary of 
+the image providing any information that would 
+ordinarily be read from the image file. 
+  
+\item[Annotation Layer]
+Almost all image analysis --- whether done by 
+humans or by softare --- results in either 
+some form of statistical representation of 
+an image's properties, or a complex of 
+data which presents information about 
+(and may visually overlay) 
 
-Dr. Amy Neustein has served as Editor-in-Chief of the International Journal of Speech Technology since 2008. She is the author/editor of 12 academic books that span various topics from speech and automata in healthcare, advances in speech recognition and natural language processing, text mining of web-based medical content, acoustic modeling of speech disorders, forensic speaker recognition, voice technologies for speech reconstruction and enhancement, and acoustic analysis of pathologies from infancy to young adulthood. She serves as editor of three book series. The first two are published by Springer: SpringerBriefs in Speech Technology; and Signal and Communication Technology. The third one, “Speech Technology and Text Mining in Medicine and Healthcare,” is published by de Gruyter. She has authored over 40 papers and chapters. She heads up a think tank in Fort Lee, NJ, Linguistic Technology Systems, and has developed a novel dataset creator framework for publishing research objects.
+\item[Contextual Layer]
 
-
-\item[Contributors]  
-\begin{itemize}\item[]
-
-\item Nathaniel Christen, software engineer
-
-\item Professor Amita Nandal, 
-Department of Department of Computer and 
-Communication Engineering at Manipal University, Jaipur
-
-\item Professor Arvind Dhaka, 
-Department of Department of Computer and 
-Communication Engineering at Manipal University, Jaipur; 
-recently visiting scholar at 
-University of Varna, Bulgaria
-
-\item Professor Todor Ganchev, Vice Rector of Research 
-at University of Varna, Bulgaria
+\item[Procedural Layer]
 
 
 
+\end{description} 
 
 
-\end{itemize}
+ }
 
+\p{}
 
-
-
-\end{description}
-
-}
+\p{}
 
 
 \end{document}
-
