@@ -329,6 +329,9 @@
 
 \newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
 
+\newcommand{\DICOMRT}{\resizebox{!}{7pt}{\AcronymText{DICOM-RT}}}
+
+
 \newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
 
 \newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
@@ -944,11 +947,24 @@ the radiological context has several dimensions,
 including analysis of the rationales for diagnostic 
 imaging in the first place: how well does image-based 
 diagnostics actually correlate with improved patient 
-outcomes?  This was one question addressed by 
+outcomes?  How can we quantify the experience of 
+image-based testing itself (e.g., to identify 
+factors such as cost, discomfort, and 
+radiation danger which can rank some tests 
+as less desirable than others, as one parameter 
+to consider when deciding whether to prescribe 
+imaging, and which modality)?  These were 
+among the questions addressed by 
 the Patient-Centered Outcomes Research Institute's 
 (\PCORI{}'s) \q{Patient-Centered Research for Standards 
-of Outcomes in Diagnostic Tests} (\PROD{}) study.  
-Assuming diagnostic imaging \textit{is} 
+of Outcomes in Diagnostic Tests} (\PROD{}) study, 
+which also established a useful protocol for how 
+medical institutions could provide reports 
+on the experience and effectiveness of imaging 
+from a patient's as well as clinician's perspective.}
+
+\p{Assuming diagnostic imaging of a given 
+modality \textit{is} 
 appropriate, an additional priority should then 
 be to structure the diagnostic workflow --- the 
 image procurement, analysis, and data/metadata sharing 
@@ -974,34 +990,31 @@ imaging and outcomes data requires integrating
 heterogeneous information obtained at different 
 times and places.  Some clinical data is associated 
 with each patient at the time that a radiological 
-(or other imaging) study is prescribed; the 
+(or other imaging) study is prescribed.  The 
 images themselves, and subsequent diagnostic  
-reports, provide another layer of data.  
-These layers of information, which can potentially 
-be bundled together, exist prior to the initiation 
+reports, provide layers data that exist prior to the initiation 
 of a course of treatment (at least insofar as a 
 clinical intervention is chosen in response 
-to radiological findings).  However, a rigorous 
+to radiological findings).  Moreover, a rigorous 
 data-integration protocol would need to incorporate 
 information emerging \textit{after} the treatment 
-starts, for the indefinite future: first, 
-descriptions and assessments of clinical outcomes; 
-and, second, new data garnered by applying 
+starts: descriptions and assessments of clinical outcomes, 
+and, potentially, new data garnered by applying 
 different image-analysis techniques.  
 Ideally, image analysis can be powerful enough 
 not only to identify a pathology, but to 
 classify diagnoses into clusters based on 
 recommended course of treatment.  In order 
 for analytic techniques to achieve this 
-level of treatment, however, it is necessary 
-to achieve a feedback where known clinical 
+level of detail, however, it is necessary 
+to arrive at a feedback loop where known clinical 
 outcomes are associated with prior images, 
 so that developers have those outcomes available 
 as a further dimension of clinical data 
 that may be statistically cross-referenced 
 with image analysis.}
 
-\p{As it is presently constituted, the 
+\p{Unfortunately, as it is presently constituted, the 
 research ecosystem for developing novel 
 medical-imaging techniques is oriented 
 toward diagnostic precision, rather than 
@@ -1012,7 +1025,7 @@ novel image analytic techniques, many of which
 include some rudimentary clinical data, but 
 few or none of which document post-diagnostic 
 treatment outcomes.  Moreover, most of the software 
-packages and application used to perform 
+packages and applications used to perform 
 image analysis do not support data types 
 for representing patient outcomes as data 
 structures that can be analyzed and 
@@ -1034,75 +1047,157 @@ goal, the capacity to generate data enabling
 such an initiative would need to be inserted 
 into existing diagnostic-imaging software.}
 
+\p{The group of contributors submitting the 
+current proposal is not the first to 
+identify these problems, and several 
+projects have addressed the need to 
+cross-reference clinical/outcomes data 
+with diagnostic imaging.  The \PROD{} 
+study can be counted among this group, 
+because it demonstrates that experiential 
+factors should be evaluated --- both in 
+terms of testing itself (and its risks/costs) 
+and in terms of post-diagnostic quality of 
+life --- as part of the data modeling 
+treatment outcomes, and the comparative 
+effectiveness of a selected course of treatments 
+compared to alternative diagnostic 
+methods and/or clinical interventions.  
+From the perspective of standard 
+data models, initiatives to cross-reference 
+imaging and outcomes data include several 
+Semantic Web ontologies, such as the Semantic Dicom Ontology 
+(\SeDI{})\footnote{See \bhref{https://bioportal.bioontology.org/ontologies/SEDI}.} and the \ViSion{} \q{structured 
+reporting} system.\footnote{See \bhref{https://epos.myesr.org/esr/viewing/
+index.php?module=viewing_poster&task=&pi=155548}.} 
+The purpose of these ontologies is to 
+standardize the terms through which 
+radiographic procedures, analyses, and 
+recommendations are described --- more 
+precisely or predictably than older 
+technologies such as \DICOM{} headers, 
+\DICOMRT{}, and the \RadLex{} lexicon.  
+By properly aligning image metadata 
+spanning multiple patients, it is possible 
+to create \q{searchable} image archives such 
+that images can be selected or classified 
+within a larger image collection, 
+yielding image series or patient cohorts 
+that can be studied through the lens of 
+predictive modeling or patient-centered 
+outcomes.  Projects such as \SeDI{} 
+implement \q{semantic} \PACS{} workstations 
+where the space of known images is defined 
+by a particular \PACS{} system, but analogous 
+techniques could be used to construct 
+larger-scale image corpora as well, for 
+research purposes, data mining, or as 
+test-beds for code and algorithms.}  
+ 
+\p{Although \SeDI{} defines a general-purpose 
+ontology --- essentially, a system for mapping 
+\DICOM{} header data to \RDF{} form so as 
+to overcome inconsistencies in different 
+\DICOM{} files which can inhibit query evaluation 
+across \DICOM{} corpora --- its concrete 
+realization is tied to a specific commercial 
+\PACS{} technology.  The \ViSion{} framework, 
+whose goals are fairly similar to \SeDI{} 
+(albeit with further emphasis on \q{structured 
+reporting,} including via Natural Language 
+Processing) similarly pairs a general-purpose 
+ontology with one specific medical software product.  
+Insofar as the \ViSion{} and \SeDI{} projects 
+are the two most detailed \q{semantic \DICOM{}} 
+efforts discussed in recent literature, 
+it seems reasonable to conclude that the idea of 
+a semantic and \q{searchable} \PACS{} system, 
+and image-repository framework, is not yet 
+part of the diagnostic-imaging ecosystem in 
+any foundational sense (notwithstanding features 
+that might be present in a small group of 
+specialized commercial products).}
 
-
-focuses on improving the precision of 
-diagnostic-imaging techniques and corresponding 
-clinical interventions.  Indeed, the goal of contemporary 
-radiology is not only to confirm a diagnosis, 
-but also to extract cues from 
-medical images that suggest which course of 
-treatment has the highest probability of 
-favorable treatment outcomes.  A related 
-goal is curating collections of diagnostic 
-images so as to improve our ability to 
-identify such diagnostic cues, potentially 
-using Machine Learning and/or Artificial 
-Intelligence applied to large-scale 
-image repositories
+\p{An additional, and related, limitation of 
+existing medical-imaging software concerns 
+the integration of novel image-analysis 
+methodology.  
 
 
 }
 
+%The storage of DICOM information in an RDF repository has an advantage over generic solutions where PACS databases store the entire (or very small parts of the) header. Such PACS relational databases are less flexible in changing data structures (and data), where the Semantic Web technology is more flexible in nature. For instance, within an RDF repository, adding extra information at a later point in time does not alter or change the existing data. Furthermore, it creates the possibility for everyone to link their own additional findings to the already available datasets. 
 
- This proposal 
-takes, as its starting point, a relatively 
-new image-analysis technology 
---- specifically, the Cancer Imaging 
-Phenomics Toolkit (\CaPTk{}), developed 
-at the Center for Biomedical Image Computing 
-and Analytics (\CBICA{}) at 
-the University of Pennsylvania Perelman School of 
-Medicine --- which is an 
-extensible platform for implementing 
-analytic modules as peers to a central 
-\PACS{} system.  Given its innovative 
-architecture, \CaPTk{} can be used both as a 
-framework for the study of image corpora 
-assembled for research purposes and as a 
-vehicle for implementing and demonstrating 
-new methods or algorithms for the automated, 
-Machine Learning, and/or \AI{}-driven analysis 
-of diagnostic images.  By applying 
-sophisticated \q{Machine Vision} to medical 
-images, the scientific community hopes to 
-achieve diagnostic capabilities which are 
-not only more accurate, but also more 
-granular: identifying the 
-cause of patients' symptoms, but also 
-indicating which treatment plans would 
-likely be the most conducive to favorable outcomes.}
+%}
 
-\p{In order to integrate diagnostic 
-imaging rigorously into patient-centered 
-and \q{personalized} medicine, it is 
-necessary to develop new protocols for 
-curating clinical and outcomes data 
-alongside image corpora.  This 
-\q{radiological outcomes} priority 
-has spurred several initiatives 
-to standardize new diagnostic-imaging 
-technology and \q{reporting} vocabularies.  
-Such projects can be thematically compared 
-with \CaPTk{}, in that both envision 
-conventional image analysis being supplemented 
-with novel data-curation and analytic 
-techniques.  The current proposal, therefore, 
-suggests making these parallels explicit, 
-by formally introducing outcomes analysis 
-as a further methodology and source of 
-statistical parameters available for 
-\CaPTk{} and similar image-analysis systems.}
+
+%0, 22, 42, 60, 76, 90, 102, 112
+%focuses on improving the precision of 
+%diagnostic-imaging techniques and corresponding 
+%clinical interventions.  Indeed, the goal of contemporary 
+%radiology is not only to confirm a diagnosis, 
+%but also to extract cues from 
+%medical images that suggest which course of 
+%treatment has the highest probability of 
+%favorable treatment outcomes.  A related 
+%goal is curating collections of diagnostic 
+%images so as to improve our ability to 
+%identify such diagnostic cues, potentially 
+%using Machine Learning and/or Artificial 
+%Intelligence applied to large-scale 
+%image repositories
+
+%}
+
+
+% This proposal %
+%takes, as its starting point, a relatively 
+%new image-analysis technology 
+%--- specifically, the Cancer Imaging 
+%Phenomics Toolkit (\CaPTk{}), developed 
+%at the Center for Biomedical Image Computing %
+%and Analytics (\CBICA{}) at 
+%the University of Pennsylvania Perelman School of 
+%Medicine --- which is an 
+%extensible platform for implementing 
+%analytic modules as peers to a central 
+%\PACS{} system.  Given its innovative 
+%architecture, \CaPTk{} can be used both as a 
+%framework for the study of image corpora 
+%assembled for research purposes and as a 
+%vehicle for implementing and demonstrating 
+%new methods or algorithms for the automated, 
+%Machine Learning, and/or \AI{}-driven analysis 
+%of diagnostic images.  By applying 
+%sophisticated \q{Machine Vision} to medical 
+%images, the scientific community hopes to 
+%achieve diagnostic capabilities which are 
+%not only more accurate, but also more 
+%granular: identifying the 
+%cause of patients' symptoms, but also 
+%indicating which treatment plans would 
+%likely be the most conducive to favorable outcomes.}
+
+%\p{In order to integrate diagnostic 
+%imaging rigorously into patient-centered 
+%and \q{personalized} medicine, it is 
+%necessary to develop new protocols for 
+%curating clinical and outcomes data 
+%alongside image corpora.  This 
+%\q{radiological outcomes} priority 
+%has spurred several initiatives 
+%to standardize new diagnostic-imaging 
+%technology and \q{reporting} vocabularies.  
+%Such projects can be thematically compared 
+%with \CaPTk{}, in that both envision 
+%conventional image analysis being supplemented 
+%with novel data-curation and analytic 
+%techniques.  The current proposal, therefore, 
+%suggests making these parallels explicit, %
+%by formally introducing outcomes analysis 
+%as a further methodology and source of 
+%statistical parameters available for 
+%\CaPTk{} and similar image-analysis systems.}
  
 \p{Because \CaPTk{} is extensible as part of 
 its essential design, it is both technologically 
