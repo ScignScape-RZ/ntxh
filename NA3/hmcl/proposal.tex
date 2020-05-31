@@ -1096,7 +1096,7 @@ test-beds for code and algorithms.}
  
 \p{Although \SeDI{} defines a general-purpose 
 ontology --- essentially, a system for mapping 
-\DICOM{} header data to \RDF{} form so as 
+\DICOM{} header data to \RDF{} structures so as 
 to overcome inconsistencies in different 
 \DICOM{} files which can inhibit query evaluation 
 across \DICOM{} corpora --- its concrete 
@@ -1121,10 +1121,158 @@ specialized commercial products).}
 \p{An additional, and related, limitation of 
 existing medical-imaging software concerns 
 the integration of novel image-analysis 
-methodology.  
+methodology.  Typical diagnostic-imaging 
+software includes preliminary image-processing 
+capabilities --- acquiring and parsing \DICOM{} 
+files, for instance, and converting \DICOM{} 
+into formats such as \textbf{itk::Image} 
+for analysis --- and some inventory 
+of image analysis and transformation 
+functionality.  Because diagnostic imaging is a 
+very active field of research, new techniques 
+and algorithms are constantly being published, 
+which creates a challenge of integrating new 
+methodology into pre-existing systems.  
+Novel analyses, for their part, may be implemented 
+in many different programming contexts, such 
+as \R{}, Jupyter (which is a python-based 
+development environment), Matlab, or standalone 
+libraries/applications written in languages such 
+as Python, Java, or \Cpp{}.  This diversity 
+of development environments can make it difficult 
+to \q{mix-and-match} algorithms whose implementation 
+depends on a specific ecosystem --- for instance, 
+to run a \PACS{} workstation implemented in 
+Java but utilize an analytic process implemented 
+in \R{}.  Such ecosystem-level mialignment is 
+generally mitigated by employing some form of 
+workflow description, such as the 
+Common Workflow Language (\CWL{}), 
+which allows independent software components 
+to interoperate even if they are implemented 
+in fundamentally incompatible programming 
+frameworks.}
+
+\p{However, making interop work across distinct software 
+ecosystems add development complexity: the 
+requirements for implementing novel analytic 
+methods are not only to compose executable 
+code making the methods computationally realizable, 
+but to package that code into a functional unit that 
+can interoperate with other clinical and imaging 
+software.  This problem, in turn, engenders 
+various software-engineering techniques and frameworks.  
+A good example is the Cancer Imaging 
+Phenomics Toolkit (\CaPTk{}), developed 
+at the Center for Biomedical Image Computing %
+and Analytics (\CBICA{}) at 
+the University of Pennsylvania Perelman School of 
+Medicine, which is an extensible platform for implementing 
+analytic modules as peers to a central \PACS{} system.  
+In particular, \CaPTk{} provides an implementation 
+(apparently the only \Cpp{}-based implementation) 
+of \CWL{}, using this workflow model in 
+conjunction with the \Qt{} Reflective Programming 
+system to implement workflows connecting the 
+central \CaPTk{} application with its analytic 
+extensions.\footnote{No native \C{} or \Cpp{} 
+libraries are described on the \CWL{} website 
+among the tools and parsers available for \CWL{}, 
+but \CaPTk{} is mentioned on a corresponding discussion 
+thread concerning \Cpp{} libraries.  It seems 
+therefore that the \CaPTk{} \q{utilities} repository 
+provides the de-facto standard \Cpp{} implementation of 
+\CWL{}, at least according to the \CWL{} group 
+themselves.}   In effect, \CaPTk{} achieves a 
+workflow and messaging protocol for what they 
+term \q{native,} \q{standalone} applications, 
+yielding an extensible architecture through 
+which new image-analysis techniques can be 
+integrated into an underlying \PACS{} system.} 
+ 
+\p{Certain comparisons can be made 
+between \CaPTk{}, whose architectural 
+innovations are centered on workflow 
+management and multi-application networking, 
+and \SeDI{}, whose novel features 
+focus on data alignment and integration.  
+Both of these projects expand the analytic 
+capabilities of diagnostic-imaging 
+systems by promoting common data and 
+code representations, enlarging the 
+space of metadata available for query-evaluation 
+and/or the range of quantitative techniques 
+available for image analysis.  Both rely 
+on a canonical description format 
+(\CWL{}, in the case of \CaPTk{}, and 
+a novel \RDF{} ontology, in the case of \SeDI{}) 
+which is not widely implemented by other 
+\PACS{} systems.  Their concerns also overlap 
+insofar as different analytic methods generate 
+different kinds of image data, which need to be 
+intergrated into the total space of data 
+available for a \PACS{} system and/or an image 
+repository.  While the data-integration 
+approaches chosen by these two projects are 
+specific to the respective software applications which 
+is their main result, both \SeDI{} and \CaPTk{} 
+point to evident limitations in the scope 
+of current diagnostic imaging softare: 
+failure to properly integrate image metadata 
+(including clinical and outcomes data) into a 
+multi-patient space optimized for query 
+evaluation and data mining; and failure to 
+integrate many diverse image-analysis 
+methodologies into a common execution framework.}
+
+\p{One take-away from this overview of 
+\SeDI{} and \CaPTk{} is that new diagnostic 
+imaging software can incorporate some version 
+of the data models and protocols implemented 
+by these two projects.  This is, indeed, 
+one component of the new platform which we 
+propose to implement as part of the current 
+proposal.  On a broader level, however, 
+the concrete examples of \SeDI{} and \CaPTk{} 
+point to    The integrative logic of 
+\SeDI{} and \CaPTk{} is based on specific 
+data structures --- \DICOM{} headers and 
+\CWL{}, respectively --- and arose out of 
+practical limitations in existing \DICOM{} 
+software.  The \SeDI{} and \CaPTk{} solutions 
+may be a methodological guide for related 
+projects, but neither is a general-purpose 
+framework for solving all data and code 
+integration problems (not to imply that 
+such a general-purpose solution exists).  
+Integration problems are not exhausted by 
+deriving solutions in one specific area: 
+for example, merging \DICOM{} metadata 
+into \RDF{} graphs may successfully align 
+data structures conforming to current 
+\DICOM{} specifications, but does not 
+guarantee integration of novel extensions or 
+supplements to \DICOM{}.  Much as \DICOMRT{} 
+extended \DICOM{} to incoporate radiation-therapy 
+recommendations, predictive modeling and  
+patient-centered Comparative Effectiveness reach 
+could easily lead to new data standards as 
+researchers seek to integrate imaging data 
+with treatment plans and outcomes evaluation. 
+
+
+%The larger principle, in short, 
+%is that 
+
+
+
+
+
 
 
 }
+
+
 
 %The storage of DICOM information in an RDF repository has an advantage over generic solutions where PACS databases store the entire (or very small parts of the) header. Such PACS relational databases are less flexible in changing data structures (and data), where the Semantic Web technology is more flexible in nature. For instance, within an RDF repository, adding extra information at a later point in time does not alter or change the existing data. Furthermore, it creates the possibility for everyone to link their own additional findings to the already available datasets. 
 
