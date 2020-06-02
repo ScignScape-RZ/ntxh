@@ -1259,10 +1259,66 @@ application-level event handlers are
 not automatically exposed to 
 a scripting interface as they would be 
 in a \JVM{} or \Python{} environment.  
-However, x also supports 
- 
+However, x also supports scripting 
+via a choice of languages, similar to 
+SeCo.  The primary scripting language 
+used with x is AngelScript, although 
+other \C{}/\Cpp{} based languages 
+(Embeddable Common Lisp, \ChaiScript{}, 
+etc.) can work as well.  To support 
+various scripting languages, modules 
+loaded into x need to provide a 
+meta-procedural interface declaration, 
+and the desired scripting language also 
+needs a bridge to work with these 
+declarations (which is generally usable 
+across all datasets and modules).  
+Such a bridge will be provided by 
+default for AngelScript and \ECL{} 
+(Embeddable Common Lisp), and similar 
+tools could be implemented for other languages.}
 
-}
+\p{The typical x notebook combines, at a 
+minimum, some graphical element --- 
+such as an image to be analyzed and/or 
+a plot/diagram to be populated with 
+data --- along with a user-interface 
+\q{panel} for interacting with 
+the graphics, and the overall application.  
+This panel partially takes the place of 
+a script-composition or \REPL{} frame, although 
+such a frame is implicitly present, normally 
+behind the scenes (users can view it 
+if desired).  Notebooks can then 
+load data files, and representations of 
+the loaded data (e.g., text serializations) 
+may then also become part of the notebook 
+content, able to be visualized in their 
+own frame.  Notebooks in general then can 
+have four varieties of frames (graphics 
+views, interaction panels, data panels, 
+and meta-procedure logs) although not 
+every available frame may be explicitly 
+constructed and/or visible at a given point 
+in the user's session.  There may also be 
+multiple instances of graphics frames.  
+In any case, the layout and state of 
+these various frames --- what frames are 
+visible, and their current content 
+--- define notebook \textit{state} which 
+can be saved, restored, and shared.  
+Loading a data set into a x notebook 
+therefore involves loading a particular 
+initial state, defined as part of the 
+data set, arranged in part to serve as 
+a useful starting-point for users to 
+explore and visualize the relevant data.  
+Each of these kinds of frames corresponds 
+to a particular aspect of software 
+implementations, requiring its own 
+strategies and paradigms.  The following 
+sections will review these various 
+programming concerns one at a time.}
 
 
 \section{Image Analysis and Data Visualization}
