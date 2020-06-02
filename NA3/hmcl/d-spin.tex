@@ -993,7 +993,7 @@ at different times.  In these cloud environments,
 users can run computations and generate complex 
 graphics on remote processing units, with relatively 
 little data or code-execution stored or performed 
-on their own computers.  Such employmenr of remote, 
+on their own computers.  Such employment of remote, 
 virtual programming environments is sometimes necessary 
 when interacting with extremely large data repositories; 
 and can be a convenient way to explore data sets 
@@ -1004,7 +1004,7 @@ services spares the researcher from having to
 download the data set directly (along with 
 the additional software and requirements which 
 are often needed to make downloaded data functionally 
-accessable).  However, cloud-based data access is 
+accessible).  However, cloud-based data access is 
 limited in important ways, which makes relying 
 solely on cloud services to provide the 
 filaments of a research-data ecosystm a very bad 
@@ -1117,17 +1117,158 @@ can, as desired, be modified for individual
 data sets/repositories).}
 
 
+\section{The Structure of x Notebooks}
+
+\p{A common feature of software through which users 
+study and reuse research data sets is some 
+form of \q{interactive notebooks,} or 
+digital resources combining data, code, 
+and graphics/visuals.  The main feature of 
+notebook-oriented design is the idea of 
+interactive code editing, where changes in 
+the code directly leads to changes in a visual 
+display (such as a plot or diagram) which is 
+viewed alongside the code.  This setup allows 
+developers to present or demonstrate data 
+sets, and associated code, in an exploratory 
+and interactive manner.}
+
+\p{The exact details of how \q{notebooks} are designed 
+and implemented varies between different technologies, 
+although the concept is most clearly associated 
+with \Jupyter{}, which is a coding and presentation 
+environment based on \Python{}.  Whatever the 
+underlying programming environment, notebooks 
+--- or as x uses the term, \q{interactive/digital 
+notebooks} (\IDN{}s) --- have several software-engineering 
+requirements, including a scripting environment and 
+a data-visualization layer, wherein data sets 
+or numeric models are transformed into \TwoD{} or 
+\ThreeD{} graphics (charts, diagrams, etc.).  
+Moreover, the scripting layer needs to be 
+connected to the data-visualization layer so 
+that scripts can modify the data-to-graphics 
+transformations.  A further requirement is 
+functionality to load pre-existing data sets from 
+saved files or from a web resource.}
+
+\p{Beyond these general features, \IDN{} 
+programming can take different forms and 
+prioritize different styles of user 
+interaction.  The x approach recognizes 
+that it is often more convenient to 
+interact with applications through 
+\GUI{} actions --- buttons, tabs, context 
+menus, and so forth --- than by typing 
+in commands (whether or not these are 
+executed immediately in \REPL{}, or 
+\q{read-eval-print-loop}, fashion, or are 
+stored in scripts).  As such, \IDN{}s 
+should not differ in design too noticeably 
+from conventional \GUI{} windows or dialog 
+boxes --- they should not be little more 
+than \q{\REPL{}s with plots.}  On the other 
+hand, rigorous \GUI{} programming 
+calls for a carefully organized 
+set of mappings from potential user 
+actions to application responses.  
+Whether on the scripting level or 
+the \GUI{} coding, in short, 
+implementations need a level of abstraction 
+more general than the underlying event-handling 
+and procedure-calling logic which forms 
+the application's concrete operational 
+behavior.  This semi-abstracted layer 
+can be described in terms of \q{meta-classes,} 
+\q{meta-objects,} \q{tools,} \q{transitions,} 
+\q{services,} and so forth: the common 
+denominator in different contexts is some 
+notion of a structure which can be called 
+a \q{meta-procedure,} similar to an ordinary 
+computational procedure in having inputs and 
+outputs, but embodying a level of abstraction 
+somewhat removed from concrete procedures.  
+In particular, meta-procedures are not 
+directly implemented; instead, some algorithm 
+is necessary to determine, given a description 
+of a meta-procedure with its outputs and 
+context, what concrete procedure (or set of 
+procedures) should actually run.  Moreover, 
+meta-procedures need some notion of delayed 
+execution: there is a logical gap between 
+\q{marking} (using the language of petri-net 
+theory), i.e., fully specifying the input 
+parameters consumed by a meta-procedure, and a 
+meta-procedure's actual execution.  
+As such, meta-procedural markings can be 
+built up in stages, with input data coming 
+from multiple sources (including scripts and 
+\GUI{} elements).  For a concrete example, 
+consider the process of filling out a web 
+form, wherein entries typed in to the form 
+fields are validated, one at a time, 
+before the form can be submitted.  
+In these cases, the step-by-step process of 
+entering and validating individual fields 
+corresponds to incremental marking, and 
+\q{hitting the submit button} corresponds 
+to meta-procedure execution.}
+
+\p{In short --- although different systems 
+use different terminology --- any \IDN{} 
+programming environment needs a mechanism 
+to incrementally define and execute 
+meta-procedure calls.  The 
+implementational foundations of that 
+mechanism (hypergraphs, workflow engines, 
+state monads, etc.) depend on the underlying 
+programming environment.  The x approach 
+borrows ideas primarily from HyperGraphDB and 
+SeCo, which is a notebook-programming environment 
+based on HyperGraphDB.  As in SeCo, units of 
+marking and execution are called \textit{cells}.  
+The main difference between x and SeCo (apart 
+from \Cpp{} instead of \Java{} being 
+the underlying programming language) is 
+that x cells are not intended, in the general 
+case, to be typed in by programmers directly.  
+Instead, x cells are normally constructed 
+behind the scenes, on the basis 
+of \GUI{} component state, user actions, 
+or scripting input.  However, once 
+constructed, they can be manipulated 
+like SeCo cells, both in terms of 
+functionality and in terms of rationale: 
+they can be used as a log of user 
+actions, for undo/redo, for defining 
+workflows, for generating scripts, 
+and so on.  In particular, the 
+mappings from \GUI{} actions to 
+application handlers can be defined 
+(and extended) by annotating the 
+relevant \GUI{} elements with 
+meta-procedure cells. This also 
+allows data sets to be 
+annotated with micro-citations 
+(which are discussed below).}
+
+\p{As a \Cpp{} environment, x 
+uses an embedded \q{virtual machine} 
+to interpret meta-procedure cells; 
+application-level event handlers are 
+not automatically exposed to 
+a scripting interface as they would be 
+in a \JVM{} or \Python{} environment.  
+However, x also supports 
+ 
+
+}
 
 
-
-
-\section{The Four Layers of the D-SPIN Object Model}
+\section{Image Analysis and Data Visualization}
 
 \p{}
 
-\p{}
-
-\p{}
 
 
 \end{document}
