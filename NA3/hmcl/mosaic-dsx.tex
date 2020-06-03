@@ -357,6 +357,15 @@
 
 \newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
 
+\newcommand{\Jupyter}{\resizebox{!}{7pt}{\AcronymText{Jupyter}}}
+\newcommand{\Python}{\resizebox{!}{7pt}{\AcronymText{Python}}}
+\newcommand{\IDN}{\resizebox{!}{7pt}{\AcronymText{IDN}}}
+\newcommand{\JPG}{\resizebox{!}{7pt}{\AcronymText{JPG}}}
+\newcommand{\PNG}{\resizebox{!}{7pt}{\AcronymText{PNG}}}
+\newcommand{\TIFF}{\resizebox{!}{7pt}{\AcronymText{TIFF}}}
+\newcommand{\REPL}{\resizebox{!}{7pt}{\AcronymText{REPL}}}
+
+
 \newcommand{\BioC}{\resizebox{!}{7pt}{\AcronymText{BioC}}}
 
 \newcommand{\CoNLL}{\resizebox{!}{7pt}{\AcronymText{CoNLL}}}
@@ -388,6 +397,10 @@
 \newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATextCClr{HGXF}}}}
 \newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATextCClr{HGXF}}}}
 \newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATextCClr{HGXF}}}}
+
+\newcommand{\MdsX}{\resizebox{!}{7.5pt}{\ATextCClr{MdsX}}}
+\newcommand{\lsMdsX}{\resizebox{!}{9pt}{\ATextCClr{MdsX}}}
+
 
 \newcommand{\HMCL}{{\resizebox{!}{7.5pt}{\ATextCClr{HMCL}}}}
 \newcommand{\DSPIN}{{\resizebox{!}{7.5pt}{\ATextCClr{D-SPIN}}}}
@@ -488,6 +501,9 @@
 \newcommand{\WhiteDB}{\makebox{WhiteDB}}
 
 \newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
+
+\newcommand{\DSPIN}{\resizebox{!}{7pt}{\AcronymText{D-SPIN}}}
+
 
 \newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
 
@@ -926,8 +942,8 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{The Data Structure Protocol for Image-Analysis Networking: 
-Modules and Motivations}
+{The MOSAIC Data-Set Explorer (\lsMdsX{}): Initial 
+Developer's Overview}
 }}}
 \end{center}
 \end{minipage}
@@ -1095,29 +1111,29 @@ these various kinds of data sets present
 different sorts of interactive specifications 
 which must be implemented by the data-set explorer 
 software.  While executed as a native application 
---- not a cloud service --- x nevertheless incoporates 
+--- not a cloud service --- \MdsX{} nevertheless incoporates 
 the important ideas from contemporary data publishing 
 (including ideas originating in the cloud context): 
 workflow models, notebooks, access to publishers' 
-\API{}s, etc.  Another feature of x is that it 
+\API{}s, etc.  Another feature of \MdsX{} is that it 
 can be run as a standalone application \textit{or} 
 embedded in other applications --- such as 
 the software which researchers are already 
-using.  In short, x can be seen as akin to 
+using.  In short, \MdsX{} can be seen as akin to 
 a cloud-based data-publishing platform 
 where the \q{cloud} is replaced by a 
 scientific-computing application.  Instead of 
 being hosted remotely (\q{on the cloud}), 
-x is hosted within a local desktop application.  
+\MdsX{} is hosted within a local desktop application.  
 This host application may be pre-existing 
 program, or a custom host implemented 
-to allow x data-sets to be explored in standalone 
+to allow \MdsX{} data-sets to be explored in standalone 
 fashion (with a default implementation that 
 can, as desired, be modified for individual 
 data sets/repositories).}
 
 
-\section{The Structure of x Notebooks}
+\section{The Structure of \protect\lsMdsX{} Notebooks}
 
 \p{A common feature of software through which users 
 study and reuse research data sets is some 
@@ -1139,7 +1155,7 @@ although the concept is most clearly associated
 with \Jupyter{}, which is a coding and presentation 
 environment based on \Python{}.  Whatever the 
 underlying programming environment, notebooks 
---- or as x uses the term, \q{interactive/digital 
+--- or as \MdsX{} uses the term, \q{interactive/digital 
 notebooks} (\IDN{}s) --- have several software-engineering 
 requirements, including a scripting environment and 
 a data-visualization layer, wherein data sets 
@@ -1155,7 +1171,7 @@ saved files or from a web resource.}
 \p{Beyond these general features, \IDN{} 
 programming can take different forms and 
 prioritize different styles of user 
-interaction.  The x approach recognizes 
+interaction.  The \MdsX{} approach recognizes 
 that it is often more convenient to 
 interact with applications through 
 \GUI{} actions --- buttons, tabs, context 
@@ -1222,17 +1238,17 @@ meta-procedure calls.  The
 implementational foundations of that 
 mechanism (hypergraphs, workflow engines, 
 state monads, etc.) depend on the underlying 
-programming environment.  The x approach 
+programming environment.  The \MdsX{} approach 
 borrows ideas primarily from HyperGraphDB and 
 SeCo, which is a notebook-programming environment 
 based on HyperGraphDB.  As in SeCo, units of 
 marking and execution are called \textit{cells}.  
-The main difference between x and SeCo (apart 
+The main difference between \MdsX{} and SeCo (apart 
 from \Cpp{} instead of \Java{} being 
 the underlying programming language) is 
-that x cells are not intended, in the general 
+that \MdsX{} cells are not intended, in the general 
 case, to be typed in by programmers directly.  
-Instead, x cells are normally constructed 
+Instead, \MdsX{} cells are normally constructed 
 behind the scenes, on the basis 
 of \GUI{} component state, user actions, 
 or scripting input.  However, once 
@@ -1252,22 +1268,22 @@ allows data sets to be
 annotated with micro-citations 
 (which are discussed below).}
 
-\p{As a \Cpp{} environment, x 
+\p{As a \Cpp{} environment, \MdsX{} 
 uses an embedded \q{virtual machine} 
 to interpret meta-procedure cells; 
 application-level event handlers are 
 not automatically exposed to 
 a scripting interface as they would be 
 in a \JVM{} or \Python{} environment.  
-However, x also supports scripting 
+However, \MdsX{} also supports scripting 
 via a choice of languages, similar to 
 SeCo.  The primary scripting language 
-used with x is AngelScript, although 
+used with \MdsX{} is AngelScript, although 
 other \C{}/\Cpp{} based languages 
 (Embeddable Common Lisp, \ChaiScript{}, 
 etc.) can work as well.  To support 
 various scripting languages, modules 
-loaded into x need to provide a 
+loaded into \MdsX{} need to provide a 
 meta-procedural interface declaration, 
 and the desired scripting language also 
 needs a bridge to work with these 
@@ -1278,7 +1294,7 @@ default for AngelScript and \ECL{}
 (Embeddable Common Lisp), and similar 
 tools could be implemented for other languages.}
 
-\p{The typical x notebook combines, at a 
+\p{The typical \MdsX{} notebook combines, at a 
 minimum, some graphical element --- 
 such as an image to be analyzed and/or 
 a plot/diagram to be populated with 
@@ -1307,7 +1323,7 @@ these various frames --- what frames are
 visible, and their current content 
 --- define notebook \textit{state} which 
 can be saved, restored, and shared.  
-Loading a data set into a x notebook 
+Loading a data set into a \MdsX{} notebook 
 therefore involves loading a particular 
 initial state, defined as part of the 
 data set, arranged in part to serve as 
@@ -1324,7 +1340,7 @@ programming concerns one at a time.}
 \section{Image Analysis and Data Visualization}
 
 \p{The central graphical element of an 
-x notebook is either a \TwoD{} or \ThreeD{} 
+\MdsX{} notebook is either a \TwoD{} or \ThreeD{} 
 image loaded from an image file (in formats 
 such as \PNG{}, \JPG{}, \DICOM{}, \TIFF{}, 
 etc.), or else a \TwoD{} or \ThreeD{} plot, 
@@ -1342,15 +1358,15 @@ textual form (for instance, a table or tree view),
 but this section will focus on graphics-oriented 
 notebooks.}
 
-\p{Diagram-based x notebooks can be implemented with 
+\p{Diagram-based \MdsX{} notebooks can be implemented with 
 different diagram-plotting engines; the default 
 implementations support \Qt{} Charts (a built-in \Qt{} 
 module) as well as the qtcustomplot and 
 JKQCustomPlotter libaries.  In short, diagram-based 
 notebooks need to implement subclasses of 
-x frames for a navigation panel, graphics view, 
+\MdsX{} frames for a navigation panel, graphics view, 
 meta-procedure view, and data view, as well as a 
-\q{x diagram} subclass occupying the diagram view.  
+\q{\MdsX{} diagram} subclass occupying the diagram view.  
 In this case, the primary responsibility of 
 the meta-procedural layer is to interface with 
 functionality provided by the diagram/plotting 
@@ -1365,8 +1381,74 @@ up the image view is only one step in
 constructing such a notebook; additional 
 programming is needed to support image annotation, 
 analysis, and feature extraction.  
+In order to integrate these different layers 
+of functionality, \MdsX{} provides a 
+\q{Data Structure Protocol for Image-Analysis Networking} 
+(\DSPIN{}) which defines communication rules 
+between image-related software subsystems 
+in Object-Oriented terms.  \DSPIN{} 
+objects are comprised of four 
+more specific objects or layers, describing 
+different aspects of the shared image and 
+how it should be processed.  These 
+four layers are defined as follows:
 
+\begin{description} 
+
+\item[Metadata Layer]  This object presents 
+metadata describing the image format and acquisition.  
+If the surrounding \DSPIN{} object represents an 
+image series (rather than a single image), the 
+metadata object should also declare the 
+size of the collection and how individual 
+images should be referenced.  The metadata 
+should include a file path or resource identifier 
+asserting where the image can be acquired from 
+(which in the case of a series can be a zipped 
+folder or a list of resource paths).  More 
+specific metadata depends on the image or images' 
+graphical format; to properly load images in 
+most formats (such as \PNG{}, \JPEG{}, \TIFF{}, 
+and \DICOM{}) applications need to specify 
+detail such as dimensions, resolution, and 
+color depth.  Of course, some of this information 
+is stored internally within the image file 
+(depending on its format), but certain formats 
+require some metadata to be shared along with 
+the image itself (moreover, it is often convenient 
+to have basic information available without needing 
+to extract it from binary image data).  The details 
+on which form of metadata are appropriate for 
+which image format can be determined based 
+on image-viewing code libraries, such as 
+\textbf{libpng}, \textbf{libtiff}, or 
+\DICOM{} clients.  If both end-points of a 
+\DSPIN{} communication have the same 
+libraries installed, the sending application 
+will have a clear idea of how much supplemental 
+data is needed over and above what will be 
+read from image files directly.  If there 
+are uncertainties in library alignment between 
+the two end-points, the sending application should 
+consider serializing a more detailed summary of 
+the image providing any information that would 
+ordinarily be read from the image file. 
+  
+\item[Annotation Layer]
+Almost all image analysis --- whether done by 
+humans or by softare --- results in either 
+some form of statistical representation of 
+an image's properties, or a complex of 
+data which presents information about 
+(and may visually overlay) 
+
+\item[Contextual Layer]
+
+\item[Procedural Layer]
+
+\end{description}
 }
+
 
 \p{}
 

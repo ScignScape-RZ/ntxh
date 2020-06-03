@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  2 JUN 2020 18:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  3 JUN 2020 14:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**d-spin.tex
-(./d-spin.tex
+**mosaic-dsx.tex
+(./mosaic-dsx.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/article.cls
@@ -1715,16 +1715,30 @@ Package: relsize 2013/03/29 ver 4.1
 \c@mv@fordg=\count306
 
 ! Too many }'s.
-l.425 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.438 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   }
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 ! Too many }'s.
-l.425 ...{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+l.438 ...{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
+
+
+! LaTeX Error: Command \DSPIN already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.505 ...\resizebox{!}{7pt}{\AcronymText{D-SPIN}}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 ! LaTeX Error: Command \ATextClr already defined.
@@ -1734,7 +1748,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.506 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
+l.522 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1748,7 +1762,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.510 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.526 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1762,7 +1776,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.515 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.531 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1776,7 +1790,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.679 \raisebox{-1pt}{#1}}}}
+l.695 \raisebox{-1pt}{#1}}}}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1883,7 +1897,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.875 
+l.891 
       
 The package breakurl has already been loaded with options:
   [hyphenbreaks]
@@ -1894,8 +1908,8 @@ Adding the global options:
 to your \documentclass declaration may fix this.
 Try typing  <return>  to proceed.
 
-(./d-spin.aux)
-\openout1 = `d-spin.aux'.
+(./mosaic-dsx.aux)
+\openout1 = `mosaic-dsx.aux'.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
@@ -1987,7 +2001,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 882.
+Package hyperref Info: Link coloring ON on input line 898.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -1999,12 +2013,12 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 882.
-LaTeX Info: Redefining \pageref on input line 882.
-LaTeX Info: Redefining \nameref on input line 882.
- (./d-spin.out) (./d-spin.out)
+LaTeX Info: Redefining \ref on input line 898.
+LaTeX Info: Redefining \pageref on input line 898.
+LaTeX Info: Redefining \nameref on input line 898.
+ (./mosaic-dsx.out) (./mosaic-dsx.out)
 \@outlinefile=\write6
-\openout6 = `d-spin.out'.
+\openout6 = `mosaic-dsx.out'.
 
 
 ABD: EveryShipout initializing macros
@@ -2038,152 +2052,68 @@ File: upxsyc.fd 2000/12/14 v1.0
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
 )
-<logo.png, id=11, 154.6578pt x 91.7829pt>
+<logo.png, id=15, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1034.
+Package pdftex.def Info: logo.png  used on input line 1050.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1034.
+(hyperref)                removing `\@ifnextchar' on input line 1050.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1034.
+(hyperref)                removing `\@ifnextchar' on input line 1050.
 
 [1
 
 {/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdftex
 .map} <./logo.png>]
-<e-logo.png, id=23, 2107.875pt x 1505.625pt>
+<e-logo.png, id=27, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1118.
+Package pdftex.def Info: e-logo.png  used on input line 1134.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1118.
+Package pdftex.def Info: logo.png  used on input line 1134.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1118.
+(hyperref)                removing `\@ifnextchar' on input line 1134.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1118.
+(hyperref)                removing `\@ifnextchar' on input line 1134.
 
 [2 <./e-logo.png>]
-! Undefined control sequence.
-<argument> ...st clearly associated with \Jupyter 
-                                                  {}, which is a coding and ...
-l.1153 saved files or from a web resource.}
-                                           
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<argument> ...tation environment based on \Python 
-                                                  {}. Whatever the underlyin...
-l.1153 saved files or from a web resource.}
-                                           
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...nteractive/digital notebooks} (\IDN 
-                                                  {}s) --- have several soft...
-l.1153 saved files or from a web resource.}
-                                           
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> Beyond these general features, \IDN 
-                                               {} programming can take diffe...
-l.1215 to meta-procedure execution.}
-                                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...e are executed immediately in \REPL 
-                                                  {}, or \q {read-eval-print...
-l.1215 to meta-procedure execution.}
-                                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...e stored in scripts). As such, \IDN 
-                                                  {}s should not differ in d...
-l.1215 to meta-procedure execution.}
-                                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> \REPL 
-                 {}s with plots.
-l.1215 to meta-procedure execution.}
-                                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1136.
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1216.
+Package pdftex.def Info: e-logo.png  used on input line 1232.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1216.
+Package pdftex.def Info: logo.png  used on input line 1232.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1216.
+(hyperref)                removing `\@ifnextchar' on input line 1232.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1216.
+(hyperref)                removing `\@ifnextchar' on input line 1232.
 
 [3]
 ! Undefined control sequence.
-<argument> ... different terminology --- any \IDN 
-                                                  {} programming environment...
-l.1253 (which are discussed below).}
-                                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
 <argument> ...apart from \Cpp {} instead of \Java 
                                                   {} being the underlying pr...
-l.1253 (which are discussed below).}
+l.1269 (which are discussed below).}
                                     
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2194,18 +2124,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...nterface as they would be in a \JVM 
                                                   {} or \Python {} environme...
-l.1279 ...uld be implemented for other languages.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...ey would be in a \JVM {} or \Python 
-                                                  {} environment. However, x...
-l.1279 ...uld be implemented for other languages.}
+l.1295 ...uld be implemented for other languages.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2216,7 +2135,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...Embeddable Common Lisp, \ChaiScript 
                                                   {}, etc.) can work as well...
-l.1279 ...uld be implemented for other languages.}
+l.1295 ...uld be implemented for other languages.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2227,7 +2146,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...by default for AngelScript and \ECL 
                                                   {} (Embeddable Common Lisp...
-l.1279 ...uld be implemented for other languages.}
+l.1295 ...uld be implemented for other languages.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2237,59 +2156,44 @@ and I'll forget about whatever was undefined.
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1321.
+Package pdftex.def Info: e-logo.png  used on input line 1296.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1321.
+Package pdftex.def Info: logo.png  used on input line 1296.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1321.
+(hyperref)                removing `\@ifnextchar' on input line 1296.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1321.
+(hyperref)                removing `\@ifnextchar' on input line 1296.
 
 [4]
-! Undefined control sequence.
-<argument> ...ce of a script-composition or \REPL 
-                                                  {} frame, although such a ...
-l.1321 programming concerns one at a time.}
-                                           
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1450.
+(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1450.
+(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
-! Undefined control sequence.
-<argument> ...image file (in formats such as \PNG 
-                                                  {}, \JPG {}, \DICOM {}, \T...
-l.1338 notebook}).}
-                   
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<argument> ...e (in formats such as \PNG {}, \JPG 
-                                                  {}, \DICOM {}, \TIFF {}, e...
-l.1338 notebook}).}
-                   
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1450.
 
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1450.
+
+[5]
 ! Undefined control sequence.
-<argument> ... \PNG {}, \JPG {}, \DICOM {}, \TIFF 
-                                                  {}, etc.), or else a \TwoD...
-l.1338 notebook}).}
-                   
+<argument> ...ost formats (such as \PNG {}, \JPEG 
+                                                  {}, \TIFF {}, and \DICOM {...
+l.1450 }
+        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2298,49 +2202,42 @@ and I'll forget about whatever was undefined.
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1345.
+Package pdftex.def Info: e-logo.png  used on input line 1456.
 (pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1345.
+Package pdftex.def Info: logo.png  used on input line 1456.
 (pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1345.
+(hyperref)                removing `\@ifnextchar' on input line 1456.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1345.
+(hyperref)                removing `\@ifnextchar' on input line 1456.
 
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1345.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1345.
- (./d-spin.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1345.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1345.
+[6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1456.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1456.
+ (./mosaic-dsx.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1456.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1456.
 
-
-
-Package rerunfilecheck Warning: File `d-spin.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `d-spin.out':
-(rerunfilecheck)             Before: 3DFC5B110362EE8B93AD1C68D29DED6C;77
-(rerunfilecheck)             After:  2515657E7DAF1A53CACA8220A6A6C237;135.
+Package rerunfilecheck Info: File `mosaic-dsx.out' has not changed.
+(rerunfilecheck)             Checksum: 27DA20D1E73E2266AD784158C16581CA;142.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 886 ({)
+### simple group (level 1) entered at line 902 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 34974 strings out of 492649
- 706015 string characters out of 6122986
- 804449 words of memory out of 5000000
- 38304 multiletter control sequences out of 15000+600000
- 573798 words of font info for 69 fonts, out of 8000000 for 9000
+ 34985 strings out of 492649
+ 706215 string characters out of 6122986
+ 806641 words of memory out of 5000000
+ 38313 multiletter control sequences out of 15000+600000
+ 574855 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,93p,10395b,878s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,15n,93p,10399b,878s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
 ps/gfsdidot/didotec.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts
 /enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/
@@ -2352,10 +2249,10 @@ lic.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/gf
 sdidot/GFSDidot.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/typ
 e1/public/tex-gyre/qcrb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
 onts/type1/public/tex-gyre/qcrr.pfb>
-Output written on d-spin.pdf (5 pages, 282919 bytes).
+Output written on mosaic-dsx.pdf (6 pages, 292478 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 79 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
+ 39 words of extra memory for PDF output out of 10000 (max. 10000000)
 
