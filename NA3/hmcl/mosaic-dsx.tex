@@ -995,6 +995,26 @@ participate in multi-application workflows ---
 or bundled as plugins or source-code extensions 
 into larger software components.}
 
+\p{The \MOSAIC{} portal is developed by 
+Linguistic Technology Systems (LTS), who 
+can develop and/or host data/publication 
+repositories across disciplines (see 
+contact details at the end of this 
+paper for more information).  One 
+repository under development with 
+\MOSAIC{} is the \q{Cross-Disciplinary 
+Repository for Covid-19 Research} 
+(\CRtwo{}), a collection of data sets 
+related to Covid-19, that is paired with a 
+forthcoming Elsevier volume, 
+\textit{Cross-Disciplinary Data Integration 
+and Conceptual Space Models for Covid-19}. 
+In addition to \MOSAIC{}, LTS also provides a 
+Dataset Creator (\dsC{}), which is a 
+\Qt Creator plugin helping researchers 
+and programmers curate data sets and 
+implement data-set applications.}
+
 \p{\lMOSAIC{} is designed to bridge the 
 gap between scientific software and 
 scientific data sets.  While increasing 
@@ -1018,6 +1038,7 @@ scientific-computing ecosystems seen
 as software-engineering domains.  
 \lMOSAIC{} aims to be a suite of tools 
 which can help bridge that gap.}
+
 
 \section{Data Sets and Data Publishing: the current picture}
 \p{Recent years have seen an increasing emphasis, 
@@ -1700,6 +1721,1129 @@ meta-procedural controller.}
 \input{pics/about.tex}
 
 \p{}
+
+\section{DigammaDB and the HGXF Format}
+\p{\lCRtwo{} will introduce a new database engine for 
+preparing the information provided within the 
+repository (called DigammaDB, or \DgDb{} for short) 
+as well as the Hypergraph Exchange Format (\HGXF{}).  In 
+general, \HGXF{} files can be generated from 
+\DgDb{} instances, capturing the state of the 
+database at a moment in time.  \lDgDb{} could therefore 
+be used to store research data.  When scientists 
+choose to publish data, they would then output the 
+information from their database into \HGXF{}, using 
+the resulting files as the published raw data.  
+In the \CRtwo{} context, \DgDb{} will be used 
+to merge data from multiple files into a single 
+database, yielding \HGXF{} output forming most of the 
+raw data republished in \CRtwo{}.}
+
+\p{Operationally, \DgDb{} is designed to emulate the 
+programming interface provided by several existing 
+databases and hypergraph libraries --- for 
+instance, HyperGraphDB (\cite{BorislavIordanov}), WhiteDB
+(\cite{EnarReilent}), and HgLib (\cite[\textnormal{p. 9}]{Erable}).  
+That is, 
+\DgDb{} is designed so that existing code using 
+these technologies can be adopted for \DgDb{} 
+with relatively little effort.  \lDgDb{} also 
+introduces some new concepts and structuring features, 
+which will reviewed below.  In addition to 
+prior technologies such as HyperGraphDB, \DgDb{} 
+draws on theoretical work connected to hypergraphs 
+and their value as multi-paradigm, general-purpose 
+metamodels.  The reach of hypergraph theory encompasses 
+several paradigms for modeling scientific data, 
+such as Conceptual Graph Semantics (see \cite{MattSelway}) 
+and Conceptual Space Theory (which is linked to hypergraphs 
+in work summarized by \cite{InteractingConceptualSpaces}, 
+where Conceptual Space semantics is paired with 
+hypergraph categorial grammar).  \lDgDb{} therefore 
+introduces modeling elements designed to capture 
+scientific details (such as dimensional analysis and units 
+of measurement).  When discussing graph structures and 
+programming techniques, \DgDb{} draws terminology 
+from these scientific perspectives as well as from 
+existing Hypergraph database engines.}
+	
+\subsection{Scientific Features of DigammaDB}
+\p{\lDgDb{} has no specific connection to SARS-COV-2 or 
+Covid-19; it is conceived as a general-purpose database 
+engine that can facilitate application development 
+across many domains and industries.  However, \DgDb{} is 
+designed with exceptional attention to scientific research 
+and software, with respect to metadata, \GUI{} integration, 
+its representation of files and file-types, 
+and interoperability with technologies related 
+to publishing and open-access research data.  
+A full enumeration of \DgDb{}'s scientific 
+focus is outside the scope of this outline, but 
+certain features are specifically relevant 
+to \CRtwo{}, so they can be discussed here: 
+
+\begin{description}
+
+\item[From-the-Ground-Up \lQt{} Integration]  All 
+\DgDb{} classes natively interoperate with 
+\Qt{} (a leading cross-platform application-development 
+and \GUI{} framework).  Programmers then have 
+access to features like QDataStream and 
+\Qt{} meta-objects for binary serialization of \Cpp{} 
+objects for persistence in the database.  Robust 
+\Qt{} support also makes it easy to design 
+\GUI{} classes for interacting with \DgDb{} data, 
+and for employing \DgDb{} as a technology for 
+managing and storing application state.  This is 
+important in the scientific computing context 
+because most scientific software is designed 
+as native desktop-style applications needing 
+special-purpose \GUI{} classes (in this 
+environment it is usually not possible to 
+adopt techniques such as \HTML{} page 
+templates which are commonplace in the 
+web-programming context for creating user 
+views onto database objects).  Therefore, 
+implementing custom \GUI{} logic is an 
+important part of the development requirements 
+for scientific applications, and it is helpful 
+to interface with a database engine prioritizing 
+that aspect of software engineering.  
+
+\item[Projections and Scientific Annotations]  
+\lDgDb{} adopts the HyperGraphDB notion of 
+\textit{projections}, or descriptions of 
+individual fields within a complex object 
+that can automate the extrapolation of 
+binary-serialization algorithms (which 
+in turn allows complex objects to be 
+stored in \DgDb{} alongside primitive values 
+like strings and numbers).  \lDgDb{} also 
+uses projections as a basis for introducing 
+metadata associated with Conceptual Spaces 
+and Conceptual Space Markup Language (\CSML{}) 
+as mentioned earlier.  In particular, projections 
+can be annotated with statistical/quantitative 
+details such as dimensions (e.g., base quantities 
+and units of measurement), scales or \q{measurement levels} 
+(in \CSML{} terms, particularly the 
+distinction between nominal, ordinal, interval, and ratio 
+axes), minima and maxima, probability distributions, 
+and the aggregation of isolated units into complex 
+dimensions, or \CSML{} \q{domains} (vectors, tensors, 
+area/volume spans, and so forth).
+
+\item[Data Microcitations]  Most scientific 
+data is formally or informally linked to 
+peer-reviewed publications which present 
+research findings.  Published data sets 
+make these connections explicit, by joining 
+document identifiers and \URL{}s with 
+the corresponding identifiers for designating 
+and locating data sets.  These connections 
+are however coarse-grained, applying only to 
+documents and data sets in their entirety.  
+By contrast, an emerging trend in publishing is 
+to link portions of publications --- such 
+as individual sentences, paragraphs, or figure 
+illustrations --- with smaller parts of a data 
+set (which could be an individual record/sample, 
+or a table column, or some conceptually 
+related group of records or columns).  To support 
+microcitations, there must be some formal 
+mechanism to individuate small parts of a data set.  
+This structure is provided internally by 
+\DgDb{}: there are multiple microcitable 
+\q{zones} in a database, which introduce 
+encodings for microcitation targets that 
+become exposed to publications via \HGXF{}.  
+Here \q{zones} refer to aspects or 
+portions of a database that may be cited 
+individually, apart from the database 
+as a whole: records/atoms, types, 
+projections, subgraphs, software 
+components implementing a digamma-application 
+interface (analogous to HGApplication in 
+HyperGraphDB), among others.  These entities can 
+be given identifiers which are unique not only in the context of a single database, but if needed over a larger corpus (e.g. an archive of research data) so that the relevant atoms/types/projections can be referenced from publication texts (and similar resources).  Such references can also be linked to \GUI{}s; one can for instance say that the data currently visible in a \GUI{} window or dialog box is a view onto a specific 
+database atom, information that could be used for debugging, storing application state, inter-application networking (e.g. linking \PDF{} viewers for research papers with applications to view research data), 
+and so forth.
+
+\item[Memory and Persistence Models]  \lDgDb{} can be 
+run in several different \q{modes}, which determine 
+how data is stored in memory while an application 
+is running and/or is stored in files.  If desired, 
+\DgDb{} can be used as an \q{in-memory} database which 
+does not maintain persistent file state at all.  
+This feature can be useful in a research-data context 
+where all information derives from data files.  
+In this scenario, a \DgDb{} instance can be 
+loaded from parsed serializations (e.g., \HGXF{} 
+files) without using other file-system resources.  
+The database engine can then be adopted as a 
+tool for accessing and manipulating the \q{infoset} 
+derived from these data files, analogous to 
+\XML{} libraries interfacing with a Document Object Model.
+
+\item[Scientific-Computing Interface Description]  Following 
+HyperGraphDB, \DgDb{} establishes a \q{type system} 
+unique to each database, which is responsible for 
+translating application-level types to database atoms.  
+The type system used by \DgDb{} is actually 
+more detailed (compared to HyperGraphDB) and 
+allows for the description of procedure signatures 
+and the declaration of conceptually related 
+procedural groupings, which collectively 
+enable interface definition as persistent 
+data within the database itself.  \lDgDb{} 
+likewise supports a notion of \q{meta-procedures}, 
+which are indirectly derived from Alexandru Telea's 
+\textit{metaclasses} and \textit{dataflow interfaces} 
+(see \cite{TeleaVISSION}).  Moreover, \DgDb{} 
+introduces a notion of \q{channels}, which are a 
+higher-level graph structuring feature 
+(see \cite[\textnormal{Chapter 3}]{NeusteinCPS}) that may, 
+in particular, be applied for the semantic 
+annotation of function signatures so as 
+to refine interface documentations.  
+Collectively, these features enable 
+each \DgDb{} database to store information 
+about procedures used to access and 
+interact with their stored information, 
+to facilitate the implementation of 
+scientific workflows and \GUI{}s for 
+accessing and using \DgDb{} data.
+
+\end{description}
+}
+
+
+\subsection{Programming with HGXF Files}
+
+\p{The prior outline described some of the principle 
+features of \DgDb{}, which in turn influenced 
+the design of \HGXF{}, insofar as one goal of 
+\HGXF{} is to serialize \DgDb{} instances.  However, 
+\HGXF{} files are also generic resources for 
+serializing research data (or any other technical 
+information), and \DgDb{} includes libraries 
+for using \HGXF{} (not necessarily in the context 
+of \DgDb{} instances).  Therefore, \HGXF{} deserves 
+a brief overview in its own right.}
+
+\p{Like any hypergraph meta-model, \HGXF{} represents 
+information on two levels.  On the one hand, 
+each \q{node} is (in genral) a synthesis of multiple 
+smaller parts.  In \HGXF{}, the parts of a hypernode 
+are \textit{structure fields} and \textit{array fields}, 
+where the former are roughly analogous to named columns, 
+and the latter are usually either units within 
+expandable collections (such as lists, queues, and dictionaries) 
+or fixed-size arrays of numeric fields with similar 
+dimensional qualities (e.g., vectors representing point in space).  
+\lHGXF{} files define \q{types}, which are internal to 
+the file (but may be associated with \DgDb{} types) and 
+describe the layout of fields within the containing 
+hypernode (in particular, the number and names of 
+structure fields, and restrictions on the number of 
+array fields, if any).  \lHGXF{} types may also 
+provide hints about how to best encode the parsed 
+data in running memory.}
+
+\p{The structure of \HGXF{} files is specified by 
+a Reference Implementation using \Cpp{} to 
+parse and manipulate \HGXF{} data.  In general, 
+this code library mixes functional and object-oriented 
+programming styles.  The central procedures in 
+this library are ones to isolate single hypernodes, 
+by graph traversal or queries, and then procedures 
+to operate on array and structure fields contained 
+within hypernodes.  The basic interface for this 
+latter context involves passing criteria for selecting 
+one or more fields, along with a callback function 
+which will be called with the vector of matching 
+fields (or else a procedure to operate on fields 
+one at a time).  In this functional style, \HGXF{} 
+hypernodes can be seen as monads encapsulating 
+access to their internal structure and array 
+fields (or \q{hyponodes}).}
+
+\p{On a higher level, applying not to the 
+scope of a single hypernode but to groups of 
+hypernodes, \HGXF{} introduces several 
+higher-level structuring elements (mostly 
+derived from corresponding \DgDb{} features). 
+In particular, \textit{channels} are 
+aggregates of edges, and \textit{frames} are 
+contexts for defining edges and nodes.  
+In \DgDb{}, every node and edge is constructed 
+in the context of a frame, which \textit{may} 
+(but need not) offer either additional 
+semantic detailing or callback functionality 
+to add code affecting how graph data is 
+constructed.  All graphs have a \q{default} 
+frame that implies no special semantic 
+context (i.e., all edges are asserted relations 
+deemed to apply in general, with no 
+contextual filter) and that utilizes 
+general-purpose algorithms for edge and 
+node construction.  Developers can 
+introduce more specialized frames as desired, 
+and construct nodes and edges in these 
+tailored contexts.  Such frames can then be 
+identified in \HGXF{} as the context where a 
+given node or edge serialization applies.  
+Hypernodes may also be annotated within frames 
+to identify a conceptual, operational, or semantic 
+role of a node within some larger node-collection.  
+Indeed, \lDgDb{} introduces the concept of a 
+\textit{virtual frame} to capture logical patterns 
+implicit in certain node-annotations which are not 
+explicitly designated by frame objects allocated 
+within the database.}
+
+\p{The default behavior for edge-construction 
+(which can be overridden within individual frames) 
+conceives edges as \RDF{}-style \q{triples}, 
+where a directed pair of nodes is annotated 
+with a simple label (which may or may not 
+be defined within a controlled vocabulary) and/or 
+a more complex object; edges can be marked with 
+hypernodes of their own.  The source and target 
+hypernodes of a hyperedge correspond to the 
+source and target node-sets defined in most 
+mathematical treatments of hypergraph theory.  
+In libraries such as HgLib, which (compared to 
+graph/hypergraph databases) are more directly based 
+on this mathematical theory, hyperedges are defined 
+by providing one or two (for undirected or directed 
+edges respectively) sets of nodes.  \lDgDb{} supports 
+this construction as well, essentially forming 
+hypernodes \q{on the fly}, but in this case the 
+fields within these auto-constructed hypernodes are 
+\q{proxies} for other hypernodes (possibly three or more) 
+linked by the edge.  Proxies can also be 
+defined for more complex objects, such as 
+frames and subgraphs, allowing multi-dimensional, 
+nested graph structures if these are desired for 
+a particular domain model.} 
+
+\p{\lHGXF{} also supports microcitations, which are 
+discussed above.  By designating parts of 
+a data set as microcitation targets, \HGXF{} can 
+be integrated with annotation systems designed 
+for scientific publications.  These features 
+allow document annotations --- which are 
+used, for instance, to connect text in a 
+research paper with scientific concepts and 
+Ontologies --- to connect also with microcitable 
+elements within data sets and Research Objects 
+which serialize data via \HGXF{}.  In this 
+use-case, \HGXF{} works in conjunction with 
+a related protocol, the Annotation Exchange Format 
+(\AXF{}), which is also initially developed to 
+support the \CRtwo{} implementation.  In \CRtwo{}, 
+\AXF{} will be used to connect Covid-19 research 
+data with publications where the corresponding 
+data sets are introduced to the scientific 
+community.  The \AXF{} format and design principles 
+will be discussed further in the next section.}
+
+
+\section{The AXF Platform}	
+\p{The \AXF{} Platform (hereafter called \AXF{}) 
+is a toolkit for hosting full-text, open access 
+publications, with an emphasis on scientific, academic, 
+and technical documents.  At the core of an \AXF{} 
+Publication Repository is a collection of files 
+in a machine-readable \AXF{} Document Format (\AXFD{}), 
+which are paired with human-readable \PDF{} documents 
+as well as supplemental multi-media and metadata files.  
+Depending on institutional requirements, an \AXF{} repository 
+may be the primary storage resource for the contained 
+publications, or an adjunct resource whose documents are 
+linked to publications hosted elsewhere.  In the second 
+scenario, the primary goal of an \AXF{} repository is to 
+host manuscripts in \AXFD{} format, along with software 
+to aid viewing and text-mining of the associated publications.}
+
+\p{\lAXFD{} therefore has two distinct purposes: (1) to 
+aid in text and data mining (\TDM{}) of full 
+publication text (along with research data that may be 
+linked to publications), and (2) to enhance the reader 
+experience, given e-Reader software (canonically, 
+\PDF{} viewers) which are programmed to consume 
+\AXF{} information.  To (1) aid in text mining, \AXFD{} documents 
+can be compiled into different structured representations, 
+yielding document versions that can be registered 
+on services such as CrossREF \TDM{} and SemanticScholar.  Given 
+a Document Object Identifier, text-mining tools can therefore 
+readily obtain a highly structured, machine readable version 
+of the publication, which may then be used as the basis 
+for further text-mining and \NLP{} operations.  Simultaneously, 
+to (2) improve reader experience, the \AXF{} platform generates 
+numeric data linking semantically significant text locations 
+to \PDF{} viewport coordinates 
+(such text locations include annotation, quotation, or citation 
+start/end points and paragraph or sentence boundaries --- 
+collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+\PDF{} applications to provide contexts 
+for word searches, to localize context 
+menus, to activate multi-media features at different points 
+in the text, and in general to make \PDF{} files more 
+interactive.  Data sets composed with the aid of \AXF{} 
+tools may include source code for a \PDF{} viewer (an extension 
+to \XPDF{}) capable of leveraging \AXF{} data.}
+
+\p{In addition to the \AXFD{} document format, the \AXF{} platform 
+includes the Annotation Exchange Format itself, a protocol for 
+defining and sharing annotations on full-text publications.  
+\lAXF{} differs from other annotation-representation 
+strategies by (1) providing more detail concerning 
+the location of annotated text segments, in the 
+surrounding publication context, and (2) supplying 
+annotation data in multimedia or microcitation 
+formats which extend beyond conventional 
+\q{controlled vocabularies}.  In terms of (1) 
+publication context --- that is, the annotation 
+\textit{target} (using terminology from the 
+Linguistic Annotation Framework, or \LAF{}) --- \AXF{} 
+represents \SDIV{} information as introduced 
+above; this data supplements the node/index coordinates 
+used by traditional annotation mechanisms.  
+With respect to (2) annotation metadata --- 
+or the annotation \textit{body} (again using 
+\LAF{} terminology) 
+--- \AXF{} introduces models for multimedia 
+assets, software components, and data set 
+content, which may be linked to annotation 
+targets.  With this additional metadata, 
+annotations may be used in application-development 
+environments, not only for text mining.}
+
+%Linguistic Technology Systems has developed \AXF{} to 
+%address shortcomings of existing annotation standards, particularly 
+%in the context of annotation environments integrating application, 
+%semantic, and multimedia content.  The goal of \AXF{} is to represent 
+%annotations at a novel level of detail.  In particular 
+%(as will be described below), the \textit{target} of the annotation 
+%should be represented in both semantic and interactive contexts 
+%(to include, for instance, both sentence-level context and 
+%\PDF{} viewport coordinates).  Meanwhile, the \textit{body} 
+%of the annotation (using terms originating with the 
+%Linguistic Annotation Framework) can be linked to data 
+%\q{microcitations}, multimedia assets, or 
+%controlled vocabularies.  \lAXF{} is optimized for 
+%\AXFD{} manuscripts --- i.e., documents encoded according to 
+%the native \AXF{} protocol --- but \AXF{} can potentially 
+%be used as an exchange format for document-annotation 
+%operations in a variety of contexts (named entity recognizers, 
+%science-data \API{}s, publication metadata sharing, and so forth.}
+
+
+\p{The following sections will (1) outline \AXF{} and \AXFD{} 
+in greater detail, (2) describe how \AXF{} repositories 
+can unify publications sharing similar themes, scholarly 
+disciplines, or coding requirements, and (3) 
+describe features for data-set publication in 
+the context of \AXF{} repositories.}
+
+
+\subsection{AXF Documents}
+
+\p{The \AXFD{} format for describing document content and 
+structure is designed to be a \q{Pivot Representation} in the 
+sense of \LAF{} (see \cite{IdeSuderman}).  In particular, \AXFD{} can represent 
+the structure of both \XML{} (including several 
+\XML{} flavors used in publishing) and \LaTeX{}.  
+Technically, \AXFD{} does not prescribe any 
+specific input format; instead, a document is 
+considered an instance of \AXFD{} if it can be 
+compiled into a Document Object satisfying 
+interface requirements.  A \Cpp{} reference implementation 
+anchors the \AXF{} Document Object Model; nodes in 
+this implementation have facets combining 
+\LAF{}, \XML{}, and \LaTeX{}.  In practice, 
+\AXFD{} manuscripts are then converted via \LaTeX{} to 
+\PDF{}, and simultaneously compiled to \XML{} representations 
+so as to generate machine-readable, structured full-text 
+versions of the manuscripts.  Authors can choose to 
+compose \AXFD{} papers to conform with several common 
+publication \XML{} standards, such as \JATS{} 
+(Journal Article Tag Suite), \SciXML{} \cite{CJRupp}, and 
+\IeXML{} \cite{DietrichRebholzSchuhman} 
+(the latter is an annotation-oriented 
+\XML{} language used by the BeCAS project 
+\cite{TiagoNunes}).  Authors or editors 
+may further define or model scientific 
+concepts via strategies focused on 
+computer simulation (in the broad sense 
+as defined, for instance, in \cite{EricWinsberg}) 
+or statistics (e.g., Predictive Model Markup Language 
+or Attribute-Relation File Format), 
+and/or conceptual semantics, such as Conceptual Space Markup 
+Language (which was inspired by the linguist 
+Peter G\"ardenfors, but developed in a 
+scientific/mathematical framework in e.g.
+\cite{RaubalAdams}, \cite{RaubalAdamsCSML},
+\cite{Zenker}, and \cite{InteractingConceptualSpaces}).}
+
+\p{One distinct feature of \AXF{} is that \LaTeX{} and 
+\XML{} generation are chained in a pipeline: the \LaTeX{} 
+and subsequent \PDF{} generation steps yield auxiliary data, 
+which includes \PDF{} viewport data, that can be 
+subsequently incorporated into \XML{} views onto 
+the documents.  Specifically, 
+\AXFD{}-generated \LaTeX{} files include notations for 
+semantic annotations and for sentence boundaries, implemented 
+via \LaTeX{} commands which, as one processing step, 
+write \PDF{} coordinates to auxiliary files.  The resulting 
+data is then read by a \Cpp{} program which collates 
+annotations and sentence-boundaries into a vector of 
+data structures indexed by \PDF{} page numbers, creating a 
+distinct file for each page, and zips those files into an 
+archive which can be distributed alongside (or embedded inside) 
+the \PDF{} publications.  Simultaneously, sentences, 
+paragraphs, annotations, and other semantically significant 
+content (such as quotations and citations) are assigned 
+unique ids and compiled into their own data structures 
+(from which machine-readable \XML{} full-text may be generated).  
+These \XML{} files may then be hosted and/or registered on 
+\TDM{}-oriented services such as CrossRef.  At the same 
+time, unique identifiers unify this \XML{} data 
+(focused on text mining) with \PDF{} viewport data 
+(focused on reader experience).  The goal of such 
+integration is to incorporate text-mining results 
+so as to enhance reader experience.  For example, 
+Named Entity Recognizers might flag a word-sequence 
+as matching a concept within a controlled vocabulary.  
+Via the relevant paper's \SDI{} model, this annotation 
+may be placed in a proper semantic context --- for 
+example, obtaining the text of the sentence where the 
+Named Entity occurs.  This semantic information may then 
+be used by a \PDF{} viewer --- e.g., providing a 
+context menu option to select the sentence text, when 
+the context menu is activated within the rectangular 
+coordinates of the annotation itself.}
+
+%\input{pics/xl}
+\input{pics/il}
+\p{As a representation of annotation data structures, 
+\AXF{} ensures that \SDI{} and viewport data is included 
+among annotations wherever this data is available.  
+This facilitates the integration between text-mining 
+tools and \PDF{} viewer software, which in turn 
+enhances reader experience.  As mentioned earlier, every 
+annotation can be placed in a semantic context (e.g., 
+the text of the surrounding sentence), which provides 
+useful reader features such as one-click copying of 
+sentences to the clipboard.  Other reader-experience 
+enhancements involve multimedia assets.  As a concrete example, 
+suppose a paper includes mention of a chemical; that particular 
+keyword can accordingly be flagged for annotation.  
+As one encoding of the corresponding scientific concept, 
+the annotation can include the chemical's Chemical Abstract 
+Service Reference Number, via which it is possible to obtain 
+Protein Data Bank (\PDB{}) files to view the relevant 
+molecular structure in \ThreeD{}.  In sum, 
+annotations supply a constellation of data 
+--- in this example, concepts may be linked not only to 
+identifiers in cheminformatic ontologies, but also to \CAS{} 
+reference numbers and thereby to \ThreeD{} graphics files 
+--- which facilitate interactive User Experience at the 
+application level, not only document classification at the 
+corpus level.  Once a chemical compound (mentioned in a 
+publication) is linked to a \PDB{} file (or any other 
+\ThreeD{} format) the \PDF{} viewer may include 
+options to for the reader to connect to software or 
+web applications where the corresponding visuals can 
+be rendered.  Via \AXF{}, the relevant document-to-software 
+connections are asserted not only on the overall document 
+level, but on the granular scale of the precise character 
+and \PDF{} viewport coordinates where the relevant 
+annotation is grounded (Figure~\bref{fig:il} illustrates 
+such capabilities in the context of a chemistry publication 
+--- specifically, test-preparation materials for the 
+Chemistry \GRE{} exam).}
+
+\p{To support this kind of multimedia functionality, 
+\AXF{} standardizes a Plugin Framework, dubbed \q{\Mosaic{}}, 
+allowing programmers to embed code which can parse and 
+respond to \AXF{} annotations in different scientific and 
+document-viewer applications.  \lMosaic{} allows different 
+applications to inter-operate; in particular, 
+\PDF{} viewers can share data with scientific applications 
+that can render files in domain-specific formats such as 
+\PDB{}.  This application networking protocol is considered 
+part of the \AXF{} annotation model, because application-oriented 
+information is computationally relevant for many concepts 
+encountered in scientific and technical environments.  For instance, 
+one aspect of cheminformatic data is that many chemical 
+compounds are modeled by \PDB{}, \MOL{}, or \ChemXML{} files, 
+which in turn are associated with software applications that 
+can load those file types.  Such inter-application 
+networking data is relevant to \PDF{} viewers 
+when they display manuscripts with annotations that suggest 
+links to special file types and their applications; the 
+viewers can employ this information to launch and/or communicate 
+with the corresponding software.  \lAXF{} is designed to 
+facilitate implementation of application-networking protocols 
+as an operational continuation of processes related to obtaining 
+and consuming annotation data.}
+
+\p{The \AXF{} document model, at the manuscript-structure 
+level, is paired with a novel \q{Hypergraph Text Encoding 
+Protocol} (\HTXN{}) operating at the character-encoding level.  
+Within the \HTXN{} protocol, an annotation target is 
+a character-index interval in the context of an 
+\HTXN{} character stream.  On that basis, 
+\HTXN{} treats documents as graphs whose nodes 
+are ranges in a character stream, where text can 
+be recovered as an operation on one or more nodes 
+(e.g., the text of a sentence is derived from a 
+pair of nodes representing the sentence's start 
+and end).  \lHTXN{} code-points 
+are distinguished in terms of their semantic 
+role, which may be more granular than their 
+visible appearance --- for example, 
+a period glyph is assigned different code-points 
+depending on whether it marks a sentence-ending 
+punctuation, an abbreviation, a decimal point, 
+or part of an ellipsis.  Procedures are then implemented to 
+represent text in different formats, such as 
+\ASCII{}, Unicode, \XML{}, or \LaTeX{}.  In 
+contrast to a format such as Web Annotations, 
+any particular human-readable text presentation 
+(including \ASCII{}) is considered a \textit{derived} 
+property of the annotation, not a foundational 
+representation.}
+
+\p{\lAXFD{} manuscripts do not need to utilize \HTXN{} 
+for character data, but \HTXN{} simplifies certain \AXF{} 
+operations, such as identifying sentence boundaries.  
+In particular, \HTXN{} provides distinct code-points for 
+end-of-sentence punctuation, so that sentence-boundary 
+detection reduces to a trivial search for those particular 
+code-points.  Proper \HTXN{} encoding requires that authors 
+follow certain simple heuristics --- e.g., that end-of-sentence 
+periods should be followed by two spaces and/or a newline, 
+whereas other uses of a period character should precede at 
+most one space.  Aside from the goal of preparing documents 
+for text-mining machine-readability, such conventions are 
+appropriate even for basic typesetting, because non-punctuation 
+characters have their own kerning rules (this is why 
+\LaTeX{} provides a distinct command for non-punctuation glyphs 
+that would otherwise be read as punctuation characters).  \lHTXN{} 
+hides these typesetting details within its character-encoding 
+schema, which is then useful both for producing professional-caliber 
+\LaTeX{} output and for identifying \SDI{} details (such as 
+sentence boundaries) which with less rigorously structured 
+text would need elaborate text-mining or \NLP{} algorithms.}
+
+\p{Each \AXFD{} document is, in sum, associated with an 
+aggregate of character-encoding, annotation, document-structure, 
+and \PDF{} viewport information.  The \AXF{} platform uses 
+code libraries to pull this information together as a 
+runtime object system, so that any application which loads 
+an \AXFD{} manuscript can execute queries against the 
+corresponding collection of \AXF{} objects (queries such 
+as obtaining the sentence text around an annotation, obtaining 
+the concave-octagonal viewport coordinates for a sentence,\footnote{
+In the general case, sentence coordinates are concave octagons because 
+they incorporate the line height of their start and end lines; 
+in the general case sentences share start and end lines with other 
+sentences, while also including whole lines vertically positioned 
+between these extrema.  A sentence octagon roughly corresponds with 
+the screen area where a mouse/pointer action should be understood as 
+occurring in the context of that sentence from the user's point 
+of view --- implying that the user would benefit from context menu 
+options pertaining specifically to that sentence, such as 
+copy-to-clipboard.} obtaining application-networking 
+information for an annotation, 
+etc.)  In addition to such runtime data, \AXF{} platforms can 
+compile the full suite of information into machine-readable 
+files for text and data mining.  These files, collected across a 
+corpus of multiple documents, then form the backbone of an 
+\AXF{} publication repository, as will be discussed next.}
+
+\subsection{AXF Publication Repositories}
+\p{The \AXF{} platform is designed for hosting collections 
+of publications sharing a common academic or technical 
+focus.  When \AXF{} is used in the context of a 
+general-purpose text and/or data repository, 
+the \AXF{} platform is designed to work with collections that 
+are organized into separate projects or topics, 
+each giving rise to an archive or corpus of publications.  
+Insofar as these corpora internally share a common theme 
+or focus, they can be associated with their own 
+ontologies, code libraries, annotation models, and 
+application-networking protocols, based on the sorts 
+of applications and data structures commonly used 
+in the corresponding scholarly discipline.  
+In some cases, publishers may choose to package 
+an entire archive of research papers (perhaps along with 
+research data) as a single downloadable resource.  
+\lAXF{} allows publishers to construct such Research Archives 
+following the structure of existing examples such as 
+the \ACL{} (Association for Computational Linguistics) 
+Anthology or the recent \Cnineteen{} corpus.   This 
+latter archive is a useful case-study in both the 
+possibilities and limitations of existing 
+publication-repository technology, 
+so it is reviewed here in more detail.}
+
+\p{\lCnineteen{}, curated by the Allen Institute for 
+Artificial Intelligence, was spearheaded by 
+a White House initiative to centralize scientific 
+research related to \Covid{} (see \cite{CORD}).  The  
+collection was formulated with the explicit goal 
+of promoting both \textit{text mining} and 
+\textit{data mining} solutions 
+to advance coronavirus research, so that 
+\Cnineteen{} is intended to be used both as a document 
+archive for text mining and as a repository for 
+finding and obtaining coronavirus data for subsequent 
+research.  Although novel research is being 
+incorporated into \Cnineteen{}, many of the articles 
+reproduced in this corpus are older publications related 
+to coronaviruses and to SARS in general, not just to the 
+current pandemic.  As a result, the full-text versions 
+of these publications were retroactively aggregated 
+into a single archive due to the unanticipated emergence 
+of a coronavirus crisis, with the full text often obtained 
+from \PDF{} files rather than from structured 
+representations (such as \JATS{}) explicitly intended 
+for text mining.}
+
+\p{This archival methodology results in \Cnineteen{} being 
+limited as a \TDM{} framework.  These limitations include 
+the following:
+
+\begin{description}
+\item[Transcription Errors]  
+Transcription errors can easily result from trying to 
+read scientific data and notations based on 
+\PDF{} files --- or on full-text representations using 
+relatively unstructured formats such as \XOCS{} 
+(the response-encoding format for the ScienceDirect 
+\API{}).  Transcription errors cause the machine-readable 
+text archive to misrepresent the structure 
+and content of documents.  For instance, 
+there are cases in \Cnineteen{} 
+of scientific notation and terminology 
+being improperly encoded.  As a concrete example, \colorq{2{\textquotesingle}-C-ethynyl} is encoded incorrectly in one \Cnineteen{} file 
+as \makebox{\colorq{2 0 -C-ethynyl}} (see \cite{Eyer} for 
+the human-readable publication where this error is 
+observed; the corresponding index in the corpus is \textcolor{blGreen!45!black}{9555f44156bc5f2c6ac191dda2fb651501a7bd7b.json}).  
+To help address these sorts of errors --- 
+which could stymie text searches 
+against the \Cnineteen{} corpus --- 
+it is obviously preferable to archive structured, 
+machine-readable versions of publications, using 
+a platform such as \AXF{}.  
+    
+\item[Converting Between Data Formats]
+Although the \Cnineteen{} corpus is published 
+as \JSON{} files, many text-mining tools such 
+as those reviewed in \cite{NeusteinText} recognize 
+inputs or produce outputs in alternative formats, 
+such as \XML{}, \BioC{}, \CoNLL{} (Conference on Natural 
+Language Learning), or \JSON{} trees with 
+different schema than \Cnineteen{}.  For this 
+reason, rather than providing data with one single 
+representational format, it is better to 
+encode the data along with code libraries that can 
+express the data in different formats as needed 
+for different \TDM{} ecosystems.
+
+\item[Inconsistent Annotations]  
+The structure of \Cnineteen{} allows text segments to 
+be defined via a combination of \JSON{} file names, 
+paragraph ids, and character indices.  This indexing 
+schema is used for representing certain internal 
+details of individual articles, such as citations, 
+but is not explicitly defined as an annotation 
+target structure for standoff annotations against 
+the archive as a whole.  This problem could 
+also be rectified with code libraries that map 
+index targets to file handles and character pointers. 
+
+\item[Limited Support for Research Data-Mining]  Even though 
+many papers in \Cnineteen{} are paired with 
+published data sets, there is currently no tool for 
+locating  research \textit{data} 
+through \Cnineteen{}. 
+For example, the collection of manuscripts available 
+through the Springer Nature portal linked 
+from \Cnineteen{} includes over 30 \Covid{} data sets,
+but researchers can only discover that these data 
+sets exist by looking for a \q{supplemental materials} or 
+a \q{data availability} addendum near the end of each article.
+These Springer Nature data sets encompass a wide array of file types 
+and formats, including \FASTA{} (which stands for Fast-All, 
+a genomics format), \SRA{} (Sequence Read Archive, for 
+\DNA{} sequencing), \PDB{} (Protein Data Bank,  
+representing the \ThreeD{} geometry of protein 
+molecules), \MAP{} (Electron Microscopy Map), \EPS{} 
+(Embedded Postscript), \CSV{} (comma-separated values), 
+and tables represented in Microsoft Word 
+and Excel formats.  To make this data more 
+readily accessible in the context of \Cnineteen{}, it 
+would be appropriate to (1) maintain an index of 
+data sets linked to \Cnineteen{} articles 
+and (2) merge these resources into a common representation 
+(such as \XML{}) wherever possible.  This research-data 
+curation can then be treated as a supplement to 
+text-mining operations.  In particular, queries 
+against the full-text publications could be evaluated 
+\textit{also} as queries against the relevant set 
+collection of research data sets.    
+
+\item[Wrappers for Network Requests]  Scientific 
+use of \Cnineteen{} will often require communicating 
+with remote servers.  For example, genomics 
+information in the \Covid{} data sets (such as 
+those mentioned above that are available through 
+Springer Nature) is generally 
+provided in the form of accession numbers which 
+are used to query online genomics services.  
+Similarly, text mining algorithms often 
+rely on dedicated servers to perform 
+Natural Language Processing; these services 
+might take requests in \BioC{} format and respond 
+with \CoNLL{} data.  As another case study epidemiological 
+studies of \Covid{} may need to access \API{}s or data 
+sets such as the John Hopkins University \q{dashboard} 
+(see \href{https://coronavirus.jhu.edu/map.html}{https://coronavirus.jhu.edu/map.html}, which is paired with a \GIT{} archive 
+updated almost daily).  To reduce the amount 
+of \q{biolerplate code} which developers need 
+for these networking requirements, an archive's 
+text-mining code could provide a unified framework with which 
+to construct web-\API{} queries, 
+one that could be used across 
+disparate scientific disciplines 
+(genomics, \NLP{}, epidemiology, and so forth). 
+\end{description}}
+
+\p{Many of these limitations observed in \Cnineteen{} 
+reflect the fact that this corpus was prepared 
+as raw (text) data, without any supporting code.  
+By contrast, recent initiatives --- such as the Research Object 
+protocol (see \cite{KhalidBelhajjame}) 
+and \FAIR{} (\q{Findable, Accessible, 
+Interoperable, Reusable}; see \cite{TrifanOliveira}) --- 
+encourage authors to publish code and data together, 
+so that the computing environment needed to process 
+published data is provided within the data set itself.  
+The \Cnineteen{} limitations accordingly provide an 
+example of why Research Objects, rather than raw data 
+sets, should be preferred for data publication in the 
+future.  The Research Object model is usually defined in 
+the context of a single publication, but the paradigm 
+applies equally well to corpora encompassing many 
+single articles.  That is, \AXF{} is structured so 
+that Research Archives can be designed as higher-scale 
+Research Objests, wherein the document collection is bundled 
+with supporting code and an overall computing and 
+software-development environment.  Such archive-specific 
+\SDK{}s would include \AXF{}-specific code as well 
+as libraries or applications often utilized in 
+the academic disciplines relevant to the archival 
+subject areas.  The \AXF{} platform especially 
+promotes the design of domain-specific \SDK{} 
+which are \textit{standalone} 
+and \textit{self-contained}, with minimal external 
+dependencies.  As much as possible, users should 
+not have to install external software to utilize 
+data provided along with an \AXF{} repository; 
+instead, the needed data-management tools should be 
+provided in source-code form within the archive itself.}
+
+\p{Each \AXF{} repository, then, should 
+bundle numerous applications used for database 
+storage, data visualization, and scripting.  
+The goal of this application package would be to 
+provide researchers with a self-contained computing 
+platform optimized for scientific research 
+and findings related to the archived publications.  
+Archival \SDK{}s should try 
+to eliminate almost all scenarios where 
+programmers would need to perform a \q{system 
+install}; for the most part, the entire 
+computing platform (including scripting 
+and database capabilities) should be compiled 
+from source \q{out-of-the-box}.  While the 
+actual libraries and applications bundled with 
+an archive would depend on its topical 
+focus, the following is an example of components 
+that would be appropriate in many different \SDK{}: 
+
+\begin{itemize}[itemsep=-1pt]
+
+\item \XPDF{}: A \PDF{} viewer for reading full-text articles 
+(augmented with \Cnineteen{} features, such as integration 
+with biomedical ontologies);
+
+\item \Qt{}: The \Qt{} library is a cross-platform 
+Application-Development framework and 
+\GUI{} toolkit commonly used for scientific applications 
+(\XPDF{} is one example of a \Qt{}-based document 
+viewer).  Almost any data set can be accompanied 
+with \Qt{} code for data visualization, so that readers 
+would not have to install additional software.  For its 
+part, \Qt{} can be freely obtained and, once 
+downloaded, resides wholly in its own folder 
+(there is no install step which modifies the 
+user's system); as such, \Qt{} along with individual 
+archive \SDK{}s function as standalone packages, 
+although optimally the \SDK{}s would be updated along with 
+new \Qt{} versions.  
+  
+\item AngelScript: An embeddable scripting engine 
+that could be used for analytic processing 
+of data generated by text and data mining operations 
+on \Cnineteen{} (see \cite{AS});
+
+\item WhiteDB: A persistent database 
+engine that supports both relational 
+and \NoSQL{}-style architectures 
+(see above);
+
+\item MeshLab: A general-purpose \ThreeD{} graphics 
+viewer;
+
+\item LaTeXML: a \LaTeX{}-to-\XML{} converter;
+
+\item PositLib: a library for use in high-precision computations based on the \q{Universal Number} format, 
+which is more accurate than traditional floating-point 
+encoding in some scientific contexts 
+(see \cite{JohnGustafson}). 
+\end{itemize}
+
+To this list one might add components specific to various 
+scientific fields: \IQmol{} for chemistry and molecular 
+biology, for example, or open-source libraries such 
+as EpiFire or Simpact (for Epidemiology), \UDpipe{} (for 
+\CoNLL{}), and so forth.  Here again the priority 
+would be for self-contained components with few 
+external dependencies --- particularly libraries 
+programmed in \C{} or \Cpp{}, which are the 
+languages best positioned to be a common denominator 
+across diverse research projects (of course, many 
+scientific \Cpp{} libraries have wrappers for 
+languages like \R{} or Python that researchers may be 
+more comfortable using).  
+In general, Research Archive code should be 
+(1) \textit{self-contained} (with few or no external 
+dependencies, as emphasized above); 
+(2) \textit{transparent} (meaning that 
+all computing operations should be implemented by 
+source code within the bundle that can be examined 
+as code files and within a debugging session); 
+and (3) interactive (meaning that the bundle does not 
+only include raw data but also software to interactively 
+view and manipulate this data).  Research Archives which 
+embrace these priorities attempt to provide data visualization, 
+persistence, and analysis through \GUI{}, database, and 
+scripting engines that can be embedded as source 
+code in the archive itself. }
+  
+\p{It is worth noting that a data-mining platform requires 
+\textit{machine-readable} open-access research data
+(which is a more stringent requirement than simply 
+pairing publications with data that can only 
+be understood by domain-specific 
+software).  For example, radiological imaging can be a source 
+of \Covid{} data insofar as patterns of lung 
+scarring, such as \q{ground-glass opacity,} are a leading 
+indicator of the disease.  Consequently, diagnostic 
+images of \Covid{} patients are a relevant kind of 
+content for inclusion in a \Covid{} data set 
+(see \cite{Shi} as a case-study).  However, 
+diagnostic images are not in themselves 
+\q{machine readable.}  When medical imaging is 
+used in a quantitative context (e.g., applying 
+Machine Learning for diagnostic pathology), it is necessary 
+to perform Image Analysis to convert the raw data 
+--- in this case, radiological graphics --- into 
+quantitative aggregates.  For instance, by using image 
+segmentation to demarcate geometric boundaries one 
+is able to define diagnostically relevant features (such 
+as opacity) represented as a scalar field over the segments.  
+In short, even after research data is openly published, 
+it may be necessary to perform 
+additional analysis on the data for it to be 
+a full-fledged component of a 
+machine-readable information space.\footnote{%
+\raisebox{-10pt}{\hspace{3pt}\parbox{.9\textwidth}{This does not mean that diagnostic images (or 
+other graphical data) should not be placed in a 
+data set; only that computational reuse of such 
+data will usually involve certain numeric 
+processing, such as image segmentation.  
+Insofar as this subsequent analysis is performed, 
+the resulting data should wherever possible 
+be added to the underlying image data as a 
+supplement to the data set.}}}  To 
+deal with this sort of situation, \AXF{} equips 
+\SDK{}s with a \textit{procedural 
+data-modeling vocabulary} that would both identify the 
+interrelationships between data representations 
+and define the workflows needed to 
+convert research data into machine-readable data sets.} 
+
+\p{Another concern in developing an integrated Research Arcive
+data collection is that of indexing documents and research findings  
+for both text mining \textit{and} data mining.  
+In particular, \AXF{} introduces a 
+system of \textit{microcitations} that apply 
+to portions of manuscripts \textit{as well as} data sets.  
+In the publishing context, a microcitation is defined as a 
+reference to a partially isolated fragment of a larger 
+document, such as a table or figure illustration, or a 
+sentence or paragraph defining a technical term, 
+or (in mathematics) the statement/proof of a definition, axiom, 
+or theorem.  In data publishing, \q{data citations} are 
+unique references to data sets in their entirety or to 
+their smaller parts.  A data microcitation is then a 
+fine-grained reference into a data set.  For example, 
+a data microcitation can consist of one 
+column in a spreadsheet, 
+one statistical parameter in a quantitative analysis, 
+or \q{the precise data records actually used in a study} 
+(in the words adopted by the Federation of Earth Science Information Partners to define microcitations; 
+see \cite{ESIP}).  As a concrete example, 
+a concept such as \q{expiratory flow} appears in \Cnineteen{} 
+both as a table column in research data and as a medical concept 
+discussed in research papers; a unified microcitation framework 
+should therefore map \textit{\color{drp}{expiratory flow}} as a keyphrase 
+to both textual locations and data set parameters.  
+Similarly, a concept such as 
+\textit{\color{drp}{2{\textquotesingle}-C-ethynyl}} (mentioned earlier, in the context of transcription errors) 
+should be identified both as a phrase in 
+article texts and as a molecular component 
+present within compounds whose scientific 
+properties are investigated through \Cnineteen{} 
+research data.  In so doing, a search for this 
+concept would then trigger both publication and 
+data-set matches at the same time.}
+
+\p{Further discussion on data microcitations depends on 
+how data sets are structured, which is addressed in the next section.}
+
+
+\subsection{Research Objects and Data Microcitations}
+\p{The design of \AXF{} assumes that many Research Archives, 
+comprising of multiple publications sharing an academic 
+focus, will also include open-access research data.  
+The primary motivation for publishing 
+research data is to ensure transparency and 
+reusability --- open-access data allows readers to verify 
+that scientific/technical claims are warranted, 
+and/or to reuse or incorporate existing data into 
+new research.  Open-access data has other purposes 
+as well: data sets, for example, can serve 
+as pedagogic tools helping readers understand 
+publications' concepts experimentally and 
+interactively (a good example is \cite{AlexandruTelea}, 
+which pairs data sets with its individual chapters to 
+illustrate principles in data visualization).  
+Moreover, the theory informing how data sets are 
+organized can serve as a technical exposition 
+of research principles and methodology.  For all 
+of these reasons, open-access data is an 
+increasingly important part of the publishing 
+ecosystem.  This means 
+that well-curated archives will often need to 
+prepare data sets for data 
+mining, alongside the preparation of text materials for 
+text mining.  }
+
+%\input{pics/oxy}
+\p{In contrast to text mining, however, it is not feasible, 
+in the general case, to 
+assign one single format (like \AXFD{} or \JATS{}) for all 
+data sets published within an archive.  Precisely how data 
+sets can be annotated depends on the data models, programming 
+languages, and analytic methodologies which they utilize.  
+Because this variability prohibits a single data-annotation 
+protocol from being required, \AXF{} adopts a strategy of 
+defining a rigorous protocol for \Cpp{} code bases, which 
+can then be emulated by other languages.}
+
+\p{As outlined above, data citations refer to parts within a 
+data set --- such as individual data records, but also larger-scale 
+aggregates such as table columns or statistical parameters.  
+The complication when defining data citations is that a 
+concept such as a table column, although it may have an 
+obvious technical status as a discrete conceptual unit from 
+the point of view of scientists curating, studying or reusing 
+a data set, does not necessarily correspond to a single 
+coding entity that could be isolated as an annotation 
+target.  It is therefore the responsibility of 
+\textit{code base annotations} to provide annotations for 
+computational units --- such as data types, procedures, and 
+\GUI{} components --- that have an annotatable \textit{conceptual} 
+status relative to the data set on which the code operates.  
+Often this will involve mapping one concept to 
+several computational units (for instance, several 
+procedure implementations).}
+
+\p{For a concrete example of these points concerning 
+data citations, consider the data set pictured 
+in Figure~\bref{fig:oxy}, representing cyber-physical measurements 
+used to calculate oxygenated airflow.  The data-set 
+application (interactive-visualization code deployed within 
+the Research Object) displays tabular data via a tree widget 
+(which functions as a generalized, multi-scale spreadsheet 
+table), with tabular columns expressing quantities --- such 
+as air flow and oxygen levels --- in several formats (raw 
+measures as well as sample rankings and min-max 
+percentages).  Conceptually, these columns have distinct 
+methodological roles and therefore can be microcited; 
+indeed, the application links the columns to article 
+text where the corresponding concepts are presented 
+(see Figure~\bref{fig:about}).  However, the implementation does not introduce 
+a distinct \Cpp{} object uniquely designating individual 
+columns.  Instead, the individual columns can be annotated 
+in terms of \Cpp{} methods providing column-specific 
+functionality.  In the current example, these methods 
+primarily take the form of features linked to context-menu 
+actions (copying column data to the clipboard, sorting data 
+by one column, etc.).  In general, rather than a rigid 
+protocol for data-set annotations, \AXF{} proposes 
+heuristic guidelines for how best to map programming 
+constructs to scientifically salient data-set concepts.}
+
+%\input{pics/about}
+\p{Defining an annotation schema for data sets can potentially 
+be an organic outgrowth of software-development methodology 
+--- viz., the engineering steps, 
+such as implementing unit tests, which are essential 
+to deploying a commercial-grade application.  
+This point is illustrated in 
+Figure~\bref{fig:testing}, which shows a \GUI{}-based testing environment for 
+the data set depicted in Figures~\bref{fig:oxy} and 
+\bref{fig:about}.  For this data set, 
+the context menu actions providing column-specific functionality 
+are also discrete capabilities which can be covered by 
+unit tests, so the set of procedures mapped to the citeable 
+concept correspond with a set of unit-test requirements.  
+In this data set, these procedures are also exposed to 
+scripting engines via the \Qt{} meta-object system.  In general, 
+there is often a structural correlation between 
+scripting, unit testing, and microcitation, so that 
+an applications' scripting and testing protocol can serve 
+as the basis for annotation schema.  For data sets which use 
+in-memory or persistent databases, evaluable queries against 
+these databases provide an additional grounding for annotations.  
+In general, data-annotation should be engineered on the 
+basis of a dataset applications' scripting, testing, and/or 
+query-evaluation code.  However, this is only a heuristic 
+guideline, and \AXF{} does not presuppose any data-annotation 
+scheme \textit{a priori}.}
+\input{pics/testing}
+
 
 
 \end{document}
