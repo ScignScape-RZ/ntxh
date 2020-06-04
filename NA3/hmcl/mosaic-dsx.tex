@@ -950,7 +950,76 @@ Developer's Overview}
 \end{tcolorbox}
 \end{center}
 
+\p{The \MOSAIC{} Data-Set Explorer (\MdsX{}) is a suite of 
+code libraries which can be used to 
+build native, desktop-style applications 
+for viewing data sets.  An \MdsX{} 
+\q{data-set application} is an application 
+customized and tailored to a particular 
+data set, or a repository including multiple 
+data sets.  An \MdsX{} \textit{notebook} is 
+a particular strategy for organizing 
+data-set applications, or parts of 
+data-set applications.  In addition to 
+serving as standalone applications in themselves, 
+\MdsX{} notebooks can be embedded in other 
+applications; for instance, in scientific software.}
 
+\p{\lMdsX{} is paired with \MOSAIC{} \textit{portal}, 
+a code library for hosting data sets and 
+publications.  The \MOSAIC{} portal code includes 
+custom \LaTeX{} commands for building annotated, 
+indexed \PDF{} files, and a custom \PDF{} viewer 
+which can read \MOSAIC{} annotations and 
+utilize their information to interoperate 
+with data-set applications.  \lMOSAIC{} data-set 
+applications can also customize this \PDF{} 
+viewer to add functionality specific to 
+its data models and scientific subject-matter.}
+
+\p{In general, \MOSAIC{} applications are 
+designed to be distributed in source-code fashion.  
+They are, by default, written in \Cpp{} and based on 
+the \Qt{} application-development framework.  
+\lMOSAIC{} is designed so that sophisticated 
+data-set applications can be built with few 
+(or no) external dependencies apart from \Qt{} 
+itself.  In the typical scenario, users would 
+build and run \MdsX{} applications inside 
+the \Qt{} Creator Integrated Development Environment 
+(\IDE{}).  However, \MdsX{} applications can 
+also be configured so that they (or some 
+functionality they provide) can be run 
+from a command line --- which allows them to 
+participate in multi-application workflows --- 
+or bundled as plugins or source-code extensions 
+into larger software components.}
+
+\p{\lMOSAIC{} is designed to bridge the 
+gap between scientific software and 
+scientific data sets.  While increasing 
+volumes of open-access research data is 
+becoming available to readers, researchers, 
+and scientists, this data is not always 
+published in a manner which facilitates 
+reuse and interoperability with scientific 
+software --- the kinds of applications 
+that scientists themselves use to conduct 
+and examine experiments or simulations.  
+Moreover, the software-development ecosystem 
+which is evolving around data publishing 
+(as far as exchange protocols, file formats, 
+development tools, and so forth) is  
+methodologically removed from the engineering 
+norms and principles of most scientific 
+software.  As such, a technical gap 
+exists between the data-publishing and 
+scientific-computing ecosystems seen 
+as software-engineering domains.  
+\lMOSAIC{} aims to be a suite of tools 
+which can help bridge that gap.}
+
+\section{Data Sets and Data Publishing: the current picture}
 \p{Recent years have seen an increasing emphasis, 
 in the academic and scientific worlds, on 
 \textit{data publishing} --- sharing research 
@@ -1133,7 +1202,7 @@ can, as desired, be modified for individual
 data sets/repositories).}
 
 
-\section{The Structure of \protect\lsMdsX{} Notebooks}
+\section[The Structure of MdsX Notebooks]{The Structure of \protect\lsMdsX{} Notebooks}
 
 \p{A common feature of software through which users 
 study and reuse research data sets is some 
@@ -1356,7 +1425,11 @@ notebook, whose central viewport contains a
 structured display of information, mostly in 
 textual form (for instance, a table or tree view), 
 but this section will focus on graphics-oriented 
-notebooks.}
+notebooks (Figure~\ref{fig:oxy} shows a contrast 
+between an object-based view, in the background, 
+and a graphics-based view, which has been 
+opened floating above it).}
+\input{pics/oxyalt.tex}
 
 \p{Diagram-based \MdsX{} notebooks can be implemented with 
 different diagram-plotting engines; the default 
@@ -1522,7 +1595,7 @@ The \CaPTk{} workflow protocol also forms a
 basis for the meta-procedural view and 
 controllers, discussed next.}
 
-\section{\protect\lsMdsX{} Meta-Procedure Controllers}
+\section[MdsX Meta-Procedure Controllers]{\protect\lsMdsX{} Meta-Procedure Controllers}
 
 \p{The meta-procedural layer of an \MdsX{} notebook 
 is responsible for handling events generated 
@@ -1549,10 +1622,84 @@ in the meta-procedural controller context via
 application-unique identifiers (not raw pointers).  
 Similarly, \q{meta-procedural objects} encapsulate 
 information about meta-procedures themselves.  
-  
+This controller does not directly connect 
+\GUI{} events to event handlers; instead, it 
+receives information about these connections when 
+the notebook is loaded.  The controller is however 
+responsible for implementing \textit{incremental 
+execution} wrapping event callbacks (or any other 
+relevant procedure).  Incremental execution 
+means that the controller may create 
+temporary \q{execution contexts} and incrementally 
+build up the data which, given a sufficiently 
+complete \q{marking,} can lead to the 
+meta-procedure being \q{fired.}  Each 
+preliminary stage --- that is, each pre-firing 
+addition to the execution context --- may in 
+turn be generated by events originating elsewhere 
+in the application (canonically, the 
+navigation panel), and the meta-procedural controller 
+should model both the history of these pre-firing stages 
+and the origin and nature of the events which 
+triggered them.  An execution context 
+may then be \textit{reified}, representing the 
+cumulative pre-firing stages as a data structure 
+that can be matched to a meta-procedure's 
+outcomes: for example, noting the 
+inputs or steps producing the specific appearance 
+of a diagram or image in the graphics view, 
+or the parameters configured to instantiate 
+a workflow model.  Reified meta-procedural 
+execution contexts can then be shared as 
+objects with components responsible for 
+sharing or preserving information about the 
+notebook.  For instance, a notebook graphic may be 
+included in a publication; the reified context 
+could then be associated with that image as an 
+annotation, and used to reconstruct notebook 
+state if the notebook is launched from a 
+document viewer in the context of the 
+published graphic.}
 
-   }
+\p{In general, the information represented 
+by the meta-procedural controller is not only 
+relevant for the reactive operations of the 
+notebook, responding to user actions; 
+it also serves to document the notebook's 
+properties, and potentially to connect 
+the notebook with data sets and/or 
+publications.  Many operations which can be 
+performed within a notebook are associated 
+with a given scientific or theoretical 
+concept, or a statistical parameter modeled 
+within a data set.  As such, it is possible 
+for the notebook to maintain a list of these 
+concepts, so as to create an interactive 
+glossary or to interoperate with a document 
+viewer.  For instance, Figure~\ref{fig:oxy} shows a 
+context-menu action based on the concept 
+of \q{oxygenated air flow,} which is also 
+discussed in the scientific article 
+on which the depicted data set is based.  
+This concept also has a visual expression in 
+one table column shown (in the background) on 
+Figure~\ref{fig:oxy}.  As demonstrated 
+in Figure~\ref{fig:about}, the data-set application includes 
+code to explain technical concepts in pop-up 
+dialog boxes, and also to link to the 
+page/paragraph in the article where that correspinding 
+concept is first (or most thoroughly) defined/mentioned.  
+Establishing these conceptual connections 
+between an \MdsX{} notebook, data set, and 
+technical publication is facilitated by 
+annotating both meta-procedural capabilities 
+and \GUI{} elements with references to 
+relevant technical/scientific concepts; these 
+annotations, when defined, are represented through the 
+meta-procedural controller.}
+\input{pics/about.tex}
 
+\p{}
 
 
 \end{document}
