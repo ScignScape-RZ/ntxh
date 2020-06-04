@@ -1440,9 +1440,44 @@ humans or by softare --- results in either
 some form of statistical representation of 
 an image's properties, or a complex of 
 data which presents information about 
-(and may visually overlay) 
+(and may visually overlay) the image, 
+particularly in the form of annotations.  
+Image annotations are arrows, line segments, 
+or \TwoD{} closed shapes that call attention 
+to some point or region inside the image, 
+usually with some additional label or commentary.  
+The basis of each annotation is therefore 
+some zero-dimensional or two-dimensional 
+region (or a set of zero-dimensional 
+control points; or, occasionally, a one-dimensonsal  
+line or curve), so annotations require a mechanism 
+for designating regions.  The same 
+issues apply to asserting feature-vectors 
+with respect to an image region rather than 
+the image as a whole; accordingly, 
+both annotations and feature vectors 
+can be seen as equivalent varieties of 
+constructions which isolate and then 
+define data structures on zero-, one-, 
+and/or two-dimensional subimages 
+(feature vectors on the entire image 
+can accordingly be treated as a special 
+case).    
 
 \item[Contextual Layer]
+Contextual information associated with an 
+image can include metadata 
+or supplemental details that are not 
+directly relevant to the image, but 
+convey facts about how the image connects 
+to a broader context where it was obtained, 
+and for what purpose.  An example of 
+contextual data would be the part of 
+\DICOM{} headers that include patient 
+or clinical information, rather than 
+metadata about image format or 
+dimensions.  
+
 
 \item[Procedural Layer]
 
@@ -1450,7 +1485,74 @@ data which presents information about
 }
 
 
-\p{}
+\p{In \MdsX{}, \DSPIN{} objects are 
+associated with image-based notebooks in 
+that the notebook components 
+(the navigation panel and graphics, data, 
+and meta-procedural controllers) jointly refer 
+to a common \DSPIN{} object for all 
+image-related data.  Image-analysis routines 
+conducted within the notebook then may yield 
+additional data structures bundled into the 
+overarching \DSPIN{} object.  This 
+overarching object can then be exported or 
+saved, alongside (and as an extension of) 
+notebook state.}
+
+\p{Analytic operations available through an 
+image-based notebook may be provided by 
+the notebook itself, or by a host application 
+where \MdsX{} is embedded.  In the latter 
+case, the notebook needs to construct the 
+proper calls to the host application, using 
+the meta-procedural controller as a bridge 
+to ambient capabilities.  For instance, if 
+an \MdsX{} notebook is developed as a plugin 
+to \CaPTk{}, the notebook would interface 
+with the host \CaPTk{} application via the 
+formats and programming constructs which 
+\CaPTk{} recognizes (specifically, 
+the Common Workflow Language and the 
+\Qt{} signal/slot mechanism).  
+This specific scenario --- embedding \MdsX{} 
+in \CaPTk{} --- is employed as a demonstration 
+and case-study for embedding notebooks 
+in host application in general.  
+The \CaPTk{} workflow protocol also forms a 
+basis for the meta-procedural view and 
+controllers, discussed next.}
+
+\section{\protect\lsMdsX{} Meta-Procedure Controllers}
+
+\p{The meta-procedural layer of an \MdsX{} notebook 
+is responsible for handling events generated 
+by a corresponding navigational panel, or at 
+least those events which have a 
+non-trivial impact on notebook/session 
+state and data.  The visual representation of 
+meta-procedural commands and history is 
+provided by a meta-procedural \q{view,} which 
+is normally invisible, but notebooks may 
+choose to allow users to \q{unhide} this view.  
+The meta-procedural controller is responsible 
+for generating the meta-procedural view (if 
+applicable) and responding to user events 
+within this view; it is also responsible for 
+maintaining an inventory of objects summarizing 
+available metaprocedures, \GUI{} elements, 
+and the mappings between them.}
+
+\p{In general, the \GUI{} elements in these 
+meta-procedural mappings are referred to as 
+\q{visual objects,} and are represented 
+in the meta-procedural controller context via 
+application-unique identifiers (not raw pointers).  
+Similarly, \q{meta-procedural objects} encapsulate 
+information about meta-procedures themselves.  
+  
+
+   }
+
 
 
 \end{document}
