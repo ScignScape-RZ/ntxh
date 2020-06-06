@@ -2282,6 +2282,7 @@ to allow \MdsX{} data-sets to be explored in standalone
 fashion (with a default implementation that 
 can, as desired, be modified for individual 
 data sets/repositories).}
+\input{pics/rad2}
 
 \p{The overall \MOSAIC{} framework, then, 
 spans three different technical areas.   
@@ -2307,18 +2308,32 @@ basic \MdsX{} design.}
 as notebooks, they can be useful enhancements 
 to host applications, allowing for 
 more robust data-sharing and multi-application 
-networking.  \lMdsX{} plugins, for example, 
+networking.  \lMOSAIC{} plugins, for example, 
 would allow applications to send and 
 receive data using the \HGXF{} format; 
 and also to support workflows described 
 via \HMCL{}.  These workflows allow different 
 applications' capabilities to complement one 
 another; a simple example is shown in 
-Figure~\ref{}
+Figure~\ref{fig:rad2}, where a 
+\ThreeD{} tissue model is built 
+from a \TwoD{} image series, 
+and Figure~\ref{fig:rad3}, where the same 
+\ThreeD{} model is exported to a \ThreeD{} 
+graphics application.  Using \MOSAIC{} 
+plugins allows the file transfer between 
+the two applications to be performed 
+automatically, rather than requiring 
+users to manually save and then reopen files.}
 
-
- }
-
+\p{Although minimal \MOSAIC{} plugins provide 
+some useful functionality, the main goal of 
+\MOSAIC{} is to support more complex, \GUI{} 
+based interactive notebooks which can be 
+plugged in to other applications as well 
+as run standalone.  These notebooks will 
+be disussed in the next section.}
+\input{pics/rad3}
 
 \section[The Structure of MdsX Notebooks]{The Structure of \protect\lsMdsX{} Notebooks}
 
