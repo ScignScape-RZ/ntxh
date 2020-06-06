@@ -2782,7 +2782,7 @@ notebooks are responsible for displaying
 textual serializations of data structures, 
 particularly the specific data sets that 
 form the core of a data-set application.  
-\p{Raw data, of course, may be serialized 
+Raw data, of course, may be serialized 
 in many different formats, and 
 spread over multiple files.  However, 
 \MOSAIC{} natively recognizes its own 
@@ -2797,7 +2797,33 @@ notebook/application state.  Both
 \HGXF{} and \DgDb{} will be discussed 
 in Part III.}
 
-\p{}
+\p{Apart from simply showing the text contained 
+in a file, data views should provide information 
+about the file type and format --- in particular, 
+should indicate the code libraries which are 
+being used to parse the serialized files.  
+In the ideal case, an \MdsX{} notebook will link 
+against (or include) a \Cpp{} library to read 
+files in the associated format, and will also 
+provide \Cpp{} classes to hold deserialized 
+data.  In simple cases, each file handled 
+by an \MdsX{} data controller corresponds 
+to a list of \Cpp{} objects of the same type; 
+in more complex cases the data involves 
+multiple types.  In either case, the 
+\Cpp{} classes defining these de-serialized 
+objects are distinct from those used to 
+parse the files, but an obvious connection 
+exists between these two groups of classes.  
+The data controller is then responsible 
+for documenting these inter-class connections, 
+and also for helping users learn about the 
+relevant classes if they so choose.  
+Assuming an \MdsX{} notebook is embedded in 
+\Qt{} Creator, this can include passing a 
+message to \Qt{} Creator requesting that 
+the relevant \Cpp{} files be loaded in to the 
+file-view pane.}
 
 \p{
 
