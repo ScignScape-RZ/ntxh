@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  5 JUN 2020 18:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  6 JUN 2020 08:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**mosaic-dsx.tex
-(./mosaic-dsx.tex
+**cr2-mosaic.tex
+(./cr2-mosaic.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/article.cls
@@ -771,7 +771,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip119
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 187.
+Package hyperref Info: Option `colorlinks' set `true' on input line 203.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tcolorbox/tcolorbox
 .sty
@@ -1715,30 +1715,16 @@ Package: relsize 2013/03/29 ver 4.1
 \c@mv@fordg=\count306
 
 ! Too many }'s.
-l.439 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.422 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   }
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 ! Too many }'s.
-l.439 ...{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+l.422 ...{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
-
-
-! LaTeX Error: Command \DSPIN already defined.
-               Or name \end... illegal, see p.192 of the manual.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.506 ...\resizebox{!}{7pt}{\AcronymText{D-SPIN}}}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
 
 
 ! LaTeX Error: Command \ATextClr already defined.
@@ -1748,7 +1734,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.523 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
+l.512 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1762,7 +1748,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.527 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.516 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1776,7 +1762,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.532 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.521 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1790,8 +1776,22 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.696 \raisebox{-1pt}{#1}}}}
+l.686 \raisebox{-1pt}{#1}}}}
                             
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \dsC already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.691 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+                                                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1897,7 +1897,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.892 
+l.882 
       
 The package breakurl has already been loaded with options:
   [hyphenbreaks]
@@ -1908,8 +1908,8 @@ Adding the global options:
 to your \documentclass declaration may fix this.
 Try typing  <return>  to proceed.
 
-(./mosaic-dsx.aux)
-\openout1 = `mosaic-dsx.aux'.
+(./cr2-mosaic.aux)
+\openout1 = `cr2-mosaic.aux'.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
@@ -1975,14 +1975,14 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(53.4802pt, 507.33461pt, 53.4802pt)
-* v-part:(T,H,B)=(36.135pt, 672.11122pt, 86.72377pt)
+* h-part:(L,W,R)=(59.98422pt, 495.77226pt, 58.53851pt)
+* v-part:(T,H,B)=(36.135pt, 888.92123pt, 86.72377pt)
 * \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=507.33461pt
-* \textheight=672.11122pt
-* \oddsidemargin=-18.7898pt
-* \evensidemargin=-18.7898pt
+* \paperheight=1011.78pt
+* \textwidth=495.77226pt
+* \textheight=888.92123pt
+* \oddsidemargin=-12.28577pt
+* \evensidemargin=-12.28577pt
 * \topmargin=-73.135pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -2001,7 +2001,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 899.
+Package hyperref Info: Link coloring ON on input line 887.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -2013,12 +2013,12 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 899.
-LaTeX Info: Redefining \pageref on input line 899.
-LaTeX Info: Redefining \nameref on input line 899.
- (./mosaic-dsx.out) (./mosaic-dsx.out)
+LaTeX Info: Redefining \ref on input line 887.
+LaTeX Info: Redefining \pageref on input line 887.
+LaTeX Info: Redefining \nameref on input line 887.
+ (./cr2-mosaic.out) (./cr2-mosaic.out)
 \@outlinefile=\write6
-\openout6 = `mosaic-dsx.out'.
+\openout6 = `cr2-mosaic.out'.
 
 
 ABD: EveryShipout initializing macros
@@ -2048,32 +2048,48 @@ File: utxsyb.fd 2000/12/14 v1.0
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/bera/t1fvs.fd
+File: t1fvs.fd 2004/09/07 scalable font definitions for T1/fvs.
+)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
 )
-<logo.png, id=55, 154.6578pt x 91.7829pt>
+<logo.png, id=71, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1028.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 1032.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+ (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1032.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1028.
+(hyperref)                removing `\@ifnextchar' on input line 1032.
 
+[1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdft
+ex.map}
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1028.
+ <./logo.png>]
+! Undefined control sequence.
+<argument> ...ook} technologies, such as \Jupyter 
+                                                  {} and \Kaggle {}. The \MO...
+l.1052 ...; for instance, in scientific software.}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-[1
-
-{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdftex
-.map} <./logo.png>]
 ! Undefined control sequence.
 <argument> ...es, such as \Jupyter {} and \Kaggle 
                                                   {}. The \MOSAIC {} librari...
-l.1048 ...; for instance, in scientific software.}
+l.1052 ...; for instance, in scientific software.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2081,749 +2097,500 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<e-logo.png, id=69, 2107.875pt x 1505.625pt>
+<e-logo.png, id=88, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1122.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 1131.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1122.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 1131.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1122.
+(hyperref)                removing `\@ifnextchar' on input line 1131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1122.
+(hyperref)                removing `\@ifnextchar' on input line 1131.
 
 [2 <./e-logo.png>]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1221.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1221.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1221.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1221.
-
-[3]
-! Undefined control sequence.
-<argument> This is the motivation behind \Mdsx 
-                                               {}, which is used to implemen...
-l.1301 data sets/repositories).}
-                                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1302.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1302.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1302.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1302.
-
-[4]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1400.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1400.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1400.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1400.
-
-[5]
-! Undefined control sequence.
-<argument> ...apart from \Cpp {} instead of \Java 
-                                                  {} being the underlying pr...
-l.1437 (which are discussed below).}
-                                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...nterface as they would be in a \JVM 
-                                                  {} or \Python {} environme...
-l.1463 ...uld be implemented for other languages.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...Embeddable Common Lisp, \ChaiScript 
-                                                  {}, etc.) can work as well...
-l.1463 ...uld be implemented for other languages.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<argument> ...by default for AngelScript and \ECL 
-                                                  {} (Embeddable Common Lisp...
-l.1463 ...uld be implemented for other languages.}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1464.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1464.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1464.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1464.
-
-[6] (./pics/oxyalt.tex
-<pics/oxy.png, id=94, 874.76813pt x 451.6875pt>
-File: pics/oxy.png Graphic file (type png)
-<use pics/oxy.png>
-Package pdftex.def Info: pics/oxy.png  used on input line 13.
-(pdftex.def)             Requested size: 512.1496pt x 264.45322pt.
-
-Overfull \hbox (4.81499pt too wide) in paragraph at lines 15--16
-[][] 
- []
-
-)
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1548.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1548.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1548.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1548.
-
-[7]
-! Undefined control sequence.
-<argument> ...ost formats (such as \PNG {}, \JPEG 
-                                                  {}, \TIFF {}, and \DICOM {...
-l.1656 }
-        
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1656.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1656.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1656.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1656.
-
-[8 <./pics/oxy.png (PNG copy)>]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1695.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1695.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1695.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1695.
-
-[9]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1797.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1797.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1797.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1797.
-
-[10] (./pics/about.tex
-<pics/about.png, id=118, 603.75563pt x 337.26pt>
-File: pics/about.png Graphic file (type png)
-<use pics/about.png>
-Package pdftex.def Info: pics/about.png  used on input line 12.
-(pdftex.def)             Requested size: 512.1496pt x 286.08568pt.
-
-Overfull \hbox (4.81499pt too wide) in paragraph at lines 14--15
-[][] 
- []
-
-)
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1808.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1808.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1808.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1808.
-
-[11 <./pics/about.png (PNG copy)>]
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 
 LaTeX Font Warning: Font shape `OML/cmr/b/n' undefined
-(Font)              using `OML/cmr/m/it' instead on input line 1828.
+(Font)              using `OML/cmr/m/it' instead on input line 1180.
+
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lm/t1lmdh.fd
+File: t1lmdh.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
+File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+)
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1255.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1255.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
-LaTeX Warning: Citation `BorislavIordanov' on page \raisebox {2pt}{12} undefine
-d on input line 1869.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1255.
 
 
-LaTeX Warning: Citation `EnarReilent' on page \raisebox {2pt}{12} undefined on 
-input line 1869.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1255.
+
+[3]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1361.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1361.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
-LaTeX Warning: Citation `Erable' on page \raisebox {2pt}{12} undefined on input
- line 1869.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1361.
 
 
-LaTeX Warning: Citation `MattSelway' on page \raisebox {2pt}{12} undefined on i
-nput line 1869.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1361.
+
+[4]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1422.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1422.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
-LaTeX Warning: Citation `InteractingConceptualSpaces' on page \raisebox {2pt}{1
-2} undefined on input line 1869.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1422.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1422.
+
+[5]
+Overfull \hbox (1.1185pt too wide) in paragraph at lines 1463--1464
+[]\T1/udidot/m/n/10.95 Using []'s as-so-ci-ated soft-ware (for ex-am-ple, im-po
+rt-ing Covid-19 data sets into a [] database),
+ []
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2019.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 1522.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2019.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 1522.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2019.
+(hyperref)                removing `\@ifnextchar' on input line 1522.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2019.
+(hyperref)                removing `\@ifnextchar' on input line 1522.
+
+[6]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1610.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1610.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1610.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1610.
+
+[7]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1701.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1701.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1701.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1701.
+
+[8]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1976.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1976.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1976.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1976.
+
+[9]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1976.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1976.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1976.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1976.
+
+[10]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1988.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1988.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1988.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1988.
+
+[11]
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 2103.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 2103.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2103.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2103.
 
 [12]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2019.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2019.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2019.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2019.
-
-[13]
-
-LaTeX Warning: Citation `TeleaVISSION' on page \raisebox {2pt}{14} undefined on
- input line 2019.
-
-
-LaTeX Warning: Citation `NeusteinCPS' on page \raisebox {2pt}{14} undefined on 
-input line 2019.
+Overfull \hbox (0.13107pt too wide) in paragraph at lines 2128--2129
+[]\T1/udidot/m/n/10.95 As sug-gested by its name, [] is cen-tered around the op
+-er-a-tions to de-fine and store hypergraph-
+ []
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2052.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 2207.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2052.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 2207.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2052.
+(hyperref)                removing `\@ifnextchar' on input line 2207.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2052.
+(hyperref)                removing `\@ifnextchar' on input line 2207.
+
+[13] (./apx1.tex
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 81.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 81.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 81.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 81.
 
 [14]
+Overfull \vbox (3.67831pt too high) has occurred while \output is active []
+
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2131.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 164.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2131.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 164.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2131.
+(hyperref)                removing `\@ifnextchar' on input line 164.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2131.
+(hyperref)                removing `\@ifnextchar' on input line 164.
 
 [15]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2199.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 254.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2199.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 254.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2199.
+(hyperref)                removing `\@ifnextchar' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2199.
+(hyperref)                removing `\@ifnextchar' on input line 254.
 
-[16]
-
-LaTeX Warning: Citation `IdeSuderman' on page \raisebox {2pt}{17} undefined on 
-input line 2291.
-
-
-LaTeX Warning: Citation `CJRupp' on page \raisebox {2pt}{17} undefined on input
- line 2291.
-
-
-LaTeX Warning: Citation `DietrichRebholzSchuhman' on page \raisebox {2pt}{17} u
-ndefined on input line 2291.
-
-
-LaTeX Warning: Citation `TiagoNunes' on page \raisebox {2pt}{17} undefined on i
-nput line 2291.
-
-
-LaTeX Warning: Citation `EricWinsberg' on page \raisebox {2pt}{17} undefined on
- input line 2291.
-
-
-LaTeX Warning: Citation `RaubalAdams' on page \raisebox {2pt}{17} undefined on 
-input line 2291.
-
-
-LaTeX Warning: Citation `RaubalAdamsCSML' on page \raisebox {2pt}{17} undefined
- on input line 2291.
-
-
-LaTeX Warning: Citation `Zenker' on page \raisebox {2pt}{17} undefined on input
- line 2291.
-
-
-LaTeX Warning: Citation `InteractingConceptualSpaces' on page \raisebox {2pt}{1
-7} undefined on input line 2291.
-
+[16])
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2292.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 2321.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2292.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2292.
+Package pdftex.def Info: logo.png  used on input line 2321.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2292.
+(hyperref)                removing `\@ifnextchar' on input line 2321.
 
-[17] (./pics/il.tex
-<pics/xl.png, id=152, 653.44125pt x 385.44pt>
-File: pics/xl.png Graphic file (type png)
-<use pics/xl.png>
-Package pdftex.def Info: pics/xl.png  used on input line 12.
-(pdftex.def)             Requested size: 256.0748pt x 151.04439pt.
-<pics/il.png, id=154, 539.76656pt x 351.56343pt>
-File: pics/il.png Graphic file (type png)
-<use pics/il.png>
-Package pdftex.def Info: pics/il.png  used on input line 17.
-(pdftex.def)             Requested size: 256.0748pt x 166.79051pt.
 
-Overfull \hbox (33.26762pt too wide) in paragraph at lines 19--20
-[][] 
- []
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2321.
 
-)
+[17] (./apx2.tex
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2370.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 50.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2370.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 50.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2370.
+(hyperref)                removing `\@ifnextchar' on input line 50.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2370.
+(hyperref)                removing `\@ifnextchar' on input line 50.
 
-[18 <./pics/xl.png (PNG copy)> <./pics/il.png (PNG copy)>]
+[18]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2422.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 129.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2422.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 129.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2422.
+(hyperref)                removing `\@ifnextchar' on input line 129.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2422.
+(hyperref)                removing `\@ifnextchar' on input line 129.
 
 [19]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2496.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 228.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2496.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+Package pdftex.def Info: logo.png  used on input line 228.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2496.
+(hyperref)                removing `\@ifnextchar' on input line 228.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2496.
+(hyperref)                removing `\@ifnextchar' on input line 228.
 
 [20]
+Overfull \hbox (0.45422pt too wide) in paragraph at lines 327--328
+\T1/udidot/m/n/10.95 news / new -[] cancer -[] treatment -[] personalized -[] r
+adiation -[] therapy -[] during -[] cancer -[] surgery$[][][][]). Re-searchers
+ []
 
-LaTeX Warning: Citation `CORD' on page \raisebox {2pt}{21} undefined on input l
-ine 2518.
 
-
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/gfsdidot/ts1udidot.
-fd)
-
-LaTeX Warning: Citation `Eyer' on page \raisebox {2pt}{21} undefined on input l
-ine 2628.
+Overfull \vbox (3.88211pt too high) has occurred while \output is active []
 
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2628.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 344.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2628.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2628.
+Package pdftex.def Info: logo.png  used on input line 344.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2628.
+(hyperref)                removing `\@ifnextchar' on input line 344.
 
-[21]
 
-LaTeX Warning: Citation `NeusteinText' on page \raisebox {2pt}{22} undefined on
- input line 2628.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 344.
 
+[21]) (./apx3.tex
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2628.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
+Package pdftex.def Info: e-logo.png  used on input line 48.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2628.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2628.
+Package pdftex.def Info: logo.png  used on input line 48.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2628.
-
-[22]
-
-LaTeX Warning: Citation `KhalidBelhajjame' on page \raisebox {2pt}{23} undefine
-d on input line 2662.
+(hyperref)                removing `\@ifnextchar' on input line 48.
 
 
-LaTeX Warning: Citation `TrifanOliveira' on page \raisebox {2pt}{23} undefined 
-on input line 2662.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 48.
+
+[22])
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 2389.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 2389.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+
+! Package xcolor Error: Undefined color `blbl'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2389 \end{document}
+                     
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/gfsdidot/uudidotnum
 s.fd)
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2751.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2751.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 2389.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2751.
+(hyperref)                removing `\@ifnextchar' on input line 2389.
 
 [23]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2389.
+ (./cr2-mosaic.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2389.
 
-LaTeX Warning: Citation `AS' on page \raisebox {2pt}{24} undefined on input lin
-e 2751.
-
-
-LaTeX Warning: Citation `JohnGustafson' on page \raisebox {2pt}{24} undefined o
-n input line 2751.
-
-
-LaTeX Warning: Citation `Shi' on page \raisebox {2pt}{24} undefined on input li
-ne 2794.
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2795.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2795.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2795.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2795.
-
-[24]
-
-LaTeX Warning: Citation `ESIP' on page \raisebox {2pt}{25} undefined on input l
-ine 2830.
-
-
-LaTeX Warning: Citation `AlexandruTelea' on page \raisebox {2pt}{25} undefined 
-on input line 2861.
-
-
-Overfull \vbox (5.05927pt too high) has occurred while \output is active []
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2862.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2862.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2862.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2862.
-
-[25] (./pics/testing.tex
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1.
-
-[26]
-<pics/testing.png, id=212, 758.835pt x 337.26pt>
-File: pics/testing.png Graphic file (type png)
-<use pics/testing.png>
-Package pdftex.def Info: pics/testing.png  used on input line 12.
-(pdftex.def)             Requested size: 512.1496pt x 227.62523pt.
-
-Overfull \hbox (4.81499pt too wide) in paragraph at lines 14--15
-[][] 
- []
-
-)
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2950.
-(pdftex.def)             Requested size: 147.12363pt x 105.08287pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2950.
-(pdftex.def)             Requested size: 101.46536pt x 60.21556pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2950.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2950.
-
-[27 <./pics/testing.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2950.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2950.
- (./mosaic-dsx.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2950.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2950.
-
-Package rerunfilecheck Info: File `mosaic-dsx.out' has not changed.
-(rerunfilecheck)             Checksum: 42F6CE2F2191BFF8ADCC403A6C8C833D;844.
+Package rerunfilecheck Info: File `cr2-mosaic.out' has not changed.
+(rerunfilecheck)             Checksum: 95E6619C7A5AB4929B0ED467E4E3D0A2;1347.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 903 ({)
+### simple group (level 1) entered at line 891 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 35220 strings out of 492649
- 710026 string characters out of 6122986
- 807979 words of memory out of 5000000
- 38469 multiletter control sequences out of 15000+600000
- 596251 words of font info for 118 fonts, out of 8000000 for 9000
+ 35286 strings out of 492649
+ 710807 string characters out of 6122986
+ 811035 words of memory out of 5000000
+ 38522 multiletter control sequences out of 15000+600000
+ 635802 words of font info for 129 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,93p,10399b,918s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,15n,93p,10399b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
-ps/gfsdidot/didotTS1.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/font
-s/enc/dvips/gfsdidot/didottabnums.enc}{/home/nlevisrael/texl/texlive-install/te
-xmf-dist/fonts/enc/dvips/gfsdidot/didotOT1sc.enc}{/home/nlevisrael/texl/texlive
--install/texmf-dist/fonts/enc/dvips/gfsdidot/didotOT1.enc}{/home/nlevisrael/tex
-l/texlive-install/texmf-dist/fonts/enc/dvips/gfsdidot/didotec.enc}{/home/nlevis
-rael/texl/texlive-install/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/home/n
-levisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/cabin/cbn_hvmmj2.enc}
-</home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/impallari/cabin/C
-abin-Bold.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/pub
-lic/gfsdidot/GFSDidot-Bold.pfb></home/nlevisrael/texl/texlive-install/texmf-dis
-t/fonts/type1/public/gfsdidot/GFSDidot-Italic.pfb></home/nlevisrael/texl/texliv
-e-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot.pfb></home/nlevisrael
-/texl/texlive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></ho
-me/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.
+ps/gfsdidot/didottabnums.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/
+fonts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-
+dist/fonts/enc/dvips/lm/lm-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-
+dist/fonts/enc/dvips/gfsdidot/didotOT1sc.enc}{/home/nlevisrael/texl/texlive-ins
+tall/texmf-dist/fonts/enc/dvips/gfsdidot/didotOT1.enc}{/home/nlevisrael/texl/te
+xlive-install/texmf-dist/fonts/enc/dvips/gfsdidot/didotec.enc}{/home/nlevisrael
+/texl/texlive-install/texmf-dist/fonts/enc/dvips/cabin/cbn_hvmmj2.enc}{/home/nl
+evisrael/texl/texlive-install/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/nle
+visrael/texl/texlive-install/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.
+pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdid
+ot/GFSDidot-Bold.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/ty
+pe1/public/gfsdidot/GFSDidot-Italic.pfb></home/nlevisrael/texl/texlive-install/
+texmf-dist/fonts/type1/public/gfsdidot/GFSDidot.pfb></home/nlevisrael/texl/texl
+ive-install/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/nlevisr
+ael/texl/texlive-install/texmf-dist/fonts/type1/public/bera/fvsb8a.pfb></home/n
+levisrael/texl/texlive-install/texmf-dist/fonts/type1/public/bera/fvsr8a.pfb></
+home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/lm/lmdunh10.
 pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gy
-re/qcrr.pfb>
-Output written on mosaic-dsx.pdf (27 pages, 894827 bytes).
+re/qcrb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/publi
+c/tex-gyre/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/typ
+e1/public/tex-gyre/qhvr.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/f
+onts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on cr2-mosaic.pdf (23 pages, 461373 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 217 compressed objects within 3 object streams
+ 311 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
  46 named destinations out of 1000 (max. 500000)
- 174 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

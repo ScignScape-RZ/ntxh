@@ -400,6 +400,7 @@
 
 \newcommand{\MdsX}{\resizebox{!}{7.5pt}{\ATextCClr{MdsX}}}
 \newcommand{\lsMdsX}{\resizebox{!}{9pt}{\ATextCClr{MdsX}}}
+\newcommand{\lMdsX}{\resizebox{!}{8pt}{\ATextCClr{MdsX}}}
 
 
 \newcommand{\HMCL}{{\resizebox{!}{7.5pt}{\ATextCClr{HMCL}}}}
@@ -950,17 +951,98 @@ Developer's Overview}
 \end{tcolorbox}
 \end{center}
 
-\p{The \MOSAIC{} Data-Set Explorer (\MdsX{}) is a suite of 
+\section{Executive Summary}
+\p{LTS is building SARS-CoV-2/Covid-19 repositories 
+to accelerate scientific discovery and therapeutic 
+intervention.  To do so, LTS is developing a 
+pair of data and code repositories 
+to advance both Covid-19 research and new 
+methodologies for data-integration and \AI{} research in general.  
+The first of these repositories, the 
+\q{Cross-Disciplinary Repository 
+for Covid-19 Research} (\CRtwo{}), is \textit{empirically-focused} 
+--- aggregating published data sets into a common research 
+platform so as to promote Covid-19-related data mining.  
+The second of these repositories, \q{\lAI{} Methodology and 
+Conceptual Space Theory} (\AIMConc{}), is \textit{methodology-focused} 
+--- providing a collection of code libraries implementing 
+techniques applicable both to data integration and to Artificial Intellegence 
+research.  \lAIMConc{} prioritizes analytic methods and 
+data representations --- such as hypergraphs, fuzzy sets, and 
+conceptual spaces --- which have broad applications in 
+software engineering as well as \AI{}.  Both \CRtwo{} and 
+\AIMConc{} are companion resources to the forthcoming Elsevier 
+volume (authored by the LTS team) titled \textit{Cross-Disciplinary Data 
+Integration and Conceptual Space Models
+for Covid-19.}  In this volume, we will provide concrete 
+examples of Covid-19 data integration/analytics by 
+examining data sets included in the \CRtwo{} repository; 
+we will likewise demonstrate analytic techniques by examining 
+computer code included in the \AIMConc{} repository.}
+
+\p{\AIMConc{}, with respect to methodology, will focus on 
+Conceptual Space Theory, which is  
+a valuable unifying framework connecting to both 
+fuzzy sets as an \AI{} analytic strategy and to 
+hypergraph models as a data representation strategy.  
+In addition to \AIMConc{} providing \AI{} code libraries based 
+on Conceptual Spaces, \CRtwo{} will likewise feature  
+conceptual space models, applying this paradigm as a framework 
+for describing research data.  To this end, 
+we will be introducing an updated version of 
+Conceptual Space Markup Language (\CSML{}) 
+--- expanded in order to serve as a general-purpose 
+dataset-description language.  \lCRtwo{} and \lAIMConc{} will be 
+connected by a new hypergraph database protocol, which 
+we are calling 
+\q{Transparent Hypergraph Query Language} (\THQL{}).  
+The \CRtwo{} archive will include an implementation 
+of this protocol used to aggregate \CRtwo{} data into 
+a common format.  Likewise, the methodology presented in 
+the \AIMConc{} archive will be examined via demonstrations 
+of how techniques and algorithms of the \AIMConc{} libraries 
+can be applied to data hosted in a \THQL{} database.  
+The \THQL{} technology has many concrete applications 
+outside the context of Covid-19, penetrating vertical 
+markets such as pharmaceuticals, manufacturing, fintech, 
+healthcare, educational software, and bioinformatics.}
+
+\p{The principle goal shared by both \CRtwo{} and \AIMConc{} is 
+to provide a \textit{common} programming infrastructure which facilitates 
+the implementation of algorithms and \GUI{} components that 
+synthesize data across different scientific fields and 
+methodologies.  This common infrastructure is based primarily 
+on \Qt{} --- a \Cpp{} application-development framework --- and 
+secondarily on established scientific/medical code 
+projects such as \CBICA{} (Center for Biomedical Image 
+Computing \& Analytics) and ReproZip (a tool for packaging 
+scientific software dependencies).  In addition to utilities 
+and build tools, the programming core for \CRtwo{} and \AIMConc{} 
+will include \Cpp{} libraries to read and manipulate 
+data in formats commonly used for clinical, diagnostic, 
+imaging, sociodemographic/sociogeographic, 
+and medical-outcome reporting.  Moreover, LTS will 
+provide a new library, called \q{\MOSAIC{},} 
+to help build applications for visualizing and 
+reusing data sets.}
+    
+\p{The \MOSAIC{} Data-Set Explorer (\MdsX{}), to be 
+specific, is a suite of 
 code libraries which can be used to 
 build native, desktop-style applications 
 for viewing data sets.  An \MdsX{} 
 \q{data-set application} is an application 
 customized and tailored to a particular 
-data set, or a repository including multiple 
-data sets.  An \MdsX{} \textit{notebook} is 
-a particular strategy for organizing 
-data-set applications, or parts of 
-data-set applications.  In addition to 
+data set, or to a repository including multiple 
+data sets.  Data-set applications can, if desired, be 
+developed as \textit{notebooks}, 
+with features inspired by \q{computational notebook} 
+technologies, such as \Jupyter{} and 
+\Kaggle{}.  The \MOSAIC{} libraries 
+include code for a \Qt{} Creator plugin 
+which allows the \Qt{} Creator \IDE{} 
+(Integrated Development Environment) 
+to be used as a computational notebook.  In addition to 
 serving as standalone applications in themselves, 
 \MdsX{} notebooks can be embedded in other 
 applications; for instance, in scientific software.}
@@ -986,8 +1068,7 @@ data-set applications can be built with few
 (or no) external dependencies apart from \Qt{} 
 itself.  In the typical scenario, users would 
 build and run \MdsX{} applications inside 
-the \Qt{} Creator Integrated Development Environment 
-(\IDE{}).  However, \MdsX{} applications can 
+the \Qt{} Creator \IDE{}.  However, \MdsX{} applications can 
 also be configured so that they (or some 
 functionality they provide) can be run 
 from a command line --- which allows them to 
@@ -995,25 +1076,25 @@ participate in multi-application workflows ---
 or bundled as plugins or source-code extensions 
 into larger software components.}
 
-\p{The \MOSAIC{} portal is developed by 
-Linguistic Technology Systems (LTS), who 
-can develop and/or host data/publication 
-repositories across disciplines (see 
-contact details at the end of this 
-paper for more information).  One 
-repository under development with 
-\MOSAIC{} is the \q{Cross-Disciplinary 
-Repository for Covid-19 Research} 
-(\CRtwo{}), a collection of data sets 
-related to Covid-19, that is paired with a 
-forthcoming Elsevier volume, 
-\textit{Cross-Disciplinary Data Integration 
-and Conceptual Space Models for Covid-19}. 
-In addition to \MOSAIC{}, LTS also provides a 
-Dataset Creator (\dsC{}), which is a 
-\Qt Creator plugin helping researchers 
-and programmers curate data sets and 
-implement data-set applications.}
+%\p{The \MOSAIC{} portal is developed by 
+%Linguistic Technology Systems (LTS), who 
+%can develop and/or host data/publication 
+%repositories across disciplines (see 
+%contact details at the end of this 
+%paper for more information).  One 
+%repository under development with 
+%\MOSAIC{} is the \q{Cross-Disciplinary 
+%Repository for Covid-19 Research} 
+%(\CRtwo{}), a collection of data sets 
+%related to Covid-19, that is paired with a 
+%forthcoming Elsevier volume, 
+%\textit{Cross-Disciplinary Data Integration 
+%and Conceptual Space Models for Covid-19}. 
+%In addition to \MOSAIC{}, LTS also provides a 
+%Dataset Creator (\dsC{}), which is a 
+%\Qt Creator plugin helping researchers 
+%and programmers curate data sets and 
+%implement data-set applications.}
 
 \p{\lMOSAIC{} is designed to bridge the 
 gap between scientific software and 
@@ -1185,8 +1266,9 @@ these cloud services are functionally
 disconnected from scientific applications 
 themselves.}
 
-\p{This is the motivation behind x, 
-a \textit{native,} \textit{desktop-style} application 
+\p{This is the motivation behind \Mdsx{}, which 
+is used to implement \textit{native,} 
+\textit{desktop-style} applications 
 for accessing research data of different 
 kinds --- within the overall space of 
 published data sets we can find specific 
@@ -1205,11 +1287,7 @@ software.  While executed as a native application
 the important ideas from contemporary data publishing 
 (including ideas originating in the cloud context): 
 workflow models, notebooks, access to publishers' 
-\API{}s, etc.  Another feature of \MdsX{} is that it 
-can be run as a standalone application \textit{or} 
-embedded in other applications --- such as 
-the software which researchers are already 
-using.  In short, \MdsX{} can be seen as akin to 
+\API{}s, etc.  In short, \MdsX{} can be seen as akin to 
 a cloud-based data-publishing platform 
 where the \q{cloud} is replaced by a 
 scientific-computing application.  Instead of 
@@ -1572,8 +1650,7 @@ or clinical information, rather than
 metadata about image format or 
 dimensions.  
 
-
-\item[Procedural Layer]
+%\item[Procedural Layer]
 
 \end{description}
 }
@@ -1720,13 +1797,37 @@ annotations, when defined, are represented through the
 meta-procedural controller.}
 \input{pics/about.tex}
 
-\p{}
+\p{This specific genre of annotations --- applying to 
+meta-procedure and visual objects which are 
+linked to scientific concepts --- is included 
+within a broader \MOSAIC{} annotation system, described 
+below.  A rigorous overview of this annotation 
+framework depends on describing the data-structuring 
+protocols recognized by \MOSAIC{}, which are 
+reviewed in the next section.}
 
 \section{DigammaDB and the HGXF Format}
-\p{\lCRtwo{} will introduce a new database engine for 
-preparing the information provided within the 
-repository (called DigammaDB, or \DgDb{} for short) 
-as well as the Hypergraph Exchange Format (\HGXF{}).  In 
+\p{The data view and controller in \MdsX{} 
+notebooks are responsible for displaying 
+textual serializations of data structures, 
+particularly the specific data sets that 
+form the core of a data-set application.  
+Raw data, of course, may be serialized 
+in many different formats, and 
+spread over multiple files.  However, 
+\MOSAIC{} natively recognizes its own 
+data format based on hypergraphs --- 
+called \q{Hypergraph Exchange Format} 
+(\HGXF{}) --- and provides a light-weigth database 
+engine (called \DgDb{}) for persistent 
+storage of notebook state.  Thus, \HGXF{} 
+can be used to serialize raw data viewed 
+in a \MdsX{} notebook as well as overall 
+notebook/application state.  Both 
+\HGXF{} and \DgDb{} will be discussed 
+in this section.}
+
+\p{In 
 general, \HGXF{} files can be generated from 
 \DgDb{} instances, capturing the state of the 
 database at a moment in time.  \lDgDb{} could therefore 
