@@ -610,6 +610,9 @@
 \newcommand{\ARFF}{\resizebox{!}{7pt}{\AcronymText{ARFF}}}
 \newcommand{\IeXML}{\resizebox{!}{7pt}{\AcronymText{IeXML}}}
 
+\newcommand{\SeCo}{\resizebox{!}{7pt}{\AcronymText{SeCo}}}
+
+
 \newcommand{\HDFFive}{\resizebox{!}{7pt}{\AcronymText{HDF5}}}
 
 \newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
@@ -667,6 +670,7 @@
 \newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
 \newcommand{\SciXML}{\resizebox{!}{7pt}{\AcronymText{SciXML}}}
 
+\newcommand{\MPF}{\resizebox{!}{7pt}{\AcronymText{MPF}}}
 
 
 \newcommand{\lGRE}{\resizebox{!}{7.5pt}{\AcronymText{GRE}}}
@@ -1063,7 +1067,9 @@ applications; for instance, in scientific software.}
 
 \p{\lMdsX{} is paired with \MOSAIC{} \textit{portal}, 
 a code library for hosting data sets and 
-publications.  The \MOSAIC{} portal code includes 
+publications, and \MOSAIC{} \textit{plugins}, 
+which allow \MOSAIC{} to be used in pre-existing 
+applications.  The \MOSAIC{} portal code includes 
 custom \LaTeX{} commands for building annotated, 
 indexed \PDF{} files, and a custom \PDF{} viewer 
 which can read \MOSAIC{} annotations and 
@@ -1088,7 +1094,14 @@ functionality they provide) can be run
 from a command line --- which allows them to 
 participate in multi-application workflows --- 
 or bundled as plugins or source-code extensions 
-into larger software components.}
+into larger software components.  
+When embedded in host applications, 
+the \q{\MOSAIC{} plugin framework} 
+(\MPF{}) allows \MOSAIC{} plugins 
+to send data back and forth to 
+one another --- thereby allowing 
+their host applications to 
+interoperate.}
 
 \p{In addition to user-interface code, 
 \MOSAIC{} notebooks will generally include 
@@ -1659,7 +1672,7 @@ software (software which may be commonly used in one scientific
 field but is unfamiliar outside that field).  
 In addition, Research Objects composed with \dsC{} can 
 be integrated into Multi-Application Networks  
-(which are described in the previous section) because 
+because 
 the dataset applications are autonomous native \GUI{} applications that 
 can easily interoperate via \Qt{} messaging protocols.}
 
@@ -2236,7 +2249,7 @@ these cloud services are functionally
 disconnected from scientific applications 
 themselves.}
 
-\p{This is the motivation behind \Mdsx{}, which 
+\p{This is the motivation behind \MdsX{}, which 
 is used to implement \textit{native,} 
 \textit{desktop-style} applications 
 for accessing research data of different 
@@ -2257,18 +2270,54 @@ software.  While executed as a native application
 the important ideas from contemporary data publishing 
 (including ideas originating in the cloud context): 
 workflow models, notebooks, access to publishers' 
-\API{}s, etc.  In short, \MdsX{} can be seen as akin to 
+\API{}s, etc.  In short, \MOSAIC{} can be seen as akin to 
 a cloud-based data-publishing platform 
 where the \q{cloud} is replaced by a 
 scientific-computing application.  Instead of 
 being hosted remotely (\q{on the cloud}), 
-\MdsX{} is hosted within a local desktop application.  
+\MdsX{} components are hosted within a local desktop application.  
 This host application may be pre-existing 
 program, or a custom host implemented 
 to allow \MdsX{} data-sets to be explored in standalone 
 fashion (with a default implementation that 
 can, as desired, be modified for individual 
 data sets/repositories).}
+
+\p{The overall \MOSAIC{} framework, then, 
+spans three different technical areas.   
+\MOSAIC{} Portal comprises server-side 
+logic for hosting data sets, publications, 
+and cloud services utilized by 
+native \MOSAIC{} applications.  
+\lMOSAIC{} Plugins are extensions 
+to larger applications allowing 
+data sharing between plugins and 
+\MOSAIC{} Portal services 
+(and between plugins themselves, 
+embedded in distinct applications).  
+Finally, \MdsX{} applications and 
+notebooks can be either standalone 
+or embedded; in the latter case 
+an \MdsX{} plugin can also serve as an 
+\MdsX{} notebook, if it provides a 
+\GUI{} structured according to the 
+basic \MdsX{} design.}
+
+\p{Whether or not \MdsX{} plugins serve 
+as notebooks, they can be useful enhancements 
+to host applications, allowing for 
+more robust data-sharing and multi-application 
+networking.  \lMdsX{} plugins, for example, 
+would allow applications to send and 
+receive data using the \HGXF{} format; 
+and also to support workflows described 
+via \HMCL{}.  These workflows allow different 
+applications' capabilities to complement one 
+another; a simple example is shown in 
+Figure~\ref{}
+
+
+ }
 
 
 \section[The Structure of MdsX Notebooks]{The Structure of \protect\lsMdsX{} Notebooks}
@@ -2292,7 +2341,7 @@ and implemented varies between different technologies,
 although the concept is most clearly associated 
 with \Jupyter{}, which is a coding and presentation 
 environment based on \Python{}.  Whatever the 
-underlying programming environment, notebooks 
+underlying programming environment, computational notebooks 
 --- or as \MdsX{} uses the term, \q{interactive/digital 
 notebooks} (\IDN{}s) --- have several software-engineering 
 requirements, including a scripting environment and 
@@ -2378,10 +2427,10 @@ mechanism (hypergraphs, workflow engines,
 state monads, etc.) depend on the underlying 
 programming environment.  The \MdsX{} approach 
 borrows ideas primarily from HyperGraphDB and 
-SeCo, which is a notebook-programming environment 
-based on HyperGraphDB.  As in SeCo, units of 
+\SeCo{}, which is a notebook-programming environment 
+based on HyperGraphDB.  As in \SeCo{}  (and \Jupyter{}), units of 
 marking and execution are called \textit{cells}.  
-The main difference between \MdsX{} and SeCo (apart 
+The main difference between \MdsX{} and \SeCo{}  (apart 
 from \Cpp{} instead of \Java{} being 
 the underlying programming language) is 
 that \MdsX{} cells are not intended, in the general 
@@ -2391,7 +2440,7 @@ behind the scenes, on the basis
 of \GUI{} component state, user actions, 
 or scripting input.  However, once 
 constructed, they can be manipulated 
-like SeCo cells, both in terms of 
+like \SeCo{}  cells, both in terms of 
 functionality and in terms of rationale: 
 they can be used as a log of user 
 actions, for undo/redo, for defining 
@@ -2415,7 +2464,7 @@ a scripting interface as they would be
 in a \JVM{} or \Python{} environment.  
 However, \MdsX{} also supports scripting 
 via a choice of languages, similar to 
-SeCo.  The primary scripting language 
+\SeCo{} .  The primary scripting language 
 used with \MdsX{} is AngelScript, although 
 other \C{}/\Cpp{} based languages 
 (Embeddable Common Lisp, \ChaiScript{}, 
@@ -2662,6 +2711,7 @@ in host application in general.
 The \CaPTk{} workflow protocol also forms a 
 basis for the meta-procedural view and 
 controllers, discussed next.}
+\input{pics/about.tex}
 
 \section[MdsX Meta-Procedure Controllers]{\protect\lsMdsX{} Meta-Procedure Controllers}
 
@@ -2728,6 +2778,7 @@ annotation, and used to reconstruct notebook
 state if the notebook is launched from a 
 document viewer in the context of the 
 published graphic.}
+\input{pics/x2.tex}
 
 \p{In general, the information represented 
 by the meta-procedural controller is not only 
@@ -2765,7 +2816,6 @@ and \GUI{} elements with references to
 relevant technical/scientific concepts; these 
 annotations, when defined, are represented through the 
 meta-procedural controller.}
-\input{pics/about.tex}
 
 \p{This specific genre of annotations --- applying to 
 meta-procedure and visual objects which are 
@@ -2776,7 +2826,7 @@ framework depends on describing the data-structuring
 protocols recognized by \MOSAIC{}, which are 
 reviewed in the next section.}
 
-\section[Viewing Data Files in MdsX]{Viewing Data Files in \lsMdsX{}}
+\section[MdsX Data Controllers: Viewing Data Files in MdsX]{\lsMdsX{} Data Controllers: Viewing Data Files in \lsMdsX{}}
 \p{The data view and controller in \MdsX{} 
 notebooks are responsible for displaying 
 textual serializations of data structures, 
@@ -2821,17 +2871,25 @@ and also for helping users learn about the
 relevant classes if they so choose.  
 Assuming an \MdsX{} notebook is embedded in 
 \Qt{} Creator, this can include passing a 
-message to \Qt{} Creator requesting that 
+message to the \Qt{} Creator application requesting that 
 the relevant \Cpp{} files be loaded in to the 
 file-view pane.}
 
-\p{
-
-}
-
-
-
-
+\p{In addition to providing information about 
+data files themselves, \MdsX{} notebooks 
+may find it appropriate to provide data 
+provenance summaries.  This is illustrated 
+in Figures~\ref{fig:i2} and \ref{fig:x2}, 
+showing two applications using a \MOSAIC{} 
+plugin to interoperate.  Figure~\ref{fig:i2} 
+demonstrates how users may view 
+basic plugin info.  Figure~\ref{fig:x2} 
+demonstrates a similar dialog box, but 
+one which is specifically relevant to 
+tracing data provenance; the dialog 
+shows information about the file or 
+files sent between the applications.}
+\input{pics/i2.tex}
 
 \part{Novel Database Engineering and Data-Set 
 Construction Technology}
