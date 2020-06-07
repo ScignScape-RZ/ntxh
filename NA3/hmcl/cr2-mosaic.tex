@@ -476,6 +476,15 @@
 \newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
 \newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
 
+\newcommand{\ParaView}{\resizebox{!}{7pt}{\AcronymText{ParaView}}}
+\newcommand{\Octave}{\resizebox{!}{7pt}{\AcronymText{Octave}}}
+\newcommand{\ROOT}{\resizebox{!}{7pt}{\AcronymText{ROOT}}}
+\newcommand{\CERN}{\resizebox{!}{7pt}{\AcronymText{CERN}}}
+\newcommand{\MQFour}{\resizebox{!}{7pt}{\AcronymText{MQ4}}}
+\newcommand{\VISSION}{\resizebox{!}{7pt}{\AcronymText{VISSION}}}
+
+
+
 \newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
 
 \newcommand{\MdsX}{\resizebox{!}{7.5pt}{\ATextCClr{MdsX}}}
@@ -2312,7 +2321,8 @@ networking.  \lMOSAIC{} plugins, for example,
 would allow applications to send and 
 receive data using the \HGXF{} format; 
 and also to support workflows described 
-via \HMCL{}.  These workflows allow different 
+via the \q{Hypergraph Multi-Application Configuration 
+Language} discussed below.  These workflows allow different 
 applications' capabilities to complement one 
 another; a simple example is shown in 
 Figure~\ref{fig:rad2}, where a 
@@ -2851,10 +2861,9 @@ Raw data, of course, may be serialized
 in many different formats, and 
 spread over multiple files.  However, 
 \MOSAIC{} natively recognizes its own 
-data format based on hypergraphs --- 
-called \q{Hypergraph Exchange Format} 
-(\HGXF{}) --- and provides a light-weigth database 
-engine (called \DgDb{}) for persistent 
+data format based on hypergraphs  
+(\HGXF{}) and provides a light-weigth database 
+engine (\DgDb{}) for persistent 
 storage of notebook state.  Thus, \HGXF{} 
 can be used to serialize raw data viewed 
 in a \MdsX{} notebook as well as overall 
@@ -2906,8 +2915,245 @@ shows information about the file or
 files sent between the applications.}
 \input{pics/i2.tex}
 
-\part{Novel Database Engineering and Data-Set 
-Construction Technology}
+\p{When sharing data between two different applications, 
+it is prerequisite that each application (called 
+\q{end points} have the 
+capability to read the data/file format involved.  
+This can be confirmed by checking that both 
+end points include the same code libraries 
+(for special-purpose data formats) or 
+by translating the data to a generic format 
+such as \XML{} or \JSON{}.  Many data formats 
+can be encoded in multiple ways, some using 
+special-purpose parsers and some based on \XML{} 
+or other canonical resource types.  A flexible 
+data-sharing protocol should therefore 
+leave open the possibility that several 
+\q{rounds} of communication may be required 
+to determine how the sending application 
+should encode the information to be transferred, 
+so that the receiving application will be 
+able to decode it.}
+
+\p{Given these considerations, applications and 
+plugins which seek to support multi-application 
+networking should, for the most flexibility, 
+support data sharing via both specialized, 
+narrowly-designed data formats and 
+generic, multi-purpose formats.  One 
+rationale for using hypergraph-based 
+data serialization is that hypergraphs 
+present a common meta-model able to 
+represent almost all computationally 
+meaningful data structures; as a result, 
+hypergraphs are (theoretically) superior 
+to both tree-form constructions such 
+as \XML{}, and tabular conventions such 
+as \CSV{} and \SQL{}.  Accordingly, 
+a maximally flexible data-sharing protocol 
+would include the option of allowing 
+hypergraph-based formats (such as \HGXF{}) 
+as a fallback data encoding option, when 
+it cannot be established that both 
+endpoints of an exchange share a more 
+specific data-format library.}
+
+\p{Whether the applications are using 
+more generic or more specific serialization 
+formats, data exchange also requires 
+that each application implement the requisite logic 
+to deal with the data once it is 
+deserialized.  For each data format, 
+then, one can formally or informally 
+define not only how the associated 
+data structures are serialized/encoded, 
+but also specify what is necessary for a 
+code library which properly handles 
+information from this data once it is 
+deserialized/decoded.  This is the kind 
+of information that would be presented 
+to the user via \MSDX{} data views, along with 
+the raw data.  It is also information that 
+may need to be structurally represented 
+for database or workflow engines.  Consider 
+the case of a very heterogeneous data store, 
+such as a Semantic Lake.  Such an 
+information space is essentially a decentralized 
+database capable of storing many different kinds 
+of information, used in turn by numerous 
+different applications.  In general, 
+individual applications will only understand 
+and interact with smaller parts of the 
+overall data space: each aggregate unit of 
+data is associated with a set of requirements 
+that applications must satisfy so as 
+to properly manage that particular information.  
+For these reasons, properly modeling such 
+application requirements is an important 
+aspect of heterogeneous database engineering.}
+
+\p{A defining feature of \textit{heterogeneous} 
+data stores, as compared to more \textit{homogenous} 
+database engines, is that no single schema or 
+technological infrastructure can directly 
+represent all of the information contained 
+in the heterogeneous space.  This basic 
+point is consequential for different aspects 
+of the associated database engineering, such as 
+how to efficiently save, validate, and query 
+all the data in the information space.  
+In conventional database theory, for instance, 
+it is assumed that a single query engine 
+will interact with all data in a database, 
+and the database's logical and storage 
+schema are constructed so as to optimize 
+query evaluation (to get the right results, 
+quickly).  When considering 
+\textit{heterogeneous} data spaces, however, 
+we have to anticipate cases where no 
+single query-evaluation strategy 
+(or set of algorithms) will be natively 
+applicable to every aggregate data unit.  
+Instead, query evaluation may need to 
+be performed as a workflow spanning 
+multiple software components, even multiple 
+applications, each performing their 
+own filter, transform, or \q{reduce} 
+(in the map-reduce sense) operations. 
+There is therefore an engineering overlap 
+between \textit{query evaluation over 
+heterogeneous data space} and 
+\textit{multi-application workflows}.  
+The database engineering technologies 
+discussed in Part III attempt to 
+make this connection explicit by 
+integrating database technology with 
+representations of workflows and 
+multi-application networks, 
+specifically through a newly 
+designed configuration language 
+(\HMCL{}), discussed in the next section.}
+
+
+\part{Hypergraph Models for Database Engineering and 
+Multi-Application Networking}
+
+\section{Hypergraph Multi-Application Configuration Language}
+\p{The purpose of \HMCL{} is to represent 
+multi-application networking protocols with greater 
+procedural detail and specificity than provided 
+by traditional workflow or Interface Definition 
+languages.  Within the scope of multi-application 
+workflows, a good starting point are  
+the protocols adopted by \CaPTk{}.  A more rigorous 
+review of multi-application networking can be obtained 
+by considering analogous protocols connecting 
+semi-autonomous software agents in other contexts: 
+\ParaView{} extensions, \Qt{} Creator Plugins, \Octave{} 
+scripts, and \ROOT{} modules, for example 
+(\ROOT{} referring to the physics platform developed 
+at \CERN{}) --- restricting attention to the 
+\Qt{}/\Cpp{} ecosystem.  Further afield, a similar 
+sense of semi-autonomy can be found in hybrid \GUI{} 
+and scripting platforms such as \Jupyter{} (in the 
+Python context), \Kaggle{}, and \Seco{}.  
+These platforms are familiar to data visualization 
+and machine-learning engineering (where a script 
+may analyze data and a \GUI{} component follow up 
+by presenting a chart or dataplot summarizing the 
+analysis), as well as other quantitative 
+domains outside the natural scientists 
+(in financial services, for example, scripting 
+formats such as \MQFour{} execute investment strategies 
+while associated \GUI{} components present 
+finance-related visual objects, such as candlestick charts.)  
+Similar workflow models have been developed in 
+theoretically-informed frameworks such as 
+\VISSION{}, which is paired with programming constructs 
+such as \q{metaclasses} and \q{dataflow 
+interfaces}.\footnote{See \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}; note that 
+this is a different project than the ViSion Ontology 
+referenced earlier.}     
+The common element in all of these systems is the 
+presence of a central \GUI{} application whose 
+capabilities are enhanced by customizable extensions with 
+their own analytic and/or \GUI{} features: these 
+extensions are neither fully autonomous 
+applications nor simple scripts that may automate 
+certain capabilities of the main application but 
+do not fundamentally extend its functionality.  
+This intermediate position --- neither wholly 
+autonomous nor functionally subservient --- 
+is expressed by the idea of \textit{semi-autonomous} 
+software agents.}
+
+
+\p{Rigorous models of application networks among semi-autonomous 
+components acquire an extra level of complexity precisely 
+because of this intermediate status: protocol definitions 
+have to specify both the functional interdependence 
+and the operational autonomy of different parts of 
+the application network.  We propose to 
+address this complexity by adopting a hypergraph-based 
+paradigm for procedural and type modeling, from 
+which derives our proposed \HMCL{} 
+format.\footnote{A preliminary characterization 
+of hypergraph-based type systems (and their 
+corresponding representation of detailed 
+procedural signatures and requirements) 
+can be found in Nathaniel Christen's chapter 
+(chapter 3) in \textit{Advances in Ubiquitous Computing: 
+Cyber-Physical Systems, Smart Cities and Ecological Monitoring}, 
+edited by Dr. Neustein 
+(see \bhref{https://www.elsevier.com/books/advances-in-ubiquitous-computing/neustein/978-0-12-816801-1}).} 
+The goal of \HMCL{} is to define protocols for 
+inter-application messaging by focusing on 
+procedures enacted by both applications before and 
+after each stage in the communication.  This 
+is not (in general) a \q{Remote Method Invocation} 
+or \q{Simple Object Access Protocol} where one 
+application explicitly initiates a specific procedure 
+for the second to perform; instead, the chain of 
+procedure calls (which we call the multi-application
+\textit{operational semantics}) is more indirect, 
+with \textit{requests} and \textit{responses} that 
+may be mapped to different procedure-sequences in 
+different contexts.  Nevertheless, although 
+one application does not need detailed 
+knowledge of the other's internal procedure 
+signatures (which would break encapsulation), 
+a rigorous messaging protocol can be developed 
+by specifying requirements on the relevant 
+procedures implemented by each application.  
+Developers can then explicitly state that 
+a given set of procedures implements a given 
+\HMCL{} protocol (the multi-application documentation 
+thereby has more detailed information about 
+application-specific procedures than each 
+application has \visavis{} its peers).  The 
+functional interdependence between applications can 
+accordingly be modeled by defining protocols which 
+must be satisfied by procedure-sets internal 
+to each end-point --- the relevant information 
+from an integrative standpoint is not the 
+actual procedures involved, but confirmation 
+that the relevant procedure sets adhere 
+to the relevant multi-procedural protocol.}
+ 
+\p{As discussed at the end of Part II, 
+multi-application networking overlaps 
+with heterogeneous database engineering 
+insofar as multiple applications 
+(or multiple semi-autonomous agents) need 
+to share a common data store.  This 
+means that information in the data space 
+is characterized in part by procedural protocols 
+guiding the use of particular aggregate data 
+units.  The \THQL{} format, for 
+representing hypergraph data in a database 
+context, is designed in part to allow 
+these protocol specifications to be 
+encoded directly in the database.}
 
 \section{Native/Desktop Application Development with THQL}
 \p{As described earlier, \THQL{} is a database 
@@ -3084,7 +3330,7 @@ for data-sharing initiatives --- can
 store data constrained by \q{hypergraph ontologies,} 
 which are dicussed in the next section.}
 
-\input{apx1}
+\input{ho}
 \section{Dataset Creator}
 \p{Dataset Creator (\dsC{}) is a framework for 
 constructing data sets which include computer code based on the 
