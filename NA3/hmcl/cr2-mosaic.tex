@@ -19,8 +19,15 @@
 \titleformat{\section}
   {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
 
+\let\OldPart\part
+
+\renewcommand{\part}[1]{\OldPart{#1}\vspace{-1.5em}}
+
 \titlespacing*{\section}
-{0pt}{4.5ex plus 1ex minus .1ex}{2.2ex plus .2ex}
+{0pt}{4.5ex plus 1ex minus .1ex}{0.2ex plus .2ex}
+
+\titlespacing*{\subsection}
+{0pt}{1.5ex plus 1ex minus .1ex}{-1.8ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -66,14 +73,17 @@
 {\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
 
+\ifnum\value{page}<39
 \put(301,16){%
 \transparent{0.7}{
-\includegraphics[width=0.2\textwidth]{logo.png}} }
+\includegraphics[width=0.2\textwidth]{logo.png}}
+}
+\fi
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=23   %\pgfmathresult>0\relax
-\put(12,56){
+\ifnum\value{page}=39   %\pgfmathresult>0\relax
+\put(322,60){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -300,6 +310,11 @@
 
 \newcommand{\FCS}{\resizebox{!}{7pt}{\AcronymText{FCS}}}
 
+\newcommand{\GAVI}{\resizebox{!}{7pt}{\AcronymText{GAVI}}}
+\newcommand{\ArcGIS}{\resizebox{!}{7pt}{\AcronymText{ArcGIS}}}
+\newcommand{\QGIS}{\resizebox{!}{7pt}{\AcronymText{QGIS}}}
+
+\newcommand{\GIS}{\resizebox{!}{7pt}{\AcronymText{GIS}}}
 
 
 \usepackage{mdframed}
@@ -667,6 +682,8 @@
 
 \newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
 
+\newcommand{\TCP}{\resizebox{!}{7pt}{\AcronymText{TCP}}}
+
 \newcommand{\lQt}{\resizebox{!}{8.5pt}{\AcronymText{Qt}}}
 \newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
 \newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
@@ -694,7 +711,7 @@
 
 \renewcommand{\thesection}{\protect\hspace{-1.5em}}
 %\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsection}{\protect\hspace{-1em}}
 
 \newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
 %\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
@@ -977,7 +994,46 @@ and Conceptual Space Models
 for Covid-19}} 
 (Elsevier, forthcoming).}}\end{center}
 
-\vspace*{-4pt}	
+\vspace*{14pt}	
+
+\textcolor{darkRed}{\textbf{Team}\vspace{3pt}
+\hrule}
+\begin{description}
+
+\item[Principal Investigator]  Dr. James A. Rodger, 
+Professor of Management Information 
+Systems and Decision Sciences at Indiana University of 
+Pennsylvania.
+
+\item[Administrative Officer]  Dr. Amy Neustein, 
+founder of Linguistic Technology Systems (LTS).
+
+\item[Contributors]  
+\begin{itemize}\item[]
+
+\item Nathaniel Christen, software engineer, LTS.
+
+\item Professor Amita Nandal, 
+Department of Department of Computer and 
+Communication Engineering at Manipal University, Jaipur
+
+\item Professor Arvind Dhaka, 
+Department of Department of Computer and 
+Communication Engineering at Manipal University, Jaipur; 
+recently visiting scholar at 
+University of Varna, Bulgaria
+
+\item Professor Todor Ganchev, Vice Rector of Research 
+at University of Varna, Bulgaria
+
+\end{itemize}
+
+\end{description}
+
+\vspace{13pt}
+
+\textcolor{darkRed}{\hrule}
+
 \section{Executive Summary}
 \p{LTS is building SARS-CoV-2/Covid-19 repositories 
 to accelerate scientific discovery and therapeutic 
@@ -2210,6 +2266,7 @@ computational resources are usually
 formulated in a local-processing environment that 
 cannot be translated, without extra 
 effort, to the cloud.}
+\input{pics/rad2}
 
 \p{To be sure, scientists can sometimes 
 \q{package} their experimental and analytic 
@@ -2291,7 +2348,6 @@ to allow \MdsX{} data-sets to be explored in standalone
 fashion (with a default implementation that 
 can, as desired, be modified for individual 
 data sets/repositories).}
-\input{pics/rad2}
 
 \p{The overall \MOSAIC{} framework, then, 
 spans three different technical areas.   
@@ -3139,10 +3195,43 @@ from an integrative standpoint is not the
 actual procedures involved, but confirmation 
 that the relevant procedure sets adhere 
 to the relevant multi-procedural protocol.}
+
+\p{Procedural modeling is not only significant 
+in the context of two or more separate applications 
+sharing data; for some dimensions of software 
+implementation even apart from multi-application 
+networking, it is essential (or at least expedient) 
+to employ rigorous procedural descriptions.  
+One case in point is testing, particular 
+integration testing and \GUI{} unit testing 
+--- procedural models help programmers 
+both design and implement tests.  
+Indeed, testing in a \GUI{} context is 
+more complex then testing libraries 
+whose behavior can be analyzed via 
+command-line programs; with \GUI{}s 
+it is necessary to simulate or manually 
+perform user actions for which a 
+test entity seeks to demonstrate proper 
+application response.  For \GUI{}s, then, 
+testing requires either special-purpose 
+versions of the application User Interface 
+or a protocol wherein an externl test suite 
+communicates with the main application 
+(or some combination of the two).  In many 
+cases, then, the connection between a 
+test suite and its target applications 
+serves as a de facto multi-application network, 
+so that workflow models can also b e employed 
+as testing engines (Figure~\ref{fig:testing} 
+shows an example of a test suite which 
+interacts with the data-set application showed 
+in earlier screenshots via \TCP{} networking).}
+\input{pics/testing}
  
-\p{As discussed at the end of Part II, 
-multi-application networking overlaps 
-with heterogeneous database engineering 
+\p{Furthermore, as discussed at the end of Part II, 
+multi-application networking also overlaps 
+with \textit{heterogeneous database engineering} 
 insofar as multiple applications 
 (or multiple semi-autonomous agents) need 
 to share a common data store.  This 
@@ -3489,7 +3578,18 @@ discussed here.}
 \input{apx2}
 \input{apx3}
 
-%\p{ }
+\part{Conclusion}
+%\vspace{-2em}
+\p{Most of the code described here will be developed 
+in conjunction with the Covid-19 Elsevier Volume, 
+in part coinciding with the publication of the book 
+and continuing to be refined and expanded after the fact.  
+Some of the more technical programming areas, 
+such as cytometry and image processing libraries, 
+will hopefully be generalized to multi-purpose 
+toolkits not limited to the Covid-19 context.  
+Feedback on \CRtwo{} overall, and the more 
+specific technical areas in particular, is welcome.}
 
 \end{document}
 

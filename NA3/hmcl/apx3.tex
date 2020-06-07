@@ -179,8 +179,68 @@ with an overarching image-analysis context.}
 
 \subsection{Vaccine Data and Geographic Information Systems}
 
-\p{}
+\p{Another area where vaccination data intersects with 
+image-processing is that of using 
+Geographic Information Systems (\GIS{}) to document 
+vaccination campaigns.  Geospatial mapping 
+has been used to support vaccination logistics 
+in several ways.  The most straightforward 
+is to map where vaccines have been 
+administered, though some projects described 
+by groups such as \GAVI{} (the Global Alliance for 
+Vaccines and Immunization) have used mapping 
+technology to represent the location of clinics, 
+and to visualize demographic or jurisdictional data 
+that factors in to advance planning for vaccination 
+campaigns.}
 
+\p{Geospatial mapping typically starts with 
+an underlying image --- specifically a 
+geographic map, which may be constructed by 
+software, derived from satellite or 
+street-view photography, or some combination 
+--- and then superimpose on the map-image 
+a data structure identifying geospatial 
+points or regions of interest.  Numerous 
+software packages exist to construct such 
+annotated maps, such as (in the \Qt{} 
+context) \ArcGIS{} and \QGIS{}.  In general, 
+using these libraries involves writing plugins 
+to import domain-specific data which includes 
+geotagging, along with relevant details for 
+each location.  These plugins therefore 
+provide data structures that supply 
+\GIS{} coordinates for sites of interest, 
+along with structured data about the 
+significance of each site; when 
+the map is visualized, this supplemental 
+data is converted to markings or text 
+viewed as superimposed on the map image, 
+providing helpful information to those 
+studying the map (either for navigational 
+purposes or as a visualization of 
+geospatial data).}  
+
+\p{In the vaccination context, geotagged 
+annotations might involve color overlays 
+documenting how extensively a vaccination 
+campaigned covered each locale within its 
+target area; or they might identify 
+fixed locations, such as schools or 
+clinics where a vaccine was administered.  
+Several such maps have been developed 
+for campaigns in particular countries, or 
+other geographic areas, but there does 
+not appear to be a general-purpose \Cpp{} 
+library for modeling and then geotagging 
+vaccination data so that the resulting 
+data collection can be used to populate a 
+\GIS{} plugin.  Therefore, the 
+vaccination/immunology toolkit described 
+in the previous subsection, providign code 
+for integrating immulogical and image-processing 
+data, will also include the framework 
+for vaccination-related \GIS{} plugins.}
 
 
 %, providing analogous 
