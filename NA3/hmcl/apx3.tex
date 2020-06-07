@@ -96,7 +96,85 @@ greater detail.}
 
 \subsection{A Pure-C++ Library for Cytometry}
 
-\p{}
+\p{The \CRtwo{} code libraries will include 
+components to manipulate file and data 
+types associated with cellular, biomolecular, 
+and immunological imaging.  Examination 
+of cellular-scale processes has several 
+different roles in vaccine/immunization 
+research, including identification of 
+viral proteins and observing the immune 
+system response to viral infection and/or 
+vaccination.  Moreover, sudies of 
+cellular processes can occur either by 
+directly visualizing phenomena on this 
+scale or by indirect analytic methods, 
+such as cytometry.  In \q{flow cytometry}, 
+for instance, a stream of cells is 
+investigated by passing them through 
+laser beams where the cells' material 
+absords and/or scatters the light waves, 
+yielding patterns of light intensity 
+along two axes --- one parallel to the 
+laser source, and one at right angles to 
+the source which detects light scattering.  
+These patterns, in turn, can be analyzed 
+to ascertain properties of cells, proteins, 
+and other molecular entities in the sample 
+source.  The actual images generated 
+in this process are not literal photograph 
+or microscope-enhanced pictures, but rather 
+are composite representations of light 
+intensity formed by plotting 
+parallel and scattered light patterns 
+on a two-dimensional axis (effectively, a
+high-density scatter plot).  While 
+these representations are technically 
+diagrams rather than images, certain 
+image-analysis concepts have analogs 
+in this context; for instance, \q{gating} 
+--- selecting image regions of interest 
+(e.g. as measures of cell count for different 
+varieties of cells) --- is analogous 
+to image segmentation.}
+
+\p{Flow cytometry data is usually presented 
+via \FCS{} (Flow Cytometry Standard) files.  
+The most comprehensive package for working with 
+the \FCS{} format is based on \R{}, although 
+one \Cpp{} library (developed by the 
+Fred Hutchinson institute) has been isolated from 
+the surrounding \R{} package into a library 
+that can be compiled standalone.  Outside the 
+\R{} context, however, this library has limited 
+functionality for applying predefined gating 
+schemes or image visualization; one goal 
+of \CRtwo{}, then, is to enhance the 
+relevant \Cpp{} package with added tools 
+allowing the code to be used in application 
+contexts other than \R{}.}
+
+\p{Meanwhile, other biomolecular visualization 
+technology --- including \q{image cytometry,} 
+an older but still useful alternative 
+to flow cytometry --- require more conventional 
+image-analysis techniques, so that \CaPTk{}-style 
+image-analysis pipelines are appropriate in 
+these contexts.  Different imaging modalities, 
+including bioluminescence, \PET{} scans, and 
+\MRI{}s, have been used for immunological 
+cellular-scale imaging.\footnote{See 
+\bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6689497/}.}
+A multi-disciplinary toolkit for immunology-related 
+image processing should include the framework 
+for incorporating Machine Vision algorithms specific 
+to image processing in the context of 
+immune-cell visualization as well as indirect 
+cellular analysis enabled by methods 
+such as cell cytometry.  The 
+\CRtwo{} code will try to move in that 
+direction by pairing cytometric libraries 
+with an overarching image-analysis context.}
 
 
 \subsection{Vaccine Data and Geographic Information Systems}
