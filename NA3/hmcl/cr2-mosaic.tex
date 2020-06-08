@@ -75,17 +75,17 @@
 {\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
 
-\ifnum\value{page}<39
+%\ifnum\value{page}<39
 \put(301,16){%
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}}
 }
-\fi
+%\fi
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=39   %\pgfmathresult>0\relax
-\put(322,60){
+\put(182,176){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -1063,7 +1063,7 @@ platform so as to promote Covid-19-related data mining.
 The second of these repositories, \q{\lAI{} Methodology and 
 Conceptual Space Theory} (\AIMConc{}), is \textit{methodology-focused} 
 --- providing a collection of code libraries implementing 
-techniques applicable both to data integration and to Artificial Intellegence 
+techniques applicable both to data integration and to Artificial Intelligence 
 research.  \lAIMConc{} prioritizes analytic methods and 
 data representations --- such as hypergraphs, fuzzy sets, and 
 conceptual spaces --- which have broad applications in 
