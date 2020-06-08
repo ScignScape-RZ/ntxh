@@ -21,7 +21,9 @@
 
 \let\OldPart\part
 
-\renewcommand{\part}[1]{\OldPart{#1}\vspace{-1.5em}}
+\renewcommand{\part}[1]{\OldPart{#1}%
+%{\textcolor{darkRed}\hrule}
+\vspace{-.5em}}
 
 \titlespacing*{\section}
 {0pt}{4.5ex plus 1ex minus .1ex}{0.2ex plus .2ex}
@@ -498,6 +500,7 @@
 \newcommand{\MQFour}{\resizebox{!}{7pt}{\AcronymText{MQ4}}}
 \newcommand{\VISSION}{\resizebox{!}{7pt}{\AcronymText{VISSION}}}
 
+\newcommand{\ReproZip}{\resizebox{!}{7pt}{\AcronymText{ReproZip}}}
 
 
 \newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
@@ -556,6 +559,8 @@
 
 
 \newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
+
+\newcommand{\Kaggle}{\resizebox{!}{7pt}{\AcronymText{Kaggle}}}
 
 
 \newcommand{\ViSion}{\resizebox{!}{7pt}{\AcronymText{ViSion}}}
@@ -619,6 +624,9 @@
 \newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
 \newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
 
+\newcommand{\WebGL}{{\resizebox{!}{7pt}{\AcronymText{WebGL}}}}
+\newcommand{\Docker}{{\resizebox{!}{7pt}{\AcronymText{Docker}}}}
+
 
 \newcommand{\OBO}{{\resizebox{!}{7pt}{\AcronymText{OBO}}}}
 
@@ -681,6 +689,11 @@
 \newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
 
 \newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
+
+\newcommand{\JVM}{\resizebox{!}{7pt}{\AcronymText{JVM}}}
+\newcommand{\ECL}{\resizebox{!}{7pt}{\AcronymText{ECL}}}
+
+\newcommand{\ChaiScript}{\resizebox{!}{7pt}{\AcronymText{ChaiScript}}}
 
 \newcommand{\TCP}{\resizebox{!}{7pt}{\AcronymText{TCP}}}
 
@@ -1035,10 +1048,8 @@ at University of Varna, Bulgaria
 \textcolor{darkRed}{\hrule}
 
 \section{Executive Summary}
-\p{LTS is building SARS-CoV-2/Covid-19 repositories 
-to accelerate scientific discovery and therapeutic 
-intervention.  To do so, LTS is developing a 
-pair of data and code repositories 
+\p{LTS is building a pair of 
+SARS-CoV-2/Covid-19 repositories 
 to advance both Covid-19 research and new 
 methodologies for data-integration and \AI{} research in general.  
 The first of these repositories, the 
@@ -1097,8 +1108,9 @@ synthesize data across different scientific fields and
 methodologies.  This common infrastructure is based primarily 
 on \Qt{} --- a \Cpp{} application-development framework --- and 
 secondarily on established scientific/medical code 
-projects such as \CBICA{} (Center for Biomedical Image 
-Computing \& Analytics) and ReproZip (a tool for packaging 
+projects such as \CaPTk{} (the Cancer Imaging 
+Phenomics Toolkit, from the Center for Biomedical Image 
+Computing and Analytics) and \ReproZip{} (a tool for packaging 
 scientific software dependencies).  In addition to utilities 
 and build tools, the programming core for \CRtwo{} and \AIMConc{} 
 will include \Cpp{} libraries to read and manipulate 
@@ -1109,8 +1121,7 @@ provide a new library, called \q{\MOSAIC{},}
 to help build applications for visualizing and 
 reusing data sets.}
     
-\p{The \MOSAIC{} Data-Set Explorer (\MdsX{}), to be 
-specific, is a suite of 
+\p{The \MOSAIC{} Data-Set Explorer (\MdsX{}) is a suite of 
 code libraries which can be used to 
 build native, desktop-style applications 
 for viewing data sets.  An \MdsX{} 
@@ -1148,7 +1159,7 @@ its data models and scientific subject-matter.}
 designed to be distributed in source-code fashion.  
 They are, by default, written in \Cpp{} and based on 
 the \Qt{} application-development framework.  
-\lMOSAIC{} is designed so that sophisticated 
+\lMOSAIC{} is structured so that sophisticated 
 data-set applications can be built with few 
 (or no) external dependencies apart from \Qt{} 
 itself.  In the typical scenario, users would 
@@ -1164,7 +1175,7 @@ When embedded in host applications,
 the \q{\MOSAIC{} plugin framework} 
 (\MPF{}) allows \MOSAIC{} plugins 
 to send data back and forth to 
-one another --- thereby allowing 
+one another, thereby allowing 
 their host applications to 
 interoperate.}
 
@@ -1200,7 +1211,7 @@ in greater detail; Parts II and III will focus on the
 new technologies; and Part IV will examine 
 specific biomedical areas (such as diagnostic 
 imaging and vaccine/immunology research) 
-from the perspective of these these technologies.}
+from the perspective of these technologies.}
 
 \part{The Covid-19 Repository}
 \section{Introduction}
@@ -2141,9 +2152,7 @@ the related project of curating patient narratives.}
 %web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/%cr2.pdf}{here} (this is a downloadable \PDF{} link; 
 %visit the repository to see the larger archive structure).}
 
-\part{MOSAIC Data-Set Explorer and Computational Notebooks}
-
-
+\part{The MOSAIC Data-Set Explorer and Computational Notebooks}
 \section{Data Sets and Data Publishing: the current picture}
 
 \p{\lMOSAIC{} is designed to bridge the 
@@ -2172,7 +2181,7 @@ which can help bridge that gap.}
 
 \p{Recent years have seen an increasing emphasis, 
 in the academic and scientific worlds, on 
-\textit{data publishing} --- sharing research 
+\textit{data publishing}: sharing research 
 data and experimental results/protocols via 
 web portals complementing those that host 
 scientific papers.  Published data sets 
@@ -2198,7 +2207,7 @@ sets and data/code repositories, including
 \API{}s, search portals, Semantic Web ontologies
 and other forms of Controlled Vocabularies, and 
 cloud-based computing or visualization engines, 
-founded on technologies such as Jupyter, Docker, 
+founded on technologies such as \Jupyter{}, \Docker{}, 
 and \WebGL{}.  However, none of these 
 publishers actually provide \textit{applications} 
 for accessing data sets outside of the 
@@ -2266,19 +2275,18 @@ computational resources are usually
 formulated in a local-processing environment that 
 cannot be translated, without extra 
 effort, to the cloud.}
-\input{pics/rad2}
 
 \p{To be sure, scientists can sometimes 
 \q{package} their experimental and analytic 
 methods into a coherent framework, such as a 
-Jupyter notebook, which serves as both a 
+\Jupyter{} notebook, which serves as both a 
 demonstration and a precis of their 
 research work.  Indeed, tools such 
-as Jupyter (which packages code, data, 
-and graphics into a self-contained Python-based 
+as \Jupyter{} (which packages code, data, 
+and graphics into a self-contained \Python{}-based 
 programming environment) are useful in part 
 because the content shared via these 
-systems (e.g. Jupyter \q{notebooks}) needs 
+systems (e.g. \Jupyter{} \q{notebooks}) needs 
 to be deliberately curated; building a 
 notebook is a kind of summarial follow-up to 
 actual research work.  The intellectual discipline 
@@ -2290,8 +2298,8 @@ is publicly shared is fundamentally different
 than the environment where the research is 
 actually carried out.  As a consequence, 
 sharing research indirectly via cloud 
-services and or \q{notebook}-oriented 
-frameworks like Jupyter is not really 
+services or \q{notebook}-oriented 
+frameworks like \Jupyter{} is not truly 
 conducive to either reuse or replication.  
 To actually replicate a course of 
 investigation, it is more thorough 
@@ -2319,7 +2327,7 @@ themselves.}
 is used to implement \textit{native,} 
 \textit{desktop-style} applications 
 for accessing research data of different 
-kinds --- within the overall space of 
+kinds.  Within the overall space of 
 published data sets we can find specific 
 variations, such as \textit{data repositories} 
 comprising multiple data sets; \textit{image corpora} 
@@ -2345,9 +2353,7 @@ being hosted remotely (\q{on the cloud}),
 This host application may be pre-existing 
 program, or a custom host implemented 
 to allow \MdsX{} data-sets to be explored in standalone 
-fashion (with a default implementation that 
-can, as desired, be modified for individual 
-data sets/repositories).}
+fashion.}
 
 \p{The overall \MOSAIC{} framework, then, 
 spans three different technical areas.   
@@ -2368,6 +2374,7 @@ an \MdsX{} plugin can also serve as an
 \MdsX{} notebook, if it provides a 
 \GUI{} structured according to the 
 basic \MdsX{} design.}
+\input{pics/rad2}
 
 \p{Whether or not \MdsX{} plugins serve 
 as notebooks, they can be useful enhancements 
@@ -2390,7 +2397,7 @@ graphics application.  Using \MOSAIC{}
 plugins allows the file transfer between 
 the two applications to be performed 
 automatically, rather than requiring 
-users to manually save and then reopen files.}
+users to manually save and then reopen the file.}
 
 \p{Although minimal \MOSAIC{} plugins provide 
 some useful functionality, the main goal of 
@@ -2399,7 +2406,6 @@ based interactive notebooks which can be
 plugged in to other applications as well 
 as run standalone.  These notebooks will 
 be disussed in the next section.}
-\input{pics/rad3}
 
 \section[The Structure of MdsX Notebooks]{The Structure of \protect\lsMdsX{} Notebooks}
 
@@ -2434,7 +2440,7 @@ connected to the data-visualization layer so
 that scripts can modify the data-to-graphics 
 transformations.  A further requirement is 
 functionality to load pre-existing data sets from 
-saved files or from a web resource.}
+saved files or from a web resource.}\input{pics/rad3}
 
 \p{Beyond these general features, \IDN{} 
 programming can take different forms and 
@@ -2458,7 +2464,7 @@ set of mappings from potential user
 actions to application responses.  
 Whether on the scripting level or 
 the \GUI{} coding, in short, 
-implementations need a level of abstraction 
+implementations need a degree of abstraction 
 more general than the underlying event-handling 
 and procedure-calling logic which forms 
 the application's concrete operational 
@@ -2545,7 +2551,7 @@ a scripting interface as they would be
 in a \JVM{} or \Python{} environment.  
 However, \MdsX{} also supports scripting 
 via a choice of languages, similar to 
-\SeCo{} .  The primary scripting language 
+\SeCo{}.  The primary scripting language 
 used with \MdsX{} is AngelScript, although 
 other \C{}/\Cpp{} based languages 
 (Embeddable Common Lisp, \ChaiScript{}, 
@@ -2568,17 +2574,16 @@ such as an image to be analyzed and/or
 a plot/diagram to be populated with 
 data --- along with a user-interface 
 \q{panel} for interacting with 
-the graphics, and the overall application.  
-This panel partially takes the place of 
+the graphics.  This panel partially takes the place of 
 a script-composition or \REPL{} frame, although 
 such a frame is implicitly present, normally 
 behind the scenes (users can view it 
 if desired).  Notebooks can then 
 load data files, and representations of 
 the loaded data (e.g., text serializations) 
-may then also become part of the notebook 
+may thereby also become part of the notebook 
 content, able to be visualized in their 
-own frame.  Notebooks in general then can 
+own frame.  Notebooks in general, accordingly, can 
 have four varieties of frames (graphics 
 views, interaction panels, data panels, 
 and meta-procedure logs) although not 
