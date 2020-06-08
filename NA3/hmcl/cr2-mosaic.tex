@@ -451,6 +451,7 @@
 \newcommand{\Python}{\resizebox{!}{7pt}{\AcronymText{Python}}}
 \newcommand{\IDN}{\resizebox{!}{7pt}{\AcronymText{IDN}}}
 \newcommand{\JPG}{\resizebox{!}{7pt}{\AcronymText{JPG}}}
+\newcommand{\JPEG}{\resizebox{!}{7pt}{\AcronymText{JPEG}}}
 \newcommand{\PNG}{\resizebox{!}{7pt}{\AcronymText{PNG}}}
 \newcommand{\TIFF}{\resizebox{!}{7pt}{\AcronymText{TIFF}}}
 \newcommand{\REPL}{\resizebox{!}{7pt}{\AcronymText{REPL}}}
@@ -2585,7 +2586,7 @@ may thereby also become part of the notebook
 content, able to be visualized in their 
 own frame.  Notebooks in general, accordingly, can 
 have four varieties of frames (graphics 
-views, interaction panels, data panels, 
+views, navigation panels, data panels, 
 and meta-procedure logs) although not 
 every available frame may be explicitly 
 constructed and/or visible at a given point 
@@ -2615,7 +2616,7 @@ programming concerns one at a time.}
 \p{The central graphical element of an 
 \MdsX{} notebook is either a \TwoD{} or \ThreeD{} 
 image loaded from an image file (in formats 
-such as \PNG{}, \JPG{}, \DICOM{}, \TIFF{}, 
+such as \PNG{}, \JPEG{}, \DICOM{}, \TIFF{}, 
 etc.), or else a \TwoD{} or \ThreeD{} plot, 
 chart, or diagram.  The functionality of 
 the notebook will therefore differ depending 
@@ -2675,7 +2676,7 @@ four layers are defined as follows:
 metadata describing the image format and acquisition.  
 If the surrounding \DSPIN{} object represents an 
 image series (rather than a single image), the 
-metadata object should also declare the 
+metadata object would also declare the 
 size of the collection and how individual 
 images should be referenced.  The metadata 
 should include a file path or resource identifier 
@@ -2686,7 +2687,7 @@ specific metadata depends on the image or images'
 graphical format; to properly load images in 
 most formats (such as \PNG{}, \JPEG{}, \TIFF{}, 
 and \DICOM{}) applications need to specify 
-detail such as dimensions, resolution, and 
+details such as dimensions, resolution, and 
 color depth.  Of course, some of this information 
 is stored internally within the image file 
 (depending on its format), but certain formats 
@@ -2720,7 +2721,7 @@ data which presents information about
 particularly in the form of annotations.  
 Image annotations are arrows, line segments, 
 or \TwoD{} closed shapes that call attention 
-to some point or region inside the image, 
+to a point or region inside the image, 
 usually with some additional label or commentary.  
 The basis of each annotation is therefore 
 some zero-dimensional or two-dimensional 
@@ -2770,10 +2771,9 @@ image-related data.  Image-analysis routines
 conducted within the notebook then may yield 
 additional data structures bundled into the 
 overarching \DSPIN{} object.  This 
-overarching object can then be exported or 
+overarching object can accordingly be exported or 
 saved, alongside (and as an extension of) 
 notebook state.}
-\input{pics/about.tex}
 
 \p{Analytic operations available through an 
 image-based notebook may be provided by 
@@ -2798,7 +2798,6 @@ The \CaPTk{} workflow protocol also forms a
 basis for the meta-procedural view and 
 controllers, discussed next.}
 
-
 \section[MdsX Meta-Procedure Controllers]{\protect\lsMdsX{} Meta-Procedure Controllers}
 
 \p{The meta-procedural layer of an \MdsX{} notebook 
@@ -2818,7 +2817,7 @@ within this view; it is also responsible for
 maintaining an inventory of objects summarizing 
 available metaprocedures, \GUI{} elements, 
 and the mappings between them.}
-\input{pics/x2.tex}
+\input{pics/about.tex}
 
 \p{In general, the \GUI{} elements in these 
 meta-procedural mappings are referred to as 
@@ -2865,6 +2864,7 @@ annotation, and used to reconstruct notebook
 state if the notebook is launched from a 
 document viewer in the context of the 
 published graphic.}
+\input{pics/x2.tex}
 
 \p{In general, the information represented 
 by the meta-procedural controller is not only 
@@ -2945,7 +2945,7 @@ data.  In simple cases, each file handled
 by an \MdsX{} data controller corresponds 
 to a list of \Cpp{} objects of the same type; 
 in more complex cases the data involves 
-multiple types.  In either case, the 
+multiple types.  In either scenario, the 
 \Cpp{} classes defining these de-serialized 
 objects are distinct from those used to 
 parse the files, but an obvious connection 
@@ -2964,11 +2964,11 @@ file-view pane.}
 data files themselves, \MdsX{} notebooks 
 may find it appropriate to provide data 
 provenance summaries.  This is illustrated 
-in Figures~\ref{fig:i2} and \ref{fig:x2}, 
+in Figures~\ref{fig:x2} and \ref{fig:i2}, 
 showing two applications using a \MOSAIC{} 
-plugin to interoperate.  Figure~\ref{fig:i2} 
+plugin to interoperate.  Figure~\ref{fig:x2} 
 demonstrates how users may view 
-basic plugin info.  Figure~\ref{fig:x2} 
+basic plugin info.  Figure~\ref{fig:i2} 
 demonstrates a similar dialog box, but 
 one which is specifically relevant to 
 tracing data provenance; the dialog 
@@ -2978,7 +2978,7 @@ files sent between the applications.}
 
 \p{When sharing data between two different applications, 
 it is prerequisite that each application (called 
-\q{end points} have the 
+\q{end points}) have the 
 capability to read the data/file format involved.  
 This can be confirmed by checking that both 
 end points include the same code libraries 
@@ -3033,7 +3033,7 @@ code library which properly handles
 information from this data once it is 
 deserialized/decoded.  This is the kind 
 of information that would be presented 
-to the user via \MSDX{} data views, along with 
+to the user via \MdsX{} data views, along with 
 the raw data.  It is also information that 
 may need to be structurally represented 
 for database or workflow engines.  Consider 
@@ -3106,9 +3106,8 @@ procedural detail and specificity than provided
 by traditional workflow or Interface Definition 
 languages.  Within the scope of multi-application 
 workflows, a good starting point are  
-the protocols adopted by \CaPTk{}.  A more rigorous 
-review of multi-application networking can be obtained 
-by considering analogous protocols connecting 
+the protocols adopted by \CaPTk{}, and 
+then by considering analogous protocols connecting 
 semi-autonomous software agents in other contexts: 
 \ParaView{} extensions, \Qt{} Creator Plugins, \Octave{} 
 scripts, and \ROOT{} modules, for example 
@@ -3117,7 +3116,7 @@ at \CERN{}) --- restricting attention to the
 \Qt{}/\Cpp{} ecosystem.  Further afield, a similar 
 sense of semi-autonomy can be found in hybrid \GUI{} 
 and scripting platforms such as \Jupyter{} (in the 
-Python context), \Kaggle{}, and \Seco{}.  
+Python context), \Kaggle{}, and \SeCo{}.  
 These platforms are familiar to data visualization 
 and machine-learning engineering (where a script 
 may analyze data and a \GUI{} component follow up 
