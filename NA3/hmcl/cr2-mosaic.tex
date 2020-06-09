@@ -2952,15 +2952,15 @@ in a file, data views should provide information
 about the file type and format --- in particular, 
 should indicate the code libraries which are 
 being used to parse the serialized files.  
-In the ideal case, an \MdsX{} notebook will link 
+In the ideal situation, an \MdsX{} notebook will link 
 against (or include) a \Cpp{} library to read 
 files in the associated format, and will also 
 provide \Cpp{} classes to hold deserialized 
 data.  In simple cases, each file handled 
 by an \MdsX{} data controller corresponds 
-to a list of \Cpp{} objects of the same type; 
-in more complex cases the data involves 
-multiple types.  In either scenario, the 
+to a list of \Cpp{} objects of the same type 
+(in more complex cases the data would involve 
+multiple types).  In either scenario, the 
 \Cpp{} classes defining these de-serialized 
 objects are distinct from those used to 
 parse the files, but an obvious connection 
@@ -3078,7 +3078,7 @@ point is consequential for different aspects
 of the associated database engineering, such as 
 how to efficiently save, validate, and query 
 all the data in the information space.  
-In conventional database theory, for instance, 
+In conventional database theory, 
 it is assumed that a single query engine 
 will interact with all data in a database, 
 and the database's logical and storage 
@@ -3121,8 +3121,8 @@ procedural detail and specificity than provided
 by traditional workflow or Interface Definition 
 languages.  Within the scope of multi-application 
 workflows, a good starting point are  
-the protocols adopted by \CaPTk{}, and 
-then by considering analogous protocols connecting 
+the protocols adopted by \CaPTk{}; also relevant are 
+then analogous protocols connecting 
 semi-autonomous software agents in other contexts: 
 \ParaView{} extensions, \Qt{} Creator Plugins, \Octave{} 
 scripts, and \ROOT{} modules, for example 
