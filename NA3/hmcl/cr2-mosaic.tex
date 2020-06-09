@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=44   %\pgfmathresult>0\relax
-\put(182,136){
+\put(182,156){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -300,7 +300,7 @@
 \newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
 
 \newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\ATexttclr{H}}%
-\resizebox{!}{6.5pt}{\AcronymText{TXN}}}
+\resizebox{!}{6.5pt}{\ATexttclr{TXN}}}
 
 \newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\ATexttclr{HTXN}}}
 
@@ -331,7 +331,7 @@
 \newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
 
-\newcommand{\AXF}{\resizebox{!}{7pt}{\AcronymText{AXF}}}
+\newcommand{\AXF}{\resizebox{!}{7pt}{\ATexttclr{AXF}}}
 
 \newcommand{\HyperGraphDB}{\resizebox{!}{7pt}{\AcronymText{HyperGraphDB}}}
 
@@ -340,8 +340,8 @@
 \newcommand{\Grakenai}{\resizebox{!}{7pt}{\AcronymText{Graken.ai}}}
 
 
-\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
-\resizebox{!}{6.5pt}{\AcronymText{XF}}}
+\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\ATexttclr{A}}%
+\resizebox{!}{6.5pt}{\ATexttclr{XF}}}
 
 
 \newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\ATexttclr{AXF}}}
@@ -500,8 +500,8 @@
 \newcommand{\CAS}{\resizebox{!}{7pt}{\AcronymText{CAS}}}
 
 \newcommand{\lMOSAIC}{%
-\resizebox{!}{8pt}{\AcronymText{M}}%
-\resizebox{!}{6pt}{\AcronymText{OSAIC}}}
+\resizebox{!}{8pt}{\ATexttclr{M}}%
+\resizebox{!}{6pt}{\ATexttclr{OSAIC}}}
 
 \newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
 \newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
@@ -545,7 +545,9 @@
 
 \newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
 
-\newcommand{\WhiteDB}{\makebox{WhiteDB}}
+\newcommand{\WhiteDB}{\resizebox{!}{7pt}{\AcronymText{\makebox{WhiteDB}}}}
+
+\newcommand{\CrossRef}{\resizebox{!}{7pt}{\AcronymText{CrossRef}}}
 
 \newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
 
@@ -666,7 +668,7 @@
 
 \newcommand{\HDFFive}{\resizebox{!}{7pt}{\AcronymText{HDF5}}}
 
-\newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
+\newcommand{\NGML}{\resizebox{!}{7pt}{\ATexttclr{NGML}}}
 
 
 \newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
@@ -677,7 +679,7 @@
 
 %\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
 
-\newcommand{\MOSAIC}{\resizebox{!}{7pt}{\AcronymText{MOSAIC}}}
+\newcommand{\MOSAIC}{\resizebox{!}{7pt}{\ATexttclr{MOSAIC}}}
 
 
 \newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
@@ -777,7 +779,7 @@
 \setlist[description]{%
   topsep=11pt,
   labelsep=22pt, leftmargin=10pt,
-  itemsep=13pt,               % space between items
+  itemsep=9pt,               % space between items
   %font={\bfseries\sffamily}, % set the label font
   font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
 }
@@ -3494,7 +3496,7 @@ experience, given e-Reader software (canonically,
 \AXF{} information.  To (1) aid in text mining, \AXFD{} documents 
 can be compiled into different structured representations, 
 yielding document versions that can be registered 
-on services such as CrossREF \TDM{} and SemanticScholar.  Given 
+on services such as \CrossREF{} \TDM{} and SemanticScholar.  Given 
 a Document Object Identifier, text-mining tools can therefore 
 readily obtain a highly structured, machine readable version 
 of the publication, which may then be used as the basis 
@@ -3593,7 +3595,7 @@ content (such as quotations and citations) are assigned
 unique ids and compiled into their own data structures 
 (from which machine-readable \XML{} full-text may be generated).  
 These \XML{} files may then be hosted and/or registered on 
-\TDM{}-oriented services such as CrossRef.  At the same 
+\TDM{}-oriented services such as \CrossRef{}.  At the same 
 time, unique identifiers unify this \XML{} data 
 (focused on text mining) with \PDF{} viewport data 
 (focused on reader experience).  The goal of such 
@@ -3625,8 +3627,8 @@ enhancements involve multimedia assets.  As a concrete example,
 suppose a paper includes mention of a chemical; that particular 
 keyword can accordingly be flagged for annotation.  
 As one encoding of the corresponding scientific concept, 
-the annotation can include the chemical's Chemical Abstract 
-Service Reference Number, via which it is possible to obtain 
+the annotation can include the compound's Chemical Abstract 
+Service (\CAS{}) Reference Number, via which it is possible to obtain 
 Protein Data Bank (\PDB{}) files to view the relevant 
 molecular structure in \ThreeD{}.  In sum, 
 annotations supply a constellation of data 
@@ -3816,7 +3818,7 @@ document encodings that can be introduced into
 publication repositories and other corpora 
 oriented toward machine-readability.  Authors can 
 host \HTXN{} files within data sets and link to 
-them via services such as CrossRef, thereby 
+them via services such as \CrossRef{}, thereby 
 ensuring that a highly structured, machine-readable 
 version of their papers is available for 
 text and data mining.  The \HTXN{} protocol is 
@@ -3952,7 +3954,9 @@ yielding \textit{bi-directional} complex microcitations.
 documents the \HTXN{} specifications.  With no external 
 dependencies apart from \Qt{} Creator (a \Cpp{} Integrated 
 Development Environment), authors can construct \HTXN{} documents 
-via \NGML{} and, if desired, examine all parsing and encoding code 
+via a special high-level markup language 
+(called \NGML{}, or \q{Next-Generation Markup Language}) and, 
+if desired, examine all parsing and encoding code 
 (both statically and, dynamically, during document creation).  
 The Reference Implementation also supports importing and 
 conversions to \HTXN{} from \XML{}, using \Qt{}'s \XML{} module. 
@@ -4053,9 +4057,9 @@ discussed here.}
 \input{apx2}
 \input{apx3}
 
-\vspace{-.75em}
+%\vspace{-.75em}
 \part{Conclusion}
-\vspace{-1.25em}
+%\vspace{-1.25em}
 \p{Most of the code described here will be developed 
 in conjunction with the Covid-19 Elsevier Volume, 
 in part coinciding with the publication of the book 
