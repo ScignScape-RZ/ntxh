@@ -2157,7 +2157,7 @@ the related project of curating patient narratives.}
 %web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/%cr2.pdf}{here} (this is a downloadable \PDF{} link; 
 %visit the repository to see the larger archive structure).}
 
-\part{The MOSAIC Data-Set Explorer and Computational Notebooks}
+\part{Computational Notebooks and the MOSAIC Data-Set Explorer}
 \section{Data Sets and Data Publishing: the current picture}
 
 \p{\lMOSAIC{} is designed to bridge the 
@@ -2210,7 +2210,7 @@ de Gruyter, etc.) have all developed
 suites of components for manipulating data 
 sets and data/code repositories, including 
 \API{}s, search portals, Semantic Web ontologies
-and other forms of Controlled Vocabularies, and 
+(and other forms of Controlled Vocabularies) and 
 cloud-based computing or visualization engines, 
 founded on technologies such as \Jupyter{}, \Docker{}, 
 and \WebGL{}.  However, none of these 
@@ -2239,7 +2239,7 @@ display \TwoD{} and \ThreeD{} graphics, and
 maintain user and session state so that 
 researchers can suspend and resume their work 
 at different times.  In these cloud environments, 
-users can run computations and generate complex 
+users may run computations and generate complex 
 graphics on remote processing units, with relatively 
 little data or code-execution stored or performed 
 on their own computers.  Such employment of remote, 
@@ -2256,8 +2256,8 @@ are often needed to make downloaded data functionally
 accessible).  However, cloud-based data access is 
 limited in important ways, which makes relying 
 solely on cloud services to provide the 
-filaments of a research-data ecosystem a very bad 
-idea.  The first problem is that cloud services 
+filaments of a research-data ecosystem a dubious 
+idea.  One problem is that cloud services 
 are, despite their technical features, essentially 
 just web applications under the hood; as such, 
 they are susceptible to the same User Experience 
@@ -2267,7 +2267,7 @@ and the simple fact that web-based graphics can
 never be as responsive or as compelling as 
 desktop software, which can interact directly 
 with the local operating system and react 
-instantaneously to user actions.  The second, 
+instantaneously to user actions.  A second, 
 more serious problem is that could-computing 
 environments are computationally and 
 architecturally different than the native-application 
@@ -2416,7 +2416,8 @@ be discussed in the next section.}
 
 \p{A common feature of software through which users 
 study and reuse research data sets is some 
-form of \q{interactive notebooks,} or 
+form of \q{interactive notebooks,} often 
+called \q{computational notebooks} --- 
 digital resources combining data, code, 
 and graphics/visuals.  The main feature of 
 notebook-oriented design is the idea of 
@@ -2428,7 +2429,7 @@ developers to present or demonstrate data
 sets, and associated code, in an exploratory 
 and interactive manner.}
 
-\p{The exact details of how \q{notebooks} are designed 
+\p{The exact details of how notebooks are designed 
 and implemented varies between different technologies, 
 although the concept is most clearly associated 
 with \Jupyter{}, which is a coding and presentation 
@@ -2629,10 +2630,10 @@ loaded from a file (called
 an \q{image-based} notebook), or a data visualization 
 constructed from a data set or some 
 mathematical formulae (called a \q{diagram-based 
-notebook}).  A third option is an \q{object-based} 
-notebook, whose central viewport contains a 
-structured display of information, mostly in 
-textual form (for instance, a table or tree view), 
+notebook}).  A third option are \q{object-based} 
+notebooks, whose center viewports display 
+structured information mostly in 
+textual form (for example, a table or tree view), 
 but this section will focus on graphics-oriented 
 notebooks (Figure~\ref{fig:oxy} shows a contrast 
 between an object-based view, in the background, 
@@ -2640,10 +2641,10 @@ and a graphics-based view, which has been
 opened floating above it).}
 
 \p{Diagram-based \MdsX{} notebooks can be implemented with 
-different diagram-plotting engines; the default 
+different diagram-plotting engines.  The default 
 implementations support \Qt{} Charts (a built-in \Qt{} 
 module) as well as the \textbf{qtcustomplot} and 
-\textbf{JKQCustomPlotter} libraries.  In short, diagram-based 
+\textbf{JKQCustomPlotter} libraries.  Diagram-based 
 notebooks need to implement subclasses of 
 \MdsX{} frames for a navigation panel, graphics view, 
 meta-procedure view, and data view, as well as a 
@@ -2759,7 +2760,9 @@ or clinical information, rather than
 metadata about image format or 
 dimensions.  
 
-%\item[Procedural Layer]
+\item[Procedural/Provenance Layer]  Represents 
+prior or future analyses or transformations 
+relevant to the state of the image.
 
 \end{description}
 }
@@ -3212,7 +3215,7 @@ must be satisfied by procedure-sets internal
 to each end-point --- the relevant information 
 from an integrative standpoint is not the 
 actual procedures involved, but confirmation 
-that the relevant procedure sets adhere 
+that the applicable procedure sets adhere 
 to the relevant multi-procedural protocol.}
 
 \p{Procedural modeling is not only significant 
@@ -3223,8 +3226,8 @@ networking, it is essential (or at least expedient)
 to employ rigorous procedural descriptions.  
 One case in point is testing, particular 
 integration testing and \GUI{} unit testing 
---- procedural models help programmers 
-both design and implement tests.  
+--- procedural models can help programmers 
+both formulate and implement test suites.  
 Indeed, testing in a \GUI{} context is 
 more complex then testing libraries 
 whose behavior can be analyzed via 
@@ -3232,16 +3235,17 @@ command-line programs; with \GUI{}s
 it is necessary to simulate or manually 
 perform user actions for which a 
 test entity seeks to demonstrate proper 
-application response.  For \GUI{}s, then, 
+application response.  For \GUI{}s, correspondingly, 
 testing requires either special-purpose 
 versions of the application User Interface 
 or a protocol wherein an external test suite 
 communicates with the main application 
-(or some combination of the two).  In many 
-cases, then, the connection between a 
+(or some combination of the two). 
+Accordingly, in many 
+cases the connection between a 
 test suite and its target applications 
 serves as a de facto multi-application network, 
-so that workflow models can also b e employed 
+so that workflow models can also be employed 
 as testing engines (Figure~\ref{fig:testing} 
 shows an example of a test suite which 
 interacts with the data-set application showed 
