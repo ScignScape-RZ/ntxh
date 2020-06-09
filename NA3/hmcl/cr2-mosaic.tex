@@ -84,7 +84,7 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=39   %\pgfmathresult>0\relax
+\ifnum\value{page}=44   %\pgfmathresult>0\relax
 \put(182,136){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -295,14 +295,14 @@
 
 \newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
 
-\newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
+\newcommand{\HTXN}{\resizebox{!}{7pt}{\ATexttclr{HTXN}}}
 
 \newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
 
-\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{H}}%
+\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\ATexttclr{H}}%
 \resizebox{!}{6.5pt}{\AcronymText{TXN}}}
 
-\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\ATexttclr{HTXN}}}
 
 \newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
 
@@ -344,9 +344,9 @@
 \resizebox{!}{6.5pt}{\AcronymText{XF}}}
 
 
-\newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\AcronymText{AXF}}}
+\newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\ATexttclr{AXF}}}
 
-\newcommand{\AXFD}{\resizebox{!}{7pt}{\AcronymText{AXFD}}}
+\newcommand{\AXFD}{\resizebox{!}{7pt}{\ATexttclr{AXFD}}}
 
 \newcommand{\CBICA}{\resizebox{!}{7pt}{\AcronymText{CBICA}}}
 
@@ -378,8 +378,8 @@
 
 
 
-\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
-\resizebox{!}{6.5pt}{\AcronymText{XFD}}}
+\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\ATexttclr{A}}%
+\resizebox{!}{6.5pt}{\ATexttclr{XFD}}}
 
 
 \newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
@@ -407,29 +407,33 @@
 \SetSymbolFont{letters}{fordg}{OML}{cmr}{b}{n}
 
 \definecolor{atcColor}{RGB}{96, 17, 12}
+%\textcolor{tcolor}{
+
 \newcommand{\ATextCClr}[1]{\textcolor{atcColor}{\textbf{#1}}}
+
+\newcommand{\ATexttclr}[1]{\textcolor{tcolor}{\textbf{#1}}}
 
 \newcommand{\AIMConc}{\resizebox{!}{7.5pt}{\ATextCClr{AIM-Concepts}}}
 \newcommand{\lAIMConc}{\resizebox{!}{8pt}{\ATextCClr{AIM-Concepts}}}
 
-\newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATextCClr{HGXF}}}}
-\newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATextCClr{HGXF}}}}
-\newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATextCClr{HGXF}}}}
+\newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATexttclr{HGXF}}}}
+\newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATexttclr{HGXF}}}}
+\newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATexttclr{HGXF}}}}
 
 \newcommand{\CRtwo}{{\resizebox{!}{7.5pt}{\ATextCClr{CR2}}}}
 \newcommand{\lCRtwo}{{\resizebox{!}{8pt}{\ATextCClr{CR2}}}}
 \newcommand{\sCRtwo}{{\resizebox{!}{6pt}{\ATextCClr{CR2}}}}
 
 
-\newcommand{\THQL}{\resizebox{!}{7.5pt}{\ATextCClr{THQL}}}
-\newcommand{\lTHQL}{\resizebox{!}{8pt}{\ATextCClr{THQL}}}
+\newcommand{\THQL}{\resizebox{!}{7.5pt}{\ATexttclr{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{8pt}{\ATexttclr{THQL}}}
 
-\newcommand{\HDICOM}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-DICOM}}}
+\newcommand{\HDICOM}{\resizebox{!}{7.5pt}{\ATexttclr{{\large h}-DICOM}}}
 
-\newcommand{\hVaImm}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-VaImm}}}
+\newcommand{\hVaImm}{\resizebox{!}{7.5pt}{\ATexttclr{{\large h}-VaImm}}}
 
 
-\newcommand{\PhaonVI}{\resizebox{!}{7.5pt}{\ATextCClr{Phaon-VI}}}
+\newcommand{\PhaonVI}{\resizebox{!}{7.5pt}{\ATexttclr{Phaon-VI}}}
 
 
 
@@ -2692,8 +2696,8 @@ four layers are defined as follows:
 \begin{description} 
 
 \item[Metadata Layer]  This object presents 
-metadata describing the image format and acquisition.  
-If the surrounding \DSPIN{} object represents an 
+metadata describing the image format and acquisition 
+facts.  If the surrounding \DSPIN{} object represents an 
 image series (rather than a single image), the 
 metadata object would also declare the 
 size of the collection and how individual 
@@ -2713,10 +2717,10 @@ is stored internally within the image file
 require some metadata to be shared along with 
 the image itself (moreover, it is often convenient 
 to have basic information available without needing 
-to extract it from binary image data).  The details 
-on which form of metadata are appropriate for 
-which image format can be determined based 
-on image-viewing code libraries, such as 
+to extract it from binary image streams).  Details 
+concerning which forms of metadata are appropriate for 
+which image formats can be determined based 
+on image code libraries, such as 
 \textbf{libpng}, \textbf{libtiff}, or 
 \DICOM{} clients.  If both end-points of a 
 \DSPIN{} communication have the same 
@@ -2727,8 +2731,8 @@ read from image files directly.  If there
 are uncertainties in library alignment between 
 the two end-points, the sending application should 
 consider serializing a more detailed summary of 
-the image providing any information that would 
-ordinarily be read from the image file. 
+the image, providing any information that would 
+ordinarily be read from the graphic file. 
   
 \item[Annotation Layer]
 Almost all image analysis --- whether done by 
@@ -2750,7 +2754,7 @@ line or curve), so annotations require a mechanism
 for designating regions.  The same 
 issues apply to asserting feature-vectors 
 with respect to an image region rather than 
-the image as a whole; accordingly, 
+the image as a whole.  Consequently, 
 both annotations and feature vectors 
 can be seen as equivalent varieties of 
 constructions which isolate and then 
@@ -2789,7 +2793,7 @@ that the notebook components
 and meta-procedural controllers) jointly refer 
 to a common \DSPIN{} object for all 
 image-related data.  Image-analysis routines 
-conducted within the notebook then may yield 
+conducted within the notebook may then, subsequently, yield 
 additional data structures bundled into the 
 overarching \DSPIN{} object.  This 
 overarching object can accordingly be exported or 
@@ -2873,7 +2877,7 @@ the metaprocedure execution.}  Each
 preliminary stage --- that is, each pre-firing 
 addition to the execution context --- may in 
 turn be generated by events originating elsewhere 
-in the application (canonically, the 
+in the application (such as the 
 navigation panel), and the meta-procedural controller 
 should model both the history of these pre-firing stages 
 and the origin and nature of the events which 
@@ -2888,12 +2892,12 @@ or the parameters configured to instantiate
 a workflow model.  Reified meta-procedural 
 execution contexts can then be shared as 
 objects with components responsible for 
-sharing or preserving information about the 
-notebook.  For instance, a notebook graphic may be 
-included in a publication; the reified context 
+communicating or preserving information about the 
+notebook.  For instance, if a notebook graphic is 
+included in a publication, the reified context 
 could then be associated with that image as an 
 annotation, and used to reconstruct notebook 
-state if the notebook is launched from a 
+state when the notebook is launched from a 
 document viewer in the context of the 
 published graphic.}
 \input{pics/x2.tex}
@@ -2913,7 +2917,7 @@ within a data set.  As such, it is possible
 for the notebook to maintain a list of these 
 concepts, so as to create an interactive 
 glossary or to interoperate with a document 
-viewer.  For instance, Figure~\ref{fig:oxy} shows a 
+viewer.  As an example, Figure~\ref{fig:oxy} shows a 
 context-menu action based on the concept 
 of \q{oxygenated air flow,} which is also 
 discussed in the scientific article 
@@ -2938,8 +2942,8 @@ meta-procedural controller.}
 \p{This specific genre of annotations --- applying to 
 meta-procedure and visual objects which are 
 linked to scientific concepts --- is included 
-within a broader \MOSAIC{} annotation system, described 
-below.  A rigorous overview of this annotation 
+within a broader \MOSAIC{} annotation system, covered 
+in Part III.  A rigorous overview of this annotation 
 framework depends on describing the data-structuring 
 protocols recognized by \MOSAIC{}, which are 
 reviewed in the next section.}
@@ -3454,12 +3458,231 @@ curated via a DigammaDB database can be published
 as well as data generated from these databases 
 for data-sharing initiatives --- can 
 store data constrained by \q{hypergraph ontologies,} 
-which are discussed in the next section.}
+which were discussed earlier.}
 
 \input{ho}
-\section{Dataset Creator}
+\section{Dataset Creator and the Annotation Exchange Format}
+\p{}
+
+\p{Rigorously integrating data sets and publications 
+demands new technologies both for composing documents 
+and for organizing data sets, which are provided 
+through the \MOSAIC{} portal and plugin framework.  
+In particular, \MOSAIC{} provides an 
+\q{Annotation Exchange Format,} (\AXF{}), 
+which can be used to establish a detailed 
+annotation meta-model across data and document 
+repositories.  At the core of an \AXF{} 
+Publication Repository is a collection of files 
+in a machine-readable \AXF{} Document Format (\AXFD{}), 
+which are paired with human-readable \PDF{} documents 
+as well as supplemental multi-media and metadata files.  
+Depending on institutional requirements, an \AXF{} repository 
+may be the primary storage resource for the contained 
+publications, or an adjunct resource whose documents are 
+linked to publications hosted elsewhere.  In the second 
+scenario, the primary goal of an \AXF{} repository is to 
+host manuscripts in \AXFD{} format, along with software 
+to aid viewing and text-mining of the associated publications.}
+
+\p{\lAXFD{} therefore has two distinct purposes: (1) to 
+aid in text and data mining (\TDM{}) of full 
+publication text (along with research data that may be 
+linked to publications), and (2) to enhance the reader 
+experience, given e-Reader software (canonically, 
+\PDF{} viewers) which are programmed to consume 
+\AXF{} information.  To (1) aid in text mining, \AXFD{} documents 
+can be compiled into different structured representations, 
+yielding document versions that can be registered 
+on services such as CrossREF \TDM{} and SemanticScholar.  Given 
+a Document Object Identifier, text-mining tools can therefore 
+readily obtain a highly structured, machine readable version 
+of the publication, which may then be used as the basis 
+for further text-mining and \NLP{} operations.  Simultaneously, 
+to (2) improve reader experience, the \AXF{} platform generates 
+numeric data linking semantically significant text locations 
+to \PDF{} viewport coordinates 
+(such text locations include annotation, quotation, or citation 
+start/end points and paragraph or sentence boundaries --- 
+collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+\PDF{} applications to provide contexts 
+for word searches, to localize context 
+menus, to activate multi-media features at different points 
+in the text, and in general to make \PDF{} files more 
+interactive.  Data sets composed with the aid of \AXF{} 
+tools may include source code for a \PDF{} viewer (an extension 
+to \XPDF{}) capable of leveraging \AXF{} data.}
+
+\p{In addition to the \AXFD{} document format, \MOSAIC{} 
+includes the Annotation Exchange Format itself, a protocol for 
+defining and sharing annotations on full-text publications.  
+\lAXF{} differs from other annotation-representation 
+strategies by (1) providing more detail concerning 
+the location of annotated text segments, in the 
+surrounding publication context, and (2) supplying 
+annotation data in multimedia or microcitation 
+formats which extend beyond conventional 
+\q{controlled vocabularies}.  In terms of (1) 
+publication context --- that is, the annotation 
+\textit{target} (using terminology from the 
+Linguistic Annotation Framework, or \LAF{}) --- \AXF{} 
+represents \SDIV{} information as introduced 
+above; this data supplements the node/index coordinates 
+used by traditional annotation mechanisms.  
+With respect to (2) annotation metadata --- 
+or the annotation \textit{body} (again using 
+\LAF{} terminology) 
+--- \AXF{} introduces models for multimedia 
+assets, software components, and data set 
+content, which may be linked to annotation 
+targets.  With this additional metadata, 
+annotations may be used in application-development 
+environments, not only for text mining.}
+
+\p{The following subsections will (1) outline \AXF{} and \AXFD{} 
+in greater detail, (2) describe how \AXF{} repositories 
+can unify publications sharing similar themes, scholarly 
+disciplines, or coding requirements, and (3) 
+describe features for data-set publication in 
+the context of \AXF{} repositories.}
+
+\subsection{AXF and AXF Documents}
+
+\p{The \AXFD{} format for describing document content and 
+structure is designed to be a \q{Pivot Representation} in the 
+sense of \LAF{}.\footnote{See \bhref{https://www.cs.vassar.edu/~ide/papers/LAW.pdf}.}  In particular, \AXFD{} can represent 
+the structure of both \XML{} (including several 
+\XML{} flavors used in publishing) and \LaTeX{}.  
+Technically, \AXFD{} does not prescribe any 
+specific input format; instead, a document is 
+considered an instance of \AXFD{} if it can be 
+compiled into a Document Object satisfying 
+interface requirements.  A \Cpp{} reference implementation 
+anchors the \AXF{} Document Object Model; nodes in 
+this implementation have facets combining 
+\LAF{}, \XML{}, and \LaTeX{}.  In practice, 
+\AXFD{} manuscripts are then converted via \LaTeX{} to 
+\PDF{}, and simultaneously compiled to \XML{} representations 
+so as to generate machine-readable, structured full-text 
+versions of the manuscripts.  Authors can choose to 
+compose \AXFD{} papers to conform with several common 
+publication \XML{} standards, such as \JATS{} 
+(Journal Article Tag Suite), \SciXML{}.\footnote{See 
+\bhref{https://www.cl.cam.ac.uk/~sht25/papers/Rupp_et_al.pdf}.}, 
+and \IeXML{}.\footnote{See \bhref{https://www.semanticscholar.org/paper/IeXML\%3A-towards-an-annotation-framework-for-semantic-Rebholz-Schuhmann-Kirsch/1d72a56b6576117c62f388a5f2193965e4c7e293}.}}
+
+\p{One distinct feature of \AXF{} is that \LaTeX{} and 
+\XML{} generation are chained in a pipeline: the \LaTeX{} 
+and subsequent \PDF{} generation steps yield auxiliary data, 
+which includes \PDF{} viewport data, that can be 
+subsequently incorporated into \XML{} views onto 
+the documents.  Specifically, 
+\AXFD{}-generated \LaTeX{} files include notations for 
+semantic annotations and for sentence boundaries, implemented 
+via \LaTeX{} commands which, as one processing step, 
+write \PDF{} coordinates to auxiliary files.  The resulting 
+data is then read by a \Cpp{} program which collates 
+annotations and sentence-boundaries into a vector of 
+data structures indexed by \PDF{} page numbers, creating a 
+distinct file for each page, and zips those files into an 
+archive which can be distributed alongside (or embedded inside) 
+the \PDF{} publications.  Simultaneously, sentences, 
+paragraphs, annotations, and other semantically significant 
+content (such as quotations and citations) are assigned 
+unique ids and compiled into their own data structures 
+(from which machine-readable \XML{} full-text may be generated).  
+These \XML{} files may then be hosted and/or registered on 
+\TDM{}-oriented services such as CrossRef.  At the same 
+time, unique identifiers unify this \XML{} data 
+(focused on text mining) with \PDF{} viewport data 
+(focused on reader experience).  The goal of such 
+integration is to incorporate text-mining results 
+so as to enhance reader experience.  For example, 
+Named Entity Recognizers might flag a word-sequence 
+as matching a concept within a controlled vocabulary.  
+Via the relevant paper's \SDI{} model, this annotation 
+may be placed in a proper semantic context --- for 
+example, obtaining the text of the sentence where the 
+Named Entity occurs.  This semantic information may then 
+be used by a \PDF{} viewer --- e.g., providing a 
+context menu option to select the sentence text, when 
+the context menu is activated within the rectangular 
+coordinates of the annotation itself.}
+
+\input{pics/il}
+\p{As a representation of annotation data structures, 
+\AXF{} ensures that \SDI{} and viewport data is included 
+among annotations wherever this data is available.  
+This facilitates the integration between text-mining 
+tools and \PDF{} viewer software, which in turn 
+enhances reader experience.  As mentioned earlier, every 
+annotation can be placed in a semantic context (e.g., 
+the text of the surrounding sentence), which provides 
+useful reader features such as one-click copying of 
+sentences to the clipboard.  Other reader-experience 
+enhancements involve multimedia assets.  As a concrete example, 
+suppose a paper includes mention of a chemical; that particular 
+keyword can accordingly be flagged for annotation.  
+As one encoding of the corresponding scientific concept, 
+the annotation can include the chemical's Chemical Abstract 
+Service Reference Number, via which it is possible to obtain 
+Protein Data Bank (\PDB{}) files to view the relevant 
+molecular structure in \ThreeD{}.  In sum, 
+annotations supply a constellation of data 
+--- in this example, concepts may be linked not only to 
+identifiers in cheminformatic ontologies, but also to \CAS{} 
+reference numbers and thereby to \ThreeD{} graphics files 
+--- which facilitate interactive User Experience at the 
+application level, not only document classification at the 
+corpus level.  Once a chemical compound (mentioned in a 
+publication) is linked to a \PDB{} file (or any other 
+\ThreeD{} format) the \PDF{} viewer may include 
+options to for the reader to connect to software or 
+web applications where the corresponding visuals can 
+be rendered.  Via \AXF{}, the relevant document-to-software 
+connections are asserted not only on the overall document 
+level, but on the granular scale of the precise character 
+and \PDF{} viewport coordinates where the relevant 
+annotation is grounded (Figure~\bref{fig:il} illustrates 
+such capabilities in the context of a chemistry publication 
+--- specifically, test-preparation materials for the 
+Chemistry \GRE{} exam).}
+
+\p{To support this kind of multimedia functionality, 
+\MOSAIC{} plugins allow programmers to embed code which can parse and 
+respond to \AXF{} annotations in different scientific and 
+document-viewer applications.  \lMOSAIC{} plugins 
+enable different 
+applications to inter-operate; in particular, 
+\PDF{} viewers can share data with scientific applications 
+that can render files in domain-specific formats such as 
+\PDB{}.  This application networking protocol is considered 
+part of the \AXF{} annotation model, because application-oriented 
+information is computationally relevant for many concepts 
+encountered in scientific and technical environments.  For instance, 
+one aspect of cheminformatic data is that many chemical 
+compounds are modeled by \PDB{}, \MOL{}, or \ChemXML{} files, 
+which in turn are associated with software applications that 
+can load those file types.  Such inter-application 
+networking data is relevant to \PDF{} viewers 
+when they display manuscripts with annotations that suggest 
+links to special file types and their applications; the 
+viewers can employ this information to launch and/or communicate 
+with the corresponding software.  \lAXF{} is designed to 
+facilitate implementation of application-networking protocols 
+as an operational continuation of processes related to obtaining 
+and consuming annotation data.}
+
+\p{To take full of advantage of \MOSAIC{} and \AXF{}, 
+data sets and data-set applications need their own 
+micro-citations, constructed so as to interoperate 
+according to the \MOSAIC{} paradigm.  One way to 
+achive this is via the Dataset Creator, discussed next.}
+
+\subsection{Dataset Creator}
 \p{Dataset Creator (\dsC{}) is a framework for 
-constructing data sets which include computer code based on the 
+building data sets which include computer code based on the 
 \Qt{} application-development platform.  
 Dataset Creator takes advantage of the \Qt{} platform 
 to construct Research Objects with exceptional 
@@ -3601,6 +3824,221 @@ also useful for encoding natural-language content
 which becomes part of a data set as data assets 
 in themselves; for example, patient narratives.} 
 
+\subsection[The Hypergraph Text Encoding Protocol (HTXN)]{The Hypergraph Text Encoding Protocol (\protect\lsHTXN{})}
+
+\p{Within the \HTXN{} protocol, an annotation target is 
+a character-index interval in the context of an 
+\HTXN{} character stream.  On that basis, 
+\HTXN{} treats documents as graphs whose nodes 
+are ranges in a character stream, where text can 
+be recovered as an operation on one or more nodes 
+(e.g., the text of a sentence is derived from a 
+pair of nodes representing the sentence's start 
+and end).  \lHTXN{} code-points 
+are distinguished in terms of their semantic 
+role, which may be more granular than their 
+visible appearance --- for example, 
+a period glyph is assigned different code-points 
+depending on whether it marks a sentence-ending 
+punctuation, an abbreviation, a decimal point, 
+or part of an ellipsis.  Procedures are then implemented to 
+represent text in different formats, such as 
+\ASCII{}, Unicode, \XML{}, or \LaTeX{}.  In 
+contrast to a format such as Web Annotations, 
+any particular human-readable text presentation 
+(including \ASCII{}) is considered a \textit{derived} 
+property of the annotation, not a foundational 
+representation.}
+
+\p{Apart from its overarching philosophy, 
+\HTXN{}'s distinguishing features include:
+
+\begin{enumerate}
+\item{} A unified document-structure model which accommodates 
+the idiosyncracies of different markup styles, 
+such as attribute child nodes in \XML{}, 
+optional arguments in \LaTeX{}, subject defaults in 
+\RDF{}, and concurrent/overlapping markup as in \TeXMECS{}. 
+
+\item{} An encoding built from the ground up to support 
+multi-party editing and collaboration.  Internally, 
+\HTXN{} uses \q{stand-off} annotations which logically 
+separate markup content from the underlying text.  
+Multiple sources can thereby contribute distinct 
+markup structure, which may be used, for example, 
+to differentiate document changes made by 
+authors from those made by editors.
+
+\item{} A convenient architecture for \q{subordinate} documents which 
+expose some restricted portion of their \q{parent} documents.  
+This is also useful for editing.  Starting with an overall 
+\HTXN{} parent, one can selectively create a subordinate document 
+which (for example) includes only editable text, yielding 
+a simplified version of the document suitable for 
+textual revisions.  After editing, changes made to the 
+subordinate document are then folded into its parent.
+
+\item{} A detailed system for pairing documents with external 
+data and data sets.  In particular, \HTXN{} supports document 
+anchors allowing structured data within a data set to 
+reference locations in accompanying publications.  These 
+back-references could be used, for example, to identify 
+points in a publication where there is a definition, 
+explanation, review, or visualization of technical concepts 
+and/or data aggregates introduced in a data set.  Unlike 
+\LaTeX{} references or \HTML{} anchors, these \HTXN{} anchors 
+are data-specific and logically separated from textual 
+cross-references. 
+
+\item{} Several special features for data-based annotations, 
+or ascribing metadata or interpretations to text 
+segments which conform to structured data types 
+(proper names, acronyms, dates, times, magnitudes, etc.).  
+This includes numeric types typically unrepresented 
+in most markup formats, such as range-delimited 
+integer types and \q{Universal Numbers}, or \q{posits}, 
+a recent alternative to floating-point decimals.  
+
+\item{} Functionality for creating data sets directly 
+from the text itself.  For instance, example 
+sentences used within linguistic publications, 
+to illustrate semantic or syntactic principles, 
+can be compiled as a sentence-corpus to produce 
+a distinct data set associated with the 
+original publication.  Larger corpora can then 
+be compiled from collections of linguistic 
+texts.  Similar techniques can be employed 
+in analogous \q{digital humanities} contexts; 
+for example, extracting a corpus of discussions 
+about cultural artifacts by extracting sentences 
+or paragraphs pertaining to an 
+externally identifiable object (such as an 
+artwork held in a museum).   
+
+\item{} A framework for \q{complex microcitations}, meaning 
+individually citable locations in a document which involve 
+multipart data structures.  A case study would be linguistic 
+examples that display (alongside or within a sentence) supplemental 
+visual cues such as intonation, prosody, lexical category, 
+morphology, or grammatical-structural annotations.  
+Such material needs special typesetting instructions, but 
+the visual format in turn depends on formal sentence 
+models.  For another example, graphics such as charts 
+or plots may represent a specific statistical 
+view on a data set; the construction of that distinct 
+perspective marshals formal data, such as dependent 
+and independent variables, axes, scales, scaling 
+factors (e.g. scalar multipliers or logarithms), and 
+ranges.  In these examples, textual content is not only 
+a presentation layer which merely exposits or 
+reviews scientific frameworks; instead, 
+the code describing textual structure and appearance 
+reflects scientific paradigms and is therefore 
+a theoretical artifact in its own right.
+In particular, textual anchors and 
+typesetting reflects not only raw text but structured 
+data whose format and provenance represents specific 
+scientific models.  Here it is valuable to 
+cross-reference text with data sources:  
+typesetting code may be generated directly from a 
+data set, while the generated instructions (in \LaTeX{}, 
+say) can trigger anchor labels and page references 
+to be \q{forward-referenced} into the data set via 
+auxiliary files.  Complete cross-references 
+thereby integrate raw and textual data, 
+yielding \textit{bi-directional} complex microcitations.  
+ 
+\item{} A \Qt{}-based Reference Implementation which conveniently 
+documents the \HTXN{} specifications.  With no external 
+dependencies apart from \Qt{} Creator (a \Cpp{} Integrated 
+Development Environment), authors can construct \HTXN{} documents 
+via \NGML{} and, if desired, examine all parsing and encoding code 
+(both statically and, dynamically, during document creation).  
+The Reference Implementation also supports importing and 
+conversions to \HTXN{} from \XML{}, using \Qt{}'s \XML{} module. 
+
+\item{} Options for stashing compiled \HTXN{} documents in a 
+database, so that saving files containing text serialization 
+(in \NGML{}, for example) is not a prerequisite for maintaining 
+persistent copies of \HTXN{} documents.  The Reference 
+Implementation supports persistent 
+\HTXN{} documents via the \DigammaDB{} database engine.
+
+\item{} A flexible parsing engine which allows input languages 
+for generating \HTXN{} documents to be customized and extended.
+\end{enumerate}
+}
+
+\p{\lAXFD{} manuscripts do not need to utilize \HTXN{} 
+for character data, but \HTXN{} simplifies certain \AXF{} 
+operations, such as identifying sentence boundaries.  
+In particular, \HTXN{} provides distinct code-points for 
+end-of-sentence punctuation, so that sentence-boundary 
+detection reduces to a trivial search for those particular 
+code-points.  Proper \HTXN{} encoding requires that authors 
+follow certain simple heuristics --- e.g., that end-of-sentence 
+periods should be followed by two spaces and/or a newline, 
+whereas other uses of a period character should precede at 
+most one space.  Aside from the goal of preparing documents 
+for text-mining machine-readability, such conventions are 
+appropriate even for basic typesetting, because non-punctuation 
+characters have their own kerning rules (this is why 
+\LaTeX{} provides a distinct command for non-punctuation glyphs 
+that would otherwise be read as punctuation characters).  \lHTXN{} 
+hides these typesetting details within its character-encoding 
+schema, which is then useful both for producing professional-caliber 
+\LaTeX{} output and for identifying \SDI{} details (such as 
+sentence boundaries) which with less rigorously structured 
+text would need elaborate text-mining or \NLP{} algorithms.}
+
+\p{Each \AXFD{} document is, in sum, associated with an 
+aggregate of character-encoding, annotation, document-structure, 
+and \PDF{} viewport information.  The \MOSAIC{} platform uses 
+code libraries to pull this information together as a 
+runtime object system, so that any application which loads 
+an \AXFD{} manuscript can execute queries against the 
+corresponding collection of \AXF{} objects (queries such 
+as obtaining the sentence text around an annotation, obtaining 
+the concave-octagonal viewport coordinates for a sentence,\footnote{
+In the general case, sentence coordinates are concave octagons because 
+they incorporate the line height of their start and end lines; 
+in the general case sentences share start and end lines with other 
+sentences, while also including whole lines vertically positioned 
+between these extrema.  A sentence octagon roughly corresponds with 
+the screen area where a mouse/pointer action should be understood as 
+occurring in the context of that sentence from the user's point 
+of view --- implying that the user would benefit from context menu 
+options pertaining specifically to that sentence, such as 
+copy-to-clipboard.} obtaining application-networking 
+information for an annotation, 
+etc.)  In addition to such runtime data, \AXF{} platforms can 
+compile the full suite of information into machine-readable 
+files for text and data mining.}
+
+\p{\AXF{} uses a two-tier node structure similar to 
+\LAF{}; at one level is an extensible text-encoding 
+methodology (outlined earlier in the context of 
+\HTXN{}), while a higher level defines annotations in terms 
+of directed hypergraphs.  Programmatically, 
+\AXF{} aims in the canonical case for a level of 
+detail that is intermediate between linked-data-oriented 
+projects like Web Annotations (which tend to focus 
+mostly on isolatable semantic resources such 
+as citations and named entities) and \NLP{}-oriented 
+paradigms such as \LAF{}.  That is, \AXF{} does not 
+natively serialize fine-grained \NLP{} data at the 
+level of individual words (the kind of data asserting 
+semantic and morphosyntactic details: lemmatization, Part of Speech, 
+dependency relations, and so forth), although it does support 
+queries which return sentences as (unparsed) word-sequences.  
+On the other hand, \AXF{} offers \text{some} granular information about small-scale linguistic units, such as the 
+role of non-alphanumeric characters, or 
+\PDF{} coordinates of sentence start and end points.  
+In short, \AXF{} occupies a unique space in the 
+landscape of annotation tools at the intersection 
+of application-development, \NLP{}, and document-preparation 
+requirements.}
+
 \p{Further documentation of text-encoding methodology (applicable 
 to both patient narratives and publications associated 
 with \CRtwo{} research data) is available on the \CRtwo{} 
@@ -3615,8 +4053,9 @@ discussed here.}
 \input{apx2}
 \input{apx3}
 
+\vspace{-.75em}
 \part{Conclusion}
-%\vspace{-2em}
+\vspace{-1.25em}
 \p{Most of the code described here will be developed 
 in conjunction with the Covid-19 Elsevier Volume, 
 in part coinciding with the publication of the book 
