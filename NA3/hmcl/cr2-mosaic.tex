@@ -26,7 +26,7 @@
 \vspace{-.5em}}
 
 \titlespacing*{\section}
-{0pt}{4.5ex plus 1ex minus .1ex}{0.2ex plus .2ex}
+{0pt}{4ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
 
 \titlespacing*{\subsection}
 {0pt}{3.5ex plus 1ex minus .1ex}{-.8ex plus .2ex}
@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=44   %\pgfmathresult>0\relax
-\put(182,156){
+\put(182,139){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -469,6 +469,9 @@
 \newcommand{\TIFF}{\resizebox{!}{7pt}{\AcronymText{TIFF}}}
 \newcommand{\REPL}{\resizebox{!}{7pt}{\AcronymText{REPL}}}
 
+\newcommand{\MIFlowCyt}{\resizebox{!}{7pt}{\AcronymText{MIFlowCyt}}}
+\newcommand{\GatingML}{\resizebox{!}{7pt}{\AcronymText{Gating-ML}}}
+\newcommand{\flowCL}{\resizebox{!}{7pt}{\AcronymText{flowCL}}}
 
 
 \makeatletter
@@ -819,7 +822,6 @@
 %\setlength\parindent{24pt}
 %\input{commands}
 
-
 \newcommand{\lun}[1]{\raisebox{-4pt}{\fontfamily{qcr}\selectfont{%
 \LARGE{\textbf{\textcolor{tcolor}{#1}}}}}\vspace{-2pt}}
 
@@ -1008,7 +1010,8 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {New Database Engineering and 
-Archive Construction Technology to Accelerate Covid-19 Research}
+Archive Construction Technology to Accelerate 
+Bio-Imaging, Biomedical Engineering, and Covid-19 Research}
 }}}
 \end{center}
 \end{minipage}
@@ -1018,7 +1021,7 @@ Archive Construction Technology to Accelerate Covid-19 Research}
 %\vspace{1em}
 \vspace*{2pt}
 \begin{center}
-\parbox{.88\textwidth}{%
+\parbox{.85\textwidth}{%
 {\fontfamily{fvs}\fontsize{9}{9}\selectfont   
 LTS (Linguistic Technology Systems) is founded by 
 Amy Neustein, Ph.D., Series Editor of {\textbf{Speech Technology 
@@ -1026,12 +1029,15 @@ and Text Mining in Medicine and Health Care}} (de Gruyter);
 Editor of {\textbf{\makebox{Advances} in Ubiquitous Computing: 
 Cyber-Physical Systems, Smart Cities, 
 and Ecological \makebox{Monitoring}}} 
-(Elsevier, 2020); and 
+(Elsevier, 2020); 
 co-author (with Nathaniel Christen) 
 of {\textbf{Cross-Disciplinary Data Integration 
 and Conceptual Space Models
 for Covid-19}} 
-(Elsevier, forthcoming).}}\end{center}
+(Elsevier, 2021); and co-editor of 
+{\textbf{Medical Image Processing and Machine Learning}}
+(Institution of Engineering and 
+Technology, forthcoming).}}\end{center}
 
 \vspace*{14pt}	
 
@@ -1039,18 +1045,18 @@ for Covid-19}}
 \hrule}
 \begin{description}
 
-\item[Principal Investigator]  Dr. James A. Rodger, 
+\item[Principal Investigator:]  Dr. James A. Rodger,  
 Professor of Management Information 
 Systems and Decision Sciences at Indiana University of 
-Pennsylvania.
+Pennsylvania
 
-\item[Administrative Officer]  Dr. Amy Neustein, 
-founder of Linguistic Technology Systems (LTS).
+\item[Administrative Officer:]  Dr. Amy Neustein, 
+founder of Linguistic Technology Systems (LTS)
 
 \item[Contributors]  
 \begin{itemize}\item[]
 
-\item Nathaniel Christen, software engineer, LTS.
+\item Nathaniel Christen, Lead Software Architect, LTS
 
 \item Professor Amita Nandal, 
 Department of Department of Computer and 
@@ -2179,7 +2185,7 @@ the related project of curating patient narratives.}
 %visit the repository to see the larger archive structure).}
 
 \part{Computational Notebooks and the MOSAIC Data-Set Explorer}
-\section{Data Sets and Data Publishing: the current picture}
+\section{Data Sets and Data Publishing: bridging the gap}
 
 \p{\lMOSAIC{} is designed to bridge the 
 gap between scientific software and 
@@ -2202,11 +2208,11 @@ software.  As such, a technical gap
 exists between the data-publishing and 
 scientific-computing ecosystems seen 
 as software-engineering domains.  
-\lMOSAIC{} aims to be a suite of tools 
+\lMOSAIC{} is a suite of tools 
 which can help bridge that gap.}
 
-\p{Recent years have seen an increasing emphasis, 
-in the academic and scientific worlds, on 
+\p{Recent years have seen an increasing emphasis 
+(in the academic and scientific worlds) on 
 \textit{data publishing}: sharing research 
 data and experimental results/protocols via 
 web portals complementing those that host 
@@ -2273,8 +2279,10 @@ their research.  Investigating data via cloud
 services spares the researcher from having to 
 download the data set directly (along with 
 the additional software and requirements which 
-are often needed to make downloaded data functionally 
-accessible).  However, cloud-based data access is 
+are often needed to make downloaded data 
+functionally accessible).}
+
+\p{However, cloud-based data access is 
 limited in important ways, which makes relying 
 solely on cloud services to provide the 
 filaments of a research-data ecosystem a dubious 
@@ -2338,7 +2346,9 @@ should be shared in such a way that
 the original research data, code, and 
 protocols can be absorbed into a new 
 research context, including the software 
-used by the research team.  Cloud-based 
+used by the research team.}  
+
+\p{Cloud-based 
 services, which provide only an overview 
 of research data, with limited analytic 
 and imaging/visualization functionality 
@@ -2365,7 +2375,9 @@ to access the data; and so forth.  Each of
 these various kinds of data sets present 
 different sorts of interactive specifications 
 which must be implemented by the data-set explorer 
-software.  While executed as a native application 
+software.}
+
+\p{While executed as a native application 
 --- not a cloud service --- \MdsX{} nevertheless incorporates 
 the important ideas from contemporary data publishing 
 (including ideas originating in the cloud context): 
@@ -2381,8 +2393,9 @@ program, or a custom host implemented
 to allow \MdsX{} data-sets to be explored in standalone 
 fashion.}
 
-\p{The overall \MOSAIC{} framework, then, 
-spans three different technical areas.   
+\p{The overall \MOSAIC{} framework as such  
+spans three different technical areas: portals, 
+plugins, and applications.  
 \MOSAIC{} Portal comprises server-side 
 logic for hosting data sets, publications, 
 and cloud services utilized by 
@@ -4063,18 +4076,18 @@ discussed here.}
 \input{apx3}
 
 %\vspace{-.75em}
-\part{Conclusion}
+%\part{Conclusion}
 %\vspace{-1.25em}
-\p{Most of the code described here will be developed 
-in conjunction with the Covid-19 Elsevier Volume, 
-in part coinciding with the publication of the book 
-and continuing to be refined and expanded after the fact.  
-Some of the more technical programming areas, 
-such as cytometry and image processing libraries, 
-will hopefully be generalized to multi-purpose 
-toolkits not limited to the Covid-19 context.  
-Feedback on \CRtwo{} overall, and the more 
-specific technical areas in particular, is welcome.}
+%\p{Most of the code described here will be developed 
+%in conjunction with the Covid-19 Elsevier Volume, 
+%in part coinciding with the publication of the book 
+%and continuing to be refined and expanded after the fact.  
+%Some of the more technical programming areas, 
+%such as cytometry and image processing libraries, 
+%will hopefully be generalized to multi-purpose 
+%toolkits not limited to the Covid-19 context.  
+%Feedback on \CRtwo{} overall, and the more 
+%specific technical areas in particular, is welcome.}
 
 \end{document}
 
