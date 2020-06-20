@@ -590,14 +590,25 @@ r8 Concept::hypervolume_cuboid(cuboid)
  u4 n = len(all_dims);
  //        # calculating the factor in front of the sum
  r8 weight_product = 1.0;
- for (dom, dom_weight : weights_.domain_weights().items())
- {
-  for (dim, dim_weight : weights_.dimension_weights()[dom].items())
+
+ QMapIterator<QString, r8> it(weights_.domain_weights());
+
+ while(it.hasNext())
+ { 
+  it.next();
+// for (dom, dom_weight : weights_.domain_weights().items())
+// {
+  QString dom = it.key();
+  r8 dom_weight = it.value(); 
+//  for (dim, dim_weight : weights_.dimension_weights()[dom].items())
+//  {
   {
-   weight_product *= dom_weight * qSqrt(dim_weight);
+   QList<r8> rs = weights_.dimension_weights()[dom].values();
+   for(r8 dim_weight : rs) 
+     weight_product *= dom_weight * qSqrt(dim_weight);
   }
  }
- factor = self.mu_ / ( qExp(self.c_, n) * weight_product ) );
+ r8 factor = self.mu_ / ( qExp(self.c_, n) * weight_product ) );
  //        # outer sum
  r8 outer_sum = 0.0;
  for(i = 0; i < n + 1; ++i)
@@ -721,8 +732,13 @@ bool Concept::crisp_subset_of(Concept& other)
 
  for(Cuboid* cuboid : core_.cuboids())
  {
-  binary_vecs = itertools.product([False, True], repeat = len(self_dims));
-  for(vec : binary_vecs)
+//  binary_vecs = itertools.product([False, True], repeat = len(self_dims));
+
+   // //  maybe use u8s with bit comparisons ...
+
+  QList<QVector<bool>>  binary_vecs;
+
+  for(QVector<bool> vec : binary_vecs)
   {
    r8vec point;// = []
    j = 0;
@@ -938,7 +954,8 @@ r8 Concept::between(Concept& first, Concept& second,
   for(const r8vec& point : corners_max)
     candidates.push_back(point, "max");
 
-  <?> candidate_results; // = []
+  //<?>
+  r8vec candidate_results; // = []
   r8 tolerance = 0.01; //   # tolerance with respect to constraint violation, needed to ensure convergence
 
   for(const QPair<const r8vec&, QString>& candidate : candidates)
@@ -1196,8 +1213,9 @@ r8 Concept::between(Concept& first, Concept& second,
   }
   //        # compute average of alpha-cuts to approximate the overall integral
   if(num_successful_cuts < 0.8 * num_alpha_cuts)
-    raise Exception("Could compute only {0} of {1} alpha cuts!"
-    .format(num_successful_cuts, num_alpha_cuts));
+    throw();
+//   raise Exception("Could compute only {0} of {1} alpha cuts!"
+//    .format(num_successful_cuts, num_alpha_cuts));
 
   return sum(intermediate_results) / num_successful_cuts;
  }
@@ -1213,9 +1231,9 @@ Concept* Concept::sample(u4 num_samples)
  //       # this ensures that the integral over the function is equal to one.
 
  u4 size = size()?
- auto pdf = [this] (? x) { membership_of(x) / size; };
+ auto pdf = [this] (const std::vector<u4>& x) { membership_of(x) / size; };
         
- <?> samples; // = []
+ u4vec samples; // = []
 
  // # compute the boundaries to sample from:
  // # for each dimension, compute the intersection 
@@ -1244,7 +1262,7 @@ Concept* Concept::sample(u4 num_samples)
    {
         
 
-    core_.domains_.items()
+    //? core_.domains_.items()
 
 
     dom = filter(lambda (x,y): dim in y, self._core._domains.items())[0][0];
@@ -1261,13 +1279,19 @@ Concept* Concept::sample(u4 num_samples)
   }
  }
  //        # use rejection sampling to generate the expected number of samples
- while( len(samples) < num_samples )
+ while( samples.length() < num_samples )
  {          
   //            # create a uniform sample based on the boundaries
-  ? candidate = [i for i in range(cs._n_dim)]
-  ? candidate = map(lambda x: uniform(boundaries[x][0], boundaries[x][1]), candidate)
+
+//  for(u4 i = 0; i < cs_.n_dim(); ++i) 
+//  {
+   //? candidate = [i for i in range(cs._n_dim)]
+   //? candidate = map(lambda x: uniform(boundaries[x][0], boundaries[x][1]), candidate)
+
+  std::vector<u4> candidate(cs_.n_dim());
+  std::iota (std::begin(candidate), std::end(candidate), 0);
             
-  u = uniform(0,1);
+  r8 u = uniform(0,1); /// random generator ...
   if( (u * (1.1/size)) <= pdf(candidate) )
     samples.append(candidate);
  }

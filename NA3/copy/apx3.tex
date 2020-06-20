@@ -1,0 +1,255 @@
+\section{Image Analysis and GIS Imaging in Vaccine and Immunology Research}
+\p{As with radiological outcomes and Clinical Effectiveness 
+Research, vaccine ontologies are multi-modal because 
+the scope of vaccine research spans numerous scientific 
+disciplines, including fields where quantitative or 
+image-based analysis is methodologically significant.  
+As such, data generated during clinical trials is only one 
+part of our overall understanding of the 
+immunological properties of different vaccines.  
+Vaccine data can be partitioned into information generated 
+\textit{before} a vaccine is proven effective (that is, 
+data generated during clinical trials, including 
+challenge trials) and information 
+generated \textit{after} a vaccine is adopted for immunization 
+campaigns.  Data in the clinical trial phase tends to fit 
+the structure of patient cohorts, demographics, and outcomes, 
+whereas data in the vaccine \q{deployment} phase can be more 
+epidemiological/sociological by virtue of post-vaccination 
+analysis identifying the effects on the population 
+writ large.  In particular, 
+modeling immunization drives often depends on gathering 
+geographical and political information --- that is, researchers 
+need to identify localities where vaccinations are performed 
+and to be able to model the governmental/organizational initiatives 
+which support immunization.}
+
+\p{Aside from these geographic, epidemiological, and clinical 
+data profiles, vaccine research also addresses the 
+immunological mechanisms which determine how a particular 
+vaccine works biologically, as well as the level of 
+immunity which the vaccine provides for individual 
+patients.  Understanding these phenomena requires 
+observing the immunological response of patients upon 
+their receiving the vaccine, which generally involves blood and 
+serum analysis --- using a variety of modalities, including 
+chemical, genomic, and molecular imaging.  
+Consequently, a general-purpose vaccine and 
+immunization software suite needs  
+the capacity to represent a broad spectrum of 
+data which may be presented as evidence of a 
+vaccine's immunological effectiveness.  
+Biomedical imaging at the cellular and molecular 
+level has become an increasingly important part of 
+vaccine research, insofar as new imaging techniques 
+allow scientists to directly observe immunological 
+responses at the scale of antigens, adjuvants, and 
+immune cells:  
+\q{monitoring vaccine components, such as antigen 
+or adjuvants, and immune cell dynamics at the site of
+vaccination or draining lymph nodes can provide important
+information to understand more about the vaccine response.} 
+As such, \q{a variety of imaging modalities including bioluminescence
+imaging, nuclear medicine imaging (such as positron 
+emission tomography [PET], single photon emission computed
+tomography [SPECT]), and magnetic resonance imaging (MRI)
+can provide in vivo non-invasive imaging for visualizing 
+immune cell kinetics} 
+(see \bhref{https://pubmed.ncbi.nlm.nih.gov/31406689/}).}
+
+\p{The evolution of vaccine research is, in effect, an inversion 
+of that of diagnostic imaging.  That is, in the context of radiology, 
+image-based technology have become established in previous 
+decades and have only quite recently been augmented with 
+data-integration models that allow images to be cross-referenced 
+with clinical and outcomes data.  Conversely, in the vaccine 
+context, the \textit{clinical} and epidemiological/sociodemographic 
+dimensions of vaccine effectiveness have been modeled 
+for decades, but only recently has sophisticated 
+medical imaging become part of the vaccine engineering 
+arsenal.  Despite these inverted paths, 
+one can observe that contemporary radiological and vaccine research 
+have a similar technological infrastructure, characterized 
+by a digital synthesis of graphical/quantitative and 
+clinical information.}
+
+\p{Given the interdisciplinary nature of 
+vaccine research, software engineers developing tools 
+for curating data sets involving vaccine research 
+should anticipate a similar diversity in the 
+information present within repositories which 
+include vaccine-related research.  That is 
+to say, data-set software relevant in the 
+vaccinology context should be able to read 
+data in \textit{diverse formats,} which represent the 
+scope of vaccine investigations (clinical trials, 
+cytometry, blood/serum analysis, bioimaging, etc.).  
+Similarly, developers should provide a suite of 
+software tools offering interactive visualization 
+of this data spectrum, including imaging tools.  
+The tools for \CRtwo{} will therefore 
+include components to help developers 
+create software supporting vaccine/immunology 
+research in several distinct areas, two 
+examples of which are reviewed here in 
+greater detail.}
+
+\subsection{A Pure-C++ Library for Cytometry}
+
+\p{The \CRtwo{} code libraries will include 
+components to manipulate file and data 
+types associated with cellular, biomolecular, 
+and immunological imaging.  Examination 
+of cellular-scale processes has several 
+different roles in vaccine/immunization 
+research, including identification of 
+viral proteins and observing the immune 
+system response to viral infection and/or 
+vaccination.  Moreover, sudies of 
+cellular processes can occur either by 
+directly visualizing phenomena on this 
+scale or by indirect analytic methods, 
+such as cytometry.  In \q{flow cytometry}, 
+for instance, a stream of cells is 
+investigated by passing them through 
+laser beams where the cells' material 
+absords and/or scatters the light waves, 
+yielding patterns of light intensity 
+along two axes --- one parallel to the 
+laser source, and one at right angles to 
+the source which detects light scattering.  
+These patterns, in turn, can be analyzed 
+to ascertain properties of cells, proteins, 
+and other molecular entities in the sample 
+source.  The actual images generated 
+in this process are not literal photograph 
+or microscope-enhanced pictures, but rather 
+are composite representations of light 
+intensity formed by plotting 
+parallel and scattered light patterns 
+on a two-dimensional axis (effectively, a
+high-density scatter plot).  While 
+these representations are technically 
+diagrams rather than images, certain 
+image-analysis concepts have analogs 
+in this context; for instance, \q{gating} 
+--- selecting image regions of interest 
+(e.g. as measures of cell count for different 
+varieties of cells) --- is analogous 
+to image segmentation.}
+
+\p{Flow cytometry data is usually presented 
+via \FCS{} (Flow Cytometry Standard) files.  
+The most comprehensive package for working with 
+the \FCS{} format is based on \R{}, although 
+one \Cpp{} library (developed by the 
+Fred Hutchinson institute) has been isolated from 
+the surrounding \R{} package into a library 
+that can be compiled standalone.  Outside the 
+\R{} context, however, this library has limited 
+functionality for applying predefined gating 
+schemes or image visualization; one goal 
+of \CRtwo{}, then, is to enhance the 
+relevant \Cpp{} package with added tools 
+allowing the code to be used in application 
+contexts other than \R{}.}
+
+\p{Meanwhile, other biomolecular visualization 
+technology --- including \q{image cytometry,} 
+an older but still useful alternative 
+to flow cytometry --- require more conventional 
+image-analysis techniques, so that \CaPTk{}-style 
+image-analysis pipelines are appropriate in 
+these contexts.  Different imaging modalities, 
+including bioluminescence, \PET{} scans, and 
+\MRI{}s, have been used for immunological 
+cellular-scale imaging.\footnote{See 
+\bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6689497/}.}
+A multi-disciplinary toolkit for immunology-related 
+image processing should include the framework 
+for incorporating Machine Vision algorithms specific 
+to image processing in the context of 
+immune-cell visualization as well as indirect 
+cellular analysis enabled by methods 
+such as cell cytometry.  The 
+\CRtwo{} code will try to move in that 
+direction by pairing cytometric libraries 
+with an overarching image-analysis context.}
+
+
+\subsection{Vaccine Data and Geographic Information Systems}
+
+\p{Another area where vaccination data intersects with 
+image-processing is that of using 
+Geographic Information Systems (\GIS{}) to document 
+vaccination campaigns.  Geospatial mapping 
+has been used to support vaccination logistics 
+in several ways.  The most straightforward 
+is to map where vaccines have been 
+administered, though some projects described 
+by groups such as \GAVI{} (the Global Alliance for 
+Vaccines and Immunization) have used mapping 
+technology to represent the location of clinics, 
+and to visualize demographic or jurisdictional data 
+that factors in to advance planning for vaccination 
+campaigns.}
+
+\p{Geospatial mapping typically starts with 
+an underlying image --- specifically a 
+geographic map, which may be constructed by 
+software, derived from satellite or 
+street-view photography, or some combination 
+--- and then superimpose on the map-image 
+a data structure identifying geospatial 
+points or regions of interest.  Numerous 
+software packages exist to construct such 
+annotated maps, such as (in the \Qt{} 
+context) \ArcGIS{} and \QGIS{}.  In general, 
+using these libraries involves writing plugins 
+to import domain-specific data which includes 
+geotagging, along with relevant details for 
+each location.  These plugins therefore 
+provide data structures that supply 
+\GIS{} coordinates for sites of interest, 
+along with structured data about the 
+significance of each site; when 
+the map is visualized, this supplemental 
+data is converted to markings or text 
+viewed as superimposed on the map image, 
+providing helpful information to those 
+studying the map (either for navigational 
+purposes or as a visualization of 
+geospatial data).}  
+
+\p{In the vaccination context, geotagged 
+annotations might involve color overlays 
+documenting how extensively a vaccination 
+campaigned covered each locale within its 
+target area; or they might identify 
+fixed locations, such as schools or 
+clinics where a vaccine was administered.  
+Several such maps have been developed 
+for campaigns in particular countries, or 
+other geographic areas, but there does 
+not appear to be a general-purpose \Cpp{} 
+library for modeling and then geotagging 
+vaccination data so that the resulting 
+data collection can be used to populate a 
+\GIS{} plugin.  Therefore, the 
+vaccination/immunology toolkit described 
+in the previous subsection, providign code 
+for integrating immulogical and image-processing 
+data, will also include the framework 
+for vaccination-related \GIS{} plugins.}
+
+
+%, providing analogous 
+%models of application data as well as inter-application 
+%networking protocols.  }
+
+%As such, software published 
+%as part of the \CRtwo{} and \AIMConc{} will then use these 
+%ontologies to guide the operations of 
+%vaccinology and radiology research tools.}
+
+

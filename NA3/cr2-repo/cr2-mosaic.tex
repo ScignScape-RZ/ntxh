@@ -1,0 +1,2389 @@
+\documentclass[11pt,letterpaper]{article}
+
+
+% pmml  arff  openannotation
+
+%\usepackage[condensed,math]{anttor}
+%\usepackage[T1]{fontenc}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{tgtermes}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\usepackage{titlesec}
+
+%\usepackage{sectsty}
+%\sectionfont{\fontsize{13}{4}\selectfont}
+
+\titleformat{\section}
+  {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
+
+\titlespacing*{\section}
+{0pt}{4.5ex plus 1ex minus .1ex}{2.2ex plus .2ex}
+
+%\usepackage{mathptmx}
+
+\usepackage{eso-pic}
+
+%\setlength\parindent{0pt}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>1{
+\AtTextUpperLeft{
+\makebox[20.5cm][r]{
+\raisebox{-1.95cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{3pt}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(3,0){{\rule{4pt}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+\AddToShipoutPicture{%
+\ifnum\value{page}=1
+\put(257.5,942){%
+	\transparent{0.7}{
+		\includegraphics[width=0.2\textwidth]{logo.png}}}
+\put(59,953){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}WHITE PAPER}}}
+\fi
+}	
+
+
+
+\AddToShipoutPicture{%
+\ifnum\value{page}>1
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}} }
+
+%\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
+
+\ifnum\value{page}=23   %\pgfmathresult>0\relax
+\put(12,56){
+ {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
+
+   {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
+	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
+       \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
+      amy.neustein@verizon.net \textbullet{} \textbf{(917) 817-2184} }}}
+	 \end{minipage}}}}}}
+}
+\fi
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+%\setlength{\footskip}{7pt}
+
+\usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
+\geometry{left=.83in,top=.5in,right=.81in,bottom=1.2in} %margins
+
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\@part}{\par}{\quad}{}{}
+\patchcmd{\@part}{\huge}{\Large}{}{}
+\makeatother
+
+\renewcommand{\partname}{\hspace{-1em}Part}
+
+\renewcommand*\thepart{\Roman{part}:}
+
+\renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
+
+\renewcommand{\footnoterule}{%
+	\kern -3pt
+	\hrule width .92\textwidth height .5pt
+	\kern 10pt
+}
+
+
+\usepackage[hyphens]{url}
+\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
+{\scriptsize {\url{#1}}}}}}
+
+%\linespread{1.3}
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{textcomp}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\colorlet{blCyan}{cyan!50!blue}
+
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\newcommand{\colorq}[1]{{\color{logoOrange!70!black}{\q{\small\textbf{#1}}}}}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\colorlet{linkcolor}{flColor!60!red}
+
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta!30!logoBlue,
+	urlcolor=blue,
+    linkcolor=linkcolor!70!black,
+%    allcolors=blCyan!40!green
+}
+
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newlength{\bsep}
+\setlength{\bsep}{-1pt}
+\let\xbibitem\bibitem
+\renewcommand{\bibitem}[2]{\vspace{\bsep}\xbibitem{#1}{#2}}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+
+%\usepackage[T1]{fontenc}
+
+%\usepackage{aurical}
+% \Fontauri
+
+\usepackage{gfsdidot}
+\usepackage[T1]{fontenc}
+
+%\makeatletter
+%\f@family,  cmr, T1, n, m,
+%\f@encoding,
+%\f@shape,
+%\f@series,
+%\makeatother
+
+
+
+%\usepackage{LibreBodoni}
+
+%\usepackage{fontspec}
+%\setmainfont{QTBengal}
+
+\usepackage{relsize}
+
+\newcommand{\bref}[1]{\hspace*{1pt}\textbf{\ref{#1}}}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{10pt}\hspace*{12pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+\newcommand{\visavis}{vis-\`a-vis}
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\MThreeK}{{\color{blGreen!45!black}%
+{\fontfamily{qhv}\fontsize{10}{8}\selectfont {M3K}}}}
+
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\definecolor{tcolor}{RGB}{24,52,61}
+
+\newcommand{\CCpp}{\resizebox{!}{7pt}{\AcronymText{C}}/\Cpp{}}
+\newcommand{\NoSQL}{\resizebox{!}{7pt}{\AcronymText{NoSQL}}}
+\newcommand{\SQL}{\resizebox{!}{7pt}{\AcronymText{SQL}}}
+
+\newcommand{\SPARQL}{\resizebox{!}{7pt}{\AcronymText{SPARQL}}}
+
+\newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
+
+\newcommand{\HTXN}{\resizebox{!}{7pt}{\AcronymText{HTXN}}}
+
+\newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
+
+\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\AcronymText{H}}%
+\resizebox{!}{6.5pt}{\AcronymText{TXN}}}
+
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\AcronymText{\textcolor{tcolor}{HTXN}}}}
+
+\newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
+
+\newcommand{\UDpipe}{\resizebox{!}{7pt}{\AcronymText{UDpipe}}}
+
+\newcommand{\C}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+
+\usepackage{mdframed}
+
+\newcommand{\cframedboxpanda}[1]{\begin{mdframed}[linecolor=yellow!70!blue,linewidth=0.4mm]#1\end{mdframed}}
+
+
+\newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
+
+\newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
+\newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
+
+\newcommand{\AXF}{\resizebox{!}{7pt}{\AcronymText{AXF}}}
+
+\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
+\resizebox{!}{6.5pt}{\AcronymText{XF}}}
+
+
+\newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\AcronymText{AXF}}}
+
+\newcommand{\AXFD}{\resizebox{!}{7pt}{\AcronymText{AXFD}}}
+
+\newcommand{\CBICA}{\resizebox{!}{7pt}{\AcronymText{CBICA}}}
+
+\newcommand{\IORT}{\resizebox{!}{7pt}{\AcronymText{IORT}}}
+
+
+\newcommand{\SeDI}{\resizebox{!}{7pt}{\AcronymText{SeDI}}}
+\newcommand{\RSNA}{\resizebox{!}{7pt}{\AcronymText{RSNA}}}
+
+\newcommand{\CER}{\resizebox{!}{7pt}{\AcronymText{CER}}}
+\newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+
+\newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
+
+\newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
+
+\newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
+
+\newcommand{\RadLex}{\resizebox{!}{7pt}{\AcronymText{RadLex}}}
+
+
+\newcommand{\OMOP}{\resizebox{!}{7pt}{\AcronymText{OMOP}}}
+\newcommand{\PCORnet}{\resizebox{!}{7pt}{\AcronymText{PCORnet}}}
+\newcommand{\FHIR}{\resizebox{!}{7pt}{\AcronymText{FHIR}}}
+
+\newcommand{\CaPTk}{\resizebox{!}{7pt}{\AcronymText{CaPTk}}}
+
+\newcommand{\VIOLIN}{\resizebox{!}{7pt}{\AcronymText{VIOLIN}}}
+
+
+
+\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\AcronymText{A}}%
+\resizebox{!}{6.5pt}{\AcronymText{XFD}}}
+
+
+\newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
+
+\newcommand{\BioC}{\resizebox{!}{7pt}{\AcronymText{BioC}}}
+
+\newcommand{\CoNLL}{\resizebox{!}{7pt}{\AcronymText{CoNLL}}}
+\newcommand{\CoNLLU}{\resizebox{!}{7pt}{\AcronymText{CoNLL-U}}}
+
+\newcommand{\sapp}{\resizebox{!}{7pt}{\AcronymText{Sapien+}}}
+\newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
+\newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
+
+\newcommand{\ePub}{\resizebox{!}{7pt}{\AcronymText{ePub}}}
+
+%\lsLPF
+
+
+\newcommand{\GIT}{\resizebox{!}{7pt}{\AcronymText{GIT}}}
+
+%\definecolor{atColor}{RGB}{11, 71, 17}
+
+
+\DeclareMathVersion{fordg}
+\SetSymbolFont{letters}{fordg}{OML}{cmr}{b}{n}
+
+\definecolor{atcColor}{RGB}{96, 17, 12}
+\newcommand{\ATextCClr}[1]{\textcolor{atcColor}{\textbf{#1}}}
+
+\newcommand{\AIMConc}{\resizebox{!}{7.5pt}{\ATextCClr{AIM-Concepts}}}
+\newcommand{\lAIMConc}{\resizebox{!}{8pt}{\ATextCClr{AIM-Concepts}}}
+
+\newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATextCClr{HGXF}}}}
+\newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATextCClr{HGXF}}}}
+\newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATextCClr{HGXF}}}}
+
+\newcommand{\CRtwo}{{\resizebox{!}{7.5pt}{\ATextCClr{CR2}}}}
+\newcommand{\lCRtwo}{{\resizebox{!}{8pt}{\ATextCClr{CR2}}}}
+\newcommand{\sCRtwo}{{\resizebox{!}{6pt}{\ATextCClr{CR2}}}}
+
+
+\newcommand{\THQL}{\resizebox{!}{7.5pt}{\ATextCClr{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{8pt}{\ATextCClr{THQL}}}
+
+\newcommand{\HDICOM}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-DICOM}}}
+
+\newcommand{\hVaImm}{\resizebox{!}{7.5pt}{\ATextCClr{{\large h}-VaImm}}}
+
+
+\newcommand{\PhaonVI}{\resizebox{!}{7.5pt}{\ATextCClr{Phaon-VI}}}
+
+
+
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{{\mathversion{fordg}%
+\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+
+\newcommand{\lDgDb}{{\mathversion{fordg}%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+\newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
+\newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
+\newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
+\newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
+\newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
+
+\newcommand{\AI}{\resizebox{!}{7.5pt}{\AcronymText{AI}}}
+\newcommand{\lAI}{\resizebox{!}{8pt}{\AcronymText{AI}}}
+
+\makeatletter
+
+\newcommand*\getX[1]{\expandafter\getX@i#1\@nil}
+
+\newcommand*\getY[1]{\expandafter\getY@i#1\@nil}
+\def\getX@i#1,#2\@nil{#1}
+\def\getY@i#1,#2\@nil{#2}
+\makeatother
+	
+\newcommand{\rectann}[9]{%
+\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+({\getX{#6}+((#7-(#7*#9))/2)},{\getY{#6}+((#8-(#8*#9))/2)}) rectangle %
+({\getX{#6}+((#7-(#7*#9))/2)+#7*#9},{\getY{#6}+((#8-(#8*#9))/2)+#8*#9});}
+
+
+\definecolor{pfcolor}{RGB}{94, 54, 73}
+
+\newcommand{\EPF}{\resizebox{!}{7pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lEPF}{\resizebox{!}{8.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lsEPF}{\resizebox{!}{9.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+
+
+\newcommand{\XPDF}{\resizebox{!}{7pt}{\AcronymText{XPDF}}}
+
+\newcommand{\GRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
+\newcommand{\CAS}{\resizebox{!}{7pt}{\AcronymText{CAS}}}
+
+\newcommand{\lMOSAIC}{%
+\resizebox{!}{8pt}{\AcronymText{M}}%
+\resizebox{!}{6pt}{\AcronymText{OSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
+\newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
+
+\newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
+
+\newcommand{\CLang}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{7pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+\newcommand{\JSON}{\resizebox{!}{7pt}{\AcronymText{JSON}}}
+\newcommand{\UV}{\resizebox{!}{7pt}{\AcronymText{UV}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{7pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{7pt}{\AcronymText{IQmol}}}
+
+\newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
+
+\newcommand{\WhiteDB}{\makebox{WhiteDB}}
+
+\newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
+
+\newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
+
+\newcommand{\URI}{\resizebox{!}{7pt}{\AcronymText{URI}}}
+\newcommand{\DTD}{\resizebox{!}{7pt}{\AcronymText{DTD}}}
+
+\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+
+\newcommand{\JATS}{\resizebox{!}{7pt}{\AcronymText{JATS}}}
+
+
+\newcommand{\SDI}{\resizebox{!}{7pt}{\AcronymText{SDI}}}
+\newcommand{\SDIV}{\resizebox{!}{7pt}{\AcronymText{SDIV}}}
+
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+\newcommand{\lDgDb}{\makebox{\raisebox{-3pt}{%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+
+\newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
+
+
+\newcommand{\ViSion}{\resizebox{!}{7pt}{\AcronymText{ViSion}}}
+
+\newcommand{\CWL}{\resizebox{!}{7pt}{\AcronymText{CWL}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{7pt}{\AcronymText{3D}}}
+\newcommand{\TwoD}{\resizebox{!}{7pt}{\AcronymText{2D}}}
+
+\newcommand{\medInria}{\resizebox{!}{7pt}{\AcronymText{medInria}}}
+\newcommand{\ThreeDimViewer}{\resizebox{!}{7pt}{\AcronymText{3DimViewer}}}
+
+\newcommand{\FAIR}{\resizebox{!}{7pt}{\AcronymText{FAIR}}}
+
+\newcommand{\QNetworkManager}{\resizebox{!}{7pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{7pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{7pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{7pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\iXPDF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{XPDF}}}}
+
+\newcommand{\iEPF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{ETSpf}}}}
+
+\newcommand{\iSDI}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{SDI}}}}
+
+\newcommand{\iHTXN}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{HTXN}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\FASTA}{{\resizebox{!}{7pt}{\AcronymText{FASTA}}}}
+\newcommand{\SRA}{{\resizebox{!}{7pt}{\AcronymText{SRA}}}}
+\newcommand{\DNA}{{\resizebox{!}{7pt}{\AcronymText{DNA}}}}
+\newcommand{\MAP}{{\resizebox{!}{7pt}{\AcronymText{MAP}}}}
+\newcommand{\EPS}{{\resizebox{!}{7pt}{\AcronymText{EPS}}}}
+\newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
+\newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
+
+
+\newcommand{\OBO}{{\resizebox{!}{7pt}{\AcronymText{OBO}}}}
+
+\newcommand{\XOCS}{{\resizebox{!}{7pt}{\AcronymText{XOCS}}}}
+
+\newcommand{\ChemXML}{{\resizebox{!}{7pt}{\AcronymText{ChemXML}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{7pt}{\AcronymText{TeXMECS}}}
+
+% pmml  arff  openannotation
+
+\newcommand{\PMML}{\resizebox{!}{7pt}{\AcronymText{PMML}}}
+\newcommand{\ARFF}{\resizebox{!}{7pt}{\AcronymText{ARFF}}}
+\newcommand{\IeXML}{\resizebox{!}{7pt}{\AcronymText{IeXML}}}
+
+
+\newcommand{\NGML}{\resizebox{!}{7pt}{\AcronymText{NGML}}}
+
+
+\newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
+
+%\newcommand{\\WhiteDB{}}{\resizebox{!}{7pt}{\AcronymText{\WhiteDB{}}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{7pt}{\AcronymText{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\AcronymTextNC{\normalsize{MOSAIC}}}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\mAcronymText{VM}}
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{7pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{7pt}{\MOSAIC}}
+
+\newcommand{\LDOM}{\resizebox{!}{7pt}{\AcronymText{LDOM}}}
+\newcommand{\Cnineteen}{\resizebox{!}{7pt}{\AcronymText{CORD-19}}}
+
+\newcommand{\lCnineteen}{\resizebox{!}{7.5pt}{\AcronymText{CORD-19}}}
+
+
+\newcommand{\MOL}{\resizebox{!}{7pt}{\AcronymText{MOL}}}
+
+\newcommand{\ACL}{\resizebox{!}{7pt}{\AcronymText{ACL}}}
+
+\newcommand{\LXCR}{\resizebox{!}{7pt}{\AcronymText{LXCR}}}
+\newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
+\newcommand{\lsLXCR}{\resizebox{!}{9.5pt}{\AcronymText{LXCR}}}
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{7pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
+
+\newcommand{\lQt}{\resizebox{!}{8.5pt}{\AcronymText{Qt}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
+
+\newcommand{\QtSQL}{\resizebox{!}{7pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{7pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{7pt}{\AcronymText{PDF}}}
+
+\newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
+\newcommand{\SciXML}{\resizebox{!}{7pt}{\AcronymText{SciXML}}}
+
+
+
+\newcommand{\lGRE}{\resizebox{!}{7.5pt}{\AcronymText{GRE}}}
+
+\newcommand{\p}[1]{
+
+\vspace{1em}#1}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+\renewcommand{\thesection}{\protect\hspace{-1.5em}}
+%\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+%\newcommand{\dsC}{}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\ltextds}[1]{{\fontfamily{lmdh}\fontsize{12}{11}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+\newcommand{\ldsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+%\usepackage{listings}
+
+\colorlet{dsl}{purple!20!brown}
+\colorlet{dslr}{dsl!50!blue}
+
+\setlist[description]{%
+  topsep=11pt,
+  labelsep=22pt, leftmargin=10pt,
+  itemsep=13pt,               % space between items
+  %font={\bfseries\sffamily}, % set the label font
+  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\let\OldTeX\TeX
+
+\renewcommand{\TeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldTeX}}}
+
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\setlength\parindent{0pt}
+%\setlength\parindent{24pt}
+%\input{commands}
+
+
+\newcommand{\lun}[1]{\raisebox{-4pt}{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\textcolor{tcolor}{#1}}}}}\vspace{-2pt}}
+
+\newcommand{\inditem}{\itemindent10pt\item}
+
+\usepackage{soul}
+
+\definecolor{hlcolor}{RGB}{114, 54, 203}
+\colorlet{hlcol}{hlcolor!35}
+\sethlcolor{hlcol}
+
+\makeatletter
+\def\SOUL@hlpreamble{%
+	\setul{}{3ex}%         !!!change this value!!! default is 2.5ex
+	\let\SOUL@stcolor\SOUL@hlcolor
+	\SOUL@stpreamble
+}
+\makeatother
+
+\usepackage{scrextend}
+%\vspace*{3em}
+\newenvironment{mldescription}{\vspace{1em}%
+  \begin{addmargin}[4pt]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1][]{\vspace{5pt}\par\medskip%
+%\colorbox{hlcolor}{\textbf{##1}}\quad}\indent
+\hl{ \textbf{##1} }\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
+
+\usepackage{marginnote}
+
+\newcommand{\mnote}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{1em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnotel}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{-4em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnoteh}[3]{%
+	\vspace*{#1}
+	\reversemarginpar
+	\raisebox{#2}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#3}}}
+				\end{mdframed}}
+			}[3em]}}
+
+
+\newcommand{\mnoteb}[1]{%
+	\vspace*{1em}
+	\reversemarginpar
+	\raisebox{1em}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#1}}}
+				\end{mdframed}}
+			}[3em]}}
+	
+\usepackage{wrapfig}
+
+\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{shapes.arrows}
+
+\newcommand{\curicon}[2]{%
+	\node at (#1,#2) [
+	draw=black,
+	%minimum width=2ex,
+	inner sep=.7pt,
+	fill=white,
+	single arrow,
+	single arrow head extend=3pt,
+	single arrow head indent=1.5pt,
+	single arrow tip angle=45,
+	line join=bevel,
+	minimum height=4.6mm,
+	rotate=115
+	] {};
+}
+
+\makeatletter
+\def\@cite#1#2{[\textbf{#1\if@tempswa , #2\fi}]}
+\def\@biblabel#1{[\textbf{#1}]}
+\makeatother
+
+
+%\let\origref\ref
+%\renewcommand{\ref}[1]{{\LARGE #1}}
+
+%\def\ref#1{\textbf{\origref{{\LARGE #1}}}}
+
+\setlength{\footnotesep}{0pt}
+
+\renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
+
+
+\newcommand{\LVee}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\vee$}}}}}
+\newcommand{\LWedge}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\wedge$}}}}}
+
+\renewcommand{\LVee}{}
+\renewcommand{\LWedge}{}
+
+
+\urlstyle{same}
+
+\usepackage[preserveurlmacro]{breakurl}
+
+\newcommand{\bhref}[1]{\href{#1}{\burl{#1}}}
+
+%\setmainfont{QTChanceryType}
+
+\begin{document}
+
+\setlength{\skip\footins}{18pt}	
+	
+{\linespread{1.25}\selectfont
+
+\vspace*{1.5em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+\colorlet{ctmcyan}{ctmpppp!70!cyan}
+
+\colorlet{ctmppppy}{ctmppp!60!orange}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=\textwidth,
+colback=ctmppppy!40,
+%colback=ctmcyan!50,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+%\hspace{22pt}
+\begin{minipage}{\textwidth}	
+\begin{center}	
+{\setlength{\fboxsep}{32pt}
+	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{New Database Engineering and 
+Archive Construction Technology to Accelerate Covid-19 Research}
+}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+%\vspace{1em}
+\vspace*{2pt}
+\begin{center}
+\parbox{.88\textwidth}{%
+{\fontfamily{fvs}\fontsize{9}{9}\selectfont   
+LTS (Linguistic Technology Systems) is founded by 
+Amy Neustein, Ph.D., Series Editor of {\textbf{Speech Technology 
+and Text Mining in Medicine and Health Care}} (de Gruyter); 
+Editor of {\textbf{\makebox{Advances} in Ubiquitous Computing: 
+Cyber-Physical Systems, Smart Cities, 
+and Ecological \makebox{Monitoring}}} 
+(Elsevier, 2020); and 
+co-author (with Nathaniel Christen) 
+of {\textbf{Cross-Disciplinary Data Integration 
+and Conceptual Space Models
+for Covid-19}} 
+(Elsevier, forthcoming).}}\end{center}
+
+\vspace*{-4pt}	
+\section{Executive Summary}
+\p{LTS is building SARS-CoV-2/Covid-19 repositories 
+to accelerate scientific discovery and therapeutic 
+intervention.  To do so, LTS is developing a 
+pair of data and code repositories 
+to advance both Covid-19 research and new 
+methodologies for data-integration and \AI{} research in general.  
+The first of these repositories, the 
+\q{Cross-Disciplinary Repository 
+for Covid-19 Research} (\CRtwo{}), is \textit{empirically-focused} 
+--- aggregating published data sets into a common research 
+platform so as to promote Covid-19-related data mining.  
+The second of these repositories, \q{\lAI{} Methodology and 
+Conceptual Space Theory} (\AIMConc{}), is \textit{methodology-focused} 
+--- providing a collection of code libraries implementing 
+techniques applicable both to data integration and to Artificial Intellegence 
+research.  \lAIMConc{} prioritizes analytic methods and 
+data representations --- such as hypergraphs, fuzzy sets, and 
+conceptual spaces --- which have broad applications in 
+software engineering as well as \AI{}.  Both \CRtwo{} and 
+\AIMConc{} are companion resources to the forthcoming Elsevier 
+volume (authored by the LTS team) titled \textit{Cross-Disciplinary Data 
+Integration and Conceptual Space Models
+for Covid-19.}  In this volume, we will provide concrete 
+examples of Covid-19 data integration/analytics by 
+examining data sets included in the \CRtwo{} repository; 
+we will likewise demonstrate analytic techniques by examining 
+computer code included in the \AIMConc{} repository.}
+
+\p{\AIMConc{}, with respect to methodology, will focus on 
+Conceptual Space Theory, which is  
+a valuable unifying framework connecting to both 
+fuzzy sets as an \AI{} analytic strategy and to 
+hypergraph models as a data representation strategy.  
+In addition to \AIMConc{} providing \AI{} code libraries based 
+on Conceptual Spaces, \CRtwo{} will likewise feature  
+conceptual space models, applying this paradigm as a framework 
+for describing research data.  To this end, 
+we will be introducing an updated version of 
+Conceptual Space Markup Language (\CSML{}) 
+--- expanded in order to serve as a general-purpose 
+dataset-description language.  \lCRtwo{} and \lAIMConc{} will be 
+connected by a new hypergraph database protocol, which 
+we are calling 
+\q{Transparent Hypergraph Query Language} (\THQL{}).  
+The \CRtwo{} archive will include an implementation 
+of this protocol used to aggregate \CRtwo{} data into 
+a common format.  Likewise, the methodology presented in 
+the \AIMConc{} archive will be examined via demonstrations 
+of how techniques and algorithms of the \AIMConc{} libraries 
+can be applied to data hosted in a \THQL{} database.  
+The \THQL{} technology has many concrete applications 
+outside the context of Covid-19, penetrating vertical 
+markets such as pharmaceuticals, manufacturing, fintech, 
+healthcare, educational software, and bioinformatics.}
+
+\p{The principle goal shared by both \CRtwo{} and \AIMConc{} is 
+to provide a \textit{common} programming infrastructure which facilitates 
+the implementation of algorithms and \GUI{} components that 
+synthesize data across different scientific fields and 
+methodologies.  This common infrastructure is based primarily 
+on \Qt{} --- a \Cpp{} application-development framework --- and 
+secondarily on established scientific/medical code 
+projects such as \CBICA{} (Center for Biomedical Image 
+Computing \& Analytics) and ReproZip (a tool for packaging 
+scientific software dependencies).  In addition to utilities 
+and build tools, the programming core for \CRtwo{} and \AIMConc{} 
+will include \Cpp{} libraries to read and manipulate 
+data in formats commonly used for clinical, diagnostic, 
+and medical-outcome reporting, such as \OMOP{} 
+(from the Observational Medical Outcomes Partnership), 
+\PCORnet{} (defined by the Patient-Centered Clinical 
+Research Network), \FHIR{} (Fast Healthcare Interoperability 
+Resources), \RadLex{} (Radiology Lexicon), and \LOINC{} 
+(Logical Observation Identifiers Names and Codes).\footnote{%
+Whereas these formats are normally used in the context of 
+relational databases, the \CRtwo{} and \AIMConc{} programming 
+tools are oriented toward custom data mining 
+solutions as well as toward the implementation 
+of specialized desktop-style software applications 
+employing special-purpose \GUI{} classes.}
+In general, \CRtwo{} and \AIMConc{} are structured 
+in such a way that these repositories provide 
+a development environment for custom application 
+design, with an emphasis on \GUI{} 
+implementations using the \Qt{} framework. 
+%While these data formats are normally 
+%used in the context of relational databases, the 
+%\CRtwo{} and \AIMConc{} programming tools allows developers 
+%to manipulate clinical data in formats natively recognized 
+%by data-mining and \GUI{} code, which enables programmers 
+%to apply sophisticated algorithms to clinical data and 
+%also to present human users with convenient desktop-style 
+%applications to initiate and view the results of these 
+%analytic processes.  
+Appendix 1 to this paper presents 
+more information about the integration of 
+clinical data with \GUI{} applications, with 
+specific focus on integrating radiological and 
+Comparative Effectiveness data.}
+
+%  Appendix 1 to this paper presents 
+%more information about Medical Outcomes code incorporated 
+%into \CRtwo{} and \AIMConc{}.}
+
+\p{In the specific field of radiological medical and diagnostic imaging, 
+recent research has focused on how to effectively connect 
+radiological data with medical outcomes and Comparative 
+Effectiveness Research (\CER{}).  Traditionally, 
+medical imaging formats such as \PACS{} (Picture Archiving 
+and Communication System) and \DICOM{} (Digital Imaging 
+and Communications in Medicine) have been largely separated 
+from clinical records.  As a result, it has been difficult for 
+clinical outcome researchers to cross-reference radiological data with 
+clinical reports (clinical narratives, treatment protocols, etc.), 
+indicating patient/subjects' subsequent course of treatment and 
+corresponding outcomes.  Attempts have been 
+made to remedy this information gap by the semantic 
+annotation of radiological findings, leading to the development 
+of imaging-related ontologies such as \RadLex{} and \SeDI{} 
+(Semantic \DICOM{} Ontology).  One goal of 
+\CRtwo{} is, accordingly, to generalize these semantic-imaging 
+frameworks to the more flexible paradigms of 
+\textit{hypergraph} ontologies --- schema defined 
+on hypergraph instances, similar to how 
+conventional ontologies define constraints on 
+directed, labeled, \RDF{} (Resource Description Framework) 
+style graphs.}
+
+\p{Another domain which has gained 
+significant public attention in the Covid-19 environment 
+is vaccine engineering. 
+In the field of vaccine development and 
+infectious-disease research, conducting vaccine 
+trials and vaccination campaigns 
+generates a diverse spectrum of data profiles. 
+This information ranges from clinical observational reports of 
+the effectiveness of candidate vaccines during their development, to 
+reports on the extent and effectiveness of immunization projects 
+(which often depends on socioeconomic/geographic/political 
+information in addition to the biomedical data).  Moreover, 
+scientific understanding of the effectiveness of vaccines 
+depends on assessments of the immunological response 
+of vaccinated individuals (which may incoporate data from 
+blood tests, molecular imaging, cytometry, serological profiling, 
+and so forth) --- generating fundamentally different forms of data than 
+encountered in the context of vaccine trials and 
+vaccination compaigns.  Comprehensive support for vaccine-related 
+data sets, therefore, requires software-development 
+technologies that would be able to integrate 
+and represent information from a wide range of 
+laboratory and in-the-field methods.  As with radiology/outcomes 
+integration, this heterogeneous data profile has 
+led to the design of \RDF{} ontologies, notably the 
+\q{VIOLIN} Vaccine Ontology.  Here again, \CRtwo{}, 
+in order to accelerate research and documentation related to 
+vaccine development, will innovatively expand 
+the Vaccine Ontology to comport with hypergraph ontologies.  
+More information on hypergraph ontologies, 
+with specific reference to radiological and vaccine-related lexicons, 
+is provided in the appendices.}
+
+\section{Introduction}
+\p{In an effort to accelerate scientific discovery and therapeutic 
+intervention for Covid-19, LTS is engaged in the curation of 
+two new repositories: the 
+\q{Cross-Disciplinary Repository 
+for Covid-19 Research} (\CRtwo{}); and the 
+\q{\lAI{} Methodology and Conceptual Space Theory}
+(\AIMConc{}).  The purpose of these repositories is to 
+centralize \textit{disparate} Covid-19-related data and 
+code into a common research platform.   
+This code and data, as much as possible, will be marshaled into a common, 
+hypergraph-based representation format, and a 
+common \Cpp{}-based programming environment.  In 
+building the \CRtwo{} repository, 
+LTS will develop and demonstrate new database engineering 
+and dataset/repository construction 
+technologies.  Part I of this paper will outline the \CRtwo{} 
+and \AIMConc{} repositories; Part II will discuss the new technologies 
+in greater detail.  These technologies have deep market 
+penetration-potential in many areas, including, but not limited to, 
+pharmaceuticals, manufacturing, fintech, 
+healthcare, educational software, and bioinformatics.}
+
+\p{Some of the \CRtwo{} code/data will be hosted on 
+GitHub at \href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/CRCR} 
+(for data aggregation) and 
+\href{https://github.com/Mosaic-DigammaDB/CRCR}{Mosaic-DigammaDB/LingTechSys} 
+(for code previews).  
+The latter repository includes preview code sampling 
+database engine features, such as the logic for constructing a 
+database in shared memory, encoding data types for persistence, 
+and so forth.  
+The data management tools developed 
+for the \CRtwo{} repository have a broad range of use-cases, and 
+can be customized for different projects.  
+Companies or research groups interested in a more 
+substantial code preview are invited to contact LTS
+to discuss their projects and requirements in greater detail.}
+
+\p{The main challenge when curating a 
+data repository such as \CRtwo{} is reconciling 
+heterogeneous data formats.  
+In response to this challenge, LTS has 
+focused on hypergraph-based data models 
+which can unify many different information 
+structures into one common structure.  
+In particular, \CRtwo{} will introduce 
+a special \q{Hypergraph Exchange Format} (\HGXF{}) 
+which can take the place of disparate 
+tabular or graph file formats 
+(comma-separated values, numeric python, 
+spreadsheets, graph-network serializations, 
+etc.), so as to merge data sets into a common 
+\textit{machine-readable} archive.  In addition, \CRtwo{} will 
+introduce a new protocol for engineering 
+hypergraph databases, called 
+\q{Transparent Hypergraph Query Language}
+(\THQL{}).  Databases conformant to the \THQL{} model will 
+be able to export data in hypergraph-based 
+formats, thereby generating data sets 
+which can be used as published, citable 
+Research Objects.  \lCRtwo{} will demonstrate 
+\THQL{} via a new database engine called \q{DigammaDB} 
+(or \DgDb{}) which 
+serves as a \q{Reference Implementation} for 
+\THQL{}.  In \CRtwo{}, \DgDb{} functions as 
+a prototype and reference example for \THQL{}, used 
+to curate data sets before their final 
+form is exported into the main data repository.  
+LTS can also customize commercial versions of a \THQL{} 
+engine tailored to the requirements of 
+individual projects.} 
+    
+\p{\lTHQL{} is designed with a priority on 
+application development.  In particular, 
+any instantiation of \THQL{} should 
+provide data persistence capabilities 
+through (as much as possible) self-contained 
+code libraries that can be included in 
+source-code form within an overall application.  
+\lTHQL{} is designed to integrate seamlessly 
+with native, desktop-style standalone 
+applications.  In short, \THQL{} 
+represents an unprecedented combination of 
+native desktop-style software development 
+and hypergraph database engineering.} 
+
+\p{Complementing \THQL{}'s application-development 
+focus, \CRtwo{} will also introduce \q{Dataset Creator,} 
+(\dsC{}), a new tool for curating research data sets.  
+The main feature of Dataset Creator is 
+its use of native software components 
+(called \q{Dataset Applications}), 
+allowing researchers to view, manipulate, and 
+reuse research data.  In sum, the typical 
+Research Object built with \dsC{} 
+will include self-contained source code 
+implementing a customized desktop application 
+providing access to the accompanying data set.  
+In addition to \GUI{} code, each 
+Dataset Application will supply \q{data-access} 
+code libraries for 
+parsing the raw data-set files, so as to obtain 
+the information visualized within the 
+\GUI{} classes of the Dataset Application.  
+These data-access libraries offer machine-readable access 
+to the raw data, permitting subsequent researchers to 
+reuse the data-access software libraries so as to transform, 
+filter, or analyze the published data in 
+the context of replication studies and/or 
+novel research projects.} 
+  
+\p{Development of \THQL{} and \dsC{} is 
+concomitant with \CRtwo{}; the \CRtwo{} repository will 
+provide a practical test-bed for validating 
+this new technology.  Accordingly, the 
+following sections will describe \CRtwo{} 
+in greater detail, followed afterward by 
+sections offering more information about 
+\THQL{} and \dsC{}.}
+
+\part{The Covid-19 Repository}
+\section{The Cross-Disciplinary Repository for Covid-19 Research}
+\p{The sudden emergence of Covid-19 as a global crisis has 
+cast a spotlight on computational and technological challenges 
+which, in the absence of a catastrophic pandemic, would 
+rarely rise to public attention.  In particular, an effective 
+response to the dangers of \makebox{SARS-CoV-2} requires coordinated 
+policy making integrating diverse modes of scientific inquiry.  
+Genomic, biomolecular, epidemiological, socio-demographic, clinical, 
+and radiological information are all pertinent to Covid-19.  
+In this environment, it is important that the 
+empirical foundations for expert recommendations --- which 
+in turn drive public policies of enormous social and 
+economic consequence --- be transparently documented 
+and critically examined.  The proper synergy between government 
+and science depends on data centralization: given 
+the gaps in our current Covid-19 knowledge, it is 
+understandable that different jurisdictions will craft responses to 
+the pandemic in different ways.  There is no central authority 
+with sufficient epistemic force to legitimize homogeneous 
+mandates across the entire country.  However, such 
+policy differences should be a consequence of alternative interpretations of 
+scientific knowledge or the diverse needs of local communities  
+--- rather than being a haphazard consequence of governments 
+working with divergent, competing, and poorly integrated data.}
+
+\p{The current administration, along with numerous corporate and academic 
+entities, has clearly recognized the need for a more 
+centralized paradigm for sharing Covid-19 data.  For example, 
+the White House spearheaded a scientific initiative to 
+develop \Cnineteen{}, an open-access corpus of over 46,000 
+peer-reviewed publications related to Covid-19, which 
+were transformed into a common machine-readable representation 
+so as to promote text and data mining.  Similarly, 
+large institutions such as Google, Johns Hopkins, and 
+Springer Nature have all implemented some form of coronavirus 
+data-sharing platform targeted to both scientists and 
+policy makers.  However, these two aspects of the 
+corporate/academic contributions to Covid-19 data sharing 
+(exemplified by the \Cnineteen{} White House initiative and by 
+institution-generated portals, respectively) 
+have been incomplete, for opposite but complementary 
+reasons.  Specifically, \lCnineteen{} is highly structured and tightly 
+integrated, but it focuses primarily on text mining and 
+scientific documents, not \textit{research} data.  
+While it is possible to find data 
+sets about Covid-19 through \Cnineteen{}, the 
+techniques to do so are both cumbersome and non-scalable.  
+On the other hand, projects such as the Johns Hopkins coronavirus 
+\q{dashboard} provide accessible data sets, yet these 
+projects are isolated and do not offer the level of 
+structure and integration evinced by \Cnineteen{}.  In 
+short, an optimal Covid-19 research platform 
+would merge the structural text-mining rigor of 
+\Cnineteen{} with the data-centric focus of  
+isolated projects that share Covid-19 data 
+with the scientific community, policy makers, 
+and the general public.}
+
+\p{The benefit of \CRtwo{} 
+is that it can accelerate Covid-19 research by 
+(1) pooling a diverse collection of data sets into a 
+single resource which scientists can utilize; 
+(2) serving as the prototype for larger research 
+portals that can aggregate new Covid-19 data 
+that will emerge from hospitals, labs, and 
+academic institutions in the future; (3) formalizing 
+a framework for aggregating patient narratives 
+to accurately capture first-hand subjective symptomatology of 
+the patient suffering from Covid-19; and 
+(4) accelerating the implementation of novel 
+data-integration and software-development 
+technologies which can contribute to scientific 
+progress \visavis{} Covid-19 
+in particular, and biomedical/scientific computing 
+methodology in general.  These principles, in turn, 
+will shape the design of \CRtwo{}.  An ideal data-sharing 
+ecosystem should merge data from multiple sources, but should do so 
+in a fashion which yields a machine-readable totality, 
+analogous to \Cnineteen{}'s structuration with respect to 
+text mining.  The merit of \CRtwo{} therefore lies not 
+only in the data which it will encompass but also in 
+novel technology that it will concretize for constructing 
+data repositories adhering to these goals 
+--- aggregating data, but also instantiating novel 
+data-integration and database engineering strategies.}
+
+\p{Given these varying goals, \CRtwo{} can provide value at different 
+scales of realization.  Relatively small data 
+sets serve several scientific and computational 
+purposes: (1) they can provide researchers 
+with a mental picture of how data in different 
+disciplines, projects, and experiments is structured; 
+(2) they can serve as a prototype and testing 
+kernel for technologies implemented to manipulate 
+data in relevant formats and encodings; and 
+(3) they can lay the foundation for data-integration 
+strategies.  For example, when designing a 
+representation format and/or implementing code 
+to merge different data formats into a single 
+structure (or meta-structure), it is useful 
+to work with small, representative examples 
+of the data structures involved, so as not 
+to complicate the integration logic with 
+computational details solely oriented to 
+scaling up the data-management logistics.  
+As a result, \CRtwo{} can provide a 
+testbed for implementing data-integration 
+technologies which can scale up as needed.  
+To fulfill this mission, \CRtwo{} can aggregate 
+relatively small data sets which have 
+previously been published on academic and research 
+portals, such as Springer Nature, Dryad, and DataVerse.  
+At the same time, a more substantial 
+(and not necessarily fully open-access) Covid-19 
+data-set collection would also be beneficial to the 
+scientific and policy-making community.  Ideally, then, 
+\CRtwo{} will be paired with a larger technology which shares 
+a similar implementational strategy but with different 
+accession paradigms, allowing for an open-ended 
+collection of Covid-19 data which users may 
+selectively access (instead of a single package 
+that users may acquire as an integrated resource).  
+The common denominator in both cases 
+(whether the focus is on relatively smaller or 
+larger data sets) is the 
+importance of deploying novel and contemporary 
+data-integration techniques to centralize 
+Covid-19 research as much as possible.  
+Accordingly, this summary will briefly explain 
+how \CRtwo{} can accelerate Covid-19 data integration 
+on both a practical and technological level.}
+ 
+\section{Methodology for Covid-19 Data Integration}
+\p{As indicated above, pertinent Covid-19 data is drawn 
+from multiple scientific disciplines.  On a technological level, 
+Covid-19 data is documented via a wide array of file 
+types and data formats.  This diversity presents technological 
+challenges: if a Covid-19 information space encompasses 
+files representing 25 different incompatible 
+formats, users would need 25 different technologies 
+to fully benefit from this data.  In many 
+cases, however, data incompatibilities are 
+merely superficial --- an important subset of 
+Covid-19 data, for example, has a common 
+tabular meta-model, even if the data is 
+realized in discordant technologies (spreadsheets, 
+relational databases, comma-separated-value or 
+Numeric Python files, and so forth).  Applying \CRtwo{}'s technology, 
+one level of data integration can thus 
+be achieved simply by encoding tabular 
+structure into a common representation: any field in a table 
+can be accessed via a record number and a column name and/or 
+index.  In some cases, more rigorous integration is also 
+possible --- for example, by identifying situations where 
+columns in one table correspond semantically or conceptually 
+to those in another table.  In either case, 
+it is reasonable to assume that a single abstract data 
+format lies behind surface data-expression in patterns 
+such as spreadsheets and comma-separated values 
+(\CSV{}), so that all files in an 
+archive encoding spreadsheet-like data can be 
+migrated to a common model.}
+
+\p{Other forms of clinical and epidemiological inputs are often 
+more amenable to graph-like representations.  For instance, 
+trajectories of viral transmission through 
+person-to-person contact is obviously an instance 
+of social network analysis.  Similarly, models of 
+clinical treatments and outcomes can take graph-like 
+form insofar as there are causal or institutional 
+relations between discrete medical events: 
+a certain clinical observation \textit{causes} a 
+care team to request a laboratory analysis, 
+which \textit{yields} results that \textit{factor} 
+into the team's decision to \textit{administer} some 
+treatment (e.g., a drug \textit{from} a particular 
+provider \textit{with} a specific chemical structure), which 
+observationally \textit{results} in the patient improving 
+and eventually \textit{being} discharged.  In short, 
+patient-care information often takes the form 
+--- at least conceptually --- of a network comprised 
+of different \q{events,} each event involving some 
+observation, action, intervention, or decision made 
+by care providers, and where the important data 
+lies in how the events are interconnected: both their 
+logical relationships (e.g., cause/effect) and their 
+temporal dynamics (how long before a drug leads to a 
+patient's improvement; how much time elapses between admission to 
+a hospital and discharge).  These graph-like representations 
+are a natural formalization of \q{patient-centered} data 
+models.}
+
+\p{Using \CRtwo{}'s associated software 
+(for example, importing Covid-19 data sets into a 
+\THQL{} database), a higher level of 
+data integration can then be 
+achieved by merging tabular and graph-like models into a 
+single \textit{hypergraph} format.  A 
+significant subset of Covid-19 data (or, more generally, 
+any clinical/biomedical information) 
+conforms to either tabular or graph structures; 
+thus it is feasible to unify all of this information 
+into a common framework.  A graph-plus-table 
+architecture is generally considered some form of 
+Hypergraph model, and indeed \CRtwo{} adopts a hypergraph 
+paradigm to merge many different sorts of information into a 
+common structure.  In particular, \CRtwo{} introduces 
+a new \q{Hypergraph Exchange Format} (\HGXF{}) which 
+can provide a text encoding of many files that, 
+when originally published, embodied a diverse 
+array of file-types requiring a corresponding 
+array of different technologies.  \lCRtwo{} 
+will include specialized computer code that 
+would enable machine-readability of the \HGXF{} files, 
+and use them to create hypergraph-database instances.  
+In short, \CRtwo{} will promote Covid-19 data integration 
+by translating a wide range of files into a common 
+\HGXF{} format.\footnote{\CRtwo{} data sets 
+are not required to compile all files 
+to a hypergraph format; in particular, 
+sciences requiring substantial quantitative 
+analysis --- e.g., biomechanics or genomics --- 
+express data via encodings optimized for relevant 
+mathematical operations, and have parser libraries 
+optimized for these specific formats.  For 
+these files \sCRtwo{} will generally provide an 
+\sHGXF{} encoding supplying data 
+\textit{about} the original file, with information 
+concerning the file type, preferred software components 
+for viewing/manipulating its data, etc.,  
+so that the contents of non-\sHGXF{} files 
+can be indirectly included into the \sCRtwo{} 
+hypergraph-based ecosystem.}}
+
+\section{Hypergraph Data Models and Multi-Application Networks}
+\p{As has been outlined thus far, via the \CRtwo{} 
+technology most Covid-19 data can be wholly or partially integrated 
+into a single hypergraph framework, which accordingly simplifies 
+the process of designing software applications and 
+algorithms to analyze and manipulate this data.  
+Specifically, software components can employ 
+a single code library to obtain, read, consume, 
+and store data, rather than needing to re-implement 
+this logic for a large number of different file formats 
+and/or database models.}
+
+\p{Quality software (especially in the clinical and 
+biomedical context) demands a balance between 
+applications which are either too broad or too narrow 
+in scope.  On the one hand, doctors often complain 
+that homogeneous Electronic Health Record systems (where 
+every digital record or observation is managed by a single 
+all-encompassing application) are unwieldy and hard to work 
+with.  This is understandable, because the clinical tasks 
+of health care workers with different specializations can be very 
+different.  On the other hand, doctors also complain about 
+software and information systems which are so balkanized 
+that they must repeatedly switch between different, non-interoperable 
+applications.  In short, clinical, diagnostic, and research software 
+should be neither too homogeneous nor too isolated; finding the 
+proper balance between these extremes is, no doubt, 
+a major challenge to the usability of electronic health 
+systems going forward.}
+
+\p{Against this background \CRtwo{} demonstrates novel 
+solutions to this problem: it focuses on the dimensions 
+of data acquisition and management that are specific 
+to individual scientific or medical specializations, 
+while also identifying requirements that are 
+consistent across domains.  Scientific software 
+generally needs to hone in 
+on the data visualization and analytic 
+requirements of particular disciplines; for example, 
+biochemists use different programs than 
+astrophysicists.  However, much 
+of the code underlying scientific applications 
+has nothing to do with these high-level 
+models or theories, but is simply a 
+fulfillment of basic data-management 
+functionality --- data storage, accession, provenance, 
+searching, user validation, and so forth.  
+In effect, the computational requirements 
+of scientific and biomedical software can 
+be partitioned into two classes: (1) 
+domain-specific logic which reflects the 
+quantitative or theoretical models of 
+narrow scientific fields; and (2) 
+data-management logistics which can be 
+realized within a central access hub, rather 
+than being re-implemented by each application 
+in isolation.}
+
+\p{In short, \CRtwo{} architecture  
+conceives of a central hub responsible for storing 
+data and serving as a common access point 
+--- providing the \q{gateway} where authorized 
+users can gain access to heterogeneous information 
+spaces utilized by an array of domain-specific 
+software applications.  Since peer applications  
+would not be directly responsible for data persistence 
+or user identity management, they can focus 
+on their specific data analysis and visualization 
+capabilities.  The central hub, serving multiple 
+peer applications, is then a heterogeneous data space 
+managing information from multiple applications while 
+also tracking information about the applications 
+themselves: helping users to identify and launch the 
+software which is most directly relevant to their 
+clinical or research needs at the moment.  Meanwhile, 
+because peer applications are jointly connected to a 
+central hub, it is possible to implement scientific 
+workflows where one application may send and receive 
+data from its peers, allowing applications to complement 
+each others' capabilities.}
+
+\p{This multi-application networking architecture 
+has precedents in some of the current database and 
+engineering technologies.  For example, many hospitals and 
+medical institutions employ some version of a 
+\q{Data Lake,} pooling disparate data sources into 
+a heterogeneous aggregate which is then accessed 
+by multiple client applications.  Similarly, Machine Learning 
+and Artificial Intelligence often adopts \q{software agents} 
+or analytic modules in contexts such as Online 
+Analytic Processing, which again represent semi-autonomous 
+software components sharing an originary 
+data hub.  Web applications, too, often act as domain-specific 
+subsidiaries deferring operational requirements, such 
+as user authentication or transaction processing, to a 
+central web service.  The limitation of multi-application 
+networks in these existing contexts are that the 
+software agents involved are generally \q{lightweight,} 
+with relatively primitive user-interface design.  
+By contrast, the hypergraph technology introduced with \CRtwo{} 
+will support multi-application networking in the context of more 
+substantial desktop-style scientific applications.  In sum, 
+the novel hypergraph technology developed by LTS offers a 
+hybrid of the development methodologies 
+employed for desktop scientific software and those 
+applicable to multi-agent heterogeneous data stores, like 
+a Semantic Data Lake.  To accomplish these goals, 
+\CRtwo{} will utilize 
+a new hypergraph database engine, coded in the \Cpp{} 
+programming language, which has a unique focus on 
+supporting native \GUI{} applications from the ground 
+up, including persisting application state and 
+storing application documentation within 
+the database itself.}
+
+\section{A New Paradigm for Data Sharing and Data Transparency}
+\p{One exceptional feature of Covid-19 research is the 
+extent of public attention focused on scientific discoveries 
+about the disease.  Academic and commercial research teams 
+find themselves in an unprecedented situation where 
+there is unusual pressure to accelerate the 
+Research and Development process, and a concomitant demand for 
+a novel level of transparency and openness.  For example, 
+vaccine development protocols are being fast-forwarded 
+to take months instead of years, and information about 
+the development process (such as trial results and 
+scheduling) will likely be shared with the public much 
+more than is standard practice.  This new reality, 
+in turn, calls for a commensurate evolution in 
+the technology for public data-sharing.}
+
+\p{In conventional biomedical R\&D, much of the research 
+data is proprietary, and revealed only in restricted 
+contexts to select parties (such as the Food and Drug 
+Administration).  Data which \textit{is} then publicly shared 
+tends to be tied to published research papers 
+in peer-reviewed literature, primarily read 
+by a relatively small, specialist audience.  All of this is 
+changing with SARS-CoV-2: companies pursuing 
+Covid-19 R\&D (in the context of vaccine trials, for example) 
+are facing pressure to publicly share their results 
+as soon, and as transparently, as possible; and 
+policy makers, scientists, and journalists are no 
+less looking for quick access to research data directly, 
+rather than circuitously through academic publications.}
+
+\p{\lCRtwo{} will introduce the new Dataset Creator technology 
+targeted toward this new environment of direct, transparent 
+data-access (\dsC{} will be discussed in greater detail below).  
+Data sets created 
+via this technology therefore implement the \q{Research Object Protocol,} 
+which mandates that research data be bundled with code allowing 
+scientists to analyze and manipulate the information in the 
+corresponding data set.  The Research Object framework was 
+designed by a consortium of academic and governmental 
+entities, such as the National Institutes of Health, to 
+promote a paradigm for data publishing which prioritizes 
+multi-faceted research tools over \q{raw} data that 
+can be difficult to reuse in the absence of supporting code.  
+In particular, Research Objects 
+should be (as much as possible) \textit{self-contained,} 
+which means that scientists do not need external 
+software dependencies to access and study the data --- any special 
+code which is a prerequisite to using this data should 
+be included, alongside the raw data, as part of the 
+Research Object itself.}
+
+\p{Dataset Creator enables 
+standalone, self-contained, and full-featured 
+native/desktop applications to be uniquely implemented 
+for each data set, distributed in source-code fashion 
+along with raw research data (\dsC{} Dataset Applications 
+use \Qt{} by default to provide native \GUI{} classes, 
+tailored to the relevant Research Object).  Adopting such a 
+data-curation method makes data sets easier to 
+use across a wide range of scientific disciplines, 
+because the data sets are freed from having to rely on domain-specific 
+software (software which may be commonly used in one scientific 
+field but is unfamiliar outside that field).  
+In addition, Research Objects composed with \dsC{} can 
+be integrated into Multi-Application Networks  
+(which are described in the previous section) because 
+the dataset applications are autonomous native \GUI{} applications that 
+can easily interoperate via \Qt{} messaging protocols.}
+
+\p{Of course, most of the \CRtwo{} data sets are 
+previously-published work composed via older technology. 
+Many of these resources, created with a wide range of software 
+products, predate (or fail to apply) contemporary specifications 
+such as the Research Object Protocol; not 
+every \CRtwo{} data set will have the full set of 
+features described in this section.  However, 
+\CRtwo{} will try to maximize the value of each data set 
+by translating them into a \Qt{}-based format --- in 
+particular, \CRtwo{} will provide \Qt{} code for 
+reading \HGXF{} files, as well as a \Qt{}-based hypergraph 
+representation library.  Following the 
+data integration methods outlined earlier, much of the 
+\CRtwo{} data can be merged into a \Qt{}-based framework, 
+which can facilitate the implementation of 
+new, more sophisticated Dataset Applications 
+as the information in \CRtwo{} gets reused 
+for subsequent research.  \lCRtwo{} will also include 
+\Qt{}-based software, such as a customized \PDF{} viewer, which 
+will help researchers utilize the corpus in its 
+entirety.  For example, \CRtwo{}'s \PDF{} viewer 
+will include special code to connect \PDF{} files 
+with data sets via \q{micro-citations,} as discussed in the 
+next section.}
+
+\section{Supporting Data Micro-Citations to Improve Machine Readability}
+\p{The \CRtwo{} database engine supports annotating individual components 
+of a database --- a technology sometimes referred to as 
+\q{micro-citation.}  Data micro-citations are references to 
+integral parts of a data set, such as an individual table, 
+or a single row/record or column in a table.  Micro-citations allow 
+these integral parts within the data set to be cited by and linked 
+to publications, for purposes of machine readability and 
+attribution.  As an example, preliminary vaccine trials often 
+target a patient cohort selected for demographic or medical 
+criteria matching the population who would most benefit from 
+the vaccine.  These criteria for selecting the cohort for 
+the vaccine study are usually described in the texts of the 
+articles.  However, these criteria are also identified 
+within the data set by socio-demographic 
+data which is part of the information generated 
+by the trial. \hspace{-6pt} By making these connections between criteria 
+discussed in the article and those 
+represented in the corresponding data set explicit, 
+text and data mining can be \textit{merged} as analytic 
+tools targeting a data repository, so that 
+%\lCRtwo{} is therefore 
+%designed to optimize the convenience and rigor of micro-citations 
+%both within data sets and within research papers.  
+machine reading is able to mine not just article text but the 
+corresponding data.}  
+
+%, accelerating the 
+%extraction of current scientific information that is 
+%of use to scientists and policy makers.}
+
+%\vspace{1em}
+\p{One reason why micro-citations are important is that they 
+clarify the scientific meaning attributed to data set  
+elements by connecting these elements to scientific concepts and 
+\q{controlled vocabularies} (such as a list of drug names, 
+diseases, proteins, etc.).  
+For instance, micro-citations allow table columns to be 
+mapped to statistical parameters, enabling their 
+empirical properties (such as min/max values and distribution) 
+to be queried by text and data mining software.  Likewise, 
+\CRtwo{} enables dimensional 
+and measurement annotations to describe the empirical and experimental 
+significance of the measured or calculated quantities which 
+are stored in a database.  Such quantity dimensions model the 
+conceptual roles which particular parameters perform: 
+e.g., the axiation \q{mJ/cm$^2$}(millijoule per 
+square centimeter) indicates the intensity of 
+ultraviolet light --- any table (or other 
+data aggregate) having a column or field with this dimension 
+is intrinsically associated with observations or experiments 
+pertaining to \UV{} light.  Consequently, to 
+locate data sets relevant for research about the clinical uses of 
+antiviral \UV{} radiation, 
+one method is to search for data fields dimensionalized 
+in terms of joule or millijoule per square centimeter.  
+As this example illustrates, data micro-citation 
+--- via annotations on data fields, statistical parameters, 
+and table columns --- is an important data-mining tool.  
+In short, constructing micro-citations within a database 
+serves two distinct benefits: (1) to aid data mining; and 
+(2) to enable granular links (joining specific 
+parts of articles to corresponding parts of the data set in 
+the data set repository --- analogous to hyperlinks 
+between web pages) to be established between 
+publications and data sets, making it \textit{easier} for 
+researchers to find the specific information most 
+relevant to their own research.}
+
+\section{Code Libraries and Data Sets for Analytic Methodology}
+\p{As a companion to \CRtwo{}, whose essential purpose 
+is to present \textit{empirical} observations concerning Covid-19, 
+we are curating the \AIMConc{} archive, which is focused 
+on code that supports Artificial Intellegence and 
+concrete data-integration methodology.  At the 
+core of \AIMConc{} is a collection of code libraries 
+implementing analytic techniques and representations 
+used by \AI{} researchers as well as by software 
+engineers --- in particular, different varieties of hypergraphs; 
+fuzzy sets/logic; and conceptual spaces.  In order to integrate this code 
+into a common programming framework, the \AIMConc{} libraries are 
+ported or modified when necessary, with \C{} or \Cpp{} 
+as the primary development language and \Qt{}/qmake as 
+the primary development framework and build system.
+\lCRtwo{} and \AIMConc{} will be interconnected 
+by employing \CRtwo{} data sets as concrete 
+examples for demonstrating how \AIMConc{} libraries 
+may be used within software applications.   
+Here are some of the methodological approaches 
+(based in part on how Covid-19 research can provide 
+concrete use-cases) which will be important 
+components of \AIMConc{}:
+
+\begin{description}
+\item[Computational Epidemiology]  Methods in this 
+category generally concern the simulation of disease 
+transmission given a set of initial parameters 
+(such as an infectious agent's reproduction rate 
+and an average degree of person-to-person contact), 
+often concomitant with empirical data, tracking how a disease 
+has spread within some observable subpopulation.  
+The empirical findings, therefore, suggest 
+\textit{a posteriori} which statistical model best 
+fits the actual nature of the disease in question.  
+The accuracy of this analysis depends, in part, on 
+how well the observed subpopulation mirrors the 
+susceptible population as a whole; but it also 
+depends on the accuracy of the mathematical formulae 
+translating initial parameters into projected 
+epidemiological simulations to be compared against 
+\textit{a posteriori} data.  As such, concrete expositions 
+of these mathematical frameworks --- in particular, 
+computer code implementing the calculations 
+which drive a simulated model --- 
+constitute a computational asset in their own 
+right.  \lAIMConc{} will include several  
+code libraries that have been published 
+as tools investigating different quantitative 
+epidemiological models.  Although some epidemiological simulations 
+rely primarily on mathematical equations, most 
+epidemiology libraries internally use graph-based models, 
+often employing weighted graphs where edges denote, 
+for example, the probability of viral transmission 
+between people in close contact.  As a result, 
+distinct epidemiological models can sometimes 
+be merged into a common analytic framework, 
+using custom quantitative algorithms that are composed 
+within a common graph-traversal framework.   
+
+\item[Event Modeling]  Event modeling, sometimes called 
+\q{Entity-Event Modeling,} is an emerging data-analytic 
+trend which focuses on events, rather than objects, 
+as the most fundamental form of observation within a data 
+space.  Conceptually, the rationale for this paradigm 
+is that every property which is attributed to 
+some object can be tied to a specific event wherein the given property 
+was measured, observed, discovered, or inferred.  
+For instance, asserting that a patient is 
+\textit{infected} with SARS-Cov-2  
+implies that a \textit{test} for SARS-Cov-2 
+was positive.  Focusing attention on the \textit{event} 
+(viz., the test and its result) allows the 
+data model to accrue information in a more detailed manner: 
+in the case of SARS-Cov-2 tests, the relevant testing method/kit used; false 
+positive/negative rates in the population; the time ellapsed between the 
+onset of symptoms (if any) and the test being ordered 
+and the interval until the results are provided; the observations 
+or factors (such as the subject's exposure 
+to an infected family member) which 
+caused health care providers to order the test; and so on.  
+Many of these details might be included in a conventional 
+database as well; however, focusing on events allows the 
+relevant information to be obtained more easily in that 
+the event model supplies a temporal and operational 
+organization for the underlying information.  
+Event models are especially useful when 
+temporal sequencing and duration are important 
+considerations for uncovering scientific 
+facts about the phenomenon being studied.  In the 
+context of infectious diseases, intervals such 
+as the length of time between exposure 
+and contagiousness, length of time between exposure 
+and the appearance of symptoms, or the duration of hospital 
+stays, are essential to our understanding of the disease's 
+biology. 
+
+\item[Fuzzy Sets and Fuzzy Logic]  Mathematically, 
+fuzzy logic is often conceived in terms of replacing a 
+simple binary logic (\q{true}/\q{false}) with a 
+more complex multi-valued logic, wherein properties 
+may be true or false to varying degrees.  Thus, on the 
+surface, this introduces quantitative models 
+(such as the calculation of the conjunction or disjunction 
+of fuzzy predicates) as a substitute for purely 
+logical reasoning.  In practice, however, fuzzy 
+sets often have the opposite effect: this theory 
+gives rise to methods which can simplify empirical 
+analyses by \textit{eliminating} quantitative 
+formulae --- in particular, parameters of a continuous 
+variable.  Fuzzy set models tend to simplify data 
+spaces by collapsing continuous quantities into discrete 
+cases (e.g., \textit{low}, \textit{medium}, \textit{high}), 
+or grouping objects into similarity clusters.  
+Via these operations, data models that depend on 
+computationally intensive mathematical variables 
+can be replaced by qualitative models, often 
+representable in graph form (where graph edges 
+may designate membership in a prototype-class, 
+or the evolution of some observable according to 
+several property classes, each of which 
+collapses a spectrum of granular cases into a single 
+prototype).  Fuzzy methods can be shown to be 
+effective simplications of complex data models 
+by demonstrating that analyses conducted via 
+qualitative reconstructions of a data space, 
+for a given set a observations, 
+are comparable to results obtained from more 
+quantitative methods and/or are a good fit to 
+empirical data.  Research data sets which emerge 
+from fuzzy methods can be qualitative models 
+derived from quantitative data spaces, as 
+well as code libraries which perform the relevant 
+transformations.
+
+\item[Conceptual Space Theory]  Conceptual spaces, 
+which have some similarities to Fuzzy Sets, 
+have likewise been proposed as a paradigm 
+for modeling both scientific knowledge and Artificial 
+Intelligence.  Conceptual Space Theory is 
+rooted in cognitive and linguistic investigations 
+of how humans formulate and understand concepts 
+(extending to scientific theories, and in particular 
+how we \q{process} scientific information to infer 
+facts about the world).  Conceptual spaces have, therefore, 
+been proposed as a language for representations or descriptions 
+of scientific knowledge, with an emphasis on how 
+scientific models are built up from individual 
+conceptual parameters (such as points in space/time 
+or notions of length, heat, speed/acceleration, electric 
+charge, etc.).  As scientific ideas become formalized, 
+our intuitive conceptualization of spatial or observational 
+quantities gets translated into physical, mathematical, or 
+statistical details: scales and units of measurement, 
+observational value ranges, statistical levels 
+(Nominal, Ordinal, Interval, Ratio), and so forth.  
+Formal implementations of conceptual spaces, therefore, 
+focus attention on the dimensional and measurement 
+properties of data parameters (e.g. scales/units of measurement) 
+--- information which is usually not made explicit in the 
+publishing of data sets --- and on how these parameters aggregate into 
+conceptual units.  Such aggregates include things like how two 
+geographical coordinates that define a 
+geospatial location, in Geographical Information Systems; 
+or how shape and color, in combination, characterize 
+visible objects, such as in image segmentation.  One conceptual-space represenation 
+is Conceptual Space Markup Language (\CSML{}), which 
+\CRtwo{} will update in order to document scientific parameters 
+within data sets.  Other conceptual-space models and 
+analytic libraries have been developed in the context 
+of Artificial Intelligence, where the goal is to 
+simulate the patterns of human conceptualization within 
+\AI{} engines; this work can then be incorporated into 
+the \AIMConc{} repository.
+   
+\item[Cognitive Discourse Analysis and 
+Conceptual Role Semantics]  Cognitive discourse 
+theory is similar to Conceptual Space Theory in 
+investigating the overlap between conceptualization 
+and scientific knowledge --- or, more generally, 
+all of our observed facts or empirical beliefs 
+as they are encoded in language.  Although it is 
+obvious that most of our language is based in 
+concrete beliefs about the world around us, this 
+basic linguistic principle is not usually 
+captured with full rigor within formal reconstructions 
+of linguistic expressions.  The essential paradigm 
+in cognitive linguistics is the notion of 
+cognitive \textit{grounding} --- that is, how every 
+object and event included in a sentence 
+connects to the speaker's fundamental understanding 
+of the situation around them, and its relevant 
+facts and observables.  While all linguistic theories 
+acknowledge grounding, cognitive analysis 
+develops a detailed theory of how grounding works in 
+all of its aspects: there are multiple dimensions of 
+grounding, because we connect objects/events 
+to situations in many different ways.  For example, 
+objects relevant to a given event play distinct 
+empirical roles (the \textit{agent}, which 
+\textit{causes} something --- some change --- to happen; 
+the \textit{patient}, which is thereby changed/affected; 
+and potentially secondary participants such as the 
+instrument by which the change is effected; the 
+\q{benefactor,} i.e., the object for whose benefit 
+the change is caused, etc.).  These conceptual differences 
+are rigorously treated within Conceptual Role Semantics, 
+which shares a similar philosophical orientation to 
+Cognitive Discourse Analysis.  As a practical tool 
+for analyzing language, these two methodologies 
+provide a matrix of classifications for objects 
+and events (and their corresponding linguistic 
+units) in terms of the situational background 
+where every object and event (in a given discursive 
+context) is perceived.  Formally, these classifications 
+then provide a layer of annotation which capture 
+linguistic details at a cognitive level more rigorous 
+than usually found in Natural Language Processing.  
+\lAI{} methods in this field focus on automatically 
+identifying cognitive-discursive patterns in language, 
+although data sets can also be formed by manually 
+annotating language samples according to 
+cognitive-discourse and conceptual-role vocabularies.  
+In either case (whether via manual or \AI{}-driven 
+annotations), Cognitive Discourse Analysis represents 
+one emerging technique for the representation 
+of natural-language assets --- such as Patient Narratives 
+--- for the purposes of applying advanced text/data mining 
+strategies (in the case of Patient Narratives, 
+to extract critical patient symptomology often 
+buried in circumlocutory discourse). 
+\end{description} 
+}
+
+
+\section{Adding Patient Narratives to Covid-19 Data}
+\p{In addition to aggregating published data sets, \CRtwo{} 
+may be used as a repository for collecting new Covid-19 
+information.  With that in mind, we are prioritizing the 
+design of a standard for storing and accessing 
+natural-language text representing patients' subjective 
+symptom descriptions, which is quite useful for 
+diagnostic/prognostic assessments of patients 
+infected by Covid-19.}
+
+\p{Just as \CRtwo{} envisions a curation of published 
+data sets for data mining to improve machine-readability 
+of Covid-19 research, LTS also sees the 
+benefit of a repository of patient narratives prepared 
+for text mining, to improve machine readability of the 
+open-ended symptom descriptions offered by patients.  
+While \CRtwo{} does not need to specify how these 
+narratives should be collected, it will implement 
+a common representational format 
+so that patient narratives can be pooled, similar to  
+to how \Cnineteen{} research texts are merged and 
+encoded with a system that permits annotation.}
+
+\p{In modeling patient narratives, this technology 
+will be oriented toward the scientific-computing 
+ecosystem outlined in the previous section.  
+In particular, we assume that \GUI{}-based desktop 
+applications will be the primary instruments for 
+data collection and analysis; this means that 
+the encoding of patient narratives may, at times, 
+need to be paired with \GUI{} or multi-media content.  For example, 
+the software for patients to submit 
+medical history information could also allow 
+them to pair (text-form) narratives with 
+graphics indicating the location of their pain or 
+discomfort.  Furthermore, the software could 
+allow narratives to be accompanied 
+by an audio file where patients could cough/speak into 
+a microphone.  Given this 
+range of possible inputs, patient-narrative 
+encodings must be flexible enough to 
+include diverse multi-media content.}
+
+\p{As described earlier, an information space 
+adapted for multiple peer applications should encompass 
+capabilities for saving application state 
+(the current visual appearance of the program), which 
+includes features for modeling instances of 
+\GUI{} classes.  This technology provides the 
+necessary infrastructure for managing patient 
+narratives.  For example, consider a multi-media 
+intake form where patients may describe symptoms by 
+placing icons (representing pain or discomfort) 
+against anatomic silhouettes (head/body, back/front, 
+extremities, and so forth).  
+As patients use such a multi-media form, \GUI{} application 
+state corresponds to the patient's subjective symptomology; 
+in this way the graphics-based representation of symptoms 
+could then be incorporated into the overall patient 
+narrative.  This is an example of how 
+application-persistence logic can be marshaled to 
+the related project of curating patient narratives.}
+
+%\pagestyle{empty}
+
+%\p{Further documentation of text-encoding methodology applicable 
+%to both patient narratives and publications associated 
+%with \CRtwo{} research data is available on the \CRtwo{} 
+%web site, such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/%cr2.pdf}{here} (this is a downloadable \PDF{} link; 
+%visit the repository to see the larger archive structure).}
+
+\part{Novel Database Engineering and Data-Set 
+Construction Technology}
+
+\section{Native/Desktop Application Development with THQL}
+\p{As described earlier, \THQL{} is a database 
+engineering protocol which prioritizes 
+data-persistence components that can be 
+included in source code fashion within application-development 
+projects.  \lTHQL{} is \q{transparent} in that 
+all layers of data persistence and 
+query processing logic are provided 
+via self-contained source-code libraries.  
+The complete database functionality can 
+then be statically examined via the source-code 
+files, and dynamically examined by running the 
+client application through a debugger.  Moreover, 
+because all \THQL{} source code is bundled with 
+application code, \THQL{} can be configured to 
+integrate seamlessly into its environing client-application  
+logic.  For example, \THQL{} can be 
+extended to natively recognize client-specific 
+datatypes as data fields, or to execute 
+client algorithms as query parameters.}
+
+\p{As a query \textit{language,} \THQL{} can 
+be instantiated either by special languages 
+with their own syntax and semantics 
+(analogous to \SQL{} or \SPARQL{}), or 
+as an interface and pattern specified 
+for a conventional language, such as 
+\Cpp{}.  In the latter guise, 
+\THQL{} provides a common protocol for 
+essential database tasks, such as 
+constructing, updating, querying, 
+and backing up database instances.  
+Each procedure comprising the 
+\THQL{} protocol is assigned a 
+specific role, so that the protocol 
+can be abstractly modeled as a 
+set of data-management roles 
+mapped to corresponding procedure 
+implementations.  On this basis, 
+custom query languages can be 
+constructed by exposing each role-procedure 
+to a scripting interface.  For example, 
+\THQL{}'s Reference Implementation 
+(DigammaDB) exposes the protocol-specific 
+procedures via a set of pointers to \Cpp{} functions.  
+Consequently, parsing a query language is then rendered a 
+straightforward process of mapping query 
+expressions to the requisite procedures, 
+whose corresponding handle can then be 
+obtained via \Cpp{} interop.}
+
+\p{As suggested by its name, \THQL{} is 
+centered around the operations to 
+define and store hypergraph-form data: 
+information which has several levels 
+or scales of structuration.  
+This means that the \THQL{} protocol 
+includes procedures for registering 
+individual data fields 
+(representing, in general, primitive 
+types such as integers and decimals) in a 
+database; aggregating fields into 
+\q{hypernodes,} or groups of interrelated 
+information; connecting pairs of 
+hypernodes by identifying a specific 
+connection which they have; 
+adding contextual details or annotations 
+(via so-called \textit{frames} and \textit{channels}) 
+which refine assertions of hypernode connections; 
+and constructing \q{proxies} to database elements 
+(e.g. hypernodes, frames, and subgraphs) which 
+can be referenced (via unique identifiers) 
+as individual data fields.  Since proxies 
+can then be aggregated into hypernodes in 
+turn, \THQL{} graphs can have, if desired, 
+arbitrarily deep nested structures.}
+
+\p{\THQL{} also recognizes additional structures 
+corresponding to conceptual details described 
+earlier --- for example, fields within 
+hypernodes can be linked with 
+dimensional attributes (e.g. scales and 
+units of measurement) and identified 
+as micro-citation targets.  \lTHQL{} likewise 
+supports a genre of controlled vocabularies 
+applying to hypernode-types and/or connection labels 
+(called \q{dominions,} for \q{Domain-Specific Mini-Ontologies}).  
+Consequently, a graph can then be, if desired, 
+configured to only accept hypernodes 
+which conform to one of the dominion-defined 
+types; and/or to only allow connections to be 
+asserted between hypernodes when these connections 
+can be labeled from a dominion-specific list 
+of connectors.  Less restrictively, graphs 
+can be defined in a more free-form style 
+but use dominions to filter or 
+query nodes and edges.}
+
+\p{Another feature of \THQL{}, relevant 
+to application integration, is the notion of 
+configuring each database to support different 
+\q{modes} of data persistence.  It is possible
+to use \THQL{} for completely in-memory data management, 
+with no direct data persistence at all.  This would be 
+an appropriate solution when data can be read all at once 
+from a static source, such as a data set.  In this guise, 
+\THQL{} would be used to build a structural model 
+of the data set, which can then be queried by application 
+code.  Conversely, it is possible to employ \THQL{} as a 
+continuously-updated data store, where changes to 
+an underlying \THQL{} graph are persisted to disk 
+as soon as they are registered.  Between these extremes, 
+\THQL{} graphs can hold dynamically changing representations 
+of a persistent database, which are only incorporated 
+into the underlying database when instructed by 
+the client application.  To support these different 
+operational modes, \THQL{} engines need the capability 
+to represent each data type in several different 
+formats, tailored to different stages of processing 
+through which values are routed before they can be 
+stored persistently.}
+
+\p{In DigammaDB (the \THQL{} Reference Implementation), 
+persistent data storage is implemented via the \WhiteDB{} 
+database engine.  \WhiteDB{} is a hybrid 
+graph/record database which allocates a persistent 
+data store in shared memory (allowing each database to be 
+accessed from multiple applications).  \lDgDb{} encodes 
+hypernodes in \WhiteDB{} records (although programmers 
+can interface with the underlying \WhiteDB{} instances if 
+desired).  \lDgDb{} can then use \WhiteDB{}'s index and 
+query mechanism as the foundation for its own 
+higher-level query system.  \lDgDb{} provides a 
+convenient interface for binary-encoding user-defined \Cpp{} 
+types, so that arbitrary application-level data can be 
+stored via \THQL{} (we can supply more documentation 
+describing hypergraph-encoding with WhiteDB if needed).  
+In addition --- as an alternative 
+to writing serializers for bonafide \Cpp{} types --- 
+it is possible to construct \q{ghost} types, which are 
+\Qt{} data structures built via the \q{QVariant} class, 
+so that all (or most) hypernodes in the corresponding 
+database have a single \Cpp{} type --- this technique 
+is appropriate when, for example, the purpose of a \THQL{} instance 
+is to read and then update \HGXF{} files with new information.   
+To support different \THQL{} operational modes, \DgDb{} organizes 
+a stage-structure based on encoding \WhiteDB{} values: 
+at the ground level, values are simply pointers 
+to in-memory \Cpp{} objects.  At an intermediate level, 
+values are encoded (via the QDataStream class in \Qt{}) 
+into structures which recognize the \WhiteDB{} encoding 
+scheme but do not themselves interact with \WhiteDB{}. 
+Finally, values may be recorded as \WhiteDB{} fields 
+and records ready for persistent storage.}
+
+\p{\WhiteDB{} also allows databases to be shared 
+(including being sent over a network) by storing all 
+database information in a special file format.  
+\lDgDb{} instances can be shared via this 
+same mechanism, although another option is to 
+export the contents of a \DgDb{} database to 
+\HGXF{} files, which in turn form the core 
+of a research data set representing the 
+database contents at a specific moment in time.  
+In this guise \DgDb{} works in conjunction 
+with \dsC{}, serving as the engine to 
+construct a data set through which research data 
+curated via a DigammaDB database can be published 
+(\dsC{} will be described in a later section).  
+\lDgDb{} also demonstrates how hypergraph databases --- 
+as well as data generated from these databases 
+for data-sharing initiatives --- can 
+store data constrained by \q{hypergraph ontologies,} 
+which are dicussed in the next section.}
+
+\input{apx1}
+\section{Dataset Creator}
+\p{Dataset Creator (\dsC{}) is a framework for 
+constructing data sets which include computer code based on the 
+\Qt{} application-development platform.  
+Dataset Creator takes advantage of the \Qt{} platform 
+to construct Research Objects with exceptional 
+\GUI{} and data-mining capabilities.  \lQt{}, the 
+leading native cross-platform development toolkit, 
+is a comprehensive framework encompassing 
+a thorough inventory of programming features 
+--- networking, \GUI{} implementation, file 
+management, data visualization, \ThreeD{} graphics, 
+and so forth.  Data sets based on \Qt{} require 
+users to obtain a copy of the \Qt{} platform, but 
+\Qt{} is free for non-commercial use and easy to 
+install --- importantly, \Qt{} is wholly contained 
+in its own folder and does not affect any other 
+files on the user's computers (in this manner \Qt{} is 
+different than most software packages, which usually 
+demand a \q{system install}).}
+
+\p{By leveraging the \Qt{} platform, \dsC{} enables 
+standalone, self-contained, and full-featured 
+native/ desktop applications to be uniquely implemented 
+for each data set, distributed in source-code fashion 
+along with raw research data.  Adopting such a 
+data-curation method makes data sets easier to 
+use across a wide range of scientific disciplines, 
+because the data sets are freed from having to rely on domain-specific 
+software (software which may be commonly used in one scientific 
+field but is unfamiliar outside that field).  
+In addition, Research Objects composed with \dsC{} can 
+be integrated into Multi-Application Networks  
+(which are described above) because 
+the dataset applications are autonomous native \GUI{} applications that 
+can easily interoperate via \Qt{} messaging protocols.}
+
+\p{Because every data set is unique, each Dataset Application 
+will necessarily include some code specific to that one 
+Research Object.  However, \dsC{} will provide a core 
+code base and file layout which is shared by all 
+\dsC{} data sets by default.  This common core is 
+structured in part by the goal of developing 
+Dataset Applications in a \Qt{} context; for 
+instance, \dsC{} projects are structured to use \Qt{}'s \q{qmake} 
+build system as the primary tool for compiling 
+data-set code.  The common \dsC{} code therefore 
+includes qmake project files which support 
+compiling application with several build configurations.  
+In this framework, data-set users are classified into several 
+different roles --- in addition to ordinary users 
+(specifically, researchers who want to work with 
+and draw information from 
+data sets but have no development connection to 
+these data sets themselves), \dsC{} recognizes 
+roles for authors, editors, testers, and other 
+users who are responsible for bringing data 
+sets into publication-ready form to begin with.  
+Depending on the administrative role, data set 
+code can be compiled with additional 
+features (e.g., unit testing features).}
+
+\p{Another core component of \dsC{} is \LaTeX{} 
+code that authors may use when preparing documents 
+accompanying their data set.  These \LaTeX{} files 
+encompass special functionality for defining code 
+annotations and semantically significant points in 
+article text, such as sentence and paragraph 
+boundaries.  This \LaTeX{} code can be used 
+in conjunction with a pre-processor that 
+generates \LaTeX{} files from a special input 
+language.  The goal of these text-processing 
+technologies is to improve the interoperability 
+between research papers and data sets.  In particular, 
+the \LaTeX{} pre-processors (and subsequent 
+\LaTeX{}-to-\PDF{} converters) generate \HGXF{} 
+files which store information about textual and 
+\PDF{} viewport coordinates specifying the location of semantically 
+meaningful elements such as sentences and annotations.  
+These files are then zipped and embedded in 
+\PDF{} files.  With \dsC{}, the resulting \PDF{} files can 
+then be loaded into a customized \PDF{} viewer capable of 
+reading the embedded \HGXF{} data.  This allows the 
+\PDF{} application to utilize the embedded information 
+so as to provide a more interactive reading 
+experience --- for instance, viewing annotations 
+or copying sentences via context menus, where viewport 
+data maps cursor position to textual elements visible 
+on the \PDF{} page.  These features provide an 
+application-level interface between the \PDF{} viewers 
+(considered as \GUI{} components) and the corresponding 
+\GUI{} components in Dataset Applications.}
+
+\p{With proper customization, both the \PDF{} viewers 
+and the \dsC{} Dataset Applications can interoperate, 
+with \PDF{} context menus calling up windows in 
+the Dataset Application's \GUI{} implementation, 
+and vice-versa.  For example, researchers reading 
+the \PDF{} version of a scientific article can 
+launch the Dataset Application to explore some 
+detail mentioned in the text.  This is an example of 
+where micro-citations are practically useful: 
+any microcitable element in a document (such as a table, 
+column, row/record, or analytic procedure formalized as a 
+procedural asset associated with a data set) 
+can be linked to a corresponding \GUI{} element 
+in the Dataset Application.  For example, a statistical 
+parameter --- mentioned by name in the text, and perhaps 
+represented in serialization within raw data --- can 
+be mapped to a \GUI{} table column, and specifically 
+the column header; this is then an annotation target, 
+in the sense that for readers to gain more information it 
+is proper to link mentions of the relevant scientific 
+concept in article text to the column header as a 
+graphical element that can be made visible.  The 
+link is operationalized by implementing a procedure 
+to show the \GUI{} window where the table is located, 
+and ensure that the column header lies in the visible 
+portion of the screen, as a response to readers on the 
+\PDF{} side signaling a desire for information on 
+the annotated text element.  In the opposite direction, 
+database elements can be annotated with 
+links that can used by the Dataset Application to launch 
+a \PDF{} window opened to the page and location where 
+the corresponding concept is discussed in the article.}
+
+\p{In order to properly model this semantic, 
+viewport, and data set data integration, 
+\dsC{} uses a new document-representation format 
+called \HTXN{} (Hypergraph Text Encoding Protocol).  
+With \dsC{}, \HTXN{} files are not only associated 
+with data set assets; they are also machine-readable 
+document encodings that can be introduced into 
+publication repositories and other corpora 
+oriented toward machine-readability.  Authors can 
+host \HTXN{} files within data sets and link to 
+them via services such as CrossRef, thereby 
+ensuring that a highly structured, machine-readable 
+version of their papers is available for 
+text and data mining.  The \HTXN{} protocol is 
+also useful for encoding natural-language content 
+which becomes part of a data set as data assets 
+in themselves; for example, patient narratives.} 
+
+\p{Further documentation of text-encoding methodology (applicable 
+to both patient narratives and publications associated 
+with \CRtwo{} research data) is available on the \CRtwo{} 
+web site: such as \href{https://raw.githubusercontent.com/Mosaic-DigammaDB/CRCR/master/cr2.pdf}{here} (this is a downloadable \PDF{} link; 
+visit the repository to see the larger archive structure).  
+The document referenced in this hyperlink contains more information 
+on \dsC{}, \HGXF{}, \HTXN{}, and the other technologies 
+discussed here.}
+
+%\input{apx1}
+
+\input{apx2}
+\input{apx3}
+
+%\p{ }
+
+\end{document}
+
+

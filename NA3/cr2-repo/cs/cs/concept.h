@@ -43,7 +43,7 @@ public:
  
  QPair<r8, Cuboid*> intersect_with(const Concept& other);
  Concept* unify_with(const Concept& other);
- Concept* project_onto(? domains);
+ Concept* project_onto(const QMap<QString, u4vec>& domains);
 
  QPair<Concept*, Concept*> cut_at(? dimension, ? value);
  QMap<QString, u4vec> reduce_domains(const QMap<QString, u4vec>& domains, 
