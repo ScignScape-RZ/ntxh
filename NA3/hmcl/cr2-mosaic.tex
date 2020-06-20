@@ -555,6 +555,8 @@
 \newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
 
 \newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
+\newcommand{\UI}{\resizebox{!}{7pt}{\AcronymText{UI}}}
+
 
 \newcommand{\URI}{\resizebox{!}{7pt}{\AcronymText{URI}}}
 \newcommand{\DTD}{\resizebox{!}{7pt}{\AcronymText{DTD}}}
@@ -742,7 +744,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{1em}#1}
+\vspace{.9em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -1077,7 +1079,7 @@ at University of Varna, Bulgaria
 
 \end{description}
 
-\vspace{13pt}
+\vspace{-3pt}
 
 \textcolor{darkRed}{\hrule}
 
@@ -1130,10 +1132,11 @@ a common format.  Likewise, the methodology presented in
 the \AIMConc{} archive will be examined via demonstrations 
 of how techniques and algorithms of the \AIMConc{} libraries 
 can be applied to data hosted in a \THQL{} database.  
-The \THQL{} technology has many concrete applications 
-outside the context of Covid-19, penetrating vertical 
-markets such as pharmaceuticals, manufacturing, fintech, 
-healthcare, educational software, and bioinformatics.}
+%The \THQL{} technology has many concrete applications 
+%outside the context of Covid-19, penetrating vertical 
+%markets such as pharmaceuticals, manufacturing, fintech, 
+%healthcare, educational software, and bioinformatics.
+}
 
 \p{The principle goal shared by both \CRtwo{} and \AIMConc{} is 
 to provide a \textit{common} programming infrastructure which facilitates 
@@ -1166,7 +1169,7 @@ data set, or to a repository including multiple
 data sets.  Data-set applications can, if desired, be 
 developed as \textit{notebooks}, 
 with features inspired by \q{computational notebook} 
-technologies, such as \Jupyter{} and 
+technologies such as \Jupyter{} and 
 \Kaggle{}.  The \MOSAIC{} libraries 
 include code for a \Qt{} Creator plugin 
 which allows the \Qt{} Creator \IDE{} 
@@ -1181,12 +1184,26 @@ publications: demonstrating research
 methods or explicating theoretical concepts.  
 If desired, authors can supplement their 
 work with formal specifications of research 
-protocols or workflows, conforming standards 
+protocols or workflows, conforming to standards 
 such as those defined by various 
 \q{Minimum Information for Biological and 
 Biomedical Investigations} (\MIBBI{}) recommendations.  
-  
-}
+In addition to structured documentation of 
+their work, these models can be used 
+to integrate research applications into 
+the host software where they may be embedded, 
+insofar as descriptions of analytic steps 
+that can be computationally reproduced 
+also delineates the functionality 
+that should be linked to host application 
+\UI{} events as part of the embding 
+process --- for instance, as in \CaPTk{}, 
+by leveraging \Qt{} signal/slot reactive programming.  
+The contours of 
+the interface whereby a data-set application 
+interacts with a host program thereby 
+serves as one documentation of 
+research/analytic workflows.}
 
 \p{\lMdsX{} is paired with \MOSAIC{} \textit{portal}, 
 a code library for hosting data sets and 
