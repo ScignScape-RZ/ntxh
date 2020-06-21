@@ -531,6 +531,10 @@
 \newcommand{\HMCL}{{\resizebox{!}{7.5pt}{\ATexttclr{HMCL}}}}
 \newcommand{\DSPIN}{{\resizebox{!}{7.5pt}{\ATexttclr{D-SPIN}}}}
 
+\newcommand{\Pandore}{{\resizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
+
+\newcommand{\lDSPIN}{{\resizebox{!}{8pt}{\ATexttclr{D-SPIN}}}}
+\newcommand{\lsDSPIN}{{\resizebox{!}{8.5pt}{\ATexttclr{D-SPIN}}}}
 
 \newcommand{\CLang}{\resizebox{!}{7pt}{\AcronymText{C}}}
 
@@ -699,6 +703,9 @@
 
 \newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
 \lmMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
+
+\newcommand{\lsMOSAICSR}{\resizebox{!}{9.5pt}{%
+\lMOSAIC-}\resizebox{!}{9pt}{\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
 
 %\newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
 %\mMOSAIC-\AcronymTextNC{SR}}}
@@ -1155,7 +1162,80 @@ of \MOSAICSR{} in the context of image analysis
 and bioimaging --- specifically, a \q{Data Structure 
 Protocol for Image-Analysis Networking} (\DSPIN{}), 
 which both extends and adds a narrower focus 
-to the overall \MOSAICSR{} framework.}
+to \MOSAICSR{}.  Software using the \DSPIN{} 
+protocol provides a description of image 
+processing capabilities which have been 
+utilized and/or are functionally exposed 
+by code and data associated with a research 
+project.  This includes \q{structured reporting} 
+of research objectives as well as a concrete 
+interface for invoking analyses associated 
+with the research (either new algorithms or 
+techniques used to obtain reported findings).
+\lDSPIN{}, in turn, is based on \CaPTk{} 
+(the Cancer Imaging and Phenomics Toolkit) 
+and \Pandore{} (an image-processing environment 
+which includes both data models and interactive 
+software).  The \Pandore{} project encompasses 
+an ontology of \q{Image Processing Objectives} 
+that provides a structural basis for \DSPIN{}.  
+For information about how different objectives 
+are merged into workflows, \DSPIN{} 
+adopts protocols from \CaPTk{}, particularly 
+with respect to implementating 
+image-analysis capabilities as 
+extensions to a core application, and 
+\CaPTk{}'s implementation of the 
+Common Workflow Language (\CWL{}).  In effect, 
+\DSPIN{} formalizes the data models and 
+prototypes adopted by \Pandore{} and 
+\CaPTk{} so as to concretize \MOSAICSR{} 
+for the specific domain of image processing 
+and Computer Vision.  The following sections 
+will therefore outline \DSPIN{} features 
+in the context of \MOSAICSR{} design principles 
+and objectives.}
+
+\section{Meta-Procedural Modeling in 
+\protect\lsDSPIN{} and \protect\lsMOSAICSR{}}
+
+\p{Most approaches to modeling research workflows 
+involve some concept of \q{meta-objects},\footnote{See 
+the \VISSION{} system: \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.}, 
+\q{tools} (in the terminology of \CWL{}), 
+and \q{transitions} (in the language of Petri Net 
+theory).  In \MOSIACSR{}, the analogous concept is 
+that of \textit{meta-procedures}, which are analogous 
+to ordinary computational procedures but 
+add extra sources of information concerning 
+input and output parameters.  In general, 
+rather than simply passing an imput value 
+into an executable routine, metaprocedures 
+define steps which can be taken to 
+acquire the proper values when needed.  
+Aside from ordinary runtime values, the 
+most important input sources are methods 
+defined on \GUI{} components; command-line 
+parameters; file contents; and 
+not-yet-evaluated expressions (perhaps 
+encapsulated in scripts or function pointers).  
+A meta-procedure formulation abstracts the 
+acquisition of inputs (or \q{channels}) 
+from the concrete procedure or procedures 
+which are eventually executed.  Therefore, 
+a \MOSAIC{} meta-procedure definition 
+has two separate parts: a preamble where 
+input sources are described, and a 
+executive sequence where concrete procedures 
+are indicated.  A \textit{meta-evaluator} 
+then operates in accord with these 
+definitions, concretizing the input values 
+and launching the actual procedure(s).  
+For \DSPIN{}, meta-procedures can be defined 
+using a framework based on \BioCoder{},\footnote{See 
+\bhref{https://jbioleng.biomedcentral.com/articles/10.1186/1754-1611-4-13}} 
+but adopted to the imaging and Computer Vision 
+context.}
 
 \p{}
 
