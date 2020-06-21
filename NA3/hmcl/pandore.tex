@@ -352,6 +352,10 @@
 
 \newcommand{\IORT}{\resizebox{!}{7pt}{\AcronymText{IORT}}}
 
+\newcommand{\openCyto}{\resizebox{!}{7pt}{\AcronymText{openCyto}}}
+\newcommand{\FACs}{\resizebox{!}{7pt}{\AcronymText{FACsanadu}}}
+
+
 
 \newcommand{\SeDI}{\resizebox{!}{7pt}{\AcronymText{SeDI}}}
 \newcommand{\RSNA}{\resizebox{!}{7pt}{\AcronymText{RSNA}}}
@@ -360,6 +364,11 @@
 \newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
 
 \newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
+\newcommand{\lsDICOM}{\resizebox{!}{9pt}{\AcronymText{DICOM}}}
+
+\newcommand{\CytometryML}{\resizebox{!}{7pt}{\AcronymText{CytometryML}}}
+
+\newcommand{\FCM}{\resizebox{!}{7pt}{\AcronymText{FCM}}}
 
 \newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
 
@@ -606,6 +615,11 @@
 \newcommand{\ThreeDimViewer}{\resizebox{!}{7pt}{\AcronymText{3DimViewer}}}
 
 \newcommand{\FAIR}{\resizebox{!}{7pt}{\AcronymText{FAIR}}}
+
+\newcommand{\MIAPEGI}{\resizebox{!}{7pt}{\AcronymText{MIAPE-GI}}}
+\newcommand{\MIAPE}{\resizebox{!}{7pt}{\AcronymText{MIAPE}}}
+
+
 
 \newcommand{\QNetworkManager}{\resizebox{!}{7pt}{\AcronymText{QNetworkManager}}}
 \newcommand{\QTextDocument}{\resizebox{!}{7pt}{\AcronymText{QTextDocument}}}
@@ -1225,7 +1239,7 @@ from the concrete procedure or procedures
 which are eventually executed.  Therefore, 
 a \MOSAIC{} meta-procedure definition 
 has two separate parts: a preamble where 
-input sources are described, and a 
+input sources are described, and an 
 executive sequence where concrete procedures 
 are indicated.  A \textit{meta-evaluator} 
 then operates in accord with these 
@@ -1237,8 +1251,99 @@ using a framework based on \BioCoder{},\footnote{See
 but adopted to the imaging and Computer Vision 
 context.}
 
-\p{}
+\p{Image analysis methods are often 
+described in academic literature in 
+terms of methematical formulae and/or 
+characterizations of computational environments 
+(such as Graphical Processing Units); 
+it requires additional construction to 
+translate these overviews into actual 
+computer code.  Once 
+Computer Vision innovations are in fact 
+concretely implemented, there is then 
+an additional stage of development 
+requisite for users to actually enact 
+the computations described in the 
+research.  Although it is theoretically 
+possible to demonstrate novel methods 
+within fully self-contained autonomous 
+applications, it is more convenient for 
+users if research code is integrated 
+with existing imaging software.  
+The \DSPIN{} interface can then help 
+connect new code to existing applications, 
+allowing users to access new code's functionaloty 
+through \GUI{} actions, command-line invocations, 
+or inter-application messaging protocols.}
 
+\p{In addition to practically enabling 
+application embedding, \DSPIN{} models 
+represent research methods and theories, 
+contributing to transparency and 
+reusabiltity according to the 
+\MIBBI{} and \FAIR{} (Findable, Accessible, 
+Interoperable, Reusable) standards.\footnote{See 
+\bhref{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}.}
+This can be achieved, in part, by implementing 
+data structures conforming to \PANDORE{} 
+Image Processing Objectives.  However, \DSPIN{} 
+embeds this logic in an Object-Oriented 
+context which allows imaging-specific workflow 
+notations to be paired with specifications 
+outside of imaging processing in the narrowest 
+sense.  This allows \DSPIN{} to be available 
+for hybrid computational objectives representations 
+which are only partially covered by the imaging 
+domain --- analogous to the \MIAPEGI{} 
+(Gel Electrophoresis Informatics) component 
+of \MIAPE{} (Minimum Information About a Proteomics 
+Experiment).  The following section will 
+discuss several domains where \DSPIN{} has 
+been explicitly integrated with code 
+libraries codifying \MIBBI{}-style research protocols.}
+
+\section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing.}
+
+\subsection{Image Flow Cytometry}
+\p{One important use-case for biomedical image processing 
+is to analyze cellular microscopy in conjuncton with 
+cytmetric experiments which investigate cells and 
+cellular-scale entities (such as proteins) indirectly.  
+Conceptually, image analysis and flow cytometry 
+(\FCM{}) analysis 
+are mathematically similar, and some commercial 
+cytometry software has been extended with 
+image-processing capabilities.  The overlap 
+between cytometric and image analysis has also 
+inspired attempts to merge cytometry standards, 
+such as \MIFlowCyt{} (the Minimum Information about a Flow Cytometry Experiment policy within \MIBBI{}), with bioimaging 
+standards such as \DICOM{} (Digital Imaging and 
+Communications in Medicine).  One such proposal is 
+due to Robert Leif, who argues that \q{The large overlap between imaging and flow cytometry provides strong evidence that both modalities should be covered by the same standard} 
+and has formalized an \XML{} language 
+(\CytometryML{}) to serve as that 
+overarching bridge.  The \DSPIN{} project builds 
+off this work by introducing its own \FCM{}/\DICOM{} 
+hybrid, although in an object-oriented rather 
+than \XML{}-based context (discussed further in 
+the next section).  As a reference implementation 
+for this \DSPIN{} extension, the project 
+also provides a pure-\Cpp{} cytometry 
+library based on the \openCyto{} and 
+\FACsanadu{} libraries, but eliminating 
+external dependencies such as \R{} and 
+\Java{}.  The \FCM{}/\DICOM{} bridge is 
+implemented in this context via a 
+\DSPIN{} supplement to \DICOM{} based 
+on \q{Semantic \DICOM{},} which is an 
+effort to standardize query processing 
+within \PACS{} (Picture Archiving and 
+Communications Service) workstations and 
+to more effectively integrate \DICOM{} with 
+clinical data.}
+
+\subsection{A Semantic \protect\lsDICOM{} Object Model}
+\p{}
 
 \end{document}
 
