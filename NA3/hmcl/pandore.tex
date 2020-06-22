@@ -328,6 +328,10 @@
 
 \newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
 
+\newcommand{\TAGML}{\resizebox{!}{7pt}{\AcronymText{TAGML}}}
+\newcommand{\GTagML}{\resizebox{!}{7pt}{\AcronymText{GTagML}}}
+
+
 \newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
 
@@ -463,6 +467,8 @@
 \resizebox{!}{12pt}{\ATextClr{%
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
 \resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+\newcommand{\ConceptsDB}{\resizebox{!}{7pt}{\AcronymText{ConceptsDB}}}
 
 \newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
 \newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
@@ -1574,11 +1580,68 @@ structure and the application-level data structures
 thereby serialized.  In \MOSAIC{}, such 
 \q{meta-serialization} --- a term used 
 to suggest the idea of providing meta-data 
-\textit{about} a serialization  
-    
- }
+\textit{about} a serialization --- is 
+formulated through a notion of 
+\q{grounding}, which involves adding supplemental 
+markup clarifying how documents instantiating a 
+serialization format (such as \XML{}) relate 
+to the coding protocols and data types of 
+software which reads or creates these documents.}
 
-\p{}
+\p{For maximum expressivity, \MOSAIC{} introduces a 
+meta-serialization system that can be applied 
+to language more flexible than \XML{} --- notably 
+\TAGML{} --- as well as to \XML{} 
+proper.\footnote{See \bhref{http://www.balisage.net/Proceedings/vol21/print/HaentjensDekker01/BalisageVol21-HaentjensDekker01.html}.}
+In short, \MOSAIC{} provides parsers for an 
+extended version of \TAGML{} which includes 
+an addition \q{grounding} layer.  Grounding, 
+in this context, means describing how 
+elements in the markip --- nodes, attributes, 
+and character sequences --- are \q{grounded} 
+in application-level types, data fields, 
+and other programming constructs.  \lMOSAIC{} 
+provides parsers for this \q{Grounded \TAGML{}} 
+(\GTagML{}) language as well as converters 
+which can output serialized data as conventional 
+\XML{}, so that \GTagML{} specifications can 
+be used in contexts (\MIFlowCyt{}, for instance) 
+where ordinary \XML{} is expected and serves 
+as a basis of standardization.  \lMOSAIC{} also 
+provides code libraries 
+for extracting data from \GTagML{} documents.}
+
+\p{By design, \GTagML{} schemata operate on 
+two levels: on the one hand, they constrain 
+the organization of \GTagML{} files themselves; 
+but they also stipulate how \GTagML{} document 
+structure relates to the type systems of 
+code libraries serializing and deserializing 
+\GTagML{} files.  To model this second, type-oriented 
+metadata, \GTagML{} introduces a hypergraph-based 
+type model organized around \q{infosets,} which 
+are structured overview of application-level 
+data types.  To fulle utilize \GTagML{} features, 
+programmers would then compose \q{infoset classes} 
+as wrappers around ordinary data types 
+(e.g., \Cpp{} classes) whose instances are 
+serialized via nodes or character strings 
+within \GTagML{} documents.  Infoset classes 
+provide hypergraph \q{views} onto type-instances, 
+and act as a bridge between data types and 
+\GTagML{} schema.  In particular, 
+infoset classes (rather than the types 
+they encapsulate) are the basis for schematizing 
+the relation between \GTagML{} document elements 
+and type instances and the data they contain.}
+
+\p{The hypergraph-based modeling incorporated 
+into \GTagML{} reuses much of the code associated 
+with \ConceptsDB{}, which is a new hypergraph database 
+being developed alongside \MOSAIC{}.  More information 
+about \ConceptsDB{} can be found on 
+the guthub project page for Linguistic 
+Technology Systems (\bhref{https://github.com/Mosaic-DigammaDB/LingTechSys}).}
 
 
 
