@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  22 JUN 2020 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  22 JUN 2020 14:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1734,7 +1734,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.553 ...esizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
+l.556 ...esizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1748,7 +1748,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.598 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
+l.601 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1762,7 +1762,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.602 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.605 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1776,7 +1776,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.607 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.610 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Command \llMOSAIC already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.815 ...ommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1790,7 +1804,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.822 \raisebox{-1pt}{#1}}}}
+l.825 \raisebox{-1pt}{#1}}}}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1804,7 +1818,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.827 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+l.830 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1911,7 +1925,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1022 
+l.1025 
        
 The package breakurl has already been loaded with options:
   [hyphenbreaks]
@@ -2015,7 +2029,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 1027.
+Package hyperref Info: Link coloring ON on input line 1030.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -2027,9 +2041,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 1027.
-LaTeX Info: Redefining \pageref on input line 1027.
-LaTeX Info: Redefining \nameref on input line 1027.
+LaTeX Info: Redefining \ref on input line 1030.
+LaTeX Info: Redefining \pageref on input line 1030.
+LaTeX Info: Redefining \nameref on input line 1030.
  (./pandore.out) (./pandore.out)
 \@outlinefile=\write6
 \openout6 = `pandore.out'.
@@ -2062,68 +2076,47 @@ File: utxsyb.fd 2000/12/14 v1.0
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/bera/t1fvs.fd
-File: t1fvs.fd 2004/09/07 scalable font definitions for T1/fvs.
-)
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/gfsdidot/uudidotnum
-s.fd) (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lm/t1lmdh.fd
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lm/t1lmdh.fd
 File: t1lmdh.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
 LaTeX Font Warning: Font shape `T1/lmdh/bx/n' undefined
-(Font)              using `T1/lmdh/m/n' instead on input line 1165.
+(Font)              using `T1/lmdh/m/n' instead on input line 1109.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+)
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/bera/t1fvs.fd
+File: t1fvs.fd 2004/09/07 scalable font definitions for T1/fvs.
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
 )
-<logo.png, id=31, 154.6578pt x 91.7829pt>
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1194.
-(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
- (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
-File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
-)
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1194.
+(hyperref)                removing `\new@ifnextchar' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1194.
-
-[1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdft
-ex.map}
-
- <./logo.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1235.
+(hyperref)                removing `\new@ifnextchar' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1235.
+(hyperref)                removing `\new@ifnextchar' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1235.
+(hyperref)                removing `\new@ifnextchar' on input line 1179.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1235.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1235.
+(hyperref)                removing `\new@ifnextchar' on input line 1179.
 
 ! Undefined control sequence.
 <argument> ... of Petri Net theory). In \MOSIACSR 
                                                   {}, the analogous concept ...
-l.1273 context.}
+l.1217 context.}
                 
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2131,32 +2124,30 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Overfull \vbox (6.22537pt too high) has occurred while \output is active []
-
-<e-logo.png, id=56, 2107.875pt x 1505.625pt>
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1324.
-(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+<logo.png, id=37, 154.6578pt x 91.7829pt>
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1324.
+Package pdftex.def Info: logo.png  used on input line 1218.
 (pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1218.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1324.
+(hyperref)                removing `\@ifnextchar' on input line 1218.
 
+[1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdft
+ex.map}
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1324.
-
-[2 <./e-logo.png>]
+ <./logo.png>]
 ! Undefined control sequence.
 <argument> ...a structures conforming to \PANDORE 
                                                   {} Image Processing Object...
-l.1324 ...ying \MIBBI{}-style research protocols.}
+l.1268 ...ying \MIBBI{}-style research protocols.}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2166,12 +2157,12 @@ and I'll forget about whatever was undefined.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1326.
+(hyperref)                removing `\new@ifnextchar' on input line 1270.
 
 ! Undefined control sequence.
 <argument> ... on the \openCyto {} and \FACsanadu 
                                                   {} libraries, but eliminat...
-l.1365 clinical data.}
+l.1309 clinical data.}
                       
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2179,90 +2170,90 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1367.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1367.
-
+<e-logo.png, id=60, 2107.875pt x 1505.625pt>
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1435.
+Package pdftex.def Info: e-logo.png  used on input line 1310.
 (pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1435.
+Package pdftex.def Info: logo.png  used on input line 1310.
 (pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1435.
+(hyperref)                removing `\@ifnextchar' on input line 1310.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1435.
+(hyperref)                removing `\@ifnextchar' on input line 1310.
+
+[2 <./e-logo.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1311.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1311.
+
+File: e-logo.png Graphic file (type png)
+<use e-logo.png>
+Package pdftex.def Info: e-logo.png  used on input line 1397.
+(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
+File: logo.png Graphic file (type png)
+<use logo.png>
+Package pdftex.def Info: logo.png  used on input line 1397.
+(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1397.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 1397.
 
 [3]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1511.
+Package pdftex.def Info: e-logo.png  used on input line 1506.
 (pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1511.
+Package pdftex.def Info: logo.png  used on input line 1506.
 (pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1511.
+(hyperref)                removing `\@ifnextchar' on input line 1506.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1511.
+(hyperref)                removing `\@ifnextchar' on input line 1506.
 
 [4]
 File: e-logo.png Graphic file (type png)
 <use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1637.
+Package pdftex.def Info: e-logo.png  used on input line 1592.
 (pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1637.
+Package pdftex.def Info: logo.png  used on input line 1592.
 (pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1637.
+(hyperref)                removing `\@ifnextchar' on input line 1592.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1637.
+(hyperref)                removing `\@ifnextchar' on input line 1592.
 
 [5]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1648.
-(pdftex.def)             Requested size: 143.77061pt x 102.69359pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1648.
-(pdftex.def)             Requested size: 99.15294pt x 58.84308pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1648.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1648.
-
-[6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1648.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1648.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1592.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1592.
  (./pandore.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1648.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1648.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1592.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1592.
 
 Package rerunfilecheck Info: File `pandore.out' has not changed.
 (rerunfilecheck)             Checksum: F5E7F21FEEE922EDA92251E98CD84E69;531.
@@ -2273,40 +2264,38 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1031 ({)
+### simple group (level 1) entered at line 1034 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 35283 strings out of 492649
- 710510 string characters out of 6122986
- 813350 words of memory out of 5000000
- 38567 multiletter control sequences out of 15000+600000
- 657452 words of font info for 121 fonts, out of 8000000 for 9000
+ 35259 strings out of 492649
+ 709936 string characters out of 6122986
+ 812360 words of memory out of 5000000
+ 38551 multiletter control sequences out of 15000+600000
+ 647285 words of font info for 115 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,93p,10396b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,14n,93p,10396b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
 ps/gfsdidot/didotec.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts
-/enc/dvips/cabin/cbn_hvmmj2.enc}{/home/nlevisrael/texl/texlive-install/texmf-di
-st/fonts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/tex
-mf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/home/nlevisrael/texl/texlive-install/tex
-mf-dist/fonts/enc/dvips/gfsdidot/didottabnums.enc}{/home/nlevisrael/texl/texliv
-e-install/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/nlevisrael/texl/texlive
--install/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrae
-l/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Bold.pfb
-></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdidot/
-GFSDidot-Italic.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/typ
-e1/public/gfsdidot/GFSDidot.pfb></home/nlevisrael/texl/texlive-install/texmf-di
-st/fonts/type1/public/bera/fvsb8a.pfb></home/nlevisrael/texl/texlive-install/te
-xmf-dist/fonts/type1/public/bera/fvsr8a.pfb></home/nlevisrael/texl/texlive-inst
-all/texmf-dist/fonts/type1/public/lm/lmdunh10.pfb></home/nlevisrael/texl/texliv
-e-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.pfb></home/nlevisrael/tex
-l/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrr.pfb></home/nlevis
-rael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></hom
-e/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pf
-b>
-Output written on pandore.pdf (6 pages, 350816 bytes).
+/enc/dvips/base/8r.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/
+enc/dvips/cabin/cbn_hvmmj2.enc}{/home/nlevisrael/texl/texlive-install/texmf-dis
+t/fonts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texm
+f-dist/fonts/enc/dvips/lm/lm-ec.enc}</home/nlevisrael/texl/texlive-install/texm
+f-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrael/texl/texliv
+e-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Bold.pfb></home/nlevi
+srael/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Ital
+ic.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/gfs
+didot/GFSDidot.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type
+1/public/bera/fvsb8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/font
+s/type1/public/bera/fvsr8a.pfb></home/nlevisrael/texl/texlive-install/texmf-dis
+t/fonts/type1/public/lm/lmdunh10.pfb></home/nlevisrael/texl/texlive-install/tex
+mf-dist/fonts/type1/public/tex-gyre/qcrb.pfb></home/nlevisrael/texl/texlive-ins
+tall/texmf-dist/fonts/type1/public/tex-gyre/qcrr.pfb></home/nlevisrael/texl/tex
+live-install/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></home/nlevisrael/
+texl/texlive-install/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on pandore.pdf (5 pages, 340899 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
+ 146 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
