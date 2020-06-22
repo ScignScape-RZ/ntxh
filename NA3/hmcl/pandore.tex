@@ -370,6 +370,10 @@
 
 \newcommand{\FCM}{\resizebox{!}{7pt}{\AcronymText{FCM}}}
 
+\newcommand{\OMETIFF}{\resizebox{!}{7pt}{\AcronymText{OME-TIFF}}}
+\newcommand{\OME}{\resizebox{!}{7pt}{\AcronymText{OME}}}
+
+
 \newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
 
 \newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
@@ -715,8 +719,11 @@
 \newcommand{\MOSAICSR}{\resizebox{!}{7pt}{%
 \mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
 
-\newcommand{\MOSAICSL}{\resizebox{!}{7pt}{%
-\mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
+\newcommand{\MOSAICSD}{\resizebox{!}{7pt}{%
+\mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SD}}}}
+
+\newcommand{\MOSAICGIS}{\resizebox{!}{7pt}{%
+\mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{GIS}}}}
 
 
 \newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
@@ -1424,10 +1431,154 @@ not just to image analysis per se.}
 \p{Another area where \DSPIN{} provides structured 
 object models is that of Geographic Information Systems 
 (\GIS{}), and specifically \GIS{} annotations.  
+There is a direct link between image processing 
+and \GIS{} insofar as identifying geotaggable 
+features is one dimension or application of 
+Computer Vision.  Effectively manipulating 
+geoimaging data requires mathematical 
+translations between several different 
+coordinate systems, in both two and 
+three dimensions.  These coordinate 
+transforms --- as well as semantic interpretations 
+of geoimage segments (buildings, land features, 
+roads, etc.) --- can serve as the basis for 
+an object model affixing image-processing 
+objectives to \GIS{} workflows.}
 
+\p{In conventional \GIS{} annotation, 
+data structures are linked to both 
+geospatial coordinates and to 
+iconography, or other visual cues, 
+allowing locations of interest to be 
+indicated on maps.  The actual geotagged 
+data structures can be derived from 
+any domain; as such any object model 
+can be integrated with \GIS{} annotations 
+so long as one can assign spatial interpretations 
+to the phenomena computationally encapsulated 
+by the domain in question.  In a medical 
+context, for instance, geotagged data 
+may represent the scope of a vaccination campaign 
+or the extent of an epidemic, along with 
+relevant geographic or civic features 
+(villages, medical clinics, national borders, 
+and so on).  The actual map as a visible 
+digital artefact therefore serves as a 
+virtual glue where clinical, geographical, 
+governmental, and \GUI{} data are all 
+sutured together.  Insofar as geoimaging 
+involved analysis of photographed land 
+features and/or urban environments, 
+image processing information represents a 
+further object model that can be 
+added to the mix.  Even when dealing solely 
+with virtual maps, however --- rather 
+than with satellite images or other geospatial 
+photography --- the analysis and application-level 
+rendering of map features is sufficiently 
+similar to image process that a rigorous 
+model of \GIS{} integration belongs 
+properly within \DSPIN{}, specifically 
+within a \MOSAICGIS{} extension.}
 
-}
+\section{Markup Serialization and \protect\q{Grounding}}
 
+\p{The data-integration mechanisms discussed 
+in this paper thus far have focused on 
+object models and object-oriented programming 
+techniques.  While composing 
+special-purpose object-based libraries 
+specifically tailored to individual  
+data-integration problems is a powerful 
+tool for solbing such problems, in practice 
+data integration initiatives are 
+often organized around standards 
+for sharing or serializing conformation 
+data structures.  As a result, an important 
+aspect of data integration is implementing 
+proper data-serialization technology.  
+In the biomedical and bioimaging context, 
+most serialization operates through 
+\XML{}, so discussions of \XML{} languages 
+are a good foundation for examining 
+serialization concerns in general.}
+
+\p{To be sure, standardizing a data 
+format by stipulating how \XML{} files 
+may encode the data is simpler than 
+defining an analogous specification 
+in terms of executable computer code.  
+For sake of discussion, data structures 
+defining a novel image-analysis method 
+can serve as a case-study in 
+standardization-through-serialization: 
+one way to document the shape of any 
+relevant data is to explain how an \XML{} 
+document will be structured insofar as 
+it encodes data accordingly.  Potentially, 
+such specification can be a single 
+\XML{} \DTD{} file, or an \XML{} sample, 
+providing a convenient reference point 
+for developers to grasp the underlying 
+data model.}
+
+\p{However, the structure of \XML{} document 
+does not, in itself, present a clear picture of 
+how the information which the document 
+represents is semantically organized.  Even 
+though \XML{} is processed by computer programs, 
+it is not even evident from an \XML{} document or 
+schema which \XML{} elements (if any) correspond 
+to data types recognized by applications which 
+read and/or write the corresponding \XML{} code.  
+For example, the \XML{} portion of \OMETIFF{} 
+(the principal Open Microscopy Environment imaging 
+format) includes an explicit \textbf{Image} element 
+(which gathers up all significant image metadata); 
+an application reading \OMETIFF{} files 
+might therefore introduce a single datatype 
+--- analogous to \textbf{itk::Image} from 
+the Insight Toolkit imaging libraries --- 
+bundling the data in that part of the \OME{} \XML{}.  
+In this case there will be a one-to-one correspondance 
+between \XML{} structure and application-level 
+data types, at least for that one \textbf{Image} node.  
+On the other hand, software reading \OMETIFF{} 
+information may not manipulate images directly, 
+but rather pull out other kinds of metadata, 
+such as an experimenter's name or description 
+of the microscopic setup.  In this case, 
+the application may not have an explicit 
+\q{object} representing the image itself, 
+but it may still read information about the 
+image from child nodes of the \XML{} \textbf{Image} 
+element.}
+
+\p{In short, applications can read or use data 
+from an \XML{} document in different ways, 
+so the document's structure does not itself 
+provide a clear picture of how code which 
+reads the \XML{} is organized.  This uncertainty 
+is significant insofar as one wishes to use 
+\XML{} specifications as an indirect strategy 
+for documenting parameters and features 
+of the data structures which are serialized 
+via the relevant \XML{} language.  In effect, 
+\XML{} serialization operates on two levels: 
+on the one hand, the specific \XML{} document 
+provides an encoding of data conforming to a 
+given structure; but, at a more abstract 
+level, one can model the relationship 
+between the surface-level \XML{} node 
+structure and the application-level data structures 
+thereby serialized.  In \MOSAIC{}, such 
+\q{meta-serialization} --- a term used 
+to suggest the idea of providing meta-data 
+\textit{about} a serialization  
+    
+ }
+
+\p{}
 
 
 
