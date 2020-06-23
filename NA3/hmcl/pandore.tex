@@ -84,8 +84,8 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=44   %\pgfmathresult>0\relax
-\put(182,139){
+\ifnum\value{page}=5   %\pgfmathresult>0\relax
+\put(182,132){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -112,7 +112,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.83in,top=.5in,right=.81in,bottom=1.2in} %margins
+\geometry{left=.83in,top=.45in,right=.81in,bottom=1.2in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -128,9 +128,9 @@
 \renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
 \renewcommand{\footnoterule}{%
-	\kern -3pt
+	\kern 4pt
 	\hrule width .92\textwidth height .5pt
-	\kern 10pt
+	\kern 6pt
 }
 
 
@@ -366,6 +366,8 @@
 
 \newcommand{\CER}{\resizebox{!}{7pt}{\AcronymText{CER}}}
 \newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+
+\newcommand{\DCMTK}{\resizebox{!}{7pt}{\AcronymText{DCMTK}}}
 
 \newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
 \newcommand{\lsDICOM}{\resizebox{!}{9pt}{\AcronymText{DICOM}}}
@@ -735,7 +737,7 @@
 \mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{GIS}}}}
 
 
-\newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
+\newcommand{\lMOSAICSR}{\resizebox{!}{7.5pt}{%
 \lmMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
 
 \newcommand{\lMOSAICSD}{\resizebox{!}{7pt}{%
@@ -743,7 +745,7 @@
 
 
 \newcommand{\lsMOSAICSR}{\resizebox{!}{9.5pt}{%
-\lMOSAIC-}\resizebox{!}{9pt}{\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
+\lMOSAIC-}\resizebox{!}{9pt}{\AcronymTextNC{\textcolor{drp!45!black}{SR}}}}
 
 %\newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
 %\mMOSAIC-\AcronymTextNC{SR}}}
@@ -1072,7 +1074,7 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {The \llMOSAIC{} Structured Reporting Framework 
-and Image Processing Objectives}
+and Image Processing Objectives Description}
 }}}
 \end{center}
 \end{minipage}
@@ -1129,7 +1131,7 @@ in scientific software.  For these cases,
 how a software component specific to a given 
 research project exposes its functionality to 
 host and/or networked peer applications.  There 
-are also scenarios where both scenarios are 
+are also cases where both scenarios are 
 relevant --- the \MOSAICSR{} code would simultaneously 
 document real-world experimental protocols and 
 construct a digital interface as part of 
@@ -1164,7 +1166,7 @@ adopts protocols from \CaPTk{}, particularly
 with respect to implementating 
 image-analysis capabilities as 
 extensions to a core application, and 
-\CaPTk{}'s implementation of the 
+with respect to \CaPTk{}'s implementation of the 
 Common Workflow Language (\CWL{}).  In effect, 
 \DSPIN{} formalizes the data models and 
 prototypes adopted by \Pandore{} and 
@@ -1180,10 +1182,10 @@ and objectives.}
 
 \p{Most approaches to modeling research workflows 
 involve some concept of \q{meta-objects},\footnote{See 
-the \VISSION{} system: \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.}, 
+the \VISSION{} system: \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.} 
 \q{tools} (in the terminology of \CWL{}), 
 and \q{transitions} (in the language of Petri Net 
-theory).  In \MOSIACSR{}, the analogous concept is 
+theory).  In \MOSAICSR{}, the analogous concept is 
 that of \textit{meta-procedures}, which are analogous 
 to ordinary computational procedures but 
 add extra sources of information concerning 
@@ -1204,7 +1206,7 @@ from the concrete procedure or procedures
 which are eventually executed.  Therefore, 
 a \MOSAIC{} meta-procedure definition 
 has two separate parts: a preamble where 
-input sources are described, and an 
+input sources are described; and an 
 executive sequence where concrete procedures 
 are indicated.  A \textit{meta-evaluator} 
 then operates in accord with these 
@@ -1219,7 +1221,7 @@ context.}
 \p{Image analysis methods are often 
 described in academic literature in 
 terms of mathematical formulae and/or 
-characterizations of computational environments 
+characterizations of computing environments 
 (such as Graphical Processing Units); 
 it requires additional construction to 
 translate these overviews into actual 
@@ -1235,11 +1237,11 @@ within fully self-contained autonomous
 applications, it is more convenient for 
 users if research code is integrated 
 with existing imaging software.  
-The \DSPIN{} interface can then help 
+Along these lines, the \DSPIN{} interface can help 
 connect new code to existing applications, 
-allowing users to access new code's functionaloty 
+allowing users to access new code's functionality 
 through \GUI{} actions, command-line invocations, 
-or inter-application messaging protocols.}
+or inter-application messaging.}
 
 \p{In addition to practically enabling 
 application embedding, \DSPIN{} models 
@@ -1250,7 +1252,7 @@ reusability according to the
 Interoperable, Reusable) standards.\footnote{See 
 \bhref{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}.}
 This can be achieved, in part, by implementing 
-data structures conforming to \PANDORE{} 
+data structures conforming to \Pandore{} 
 Image Processing Objectives.  However, \DSPIN{} 
 embeds this logic in an Object-Oriented 
 context which allows imaging-specific workflow 
@@ -1267,8 +1269,9 @@ discuss several domains where \DSPIN{} has
 been explicitly integrated with code 
 libraries codifying \MIBBI{}-style research protocols.}
 
+%\vspace{-1em}
 \section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing.}
-
+\vspace{2em}
 \subsection{Image Flow Cytometry}
 \p{One important use-case for biomedical image processing 
 is to analyze cellular microscopy in conjunction with 
@@ -1291,12 +1294,13 @@ overarching bridge.\footnote{See
 \bhref{https://spie.org/Publications/Proceedings/Paper/10.1117/12.2295220?SSO=1}.}  The \DSPIN{} project builds 
 off this work by introducing its own \FCM{}/\DICOM{} 
 hybrid, although in an object-oriented rather 
-than \XML{}-based context (discussed further in 
+than \XML{}-based context (along with an expanded 
+\XML{}-oriented schema discussed in 
 the next section).  As a reference implementation 
 for this \DSPIN{} extension, the project 
 also provides a pure-\Cpp{} cytometry 
 library based on the \openCyto{} and 
-\FACsanadu{} libraries, but eliminating 
+\FACSanadu{} libraries, but eliminating 
 external dependencies such as \R{} and 
 \Java{}.  The \FCM{}/\DICOM{} bridge is 
 implemented in this context via a 
@@ -1322,16 +1326,20 @@ to \DICOM{} data such that image-objectives and
 This object-oriented foundation also provides a 
 basis on which to further integrate clinical 
 data in the form of \q{Semantic} \PACS{} 
-models.\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/}.}  In general, Semantic \PACS{} applications 
-draw clinical data from \DICOM{} headers, though it 
-would be consistent with the Semantic \DICOM{} 
-paradigm to expose this information via 
-sufficiently well-structured supplemental 
-information packages as well.  This 
-arrangement then forms the basis of a  
-\MOSAIC{}-Semantic \DICOM{} (\MOSAICSD{}) 
-framework which integrates Semantic \DICOM{} 
-with \DSPIN{} --- specifically, which defines 
+models.\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/}.}  The original Semantic \PACS{} implementation 
+draw clinical data from \DICOM{} headers, and 
+represented this extracted information via \RDF{}.  
+In keeping with \MOSAIC{}'s more object-oriented 
+focus, the \MOSAIC{}-Semantic \DICOM{} (\MOSAICSD{}) 
+integration is engineered instead as an 
+extension to the \DICOM{} ToolKit (\DCMTK{}) 
+library, though important many constructs 
+within Semantic \DICOM{} in the guise 
+of a \q{Hypergraph Ontology}, one example of a 
+system \MOSAIC{} uses to merge Semantic Web 
+schema with Object-Oriented code.  In 
+short, \MOSAICSD{} 
+extends \DSPIN{} by defining  
 a central \DICOM{} object model affixed 
 to both clinical and 
 image-processing object models.}
@@ -1355,7 +1363,7 @@ in different patients --- \q{The starting point will likely be a deep characteri
 That is, \FCM{} observations need to be 
 matched with clinical data in order to 
 classify (and consider statistical correlations 
-between) immunology and clinical facts 
+between) immunological findings and clinical facts 
 (risk factors, sociodemographics, disease 
 progression, and so forth).  This analysis 
 intrinsically assumes that \FCM{} data can 
@@ -1417,7 +1425,7 @@ digital artifact therefore serves as a
 virtual glue where clinical, geographical, 
 governmental, and \GUI{} data are all 
 sutured together.  Insofar as geoimaging 
-involved analysis of photographed land 
+involves analysis of photographed land 
 features and/or urban environments, 
 image processing information represents a 
 further object model that can be 
@@ -1534,7 +1542,7 @@ software which reads or creates these documents.}
 
 \p{For maximum expressivity, \MOSAIC{} introduces a 
 meta-serialization system that can be applied 
-to language more flexible than \XML{} --- notably 
+to languages more flexible than \XML{} --- notably 
 \TAGML{} --- as well as to \XML{} 
 proper.\footnote{See \bhref{http://www.balisage.net/Proceedings/vol21/print/HaentjensDekker01/BalisageVol21-HaentjensDekker01.html}.}
 In short, \MOSAIC{} provides parsers for an 
@@ -1555,7 +1563,14 @@ as a basis of standardization.  \lMOSAIC{} also
 provides code libraries 
 for extracting data from \GTagML{} documents.}
 
-\p{By design, \GTagML{} schemata operate on 
+\p{\lGTagML{} documents, 
+with certain restrictions enforced, are structurally 
+isomorphic to \XML{} and can be rendered as 
+pure \XML{}; as such, \GTagML{} schemata can 
+be used to define norms for \XML{} languages, 
+although the logical role and operations of such requirements 
+is not identical to \XML{} schema definitions.  
+By design, \GTagML{} schemata operate on 
 two levels: on the one hand, they constrain 
 the organization of \GTagML{} files themselves; 
 but they also stipulate how \GTagML{} document 
