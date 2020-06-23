@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=5   %\pgfmathresult>0\relax
-\put(182,132){
+\put(182,142){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -331,6 +331,10 @@
 \newcommand{\TAGML}{\resizebox{!}{7pt}{\AcronymText{TAGML}}}
 \newcommand{\GTagML}{\resizebox{!}{7pt}{\AcronymText{GTagML}}}
 
+\newcommand{\lGTagML}{\resizebox{!}{7.5pt}{\AcronymText{GTagML}}}
+
+
+
 
 \newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
 \newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
@@ -470,8 +474,6 @@
 \rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
 \resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
 
-\newcommand{\ConceptsDB}{\resizebox{!}{7pt}{\AcronymText{ConceptsDB}}}
-
 \newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
 \newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
 \newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
@@ -532,7 +534,13 @@
 \newcommand{\llMOSAIC}{%
 \resizebox{!}{8.5pt}{\ATexttclr{MOSAIC}}}
 
+\newcommand{\ConceptsDB}{\resizebox{!}{7pt}{\ATexttclr{ConceptsDB}}}
+
+
 \newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
+
+\newcommand{\lXML}{\resizebox{!}{8pt}{\AcronymText{XML}}}
+
 \newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
 \newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
 
@@ -1454,14 +1462,18 @@ often organized around standards
 for sharing or serializing conformant 
 data structures.  As a result, an important 
 aspect of data integration is implementing 
-proper data-serialization technology.  
-In the biomedical and bioimaging context, 
-most serialization operates through 
-\XML{}, so discussions of \XML{} languages 
-are a good foundation for examining 
-serialization concerns in general.}
+proper data-serialization technology 
+which is sufficiently rigorous to 
+serve as a proxy for formal interface 
+definitions.  
+\lXML{} formats are a good case-study 
+for such formalizations because 
+most serialization in 
+the biomedical and bioimaging context, 
+operates through 
+\XML{} languages.}
 
-\p{To be sure, standardizing a data 
+\p{Standardizing a data 
 format by stipulating how \XML{} files 
 may encode the data is simpler than 
 defining an analogous specification 
@@ -1474,9 +1486,7 @@ such specification can be a single
 \XML{} \DTD{} file, or an \XML{} sample, 
 providing a convenient reference point 
 for developers to grasp the underlying 
-data model.}
-
-\p{However, the structure of \XML{} document 
+data model.  However, the structure of an \XML{} document 
 does not, in itself, present a clear picture of 
 how the information which the document 
 represents is semantically organized.  Even 
@@ -1491,7 +1501,7 @@ format) includes an explicit \textbf{Image} element
 (which gathers up all significant image metadata); 
 an application reading \OMETIFF{} files 
 might therefore introduce a single datatype 
---- analogous to \textbf{itk::Image} from 
+--- analogous to (and maybe wrapping an) \textbf{itk::Image} from 
 the Insight Toolkit imaging libraries --- 
 bundling the data in that part of the \OME{} \XML{}.  
 In this case there will be a one-to-one correspondence 
@@ -1525,10 +1535,11 @@ given structure; but, at a more abstract
 level, one can model the relationship 
 between the surface-level \XML{} node 
 structure and the application-level data structures 
-thereby serialized.  In \MOSAIC{}, such 
+thereby serialized.  This second level of detail 
+is usually implicit and unstated, but in \MOSAIC{}, such 
 \q{meta-serialization} --- a term used 
 to suggest the idea of providing meta-data 
-\textit{about} a serialization --- is 
+\textit{about} a serialization --- is directly 
 formulated through a notion of 
 \q{grounding}, which involves adding supplemental 
 markup clarifying how documents instantiating a 
@@ -1543,7 +1554,7 @@ to languages more flexible than \XML{} --- notably
 proper.\footnote{See \bhref{http://www.balisage.net/Proceedings/vol21/print/HaentjensDekker01/BalisageVol21-HaentjensDekker01.html}.}
 In short, \MOSAIC{} provides parsers for an 
 extended version of \TAGML{} which includes 
-an addition \q{grounding} layer.  Grounding, 
+an additional \q{grounding} layer.  Grounding, 
 in this context, means describing how 
 elements in the markip --- nodes, attributes, 
 and character sequences --- are \q{grounded} 
@@ -1551,7 +1562,7 @@ in application-level types, data fields,
 and other programming constructs.  \lMOSAIC{} 
 provides parsers for this \q{Grounded \TAGML{}} 
 (\GTagML{}) language as well as converters 
-which can output serialized data as conventional 
+to output serialized data as conventional 
 \XML{}, so that \GTagML{} specifications can 
 be used in contexts (\MIFlowCyt{}, for instance) 
 where ordinary \XML{} is expected and serves 
@@ -1575,20 +1586,20 @@ code libraries serializing and deserializing
 \GTagML{} files.  To model this second, type-oriented 
 metadata, \GTagML{} introduces a hypergraph-based 
 type model organized around \q{infosets,} which 
-are structured overview of application-level 
-data types.  To fulle utilize \GTagML{} features, 
-programmers would then compose \q{infoset classes} 
+are structured overviews of application-level 
+data types.  To fully utilize \GTagML{} features, 
+programmers may then compose \q{infoset classes} 
 as wrappers around ordinary data types 
 (e.g., \Cpp{} classes) whose instances are 
 serialized via nodes or character strings 
 within \GTagML{} documents.  Infoset classes 
 provide hypergraph \q{views} onto type-instances, 
 and act as a bridge between data types and 
-\GTagML{} schema.  In particular, 
+their associated \GTagML{} schema.  In particular, 
 infoset classes (rather than the types 
 they encapsulate) are the basis for schematizing 
 the relation between \GTagML{} document elements 
-and type instances and the data they contain.}
+and type instances (and the data they contain).}
 
 \p{The hypergraph-based modeling incorporated 
 into \GTagML{} reuses much of the code associated 
