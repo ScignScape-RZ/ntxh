@@ -1,0 +1,1594 @@
+\documentclass[11pt,letterpaper]{article}
+
+
+% pmml  arff  openannotation
+
+%\usepackage[condensed,math]{anttor}
+%\usepackage[T1]{fontenc}
+
+%\usepackage[T1]{fontenc}
+%\usepackage{tgtermes}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+\usepackage{titlesec}
+
+%\usepackage{sectsty}
+%\sectionfont{\fontsize{13}{4}\selectfont}
+
+\titleformat{\section}
+  {\normalfont\fontsize{13}{15}\bfseries}{\thesection}{1em}{}
+
+\let\OldPart\part
+
+\renewcommand{\part}[1]{\OldPart{#1}%
+%{\textcolor{darkRed}\hrule}
+\vspace{-.5em}}
+
+\titlespacing*{\section}
+{0pt}{4ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
+
+\titlespacing*{\subsection}
+{0pt}{3.5ex plus 1ex minus .1ex}{-.8ex plus .2ex}
+
+%\usepackage{mathptmx}
+
+\usepackage{eso-pic}
+
+%\setlength\parindent{0pt}
+
+\AddToShipoutPictureBG{%
+
+\ifnum\value{page}>1{
+\AtTextUpperLeft{
+\makebox[20.5cm][r]{
+\raisebox{-1.95cm}{%
+{\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
+}\fi
+}
+
+\AddToShipoutPicture{%
+{
+ {\color{blGreen!70!red}\transparent{0.9}{\put(0,0){\rule{3pt}{\paperheight}}}}%
+ {\color{darkRed!70!purple}\transparent{1}\put(3,0){{\rule{4pt}{\paperheight}}}}
+% {\color{logoPeach!80!cyan}\transparent{0.5}{\put(0,700){\rule{1cm}{.6cm}}}}%
+% {\color{darkRed!60!cyan}\transparent{0.7}\put(0,706){{\rule{1cm}{.6cm}}}}
+% \put(18,726){\thepage}
+% \transparent{0.8}
+}
+}
+
+\AddToShipoutPicture{%
+\ifnum\value{page}=1
+\put(257.5,942){%
+	\transparent{0.7}{
+		\includegraphics[width=0.2\textwidth]{logo.png}}}
+\put(59,953){\textbf{{\fontfamily{phv}\fontsize{14}{14}\selectfont{}WHITE PAPER}}}
+\fi
+}	
+
+
+
+\AddToShipoutPicture{%
+\ifnum\value{page}>1
+{\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
+
+%\ifnum\value{page}<39
+\put(301,16){%
+\transparent{0.7}{
+\includegraphics[width=0.2\textwidth]{logo.png}}
+}
+%\fi
+
+%\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
+
+\ifnum\value{page}=44   %\pgfmathresult>0\relax
+\put(182,139){
+ {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
+
+   {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
+	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
+       \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
+      amy.neustein@verizon.net \textbullet{} \textbf{(917) 817-2184} }}}
+	 \end{minipage}}}}}}
+}
+\fi
+
+{\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
+{\color{inTwo}\transparent{0.3}\put(5.6,15){{\rule{0.5\paperwidth}{.4cm}}}}
+
+\fi
+}
+
+%\pagestyle{empty} % no page number
+%\parskip 7.2pt    % space between paragraphs
+%\parindent 12pt   % indent for new paragraph
+%\textwidth 4.5in  % width of text
+%\columnsep 0.8in  % separation between columns
+
+%\setlength{\footskip}{7pt}
+
+\usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
+\geometry{left=.83in,top=.5in,right=.81in,bottom=1.2in} %margins
+
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\@part}{\par}{\quad}{}{}
+\patchcmd{\@part}{\huge}{\Large}{}{}
+\makeatother
+
+\renewcommand{\partname}{\hspace{-1em}Part}
+
+\renewcommand*\thepart{\Roman{part}:}
+
+\renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
+
+\renewcommand{\footnoterule}{%
+	\kern -3pt
+	\hrule width .92\textwidth height .5pt
+	\kern 10pt
+}
+
+
+\usepackage[hyphens]{url}
+\newcommand{\biburl}[1]{ {\fontfamily{gar}\selectfont{\textcolor[rgb]{.2,.6,0}%
+{\scriptsize {\url{#1}}}}}}
+
+%\linespread{1.3}
+
+\newcommand{\sectsp}{\vspace{12pt}}
+
+\usepackage{graphicx}
+\usepackage{color,framed}
+
+\usepackage{textcomp}
+
+\usepackage{float}
+
+\usepackage{mdframed}
+
+
+\usepackage{setspace}
+\newcommand{\rpdfNotice}[1]{\begin{onehalfspacing}{
+
+\Large #1
+
+}\end{onehalfspacing}}
+
+\usepackage{xcolor}
+
+\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+
+\usepackage{hyperref}
+\newcommand{\rpdfLink}[1]{\href{#1}{\small{#1}}}
+\newcommand{\dblHref}[1]{\href{#1}{\small{\burl{#1}}}}
+\newcommand{\browseHref}[2]{\href{#1}{\Large #2}}
+
+\colorlet{blCyan}{cyan!50!blue}
+
+\definecolor{darkRed}{rgb}{.2,.0,.1}
+
+
+\definecolor{blGreen}{rgb}{.2,.7,.3}
+
+\definecolor{darkBlGreen}{rgb}{.1,.3,.2}
+
+\definecolor{oldBlColor}{rgb}{.2,.7,.3}
+
+\definecolor{blColor}{rgb}{.1,.3,.2}
+
+\definecolor{elColor}{rgb}{.2,.1,0}
+\definecolor{flColor}{rgb}{0.7,0.3,0.3}
+
+\definecolor{logoOrange}{RGB}{108, 18, 30}
+\definecolor{logoGreen}{RGB}{85, 153, 89}
+\definecolor{logoPurple}{RGB}{200, 208, 30}
+
+\definecolor{logoBlue}{RGB}{4, 2, 25}
+\definecolor{logoPeach}{RGB}{255, 159, 102}
+\definecolor{logoCyan}{RGB}{66, 206, 244}
+\definecolor{logoRed}{rgb}{.3,0,0}
+
+\newcommand{\colorq}[1]{{\color{logoOrange!70!black}{\q{\small\textbf{#1}}}}}
+
+\definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
+\definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
+
+\definecolor{outOne}{rgb}{0.435, 0.698, 0.122}% Rule colour
+\definecolor{outTwo}{rgb}{0.698, 0.435, 0.122}% Rule colour
+
+\colorlet{linkcolor}{flColor!60!red}
+
+
+\hypersetup{
+	colorlinks=true,
+	citecolor=blCyan!40!green,
+	filecolor=magenta!30!logoBlue,
+	urlcolor=blue,
+    linkcolor=linkcolor!70!black,
+%    allcolors=blCyan!40!green
+}
+
+
+\usepackage[many]{tcolorbox}% http://ctan.org/pkg/tcolorbox
+
+\usepackage{transparent}
+
+\newlength{\bsep}
+\setlength{\bsep}{-1pt}
+\let\xbibitem\bibitem
+\renewcommand{\bibitem}[2]{\vspace{\bsep}\xbibitem{#1}{#2}}
+
+\newenvironment{cframed}{\begin{mdframed}[linecolor=logoPeach,linewidth=0.4mm]}{\end{mdframed}}
+
+\newenvironment{ccframed}{\begin{mdframed}[backgroundcolor=logoGreen!5,linecolor=logoCyan!50!black,linewidth=0.4mm]}{\end{mdframed}}
+
+
+%\usepackage[T1]{fontenc}
+
+%\usepackage{aurical}
+% \Fontauri
+
+\usepackage{gfsdidot}
+\usepackage[T1]{fontenc}
+
+%\makeatletter
+%\f@family,  cmr, T1, n, m,
+%\f@encoding,
+%\f@shape,
+%\f@series,
+%\makeatother
+
+
+
+%\usepackage{LibreBodoni}
+
+%\usepackage{fontspec}
+%\setmainfont{QTBengal}
+
+\usepackage{relsize}
+
+\newcommand{\bref}[1]{\hspace*{1pt}\textbf{\ref{#1}}}
+
+\newcommand{\pseudoIndent}{
+
+\vspace{10pt}\hspace*{12pt}}
+
+\newcommand{\YPDFI}{{\fontfamily{fvs}\selectfont YPDF-Interactive}}
+
+%
+\newcommand{\deconum}[1]{{\protect\raisebox{-1pt}{{\LARGE #1}}}}
+
+\newcommand{\visavis}{vis-\`a-vis}
+
+\newcommand{\VersatileUX}{{\color{red!85!black}{\Fontauri Versatile}}%
+{{\fontfamily{qhv}\selectfont\smaller UX}}}
+
+\newcommand{\NDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont {\smaller NDP C{\smaller LOUD}}}}}
+
+\newcommand{\MThreeK}{{\color{blGreen!45!black}%
+{\fontfamily{qhv}\fontsize{10}{8}\selectfont {M3K}}}}
+
+
+\newcommand{\lfNDPCloud}{{\color{red!15!black}%
+{\fontfamily{qhv}\selectfont N{\smaller DP C{\smaller LOUD}}}}}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}
+{\color{red!15!black}{C}}}}}
+
+\definecolor{tcolor}{RGB}{24,52,61}
+
+\newcommand{\CCpp}{\resizebox{!}{7pt}{\AcronymText{C}}/\Cpp{}}
+\newcommand{\NoSQL}{\resizebox{!}{7pt}{\AcronymText{NoSQL}}}
+\newcommand{\SQL}{\resizebox{!}{7pt}{\AcronymText{SQL}}}
+
+\newcommand{\SPARQL}{\resizebox{!}{7pt}{\AcronymText{SPARQL}}}
+
+\newcommand{\NCBI}{\resizebox{!}{7pt}{\AcronymText{NCBI}}}
+
+\newcommand{\HTXN}{\resizebox{!}{7pt}{\ATexttclr{HTXN}}}
+
+\newcommand{\TDM}{\resizebox{!}{7pt}{\AcronymText{TDM}}}
+
+\newcommand{\lHTXN}{\resizebox{!}{7.5pt}{\ATexttclr{H}}%
+\resizebox{!}{6.5pt}{\ATexttclr{TXN}}}
+
+\newcommand{\lsHTXN}{\resizebox{!}{9.5pt}{\ATexttclr{HTXN}}}
+
+\newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
+
+\newcommand{\UDpipe}{\resizebox{!}{7pt}{\AcronymText{UDpipe}}}
+
+\newcommand{\C}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+\newcommand{\FCS}{\resizebox{!}{7pt}{\AcronymText{FCS}}}
+
+\newcommand{\GAVI}{\resizebox{!}{7pt}{\AcronymText{GAVI}}}
+\newcommand{\ArcGIS}{\resizebox{!}{7pt}{\AcronymText{ArcGIS}}}
+\newcommand{\QGIS}{\resizebox{!}{7pt}{\AcronymText{QGIS}}}
+
+\newcommand{\GIS}{\resizebox{!}{7pt}{\AcronymText{GIS}}}
+\newcommand{\AngelScript}{\resizebox{!}{7pt}{\AcronymText{AngelScript}}}
+
+
+
+\usepackage{mdframed}
+
+\newcommand{\cframedboxpanda}[1]{\begin{mdframed}[linecolor=yellow!70!blue,linewidth=0.4mm]#1\end{mdframed}}
+
+
+\newcommand{\PVD}{\resizebox{!}{7pt}{\AcronymText{PVD}}}
+
+\newcommand{\TAGML}{\resizebox{!}{7pt}{\AcronymText{TAGML}}}
+\newcommand{\GTagML}{\resizebox{!}{7pt}{\AcronymText{GTagML}}}
+
+
+\newcommand{\SDK}{\resizebox{!}{7pt}{\AcronymText{SDK}}}
+\newcommand{\NLP}{\resizebox{!}{7pt}{\AcronymText{NLP}}}
+
+\newcommand{\AXF}{\resizebox{!}{7pt}{\ATexttclr{AXF}}}
+
+\newcommand{\HyperGraphDB}{\resizebox{!}{7pt}{\AcronymText{HyperGraphDB}}}
+
+\newcommand{\AllegroGraph}{\resizebox{!}{7pt}{\AcronymText{AllegroGraph}}}
+
+\newcommand{\Grakenai}{\resizebox{!}{7pt}{\AcronymText{Graken.ai}}}
+
+
+\newcommand{\lAXF}{\resizebox{!}{7.5pt}{\ATexttclr{A}}%
+\resizebox{!}{6.5pt}{\ATexttclr{XF}}}
+
+
+\newcommand{\lsAXF}{\resizebox{!}{8.5pt}{\ATexttclr{AXF}}}
+
+\newcommand{\AXFD}{\resizebox{!}{7pt}{\ATexttclr{AXFD}}}
+
+\newcommand{\CBICA}{\resizebox{!}{7pt}{\AcronymText{CBICA}}}
+
+\newcommand{\IORT}{\resizebox{!}{7pt}{\AcronymText{IORT}}}
+
+\newcommand{\openCyto}{\resizebox{!}{7pt}{\AcronymText{openCyto}}}
+\newcommand{\FACs}{\resizebox{!}{7pt}{\AcronymText{FACsanadu}}}
+
+
+
+\newcommand{\SeDI}{\resizebox{!}{7pt}{\AcronymText{SeDI}}}
+\newcommand{\RSNA}{\resizebox{!}{7pt}{\AcronymText{RSNA}}}
+
+\newcommand{\CER}{\resizebox{!}{7pt}{\AcronymText{CER}}}
+\newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
+
+\newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
+\newcommand{\lsDICOM}{\resizebox{!}{9pt}{\AcronymText{DICOM}}}
+
+\newcommand{\CytometryML}{\resizebox{!}{7pt}{\AcronymText{CytometryML}}}
+
+\newcommand{\FCM}{\resizebox{!}{7pt}{\AcronymText{FCM}}}
+
+\newcommand{\OMETIFF}{\resizebox{!}{7pt}{\AcronymText{OME-TIFF}}}
+\newcommand{\OME}{\resizebox{!}{7pt}{\AcronymText{OME}}}
+
+
+\newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
+
+\newcommand{\LOINC}{\resizebox{!}{7pt}{\AcronymText{LOINC}}}
+
+\newcommand{\RadLex}{\resizebox{!}{7pt}{\AcronymText{RadLex}}}
+
+
+\newcommand{\OMOP}{\resizebox{!}{7pt}{\AcronymText{OMOP}}}
+\newcommand{\PCORnet}{\resizebox{!}{7pt}{\AcronymText{PCORnet}}}
+\newcommand{\FHIR}{\resizebox{!}{7pt}{\AcronymText{FHIR}}}
+
+\newcommand{\CaPTk}{\resizebox{!}{7pt}{\AcronymText{CaPTk}}}
+
+\newcommand{\VIOLIN}{\resizebox{!}{7pt}{\AcronymText{VIOLIN}}}
+
+
+
+\newcommand{\lAXFD}{\resizebox{!}{7.5pt}{\ATexttclr{A}}%
+\resizebox{!}{6.5pt}{\ATexttclr{XFD}}}
+
+
+\newcommand{\IJST}{\resizebox{!}{7pt}{\AcronymText{IJST}}}
+
+\newcommand{\BioC}{\resizebox{!}{7pt}{\AcronymText{BioC}}}
+
+\newcommand{\CoNLL}{\resizebox{!}{7pt}{\AcronymText{CoNLL}}}
+\newcommand{\CoNLLU}{\resizebox{!}{7pt}{\AcronymText{CoNLL-U}}}
+
+\newcommand{\sapp}{\resizebox{!}{7pt}{\AcronymText{Sapien+}}}
+\newcommand{\lsapp}{\resizebox{!}{8.5pt}{\AcronymText{Sapien+}}}
+\newcommand{\lssapp}{\resizebox{!}{9.5pt}{\AcronymText{Sapien+}}}
+
+\newcommand{\ePub}{\resizebox{!}{7pt}{\AcronymText{ePub}}}
+
+%\lsLPF
+
+
+\newcommand{\GIT}{\resizebox{!}{7pt}{\AcronymText{GIT}}}
+
+%\definecolor{atColor}{RGB}{11, 71, 17}
+
+
+\DeclareMathVersion{fordg}
+\SetSymbolFont{letters}{fordg}{OML}{cmr}{b}{n}
+
+\definecolor{atcColor}{RGB}{96, 17, 12}
+%\textcolor{tcolor}{
+
+\newcommand{\ATextCClr}[1]{\textcolor{atcColor}{\textbf{#1}}}
+
+\newcommand{\ATexttclr}[1]{\textcolor{tcolor}{\textbf{#1}}}
+
+\newcommand{\AIMConc}{\resizebox{!}{7.5pt}{\ATextCClr{AIM-Concepts}}}
+\newcommand{\lAIMConc}{\resizebox{!}{8pt}{\ATextCClr{AIM-Concepts}}}
+
+\newcommand{\HGXF}{{\resizebox{!}{7.5pt}{\ATexttclr{HGXF}}}}
+\newcommand{\lHGXF}{{\resizebox{!}{8pt}{\ATexttclr{HGXF}}}}
+\newcommand{\sHGXF}{{\resizebox{!}{6pt}{\ATexttclr{HGXF}}}}
+
+\newcommand{\CRtwo}{{\resizebox{!}{7.5pt}{\ATextCClr{CR2}}}}
+\newcommand{\lCRtwo}{{\resizebox{!}{8pt}{\ATextCClr{CR2}}}}
+\newcommand{\sCRtwo}{{\resizebox{!}{6pt}{\ATextCClr{CR2}}}}
+
+
+\newcommand{\THQL}{\resizebox{!}{7.5pt}{\ATexttclr{THQL}}}
+\newcommand{\lTHQL}{\resizebox{!}{8pt}{\ATexttclr{THQL}}}
+
+\newcommand{\HDICOM}{\resizebox{!}{7.5pt}{\ATexttclr{{\large h}-DICOM}}}
+
+\newcommand{\hVaImm}{\resizebox{!}{7.5pt}{\ATexttclr{{\large h}-VaImm}}}
+
+
+\newcommand{\PhaonVI}{\resizebox{!}{7.5pt}{\ATexttclr{Phaon-VI}}}
+
+
+
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{{\mathversion{fordg}%
+\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+
+\newcommand{\lDgDb}{{\mathversion{fordg}%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+
+\newcommand{\ConceptsDB}{\resizebox{!}{7pt}{\AcronymText{ConceptsDB}}}
+
+\newcommand{\URL}{\resizebox{!}{7pt}{\AcronymText{URL}}}
+\newcommand{\CSML}{\resizebox{!}{7pt}{\AcronymText{CSML}}}
+\newcommand{\LPF}{\resizebox{!}{7pt}{\AcronymText{LPF}}}
+\newcommand{\lLPF}{\resizebox{!}{8.5pt}{\AcronymText{LPF}}}
+\newcommand{\lsLPF}{\resizebox{!}{9.5pt}{\AcronymText{LPF}}}
+
+\newcommand{\AI}{\resizebox{!}{7.5pt}{\AcronymText{AI}}}
+\newcommand{\lAI}{\resizebox{!}{8pt}{\AcronymText{AI}}}
+
+\newcommand{\Jupyter}{\resizebox{!}{7pt}{\AcronymText{Jupyter}}}
+\newcommand{\Python}{\resizebox{!}{7pt}{\AcronymText{Python}}}
+\newcommand{\IDN}{\resizebox{!}{7pt}{\AcronymText{IDN}}}
+\newcommand{\JPG}{\resizebox{!}{7pt}{\AcronymText{JPG}}}
+\newcommand{\JPEG}{\resizebox{!}{7pt}{\AcronymText{JPEG}}}
+\newcommand{\PNG}{\resizebox{!}{7pt}{\AcronymText{PNG}}}
+\newcommand{\TIFF}{\resizebox{!}{7pt}{\AcronymText{TIFF}}}
+\newcommand{\REPL}{\resizebox{!}{7pt}{\AcronymText{REPL}}}
+
+\newcommand{\Pandore}{\resizebox{!}{7pt}{\AcronymText{Pandore}}}
+
+\newcommand{\MIFlowCyt}{\resizebox{!}{7pt}{\AcronymText{MIFlowCyt}}}
+\newcommand{\GatingML}{\resizebox{!}{7pt}{\AcronymText{Gating-ML}}}
+\newcommand{\flowCL}{\resizebox{!}{7pt}{\AcronymText{flowCL}}}
+
+
+\makeatletter
+
+\newcommand*\getX[1]{\expandafter\getX@i#1\@nil}
+
+\newcommand*\getY[1]{\expandafter\getY@i#1\@nil}
+\def\getX@i#1,#2\@nil{#1}
+\def\getY@i#1,#2\@nil{#2}
+\makeatother
+	
+\newcommand{\rectann}[9]{%
+\path [draw=#1,draw opacity=#2,line width=#3, fill=#4, fill opacity = #5, even odd rule] %
+(#6) rectangle(\getX{#6}+#7,\getY{#6}+#8)
+({\getX{#6}+((#7-(#7*#9))/2)},{\getY{#6}+((#8-(#8*#9))/2)}) rectangle %
+({\getX{#6}+((#7-(#7*#9))/2)+#7*#9},{\getY{#6}+((#8-(#8*#9))/2)+#8*#9});}
+
+
+\definecolor{pfcolor}{RGB}{94, 54, 73}
+
+\newcommand{\EPF}{\resizebox{!}{7pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lEPF}{\resizebox{!}{8.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+\newcommand{\lsEPF}{\resizebox{!}{9.5pt}{\AcronymText{ETS{\color{pfcolor}pf}}}}
+
+
+\newcommand{\XPDF}{\resizebox{!}{7pt}{\AcronymText{XPDF}}}
+
+\newcommand{\GRE}{\resizebox{!}{7pt}{\AcronymText{GRE}}}
+\newcommand{\CAS}{\resizebox{!}{7pt}{\AcronymText{CAS}}}
+
+\newcommand{\lMOSAIC}{%
+\resizebox{!}{8pt}{\ATexttclr{M}}%
+\resizebox{!}{6pt}{\ATexttclr{OSAIC}}}
+
+\newcommand{\llMOSAIC}{%
+\resizebox{!}{8.5pt}{\ATexttclr{MOSAIC}}}
+
+\newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
+\newcommand{\RDF}{\resizebox{!}{7pt}{\AcronymText{RDF}}}
+\newcommand{\DOM}{\resizebox{!}{7pt}{\AcronymText{DOM}}}
+
+\newcommand{\Java}{\resizebox{!}{7pt}{\AcronymText{Java}}}
+
+
+\newcommand{\ParaView}{\resizebox{!}{7pt}{\AcronymText{ParaView}}}
+\newcommand{\Octave}{\resizebox{!}{7pt}{\AcronymText{Octave}}}
+\newcommand{\ROOT}{\resizebox{!}{7pt}{\AcronymText{ROOT}}}
+\newcommand{\CERN}{\resizebox{!}{7pt}{\AcronymText{CERN}}}
+\newcommand{\MQFour}{\resizebox{!}{7pt}{\AcronymText{MQ4}}}
+\newcommand{\VISSION}{\resizebox{!}{7pt}{\AcronymText{VISSION}}}
+
+\newcommand{\ReproZip}{\resizebox{!}{7pt}{\AcronymText{ReproZip}}}
+\newcommand{\BioCoder}{\resizebox{!}{7pt}{\AcronymText{BioCoder}}}
+
+\newcommand{\Covid}{\resizebox{!}{7pt}{\AcronymText{Covid-19}}}
+
+
+\newcommand{\HMCL}{{\resizebox{!}{7.5pt}{\ATexttclr{HMCL}}}}
+\newcommand{\DSPIN}{{\resizebox{!}{7.5pt}{\ATexttclr{D-SPIN}}}}
+
+\newcommand{\Pandore}{{\resizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
+
+\newcommand{\lDSPIN}{{\resizebox{!}{8pt}{\ATexttclr{D-SPIN}}}}
+\newcommand{\lsDSPIN}{{\resizebox{!}{8.5pt}{\ATexttclr{D-SPIN}}}}
+
+\newcommand{\CLang}{\resizebox{!}{7pt}{\AcronymText{C}}}
+
+\newcommand{\HNaN}{\resizebox{!}{7pt}{\AcronymText{HN%
+\textsc{a}N}}}
+
+\newcommand{\JSON}{\resizebox{!}{7pt}{\AcronymText{JSON}}}
+\newcommand{\UV}{\resizebox{!}{7pt}{\AcronymText{UV}}}
+
+
+\newcommand{\PET}{\resizebox{!}{7pt}{\AcronymText{PET}}}
+\newcommand{\MRI}{\resizebox{!}{7pt}{\AcronymText{MRI}}}
+
+
+\newcommand{\MeshLab}{\resizebox{!}{7pt}{\AcronymText{MeshLab}}}
+\newcommand{\IQmol}{\resizebox{!}{7pt}{\AcronymText{IQmol}}}
+
+\newcommand{\SGML}{\resizebox{!}{7pt}{\AcronymText{SGML}}}
+
+\newcommand{\WhiteDB}{\resizebox{!}{7pt}{\AcronymText{\makebox{WhiteDB}}}}
+
+\newcommand{\CrossRef}{\resizebox{!}{7pt}{\AcronymText{CrossRef}}}
+
+\newcommand{\ASCII}{\resizebox{!}{7pt}{\AcronymText{ASCII}}}
+
+\newcommand{\GUI}{\resizebox{!}{7pt}{\AcronymText{GUI}}}
+\newcommand{\UI}{\resizebox{!}{7pt}{\AcronymText{UI}}}
+
+
+\newcommand{\URI}{\resizebox{!}{7pt}{\AcronymText{URI}}}
+\newcommand{\DTD}{\resizebox{!}{7pt}{\AcronymText{DTD}}}
+
+\newcommand{\API}{\resizebox{!}{7pt}{\AcronymText{API}}}
+
+\newcommand{\JATS}{\resizebox{!}{7pt}{\AcronymText{JATS}}}
+
+
+\newcommand{\SDI}{\resizebox{!}{7pt}{\AcronymText{SDI}}}
+\newcommand{\SDIV}{\resizebox{!}{7pt}{\AcronymText{SDIV}}}
+
+\definecolor{atColor}{RGB}{50, 22, 40}
+\newcommand{\ATextClr}[1]{\textcolor{atColor}{\textbf{#1}}}
+
+\newcommand{\DgDb}{\makebox{\raisebox{-3pt}{\resizebox{!}{11pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+\newcommand{\lDgDb}{\makebox{\raisebox{-3pt}{%
+\resizebox{!}{12pt}{\ATextClr{%
+\rotatebox{17}{$\varsigma$}}}}\hspace{-4pt}%
+\resizebox{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+
+
+\newcommand{\IDE}{\resizebox{!}{7pt}{\AcronymText{IDE}}}
+
+\newcommand{\OWL}{\resizebox{!}{7pt}{\AcronymText{OWL}}}
+
+\newcommand{\Kaggle}{\resizebox{!}{7pt}{\AcronymText{Kaggle}}}
+
+
+\newcommand{\ViSion}{\resizebox{!}{7pt}{\AcronymText{ViSion}}}
+
+\newcommand{\CWL}{\resizebox{!}{7pt}{\AcronymText{CWL}}}
+
+\newcommand{\ThreeD}{\resizebox{!}{7pt}{\AcronymText{3D}}}
+\newcommand{\TwoD}{\resizebox{!}{7pt}{\AcronymText{2D}}}
+
+\newcommand{\medInria}{\resizebox{!}{7pt}{\AcronymText{medInria}}}
+\newcommand{\ThreeDimViewer}{\resizebox{!}{7pt}{\AcronymText{3DimViewer}}}
+
+\newcommand{\FAIR}{\resizebox{!}{7pt}{\AcronymText{FAIR}}}
+
+\newcommand{\MIAPEGI}{\resizebox{!}{7pt}{\AcronymText{MIAPE-GI}}}
+\newcommand{\MIAPE}{\resizebox{!}{7pt}{\AcronymText{MIAPE}}}
+
+
+
+\newcommand{\QNetworkManager}{\resizebox{!}{7pt}{\AcronymText{QNetworkManager}}}
+\newcommand{\QTextDocument}{\resizebox{!}{7pt}{\AcronymText{QTextDocument}}}
+\newcommand{\QWebEngineView}{\resizebox{!}{7pt}{\AcronymText{QWebEngineView}}}
+\newcommand{\HTTP}{\resizebox{!}{7pt}{\AcronymText{HTTP}}}
+
+
+\newcommand{\lAcronymTextNC}[2]{{\fontfamily{fvs}\selectfont {\Large{#1}}{\large{#2}}}}
+
+\newcommand{\AcronymTextNC}[1]{{\fontfamily{fvs}\selectfont {\large #1}}}
+
+
+\colorlet{orr}{orange!60!red}
+
+\newcommand{\textscc}[1]{{\color{orr!35!black}{{%
+						\fontfamily{Cabin-TLF}\fontseries{b}\selectfont{\textsc{\scriptsize{#1}}}}}}}
+
+
+\newcommand{\textsccserif}[1]{{\color{orr!35!black}{{%
+				\scriptsize{\textbf{#1}}}}}}
+
+
+\newcommand{\iXPDF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{XPDF}}}}
+
+\newcommand{\iEPF}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{ETSpf}}}}
+
+\newcommand{\iSDI}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{SDI}}}}
+
+\newcommand{\iHTXN}{\resizebox{!}{7pt}{\textsccserif{%
+\textit{HTXN}}}}
+
+
+\newcommand{\AcronymText}[1]{{\textscc{#1}}}
+
+\newcommand{\AcronymTextser}[1]{{\textsccserif{#1}}}
+
+
+\newcommand{\mAcronymText}[1]{{\textscc{\normalsize{#1}}}}
+
+\newcommand{\FASTA}{{\resizebox{!}{7pt}{\AcronymText{FASTA}}}}
+\newcommand{\SRA}{{\resizebox{!}{7pt}{\AcronymText{SRA}}}}
+\newcommand{\DNA}{{\resizebox{!}{7pt}{\AcronymText{DNA}}}}
+\newcommand{\MAP}{{\resizebox{!}{7pt}{\AcronymText{MAP}}}}
+\newcommand{\EPS}{{\resizebox{!}{7pt}{\AcronymText{EPS}}}}
+\newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
+\newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
+
+\newcommand{\WebGL}{{\resizebox{!}{7pt}{\AcronymText{WebGL}}}}
+\newcommand{\Docker}{{\resizebox{!}{7pt}{\AcronymText{Docker}}}}
+
+
+\newcommand{\OBO}{{\resizebox{!}{7pt}{\AcronymText{OBO}}}}
+
+\newcommand{\XOCS}{{\resizebox{!}{7pt}{\AcronymText{XOCS}}}}
+
+\newcommand{\ChemXML}{{\resizebox{!}{7pt}{\AcronymText{ChemXML}}}}
+
+\newcommand{\TeXMECS}{\resizebox{!}{7pt}{\AcronymText{TeXMECS}}}
+
+% pmml  arff  openannotation
+
+\newcommand{\PMML}{\resizebox{!}{7pt}{\AcronymText{PMML}}}
+\newcommand{\ARFF}{\resizebox{!}{7pt}{\AcronymText{ARFF}}}
+\newcommand{\IeXML}{\resizebox{!}{7pt}{\AcronymText{IeXML}}}
+
+\newcommand{\SeCo}{\resizebox{!}{7pt}{\AcronymText{SeCo}}}
+
+
+\newcommand{\HDFFive}{\resizebox{!}{7pt}{\AcronymText{HDF5}}}
+
+\newcommand{\NGML}{\resizebox{!}{7pt}{\ATexttclr{NGML}}}
+
+
+\newcommand{\Cpp}{\resizebox{!}{7pt}{\AcronymText{C++}}}
+
+%\newcommand{\\WhiteDB{}}{\resizebox{!}{7pt}{\AcronymText{\WhiteDB{}}}}
+
+\colorlet{drp}{darkRed!70!purple}
+
+%\newcommand{\MOSAIC}{{\color{drp}{\AcronymTextNC{\scriptsize{MOSAIC}}}}}
+
+\newcommand{\MOSAIC}{\resizebox{!}{7pt}{\ATexttclr{MOSAIC}}}
+
+
+\newcommand{\mMOSAIC}{{\color{drp}{\ATexttclr{\normalsize{MOSAIC}}}}}
+
+\newcommand{\lmMOSAIC}{\ATexttclr{\Large{M}\normalsize{OSAIC}}}
+
+\newcommand{\MOSAICVM}{\mMOSAIC-\AcronymTextNC{VM}}
+\newcommand{\MOSAICSR}{\resizebox{!}{7pt}{%
+\mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
+
+\newcommand{\MOSAICSD}{\resizebox{!}{7pt}{%
+\mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SD}}}}
+
+\newcommand{\MOSAICGIS}{\resizebox{!}{7pt}{%
+\mMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{GIS}}}}
+
+
+\newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
+\lmMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
+
+\newcommand{\lMOSAICSD}{\resizebox{!}{7pt}{%
+\lmMOSAIC-\AcronymTextNC{\textcolor{drp!25!black}{SD}}}}
+
+
+\newcommand{\lsMOSAICSR}{\resizebox{!}{9.5pt}{%
+\lMOSAIC-}\resizebox{!}{9pt}{\AcronymTextNC{\textcolor{drp!25!black}{SR}}}}
+
+%\newcommand{\lMOSAICSR}{\resizebox{!}{7pt}{%
+%\mMOSAIC-\AcronymTextNC{SR}}}
+
+
+\newcommand{\sMOSAICVM}{\resizebox{!}{7pt}{\MOSAICVM}}
+\newcommand{\sMOSAIC}{\resizebox{!}{7pt}{\MOSAIC}}
+
+\newcommand{\LDOM}{\resizebox{!}{7pt}{\AcronymText{LDOM}}}
+\newcommand{\Cnineteen}{\resizebox{!}{7pt}{\AcronymText{CORD-19}}}
+
+\newcommand{\lCnineteen}{\resizebox{!}{7.5pt}{\AcronymText{CORD-19}}}
+
+
+\newcommand{\MOL}{\resizebox{!}{7pt}{\AcronymText{MOL}}}
+
+\newcommand{\ACL}{\resizebox{!}{7pt}{\AcronymText{ACL}}}
+
+\newcommand{\LXCR}{\resizebox{!}{7pt}{\AcronymText{LXCR}}}
+\newcommand{\lLXCR}{\resizebox{!}{8.5pt}{\AcronymText{LXCR}}}
+\newcommand{\lsLXCR}{\resizebox{!}{9.5pt}{\AcronymText{LXCR}}}
+
+%\newcommand{\lMOSAIC}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}
+\newcommand{\lfMOSAIC}{\resizebox{!}{9pt}{{\color{drp}{\lAcronymTextNC{M}{OSAIC}}}}}
+
+\newcommand{\Mosaic}{\resizebox{!}{7pt}{\MOSAIC}}
+\newcommand{\MosaicPortal}{{\color{drp}{\AcronymTextNC{MOSAIC Portal}}}}
+
+\newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
+
+\newcommand{\MIBBI}{\resizebox{!}{7pt}{\AcronymText{MIBBI}}}
+
+\newcommand{\JVM}{\resizebox{!}{7pt}{\AcronymText{JVM}}}
+\newcommand{\ECL}{\resizebox{!}{7pt}{\AcronymText{ECL}}}
+
+\newcommand{\ChaiScript}{\resizebox{!}{7pt}{\AcronymText{ChaiScript}}}
+
+\newcommand{\TCP}{\resizebox{!}{7pt}{\AcronymText{TCP}}}
+
+\newcommand{\lQt}{\resizebox{!}{8.5pt}{\AcronymText{Qt}}}
+\newcommand{\QtCpp}{\resizebox{!}{8.5pt}{\AcronymText{Qt/C++}}}
+\newcommand{\Qt}{\resizebox{!}{7pt}{\AcronymText{Qt}}}
+
+\newcommand{\QtSQL}{\resizebox{!}{7pt}{\AcronymText{QtSQL}}}
+
+\newcommand{\HTML}{\resizebox{!}{7pt}{\AcronymText{HTML}}}
+\newcommand{\PDF}{\resizebox{!}{7pt}{\AcronymText{PDF}}}
+
+\newcommand{\R}{\resizebox{!}{7pt}{\AcronymText{R}}}
+\newcommand{\SciXML}{\resizebox{!}{7pt}{\AcronymText{SciXML}}}
+
+\newcommand{\MPF}{\resizebox{!}{7pt}{\ATexttclr{MPF}}}
+
+
+\newcommand{\lGRE}{\resizebox{!}{7.5pt}{\AcronymText{GRE}}}
+
+\newcommand{\p}[1]{
+
+\vspace{.9em}#1}
+
+\newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
+
+%\newcommand{\deconum}[1]{{\textcircled{#1}}}
+
+\renewcommand{\thesection}{\protect\hspace{-1.5em}}
+%\renewcommand{\thesection}{\protect\mbox{\deconum{\Roman{section}}}}
+\renewcommand{\thesubsection}{\protect\hspace{-1em}}
+
+\newcommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+%\newcommand{\lfMOSAIC}{\mbox{M\small{OSAIC}}}
+
+\newcommand{\llMosaic}{\llMOSAIC}
+\newcommand{\lMosaic}{\lMOSAIC}
+\newcommand{\lfMosaic}{\lfMOSAIC}
+
+%\newcommand{\dsC}{}
+
+\newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\ltextds}[1]{{\fontfamily{lmdh}\fontsize{12}{11}\selectfont{%
+\raisebox{-1pt}{#1}}}}
+
+\newcommand{\dsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+\newcommand{\ldsC}{{\textds{ds}{\fontfamily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+
+\newcommand{\MdsX}{\resizebox{!}{9pt}{\ATexttclr{\raisebox{-1pt}{{\fontfamily{lmdh}\selectfont M}}\fontfamily{qhv}\selectfont dsX}}}
+\newcommand{\lsMdsX}{\resizebox{!}{10.5pt}{\ATexttclr{\raisebox{-1pt}{{\fontfamily{lmdh}\selectfont M}}\fontfamily{qhv}\selectfont dsX}}}
+\newcommand{\lMdsX}{\resizebox{!}{9.5pt}{\ATexttclr{\raisebox{-1pt}{{\fontfamily{lmdh}\selectfont M}}\fontfamily{qhv}\selectfont dsX}}}
+
+
+\newcommand{\llWC}{\mbox{{\LARGE WhiteCharmDB}}}
+
+\newcommand{\llwh}{\mbox{{\LARGE White}}}
+\newcommand{\llch}{\mbox{{\LARGE CharmDB}}}
+
+\usepackage{enumitem}
+%\usepackage{listings}
+
+\colorlet{dsl}{purple!20!brown}
+\colorlet{dslr}{dsl!50!blue}
+
+\setlist[description]{%
+  topsep=11pt,
+  labelsep=22pt, leftmargin=10pt,
+  itemsep=9pt,               % space between items
+  %font={\bfseries\sffamily}, % set the label font
+  font=\normalfont\bfseries\color{dslr!50!black}, % if colour is needed
+}
+
+\setlist[enumerate]{%
+  topsep=3pt,               % space before start / after end of list
+  itemsep=-2pt,               % space between items
+  font={\bfseries\sffamily}, % set the label font
+%  font={\bfseries\sffamily\color{red}}, % if colour is needed
+}
+
+%\usepackage{tcolorbox}
+
+\newcommand{\slead}[1]{%
+\noindent{\raisebox{2pt}{\relscale{1.15}{{{%
+\fcolorbox{logoCyan!50!black}{logoGreen!5}{#1}
+}}}}}\hspace{.5em}}
+
+
+\let\OldLaTeX\LaTeX
+
+\renewcommand{\LaTeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\let\OldTeX\TeX
+
+\renewcommand{\TeX}{\resizebox{!}{7pt}{\color{orr!35!black}{\OldTeX}}}
+
+
+\newcommand{\LargeLaTeX}{\resizebox{!}{8.5pt}{\color{orr!35!black}{\OldLaTeX}}}
+
+\setlength\parindent{0pt}
+%\setlength\parindent{24pt}
+%\input{commands}
+
+\newcommand{\lun}[1]{\raisebox{-4pt}{\fontfamily{qcr}\selectfont{%
+\LARGE{\textbf{\textcolor{tcolor}{#1}}}}}\vspace{-2pt}}
+
+\newcommand{\inditem}{\itemindent10pt\item}
+
+\usepackage{soul}
+
+\definecolor{hlcolor}{RGB}{114, 54, 203}
+\colorlet{hlcol}{hlcolor!35}
+\sethlcolor{hlcol}
+
+\makeatletter
+\def\SOUL@hlpreamble{%
+	\setul{}{3ex}%         !!!change this value!!! default is 2.5ex
+	\let\SOUL@stcolor\SOUL@hlcolor
+	\SOUL@stpreamble
+}
+\makeatother
+
+\usepackage{scrextend}
+%\vspace*{3em}
+\newenvironment{mldescription}{\vspace{1em}%
+  \begin{addmargin}[4pt]{1em}
+    \setlength{\parindent}{-1em}%
+    \newcommand*{\mlitem}[1][]{\vspace{5pt}\par\medskip%
+%\colorbox{hlcolor}{\textbf{##1}}\quad}\indent
+\hl{ \textbf{##1} }\quad}\indent
+}{%
+  \end{addmargin}
+  \medskip
+}
+
+\usepackage{marginnote}
+
+\newcommand{\mnote}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{1em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnotel}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{-4em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnoteh}[3]{%
+	\vspace*{#1}
+	\reversemarginpar
+	\raisebox{#2}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#3}}}
+				\end{mdframed}}
+			}[3em]}}
+
+
+\newcommand{\mnoteb}[1]{%
+	\vspace*{1em}
+	\reversemarginpar
+	\raisebox{1em}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#1}}}
+				\end{mdframed}}
+			}[3em]}}
+	
+\usepackage{wrapfig}
+
+\usetikzlibrary{arrows, decorations.markings}
+\usetikzlibrary{shapes.arrows}
+
+\newcommand{\curicon}[2]{%
+	\node at (#1,#2) [
+	draw=black,
+	%minimum width=2ex,
+	inner sep=.7pt,
+	fill=white,
+	single arrow,
+	single arrow head extend=3pt,
+	single arrow head indent=1.5pt,
+	single arrow tip angle=45,
+	line join=bevel,
+	minimum height=4.6mm,
+	rotate=115
+	] {};
+}
+
+\makeatletter
+\def\@cite#1#2{[\textbf{#1\if@tempswa , #2\fi}]}
+\def\@biblabel#1{[\textbf{#1}]}
+\makeatother
+
+
+%\let\origref\ref
+%\renewcommand{\ref}[1]{{\LARGE #1}}
+
+%\def\ref#1{\textbf{\origref{{\LARGE #1}}}}
+
+\setlength{\footnotesep}{0pt}
+
+\renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
+
+
+\newcommand{\LVee}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\vee$}}}}}
+\newcommand{\LWedge}{{\colorbox{cyan!40!yellow}{\textcolor{red!70!navy}{\textbf{\LARGE$\wedge$}}}}}
+
+\renewcommand{\LVee}{}
+\renewcommand{\LWedge}{}
+
+
+\urlstyle{same}
+
+\usepackage[preserveurlmacro]{breakurl}
+
+\newcommand{\bhref}[1]{\href{#1}{\burl{#1}}}
+
+%\setmainfont{QTChanceryType}
+
+\begin{document}
+
+\setlength{\skip\footins}{18pt}	
+	
+{\linespread{1.25}\selectfont
+
+\vspace*{1.5em}
+
+\begin{center}
+%{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
+%{\colorbox{black}{\color{blue}{\llWC{} Database Engine \\and 
+%\llMOSAIC{} Native Application Toolkit}}}}}
+
+\colorlet{ctmp}{logoPeach!20!gray}
+\colorlet{ctmpp}{ctmp!90!yellow}
+\colorlet{ctmppp}{ctmpp!50!black}
+\colorlet{ctmpppp}{ctmppp!90!logoRed}
+\colorlet{ctmcyan}{ctmpppp!70!cyan}
+
+\colorlet{ctmppppy}{ctmppp!60!orange}
+
+%{\colorbox{darkBlGreen!30!darkRed}{%
+\begin{tcolorbox}
+[
+%%enhanced,
+%%frame hidden,
+%interior hidden
+arc=2pt,outer arc=0pt,
+enhanced jigsaw,
+width=\textwidth,
+colback=ctmppppy!40,
+%colback=ctmcyan!50,
+colframe=logoRed!30!darkRed,
+drop shadow=logoPurple!50!darkRed,
+%boxsep=0pt,
+%left=0pt,
+%right=0pt,
+%top=2pt,
+]
+%\hspace{22pt}
+\begin{minipage}{\textwidth}	
+\begin{center}	
+{\setlength{\fboxsep}{32pt}
+	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+{The \llMOSAIC{} Structured Reporting Framework 
+and Image Processing Objectives}
+}}}
+\end{center}
+\end{minipage}
+\end{tcolorbox}
+\end{center}
+
+\vspace{-3pt}
+%\textcolor{darkRed}{\hrule}
+
+\p{The \q{\MOSAIC{} Data-Set Explorer} (\MdsX{}) 
+and \q{\MOSAIC{} Structured Reporting} (\MOSAICSR{}) 
+are tools to help authors develop interactive 
+presentations supplementing academic documents 
+(\MOSAIC{} is an acronym for \q{Multi-Paradigm 
+Ontologies for Scientific and Technical Publications}).
+With \MdsX{}, interactive presentations take the 
+form of software applications that provide 
+access to data sets, analytic techniques, 
+or other digitally representable artifacts 
+to document or encapsulate research work.  
+With \MOSAICSR{}, authors can implement or 
+reuse code libraries that report on 
+research/experiment methods, workflows, and 
+protocols.  Conceptually, \MOSAICSR{} 
+is functionally similar to the various 
+domain-specific recommendations collectively 
+gathered into the \q{Minimum Information for Biological and Biomedical Investigations} (\MIBBI{}) specifications, 
+and indeed one use-case for \MOSAICSR{} is that of 
+implementing object models instantiating \MIBBI{} 
+policies.  In some contexts, \MOSAICSR{} and 
+\MIBBI{} overlap, because elements of 
+scientific workflows are sometimes 
+algorithms implemented within a code package 
+concretizing authors' research.}
+
+\p{\lMOSAICSR{} can express both computational 
+workflows that are fully encapsulated by published 
+code and real-world protocols concerning 
+laboratory equipment and physical materials 
+or samples under investigation.  In the latter 
+guise, \MOSAICSR{} code can employ or instantiate 
+standardized terminologies and data structures 
+for describing experiments --- such as 
+\MIBBI{} policies or \BioCoder{} functions.  
+In this case, the role of \MOSAICSR{} code is 
+to serve as a serialization/deserialization 
+endpoint for sharing research metadata.  
+Conversely, when workflows are fully implemented 
+within software developed as part of a body 
+of research, \MOSAICSR{} can provide a functional 
+interface allowing this code to be embedded 
+in scientific software.  For these cases, 
+\MOSAICSR{} provides a framework for modeling 
+how a software component specific to a given 
+research project exposes its functionality to 
+host and/or networked peer applications.  There 
+are also scenarios where both scenarios are 
+relevant --- the \MOSAICSR{} code would simultaneously 
+document real-world experimental protocols and 
+construct a digital interface as part of 
+a workflow which is part digital and part 
+\q{real-world.}}
+
+\p{This paper will focus on one specific application 
+of \MOSAICSR{} in the context of image analysis 
+and bioimaging --- specifically, a \q{Data Structure 
+Protocol for Image-Analysis Networking} (\DSPIN{}), 
+which both extends and adds a narrower focus 
+to \MOSAICSR{}.  Software using the \DSPIN{} 
+protocol provides a description of image 
+processing capabilities which have been 
+utilized and/or are functionally exposed 
+by code and data associated with a research 
+project.  This includes \q{structured reporting} 
+of research objectives as well as a concrete 
+interface for invoking analyses associated 
+with the research (either new algorithms or 
+techniques used to obtain reported findings).
+\lDSPIN{}, in turn, is based on \CaPTk{} 
+(the Cancer Imaging and Phenomics Toolkit) 
+and \Pandore{} (an image-processing environment 
+which includes both data models and interactive 
+software).  The \Pandore{} project encompasses 
+an ontology of \q{Image Processing Objectives} 
+that provides a structural basis for \DSPIN{}.  
+For information about how different objectives 
+are merged into workflows, \DSPIN{} 
+adopts protocols from \CaPTk{}, particularly 
+with respect to implementating 
+image-analysis capabilities as 
+extensions to a core application, and 
+\CaPTk{}'s implementation of the 
+Common Workflow Language (\CWL{}).  In effect, 
+\DSPIN{} formalizes the data models and 
+prototypes adopted by \Pandore{} and 
+\CaPTk{} so as to concretize \MOSAICSR{} 
+for the specific domain of image processing 
+and Computer Vision.  The following sections 
+will therefore outline \DSPIN{} features 
+in the context of \MOSAICSR{} design principles 
+and objectives.}
+
+\section{Meta-Procedural Modeling in 
+\protect\lsDSPIN{} and \protect\lsMOSAICSR{}}
+
+\p{Most approaches to modeling research workflows 
+involve some concept of \q{meta-objects},\footnote{See 
+the \VISSION{} system: \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.}, 
+\q{tools} (in the terminology of \CWL{}), 
+and \q{transitions} (in the language of Petri Net 
+theory).  In \MOSIACSR{}, the analogous concept is 
+that of \textit{meta-procedures}, which are analogous 
+to ordinary computational procedures but 
+add extra sources of information concerning 
+input and output parameters.  In general, 
+rather than simply passing an imput value 
+into an executable routine, metaprocedures 
+define steps which can be taken to 
+acquire the proper values when needed.  
+Aside from ordinary runtime values, the 
+most important input sources are methods 
+defined on \GUI{} components; command-line 
+parameters; file contents; and 
+not-yet-evaluated expressions (perhaps 
+encapsulated in scripts or function pointers).  
+A meta-procedure formulation abstracts the 
+acquisition of inputs (or \q{channels}) 
+from the concrete procedure or procedures 
+which are eventually executed.  Therefore, 
+a \MOSAIC{} meta-procedure definition 
+has two separate parts: a preamble where 
+input sources are described, and an 
+executive sequence where concrete procedures 
+are indicated.  A \textit{meta-evaluator} 
+then operates in accord with these 
+definitions, concretizing the input values 
+and launching the actual procedure(s).  
+For \DSPIN{}, meta-procedures can be defined 
+using a framework based on \BioCoder{},\footnote{See 
+\bhref{https://jbioleng.biomedcentral.com/articles/10.1186/1754-1611-4-13}} 
+but adopted to the imaging and Computer Vision 
+context.}
+
+\p{Image analysis methods are often 
+described in academic literature in 
+terms of mathematical formulae and/or 
+characterizations of computational environments 
+(such as Graphical Processing Units); 
+it requires additional construction to 
+translate these overviews into actual 
+computer code.  Once 
+Computer Vision innovations are in fact 
+concretely implemented, there is then 
+an additional stage of development 
+requisite for users to actually enact 
+the computations described in the 
+research.  Although it is theoretically 
+possible to demonstrate novel methods 
+within fully self-contained autonomous 
+applications, it is more convenient for 
+users if research code is integrated 
+with existing imaging software.  
+The \DSPIN{} interface can then help 
+connect new code to existing applications, 
+allowing users to access new code's functionaloty 
+through \GUI{} actions, command-line invocations, 
+or inter-application messaging protocols.}
+
+\p{In addition to practically enabling 
+application embedding, \DSPIN{} models 
+represent research methods and theories, 
+contributing to transparency and 
+reusability according to the 
+\MIBBI{} and \FAIR{} (Findable, Accessible, 
+Interoperable, Reusable) standards.\footnote{See 
+\bhref{https://www.researchgate.net/publication/331775411_FAIRness_in_Biomedical_Data_Discovery}.}
+This can be achieved, in part, by implementing 
+data structures conforming to \PANDORE{} 
+Image Processing Objectives.  However, \DSPIN{} 
+embeds this logic in an Object-Oriented 
+context which allows imaging-specific workflow 
+notations to be paired with specifications 
+outside of imaging processing in the narrowest 
+sense.  This allows \DSPIN{} to be available 
+for hybrid computational objectives representations 
+which are only partially covered by the imaging 
+domain --- analogous to the \MIAPEGI{} 
+(Gel Electrophoresis Informatics) component 
+of \MIAPE{} (Minimum Information About a Proteomics 
+Experiment).  The following section will 
+discuss several domains where \DSPIN{} has 
+been explicitly integrated with code 
+libraries codifying \MIBBI{}-style research protocols.}
+
+\section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing.}
+
+\subsection{Image Flow Cytometry}
+\p{One important use-case for biomedical image processing 
+is to analyze cellular microscopy in conjunction with 
+cytometric experiments which investigate cells and 
+cellular-scale entities (such as proteins) indirectly.  
+Conceptually, image analysis and flow cytometry 
+(\FCM{}) analysis 
+are mathematically similar, and some commercial 
+cytometry software has been extended with 
+image-processing capabilities.  The overlap 
+between cytometric and image analysis has also 
+inspired attempts to merge cytometry standards, 
+such as \MIFlowCyt{} (the Minimum Information about a Flow Cytometry Experiment policy within \MIBBI{}), with bioimaging 
+standards such as \DICOM{} (Digital Imaging and 
+Communications in Medicine).  One such proposal is 
+due to Robert Leif, who argues that \q{The large overlap between imaging and flow cytometry provides strong evidence that both modalities should be covered by the same standard} 
+and has formalized an \XML{} language 
+(\CytometryML{}) to serve as that 
+overarching bridge.\footnote{See 
+\bhref{https://spie.org/Publications/Proceedings/Paper/10.1117/12.2295220?SSO=1}.}  The \DSPIN{} project builds 
+off this work by introducing its own \FCM{}/\DICOM{} 
+hybrid, although in an object-oriented rather 
+than \XML{}-based context (discussed further in 
+the next section).  As a reference implementation 
+for this \DSPIN{} extension, the project 
+also provides a pure-\Cpp{} cytometry 
+library based on the \openCyto{} and 
+\FACsanadu{} libraries, but eliminating 
+external dependencies such as \R{} and 
+\Java{}.  The \FCM{}/\DICOM{} bridge is 
+implemented in this context via a 
+\DSPIN{} supplement to \DICOM{} based 
+on \q{Semantic \DICOM{},} which is an 
+effort to standardize query processing 
+within \PACS{} (Picture Archiving and 
+Communications Service) workstations and 
+to more effectively integrate \DICOM{} with 
+clinical data.}
+
+\subsection{A Semantic \protect\lsDICOM{} Object Model}
+
+\p{As a formal representation of imaging workflows, 
+\DSPIN{} would reasonably be paired in 
+many contexts with \DICOM{}, insofar as \DICOM{} 
+represents the canonical standard for exchanging 
+medical image data.  For its applications within 
+the medical-imaging context, therefore, 
+\DSPIN{} provides object-oriented accessors 
+to \DICOM{} data such that image-objectives and 
+\DICOM{} object models can interoperate.  
+This object-oriented foundation also provides a 
+basis on which to further integrate clinical 
+data in the form of \q{Semantic} \PACS{} 
+models.\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5119276/}.}  In general, Semantic \PACS{} applications 
+draw clinical data from \DICOM{} headers, though it 
+would be consistent with the Semantic \DICOM{} 
+paradigm to expose this information via 
+sufficiently well-structured supplemental 
+information packages as well.  This 
+arrangement then forms the basis of a  
+\MOSAIC{}-Semantic \DICOM{} (\MOSAICSD{}) 
+framework which integrates Semantic \DICOM{} 
+with \DSPIN{} --- specifically, which defines 
+a central \DICOM{} object model affixed 
+to both clinical and 
+image-processing object models.}
+
+\p{The \MOSAICSD{} object system applies 
+not only to \DICOM{} integrated with 
+statements of image-processing objectives, 
+but also to other biomedical contexts where 
+image analysis should be integrated 
+with other analytic modalities and 
+also with clinical or epidemiological 
+information.  For example, Flow 
+Cytometry overlaps with clinical data tracking because 
+one of \FCM{}'s essential investigative roles 
+is to examine patients' immunological 
+response to diseases and/or interventions.  
+In the context of Covid-19, say --- with respect to 
+achieving a deeper understanding of how 
+and why SARS-CoV-2 symptoms present differently 
+in different patients --- \q{The starting point will likely be a deep characterization of the immune system in patients with different stage of the disease}.\footnote{See \bhref{https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.24002}.}  
+That is, \FCM{} observations need to be 
+matched with clinical data in order to 
+classify (and consider statistical correlations 
+between) immunology and clinical facts 
+(risk factors, sociodemographics, disease 
+progression, and so forth).  This analysis 
+intrinsically assumes that \FCM{} data can 
+be transparently linked with all relevant 
+clinical data, but such integration is 
+difficult even in \DICOM{}, where \DICOM{} 
+headers are specifically for preserving 
+patient data across picture-sharing networks  
+(there is no analogous \q{header} 
+component in \FCS{}, the 
+Flow Cytometry Standard).  
+In short, \DSPIN{} extensions to 
+non-imaging domains can promote 
+data integration insofar as \DSPIN{} 
+Clinical Object Models, based on 
+Semantic \DICOM{}, provide 
+an affixation point for clinical data 
+in analytic contexts which are 
+operationally related to image analysis, 
+not just to image analysis per se.}
+
+\subsection{Geo-Imaging and Geographic Information Systems}
+\p{Another area where \DSPIN{} provides structured 
+object models is that of Geographic Information Systems 
+(\GIS{}), and specifically \GIS{} annotations.  
+There is a direct link between image processing 
+and \GIS{} insofar as identifying geotaggable 
+features is one dimension or application of 
+Computer Vision.  Effectively manipulating 
+geoimaging data requires mathematical 
+translations between several different 
+coordinate systems, in both two and 
+three dimensions.  These coordinate 
+transforms --- as well as semantic interpretations 
+of geoimage segments (buildings, land features, 
+roads, etc.) --- can serve as the basis for 
+an object model affixing image-processing 
+objectives to \GIS{} workflows.}
+
+\p{In conventional \GIS{} annotation, 
+data structures are linked to both 
+geospatial coordinates and to 
+iconography, or other visual cues, 
+allowing locations of interest to be 
+indicated on maps.  The actual geotagged 
+data structures can be derived from 
+any domain; as such any object model 
+can be integrated with \GIS{} annotations 
+so long as one can assign spatial interpretations 
+to the phenomena computationally encapsulated 
+by the domain in question.  In a medical 
+context, for instance, geotagged data 
+may represent the scope of a vaccination campaign 
+or the extent of an epidemic, along with 
+relevant geographic or civic features 
+(villages, medical clinics, national borders, 
+and so on).  The actual map as a visible 
+digital artifact therefore serves as a 
+virtual glue where clinical, geographical, 
+governmental, and \GUI{} data are all 
+sutured together.  Insofar as geoimaging 
+involved analysis of photographed land 
+features and/or urban environments, 
+image processing information represents a 
+further object model that can be 
+added to the mix.  Even when dealing solely 
+with virtual maps, however --- rather 
+than with satellite images or other geospatial 
+photography --- the analysis and application-level 
+rendering of map features is sufficiently 
+similar to image process that a rigorous 
+model of \GIS{} integration belongs 
+properly within \DSPIN{}, specifically 
+within a \MOSAICGIS{} extension.}
+
+\section{Markup Serialization and \protect\q{Grounding}}
+
+\p{The data-integration mechanisms discussed 
+in this paper thus far have focused on 
+object models and object-oriented programming 
+techniques.  While composing 
+special-purpose object-based libraries 
+specifically tailored to individual  
+data-integration problems is a powerful 
+tool for solbing such problems, in practice 
+data integration initiatives are 
+often organized around standards 
+for sharing or serializing conformation 
+data structures.  As a result, an important 
+aspect of data integration is implementing 
+proper data-serialization technology.  
+In the biomedical and bioimaging context, 
+most serialization operates through 
+\XML{}, so discussions of \XML{} languages 
+are a good foundation for examining 
+serialization concerns in general.}
+
+\p{To be sure, standardizing a data 
+format by stipulating how \XML{} files 
+may encode the data is simpler than 
+defining an analogous specification 
+in terms of executable computer code.  
+For sake of discussion, data structures 
+defining a novel image-analysis method 
+can serve as a case-study in 
+standardization-through-serialization: 
+one way to document the shape of any 
+relevant data is to explain how an \XML{} 
+document will be structured insofar as 
+it encodes data accordingly.  Potentially, 
+such specification can be a single 
+\XML{} \DTD{} file, or an \XML{} sample, 
+providing a convenient reference point 
+for developers to grasp the underlying 
+data model.}
+
+\p{However, the structure of \XML{} document 
+does not, in itself, present a clear picture of 
+how the information which the document 
+represents is semantically organized.  Even 
+though \XML{} is processed by computer programs, 
+it is not even evident from an \XML{} document or 
+schema which \XML{} elements (if any) correspond 
+to data types recognized by applications which 
+read and/or write the corresponding \XML{} code.  
+For example, the \XML{} portion of \OMETIFF{} 
+(the principal Open Microscopy Environment imaging 
+format) includes an explicit \textbf{Image} element 
+(which gathers up all significant image metadata); 
+an application reading \OMETIFF{} files 
+might therefore introduce a single datatype 
+--- analogous to \textbf{itk::Image} from 
+the Insight Toolkit imaging libraries --- 
+bundling the data in that part of the \OME{} \XML{}.  
+In this case there will be a one-to-one correspondence 
+between \XML{} structure and application-level 
+data types, at least for that one \textbf{Image} node.  
+On the other hand, software reading \OMETIFF{} 
+information may not manipulate images directly, 
+but rather pull out other kinds of metadata, 
+such as an experimenter's name or description 
+of the microscopic setup.  In this case, 
+the application may not have an explicit 
+\q{object} representing the image itself, 
+but it may still read information about the 
+image from child nodes of the \XML{} \textbf{Image} 
+element.}
+
+\p{In short, applications can read or use data 
+from an \XML{} document in different ways, 
+so the document's structure does not itself 
+provide a clear picture of how code which 
+reads the \XML{} is organized.  This uncertainty 
+is significant insofar as one wishes to use 
+\XML{} specifications as an indirect strategy 
+for documenting parameters and features 
+of the data structures which are serialized 
+via the relevant \XML{} language.  In effect, 
+\XML{} serialization operates on two levels: 
+on the one hand, the specific \XML{} document 
+provides an encoding of data conforming to a 
+given structure; but, at a more abstract 
+level, one can model the relationship 
+between the surface-level \XML{} node 
+structure and the application-level data structures 
+thereby serialized.  In \MOSAIC{}, such 
+\q{meta-serialization} --- a term used 
+to suggest the idea of providing meta-data 
+\textit{about} a serialization --- is 
+formulated through a notion of 
+\q{grounding}, which involves adding supplemental 
+markup clarifying how documents instantiating a 
+serialization format (such as \XML{}) relate 
+to the coding protocols and data types of 
+software which reads or creates these documents.}
+
+\p{For maximum expressivity, \MOSAIC{} introduces a 
+meta-serialization system that can be applied 
+to language more flexible than \XML{} --- notably 
+\TAGML{} --- as well as to \XML{} 
+proper.\footnote{See \bhref{http://www.balisage.net/Proceedings/vol21/print/HaentjensDekker01/BalisageVol21-HaentjensDekker01.html}.}
+In short, \MOSAIC{} provides parsers for an 
+extended version of \TAGML{} which includes 
+an addition \q{grounding} layer.  Grounding, 
+in this context, means describing how 
+elements in the markip --- nodes, attributes, 
+and character sequences --- are \q{grounded} 
+in application-level types, data fields, 
+and other programming constructs.  \lMOSAIC{} 
+provides parsers for this \q{Grounded \TAGML{}} 
+(\GTagML{}) language as well as converters 
+which can output serialized data as conventional 
+\XML{}, so that \GTagML{} specifications can 
+be used in contexts (\MIFlowCyt{}, for instance) 
+where ordinary \XML{} is expected and serves 
+as a basis of standardization.  \lMOSAIC{} also 
+provides code libraries 
+for extracting data from \GTagML{} documents.}
+
+\p{By design, \GTagML{} schemata operate on 
+two levels: on the one hand, they constrain 
+the organization of \GTagML{} files themselves; 
+but they also stipulate how \GTagML{} document 
+structure relates to the type systems of 
+code libraries serializing and deserializing 
+\GTagML{} files.  To model this second, type-oriented 
+metadata, \GTagML{} introduces a hypergraph-based 
+type model organized around \q{infosets,} which 
+are structured overview of application-level 
+data types.  To fulle utilize \GTagML{} features, 
+programmers would then compose \q{infoset classes} 
+as wrappers around ordinary data types 
+(e.g., \Cpp{} classes) whose instances are 
+serialized via nodes or character strings 
+within \GTagML{} documents.  Infoset classes 
+provide hypergraph \q{views} onto type-instances, 
+and act as a bridge between data types and 
+\GTagML{} schema.  In particular, 
+infoset classes (rather than the types 
+they encapsulate) are the basis for schematizing 
+the relation between \GTagML{} document elements 
+and type instances and the data they contain.}
+
+\p{The hypergraph-based modeling incorporated 
+into \GTagML{} reuses much of the code associated 
+with \ConceptsDB{}, which is a new hypergraph database 
+being developed alongside \MOSAIC{}.  More information 
+about \ConceptsDB{} can be found on 
+the guthub project page for Linguistic 
+Technology Systems (\bhref{https://github.com/Mosaic-DigammaDB/LingTechSys}).}
+
+
+
+\end{document}
+
+

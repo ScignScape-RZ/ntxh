@@ -1,2 +1,2 @@
 ar=`git rev-parse --show-toplevel`
-`cat $ar/../preferred-pdflatex` -interaction=nonstopmode --shell-escape d-spin.tex
+`cat $ar/../preferred-pdflatex` -interaction=nonstopmode --shell-escape DSPIN.tex
