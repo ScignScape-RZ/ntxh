@@ -84,7 +84,7 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=5   %\pgfmathresult>0\relax
+\ifnum\value{page}=8   %\pgfmathresult>0\relax
 \put(182,142){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -447,6 +447,8 @@
 \newcommand{\lCRtwo}{{\resizebox{!}{8pt}{\ATextCClr{CR2}}}}
 \newcommand{\sCRtwo}{{\resizebox{!}{6pt}{\ATextCClr{CR2}}}}
 
+
+%\newcommand{\ConceptsDB}{{\resizebox{!}{7.5pt}{\ATextCClr{ConceptsDB}}}}
 
 \newcommand{\THQL}{\resizebox{!}{7.5pt}{\ATexttclr{THQL}}}
 \newcommand{\lTHQL}{\resizebox{!}{8pt}{\ATexttclr{THQL}}}
@@ -1095,6 +1097,7 @@ Structured Research Reporting Framework}
 \vspace{-3pt}
 %\textcolor{darkRed}{\hrule}
 
+\section{Overview}
 \p{In recent years --- as publishing has become more \q{digitized} --- there
 have emerged many online platforms for scientists to share and publish
 their research work, including both raw data and scientific papers.
@@ -1137,6 +1140,7 @@ use to conduct research.  \lMOSAIC{} also introduces a
 research/experimental/lab methods and protocols.  Supplemental Archives, 
 plugins, and \MOSAICSR{} are outlined in the following sections.}
 
+\part{MOSAIC Components}
 \section{Supplemental Archives} 
 \p{\lMOSAIC{} Supplemental Archives are additional resources 
 paired with \MOSAIC{} publications.  In general, Supplemental Archives 
@@ -1144,7 +1148,7 @@ may include raw data, descriptions of research methods,
 or annotated data linked to publication text.  Each Supplemental Archive 
 could have any of the following resources:
 
-\begin{enumeration}
+\begin{enumerate}
 \item Interactive versions of the publication, with annotations
 indicating important concepts and phrases, perhaps aggregated into a
 \q{glossary} defining technical terms;
@@ -1168,15 +1172,34 @@ indirectly via formal descriptions of computational workflows;
 author developed and/or used for analyzing research data;
 
 \item Multi-media assets such as audio or video files, annotated images,
-\ThreeD graphics, interactive \TwoD/\ThreeD plots and diagrams, or other kinds of
+\ThreeD{} graphics, interactive \TwoD/\ThreeD{} plots and diagrams, or other kinds of
 non-textual content which needs to be viewed with special multi-media
 software.
-\end{enumeration}
+\end{enumerate}
 }
 
-\section{\protect\lMOSAIC Plugins}
-\p{By design, \lMOSAIC{} Portals will provide a
-suite of plugins
+\p{The contents of a Supplemental Archive will be different 
+for different publications, depending on whether the archive 
+contains specific raw data, or just a summary of the methods 
+used to obtain raw data.  In the former case, a typical 
+archive will include a \i{data-set application}, or a semi-autonomous 
+software component allowing researchers to study and visualize 
+the data set, typically provided in turn via data files that are 
+also located in the archive.  The data-set application will in 
+general provide both a visual interface for raw data and code 
+libraries for computationally manipulating this data; typically 
+raw data files will encode serialized data structures that 
+can be deserialized by code (e.g., \Cpp{} classes) included 
+in the data-set application.  \lMOSAIC{} includes generic 
+implementations of a \q{data-set explorer} (\MdsX{}) which 
+can be adopted to the specific kind of information needing 
+to be serialized for a given publication.  The resulting 
+data-set application can then be packaged as a plugin to 
+existing scientific software, depending on the relevant 
+scientific discipline to which the research belongs.}
+
+\section{\protect\llMOSAIC{} Plugins}
+\p{By design, \lMOSAIC{} Portals will provide a suite of plugins
 for existing scientific software, allowing publications and
 Supplemental Archives hosted on the portal to be read and examined
 within computer software associated with each publication's subject
@@ -1187,16 +1210,17 @@ application; articles discussing novel computer code could be read
 within \Qt{} Creator, an Integrated Development Environment (\IDE{}) for
 programming; etc.  The advantage of accessing
 a publication and a Supplemental Archive within actual scientific
-software is that it allows the student's work to be evaluated within
-the computing environments which scientists actually use to conduct
-professional research.  This is different than existing
-science-publication portals, which generally rely on web browsers to
+software is that it allows research work to be understood, evaluated, 
+and reused within the computing environments which scientists actually use to 
+conduct professional research.  This is different 
+than existing science-publication portals, which generally rely on web browsers to
 access supplemental materials like data sets and multimedia files ---
-and, as a result, the software ecosystem wherein readers examine
+in this setup, as a result, the software ecosystem wherein readers examine
 published research is fundamentally separate from the software
 platforms where research is actually conducted.  This is one example
 of how existing portals are limited in their ability to share research
-in rigorously reusable and replicable ways.}
+in rigorously reusable and replicable ways, and how \MOSAIC{} 
+offers a potential improvement.}
 
 \p{For authors, embedding presentations of their research within existing
 scientific software has the added benefit of making their work 
@@ -1214,7 +1238,7 @@ out if a research work is only described indirectly within article
 text, as opposed to being concretely developed for execution within a
 specific scientific application.}
 
-\p{Another benefit of using plugins to
+\p{Another benefit of using plugins to 
 access Supplemental Archives is that the host application will usually
 provide more sophisticated multimedia and data visualization
 capabilities, compared to static \PDF{} images or even interactive web
@@ -1230,9 +1254,9 @@ representing bonds, orbitals, torsion angles, etc.  The multimedia
 experience of exploring chemistry data in custom software like \IQmol{} 
 is therefore much greater than the experience of generic web
 multimedia, so the scientific software is a better forum for
-showcasing student's work.}
+showcasing novel research.}
 
-\section{\protect\lMOSAIC Structured Reporting}
+\section{\protect\llMOSAIC{} Structured Reporting}
 
 \p{The \MOSAIC{} Structured Reporting framework (\MOSAICSR{}) 
 includes tools to help authors develop interactive 
@@ -1291,7 +1315,7 @@ construct a digital interface as part of
 a workflow which is part digital (\q{\textit{in silico}}) and part 
 \q{real-world} (\q{in the lab}).}
 
-\section{\protect\lMOSAIC{} Annotations}
+\section{\protect\llMOSAIC{} Annotations}
 \p{Included in any \MOSAIC{} plugin would be specially-designed \PDF{} viewers for
 interactively reading student's papers.  In particular, these \PDF{}
 applications would recognize cross-references linking between student
@@ -1320,7 +1344,8 @@ again be annotated with links to the relevant part of the data set
 (e.g., a table column) where measurements of airflow levels are
 recorded.}
 
-\section{\protect\MOSAIC in the context of Image Analysis}
+\part{Concrete Applications}
+\section{\protect\llMOSAIC{} in the context of Image Analysis}
 \p{This section will focus on one specific application 
 of \MOSAICSR{} in the context of image analysis 
 and bioimaging --- specifically, a \q{Data Structure 
@@ -1622,6 +1647,13 @@ similar to image processing that a rigorous
 model of \GIS{} integration belongs 
 properly within \DSPIN{}, specifically 
 within a \MOSAICGIS{} extension.}
+
+\part{MOSAIC Data Models}
+
+\section{Conceptual Space Models and Hypergraph Database Implementation}
+
+\p{}
+
 
 \section{Markup Serialization and \protect\q{Grounding}}
 
