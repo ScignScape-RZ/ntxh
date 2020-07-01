@@ -789,6 +789,10 @@
 
 \newcommand{\RnD}{\resizebox{!}{7pt}{\AcronymText{R\&D}}}
 
+\newcommand{\DMS}{\resizebox{!}{7pt}{\AcronymText{DMS}}}
+
+
+
 \newcommand{\MIBBI}{\resizebox{!}{7pt}{\AcronymText{MIBBI}}}
 
 \newcommand{\JVM}{\resizebox{!}{7pt}{\AcronymText{JVM}}}
@@ -1129,6 +1133,25 @@ is a structured collection of data and documents which can be
 hosted via web servers (including fully encapsulated and 
 containerizable cloud services) implemented with the help of 
 \MOSAIC{} libraries.}
+
+\p{\lMOSAIC{} repositories can be general-purpose portals 
+hosting academic or technical papers covering a broad range 
+of topics; or narrower collections of articles focused 
+on specific subject areas or institutional archives.  
+Organizations can use use \MOSAIC{} internally as the 
+basis of a document management system (\DMS{}).  Conversely, 
+\MOSAIC{} could be used to provide open public access to 
+complete publications, including human-readable and machine-readable 
+full text and all supplemental content, with no restrictions\footnote{
+Excepting sensitive/private information which might be provided via 
+a dedicated component within the portal with specific features 
+for authors, editors, and administrators} 
+(any project which \textit{does} restrict 
+access to some part of any document requires a commercial 
+\MOSAIC{} license).  \lMOSAIC{} can also be customized 
+for different subject areas by incorporating domain-specific 
+ontologies into document-search features as well as 
+machine-readable document-text annotations.}
 
 \p{\lMOSAIC{} is designed so that the software to access 
 publications and Supplemental Archives can be embedded in 
@@ -1648,15 +1671,14 @@ model of \GIS{} integration belongs
 properly within \DSPIN{}, specifically 
 within a \MOSAICGIS{} extension.}
 
-\part{MOSAIC Data Models}
+\part{Markup Serialization and \protect\q{Grounding}} %MOSAIC Data Models}
 
-\section{Conceptual Space Models and Hypergraph Database Implementation}
+%\section{Conceptual Space Models and Hypergraph Database Implementation}
+%\p{\lMOSAIC{} repositories need to model data  }
 
-\p{}
 
-
-\section{Markup Serialization and \protect\q{Grounding}}
-
+%\section{Markup Serialization and \protect\q{Grounding}}
+\vspace{-1em}
 \p{The data-integration mechanisms discussed 
 in this paper thus far have focused on 
 object models and object-oriented programming 
@@ -1811,7 +1833,7 @@ and type instances (and the data they contain).}
 
 \p{The hypergraph-based modeling incorporated 
 into \GTagML{} reuses much of the code associated 
-with \ConceptsDB{}, which is a new hypergraph database 
+with \ConceptsDB{}, which is the new hypergraph database 
 being developed alongside \MOSAIC{}.  More information 
 about \ConceptsDB{} can be found on 
 the guthub project page for Linguistic 
