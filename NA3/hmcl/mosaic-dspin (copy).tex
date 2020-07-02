@@ -372,7 +372,6 @@
 \newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
 
 \newcommand{\DCMTK}{\resizebox{!}{7pt}{\AcronymText{DCMTK}}}
-\newcommand{\lsDCMTK}{\resizebox{!}{9pt}{\AcronymText{DCMTK}}}
 
 \newcommand{\DICOM}{\resizebox{!}{7pt}{\AcronymText{DICOM}}}
 \newcommand{\lsDICOM}{\resizebox{!}{9pt}{\AcronymText{DICOM}}}
@@ -1620,32 +1619,6 @@ an affixation point for clinical data
 in analytic contexts which are 
 operationally related to image analysis, 
 not just to image analysis per se.}
-
-\subsection{Semantic \protect\lsDICOM{} via \protect\lsDCMTK{} Extensions}
-\p{As a concrete example of how a Semantic \DICOM{} Object Model could be 
-implemented, consider the process of developing \DICOM{} extensions 
-by modifying existing \DICOM{} client libraries, such as 
-\DCMTK{}.  As a file \textit{standard}, \DICOM{} itself is 
-an abstraction; the \DICOM{} protocol only becomes a concrete 
-phenomenon insofar as \PACS{} workstations, radiology software, 
-and other applications employ \DICOM{} client libraries.  Therefore, 
-any \DICOM{} \textit{extension} is similarly concretized only 
-by an application which links against modified \DICOM{} libraries 
-that recognize the extended syntax and/or semantics.  When implementing 
-\DICOM{}, accordingly, we can assume that the modified client libraries 
-exist in an ambient context which provides capabilities that can 
-be leveraged by the extension as it becomes formalized.  For example, 
-if a \DICOM{} extension provides a unified \FCM{}/\DICOM{} format, 
-we can assume that the workstation linking against a modified 
-\DCMTK{} libraries supports \FCM{} features, such as the ability 
-to construct geometric gating models (that is, rectangular or 
-ellipsoid segments on \FCM{} images) and to consume information 
-about the cytometric equipment used to 
-derive the current \FCM{} data.}
-
-\p{In the case of Semantic \DICOM{}, we can similarly 
-assume that the 
- }
 
 \subsection{Geo-Imaging and Geographic Information Systems}
 \p{Another area where \DSPIN{} provides structured 
