@@ -1771,14 +1771,73 @@ model of \GIS{} integration belongs
 properly within \DSPIN{}, specifically 
 within a \MOSAICGIS{} extension.}
 
-\part{Markup Serialization and \protect\q{Grounding}} %MOSAIC Data Models}
+%\part{Markup Serialization and \protect\q{Grounding}} %MOSAIC Data Models}
 
 %\section{Conceptual Space Models and Hypergraph Database Implementation}
 %\p{\lMOSAIC{} repositories need to model data  }
 
+\part{MOSAIC Data Models}
+\section{Hypergraph Database Models for Publication Data}
+\p{At the core of any \MOSAIC{} portal is a collection of 
+distinct files, representing individual publications and 
+Supplemental Archives.  However, in a typical case it 
+will be necessary to ground the system of files in a 
+database hosting publication information, so that 
+readers could search the portal for specific authors, 
+keywords/phrases, subject areas, and so forth.  
+Searches within publication metadata are the simplest 
+example of this functionality.  Searches within publication 
+texts themselves are more complex, because what seems like a 
+straightforward keyword search from a user's point of 
+view may complicated at the processing level by 
+documents' markup structure --- technical terms or acronyms 
+which readers see as single words/phrases may actually be 
+defined within the document by internally structured text 
+segments, rather than raw character streams.  Keyword searches 
+can also be tripped up by ligatures, footnote interruptions, and 
+other visual features wherein the document in human-readable 
+formats like \PDF{} diverges from machine-readable raw text.}
 
-%\section{Markup Serialization and \protect\q{Grounding}}
-\vspace{-1em}
+\p{To address these potential search complications, \MOSAIC{} 
+provides a \q{Hypergraph Text Encoding Protocol} (\HTXN{}) 
+which separates document text into different layers, dividing 
+presentation-related content from textual content and making 
+search capabilities more reliable.  Each publication can have an 
+\HTXN{} representation, essentially a machine-readable structure 
+encapsulating documtn text, as part of its Supplemental Archive.  
+These \HTXN{} resources can then be used to support 
+robust searching among publication sets.}
+
+\p{Apart from metadata and keyword searches, an additional 
+layer of search functionality within \MOSAIC{} portals 
+is the option to search across Supplemental Archive 
+contents such as data sets and research protocol descriptions.  
+\lMOSAIC{} provides a Hypergraph-based database engine that 
+can be used, at a minimum, for publication info; developers 
+have the option of including supplemental content as well 
+within this central database.  Each Supplemental Archive 
+encompasses raw data and/or methodological descriptions 
+via files internal to the archive; these assets are not 
+necessarily shared with the host \MOSAIC{} repository except 
+by directly examining archive files.  However, a repository 
+could choose to model some or all archive content within 
+its publication database, either directly storing 
+archives' data sets or importing certain select information 
+(such as object/type schema or representative data samples).  
+In this case, some data in the Supplemental Archives will be 
+mirrored in the central database, so that it is accessible 
+for user-facing searches.  \lMOSAIC{} employs a 
+flexible Hypergraph Database engine which can accommodate 
+many different kinds of data models, from \q{\SQL{}-like} 
+tables to graphs and hierarchical collections types.  
+Therefore, the publication database within a \MOSAIC{} 
+portal would have the flexibility to import most data 
+which is present in supplemental material associated 
+with given publications.} 
+
+
+\section{Markup Serialization and \protect\q{Grounding}}
+%\vspace{-1em}
 \p{The data-integration mechanisms discussed 
 in this paper thus far have focused on 
 object models and object-oriented programming 
@@ -1935,7 +1994,9 @@ and type instances (and the data they contain).}
 into \GTagML{} reuses much of the code associated 
 with \ConceptsDB{}, which is the new hypergraph database 
 being developed alongside \MOSAIC{}.  More information 
-about \ConceptsDB{} can be found on 
+about \ConceptsDB{} --- and on the 
+\HTXN{} text encoding protocol for \MOSAIC{} portal 
+manuscripts, mentioned earlier --- can be found on 
 the guthub project page for Linguistic 
 Technology Systems (\bhref{https://github.com/Mosaic-DigammaDB/LingTechSys}).}
 
