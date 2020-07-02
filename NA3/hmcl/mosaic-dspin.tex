@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=10   %\pgfmathresult>0\relax
-\put(182,142){
+\put(182,130){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -112,7 +112,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.83in,top=.45in,right=.81in,bottom=1.2in} %margins
+\geometry{left=.83in,top=.4in,right=.81in,bottom=1.1in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -128,7 +128,7 @@
 \renewcommand{\thepage}{\raisebox{2pt}{\arabic{page}}}
 
 \renewcommand{\footnoterule}{%
-	\kern 4pt
+	\kern 2pt
 	\hrule width .92\textwidth height .5pt
 	\kern 6pt
 }
@@ -824,7 +824,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.9em}#1}
+\vspace{.75em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -1029,7 +1029,7 @@
 
 %\def\ref#1{\textbf{\origref{{\LARGE #1}}}}
 
-\setlength{\footnotesep}{0pt}
+%\setlength{\footnotesep}{-8pt}
 
 \renewcommand{\thefootnote}{\textcolor{logoGreen!80!logoBlue}{{\fontfamily{qcr}\fontseries{b}\fontsize{10}{4}\selectfont\arabic{footnote}}}}
 
@@ -1055,7 +1055,7 @@
 	
 {\linespread{1.25}\selectfont
 
-\vspace*{1.5em}
+\vspace*{3.5em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -1835,6 +1835,21 @@ portal would have the flexibility to import most data
 which is present in supplemental material associated 
 with given publications.} 
 
+\p{In some contexts, authors may choose specifically 
+to structure their shared research data in a format that 
+can be exported to a \MOSAIC{} publication database.  
+This is because \MOSAIC{}'s hypergraph data model 
+supplies a rigorous framework for documenting how 
+a data set is organized, which in turn can provide a 
+formal overview of the theoretical or methodological 
+commitments informing the research.  The \MOSAIC{} database 
+engine --- called \ConceptsDB{} --- represents an expanded 
+hypergraph metamodel built around different paradigms 
+for expressing scientific knowledge, such as Conceptual 
+Space Theory and Conceptual Role Semantics.\footnote{Or at least 
+a variation of Conceptual Roles consistent with \AI{} tools 
+such as \Grakenai{}, and formalizations of Conceptual 
+Spaces such as those described in \bhref{https://arxiv.org/abs/1706.06366}.}}
 
 \section{Markup Serialization and \protect\q{Grounding}}
 %\vspace{-1em}
