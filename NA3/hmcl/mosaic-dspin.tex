@@ -84,7 +84,7 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=8   %\pgfmathresult>0\relax
+\ifnum\value{page}=10   %\pgfmathresult>0\relax
 \put(182,142){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
@@ -1644,8 +1644,78 @@ about the cytometric equipment used to
 derive the current \FCM{} data.}
 
 \p{In the case of Semantic \DICOM{}, we can similarly 
-assume that the 
- }
+assume that the host application which which loads 
+an enhanced, \q{Semantic} version of a \DICOM{} client library 
+has the ability to consume more complex clinical data 
+than are incorporated into conventional \DICOM{}.  In the 
+case of \DCMTK{}, patient information is accessed through a 
+\textbf{DcmDataset} object, which in turn contains multiple 
+\textbf{DcmObject} values spanning several more specific 
+types.  A \DICOM{} extension can then be concretized by 
+expanding the range of object types subsumed under \textbf{DcmObject}, 
+as well as modifying the \textbf{DcmDataset} code so that 
+instances of these extended types can be identified and 
+passed off to the appropriate handlers.  Developers can then 
+bundle files serializing these extended types within the 
+overall collection of files zipped into a single 
+\DICOM{} resource.}
+
+\p{The steps just outlined allow an extension object model to 
+be embedded in \DICOM{} by hooking extra processing code 
+into the procedures whereby conventional \textbf{DcmDataset}s  
+are extracted from \DICOM{} files.  It is then necessary to 
+ensure that the \DICOM{} client application can properly 
+manipulate the extension object data.  This could be handled 
+simply by linking all necessary libraries in to the \DICOM{} client 
+itself, but a more flexible solution is to employ some 
+form of multi-application networking.  In the case 
+of non-standard clinical data, a flexible approach would be 
+to pair client libraries for serializations of such data 
+with a standalone application that can parse these 
+serializations and respond to requests about the encoded 
+information.  With such an application in place, the 
+\DCMTK{} host application would not need to implement 
+all logic related to the extension object model; it 
+would simply need to be able to launch and/or communicate 
+with a secondary application tailored to the extensions 
+in particular.}
+
+\p{As a concrete example, consider a specialized data model and 
+self-contained application specifically devoted to tracking 
+immunological responses and post-recovery symptomology 
+for Covid-19.  The goal would be to develop more sophisticated 
+technology for modeling the progression of active Covid-19 
+infections, as well as lingering effects of the disease 
+for patients who experience adverse reactions (such 
+as lasting neurological damage) even after their ostensive 
+recovery.  Detailed models of Covid-19 affliction could then 
+be matched against epidemiological, treatment, and sociodemographic 
+data to determine whether there are predictors for which 
+patients may experience more severe or long-lasting symptoms, 
+and whether these can be mitigated by different treatment 
+options.  The data consumed by such a Covid-specific application 
+could be bundled into \DICOM{} files even if \DICOM{} clients 
+cannot directly process this data; instead, they could be 
+programmed to launch the Covid-specific application and 
+query that application for select pieces of information 
+that \textit{are} relevant for a \DICOM{} workstation 
+(e.g., an immunological profile of the patient adding 
+layers of detail to cytological imaging).  In short, 
+a Covid-specific application could be accessed by 
+several different peer applications addressing 
+several different biomedical domains (bioimaging, cytometry, 
+epidemiology, genomics), and could provide different 
+sorts of information from a Covid-specific data model 
+for different contexts: given an overall information 
+package about a patient's SARS-CoV-2 immunology and symptomology, 
+some categories of data will be relevant for bioimaging, 
+others for genomics, and so forth.  The file formats employed by 
+these various peer applications (such as \DICOM{}, in the 
+bioimaging context) could then be extended only as much 
+as is needed to seed shared data packages with enough 
+information to launch the Covid-specific application and 
+request information specific to the peer application's 
+specific biomedical domain.}
 
 \subsection{Geo-Imaging and Geographic Information Systems}
 \p{Another area where \DSPIN{} provides structured 
