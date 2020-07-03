@@ -1666,15 +1666,15 @@ derive the current \FCM{} data.}
 \p{In the case of Semantic \DICOM{}, we can similarly 
 assume that the host application which loads 
 an enhanced, \q{Semantic} version of a \DICOM{} client library 
-has the ability to consume more complex clinical data 
+has the ability to consume more complex clinical data models 
 than are incorporated into conventional \DICOM{}.  In the 
 case of \DCMTK{}, patient information is accessed through a 
 \textbf{DcmDataset} object, which in turn contains multiple 
 \textbf{DcmObject} values spanning several more specific 
-types.  A \DICOM{} extension can then be concretized by 
+types.  A \DICOM{} extension can, accordingly, be concretized by 
 expanding the range of object types subsumed under \textbf{DcmObject}, 
 as well as modifying the \textbf{DcmDataset} code so that 
-instances of these extended types can be identified and 
+instances of these extended types could be identified and 
 passed off to the appropriate handlers.  Developers can then 
 bundle files serializing these extended types within the 
 overall collection of files zipped into a single 
@@ -1697,7 +1697,7 @@ information.  With such an application in place, the
 \DCMTK{} host application would not need to implement 
 all logic related to the extension object model; it 
 would simply need to be able to launch and/or communicate 
-with a secondary application tailored to the extensions 
+with a secondary application tailored to each individual extension 
 in particular.}
 
 \p{As a concrete example, consider a specialized data model and 
@@ -1714,14 +1714,14 @@ data to determine whether there are predictors for which
 patients may experience more severe or long-lasting symptoms, 
 and whether these can be mitigated by different treatment 
 options.  The data consumed by such a Covid-specific application 
-could be bundled into \DICOM{} files even if \DICOM{} clients 
+might be bundled into \DICOM{} files even if \DICOM{} clients 
 cannot directly process this data; instead, they could be 
 programmed to launch the Covid-specific application and 
 query that application for select pieces of information 
 that \textit{are} relevant for a \DICOM{} workstation 
 (e.g., an immunological profile of the patient adding 
 layers of detail to cytological imaging).  In short, 
-a Covid-specific application could be accessed by 
+a Covid-specific application would potentially be accessed by 
 several different peer applications addressing 
 several different biomedical domains (bioimaging, cytometry, 
 epidemiology, genomics), and could provide different 
@@ -1731,7 +1731,7 @@ package about a patient's SARS-CoV-2 immunology and symptomology,
 some categories of data will be relevant for bioimaging, 
 others for genomics, and so forth.  The file formats employed by 
 these various peer applications (such as \DICOM{}, in the 
-bioimaging context) could then be extended only as much 
+bioimaging context) may then be extended only as much 
 as is needed to seed shared data packages with enough 
 information to launch the Covid-specific application and 
 request information specific to the peer application's 
@@ -1761,14 +1761,14 @@ geospatial coordinates and to
 visual cues or icons  
 allowing locations of interest to be 
 indicated on maps.  The actual geotagged 
-data structures can be derived from 
+data structures could be derived from 
 any domain; as such any object model 
-can be integrated with \GIS{} annotations 
+may be integrated with \GIS{} annotations 
 so long as one can assign spatial interpretations 
 to the phenomena computationally encapsulated 
 by the domain in question.  In a medical 
 context, for instance, geotagged data 
-may represent the scope of a vaccination campaign 
+might represent the scope of a vaccination campaign, 
 or the extent of an epidemic, along with 
 relevant geographic or civic features 
 (villages, medical clinics, national borders, 
@@ -1809,12 +1809,12 @@ Searches within publication metadata are the simplest
 example of this functionality.  Searches within publication 
 texts themselves are more complex, because what seems like a 
 straightforward keyword search from a user's point of 
-view may complicated at the processing level by 
+view may be complicated at the processing level by 
 documents' markup structure --- technical terms or acronyms 
-which readers see as single words/phrases may actually be 
+which readers see as single words/phrases could actually be 
 defined within the document by internally structured text 
 segments, rather than raw character streams.  Keyword searches 
-can also be tripped up by ligatures, footnote interruptions, and 
+might also be tripped up by ligatures, footnote interruptions, and 
 other visual features wherein the document in human-readable 
 formats like \PDF{} diverges from machine-readable raw text.}
 
@@ -1832,7 +1832,7 @@ robust searching among publication sets.}
 layer of search functionality within \MOSAIC{} portals 
 is the option to search across Supplemental Archive 
 contents such as data sets and research protocol descriptions.  
-\lMOSAIC{} provides a Hypergraph-based database engine that 
+\lMOSAIC{} provides a hypergraph-based database engine that 
 can be used, at a minimum, for publication info; developers 
 have the option of including supplemental content as well 
 within this central database.  Each Supplemental Archive 
@@ -1852,7 +1852,7 @@ many different kinds of data models, from \q{\SQL{}-like}
 tables to graphs and hierarchical collections types.  
 Therefore, the publication database within a \MOSAIC{} 
 portal would have the flexibility to import most data 
-which is present in supplemental material associated 
+which is present in supplemental content associated 
 with given publications.} 
 
 \p{In some contexts, authors may choose specifically 
@@ -1893,7 +1893,7 @@ definitions.
 \lXML{} formats are a good case-study 
 for such formalizations because 
 most serialization in 
-the biomedical and bioimaging context, 
+the biomedical and bioimaging context 
 operates through 
 \XML{} languages.}
 
@@ -1932,11 +1932,11 @@ In this case there will be a one-to-one correspondence
 between \XML{} structure and application-level 
 data types, at least for that one \textbf{Image} node.  
 On the other hand, software reading \OMETIFF{} 
-information may not manipulate images directly, 
+information might not manipulate images directly, 
 but rather pull out other kinds of metadata, 
 such as an experimenter's name or description 
 of the microscopic setup.  In this case, 
-the application may not have an explicit 
+the application might not have an explicit 
 \q{object} representing the image itself, 
 but it may still read information about the 
 image from child nodes of the \XML{} \textbf{Image} 
