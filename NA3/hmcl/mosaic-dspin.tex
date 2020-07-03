@@ -1361,13 +1361,13 @@ a workflow which is part digital (\q{\textit{in silico}}) and part
 interactively reading author's papers.  In particular, these \PDF{}
 applications would recognize cross-references linking between 
 publications and their associated Supplemental Archives.  This would
-allow readers to identify concepts which are discussed and/or
+allow authors to identify concepts which are discussed and/or
 represented both in the research paper and in the archive, annotating
 their papers accordingly.  For example (a similar example is used in
 the documentation for \BioCoder{}), 
 the concept \q{\RNA{} Extraction} may be discussed in a
 publication text, and also formally declared as one step in the lab
-processing as represented via \BioCoder{}, and summarized in a
+processing as represented via \BioCoder{}, summarized in a
 \BioCoder{}-generated chart (and included in the Supplemental Archive).
 The \PDF{} viewer would then ensure that the phrase \q{\RNA{} Extraction} in
 the text is interactively linked to the concordant step in the
@@ -1376,7 +1376,7 @@ as a context-menu action associated with the phrase where it appears
 in the \PDF{} file.  For a different example, the phrase \q{Oxygenated
 Airflow} refers to airflow in assisted-breathing devices, such as
 ventilators; to ensure that the device is working properly, the
-equipment must be monitored to ensure that a steady stream of oxygen
+equipment must be monitored to check that a steady stream of oxygen
 reaches the patient.  Research into the design and manufacturing of
 ventilators and similar devices may then include \q{Oxygenated Airflow}
 both as a phrase within the article text and as a parameter in data
@@ -1406,9 +1406,8 @@ techniques used to obtain reported findings).
 \lDSPIN{}, in turn, is based on \CaPTk{} and 
 \Pandore{} (an image-processing environment 
 which includes both data models and interactive 
-software).  The \Pandore{} \q{Image Processing Objectives} 
-Ontology, mentioned above,  
-that provides a structural basis for \DSPIN{}.  
+software) and the \Pandore{} \q{Image Processing Objectives} 
+Ontology, mentioned above.  
 For information about how different objectives 
 are merged into workflows, \DSPIN{} 
 adopts protocols from \CaPTk{}, particularly 
@@ -1429,12 +1428,18 @@ and objectives.}
 \section{Meta-Procedural Modeling in 
 \protect\lsDSPIN{} and \protect\lsMOSAICSR{}}
 
-\p{Most approaches to modeling research workflows 
+\p{When developed as a systematic outline of 
+computational workflows --- not just a digital 
+summary of real-world (e.g. lab) protocols --- 
+\MOSAICSR{} reports can be formalized 
+using a \MOSAIC{} component called 
+\q{Hypergraph Multi-Application Configuration 
+Language} (\HMCL{}).  Most approaches to modeling research workflows 
 involve some concept of \q{meta-objects},\footnote{See 
 the \sVISSION{} system: \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.} 
 \q{tools} (in the terminology of \CWL{}), 
 or \q{transitions} (in the language of Petri Net 
-theory).  In \MOSAICSR{}, the analogous concept is 
+theory).  In \HMCL{}, the analogous concept is 
 that of \textit{meta-procedures}, which are analogous 
 to ordinary computational procedures but 
 add extra sources of information concerning 
@@ -1455,7 +1460,7 @@ values within \q{channels} via which a procedure sends and
 receives data) 
 from the concrete procedure or procedures 
 which are eventually executed.  Therefore, 
-a \MOSAIC{} meta-procedure definition 
+an \HMCL{} meta-procedure definition 
 has two separate parts: a preamble where 
 input sources are described; and an 
 executive sequence where concrete procedures 
