@@ -1110,9 +1110,10 @@ have emerged many online platforms for scientists to share and publish
 their research work, including both raw data and scientific papers.
 These portals generally provide an index/search feature where readers
 can locate research based on author's name, keywords, or subject
-matter, and a document viewer where readers can view each
+matter; and a document viewer where readers can view each
 publication's abstract (and sometimes its full text) and other
-publication details (such as co-authors, dates, citations, etc.).
+publication details (such as co-authors, dates, its list of 
+citations/references, etc.).
 However, these portals offer only limited features for interactively
 exploring publications, particularly when it comes to examining data
 sets and/or browsing multimedia assets associated with publications,
@@ -1125,10 +1126,14 @@ limitations of existing scientific document portals
 Ontologies for Scientific and Technical Publications}). 
 With \MOSAIC{}, each publication can be
 linked to a \q{Supplemental Archive} which contains information about
-the author's research methods, data sets, and focal topics.  Using 
-\MOSAIC{}, developers can implement a hosting platform
-for this supplemental material, in addition to publications themselves, 
-where the platform provide software
+the author's research methods, data sets, and focal topics.  If desired, 
+these archives can include machine-readable representations of 
+full publication text, to support advanced text-mining techniques 
+across the repository.}
+
+\p{Using \MOSAIC{}, developers can implement a hosting platform
+for all of this supplemental material, in addition to publications 
+themselves, where the platform provides software
 enabling readers to browse and access Supplemental Archives and 
 their data sets and/or methodological descriptions.  A \MOSAIC{} 
 publication repository, also called a \MOSAIC{} \q{portal,} 
@@ -1141,7 +1146,7 @@ containerizable cloud services) implemented with the help of
 hosting academic or technical papers covering a broad range 
 of topics; or narrower collections of articles focused 
 on specific subject areas or institutional archives.  
-Organizations can use use \MOSAIC{} internally as the 
+Organizations can utilize \MOSAIC{} internally as the 
 basis of a document management system (\DMS{}).  Conversely, 
 \MOSAIC{} could be used to provide open public access to 
 complete publications, including human-readable and machine-readable 
@@ -1161,7 +1166,7 @@ publications and Supplemental Archives can be embedded in
 scientific-computing applications, via \q{\MOSAIC{} plugins.}  
 This ensures that publications and data sets can be 
 examined interactively with the same software as scientists 
-use to conduct research.  \lMOSAIC{} also introduces a 
+employ to conduct research.  \lMOSAIC{} also introduces a 
 \q{structured reporting system} (\MOSAICSR{}) for describing 
 research/experimental/lab methods and protocols.  Supplemental Archives, 
 plugins, and \MOSAICSR{} are outlined in the following sections.}
@@ -1179,6 +1184,10 @@ could have any of the following resources:
 indicating important concepts and phrases, perhaps aggregated into a
 \q{glossary} defining technical terms;
 
+\item Machine-readable representations of document texts, with 
+special-purpose character encodings designed to facilitate 
+Text and Data Mining (\TDM{});
+
 \item Structured files containing raw data discussed in the publication,
 along with interactive software allowing scientists to access and
 reuse the data;
@@ -1195,7 +1204,7 @@ the research findings, provided directly via computer code or
 indirectly via formal descriptions of computational workflows;
 
 \item Self-contained computer software demonstrating code which the
-author developed and/or used for analyzing research data;
+author developed and/or used for analyzing/curating research data;
 
 \item Multi-media assets such as audio or video files, annotated images,
 \ThreeD{} graphics, interactive \TwoD/\ThreeD{} plots and diagrams, or other kinds of
@@ -1208,7 +1217,7 @@ software.
 for different publications, depending on whether the archive 
 contains specific raw data, or just a summary of the methods 
 used to obtain raw data.  In the former case, a typical 
-archive will include a \i{data-set application}, or a semi-autonomous 
+archive will include a \textit{data-set application}, or a semi-autonomous 
 software component allowing researchers to study and visualize 
 the data set, typically provided in turn via data files that are 
 also located in the archive.  The data-set application will in 
