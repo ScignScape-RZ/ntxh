@@ -398,6 +398,9 @@
 
 \newcommand{\CaPTk}{\resizebox{!}{7pt}{\AcronymText{CaPTk}}}
 
+\newcommand{\WebGL}{\resizebox{!}{7pt}{\AcronymText{WebGL}}}
+
+
 \newcommand{\VIOLIN}{\resizebox{!}{7pt}{\AcronymText{VIOLIN}}}
 
 
@@ -699,7 +702,8 @@
 \newcommand{\CSV}{{\resizebox{!}{7pt}{\AcronymText{CSV}}}}
 \newcommand{\PDB}{{\resizebox{!}{7pt}{\AcronymText{PDB}}}}
 
-\newcommand{\WebGL}{{\resizebox{!}{7pt}{\AcronymText{WebGL}}}}
+%\newcommand{\WebGL}{{\resizebox{!}{7pt}{\AcronymText{WebGL}}}}
+
 \newcommand{\Docker}{{\resizebox{!}{7pt}{\AcronymText{Docker}}}}
 
 
@@ -1246,7 +1250,7 @@ within \Qt{} Creator, an Integrated Development Environment (\IDE{}) for
 programming; etc.  The advantage of accessing
 a publication and a Supplemental Archive within actual scientific
 software is that it allows research work to be understood, evaluated, 
-and reused within the computing environments which scientists actually use to 
+and reused within the computing environments which scientists typically use to 
 conduct professional research.  This is different 
 than existing science-publication portals, which generally rely on web browsers to
 access supplemental materials like data sets and multimedia files ---
@@ -1266,10 +1270,12 @@ accelerating the pace at which research work can be translated to
 concrete scientific (and clinical/lab/experimental) practice.
 As one example, research involving novel image analysis techniques 
 could be packaged so as to target a \MOSAIC{} plugin for bioimaging
-software such as \CaPTk{}, so that readers could actually run the
-author's code as a \CaPTk{} module.  This kind of
+software such as \CaPTk{} (the Cancer Imaging and Phenomics Toolkit), so that readers could actually run the author's code as a \CaPTk{} 
+module.\footnote{This toolkit provides a good case-study for research 
+publication because it has an innovative \Qt{} and Common Workflow 
+Language based extension mechanism; cf. \bhref{https://cbica.github.io/CaPTk/tr_integration.html}.}  This kind of
 functional assessment and adoption of novel contributions is harder to carry
-out if a research work is only described indirectly within article
+out if a body of research work is only described indirectly within article
 text, as opposed to being concretely developed for execution within a
 specific scientific application.}
 
@@ -1280,8 +1286,8 @@ capabilities, compared to static \PDF{} images or even interactive web
 portals.  Publishers have begun to develop online platforms for
 browsing research papers in conjunction with multimedia content such
 as interactive diagrams and \ThreeD{} graphics --- a physical model of a
-protein or a chemical compound, say, can be viewed online via WebGL;
-such graphics could even be embedded as an \q{iframe} within an HTML
+protein or a chemical compound, say, can be viewed online via \WebGL{};
+such graphics could even be embedded as an \q{\textbf{iframe}} within an \HTML{}
 version of the publications.  Publishers consider this to be
 cutting-edge technology.  However, the same molecular \ThreeD{} model, when
 viewed in \IQmol{}, can be enhanced with many additional visual features,
@@ -1296,7 +1302,7 @@ showcasing novel research.}
 \p{The \MOSAIC{} Structured Reporting framework (\MOSAICSR{}) 
 includes tools to help authors develop interactive 
 presentations supplementing academic documents, and specifically 
-to use Supplemental Archives to document how thier research 
+to use Supplemental Archives to document how their research 
 has been conducted.  With \MOSAICSR{}, authors can implement or 
 reuse code libraries that report on 
 research/experiment methods, workflows, and 
@@ -1352,8 +1358,8 @@ a workflow which is part digital (\q{\textit{in silico}}) and part
 
 \section{\protect\llMOSAIC{} Annotations}
 \p{Included in any \MOSAIC{} plugin would be specially-designed \PDF{} viewers for
-interactively reading student's papers.  In particular, these \PDF{}
-applications would recognize cross-references linking between student
+interactively reading author's papers.  In particular, these \PDF{}
+applications would recognize cross-references linking between 
 publications and their associated Supplemental Archives.  This would
 allow readers to identify concepts which are discussed and/or
 represented both in the research paper and in the archive, annotating
@@ -1397,9 +1403,8 @@ of research objectives as well as a concrete
 interface for invoking analyses associated 
 with the research (either new algorithms or 
 techniques used to obtain reported findings).
-\lDSPIN{}, in turn, is based on \CaPTk{} 
-(the Cancer Imaging and Phenomics Toolkit) 
-and \Pandore{} (an image-processing environment 
+\lDSPIN{}, in turn, is based on \CaPTk{} and 
+\Pandore{} (an image-processing environment 
 which includes both data models and interactive 
 software).  The \Pandore{} \q{Image Processing Objectives} 
 Ontology, mentioned above,  
