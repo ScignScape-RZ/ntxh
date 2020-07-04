@@ -1,0 +1,30 @@
+
+class GraphExportWindow : QDialog
+{
+ QSpinBox* spWidth_; //= new QSpinBox();
+ QSpinBox* spHeight_; //= new QSpinBox();
+ 
+ QPushButton* bOk_; //= new QPushButton(tr("OK"));
+ QPushButton* bCancel_; //= new QPushButton(tr("Cancel"));
+
+ QRadioButton* bAsOne_; // =new QRadioButton(tr("All in one"));
+ QRadioButton* bByDataset_; // =new QRadioButton(tr("Split by dataset"));
+ QRadioButton* bByView_; // =new QRadioButton(tr("Split by view"));
+ QRadioButton* bAllSeparate_; // =new QRadioButton(tr("All graphs individually"));
+
+public:
+
+ bool wasOk_; // =false;
+
+ GraphExportWindow();
+ 
+ bool splitByDataset();
+ boolean splitByView();
+ int getWidth();
+ int getHeight();
+ void actionOK();
+
+ bool storeAnnot();
+ void actionCancel(); 
+};
+
