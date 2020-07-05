@@ -1,0 +1,19 @@
+// package facsanadu.gui.panes;
+
+
+// // Pane showing compensation
+
+class CompensationPane : public QWidget
+{
+ QTableWidgetWithCSVcopy tableMatrix_; // =new QTableWidgetWithCSVcopy();
+ MainWindow mw_;
+ bool updating_; // =false;
+  
+public: 
+
+ CompensationPane(MainWindow mw);
+ void updateForm();
+ void dataChanged(QTableWidgetItem it);
+};
+
+
