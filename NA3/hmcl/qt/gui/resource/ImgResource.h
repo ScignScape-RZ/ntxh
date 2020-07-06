@@ -50,3 +50,7 @@ public:
  static QLabel label(QPixmap p);
  
 };
+
+#endif // __H
+
+

@@ -20,4 +20,8 @@ class DialogAbout : public QDialog
  public static String linebreaksAsBR(QString s);
 };
 
+#endif // __H
+ 
+
+
 

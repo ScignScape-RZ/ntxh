@@ -49,4 +49,8 @@ class ViewToolDrawEllipse : //implements ViewTool
 
 };
 
+#endif // __H
+ 
+
+
 

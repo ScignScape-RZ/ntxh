@@ -27,5 +27,10 @@ public:
  void mouseMoveEvent(QMouseEvent event) = 0;
  void mouseDoubleClickEvent(QMouseEvent event) = 0;
  bool allowHandle() = 0;
-}
+};
+
+
+#endif // __H
+ 
+
 

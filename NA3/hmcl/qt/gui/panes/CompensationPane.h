@@ -24,4 +24,8 @@ public:
  void dataChanged(QTableWidgetItem it);
 };
 
+#endif // __H
+ 
+
+
 

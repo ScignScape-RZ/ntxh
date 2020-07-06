@@ -25,4 +25,8 @@ class DatasetInfoPane : QWidget
 
 };
 
+#endif // __H
+ 
+
+
 

@@ -87,4 +87,8 @@ class ViewSettings
  
 };
 
+#endif // __H
+ 
+
+
 

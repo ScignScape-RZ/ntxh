@@ -25,3 +25,8 @@ enum class ViewToolChoice
 
 ViewTool getTool(ViewWidget w, ViewToolChoice t);
 
+
+#endif // __H
+ 
+
+

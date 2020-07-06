@@ -127,3 +127,7 @@ class QTutil
  static QTableWidgetItem createReadOnlyItem(QString s);
 
 };
+
+#endif // __H
+ 
+

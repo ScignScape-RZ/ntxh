@@ -53,4 +53,8 @@ public:
  int mapGeneralToScreenY(double y); 
 };
 
+#endif // __H
+ 
+
+
 

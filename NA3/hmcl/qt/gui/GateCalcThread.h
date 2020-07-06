@@ -25,13 +25,8 @@ class GateCalcThread
  // // Start the calculation if it happen to not be running yet
 
 public:
+
  void wakeup();
-  {
-  synchronized (lockGetGate)
-   {
-   lockGetGate.notifyAll();
-   }
-  }
  
  // //
  FacsanaduProject getProject() = 0;
@@ -45,181 +40,53 @@ public:
 
  // // Constructor
  GateCalcThread();
-  {
-  setNumCores(4);
-  }
 
  // //
  int getNumCores();
-  {
-  return numcores;
-  }
 
  // // Set the number of cores and ensure they are running
  void setNumCores(int th);
- {
-  numcores=th;
-  synchronized (threads)
-   {
-   //Start more threads if needed. Old ones will die automatically if value reduced
-   for(int i=threads.size();i<numcores;i++)
-    {
-    Worker w=new Worker(threads.size());
-    w.start();
-    threads.add(w);
-    }
-   }
-  wakeup();
-  }
-
  
  // // One worker thread
  class Worker : Thread
  {
   int id;
-  Worker(int id)
-  {
-   this.id=id;
-  }
-  void run()
-  {
-   while(id<=numcores)
-    {
-    //and other criteria
-    //FacsanaduProject proj=getProject();
+  Worker(int id);
+  void run();
+ };
 
-    //Get a task that needs doing
-    Task task=null;
-    synchronized (lockGetGate)
-     {
-     for(Dataset ds:getCurrentDatasets())
-      {
-      //Need to lock datasets too! synchronized class?
-      //GatingResult gr=proj.gatingResult.get(ds);
-      task=getTaskToWorkOn(ds);
-      if(task!=null)
-       break;
-      }
-     //Wait until the thread is needed again if there is nothing to do
-     if(task==null)
-      try
-       {
-       lockGetGate.wait();
-       }
-      catch (InterruptedException e)
-       {
-       }
-     else
-      currentTasks.add(task);
-     }
-    
-    //Run task
-    if(task!=null)
-     {
-     task.exec();
-     currentTasks.remove(task);
-     //Because there might be more than one child, but only one thread currently running, ensure to wake up all threads
-     wakeup();
-     }
-    }
-   System.out.println("Thread ending");
-   synchronized (threads)
-    {
-    threads.remove(this);
-    }
-   }
-  }
-
- 
  /**
   * Get a task that needs working on in the given dataset
   */
- Task getTaskToWorkOn(Dataset ds)
-  {
-  FacsanaduProject proj=getProject();
-  Gate g=proj.gateset.getRootGate();
- 
-  //First checking if there is any work in terms of gating
-  GatingResult gr=proj.getCreateGatingResult(ds);
-//  System.out.println("--------- need update? "+gr.gateNeedsUpdate(g)+"   "+g.lastModified+"  "+gr.lastUpdateGate.get(g));
-  if(gr.gateNeedsUpdate())
-   {
-   gr.setUpdated(g); //Ensures only one thread gets this dataset
-
-   TaskDS task=new TaskDS();
-   task.ds=ds;
-   //Check if already processed. If so, also cannot process children here yet,
-   //nor measures, so just give up on this node
-   if(currentTasks.contains(task))
-    return null;
-   else
-    {
-    return task;
-    }
-   }  
-
-  return null;  
-  }
- 
- 
-
+ Task getTaskToWorkOn(Dataset ds);
 
  /**
   * One task needing execution
   */
- private: interface Task
+private: class Task
   {
-  void exec();
+  void exec() = 0;
   }
  
  
  /**
   * Task for computing one gate
   */
- private: class TaskDS implements Task
+ private: 
+  class TaskDS : Task
   {
-  Dataset ds;
-  boolean equals(Object obj)
-   {
-   if(obj instanceof TaskDS)
-    {
-    TaskDS t=(TaskDS)obj;
-    return ds==t.ds;
-    }
-   else
-    return false;
-   }
-  int hashCode()
-   {
-   return ds.hashCode();
-   }
-  
-  void exec()
-   {
-   GatingResult gr=getProject().getCreateGatingResult(ds);
-   synchronized (gr)
-    {
-    System.out.println("calc ds "+gr.getRootGate());
-    exec(gr, gr.getRootGate());
-    gr.setLastUpdateTime();
-    System.out.println("end "+gr.getRootGate());
-    callbackDoneCalc(ds);
-    }
-   }
-
-  void exec(GatingResult gr, Gate g)
-   {
-   gr.doOneGate(g, ds, false);
-   for(Gate child:g.children)
-    exec(gr, child);
-   }
-  
-  @Override
-  String toString()
-   {
-   return "(calcgate "+ds+")";
-   }
+   Dataset ds;
+   bool equals(Object obj);
   }
+
+public:
+
+ int hashCode();
+ void exec();
+
+ void exec(GatingResult gr, Gate g);
+  
+ QString toString() Q_DECLARE_OVERRIDE;
   
  
  
@@ -244,12 +111,10 @@ public:
   * 
   */
  
- boolean isCalculationRunning()
-  {
-  synchronized (currentTasks)
-   {
-   return !currentTasks.isEmpty();
-   }
-  }
+ bool isCalculationRunning();
  
- }
+};
+
+#endif // __H
+ 
+

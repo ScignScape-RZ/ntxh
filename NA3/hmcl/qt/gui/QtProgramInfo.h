@@ -17,4 +17,9 @@ struct QtProgramInfo
  
  
  static QString getVersionString();
-}
+};
+
+#endif // __H
+ 
+
+

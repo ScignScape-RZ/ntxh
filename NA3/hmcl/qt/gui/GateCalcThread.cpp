@@ -77,7 +77,7 @@ GateCalcThread::Worker::Worker(int id)
 
 void GateCalcThread::Worker::run()
 {
- while(id<=numcores)
+ while(id <= numcores)
  {
   //and other criteria
   //FacsanaduProject proj=getProject();

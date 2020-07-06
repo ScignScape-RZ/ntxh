@@ -33,3 +33,7 @@ public:
  void actionCancel(); 
 };
 
+#endif // __H
+ 
+
+

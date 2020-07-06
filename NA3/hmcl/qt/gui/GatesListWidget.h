@@ -74,4 +74,8 @@ public:
  void addGate(Gate suggestParent, Gate g);
 };
 
+#endif // __H
+ 
+
+
 

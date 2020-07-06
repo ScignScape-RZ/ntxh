@@ -37,4 +37,8 @@ public:
  void copy();
 };
 
+#endif // __H
+ 
+
+
 

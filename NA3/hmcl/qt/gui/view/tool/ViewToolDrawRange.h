@@ -42,6 +42,11 @@ public:
  
 // @Override
  bool allowHandle();
-}
+};
+
+
+#endif // __H
+ 
+
 
 

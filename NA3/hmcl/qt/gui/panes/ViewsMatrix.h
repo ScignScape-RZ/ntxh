@@ -33,4 +33,8 @@ public:
  void invalidateCache();
 };
 
+#endif // __H
+ 
+
+
 

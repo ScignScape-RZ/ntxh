@@ -14,6 +14,10 @@ class GateRendererRoot: // implements GateRenderer
 {
 public: 
  void render(Gate gate, QPainter p, ViewTransform w, ViewSettings viewsettings, Collection<GateHandle> handles);
-}
+};
+
+#endif // __H
+ 
+
 
 

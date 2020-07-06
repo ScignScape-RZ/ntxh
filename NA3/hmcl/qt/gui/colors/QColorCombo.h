@@ -31,4 +31,8 @@ public:
  void actionClick();
 };
 
+#endif // __H
+ 
+
+
 

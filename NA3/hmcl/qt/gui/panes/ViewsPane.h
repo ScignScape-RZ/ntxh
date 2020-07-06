@@ -27,6 +27,10 @@ class ViewsPane :  QWidget
  
  QList<QPushButton*> tb_; // =new QPushButton[]{bGateSelect, bGatePoly, bGateRect, bGateEllipse, bGateRange};
 
+#endif // __H
+ 
+
+
 
 public: 
 

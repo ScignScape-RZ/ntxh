@@ -33,3 +33,7 @@ class GateStatsPane : QWidget
  void actionExportCSV();
 
 };
+
+#endif // __H
+ 
+

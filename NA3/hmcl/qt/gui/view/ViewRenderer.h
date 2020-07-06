@@ -47,9 +47,13 @@ public:
  /**
   * Render view to device
   */
-  static void renderData(ViewSettings viewsettings, Dataset segment, GatingResult gr,  ViewTransform trans, QPainter pm, int rendermax);
+  static void renderData(ViewSettings viewsettings, Dataset segment, GatingResult gr,   ViewTransform trans, QPainter pm, int rendermax);
  
  static void renderGates(ViewSettings viewsettings, Dataset segment, GatingResult gr, ViewTransform trans, QPainter pm, LinkedList<GateHandle> handles, int rendermax);
 };
+
+#endif // __H
+ 
+
 
 

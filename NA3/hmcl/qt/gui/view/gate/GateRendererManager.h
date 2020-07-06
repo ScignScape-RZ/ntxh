@@ -18,4 +18,8 @@ class GateRendererManager
  static GateRenderer getGateRenderer(Gate g);
 };
 
+#endif // __H
+ 
+
+
 

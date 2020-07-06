@@ -36,4 +36,8 @@ public:
  void actionNewView();
 };
 
+#endif // __H
+ 
+
+
 

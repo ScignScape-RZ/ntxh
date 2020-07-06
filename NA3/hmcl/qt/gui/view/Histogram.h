@@ -30,4 +30,8 @@ public:
  int getNumBins();
 };
 
+#endif // __H
+ 
+
+
 

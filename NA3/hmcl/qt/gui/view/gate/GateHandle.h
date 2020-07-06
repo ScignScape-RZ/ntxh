@@ -21,6 +21,11 @@ public:
  double getX() = 0;
  double getY() = 0;
  void move2(MainWindow w, double nx, double ny) = 0;
-}
+};
+
+
+#endif // __H
+ 
+
 
 

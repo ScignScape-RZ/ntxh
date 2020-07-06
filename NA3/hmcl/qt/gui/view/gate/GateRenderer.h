@@ -15,6 +15,11 @@ class GateRenderer
 public:
 
  void render(Gate gate, QPainter p, ViewTransform w, ViewSettings viewsettings, Collection<GateHandle> handles) = 0;
-}
+};
+
+
+#endif // __H
+ 
+
 
 

@@ -33,3 +33,7 @@ class ViewToolDrawSelect : ViewTool //implements ViewTool
 
 };
 
+#endif // __H
+ 
+
+

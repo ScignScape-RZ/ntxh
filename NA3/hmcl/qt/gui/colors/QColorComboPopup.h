@@ -18,4 +18,8 @@ class QColorComboPopup : QWidget
  
 };
 
+#endif // __H
+ 
+
+
 

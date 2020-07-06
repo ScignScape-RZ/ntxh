@@ -52,4 +52,9 @@ public:
  //@Override
  bool allowHandle() Q_DECLARE_OVERRIDE;
  
-}
+};
+
+
+#endif // __H
+ 
+

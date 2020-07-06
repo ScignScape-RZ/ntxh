@@ -41,3 +41,7 @@ class ColorSet
  GateColor getUnusedColor(HashSet<GateColor> colset);
 
 };
+
+#endif // __H
+ 
+

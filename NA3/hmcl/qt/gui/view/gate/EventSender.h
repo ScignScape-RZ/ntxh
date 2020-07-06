@@ -14,4 +14,9 @@ class EventSender
 {
 public:
   void sendEvent(EventGatesMoved eventGatesMoved) = 0;
-}
+};
+
+
+#endif // __H
+ 
+
