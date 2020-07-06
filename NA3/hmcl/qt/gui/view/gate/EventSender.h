@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef EventSender__H
+#define EventSender__H
+
+
 //package facsanadu.gui.view.gate;
 
 //import facsanadu.gui.events.EventGatesMoved;

@@ -1,3 +1,12 @@
+
+// // license___here_h
+
+
+#ifndef AddMeasureDialog__H
+#define AddMeasureDialog__H
+
+
+
 // package facsanadu.gui;
 
 

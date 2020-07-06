@@ -1,3 +1,9 @@
+
+// // license___here
+
+#include "ViewWidget.h"
+
+
 // package facsanadu.gui.view;
 
 

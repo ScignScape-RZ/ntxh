@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewToolDrawPoly__H
+#define ViewToolDrawPoly__H
+
+
 // package facsanadu.gui.view.tool;
 
 /**

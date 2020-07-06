@@ -1,4 +1,10 @@
 
+// // license___here_h
+
+#ifndef ProfileChannelWidget__H
+#define ProfileChannelWidget__H
+
+
 class ProfileChannelWidget extends QVBoxLayout
 {
  QVBoxLayout* main_layout_;

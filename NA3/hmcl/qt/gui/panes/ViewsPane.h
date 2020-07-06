@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewsPane__H
+#define ViewsPane__H
+
+
 // package facsanadu.gui.panes;
 
 

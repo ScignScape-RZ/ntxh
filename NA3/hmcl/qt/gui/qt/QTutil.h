@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef QTutil__H
+#define QTutil__H
+
+
 // package facsanadu.gui.qt;
 
 

@@ -1,4 +1,10 @@
-package facsanadu.gui.view;
+
+// // license___here
+
+#include "ViewTransform.h"
+
+
+// package facsanadu.gui.view;
 
 //import com.trolltech.qt.core.QPointF;
 

@@ -1,4 +1,8 @@
 
+// // license___here
+
+#include "QtProgramInfo.h"
+
 #include <QString>
 
 QtProgramInfo::programName = "FACSanadu";

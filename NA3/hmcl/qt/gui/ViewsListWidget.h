@@ -1,4 +1,10 @@
 
+// // license___here_h
+
+#ifndef ViewsListWidget__H
+#define ViewsListWidget__H
+
+
 class ViewsListWidget //: QVBoxLayout
 {
  QVBoxLayout* main_layout_;

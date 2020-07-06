@@ -1,3 +1,10 @@
+
+// // license___here_h
+
+
+#ifndef GateHandle__H
+#define GateHandle__H
+
 // package facsanadu.gui.view.gate;
 
 //import facsanadu.gui.MainWindow;

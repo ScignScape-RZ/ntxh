@@ -1,3 +1,7 @@
+// // license___here
+
+#include "ProfileChannelWidget.h"
+
 
 ProfileChannelWidget::ProfileChannelWidget(MainWindow* mw)
   :  mw_(mw)

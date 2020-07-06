@@ -1,3 +1,9 @@
+
+// // license___here
+
+#include "AddMeasureDialog.h"
+
+
 // package facsanadu.gui;
 
 // package facsanadu.gui;

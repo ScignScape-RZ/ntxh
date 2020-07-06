@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef GateRendererRect__H
+#define GateRendererRect__H
+
+
 // package facsanadu.gui.view.gate;
 
 // // Renderer for rectangular gates

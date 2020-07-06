@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef EventSetViewTool__H
+#define EventSetViewTool__H
+
+
 // package facsanadu.gui.view.tool;
 
 //import facsanadu.gui.events.FacsanaduEvent;

@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewsMatrix__H
+#define ViewsMatrix__H
+
+
 // package facsanadu.gui.panes;
 
 // //

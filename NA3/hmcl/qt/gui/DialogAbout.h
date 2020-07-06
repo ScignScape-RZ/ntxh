@@ -1,3 +1,12 @@
+
+// // license___here_h
+
+
+#ifndef DialogAbout__H
+#define DialogAbout__H
+
+
+
 // package facsanadu.gui;
 
 

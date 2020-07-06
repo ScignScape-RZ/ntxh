@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef GateRendererPoly__H
+#define GateRendererPoly__H
+
+
 // package facsanadu.gui.view.gate;
 
 

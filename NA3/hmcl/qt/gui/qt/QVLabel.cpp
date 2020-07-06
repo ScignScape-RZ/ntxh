@@ -1,3 +1,9 @@
+
+// // license___here
+
+#include "QVLabel.h"
+
+
 // package facsanadu.gui.qt;
 
 QVLabel::QVLabel(QWidget* parent) // extends QWidget

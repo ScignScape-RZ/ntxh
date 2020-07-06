@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewSettings__H
+#define ViewSettings__H
+
+
 // package facsanadu.gui.view;
 
 // // Johan Henriksson

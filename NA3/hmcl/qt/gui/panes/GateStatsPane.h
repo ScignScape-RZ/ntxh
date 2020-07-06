@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef GateStatsPane__H
+#define GateStatsPane__H
+
+
 // package facsanadu.gui.panes;
 
 

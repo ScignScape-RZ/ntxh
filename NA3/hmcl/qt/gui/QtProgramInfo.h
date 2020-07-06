@@ -1,4 +1,12 @@
 
+// // license___here_h
+
+
+#ifndef QtProgramInfo__H
+#define QtProgramInfo__H
+
+
+
 #include <QString>
 
 struct QtProgramInfo

@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewToolDrawEllipse__H
+#define ViewToolDrawEllipse__H
+
+
 // package facsanadu.gui.view.tool;
 
 /**

@@ -1,3 +1,12 @@
+
+
+// // license___here_h
+
+
+#ifndef ViewRenderer__H
+#define ViewRenderer__H
+
+
 // package facsanadu.gui.view;
 
 

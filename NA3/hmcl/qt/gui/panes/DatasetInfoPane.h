@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef DatasetInfoPane__H
+#define DatasetInfoPane__H
+
+
 // package facsanadu.gui.panes;
 
 

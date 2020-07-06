@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef QVLabel__H
+#define QVLabel__H
+
+
 // package facsanadu.gui.qt;
 
 // // Vertical label

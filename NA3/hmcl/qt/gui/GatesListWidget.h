@@ -1,4 +1,11 @@
-package facsanadu.gui;
+
+
+// // license___here_h
+
+#ifndef GatesListWidget__H
+#define GatesListWidget__H
+
+//package facsanadu.gui;
 
 
 

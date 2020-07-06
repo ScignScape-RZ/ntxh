@@ -1,3 +1,12 @@
+
+// // license___here_h
+
+
+#ifndef ViewTransform__H
+#define ViewTransform__H
+
+
+
 // package facsanadu.gui.view;
 
 //import com.trolltech.qt.core.QPointF;

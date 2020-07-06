@@ -1,3 +1,10 @@
+
+// // license___here_h
+
+#ifndef FacsanaduProject__H
+#define FacsanaduProject__H
+
+
 //package facsanadu.gui;
 
 // //

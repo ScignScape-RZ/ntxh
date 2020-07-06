@@ -1,3 +1,7 @@
+// // license___here
+
+#include "GatesListWidget.h"
+
 
 GatesListWidget::GatesListWidget(MainWindow* mw) 
  : mw_(mw)

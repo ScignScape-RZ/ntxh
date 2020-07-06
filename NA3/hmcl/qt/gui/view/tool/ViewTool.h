@@ -1,4 +1,12 @@
 
+// // license___here_h
+
+
+#ifndef ViewTool__H
+#define ViewTool__H
+
+
+
 // package facsanadu.gui.view.tool;
 
 //import com.trolltech.qt.gui.QMouseEvent;

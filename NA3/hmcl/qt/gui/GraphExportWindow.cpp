@@ -1,4 +1,8 @@
 
+// // license___here
+
+#include "GraphExportWindow.h"
+
 
 GraphExportWindow::GraphExportWindow()
 {

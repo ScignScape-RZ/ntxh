@@ -1,4 +1,9 @@
 
+// // license___here_h
+
+#ifndef GraphExportWindow__H
+#define GraphExportWindow__H
+
 class GraphExportWindow : QDialog
 {
  QSpinBox* spWidth_; //= new QSpinBox();

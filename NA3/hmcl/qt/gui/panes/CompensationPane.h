@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef CompensationPane__H
+#define CompensationPane__H
+
+
 // package facsanadu.gui.panes;
 
 

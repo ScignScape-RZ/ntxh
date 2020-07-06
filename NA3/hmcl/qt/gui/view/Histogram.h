@@ -1,3 +1,12 @@
+
+// // license___here_h
+
+
+#ifndef Histogram__H
+#define Histogram__H
+
+
+
 // package facsanadu.gui.view;
 
 // //

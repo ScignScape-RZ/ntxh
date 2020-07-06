@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewToolChoice__H
+#define ViewToolChoice__H
+
+
 // package facsanadu.gui.view.tool;
 
 // import facsanadu.gui.view.ViewWidget;

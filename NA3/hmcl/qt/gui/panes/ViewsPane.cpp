@@ -1,3 +1,9 @@
+
+// // license___here
+
+#include "ViewsPane.h"
+
+
 // package facsanadu.gui.panes;
 
 

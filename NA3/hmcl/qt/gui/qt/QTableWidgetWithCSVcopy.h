@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef QTableWidgetWithCSVcopy__H
+#define QTableWidgetWithCSVcopy__H
+
+
 // package facsanadu.gui.qt;
 
 

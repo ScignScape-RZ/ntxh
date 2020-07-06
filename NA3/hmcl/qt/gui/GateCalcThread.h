@@ -1,3 +1,10 @@
+
+// // license___here_h
+
+#ifndef GateCalcThread__H
+#define GateCalcThread__H
+
+
 // package facsanadu.gui;
 
 

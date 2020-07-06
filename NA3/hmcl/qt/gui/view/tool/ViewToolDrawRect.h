@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ViewToolDrawRect__H
+#define ViewToolDrawRect__H
+
+
 // package facsanadu.gui.view.tool;
 
 /**

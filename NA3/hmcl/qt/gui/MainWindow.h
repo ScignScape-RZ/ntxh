@@ -1,4 +1,9 @@
 
+// // license___here_h
+
+#ifndef MainWindow__H
+#define MainWindow__H
+
 /**
  * 
  * The main window

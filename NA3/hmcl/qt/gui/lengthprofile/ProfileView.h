@@ -1,3 +1,11 @@
+
+// // license___here_h
+
+
+#ifndef ProfileView__H
+#define ProfileView__H
+
+
 // package facsanadu.gui.lengthprofile;
 
 

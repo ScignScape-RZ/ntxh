@@ -1,3 +1,9 @@
+
+// // license___here
+
+#include "QTableWidgetWithCSVcopy.h"
+
+
 // package facsanadu.gui.qt;
 
 

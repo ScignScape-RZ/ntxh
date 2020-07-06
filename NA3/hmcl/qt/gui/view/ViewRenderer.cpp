@@ -1,3 +1,9 @@
+
+// // license___here
+
+#include "ViewRenderer.h"
+
+
 // package facsanadu.gui.view;
 
 

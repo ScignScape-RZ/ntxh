@@ -1,3 +1,7 @@
+// // license___here
+
+#include "MainWidow.h"
+
 
 MainWindow::MainWindow()
 {

@@ -1,4 +1,8 @@
 
+// // license___here
+
+#include "ViewsListWidget.h"
+
 ViewsListWidget::ViewsListWidget(MainWindow* mw)
  :  mw_(mw)
 {
