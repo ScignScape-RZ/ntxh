@@ -7,7 +7,16 @@
 
 //package facsanadu.gui;
 
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QPushButton>
 
+class MainWindow;
+class CallbackColor;
+class Gate;
+class GateMeasure;
 
 /**
  * 
@@ -25,7 +34,7 @@ class GatesListWidget //?: public.QVBoxLayout
 
  QTreeWidget* treeGates_; //=new QTreeWidget();
  MainWindow* mw_; //
- LinkedList<CallbackColor> callbacks_; //=new LinkedList<GatesListWidget.CallbackColor>();
+ LinkedList<CallbackColor*> callbacks_; //=new LinkedList<GatesListWidget.CallbackColor>();
 
  void updateGatesListRecursive(QTreeWidgetItem parentItem, final Gate g, LinkedList<Gate> selgates, LinkedList<GateMeasure> selcalc);
 
@@ -71,7 +80,7 @@ public:
  void actionRemoveGates();
  
  // // Add a new gate
- void addGate(Gate suggestParent, Gate g);
+ void addGate(Gate* suggestParent, Gate* g);
 };
 
 #endif // __H

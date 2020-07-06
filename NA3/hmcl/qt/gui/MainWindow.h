@@ -4,6 +4,18 @@
 #ifndef MainWindow__H
 #define MainWindow__H
 
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QPushButton>
+
+#include <QMainWindow>
+#include <QResizeEvent>
+#include <QDropEvent>
+//#include <QCheckBox>
+//#include <QPushButton>
+
 /**
  * 
  * The main window

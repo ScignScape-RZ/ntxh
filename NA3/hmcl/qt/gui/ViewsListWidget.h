@@ -5,6 +5,13 @@
 #define ViewsListWidget__H
 
 
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QPushButton>
+
+
 class ViewsListWidget //: QVBoxLayout
 {
  QVBoxLayout* main_layout_;
@@ -24,7 +31,7 @@ public:
  void actionSelectAllViews();
 
  // // Get selected views
- LinkedList<ViewSettings> getSelectedViews(); 
+ LinkedList<ViewSettings*> getSelectedViews(); 
  
  // // Update list with views
  void updateViewsList();

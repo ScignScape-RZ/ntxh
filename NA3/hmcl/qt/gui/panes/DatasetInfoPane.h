@@ -5,6 +5,9 @@
 #ifndef DatasetInfoPane__H
 #define DatasetInfoPane__H
 
+#include <QWidget>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 // package facsanadu.gui.panes;
 

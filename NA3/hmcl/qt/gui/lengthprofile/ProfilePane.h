@@ -5,6 +5,11 @@
 #ifndef ProfilePane__H
 #define ProfilePane__H
 
+#include <QLineEdit>
+#include <QGridLayout>
+#include <QSlider>
+#include <QCheckBox>
+#include <QPushButton>
 
 // package facsanadu.gui.lengthprofile;
 

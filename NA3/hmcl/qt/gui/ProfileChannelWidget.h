@@ -4,6 +4,11 @@
 #ifndef ProfileChannelWidget__H
 #define ProfileChannelWidget__H
 
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QPushButton>
 
 class ProfileChannelWidget extends QVBoxLayout
 {

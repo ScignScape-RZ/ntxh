@@ -5,6 +5,8 @@
 #ifndef GateStatsPane__H
 #define GateStatsPane__H
 
+#include <QCheckBox>
+#include <QPushButton>
 
 // package facsanadu.gui.panes;
 

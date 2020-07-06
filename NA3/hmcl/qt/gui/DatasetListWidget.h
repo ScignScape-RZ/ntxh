@@ -10,6 +10,13 @@
 
 // package facsanadu.gui;
 
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QCheckBox>
+#include <QPushButton>
+
+class MainWindow;
+class Dataset;
 
 // // List of all datasets
 
@@ -46,7 +53,7 @@ public:
  void actionMoveDown();
 
  // // Get selected datasets
- LinkedList<Dataset> getSelectedDatasets();
+ LinkedList<Dataset*> getSelectedDatasets();
 
 };
 

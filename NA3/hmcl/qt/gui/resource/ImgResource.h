@@ -4,7 +4,8 @@
 #ifndef ImgResource__H
 #define ImgResource__H
 
-
+#include <QLabel>
+#include <QPixMap>
 
 // package facsanadu.gui.resource;
 

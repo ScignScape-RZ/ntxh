@@ -5,6 +5,11 @@
 #ifndef ViewsPane__H
 #define ViewsPane__H
 
+#include <QWidget>
+#include <QCheckBox>
+#include <QSpinBox>
+#include <QPushButton>
+#include <QButtonGroup>
 
 // package facsanadu.gui.panes;
 
