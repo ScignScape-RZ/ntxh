@@ -93,13 +93,13 @@ class MainWindow : public QMainWindow
 protected:
  
  // // Event: Widget resized
- void resizeEvent(QResizeEvent e);
+ void resizeEvent(QResizeEvent* e);
  
  // // Event: User drags something onto widget
- void dragEnterEvent(QDragEnterEvent event);
+ void dragEnterEvent(QDragEnterEvent* event);
 
  // // Event: User drops MIME onto widget
- void dropEvent(QDropEvent event);
+ void dropEvent(QDropEvent* event);
 
 // FacsanaduProject* project_;
 

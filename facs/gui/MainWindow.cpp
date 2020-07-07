@@ -18,6 +18,7 @@
 
 
 #include <QMenu>
+#include <QMimeData>
 
 //#ifdef HIDE
 
@@ -133,7 +134,6 @@ MainWindow::MainWindow()
  show();
 }
 
-#ifdef HIDE
  
 void MainWindow::updateall()
 {
@@ -142,27 +142,28 @@ void MainWindow::updateall()
  viewsw_->updateViewsList();
  gatesw_->updateGatesList();
  datasetsw_->updateDatasetList();
- pc->updateChannelList();
- paneCompensation.updateForm();
+ pc_->updateChannelList();
+ paneCompensation_->updateForm();
  dogating();
- isUpdating=wasUpdating;
+ isUpdating_ = wasUpdating;
  dothelayout();
 }
- 
 
-void MainWindow::resizeEvent(QResizeEvent e)
+void MainWindow::resizeEvent(QResizeEvent* e)
 {
- super.resizeEvent(e);
+ QMainWindow::resizeEvent(e);
  dothelayout();
 }
- 
- 
+  
  // // Event: User drags something onto widget
-void MainWindow::dragEnterEvent(com.trolltech.qt.gui.QDragEnterEvent event) 
+void MainWindow::dragEnterEvent(QDragEnterEvent* event) 
 {
- if(event.mimeData().hasFormat("text/uri-list"))
-   event.acceptProposedAction();
+ if(event->mimeData()->hasFormat("text/uri-list"))
+   event->acceptProposedAction();
 }
+
+#ifdef HIDE
+
 
  // // Event: User drops MIME onto widget
 void MainWindow::dropEvent(QDropEvent event)
