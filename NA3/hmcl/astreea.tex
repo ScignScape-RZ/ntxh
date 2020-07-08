@@ -112,7 +112,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.83in,top=.4in,right=.81in,bottom=1.1in} %margins
+\geometry{left=1in,top=.8in,right=1in,bottom=1.4in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -306,6 +306,9 @@
 
 \newcommand{\LAF}{\resizebox{!}{7pt}{\AcronymText{LAF}}}
 
+\newcommand{\GIMP}{\resizebox{!}{7pt}{\AcronymText{GIMP}}}
+
+
 \newcommand{\UDpipe}{\resizebox{!}{7pt}{\AcronymText{UDpipe}}}
 
 \newcommand{\C}{\resizebox{!}{7pt}{\AcronymText{C}}}
@@ -334,6 +337,11 @@
 
 \newcommand{\lGTagML}{\resizebox{!}{7.5pt}{\AcronymText{GTagML}}}
 
+\newcommand{\STL}{\resizebox{!}{7pt}{\AcronymText{STL}}}
+\newcommand{\OBJ}{\resizebox{!}{7pt}{\AcronymText{OBJ}}}
+
+\newcommand{\PLY}{\resizebox{!}{7pt}{\AcronymText{PLY}}}
+\newcommand{\XThreeS}{\resizebox{!}{7pt}{\AcronymText{X3S}}}
 
 
 
@@ -1189,9 +1197,136 @@ empty dispensers; which customers are refilling with
 Astreea's own sanitizer or with some other product; 
 and so forth.}
 
-\p{}
+\p{Assuming Astreea were to use E-Cube sensors or some similar 
+product, then, LTS could supply the third-party software which  
+Astreea would need to access the E-Cube data via custom desktop 
+applications.  This would involve, first, constructing a 
+\q{data profile} based on the distinct \CCN{} \API{} requests, 
+which are grouped into 16 separate categories 
+(the ClearCityNetworks \API{} documentation is 
+at \bhref{https://doc.cleancitynetworks.com/partner-api-doc/}).  LTS would 
+then implement all the logic for obtaining data from the \CCN{} \API{}, 
+translating \CCN{}'s \JSON{} results into runtime objects 
+instantiating data types defined in accordance with the 
+\CCN{} data profile.  Next, LTS would translate these data types 
+into \GUI{} components designed and specified by Astreea --- 
+tables, charts, network diagrams, scatter plots, or any 
+other textual or graphical designs which Astreea chooses 
+in order to render sensor data in a useful manner, considering 
+how Astreea seeks to use this data.  Finally, LTS would 
+implement a database engine to store all sensor data for 
+long-term tracking and analysis.  We would recommend for 
+this engine a customized version of our own database 
+technology, \ConceptsDB{}, which is a hypergraph 
+database specifically designed for custom desktop applications.  
+In this context, the principal distinguishing feature 
+of \ConceptsDB{} is that all \GUI{} information is stored 
+directly in the database --- that is, all information 
+related to \GUI{} design, layout, user actions, user personalization, 
+and so forth --- which makes it easy to integrate 
+\GUI{} front ends with database back ends.}
 
+\p{LTS could implement the software as described above in 
+stages, giving Astreea an opportunity to review and 
+fine-tune each stage before committing to further 
+development.  The distinct stages might be 
+organized as follows: (1) \API{} access; (2) \GUI{} 
+components; (3) database persistence; (4) 
+long-term tracking and market analytics based on 
+database records.}
 
+\section{3D Graphics}
+
+\p{The use of \ThreeD{} graphics could be a complement 
+to the above software in that each dispenser model 
+supplying data to the sensor network would have a 
+\ThreeD{} model that could be viewed as part of 
+the sensor data management application.  In addition, 
+these \ThreeD{} models could be used to enhance 
+the brochures and presentations available for potential 
+customers.}
+
+\p{An interactive Astreea brochure could be developed in one of two ways,
+depending on whether potential customers want to download additional
+software.  The most sophisticated option is to offer a customized PDF
+viewer, which customers could use to browse the current brochure as
+well as specialized, interactive brochures which Astreea might
+consider developing in the future.  These brochures would be
+specifically designed to help customers design special versions of the
+Astreea products by decorating them with their logos and designs, or
+customizing the products' shapes and dimensions.}
+
+\p{We can also assume that \ThreeD{} models of the Astreea products exist or
+could be developed, because data on design customization has to be
+transmitted to the factory where nonstandard versions of the products
+are manufactured.  We assume, then, that \ThreeD{} models of the Astreea
+product line can be deployed in formats like \STL{}, \OBJ{}, \PLY{}, or \XThreeS{},
+and that \ThreeD{} modeling is used in the Astreea offices to create
+representations of non-standard versions of Astreea offerings.
+Presumably the graphics files would be similar to those visible here:
+\bhref{https://www.turbosquid.com/3d-models/sanitizer-aibolit-2000-model-1561963}
+--- to give an example of a floor-standing dispensers roughly similar
+to Astreea's (notice particularly the fifth image on the scroll, which
+does a good job of showing the mesh geometry).  For sake of
+discussion, assume that Astreea salespeople can use a version of
+MeshLab (an open-source \ThreeD{} graphics engine) to design custom versions
+of the products.  Assume, moreover, that some customers use a special
+\PDF{} viewer that we can provide which includes the ability to view \ThreeD{}
+graphics in a separate window -- whereas the \q{static} brochure just
+shows photos of sanitizer dispensers, say, an interactive version
+could let potential customers visualize the products in \ThreeD{}.}
+
+\p{The next step, then, is to hook up the customer's \PDF{} viewer with the
+salespersons' MeshLab application.  Then, if the salesperson is on the
+phone with a customer describing desired customizations, the
+salesperson could modify the \ThreeD{} graphics accordingly -- for instance,
+they could apply the customer's logo onto the dispenser surface as a
+texture.  The two applications could be extended with plugins so that
+the salesperson's modifications would be automatically downloaded to
+the customer's brochure, so that the customer could preview the
+appearance of the non-standard product right after the salesperson
+makes the changes, effectively in real time.  The steps involved in
+applying images to a MeshLab model are described in tutorials such as:
+\bhref{https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab}.
+We could implement a plugin to automate some of these steps so that a
+salesperson could quickly construct a personalized graphic to show a
+potential customer.}
+
+\p{A variation on this arrangement is to allow the customer to obtain a
+version of \MeshLab{} with the same plugin as the salesperson uses.  This
+would be more complex from the customer's point of view because
+\MeshLab{} is a more complex program than a \PDF{} viewer, but some
+customers might enjoy using these sophisticated tools to design a
+personalized product.  The \PDF{} viewer could then be embedded as a
+component within \MeshLab{}.  This could be an appropriate solution when
+interfacing with a large company with a professional graphic-design
+team, who would be confortable with the concepts and
+software usage associated with \ThreeD{} artistry.  We could also discuss
+developing plugins for dedicated graphics design software, such as
+\GIMP{} or Inkscape.}
+
+\p{On the other hand, some customers might not want to download any
+software at all.  In this case the salesperson could still use the
+\MeshLab{} plugin on their side, providing customers with a web page
+where their private version of the Astreea graphics -- with
+customer-specific/personalized designs -- could be viewed through an
+ordinary web browser (via \WebGL{}).  The only real difference in this
+case is that the \ThreeD{} graphics would reside on a web page wholly
+separated from the \PDF{} brochure, whereas in the interactive-\PDF{} case,
+with a special \PDF{} viewer, the \ThreeD{} graphics would be visible through a
+window integrated into the \PDF{} application.}
+
+\p{Some conventional \PDF{} viewers, it should be added, e.g. some Acrobat
+versions, *do* support \ThreeD{} graphics to a limited extent.  These require
+a special kind of \ThreeD{} file which can be derived from \MeshLab{} via
+extension code that we could provide.  The \ThreeD{} graphics in this case
+are inline with the \PDF{} text, not in a separate window, so they're
+less user-friendly.  Also customers would still need to use a
+dedicated web page to view real-time changes while they're designing
+personalized dispencers with a salesperson.  But as an initial
+interactive brochure, Astreea could offer a \PDF{} with interactive \ThreeD{}
+graphics for those users who already have these kinds of \PDF{} viewers
+and are comfortable with them.}
 
 \end{document}
 
