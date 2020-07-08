@@ -858,6 +858,66 @@
 \newcommand{\lMosaic}{\lMOSAIC}
 \newcommand{\lfMosaic}{\lfMOSAIC}
 
+\usepackage{marginnote}
+
+\newcommand{\mnote}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{1em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnotel}[1]{%
+\vspace*{-2em}
+\reversemarginpar
+\raisebox{-4em}{\marginnote{\parbox{4em}{%
+\begin{mdframed}[innerleftmargin=4pt,
+	innerrightmargin=1pt,innertopmargin=1pt,
+	linecolor=red!20!cyan,userdefinedwidth=4em,
+	topline=false,
+	rightline=false]
+{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+		\textit{#1}}}
+\end{mdframed}}
+	}[3em]}}
+
+\newcommand{\mnoteh}[3]{%
+	\vspace*{#1}
+	\reversemarginpar
+	\raisebox{#2}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#3}}}
+				\end{mdframed}}
+			}[3em]}}
+
+
+\newcommand{\mnoteb}[1]{%
+	\vspace*{1em}
+	\reversemarginpar
+	\raisebox{1em}{\marginnote{\parbox{4em}{%
+				\begin{mdframed}[innerleftmargin=4pt,
+					innerrightmargin=1pt,innertopmargin=1pt,
+					linecolor=red!20!cyan,userdefinedwidth=4em,
+					topline=false,
+					rightline=false]
+					{{\fontfamily{ppl}\fontsize{12}{0}\selectfont
+							\textit{#1}}}
+				\end{mdframed}}
+			}[3em]}}
+
+
 %\newcommand{\dsC}{}
 
 \newcommand{\textds}[1]{{\fontfamily{lmdh}\selectfont{%
@@ -1120,14 +1180,15 @@ drop shadow=logoPurple!50!darkRed,
 \vspace{-3pt}
 %\textcolor{darkRed}{\hrule}
 
+\mnote{Intro- duction}
 \p{This document assumes that Astreea will develop and market 
-a line of dispenser products in which are embedded sensors which 
+a line of dispenser products in which are embedded sensors that 
 measure the level of soap/sanitizer in each dispenser, so 
 as to track usage and flag when the device should to be refilled. 
 The specific technology LTS would implement depends on the 
 supplier of the sensors used, but we can describe a typical 
 setup based on industry standards.  E-Cube labs, for instance, 
-deploy fill-level monitors (for both solids and liquids) as part 
+deploys fill-level monitors (for both solids and liquids) as part 
 of their \q{CleanCityNetwork} (\CCN{}).  A German organization, 
 the Fraunhofer Institute for Integated Circuits, has similarly 
 deployed its so-called \q{s-net} wireless sensor network in 
@@ -1136,12 +1197,13 @@ sensors, tracks soap fill levels and also each occasion when
 a soap dispenser's \q{pump} is activated.  The sensor data is 
 packaged via s-net and transmitted from each building using this 
 system to servers hosted by a company called CWS-Boco.  In 
-general, the sensor providers also maintain a central 
+general, different sensor providers also maintain a central 
 web service, such as \CCN{}, which integrates data from all 
 buildings/locations into one data access point.  The software 
-stack directly managed by Astreea, then, would need to interface 
+stack directly managed by Astreea, accordingly, would need to interface 
 with this central data source.}
 
+\mnote{Sensor Network APIs}
 \p{E-Cube's sensor network is a good example of a typical 
 \IoT{} data stack.  All sensor data is aggregated onto 
 E-Cube's \CCN{} servers, which maintain web and mobile 
@@ -1158,6 +1220,7 @@ is that companies can benefit from a self-contained
 application exclusively focused on managing sensor data, 
 which can be fully customized for the company's needs.} 
 
+\mnote{Custom Desktop Applications for\hspace*{2pt}API Access}
 \p{It is quite common for \IoT{} manufacturers to make 
 sensor data available to customers only via web sites and 
 mobile apps, both of which offer limited functionality.  
@@ -1166,16 +1229,18 @@ in machine-readable form via \API{}s or some other
 low-level mechanism, so that companies can design their 
 own \IoT{} applications.  This can be a worthwhile investment 
 first because of convenience: the software for managing 
-sensor data can be installed directly on computers in 
+sensor data may be installed directly on computers in 
 the company's offices (or employees' homes), instead of 
 residing solely on employee's personal devices (in contrast 
 to smart-phone access modes).  Likewise, the custom applications 
 can be entirely organized around the tasks having to be 
 performed with respect to sensor data: there is no 
 need for employees to browse to a specific website to 
-obtain data, nor could then browse the web in general 
-while using the custom application.  In addition to 
-this basic convenience, customized desktop applications 
+obtain data, nor could they browse the web in general 
+while using the custom application.}
+
+\mnote{Superior User Experience}
+\p{In addition to this basic convenience, customized desktop applications 
 also offer superior User Experience: they are not constrained 
 by small screen size and limited touch-screen interactions 
 as with mobile apps, nor are they constrained 
@@ -1186,10 +1251,14 @@ applications, by contrast, can employ the full range of
 \GUI{} features associated with native software, such 
 as context menus, dialog boxes, multi-window displays, 
 and dedicated windows for \TwoD{} and \ThreeD{} 
-data visualization.  Moreover, by acquiring raw 
-sensor data, companies can perform their own market 
-analytics customer metrics, rather than relying exclusively 
-on the analytic information shared by sensor manufacturers.  
+data visualization.}
+
+%\vspace{1em}
+\mnote{Market Analytics}
+\p{Moreover, by acquiring raw 
+sensor data, companies are able to perform their own market 
+analytics and track customer metrics directly, rather than relying 
+exclusively on the analytic information shared by sensor manufacturers.  
 In the context of sanitizer dispensers, Astreea could 
 track data to indicate which dispensers are being used 
 the most/least; which customers are delayed in refilling 
@@ -1197,6 +1266,7 @@ empty dispensers; which customers are refilling with
 Astreea's own sanitizer or with some other product; 
 and so forth.}
 
+\mnote{LTS Software}
 \p{Assuming Astreea were to use E-Cube sensors or some similar 
 product, then, LTS could supply the third-party software which  
 Astreea would need to access the E-Cube data via custom desktop 
@@ -1226,6 +1296,7 @@ related to \GUI{} design, layout, user actions, user personalization,
 and so forth --- which makes it easy to integrate 
 \GUI{} front ends with database back ends.}
 
+\mnote{Devel- opment Phases}
 \p{LTS could implement the software as described above in 
 stages, giving Astreea an opportunity to review and 
 fine-tune each stage before committing to further 
@@ -1246,9 +1317,10 @@ these \ThreeD{} models could be used to enhance
 the brochures and presentations available for potential 
 customers.}
 
+\mnote{Inter- active Bro- chures}
 \p{An interactive Astreea brochure could be developed in one of two ways,
 depending on whether potential customers want to download additional
-software.  The most sophisticated option is to offer a customized PDF
+software.  The most sophisticated option is to offer a customized \PDF{} 
 viewer, which customers could use to browse the current brochure as
 well as specialized, interactive brochures which Astreea might
 consider developing in the future.  These brochures would be
@@ -1256,6 +1328,7 @@ specifically designed to help customers design special versions of the
 Astreea products by decorating them with their logos and designs, or
 customizing the products' shapes and dimensions.}
 
+\mnote{3D Dispenser Models}
 \p{We can also assume that \ThreeD{} models of the Astreea products exist or
 could be developed, because data on design customization has to be
 transmitted to the factory where nonstandard versions of the products
@@ -1276,8 +1349,9 @@ graphics in a separate window -- whereas the \q{static} brochure just
 shows photos of sanitizer dispensers, say, an interactive version
 could let potential customers visualize the products in \ThreeD{}.}
 
+\mnote{Real-Time Visualization}
 \p{The next step, then, is to hook up the customer's \PDF{} viewer with the
-salespersons' MeshLab application.  Then, if the salesperson is on the
+salespersons' \MeshLab{} application.  Then, if the salesperson is on the
 phone with a customer describing desired customizations, the
 salesperson could modify the \ThreeD{} graphics accordingly -- for instance,
 they could apply the customer's logo onto the dispenser surface as a
@@ -1292,6 +1366,7 @@ We could implement a plugin to automate some of these steps so that a
 salesperson could quickly construct a personalized graphic to show a
 potential customer.}
 
+\mnote{3D Application Plugins}
 \p{A variation on this arrangement is to allow the customer to obtain a
 version of \MeshLab{} with the same plugin as the salesperson uses.  This
 would be more complex from the customer's point of view because
@@ -1305,6 +1380,7 @@ software usage associated with \ThreeD{} artistry.  We could also discuss
 developing plugins for dedicated graphics design software, such as
 \GIMP{} or Inkscape.}
 
+\mnote{Other Ideas}
 \p{On the other hand, some customers might not want to download any
 software at all.  In this case the salesperson could still use the
 \MeshLab{} plugin on their side, providing customers with a web page
@@ -1317,7 +1393,7 @@ with a special \PDF{} viewer, the \ThreeD{} graphics would be visible through a
 window integrated into the \PDF{} application.}
 
 \p{Some conventional \PDF{} viewers, it should be added, e.g. some Acrobat
-versions, *do* support \ThreeD{} graphics to a limited extent.  These require
+versions, \textit{do} support \ThreeD{} graphics to a limited extent.  These require
 a special kind of \ThreeD{} file which can be derived from \MeshLab{} via
 extension code that we could provide.  The \ThreeD{} graphics in this case
 are inline with the \PDF{} text, not in a separate window, so they're
