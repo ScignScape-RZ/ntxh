@@ -135,7 +135,7 @@ public:
  void actionExportCSV();
  
  // // Load one file
- void loadFile(QFile path); // throws IOException;
+ void loadFile(QFile& path); // throws IOException;
 
  // // Get selected views
  LinkedList<ViewSettings*> getSelectedViews();

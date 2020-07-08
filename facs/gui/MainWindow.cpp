@@ -19,8 +19,12 @@
 
 #include <QMenu>
 #include <QMimeData>
+#include <QFile>
 
 //#ifdef HIDE
+
+struct FACS_IOException {};
+
 
 MainWindow::MainWindow()
 {
@@ -162,26 +166,28 @@ void MainWindow::dragEnterEvent(QDragEnterEvent* event)
    event->acceptProposedAction();
 }
 
-#ifdef HIDE
-
 
  // // Event: User drops MIME onto widget
-void MainWindow::dropEvent(QDropEvent event)
+void MainWindow::dropEvent(QDropEvent* event)
 {
  try
  {
-  for(QUrl url : event.mimeData().urls())
+  for(QUrl url : event->mimeData()->urls())
   {
-   File* f = new File(url.path());
-   lastDirectory = f.getParentFile();
-   loadFile(f);
+   QFile qf(url.toLocalFile()); //  * f = new File(url.path());
+   QFileInfo qfi(qf);
+   lastDirectory_ = qfi.absoluteDir();
+   loadFile(qf);
   }
  }
- catch (IOException e)
+ catch (FACS_IOException e)
  {
-  e.printStackTrace();
+  // TO DO ...
+  // e->printStackTrace();
  }
 }
+
+#ifdef HIDE_THREAD
 
 GateCalcThread MainWindow::calcthread=new GateCalcThread()
 {
@@ -210,7 +216,10 @@ GateCalcThread MainWindow::calcthread=new GateCalcThread()
  }
 };
 
+#endif // def HIDE_THREAD
  
+#ifdef HIDE
+
 // // Action: New project
 void MainWindow::actionNewProject()
 {
@@ -391,7 +400,7 @@ void MainWindow::actionExportCSV()
 }
  
 // // Load one file
-void MainWindow::loadFile(File path) throws IOException
+void MainWindow::loadFile(File path) // throws IOException
 {
  project.addDataset(path);
  handleEvent(new EventDatasetsChanged());
