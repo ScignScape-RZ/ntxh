@@ -13,7 +13,7 @@
 #include <QRadioButton>
 
 
-class GraphExportWindow : QDialog
+class GraphExportWindow : public QDialog
 {
  QSpinBox* spWidth_; //= new QSpinBox();
  QSpinBox* spHeight_; //= new QSpinBox();
@@ -25,15 +25,17 @@ class GraphExportWindow : QDialog
  QRadioButton* bByDataset_; // =new QRadioButton(tr("Split by dataset"));
  QRadioButton* bByView_; // =new QRadioButton(tr("Split by view"));
  QRadioButton* bAllSeparate_; // =new QRadioButton(tr("All graphs individually"));
+ 
+ bool wasOk_;
 
 public:
 
- bool wasOk_; // =false;
+ bool wasOk() { return wasOk_; } // =false;
 
  GraphExportWindow();
  
  bool splitByDataset();
- boolean splitByView();
+ bool splitByView();
  int getWidth();
  int getHeight();
  void actionOK();

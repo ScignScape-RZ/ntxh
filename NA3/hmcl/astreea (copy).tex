@@ -41,7 +41,7 @@
 
 \ifnum\value{page}>1{
 \AtTextUpperLeft{
-\makebox[19.5cm][r]{
+\makebox[20.5cm][r]{
 \raisebox{-1.95cm}{%
 {\transparent{0.3}{\includegraphics[width=0.29\textwidth]{e-logo.png}}	}} } }
 }\fi
@@ -112,7 +112,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=1.1in,top=1.3in,right=.9in,bottom=1.8in} %margins
+\geometry{left=1.1in,top=.8in,right=.9in,bottom=1.4in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -380,9 +380,6 @@
 \newcommand{\CER}{\resizebox{!}{7pt}{\AcronymText{CER}}}
 \newcommand{\PACS}{\resizebox{!}{7pt}{\AcronymText{PACS}}}
 
-\newcommand{\ADA}{\resizebox{!}{7pt}{\AcronymText{ADA}}}
-
-
 \newcommand{\DCMTK}{\resizebox{!}{7pt}{\AcronymText{DCMTK}}}
 \newcommand{\lsDCMTK}{\resizebox{!}{9pt}{\AcronymText{DCMTK}}}
 
@@ -552,8 +549,7 @@
 \newcommand{\llMOSAIC}{%
 \resizebox{!}{8.5pt}{\ATexttclr{MOSAIC}}}
 
-\newcommand{\ConceptsDB}{\resizebox{!}{8pt}{\ATexttclr{Concepts}}%
-\resizebox{!}{7pt}{\ATexttclr{DB}}}
+\newcommand{\ConceptsDB}{\resizebox{!}{7pt}{\ATexttclr{ConceptsDB}}}
 
 
 \newcommand{\XML}{\resizebox{!}{7pt}{\AcronymText{XML}}}
@@ -845,7 +841,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{1.25em}#1}
+\vspace{.75em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -1136,7 +1132,7 @@
 	
 {\linespread{1.25}\selectfont
 
-\vspace*{-1em}
+\vspace*{2.5em}
 
 \begin{center}
 %{\relscale{1.2}{\fontfamily{qcr}\fontseries{b}\selectfont 
@@ -1175,25 +1171,21 @@ drop shadow=logoPurple!50!darkRed,
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
 {Offering a Software Framework for Monitoring Device Data 
-and Branding with 3D Product Models in 
-the Interactive Brochures}
+and Branding with 3D Product Models}
 }}}
 \end{center}
 \end{minipage}
 \end{tcolorbox}
 \end{center}
 
-\vspace{10pt}
+\vspace{13pt}
 %\textcolor{darkRed}{\hrule}
 
-%\mnote{Intro- duction}
-
-\section{Monitoring Device Data}
-\mnote{Fill-level Sensors}
-\p{LTS can offer a software package allowing Astreea to develop and market 
-a line of dispenser products in which there are embedded sensors that 
+\mnote{Intro- duction}
+\p{This document assumes that Astreea will develop and market 
+a line of dispenser products in which are embedded sensors that 
 measure the level of soap/sanitizer in each dispenser, so 
-as to track usage and flag when the device should be refilled. 
+as to track usage and flag when the device should to be refilled. 
 The specific technology LTS would implement depends on the 
 supplier of the sensors used, but we can describe a typical 
 setup based on industry standards.  E-Cube labs, for instance, 
@@ -1202,10 +1194,10 @@ of their \q{CleanCityNetwork} (\CCN{}).  A German organization,
 the Fraunhofer Institute for Integated Circuits, has similarly 
 deployed its so-called \q{s-net} wireless sensor network in 
 a \q{washroom information service} which, among other fixture 
-sensors, tracks soap-fill levels and notates each time when 
+sensors, tracks soap fill levels and also each occasion when 
 a soap dispenser's \q{pump} is activated.  Such sensor data is 
-packaged via s-net and transmitted from each building (that uses this 
-sensor system) to servers hosted by a company called CWS-Boco.  In 
+packaged via s-net and transmitted from each building using this 
+system to servers hosted by a company called CWS-Boco.  In 
 general, different sensor providers also maintain a central 
 web service, such as \CCN{}, which integrates data from all 
 buildings/locations into one data access point.  The software 
@@ -1220,95 +1212,86 @@ applications allowing E-Cube customers to visualize
 data for each sensor on the network.  E-Cube also 
 provides an \API{} allowing customers to obtain raw data, 
 rather than relying exclusively on E-Cube's own software.  
-Employing the \API{} affords companies greater flexibility, because 
+Using the \API{} affords companies greater flexibility, because 
 they can use the raw data however they see fit, but it 
 requires companies to implement their own software.  
-One advantage of utilizing LTS's custom-built software 
-(which uniquely employs native desktop design features), 
-rather than the generic web service provided by \IoT{} providers, 
-is that Astreea can benefit from a self-contained 
+One benefit of using custom-built software, rather than 
+the generic web service provided by \IoT{} providers, 
+is that companies can benefit from a self-contained 
 application exclusively focused on managing sensor data, 
-which can be fully customized for its needs.} 
+which can be fully customized for the company's needs.} 
 
 \mnote{Custom Desktop Applications for\hspace*{2pt}API Access}
-\p{LTS's native-focused design is 
-unique because \IoT{} manufacturers generally make 
+\p{It is quite common for \IoT{} manufacturers to make 
 sensor data available to customers only via web sites and 
 mobile apps, both of which offer limited functionality.  
-%Because of these limitations, some companies using 
-%embedded sensors in their products 
-%choose to design their own \IoT{} applications.  
-%This is possible   
-%because sensor data is 
-%often made available in machine-readable form via \API{}s.  
-Such custom software, which is native-focused, can be a worthwhile investment 
-because of convenience: (1) the applications for managing 
-sensor data may be installed directly on the 
-company's computers; and (2) the custom 
-applications can be organized entirely around the tasks having to be 
-performed with respect to sensor data --- 
-so that there is no need for employees 
-to have to browse to a specific website 
-to obtain data, or to \q{browse} the web at all.}
+It is usually possible, however, to access the data 
+in machine-readable form via \API{}s or some other 
+low-level mechanism, so that companies can design their 
+own \IoT{} applications.  This can be a worthwhile investment 
+first because of convenience: the software for managing 
+sensor data may be installed directly on computers in 
+the company's offices (or employees' homes), instead of 
+residing solely on employee's personal devices (in contrast 
+to smart-phone access modes).  Likewise, the custom applications 
+can be entirely organized around the tasks having to be 
+performed with respect to sensor data: there is no 
+need for employees to browse to a specific website to 
+obtain data, nor could they browse the web in general 
+while using the custom application.}
 
-\vspace{4em}
 \mnote{Superior User Experience}
-\p{Customized desktop applications, 
-in addition to offering these basic conveniences cited above,  
+\p{In addition to this basic convenience, customized desktop applications 
 also offer superior User Experience: they are not constrained 
 by small screen size and limited touch-screen interactions 
 as with mobile apps, nor are they constrained 
 by the limited screen layouts and interaction modes 
 of web sites (where most user actions need to be 
-implemented by clicking hyperlinks).  As a 
-result, customized desktop applications can employ the full range 
-of \GUI{} features associated with native software, such 
+implemented by clicking hyperlinks).  Customized desktop 
+applications, by contrast, can employ the full range of 
+\GUI{} features associated with native software, such 
 as context menus, dialog boxes, multi-window displays, 
 and dedicated windows for \TwoD{} and \ThreeD{} 
 data visualization.}
 
 %\vspace{1em}
 \mnote{Market Analytics}
-\p{One of the benefits of LTS's custom 
-software is that, by acquiring raw 
-sensor data, companies such as Astreea 
-would be able to perform their own market 
-analytics and track customer metrics directly, rather than rely 
+\p{Moreover, by acquiring raw 
+sensor data, companies are able to perform their own market 
+analytics and track customer metrics directly, rather than relying 
 exclusively on the analytic information shared by sensor manufacturers.  
 In the context of sanitizer dispensers, Astreea could 
 track data to indicate which dispensers are being used 
 the most/least; which customers are delayed in refilling 
 empty dispensers; which customers are refilling with 
-Astreea's own sanitizer versus a competitor's product; 
+Astreea's own sanitizer or with some other product; 
 and so forth.}
 
-\mnote{Archi-{}tecting LTS Software for Astreea}
-\p{LTS could supply the third-party software which  
-Astreea would need to access the E-Cube data 
-(or some similar product) via custom desktop 
+\mnote{LTS Software}
+\p{Assuming Astreea were to use E-Cube sensors or some similar 
+product, then, LTS could supply the third-party software which  
+Astreea would need to access the E-Cube data via custom desktop 
 applications.  This would involve, first, constructing a 
 \q{data profile} based on the distinct \CCN{} \API{} requests, 
 which are grouped into 16 separate categories 
 (the ClearCityNetworks \API{} documentation is 
-at \bhref{https://doc.cleancitynetworks.com/partner-api-doc/}).  
-LTS would then implement all the logic for 
-obtaining data from the \CCN{} \API{}, 
+at \bhref{https://doc.cleancitynetworks.com/partner-api-doc/}).  LTS would 
+then implement all the logic for obtaining data from the \CCN{} \API{}, 
 translating \CCN{}'s \JSON{} results into runtime objects 
 instantiating data types defined in accordance with the 
 \CCN{} data profile.  Next, LTS would translate these data types 
 into \GUI{} components designed and specified by Astreea --- 
 tables, charts, network diagrams, scatter plots, or any 
-other textual or graphical elements which Astreea may choose 
-in order to render sensor data in a useful 
-manner.  Finally, LTS would 
+other textual or graphical designs which Astreea chooses 
+in order to render sensor data in a useful manner, considering 
+how Astreea seeks to use this data.  Finally, LTS would 
 implement a database engine to store all sensor data for 
 long-term tracking and analysis.  We would recommend for 
-this engine a customized version of the LTS database 
-technology, \q{\ConceptsDB{},} which is a hypergraph 
+this engine a customized version of our own database 
+technology, \ConceptsDB{}, which is a hypergraph 
 database specifically designed for custom desktop applications.  
-The principal distinguishing feature 
-of \ConceptsDB{} (which makes it unique among 
-database engines) is that all \GUI{} information is stored 
+In this context, the principal distinguishing feature 
+of \ConceptsDB{} is that all \GUI{} information is stored 
 directly in the database --- that is, all information 
 related to \GUI{} design, layout, user actions, user personalization, 
 and so forth --- which makes it easy to integrate 
@@ -1324,73 +1307,68 @@ components; (3) database persistence; (4)
 long-term tracking and market analytics based on 
 database records.}
 
-\section{Interactive Digital Brochures for Custom Branding}
+\section{3D Graphics}
 
-%\p{The use of \ThreeD{} graphics could be a complement 
-%to the above software in that each dispenser model %
-%supplying data to the sensor network would have a 
-%\ThreeD{} model that could be viewed as part of 
-%the sensor data management application.  In addition, 
-%these \ThreeD{} models could be used to enhance 
-%the brochures and presentations available for potential 
-%customers.}
+\p{The use of \ThreeD{} graphics could be a complement 
+to the above software in that each dispenser model 
+supplying data to the sensor network would have a 
+\ThreeD{} model that could be viewed as part of 
+the sensor data management application.  In addition, 
+these \ThreeD{} models could be used to enhance 
+the brochures and presentations available for potential 
+customers.}
 
-%\mnote{Inter- active Bro- chures}
-\p{An interactive Astreea brochure could be developed by 
-offering a customized \PDF{} viewer, which 
-customers could use to browse interactive 
-brochures.  These brochures would help 
-customers design custom versions of the
+\mnote{Inter- active Bro- chures}
+\p{An interactive Astreea brochure could be developed in one of two ways,
+depending on whether potential customers want to download additional
+software.  The most sophisticated option is to offer a customized \PDF{} 
+viewer, which customers could use to browse the current brochure as
+well as specialized, interactive brochures which Astreea might
+consider developing in the future.  These brochures would be
+specifically designed to help customers design special versions of the
 Astreea products by decorating them with their logos and designs, or
-customizing the products' shapes and dimensions 
-(as well as \ADA{} compliance).}
+customizing the products' shapes and dimensions.}
 
 \mnote{3D Dispenser Models}
-\p{\ThreeD{} models of the Astreea
-product line could be deployed in file 
-formats, such as \STL{}, \OBJ{}, \PLY{}, or \XThreeS{},
-that are suitable for \ThreeD{} modeling.   
+\p{We can also assume that \ThreeD{} models of the Astreea products exist or
+could be developed, because data on design customization has to be
+transmitted to the factory where nonstandard versions of the products
+are manufactured.  We assume, then, that \ThreeD{} models of the Astreea
+product line can be deployed in formats like \STL{}, \OBJ{}, \PLY{}, or \XThreeS{},
+and that \ThreeD{} modeling is used in the Astreea offices to create
+representations of non-standard versions of Astreea offerings.
 Presumably the graphics files would be similar to those visible here:
 \bhref{https://www.turbosquid.com/3d-models/sanitizer-aibolit-2000-model-1561963}
---- just to give an example of a floor-standing dispenser roughly similar 
-to Astreea's (notice particularly the fifth image on the scroll, which 
-does a good job of showing the mesh geometry).  Using these 
-kinds of graphics files, LTS would then provide a version 
-of \MeshLab{} (an open-source \ThreeD{} graphics engine) that 
-Astreea sales/marketing specialists could use to design custom  
-versions of the sanitizer dispensers.  In conjunction with this 
-modified \MeshLab{} software, LTS would provide a specialized 
-\PDF{} viewer which potential customers could use to 
-examine interactive brochures.  These viewers 
-would have the ability to show \ThreeD{} 
-graphics in a separate window.  This 
-is important because in contrast to traditional, 
-non-interactive \q{static} brochures that would 
-show \TwoD{} photos of sanitizer dispensers, an interactive version
-would allow customers to visualize the products in \ThreeD{}.}
+--- to give an example of a floor-standing dispensers roughly similar
+to Astreea's (notice particularly the fifth image on the scroll, which
+does a good job of showing the mesh geometry).  For sake of
+discussion, assume that Astreea salespeople can use a version of
+MeshLab (an open-source \ThreeD{} graphics engine) to design custom versions
+of the products.  Assume, moreover, that some customers use a special
+\PDF{} viewer that we can provide which includes the ability to view \ThreeD{}
+graphics in a separate window -- whereas the \q{static} brochure just
+shows photos of sanitizer dispensers, say, an interactive version
+could let potential customers visualize the products in \ThreeD{}.}
 
 \mnote{Real-Time Visualization}
-\p{Using this LTS digital-brochure framework, 
-the customer's \PDF{} viewer would be hooked up with the
-salesperson's \MeshLab{} application.  This arrangement would 
-allow the salesperson to be on the
-phone with a customer, who is describing desired customizations, and 
-be able modify the \ThreeD{} graphics accordingly --- for instance,
+\p{The next step, then, is to hook up the customer's \PDF{} viewer with the
+salespersons' \MeshLab{} application.  Then, if the salesperson is on the
+phone with a customer describing desired customizations, the
+salesperson could modify the \ThreeD{} graphics accordingly -- for instance,
 they could apply the customer's logo onto the dispenser surface as a
-texture or modify the chassis design to  
-accord with the branding.  
-LTS would extend \MeshLab{} and the \PDF{} viewer with plugins so that
+texture.  The two applications could be extended with plugins so that
 the salesperson's modifications would be automatically downloaded to
-the customer's brochure, allowing the customer to preview the
+the customer's brochure, so that the customer could preview the
 appearance of the non-standard product right after the salesperson
-makes the changes --- effectively in real time.  The steps involved in
-applying images to a \MeshLab{} model are described in tutorials such as:
+makes the changes, effectively in real time.  The steps involved in
+applying images to a MeshLab model are described in tutorials such as:
 \bhref{https://wikis.utexas.edu/display/specify6/Texture+overlay+in+MeshLab}.
-\textit{We could implement a plugin to automate some of these steps so that a
+We could implement a plugin to automate some of these steps so that a
 salesperson could quickly construct a personalized graphic to show a
-potential customer.}\footnote
-{
-A variation on this arrangement is to allow the customer to obtain a
+potential customer.}
+
+\mnote{3D Application Plugins}
+\p{A variation on this arrangement is to allow the customer to obtain a
 version of \MeshLab{} with the same plugin as the salesperson uses.  This
 would be more complex from the customer's point of view because
 \MeshLab{} is a more complex program than a \PDF{} viewer, but some
@@ -1401,12 +1379,10 @@ interfacing with a large company with a professional graphic-design
 team, who would be confortable with the concepts and
 software usage associated with \ThreeD{} artistry.  We could also discuss
 developing plugins for dedicated graphics design software, such as
-\GIMP{} or Inkscape.
+\GIMP{} or Inkscape.}
 
-%\mnote{Other Ideas}
-%\p{
-
-On the other hand, some customers might not want to download any
+\mnote{Other Ideas}
+\p{On the other hand, some customers might not want to download any
 software at all.  In this case the salesperson could still use the
 \MeshLab{} plugin on their side, providing customers with a web page
 where their private version of the Astreea graphics -- with
@@ -1415,21 +1391,19 @@ ordinary web browser (via \WebGL{}).  The only real difference in this
 case is that the \ThreeD{} graphics would reside on a web page wholly
 separated from the \PDF{} brochure, whereas in the interactive-\PDF{} case,
 with a special \PDF{} viewer, the \ThreeD{} graphics would be visible through a
-window integrated into the \PDF{} application.
+window integrated into the \PDF{} application.}
 
-Some conventional \PDF{} viewers (such as some versions of 
-Acrobat), \textit{do} support \ThreeD{} graphics to a limited extent.  These require
+\p{Some conventional \PDF{} viewers, it should be added, e.g. some Acrobat
+versions, \textit{do} support \ThreeD{} graphics to a limited extent.  These require
 a special kind of \ThreeD{} file which can be derived from \MeshLab{} via
-extension code that LTS could provide.  The \ThreeD{} graphics in this case
+extension code that we could provide.  The \ThreeD{} graphics in this case
 are inline with the \PDF{} text, not in a separate window, so they're
 less user-friendly.  Also customers would still need to use a
 dedicated web page to view real-time changes while they're designing
-personalized dispencers with a salesperson.  But Astreea 
-could offer a \PDF{} with interactive \ThreeD{}
+personalized dispencers with a salesperson.  But as an initial
+interactive brochure, Astreea could offer a \PDF{} with interactive \ThreeD{}
 graphics for those users who already have these kinds of \PDF{} viewers
-and are comfortable using them.
-}}
-
+and are comfortable with them.}
 
 \end{document}
 

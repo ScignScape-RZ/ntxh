@@ -42,7 +42,9 @@ class FacsanaduProject
  QMap<Dataset*, GatingResult*> gatingResult_; // =new HashMap<Dataset, GatingResult>();
 
  Compensation* compensation_; // =new Compensation();
- 
+
+public: 
+
  // // Get gating result for dataset
  GatingResult* getGatingResult(Dataset* ds);
 // {
@@ -55,7 +57,7 @@ class FacsanaduProject
  // // Update gating results
  void performGating(LinkedList<Dataset> listDatasets);
 
- void addDataset(QFile path); // throws IOException;
+ void addDataset(QFile& path); // throws IOException;
 
  void updateCompensation();
  void addDataset(Dataset* ds);

@@ -19,23 +19,23 @@ class FacsanaduEvent
 
 };
 
-class EventCompensationChanged : FacsanaduEvent // implements ...
+class EventCompensationChanged : public FacsanaduEvent // implements ...
 {
 };
 
-class EventDatasetsChanged : FacsanaduEvent
+class EventDatasetsChanged : public FacsanaduEvent
 {
 };
 
-class EventGatesChanged : FacsanaduEvent
+class EventGatesChanged : public FacsanaduEvent
 {
 };
 
-class EventGatesMoved : FacsanaduEvent
+class EventGatesMoved : public FacsanaduEvent
 {
 };
 
-class EventViewsChanged : FacsanaduEvent
+class EventViewsChanged : public FacsanaduEvent
 {
 };
 

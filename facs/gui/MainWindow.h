@@ -76,7 +76,7 @@ class MainWindow : public QMainWindow
  GateStatsPane* paneStats_;
  ProfilePane* paneProfile_;
  
- QFile currentProjectFile_ ; //=null;
+ QString currentProjectFile_ ; //=null;
  
  bool isUpdating_; //=false;
 
@@ -162,7 +162,7 @@ public:
 */
 
  // // Event bus
- void handleEvent(FacsanaduEvent& event);
+ void handleEvent(FacsanaduEvent* event);
  
  void dothelayout();
 

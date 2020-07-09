@@ -16,14 +16,26 @@
 #include "panes/GateStatsPane.h"
 #include "lengthprofile/ProfilePane.h"
 
+#include "GraphExportWindow.h"
+
+#include "view/GraphExporter.h"
+
+#include "../data/ExportFcsToCSV.h"
+#include "../data/Dataset.h"
+
+#include "events/FacsanaduEvent.h"
 
 #include <QMenu>
 #include <QMimeData>
 #include <QFile>
+#include <QFileDialog>
+
 
 //#ifdef HIDE
 
-struct FACS_IOException {};
+struct Facs_IOException {};
+struct Facs_RuntimeException {};
+struct Facs_Exception {};
 
 
 MainWindow::MainWindow()
@@ -180,7 +192,7 @@ void MainWindow::dropEvent(QDropEvent* event)
    loadFile(qf);
   }
  }
- catch (FACS_IOException e)
+ catch (Facs_IOException e)
  {
   // TO DO ...
   // e->printStackTrace();
@@ -218,57 +230,57 @@ GateCalcThread MainWindow::calcthread=new GateCalcThread()
 
 #endif // def HIDE_THREAD
  
-#ifdef HIDE
-
 // // Action: New project
 void MainWindow::actionNewProject()
 {
- project = new FacsanaduProject();
+ project_ = new FacsanaduProject();
  updateall();
 }
  
 // // Open a project
 void MainWindow::actionOpenProject()
 {
- QFileDialog dia = new QFileDialog();
- dia.setFileMode(FileMode.ExistingFile);
- dia.setDirectory(lastDirectory.getAbsolutePath());
+ QFileDialog dia; // = new QFileDialog();
+ dia.setFileMode(QFileDialog::ExistingFile);
+ dia.setDirectory(lastDirectory_.absolutePath());
  dia.setNameFilter(tr("Project files") + " (*.facsanadu)");
- if(dia.exec()!=0)
+ if(dia.exec())
  {
-  File f = new File(dia.selectedFiles().get(0));
-  lastDirectory=f.getParentFile();
+  QFile qf( dia.selectedFiles().value(0) );
+  QFileInfo qfi(qf);
+  lastDirectory_ = qfi.absoluteDir();
   try
   {
-   project=FacsanaduXML.importXML(f);
-   currentProjectFile=f;
+   // //  do we want to use XML? ...
+   // project_ = FacsanaduXML::importXML(f);
+   currentProjectFile_ = qfi.absoluteFilePath();
   }
-  catch (IOException e)
+  catch (Facs_IOException e)
   {
-   QTutil.showNotice(this, e.getMessage());
-   e.printStackTrace();
+   //QTutil.showNotice(this, e.getMessage());
+   //e.printStackTrace();
   }
   updateall();
  } 
 }
- 
- 
+  
 // // Action: Save project
 void MainWindow::actionSaveProject()
 {
- if(currentProjectFile==nullptr)
+ if( currentProjectFile_.isEmpty() )
    actionSaveProjectAs();
 
- if(currentProjectFile!=nullptr)
+ else 
  {
   try
   {
-   FacsanaduXML.exportToFile(project, currentProjectFile);
+   // // xml?
+    // FacsanaduXML.exportToFile(project, currentProjectFile);
   }
-  catch (IOException e)
+  catch (Facs_IOException e)
   {
-   QTutil.showNotice(this, e.getMessage());
-   e.printStackTrace();
+   // QTutil.showNotice(this, e.getMessage());
+   // e.printStackTrace();
   }
  }
 }
@@ -276,49 +288,50 @@ void MainWindow::actionSaveProject()
 // // Action: Save as... file
 void MainWindow::actionSaveProjectAs()
 {
- QFileDialog* dia = new QFileDialog();
- dia->setFileMode(FileMode.AnyFile);
- dia->setAcceptMode(AcceptMode.AcceptSave);
- dia->setDirectory(lastDirectory.getAbsolutePath());
- dia->setDefaultSuffix("facsanadu");
- dia->setNameFilter(tr("Project files")+" (*.facsanadu)");
- if(dia.exec()!=0)
+ QFileDialog dia; // = new QFileDialog();
+ dia.setFileMode(QFileDialog::AnyFile);
+ dia.setAcceptMode(QFileDialog::AcceptSave);
+ dia.setDirectory(lastDirectory_.absolutePath());
+ dia.setDefaultSuffix("facsanadu");
+ dia.setNameFilter(tr("Project files")+" (*.facsanadu)");
+
+ if( dia.exec() )
  {
-  File f = new File(dia.selectedFiles().get(0));
-  lastDirectory=f->getParentFile();
-  currentProjectFile = f;
+  QFile qf(dia.selectedFiles().value(0));
+  QFileInfo qfi(qf);
+  lastDirectory_ = qfi.absoluteDir();
+  currentProjectFile_ = qfi.absoluteFilePath();
   actionSaveProject();
  }
 }
-
   
 // // Action: Export graphs
 void MainWindow::actionExportGraphs()
 {
- LinkedList<Dataset> listds=getSelectedDatasets();
- LinkedList<ViewSettings> listviews=getSelectedViews();
+ LinkedList<Dataset*> listds = getSelectedDatasets();
+ LinkedList<ViewSettings*> listviews = getSelectedViews();
  
- GraphExportWindow w = new GraphExportWindow();
+ GraphExportWindow w; // = new GraphExportWindow();
  w.exec();
- if(w.wasOk)
+ if( w.wasOk() )
  {
-  QFileDialog dia=new QFileDialog();
-  dia.setFileMode(FileMode.AnyFile);
-  dia.setNameFilter(tr("Image files)")+" (*.png)");
-  dia.setAcceptMode(AcceptMode.AcceptSave);
+  QFileDialog dia; //= new QFileDialog();
+  dia.setFileMode(QFileDialog::AnyFile);
+  dia.setNameFilter( tr("Image files)") + " (*.png)" );
+  dia.setAcceptMode(QFileDialog::AcceptSave);
   dia.setDefaultSuffix("png");
 
-  if(dia.exec()!=0)
+  if( dia.exec() )
   {
    try
    {
-    File f=new File(dia.selectedFiles().get(0));
-    GraphExporter.render(f, project, listds, listviews, w.splitByDataset(), w.splitByView(), w.getWidth(), w.getHeight());
+    QFile qf(dia.selectedFiles().value(0));
+    GraphExporter::render(qf, project_, listds, listviews, w.splitByDataset(), w.splitByView(), w.getWidth(), w.getHeight());
    }
-   catch (RuntimeException e)
+   catch (Facs_RuntimeException e)
    {
-    QTutil.showNotice(this, e.getMessage());
-    e.printStackTrace();
+    // QTutil.showNotice(this, e.getMessage());
+    // e.printStackTrace();
    }
   } 
  }
@@ -327,84 +340,91 @@ void MainWindow::actionExportGraphs()
 // //
 void MainWindow::actionExportStatistics()
 {
- paneStats.actionExportCSV();
+ paneStats_->actionExportCSV();
 }
  
 void MainWindow::actionExportCSV()
 {
  try
  {
-  LinkedList<Dataset> dsList=datasetsw.getSelectedDatasets();
+  LinkedList<Dataset*> dsList = datasetsw_->getSelectedDatasets();
 
   if(dsList.isEmpty())
   {
-   QTutil.printError(this, tr("No datasets selected"));
+   // QTutil.printError(this, tr("No datasets selected"));
   }
   else if(dsList.size()==1)
   {
-   QFileDialog dia=new QFileDialog();
-   dia.setFileMode(FileMode.AnyFile);
+   QFileDialog dia; // =new QFileDialog();
+   dia.setFileMode(QFileDialog::AnyFile);
    dia.setNameFilter(tr("CSV files (*.csv)"));
-   dia.setAcceptMode(AcceptMode.AcceptSave);
+   dia.setAcceptMode(QFileDialog::AcceptSave);
    dia.setDefaultSuffix("csv"); 
  
-   if(dia.exec()!=0)
+   if( dia.exec() )
    {
     try
     {
-     ExportFcsToCSV.save(dsList.get(0), new File(dia.selectedFiles().get(0)));
+     QFile qf(dia.selectedFiles().value(0));
+     ExportFcsToCSV::save(dsList.value(0), 
+      qf);
      /*
       PrintWriter fw=new PrintWriter();
       fw.println(tableStats.allToCSV());
       fw.close();
      */
     }
-    catch (IOException e)
+    catch (Facs_IOException e)
     {
-     QTutil.showNotice(this, e.getMessage());
-     e.printStackTrace();
+//     QTutil.showNotice(this, e.getMessage());
+//     e.printStackTrace();
     }
    } 
   }
   else
   {
-   QFileDialog dia=new QFileDialog();
-   dia.setFileMode(FileMode.DirectoryOnly);
+   QFileDialog dia; // =new QFileDialog();
+   dia.setFileMode(QFileDialog::DirectoryOnly);
    //dia.setNameFilter(tr("CSV files (*.csv)"));
-   dia.setAcceptMode(AcceptMode.AcceptSave);
+   dia.setAcceptMode(QFileDialog::AcceptSave);
    //dia.setDefaultSuffix("csv"); 
 
-   if(dia.exec()!=0)
+   if( dia.exec() )
    {
     try
     {
-     for(Dataset oneDataset:dsList)
+     for(Dataset* oneDataset : dsList)
      {
-      File parent=new File(dia.selectedFiles().get(0));
-      ExportFcsToCSV.save(oneDataset, new File(parent, oneDataset.getName()+".csv"));
+      QFile parent(dia.selectedFiles().value(0));
+       // //  why do we need parent?
+      QFile qf(oneDataset->getName() + ".csv", &parent);
+      ExportFcsToCSV::save(oneDataset, qf); ////parent, 
+        //qf));
      }
     }
-    catch (IOException e)
+    catch (Facs_IOException e)
     {
-     QTutil.showNotice(this, e.getMessage());
-     e.printStackTrace();
+//     QTutil.showNotice(this, e.getMessage());
+//     e.printStackTrace();
     }
    } 
   }
  }
- catch (Exception e)
+ catch (Facs_Exception e)
  {
-  QTutil.printError(this, tr("Failed to save file: ")+e.getMessage());
-  e.printStackTrace();
+//  QTutil.printError(this, tr("Failed to save file: ")+e.getMessage());
+//  e.printStackTrace();
  }
 }
  
 // // Load one file
-void MainWindow::loadFile(File path) // throws IOException
+void MainWindow::loadFile(QFile& path) // throws IOException
 {
- project.addDataset(path);
+ project_->addDataset(path);
  handleEvent(new EventDatasetsChanged());
 }
+
+#ifdef HIDE
 
  
 // // Get selected views
@@ -462,7 +482,7 @@ void MainWindow::dogating()
 
 
 // // Event bus
-void MainWindow::handleEvent(FacsanaduEvent event)
+void MainWindow::handleEvent(FacsanaduEvent* event)
 {
  if(event instanceof EventGatesChanged)
  {
