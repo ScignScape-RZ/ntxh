@@ -66,7 +66,7 @@ public:
  //ArrayList<ChannelInfo> getChannelInfo();
  QList<ChannelInfo*> getChannelInfo();
  
- void recalcProfChan();
+ void recalcProfChan(ProfChannel* chChanged);
 
 };
 

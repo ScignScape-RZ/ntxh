@@ -8,21 +8,39 @@
 // package facsanadu.gui;
 
 #include <QThread>
+#include <QSet>
+#include <QMutex>
 
+// // temp
+#include<QList>
+#define LinkedList QList
 
-/**
- * 
- * Threaded system for calculating gates in the background
- * 
- * @author Johan Henriksson
- *
- */
-class GateCalcThread
+class FacsanaduProject;
+class Dataset;
+class GatingResult;
+class Gate;
+
+// // Threaded system for calculating gates in the background
+
+class GateCalcThread //: public QObject
 {
+
+// Q_O
+
+public:
+ class Worker; // =new LinkedList<Worker>();
+ class Task;
+
+private:
+
  int numcores_; //=0;
- HashSet<Task> currentTasks_; // =new HashSet<Task>();
+ //HashSet<Task> currentTasks_; // =new HashSet<Task>();
+
+ QSet<Task*> currentTasks_;
  LinkedList<Worker> threads_; // =new LinkedList<Worker>();
- Object lockGetGate_; // =new Object();
+
+ //? Object lockGetGate_; // =new Object();
+ QMutex lockGetGate_;
 
  // // Start the calculation if it happen to not be running yet
 
@@ -31,14 +49,15 @@ public:
  void wakeup();
  
  // //
- FacsanaduProject getProject() = 0;
+ virtual FacsanaduProject* getProject() = 0;
  
 
  // // Function to call once work done
- void callbackDoneCalc(Dataset dataset) = 0;
+ virtual void callbackDoneCalc(Dataset* dataset) = 0;
  
  // // Function to check which datasets are selected. Only need to work on these
- Collection<Dataset> getCurrentDatasets() = 0;
+  //Collection<Dataset> getCurrentDatasets() = 0;
+ virtual QList<Dataset*> getCurrentDatasets() = 0;
 
  // // Constructor
  GateCalcThread();
@@ -50,7 +69,7 @@ public:
  void setNumCores(int th);
  
  // // One worker thread
- class Worker : Thread
+ class Worker : QThread
  {
   int id;
   Worker(int id);
@@ -60,26 +79,24 @@ public:
  /**
   * Get a task that needs working on in the given dataset
   */
- Task getTaskToWorkOn(Dataset ds);
+ Task* getTaskToWorkOn(Dataset* ds);
 
- /**
-  * One task needing execution
-  */
-private: class Task
+ // // One task needing execution
+//private: 
+
+ class Task
   {
-  void exec() = 0;
-  }
+   virtual void exec() = 0;
+  };
  
  
- /**
-  * Task for computing one gate
-  */
+ // // Task for computing one gate
  private: 
   class TaskDS : Task
   {
-   Dataset ds;
-   bool equals(Object obj);
-  }
+   Dataset* ds;
+   bool equals(void* obj); // Object?
+  };
 
 public:
 
@@ -88,7 +105,7 @@ public:
 
  void exec(GatingResult gr, Gate g);
   
- QString toString() Q_DECLARE_OVERRIDE;
+ QString toString(); // Q_DECL_OVERRIDE;
   
  
  

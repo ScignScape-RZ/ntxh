@@ -4,6 +4,9 @@
 #ifndef MainWindow__H
 #define MainWindow__H
 
+#include "GateCalcThread.h"
+
+
 #include <QDialog>
 #include <QVBoxLayout>
 #include <QTableWidget>
@@ -21,6 +24,8 @@
 
 #include <QTabWidget>
 #include <QMenuBar>
+#include <QMutex>
+
 
 // // temp
 #include<QList>
@@ -48,20 +53,20 @@ class GateMeasure;
 class ProfChannel;
 
 
-/**
- * 
- * The main window
- * 
- * @author Johan Henriksson
- *
- */
+// // The main window
 
 //#ifdef HIDE
+
+
+class _MainWindow_GateCalcThread;
 
 class MainWindow : public QMainWindow
 {
  //private 
   //? Collection<Dataset> selDatasetsCache=new LinkedList<Dataset>();
+
+ QList<Dataset*> selDatasetsCache_;
+ QMutex selDatasetsCache_mutex_;
 
  QTabWidget* tabwidget_; //=new QTabWidget();
  QMenuBar* menubar_; //=new QMenuBar();
@@ -83,8 +88,8 @@ class MainWindow : public QMainWindow
  QDir lastDirectory_; //=new File("."); 
 
  FacsanaduProject* project_; // = new FacsanaduProject();
- GateCalcThread* calcthread_; //=new GateCalcThread(){
 
+ GateCalcThread* calcthread_; 
  
  // // Update all widgets
  void updateall();
@@ -100,6 +105,9 @@ protected:
 
  // // Event: User drops MIME onto widget
  void dropEvent(QDropEvent* event);
+
+ // // Ensure proper exit
+ void closeEvent(QCloseEvent* arg) Q_DECL_OVERRIDE;
 
 // FacsanaduProject* project_;
 
@@ -170,7 +178,7 @@ public:
  void addGate(Gate* suggestParent, Gate* g);
 
  // // Get currently selected measures
- LinkedList<GateMeasure> getSelectedMeasures();
+ LinkedList<GateMeasure*> getSelectedMeasures();
 
  // // Show About-information
  void actionAbout();
@@ -192,6 +200,34 @@ public:
 // }
  
 };
+
+// //  need equivalent of an anonymous inner class in Java ...
+
+class _MainWindow_GateCalcThread : public QObject, public GateCalcThread 
+{
+ Q_OBJECT
+
+ FacsanaduProject* project;
+
+public:
+
+ _MainWindow_GateCalcThread(FacsanaduProject* p) 
+   : project(p) {} 
+
+ FacsanaduProject* getProject() Q_DECL_OVERRIDE
+ {
+  return project;
+ }
+ void callbackDoneCalc(Dataset* dataset);
+ QList<Dataset*> getCurrentDatasets();
+
+Q_SIGNALS:
+
+ void callbackDoneCalc_signal();
+
+};
+
+
 
 //#endif //def HIDE
 

@@ -16,6 +16,8 @@
 #include "panes/GateStatsPane.h"
 #include "lengthprofile/ProfilePane.h"
 
+#include "DialogAbout.h"
+
 #include "GraphExportWindow.h"
 
 #include "view/GraphExporter.h"
@@ -25,17 +27,44 @@
 
 #include "events/FacsanaduEvent.h"
 
+#include "QtProgramInfo.h"
+
 #include <QMenu>
 #include <QMimeData>
 #include <QFile>
 #include <QFileDialog>
+#include <QMutex>
+#include <QMutexLocker>
+#include <QInputDialog>
 
+#include <QApplication>
+
+#include <QDesktopServices>
+
+#include <functional>
 
 //#ifdef HIDE
 
 struct Facs_IOException {};
 struct Facs_RuntimeException {};
 struct Facs_Exception {};
+
+std::function<QList<Dataset*>()> do_MainWindow_GateCalcThread_getCurrentDatasets;
+
+QList<Dataset*> _MainWindow_GateCalcThread::getCurrentDatasets()
+{
+ return do_MainWindow_GateCalcThread_getCurrentDatasets();
+ // synchronized (selDatasetsCache)
+ // {
+
+//? QMutexLocker lock(&selDatasetsCache_mutex_);
+//? QList<Dataset*> d (selDatasetsCache_);
+//? return d;
+ //? 
+
+// return {};
+};
+
 
 
 MainWindow::MainWindow()
@@ -51,7 +80,23 @@ MainWindow::MainWindow()
  paneMetadata_ = new DatasetInfoPane(this);
 
  project_ = new FacsanaduProject();
+
+ calcthread_ = new _MainWindow_GateCalcThread(project_);
+
+ connect( (_MainWindow_GateCalcThread*) calcthread_,
+   &_MainWindow_GateCalcThread::callbackDoneCalc_signal, 
+   [this]()
+  {
+   updateall();
+  });
  
+ do_MainWindow_GateCalcThread_getCurrentDatasets = [this]()
+  {
+   QMutexLocker lock(&this->selDatasetsCache_mutex_);
+   QList<Dataset*> d (this->selDatasetsCache_);
+   return d;
+  };
+
 // paneViews_;
 // paneStats_;
 // paneProfile_;
@@ -199,36 +244,19 @@ void MainWindow::dropEvent(QDropEvent* event)
  }
 }
 
-#ifdef HIDE_THREAD
+//#ifdef HIDE_THREAD
 
-GateCalcThread MainWindow::calcthread=new GateCalcThread()
+void _MainWindow_GateCalcThread::callbackDoneCalc(Dataset* dataset)
 {
- FacsanaduProject getProject()
- {
-  return project;
- }
- void callbackDoneCalc(Dataset dataset)
- {
-  QApplication.invokeLater(new Runnable()
-  {
-   public void run()
-   {
-    updateall();
-           //System.out.println("Thread called");
-   }
-  });
- }
- Collection<Dataset> getCurrentDatasets()
- {
-  synchronized (selDatasetsCache)
-  {
-   ArrayList<Dataset> d=new ArrayList<Dataset>(selDatasetsCache);
-   return d;
-  }
- }
-};
+ emit callbackDoneCalc_signal();
+}
+ 
 
-#endif // def HIDE_THREAD
+//GateCalcThread MainWindow::calcthread = new GateCalcThread;
+//{
+//};
+
+//#endif // def HIDE_THREAD
  
 // // Action: New project
 void MainWindow::actionNewProject()
@@ -424,49 +452,51 @@ void MainWindow::loadFile(QFile& path) // throws IOException
  handleEvent(new EventDatasetsChanged());
 }
 
-#ifdef HIDE
-
  
 // // Get selected views
-LinkedList<ViewSettings> MainWindow::getSelectedViews()
+LinkedList<ViewSettings*> MainWindow::getSelectedViews()
 {
- return viewsw.getSelectedViews();
+ return viewsw_->getSelectedViews();
 }
 
+
 // // Get selected datasets
-LinkedList<Dataset> MainWindow::getSelectedDatasets()
+LinkedList<Dataset*> MainWindow::getSelectedDatasets()
 {
- return datasetsw.getSelectedDatasets();
+ return datasetsw_->getSelectedDatasets();
 }
+
 
 void MainWindow::actionDsChanged()
 {
  //Update list of selected datasets, in a thread neutral list
- synchronized (selDatasetsCache)
+
+ // synchronized (mutex) //selDatasetsCache_)
  {
-  selDatasetsCache.clear();
-  selDatasetsCache.addAll(datasetsw.getSelectedDatasets());
+  QMutexLocker lock(&selDatasetsCache_mutex_);
+  selDatasetsCache_.clear();
+  selDatasetsCache_.append(datasetsw_->getSelectedDatasets());
  }
+
  //Better to send a signal here instead?
- paneViews.invalidateCache();
+ paneViews_->invalidateCache();
  dogating();
  dothelayout();
- paneMetadata.updateForm();
-}
- 
-// // Get selected gates
-LinkedList<Gate> MainWindow::getSelectedGates()
-{
- return gatesw.getSelectedGates();
+ paneMetadata_->updateForm();
 }
 
+// // Get selected gates
+LinkedList<Gate*> MainWindow::getSelectedGates()
+{
+ return gatesw_->getSelectedGates();
+}
 
 // // Update gating results
 void MainWindow::dogating()
 {
  //For speed, only do selected ones
  //project.performGating(getSelectedDatasets());
- calcthread.wakeup();
+ calcthread_->wakeup();
 }
  
  /**
@@ -480,108 +510,121 @@ void MainWindow::dogating()
 // QTutil.execStaticQApplication(); 
 // }
 
-
 // // Event bus
 void MainWindow::handleEvent(FacsanaduEvent* event)
 {
- if(event instanceof EventGatesChanged)
+ switch(event->get_description())
+ // if(event instanceof EventGatesChanged)
  {
-  gatesw.updateGatesList();
-  paneViews.invalidateCache();
+ case FacsanaduEvent::Description::EventGatesChanged:
+  gatesw_->updateGatesList();
+  paneViews_->invalidateCache();
   dogating();
   dothelayout();
- }
- else if(event instanceof EventViewsChanged)
- {
-  viewsw.updateViewsList(); //just added. problem?
-  paneViews.invalidateCache();
+  break;
+
+  //else if(event instanceof EventViewsChanged) 
+ case FacsanaduEvent::Description::EventViewsChanged:
+  viewsw_->updateViewsList(); //just added. problem?
+  paneViews_->invalidateCache();
   dogating();
   dothelayout();
- }
- else if(event instanceof EventCompensationChanged)
- {
-  project.updateCompensation();
+  break;
+
+ //else if(event instanceof EventCompensationChanged)
+ case FacsanaduEvent::Description::EventCompensationChanged:
+  project_->updateCompensation();
   dogating();
   dothelayout();
- }
- else if(event instanceof EventGatesMoved)
- {
+  break;
+ 
+  //else if(event instanceof EventGatesMoved)
+ case FacsanaduEvent::Description::EventGatesMoved:
   dothelayout();
- }
- else if(event instanceof EventDatasetsChanged)
- {
-  datasetsw.updateDatasetList();
-  paneViews.invalidateCache();
+  break;
+
+  //else if(event instanceof EventDatasetsChanged)
+ case FacsanaduEvent::Description::EventDatasetsChanged:
+  datasetsw_->updateDatasetList();
+  paneViews_->invalidateCache();
   dogating();
-  paneMetadata.updateForm();
+  paneMetadata_->updateForm();
+  break;
+  //else if(event instanceof EventSetViewTool)
+  //{
+  //?paneViews.setTool(((EventSetViewTool) event).choice);
+  //}
+ default:
+  throw new Facs_RuntimeException; // ...  ("!!!");
+  break;
  }
- else if(event instanceof EventSetViewTool)
- {
-  paneViews.setTool(((EventSetViewTool) event).choice);
- }
- else
-   throw new RuntimeException("!!!");
 }
 
 void MainWindow::dothelayout()
 {
- if(!isUpdating)
+ if(!isUpdating_)
  {
-  paneViews.updateViews();
-  paneStats.updateStats();
-  paneProfile.updateViews();
-  QApplication.processEvents();
+  paneViews_->updateViews();
+  paneStats_->updateStats();
+  paneProfile_->updateViews();
+  QApplication::processEvents();
   //or flush?
  }
 }
 
 // // Add a gate with a suggested parent
-void MainWindow::addGate(Gate suggestParent, Gate g)
+void MainWindow::addGate(Gate* suggestParent, Gate* g)
 {
- gatesw.addGate(suggestParent, g);
+ gatesw_->addGate(suggestParent, g);
 }
 
 // // Get currently selected measures
-LinkedList<GateMeasure> MainWindow::getSelectedMeasures()
+LinkedList<GateMeasure*> MainWindow::getSelectedMeasures()
 {
- return gatesw.getSelectedMeasures();
+ return gatesw_->getSelectedMeasures();
 }
  
 // // Show About-information
 void MainWindow::actionAbout()
 {
- new DialogAbout().exec();
+ (new DialogAbout())->exec();
 }
+
  
 // // Open up website
 void MainWindow::actionWebsite()
 {
- QDesktopServices.openUrl(new QUrl("http://www.facsanadu.org"));
+ QDesktopServices::openUrl(QUrl("http://www.facsanadu.org"));
 }
+
  
 // // Set number of CPU cores
 void MainWindow::actionSetNumCores()
 {
- int th=QInputDialog.getInt(this, QtProgramInfo.programName, tr("Number of cores: "), calcthread.getNumCores());
- if(th>=1 && th<=128)
-   calcthread.setNumCores(th);
+ int th = QInputDialog::getInt(this, QtProgramInfo::programName, 
+   tr("Number of cores: "), calcthread_->getNumCores());
+ if( (th >= 1) && (th <= 128) )
+   calcthread_->setNumCores(th);
 }
 
-void MainWindow::recalcProfChan(ProfChannel chChanged)
+
+void MainWindow::recalcProfChan(ProfChannel* chChanged)
 {
  // TODO Auto-generated method stub
- project.recalcProfChan(chChanged);
+ project_->recalcProfChan(chChanged);
  dothelayout();
  //handleEvent(new EventViewsChanged()); //maybe too light
 }
 
 // // Ensure proper exit
 // @Override
-void MainWindow::closeEvent(QCloseEvent arg)
+void MainWindow::closeEvent(QCloseEvent* arg)
 {
- super.closeEvent(arg);
- System.exit(0);
+ QMainWindow::closeEvent(arg);
+ exit(0);
 }
+
+#ifdef HIDE
 
 #endif //def HIDE
 
