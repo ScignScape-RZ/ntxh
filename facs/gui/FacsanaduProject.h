@@ -54,6 +54,17 @@ public:
  // // Get an existing or create a new gating result for a particular dataset. Each dataset should have one
  GatingResult* getCreateGatingResult(Dataset* ds);
  
+ LinkedList<ViewSettings*> views()
+ {
+  return views_;
+ }
+
+ LinkedList<Dataset*> datasets()
+ {
+  return datasets_;
+ }
+
+
  // // Update gating results
  void performGating(LinkedList<Dataset> listDatasets);
 

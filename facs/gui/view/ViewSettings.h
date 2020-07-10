@@ -9,10 +9,14 @@
 // package facsanadu.gui.view;
 
 // // Johan Henriksson
+
+class Histogram;
+class TransformationStack;
+
 class ViewSettings
 {
  //Which gate the view should pick data from
- Gate gate;
+ Gate* gate_;
  
  int indexX_; //=7;
  int indexY_; //=6;
@@ -26,62 +30,59 @@ class ViewSettings
 
  TransformationStack* transformation_; //=new TransformationStack();
 
- int numHistBins = 50;
+ int numHistBins_; // = 50;
  
- /**
-  * Set the scale to cover the given max and min values
-  */
- void autoscale(double[] max, double[] min);
+public:
 
- /**
-  * Get the maximum for a channel
-  */
- QList<double> getMaxForChannel(Dataset dataset);
+ int indexX() { return indexX_; }  //=7;
+ int indexY() { return indexY_; } 
 
- /**
-  * Get the minimum value for channel
-  */
- QList<double> getMinForChannel(Dataset dataset);
+ //  // Set the scale to cover the given max and min values
+ void autoscale(QList<double> max, QList<double> min);
 
- /**
-  * Get the maximum value for all channels
-  */
- QList<double> getMaxForChannels(Collection<Dataset> dataset);
+ // // Get the maximum for a channel
+ QList<double> getMaxForChannel(Dataset* dataset);
+
+ // // Get the minimum value for channel
+ QList<double> getMinForChannel(Dataset* dataset);
+
+ // // Get the maximum value for all channels
+ QList<double> getMaxForChannels(QList<Dataset*> datasets); //Collection<Dataset> dataset
  
- /**
-  * Get the minimum value for all channels
-  */
- QList<double> getMinForChannels(Collection<Dataset> dataset);
+ // // Get the minimum value for all channels
+ QList<double> getMinForChannels(QList<Dataset*> datasets);
 
- /**
-  * Autoscale several views according to several datasets
-  */
- static void autoscale(LinkedList<Dataset> selds, LinkedList<ViewSettings> selviews);
+ // // Autoscale several views according to several datasets
+ static void autoscale(LinkedList<Dataset*> selds, LinkedList<ViewSettings*> selviews);
 
- /**
-  * Get the name of this view
-  */
- QString getName()
+ // // Get the name of this view
+ QString getName();
+// {
+//  //Use gate name as name of view
+//  return gate_->name();
+// }
+
+ Gate* gate()
  {
   //Use gate name as name of view
-  return gate.name;
+  return gate_;
  }
 
 
  /**
   * Compute histogram from data
   */
- Histogram computeHistogram(Dataset data, GatingResult gr);
+ Histogram* computeHistogram(Dataset* data, GatingResult* gr);
 
  /**
   * Check if the view settings is for a histogram
   */
- boolean isHistogram();
+ bool isHistogram();
 
  void setHistogram(int chanid);
 
- boolean coversXandY(int indexX2, int indexY2);
- boolean coversX(int indexX2);
+ bool coversXandY(int indexX2, int indexY2);
+ bool coversX(int indexX2);
 
  void swapAxis();
  

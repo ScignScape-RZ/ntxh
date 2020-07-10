@@ -117,6 +117,11 @@ public:
   // = new FacsanaduProject();
 
  FacsanaduProject* getProject();
+ FacsanaduProject* project() 
+ {
+  return getProject();
+ }
+
 
  // // Constructor
  MainWindow();
@@ -218,12 +223,13 @@ public:
  {
   return project;
  }
+
  void callbackDoneCalc(Dataset* dataset);
  QList<Dataset*> getCurrentDatasets();
 
 Q_SIGNALS:
 
- void callbackDoneCalc_signal();
+ void callbackDoneCalc_signal(Dataset*);
 
 };
 

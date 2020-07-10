@@ -85,7 +85,7 @@ MainWindow::MainWindow()
 
  connect( (_MainWindow_GateCalcThread*) calcthread_,
    &_MainWindow_GateCalcThread::callbackDoneCalc_signal, 
-   [this]()
+   [this](Dataset*)
   {
    updateall();
   });
@@ -248,7 +248,7 @@ void MainWindow::dropEvent(QDropEvent* event)
 
 void _MainWindow_GateCalcThread::callbackDoneCalc(Dataset* dataset)
 {
- emit callbackDoneCalc_signal();
+ emit callbackDoneCalc_signal(dataset);
 }
  
 
@@ -603,6 +603,7 @@ void MainWindow::actionSetNumCores()
 {
  int th = QInputDialog::getInt(this, QtProgramInfo::programName, 
    tr("Number of cores: "), calcthread_->getNumCores());
+
  if( (th >= 1) && (th <= 128) )
    calcthread_->setNumCores(th);
 }

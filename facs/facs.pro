@@ -11,6 +11,7 @@ HEADERS += \
 
 SOURCES +=  \
  ./gui/MainWindow.cpp  \
+ ./gui/ViewsListWidget.cpp  \
 
 #  \
 

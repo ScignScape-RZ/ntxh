@@ -13,6 +13,14 @@
 
 #include <QWidget>
 
+// // temp
+#include<QList>
+#define LinkedList QList
+
+
+class MainWindow;
+class ViewSettings;
+
 
 class ViewsListWidget : public QWidget //: QVBoxLayout
 {

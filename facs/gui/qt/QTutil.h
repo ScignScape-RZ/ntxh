@@ -7,8 +7,9 @@
 
 #include <QDialog>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QLayout>
-#include <QFileWidget>
+#include <QFile>
 #include <QDate>
 #include <QValidator>
 
@@ -19,35 +20,36 @@
 // // QT utility functions
 class QTutil
 {
+public:
 
  /**
   * Return a widget with a label to the left of it
   */
- static QLayout withLabel(String s, QWidget w);
+ static QLayout* withLabel(QString s, QWidget& w);
  
  /**
   * Return a widget with a label to the right of it
   */
- static QLayout withLabel(String s, QWidget w, String sRight);
+ static QLayout* withLabel(QString s, QWidget& w, QString sRight);
 
  /**
   * Place widget within a titled frame
   */
- static QWidget withinTitledFrame(String title, QWidget w);
+ static QWidget* withinTitledFrame(QString title, QWidget& w);
 
  /**
   * Place layout within a titled frame
   */
- static QWidget withinTitledFrame(String title, QLayout layout);
+ static QWidget* withinTitledFrame(QString title, QLayout& layout);
 
  /**
   * Convert QT date to Java date
   */
- static Date convertToJavaDate(QDate qd, QTime qt);
+// static Date convertToJavaDate(QDate qd, QTime qt);
  
- static QDate convertToQDate(Calendar calendar);
+// static QDate convertToQDate(Calendar calendar);
 
- static QFileDialog.Filter buildFileDialogSupportedFormatsFilter(String fileType, Collection<String> formatsList);
+// static QFileDialog.Filter buildFileDialogSupportedFormatsFilter(String fileType, Collection<String> formatsList);
 
  /**
   * Request an open-file dialog
@@ -57,12 +59,12 @@ class QTutil
   * @param filter  Filter for the files
   * @return        The file, or null if none opened
   */
- static File openFileDialog(QWidget parent, String title, Filter filter);
+ static QFile openFileDialog(QWidget parent, QString title, QString filter); //Filter filter
 
  /**
   * Open multiple files dialog. Never returns null
   */
- static Collection<File> openFilesDialog(QWidget parent, String title, Filter filter);
+ static QList<QFile> openFilesDialog(QWidget parent, QString title, QString filter);
 
  /**
   * Request a save-file dialog
@@ -73,9 +75,9 @@ class QTutil
   * @param filter       Filter for the files
   * @return             The file, or null if none opened
   */
- static File saveFileDialog(QWidget parent, String title, String suggestName, String defaultSuffix, QFileDialog.Filter filter);
+//? static QFile saveFileDialog(QWidget parent, QString title, QString suggestName, String defaultSuffix, QFileDialog.Filter filter);
 
- static File saveFileDialog(QWidget parent, String title, Filter filter);
+//? static File saveFileDialog(QWidget parent, String title, Filter filter);
 
  /**
   * Last directory where a file was opened from
@@ -88,9 +90,9 @@ class QTutil
   * @param title   Title to show
   * @return        Directory if selected, otherwise null
   */
- static File openExistingDirectoryDialog(QWidget parent, String title, String acceptText);
+ static QFile openExistingDirectoryDialog(QWidget parent, QString title, QString acceptText);
 
- static Filter getAllFilesFilter();
+//? static Filter getAllFilesFilter();
 
  static QList<QString> getSupportedImageFormats();
 
@@ -103,34 +105,37 @@ class QTutil
 
  static QString formatDateTime(long t);
 
- static QLayout layoutHorizontal(QWidget... widgets);
+ static QLayout* //QLayout 
+   layoutHorizontal(QList<QWidget*> widgets);
 
- static QLayout layoutVertical(Object... widgets);  
+ static QLayout* //QLayout
+   layoutVertical(QList<QWidget*> widgets);  
 
- static void showNotice(final QWidget parent, final String text);
+ static void showNotice(const QWidget& parent, const QString text);
 
- static void printError(final QWidget parent, final String text);
+ static void printError(const QWidget& parent, const QString text);
  
 
- static boolean checkIsSigned(boolean isSigned, QWidget parent);
+ static bool checkIsSigned(bool isSigned, QWidget& parent);
 
  /**
   * Fit number of rows
   */
- static void setProperHeightOfTable(QTableView listTables);
+ static void setProperHeightOfTable(QTableView& listTables);
 
- static QValidator getLabstoryIdvalidator(QObject parent);
+ static QIntValidator // QValidator
+   getLabstoryIdvalidator(QObject& parent);
  
- static boolean showOkCancel(String title);
+ static bool showOkCancel(QString title);
  
- static boolean showYesNo(String title);
+ static bool showYesNo(QString title);
 
- static boolean addingKey(QMouseEvent event);
+ static bool addingKey(QMouseEvent* event);
 
  /**
   * Create a read-only list item
   */
- static QTableWidgetItem createReadOnlyItem(QString s);
+ static QTableWidgetItem* createReadOnlyItem(QString s);
 
 };
 
