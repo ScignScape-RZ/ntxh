@@ -47,6 +47,10 @@ class EventDatasetsChanged : public FacsanaduEvent
 
 class EventGatesChanged : public FacsanaduEvent
 {
+public:
+
+ EventGatesChanged() {}
+
  Description get_description() Q_DECL_OVERRIDE
  {
   return Description::EventGatesChanged;

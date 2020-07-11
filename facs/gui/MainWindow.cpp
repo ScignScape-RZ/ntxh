@@ -66,6 +66,8 @@ QList<Dataset*> _MainWindow_GateCalcThread::getCurrentDatasets()
 };
 
 
+#define connect_this(x, y, z) connect(y, &x, \
+   this, &MainWindow::z);
 
 MainWindow::MainWindow()
 {
@@ -140,6 +142,8 @@ MainWindow::MainWindow()
 
  //? datasetsw.selectionChanged.connect(this,"actionDsChanged()");
  
+ connect_this(DatasetListWidget ::selectionChanged ,datasetsw_ ,actionDsChanged) 
+
  QVBoxLayout* layLeft = new QVBoxLayout();
 
  layLeft->addWidget(datasetsw_);

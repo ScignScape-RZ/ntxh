@@ -3,6 +3,10 @@
 
 #include "GraphExportWindow.h"
 
+#include "qt/QTutil.h"
+
+#include <QButtonGroup>
+
 
 GraphExportWindow::GraphExportWindow()
 {
@@ -17,34 +21,34 @@ GraphExportWindow::GraphExportWindow()
  bByView_ = new QRadioButton(tr("Split by view"));
  bAllSeparate_ = new QRadioButton(tr("All graphs individually"));
 
- bool wasOk_ = false;
+ wasOk_ = false;
 
- spWidth.setMinimum(100);
- spWidth.setMaximum(10000);
- spWidth.setValue(500);
+ spWidth_->setMinimum(100);
+ spWidth_->setMaximum(10000);
+ spWidth_->setValue(500);
 
- spHeight.setMinimum(100);
- spHeight.setMaximum(10000);
- spHeight.setValue(400);
+ spHeight_->setMinimum(100);
+ spHeight_->setMaximum(10000);
+ spHeight_->setValue(400);
   
- QButtonGroup bg = new QButtonGroup();
- bg.addButton(bAsOne);
- bg.addButton(bByDataset);
- bg.addButton(bByView);
- bg.addButton(bAllSeparate);
+ QButtonGroup* bg = new QButtonGroup();
+ bg->addButton(bAsOne_);
+ bg->addButton(bByDataset_);
+ bg->addButton(bByView_);
+ bg->addButton(bAllSeparate_);
 
- bAsOne.setChecked(true);
+ bAsOne_->setChecked(true);
   
- QLayout lay = QTutil.layoutVertical
- (
-  QTutil.withLabel(tr("Width:"), spWidth),
-  QTutil.withLabel(tr("Height:"), spHeight),
-  bAsOne,
-  bByDataset,
-  bByView,
-  bAllSeparate,
-  QTutil.layoutHorizontal(bOk,bCancel)
- );
+ QLayout* lay = QTutil::layoutVertical
+ ({
+  QTutil::withLabel(tr("Width:"), spWidth_),
+  QTutil::withLabel(tr("Height:"), spHeight_),
+  bAsOne_,
+  bByDataset_,
+  bByView_,
+  bAllSeparate_,
+  QTutil::layoutHorizontal({bOk_, bCancel_})
+  });
 
  setLayout(lay);
   
@@ -55,29 +59,29 @@ GraphExportWindow::GraphExportWindow()
  
 bool GraphExportWindow::splitByDataset()
 {
- return bByView.isChecked() || bAllSeparate.isChecked();
+ return bByView_->isChecked() || bAllSeparate_->isChecked();
 }
 
 bool GraphExportWindow::splitByView()
 {
- return bByDataset.isChecked() || bAllSeparate.isChecked();
+ return bByDataset_->isChecked() || bAllSeparate_->isChecked();
 }
  
 int GraphExportWindow::getWidth()
 {
- return spWidth.value();
+ return spWidth_->value();
 }
 
 int GraphExportWindow::getHeight()
 {
- return spHeight.value();
+ return spHeight_->value();
 }
  
 void GraphExportWindow::actionOK()
 {
  if(storeAnnot())
  {
-  wasOk=true;
+  wasOk_ = true;
   close();
  }
 }

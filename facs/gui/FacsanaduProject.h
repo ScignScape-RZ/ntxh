@@ -53,13 +53,23 @@ public:
 
  // // Get an existing or create a new gating result for a particular dataset. Each dataset should have one
  GatingResult* getCreateGatingResult(Dataset* ds);
+
+ LinkedList<ProfChannel*>& profchan()
+ {
+  return profchan_;
+ }
+
+ GateSet* gateset()
+ {
+  return gateset_;
+ }
  
- LinkedList<ViewSettings*> views()
+ LinkedList<ViewSettings*>& views()
  {
   return views_;
  }
 
- LinkedList<Dataset*> datasets()
+ LinkedList<Dataset*>& datasets()
  {
   return datasets_;
  }

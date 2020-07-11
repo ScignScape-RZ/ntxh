@@ -25,12 +25,12 @@ public:
  /**
   * Return a widget with a label to the left of it
   */
- static QLayout* withLabel(QString s, QWidget& w);
+ static QLayout* withLabel(QString s, QWidget* w);
  
  /**
   * Return a widget with a label to the right of it
   */
- static QLayout* withLabel(QString s, QWidget& w, QString sRight);
+ static QLayout* withLabel(QString s, QWidget* w, QString sRight);
 
  /**
   * Place widget within a titled frame
@@ -106,10 +106,10 @@ public:
  static QString formatDateTime(long t);
 
  static QLayout* //QLayout 
-   layoutHorizontal(QList<QWidget*> widgets);
+   layoutHorizontal(QList<QObject*> widgets);
 
  static QLayout* //QLayout
-   layoutVertical(QList<QWidget*> widgets);  
+   layoutVertical(QList<QObject*> widgets);  
 
  static void showNotice(const QWidget& parent, const QString text);
 

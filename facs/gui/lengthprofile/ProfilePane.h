@@ -24,13 +24,8 @@ class ProfChannel;
 
 // package facsanadu.gui.lengthprofile;
 
-/**
- * 
- * Pane showing length profiles
- * 
- * @author Johan Henriksson
- *
- */
+// // Pane showing length profiles
+
 class ProfilePane : public QWidget // extends QWidget
 {
  QPushButton* bPrevProf_; //= new QPushButton(new QIcon(ImgResource.moveLeft), "");

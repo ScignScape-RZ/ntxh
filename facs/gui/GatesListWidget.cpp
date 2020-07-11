@@ -3,107 +3,167 @@
 #include "GatesListWidget.h"
 
 
+
+#include "qt/QTutil.h"
+
+#include "resource/ImgResource.h"
+
+#include "../gates/gate-info.h"
+
+#include "../gates/GateSet.h"
+
+#include "../gates/measure/GateMeasure.h"
+
+#include "colors/QColorCombo.h"
+
+#include "MainWindow.h"
+#include "AddMeasureDialog.h"
+
+#include "FacsanaduProject.h"
+
+#include "events/FacsanaduEvent.h"
+
+
+#include <QInputDialog>
+
+
+#define connect_this(x, y, z) connect(y, &x, \
+   this, &GatesListWidget::z);
+
+
+
 GatesListWidget::GatesListWidget(MainWindow* mw) 
  : mw_(mw)
 {
  main_layout_ = new QVBoxLayout;
 
- setMargin(0);
+ //setMargin(0);
  
- treeGates->setHeaderLabels(Arrays.asList(tr("Gate"),tr("Color")));
- treeGates->setSelectionBehavior(SelectionBehavior::SelectRows);
- treeGates->setSelectionMode(SelectionMode::MultiSelection);
- //?treeGates->selectionModel().selectionChanged.connect(this,"dothelayout()"); 
- treeGates->setSizePolicy(Policy::Minimum, Policy::Expanding);
+ treeGates_->setHeaderLabels( {tr("Gate"), tr("Color") } );
 
- QPushButton* bSelectAllGates = new QPushButton(tr("Select all"));
- QPushButton* bRenameGate = new QPushButton(tr("Rename gate"));
- QPushButton* bRemoveGate = new QPushButton(new QIcon(ImgResource.delete),"");
- QPushButton* bMeasure = new QPushButton(tr("Measure"));
+ treeGates_->setSelectionBehavior(
+   QAbstractItemView::SelectionBehavior::SelectRows);
+
+ treeGates_->setSelectionMode(
+   QAbstractItemView::SelectionMode::MultiSelection);
+
+ //?treeGates->selectionModel().selectionChanged.connect(this,"dothelayout()"); 
+
+ connect_this(QItemSelectionModel ::selectionChanged 
+   ,treeGates_->selectionModel() ,dothelayout) 
+
+
+ treeGates_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+ QPushButton* bSelectAllGates = new QPushButton(tr("Select all"), this);
+ QPushButton* bRenameGate = new QPushButton(tr("Rename gate"), this);
+ QPushButton* bRemoveGate = new QPushButton(QIcon(ImgResource::icon_delete),
+   "", this);
+ QPushButton* bMeasure = new QPushButton(tr("Measure"), this);
+
+ connect_this(QPushButton ::clicked ,bMeasure ,actionAddMeasure) 
+ connect_this(QPushButton ::clicked ,bRenameGate ,actionRenameGate) 
+ connect_this(QPushButton ::clicked ,bRemoveGate ,actionRemoveGates) 
+ connect_this(QPushButton ::clicked ,bSelectAllGates ,actionSelectAllGates) 
 
 // bMeasure.clicked.connect(this,"actionAddMeasure()");
 // bRenameGate.clicked.connect(this,"actionRenameGate()");
 // bRemoveGate.clicked.connect(this,"actionRemoveGates()");
 // bSelectAllGates.clicked.connect(this,"actionSelectAllGates()");
 
- main_layout_->addWidget(treeGates);
- main_layout_->addLayout(QTutil.layoutHorizontal(bMeasure, bSelectAllGates, bRenameGate, bRemoveGate));
+ main_layout_->addWidget(treeGates_);
+
+ main_layout_->addLayout(QTutil::layoutHorizontal(
+   { bMeasure, bSelectAllGates, bRenameGate, bRemoveGate } ));
 }
  
 void GatesListWidget::dothelayout()
 {
- mw.dothelayout();
+ mw_->dothelayout();
 }
  
 void GatesListWidget::actionSelectAllGates()
 {
- treeGates->selectAll();
+ treeGates_->selectAll();
 }
 
 Gate* GatesListWidget::getCurrentGate()
 {
- QTreeWidgetItem it=treeGates->currentItem();
- if(it!=null)
-   return (Gate)it.data(0,Qt.ItemDataRole.UserRole);
+ QTreeWidgetItem* qtwi = treeGates_->currentItem();
+ if(qtwi)
+   return (Gate*) qtwi->data(0, Qt::ItemDataRole::UserRole).value<void*>();
  else
-   return null;
+   return nullptr;
 }
  
-LinkedList<Gate> GatesListWidget::getSelectedGates()
+LinkedList<Gate*> GatesListWidget::getSelectedGates()
 {
- LinkedList<Gate> selviews = new LinkedList<Gate*>();
- for(QTreeWidgetItem* it : treeGates->selectedItems())
+ LinkedList<Gate*> selviews; // = new LinkedList<Gate*>();
+ for(QTreeWidgetItem* qtwi : treeGates_->selectedItems())
  {
-  Object* ob = it.data(0,Qt.ItemDataRole.UserRole);
-  if(ob instanceof Gate)
-    selviews.add((Gate)ob);
+  QObject* obj = qtwi->data(0, Qt::ItemDataRole::UserRole)
+    .value<QObject*>();
+
+  if(Gate* g = qobject_cast<Gate*>(obj) )
+    selviews.append(g);
  }
  return selviews;
 }
 
-LinkedList<GateMeasure> GatesListWidget::getSelectedMeasures()
+LinkedList<GateMeasure*> GatesListWidget::getSelectedMeasures()
 {
- LinkedList<GateMeasure> selviews = new LinkedList<GateMeasure>();
- for(QTreeWidgetItem it:treeGates->selectedItems())
+ LinkedList<GateMeasure*> selviews; // = new LinkedList<GateMeasure>();
+
+ for(QTreeWidgetItem* qtwi : treeGates_->selectedItems())
  {
-  Object ob = it.data(0, Qt.ItemDataRole.UserRole);
-  if(ob instanceof GateMeasure)
-    selviews.add((GateMeasure)ob);
-  }
+  QObject* obj = qtwi->data(0, Qt::ItemDataRole::UserRole).value<QObject*>();
+
+  if(GateMeasure* gm = qobject_cast<GateMeasure*>(obj) )
+    selviews.append(gm);
+ }
  return selviews;
 }
   
 void GatesListWidget::updateGatesList()
- {
- boolean wasUpdating=isUpdating;
- callbacks.clear();
- LinkedList<Gate> selgates=getSelectedGates();
- LinkedList<GateMeasure> selcalc=getSelectedMeasures();
- isUpdating=false;
- treeGates->clear();
- updateGatesListRecursive(null, mw.project.gateset.getRootGate(), selgates, selcalc);
- treeGates->expandAll();
+{
+ bool wasUpdating = isUpdating_;
 
- treeGates->resizeColumnToContents(0);
+ callbacks_.clear();
+ LinkedList<Gate*> selgates = getSelectedGates();
+ LinkedList<GateMeasure*> selcalc = getSelectedMeasures();
+ isUpdating_ = false;
+
+ treeGates_->clear();
+
+//? updateGatesListRecursive(nullptr, mw_->project()->gateset.getRootGate(), selgates, selcalc);
+
+ treeGates_->expandAll();
+
+ treeGates_->resizeColumnToContents(0);
  
- isUpdating=wasUpdating;
- }
+ isUpdating_ = wasUpdating;
+}
 
-void GatesListWidget::updateGatesListRecursive(QTreeWidgetItem parentItem, final Gate g, LinkedList<Gate> selgates, LinkedList<GateMeasure> selcalc)
+void GatesListWidget::updateGatesListRecursive(QTreeWidgetItem* parentItem, 
+  const Gate* g, LinkedList<Gate*> selgates, 
+  LinkedList<GateMeasure*> selcalc)
 {
  QTreeWidgetItem* item;
 
- if(parentItem==null)
-   item=new QTreeWidgetItem(treeGates);
+ if(parentItem == nullptr)
+   item = new QTreeWidgetItem(treeGates_);
+
  else
-   item=new QTreeWidgetItem(parentItem);
+   item = new QTreeWidgetItem(parentItem);
 
- item.setData(0,Qt.ItemDataRole.UserRole, g);
- item.setText(0, g.name+"   "); //spacing, can we do better?
- final QColorCombo combocolor=new QColorCombo();
- treeGates->setItemWidget(item, 1, combocolor);
- combocolor.setCurrentColor(g.color);
+ item->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(g) );
+ item->setText(0, g->name() + "   "); //spacing, can we do better?
 
+ QColorCombo* combocolor = new QColorCombo();
+ treeGates_->setItemWidget(item, 1, combocolor);
+ combocolor->setCurrentColor(g->color());
+
+/*
  CallbackColor cb=new CallbackColor()
  {
   void set()
@@ -112,144 +172,154 @@ void GatesListWidget::updateGatesListRecursive(QTreeWidgetItem parentItem, final
    emitEvent(new EventGatesChanged()); //Smaller change?
   }
  };
+*/
 
- this.callbacks.add(cb);
- combocolor.currentIndexChanged.connect(cb,"set()");
+ //?this->callbacks.append(cb);
+ //?combocolor.currentIndexChanged.connect(cb,"set()");
  
- if(selgates.contains(g))
-  item.setSelected(true);
+ if(selgates.contains( (Gate*) g))
+   item->setSelected(true);
  
- addMeasures(item, g, selcalc);
+ addMeasures(item, (Gate*) g, selcalc);
  
- for(Gate child:g.children)
+ for(Gate* child : g->children() )
  {
   updateGatesListRecursive(item, child, selgates, selcalc);
  }
 }
 
-void GatesListWidget::addMeasures(QTreeWidgetItem parentItem, Gate g, LinkedList<GateMeasure> selcalc)
+void GatesListWidget::addMeasures(QTreeWidgetItem* parentItem, Gate* g, LinkedList<GateMeasure*> selcalc)
 {
- for(GateMeasure calc:g.getMeasures())
+ for(GateMeasure* calc : g->getMeasures())
  {
   QTreeWidgetItem* item;
-  if(parentItem == null)
-    item = new QTreeWidgetItem(treeGates);
+  if(parentItem == nullptr)
+    item = new QTreeWidgetItem(treeGates_);
   else
     item = new QTreeWidgetItem(parentItem);
-  item->setData(0, Qt.ItemDataRole.UserRole, calc); 
-    //g and calc needed here. or get parent?
-  item->setText(0, calc.getDesc(mw.project));
 
-  if(selcalc.contains(g))
-    item.setSelected(true);
+  item->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(calc) ); 
+    //g and calc needed here. or get parent?
+
+  //?
+  item->setText(0, calc->getDesc(mw_->project() ));
+  
+  // //?  Should this be calc or g? 
+   //if(selcalc.contains(g))
+  if(selcalc.contains(calc))
+    item->setSelected(true);
  } 
 }
 
 void GatesListWidget::actionAddMeasure()
 {
- LinkedList<Gate> gates=getSelectedGates();
+ LinkedList<Gate*> gates = getSelectedGates();
  if(gates.isEmpty())
-   QTutil.showNotice(mw, tr("First select some gates"));
+   QTutil::showNotice(*mw_, tr("First select some gates"));
  else
  {
-  AddMeasureDialog* w = new AddMeasureDialog(mw.project);
-  w.exec();
+  AddMeasureDialog* w = new AddMeasureDialog(mw_->project());
+  w->exec();
   
-  for(Gate g:gates)
+  for(Gate* g : gates)
   {
-   for(GateMeasure calc : w.getMeasures())
+   for(GateMeasure* calc : w->getMeasures() )
    {
-    g.attachMeasure(calc);
+    g->attachMeasure(calc);
    }
-   emitEvent(new EventGatesChanged()); 
+   emitEvent(EventGatesChanged()); 
   }
  }
 }
  
 void GatesListWidget::actionRenameGate()
 {
- FacsanaduProject project = mw.project;
+ FacsanaduProject* project = mw_->project();
 
- Gate g=getCurrentGate();
+ Gate* g = getCurrentGate();
 
- if( (g != nullptr) && (g != project.gateset.getRootGate()) )
+ if( (g != nullptr) && (g != project->gateset()->getRootGate()) )
  {
-  String newname = QInputDialog::getText(mw, tr("Rename gate"), tr("New name:"), EchoMode.Normal, g.name);
+  QString newname = QInputDialog::getText(mw_, tr("Rename gate"), tr("New name:"), QLineEdit::EchoMode::Normal, g->name() );
 
-  if(!newname.equals("") && (newname.equals(g.name) || !project.gateset.getGateNames().contains(newname)))
+  if( !newname.isEmpty() && ( (newname == g->name() ) 
+    || !project->gateset()->getGateNames().contains(newname)))
   {
-   g.name=newname;
-   emitEvent(new EventGatesChanged());
+   g->set_name(newname);
+   emitEvent(EventGatesChanged());
   }
   else
-    QTutil.showNotice(mw, tr("Invalid name"));
+    QTutil::showNotice(*mw_, tr("Invalid name"));
  } 
 }
 
 
 void GatesListWidget::emitEvent(FacsanaduEvent event)
 {
- mw.handleEvent(event);
+  // //  by-value?
+ mw_->handleEvent(&event);
 }
 
  
 void GatesListWidget::actionRemoveGates()
 {
- FacsanaduProject project=mw.project;
+ FacsanaduProject* project = mw_->project();
 
- Collection<Gate> gates = getSelectedGates();
- Collection<GateMeasure> calcs = getSelectedMeasures();
+ QList<Gate*> gates = getSelectedGates();
+ QList<GateMeasure*> calcs = getSelectedMeasures();
 
- gates.remove(project.gateset.getRootGate());
+ gates.removeAll(project->gateset()->getRootGate());
  //Should include gates recursively!
 
  //Needed for now - but should maybe not have updated times on individual gates
- project.gateset.getRootGate().setUpdated();
+ project->gateset()->getRootGate()->setUpdated();
  
- for(Gate g:gates)
+ for(Gate* g : gates)
  {
-  g.detachParent();
+  g->detachParent();
  }
  
- for(GateMeasure calc:calcs)
+ for(GateMeasure* calc : calcs)
  {
-  calc.detachFromGate();
+  calc->detachFromGate();
  }
 
- bool changedViews=false;
+ bool changedViews = false;
 
- for(ViewSettings vs : new LinkedList<ViewSettings>(project.views))
+ for(ViewSettings* vs : project->views()) 
+    // : new LinkedList<ViewSettings>(project.views))
  {
-  if(gates.contains(vs.gate) || gates.contains(vs.gate.children)) 
+  if(gates.contains(vs->gate() ) || gates.contains(vs->gate().children)) 
      //TODO or any gate below!!  contains - is this AND or OR?
   {
-   project.views.remove(vs);
-   changedViews=true;
+   project->views().removeAll(vs);
+   changedViews = true;
   }
  }
- emitEvent(new EventGatesChanged());
+ emitEvent(EventGatesChanged());
  if(changedViews)
-   emitEvent(new EventViewsChanged());
+   emitEvent(EventViewsChanged());
 }
  
-void GatesListWidget::addGate(Gate suggestParent, Gate g)
+void GatesListWidget::addGate(Gate* suggestParent, Gate* g)
 {
- FacsanaduProject project=mw.project;
- g.name=project.gateset.getFreeName();
- Gate parent=getCurrentGate();
+ FacsanaduProject* project = mw_->project();
+ g->set_name( project->gateset()->getFreeName() );
 
- if(parent==null)
-   parent=project.gateset.getRootGate();
+ Gate* parent = getCurrentGate();
+
+ if(parent == nullptr)
+   parent = project->gateset()->getRootGate();
  
  //It need be a gate beneath the suggested parent!
- if(suggestParent!=null)
+ if(suggestParent_)
  {
-  if(!suggestParent.children.contains(parent))
+  if(!suggestParent_->children().contains(parent))
     parent=suggestParent;
  }
 
- System.out.println("attaching to parent: "+parent);
- parent.attachChild(g);
+ //System.out.println("attaching to parent: "+parent);
+ parent->attachChild(g);
  
  updateGatesList();
 }

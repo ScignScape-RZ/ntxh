@@ -37,6 +37,9 @@ public:
  int indexX() { return indexX_; }  //=7;
  int indexY() { return indexY_; } 
 
+ void set_indexX(int i) { indexX_ = i; }
+ void set_indexY(int i) { indexY_ = i; }
+
  //  // Set the scale to cover the given max and min values
  void autoscale(QList<double> max, QList<double> min);
 

@@ -5,22 +5,31 @@
 #ifndef QColorCombo__H
 #define QColorCombo__H
 
-#include <QSignalEmitter>
-#include <QPixMap>
+//
+#include "../gates/gate-info.h"
+
+
+
+#include <QPixmap>
+
+
 
 // package facsanadu.gui.colors;
+
+class ColorSet; // = ColorSet.colorset;
+//class GateColor; // = colorset.get(0);
 
 
 // // Combo box: List of colors
 
-class QColorCombo :  QPushButton
+class QColorCombo : public QPushButton
 {
- ColorSet colorset_; // = ColorSet.colorset;
- GateColor currentColor_ = colorset.get(0);
+ ColorSet* colorset_; // = ColorSet.colorset;
+ GateColor* currentColor_; // = colorset_->get(0);
  
  int size_; // = 12;
  
- QSignalEmitter.Signal0 currentIndexChanged=new QSignalEmitter.Signal0();
+ //QSignalEmitter.Signal0 currentIndexChanged=new QSignalEmitter.Signal0();
  
 public:
 

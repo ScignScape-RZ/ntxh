@@ -5,11 +5,11 @@
 
 #include <QString>
 
-QtProgramInfo::programName = "FACSanadu";
+QString QtProgramInfo::programName = "FACSanadu";
 
-QtProgramInfo::programVersion = "0.1.0";
+QString QtProgramInfo::programVersion = "0.1.0";
 
-QtProgramInfo::licenseText =
+QString QtProgramInfo::licenseText =
    "If you use this software, please cite: ...\n"
    "\n"
    "Available under the 3-clause BSD license";

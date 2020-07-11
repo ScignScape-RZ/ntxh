@@ -5,6 +5,10 @@
 #ifndef AddMeasureDialog__H
 #define AddMeasureDialog__H
 
+// // temp
+#include<QList>
+#define LinkedList QList
+
 
 #include <QTableWidget>
 #include <QCheckBox>
@@ -13,8 +17,9 @@
 // package facsanadu.gui;
 
 class FacsanaduProject;
-class ChannelInfo getSelectedChannels;
+class ChannelInfo;
 class GateMeasure;
+
 
 
 // //
@@ -28,11 +33,17 @@ class AddMeasureDialog : public QDialog
  QPushButton* bOk_; //=new QPushButton(tr("OK"));
  QPushButton* bCancel_; //=new QPushButton(tr("Cancel"));
  
- FacsanaduProject* proj;
+ FacsanaduProject* project_;
  
  public: 
 
  AddMeasureDialog(FacsanaduProject* proj);
+
+ FacsanaduProject* project() 
+ {
+  return project_;
+ }
+
 
  void actionOK();
  void updatechanlist();
@@ -40,7 +51,8 @@ class AddMeasureDialog : public QDialog
  // // Get selected channels
  LinkedList<ChannelInfo*> getSelectedChannels();
  
- Collection<GateMeasure*> getMeasures();
+ //Collection<GateMeasure*> getMeasures();
+ QList<GateMeasure*> getMeasures();
 
 };
 

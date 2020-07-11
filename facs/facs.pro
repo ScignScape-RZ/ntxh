@@ -12,8 +12,13 @@ HEADERS += \
 SOURCES +=  \
  ./gui/MainWindow.cpp  \
  ./gui/ViewsListWidget.cpp  \
+ ./gui/QtProgramInfo.cpp  \
+ ./gui/ProfileChannelWidget.cpp  \
+ ./gui/GraphExportWindow.cpp  \
+ ./gui/GatesListWidget.cpp  \
 
-#  \
+
+#
 
 
 OBJECTS_DIR = ./build/objects

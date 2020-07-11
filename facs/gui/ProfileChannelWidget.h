@@ -16,9 +16,14 @@
 #include<QList>
 #define LinkedList QList
 
+class ProfilePane;
+class MainWindow;
+class ProfChannel;
 
 class ProfileChannelWidget : public QWidget // extends QVBoxLayout
 {
+ MainWindow* mw_;
+
  QVBoxLayout* main_layout_;
 
  bool isUpdating_; //=false;
@@ -50,7 +55,7 @@ public:
 
 
  // // Get selected channels
- LinkedList<ProfChannel> getSelectedChannels();
+ LinkedList<ProfChannel*> getSelectedChannels();
 
  void actionSelectionChanged();
 

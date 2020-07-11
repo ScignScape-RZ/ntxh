@@ -19,10 +19,13 @@
 #include "../data/Dataset.h"
 #include "../data/ChannelInfo.h"
 
-//#include "QTutil.h"
 
 
 #include <QHeaderView>
+
+#define connect_this(x, y, z) connect(y, &x, \
+   this, &ViewsListWidget::z);
+
 
 ViewsListWidget::ViewsListWidget(MainWindow* mw)
  :  mw_(mw)
@@ -41,10 +44,25 @@ ViewsListWidget::ViewsListWidget(MainWindow* mw)
 
 //? tableViews_->selectionModel().selectionChanged.connect(this,"dothelayout()");
  
- QPushButton* bSelectAllViews = new QPushButton(tr("Select all"));
- QPushButton* bNewView = new QPushButton(tr("New view"));
+ connect_this(QItemSelectionModel ::selectionChanged 
+   ,tableViews_->selectionModel() ,dothelayout) 
 
- QPushButton* bRemoveView = new QPushButton(QIcon(ImgResource::icon_delete),"");
+
+ QPushButton* bSelectAllViews = new QPushButton(tr("Select all"), this);
+ QPushButton* bNewView = new QPushButton(tr("New view"), this);
+
+ QPushButton* bRemoveView = new QPushButton(QIcon(ImgResource::icon_delete),
+   "", this);
+
+// connect(bNewView, &QPushButton::clicked,
+ //  this, &ViewsListWidget::actionNewView);
+
+// connect(bRemoveView, &QPushButton::clicked,
+//   this, &ViewsListWidget::actionRemoveView);
+
+ connect_this(QPushButton ::clicked ,bNewView ,actionNewView) 
+ connect_this(QPushButton ::clicked ,bRemoveView ,actionRemoveView) 
+ connect_this(QPushButton ::clicked ,bSelectAllViews ,actionSelectAllViews) 
 
 // bNewView.clicked.connect(this,"actionNewView()");
 // bRemoveView.clicked.connect(this,"actionRemoveView()");
@@ -144,19 +162,20 @@ void ViewsListWidget::actionNewView()
  FacsanaduProject* project = mw_->project();
  ViewSettings* vs = new ViewSettings();
 
- vs->gate = project->gateset() -> getRootGate();
+   //? vs->set_gate( project->gateset() -> getRootGate();
 
- vs->indexX = 0;
- vs->indexY = 1;                                                    
+ vs->set_indexX(0);
+ vs->set_indexY(1);                                                    
 
- if(project.getNumChannels()>vs.indexX)
-   vs.indexX=0;
- if(project.getNumChannels()>vs.indexY)
-   vs.indexY=0;
+ if( project-> getNumChannels() > vs->indexX() )
+   vs->set_indexX(0);
+
+ if( project->getNumChannels() > vs->indexY() )
+   vs->set_indexY(0);
  
  //autoscale here the first time?
  
- project->views.add(vs);
+ project->views().append(vs);
  updateViewsList();
 }
 

@@ -29,13 +29,7 @@ class Gate;
 class GateMeasure;
 class FacsanaduEvent;
 
-/**
- * 
- * List of all gates
- * 
- * @author Johan Henriksson
- *
- */
+// // List of all gates
 class GatesListWidget : public QWidget //?: public.QVBoxLayout
 {
  QVBoxLayout* main_layout_;
@@ -48,11 +42,12 @@ class GatesListWidget : public QWidget //?: public.QVBoxLayout
  LinkedList<CallbackColor*> callbacks_; //=new LinkedList<GatesListWidget.CallbackColor>();
 
  void updateGatesListRecursive(QTreeWidgetItem* parentItem, // final 
-   Gate* g, LinkedList<Gate*> selgates, LinkedList<GateMeasure*> selcalc);
+   const Gate* g, LinkedList<Gate*> selgates, 
+   LinkedList<GateMeasure*> selcalc);
 
  void addMeasures(QTreeWidgetItem* parentItem, Gate* g, LinkedList<GateMeasure*> selcalc);
 
- void emitEvent(FacsanaduEvent& event);
+ void emitEvent(FacsanaduEvent event);
 //  {
 //  mw.handleEvent(event);
 //  }
