@@ -9,10 +9,10 @@
 #include "resource/ImgResource.h"
 
 #include "../gates/gate-info.h"
-
 #include "../gates/GateSet.h"
-
 #include "../gates/measure/GateMeasure.h"
+
+#include "view/ViewSettings.h"
 
 #include "colors/QColorCombo.h"
 
@@ -289,7 +289,8 @@ void GatesListWidget::actionRemoveGates()
  for(ViewSettings* vs : project->views()) 
     // : new LinkedList<ViewSettings>(project.views))
  {
-  if(gates.contains(vs->gate() ) || gates.contains(vs->gate().children)) 
+  if(gates.contains(vs->gate() )) 
+       //?  || gates.contains(vs->gate()->children() )) 
      //TODO or any gate below!!  contains - is this AND or OR?
   {
    project->views().removeAll(vs);
@@ -312,9 +313,9 @@ void GatesListWidget::addGate(Gate* suggestParent, Gate* g)
    parent = project->gateset()->getRootGate();
  
  //It need be a gate beneath the suggested parent!
- if(suggestParent_)
+ if(suggestParent)
  {
-  if(!suggestParent_->children().contains(parent))
+  if(!suggestParent->children().contains(parent))
     parent=suggestParent;
  }
 

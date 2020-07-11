@@ -67,6 +67,10 @@ class EventGatesMoved : public FacsanaduEvent
 
 class EventViewsChanged : public FacsanaduEvent
 {
+public:
+
+ EventViewsChanged() {}
+
  Description get_description() Q_DECL_OVERRIDE
  {
   return Description::EventViewsChanged;

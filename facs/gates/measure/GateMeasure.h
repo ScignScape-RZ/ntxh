@@ -8,6 +8,7 @@
 // package facsanadu.gates.measure;
 
 #include <QString>
+#include <QObject>
 
 class Gate;
 class Dataset;
@@ -15,8 +16,10 @@ class GatingResult;
 class FacsanaduProject;
 
 // // Calculation for a gate
-class GateMeasure
+class GateMeasure : public QObject
 {
+Q_OBJECT
+
  Gate* gate_;
 
 public:

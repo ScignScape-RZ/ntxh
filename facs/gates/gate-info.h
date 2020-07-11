@@ -9,12 +9,16 @@
 #include <QString>
 
 #include <QColor>
+#include <QObject>
+
 
 class GateMeasure; 
 
 // //  just a minimal wrapper to bridge Facsanadu and cytoLib ...
-class Gate
+class Gate : public QObject
 {
+Q_OBJECT
+
  QString name_;
  void* oc_gate_;
 
@@ -25,15 +29,17 @@ public:
  {
  }
 
+ Gate(const Gate&);
+ Gate();
+
  QList<GateMeasure*> getMeasures() const
  {
   return {};
  }
 
- QList<Gate*> children() const
- {
-  return {};
- }
+ QList<Gate*> children() const;
+
+ void attachChild(Gate* g); 
 
  QString name() const
  {
@@ -56,6 +62,10 @@ public:
  void attachMeasure(GateMeasure* calc);
 
 };
+
+Q_DECLARE_METATYPE(Gate)
+Q_DECLARE_METATYPE(Gate*)
+Q_DECLARE_METATYPE(const Gate*)
 
 
 class GateColor

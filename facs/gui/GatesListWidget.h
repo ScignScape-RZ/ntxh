@@ -32,6 +32,8 @@ class FacsanaduEvent;
 // // List of all gates
 class GatesListWidget : public QWidget //?: public.QVBoxLayout
 {
+Q_OBJECT
+
  QVBoxLayout* main_layout_;
 
 
