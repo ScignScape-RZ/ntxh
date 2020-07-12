@@ -32,7 +32,8 @@ public:
  }
  
  double calc(Dataset* ds, Gate* g, GatingResult* res);
- QString getDesc(FacsanaduProject* proj);
+ //QString getDesc(FacsanaduProject* proj);
+ virtual QString getDesc(FacsanaduProject* proj);
  
  
  void detachFromGate();

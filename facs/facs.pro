@@ -19,6 +19,7 @@ SOURCES +=  \
  ./gui/FacsanaduProject.cpp \
  ./gui/DialogAbout.cpp \
  ./gui/DatasetListWidget.cpp \
+ ./gui/AddMeasureDialog.cpp \
 
 
 

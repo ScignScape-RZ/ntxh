@@ -13,6 +13,7 @@
 #include <QTableWidget>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QDialog>
 
 // package facsanadu.gui;
 
@@ -34,8 +35,10 @@ class AddMeasureDialog : public QDialog
  QPushButton* bCancel_; //=new QPushButton(tr("Cancel"));
  
  FacsanaduProject* project_;
+
+ bool wasOK_;
  
- public: 
+public: 
 
  AddMeasureDialog(FacsanaduProject* proj);
 

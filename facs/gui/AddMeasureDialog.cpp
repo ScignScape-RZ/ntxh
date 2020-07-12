@@ -3,89 +3,117 @@
 
 #include "AddMeasureDialog.h"
 
+#include "qt/QTutil.h"
 
-// package facsanadu.gui;
+#include "FacsanaduProject.h"
+#include "../data/ChannelInfo.h"
+
+#include "../gates/measure/GateMeasure.h"
+#include "../gates/measure/GateMeasureUnivariate.h"
+#include "../gates/measure/GateMeasureMean.h"
+
+
+
+
+#include <QHeaderView>
 
 // package facsanadu.gui;
 
 
 // //
 
+#define connect_this(x, y, z) connect(y, &x, \
+   this, &AddMeasureDialog::z);
+
 AddMeasureDialog::AddMeasureDialog(FacsanaduProject* proj)
+  :  wasOK_(true)
 {
- QTableWidget* tableChannels_ = new QTableWidget();
- QCheckBox* cbMean_ = new QCheckBox(tr("Mean"));
+ tableChannels_ = new QTableWidget();
+ cbMean_ = new QCheckBox(tr("Mean"));
  cbMedian_ = new QCheckBox(tr("Median"));
  cbSD_ = new QCheckBox(tr("Standard deviation"));
  bOk_ = new QPushButton(tr("OK"));
  bCancel_ = new QPushButton(tr("Cancel"));
  
- proj_ = proj;
+ project_ = proj;
  
- tableChannels.setColumnCount(1);
- tableChannels.verticalHeader().hide();
- tableChannels.setHorizontalHeaderLabels(Arrays.asList(tr("Channel")));
- tableChannels.setSelectionBehavior(SelectionBehavior.SelectRows);
- tableChannels.horizontalHeader().setResizeMode(ResizeMode.ResizeToContents);
- tableChannels.horizontalHeader().setStretchLastSection(true); 
+ tableChannels_->setColumnCount(1);
+ tableChannels_->verticalHeader()->hide();
+ tableChannels_->setHorizontalHeaderLabels({tr("Channel")});
+ tableChannels_->setSelectionBehavior(
+   QAbstractItemView::SelectionBehavior::SelectRows);
+ tableChannels_->horizontalHeader()->setSectionResizeMode(
+   QHeaderView::ResizeMode::ResizeToContents);
+ tableChannels_->horizontalHeader()->setStretchLastSection(true); 
 
- bOk.clicked.connect(this,"actionOK()");
- bCancel.clicked.connect(this,"close()");
+ connect_this(QPushButton ::clicked ,bOk_ ,actionOK) 
+ connect_this(QPushButton ::clicked ,bCancel_ ,close) 
+
+// bOk.clicked.connect(this,"actionOK()");
+// bCancel.clicked.connect(this,"close()");
  
  updatechanlist();
- setLayout(QTutil.layoutVertical(tableChannels, cbMean, cbMedian, cbSD, QTutil.layoutHorizontal(bOk,bCancel)));
+
+ setLayout(QTutil::layoutVertical({tableChannels_, cbMean_, cbMedian_, cbSD_,
+   QTutil::layoutHorizontal({bOk_, bCancel_})}));
  
  setMinimumSize(200, 400);
 }
 
 //? boolean wasOK=false;
 
- void AddMeasureDialog::actionOK()
- {
- wasOK=true;
+void AddMeasureDialog::actionOK()
+{
+ wasOK_ = true;
  close();
- }
+}
  
-void AddMeasureDialog::updatechanlist();
+void AddMeasureDialog::updatechanlist()
 {
  int row=0;
- ArrayList<ChannelInfo> chans=proj.getChannelInfo();
- tableChannels.setRowCount(chans.size());
- for(int i=0;i<chans.size();i++)
+
+ QList<ChannelInfo*> chans = project_->getChannelInfo();
+
+ tableChannels_->setRowCount(chans.size());
+
+ for(int i = 0; i < chans.size(); i++)
  {
-  ChannelInfo ci=chans.get(i);
-  QTableWidgetItem it=QTutil.createReadOnlyItem(ci.formatName());
-  it.setData(Qt.ItemDataRole.UserRole, ci);
-  tableChannels.setItem(row, 0, it);
+  ChannelInfo* ci = chans.at(i);
+  QTableWidgetItem* it = QTutil::createReadOnlyItem(ci->formatName());
+  it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue( (void*) ci ) );
+  tableChannels_->setItem(row, 0, it);
   row++;
  }
 }
  
  // // Get selected channels
-LinkedList<ChannelInfo> AddMeasureDialog::getSelectedChannels()
+LinkedList<ChannelInfo*> AddMeasureDialog::getSelectedChannels()
 {
- LinkedList<ChannelInfo> selviews=new LinkedList<ChannelInfo>();
- for(QModelIndex in:tableChannels.selectionModel().selectedRows())
+ LinkedList<ChannelInfo*> selviews; // =new LinkedList<ChannelInfo>();
+
+ for(QModelIndex in : tableChannels_->selectionModel()->selectedRows())
  {
-  selviews.add((ChannelInfo)tableChannels.item(in.row(),0).data(Qt.ItemDataRole.UserRole));
+  selviews.append((ChannelInfo*) tableChannels_->item(in.row(), 0)
+    ->data(Qt::ItemDataRole::UserRole).value<void*>() );
  }
  return selviews;
 }
  
-Collection<GateMeasure> AddMeasureDialog::getMeasures()
+QList<GateMeasure*> AddMeasureDialog::getMeasures()
 {
- LinkedList<GateMeasure> list=new LinkedList<GateMeasure>();
- if(wasOK)
+ LinkedList<GateMeasure*> list; // =new LinkedList<GateMeasure>();
+ if(wasOK_)
  {
-  ArrayList<ChannelInfo> chans=proj.getChannelInfo();
-  for(ChannelInfo info:getSelectedChannels())
+  QList<ChannelInfo*> chans = project_->getChannelInfo();
+
+  for(ChannelInfo* info : getSelectedChannels())
   {
-   int i=chans.indexOf(info);
-   if(cbMean.isChecked())
+   int i = chans.indexOf(info);
+   if(cbMean_->isChecked())
    {
-    GateMeasureMean c=new GateMeasureMean();
-    c.channelIndex=i;
-    list.add(c);
+    GateMeasureMean* c = new GateMeasureMean();
+    c->channelIndex = i;
+    list.append(c);
    }
   }
  }
