@@ -11,6 +11,11 @@
 
 //import com.trolltech.qt.core.QPointF;
 
+#include <QPointF>
+
+class ViewSettings;
+
+
 // //
 class ViewTransform
 {
@@ -18,12 +23,22 @@ class ViewTransform
 
  int internalHeight_;
  int internalWidth_;
+ int graphOffsetXY_;
+
+ ViewSettings* viewsettings_;
 
 public:
 
- int graphOffsetXY = 30;
- 
- ViewSettings viewsettings;
+ ViewSettings* viewsettings()
+ {
+  return viewsettings_;
+ }
+
+ void set_viewsettings(ViewSettings* vs)
+ {
+  viewsettings_ = vs;
+ }
+
 
  // // Set the total view height
  void setTotalHeight(int h);
@@ -41,10 +56,10 @@ public:
  double getTotalScaleY();
  
  // // Map screen space to FCS value
- QPointF mapScreenToFcs(QPointF pos);
+ QPointF mapScreenToFcs(QPointF& pos);
 
  // // Map FCS value to screen space
- QPointF mapFcsToScreen(QPointF pos);
+ QPointF mapFcsToScreen(QPointF& pos);
 
  int mapFcsToScreenX(double x);
  int mapFcsToScreenY(double y);

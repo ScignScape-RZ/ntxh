@@ -14,22 +14,17 @@
 
 //import com.trolltech.qt.gui.QMouseEvent;
 
-/**
- * 
- * Tool for the view widget
- * 
- * @author Johan Henriksson
- *
- */
+// // Tool for the view widget
+
 class ViewTool
 {
 public:
 
- void mousePressEvent(QMouseEvent event) = 0;
- void mouseReleaseEvent(QMouseEvent ev) = 0;
- void mouseMoveEvent(QMouseEvent event) = 0;
- void mouseDoubleClickEvent(QMouseEvent event) = 0;
- bool allowHandle() = 0;
+ virtual void mousePressEvent(QMouseEvent* event) = 0;
+ virtual void mouseReleaseEvent(QMouseEvent* ev) = 0;
+ virtual void mouseMoveEvent(QMouseEvent* event) = 0;
+ virtual void mouseDoubleClickEvent(QMouseEvent* event) = 0;
+ virtual bool allowHandle() = 0;
 };
 
 

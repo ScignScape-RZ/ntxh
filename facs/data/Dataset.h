@@ -17,6 +17,9 @@ class ChannelInfo;
 class LengthProfile;
 
 class LengthProfileData;
+class FacsanaduProject;
+class ProfChannel;
+
 
 class Dataset
 {

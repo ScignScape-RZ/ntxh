@@ -5,6 +5,8 @@
 #ifndef GateHandle__H
 #define GateHandle__H
 
+class MainWindow;
+
 // package facsanadu.gui.view.gate;
 
 //import facsanadu.gui.MainWindow;
@@ -18,9 +20,10 @@
 class GateHandle
 {
 public:
- double getX() = 0;
- double getY() = 0;
- void move2(MainWindow w, double nx, double ny) = 0;
+
+ virtual double getX() = 0;
+ virtual double getY() = 0;
+ virtual void move2(MainWindow* w, double nx, double ny) = 0;
 };
 
 

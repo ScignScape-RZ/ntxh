@@ -12,6 +12,9 @@
 
 class Histogram;
 class TransformationStack;
+class GatingResult;
+
+
 
 class ViewSettings
 {

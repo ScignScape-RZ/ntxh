@@ -11,19 +11,45 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 
-//#include <QPushButton>
+#include <QWidget>
+#include <QPointF>
+#include <QImage>
+
+#include "../events/FacsanaduEvent.h"
+
+#include "ViewTransform.h"
+#include "tool/ViewToolChoice.h"
 
 
+
+// // temp
+#include<QList>
+#define LinkedList QList
 
 // package facsanadu.gui.view;
 
 // //
 
-class ViewWidget : QWidget
+class Dataset;
+class GateHandle; 
+class ViewTool;
+class MainWindow;
+class ViewTransform;
+class ViewSettings;
+class Gate;
+class TransformationType;
+
+
+class ViewWidget : public QWidget
 {
- Dataset dataset_;
- LinkedList<Callback> setchans_; // = new LinkedList<Callback>();
- ViewTool tool_;
+public:
+ class Callback;
+
+private:
+
+ Dataset* dataset_;
+ LinkedList<Callback*> setchans_; // = new LinkedList<Callback>();
+ ViewTool* tool_;
 
  LinkedList<GateHandle*> handles_; //=new LinkedList<GateHandle>();
  
@@ -31,8 +57,8 @@ class ViewWidget : QWidget
  
  QPointF pointLast_; // =new QPointF();
 
- long lastGatingTime=0;
- QImage* img = nullptr;
+ long lastGatingTime_;  // =0;
+ QImage* img_; // = nullptr;
  void updatePointImage();
 
  bool mousePosInBoundary(QPoint pos);
@@ -40,86 +66,98 @@ class ViewWidget : QWidget
 
 protected:
 
- void paintEvent(QPaintEvent pe) Q_DECLARE_OVERRIDE;
- void mousePressEvent(QMouseEvent event) Q_DECLARE_OVERRIDE;
- void mouseDoubleClickEvent(QMouseEvent e) Q_DECLARE_OVERRIDE;
- void mouseReleaseEvent(QMouseEvent ev) Q_DECLARE_OVERRIDE;
- void mouseMoveEvent(QMouseEvent event) Q_DECLARE_OVERRIDE;
+ void paintEvent(QPaintEvent* pe)  Q_DECL_OVERRIDE;
+ void mousePressEvent(QMouseEvent* event)  Q_DECL_OVERRIDE;
+ void mouseDoubleClickEvent(QMouseEvent* e)  Q_DECL_OVERRIDE;
+ void mouseReleaseEvent(QMouseEvent* ev)  Q_DECL_OVERRIDE;
+ void mouseMoveEvent(QMouseEvent* event)  Q_DECL_OVERRIDE;
 
 
 public:
 
  MainWindow* mainWindow_;
- ViewTransform trans_; // =new ViewTransform();
- ViewSettings viewsettings_; // =new ViewSettings();
- int maxevents;
+ ViewTransform* trans_; // =new ViewTransform();
+ ViewSettings* viewsettings_; // =new ViewSettings();
+ int maxevents_;
 
  ViewWidget(MainWindow* mw);
- void setDataset(Dataset* ds)
- void render()
+ void setDataset(Dataset* ds);
+ void render();
  
- GateHandle getClosestHandle(QPointF pos, double cutoff)
+ GateHandle* getClosestHandle(const QPointF& pos, double cutoff);
  
  void setChannels(int indexX, int indexY);
 
- void setSettings(ViewSettings vs);
+ void setSettings(ViewSettings* vs);
 
 // interface Callback
 //  {
 //  void actionSet();
 //  }
 
- class Callback
+//*
+ class Callback : public QObject
  {
-  void actionSet();
+//  Q_OBJECT
+  virtual void actionSet();
  };
+//*/
 
  // //
- class CallbackSetChannel //implements Callback
+ class CallbackSetChannel : public Callback  //implements Callback
  {
-  boolean forx;
+//  Q_OBJECT
+
+ public:
+  bool forx;
   int chanid;
-  void actionSet();
+  void actionSet() Q_DECL_OVERRIDE;
  };
 
  // // Callback: Set histogram
- class CallbackSetHistogram // implements Callback
+ class CallbackSetHistogram : public Callback // implements Callback
  {
+ public:
   int chanid;
-  void actionSet();
+  void actionSet() Q_DECL_OVERRIDE;
  };
- 
+
  // // Callback: set displayed gate
- class CallbackSetGate //implements Callback
+ class CallbackSetGate : public Callback // implements Callback
  {
-  Gate g;
-  void actionSet();
+ public:
+  Gate* g;
+  void actionSet() Q_DECL_OVERRIDE;
  };
 
  // // Callback: set transformation
- class CallbackSetTransformation //implements Callback
+ class CallbackSetTransformation : public Callback //implements Callback
  {
-  TransformationType t;
+ public:
+  QString ttype;  // TransformationType* t;
   bool forx;
   
-  CallbackSetTransformation(TransformationType t, boolean forx);
+  CallbackSetTransformation(QString ttype, // TransformationType* t, 
+    bool forx);
   
-  void actionSet();
+  void actionSet() Q_DECL_OVERRIDE;
  };
 
  
- class CallbackSetZoom //implements Callback
+ class CallbackSetZoom : public Callback //implements Callback
  {
+ public:
   double scale;
   bool isx;
-  void actionSet();
+  void actionSet() Q_DECL_OVERRIDE;
  };
 
- class CallbackSetBins // implements Callback
+ class CallbackSetBins : public Callback  // implements Callback
  {
+ public:
   int bins;
-  void actionSet();
- }
+  void actionSet() Q_DECL_OVERRIDE;
+ };
  
  int getIndexX();
  int getIndexY();
@@ -129,7 +167,7 @@ public:
 
  void setTool(ViewToolChoice t);
 
- void addGate(Gate g);
+ void addGate(Gate* g);
 
  void invalidateCache();
 

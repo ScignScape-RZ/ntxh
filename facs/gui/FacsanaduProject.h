@@ -50,6 +50,11 @@ public:
 
  FacsanaduProject();
 
+ GatingResult* get_GatingResult(Dataset* ds)
+ {
+  return gatingResult_.value(ds);
+ }
+
  // // Get gating result for dataset
  GatingResult* getGatingResult(Dataset* ds);
 // {

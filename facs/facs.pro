@@ -20,6 +20,7 @@ SOURCES +=  \
  ./gui/DialogAbout.cpp \
  ./gui/DatasetListWidget.cpp \
  ./gui/AddMeasureDialog.cpp \
+ ./gui/view/ViewWidget.cpp \
 
 
 
