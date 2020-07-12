@@ -3,55 +3,65 @@
 
 #include "FacsanaduProject.h"
 
+#include "../data/Dataset.h"
+
+
+#include <QMutexLocker>
 
 //package facsanadu.gui;
 
 
 FacsanaduProject::FacsanaduProject()
 {
- gateset_ = new GateSet();
- datasets_ = new LinkedList<Dataset>();
- views_ = new LinkedList<ViewSettings>();
- profchan_ = new LinkedList<ProfChannel>();
+// gateset_ = new GateSet();
+// datasets_ = new LinkedList<Dataset*>();
+// views_ = new LinkedList<ViewSettings>();
+// profchan_ = new LinkedList<ProfChannel>();
 
- gatingResult_ = new HashMap<Dataset, GatingResult>();
+// gatingResult_ = new HashMap<Dataset, GatingResult>();
 
- compensation_ = new Compensation();
+ compensation_ = nullptr; // hold off ... new Compensation();
 }
 
-GatingResult* FacsanaduProject::getGatingResult(Dataset ds)
+GatingResult* FacsanaduProject::getGatingResult(Dataset* ds)
 {
  return getCreateGatingResult(ds); //Why a separate method here??
 }
 
-GatingResult* FacsanaduProject::getCreateGatingResult(Dataset ds)
+GatingResult* FacsanaduProject::getCreateGatingResult(Dataset* ds)
 {
- synchronized (gatingResult)
+//? synchronized (gatingResult)
+// {
+ QMutexLocker lock(&gatingResult_mutex_);
+
+ GatingResult* gr = gatingResult_.value(ds);
+
+ if(gr == nullptr) 
  {
-  if(gatingResult.get(ds)==nullptr) 
-  {
-   GatingResult gr = new GatingResult(gateset);
-   gatingResult.put(ds, gr);
-   return gr;
-  }
-  return gatingResult.get(ds);
+    // gr = new GatingResult(gateset);
+  gatingResult_.insert(ds, gr);
+ }
+
+ return gr; // gatingResult->get(ds);
+ //}
+}
+
+void FacsanaduProject::performGating(LinkedList<Dataset*> listDatasets)
+{
+ gatingResult_.clear();
+ for(Dataset* ds : listDatasets)
+ {
+  GatingResult* gr = getCreateGatingResult(ds);//new GatingResult();
+   // gr->perform(gateset, ds);
+  gatingResult_.insert(ds, gr);
  }
 }
 
-void FacsanaduProject::performGating(LinkedList<Dataset> listDatasets)
-{
- gatingResult.clear();
- for(Dataset ds : listDatasets)
- {
-  GatingResult gr=getCreateGatingResult(ds);//new GatingResult();
-  gr.perform(gateset, ds);
-  gatingResult.put(ds, gr);
- }
-}
 
-
-void FacsanaduProject::addDataset(File path) throws IOException
+void FacsanaduProject::addDataset(QFile& path) // throws IOException
 {
+ Q_UNUSED(path)
+ /*
  if(FCSFile::isFCSfile(path))
  {
   //Assume it is an FCS file
@@ -63,20 +73,22 @@ void FacsanaduProject::addDataset(File path) throws IOException
   addDataset(CopasIO::readAll(path));
  }
  else
-  throw new IOException("Cannot recognize file");
+   ;// throw Facs_IOException("Cannot recognize file");
+ */
 }
 
 void FacsanaduProject::updateCompensation()
 {
- compensation.updateMatrix(this);
- compensation.apply(this);
+ //? compensation_->updateMatrix(this);
+ //? compensation_->apply(this);
 }
 
 
-void FacsanaduProject::addDataset(Dataset ds)
+void FacsanaduProject::addDataset(Dataset* ds)
 {
- ds.computeProfChannel(this, null);
- datasets.add(ds);
+  //? ds->computeProfChannel(this, nullptr);
+ 
+ datasets_.append(ds);
  //recalcProfChan();
  updateCompensation();
  //What about gating?
@@ -84,20 +96,20 @@ void FacsanaduProject::addDataset(Dataset ds)
 
 int FacsanaduProject::getNumChannels()
 {
- if(datasets.size()==0)
+ if(datasets_.isEmpty())
    return 0;
  else
-   return datasets.get(0).getChannelInfo().size();
+   return datasets_.first()->getChannelInfo().size();
 }
 
 
-ArrayList<ChannelInfo> FacsanaduProject::getChannelInfo()
+QList<ChannelInfo*> FacsanaduProject::getChannelInfo()
 {
- ArrayList<ChannelInfo>* names = new ArrayList<ChannelInfo>();
- if(!datasets.isEmpty())
+ QList<ChannelInfo*> names; // = new ArrayList<ChannelInfo>();
+ if(!datasets_.isEmpty())
  {
-  Dataset ds=datasets.get(0);
-  names=ds.getChannelInfo();
+  Dataset* ds = datasets_.first();
+  names = ds->getChannelInfo();
  }
  return names;
 }
@@ -108,11 +120,11 @@ void FacsanaduProject::recalcProfChan()
  recalcProfChan(nullptr);
 }
 
-void FacsanaduProject::recalcProfChan(ProfChannel chChanged)
+void FacsanaduProject::recalcProfChan(ProfChannel* chChanged)
 {
- for(Dataset ds:datasets)
+ for(Dataset* ds : datasets_)
  {
-  ds.computeProfChannel(this, chChanged);
+  ds->computeProfChannel(this, chChanged);
  }
 }
 

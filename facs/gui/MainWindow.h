@@ -126,6 +126,10 @@ public:
  // // Constructor
  MainWindow();
 
+ QDir lastDirectory()
+ {
+  return lastDirectory_;
+ }
  
  // // Action: New project
  void actionNewProject();

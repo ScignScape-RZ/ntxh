@@ -15,6 +15,12 @@
 #include <QCheckBox>
 #include <QPushButton>
 
+#include "events/FacsanaduEvent.h"
+
+// // temp
+#include<QList>
+#define LinkedList QList
+
 
 class MainWindow;
 class Dataset;
@@ -32,7 +38,7 @@ class DatasetListWidget : public QWidget
 
  QTableWidget* tableDatasets_; // =new QTableWidget();
 
- void emitEvent(FacsanaduEvent& event);
+ void emitEvent(FacsanaduEvent event);
 
 public: 
   
@@ -40,12 +46,13 @@ public:
  //QSignalEmitter::Signal0 selectionChanged_; // =new QSignalEmitter.Signal0();
  
  DatasetListWidget(MainWindow* mw);
+
  void dothelayout();
 
  // // Update list with datasets
  void updateDatasetList();
 
- void actionSelectAllDataset();
+ void actionSelectAllDatasets();
  
  void actionAddDatasets();
  

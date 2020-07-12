@@ -19,14 +19,19 @@
 
 class DialogAbout : public QDialog
 {
+//? Q_OBJECT
+
 public:
 
  DialogAbout();
  
+ static QString linebreaksAsBR(QString s);
+
+//?Q_SIGNALS:
+
  // // Action: OK
  void actionOK();
 
- static QString linebreaksAsBR(QString s);
 };
 
 #endif // __H

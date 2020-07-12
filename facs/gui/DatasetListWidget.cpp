@@ -4,103 +4,135 @@
 #include "DatasetListWidget.h"
 
 
+#include "qt/QTutil.h"
+
+#include "MainWindow.h"
+#include "FacsanaduProject.h"
+
+#include "view/ViewSettings.h"
+
+#include "events/FacsanaduEvent.h"
+
+#include "resource/ImgResource.h"
+
+#include "../data/Dataset.h"
+
+#include <QHeaderView>
+#include <QFileDialog>
+
+
+#define connect_this(x, y, z) connect(y, &x, \
+   this, &DatasetListWidget::z);
+
 // package facsanadu.gui;
 
-DatasetListWidget::DatasetListWidget(MainWindow mw*) 
+DatasetListWidget::DatasetListWidget(MainWindow* mw) 
  :  mw_(mw)
 { 
  main_layout_ = new QVBoxLayout;
  isUpdating_ = false;
 
- tableDatasets = new QTableWidget();
+ tableDatasets_ = new QTableWidget();
 
- selectionChanged = new QSignalEmitter.Signal0();
+  // selectionChanged = new QSignalEmitter.Signal0();
  
- setMargin(0);
+  //? setMargin(0);
   
- tableDatasets.setColumnCount(1);
- tableDatasets.verticalHeader().hide();
- tableDatasets.setHorizontalHeaderLabels(Arrays.asList(tr("Dataset")));
- tableDatasets.setSelectionBehavior(SelectionBehavior.SelectRows);
- tableDatasets.horizontalHeader().setResizeMode(ResizeMode.ResizeToContents);
- tableDatasets.horizontalHeader().setStretchLastSection(true);  
- tableDatasets.selectionModel().selectionChanged.connect(this,"dothelayout()");
+ tableDatasets_->setColumnCount(1);
+ tableDatasets_->verticalHeader()->hide();
+ tableDatasets_->setHorizontalHeaderLabels({tr("Dataset")});
+ tableDatasets_->setSelectionBehavior(
+   QAbstractItemView::SelectionBehavior::SelectRows);
+ tableDatasets_->horizontalHeader()->setSectionResizeMode(
+   QHeaderView::ResizeMode::ResizeToContents);
+ tableDatasets_->horizontalHeader()->setStretchLastSection(true);  
 
+// tableDatasets_->selectionModel().selectionChanged.connect(this,"dothelayout()");
+ connect_this(QItemSelectionModel ::selectionChanged 
+   ,tableDatasets_->selectionModel() ,dothelayout) 
 
- QPushButton bAddDataset=new QPushButton(tr("Add dataset"));
- QPushButton bSelectAllDataset=new QPushButton(tr("Select all"));
- QPushButton bRemoveDataset=new QPushButton(new QIcon(ImgResource.delete),"");
+ QPushButton* bAddDataset = new QPushButton(tr("Add dataset"), this);
+ QPushButton* bSelectAllDataset = new QPushButton(tr("Select all"), this);
+ QPushButton* bRemoveDataset = new QPushButton(
+   QIcon(ImgResource::icon_delete), "", this);
   
- QPushButton bMoveUp=new QPushButton(new QIcon(ImgResource.moveUp),"");
- QPushButton bMoveDown=new QPushButton(new QIcon(ImgResource.moveDown),"");
+ QPushButton* bMoveUp = new QPushButton(QIcon(ImgResource::moveUp), "", this);
+ QPushButton* bMoveDown = new QPushButton(QIcon(ImgResource::moveDown), "", this);
   
- bAddDataset.clicked.connect(this,"actionAddDatasets()");
- bRemoveDataset.clicked.connect(this,"actionRemoveDataset()");
- bSelectAllDataset.clicked.connect(this,"actionSelectAllDataset()");
- bMoveUp.clicked.connect(this,"actionMoveUp()");
- bMoveDown.clicked.connect(this,"actionMoveDown()");
+ connect_this(QPushButton ::clicked ,bAddDataset ,actionAddDatasets) 
+ connect_this(QPushButton ::clicked ,bRemoveDataset ,actionRemoveDataset) 
+ connect_this(QPushButton ::clicked ,bSelectAllDataset ,actionSelectAllDatasets) 
+ connect_this(QPushButton ::clicked ,bMoveUp ,actionMoveUp) 
+ connect_this(QPushButton ::clicked ,bMoveDown ,actionMoveDown) 
 
- main_layout_->addWidget(tableDatasets);
- main_layout_->addLayout(QTutil.layoutHorizontal(bMoveUp, bMoveDown, bAddDataset, bSelectAllDataset, bRemoveDataset));
+ main_layout_->addWidget(tableDatasets_);
 
- tableDatasets.setSizePolicy(Policy.Minimum, Policy.Expanding);
+ main_layout_->addLayout(QTutil::layoutHorizontal({
+   bMoveUp, bMoveDown, bAddDataset, bSelectAllDataset, bRemoveDataset}));
+
+ tableDatasets_->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
 }
 
 void DatasetListWidget::dothelayout()
 {
- selectionChanged.emit();
+ emit selectionChanged();
 }
   
 void DatasetListWidget::updateDatasetList()
 { 
- LinkedList<Dataset> prevsel = getSelectedDatasets();
+ LinkedList<Dataset*> prevsel = getSelectedDatasets();
   
- FacsanaduProject* project=mw_->project;
- bool wasUpdating=isUpdating;
+ FacsanaduProject* project = mw_->project();
+ bool wasUpdating = isUpdating_;
  isUpdating_ = false;
- tableDatasets.setRowCount(project.datasets.size());
- int row=0;
- for(Dataset ds:project.datasets)
+
+ tableDatasets_->setRowCount(project->datasets().size());
+ int row = 0;
+ for(Dataset* ds : project->datasets() )
  {
-  QTableWidgetItem it=QTutil.createReadOnlyItem(ds.source.getName());
-  it.setData(Qt.ItemDataRole.UserRole, ds);
-  tableDatasets.setItem(row, 0, it);
+  QTableWidgetItem* it = QTutil::createReadOnlyItem(ds->get_file_source_name());
+  it->setData(Qt::ItemDataRole::UserRole, 
+    QVariant::fromValue( (void*) ds) );
+
+  tableDatasets_->setItem(row, 0, it);
+
   if(prevsel.contains(ds))
-    it.setSelected(true);
+    it->setSelected(true);
   else
-    it.setSelected(false);
+    it->setSelected(false);
+
   row++;
  }
  isUpdating_ = wasUpdating;
 }
 
- void DatasetListWidget::actionSelectAllDataset()
-  {
-  tableDatasets.selectAll();
-  }
+void DatasetListWidget::actionSelectAllDatasets()
+{
+ tableDatasets_->selectAll();
+}
 
  
 void DatasetListWidget::actionAddDatasets()
 {
- QFileDialog dia=new QFileDialog();
- dia.setFileMode(FileMode.ExistingFiles);
- dia.setDirectory(mw.lastDirectory.getAbsolutePath());
- dia.setNameFilter(tr(tr("FCS files")+" (*.fcs *.txt *.lmd)"));
- if(dia.exec()!=0)
+ QFileDialog dia; // =new QFileDialog();
+ dia.setFileMode(QFileDialog::FileMode::ExistingFiles);
+ dia.setDirectory(mw_->lastDirectory().absolutePath());
+ dia.setNameFilter(tr("FCS files") + " (*.fcs *.txt *.lmd)");
+ if( dia.exec() )
  {
   try
   {
-   for(String sf:dia.selectedFiles())
+   for(QString sf : dia.selectedFiles())
    {
-    File f=new File(sf);
-    mw.lastDirectory=f.getParentFile();
-    mw.loadFile(f);
+//?    File f=new File(sf);
+//?    mw.lastDirectory=f.getParentFile();
+//?    mw.loadFile(f);
    }
   }
-  catch (IOException e)
+  catch ( ... ) //IOException e)
   {
-   QTutil.showNotice(mw, e.getMessage());
-   e.printStackTrace();
+   //? QTutil.showNotice(mw, e.getMessage());
+   //? e.printStackTrace();
   }
  }  
  updateDatasetList();
@@ -108,56 +140,69 @@ void DatasetListWidget::actionAddDatasets()
 
 void DatasetListWidget::actionRemoveDataset()
 {
- FacsanaduProject project=mw.project;
- project.datasets.removeAll(getSelectedDatasets());
+ FacsanaduProject* project = mw_->project();
+
+ LinkedList<Dataset*> list = getSelectedDatasets();
+ for(Dataset* ds : list)
+ {
+  project->datasets().removeAll(ds);
+ }
+
  updateDatasetList();
- emitEvent(new EventDatasetsChanged());
+ emitEvent(EventDatasetsChanged());
 }
 
-void DatasetListWidget::emitEvent(FacsanaduEvent event);
+void DatasetListWidget::emitEvent(FacsanaduEvent event)
 {
- mw.handleEvent(event);
+  // ptr?
+ mw_->handleEvent(&event);
 }
 
 
 void DatasetListWidget::actionMoveUp()
 {
- LinkedList<Dataset> list=getSelectedDatasets();
- for(Dataset ds:list)
+ LinkedList<Dataset*> list = getSelectedDatasets();
+ for(Dataset* ds : list)
  {
-  FacsanaduProject project=mw.project;
-  int i=project.datasets.indexOf(ds);
-  if(i==0)
+  FacsanaduProject* project = mw_->project();
+  int i = project->datasets().indexOf(ds);
+
+  if( i==0 )
     break; //Don't attempt
-  project.datasets.remove(ds);
-  project.datasets.add(i-1, ds);
+
+  project->datasets().removeAll(ds);
+  project->datasets().insert(i-1, ds);
  }
- emitEvent(new EventDatasetsChanged());
+ emitEvent(EventDatasetsChanged());
 }
   
 void DatasetListWidget::actionMoveDown()
 {
- LinkedList<Dataset> list=getSelectedDatasets();
- for(int j=list.size()-1;j>=0;j--)
+ LinkedList<Dataset*> list = getSelectedDatasets();
+ for(int j = list.size() - 1; j>=0; j--)
  {
-  Dataset ds=list.get(j);
-  FacsanaduProject project=mw.project;
-  int i=project.datasets.indexOf(ds);
-  if(i==project.datasets.size()-1)
+  Dataset* ds = list.at(j);
+  FacsanaduProject* project = mw_->project();
+
+  int i = project->datasets().indexOf(ds);
+  if(i == project->datasets().size()-1)
     break; //Don't attempt
-  project.datasets.remove(ds);
-  project.datasets.add(i+1, ds);
+
+  project->datasets().removeAll(ds);
+  project->datasets().insert(i+1, ds);
  }
- emitEvent(new EventDatasetsChanged());
+ emitEvent(EventDatasetsChanged());
 }
 
-DatasetListWidget::LinkedList<Dataset> getSelectedDatasets()
+LinkedList<Dataset*> DatasetListWidget::getSelectedDatasets()
 {
- LinkedList<Dataset> selviews=new LinkedList<Dataset>();
- for(QModelIndex in:tableDatasets.selectionModel().selectedRows())
+ LinkedList<Dataset*> selviews; // = new LinkedList<Dataset>();
+ for(QModelIndex in : tableDatasets_->selectionModel()->selectedRows())
  {
-  selviews.add((Dataset)tableDatasets.item(in.row(),0).data(Qt.ItemDataRole.UserRole));
+  selviews.append((Dataset*) tableDatasets_->item(in.row(),0)
+    ->data(Qt::ItemDataRole::UserRole).value<void*>());
  }
  return selviews;
 }
+
 

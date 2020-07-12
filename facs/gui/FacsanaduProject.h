@@ -15,7 +15,8 @@
 #define LinkedList QList
 
 
-#include<QMap>
+#include <QMap>
+#include <QMutex>
 
 
 class GateSet;
@@ -41,9 +42,13 @@ class FacsanaduProject
  //HashMap<Dataset*, GatingResult*> ...
  QMap<Dataset*, GatingResult*> gatingResult_; // =new HashMap<Dataset, GatingResult>();
 
+ QMutex gatingResult_mutex_;
+
  Compensation* compensation_; // =new Compensation();
 
 public: 
+
+ FacsanaduProject();
 
  // // Get gating result for dataset
  GatingResult* getGatingResult(Dataset* ds);
@@ -76,7 +81,7 @@ public:
 
 
  // // Update gating results
- void performGating(LinkedList<Dataset> listDatasets);
+ void performGating(LinkedList<Dataset*> listDatasets);
 
  void addDataset(QFile& path); // throws IOException;
 
@@ -86,7 +91,8 @@ public:
 
  //ArrayList<ChannelInfo> getChannelInfo();
  QList<ChannelInfo*> getChannelInfo();
- 
+
+ void recalcProfChan(); 
  void recalcProfChan(ProfChannel* chChanged);
 
 };

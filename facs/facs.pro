@@ -15,7 +15,14 @@ SOURCES +=  \
  ./gui/QtProgramInfo.cpp  \
  ./gui/ProfileChannelWidget.cpp  \
  ./gui/GraphExportWindow.cpp  \
- ./gui/GatesListWidget.cpp  \
+ ./gui/GatesListWidget.cpp \   # skip calc thread ...
+ ./gui/FacsanaduProject.cpp \
+ ./gui/DialogAbout.cpp \
+ ./gui/DatasetListWidget.cpp \
+
+
+
+
 
 
 #

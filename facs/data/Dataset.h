@@ -48,14 +48,16 @@ public:
 
  QString getName();
 
+ QString get_file_source_name();
+
  QList<double> getAsFloatCompensated(int obs, int indexChan);
 
  QList<double> getAsFloatCompensated(int obs);
  
  // // Compute profile channels. or only one if not null
- void computeProfChannel(FacsanaduProject proj, ProfChannel forPc);
+ void computeProfChannel(FacsanaduProject* proj, ProfChannel* forPc);
 
- ChannelInfo getChannelInfoForProf(ProfChannel pc);
+ ChannelInfo* getChannelInfoForProf(ProfChannel* pc);
 
  void setEvents(QList<QList<double>> e);
 
