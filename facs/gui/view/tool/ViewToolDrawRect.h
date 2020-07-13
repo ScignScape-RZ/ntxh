@@ -5,8 +5,14 @@
 #ifndef ViewToolDrawRect__H
 #define ViewToolDrawRect__H
 
+#include "ViewTool.h"
+
+#include "events/FacsanaduEvent.h"
+
 
 #include <QMouseEvent>
+
+class Gate;
 
 // package facsanadu.gui.view.tool;
 
@@ -17,40 +23,40 @@
  * @author Johan Henriksson
  *
  */
-class ViewToolDrawRect : //implements ViewTool
+class ViewToolDrawRect : public ViewTool
 {
  Gate* isDrawing_;// = nullptr;
 
- ViewWidget* w_;
+ ViewWidget* vw_;
 
 public:
  
- ViewToolDrawRect(ViewWidget* w);
+ ViewToolDrawRect(ViewWidget* vw);
  
  /**
   * Mouse button released
   */
- void mouseReleaseEvent(QMouseEvent ev);
+ void mouseReleaseEvent(QMouseEvent* ev) Q_DECL_OVERRIDE;
 
  void emitEvent(FacsanaduEvent e);
 
  /**
   * Mouse moved
   */
- void mouseMoveEvent(QMouseEvent event);
+ void mouseMoveEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
  
  /**
   * Mouse button pressed
   */
- void mousePressEvent(QMouseEvent event);
+ void mousePressEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 
  /**
   * Mouse button double-clicked
   */
- void mouseDoubleClickEvent(QMouseEvent event);
+ void mouseDoubleClickEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
  
  //@Override
- bool allowHandle() Q_DECLARE_OVERRIDE;
+ bool allowHandle() Q_DECL_OVERRIDE;
 };
 
 

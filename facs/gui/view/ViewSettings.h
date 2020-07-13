@@ -14,6 +14,12 @@ class Histogram;
 class TransformationStack;
 class GatingResult;
 
+class Gate;
+class Dataset;
+
+// // temp
+#include<QList>
+#define LinkedList QList
 
 
 class ViewSettings
@@ -47,6 +53,10 @@ public:
  void set_zoomX(double d) { zoomX_ = d; }
  void set_zoomY(double d) { zoomY_ = d; }
  void set_numHistBins(int n) { numHistBins_ = n; } 
+
+ double scaleX() { return scaleX_; }
+ double scaleY() { return scaleY_; }
+ TransformationStack* transformation() { return transformation_; }
 
  //  // Set the scale to cover the given max and min values
  void autoscale(QList<double> max, QList<double> min);

@@ -21,7 +21,8 @@ SOURCES +=  \
  ./gui/DatasetListWidget.cpp \
  ./gui/AddMeasureDialog.cpp \
  ./gui/view/ViewWidget.cpp \
-
+ ./gui/view/tool/ViewToolChoice.cpp \
+ ./gui/view/ViewTransform.cpp \
 
 
 

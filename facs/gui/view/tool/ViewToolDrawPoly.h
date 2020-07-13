@@ -5,55 +5,49 @@
 #ifndef ViewToolDrawPoly__H
 #define ViewToolDrawPoly__H
 
+#include "ViewTool.h"
+
+#include "events/FacsanaduEvent.h"
+
 
 #include <QMouseEvent>
 
 
 // package facsanadu.gui.view.tool;
 
-/**
- * 
- * Tool to draw polygon gates
- * 
- * @author Johan Henriksson
- *
- */
+// // Tool to draw polygon gates
 
-class ViewToolDrawPoly :// implements ViewTool
+class GatePolygon;
+
+
+class ViewToolDrawPoly :  public ViewTool
 {
  GatePolygon* isDrawing_;// = null;
 
- ViewWidget* w_;
+ ViewWidget* vw_;
 
 public:
 
- ViewToolDrawPoly(ViewWidget* w);
+ ViewToolDrawPoly(ViewWidget* vw);
  
- /**
-  * Mouse button pressed
-  */
+ void mousePressEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 
- void mousePressEvent(QMouseEvent event);
- /**
-  * Mouse button released
-  */
-
- void mouseReleaseEvent(QMouseEvent ev);
+ void mouseReleaseEvent(QMouseEvent* ev) Q_DECL_OVERRIDE;
 
  void emitEvent(FacsanaduEvent e);
 
  /**
   * Mouse moved
   */
- void mouseMoveEvent(QMouseEvent event);
+ void mouseMoveEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 
  /**
   * Mouse button double-clicked
   */
- void mouseDoubleClickEvent(QMouseEvent event);
+ void mouseDoubleClickEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 
  //@Override
- bool allowHandle() Q_DECLARE_OVERRIDE;
+ bool allowHandle() Q_DECL_OVERRIDE;
  
 };
 

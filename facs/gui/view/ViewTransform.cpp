@@ -3,6 +3,10 @@
 
 #include "ViewTransform.h"
 
+#include "ViewSettings.h"
+
+#include "transformations/TransformationStack.h"
+
 
 // package facsanadu.gui.view;
 
@@ -22,7 +26,7 @@ ViewTransform::ViewTransform()
 
 void ViewTransform::setTotalHeight(int h)
 {
- internalHeight=h-graphOffsetXY;
+ internalHeight_ = h - graphOffsetXY_;
 }
  
  /**
@@ -30,7 +34,7 @@ void ViewTransform::setTotalHeight(int h)
   */
 void ViewTransform::setTotalWidth(int w)
 {
- internalWidth=w-graphOffsetXY;
+ internalWidth_ = w - graphOffsetXY_;
 }
 
  /**
@@ -38,7 +42,7 @@ void ViewTransform::setTotalWidth(int w)
   */
 int ViewTransform::getTotalHeight()
 {
- return graphOffsetXY+internalHeight;
+ return graphOffsetXY_ + internalHeight_;
 }
  
  /**
@@ -46,67 +50,69 @@ int ViewTransform::getTotalHeight()
   */
 int ViewTransform::getTotalWidth()
 {
- return graphOffsetXY+internalWidth;
+ return graphOffsetXY_ + internalWidth_;
 }
  
 double ViewTransform::getTotalScaleX()
 {
- return viewsettings.scaleX*internalWidth; 
+ return viewsettings_->scaleX() * internalWidth_; 
 }
 
 double ViewTransform::getTotalScaleY()
 {
- return viewsettings.scaleY*internalHeight; 
+ return viewsettings_->scaleY() * internalHeight_; 
 }
 
  /**
   * Map screen space to FCS value
   */
-QPointF ViewTransform::mapScreenToFcs(QPointF pos)
+QPointF ViewTransform::mapScreenToFcs(const QPointF& pos)
 {
- int h=internalHeight-1;
- double x=(pos.x()-graphOffsetXY)/getTotalScaleX();
- double y=(h -pos.y())/getTotalScaleY();
- x=viewsettings.transformation.invert(x, viewsettings.indexX);
- y=viewsettings.transformation.invert(y, viewsettings.indexY);
- QPointF p=new QPointF(x,y);
- return p; 
+ int h = internalHeight_ - 1;
+ double x = (pos.x() - graphOffsetXY_) / getTotalScaleX();
+ double y = (h - pos.y()) / getTotalScaleY();
+ x = viewsettings_->transformation()->invert(x, viewsettings_->indexX() );
+ y = viewsettings_->transformation()->invert(y, viewsettings_->indexY() );
+ //QPointF p=new QPointF(x,y);
+ return {x, y}; 
 }
 
  /**
   * Map FCS value to screen space
   */
-QPointF ViewTransform::mapFcsToScreen(QPointF pos)
+QPointF ViewTransform::mapFcsToScreen(const QPointF& pos)
 {
 //  int h=internalHeight-1;
- QPointF p=new QPointF(
-   mapFcsToScreenX(pos.x()),//  pos.x()*getTotalScaleX()+graphOffsetXY,
-   mapFcsToScreenY(pos.y())//h - pos.y()*getTotalScaleY()
-   );
+ QPointF p {
+     //  pos.x()*getTotalScaleX()+graphOffsetXY,
+   (double) mapFcsToScreenX( (double) pos.x()), 
+   (double) mapFcsToScreenY( (double) pos.y()) //h - pos.y()*getTotalScaleY()
+ };
  return p;
 }
 
 int ViewTransform::mapFcsToScreenX(double x)
 {
- x=viewsettings.transformation.perform(x, viewsettings.indexX);
- return mapGeneralToScreenX(viewsettings.scaleX*x);
+ x = viewsettings_->transformation()->perform(x, viewsettings_->indexX() );
+ return mapGeneralToScreenX(viewsettings_->scaleX() * x);
 }
 
 int ViewTransform::mapFcsToScreenY(double y)
 {
- y=viewsettings.transformation.perform(y, viewsettings.indexY);
- return mapGeneralToScreenY(viewsettings.scaleY*y); 
+ y = viewsettings_->transformation()->perform(y, viewsettings_->indexY() );
+ return mapGeneralToScreenY(viewsettings_->scaleY() * y); 
 }
 
  
 int ViewTransform::mapGeneralToScreenX(double x)
 {
- return graphOffsetXY+(int)(x*internalWidth);
+ return graphOffsetXY_ + (int)(x * internalWidth_);
 }
 
 int ViewTransform::mapGeneralToScreenY(double y)
 {
- int h=internalHeight-1;
- return h-((int)(y*h));
+ int h = internalHeight_ - 1;
+ return h - ((int)(y * h));
 }
+
 

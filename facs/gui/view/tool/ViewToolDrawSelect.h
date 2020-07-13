@@ -5,6 +5,8 @@
 #ifndef ViewToolDrawSelect__H
 #define ViewToolDrawSelect__H
 
+#include "ViewTool.h"
+
 
 #include <QMouseEvent>
 
@@ -13,26 +15,28 @@
 
 
 // //Tool to do nothing except selecting
-class ViewToolDrawSelect : ViewTool //implements ViewTool
+class ViewToolDrawSelect : public ViewTool //implements ViewTool
 {
- ViewWidget* w;
+ ViewWidget* vw_;
 
- ViewToolDrawSelect(ViewWidget w);
+public:
+
+ ViewToolDrawSelect(ViewWidget* vw);
  
  // //Mouse button released
- void mouseReleaseEvent(QMouseEvent ev);
+ void mouseReleaseEvent(QMouseEvent* ev) Q_DECL_OVERRIDE;;
 
  // // Mouse moved
- void mouseMoveEvent(QMouseEvent event);
+ void mouseMoveEvent(QMouseEvent* event) Q_DECL_OVERRIDE;;
  
  // // Mouse button pressed
- void mousePressEvent(QMouseEvent event);
+ void mousePressEvent(QMouseEvent* event) Q_DECL_OVERRIDE;;
 
  // // Mouse button double-clicked
- void mouseDoubleClickEvent(QMouseEvent event);
+ void mouseDoubleClickEvent(QMouseEvent* event) Q_DECL_OVERRIDE;;
  
  //@Override
- bool allowHandle() Q_DECLARE_OVERRIDE;
+ bool allowHandle() Q_DECL_OVERRIDE;
 
 };
 

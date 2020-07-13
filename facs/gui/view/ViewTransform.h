@@ -29,6 +29,8 @@ class ViewTransform
 
 public:
 
+ ViewTransform();
+
  ViewSettings* viewsettings()
  {
   return viewsettings_;

@@ -1,17 +1,34 @@
 
+// // license___here
 
-ViewTool ViewToolChoice::getTool(ViewWidget w, ViewToolChoice t)
+#include "ViewToolChoice.h"
+
+#include "ViewToolDrawSelect.h"
+#include "ViewToolDrawPoly.h"
+#include "ViewToolDrawRect.h"
+#include "ViewToolDrawRange.h"
+#include "ViewToolDrawEllipse.h"
+
+
+ViewTool* ViewToolChoice::getTool(ViewWidget* vw, ViewToolChoice::Enum e)
 {
- if(t==ViewToolChoice.SELECT)
-   return new ViewToolDrawSelect(w);
- else if(t==ViewToolChoice.POLY)
-   return new ViewToolDrawPoly(w);
- else if(t==ViewToolChoice.RECT)
-   return new ViewToolDrawRect(w);
- else if(t==ViewToolChoice.RANGE)
-   return new ViewToolDrawRange(w);
- else if(t==ViewToolChoice.ELLIPSE)
-   return new ViewToolDrawEllipse(w);
+ if(e == Enum::SELECT)
+   return new ViewToolDrawSelect(vw);
+
+ else if(e == Enum::POLY)
+   return new ViewToolDrawPoly(vw);
+
+ else if(e == Enum::RECT)
+   return new ViewToolDrawRect(vw);
+
+ else if(e == Enum::RANGE)
+   return new ViewToolDrawRange(vw);
+
+ else if(e == Enum::ELLIPSE)
+   return new ViewToolDrawEllipse(vw);
+
  else
-   throw new RuntimeException("Unsupported tool");
+   return nullptr; // throw new RuntimeException("Unsupported tool");
 }
+
+
