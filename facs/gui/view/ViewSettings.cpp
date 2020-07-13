@@ -3,6 +3,22 @@
 
 #include "ViewSettings.h"
 
+#include "Histogram.h"
+
+#include "../data/Dataset.h"
+#include "../gates/gate-info.h"
+
+
+#include "../gates/gate-info.h"
+
+#include "../gates/GatingResult.h"
+
+#include <QtGlobal>
+#include <QSet>
+
+#include "../transformations/TransformationStack.h"
+
+
 
 // package facsanadu.gui.view;
 
@@ -37,79 +53,86 @@ ViewSettings::ViewSettings()
   * Set the scale to cover the given max and min values
   */
 
-void ViewSettings::autoscale(double[] max, double[] min)
+void ViewSettings::autoscale(QVector<double> max, QVector<double> min)
 {
  //Currently min values are not used
- double maxx = max[indexX];
- double maxy = max[indexY];
- scaleX_ = 1.0/maxx*zoomX;
- scaleY_ = 1.0/maxy*zoomY;
+ Q_UNUSED(min)
+
+ double maxx = max[indexX_];
+ double maxy = max[indexY_];
+ scaleX_ = 1.0 / (maxx * zoomX_);
+ scaleY_ = 1.0 / (maxy * zoomY_);
 } 
 
 
  /**
   * Get the maximum for a channel
   */
-QList<double> ViewSettings::getMaxForChannel(Dataset dataset)
+QVector<double> ViewSettings::getMaxForChannel(Dataset* dataset)
 {
- QList<double> val = new QList<double> //?[dataset.getNumChannels()];
- for(int i=0;i<val.length;i++)
+ QVector<double> val(dataset->getNumChannels());
+    // = new QList<double> //?[dataset->getNumChannels()];
+
+ for(int i = 0; i < val.length(); ++i)
  {
-  val[i]=-Double.MAX_VALUE;
+  val[i] = -std::numeric_limits<double>::max();
  }
- for(int i=0;i<dataset.getNumObservations();i++)
+
+ for(int i = 0; i < dataset->getNumObservations(); ++i)
  {
-  for(int j=0;j<val.length;j++)
+  for(int j=0; j < val.length(); ++j)
   {
-   val[j]=Math.max(val[j],dataset.getAsFloatCompensated(i,j));
+   val[j] = qMax(val[j], dataset->getAsFloatCompensated(i,j) );
   }
  }
- val = transformation.perform(val);
+ val = transformation_->perform(val);
  return val;
 }
 
  /**
   * Get the minimum value for channel
   */
-QList<double> ViewSettings::getMinForChannel(Dataset dataset)
+QVector<double> ViewSettings::getMinForChannel(Dataset* dataset)
 {
- QList<double> val = new QList<double>; //[dataset.getNumChannels()];
- for(int i=0;i<val.length;i++)
-   val[i]=Double.MAX_VALUE;
+ QVector<double> vals(dataset->getNumChannels());
+   // = new QVector<double>; //[dataset->getNumChannels()];
 
- for(int i=0;i<dataset.getNumObservations();i++)
+ for(int i = 0; i < vals.length(); ++i)
+   vals[i] = std::numeric_limits<double>::max();
+
+ for(int i = 0; i < dataset->getNumObservations(); ++i)
  {
-  for(int j=0;j<val.length;j++)
+  for(int j=0;j<vals.length();j++)
   {
-   val[j]=Math.min(val[j],dataset.getAsFloatCompensated(i,j));
+   vals[j] = qMin(vals[j], dataset->getAsFloatCompensated(i,j) );
   }
  }
- val = transformation.perform(val); //this is kind of cheating
- return val;
+ vals = transformation_->perform(vals); //this is kind of cheating
+ return vals;
 }
 
  /**
   * Get the maximum value for all channels
   */
-QList<double> ViewSettings::getMaxForChannels(Collection<Dataset> dataset)
+QVector<double> ViewSettings::getMaxForChannels(QList<Dataset*> dataset)
 {
- if(dataset.size()==0)
-   return new QList<double>(0);
+ if(dataset.size() == 0)
+   return {};
  else
  {
-  int numchan=dataset.iterator().next().getNumChannels();
+  int numchan = dataset.first()->getNumChannels();
    
-  QList<double> val = new QList<double>; // [numchan];
-  for(int i=0;i<val.length;i++)
+  QVector<double> val(numchan);// = new QVector<double>; // [numchan];
+  for(int i = 0; i < val.length(); ++i)
   {
-   val[i]=-Double.MAX_VALUE;
+   val[i] = -std::numeric_limits<double>::max();
   }
-  for(Dataset ds : dataset)
+  for(Dataset* ds : dataset)
   {
-   QList<double> cmax = getMaxForChannel(ds);
-   for(int j=0;j<numchan;j++)
+   QVector<double> cmax = getMaxForChannel(ds);
+   for(int j=0; j < numchan; ++j)
    {
-    val[j]=Math.max(val[j],cmax[j]);
+    val[j] = qMax(val[j],cmax[j]);
    }
   }
   return val;
@@ -119,25 +142,26 @@ QList<double> ViewSettings::getMaxForChannels(Collection<Dataset> dataset)
  /**
   * Get the minimum value for all channels
   */
-QList<double> ViewSettings::getMinForChannels(Collection<Dataset> dataset)
+QVector<double> ViewSettings::getMinForChannels(QList<Dataset*> dataset)
 {
- if(dataset.size()==0)
-   return new double[0];
+ if(dataset.isEmpty())
+   return {};
+
  else
  {
-  int numchan=dataset.iterator().next().getNumChannels();
+  int numchan = dataset.first()->getNumChannels();
    
-  QList<double> val = new QList<double>; //[numchan];
-  for(int i=0;i<val.length;i++)
+  QVector<double> val(numchan); // = new QList<double>; //[numchan];
+  for(int i=0;i<val.length();i++)
   {
-   val[i]=Double.MAX_VALUE;
+   val[i] = std::numeric_limits<double>::max();
   }
-  for(Dataset ds:dataset)
+  for(Dataset* ds : dataset)
   {
-   QList<double> cmax = getMinForChannel(ds);
-   for(int j=0;j<numchan;j++)
+   QVector<double> cmax = getMinForChannel(ds);
+   for(int j = 0; j<numchan; ++j)
    {
-    val[j]=Math.min(val[j],cmax[j]);
+    val[j] = qMin(val[j], cmax[j]);
    }
   }
   return val;
@@ -147,16 +171,17 @@ QList<double> ViewSettings::getMinForChannels(Collection<Dataset> dataset)
  /**
   * Autoscale several views according to several datasets
   */
-static void ViewSettings::autoscale(LinkedList<Dataset> selds, LinkedList<ViewSettings> selviews)
+void ViewSettings::autoscale(LinkedList<Dataset*> selds,
+  LinkedList<ViewSettings*> selviews)
 {
  if(!selds.isEmpty())
  {
-  for(ViewSettings vs:selviews)
+  for(ViewSettings* vs : selviews)
   {
    //Might be possible to optimize this if there are many different kind of views
-   QList<double> max = vs.getMaxForChannels(selds);
-   QList<double> min = vs.getMinForChannels(selds);
-   vs.autoscale(max,min);
+   QVector<double> max = vs->getMaxForChannels(selds);
+   QVector<double> min = vs->getMinForChannels(selds);
+   vs->autoscale(max,min);
   }
  }
 }
@@ -167,25 +192,25 @@ static void ViewSettings::autoscale(LinkedList<Dataset> selds, LinkedList<ViewSe
 QString ViewSettings::getName()
 {
  //Use gate name as name of view
- return gate.name;
+ return gate_->name();
 }
 
 
  /**
   * Compute histogram from data
   */
-Histogram ViewSettings::computeHistogram(Dataset data, GatingResult gr)
+Histogram* ViewSettings::computeHistogram(Dataset* data, GatingResult* gr)
 {
- Histogram h = new Histogram();
- h.setup(0, 1.0/scaleX, numHistBins);
- IntArray accepted=gr.getAcceptedFromGate(gate);
- if(accepted!=null)
+ Histogram* h = new Histogram();
+ h->setup(0, 1.0/scaleX_, numHistBins_);
+ QList<int> accepted = gr->getAcceptedFromGate(gate_);
+ if(! accepted.isEmpty() )
  {
   for(int i=0;i<accepted.size();i++)
   {
-   int ind=accepted.get(i);
-   double x=transformation.perform(data.getAsFloatCompensated(ind, indexX), indexX);
-   h.countEvent(x);
+   int ind=accepted.at(i);
+   double x=transformation_->perform(data->getAsFloatCompensated(ind, indexX_ ), indexX_ );
+   h->countEvent(x);
   }
  }
  return h;
@@ -197,46 +222,48 @@ Histogram ViewSettings::computeHistogram(Dataset data, GatingResult gr)
   */
 bool ViewSettings::isHistogram()
 {
- return indexX==indexY;
+ return indexX_ == indexY_;
 }
 
 
 void ViewSettings::setHistogram(int chanid)
 {
- indexX=indexY=chanid;
+ indexX_ = indexY_ = chanid;
 }
+
 
 
 bool ViewSettings::coversXandY(int indexX2, int indexY2) const
 {
- HashSet<Integer> ind=new HashSet<Integer>();
- ind.add(indexX);
- ind.add(indexY);
+ QSet<int> ind; //=new HashSet<Integer>(); //? 
+ ind.insert(indexX_);
+ ind.insert(indexY_);
  return ind.contains(indexX2) && ind.contains(indexY2);
 }
 
 bool ViewSettings::coversX(int indexX2) const
 {
- HashSet<Integer> ind = new HashSet<Integer>();
- ind.add(indexX);
- ind.add(indexY);
+ QSet<int> ind; //=new HashSet<Integer>(); //? 
+ ind.insert(indexX_);
+ ind.insert(indexY_);
  return ind.contains(indexX2);
 }
 
 
 void ViewSettings::swapAxis()
 {
- int axis=indexX;
- indexX=indexY;
- indexY=axis;
+ int axis = indexX_;
+ indexX_ = indexY_;
+ indexY_ = axis;
  
- double scale=scaleX;
- scaleX=scaleY;
- scaleY=scale;
+ double scale = scaleX_;
+ scaleX_ = scaleY_;
+ scaleY_ = scale;
   
- double zoom=zoomX;
- zoomX=zoomY;
- zoomY=zoom;
+ double zoom = zoomX_;
+ zoomX_ = zoomY_;
+ zoomY_ = zoom;
 }
- 
+
+
 

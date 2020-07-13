@@ -35,6 +35,8 @@ public:
 
  // // Transform a point. Returns a new point. Might be the same array (optimization)
  QList<double> perform(QList<double> v);
+
+ QVector<double> perform(QVector<double> v);
  
  /**
   * Invert a point. Returns a new point. Might be the same array (optimization)

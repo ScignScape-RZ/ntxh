@@ -5,6 +5,8 @@
 #ifndef ViewSettings__H
 #define ViewSettings__H
 
+#include <QVector>
+
 
 // package facsanadu.gui.view;
 
@@ -43,6 +45,8 @@ class ViewSettings
  
 public:
 
+ ViewSettings();
+
  int indexX() const { return indexX_; }  //=7;
  int indexY() const { return indexY_; } 
 
@@ -63,19 +67,19 @@ public:
  TransformationStack* transformation() { return transformation_; }
 
  //  // Set the scale to cover the given max and min values
- void autoscale(QList<double> max, QList<double> min);
+ void autoscale(QVector<double> max, QVector<double> min);
 
  // // Get the maximum for a channel
- QList<double> getMaxForChannel(Dataset* dataset);
+ QVector<double> getMaxForChannel(Dataset* dataset);
 
  // // Get the minimum value for channel
- QList<double> getMinForChannel(Dataset* dataset);
+ QVector<double> getMinForChannel(Dataset* dataset);
 
  // // Get the maximum value for all channels
- QList<double> getMaxForChannels(QList<Dataset*> datasets); //Collection<Dataset> dataset
+ QVector<double> getMaxForChannels(QList<Dataset*> datasets); //Collection<Dataset> dataset
  
  // // Get the minimum value for all channels
- QList<double> getMinForChannels(QList<Dataset*> datasets);
+ QVector<double> getMinForChannels(QList<Dataset*> datasets);
 
  // // Autoscale several views according to several datasets
  static void autoscale(LinkedList<Dataset*> selds, LinkedList<ViewSettings*> selviews);
