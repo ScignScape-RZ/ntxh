@@ -1,5 +1,6 @@
 
-ViewTool getTool(ViewWidget w, ViewToolChoice t)
+
+ViewTool ViewToolChoice::getTool(ViewWidget w, ViewToolChoice t)
 {
  if(t==ViewToolChoice.SELECT)
    return new ViewToolDrawSelect(w);

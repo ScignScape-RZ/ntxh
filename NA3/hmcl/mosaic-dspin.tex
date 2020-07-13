@@ -1404,27 +1404,30 @@ recorded.}
 \section{\protect\llMOSAIC{} in the context of Image Analysis}
 \p{This section will focus on one specific application 
 of \MOSAICSR{} in the context of image analysis 
-and bioimaging --- specifically, a \q{Data Structure 
-Protocol for Image-Analysis Networking} (\DSPIN{}), 
-which both extends and adds a narrower focus 
-to \MOSAICSR{}.  Software using the \DSPIN{} 
-protocol provides a description of image 
+and bioimaging --- specifically, what we term \DSPIN{} 
+(\q{Data Structure 
+Protocol for Image-Analysis Networking}).   
+\lDSPIN{} adds a narrower focus by 
+extending \MOSAICSR{}.  Software that uses the \DSPIN{} 
+protocol is able to provide a description of image 
 processing capabilities which have been 
 utilized and/or are functionally exposed 
 by code and data associated with a research 
 project.  This includes \q{structured reporting} 
 of research objectives as well as a concrete 
 interface for invoking analyses associated 
-with the research (either new algorithms or 
+with the relevant research (either new algorithms or 
 techniques used to obtain reported findings).
 \lDSPIN{}, in turn, is based on \CaPTk{} and 
-\Pandore{} (an image-processing environment 
-which includes both data models and interactive 
+\Pandore{} (which includes both data models and interactive 
 software) and the \Pandore{} \q{Image Processing Objectives} 
 Ontology, mentioned above.  
+\DSPIN{} adopts protocols from \CaPTk{} 
+in order to accept 
 For information about how different objectives 
-are merged into workflows, \DSPIN{} 
-adopts protocols from \CaPTk{}, particularly 
+are merged into workflows, 
+
+--- particularly 
 with respect to implementating 
 image-analysis capabilities as 
 extensions to a core application, and 
@@ -1434,7 +1437,7 @@ Common Workflow Language (\CWL{}).  In effect,
 prototypes adopted by \Pandore{} and 
 \CaPTk{} so as to concretize \MOSAICSR{} 
 for the specific domain of image processing 
-and Computer Vision.  The following sections 
+and Computer Vision.  The sections below 
 will therefore outline \DSPIN{} features 
 in the context of \MOSAICSR{} design principles 
 and objectives.}
@@ -1446,19 +1449,19 @@ and objectives.}
 computational workflows --- not just a digital 
 summary of real-world (e.g. lab) protocols --- 
 \MOSAICSR{} reports can be formalized 
-using a \MOSAIC{} component called 
+using a \MOSAIC{} component which we call 
 \q{Hypergraph Multi-Application Configuration 
 Language} (\HMCL{}).  Most approaches to modeling research workflows 
 involve some concept of \q{meta-objects},\footnote{See 
 the \sVISSION{} system: \bhref{https://pdfs.semanticscholar.org/1ad7/c459dc4f89f87719af1d7a6f30e6f58dff17.pdf}.} 
 \q{tools} (in the terminology of \CWL{}), 
 or \q{transitions} (in the language of Petri Net 
-theory).  In \HMCL{}, the analogous concept is 
-that of \textit{meta-procedures}, which are analogous 
+theory).  In \HMCL{}, the equivalent concept is 
+that of \textit{metaprocedures}, which are analogous 
 to ordinary computational procedures but 
 add extra sources of information concerning 
 input and output parameters.  In general, 
-rather than simply passing an imput value 
+rather than simply passing an input value 
 into an executable routine, metaprocedures 
 define steps which can be taken to 
 acquire the proper values when needed.  
@@ -1468,13 +1471,13 @@ defined on \GUI{} components; command-line
 parameters; file contents; and 
 not-yet-evaluated expressions (perhaps 
 encapsulated in scripts or function pointers).  
-A meta-procedure formulation abstracts the 
+A metaprocedure formulation abstracts the 
 acquisition of input arguments (or the consumption of 
 values within \q{channels} via which a procedure sends and 
 receives data) 
 from the concrete procedure or procedures 
 which are eventually executed.  Therefore, 
-an \HMCL{} meta-procedure definition 
+an \HMCL{} metaprocedure definition 
 has two separate parts: a preamble where 
 input sources are described; and an 
 executive sequence where concrete procedures 
@@ -1482,7 +1485,7 @@ are indicated.  A \textit{meta-evaluator}
 then operates in accord with these 
 definitions, concretizing the input values 
 and launching the actual procedure(s).  
-For \DSPIN{}, meta-procedures can be defined 
+For \DSPIN{}, metaprocedures can be defined 
 using a framework based on \BioCoder{}, 
 but adopted to the imaging and Computer Vision 
 context.}
@@ -1491,8 +1494,8 @@ context.}
 described in academic literature in 
 terms of mathematical formulae and/or 
 characterizations of computing environments 
-(such as Graphical Processing Units); 
-it requires additional construction to 
+(such as Graphical Processing Units). 
+It requires additional construction to 
 translate these overviews into actual 
 computer code.  Once 
 Computer Vision innovations are in fact 
@@ -1512,7 +1515,7 @@ allowing users to access the new code's functionality
 through \GUI{} actions, command-line invocations, 
 or inter-application messaging.}
 
-\p{In addition to practically enabling 
+\p{In addition to pragmatically enabling 
 application embedding, \DSPIN{} models 
 represent research methods and theories, 
 contributing to transparency and 
@@ -1528,7 +1531,7 @@ context which allows imaging-specific workflow
 notations to be paired with specifications 
 outside of image-processing in the narrowest 
 sense.  This allows \DSPIN{} to be available 
-for hybrid computational objectives representations 
+for hybrid computational-objectives representations 
 which are only partially covered by the imaging 
 domain --- analogous to the \MIAPEGI{} 
 (Gel Electrophoresis Informatics) component 
@@ -1544,8 +1547,8 @@ libraries codifying \MIBBI{}-style research protocols.}
 \subsection{Image Flow Cytometry}
 \p{One important use-case for biomedical image processing 
 is to analyze cellular microscopy in conjunction with 
-cytometric experiments which investigate cells and 
-cellular-scale entities (such as proteins) indirectly.  
+cytometric experiments which indirectly investigate cells and 
+cellular-scale entities (such as proteins).  
 Conceptually, image analysis and flow cytometry 
 (\FCM{}) analysis 
 are mathematically similar, and some commercial 
@@ -1563,13 +1566,14 @@ overarching bridge.\footnote{See
 \bhref{https://spie.org/Publications/Proceedings/Paper/10.1117/12.2295220?SSO=1}.}  The \DSPIN{} project builds 
 off this work by introducing its own \FCM{}/\DICOM{} 
 hybrid, although in an object-oriented rather 
-than \XML{}-based context (along with an expanded 
-\XML{}-oriented schema discussed in 
+than \XML{}-based context, although it also 
+incoporates an expanded 
+\XML{}-oriented schema (discussed in 
 the next part of this paper).  As a reference implementation 
 for this \DSPIN{} extension, the project 
 also provides a pure-\Cpp{} cytometry 
 library based on the \openCyto{} and 
-\FACSanadu{} libraries, but eliminating 
+\FACSanadu{} libraries, while eliminating 
 external dependencies such as \R{} and 
 \Java{}.  The \FCM{}/\DICOM{} bridge is 
 implemented in this context via a 
@@ -1588,8 +1592,8 @@ clinical data.}
 many contexts with \DICOM{}, insofar as \DICOM{} 
 represents the canonical standard for exchanging 
 medical image data.  For its applications within 
-the medical-imaging context, therefore, 
-\DSPIN{} provides object-oriented accessors 
+the medical-imaging context, \DSPIN{}, therefore, 
+provides object-oriented accessors 
 to \DICOM{} data such that image-objectives and 
 \DICOM{} object models can interoperate.  
 This object-oriented foundation also provides a 
@@ -1604,14 +1608,11 @@ integration is engineered instead as an
 extension to the \DICOM{} Toolkit (\DCMTK{}) 
 library, though it imports many constructs 
 within Semantic \DICOM{} in the guise 
-of a \q{Hypergraph Ontology}, one example of a 
+of a \q{Hypergraph Ontology} --- one example of a 
 system \MOSAIC{} uses to merge Semantic Web 
-schema with Object-Oriented code (this is reviewed more 
-thorough in the next subsection).  In 
-short, \MOSAICSD{} 
-extends \DSPIN{} by defining  
-a central \DICOM{} object model affixed 
-to both clinical and 
+schema with Object-Oriented code.  In short, \MOSAICSD{} 
+extends \DSPIN{} by defining  a central \DICOM{} object model 
+affixed to both clinical and 
 image-processing object models.}
 
 \p{The \MOSAICSD{} object system applies 
@@ -1619,9 +1620,8 @@ not only to \DICOM{} integrated with
 statements of image-processing objectives, 
 but also to other biomedical contexts where 
 image analysis should be integrated 
-with other analytic modalities and 
-also with clinical or epidemiological 
-information.  For example, Flow 
+with other analytic modalities as well as with clinical or 
+epidemiological information.  For example, Flow 
 Cytometry overlaps with clinical data tracking because 
 one of \FCM{}'s essential investigative roles 
 is to examine patients' immunological 
@@ -1629,13 +1629,13 @@ response to diseases and/or interventions.
 In the context of Covid-19, say --- with respect to 
 achieving a deeper understanding of how 
 and why SARS-CoV-2 symptoms present differently 
-in different patients --- \q{The starting point will likely be a deep characterization of the immune system in patients with different stage of the disease}.\footnote{See \bhref{https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.24002}.}  
+in different patients --- \q{The starting point will likely be a deep characterization of the immune system in patients with different stages of the disease.}\footnote{See \bhref{https://onlinelibrary.wiley.com/doi/full/10.1002/cyto.a.24002}.}  
 That is, \FCM{} observations need to be 
 matched with clinical data in order to 
 classify (and consider statistical correlations 
-between) immunological findings and clinical facts 
-(risk factors, sociodemographics, disease 
-progression, and so forth).  This analysis 
+between) immunological findings and clinical facts: 
+risk factors, sociodemographics, disease 
+progression, and so forth.  This analysis 
 intrinsically assumes that \FCM{} data can 
 be transparently linked with all relevant 
 clinical data, but such integration is 
@@ -1643,8 +1643,7 @@ difficult even in \DICOM{}, where \DICOM{}
 headers are specifically designed for preserving 
 patient data across picture-sharing networks  
 (there is no analogous \q{header} 
-component in the 
-Flow Cytometry Standard, \FCS{}).  
+component in the Flow Cytometry Standard, \FCS{}).  
 In brief, \DSPIN{} extensions to 
 non-imaging domains can promote 
 data integration insofar as \DSPIN{} 
@@ -1653,7 +1652,7 @@ Semantic \DICOM{}, provide
 an affixation point for clinical data 
 in analytic contexts which are 
 operationally related to image analysis, 
-not just to image analysis per se.}
+and not just to image analysis by itself.}
 
 \subsection{Semantic \protect\lsDICOM{} via \protect\lsDCMTK{} Extensions}
 \p{As a concrete example of how a Semantic \DICOM{} Object Model could be 
@@ -1670,7 +1669,7 @@ that recognize the extended syntax and/or semantics.  When implementing
 exist in an ambient context which provides capabilities that can 
 be leveraged by the extension as it becomes formalized.  For example, 
 if a \DICOM{} extension provides a unified \FCM{}/\DICOM{} format, 
-we can assume that the workstation linking against a modified 
+we can assume that the workstation linking against modified 
 \DCMTK{} libraries supports \FCM{} features, such as the ability 
 to construct geometric gating models (that is, rectangular or 
 ellipsoid segments on \FCM{} images) and to consume information 
@@ -1679,7 +1678,7 @@ derive the current \FCM{} data.}
 
 \p{In the case of Semantic \DICOM{}, we can similarly 
 assume that the host application which loads 
-an enhanced, \q{Semantic} version of a \DICOM{} client library 
+an enhanced \q{Semantic} version of a \DICOM{} client library 
 has the ability to consume more complex clinical data models 
 than are incorporated into conventional \DICOM{}.  In the 
 case of \DCMTK{}, patient information is accessed through a 
@@ -1694,13 +1693,13 @@ bundle files serializing these extended types within the
 overall collection of files zipped into a single 
 \DICOM{} resource.}
 
-\p{The steps just outlined allow an extension object model to 
+\p{The steps outlined above allow an extension object model to 
 be embedded in \DICOM{} by hooking extra processing code 
 into the procedures whereby conventional \textbf{DcmDataset}s  
 are extracted from \DICOM{} files.  It is then necessary to 
 ensure that the \DICOM{} client application can properly 
 manipulate the extension object data.  This could be handled 
-simply by linking all necessary libraries in to the \DICOM{} client 
+simply by linking all necessary libraries into the \DICOM{} client 
 itself, but a more flexible solution is to employ some 
 form of multi-application networking.  In the case 
 of non-standard clinical data, a flexible approach would be 
@@ -1719,19 +1718,19 @@ self-contained application specifically devoted to tracking
 immunological responses and post-recovery symptomology 
 for Covid-19.  The goal would be to develop more sophisticated 
 technology for modeling the progression of active Covid-19 
-infections, as well as lingering effects of the disease 
+infections, as well as the lingering effects of the disease 
 for patients who experience adverse reactions (such 
-as lasting neurological damage) even after their ostensive 
-recovery.  Detailed models of Covid-19 affliction could then 
+as lasting neurological damage or lung impairment) even after their 
+ostensive recovery.  Detailed models of Covid-19 affliction could then 
 be matched against epidemiological, treatment, and sociodemographic 
-data to determine whether there are predictors for which 
+data to determine whether there are predictors that determine which 
 patients may experience more severe or long-lasting symptoms, 
-and whether these can be mitigated by different treatment 
+and whether these symptoms can be mitigated by different treatment 
 options.  The data consumed by such a Covid-specific application 
 might be bundled into \DICOM{} files even if \DICOM{} clients 
-cannot directly process this data; instead, they could be 
-programmed to launch the Covid-specific application and 
-query that application for select pieces of information 
+cannot directly process this data.  In such a case, they could, 
+instead, be programmed to launch the Covid-specific application 
+and query that application for select pieces of information 
 that \textit{are} relevant for a \DICOM{} workstation 
 (e.g., an immunological profile of the patient adding 
 layers of detail to cytological imaging).  In short, 
@@ -1743,7 +1742,8 @@ sorts of information from a Covid-specific data model
 for different contexts: given an overall information 
 package about a patient's SARS-CoV-2 immunology and symptomology, 
 some categories of data will be relevant for bioimaging, 
-others for genomics, and so forth.  The file formats employed by 
+while others will be relevant for 
+genomics and so forth.  The file formats employed by 
 these various peer applications (such as \DICOM{}, in the 
 bioimaging context) may then be extended only as much 
 as is needed to seed shared data packages with enough 
@@ -1754,8 +1754,7 @@ specific biomedical domain.}
 \subsection{Geo-Imaging and Geographic Information Systems}
 \p{Another area where \DSPIN{} provides structured 
 object models is that of Geographic Information Systems 
-(\GIS{}) annotations.  
-There is a direct link between image processing 
+(\GIS{}) annotations.  There is a direct link between image processing 
 and \GIS{} insofar as identifying geotaggable 
 features is one dimension or application of 
 Computer Vision.  Effectively manipulating 

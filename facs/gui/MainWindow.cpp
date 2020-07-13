@@ -25,7 +25,6 @@
 #include "../data/ExportFcsToCSV.h"
 #include "../data/Dataset.h"
 
-#include "events/FacsanaduEvent.h"
 
 #include "QtProgramInfo.h"
 
@@ -453,7 +452,7 @@ void MainWindow::actionExportCSV()
 void MainWindow::loadFile(QFile& path) // throws IOException
 {
  project_->addDataset(path);
- handleEvent(new EventDatasetsChanged());
+ handleEvent(EventDatasetsChanged());
 }
 
  

@@ -42,6 +42,11 @@ public:
 
  void set_indexX(int i) { indexX_ = i; }
  void set_indexY(int i) { indexY_ = i; }
+ void set_gate(Gate* g) { gate_ = g; }
+
+ void set_zoomX(double d) { zoomX_ = d; }
+ void set_zoomY(double d) { zoomY_ = d; }
+ void set_numHistBins(int n) { numHistBins_ = n; } 
 
  //  // Set the scale to cover the given max and min values
  void autoscale(QList<double> max, QList<double> min);

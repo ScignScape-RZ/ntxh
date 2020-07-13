@@ -61,7 +61,7 @@ private:
  QImage* img_; // = nullptr;
  void updatePointImage();
 
- bool mousePosInBoundary(QPoint pos);
+ bool mousePosInBoundary(const QPoint& pos);
 
 
 protected:
@@ -99,6 +99,9 @@ public:
  class Callback : public QObject
  {
 //  Q_OBJECT
+ public:
+
+  ViewWidget* vw;
   virtual void actionSet();
  };
 //*/
@@ -165,7 +168,7 @@ public:
 
  void actionSwapAxis();
 
- void setTool(ViewToolChoice t);
+ void setTool(ViewToolChoice::Enum e);
 
  void addGate(Gate* g);
 

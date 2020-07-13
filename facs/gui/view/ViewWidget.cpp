@@ -297,24 +297,25 @@ void ViewWidget::mouseReleaseEvent(QMouseEvent* ev)
 
 void ViewWidget::mouseMoveEvent(QMouseEvent* event)
 {
- QWidet::mouseMoveEvent(event);
+ QWidget::mouseMoveEvent(event);
  
  if(curhandle_ != nullptr)
  {
-  QPointF p = trans.mapScreenToFcs(event->posF());
-  curhandle.move2(mainWindow, p.x(), p.y());
+  QPointF p = trans_->mapScreenToFcs(event->localPos());
+  curhandle_->move2(mainWindow_, p.x(), p.y());
  }
  else
    tool_->mouseMoveEvent(event);
 
- pointLast_ = event->posF();
+ pointLast_ = event->localPos();
 }
 
 
-bool ViewWidget::mousePosInBoundary(QPoint& pos)
+bool ViewWidget::mousePosInBoundary(const QPoint& pos)
 {
- int invy=height()-pos.y();
- return pos.x() < trans.graphOffsetXY || invy < trans.graphOffsetXY;
+ int invy = height() - pos.y();
+ return ( pos.x() < trans_->graphOffsetXY() ) 
+  || ( invy < trans_->graphOffsetXY() );
 }
 
 void ViewWidget::setChannels(int indexX, int indexY)
@@ -325,7 +326,7 @@ void ViewWidget::setChannels(int indexX, int indexY)
 
 void ViewWidget::setSettings(ViewSettings* vs)
 {
- viewsettings = vs;
+ viewsettings_ = vs;
 }
 
 //interface Callback
@@ -338,99 +339,109 @@ void ViewWidget::setSettings(ViewSettings* vs)
 void ViewWidget::CallbackSetChannel::actionSet()
 {
  if(forx)
-   viewsettings.indexX=chanid;
+   vw->viewsettings_->set_indexX(chanid);
+ 
  else
-   viewsettings.indexY=chanid;
+   vw->viewsettings_->set_indexY(chanid);
 
- mainWindow_->handleEvent(EventViewsChanged());
+ vw->mainWindow_->handleEvent(EventViewsChanged());
 }
 
 
 void ViewWidget::CallbackSetHistogram::actionSet()
 {
- viewsettings_->setHistogram(chanid);
- mainWindow->handleEvent(EventViewsChanged());
+ vw->viewsettings_->setHistogram(chanid);
+ vw->mainWindow_->handleEvent(EventViewsChanged());
 }
 
 
 void ViewWidget::CallbackSetGate::actionSet()
 {
- viewsettings->set_gate(g);
- mainWindow_->handleEvent(EventViewsChanged());
+ vw->viewsettings_->set_gate(g);
+ vw->mainWindow_->handleEvent(EventViewsChanged());
 }
 
-void ViewWidget::CallbackSetTransformation::CallbackSetTransformation(
-  TransformationType t, boolean forx)
+ViewWidget::CallbackSetTransformation::CallbackSetTransformation(
+  QString tt, // TransformationType t, 
+  bool forx)
 {
- t_ = t;
- forx_ = forx;
+ ttype = tt;
+ forx = forx;
 }
 
 void ViewWidget::CallbackSetTransformation::actionSet()
 {
  int index;
+
  if(forx)
-   index=viewsettings.indexX;
+   index=vw->viewsettings_->indexX();
  else
-   index=viewsettings.indexY;
- Transformation trans=null;
- if(t==TransformationType.LOG)
-   trans=new TransformationLog();
+   index=vw->viewsettings_->indexY();
+
+ Q_UNUSED(index)
+
+/*
+ Transformation trans = nullptr;
+ if(t == TransformationType.LOG)
+   trans_ = new TransformationLog();
  if(t==TransformationType.LINEAR)
    viewsettings.transformation.set(index, trans);
  else if(t==TransformationType.LOG)
    viewsettings.transformation.set(index, trans);
- mainWindow.handleEvent(new EventViewsChanged());
+*/
+
+ vw->mainWindow_->handleEvent(EventViewsChanged());
 }
 
 void ViewWidget::CallbackSetZoom::actionSet()
 {
  if(isx)
-   viewsettings.zoomX=scale;
+   vw->viewsettings_->set_zoomX(scale);
  else
-   viewsettings.zoomY=scale;
- mainWindow.handleEvent(new EventViewsChanged());
+   vw->viewsettings_->set_zoomY(scale);
+
+ vw->mainWindow_->handleEvent(new EventViewsChanged());
 }
 
 void ViewWidget::CallbackSetBins::actionSet()
 {
- viewsettings.numHistBins=bins;
- mainWindow.handleEvent(new EventViewsChanged());
+ vw->viewsettings_->set_numHistBins(bins);
+ vw->mainWindow_->handleEvent(EventViewsChanged());
 }
 
 int ViewWidget::getIndexX()
 {
- return viewsettings.indexX;
+ return viewsettings_->indexX();
 }
 
 int ViewWidget::getIndexY()
 {
- return viewsettings.indexY;
+ return viewsettings_->indexY();
 }
 
 void ViewWidget::sendEvent(FacsanaduEvent event)
 {
- mainWindow.handleEvent(event);
+ mainWindow_->handleEvent(event);
 }
 
 void ViewWidget::actionSwapAxis()
 {
- viewsettings.swapAxis();
- mainWindow.handleEvent(new EventViewsChanged());
+ viewsettings_->swapAxis();
+ mainWindow_->handleEvent(EventViewsChanged());
 }
 
-void ViewWidget::setTool(ViewToolChoice t)
+void ViewWidget::setTool(ViewToolChoice::Enum e)
 {
- tool_ = ViewToolChoice::getTool(this, t);
+ tool_ = ViewToolChoice::getTool(this, e);
 }
 
-void ViewWidget::addGate(Gate g)
+void ViewWidget::addGate(Gate* g)
 {
- mainWindow.addGate(viewsettings.gate, g);
+ mainWindow_->addGate(viewsettings_->gate(), g);
 }
 
 void ViewWidget::invalidateCache()
 {
- img=null;
+ img_ = nullptr;
 }
 

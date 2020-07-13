@@ -7,6 +7,8 @@
 #include "GateCalcThread.h"
 
 
+#include "events/FacsanaduEvent.h"
+
 #include <QDialog>
 #include <QVBoxLayout>
 #include <QTableWidget>
@@ -180,6 +182,12 @@ public:
 
  // // Event bus
  void handleEvent(FacsanaduEvent* event);
+
+  // temp ...
+ void handleEvent(FacsanaduEvent event)
+ {
+  handleEvent(&event); 
+ }
  
  void dothelayout();
 

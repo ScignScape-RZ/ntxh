@@ -39,6 +39,20 @@ public:
   viewsettings_ = vs;
  }
 
+ int internalHeight()
+ {
+  return internalHeight_;
+ }
+
+ int internalWidth()
+ {
+  return internalWidth_;
+ }
+
+ int graphOffsetXY()
+ {
+  return graphOffsetXY_;
+ }
 
  // // Set the total view height
  void setTotalHeight(int h);
@@ -56,10 +70,10 @@ public:
  double getTotalScaleY();
  
  // // Map screen space to FCS value
- QPointF mapScreenToFcs(QPointF& pos);
+ QPointF mapScreenToFcs(const QPointF& pos);
 
  // // Map FCS value to screen space
- QPointF mapFcsToScreen(QPointF& pos);
+ QPointF mapFcsToScreen(const QPointF& pos);
 
  int mapFcsToScreenX(double x);
  int mapFcsToScreenY(double y);

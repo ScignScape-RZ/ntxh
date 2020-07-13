@@ -11,15 +11,22 @@
 // import facsanadu.gui.view.ViewWidget;
 
 // // Currently selected tool
-enum class ViewToolChoice
-{
- SELECT, RECT, POLY, ELLIPSE, RANGE
-};
+//enum 
 
 class ViewTool;
 class ViewWidget;
 
-ViewTool* getTool(ViewWidget* w, ViewToolChoice* t);
+class ViewToolChoice
+{
+
+public:
+
+ enum Enum {
+   SELECT, RECT, POLY, ELLIPSE, RANGE
+ };
+
+ static ViewTool* getTool(ViewWidget* w, Enum e);
+};
 
 
 #endif // __H
