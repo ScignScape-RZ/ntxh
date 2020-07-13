@@ -5,16 +5,29 @@
 #ifndef GateRendererRange__H
 #define GateRendererRange__H
 
+
+#include "GateRenderer.h"
+
+
 #include <QPainter>
+
+#include <QList>
+
+class Gate;
+class ViewTransform;
+class ViewSettings;
+class GateHandle;
+
 
 // package facsanadu.gui.view.gate;
 
 // // Renderer for rectangular gates
-class GateRendererRange : // implements GateRenderer
+class GateRendererRange : public GateRenderer
 {
 public:
- void render(final Gate gate, QPainter p, ViewTransform w, final ViewSettings viewsettings, Collection<GateHandle> handles);
 
+ void render(const Gate* gate, QPainter& p, ViewTransform* w, 
+   const ViewSettings* viewsettings, QList<GateHandle*> handles) Q_DECL_OVERRIDE;
 };
 
 #endif // __H

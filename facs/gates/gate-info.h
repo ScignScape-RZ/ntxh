@@ -46,6 +46,11 @@ public:
   return name_;
  }
 
+ virtual QString class_name() const
+ {
+  return {};
+ }
+
  void set_name(QString name)
  {
   name_ = name;

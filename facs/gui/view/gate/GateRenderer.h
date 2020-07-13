@@ -22,8 +22,8 @@ class GateRenderer
 {
 public:
 
- virtual void render(Gate* gate, QPainter& p, ViewTransform* w, 
-   ViewSettings* viewsettings, QList<GateHandle*> handles) = 0;
+ virtual void render(const Gate* gate, QPainter& p, ViewTransform* w, 
+   const ViewSettings* viewsettings, QList<GateHandle*> handles) = 0;
 };
 
 

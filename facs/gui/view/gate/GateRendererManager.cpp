@@ -1,19 +1,39 @@
+
+// // license___here_h
+
+
+#include "GateRendererManager.h"
+
+#include "GateRendererRect.h"
+#include "GateRendererRoot.h"
+#include "GateRendererRange.h"
+#include "GateRendererPoly.h"
+#include "GateRendererEllipse.h"
+
+
+#include "../gates/gate-info.h"
+
+
+
 // package facsanadu.gui.view.gate;
 
 
-GateRenderer GateRendererManager::getGateRenderer(Gate g)
+GateRenderer* GateRendererManager::getGateRenderer(Gate* g)
 {
- if(g instanceof GateRect)
+ QString cn = g->class_name();
+
+ if(cn == "GateRect")
    return new GateRendererRect();
- else if(g instanceof GateRoot)
+ else if(cn == "GateRoot")
    return new GateRendererRoot();
- else if(g instanceof GateRange)
+ else if(cn == "GateRange")
    return new GateRendererRange();
- else if(g instanceof GatePolygon)
+ else if(cn == "GatePolygon")
    return new GateRendererPoly();
- else if(g instanceof GateEllipse)
+ else if(cn == "GateEllipse")
    return new GateRendererEllipse();
  else
-   throw new RuntimeException("no renderer");
- }
+   return nullptr; //throw new RuntimeException("no renderer");
 }
+
+

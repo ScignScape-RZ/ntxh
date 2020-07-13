@@ -207,7 +207,7 @@ void ViewSettings::setHistogram(int chanid)
 }
 
 
-bool ViewSettings::coversXandY(int indexX2, int indexY2)
+bool ViewSettings::coversXandY(int indexX2, int indexY2) const
 {
  HashSet<Integer> ind=new HashSet<Integer>();
  ind.add(indexX);
@@ -215,7 +215,7 @@ bool ViewSettings::coversXandY(int indexX2, int indexY2)
  return ind.contains(indexX2) && ind.contains(indexY2);
 }
 
-bool ViewSettings::coversX(int indexX2)
+bool ViewSettings::coversX(int indexX2) const
 {
  HashSet<Integer> ind = new HashSet<Integer>();
  ind.add(indexX);

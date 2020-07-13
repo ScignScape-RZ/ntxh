@@ -24,6 +24,10 @@ SOURCES +=  \
  ./gui/view/tool/ViewToolChoice.cpp \
  ./gui/view/ViewTransform.cpp \
  ./gui/view/ViewRenderer.cpp \
+ ./gui/view/Histogram.cpp \   # skip graph exporter ...
+ ./gui/view/gate/GateRendererManager.cpp \
+ ./gui/view/gate/GateRendererRoot.cpp \
+ ./gui/view/gate/GateRendererRect.cpp \
 
 
 

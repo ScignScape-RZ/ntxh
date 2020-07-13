@@ -5,18 +5,29 @@
 #ifndef GateRendererPoly__H
 #define GateRendererPoly__H
 
+
+#include "GateRenderer.h"
+
 #include <QPainter>
 
+#include <QList>
+
+class Gate;
+class ViewTransform;
+class ViewSettings;
+class GateHandle;
 
 // package facsanadu.gui.view.gate;
 
 
 // // Renderer for polygon gates
-class GateRendererPoly : implements GateRenderer
+class GateRendererPoly : public GateRenderer
 {
 public:
 
-  void render(final Gate gate, QPainter p, final ViewTransform w, final ViewSettings viewsettings, Collection<GateHandle> handles);
+ void render(const Gate* gate, QPainter& p, ViewTransform* w, 
+   const ViewSettings* viewsettings, QList<GateHandle*> handles) Q_DECL_OVERRIDE;
+
 };
 
 #endif // __H

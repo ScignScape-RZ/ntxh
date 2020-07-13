@@ -43,8 +43,8 @@ class ViewSettings
  
 public:
 
- int indexX() { return indexX_; }  //=7;
- int indexY() { return indexY_; } 
+ int indexX() const { return indexX_; }  //=7;
+ int indexY() const { return indexY_; } 
 
  void set_indexX(int i) { indexX_ = i; }
  void set_indexY(int i) { indexY_ = i; }
@@ -54,11 +54,11 @@ public:
  void set_zoomY(double d) { zoomY_ = d; }
  void set_numHistBins(int n) { numHistBins_ = n; } 
 
- double scaleX() { return scaleX_; }
- double scaleY() { return scaleY_; }
+ double scaleX() const { return scaleX_; }
+ double scaleY() const { return scaleY_; }
 
- double zoomX() { return zoomX_; }
- double zoomY() { return zoomY_; }
+ double zoomX() const { return zoomX_; }
+ double zoomY() const { return zoomY_; }
 
  TransformationStack* transformation() { return transformation_; }
 
@@ -106,8 +106,8 @@ public:
 
  void setHistogram(int chanid);
 
- bool coversXandY(int indexX2, int indexY2);
- bool coversX(int indexX2);
+ bool coversXandY(int indexX2, int indexY2) const;
+ bool coversX(int indexX2) const;
 
  void swapAxis();
  
