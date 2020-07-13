@@ -5,9 +5,14 @@
 #ifndef GateRenderer__H
 #define GateRenderer__H
 
-
+#include <QList>
 #include <QPainter>
 
+class Gate;
+class QPainter;
+class ViewTransform;
+class ViewSettings; 
+class GateHandle;
 
 // package facsanadu.gui.view.gate;
 
@@ -17,7 +22,8 @@ class GateRenderer
 {
 public:
 
- void render(Gate gate, QPainter p, ViewTransform w, ViewSettings viewsettings, Collection<GateHandle> handles) = 0;
+ virtual void render(Gate* gate, QPainter& p, ViewTransform* w, 
+   ViewSettings* viewsettings, QList<GateHandle*> handles) = 0;
 };
 
 

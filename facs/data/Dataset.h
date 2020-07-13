@@ -53,7 +53,7 @@ public:
 
  QString get_file_source_name();
 
- QList<double> getAsFloatCompensated(int obs, int indexChan);
+ double getAsFloatCompensated(int obs, int indexChan);
 
  QList<double> getAsFloatCompensated(int obs);
  

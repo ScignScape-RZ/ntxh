@@ -56,6 +56,10 @@ public:
 
  double scaleX() { return scaleX_; }
  double scaleY() { return scaleY_; }
+
+ double zoomX() { return zoomX_; }
+ double zoomY() { return zoomY_; }
+
  TransformationStack* transformation() { return transformation_; }
 
  //  // Set the scale to cover the given max and min values

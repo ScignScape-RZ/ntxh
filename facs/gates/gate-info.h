@@ -76,8 +76,13 @@ public:
 
  GateColor(QColor qc) : qc_(qc) {}
 
+ int r() { return qc_.red(); }
+ int g() { return qc_.green(); }
+ int b() { return qc_.blue(); }
+ 
 
 };
+
 
 
 
