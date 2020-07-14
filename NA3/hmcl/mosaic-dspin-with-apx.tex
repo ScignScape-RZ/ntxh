@@ -2109,7 +2109,51 @@ code include the following:
 \item[Vertex Sets]  The important feature of geometric 
 vertices in the \FCM{} context is that vertices need 
 to be expressed within and mapped between several different 
-coordinate systems.  
+coordinate systems.  For example, \cytoLib{} uses a 
+different \q{coordinate} class when reading data via 
+Protocol Buffers than for internally defining gates.  
+At the \GUI{} level, at least three different notions of 
+two-dimensional locations are important, depending on whether 
+one is tracking visual objects or events (such as mouse clicks) 
+relative to the entire computer screen, or one \GUI{} window, 
+or the top-left corner of the object whose method handles a 
+given user-interaction event.  In other contexts related 
+to \FCM{}, such as \PDF{} rendering and image analysis, there 
+are still further coordinate systems; so it is not uncommon
+for a code base (even just in the \TwoD{} context) to 
+manage spatial positions recorded in at least seven different 
+formats.  A further complication is that some coordinate 
+systems use integer values, and others using floating-point numbers.  
+It is therefore a resonable practice to factor 
+out different coordinate systems into a common \TwoD{} 
+position/vertex model from which context-specific locations can 
+be derived.
+
+\item[Ellipses]  Different applications represent ellipses 
+in different ways, including via antipodal points,  
+axis radii, or covariance matrices.  The matrix 
+form (which entails four values, or 2$\times$2, for a 
+two-dimensional shape) is preferred for \FCM{} 
+(as standardized in \GatingML{}, say), but other 
+representations are more common in other contexts, 
+such as image analysis (\ITK{}, for instance, 
+distinguishes \q{object space} from \q{world-space}, 
+which has the effect of separating a two-valued 
+description of the elliptical shape as an intrinsic 
+morpholigical quality, whereas the ellipse's axis 
+angles are a feature of how its intrinsic space 
+relates to a parent space).  In \Qt{}, for its 
+part, ellipses (a kind of \textbf{QGraphicsItem}) are 
+defined in terms of a bounding rectangle together 
+with a rotational transform.  Given this diversity 
+of representations, \DSPIN{} uses a separate ellipse 
+class (based on eccentricity and major-axis angles) 
+which can be mathematically transformed into these 
+different formats.              
+
+\item[Gate Transformations]  
+
+\item[Channels]  
 
 \end{description}
 
