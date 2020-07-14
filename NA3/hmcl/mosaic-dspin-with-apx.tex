@@ -2074,6 +2074,50 @@ manuscripts, mentioned earlier --- can be found on
 the guthub project page for Linguistic 
 Technology Systems (\bhref{https://github.com/Mosaic-DigammaDB/LingTechSys}).}
 
+{\newpage}
+\section{Appendix: Integration between Different Flow Cytometry Libraries}
+
+\p{As discussed above, one use-case for data integration via 
+\DSPIN{} is to merge the features of multiple \FCM{} 
+libraries, such as \cytoLib{} and \FACSanadu{} (although the 
+techniques discussed here could be applied to other libraries 
+as well).  In the \cytoLib{}/\FACSanadu{} reconciliation, 
+\FACSanadu{} code (translated from \Java{} to \Cpp{}) 
+provides \GUI{} logic whereas \cytoLib{} provides most 
+of the analytics and \FCS{} processing.  These two 
+code bases come into contact insofar as \cytoLib{} data 
+needs to be visualized within \FACSanadu{} \GUI{} 
+components.  Constructing a bridge between the two 
+systems therefore involves translating \cytoLib{} data 
+structures to the data types expected by \FACSanadu{} 
+when it initializes visual renderings of \FCS{} data, 
+such as event plots and gate boundaries.}
+
+\p{To facilitate this translation, the \DSPIN{}-based 
+strategy involves isolating certain geometric 
+and data-modeling primitives and implementing them 
+in a separate code base distinct from either of 
+the \FCM{} components.  These modeling primitives 
+then as an intermediary between \cytoLib{} and \FACSanadu{}, 
+but they are also designed with an eye toward 
+being applicable in other image-processing contexts.  
+Important data structures involved in this bridge 
+code include the following:
+
+\begin{description}
+
+\item[Vertex Sets]  The important feature of geometric 
+vertices in the \FCM{} context is that vertices need 
+to be expressed within and mapped between several different 
+coordinate systems.  
+
+\end{description}
+
+  }
+
+\p{}
+
+
 
 
 \end{document}
