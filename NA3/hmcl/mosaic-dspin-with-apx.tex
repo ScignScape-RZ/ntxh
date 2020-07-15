@@ -26,10 +26,10 @@
 \vspace{-.5em}}
 
 \titlespacing*{\section}
-{0pt}{4.1ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
+{0pt}{3.8ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
 
 \titlespacing*{\subsection}
-{0pt}{3.1ex plus 1ex minus .1ex}{-.8ex plus .2ex}
+{0pt}{2.8ex plus 1ex minus .1ex}{-.8ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -648,6 +648,8 @@
 
 
 \newcommand{\ViSion}{\resizebox{!}{7pt}{\AcronymText{ViSion}}}
+
+\newcommand{\ITK}{\resizebox{!}{7pt}{\AcronymText{ITK}}}
 
 \newcommand{\CWL}{\resizebox{!}{7pt}{\AcronymText{CWL}}}
 
@@ -1549,9 +1551,9 @@ discuss several domains where \DSPIN{} has
 been explicitly integrated with code 
 libraries codifying \MIBBI{}-style research protocols.}
 
-%\vspace{-1em}
+\vspace{-.25em}
 \section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing}
-\vspace{2em}
+\vspace{.75em}
 \subsection{Image Flow Cytometry}
 \p{One important use-case for biomedical image processing 
 is to analyze cellular microscopy in conjunction with 
@@ -1832,9 +1834,9 @@ within a \MOSAICGIS{} extension.}
 %\section{Conceptual Space Models and Hypergraph Database Implementation}
 %\p{\lMOSAIC{} repositories need to model data  }
 
-\vspace{-9pt}
+%\vspace{-9pt}
 \part{MOSAIC Data Models}
-\vspace{-6pt}
+%\vspace{-6pt}
 \section{Hypergraph Database Models for Publication Data}
 \p{At the core of any \MOSAIC{} portal is a collection of 
 distinct files, representing individual publications and 
@@ -2078,7 +2080,8 @@ the guthub project page for Linguistic
 Technology Systems (\bhref{https://github.com/Mosaic-DigammaDB/LingTechSys}).}
 
 {\newpage}
-\section{Appendix: Integration between Different Flow Cytometry Libraries}
+\section{Appendix: LTS's Integration between 
+Different Flow Cytometry Libraries}
 
 \p{As discussed above, one use-case for data integration via 
 \DSPIN{} is to merge the features of multiple \FCM{} 
@@ -2101,19 +2104,19 @@ strategy involves isolating certain geometric
 and data-modeling primitives and implementing them 
 in a separate code base distinct from either of 
 the \FCM{} components.  These modeling primitives 
-then as an intermediary between \cytoLib{} and \FACSanadu{}, 
+serve then as an intermediary between \cytoLib{} and \FACSanadu{}, 
 but they are also designed with an eye toward 
 being applicable in other image-processing contexts.  
 Important data structures involved in this bridge 
 code include the following:
 
-\begin{description}[leftmargin=4pt,itemsep=4pt]
+\begin{description}[leftmargin=2pt,itemsep=4pt]
 
 \item[Vertex Sets]  The important feature of geometric 
 vertices in the \FCM{} context is that vertices need 
 to be expressed within and mapped between several different 
 coordinate systems.  For example, \cytoLib{} uses a 
-different \q{coordinate} class when reading data via 
+different \textbf{coordinate} class when reading data via 
 Protocol Buffers than for internally defining gates.  
 At the \GUI{} level, at least three different notions of 
 two-dimensional locations are important (and require transforms such as 
@@ -2123,12 +2126,14 @@ relative to the entire computer screen, or one \GUI{} window,
 or the top-left corner of the object whose method handles a 
 given user-interaction event.  
 A further complicating factor is that some coordinate 
-systems use integer values, while others using floating-point 
-numbers.  In other contexts related to \FCM{}, such as 
+systems are based on integer values, while others employ 
+floating-point decimals.  Moreover, in contexts 
+outside of (but related to) \FCM{}, such as  
 \PDF{} rendering and image analysis, there 
-are still further coordinate systems; so it is not uncommon
-for a code base (even just in the \TwoD{} context) to 
-manage spatial positions recorded in at least seven different 
+are still further coordinate systems.  All told, 
+a cross-disciplinary code base  
+may need to manage \TwoD{} spatial positions 
+recorded in at least seven different 
 formats.  It is therefore a resonable practice to factor 
 out different coordinate systems into a common \TwoD{} 
 position/vertex model from which context-specific locations can 
@@ -2145,8 +2150,9 @@ such as image analysis (\ITK{}, for instance,
 distinguishes \q{object space} from \q{world-space}, 
 which has the effect of separating a two-valued 
 description of the elliptical shape as an intrinsic 
-morpholigical quality, whereas the ellipse's axis 
-angles are a feature of how its intrinsic space 
+morphological quality from the ellipse axis 
+angles, which are treated as a feature 
+of how its intrinsic space 
 relates to a parent space).  In \Qt{}, for its 
 part, ellipses (a kind of \textbf{QGraphicsItem}) are 
 defined in terms of a bounding rectangle together 
@@ -2159,10 +2165,11 @@ different formats.
 \item[Data/Coordinate Transformations]  Only linear and 
 logarithmic transformations are defined in 
 \FACSanadu{}, although it is straightforward to 
-further the subclass the \textbf{Transformation} 
+further subclass the \textbf{Transformation} 
 base type.  To be consistent with the \GUI{}, 
 modified transformation algorithms need to be 
-registered with a context menu in \q{\textbf{ViewWidget}} 
+registered with a context menu in \FACSanadu{}'s 
+\q{\textbf{ViewWidget}} control 
 (a menu activated by clicking in a boundary area, outside 
 any rendered data).  This is an example of where 
 data modeling/analytic features and \GUI{} setup 
