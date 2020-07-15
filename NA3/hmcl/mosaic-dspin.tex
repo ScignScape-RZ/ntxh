@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=10   %\pgfmathresult>0\relax
-\put(182,130){
+\put(182,122){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -839,7 +839,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.9em}#1}
+\vspace{.8em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -1583,15 +1583,15 @@ incoporates an expanded
 the next part of this paper).  As a reference implementation 
 for this \DSPIN{} extension, the project 
 also provides a pure-\Cpp{} cytometry 
-library based on the \openCyto{} and 
-\FACSanadu{} libraries, while eliminating 
+library based on the \openCyto{} (see \bhref{https://www.bioconductor.org/packages/release/bioc/html/cytolib.html}) and 
+\FACSanadu{} (see \bhref{https://www.biorxiv.org/content/biorxiv/early/2017/10/13/201897.full.pdf}) libraries, while eliminating 
 external dependencies such as \R{} and 
 \Java{}.\footnote{Upon request, LTS can provide 
 a detailed summary of this project reconciling 
 \sopenCyto{} and \sFACSanadu{}.  Specifically, 
 although \sopenCyto{} as a whole uses \sR{} for its 
 visual layer, \sopenCyto{} contains \scytoLib{}, a \sCpp{} 
-library for cytometric analysis, which can be used 
+library for cytometric analysis, which can be employed 
 as the basis for a standalone pure-\sCpp{} flow 
 cytometry application.  Meanwhile, \sFACSanadu{} 
 is a \sJava{} application which uses a \sQt{} front-end 
@@ -2073,8 +2073,6 @@ about \ConceptsDB{} --- and on the
 manuscripts, mentioned earlier --- can be found on 
 the guthub project page for Linguistic 
 Technology Systems (\bhref{https://github.com/Mosaic-DigammaDB/LingTechSys}).}
-
-
 
 \end{document}
 

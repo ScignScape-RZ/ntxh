@@ -26,10 +26,10 @@
 \vspace{-.5em}}
 
 \titlespacing*{\section}
-{0pt}{4ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
+{0pt}{4.1ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
 
 \titlespacing*{\subsection}
-{0pt}{3.5ex plus 1ex minus .1ex}{-.8ex plus .2ex}
+{0pt}{3.1ex plus 1ex minus .1ex}{-.8ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=10   %\pgfmathresult>0\relax
-\put(182,130){
+\put(182,123){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -112,7 +112,7 @@
 %\setlength{\footskip}{7pt}
 
 \usepackage[paperheight=14in,paperwidth=8.5in]{geometry}
-\geometry{left=.73in,top=.4in,right=.7in,bottom=1.1in} %margins
+\geometry{left=.72in,top=.4in,right=.68in,bottom=1.1in} %margins
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -1108,8 +1108,8 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{The \llMOSAIC{} Publication Repository: Supplemental Archives, 
-Structured Research Reporting, and Plugins}
+{The \llMOSAIC{} Publication Repository:\\\textit{Supplemental Archives/ 
+Structured Research Reporting/Plugins}}
 }}}
 \end{center}
 \end{minipage}
@@ -1120,8 +1120,8 @@ Structured Research Reporting, and Plugins}
 %\textcolor{darkRed}{\hrule}
 
 \section{Overview}
-\p{In recent years --- as publishing has become more \q{digitized} --- there
-have emerged many online platforms for scientists to share and publish
+\p{In recent years --- as publishing has become more \q{digitized} --- 
+many online platforms have emerged for scientists to share and publish
 their research work, including both raw data and scientific papers.
 These portals generally provide an index/search feature where readers
 can locate research based on the name of the author, title of 
@@ -1136,7 +1136,7 @@ sets and/or browsing multimedia assets associated with publications,
 such as audio, video, interactive diagrams, or \ThreeD{} graphics.}
 
 \p{The \q{\MOSAIC{}} system 
-(for \q{Multi-Paradigm 
+(\q{Multi-Paradigm 
 Ontologies for Scientific and Technical Publications}) 
 is a suite of code libraries developed by LTS allowing 
 institutions to host publication repositories 
@@ -1149,7 +1149,7 @@ full publication text, to support advanced text-mining techniques
 across the repository.}
 
 \p{Using \MOSAIC{}, developers can implement a hosting platform
-for all of this supplemental material, in addition to publications 
+for this supplemental material, in addition to the publications 
 themselves, where the platform provides software
 enabling readers to browse and access supplemental archives and 
 their data sets and/or methodological descriptions.  A \MOSAIC{} 
@@ -1434,11 +1434,8 @@ techniques used to obtain reported findings).
 software) and the \Pandore{} \q{Image Processing Objectives} 
 Ontology, mentioned above.  
 \DSPIN{} adopts protocols from \CaPTk{} 
-in order to accept 
-For information about how different objectives 
-are merged into workflows, 
-
---- particularly 
+in order to accept information about how different objectives 
+are merged into workflows, particularly 
 with respect to implementating 
 image-analysis capabilities as 
 extensions to a core application, and 
@@ -1583,20 +1580,20 @@ incoporates an expanded
 the next part of this paper).  As a reference implementation 
 for this \DSPIN{} extension, the project 
 also provides a pure-\Cpp{} cytometry 
-library based on the \openCyto{} and 
-\FACSanadu{} libraries, while eliminating 
+library based on the \openCyto{} (see \bhref{https://www.bioconductor.org/packages/release/bioc/html/cytolib.html}) and 
+\FACSanadu{} (see \bhref{https://www.biorxiv.org/content/biorxiv/early/2017/10/13/201897.full.pdf}) libraries, while eliminating 
 external dependencies such as \R{} and 
 \Java{}.\footnote{Upon request, LTS can provide 
 a detailed summary of this project reconciling 
 \sopenCyto{} and \sFACSanadu{}.  Specifically, 
 although \sopenCyto{} as a whole uses \sR{} for its 
 visual layer, \sopenCyto{} contains \scytoLib{}, a \sCpp{} 
-library for cytometric analysis, which can be used 
+library for cytometric analysis, which LTS employs 
 as the basis for a standalone pure-\sCpp{} flow 
 cytometry application.  Meanwhile, \sFACSanadu{} 
 is a \sJava{} application which uses a \sQt{} front-end 
-that we are migrating to \sCpp{}.  The supplemental 
-information about the \sFACSanadu{}/\scytoLib{} integration 
+that LTS is migrating to \sCpp{}.  The supplemental 
+information supplied by LTS about the \sFACSanadu{}/\scytoLib{} integration 
 identifies the specific data types where \scytoLib{} 
 code (different kinds of gates, for instances) can 
 be incorporated as alternatives to the \sFACSanadu{} 
@@ -1835,69 +1832,76 @@ within a \MOSAICGIS{} extension.}
 %\section{Conceptual Space Models and Hypergraph Database Implementation}
 %\p{\lMOSAIC{} repositories need to model data  }
 
+\vspace{-9pt}
 \part{MOSAIC Data Models}
+\vspace{-6pt}
 \section{Hypergraph Database Models for Publication Data}
 \p{At the core of any \MOSAIC{} portal is a collection of 
 distinct files, representing individual publications and 
 supplemental archives.  However, in a typical case it 
-will be necessary to ground the system of files in a 
-database hosting publication information, so that 
+becomes necessary to ground the system of files in a 
+database that hosts publication information, so that 
 readers could search the portal for specific authors, 
-keywords/phrases, subject areas, and so forth.  
+keywords/phrases, titles, subject areas, and so forth.  
 Searches within publication metadata are the simplest 
-example of this functionality.  Searches within publication 
+example of this functionality.  However, searches within publication 
 texts themselves are more complex, because what seems like a 
 straightforward keyword search from a user's point of 
-view may be complicated at the processing level by 
-documents' markup structure --- technical terms or acronyms 
-which readers see as single words/phrases could actually be 
-defined within the document by internally structured text 
-segments, rather than raw character streams.  Keyword searches 
-might also be tripped up by ligatures, footnote interruptions, and 
+view might be more complicated at the processing level by 
+documents' markup structure.  That is, technical terms or acronyms 
+which readers simply see as single words/phrases might be 
+defined in a more complicated way within the document, 
+such as by internally structured text 
+segments rather than raw character streams.  In addition, 
+keyword searches might also be tripped up by 
+ligatures, footnote interruptions, and 
 other visual features wherein the document in human-readable 
-formats like \PDF{} diverges from machine-readable raw text.}
+formats like \PDF{} markedly diverges  
+from machine-readable raw text.}
 
 \p{To address these potential search complications, \MOSAIC{} 
 provides a \q{Hypergraph Text Encoding Protocol} (\HTXN{}) 
-which separates document text into different layers, dividing 
-presentation-related content from textual content and making 
-search capabilities more reliable.  Each publication can have an 
-\HTXN{} representation, essentially a machine-readable structure 
-encapsulating documtn text, as part of its supplemental archive.  
+which effectively separates document text into different layers, 
+dividing presentation-related content from textual content and 
+making search capabilities more reliable.  Each publication can have 
+an \HTXN{} representation, essentially a machine-readable structure 
+encapsulating document text, as part of its supplemental archive.  
 These \HTXN{} resources can then be used to support 
-robust searching among publication sets.}
+robust searching among text publication sets.}
 
-\p{Apart from metadata and keyword searches, an additional 
-layer of search functionality within \MOSAIC{} portals 
-is the option to search across supplemental archive 
-contents such as data sets and research protocol descriptions.  
+\p{Apart from metadata and keyword searches within texts, \MOSAIC{} 
+allows an additional layer of search functionality: the option to 
+search across supplemental archive contents such as data sets 
+and research protocol descriptions.  
 \lMOSAIC{} provides a hypergraph-based database engine that 
-can be used, at a minimum, for publication info; developers 
-have the option of including supplemental content as well 
+can be used, at a minimum, for publication info; in 
+addition, developers 
+have the option of including supplemental content  
 within this central database.  Each supplemental archive 
 encompasses raw data and/or methodological descriptions 
 via files internal to the archive; these assets are not 
-necessarily shared with the host \MOSAIC{} repository except 
-by directly examining archive files.  However, a repository 
-could choose to model some or all archive content within 
-its publication database, either directly storing 
+necessarily shared with the host \MOSAIC{} repository 
+database (except via operations that directly 
+examine archive files).  However, those who create or 
+maintain a repository could choose to model some or all archive 
+content within its publication database, either directly storing 
 archives' data sets or importing certain select information 
 (such as object/type schema or representative data samples).  
-In this case, some data in the supplemental archives will be 
+In this case, some such data in the supplemental archives will be 
 mirrored in the central database, so that it is accessible 
-for user-facing searches.  \lMOSAIC{} employs a 
-flexible Hypergraph Database engine which can accommodate 
-many different kinds of data models, from \q{\SQL{}-like} 
-tables to graphs and hierarchical collections types.  
-Therefore, the publication database within a \MOSAIC{} 
+for user-facing searches.  To accommodate 
+many different kinds of data models (from \q{\SQL{}-like} 
+tables to graphs and hierarchical collections types) \lMOSAIC{} employs 
+a flexible Hypergraph Database engine.  
+Thus, the publication database within a \MOSAIC{} 
 portal would have the flexibility to import most data 
 which is present in supplemental content associated 
 with given publications.} 
 
-\p{In some contexts, authors may choose specifically 
-to structure their shared research data in a format that 
+\p{In some contexts, however, authors are giving the option to 
+structure their shared research data in a format that 
 can be exported to a \MOSAIC{} publication database.  
-This is because \MOSAIC{}'s hypergraph data model 
+This is possible because \MOSAIC{}'s hypergraph data model 
 supplies a rigorous framework for documenting how 
 a data set is organized, which in turn can provide a 
 formal overview of the theoretical or methodological 
@@ -1910,26 +1914,25 @@ a variation of Conceptual Roles consistent with \AI{} tools
 such as \Grakenai{}, and formalizations of Conceptual 
 Spaces such as those described in \bhref{https://arxiv.org/abs/1706.06366}.}}
 
-\section{Markup Serialization and \protect\q{Grounding}}
+\section{Markup Serialization and \protect\q{Grounding} in 
+\protect\lsMOSAIC{} Portals}
 %\vspace{-1em}
-\p{The data-integration mechanisms discussed 
-in this paper thus far have focused on 
+\p{The data-integration mechanisms discussed up 
+to now have focused on 
 object models and object-oriented programming 
-techniques.  While composing 
+techniques.  It is understood that while composing 
 special-purpose object-based libraries 
 specifically tailored to individual  
 data-integration problems is a powerful 
 tool for solving such problems, data integration initiatives 
-in practice are 
-often organized around standards 
+in practice are often organized around standards 
 for sharing or serializing conformant 
-data structures.  As a result, an important 
+data structures.  Therefore, an important 
 aspect of data integration is implementing 
 proper data-serialization technology 
-which is sufficiently rigorous to 
-serve as a proxy for formal interface 
-definitions.  
-\lXML{} formats are a good case-study 
+that is sufficiently rigorous to 
+serve as a \textit{proxy} for formal interface 
+definitions.  \lXML{} formats present a good case-study 
 for such formalizations because 
 most serialization in 
 the biomedical and bioimaging context 
@@ -1938,11 +1941,11 @@ operates through
 
 \p{Standardizing a data 
 format by stipulating how \XML{} files 
-may encode the data is simpler than 
+may encode the data is much simpler than 
 defining an analogous specification 
 in terms of executable computer code: 
 one way to document the shape of any 
-relevant data is just to explain how an \XML{} 
+relevant data is simply to explain how an \XML{} 
 document will be structured insofar as 
 it encodes data accordingly.  Potentially, 
 such specification can be a single 
@@ -1950,11 +1953,11 @@ such specification can be a single
 providing a convenient reference point 
 for developers to grasp the underlying 
 data model.  However, the structure of an \XML{} document 
-does not, in itself, present a clear picture of 
+does not, in and of itself, present a clear picture of 
 how the information which the document 
 represents is semantically organized.  Even 
 though \XML{} is processed by computer programs, 
-it is not even evident from an \XML{} document or 
+one cannot even determine from an \XML{} document or 
 schema which \XML{} elements (if any) correspond 
 to data types recognized by applications which 
 read and/or write the corresponding \XML{} code.  
@@ -1963,11 +1966,11 @@ For example, the \XML{} portion of \OMETIFF{}
 format) includes an explicit \textbf{Image} element 
 (which gathers up all significant image metadata); 
 an application reading \OMETIFF{} files 
-might therefore introduce a single datatype 
+might, therefore, introduce a single datatype 
 --- analogous to (and maybe wrapping an) \textbf{itk::Image} from 
 the Insight Toolkit imaging libraries --- 
 bundling the data in that part of the \OME{} \XML{}.  
-In this case there will be a one-to-one correspondence 
+In this case, there will be a one-to-one correspondence 
 between \XML{} structure and application-level 
 data types, at least for that one \textbf{Image} node.  
 On the other hand, software reading \OMETIFF{} 
@@ -1981,12 +1984,12 @@ but it may still read information about the
 image from child nodes of the \XML{} \textbf{Image} 
 element.}
 
-\p{In short, applications can read or use data 
+\p{In short, because applications can read or use data 
 from an \XML{} document in different ways, 
-so the document's structure does not itself 
-provide a clear picture of how code which 
-reads the \XML{} is organized.  This uncertainty 
-is significant insofar as one wishes to use 
+the document's structure does not itself 
+provide a clear picture of how the specific code that 
+reads the \XML{} is organized.  Such uncertainty 
+becomes significant when one wishes to use 
 \XML{} specifications as an indirect strategy 
 for documenting parameters and features 
 of the data structures which are serialized 
@@ -1999,16 +2002,16 @@ level, one can model the relationship
 between the surface-level \XML{} node 
 structure and the application-level data structures 
 thereby serialized.  This second level of detail 
-is usually implicit and unstated, but in \MOSAIC{}, such 
-\q{meta-serialization} --- a term used 
+is usually implicit and unstated, but in the \MOSAIC{} 
+technology, such \q{meta-serialization} --- a term we are using 
 to suggest the idea of providing meta-data 
 \textit{about} a serialization --- is directly 
 formulated through a notion of 
-\q{grounding}, which involves adding supplemental 
+\q{grounding,} which involves adding supplemental 
 markup clarifying how documents instantiating a 
 serialization format (such as \XML{}) relate 
 to the coding protocols and data types of 
-software which reads or creates these documents.}
+software that reads or creates these documents.}
 
 \p{For maximum expressivity, \MOSAIC{} introduces a 
 meta-serialization system that can be applied 
@@ -2041,19 +2044,19 @@ be used to define norms for \XML{} languages,
 although the logical role and operations of such requirements 
 is not identical to \XML{} schema definitions.  
 By design, \GTagML{} schemata operate on 
-two levels: on the one hand, they constrain 
+two levels: first, they constrain 
 the organization of \GTagML{} files themselves; 
-but they also stipulate how \GTagML{} document 
+and second, they stipulate how \GTagML{} document 
 structure relates to the type systems of 
 code libraries serializing and deserializing 
-\GTagML{} files.  To model this second, type-oriented 
+\GTagML{} files.  To model the second level of 
 metadata, \GTagML{} introduces a hypergraph-based 
 type model organized around \q{infosets,} which 
 are structured overviews of application-level 
 data types.  To fully utilize \GTagML{} features, 
-programmers may then compose \q{infoset classes} 
+programmers may consequently compose \q{infoset classes} 
 as wrappers around ordinary data types 
-(e.g., \Cpp{} classes) whose instances are 
+(e.g., \Cpp{} classes), whose instances are 
 serialized via nodes or character strings 
 within \GTagML{} documents.  Infoset classes 
 provide hypergraph \q{views} onto type-instances, 
@@ -2066,7 +2069,7 @@ and type instances (and the data they contain).}
 
 \p{The hypergraph-based modeling incorporated 
 into \GTagML{} reuses much of the code associated 
-with \ConceptsDB{}, which is the new hypergraph database 
+with \ConceptsDB{}, the new hypergraph database 
 being developed alongside \MOSAIC{}.  More information 
 about \ConceptsDB{} --- and on the 
 \HTXN{} text encoding protocol for \MOSAIC{} portal 
@@ -2153,7 +2156,7 @@ class (based on eccentricity and major-axis angles)
 which can be mathematically transformed into these 
 different formats.              
 
-\item[Gate Transformations]  Only linear and 
+\item[Data/Coordinate Transformations]  Only linear and 
 logarithmic transformations are defined in 
 \FACSanadu{}, although it is straightforward to 
 further the subclass the \textbf{Transformation} 
