@@ -85,7 +85,7 @@
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
 \ifnum\value{page}=10   %\pgfmathresult>0\relax
-\put(182,132){
+\put(182,123){
  {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
 
    {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
@@ -1108,8 +1108,8 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{The \llMOSAIC{} Publication Repository:\\%
-\textit{Supplemental Archives/Structured Research Reporting/Plugins}}
+{The \llMOSAIC{} Publication Repository:\\\textit{Supplemental Archives/ 
+Structured Research Reporting/Plugins}}
 }}}
 \end{center}
 \end{minipage}
@@ -1174,7 +1174,7 @@ a dedicated component within the portal with specific features
 for authors, editors, and administrators.  
 Any project which \textit{does} restrict 
 access to some part of any document requires a commercial 
-\MOSAIC{} license.}.  \lMOSAIC{} can be customized 
+\MOSAIC{} license}.  \lMOSAIC{} can be customized 
 for different subject areas by incorporating domain-specific 
 ontologies into document-search features as well as 
 machine-readable document-text annotations.}
@@ -1223,7 +1223,7 @@ the research findings, which are provided directly via computer code or
 indirectly via formal descriptions of computational workflows;
 
 \item Self-contained computer software which demonstrates code that the
-author developed and/or used for analyzing/curating research data; and 
+author developed and/or used for analyzing/curating research data;
 
 \item Multi-media assets such as audio or video files, annotated images,
 \ThreeD{} graphics, interactive \TwoD/\ThreeD{} plots and diagrams, 
@@ -1279,7 +1279,7 @@ platforms where research is actually conducted.  This example
 demonstrates how existing portals are \textit{limited} 
 in their ability to share research
 in rigorously reusable and replicable ways --- and how \MOSAIC{} 
-offers an improvement.}
+offers a potential improvement.}
 
 \p{Embedding presentations of their research within existing
 scientific software has the added benefit for authors of making their work 
@@ -1550,7 +1550,7 @@ been explicitly integrated with code
 libraries codifying \MIBBI{}-style research protocols.}
 
 %\vspace{-1em}
-\section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing}
+\section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing.}
 \vspace{2em}
 \subsection{Image Flow Cytometry}
 \p{One important use-case for biomedical image processing 
@@ -1898,7 +1898,7 @@ portal would have the flexibility to import most data
 which is present in supplemental content associated 
 with given publications.} 
 
-\p{In some contexts, however, authors are given the option to 
+\p{In some contexts, however, authors are giving the option to 
 structure their shared research data in a format that 
 can be exported to a \MOSAIC{} publication database.  
 This is possible because \MOSAIC{}'s hypergraph data model 
@@ -2031,9 +2031,9 @@ provides parsers for this \q{Grounded \TAGML{}}
 to output serialized data as conventional 
 \XML{}, so that \GTagML{} specifications can 
 be used in contexts (\MIFlowCyt{}, for instance) 
-where ordinary \XML{} is expected and/or where 
-\XML{} serves as a basis of standardization.  \lMOSAIC{} 
-also provides code libraries 
+where ordinary \XML{} is expected and serves 
+as a basis of standardization.  \lMOSAIC{} also 
+provides code libraries 
 for extracting data from \GTagML{} documents.}
 
 \p{\lGTagML{} documents, 
@@ -2184,13 +2184,14 @@ deployed and annotated to demonstrate novel
 analytic techniques described in scientific 
 literature, with microcitation-based cross-references 
 between code, publications, and \GUI{}s.  
+  
 
 %\item[Channels]  
 
 \end{description}
 }
 
-\end{document}
 
+\end{document}
 
 
