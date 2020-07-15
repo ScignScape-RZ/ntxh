@@ -2104,7 +2104,7 @@ being applicable in other image-processing contexts.
 Important data structures involved in this bridge 
 code include the following:
 
-\begin{description}
+\begin{description}[leftmargin=4pt,itemsep=4pt]
 
 \item[Vertex Sets]  The important feature of geometric 
 vertices in the \FCM{} context is that vertices need 
@@ -2113,18 +2113,20 @@ coordinate systems.  For example, \cytoLib{} uses a
 different \q{coordinate} class when reading data via 
 Protocol Buffers than for internally defining gates.  
 At the \GUI{} level, at least three different notions of 
-two-dimensional locations are important, depending on whether 
-one is tracking visual objects or events (such as mouse clicks) 
+two-dimensional locations are important (and require transforms such as 
+\textbf{mapFcsToScreen} in \FACSanadu{}) depending on whether 
+one is tracking visual objects --- or events, such as mouse clicks --- 
 relative to the entire computer screen, or one \GUI{} window, 
 or the top-left corner of the object whose method handles a 
-given user-interaction event.  In other contexts related 
-to \FCM{}, such as \PDF{} rendering and image analysis, there 
+given user-interaction event.  
+A further complicating factor is that some coordinate 
+systems use integer values, while others using floating-point 
+numbers.  In other contexts related to \FCM{}, such as 
+\PDF{} rendering and image analysis, there 
 are still further coordinate systems; so it is not uncommon
 for a code base (even just in the \TwoD{} context) to 
 manage spatial positions recorded in at least seven different 
-formats.  A further complication is that some coordinate 
-systems use integer values, and others using floating-point numbers.  
-It is therefore a resonable practice to factor 
+formats.  It is therefore a resonable practice to factor 
 out different coordinate systems into a common \TwoD{} 
 position/vertex model from which context-specific locations can 
 be derived.
@@ -2151,9 +2153,37 @@ class (based on eccentricity and major-axis angles)
 which can be mathematically transformed into these 
 different formats.              
 
-\item[Gate Transformations]  
+\item[Gate Transformations]  Only linear and 
+logarithmic transformations are defined in 
+\FACSanadu{}, although it is straightforward to 
+further the subclass the \textbf{Transformation} 
+base type.  To be consistent with the \GUI{}, 
+modified transformation algorithms need to be 
+registered with a context menu in \q{\textbf{ViewWidget}} 
+(a menu activated by clicking in a boundary area, outside 
+any rendered data).  This is an example of where 
+data modeling/analytic features and \GUI{} setup 
+needs to be correlated, which \DSPIN{} approaches 
+via structured \GUI{} modeling and annotations (see 
+the \MOSAIC{} Annotations section above).  
+A wider inventory of transformation strategies 
+are implemented in \cytoLib{}, such as 
+biexponentials and \q{logicles,} but there are 
+other transformation methods proposed in 
+academic literature which are not implemented 
+for \cytoLib{}.  The \DSPIN{} approach is to 
+prioritize extensibility, with a transformation class 
+structured to facilitate both subclassing \textit{and} 
+\GUI{} integration.  This is part of a more 
+general design philosophy for image-processing 
+algorithms where code extensions can be 
+deployed and annotated to demonstrate novel 
+analytic techniques described in scientific 
+literature, with microcitation-based cross-references 
+between code, publications, and \GUI{}s.  
+  
 
-\item[Channels]  
+%\item[Channels]  
 
 \end{description}
 
