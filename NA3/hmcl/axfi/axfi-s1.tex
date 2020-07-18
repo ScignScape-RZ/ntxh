@@ -45,7 +45,43 @@ curves is outlined below (section ).
 A variation on the polygon/polygon-line alternative 
 are polygon-lines demarcating spatial regions 
 whose boundaries extend to one or more sides/corners 
-of the image.   
+of the image (e.g., a \q{quadrant} is defined 
+via one central point with line segments 
+parallal to and implictly 
+extended to the edges).  These poly-lines 
+may not explicitly represent the overall image 
+boundary as part of their own boundary.  
+Conceptually, treating the image-border itself 
+as a different \textit{sort} of boundary than 
+those explicitly notated may be more accurate 
+than eliding these distinctions.  This 
+applies also to segment boundaries.  For instance, 
+the sand/ocean border in a beach scene represents 
+a physical discontinuity between two different 
+material substances, and so it records an 
+observable detail of the depicted scene.  
+On the other hand, the edge of the sand-region 
+at the bottom of the image is not a physical 
+boundary, but an artifact of the camery position; 
+we assume the beach itself extends further than 
+what the camera captures.  All told, then, 
+in addition to polygons (or curves or segment-boundaries) 
+being \textit{open} or \textit{closed}, \AXFI{} 
+recognizes a third form of closure dubbed 
+\q{incomplete,} meaning that a spatial region is 
+geometrically closed by the edge of the image but 
+that this closure has no observational or semantic 
+significance.  \lAXFI{} allows a notation that 
+a spatial region is \q{closed by fiat} when the closure 
+results from the intrusion of the global image boundary.  
+A polygonal line may be closed by fiat when it does 
+not explicitly include lines along the global boundary, 
+but forms a closed polygon when such lines are 
+included in practice; the result is called a 
+\textit{fiat polygon} (similarly an annotation 
+can be classified as a \textit{fiat curve} or 
+\textit{fiat segment}.
+   
 
 \item[Segments and Regions]  A \textit{segment} is 
 considered to be, canonically, an integral 
@@ -70,6 +106,16 @@ being deemed approximative) include some of the
 background sky.  A \textit{segment} can be seen 
 as subkind of \textit{region} with stricter 
 granular and topological requirements. 
+
+A \textit{partition} of an image is a segmentation 
+which exhaustively classifies every point into 
+one or another segment.  A \textit{selective} 
+segmentation, unlike a complete partition, only 
+isolates certain segments or regions of 
+interests.  \lAXFI{} adopts these terms 
+as parameters that can characterize 
+segmentation processes, and by extension the 
+resulting segments/regions. 
 
 \item[Locations]  In \AXFI{}, \textit{locations} 
 are considered to be designations of areas 
@@ -158,6 +204,134 @@ explain how it relates to the primary
 (or \q{ground}) image, wheres the secondary 
 file itself fills in the annotation details.      
 
+Secondary images may be derived from ground 
+images merely to present annotations, but they 
+may also be intermediate analysands which are 
+themselves annotated.  In the latter case, 
+annotations on secondary images are usually 
+meaningful also as annotations on ground 
+images, so the interrelations between both 
+images should be notated in the annotation data.
+
+\item[Proscriptive Annotations]  \lAXFI{} 
+allows for the designation of certain annotations 
+as \q{proscriptive} when they do not 
+formally delineate a geometric object, but 
+indirectly express such an object's shape 
+or how it may be derived.  A canonical 
+example is the use of color --- perhaps 
+color-enhanced secondary images --- to 
+designate segments or regions of interest.  
+For instance, one common segmentation technique 
+uses color simplification; smoothing out color 
+patches can facilitate image partitioning 
+by reinforcing the boundaries between different 
+regions.  With sufficient color manipulation, 
+image-segments can potentially be described 
+chromatically; a region may for instance 
+be identified as \q{the area all of whose 
+pixels display a red channel above} some 
+threshold.  \lAXFI{} data should therefore 
+allow such indirect designations of 
+segments (and spatial/geometric regions in 
+general) to be encoded as annotations.
+
+The concept of proscriptive annotations is not 
+only chromatic; one can imagine other scenarios 
+where morphological features, such as symmetries, 
+may be employed to similar effect.  In describing 
+a chess board, for instance, a set of image-regions 
+(each square on the board) can be derived 
+via translational transforms of an initial 
+two-segment kernel (one black square and one white).  
+This representation is possible because of 
+translational symmetries in the underlying image.  
+Such geometric transforms and symmetries can 
+sometimes be used to \q{generate} meaningful 
+image segments, so they should be notated 
+in \AXFI{} data when appropriate.  
+
+\item[Semantic Labels]  Some annotations supply data 
+about other annotations (what \AIM{} calls 
+\q{Annotation on Annotation} as opposed to 
+\q{Annotation on Image}).  In general, we 
+can supply a label, description, or semantic 
+classification indicating what an image segment 
+or region is \q{about}, i.e., what it \q{depicts} 
+(a bird, a flock of birds, a car, a traffic 
+jam, and so forth).  Such meta-annotation may be 
+seen as a semantic postlude to an imaging  
+process, but it may also be seen as providing further 
+detail about the process itself.  For instance, 
+suppose segmentation isolates a bird from the 
+sky: the epilogue to this operation is an ability 
+(for a human user or a computer algorithm) to 
+classify the segment as \q{bird.}  However, we 
+can also say that the given fact of the segment 
+capturing the optics of a bird (with its given 
+anatomical outline and coloration) is what 
+allowed the segmentation to be possible in the 
+first place.  Therefore, the label \q{bird} 
+serves both to utilize the segmentation for 
+further analytic/classificatory purposes and 
+also, potentially, to characterize the 
+inner workings of effective feasibility of 
+achieving the desired processing objective.  
+It should be kept in mind, in short, that 
+label annotations are not exclusively 
+intended to be used for practical labeling 
+in the contexts of tasks such as subject-marking 
+images in corpora; labeling could also 
+be used to notate how semantic properties 
+of the image make segmentation (and other 
+processing objectives) more or less 
+feasible, or computationally intensive/error-prone. 
+
+The semantics of labels themselves is outside 
+the scope of \AXFI{}.  \lAXFI{} makes no effort 
+to proscibe what sorts of terms are useful 
+as labels (\q{bird,} \q{car,} \q{ocean,} 
+\q{tumor,} etc.), or whether labels are 
+simple strings/words or have internal structure 
+of their own.  \lAXFI{} does, however, 
+make the following minimal stipulations about 
+labels.  First, \AXFI{} distinguishes 
+\q{mass,} \q{count,} and \q{plural} label 
+targets --- e.g., \textit{ocean}, \textit{one bird}, 
+\textit{two birds}.  These distinctions are 
+directly relevant to how segments are bounded and 
+counted; for instance, labeling a body of water 
+as \textit{a lake} (e.g. on a satellite image where 
+the lake's full shore is visible) versus \textit{ocean} 
+(continuing to the horizon) implies different 
+desiderata for how the labeled region spatially extends 
+in relation to the surrounding image.  Secondly, 
+with respect to semantic labels, \AXFI{} recommends 
+that applications and libraries enable 
+labels to be typed values --- instances of 
+application-specific data types --- as well 
+as simple character strings (like \q{bird.})  
+This is consistent with \AXFI{}'s general 
+approach to application integration and 
+type systems, to be discussed further in 
+Part II. 
+
+\item[Data Transformations]   This category 
+
+\item[Image Metadata]   This category 
+of annotation concerns any information 
+\q{about} an image which is apart from 
+the specific image content --- including 
+computational/encoding details such 
+as color depth, pixel dimensions, and image 
+file format, as well as acquisiton details 
+such as the make and settings of the camera 
+whose photograph yields the current image.  
+
+  
+        
+
+ 
 \end{description}
 
  }
