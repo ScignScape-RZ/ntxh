@@ -179,14 +179,272 @@ compatible with \XML{} languages that
 rely on \XML{} schematization.  Further 
 details on how \AXFI{} manages the relation 
 to \XML{} and other serialization languages 
-are provided below (section ).
+are provided below (section ).}
+
+\p{A further detail that should be clarified 
+prior to expositing a formal outline of 
+\AXFI{} is that of how image-annotations originate.  
+Sometimes, of course, annotations are manually 
+introduced on images by human users of image-viewing 
+software.  On the other hand, automated 
+image segmentation --- or similar algorithmic 
+or \AI{}-driven image processing without human 
+intervention --- yields partitions of images into 
+regions, or identification of semantically 
+important locations in an image, therefore generating 
+annotations computationally.  In short, \AXFI{} 
+should support both human-generated and computer-generated 
+annotations.  This becomes complicated, however, insofar 
+as image-processing may yield analyses which overlap 
+with annotation objectives but may not intrinsically 
+produce annotations in the conventional sense.  
+For example, an algorithm to count the number of 
+cars in a highway picture may rely on statistical 
+analysis of some quantitative image feature --- 
+such as \q{zero-crossings} --- without in fact 
+producing determinate image segments.}
+
+\p{It is important 
+to remember that image processing operations do not 
+always act directly on images themselves; sometimes 
+algorithms are based instead on mathematical complexes 
+derived from the image, but with their own quantitative 
+properties.  For instance, color-valued pixels may 
+be replaced by matrices measuring the derivative 
+of some image-feature field in eight directions around 
+each point (an example would be \q{Sobel kernels} applied 
+to the image intensity function).  For a given \q{semantic} 
+task --- that is, an image-processing objective whose 
+end-result is not just image-related data but some 
+empirical observation --- image segmentation, 
+or other analyses yielding annotations, are a means 
+to an end: one \textit{way} to count cars is to 
+delineate the edges of distinct cars in distinct 
+segments, and then count the number of segments 
+which result.  However, statistical image-analysis 
+may produce largely accurate results for such 
+semantic tasks, given large image corpora (e.g., estimating 
+traffic flows from highway cameras), without yielding 
+artifacts such as human-visible segment representations.  
+Or, in a different domain, \AI{}-powered analysis 
+of \FCS{} (Flow Cytometry Standard) data could establish a largely 
+accurate count of \q{events} (i.e., discrete \FCS{} measurements 
+of light-scattering and/or flourescent properties of 
+cellular-scale entities) without manual \q{gating} (referring 
+to the conventional practice of scientists using geometric 
+annotations of \FCS{} data-plots to isolate and 
+thereby count different event-types).  An 
+\AI{}-powered analysis of image features, or 
+likewise of Flow Cytometry data, may yield calculations 
+similar to those which for \textit{human} users 
+are achieved via image segmentation, manual gating, 
+and similar operations which clearly yield 
+annotation data.  For \AXFI{}, the complication 
+arises when these \AI{} mechanisms do not 
+themselves yield results that would normally 
+be considered annotations, but rather yield 
+the desired empirical results for which 
+the annotations would be a preliminary 
+step --- e.g., an approximate count of 
+the number of cars in a highway photo, 
+without a precise segmentation of the 
+image marking the cars' respective borders.}
+
+\p{\lAXFI{} ultimate considers these  
+\AI{}-related comlications to be issues 
+resolvable at the level of software, 
+rather than stadardized annotation models 
+\textit{per se}.  An image annotation is, 
+among other things, a visual (or viewable) 
+record of some image-processing activity.  
+If a radiologist manually clarifies a 
+report to the effect that a given \CT{} 
+shows a tumor by circling the area where 
+the tumor is visible, he or she is using 
+the image annotation to communicate to 
+others the thought-process which motivated 
+the diagnostic conclusion.  This is different 
+than an \AI{}-driven processor which 
+would automatically demarcate an image segment 
+outlining the tumor and use geometric properties 
+of that segment to derive a pathological 
+finding.  In short, the data conveyed in an 
+annotation --- an image segment, rendered 
+precisely, or rendered indirectly via a circle or 
+polygon around the segment --- may be 
+\textit{intrinsic} to an image-processing 
+operation: it may be data acquired \textit{at 
+one stage} in an analytic workflow.  However, 
+annotations may also be \textit{retroactive}; 
+if a radiologist circles a tumor, he or she 
+has completed (at least mentally) the 
+image analysis, and is using the analysis 
+to summarize what occured in the course of the analysis.  
+Therefore, any image-processing task can be associated 
+with \textit{ex post facto} annotations which 
+summarize the process even if they are not 
+intrinsic to it.}
+
+\p{To continue the example of counting cars from a 
+highway photo, an \AI{}-powered observation could 
+be retroactively \textit{justified} by providing 
+an image segmentation where the number of 
+car-segments matches the \AI{} count.  In lieu 
+of precise segments, it may be simpler to 
+provide location-points for the \q{geometric center} of 
+each car, or the points furthest apart in the 
+direction of each car's front-to-back --- these 
+may be the statistical signals used for 
+the car-counting process.  Anlogously, facial 
+recognition does not need to rely one segmenting 
+out regions (eyes, nose, lips), but rather can be 
+based on distances between individual points (such 
+as the inner corners of each eye).  But in any 
+case, depending on the analytic algorithm used, 
+it is often possible to identify some spatial/geometric 
+feature or object that can be visualized in 
+the image context, and that summarizes or 
+legitimizes the analytic operation.  This 
+summarial data, then, can provide 
+\textit{retroactive} annotations which allow 
+human viewers to understand and review the 
+algorithmic process.  In short, simply because 
+image-processing tasks may not generate 
+annotation data as part of their interal 
+activity, it is still possible (and 
+may be desirable) for the software 
+operationalizing these tasks to 
+implement annotation generators, where 
+the resulting annotations document 
+the operations for the scientific record 
+and/or summarize them in \GUI{} objects 
+for the benefit of human viewers.}
+
+\p{In general, then, \AXFI{} distinguishes 
+human-generated from computer-generated 
+annotations, and moreover leaves open 
+the possibility that some computer-generated 
+annotations are \textit{retrospective}: that 
+instead of being internal to an imaging 
+computation they are indirectly produced 
+subsequent to such a computation, for 
+purposes of documentation and validation.}
+
+\p{In general, then, \AXFI{} distinguishes 
+human-generated from computer-generated 
+annotations, and moreover leaves open 
+the possibility that some computer-generated 
+annotations are retroactive: that 
+instead of being internal to an imaging 
+computation they are indirectly produced 
+subsequent to such a computation, for 
+purposes of documentation and validation.  
+Annotations which are not \textit{retrospective} 
+are called \textit{internal}, as in, 
+internal to a given image-processing workflow.}
+
+\p{Related to the distinction between 
+\textit{internal} and \textit{retrospective} 
+annotations, \AXFI{} recognizes a contrast 
+between \q{intrinsic} and \q{descriptive} 
+annotation.  An example of an \textit{intrinsic}  
+annotation might be an image segment, 
+where calculating the boundary of the segment 
+is intrinsic to a specific image-processing 
+objective, whereas an \textit{descriptive} 
+annotation might be an arrow \textit{pointing 
+toward} that segment.  Here the descriptive 
+annotation is introduced primarily for the 
+benefit of human viewers.}
+
+\p{The intrinsic/descriptive distinction 
+is not always clear-cut.  Consider the 
+following two cases: in one scenario, an 
+image-segmentation routine precisely 
+delineates a region of interest (an outline 
+of a red bird against blue sky, say), 
+notating the segmentation result via a 
+two-color-depth transform of the original 
+image.  Image-viewing software then 
+shows the segment indirectly by encircling 
+it, producing, in effect, a secondary 
+annotation intended to call attention to 
+the primary (segment) annotation.  Here, 
+clearly, the segment itself 
+(encoding by a separate two-toned image) 
+is intrinsic to the original analysis, whereas 
+the secondary annotation has a purely 
+descriptive purpose.} 
+
+\p{However, consider 
+an alternate scenario where the 
+original segmentation is done 
+with less precision (this may be 
+the case where there is a more 
+muted color differential between foreground 
+and background).  Imperfect segmentation 
+may still be adequate for some semantic task 
+(e.g., identifying a bird's species).  
+An analysis might obtain a rough segmentation 
+by marking certain points highlighted by an 
+edge-detector, then protruding the convex 
+hull of the region outward so as to be sure 
+of encompassing the whole bird-segment within a 
+polygon, albeit allowing some background pixels 
+into the polygon as well.  This approximate 
+segment is only an indirect representation of 
+the region of interest (which would be the 
+avian sub-image clearly outlined with no background 
+included), but for analytic purposes the 
+rough polygon might be a reasonable substitute 
+for the finer-grained segment, analogous to 
+how a cubic or quartic polynomial may be an 
+adequate approximation to a more complex curve.  
+Depending on how it is used, the approximate 
+segment may therefore be considered merely 
+a visual cue connoting the region of interest, 
+or a significant region in its own right.  
+This contrast would, most likely, depend 
+on whether the approximation is used 
+itself as a basis for further analysis, 
+or instead is mostly a presentation device.  
+This usage-context would therefore indicate 
+whether an \q{imprecise} annotation 
+(\AXFI{} formally uses the term 
+\textit{approximative}) should be classified 
+as \textit{intrinsic} or \textit{descriptive}.}
+
+\p{All told then, annotations may be 
+\textit{internal} or \textit{retrospective}, 
+and \textit{intrinsic} or \textit{descriptive}.  
+\lAXFI{} also contrast \textit{computer-generated} 
+from \textit{human-generated} annotations 
+(which are related to but not the same terms 
+as \textit{manual} and \textit{automated}; see 
+below, section ).  
+These distinctions are indepenedent of one another; 
+retrospective annotations for instance could 
+be either intrinsic or descriptive, and either 
+computer-generated or human-generated.}
 
 
+\p{With these preliminaries concerning the 
+scope of \AXFI{} clarified, the 
+following sections will (1) outline 
+the kind of data encoded via \AXFI{} 
+and (2) the relation between \AXFI{}, 
+data types, and applications/libraries 
+that may use \AXFI{}.  For purposes of exposition, the following 
+specifications will discuss images mostly 
+in two (spatial) dimensions; however, \AXFI{} does not 
+preclude annotations applied to image-sources 
+with other dimensional profiles, such as 
+\ThreeD{} graphics, or movies (\TwoD{} plus time), 
+or even audio files (consistent with \DICOMSR{}, 
+which supports audio annotations because 
+\DICOM{} is sometimes used to share biomedical 
+acoustical data, such as ultrasound).}
 
-}
-
-\p{}
-
-
+%\p{}
 
 

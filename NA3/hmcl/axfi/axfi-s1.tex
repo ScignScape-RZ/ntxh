@@ -1,0 +1,168 @@
+
+\part{Outline of the AXFI Data Model}
+
+\section{Types of Image Annotations}
+\p{The most fundamental kinds of image annotations 
+are geometric primitives such as points, lines, 
+and polygons.  Many other forms of annotations 
+are possible, however, mostly supplemental 
+data which is associated with these primitives 
+or, in some cases, with the image as a whole.  
+In general, \AXFI{} classifies annotations into 
+the following groups:
+
+\begin{description}
+\item[Geometric Primitives]  These annotations 
+delineate spatial/geometric regions in zero, one, 
+or two dimensions (or potentially higher dimensions 
+when working in non-\TwoD{} contexts).  At a minimum, 
+\AXFI{} data should support points, lines, 
+polygons, polylines (considered a superkind of 
+polygons where a polygon is a closed polyline), circles, 
+and ellipses.  Additionally, \AXFI{} recognizes 
+generic \q{closed} and \q{open} \textit{curves}, which 
+are nonlinear one-dimensional regions (or boundaries 
+of two-dimensional regions) that are neither 
+elliptical or circular arcs.  Depending on 
+context, \AXFI{} can be extended to provide 
+more detailed subkinds of curves generated 
+by different sorts of mathematical equations, 
+along with notations for the formulae 
+(e.g., b-splines) that generate a particular 
+curve.\footnote{In formal statements, 
+this and other \AXFI{} documentation will 
+use the term \q{kind,} as well as \q{superkind} 
+and \q{subkind,} to indicate groups of values/entities 
+identified via a classification.  Vocabulary 
+based on \q{kind} is preferred to \q{type} or 
+\q{class} because of the distinct meanings these
+latter terms have in computational contexts 
+which are also discussed in reference to \sAXFI{}.}  
+More information about encoding 
+ellipse data as well as other sorts of 
+curves is outlined below (section ).  
+
+A variation on the polygon/polygon-line alternative 
+are polygon-lines demarcating spatial regions 
+whose boundaries extend to one or more sides/corners 
+of the image.   
+
+\item[Segments and Regions]  A \textit{segment} is 
+considered to be, canonically, an integral 
+subimage with a semantically precise 
+separation of \q{foreground} from \q{background}.  
+There may be vagueness or approximation 
+in how the segment is precisely individuated 
+from its surroundings, but these ambiguities 
+are considered to be practical limitations 
+due to limited computer power, limiting pixel 
+resolution, and so forth.  A \textit{region} 
+or \textit{region of interest} is similar to a 
+segment, but defined more loosely; regions 
+can have vague descriptors, and spatially 
+disconneted parts of an image can be treated 
+as part of the same region.  In a photograph 
+of a flock of birds, say, there may be 
+multiple segments, each outlining one single bird.  
+However, the flock as a whole may be outlined 
+by one \textit{region}, which could (without 
+being deemed approximative) include some of the 
+background sky.  A \textit{segment} can be seen 
+as subkind of \textit{region} with stricter 
+granular and topological requirements. 
+
+\item[Locations]  In \AXFI{}, \textit{locations} 
+are considered to be designations of areas 
+within an image (of varying dimensions) which 
+are significant by virtue of their directional, 
+morphological, or topological relations to 
+the rest of the image, rather than by virtue 
+of their intrinsic shape.  Conceptually, 
+a \textit{location} is in many cases similar 
+to a \textit{point}, but \AXFI{} does not require 
+locations to be zero-dimensional.  A location 
+may be designated by a small disk, or even a
+region/segment.  The distinguishing feature 
+of locations is that their spatial shape or extent 
+are not semantically significant; instead, 
+what is important about locations is their 
+position in the image and how this position 
+relates to surrounding image content.  For 
+instance, a location might be the point/position 
+where two roads intersect, or it could 
+be the leftmost point on the segment-boundary of 
+a car's fender or a bird's wings, or the 
+geometric center of a car's body or a bird's torso.
+
+\lAXFI{} distinguishes location-annotations from 
+secondary annotations used to identify locations 
+(insofar as these may be visually distinct).  For 
+instance, a position may be modeled as a single 
+point, but visually conveyed by an arrow, or by 
+a circle hovering above the relevant point.
+
+\item[Focal Points]  The concept of \textit{focal 
+points} integrates locations and geometric primitives 
+for certain analytic tasks.  In general, focal points 
+are important for positional rather than morphological 
+regions, similar to locations.  However, focal points 
+may function more like segments or geometric objects 
+when used as part of an analytic objective.  For 
+instance, points embodying the center of a car's body 
+or a bird's torso could be used to count the number 
+of birds or cars appearing in a photograph.  
+In this case the concept of \q{geometric center} has 
+no meaningful morphological properties, so it 
+is analogous to a location.  On the other hand, the 
+center may be treated as a proxy for, or a most 
+significant component of, a segment or region; in this 
+sense the point is \textit{part of} a segment.  
+This mereological aspect makes focal points 
+act conceptually more like geometric primitives than 
+like locations.  In short, the classification 
+\textit{focal point} is available for spatial 
+objects which behave somewhere between locations 
+and regions/points, and particularly when they 
+are used in some proxying or indicative relation 
+to other regions (e.g. for counting).  
+   
+\textit[Secondary Images]  In some contexts, such 
+as segmentation, image-transforms are used to 
+convey image-processing operations, in contrast 
+to geometric-style annotations that can be 
+defined via vertex coordinates.  A crisp 
+segment can be defined via a two-toned image 
+with the same dimensions as the annotated 
+image, but with only two logical colors 
+(colors are called \q{logical} insofar as the 
+relevant detail is how the colors compare to 
+one another, irregardless of the optical colors 
+used to render them\footnote{In \Qt{}, for instance, 
+the \textbf{QColorConstants::Color0} and 
+\textbf{QColorConstants::Color1} color values 
+are considered to be special \q{colors} 
+(i.e., \textbf{QColor} instances) which define 
+the foreground and background of a two-toned 
+image; they are not formally assigned to a 
+fixed visual color, like black or white.}).  
+A \q{fuzzy} segment can likewise be defined 
+via a greyscale image (anything which 
+is pure-background becoming either pure white, 
+or pure transparent, depending on context).  
+Secondary images can be used to denote annotations 
+which are too granular to be summarized by 
+any mathematical expression.  In these cases, 
+the actual annotation data should identify the 
+secondary image (e.g., via a file path) and 
+explain how it relates to the primary 
+(or \q{ground}) image, wheres the secondary 
+file itself fills in the annotation details.      
+
+\end{description}
+
+ }
+
+
+
+
+
