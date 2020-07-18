@@ -76,7 +76,7 @@
 {\color{inTwo}\transparent{0.3}\put(300,13){{\rule{0.5\paperwidth}{.3cm}}}}
 
 %\ifnum\value{page}<39
-\put(301,16){%
+\put(301,14){%
 \transparent{0.7}{
 \includegraphics[width=0.2\textwidth]{logo.png}}
 }
@@ -394,6 +394,8 @@
 
 \newcommand{\OMETIFF}{\resizebox{!}{7pt}{\AcronymText{OME-TIFF}}}
 \newcommand{\OME}{\resizebox{!}{7pt}{\AcronymText{OME}}}
+
+\newcommand{\QtJambi}{\resizebox{!}{7pt}{\AcronymText{Qt Jambi}}}
 
 
 \newcommand{\CT}{\resizebox{!}{7pt}{\AcronymText{CT}}}
@@ -1256,7 +1258,7 @@ data-set application can then be packaged as a plugin to
 existing scientific software within the 
 relevant scientific discipline.}
 
-\section{\protect\llMOSAIC{} Plugins}
+\section[MOSAIC Plugins]{\protect\llMOSAIC{} Plugins}
 \p{By design, \lMOSAIC{} Portals will provide a suite of plugins
 for existing scientific software, allowing publications and
 supplemental archives hosted on the portal to be read and examined
@@ -1321,7 +1323,7 @@ is therefore much greater than the experience of generic web
 multimedia, which means that the scientific software is a better 
 forum for showcasing novel research.}
 
-\section{\protect\llMOSAIC{} Structured Reporting (\protect\lsMOSAICSR{})}
+\section[MOSAIC Structured Reporting]{\protect\llMOSAIC{} Structured Reporting (\protect\lsMOSAICSR{})}
 
 \p{The \MOSAIC{} structured reporting framework (\MOSAICSR{}) 
 includes tools to help authors develop interactive 
@@ -1381,7 +1383,7 @@ construct a digital interface as part of
 a workflow which is part digital (\q{\textit{in silico}}) and part 
 \q{real-world} (\q{in the lab}).}
 
-\section{\protect\llMOSAIC{} Annotations}
+\section[MOSAIC Annotations]{\protect\llMOSAIC{} Annotations}
 \p{Included in any \MOSAIC{} plugin would be specially-designed 
 \PDF{} viewers for interactively 
 reading authors' papers.  In particular, these \PDF{}
@@ -1414,10 +1416,10 @@ again be annotated with links to the relevant part of the data set
 recorded.}
 
 \part{Concrete Applications}
-\section{\protect\llMOSAIC{} in the context of Image Analysis}
+\section[MOSAIC in the context of Image Analysis]{\protect\llMOSAIC{} in the context of Image Analysis}
 \p{This section will focus on one specific application 
 of \MOSAICSR{} in the context of image analysis 
-and bioimaging --- specifically, what we term \DSPIN{} 
+and bioimaging --- specifically, what LTS terms \DSPIN{} 
 (\q{Data Structure 
 Protocol for Image-Analysis Networking}).   
 \lDSPIN{} adds a narrower focus by 
@@ -1438,7 +1440,7 @@ Ontology, mentioned above.
 \DSPIN{} adopts protocols from \CaPTk{} 
 in order to accept information about how different objectives 
 are merged into workflows, particularly 
-with respect to implementating 
+with respect to deploying 
 image-analysis capabilities as 
 extensions to a core application, and 
 with respect to \CaPTk{}'s implementation of the 
@@ -1452,7 +1454,8 @@ will therefore outline \DSPIN{} features
 in the context of \MOSAICSR{} design principles 
 and objectives.}
 
-\section{Meta-Procedural Modeling in 
+\section[Meta-Procedural Modeling in 
+DSPIN and MOSAICSR]{Meta-Procedural Modeling in 
 \protect\lsDSPIN{} and \protect\lsMOSAICSR{}}
 
 \p{When developed as a systematic outline of 
@@ -1552,7 +1555,7 @@ been explicitly integrated with code
 libraries codifying \MIBBI{}-style research protocols.}
 
 \vspace{-.25em}
-\section{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing}
+\section[D-SPIN in Contexts Supplemental to Image Processing]{\protect\lsDSPIN{} in Contexts Supplemental to Image Processing}
 \vspace{.75em}
 \subsection{Image Flow Cytometry}
 \p{One important use-case for biomedical image processing 
@@ -1593,8 +1596,9 @@ visual layer, \sopenCyto{} contains \scytoLib{}, a \sCpp{}
 library for cytometric analysis, which LTS employs 
 as the basis for a standalone pure-\sCpp{} flow 
 cytometry application.  Meanwhile, \sFACSanadu{} 
-is a \sJava{} application which uses a \sQt{} front-end 
-that LTS is migrating to \sCpp{}.  The supplemental 
+is a \sJava{} application with \sQt{} 
+(i.e., \QtJambi{}) front-ends 
+LTS is porting to \sCpp{}.  The supplemental 
 information supplied by LTS about the \sFACSanadu{}/\scytoLib{} integration 
 identifies the specific data types where \scytoLib{} 
 code (different kinds of gates, for instances) can 
@@ -1610,7 +1614,7 @@ Communications Service) workstations and
 to more effectively integrate \DICOM{} with 
 clinical data.}
 
-\subsection{A Semantic \protect\lsDICOM{} Object Model}
+\subsection[A Semantic DICOM Object Model]{A Semantic \protect\lsDICOM{} Object Model}
 
 \p{As a formal representation of imaging workflows, 
 \DSPIN{} would reasonably be paired in 
@@ -1679,7 +1683,7 @@ in analytic contexts which are
 operationally related to image analysis, 
 and not just to image analysis by itself.}
 
-\subsection{Semantic \protect\lsDICOM{} via \protect\lsDCMTK{} Extensions}
+\subsection[Semantic DICOM via DCMTK Extensions]{Semantic \protect\lsDICOM{} via \protect\lsDCMTK{} Extensions}
 \p{As a concrete example of how a Semantic \DICOM{} Object Model could be 
 implemented, consider the process of developing \DICOM{} extensions 
 by modifying existing \DICOM{} client libraries, such as 
@@ -1916,7 +1920,8 @@ a variation of Conceptual Roles consistent with \AI{} tools
 such as \Grakenai{}, and formalizations of Conceptual 
 Spaces such as those described in \bhref{https://arxiv.org/abs/1706.06366}.}}
 
-\section{Markup Serialization and \protect\q{Grounding} in 
+\section[Markup Serialization and Grounding in 
+MOSAIC Portals]{Markup Serialization and \protect\q{Grounding} in 
 \protect\lsMOSAIC{} Portals}
 %\vspace{-1em}
 \p{The data-integration mechanisms discussed up 
@@ -2024,7 +2029,7 @@ In effect, \MOSAIC{} provides parsers for an
 extended version of \TAGML{} which includes 
 an additional \q{grounding} layer.  Grounding, 
 in this context, means describing how 
-elements in the markip --- nodes, attributes, 
+elements in the markup --- nodes, attributes, 
 and character sequences --- are \q{grounded} 
 in application-level types, data fields, 
 and other programming constructs.  \lMOSAIC{} 
@@ -2086,8 +2091,8 @@ Different Flow Cytometry Libraries}
 \p{As discussed above, one use-case for data integration via 
 \DSPIN{} is to merge the features of multiple \FCM{} 
 libraries, such as \cytoLib{} and \FACSanadu{} (although the 
-techniques discussed here could be applied to other libraries 
-as well).  In the \cytoLib{}/\FACSanadu{} reconciliation, 
+techniques discussed here could likewise be applied to other 
+\FCM{} libraries).  In the \cytoLib{}/\FACSanadu{} reconciliation, 
 \FACSanadu{} code (translated from \Java{} to \Cpp{}) 
 provides \GUI{} logic whereas \cytoLib{} provides most 
 of the analytics and \FCS{} processing.  These two 
@@ -2104,8 +2109,8 @@ strategy involves isolating certain geometric
 and data-modeling primitives and implementing them 
 in a separate code base distinct from either of 
 the \FCM{} components.  These modeling primitives 
-serve then as an intermediary between \cytoLib{} and \FACSanadu{}, 
-but they are also designed with an eye toward 
+would thus serve as an intermediary between \cytoLib{} 
+and \FACSanadu{}, but they are also designed with an eye toward 
 being applicable in other image-processing contexts.  
 Important data structures involved in this bridge 
 code include the following:
@@ -2114,7 +2119,7 @@ code include the following:
 
 \item[Vertex Sets]  The important feature of geometric 
 vertices in the \FCM{} context is that vertices need 
-to be expressed within and mapped between several different 
+to be expressed within (and mapped between) several different 
 coordinate systems.  For example, \cytoLib{} uses a 
 different \textbf{coordinate} class when reading data via 
 Protocol Buffers than for internally defining gates.  
@@ -2122,8 +2127,8 @@ At the \GUI{} level, at least three different notions of
 two-dimensional locations are important (and require transforms such as 
 \textbf{mapFcsToScreen} in \FACSanadu{}) depending on whether 
 one is tracking visual objects --- or events, such as mouse clicks --- 
-relative to the entire computer screen, or one \GUI{} window, 
-or the top-left corner of the object whose method handles a 
+relative to the entire computer screen, or to one \GUI{} window, 
+or to the top-left corner of the object whose method handles a 
 given user-interaction event.  
 A further complicating factor is that some coordinate 
 systems are based on integer values, while others employ 
@@ -2134,7 +2139,7 @@ are still further coordinate systems.  All told,
 a cross-disciplinary code base  
 may need to manage \TwoD{} spatial positions 
 recorded in at least seven different 
-formats.  It is therefore a resonable practice to factor 
+formats.  It is therefore a reasonable practice to factor 
 out different coordinate systems into a common \TwoD{} 
 position/vertex model from which context-specific locations can 
 be derived.
@@ -2144,10 +2149,10 @@ in different ways, including via antipodal points,
 axis radii, or covariance matrices.  The matrix 
 form (which entails four values, or 2$\times$2, for a 
 two-dimensional shape) is preferred for \FCM{} 
-(as standardized in \GatingML{}, say), but other 
-representations are more common in other contexts, 
+(as standardized in \GatingML{}, for example), but other 
+representations are used in other contexts, 
 such as image analysis (\ITK{}, for instance, 
-distinguishes \q{object space} from \q{world-space}, 
+distinguishes \q{object space} from \q{world-space,} 
 which has the effect of separating a two-valued 
 description of the elliptical shape as an intrinsic 
 morphological quality from the ellipse axis 
@@ -2155,7 +2160,7 @@ angles, which are treated as a feature
 of how its intrinsic space 
 relates to a parent space).  In \Qt{}, for its 
 part, ellipses (a kind of \textbf{QGraphicsItem}) are 
-defined in terms of a bounding rectangle together 
+defined in terms of a bounding rectangle, together 
 with a rotational transform.  Given this diversity 
 of representations, \DSPIN{} uses a separate ellipse 
 class (based on eccentricity and major-axis angles) 
@@ -2181,11 +2186,11 @@ are implemented in \cytoLib{}, such as
 biexponentials and \q{logicles,} but there are 
 other transformation methods proposed in 
 academic literature which are not implemented 
-for \cytoLib{}.  The \DSPIN{} approach is to 
-prioritize extensibility, with a transformation class 
+for \cytoLib{}.  The \DSPIN{} solution 
+prioritizes extensibility, with transformation classes 
 structured to facilitate both subclassing \textit{and} 
-\GUI{} integration.  This is part of a more 
-general design philosophy for image-processing 
+\GUI{} integration.  This comports with a  
+design philosophy for image-processing 
 algorithms where code extensions can be 
 deployed and annotated to demonstrate novel 
 analytic techniques described in scientific 

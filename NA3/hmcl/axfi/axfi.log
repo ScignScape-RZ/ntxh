@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  16 JUL 2020 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  17 JUL 2020 13:49
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**mosaic-dspin-with-apx.tex
-(./mosaic-dspin-with-apx.tex
+**axfi.tex
+(./axfi.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/base/article.cls
@@ -1715,13 +1715,13 @@ Package: relsize 2013/03/29 ver 4.1
 \c@mv@fordg=\count306
 
 ! Too many }'s.
-l.494 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.496 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   }
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 ! Too many }'s.
-l.494 ...{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
+l.496 ...{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}}
                                                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
@@ -1734,7 +1734,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.588 ...esizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
+l.590 ...esizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1748,7 +1748,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.633 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
+l.635 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1762,7 +1762,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.637 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.639 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1776,7 +1776,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.642 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.644 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1790,7 +1790,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.856 ...ommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+l.858 ...ommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1804,7 +1804,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.866 \raisebox{-1pt}{#1}}}}
+l.871 \raisebox{-1pt}{#1}}}}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1818,7 +1818,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.871 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+l.876 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1925,7 +1925,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1066 
+l.1071 
        
 The package breakurl has already been loaded with options:
   [hyphenbreaks]
@@ -1936,8 +1936,33 @@ Adding the global options:
 to your \documentclass declaration may fix this.
 Try typing  <return>  to proceed.
 
-(./mosaic-dspin-with-apx.aux)
-\openout1 = `mosaic-dspin-with-apx.aux'.
+
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/csquotes/csquotes.s
+ty
+Package: csquotes 2018/02/11 v5.2c context-sensitive quotations (JAW)
+\csq@reset=\count311
+\csq@gtype=\count312
+\csq@glevel=\count313
+\csq@qlevel=\count314
+\csq@maxlvl=\count315
+\csq@tshold=\count316
+\csq@ltx@everypar=\toks49
+
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/csquotes/csquotes.d
+ef
+File: csquotes.def 2018/02/11 v5.2c csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+
+(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/csquotes/csquotes.c
+fg
+File: csquotes.cfg 
+))
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... none found.
+ (./axfi.aux)
+\openout1 = `axfi.aux'.
 
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
@@ -1964,17 +1989,17 @@ d)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/context/base/mkii/supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count311
+\scratchcounter=\count317
 \scratchdimen=\dimen286
 \scratchbox=\box78
-\nofMPsegments=\count312
-\nofMParguments=\count313
-\everyMPshowfont=\toks49
-\MPscratchCnt=\count314
+\nofMPsegments=\count318
+\nofMParguments=\count319
+\everyMPshowfont=\toks50
+\MPscratchCnt=\count320
 \MPscratchDim=\dimen287
-\MPnumerator=\count315
-\makeMPintoPDFobject=\count316
-\everyMPtoPDFconversion=\toks50
+\MPnumerator=\count321
+\makeMPintoPDFobject=\count322
+\everyMPtoPDFconversion=\toks51
 )
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/oberdiek/epstopdf-b
 ase.sty
@@ -2029,7 +2054,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 1071.
+Package hyperref Info: Link coloring ON on input line 1078.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -2039,17 +2064,16 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 string.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count317
+\c@section@level=\count323
 )
-LaTeX Info: Redefining \ref on input line 1071.
-LaTeX Info: Redefining \pageref on input line 1071.
-LaTeX Info: Redefining \nameref on input line 1071.
- (./mosaic-dspin-with-apx.out) (./mosaic-dspin-with-apx.out)
+LaTeX Info: Redefining \ref on input line 1078.
+LaTeX Info: Redefining \pageref on input line 1078.
+LaTeX Info: Redefining \nameref on input line 1078.
+ (./axfi.out) (./axfi.out)
 \@outlinefile=\write6
-\openout6 = `mosaic-dspin-with-apx.out'.
+\openout6 = `axfi.out'.
 
-
-ABD: EveryShipout initializing macros
+ ABD: EveryShipout initializing macros
 Package marginnote Info: \pdfoutput not 0 or unimportant and
 (marginnote)             \pdflastxpos or \lastxpos available.
 (marginnote)             Extended position detection mode activated.
@@ -2057,6 +2081,16 @@ Package marginnote Info: \pdfoutput not 0 or unimportant and
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qcr.fd
 File: t1qcr.fd 2009/09/25 v1.2 font definition file for T1/qcr
 )
+! Extra }, or forgotten \endgroup.
+l.1123 }}}
+          
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/gfsdidot/ot1udidot.
 fd)
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/gfsdidot/omludidot.
@@ -2076,311 +2110,69 @@ File: utxsyb.fd 2000/12/14 v1.0
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
+(./axfi-document.tex
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/cabin/T1Cabin-TLF.f
 d
 File: T1Cabin-TLF.fd 2012/11/17 (autoinst) Font definitions for T1/Cabin-TLF.
-) (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/bera/t1fvs.fd
-File: t1fvs.fd 2004/09/07 scalable font definitions for T1/fvs.
-)
-<logo.png, id=80, 154.6578pt x 91.7829pt>
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1238.
+))
+<../logo.png, id=16, 154.6578pt x 91.7829pt>
+File: ../logo.png Graphic file (type png)
+<use ../logo.png>
+Package pdftex.def Info: ../logo.png  used on input line 1131.
 (pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
+ (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1238.
+(hyperref)                removing `\@ifnextchar' on input line 1131.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1238.
+(hyperref)                removing `\@ifnextchar' on input line 1131.
 
 [1{/home/nlevisrael/texl/texlive-install/texmf-var/fonts/map/pdftex/updmap/pdft
 ex.map}
 
- <./logo.png>]
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/pxfonts/t1pxss.fd
-File: t1pxss.fd 2000/12/14 v1.0
-)
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/lm/t1lmdh.fd
-File: t1lmdh.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-
-LaTeX Font Warning: Font shape `T1/lmdh/bx/n' undefined
-(Font)              using `T1/lmdh/m/n' instead on input line 1259.
-
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
-File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
-)
-<e-logo.png, id=98, 2107.875pt x 1505.625pt>
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1287.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1287.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1287.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1287.
-
-[2 <./e-logo.png>]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1385.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1385.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1385.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1385.
-
-[3]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1505.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1505.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1505.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1505.
-
-[4]
-Overfull \vbox (6.48306pt too high) has occurred while \output is active []
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1616.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1616.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1616.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1616.
-
-[5]
-Overfull \vbox (1.13202pt too high) has occurred while \output is active []
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1685.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1685.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1685.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1685.
-
-[6]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1782.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1782.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1782.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1782.
-
-[7]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1905.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1905.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1905.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1905.
-
-[8]
-! Undefined control sequence.
-<argument> ...q {Grounding} in \protect \lsMOSAIC 
-                                                  {} Portals
-l.1925 \protect\lsMOSAIC{} Portals}
-                                   
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \vbox (0.41003pt too high) has occurred while \output is active []
-
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 1993.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 1993.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1993.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1993.
-
-[9]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2087.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2087.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-! Package xcolor Error: Undefined color `blbl'.
-
-See the xcolor package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2087 {\newpage
-                }
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-(/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/gfsdidot/uudidotnum
-s.fd)
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2087.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2087.
-
-[10]
-File: e-logo.png Graphic file (type png)
-<use e-logo.png>
-Package pdftex.def Info: e-logo.png  used on input line 2205.
-(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
-File: logo.png Graphic file (type png)
-<use logo.png>
-Package pdftex.def Info: logo.png  used on input line 2205.
-(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2205.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 2205.
-
-[11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2205.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2205.
- (./mosaic-dspin-with-apx.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2205.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2205.
-
-Package rerunfilecheck Info: File `mosaic-dspin-with-apx.out' has not changed.
-(rerunfilecheck)             Checksum: D1E3A3549392EF4CC6EF9BBCFE08323D;1339.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+ <../logo.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1131.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1131.
+ (./axfi.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1131.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1131.
+
+Package rerunfilecheck Info: File `axfi.out' has not changed.
+(rerunfilecheck)             Checksum: 82E56FC7E660E087A416080E75DD02E1;43.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1075 ({)
+### simple group (level 1) entered at line 1082 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 35385 strings out of 492649
- 711936 string characters out of 6122986
- 820321 words of memory out of 5000000
- 38634 multiletter control sequences out of 15000+600000
- 654948 words of font info for 126 fonts, out of 8000000 for 9000
+ 35664 strings out of 492649
+ 716585 string characters out of 6122986
+ 823451 words of memory out of 5000000
+ 38980 multiletter control sequences out of 15000+600000
+ 587756 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,93p,10410b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,11n,93p,10393b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/home/nlevisrael/texl/texlive-install/texmf-dist/fonts/enc/dvi
-ps/gfsdidot/didottabnums.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/
-fonts/enc/dvips/base/8r.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/f
-onts/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-d
-ist/fonts/enc/dvips/lm/lm-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-d
-ist/fonts/enc/dvips/gfsdidot/didotec.enc}{/home/nlevisrael/texl/texlive-install
-/texmf-dist/fonts/enc/dvips/cabin/cbn_hvmmj2.enc}</home/nlevisrael/texl/texlive
--install/texmf-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrae
-l/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Bold.pfb
-></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdidot/
-GFSDidot-Italic.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/typ
-e1/public/gfsdidot/GFSDidot.pfb></home/nlevisrael/texl/texlive-install/texmf-di
-st/fonts/type1/public/bera/fvsb8a.pfb></home/nlevisrael/texl/texlive-install/te
-xmf-dist/fonts/type1/public/bera/fvsr8a.pfb></home/nlevisrael/texl/texlive-inst
-all/texmf-dist/fonts/type1/public/lm/lmdunh10.pfb></home/nlevisrael/texl/texliv
-e-install/texmf-dist/fonts/type1/public/pxfonts/pxsy.pfb></home/nlevisrael/texl
-/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrb.pfb></home/nlevisr
-ael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrbi.pfb></hom
-e/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyre/qcrr.p
-fb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/tex-gyr
-e/qhvb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/urw/he
-lvetic/uhvb8a.pfb>
-Output written on mosaic-dspin-with-apx.pdf (11 pages, 408499 bytes).
+ps/cabin/cbn_hvmmj2.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/fonts
+/enc/dvips/tex-gyre/q-ec.enc}{/home/nlevisrael/texl/texlive-install/texmf-dist/
+fonts/enc/dvips/gfsdidot/didotec.enc}{/home/nlevisrael/texl/texlive-install/tex
+mf-dist/fonts/enc/dvips/base/8r.enc}</home/nlevisrael/texl/texlive-install/texm
+f-dist/fonts/type1/impallari/cabin/Cabin-Bold.pfb></home/nlevisrael/texl/texliv
+e-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Bold.pfb></home/nlevi
+srael/texl/texlive-install/texmf-dist/fonts/type1/public/gfsdidot/GFSDidot-Ital
+ic.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type1/public/gfs
+didot/GFSDidot.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fonts/type
+1/public/tex-gyre/qcrb.pfb></home/nlevisrael/texl/texlive-install/texmf-dist/fo
+nts/type1/public/tex-gyre/qcrr.pfb></home/nlevisrael/texl/texlive-install/texmf
+-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on axfi.pdf (1 page, 225231 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 167 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 62 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
+ 4 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

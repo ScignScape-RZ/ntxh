@@ -1,0 +1,322 @@
+./complete/NA3.tex:edges (by analogy to hypernodes being aggregates of nodes).  Channels 
+./complete/NA3.tex:often edges that are each incident to one hypernode --- without 
+./complete/NA3.tex:channels are distinct from hypernodes, which collapse edges into a single 
+./cr2/cr2.tex:smaller parts.  In \HGXF{}, the parts of a hypernode 
+./cr2/cr2.tex:hypernode (in particular, the number and names of 
+./cr2/cr2.tex:this library are ones to isolate single hypernodes, 
+./cr2/cr2.tex:within hypernodes.  The basic interface for this 
+./cr2/cr2.tex:hypernodes can be seen as monads encapsulating 
+./cr2/cr2.tex:scope of a single hypernode but to groups of 
+./cr2/cr2.tex:hypernodes, \HGXF{} introduces several 
+./cr2/cr2.tex:Hypernodes may also be annotated within frames 
+./cr2/cr2.tex:hypernodes of their own.  The source and target 
+./cr2/cr2.tex:hypernodes of a hyperedge correspond to the 
+./cr2/cr2.tex:hypernodes \q{on the fly}, but in this case the 
+./cr2/cr2.tex:fields within these auto-constructed hypernodes are 
+./cr2/cr2.tex:\q{proxies} for other hypernodes (possibly three or more) 
+./cr2/cr2 (copy).tex:smaller parts.  In \HGXF{}, the parts of a hypernode 
+./cr2/cr2 (copy).tex:hypernode (in particular, the number and names of 
+./cr2/cr2 (copy).tex:this library are ones to isolate single hypernodes, 
+./cr2/cr2 (copy).tex:within hypernodes.  The basic interface for this 
+./cr2/cr2 (copy).tex:hypernodes can be seen as monads encapsulating 
+./cr2/cr2 (copy).tex:scope of a single hypernode but to groups of 
+./cr2/cr2 (copy).tex:hypernodes, \HGXF{} introduces several 
+./cr2/cr2 (copy).tex:Hypernodes may also be annotated within frames 
+./cr2/cr2 (copy).tex:hypernodes of their own.  The source and target 
+./cr2/cr2 (copy).tex:hypernodes of a hyperedge correspond to the 
+./cr2/cr2 (copy).tex:hypernodes \q{on the fly}, but in this case the 
+./cr2/cr2 (copy).tex:fields within these auto-constructed hypernodes are 
+./cr2/cr2 (copy).tex:\q{proxies} for hypernodes (possibly three or more) 
+./hmcl/hypergraph-ontologies (copy).tex:personal name, or \URL{}), a \textit{hypernode}, within a 
+./hmcl/hypergraph-ontologies (copy).tex:other hypernodes linked to a given hypernode via hyperedges.}  
+./hmcl/hypergraph-ontologies (copy).tex:\textit{hypernodes} and \textit{hyponodes}, such that 
+./hmcl/hypergraph-ontologies (copy).tex:hyponodes are contained within hypernodes.  As a result, 
+./hmcl/hypergraph-ontologies (copy).tex:apply to hypernodes, hyponodes, or some combination of the two.}
+./hmcl/hypergraph-ontologies (copy).tex:part of a hypernode (proxies are similar to 
+./hmcl/hypergraph-ontologies (copy).tex:by its own hypernode, has an identifier which can be a 
+./hmcl/hypergraph-ontologies (copy).tex:in the hypernode encoding the list of patients enrolled 
+./hmcl/hypergraph-ontologies (copy).tex:in a clinical trial, or in the hypernode 
+./hmcl/hypergraph-ontologies (copy).tex:in a specific health plan.  Hypernodes can then be linked to 
+./hmcl/hypergraph-ontologies (copy).tex:other hypernodes by virtue of proxies (e.g., the 
+./hmcl/hypergraph-ontologies (copy).tex:the relation between hypernodes and their inner 
+./hmcl/hypergraph-ontologies (copy).tex:hypnodes; between hypernodes and one another; 
+./hmcl/hypergraph-ontologies (copy).tex:between hyponodes in different hypernodes; 
+./hmcl/hypergraph-ontologies (copy).tex:proxies.  Moreover, in addition to hypernodes 
+./hmcl/hypergraph-ontologies (copy).tex:where hypernodes represent high-dimensional 
+./hmcl/hypergraph-ontologies (copy).tex:represent k-nearest-neighbors; here each hypernode 
+./hmcl/hypergraph-ontologies (copy).tex:methods use hypernodes to designate smaller segments 
+./hmcl/hypergraph-ontologies (copy).tex:\item[Hypernodes' Cocyclic Type Structure]
+./hmcl/hypergraph-ontologies (copy).tex:is the use of \textit{hypernode types} to 
+./hmcl/hypergraph-ontologies (copy).tex:associated with a hypernode.  In particular, 
+./hmcl/hypergraph-ontologies (copy).tex:a hypernode encompasses multiple hyponodes, 
+./hmcl/hypergraph-ontologies (copy).tex:to} a hypernode (whereas data less canonically 
+./hmcl/hypergraph-ontologies (copy).tex:associated with each hypernode would, in 
+./hmcl/hypergraph-ontologies (copy).tex:via hypernode/hyponode containment.  In order 
+./hmcl/hypergraph-ontologies (copy).tex:organized, hypernodes cannot have arbitrary 
+./hmcl/hypergraph-ontologies (copy).tex:level of individual hypernodes rather than hypernode 
+./hmcl/hypergraph-ontologies (copy).tex:hypernodes therefore represent expandable 
+./hmcl/hypergraph-ontologies (copy).tex:hypernode type may indirectly include multiple 
+./hmcl/hypergraph-ontologies (copy).tex:be translated to hypernode/hyponode inclusions, 
+./hmcl/hypergraph-ontologies (copy).tex:for the corresponding hypernode type.
+./hmcl/hypergraph-ontologies (copy).tex:A hypernode type provides a schema defining a 
+./hmcl/hypergraph-ontologies (copy).tex:said that the hypernode \q{projects onto} that 
+./hmcl/hypergraph-ontologies (copy).tex:so any hypernode including that type as one 
+./hmcl/hypergraph-ontologies (copy).tex:hypernodes and/or hyperedges.  One example is 
+./hmcl/hypergraph-ontologies (copy).tex:As described earlier, hypernodes can assert \q{containment} of 
+./hmcl/hypergraph-ontologies (copy).tex:other hypernodes by containing a \textit{hyponode} which 
+./hmcl/hypergraph-ontologies (copy).tex:\textit{proxies} the second hypernode.  
+./hmcl/hypergraph-ontologies (copy).tex:between two hypernodes which are both proxied by 
+./hmcl/hypergraph-ontologies (copy).tex:one third hypernode (using the earlier example 
+./hmcl/mosaic-dsx.tex:smaller parts.  In \HGXF{}, the parts of a hypernode 
+./hmcl/mosaic-dsx.tex:hypernode (in particular, the number and names of 
+./hmcl/mosaic-dsx.tex:this library are ones to isolate single hypernodes, 
+./hmcl/mosaic-dsx.tex:within hypernodes.  The basic interface for this 
+./hmcl/mosaic-dsx.tex:hypernodes can be seen as monads encapsulating 
+./hmcl/mosaic-dsx.tex:scope of a single hypernode but to groups of 
+./hmcl/mosaic-dsx.tex:hypernodes, \HGXF{} introduces several 
+./hmcl/mosaic-dsx.tex:Hypernodes may also be annotated within frames 
+./hmcl/mosaic-dsx.tex:hypernodes of their own.  The source and target 
+./hmcl/mosaic-dsx.tex:hypernodes of a hyperedge correspond to the 
+./hmcl/mosaic-dsx.tex:hypernodes \q{on the fly}, but in this case the 
+./hmcl/mosaic-dsx.tex:fields within these auto-constructed hypernodes are 
+./hmcl/mosaic-dsx.tex:\q{proxies} for other hypernodes (possibly three or more) 
+./hmcl/cr2-mosaic.tex:\q{hypernodes,} or groups of interrelated 
+./hmcl/cr2-mosaic.tex:hypernodes by identifying a specific 
+./hmcl/cr2-mosaic.tex:which refine assertions of hypernode connections; 
+./hmcl/cr2-mosaic.tex:(e.g. hypernodes, frames, and subgraphs) which 
+./hmcl/cr2-mosaic.tex:can then be aggregated into hypernodes in 
+./hmcl/cr2-mosaic.tex:hypernodes can be linked with 
+./hmcl/cr2-mosaic.tex:applying to hypernode-types and/or connection labels 
+./hmcl/cr2-mosaic.tex:configured to only accept hypernodes 
+./hmcl/cr2-mosaic.tex:asserted between hypernodes when these connections 
+./hmcl/cr2-mosaic.tex:hypernodes in \WhiteDB{} records (although programmers 
+./hmcl/cr2-mosaic.tex:so that all (or most) hypernodes in the corresponding 
+./hmcl/apx1.tex:personal name, or \URL{}), a \textit{hypernode}, within a 
+./hmcl/apx1.tex:other hypernodes linked to a given hypernode via hyperedges.}  
+./hmcl/apx1.tex:\textit{hypernodes} and \textit{hyponodes}, such that 
+./hmcl/apx1.tex:hyponodes are contained within hypernodes.  As a result, 
+./hmcl/apx1.tex:apply to hypernodes, hyponodes, or some combination of the two.}
+./hmcl/apx1.tex:part of a hypernode (proxies are similar to 
+./hmcl/apx1.tex:by its own hypernode, has an identifier which can be a 
+./hmcl/apx1.tex:in the hypernode encoding the list of patients enrolled 
+./hmcl/apx1.tex:in a clinical trial, or in the hypernode 
+./hmcl/apx1.tex:in a specific health plan.  Hypernodes can then be linked to 
+./hmcl/apx1.tex:other hypernodes by virtue of proxies (e.g., the 
+./hmcl/apx1.tex:the relation between hypernodes and their inner 
+./hmcl/apx1.tex:hyponodes; between hypernodes and one another; 
+./hmcl/apx1.tex:between hyponodes in different hypernodes; 
+./hmcl/apx1.tex:proxies.  Moreover, in addition to hypernodes 
+./hmcl/apx1.tex:hypernode types and the data types understood by 
+./hmcl/apx2.tex:where hypernodes represent high-dimensional 
+./hmcl/apx2.tex:represent k-nearest-neighbors; here each hypernode 
+./hmcl/apx2.tex:methods use hypernodes to designate smaller segments 
+./hmcl/ho.tex:personal name, or \URL{}), a \textit{hypernode}, within a 
+./hmcl/ho.tex:other hypernodes linked to a given hypernode via hyperedges.}  
+./hmcl/ho.tex:\textit{hypernodes} and \textit{hyponodes}, such that 
+./hmcl/ho.tex:hyponodes are contained within hypernodes.  As a result, 
+./hmcl/ho.tex:apply to hypernodes, hyponodes, or some combination of the two.}
+./hmcl/ho.tex:part of a hypernode (proxies are similar to 
+./hmcl/ho.tex:by its own hypernode, has an identifier which can be a 
+./hmcl/ho.tex:in the hypernode encoding the list of patients enrolled 
+./hmcl/ho.tex:in a clinical trial, or in the hypernode 
+./hmcl/ho.tex:in a specific health plan.  Hypernodes can then be linked to 
+./hmcl/ho.tex:other hypernodes by virtue of proxies (e.g., the 
+./hmcl/ho.tex:between hypernodes and their inner 
+./hmcl/ho.tex:hyponodes; between hypernodes and one another; 
+./hmcl/ho.tex:between hyponodes in different hypernodes; 
+./hmcl/ho.tex:proxies.  Moreover, in addition to hypernodes 
+./hmcl/ho.tex:where hypernodes represent high-dimensional 
+./hmcl/ho.tex:represent k-nearest-neighbors; here each hypernode 
+./hmcl/ho.tex:methods use hypernodes to designate smaller segments 
+./hmcl/ho.tex:\item[Hypernodes' Cocyclic Type Structure]
+./hmcl/ho.tex:is the use of \textit{hypernode types} to 
+./hmcl/ho.tex:associated with a hypernode.  In particular, 
+./hmcl/ho.tex:a hypernode encompasses multiple hyponodes, 
+./hmcl/ho.tex:to} a hypernode (whereas data less canonically 
+./hmcl/ho.tex:associated with each hypernode would, in 
+./hmcl/ho.tex:via hypernode/hyponode containment.  In order 
+./hmcl/ho.tex:organized, hypernodes cannot have arbitrary 
+./hmcl/ho.tex:level of individual hypernodes rather than hypernode 
+./hmcl/ho.tex:hypernodes therefore represent expandable 
+./hmcl/ho.tex:hypernode type may indirectly include multiple 
+./hmcl/ho.tex:be translated to hypernode/hyponode inclusions, 
+./hmcl/ho.tex:for the corresponding hypernode type.
+./hmcl/ho.tex:A hypernode type provides a schema defining a 
+./hmcl/ho.tex:said that the hypernode \q{projects onto} that 
+./hmcl/ho.tex:so any hypernode including that type as one 
+./hmcl/ho.tex:hypernodes and/or hyperedges.  One example is 
+./hmcl/ho.tex:As described earlier, hypernodes can assert \q{containment} of 
+./hmcl/ho.tex:other hypernodes by containing a \textit{hyponode} which 
+./hmcl/ho.tex:\textit{proxies} the second hypernode.  
+./hmcl/ho.tex:between two hypernodes which are both proxied by 
+./hmcl/ho.tex:one third hypernode (using the earlier example 
+./hmcl/hypergraph-ontologies.tex:personal name, or \URL{}), a \textit{hypernode}, within a 
+./hmcl/hypergraph-ontologies.tex:other hypernodes linked to a given hypernode via hyperedges.}  
+./hmcl/hypergraph-ontologies.tex:\textit{hypernodes} and \textit{hyponodes}, such that 
+./hmcl/hypergraph-ontologies.tex:hyponodes are contained within hypernodes.  As a result, 
+./hmcl/hypergraph-ontologies.tex:apply to hypernodes, hyponodes, or some combination of the two.}
+./hmcl/hypergraph-ontologies.tex:part of a hypernode (proxies are similar to 
+./hmcl/hypergraph-ontologies.tex:by its own hypernode, has an identifier which can be a 
+./hmcl/hypergraph-ontologies.tex:in the hypernode encoding the list of patients enrolled 
+./hmcl/hypergraph-ontologies.tex:in a clinical trial, or in the hypernode 
+./hmcl/hypergraph-ontologies.tex:in a specific health plan.  Hypernodes can then be linked to 
+./hmcl/hypergraph-ontologies.tex:other hypernodes by virtue of proxies (e.g., the 
+./hmcl/hypergraph-ontologies.tex:the relation between hypernodes and their inner 
+./hmcl/hypergraph-ontologies.tex:hyponodes; between hypernodes and one another; 
+./hmcl/hypergraph-ontologies.tex:between hyponodes in different hypernodes; 
+./hmcl/hypergraph-ontologies.tex:proxies.  Moreover, in addition to hypernodes 
+./hmcl/hypergraph-ontologies.tex:where hypernodes represent high-dimensional 
+./hmcl/hypergraph-ontologies.tex:represent k-nearest-neighbors; here each hypernode 
+./hmcl/hypergraph-ontologies.tex:methods use hypernodes to designate smaller segments 
+./hmcl/hypergraph-ontologies.tex:\item[Hypernodes' Cocyclic Type Structure]
+./hmcl/hypergraph-ontologies.tex:is the use of \textit{hypernode types} to 
+./hmcl/hypergraph-ontologies.tex:associated with a hypernode.  In particular, 
+./hmcl/hypergraph-ontologies.tex:a hypernode encompasses multiple hyponodes, 
+./hmcl/hypergraph-ontologies.tex:to} a hypernode (whereas data less canonically 
+./hmcl/hypergraph-ontologies.tex:associated with each hypernode would, in 
+./hmcl/hypergraph-ontologies.tex:via hypernode/hyponode containment.  In order 
+./hmcl/hypergraph-ontologies.tex:organized, hypernodes cannot have arbitrary 
+./hmcl/hypergraph-ontologies.tex:level of individual hypernodes rather than hypernode 
+./hmcl/hypergraph-ontologies.tex:hypernodes therefore represent expandable 
+./hmcl/hypergraph-ontologies.tex:hypernode type may indirectly include multiple 
+./hmcl/hypergraph-ontologies.tex:be translated to hypernode/hyponode inclusions, 
+./hmcl/hypergraph-ontologies.tex:for the corresponding hypernode type.
+./hmcl/hypergraph-ontologies.tex:A hypernode type provides a schema defining a 
+./hmcl/hypergraph-ontologies.tex:said that the hypernode \q{projects onto} that 
+./hmcl/hypergraph-ontologies.tex:so any hypernode including that type as one 
+./hmcl/hypergraph-ontologies.tex:hypernodes and/or hyperedges.  One example is 
+./hmcl/hypergraph-ontologies.tex:As described earlier, hypernodes can assert \q{containment} of 
+./hmcl/hypergraph-ontologies.tex:other hypernodes by containing a \textit{hyponode} which 
+./hmcl/hypergraph-ontologies.tex:\textit{proxies} the second hypernode.  
+./hmcl/hypergraph-ontologies.tex:between two hypernodes which are both proxied by 
+./hmcl/hypergraph-ontologies.tex:one third hypernode (using the earlier example 
+./axf/book.tex:hypernodes.  This starting-point, along with the 
+./cr2-repo/cr2-mosaic.tex:\q{hypernodes,} or groups of interrelated 
+./cr2-repo/cr2-mosaic.tex:hypernodes by identifying a specific 
+./cr2-repo/cr2-mosaic.tex:which refine assertions of hypernode connections; 
+./cr2-repo/cr2-mosaic.tex:(e.g. hypernodes, frames, and subgraphs) which 
+./cr2-repo/cr2-mosaic.tex:can then be aggregated into hypernodes in 
+./cr2-repo/cr2-mosaic.tex:hypernodes can be linked with 
+./cr2-repo/cr2-mosaic.tex:applying to hypernode-types and/or connection labels 
+./cr2-repo/cr2-mosaic.tex:configured to only accept hypernodes 
+./cr2-repo/cr2-mosaic.tex:asserted between hypernodes when these connections 
+./cr2-repo/cr2-mosaic.tex:hypernodes in \WhiteDB{} records (although programmers 
+./cr2-repo/cr2-mosaic.tex:so that all (or most) hypernodes in the corresponding 
+./cr2-repo/apx1.tex:personal name, or \URL{}), a \textit{hypernode}, within a 
+./cr2-repo/apx1.tex:other hypernodes linked to a given hypernode via hyperedges.}  
+./cr2-repo/apx1.tex:\textit{hypernodes} and \textit{hyponodes}, such that 
+./cr2-repo/apx1.tex:hyponodes are contained within hypernodes.  As a result, 
+./cr2-repo/apx1.tex:apply to hypernodes, hyponodes, or some combination of the two.}
+./cr2-repo/apx1.tex:part of a hypernode (proxies are similar to 
+./cr2-repo/apx1.tex:by its own hypernode, has an identifier which can be a 
+./cr2-repo/apx1.tex:in the hypernode encoding the list of patients enrolled 
+./cr2-repo/apx1.tex:in a clinical trial, or in the hypernode 
+./cr2-repo/apx1.tex:in a specific health plan.  Hypernodes can then be linked to 
+./cr2-repo/apx1.tex:other hypernodes by virtue of proxies (e.g., the 
+./cr2-repo/apx1.tex:the relation between hypernodes and their inner 
+./cr2-repo/apx1.tex:hyponodes; between hypernodes and one another; 
+./cr2-repo/apx1.tex:between hyponodes in different hypernodes; 
+./cr2-repo/apx1.tex:proxies.  Moreover, in addition to hypernodes 
+./cr2-repo/apx1.tex:hypernode types and the data types understood by 
+./cr2-repo/cr2-thql (copy).tex:\q{hypernodes,} or groups of interrelated 
+./cr2-repo/cr2-thql (copy).tex:hypernodes by identifying a specific 
+./cr2-repo/cr2-thql (copy).tex:which refine assertions of hypernode connections; 
+./cr2-repo/cr2-thql (copy).tex:(such as hypernodes, frames, and subgraphs) which 
+./cr2-repo/cr2-thql (copy).tex:can then be aggregated into hypernodes in 
+./cr2-repo/cr2-thql (copy).tex:hypernodes can be linked with 
+./cr2-repo/cr2-thql (copy).tex:hypernode-types and/or connection labels.  A graph 
+./cr2-repo/cr2-thql (copy).tex:can then be configured to only accept hypernodes 
+./cr2-repo/cr2-thql (copy).tex:asserted between hypernodes when these connections 
+./cr2-repo/cr2-thql (copy).tex:hypernodes in \WhiteDB{} records (although programmers 
+./cr2-repo/cr2-thql (copy).tex:so that all (or most) hypernodes in the corresponding 
+./cr2-repo/apx2.tex:where hypernodes represent high-dimensional 
+./cr2-repo/apx2.tex:represent k-nearest-neighbors; here each hypernode 
+./cr2-repo/apx2.tex:methods use hypernodes to designate smaller segments 
+./cr2-repo/cr2-tech.tex:\q{hypernodes,} or groups of interrelated 
+./cr2-repo/cr2-tech.tex:hypernodes by identifying a specific 
+./cr2-repo/cr2-tech.tex:which refine assertions of hypernode connections; 
+./cr2-repo/cr2-tech.tex:(e.g. hypernodes, frames, and subgraphs) which 
+./cr2-repo/cr2-tech.tex:can then be aggregated into hypernodes in 
+./cr2-repo/cr2-tech.tex:hypernodes can be linked with 
+./cr2-repo/cr2-tech.tex:applying to hypernode-types and/or connection labels 
+./cr2-repo/cr2-tech.tex:configured to only accept hypernodes 
+./cr2-repo/cr2-tech.tex:asserted between hypernodes when these connections 
+./cr2-repo/cr2-tech.tex:hypernodes in \WhiteDB{} records (although programmers 
+./cr2-repo/cr2-tech.tex:so that all (or most) hypernodes in the corresponding 
+./cr2-repo/cr2-thql-methods.tex:\q{hypernodes,} or groups of interrelated 
+./cr2-repo/cr2-thql-methods.tex:hypernodes by identifying a specific 
+./cr2-repo/cr2-thql-methods.tex:which refine assertions of hypernode connections; 
+./cr2-repo/cr2-thql-methods.tex:(e.g. hypernodes, frames, and subgraphs) which 
+./cr2-repo/cr2-thql-methods.tex:can then be aggregated into hypernodes in 
+./cr2-repo/cr2-thql-methods.tex:hypernodes can be linked with 
+./cr2-repo/cr2-thql-methods.tex:applying to hypernode-types and/or connection labels 
+./cr2-repo/cr2-thql-methods.tex:configured to only accept hypernodes 
+./cr2-repo/cr2-thql-methods.tex:asserted between hypernodes when these connections 
+./cr2-repo/cr2-thql-methods.tex:hypernodes in \WhiteDB{} records (although programmers 
+./cr2-repo/cr2-thql-methods.tex:so that all (or most) hypernodes in the corresponding 
+./cr2-repo/cr2-thql.tex:\q{hypernodes,} or groups of interrelated 
+./cr2-repo/cr2-thql.tex:hypernodes by identifying a specific 
+./cr2-repo/cr2-thql.tex:which refine assertions of hypernode connections; 
+./cr2-repo/cr2-thql.tex:(e.g. hypernodes, frames, and subgraphs) which 
+./cr2-repo/cr2-thql.tex:can then be aggregated into hypernodes in 
+./cr2-repo/cr2-thql.tex:hypernodes can be linked with 
+./cr2-repo/cr2-thql.tex:applying to hypernode-types and/or connection labels 
+./cr2-repo/cr2-thql.tex:configured to only accept hypernodes 
+./cr2-repo/cr2-thql.tex:asserted between hypernodes when these connections 
+./cr2-repo/cr2-thql.tex:hypernodes in \WhiteDB{} records (although programmers 
+./cr2-repo/cr2-thql.tex:so that all (or most) hypernodes in the corresponding 
+./copy/cr2-mosaic.tex:\q{hypernodes,} or groups of interrelated 
+./copy/cr2-mosaic.tex:hypernodes by identifying a specific 
+./copy/cr2-mosaic.tex:which refine assertions of hypernode connections; 
+./copy/cr2-mosaic.tex:(e.g. hypernodes, frames, and subgraphs) which 
+./copy/cr2-mosaic.tex:can then be aggregated into hypernodes in 
+./copy/cr2-mosaic.tex:hypernodes can be linked with 
+./copy/cr2-mosaic.tex:applying to hypernode-types and/or connection labels 
+./copy/cr2-mosaic.tex:configured to only accept hypernodes 
+./copy/cr2-mosaic.tex:asserted between hypernodes when these connections 
+./copy/cr2-mosaic.tex:hypernodes in \WhiteDB{} records (although programmers 
+./copy/cr2-mosaic.tex:so that all (or most) hypernodes in the corresponding 
+./copy/apx2.tex:where hypernodes represent high-dimensional 
+./copy/apx2.tex:represent k-nearest-neighbors; here each hypernode 
+./copy/apx2.tex:methods use hypernodes to designate smaller segments 
+./copy/ho.tex:personal name, or \URL{}), a \textit{hypernode}, within a 
+./copy/ho.tex:other hypernodes linked to a given hypernode via hyperedges.}  
+./copy/ho.tex:\textit{hypernodes} and \textit{hyponodes}, such that 
+./copy/ho.tex:hyponodes are contained within hypernodes.  As a result, 
+./copy/ho.tex:apply to hypernodes, hyponodes, or some combination of the two.}
+./copy/ho.tex:part of a hypernode (proxies are similar to 
+./copy/ho.tex:by its own hypernode, has an identifier which can be a 
+./copy/ho.tex:in the hypernode encoding the list of patients enrolled 
+./copy/ho.tex:in a clinical trial, or in the hypernode 
+./copy/ho.tex:in a specific health plan.  Hypernodes can then be linked to 
+./copy/ho.tex:other hypernodes by virtue of proxies (e.g., the 
+./copy/ho.tex:the relation between hypernodes and their inner 
+./copy/ho.tex:hyponodes; between hypernodes and one another; 
+./copy/ho.tex:between hyponodes in different hypernodes; 
+./copy/ho.tex:proxies.  Moreover, in addition to hypernodes 
+./copy/ho.tex:where hypernodes represent high-dimensional 
+./copy/ho.tex:represent k-nearest-neighbors; here each hypernode 
+./copy/ho.tex:methods use hypernodes to designate smaller segments 
+./copy/ho.tex:\item[Hypernodes' Cocyclic Type Structure]
+./copy/ho.tex:is the use of \textit{hypernode types} to 
+./copy/ho.tex:associated with a hypernode.  In particular, 
+./copy/ho.tex:a hypernode encompasses multiple hyponodes, 
+./copy/ho.tex:to} a hypernode (whereas data less canonically 
+./copy/ho.tex:associated with each hypernode would, in 
+./copy/ho.tex:via hypernode/hyponode containment.  In order 
+./copy/ho.tex:organized, hypernodes cannot have arbitrary 
+./copy/ho.tex:level of individual hypernodes rather than hypernode 
+./copy/ho.tex:hypernodes therefore represent expandable 
+./copy/ho.tex:hypernode type may indirectly include multiple 
+./copy/ho.tex:be translated to hypernode/hyponode inclusions, 
+./copy/ho.tex:for the corresponding hypernode type.
+./copy/ho.tex:A hypernode type provides a schema defining a 
+./copy/ho.tex:said that the hypernode \q{projects onto} that 
+./copy/ho.tex:so any hypernode including that type as one 
+./copy/ho.tex:hypernodes and/or hyperedges.  One example is 
+./copy/ho.tex:As described earlier, hypernodes can assert \q{containment} of 
+./copy/ho.tex:other hypernodes by containing a \textit{hyponode} which 
+./copy/ho.tex:\textit{proxies} the second hypernode.  
+./copy/ho.tex:between two hypernodes which are both proxied by 
+./copy/ho.tex:one third hypernode (using the earlier example 
+./axf-copy/book.tex:hypernodes.  This starting-point, along with the 

@@ -1,0 +1,192 @@
+
+\section{Overview}
+
+\p{Image annotation and segmentation is an important 
+analytic process in many scientific, technical, and 
+commercial fields.  Nonetheless, there are few standard 
+formats for describing and representing image annotations, and 
+those which do exist tend to be used in specific, relatively 
+narrow contexts.\footnote{Current formats include AIM 
+(Annotation and Image Markup), CVAT XML (CVAT is 
+the Computer Vision Annotation Tool), DICOM-SR (Digital 
+Imaging and Communications in Medicine Structured Reporting), 
+PASCAL VOC XML (Pattern Analysis, Statistical modelling and 
+ComputAtional Learning Visual Object Classes), 
+and COCO JSON (Common Objects in Context).}  This is 
+not a new observation; Daniel L. Rubin \textit{et. al.}, 
+in 2007, note that: 
+
+\begin{displayquote}
+Images contain implicit knowledge about anatomy and abnormal structure that 
+is deduced by the viewer of the pixel data, but this knowledge is generally 
+not recorded in a structured manner nor directly linked to the image.  
+[Moreover,] the \textit{terminology} and \textit{syntax} 
+for describing images and what they 
+contain varies, with no widely-adopted standards, resulting in limited interoperability.  The contents of medical images are most frequently 
+described and stored in free-text in an unstructured manner, limiting the 
+ability of computers to analyze and access this information.  There are no  standard terminologies specifically for describing medical image contents 
+--- the imaging observations, the anatomy, and the pathology.  [N]o 
+comprehensive standard appropriate to medical imaging has yet been developed.
+A final challenge for medical imaging is that the particular information one 
+wants to describe and annotate in medical images depends on the \textit{context} 
+--- different types of images can be obtained for different purposes, and the  types of annotations that should be created (the \q{annotation requirements} 
+for images) depends on that context.  For example, in images of the abdomen of 
+a cancer patient (the context is \q{cancer} and \q{abdominal region}), we 
+would want  annotations to describe the liver (an  organ in the abdominal region), and if there is a cancer in the liver, then there should be a description 
+of the margins of the cancer (the appearance of the cancer on the image).
+(\bhref{http://cedarweb.vsp.ucar.edu/wiki/images/d/d9/R_19.pdf}, pp. 1-2). 
+\end{displayquote}
+
+These challenges inspired \AIM{} (the \q{Annotation and Image Markup} 
+project), which \q{provides a solution to the ... imaging challenges 
+[of]: No agreed upon syntax for annotation and markup;  
+No agreed upon semantics to describe annotations; No standard format 
+... for annotations and markup} (\bhref{https://wiki.nci.nih.gov/display/AIM/Annotation+and+Image+Markup+-+AIM}).  However, \AIM{} itself has not 
+been widely adopted outside the specific field of cancer research 
+and cancer-oriented image repositories.}
+
+\p{One obstacle to formalizing image-annotation data is that 
+annotations have a kind of intermediate status, neither intrinsic 
+parts of an image nor merely visual cues supporting the presentation 
+of the image witin image-viewing software.  Many applications 
+exist which allow markup or comments to be introduced with 
+respect to an image.  From the application's point of view, 
+these annotations are part of the application display, 
+not part of the image --- analogous to editing comments that 
+might be added to a text document by a word processor or 
+\PDF{} viewer, which are records of user actions, not 
+intrinsic to the document itself.  Indeed, one 
+mechanism for recording image annotations in \DICOM{} 
+(the \q{Digital Imaging and Communications in Medicine} 
+format) is via \q{presentation state.}  The presentation 
+state includes all details about how the image currently 
+appears to \DICOM{} workstation users, such as  
+Radiologists, which could include markings they have made 
+to indicate diagnostically significant image regions or 
+features.  Insofar as image-annotations are 
+considered to be artifacts of image-viewing software, 
+rather than significant data structures in their 
+own right, there is less motivation for imaging applications 
+to support canonical annotation standards.}
+
+\p{Nevertheless, in many scientific and technical 
+areas image annotations \textit{are} significant; 
+they are intrinsic to the scientific value of a 
+given image as an object of research or observation.  
+Image regions, segments, and features have a 
+semantic meaning outside the contexts of the 
+applications that are used to view the 
+corresponding images, which is why it is important 
+to develop cross-application standards for 
+describing and affixing data to image annotations.}
+
+\p{It is also important for image-annotation 
+models to be broadly applicable and multi-disciplinary.  
+While image analysis serves different goals in 
+different contexts (segmentation of microscope images 
+to detect cancer cells serves different ends than 
+segmentation of camera snapshots to study traffic patterns), 
+there is always a possibility of analytic techniques 
+developed in one subject area to be applicable for 
+other image-processing problems, even if the practical 
+outcomes desired of the analyses are very different.  
+Furthermore, certain computational domains are 
+similar enough to image analysis to warrant inclusion 
+in a general-purpose image-annotation framework, 
+even if the underlying data is not \q{images} in the 
+conventional sense (not, for instance, captured 
+via photographs or microscopy).  For example, 
+\PDF{} document views, Flow Cytometry data plots, 
+and geospatial maps subject to Geographic Information 
+Systems (\GIS{}) annotations may all be considered 
+images --- by virtue of a semantic significance attributed 
+to color and to geometric primitives as a way 
+of characterizing phenomena observed or modeled through 
+their data --- even though such resources are 
+not acquired by ordinary \q{image-producing} devices.  
+The \q{Pantheon} project, characterized as a
+\q{platform dedicated to knowledge engineering for the 
+development of image processing 
+applications,}\footnote{See \bhref{https://hal.archives-ouvertes.fr/hal-00260065/document}.}
+offers one of the few attempts in bioimaging literature to 
+rigorously define \q{imaging} and \q{image processing} in the 
+first place.  The problem of defining \q{images} as such, 
+and therefore delineating the scope of image annotation, is 
+addressed below (section ...).  In brief, \AXFI{} 
+considers the realm of imaging to be more general 
+than just graphics obtained by a direct recording 
+of the optics of some physical scene via cameras, 
+microscopes, or telescopes.  That is to say, 
+the image acquisition process is not necessarily 
+one where data is generated by an instrument which 
+produces a digital artifact by absorbing light, 
+so that geometric and chromatic properties of the 
+image are wholly due to the functioning of 
+the acquisition device.}
+
+\p{Systematically identifying the scope of \q{image annotion} 
+is important for \AXFI{} because doing so clarifies 
+the sorts of domains whose semantics could 
+reasonably be incorporated into \AXFI{}, as 
+well as the sorts of applications which would 
+be reasonable candidates for supporting 
+\AXFI{} annotations (i.e., the capability 
+to parse \AXFI{} data and represent it 
+\visavis{} the relevant images).  For 
+example, if immunoflourescent 
+Flow Cytometry (\FCM{}) data plots are 
+classified as images, then the numerical 
+properties of the \q{channel} axis, with 
+notions of \q{decades} and a \q{log/linear} 
+distinction, become relevant to the \AXFI{} 
+vocabulary for representing spatial 
+dimensions and magnitudes.  In general, 
+\AXFI{} uses paradigms and terminology 
+from \q{Conceptual Space Theory} as 
+part of the process of formalizing 
+geometric and dimensional 
+notions.\footnote{See \bhref{http://idwebhost-202-147.ethz.ch/Publications/RefConferences/ICSC_2009_AdamsRaubal_Camera-FINAL.pdf} or 
+\bhref{https://arxiv.org/pdf/1801.03929.pdf}.} }
+
+\p{When defining the scope of \AXFI{}, it is also 
+important to distinguish the \textit{data models} 
+encapsulated by \AXFI{} resources from the 
+file formats where \AXFI{} data is encoded.  
+The choice of one file type or another 
+to represent a data structure --- \XML{} versus
+\JSON{}, for instance --- does not fundamentally 
+affect the data thereby communicated.  
+Therefore, it is important to formalize data 
+models in such a way that numerous different 
+serialization languages might actually be 
+used to share/express the data.  However, 
+in practice, format-specific standards, 
+such as \XML{} Schema Definitions, 
+are often used as the basis for 
+formalizing and enforcing compliance 
+with data models.  Therefore, \AXFI{} 
+cannot be complete unconcerned with 
+the structure and requirements of 
+files which convey \AXFI{} data.  
+This is particularly true because \AXFI{} 
+seeks to incorporate the data models 
+of other specifications, such as 
+\AIM{} and \GatingML{}, which are formalized 
+via \XML{} specifications.  Although \AXFI{} 
+is not primarily \XML{}-based, in short, it 
+intends to be (in the relevant contexts) 
+compatible with \XML{} languages that 
+rely on \XML{} schematization.  Further 
+details on how \AXFI{} manages the relation 
+to \XML{} and other serialization languages 
+are provided below (section ).
+
+
+
+}
+
+\p{}
+
+
+
+

@@ -1,0 +1,480 @@
+./htxn/gates.tex-(or newly-available) articles to the corpus.  However, integration 
+./htxn/gates.tex-with \Cnineteen{} is not developed as a formal step 
+./htxn/gates.tex-in the publication workflow.  In particular, publishers 
+./htxn/gates.tex:are not themselves generating machine-readable document infosets 
+./htxn/gates.tex-that can be integrated with the \Cnineteen{} schema (which, 
+./htxn/gates.tex-in turn, causes transcriptions errors and other problems 
+./htxn/gates.tex-as just outlined).  These problems can be ameliorated 
+./htxn/gates.tex-by equipping publishers with sotfware that can construct 
+./htxn/gates.tex:infosets concordant to the \Cnineteen{} schema from 
+./htxn/gates.tex-their composit-stage documents; we can provide this software 
+./htxn/gates.tex-as part of the proposed \SDK{}.}
+./htxn/gates.tex-
+./htxn/gates.tex-\p{As editor of the International Journal of Speech Technology, 
+./htxn/gates.tex-(\IJST{}, published by Springer) 
+--
+./htxn/gates.tex-examining the \Cnineteen{} 
+./htxn/gates.tex-\JSON{} files; (2) supplementing the \Cnineteen{} files 
+./htxn/gates.tex-with alternative document representations which would 
+./htxn/gates.tex:offer a more detailed infoset for document content, 
+./htxn/gates.tex-wherever such files are available; (3) a machine-readable 
+./htxn/gates.tex-index of open-access data sets linked to \Cnineteen{} 
+./htxn/gates.tex-articles; and (4) software tools for downloading 
+./htxn/gates.tex-and manipulating these coronavirus data sets.  
+./htxn/gates.tex-In addition, our \SDK{} would provide tools for 
+--
+./htxn/lxcr (copy).tex-subscribers who have digital rights to the final publication).  
+./htxn/lxcr (copy).tex-This situation explains the importance of a 
+./htxn/lxcr (copy).tex-multi-format Document Object Model: by publishing 
+./htxn/lxcr (copy).tex:machine-readable infosets capturing the content of 
+./htxn/lxcr (copy).tex-human-readable manuscripts, as supplemental materials 
+./htxn/lxcr (copy).tex-to manuscripts themselves, it is easier for 
+./htxn/lxcr (copy).tex-educational technology to integrate publications 
+./htxn/lxcr (copy).tex-into a digital learning platform.      
+./htxn/lxcr (copy).tex-
+--
+./htxn/lxcr.tex-\begin{center}		
+./htxn/lxcr.tex-{\setlength{\fboxsep}{19pt}
+./htxn/lxcr.tex-	\relscale{1.4}{{\fontfamily{qcr}\fontseries{b}\selectfont%
+./htxn/lxcr.tex:{The Latex/XML/Concurrent/RDF\\ Infoset and Plugin Framework \\\vspace*{10pt}(\lsLXCR{})}}}}
+./htxn/lxcr.tex-\end{center}
+./htxn/lxcr.tex-\end{minipage}
+./htxn/lxcr.tex-\end{tcolorbox}
+./htxn/lxcr.tex-\end{center}
+./htxn/lxcr.tex-
+--
+./htxn/lxcr.tex-represented by \XML{}'s Document Object Model.}
+./htxn/lxcr.tex-
+./htxn/lxcr.tex-\p{In \XML{}, the \DOM{} is considered a protocol for 
+./htxn/lxcr.tex:accessing an \XML{} \textit{infoset}, which is an 
+./htxn/lxcr.tex-internal representation of \XML{} documents that 
+./htxn/lxcr.tex-abstracts from surface-level syntax.  Analogously, 
+./htxn/lxcr.tex-\LXCR{} documents have an internal structure which 
+./htxn/lxcr.tex-can be built from different kinds of source 
+./htxn/lxcr.tex-files; as such, different markup language may 
+--
+./htxn/lxcr.tex-used interoperably, or combined into larger documents.  
+./htxn/lxcr.tex-Because the source markup is abstracted from the 
+./htxn/lxcr.tex-internal representation, \LXCR{} data structures 
+./htxn/lxcr.tex:may be more precisely described as \q{infosets} 
+./htxn/lxcr.tex-rather than as \q{documents}.  Nevertheless 
+./htxn/lxcr.tex-(to sustain the analogy with \XML{}), 
+./htxn/lxcr.tex-the protocol for defining and accessing the 
+./htxn/lxcr.tex:structure of \LXCR{} infosets is called the \LXCR{} 
+./htxn/lxcr.tex-Document Object Model (\LDOM{}).
+./htxn/lxcr.tex-}
+./htxn/lxcr.tex-
+./htxn/lxcr.tex-\p{Complementing this Document Object Model, 
+./htxn/lxcr.tex-the \LXCR{} Plugin Framework (\LPF{}) 
+--
+./htxn/lxcr.tex-to publications originally created for 
+./htxn/lxcr.tex-educational use (such as textbooks or test-preparation 
+./htxn/lxcr.tex-materials).  Such use-cases illustrate the value of 
+./htxn/lxcr.tex:machine-readable Document Infosets which provide 
+./htxn/lxcr.tex-structured access to publication content, as opposed 
+./htxn/lxcr.tex-to the merely visual access offered by \PDF{} files.  
+./htxn/lxcr.tex-Pedagogically using publications can involve extracting 
+./htxn/lxcr.tex-information from texts, or laying on additional 
+./htxn/lxcr.tex-content: inserting review questions at strategic 
+--
+./htxn/lxcr.tex-presenting digital manuscripts solely in \PDF{} (or 
+./htxn/lxcr.tex-e-Pub or \HTML{}) formats --- in general it is difficult or 
+./htxn/lxcr.tex-impossible to pull information from these formats analogous 
+./htxn/lxcr.tex:to how algorithms may traverse an \XML{} Infoset.  For 
+./htxn/lxcr.tex-this reason, certain publishers and electronic journals offer 
+./htxn/lxcr.tex-machine-readable views on their publications as supplements 
+./htxn/lxcr.tex-to the human-readable \PDF{} files; however, this practice 
+./htxn/lxcr.tex-is not widely adopted in educational settings.  Also, 
+./htxn/lxcr.tex-many publishers use \XML{} as an internal representation 
+--
+./htxn/lxcr.tex-subscribers who have digital rights to the final publication).  
+./htxn/lxcr.tex-This situation explains the importance of a 
+./htxn/lxcr.tex-multi-format Document Object Model: by publishing 
+./htxn/lxcr.tex:machine-readable infosets capturing the content of 
+./htxn/lxcr.tex-human-readable manuscripts, as supplemental materials 
+./htxn/lxcr.tex-to manuscripts themselves, it is easier for 
+./htxn/lxcr.tex-educational technology to integrate publications 
+./htxn/lxcr.tex-into a digital learning platform.      
+./htxn/lxcr.tex-
+--
+./htxn/ets (another copy).tex-(where the practice Question 4 is 
+./htxn/ets (another copy).tex-presented) and the supplemental Molecular 
+./htxn/ets (another copy).tex-\makebox{Data file 
+./htxn/ets (another copy).tex:would be asserted in the Semantic Document Infoset, and 
+./htxn/ets (another copy).tex-read by a document viewer (e.g.,}
+./htxn/ets (another copy).tex-
+./htxn/ets (another copy).tex-\begin{wrapfigure}[10]{l}{110mm}
+./htxn/ets (another copy).tex-\vspace{-1em}
+./htxn/ets (another copy).tex-\input{etsf2.tex}
+--
+./htxn/ets (another copy).tex-\p{To support these capabilities, \EPF{} would 
+./htxn/ets (another copy).tex-include tools to help compose publications 
+./htxn/ets (another copy).tex-(such as test-preparation materials) that 
+./htxn/ets (another copy).tex:embed what we call a \q{Semantic Document Infoset} 
+./htxn/ets (another copy).tex-(\SDI{}), which divides manuscripts into 
+./htxn/ets (another copy).tex-textual units (sections, paragraphs, sentences, 
+./htxn/ets (another copy).tex-etc.) and identifies document elements such as 
+./htxn/ets (another copy).tex-technical terms (which may be compiled into a 
+./htxn/ets (another copy).tex-glossary) and figure illustrations.
+--
+./htxn/ets (copy).tex-additional pedagogic content: review questions, 
+./htxn/ets (copy).tex-student instructions, glossaries, reading assignments, 
+./htxn/ets (copy).tex-and so forth.  For this technology, each publication 
+./htxn/ets (copy).tex:may provide what we call a \q{Semantic Document Infoset} 
+./htxn/ets (copy).tex-(\SDI{}), which divides manuscripts into 
+./htxn/ets (copy).tex-textual units (sections, paragraphs, sentences, 
+./htxn/ets (copy).tex-etc.) and identifies document elements such as 
+./htxn/ets (copy).tex-glossary terms and figure illustration.  
+./htxn/ets (copy).tex-ETS plugins can then examine a publication's 
+--
+./htxn/ets (copy).tex-\end{wrapfigure}\noindent{}the specific textual location 
+./htxn/ets (copy).tex-(where the practice Question 4 is 
+./htxn/ets (copy).tex-presented) and the supplemental Molecular Data file 
+./htxn/ets (copy).tex:would be asserted in the Semantic Document Infoset, and 
+./htxn/ets (copy).tex-read by a document viewer (e.g., \XPDF{}).  The 
+./htxn/ets (copy).tex-\XPDF{} plugin would then launch IQmol and send the 
+./htxn/ets (copy).tex-molecular file to the IQmol ETS Plugin, with instructions 
+./htxn/ets (copy).tex-to load this file into an IQmol session 
+./htxn/ets (copy).tex-(see Figure ~\bref{fig:i1}).  The end result 
+--
+./htxn/ets (copy).tex-(labs, classrooms, and so forth).  
+./htxn/ets (copy).tex-%\mnote{Pedago\-gical use-cases for \LPF{}}
+./htxn/ets (copy).tex-%Such use-cases illustrate the value of 
+./htxn/ets (copy).tex:%machine-readable Document Infosets which provide 
+./htxn/ets (copy).tex-%structured access to publication content, as opposed 
+./htxn/ets (copy).tex-%to the merely visual access offered by \PDF{} files.  
+./htxn/ets (copy).tex-Pedagogically using publications can involve extracting 
+./htxn/ets (copy).tex-information from texts, or laying on additional 
+./htxn/ets (copy).tex-content: inserting review questions at strategic 
+--
+./htxn/ets (copy).tex-details of a quantitative illustration).  Both of 
+./htxn/ets (copy).tex-these kinds of operations --- extracting or adding 
+./htxn/ets (copy).tex-content --- require computational access to a 
+./htxn/ets (copy).tex:Document Infoset providing 
+./htxn/ets (copy).tex-structured access to publication content.   
+./htxn/ets (copy).tex-%Such use-cases illustrate the value of 
+./htxn/ets (copy).tex:%machine-readable Document Infosets which provide 
+./htxn/ets (copy).tex-%structured access to publication content, as opposed 
+./htxn/ets (copy).tex-%to the merely visual access offered by \PDF{} files.   
+./htxn/ets (copy).tex-
+./htxn/ets (copy).tex-\pseudoIndent{} Computer code which operates on 
+./htxn/ets (copy).tex-manuscripts composed in coordination with 
+--
+./htxn/ets.tex-\setlength{\textfloatsep}{10pt}\setlength{\belowcaptionskip}{4pt}\input{etsf6.tex}
+./htxn/ets.tex-
+./htxn/ets.tex-%\vspace{-.5em}
+./htxn/ets.tex:\mnote{Semantic Document Infosets 
+./htxn/ets.tex-(\iSDI{}s)}
+./htxn/ets.tex-\p{To support these capabilities, \EPF{} would 
+./htxn/ets.tex-include tools to help compose publications 
+./htxn/ets.tex-(such as test-preparation materials) that 
+./htxn/ets.tex:embed what we term a \q{Semantic Document Infoset} 
+./htxn/ets.tex-(\SDI{}), which effectively divides manuscripts into 
+./htxn/ets.tex-textual units (subsections, paragraphs, sentences, 
+./htxn/ets.tex-quotations, bullet lists, etc.) and identifies 
+./htxn/ets.tex-document elements such 
+./htxn/ets.tex-as technical terms (which may be compiled into a 
+--
+./htxn/ets (3rd copy).tex-(where the practice Question 4 is 
+./htxn/ets (3rd copy).tex-presented) and the supplemental Molecular 
+./htxn/ets (3rd copy).tex-\makebox{Data file 
+./htxn/ets (3rd copy).tex:would be asserted in the Semantic Document Infoset, and 
+./htxn/ets (3rd copy).tex-read by a document viewer (e.g.,}
+./htxn/ets (3rd copy).tex-
+./htxn/ets (3rd copy).tex-\begin{wrapfigure}[10]{l}{110mm}
+./htxn/ets (3rd copy).tex-\vspace{-1em}
+./htxn/ets (3rd copy).tex-\input{etsf2.tex}
+--
+./htxn/ets (3rd copy).tex-for each question.}  
+./htxn/ets (3rd copy).tex-\input{etsf6.tex}
+./htxn/ets (3rd copy).tex-
+./htxn/ets (3rd copy).tex:\mnote{Semantic Document Infosets 
+./htxn/ets (3rd copy).tex-(\iSDI{}s)}
+./htxn/ets (3rd copy).tex-\p{To support these capabilities, \EPF{} would 
+./htxn/ets (3rd copy).tex-include tools to help compose publications 
+./htxn/ets (3rd copy).tex-(such as test-preparation materials) that 
+./htxn/ets (3rd copy).tex:embed what we call a \q{Semantic Document Infoset} 
+./htxn/ets (3rd copy).tex-(\SDI{}), which divides manuscripts into 
+./htxn/ets (3rd copy).tex-textual units (sections, paragraphs, sentences, 
+./htxn/ets (3rd copy).tex-etc.) and identifies document elements such as 
+./htxn/ets (3rd copy).tex-technical terms (which may be compiled into a 
+./htxn/ets (3rd copy).tex-glossary) and figure illustrations.
+--
+./cr2/cr2.tex-loaded from parsed serializations (e.g., \HGXF{} 
+./cr2/cr2.tex-files) without using other file-system resources.  
+./cr2/cr2.tex-The database engine can then be adopted as a 
+./cr2/cr2.tex:tool for accessing and manipulating the \q{infoset} 
+./cr2/cr2.tex-derived from these data files, analogous to 
+./cr2/cr2.tex-\XML{} libraries interfacing with a Document Object Model.
+./cr2/cr2.tex-
+./cr2/cr2.tex-\item[Scientific-Computing Interface Description]  Following 
+./cr2/cr2.tex-HyperGraphDB, \DgDb{} establishes a \q{type system} 
+--
+./cr2/cr2.tex-to \PDF{} viewport coordinates 
+./cr2/cr2.tex-(such text locations include annotation, quotation, or citation 
+./cr2/cr2.tex-start/end points and paragraph or sentence boundaries --- 
+./cr2/cr2.tex:collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+./cr2/cr2.tex-This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+./cr2/cr2.tex-\PDF{} applications to provide contexts 
+./cr2/cr2.tex-for word searches, to localize context 
+./cr2/cr2.tex-menus, to activate multi-media features at different points 
+./cr2/cr2.tex-in the text, and in general to make \PDF{} files more 
+--
+./cr2/cr2 (copy).tex-loaded from parsed serializations (e.g., \HGXF{} 
+./cr2/cr2 (copy).tex-files) without using other file-system resources.  
+./cr2/cr2 (copy).tex-The database engine can then be adopted as a 
+./cr2/cr2 (copy).tex:tool for accessing and manipulating the \q{infoset} 
+./cr2/cr2 (copy).tex-derived from these data files, analogous to 
+./cr2/cr2 (copy).tex-\XML{} libraries interfacing with a Document Object Model.
+./cr2/cr2 (copy).tex-
+./cr2/cr2 (copy).tex-\item[Scientific-Computing Interface Description]  Following 
+./cr2/cr2 (copy).tex-HyperGraphDB, \DgDb{} establishes a \q{type system} 
+--
+./cr2/cr2 (copy).tex-to \PDF{} viewport coordinates 
+./cr2/cr2 (copy).tex-(such text locations include annotation, quotation, or citation 
+./cr2/cr2 (copy).tex-start/end points and paragraph or sentence boundaries --- 
+./cr2/cr2 (copy).tex:collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+./cr2/cr2 (copy).tex-This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+./cr2/cr2 (copy).tex-\PDF{} applications to provide contexts 
+./cr2/cr2 (copy).tex-for word searches, to localize context 
+./cr2/cr2 (copy).tex-menus, to activate multi-media features at different points 
+./cr2/cr2 (copy).tex-in the text, and in general to make \PDF{} files more 
+--
+./hmcl/pandore.tex-code libraries serializing and deserializing 
+./hmcl/pandore.tex-\GTagML{} files.  To model this second, type-oriented 
+./hmcl/pandore.tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/pandore.tex:type model organized around \q{infosets,} which 
+./hmcl/pandore.tex-are structured overviews of application-level 
+./hmcl/pandore.tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/pandore.tex:programmers may then compose \q{infoset classes} 
+./hmcl/pandore.tex-as wrappers around ordinary data types 
+./hmcl/pandore.tex-(e.g., \Cpp{} classes) whose instances are 
+./hmcl/pandore.tex-serialized via nodes or character strings 
+./hmcl/pandore.tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/pandore.tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/pandore.tex-and act as a bridge between data types and 
+./hmcl/pandore.tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/pandore.tex:infoset classes (rather than the types 
+./hmcl/pandore.tex-they encapsulate) are the basis for schematizing 
+./hmcl/pandore.tex-the relation between \GTagML{} document elements 
+./hmcl/pandore.tex-and type instances (and the data they contain).}
+./hmcl/pandore.tex-
+./hmcl/pandore.tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/DSPIN.tex-code libraries serializing and deserializing 
+./hmcl/DSPIN.tex-\GTagML{} files.  To model this second, type-oriented 
+./hmcl/DSPIN.tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/DSPIN.tex:type model organized around \q{infosets,} which 
+./hmcl/DSPIN.tex-are structured overviews of application-level 
+./hmcl/DSPIN.tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/DSPIN.tex:programmers may then compose \q{infoset classes} 
+./hmcl/DSPIN.tex-as wrappers around ordinary data types 
+./hmcl/DSPIN.tex-(e.g., \Cpp{} classes) whose instances are 
+./hmcl/DSPIN.tex-serialized via nodes or character strings 
+./hmcl/DSPIN.tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/DSPIN.tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/DSPIN.tex-and act as a bridge between data types and 
+./hmcl/DSPIN.tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/DSPIN.tex:infoset classes (rather than the types 
+./hmcl/DSPIN.tex-they encapsulate) are the basis for schematizing 
+./hmcl/DSPIN.tex-the relation between \GTagML{} document elements 
+./hmcl/DSPIN.tex-and type instances (and the data they contain).}
+./hmcl/DSPIN.tex-
+./hmcl/DSPIN.tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/mosaic-dsx.tex-loaded from parsed serializations (e.g., \HGXF{} 
+./hmcl/mosaic-dsx.tex-files) without using other file-system resources.  
+./hmcl/mosaic-dsx.tex-The database engine can then be adopted as a 
+./hmcl/mosaic-dsx.tex:tool for accessing and manipulating the \q{infoset} 
+./hmcl/mosaic-dsx.tex-derived from these data files, analogous to 
+./hmcl/mosaic-dsx.tex-\XML{} libraries interfacing with a Document Object Model.
+./hmcl/mosaic-dsx.tex-
+./hmcl/mosaic-dsx.tex-\item[Scientific-Computing Interface Description]  Following 
+./hmcl/mosaic-dsx.tex-HyperGraphDB, \DgDb{} establishes a \q{type system} 
+--
+./hmcl/mosaic-dsx.tex-to \PDF{} viewport coordinates 
+./hmcl/mosaic-dsx.tex-(such text locations include annotation, quotation, or citation 
+./hmcl/mosaic-dsx.tex-start/end points and paragraph or sentence boundaries --- 
+./hmcl/mosaic-dsx.tex:collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+./hmcl/mosaic-dsx.tex-This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+./hmcl/mosaic-dsx.tex-\PDF{} applications to provide contexts 
+./hmcl/mosaic-dsx.tex-for word searches, to localize context 
+./hmcl/mosaic-dsx.tex-menus, to activate multi-media features at different points 
+./hmcl/mosaic-dsx.tex-in the text, and in general to make \PDF{} files more 
+--
+./hmcl/cr2-mosaic.tex-to \PDF{} viewport coordinates 
+./hmcl/cr2-mosaic.tex-(such text locations include annotation, quotation, or citation 
+./hmcl/cr2-mosaic.tex-start/end points and paragraph or sentence boundaries --- 
+./hmcl/cr2-mosaic.tex:collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+./hmcl/cr2-mosaic.tex-This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+./hmcl/cr2-mosaic.tex-\PDF{} applications to provide contexts 
+./hmcl/cr2-mosaic.tex-for word searches, to localize context 
+./hmcl/cr2-mosaic.tex-menus, to activate multi-media features at different points 
+./hmcl/cr2-mosaic.tex-in the text, and in general to make \PDF{} files more 
+--
+./hmcl/mosaic-dspin (another copy).tex-code libraries serializing and deserializing 
+./hmcl/mosaic-dspin (another copy).tex-\GTagML{} files.  To model this second, type-oriented 
+./hmcl/mosaic-dspin (another copy).tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/mosaic-dspin (another copy).tex:type model organized around \q{infosets,} which 
+./hmcl/mosaic-dspin (another copy).tex-are structured overviews of application-level 
+./hmcl/mosaic-dspin (another copy).tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/mosaic-dspin (another copy).tex:programmers may then compose \q{infoset classes} 
+./hmcl/mosaic-dspin (another copy).tex-as wrappers around ordinary data types 
+./hmcl/mosaic-dspin (another copy).tex-(e.g., \Cpp{} classes) whose instances are 
+./hmcl/mosaic-dspin (another copy).tex-serialized via nodes or character strings 
+./hmcl/mosaic-dspin (another copy).tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/mosaic-dspin (another copy).tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/mosaic-dspin (another copy).tex-and act as a bridge between data types and 
+./hmcl/mosaic-dspin (another copy).tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/mosaic-dspin (another copy).tex:infoset classes (rather than the types 
+./hmcl/mosaic-dspin (another copy).tex-they encapsulate) are the basis for schematizing 
+./hmcl/mosaic-dspin (another copy).tex-the relation between \GTagML{} document elements 
+./hmcl/mosaic-dspin (another copy).tex-and type instances (and the data they contain).}
+./hmcl/mosaic-dspin (another copy).tex-
+./hmcl/mosaic-dspin (another copy).tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/mosaic-dspin-with-apx.tex-code libraries serializing and deserializing 
+./hmcl/mosaic-dspin-with-apx.tex-\GTagML{} files.  To model the second level of 
+./hmcl/mosaic-dspin-with-apx.tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/mosaic-dspin-with-apx.tex:type model organized around \q{infosets,} which 
+./hmcl/mosaic-dspin-with-apx.tex-are structured overviews of application-level 
+./hmcl/mosaic-dspin-with-apx.tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/mosaic-dspin-with-apx.tex:programmers may consequently compose \q{infoset classes} 
+./hmcl/mosaic-dspin-with-apx.tex-as wrappers around ordinary data types 
+./hmcl/mosaic-dspin-with-apx.tex-(e.g., \Cpp{} classes), whose instances are 
+./hmcl/mosaic-dspin-with-apx.tex-serialized via nodes or character strings 
+./hmcl/mosaic-dspin-with-apx.tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/mosaic-dspin-with-apx.tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/mosaic-dspin-with-apx.tex-and act as a bridge between data types and 
+./hmcl/mosaic-dspin-with-apx.tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/mosaic-dspin-with-apx.tex:infoset classes (rather than the types 
+./hmcl/mosaic-dspin-with-apx.tex-they encapsulate) are the basis for schematizing 
+./hmcl/mosaic-dspin-with-apx.tex-the relation between \GTagML{} document elements 
+./hmcl/mosaic-dspin-with-apx.tex-and type instances (and the data they contain).}
+./hmcl/mosaic-dspin-with-apx.tex-
+./hmcl/mosaic-dspin-with-apx.tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/mosaic-dspin-with-apx-1.tex-code libraries serializing and deserializing 
+./hmcl/mosaic-dspin-with-apx-1.tex-\GTagML{} files.  To model the second level of 
+./hmcl/mosaic-dspin-with-apx-1.tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/mosaic-dspin-with-apx-1.tex:type model organized around \q{infosets,} which 
+./hmcl/mosaic-dspin-with-apx-1.tex-are structured overviews of application-level 
+./hmcl/mosaic-dspin-with-apx-1.tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/mosaic-dspin-with-apx-1.tex:programmers may consequently compose \q{infoset classes} 
+./hmcl/mosaic-dspin-with-apx-1.tex-as wrappers around ordinary data types 
+./hmcl/mosaic-dspin-with-apx-1.tex-(e.g., \Cpp{} classes), whose instances are 
+./hmcl/mosaic-dspin-with-apx-1.tex-serialized via nodes or character strings 
+./hmcl/mosaic-dspin-with-apx-1.tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/mosaic-dspin-with-apx-1.tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/mosaic-dspin-with-apx-1.tex-and act as a bridge between data types and 
+./hmcl/mosaic-dspin-with-apx-1.tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/mosaic-dspin-with-apx-1.tex:infoset classes (rather than the types 
+./hmcl/mosaic-dspin-with-apx-1.tex-they encapsulate) are the basis for schematizing 
+./hmcl/mosaic-dspin-with-apx-1.tex-the relation between \GTagML{} document elements 
+./hmcl/mosaic-dspin-with-apx-1.tex-and type instances (and the data they contain).}
+./hmcl/mosaic-dspin-with-apx-1.tex-
+./hmcl/mosaic-dspin-with-apx-1.tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/pandore (copy).tex-code libraries serializing and deserializing 
+./hmcl/pandore (copy).tex-\GTagML{} files.  To model this second, type-oriented 
+./hmcl/pandore (copy).tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/pandore (copy).tex:type model organized around \q{infosets,} which 
+./hmcl/pandore (copy).tex-are structured overview of application-level 
+./hmcl/pandore (copy).tex-data types.  To fulle utilize \GTagML{} features, 
+./hmcl/pandore (copy).tex:programmers would then compose \q{infoset classes} 
+./hmcl/pandore (copy).tex-as wrappers around ordinary data types 
+./hmcl/pandore (copy).tex-(e.g., \Cpp{} classes) whose instances are 
+./hmcl/pandore (copy).tex-serialized via nodes or character strings 
+./hmcl/pandore (copy).tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/pandore (copy).tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/pandore (copy).tex-and act as a bridge between data types and 
+./hmcl/pandore (copy).tex-\GTagML{} schema.  In particular, 
+./hmcl/pandore (copy).tex:infoset classes (rather than the types 
+./hmcl/pandore (copy).tex-they encapsulate) are the basis for schematizing 
+./hmcl/pandore (copy).tex-the relation between \GTagML{} document elements 
+./hmcl/pandore (copy).tex-and type instances and the data they contain.}
+./hmcl/pandore (copy).tex-
+./hmcl/pandore (copy).tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/mosaic-dspin (copy).tex-code libraries serializing and deserializing 
+./hmcl/mosaic-dspin (copy).tex-\GTagML{} files.  To model this second, type-oriented 
+./hmcl/mosaic-dspin (copy).tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/mosaic-dspin (copy).tex:type model organized around \q{infosets,} which 
+./hmcl/mosaic-dspin (copy).tex-are structured overviews of application-level 
+./hmcl/mosaic-dspin (copy).tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/mosaic-dspin (copy).tex:programmers may then compose \q{infoset classes} 
+./hmcl/mosaic-dspin (copy).tex-as wrappers around ordinary data types 
+./hmcl/mosaic-dspin (copy).tex-(e.g., \Cpp{} classes) whose instances are 
+./hmcl/mosaic-dspin (copy).tex-serialized via nodes or character strings 
+./hmcl/mosaic-dspin (copy).tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/mosaic-dspin (copy).tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/mosaic-dspin (copy).tex-and act as a bridge between data types and 
+./hmcl/mosaic-dspin (copy).tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/mosaic-dspin (copy).tex:infoset classes (rather than the types 
+./hmcl/mosaic-dspin (copy).tex-they encapsulate) are the basis for schematizing 
+./hmcl/mosaic-dspin (copy).tex-the relation between \GTagML{} document elements 
+./hmcl/mosaic-dspin (copy).tex-and type instances (and the data they contain).}
+./hmcl/mosaic-dspin (copy).tex-
+./hmcl/mosaic-dspin (copy).tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/pandoreb.tex-code libraries serializing and deserializing 
+./hmcl/pandoreb.tex-\GTagML{} files.  To model this second, type-oriented 
+./hmcl/pandoreb.tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/pandoreb.tex:type model organized around \q{infosets,} which 
+./hmcl/pandoreb.tex-are structured overview of application-level 
+./hmcl/pandoreb.tex-data types.  To fulle utilize \GTagML{} features, 
+./hmcl/pandoreb.tex:programmers would then compose \q{infoset classes} 
+./hmcl/pandoreb.tex-as wrappers around ordinary data types 
+./hmcl/pandoreb.tex-(e.g., \Cpp{} classes) whose instances are 
+./hmcl/pandoreb.tex-serialized via nodes or character strings 
+./hmcl/pandoreb.tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/pandoreb.tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/pandoreb.tex-and act as a bridge between data types and 
+./hmcl/pandoreb.tex-\GTagML{} schema.  In particular, 
+./hmcl/pandoreb.tex:infoset classes (rather than the types 
+./hmcl/pandoreb.tex-they encapsulate) are the basis for schematizing 
+./hmcl/pandoreb.tex-the relation between \GTagML{} document elements 
+./hmcl/pandoreb.tex-and type instances and the data they contain.}
+./hmcl/pandoreb.tex-
+./hmcl/pandoreb.tex-\p{The hypergraph-based modeling incorporated 
+--
+./hmcl/mosaic-dspin.tex-code libraries serializing and deserializing 
+./hmcl/mosaic-dspin.tex-\GTagML{} files.  To model the second level of 
+./hmcl/mosaic-dspin.tex-metadata, \GTagML{} introduces a hypergraph-based 
+./hmcl/mosaic-dspin.tex:type model organized around \q{infosets,} which 
+./hmcl/mosaic-dspin.tex-are structured overviews of application-level 
+./hmcl/mosaic-dspin.tex-data types.  To fully utilize \GTagML{} features, 
+./hmcl/mosaic-dspin.tex:programmers may consequently compose \q{infoset classes} 
+./hmcl/mosaic-dspin.tex-as wrappers around ordinary data types 
+./hmcl/mosaic-dspin.tex-(e.g., \Cpp{} classes), whose instances are 
+./hmcl/mosaic-dspin.tex-serialized via nodes or character strings 
+./hmcl/mosaic-dspin.tex:within \GTagML{} documents.  Infoset classes 
+./hmcl/mosaic-dspin.tex-provide hypergraph \q{views} onto type-instances, 
+./hmcl/mosaic-dspin.tex-and act as a bridge between data types and 
+./hmcl/mosaic-dspin.tex-their associated \GTagML{} schema.  In particular, 
+./hmcl/mosaic-dspin.tex:infoset classes (rather than the types 
+./hmcl/mosaic-dspin.tex-they encapsulate) are the basis for schematizing 
+./hmcl/mosaic-dspin.tex-the relation between \GTagML{} document elements 
+./hmcl/mosaic-dspin.tex-and type instances (and the data they contain).}
+./hmcl/mosaic-dspin.tex-
+./hmcl/mosaic-dspin.tex-\p{The hypergraph-based modeling incorporated 
+--
+./axf/axf-platform.tex-to \PDF{} viewport coordinates 
+./axf/axf-platform.tex-(such text locations include annotation, quotation, or citation 
+./axf/axf-platform.tex-start/end points and paragraph or sentence boundaries --- 
+./axf/axf-platform.tex:collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+./axf/axf-platform.tex-This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+./axf/axf-platform.tex-\PDF{} applications to provide contexts 
+./axf/axf-platform.tex-for word searches, to localize context 
+./axf/axf-platform.tex-menus, to activate multi-media features at different points 
+./axf/axf-platform.tex-in the text, and in general to make \PDF{} files more 
+--
+./axf-copy/axf-platform.tex-to \PDF{} viewport coordinates 
+./axf-copy/axf-platform.tex-(such text locations include annotation, quotation, or citation 
+./axf-copy/axf-platform.tex-start/end points and paragraph or sentence boundaries --- 
+./axf-copy/axf-platform.tex:collectively dubbed a Semantic Document Infoset, or \SDI{}).  
+./axf-copy/axf-platform.tex-This \SDI{}+Viewport (\SDIV{}) information can then be used by 
+./axf-copy/axf-platform.tex-\PDF{} applications to provide contexts 
+./axf-copy/axf-platform.tex-for word searches, to localize context 
+./axf-copy/axf-platform.tex-menus, to activate multi-media features at different points 
+./axf-copy/axf-platform.tex-in the text, and in general to make \PDF{} files more 
