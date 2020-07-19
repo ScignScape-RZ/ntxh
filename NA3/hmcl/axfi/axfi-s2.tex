@@ -1,0 +1,405 @@
+
+\section[Non-Annotation Data in AXFI]{Non-Annotation Data in \protect\llAXFI{}}
+
+\p{This section covers background information which may 
+be addressed by \AXFI{}-modeled objects to ensure 
+that annotations are properly understood.
+
+\begin{description}
+
+\item[Dimensions and Coordinate Systems]  Many different coordinate 
+systems may come into play during an overall image-processing 
+task.  Even restricting attention to \TwoD{} graphics --- 
+where each pixel is mathematically locatable with just two 
+numbers --- different algorithms or code libraries 
+define \TwoD{} coordinates in different ways, so that 
+representations of individual points need to be mapped 
+across several different transformations.  Coordinate systems 
+differ in terms of whether locations are specified with 
+integer or real-valued (via binary approximation) magnitudes, 
+and whether designations of shapes and geometric structures 
+are oriented to bounding-box points or centers; whether 
+magnitudes increase left-to-right/top-to-bottom or 
+vice-versa; and so forth.  The application library with which 
+an image is rendered may have a different system then 
+the analytic library with which it is processed.  
+These differences become significant insofar as, 
+for example, annotation data should be modeled 
+so that applications can display visualizations of 
+annotations and respond to \GUI{} events so that 
+users can examine or manipulate annotations. 
+
+During the course of image proessing, certain operations 
+moreover generate new sorts of coordinates; for example, 
+segmentation may result in one part of an image 
+being isolated in such a way that a separate coordinate 
+system can be used for the interior of that region.  
+The \q{Insight Toolkit} (\ITK{}), for example, 
+distinguishes \q{object space} (internal to individual 
+geometric objects) from \q{world space.}
+
+Furthermore, additional coordinate systems may be 
+relevant to the context or empirical situation 
+wherein an image is acquired.  Geospatial 
+images, for example, can associate image-space 
+locations with geographical coordinates.  In some 
+contexts, the coordinate frame applicable to 
+some image can be contextualized with reference 
+to parameters of the acquisition equipment; 
+consider microscope configuration.  The ground 
+image may also be the result of intermediate 
+processing subsequent to data acquisition; 
+consider Flow Cytometry transformations.  
+In these cases, the coordinates and dimensions 
+considered \q{internal} to the image can be 
+associated with other dimensions pertaining 
+to the real-world context and/or image-acquisition 
+protocol.
+
+To make these connections explicit, \AXFI{} 
+employs a distinct category of \textit{dimension} 
+objects, which can ground multiple parameters 
+related to dimensions/axes, their scales, units 
+of measurement, kinds of magnitude, transformations, 
+and so forth.  One or more dimension objects 
+can then be merged into an object representing 
+a specific \textit{coordinate system}. 
+
+\item[Vertices]  A vertex is an image-position which 
+can be expressed in one or more coordinate systems.  
+Because image-processing environments typically 
+utilize multiple coordinate systems, an 
+intrisic facet of vertex data is how 
+a single position will map between different 
+coordinate systems.  For this reason, \AXFI{} 
+utilize a notion of vertex objects which are 
+distinct from any specific coordinates; 
+a concrete representation of one position 
+within an image then derives from 
+pairing a vertex object with a coordinate-system 
+object.  
+
+When integrating with applications and/or code 
+libraries, \AXFI{} vertex objects will typically 
+be connected to context-specific data types, 
+and translations between coordinate systems 
+may be provided via object methods of 
+these context-specific types.  Examples 
+in this case would be \textbf{mapFcsToScreen} in 
+\FACSanadu{} (a Flow Cytometry application);  
+\textbf{mapToGlobal}/\textbf{mapFromGlobal} 
+in \Qt{} (where \q{global} in this context 
+refers to screen coordinates); and 
+\textbf{convertWindowToPDFCoords} in \XPDF{} 
+(recall that \AXFI{} considers \PDF{} page 
+views to be annotatable images).
+
+Geometric or spatial primitives such as points, lines, 
+polylines/polygons, and image-locations are  
+defined in terms of one or more vertices.  
+This means that the objects representing such 
+primitives are built on top of vertex-objects, 
+which in turn are built on top of dimension 
+and coordinate-system objects.  Any geomtric 
+object in \AXFI{} should therefore be understood 
+to have a coordinate-system context which specifies 
+how the numeric values defining the primitive 
+are to be interpreted, even if the surface-level 
+representation of the object does not explicitly 
+designate this context. 
+
+\item[Circles, Ellipses, and Curves]  \lAXFI{} 
+does not preclude representing linear or curved 
+geometric shapes in different ways.  \lAXFI{} 
+\textit{recommends}, however, that 
+representations build off of the dimension/coordinate/vertex 
+stack as organically as possible.  This has several 
+consequences for representing curves of different 
+varieties.  
+
+In the case of ellipses (with circles as a special case) 
+a vertex-centric representation is based on elliptic 
+foci (which reduce to circle-centers in the circle 
+context; i.e., a circle is an ellipse whose foci occupy 
+the same position).  The full characterization of 
+the curve requires one additional scaling parameter, 
+such as minor-axis length (for ellipses, collapsing 
+to diameter for a circle).  \lAXFI{} object libraries  
+should convert ellipse-representations from 
+this foci-oriented approach to others which are 
+common in scientific computing, such as covariance matrices 
+and bounding rectangles.  
+
+More general curves can sometimes be constructed out 
+of polylines, as is the case with 
+\BSPLINE{}s.  Although \BSPLINE{} \q{control points} 
+are not part of the curve, they are geometric 
+locations which determine the shape of the curve, 
+so that representing \BSPLINE{}s does not require 
+any descriptive capacity apart from that of 
+polylines.  Other kinds of curves, however, 
+may call for more elaborate mathematical 
+descriptions.  Therefore, \AXFI{} does not 
+restrict the sorts of formulae which may be 
+encoded in annotation descriptions.
+
+This does not mean, however, that any and every 
+mathematical expression should be representable 
+via \AXFI{} data specifically.  For an analogous 
+scenario, \GatingML{} (which is used to 
+demarcate gates or, in effect, \q{segments} within 
+Flow Cytometry data/data-plots) \q{Originally [reused] 
+MathML to universally describe any kind of mathematical transformation.  
+While this would be a very flexible solution, 
+it is generally impossible to evaluate expressions describable by 
+MathML ...  Transform[ing] gate vertices into the data space and 
+describ[ing] (using mathematical formulas) how edges \q{have been curved}} 
+was avoided because the \q{description (formulas) would be 
+significantly difficult to create.}\footnote{See \bhref{http://flowcyt.sourceforge.net/gating/latest.pdf}, pp. 12 
+and 15-16.}  That is, translating arbitrary 
+formulae that may be concretized by application-level 
+code into a serialization/markup format can be very 
+difficult.  Essentially the same probled will arise 
+with any attempt to define arbitrary geometric 
+overlays on a two-dimensional image-like space, 
+as required for \AXFI{} annotations. 
+
+The solution favored by \AXFI{} is simply to allow 
+procedural code to serve as a proxy for describing 
+the relevant curve, coordinate transformation, or 
+geometric object.  An \AXFI{} annotation context 
+can provide a unique identifier for a procedure 
+which evaluates any given mathematical equation, 
+and then use this procedural reference as 
+an indirect way of denoting the parameters of 
+an annotation.  This makes the proper use 
+of the annotation dependent on users having 
+access to the code in question, and integrating 
+that code (or functionally equivalent code) 
+into the libraries which process \AXFI{} 
+objects.  However, as discussed below, 
+application-level integration is considered 
+an intrinsic part of deploying \AXFI{}, so 
+the reliance on application context to 
+fully disambiguate \AXFI{} semantics is 
+not treated as a limitation.
+
+\item[Application-Level Algorithms, Procedures, 
+and Data Types]  \lAXFI{} explicitly assumes 
+that any annotation data is created and consumed 
+by applications which display and/or analyze 
+images.  In this sense there is no 
+conclusive reason to exclude application-specific 
+data from a collection of \AXFI{} objects.  
+Any application-level procedure or data structure  
+could potentially be used to define annotation 
+contents and/or targets, or to supply contextual 
+information about annotations and image-processing 
+objectives.  
+
+Of course, the usefulness of \AXFI{} data will 
+be limited if applications introduce idiosyncratic 
+information which cannot be understood in other 
+\AXFI{} environments.  For this reason, it is 
+recommended that applications and code libraries 
+which use \AXFI{} construct mappings between 
+\AXFI{} data and application/library-specific 
+types and procedures in a manner which prioritizes 
+transparency and reusability.  This goal shapes 
+the architecture and terminology used by 
+\AXFI{}, as will be reviewed in Part II.  
+In general, an application/library utilizing 
+\AXFI{} should provide an \q{\AXFI{} Object Library}, 
+i.e., a collection of data types whose instances 
+(objects) are serialized and deserialized via 
+\AXFI{}.  As much as possible, this Object Library 
+should be autonomous from the application/library 
+in whose context it is developed.
+
+Notwithstanding this criterion of autonomy, 
+\AXFI{} Object Libraries can include designations 
+of application/library-specific data types 
+and procedures.  As much as possible, these 
+computational artifacts should also be 
+autonomous from the overall application context.  
+It is recommended, that is, that types and 
+procedures directly referenced by \AXFI{} Object 
+Libraries be factored into a separate 
+\q{\AXFI{} Host Library} which wraps 
+the Object Library and bridges it with the 
+main application.  The Host Library should 
+then be annotated rigorously enough that 
+code-annotations in the Host Library 
+provide as basis for image-annotations 
+in \AXFI{} data, insofar as such annotations 
+rely on application-specific objects or procedures. 
+
+\item[Annotation Body and Targets]  Although 
+\AXFI{} is specifically concerned with 
+image annotation, it is desirable to model 
+the image-annotation process as much as possible 
+within the more generic environment of 
+resource-annotation as a whole, such 
+as the \q{OpenAnnotation} model and the 
+\q{Linguistic Annotation Framework} 
+(\LAF{}).\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4485195/} on the connection between bioimaging 
+annotation and the OpenAnnotation framework; 
+and \bhref{https://dash.harvard.edu/bitstream/handle/1/11879601/3889917.pdf?sequence=1}, \bhref{https://www.cs.vassar.edu/~ide/papers/ide-suderman-LRE-LAF.pdf}, or \bhref{https://www.cs.vassar.edu/~ide/papers/ide-romary-clergerie.pdf} on \sLAF{}.}  To conform with 
+these precedents, \AXFI{} vertices --- as well 
+as additional measures which delineate geometric 
+shapes together with vertices, such as circle 
+diameters --- are called \q{anchors.}  A 
+geometrically-described subimage or geometric primitive 
+(or also a secondary image used to demarcate 
+primary-image regions, as when a two-toned bitmap 
+is used as a pixel bitmask) is called 
+the \q{target} of an annotation.  The \textit{body} 
+of an annotation is designated via 
+image-processing objectives terminology to 
+clarify the analytic significance of a 
+delineated region/primitive.
+
+As a concrete example, suppose an annotation environment 
+uses disks to notate image locations.  A location-annotaton 
+would then have, as \textit{target}, the description 
+of the desired disk as a geometric object (i.e., 
+via a circle with center-position and radius).  
+The \textit{body} of the annotation would then 
+be a label or descriptor indicating that the 
+geometric object (the circle) is demarcated 
+so as to define a location annotation (and not, 
+say, an image-segment).
+
+Note that this notion of annotation body only 
+covers semantics intrinsic to the base-level 
+annotation process.  In \AXFI{}, the \q{body} 
+of an annotation applied directly to an 
+image would not include higher-level semantic 
+or contextual information; instead, those 
+assertions are provided by further annotations 
+attached to an image-specific annotation.  For 
+example, suppose a location-annotation is 
+constructed so as to assert that a particular 
+image-location represents the main entrance to 
+a photographed building.  The architectural 
+concept \q{main entrance} (or \q{door,} etc.) 
+would be asserted via a semantic annotation 
+whose \textit{target} is the preliminary 
+(purely \q{geometric}) annotation which fixes 
+the location.  These paradigms imply that certain 
+descriptions which in other contexts (such 
+as linguistics) would be represented via 
+a single annotation are instead, in \AXFI{}, 
+constructed via a network of two or 
+more distinct annotations.
+
+\item[Annotation Graphs]  In \AXFI{}, as 
+just alluded to, complete information about 
+a specific annotation often spreads 
+across multiple annotations.  
+Associated with each annotation is an 
+annotation \textit{object}, i.e., a 
+computational artifact conveying information 
+and parameters specifying the annotation.  
+Each annotation object is moreover a \textit{node} 
+within an overall annoatation graph.  Between 
+any two annotation objects, one can via 
+\AXFI{} assert a relation or connection, 
+establishing a graph-edge between the nodes.  
+Moreover, \AXFI{} uses a \q{hypergraph} 
+data-modeling framework wherein nodes 
+can be grouped together into different sorts 
+of aggregates.  Specifically, \AXFI{} 
+serializations can use the \q{Hypergraph 
+Exchange Format} (\HGXF{}) to be developed 
+by Linguistic Technology Systems, or 
+else some functionally similar hypergraph 
+modeling paradigm.  The details of 
+\HGXF{} are outside the scope of this 
+outline, but \HGXF{} is discussed further 
+in the context of graph-serialization in 
+Part II.  
+
+Similar in spirit to \DICOMSR{}, using a node-based and 
+graph-oriented data model allows \AXFI{} to 
+flexibly connect image-annotations to 
+whatever contextual, semantic, and \q{real-world} 
+data is important for the larger image-processing 
+objectives.  For instance, if the annotation upon 
+a \CT{} scan circles or outlines (what is 
+diagnosed to be) a tumor --- visually 
+calling attention to the malignancy and perhaps 
+providing a measurement --- the raw annotation 
+has obvious conceptual/empirical links with 
+a large body of contextual and follow-up 
+information, such as the patient's clinical 
+data, the prescribed Radiation Treatment Plan, 
+and other kinds of data about the cancer 
+(e.g., genomic profiles of the cancer cells) 
+obtained by other sorts of biomedical investigations.  
+It would be impossible to formalize all 
+such representations of contextual data for 
+all image-annotation environments: the kinds 
+of supplemental data relevant in one biomedical 
+context (such as oncology) will be 
+different in other contexts (such as 
+immunology or osteoporosis) --- let alone 
+imaging contexts beyond bioimaging.    
+ 
+These considerations suggest that \AXFI{} 
+should provides objects as affixation 
+points for open-ended contextual 
+data, where the inner structure of such 
+supplemental data is outside \AXFI{}'s 
+scope.  In the hypothetical oncology 
+case, for instance, the tumor-annotation 
+would be annotated in term with a labeling 
+to the effect that the image Region of 
+Interest evinces a diagnostically significant 
+finding.  That is, the annotation is situated 
+within the processing objectives that 
+influence the overall imaging process, namely, 
+in this case, to diagnose a pathology or 
+malady of some kind.  The tumor-image --- 
+i.e. an image segment identified by a person 
+or a computer as suggesting the presence of that  
+tumor --- represents the culmination of this 
+image-processing activity, insofar as that 
+specific segment (having been outlined or 
+otherwise pointed to, e.g. via a circle or 
+arrow) summarizes the entirety of the 
+image-processing in relation to its 
+objectives.  An annotation isolating that 
+segment, and then labeling it as 
+diagnostically meaningful, then serves as a 
+\q{pivot} connecting the image-processing 
+activity to any other clinical or course-of-treatment 
+information spaces.  In short, the secondary 
+annotation object (the node labeleing the 
+annotation itself as a diagnostic finding) 
+can be connected to any other object, whose 
+type and semantics is at the discretion 
+of the relevant \AXFI{} object library.
+
+While allowing for these open-ended interrelationships 
+between image-annotations and other data models, 
+however, \AXFI{} would be most useful in contexts 
+where non-imaging data is managed according to paradigms 
+consistent with \AXFI{} itself.   That is, the 
+overall architecture of \AXFI{} systems --- in terms 
+of \AXFI{} Object Libraries, Reference Implementations, 
+and \q{grounded} serialization, all to be 
+discussed in Part II --- can be applied to 
+other contexts outside of imaging proper.  
+Code libraries which employ these paradigms 
+will be able to integrate with \AXFI{} more easily. 
+\end{description}
+}
+
+%\p{}
+
+
+
+
+
+
