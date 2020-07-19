@@ -10,9 +10,235 @@ any markup language) is to encapsulate data
 which is used by and present in one application, 
 to be subsequently used by a different 
 application --- or the same application at a future 
-time.   
+time.  There is an application which 
+\textit{creates} an annotation, and a (not 
+necessarily different) application which 
+\textit{consumes} an annotation.  \q{Consuming} 
+in this context means rendering the annotation 
+so it may be viewed by a human user and/or 
+reading annotation data so that such data may be 
+incorporated into some automated computational 
+process.  Of course, the consumer-application 
+may also be a creator, adding new annotations 
+or revising the ones it has consumed.}
 
-}
+\p{The simplest use-case is where the same 
+application both \textit{creates} and 
+\textit{consumes} each annotation.  However, 
+there would be less need for standard 
+models if every application only shared 
+data with itself.  We can assume, then, 
+that any standard such as \AXFI{} 
+is primarily intended to ensure 
+that two \textit{different} applications 
+correctly share data.  Data sharing is 
+\q{correct} insofar as the consumer-application 
+reads, understands, displays, and allows 
+human users (as well as, potentially, 
+computer algorithms) to manipulate the 
+annotation in ways which are functionally 
+equivalent to the creator-application.  
+When this functional equivalents 
+is achieved, the two applications 
+can be said to be \textit{aligned}.}
+
+\p{Creator-to-consumer alignment can happen in 
+one of two ways.  One option is that the 
+data model shared between the two applications is 
+formalized so that different applications 
+are naturally interoperable because they are 
+implemented according to similar guidelines.  
+This may be called \q{incidental alignment.}  
+There are, in turn, two pathways toward 
+incidental alignment.  On the one hand, 
+data-model formalization may stipulate criteria 
+on creator and consumer applications to ensure 
+that any creator is aligned with any 
+consumer.  Such a data model would essentially 
+provide a \q{checklist} of requirements 
+to be satisfied, procedures to be implemented, 
+and so forth, so that applications are 
+only considered to be creators and/or consumers 
+by fulfilling the checklist contract.  
+On the other hand, the formalization may 
+focus on the medium through which 
+data shared between creator and consumer 
+is structured and encoded.}
+
+\p{This second standardization --- incidental 
+alignment based on data-serialization formats --- 
+is arguably the most common strategy for 
+enforcing alignment (even if it is not 
+identified in these terms).  For example, 
+\XML{} schemata represent constraints 
+on any creator of information encoded by 
+conformant \XML{} documents; given these 
+constraints, the \XML{} \textit{consumers} 
+can guarantee alignment with creators 
+by incorporating the schema as a contract 
+the creator obeys.  The consumers need 
+not have any knowledge of the creators 
+\q{apart from} the fact the \XML{} they 
+create conforms to the schema.}
+
+\p{Whether by explicit application-level requirements 
+or via contracts on the medium by which shared 
+data is encoded (e.g., \XML{} shemata), 
+coincidental alignment can occur without 
+any explicit coordination between the 
+code used by creator and consumer appications, 
+respectively.  As an alternative model, 
+however, we can identify \textit{deliberate} 
+alignment, wherein the consumer aligns with 
+a creator by explictly referring to and 
+mimicking the creator's data models and 
+procedures.  To facilitate deliberate 
+alignment in this sense, creator 
+applications can architect the relevant 
+code to prioritize transparency and reuse --- 
+e.g., factoring this code into a 
+semi-autonomous library which the 
+consumer application can use directly, 
+or use as the basis for its own library.}
+
+\p{In contrast to many data models, 
+\AXFI{} openly embraces \textit{deliberate} 
+rather than \textit{incidental} alignment.  
+This is expressed through the idea of 
+\AXFI{} Object Libraries: a creator 
+of \AXFI{} is encouraged to provide 
+(or reuse) a code library which implements 
+logic for constructing, serializing, and 
+deserializing \AXFI{} objects.  Each 
+\AXFI{} Object Library may add its own 
+data profiles and capabilities to the 
+underlying \AXFI{} system.  Linguistic 
+Technology Systems provides a 
+default \AXFI{} library, called 
+\q{\DSPIN{}} (Data Structuring Protocol 
+for Image-Analysis Networking).  This 
+\DSPIN{} library serves as a 
+\textit{reference implementation} 
+for a generic or canonical \AXFI{} 
+format.  Other \AXFI{} Object Libraries 
+can provide reference implementations 
+for alternative/extended versions of 
+\AXFI{} by adding their features 
+which are not present in \DSPIN{} itself.}
+
+
+\p{Unlike other frameworks, then, \AXFI{} 
+does not define a standard data structure or 
+serialization format except insofar as 
+each reference implementation, exposing  
+a given \AXFI{} Object Library for 
+cross-application reuse, yields an 
+archetype that can be copied or modified.  
+However, any data shared between 
+heterogeneous endpoints needs to be 
+encoded somehow, and \AXFI{} does 
+model certain patterns in how 
+\AXFI{} data should be represented 
+in textual or binary files/streams.}
+
+\p{All \AXFI{} data exists in the 
+context of some \AXFI{} Object Library.  
+When networking between separate applications, 
+\AXFI{} assumes that the creator and 
+consumer either uses the same 
+Object Library or two libraries which 
+are functionally equivalent, at 
+least in all ways affecting the shared 
+data.  So the role of an \AXFI{} \textit{package} 
+--- that is, a file, or some similar text 
+or binary stream carryin \AXFI{} data 
+--- is to allow objects created 
+by an Object Library to be serialized/encoded 
+and then later deserialized by the same 
+(or an equivalent) Object Library.  
+Any binary or textual format which 
+permits this \q{co-serialization} --- i.e., 
+proper serialization and deserialization 
+between aligned libraries --- is a 
+reasonable surface-level encoding of 
+\AXFI{} data.}
+
+\p{In short, for each \AXFI{} data package 
+there is a collection of \AXFI{} objects 
+being serialized and (later) deserialized, 
+and the package has a \textit{surface 
+representation} whose primary importance 
+is to be a convenient vehicle for the 
+relevant co-serialization.  Serialization 
+formats can be chosen to minimize the 
+amount of biolerplate needed for the 
+Object Library to marshal \AXFI{} 
+data between runtime and serial encodings.}
+
+\p{While any markup language, or other 
+encoding mechanism, could potentially 
+be used for co-serialization, \AXFI{} 
+also recommends that Object Libraries 
+employ serialization formats 
+which document how the data-sharing 
+logic is implemented.  In other words, 
+the data format should make the 
+process of marshaling information 
+between runtime and co-serialization 
+environments transparent and reusable.  
+This is different than (say) 
+an \XML{} schema, where the serialization 
+format is the \textit{basis} of 
+multi-application alignment.  In \AXFI{}, 
+the Object Libraries, not any markup 
+standardization, are responsible 
+for application alignment.  Nevertheless, 
+while serialization format has no 
+constraints to enforce alignment 
+on a technical level, \AXFI{} Object 
+Libraries should be considered easier 
+to re-use if they employ a conceptually 
+nuanced and self-documenting format 
+for expressing/sharing data.}
+
+\p{To this end, Linguistic 
+Technology Systems provides a new 
+markup format, in conjunction with 
+the \DSPIN{} reference implementation 
+for serializing \AXFI{} data, called 
+\GTagML{} (\q{Grounded} \TagML{}), 
+where \TagML{} is an existing 
+\XML{}-like language (but with a 
+non-\XML{} syntax and a richer 
+semantics, e.g., concurrent markup).  
+\lGTagML{} is \q{grounded} in the 
+sense that each \GTagML{} file 
+presents the co-serialization of 
+certain instances of certain data 
+types, where the relation of the 
+explicit contents of the \GTagML{} 
+code and the data types which 
+are present as the code is generated 
+--- and will again be present (or 
+have aligned, corresponding types which 
+are instantiated) when the 
+code is de-serialized --- is explictly 
+modeled as part of the \GTabML{} expression.  
+That is, \GTagML{} data packages 
+are \q{grounded} in explicitly-referenced 
+data types, co-serialization logic, and 
+code libraries using \GTagML{} for 
+inter-application communications.}
+
+\p{A thorough discussion of \GTagML{} is 
+outside the scope of \AXFI{}, but a 
+brief summary of how \GTagML{}'s notion 
+of grounding applies to \AXFI{} can 
+be sketched out.  
+
+ }
+
+\p{}
 
 
 
