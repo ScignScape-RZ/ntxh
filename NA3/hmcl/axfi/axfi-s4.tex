@@ -13,7 +13,8 @@ facilitate application integration.  This
 section will consider several extensions 
 along these lines so that \AXFI{} can 
 be used as an alternative to \GatingML{} 
-(in the Flow Cytometry context) and 
+(in the Flow Cytometry context), to 
+\ArcGIS{} (for geospatial data), and 
 to \DICOMSR{} or \AIM{} (in the biomedical 
 imaging context).}
 
@@ -118,13 +119,158 @@ the de facto reference implementation for
 reading \GatingML{} data appears to be the 
 \R{}/Bioconductor package \textbf{flowUtils}.  
 Likewise, the \AIM{} data format was initially engineered 
-via an open-source \Cpp{} library 
+via an open-source \Cpp{} library (\textbf{AIMLib}), 
+which is paired with \textbf{AIMConverter}, a utility to 
+express \AIM{} data via \DICOMSR{} (rather than 
+\AIM{} \XNL{}).  For \DICOMSR{}, the principle 
+\Cpp{} library (used e.g. by \textbf{AIMConverter}) 
+is \DCMTK{}, which is divided into multiple 
+modules.  The \textbf{dcmcr} module is the 
+core \DCMTK{} implementation of \DICOMSR{}, although 
+\textbf{dcmpstate} (\DICOM{} Presentation State) 
+module is also relevant for image annotation.  
+Finally, in the \GIS{} context, the 
+\ArcGIS{} Runtime \SDK{} for \Qt{} is a 
+standard model for managing \GIS{} annotations 
+in a \Cpp{} context.}
 
- }
+\p{In short, these three libaries 
+--- \textbf{flowUtils}, \ArcGIS{}, 
+\textbf{AIMLib}, and \textbf{dcmcr} --- 
+supply the most canonical implementations that would be 
+referenced by \AXFI{} Object Libraries incorporating 
+Flow Cytometry, \AIM{}, and \DICOMSR{} data 
+repectively.  Recall that \AXFI{} paradigmatically 
+aims for alignment at the level of creator and consumer 
+libraries, rather than at the level of markup 
+format --- the \AXFI{} analogs for these libraries 
+need not use the same serialization formats; 
+indeed, if they use \GTagML{}, the will not use 
+an \XML{}-based language at all.  However, 
+the respective \AXFI{} Object Libraries 
+can try to emulate the programming interface 
+offered by the \q{target} libraries (\textbf{flowUtils}, 
+\ArcGIS{}, \textbf{AIMLib}, \textbf{dcmcr}).  This 
+entails duplicating procedure and type 
+names as much as possible, and constructing 
+the interface such that the steps needed 
+to serialize and deserialize data are largely 
+congruent when a programmer is 
+using the \AXFI{}-compatible library to 
+the emulated target libary.}
 
-\p{}
+\p{When emulating external components, 
+\AXFI{} Object Libraries should be attentive 
+to the connections between emulation targets 
+and their surrounding computational context.  
+In the case of \GatingML{}, for example, 
+gating data is only meaningful in the 
+presence of cytometry information (typically 
+conveyed via \FCS{} files) establishing 
+the baseline data (analogoug to a ground 
+image) against which gates are defined.  
+To preserve autonomy, an \AXFI{} Object Library 
+which supports \FCM{} gating would not necessarily 
+read or display \FCS{} files itself; instead, 
+such a library would be deployed as embedded 
+within a larger \FCM{} programming context, 
+which would be responsible for managing 
+\FCS{} data and also any \GUI{} operations 
+(including responding to user events 
+on gates).}
 
-\p{}
+\p{The gating-specific Object Library 
+therefore needs to define a protocol for 
+sharing gating information with this host 
+application.  Such would be an example of 
+an \q{\AXFI{} Host Library} as described in 
+Part I.  The Host Library would serve as a 
+bridge between the Object Library and the host 
+application.  When the Object Library acquires 
+\AXFI{} (including gating) data, it would 
+construct gating objects and pass them to the 
+host, leveraging the fact that the Host Library provides 
+a runtime overlap between the Object Library's 
+and host application's data types and accessible 
+computational resource (e.g., heap allocations).  
+In the opposite direction, the host application 
+could communicate gate modifications (due 
+to user \GUI{} actions, for instance, such 
+as dragging gate handles) back to the 
+\AXFI{} Object Library if it is needed 
+to update (re-serialize) the gating data.} 
 
-\p{}
+\p{Architecturally, then, there are 
+three distinct components involved: 
+an \AXFI{} Object Library; a host 
+application; and an \AXFI{} Host Library 
+which encircles a communication protocol 
+and capability overlap between those 
+two.  The Object and Host libraries 
+should be designed so that communication 
+between the Object Library and a host 
+application is rigorous and transparent, 
+and so that the communication protocol can 
+be reused in different contexts.  Moreover, 
+the Host Library should be designed so 
+that implementational objectives can 
+be clarified --- criteria for the 
+data management and \HCI{} features expected 
+of the host application.  In the case of 
+\FCM{} gating, this would include formal 
+models of how gates are visualized, 
+what sorts of user events (e.g., mouse-events) 
+are intrinsic to the semantics of the 
+\FCM{} system, and how user events translate 
+into data modifications which lead to 
+the gating data being updated.}
+
+\p{Even though \FCM{} gating is mathematically 
+different than annotating photographic 
+images, many of these architectural details 
+are functionaly parellel between the \FCM{} 
+and imaging (according to traditional 
+image-acquisition processes) contexts.  
+This is one reason why developing \FCM{} gating 
+annotations as a special case of \AXFI{} is 
+productive; it allows the overall application-integration 
+between annotation, serialization, and \HCI{}/\GUI{} 
+features to be systematically modeled, in parallel 
+to analogous models applicable to other image-related 
+annotation domains.  Analogous comments apply 
+to \GIS{}, which, like \FCM{}, evinces 
+annotation requirements which are geometrically 
+similar to systems such as \AIM{}, but 
+apply to an expanded notion of \q{imaging} 
+(and image acquisition).}
+
+\p{The value 
+of treating these various imaging and 
+annotation domains as alternative manifestation 
+of one underlying computational space is that 
+the requirements shared across these 
+domains --- particularly at the \HCI{} and 
+\GUI{} levels --- then become foregrounded, 
+whereas they are largely left implicit or 
+unstatated in existing annotation frameworks.  
+When formulating a multi-purpose 
+image-annotation model, the relevant standardization 
+applies not only to annotation \textit{data}, 
+but also to annotations as user-interaction artifacts: 
+how they are displayed, the event model which 
+systematizes how human users interact with 
+annotations, and the logic for interconnecting 
+event handlers with underlying annotation data.  
+The \AXFI{} architecture is organized such 
+that this event model is grounded in 
+\AXFI{} Host Libraries, meaning that 
+event-processing is guided by a 
+canonical protocol.  This \HCI{} focus 
+is harder to achieve for formats 
+such as \GatingML{} or \AIM{} whose 
+standardization is driven by canonical 
+serialization models rather than by 
+canonical library models.}
+
+%\p{}
 

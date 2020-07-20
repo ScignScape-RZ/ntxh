@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  19 JUL 2020 19:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.5.4)  20 JUL 2020 13:51
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1734,7 +1734,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.601 ...esizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
+l.605 ...esizebox{!}{7.5pt}{\ATexttclr{Pandore}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1748,7 +1748,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.646 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
+l.650 ...Clr}[1]{\textcolor{atColor}{\textbf{#1}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1762,7 +1762,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.650 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.654 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1776,7 +1776,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.655 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
+l.659 ...x{!}{6.5pt}{\ATextClr{D\hspace{-2pt}B}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1790,7 +1790,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.869 ...ommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
+l.873 ...ommand{\llMOSAIC}{\mbox{{\LARGE MOSAIC}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1804,7 +1804,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.882 \raisebox{-1pt}{#1}}}}
+l.886 \raisebox{-1pt}{#1}}}}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1818,7 +1818,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.887 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
+l.891 ...ily{qhv}\selectfont \raisebox{-1pt}{C}}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1925,7 +1925,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1082 
+l.1086 
        
 The package breakurl has already been loaded with options:
   [hyphenbreaks]
@@ -2054,7 +2054,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 1089.
+Package hyperref Info: Link coloring ON on input line 1093.
 
 (/home/nlevisrael/texl/texlive-install/texmf-dist/tex/latex/hyperref/nameref.st
 y
@@ -2066,9 +2066,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count323
 )
-LaTeX Info: Redefining \ref on input line 1089.
-LaTeX Info: Redefining \pageref on input line 1089.
-LaTeX Info: Redefining \nameref on input line 1089.
+LaTeX Info: Redefining \ref on input line 1093.
+LaTeX Info: Redefining \pageref on input line 1093.
+LaTeX Info: Redefining \nameref on input line 1093.
  (./axfi.out) (./axfi.out)
 \@outlinefile=\write6
 \openout6 = `axfi.out'.
@@ -2082,7 +2082,7 @@ Package marginnote Info: \pdfoutput not 0 or unimportant and
 File: t1qcr.fd 2009/09/25 v1.2 font definition file for T1/qcr
 )
 ! Extra }, or forgotten \endgroup.
-l.1134 }}}
+l.1138 }}}
           
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -2450,43 +2450,206 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-)
+) (./axfi-s4.tex
+! Undefined control sequence.
+<argument> ...r geospatial data), and to \DICOMSR 
+                                                  {} or \AIM {} (in the biom...
+l.19 imaging context).}
+                       
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 File: ../e-logo.png Graphic file (type png)
 <use ../e-logo.png>
-Package pdftex.def Info: ../e-logo.png  used on input line 1145.
+Package pdftex.def Info: ../e-logo.png  used on input line 72.
 (pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
 File: ../logo.png Graphic file (type png)
 <use ../logo.png>
-Package pdftex.def Info: ../logo.png  used on input line 1145.
+Package pdftex.def Info: ../logo.png  used on input line 72.
+(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 72.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 72.
+
+[14]
+! Undefined control sequence.
+<argument> ... \GatingML {}, \AIM {}, or \DICOMSR 
+                                                  {}, respectively, would ne...
+l.111 the formats being emulated.}
+                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...o express \AIM {} data via \DICOMSR 
+                                                  {} (rather than \AIM {} \X...
+l.135 in a \Cpp{} context.}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...ICOMSR {} (rather than \AIM {} \XNL 
+                                                  {}). For \DICOMSR {}, the ...
+l.135 in a \Cpp{} context.}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...than \AIM {} \XNL {}). For \DICOMSR 
+                                                  {}, the principle \Cpp {} ...
+l.135 in a \Cpp{} context.}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...DCMTK {} implementation of \DICOMSR 
+                                                  {}, although \textbf {dcmp...
+l.135 in a \Cpp{} context.}
+                           
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...ow Cytometry, \AIM {}, and \DICOMSR 
+                                                  {} data repectively. Recal...
+l.160 the emulated target libary.}
+                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+File: ../e-logo.png Graphic file (type png)
+<use ../e-logo.png>
+Package pdftex.def Info: ../e-logo.png  used on input line 181.
+(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
+File: ../logo.png Graphic file (type png)
+<use ../logo.png>
+Package pdftex.def Info: ../logo.png  used on input line 181.
+(pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 181.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\@ifnextchar' on input line 181.
+
+[15]
+! Undefined control sequence.
+<argument> ...ia for the data management and \HCI 
+                                                  {} features expected of th...
+l.226 the gating data being updated.}
+                                     
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...annotation, serialization, and \HCI 
+                                                  {}/\GUI {} features to be ...
+l.245 (and image acquisition).}
+                               
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ...omains --- particularly at the \HCI 
+                                                  {} and \GUI {} levels --- ...
+l.273 canonical library models.}
+                                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<argument> ... by a canonical protocol. This \HCI 
+                                                  {} focus is harder to achi...
+l.273 canonical library models.}
+                                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+)
+File: ../e-logo.png Graphic file (type png)
+<use ../e-logo.png>
+Package pdftex.def Info: ../e-logo.png  used on input line 1150.
+(pdftex.def)             Requested size: 148.80061pt x 106.27753pt.
+File: ../logo.png Graphic file (type png)
+<use ../logo.png>
+Package pdftex.def Info: ../logo.png  used on input line 1150.
 (pdftex.def)             Requested size: 102.62192pt x 60.90181pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1145.
+(hyperref)                removing `\@ifnextchar' on input line 1150.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ifnextchar' on input line 1145.
+(hyperref)                removing `\@ifnextchar' on input line 1150.
 
-[14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1145.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1145.
+[16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1150.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1150.
  (./axfi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1145.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1145.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1150.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1150.
 
-Package rerunfilecheck Info: File `axfi.out' has not changed.
-(rerunfilecheck)             Checksum: 62327BE0948BC426B58B0464A630EA4B;384.
+
+
+Package rerunfilecheck Warning: File `axfi.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `axfi.out':
+(rerunfilecheck)             Before: 62327BE0948BC426B58B0464A630EA4B;384
+(rerunfilecheck)             After:  5949E5A72BD80419E660893392DF6ADD;439.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 1093 ({)
+### simple group (level 1) entered at line 1097 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 35752 strings out of 492649
- 717789 string characters out of 6122986
- 841464 words of memory out of 5000000
- 39024 multiletter control sequences out of 15000+600000
+ 35762 strings out of 492649
+ 717865 string characters out of 6122986
+ 842482 words of memory out of 5000000
+ 39028 multiletter control sequences out of 15000+600000
  612631 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,93p,10393b,876s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2504,10 +2667,10 @@ e1/public/gfsdidot/GFSDidot.pfb></home/nlevisrael/texl/texlive-install/texmf-di
 st/fonts/type1/public/tex-gyre/qcrb.pfb></home/nlevisrael/texl/texlive-install/
 texmf-dist/fonts/type1/public/tex-gyre/qcrr.pfb></home/nlevisrael/texl/texlive-
 install/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on axfi.pdf (14 pages, 354381 bytes).
+Output written on axfi.pdf (16 pages, 370768 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
+ 190 PDF objects out of 1000 (max. 8388607)
+ 159 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
