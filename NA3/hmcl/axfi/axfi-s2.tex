@@ -12,7 +12,7 @@ are constructed.
 
 \item[Dimensions and Coordinate Systems]  Many different coordinate 
 systems may come into play during an overall image-processing 
-task.  Even restricting attention to \TwoD{} graphics --- 
+task.  Even if attention is restricted only to \TwoD{} graphics --- 
 where each pixel is mathematically locatable with just two 
 numbers --- different algorithms or code libraries 
 define \TwoD{} coordinates in different ways, so that 
@@ -30,7 +30,7 @@ These differences become significant insofar as,
 for example, annotation data should be modeled 
 so that applications can display visualizations of 
 annotations and respond to \GUI{} events so that 
-users can examine or manipulate annotations. 
+users can examine or manipulate them. 
 
 During the course of image proessing, certain operations 
 moreover generate new sorts of coordinates; for example, 
@@ -86,8 +86,8 @@ in the image data --- they reflect the
 process whereby empirical data becomes digitally 
 manifest in the image.  The actual image data 
 may be a computational transformation of the 
-empirical details (as in the wavelight alternations 
-involved in visualizing infrared camera images).
+empirical details (as in the wavelength alterations 
+involved in visualizing infrared camera pictures).
 
 \item[Vertices]  A vertex is an image-position which 
 can be expressed in one or more coordinate systems.  
@@ -143,7 +143,7 @@ consequences for representing curves of different
 varieties.  
 
 In the case of ellipses (with circles as a special case) 
-a vertex-centric representation is based on elliptic 
+a vertex-centric representation is based on elliptical 
 foci (which reduce to circle-centers in the circle 
 context; i.e., a circle is an ellipse whose foci occupy 
 the same position).  The full characterization of 
@@ -178,13 +178,13 @@ MathML to universally describe any kind of mathematical transformation.
 While this would be a very flexible solution, 
 it is generally impossible to evaluate expressions describable by 
 MathML ...  Transform[ing] gate vertices into the data space and 
-describ[ing] (using mathematical formulas) how edges \q{have been curved}} 
+describ[ing] (using mathematical formulas) how edges \sq{have been curved}} 
 was avoided because the \q{description (formulas) would be 
 significantly difficult to create.}\footnote{See \bhref{http://flowcyt.sourceforge.net/gating/latest.pdf}, pp. 12 
 and 15-16.}  That is, translating arbitrary 
 formulae that may be concretized by application-level 
 code into a serialization/markup format can be very 
-difficult.  Essentially the same probled will arise 
+difficult.  Essentially the same problem will arise 
 with any attempt to define arbitrary geometric 
 overlays on a two-dimensional image-like space, 
 as required for \AXFI{} annotations. 
@@ -207,7 +207,7 @@ application-level integration is considered
 an intrinsic part of deploying \AXFI{}, so 
 the reliance on application context to 
 fully disambiguate \AXFI{} semantics is 
-not treated as a limitation.
+not regarded as a limitation.
 
 \item[Application-Level Algorithms, Procedures, 
 and Data Types]  \lAXFI{} explicitly assumes 
@@ -266,7 +266,7 @@ the image-annotation process as much as possible
 within the more generic environment of 
 resource-annotation as a whole, such 
 as the \q{OpenAnnotation} model and the 
-\q{Linguistic Annotation Framework} 
+Linguistic Annotation Framework 
 (\LAF{}).\footnote{See \bhref{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4485195/} on the connection between bioimaging 
 annotation and the OpenAnnotation framework; 
 and \bhref{https://dash.harvard.edu/bitstream/handle/1/11879601/3889917.pdf?sequence=1}, \bhref{https://www.cs.vassar.edu/~ide/papers/ide-suderman-LRE-LAF.pdf}, or \bhref{https://www.cs.vassar.edu/~ide/papers/ide-romary-clergerie.pdf} on \sLAF{}.}  To conform with 
@@ -350,9 +350,9 @@ serializations can use the \q{Hypergraph
 Exchange Format} (\HGXF{}) to be developed 
 by Linguistic Technology Systems, or 
 else some functionally similar hypergraph 
-modeling paradigm.  The details of 
-\HGXF{} are outside the scope of this 
-outline, but \HGXF{} is discussed further 
+modeling paradigm.  
+\lHGXF{} is outside the scope of this 
+outline, but hypergraphs models are discussed further 
 in the context of graph-serialization in 
 Part II.  
 
@@ -387,9 +387,9 @@ should provides objects as affixation
 points for open-ended contextual 
 data, where the inner structure of such 
 supplemental data is outside \AXFI{}'s 
-scope.  In the hypothetical oncology 
+scope.  In the above oncology 
 case, for instance, the tumor-annotation 
-would be annotated in term with a labeling 
+would be annotated with a labeling 
 to the effect that the image Region of 
 Interest evinces a diagnostically significant 
 finding.  That is, the annotation is situated 

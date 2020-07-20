@@ -96,9 +96,9 @@ resolution, and so forth.  A \textit{region}
 or \textit{region of interest} is similar to a 
 segment, but defined more loosely; regions 
 can have vague descriptors, and spatially 
-disconneted parts of an image can be treated 
-as part of the same region.  In a photograph 
-of a flock of birds, say, there may be 
+disconneted parts of an image could be treated 
+as parts of one same region.  In a photograph 
+of a flock of birds, for example, there may be 
 multiple segments, each outlining one single bird.  
 However, the flock as a whole may be outlined 
 by one \textit{region}, which could (without 
@@ -172,7 +172,7 @@ and regions/points, and particularly when they
 are used in some proxying or indicative relation 
 to other regions (e.g. for counting).  
    
-\textit[Secondary Images]  In some contexts, such 
+\item[Secondary Images]  In some contexts, such 
 as segmentation, image-transforms are used to 
 convey image-processing operations, in contrast 
 to geometric-style annotations that can be 
@@ -183,14 +183,14 @@ image, but with only two logical colors
 (colors are called \q{logical} insofar as the 
 relevant detail is how the colors compare to 
 one another, irregardless of the optical colors 
-used to render them\footnote{In \Qt{}, for instance, 
+used to render them\footnote{In \sQt{}, for instance, 
 the \textbf{QColorConstants::Color0} and 
 \textbf{QColorConstants::Color1} color values 
 are considered to be special \q{colors} 
 (i.e., \textbf{QColor} instances) which define 
 the foreground and background of a two-toned 
 image; they are not formally assigned to a 
-fixed visual color, like black or white.}).  
+visual color, like black or white.}).  
 A \q{fuzzy} segment can likewise be defined 
 via a greyscale image (anything which 
 is pure-background becoming either pure white, 
@@ -201,7 +201,7 @@ any mathematical expression.  In these cases,
 the actual annotation data should identify the 
 secondary image (e.g., via a file path) and 
 explain how it relates to the primary 
-(or \q{ground}) image, wheres the secondary 
+(or \q{ground}) image, whereas the secondary 
 file itself fills in the annotation details.      
 
 Secondary images may be derived from ground 
@@ -228,7 +228,7 @@ patches can facilitate image partitioning
 by reinforcing the boundaries between different 
 regions.  With sufficient color manipulation, 
 image-segments can potentially be described 
-chromatically; a region may for instance 
+chromatically: a region may for instance 
 be identified as \q{the area all of whose 
 pixels display a red channel above} some 
 threshold.  \lAXFI{} data should therefore 
@@ -237,7 +237,7 @@ segments (and spatial/geometric regions in
 general) to be encoded as annotations.
 
 The concept of proscriptive annotations is not 
-only chromatic; one can imagine other scenarios 
+only chromatic --- one can imagine other scenarios 
 where morphological features, such as symmetries, 
 may be employed to similar effect.  In describing 
 a chess board, for instance, a set of image-regions 
@@ -268,14 +268,14 @@ sky: the epilogue to this operation is an ability
 (for a human user or a computer algorithm) to 
 classify the segment as \q{bird.}  However, we 
 can also say that the given fact of the segment 
-capturing the optics of a bird (with its given 
+capturing the optics of a bird (with its apparent 
 anatomical outline and coloration) is what 
 allowed the segmentation to be possible in the 
 first place.  Therefore, the label \q{bird} 
 serves both to utilize the segmentation for 
 further analytic/classificatory purposes and 
 also, potentially, to characterize the 
-inner workings of effective feasibility of 
+inner workings or effectiveness of 
 achieving the desired processing objective.  
 It should be kept in mind, in short, that 
 label annotations are not exclusively 
@@ -322,8 +322,8 @@ for example, or any other image feature deemed
 semantically relevant in some context --- labels 
 may be applied to the image as a whole.  In this
 context labels would be an example of 
-\textit{metadata} annotations (discussed below, 
-item ??), which apply to the image itself 
+\textit{metadata} annotations (discussed next), 
+which apply to the image itself 
 rather than any proper part. 
 
 %\item[Data Transformations]    
@@ -331,10 +331,10 @@ rather than any proper part.
 \item[Image Metadata]   This category 
 of annotation concerns any information 
 \q{about} an image which is apart from 
-the specific image content --- including 
+the specific image content.  Such details could encompass 
 computational/encoding details such 
 as color depth, pixel dimensions, and image 
-file format, as well as acquisiton details 
+file format; or acquisiton details 
 such as the make and settings of the camera 
 whose photograph yields the current image.  
 In theory, any information prerequisite to 
@@ -378,9 +378,9 @@ for subsequent steps.  For example, clinical data
 which motivates a radiographic study should remain 
 linked to images and annotations which result from 
 that study; this is why \DICOMSR{} includes 
-clinical as well as imaging data.  More details 
-about \AXFI{} context descriptions are provided 
-below (section ?). 
+clinical as well as imaging data.  
+%More details about \AXFI{} context descriptions are provided 
+%below (section ?). 
 \end{description}
 
 This outline coveres the different kinds 
