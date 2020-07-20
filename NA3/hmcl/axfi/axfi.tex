@@ -26,10 +26,10 @@
 \vspace{-.5em}}
 
 \titlespacing*{\section}
-{0pt}{3.8ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
+{0pt}{4.8ex plus 1ex minus .1ex}{-0.2ex plus .2ex}
 
 \titlespacing*{\subsection}
-{0pt}{2.8ex plus 1ex minus .1ex}{-.8ex plus .2ex}
+{0pt}{3.5ex plus 1ex minus .1ex}{-.8ex plus .2ex}
 
 %\usepackage{mathptmx}
 
@@ -70,6 +70,21 @@
 
 
 \AddToShipoutPicture{%
+
+\ifnum\value{page}=16   %\pgfmathresult>0\relax
+\put(182,100){
+ {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
+
+   {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
+	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
+       \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
+      amy.neustein@verizon.net \textbullet{} \textbf{(917) 817-2184} }}}
+	 \end{minipage}}}}}}
+}
+\fi
+
+
+
 \ifnum\value{page}>1
 {\color{blGreen!70!red}\transparent{0.9}{\put(300,8){\rule{0.5\paperwidth}{.3cm}}}}%
 {\color{inOne}\transparent{0.8}{\put(300,10){\rule{0.5\paperwidth}{.3cm}}}}%
@@ -84,17 +99,6 @@
 
 %\pgfmathparse{equal(\value{page},15)||equal(\value{page},20)?int(1):int(0)}
 
-\ifnum\value{page}=10   %\pgfmathresult>0\relax
-\put(182,132){
- {\setlength{\fboxsep}{.65em}\fontsize{9}{10}\selectfont
-
-   {\color{white}{\parbox{11cm}{\vspace{7pt}\framebox{\begin{minipage}{.46\textwidth}
-	  {\color{black}{\textit{For more information please contact:}}\\\textbf{\color{blGreen!40!blbl}{Amy Neustein, Ph.D., Founder and CEO}}\\  
-       \textbf{{\color{blGreen!20!black}Linguistic Technology Systems \\
-      amy.neustein@verizon.net \textbullet{} \textbf{(917) 817-2184} }}}
-	 \end{minipage}}}}}}
-}
-\fi
 
 {\color{blGreen!70!red}\transparent{0.9}{\put(5.6,5){\rule{0.5\paperwidth}{.4cm}}}}%
 {\color{inOne}\transparent{1}{\put(5.6,10){\rule{0.5\paperwidth}{.4cm}}}}%
@@ -195,6 +199,10 @@
 \definecolor{logoRed}{rgb}{.3,0,0}
 
 \newcommand{\colorq}[1]{{\color{logoOrange!70!black}{\q{\small\textbf{#1}}}}}
+
+\newcommand{\lpageref}[1]{\raisebox{-2pt}{\pageref{#1}}}
+
+%\raisebox{-4pt}{
 
 \definecolor{inOne}{rgb}{0.122, 0.435, 0.698}% Rule colour
 \definecolor{inTwo}{rgb}{0.122, 0.698, 0.435}% Rule colour
@@ -346,11 +354,24 @@
 
 \newcommand{\Grakenai}{\resizebox{!}{7pt}{\AcronymText{Graken.ai}}}
 
+\newcommand{\sAIM}{\resizebox{!}{6pt}{\AcronymText{AIM}}}  
+\newcommand{\sCVAT}{\resizebox{!}{6pt}{\AcronymText{CVAT}}}  
+\newcommand{\sXML}{\resizebox{!}{6pt}{\AcronymText{XML}}}  
+\newcommand{\sDICOMSR}{\resizebox{!}{6pt}{\AcronymText{DICOM-SR}}}  
+\newcommand{\sPASCAL}{\resizebox{!}{6pt}{\AcronymText{PASCAL}}}  
+\newcommand{\sVOC}{\resizebox{!}{6pt}{\AcronymText{VOC}}}  
+\newcommand{\sCOCO}{\resizebox{!}{6pt}{\AcronymText{COCO}}}  
+\newcommand{\sJSON}{\resizebox{!}{6pt}{\AcronymText{JSON}}}  
+
+\newcommand{\DICOMSR}{\resizebox{!}{7pt}{\AcronymText{DICOM-SR}}} 
+
 
 \newcommand{\lAXF}{\resizebox{!}{7.5pt}{\ATexttclr{A}}%
 \resizebox{!}{6.5pt}{\ATexttclr{XF}}}
 
 \newcommand{\AXFI}{\resizebox{!}{7pt}{\ATexttclr{AXFi}}}
+
+\newcommand{\lsAXFI}{\resizebox{!}{9.5pt}{\ATexttclr{AXFi}}}
 
 \newcommand{\lAXFI}{\resizebox{!}{7.5pt}{\ATexttclr{A}}%
 \resizebox{!}{6.5pt}{\ATexttclr{XFi}}}
@@ -860,7 +881,7 @@
 
 \newcommand{\p}[1]{
 
-\vspace{.9em}#1}
+\vspace{.74em}#1}
 
 \newcommand{\q}[1]{{\fontfamily{qcr}\selectfont ``}#1{\fontfamily{qcr}\selectfont ''}} 
 
@@ -1134,7 +1155,7 @@ drop shadow=logoPurple!50!darkRed,
 \begin{center}	
 {\setlength{\fboxsep}{32pt}
 	\relscale{1.2}{{\fontfamily{qcr}\fontseries{b}\selectfont%
-{The Annotation Exchange Format for Images (\llAXFI{})}}
+{The Annotation Exchange Format for Images (AXFi)}}
 }}}
 \end{center}
 \end{minipage}

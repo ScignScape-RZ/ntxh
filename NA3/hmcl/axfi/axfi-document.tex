@@ -6,13 +6,13 @@ analytic process in many scientific, technical, and
 commercial fields.  Nonetheless, there are few standard 
 formats for describing and representing image annotations, and 
 those which do exist tend to be used in specific, relatively 
-narrow contexts.\footnote{Current formats include AIM 
-(Annotation and Image Markup), CVAT XML (CVAT is 
-the Computer Vision Annotation Tool), DICOM-SR (Digital 
+narrow contexts.\footnote{Current formats include \sAIM{}  
+(Annotation and Image Markup), \sCVAT{} \sXML{} (\sCVAT{} is 
+the Computer Vision Annotation Tool), \sDICOMSR{} (Digital 
 Imaging and Communications in Medicine Structured Reporting), 
-PASCAL VOC XML (Pattern Analysis, Statistical modelling and 
+\sPASCAL{} \sVOC{} \sXML{} (Pattern Analysis, Statistical modelling and 
 ComputAtional Learning Visual Object Classes), 
-and COCO JSON (Common Objects in Context).}  This is 
+and \sCOCO{} \sJSON{} (Common Objects in Context).}  This is 
 not a new observation; Daniel L. Rubin \textit{et. al.}, 
 in 2007, note that: 
 
@@ -83,7 +83,7 @@ describing and affixing data to image annotations.}
 \p{It is also important for image-annotation 
 models to be broadly applicable and multi-disciplinary.  
 While image analysis serves different goals in 
-different contexts (segmentation of microscope images 
+different contexts (e.g., segmentation of microscope images 
 to detect cancer cells serves different ends than 
 segmentation of camera snapshots to study traffic patterns), 
 there is always a possibility of analytic techniques 
@@ -108,11 +108,16 @@ The \q{Pantheon} project, characterized as a
 \q{platform dedicated to knowledge engineering for the 
 development of image processing 
 applications,}\footnote{See \bhref{https://hal.archives-ouvertes.fr/hal-00260065/document}.}
-offers one of the few attempts in bioimaging literature to 
+offers one of the few attempts in imaging literature to 
 rigorously define \q{imaging} and \q{image processing} in the 
-first place.  The problem of defining \q{images} as such, 
+first place.  Pantheon (via its \Pandore{} component) 
+also includes an image processing 
+\textit{objectives} ontology, which is partially incorporated 
+into \AXFI{}, so Pantheon's articulation of the 
+general domain of imaging \textit{per se} applies to \AXFI{} 
+as well.  The problem of defining \q{images} as such, 
 and therefore delineating the scope of image annotation, is 
-addressed below (section ...).  In brief, \AXFI{} 
+addressed below (page~\lpageref{ph:acquisition}).  In brief, \AXFI{} 
 considers the realm of imaging to be more general 
 than just graphics obtained by a direct recording 
 of the optics of some physical scene via cameras, 
@@ -145,7 +150,7 @@ dimensions and magnitudes.  In general,
 from \q{Conceptual Space Theory} as 
 part of the process of formalizing 
 geometric and dimensional 
-notions.\footnote{See \bhref{http://idwebhost-202-147.ethz.ch/Publications/RefConferences/ICSC_2009_AdamsRaubal_Camera-FINAL.pdf} or 
+notions.\footnote{See \bhref{http://idwebhost-202-147.ethz.ch/Publications/RefConferences/ICSC_2009_AdamsRaubal_Camera-FINAL.pdf} or\\ 
 \bhref{https://arxiv.org/pdf/1801.03929.pdf}.} }
 
 \p{When defining the scope of \AXFI{}, it is also 
@@ -179,7 +184,7 @@ compatible with \XML{} languages that
 rely on \XML{} schematization.  Further 
 details on how \AXFI{} manages the relation 
 to \XML{} and other serialization languages 
-are provided below (section ).}
+are provided below (page~\lpageref{sec:SFour}).}
 
 \p{A further detail that should be clarified 
 prior to expositing a formal outline of 
@@ -210,7 +215,7 @@ always act directly on images themselves; sometimes
 algorithms are based instead on mathematical complexes 
 derived from the image, but with their own quantitative 
 properties.  For instance, color-valued pixels may 
-be replaced by matrices measuring the derivative 
+be replaced by matrices measuring the gradient 
 of some image-feature field in eight directions around 
 each point (an example would be \q{Sobel kernels} applied 
 to the image intensity function).  For a given \q{semantic} 
@@ -306,7 +311,7 @@ feature or object that can be visualized in
 the image context, and that summarizes or 
 legitimizes the analytic operation.  This 
 summarial data, then, can provide 
-\textit{retroactive} annotations which allow 
+\textit{retrospective} annotations which allow 
 human viewers to understand and review the 
 algorithmic process.  In short, simply because 
 image-processing tasks may not generate 
@@ -328,17 +333,7 @@ annotations are \textit{retrospective}: that
 instead of being internal to an imaging 
 computation they are indirectly produced 
 subsequent to such a computation, for 
-purposes of documentation and validation.}
-
-\p{In general, then, \AXFI{} distinguishes 
-human-generated from computer-generated 
-annotations, and moreover leaves open 
-the possibility that some computer-generated 
-annotations are retroactive: that 
-instead of being internal to an imaging 
-computation they are indirectly produced 
-subsequent to such a computation, for 
-purposes of documentation and validation.  
+purposes of documentation and validation. 
 Annotations which are not \textit{retrospective} 
 are called \textit{internal}, as in, 
 internal to a given image-processing workflow.}
@@ -361,8 +356,8 @@ benefit of human viewers.}
 is not always clear-cut.  Consider the 
 following two cases: in one scenario, an 
 image-segmentation routine precisely 
-delineates a region of interest (an outline 
-of a red bird against blue sky, say), 
+delineates a region of interest (e.g., an outline 
+of a red bird against blue sky), 
 notating the segmentation result via a 
 two-color-depth transform of the original 
 image.  Image-viewing software then 
@@ -421,12 +416,11 @@ and \textit{intrinsic} or \textit{descriptive}.
 from \textit{human-generated} annotations 
 (which are related to but not the same terms 
 as \textit{manual} and \textit{automated}; see 
-below, section ).  
+below, page~\lpageref{ph:man}).  
 These distinctions are indepenedent of one another; 
 retrospective annotations for instance could 
 be either intrinsic or descriptive, and either 
 computer-generated or human-generated.}
-
 
 \p{With these preliminaries concerning the 
 scope of \AXFI{} clarified, the 
