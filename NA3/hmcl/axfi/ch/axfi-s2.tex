@@ -32,7 +32,7 @@ so that applications can display visualizations of
 annotations and respond to \GUI{} events so that 
 users can examine or manipulate them. 
 
-During the course of image processing, certain operations 
+During the course of image proessing, certain operations 
 moreover generate new sorts of coordinates; for example, 
 segmentation may result in one part of an image 
 being isolated in such a way that a separate coordinate 
@@ -93,7 +93,7 @@ involved in visualizing infrared camera pictures).
 can be expressed in one or more coordinate systems.  
 Because image-processing environments typically 
 utilize multiple coordinate systems, an 
-intrinsic facet of vertex data is how 
+intrisic facet of vertex data is how 
 a single position will map between different 
 coordinate systems.  For this reason, \AXFI{} 
 utilize a notion of vertex objects which are 
@@ -119,12 +119,12 @@ refers to screen coordinates); and
 views to be annotatable images).
 
 Geometric or spatial primitives such as points, lines, 
-poly-lines/polygons, and image-locations are  
+polylines/polygons, and image-locations are  
 defined in terms of one or more vertices.  
 This means that the objects representing such 
 primitives are built on top of vertex-objects, 
 which in turn are built on top of dimension 
-and coordinate-system objects.  Any geometric 
+and coordinate-system objects.  Any geomtric 
 object in \AXFI{} should therefore be understood 
 to have a coordinate-system context which specifies 
 how the numeric values defining the primitive 
@@ -156,13 +156,13 @@ common in scientific computing, such as covariance matrices
 and bounding rectangles.  
 
 More general curves can sometimes be constructed out 
-of poly-lines, as is the case with 
+of polylines, as is the case with 
 \BSPLINE{}s.  Although \BSPLINE{} \q{control points} 
 are not part of the curve, they are geometric 
 locations which determine the shape of the curve, 
 so that representing \BSPLINE{}s does not require 
 any descriptive capacity apart from that of 
-poly-lines.  Other kinds of curves, however, 
+polylines.  Other kinds of curves, however, 
 may call for more elaborate mathematical 
 descriptions.  Therefore, \AXFI{} does not 
 restrict the sorts of formulae which may be 
@@ -338,7 +338,7 @@ annotation \textit{object}, i.e., a
 computational artifact conveying information 
 and parameters specifying the annotation.  
 Each annotation object is moreover a \textit{node} 
-within an overall annotation graph.  Between 
+within an overall annoatation graph.  Between 
 any two annotation objects, one can via 
 \AXFI{} assert a relation or connection, 
 establishing a graph-edge between the nodes.  
@@ -411,7 +411,7 @@ diagnostically meaningful, then serves as a
 \q{pivot} connecting the image-processing 
 activity to any other clinical or course-of-treatment 
 information spaces.  In short, the secondary 
-annotation object (the node labeling the 
+annotation object (the node labeleing the 
 annotation itself as a diagnostic finding) 
 can be connected to any other object, whose 
 type and semantics is at the discretion 
