@@ -1,6 +1,6 @@
 
 \part{AXFI Library Architecture}
-\vspace{1em}
+\vspace{.5em}
 \section{AXFI Object Libraries and Serialization}
 
 \p{\lAXFI{} is designed around the premise that the 
@@ -8,7 +8,7 @@ primary goal of any data modeling system (and, as a
 surface-level encoding of data to be shared, 
 any markup language) is to encapsulate data 
 which is used by and present in one application, 
-to be subsequently used by a different 
+to be subsequently re-used by a different 
 application --- or the same application at a future 
 time.  There is an application which 
 \textit{creates} an annotation, and a (not 
@@ -38,7 +38,7 @@ human users (as well as, potentially,
 computer algorithms) to manipulate the 
 annotation in ways which are functionally 
 equivalent to the creator-application.  
-When this functional equivalents 
+When this functional equivalence 
 is achieved, the two applications 
 can be said to be \textit{aligned}.}
 
@@ -48,9 +48,9 @@ data model shared between the two applications is
 formalized so that different applications 
 are naturally interoperable because they are 
 implemented according to similar guidelines.  
-This may be called \q{incidental alignment.}  
+This may be called \q{coincidental alignment.}  
 There are, in turn, two pathways toward 
-incidental alignment.  On the one hand, 
+coincidental alignment.  On the one hand, 
 data-model formalization may stipulate criteria 
 on creator and consumer applications to ensure 
 that any creator is aligned with any 
@@ -59,13 +59,13 @@ provide a \q{checklist} of requirements
 to be satisfied, procedures to be implemented, 
 and so forth, so that applications are 
 only considered to be creators and/or consumers 
-by fulfilling the checklist contract.  
-On the other hand, the formalization may 
+by fulfilling the checklist contract.}
+
+\p{On the other hand, the formalization may 
 focus on the medium through which 
 data shared between creator and consumer 
-is structured and encoded.}
-
-\p{This second standardization --- incidental 
+is structured and encoded.  This second mode of 
+standardization --- coincidental 
 alignment based on data-serialization formats --- 
 is arguably the most common strategy for 
 enforcing alignment (even if it is not 
@@ -102,8 +102,8 @@ consumer application can use directly,
 or use as the basis for its own library.}
 
 \p{In contrast to many data models, 
-\AXFI{} openly embraces \textit{deliberate} 
-rather than \textit{incidental} alignment.  
+\AXFI{} openly embraces deliberate 
+rather than coincidental alignment in this sense.  
 This is expressed through the idea of 
 \AXFI{} Object Libraries: a creator 
 of \AXFI{} is encouraged to provide 
@@ -123,7 +123,7 @@ for a generic or canonical \AXFI{}
 format.  Other \AXFI{} Object Libraries 
 can provide reference implementations 
 for alternative/extended versions of 
-\AXFI{} by adding their features 
+\AXFI{} by adding their own features 
 which are not present in \DSPIN{} itself.}
 
 
@@ -151,7 +151,7 @@ are functionally equivalent, at
 least in all ways affecting the shared 
 data.  So the role of an \AXFI{} \textit{package} 
 --- that is, a file, or some similar text 
-or binary stream carryin \AXFI{} data 
+or binary stream carrying \AXFI{} data 
 --- is to allow objects created 
 by an Object Library to be serialized/encoded 
 and then later deserialized by the same 
@@ -171,7 +171,7 @@ representation} whose primary importance
 is to be a convenient vehicle for the 
 relevant co-serialization.  Serialization 
 formats can be chosen to minimize the 
-amount of biolerplate needed for the 
+amount of biolerplate code needed for the 
 Object Library to marshal \AXFI{} 
 data between runtime and serial encodings.}
 
@@ -223,7 +223,7 @@ are present as the code is generated
 have aligned, corresponding types which 
 are instantiated) when the 
 code is de-serialized --- is explictly 
-modeled as part of the \GTabML{} expression.  
+modeled as part of the \GTagML{} expression.  
 That is, \GTagML{} data packages 
 are \q{grounded} in explicitly-referenced 
 data types, co-serialization logic, and 

@@ -11,14 +11,14 @@ employed to make these extensions compatible
 with the core \AXFI{} model, and to 
 facilitate application integration.  This 
 section will consider several extensions 
-along these lines so that \AXFI{} can 
-be used as an alternative to \GatingML{} 
+along these lines allowing for \AXFI{}  
+being adopted as an alternative to \GatingML{} 
 (in the Flow Cytometry context), to 
 \ArcGIS{} (for geospatial data), and 
 to \DICOMSR{} or \AIM{} (in the biomedical 
 imaging context).}
 
-\p{Given any \AXFI{} which sustains the design 
+\p{Given any \AXFI{} extension which sustains the design 
 principles of \AXFI{} itself, the extension's 
 central technology should be an \AXFI{} Object Library 
 which includes object classes modeling the relevant 
@@ -28,10 +28,10 @@ that the Object Library be implemented in a programming
 language and environment which minimizes external 
 dependencies.  In particular, \C{} or \Cpp{} are 
 preferred to scripting languages unless the 
-library can be developed in \q{pure} code of 
-those languages, without importing packages 
+library can be developed in \q{pure} scriptin code  
+(without importing packages 
 or modules which are mostly composed in 
-\C{}/\Cpp{}.  For \Cpp{} libraries, it is recommended 
+\C{}/\Cpp{}).  For \Cpp{} libraries, it is recommended 
 that most dependencies be limited to a single 
 overarching framework, like \textbf{boost} or 
 \Qt{}, without \textit{mixing} dependencies.  
@@ -77,9 +77,8 @@ and would have procedures for serializing and
 deserializing these objects as hypergraph data 
 structures.  This co-serialization interface 
 would then be augmented to support \GTagML{} by 
-re-implementing the serialization and 
-deserialization procedures to generate/parse 
-\GTagML{} instead of the native \ConceptsDB{} 
+re-implementing the (de)serialization procedures to generate/parse 
+\GTagML{} instead of the \ConceptsDB{} 
 hypergraph format.  The \GTagML{} interface 
 should be tested to confirm that it 
 functions equivalently to that of \ConceptsDB{}.  
@@ -122,30 +121,30 @@ Likewise, the \AIM{} data format was initially engineered
 via an open-source \Cpp{} library (\textbf{AIMLib}), 
 which is paired with \textbf{AIMConverter}, a utility to 
 express \AIM{} data via \DICOMSR{} (rather than 
-\AIM{} \XNL{}).  For \DICOMSR{}, the principle 
+\AIM{} \XML{}).  For \DICOMSR{}, the principle 
 \Cpp{} library (used e.g. by \textbf{AIMConverter}) 
 is \DCMTK{}, which is divided into multiple 
-modules.  The \textbf{dcmcr} module is the 
+modules.  The \textbf{dcmsr} module is the 
 core \DCMTK{} implementation of \DICOMSR{}, although 
 \textbf{dcmpstate} (\DICOM{} Presentation State) 
-module is also relevant for image annotation.  
+is also relevant for image annotation.  
 Finally, in the \GIS{} context, the 
 \ArcGIS{} Runtime \SDK{} for \Qt{} is a 
 standard model for managing \GIS{} annotations 
 in a \Cpp{} context.}
 
-\p{In short, these three libaries 
+\p{In short, these four libaries 
 --- \textbf{flowUtils}, \ArcGIS{}, 
 \textbf{AIMLib}, and \textbf{dcmcr} --- 
 supply the most canonical implementations that would be 
 referenced by \AXFI{} Object Libraries incorporating 
-Flow Cytometry, \AIM{}, and \DICOMSR{} data 
+Flow Cytometry, \GIS{}, \AIM{}, and \DICOMSR{} data 
 repectively.  Recall that \AXFI{} paradigmatically 
 aims for alignment at the level of creator and consumer 
 libraries, rather than at the level of markup 
 format --- the \AXFI{} analogs for these libraries 
 need not use the same serialization formats; 
-indeed, if they use \GTagML{}, the will not use 
+indeed, if they use \GTagML{}, they will not use 
 an \XML{}-based language at all.  However, 
 the respective \AXFI{} Object Libraries 
 can try to emulate the programming interface 
@@ -184,12 +183,12 @@ therefore needs to define a protocol for
 sharing gating information with this host 
 application.  Such would be an example of 
 an \q{\AXFI{} Host Library} as described in 
-Part I.  The Host Library would serve as a 
+\makebox{Part I}.  The Host Library would serve as a 
 bridge between the Object Library and the host 
 application.  When the Object Library acquires 
 \AXFI{} (including gating) data, it would 
 construct gating objects and pass them to the 
-host, leveraging the fact that the Host Library provides 
+host software, leveraging the fact that the Host Library provides 
 a runtime overlap between the Object Library's 
 and host application's data types and accessible 
 computational resource (e.g., heap allocations).  
@@ -235,9 +234,9 @@ This is one reason why developing \FCM{} gating
 annotations as a special case of \AXFI{} is 
 productive; it allows the overall application-integration 
 between annotation, serialization, and \HCI{}/\GUI{} 
-features to be systematically modeled, in parallel 
+features to be systematically profiled, in parallel 
 to analogous models applicable to other image-related 
-annotation domains.  Analogous comments apply 
+annotation domains.  Complementary comments apply 
 to \GIS{}, which, like \FCM{}, evinces 
 annotation requirements which are geometrically 
 similar to systems such as \AIM{}, but 
@@ -265,7 +264,7 @@ The \AXFI{} architecture is organized such
 that this event model is grounded in 
 \AXFI{} Host Libraries, meaning that 
 event-processing is guided by a 
-canonical protocol.  This \HCI{} focus 
+canonical protocol.  Such \HCI{} focus 
 is harder to achieve for formats 
 such as \GatingML{} or \AIM{} whose 
 standardization is driven by canonical 
