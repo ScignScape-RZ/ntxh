@@ -1,0 +1,92 @@
+
+\section{Extending AXFI}
+
+\p{In some contexts, \AXFI{} can be used as an 
+alternative format for serializing data conformant 
+to other standards related to image annotation.  
+When these use-cases call for refining the 
+\AXFI{} specifications, the architecture of 
+\AXFI{} Object Libraries and \GTagML{} can be 
+employed to make these extensions compatible 
+with the core \AXFI{} model, and to 
+facilitate application integration.  This 
+section will consider several extensions 
+along these lines so that \AXFI{} can 
+be used as an alternative to \GatingML{} 
+(in the Flow Cytometry context) and 
+to \DICOMSR{} or \AIM{} (in the biomedical 
+imaging context).}
+
+\p{Given any \AXFI{} which sustains the design 
+principles of \AXFI{} itself, the extension's 
+central technology should be an \AXFI{} Object Library 
+which includes object classes modeling the relevant 
+extended semantics as well as the primary, 
+geometric-based \AXFI{} data.  It is recommended 
+that the Object Library be implemented in a programming 
+language and environment which minimizes external 
+dependencies.  In particular, \C{} or \Cpp{} are 
+preferred to scripting languages unless the 
+library can be developed in \q{pure} code of 
+those languages, without importing packages 
+or modules which are mostly composed in 
+\C{}/\Cpp{}.  For \Cpp{} libraries, it is recommended 
+that most dependencies be limited to a single 
+overarching framework, like \textbf{boost} or 
+\Qt{}, without \textit{mixing} dependencies.  
+In \Qt{}, for instance, the \IO{}, Regular Expression, 
+and \XML{} support (and so on) is sufficiently mature 
+and full-featured that there should be no need for 
+dependencies on \textbf{boost::filesystem}, 
+\textbf{Boost.Regex}, or etc.}
+
+\p{For sake of discussion --- and to remain 
+consistent with the default \DSPIN{} implementation 
+--- assume therefore that prototypical 
+\AXFI{} Object Libraries are implemented 
+in \Qt{}-based \Cpp{} code.  The core of any 
+new (potentially extended) library, then, 
+is a \textit{co-serialization interface} 
+which includes procedures for serializing 
+and deserializing data structures 
+(including \Cpp{} class instances assuming 
+certain template procedures are instantiated 
+for those classes), as well as \q{querying} 
+encoded data as part of the deserialization 
+process.  For \DSPIN{}, the co-serialization 
+logic is implemented using LTS's \ConceptsDB{}, 
+a hypergraph database engine.  An overview 
+of this technology is outside the scope of 
+\AXFI{}, but the key detail is that 
+\ConceptsDB{} allows data structures to be 
+modeled and then encoded via certain hypergraph 
+constructions, and that the resulting hypergraph 
+models are manipulated via an interface which 
+incorporates Functional Programming techniques 
+(more so than conventional Object-Oriented 
+styles).  An \AXFI{} Object Library mimicking 
+\DSPIN{}, accordingly, would implement 
+logic to serialize and deserialize \AXFI{} objects 
+according to this hypergraph-based interface.}
+
+\p{Such an Object Library would then have, at 
+its core, a suite of annotation objects 
+(plus objects expressing an extended semantics) 
+and would have procedures for serializing and 
+deserializing these objects as hypergraph data 
+structures.  This co-serialization interface 
+would then be augmented to support \GTagML{} by 
+re-implementing the serialization and 
+deserialization procedures to generate/parse 
+\GTagML{} instead of the native \ConceptsDB{} 
+hypergraph format.   
+
+}
+
+\p{}
+
+\p{}
+
+\p{}
+
+

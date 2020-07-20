@@ -234,11 +234,49 @@ inter-application communications.}
 outside the scope of \AXFI{}, but a 
 brief summary of how \GTagML{}'s notion 
 of grounding applies to \AXFI{} can 
-be sketched out.  
+be sketched out.  Any \AXFI{} data 
+package represents the serialized 
+encoding of one or more objects 
+defined/constructed by an \AXFI{} Object 
+Library.  The \GTagML{} code which 
+serializes these \AXFI{} objects 
+is therefore a tool to allow the 
+objects to be lifted from their 
+runtime context and re-created at 
+some other time and/or place.  
+But the \GTagML{} code also 
+bears a formal relationship 
+to the data type instances which 
+it serializes: a given set of 
+\GTagML{} nodes, for instances, 
+encodes some particular object 
+(e.g., some annotation or some geometric 
+primitive), an object which is 
+an instance of a given data type, 
+provided by a given code library, 
+linked in to a given creator 
+application.  The serialization occurs at 
+a given moment in time, and in a given 
+application context (the specific session, 
+user, or provenance data which might be 
+relevant for the overall co-serialization 
+context).  The idea behind \GTagML{} is 
+that such semantic relations between 
+\GTagML{} markup and the data type/application-level 
+context where this markup is generated is 
+formally modeled within the markup itself.  
+When serialized via \GTagML{}, \AXFI{} data 
+includes a structured description of how 
+the \AXFI{} objects relate to the \GTagML{} 
+code which encapsulates them.}
 
- }
+\p{The relation between \AXFI{} and \GTagML{} 
+can be further illustrated by considering 
+domain-specific extensions or versions of 
+\AXFI{}, which are discussed in the 
+following section.}
 
-\p{}
+
 
 
 
