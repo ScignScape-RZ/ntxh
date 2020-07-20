@@ -79,14 +79,52 @@ would then be augmented to support \GTagML{} by
 re-implementing the serialization and 
 deserialization procedures to generate/parse 
 \GTagML{} instead of the native \ConceptsDB{} 
-hypergraph format.   
+hypergraph format.  The \GTagML{} interface 
+should be tested to confirm that it 
+functions equivalently to that of \ConceptsDB{}.  
+Once that is verified, the generated \GTagML{} 
+code can be provisioned with \q{grounding} 
+metadata, that is, with parameters indicating 
+the relation of the serialization content to 
+the data types and procedures of the Object 
+Library.  In the simplest case, a 
+\GTagML{} node is \q{grounded} by being 
+marked as encoding one instance of an 
+object class.}
 
-}
+\p{An important aspect of an \AXFI{} Object 
+Library, then, is functional equivalence 
+between the \ConceptsDB{} serialization 
+and the \GTagML{} serialization.  This notion 
+of functional equivalence may then be 
+extended when the purpose of an Object 
+Library is to incorporate features from 
+other data standards, or to allow \AXFI{} 
+to replace other data formats.  For 
+example, Object Libraries designed 
+to adopt \AXFI{} in lieu of \GatingML{}, 
+\AIM{}, or \DICOMSR{}, respectively, 
+would need to demonstrate that 
+they serialize and deserialize structures 
+in a manner functionally equivalent to 
+the formats being emulated.}
+
+\p{In these scenarios, Object Libraries 
+need to orient themselves not only to standards 
+for existing markup formats, but also to 
+existing libraries where data in such formats 
+is generated and consumed.  For example, 
+the de facto reference implementation for 
+reading \GatingML{} data appears to be the 
+\R{}/Bioconductor package \textbf{flowUtils}.  
+Likewise, the \AIM{} data format was initially engineered 
+via an open-source \Cpp{} library 
+
+ }
 
 \p{}
 
 \p{}
 
 \p{}
-
 
