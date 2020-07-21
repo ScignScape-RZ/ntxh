@@ -1,0 +1,91 @@
+
+
+\begin{frame}{\ft{GTagML: ``Grounded'' TagML}}
+%\section{Research Slide 5}
+
+\doubleFrame{Creator/Consumer Alignment is enforced 
+first by an object-sharing protocol using 
+Hypegraph-based serialization and then by 
+GTagML serialization.} 
+%which facilitate \textit{obtaining} research 
+%or experimental data, A3R \q{Data-Set Applications} are also 
+%powerful tools for visualizing and analyzing research findings.
+
+\large{
+
+
+
+\begin{tikzpicture}
+
+ \node [anchor=west,bottom color=brown!90!red,top color=blue!40, inner sep=3, text width=15cm, shading angle=140]
+  (longnote) at (0.7,6.3) {\vspace{-8pt} %  %{\color{rb!85!red}{
+  {\cframedboxx{0.7mm}{2pt}{\large \textbf{GTagML includes 
+metadata identifying how GTagML nodes relate 
+to data types, object instances, and procedures 
+implemented in the Object Libraries.}}}};
+
+\node [anchor=west,top color=yellow!20!orange, bottom color=darkRed!70!red,inner sep=1, text width=7cm, shading angle=60]
+  (snote) at (3.6,4.3) {\vspace{-7pt}%  %{\color{rb!85!red}{
+  {\cframedbox{\scriptsize \textbf{GTagML, in short, functionally 
+duplicates the Hypergraph serialization but 
+also adds metadata \textit{about} the serialization 
+(``meta-serialization'' data).  
+}}}};
+
+%\node[fill,circle,label=below left:$x$] at (1,2) {xxx};
+
+\node [shape=regular polygon, regular polygon sides=8, draw=purple!60!blue, 
+minimum width=8cm] (lleft) at (0,1) {\raisebox{50mm}{AXFI Object Library} }; 
+
+ \node [rectangle, draw=brown!90!red, fill=white, %inner sep=0pt,
+inner sep=3, 
+minimum height=45mm, minimum width=45mm]
+  (gleft) at (0,0.5) {\raisebox{24mm}{GTagML Serialization}};
+
+ \node [circle, draw=brown!20!red, fill=white, %inner sep=0pt,
+minimum size=5pt,
+%bottom color=brown!90!red,top color=blue!40, 
+inner sep=3, text width=20mm]
+  (hsleft) at (0,0) {Hypergraph Serialization};
+
+\draw [pink!60!blue, thick] (gleft.west) -- (hsleft.west) node [
+draw=purple!10!pink,text=black,fill=grey!30,font=\normalsize,midway,below left,
+text width=17mm] 
+{Meta-Serialization};
+
+
+\node [shape=regular polygon, regular polygon sides=8, draw=purple!60!blue, 
+minimum width=8cm] (lright) at (14,1) {\raisebox{50mm}{AXFI Object Library} }; 
+
+\draw (lleft.east) -- (lright.west) node [
+draw=purple!60!blue,fill=none,font=\normalsize,midway,above,
+text width=17mm] 
+{Library Alignment};
+
+ \node [rectangle, draw=brown!90!red, fill=white, %inner sep=0pt,
+inner sep=3, 
+minimum height=45mm, minimum width=45mm]
+  (gright) at (14,0.5) {\raisebox{24mm}{GTagML Serialization}};
+
+\draw (gleft.east) -- (gright.west) node [
+draw=brown!90!red,fill=none,font=\normalsize,midway,below, 
+text width=28mm] 
+{Co-Serialization Interface};
+
+
+ \node [circle, draw=brown!20!red, fill=white, %inner sep=0pt,
+minimum size=5pt,
+%bottom color=brown!90!red,top color=blue!40, 
+inner sep=3, text width=20mm]
+  (hsright) at (14,0) {Hypergraph Consumer};
+
+\draw (hsleft.south east) -- (hsright.south west) node [
+draw=brown!20!red,fill=none,font=\normalsize,midway,below, 
+text width=27mm] 
+{Creator/Consumer Alignment};
+
+\end{tikzpicture}
+}
+
+\end{frame}
+
