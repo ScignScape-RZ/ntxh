@@ -1,19 +1,34 @@
 
 
-\begin{frame}{\ft{A3R Applications as Research Objects}}
+\begin{frame}{\ft{AXFI Host Libraries and Application Integration}}
 %\section{Research Slide 5}
-\doubleFrame{Complementary to A3R components
-which facilitate \textit{obtaining} research 
-or experimental data, A3R \q{Data-Set Applications} are also 
-powerful tools for visualizing and analyzing research findings.}
+\doubleFrame{\normalsize{Complementary to AXFI Object Libraries, 
+AXFI Host Libraries bridge Object Libraries with 
+the applications where they are embedded.  The Host Library 
+therefore shares computational resources with both 
+the Co-Serialization Interface and the host GUI code.}}
 
 \begin{tikzpicture}
-\nodeincludegraphicsTRRS{0.92}{0cm}{0cm}{0cm}{0.8cm}{pics/Res-4.png}
+\nodeincludegraphicsTRRS{0.92}{0cm}{0cm}{0cm}{0.2cm}{pics/Res-4.png}
 
- \node [anchor=west,bottom color=brown!90!red,top color=blue!40, inner sep=3, text width=15cm]
-  (longnote) at (2.7,13.3) {\vspace{-8pt} %  %{\color{rb!85!red}{
-  {\cframedboxx{0.7mm}{2pt}{\large \textbf{Data-Set Applications are \q{Research Object Bundles} --- combinations of code and data 
-providing access to data sets without the need for external software.}}}};
+ \node [anchor=west,bottom color=yellow!30!blue,top color=pink!70!green, 
+inner sep=3, shading angle=50, text width=10cm]
+  (longnote) at (1.7,13.3) {\vspace{-8pt} %  %{\color{rb!85!red}{
+  {\cframedboxx{0.7mm}{2pt}{\large \textbf{The Host Library 
+adds rigor to the annotation framework by systemitizing 
+HCI protocols and host Event Model; these models 
+complement the \makebox{annotation} data provided by the Object Library.}}}};
+
+\rectann{darkRed}{0.7}{1mm}{grammarArrowColor}{0.5}{18.5,6}{3.4}{8.25}{0.9}
+
+\node [anchor=west,fill=brown!8!white,inner sep=12, 
+opacity=0.88, text opacity=1] (note) at (14,5.29) {\hc{Annotation Events}};
+
+\ann{BlueGreen!90!red}{1}{.8mm}{blue!50!orange}{0.5}{1.21,6.7}{1.4}{3.6}{1.3}
+
+\node [anchor=west,fill=brown!8!white,inner sep=12, 
+opacity=0.88, text opacity=1] (note) at (2.8,4.29) {\hc{Imaging Events}};
+
 
 \end{tikzpicture}
 

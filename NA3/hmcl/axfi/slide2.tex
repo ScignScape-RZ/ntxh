@@ -6,11 +6,28 @@ as Flow Cytometry, DICOM, and Geographic Information
 Systems leverage the GTagML/Hypergraph model while 
 functionally emulating existing ``reference'' libraries.}
 
+\vspace{2em}
+%\tikzset{>=stealth}
+
+
 \begin{tikzpicture}
 
- \node [anchor=west,bottom color=brown!90!red,top color=blue!40, inner sep=3, text width=15cm]
-  (longnote) at (2.7,3.3) {\vspace{-8pt} %  %{\color{rb!85!red}{
-  {\cframedboxx{0.7mm}{2pt}{\large \textbf{}}}};
+\tikzset{
+  big arrow/.style={
+    decoration={markings,mark=at position 1 with {\arrow[scale=4,#1]{>}}},
+    postaction={decorate},
+    shorten >=0.4pt},
+  big arrow/.default=blue}
+
+ \node [anchor=west,bottom color=brown!40!orange,
+top color=magenta!40!black, shading angle=120, inner sep=3, text width=4cm]
+  (longnote) at (9.7,-3) {\vspace{-8pt} %  %{\color{rb!85!red}{
+  {\cframedboxx{0.7mm}{2pt}{\large \textbf{For 
+AXFI extensions, establish a functional 
+equivalence between Hypergraph serialization, 
+GTagML serialization, and Reference Implementations 
+for markup formats providing the extended 
+semantics being added to AXFI.}}}};
 
  \node [shape=regular polygon, 
 regular polygon sides=5, draw=brown!60!black, fill=white, %inner sep=0pt,
@@ -31,24 +48,51 @@ inner sep=3, text width=20mm]
  \node [circle, draw=blue!60!black, fill=white, %inner sep=0pt,
 minimum size=5pt,
 inner sep=3, text width=20mm]
-  (dsro) at (-3,-4) {DICOM-SR Object \makebox{Library}};
+  (aimo) at (-3,-4) {AIM Object \makebox{Library}};
 
  \node [circle, draw=blue!60!black, fill=white, %inner sep=0pt,
 minimum size=5pt,
 inner sep=3, text width=20mm]
-  (aimo) at (-5,-6) {AIM Object \makebox{Library}};
+  (dsro) at (-5,-6) {DICOM-SR Object \makebox{Library}};
 
  \node [circle, draw=blue!60!black, fill=white, %inner sep=0pt,
 minimum size=5pt,
 inner sep=3, text width=20mm]
   (arco) at (-2,-8) {ArcGIS \makebox{Object Library}};
 
- \node [rectangle, draw=brown!90!red, fill=white, %inner sep=0pt,
+ \node [rectangle, draw=orange!60!red, fill=white, %inner sep=0pt,
 inner sep=3, 
-minimum height=45mm, minimum width=45mm]
-  (gright) at (14,0.5) {\raisebox{24mm}{GTagML Serialization}};
+minimum height=15mm, minimum width=25mm]
+  (fcmr) at (6,-1) {flowUtils (Gating-ML Client)};
 
+\draw [big arrow, shorten >= 2mm,shorten <= 4mm] (fcmr.west)
+-- (fcmo.east);
+% node [
+%draw=orange!60!blue,fill=none,font=\normalsize,midway,above] 
+%{Library Alignment};
 
+ \node [rectangle, draw=orange!60!red, fill=white, %inner sep=0pt,
+inner sep=3, 
+minimum height=15mm, minimum width=25mm]
+  (aimr) at (6,-3) {AIMLib (AIM C++ Implementation)};
+
+\draw [big arrow, shorten >= 2mm,shorten <= 4mm] (aimr.west) -- (aimo.east);
+
+ \node [rectangle, draw=orange!60!red, fill=white, %inner sep=0pt,
+inner sep=3, 
+minimum height=15mm, minimum width=25mm]
+  (dsrr) at (6,-5) {DCMTK (dcmsr module)};
+
+\draw [big arrow, shorten >= 2mm,shorten <= 4mm] 
+(dsrr.west) -- (dsro.east);
+
+ \node [rectangle, draw=orange!60!red, fill=white, %inner sep=0pt,
+inner sep=3, 
+minimum height=15mm, minimum width=25mm]
+  (arcr) at (6,-7) {ArcGIS Runtime Qt SDK};
+
+\draw [big arrow, shorten >= 2mm,shorten <= 4mm] (arcr.west)
+ -- (arco.east);
 
 \end{tikzpicture}
 
